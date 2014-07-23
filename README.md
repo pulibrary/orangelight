@@ -1,4 +1,6 @@
 # Orangelight
+[![Build Status](https://travis-ci.org/pulibrary/orangelight.png?branch=development)](https://travis-ci.org/pulibrary/orangelight)
+
 
 Versions:
 
