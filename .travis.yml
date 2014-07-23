@@ -1,0 +1,24 @@
+language: ruby
+rvm:
+  - 2.1.1 # Ruby most recent
+# uncomment this line if your project needs to run something other than `rake`:
+
+before_script:
+  - psql -c 'create database orangelight_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
+
+script: bundle exec rspec spec
+
+branches:
+  only:
+    - development
+notifications:
+  email:
+    recipients:
+      - "tampakis@princeton.edu"
+      - "jstroop@princeton.edu"
+      - "kr2@princeton.edu"
+    on_success: "change"
+    on_failure: "always"
+    template:
+      - "%{repository}//%{branch}@%{commit} by %{author}: %{message} - %{build_url}"

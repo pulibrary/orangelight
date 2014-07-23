@@ -33,3 +33,8 @@ gem "devise"
 gem "devise-guests", "~> 0.3"
 gem "blacklight-marc", "~> 5.0"
 gem "jettywrapper", "~> 1.7"
+
+group :test, :development do
+	# rspec
+	gem 'rspec-rails', '~> 3.0.0'	
+end
