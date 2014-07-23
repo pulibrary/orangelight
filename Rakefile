@@ -2,6 +2,9 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require File.expand_path('../config/application', __FILE__)
+unless Rails.env.production?
+ require 'rspec/core/rake_task'
+end
 
 Rails.application.load_tasks
 
@@ -11,3 +14,28 @@ require 'jettywrapper'
 Rake::Task["jetty:clean"].enhance do
   Rake::Task["pulsearch:solr2jetty"].invoke
 end
+
+task :ci do
+
+  require 'jettywrapper'
+  jetty_params = Jettywrapper.load_config.merge(
+      {:jetty_home => File.expand_path(File.dirname(__FILE__) + '/jetty'),
+       :startup_wait => 180,
+       :jetty_port => ENV['TEST_JETTY_PORT'] || 8983
+      }
+  )
+
+  Rake::Task['jetty:download'].invoke
+  Rake::Task['jetty:clean'].invoke
+  error = nil
+  error = Jettywrapper.wrap(jetty_params) do
+    Rake::Task['spec'].invoke
+  end
+
+
+  raise "test failures: #{error}" if error
+end
+
+# Rake::Task[:default].prerequisites.clear
+task :default => []; Rake::Task[:default].clear
+task :default => [:ci]
