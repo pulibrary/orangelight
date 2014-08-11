@@ -18,5 +18,9 @@
 # Ignore Jetty server.
 jetty/*
 
-# Ignor database config
+# Ignore database config
 config/database.yml
+
+# Temporarily ignore catalog controller
+app/controllers/catalog_controller.rb
+app/views/catalog/*
