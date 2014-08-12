@@ -109,6 +109,7 @@
          title_series_t^10
          isbn_t
          text
+         description_t
        </str>
        <str name="pf">
          title_unstem_search^1000000
@@ -132,6 +133,7 @@
          title_series_unstem_search^250
          title_series_t^100
          text^10
+         description_t
        </str>
        <str name="author_qf">
          author_unstem_search^200
@@ -194,7 +196,9 @@
          id, 
          score,
          author_display,
-         author_vern_display, 
+         author_vern_display,
+         author_t,
+         description_display, 
          format, 
          isbn_t, 
          language_facet, 
@@ -389,7 +393,9 @@
         id, 
         score,
         author_display,
-        author_vern_display, 
+        author_vern_display,
+        author_t,
+        description_display, 
         format, 
         isbn_t, 
         language_facet, 

@@ -30,7 +30,6 @@ class CatalogController < ApplicationController
 
     # solr field configuration for search results/index views
     config.index.title_field = 'title_display'
-    config.index.title_vern = 'title_vern_display'
     config.index.partials = [:index_header, :thumbnail, :index]
     config.index.display_type_field = 'format'
 
@@ -94,6 +93,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'published_vern_display', :label => 'Published'
     config.add_index_field 'lc_callnum_display', :label => 'Call number'
     config.add_index_field 'pub_created_display', :label => 'Published/Created'
+    config.add_index_field 'description_display', :label => 'Description'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
