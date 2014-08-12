@@ -525,12 +525,9 @@
    <field name="pub_date_sort" type="tint" indexed="true" stored="true" multiValued="false"/>
      
    <!-- format is used for facet, display, and choosing which partial to use for the show view, so it must be stored and indexed -->
-   <field name="format" type="string" indexed="true" stored="true"/>
+   <field name="format" type="string" indexed="true" stored="true" multiValued="true"/>
 
 
-   <field name="pub_created" type="string" indexed="true" stored="true" multiValued="true"/>
-
-   
 
    <!-- Dynamic field definitions.  If a field name is not found, dynamicFields
         will be used if the name matches any of the patterns.
@@ -568,7 +565,7 @@
 
    <dynamicField name="random_*" type="random" />
 
-   <dynamicField name="*_display" type="string" indexed="stored" stored="true" multiValued="true" />
+   <dynamicField name="*_display" type="string" indexed="true" stored="true" multiValued="true" />
    <dynamicField name="*_facet" type="string" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*_sort" type="alphaOnlySort" indexed="true" stored="false" multiValued="false" />
    <dynamicField name="*_unstem_search" type="text_general" indexed="true" stored="false" multiValued="true" />
