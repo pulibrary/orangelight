@@ -63,8 +63,8 @@ class CatalogController < ApplicationController
     config.add_facet_field 'lc_1letter_facet', :label => 'Call Number' 
     config.add_facet_field 'subject_geo_facet', :label => 'Region' 
     config.add_facet_field 'subject_era_facet', :label => 'Era'  
-    config.add_facet_field 'pub_created_display', :label => 'Published/Created'
-    config.add_facet_field 'author_t', :label => 'Author'
+    config.add_facet_field 'pub_created_s', :label => 'Published/Created'
+    config.add_facet_field 'author_s', :label => 'Author', :single => true
 
 
     config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
@@ -85,15 +85,16 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display 
     # config.add_index_field 'title_display', :label => 'Title'
     # config.add_index_field 'title_vern_display', :label => 'Title'
-    config.add_index_field 'author_t', :label => 'Author', :link_to_search => true
+    config.add_index_field 'author_s', :label => 'Author', :link_to_search => true
     config.add_index_field 'author_vern_display', :label => 'Author'
     config.add_index_field 'format', :label => 'Format'
     config.add_index_field 'language_facet', :label => 'Language'
     config.add_index_field 'published_display', :label => 'Published'
     config.add_index_field 'published_vern_display', :label => 'Published'
     config.add_index_field 'lc_callnum_display', :label => 'Call number'
-    config.add_index_field 'pub_created_display', :label => 'Published/Created'
+    config.add_index_field 'pub_created_s', :label => 'Published/Created'
     config.add_index_field 'description_display', :label => 'Description'
+    config.add_index_field 'location_display', :label => 'Location'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
@@ -101,7 +102,7 @@ class CatalogController < ApplicationController
     # config.add_show_field 'title_vern_display', :label => 'Title'
     config.add_show_field 'subtitle_display', :label => 'Subtitle'
     config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
-    config.add_show_field 'author_t', :label => 'Author'
+    config.add_show_field 'author_display', :label => 'Author'
     config.add_show_field 'author_vern_display', :label => 'Author'
     config.add_show_field 'format', :label => 'Format'
     config.add_show_field 'url_fulltext_display', :label => 'URL'
@@ -112,7 +113,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'lc_callnum_display', :label => 'Call number'
     config.add_show_field 'isbn_t', :label => 'ISBN'
     config.add_show_field 'pub_created_display', :label => 'Published/Created'
-
+    config.add_show_field 'location_display', :label => 'Location'
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
     #

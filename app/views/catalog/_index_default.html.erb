@@ -3,7 +3,11 @@
   
   <% index_fields(document).each do |solr_fname, field| -%>
     <% if should_render_index_field? document, field %>
+    	<% if solr_fname == 'author_s' && render_index_field_value( document, :field => 'marc_relator_display') != '' %>
+	    <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_index_field_value document, :field => 'marc_relator_display' %>:</dt>
+    	<% else %>
 	    <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_index_field_label document, :field => solr_fname %></dt>
+	    <% end %>
 	    <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_index_field_value document, :field => solr_fname %></dd>
     <% end -%>
   <% end -%>
