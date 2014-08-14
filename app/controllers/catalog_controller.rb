@@ -64,7 +64,8 @@ class CatalogController < ApplicationController
     config.add_facet_field 'subject_geo_facet', :label => 'Region' 
     config.add_facet_field 'subject_era_facet', :label => 'Era'  
     config.add_facet_field 'pub_created_s', :label => 'Published/Created'
-    config.add_facet_field 'author_s', :label => 'Author', :single => true
+    config.add_facet_field 'author_s', :label => 'Author'
+    config.add_facet_field 'location', :label => 'Location'
 
 
     config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']

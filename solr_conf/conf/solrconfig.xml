@@ -110,6 +110,7 @@
          isbn_t
          text
          description_t
+         location
        </str>
        <str name="pf">
          title_unstem_search^1000000
@@ -134,6 +135,7 @@
          title_series_t^100
          text^10
          description_t
+         location
        </str>
        <str name="author_qf">
          author_unstem_search^200
