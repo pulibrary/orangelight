@@ -1,268 +1,268 @@
-     1	<http://id.loc.gov/vocabulary/relators/abr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Abridger"@en . 
-     2	<http://id.loc.gov/vocabulary/relators/act> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Actor"@en . 
-     3	<http://id.loc.gov/vocabulary/relators/adp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Adapter"@en . 
-     4	<http://id.loc.gov/vocabulary/relators/rcp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Addressee"@en . 
-     5	<http://id.loc.gov/vocabulary/relators/anl> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Analyst"@en . 
-     6	<http://id.loc.gov/vocabulary/relators/anm> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Animator"@en . 
-     7	<http://id.loc.gov/vocabulary/relators/ann> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Annotator"@en . 
-     8	<http://id.loc.gov/vocabulary/relators/apl> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Appellant"@en . 
-     9	<http://id.loc.gov/vocabulary/relators/ape> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Appellee"@en . 
-    10	<http://id.loc.gov/vocabulary/relators/app> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Applicant"@en . 
-    11	<http://id.loc.gov/vocabulary/relators/arc> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Architect"@en . 
-    12	<http://id.loc.gov/vocabulary/relators/arr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Arranger"@en . 
-    13	<http://id.loc.gov/vocabulary/relators/acp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Art copyist"@en . 
-    14	<http://id.loc.gov/vocabulary/relators/adi> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Art director"@en . 
-    15	<http://id.loc.gov/vocabulary/relators/art> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Artist"@en . 
-    16	<http://id.loc.gov/vocabulary/relators/ard> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Artistic director"@en . 
-    17	<http://id.loc.gov/vocabulary/relators/asg> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Assignee"@en . 
-    18	<http://id.loc.gov/vocabulary/relators/asn> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Associated name"@en . 
-    19	<http://id.loc.gov/vocabulary/relators/att> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Attributed name"@en . 
-    20	<http://id.loc.gov/vocabulary/relators/auc> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Auctioneer"@en . 
-    21	<http://id.loc.gov/vocabulary/relators/aut> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Author"@en . 
-    22	<http://id.loc.gov/vocabulary/relators/aqt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Author in quotations or text abstracts"@en . 
-    23	<http://id.loc.gov/vocabulary/relators/aft> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Author of afterword, colophon, etc."@en . 
-    24	<http://id.loc.gov/vocabulary/relators/aud> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Author of dialog"@en . 
-    25	<http://id.loc.gov/vocabulary/relators/aui> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Author of introduction, etc."@en . 
-    26	<http://id.loc.gov/vocabulary/relators/ato> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Autographer"@en . 
-    27	<http://id.loc.gov/vocabulary/relators/ant> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Bibliographic antecedent"@en . 
-    28	<http://id.loc.gov/vocabulary/relators/bnd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Binder"@en . 
-    29	<http://id.loc.gov/vocabulary/relators/bdd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Binding designer"@en . 
-    30	<http://id.loc.gov/vocabulary/relators/blw> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Blurb writer"@en . 
-    31	<http://id.loc.gov/vocabulary/relators/bkd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Book designer"@en . 
-    32	<http://id.loc.gov/vocabulary/relators/bkp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Book producer"@en . 
-    33	<http://id.loc.gov/vocabulary/relators/bjd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Bookjacket designer"@en . 
-    34	<http://id.loc.gov/vocabulary/relators/bpd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Bookplate designer"@en . 
-    35	<http://id.loc.gov/vocabulary/relators/bsl> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Bookseller"@en . 
-    36	<http://id.loc.gov/vocabulary/relators/brl> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Braille embosser"@en . 
-    37	<http://id.loc.gov/vocabulary/relators/brd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Broadcaster"@en . 
-    38	<http://id.loc.gov/vocabulary/relators/cll> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Calligrapher"@en . 
-    39	<http://id.loc.gov/vocabulary/relators/ctg> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Cartographer"@en . 
-    40	<http://id.loc.gov/vocabulary/relators/cas> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Caster"@en . 
-    41	<http://id.loc.gov/vocabulary/relators/cns> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Censor"@en . 
-    42	<http://id.loc.gov/vocabulary/relators/chr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Choreographer"@en . 
-    43	<http://id.loc.gov/vocabulary/relators/cng> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Cinematographer"@en . 
-    44	<http://id.loc.gov/vocabulary/relators/cli> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Client"@en . 
-    45	<http://id.loc.gov/vocabulary/relators/cor> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Collection registrar"@en . 
-    46	<http://id.loc.gov/vocabulary/relators/col> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Collector"@en . 
-    47	<http://id.loc.gov/vocabulary/relators/clt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Collotyper"@en . 
-    48	<http://id.loc.gov/vocabulary/relators/clr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Colorist"@en . 
-    49	<http://id.loc.gov/vocabulary/relators/cmm> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Commentator"@en . 
-    50	<http://id.loc.gov/vocabulary/relators/cwt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Commentator for written text"@en . 
-    51	<http://id.loc.gov/vocabulary/relators/com> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Compiler"@en . 
-    52	<http://id.loc.gov/vocabulary/relators/cpl> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Complainant"@en . 
-    53	<http://id.loc.gov/vocabulary/relators/cpt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Complainant-appellant"@en . 
-    54	<http://id.loc.gov/vocabulary/relators/cpe> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Complainant-appellee"@en . 
-    55	<http://id.loc.gov/vocabulary/relators/cmp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Composer"@en . 
-    56	<http://id.loc.gov/vocabulary/relators/cmt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Compositor"@en . 
-    57	<http://id.loc.gov/vocabulary/relators/ccp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Conceptor"@en . 
-    58	<http://id.loc.gov/vocabulary/relators/cnd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Conductor"@en . 
-    59	<http://id.loc.gov/vocabulary/relators/con> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Conservator"@en . 
-    60	<http://id.loc.gov/vocabulary/relators/csl> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Consultant"@en . 
-    61	<http://id.loc.gov/vocabulary/relators/csp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Consultant to a project"@en . 
-    62	<http://id.loc.gov/vocabulary/relators/cos> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contestant"@en . 
-    63	<http://id.loc.gov/vocabulary/relators/cot> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contestant-appellant"@en . 
-    64	<http://id.loc.gov/vocabulary/relators/coe> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contestant-appellee"@en . 
-    65	<http://id.loc.gov/vocabulary/relators/cts> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contestee"@en . 
-    66	<http://id.loc.gov/vocabulary/relators/ctt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contestee-appellant"@en . 
-    67	<http://id.loc.gov/vocabulary/relators/cte> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contestee-appellee"@en . 
-    68	<http://id.loc.gov/vocabulary/relators/ctr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contractor"@en . 
-    69	<http://id.loc.gov/vocabulary/relators/ctb> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contributor"@en . 
-    70	<http://id.loc.gov/vocabulary/relators/cpc> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Copyright claimant"@en . 
-    71	<http://id.loc.gov/vocabulary/relators/cph> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Copyright holder"@en . 
-    72	<http://id.loc.gov/vocabulary/relators/crr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Corrector"@en . 
-    73	<http://id.loc.gov/vocabulary/relators/crp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Correspondent"@en . 
-    74	<http://id.loc.gov/vocabulary/relators/cst> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Costume designer"@en . 
-    75	<http://id.loc.gov/vocabulary/relators/cou> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Court governed"@en . 
-    76	<http://id.loc.gov/vocabulary/relators/crt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Court reporter"@en . 
-    77	<http://id.loc.gov/vocabulary/relators/cov> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Cover designer"@en . 
-    78	<http://id.loc.gov/vocabulary/relators/cre> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Creator"@en . 
-    79	<http://id.loc.gov/vocabulary/relators/cur> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Curator"@en . 
-    80	<http://id.loc.gov/vocabulary/relators/dnc> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Dancer"@en . 
-    81	<http://id.loc.gov/vocabulary/relators/dtc> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Data contributor"@en . 
-    82	<http://id.loc.gov/vocabulary/relators/dtm> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Data manager"@en . 
-    83	<http://id.loc.gov/vocabulary/relators/dte> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Dedicatee"@en . 
-    84	<http://id.loc.gov/vocabulary/relators/dto> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Dedicator"@en . 
-    85	<http://id.loc.gov/vocabulary/relators/dfd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Defendant"@en . 
-    86	<http://id.loc.gov/vocabulary/relators/dft> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Defendant-appellant"@en . 
-    87	<http://id.loc.gov/vocabulary/relators/dfe> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Defendant-appellee"@en . 
-    88	<http://id.loc.gov/vocabulary/relators/dgg> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Degree granting institution"@en . 
-    89	<http://id.loc.gov/vocabulary/relators/dgs> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Degree supervisor"@en . 
-    90	<http://id.loc.gov/vocabulary/relators/dln> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Delineator"@en . 
-    91	<http://id.loc.gov/vocabulary/relators/dpc> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Depicted"@en . 
-    92	<http://id.loc.gov/vocabulary/relators/dpt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Depositor"@en . 
-    93	<http://id.loc.gov/vocabulary/relators/dsr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Designer"@en . 
-    94	<http://id.loc.gov/vocabulary/relators/drt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Director"@en . 
-    95	<http://id.loc.gov/vocabulary/relators/dis> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Dissertant"@en . 
-    96	<http://id.loc.gov/vocabulary/relators/dbp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Distribution place"@en . 
-    97	<http://id.loc.gov/vocabulary/relators/dst> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Distributor"@en . 
-    98	<http://id.loc.gov/vocabulary/relators/dnr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Donor"@en . 
-    99	<http://id.loc.gov/vocabulary/relators/drm> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Draftsman"@en . 
-   100	<http://id.loc.gov/vocabulary/relators/dub> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Dubious author"@en . 
-   101	<http://id.loc.gov/vocabulary/relators/edt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Editor"@en . 
-   102	<http://id.loc.gov/vocabulary/relators/edc> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Editor of compilation"@en . 
-   103	<http://id.loc.gov/vocabulary/relators/edm> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Editor of moving image work"@en . 
-   104	<http://id.loc.gov/vocabulary/relators/elg> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Electrician"@en . 
-   105	<http://id.loc.gov/vocabulary/relators/elt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Electrotyper"@en . 
-   106	<http://id.loc.gov/vocabulary/relators/enj> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Enacting jurisdiction"@en . 
-   107	<http://id.loc.gov/vocabulary/relators/eng> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Engineer"@en . 
-   108	<http://id.loc.gov/vocabulary/relators/egr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Engraver"@en . 
-   109	<http://id.loc.gov/vocabulary/relators/etr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Etcher"@en . 
-   110	<http://id.loc.gov/vocabulary/relators/evp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Event place"@en . 
-   111	<http://id.loc.gov/vocabulary/relators/exp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Expert"@en . 
-   112	<http://id.loc.gov/vocabulary/relators/fac> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Facsimilist"@en . 
-   113	<http://id.loc.gov/vocabulary/relators/fld> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Field director"@en . 
-   114	<http://id.loc.gov/vocabulary/relators/fds> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Film distributor"@en . 
-   115	<http://id.loc.gov/vocabulary/relators/fmd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Film director"@en . 
-   116	<http://id.loc.gov/vocabulary/relators/flm> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Film editor"@en . 
-   117	<http://id.loc.gov/vocabulary/relators/fmp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Film producer"@en . 
-   118	<http://id.loc.gov/vocabulary/relators/fmk> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Filmmaker"@en . 
-   119	<http://id.loc.gov/vocabulary/relators/fpy> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "First party"@en . 
-   120	<http://id.loc.gov/vocabulary/relators/frg> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Forger"@en . 
-   121	<http://id.loc.gov/vocabulary/relators/fmo> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Former owner"@en . 
-   122	<http://id.loc.gov/vocabulary/relators/fnd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Funder"@en . 
-   123	<http://id.loc.gov/vocabulary/relators/gis> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Geographic information specialist"@en . 
-   124	<http://id.loc.gov/vocabulary/relators/hnr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Honoree"@en . 
-   125	<http://id.loc.gov/vocabulary/relators/hst> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Host"@en . 
-   126	<http://id.loc.gov/vocabulary/relators/his> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Host institution"@en . 
-   127	<http://id.loc.gov/vocabulary/relators/ilu> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Illuminator"@en . 
-   128	<http://id.loc.gov/vocabulary/relators/ill> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Illustrator"@en . 
-   129	<http://id.loc.gov/vocabulary/relators/ins> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Inscriber"@en . 
-   130	<http://id.loc.gov/vocabulary/relators/itr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Instrumentalist"@en . 
-   131	<http://id.loc.gov/vocabulary/relators/ive> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Interviewee"@en . 
-   132	<http://id.loc.gov/vocabulary/relators/ivr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Interviewer"@en . 
-   133	<http://id.loc.gov/vocabulary/relators/inv> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Inventor"@en . 
-   134	<http://id.loc.gov/vocabulary/relators/isb> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Issuing body"@en . 
-   135	<http://id.loc.gov/vocabulary/relators/jud> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Judge"@en . 
-   136	<http://id.loc.gov/vocabulary/relators/jug> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Jurisdiction governed"@en . 
-   137	<http://id.loc.gov/vocabulary/relators/lbr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Laboratory"@en . 
-   138	<http://id.loc.gov/vocabulary/relators/ldr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Laboratory director"@en . 
-   139	<http://id.loc.gov/vocabulary/relators/lsa> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Landscape architect"@en . 
-   140	<http://id.loc.gov/vocabulary/relators/led> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Lead"@en . 
-   141	<http://id.loc.gov/vocabulary/relators/len> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Lender"@en . 
-   142	<http://id.loc.gov/vocabulary/relators/lil> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Libelant"@en . 
-   143	<http://id.loc.gov/vocabulary/relators/lit> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Libelant-appellant"@en . 
-   144	<http://id.loc.gov/vocabulary/relators/lie> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Libelant-appellee"@en . 
-   145	<http://id.loc.gov/vocabulary/relators/lel> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Libelee"@en . 
-   146	<http://id.loc.gov/vocabulary/relators/let> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Libelee-appellant"@en . 
-   147	<http://id.loc.gov/vocabulary/relators/lee> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Libelee-appellee"@en . 
-   148	<http://id.loc.gov/vocabulary/relators/lbt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Librettist"@en . 
-   149	<http://id.loc.gov/vocabulary/relators/lse> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Licensee"@en . 
-   150	<http://id.loc.gov/vocabulary/relators/lso> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Licensor"@en . 
-   151	<http://id.loc.gov/vocabulary/relators/lgd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Lighting designer"@en . 
-   152	<http://id.loc.gov/vocabulary/relators/ltg> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Lithographer"@en . 
-   153	<http://id.loc.gov/vocabulary/relators/lyr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Lyricist"@en . 
-   154	<http://id.loc.gov/vocabulary/relators/mfp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Manufacture place"@en . 
-   155	<http://id.loc.gov/vocabulary/relators/mfr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Manufacturer"@en . 
-   156	<http://id.loc.gov/vocabulary/relators/mrb> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Marbler"@en . 
-   157	<http://id.loc.gov/vocabulary/relators/mrk> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Markup editor"@en . 
-   158	<http://id.loc.gov/vocabulary/relators/med> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Medium"@en . 
-   159	<http://id.loc.gov/vocabulary/relators/mdc> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Metadata contact"@en . 
-   160	<http://id.loc.gov/vocabulary/relators/mte> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Metal-engraver"@en . 
-   161	<http://id.loc.gov/vocabulary/relators/mtk> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Minute taker"@en . 
-   162	<http://id.loc.gov/vocabulary/relators/mod> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Moderator"@en . 
-   163	<http://id.loc.gov/vocabulary/relators/mon> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Monitor"@en . 
-   164	<http://id.loc.gov/vocabulary/relators/mcp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Music copyist"@en . 
-   165	<http://id.loc.gov/vocabulary/relators/msd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Musical director"@en . 
-   166	<http://id.loc.gov/vocabulary/relators/mus> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Musician"@en . 
-   167	<http://id.loc.gov/vocabulary/relators/nrt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Narrator"@en . 
-   168	<http://id.loc.gov/vocabulary/relators/osp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Onscreen presenter"@en . 
-   169	<http://id.loc.gov/vocabulary/relators/opn> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Opponent"@en . 
-   170	<http://id.loc.gov/vocabulary/relators/orm> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Organizer"@en . 
-   171	<http://id.loc.gov/vocabulary/relators/org> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Originator"@en . 
-   172	<http://id.loc.gov/vocabulary/relators/oth> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Other"@en . 
-   173	<http://id.loc.gov/vocabulary/relators/own> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Owner"@en . 
-   174	<http://id.loc.gov/vocabulary/relators/pan> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Panelist"@en . 
-   175	<http://id.loc.gov/vocabulary/relators/ppm> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Papermaker"@en . 
-   176	<http://id.loc.gov/vocabulary/relators/pta> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Patent applicant"@en . 
-   177	<http://id.loc.gov/vocabulary/relators/pth> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Patent holder"@en . 
-   178	<http://id.loc.gov/vocabulary/relators/pat> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Patron"@en . 
-   179	<http://id.loc.gov/vocabulary/relators/prf> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Performer"@en . 
-   180	<http://id.loc.gov/vocabulary/relators/pma> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Permitting agency"@en . 
-   181	<http://id.loc.gov/vocabulary/relators/pht> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Photographer"@en . 
-   182	<http://id.loc.gov/vocabulary/relators/ptf> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Plaintiff"@en . 
-   183	<http://id.loc.gov/vocabulary/relators/ptt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Plaintiff-appellant"@en . 
-   184	<http://id.loc.gov/vocabulary/relators/pte> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Plaintiff-appellee"@en . 
-   185	<http://id.loc.gov/vocabulary/relators/plt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Platemaker"@en . 
-   186	<http://id.loc.gov/vocabulary/relators/pra> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Praeses"@en . 
-   187	<http://id.loc.gov/vocabulary/relators/pre> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Presenter"@en . 
-   188	<http://id.loc.gov/vocabulary/relators/prt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Printer"@en . 
-   189	<http://id.loc.gov/vocabulary/relators/pop> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Printer of plates"@en . 
-   190	<http://id.loc.gov/vocabulary/relators/prm> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Printmaker"@en . 
-   191	<http://id.loc.gov/vocabulary/relators/prc> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Process contact"@en . 
-   192	<http://id.loc.gov/vocabulary/relators/pro> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Producer"@en . 
-   193	<http://id.loc.gov/vocabulary/relators/prn> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Production company"@en . 
-   194	<http://id.loc.gov/vocabulary/relators/prs> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Production designer"@en . 
-   195	<http://id.loc.gov/vocabulary/relators/pmn> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Production manager"@en . 
-   196	<http://id.loc.gov/vocabulary/relators/prd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Production personnel"@en . 
-   197	<http://id.loc.gov/vocabulary/relators/prp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Production place"@en . 
-   198	<http://id.loc.gov/vocabulary/relators/prg> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Programmer"@en . 
-   199	<http://id.loc.gov/vocabulary/relators/pdr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Project director"@en . 
-   200	<http://id.loc.gov/vocabulary/relators/pfr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Proofreader"@en . 
-   201	<http://id.loc.gov/vocabulary/relators/prv> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Provider"@en . 
-   202	<http://id.loc.gov/vocabulary/relators/pup> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Publication place"@en . 
-   203	<http://id.loc.gov/vocabulary/relators/pbl> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Publisher"@en . 
-   204	<http://id.loc.gov/vocabulary/relators/pbd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Publishing director"@en . 
-   205	<http://id.loc.gov/vocabulary/relators/ppt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Puppeteer"@en . 
-   206	<http://id.loc.gov/vocabulary/relators/rdd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Radio director"@en . 
-   207	<http://id.loc.gov/vocabulary/relators/rpc> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Radio producer"@en . 
-   208	<http://id.loc.gov/vocabulary/relators/rce> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Recording engineer"@en . 
-   209	<http://id.loc.gov/vocabulary/relators/rcd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Recordist"@en . 
-   210	<http://id.loc.gov/vocabulary/relators/red> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Redaktor"@en . 
-   211	<http://id.loc.gov/vocabulary/relators/ren> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Renderer"@en . 
-   212	<http://id.loc.gov/vocabulary/relators/rpt> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Reporter"@en . 
-   213	<http://id.loc.gov/vocabulary/relators/rps> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Repository"@en . 
-   214	<http://id.loc.gov/vocabulary/relators/rth> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Research team head"@en . 
-   215	<http://id.loc.gov/vocabulary/relators/rtm> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Research team member"@en . 
-   216	<http://id.loc.gov/vocabulary/relators/res> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Researcher"@en . 
-   217	<http://id.loc.gov/vocabulary/relators/rsp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Respondent"@en . 
-   218	<http://id.loc.gov/vocabulary/relators/rst> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Respondent-appellant"@en . 
-   219	<http://id.loc.gov/vocabulary/relators/rse> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Respondent-appellee"@en . 
-   220	<http://id.loc.gov/vocabulary/relators/rpy> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Responsible party"@en . 
-   221	<http://id.loc.gov/vocabulary/relators/rsg> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Restager"@en . 
-   222	<http://id.loc.gov/vocabulary/relators/rsr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Restorationist"@en . 
-   223	<http://id.loc.gov/vocabulary/relators/rev> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Reviewer"@en . 
-   224	<http://id.loc.gov/vocabulary/relators/rbr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Rubricator"@en . 
-   225	<http://id.loc.gov/vocabulary/relators/sce> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Scenarist"@en . 
-   226	<http://id.loc.gov/vocabulary/relators/sad> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Scientific advisor"@en . 
-   227	<http://id.loc.gov/vocabulary/relators/aus> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Screenwriter"@en . 
-   228	<http://id.loc.gov/vocabulary/relators/scr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Scribe"@en . 
-   229	<http://id.loc.gov/vocabulary/relators/scl> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Sculptor"@en . 
-   230	<http://id.loc.gov/vocabulary/relators/spy> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Second party"@en . 
-   231	<http://id.loc.gov/vocabulary/relators/sec> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Secretary"@en . 
-   232	<http://id.loc.gov/vocabulary/relators/sll> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Seller"@en . 
-   233	<http://id.loc.gov/vocabulary/relators/std> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Set designer"@en . 
-   234	<http://id.loc.gov/vocabulary/relators/stg> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Setting"@en . 
-   235	<http://id.loc.gov/vocabulary/relators/sgn> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Signer"@en . 
-   236	<http://id.loc.gov/vocabulary/relators/sng> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Singer"@en . 
-   237	<http://id.loc.gov/vocabulary/relators/sds> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Sound designer"@en . 
-   238	<http://id.loc.gov/vocabulary/relators/spk> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Speaker"@en . 
-   239	<http://id.loc.gov/vocabulary/relators/spn> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Sponsor"@en . 
-   240	<http://id.loc.gov/vocabulary/relators/sgd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Stage director"@en . 
-   241	<http://id.loc.gov/vocabulary/relators/stm> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Stage manager"@en . 
-   242	<http://id.loc.gov/vocabulary/relators/stn> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Standards body"@en . 
-   243	<http://id.loc.gov/vocabulary/relators/str> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Stereotyper"@en . 
-   244	<http://id.loc.gov/vocabulary/relators/stl> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Storyteller"@en . 
-   245	<http://id.loc.gov/vocabulary/relators/sht> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Supporting host"@en . 
-   246	<http://id.loc.gov/vocabulary/relators/srv> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Surveyor"@en . 
-   247	<http://id.loc.gov/vocabulary/relators/tch> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Teacher"@en . 
-   248	<http://id.loc.gov/vocabulary/relators/tcd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Technical director"@en . 
-   249	<http://id.loc.gov/vocabulary/relators/tld> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Television director"@en . 
-   250	<http://id.loc.gov/vocabulary/relators/tlp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Television producer"@en . 
-   251	<http://id.loc.gov/vocabulary/relators/ths> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Thesis advisor"@en . 
-   252	<http://id.loc.gov/vocabulary/relators/trc> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Transcriber"@en . 
-   253	<http://id.loc.gov/vocabulary/relators/trl> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Translator"@en . 
-   254	<http://id.loc.gov/vocabulary/relators/tyd> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Type designer"@en . 
-   255	<http://id.loc.gov/vocabulary/relators/tyg> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Typographer"@en . 
-   256	<http://id.loc.gov/vocabulary/relators/uvp> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "University place"@en . 
-   257	<http://id.loc.gov/vocabulary/relators/vdg> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Videographer"@en . 
-   258	<http://id.loc.gov/vocabulary/relators/vac> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Voice actor"@en . 
-   259	<http://id.loc.gov/vocabulary/relators/wit> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Witness"@en . 
-   260	<http://id.loc.gov/vocabulary/relators/wde> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Wood engraver"@en . 
-   261	<http://id.loc.gov/vocabulary/relators/wdc> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Woodcutter"@en . 
-   262	<http://id.loc.gov/vocabulary/relators/wam> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of accompanying material"@en . 
-   263	<http://id.loc.gov/vocabulary/relators/wac> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of added commentary"@en . 
-   264	<http://id.loc.gov/vocabulary/relators/wat> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of added text"@en . 
-   265	<http://id.loc.gov/vocabulary/relators/wal> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of added lyrics"@en . 
-   266	<http://id.loc.gov/vocabulary/relators/wst> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of supplementary textual content"@en . 
-   267	<http://id.loc.gov/vocabulary/relators/win> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of introduction"@en . 
-   268	<http://id.loc.gov/vocabulary/relators/wpr> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of preface"@en . 
+     1	<http://id.loc.gov/vocabulary/relators/"abr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Abridger"@en . 
+     2	<http://id.loc.gov/vocabulary/relators/"act"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Actor"@en . 
+     3	<http://id.loc.gov/vocabulary/relators/"adp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Adapter"@en . 
+     4	<http://id.loc.gov/vocabulary/relators/"rcp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Addressee"@en . 
+     5	<http://id.loc.gov/vocabulary/relators/"anl"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Analyst"@en . 
+     6	<http://id.loc.gov/vocabulary/relators/"anm"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Animator"@en . 
+     7	<http://id.loc.gov/vocabulary/relators/"ann"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Annotator"@en . 
+     8	<http://id.loc.gov/vocabulary/relators/"apl"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Appellant"@en . 
+     9	<http://id.loc.gov/vocabulary/relators/"ape"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Appellee"@en . 
+    10	<http://id.loc.gov/vocabulary/relators/"app"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Applicant"@en . 
+    11	<http://id.loc.gov/vocabulary/relators/"arc"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Architect"@en . 
+    12	<http://id.loc.gov/vocabulary/relators/"arr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Arranger"@en . 
+    13	<http://id.loc.gov/vocabulary/relators/"acp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Art copyist"@en . 
+    14	<http://id.loc.gov/vocabulary/relators/"adi"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Art director"@en . 
+    15	<http://id.loc.gov/vocabulary/relators/"art"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Artist"@en . 
+    16	<http://id.loc.gov/vocabulary/relators/"ard"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Artistic director"@en . 
+    17	<http://id.loc.gov/vocabulary/relators/"asg"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Assignee"@en . 
+    18	<http://id.loc.gov/vocabulary/relators/"asn"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Associated name"@en . 
+    19	<http://id.loc.gov/vocabulary/relators/"att"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Attributed name"@en . 
+    20	<http://id.loc.gov/vocabulary/relators/"auc"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Auctioneer"@en . 
+    21	<http://id.loc.gov/vocabulary/relators/"aut"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Author"@en . 
+    22	<http://id.loc.gov/vocabulary/relators/"aqt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Author in quotations or text abstracts"@en . 
+    23	<http://id.loc.gov/vocabulary/relators/"aft"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Author of afterword, colophon, etc."@en . 
+    24	<http://id.loc.gov/vocabulary/relators/"aud"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Author of dialog"@en . 
+    25	<http://id.loc.gov/vocabulary/relators/"aui"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Author of introduction, etc."@en . 
+    26	<http://id.loc.gov/vocabulary/relators/"ato"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Autographer"@en . 
+    27	<http://id.loc.gov/vocabulary/relators/"ant"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Bibliographic antecedent"@en . 
+    28	<http://id.loc.gov/vocabulary/relators/"bnd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Binder"@en . 
+    29	<http://id.loc.gov/vocabulary/relators/"bdd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Binding designer"@en . 
+    30	<http://id.loc.gov/vocabulary/relators/"blw"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Blurb writer"@en . 
+    31	<http://id.loc.gov/vocabulary/relators/"bkd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Book designer"@en . 
+    32	<http://id.loc.gov/vocabulary/relators/"bkp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Book producer"@en . 
+    33	<http://id.loc.gov/vocabulary/relators/"bjd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Bookjacket designer"@en . 
+    34	<http://id.loc.gov/vocabulary/relators/"bpd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Bookplate designer"@en . 
+    35	<http://id.loc.gov/vocabulary/relators/"bsl"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Bookseller"@en . 
+    36	<http://id.loc.gov/vocabulary/relators/"brl"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Braille embosser"@en . 
+    37	<http://id.loc.gov/vocabulary/relators/"brd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Broadcaster"@en . 
+    38	<http://id.loc.gov/vocabulary/relators/"cll"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Calligrapher"@en . 
+    39	<http://id.loc.gov/vocabulary/relators/"ctg"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Cartographer"@en . 
+    40	<http://id.loc.gov/vocabulary/relators/"cas"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Caster"@en . 
+    41	<http://id.loc.gov/vocabulary/relators/"cns"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Censor"@en . 
+    42	<http://id.loc.gov/vocabulary/relators/"chr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Choreographer"@en . 
+    43	<http://id.loc.gov/vocabulary/relators/"cng"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Cinematographer"@en . 
+    44	<http://id.loc.gov/vocabulary/relators/"cli"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Client"@en . 
+    45	<http://id.loc.gov/vocabulary/relators/"cor"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Collection registrar"@en . 
+    46	<http://id.loc.gov/vocabulary/relators/"col"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Collector"@en . 
+    47	<http://id.loc.gov/vocabulary/relators/"clt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Collotyper"@en . 
+    48	<http://id.loc.gov/vocabulary/relators/"clr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Colorist"@en . 
+    49	<http://id.loc.gov/vocabulary/relators/"cmm"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Commentator"@en . 
+    50	<http://id.loc.gov/vocabulary/relators/"cwt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Commentator for written text"@en . 
+    51	<http://id.loc.gov/vocabulary/relators/"com"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Compiler"@en . 
+    52	<http://id.loc.gov/vocabulary/relators/"cpl"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Complainant"@en . 
+    53	<http://id.loc.gov/vocabulary/relators/"cpt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Complainant-appellant"@en . 
+    54	<http://id.loc.gov/vocabulary/relators/"cpe"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Complainant-appellee"@en . 
+    55	<http://id.loc.gov/vocabulary/relators/"cmp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Composer"@en . 
+    56	<http://id.loc.gov/vocabulary/relators/"cmt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Compositor"@en . 
+    57	<http://id.loc.gov/vocabulary/relators/"ccp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Conceptor"@en . 
+    58	<http://id.loc.gov/vocabulary/relators/"cnd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Conductor"@en . 
+    59	<http://id.loc.gov/vocabulary/relators/"con"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Conservator"@en . 
+    60	<http://id.loc.gov/vocabulary/relators/"csl"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Consultant"@en . 
+    61	<http://id.loc.gov/vocabulary/relators/"csp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Consultant to a project"@en . 
+    62	<http://id.loc.gov/vocabulary/relators/"cos"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contestant"@en . 
+    63	<http://id.loc.gov/vocabulary/relators/"cot"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contestant-appellant"@en . 
+    64	<http://id.loc.gov/vocabulary/relators/"coe"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contestant-appellee"@en . 
+    65	<http://id.loc.gov/vocabulary/relators/"cts"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contestee"@en . 
+    66	<http://id.loc.gov/vocabulary/relators/"ctt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contestee-appellant"@en . 
+    67	<http://id.loc.gov/vocabulary/relators/"cte"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contestee-appellee"@en . 
+    68	<http://id.loc.gov/vocabulary/relators/"ctr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contractor"@en . 
+    69	<http://id.loc.gov/vocabulary/relators/"ctb"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Contributor"@en . 
+    70	<http://id.loc.gov/vocabulary/relators/"cpc"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Copyright claimant"@en . 
+    71	<http://id.loc.gov/vocabulary/relators/"cph"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Copyright holder"@en . 
+    72	<http://id.loc.gov/vocabulary/relators/"crr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Corrector"@en . 
+    73	<http://id.loc.gov/vocabulary/relators/"crp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Correspondent"@en . 
+    74	<http://id.loc.gov/vocabulary/relators/"cst"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Costume designer"@en . 
+    75	<http://id.loc.gov/vocabulary/relators/"cou"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Court governed"@en . 
+    76	<http://id.loc.gov/vocabulary/relators/"crt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Court reporter"@en . 
+    77	<http://id.loc.gov/vocabulary/relators/"cov"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Cover designer"@en . 
+    78	<http://id.loc.gov/vocabulary/relators/"cre"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Creator"@en . 
+    79	<http://id.loc.gov/vocabulary/relators/"cur"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Curator"@en . 
+    80	<http://id.loc.gov/vocabulary/relators/"dnc"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Dancer"@en . 
+    81	<http://id.loc.gov/vocabulary/relators/"dtc"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Data contributor"@en . 
+    82	<http://id.loc.gov/vocabulary/relators/"dtm"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Data manager"@en . 
+    83	<http://id.loc.gov/vocabulary/relators/"dte"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Dedicatee"@en . 
+    84	<http://id.loc.gov/vocabulary/relators/"dto"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Dedicator"@en . 
+    85	<http://id.loc.gov/vocabulary/relators/"dfd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Defendant"@en . 
+    86	<http://id.loc.gov/vocabulary/relators/"dft"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Defendant-appellant"@en . 
+    87	<http://id.loc.gov/vocabulary/relators/"dfe"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Defendant-appellee"@en . 
+    88	<http://id.loc.gov/vocabulary/relators/"dgg"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Degree granting institution"@en . 
+    89	<http://id.loc.gov/vocabulary/relators/"dgs"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Degree supervisor"@en . 
+    90	<http://id.loc.gov/vocabulary/relators/"dln"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Delineator"@en . 
+    91	<http://id.loc.gov/vocabulary/relators/"dpc"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Depicted"@en . 
+    92	<http://id.loc.gov/vocabulary/relators/"dpt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Depositor"@en . 
+    93	<http://id.loc.gov/vocabulary/relators/"dsr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Designer"@en . 
+    94	<http://id.loc.gov/vocabulary/relators/"drt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Director"@en . 
+    95	<http://id.loc.gov/vocabulary/relators/"dis"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Dissertant"@en . 
+    96	<http://id.loc.gov/vocabulary/relators/"dbp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Distribution place"@en . 
+    97	<http://id.loc.gov/vocabulary/relators/"dst"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Distributor"@en . 
+    98	<http://id.loc.gov/vocabulary/relators/"dnr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Donor"@en . 
+    99	<http://id.loc.gov/vocabulary/relators/"drm"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Draftsman"@en . 
+   100	<http://id.loc.gov/vocabulary/relators/"dub"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Dubious author"@en . 
+   101	<http://id.loc.gov/vocabulary/relators/"edt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Editor"@en . 
+   102	<http://id.loc.gov/vocabulary/relators/"edc"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Editor of compilation"@en . 
+   103	<http://id.loc.gov/vocabulary/relators/"edm"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Editor of moving image work"@en . 
+   104	<http://id.loc.gov/vocabulary/relators/"elg"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Electrician"@en . 
+   105	<http://id.loc.gov/vocabulary/relators/"elt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Electrotyper"@en . 
+   106	<http://id.loc.gov/vocabulary/relators/"enj"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Enacting jurisdiction"@en . 
+   107	<http://id.loc.gov/vocabulary/relators/"eng"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Engineer"@en . 
+   108	<http://id.loc.gov/vocabulary/relators/"egr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Engraver"@en . 
+   109	<http://id.loc.gov/vocabulary/relators/"etr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Etcher"@en . 
+   110	<http://id.loc.gov/vocabulary/relators/"evp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Event place"@en . 
+   111	<http://id.loc.gov/vocabulary/relators/"exp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Expert"@en . 
+   112	<http://id.loc.gov/vocabulary/relators/"fac"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Facsimilist"@en . 
+   113	<http://id.loc.gov/vocabulary/relators/"fld"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Field director"@en . 
+   114	<http://id.loc.gov/vocabulary/relators/"fds"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Film distributor"@en . 
+   115	<http://id.loc.gov/vocabulary/relators/"fmd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Film director"@en . 
+   116	<http://id.loc.gov/vocabulary/relators/"flm"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Film editor"@en . 
+   117	<http://id.loc.gov/vocabulary/relators/"fmp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Film producer"@en . 
+   118	<http://id.loc.gov/vocabulary/relators/"fmk"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Filmmaker"@en . 
+   119	<http://id.loc.gov/vocabulary/relators/"fpy"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "First party"@en . 
+   120	<http://id.loc.gov/vocabulary/relators/"frg"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Forger"@en . 
+   121	<http://id.loc.gov/vocabulary/relators/"fmo"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Former owner"@en . 
+   122	<http://id.loc.gov/vocabulary/relators/"fnd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Funder"@en . 
+   123	<http://id.loc.gov/vocabulary/relators/"gis"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Geographic information specialist"@en . 
+   124	<http://id.loc.gov/vocabulary/relators/"hnr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Honoree"@en . 
+   125	<http://id.loc.gov/vocabulary/relators/"hst"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Host"@en . 
+   126	<http://id.loc.gov/vocabulary/relators/"his"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Host institution"@en . 
+   127	<http://id.loc.gov/vocabulary/relators/"ilu"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Illuminator"@en . 
+   128	<http://id.loc.gov/vocabulary/relators/"ill"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Illustrator"@en . 
+   129	<http://id.loc.gov/vocabulary/relators/"ins"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Inscriber"@en . 
+   130	<http://id.loc.gov/vocabulary/relators/"itr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Instrumentalist"@en . 
+   131	<http://id.loc.gov/vocabulary/relators/"ive"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Interviewee"@en . 
+   132	<http://id.loc.gov/vocabulary/relators/"ivr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Interviewer"@en . 
+   133	<http://id.loc.gov/vocabulary/relators/"inv"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Inventor"@en . 
+   134	<http://id.loc.gov/vocabulary/relators/"isb"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Issuing body"@en . 
+   135	<http://id.loc.gov/vocabulary/relators/"jud"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Judge"@en . 
+   136	<http://id.loc.gov/vocabulary/relators/"jug"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Jurisdiction governed"@en . 
+   137	<http://id.loc.gov/vocabulary/relators/"lbr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Laboratory"@en . 
+   138	<http://id.loc.gov/vocabulary/relators/"ldr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Laboratory director"@en . 
+   139	<http://id.loc.gov/vocabulary/relators/"lsa"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Landscape architect"@en . 
+   140	<http://id.loc.gov/vocabulary/relators/"led"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Lead"@en . 
+   141	<http://id.loc.gov/vocabulary/relators/"len"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Lender"@en . 
+   142	<http://id.loc.gov/vocabulary/relators/"lil"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Libelant"@en . 
+   143	<http://id.loc.gov/vocabulary/relators/"lit"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Libelant-appellant"@en . 
+   144	<http://id.loc.gov/vocabulary/relators/"lie"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Libelant-appellee"@en . 
+   145	<http://id.loc.gov/vocabulary/relators/"lel"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Libelee"@en . 
+   146	<http://id.loc.gov/vocabulary/relators/"let"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Libelee-appellant"@en . 
+   147	<http://id.loc.gov/vocabulary/relators/"lee"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Libelee-appellee"@en . 
+   148	<http://id.loc.gov/vocabulary/relators/"lbt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Librettist"@en . 
+   149	<http://id.loc.gov/vocabulary/relators/"lse"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Licensee"@en . 
+   150	<http://id.loc.gov/vocabulary/relators/"lso"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Licensor"@en . 
+   151	<http://id.loc.gov/vocabulary/relators/"lgd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Lighting designer"@en . 
+   152	<http://id.loc.gov/vocabulary/relators/"ltg"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Lithographer"@en . 
+   153	<http://id.loc.gov/vocabulary/relators/"lyr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Lyricist"@en . 
+   154	<http://id.loc.gov/vocabulary/relators/"mfp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Manufacture place"@en . 
+   155	<http://id.loc.gov/vocabulary/relators/"mfr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Manufacturer"@en . 
+   156	<http://id.loc.gov/vocabulary/relators/"mrb"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Marbler"@en . 
+   157	<http://id.loc.gov/vocabulary/relators/"mrk"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Markup editor"@en . 
+   158	<http://id.loc.gov/vocabulary/relators/"med"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Medium"@en . 
+   159	<http://id.loc.gov/vocabulary/relators/"mdc"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Metadata contact"@en . 
+   160	<http://id.loc.gov/vocabulary/relators/"mte"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Metal-engraver"@en . 
+   161	<http://id.loc.gov/vocabulary/relators/"mtk"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Minute taker"@en . 
+   162	<http://id.loc.gov/vocabulary/relators/"mod"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Moderator"@en . 
+   163	<http://id.loc.gov/vocabulary/relators/"mon"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Monitor"@en . 
+   164	<http://id.loc.gov/vocabulary/relators/"mcp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Music copyist"@en . 
+   165	<http://id.loc.gov/vocabulary/relators/"msd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Musical director"@en . 
+   166	<http://id.loc.gov/vocabulary/relators/"mus"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Musician"@en . 
+   167	<http://id.loc.gov/vocabulary/relators/"nrt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Narrator"@en . 
+   168	<http://id.loc.gov/vocabulary/relators/"osp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Onscreen presenter"@en . 
+   169	<http://id.loc.gov/vocabulary/relators/"opn"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Opponent"@en . 
+   170	<http://id.loc.gov/vocabulary/relators/"orm"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Organizer"@en . 
+   171	<http://id.loc.gov/vocabulary/relators/"org"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Originator"@en . 
+   172	<http://id.loc.gov/vocabulary/relators/"oth"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Other"@en . 
+   173	<http://id.loc.gov/vocabulary/relators/"own"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Owner"@en . 
+   174	<http://id.loc.gov/vocabulary/relators/"pan"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Panelist"@en . 
+   175	<http://id.loc.gov/vocabulary/relators/"ppm"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Papermaker"@en . 
+   176	<http://id.loc.gov/vocabulary/relators/"pta"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Patent applicant"@en . 
+   177	<http://id.loc.gov/vocabulary/relators/"pth"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Patent holder"@en . 
+   178	<http://id.loc.gov/vocabulary/relators/"pat"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Patron"@en . 
+   179	<http://id.loc.gov/vocabulary/relators/"prf"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Performer"@en . 
+   180	<http://id.loc.gov/vocabulary/relators/"pma"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Permitting agency"@en . 
+   181	<http://id.loc.gov/vocabulary/relators/"pht"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Photographer"@en . 
+   182	<http://id.loc.gov/vocabulary/relators/"ptf"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Plaintiff"@en . 
+   183	<http://id.loc.gov/vocabulary/relators/"ptt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Plaintiff-appellant"@en . 
+   184	<http://id.loc.gov/vocabulary/relators/"pte"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Plaintiff-appellee"@en . 
+   185	<http://id.loc.gov/vocabulary/relators/"plt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Platemaker"@en . 
+   186	<http://id.loc.gov/vocabulary/relators/"pra"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Praeses"@en . 
+   187	<http://id.loc.gov/vocabulary/relators/"pre"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Presenter"@en . 
+   188	<http://id.loc.gov/vocabulary/relators/"prt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Printer"@en . 
+   189	<http://id.loc.gov/vocabulary/relators/"pop"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Printer of plates"@en . 
+   190	<http://id.loc.gov/vocabulary/relators/"prm"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Printmaker"@en . 
+   191	<http://id.loc.gov/vocabulary/relators/"prc"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Process contact"@en . 
+   192	<http://id.loc.gov/vocabulary/relators/"pro"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Producer"@en . 
+   193	<http://id.loc.gov/vocabulary/relators/"prn"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Production company"@en . 
+   194	<http://id.loc.gov/vocabulary/relators/"prs"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Production designer"@en . 
+   195	<http://id.loc.gov/vocabulary/relators/"pmn"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Production manager"@en . 
+   196	<http://id.loc.gov/vocabulary/relators/"prd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Production personnel"@en . 
+   197	<http://id.loc.gov/vocabulary/relators/"prp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Production place"@en . 
+   198	<http://id.loc.gov/vocabulary/relators/"prg"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Programmer"@en . 
+   199	<http://id.loc.gov/vocabulary/relators/"pdr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Project director"@en . 
+   200	<http://id.loc.gov/vocabulary/relators/"pfr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Proofreader"@en . 
+   201	<http://id.loc.gov/vocabulary/relators/"prv"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Provider"@en . 
+   202	<http://id.loc.gov/vocabulary/relators/"pup"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Publication place"@en . 
+   203	<http://id.loc.gov/vocabulary/relators/"pbl"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Publisher"@en . 
+   204	<http://id.loc.gov/vocabulary/relators/"pbd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Publishing director"@en . 
+   205	<http://id.loc.gov/vocabulary/relators/"ppt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Puppeteer"@en . 
+   206	<http://id.loc.gov/vocabulary/relators/"rdd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Radio director"@en . 
+   207	<http://id.loc.gov/vocabulary/relators/"rpc"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Radio producer"@en . 
+   208	<http://id.loc.gov/vocabulary/relators/"rce"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Recording engineer"@en . 
+   209	<http://id.loc.gov/vocabulary/relators/"rcd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Recordist"@en . 
+   210	<http://id.loc.gov/vocabulary/relators/"red"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Redaktor"@en . 
+   211	<http://id.loc.gov/vocabulary/relators/"ren"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Renderer"@en . 
+   212	<http://id.loc.gov/vocabulary/relators/"rpt"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Reporter"@en . 
+   213	<http://id.loc.gov/vocabulary/relators/"rps"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Repository"@en . 
+   214	<http://id.loc.gov/vocabulary/relators/"rth"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Research team head"@en . 
+   215	<http://id.loc.gov/vocabulary/relators/"rtm"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Research team member"@en . 
+   216	<http://id.loc.gov/vocabulary/relators/"res"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Researcher"@en . 
+   217	<http://id.loc.gov/vocabulary/relators/"rsp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Respondent"@en . 
+   218	<http://id.loc.gov/vocabulary/relators/"rst"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Respondent-appellant"@en . 
+   219	<http://id.loc.gov/vocabulary/relators/"rse"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Respondent-appellee"@en . 
+   220	<http://id.loc.gov/vocabulary/relators/"rpy"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Responsible party"@en . 
+   221	<http://id.loc.gov/vocabulary/relators/"rsg"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Restager"@en . 
+   222	<http://id.loc.gov/vocabulary/relators/"rsr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Restorationist"@en . 
+   223	<http://id.loc.gov/vocabulary/relators/"rev"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Reviewer"@en . 
+   224	<http://id.loc.gov/vocabulary/relators/"rbr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Rubricator"@en . 
+   225	<http://id.loc.gov/vocabulary/relators/"sce"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Scenarist"@en . 
+   226	<http://id.loc.gov/vocabulary/relators/"sad"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Scientific advisor"@en . 
+   227	<http://id.loc.gov/vocabulary/relators/"aus"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Screenwriter"@en . 
+   228	<http://id.loc.gov/vocabulary/relators/"scr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Scribe"@en . 
+   229	<http://id.loc.gov/vocabulary/relators/"scl"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Sculptor"@en . 
+   230	<http://id.loc.gov/vocabulary/relators/"spy"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Second party"@en . 
+   231	<http://id.loc.gov/vocabulary/relators/"sec"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Secretary"@en . 
+   232	<http://id.loc.gov/vocabulary/relators/"sll"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Seller"@en . 
+   233	<http://id.loc.gov/vocabulary/relators/"std"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Set designer"@en . 
+   234	<http://id.loc.gov/vocabulary/relators/"stg"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Setting"@en . 
+   235	<http://id.loc.gov/vocabulary/relators/"sgn"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Signer"@en . 
+   236	<http://id.loc.gov/vocabulary/relators/"sng"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Singer"@en . 
+   237	<http://id.loc.gov/vocabulary/relators/"sds"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Sound designer"@en . 
+   238	<http://id.loc.gov/vocabulary/relators/"spk"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Speaker"@en . 
+   239	<http://id.loc.gov/vocabulary/relators/"spn"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Sponsor"@en . 
+   240	<http://id.loc.gov/vocabulary/relators/"sgd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Stage director"@en . 
+   241	<http://id.loc.gov/vocabulary/relators/"stm"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Stage manager"@en . 
+   242	<http://id.loc.gov/vocabulary/relators/"stn"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Standards body"@en . 
+   243	<http://id.loc.gov/vocabulary/relators/"str"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Stereotyper"@en . 
+   244	<http://id.loc.gov/vocabulary/relators/"stl"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Storyteller"@en . 
+   245	<http://id.loc.gov/vocabulary/relators/"sht"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Supporting host"@en . 
+   246	<http://id.loc.gov/vocabulary/relators/"srv"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Surveyor"@en . 
+   247	<http://id.loc.gov/vocabulary/relators/"tch"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Teacher"@en . 
+   248	<http://id.loc.gov/vocabulary/relators/"tcd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Technical director"@en . 
+   249	<http://id.loc.gov/vocabulary/relators/"tld"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Television director"@en . 
+   250	<http://id.loc.gov/vocabulary/relators/"tlp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Television producer"@en . 
+   251	<http://id.loc.gov/vocabulary/relators/"ths"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Thesis advisor"@en . 
+   252	<http://id.loc.gov/vocabulary/relators/"trc"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Transcriber"@en . 
+   253	<http://id.loc.gov/vocabulary/relators/"trl"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Translator"@en . 
+   254	<http://id.loc.gov/vocabulary/relators/"tyd"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Type designer"@en . 
+   255	<http://id.loc.gov/vocabulary/relators/"tyg"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Typographer"@en . 
+   256	<http://id.loc.gov/vocabulary/relators/"uvp"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "University place"@en . 
+   257	<http://id.loc.gov/vocabulary/relators/"vdg"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Videographer"@en . 
+   258	<http://id.loc.gov/vocabulary/relators/"vac"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Voice actor"@en . 
+   259	<http://id.loc.gov/vocabulary/relators/"wit"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Witness"@en . 
+   260	<http://id.loc.gov/vocabulary/relators/"wde"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Wood engraver"@en . 
+   261	<http://id.loc.gov/vocabulary/relators/"wdc"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Woodcutter"@en . 
+   262	<http://id.loc.gov/vocabulary/relators/"wam"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of accompanying material"@en . 
+   263	<http://id.loc.gov/vocabulary/relators/"wac"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of added commentary"@en . 
+   264	<http://id.loc.gov/vocabulary/relators/"wat"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of added text"@en . 
+   265	<http://id.loc.gov/vocabulary/relators/"wal"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of added lyrics"@en . 
+   266	<http://id.loc.gov/vocabulary/relators/"wst"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of supplementary textual content"@en . 
+   267	<http://id.loc.gov/vocabulary/relators/"win"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of introduction"@en . 
+   268	<http://id.loc.gov/vocabulary/relators/"wpr"> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Writer of preface"@en . 
