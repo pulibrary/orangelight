@@ -1,9 +1,19 @@
 @import 'bootstrap';
 
 @import 'blacklight/blacklight';
-
+@import "bootstrap-sprockets";
 
 .orange {
   display:inline;
   color:#e87511;
+}
+
+h3.rtl {
+  color:#e87511;
+  text-align:right;
+}
+
+dd.rtl {
+  color:#e87511;
+  text-align:right;
 }

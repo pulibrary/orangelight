@@ -2,12 +2,30 @@
 <dl class="dl-horizontal  dl-invert">
   <% document_show_fields(document).each do |solr_fname, field| -%>
     <% if should_render_show_field? document, field %>
+ 
+      <%# marc relator code for authors -%>
     	<% if solr_fname == 'author_display' && render_document_show_field_value( document, :field => 'marc_relator_display') != ''%>
 	    <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value document, :field => 'marc_relator_display' %>:</dt>
-    	<% else %>
+      <%# don't display label name if alt_script -%>
+      <% elsif solr_fname == 'author_vern_display' && render_document_show_field_value( document, :field => 'author_vern_display') != '' %>
+        <dt></dt>    	
+      <%# author is default if no marc relator, default for other fields -%>
+      <% else %>
 	    <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_label document, :field => solr_fname %></dt>
 	    <% end %>
+
+
+
+      <%# if rtl script, align right -%>
+      <% if solr_fname == 'author_vern_display' && (render_document_show_field_value( document, :field => 'language_code_s') == 'ara' || render_document_show_field_value( document, :field => 'language_code_s') == 'heb') %>
+        <dd class="rtl"><%= render_document_show_field_value document, :field => 'author_vern_display' %></dd>
+      <% else %>      
 	    <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value document, :field => solr_fname %></dd>
+      <% end %>
     <% end -%>
   <% end -%>
 </dl>
+
+      <%# Example of using extra passed parameters from catalog controller -%>
+      <%# elsif solr_fname == 'language_code_s' %>
+<!--       <dd><%# document_show_fields(document)["language_code_s"].super_duper_info %></dd>  -->
