@@ -14,11 +14,11 @@
 	    <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_label document, :field => solr_fname %></dt>
 	    <% end %>
 
-
-
       <%# if rtl script, align right -%>
       <% if solr_fname == 'author_vern_display' && (render_document_show_field_value( document, :field => 'language_code_s') == 'ara' || render_document_show_field_value( document, :field => 'language_code_s') == 'heb') %>
         <dd class="rtl"><%= render_document_show_field_value document, :field => 'author_vern_display' %></dd>
+      <% elsif solr_fname == 'electronic_access_display' %>
+        <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value document, :field => solr_fname %></dd>        
       <% else %>      
 	    <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value document, :field => solr_fname %></dd>
       <% end %>

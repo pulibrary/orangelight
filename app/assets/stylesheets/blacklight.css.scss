@@ -1,7 +1,23 @@
 @import 'bootstrap';
 
 @import 'blacklight/blacklight';
+@import 'blacklight/blacklight_base';
 @import "bootstrap-sprockets";
+
+#header-navbar {
+  .navbar-brand {  /* The main logo image for the Blacklight instance */
+  	width: 150px;
+    height: 50px;
+	  background:transparent image_url('pul/logo.png') no-repeat top left;
+	  display: inline-block;
+	  text-indent: 100%;
+	  white-space: nowrap;
+	  overflow: hidden;
+	  padding-right:0;
+	  margin-right:20px;
+	  padding-left: 0;
+  }
+}
 
 .orange {
   display:inline;
@@ -16,4 +32,18 @@ h3.rtl {
 dd.rtl {
   color:#e87511;
   text-align:right;
+}
+
+rtl {
+  display:inline;
+  float:right;
+}
+
+.dl-horizontal dt 
+{
+  overflow:visible;
+  width: 180px !important;
+  margin-right: 8px;  
+  background:#E87511;
+  color:black;
 }

@@ -116,6 +116,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'isbn_t', :label => 'ISBN'
     config.add_show_field 'pub_created_display', :label => 'Published/Created'
     config.add_show_field 'location_display', :label => 'Location'
+    config.add_show_field 'location_code_display', :label => 'Find it', :helper_method => 'wheretofind'
     
     # passing extra data from controller
     # config.add_show_field 'language_code_s', :label => 'Language', super_duper_info: "huzza!"    
@@ -125,7 +126,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'compiled_created_display', :label => 'Compiled/Created'
     config.add_show_field 'edition_display', :label => 'Εdition'
     config.add_show_field 'medium_support_display', :label => 'Medium/Support'
-    config.add_show_field 'electronic_access_display', :label => 'Electronic access'
+    config.add_show_field 'electronic_access_display', :label => 'Electronic access', :helper_method => :urlify
+
     config.add_show_field 'description_display', :label => 'Description'
     config.add_show_field 'arrangement_display', :label => 'Arrangement'
     config.add_show_field 'translation_of_display', :label => 'Translation of'
@@ -177,6 +179,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'subject_display', :label => 'Subject(s)'
     config.add_show_field 'form_genre_display', :label => 'Form genre'
     config.add_show_field 'related_name_display', :label => 'Related name(s)'
+    config.add_show_field 'marc_relatedor_display', :label => 'Role(s)'    
     config.add_show_field 'place_name_display', :label => 'Place name(s)'
     config.add_show_field 'other_title_display', :label => 'Other title(s)'
     config.add_show_field 'in_display', :label => 'In'
