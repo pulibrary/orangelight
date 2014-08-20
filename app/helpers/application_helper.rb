@@ -22,4 +22,15 @@ module ApplicationHelper
     end
   end
 
+  def relatedor document, field
+  	# document[field].each_with_index do |related_name, i|
+  	# 	document[field][i] = 'ho'
+  	# end
+   #  # document[]].each_with_index do |relator, i|
+   #  #     	args[:document][args[:field]][i] = content_tag(:p, relator)
+   #  # end  	
+  	# # document[field][0] = 'hi'
+  	# return content_tag(:dt, 'do').html_safe
+  end
+
 end

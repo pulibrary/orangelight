@@ -43,7 +43,10 @@ rtl {
 {
   overflow:visible;
   width: 180px !important;
-  margin-right: 8px;  
-  background:#E87511;
-  color:black;
+  margin-right: 10px;  
+}
+
+.dl-horizontal dd 
+{
+  margin-left: 190px;  
 }
