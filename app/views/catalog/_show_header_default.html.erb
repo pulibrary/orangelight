@@ -1,0 +1,15 @@
+<% # bookmark/folder functions -%>
+<% if render_document_show_field_value( document, :field => 'language_code_s') == 'ara' || render_document_show_field_value( document, :field => 'language_code_s') == 'heb' %>
+<!-- <div class="fluid-row">
+<div class="col-md-8">  -->
+<h3 class="rtl">
+<%= render_document_show_field_value document, :field => 'title_vern_display' %>
+</h3>
+<!-- </div>
+</div> -->
+<% else %>
+<h3>
+<%= render_document_show_field_value document, :field => 'title_vern_display' %>
+</h3>
+<% end %>
+<%= render_document_heading(document, :tag => :h3) %>

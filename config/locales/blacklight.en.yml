@@ -1,3 +1,4 @@
 en:
   blacklight:
-    application_name: 'Blacklight'
+    application_name: 'Orangelight'
+    welcome: 'Welcome!'

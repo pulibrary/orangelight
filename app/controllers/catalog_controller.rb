@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 #
 class CatalogController < ApplicationController  
-
+  include Blacklight::Marc::Catalog
   include Blacklight::Catalog
 
   configure_blacklight do |config|
@@ -30,6 +30,7 @@ class CatalogController < ApplicationController
 
     # solr field configuration for search results/index views
     config.index.title_field = 'title_display'
+    config.index.partials = [:index_header, :thumbnail, :index]
     config.index.display_type_field = 'format'
 
     # solr field configuration for document/show views
@@ -62,6 +63,10 @@ class CatalogController < ApplicationController
     config.add_facet_field 'lc_1letter_facet', :label => 'Call Number' 
     config.add_facet_field 'subject_geo_facet', :label => 'Region' 
     config.add_facet_field 'subject_era_facet', :label => 'Era'  
+    config.add_facet_field 'pub_created_s', :label => 'Published/Created'
+    config.add_facet_field 'author_s', :label => 'Author'
+    config.add_facet_field 'location', :label => 'Location'
+
 
     config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
 
@@ -79,22 +84,26 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display 
-    config.add_index_field 'title_display', :label => 'Title'
-    config.add_index_field 'title_vern_display', :label => 'Title'
-    config.add_index_field 'author_display', :label => 'Author'
-    config.add_index_field 'author_vern_display', :label => 'Author'
+    # config.add_index_field 'title_display', :label => 'Title'
+    # config.add_index_field 'title_vern_display', :label => 'Title'
+    config.add_index_field 'author_s', :label => 'Author', :link_to_search => true
+    #config.add_index_field 'author_vern_display', :label => 'Author'
     config.add_index_field 'format', :label => 'Format'
-    config.add_index_field 'language_facet', :label => 'Language'
-    config.add_index_field 'published_display', :label => 'Published'
-    config.add_index_field 'published_vern_display', :label => 'Published'
-    config.add_index_field 'lc_callnum_display', :label => 'Call number'
+    #config.add_index_field 'language_facet', :label => 'Language'
+    #config.add_index_field 'published_display', :label => 'Published'
+    #config.add_index_field 'published_vern_display', :label => 'Published'
+    #config.add_index_field 'lc_callnum_display', :label => 'Call number'
+    config.add_index_field 'pub_created_s', :label => 'Published/Created'
+    #config.add_index_field 'description_display', :label => 'Description'
+    config.add_index_field 'location_display', :label => 'Location'
+    config.add_index_field 'call_number_display', :label => 'Call number'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
-    config.add_show_field 'title_display', :label => 'Title'
-    config.add_show_field 'title_vern_display', :label => 'Title'
-    config.add_show_field 'subtitle_display', :label => 'Subtitle'
-    config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
+    # config.add_show_field 'title_display', :label => 'Title'
+    # config.add_show_field 'title_vern_display', :label => 'Title'
+    # config.add_show_field 'subtitle_display', :label => 'Subtitle'
+    # config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
     config.add_show_field 'author_display', :label => 'Author'
     config.add_show_field 'author_vern_display', :label => 'Author'
     config.add_show_field 'format', :label => 'Format'
@@ -103,17 +112,112 @@ class CatalogController < ApplicationController
     config.add_show_field 'language_facet', :label => 'Language'
     config.add_show_field 'published_display', :label => 'Published'
     config.add_show_field 'published_vern_display', :label => 'Published'
-    config.add_show_field 'lc_callnum_display', :label => 'Call number'
+    #config.add_show_field 'lc_callnum_display', :label => 'Call number'
     config.add_show_field 'isbn_t', :label => 'ISBN'
+    config.add_show_field 'pub_created_display', :label => 'Published/Created'
+    config.add_show_field 'location_display', :label => 'Location'
+    config.add_show_field 'location_code_display', :label => 'Find it', :helper_method => :wheretofind
+    
+    # passing extra data from controller
+    # config.add_show_field 'language_code_s', :label => 'Language', super_duper_info: "huzza!"    
 
-    # "fielded" search configuration. Used by pulldown among other places.
-    # For supported keys in hash, see rdoc for Blacklight::SearchFields
-    #
-    # Search fields will inherit the :qt solr request handler from
-    # config[:default_solr_parameters], OR can specify a different one
-    # with a :qt key/value. Below examples inherit, except for subject
-    # that specifies the same :qt as default for our own internal
-    # testing purposes.
+
+    config.add_show_field 'uniform_title_display', :label => 'Uniform Title'
+    config.add_show_field 'compiled_created_display', :label => 'Compiled/Created'
+    config.add_show_field 'edition_display', :label => 'Εdition'
+    config.add_show_field 'medium_support_display', :label => 'Medium/Support'
+    config.add_show_field 'electronic_access_display', :label => 'Electronic access', :helper_method => :urlify
+
+    config.add_show_field 'description_display', :label => 'Description'
+    config.add_show_field 'arrangement_display', :label => 'Arrangement'
+    config.add_show_field 'translation_of_display', :label => 'Translation of'
+    config.add_show_field 'translated_as_display', :label => 'Translated as'
+    config.add_show_field 'issued_with_display', :label => 'Issued with'
+    config.add_show_field 'continues_display', :label => 'Continues'
+    config.add_show_field 'continues_in part_display', :label => 'Continues in part'
+    config.add_show_field 'formed_from_display', :label => 'Formed from'
+    config.add_show_field 'absorbed_display', :label => 'Absorbed'
+    config.add_show_field 'absorbed_in_part_display', :label => 'Absorbed in part'
+    config.add_show_field 'separated_from_display', :label => 'Separated from'
+    config.add_show_field 'continued_by_display', :label => 'Continued by'
+    config.add_show_field 'continued_in part_by_display', :label => 'Continued in part by'
+    config.add_show_field 'absorbed_by_display', :label => 'Absorbed by'
+    config.add_show_field 'absorbed_in_part_by_display', :label => 'Absorbed in part by'
+    config.add_show_field 'split_into_display', :label => 'Split into'
+    config.add_show_field 'merged_to_form_display', :label => 'Merged to form'
+    config.add_show_field 'changed_back_to_display', :label => 'Changed back to'
+    config.add_show_field 'frequency_display', :label => 'Frequency'
+    config.add_show_field 'former_frequency_display', :label => 'Former frequency'
+    config.add_show_field 'has_supplement_display', :label => 'Has supplement'
+    config.add_show_field 'supplement_to_display', :label => 'Supplement to'
+    config.add_show_field 'linking_notes_display', :label => 'Linking notes'
+    config.add_show_field 'subseries_of_display', :label => 'Subseries of'
+    config.add_show_field 'has_subseries_display', :label => 'Has subseries'
+    config.add_show_field 'series_display', :label => 'Series'
+    config.add_show_field 'restrictions_note_display', :label => 'Restrictions note'
+    config.add_show_field 'biographical_historical_note_display', :label => 'Biographical/Historical note'
+    config.add_show_field 'summary_note_display', :label => 'Summary note'
+    config.add_show_field 'notes_display', :label => 'Notes'
+    config.add_show_field 'binding_note_display', :label => 'Binding note'
+    config.add_show_field 'local_notes_display', :label => 'Local notes'
+    config.add_show_field 'rights_reproductions_note_display', :label => 'Rights and reproductions note'
+    config.add_show_field 'exhibitions_note_display', :label => 'Exhibitions note'
+    config.add_show_field 'participant_performer_display', :label => 'Participant(s)/Performer(s)'
+    config.add_show_field 'language_display', :label => 'Language(s)'
+    config.add_show_field 'script_display', :label => 'Script'
+    config.add_show_field 'contents_display', :label => 'Contents'
+    config.add_show_field 'incomplete_contents_display', :label => 'Incomplete contents'
+    config.add_show_field 'partial_contents_display', :label => 'Partial contents'
+    config.add_show_field 'provenance_display', :label => 'Provenance'
+    config.add_show_field 'source_acquisition_display', :label => 'Source acquisition'
+    config.add_show_field 'publications_about_display', :label => 'Publications about'
+    config.add_show_field 'indexed_in_display', :label => 'Indexed in'
+    config.add_show_field 'references_display', :label => 'References'
+    config.add_show_field 'cite_as_display', :label => 'Cite as'
+    config.add_show_field 'other_format_display', :label => 'Other format(s)'
+    config.add_show_field 'cumulative_index_finding_aid_display', :label => 'Cumulative index finding aid'
+    config.add_show_field 'subject_display', :label => 'Subject(s)'
+    config.add_show_field 'form_genre_display', :label => 'Form genre'
+    config.add_show_field 'related_name_display', :label => 'Related name(s)', :relatedor => true
+    config.add_show_field 'place_name_display', :label => 'Place name(s)'
+    config.add_show_field 'other_title_display', :label => 'Other title(s)'
+    config.add_show_field 'in_display', :label => 'In'
+    config.add_show_field 'constituent_part_display', :label => 'Constituent part(s)'
+    config.add_show_field 'isbn_display', :label => 'ISBN'
+    config.add_show_field 'issn_display', :label => 'ISSN'
+    config.add_show_field 'sudoc_no_display', :label => 'SuDoc no.'
+    config.add_show_field 'tech_report_no_display', :label => 'Tech. report no.'
+    config.add_show_field 'publisher_no_display', :label => 'Publisher no.'
+    config.add_show_field 'standard_no_display', :label => 'Standard no.'
+    config.add_show_field 'original_language_display', :label => 'Original language'
+    config.add_show_field 'location', :label => 'Location'
+    config.add_show_field 'call_number_display', :label => 'Call number'
+    config.add_show_field 'shelving_title_display', :label => 'Shelving title'
+    config.add_show_field 'location_has_display', :label => 'Location has'
+    config.add_show_field 'location_has_current_display', :label => 'Location has (current)'
+    config.add_show_field 'supplements_display', :label => 'Supplements'
+    config.add_show_field 'indexes_display', :label => 'Indexes'
+    config.add_show_field 'location_notes_display', :label => 'Location notes'
+# # 'Other version(s)_display'
+# # 'Contained in_display'
+# # 'Related record(s)_display'
+# # 'Holdings information_display'
+# # 'Item details_display'
+# # 'Order information_display'
+# # 'E-items_display'
+# # 'Status_display'
+# # 'Linked resources_display'
+
+
+
+#     "fielded" search configuration. Used by pulldown among other places.
+#     For supported keys in hash, see rdoc for Blacklight::SearchFields
+    
+#     Search fields will inherit the :qt solr request handler from
+#     config[:default_solr_parameters], OR can specify a different one
+#     with a :qt key/value. Below examples inherit, except for subject
+#     that specifies the same :qt as default for our own internal
+#     testing purposes.
     #
     # The :key is what will be used to identify this BL search field internally,
     # as well as in URLs -- so changing it after deployment may break bookmarked

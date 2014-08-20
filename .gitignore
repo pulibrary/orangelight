@@ -18,5 +18,6 @@
 # Ignore Jetty server.
 jetty/*
 
-# Ignor database config
+# Ignore database config
 config/database.yml
+

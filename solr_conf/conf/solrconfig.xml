@@ -101,7 +101,7 @@
          subject_t^500
          author_unstem_search^250
          author_addl_unstem_search^250
-         author_t^100
+         author_s^100
          author_addl_t^50
          subject_addl_unstem_search^250
          subject_addl_t^50
@@ -109,6 +109,8 @@
          title_series_t^10
          isbn_t
          text
+         description_t
+         location
        </str>
        <str name="pf">
          title_unstem_search^1000000
@@ -125,24 +127,26 @@
          subject_t^5000
          author_unstem_search^2500
          author_addl_unstem_search^2500
-         author_t^1000
+         author_s^1000
          author_addl_t^500
          subject_addl_unstem_search^2500
          subject_addl_t^500
          title_series_unstem_search^250
          title_series_t^100
          text^10
+         description_t
+         location
        </str>
        <str name="author_qf">
          author_unstem_search^200
          author_addl_unstem_search^50
-         author_t^20
+         author_s^20
          author_addl_t
        </str>
        <str name="author_pf">
          author_unstem_search^2000
          author_addl_unstem_search^500
-         author_t^200
+         author_s^200
          author_addl_t^10
        </str>
        <str name="title_qf">
@@ -194,15 +198,22 @@
          id, 
          score,
          author_display,
-         author_vern_display, 
-         format, 
+         author_vern_display,
+         author_s,
+         marc_relator_display,
+         description_display, 
+         format,
+         location_display, 
          isbn_t, 
-         language_facet, 
+         language_facet,
+         language_code_s, 
          lc_callnum_display,
+         call_number_display,
          material_type_display, 
          published_display,
          published_vern_display,
          pub_date,
+         pub_created_s,
          title_display,
          title_vern_display,
          subject_topic_facet,
@@ -322,13 +333,13 @@
       <str name="qf_author">
         author_unstem_search^200
         author_addl_unstem_search^50
-        author_t^20
+        author_s^20
         author_addl_t
       </str>
       <str name="pf_author">
         author_unstem_search^2000
         author_addl_unstem_search^500
-        author_t^200
+        author_s^200
         author_addl_t^10
       </str>
       
@@ -388,15 +399,22 @@
         id, 
         score,
         author_display,
-        author_vern_display, 
-        format, 
+        author_vern_display,
+        author_s,
+        marc_relator_display,
+        description_display, 
+        format,
+        location_display, 
         isbn_t, 
-        language_facet, 
+        language_facet,
+        language_code_s, 
         lc_callnum_display,
+        call_number_display,
         material_type_display, 
         published_display,
         published_vern_display,
         pub_date,
+        pub_created_s,
         title_display,
         title_vern_display,
         subject_topic_facet,

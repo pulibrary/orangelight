@@ -525,9 +525,9 @@
    <field name="pub_date_sort" type="tint" indexed="true" stored="true" multiValued="false"/>
      
    <!-- format is used for facet, display, and choosing which partial to use for the show view, so it must be stored and indexed -->
-   <field name="format" type="string" indexed="true" stored="true"/>
+   <field name="format" type="string" indexed="true" stored="true" multiValued="true"/>
 
-   
+   <field name="location" type="string" indexed="true" stored="true" multiValued="true"/>
 
    <!-- Dynamic field definitions.  If a field name is not found, dynamicFields
         will be used if the name matches any of the patterns.
@@ -601,7 +601,7 @@
    <copyField source="title_addl_t" dest="title_addl_unstem_search"/>
    <copyField source="title_added_entry_t" dest="title_added_entry_unstem_search"/>
    <copyField source="title_series_t" dest="title_series_unstem_search"/>
-   <copyField source="author_t" dest="author_unstem_search"/>
+   <copyField source="author_s" dest="author_unstem_search"/>
    <copyField source="author_addl_t" dest="author_addl_unstem_search"/>
    <copyField source="subject_t" dest="subject_unstem_search"/>
    <copyField source="subject_addl_t" dest="subject_addl_unstem_search"/>
@@ -623,7 +623,7 @@
    <copyField source="title_added_entry_t" dest="title_spell"/>
    <copyField source="title_series_t" dest="title_spell"/>
    <!-- author spell check; should match fields for author request handler -->
-   <copyField source="author_t" dest="author_spell"/>
+   <copyField source="author_s" dest="author_spell"/>
    <copyField source="author_addl_t" dest="author_spell"/>
    <!-- subject spell check; should match fields for subject request handler -->
    <copyField source="subject_topic_facet" dest="subject_spell"/>
@@ -636,7 +636,7 @@
    <copyField source="addl_titles_t" dest="opensearch_display"/>
    <copyField source="title_added_entry_t" dest="opensearch_display"/>
    <copyField source="title_series_t" dest="opensearch_display"/>
-   <copyField source="author_t" dest="opensearch_display"/>
+   <copyField source="author_s" dest="opensearch_display"/>
    <copyField source="author_addl_t" dest="opensearch_display"/>
    <copyField source="subject_topic_facet" dest="opensearch_display"/>
    <copyField source="subject_t" dest="opensearch_display"/>

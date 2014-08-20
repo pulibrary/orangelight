@@ -1,0 +1,28 @@
+     
+      <% # header bar for doc items in index view -%>
+      <div class="documentHeader row">
+        
+        <%# main title container for doc partial view 
+            How many bootstrap columns need to be reserved
+            for bookmarks control depends on size. 
+        -%>
+         <h5 class="index_title col-sm-9 col-lg-10">
+         <% counter = document_counter_with_offset(document_counter) %>
+         <span class="document-counter">
+         <%= t('blacklight.search.documents.counter', :counter => counter) if counter %>
+         </span>
+         <% if (render_index_field_value document, :field => 'title_vern_display').length != 0 %>
+           <% if render_index_field_value( document, :field => 'language_code_s') == 'ara' || render_index_field_value( document, :field => 'language_code_s') == 'heb' %>         
+             <rtl><%= link_to_document document, :label=>(render_index_field_value document, :field => 'title_vern_display'), :counter => counter %></rtl></h5><h5 class="index_title col-sm-9 col-lg-10">
+           <% else %>
+             <%= link_to_document document, :label=>(render_index_field_value document, :field => 'title_vern_display'), :counter => counter %></h5><h5 class="index_title col-sm-9 col-lg-10">             
+           <% end %>
+         <% end %>
+         <%= link_to_document document, :label=>document_show_link_field(document), :counter => counter %>
+
+        </h5>
+
+        <% # bookmark functions for items/docs -%>
+        <%= render_index_doc_actions document, :wrapping_class => "index-document-functions col-sm-3 col-lg-2" %>
+      </div>
+      
