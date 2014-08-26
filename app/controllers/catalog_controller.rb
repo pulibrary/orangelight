@@ -57,13 +57,19 @@ class CatalogController < ApplicationController
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
     config.add_facet_field 'format', :label => 'Format'
-    config.add_facet_field 'pub_date', :label => 'Publication Year', :single => true
+
+    # num_segments and segments set to defaults here, included to show customizable features
+    config.add_facet_field 'pub_date', :label => 'Publication Year', :single => true, :range => {
+      :num_segments => 10,
+      :assumed_boundaries => [1100, Time.now.year + 2],
+      :segments => true    
+    }
     config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20 
     config.add_facet_field 'language_facet', :label => 'Language', :limit => true 
     config.add_facet_field 'lc_1letter_facet', :label => 'Call Number' 
     config.add_facet_field 'subject_geo_facet', :label => 'Region' 
     config.add_facet_field 'subject_era_facet', :label => 'Era'  
-    config.add_facet_field 'pub_created_s', :label => 'Published/Created'
+    #config.add_facet_field 'pub_created_s', :label => 'Published/Created'
     config.add_facet_field 'author_s', :label => 'Author'
     config.add_facet_field 'location', :label => 'Location'
 

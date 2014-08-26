@@ -7,6 +7,8 @@ gem 'rails', '4.1.4'
 gem 'pg'
 # Blacklight
 gem 'blacklight', ">= 5.3.0"
+# slider limit support
+gem "blacklight_range_limit"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 
