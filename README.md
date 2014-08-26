@@ -5,7 +5,7 @@
 Versions:
 
 * Ruby: 2.1.1
-* Blacklight: 5.5.2
+* Blacklight: 5.6.0
 
 To install run `bundle install`
 
@@ -15,7 +15,7 @@ postgresql configuration
 ```bash
 apt-get install postgresql
 su - postgres
-create role orangelight with createdb login password 'orange'
+psql -c "CREATE ROLE orangelight with createdb login password 'orange';" 
 exit
 ```
 
