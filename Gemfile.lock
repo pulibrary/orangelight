@@ -40,10 +40,14 @@ GEM
       blacklight (>= 5.4.0.rc1, < 6.0)
       marc (>= 0.4.3, < 1.1)
       rails
+    blacklight_advanced_search (5.1.1)
+      blacklight (>= 5.2, < 6.0)
+      parslet
     blacklight_range_limit (5.0.2)
       blacklight (>= 5.0.0.pre4, < 6)
       jquery-rails
       rails (>= 3.0, < 5.0)
+    blankslate (2.1.2.4)
     bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
     builder (3.2.2)
@@ -117,6 +121,8 @@ GEM
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
+    parslet (1.6.1)
+      blankslate (~> 2.0)
     pg (0.17.1)
     polyglot (0.3.5)
     rack (1.5.2)
@@ -210,6 +216,7 @@ PLATFORMS
 DEPENDENCIES
   blacklight (>= 5.3.0)
   blacklight-marc (~> 5.0)
+  blacklight_advanced_search
   blacklight_range_limit
   capistrano (~> 3.2.0)
   capistrano-rails (~> 1.1.1)

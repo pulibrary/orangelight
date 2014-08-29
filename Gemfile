@@ -9,6 +9,8 @@ gem 'pg'
 gem 'blacklight', ">= 5.3.0"
 # slider limit support
 gem "blacklight_range_limit"
+# advanced search functionality
+gem "blacklight_advanced_search"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 
