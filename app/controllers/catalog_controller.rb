@@ -100,7 +100,7 @@ class CatalogController < ApplicationController
     #config.add_index_field 'published_display', :label => 'Published'
     #config.add_index_field 'published_vern_display', :label => 'Published'
     #config.add_index_field 'lc_callnum_display', :label => 'Call number'
-    config.add_index_field 'pub_created_s', :label => 'Published/Created'
+    config.add_index_field 'pub_date', :label => 'Publication Year'
     #config.add_index_field 'description_display', :label => 'Description'
     config.add_index_field 'location_display', :label => 'Location'
     config.add_index_field 'call_number_display', :label => 'Call number'
