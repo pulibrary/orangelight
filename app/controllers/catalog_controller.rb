@@ -3,6 +3,7 @@
 class CatalogController < ApplicationController  
   include Blacklight::Marc::Catalog
   include Blacklight::Catalog
+  include BlacklightAdvancedSearch::ParseBasicQ  # adds AND/OR/NOT search term functionality  
 
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
@@ -99,7 +100,7 @@ class CatalogController < ApplicationController
     #config.add_index_field 'published_display', :label => 'Published'
     #config.add_index_field 'published_vern_display', :label => 'Published'
     #config.add_index_field 'lc_callnum_display', :label => 'Call number'
-    config.add_index_field 'pub_created_s', :label => 'Published/Created'
+    config.add_index_field 'pub_date', :label => 'Publication Year'
     #config.add_index_field 'description_display', :label => 'Description'
     config.add_index_field 'location_display', :label => 'Location'
     config.add_index_field 'call_number_display', :label => 'Call number'
@@ -234,6 +235,16 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise. 
     
+    # To add an advanced option only search field:
+    #   config.add_search_field("advanced_field") do |field|
+    #   field.include_in_simple_select = false
+    #   field.solr_parameters = { :qf => "advanced_field_solrname" }      
+    # end
+    # if the request handler ends up being different for advanced fields, they must be 
+    # specifically included, while at the same time be removed from simple search:
+    #   :include_in_advanced_search => true
+    #   field.include_in_simple_select = false        
+
     config.add_search_field 'all_fields', :label => 'All Fields'
     
 
