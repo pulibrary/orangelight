@@ -7,11 +7,12 @@ module ApplicationHelper
   #   link_to options[:value], options[:value]
   # end
 
+  # Creates link for electronic access URL, works only if one electronic access link.
+  # First argument of link_to is optional display text. If null, the second argument
+  # (URL) is the display text for the link.
   def urlify args
-
-    args[:document][args[:field]].each_with_index do |electronic_access, i|
-        	args[:document][args[:field]][i] = link_to(electronic_access)
-      end
+    args[:document][args[:field]][0] = link_to(args[:document][args[:field]][1],
+      args[:document][args[:field]][0])
   end
 
   def wheretofind args

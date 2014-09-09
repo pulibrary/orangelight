@@ -212,7 +212,7 @@
          material_type_display, 
          published_display,
          published_vern_display,
-         pub_date,
+         pub_date_display,
          pub_created_s,
          title_display,
          title_vern_display,
@@ -233,7 +233,7 @@
        <str name="facet.field">lc_alpha_facet</str>
        <str name="facet.field">lc_b4cutter_facet</str>
        <str name="facet.field">language_facet</str>
-       <str name="facet.field">pub_date</str>
+       <str name="facet.field">pub_date_start_sort</str>
        <str name="facet.field">subject_era_facet</str>
        <str name="facet.field">subject_geo_facet</str>
        <str name="facet.field">subject_topic_facet</str>
@@ -319,7 +319,7 @@
     <lst name="defaults">
       <str name="defType">lucene</str>
       <str name="echoParams">explicit</str>
-      <str name="sort">score desc, pub_date_sort desc, title_sort asc</str>   
+      <str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str>   
       <str name="df">text</str> 
       <str name="q.op">AND</str> 
       <str name="qs">1</str>
@@ -413,7 +413,7 @@
         material_type_display, 
         published_display,
         published_vern_display,
-        pub_date,
+        pub_date_display,
         pub_created_s,
         title_display,
         title_vern_display,
@@ -434,7 +434,7 @@
       <str name="facet.field">lc_alpha_facet</str>
       <str name="facet.field">lc_b4cutter_facet</str>
       <str name="facet.field">language_facet</str>
-      <str name="facet.field">pub_date</str>
+      <str name="facet.field">pub_date_start_sort</str>
       <str name="facet.field">subject_era_facet</str>
       <str name="facet.field">subject_geo_facet</str>
       <str name="facet.field">subject_topic_facet</str>
