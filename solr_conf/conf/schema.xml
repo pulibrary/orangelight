@@ -522,7 +522,8 @@
    <field name="pub_date" type="string" indexed="true" stored="true" multiValued="true"/>
    <!-- pub_date sort uses new trie-based int fields, which are recommended for any int and are displayable, sortable, and range-quer
    we use 'tint' for faster range-queries. -->
-   <field name="pub_date_sort" type="tint" indexed="true" stored="true" multiValued="false"/>
+   <field name="pub_date_start_sort" type="tint" indexed="true" stored="true" multiValued="false"/>
+   <field name="pub_date_end_sort" type="tint" indexed="true" stored="true" multiValued="false"/>   
      
    <!-- format is used for facet, display, and choosing which partial to use for the show view, so it must be stored and indexed -->
    <field name="format" type="string" indexed="true" stored="true" multiValued="true"/>

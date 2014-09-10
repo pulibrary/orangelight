@@ -58,16 +58,17 @@ class CatalogController < ApplicationController
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
     config.add_facet_field 'format', :label => 'Format'
+    config.add_facet_field 'subject_display', :lable => 'Subject'
 
     # num_segments and segments set to defaults here, included to show customizable features
-    config.add_facet_field 'pub_date', :label => 'Publication Year', :single => true, :range => {
+    config.add_facet_field 'pub_date_start_sort', :label => 'Publication Year', :single => true, :range => {
       :num_segments => 10,
-      :assumed_boundaries => [1100, Time.now.year + 2],
+      :assumed_boundaries => [1100, 2014],
       :segments => true    
     }
     config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20 
     config.add_facet_field 'language_facet', :label => 'Language', :limit => true 
-    config.add_facet_field 'lc_1letter_facet', :label => 'Call Number' 
+    config.add_facet_field 'lc_1letter_facet', :label => 'Classification' 
     config.add_facet_field 'subject_geo_facet', :label => 'Region' 
     config.add_facet_field 'subject_era_facet', :label => 'Era'  
     #config.add_facet_field 'pub_created_s', :label => 'Published/Created'
@@ -75,13 +76,13 @@ class CatalogController < ApplicationController
     config.add_facet_field 'location', :label => 'Location'
 
 
-    config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
+    config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet', 'subject_era_facet']
 
-    config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
-       :years_5 => { :label => 'within 5 Years', :fq => "pub_date:[#{Time.now.year - 5 } TO *]" },
-       :years_10 => { :label => 'within 10 Years', :fq => "pub_date:[#{Time.now.year - 10 } TO *]" },
-       :years_25 => { :label => 'within 25 Years', :fq => "pub_date:[#{Time.now.year - 25 } TO *]" }
-    }
+    # config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
+    #    :years_5 => { :label => 'within 5 Years', :fq => "pub_date:[#{Time.now.year - 5 } TO *]" },
+    #    :years_10 => { :label => 'within 10 Years', :fq => "pub_date:[#{Time.now.year - 10 } TO *]" },
+    #    :years_25 => { :label => 'within 25 Years', :fq => "pub_date:[#{Time.now.year - 25 } TO *]" }
+    # }
 
 
     # Have BL send all facet field names to Solr, which has been the default
@@ -100,7 +101,7 @@ class CatalogController < ApplicationController
     #config.add_index_field 'published_display', :label => 'Published'
     #config.add_index_field 'published_vern_display', :label => 'Published'
     #config.add_index_field 'lc_callnum_display', :label => 'Call number'
-    config.add_index_field 'pub_date', :label => 'Publication Year'
+    config.add_index_field 'pub_date_display', :label => 'Publication Year'
     #config.add_index_field 'description_display', :label => 'Description'
     config.add_index_field 'location_display', :label => 'Location'
     config.add_index_field 'call_number_display', :label => 'Call number'
@@ -122,6 +123,7 @@ class CatalogController < ApplicationController
     #config.add_show_field 'lc_callnum_display', :label => 'Call number'
     config.add_show_field 'isbn_t', :label => 'ISBN'
     config.add_show_field 'pub_created_display', :label => 'Published/Created'
+    config.add_show_field 'pub_date_start_sort', :label => 'Published Sort Date'
     config.add_show_field 'location_display', :label => 'Location'
     config.add_show_field 'location_code_display', :label => 'Find it', :helper_method => :wheretofind
     
@@ -160,19 +162,19 @@ class CatalogController < ApplicationController
     config.add_show_field 'linking_notes_display', :label => 'Linking notes'
     config.add_show_field 'subseries_of_display', :label => 'Subseries of'
     config.add_show_field 'has_subseries_display', :label => 'Has subseries'
-    config.add_show_field 'series_display', :label => 'Series'
+    config.add_show_field 'series_display', :label => 'Series', separator: '</br>'.html_safe
     config.add_show_field 'restrictions_note_display', :label => 'Restrictions note'
     config.add_show_field 'biographical_historical_note_display', :label => 'Biographical/Historical note'
     config.add_show_field 'summary_note_display', :label => 'Summary note'
-    config.add_show_field 'notes_display', :label => 'Notes'
+    config.add_show_field 'notes_display', :label => 'Notes', separator: '</br>'.html_safe
     config.add_show_field 'binding_note_display', :label => 'Binding note'
     config.add_show_field 'local_notes_display', :label => 'Local notes'
     config.add_show_field 'rights_reproductions_note_display', :label => 'Rights and reproductions note'
     config.add_show_field 'exhibitions_note_display', :label => 'Exhibitions note'
-    config.add_show_field 'participant_performer_display', :label => 'Participant(s)/Performer(s)'
+    config.add_show_field 'participant_performer_display', :label => 'Participant(s)/Performer(s)', separator: '</br>'.html_safe
     config.add_show_field 'language_display', :label => 'Language(s)'
     config.add_show_field 'script_display', :label => 'Script'
-    config.add_show_field 'contents_display', :label => 'Contents'
+    config.add_show_field 'contents_display', :label => 'Contents', separator: '</br>'.html_safe
     config.add_show_field 'incomplete_contents_display', :label => 'Incomplete contents'
     config.add_show_field 'partial_contents_display', :label => 'Partial contents'
     config.add_show_field 'provenance_display', :label => 'Provenance'
@@ -183,13 +185,13 @@ class CatalogController < ApplicationController
     config.add_show_field 'cite_as_display', :label => 'Cite as'
     config.add_show_field 'other_format_display', :label => 'Other format(s)'
     config.add_show_field 'cumulative_index_finding_aid_display', :label => 'Cumulative index finding aid'
-    config.add_show_field 'subject_display', :label => 'Subject(s)'
+    config.add_show_field 'subject_display', :label => 'Subject(s)', separator: ' -- '
     config.add_show_field 'form_genre_display', :label => 'Form genre'
-    config.add_show_field 'related_name_display', :label => 'Related name(s)', :relatedor => true
-    config.add_show_field 'place_name_display', :label => 'Place name(s)'
-    config.add_show_field 'other_title_display', :label => 'Other title(s)'
+    config.add_show_field 'related_name_display', :label => 'Related name(s)', :relatedor => true, separator: '</br>'.html_safe
+    config.add_show_field 'place_name_display', :label => 'Place name(s)', separator: '</br>'.html_safe
+    config.add_show_field 'other_title_display', :label => 'Other title(s)', separator: '</br>'.html_safe
     config.add_show_field 'in_display', :label => 'In'
-    config.add_show_field 'constituent_part_display', :label => 'Constituent part(s)'
+    config.add_show_field 'constituent_part_display', :label => 'Constituent part(s)', separator: '</br>'.html_safe
     config.add_show_field 'isbn_display', :label => 'ISBN'
     config.add_show_field 'issn_display', :label => 'ISSN'
     config.add_show_field 'sudoc_no_display', :label => 'SuDoc no.'
@@ -290,10 +292,10 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc, pub_date_sort desc, title_sort asc', :label => 'relevance'
-    config.add_sort_field 'pub_date_sort desc, title_sort asc', :label => 'year'
+    config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort asc', :label => 'relevance'
+    config.add_sort_field 'pub_date_start_sort desc, title_sort asc', :label => 'year'
     config.add_sort_field 'author_sort asc, title_sort asc', :label => 'author'
-    config.add_sort_field 'title_sort asc, pub_date_sort desc', :label => 'title'
+    config.add_sort_field 'title_sort asc, pub_date_start_sort desc', :label => 'title'
 
     # If there are more than this many search results, no spelling ("did you 
     # mean") suggestion is offered.
