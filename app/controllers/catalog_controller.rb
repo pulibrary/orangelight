@@ -68,15 +68,16 @@ class CatalogController < ApplicationController
     }
     config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20 
     config.add_facet_field 'language_facet', :label => 'Language', :limit => true 
-    config.add_facet_field 'lc_1letter_facet', :label => 'Classification' 
-    config.add_facet_field 'subject_geo_facet', :label => 'Region' 
-    config.add_facet_field 'subject_era_facet', :label => 'Era'  
+    config.add_facet_field 'lc_1letter_facet', :label => 'Classification', :limit => true
+    config.add_facet_field 'subject_geo_facet', :label => 'Region', :limit => true 
+    config.add_facet_field 'subject_era_facet', :label => 'Era', :limit => true 
     #config.add_facet_field 'pub_created_s', :label => 'Published/Created'
-    config.add_facet_field 'author_s', :label => 'Author'
-    config.add_facet_field 'location', :label => 'Location'
+    # config.add_facet_field 'author_s', :label => 'Author', :limit => true
+    config.add_facet_field 'instrumentation_facet', :label => 'Instrumentation', :limit => true
+    config.add_facet_field 'location', :label => 'Location', :limit => true
 
 
-    config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet', 'subject_era_facet']
+    config.add_facet_field 'classification_pivot_field', :label => 'Classification', :pivot => ['lc_1letter_facet', 'lc_rest_facet']
 
     # config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
     #    :years_5 => { :label => 'within 5 Years', :fq => "pub_date:[#{Time.now.year - 5 } TO *]" },
