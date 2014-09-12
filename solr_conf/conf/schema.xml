@@ -649,7 +649,80 @@
 	  destination field is to use the dynamic field syntax. 
 	  copyField also supports a maxChars to copy setting.  -->
 	   
-   <!-- <copyField source="*_t" dest="text" maxChars="3000"/> -->
+<!--    <copyField source="*_t" dest="text" maxChars="3000"/> -->
+
+   <copyField source="id" dest="text"/>
+   <copyField source="timestamp" dest="text"/>
+   <!-- default, catch all search field -->
+   <copyField source="text" dest="text"/>
+   
+   <!-- these display fields are NOT multi-valued -->
+   <copyField source="marc_display" dest="text"/>
+   <copyField source="title_display" dest="text"/>
+   <copyField source="title_vern_display" dest="text"/>
+   <copyField source="subtitle_display" dest="text"/>
+   <copyField source="subtitle_vern_display" dest="text"/>
+   <copyField source="author_display" dest="text"/>
+   <copyField source="author_vern_display" dest="text"/>
+   
+   <!-- these fields are also used for display, so they must be stored -->
+   <copyField source="isbn_t" dest="text"/>
+   <copyField source="language_facet" dest="text"/>
+   <copyField source="subject_topic_facet" dest="text"/>
+   <copyField source="subject_era_facet" dest="text"/>
+   <copyField source="subject_geo_facet" dest="text"/>
+   <!-- pub_date is used for facet and display so it must be indexed and stored -->
+   <copyField source="pub_date" dest="text"/>
+   <!-- pub_date sort uses new trie-based int fields, which are recommended for any int and are displayable, sortable, and range-quer
+   we use 'tint' for faster range-queries. -->
+   <copyField source="pub_date_start_sort" dest="text"/>
+   <copyField source="pub_date_end_sort" dest="text"/>
+     
+   <!-- format is used for facet, display, and choosing which partial to use for the show view, so it must be stored and indexed -->
+   <copyField source="format" dest="text"/>
+
+   <copyField source="location" dest="text"/>
+
+   <!-- Dynamic field definitions.  If a field name is not found, dynamicFields
+        will be used if the name matches any of the patterns.
+        RESTRICTION: the glob-like pattern in the name attribute must have
+        a "*" only at the start or the end.
+        EXAMPLE:  name="*_i" will match any field ending in _i (like myid_i, z_i)
+        Longer patterns will be matched first.  if equal size patterns
+        both match, the first appearing in the schema will be used.  -->
+   <copyField source="*_i" dest="text"/>
+   <copyField source="*_s" dest="text"/>
+   <copyField source="*_l" dest="text"/>
+   <copyField source="*_t" dest="text"/>
+   <copyField source="*_txt" dest="text"/>
+   <copyField source="*_b" dest="text"/>
+   <copyField source="*_f" dest="text"/>
+   <copyField source="*_d" dest="text"/>
+
+
+   <copyField source="*_coordinate" dest="text"/>
+
+   <copyField source="*_dt" dest="text"/>
+   <copyField source="*_p" dest="text"/>
+
+   <copyField source="*_ti" dest="text"/>
+   <copyField source="*_tl" dest="text"/>
+   <copyField source="*_tf" dest="text"/>
+   <copyField source="*_td" dest="text"/>
+   <copyField source="*_tdt" dest="text"/>
+   
+   <copyField source="*_pi" dest="text"/>
+
+   <copyField source="ignored_*" dest="text"/>
+   <copyField source="attr_*" dest="text"/>
+
+   <copyField source="random_*" dest="text"/>
+
+   <copyField source="*_display" dest="text"/>
+   <copyField source="*_facet" dest="text"/>
+   <copyField source="*_sort" dest="text"/>
+   <copyField source="*_unstem_search" dest="text"/>
+   <copyField source="*spell" dest="text"/>
 
    <!-- copy name to alphaNameSort, a field designed for sorting by name -->
    <!-- <copyField source="name" dest="alphaNameSort"/> -->
