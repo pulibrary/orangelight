@@ -6,6 +6,10 @@ rvm:
 before_script:
   - psql -c 'create database orangelight_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
+  - bundle exec rake jetty:clean
+  - bundle exec rake jetty:start
+
+script: bundle exec rspec spec
 
 branches:
   only:
