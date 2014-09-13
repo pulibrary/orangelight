@@ -4,7 +4,7 @@ describe "blacklight tests" do
 
 	before(:all) do
 		fixture=File.expand_path('../../fixtures/fixtures1.xml',__FILE__)  	
-	    system "curl http://localhost:8983/solr/blacklight-core/update?commit=true --data-binary @#{fixture} -H 'Content-type:text/xml; charset=utf-8'"
+	    system "curl http://localhost:8888/solr/blacklight-core/update?commit=true --data-binary @#{fixture} -H 'Content-type:text/xml; charset=utf-8'"
 
 	end	
 	describe "ICU folding keyword search" do
