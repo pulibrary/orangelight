@@ -323,7 +323,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('left_anchor') do |field|
-      field.label = 'Starts'
+      field.label = 'Starts with'
       field.solr_local_parameters = { 
         :qf => '$left_anchor_qf',
         :pf => '$left_anchor_pf'

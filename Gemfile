@@ -49,4 +49,9 @@ end
 group :test, :development do
 	# rspec
 	gem 'rspec-rails', '~> 3.0.0'	
+<<<<<<< HEAD
 end
+=======
+
+end
+>>>>>>> c5f80b5c3661bdb161ccb5f0718e31302a542073
