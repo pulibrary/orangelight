@@ -4,12 +4,13 @@
 require File.expand_path('../config/application', __FILE__)
 unless Rails.env.production?
  require 'rspec/core/rake_task'
+ require 'jettywrapper'
 end
 
 Rails.application.load_tasks
 
 ZIP_URL = "https://github.com/projectblacklight/blacklight-jetty/archive/v4.9.0.zip"
-require 'jettywrapper'
+
 
 Rake::Task["jetty:clean"].enhance do
   Rake::Task["pulsearch:solr2jetty"].invoke
@@ -17,7 +18,6 @@ end
 
 task :ci do
 
-  require 'jettywrapper'
   jetty_params = Jettywrapper.load_config.merge(
       {:jetty_home => File.expand_path(File.dirname(__FILE__) + '/jetty'),
        :startup_wait => 180,

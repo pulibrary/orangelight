@@ -8,6 +8,12 @@
 #role :web, %w{deploy@example.com}
 #role :db,  %w{deploy@example.com}
 
+
+
+set :rvm_ruby_string, :local        # use the same ruby as used locally for deployment
+
+
+
 set :stage, :production
 set :rails_env, 'production'
 
