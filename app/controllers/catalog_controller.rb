@@ -66,18 +66,24 @@ class CatalogController < ApplicationController
       :assumed_boundaries => [1100, 2014],
       :segments => true    
     }
-    config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20 
+    config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20
+    #config.add_facet_field 'subject_topic1_facet', :label => 'Topic', :limit => 20, show: false
+    #config.add_facet_field 'subject_topic2_facet', :label => 'Topic', :limit => 20, show: false
+    #config.add_facet_field 'subject_topicfull_facet', :label => 'Topic', :limit => 20, show: false            
     config.add_facet_field 'language_facet', :label => 'Language', :limit => true 
-    config.add_facet_field 'lc_1letter_facet', :label => 'Classification', :limit => true, show: false
+    config.add_facet_field 'lc_1letter_facet', :label => 'Classification', :limit => true, show: false, sort: 'index'
     config.add_facet_field 'subject_geo_facet', :label => 'Region', :limit => true 
     config.add_facet_field 'subject_era_facet', :label => 'Era', :limit => true 
     #config.add_facet_field 'pub_created_s', :label => 'Published/Created'
     config.add_facet_field 'author_s', :label => 'Author', :limit => true, show: false
+    config.add_facet_field 'lc_rest_facet', :label => 'Full Call number code', :limit => true, show: false, sort: 'index'        
     config.add_facet_field 'instrumentation_facet', :label => 'Instrumentation', :limit => true
     config.add_facet_field 'location', :label => 'Location', :limit => true
 
 
     config.add_facet_field 'classification_pivot_field', :label => 'Classification', :pivot => ['lc_1letter_facet', 'lc_rest_facet']
+    #config.add_facet_field 'subject_pivot_field', :label => 'Topic', :pivot => ['subject_topic1_facet', 'subject_topic2_facet', 'subject_topicfull_facet']
+
 
     # config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
     #    :years_5 => { :label => 'within 5 Years', :fq => "pub_date:[#{Time.now.year - 5 } TO *]" },
@@ -102,9 +108,9 @@ class CatalogController < ApplicationController
     #config.add_index_field 'published_display', :label => 'Published'
     #config.add_index_field 'published_vern_display', :label => 'Published'
     #config.add_index_field 'lc_callnum_display', :label => 'Call number'
-    config.add_index_field 'pub_date_display', :label => 'Publication Year'
+    config.add_index_field 'pub_created_display', :label => 'Publication Year'
     #config.add_index_field 'description_display', :label => 'Description'
-    config.add_index_field 'location_display', :label => 'Location'
+    config.add_index_field 'location', :label => 'Location', helper_method: :multiple_locations
     config.add_index_field 'call_number_display', :label => 'Call number'
 
     # solr fields to be displayed in the show (single result) view
@@ -124,7 +130,7 @@ class CatalogController < ApplicationController
     #config.add_show_field 'lc_callnum_display', :label => 'Call number'
     config.add_show_field 'isbn_t', :label => 'ISBN'
     config.add_show_field 'pub_created_display', :label => 'Published/Created'
-    config.add_show_field 'pub_date_start_sort', :label => 'Published Sort Date'
+    #config.add_show_field 'pub_date_start_sort', :label => 'Published Sort Date'
     config.add_show_field 'location_display', :label => 'Location'
     config.add_show_field 'location_code_display', :label => 'Find it', :helper_method => :wheretofind
     
@@ -168,6 +174,44 @@ class CatalogController < ApplicationController
     config.add_show_field 'biographical_historical_note_display', :label => 'Biographical/Historical note'
     config.add_show_field 'summary_note_display', :label => 'Summary note'
     config.add_show_field 'notes_display', :label => 'Notes', separator: '</br>'.html_safe
+
+    config.add_show_field 'with_notes_display', :label => 'With'
+    config.add_show_field 'bibliographich_notes_display', :label => 'Bibliographic history'
+    config.add_show_field 'dissertation_notes_display', :label => 'Dissertation note'
+    config.add_show_field 'bib_ref_notes_display', :label => 'Bibliographic references'
+    config.add_show_field 'scale_notes_display', :label => 'Scale'
+    config.add_show_field 'credits_notes_display', :label => 'Creation/Production credits'
+    config.add_show_field 'type_period_notes_display', :label => 'Type of report and period covered'
+    config.add_show_field 'data_quality_notes_display', :label => 'Data quality'
+    config.add_show_field 'numbering_pec_notes_display', :label => 'Numbering peculiarities'
+    config.add_show_field 'type_comp_data_notes_display', :label => 'Type of data'
+    config.add_show_field 'date_place_event_notes_display', :label => 'Time and place of event'
+    config.add_show_field 'target_aud_notes_display', :label => 'Target audience'
+    config.add_show_field 'geo_cov_notes_display', :label => 'Geographic coverage'
+    config.add_show_field 'time_period_notes_display', :label => 'Time period of content'
+    config.add_show_field 'supplement_notes_display', :label => 'Supplement note'
+    config.add_show_field 'study_prog_notes_display', :label => 'Study program information'
+    config.add_show_field 'censorship_notes_display', :label => 'Censorship note'
+    config.add_show_field 'reproduction_notes_display', :label => 'Reproduction note'
+    config.add_show_field 'original_version_notes_display', :label => 'Original version'
+    config.add_show_field 'location_originals_notes_display', :label => 'Location of originals'
+    config.add_show_field 'funding_info_notes_display', :label => 'Funding information'
+    config.add_show_field 'source_data_notes_display', :label => 'Source of data'
+    config.add_show_field 'system_details_notes_display', :label => 'System details'
+    config.add_show_field 'related_copyright_notes_display', :label => 'Copyright note'
+    config.add_show_field 'location_other_arch_notes_display', :label => 'Location of other archival materials'
+    config.add_show_field 'former_title_complex_notes_display', :label => 'Former title complexity'
+    config.add_show_field 'issuing_body_notes_display', :label => 'Issuing body'
+    config.add_show_field 'info_document_notes_display', :label => 'Information about documentation'
+    config.add_show_field 'copy_version_notes_display', :label => 'Copy and version identification'
+    config.add_show_field 'case_file_notes_display', :label => 'Case file characteristics'
+    config.add_show_field 'methodology_notes_display', :label => 'Methodology note'
+    config.add_show_field 'editor_notes_display', :label => 'Editor note'
+    config.add_show_field 'action_notes_display', :label => 'Action note'
+    config.add_show_field 'accumulation_notes_display', :label => 'Accumulation and frequency of use'
+    config.add_show_field 'awards_notes_display', :label => 'Awards'
+    config.add_show_field 'source_desc_notes_display', :label => 'Source of description'
+
     config.add_show_field 'binding_note_display', :label => 'Binding note'
     config.add_show_field 'local_notes_display', :label => 'Local notes'
     config.add_show_field 'rights_reproductions_note_display', :label => 'Rights and reproductions note'
@@ -186,9 +230,11 @@ class CatalogController < ApplicationController
     config.add_show_field 'cite_as_display', :label => 'Cite as'
     config.add_show_field 'other_format_display', :label => 'Other format(s)'
     config.add_show_field 'cumulative_index_finding_aid_display', :label => 'Cumulative index finding aid'
-    config.add_show_field 'subject_display', :label => 'Subject(s)', separator: ' -- '
+    config.add_show_field 'subject_display', :label => 'Subject(s)', separator: '</br>'.html_safe, helper_method: :subjectify
     config.add_show_field 'form_genre_display', :label => 'Form genre'
     config.add_show_field 'related_name_display', :label => 'Related name(s)', :relatedor => true, separator: '</br>'.html_safe
+    config.add_show_field 'related_works_display', :label => 'Related work(s)', separator: '</br>'.html_safe
+    config.add_show_field 'contains_display', :label => 'Contains', separator: '</br>'.html_safe    
     config.add_show_field 'place_name_display', :label => 'Place name(s)', separator: '</br>'.html_safe
     config.add_show_field 'other_title_display', :label => 'Other title(s)', separator: '</br>'.html_safe
     config.add_show_field 'in_display', :label => 'In'
@@ -200,7 +246,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'publisher_no_display', :label => 'Publisher no.'
     config.add_show_field 'standard_no_display', :label => 'Standard no.'
     config.add_show_field 'original_language_display', :label => 'Original language'
-    config.add_show_field 'location', :label => 'Location'
     config.add_show_field 'call_number_display', :label => 'Call number'
     config.add_show_field 'shelving_title_display', :label => 'Shelving title'
     config.add_show_field 'location_has_display', :label => 'Location has'
@@ -276,6 +321,14 @@ class CatalogController < ApplicationController
         :pf => '$author_pf'
       }
     end
+
+    config.add_search_field('left_anchor') do |field|
+      field.label = 'Left-anchored'
+      field.solr_local_parameters = { 
+        :qf => '$left_anchor_qf',
+        :pf => '$left_anchor_pf'
+      }
+    end    
     
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as 

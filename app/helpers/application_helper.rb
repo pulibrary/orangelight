@@ -34,4 +34,43 @@ module ApplicationHelper
   	# return content_tag(:dt, 'do').html_safe
   end
 
+  SEPARATOR = '—'
+  QUERYSEP = '—'
+  def subjectify args
+
+    all_subjects = []
+    sub_array = []
+    args[:document][args[:field]].each_with_index do |subject, i|
+      spl_sub = subject.split(QUERYSEP)
+      sub_array << []
+      subjectaccum = ''
+      spl_sub.each_with_index do |subsubject, j|
+        spl_sub[j] = subjectaccum + subsubject
+        subjectaccum = spl_sub[j] + QUERYSEP 
+        sub_array[i] << spl_sub[j]
+      end
+      all_subjects[i] = subject.split(QUERYSEP)
+    end
+    linked_subsubjects = ''
+    args[:document][args[:field]].each_with_index do |subject, i|    
+      lnk = ''
+      lnk_accum = ''
+      # since the subject_topic_facet values are flattened into a 1-d array
+      # the values need to get dequeued to fit in the 2-d subject/subsubject structure
+      all_subjects[i].each_with_index do |subsubject, j|
+        lnk = lnk_accum + link_to(subsubject,
+          "#{root_url}?f[subject_topic_facet][]=#{sub_array[i][j]}&q=&search_field=all_fields")
+        lnk_accum = lnk + SEPARATOR
+      end
+      args[:document][args[:field]][i] = lnk.html_safe        
+    end
+  end
+
+  def multiple_locations args
+    if args[:document][args[:field]][1] 
+      args[:document][args[:field]] = ["Multiple Locations"]
+    else
+      args[:document][args[:field]][0]
+    end
+  end
 end
