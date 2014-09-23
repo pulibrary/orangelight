@@ -40,6 +40,7 @@ gem 'capistrano', '~> 3.2.0'
 gem "devise"
 gem "devise-guests", "~> 0.3"
 gem "blacklight-marc", "~> 5.0"
+gem "jettywrapper", "~> 1.7"
 
 group :development do
 	gem 'capistrano-rails', '~> 1.1.1'
@@ -47,6 +48,5 @@ end
 
 group :test, :development do
 	# rspec
-	gem 'rspec-rails', '~> 3.0.0'
-	gem "jettywrapper", "~> 1.7"	
+	gem 'rspec-rails', '~> 3.0.0'	
 end
