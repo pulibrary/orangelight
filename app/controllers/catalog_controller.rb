@@ -119,7 +119,7 @@ class CatalogController < ApplicationController
     # config.add_show_field 'title_vern_display', :label => 'Title'
     # config.add_show_field 'subtitle_display', :label => 'Subtitle'
     # config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
-    config.add_show_field 'author_display', :label => 'Author'
+    config.add_show_field 'author_display', :label => 'Author'#, :helper_method => :altscript
     config.add_show_field 'author_vern_display', :label => 'Author'
     config.add_show_field 'format', :label => 'Format'
     config.add_show_field 'url_fulltext_display', :label => 'URL'
@@ -169,11 +169,11 @@ class CatalogController < ApplicationController
     config.add_show_field 'linking_notes_display', :label => 'Linking notes'
     config.add_show_field 'subseries_of_display', :label => 'Subseries of'
     config.add_show_field 'has_subseries_display', :label => 'Has subseries'
-    config.add_show_field 'series_display', :label => 'Series', separator: '</br>'.html_safe
+    config.add_show_field 'series_display', :label => 'Series'
     config.add_show_field 'restrictions_note_display', :label => 'Restrictions note'
     config.add_show_field 'biographical_historical_note_display', :label => 'Biographical/Historical note'
     config.add_show_field 'summary_note_display', :label => 'Summary note'
-    config.add_show_field 'notes_display', :label => 'Notes', separator: '</br>'.html_safe
+    config.add_show_field 'notes_display', :label => 'Notes'
 
     config.add_show_field 'with_notes_display', :label => 'With'
     config.add_show_field 'bibliographich_notes_display', :label => 'Bibliographic history'
@@ -216,10 +216,10 @@ class CatalogController < ApplicationController
     config.add_show_field 'local_notes_display', :label => 'Local notes'
     config.add_show_field 'rights_reproductions_note_display', :label => 'Rights and reproductions note'
     config.add_show_field 'exhibitions_note_display', :label => 'Exhibitions note'
-    config.add_show_field 'participant_performer_display', :label => 'Participant(s)/Performer(s)', separator: '</br>'.html_safe
+    config.add_show_field 'participant_performer_display', :label => 'Participant(s)/Performer(s)'
     config.add_show_field 'language_display', :label => 'Language(s)'
     config.add_show_field 'script_display', :label => 'Script'
-    config.add_show_field 'contents_display', :label => 'Contents', separator: '</br>'.html_safe
+    config.add_show_field 'contents_display', :label => 'Contents'
     config.add_show_field 'incomplete_contents_display', :label => 'Incomplete contents'
     config.add_show_field 'partial_contents_display', :label => 'Partial contents'
     config.add_show_field 'provenance_display', :label => 'Provenance'
@@ -230,15 +230,15 @@ class CatalogController < ApplicationController
     config.add_show_field 'cite_as_display', :label => 'Cite as'
     config.add_show_field 'other_format_display', :label => 'Other format(s)'
     config.add_show_field 'cumulative_index_finding_aid_display', :label => 'Cumulative index finding aid'
-    config.add_show_field 'subject_display', :label => 'Subject(s)', separator: '</br>'.html_safe, helper_method: :subjectify
+    config.add_show_field 'subject_display', :label => 'Subject(s)', helper_method: :subjectify
     config.add_show_field 'form_genre_display', :label => 'Form genre'
-    config.add_show_field 'related_name_display', :label => 'Related name(s)', :relatedor => true, separator: '</br>'.html_safe
-    config.add_show_field 'related_works_display', :label => 'Related work(s)', separator: '</br>'.html_safe
-    config.add_show_field 'contains_display', :label => 'Contains', separator: '</br>'.html_safe    
-    config.add_show_field 'place_name_display', :label => 'Place name(s)', separator: '</br>'.html_safe
-    config.add_show_field 'other_title_display', :label => 'Other title(s)', separator: '</br>'.html_safe
+    config.add_show_field 'related_name_display', :label => 'Related name(s)', :relatedor => true
+    config.add_show_field 'related_works_display', :label => 'Related work(s)'
+    config.add_show_field 'contains_display', :label => 'Contains'    
+    config.add_show_field 'place_name_display', :label => 'Place name(s)'
+    config.add_show_field 'other_title_display', :label => 'Other title(s)'
     config.add_show_field 'in_display', :label => 'In'
-    config.add_show_field 'constituent_part_display', :label => 'Constituent part(s)', separator: '</br>'.html_safe
+    config.add_show_field 'constituent_part_display', :label => 'Constituent part(s)'
     config.add_show_field 'isbn_display', :label => 'ISBN'
     config.add_show_field 'issn_display', :label => 'ISSN'
     config.add_show_field 'sudoc_no_display', :label => 'SuDoc no.'

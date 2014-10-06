@@ -13,7 +13,7 @@
          </span>
          <% if (render_index_field_value document, :field => 'title_vern_display').length != 0 %>
            <% if render_index_field_value( document, :field => 'language_code_s') == 'ara' || render_index_field_value( document, :field => 'language_code_s') == 'heb' %>         
-             <rtl><%= link_to_document document, :label=>(render_index_field_value document, :field => 'title_vern_display'), :counter => counter %></rtl></h5><h5 class="index_title col-sm-9 col-lg-10">
+             <rtl dir="rtl"><%= link_to_document document, :label=>(render_index_field_value document, :field => 'title_vern_display'), :counter => counter %></rtl></h5><h5 class="index_title col-sm-9 col-lg-10">
            <% else %>
              <%= link_to_document document, :label=>(render_index_field_value document, :field => 'title_vern_display'), :counter => counter %></h5><h5 class="index_title col-sm-9 col-lg-10">             
            <% end %>

@@ -2,14 +2,14 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require File.expand_path('../config/application', __FILE__)
-unless Rails.env.production?
- require 'rspec/core/rake_task'
- require 'jettywrapper'
-end
+
+require 'rspec/core/rake_task'
+require 'jettywrapper'
+
 
 Rails.application.load_tasks
 
-ZIP_URL = "https://github.com/projectblacklight/blacklight-jetty/archive/v4.9.0.zip"
+ZIP_URL = "https://github.com/projectblacklight/blacklight-jetty/archive/v4.10.0.zip"
 
 
 Rake::Task["jetty:clean"].enhance do

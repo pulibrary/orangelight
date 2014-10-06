@@ -1,3 +1,5 @@
+require 'altscript'
+
 module ApplicationHelper
   # def make_this_a_link options={}
   #   options[:document] # the original document
@@ -55,8 +57,6 @@ module ApplicationHelper
     args[:document][args[:field]].each_with_index do |subject, i|    
       lnk = ''
       lnk_accum = ''
-      # since the subject_topic_facet values are flattened into a 1-d array
-      # the values need to get dequeued to fit in the 2-d subject/subsubject structure
       all_subjects[i].each_with_index do |subsubject, j|
         lnk = lnk_accum + link_to(subsubject,
           "#{root_url}?f[subject_topic_facet][]=#{sub_array[i][j]}&q=&search_field=all_fields")
@@ -73,4 +73,5 @@ module ApplicationHelper
       args[:document][args[:field]][0]
     end
   end
+
 end

@@ -150,11 +150,7 @@
       value verbatim (and hence don't support range queries, since the
       lexicographic ordering isn't equal to the numeric ordering)
     -->
-    <fieldType name="pint" class="solr.IntField" omitNorms="true"/>
-    <fieldType name="plong" class="solr.LongField" omitNorms="true"/>
-    <fieldType name="pfloat" class="solr.FloatField" omitNorms="true"/>
-    <fieldType name="pdouble" class="solr.DoubleField" omitNorms="true"/>
-    <fieldType name="pdate" class="solr.DateField" sortMissingLast="true" omitNorms="true"/>
+
 
     <!-- The "RandomSortField" is not used to store or search any
          data.  You can declare fields of this type it in your schema
@@ -580,7 +576,6 @@
    <dynamicField name="*_td" type="tdouble" indexed="true"  stored="true"/>
    <dynamicField name="*_tdt" type="tdate"  indexed="true"  stored="true"/>
    
-   <dynamicField name="*_pi"  type="pint"    indexed="true"  stored="true"/>
 
    <dynamicField name="ignored_*" type="ignored" multiValued="true"/>
    <dynamicField name="attr_*" type="text_general" indexed="true" stored="true" multiValued="true"/>
@@ -616,7 +611,10 @@
         is added to the index.  It's used either to index the same field differently,
         or to add multiple fields to the same field for easier/faster searching.  -->
    <!-- Copy Fields -->
-        
+
+   
+
+
    <!-- unstemmed fields -->
    <copyField source="title_t" dest="title_unstem_search"/>
    <copyField source="subtitle_t" dest="subtitle_unstem_search"/>

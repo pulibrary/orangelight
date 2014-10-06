@@ -16,13 +16,23 @@
 	    <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_label document, :field => solr_fname %></dt>
 	    <% end %>
 
-      <%# if rtl script, align right -%>
-      <% if solr_fname == 'author_vern_display' && (render_document_show_field_value( document, :field => 'language_code_s') == 'ara' || render_document_show_field_value( document, :field => 'language_code_s') == 'heb') %>
-        <dd class="rtl" dir="rtl"><%= render_document_show_field_value document, :field => 'author_vern_display' %></dd>
-      <% elsif solr_fname == 'electronic_access_display' %>
-        <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value document, :field => solr_fname %></dd>        
-      <% else %>      
-	    <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value document, :field => solr_fname %></dd>
+      <% if document[solr_fname].length == 1 || !document[solr_fname].is_a?(Array) %>
+        <% valdir = getdir(document[solr_fname])%>
+        <% value = render_document_show_field_value document, :field => solr_fname %>
+	      <dd class="blacklight-<%= solr_fname.parameterize %>" dir="<%= valdir %>"><%= value %></dd>
+      <% else %> 
+        <% valdirs = [] %>
+        <% document[solr_fname].each do |value| %> 
+           <% valdirs << getdir(value) %>
+        <% end %>
+
+        <dd class="blacklight-<%= solr_fname.parameterize %>">     
+        <ul>
+        <% values = render_document_show_field_value(document, :field => solr_fname).split("<br/>").each_with_index do |value, i| %> 
+            <li dir="<%= valdirs[i] %>"> <%=value.html_safe %> </li>
+      <% end %>  
+        </ul>
+        </dd> 
       <% end %>
     <% end %>
   <% end %>
