@@ -42,11 +42,14 @@ gem "devise-guests", "~> 0.3"
 gem "blacklight-marc", "~> 5.0"
 gem "jettywrapper", "~> 1.7"
 
+# rspec, just like jettywrapper appear necessary for cap currently
+gem 'rspec-rails', '~> 3.0.0'
+
 group :development do
 	gem 'capistrano-rails', '~> 1.1.1'
 end
 
-group :test, :development do
-	# rspec
-	gem 'rspec-rails', '~> 3.0.0'	
-end
+#group :test, :development do
+#	gem "jettywrapper", "~> 1.7"
+#	gem 'rspec-rails', '~> 3.0.0'	
+#end
