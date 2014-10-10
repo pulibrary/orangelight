@@ -1,6 +1,6 @@
 # Orangelight
 [![Build Status](https://travis-ci.org/pulibrary/orangelight.png?branch=development)](https://travis-ci.org/pulibrary/orangelight)
-
+[![Coverage Status](https://coveralls.io/repos/pulibrary/orangelight/badge.png)](https://coveralls.io/r/pulibrary/orangelight)
 
 Versions:
 
