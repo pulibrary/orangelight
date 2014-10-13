@@ -18,7 +18,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'coveralls'
-Coveralls.wear!
+Coveralls.wear!('rails')
 
 RSpec.configure do |config|
 
