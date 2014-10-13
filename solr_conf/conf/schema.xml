@@ -522,12 +522,12 @@
    
    <!-- these display fields are NOT multi-valued -->
    <field name="marc_display" type="string" indexed="false" stored="true" multiValued="false"/>
-   <field name="title_display" type="string" indexed="false" stored="true" multiValued="false"/>
-   <field name="title_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
+   <field name="title_display" type="string" indexed="false" stored="true" multiValued="true"/>
+   <field name="title_vern_display" type="string" indexed="false" stored="true" multiValued="true"/>
    <field name="subtitle_display" type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="subtitle_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
-   <field name="author_display" type="string" indexed="false" stored="true" multiValued="false"/>
-   <field name="author_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
+   <field name="author_display" type="string" indexed="false" stored="true" multiValued="true"/>
+   <field name="author_vern_display" type="string" indexed="false" stored="true" multiValued="true"/>
    
    <!-- these fields are also used for display, so they must be stored -->
    <field name="isbn_t" type="text" indexed="true" stored="true" multiValued="true"/>
@@ -555,7 +555,7 @@
         Longer patterns will be matched first.  if equal size patterns
         both match, the first appearing in the schema will be used.  -->
    <dynamicField name="*_i"  type="int"    indexed="true"  stored="true"/>
-   <dynamicField name="*_s"  type="string"  indexed="true"  stored="true"/>
+   <dynamicField name="*_s"  type="string"  indexed="true"  stored="true" multiValued="true"/>
    <dynamicField name="*_l"  type="long"   indexed="true"  stored="true"/>
    <dynamicField name="*_t"  type="text"    indexed="true"  stored="true" multiValued="true"/>
    <dynamicField name="*_txt" type="text_general"    indexed="true"  stored="true" multiValued="true"/>
