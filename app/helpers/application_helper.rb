@@ -13,12 +13,12 @@ module ApplicationHelper
   # (URL) is the display text for the link.
   def urlify args
     args[:document][args[:field]][0] = link_to(args[:document][args[:field]][1],
-      args[:document][args[:field]][0])
+      args[:document][args[:field]][0], :target => "_blank")
   end
 
   def wheretofind args
   	args[:document][args[:field]].each_with_index do |location, i|
-  		args[:document][args[:field]][i] = link_to("Locate", "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{args[:document]["id"]}")
+  		args[:document][args[:field]][i] = link_to("Locate", "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{args[:document]["id"]}", :target => "_blank")
   			# http://library.princeton.edu/locator/index.php?loc=#{location}&id=#{args[:document]["id"]}")
   	
     end

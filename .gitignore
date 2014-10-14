@@ -21,3 +21,6 @@ jetty/*
 # Ignore database config
 config/database.yml
 
+# Ignore coverage
+coverage/*
+
