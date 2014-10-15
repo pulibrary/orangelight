@@ -2,11 +2,27 @@ require "rails_helper"
 
 describe "blacklight tests" do
 
-	before(:all) do
-		fixture=File.expand_path('../../fixtures/fixtures1014.xml',__FILE__)  	
-		system "curl http://localhost:8888/solr/blacklight-core/update?commit=true --data-binary @#{fixture} -H 'Content-type:text/xml; charset=utf-8'"
+	# before(:all) do
+	# 	fixture=File.read(File.expand_path('../../fixtures/fixtures_1014.json',__FILE__)) 		
+	# 	if ENV['TRAVIS'] == 'true' 
+	# 		h = Net::HTTP.new('localhost', 8888)		
+	# 		req = Net::HTTP::Post.new("/solr/blacklight-core/update?commit=true") 	
+	# 		req.body = fixture
+	# 		req.set_content_type("application/json", {'charset' => 'utf-8'})
+	# 		h.request(req)			
+	# 	else 
+	# 		h = Net::HTTP.new('localhost', 8983)
+	# 		del = Net::HTTP::Post.new("/solr/blacklight-core/update?commit=true")
+	# 		del.body = "{\"delete\": { \"query\":\"*.*\" }}"
+	# 		del.set_content_type("application/json", {'charset' => 'utf-8'})			
+	# 		h.request(del)
+	# 		req = Net::HTTP::Post.new("/solr/blacklight-core/update?commit=true") 	
+	# 		req.body = fixture
+	# 		req.set_content_type("application/json", {'charset' => 'utf-8'})
+	# 		h.request(req)						
+	# 	end
+	# end			
 
-	end	
 	describe "ICU folding keyword search" do
 		it "finds an Arabic entry from a Romanized search term" do
 			get "/catalog.json?&search_field=all_fields&q=dawwani"
