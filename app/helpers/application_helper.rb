@@ -58,7 +58,7 @@ module ApplicationHelper
       lnk_accum = ''
       all_subjects[i].each_with_index do |subsubject, j|
         lnk = lnk_accum + link_to(subsubject,
-          "#{root_url}?f[subject_topic_facet][]=#{sub_array[i][j]}&q=&search_field=all_fields")
+          "/?f[subject_topic_facet][]=#{sub_array[i][j]}&q=&search_field=all_fields")
         lnk_accum = lnk + SEPARATOR
       end
       args[:document][args[:field]][i] = lnk.html_safe        

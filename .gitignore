@@ -22,5 +22,5 @@ jetty/*
 config/database.yml
 
 # Ignore coverage
-coverage/*
+coverage/
 
