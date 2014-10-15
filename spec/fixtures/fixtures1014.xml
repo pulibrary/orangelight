@@ -1,0 +1,2543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="id">345682</field>
+    <field name="author_display">White, Michael M.</field>
+    <field name="author_sort">White, Michael M.</field>
+    <field name="author_s">White, Michael M.</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>00731cam a2200229 a 4500</leader>
+        <controlfield tag="001">345682</controlfield>
+        <controlfield tag="005">20120521194311.0</controlfield>
+        <controlfield tag="008">861209s1985    enk           00010 eng d</controlfield>
+        <datafield ind1=" " ind2=" " tag="020">
+          <subfield code="a">0947752196</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)13154067</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(CStRLIN)NJPG86-B55361</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="9">ABS1044TS</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">NBiSU</subfield>
+          <subfield code="c">NBiSU</subfield>
+          <subfield code="d">NjP</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="100">
+          <subfield code="a">White, Michael M.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="245">
+          <subfield code="a">Opportunity in crisis :</subfield>
+          <subfield code="b">money and power in world politics 1986-88 /</subfield>
+          <subfield code="c">Michael M. White.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="a">London :</subfield>
+          <subfield code="b">Firethorn Press,</subfield>
+          <subfield code="c">1985.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">341 p. ;</subfield>
+          <subfield code="c">24 cm.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">International relations.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">World politics</subfield>
+          <subfield code="y">1985-1995.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Smith, Bob F.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="2" tag="700">
+          <subfield code="a">Jones, Mary.</subfield>
+          <subfield code="t">Book by Mary.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="998">
+          <subfield code="a">12/09/86</subfield>
+          <subfield code="s">9114</subfield>
+          <subfield code="n">NjP</subfield>
+          <subfield code="w">NYBG86B26358</subfield>
+          <subfield code="d">12/09/86</subfield>
+          <subfield code="c">DF</subfield>
+          <subfield code="b">LDP</subfield>
+          <subfield code="i">861209</subfield>
+          <subfield code="l">NJPG</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="911">
+          <subfield code="a">19921028</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="912">
+          <subfield code="a">19900827000000.0</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">Opportunity in crisis : money and power in world politics 1986-88 / Michael M. White.</field>
+    <field name="title_sort">Opportunity in crisis : money and power in world politics 1986-88</field>
+    <field name="title_t">Opportunity in crisis : money and power in world politics 1986-88 / Michael M. White.</field>
+    <field name="compiled_created_t">Opportunity in crisis : money and power in world politics 1986-88 / Michael M. White.</field>
+    <field name="pub_created_display">London : Firethorn Press, 1985.</field>
+    <field name="pub_created_s">London : Firethorn Press, 1985.</field>
+    <field name="pub_date_display">1985</field>
+    <field name="pub_date_start_sort">1985</field>
+    <field name="format">Book</field>
+    <field name="description_display">341 p. ; 24 cm.</field>
+    <field name="description_t">341 p. ; 24 cm.</field>
+    <field name="language_facet">English</field>
+    <field name="language_code_s">eng</field>
+    <field name="subject_display">International relations</field>
+    <field name="subject_display">World politics—1985-1995</field>
+    <field name="subject_topic_facet">International relations</field>
+    <field name="subject_topic_facet">World politics—1985-1995</field>
+    <field name="related_name_display">Smith, Bob F.</field>
+    <field name="related_name_display">Jones, Mary</field>
+    <field name="contains_display">Book by Mary</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="isbn_display">0947752196</field>
+    <field name="subject_era_facet">1985-1995</field>
+  </doc>
+  <doc>
+    <field name="id">27629</field>
+    <field name="author_display">Singh, Digvijai, 1934-</field>
+    <field name="author_sort">Singh, Digvijai, 1934-</field>
+    <field name="author_s">Singh, Digvijai, 1934-</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>00964cam a2200265 i 4500</leader>
+        <controlfield tag="001">27629</controlfield>
+        <controlfield tag="005">20120709071455.0</controlfield>
+        <controlfield tag="008">801010s1964    miua    ab    00010 eng a</controlfield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)83431252</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(CStRLIN)NJPG19035810-B</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="9">AAJ1990TS</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">NjP</subfield>
+          <subfield code="c">NjP</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="100">
+          <subfield code="a">Singh, Digvijai,</subfield>
+          <subfield code="d">1934-</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="4" tag="245">
+          <subfield code="a">The advanced concepts of the stability of two-wheeled vehicles :</subfield>
+          <subfield code="b">application of mathematical analysis to actual vehicles /</subfield>
+          <subfield code="c">by Digvijai Singh.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="a">Madison :</subfield>
+          <subfield code="b">University of Wisconsin,</subfield>
+          <subfield code="c">1964.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">x, 203 p. :</subfield>
+          <subfield code="b">ill.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Vita.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Thesis--University of Wisconsin.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Microfilm. Ann Arbor : University Microfilms, 1964. -- 1 reel ;  35 mm.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">&amp;quot;64-10, 311&amp;quot;</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="504">
+          <subfield code="a">Bibliography: p. 202-203.</subfield>
+        </datafield>
+        <datafield ind1="8" ind2="0" tag="852">
+          <subfield code="b">rcppf</subfield>
+          <subfield code="t">1</subfield>
+          <subfield code="h">MICROFILM 03732</subfield>
+          <subfield code="x">tr fr flm</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="911">
+          <subfield code="a">19921028</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="912">
+          <subfield code="a">19900820000000.0</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="998">
+          <subfield code="a">10/10/80</subfield>
+          <subfield code="s">9114</subfield>
+          <subfield code="n">NjP</subfield>
+          <subfield code="w">NJPG19035810B</subfield>
+          <subfield code="d">05/05/81</subfield>
+          <subfield code="c">PMG</subfield>
+          <subfield code="b">KSG</subfield>
+          <subfield code="i">801010</subfield>
+          <subfield code="l">NJPG</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">The advanced concepts of the stability of two-wheeled vehicles : application of mathematical analysis to actual vehicles / by Digvijai Singh.</field>
+    <field name="title_sort">advanced concepts of the stability of two-wheeled vehicles : application of mathematical analysis to actual vehicles</field>
+    <field name="title_t">The advanced concepts of the stability of two-wheeled vehicles : application of mathematical analysis to actual vehicles / by Digvijai Singh.</field>
+    <field name="compiled_created_t">The advanced concepts of the stability of two-wheeled vehicles : application of mathematical analysis to actual vehicles / by Digvijai Singh.</field>
+    <field name="pub_created_display">Madison : University of Wisconsin, 1964.</field>
+    <field name="pub_created_s">Madison : University of Wisconsin, 1964.</field>
+    <field name="pub_date_display">1964</field>
+    <field name="pub_date_start_sort">1964</field>
+    <field name="format">Book</field>
+    <field name="description_display">x, 203 p. : ill.</field>
+    <field name="description_t">x, 203 p. : ill.</field>
+    <field name="notes_display">Vita.</field>
+    <field name="notes_display">Thesis--University of Wisconsin.</field>
+    <field name="notes_display">Microfilm. Ann Arbor : University Microfilms, 1964. -- 1 reel ;  35 mm.</field>
+    <field name="notes_display">"64-10, 311"</field>
+    <field name="bib_ref_notes_display">Bibliography: p. 202-203.</field>
+    <field name="language_facet">English</field>
+    <field name="language_code_s">eng</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="location_display">ReCAP: Use in Firestone Microforms only. </field>
+    <field name="location_code_display">rcppf</field>
+    <field name="location">ReCAP</field>
+    <field name="call_number_display">MICROFILM 03732</field>
+  </doc>
+  <doc>
+    <field name="id">321</field>
+    <field name="author_display">World Data Center A for Glaciology</field>
+    <field name="author_sort">World Data Center A for Glaciology</field>
+    <field name="author_s">World Data Center A for Glaciology</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>01445cas a2200337 a 4500</leader>
+        <controlfield tag="001">321</controlfield>
+        <controlfield tag="005">20110504105753.0</controlfield>
+        <controlfield tag="008">801208c19789999couqr p   bc  0uuua0eng d</controlfield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)7375602</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(CStRLIN)NJPG0815-S</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="9">AAF4557TS</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">NjP</subfield>
+          <subfield code="c">NjP</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="110">
+          <subfield code="a">World Data Center A for Glaciology.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="245">
+          <subfield code="a">New accessions list /</subfield>
+          <subfield code="c">World Data Center A for Glaciology [Snow and Ice].</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="a">Boulder, Col. :</subfield>
+          <subfield code="b">The Center,</subfield>
+          <subfield code="c">1978-</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">v. ;</subfield>
+          <subfield code="c">22x28 cm.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="362">
+          <subfield code="a">No. 1 (Dec. 1978)-</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="550">
+          <subfield code="a">&amp;quot;Operated for Environmental Data Service (later Environmental Data and Information Service) NOAA, by Cooperative Institute for Research in Environmental Sciences, University of Colorado.&amp;quot;</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Description based on: No. 19 (Dec. 1983); title from caption.</subfield>
+        </datafield>
+        <datafield ind1="2" ind2="0" tag="610">
+          <subfield code="a">World Data Center A for Glaciology</subfield>
+          <subfield code="x">Catalogs.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Glaciology</subfield>
+          <subfield code="x">Bibliography</subfield>
+          <subfield code="x">Catalogs.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Snow</subfield>
+          <subfield code="x">Bibliography</subfield>
+          <subfield code="x">Catalogs.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Ice</subfield>
+          <subfield code="x">Bibliography</subfield>
+          <subfield code="x">Catalogs.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="710">
+          <subfield code="a">United States.</subfield>
+          <subfield code="b">Environmental Data and Information Service.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="710">
+          <subfield code="a">United States.</subfield>
+          <subfield code="b">Environmental Data Service.</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+          <subfield code="a">University of Colorado, Boulder.</subfield>
+          <subfield code="b">Cooperative Institute for Research in Environmental Sciences.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="1" tag="852">
+          <subfield code="b">scidoc</subfield>
+          <subfield code="t">1</subfield>
+          <subfield code="h">Z6033.G5</subfield>
+          <subfield code="i">xW6</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="911">
+          <subfield code="a">19921028</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="912">
+          <subfield code="a">19951211061438.0</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="948">
+          <subfield code="a">AACR2 CONV.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="998">
+          <subfield code="a">02/02/90</subfield>
+          <subfield code="s">9114</subfield>
+          <subfield code="n">NjP</subfield>
+          <subfield code="w">NJPG0815S</subfield>
+          <subfield code="d">10/05/81</subfield>
+          <subfield code="c">APG</subfield>
+          <subfield code="b">EE</subfield>
+          <subfield code="i">900202</subfield>
+          <subfield code="l">NJPG</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">New accessions list / World Data Center A for Glaciology [Snow and Ice].</field>
+    <field name="title_sort">New accessions list</field>
+    <field name="title_t">New accessions list / World Data Center A for Glaciology [Snow and Ice].</field>
+    <field name="compiled_created_t">New accessions list / World Data Center A for Glaciology [Snow and Ice].</field>
+    <field name="pub_created_display">Boulder, Col. : The Center, 1978-</field>
+    <field name="pub_created_s">Boulder, Col. : The Center, 1978-</field>
+    <field name="pub_date_display">1978</field>
+    <field name="pub_date_start_sort">1978</field>
+    <field name="pub_date_end_sort">9999</field>
+    <field name="format">Journal</field>
+    <field name="description_display">v. ; 22x28 cm.</field>
+    <field name="description_display">No. 1 (Dec. 1978)-</field>
+    <field name="description_t">v. ; 22x28 cm.</field>
+    <field name="description_t">No. 1 (Dec. 1978)-</field>
+    <field name="notes_display">Description based on: No. 19 (Dec. 1983); title from caption.</field>
+    <field name="issuing_body_notes_display">"Operated for Environmental Data Service (later Environmental Data and Information Service) NOAA, by Cooperative Institute for Research in Environmental Sciences, University of Colorado."</field>
+    <field name="language_facet">English</field>
+    <field name="language_code_s">eng</field>
+    <field name="subject_display">World Data Center A for Glaciology—Catalogs</field>
+    <field name="subject_display">Glaciology—Bibliography—Catalogs</field>
+    <field name="subject_display">Snow—Bibliography—Catalogs</field>
+    <field name="subject_display">Ice—Bibliography—Catalogs</field>
+    <field name="subject_topic_facet">World Data Center A for Glaciology—Catalogs</field>
+    <field name="subject_topic_facet">Glaciology—Bibliography—Catalogs</field>
+    <field name="subject_topic_facet">Snow—Bibliography—Catalogs</field>
+    <field name="subject_topic_facet">Ice—Bibliography—Catalogs</field>
+    <field name="related_name_display">United States. Environmental Data and Information Service</field>
+    <field name="related_name_display">United States. Environmental Data Service</field>
+    <field name="related_name_display">University of Colorado, Boulder. Cooperative Institute for Research in Environmental Sciences</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="location_display">Lewis Library: Documents</field>
+    <field name="location_code_display">scidoc</field>
+    <field name="location">Lewis Library</field>
+    <field name="call_number_display">Z6033.G5 xW6</field>
+  </doc>
+  <doc>
+    <field name="id">6139836</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>01383cam a2200325 a 4500</leader>
+        <controlfield tag="001">6139836</controlfield>
+        <controlfield tag="005">20110201122126.0</controlfield>
+        <controlfield tag="008">100526s2009    it a     c    000 0bger d</controlfield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)ocn650437639</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(Shamansky)  107347</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">C3L</subfield>
+          <subfield code="c">C3L</subfield>
+          <subfield code="d">MZA</subfield>
+          <subfield code="d">NjP</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)650437639</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="041">
+          <subfield code="a">gerita</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="043">
+          <subfield code="a">e-it---</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="4" tag="050">
+          <subfield code="a">N5273.2.M47</subfield>
+          <subfield code="b">F36 2009</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="4" tag="245">
+          <subfield code="a">Die Familie Menz und die Stadt Bozen =</subfield>
+          <subfield code="b">La famiglia Menz e la città di Bolzano /</subfield>
+          <subfield code="c">[Kuratorin/ a cura di: Silvia Spada Pintarelli].</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="a">Bozen :</subfield>
+          <subfield code="b">Handels-, Industrie-, Handwerks- und Landwirtschaftskammer,</subfield>
+          <subfield code="c">2009.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">59 p. :</subfield>
+          <subfield code="b">ill. (chiefly col.) ;</subfield>
+          <subfield code="c">27 cm.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="490">
+          <subfield code="a">Heft = Quaderno / Merkantilmuseum Bozen ;</subfield>
+          <subfield code="v">1</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Published on the occasion of the permanent exhibition held in Bolzano, Italy, Merkantilmuseum.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Title and number of series appear on cover.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="504">
+          <subfield code="a">Includes bibliographical references (p. 56).</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="546">
+          <subfield code="a">Text in German and Italian.</subfield>
+        </datafield>
+        <datafield ind1="3" ind2="0" tag="600">
+          <subfield code="a">Menz family</subfield>
+          <subfield code="x">Art patronage</subfield>
+          <subfield code="v">Exhibitions.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Art patrons</subfield>
+          <subfield code="z">Italy</subfield>
+          <subfield code="z">Bolzano (Trentino-Alto Adige)</subfield>
+          <subfield code="v">Exhibitions.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Art</subfield>
+          <subfield code="z">Italy</subfield>
+          <subfield code="z">Bolzano (Trentino-Alto Adige)</subfield>
+          <subfield code="v">Exhibitions.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Spada Pintarelli, Silvia.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="830">
+          <subfield code="a">Heft = Quaderno / Merkantilmuseum Bozen ;</subfield>
+          <subfield code="v">1.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="904">
+          <subfield code="a">jar</subfield>
+          <subfield code="b">a</subfield>
+          <subfield code="h">m</subfield>
+          <subfield code="c">b</subfield>
+          <subfield code="e">20100614</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="902">
+          <subfield code="a">jar</subfield>
+          <subfield code="b">m</subfield>
+          <subfield code="6">a</subfield>
+          <subfield code="7">m</subfield>
+          <subfield code="d">v</subfield>
+          <subfield code="f">1</subfield>
+          <subfield code="e">20110201</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">Die Familie Menz und die Stadt Bozen = La famiglia Menz e la città di Bolzano / [Kuratorin/ a cura di: Silvia Spada Pintarelli].</field>
+    <field name="title_sort">Familie Menz und die Stadt Bozen = La famiglia Menz e la città di Bolzano</field>
+    <field name="title_t">Die Familie Menz und die Stadt Bozen = La famiglia Menz e la città di Bolzano / [Kuratorin/ a cura di: Silvia Spada Pintarelli].</field>
+    <field name="compiled_created_t">Die Familie Menz und die Stadt Bozen = La famiglia Menz e la città di Bolzano / [Kuratorin/ a cura di: Silvia Spada Pintarelli].</field>
+    <field name="pub_created_display">Bozen : Handels-, Industrie-, Handwerks- und Landwirtschaftskammer, 2009.</field>
+    <field name="pub_created_s">Bozen : Handels-, Industrie-, Handwerks- und Landwirtschaftskammer, 2009.</field>
+    <field name="pub_date_display">2009</field>
+    <field name="pub_date_start_sort">2009</field>
+    <field name="format">Book</field>
+    <field name="description_display">59 p. : ill. (chiefly col.) ; 27 cm.</field>
+    <field name="description_t">59 p. : ill. (chiefly col.) ; 27 cm.</field>
+    <field name="series_display">Heft = Quaderno / Merkantilmuseum Bozen ; 1</field>
+    <field name="series_display">Heft = Quaderno / Merkantilmuseum Bozen ; 1.</field>
+    <field name="notes_display">Published on the occasion of the permanent exhibition held in Bolzano, Italy, Merkantilmuseum.</field>
+    <field name="notes_display">Title and number of series appear on cover.</field>
+    <field name="bib_ref_notes_display">Includes bibliographical references (p. 56).</field>
+    <field name="language_display">Text in German and Italian.</field>
+    <field name="language_facet">German</field>
+    <field name="language_facet">Italian</field>
+    <field name="language_code_s">ger</field>
+    <field name="subject_display">Menz family—Art patronage—Exhibitions</field>
+    <field name="subject_display">Art patrons—Italy—Bolzano (Trentino-Alto Adige)—Exhibitions</field>
+    <field name="subject_display">Art—Italy—Bolzano (Trentino-Alto Adige)—Exhibitions</field>
+    <field name="subject_topic_facet">Menz family—Art patronage—Exhibitions</field>
+    <field name="subject_topic_facet">Art patrons—Italy—Bolzano (Trentino-Alto Adige)—Exhibitions</field>
+    <field name="subject_topic_facet">Art—Italy—Bolzano (Trentino-Alto Adige)—Exhibitions</field>
+    <field name="lc_1letter_facet">N - Fine Arts</field>
+    <field name="lc_rest_facet">N - Fine Arts</field>
+    <field name="related_name_display">Spada Pintarelli, Silvia</field>
+    <field name="marc_relatedor_display">aut</field>
+  </doc>
+  <doc>
+    <field name="id">3</field>
+    <field name="author_display">Messina, Claudio M.</field>
+    <field name="author_sort">Messina, Claudio M.</field>
+    <field name="author_s">Messina, Claudio M.</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>00996cam a2200301Ia 4500</leader>
+        <controlfield tag="001">3</controlfield>
+        <controlfield tag="005">20100616155532.0</controlfield>
+        <controlfield tag="008">890815s1988    it       r    001 0 ita d</controlfield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)ocm19590730</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)ocn301985443</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(NjP)3</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(CStRLIN)NJPGRRP-B</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)301985443</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)19590730</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">IUL</subfield>
+          <subfield code="c">IUL</subfield>
+          <subfield code="d">OCL</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="043">
+          <subfield code="a">e-it---</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="4" tag="050">
+          <subfield code="a">Z342</subfield>
+          <subfield code="b">.M47 1988</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="100">
+          <subfield code="a">Messina, Claudio M.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="245">
+          <subfield code="a">Guida ragionata alle librerie antiquarie e d&amp;apos;occasione d&amp;apos;Italia, 1989 /</subfield>
+          <subfield code="c">Claudio M. Messina; con uno scritto di Umberto Eco.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="250">
+          <subfield code="a">2. ed.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="a">Roma :</subfield>
+          <subfield code="b">Biblioteca del Vascello, Stampa Alternativa,</subfield>
+          <subfield code="c">1988.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">220 p. ;</subfield>
+          <subfield code="c">17 cm.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Includes index.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Booksellers and bookselling</subfield>
+          <subfield code="z">Italy</subfield>
+          <subfield code="v">Directories.</subfield>
+        </datafield>
+        <datafield ind1="4" ind2="2" tag="856">
+          <subfield code="u">http://d-nb.info/991834119/04</subfield>
+          <subfield code="3">Inhaltsverzeichnis</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="852">
+          <subfield code="b">rcppa</subfield>
+          <subfield code="t">1</subfield>
+          <subfield code="h">Z342</subfield>
+          <subfield code="i">.M48 1988</subfield>
+          <subfield code="x">tr fr f</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="852">
+          <subfield code="b">rcpxc</subfield>
+          <subfield code="h">Z342</subfield>
+          <subfield code="i">.M48 1988</subfield>
+          <subfield code="x">tr fr ctsnrf</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="999">
+          <subfield code="a">3</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco.</field>
+    <field name="title_sort">Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989</field>
+    <field name="title_t">Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco.</field>
+    <field name="compiled_created_t">Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco.</field>
+    <field name="edition_display">2. ed.</field>
+    <field name="pub_created_display">Roma : Biblioteca del Vascello, Stampa Alternativa, 1988.</field>
+    <field name="pub_created_s">Roma : Biblioteca del Vascello, Stampa Alternativa, 1988.</field>
+    <field name="pub_date_display">1988</field>
+    <field name="pub_date_start_sort">1988</field>
+    <field name="format">Book</field>
+    <field name="electronic_access_display">http://d-nb.info/991834119/04</field>
+    <field name="electronic_access_display">Inhaltsverzeichnis</field>
+    <field name="description_display">220 p. ; 17 cm.</field>
+    <field name="description_t">220 p. ; 17 cm.</field>
+    <field name="notes_display">Includes index.</field>
+    <field name="language_facet">Italian</field>
+    <field name="language_code_s">ita</field>
+    <field name="subject_display">Booksellers and bookselling—Italy—Directories</field>
+    <field name="subject_topic_facet">Booksellers and bookselling—Italy—Directories</field>
+    <field name="lc_1letter_facet">Z - Bibliography, Library Science, Information Resources</field>
+    <field name="lc_rest_facet">Z - Bibliography, Library Science, Information Resources</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="location_display">ReCAP</field>
+    <field name="location_display">ReCAP: Cotsen Library Off-Site Storage</field>
+    <field name="location_code_display">rcppa</field>
+    <field name="location_code_display">rcpxc</field>
+    <field name="location">ReCAP</field>
+    <field name="location">ReCAP</field>
+    <field name="call_number_display">Z342 .M48 1988</field>
+  </doc>
+  <doc>
+    <field name="id">4726573</field>
+    <field name="author_display">Hancock, John, 1737-1793</field>
+    <field name="author_sort">Hancock, John, 1737-1793</field>
+    <field name="author_s">Hancock, John, 1737-1793</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>01947cam a22003975a 4500</leader>
+        <controlfield tag="001">4726573</controlfield>
+        <controlfield tag="005">20060511125033.0</controlfield>
+        <controlfield tag="008">060509s1774    mau           000 0 eng d</controlfield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">MWA</subfield>
+          <subfield code="c">MWA</subfield>
+          <subfield code="d">Cu-RivES</subfield>
+          <subfield code="d">CStRLIN</subfield>
+          <subfield code="d">Thomson Gale</subfield>
+          <subfield code="d">NjP</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="043">
+          <subfield code="a">n-us-ma</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="100">
+          <subfield code="a">Hancock, John,</subfield>
+          <subfield code="d">1737-1793.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="3" tag="245">
+          <subfield code="a">An oration; delivered March 5, 1774,</subfield>
+          <subfield code="b">at the request of the inhabitants of the town of Boston: to commemorate the bloody tragedy of the fifth of March 1770. By the Honorable John Hancock, Esq; [Five lines in Latin from Virgil].</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="a">Boston :</subfield>
+          <subfield code="b">Printed by Edes and Gill, in Queen Street,</subfield>
+          <subfield code="c">M,DCC,LXXIV. [1774]</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">20, [2] p. ;</subfield>
+          <subfield code="c">25.5 x 20 cm. (fol.)</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">This catalogue record is derived in large part from a record for an electronic reproduction.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Half-title: An oration delivered March fifth, 1774.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Authorship of the oration has been attributed to Samuel Adams, to Benjamin Church and Joseph Warren, and to Samuel Cooper. See T.R. Adams, who notes &amp;quot;In all probability a number of Boston radicals had a hand in its composition.&amp;quot; -.</subfield>
+        </datafield>
+        <datafield ind1="4" ind2=" " tag="510">
+          <subfield code="a">Sabin</subfield>
+          <subfield code="c">30177</subfield>
+        </datafield>
+        <datafield ind1="4" ind2=" " tag="510">
+          <subfield code="a">Church</subfield>
+          <subfield code="c">1104</subfield>
+        </datafield>
+        <datafield ind1="4" ind2=" " tag="510">
+          <subfield code="a">Evans,</subfield>
+          <subfield code="c">13314</subfield>
+        </datafield>
+        <datafield ind1="4" ind2=" " tag="510">
+          <subfield code="a">Adams, T.R. Amer. pamphlets,</subfield>
+          <subfield code="c">117a</subfield>
+        </datafield>
+        <datafield ind1="4" ind2=" " tag="510">
+          <subfield code="a">English Short Title Catalog,</subfield>
+          <subfield code="c">ESTCW21489.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="561">
+          <subfield code="a">WHS copy acquired 3/13/29 from Goodspeed; inv. 616.</subfield>
+          <subfield code="5">NjP</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="583">
+          <subfield code="x">mlc</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Boston Massacre, 1770</subfield>
+          <subfield code="x">Anniversaries, etc.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="651">
+          <subfield code="a">United States</subfield>
+          <subfield code="x">History</subfield>
+          <subfield code="y">Revolution, 1775-1783</subfield>
+          <subfield code="x">Causes.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Cooper, Samuel,</subfield>
+          <subfield code="d">1725-1783.</subfield>
+          <subfield code="4">aut</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Warren, Joseph,</subfield>
+          <subfield code="d">1741-1775.</subfield>
+          <subfield code="4">aut</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Church, Benjamin,</subfield>
+          <subfield code="d">1734-1778.</subfield>
+          <subfield code="4">aut</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Adams, Samuel,</subfield>
+          <subfield code="d">1722-1803.</subfield>
+          <subfield code="4">aut</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+          <subfield code="a">Edes and Gill,</subfield>
+          <subfield code="e">printer.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="710">
+          <subfield code="a">Boston (Mass.).</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+          <subfield code="a">Goodspeed&amp;apos;s Book Shop (Boston, Mass.),</subfield>
+          <subfield code="e">bookseller.</subfield>
+          <subfield code="5">NjP</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="852">
+          <subfield code="b">whs</subfield>
+          <subfield code="t">1</subfield>
+          <subfield code="h">16.5.14</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="852">
+          <subfield code="b">hsvr</subfield>
+          <subfield code="c">EX</subfield>
+          <subfield code="h">Lapidus 2.28</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="902">
+          <subfield code="a">mrf</subfield>
+          <subfield code="b">m</subfield>
+          <subfield code="6">a</subfield>
+          <subfield code="7">m</subfield>
+          <subfield code="d">v</subfield>
+          <subfield code="f">1</subfield>
+          <subfield code="e">20060509</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">An oration; delivered March 5, 1774, at the request of the inhabitants of the town of Boston: to commemorate the bloody tragedy of the fifth of March 1770. By the Honorable John Hancock, Esq; [Five lines in Latin from Virgil].</field>
+    <field name="title_sort">oration; delivered March 5, 1774, at the request of the inhabitants of the town of Boston: to commemorate the bloody tragedy of the fifth of March 1770. By the Honorable John Hancock, Esq; [Five lines in Latin from Virgil].</field>
+    <field name="title_t">An oration; delivered March 5, 1774, at the request of the inhabitants of the town of Boston: to commemorate the bloody tragedy of the fifth of March 1770. By the Honorable John Hancock, Esq; [Five lines in Latin from Virgil].</field>
+    <field name="compiled_created_t">An oration; delivered March 5, 1774, at the request of the inhabitants of the town of Boston: to commemorate the bloody tragedy of the fifth of March 1770. By the Honorable John Hancock, Esq; [Five lines in Latin from Virgil].</field>
+    <field name="pub_created_display">Boston : Printed by Edes and Gill, in Queen Street, M,DCC,LXXIV. [1774]</field>
+    <field name="pub_created_s">Boston : Printed by Edes and Gill, in Queen Street, M,DCC,LXXIV. [1774]</field>
+    <field name="pub_date_display">1774</field>
+    <field name="pub_date_start_sort">1774</field>
+    <field name="format">Book</field>
+    <field name="description_display">20, [2] p. ; 25.5 x 20 cm. (fol.)</field>
+    <field name="description_t">20, [2] p. ; 25.5 x 20 cm. (fol.)</field>
+    <field name="notes_display">This catalogue record is derived in large part from a record for an electronic reproduction.</field>
+    <field name="notes_display">Half-title: An oration delivered March fifth, 1774.</field>
+    <field name="notes_display">Authorship of the oration has been attributed to Samuel Adams, to Benjamin Church and Joseph Warren, and to Samuel Cooper. See T.R. Adams, who notes "In all probability a number of Boston radicals had a hand in its composition." -.</field>
+    <field name="action_notes_display">mlc</field>
+    <field name="language_facet">English</field>
+    <field name="language_code_s">eng</field>
+    <field name="provenance_display">WHS copy acquired 3/13/29 from Goodspeed; inv. 616.</field>
+    <field name="references_display">Sabin 30177</field>
+    <field name="references_display">Church 1104</field>
+    <field name="references_display">Evans, 13314</field>
+    <field name="references_display">Adams, T.R. Amer. pamphlets, 117a</field>
+    <field name="references_display">English Short Title Catalog, ESTCW21489.</field>
+    <field name="subject_display">Boston Massacre, 1770—Anniversaries, etc</field>
+    <field name="subject_display">United States—History—Revolution, 1775-1783—Causes</field>
+    <field name="subject_topic_facet">Boston Massacre, 1770—Anniversaries, etc</field>
+    <field name="subject_topic_facet">United States—History—Revolution, 1775-1783—Causes</field>
+    <field name="related_name_display">Cooper, Samuel, 1725-1783</field>
+    <field name="related_name_display">Warren, Joseph, 1741-1775</field>
+    <field name="related_name_display">Church, Benjamin, 1734-1778</field>
+    <field name="related_name_display">Adams, Samuel, 1722-1803</field>
+    <field name="related_name_display">Edes and Gill, printer</field>
+    <field name="related_name_display">Boston (Mass.).</field>
+    <field name="related_name_display">Goodspeed's Book Shop (Boston, Mass.), bookseller</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="subject_era_facet">United States: Revolution, 1775-1783</field>
+    <field name="location_display">Rare Books and Special Collections: William H. Scheide Library</field>
+    <field name="location_display">Rare Books and Special Collections: South East (RB)</field>
+    <field name="location_code_display">whs</field>
+    <field name="location_code_display">hsvr</field>
+    <field name="location">Rare Books and Special Collections</field>
+    <field name="location">Rare Books and Special Collections</field>
+    <field name="call_number_display">16.5.14</field>
+    <field name="call_number_display">EX Lapidus 2.28</field>
+  </doc>
+  <doc>
+    <field name="id">489972</field>
+    <field name="author_display">Berg, Alban, 1885-1935</field>
+    <field name="author_sort">Berg, Alban, 1885-1935</field>
+    <field name="author_s">Berg, Alban, 1885-1935</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>01580ccm a2200385 a 4500</leader>
+        <controlfield tag="001">489972</controlfield>
+        <controlfield tag="005">20120805100713.0</controlfield>
+        <controlfield tag="008">880504m19781985au opbu        n 1  ger  </controlfield>
+        <datafield ind1=" " ind2=" " tag="010">
+          <subfield code="a">   87750014 /M </subfield>
+        </datafield>
+        <datafield ind1="3" ind2="0" tag="028">
+          <subfield code="a">13640a</subfield>
+          <subfield code="b">Universal Edition</subfield>
+        </datafield>
+        <datafield ind1="3" ind2="0" tag="028">
+          <subfield code="a">13640b</subfield>
+          <subfield code="b">Universal Edition</subfield>
+        </datafield>
+        <datafield ind1="2" ind2="2" tag="028">
+          <subfield code="a">U.E. 12864</subfield>
+          <subfield code="b">Universal Edition</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)15281357</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(CStRLIN)NJPG88-C360</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="9">ACG5686TS</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="050">
+          <subfield code="a">M1500.B48</subfield>
+          <subfield code="b">L8 1985</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="100">
+          <subfield code="a">Berg, Alban,</subfield>
+          <subfield code="d">1885-1935.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="245">
+          <subfield code="a">Lulu :</subfield>
+          <subfield code="b">Oper nach Frank Wedekinds Tragödien Erdgeist und Büchse der Pandora /</subfield>
+          <subfield code="c">von Alban Berg ; herausgegeben von H.E. Apostel, 1963 ; revidiert von Friedrich Cerha, 1985.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="254">
+          <subfield code="a">Partitur.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="a">Wien :</subfield>
+          <subfield code="b">Universal Edition,</subfield>
+          <subfield code="c">c1978-c1985.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">1 miniature score (2 v. (viii, 1008 p.)) :</subfield>
+          <subfield code="b">facsim. ;</subfield>
+          <subfield code="c">24 cm.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">The orchestral score of Act 3 prepared by Friedrich Cerha from the composer&amp;apos;s short score; libretto by the composer.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="505">
+          <subfield code="a">[1]. I. und II. Akt -- [2]. III. Akt.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Publisher&amp;apos;s no.: Universal Edition no. 13640a-b.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Operas</subfield>
+          <subfield code="x">Scores.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Apostel, Hans Erich,</subfield>
+          <subfield code="d">1901-1972.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Cerha, Friedrich.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Wedekind, Frank,</subfield>
+          <subfield code="d">1864-1918.</subfield>
+          <subfield code="t">Erdgeist.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Wedekind, Frank,</subfield>
+          <subfield code="d">1864-1918.</subfield>
+          <subfield code="t">Büchse der Pandora.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="852">
+          <subfield code="b">sv</subfield>
+          <subfield code="t">1</subfield>
+          <subfield code="h">M1500.B37</subfield>
+          <subfield code="i">L9 1985</subfield>
+          <subfield code="x">tr fr svl</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="852">
+          <subfield code="b">mus</subfield>
+          <subfield code="t">2</subfield>
+          <subfield code="h">M1500.B37</subfield>
+          <subfield code="i">L9 1985</subfield>
+          <subfield code="x">tr fr svl</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="911">
+          <subfield code="a">19930311</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="912">
+          <subfield code="a">19930218000000.0</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="948">
+          <subfield code="a">TRANS FR F</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="998">
+          <subfield code="a">02/18/93</subfield>
+          <subfield code="s">9110</subfield>
+          <subfield code="n">NjP</subfield>
+          <subfield code="w">DCLC87750014C</subfield>
+          <subfield code="d">05/04/88</subfield>
+          <subfield code="c">BGN</subfield>
+          <subfield code="b">CS</subfield>
+          <subfield code="i">930218</subfield>
+          <subfield code="l">NJPG</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">Lulu : Oper nach Frank Wedekinds Tragödien Erdgeist und Büchse der Pandora / von Alban Berg ; herausgegeben von H.E. Apostel, 1963 ; revidiert von Friedrich Cerha, 1985.</field>
+    <field name="title_sort">Lulu : Oper nach Frank Wedekinds Tragödien Erdgeist und Büchse der Pandora</field>
+    <field name="title_t">Lulu : Oper nach Frank Wedekinds Tragödien Erdgeist und Büchse der Pandora / von Alban Berg ; herausgegeben von H.E. Apostel, 1963 ; revidiert von Friedrich Cerha, 1985.</field>
+    <field name="compiled_created_t">Lulu : Oper nach Frank Wedekinds Tragödien Erdgeist und Büchse der Pandora / von Alban Berg ; herausgegeben von H.E. Apostel, 1963 ; revidiert von Friedrich Cerha, 1985.</field>
+    <field name="pub_created_display">Wien : Universal Edition, c1978-c1985.</field>
+    <field name="pub_created_s">Wien : Universal Edition, c1978-c1985.</field>
+    <field name="pub_date_display">1978</field>
+    <field name="pub_date_start_sort">1978</field>
+    <field name="pub_date_end_sort">1985</field>
+    <field name="format">Musical Score</field>
+    <field name="description_display">Partitur.</field>
+    <field name="description_display">1 miniature score (2 v. (viii, 1008 p.)) : facsim. ; 24 cm.</field>
+    <field name="description_t">Partitur.</field>
+    <field name="description_t">1 miniature score (2 v. (viii, 1008 p.)) : facsim. ; 24 cm.</field>
+    <field name="notes_display">The orchestral score of Act 3 prepared by Friedrich Cerha from the composer's short score; libretto by the composer.</field>
+    <field name="notes_display">Publisher's no.: Universal Edition no. 13640a-b.</field>
+    <field name="language_facet">German</field>
+    <field name="language_code_s">ger</field>
+    <field name="contents_display">[1]. I. und II. Akt -- [2]. III. Akt.</field>
+    <field name="subject_display">Operas—Scores</field>
+    <field name="subject_topic_facet">Operas—Scores</field>
+    <field name="lc_1letter_facet">M - Music</field>
+    <field name="lc_rest_facet">M - Music</field>
+    <field name="related_name_display">Apostel, Hans Erich, 1901-1972</field>
+    <field name="related_name_display">Cerha, Friedrich</field>
+    <field name="related_name_display">Wedekind, Frank, 1864-1918</field>
+    <field name="related_works_display">Erdgeist</field>
+    <field name="related_works_display">Büchse der Pandora</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="publisher_no_display">13640a</field>
+    <field name="publisher_no_display">13640b</field>
+    <field name="publisher_no_display">U.E. 12864</field>
+    <field name="standard_no_display">   87750014 /M </field>
+    <field name="location_display">Mendel Music Library: Reference</field>
+    <field name="location_display">Mendel Music Library</field>
+    <field name="location_code_display">sv</field>
+    <field name="location_code_display">mus</field>
+    <field name="location">Mendel Music Library</field>
+    <field name="location">Mendel Music Library</field>
+    <field name="call_number_display">M1500.B37 L9 1985</field>
+  </doc>
+  <doc>
+    <field name="id">5525311</field>
+    <field name="author_display">Bach, Johann Sebastian, 1685-1750</field>
+    <field name="author_sort">Bach, Johann Sebastian, 1685-1750</field>
+    <field name="author_s">Bach, Johann Sebastian, 1685-1750</field>
+    <field name="marc_relator_display">Composer</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>01536cjm a2200349Ia 4500</leader>
+        <controlfield tag="001">5525311</controlfield>
+        <controlfield tag="005">20080718160556.0</controlfield>
+        <controlfield tag="007">sd bumennmplue</controlfield>
+        <controlfield tag="008">740729s1968    nyumun              zxx d</controlfield>
+        <datafield ind1=" " ind2=" " tag="010">
+          <subfield code="a">r  68003516 </subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="019">
+          <subfield code="a">585369</subfield>
+          <subfield code="a">3005485</subfield>
+          <subfield code="a">35216029</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="2" tag="028">
+          <subfield code="a">MS 7194</subfield>
+          <subfield code="b">Columbia</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)ocm00966189</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)966189</subfield>
+          <subfield code="z">(OCoLC)585369</subfield>
+          <subfield code="z">(OCoLC)3005485</subfield>
+          <subfield code="z">(OCoLC)35216029</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">KSU</subfield>
+          <subfield code="c">KSU</subfield>
+          <subfield code="d">OCL</subfield>
+          <subfield code="d">LUS</subfield>
+          <subfield code="d">BGU</subfield>
+          <subfield code="d">OCL</subfield>
+          <subfield code="d">PUL</subfield>
+          <subfield code="d">OCLCG</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="049">
+          <subfield code="a">PULL</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="090">
+          <subfield code="a">M1473.B3</subfield>
+          <subfield code="b">S958 1968</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="100">
+          <subfield code="a">Bach, Johann Sebastian,</subfield>
+          <subfield code="d">1685-1750.</subfield>
+          <subfield code="4">cmp</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="240">
+          <subfield code="a">Selections;</subfield>
+          <subfield code="o">arr.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="245">
+          <subfield code="a">Switched-on Bach</subfield>
+          <subfield code="h">[sound recording].</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="a">New York :</subfield>
+          <subfield code="b">Columbia,</subfield>
+          <subfield code="c">[1968]</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">1 sound disc (40 min.) :</subfield>
+          <subfield code="b">analog, 33 1/3 rpm, stereo. ;</subfield>
+          <subfield code="c">12 in.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="490">
+          <subfield code="a">Columbia masterworks</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="511">
+          <subfield code="a">Electronic realizations and performances by Walter Carlos, with the assistance of Benjamin Folkman.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Program notes by Benjamin Folkman, Robert Moog, and Rachel Elkind on container.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="505">
+          <subfield code="a">Sinfonia to Cantata no. 29 -- Air on a G string -- Two part inventions in F major, B-flat major, and D minor -- Jesu, joy of man&amp;apos;s desiring -- Preludes and fugues, no. 7 and 2, from book 1 of The well-tempered clavier -- Chorale prelude, Wachet auf -- Brandenburg concerto no. 3, in G major.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Electronic music.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Carlos, Wendy.</subfield>
+          <subfield code="4">arr</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Folkman, Benjamin.</subfield>
+          <subfield code="4">arr</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="852">
+          <subfield code="b">rcpqk</subfield>
+          <subfield code="h">LS- 1074</subfield>
+          <subfield code="x">tr fr mus</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="994">
+          <subfield code="a">C0</subfield>
+          <subfield code="b">PUL</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="902">
+          <subfield code="a">dpg</subfield>
+          <subfield code="b">x</subfield>
+          <subfield code="6">j</subfield>
+          <subfield code="7">m</subfield>
+          <subfield code="d">v</subfield>
+          <subfield code="f">1</subfield>
+          <subfield code="e">20080718</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="uniform_title_display">Selections; arr</field>
+    <field name="title_display">Switched-on Bach [sound recording].</field>
+    <field name="title_sort">Switched-on Bach</field>
+    <field name="title_t">Switched-on Bach [sound recording].</field>
+    <field name="compiled_created_t">Switched-on Bach [sound recording].</field>
+    <field name="pub_created_display">New York : Columbia, [1968]</field>
+    <field name="pub_created_s">New York : Columbia, [1968]</field>
+    <field name="pub_date_display">1968</field>
+    <field name="pub_date_start_sort">1968</field>
+    <field name="format">Audio</field>
+    <field name="description_display">1 sound disc (40 min.) : analog, 33 1/3 rpm, stereo. ; 12 in.</field>
+    <field name="description_t">1 sound disc (40 min.) : analog, 33 1/3 rpm, stereo. ; 12 in.</field>
+    <field name="series_display">Columbia masterworks</field>
+    <field name="notes_display">Program notes by Benjamin Folkman, Robert Moog, and Rachel Elkind on container.</field>
+    <field name="participant_performer_display">Electronic realizations and performances by Walter Carlos, with the assistance of Benjamin Folkman.</field>
+    <field name="language_code_s">zxx</field>
+    <field name="contents_display">Sinfonia to Cantata no. 29 -- Air on a G string -- Two part inventions in F major, B-flat major, and D minor -- Jesu, joy of man's desiring -- Preludes and fugues, no. 7 and 2, from book 1 of The well-tempered clavier -- Chorale prelude, Wachet auf -- Brandenburg concerto no. 3, in G major.</field>
+    <field name="subject_display">Electronic music</field>
+    <field name="subject_topic_facet">Electronic music</field>
+    <field name="related_name_display">Carlos, Wendy</field>
+    <field name="related_name_display">Folkman, Benjamin</field>
+    <field name="marc_relatedor_display">arr</field>
+    <field name="marc_relatedor_display">arr</field>
+    <field name="publisher_no_display">MS 7194</field>
+    <field name="standard_no_display">r  68003516 </field>
+    <field name="location_display">ReCAP: Mendel Music Library use only. </field>
+    <field name="location_code_display">rcpqk</field>
+    <field name="location">ReCAP</field>
+    <field name="call_number_display">LS- 1074</field>
+  </doc>
+  <doc>
+    <field name="id">3871398</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>03976cam a2200577 a 4500</leader>
+        <controlfield tag="001">3871398</controlfield>
+        <controlfield tag="005">20080613105637.0</controlfield>
+        <controlfield tag="008">030404s1604    cc            000 0 chi d</controlfield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)ocn153844960</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)153844960</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(CStRLIN)NJPX97-B2556</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">CStRLIN</subfield>
+          <subfield code="c">PULEA</subfield>
+          <subfield code="d">PULEA</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="049">
+          <subfield code="a">MAIN</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="079">
+          <subfield code="a">ocm52579498</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="245">
+          <subfield code="6">880-01</subfield>
+          <subfield code="a">Xin bian gu jin shi wen lei ju :</subfield>
+          <subfield code="b">[si ji yi bai qi shi juan] /</subfield>
+          <subfield code="c">Zhu Mu bian. Xin bian gu jin shi wen lei ju xin ji : san shi liu juan ; Xin bian gu jin shi wen lei ju wai ji : shi wu juan / Fu Dayong bian. Xin bian gu jin shi wen lei ju yi ji : shi wu juan / Zhu Yuan bian.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="880">
+          <subfield code="6">245-01</subfield>
+          <subfield code="a">新編古今事文類聚 :</subfield>
+          <subfield code="b">[四集一百七十卷] /</subfield>
+          <subfield code="c">祝穆編. 新編古今事文類聚新集 : 三十六卷 ; 新編古今事文類聚外集 : 十五卷 / 富大用編. 新編古今事文類聚遺集 : 十五卷 / 祝淵編.</subfield>
+        </datafield>
+        <datafield ind1="3" ind2=" " tag="246">
+          <subfield code="6">880-02</subfield>
+          <subfield code="a">Shi wen lei ju</subfield>
+        </datafield>
+        <datafield ind1="3" ind2=" " tag="880">
+          <subfield code="6">246-02</subfield>
+          <subfield code="a">事文類聚</subfield>
+        </datafield>
+        <datafield ind1="3" ind2="0" tag="246">
+          <subfield code="6">880-03</subfield>
+          <subfield code="a">Gu jin shi wen lei ju</subfield>
+        </datafield>
+        <datafield ind1="3" ind2="0" tag="880">
+          <subfield code="6">246-03</subfield>
+          <subfield code="a">古今事文類聚</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="6">880-04</subfield>
+          <subfield code="a">Jinling :</subfield>
+          <subfield code="b">Tang Fuchun De shou tang,</subfield>
+          <subfield code="c">Ming Wanli Jia chen [32 nian, 1604]</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="880">
+          <subfield code="6">260-04</subfield>
+          <subfield code="a">金陵 :</subfield>
+          <subfield code="b">唐富春德壽堂,</subfield>
+          <subfield code="c">明萬曆甲辰 [32年, 1604]</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">112 v. ;</subfield>
+          <subfield code="c">25 cm.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">In 14 cases.</subfield>
+          <subfield code="5">NjP-G</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Encyclopedias and dictionaries, Chinese.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="7" tag="650">
+          <subfield code="6">880-05</subfield>
+          <subfield code="a">Zi bu</subfield>
+          <subfield code="x">Lei shu lei.</subfield>
+          <subfield code="2">sk</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="7" tag="880">
+          <subfield code="6">650-05</subfield>
+          <subfield code="a">子部</subfield>
+          <subfield code="x">類書類.</subfield>
+          <subfield code="2">sk</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="6">880-06</subfield>
+          <subfield code="a">Zhu, Mu,</subfield>
+          <subfield code="d">13th cent.,</subfield>
+          <subfield code="e">bian.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="880">
+          <subfield code="6">700-06</subfield>
+          <subfield code="a">祝穆,</subfield>
+          <subfield code="d">13th cent.,</subfield>
+          <subfield code="e">編.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="6">880-07</subfield>
+          <subfield code="a">Fu, Dayong,</subfield>
+          <subfield code="e">bian.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="880">
+          <subfield code="6">700-07</subfield>
+          <subfield code="a">富大用,</subfield>
+          <subfield code="e">編.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="6">880-08</subfield>
+          <subfield code="a">Zhu, Yuan,</subfield>
+          <subfield code="e">bian.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="880">
+          <subfield code="6">700-08</subfield>
+          <subfield code="a">祝淵,</subfield>
+          <subfield code="e">編.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="6">880-09</subfield>
+          <subfield code="a">Tang, Fuchun,</subfield>
+          <subfield code="e">ke.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="880">
+          <subfield code="6">700-09</subfield>
+          <subfield code="a">唐富春,</subfield>
+          <subfield code="e">刻.</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+          <subfield code="6">880-10</subfield>
+          <subfield code="a">De shou tang,</subfield>
+          <subfield code="e">ke.</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="880">
+          <subfield code="6">710-10</subfield>
+          <subfield code="a">德壽堂,</subfield>
+          <subfield code="e">刻.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="2" tag="730">
+          <subfield code="6">880-11</subfield>
+          <subfield code="a">Xin bian gu jin shi wen lei ju xin ji.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="2" tag="880">
+          <subfield code="6">730-11</subfield>
+          <subfield code="a">新編古今事文類聚新集.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="2" tag="730">
+          <subfield code="6">880-12</subfield>
+          <subfield code="a">Xin bian gu jin shi wen lei ju wai ji.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="2" tag="880">
+          <subfield code="6">730-12</subfield>
+          <subfield code="a">新編古今事文類聚外集.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="2" tag="730">
+          <subfield code="6">880-13</subfield>
+          <subfield code="a">Xin bian gu jin shi wen lei ju yi ji.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="2" tag="880">
+          <subfield code="6">730-13</subfield>
+          <subfield code="a">新編古今事文類聚遺集.</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="797">
+          <subfield code="a">CHRBA.</subfield>
+        </datafield>
+        <datafield ind1="4" ind2="1" tag="856">
+          <subfield code="3">First page of main text</subfield>
+          <subfield code="u">http://digital.lib.cuhk.edu.hk/crbp/servlet/list?action=afs&amp;amp;startPos=1&amp;amp;id=NJPX97B2556</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="852">
+          <subfield code="a">NjP-G</subfield>
+          <subfield code="b">HYC</subfield>
+          <subfield code="j">TC348/371</subfield>
+          <subfield code="k">Rare</subfield>
+          <subfield code="x">c.1 (vol. 1-8) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">c.1 (vol. 9-16) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">c.1 (vol. 17-24) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">c.1 (vol. 25-32) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">c.1 (vol. 33-40) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">c.1 (vol. 41-48) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">c.1 (vol. 49-56) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">c.1 (vol. 57-64) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">c.1 (vol. 65-72) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">c.1 (vol. 73-80) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">c.1 (vol. 81-88) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">c.1 (vol. 89-96) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">c.1 (vol. 97-104) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">c.1 (vol. 105-112) Gillis 371. All vols. bound separately, in case</subfield>
+          <subfield code="x">CIN=HXZ; OID=MMH</subfield>
+          <subfield code="z">Library has: (vol. 1-8); (vol. 9-16); (vol. 17-24); (vol. 25-32); (vol. 33-40); (vol. 41-48); (vol. 49-56); (vol. 57-64); (vol. 65-72); (vol. 73-80); (vol. 81-88); (vol. 89-96); (vol. 97-104); (vol. 105-112)</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="880">
+          <subfield code="6">500-00</subfield>
+          <subfield code="a">卷端題&amp;quot;金陵唐富春刊&amp;quot;.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="880">
+          <subfield code="6">500-00</subfield>
+          <subfield code="a">框21.2 x 14.6公分, 11行24字, 白口, 四周單邊, 單黑魚尾, 版心上鐫&amp;quot;事文類聚&amp;quot;及集次, 中鐫卷次, 下鐫&amp;quot;德壽堂梓&amp;quot;.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="880">
+          <subfield code="6">500-00</subfield>
+          <subfield code="a">&amp;quot;重刻事文類聚序&amp;quot;後鐫&amp;quot;萬曆甲辰孟春之吉金谿唐富春精校補遺重刻&amp;quot;.</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="852">
+          <subfield code="b">hycrare</subfield>
+          <subfield code="h">TC348/371</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="994">
+          <subfield code="a">C0</subfield>
+          <subfield code="b">PULEA</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">Xin bian gu jin shi wen lei ju : [si ji yi bai qi shi juan] / Zhu Mu bian. Xin bian gu jin shi wen lei ju xin ji : san shi liu juan ; Xin bian gu jin shi wen lei ju wai ji : shi wu juan / Fu Dayong bian. Xin bian gu jin shi wen lei ju yi ji : shi wu juan / Zhu Yuan bian.</field>
+    <field name="title_vern_display">新編古今事文類聚 : [四集一百七十卷] / 祝穆編. 新編古今事文類聚新集 : 三十六卷 ; 新編古今事文類聚外集 : 十五卷 / 富大用編. 新編古今事文類聚遺集 : 十五卷 / 祝淵編.</field>
+    <field name="title_sort">Xin bian gu jin shi wen lei ju : [si ji yi bai qi shi juan]</field>
+    <field name="title_t">Xin bian gu jin shi wen lei ju : [si ji yi bai qi shi juan] / Zhu Mu bian. Xin bian gu jin shi wen lei ju xin ji : san shi liu juan ; Xin bian gu jin shi wen lei ju wai ji : shi wu juan / Fu Dayong bian. Xin bian gu jin shi wen lei ju yi ji : shi wu juan / Zhu Yuan bian.</field>
+    <field name="compiled_created_t">Xin bian gu jin shi wen lei ju : [si ji yi bai qi shi juan] / Zhu Mu bian. Xin bian gu jin shi wen lei ju xin ji : san shi liu juan ; Xin bian gu jin shi wen lei ju wai ji : shi wu juan / Fu Dayong bian. Xin bian gu jin shi wen lei ju yi ji : shi wu juan / Zhu Yuan bian.</field>
+    <field name="compiled_created_t">新編古今事文類聚 : [四集一百七十卷] / 祝穆編. 新編古今事文類聚新集 : 三十六卷 ; 新編古今事文類聚外集 : 十五卷 / 富大用編. 新編古今事文類聚遺集 : 十五卷 / 祝淵編.</field>
+    <field name="pub_created_display">Jinling : Tang Fuchun De shou tang, Ming Wanli Jia chen [32 nian, 1604]</field>
+    <field name="pub_created_display">金陵 : 唐富春德壽堂, 明萬曆甲辰 [32年, 1604]</field>
+    <field name="pub_created_s">Jinling : Tang Fuchun De shou tang, Ming Wanli Jia chen [32 nian, 1604]</field>
+    <field name="pub_date_display">1604</field>
+    <field name="pub_date_start_sort">1604</field>
+    <field name="format">Book</field>
+    <field name="electronic_access_display">http://digital.lib.cuhk.edu.hk/crbp/servlet/list?action=afs&amp;startPos=1&amp;id=NJPX97B2556</field>
+    <field name="electronic_access_display">First page of main text</field>
+    <field name="description_display">112 v. ; 25 cm.</field>
+    <field name="description_t">112 v. ; 25 cm.</field>
+    <field name="notes_display">In 14 cases.</field>
+    <field name="notes_display">卷端題"金陵唐富春刊".</field>
+    <field name="notes_display">框21.2 x 14.6公分, 11行24字, 白口, 四周單邊, 單黑魚尾, 版心上鐫"事文類聚"及集次, 中鐫卷次, 下鐫"德壽堂梓".</field>
+    <field name="notes_display">"重刻事文類聚序"後鐫"萬曆甲辰孟春之吉金谿唐富春精校補遺重刻".</field>
+    <field name="language_facet">Chinese</field>
+    <field name="language_code_s">chi</field>
+    <field name="provenance_display">CHRBA.</field>
+    <field name="subject_display">Encyclopedias and dictionaries, Chinese</field>
+    <field name="subject_display">Zi bu—Lei shu lei</field>
+    <field name="subject_display">子部—類書類.</field>
+    <field name="subject_topic_facet">Encyclopedias and dictionaries, Chinese</field>
+    <field name="subject_topic_facet">Zi bu—Lei shu lei</field>
+    <field name="subject_topic_facet">子部—類書類.</field>
+    <field name="related_name_display">Zhu, Mu, 13th cent., bian</field>
+    <field name="related_name_display">祝穆, 13th cent., 編.</field>
+    <field name="related_name_display">Fu, Dayong, bian</field>
+    <field name="related_name_display">富大用, 編.</field>
+    <field name="related_name_display">Zhu, Yuan, bian</field>
+    <field name="related_name_display">祝淵, 編.</field>
+    <field name="related_name_display">Tang, Fuchun, ke.</field>
+    <field name="related_name_display">唐富春, 刻.</field>
+    <field name="related_name_display">De shou tang, ke.</field>
+    <field name="related_name_display">德壽堂, 刻.</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="other_title_display">Shi wen lei ju</field>
+    <field name="other_title_display">事文類聚</field>
+    <field name="other_title_display">Gu jin shi wen lei ju</field>
+    <field name="other_title_display">古今事文類聚</field>
+    <field name="other_title_display">Xin bian gu jin shi wen lei ju xin ji.</field>
+    <field name="other_title_display">新編古今事文類聚新集.</field>
+    <field name="other_title_display">Xin bian gu jin shi wen lei ju wai ji.</field>
+    <field name="other_title_display">新編古今事文類聚外集.</field>
+    <field name="other_title_display">Xin bian gu jin shi wen lei ju yi ji.</field>
+    <field name="other_title_display">新編古今事文類聚遺集.</field>
+    <field name="location_display">East Asian Library: Rare Books</field>
+    <field name="location_code_display">HYC</field>
+    <field name="location_code_display">hycrare</field>
+    <field name="location">HYC</field>
+    <field name="location">East Asian Library</field>
+    <field name="call_number_display">TC348/371 Rare</field>
+    <field name="call_number_display">TC348/371</field>
+    <field name="location_notes_display">Library has: (vol. 1-8); (vol. 9-16); (vol. 17-24); (vol. 25-32); (vol. 33-40); (vol. 41-48); (vol. 49-56); (vol. 57-64); (vol. 65-72); (vol. 73-80); (vol. 81-88); (vol. 89-96); (vol. 97-104); (vol. 105-112)</field>
+  </doc>
+  <doc>
+    <field name="id">430472</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>01267cam a2200277 a 4500</leader>
+        <controlfield tag="001">430472</controlfield>
+        <controlfield tag="005">20120717125457.0</controlfield>
+        <controlfield tag="008">880111m19879999jo       b    00110 ara d</controlfield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)31214190</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(CStRLIN)NJPG88-B1222</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="9">ACA6068TS</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">NjP</subfield>
+          <subfield code="c">NjP</subfield>
+          <subfield code="d">NjP</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="3" tag="245">
+          <subfield code="a">al-Fihris al-shāmil lil-turāth al-ʻArabī al-Islāmī al-makhṭūṭ.</subfield>
+          <subfield code="p">ʻUlūm al-Qurʼān.</subfield>
+          <subfield code="p">Makhṭūṭāt al-tafsīr /</subfield>
+          <subfield code="c">Muʼassasat Āl al-Bayt, al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="a">ʻAmmān :</subfield>
+          <subfield code="b">al-Muʼassasah,</subfield>
+          <subfield code="c">1987-</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">v. ;</subfield>
+          <subfield code="c">24 cm.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="490">
+          <subfield code="a">Manshūrāt al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah ;</subfield>
+          <subfield code="v">raqm 83-</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Vol. [13]: Index.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="630">
+          <subfield code="a">Koran</subfield>
+          <subfield code="x">Criticism, interpretation, etc.</subfield>
+          <subfield code="x">Manuscripts</subfield>
+          <subfield code="x">Catalogs.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Manuscripts, Arabic</subfield>
+          <subfield code="x">Catalogs.</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+          <subfield code="a">Royal Academy for Islamic Civilization Research.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="830">
+          <subfield code="a">Manshūrāt al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah ;</subfield>
+          <subfield code="v">raqm 83, etc.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="1" tag="852">
+          <subfield code="b">nec</subfield>
+          <subfield code="t">1</subfield>
+          <subfield code="h">Z6611.T3F545 1987</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="852">
+          <subfield code="b">sne</subfield>
+          <subfield code="t">1</subfield>
+          <subfield code="h">Z6611.T3F545 1987</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="911">
+          <subfield code="a">19941111</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="912">
+          <subfield code="a">19941103000000.0</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="998">
+          <subfield code="a">11/03/94</subfield>
+          <subfield code="s">9118</subfield>
+          <subfield code="n">NjP</subfield>
+          <subfield code="w">NJPG88B1222</subfield>
+          <subfield code="d">01/11/88</subfield>
+          <subfield code="c">KVV</subfield>
+          <subfield code="b">NHT</subfield>
+          <subfield code="i">941103</subfield>
+          <subfield code="l">NJPG</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">al-Fihris al-shāmil lil-turāth al-ʻArabī al-Islāmī al-makhṭūṭ. ʻUlūm al-Qurʼān. Makhṭūṭāt al-tafsīr / Muʼassasat Āl al-Bayt, al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah.</field>
+    <field name="title_sort">Fihris al-shāmil lil-turāth al-ʻArabī al-Islāmī al-makhṭūṭ.</field>
+    <field name="title_t">al-Fihris al-shāmil lil-turāth al-ʻArabī al-Islāmī al-makhṭūṭ. ʻUlūm al-Qurʼān. Makhṭūṭāt al-tafsīr / Muʼassasat Āl al-Bayt, al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah.</field>
+    <field name="compiled_created_t">al-Fihris al-shāmil lil-turāth al-ʻArabī al-Islāmī al-makhṭūṭ. ʻUlūm al-Qurʼān. Makhṭūṭāt al-tafsīr / Muʼassasat Āl al-Bayt, al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah.</field>
+    <field name="pub_created_display">ʻAmmān : al-Muʼassasah, 1987-</field>
+    <field name="pub_created_s">ʻAmmān : al-Muʼassasah, 1987-</field>
+    <field name="pub_date_display">1987</field>
+    <field name="pub_date_start_sort">1987</field>
+    <field name="pub_date_end_sort">9999</field>
+    <field name="format">Book</field>
+    <field name="description_display">v. ; 24 cm.</field>
+    <field name="description_t">v. ; 24 cm.</field>
+    <field name="series_display">Manshūrāt al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah ; raqm 83-</field>
+    <field name="series_display">Manshūrāt al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah ; raqm 83, etc.</field>
+    <field name="notes_display">Vol. [13]: Index.</field>
+    <field name="language_facet">Arabic</field>
+    <field name="language_code_s">ara</field>
+    <field name="subject_display">Koran—Criticism, interpretation, etc.—Manuscripts—Catalogs</field>
+    <field name="subject_display">Manuscripts, Arabic—Catalogs</field>
+    <field name="subject_topic_facet">Koran—Criticism, interpretation, etc.—Manuscripts—Catalogs</field>
+    <field name="subject_topic_facet">Manuscripts, Arabic—Catalogs</field>
+    <field name="related_name_display">Royal Academy for Islamic Civilization Research</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="location_display">Firestone Library: Near East Collections</field>
+    <field name="location_display">Firestone Library: Near East Graduate Study Room</field>
+    <field name="location_code_display">nec</field>
+    <field name="location_code_display">sne</field>
+    <field name="location">Firestone Library</field>
+    <field name="location">Firestone Library</field>
+    <field name="call_number_display">Z6611.T3F545 1987</field>
+  </doc>
+  <doc>
+    <field name="id">4705304</field>
+    <field name="author_display">Dawwānī, Muḥammad ibn Asʻad, 1426 or 7-1512 or 13</field>
+    <field name="author_display">دواني، محمد بن اسعد</field>
+    <field name="author_sort">Dawwānī, Muḥammad ibn Asʻad, 1426 or 7-1512 or 13</field>
+    <field name="author_s">Dawwānī, Muḥammad ibn Asʻad, 1426 or 7-1512 or 13</field>
+    <field name="author_s">دواني، محمد بن اسعد</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>04673ctm a2200589Ia 4500</leader>
+        <controlfield tag="001">4705304</controlfield>
+        <controlfield tag="005">20120605122422.0</controlfield>
+        <controlfield tag="008">060419s1501    xx p          000 0 ara d</controlfield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)ocm67146416</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">PUL</subfield>
+          <subfield code="c">PUL</subfield>
+          <subfield code="e">amremm</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="043">
+          <subfield code="a">n-us-nj</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="049">
+          <subfield code="a">PULL</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="100">
+          <subfield code="6">880-01</subfield>
+          <subfield code="a">Dawwānī, Muḥammad ibn Asʻad,</subfield>
+          <subfield code="d">1426 or 7-1512 or 13</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="880">
+          <subfield code="6">100-01//r</subfield>
+          <subfield code="a">دواني، محمد بن اسعد</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="245">
+          <subfield code="6">880-02</subfield>
+          <subfield code="a">Risālat al-Zawrāʼ.</subfield>
+          <subfield code="b">Ḥāshiyah ʻalá al-Zawrāʼ ... [etc.].</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="880">
+          <subfield code="6">245-02//r</subfield>
+          <subfield code="a">رسالة الزوراء.</subfield>
+          <subfield code="b">حاشية على الزوراء</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="c">[1501]</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">i, 150 leaves, i :</subfield>
+          <subfield code="b">paper, ill. ;</subfield>
+          <subfield code="c">170 x 101 (125 x 55) mm. bound to 175 x 111 mm.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Title supplied by cataloger.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Ms. codex.</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="520">
+          <subfield code="a">Illuminated copy of nine texts and commentaries on kalām and logic.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">19 lines per page. Written in a small naskh using black ink, with some red for important words, to write &amp;quot;qawluh&amp;quot; or to underline the commented text. Illuminated headpiece on fol. 1b. From text 2, the beginning of each text is decorated by an illuminated panel with the same floral motifs (fol. 7b, 21b, 27b, 32b, 44b, 56b, 98b, 133b). The text is written within a gilt and red and blue border, with a red outerframe on the edge of the page. The occasional marginalia are from the author. Contains some collation notes. Table of contents by a later hand on fol. 1a (prev. 2a). Modern foliation in pencil using Western numerals (includes the first free endpaper ; fol. between fol. 7 and 8 blank).</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Decoration: Contains six miniatures, representing learned men (fol. 27a, 54b, 103a, 132b, 133a, 140b). On fol 27a : Outdoor scene representing a sitting man wearing a brown and green garnment and a white and red turban. On fol. 54b : Outdoor scene with two men facing each other, the one on the left  reading a text on a roll and the one of the right pointing to the sky with the index of his right hand, and to the ground with the index of his left hand. On fol. 103a : Indoor scene with two sitting men. The one on the left, dressed in green and red, reads a book to the one one the right, dressed in yellow. On fol. 132b : A standing man dressed in blue and yellow meditating. On fol. 133a : A standing man dressed in green and purple with a cane in his right hand meditating. On fol. 140b : Indoor scene representing two men sitting and discussing on the fore ground with a book laying between them; third man in the background coming in, a leaf with text in his hand.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Copied from Ṣafar to Rabīʻ al-Thānī 907 by Aḥmad ibn ʻAlī ibn Abī Bakr (colophons).</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="505">
+          <subfield code="a">1. fol. 1b-7a : [Risalat al-Zawrāʼ] / Muḥammad ibn Asʻad Dawwānī.</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="505">
+          <subfield code="a">2. fol. 7b-21a : al-Ḥāshiyah ʻalá al-Zawrāʼ / Muḥammad ibn Asʻad Dawwānī.</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="505">
+          <subfield code="a">3. fol. 21b-26b : al-Ḥāshiyah ʻalá khuṭbat al-Zawrāʼ / Muḥammad ibn Asʻad Dawwānī.</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="505">
+          <subfield code="a">4. fol. 27b-32a : al-Risālah fī khalq al-aʻmāl / Muḥammad ibn Asʻad Dawwānī.</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="505">
+          <subfield code="a">5. fol. 32b-43b : Risālah fī taʻrīf ʻilm al-kalām / Muḥammad ibn Asʻad Dawwānī.</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="505">
+          <subfield code="a">6. fol. 44b-56a : Sharḥ khuṭbat al-Ṭawāliʻ / Muḥammad ibn Asʻad Dawwānī.</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="505">
+          <subfield code="a">7. fol. 56b-97b : Ḥāshiyat al-Tahdhīb / Muḥammad ibn Asʻad Dawwānī.</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="505">
+          <subfield code="a">8. fol. 98b-132a : [Ḥawāshī ʻalá Maṭāliʻ al-anwār] / Muḥammad ibn Asʻad Dawwānī.</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="505">
+          <subfield code="a">9. fol. 133b-150b : Ḥāshiyat al-Risālah al-shamsīyah / Muḥammad ibn Asʻad Dawwānī.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="563">
+          <subfield code="a">Upper and lower covers made of dark-brown leather over paper pasteboards with deeply impressed gold and black corner pieces and central mandorla with two pendants on the vertical axis. Repaired and re-backed.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Islam</subfield>
+          <subfield code="x">Doctrines</subfield>
+          <subfield code="v">Early works to 1800.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Manuscripts, Arabic</subfield>
+          <subfield code="z">New Jersey</subfield>
+          <subfield code="z">Princeton.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="7" tag="655">
+          <subfield code="a">Manuscripts, Arabic</subfield>
+          <subfield code="y">16th century.</subfield>
+          <subfield code="2">lcsh</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="7" tag="655">
+          <subfield code="a">Illuminated manuscripts</subfield>
+          <subfield code="z">Islamic Empire</subfield>
+          <subfield code="y">16th century.</subfield>
+          <subfield code="2">aat</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="7" tag="655">
+          <subfield code="a">Headpieces (layout features)</subfield>
+          <subfield code="z">Islamic Empire</subfield>
+          <subfield code="y">16th century.</subfield>
+          <subfield code="2">aat</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="7" tag="655">
+          <subfield code="a">Miniatures (Illuminations)</subfield>
+          <subfield code="z">Islamic Empire</subfield>
+          <subfield code="y">16th century.</subfield>
+          <subfield code="2">gmgpc</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="774">
+          <subfield code="w">4705307</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="774">
+          <subfield code="w">4705340</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="774">
+          <subfield code="w">4705359</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="774">
+          <subfield code="w">4705365</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="774">
+          <subfield code="w">4705369</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="774">
+          <subfield code="w">4705377</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="774">
+          <subfield code="w">4705374</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="774">
+          <subfield code="w">4705383</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="774">
+          <subfield code="w">4705386</subfield>
+        </datafield>
+        <datafield ind1="4" ind2="1" tag="856">
+          <subfield code="u">http://arks.princeton.edu/ark:/88435/9k41zd556</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="852">
+          <subfield code="b">hsvm</subfield>
+          <subfield code="h">Islamic Manuscripts, New Series no. 1948</subfield>
+          <subfield code="x">tr fr mss</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="902">
+          <subfield code="a">ceb</subfield>
+          <subfield code="b">o</subfield>
+          <subfield code="6">t</subfield>
+          <subfield code="7">m</subfield>
+          <subfield code="d">v</subfield>
+          <subfield code="f">0</subfield>
+          <subfield code="e">20060419</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">Risālat al-Zawrāʼ. Ḥāshiyah ʻalá al-Zawrāʼ ... [etc.].</field>
+    <field name="title_vern_display">رسالة الزوراء. حاشية على الزوراء</field>
+    <field name="title_sort">Risālat al-Zawrāʼ. Ḥāshiyah ʻalá al-Zawrāʼ ... [etc.].</field>
+    <field name="title_t">Risālat al-Zawrāʼ. Ḥāshiyah ʻalá al-Zawrāʼ ... [etc.].</field>
+    <field name="compiled_created_t">Risālat al-Zawrāʼ. Ḥāshiyah ʻalá al-Zawrāʼ ... [etc.].</field>
+    <field name="compiled_created_t">رسالة الزوراء. حاشية على الزوراء</field>
+    <field name="pub_created_display">[1501]</field>
+    <field name="pub_created_s">[1501]</field>
+    <field name="pub_date_display">1501</field>
+    <field name="pub_date_start_sort">1501</field>
+    <field name="format">Map</field>
+    <field name="electronic_access_display">http://arks.princeton.edu/ark:/88435/9k41zd556</field>
+    <field name="description_display">i, 150 leaves, i : paper, ill. ; 170 x 101 (125 x 55) mm. bound to 175 x 111 mm.</field>
+    <field name="description_t">i, 150 leaves, i : paper, ill. ; 170 x 101 (125 x 55) mm. bound to 175 x 111 mm.</field>
+    <field name="summary_note_display">Illuminated copy of nine texts and commentaries on kalām and logic.</field>
+    <field name="notes_display">Title supplied by cataloger.</field>
+    <field name="notes_display">Ms. codex.</field>
+    <field name="notes_display">19 lines per page. Written in a small naskh using black ink, with some red for important words, to write "qawluh" or to underline the commented text. Illuminated headpiece on fol. 1b. From text 2, the beginning of each text is decorated by an illuminated panel with the same floral motifs (fol. 7b, 21b, 27b, 32b, 44b, 56b, 98b, 133b). The text is written within a gilt and red and blue border, with a red outerframe on the edge of the page. The occasional marginalia are from the author. Contains some collation notes. Table of contents by a later hand on fol. 1a (prev. 2a). Modern foliation in pencil using Western numerals (includes the first free endpaper ; fol. between fol. 7 and 8 blank).</field>
+    <field name="notes_display">Decoration: Contains six miniatures, representing learned men (fol. 27a, 54b, 103a, 132b, 133a, 140b). On fol 27a : Outdoor scene representing a sitting man wearing a brown and green garnment and a white and red turban. On fol. 54b : Outdoor scene with two men facing each other, the one on the left  reading a text on a roll and the one of the right pointing to the sky with the index of his right hand, and to the ground with the index of his left hand. On fol. 103a : Indoor scene with two sitting men. The one on the left, dressed in green and red, reads a book to the one one the right, dressed in yellow. On fol. 132b : A standing man dressed in blue and yellow meditating. On fol. 133a : A standing man dressed in green and purple with a cane in his right hand meditating. On fol. 140b : Indoor scene representing two men sitting and discussing on the fore ground with a book laying between them; third man in the background coming in, a leaf with text in his hand.</field>
+    <field name="notes_display">Copied from Ṣafar to Rabīʻ al-Thānī 907 by Aḥmad ibn ʻAlī ibn Abī Bakr (colophons).</field>
+    <field name="binding_note_display">Upper and lower covers made of dark-brown leather over paper pasteboards with deeply impressed gold and black corner pieces and central mandorla with two pendants on the vertical axis. Repaired and re-backed.</field>
+    <field name="language_facet">Arabic</field>
+    <field name="language_code_s">ara</field>
+    <field name="contents_display">1. fol. 1b-7a : [Risalat al-Zawrāʼ] / Muḥammad ibn Asʻad Dawwānī.</field>
+    <field name="contents_display">2. fol. 7b-21a : al-Ḥāshiyah ʻalá al-Zawrāʼ / Muḥammad ibn Asʻad Dawwānī.</field>
+    <field name="contents_display">3. fol. 21b-26b : al-Ḥāshiyah ʻalá khuṭbat al-Zawrāʼ / Muḥammad ibn Asʻad Dawwānī.</field>
+    <field name="contents_display">4. fol. 27b-32a : al-Risālah fī khalq al-aʻmāl / Muḥammad ibn Asʻad Dawwānī.</field>
+    <field name="contents_display">5. fol. 32b-43b : Risālah fī taʻrīf ʻilm al-kalām / Muḥammad ibn Asʻad Dawwānī.</field>
+    <field name="contents_display">6. fol. 44b-56a : Sharḥ khuṭbat al-Ṭawāliʻ / Muḥammad ibn Asʻad Dawwānī.</field>
+    <field name="contents_display">7. fol. 56b-97b : Ḥāshiyat al-Tahdhīb / Muḥammad ibn Asʻad Dawwānī.</field>
+    <field name="contents_display">8. fol. 98b-132a : [Ḥawāshī ʻalá Maṭāliʻ al-anwār] / Muḥammad ibn Asʻad Dawwānī.</field>
+    <field name="contents_display">9. fol. 133b-150b : Ḥāshiyat al-Risālah al-shamsīyah / Muḥammad ibn Asʻad Dawwānī.</field>
+    <field name="subject_display">Islam—Doctrines—Early works to 1800</field>
+    <field name="subject_display">Manuscripts, Arabic—New Jersey—Princeton</field>
+    <field name="subject_topic_facet">Islam—Doctrines—Early works to 1800</field>
+    <field name="subject_topic_facet">Manuscripts, Arabic—New Jersey—Princeton</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="location_display">Rare Books and Special Collections: South East (MSS)</field>
+    <field name="location_code_display">hsvm</field>
+    <field name="location">Rare Books and Special Collections</field>
+    <field name="call_number_display">Islamic Manuscripts, New Series no. 1948</field>
+  </doc>
+  <doc>
+    <field name="id">3512354</field>
+    <field name="author_display">Aethelgifu</field>
+    <field name="author_sort">Aethelgifu</field>
+    <field name="author_s">Aethelgifu</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>01949ctm a2200361 a 4500</leader>
+        <controlfield tag="001">3512354</controlfield>
+        <controlfield tag="005">20060928132355.0</controlfield>
+        <controlfield tag="008">020131s0990    enk           000 0 ang d</controlfield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">NjP</subfield>
+          <subfield code="c">NjP</subfield>
+          <subfield code="e">amremm</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="043">
+          <subfield code="a">n-us-nj</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="100">
+          <subfield code="a">Aethelgifu.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="245">
+          <subfield code="a">[Will of Aethelgifu].</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="c">[ca. 990]</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">1 leaf :</subfield>
+          <subfield code="b">parchment,</subfield>
+          <subfield code="c">560 x 350 mm.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="340">
+          <subfield code="e">in case, mounted between plexiglass.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="520">
+          <subfield code="a">Ms. will.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="546">
+          <subfield code="a">Text in Anglo-Saxon.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Origin: Written in England, probably at the Abbey of St. Albans, ca. 990.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="524">
+          <subfield code="a">Scheide Library, Princeton University. M 140.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="561">
+          <subfield code="a">Belonged to the Abbey of St. Albans in the 12th century; belonged to Sir Matthew Hale in the 17th century who probably received it from John Selden; purchased by William H. Scheide through H. P. Kraus at Sotheby&amp;apos;s, Dec. 10, 1969.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="530">
+          <subfield code="a">Photoreproduced facsimile version;</subfield>
+          <subfield code="b">Published as The Will of Aethelgifu : a tenth century Anglo-Saxon manuscript / translated and examined by Dorothy Whitelock, with a note on the document by Neil Ker, and analyses of the properties, livestock and chattels concerned by Lord Rennell. Oxford : Printed for presentation to the members of the Roxburghe Club by Oxford U.P., 1968.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="506">
+          <subfield code="a">These privately owned manuscripts are available through the Department of Rare Books and Special Collections, Firestone Library.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Manuscripts, English (Old)</subfield>
+          <subfield code="z">New Jersey</subfield>
+          <subfield code="z">Princeton.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="7" tag="655">
+          <subfield code="a">Wills</subfield>
+          <subfield code="z">England</subfield>
+          <subfield code="y">10th century.</subfield>
+          <subfield code="2">aat</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="7" tag="655">
+          <subfield code="a">Parchment.</subfield>
+          <subfield code="2">aat</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Selden, John,</subfield>
+          <subfield code="d">1584-1654,</subfield>
+          <subfield code="e">former owner.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Hale, Matthew,</subfield>
+          <subfield code="c">Sir,</subfield>
+          <subfield code="d">1609-1676,</subfield>
+          <subfield code="e">former owner.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Scheide, William H.</subfield>
+          <subfield code="q">(William Hurd),</subfield>
+          <subfield code="d">1914-</subfield>
+          <subfield code="e">former owner.</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+          <subfield code="a">St. Albans Abbey.</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+          <subfield code="a">H.P. Kraus (Firm),</subfield>
+          <subfield code="e">bookseller.</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+          <subfield code="a">Princeton University Library.</subfield>
+          <subfield code="k">Manuscript.</subfield>
+          <subfield code="n">Scheide 140.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="752">
+          <subfield code="a">England.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="902">
+          <subfield code="a"/>
+          <subfield code="b">o</subfield>
+          <subfield code="6">t</subfield>
+          <subfield code="7">m</subfield>
+          <subfield code="d">v</subfield>
+          <subfield code="f">1</subfield>
+          <subfield code="e">20020131</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">[Will of Aethelgifu].</field>
+    <field name="title_sort">[Will of Aethelgifu].</field>
+    <field name="title_t">[Will of Aethelgifu].</field>
+    <field name="compiled_created_t">[Will of Aethelgifu].</field>
+    <field name="pub_created_display">[ca. 990]</field>
+    <field name="pub_created_s">[ca. 990]</field>
+    <field name="pub_date_display">0990</field>
+    <field name="pub_date_start_sort">0990</field>
+    <field name="format">Map</field>
+    <field name="medium_support_display">in case, mounted between plexiglass.</field>
+    <field name="description_display">1 leaf : parchment, 560 x 350 mm.</field>
+    <field name="description_t">1 leaf : parchment, 560 x 350 mm.</field>
+    <field name="restrictions_note_display">These privately owned manuscripts are available through the Department of Rare Books and Special Collections, Firestone Library.</field>
+    <field name="summary_note_display">Ms. will.</field>
+    <field name="notes_display">Origin: Written in England, probably at the Abbey of St. Albans, ca. 990.</field>
+    <field name="language_display">Text in Anglo-Saxon.</field>
+    <field name="language_facet">English, Old (ca. 450-1100)</field>
+    <field name="language_code_s">ang</field>
+    <field name="provenance_display">Belonged to the Abbey of St. Albans in the 12th century; belonged to Sir Matthew Hale in the 17th century who probably received it from John Selden; purchased by William H. Scheide through H. P. Kraus at Sotheby's, Dec. 10, 1969.</field>
+    <field name="cite_as_display">Scheide Library, Princeton University. M 140.</field>
+    <field name="other_format_display">Photoreproduced facsimile version; Published as The Will of Aethelgifu : a tenth century Anglo-Saxon manuscript / translated and examined by Dorothy Whitelock, with a note on the document by Neil Ker, and analyses of the properties, livestock and chattels concerned by Lord Rennell. Oxford : Printed for presentation to the members of the Roxburghe Club by Oxford U.P., 1968.</field>
+    <field name="subject_display">Manuscripts, English (Old)—New Jersey—Princeton</field>
+    <field name="subject_topic_facet">Manuscripts, English (Old)—New Jersey—Princeton</field>
+    <field name="related_name_display">Selden, John, 1584-1654, former owner</field>
+    <field name="related_name_display">Hale, Matthew, Sir, 1609-1676, former owner</field>
+    <field name="related_name_display">Scheide, William H. (William Hurd), 1914- former owner</field>
+    <field name="related_name_display">St. Albans Abbey</field>
+    <field name="related_name_display">H.P. Kraus (Firm), bookseller</field>
+    <field name="related_name_display">Princeton University Library. Manuscript. Scheide 140</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="place_name_display">England.</field>
+  </doc>
+  <doc>
+    <field name="id">4887523</field>
+    <field name="author_display">Rabinowich, Solomon, ha-Kohen, 1803-1866</field>
+    <field name="author_display">שלמה בן דב צבי, הכהן, מרדומסק, נפ׳ 1866</field>
+    <field name="author_sort">Rabinowich, Solomon, ha-Kohen, 1803-1866</field>
+    <field name="author_s">Rabinowich, Solomon, ha-Kohen, 1803-1866</field>
+    <field name="author_s">שלמה בן דב צבי, הכהן, מרדומסק, נפ׳ 1866</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>01400cam a2200313   4500</leader>
+        <controlfield tag="001">4887523</controlfield>
+        <controlfield tag="005">20120529143145.0</controlfield>
+        <controlfield tag="008">950327s1923    pl            000 0 heb d</controlfield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)76954756</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(CStRLIN)MABX95-B758</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">MWalB</subfield>
+          <subfield code="c">MWalB</subfield>
+          <subfield code="d">CStRLIN</subfield>
+          <subfield code="d">NjP</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="4" tag="050">
+          <subfield code="a">BM198</subfield>
+          <subfield code="b">.R324 1923</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="066">
+          <subfield code="c">(2</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="100">
+          <subfield code="6">880-01</subfield>
+          <subfield code="a">Rabinowich, Solomon,</subfield>
+          <subfield code="c">ha-Kohen,</subfield>
+          <subfield code="d">1803-1866.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="880">
+          <subfield code="6">100-01/(2/r</subfield>
+          <subfield code="a">שלמה בן דב צבי,</subfield>
+          <subfield code="c">הכהן,</subfield>
+          <subfield code="c">מרדומסק,</subfield>
+          <subfield code="d">נפ׳ 1866.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="240">
+          <subfield code="a">Nifleʼot ha-Tifʼeret Shelomoh</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="245">
+          <subfield code="6">880-02</subfield>
+          <subfield code="a">Sefer Nifleʼot ha-Tifʼeret Shelomoh :</subfield>
+          <subfield code="b">ha-kolel torot, ḥokhmot, agadot, śiḥot... /</subfield>
+          <subfield code="c">mi-kevod Shelomoh ha-Kohen a.b.d. ḳ. Radomsḳ = Sefer Nifloes-hatiferes-Szloma.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="880">
+          <subfield code="6">245-02/(2/r</subfield>
+          <subfield code="a">ספר נפלאות התפארת שלמה :</subfield>
+          <subfield code="b">... תורות, חכמות, אגדות, שיחות ... /</subfield>
+          <subfield code="c">שלמה הכהן אבד״ק ראדאמסק.</subfield>
+        </datafield>
+        <datafield ind1="3" ind2="0" tag="246">
+          <subfield code="a">Nifleʼot ha-Tifʼeret Shelomoh</subfield>
+        </datafield>
+        <datafield ind1="3" ind2="1" tag="246">
+          <subfield code="a">Sefer Nifloes-hatiferes-Szloma</subfield>
+        </datafield>
+        <datafield ind1="3" ind2=" " tag="246">
+          <subfield code="a">Nifloes-hatiferes-Szloma</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="6">880-03</subfield>
+          <subfield code="a">Piotrkowie :</subfield>
+          <subfield code="b">Defus Ḳornendz ṿe-Rozenblad,</subfield>
+          <subfield code="c">1923.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="880">
+          <subfield code="6">260-03/(2/r</subfield>
+          <subfield code="a">פיעטרקוב :</subfield>
+          <subfield code="b">[חמו״ל],</subfield>
+          <subfield code="c">1923.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">102 p. ;</subfield>
+          <subfield code="c">24 cm.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">&amp;quot;Ḥeleḳ 1&amp;quot;-- No more published?</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Hasidism.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="852">
+          <subfield code="b">rcppa</subfield>
+          <subfield code="h">BM198</subfield>
+          <subfield code="i">.R324 1923</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="904">
+          <subfield code="a">rs</subfield>
+          <subfield code="b">g</subfield>
+          <subfield code="h">m</subfield>
+          <subfield code="c">b</subfield>
+          <subfield code="e">20061018</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="902">
+          <subfield code="a">rs</subfield>
+          <subfield code="b">m</subfield>
+          <subfield code="6">a</subfield>
+          <subfield code="7">m</subfield>
+          <subfield code="d">v</subfield>
+          <subfield code="f">1</subfield>
+          <subfield code="e">20061018</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="uniform_title_display">Nifleʼot ha-Tifʼeret Shelomoh</field>
+    <field name="title_display">Sefer Nifleʼot ha-Tifʼeret Shelomoh : ha-kolel torot, ḥokhmot, agadot, śiḥot... / mi-kevod Shelomoh ha-Kohen a.b.d. ḳ. Radomsḳ = Sefer Nifloes-hatiferes-Szloma.</field>
+    <field name="title_vern_display">ספר נפלאות התפארת שלמה : ... תורות, חכמות, אגדות, שיחות ... / שלמה הכהן אבד״ק ראדאמסק.</field>
+    <field name="title_sort">Sefer Nifleʼot ha-Tifʼeret Shelomoh : ha-kolel torot, ḥokhmot, agadot, śiḥot...</field>
+    <field name="title_t">Sefer Nifleʼot ha-Tifʼeret Shelomoh : ha-kolel torot, ḥokhmot, agadot, śiḥot... / mi-kevod Shelomoh ha-Kohen a.b.d. ḳ. Radomsḳ = Sefer Nifloes-hatiferes-Szloma.</field>
+    <field name="compiled_created_t">Sefer Nifleʼot ha-Tifʼeret Shelomoh : ha-kolel torot, ḥokhmot, agadot, śiḥot... / mi-kevod Shelomoh ha-Kohen a.b.d. ḳ. Radomsḳ = Sefer Nifloes-hatiferes-Szloma.</field>
+    <field name="compiled_created_t">ספר נפלאות התפארת שלמה : ... תורות, חכמות, אגדות, שיחות ... / שלמה הכהן אבד״ק ראדאמסק.</field>
+    <field name="pub_created_display">Piotrkowie : Defus Ḳornendz ṿe-Rozenblad, 1923.</field>
+    <field name="pub_created_display">פיעטרקוב : [חמו״ל], 1923.</field>
+    <field name="pub_created_s">Piotrkowie : Defus Ḳornendz ṿe-Rozenblad, 1923.</field>
+    <field name="pub_date_display">1923</field>
+    <field name="pub_date_start_sort">1923</field>
+    <field name="format">Book</field>
+    <field name="description_display">102 p. ; 24 cm.</field>
+    <field name="description_t">102 p. ; 24 cm.</field>
+    <field name="notes_display">"Ḥeleḳ 1"-- No more published?</field>
+    <field name="language_facet">Hebrew</field>
+    <field name="language_code_s">heb</field>
+    <field name="subject_display">Hasidism</field>
+    <field name="subject_topic_facet">Hasidism</field>
+    <field name="lc_1letter_facet">B - Philosophy, Psychology, Religion</field>
+    <field name="lc_rest_facet">BM - Judaism</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="other_title_display">Nifleʼot ha-Tifʼeret Shelomoh</field>
+    <field name="other_title_display">Sefer Nifloes-hatiferes-Szloma</field>
+    <field name="other_title_display">Nifloes-hatiferes-Szloma</field>
+    <field name="location_display">ReCAP</field>
+    <field name="location_code_display">rcppa</field>
+    <field name="location">ReCAP</field>
+    <field name="call_number_display">BM198 .R324 1923</field>
+  </doc>
+  <doc>
+    <field name="id">5148991</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>00658cem a22001575a 4500</leader>
+        <controlfield tag="001">5148991</controlfield>
+        <controlfield tag="005">20070328164604.0</controlfield>
+        <controlfield tag="008">070328 2006                             </controlfield>
+        <datafield ind1="0" ind2="0" tag="245">
+          <subfield code="a">Aerial photography of New York City, January-March 2006 :</subfield>
+          <subfield code="b">covering NYC area (five boroughs); weather conditions prevented a continuous flight</subfield>
+          <subfield code="h">[map].</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="245">
+          <subfield code="a">Aerial photography of NYC, January-March 2006.</subfield>
+        </datafield>
+        <datafield ind1="3" ind2=" " tag="246">
+          <subfield code="a">Digital aerial photography of New York City, January-March 2006</subfield>
+        </datafield>
+        <datafield ind1="3" ind2=" " tag="246">
+          <subfield code="a">New York City, January-March 2006 : aerial photography</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="a">Tempe, AZ:</subfield>
+          <subfield code="b">Aerials Express,</subfield>
+          <subfield code="c">[2006] .</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+          <subfield code="a">Aerials Express</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="852">
+          <subfield code="b">scimap</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="904">
+          <subfield code="a">twm</subfield>
+          <subfield code="b">o</subfield>
+          <subfield code="h">n</subfield>
+          <subfield code="c">f</subfield>
+          <subfield code="e">20070328</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">Aerial photography of New York City, January-March 2006 : covering NYC area (five boroughs); weather conditions prevented a continuous flight [map].</field>
+    <field name="title_display">Aerial photography of NYC, January-March 2006.</field>
+    <field name="title_sort">Aerial photography of New York City, January-March 2006 : covering NYC area (five boroughs); weather conditions prevented a continuous flight</field>
+    <field name="title_t">Aerial photography of New York City, January-March 2006 : covering NYC area (five boroughs); weather conditions prevented a continuous flight [map].</field>
+    <field name="compiled_created_t">Aerial photography of New York City, January-March 2006 : covering NYC area (five boroughs); weather conditions prevented a continuous flight [map].</field>
+    <field name="compiled_created_t">Aerial photography of NYC, January-March 2006.</field>
+    <field name="pub_created_display">Tempe, AZ: Aerials Express, [2006] .</field>
+    <field name="pub_created_s">Tempe, AZ: Aerials Express, [2006] .</field>
+    <field name="pub_date_display">2006</field>
+    <field name="pub_date_start_sort">2006</field>
+    <field name="format">Map</field>
+    <field name="language_code_s">   </field>
+    <field name="related_name_display">Aerials Express</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="other_title_display">Digital aerial photography of New York City, January-March 2006</field>
+    <field name="other_title_display">New York City, January-March 2006 : aerial photography</field>
+    <field name="location_display">Lewis Library: Map Collection</field>
+    <field name="location_code_display">scimap</field>
+    <field name="location">Lewis Library</field>
+  </doc>
+  <doc>
+    <field name="id">4687191</field>
+    <field name="author_display">Offenbach, Jacques, 1819-1880</field>
+    <field name="author_sort">Offenbach, Jacques, 1819-1880</field>
+    <field name="author_s">Offenbach, Jacques, 1819-1880</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>02266cjm a2200553 a 4500</leader>
+        <controlfield tag="001">4687191</controlfield>
+        <controlfield tag="005">20060315183239.0</controlfield>
+        <controlfield tag="007">sd bmmennmplu-</controlfield>
+        <controlfield tag="008">850503p19841970fr opn   z          fre  </controlfield>
+        <datafield ind1=" " ind2=" " tag="010">
+          <subfield code="a">   85751820 </subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="019">
+          <subfield code="a">15641274</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="028">
+          <subfield code="a">BG 2012</subfield>
+          <subfield code="b">Bourg Records</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="028">
+          <subfield code="a">BG 2013</subfield>
+          <subfield code="b">Bourg Records</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="033">
+          <subfield code="a">19700225</subfield>
+          <subfield code="a">19700227</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)ocm10663999</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">DLC</subfield>
+          <subfield code="c">DLC</subfield>
+          <subfield code="d">MUQ</subfield>
+          <subfield code="d">OCLCQ</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="041">
+          <subfield code="d">fre</subfield>
+          <subfield code="b">engfreger</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="050">
+          <subfield code="a">M1500</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="100">
+          <subfield code="a">Offenbach, Jacques,</subfield>
+          <subfield code="d">1819-1880.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="245">
+          <subfield code="a">Geneviève de Brabant</subfield>
+          <subfield code="h">[sound recording] /</subfield>
+          <subfield code="c">musique de Jacques Offenbach ; paroles de Hector Crémieux et Etienne Tréfeu.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="a">Paris :</subfield>
+          <subfield code="b">Bourg Records ;</subfield>
+          <subfield code="a">N[ew] Y[ork] :</subfield>
+          <subfield code="b">Distributed by Qualiton Imports,</subfield>
+          <subfield code="c">1984.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">2 sound discs :</subfield>
+          <subfield code="b">analog, 33 1/3 rpm, mono. ;</subfield>
+          <subfield code="c">12 in.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="490">
+          <subfield code="a">Collection Bourg Offenbach</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="490">
+          <subfield code="a">Collection Archives</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Bourg Records: BG 2012--BG 2013.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Opera in 3 acts.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="511">
+          <subfield code="a">Annik Simon ; Monique Stiot ; Bernard Plantey ; René Terrasson ; Jean-Christophe Benoit ; Jacques Tharande ; with supporting soloists ; chorus ; Orchestre lyrique radio et télévision française ; Marcel Cariven, conductor.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="518">
+          <subfield code="a">Recorded Feb. 25 and 27, 1970.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Distributor from label on container.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Synopsis in English, French, and German on container.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Operas.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Geneviève, of Brabant</subfield>
+          <subfield code="v">Drama.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="6" tag="600">
+          <subfield code="a">Geneviève,</subfield>
+          <subfield code="c">de Brabant</subfield>
+          <subfield code="v">Théâtre.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="6" tag="650">
+          <subfield code="a">Opéras</subfield>
+          <subfield code="y">19e siècle.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Crémieux, Hector Jonathan,</subfield>
+          <subfield code="d">1828-1892.</subfield>
+          <subfield code="4">lbt</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Tréfeu, Etienne.</subfield>
+          <subfield code="4">lbt</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Simon, Annik.</subfield>
+          <subfield code="4">prf</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Stiot, Monique.</subfield>
+          <subfield code="4">prf</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Plantey, Bernard.</subfield>
+          <subfield code="4">prf</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Terrasson, René.</subfield>
+          <subfield code="4">prf</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Benoit, Jean-Christophe.</subfield>
+          <subfield code="4">prf</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Tharande, Jacques.</subfield>
+          <subfield code="4">prf</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="700">
+          <subfield code="a">Cariven, Marcel.</subfield>
+          <subfield code="4">cnd</subfield>
+        </datafield>
+        <datafield ind1="2" ind2=" " tag="710">
+          <subfield code="a">Orchestre lyrique de la R.T.F.</subfield>
+          <subfield code="4">prf</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="800">
+          <subfield code="a">Offenbach, Jacques,</subfield>
+          <subfield code="d">1819-1880.</subfield>
+          <subfield code="t">Operas.</subfield>
+          <subfield code="k">Selections (Bourg)</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="830">
+          <subfield code="a">Collection Archives (Institut national de la communication audiovisuelle (France))</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="852">
+          <subfield code="b">rcpqk</subfield>
+          <subfield code="h">LS- 11479</subfield>
+          <subfield code="x">tr fr mus</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="994">
+          <subfield code="a">Z0</subfield>
+          <subfield code="b">PUL</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="902">
+          <subfield code="a">jps</subfield>
+          <subfield code="b">l</subfield>
+          <subfield code="6">j</subfield>
+          <subfield code="7">m</subfield>
+          <subfield code="d">v</subfield>
+          <subfield code="f">1</subfield>
+          <subfield code="e">20060315</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">Geneviève de Brabant [sound recording] / musique de Jacques Offenbach ; paroles de Hector Crémieux et Etienne Tréfeu.</field>
+    <field name="title_sort">Geneviève de Brabant</field>
+    <field name="title_t">Geneviève de Brabant [sound recording] / musique de Jacques Offenbach ; paroles de Hector Crémieux et Etienne Tréfeu.</field>
+    <field name="compiled_created_t">Geneviève de Brabant [sound recording] / musique de Jacques Offenbach ; paroles de Hector Crémieux et Etienne Tréfeu.</field>
+    <field name="pub_created_display">Paris : Bourg Records ; N[ew] Y[ork] : Distributed by Qualiton Imports, 1984.</field>
+    <field name="pub_created_s">Paris : Bourg Records ; N[ew] Y[ork] : Distributed by Qualiton Imports, 1984.</field>
+    <field name="pub_date_display">1984</field>
+    <field name="pub_date_start_sort">1984</field>
+    <field name="pub_date_end_sort">1970</field>
+    <field name="format">Audio</field>
+    <field name="description_display">2 sound discs : analog, 33 1/3 rpm, mono. ; 12 in.</field>
+    <field name="description_t">2 sound discs : analog, 33 1/3 rpm, mono. ; 12 in.</field>
+    <field name="series_display">Collection Bourg Offenbach</field>
+    <field name="series_display">Collection Archives</field>
+    <field name="series_display">Offenbach, Jacques, 1819-1880. Operas. Selections (Bourg)</field>
+    <field name="series_display">Collection Archives (Institut national de la communication audiovisuelle (France))</field>
+    <field name="notes_display">Bourg Records: BG 2012--BG 2013.</field>
+    <field name="notes_display">Opera in 3 acts.</field>
+    <field name="notes_display">Distributor from label on container.</field>
+    <field name="notes_display">Synopsis in English, French, and German on container.</field>
+    <field name="date_place_event_notes_display">Recorded Feb. 25 and 27, 1970.</field>
+    <field name="participant_performer_display">Annik Simon ; Monique Stiot ; Bernard Plantey ; René Terrasson ; Jean-Christophe Benoit ; Jacques Tharande ; with supporting soloists ; chorus ; Orchestre lyrique radio et télévision française ; Marcel Cariven, conductor.</field>
+    <field name="language_facet">French</field>
+    <field name="language_code_s">fre</field>
+    <field name="subject_display">Operas</field>
+    <field name="subject_display">Geneviève, of Brabant—Drama</field>
+    <field name="subject_display">Geneviève,—de Brabant—Théâtre</field>
+    <field name="subject_display">Opéras—19e siècle</field>
+    <field name="subject_topic_facet">Operas</field>
+    <field name="subject_topic_facet">Geneviève, of Brabant—Drama</field>
+    <field name="subject_topic_facet">Geneviève,—de Brabant—Théâtre</field>
+    <field name="subject_topic_facet">Opéras—19e siècle</field>
+    <field name="lc_1letter_facet">M - Music</field>
+    <field name="lc_rest_facet">M - Music</field>
+    <field name="related_name_display">Crémieux, Hector Jonathan, 1828-1892</field>
+    <field name="related_name_display">Tréfeu, Etienne</field>
+    <field name="related_name_display">Simon, Annik</field>
+    <field name="related_name_display">Stiot, Monique</field>
+    <field name="related_name_display">Plantey, Bernard</field>
+    <field name="related_name_display">Terrasson, René.</field>
+    <field name="related_name_display">Benoit, Jean-Christophe</field>
+    <field name="related_name_display">Tharande, Jacques</field>
+    <field name="related_name_display">Cariven, Marcel</field>
+    <field name="related_name_display">Orchestre lyrique de la R.T.F.</field>
+    <field name="marc_relatedor_display">lbt</field>
+    <field name="marc_relatedor_display">lbt</field>
+    <field name="marc_relatedor_display">prf</field>
+    <field name="marc_relatedor_display">prf</field>
+    <field name="marc_relatedor_display">prf</field>
+    <field name="marc_relatedor_display">prf</field>
+    <field name="marc_relatedor_display">prf</field>
+    <field name="marc_relatedor_display">prf</field>
+    <field name="marc_relatedor_display">cnd</field>
+    <field name="marc_relatedor_display">prf</field>
+    <field name="publisher_no_display">BG 2012</field>
+    <field name="publisher_no_display">BG 2013</field>
+    <field name="standard_no_display">   85751820 </field>
+    <field name="subject_era_facet">19e siècle</field>
+    <field name="location_display">ReCAP: Mendel Music Library use only. </field>
+    <field name="location_code_display">rcpqk</field>
+    <field name="location">ReCAP</field>
+    <field name="call_number_display">LS- 11479</field>
+  </doc>
+  <doc>
+    <field name="id">6574987</field>
+    <field name="author_display">Velez, Carlos</field>
+    <field name="author_sort">Velez, Carlos</field>
+    <field name="author_s">Velez, Carlos</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>00509cam a22001575a 4500</leader>
+        <controlfield tag="001">6574987</controlfield>
+        <controlfield tag="005">20110919084640.0</controlfield>
+        <controlfield tag="008">110602s2011    nju           000 0 eng  </controlfield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">NjP</subfield>
+          <subfield code="c">NjP</subfield>
+        </datafield>
+        <datafield ind1="1" ind2=" " tag="100">
+          <subfield code="a">Velez, Carlos.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="245">
+          <subfield code="a">Searching for a modern aesthetic :</subfield>
+          <subfield code="b">from furniture to design /</subfield>
+          <subfield code="c">Carlos Velez.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="c">2011</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="300">
+          <subfield code="a">139 p. :</subfield>
+          <subfield code="b">ill. ;</subfield>
+          <subfield code="c">29 x 23 cm.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Advisor(s): Spyridon Papapetros, Lucia Allais</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="502">
+          <subfield code="a">Thesis (Senior)--Princeton University, 2011.</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="852">
+          <subfield code="b">uesla</subfield>
+          <subfield code="h">Sen. Th. 2011 Vel</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">Searching for a modern aesthetic : from furniture to design / Carlos Velez.</field>
+    <field name="title_sort">Searching for a modern aesthetic : from furniture to design</field>
+    <field name="title_t">Searching for a modern aesthetic : from furniture to design / Carlos Velez.</field>
+    <field name="compiled_created_t">Searching for a modern aesthetic : from furniture to design / Carlos Velez.</field>
+    <field name="pub_created_display">2011</field>
+    <field name="pub_created_s">2011</field>
+    <field name="pub_date_display">2011</field>
+    <field name="pub_date_start_sort">2011</field>
+    <field name="format">Senior Thesis</field>
+    <field name="description_display">139 p. : ill. ; 29 x 23 cm.</field>
+    <field name="description_t">139 p. : ill. ; 29 x 23 cm.</field>
+    <field name="notes_display">Advisor(s): Spyridon Papapetros, Lucia Allais</field>
+    <field name="dissertation_notes_display">Thesis (Senior)--Princeton University, 2011.</field>
+    <field name="language_facet">English</field>
+    <field name="language_code_s">eng</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="location_display">Architecture Library: Librarian's Office</field>
+    <field name="location_code_display">uesla</field>
+    <field name="location">Architecture Library</field>
+    <field name="call_number_display">Sen. Th. 2011 Vel</field>
+  </doc>
+  <doc>
+    <field name="id">5906024</field>
+    <field name="marc_relator_display">Author</field>
+    <field name="marc_display">
+      <record xmlns="http://www.loc.gov/MARC21/slim">
+        <leader>01386ctaaa2200325Mi 4500</leader>
+        <controlfield tag="001">5906024</controlfield>
+        <controlfield tag="005">20100312141604.0</controlfield>
+        <controlfield tag="008">090828q16581659xx            000 0 ara d</controlfield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)ocn436109995</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="035">
+          <subfield code="a">(OCoLC)436109995</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="040">
+          <subfield code="a">NjP</subfield>
+          <subfield code="c">PUL</subfield>
+          <subfield code="e">amremm</subfield>
+          <subfield code="d">PUL</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="066">
+          <subfield code="c">(3</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="245">
+          <subfield code="6">880-01</subfield>
+          <subfield code="a">Sharḥ Ṣughrá al-Sanūsī.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2="0" tag="880">
+          <subfield code="6">245-01/(3/r</subfield>
+          <subfield code="a">شرح صغرى السنوسي.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="260">
+          <subfield code="c">[1658 or 9]</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Title from f. 1a.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Author listed on fol. 1a as al-Shaykh al-Madāfī al-Zadʻamī (?).</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Original text in red.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="500">
+          <subfield code="a">Dated 1069 AH (1658 or 9) (fol. 23a).</subfield>
+        </datafield>
+        <datafield ind1="8" ind2=" " tag="520">
+          <subfield code="a">A commentary on Sanūsī&amp;apos;s doctrinal work, Umm al-barāhīn.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="600">
+          <subfield code="6">880-02</subfield>
+          <subfield code="a">Sanūsī, Muḥammad ibn Yūsuf,</subfield>
+          <subfield code="d">ca. 1427-ca. 1490.</subfield>
+          <subfield code="t">Umm al-barāhīn.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="0" tag="880">
+          <subfield code="6">600-02/(3/r</subfield>
+          <subfield code="a">سنوسي، محمد بن يوسف.</subfield>
+          <subfield code="t">ام البراهين.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="0" tag="650">
+          <subfield code="a">Islam</subfield>
+          <subfield code="x">Doctrines</subfield>
+          <subfield code="v">Early works to 1800.</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="7" tag="655">
+          <subfield code="a">Manuscripts, Arabic</subfield>
+          <subfield code="y">17th century.</subfield>
+          <subfield code="2">lcsh</subfield>
+        </datafield>
+        <datafield ind1=" " ind2="7" tag="655">
+          <subfield code="a">Manuscripts, Arabic.</subfield>
+          <subfield code="2">lcsh</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="2" tag="700">
+          <subfield code="6">880-03</subfield>
+          <subfield code="a">Sanūsī, Muḥammad ibn Yūsuf,</subfield>
+          <subfield code="d">ca. 1427-ca. 1490.</subfield>
+          <subfield code="t">Umm al-barāhīn.</subfield>
+        </datafield>
+        <datafield ind1="1" ind2="2" tag="880">
+          <subfield code="6">700-03/(3/r</subfield>
+          <subfield code="a">سنوسي، محمد بن يوسف.</subfield>
+          <subfield code="t">ام البراهين.</subfield>
+        </datafield>
+        <datafield ind1="0" ind2=" " tag="773">
+          <subfield code="t">[Collection of five Arabic texts].</subfield>
+          <subfield code="g">3a-23a</subfield>
+          <subfield code="w">5905966</subfield>
+        </datafield>
+        <datafield ind1="8" ind2="0" tag="852">
+          <subfield code="b">mss</subfield>
+          <subfield code="h">Islamic Manuscripts, Third Series no. 99</subfield>
+        </datafield>
+        <datafield ind1=" " ind2=" " tag="999">
+          <subfield code="a">5906024</subfield>
+        </datafield>
+      </record>
+    </field>
+    <field name="title_display">Sharḥ Ṣughrá al-Sanūsī.</field>
+    <field name="title_vern_display">شرح صغرى السنوسي.</field>
+    <field name="title_sort">Sharḥ Ṣughrá al-Sanūsī.</field>
+    <field name="title_t">Sharḥ Ṣughrá al-Sanūsī.</field>
+    <field name="compiled_created_t">Sharḥ Ṣughrá al-Sanūsī.</field>
+    <field name="compiled_created_t">شرح صغرى السنوسي.</field>
+    <field name="pub_created_display">[1658 or 9]</field>
+    <field name="pub_created_s">[1658 or 9]</field>
+    <field name="pub_date_display">1658</field>
+    <field name="pub_date_start_sort">1658</field>
+    <field name="pub_date_end_sort">1659</field>
+    <field name="format">Map</field>
+    <field name="summary_note_display">A commentary on Sanūsī's doctrinal work, Umm al-barāhīn.</field>
+    <field name="notes_display">Title from f. 1a.</field>
+    <field name="notes_display">Author listed on fol. 1a as al-Shaykh al-Madāfī al-Zadʻamī (?).</field>
+    <field name="notes_display">Original text in red.</field>
+    <field name="notes_display">Dated 1069 AH (1658 or 9) (fol. 23a).</field>
+    <field name="language_facet">Arabic</field>
+    <field name="language_code_s">ara</field>
+    <field name="subject_display">Sanūsī, Muḥammad ibn Yūsuf,—ca. 1427-ca. 1490.—Umm al-barāhīn.</field>
+    <field name="subject_display">سنوسي، محمد بن يوسف.—ام البراهين.</field>
+    <field name="subject_display">Islam—Doctrines—Early works to 1800</field>
+    <field name="subject_topic_facet">Sanūsī, Muḥammad ibn Yūsuf,—ca. 1427-ca. 1490.—Umm al-barāhīn.</field>
+    <field name="subject_topic_facet">سنوسي، محمد بن يوسف.—ام البراهين.</field>
+    <field name="subject_topic_facet">Islam—Doctrines—Early works to 1800</field>
+    <field name="related_name_display">Sanūsī, Muḥammad ibn Yūsuf, ca. 1427-ca. 1490</field>
+    <field name="related_name_display">سنوسي، محمد بن يوسف.</field>
+    <field name="contains_display">Umm al-barāhīn.</field>
+    <field name="contains_display">ام البراهين.</field>
+    <field name="marc_relatedor_display">aut</field>
+    <field name="in_display">[Collection of five Arabic texts]. 3a-23a</field>
+    <field name="location_display">Rare Books and Special Collections: Manuscripts Collection</field>
+    <field name="location_code_display">mss</field>
+    <field name="location">Rare Books and Special Collections</field>
+    <field name="call_number_display">Islamic Manuscripts, Third Series no. 99</field>
+  </doc>
+</add>

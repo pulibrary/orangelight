@@ -3,7 +3,7 @@ require "rails_helper"
 describe "blacklight tests" do
 
 	before(:all) do
-		fixture=File.expand_path('../../fixtures/fixtures1.xml',__FILE__)  	
+		fixture=File.expand_path('../../fixtures/fixtures1014.xml',__FILE__)  	
 		system "curl http://localhost:8888/solr/blacklight-core/update?commit=true --data-binary @#{fixture} -H 'Content-type:text/xml; charset=utf-8'"
 
 	end	
