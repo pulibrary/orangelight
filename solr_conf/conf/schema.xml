@@ -77,8 +77,8 @@
     <!-- The optional sortMissingLast and sortMissingFirst attributes are
          currently supported on types that are sorted internally as strings
          and on numeric types.
-	       This includes "string","boolean", and, as of 3.5 (and 4.x),
-	       int, float, long, date, double, including the "Trie" variants.
+         This includes "string","boolean", and, as of 3.5 (and 4.x),
+         int, float, long, date, double, including the "Trie" variants.
        - If sortMissingLast="true", then a sort on this field will cause documents
          without the field to come after documents with the field,
          regardless of the requested sort order (asc or desc).
@@ -195,13 +195,24 @@
      </fieldType>
 
      <fieldType name="title_l" class="solr.TextField" positionIncrementGap="100"  autoGeneratePhraseQueries="true">
-       <analyzer>
+<!--        <analyzer>
          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="AAAA $1" /> 
-         <tokenizer class="solr.StandardTokenizerFactory"/>
+         <tokenizer class="solr.PatternTokenizerFactory" pattern="$$$^"/>
          <filter class="solr.ICUFoldingFilterFactory" />
          <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true" />
          <filter class="solr.SnowballPorterFilterFactory" language="English" />
+       </analyzer> -->
+       <analyzer type="index">
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="AAAA $1" /> 
+          <tokenizer class="solr.PatternTokenizerFactory" pattern="$$$^"/>
+          <filter class="solr.ICUFoldingFilterFactory" />
+          <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="15" side="front"/>
        </analyzer>
+       <analyzer type="query">
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="AAAA $1" /> 
+          <tokenizer class="solr.PatternTokenizerFactory" pattern="$$$^"/>
+          <filter class="solr.ICUFoldingFilterFactory" />
+       </analyzer>           
      </fieldType>
 
     <!-- One can also specify an existing Analyzer class that has a
@@ -220,9 +231,9 @@
 
     <!-- A general text field that has reasonable, generic
          cross-language defaults: it tokenizes with StandardTokenizer,
-	 removes stop words from case-insensitive "stopwords.txt"
-	 (empty by default), and down cases.  At query time only, it
-	 also applies synonyms. -->
+   removes stop words from case-insensitive "stopwords.txt"
+   (empty by default), and down cases.  At query time only, it
+   also applies synonyms. -->
     <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
         <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -261,11 +272,11 @@
                 enablePositionIncrements="true"
                 />
         <filter class="solr.LowerCaseFilterFactory"/>
-	<filter class="solr.EnglishPossessiveFilterFactory"/>
+  <filter class="solr.EnglishPossessiveFilterFactory"/>
         <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
-	<!-- Optionally you may want to use this less aggressive stemmer instead of PorterStemFilterFactory:
+  <!-- Optionally you may want to use this less aggressive stemmer instead of PorterStemFilterFactory:
         <filter class="solr.EnglishMinimalStemFilterFactory"/>
-	-->
+  -->
         <filter class="solr.PorterStemFilterFactory"/>
       </analyzer>
       <analyzer type="query">
@@ -277,26 +288,26 @@
                 enablePositionIncrements="true"
                 />
         <filter class="solr.LowerCaseFilterFactory"/>
-	<filter class="solr.EnglishPossessiveFilterFactory"/>
+  <filter class="solr.EnglishPossessiveFilterFactory"/>
         <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
-	<!-- Optionally you may want to use this less aggressive stemmer instead of PorterStemFilterFactory:
+  <!-- Optionally you may want to use this less aggressive stemmer instead of PorterStemFilterFactory:
         <filter class="solr.EnglishMinimalStemFilterFactory"/>
-	-->
+  -->
         <filter class="solr.PorterStemFilterFactory"/>
       </analyzer>
     </fieldType>
 
     <!-- A text field with defaults appropriate for English, plus
-	 aggressive word-splitting and autophrase features enabled.
-	 This field is just like text_en, except it adds
-	 WordDelimiterFilter to enable splitting and matching of
-	 words on case-change, alpha numeric boundaries, and
-	 non-alphanumeric chars.  This means certain compound word
-	 cases will work, for example query "wi fi" will match
-	 document "WiFi" or "wi-fi".  However, other cases will still
-	 not match, for example if the query is "wifi" and the
-	 document is "wi fi" or if the query is "wi-fi" and the
-	 document is "wifi".
+   aggressive word-splitting and autophrase features enabled.
+   This field is just like text_en, except it adds
+   WordDelimiterFilter to enable splitting and matching of
+   words on case-change, alpha numeric boundaries, and
+   non-alphanumeric chars.  This means certain compound word
+   cases will work, for example query "wi fi" will match
+   document "WiFi" or "wi-fi".  However, other cases will still
+   not match, for example if the query is "wifi" and the
+   document is "wi fi" or if the query is "wi-fi" and the
+   document is "wifi".
         -->
     <fieldType name="text_en_splitting" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
       <analyzer type="index">
@@ -351,7 +362,7 @@
     </fieldType>
 
     <!-- Just like text_general except it reverses the characters of
-	 each token, to enable more efficient leading wildcard queries. -->
+   each token, to enable more efficient leading wildcard queries. -->
     <fieldType name="text_general_rev" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
         <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -436,10 +447,10 @@
         a token of "foo|1.4"  would be indexed as "foo" with a payload of 1.4f
         Attributes of the DelimitedPayloadTokenFilterFactory : 
          "delimiter" - a one character delimiter. Default is | (pipe)
-	 "encoder" - how to encode the following value into a playload
-	    float -> org.apache.lucene.analysis.payloads.FloatEncoder,
-	    integer -> o.a.l.a.p.IntegerEncoder
-	    identity -> o.a.l.a.p.IdentityEncoder
+   "encoder" - how to encode the following value into a playload
+      float -> org.apache.lucene.analysis.payloads.FloatEncoder,
+      integer -> o.a.l.a.p.IntegerEncoder
+      identity -> o.a.l.a.p.IdentityEncoder
             Fully Qualified class name implementing PayloadEncoder, Encoder must have a no arg constructor.
          -->
         <filter class="solr.DelimitedPayloadTokenFilterFactory" encoder="float"/>
@@ -523,11 +534,11 @@
    <!-- these display fields are NOT multi-valued -->
    <field name="marc_display" type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="title_display" type="string" indexed="false" stored="true" multiValued="true"/>
-   <field name="title_vern_display" type="string" indexed="false" stored="true" multiValued="true"/>
+   <field name="title_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="subtitle_display" type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="subtitle_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="author_display" type="string" indexed="false" stored="true" multiValued="true"/>
-   <field name="author_vern_display" type="string" indexed="false" stored="true" multiValued="true"/>
+   <field name="author_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
    
    <!-- these fields are also used for display, so they must be stored -->
    <field name="isbn_t" type="text" indexed="true" stored="true" multiValued="true"/>
@@ -584,7 +595,7 @@
 
    <dynamicField name="*_display" type="string" indexed="false" stored="true" multiValued="true" />
    <dynamicField name="*_facet" type="string" indexed="true" stored="false" multiValued="true" />
-   <dynamicField name="*_sort" type="alphaOnlySort" indexed="true" stored="false" multiValued="false" />
+   <dynamicField name="*_sort" type="alphaOnlySort" indexed="true" stored="false" />
    <dynamicField name="*_unstem_search" type="text_general" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*spell" type="textSpell" indexed="true" stored="false" multiValued="true" />
 
@@ -672,10 +683,10 @@
 
 
    <!-- Above, multiple source fields are copied to the [text] field. 
-	  Another way to map multiple source fields to the same 
-	  destination field is to use the dynamic field syntax. 
-	  copyField also supports a maxChars to copy setting.  -->
-	   
+    Another way to map multiple source fields to the same 
+    destination field is to use the dynamic field syntax. 
+    copyField also supports a maxChars to copy setting.  -->
+     
 <!--    <copyField source="*_t" dest="text" maxChars="3000"/> -->
 
    <copyField source="id" dest="text"/>
