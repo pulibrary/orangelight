@@ -1,0 +1,2 @@
+module Orangelight::BrowsablesHelper
+end
