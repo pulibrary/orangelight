@@ -4,13 +4,7 @@
   <thead>
     <tr>
       <th>Label</th>
-      <th>Count</th>
-      <th>Sort</th>
-      <th>Dir</th>
-      <th><%= @page %> </th>
-      <th><%= @id %> </th>      
-      <th><%= @limit %> </th>    
-      <th><%= @is_last %> </th>          
+      <th>Count</th>   
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,10 +12,8 @@
   <tbody>
     <% @orangelight_browsables.each do |orangelight_name| %>
       <tr>
-        <td><%= orangelight_name.label %></td>
+        <td><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{orangelight_name.label}&search_field=all_fields" %></td>
         <td><%= orangelight_name.count %></td>
-        <td><%= orangelight_name.sort %></td>
-        <td><%= orangelight_name.dir %></td>
         <td><%= link_to 'Show', "#{@model}/#{orangelight_name.id}" %></td>
       </tr>
     <% end %>
