@@ -1,33 +1,63 @@
-<h1>Browse by <%=@list_name%></h1>
 
+<%= form_tag("", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<div class="modal-header"> <h3> Browse by <%=@list_name%> </h1></div>
+
+
+
+<div class="modal-body">
+<% if @model != 'call_numbers' %>
+  <div class="facet_extended_list">
+    <ul class="facet-values list-unstyled">
+        <% @orangelight_browsables.each do |orangelight_name| %>
+          <li>
+            <span class="facet-label"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{orangelight_name.label}&search_field=all_fields", class: orangelight_name.dir %></span>
+            <span class="facet-count"><%= link_to orangelight_name.count, "#{@model}/#{orangelight_name.id}" %></span>
+          </li>
+        <% end %>
+    </ul>
+  </div>
+
+<% else %>
 <table>
   <thead>
     <tr>
-      <th>Label</th>
-      <th>Count</th>   
-      <th colspan="3"></th>
+      <th> <%= @list_name %> </th>    
+      <th>Title</th>
+      <th>Creator</th>  
+      <th>Publication Info</th>             
     </tr>
   </thead>
 
   <tbody>
     <% @orangelight_browsables.each do |orangelight_name| %>
       <tr>
-        <td><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{orangelight_name.label}&search_field=all_fields" %></td>
-        <td><%= orangelight_name.count %></td>
-        <td><%= link_to 'Show', "#{@model}/#{orangelight_name.id}" %></td>
-      </tr>
+        <td><%= link_to orangelight_name.label, "/catalog/#{orangelight_name.bibid}" %></td>
+        <td><%= orangelight_name.title %></td>
+        <td><%= orangelight_name.author %></td>
+        <td><%= orangelight_name.date %></td>                    
+      </tr>      
     <% end %>
   </tbody>
 </table>
-
+<% end %>
+</div>
 <br>
 
-<% unless @page==1 %>
+<div class="modal-footer">
+  <div class="prev_next_links btn-group pull-left">
+    <% unless @is_first %>
 
-    <p><%= link_to 'Previous', @page_link + "page=#{@prev}" %></p>
+      <%= link_to '« Previous', @page_link + "page=#{@prev}", class: "btn btn-link" %>
 
-<% end %>
-<% unless @is_last %>
-
-  <p><%= link_to 'Next', @page_link + "page=#{@next}" %></p>
-<% end %>
+    <% end %>
+    <% unless @is_last %>
+      <%= link_to 'Next »', @page_link + "page=#{@next}", class: "btn btn-link" %>
+    <% end %>
+  </div>
+</div>
+<br>

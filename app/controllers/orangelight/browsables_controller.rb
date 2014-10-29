@@ -21,7 +21,11 @@ class Orangelight::BrowsablesController < ApplicationController
     end
 
     # gets last page of table's results
-    last_page = params[:model].last.id/@limit+1
+    if params[:model].last
+      last_page = params[:model].last.id/@limit+1 
+    else
+      last_page = 1
+    end
     
     # makes sure no next page link is shown for last page
     @is_last = last_page <= @page
@@ -30,21 +34,32 @@ class Orangelight::BrowsablesController < ApplicationController
       @page = last_page
     end
 
+
     # @id gets the id of the first entry to display on page
     # specific ids are given based on search results
     if params[:id].nil?
-      # get id of first entry on given page
+      # default is first on given page if none specifed  
       @id = (@page-1)*@limit+1
     else
-      # default is id=1 if none specifed    
+      # get id of first entry on given page
       @id = params[:id].to_i          
+      @prev = @id/@limit+1
     end        
 
+    unless params[:q].nil?
+      search_result = params[:model].where('label LIKE ?', "%#{params[:q]}%")[0]
+      unless search_result.nil?
+        @id = search_result.id
+        @prev = @id/@limit+1      
+      end
+    end
 
-    @prev = @id/@limit
+    @is_first = @id == 1
+
+    @prev ||= @id/@limit
     @next = @id/@limit+2
     @orangelight_browsables = params[:model].where(id: @id..(@id+@limit-1))
-    @model = @orangelight_browsables[0].class.name.demodulize.tableize
+    @model = params[:model].name.demodulize.tableize
 
     if @model == 'names'
       @facet = 'author_s'
@@ -52,10 +67,13 @@ class Orangelight::BrowsablesController < ApplicationController
       @facet = 'subject_topic_facet'
     end
         
-    @list_name = @orangelight_browsables[0].class.name.demodulize.titleize
+    @list_name = params[:model].name.demodulize.titleize
 
   end
  
+ def browse
+
+ end
   # GET /orangelight/names/1
   # GET /orangelight/names/1.json
   def show
@@ -64,7 +82,7 @@ class Orangelight::BrowsablesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_orangelight_browsable
-      @orangelight_browsable = params[:model].find(params[:id])
+      @orangelight_browsable = params[:model].find(params[:id]) if params[:model]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
