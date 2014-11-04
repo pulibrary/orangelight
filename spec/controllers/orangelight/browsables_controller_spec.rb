@@ -24,7 +24,7 @@ RSpec.describe Orangelight::BrowsablesController, :type => :controller do
   # Orangelight::Name. As you add validations to Orangelight::Name, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {}
   }
 
   let(:invalid_attributes) {

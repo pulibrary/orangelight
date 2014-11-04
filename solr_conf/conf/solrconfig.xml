@@ -222,10 +222,11 @@
          published_display,
          published_vern_display,
          pub_date_display,
-         pub_created_s,
+         pub_created_display,
          title_display,
          title_vern_display,
          subject_topic_facet,
+         subject_facet,
          subject_geo_facet,
          subject_era_facet,
          subtitle_display,
@@ -249,6 +250,7 @@
        <str name="facet.field">subject_era_facet</str>
        <str name="facet.field">subject_geo_facet</str>
        <str name="facet.field">subject_topic_facet</str>
+       <str name="facet.field">subject_facet</str>
        
        <str name="spellcheck">true</str>
        <str name="spellcheck.dictionary">default</str>
@@ -434,7 +436,7 @@
         published_display,
         published_vern_display,
         pub_date_display,
-        pub_created_s,
+        pub_created_display,
         title_display,
         title_vern_display,
         subject_topic_facet,

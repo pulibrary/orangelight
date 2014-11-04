@@ -62,7 +62,20 @@ ul
   padding: 0;
 }
 
-td, th
+
+
+.browse
 {
-  padding-right: 10px;
+
+  li, td, th
+  {
+    padding: .5em;
+  }
+
+  li.row-even, tr.row-even
+  {
+    background-color: #cfcfcf;
+  }
+
+
 }

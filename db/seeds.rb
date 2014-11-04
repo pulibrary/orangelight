@@ -31,10 +31,10 @@ req["facet_counts"]["facet_fields"]["author_s"].each do |name|
 	end
 end
 
-query = "&facet=true&fl=id&facet.field=subject_topic_facet&facet.sort=asc&facet.limit=-1"
+query = "&facet=true&fl=id&facet.field=subject_facet&facet.sort=asc&facet.limit=-1"
 req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
 browsable = Orangelight::Subject.new()
-req["facet_counts"]["facet_fields"]["subject_topic_facet"].each do |subject|
+req["facet_counts"]["facet_fields"]["subject_facet"].each do |subject|
 	if subject.is_a?(Integer)
 		browsable.count = subject.to_i
 		browsable.save!
@@ -55,7 +55,7 @@ req["response"]["docs"].each do |name|
 			browsable.title = name["title_display"][0] if name["title_display"]
 			browsable.label = cn
 			browsable.author = name["author_s"][0] if name["author_s"]
-			browsable.date = name["pub_created_s"][0] if name["pub_created_s"]
+			browsable.date = name["pub_created_display"][0] if name["pub_created_display"]
 			browsable.save!
 			browsable = Orangelight::CallNumber.new()
 		end

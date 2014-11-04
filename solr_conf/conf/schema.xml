@@ -194,7 +194,7 @@
        </analyzer>
      </fieldType>
 
-     <fieldType name="title_l" class="solr.TextField" positionIncrementGap="100"  autoGeneratePhraseQueries="true">
+     <fieldType name="title_l" class="solr.TextField" positionIncrementGap="100" >
 <!--        <analyzer>
          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="AAAA $1" /> 
          <tokenizer class="solr.PatternTokenizerFactory" pattern="$$$^"/>
@@ -203,14 +203,18 @@
          <filter class="solr.SnowballPorterFilterFactory" language="English" />
        </analyzer> -->
        <analyzer type="index">
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="AAAA $1" /> 
-          <tokenizer class="solr.PatternTokenizerFactory" pattern="$$$^"/>
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />         
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="AAAA$1" /> 
+          <tokenizer class="solr.KeywordTokenizerFactory" />
           <filter class="solr.ICUFoldingFilterFactory" />
-          <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="15" side="front"/>
+          <filter class="solr.WordDelimiterFilterFactory" catenateAll="1" />           
+          <filter class="solr.EdgeNGramFilterFactory" minGramSize="8" maxGramSize="25" side="front"/>
        </analyzer>
-       <analyzer type="query">
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="AAAA $1" /> 
-          <tokenizer class="solr.PatternTokenizerFactory" pattern="$$$^"/>
+       <analyzer type="query">     
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />                 
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="AAAA$1" /> 
+          <tokenizer class="solr.KeywordTokenizerFactory" />
+          <filter class="solr.WordDelimiterFilterFactory" catenateAll="1" /> 
           <filter class="solr.ICUFoldingFilterFactory" />
        </analyzer>           
      </fieldType>

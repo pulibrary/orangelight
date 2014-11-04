@@ -5,12 +5,40 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
   include BlacklightAdvancedSearch::ParseBasicQ  # adds AND/OR/NOT search term functionality  
 
+  
+
+
+  def find(*args)
+    # In later versions of Rails, the #benchmark method can do timing
+    # better for us. 
+    benchmark("Solr fetch", level: :debug) do
+      solr_params = args.extract_options!
+      if solr_params[:q]
+        if solr_params[:q].include?("{!qf=$left_anchor_qf pf=$left_anchor_pf}")
+          newq = solr_params[:q].gsub("{!qf=$left_anchor_qf pf=$left_anchor_pf}", "")
+          solr_params[:q] = "{!qf=$left_anchor_qf pf=$left_anchor_pf}" + newq.gsub(" ", "")
+        end         
+      end
+      path = args.first || blacklight_config.solr_path
+      solr_params[:qt] ||= blacklight_config.qt
+      # delete these parameters, otherwise rsolr will pass them through.
+      key = blacklight_config.http_method == :post ? :data : :params
+      res = blacklight_solr.send_and_receive(path, {key=>solr_params.to_hash, method:blacklight_config.http_method})
+      
+      solr_response = Blacklight::SolrResponse.new(res, solr_params, solr_document_model: blacklight_config.solr_document_model)
+
+      Rails.logger.debug("Solr query: #{solr_params.inspect}")
+      Rails.logger.debug("Solr response: #{solr_response.inspect}") if defined?(::BLACKLIGHT_VERBOSE_LOGGING) and ::BLACKLIGHT_VERBOSE_LOGGING
+      solr_response
+    end
+  rescue Errno::ECONNREFUSED => e
+    raise Blacklight::Exceptions::ECONNREFUSED.new("Unable to connect to Solr instance using #{blacklight_solr.inspect}")
+  end
+  
+
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
-    config.default_solr_params = { 
-      :qt => 'search',
-      :rows => 10 
-    }
+
     
     # solr path which will be added to solr base url before the other solr params.
     #config.solr_path = 'select' 
@@ -21,13 +49,14 @@ class CatalogController < ApplicationController
     ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SolrHelper#solr_doc_params) or 
     ## parameters included in the Blacklight-jetty document requestHandler.
     #
-    #config.default_document_solr_params = {
+
+    # config.default_document_solr_params = {
     #  :qt => 'document',
     #  ## These are hard-coded in the blacklight 'document' requestHandler
     #  # :fl => '*',
     #  # :rows => 1
-    #  # :q => '{!raw f=id v=$id}' 
-    #}
+    #   :q => query 
+    # }
 
     # solr field configuration for search results/index views
     config.index.title_field = 'title_display'
@@ -103,12 +132,12 @@ class CatalogController < ApplicationController
     # config.add_index_field 'title_vern_display', :label => 'Title'
     config.add_index_field 'author_s', :label => 'Author', :link_to_search => true
     #config.add_index_field 'author_vern_display', :label => 'Author'
-    config.add_index_field 'format', :label => 'Format'
+    #config.add_index_field 'format', :label => 'Format'
     #config.add_index_field 'language_facet', :label => 'Language'
     #config.add_index_field 'published_display', :label => 'Published'
     #config.add_index_field 'published_vern_display', :label => 'Published'
     #config.add_index_field 'lc_callnum_display', :label => 'Call number'
-    config.add_index_field 'pub_created_display', :label => 'Publication Year'
+    config.add_index_field 'pub_created_display', :label => 'Published/Created'
     #config.add_index_field 'description_display', :label => 'Description'
     config.add_index_field 'location', :label => 'Location', helper_method: :multiple_locations
     config.add_index_field 'call_number_display', :label => 'Call number'
@@ -324,6 +353,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('left_anchor') do |field|
       field.label = 'Starts with'
+
       field.solr_local_parameters = { 
         :qf => '$left_anchor_qf',
         :pf => '$left_anchor_pf'

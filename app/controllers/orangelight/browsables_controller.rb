@@ -4,61 +4,67 @@ class Orangelight::BrowsablesController < ApplicationController
   # GET /orangelight/names
   # GET /orangelight/names.json
   def index
-    # if limit isn't specified default is 50
+    # if rpp isn't specified default is 50
     # previous/next page links need to pass
-    # manually set limit
-    if params[:limit].nil?
-      @limit = 50
+    # manually set rpp
+    if params[:rpp].nil?
+      @rpp = 10
       @page_link = "?"
     else
-      @limit = params[:limit].to_i
-      @page_link = "?limit=#{@limit}&"
+      @rpp = params[:rpp].to_i
+      @page_link = "?rpp=#{@rpp}&"
     end
-    if params[:page].nil?
-      @page=1
-    else
-      @page = params[:page].to_i   
+    # if params[:page].nil?
+    #   @page=1
+    # else
+    #   @page = params[:page].to_i   
+    # end
+
+
+    # @start gets the id of the first entry to display on page
+    # specific ids are given based on search results
+    @start = params[:start].nil? ? 1 : params[:start].to_i
+    
+
+    unless params[:val].nil?
+      search_result = params[:model].where('label < ?', params[:val]).last
+      unless search_result.nil?
+        @start = search_result.id
+        #@prev = @start/@rpp+1      
+      end
     end
 
     # gets last page of table's results
     if params[:model].last
-      last_page = params[:model].last.id/@limit+1 
+      @last_id = params[:model].last.id 
     else
-      last_page = 1
+      @last_id = 1
     end
     
     # makes sure no next page link is shown for last page
-    @is_last = last_page <= @page
+    @is_last = (@last_id-@rpp+1) <= @start
     # makes sure valid page is displayed
-    if @is_last 
-      @page = last_page
+    if !(@last_id-@rpp+1..@last_id).cover?(@start) && @is_last
+      @start = @last_id-@rpp+1
     end
 
 
-    # @id gets the id of the first entry to display on page
-    # specific ids are given based on search results
-    if params[:id].nil?
-      # default is first on given page if none specifed  
-      @id = (@page-1)*@limit+1
+    @is_first = @start == 1
+
+    if (@start+@rpp-1) > @last_id
+      @page_last = @last_id
     else
-      # get id of first entry on given page
-      @id = params[:id].to_i          
-      @prev = @id/@limit+1
-    end        
-
-    unless params[:q].nil?
-      search_result = params[:model].where('label LIKE ?', "%#{params[:q]}%")[0]
-      unless search_result.nil?
-        @id = search_result.id
-        @prev = @id/@limit+1      
-      end
+      @page_last = @start+@rpp-1
     end
 
-    @is_first = @id == 1
-
-    @prev ||= @id/@limit
-    @next = @id/@limit+2
-    @orangelight_browsables = params[:model].where(id: @id..(@id+@limit-1))
+    @prev = @start - @rpp
+    if @prev < 1
+      @prev = 1
+    end
+    @next = @start + @rpp
+    # @prev ||= @start/@rpp
+    # @next = @start/@rpp+2
+    @orangelight_browsables = params[:model].where(id: @start..(@page_last))
     @model = params[:model].name.demodulize.tableize
 
     if @model == 'names'

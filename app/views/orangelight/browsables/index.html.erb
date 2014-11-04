@@ -1,29 +1,51 @@
 
 <%= form_tag("", method: "get") do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
+  <%= label_tag(:val, "Search for:") %>
+  <%= text_field_tag(:val) %>
   <%= submit_tag("Search") %>
 <% end %>
 
-<div class="modal-header"> <h3> Browse by <%=@list_name%> </h1></div>
+<div class="modal-header"> <h3> Browse by <%="#{@list_name}" %>
+
+    <div class="prev_next_links btn-group pull-right">
+    
+    <% if @is_first %>
+      <%= content_tag(:div, "« Previous", class: "btn disabled") %> 
+    <% else %>
+      <%= link_to '« Previous', @page_link + "start=#{@prev}", class: "btn btn-link" %>
+    <% end %>
+    <%= content_tag(:div, "#{@start} - #{@page_last} of #{@last_id}", class: "btn disabled", style: "color:black;strong;font-weight:bold;") %>     
+    <% if @is_last %>
+      <%= content_tag(:div, "Next »", class: "btn disabled") %>   
+    <% else %> 
+      <%= link_to 'Next »', @page_link + "start=#{@next}", class: "btn btn-link" %>
+    <% end %>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%= link_to(t(:'blacklight.search.per_page.button_label', :count => current_per_page), "#") %> <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu">
+      <%- per_page_options_for_select.each do |(label, count)| %>
+        <li><%= link_to(label, url_for(params_for_search(:rpp => count))) %></li>
+      <%- end -%>
+    </ul>
+  </div>
+</h3></div>
 
 
 
-<div class="modal-body">
 <% if @model != 'call_numbers' %>
-  <div class="facet_extended_list">
-    <ul class="facet-values list-unstyled">
-        <% @orangelight_browsables.each do |orangelight_name| %>
-          <li>
-            <span class="facet-label"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{orangelight_name.label}&search_field=all_fields", class: orangelight_name.dir %></span>
-            <span class="facet-count"><%= link_to orangelight_name.count, "#{@model}/#{orangelight_name.id}" %></span>
+    <ul class="browse">
+        <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
+          
+          <li class="row-<%=i.even? ? 'even' : 'odd' %>">
+            <span class="facet-label"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{orangelight_name.label}&search_field=all_fields", class: orangelight_name.dir %>
+              <%= "(#{orangelight_name.count})"%>
+            <%= link_to "[more info]", "#{@model}/#{orangelight_name.id}", style: "font-size:10px;" %></span>
           </li>
         <% end %>
     </ul>
-  </div>
+
 
 <% else %>
-<table>
+<table class="browse">
   <thead>
     <tr>
       <th> <%= @list_name %> </th>    
@@ -33,9 +55,9 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @orangelight_browsables.each do |orangelight_name| %>
-      <tr>
+  <tbody >
+    <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
+      <tr class="row-<%=i.even? ? 'even' : 'odd' %>">
         <td><%= link_to orangelight_name.label, "/catalog/#{orangelight_name.bibid}" %></td>
         <td><%= orangelight_name.title %></td>
         <td><%= orangelight_name.author %></td>
@@ -45,18 +67,21 @@
   </tbody>
 </table>
 <% end %>
-</div>
+
 <br>
 
 <div class="modal-footer">
   <div class="prev_next_links btn-group pull-left">
-    <% unless @is_first %>
-
-      <%= link_to '« Previous', @page_link + "page=#{@prev}", class: "btn btn-link" %>
-
+    <% if @is_first %>
+      <%= content_tag(:div, "« Previous", class: "btn disabled") %> 
+    <% else %>
+      <%= link_to '« Previous', @page_link + "start=#{@prev}", class: "btn btn-link" %>
     <% end %>
-    <% unless @is_last %>
-      <%= link_to 'Next »', @page_link + "page=#{@next}", class: "btn btn-link" %>
+    <%= content_tag(:div, "#{@start} - #{@page_last} of #{@last_id}", class: "btn disabled", style: "color:black;strong;font-weight:bold;") %>     
+    <% if @is_last %>
+      <%= content_tag(:div, "Next »", class: "btn disabled") %>   
+    <% else %> 
+      <%= link_to 'Next »', @page_link + "start=#{@next}", class: "btn btn-link" %>
     <% end %>
   </div>
 </div>
