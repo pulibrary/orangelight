@@ -39,6 +39,11 @@ rtl {
   float:right;
 }
 
+.rtl {
+  direction: rtl;
+  float:right;
+}
+
 .dl-horizontal dt 
 {
   overflow:visible;
@@ -55,4 +60,22 @@ ul
 {
   list-style-type: none;
   padding: 0;
+}
+
+
+
+.browse
+{
+
+  li, td, th
+  {
+    padding: .5em;
+  }
+
+  li.row-even, tr.row-even
+  {
+    background-color: #cfcfcf;
+  }
+
+
 }
