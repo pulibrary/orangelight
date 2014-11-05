@@ -9,10 +9,10 @@
 extend BlacklightHelper
 
 
-host = "localhost"
-core = "/solr/blacklight-core"
-suffix = "&defType=edismax"
-prt = 8983
+host = "pulsearch-dev.princeton.edu"
+core = "/orangelight/blacklight-core"
+suffix = ""
+prt = 8080
 
 # changes for different facet queries
 query = "&facet=true&fl=id&facet.field=author_s&facet.sort=asc&facet.limit=-1"

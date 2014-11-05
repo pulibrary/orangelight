@@ -78,7 +78,6 @@ class Orangelight::BrowsablesController < ApplicationController
   end
  
  def browse
-
  end
   # GET /orangelight/names/1
   # GET /orangelight/names/1.json
