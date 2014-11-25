@@ -2,10 +2,11 @@
 module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior
   RTL_RANGE = [0x590..0x8FF, 0xFB1D..0xFB44, 0xFB50..0xFDFF, 0xFE70..0xFEFF, 0x10800..0x10F00]
-  RTL_CHECK_INDEXES = [0,5,11]
+  CHECK_INDEXES = [0,5,11]
+
 
 	def getdir(str, opts={})
-	  opts.fetch(:check_indexes, RTL_CHECK_INDEXES).each do |i|
+	  opts.fetch(:check_indexes, CHECK_INDEXES).each do |i|
 	    RTL_RANGE.each do |subrange|
 	      if str[i]
 	      	if subrange.cover?(str[i].unpack('U*0')[0])
@@ -16,6 +17,7 @@ module BlacklightHelper
 	  end
 	  return "ltr"
 	end 
+
 
   # def altscript! values
   #   values.each_with_index do |contents, i|
