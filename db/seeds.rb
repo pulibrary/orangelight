@@ -13,16 +13,27 @@ require 'rsolr'
 extend BlacklightHelper
 
 
-# host = "pulsearch-dev.princeton.edu"
-# core = "/orangelight/blacklight-core"
-# suffix = ""
-# prt = 8080
+if Rails.env == "development"
+	host = "localhost"
+	core = "/solr/blacklight-core"
+	dtype = "edismax"
+	suffix = "&defType=edismax"
+	prt = 8983
+elsif Rails.env = "production"
+	host = "pulsearch-dev.princeton.edu"
+	core = "/orangelight/blacklight-core"
+	dtype = "edismax"
+	suffix = "&defType=edismax"
+	prt = 8080
+else
+	host = "localhost"
+	core = "/solr/blacklight-core"
+	dtype = "edismax"
+	suffix = "&defType=edismax"
+	prt = 8888	
+end
 
-host = "localhost"
-core = "/solr/blacklight-core"
-dtype = "edismax"
-suffix = "&defType=edismax"
-prt = 8983
+
 
 
 # changes for different facet queries
