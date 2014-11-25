@@ -203,18 +203,17 @@
          <filter class="solr.SnowballPorterFilterFactory" language="English" />
        </analyzer> -->
        <analyzer type="index">
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />         
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="AAAA$1" /> 
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />     
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />                
           <tokenizer class="solr.KeywordTokenizerFactory" />
-          <filter class="solr.ICUFoldingFilterFactory" />
-          <filter class="solr.WordDelimiterFilterFactory" catenateAll="1" />           
-          <filter class="solr.EdgeNGramFilterFactory" minGramSize="8" maxGramSize="25" side="front"/>
+          <filter class="solr.ICUFoldingFilterFactory" />          
+<!--           <filter class="solr.EdgeNGramFilterFactory" minGramSize="6" maxGramSize="50" side="front"/> -->
        </analyzer>
        <analyzer type="query">     
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />                 
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="AAAA$1" /> 
-          <tokenizer class="solr.KeywordTokenizerFactory" />
-          <filter class="solr.WordDelimiterFilterFactory" catenateAll="1" /> 
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />   
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />                   
+<!--           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="$1\*" />       -->               
+          <tokenizer class="solr.WhitespaceTokenizerFactory"/>
           <filter class="solr.ICUFoldingFilterFactory" />
        </analyzer>           
      </fieldType>
@@ -680,6 +679,8 @@
    <!-- left-anchored search fields -->
    <copyField source="title_t" dest="title_l"/>
    <copyField source="title_vern_display" dest="title_l"/>
+   <copyField source="title_sort" dest="title_l"/>
+   <copyField source="title_vern_sort" dest="title_l"/>   
    <copyField source="author_s" dest="title_l"/>
    <copyField source="author_vern_display" dest="title_l"/>
    <copyField source="subject_topic_facet" dest="title_l"/>

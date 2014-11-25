@@ -1,5 +1,13 @@
+
 class Orangelight::BrowsablesController < ApplicationController
+
+  require 'orangelight/browse_functions'
+
   before_action :set_orangelight_browsable, only: [:show]
+
+
+
+    
 
   # GET /orangelight/names
   # GET /orangelight/names.json
@@ -8,7 +16,7 @@ class Orangelight::BrowsablesController < ApplicationController
     # previous/next page links need to pass
     # manually set rpp
     if params[:rpp].nil?
-      @rpp = 10
+      @rpp = 50
       @page_link = "?"
     else
       @rpp = params[:rpp].to_i
@@ -25,11 +33,19 @@ class Orangelight::BrowsablesController < ApplicationController
     # specific ids are given based on search results
     @start = params[:start].nil? ? 1 : params[:start].to_i
     
-
     unless params[:val].nil?
-      search_result = params[:model].where('label < ?', params[:val]).last
+      if islatin(params[:val].gsub('—', ' '))
+        search_term = params[:val].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
+      else 
+        search_term = params[:val].gsub('—', ' ')
+      end
+      search_result = params[:model].where('sort <= ?', search_term).last
       unless search_result.nil?
-        @start = search_result.id
+        @exact_match =  search_term == search_result.sort
+        @match = search_result.id        
+        @start = search_result.id-3
+        @start = 1 if @start < 1
+        @query = params[:val]
         #@prev = @start/@rpp+1      
       end
     end
@@ -46,6 +62,7 @@ class Orangelight::BrowsablesController < ApplicationController
     # makes sure valid page is displayed
     if !(@last_id-@rpp+1..@last_id).cover?(@start) && @is_last
       @start = @last_id-@rpp+1
+      @start = 1 if @start < 1 # catch for start ids higher than last id
     end
 
 
@@ -65,6 +82,7 @@ class Orangelight::BrowsablesController < ApplicationController
     # @prev ||= @start/@rpp
     # @next = @start/@rpp+2
     @orangelight_browsables = params[:model].where(id: @start..(@page_last))
+    #@orangelight_browsables = params[:model].order(:label).offset(@start).limit(@page_last-@start)
     @model = params[:model].name.demodulize.tableize
 
     if @model == 'names'
@@ -78,7 +96,6 @@ class Orangelight::BrowsablesController < ApplicationController
   end
  
  def browse
-
  end
   # GET /orangelight/names/1
   # GET /orangelight/names/1.json

@@ -47,6 +47,10 @@ gem 'rspec-rails', '~> 3.0.0'
 
 gem 'capybara'
 
+gem 'stringex'
+
+gem 'lcsort', :git => "git@github.com:pulibrary/lcsort.git"
+
 gem 'coveralls', require: false
 
 group :development do

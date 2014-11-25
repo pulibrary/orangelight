@@ -20,11 +20,12 @@
     <% else %> 
       <%= link_to 'Next »', @page_link + "start=#{@next}", class: "btn btn-link" %>
     <% end %>
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%= link_to(t(:'blacklight.search.per_page.button_label', :count => current_per_page), "#") %> <span class="caret"></span></button>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%= link_to(t(:'blacklight.search.per_page.button_label', :count => @rpp), "#") %> <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu">
-      <%- per_page_options_for_select.each do |(label, count)| %>
-        <li><%= link_to(label, url_for(params_for_search(:rpp => count))) %></li>
-      <%- end -%>
+        <li><%= link_to("50", url_for(params_for_search(:rpp => 50))) %></li>
+        <li><%= link_to("10", url_for(params_for_search(:rpp => 10))) %></li>
+        <li><%= link_to("25", url_for(params_for_search(:rpp => 25))) %></li>   
+        <li><%= link_to("100", url_for(params_for_search(:rpp => 100))) %></li>              
     </ul>
   </div>
 </h3></div>
@@ -34,12 +35,27 @@
 <% if @model != 'call_numbers' %>
     <ul class="browse">
         <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
-          
-          <li class="row-<%=i.even? ? 'even' : 'odd' %>">
+
+          <% if orangelight_name.id == @match && @exact_match %>
+            <div class="alert alert-info">
+              <strong>
+          <% else %>
+            <li class="row-<%=i.even? ? 'even' : 'odd' %>">
+          <% end %>
             <span class="facet-label"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{orangelight_name.label}&search_field=all_fields", class: orangelight_name.dir %>
               <%= "(#{orangelight_name.count})"%>
             <%= link_to "[more info]", "#{@model}/#{orangelight_name.id}", style: "font-size:10px;" %></span>
-          </li>
+          <% if orangelight_name.id == @match && @exact_match %>
+              </strong>
+            </div>
+          <% else %>
+            </li>
+          <% end %>
+          <% if orangelight_name.id == @match && !@exact_match %>
+              <div class="alert alert-info">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong>
+            </div>
+          <% end %>          
         <% end %>
     </ul>
 

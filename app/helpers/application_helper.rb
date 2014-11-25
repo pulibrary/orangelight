@@ -11,6 +11,7 @@ module ApplicationHelper
   # Creates link for electronic access URL, works only if one electronic access link.
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
+
   def urlify args
     args[:document][args[:field]][0] = link_to(args[:document][args[:field]][1],
       args[:document][args[:field]][0], :target => "_blank")
@@ -56,13 +57,19 @@ module ApplicationHelper
     args[:document][args[:field]].each_with_index do |subject, i|    
       lnk = ''
       lnk_accum = ''
+      full_sub = ''
       all_subjects[i].each_with_index do |subsubject, j|
         lnk = lnk_accum + link_to(subsubject,
           "/?f[subject_topic_facet][]=#{sub_array[i][j]}&q=&search_field=all_fields")
         lnk_accum = lnk + SEPARATOR
+        full_sub = sub_array[i][j]
       end
+      lnk += '  '
+      lnk += link_to('[Browse Subject]', "/browse/subjects?val=#{full_sub}", style: "font-size:10px; font-style:italic")
       args[:document][args[:field]][i] = lnk.html_safe        
     end
+
+
   end
 
   def multiple_locations args

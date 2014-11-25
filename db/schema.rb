@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20141024160515) do
     t.string  "sort"
     t.text    "title"
     t.string  "author"
-    t.string  "date"
+    t.text    "date"
     t.integer "bibid"
   end
 
