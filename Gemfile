@@ -49,7 +49,7 @@ gem 'capybara'
 
 gem 'stringex'
 
-gem 'lcsort', :git => "git@github.com:pulibrary/lcsort.git"
+gem 'lcsort', :git => "git://github.com/pulibrary/lcsort.git"
 
 gem 'coveralls', require: false
 

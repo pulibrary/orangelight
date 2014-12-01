@@ -41,6 +41,8 @@ class Orangelight::BrowsablesController < ApplicationController
       end
       search_result = params[:model].where('sort <= ?', search_term).last
       unless search_result.nil?
+        @search_result = search_result.label
+        @search_term = search_term
         @exact_match =  search_term == search_result.sort
         @match = search_result.id        
         @start = search_result.id-3
