@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:pulibrary/lcsort.git
+  remote: git://github.com/pulibrary/lcsort.git
   revision: 3cd579a872bd2758fc3f95616d98b769508bbbfe
   specs:
     lcsort (0.1.0)
