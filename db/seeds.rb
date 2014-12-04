@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'stringex'
+
 
 require 'lcsort'
 require 'rsolr'
@@ -55,33 +55,37 @@ req = solr.get 'select', :params => {facet: true,
 req["facet_counts"]["facet_pivot"]["author_sort_s,author_s"].each do |name|
 	browsable = Orangelight::Name.new()
 	browsable.sort = name["value"]
-	browsable.label = name["pivot"][0]["value"]
-	browsable.count = name["pivot"][0]["count"].to_i
-	browsable.dir = "ltr"  #only non-alternate script fields have this special author_sort_s field
+	name["pivot"].each do |name_display|
+		browsable.label = name_display["value"] if name["value"] == name_display["value"].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
+	end	
+	browsable.count = name["count"].to_i
+	browsable.dir = getdir(browsable.label) 
 	browsable.save!
 end
 
 # query = "&facet=true&fl=id&facet.field=author_vern_s&facet.sort=asc&facet.limit=-1"
 # req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
-req = solr.get 'select', :params => {facet: true,
-	fl: 'id',
-	'facet.field' => 'author_vern_s',
-	'facet.sort' => 'asc',
-	'facet.limit' => '-1',
-	'facet.pivot' => 'author_sort_s,author_s',
-	defType: dtype}
-browsable = Orangelight::Name.new()
-req["facet_counts"]["facet_fields"]["author_vern_s"].each do |name|
-	if name.is_a?(Integer)
-		browsable.count = name.to_i
-		browsable.save!
-		browsable = Orangelight::Name.new()
-	else
-		browsable.label = name
-		browsable.sort = name
-		browsable.dir = getdir(name)
-	end
-end
+
+####### TRYING WITH JUST ONE INDEX #########
+# req = solr.get 'select', :params => {facet: true,
+# 	fl: 'id',
+# 	'facet.field' => 'author_vern_s',
+# 	'facet.sort' => 'asc',
+# 	'facet.limit' => '-1',
+# 	'facet.pivot' => 'author_sort_s,author_s',
+# 	defType: dtype}
+# browsable = Orangelight::Name.new()
+# req["facet_counts"]["facet_fields"]["author_vern_s"].each do |name|
+# 	if name.is_a?(Integer)
+# 		browsable.count = name.to_i
+# 		browsable.save!
+# 		browsable = Orangelight::Name.new()
+# 	else
+# 		browsable.label = name
+# 		browsable.sort = name
+# 		browsable.dir = getdir(name)
+# 	end
+# end
 
 
 
@@ -111,8 +115,8 @@ end
 		subject["pivot"].each do |sub_display|
 			browsable.label = sub_display["value"] if subject["value"] == sub_display["value"].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
 		end
-		browsable.count = subject["pivot"][0]["count"].to_i
-		browsable.dir = "ltr"  #only non-alternate script fields have this special subject_sort_facet field
+		browsable.count = subject["count"].to_i
+		browsable.dir = getdir(browsable.label)
 		browsable.save!
 	end
 # 	notempty = req["facet_counts"]["facet_pivot"]["subject_sort_facet,subject_facet"].length != 0
@@ -121,24 +125,26 @@ end
 
 # query = "&facet=true&fl=id&facet.field=subject_vern_facet&facet.sort=asc&facet.limit=-1"
 # req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
-req = solr.get 'select', :params => {facet: true,
-	fl: 'id',
-	'facet.field' => 'subject_vern_facet',
-	'facet.sort' => 'asc',
-	'facet.limit' => '-1',
-	defType: dtype}
-browsable = Orangelight::Subject.new()
-req["facet_counts"]["facet_fields"]["subject_vern_facet"].each do |subject|
-	if subject.is_a?(Integer)
-		browsable.count = subject.to_i
-		browsable.save!
-		browsable = Orangelight::Subject.new()
-	else
-		browsable.label = subject
-		browsable.sort = subject.gsub('—', ' ')
-		browsable.dir = getdir(subject)		
-	end
-end
+
+####### TRYING WITH JUST ONE INDEX #########
+# req = solr.get 'select', :params => {facet: true,
+# 	fl: 'id',
+# 	'facet.field' => 'subject_vern_facet',
+# 	'facet.sort' => 'asc',
+# 	'facet.limit' => '-1',
+# 	defType: dtype}
+# browsable = Orangelight::Subject.new()
+# req["facet_counts"]["facet_fields"]["subject_vern_facet"].each do |subject|
+# 	if subject.is_a?(Integer)
+# 		browsable.count = subject.to_i
+# 		browsable.save!
+# 		browsable = Orangelight::Subject.new()
+# 	else
+# 		browsable.label = subject
+# 		browsable.sort = subject.gsub('—', ' ')
+# 		browsable.dir = getdir(subject)		
+# 	end
+# end
 
 
 
@@ -155,6 +161,13 @@ req["response"]["docs"].each do |name|
 			browsable = Orangelight::CallNumber.new()
 			browsable.bibid = name["id"].to_i
 			browsable.title = name["title_display"][0] if name["title_display"]
+			if name["title_vern_display"]
+				browsable.title = name["title_vern_display"] 
+				browsable.dir = getdir(browsable.title)
+			else
+				browsable.dir = "ltr"  #ltr for non alt script
+			end
+
 			#puts cn
 			#browsable.sort = cn
 			browsable.sort = Lcsort.normalize(cn)

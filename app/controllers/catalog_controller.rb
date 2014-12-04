@@ -148,8 +148,11 @@ class CatalogController < ApplicationController
     # config.add_show_field 'title_vern_display', :label => 'Title'
     # config.add_show_field 'subtitle_display', :label => 'Subtitle'
     # config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
-    config.add_show_field 'author_display', :label => 'Author'#, :helper_method => :altscript
-    config.add_show_field 'author_vern_display', :label => 'Author'
+    
+    # tring with author_s
+    #config.add_show_field 'author_display', :label => 'Author'#, :helper_method => :altscript
+    #config.add_show_field 'author_vern_display', :label => 'Author'
+    config.add_show_field 'author_s', :label => 'Author', :helper_method => :browse_name
     config.add_show_field 'format', :label => 'Format'
     config.add_show_field 'url_fulltext_display', :label => 'URL'
     config.add_show_field 'url_suppl_display', :label => 'More Information'

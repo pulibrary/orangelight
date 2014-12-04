@@ -1,7 +1,6 @@
 
 class Orangelight::BrowsablesController < ApplicationController
 
-  require 'orangelight/browse_functions'
 
   before_action :set_orangelight_browsable, only: [:show]
 
@@ -34,11 +33,8 @@ class Orangelight::BrowsablesController < ApplicationController
     @start = params[:start].nil? ? 1 : params[:start].to_i
     
     unless params[:val].nil?
-      if islatin(params[:val].gsub('—', ' '))
-        search_term = params[:val].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
-      else 
-        search_term = params[:val].gsub('—', ' ')
-      end
+
+      search_term = params[:val].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
       search_result = params[:model].where('sort <= ?', search_term).last
       unless search_result.nil?
         @search_result = search_result.label
