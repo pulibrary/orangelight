@@ -75,7 +75,7 @@
   <tbody >
     <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
       <% if orangelight_name.id == @match && @exact_match %>
-        <div class="alert alert-info">
+        <tr class="alert alert-info">
           <strong>
       <% else %>
         <tr class="row-<%=i.even? ? 'even' : 'odd' %>">
@@ -84,16 +84,15 @@
         <td><%= orangelight_name.title %></td>
         <td><%= orangelight_name.author %></td>
         <td><%= orangelight_name.date %></td>                    
-      </tr> 
       <% if orangelight_name.id == @match && @exact_match %>
           </strong>
-        </div>
+        </tr>
       <% else %>
-        </li>
+        </tr>
       <% end %>
       <% if orangelight_name.id == @match && !@exact_match %>
-          <tr class="alert alert-info">
-          <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong>
+          <tr class="alert alert-info"> <td colspan=4>
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong> </td>
         </tr>
       <% end %>               
     <% end %>
