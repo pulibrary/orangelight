@@ -247,6 +247,7 @@
        <str name="facet.mincount">1</str>
        <str name="facet.limit">10</str>
        <str name="facet.field">format</str>
+       <str name="facet.field">call_number_s</str>        
        <str name="facet.field">author_s</str>    
        <str name="facet.field">author_sort_s</str>
        <str name="facet.field">author_vern_s</str>                   
