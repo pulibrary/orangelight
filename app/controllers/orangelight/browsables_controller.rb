@@ -14,6 +14,8 @@ class Orangelight::BrowsablesController < ApplicationController
     # if rpp isn't specified default is 50
     # previous/next page links need to pass
     # manually set rpp
+
+    @model = params[:model].name.demodulize.tableize    
     if params[:rpp].nil?
       @rpp = 50
       @page_link = "?"
@@ -33,8 +35,11 @@ class Orangelight::BrowsablesController < ApplicationController
     @start = params[:start].nil? ? 1 : params[:start].to_i
     
     unless params[:val].nil?
-
-      search_term = params[:val].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
+      if @model == "call_numbers"
+        search_term = Lcsort.normalize(params[:val])
+      else
+        search_term = params[:val].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
+      end
       search_result = params[:model].where('sort <= ?', search_term).last
       unless search_result.nil?
         @search_result = search_result.label
@@ -81,7 +86,7 @@ class Orangelight::BrowsablesController < ApplicationController
     # @next = @start/@rpp+2
     @orangelight_browsables = params[:model].where(id: @start..(@page_last))
     #@orangelight_browsables = params[:model].order(:label).offset(@start).limit(@page_last-@start)
-    @model = params[:model].name.demodulize.tableize
+
 
     if @model == 'names'
       @facet = 'author_s'
@@ -90,7 +95,7 @@ class Orangelight::BrowsablesController < ApplicationController
     end
         
     @list_name = params[:model].name.demodulize.titleize
-
+ 
   end
  
  def browse
