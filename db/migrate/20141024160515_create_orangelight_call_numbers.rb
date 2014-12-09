@@ -8,7 +8,7 @@ class CreateOrangelightCallNumbers < ActiveRecord::Migration
       t.text :title
       t.string :author
       t.text :date
-      t.integer :bibid
+      t.string :bibid
 
     end
   end

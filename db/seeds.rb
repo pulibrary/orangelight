@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'stringex'
+
 
 require 'lcsort'
 require 'rsolr'
@@ -40,48 +40,51 @@ end
 
 solr = RSolr.connect :url => "http://#{host}:#{prt}/#{core}", :read_timeout => 9999999
 
-
 ##### NAMES ######
-
-# query = "&facet=true&fl=id&facet.field=author_sort_s&facet.sort=asc&facet.limit=-1&facet.pivot=author_sort_s,author_s"
-# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt))
-req = solr.get 'select', :params => {facet: true,
-	fl: 'id',
-	'facet.field' => 'author_sort_s',
-	'facet.sort' => 'asc',
-	'facet.limit' => '-1',
-	'facet.pivot' => 'author_sort_s,author_s',
-	defType: dtype}
-req["facet_counts"]["facet_pivot"]["author_sort_s,author_s"].each do |name|
-	browsable = Orangelight::Name.new()
-	browsable.sort = name["value"]
-	browsable.label = name["pivot"][0]["value"]
-	browsable.count = name["pivot"][0]["count"].to_i
-	browsable.dir = "ltr"  #only non-alternate script fields have this special author_sort_s field
-	browsable.save!
-end
-
-# query = "&facet=true&fl=id&facet.field=author_vern_s&facet.sort=asc&facet.limit=-1"
-# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
-req = solr.get 'select', :params => {facet: true,
-	fl: 'id',
-	'facet.field' => 'author_vern_s',
-	'facet.sort' => 'asc',
-	'facet.limit' => '-1',
-	'facet.pivot' => 'author_sort_s,author_s',
-	defType: dtype}
-browsable = Orangelight::Name.new()
-req["facet_counts"]["facet_fields"]["author_vern_s"].each do |name|
-	if name.is_a?(Integer)
-		browsable.count = name.to_i
-		browsable.save!
+unless ENV['STEP'] == '1'
+	# query = "&facet=true&fl=id&facet.field=author_sort_s&facet.sort=asc&facet.limit=-1&facet.pivot=author_sort_s,author_s"
+	# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt))
+	req = solr.get 'select', :params => {facet: true,
+		fl: 'id',
+		'facet.field' => 'author_sort_s',
+		'facet.sort' => 'asc',
+		'facet.limit' => '-1',
+		'facet.pivot' => 'author_sort_s,author_s',
+		defType: dtype}
+	req["facet_counts"]["facet_pivot"]["author_sort_s,author_s"].each do |name|
 		browsable = Orangelight::Name.new()
-	else
-		browsable.label = name
-		browsable.sort = name
-		browsable.dir = getdir(name)
+		browsable.sort = name["value"]
+		name["pivot"].each do |name_display|
+			browsable.label = name_display["value"] if name["value"] == name_display["value"].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
+		end	
+		browsable.count = name["count"].to_i
+		browsable.dir = getdir(browsable.label) 
+		browsable.save!
 	end
-end
+
+	# query = "&facet=true&fl=id&facet.field=author_vern_s&facet.sort=asc&facet.limit=-1"
+	# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
+
+	####### TRYING WITH JUST ONE INDEX #########
+	# req = solr.get 'select', :params => {facet: true,
+	# 	fl: 'id',
+	# 	'facet.field' => 'author_vern_s',
+	# 	'facet.sort' => 'asc',
+	# 	'facet.limit' => '-1',
+	# 	'facet.pivot' => 'author_sort_s,author_s',
+	# 	defType: dtype}
+	# browsable = Orangelight::Name.new()
+	# req["facet_counts"]["facet_fields"]["author_vern_s"].each do |name|
+	# 	if name.is_a?(Integer)
+	# 		browsable.count = name.to_i
+	# 		browsable.save!
+	# 		browsable = Orangelight::Name.new()
+	# 	else
+	# 		browsable.label = name
+	# 		browsable.sort = name
+	# 		browsable.dir = getdir(name)
+	# 	end
+	# end
 
 
 
@@ -89,57 +92,57 @@ end
 
 
 ##### SUBJECTS #####
+	unless ENV['STEP'] == '2'
+	# query = "&facet=true&fl=id&facet.field=subject_sort_facet&facet.sort=asc&facet.limit=-1&facet.pivot=subject_sort_facet,subject_facet"
+	# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
 
-# query = "&facet=true&fl=id&facet.field=subject_sort_facet&facet.sort=asc&facet.limit=-1&facet.pivot=subject_sort_facet,subject_facet"
-# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
 
-# offs = 8192
-# lim = 8192
-# notempty = true
-# while notempty do
-	req = solr.get 'select', :params => {facet: true,
-		fl: 'id',
-		'facet.field' => 'subject_sort_facet',
-		'facet.sort' => 'asc',
-		'facet.limit' => -1,
-		#'facet.offset' => offs,
-		'facet.pivot' => 'subject_sort_facet,subject_facet',
-		defType: dtype}
-	req["facet_counts"]["facet_pivot"]["subject_sort_facet,subject_facet"].each do |subject|
-		browsable = Orangelight::Subject.new()
-		browsable.sort = subject["value"]
-		subject["pivot"].each do |sub_display|
-			browsable.label = sub_display["value"] if subject["value"] == sub_display["value"].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
+		req = solr.get 'select', :params => {facet: true,
+			fl: 'id',
+			'facet.field' => 'subject_sort_facet',
+			'facet.sort' => 'asc',
+			'facet.limit' => -1,
+			#'facet.offset' => offs,
+			'facet.pivot' => 'subject_sort_facet,subject_facet',
+			defType: dtype}
+		req["facet_counts"]["facet_pivot"]["subject_sort_facet,subject_facet"].each do |subject|
+			browsable = Orangelight::Subject.new()
+			browsable.sort = subject["value"]
+			subject["pivot"].each do |sub_display|
+				browsable.label = sub_display["value"] if subject["value"] == sub_display["value"].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
+			end
+			browsable.count = subject["count"].to_i
+			browsable.dir = getdir(browsable.label)
+			browsable.save!
 		end
-		browsable.count = subject["pivot"][0]["count"].to_i
-		browsable.dir = "ltr"  #only non-alternate script fields have this special subject_sort_facet field
-		browsable.save!
-	end
-# 	notempty = req["facet_counts"]["facet_pivot"]["subject_sort_facet,subject_facet"].length != 0
-# 	offs += lim
-# end
 
-# query = "&facet=true&fl=id&facet.field=subject_vern_facet&facet.sort=asc&facet.limit=-1"
-# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
-req = solr.get 'select', :params => {facet: true,
-	fl: 'id',
-	'facet.field' => 'subject_vern_facet',
-	'facet.sort' => 'asc',
-	'facet.limit' => '-1',
-	defType: dtype}
-browsable = Orangelight::Subject.new()
-req["facet_counts"]["facet_fields"]["subject_vern_facet"].each do |subject|
-	if subject.is_a?(Integer)
-		browsable.count = subject.to_i
-		browsable.save!
-		browsable = Orangelight::Subject.new()
-	else
-		browsable.label = subject
-		browsable.sort = subject.gsub('—', ' ')
-		browsable.dir = getdir(subject)		
-	end
-end
+		# query = "&facet=true&fl=id&facet.field=subject_vern_facet&facet.sort=asc&facet.limit=-1"
+		# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
 
+		####### TRYING WITH JUST ONE INDEX #########
+		# req = solr.get 'select', :params => {facet: true,
+		# 	fl: 'id',
+		# 	'facet.field' => 'subject_vern_facet',
+		# 	'facet.sort' => 'asc',
+		# 	'facet.limit' => '-1',
+		# 	defType: dtype}
+		# browsable = Orangelight::Subject.new()
+		# req["facet_counts"]["facet_fields"]["subject_vern_facet"].each do |subject|
+		# 	if subject.is_a?(Integer)
+		# 		browsable.count = subject.to_i
+		# 		browsable.save!
+		# 		browsable = Orangelight::Subject.new()
+		# 	else
+		# 		browsable.label = subject
+		# 		browsable.sort = subject.gsub('—', ' ')
+		# 		browsable.dir = getdir(subject)		
+		# 	end
+		# end
+
+
+
+	end  #STEP 2
+end #STEP 1
 
 
 
@@ -147,50 +150,91 @@ end
 
 # query = "&rows=999999999"
 # req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
-req = solr.get 'select', :params => {rows: 999999999,
+
+
+req = solr.get 'select', :params => {facet: true,
+	fl: 'id',
+	'facet.field' => 'call_number_s',
+	'facet.sort' => 'asc',
+	'facet.limit' => 25,
+	'facet.mincount' => 2,
 	defType: dtype}
-req["response"]["docs"].each do |name|
-	if name["call_number_display"]
-		name["call_number_display"].each do |cn|
+
+call_number_text = ''
+req["facet_counts"]["facet_fields"]["call_number_s"].each_with_index do |call_number, i|
+	if i.even?
+		call_number_text = call_number
+	else 
+		call_number_label = ''
+		req = solr.get 'select', :params => {rows: 999999999,
+			fl: "call_number_s,call_number_browse_s,title_display,title_vern_display,author_s,id,pub_created_display",
+			q: "call_number_s:#{call_number_text}",
+			sort: "sort=title_sort asc",
+			defType: dtype}
+		req["response"]["docs"].each do |name|
+			if name["call_number_s"]
+				name["call_number_s"].each_with_index do |cn, j|
+					if cn == call_number_text						
+						call_number_label = name["call_number_browse_s"][j]
+						if call_number.to_i == 1
+							browsable = Orangelight::CallNumber.new()
+							browsable.bibid = name["id"].to_i
+							browsable.title = name["title_display"][0] if name["title_display"]
+							if name["title_vern_display"]
+								browsable.title = name["title_vern_display"] 
+								browsable.dir = getdir(browsable.title)
+							else
+								browsable.dir = "ltr"  #ltr for non alt script
+							end
+							#puts cn
+							browsable.sort = cn
+							#browsable.label = cn
+							browsable.label = name["call_number_browse_s"][j]
+							browsable.author = name["author_s"][0] if name["author_s"]
+							browsable.date = name["pub_created_display"][0] if name["pub_created_display"]
+							browsable.save!
+						end
+					end
+				end
+			end
+		end
+		if call_number.to_i > 1 and call_number_label != ''
 			browsable = Orangelight::CallNumber.new()
-			browsable.bibid = name["id"].to_i
-			browsable.title = name["title_display"][0] if name["title_display"]
-			#puts cn
-			#browsable.sort = cn
-			browsable.sort = Lcsort.normalize(cn)
-			browsable.label = cn
-			browsable.author = name["author_s"][0] if name["author_s"]
-			browsable.date = name["pub_created_display"][0] if name["pub_created_display"]
+			browsable.sort = call_number_text
+			browsable.label = call_number_label 
+			browsable.title =	"#{call_number} records for this call number"
+			browsable.dir = "ltr"
+			browsable.bibid = "?f[call_number_browse_s][]=#{call_number_label}"
 			browsable.save!
 		end
 	end
 end
 
-cnt = Orangelight::CallNumber.count
-i = 1
+# cnt = Orangelight::CallNumber.count
+# i = 1
 
-while i <= cnt do
-#Orangelight::CallNumber.find_each do |callno|
-	callno = Orangelight::CallNumber.find(i)
-  callno.id = callno.id + cnt
-  callno.save
-  i += 1
-end
+# while i <= cnt do
+# #Orangelight::CallNumber.find_each do |callno|
+# 	callno = Orangelight::CallNumber.find(i)
+#   callno.id = callno.id + cnt
+#   callno.save
+#   i += 1
+# end
 
 
-lim = 512
-off = 0
-newid = 1
-while off <= cnt do
-	batch = Orangelight::CallNumber.order(:sort).limit(lim).offset(off)
-	batch.each do |callno|
-		callno.id = newid
-		newid += 1
-		callno.save
-	end
-	off += lim
-end
+# lim = 512
+# off = 0
+# newid = 1
+# while off <= cnt do
+# 	batch = Orangelight::CallNumber.order(:sort).limit(lim).offset(off)
+# 	batch.each do |callno|
+# 		callno.id = newid
+# 		newid += 1
+# 		callno.save
+# 	end
+# 	off += lim
+# end
 
-Orangelight::CallNumber.where('id > ?', cnt).each do |please_delete|
-	please_delete.destroy
-end
+# Orangelight::CallNumber.where('id > ?', cnt).each do |please_delete|
+# 	please_delete.destroy
+

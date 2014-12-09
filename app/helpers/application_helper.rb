@@ -60,17 +60,25 @@ module ApplicationHelper
       full_sub = ''
       all_subjects[i].each_with_index do |subsubject, j|
         lnk = lnk_accum + link_to(subsubject,
-          "/?f[subject_topic_facet][]=#{sub_array[i][j]}&q=&search_field=all_fields")
+          "/?f[subject_topic_facet][]=#{sub_array[i][j]}")
         lnk_accum = lnk + SEPARATOR
         full_sub = sub_array[i][j]
       end
       lnk += '  '
-      lnk += link_to('[Browse Subject]', "/browse/subjects?val=#{full_sub}", style: "font-size:10px; font-style:italic")
+      lnk += link_to('[Browse]', "/browse/subjects?val=#{full_sub}", style: "font-size:10px; font-style:italic")
       args[:document][args[:field]][i] = lnk.html_safe        
     end
 
 
   end
+
+  def browse_name args
+    args[:document][args[:field]].each_with_index do |name, i|
+      newname = link_to(name, "/?f[author_s][]=#{name}") + '  ' + link_to('[Browse]', "/browse/names?val=#{name}", style: "font-size:10px; font-style:italic")
+      args[:document][args[:field]][i] = newname.html_safe
+    end
+  end
+
 
   def multiple_locations args
     if args[:document][args[:field]][1] 

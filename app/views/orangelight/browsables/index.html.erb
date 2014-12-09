@@ -42,7 +42,8 @@
           <% else %>
             <li class="row-<%=i.even? ? 'even' : 'odd' %>">
           <% end %>
-            <span class="facet-label"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{orangelight_name.label}&search_field=all_fields", class: orangelight_name.dir %>
+            &nbsp;
+            <span class="facet-label <%=orangelight_name.dir%>"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{orangelight_name.label}" %>
               <%= "(#{orangelight_name.count})"%>
             <%= link_to "[more info]", "#{@model}/#{orangelight_name.id}", style: "font-size:10px;" %></span>
           <% if orangelight_name.id == @match && @exact_match %>
@@ -73,12 +74,27 @@
 
   <tbody >
     <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
-      <tr class="row-<%=i.even? ? 'even' : 'odd' %>">
+      <% if orangelight_name.id == @match && @exact_match %>
+        <tr class="alert alert-info">
+          <strong>
+      <% else %>
+        <tr class="row-<%=i.even? ? 'even' : 'odd' %>">
+      <% end %>         
         <td><%= link_to orangelight_name.label, "/catalog/#{orangelight_name.bibid}" %></td>
         <td><%= orangelight_name.title %></td>
         <td><%= orangelight_name.author %></td>
         <td><%= orangelight_name.date %></td>                    
-      </tr>      
+      <% if orangelight_name.id == @match && @exact_match %>
+          </strong>
+        </tr>
+      <% else %>
+        </tr>
+      <% end %>
+      <% if orangelight_name.id == @match && !@exact_match %>
+          <tr class="alert alert-info"> <td colspan=4>
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong> </td>
+        </tr>
+      <% end %>               
     <% end %>
   </tbody>
 </table>

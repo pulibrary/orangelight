@@ -29,14 +29,14 @@ ActiveRecord::Schema.define(version: 20141024160515) do
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
 
   create_table "orangelight_call_numbers", force: true do |t|
-    t.string  "label"
-    t.string  "dir"
-    t.string  "scheme"
-    t.string  "sort"
-    t.text    "title"
-    t.string  "author"
-    t.text    "date"
-    t.integer "bibid"
+    t.string "label"
+    t.string "dir"
+    t.string "scheme"
+    t.string "sort"
+    t.text   "title"
+    t.string "author"
+    t.text   "date"
+    t.string "bibid"
   end
 
   create_table "orangelight_names", force: true do |t|
