@@ -156,38 +156,56 @@ req = solr.get 'select', :params => {facet: true,
 	fl: 'id',
 	'facet.field' => 'call_number_s',
 	'facet.sort' => 'asc',
-	'facet.limit' => -1,
+	'facet.limit' => 25,
+	'facet.mincount' => 2,
 	defType: dtype}
 
-req["facet_counts"]["facet_fields"]["call_number_s"].each do |call_number|
-
-	req = solr.get 'select', :params => {rows: 999999999,
-		fl: "call_number_s,call_number_browse_display,title_display,title_vern_display,author_s,id,pub_created_display",
-		q: "call_number_s:#{call_number}",
-		sort: "sort=title_sort asc",
-		defType: dtype}
-	req["response"]["docs"].each do |name|
-		if name["call_number_s"]
-			name["call_number_s"].each_with_index do |cn, i|
-				if cn == call_number
-					browsable = Orangelight::CallNumber.new()
-					browsable.bibid = name["id"].to_i
-					browsable.title = name["title_display"][0] if name["title_display"]
-					if name["title_vern_display"]
-						browsable.title = name["title_vern_display"] 
-						browsable.dir = getdir(browsable.title)
-					else
-						browsable.dir = "ltr"  #ltr for non alt script
+call_number_text = ''
+req["facet_counts"]["facet_fields"]["call_number_s"].each_with_index do |call_number, i|
+	if i.even?
+		call_number_text = call_number
+	else 
+		call_number_label = ''
+		req = solr.get 'select', :params => {rows: 999999999,
+			fl: "call_number_s,call_number_browse_s,title_display,title_vern_display,author_s,id,pub_created_display",
+			q: "call_number_s:#{call_number_text}",
+			sort: "sort=title_sort asc",
+			defType: dtype}
+		req["response"]["docs"].each do |name|
+			if name["call_number_s"]
+				name["call_number_s"].each_with_index do |cn, j|
+					if cn == call_number_text						
+						call_number_label = name["call_number_browse_s"][j]
+						if call_number.to_i == 1
+							browsable = Orangelight::CallNumber.new()
+							browsable.bibid = name["id"].to_i
+							browsable.title = name["title_display"][0] if name["title_display"]
+							if name["title_vern_display"]
+								browsable.title = name["title_vern_display"] 
+								browsable.dir = getdir(browsable.title)
+							else
+								browsable.dir = "ltr"  #ltr for non alt script
+							end
+							#puts cn
+							browsable.sort = cn
+							#browsable.label = cn
+							browsable.label = name["call_number_browse_s"][j]
+							browsable.author = name["author_s"][0] if name["author_s"]
+							browsable.date = name["pub_created_display"][0] if name["pub_created_display"]
+							browsable.save!
+						end
 					end
-					#puts cn
-					browsable.sort = cn
-					#browsable.label = cn
-					browsable.label = name["call_number_browse_display"][i]
-					browsable.author = name["author_s"][0] if name["author_s"]
-					browsable.date = name["pub_created_display"][0] if name["pub_created_display"]
-					browsable.save!
 				end
 			end
+		end
+		if call_number.to_i > 1 and call_number_label != ''
+			browsable = Orangelight::CallNumber.new()
+			browsable.sort = call_number_text
+			browsable.label = call_number_label 
+			browsable.title =	"#{call_number} records for this call number"
+			browsable.dir = "ltr"
+			browsable.bibid = "?f[call_number_browse_s][]=#{call_number_label}"
+			browsable.save!
 		end
 	end
 end

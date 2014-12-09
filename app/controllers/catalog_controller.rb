@@ -108,6 +108,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'lc_rest_facet', :label => 'Full Call number code', :limit => true, show: false, sort: 'index'        
     config.add_facet_field 'instrumentation_facet', :label => 'Instrumentation', :limit => true
     config.add_facet_field 'location', :label => 'Location', :limit => true
+    config.add_facet_field 'call_number_browse_s', label: 'Call Number', show: false
 
 
     config.add_facet_field 'classification_pivot_field', :label => 'Classification', :pivot => ['lc_1letter_facet', 'lc_rest_facet']
