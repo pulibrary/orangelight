@@ -95,7 +95,7 @@ describe "blacklight tests" do
 	    fullsubject.each_with_index do |subject, i|
 	    	sub_component[i].each do |component|
 	    		c = Regexp.escape(component)
-					expect(response.body.include?("/?f[subject_topic_facet][]=#{subject[/.*#{c}/]}&amp;q=&amp;search_field=all_fields\">#{component}</a>")).to eq true
+					expect(response.body.include?("/?f[subject_topic_facet][]=#{subject[/.*#{c}/]}\">#{component}</a>")).to eq true
 				end
 	    end
 		end
