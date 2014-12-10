@@ -81,7 +81,7 @@
         <tr class="row-<%=i.even? ? 'even' : 'odd' %>">
       <% end %>         
         <td><%= link_to orangelight_name.label, "/catalog/#{orangelight_name.bibid}" %></td>
-        <td><%= orangelight_name.title %></td>
+        <td class="<%=orangelight_name.dir%>"><%= orangelight_name.title %></td>
         <td><%= orangelight_name.author %></td>
         <td><%= orangelight_name.date %></td>                    
       <% if orangelight_name.id == @match && @exact_match %>
