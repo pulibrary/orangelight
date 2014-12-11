@@ -156,8 +156,7 @@ req = solr.get 'select', :params => {facet: true,
 	fl: 'id',
 	'facet.field' => 'call_number_s',
 	'facet.sort' => 'asc',
-	'facet.limit' => 25,
-	'facet.mincount' => 2,
+	'facet.limit' => -1,
 	defType: dtype}
 
 call_number_text = ''

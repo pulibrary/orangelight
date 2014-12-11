@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/pulibrary/lcsort.git
-  revision: 3cd579a872bd2758fc3f95616d98b769508bbbfe
+  revision: c5602b7665b981b494d09594cca0f0c7cac851a1
   specs:
-    lcsort (0.1.0)
+    lcsort (0.1.1)
 
 GIT
   remote: git://github.com/pulibrary/stringex.git
@@ -42,7 +42,7 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.9)
-    blacklight (5.7.2)
+    blacklight (5.8.0)
       bootstrap-sass (~> 3.2)
       deprecation
       kaminari (~> 0.13)
@@ -172,8 +172,8 @@ GEM
       activesupport (= 4.1.4)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.4.1)
-    rdoc (4.1.2)
+    rake (10.4.2)
+    rdoc (4.2.0)
       json (~> 1.4)
     ref (1.0.5)
     responders (1.1.2)
@@ -240,11 +240,11 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.5.2)
+    turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (2.5.3)
+    uglifier (2.6.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unf (0.1.4)

@@ -180,7 +180,7 @@
        <analyzer>
          <tokenizer class="solr.StandardTokenizerFactory"/>
          <filter class="solr.ICUFoldingFilterFactory" />
-         <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true" />
+<!--          <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true" /> -->
          <filter class="solr.SnowballPorterFilterFactory" language="English" />
        </analyzer>
      </fieldType>
@@ -207,13 +207,13 @@
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />                
           <tokenizer class="solr.KeywordTokenizerFactory" />
           <filter class="solr.ICUFoldingFilterFactory" />          
-          <filter class="solr.EdgeNGramFilterFactory" minGramSize="6" maxGramSize="50" side="front"/>
+          <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="50" side="front"/>
        </analyzer>
        <analyzer type="query">     
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />   
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />                   
 <!--           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="$1\*" />       -->               
-          <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+          <tokenizer class="solr.KeywordTokenizerFactory"/>
           <filter class="solr.ICUFoldingFilterFactory" />
        </analyzer>           
      </fieldType>

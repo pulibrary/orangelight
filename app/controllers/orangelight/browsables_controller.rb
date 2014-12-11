@@ -34,11 +34,11 @@ class Orangelight::BrowsablesController < ApplicationController
     # specific ids are given based on search results
     @start = params[:start].nil? ? 1 : params[:start].to_i
     
-    unless params[:val].nil?
+    unless params[:q].nil?
       if @model == "call_numbers"
-        search_term = Lcsort.normalize(params[:val])
+        search_term = Lcsort.normalize(params[:q])
       else
-        search_term = params[:val].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
+        search_term = params[:q].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
       end
       search_result = params[:model].where('sort <= ?', search_term).last
       unless search_result.nil?
@@ -48,7 +48,7 @@ class Orangelight::BrowsablesController < ApplicationController
         @match = search_result.id        
         @start = search_result.id-3
         @start = 1 if @start < 1
-        @query = params[:val]
+        @query = params[:q]
         #@prev = @start/@rpp+1      
       end
     end
