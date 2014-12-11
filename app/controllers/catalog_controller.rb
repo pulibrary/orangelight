@@ -3,38 +3,14 @@
 class CatalogController < ApplicationController  
   include Blacklight::Marc::Catalog
   include Blacklight::Catalog
+  include BlacklightHelper
   include BlacklightAdvancedSearch::ParseBasicQ  # adds AND/OR/NOT search term functionality  
 
-  
 
 
-  def find(*args)
-    # In later versions of Rails, the #benchmark method can do timing
-    # better for us. 
-    benchmark("Solr fetch", level: :debug) do
-      solr_params = args.extract_options!
-      if solr_params[:q]
-        if solr_params[:q].include?("{!qf=$left_anchor_qf pf=$left_anchor_pf}")
-          newq = solr_params[:q].gsub("{!qf=$left_anchor_qf pf=$left_anchor_pf}", "")
-          solr_params[:q] = "{!qf=$left_anchor_qf pf=$left_anchor_pf}" + newq.gsub(" ", "")
-        end         
-      end
-      path = args.first || blacklight_config.solr_path
-      solr_params[:qt] ||= blacklight_config.qt
-      # delete these parameters, otherwise rsolr will pass them through.
-      key = blacklight_config.http_method == :post ? :data : :params
-      res = blacklight_solr.send_and_receive(path, {key=>solr_params.to_hash, method:blacklight_config.http_method})
-      
-      solr_response = Blacklight::SolrResponse.new(res, solr_params, solr_document_model: blacklight_config.solr_document_model)
 
-      Rails.logger.debug("Solr query: #{solr_params.inspect}")
-      Rails.logger.debug("Solr response: #{solr_response.inspect}") if defined?(::BLACKLIGHT_VERBOSE_LOGGING) and ::BLACKLIGHT_VERBOSE_LOGGING
-      solr_response
-    end
-  rescue Errno::ECONNREFUSED => e
-    raise Blacklight::Exceptions::ECONNREFUSED.new("Unable to connect to Solr instance using #{blacklight_solr.inspect}")
-  end
-  
+  self.solr_search_params_logic += [:left_anchor_strip, :redirect_browse]  
+
 
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
@@ -57,6 +33,10 @@ class CatalogController < ApplicationController
     #  # :rows => 1
     #   :q => query 
     # }
+
+
+    #new way of calling local document presenter
+    config.document_presenter_class = PrincetonPresenter
 
     # solr field configuration for search results/index views
     config.index.title_field = 'title_display'
@@ -87,7 +67,7 @@ class CatalogController < ApplicationController
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
     config.add_facet_field 'format', :label => 'Format'
-    config.add_facet_field 'subject_display', :lable => 'Subject'
+    config.add_facet_field 'subject_display', :label => 'Subject'
 
     # num_segments and segments set to defaults here, included to show customizable features
     config.add_facet_field 'pub_date_start_sort', :label => 'Publication Year', :single => true, :range => {
@@ -376,6 +356,15 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('browse_subject') do |field|
+      field.label = 'Browse subject'
+    end    
+    config.add_search_field('browse_name') do |field|
+      field.label = 'Browse name'
+    end    
+        config.add_search_field('browse_cn') do |field|
+      field.label = 'Browse call number'
+    end    
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc

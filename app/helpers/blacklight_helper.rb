@@ -18,6 +18,28 @@ module BlacklightHelper
 	  return "ltr"
 	end 
 
+  def left_anchor_strip solr_parameters, user_parameters 
+    if solr_parameters[:q]
+      if solr_parameters[:q].include?("{!qf=$left_anchor_qf pf=$left_anchor_pf}")
+        newq = solr_parameters[:q].gsub("{!qf=$left_anchor_qf pf=$left_anchor_pf}", "")
+        solr_parameters[:q] = "{!qf=$left_anchor_qf pf=$left_anchor_pf}" + newq.gsub(" ", "")
+      end         
+    end
+  end
+
+  def redirect_browse solr_parameters, user_parameters 
+    if user_parameters[:search_field]
+      if user_parameters[:search_field] == "browse_subject"
+        redirect_to "/browse/subjects?q=#{user_parameters[:q]}&search_field=#{user_parameters[:search_field]}"
+      end
+      if user_parameters[:search_field] == "browse_cn"
+        redirect_to "/browse/call_numbers?q=#{user_parameters[:q]}&search_field=#{user_parameters[:search_field]}"
+      end
+      if user_parameters[:search_field] == "browse_name"
+        redirect_to "/browse/names?&q=#{user_parameters[:q]}&search_field=#{user_parameters[:search_field]}"
+      end            
+    end
+  end  
 
   # def altscript! values
   #   values.each_with_index do |contents, i|
@@ -36,9 +58,10 @@ module BlacklightHelper
   #   safe_value
   # end  
 
-  def presenter_class
-    PrincetonPresenter
-  end
+  # no longer needs to be overriden
+  # def presenter_class
+  #   PrincetonPresenter
+  # end
   
   # def render_document_show_field_value *args
   #   options = args.extract_options!
@@ -52,7 +75,5 @@ module BlacklightHelper
     def field_value_separator
       "<br/>".html_safe
     end
-
-
   end
 end
