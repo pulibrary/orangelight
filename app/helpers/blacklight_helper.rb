@@ -30,14 +30,15 @@ module BlacklightHelper
   def redirect_browse solr_parameters, user_parameters 
     if user_parameters[:search_field]
       if user_parameters[:search_field] == "browse_subject"
-        redirect_to "/browse/subjects?q=#{user_parameters[:q]}&search_field=#{user_parameters[:search_field]}"
-      end
-      if user_parameters[:search_field] == "browse_cn"
-        redirect_to "/browse/call_numbers?q=#{user_parameters[:q]}&search_field=#{user_parameters[:search_field]}"
-      end
-      if user_parameters[:search_field] == "browse_name"
-        redirect_to "/browse/names?&q=#{user_parameters[:q]}&search_field=#{user_parameters[:search_field]}"
-      end            
+        redirect_to "/browse/subjects?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
+      elsif user_parameters[:search_field] == "browse_cn"
+        redirect_to "/browse/call_numbers?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
+      elsif user_parameters[:search_field] == "browse_name"
+        redirect_to "/browse/names?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
+      else
+        user_parameters.delete("model") if user_parameters[:model]
+      end  
+
     end
   end  
 

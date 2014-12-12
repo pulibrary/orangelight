@@ -15,6 +15,7 @@ class Orangelight::BrowsablesController < ApplicationController
     # previous/next page links need to pass
     # manually set rpp
 
+
     @model = params[:model].name.demodulize.tableize    
     if params[:rpp].nil?
       @rpp = 50
@@ -95,11 +96,16 @@ class Orangelight::BrowsablesController < ApplicationController
     end
         
     @list_name = params[:model].name.demodulize.titleize
- 
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @orangelight_browsables }
+    end    
+
   end
  
- def browse
- end
+  def browse
+  end
   # GET /orangelight/names/1
   # GET /orangelight/names/1.json
   def show

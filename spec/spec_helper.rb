@@ -22,7 +22,7 @@ Coveralls.wear!('rails')
 
 RSpec.configure do |config|
   config.before :all do
-    fixture=File.read(File.expand_path('../fixtures/fixtures_1014.json',__FILE__))     
+    fixture=File.read(File.expand_path('../fixtures/current_fixtures.json',__FILE__))     
     if ENV['TRAVIS'] == 'true' 
       h = Net::HTTP.new('localhost', 8888)    
       req = Net::HTTP::Post.new("/solr/blacklight-core/update?commit=true")   
