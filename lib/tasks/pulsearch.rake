@@ -13,4 +13,9 @@ namespace :pulsearch do
   	Rake::Task["db:migrate:redo"].invoke
   end
 
+  # desc "Posts fixtures to Solr"
+  # task solradd: :environment do
+
+  # end
+
 end

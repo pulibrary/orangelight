@@ -19,18 +19,18 @@ if Rails.env == "development"
 	dtype = "edismax"
 	suffix = "&defType=edismax"
 	prt = 8983
-elsif Rails.env = "production"
-	host = "pulsearch-dev.princeton.edu"
-	core = "/orangelight/blacklight-core"
-	dtype = "edismax"
-	suffix = "&defType=edismax"
-	prt = 8080
-else
+elsif ENV['TRAVIS']
 	host = "localhost"
 	core = "/solr/blacklight-core"
 	dtype = "edismax"
 	suffix = "&defType=edismax"
 	prt = 8888	
+else 
+	host = "pulsearch-dev.princeton.edu"
+	core = "/orangelight/blacklight-core"
+	dtype = "edismax"
+	suffix = "&defType=edismax"
+	prt = 8080	
 end
 
 

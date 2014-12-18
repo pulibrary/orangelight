@@ -1,33 +1,13 @@
 require "rails_helper"
 
 describe "blacklight tests" do
-
-	# before(:all) do
-	# 	fixture=File.read(File.expand_path('../../fixtures/fixtures_1014.json',__FILE__)) 		
-	# 	if ENV['TRAVIS'] == 'true' 
-	# 		h = Net::HTTP.new('localhost', 8888)		
-	# 		req = Net::HTTP::Post.new("/solr/blacklight-core/update?commit=true") 	
-	# 		req.body = fixture
-	# 		req.set_content_type("application/json", {'charset' => 'utf-8'})
-	# 		h.request(req)			
-	# 	else 
-	# 		h = Net::HTTP.new('localhost', 8983)
-	# 		del = Net::HTTP::Post.new("/solr/blacklight-core/update?commit=true")
-	# 		del.body = "{\"delete\": { \"query\":\"*.*\" }}"
-	# 		del.set_content_type("application/json", {'charset' => 'utf-8'})			
-	# 		h.request(del)
-	# 		req = Net::HTTP::Post.new("/solr/blacklight-core/update?commit=true") 	
-	# 		req.body = fixture
-	# 		req.set_content_type("application/json", {'charset' => 'utf-8'})
-	# 		h.request(req)						
-	# 	end
-	# end			
+	
 
 	describe "ICU folding keyword search" do
 		it "finds an Arabic entry from a Romanized search term" do
 			get "/catalog.json?&search_field=all_fields&q=dawwani"
-	  	r = JSON.parse(response.body)
-	    expect(r["response"]["docs"].select{|d| d["id"] == "4705304"}.length).to eq 1 
+	  		r = JSON.parse(response.body)
+	    	expect(r["response"]["docs"].select{|d| d["id"] == "4705304"}.length).to eq 1 
 	  end
 	end
 
@@ -36,11 +16,11 @@ describe "blacklight tests" do
 			get "/catalog.json?&search_field=all_fields&q="
 			r = JSON.parse(response.body)
 			expect(r["response"]["docs"].select{|d| d["id"] == "3"}[0]["location"].length).to eq 2
-	    get "/catalog?&search_field=all_fields&q=guida"
-	    expect(response.body.include?('<dd class="blacklight-location" dir="ltr">Multiple Locations</dd>')).to eq true
+	    	get "/catalog?&search_field=all_fields&q=guida"
+	    	expect(response.body.include?('<dd class="blacklight-location" dir="ltr">Multiple Locations</dd>')).to eq true
 		end
 		it "displays the location name for an item with a single location" do
-			get "/catalog.json?&search_field=all_fields&q="
+			get "/catalog.json?&search_field=all_fields&q=accessions"
 			r = JSON.parse(response.body)
 			expect(r["response"]["docs"].select{|d| d["id"] == "321"}[0]["location"].length).to eq 1
 	    location = r["response"]["docs"].select{|d| d["id"] == "321"}[0]["location"][0]
@@ -126,6 +106,20 @@ describe "blacklight tests" do
 			expect(response.body.include?("<h3 dir=\"rtl\"> #{title_vern} </h3>")).to eq true	
 			expect(response.body.include?("<li dir=\"ltr\"> #{related} </li>")).to eq true
 			expect(response.body.include?("<li dir=\"rtl\"> #{related_vern} </li>")).to eq true					
+		end
+	end
+
+	describe "left-anchor tests" do
+		it "finds result despite accents and capitals in query" do
+			get "catalog.json?&search_field=left_anchor&q=s%C3%A8arChing+for"
+			r = JSON.parse(response.body)	
+			expect(r["response"]["docs"].select{|d| d["id"] == "6574987"}.length).to eq 1 
+		end
+
+		it "no matches if it doesn't occur at the beginning of the starts with fields" do
+			get "catalog.json?&search_field=left_anchor&q=modern+aesthetic"
+			r = JSON.parse(response.body)
+			expect(r["response"]["pages"]["total_count"]).to eq 0
 		end
 	end
 
