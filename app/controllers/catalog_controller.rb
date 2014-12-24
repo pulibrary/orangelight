@@ -9,7 +9,7 @@ class CatalogController < ApplicationController
 
 
 
-  self.solr_search_params_logic += [:left_anchor_strip, :redirect_browse]  
+  self.solr_search_params_logic += [:redirect_browse]  
 
 
   configure_blacklight do |config|
@@ -306,7 +306,9 @@ class CatalogController < ApplicationController
     #   :include_in_advanced_search => true
     #   field.include_in_simple_select = false        
 
-    config.add_search_field 'all_fields', :label => 'All Fields'
+    config.add_search_field 'all_fields', :label => 'All Fields' do |field|
+      field.include_in_advanced_search = false
+    end
     
 
     # Now we see how to over-ride Solr request handler defaults, in this
@@ -335,15 +337,6 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('left_anchor') do |field|
-      field.label = 'Starts with'
-
-      field.solr_local_parameters = { 
-        :qf => '$left_anchor_qf',
-        :pf => '$left_anchor_pf'
-      }
-    end    
-    
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as 
     # config[:default_solr_parameters][:qt], so isn't actually neccesary. 
@@ -356,13 +349,25 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('left_anchor') do |field|
+      field.label = 'Starts with'
+
+      field.solr_local_parameters = { 
+        :qf => '$left_anchor_qf',
+        :pf => '$left_anchor_pf'
+      }
+    end    
+    
     config.add_search_field('browse_subject') do |field|
+      field.include_in_advanced_search = false
       field.label = 'Browse subject'
     end    
     config.add_search_field('browse_name') do |field|
+      field.include_in_advanced_search = false
       field.label = 'Browse name'
     end    
-        config.add_search_field('browse_cn') do |field|
+    config.add_search_field('browse_cn') do |field|
+      field.include_in_advanced_search = false
       field.label = 'Browse call number'
     end    
     # "sort results by" select (pulldown)

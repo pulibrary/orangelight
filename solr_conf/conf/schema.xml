@@ -210,7 +210,7 @@
           <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="50" side="front"/>
        </analyzer>
        <analyzer type="query">     
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />   
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\\+" replacement="" />   
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />                   
 <!--           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="$1\*" />       -->               
           <tokenizer class="solr.KeywordTokenizerFactory"/>
@@ -766,6 +766,7 @@
    <copyField source="*_sort" dest="text"/>
    <copyField source="*_unstem_search" dest="text"/>
    <copyField source="*spell" dest="text"/>
+   <copyField source="title_l" dest="text"/>   
 
    <!-- copy name to alphaNameSort, a field designed for sorting by name -->
    <!-- <copyField source="name" dest="alphaNameSort"/> -->

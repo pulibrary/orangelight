@@ -29,7 +29,11 @@
   </head>
   <body class="<%= render_body_class %>">
   <%= render :partial => 'shared/advanced_navbar' %>
-
+  <div id="search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <%= render "search_form" %>
+    </div>
+  </div>
   <%= render partial: 'shared/ajax_modal' %>
 
   <div id="main-container" class="container">

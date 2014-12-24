@@ -43,4 +43,20 @@ module AdvancedHelper
     end
   end
 
+  def advanced_labels
+    labels = []
+    search_fields_for_advanced_search.each do |field|
+      labels << field[1][:label] 
+    end
+    labels
+  end
+
+  def advanced_key_value
+    key_value = []
+    search_fields_for_advanced_search.each do |field|
+      key_value << [field[1][:label], field[0]]
+    end
+    key_value    
+  end
+
 end

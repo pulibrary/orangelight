@@ -47,7 +47,7 @@ gem 'rspec-rails', '~> 3.0.0'
 
 gem 'capybara'
 
-gem 'stringex', :git => "git://github.com/pulibrary/stringex.git", :tag => 'vpton.2.5.2.1'
+gem 'stringex', :git => "git://github.com/pulibrary/stringex.git", :tag => 'vpton.2.5.2.2'
 
 gem 'lcsort', :git => "git://github.com/pulibrary/lcsort.git"
 

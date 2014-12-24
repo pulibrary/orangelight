@@ -18,14 +18,14 @@ module BlacklightHelper
 	  return "ltr"
 	end 
 
-  def left_anchor_strip solr_parameters, user_parameters 
-    if solr_parameters[:q]
-      if solr_parameters[:q].include?("{!qf=$left_anchor_qf pf=$left_anchor_pf}")
-        newq = solr_parameters[:q].gsub("{!qf=$left_anchor_qf pf=$left_anchor_pf}", "")
-        solr_parameters[:q] = "{!qf=$left_anchor_qf pf=$left_anchor_pf}" + newq.gsub(" ", "")
-      end         
-    end
-  end
+  # def left_anchor_strip solr_parameters, user_parameters 
+  #   if solr_parameters[:q]
+  #     if solr_parameters[:q].include?("{!qf=$left_anchor_qf pf=$left_anchor_pf}")
+  #       newq = solr_parameters[:q].gsub("{!qf=$left_anchor_qf pf=$left_anchor_pf}", "")
+  #       solr_parameters[:q] = "{!qf=$left_anchor_qf pf=$left_anchor_pf}" + newq.gsub(" ", "")
+  #     end         
+  #   end
+  # end
 
   def redirect_browse solr_parameters, user_parameters 
     if user_parameters[:search_field]

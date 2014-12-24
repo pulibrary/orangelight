@@ -55,7 +55,7 @@ unless ENV['STEP'] == '1'
 		browsable = Orangelight::Name.new()
 		browsable.sort = name["value"]
 		name["pivot"].each do |name_display|
-			browsable.label = name_display["value"] if name["value"] == name_display["value"].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
+			browsable.label = name_display["value"] if name["value"] == name_display["value"].normalize_em
 		end	
 		browsable.count = name["count"].to_i
 		browsable.dir = getdir(browsable.label) 
@@ -109,7 +109,7 @@ unless ENV['STEP'] == '1'
 			browsable = Orangelight::Subject.new()
 			browsable.sort = subject["value"]
 			subject["pivot"].each do |sub_display|
-				browsable.label = sub_display["value"] if subject["value"] == sub_display["value"].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
+				browsable.label = sub_display["value"] if subject["value"] == sub_display["value"].normalize_em
 			end
 			browsable.count = subject["count"].to_i
 			browsable.dir = getdir(browsable.label)
