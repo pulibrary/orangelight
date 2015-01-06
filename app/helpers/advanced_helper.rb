@@ -60,3 +60,66 @@ module AdvancedHelper
   end
 
 end
+
+module BlacklightAdvancedSearch
+  class QueryParser
+
+    def keyword_op
+      operation = 'op2'
+      @keyword_op = []
+      until @params[operation].nil?
+        @keyword_op << @params[operation]
+        operation = operation.next
+      end
+      return @keyword_op
+    end
+
+    def keyword_queries
+      unless(@keyword_queries)
+        @keyword_queries = {}
+
+        return @keyword_queries unless @params[:search_field] == ::AdvancedController.blacklight_config.advanced_search[:url_key]
+
+
+        sfield = 'f1'
+        aquery = 'q1'
+        until @params[sfield].nil?
+          if @keyword_queries[@params[sfield]]
+            @keyword_queries[@params[sfield]] << @params[aquery.to_sym]
+          else
+            @keyword_queries[@params[sfield]] = [ @params[aquery.to_sym] ]
+          end
+          sfield = sfield.next
+          aquery = aquery.next
+        end
+      end
+
+      return @keyword_queries
+    end
+  end
+end
+
+module BlacklightAdvancedSearch::ParsingNestingParser
+  
+  def process_query(params,config)
+    queries = []
+    ops = keyword_op
+    keyword_queries.each do |field, multiquery| 
+      multiquery.each do |query|
+        if query == ''
+          multiquery.delete_at(0)
+          ops.shift
+        else
+          queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query( local_param_hash(field, config) )
+          queries << ops.shift unless ops.nil?
+        end
+      end
+      if keyword_queries[field] == []
+        keyword_queries.delete(field)
+      else
+        keyword_queries[field] = multiquery.join(' | ')
+      end
+    end
+    queries.join(' ')
+  end
+end

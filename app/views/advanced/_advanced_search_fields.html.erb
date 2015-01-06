@@ -1,32 +1,34 @@
-<%- search_fields_for_advanced_search.each do |key, field_def| -%>
-  <div class="form-group advanced-search-field">
-      <%= label_tag key, "#{field_def.label }", :class => "col-sm-3 control-label" %>
-      <div class="col-sm-9">
-        <%= text_field_tag key, label_tag_default_for(key), :class => 'form-control' %>
-      </div>
-  </div>
-<%- end -%>
+
 <div class="form-group advanced-search-field">
-  <%= select_tag('search_field1', options_for_select(advanced_key_value), :class=>"search_field col-sm-2") %>
-  <div class="col-sm-10">
+  <%= select_tag('f1', options_for_select(advanced_key_value), :class=>"search_field col-sm-2") %>
+  <div name="row1" class="col-sm-10">
     <%= text_field_tag "q1", nil, :class => 'form-control' %>
-  </div>
-  <div>
-    <input type="radio" name="op1" value="AND" checked>AND
-    <input type="radio" name="op1" value="OR">OR
-    <input type="radio" name="op1" value="NOT">NOT
-  </div>
-  <%= select_tag('search_field2', options_for_select(advanced_key_value, 'author'), :class=>"search_field col-sm-2") %>
-  <div class="col-sm-10">
-    <%= text_field_tag "q2", nil, :class => 'form-control' %>
   </div>
   <div>
     <input type="radio" name="op2" value="AND" checked>AND
     <input type="radio" name="op2" value="OR">OR
     <input type="radio" name="op2" value="NOT">NOT
   </div>
-  <%= select_tag('search_field3', options_for_select(advanced_key_value, 'subject'), :class=>"search_field col-sm-2") %>
-  <div class="col-sm-10">
+  <%= select_tag('f2', options_for_select(advanced_key_value, 'author'), :class=>"search_field col-sm-2") %>
+  <div name="row2" class="col-sm-10">
+    <%= text_field_tag "q2", nil, :class => 'form-control' %>
+  </div>
+  <div>
+    <input type="radio" name="op3" value="AND" checked>AND
+    <input type="radio" name="op3" value="OR">OR
+    <input type="radio" name="op3" value="NOT">NOT
+  </div>
+  <%= select_tag('f3', options_for_select(advanced_key_value, 'subject'), :class=>"search_field col-sm-2") %>
+  <div name="row3" class="col-sm-10">
     <%= text_field_tag "q3", nil, :class => 'form-control' %>
   </div>
+  <div>
+    <input type="radio" name="op4" value="AND" checked>AND
+    <input type="radio" name="op4" value="OR">OR
+    <input type="radio" name="op4" value="NOT">NOT
+  </div>
+  <%= select_tag('f4', options_for_select(advanced_key_value, 'subject'), :class=>"search_field col-sm-2") %>
+  <div name="row4" class="col-sm-10">
+    <%= text_field_tag "q4", nil, :class => 'form-control' %>
+  </div>  
 </div>

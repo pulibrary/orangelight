@@ -36,7 +36,8 @@ module BlacklightHelper
       elsif user_parameters[:search_field] == "browse_name"
         redirect_to "/browse/names?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
       else
-        user_parameters.delete("model") if user_parameters[:model]
+        user_parameters[:model] = nil
+        user_parameters[:rpp] = nil
       end  
 
     end
