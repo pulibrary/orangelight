@@ -65,12 +65,19 @@ module BlacklightAdvancedSearch
   class QueryParser
 
     def keyword_op
-      operation = 'op2'
+      # operation = 'op2'
+      # @keyword_op = []
+      # until @params[operation].nil?
+      #   @keyword_op << @params[operation]
+      #   operation = operation.next
+      # end
       @keyword_op = []
-      until @params[operation].nil?
-        @keyword_op << @params[operation]
-        operation = operation.next
+      unless @params[:q1].blank? || @params[:q2].blank? || @params[:op2] == "NOT"
+        @keyword_op << @params[:op2] if (@params[:f1] != @params[:f2])
       end
+      unless @params[:q3].blank? || @params[:op3] == "NOT"
+        @keyword_op << @params[:op3] if @params[:f2] != @params[:f3]
+      end 
       return @keyword_op
     end
 
@@ -81,17 +88,42 @@ module BlacklightAdvancedSearch
         return @keyword_queries unless @params[:search_field] == ::AdvancedController.blacklight_config.advanced_search[:url_key]
 
 
-        sfield = 'f1'
-        aquery = 'q1'
-        until @params[sfield].nil?
-          if @keyword_queries[@params[sfield]]
-            @keyword_queries[@params[sfield]] << @params[aquery.to_sym]
+        # sfield = 'f1'
+        # aquery = 'q1'
+        # until @params[sfield].nil?
+        #   if @keyword_queries[@params[sfield]]
+        #     @keyword_queries[@params[sfield]] << @params[aquery.to_sym]
+        #   else
+        #     @keyword_queries[@params[sfield]] = [ @params[aquery.to_sym] ]
+        #   end
+        #   sfield = sfield.next
+        #   aquery = aquery.next
+        # end
+        # @keyword_queries[@params[:f1]] = @params[:q1] unless @params[:q1].blank?
+        # @keyword_queries[@params[:f2]] = @params[:q2] unless @params[:q2].blank?
+        # @keyword_queries[@params[:f3]] = @params[:q3] unless @params[:q3].blank? 
+        been_combined = false
+        @keyword_queries[@params[:f1]] = @params[:q1] unless @params[:q1].blank?
+        unless @params[:q2].blank?
+          if @keyword_queries.has_key?(@params[:f2])
+            @keyword_queries[@params[:f2]] = "(#{@keyword_queries[@params[:f2]]}) " + @params[:op2] + " (#{@params[:q2]})"
+            been_combined = true
+          elsif @params[:op2] == "NOT"
+            @keyword_queries[@params[:f2]] = "NOT " + @params[:q2]
           else
-            @keyword_queries[@params[sfield]] = [ @params[aquery.to_sym] ]
+            @keyword_queries[@params[:f2]] = @params[:q2]
           end
-          sfield = sfield.next
-          aquery = aquery.next
         end
+        unless @params[:q3].blank?
+          if @keyword_queries.has_key?(@params[:f3])
+            @keyword_queries[@params[:f3]] = "(#{@keyword_queries[@params[:f3]]})" unless been_combined
+            @keyword_queries[@params[:f3]] = "#{@keyword_queries[@params[:f3]]} " + @params[:op3] + " (#{@params[:q3]})"
+          elsif @params[:op3] == "NOT"
+            @keyword_queries[@params[:f3]] = "NOT " + @params[:q3]            
+          else
+            @keyword_queries[@params[:f3]] = @params[:q3]
+          end
+        end                   
       end
 
       return @keyword_queries
@@ -104,22 +136,51 @@ module BlacklightAdvancedSearch::ParsingNestingParser
   def process_query(params,config)
     queries = []
     ops = keyword_op
-    keyword_queries.each do |field, multiquery| 
-      multiquery.each do |query|
-        if query == ''
-          multiquery.delete_at(0)
-          ops.shift
-        else
-          queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query( local_param_hash(field, config) )
-          queries << ops.shift unless ops.nil?
-        end
-      end
-      if keyword_queries[field] == []
-        keyword_queries.delete(field)
-      else
-        keyword_queries[field] = multiquery.join(' | ')
-      end
+    keyword_queries.each do |field, query| 
+      queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query( local_param_hash(field, config) )
+      queries << ops.shift
     end
     queries.join(' ')
+  end
+end
+
+module BlacklightAdvancedSearch::CatalogHelperOverride
+
+  def remove_advanced_keyword_query(field, my_params = params)
+    my_params = my_params.dup
+    my_params.delete(field)
+    return my_params
+  end
+end
+
+
+module BlacklightAdvancedSearch::RenderConstraintsOverride
+
+  #Over-ride of Blacklight method, provide advanced constraints if needed,
+  # otherwise call super. Existence of an @advanced_query instance variable
+  # is our trigger that we're in advanced mode.
+  def render_constraints_query(my_params = params)
+    if (@advanced_query.nil? || @advanced_query.keyword_queries.empty? )
+      return super(my_params)
+    else
+      content = []
+      @advanced_query.keyword_queries.each_pair do |field, query|
+        label = search_field_def_for_key(field)[:label]
+        content << render_constraint_element(
+          label, query,
+          :remove =>
+            catalog_index_path(remove_advanced_keyword_query(field,my_params))
+        )
+      end
+      if (@advanced_query.keyword_op == "OR" &&
+          @advanced_query.keyword_queries.length > 1)
+        content.unshift content_tag(:span, "Any of:", class:'operator')
+        content_tag :span, class: "inclusive_or appliedFilter well" do
+          safe_join(content.flatten, "\n")
+        end
+      else
+        safe_join(content.flatten, "\n")    
+      end
+    end
   end
 end

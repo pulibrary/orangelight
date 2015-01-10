@@ -18,14 +18,24 @@ module BlacklightHelper
 	  return "ltr"
 	end 
 
-  # def left_anchor_strip solr_parameters, user_parameters 
-  #   if solr_parameters[:q]
-  #     if solr_parameters[:q].include?("{!qf=$left_anchor_qf pf=$left_anchor_pf}")
-  #       newq = solr_parameters[:q].gsub("{!qf=$left_anchor_qf pf=$left_anchor_pf}", "")
-  #       solr_parameters[:q] = "{!qf=$left_anchor_qf pf=$left_anchor_pf}" + newq.gsub(" ", "")
-  #     end         
-  #   end
-  # end
+  def left_anchor_strip solr_parameters, user_parameters 
+    if solr_parameters[:q]
+      if solr_parameters[:q].include?("{!qf=$left_anchor_qf pf=$left_anchor_pf}")
+        newq = solr_parameters[:q].gsub("{!qf=$left_anchor_qf pf=$left_anchor_pf}", "")
+        solr_parameters[:q] = "{!qf=$left_anchor_qf pf=$left_anchor_pf}" + newq.gsub(" ", "")
+      end         
+    end
+  end
+
+  # Returns suitable argument to options_for_select method, to create
+  # an html select based on #search_field_list with labels for search
+  # bar only. Skips search_fields marked :include_in_simple_select => false
+  def search_bar_select
+    blacklight_config.search_fields.collect do |key, field_def|
+      [field_def.dropdown_label || field_def.label,  field_def.key] if should_render_field?(field_def)
+    end.compact
+  end
+
 
   def redirect_browse solr_parameters, user_parameters 
     if user_parameters[:search_field]

@@ -22,13 +22,4 @@
   <div name="row3" class="col-sm-10">
     <%= text_field_tag "q3", nil, :class => 'form-control' %>
   </div>
-  <div>
-    <input type="radio" name="op4" value="AND" checked>AND
-    <input type="radio" name="op4" value="OR">OR
-    <input type="radio" name="op4" value="NOT">NOT
-  </div>
-  <%= select_tag('f4', options_for_select(advanced_key_value, 'subject'), :class=>"search_field col-sm-2") %>
-  <div name="row4" class="col-sm-10">
-    <%= text_field_tag "q4", nil, :class => 'form-control' %>
-  </div>  
 </div>

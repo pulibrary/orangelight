@@ -210,7 +210,7 @@
           <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="50" side="front"/>
        </analyzer>
        <analyzer type="query">     
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\\+" replacement="" />   
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />   
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />                   
 <!--           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="$1\*" />       -->               
           <tokenizer class="solr.KeywordTokenizerFactory"/>
