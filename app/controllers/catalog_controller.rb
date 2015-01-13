@@ -306,7 +306,9 @@ class CatalogController < ApplicationController
     #   :include_in_advanced_search => true
     #   field.include_in_simple_select = false        
 
-    config.add_search_field 'all_fields', :label => 'All Fields'
+    config.add_search_field 'all_fields', :label => 'All Fields' do |field|
+      field.include_in_advanced_search = false
+    end
     
 
     # Now we see how to over-ride Solr request handler defaults, in this
@@ -316,6 +318,7 @@ class CatalogController < ApplicationController
     config.add_search_field('title') do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params. 
       field.solr_parameters = { :'spellcheck.dictionary' => 'title' }
+      field.dropdown_label = "Title (keyword)"
 
       # :solr_local_parameters will be sent using Solr LocalParams
       # syntax, as eg {! qf=$title_qf }. This is neccesary to use
@@ -329,26 +332,19 @@ class CatalogController < ApplicationController
     
     config.add_search_field('author') do |field|
       field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
+      field.dropdown_label = "Author (keyword)"
       field.solr_local_parameters = { 
         :qf => '$author_qf',
         :pf => '$author_pf'
       }
     end
 
-    config.add_search_field('left_anchor') do |field|
-      field.label = 'Starts with'
-
-      field.solr_local_parameters = { 
-        :qf => '$left_anchor_qf',
-        :pf => '$left_anchor_pf'
-      }
-    end    
-    
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as 
     # config[:default_solr_parameters][:qt], so isn't actually neccesary. 
     config.add_search_field('subject') do |field|
       field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
+      field.dropdown_label = "Subject (keyword)"
       field.qt = 'search'
       field.solr_local_parameters = { 
         :qf => '$subject_qf',
@@ -356,15 +352,27 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('left_anchor') do |field|
+      field.label = 'Starts with'
+      field.solr_local_parameters = { 
+        :qf => '$left_anchor_qf',
+        :pf => '$left_anchor_pf'
+      }
+    end    
+    
     config.add_search_field('browse_subject') do |field|
-      field.label = 'Browse subject'
+      field.include_in_advanced_search = false
+      field.label = 'Subject (browse)'  
     end    
     config.add_search_field('browse_name') do |field|
-      field.label = 'Browse name'
+      field.include_in_advanced_search = false
+      field.label = 'Author (browse)'   
     end    
-        config.add_search_field('browse_cn') do |field|
-      field.label = 'Browse call number'
+    config.add_search_field('browse_cn') do |field|
+      field.include_in_advanced_search = false
+      field.label = 'Call number (browse)'     
     end    
+
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc

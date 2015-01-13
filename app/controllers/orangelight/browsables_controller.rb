@@ -39,7 +39,7 @@ class Orangelight::BrowsablesController < ApplicationController
       if @model == "call_numbers"
         search_term = Lcsort.normalize(params[:q])
       else
-        search_term = params[:q].gsub('—', ' ').gsub(/[\p{P}\p{S}]/, '').remove_formatting.downcase
+        search_term = params[:q].normalize_em
       end
       search_result = params[:model].where('sort <= ?', search_term).last
       unless search_result.nil?

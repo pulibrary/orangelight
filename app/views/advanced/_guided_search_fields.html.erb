@@ -1,0 +1,25 @@
+
+<div class="form-group advanced-search-field">
+  <%= select_tag('f1', options_for_select(advanced_key_value, guided_field(:f1, 'title')), :class=>"search_field col-sm-2") %>
+  <div name="row1" class="col-sm-10">
+    <%= text_field_tag "q1", label_tag_default_for(:q1), :class => 'form-control' %>
+  </div>
+  <div>
+    <%= radio_button_tag("op2", "AND", guided_radio(:op2, "AND")) %>AND
+    <%= radio_button_tag("op2", "OR", guided_radio(:op2, "OR")) %>OR
+    <%= radio_button_tag("op2", "NOT", guided_radio(:op2, "NOT")) %>NOT
+  </div>
+  <%= select_tag('f2', options_for_select(advanced_key_value, guided_field(:f2, 'author')), :class=>"search_field col-sm-2") %>
+  <div name="row2" class="col-sm-10">
+    <%= text_field_tag "q2", label_tag_default_for(:q2), :class => 'form-control' %>
+  </div>
+  <div>
+    <%= radio_button_tag("op3", "AND", guided_radio(:op3, "AND")) %>AND
+    <%= radio_button_tag("op3", "OR", guided_radio(:op3, "OR")) %>OR
+    <%= radio_button_tag("op3", "NOT", guided_radio(:op3, "NOT")) %>NOT
+  </div>
+  <%= select_tag('f3', options_for_select(advanced_key_value, guided_field(:f3, 'subject')), :class=>"search_field col-sm-2") %>
+  <div name="row3" class="col-sm-10">
+    <%= text_field_tag "q3", label_tag_default_for(:q3), :class => 'form-control' %>
+  </div>
+</div>

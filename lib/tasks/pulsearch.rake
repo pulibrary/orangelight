@@ -13,6 +13,13 @@ namespace :pulsearch do
   	Rake::Task["db:migrate:redo"].invoke
   end
 
+
+  desc "Reset jetty"
+  task rejetty: :environment do
+    Rake::Task["jetty:stop"].invoke
+    Rake::Task["jetty:clean"].invoke
+    Rake::Task["jetty:start"].invoke        
+  end
   # desc "Posts fixtures to Solr"
   # task solradd: :environment do
 

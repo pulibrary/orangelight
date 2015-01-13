@@ -87,6 +87,7 @@
        -->
 
        <str name="qf">
+         title_l^200000        
          title_unstem_search^100000
          subtitle_unstem_search^50000
          title_t^25000
@@ -109,13 +110,13 @@
          title_series_t^10
          isbn_t
          text
-         title_l
          description_t
          location
          author_sort_s
          author_vern_s
        </str>
        <str name="pf">
+         title_l^2000000        
          title_unstem_search^1000000
          subtitle_unstem_search^500000
          title_t^250000
@@ -137,7 +138,6 @@
          title_series_unstem_search^250
          title_series_t^100
          text^10
-         title_l
          description_t
          location
          author_sort_s

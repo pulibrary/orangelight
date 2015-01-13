@@ -27,8 +27,18 @@ module BlacklightHelper
     end
   end
 
+  # Returns suitable argument to options_for_select method, to create
+  # an html select based on #search_field_list with labels for search
+  # bar only. Skips search_fields marked :include_in_simple_select => false
+  def search_bar_select
+    blacklight_config.search_fields.collect do |key, field_def|
+      [field_def.dropdown_label || field_def.label,  field_def.key] if should_render_field?(field_def)
+    end.compact
+  end
+
+
   def redirect_browse solr_parameters, user_parameters 
-    if user_parameters[:search_field]
+    if user_parameters[:search_field] && user_parameters[:controller] != "advanced"
       if user_parameters[:search_field] == "browse_subject"
         redirect_to "/browse/subjects?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
       elsif user_parameters[:search_field] == "browse_cn"
@@ -36,7 +46,6 @@ module BlacklightHelper
       elsif user_parameters[:search_field] == "browse_name"
         redirect_to "/browse/names?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
       else
-        user_parameters.delete("model") if user_parameters[:model]
       end  
 
     end

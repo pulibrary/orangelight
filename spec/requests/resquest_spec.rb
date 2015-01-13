@@ -121,7 +121,37 @@ describe "blacklight tests" do
 			r = JSON.parse(response.body)
 			expect(r["response"]["pages"]["total_count"]).to eq 0
 		end
+
+		it "works in advanced search" do
+			get "catalog.json?&search_field=advanced&left_anchor=searching+for"
+			r = JSON.parse(response.body)	
+			expect(r["response"]["docs"].select{|d| d["id"] == "6574987"}.length).to eq 1 
+		end
+		it "works in guided search" do
+			get "catalog.json?&search_field=guided&f1=left_anchor&q1=searching+for&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for"
+			r = JSON.parse(response.body)	
+			expect(r["response"]["docs"].select{|d| d["id"] == "6574987"}.length).to eq 1 
+		end		
 	end
 
+	describe "advanced search tests" do
+		it "supports guided render constraints" do
+			get "catalog?&search_field=guided&f1=left_anchor&q1=searching+for1&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for"
+			expect(response.body.include?('<a class="btn btn-default btn-sm remove dropdown-toggle" href="/catalog?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remove constraint Starts with: searching for1</span></a>')).to eq true
+			get "catalog.json?&search_field=guided&f1=left_anchor&q1=searching+for1&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for"
+			r = JSON.parse(response.body)	
+			expect(r["response"]["docs"].select{|d| d["id"] == "6574987"}.length).to eq 0 			
+			get "catalog?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"
+			expect(response.body.include?('<a class="btn btn-default btn-sm remove dropdown-toggle" href="/catalog?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remove constraint Starts with: searching for1</span></a>')).to eq false
+			get "catalog.json?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"
+			r = JSON.parse(response.body)	
+			expect(r["response"]["docs"].select{|d| d["id"] == "6574987"}.length).to eq 1 
+			#r = JSON.parse(response.body)	
+			#expect(r["response"]["docs"].select{|d| d["id"] == "6574987"}.length).to eq 1 
+		end
+		# it "supports advanced render constraints" do
+
+		# end				
+	end
 end
  
