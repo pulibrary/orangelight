@@ -1,5 +1,5 @@
   <%= form_tag catalog_index_url, :method => :get, :class => 'search-query-form form-inline clearfix navbar-form' do %>
-    <%= render_hash_as_hidden_fields(params_for_search().except(:q, :search_field, :qt, :page, :utf8)) %>
+    <%= render_hash_as_hidden_fields(params_for_search().except(:q, :search_field, :qt, :page, :utf8, :model, :rpp, :start)) %>
 
     <div class="input-group">
     <% unless search_fields.empty? %>
@@ -23,4 +23,5 @@
   <% end %>
 
 <%= link_to 'Browse', '/browse' %> |
-<%= link_to 'More options', advanced_search_path(params), :class=>'advanced_search'%>
+<%= link_to 'Guided Search', guided_path(params), :class=>'advanced_search'%> |
+<%= link_to 'Advanced Search', advanced_search_path(params), :class=>'advanced_search'%>

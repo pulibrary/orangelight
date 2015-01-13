@@ -38,7 +38,7 @@ module BlacklightHelper
 
 
   def redirect_browse solr_parameters, user_parameters 
-    if user_parameters[:search_field]
+    if user_parameters[:search_field] && user_parameters[:controller] != "advanced"
       if user_parameters[:search_field] == "browse_subject"
         redirect_to "/browse/subjects?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
       elsif user_parameters[:search_field] == "browse_cn"
@@ -46,8 +46,6 @@ module BlacklightHelper
       elsif user_parameters[:search_field] == "browse_name"
         redirect_to "/browse/names?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
       else
-        user_parameters[:model] = nil
-        user_parameters[:rpp] = nil
       end  
 
     end

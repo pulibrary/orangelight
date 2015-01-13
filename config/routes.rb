@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     get 'browse/subjects', model: Orangelight::Subject, to: 'browsables#index'
     get 'browse/subjects/:id', model: Orangelight::Subject, as: 'browse_subject', to: 'browsables#show'
   end
-
+  
+  get 'guided', to: 'advanced#guided'
+  
   Blacklight::Marc.add_routes(self)
   devise_for :users
   root :to => "catalog#index"

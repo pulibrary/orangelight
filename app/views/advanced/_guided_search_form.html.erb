@@ -10,23 +10,15 @@
   <%= render_hash_as_hidden_fields(params_for_search(advanced_search_context.except(:model, :rpp, :start), {})) %>
 
   <div class="input-criteria">
-
-      <div class="query-criteria">
-        <h3 class="query-criteria-heading">
-          <%= t('blacklight_advanced_search.form.query_criteria_heading_html', :select_menu =>  select_menu_for_field_operator ) %> 
-        </h3>
-
-        <div id="advanced_search">
-          <%= render 'advanced/advanced_search_fields' %>
-        </div>
-      </div>
-      
+    <div id="advanced_search">
+      <%= render 'advanced/guided_search_fields' %>
+    </div>
   </div>
 
   <hr>
 
   <div class="sort-submit-buttons clearfix">
-    <%= render 'advanced_search_submit_btns' %>
+    <%= render 'guided_search_submit_btns' %>
   </div>
 
 <% end %>
