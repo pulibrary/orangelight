@@ -100,8 +100,8 @@ describe "blacklight tests" do
 			get "catalog/5906024.json"		
 			r = JSON.parse(response.body)["response"]["document"]
 			title_vern = r["title_vern_display"]
-			related = r["related_name_display"][0]
-			related_vern = r["related_name_display"][1]
+			related = r["contains_display"][0]
+			related_vern = r["contains_display"][1]
 			get "catalog/5906024"
 			expect(response.body.include?("<h3 dir=\"rtl\"> #{title_vern} </h3>")).to eq true	
 			expect(response.body.include?("<li dir=\"ltr\"> #{related} </li>")).to eq true
