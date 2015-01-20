@@ -21,20 +21,29 @@ module ApplicationHelper
   	args[:document][args[:field]].each_with_index do |location, i|
   		args[:document][args[:field]][i] = link_to("Locate", "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{args[:document]["id"]}", :target => "_blank")
   			# http://library.princeton.edu/locator/index.php?loc=#{location}&id=#{args[:document]["id"]}")
-  	
     end
   end
 
-  def relatedor document, field
-  	# document[field].each_with_index do |related_name, i|
-  	# 	document[field][i] = 'ho'
-  	# end
-   #  # document[]].each_with_index do |relator, i|
-   #  #     	args[:document][args[:field]][i] = content_tag(:p, relator)
-   #  # end  	
-  	# # document[field][0] = 'hi'
-  	# return content_tag(:dt, 'do').html_safe
+  def locate_link location, bib
+    link_to("[Find it]", "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => "_blank", style: "font-size:10px; font-style:italic")
+  end  
+
+
+  def holding_block args
+    args[:document][args[:field]].each_with_index do |call_numb, i|
+      block = "Call Number: #{call_numb}<br>"
+      block += "Location: #{args[:document]['location'][i]}"
+      findit = locate_link(args[:document]['location_code_s'][i], args[:document]['id'])
+      block += " #{findit}<br><br>"
+      args[:document][args[:field]][i] = block.html_safe
+    end    
   end
+
+  # def relatedor args
+  #   args[:document][args[:field]].each_with_index do |related_name, i|
+  #     args[:document][args[:field]][i] = "#{args[:document]['marc_relatedor_display'][i]}: #{related_name}"
+  #   end
+  # end
 
   SEPARATOR = '—'
   QUERYSEP = '—'
@@ -65,7 +74,7 @@ module ApplicationHelper
         full_sub = sub_array[i][j]
       end
       lnk += '  '
-      lnk += link_to('[Browse]', "/browse/subjects?val=#{full_sub}", style: "font-size:10px; font-style:italic")
+      lnk += link_to('[Browse]', "/browse/subjects?q=#{full_sub}", style: "font-size:10px; font-style:italic")
       args[:document][args[:field]][i] = lnk.html_safe        
     end
 
@@ -74,11 +83,19 @@ module ApplicationHelper
 
   def browse_name args
     args[:document][args[:field]].each_with_index do |name, i|
-      newname = link_to(name, "/?f[author_s][]=#{name}") + '  ' + link_to('[Browse]', "/browse/names?val=#{name}", style: "font-size:10px; font-style:italic")
+      newname = link_to(name, "/?f[author_s][]=#{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", style: "font-size:10px; font-style:italic")
       args[:document][args[:field]][i] = newname.html_safe
     end
   end
 
+  def browse_related_name args
+    args[:document][args[:field]].each_with_index do |name, i|
+      rel_term =  /^.*：/.match(name) ? /^.*：/.match(name)[0] : ''
+      rel_name = name.gsub(/^.*：/,'')
+      newname = rel_term + link_to(rel_name, "/?f[author_s][]=#{rel_name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{rel_name}", style: "font-size:10px; font-style:italic")
+      args[:document][args[:field]][i] = newname.html_safe
+    end
+  end
 
   def multiple_locations args
     if args[:document][args[:field]][1] 

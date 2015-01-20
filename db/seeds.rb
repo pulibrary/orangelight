@@ -42,57 +42,57 @@ solr = RSolr.connect :url => "http://#{host}:#{prt}/#{core}", :read_timeout => 9
 
 ##### NAMES ######
 unless ENV['STEP'] == '1'
-	# query = "&facet=true&fl=id&facet.field=author_sort_s&facet.sort=asc&facet.limit=-1&facet.pivot=author_sort_s,author_s"
-	# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt))
-	req = solr.get 'select', :params => {facet: true,
-		fl: 'id',
-		'facet.field' => 'author_sort_s',
-		'facet.sort' => 'asc',
-		'facet.limit' => '-1',
-		'facet.pivot' => 'author_sort_s,author_s',
-		defType: dtype}
-	req["facet_counts"]["facet_pivot"]["author_sort_s,author_s"].each do |name|
-		browsable = Orangelight::Name.new()
-		browsable.sort = name["value"]
-		name["pivot"].each do |name_display|
-			browsable.label = name_display["value"] if name["value"] == name_display["value"].normalize_em
-		end	
-		browsable.count = name["count"].to_i
-		browsable.dir = getdir(browsable.label) 
-		browsable.save!
-	end
+	unless ENV['STEP'] == '2'	
+		# query = "&facet=true&fl=id&facet.field=author_sort_s&facet.sort=asc&facet.limit=-1&facet.pivot=author_sort_s,author_s"
+		# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt))
+		req = solr.get 'select', :params => {facet: true,
+			fl: 'id',
+			'facet.field' => 'author_sort_s',
+			'facet.sort' => 'asc',
+			'facet.limit' => '-1',
+			'facet.pivot' => 'author_sort_s,author_s',
+			defType: dtype}
+		req["facet_counts"]["facet_pivot"]["author_sort_s,author_s"].each do |name|
+			browsable = Orangelight::Name.new()
+			browsable.sort = name["value"]
+			name["pivot"].each do |name_display|
+				browsable.label = name_display["value"] if name["value"] == name_display["value"].normalize_em
+			end	
+			browsable.count = name["count"].to_i
+			browsable.dir = getdir(browsable.label) 
+			browsable.save!
+		end
 
-	# query = "&facet=true&fl=id&facet.field=author_vern_s&facet.sort=asc&facet.limit=-1"
-	# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
+		# query = "&facet=true&fl=id&facet.field=author_vern_s&facet.sort=asc&facet.limit=-1"
+		# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
 
-	####### TRYING WITH JUST ONE INDEX #########
-	# req = solr.get 'select', :params => {facet: true,
-	# 	fl: 'id',
-	# 	'facet.field' => 'author_vern_s',
-	# 	'facet.sort' => 'asc',
-	# 	'facet.limit' => '-1',
-	# 	'facet.pivot' => 'author_sort_s,author_s',
-	# 	defType: dtype}
-	# browsable = Orangelight::Name.new()
-	# req["facet_counts"]["facet_fields"]["author_vern_s"].each do |name|
-	# 	if name.is_a?(Integer)
-	# 		browsable.count = name.to_i
-	# 		browsable.save!
-	# 		browsable = Orangelight::Name.new()
-	# 	else
-	# 		browsable.label = name
-	# 		browsable.sort = name
-	# 		browsable.dir = getdir(name)
-	# 	end
-	# end
+		####### TRYING WITH JUST ONE INDEX #########
+		# req = solr.get 'select', :params => {facet: true,
+		# 	fl: 'id',
+		# 	'facet.field' => 'author_vern_s',
+		# 	'facet.sort' => 'asc',
+		# 	'facet.limit' => '-1',
+		# 	'facet.pivot' => 'author_sort_s,author_s',
+		# 	defType: dtype}
+		# browsable = Orangelight::Name.new()
+		# req["facet_counts"]["facet_fields"]["author_vern_s"].each do |name|
+		# 	if name.is_a?(Integer)
+		# 		browsable.count = name.to_i
+		# 		browsable.save!
+		# 		browsable = Orangelight::Name.new()
+		# 	else
+		# 		browsable.label = name
+		# 		browsable.sort = name
+		# 		browsable.dir = getdir(name)
+		# 	end
+		# end
 
-
-
+	end  #STEP 2
 
 
 
 ##### SUBJECTS #####
-	unless ENV['STEP'] == '2'
+
 	# query = "&facet=true&fl=id&facet.field=subject_sort_facet&facet.sort=asc&facet.limit=-1&facet.pivot=subject_sort_facet,subject_facet"
 	# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
 
@@ -141,7 +141,7 @@ unless ENV['STEP'] == '1'
 
 
 
-	end  #STEP 2
+
 end #STEP 1
 
 

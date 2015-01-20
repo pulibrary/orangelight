@@ -2,9 +2,6 @@
 <dl class="dl-horizontal  dl-invert">
   <% document_show_fields(document).each do |solr_fname, field| -%>
     <% if should_render_show_field? document, field %>
-      <% if document_show_fields(document)["#{solr_fname}"].relatedor == true %>
-        <% relatedor document, solr_fname %>
-      <% end %>
       <%# marc relator code for authors -%>
       <% if solr_fname == 'author_display' && render_document_show_field_value( document, :field => 'marc_relator_display') != ''%>
       <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value document, :field => 'marc_relator_display' %>:</dt>

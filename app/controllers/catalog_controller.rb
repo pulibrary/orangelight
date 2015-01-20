@@ -111,7 +111,7 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display 
     # config.add_index_field 'title_display', :label => 'Title'
     # config.add_index_field 'title_vern_display', :label => 'Title'
-    config.add_index_field 'author_s', :label => 'Author', :link_to_search => true
+    config.add_index_field 'author_display', :label => 'Author', :helper_method => :browse_name
     #config.add_index_field 'author_vern_display', :label => 'Author'
     #config.add_index_field 'format', :label => 'Format'
     #config.add_index_field 'language_facet', :label => 'Language'
@@ -120,8 +120,8 @@ class CatalogController < ApplicationController
     #config.add_index_field 'lc_callnum_display', :label => 'Call number'
     config.add_index_field 'pub_created_display', :label => 'Published/Created'
     #config.add_index_field 'description_display', :label => 'Description'
-    config.add_index_field 'location', :label => 'Location', helper_method: :multiple_locations
-    config.add_index_field 'call_number_display', :label => 'Call number'
+    #config.add_index_field 'location', :label => 'Location', helper_method: :multiple_locations
+    config.add_index_field 'call_number_display', :label => 'Holding info', helper_method: :holding_block
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
@@ -133,7 +133,7 @@ class CatalogController < ApplicationController
     # tring with author_s
     #config.add_show_field 'author_display', :label => 'Author'#, :helper_method => :altscript
     #config.add_show_field 'author_vern_display', :label => 'Author'
-    config.add_show_field 'author_s', :label => 'Author', :helper_method => :browse_name
+    config.add_show_field 'author_display', :label => 'Author', :helper_method => :browse_name
     config.add_show_field 'format', :label => 'Format'
     config.add_show_field 'url_fulltext_display', :label => 'URL'
     config.add_show_field 'url_suppl_display', :label => 'More Information'
@@ -144,8 +144,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'isbn_t', :label => 'ISBN'
     config.add_show_field 'pub_created_display', :label => 'Published/Created'
     #config.add_show_field 'pub_date_start_sort', :label => 'Published Sort Date'
-    config.add_show_field 'location_display', :label => 'Location'
-    config.add_show_field 'location_code_display', :label => 'Find it', :helper_method => :wheretofind
+    #config.add_show_field 'location_display', :label => 'Location'
+    #config.add_show_field 'location_code_display', :label => 'Find it', :helper_method => :wheretofind
     
     # passing extra data from controller
     # config.add_show_field 'language_code_s', :label => 'Language', super_duper_info: "huzza!"    
@@ -245,7 +245,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'cumulative_index_finding_aid_display', :label => 'Cumulative index finding aid'
     config.add_show_field 'subject_display', :label => 'Subject(s)', helper_method: :subjectify
     config.add_show_field 'form_genre_display', :label => 'Form genre'
-    config.add_show_field 'related_name_display', :label => 'Related name(s)', :relatedor => true
+    config.add_show_field 'related_name_display', :label => 'Related name(s)', :helper_method => :browse_related_name
     config.add_show_field 'related_works_display', :label => 'Related work(s)'
     config.add_show_field 'contains_display', :label => 'Contains'    
     config.add_show_field 'place_name_display', :label => 'Place name(s)'
@@ -259,7 +259,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'publisher_no_display', :label => 'Publisher no.'
     config.add_show_field 'standard_no_display', :label => 'Standard no.'
     config.add_show_field 'original_language_display', :label => 'Original language'
-    config.add_show_field 'call_number_display', :label => 'Call number'
+    config.add_show_field 'call_number_display', :label => 'Holding info', helper_method: :holding_block
     config.add_show_field 'shelving_title_display', :label => 'Shelving title'
     config.add_show_field 'location_has_display', :label => 'Location has'
     config.add_show_field 'location_has_current_display', :label => 'Location has (current)'
@@ -307,7 +307,6 @@ class CatalogController < ApplicationController
     #   field.include_in_simple_select = false        
 
     config.add_search_field 'all_fields', :label => 'All Fields' do |field|
-      field.include_in_advanced_search = false
     end
     
 

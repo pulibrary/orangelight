@@ -8,7 +8,7 @@ module AdvancedHelper
   def label_tag_default_for(key)
     if (! params[key].blank?)
       return params[key]
-    elsif params["search_field"] == key
+    elsif params["search_field"] == key || guided_context(key)
       return params["q"]
     else
       return nil
@@ -32,7 +32,7 @@ module AdvancedHelper
   # Current params without fields that will be over-written by adv. search,
   # or other fields we don't want.
   def advanced_search_context
-    my_params = params.except :page, :commit, :f_inclusive, :q, :search_field, :op, :action, :index, :sort, :controller, :utf8#, :f1, :f2, :f3, :q1, :q2, :q3, :op2, :op3
+    my_params = params.except :page, :commit, :f_inclusive, :q, :search_field, :op, :action, :index, :sort, :controller, :utf8
 
     my_params.except! *search_fields_for_advanced_search.map { |key, field_def| field_def[:key] }
   end
@@ -59,10 +59,21 @@ module AdvancedHelper
     key_value    
   end
 
+  # carries over original search field and original guided search fields if user switches to guided search from regular search 
   def guided_field(field_num, default_val)
+    if field_num == :f1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:search_field] && search_fields_for_advanced_search[ params[:search_field] ]
+      return search_fields_for_advanced_search[ params[:search_field] ].key || default_val
+    end
     return params[field_num] || default_val
   end
 
+
+  # carries over original search query if user switches to guided search from regular search 
+  def guided_context(key)
+    key == :q1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:search_field] && search_fields_for_advanced_search[ params[:search_field] ]
+  end
+
+  # carries over guided search operations if user switches back to guided search from regular search  
   def guided_radio(op_num, op)
     if params[op_num] 
       checked = params[op_num] == op
@@ -81,14 +92,12 @@ module BlacklightAdvancedSearch
   class QueryParser
     include AdvancedHelper
     def keyword_op
-      # operation = 'op2'
-      # @keyword_op = []
-      # until @params[operation].nil?
-      #   @keyword_op << @params[operation]
-      #   operation = operation.next
-      # end
+
+      # advanced search uses same operation between all fields AND/OR
       return @params["op"] || "AND" unless is_guided?
 
+      # for guided search add the operations if there are queries to join
+      # NOTs get added to the query. Only AND/OR are operations
       @keyword_op = []
       unless @params[:q1].blank? || @params[:q2].blank? || @params[:op2] == "NOT"
         @keyword_op << @params[:op2] if (@params[:f1] != @params[:f2])
@@ -110,22 +119,8 @@ module BlacklightAdvancedSearch
 
 
         if is_guided?
-          # sfield = 'f1'
-          # aquery = 'q1'
-          # until @params[sfield].nil?
-          #   if @keyword_queries[@params[sfield]]
-          #     @keyword_queries[@params[sfield]] << @params[aquery.to_sym]
-          #   else
-          #     @keyword_queries[@params[sfield]] = [ @params[aquery.to_sym] ]
-          #   end
-          #   sfield = sfield.next
-          #   aquery = aquery.next
-          # end
-          # @keyword_queries[@params[:f1]] = @params[:q1] unless @params[:q1].blank?
-          # @keyword_queries[@params[:f2]] = @params[:q2] unless @params[:q2].blank?
-          # @keyword_queries[@params[:f3]] = @params[:q3] unless @params[:q3].blank? 
 
-
+          # spaces need to be stripped from the query because they don't get properly stripped in Solr
           ###### TO GET STARTS WITH TO WORK #######
           q1 = @params[:f1] == "left_anchor" ? @params[:q1].delete(' ') : @params[:q1]
           q2 = @params[:f2] == "left_anchor" ? @params[:q2].delete(' ') : @params[:q2]
@@ -154,7 +149,9 @@ module BlacklightAdvancedSearch
             else
               @keyword_queries[@params[:f3]] = q3
             end
-          end       
+          end     
+
+        # advanced search behavior  
         else
           config.search_fields.each do | key, field_def |
             if ! @params[ key.to_sym ].blank?
