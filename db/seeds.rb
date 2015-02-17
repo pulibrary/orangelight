@@ -166,7 +166,7 @@ req["facet_counts"]["facet_fields"]["call_number_s"].each_with_index do |call_nu
 	else 
 		call_number_label = ''
 		req = solr.get 'select', :params => {rows: 999999999,
-			fl: "call_number_s,call_number_browse_s,title_display,title_vern_display,author_s,id,pub_created_display",
+			fl: "call_number_s,call_number_browse_s,title_display,title_vern_display,author_display,id,pub_created_display",
 			q: "call_number_s:#{call_number_text}",
 			sort: "sort=title_sort asc",
 			defType: dtype}
@@ -189,8 +189,8 @@ req["facet_counts"]["facet_fields"]["call_number_s"].each_with_index do |call_nu
 							browsable.sort = cn
 							#browsable.label = cn
 							browsable.label = name["call_number_browse_s"][j]
-							browsable.author = name["author_s"][0] if name["author_s"]
-							browsable.date = name["pub_created_display"][0] if name["pub_created_display"]
+							browsable.author = name["author_display"][0..1].last if name["author_s"]
+							browsable.date = name["pub_created_display"][0..1].last if name["pub_created_display"]
 							browsable.save!
 						end
 					end

@@ -194,7 +194,7 @@
        </analyzer>
      </fieldType>
 
-     <fieldType name="title_l" class="solr.TextField" positionIncrementGap="100" >
+     <fieldType name="title_l" class="solr.TextField" positionIncrementGap="100">
 <!--        <analyzer>
          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="AAAA $1" /> 
          <tokenizer class="solr.PatternTokenizerFactory" pattern="$$$^"/>
@@ -209,11 +209,11 @@
           <filter class="solr.ICUFoldingFilterFactory" />          
           <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="50" side="front"/>
        </analyzer>
-       <analyzer type="query">     
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />   
-          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />                   
+       <analyzer type="query" >     
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />    
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />                 
 <!--           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="^(.*)$" replacement="$1\*" />       -->               
-          <tokenizer class="solr.KeywordTokenizerFactory"/>
+          <tokenizer class="solr.WhitespaceTokenizerFactory"/>
           <filter class="solr.ICUFoldingFilterFactory" />
        </analyzer>           
      </fieldType>

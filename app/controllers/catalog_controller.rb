@@ -121,7 +121,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'pub_created_display', :label => 'Published/Created'
     #config.add_index_field 'description_display', :label => 'Description'
     #config.add_index_field 'location', :label => 'Location', helper_method: :multiple_locations
-    config.add_index_field 'call_number_display', :label => 'Holding info', helper_method: :holding_block
+    config.add_index_field 'call_number_display', :label => 'Holding info', helper_method: :holding_block_search
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 

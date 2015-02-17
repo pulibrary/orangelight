@@ -39,6 +39,20 @@ module ApplicationHelper
     end    
   end
 
+  def holding_block_search args
+    if args[:document][args[:field]].size > 2
+      return "Multiple Holdings"
+    else
+      args[:document][args[:field]].each_with_index do |call_numb, i|
+        block = "Call Number: #{call_numb}<br>"
+        block += "Location: #{args[:document]['location'][i]}"
+        findit = locate_link(args[:document]['location_code_s'][i], args[:document]['id'])
+        block += " #{findit}<br><br>"
+        args[:document][args[:field]][i] = block.html_safe
+      end    
+    end
+  end
+
   # def relatedor args
   #   args[:document][args[:field]].each_with_index do |related_name, i|
   #     args[:document][args[:field]][i] = "#{args[:document]['marc_relatedor_display'][i]}: #{related_name}"
