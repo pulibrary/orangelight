@@ -18,6 +18,7 @@ module BlacklightHelper
 	  return "ltr"
 	end 
 
+  # This is needed because white space tokenizes regardless of filters
   def left_anchor_strip solr_parameters, user_parameters 
     if solr_parameters[:q]
       if solr_parameters[:q].include?("{!qf=$left_anchor_qf pf=$left_anchor_pf}")
