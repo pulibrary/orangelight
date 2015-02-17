@@ -189,7 +189,7 @@ req["facet_counts"]["facet_fields"]["call_number_s"].each_with_index do |call_nu
 							browsable.sort = cn
 							#browsable.label = cn
 							browsable.label = name["call_number_browse_s"][j]
-							browsable.author = name["author_display"][0..1].last if name["author_s"]
+							browsable.author = name["author_display"][0..1].last if name["author_display"]
 							browsable.date = name["pub_created_display"][0..1].last if name["pub_created_display"]
 							browsable.save!
 						end
