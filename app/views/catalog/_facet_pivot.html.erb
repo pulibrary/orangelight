@@ -1,0 +1,22 @@
+<% not_selected = !pivot_facet_in_params?( solr_field, display_facet ) %>
+<ul <%=facet_value_id(display_facet)%> class="pivot-facet list-unstyled <%=initial_collapse(display_facet, not_selected)%>">
+  <% display_facet.items.each do |item| -%>
+    <li>
+    <span class="facet-values">
+    <% unless item.items.blank?  %>
+      <a class="glyphicon glyphicon-plus" href="#" data-target=<%='#'+item.field.parameterize+'-'+item.value.parameterize%> data-toggle="collapse"></a>  
+    <% end %>       
+    <% if facet_in_params?( solr_field, item ) %>              
+        <%= render_selected_facet_value(solr_field, item) %>              
+    <% else %>           
+      <%= render_facet_value(solr_field, item)%>              
+    <% end -%>
+    </span>
+
+    <% unless item.items.blank? %>
+      <%= render :partial => 'facet_pivot', :locals => { :display_facet => item, :solr_field => solr_field } %>
+    <% end %>
+    </li>
+  <% end %>
+
+</ul>
