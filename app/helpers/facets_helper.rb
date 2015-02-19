@@ -1,32 +1,50 @@
 module FacetsHelper
   include Blacklight::FacetsHelperBehavior
 
-  ##
-  # Standard display of a facet value in a list. Used in both _facets sidebar
-  # partial and catalog/facet expanded list. Will output facet value name as
-  # a link to add that to your restrictions, with count in parens.
-  #
-  # @param [Blacklight::SolrResponse::Facets::FacetField]
-  # @param [String] facet item
-  # @param [Hash] options
-  # @option options [Boolean] :suppress_link display the facet, but don't link to it
-  # @return [String]
-  def render_facet_value(facet_solr_field, item, options ={})
-    path = search_action_path(add_facet_params_and_redirect(facet_solr_field, item))
-    content_tag(:span, :class => "facet-label") do
-      link_to_unless(options[:suppress_link], facet_display_value(facet_solr_field, item), path, :class=>"facet_select", class: getdir(facet_display_value(facet_solr_field, item)) + " hi")
-    end + render_facet_count(item.hits)
+  def initial_collapse(display_facet, not_selected)
+    if (display_facet.class == Blacklight::SolrResponse::Facets::FacetItem) 
+      not_selected ? 'collapse' : 'collapse in'
+    else
+      'facet-values'
+    end
   end
 
+  def facet_value_id display_facet
+    display_facet.respond_to?('value') ? "id=#{display_facet.field.parameterize}-#{display_facet.value.parameterize}" : ""
+  end
+
+  def pivot_facet_in_params?(field, item)
+    if item and item.respond_to? :field
+      field = item.field
+    end
+
+    value = facet_value_for_facet_item(item)
+
+    pivot_in_params = true if params[:f] and params[:f][field] and params[:f][field].include?(value)
+    if !item.items.blank? 
+      item.items.each {|pivot_item| pivot_in_params = true if pivot_facet_in_params?(pivot_item.field, pivot_item)}
+    end
+    pivot_in_params
+  end    
+
   ##
-  # Standard display of a SELECTED facet value (e.g. without a link and with a remove button)
-  # @params (see #render_facet_value)
-  def render_selected_facet_value(facet_solr_field, item)
-    content_tag(:span, :class => "facet-label") do
-      content_tag(:span, facet_display_value(facet_solr_field, item), :class => "selected") +
-      # remove link
-      link_to(content_tag(:span, '', :class => "glyphicon glyphicon-remove") + content_tag(:span, '[remove]', :class => 'sr-only'), search_action_path(remove_facet_params(facet_solr_field, item, params)), :class=>"remove")
-    end + render_facet_count(item.hits, :classes => ["selected"])
+  # Are any facet restrictions for a field in the query parameters?
+  # 
+  # @param [String] facet field
+  # @return [Boolean]
+  def facet_field_in_params? field
+    pivot = facet_configuration_for_field(field).pivot
+    if pivot
+      pivot_facet_field_in_params?(pivot)
+    else 
+      params[:f] and params[:f][field]
+    end
+  end
+
+  def pivot_facet_field_in_params? pivot
+      in_params = false
+      pivot.each { |field| in_params = true if params[:f] and params[:f][field] }
+      return in_params    
   end
 
 end
