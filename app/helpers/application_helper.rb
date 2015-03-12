@@ -111,6 +111,8 @@ module ApplicationHelper
     end
   end
 
+
+
   def multiple_locations args
     if args[:document][args[:field]][1] 
       args[:document][args[:field]] = ["Multiple Locations"]

@@ -18,6 +18,10 @@ module BlacklightHelper
 	  return "ltr"
 	end 
 
+  def json_field? field
+    field[:hash]
+  end
+
   # This is needed because white space tokenizes regardless of filters
   def left_anchor_strip solr_parameters, user_parameters 
     if solr_parameters[:q]
@@ -50,6 +54,10 @@ module BlacklightHelper
       end  
 
     end
+  end  
+
+  def browse_related_name_hash name
+    link_to(name, "/?f[author_s][]=#{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", style: "font-size:10px; font-style:italic")
   end  
 
   # def altscript! values

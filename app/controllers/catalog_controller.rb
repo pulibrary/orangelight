@@ -85,13 +85,21 @@ class CatalogController < ApplicationController
     config.add_facet_field 'subject_era_facet', :label => 'Era', :limit => true 
     #config.add_facet_field 'pub_created_s', :label => 'Published/Created'
     config.add_facet_field 'author_s', :label => 'Author', :limit => true, show: false
-    config.add_facet_field 'lc_rest_facet', :label => 'Full Call number code', :limit => 25, show: false, sort: 'index'        
+    config.add_facet_field 'lc_rest_facet', :label => 'Full call number code', :limit => 25, show: false, sort: 'index'        
     config.add_facet_field 'instrumentation_facet', :label => 'Instrumentation', :limit => true
     config.add_facet_field 'location', :label => 'Location', :limit => true
-    config.add_facet_field 'call_number_browse_s', label: 'Call Number', show: false
+    config.add_facet_field 'call_number_browse_s', label: 'Call number', show: false
 
+    config.add_facet_field 'sudoc_facet', :label => 'SuDoc call number code', :limit => 25, show: false, sort: 'index'  
+    config.add_facet_field 'sudoc_group_facet', :label => 'SuDoc call number group', :limit => 25, show: false, sort: 'index'      
 
-    config.add_facet_field 'classification_pivot_field', :label => 'Classification', :pivot => ['lc_1letter_facet', 'lc_rest_facet', 'author_s'] 
+    config.add_facet_field 'call_number_scheme_facet', :label => 'Call number scheme', :limit => 25, show: false, sort: 'index'  
+    config.add_facet_field 'call_number_group_facet', :label => 'Call number group', :limit => 25, show: false, sort: 'index'  
+    config.add_facet_field 'call_number_full_facet', :label => 'Full call number', :limit => 25, show: false, sort: 'index'      
+
+    config.add_facet_field 'classification_pivot_field', :label => 'Classification', :pivot => ['lc_1letter_facet', 'lc_rest_facet'] 
+    config.add_facet_field 'sudoc_pivot_field', :label => 'SuDocs', :pivot => ['sudoc_group_facet', 'sudoc_facet']    
+    #config.add_facet_field 'classifications_pivot_field', :label => 'Classifications', :pivot => ['call_number_scheme_facet', 'call_number_group_facet', 'call_number_full_facet']
     #config.add_facet_field 'subject_pivot_field', :label => 'Topic', :pivot => ['subject_topic1_facet', 'subject_topic2_facet', 'subject_topicfull_facet']
 
 
@@ -134,7 +142,7 @@ class CatalogController < ApplicationController
     #config.add_show_field 'author_display', :label => 'Author'#, :helper_method => :altscript
     #config.add_show_field 'author_vern_display', :label => 'Author'
     config.add_show_field 'author_display', :label => 'Author', :helper_method => :browse_name
-    config.add_show_field 'format', :label => 'Format'
+    config.add_show_field 'format', :label => 'Formats'
     config.add_show_field 'url_fulltext_display', :label => 'URL'
     config.add_show_field 'url_suppl_display', :label => 'More Information'
     config.add_show_field 'language_facet', :label => 'Language'
@@ -245,7 +253,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'cumulative_index_finding_aid_display', :label => 'Cumulative index finding aid'
     config.add_show_field 'subject_display', :label => 'Subject(s)', helper_method: :subjectify
     config.add_show_field 'form_genre_display', :label => 'Form genre'
-    config.add_show_field 'related_name_display', :label => 'Related name(s)', :helper_method => :browse_related_name
+    #config.add_show_field 'related_name_display', :label => 'Related name(s)', :helper_method => :browse_related_name
     config.add_show_field 'related_works_display', :label => 'Related work(s)'
     config.add_show_field 'contains_display', :label => 'Contains'    
     config.add_show_field 'place_name_display', :label => 'Place name(s)'
@@ -260,12 +268,14 @@ class CatalogController < ApplicationController
     config.add_show_field 'standard_no_display', :label => 'Standard no.'
     config.add_show_field 'original_language_display', :label => 'Original language'
     config.add_show_field 'call_number_display', :label => 'Holding info', helper_method: :holding_block
+    #config.add_show_field 'holdings_1display', :label => 'Holding info'#, helper_method: :show_holdings
     config.add_show_field 'shelving_title_display', :label => 'Shelving title'
     config.add_show_field 'location_has_display', :label => 'Location has'
     config.add_show_field 'location_has_current_display', :label => 'Location has (current)'
     config.add_show_field 'supplements_display', :label => 'Supplements'
     config.add_show_field 'indexes_display', :label => 'Indexes'
     config.add_show_field 'location_notes_display', :label => 'Location notes'
+    config.add_show_field 'related_name_json_1display', hash: true
 # # 'Other version(s)_display'
 # # 'Contained in_display'
 # # 'Related record(s)_display'
