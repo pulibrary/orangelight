@@ -1,0 +1,9 @@
+
+<% JSON.parse(document[field]).each do |label, hash_vals| %>
+<dt><%= label %>:</dt>
+<dd><ul>
+  <% hash_vals.each do |json_val| %>
+    <li class="blacklight-<%= label.parameterize %>" dir="<%= getdir(json_val) %>"><%= browse_related_name_hash(json_val) %></li>
+    <% end %>
+</ul></dd>
+<% end %>

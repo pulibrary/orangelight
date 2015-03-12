@@ -597,6 +597,7 @@
    <dynamicField name="random_*" type="random" />
 
    <dynamicField name="*_display" type="string" indexed="false" stored="true" multiValued="true" />
+   <dynamicField name="*_1display" type="string" indexed="false" stored="true" multiValued="false" />   
    <dynamicField name="*_facet" type="string" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*_sort" type="alphaOnlySort" indexed="true" stored="false" />
    <dynamicField name="*_unstem_search" type="text_general" indexed="true" stored="false" multiValued="true" />

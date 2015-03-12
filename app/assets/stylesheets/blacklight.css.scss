@@ -90,3 +90,14 @@ ul
     padding-left: 0px;
     word-break: none;
 }
+
+.dl-nested dd {
+  margin-left: 50px;
+  clear: left;
+}
+
+.dl-nested dt {
+  clear: left;
+  text-align: left;
+
+}
