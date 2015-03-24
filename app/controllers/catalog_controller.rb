@@ -9,7 +9,7 @@ class CatalogController < ApplicationController
 
 
 
-  self.solr_search_params_logic += [:left_anchor_strip, :redirect_browse]  
+  self.search_params_logic += [:left_anchor_strip, :redirect_browse]  
 
 
   configure_blacklight do |config|
