@@ -78,10 +78,10 @@ unless ENV['STEP'] == '1'
 		  end    		
 		end
 
-		sh "#{sql_command} \"\\copy orangelight_names(sort,count,label,dir) from '/tmp/authors.csv' CSV;\""
-		sh "#{sql_command} \"\\copy (Select sort,count,label,dir from orangelight_names order by sort) To '/tmp/authors.sorted' With CSV;\""
-		sh "#{sql_command} \"TRUNCATE TABLE orangelight_names RESTART IDENTITY;\""
-		sh "#{sql_command} \"\\copy orangelight_names(sort,count,label,dir) from '/tmp/authors.sorted' CSV;\""
+		system(%Q(#{sql_command} "\\copy orangelight_names(sort,count,label,dir) from '/tmp/authors.csv' CSV;"))
+		system(%Q(#{sql_command} \"\\copy (Select sort,count,label,dir from orangelight_names order by sort) To '/tmp/authors.sorted' With CSV;"))
+		system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_names RESTART IDENTITY;"))
+		system(%Q(#{sql_command} "\\copy orangelight_names(sort,count,label,dir) from '/tmp/authors.sorted' CSV;"))
 
 
 	end  #STEP 2
@@ -121,10 +121,10 @@ unless ENV['STEP'] == '1'
 	    end    
 		end		
 
-		sh "#{sql_command} \"\\copy orangelight_subjects(sort,count,label,dir) from '/tmp/subjects.csv' CSV;\""
-		sh "#{sql_command} \"\\copy (Select sort,count,label,dir from orangelight_subjects order by sort) To '/tmp/subjects.sorted' With CSV;\""
-		sh "#{sql_command} \"TRUNCATE TABLE orangelight_subjects RESTART IDENTITY;\""
-		sh "#{sql_command} \"\\copy orangelight_subjects(sort,count,label,dir) from '/tmp/subjects.sorted' CSV;\""		
+		system(%Q(#{sql_command} "\\copy orangelight_subjects(sort,count,label,dir) from '/tmp/subjects.csv' CSV;"))
+		system(%Q(#{sql_command} "\\copy (Select sort,count,label,dir from orangelight_subjects order by sort) To '/tmp/subjects.sorted' With CSV;"))
+		system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_subjects RESTART IDENTITY;"))
+		system(%Q(#{sql_command} "\\copy orangelight_subjects(sort,count,label,dir) from '/tmp/subjects.sorted' CSV;"))
 
 		# query = "&facet=true&fl=id&facet.field=subject_vern_facet&facet.sort=asc&facet.limit=-1"
 		# req = eval(Net::HTTP.get(host, path ="#{core}/select?q=*%3A*&wt=ruby&indent=true#{query}#{suffix}", port=prt).force_encoding("UTF-8"))
@@ -211,10 +211,10 @@ CSV.open("/tmp/call_numbers.csv", "wb") do |csv|
   end
 end
 
-sh "#{sql_command} \"\\copy orangelight_call_numbers(sort,label,dir,scheme,title,author,date,bibid) from '/tmp/call_numbers.csv' CSV;\""
-sh "#{sql_command} \"\\copy (Select sort,label,dir,scheme,title,author,date,bibid from orangelight_call_numbers order by sort) To '/tmp/call_numbers.sorted' With CSV;\""
-sh "#{sql_command} \"TRUNCATE TABLE orangelight_call_numbers RESTART IDENTITY;\""
-sh "#{sql_command} \"\\copy orangelight_call_numbers(sort,label,dir,scheme,title,author,date,bibid) from '/tmp/call_numbers.sorted' CSV;\""
+system(%Q(#{sql_command} "\\copy orangelight_call_numbers(sort,label,dir,scheme,title,author,date,bibid) from '/tmp/call_numbers.csv' CSV;"))
+system(%Q(#{sql_command} "\\copy (Select sort,label,dir,scheme,title,author,date,bibid from orangelight_call_numbers order by sort) To '/tmp/call_numbers.sorted' With CSV;"))
+system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_call_numbers RESTART IDENTITY;"))
+system(%Q(#{sql_command} "\\copy orangelight_call_numbers(sort,label,dir,scheme,title,author,date,bibid) from '/tmp/call_numbers.sorted' CSV;"))
 
 # call_number_text = ''
 # req["facet_counts"]["facet_fields"]["call_number_s"].each_with_index do |call_number, i|
