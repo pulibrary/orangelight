@@ -34,22 +34,22 @@ ActiveRecord::Schema.define(version: 20141024160515) do
     t.string "scheme"
     t.string "sort"
     t.text   "title"
-    t.string "author"
+    t.text   "author"
     t.text   "date"
     t.string "bibid"
   end
 
   create_table "orangelight_names", force: true do |t|
-    t.string  "label"
+    t.text    "label"
     t.integer "count"
-    t.string  "sort"
+    t.text    "sort"
     t.string  "dir"
   end
 
   create_table "orangelight_subjects", force: true do |t|
-    t.string  "label"
+    t.text    "label"
     t.integer "count"
-    t.string  "sort"
+    t.text    "sort"
     t.string  "dir"
   end
 

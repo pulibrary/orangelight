@@ -23,4 +23,5 @@ test:
   pool: 5
   database: orangelight_test
   username: postgres
+  host: localhost
 

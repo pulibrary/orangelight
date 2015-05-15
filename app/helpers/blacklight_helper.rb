@@ -44,11 +44,11 @@ module BlacklightHelper
 
   def redirect_browse solr_parameters, user_parameters 
     if user_parameters[:search_field] && user_parameters[:controller] != "advanced"
-      if user_parameters[:search_field] == "browse_subject"
+      if user_parameters[:search_field] == "browse_subject" && !params[:id]
         redirect_to "/browse/subjects?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
-      elsif user_parameters[:search_field] == "browse_cn"
+      elsif user_parameters[:search_field] == "browse_cn" && !params[:id]
         redirect_to "/browse/call_numbers?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
-      elsif user_parameters[:search_field] == "browse_name"
+      elsif user_parameters[:search_field] == "browse_name" && !params[:id]
         redirect_to "/browse/names?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
       else
       end  
