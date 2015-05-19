@@ -9,7 +9,7 @@
 Versions:
 
 * Ruby: 2.1.1
-* Blacklight: 5.10.3
+* Blacklight: 5.10.2
 
 To install run `bundle install`
 
