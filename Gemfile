@@ -36,6 +36,10 @@ gem 'spring',        group: :development
 # Capistrano
 gem 'capistrano', '~> 3.2.0'
 
+gem 'faraday'
+
+gem 'yajl-ruby', require: 'yajl'
+
 
 gem "devise"
 gem "devise-guests", "~> 0.3"
