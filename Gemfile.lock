@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/pulibrary/lcsort.git
-  revision: c5602b7665b981b494d09594cca0f0c7cac851a1
+  revision: eb0dcb90ce5f17d6d3ca802d57e994c9a4d6125a
   specs:
-    lcsort (0.1.1)
+    lcsort (0.1.3)
 
 GIT
   remote: git://github.com/pulibrary/stringex.git
@@ -115,6 +115,8 @@ GEM
     docile (1.1.5)
     erubis (2.7.0)
     execjs (2.4.0)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.6)
     hike (1.2.3)
     i18n (0.7.0)
@@ -145,6 +147,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.11.0)
+    multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -256,6 +259,7 @@ GEM
       rack (>= 1.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
+    yajl-ruby (1.2.1)
 
 PLATFORMS
   ruby
@@ -272,6 +276,7 @@ DEPENDENCIES
   coveralls
   devise
   devise-guests (~> 0.3)
+  faraday
   jbuilder (~> 2.0)
   jettywrapper (~> 1.7)
   jquery-rails
@@ -286,3 +291,4 @@ DEPENDENCIES
   therubyracer
   turbolinks
   uglifier (>= 1.3.0)
+  yajl-ruby
