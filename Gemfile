@@ -43,6 +43,7 @@ gem 'yajl-ruby', require: 'yajl'
 
 gem "devise"
 gem "devise-guests", "~> 0.3"
+gem "omniauth-cas"
 gem "blacklight-marc", "~> 5.0"
 gem "jettywrapper", "~> 1.7"
 
