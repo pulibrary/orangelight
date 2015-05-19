@@ -1,3 +1,6 @@
+require 'rsolr'
+require 'json'
+
 namespace :pulsearch do
   desc "Copies solr config files to Jetty wrapper"
   task solr2jetty: :environment do
@@ -7,22 +10,63 @@ namespace :pulsearch do
 		cp Rails.root.join('solr_conf', 'core.properties'), Rails.root.join('jetty','solr', 'blacklight-core')
   end
   
-  desc "Drops and readds tables before seeding"
-  task setstep: :environment do
-  	ENV['STEP'] = ENV['STEP'] ? ENV['STEP'] : '3'
-  	Rake::Task["db:migrate:redo"].invoke
-  end
-
-
   desc "Reset jetty"
-  task rejetty: :environment do
+  task :rejetty do
     Rake::Task["jetty:stop"].invoke
     Rake::Task["jetty:clean"].invoke
     Rake::Task["jetty:start"].invoke        
   end
-  # desc "Posts fixtures to Solr"
-  # task solradd: :environment do
 
-  # end
+  desc "Posts fixtures to Solr"
+  task :index do
+    solr = RSolr.connect :url => Blacklight.connection_config[:url]
+    docs = JSON.parse(File.read('spec/fixtures/current_fixtures.json'))
+    solr.add docs
+    solr.update :data => '<commit/>'     
+  end
+
+  desc "Delete fixtures from Solr"
+  task :deindex do
+    solr = RSolr.connect :url => Blacklight.connection_config[:url]
+    solr.delete_by_query '*.*'
+    solr.update :data => '<commit/>'      
+  end
+
+  desc "Delete solr index then post fixtures to Solr"
+  task :reindex do
+    Rake::Task["pulsearch:deindex"].invoke
+    Rake::Task["pulsearch:index"].invoke    
+  end  
+
+end
+
+require './lib/orangelight/browse_lists'
+
+namespace :browse do
+  desc "Reset and populate names browse"
+  task :names do
+    sql_command, facet_request, conn = BrowseLists.get_connection
+    BrowseLists.browse_facet(sql_command, facet_request, conn, 'author_s', 'orangelight_names')
+  end
+
+  desc "Reset and populate subjects browse"
+  task :subjects do
+    sql_command, facet_request, conn = BrowseLists.get_connection
+    BrowseLists.browse_facet(sql_command, facet_request, conn, 'subject_facet', 'orangelight_subjects')    
+  end
+
+  desc "Reset and populate call numbers browse"
+  task :call_numbers do
+    sql_command, facet_request, conn = BrowseLists.get_connection
+    BrowseLists.browse_cn(sql_command, facet_request, conn, 'call_number_browse_s', 'orangelight_call_numbers') 
+  end
+
+  desc "Reset and populate all browse tables"
+  task :all do
+    sql_command, facet_request, conn = BrowseLists.get_connection
+    BrowseLists.browse_facet(sql_command, facet_request, conn, 'author_s', 'orangelight_names')
+    BrowseLists.browse_facet(sql_command, facet_request, conn, 'subject_facet', 'orangelight_subjects')
+    BrowseLists.browse_cn(sql_command, facet_request, conn, 'call_number_browse_s', 'orangelight_call_numbers')  
+  end
 
 end

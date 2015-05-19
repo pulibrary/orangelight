@@ -1,22 +1,27 @@
 
 module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior
-  RTL_RANGE = [0x590..0x8FF, 0xFB1D..0xFB44, 0xFB50..0xFDFF, 0xFE70..0xFEFF, 0x10800..0x10F00]
-  CHECK_INDEXES = [0,5,11]
+  require './lib/orangelight/string_functions'
+ #  RTL_RANGE = [0x590..0x8FF, 0xFB1D..0xFB44, 0xFB50..0xFDFF, 0xFE70..0xFEFF, 0x10800..0x10F00]
+ #  CHECK_INDEXES = [0,5,11]
 
 
-	def getdir(str, opts={})
-	  opts.fetch(:check_indexes, CHECK_INDEXES).each do |i|
-	    RTL_RANGE.each do |subrange|
-	      if str[i]
-	      	if subrange.cover?(str[i].unpack('U*0')[0])
-	          return "rtl"
-	        end
-	      end
-	    end
-	  end
-	  return "ltr"
-	end 
+	# def getdir(str, opts={})
+	#   opts.fetch(:check_indexes, CHECK_INDEXES).each do |i|
+	#     RTL_RANGE.each do |subrange|
+	#       if str[i]
+	#       	if subrange.cover?(str[i].unpack('U*0')[0])
+	#           return "rtl"
+	#         end
+	#       end
+	#     end
+	#   end
+	#   return "ltr"
+	# end 
+
+  def getdir(str, opts={})
+    StringFunctions.getdir(str,opts)
+  end
 
   def json_field? field
     field[:hash]
