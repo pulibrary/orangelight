@@ -20,27 +20,13 @@
 require 'coveralls'
 Coveralls.wear!('rails')
 
+
+
 RSpec.configure do |config|
   config.before :all do
-    fixture=File.read(File.expand_path('../fixtures/current_fixtures.json',__FILE__))     
-    if ENV['TRAVIS'] == 'true' 
-      h = Net::HTTP.new('localhost', 8888)    
-      req = Net::HTTP::Post.new("/solr/blacklight-core/update?commit=true")   
-      req.body = fixture
-      req.set_content_type("application/json", {'charset' => 'utf-8'})
-      h.request(req)      
-    else 
-      h = Net::HTTP.new('localhost', 8983)
-      del = Net::HTTP::Post.new("/solr/blacklight-core/update?commit=true")
-      del.body = "{\"delete\": { \"query\":\"*.*\" }}"
-      del.set_content_type("application/json", {'charset' => 'utf-8'})      
-      h.request(del)
-      req = Net::HTTP::Post.new("/solr/blacklight-core/update?commit=true")   
-      req.body = fixture
-      req.set_content_type("application/json", {'charset' => 'utf-8'})
-      h.request(req)            
-    end
+    system 'rake pulsearch:reindex'
   end
+
 
   #config.infer_spec_type_from_file_location!
   

@@ -9,7 +9,8 @@
 Versions:
 
 * Ruby: 2.1.1
-* Blacklight: 5.10.2
+* Blacklight: 5.13.1
+* blacklight_advanced_search: 5.1.2
 
 To install run `bundle install`
 
@@ -29,3 +30,11 @@ cp config/database.yml.tmpl config/database.yml
 ```
 Production credentials: In production you'll need to add production 
 credentials to database.yml
+
+### Load test data
+```bash
+rake jetty:clean
+rake jetty:start
+rake pulsearch:index
+rake db:seed
+```

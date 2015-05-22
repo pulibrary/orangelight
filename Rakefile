@@ -16,7 +16,7 @@ Rake::Task["jetty:clean"].enhance do
   Rake::Task["pulsearch:solr2jetty"].invoke
 end
 
-Rake::Task["db:seed"].enhance ["pulsearch:setstep"]
+
 
 task :ci do
 

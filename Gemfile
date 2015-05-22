@@ -10,7 +10,7 @@ gem 'blacklight', ">= 5.3.0"
 # slider limit support
 gem "blacklight_range_limit"
 # advanced search functionality
-gem "blacklight_advanced_search"
+gem "blacklight_advanced_search", '5.1.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 
@@ -39,7 +39,6 @@ gem 'capistrano', '~> 3.2.0'
 gem 'faraday'
 
 gem 'yajl-ruby', require: 'yajl'
-
 
 gem "devise"
 gem "devise-guests", "~> 0.3"
