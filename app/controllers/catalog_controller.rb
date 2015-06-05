@@ -4,7 +4,7 @@ class CatalogController < ApplicationController
   include Blacklight::Marc::Catalog
   include Blacklight::Catalog
   include BlacklightHelper
-  include BlacklightAdvancedSearch::ParseBasicQ  # adds AND/OR/NOT search term functionality  
+  #include BlacklightAdvancedSearch::ParseBasicQ  # adds AND/OR/NOT search term functionality  
 
 
 
