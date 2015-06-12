@@ -19,6 +19,8 @@
 //
 // Required by Blacklight
 //= require blacklight/blacklight
+//
+//= require blacklight_folders
 //= require_tree .
 
 
