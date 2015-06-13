@@ -7,6 +7,8 @@ gem 'rails', '4.1.4'
 gem 'pg'
 # Blacklight
 gem 'blacklight', ">= 5.3.0"
+
+gem 'blacklight_folders'
 # slider limit support
 gem "blacklight_range_limit"
 # advanced search functionality
