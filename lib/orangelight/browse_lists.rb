@@ -40,11 +40,6 @@ module BrowseLists
           end
         end           
       end 
-      system(%Q(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
-      system(%Q(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '/tmp/#{table_name}.csv' CSV;"))
-      system(%Q(#{sql_command} \"\\copy (Select sort,count,label,dir from #{table_name} order by sort) To '/tmp/#{table_name}.sorted' With CSV;"))
-      system(%Q(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
-      system(%Q(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '/tmp/#{table_name}.sorted' CSV;"))
     end  
 
     def browse_cn(sql_command, facet_request, conn, facet_field, table_name)
@@ -90,11 +85,23 @@ module BrowseLists
           end        
         end
       end
+    end
+
+    def load_facet(sql_command, facet_request, conn, facet_field, table_name)
+      system(%Q(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
+      system(%Q(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '/tmp/#{table_name}.csv' CSV;"))
+      system(%Q(#{sql_command} \"\\copy (Select sort,count,label,dir from #{table_name} order by sort) To '/tmp/#{table_name}.sorted' With CSV;"))
+      system(%Q(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
+      system(%Q(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '/tmp/#{table_name}.sorted' CSV;"))
+    end
+
+    def load_cn(sql_command, facet_request, conn, facet_field, table_name)
       system(%Q(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
       system(%Q(#{sql_command} "\\copy #{table_name}(sort,label,dir,scheme,title,author,date,bibid) from '/tmp/#{facet_field}.csv' CSV;"))
       system(%Q(#{sql_command} "\\copy (Select sort,label,dir,scheme,title,author,date,bibid from #{table_name} order by sort) To '/tmp/#{facet_field}.sorted' With CSV;"))
       system(%Q(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
-      system(%Q(#{sql_command} "\\copy #{table_name}(sort,label,dir,scheme,title,author,date,bibid) from '/tmp/#{facet_field}.sorted' CSV;"))
+      system(%Q(#{sql_command} "\\copy #{table_name}(sort,label,dir,scheme,title,author,date,bibid) from '/tmp/#{facet_field}.sorted' CSV;"))    
     end
+
   end
 end
