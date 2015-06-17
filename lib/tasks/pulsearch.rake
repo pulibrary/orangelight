@@ -43,30 +43,56 @@ end
 require './lib/orangelight/browse_lists'
 
 namespace :browse do
-  desc "Reset and populate names browse"
+  desc "Pull data for names browse"
   task :names do
     sql_command, facet_request, conn = BrowseLists.get_connection
     BrowseLists.browse_facet(sql_command, facet_request, conn, 'author_s', 'orangelight_names')
   end
 
-  desc "Reset and populate subjects browse"
+  desc "Pull data for subjects browse"
   task :subjects do
     sql_command, facet_request, conn = BrowseLists.get_connection
-    BrowseLists.browse_facet(sql_command, facet_request, conn, 'subject_facet', 'orangelight_subjects')    
+    BrowseLists.browse_facet(sql_command, facet_request, conn, 'subject_facet', 'orangelight_subjects')
   end
 
-  desc "Reset and populate call numbers browse"
+  desc "Pull data for call numbers browse"
   task :call_numbers do
     sql_command, facet_request, conn = BrowseLists.get_connection
-    BrowseLists.browse_cn(sql_command, facet_request, conn, 'call_number_browse_s', 'orangelight_call_numbers') 
+    BrowseLists.browse_cn(sql_command, facet_request, conn, 'call_number_browse_s', 'orangelight_call_numbers')
   end
 
-  desc "Reset and populate all browse tables"
+  desc "Pull data for names browse"
+  task :load_names do
+    sql_command, facet_request, conn = BrowseLists.get_connection
+    BrowseLists.load_facet(sql_command, facet_request, conn, 'author_s', 'orangelight_names')
+  end
+
+  desc "Pull data for subjects browse"
+  task :load_subjects do
+    sql_command, facet_request, conn = BrowseLists.get_connection
+    BrowseLists.load_facet(sql_command, facet_request, conn, 'subject_facet', 'orangelight_subjects')
+  end
+
+  desc "Sort and load call numbers"
+  task :load_call_numbers do
+    sql_command, facet_request, conn = BrowseLists.get_connection
+    BrowseLists.load_cn(sql_command, facet_request, conn, 'call_number_browse_s', 'orangelight_call_numbers')
+  end
+
+  desc "Pull data for all browse tables"
   task :all do
     sql_command, facet_request, conn = BrowseLists.get_connection
     BrowseLists.browse_facet(sql_command, facet_request, conn, 'author_s', 'orangelight_names')
     BrowseLists.browse_facet(sql_command, facet_request, conn, 'subject_facet', 'orangelight_subjects')
-    BrowseLists.browse_cn(sql_command, facet_request, conn, 'call_number_browse_s', 'orangelight_call_numbers')  
+    BrowseLists.browse_cn(sql_command, facet_request, conn, 'call_number_browse_s', 'orangelight_call_numbers')
+  end
+
+  desc "Sort and load data for all browse tables"
+  task :load_all do
+    sql_command, facet_request, conn = BrowseLists.get_connection
+    BrowseLists.load_facet(sql_command, facet_request, conn, 'author_s', 'orangelight_names')
+    BrowseLists.load_facet(sql_command, facet_request, conn, 'subject_facet', 'orangelight_subjects')
+    BrowseLists.load_cn(sql_command, facet_request, conn, 'call_number_browse_s', 'orangelight_call_numbers')
   end
 
 end
