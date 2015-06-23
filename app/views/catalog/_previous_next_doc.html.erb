@@ -1,0 +1,58 @@
+<% #Using the Bootstrap Pagination class  -%>
+<% #DEPRECATED - using id="previousNextDocument" as a selector is deprecated and will be removed in Blacklight 6.0 %>
+<div id='previousNextDocument' class='pagination-search-widgets'>
+ <%= link_back_to_catalog class: 'btn' %>
+  <% if @previous_document || @next_document %>
+    <div class="page_links">
+      <%= link_to_previous_document @previous_document %> |
+
+      <%= item_page_entry_info %> |
+
+      <%= link_to_next_document @next_document %>
+    </div>
+  <% end %>
+    <div class="pull-right search-widgets">
+      <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%= link_to "Cite", citation_catalog_path(:id => @document), {:id => 'citeLink', :data => {:ajax_modal => "trigger"}, :class => 'btn'} %>
+          </li>
+        <li class="dropdown">
+          <button class="btn" data-toggle="dropdown">Send to </button>
+          <ul class="dropdown-menu" role="menu">
+            <li class="sms">
+              <%= link_to "SMS", sms_catalog_path(:id => @document), {:id => 'smsLink', :data => {:ajax_modal => "trigger"}} %>
+            </li>
+            <li class="email">
+              <%= link_to "Email", email_catalog_path(:id => @document), {:id => 'emailLink', :data => {:ajax_modal => "trigger"}} %>
+            </li>
+            <li class="refworks">
+              <%= link_to "RefWorks", refworks_export_url({url: polymorphic_url(url_for_document(@document), format: :refworks_marc_txt, only_path: false)})  %>
+            </li>
+            <li class="endnote">
+              <%= link_to "EndNote", catalog_path(@document, :format => 'endnote') %>
+            </li>
+          </ul>
+        </li>
+        <li>
+        <%= render 'blacklight/folders/show/add_to_folder' %>
+          <!-- <%= render(:partial => 'catalog/bookmark_control', :locals => {:document=> @document}) %> -->
+        </li>
+        <li>
+          <% in_folders = Blacklight::Folders::Folder.for_user(current_or_guest_user).with_document(@document) %>
+
+            <% unless in_folders.empty? %>
+              <div class="folders">
+                  Contained in
+                  <ul>
+                    <% in_folders.each do |folder| %>
+                      <li> <%= link_to folder.name, blacklight_folders.folder_path(folder) %> </li>
+                    <% end %>
+                  </ul>
+            <% end %>
+
+        </li>
+
+      </ul>
+
+    </div>
+</div>
