@@ -29,3 +29,4 @@
 //= require custom_range_limit
 //= require 'blacklight_range_limit'
 
+//= require modernizr

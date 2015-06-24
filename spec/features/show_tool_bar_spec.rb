@@ -9,13 +9,13 @@ describe "Tools links"  do
         end
     end
 
-    ['Librarian View', 'Cite'].each do |link_text|
+    ['SMS', 'Email', 'Librarian View', 'Cite'].each do |link_text|
         it "#{link_text} appears for record view" do
             find_link(link_text)
         end
     end
 
-    ['SMS', 'Email', 'RefWorks', 'EndNote'].each do |link_text|
+    ['RefWorks', 'EndNote'].each do |link_text|
         it "provides #{link_text} export options in dropdown" do
             within "#previousNextDocument li.dropdown" do
                 find_link(link_text)

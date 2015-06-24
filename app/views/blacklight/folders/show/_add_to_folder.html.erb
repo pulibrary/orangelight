@@ -7,6 +7,7 @@
       <%= hidden_field_tag(:document_ids, @document.id) %>
 
       <div class="field">
+        <label for="folder_id" class="sr-only">Folder name</label>
         <%= f.select :id, options_for_select, prompt: t(:'.select.prompt') %>
         <%= f.submit 'Add to Folder', class: 'btn btn-primary btn-sm' %>
       </div>

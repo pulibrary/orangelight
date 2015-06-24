@@ -103,7 +103,7 @@ describe "blacklight tests" do
       related = r["contains_display"][0]
       related_vern = r["contains_display"][1]
       get "catalog/5906024"
-      expect(response.body.include?("<h3 dir=\"rtl\"> #{title_vern} </h3>")).to eq true
+      expect(response.body.include?("<h1 dir=\"rtl\"> #{title_vern} </h1>")).to eq true
       expect(response.body.include?("<li dir=\"ltr\"> #{related} </li>")).to eq true
       expect(response.body.include?("<li dir=\"rtl\"> #{related_vern} </li>")).to eq true
     end

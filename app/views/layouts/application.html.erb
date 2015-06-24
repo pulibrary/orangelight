@@ -4,8 +4,9 @@
   <title>Orangelight</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag :modernizr %>
   <%= csrf_meta_tags %>
-  <!--[if lte IE 8]><%= javascript_include_tag 'flot/excanvas.min' %><![endif]-->  
+  <!--[if lte IE 8]><%= javascript_include_tag 'flot/excanvas.min' %><![endif]-->
 </head>
 <body>
 <%= yield %>
