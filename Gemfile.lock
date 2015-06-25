@@ -161,6 +161,7 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.6.2)
     minitest (5.7.0)
+    modernizr-rails (2.7.1)
     multi_json (1.11.1)
     multipart-post (2.0.0)
     net-scp (1.2.1)
@@ -307,6 +308,7 @@ DEPENDENCIES
   jettywrapper (~> 1.7)
   jquery-rails
   lcsort!
+  modernizr-rails
   omniauth-cas
   pg
   rails (= 4.1.4)

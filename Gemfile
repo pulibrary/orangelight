@@ -15,6 +15,8 @@ gem "blacklight_range_limit"
 gem "blacklight_advanced_search", '5.1.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+# Modernizr.js library
+gem 'modernizr-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -65,5 +67,5 @@ end
 
 #group :test, :development do
 #	gem "jettywrapper", "~> 1.7"
-#	gem 'rspec-rails', '~> 3.0.0'	
+#	gem 'rspec-rails', '~> 3.0.0'
 #end
