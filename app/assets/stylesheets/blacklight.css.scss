@@ -7,14 +7,14 @@
 #header-navbar {
   .navbar-brand {  /* The main logo image for the Blacklight instance */
   	width: 150px;
-    height: 50px;
-	  background:transparent image_url('pul/logo.png') no-repeat top left;
+    height: 60px;
+	  background:transparent image_url('pul/catalog.png') no-repeat top left;
 	  display: inline-block;
 	  text-indent: 100%;
 	  white-space: nowrap;
 	  overflow: hidden;
 	  padding-right:0;
-	  margin-right:20px;
+	  margin: 10px 10px 0;
 	  padding-left: 0;
   }
 }
@@ -44,16 +44,16 @@ rtl {
   float:right;
 }
 
-.dl-horizontal dt 
+.dl-horizontal dt
 {
   overflow:visible;
   width: 180px !important;
-  margin-right: 10px;  
+  margin-right: 10px;
 }
 
-.dl-horizontal dd 
+.dl-horizontal dd
 {
-  margin-left: 190px;  
+  margin-left: 190px;
 }
 
 ul
@@ -100,4 +100,8 @@ ul
   clear: left;
   text-align: left;
 
+}
+
+.facets-heading {
+  font-size: 18px;
 }
