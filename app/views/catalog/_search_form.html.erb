@@ -20,7 +20,8 @@
         </button>
         </span>
       </div>
+      <span class="search-options">
+        <%= link_to 'Guided Search', guided_path(params), :class=>'guided_search'%> |
+        <%= link_to 'Advanced Search', advanced_search_path(params), :class=>'advanced_search'%>
+      </span>
   <% end %>
-
-<%= link_to 'Guided Search', guided_path(params), :class=>'advanced_search'%> |
-<%= link_to 'Advanced Search', advanced_search_path(params), :class=>'advanced_search'%>
