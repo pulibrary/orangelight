@@ -4,21 +4,6 @@
 @import 'blacklight/blacklight';
 @import 'blacklight_folders/blacklight_folders';@import 'blacklight/blacklight_base';
 
-#header-navbar {
-  .navbar-brand {  /* The main logo image for the Blacklight instance */
-  	width: 150px;
-    height: 60px;
-	  background:transparent image_url('pul/catalog.png') no-repeat top left;
-	  display: inline-block;
-	  text-indent: 100%;
-	  white-space: nowrap;
-	  overflow: hidden;
-	  padding-right:0;
-	  margin: 10px 10px 0;
-	  padding-left: 0;
-  }
-}
-
 .orange {
   display:inline;
   color:#e87511;
@@ -62,6 +47,10 @@ ul
   padding: 0;
 }
 
+.search-options
+{
+  padding: 0px 5px;
+}
 
 
 .browse
