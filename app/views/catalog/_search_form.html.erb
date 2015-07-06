@@ -15,13 +15,17 @@
 
       <span class="input-group-btn">
         <button type="submit" class="btn btn-primary search-btn" id="search">
-          <span class="submit-search-text"><%=t('blacklight.search.form.submit')%></span>
+          <span class="submit-search-text sr-only"><%=t('blacklight.search.form.submit')%></span>
           <span class="glyphicon glyphicon-search"></span>
         </button>
         </span>
       </div>
-      <span class="search-options">
-        <%= link_to 'Guided Search', guided_path(params), :class=>'guided_search'%> |
+      <ul class="search-options pull-right">
+      <li>
+        <%= link_to 'Guided Search', guided_path(params), :class=>'guided_search'%>
+      </li>
+      <li>
         <%= link_to 'Advanced Search', advanced_search_path(params), :class=>'advanced_search'%>
+      </li>
       </span>
   <% end %>

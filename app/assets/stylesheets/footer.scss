@@ -1,3 +1,5 @@
+@import 'typography.scss';
+
 body {
     background: #f5f4f1;
 }
@@ -16,5 +18,79 @@ footer {
   margin-bottom: 0.75em;
   font-weight: bold;
   color: #89440a;
+  font-family: $font-serif;
+  a {
+    color: #89440a;
     }
+  }
+}
+
+footer a {
+  color: black;
+}
+
+.l-region--footer .leaf a {
+  line-height: 1.75em;
+}
+
+.l-region--footer address, .l-region--footer .footer--copyright, .l-region--footer li a {
+  color: #808489;
+  font-size: 0.9em;
+}
+
+.svg .facebook-logo:before, .svg .twitter-logo:before, .svg .govdocs-logo:before, .svg .friends-logo:before, .svg .pu-logo:before {
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.svg .facebook-logo, .svg .twitter-logo, .svg .govdocs-logo, .svg .friends-logo, .svg .pu-logo {
+  background-size: contain;
+  display: inline-block;
+  line-height: 11px;
+  height: 24px;
+}
+
+.svg .facebook-logo img, .svg .twitter-logo img, .svg .govdocs-logo img, .svg .friends-logo img, .svg .pu-logo img {
+  display: none;
+}
+
+.svg .facebook-logo {
+  background-image: url(facebook.svg);
+  width: 24px;
+  margin: 0 0.2em 0.75em;
+}
+
+.svg .twitter-logo {
+  background-image: url(twitter.svg);
+  width: 24px;
+  margin: 0 0.2em 0.75em;
+}
+
+.svg .govdocs-logo {
+  background-image: url(govdocs.svg);
+  width: 27px;
+  margin: 0 0.2em 0.75em;
+}
+
+.svg .friends-logo {
+  background-image: url(friends.svg);
+  width: 91px;
+  margin: 0 0.2em 0.75em;
+}
+
+.svg .pu-logo {
+  background-image: url(pu.svg);
+  width: 142px;
+  height: 40px;
+  margin: 0.5em 0 0;
+}
+
+address {
+  margin-bottom: 0;
+}
+
+.l-region--footer .footer--copyright {
+  margin-top: 0.5em;
 }
