@@ -1,14 +1,14 @@
 <header role="banner">
   <div class="l-branding__pul">
     <div class="container">
-      <a href="http://library.princeton.edu" title="Princeton University Library" rel="home" class="logo__pul">
-        <%= image_tag("library_full_logo.svg", class: "logo-svg") %>
-        <%= image_tag("library_full_logo.png", class: "logo-no-svg") %>
-      </a>
+      <%= link_to root_path, rel: 'home', title: 'Princeton University Library', class: 'logo__pul' do %>
+         <%= image_tag("library_full_logo.svg", class: "logo-svg") %>
+         <%= image_tag("library_full_logo.png", class: "logo-no-svg") %>
+      <% end %>
       <div class="pull-right menu--level-1">
         <ul>
-          <li><a href="#">Library Website</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="http://library.princeton.edu">Library Website</a></li>
+          <li><a href="http://library.princeton.edu/help/contact-us">Contact Us</a></li>
         </ul>
       </div>
     </div>
