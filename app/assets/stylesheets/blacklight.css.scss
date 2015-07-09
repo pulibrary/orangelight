@@ -3,6 +3,7 @@
 
 @import 'blacklight/blacklight';
 @import 'blacklight_folders/blacklight_folders';@import 'blacklight/blacklight_base';
+@import 'typography';
 
 .orange {
   display:inline;
@@ -93,4 +94,16 @@ ul
 
 .facets-heading {
   font-size: 18px;
+}
+
+body {
+    font-family: $font-sans;
+}
+
+main {
+  padding-top: 1em;
+}
+
+.welcome-message {
+  padding-top: 3em;
 }

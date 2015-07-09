@@ -2,3 +2,7 @@ en:
   blacklight:
     application_name: 'Orangelight'
     welcome: 'Welcome!'
+
+    header_links:
+      login: 'My Account'
+      search_history: 'Search History'
