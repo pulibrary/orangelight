@@ -57,31 +57,31 @@ footer a {
 }
 
 .svg .facebook-logo {
-  background-image: url(facebook.svg);
+  background-image: image-url('facebook.svg');
   width: 24px;
   margin: 0 0.2em 0.75em;
 }
 
 .svg .twitter-logo {
-  background-image: url(twitter.svg);
+  background-image: image-url('twitter.svg');
   width: 24px;
   margin: 0 0.2em 0.75em;
 }
 
 .svg .govdocs-logo {
-  background-image: url(govdocs.svg);
+  background-image: image-url('govdocs.svg');
   width: 27px;
   margin: 0 0.2em 0.75em;
 }
 
 .svg .friends-logo {
-  background-image: url(friends.svg);
+  background-image: image-url('friends.svg');
   width: 91px;
   margin: 0 0.2em 0.75em;
 }
 
 .svg .pu-logo {
-  background-image: url(pu.svg);
+  background-image: image-url('pu.svg');
   width: 142px;
   height: 40px;
   margin: 0.5em 0 0;
