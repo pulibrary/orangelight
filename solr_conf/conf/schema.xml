@@ -392,6 +392,25 @@
       </analyzer>
     </fieldType>
 
+
+    <!-- Based on Stanford's text_cjk field: https://github.com/sul-dlss/solrmarc-sw/blob/master/stanford-sw/solr/conf/schema.xml -->
+    <fieldtype name="text_cjk" class="solr.TextField" positionIncrementGap="10000" autoGeneratePhraseQueries="false">
+     <analyzer>
+        <!-- remove spaces among hangul and han chars if there is at least one hangul char -->
+        <!-- a korean char guaranteed at the start of the pattern:  pattern="(\p{Hangul}\p{Han}*)\s+(?=[\p{Hangul}\p{Han}])" -->
+        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}][\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}]*)\s+(?=[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])" replacement="$1"/>
+        <!-- a korean char guaranteed at the end of the pattern:    pattern="([\p{Hangul}\p{Han}])\s+(?=[\p{Han}\s]*\p{Hangul})" -->
+        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])\s+(?=[\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}\s]*[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}])" replacement="$1"/>
+        <tokenizer class="solr.ICUTokenizerFactory" />
+        <filter class="solr.CJKWidthFilterFactory"/>
+        <filter class="edu.stanford.lucene.analysis.CJKFoldingFilterFactory"/>
+        <filter class="solr.ICUTransformFilterFactory" id="Traditional-Simplified"/>
+        <filter class="solr.ICUTransformFilterFactory" id="Katakana-Hiragana"/>
+        <filter class="solr.ICUFoldingFilterFactory"/>   <!-- NFKC, case folding, diacritics removed -->
+        <filter class="solr.CJKBigramFilterFactory" han="true" hiragana="true" katakana="true" hangul="true" outputUnigrams="true" />
+      </analyzer>
+    </fieldtype>
+
     <!-- charFilter + WhitespaceTokenizer  -->
     <!--
     <fieldType name="text_char_norm" class="solr.TextField" positionIncrementGap="100" >
@@ -535,12 +554,9 @@
    <field name="title_t" type="text" indexed="true" stored="false" multiValued="true"/>
    
    <!-- these display fields are NOT multi-valued -->
-   <field name="marc_display" type="string" indexed="false" stored="true" multiValued="false"/>
-   <field name="title_display" type="string" indexed="false" stored="true" multiValued="true"/>
    <field name="title_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="subtitle_display" type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="subtitle_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
-   <field name="author_display" type="string" indexed="false" stored="true" multiValued="true"/>
    <field name="author_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
    
    <!-- these fields are also used for display, so they must be stored -->
@@ -576,6 +592,8 @@
    <dynamicField name="*_b"  type="boolean" indexed="true"  stored="true"/>
    <dynamicField name="*_f"  type="float"  indexed="true"  stored="true"/>
    <dynamicField name="*_d"  type="double" indexed="true"  stored="true"/>
+
+   <dynamicField name="cjk_*" type="text_cjk" stored="false" indexed="true" multiValued="true" />
 
    <!-- Type used to index the lat and lon components for the "location" FieldType -->
    <dynamicField name="*_coordinate"  type="tdouble" indexed="true"  stored="false"/>
@@ -701,12 +719,9 @@
    <copyField source="text" dest="text"/>
    
    <!-- these display fields are NOT multi-valued -->
-   <copyField source="marc_display" dest="text"/>
-   <copyField source="title_display" dest="text"/>
    <copyField source="title_vern_display" dest="text"/>
    <copyField source="subtitle_display" dest="text"/>
    <copyField source="subtitle_vern_display" dest="text"/>
-   <copyField source="author_display" dest="text"/>
    <copyField source="author_vern_display" dest="text"/>
    
    <!-- these fields are also used for display, so they must be stored -->
@@ -734,6 +749,7 @@
         EXAMPLE:  name="*_i" will match any field ending in _i (like myid_i, z_i)
         Longer patterns will be matched first.  if equal size patterns
         both match, the first appearing in the schema will be used.  -->
+   <copyField source="cjk_*" dest="text"/>
    <copyField source="*_i" dest="text"/>
    <copyField source="*_s" dest="text"/>
    <copyField source="*_l" dest="text"/>

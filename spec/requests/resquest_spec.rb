@@ -87,8 +87,8 @@ describe "blacklight tests" do
       get "/catalog.json?&search_field=all_fields&q=4705304"
       r = JSON.parse(response.body)["response"]["docs"].select{|d| d["id"] == "4705304"}[0]
       title_vern = r["title_vern_display"]
-      author = r["author_s"][0]
-      author_vern = r["author_s"][1]
+      author = r["author_display"][0]
+      author_vern = r["author_display"][1]
       doc_id = r["id"]
       get "/catalog?&search_field=all_fields&q=4705304"
       expect(response.body.include?("dir=\"rtl\" href=\"/catalog/#{doc_id}\" style=\"float: right;\">#{title_vern}</a>")).to eq true
