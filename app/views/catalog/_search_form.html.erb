@@ -7,6 +7,7 @@
       <span class="input-group-addon">
         <label for="search_field" class="sr-only"><%= t('blacklight.search.form.search_field.label') %></label>
         <%= select_tag(:search_field, options_for_select(search_bar_select, h(params[:search_field])), :title => t('blacklight.search.form.search_field.title'), :class=>"search_field") %>
+        <span class="caret"></span>
         <span class="sr-only"><%= t('blacklight.search.form.search_field.post_label') %></span>
         </span>
       <% end %>
@@ -20,12 +21,13 @@
         </button>
         </span>
       </div>
-      <ul class="search-options pull-right">
+      </span>
+
+  <% end %>
+  <ul class="search-options">
       <li>
         <%= link_to 'Guided Search', guided_path(params), :class=>'guided_search'%>
       </li>
       <li>
         <%= link_to 'Advanced Search', advanced_search_path(params), :class=>'advanced_search'%>
       </li>
-      </span>
-  <% end %>

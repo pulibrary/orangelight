@@ -9,22 +9,17 @@
         <ul>
           <li><a href="http://library.princeton.edu">Library Website</a></li>
           <li><a href="http://library.princeton.edu/help/contact-us">Contact Us</a></li>
+          <%= render :partial=>'/account' %>
         </ul>
       </div>
     </div>
   </div>
-
-  <div class="l-branding__catalog">
+  <div class="header__secondary">
     <div class="container">
-      <h1 class="pull-left"><a href="/">Catalog</a></h1>
-
-       <%= render :partial=>'/user_util_links' %>
-    </div>
-  </div>
-
-  <div id="search-navbar" class="navbar navbar-default navbar-static-top" role="search">
-    <div class="container">
-      <%= render_search_bar %>
+      <div id="search-navbar" class="col-md-8" role="search">
+        <%= render_search_bar %>
+      </div>
+      <%= render :partial=>'/user_util_links' %>
     </div>
   </div>
 </header>
