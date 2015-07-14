@@ -40,5 +40,9 @@ module StringFunctions
       end
       return "ltr"
     end 
+
+    def cn_normalize(str)
+      Lcsort.normalize(str) || str.upcase
+    end
   end
 end

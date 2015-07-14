@@ -1,4 +1,3 @@
-require 'lcsort'
 require 'csv'
 require 'faraday'
 require 'yajl/json_gem'
@@ -52,7 +51,7 @@ module BrowseLists
           if i.even?
             mcn = f
           else
-            sort_cn = Lcsort.normalize(mcn)
+            sort_cn = StringFunctions.cn_normalize(mcn)
             multi_cns[sort_cn] = f
             csv << [sort_cn, mcn, "ltr", "", "#{f} records for this call number", "", "", "?f[#{facet_field}][]=#{mcn}"]
           end
@@ -65,7 +64,7 @@ module BrowseLists
         req["response"]["docs"].each do |record|
           if record["#{facet_field}"]
             record["#{facet_field}"].each_with_index do |cn, i|
-              sort_cn = Lcsort.normalize(cn)                      
+              sort_cn = StringFunctions.cn_normalize(cn)
               unless multi_cns.has_key?(sort_cn)
 
                 bibid = record["id"]
