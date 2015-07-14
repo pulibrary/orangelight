@@ -70,6 +70,27 @@ module BlacklightHelper
     false
   end
 
+  def isbn_norm isbn
+   isbn[0][/[0-9]{10,13}/] if isbn
+  end
+
+  # google book covers
+  def doc_has_thumbnail? isbn
+    return false unless isbn
+    google = Faraday.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{isbn}").body
+    thumbnail_link = JSON.parse(google)
+    return false if thumbnail_link['items'].nil?
+    return false if thumbnail_link['items'][0]['volumeInfo'].nil?
+    !thumbnail_link['items'][0]['volumeInfo']['imageLinks'].nil?
+  end
+
+  def get_thumbnail isbn
+   google = Faraday.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{isbn}").body
+   thumbnail_link = JSON.parse(google)
+   thumbnail_link.to_s
+   thumbnail_link['items'][0]['volumeInfo']['imageLinks']['smallThumbnail']
+  end
+
   # def altscript! values
   #   values.each_with_index do |contents, i|
   #     if getdir(contents) == "rtl"
