@@ -37,7 +37,7 @@ class Orangelight::BrowsablesController < ApplicationController
     
     unless params[:q].nil?
       if @model == "call_numbers"
-        search_term = Lcsort.normalize(params[:q])
+        search_term = StringFunctions.cn_normalize(params[:q])
       else
         search_term = params[:q].normalize_em
       end

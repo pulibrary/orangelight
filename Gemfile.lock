@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/pulibrary/lcsort.git
-  revision: ffdf07a01704151fdaa5941a7c7d5627b0389df5
-  specs:
-    lcsort (0.1.3)
-
-GIT
   remote: git://github.com/pulibrary/stringex.git
   revision: 357f70511532a35b11a240e5ae06d02725cb8d0a
   tag: vpton.2.5.2.2
@@ -150,6 +144,7 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    lcsort (0.9.0)
     libv8 (3.16.14.7)
     logger (1.2.8)
     mail (2.5.4)
@@ -307,7 +302,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jettywrapper (~> 1.7)
   jquery-rails
-  lcsort!
+  lcsort (~> 0.9)
   modernizr-rails
   omniauth-cas
   pg

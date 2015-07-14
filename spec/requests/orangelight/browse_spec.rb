@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-RSpec.describe "Orangelight::Names", :type => :request do
+RSpec.describe "Orangelight Browsables", :type => :request do
 	before(:all) do
 		system "rake db:seed"	
 	end
@@ -47,6 +47,15 @@ RSpec.describe "Orangelight::Names", :type => :request do
     	get "/browse/subjects.json?start=-2"
     	r = JSON.parse(response.body)
     	expect(r[0]["id"]).to eq 1    	
+    end
+  end
+
+  describe "Browse Call Number Search" do
+    it "includes non LC call numbers in search" do
+      get '/browse/call_numbers.json?q=microfilm'
+      r = JSON.parse(response.body)
+      q_normalized = StringFunctions.cn_normalize('microfilm')
+      expect(r[3]["sort"]..r[4]["sort"]).to cover q_normalized
     end
   end
 
