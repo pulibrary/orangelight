@@ -248,6 +248,7 @@
         pub_created_display,
         title_display,
         title_vern_display,
+        isbn_display,
       </str>
 
       <str name="facet">true</str>
@@ -448,6 +449,7 @@
         pub_created_display,
         title_display,
         title_vern_display,
+        isbn_display,
       </str>
       
       <str name="facet">true</str>
