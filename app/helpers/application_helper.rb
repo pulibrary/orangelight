@@ -25,8 +25,8 @@ module ApplicationHelper
   end
 
   def locate_link location, bib
-    link_to("[Find it]", "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => "_blank", style: "font-size:10px; font-style:italic")
-  end  
+    link_to("[Find it]", "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => "_blank", class: "find-it")
+  end
 
 
   def holding_block args
@@ -36,7 +36,7 @@ module ApplicationHelper
       findit = locate_link(args[:document]['location_code_s'][i], args[:document]['id'])
       block += " #{findit}<br><br>"
       args[:document][args[:field]][i] = block.html_safe
-    end    
+    end
   end
 
   def holding_block_search args
@@ -44,12 +44,13 @@ module ApplicationHelper
       return "Multiple Holdings"
     else
       args[:document][args[:field]].each_with_index do |call_numb, i|
-        block = "Call Number: #{call_numb}<br>"
-        block += "Location: #{args[:document]['location'][i]}"
+        # block = "<dl class=holding-info><dt>Call Number:</dt> <dd>#{call_numb}</dd>"
+        # block += "<dt>Location:</dt> <dd>#{args[:document]['location'][i]}"
+        block = "#{call_numb} &raquo; #{args[:document]['location'][i]}"
         findit = locate_link(args[:document]['location_code_s'][i], args[:document]['id'])
-        block += " #{findit}<br><br>"
+        block += " #{findit}"
         args[:document][args[:field]][i] = block.html_safe
-      end    
+      end
     end
   end
 
@@ -71,13 +72,13 @@ module ApplicationHelper
       subjectaccum = ''
       spl_sub.each_with_index do |subsubject, j|
         spl_sub[j] = subjectaccum + subsubject
-        subjectaccum = spl_sub[j] + QUERYSEP 
+        subjectaccum = spl_sub[j] + QUERYSEP
         sub_array[i] << spl_sub[j]
       end
       all_subjects[i] = subject.split(QUERYSEP)
     end
     linked_subsubjects = ''
-    args[:document][args[:field]].each_with_index do |subject, i|    
+    args[:document][args[:field]].each_with_index do |subject, i|
       lnk = ''
       lnk_accum = ''
       full_sub = ''
@@ -88,8 +89,8 @@ module ApplicationHelper
         full_sub = sub_array[i][j]
       end
       lnk += '  '
-      lnk += link_to('[Browse]', "/browse/subjects?q=#{full_sub}", style: "font-size:10px; font-style:italic")
-      args[:document][args[:field]][i] = lnk.html_safe        
+      lnk += link_to('[Browse]', "/browse/subjects?q=#{full_sub}", class: "browse-subject")
+      args[:document][args[:field]][i] = lnk.html_safe
     end
 
 
@@ -97,7 +98,7 @@ module ApplicationHelper
 
   def browse_name args
     args[:document][args[:field]].each_with_index do |name, i|
-      newname = link_to(name, "/?f[author_s][]=#{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", style: "font-size:10px; font-style:italic")
+      newname = link_to(name, "/?f[author_s][]=#{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", class: "browse-name")
       args[:document][args[:field]][i] = newname.html_safe
     end
   end
@@ -106,7 +107,7 @@ module ApplicationHelper
     args[:document][args[:field]].each_with_index do |name, i|
       rel_term =  /^.*：/.match(name) ? /^.*：/.match(name)[0] : ''
       rel_name = name.gsub(/^.*：/,'')
-      newname = rel_term + link_to(rel_name, "/?f[author_s][]=#{rel_name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{rel_name}", style: "font-size:10px; font-style:italic")
+      newname = rel_term + link_to(rel_name, "/?f[author_s][]=#{rel_name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{rel_name}", class: "browse-related-name")
       args[:document][args[:field]][i] = newname.html_safe
     end
   end
@@ -114,7 +115,7 @@ module ApplicationHelper
 
 
   def multiple_locations args
-    if args[:document][args[:field]][1] 
+    if args[:document][args[:field]][1]
       args[:document][args[:field]] = ["Multiple Locations"]
     else
       args[:document][args[:field]][0]

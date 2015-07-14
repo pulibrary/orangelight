@@ -1,34 +1,28 @@
 <%# default partial to display solr document fields in catalog index view -%>
 
-<dl class="document-metadata dl-horizontal dl-invert col-md-10">
-  
+<ul class="document-metadata dl-horizontal dl-invert col-md-10">
+
   <% index_fields(document).each do |solr_fname, field| -%>
     <% if should_render_index_field? document, field %>
-      <% if solr_fname == 'author_s' && render_index_field_value( document, :field => 'marc_relator_display') != '' %>
-      <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_index_field_value document, :field => 'marc_relator_display' %>:</dt>
-      <% else %>
-      <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_index_field_label document, :field => solr_fname %></dt>
-      <% end %>
-
       <% if document[solr_fname].length == 1 || !document[solr_fname].is_a?(Array) || solr_fname == "location" %>
         <% valdir = getdir(document[solr_fname])%>
         <% value = render_index_field_value document, :field => solr_fname %>
-        <dd class="blacklight-<%= solr_fname.parameterize %>" dir="<%= valdir %>"><%= value %></dd>
-      <% else %> 
+        <li class="blacklight-<%= solr_fname.parameterize %>" dir="<%= valdir %>"><%= value %></li>
+      <% else %>
         <% valdirs = [] %>
-        <% document[solr_fname].each do |value| %> 
+        <% document[solr_fname].each do |value| %>
            <% valdirs << getdir(value) %>
         <% end %>
 
-        <dd class="blacklight-<%= solr_fname.parameterize %>">     
+        <li class="blacklight-<%= solr_fname.parameterize %>">
         <ul>
-        <% values = render_index_field_value(document, :field => solr_fname).split("<br/>").each_with_index do |value, i| %> 
+        <% values = render_index_field_value(document, :field => solr_fname).split("<br/>").each_with_index do |value, i| %>
             <li dir="<%= valdirs[i] %>"> <%=value.html_safe %> </li>
-        <% end %>  
+        <% end %>
         </ul>
-        </dd> 
+        </li>
       <% end %>
     <% end -%>
   <% end -%>
 
-</dl>
+</ul>

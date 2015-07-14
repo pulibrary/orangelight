@@ -3,24 +3,24 @@
 <div class="modal-header"> <h3> Browse by <%="#{@list_name}" %>
 
     <div class="prev_next_links btn-group pull-right">
-    
+
     <% if @is_first %>
-      <%= content_tag(:div, "« Previous", class: "btn disabled") %> 
+      <%= content_tag(:div, "« Previous", class: "btn disabled") %>
     <% else %>
       <%= link_to '« Previous', @page_link + "start=#{@prev}", class: "btn btn-link" %>
     <% end %>
-    <%= content_tag(:div, "#{@start} - #{@page_last} of #{@last_id}", class: "btn disabled", style: "color:black;strong;font-weight:bold;") %>     
+    <%= content_tag(:div, "#{@start} - #{@page_last} of #{@last_id}", class: "btn disabled", style: "color:black;strong;font-weight:bold;") %>
     <% if @is_last %>
-      <%= content_tag(:div, "Next »", class: "btn disabled") %>   
-    <% else %> 
+      <%= content_tag(:div, "Next »", class: "btn disabled") %>
+    <% else %>
       <%= link_to 'Next »', @page_link + "start=#{@next}", class: "btn btn-link" %>
     <% end %>
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%= link_to(t(:'blacklight.search.per_page.button_label', :count => @rpp), "#") %> <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu">
         <li><%= link_to("10", url_for(params_for_search(:rpp => 10))) %></li>
-        <li><%= link_to("25", url_for(params_for_search(:rpp => 25))) %></li>   
-        <li><%= link_to("50", url_for(params_for_search(:rpp => 50))) %></li>        
-        <li><%= link_to("100", url_for(params_for_search(:rpp => 100))) %></li>              
+        <li><%= link_to("25", url_for(params_for_search(:rpp => 25))) %></li>
+        <li><%= link_to("50", url_for(params_for_search(:rpp => 50))) %></li>
+        <li><%= link_to("100", url_for(params_for_search(:rpp => 100))) %></li>
     </ul>
   </div>
 </h3></div>
@@ -40,7 +40,7 @@
             &nbsp;
             <span class="facet-label <%=orangelight_name.dir%>"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{orangelight_name.label}" %>
               <%= "(#{orangelight_name.count})"%>
-            <%= link_to "[more info]", "#{@model}/#{orangelight_name.id}", style: "font-size:10px;" %></span>
+            <%= link_to "[more info]", "#{@model}/#{orangelight_name.id}", class: "more-info;" %></span>
           <% if orangelight_name.id == @match && @exact_match %>
               </strong>
             </div>
@@ -51,7 +51,7 @@
               <div class="alert alert-info">
               <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong>
             </div>
-          <% end %>          
+          <% end %>
         <% end %>
     </ul>
 
@@ -60,10 +60,10 @@
 <table class="browse">
   <thead>
     <tr>
-      <th> <%= @list_name %> </th>    
+      <th> <%= @list_name %> </th>
       <th>Title</th>
-      <th>Creator</th>  
-      <th>Publication Info</th>             
+      <th>Creator</th>
+      <th>Publication Info</th>
     </tr>
   </thead>
 
@@ -74,11 +74,11 @@
           <strong>
       <% else %>
         <tr class="row-<%=i.even? ? 'even' : 'odd' %>">
-      <% end %>         
+      <% end %>
         <td><%= link_to orangelight_name.label, "/catalog/#{orangelight_name.bibid}" %></td>
         <td class="<%=orangelight_name.dir%>"><%= orangelight_name.title %></td>
         <td><%= orangelight_name.author %></td>
-        <td><%= orangelight_name.date %></td>                    
+        <td><%= orangelight_name.date %></td>
       <% if orangelight_name.id == @match && @exact_match %>
           </strong>
         </tr>
@@ -89,7 +89,7 @@
           <tr class="alert alert-info"> <td colspan=4>
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong> </td>
         </tr>
-      <% end %>               
+      <% end %>
     <% end %>
   </tbody>
 </table>
@@ -100,14 +100,14 @@
 <div class="modal-footer">
   <div class="prev_next_links btn-group pull-left">
     <% if @is_first %>
-      <%= content_tag(:div, "« Previous", class: "btn disabled") %> 
+      <%= content_tag(:div, "« Previous", class: "btn disabled") %>
     <% else %>
       <%= link_to '« Previous', @page_link + "start=#{@prev}", class: "btn btn-link" %>
     <% end %>
-    <%= content_tag(:div, "#{@start} - #{@page_last} of #{@last_id}", class: "btn disabled", style: "color:black;strong;font-weight:bold;") %>     
+    <%= content_tag(:div, "#{@start} - #{@page_last} of #{@last_id}", class: "btn disabled", style: "color:black;strong;font-weight:bold;") %>
     <% if @is_last %>
-      <%= content_tag(:div, "Next »", class: "btn disabled") %>   
-    <% else %> 
+      <%= content_tag(:div, "Next »", class: "btn disabled") %>
+    <% else %>
       <%= link_to 'Next »', @page_link + "start=#{@next}", class: "btn btn-link" %>
     <% end %>
   </div>

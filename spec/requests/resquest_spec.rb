@@ -25,7 +25,7 @@ describe "blacklight tests" do
       expect(r["response"]["docs"].select{|d| d["id"] == "321"}[0]["location"].length).to eq 1
       location = r["response"]["docs"].select{|d| d["id"] == "321"}[0]["location"][0]
       get "/catalog?&search_field=all_fields&q=accessions"
-      expect(response.body.include?("Location: #{location}")).to eq true
+      expect(response.body.include?("#{location}")).to eq true
     end
   end
 
@@ -56,7 +56,7 @@ describe "blacklight tests" do
       docid = r["response"]["document"]["id"]
       get "catalog/430472"
       r["response"]["document"]["location_code_s"].each do |location|
-        expect(response.body.include?("<a href=\"http://library.princeton.edu/searchit/map?loc=#{location}&amp;id=#{docid}\" style=\"font-size:10px; font-style:italic\" target=\"_blank\">[Find it]</a>")).to eq true
+        expect(response.body.include?("href=\"http://library.princeton.edu/searchit/map?loc=#{location}&amp;id=#{docid}\" target=\"_blank\">[Find it]</a>")).to eq true
       end
     end
   end

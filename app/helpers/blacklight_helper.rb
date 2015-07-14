@@ -17,7 +17,7 @@ module BlacklightHelper
 	#     end
 	#   end
 	#   return "ltr"
-	# end 
+	# end
 
   def getdir(str, opts={})
     StringFunctions.getdir(str,opts)
@@ -28,12 +28,12 @@ module BlacklightHelper
   end
 
   # This is needed because white space tokenizes regardless of filters
-  def left_anchor_strip solr_parameters, user_parameters 
+  def left_anchor_strip solr_parameters, user_parameters
     if solr_parameters[:q]
       if solr_parameters[:q].include?("{!qf=$left_anchor_qf pf=$left_anchor_pf}")
         newq = solr_parameters[:q].gsub("{!qf=$left_anchor_qf pf=$left_anchor_pf}", "")
         solr_parameters[:q] = "{!qf=$left_anchor_qf pf=$left_anchor_pf}" + newq.gsub(" ", "")
-      end         
+      end
     end
   end
 
@@ -47,7 +47,7 @@ module BlacklightHelper
   end
 
 
-  def redirect_browse solr_parameters, user_parameters 
+  def redirect_browse solr_parameters, user_parameters
     if user_parameters[:search_field] && user_parameters[:controller] != "advanced"
       if user_parameters[:search_field] == "browse_subject" && !params[:id]
         redirect_to "/browse/subjects?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
@@ -56,14 +56,19 @@ module BlacklightHelper
       elsif user_parameters[:search_field] == "browse_name" && !params[:id]
         redirect_to "/browse/names?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
       else
-      end  
+      end
 
     end
-  end  
+  end
 
   def browse_related_name_hash name
     link_to(name, "/?f[author_s][]=#{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", style: "font-size:10px; font-style:italic")
-  end  
+  end
+
+ # override method to never render saved searches in user_util_links
+  def render_saved_searches?
+    false
+  end
 
   # def altscript! values
   #   values.each_with_index do |contents, i|
@@ -77,16 +82,16 @@ module BlacklightHelper
   #   safe_value = value.respond_to?(:force_encoding) ? value.force_encoding("UTF-8") : value
 
   #   if field_config and field_config.itemprop
-  #     safe_value = content_tag :span, safe_value, :itemprop => field_config.itemprop 
+  #     safe_value = content_tag :span, safe_value, :itemprop => field_config.itemprop
   #   end
   #   safe_value
-  # end  
+  # end
 
   # no longer needs to be overriden
   # def presenter_class
   #   PrincetonPresenter
   # end
-  
+
   # def render_document_show_field_value *args
   #   options = args.extract_options!
   #   document = args.shift || options[:document]
