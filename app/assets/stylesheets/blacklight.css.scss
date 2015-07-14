@@ -2,108 +2,14 @@
 @import 'bootstrap';
 
 @import 'blacklight/blacklight';
-@import 'blacklight_folders/blacklight_folders';@import 'blacklight/blacklight_base';
-@import 'typography';
+@import 'blacklight_folders/blacklight_folders';
+@import 'blacklight/blacklight_base';
 
-.orange {
-  display:inline;
-  color:#e87511;
-}
-
-h3.rtl {
-  color:#e87511;
-  text-align:right;
-}
-
-dd.rtl {
-  color:#e87511;
-  text-align:right;
-}
-
-rtl {
-  display:inline;
-  float:right;
-}
-
-.rtl {
-  direction: rtl;
-  float:right;
-}
-
-.dl-horizontal dt
-{
-  overflow:visible;
-  width: 180px !important;
-  margin-right: 10px;
-}
-
-.dl-horizontal dd
-{
-  margin-left: 190px;
-}
-
-ul
-{
-  list-style-type: none;
-  padding: 0;
-}
-
-.search-options
-{
-  padding: 0px 5px;
-}
-
-
-.browse
-{
-
-  li, td, th
-  {
-    padding: .5em;
-  }
-
-  li.row-even, tr.row-even
-  {
-    background-color: #cfcfcf;
-  }
-
-
-}
-
-.alert
-{
-  margin: 10px 0px;
-}
-
-.pivot-facet .facet-label {
-    display: inline;
-    padding-left: 0px;
-    word-break: none;
-}
-
-.dl-nested dd {
-  margin-left: 50px;
-  clear: left;
-}
-
-.dl-nested dt {
-  clear: left;
-  text-align: left;
-
-}
-
-.facets-heading {
-  font-size: 18px;
-}
-
-body {
-    font-family: $font-sans;
-}
-
-main {
-  padding-top: 1em;
-}
-
-.welcome-message {
-  padding-top: 3em;
-}
+@import 'variables--breaks';
+@import 'variables--colors';
+@import 'variables--typography';
+@import 'base--forms';
+@import 'components--font-face';
+@import 'components--footer';
+@import 'components--front-page';
+@import 'shame';

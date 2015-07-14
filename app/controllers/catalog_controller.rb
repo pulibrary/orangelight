@@ -86,7 +86,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'author_s', :label => 'Author', :limit => true, show: false
     config.add_facet_field 'lc_rest_facet', :label => 'Full call number code', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'instrumentation_facet', :label => 'Instrumentation', :limit => true
-    config.add_facet_field 'location', :label => 'Location', :limit => true
+    config.add_facet_field 'location', :label => 'Library', :limit => true
     config.add_facet_field 'call_number_browse_s', label: 'Call number', show: false
 
     config.add_facet_field 'sudoc_facet', :label => 'SuDoc call number code', :limit => 25, show: false, sort: 'index'
@@ -385,10 +385,10 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort asc', :label => 'relevance'
-    config.add_sort_field 'pub_date_start_sort desc, title_sort asc', :label => 'year'
-    config.add_sort_field 'author_sort asc, title_sort asc', :label => 'author'
-    config.add_sort_field 'title_sort asc, pub_date_start_sort desc', :label => 'title'
+    config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort asc', :label => 'Relevance'
+    config.add_sort_field 'pub_date_start_sort desc, title_sort asc', :label => 'Year'
+    config.add_sort_field 'author_sort asc, title_sort asc', :label => 'Author'
+    config.add_sort_field 'title_sort asc, pub_date_start_sort desc', :label => 'Title'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.

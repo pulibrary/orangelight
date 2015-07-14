@@ -1,0 +1,8 @@
+// reset form styling cross-browser
+.form-control,
+.form-control:focus {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+    -o-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+}

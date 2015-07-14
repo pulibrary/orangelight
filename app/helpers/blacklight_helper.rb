@@ -62,7 +62,7 @@ module BlacklightHelper
   end
 
   def browse_related_name_hash name
-    link_to(name, "/?f[author_s][]=#{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", style: "font-size:10px; font-style:italic")
+    link_to(name, "/?f[author_s][]=#{name}", class: "search-related-name", title: "Search: #{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", class: "browse-related-name", title: "Browse: #{name}")
   end
 
  # override method to never render saved searches in user_util_links
