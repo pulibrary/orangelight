@@ -75,7 +75,7 @@ describe "blacklight tests" do
       fullsubject.each_with_index do |subject, i|
         sub_component[i].each do |component|
           c = Regexp.escape(component)
-          expect(response.body.include?("/?f[subject_topic_facet][]=#{subject[/.*#{c}/]}\">#{component}</a>")).to eq true
+          expect(response.body.include?("/?f[subject_topic_facet][]=#{subject[/.*#{c}/]}\" title=\"Search: #{subject[/.*#{c}/]}\">#{component}</a>")).to eq true
         end
       end
     end
@@ -92,8 +92,8 @@ describe "blacklight tests" do
       doc_id = r["id"]
       get "/catalog?&search_field=all_fields&q=4705304"
       expect(response.body.include?("dir=\"rtl\" href=\"/catalog/#{doc_id}\" style=\"float: right;\">#{title_vern}</a>")).to eq true
-      expect(response.body.include?("<li dir=\"ltr\"> <a href=\"/?f[author_s][]=#{author}\">#{author}</a>")).to eq true     
-      expect(response.body.include?("<li dir=\"rtl\"> <a href=\"/?f[author_s][]=#{author_vern}\">#{author_vern}</a>")).to eq true
+      expect(response.body.include?("<li dir=\"ltr\"> <a class=\"search-name\" href=\"/?f[author_s][]=#{author}\" title=\"Search: #{author}\">#{author}</a>")).to eq true
+      expect(response.body.include?("<li dir=\"rtl\"> <a class=\"search-name\" href=\"/?f[author_s][]=#{author_vern}\" title=\"Search: #{author_vern}\">#{author_vern}</a>")).to eq true
 
     end
     it "adds ltr rtl dir for title and related names in document view" do
@@ -160,4 +160,3 @@ describe "blacklight tests" do
     end
   end
 end
- 

@@ -84,12 +84,12 @@ module ApplicationHelper
       full_sub = ''
       all_subjects[i].each_with_index do |subsubject, j|
         lnk = lnk_accum + link_to(subsubject,
-          "/?f[subject_topic_facet][]=#{sub_array[i][j]}")
-        lnk_accum = lnk + SEPARATOR
+          "/?f[subject_topic_facet][]=#{sub_array[i][j]}", class: "search-subject", title: "Search: #{sub_array[i][j]}")
+        lnk_accum = lnk + t(SEPARATOR, class: "subject-level")
         full_sub = sub_array[i][j]
       end
       lnk += '  '
-      lnk += link_to('[Browse]', "/browse/subjects?q=#{full_sub}", class: "browse-subject")
+      lnk += link_to('[Browse]', "/browse/subjects?q=#{full_sub}", class: "browse-subject", title: "Browse: #{full_sub}")
       args[:document][args[:field]][i] = lnk.html_safe
     end
 
@@ -98,7 +98,7 @@ module ApplicationHelper
 
   def browse_name args
     args[:document][args[:field]].each_with_index do |name, i|
-      newname = link_to(name, "/?f[author_s][]=#{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", class: "browse-name")
+      newname = link_to(name, "/?f[author_s][]=#{name}", class: "search-name", title: "Search: #{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", class: "browse-name", title: "Browse: #{name}")
       args[:document][args[:field]][i] = newname.html_safe
     end
   end
