@@ -8,8 +8,9 @@
 
 Versions:
 
-* Ruby: 2.1.1
-* Blacklight: 5.13.1
+* Ruby: 2.1
+* Rails: 4.2.3
+* Blacklight: 5.14.0
 * blacklight_advanced_search: 5.1.2
 
 To install run `bundle install`
