@@ -36,7 +36,7 @@ describe "blacklight tests" do
       link = r["response"]["document"]["electronic_access_display"][0]
       display_text = r["response"]["document"]["electronic_access_display"][1]
       get "/catalog/3"
-      expect(response.body.include?("<a href=\"#{link}\" target=\"_blank\">#{display_text}</a>")).to eq true
+      expect(response.body.include?("<a target=\"_blank\" href=\"#{link}\">#{display_text}</a>")).to eq true
     end
 
     it "uses hyperlink as display text" do
@@ -45,18 +45,18 @@ describe "blacklight tests" do
       link = r["response"]["document"]["electronic_access_display"][0]
         display_text = r["response"]["document"]["electronic_access_display"][0]
       get "/catalog/4705304"
-      expect(response.body.include?("<a href=\"#{link}\" target=\"_blank\">#{display_text}</a>")).to eq true
+      expect(response.body.include?("<a target=\"_blank\" href=\"#{link}\">#{display_text}</a>")).to eq true
     end
   end
 
   describe "Wheretofind check" do
     it "provides a link to locate an item for each holding" do
-      get "catalog/430472.json"
+      get "/catalog/430472.json"
       r = JSON.parse(response.body)
       docid = r["response"]["document"]["id"]
-      get "catalog/430472"
+      get "/catalog/430472"
       r["response"]["document"]["location_code_s"].each do |location|
-        expect(response.body.include?("href=\"http://library.princeton.edu/searchit/map?loc=#{location}&amp;id=#{docid}\" target=\"_blank\">[Find it]</a>")).to eq true
+        expect(response.body.include?("target=\"_blank\" class=\"find-it\" href=\"http://library.princeton.edu/searchit/map?loc=#{location}&amp;id=#{docid}\">[Find it]</a>")).to eq true
       end
     end
   end
@@ -64,18 +64,18 @@ describe "blacklight tests" do
   SEPARATOR = "—"
   describe "subjectify check" do
     it "provides links to facet search based on hierarchy" do
-      get "catalog/6139836.json"
+      get "/catalog/6139836.json"
       r = JSON.parse(response.body)
       sub_component = []
       fullsubject = r["response"]["document"]["subject_display"]
       fullsubject.each_with_index do |subject, i|
         sub_component << subject.split(SEPARATOR)
       end
-      get "catalog/6139836"
+      get "/catalog/6139836"
       fullsubject.each_with_index do |subject, i|
         sub_component[i].each do |component|
           c = Regexp.escape(component)
-          expect(response.body.include?("/?f[subject_topic_facet][]=#{subject[/.*#{c}/]}\" title=\"Search: #{subject[/.*#{c}/]}\">#{component}</a>")).to eq true
+          expect(response.body.include?("class=\"search-subject\" title=\"Search: #{subject[/.*#{c}/]}\" href=\"/?f[subject_topic_facet][]=#{subject[/.*#{c}/]}\">#{component}</a>")).to eq true
         end
       end
     end
@@ -91,18 +91,18 @@ describe "blacklight tests" do
       author_vern = r["author_display"][1]
       doc_id = r["id"]
       get "/catalog?&search_field=all_fields&q=4705304"
-      expect(response.body.include?("dir=\"rtl\" href=\"/catalog/#{doc_id}\" style=\"float: right;\">#{title_vern}</a>")).to eq true
-      expect(response.body.include?("<li dir=\"ltr\"> <a class=\"search-name\" href=\"/?f[author_s][]=#{author}\" title=\"Search: #{author}\">#{author}</a>")).to eq true
-      expect(response.body.include?("<li dir=\"rtl\"> <a class=\"search-name\" href=\"/?f[author_s][]=#{author_vern}\" title=\"Search: #{author_vern}\">#{author_vern}</a>")).to eq true
+      expect(response.body.include?("dir=\"rtl\" style=\"float: right;\" href=\"/catalog/#{doc_id}\">#{title_vern}</a>")).to eq true
+      expect(response.body.include?("<li dir=\"ltr\"> <a class=\"search-name\" title=\"Search: #{author}\" href=\"/?f[author_s][]=#{author}\">#{author}</a>")).to eq true
+      expect(response.body.include?("<li dir=\"rtl\"> <a class=\"search-name\" title=\"Search: #{author_vern}\" href=\"/?f[author_s][]=#{author_vern}\">#{author_vern}</a>")).to eq true
 
     end
     it "adds ltr rtl dir for title and related names in document view" do
-      get "catalog/5906024.json"
+      get "/catalog/5906024.json"
       r = JSON.parse(response.body)["response"]["document"]
       title_vern = r["title_vern_display"]
       related = r["contains_display"][0]
       related_vern = r["contains_display"][1]
-      get "catalog/5906024"
+      get "/catalog/5906024"
       expect(response.body.include?("<h1 dir=\"rtl\"> #{title_vern} </h1>")).to eq true
       expect(response.body.include?("<li dir=\"ltr\"> #{related} </li>")).to eq true
       expect(response.body.include?("<li dir=\"rtl\"> #{related_vern} </li>")).to eq true
@@ -111,24 +111,24 @@ describe "blacklight tests" do
 
   describe "left-anchor tests" do
     it "finds result despite accents and capitals in query" do
-      get "catalog.json?&search_field=left_anchor&q=s%C3%A8arChing+for"
+      get "/catalog.json?&search_field=left_anchor&q=s%C3%A8arChing+for"
       r = JSON.parse(response.body)
       expect(r["response"]["docs"].select{|d| d["id"] == "6574987"}.length).to eq 1
     end
 
     it "no matches if it doesn't occur at the beginning of the starts with fields" do
-      get "catalog.json?&search_field=left_anchor&q=modern+aesthetic"
+      get "/catalog.json?&search_field=left_anchor&q=modern+aesthetic"
       r = JSON.parse(response.body)
       expect(r["response"]["pages"]["total_count"]).to eq 0
     end
 
     it "works in advanced search" do
-      get "catalog.json?&search_field=advanced&left_anchor=searching+for"
+      get "/catalog.json?&search_field=advanced&left_anchor=searching+for"
       r = JSON.parse(response.body)
       expect(r["response"]["docs"].select{|d| d["id"] == "6574987"}.length).to eq 1
     end
     it "works in guided search" do
-      get "catalog.json?&search_field=guided&f1=left_anchor&q1=searching+for&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for"
+      get "/catalog.json?&search_field=guided&f1=left_anchor&q1=searching+for&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for"
       r = JSON.parse(response.body)
       expect(r["response"]["docs"].select{|d| d["id"] == "6574987"}.length).to eq 1
     end
@@ -136,14 +136,14 @@ describe "blacklight tests" do
 
   describe "advanced search tests" do
     it "supports guided render constraints" do
-      get "catalog?&search_field=guided&f1=left_anchor&q1=searching+for1&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for"
-      expect(response.body.include?('<a class="btn btn-default btn-sm remove dropdown-toggle" href="/catalog?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remove constraint Starts with: searching for1</span></a>')).to eq true
-      get "catalog.json?&search_field=guided&f1=left_anchor&q1=searching+for1&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for"
+      get "/catalog?&search_field=guided&f1=left_anchor&q1=searching+for1&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for"
+      expect(response.body.include?('<a class="btn btn-default btn-sm remove dropdown-toggle" href="/catalog?action=index&amp;controller=catalog&amp;f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remove constraint Starts with: searching for1</span></a>')).to eq true
+      get "/catalog.json?&search_field=guided&f1=left_anchor&q1=searching+for1&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for"
       r = JSON.parse(response.body)
       expect(r["response"]["docs"].select{|d| d["id"] == "6574987"}.length).to eq 0
-      get "catalog?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"
-      expect(response.body.include?('<a class="btn btn-default btn-sm remove dropdown-toggle" href="/catalog?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remove constraint Starts with: searching for1</span></a>')).to eq false
-      get "catalog.json?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"
+      get "/catalog?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"
+      expect(response.body.include?('<a class="btn btn-default btn-sm remove dropdown-toggle" href="/catalog?action=index&amp;controller=catalog&amp;f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remove constraint Starts with: searching for1</span></a>')).to eq false
+      get "/catalog.json?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"
       r = JSON.parse(response.body)
       expect(r["response"]["docs"].select{|d| d["id"] == "6574987"}.length).to eq 1
 
@@ -153,7 +153,7 @@ describe "blacklight tests" do
   describe "librarian view" do
     it "marcxml matches bibdata marcxml for record" do
       id = '6574987'
-      get "catalog/#{id}.marcxml"
+      get "/catalog/#{id}.marcxml"
       librarian_view = response.body
       bibdata = Faraday.get("http://bibdata.princeton.edu/bibliographic/#{id}").body
       expect(librarian_view).to eq bibdata

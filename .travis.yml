@@ -8,6 +8,7 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - bundle exec rake jetty:clean
   - bundle exec rake jetty:start
+  - RAILS_ENV=test bundle exec rake db:migrate
 
 script: bundle exec rspec spec
 
