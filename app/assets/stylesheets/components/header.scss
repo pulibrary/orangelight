@@ -1,0 +1,51 @@
+@import "variables/breaks";
+@import "variables/colors";
+@import "variables/typography";
+
+.l-branding__pul {
+    background: $dark-gray;
+    border-top: 3px solid $orange;
+    min-height: 40px;
+    height: 85px;
+    position: relative;
+    .menu--level-1, .logo__pul {
+        height: 40px;
+        position: relative;
+        z-index: 10;
+    }
+    .menu--level-1 > ul, .logo__pul img {
+        margin: 0;
+        vertical-align: baseline;
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+}
+
+@media (min-width: $bp-small) {
+    .l-branding__pul {
+        height: 40px;
+    }
+}
+
+.menu--level-1 > ul {
+    display: block;
+    float: right;
+    > li > a, .btn-account {
+        color: $gray;
+        font-size: 0.75em;
+        background: none;
+        border: none;
+    }
+    > li {
+        float: left;
+        padding: 0 20px;
+        border-right: 1px solid $gray;
+        &:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+    }
+}

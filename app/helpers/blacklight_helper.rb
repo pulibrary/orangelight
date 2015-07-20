@@ -91,6 +91,15 @@ module BlacklightHelper
    thumbnail_link['items'][0]['volumeInfo']['imageLinks']['smallThumbnail']
   end
 
+  ##
+  # Render the heading partial for a document
+  #
+  # @param [SolrDocument]
+  # @return [String]
+  def render_document_heading_partial(document = @document)
+    render :partial => 'show_header_default'
+  end
+
   # def altscript! values
   #   values.each_with_index do |contents, i|
   #     if getdir(contents) == "rtl"

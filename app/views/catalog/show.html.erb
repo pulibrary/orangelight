@@ -1,10 +1,12 @@
 <%= render 'previous_next_doc' %>
 
-<div id="content" class="<%= show_content_classes %>">
+<%= render_document_heading_partial %>
+
+<div id="content" class="col-md-8 col-sm-9 col-xs-12">
   <%= render_document_main_content_partial %>
 </div>
 
-<div id="sidebar" class="<%= show_sidebar_classes %>">
+<div id="sidebar" class="col-md-4 col-sm-3 col-xs-12">
    <%= render_document_sidebar_partial %>
 </div>
 

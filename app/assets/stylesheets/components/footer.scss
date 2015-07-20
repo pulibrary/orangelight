@@ -1,0 +1,11 @@
+@import 'variables/breaks';
+
+.l-footer .block--menu .menu {
+    display: none;
+}
+
+@media (min-width: $bp-small) {
+    .l-footer .block--menu .menu {
+        display: block;
+    }
+}

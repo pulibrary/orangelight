@@ -1,0 +1,22 @@
+@import "variables/breaks";
+
+.dl-horizontal dt,
+.dl-horizontal dd {
+    width: 100%;
+    display: block;
+    clear: both;
+}
+
+@media (min-width: $bp-small) {
+    .dl-horizontal dt {
+        overflow: visible;
+        width: 180px !important;
+        margin-right: 10px;
+        clear: none;
+        display: inline-block;
+    }
+    .dl-horizontal dd {
+        margin-left: 190px;
+        clear: none;
+    }
+}

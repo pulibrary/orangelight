@@ -21,3 +21,17 @@
  *= require 'blacklight_advanced_search'
 
 */
+
+@import 'variables/breaks';
+@import 'variables/colors';
+@import 'variables/typography';
+
+@import 'base/forms';
+@import 'base/typography';
+
+@import 'components/font-face';
+@import 'components/footer';
+@import 'components/front-page';
+@import 'components/header';
+
+@import 'shame';
