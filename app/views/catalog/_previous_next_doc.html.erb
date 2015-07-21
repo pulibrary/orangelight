@@ -2,14 +2,16 @@
 <% #DEPRECATED - using id="previousNextDocument" as a selector is deprecated and will be removed in Blacklight 6.0 %>
 <div id='previousNextDocument' class='pagination-search-widgets'>
   <% if @previous_document || @next_document %>
-    <%= link_back_to_catalog class: 'btn' %>
-    <div class="page_links">
-      <%= link_to_previous_document @previous_document %> |
-      <%= item_page_entry_info %> |
-      <%= link_to_next_document @next_document %>
+    <div class="col-xs-12 col-md-6">
+      <%= link_back_to_catalog class: 'btn' %>
+      <div class="page_links">
+        <%= link_to_previous_document @previous_document %> |
+        <%= item_page_entry_info %> |
+        <%= link_to_next_document @next_document %>
+      </div>
     </div>
   <% end %>
-    <div class="pull-right search-widgets">
+    <div class="pull-right search-widgets col-xs-12 col-md-6">
       <ul class="nav navbar-nav navbar-right">
         <li>
           <%= link_to "Cite", citation_catalog_path(:id => @document), {:id => 'citeLink', :data => {:ajax_modal => "trigger"}, :class => 'btn'} %>

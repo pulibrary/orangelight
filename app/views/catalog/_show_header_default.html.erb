@@ -1,7 +1,10 @@
-<% # bookmark/folder functions -%>
-<% titlevalue = render_document_show_field_value document, :field => 'title_vern_display' %>
-<% unless titlevalue == '' %>
-    <% valdir = getdir(titlevalue) %>
-    <h1 dir="<%= valdir %>"> <%= titlevalue %> </h1>
-<% end %>
-<%= render_document_heading(document, :tag => :h1) %>
+
+<div class="row col-xs-12">
+    <% # bookmark/folder functions -%>
+    <% titlevalue = render_document_show_field_value @document, :field => 'title_vern_display' %>
+    <% unless titlevalue == '' %>
+        <% valdir = getdir(titlevalue) %>
+        <h1 dir="<%= valdir %>"> <%= titlevalue %> </h1>
+    <% end %>
+    <%= render_document_heading(@document, :tag => :h1) %>
+</div>
