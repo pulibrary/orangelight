@@ -31,7 +31,10 @@ module ApplicationHelper
 
   def holding_block args
     args[:document][args[:field]].each_with_index do |call_numb, i|
-      block = "Call Number: #{call_numb}<br>"
+      block = "Call Number: #{call_numb}"
+      block += '  '
+      block += link_to('[Browse]', "/browse/call_numbers?q=#{call_numb}", class: "browse-cn", title: "Browse: #{call_numb}")
+      block += "<br>"
       block += "Location: #{args[:document]['location'][i]}"
       findit = locate_link(args[:document]['location_code_s'][i], args[:document]['id'])
       block += " #{findit}<br><br>"
