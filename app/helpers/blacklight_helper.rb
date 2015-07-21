@@ -100,6 +100,10 @@ module BlacklightHelper
     render :partial => 'show_header_default'
   end
 
+  def render_icon var
+    "<span class='icon icon-#{var.parameterize}'></span>".html_safe
+  end
+
   # def altscript! values
   #   values.each_with_index do |contents, i|
   #     if getdir(contents) == "rtl"
