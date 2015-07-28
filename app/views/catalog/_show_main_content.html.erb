@@ -12,6 +12,32 @@
        // COinS, for Zotero among others.
        // This document_partial_name(@document) business is not quite right,
        // but has been there for a while.
+       // If we add non-MARC doc types to the project they need to respond to this
+       // method with a valid ctx object.
   -->
   <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_partial_name(@document)) %>"></span>
+  <script type="text/javascript">
+    jQuery(document).ready(function(){
+      var ctx = $("span.Z3988").attr("title");
+      var umlaut_base = "https://getit-dev.princeton.edu";
+      var updater = new Umlaut.HtmlUpdater(umlaut_base, ctx );
+      updater.add_section_target({ 
+        umlaut_section_id: "fulltext", 
+        selector:"#full_text",
+        before_update: function(html, count) {
+          //hide the section heading on the snippet, we don't want it
+          //$(html).find(".section_heading h3").hide();
+          return (count != 0);
+        }
+      });
+      updater.add_section_target({ 
+        umlaut_section_id: "holding", 
+        selector:"#holding",
+        before_update: function(html, count) {
+          $(html).find(".section_heading h3").hide();
+        }
+      });
+      updater.update();
+    });
+  </script>
 <% end %>
