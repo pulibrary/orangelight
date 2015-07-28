@@ -257,8 +257,10 @@ header .input-group-addon {
 
 //results.scss
 #documents .document {
-    margin: 1.5em 0;
-    padding: 0 0 1.5em;
+    // margin: 1.5em 0;
+    // padding: 0 0 1.5em;
+    margin: 0;
+    padding: 1em 0;
 }
 
 .documents-list dl {
@@ -679,8 +681,8 @@ header .navbar-nav > li > a {
 
 .document .icon,
 .facet-values .icon {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     display: table-cell;
     background-position: center;
     background-size: contain;
@@ -701,7 +703,7 @@ ul.facet-values {
 }
 
 .pivot-facet .pivot-facet {
-    padding: 0 0 0 1em;
+    padding: 0 0 0 2em;
     // display: table;
     width: 100%;
     &.collapse.in, &.collapsing {
@@ -713,12 +715,15 @@ ul.facet-values {
     display: block;
     height: 110px;
     width: 85px;
+    margin-bottom: 0;
+    padding: 0;
 
     img, .default {
         max-width: 75px;
         height: auto;
         height: 100px;
         background-size: contain;
+        background-position: center;
     }
 }
 
@@ -792,4 +797,18 @@ ul.facet-values {
         font-size: 0.875em;
         text-transform: uppercase;
     }
+}
+
+.tooltip > .tooltip-inner {
+    max-width: 600px !important;
+    // background: $blue;
+}
+
+// .tooltip.bottom > .tooltip-arrow {
+//     border-bottom-color: $blue;
+// }
+
+.document a:hover {
+    color: darken($orange,10%);
+    text-decoration: underline;
 }

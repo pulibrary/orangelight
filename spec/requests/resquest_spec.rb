@@ -75,7 +75,7 @@ describe "blacklight tests" do
       fullsubject.each_with_index do |subject, i|
         sub_component[i].each do |component|
           c = Regexp.escape(component)
-          expect(response.body.include?("class=\"search-subject\" title=\"Search: #{subject[/.*#{c}/]}\" href=\"/?f[subject_topic_facet][]=#{subject[/.*#{c}/]}\">#{component}</a>")).to eq true
+          expect(response.body.include?("class=\"search-subject\" data-toggle=\"tooltip\" data-original-title=\"Search: #{subject[/.*#{c}/]}\" title=\"Search: #{subject[/.*#{c}/]}\" href=\"/?f[subject_topic_facet][]=#{subject[/.*#{c}/]}\">#{component}</a>")).to eq true
         end
       end
     end
@@ -92,8 +92,8 @@ describe "blacklight tests" do
       doc_id = r["id"]
       get "/catalog?&search_field=all_fields&q=4705304"
       expect(response.body.include?("dir=\"rtl\" style=\"float: right;\" href=\"/catalog/#{doc_id}\">#{title_vern}</a>")).to eq true
-      expect(response.body.include?("<li dir=\"ltr\"> <a class=\"search-name\" title=\"Search: #{author}\" href=\"/?f[author_s][]=#{author}\">#{author}</a>")).to eq true
-      expect(response.body.include?("<li dir=\"rtl\"> <a class=\"search-name\" title=\"Search: #{author_vern}\" href=\"/?f[author_s][]=#{author_vern}\">#{author_vern}</a>")).to eq true
+      expect(response.body.include?("<li dir=\"ltr\"> <a class=\"search-name\" data-toggle=\"tooltip\" data-original-title=\"Search: #{author}\" title=\"Search: #{author}\" href=\"/?f[author_s][]=#{author}\">#{author}</a>")).to eq true
+      expect(response.body.include?("<li dir=\"rtl\"> <a class=\"search-name\" data-toggle=\"tooltip\" data-original-title=\"Search: #{author_vern}\" title=\"Search: #{author_vern}\" href=\"/?f[author_s][]=#{author_vern}\">#{author_vern}</a>")).to eq true
 
     end
     it "adds ltr rtl dir for title and related names in document view" do
@@ -137,12 +137,12 @@ describe "blacklight tests" do
   describe "advanced search tests" do
     it "supports guided render constraints" do
       get "/catalog?&search_field=guided&f1=left_anchor&q1=searching+for1&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for"
-      expect(response.body.include?('<a class="btn btn-default btn-sm remove dropdown-toggle" href="/catalog?action=index&amp;controller=catalog&amp;f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remove constraint Starts with: searching for1</span></a>')).to eq true
+      expect(response.body.include?('<a class="btn btn-default remove dropdown-toggle" href="/catalog?action=index&amp;controller=catalog&amp;f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remove constraint Starts with: searching for1</span></a>')).to eq true
       get "/catalog.json?&search_field=guided&f1=left_anchor&q1=searching+for1&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for"
       r = JSON.parse(response.body)
       expect(r["response"]["docs"].select{|d| d["id"] == "6574987"}.length).to eq 0
       get "/catalog?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"
-      expect(response.body.include?('<a class="btn btn-default btn-sm remove dropdown-toggle" href="/catalog?action=index&amp;controller=catalog&amp;f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remove constraint Starts with: searching for1</span></a>')).to eq false
+      expect(response.body.include?('<a class="btn btn-default remove dropdown-toggle" href="/catalog?action=index&amp;controller=catalog&amp;f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remove constraint Starts with: searching for1</span></a>')).to eq false
       get "/catalog.json?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=guided"
       r = JSON.parse(response.body)
       expect(r["response"]["docs"].select{|d| d["id"] == "6574987"}.length).to eq 1
