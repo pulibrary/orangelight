@@ -125,4 +125,9 @@ module ApplicationHelper
     end
   end
 
+  def format_icon args
+    var = args[:document][args[:field]][0]
+    "#{render_icon(var)} #{var}".html_safe
+  end
+
 end

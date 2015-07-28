@@ -1,29 +1,32 @@
 <% #Using the Bootstrap Pagination class  -%>
 <% #DEPRECATED - using id="previousNextDocument" as a selector is deprecated and will be removed in Blacklight 6.0 %>
 <div id='previousNextDocument' class='pagination-search-widgets'>
+  <div class="col-xs-12 col-md-6">
+    <div class="button--start-over">
+      <%=link_to t('blacklight.search.start_over'), start_over_path, :class => "catalog_startOverLink btn btn-sm btn-text", :id=>"startOverLink" %>
+    </div>
   <% if @previous_document || @next_document %>
-    <div class="col-xs-12 col-md-6">
-      <%= link_back_to_catalog class: 'btn' %>
+      <%= link_back_to_catalog class: "btn btn-default" %>
       <div class="page_links">
         <%= link_to_previous_document @previous_document %> |
         <%= item_page_entry_info %> |
         <%= link_to_next_document @next_document %>
       </div>
-    </div>
   <% end %>
+  </div>
     <div class="pull-right search-widgets col-xs-12 col-md-6">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= link_to "Cite", citation_catalog_path(:id => @document), {:id => 'citeLink', :data => {:ajax_modal => "trigger"}, :class => 'btn'} %>
+          <%= link_to "Cite", citation_catalog_path(:id => @document), {:id => 'citeLink', :data => {:ajax_modal => "trigger"}, class: "btn btn-default"} %>
         </li>
         <li class="sms">
-          <%= link_to "SMS", sms_catalog_path(:id => @document), {:id => 'smsLink', :data => {:ajax_modal => "trigger"}} %>
+          <%= link_to "SMS", sms_catalog_path(:id => @document), {:id => 'smsLink', :data => {:ajax_modal => "trigger"}, class: "btn btn-default"} %>
         </li>
         <li class="email">
-          <%= link_to "Email", email_catalog_path(:id => @document), {:id => 'emailLink', :data => {:ajax_modal => "trigger"}} %>
+          <%= link_to "Email", email_catalog_path(:id => @document), {:id => 'emailLink', :data => {:ajax_modal => "trigger"}, class: "btn btn-default"} %>
         </li>
         <li class="dropdown">
-          <button class="btn" data-toggle="dropdown">Send to </button>
+          <button class="btn btn-default" data-toggle="dropdown">Send to <span class="caret"></span></button>
           <ul class="dropdown-menu" role="menu">
             <li class="endnote">
               <%= link_to "EndNote", catalog_path(@document, :format => 'endnote') %>

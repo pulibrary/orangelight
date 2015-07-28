@@ -66,7 +66,7 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'format', :label => 'Format'
+    config.add_facet_field 'format', :label => 'Format', partial: "facet_format"
     config.add_facet_field 'subject_display', :label => 'Subject'
 
     # num_segments and segments set to defaults here, included to show customizable features
@@ -121,12 +121,12 @@ class CatalogController < ApplicationController
     # config.add_index_field 'title_vern_display', :label => 'Title'
     config.add_index_field 'author_display', :label => 'Author', :helper_method => :browse_name
     #config.add_index_field 'author_vern_display', :label => 'Author'
-    config.add_index_field 'format', :label => 'Format'
     #config.add_index_field 'language_facet', :label => 'Language'
     #config.add_index_field 'published_display', :label => 'Published'
     #config.add_index_field 'published_vern_display', :label => 'Published'
     #config.add_index_field 'lc_callnum_display', :label => 'Call number'
     config.add_index_field 'pub_created_display', :label => 'Published/Created'
+    config.add_index_field 'format', :label => 'Format', helper_method: :format_icon
     #config.add_index_field 'description_display', :label => 'Description'
     #config.add_index_field 'location', :label => 'Location', helper_method: :multiple_locations
     config.add_index_field 'call_number_display', :label => 'Holding info', helper_method: :holding_block_search

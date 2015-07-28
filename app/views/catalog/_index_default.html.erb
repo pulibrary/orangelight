@@ -27,9 +27,6 @@
 
 </ul>
 
-<% isbn = isbn_norm(document['isbn_display']) %>
-<% if doc_has_thumbnail? isbn %>
 <div class="document-thumbnail col-md-2">
-  <%= image_tag get_thumbnail isbn %>
+  <div class="default"></div>
 </div>
-<% end %>

@@ -4,12 +4,12 @@
     <li>
     <span class="facet-values">
     <% unless item.items.blank?  %>
-      <a class="glyphicon glyphicon-plus" href="#" data-target=<%='#'+item.field.parameterize+'-'+item.value.parameterize%> data-toggle="collapse"></a>  
-    <% end %>       
-    <% if facet_in_params?( solr_field, item ) %>              
-        <%= render_selected_facet_value(solr_field, item) %>              
-    <% else %>           
-      <%= render_facet_value(solr_field, item)%>              
+      <a class="icon toggle collapsed" href="#" data-target=<%='#'+item.field.parameterize+'-'+item.value.parameterize%> data-toggle="collapse"></a>
+    <% end %>
+    <% if facet_in_params?( solr_field, item ) %>
+        <%= render_selected_facet_value(solr_field, item) %>
+    <% else %>
+      <%= render_facet_value(solr_field, item)%>
     <% end -%>
     </span>
 

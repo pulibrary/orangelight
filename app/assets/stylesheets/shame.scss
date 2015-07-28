@@ -53,6 +53,24 @@ header .input-group-addon {
     }
 }
 
+.search-widgets select {
+     -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: 6px 12px;
+        width: 140px;
+        cursor: pointer;
+        outline: none;
+        font-size: 14px;
+        display: inline-block;
+}
+
+.search-widgets .field .caret {
+        position: relative;
+        z-index: 3;
+        left: -30px;
+    }
+
 .search_q.form-control,
 .search-btn {
     height: 42px;
@@ -152,13 +170,24 @@ header .input-group-addon {
         width: 100%;
         a {
             width: 100%;
-            font-size: 1.2em;
+            font-size: 14px;
         }
     }
     .btn-group.query {
         width: 100%;
     }
 }
+
+.button--start-over {
+        // width: 100%;
+        margin: 0;
+        padding: 0;
+        a {
+            // width: 100%;
+            font-size: 14px;
+            margin: 0;
+        }
+    }
 
 @media (min-width: 500px) and (max-width: $bp-medium) {
     .search-options {
@@ -486,11 +515,12 @@ footer a {
 .constraints-container {
     background: none;
     border: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
 }
 
 .button--start-over {
     display: inline-block;
-    background: $light-gray;
 }
 
 //blacklight.css.scss
@@ -525,9 +555,9 @@ rtl {
 //     margin-right: 10px;
 // }
 
-// .dl-horizontal dd {
-//     margin-left: 190px;
-// }
+.dl-horizontal dd {
+    width: auto;
+}
 
 ul {
     list-style-type: none;
@@ -557,6 +587,9 @@ ul {
     padding-left: 0px;
     word-break: none;
 }
+// .pivot-facet {
+//     width: 100%;
+// }
 
 .dl-nested dd {
     margin-left: 50px;
@@ -618,4 +651,145 @@ address {
 .nav > li > a:hover, .nav > li > a:focus {
     background: none;
     text-decoration: underline;
+}
+
+.search-widgets select, .navbar-nav > li > a, .navbar-nav > li.dropdown > button, .button--start-over a, .pagination-search-widgets .btn-default {
+    padding: 6px 12px;
+    margin: 3px;
+    background: $light-gray;
+    border: 1px solid $gray;
+    color: $black;
+
+    &:hover {
+        background: $blue;
+        color: $white;
+        text-decoration: none;
+    }
+}
+
+header .navbar-nav > li > a {
+    border: none;
+    border-radius: 3px;
+}
+
+.dropdown-account .dropdown-menu {
+    right: 0;
+      left: auto;
+}
+
+.document .icon,
+.facet-values .icon {
+    width: 18px;
+    height: 18px;
+    display: table-cell;
+    background-position: center;
+    background-size: contain;
+    padding-right: 0.5em;
+}
+
+.pivot-facet.facet-values .icon {
+    width: 14px;
+    height: 14px;
+
+}
+
+ul.facet-values {
+    border-spacing: 0 0.3em;
+    .facet-values, > ul {
+        border-spacing: 0;
+    }
+}
+
+.pivot-facet .pivot-facet {
+    padding: 0 0 0 1em;
+    // display: table;
+    width: 100%;
+    &.collapse.in, &.collapsing {
+        display: table;
+    }
+}
+
+.document-thumbnail {
+    display: block;
+    height: 110px;
+    width: 85px;
+
+    img, .default {
+        max-width: 75px;
+        height: auto;
+        height: 100px;
+        background-size: contain;
+    }
+}
+
+#sidebar .document-thumbnail {
+    display: block;
+    height: 160px;
+    width: 110px;
+
+    img, .default {
+        max-width: 100px;
+        height: auto;
+        height: 150px;
+        background-size: contain;
+    }
+}
+#sidebar .availability {
+    clear: both;
+}
+// .blacklight-format {
+//     .facet-values {
+//         margin-bottom: 0;
+//     }
+//     .facet-values .icon {
+//         // margin-right: 0.2em;
+//     }
+//     .facet-values .facet-label ,
+//     .facet-values .facet-count {
+//         display: table-cell;
+//         vertical-align: middle;
+//         line-height: 1.8em;
+//         padding: 0;
+//         text-indent: 0;
+//     }
+
+//     .facet-values .facet-label a {
+//         // padding-left: 1em;
+//     }
+// }
+
+.document .blacklight-format .icon {
+    display: inline-block;
+}
+.facet-values .icon,
+.facet-values .facet-label,
+.facet-values .facet-count {
+    padding: 0;
+    text-indent: 0;
+    vertical-align: middle;
+    line-height: 1.8em;
+}
+
+#facet-format .facet-values .facet-label,
+#facet-classification_pivot_field .facet-values .facet-label,
+#facet-sudoc_pivot_field .facet-values .facet-label {
+    padding-left: 0.5em;
+}
+
+.document-metadata {
+    line-height: 1.5em;
+    vertical-align: middle;
+    .icon {
+        line-height: 1em;
+        vertical-align: middle;
+        margin-right: 0.2em;
+    }
+    .blacklight-call_number_display {
+        margin-top: 1em;
+    }
+
+    .blacklight-format {
+        font-size: 0.875em;
+        text-transform: uppercase;
+    }
 }
