@@ -66,7 +66,7 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'format', :label => 'Format', partial: "facet_format"
+    config.add_facet_field 'format', :label => 'Format', partial: "facet_format", sort: 'index', :limit => 15
     config.add_facet_field 'subject_display', :label => 'Subject'
 
     # num_segments and segments set to defaults here, included to show customizable features
@@ -87,7 +87,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'author_s', :label => 'Author', :limit => true, show: false
     config.add_facet_field 'lc_rest_facet', :label => 'Full call number code', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'instrumentation_facet', :label => 'Instrumentation', :limit => true
-    config.add_facet_field 'location', :label => 'Library', :limit => true
+    config.add_facet_field 'location', :label => 'Library', :limit => 20, sort: 'index'
     config.add_facet_field 'call_number_browse_s', label: 'Call number', show: false
 
     config.add_facet_field 'sudoc_facet', :label => 'SuDoc call number code', :limit => 25, show: false, sort: 'index'

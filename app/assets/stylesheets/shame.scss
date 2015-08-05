@@ -812,3 +812,11 @@ ul.facet-values {
     color: darken($orange,10%);
     text-decoration: underline;
 }
+
+dd.blacklight-electronic_access_display {
+    word-break: break-all;
+}
+
+[dir="rtl"] {
+    font-family: verdana, arial;
+}
