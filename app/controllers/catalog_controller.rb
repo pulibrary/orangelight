@@ -66,7 +66,7 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'format', :label => 'Format', partial: "facet_format", sort: 'index', :limit => 15
+    config.add_facet_field 'format', :label => 'Format', partial: "facet_format", sort: 'index', :limit => 15, collapse: false
     config.add_facet_field 'subject_display', :label => 'Subject'
 
     # num_segments and segments set to defaults here, included to show customizable features

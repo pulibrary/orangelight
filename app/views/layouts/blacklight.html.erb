@@ -34,7 +34,7 @@
   <body class="<%= render_body_class %>">
   <%= render :partial => 'shared/header_navbar' %>
 
-  <%= render partial: 'shared/ajax_modal' %>
+  <%= render partial: 'shared/ajax_modal' %> <!-- only render if page is using modal -->
 
   <main role="main" id="main-container">
     <div class="container">
