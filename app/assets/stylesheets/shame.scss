@@ -551,9 +551,6 @@ ul {
     word-break: none;
 }
 
-// .pivot-facet {
-//     width: 100%;
-// }
 .dl-nested dd {
     margin-left: 50px;
     clear: left;
@@ -573,7 +570,7 @@ body {
 }
 
 main {
-    padding-top: 1em;
+    padding: 1em 0 1.5em;
 }
 
 address {
@@ -582,11 +579,11 @@ address {
 
 .subject-heirarchy {
     text-decoration: underline;
-    color: $orange;
+    color: darken($orange, 10%);
 }
 
 .search-subject:hover {
-    color: $orange;
+    color: darken($orange, 10%);
 }
 
 .search-subject:active {
@@ -654,13 +651,9 @@ header .navbar-nav > li > a {
     padding-right: 0.5em;
 }
 
-.pivot-facet.facet-values .icon {
-    width: 14px;
-    height: 14px;
-}
-
 ul.facet-values {
     border-spacing: 0 0.3em;
+    margin-bottom: 0;
     .facet-values,
     > ul {
         border-spacing: 0;
@@ -668,8 +661,7 @@ ul.facet-values {
 }
 
 .pivot-facet .pivot-facet {
-    padding: 0 0 0 2em;
-    // display: table;
+    padding: 0 0 0 3.5em;
     width: 100%;
     &.collapse.in,
     &.collapsing {
@@ -728,9 +720,7 @@ ul.facet-values {
     line-height: 1.2em;
 }
 
-#facet-format .facet-values .facet-label,
-#facet-classification_pivot_field .facet-values .facet-label,
-#facet-sudoc_pivot_field .facet-values .facet-label {
+.icon + .facet-label {
     padding-left: 0.5em;
 }
 
@@ -753,12 +743,8 @@ ul.facet-values {
 
 .tooltip > .tooltip-inner {
     max-width: 600px !important;
-    // background: $blue;
 }
 
-// .tooltip.bottom > .tooltip-arrow {
-//     border-bottom-color: $blue;
-// }
 .document a:hover {
     color: darken($orange, 10%);
     text-decoration: underline;
@@ -818,4 +804,39 @@ dd.blacklight-electronic_access_display {
 
 .prev_next_links.btn-group > .btn {
     float: none;
+}
+
+#marc_view {
+    font-family: courier, monospace;
+}
+
+#sortAndPerPage, .pagination-search-widgets {
+    border: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.welcome-message h2 {
+    margin-top: 0;
+}
+
+.umlaut-holding {
+    margin-bottom: 1.5em;
+}
+#full_text {
+    margin-bottom: 1.5em;
+}
+.availability .panel-body {
+    margin: 0;
+    padding: 1em;
+}
+.availability .availability--heading {
+    margin-bottom: 0;
+}
+.availability h3 {
+    margin-top: 0;
+}
+
+select::-ms-expand {
+    display: none;
 }
