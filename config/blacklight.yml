@@ -18,4 +18,4 @@ test: &test
   url: <%= "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8888}/solr/blacklight-core" %>
 production:
   adapter: solr
-  url: <%= ENV['SOLR_URL'] || "http://lib-solr1.princeton.edu:8984/solr/blacklight-core" %>
+  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
