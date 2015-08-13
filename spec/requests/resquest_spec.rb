@@ -1,5 +1,6 @@
 require "rails_helper"
 require "faraday"
+include ApplicationHelper
 
 describe "blacklight tests" do
 
@@ -157,6 +158,14 @@ describe "blacklight tests" do
       librarian_view = response.body
       bibdata = Faraday.get("http://bibdata.princeton.edu/bibliographic/#{id}").body
       expect(librarian_view).to eq bibdata
+    end
+  end
+
+  describe "classic catalog link" do
+    it "is accessible from record show view" do
+      id = '6574987'
+      get "/catalog/#{id}"
+      expect(response.body).to include voyager_url(id)
     end
   end
 end

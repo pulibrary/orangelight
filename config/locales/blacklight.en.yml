@@ -2,6 +2,7 @@ en:
   blacklight:
     application_name: 'Orangelight'
     welcome: 'Welcome!'
+    voyager: 'Classic Catalog'
 
     header_links:
       login: 'My Account'

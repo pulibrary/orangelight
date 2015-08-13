@@ -92,7 +92,7 @@ module ApplicationHelper
         full_sub = sub_array[i][j]
       end
       lnk += '  '
-      lnk += link_to('[Browse]', "/browse/subjects?q=#{full_sub}", class: "browse-subject", 'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{full_sub}", title: "Browse: #{full_sub}")
+      lnk += link_to('[Browse]', "/browse/subjects?q=#{full_sub}", class: "browse-subject", 'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{full_sub}", title: "Browse: #{full_sub}", dir: "#{getdir(full_sub)}")
       args[:document][args[:field]][i] = lnk.html_safe
     end
 
@@ -101,7 +101,7 @@ module ApplicationHelper
 
   def browse_name args
     args[:document][args[:field]].each_with_index do |name, i|
-      newname = link_to(name, "/?f[author_s][]=#{name}", class: "search-name", 'data-toggle' => "tooltip", 'data-original-title' => "Search: #{name}", title: "Search: #{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", class: "browse-name", 'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{name}", title: "Browse: #{name}")
+      newname = link_to(name, "/?f[author_s][]=#{name}", class: "search-name", 'data-toggle' => "tooltip", 'data-original-title' => "Search: #{name}", title: "Search: #{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", class: "browse-name", 'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{name}", title: "Browse: #{name}", dir: "#{getdir(name)}")
       args[:document][args[:field]][i] = newname.html_safe
     end
   end
@@ -110,7 +110,7 @@ module ApplicationHelper
     args[:document][args[:field]].each_with_index do |name, i|
       rel_term =  /^.*：/.match(name) ? /^.*：/.match(name)[0] : ''
       rel_name = name.gsub(/^.*：/,'')
-      newname = rel_term + link_to(rel_name, "/?f[author_s][]=#{rel_name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{rel_name}", class: "browse-related-name")
+      newname = rel_term + link_to(rel_name, "/?f[author_s][]=#{rel_name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{rel_name}", class: "browse-related-name", dir: "#{getdir(rel_name)}")
       args[:document][args[:field]][i] = newname.html_safe
     end
   end
@@ -128,6 +128,10 @@ module ApplicationHelper
   def format_icon args
     var = args[:document][args[:field]][0]
     "#{render_icon(var)} #{var}".html_safe
+  end
+
+  def voyager_url bibid
+    "http://catalog.princeton.edu/cgi-bin/Pwebrecon.cgi?BBID=#{bibid}"
   end
 
 end
