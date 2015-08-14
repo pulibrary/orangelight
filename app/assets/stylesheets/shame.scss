@@ -704,6 +704,9 @@ ul.facet-values {
 
 .document .blacklight-format .icon {
     display: inline-block;
+    width: auto;
+    height: auto;
+    padding-right: 0;
 }
 
 .facet-values .icon,
@@ -716,8 +719,8 @@ ul.facet-values {
 }
 
 .facet-values .icon {
-    font-size: 1.55em;
-    line-height: 1.2em;
+    font-size: 1.4em;
+    line-height: 1.4em;
 }
 
 .icon + .facet-label {
@@ -756,6 +759,9 @@ dd.blacklight-electronic_access_display {
 
 [dir="rtl"] {
     font-family: verdana, arial;
+}
+li[dir="rtl"] {
+    text-align: right;
 }
 
 .other-resources ul li {
