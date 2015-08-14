@@ -9,7 +9,7 @@
     font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"], [class*=" icon-"], .toggle, .toggle.collapsed, .document-thumbnail .default {
     font-family: 'icomoon';
     speak: none;
     font-style: normal;
@@ -17,60 +17,72 @@
     font-variant: normal;
     text-transform: none;
     line-height: 1;
+    text-decoration: none;
 
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-senior-thesis:before {
+.icon-senior-thesis:before, .blacklight-senior-thesis .document-thumbnail .default:before {
     content: "\e600";
 }
-.icon-data-file:before {
+.icon-data-file:before, .blacklight-data-file .document-thumbnail .default:before {
     content: "\e601";
 }
-.icon-map:before {
+.icon-map:before, .blacklight-map .document-thumbnail .default:before {
     content: "\e602";
 }
-.icon-manuscript:before {
+.icon-manuscript:before, .blacklight-manuscript .document-thumbnail .default:before {
     content: "\e603";
 }
-.icon-audio:before {
+.icon-audio:before, .blacklight-audio .document-thumbnail .default:before {
     content: "\e604";
 }
-.icon-musical-score:before {
+.icon-musical-score:before, .blacklight-musical-score .document-thumbnail .default:before {
     content: "\e605";
 }
-.icon-video-projected-medium:before {
+.icon-video-projected-medium:before, .blacklight-video-projected-medium .document-thumbnail .default:before {
     content: "\e606";
 }
-.icon-visual-material:before {
+.icon-visual-material:before, .blacklight-visual-material .document-thumbnail .default:before{
     content: "\e607";
 }
-.icon-toggle:before {
+.toggle.collapsed:before {
     content: "\e608";
 }
 .icon-remove:before {
     content: "\e609";
 }
-.icon-toggle.collapsed:before {
+.toggle:before {
     content: "\e60a";
 }
-.icon-book:before {
+.icon-book:before, .blacklight-book .document-thumbnail .default:before {
     content: "\e60b";
 }
-.icon-journal:before {
+.icon-journal:before, .blacklight-journal .document-thumbnail .default:before {
     content: "\e60c";
 }
-.icon-mixed-material:before {
+.icon-mixed-material:before, .blacklight-mixed-material .document-thumbnail .default:before {
     content: "\e60d";
 }
-.icon-thesis:before {
+.icon-thesis:before, .blacklight-thesis .document-thumbnail .default:before {
     content: "\e60e";
 }
-.icon-unknown:before {
+.icon-unknown:before, .blacklight-unknown .document-thumbnail .default:before {
     content: "\e60f";
 }
 .icon-search:before {
     content: "\e610";
+}
+
+a:link.toggle,
+a:visited.toggle,
+a:hover.toggle,
+a:active.toggle {
+    text-decoration: none;
+}
+
+.document-thumbnail .default {
+    font-size: 5.5em;
 }
