@@ -20,6 +20,7 @@ class CatalogController < ApplicationController
 
     # items to show per page, each number in the array represent another option to choose from.
     #config.per_page = [10,20,50,100]
+    config.default_per_page = 20
 
     ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SolrHelper#solr_doc_params) or
     ## parameters included in the Blacklight-jetty document requestHandler.
@@ -66,6 +67,7 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
+    config.add_facet_field 'access_facet', label: 'Access', sort: 'index', collapse: false
     config.add_facet_field 'format', :label => 'Format', partial: "facet_format", sort: 'index', :limit => 15, collapse: false
     config.add_facet_field 'subject_display', :label => 'Subject'
 
