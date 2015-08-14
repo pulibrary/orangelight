@@ -9,7 +9,7 @@ describe "Tools links"  do
         end
     end
 
-    ['SMS', 'Email', 'Librarian View', 'Cite'].each do |link_text|
+    ['SMS', 'Email', 'Librarian View', 'Cite', 'Classic Catalog'].each do |link_text|
         it "#{link_text} appears for record view" do
             find_link(link_text)
         end

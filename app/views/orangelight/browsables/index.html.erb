@@ -47,9 +47,9 @@
             <li class="row-<%=i.even? ? 'even' : 'odd' %>">
           <% end %>
             &nbsp;
-            <span class="facet-label <%=orangelight_name.dir%>"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{orangelight_name.label}" %>
+            <span class="facet-label <%=orangelight_name.dir%>"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{orangelight_name.label}", dir: orangelight_name.dir %>
               <%= "(#{orangelight_name.count})"%>
-            <%= link_to "[more info]", "#{@model}/#{orangelight_name.id}", class: "more-info;" %></span>
+            <%= link_to "[more info]", "#{@model}/#{orangelight_name.id}", class: "more-info;", dir: orangelight_name.dir %></span>
           <% if orangelight_name.id == @match && @exact_match %>
               </strong>
             </li>
