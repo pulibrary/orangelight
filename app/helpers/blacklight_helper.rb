@@ -37,6 +37,10 @@ module BlacklightHelper
     end
   end
 
+  def only_home_facets solr_parameters, user_paramters
+    solr_parameters['facet.field'], solr_parameters['facet.pivot'] = home_facets, [] unless has_search_parameters?
+  end
+
   # Returns suitable argument to options_for_select method, to create
   # an html select based on #search_field_list with labels for search
   # bar only. Skips search_fields marked :include_in_simple_select => false
@@ -102,6 +106,10 @@ module BlacklightHelper
 
   def render_icon var
     "<span class='icon icon-#{var.parameterize}'></span>".html_safe
+  end
+
+  def multiple_holdings? document, field_name
+    field_name == 'call_number_display' and document[field_name].size > 2
   end
 
   # def altscript! values

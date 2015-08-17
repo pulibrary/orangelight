@@ -9,7 +9,7 @@ class CatalogController < ApplicationController
 
 
 
-  self.search_params_logic += [:left_anchor_strip, :redirect_browse]
+  self.search_params_logic += [:only_home_facets, :left_anchor_strip, :redirect_browse]
 
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
@@ -67,14 +67,14 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'access_facet', label: 'Access', sort: 'index', collapse: false
-    config.add_facet_field 'format', :label => 'Format', partial: "facet_format", sort: 'index', :limit => 15, collapse: false
+    config.add_facet_field 'access_facet', label: 'Access', sort: 'index', collapse: false, home: true
+    config.add_facet_field 'format', :label => 'Format', partial: "facet_format", sort: 'index', :limit => 15, collapse: false, home: true
     config.add_facet_field 'subject_display', :label => 'Subject'
 
     # num_segments and segments set to defaults here, included to show customizable features
     config.add_facet_field 'pub_date_start_sort', :label => 'Publication Year', :single => true, :range => {
       :num_segments => 10,
-      :assumed_boundaries => [1100, 2014],
+      :assumed_boundaries => [1100, Time.now.year+1],
       :segments => true
     }
     config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20

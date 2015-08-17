@@ -46,4 +46,13 @@ module FacetsHelper
       pivot.each { |field| in_params = true if params[:f] and params[:f][field] }
       return in_params
   end
+
+  def render_home_facets
+    render_facet_partials home_facets
+  end
+
+  def home_facets
+    blacklight_config.facet_fields.select {|_, v| v[:home] }.keys
+  end
+
 end
