@@ -9,7 +9,7 @@ class CatalogController < ApplicationController
 
 
 
-  self.search_params_logic += [:only_home_facets, :left_anchor_strip, :redirect_browse]
+  self.search_params_logic += [:cjk_mm, :only_home_facets, :left_anchor_strip, :redirect_browse]
 
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
@@ -69,7 +69,6 @@ class CatalogController < ApplicationController
     # facet bar
     config.add_facet_field 'access_facet', label: 'Access', sort: 'index', collapse: false, home: true
     config.add_facet_field 'format', :label => 'Format', partial: "facet_format", sort: 'index', :limit => 15, collapse: false, home: true
-    config.add_facet_field 'subject_display', :label => 'Subject'
 
     # num_segments and segments set to defaults here, included to show customizable features
     config.add_facet_field 'pub_date_start_sort', :label => 'Publication Year', :single => true, :range => {
@@ -77,15 +76,11 @@ class CatalogController < ApplicationController
       :assumed_boundaries => [1100, Time.now.year+1],
       :segments => true
     }
-    config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20
-    #config.add_facet_field 'subject_topic1_facet', :label => 'Topic', :limit => 20, show: false
-    #config.add_facet_field 'subject_topic2_facet', :label => 'Topic', :limit => 20, show: false
-    #config.add_facet_field 'subject_topicfull_facet', :label => 'Topic', :limit => 20, show: false
+    config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => true
     config.add_facet_field 'language_facet', :label => 'Language', :limit => true
     config.add_facet_field 'lc_1letter_facet', :label => 'Classification', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'subject_geo_facet', :label => 'Region', :limit => true
     config.add_facet_field 'subject_era_facet', :label => 'Era', :limit => true
-    #config.add_facet_field 'pub_created_s', :label => 'Published/Created'
     config.add_facet_field 'author_s', :label => 'Author', :limit => true, show: false
     config.add_facet_field 'lc_rest_facet', :label => 'Full call number code', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'instrumentation_facet', :label => 'Instrumentation', :limit => true
@@ -101,8 +96,6 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'classification_pivot_field', :label => 'Classification', :pivot => ['lc_1letter_facet', 'lc_rest_facet']
     config.add_facet_field 'sudoc_pivot_field', :label => 'SuDocs', :pivot => ['sudoc_group_facet', 'sudoc_facet']
-    #config.add_facet_field 'classifications_pivot_field', :label => 'Classifications', :pivot => ['call_number_scheme_facet', 'call_number_group_facet', 'call_number_full_facet']
-    #config.add_facet_field 'subject_pivot_field', :label => 'Topic', :pivot => ['subject_topic1_facet', 'subject_topic2_facet', 'subject_topicfull_facet']
 
 
     # config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
@@ -119,18 +112,9 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    # config.add_index_field 'title_display', :label => 'Title'
-    # config.add_index_field 'title_vern_display', :label => 'Title'
     config.add_index_field 'author_display', :label => 'Author', :helper_method => :browse_name
-    #config.add_index_field 'author_vern_display', :label => 'Author'
-    #config.add_index_field 'language_facet', :label => 'Language'
-    #config.add_index_field 'published_display', :label => 'Published'
-    #config.add_index_field 'published_vern_display', :label => 'Published'
-    #config.add_index_field 'lc_callnum_display', :label => 'Call number'
     config.add_index_field 'pub_created_display', :label => 'Published/Created'
     config.add_index_field 'format', :label => 'Format', helper_method: :format_icon
-    #config.add_index_field 'description_display', :label => 'Description'
-    #config.add_index_field 'location', :label => 'Location', helper_method: :multiple_locations
     config.add_index_field 'call_number_display', :label => 'Holding info', helper_method: :holding_block_search
 
     # solr fields to be displayed in the show (single result) view
@@ -140,9 +124,7 @@ class CatalogController < ApplicationController
     # config.add_show_field 'subtitle_display', :label => 'Subtitle'
     # config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
 
-    # tring with author_s
-    #config.add_show_field 'author_display', :label => 'Author'#, :helper_method => :altscript
-    #config.add_show_field 'author_vern_display', :label => 'Author'
+
     config.add_show_field 'author_display', :label => 'Author', :helper_method => :browse_name
     config.add_show_field 'format', :label => 'Formats'
     config.add_show_field 'url_fulltext_display', :label => 'URL'
@@ -150,15 +132,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'language_facet', :label => 'Language'
     config.add_show_field 'published_display', :label => 'Published'
     config.add_show_field 'published_vern_display', :label => 'Published'
-    #config.add_show_field 'lc_callnum_display', :label => 'Call number'
     config.add_show_field 'isbn_t', :label => 'ISBN'
     config.add_show_field 'pub_created_display', :label => 'Published/Created'
-    #config.add_show_field 'pub_date_start_sort', :label => 'Published Sort Date'
-    #config.add_show_field 'location_display', :label => 'Location'
-    #config.add_show_field 'location_code_display', :label => 'Find it', :helper_method => :wheretofind
-
-    # passing extra data from controller
-    # config.add_show_field 'language_code_s', :label => 'Language', super_duper_info: "huzza!"
 
 
     config.add_show_field 'uniform_title_display', :label => 'Uniform Title'
@@ -255,7 +230,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'cumulative_index_finding_aid_display', :label => 'Cumulative index finding aid'
     config.add_show_field 'subject_display', :label => 'Subject(s)', helper_method: :subjectify
     config.add_show_field 'form_genre_display', :label => 'Form genre'
-    #config.add_show_field 'related_name_display', :label => 'Related name(s)', :helper_method => :browse_related_name
     config.add_show_field 'related_works_display', :label => 'Related work(s)'
     config.add_show_field 'contains_display', :label => 'Contains'
     config.add_show_field 'place_name_display', :label => 'Place name(s)'
@@ -270,7 +244,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'standard_no_display', :label => 'Standard no.'
     config.add_show_field 'original_language_display', :label => 'Original language'
     config.add_show_field 'call_number_display', :label => 'Holding info', helper_method: :holding_block
-    #config.add_show_field 'holdings_1display', :label => 'Holding info'#, helper_method: :show_holdings
     config.add_show_field 'shelving_title_display', :label => 'Shelving title'
     config.add_show_field 'location_has_display', :label => 'Location has'
     config.add_show_field 'location_has_current_display', :label => 'Location has (current)'

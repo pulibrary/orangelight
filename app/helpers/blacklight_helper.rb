@@ -2,22 +2,6 @@
 module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior
   require './lib/orangelight/string_functions'
- #  RTL_RANGE = [0x590..0x8FF, 0xFB1D..0xFB44, 0xFB50..0xFDFF, 0xFE70..0xFEFF, 0x10800..0x10F00]
- #  CHECK_INDEXES = [0,5,11]
-
-
-	# def getdir(str, opts={})
-	#   opts.fetch(:check_indexes, CHECK_INDEXES).each do |i|
-	#     RTL_RANGE.each do |subrange|
-	#       if str[i]
-	#       	if subrange.cover?(str[i].unpack('U*0')[0])
-	#           return "rtl"
-	#         end
-	#       end
-	#     end
-	#   end
-	#   return "ltr"
-	# end
 
   def getdir(str, opts={})
     StringFunctions.getdir(str,opts)
@@ -63,6 +47,36 @@ module BlacklightHelper
       end
 
     end
+  end
+
+  # Adapted from http://discovery-grindstone.blogspot.com/2014/01/cjk-with-solr-for-libraries-part-12.html
+  def cjk_mm solr_parameters, user_parameters
+    if user_parameters && user_parameters[:q].present?
+      q_str = user_parameters[:q]
+      number_of_unigrams = cjk_unigrams_size(q_str)
+      if number_of_unigrams > 2
+        num_non_cjk_tokens = q_str.scan(/[[:alnum]]+/).size
+        if num_non_cjk_tokens > 0
+          lower_limit = cjk_mm_val[0].to_i
+          mm = (lower_limit + num_non_cjk_tokens).to_s + cjk_mm_val[1, cjk_mm_val.size]
+          solr_parameters['mm'] = mm
+        else
+          solr_parameters['mm'] = cjk_mm_val
+        end
+      end
+    end
+  end
+
+  def cjk_unigrams_size(str)
+    if str && str.kind_of?(String)
+      str.scan(/\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/).size
+    else
+      0
+    end
+  end
+
+  def cjk_mm_val
+    "3<86%"
   end
 
   def browse_related_name_hash name
