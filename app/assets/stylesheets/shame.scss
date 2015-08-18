@@ -256,7 +256,7 @@ header .input-group-addon {
     // margin: 1.5em 0;
     // padding: 0 0 1.5em;
     margin: 0;
-    padding: 1em 0;
+    padding: 0.75em 0 0.5em;
 }
 
 .documents-list dl {
@@ -671,7 +671,7 @@ ul.facet-values {
 
 .document-thumbnail {
     display: block;
-    height: 110px;
+    // height: 110px;
     width: 85px;
     margin-bottom: 0;
     padding: 0;
@@ -679,7 +679,7 @@ ul.facet-values {
     .default {
         max-width: 75px;
         height: auto;
-        height: 100px;
+        // height: 100px;
         background-size: contain;
         background-position: center;
     }
@@ -818,7 +818,7 @@ li[dir="rtl"] {
 
 #sortAndPerPage, .pagination-search-widgets {
     border: none;
-    margin-bottom: 0;
+    margin-bottom: 1em;
     padding-bottom: 0;
 }
 
@@ -844,6 +844,10 @@ li[dir="rtl"] {
 }
 
 select::-ms-expand {
+    display: none;
+}
+
+.ie9 select + .caret {
     display: none;
 }
 
