@@ -4,7 +4,7 @@
 
   <% index_fields(document).each do |solr_fname, field| -%>
     <% if should_render_index_field? document, field %>
-      <% if document[solr_fname].length == 1 || !document[solr_fname].is_a?(Array) || solr_fname == "location" %>
+      <% if document[solr_fname].length == 1 || !document[solr_fname].is_a?(Array) || multiple_holdings?(document, solr_fname) %>
         <% valdir = getdir(document[solr_fname])%>
         <% value = render_index_field_value document, :field => solr_fname %>
         <li class="blacklight-<%= solr_fname.parameterize %>" dir="<%= valdir %>"><%= value %></li>

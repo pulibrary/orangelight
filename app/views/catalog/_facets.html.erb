@@ -16,7 +16,7 @@
   </div>
 
   <div id="facet-panel-collapse" class="collapse panel-group">
-    <%= render_facet_partials %>
+    <%= has_search_parameters? ? render_facet_partials : render_home_facets %>
   </div>
 </div>
 <% end %>
