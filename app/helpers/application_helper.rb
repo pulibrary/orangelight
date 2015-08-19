@@ -57,12 +57,6 @@ module ApplicationHelper
     end
   end
 
-  # def relatedor args
-  #   args[:document][args[:field]].each_with_index do |related_name, i|
-  #     args[:document][args[:field]][i] = "#{args[:document]['marc_relatedor_display'][i]}: #{related_name}"
-  #   end
-  # end
-
   SEPARATOR = '—'
   QUERYSEP = '—'
   def subjectify args

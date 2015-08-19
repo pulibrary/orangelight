@@ -59,10 +59,6 @@ RSpec.describe "Orangelight Browsables", :type => :request do
     end
   end
 
-  describe "Query Functionality" do
-  	it "properly lowercases Russian characters"
-  end
-
 end
 
 
