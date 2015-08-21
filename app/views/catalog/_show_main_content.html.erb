@@ -21,8 +21,8 @@
       var ctx = $("span.Z3988").attr("title");
       var umlaut_base = "https://getit-dev.princeton.edu";
       var updater = new Umlaut.HtmlUpdater(umlaut_base, ctx );
-      updater.add_section_target({ 
-        umlaut_section_id: "fulltext", 
+      updater.add_section_target({
+        umlaut_section_id: "fulltext",
         selector:"#full_text",
         before_update: function(html, count) {
           //hide the section heading on the snippet, we don't want it
@@ -30,11 +30,11 @@
           return (count != 0);
         }
       });
-      updater.add_section_target({ 
-        umlaut_section_id: "holding", 
+      updater.add_section_target({
+        umlaut_section_id: "holding",
         selector:"#holding",
         before_update: function(html, count) {
-          $(html).find(".section_heading h3").hide();
+          // $(html).find(".section_heading h3").hide();
         }
       });
       updater.update();

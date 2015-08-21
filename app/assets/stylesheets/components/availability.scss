@@ -1,0 +1,55 @@
+.umlaut-section {
+    padding: 1.5rem;
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
+    background: white;
+    margin: 0 1rem 1rem;
+    border-radius: 3px;
+
+    h3 {
+        font-size: 1.2em;
+        margin: 0 0 1em;
+        padding-bottom: 1em;
+        border-bottom: 2px solid #eee;
+    }
+}
+
+.umlaut_section_content {
+    font-size: 0.9em;
+}
+
+.umlaut-holding, .response_item {
+    margin-bottom: 1em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid #eee;
+}
+
+.response_list {
+    margin-bottom: 0;
+}
+
+.umlaut-holdings div:nth-last-of-type(2), .response_list li:last-child {
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.collection-str, .response_link {
+    font-weight: bold;
+}
+
+.holding-status, .call-number, .response_notes, .edition_warning {
+    font-size: 0.8em;
+}
+
+.holding-status , .response_notes, .edition_warning {
+    margin-top: 0.7em;
+}
+
+.umlaut-holding-notes {
+    display: none;
+}
+
+.holding-actions .btn {
+    font-size: 0.9em;
+    margin-top: 1em;
+}
