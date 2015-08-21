@@ -2,15 +2,9 @@
   <div class="default"></div>
 </div>
 
-<div class="availability panel panel-default">
-    <h2 class="availability--heading panel-heading">Availability</h2>
-    <ul class="panel-body">
-        <li class="holding-info">
-            <div id="full_text"></div>
-            <h3 class="holding-info holding-info--heading">Copies in Library</h3>
-            <div id="holding"></div>
-        </li>
-    </ul>
+<div class="availability">
+  <div id="full_text" class="availability--panel availability_full-text"></div>
+  <div id="holding" class="availability--panel availability_holding"></div>
 </div>
 
 <% unless @document.more_like_this.empty? %>

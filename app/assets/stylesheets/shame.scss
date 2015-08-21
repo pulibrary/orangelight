@@ -646,6 +646,10 @@ header .navbar-nav > li > a {
     padding-right: 0;
 }
 
+.document dl {
+    font-size: 0.9em;
+}
+
 .document-metadata {
     line-height: 1.5em;
     vertical-align: middle;
@@ -733,27 +737,6 @@ li[dir="rtl"] {
     margin-top: 0;
 }
 
-.umlaut-holding {
-    margin-bottom: 1.5em;
-}
-
-#full_text {
-    margin-bottom: 1.5em;
-}
-
-.availability .panel-body {
-    margin: 0;
-    padding: 1em;
-}
-
-.availability .availability--heading {
-    margin-bottom: 0;
-}
-
-.availability h3 {
-    margin-top: 0;
-}
-
 select::-ms-expand {
     display: none;
 }
@@ -769,3 +752,4 @@ select::-ms-expand {
 .icon.toggle {
     color: black;
 }
+
