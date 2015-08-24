@@ -56,17 +56,28 @@ header .input-group-addon {
     -moz-appearance: none;
     appearance: none;
     padding: 6px 12px;
-    width: 140px;
+    width: 136px;
     cursor: pointer;
     outline: none;
     font-size: 14px;
     display: inline-block;
 }
 
+.search-widgets .folders {
+    font-size: 0.85em;
+    margin-top: 2px;
+}
+
 .search-widgets .field .caret {
     position: relative;
-    z-index: 3;
     left: -30px;
+}
+.search-widgets .field:hover .caret {
+    color: $white;
+}
+
+.btn .caret, .facets-toggle .caret {
+    margin-left: 2px;
 }
 
 .search_q.form-control,
@@ -110,56 +121,6 @@ header .input-group-addon {
     }
 }
 
-@media (max-width: 500px) {
-    .l-branding__pul .logo__pul {
-        margin: 0;
-        padding: 0;
-    }
-    .header__secondary .container {
-        height: 140px;
-    }
-    .header__secondary .container .navbar-right {
-        width: 100%;
-        margin-top: 1em;
-    }
-    .search-options,
-    .header__secondary .container .navbar-right .navbar-nav,
-    .l-branding__pul .menu--level-1 {
-        margin: 0 auto;
-        text-align: center;
-        width: 100%;
-        li {
-            display: inline-block;
-            float: none
-        }
-    }
-    #sortAndPerPage {
-        margin: 0 auto;
-        text-align: center;
-        width: 100%;
-        .page_links,
-        .search-widgets {
-            display: inline-block;
-            float: none;
-            font-size: 1.2em;
-            width: 100%;
-        }
-    }
-    .l-branding__pul .menu--level-1 ul li {
-        font-size: 1.2em;
-    }
-    .button--start-over {
-        width: 100%;
-        a {
-            width: 100%;
-            font-size: 14px;
-        }
-    }
-    .btn-group.query {
-        width: 100%;
-    }
-}
-
 .button--start-over {
     // width: 100%;
     margin: 0;
@@ -199,7 +160,7 @@ header .input-group-addon {
     }
     .search-options li a {
         font-size: 0.8em;
-        padding-left: 1em;
+        // padding-left: 1em;
     }
 }
 
@@ -249,7 +210,7 @@ header .input-group-addon {
 }
 
 .documents-list h3 {
-    font-size: 1.4em;
+    font-size: 1.3em;
     margin-top: 0;
 }
 
@@ -357,7 +318,7 @@ footer a {
 .l-region--footer address,
 .l-region--footer .footer--copyright,
 .l-region--footer li a {
-    color: #808489;
+    color: $dark-gray;
     font-size: 0.9em;
 }
 
@@ -583,7 +544,8 @@ address {
 .navbar-nav > li > a,
 .navbar-nav > li.dropdown > button,
 .button--start-over a,
-.pagination-search-widgets .btn-default {
+.pagination-search-widgets .btn-default,
+.search-widgets button {
     padding: 6px 12px;
     margin: 3px;
     background: $light-gray;
@@ -594,6 +556,44 @@ address {
         color: $white;
         text-decoration: none;
     }
+}
+
+#sort-dropdown .dropdown-toggle,
+#per_page-dropdown .dropdown-toggle {
+
+    color: $black;
+
+    &:hover,
+    &:active {
+        color: $white;
+        background: $blue;
+
+        .caret {
+            color: $white;
+        }
+    }
+}
+
+.dropdown-menu {
+    left: auto;
+    right: 3px;
+    min-width: 114px;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background: $blue;
+    color: $white;
+}
+
+.header__secondary .navbar-nav > li > .dropdown-menu {
+    margin-top: 8px;
+    right: 3px;
+}
+.caret {
+    z-index: auto;
+}
+.btn-group.open .dropdown-toggle {
+    box-shadow: none;
 }
 
 header .navbar-nav > li > a {
@@ -749,7 +749,9 @@ select::-ms-expand {
     padding-left: 30px;
 }
 
-.icon.toggle {
-    color: black;
+.add-to-folder-label {
+    cursor: pointer;
+        padding: 5px;
+    font-size: 0.85em;
 }
 
