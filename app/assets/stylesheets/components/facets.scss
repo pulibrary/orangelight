@@ -110,3 +110,13 @@ ul.facet-values {
         margin: 0;
     }
 }
+
+@media (max-width: $bp-small){
+    .facets-toggle {
+        margin: 0;
+    }
+    .facets-heading {
+        padding:0.5em;
+        margin-bottom: 0;
+    }
+}

@@ -1,3 +1,7 @@
-.welcome-message {
-  padding-top: 3em;
+@import "variables/breaks";
+
+@media (min-width: $bp-small) {
+    .welcome-message {
+      padding-top: 3em;
+    }
 }
