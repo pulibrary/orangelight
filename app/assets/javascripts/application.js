@@ -11,12 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require 'blacklight_advanced_search'
-
-
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //
+//= require 'blacklight_advanced_search'
 // Required by Blacklight
 //= require blacklight/blacklight
 //
@@ -32,3 +30,4 @@
 //= require modernizr
 
 //= require orangelight
+//= require turbolinks
