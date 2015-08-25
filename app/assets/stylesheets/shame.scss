@@ -751,7 +751,18 @@ select::-ms-expand {
 
 .add-to-folder-label {
     cursor: pointer;
-        padding: 5px;
+    padding: 5px;
     font-size: 0.85em;
+    font-weight: normal;
 }
 
+
+.row-odd + .alert {
+    margin-top: 0;
+}
+
+#folder-tools {
+    display: inline-block;
+    margin-top: 0;
+    height: auto;
+}
