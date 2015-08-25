@@ -2,24 +2,6 @@
 @import "variables/colors";
 @import "variables/typography";
 
-.facet-values .icon,
-.facet-values .facet-label,
-.facet-values .facet-count {
-    text-indent: 0;
-    vertical-align: top;
-    line-height: 1.8em;
-    padding: 0;
-}
-
-.facet-values .icon {
-    font-size: 1.275em;
-    line-height: 1.4em;
-}
-
-.icon + .facet-label {
-    padding-left: .5em;
-}
-
 .facet_limit-active,
 .facet_limit-active > .panel-heading {
     color: #333;
@@ -40,9 +22,34 @@
     vertical-align: middle;
 }
 
-.facet-values .remove .glyphicon {
-    top: 1px;
-    vertical-align: text-top;
+.facet-values .remove .glyphicon-remove {
+    top: -1px;
+    font-size: 1.2em;
+}
+
+.facet-values .icon,
+.facet-values .facet-label,
+.facet-values .facet-count {
+    text-indent: 0;
+    line-height: 1.8em;
+    padding: 0;
+}
+
+.facet-values .icon {
+    font-size: 1.275em;
+    line-height: 1.4em;
+}
+
+.icon + .facet-label {
+    padding-left: .5em;
+}
+
+.facet-values .icon,
+.facet-values .facet-label,
+.facet-values .facet-count,
+.facet-label .selected,
+.facet-values .remove .glyphicon-remove {
+    vertical-align: middle;
 }
 
 .facet-values .facet-label,
