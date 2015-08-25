@@ -183,4 +183,13 @@ describe "blacklight tests" do
       expect(r["response"]["facets"].any? {|f| f['name'] == 'instrumentation_facet'}).to eq true
     end
   end
+
+  describe "facets in search results" do
+    it "are configured with a tooltip for removing the book format facet parameter" do
+      get "/?f%5Bformat%5D%5B%5D=Book&q=&search_field=all_fields"
+      expect(response.body.include?('<span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-original-title="Remove"></span>')).to eq true
+      get "/?q=&search_field=all_fields"
+      expect(response.body.include?('<span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-original-title="Remove"></span>')).to eq false      
+    end
+  end
 end

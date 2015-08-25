@@ -17,6 +17,13 @@ $( document ).ready(function() {
         container: "body"
     });
 
+    //tooltip for subject heirarchy
+    $(".facet-values").tooltip({
+        selector: "[data-toggle='tooltip']",
+        placement: "right",
+        container: "body"
+    });
+
     //on change, submit form / add to folder
     $('#folder_id').change(function() {
         this.form.submit();
