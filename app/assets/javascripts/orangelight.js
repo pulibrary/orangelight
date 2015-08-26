@@ -24,8 +24,11 @@ $( document ).ready(function() {
         container: "body"
     });
 
-    //on change, submit form / add to folder
-    $('#folder_id').change(function() {
-        this.form.submit();
-    });
+    ///////////////////////////////////////////
+    // temporarily disable blacklight folders//
+    //on change, submit form / add to folder //
+    // $('#folder_id').change(function() {   //
+    //     this.form.submit();               //
+    // });                                   //
+    ///////////////////////////////////////////
 });

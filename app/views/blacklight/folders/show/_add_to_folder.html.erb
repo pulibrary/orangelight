@@ -1,17 +1,17 @@
-<% options_for_select = options_for_folder_select(without: @document) %>
+<%# options_for_select = options_for_folder_select(without: @document) %>
 
-<% unless options_for_select.empty? %>
-  <div>
-    <%= form_for :folder, url: blacklight_folders.add_bookmarks_to_folder_path, method: :patch do |f| %>
+<%# unless options_for_select.empty? %>
+  <!-- <div> -->
+    <%#= form_for :folder, url: blacklight_folders.add_bookmarks_to_folder_path, method: :patch do |f| %>
 
-      <%= hidden_field_tag(:document_ids, @document.id) %>
+      <%#= hidden_field_tag(:document_ids, @document.id) %>
 
-      <div class="field">
-        <label for="folder_id" class="sr-only">Folder name</label>
-        <%= f.select :id, options_for_select, prompt: t(:'.select.prompt') %>
-        <span class="caret"></span>
-        <%= f.submit 'Add to Folder', class: 'sr-only' %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+      <!-- <div class="field"> -->
+        <!-- <label for="folder_id" class="sr-only">Folder name</label> -->
+        <%#= f.select :id, options_for_select, prompt: t(:'.select.prompt') %>
+        <!-- <span class="caret"></span> -->
+        <%#= f.submit 'Add to Folder', class: 'sr-only' %>
+      <!-- </div> -->
+    <%# end %>
+  <!-- </div> -->
+<%# end %>
