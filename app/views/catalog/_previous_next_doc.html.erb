@@ -37,21 +37,21 @@
           </ul>
         </li>
         <li>
-        <%= render 'blacklight/folders/show/add_to_folder' %>
-          <!-- <%= render(:partial => 'catalog/bookmark_control', :locals => {:document=> @document}) %> -->
+        <%#= render 'blacklight/folders/show/add_to_folder' %>
+          <%= render(:partial => 'catalog/bookmark_control', :locals => {:document=> @document}) %>
         </li>
-        <li>
-          <% in_folders = Blacklight::Folders::Folder.for_user(current_or_guest_user).with_document(@document) %>
-            <% unless in_folders.empty? %>
-              <div class="folders">
-                  Contained in
-                  <ul>
-                    <% in_folders.each do |folder| %>
-                      <li> <%= link_to folder.name, blacklight_folders.folder_path(folder) %> </li>
-                    <% end %>
-                  </ul>
-            <% end %>
-        </li>
+        <!-- <li> -->
+          <%# in_folders = Blacklight::Folders::Folder.for_user(current_or_guest_user).with_document(@document) %>
+            <%# unless in_folders.empty? %>
+              <!-- <div class="folders"> -->
+                  <!-- Contained in -->
+                  <!-- <ul> -->
+                    <%# in_folders.each do |folder| %>
+                      <!-- <li> <%#= link_to folder.name, blacklight_folders.folder_path(folder) %> </li> -->
+                    <%# end %>
+                  <!-- </ul> -->
+            <%# end %>
+        <!-- </li> -->
       </ul>
     </div>
 </div>

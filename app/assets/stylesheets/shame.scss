@@ -63,10 +63,10 @@ header .input-group-addon {
     display: inline-block;
 }
 
-.search-widgets .folders {
-    font-size: 0.85em;
-    margin-top: 2px;
-}
+// .search-widgets .folders {
+//     font-size: 0.85em;
+//     margin-top: 2px;
+// }
 
 .search-widgets .field .caret {
     position: relative;
@@ -749,20 +749,40 @@ select::-ms-expand {
     padding-left: 30px;
 }
 
-.add-to-folder-label {
-    cursor: pointer;
-    padding: 5px;
-    font-size: 0.85em;
-    font-weight: normal;
-}
+// .add-to-folder-label {
+//     cursor: pointer;
+//     padding: 5px;
+//     font-size: 0.85em;
+//     font-weight: normal;
+// }
 
 
 .row-odd + .alert {
     margin-top: 0;
 }
 
-#folder-tools {
-    display: inline-block;
-    margin-top: 0;
-    height: auto;
+// #folder-tools {
+//     display: inline-block;
+//     margin-top: 0;
+//     height: auto;
+// }
+
+.checkbox.toggle_bookmark {
+    padding: 0;
+}
+
+.toggle_bookmark input[type=checkbox] {
+    display: none;
+}
+
+label.toggle_bookmark {
+    padding: 6px 12px;
+    margin: 3px;
+    background: #f5f4f1;
+    border: 1px solid #e8e6df;
+    color: black;
+    line-height: 20px;
+    border-radius: 4px;
+    text-align: center;
+
 }

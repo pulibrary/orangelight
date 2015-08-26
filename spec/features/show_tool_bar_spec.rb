@@ -25,7 +25,8 @@ describe "Tools links"  do
     end
   end
 
-  ['Add to Folder', 'Send to'].each do |button_text|
+  # ['Add to Folder', 'Send to'].each do |button_text|
+  ['Send to'].each do |button_text|
     it "has #{button_text} button" do
       find_button(button_text)
     end

@@ -1,3 +1,3 @@
 module BlacklightFoldersHelper
-  include Blacklight::Folders::MainAppHelper
+  # include Blacklight::Folders::MainAppHelper
 end
