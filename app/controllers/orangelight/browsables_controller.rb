@@ -2,11 +2,11 @@
 class Orangelight::BrowsablesController < ApplicationController
 
 
-  before_action :set_orangelight_browsable, only: [:show]
+  # before_action :set_orangelight_browsable, only: [:show]
 
 
 
-    
+
 
   # GET /orangelight/names
   # GET /orangelight/names.json
@@ -16,7 +16,7 @@ class Orangelight::BrowsablesController < ApplicationController
     # manually set rpp
 
 
-    @model = params[:model].name.demodulize.tableize    
+    @model = params[:model].name.demodulize.tableize
     if params[:rpp].nil?
       @rpp = 50
       @page_link = "?"
@@ -27,14 +27,14 @@ class Orangelight::BrowsablesController < ApplicationController
     # if params[:page].nil?
     #   @page=1
     # else
-    #   @page = params[:page].to_i   
+    #   @page = params[:page].to_i
     # end
 
 
     # @start gets the id of the first entry to display on page
     # specific ids are given based on search results
     @start = params[:start].nil? ? 1 : params[:start].to_i
-    
+
     unless params[:q].nil?
       if @model == "call_numbers"
         search_term = StringFunctions.cn_normalize(params[:q])
@@ -46,21 +46,21 @@ class Orangelight::BrowsablesController < ApplicationController
         @search_result = search_result.label
         @search_term = search_term
         @exact_match =  search_term == search_result.sort
-        @match = search_result.id        
+        @match = search_result.id
         @start = search_result.id-3
         @start = 1 if @start < 1
         @query = params[:q]
-        #@prev = @start/@rpp+1      
+        #@prev = @start/@rpp+1
       end
     end
 
     # gets last page of table's results
     if params[:model].last
-      @last_id = params[:model].last.id 
+      @last_id = params[:model].last.id
     else
       @last_id = 1
     end
-    
+
     # makes sure no next page link is shown for last page
     @is_last = (@last_id-@rpp+1) <= @start
     # makes sure valid page is displayed
@@ -94,20 +94,20 @@ class Orangelight::BrowsablesController < ApplicationController
     else @model == 'subject'
       @facet = 'subject_topic_facet'
     end
-        
+
     @list_name = params[:model].name.demodulize.titleize
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @orangelight_browsables }
-    end    
+    end
 
   end
- 
+
   # GET /orangelight/names/1
   # GET /orangelight/names/1.json
-  def show
-  end
+  # def show
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

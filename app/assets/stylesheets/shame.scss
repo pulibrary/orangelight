@@ -722,10 +722,6 @@ li[dir="rtl"] {
     float: none;
 }
 
-#marc_view {
-    font-family: courier, monospace;
-}
-
 #sortAndPerPage,
 .pagination-search-widgets {
     border: none;
@@ -785,4 +781,21 @@ li label.toggle_bookmark {
     border-radius: 4px;
     text-align: center;
 
+}
+
+a.more_facets_link {
+    font-size: 0.95em;
+    line-height: 1.4em;
+}
+
+.login--cas {
+    margin-bottom: 1em;
+}
+
+.new_user {
+    margin-top: 1em;
+}
+
+.page-heading.my-account {
+    margin-top: 5px;
 }
