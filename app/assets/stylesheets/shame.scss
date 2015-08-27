@@ -771,11 +771,11 @@ select::-ms-expand {
     padding: 0;
 }
 
-.toggle_bookmark input[type=checkbox] {
+li .toggle_bookmark input[type=checkbox] {
     display: none;
 }
 
-label.toggle_bookmark {
+li label.toggle_bookmark {
     padding: 6px 12px;
     margin: 3px;
     background: #f5f4f1;
