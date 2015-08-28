@@ -3,7 +3,11 @@
 <dt><%= label %>:</dt>
 <dd><ul>
   <% hash_vals.each do |json_val| %>
+    <% if field == 'related_name_json_1display' %>
     <li class="blacklight-<%= label.parameterize %>" dir="<%= getdir(json_val) %>"><%= browse_related_name_hash(json_val) %></li>
+    <% else %>
+	<li class="blacklight-<%= label.parameterize %>" dir="<%= getdir(json_val) %>"><%= json_val %></li>
+    <% end %>
     <% end %>
 </ul></dd>
 <% end %>

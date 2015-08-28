@@ -241,7 +241,10 @@ class CatalogController < ApplicationController
     config.add_show_field 'sudoc_no_display', :label => 'SuDoc no.'
     config.add_show_field 'tech_report_no_display', :label => 'Tech. report no.'
     config.add_show_field 'publisher_no_display', :label => 'Publisher no.'
-    config.add_show_field 'standard_no_display', :label => 'Standard no.'
+    config.add_show_field 'lccn_display', :label => 'LCCN'
+    config.add_show_field 'oclc_s', :label => 'OCLC'
+    config.add_show_field 'coden_display', :label => 'Coden designation'
+    config.add_show_field 'standard_no_1display', hash: true
     config.add_show_field 'original_language_display', :label => 'Original language'
     config.add_show_field 'call_number_display', :label => 'Holding info', helper_method: :holding_block
     config.add_show_field 'shelving_title_display', :label => 'Shelving title'

@@ -88,10 +88,6 @@ module BlacklightHelper
     false
   end
 
-  def isbn_norm isbn
-   isbn[0][/[0-9]{10,13}/] if isbn
-  end
-
   # google book covers
   def doc_has_thumbnail? isbn
     return false unless isbn
