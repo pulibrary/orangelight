@@ -2,6 +2,8 @@
     <h2>Welcome to the beta Princeton University Library catalog.</h2>
     <p>This catalog is being developed to eventually replace our aging <%= t('blacklight.voyager') %> and incorporate the best features of new types of Discovery technology. Please note that the <%= t('blacklight.voyager') %> and the Books+ systems will continue to be available throughout our beta development phase.</p>
 
+    <p>This site is in active development. For more details about these changes, please see our <%= link_to 'release notes', page_path('notes') %>.</p>
+
     <p>We need your feedback! Please <a href="http://library.princeton.edu/help/contact-us" target="_blank">send us any questions or comments</a>.</p>
     <p>This catalog is based on <a href="http://projectblacklight.org/" target="_blank">Blacklight technology</a>, which is being developed by University libraries around the country.</p>
 </div>
@@ -14,5 +16,34 @@
         <li><a href="http://catalog.princeton.edu/" target="_blank"><%= t('blacklight.voyager') %></a></li>
         <li><a href="http://pudl.princeton.edu/" target="_blank">Digital Collections</a></li>
         <li><a href="http://findingaids.princeton.edu" target="_blank">Finding Aids</a></li>
+    </ul>
+</div>
+
+<div class="search-tips">
+    <h3>Search tips</h3>
+    <ul class="bulleted">
+        <li>Combine keywords and attributes to find specific items.
+            <ul class="example">
+                <li>morrison beloved</li>
+                <li>Egypt foreign relations</li>
+            </ul></li>
+        <li>Use quotation marks to search as a phrase.
+            <ul class="example">
+                <li>"free market"</li>
+                <li>"mourning becomes electra"</li>
+            </ul></li>
+        <li>Use "+" before a term to make it required. (Otherwise results matching only some of your terms may be included).
+            <ul class="example">
+                <li>+cuba +politics</li>
+            </ul></li>
+        <li>Use "-" before a word or phrase to exclude.
+            <ul class="example">
+                <li>jaguar -car -automobiles</li>
+            </ul></li>
+        <li>Use "OR", "AND", and "NOT" to create complex boolean logic. You can use parentheses in your complex expressions.
+            <ul class="example">
+                <li>paul AND auster</li>
+            </ul></li>
+        <li>Truncation and wildcards are not supported - word-stemming is done automatically.</li>
     </ul>
 </div>

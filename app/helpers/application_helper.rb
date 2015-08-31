@@ -31,13 +31,13 @@ module ApplicationHelper
 
   def holding_block args
     args[:document][args[:field]].each_with_index do |call_numb, i|
-      block = "Call Number: #{call_numb}"
+      block = "<ul class='holding-block'><li>Call Number: #{call_numb}"
       block += '  '
       block += link_to('[Browse]', "/browse/call_numbers?q=#{call_numb}", class: "browse-cn", 'data-toggle' => "tooltip", 'data-original-title' => "Search: #{call_numb}", title: "Browse: #{call_numb}")
-      block += "<br>"
-      block += "Location: #{args[:document]['location'][i]}"
+      block += "</li>"
+      block += "<li>Location: #{args[:document]['location'][i]}"
       findit = locate_link(args[:document]['location_code_s'][i], args[:document]['id'])
-      block += " #{findit}<br><br>"
+      block += " #{findit}</li></ul>"
       args[:document][args[:field]][i] = block.html_safe
     end
   end

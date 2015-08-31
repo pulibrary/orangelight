@@ -5,6 +5,23 @@
     width: 100%;
     display: block;
     clear: both;
+    margin-bottom: 1em;
+}
+
+.dl-horizontal dd ul {
+    margin-bottom: 0;
+}
+
+.dl-horizontal dd.blacklight-call_number_display > ul > li {
+    margin-bottom: 1em;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.dl-horizontal .blacklight-call_number_display ul.holding-block li {
+    margin-bottom: 0;
 }
 
 @media (min-width: $bp-small) {
