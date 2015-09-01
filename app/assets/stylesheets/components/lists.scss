@@ -1,0 +1,14 @@
+.bulleted {
+    margin-left: 1.5em;
+    list-style-type: disc;
+}
+
+.example {
+    margin-bottom: 1em;
+}
+.example li {
+    display: inline;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    margin-right: 2em;
+}

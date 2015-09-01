@@ -16,7 +16,7 @@
     .menu--level-1 > ul,
     .logo__pul img {
         margin: 0;
-        vertical-align: baseline;
+        vertical-align: middle;
         position: relative;
         top: 50%;
         -webkit-transform: translateY(-50%);
@@ -27,7 +27,7 @@
 
 @media (min-width: $bp-small) {
     .l-branding__pul {
-        height: 40px;
+        height: 43px;
     }
 }
 

@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   blacklight_for :catalog
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  get '/notes' => 'high_voltage/pages#show', id: 'notes'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
