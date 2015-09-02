@@ -19,7 +19,13 @@ Rails.application.routes.draw do
   root :to => "catalog#index"
   blacklight_for :catalog
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:passwords, :registration]
+
+  devise_scope :user do
+    get "/users/signup" => "devise/registrations#new", :as => :new_user_registration
+    post "/users" => "devise/registrations#create", :as => :user_registration
+  end
+
 
   get '/notes' => 'high_voltage/pages#show', id: 'notes'
   # The priority is based upon order of creation: first created -> highest priority.
