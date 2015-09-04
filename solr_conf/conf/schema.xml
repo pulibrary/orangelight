@@ -439,13 +439,13 @@
         <filter class="solr.TrimFilterFactory" />
         <!-- The PatternReplaceFilter gives you the flexibility to use
              Java Regular expression to replace any sequence of characters
-             matching a pattern with an arbitrary replacement string, 
+             matching a pattern with an arbitrary replacement string,
              which may include back references to portions of the original
              string matched by the pattern.
-             
+
              See the Java Regular Expression documentation for more
              information on pattern and replacement string syntax.
-             
+
              http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/package-summary.html
           -->
         <filter class="solr.PatternReplaceFilterFactory"
@@ -454,6 +454,35 @@
       </analyzer>
     </fieldType>
     
+    <fieldType name="alphaNumSort" class="solr.TextField" sortMissingLast="true" omitNorms="true">
+      <analyzer>
+        <!-- KeywordTokenizer does no actual tokenizing, so the entire
+             input string is preserved as a single token
+          -->
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <!-- The LowerCase TokenFilter does what you expect, which can be
+             when you want your sorting to be case insensitive
+          -->
+        <filter class="solr.LowerCaseFilterFactory" />
+        <!-- The TrimFilter removes any leading or trailing whitespace -->
+        <filter class="solr.TrimFilterFactory" />
+        <!-- The PatternReplaceFilter gives you the flexibility to use
+             Java Regular expression to replace any sequence of characters
+             matching a pattern with an arbitrary replacement string,
+             which may include back references to portions of the original
+             string matched by the pattern.
+
+             See the Java Regular Expression documentation for more
+             information on pattern and replacement string syntax.
+
+             http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/package-summary.html
+          -->
+        <filter class="solr.PatternReplaceFilterFactory"
+                pattern="([^a-z0-9])" replacement="" replace="all"
+        />
+      </analyzer>
+    </fieldType>
+
     <fieldtype name="phonetic" stored="false" indexed="true" class="solr.TextField" >
       <analyzer>
         <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -567,6 +596,7 @@
    <field name="subject_geo_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <!-- pub_date is used for facet and display so it must be indexed and stored -->
    <field name="pub_date" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="title_sort" type="alphaNumSort" indexed="true" stored="false" />
    <!-- pub_date sort uses new trie-based int fields, which are recommended for any int and are displayable, sortable, and range-quer
    we use 'tint' for faster range-queries. -->
    <field name="pub_date_start_sort" type="tint" indexed="true" stored="true" multiValued="false"/>
