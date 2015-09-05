@@ -86,16 +86,13 @@ class CatalogController < ApplicationController
     config.add_facet_field 'instrumentation_facet', :label => 'Instrumentation', :limit => true
     config.add_facet_field 'location', :label => 'Library', :limit => 20, sort: 'index'
     config.add_facet_field 'call_number_browse_s', label: 'Call number', show: false
-
-    config.add_facet_field 'sudoc_facet', :label => 'SuDoc call number code', :limit => 25, show: false, sort: 'index'
-    config.add_facet_field 'sudoc_group_facet', :label => 'SuDoc call number group', :limit => 25, show: false, sort: 'index'
+    config.add_facet_field 'sudoc_facet', :label => 'SuDocs', :limit => true, sort: 'index'
 
     config.add_facet_field 'call_number_scheme_facet', :label => 'Call number scheme', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'call_number_group_facet', :label => 'Call number group', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'call_number_full_facet', :label => 'Full call number', :limit => 25, show: false, sort: 'index'
 
     config.add_facet_field 'classification_pivot_field', :label => 'Classification', :pivot => ['lc_1letter_facet', 'lc_rest_facet']
-    config.add_facet_field 'sudoc_pivot_field', :label => 'SuDocs', :pivot => ['sudoc_group_facet', 'sudoc_facet']
 
 
     # config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
