@@ -7,6 +7,21 @@ class CatalogController < ApplicationController
   #include BlacklightAdvancedSearch::ParseBasicQ  # adds AND/OR/NOT search term functionality
 
 
+  def oclc
+    redirect_to oclc_resolve(params[:id])
+  end
+
+  def isbn
+    redirect_to isbn_resolve(params[:id])
+  end
+
+  def issn
+    redirect_to issn_resolve(params[:id])
+  end
+
+  def lccn
+    redirect_to lccn_resolve(params[:id])
+  end
 
 
   self.search_params_logic += [:cjk_mm, :only_home_facets, :left_anchor_strip, :redirect_browse]
@@ -128,7 +143,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'language_facet', :label => 'Language'
     config.add_show_field 'published_display', :label => 'Published'
     config.add_show_field 'published_vern_display', :label => 'Published'
-    config.add_show_field 'isbn_t', :label => 'ISBN'
     config.add_show_field 'pub_created_display', :label => 'Published/Created'
 
 

@@ -64,6 +64,8 @@ gem 'stringex', :git => "git://github.com/pulibrary/stringex.git", :tag => 'vpto
 
 gem 'lcsort', '~>0.9'
 
+gem 'library_stdnums'
+
 gem 'coveralls', require: false
 
 group :development do

@@ -205,4 +205,27 @@ describe "blacklight tests" do
       expect(response.body).to include('href="/catalog/5291883"')
     end
   end
+
+  describe "standard no search" do
+    it "resolves to record represented by standard number" do
+      get "/catalog/issn/0082-9455"
+      expect(response).to redirect_to("/catalog/491654")
+      get "/catalog/isbn/9781303457036"
+      expect(response).to redirect_to("/catalog/7916044")
+      get "/catalog/oclc/650437639"
+      expect(response).to redirect_to("/catalog/6139836")
+      get "/catalog/lccn/2007018609"
+      expect(response).to redirect_to("/catalog/5291883")
+    end
+    it "redirects to keyword search if record not found" do
+      get "/catalog/issn/blah"
+      expect(response).to redirect_to("/catalog?q=blah")
+      get "/catalog/isbn/blob"
+      expect(response).to redirect_to("/catalog?q=blob")
+      get "/catalog/lccn/super"
+      expect(response).to redirect_to("/catalog?q=super")
+      get "/catalog/oclc/cool"
+      expect(response).to redirect_to("/catalog?q=cool")
+    end
+  end
 end

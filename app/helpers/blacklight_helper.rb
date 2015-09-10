@@ -1,3 +1,4 @@
+require 'library_stdnums'
 
 module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior
@@ -126,14 +127,7 @@ module BlacklightHelper
     fq = ''
     id_nums.each {|n| fq += "other_version_s:#{n} OR "}
     fq.chomp!(' OR ')
-    facet_request = "/solr/blacklight-core/select?fq=#{fq}&fl=id,title_display,author_display&wt=json"
-    solr_url = Blacklight.connection_config[:url]
-    conn = Faraday.new(:url => solr_url) do |faraday|
-      faraday.request  :url_encoded             # form-encode POST params
-      faraday.response :logger                  # log requests to STDOUT
-      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
-    end
-    resp = conn.get facet_request
+    resp = get_fq_solr_response(fq)
     req = JSON.parse(resp.body)
     other_versions = []
     req['response']['docs'].each do |record|
@@ -145,40 +139,79 @@ module BlacklightHelper
     other_versions.empty? ? [] : [other_versions]
   end
 
+  def oclc_resolve oclc
+    oclc_norm = StringFunctions.oclc_normalize(oclc)
+    unless oclc_norm.nil?
+      fq = "oclc_s:#{oclc_norm}"
+      resp = get_fq_solr_response(fq)
+      req = JSON.parse(resp.body)
+    end
+    if oclc_norm == 0 || req['response']['docs'].empty?
+      "/catalog?q=#{oclc}"
+    else
+      "/catalog/#{req['response']['docs'].first['id']}"
+    end
+  end
 
-  # def altscript! values
-  #   values.each_with_index do |contents, i|
-  #     if getdir(contents) == "rtl"
-  #       values[i] = ("<div dir=\"rtl\">" + contents + "</div>").html_safe
-  #     end
-  #   end
-  # end
+  def isbn_resolve isbn
+    isbn_norm = StdNum::ISBN.normalize(isbn)
+    unless isbn_norm.nil?
+      fq = "isbn_s:#{isbn_norm}"
+      resp = get_fq_solr_response(fq)
+      req = JSON.parse(resp.body)
+    end
+    if isbn_norm.nil? || req['response']['docs'].empty?
+      "/catalog?q=#{isbn}"
+    else
+      "/catalog/#{req['response']['docs'].first['id']}"
+    end
+  end
 
-  # def render_value value=nil, field_config=nil
-  #   safe_value = value.respond_to?(:force_encoding) ? value.force_encoding("UTF-8") : value
+  def issn_resolve issn
+    issn_norm = StdNum::ISSN.normalize(issn)
+    unless issn_norm.nil?
+      fq = "issn_s:#{issn_norm}"
+      resp = get_fq_solr_response(fq)
+      req = JSON.parse(resp.body)
+    end
+    if issn_norm.nil? || req['response']['docs'].empty?
+      "/catalog?q=#{issn}"
+    else
+      "/catalog/#{req['response']['docs'].first['id']}"
+    end
+  end
 
-  #   if field_config and field_config.itemprop
-  #     safe_value = content_tag :span, safe_value, :itemprop => field_config.itemprop
-  #   end
-  #   safe_value
-  # end
-
-  # no longer needs to be overriden
-  # def presenter_class
-  #   PrincetonPresenter
-  # end
-
-  # def render_document_show_field_value *args
-  #   options = args.extract_options!
-  #   document = args.shift || options[:document]
-
-  #   field = args.shift || options[:field]
-  #   presenter(document).render_document_show_field_value field, options
-  # end
+  def lccn_resolve lccn
+    lccn_norm = StdNum::LCCN.normalize(lccn)
+    unless lccn_norm.nil?
+      fq = "lccn_s:#{lccn_norm}"
+      resp = get_fq_solr_response(fq)
+      req = JSON.parse(resp.body)
+    end
+    if lccn_norm.nil? || req['response']['docs'].empty?
+      "/catalog?q=#{lccn}"
+    else
+      "/catalog/#{req['response']['docs'].first['id']}"
+    end
+  end
 
   class PrincetonPresenter < Blacklight::DocumentPresenter
     def field_value_separator
       "<br/>".html_safe
     end
   end
+
+  private
+
+    def get_fq_solr_response fq
+      solr_url = Blacklight.connection_config[:url]
+      conn = Faraday.new(:url => solr_url) do |faraday|
+        faraday.request  :url_encoded             # form-encode POST params
+        faraday.response :logger                  # log requests to STDOUT
+        faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+      end
+      facet_request = "/solr/blacklight-core/select?fq=#{fq}&fl=id,title_display,author_display&wt=json"
+      conn.get facet_request
+    end
+
 end

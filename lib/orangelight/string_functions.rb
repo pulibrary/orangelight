@@ -44,5 +44,21 @@ module StringFunctions
     def cn_normalize(str)
       Lcsort.normalize(str) || str.upcase
     end
+
+    def oclc_normalize oclc, opts = {prefix: false}
+      oclc_num = oclc.gsub(/\D/, '').to_i.to_s
+      if opts[:prefix] == true
+        case oclc_num.length
+        when 1..8
+          "ocm" + "%08d" % oclc_num
+        when 9
+          "ocn" + oclc_num
+        else
+          "on" + oclc_num
+        end
+      else
+        oclc_num
+      end
+    end
   end
 end
