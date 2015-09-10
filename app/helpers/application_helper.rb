@@ -13,8 +13,17 @@ module ApplicationHelper
   # (URL) is the display text for the link.
 
   def urlify args
-    args[:document][args[:field]][0] = link_to(args[:document][args[:field]][1],
-      args[:document][args[:field]][0], :target => "_blank")
+    urls = []
+    links = JSON.parse(args[:document][args[:field]])
+    links.each do |url, text|
+      link = link_to(text.first, url, :target => "_blank")
+      link = "#{text[1]}: " + link if text[1]
+      link = "<li>#{link}</li>" if links.count > 1
+      urls << link.html_safe
+    end
+    urls
+    # args[:document][args[:field]][0] = link_to(args[:document][args[:field]][1],
+    #   args[:document][args[:field]][0], :target => "_blank")
   end
 
   def wheretofind args
@@ -81,7 +90,7 @@ module ApplicationHelper
       full_sub = ''
       all_subjects[i].each_with_index do |subsubject, j|
         lnk = lnk_accum + link_to(subsubject,
-          "/?f[subject_topic_facet][]=#{sub_array[i][j]}", class: "search-subject", 'data-toggle' => "tooltip", 'data-original-title' => "Search: #{sub_array[i][j]}", title: "Search: #{sub_array[i][j]}")
+          "/?f[subject_facet][]=#{sub_array[i][j]}", class: "search-subject", 'data-toggle' => "tooltip", 'data-original-title' => "Search: #{sub_array[i][j]}", title: "Search: #{sub_array[i][j]}")
         lnk_accum = lnk + t(SEPARATOR, class: "subject-level")
         full_sub = sub_array[i][j]
       end

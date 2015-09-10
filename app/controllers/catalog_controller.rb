@@ -24,7 +24,7 @@ class CatalogController < ApplicationController
   end
 
 
-  self.search_params_logic += [:cjk_mm, :only_home_facets, :left_anchor_strip, :redirect_browse]
+  self.search_params_logic += [:cjk_mm, :only_home_facets, :left_anchor_strip, :redirect_browse, :tile_sort_starts_with]
 
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
@@ -91,15 +91,15 @@ class CatalogController < ApplicationController
       :assumed_boundaries => [1100, Time.now.year+1],
       :segments => true
     }
-    config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => true
+    config.add_facet_field 'subject_topic_facet', :label => 'Subject: Topic', :limit => true
+    config.add_facet_field 'genre_facet', :label => 'Subject: Genre', :limit => true
+    config.add_facet_field 'subject_era_facet', :label => 'Subject: Era', :limit => true
     config.add_facet_field 'language_facet', :label => 'Language', :limit => true
+    config.add_facet_field 'location', :label => 'Library', :limit => 20, sort: 'index'
     config.add_facet_field 'lc_1letter_facet', :label => 'Classification', :limit => 25, show: false, sort: 'index'
-    config.add_facet_field 'subject_geo_facet', :label => 'Region', :limit => true
-    config.add_facet_field 'subject_era_facet', :label => 'Era', :limit => true
     config.add_facet_field 'author_s', :label => 'Author', :limit => true, show: false
     config.add_facet_field 'lc_rest_facet', :label => 'Full call number code', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'instrumentation_facet', :label => 'Instrumentation', :limit => true
-    config.add_facet_field 'location', :label => 'Library', :limit => 20, sort: 'index'
     config.add_facet_field 'call_number_browse_s', label: 'Call number', show: false
     config.add_facet_field 'sudoc_facet', :label => 'SuDocs', :limit => true, sort: 'index'
 
@@ -150,7 +150,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'compiled_created_display', :label => 'Compiled/Created'
     config.add_show_field 'edition_display', :label => 'Εdition'
     config.add_show_field 'medium_support_display', :label => 'Medium/Support'
-    config.add_show_field 'electronic_access_display', :label => 'Electronic access', :helper_method => :urlify
+    config.add_show_field 'electronic_access_1display', :label => 'Electronic access', :helper_method => :urlify
 
     config.add_show_field 'description_display', :label => 'Description'
     config.add_show_field 'arrangement_display', :label => 'Arrangement'
@@ -376,7 +376,8 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
     config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort asc', :label => 'Relevance'
-    config.add_sort_field 'pub_date_start_sort desc, title_sort asc', :label => 'Year'
+    config.add_sort_field 'pub_date_start_sort desc, title_sort asc', :label => 'Year (newest first)'
+    config.add_sort_field 'pub_date_start_sort asc, title_sort asc', :label => 'Year (oldest first)'
     config.add_sort_field 'author_sort asc, title_sort asc', :label => 'Author'
     config.add_sort_field 'title_sort asc, pub_date_start_sort desc', :label => 'Title'
 

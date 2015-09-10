@@ -137,8 +137,6 @@
         text
         description_t
         location
-        author_sort_s
-        author_vern_s
       </str>
       <str name="pf">
         title_l^2000000
@@ -165,8 +163,6 @@
         text^10
         description_t
         location
-        author_sort_s
-        author_vern_s
       </str>
       <str name="author_qf">
         author_unstem_search^200
@@ -258,8 +254,6 @@
       <str name="facet.field">call_number_s</str>
       <str name="facet.field">call_number_browse_s</str>
       <str name="facet.field">author_s</str>
-      <str name="facet.field">author_sort_s</str>
-      <str name="facet.field">author_vern_s</str>
       <str name="facet.field">lc_1letter_facet</str>
       <str name="facet.field">lc_rest_facet</str>
       <str name="facet.field">instrumentation_facet</str>

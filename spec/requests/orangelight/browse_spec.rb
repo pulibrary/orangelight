@@ -59,6 +59,27 @@ RSpec.describe "Orangelight Browsables", :type => :request do
     end
   end
 
+  describe "Selected search box field" do
+    it "Based on search_field parameter when provided" do
+      get '/catalog?q=&search_field=title'
+      expect(response.body).to include('<option selected="selected" value="title">Title (keyword)</option>')
+    end
+
+    it "Author (browse) is selected by default when browsing by name" do
+      get '/browse/names?start=25'
+      expect(response.body).to include('<option selected="selected" value="browse_name">Author (browse)</option>')
+    end
+
+    it "Subject (browse) is selected by default when browsing by subject" do
+      get '/browse/subjects?start=25'
+      expect(response.body).to include('<option selected="selected" value="browse_subject">Subject (browse)</option>')
+    end
+
+    it "Call number (browse) is selected by default when browsing by call number" do
+      get '/browse/call_numbers?start=25'
+      expect(response.body).to include('<option selected="selected" value="browse_cn">Call number (browse)</option>')
+    end
+  end
 end
 
 
