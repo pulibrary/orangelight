@@ -40,46 +40,52 @@ ActiveRecord::Schema.define(version: 20150612212656) do
   add_index "blacklight_folders_folders", ["user_type", "user_id"], name: "index_blacklight_folders_folders_on_user_type_and_user_id", using: :btree
 
   create_table "bookmarks", force: :cascade do |t|
-    t.integer  "user_id",                   null: false
-    t.string   "user_type",     limit: 255
-    t.string   "document_id",   limit: 255
-    t.string   "title",         limit: 255
+    t.integer  "user_id",       null: false
+    t.string   "user_type"
+    t.string   "document_id"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "document_type", limit: 255
+    t.string   "document_type"
   end
 
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
 
   create_table "orangelight_call_numbers", force: :cascade do |t|
-    t.string "label",  limit: 255
-    t.string "dir",    limit: 255
-    t.string "scheme", limit: 255
-    t.string "sort",   limit: 255
+    t.string "label"
+    t.string "dir"
+    t.string "scheme"
+    t.string "sort"
     t.text   "title"
     t.text   "author"
     t.text   "date"
-    t.string "bibid",  limit: 255
+    t.string "bibid"
   end
+
+  add_index "orangelight_call_numbers", ["sort"], name: "index_orangelight_call_numbers_on_sort", using: :btree
 
   create_table "orangelight_names", force: :cascade do |t|
     t.text    "label"
     t.integer "count"
     t.text    "sort"
-    t.string  "dir",   limit: 255
+    t.string  "dir"
   end
+
+  add_index "orangelight_names", ["sort"], name: "index_orangelight_names_on_sort", using: :btree
 
   create_table "orangelight_subjects", force: :cascade do |t|
     t.text    "label"
     t.integer "count"
     t.text    "sort"
-    t.string  "dir",   limit: 255
+    t.string  "dir"
   end
+
+  add_index "orangelight_subjects", ["sort"], name: "index_orangelight_subjects_on_sort", using: :btree
 
   create_table "searches", force: :cascade do |t|
     t.text     "query_params"
     t.integer  "user_id"
-    t.string   "user_type",    limit: 255
+    t.string   "user_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -87,22 +93,22 @@ ActiveRecord::Schema.define(version: 20150612212656) do
   add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "",    null: false
-    t.string   "encrypted_password",     limit: 255, default: "",    null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider",               limit: 255
-    t.string   "uid",                    limit: 255
-    t.string   "username",               limit: 255
-    t.boolean  "guest",                              default: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "username"
+    t.boolean  "guest",                  default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
