@@ -94,7 +94,6 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'classification_pivot_field', :label => 'Classification', :pivot => ['lc_1letter_facet', 'lc_rest_facet']
 
-
     # config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
     #    :years_5 => { :label => 'within 5 Years', :fq => "pub_date:[#{Time.now.year - 5 } TO *]" },
     #    :years_10 => { :label => 'within 10 Years', :fq => "pub_date:[#{Time.now.year - 10 } TO *]" },
@@ -240,6 +239,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'publisher_no_display', :label => 'Publisher no.'
     config.add_show_field 'lccn_display', :label => 'LCCN'
     config.add_show_field 'oclc_s', :label => 'OCLC'
+    config.add_show_field 'other_version_s', :label => 'Other versions'
     config.add_show_field 'coden_display', :label => 'Coden designation'
     config.add_show_field 'standard_no_1display', hash: true
     config.add_show_field 'original_language_display', :label => 'Original language'

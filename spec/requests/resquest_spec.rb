@@ -192,4 +192,17 @@ describe "blacklight tests" do
       expect(response.body.include?('<span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-original-title="Remove"></span>')).to eq false      
     end
   end
+
+  describe "other versions" do
+    it "provides links to other versions of record when they are found" do
+      get "/catalog/8553130"
+      expect(response.body).not_to include('href="/catalog/8553130"')
+      expect(response.body).to include('href="/catalog/9026021"')
+      expect(response.body).to include('href="/catalog/5291883"')
+      get "/catalog/9026021"
+      expect(response.body).not_to include('href="/catalog/9026021"')
+      expect(response.body).to include('href="/catalog/8553130"')
+      expect(response.body).to include('href="/catalog/5291883"')
+    end
+  end
 end

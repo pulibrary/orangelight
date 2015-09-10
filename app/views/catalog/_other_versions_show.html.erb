@@ -1,0 +1,14 @@
+<% other_versions(document[field], document[:id]).each do |records| %>
+  <dt class="blacklight-<%= field.parameterize %>"><%= render_document_show_field_label document, :field => field %></dt>
+  <dd class="blacklight-<%= field.parameterize %>">
+    <% if records.count == 1 %>
+      <%= records.first %>
+    <% else %>
+      <ul>
+        <% records.each do |link| %>
+      	  <li><%= link %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </dd>
+<% end %>

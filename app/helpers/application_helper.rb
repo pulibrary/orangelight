@@ -1,3 +1,4 @@
+require 'faraday'
 
 module ApplicationHelper
   # def make_this_a_link options={}

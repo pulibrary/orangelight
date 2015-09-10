@@ -122,6 +122,30 @@ module BlacklightHelper
     field_name == 'call_number_display' and document[field_name].size > 2
   end
 
+  def other_versions id_nums, bib_id
+    fq = ''
+    id_nums.each {|n| fq += "other_version_s:#{n} OR "}
+    fq.chomp!(' OR ')
+    facet_request = "/solr/blacklight-core/select?fq=#{fq}&fl=id,title_display,author_display&wt=json"
+    solr_url = Blacklight.connection_config[:url]
+    conn = Faraday.new(:url => solr_url) do |faraday|
+      faraday.request  :url_encoded             # form-encode POST params
+      faraday.response :logger                  # log requests to STDOUT
+      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+    end
+    resp = conn.get facet_request
+    req = JSON.parse(resp.body)
+    other_versions = []
+    req['response']['docs'].each do |record|
+      unless record['id'] == bib_id
+        title = record['title_display'].nil? ? "Other version: record['id']" : record['title_display'].first
+        other_versions << link_to("#{title}", "/catalog/#{record['id']}", class: 'other_version')
+      end
+    end
+    other_versions.empty? ? [] : [other_versions]
+  end
+
+
   # def altscript! values
   #   values.each_with_index do |contents, i|
   #     if getdir(contents) == "rtl"
