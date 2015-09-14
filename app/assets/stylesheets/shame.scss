@@ -558,6 +558,15 @@ address {
     }
 }
 
+@media (max-width: $bp-small) {
+    .search-widgets li {
+        width: 100%;
+        button, .toggle_bookmark {
+            width: 100%;
+        }
+    }
+}
+
 #sort-dropdown .dropdown-toggle,
 #per_page-dropdown .dropdown-toggle {
 
@@ -690,7 +699,7 @@ li[dir="rtl"] {
 
 .other-resources ul li {
     display: inline-block;
-    padding: 0 1em;
+    // padding: 0 1em;
     border-right: 1px solid $dark-gray;
     &:first-child {
         padding-left: 0;
@@ -798,4 +807,12 @@ a.more_facets_link {
 
 .page-heading.my-account {
     margin-top: 5px;
+}
+
+.other-resources li {
+    padding: 0;
+}
+
+.other-resources li a {
+    padding: 0 1em;
 }
