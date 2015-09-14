@@ -30,6 +30,11 @@
         height: 43px;
     }
 }
+@media (max-width: $bp-small) {
+    .logo__pul {
+        text-align: center;
+    }
+}
 
 .menu--level-1 > ul {
     display: block;

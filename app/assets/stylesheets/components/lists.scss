@@ -4,11 +4,21 @@
 }
 
 .example {
-    margin-bottom: 1em;
+    // margin-bottom: 1em;
 }
 .example li {
     display: inline;
     font-family: arial, sans-serif;
     font-weight: bold;
     margin-right: 2em;
+}
+
+.list--search-tips > li {
+    border: 1px solid #ddd;
+    padding: 1em;
+    border-bottom: 0;
+
+    &:last-child {
+        border-bottom: 1px solid #ddd;
+    }
 }
