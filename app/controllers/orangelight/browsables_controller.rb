@@ -92,7 +92,7 @@ class Orangelight::BrowsablesController < ApplicationController
     if @model == 'names'
       @facet = 'author_s'
     else @model == 'subject'
-      @facet = 'subject_topic_facet'
+      @facet = 'subject_facet'
     end
 
     @list_name = params[:model].name.demodulize.titleize

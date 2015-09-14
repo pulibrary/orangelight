@@ -50,6 +50,27 @@ module BlacklightHelper
     end
   end
 
+  def tile_sort_starts_with solr_parameters, user_parameters
+    if user_parameters[:search_field] == "left_anchor"
+      unless params[:sort]
+        solr_parameters[:sort] = 'title_sort asc, pub_date_start_sort desc'
+        params[:sort] = 'title_sort asc, pub_date_start_sort desc'
+      end
+    end
+  end
+
+  def search_bar_field
+    if params[:model] == Orangelight::CallNumber
+      'browse_cn'
+    elsif params[:model] == Orangelight::Name
+      'browse_name'
+    elsif params[:model] == Orangelight::Subject
+      'browse_subject'
+    else
+      params[:search_field]
+    end
+  end
+
   # Adapted from http://discovery-grindstone.blogspot.com/2014/01/cjk-with-solr-for-libraries-part-12.html
   def cjk_mm solr_parameters, user_parameters
     if user_parameters && user_parameters[:q].present?

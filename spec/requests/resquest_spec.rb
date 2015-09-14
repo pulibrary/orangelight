@@ -31,22 +31,14 @@ describe "blacklight tests" do
   end
 
   describe "Urlify check" do
-    it "Links to an electronic resource with the appropriate display text" do
-      get "/catalog/3.json"
-      r = JSON.parse(response.body)
-      link = r["response"]["document"]["electronic_access_display"][0]
-      display_text = r["response"]["document"]["electronic_access_display"][1]
+    it "links to an electronic resource with the appropriate display text" do
       get "/catalog/3"
-      expect(response.body.include?("<a target=\"_blank\" href=\"#{link}\">#{display_text}</a>")).to eq true
+      expect(response.body).to include('<a target="_blank" href="http://d-nb.info/991834119/04">Inhaltsverzeichnis</a>')
     end
 
-    it "uses hyperlink as display text" do
-      get "/catalog/4705304.json"
-      r = JSON.parse(response.body)
-      link = r["response"]["document"]["electronic_access_display"][0]
-        display_text = r["response"]["document"]["electronic_access_display"][0]
-      get "/catalog/4705304"
-      expect(response.body.include?("<a target=\"_blank\" href=\"#{link}\">#{display_text}</a>")).to eq true
+    it "includes $z as an additional label for the link" do
+      get "/catalog/844962"
+      expect(response.body).to include('Finding aid: <a target="_blank" href="http://arks.princeton.edu/ark:/88435/pz50gw142">arks.princeton.edu</a>')
     end
   end
 
@@ -76,7 +68,7 @@ describe "blacklight tests" do
       fullsubject.each_with_index do |subject, i|
         sub_component[i].each do |component|
           c = Regexp.escape(component)
-          expect(response.body.include?("class=\"search-subject\" data-toggle=\"tooltip\" data-original-title=\"Search: #{subject[/.*#{c}/]}\" title=\"Search: #{subject[/.*#{c}/]}\" href=\"/?f[subject_topic_facet][]=#{subject[/.*#{c}/]}\">#{component}</a>")).to eq true
+          expect(response.body.include?("class=\"search-subject\" data-toggle=\"tooltip\" data-original-title=\"Search: #{subject[/.*#{c}/]}\" title=\"Search: #{subject[/.*#{c}/]}\" href=\"/?f[subject_facet][]=#{subject[/.*#{c}/]}\">#{component}</a>")).to eq true
         end
       end
     end

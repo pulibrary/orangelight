@@ -591,7 +591,7 @@
    <!-- these fields are also used for display, so they must be stored -->
    <field name="isbn_t" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="language_facet" type="string" indexed="true" stored="true" multiValued="true" />
-   <field name="subject_topic_facet" type="descendent_path" indexed="true" stored="true" multiValued="true" />
+   <field name="subject_facet" type="descendent_path" indexed="true" stored="true" multiValued="true" />
    <field name="subject_era_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="subject_geo_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <!-- pub_date is used for facet and display so it must be indexed and stored -->
