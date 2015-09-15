@@ -13,15 +13,15 @@ module ApplicationHelper
   # (URL) is the display text for the link.
 
   def urlify args
-    urls = []
+    urls = ''
     links = JSON.parse(args[:document][args[:field]])
     links.each do |url, text|
       link = link_to(text.first, url, :target => "_blank")
       link = "#{text[1]}: " + link if text[1]
       link = "<li>#{link}</li>" if links.count > 1
-      urls << link.html_safe
+      urls << link
     end
-    urls
+    urls.html_safe
     # args[:document][args[:field]][0] = link_to(args[:document][args[:field]][1],
     #   args[:document][args[:field]][0], :target => "_blank")
   end
