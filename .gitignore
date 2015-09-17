@@ -21,6 +21,10 @@ jetty/*
 # Ignore database config
 config/database.yml
 
+# Ignore whitelist config
+config/ip_whitelist.yml
+config/hostname_whitelist.yml
+
 # Ignore coverage
 coverage/
 
