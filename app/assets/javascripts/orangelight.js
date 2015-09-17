@@ -14,7 +14,8 @@ $( document ).ready(function() {
     $(".document").tooltip({
         selector: "[data-toggle='tooltip']",
         placement: "bottom",
-        container: "body"
+        container: "body",
+        trigger: "hover"
     });
 
     //tooltip for subject heirarchy
