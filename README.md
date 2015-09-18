@@ -39,3 +39,9 @@ rake jetty:start
 rake pulsearch:index
 rake db:seed
 ```
+### Whitelist configuration
+```bash
+cp config/ip_whitelist.yml.tmpl config/ip_whitelist.yml
+```
+
+The application controller checks the ip whitelist to determine whether the user has access to the application. When the whitelist is empty, everyone has access to the application. If it contains ip addresses, then only users whose ip address is in the whitelist can access the application.

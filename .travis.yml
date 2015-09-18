@@ -8,9 +8,8 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - bundle exec rake jetty:clean
   - bundle exec rake jetty:start
-  - cp config/ip_whitelist.yml.tmpl config/ip_whitelist.yml
-  - cp config/hostname_whitelist.yml.tmpl config/hostname_whitelist.yml
   - RAILS_ENV=test bundle exec rake db:migrate
+  - cp config/ip_whitelist.yml.tmpl config/ip_whitelist.yml
 
 script: bundle exec rspec spec
 
