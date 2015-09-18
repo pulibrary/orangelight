@@ -8,8 +8,12 @@
 #role :web, %w{deploy@example.com}
 #role :db,  %w{deploy@example.com}
 
+set :rvm_ruby_string, :local
+
 set :stage, :production
 set :rails_env, 'production'
+
+set :branch, 'development'
 
 # Extended Server Syntax
 # ======================
@@ -17,7 +21,7 @@ set :rails_env, 'production'
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'pulsearch-prod', user: 'orangelight', roles: [:web, :app, :db]
+server 'pulsearch', user: 'deploy', roles: [:web, :app, :db]
 
 # Custom SSH Options
 # ==================
