@@ -5,8 +5,8 @@ en:
     form:
       title: Advanced Search
       search_context: Within search
-      limit_criteria_heading_html: "<strong>AND</strong> have these attributes"
+      limit_criteria_heading_html: "Limit results by"
       query_criteria_heading_html: "Find items that match %{select_menu} of"
       sort_label: "Sort results by"
-      start_over: "Start over"
-      search_btn: 'Search'
+      start_over: "Clear form"
+      search_btn: "Search"

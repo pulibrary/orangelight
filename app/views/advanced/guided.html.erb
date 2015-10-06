@@ -2,19 +2,19 @@
 
 <div class="advanced-search-form col-sm-12">
 
-    <h1 class="advanced page-header">
+  <div class="row">
+
+    <div class="col-md-8">
+      <h1 class="guided page-header">
         <%= t('Guided Search') %>
-    </h1>
-
-    <div class="row">
-
-        <div class="col-md-8">
-            <%= render 'guided_search_form' %>
-        </div>
-        <div class="col-md-4">
-            <%= render "guided_search_help" %>
-        </div>
-
+        <%= link_to t('blacklight_advanced_search.form.start_over'), guided_path, :class =>"btn pull-right clear-form" %>
+      </h1>
+      <%= render 'guided_search_form' %>
     </div>
+    <div class="col-md-4">
+      <%= render "search_help" %>
+    </div>
+
+  </div>
 
 </div>

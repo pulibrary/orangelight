@@ -132,6 +132,10 @@ header .input-group-addon {
     }
 }
 
+.search-tips {
+    margin-top: 50px;
+}
+
 @media (min-width: 500px) and (max-width: $bp-medium) {
     .search-options {
         margin-top: 0.6em;
@@ -834,3 +838,7 @@ a.more_facets_link {
     list-style-type: none;
 }
 
+.search-submit-buttons {
+    margin-top: 2em;
+    margin-bottom: 2.2em;
+}

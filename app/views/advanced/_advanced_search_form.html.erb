@@ -23,10 +23,22 @@
 
   </div>
 
+  <div class="search-submit-buttons clearfix">
+    <%= render 'advanced_search_submit_btns' %>
+  </div>
+
   <hr>
 
-  <div class="sort-submit-buttons clearfix">
-    <%= render 'advanced_search_submit_btns' %>
+  <div class="limit-criteria">
+    <h3 class="limit-criteria-heading"><%= t('blacklight_advanced_search.form.limit_criteria_heading_html')%></h3>
+
+    <div id="advanced_search_facets" class="limit_input">
+      <% if blacklight_config.try(:advanced_search).try {|h| h[:form_facet_partial] } %>
+        <%= render blacklight_config.advanced_search[:form_facet_partial] %>
+      <% else %>
+        <%= render 'advanced_search_facets_as_select' %>
+      <% end %>
+    </div>
   </div>
 
 <% end %>
