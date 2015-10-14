@@ -56,21 +56,19 @@ module ApplicationHelper
       return "Multiple Holdings"
     else
       args[:document][args[:field]].each_with_index do |call_numb, i|
-        # block = "<dl class=holding-info><dt>Call Number:</dt> <dd>#{call_numb}</dd>"
-        # block += "<dt>Location:</dt> <dd>#{args[:document]['location'][i]}"
-        record_block = content_tag(:span, data: { availability_record: true }) do
-          block = "#{call_numb} &raquo; "
-          block += content_tag(:span, data: { availability_identifier: 'record-id'}) do
-            "#{args[:document]['id']}"
-          end
-          block += content_tag(:span, data: { availability_identifier: 'location'}) do
-            "#{args[:document]['location'][i]}"
-          end
-          block += content_tag(:span, data: { availability_identifier: 'loc-code'}) do
-            "#{args[:document]['location_code_s'][i]}"
-          end
+        record_block = content_tag(:span, 
+                                   data: 
+                                   {
+                                     availability_record: true,
+                                     record_id: args[:document]['id'], 
+                                     loc_code: "#{args[:document]['location_code_s'][i]}"
+                                   }
+                                  ) do
+          block = content_tag(:span, '', class: 'availability-icon').html_safe
+          block += "#{call_numb} &raquo; ".html_safe
+          block += "#{args[:document]['location'][i]}"
           findit = locate_link(args[:document]['location_code_s'][i], args[:document]['id'])
-          block += " #{findit}"
+          block += " #{findit}".html_safe
           block.html_safe
         end
         args[:document][args[:field]][i] = record_block.html_safe

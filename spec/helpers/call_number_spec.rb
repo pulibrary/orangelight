@@ -17,28 +17,24 @@ RSpec.describe ApplicationHelper do
         }
       }.with_indifferent_access
     end
+    let(:first_result) { result.first }
     context "when given a call number, location, and location code" do
       it "returns a good string" do
-        first_result = result.first
         expect(first_result).to include call_number.first
         expect(first_result).to include location_code.first
         expect(first_result).to include location.first
       end
       it "tags the location code" do
-        first_result = result.first
-        expect(first_result).to include "<span data-availability-identifier=\"loc-code\">f</span>"
-      end
-      it "tags the location" do
-        first_result = result.first
-        expect(first_result).to include "<span data-availability-identifier=\"location\">Firestone Library</span>"
+        expect(first_result).to have_selector "*[data-loc-code='f']"
       end
       it "tags the record id" do
-        first_result = result.first
-        expect(first_result).to include "<span data-availability-identifier=\"record-id\">1</span>"
+        expect(first_result).to have_selector "*[data-availability-record][data-record-id='1']"
       end
       it "wraps the record" do
-        first_result = result.first
         expect(first_result).to have_selector "*[data-availability-record]"
+      end
+      it "has an availability icon" do
+        expect(first_result).to have_selector ".availability-icon"
       end
     end
   end
