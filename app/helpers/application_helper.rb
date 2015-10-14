@@ -58,10 +58,22 @@ module ApplicationHelper
       args[:document][args[:field]].each_with_index do |call_numb, i|
         # block = "<dl class=holding-info><dt>Call Number:</dt> <dd>#{call_numb}</dd>"
         # block += "<dt>Location:</dt> <dd>#{args[:document]['location'][i]}"
-        block = "#{call_numb} &raquo; #{args[:document]['location'][i]}"
-        findit = locate_link(args[:document]['location_code_s'][i], args[:document]['id'])
-        block += " #{findit}"
-        args[:document][args[:field]][i] = block.html_safe
+        record_block = content_tag(:span, data: { availability_record: true }) do
+          block = "#{call_numb} &raquo; "
+          block += content_tag(:span, data: { availability_identifier: 'record-id'}) do
+            "#{args[:document]['id']}"
+          end
+          block += content_tag(:span, data: { availability_identifier: 'location'}) do
+            "#{args[:document]['location'][i]}"
+          end
+          block += content_tag(:span, data: { availability_identifier: 'loc-code'}) do
+            "#{args[:document]['location_code_s'][i]}"
+          end
+          findit = locate_link(args[:document]['location_code_s'][i], args[:document]['id'])
+          block += " #{findit}"
+          block.html_safe
+        end
+        args[:document][args[:field]][i] = record_block.html_safe
       end
     end
   end

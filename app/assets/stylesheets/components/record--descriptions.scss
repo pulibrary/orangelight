@@ -20,6 +20,11 @@
     }
 }
 
+*[data-availability-identifier="loc-code"],
+  *[data-availability-identifier="record-id"] {
+  display: none;
+}
+
 .dl-horizontal .blacklight-call_number_display ul.holding-block li {
     margin-bottom: 0;
 }
