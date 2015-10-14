@@ -53,7 +53,8 @@ module ApplicationHelper
 
   def holding_block_search args
     if args[:document][args[:field]].size > 2
-      return "Multiple Holdings"
+      block = content_tag(:span, '', class: 'availability-icon glyphicon glyphicon-info-sign', title: 'Click on the record for full availability info').html_safe
+      return "#{block}Multiple Holdings".html_safe
     else
       args[:document][args[:field]].each_with_index do |call_numb, i|
         record_block = content_tag(:span, 

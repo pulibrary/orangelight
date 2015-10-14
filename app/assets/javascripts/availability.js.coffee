@@ -13,17 +13,23 @@ class AvailabilityUpdater
     for record_id, availability_info of records
       this.apply_record(record_id, availability_info)
   apply_record: (record_id, availability_info) ->
-    return if availability_info.more_holdings == true
-    for location_code, status of availability_info
-      element = $("*[data-record-id='#{record_id}'][data-loc-code='#{location_code}']")
-      continue unless element.length > 0
-      availability_element = element.children(".availability-icon")
-      availability_element.addClass("glyphicon")
-      if status == "Not Charged"
-        availability_element.addClass("glyphicon-ok text-success")
-      else
-        availability_element.addClass("glyphicon-remove text-danger")
-      availability_element.prop('title', status)
+    if availability_info.more_holdings == true
+      this.record_needs_more_info(record_id)
+    else
+      for location_code, status of availability_info
+        this.apply_record_icon(record_id, location_code, status)
     true
+  record_needs_more_info: (record_id) ->
+    element = $("*[data-record-id='#{record_id}'] .availability-icon")
+    element.addClass("glyphicon glyphicon-info-sign")
+    element.prop('title', "Click on the record for full availability info")
+  apply_record_icon: (record_id, location_code, status) ->
+     availability_element = $("*[data-record-id='#{record_id}'][data-loc-code='#{location_code}'] .availability-icon")
+     availability_element.addClass("glyphicon")
+     if status == "Not Charged"
+       availability_element.addClass("glyphicon-ok text-success")
+     else
+       availability_element.addClass("glyphicon-remove text-danger")
+     availability_element.prop('title', status)
   record_ids: ->
     $("*[data-availability-record][data-record-id]").map((_, x) -> $(x).attr("data-record-id"))

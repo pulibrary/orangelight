@@ -18,6 +18,15 @@ RSpec.describe ApplicationHelper do
       }.with_indifferent_access
     end
     let(:first_result) { result.first }
+    context "when there's more than two call numbers" do
+      let(:call_number) { [ "1", "2", "3" ] }
+      it "displays Multiple Holdings" do
+        expect(result).to include "Multiple Holdings"
+      end
+      it "has an availability icon" do
+        expect(result).to have_selector ".availability-icon[title='Click on the record for full availability info']"
+      end
+    end
     context "when given a call number, location, and location code" do
       it "returns a good string" do
         expect(first_result).to include call_number.first
