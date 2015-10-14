@@ -53,15 +53,26 @@ module ApplicationHelper
 
   def holding_block_search args
     if args[:document][args[:field]].size > 2
-      return "Multiple Holdings"
+      block = content_tag(:span, '', class: 'availability-icon glyphicon glyphicon-info-sign', title: 'Click on the record for full availability info').html_safe
+      return "#{block}Multiple Holdings".html_safe
     else
       args[:document][args[:field]].each_with_index do |call_numb, i|
-        # block = "<dl class=holding-info><dt>Call Number:</dt> <dd>#{call_numb}</dd>"
-        # block += "<dt>Location:</dt> <dd>#{args[:document]['location'][i]}"
-        block = "#{call_numb} &raquo; #{args[:document]['location'][i]}"
-        findit = locate_link(args[:document]['location_code_s'][i], args[:document]['id'])
-        block += " #{findit}"
-        args[:document][args[:field]][i] = block.html_safe
+        record_block = content_tag(:span, 
+                                   data: 
+                                   {
+                                     availability_record: true,
+                                     record_id: args[:document]['id'], 
+                                     loc_code: "#{args[:document]['location_code_s'][i]}"
+                                   }
+                                  ) do
+          block = content_tag(:span, '', class: 'availability-icon').html_safe
+          block += "#{call_numb} &raquo; ".html_safe
+          block += "#{args[:document]['location'][i]}"
+          findit = locate_link(args[:document]['location_code_s'][i], args[:document]['id'])
+          block += " #{findit}".html_safe
+          block.html_safe
+        end
+        args[:document][args[:field]][i] = record_block.html_safe
       end
     end
   end

@@ -18,7 +18,7 @@ describe "blacklight tests" do
       r = JSON.parse(response.body)
       expect(r["response"]["document"]["location"].length).to eq 3
         get "/catalog?&search_field=all_fields&q=1984221"
-        expect(response.body.include?('<li class="blacklight-call_number_display" dir="ltr">Multiple Holdings</li>')).to eq true
+        expect(response.body).to include '<li class="blacklight-call_number_display" dir="ltr"><span class="availability-icon glyphicon glyphicon-info-sign" title="Click on the record for full availability info"></span>Multiple Holdings</li>'
     end
     it "displays the location name for an item with a single location" do
       get "/catalog/321.json"
