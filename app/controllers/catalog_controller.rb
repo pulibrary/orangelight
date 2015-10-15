@@ -59,7 +59,7 @@ class CatalogController < ApplicationController
     config.index.display_type_field = 'format'
 
     # solr field configuration for document/show views
-    config.show.partials = [:show]
+    config.show.partials = [:show_identifiers, :show]
     #config.show.title_field = 'title_display'
     #config.show.display_type_field = 'format'
 
