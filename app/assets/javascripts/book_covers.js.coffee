@@ -3,9 +3,9 @@ jQuery ->
 class BookCoverManager
   google_url: "https://www.googleapis.com/books/v1/volumes?q="
   identifiers: {
-    isbn: "isbn_display",
-    oclc: "oclc_s",
-    lccn: "lccn_display"
+    isbn: "isbn",
+    oclc: "http://purl.org/library/oclcnum",
+    lccn: "lccn"
   }
   constructor: ->
     this.find_book_covers()
@@ -23,12 +23,10 @@ class BookCoverManager
   fetch_identifier: (identifier) ->
     url = "#{@google_url}#{identifier}"
     @requests.push($.getJSON(url, this.process_record))
-  find_identifier: (identifier_type, field) ->
-    identifier = $("dd.blacklight-#{field} li")
-    if identifier.length < 1
-      identifier = $("dd.blacklight-#{field}")
+  find_identifier: (identifier_type, property) ->
+    identifier = $("meta[property='#{property}']")
     identifier = identifier
-      .map((_,x) -> "#{$(x).text().replace(/[^0-9]/g, '')}")
+      .map((_,x) -> "#{$(x).prop('content').replace(/[^0-9]/g, '')}")
       .toArray()
     if identifier == []
       null
