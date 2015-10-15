@@ -33,4 +33,22 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Core
   use_extension( Blacklight::Solr::Document::DublinCore)
 
+  def identifiers
+    @identifiers ||= identifier_keys.flat_map do |key|
+      fetch(key, []).map do |value|
+        Identifier.new(key, value)
+      end
+    end.compact
+  end
+
+  private
+
+  def identifier_keys
+    [
+      "isbn_s",
+      "lccn_s",
+      "oclc_s"
+    ]
+  end
+
 end

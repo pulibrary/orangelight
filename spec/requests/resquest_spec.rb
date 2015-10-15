@@ -160,6 +160,14 @@ describe "blacklight tests" do
     end
   end
 
+  describe "identifier metadata" do
+    it "is accessible from show view" do
+      id = '7916044'
+      get "/catalog/#{id}"
+      expect(response.body).to include "<meta property=\"isbn\""
+    end
+  end
+
   describe "homepage facets" do
     it "Only facets configured for homepage display are requested in Solr" do
       get "/catalog.json"
