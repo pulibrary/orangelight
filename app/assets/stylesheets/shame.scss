@@ -634,13 +634,16 @@ header .navbar-nav > li > a {
 #sidebar .document-thumbnail {
     display: block;
     height: 160px;
-    width: 110px;
+    width: 100%;
+    text-align: center;
     img,
     .default {
         max-width: 100px;
         height: auto;
         height: 150px;
         background-size: contain;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
