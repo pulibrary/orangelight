@@ -53,15 +53,15 @@ module ApplicationHelper
 
   def holding_block_search args
     if args[:document][args[:field]].size > 2
-      block = content_tag(:span, '', class: 'availability-icon glyphicon glyphicon-info-sign', title: 'Click on the record for full availability info').html_safe
-      return "#{block}Multiple Holdings".html_safe
+      block = content_tag(:span, 'View Record for Availability', class: 'availability-icon label label-default', title: 'Click on the record for full availability info').html_safe
+      return "#{block}".html_safe
     else
       args[:document][args[:field]].each_with_index do |call_numb, i|
-        record_block = content_tag(:span, 
-                                   data: 
+        record_block = content_tag(:span,
+                                   data:
                                    {
                                      availability_record: true,
-                                     record_id: args[:document]['id'], 
+                                     record_id: args[:document]['id'],
                                      loc_code: "#{args[:document]['location_code_s'][i]}"
                                    }
                                   ) do
