@@ -13,25 +13,13 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require modernizr
+//= require turbolinks
 //
 //= require 'blacklight_advanced_search'
+//= require 'blacklight_range_limit'
+//
 // Required by Blacklight
 //= require blacklight/blacklight
 //
-///////////////////////////////////////////
-// temporarily disable blacklight folders//
-// require blacklight_folders            //
-///////////////////////////////////////////
-//
 //= require_tree .
-
-
-// For blacklight_range_limit built-in JS, if you don't want it you don't need
-// this:
-//= require custom_range_limit
-//= require 'blacklight_range_limit'
-
-//= require modernizr
-
-//= require orangelight
-//= require turbolinks
