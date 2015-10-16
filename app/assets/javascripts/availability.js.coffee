@@ -21,15 +21,21 @@ class AvailabilityUpdater
     true
   record_needs_more_info: (record_id) ->
     element = $("*[data-record-id='#{record_id}'] .availability-icon")
-    element.addClass("glyphicon glyphicon-info-sign")
+    element.addClass("label label-default")
+    element.text("View Record for Availability")
     element.prop('title', "Click on the record for full availability info")
   apply_record_icon: (record_id, location_code, status) ->
-     availability_element = $("*[data-record-id='#{record_id}'][data-loc-code='#{location_code}'] .availability-icon")
-     availability_element.addClass("glyphicon")
-     if status == "Not Charged"
-       availability_element.addClass("glyphicon-ok text-success")
-     else
-       availability_element.addClass("glyphicon-remove text-danger")
-     availability_element.prop('title', status)
+    availability_element = $("*[data-record-id='#{record_id}'][data-loc-code='#{location_code}'] .availability-icon")
+    availability_element.addClass("label")
+    unavailable_statuses = ["At Bindery", "Claims Returned", "Charged",
+      "Hold Request", "In Transit", "Lost", "Missing", "On Hold", "Overdue",
+      "Recall Request", "Remote Storage Request", "Renewed", "Withdrawn"]
+    status = if status == "Not Charged" then "Available" else status
+    availability_element.text(status)
+    if status in unavailable_statuses
+      availability_element.addClass("label-danger")
+    else
+      availability_element.addClass("label-success")
+    availability_element.prop('title', status)
   record_ids: ->
     $("*[data-availability-record][data-record-id]").map((_, x) -> $(x).attr("data-record-id"))

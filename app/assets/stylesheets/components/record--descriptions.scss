@@ -22,11 +22,17 @@
 
 .availability-icon {
   margin-right: 5px;
+  text-transform: uppercase;
 }
 
 .dl-horizontal .blacklight-call_number_display ul.holding-block li {
     margin-bottom: 0;
 }
+
+.blacklight-call_number_display li+li {
+  margin-top: .3em;
+}
+
 
 @media (min-width: $bp-small) {
     .dl-horizontal dt {
