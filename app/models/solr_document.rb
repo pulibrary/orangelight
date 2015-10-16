@@ -33,6 +33,13 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Core
   use_extension( Blacklight::Solr::Document::DublinCore)
 
+  def identifier_data
+    identifiers.each_with_object({}) do |identifier, hsh|
+      hsh[identifier.data_key.to_sym] ||= []
+      hsh[identifier.data_key.to_sym] << identifier.value
+    end
+  end
+
   def identifiers
     @identifiers ||= identifier_keys.flat_map do |key|
       fetch(key, []).map do |value|
