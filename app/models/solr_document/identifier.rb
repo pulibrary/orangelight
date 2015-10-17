@@ -21,6 +21,10 @@ class SolrDocument
       itemprop_mapping[identifier_type]
     end
 
+    def data_key
+      identifier_type.gsub("_s","")
+    end
+
     private
 
     def property_mapping

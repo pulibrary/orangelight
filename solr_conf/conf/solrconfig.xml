@@ -245,6 +245,9 @@
         title_display,
         title_vern_display,
         isbn_display,
+        isbn_s,
+        oclc_s,
+        lccn_s
       </str>
 
       <str name="facet">true</str>

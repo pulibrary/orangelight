@@ -1,6 +1,6 @@
-<div class="document-thumbnail <%= render_document_class %>">
+<%= content_tag(:div, class: "document-thumbnail", data: @document.identifier_data) do %>
   <div class="default"></div>
-</div>
+<% end %>
 
 <% unless @document.more_like_this.empty? %>
   <div class="panel panel-default">

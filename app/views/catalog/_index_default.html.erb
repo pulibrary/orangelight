@@ -27,6 +27,6 @@
 
 </ul>
 
-<div class="document-thumbnail col-md-2">
+<%= content_tag(:div, class: "document-thumbnail col-md-2", data: document.identifier_data) do %>
   <div class="default"></div>
-</div>
+<% end %>

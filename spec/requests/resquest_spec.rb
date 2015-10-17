@@ -165,6 +165,12 @@ describe "blacklight tests" do
       id = '7916044'
       get "/catalog/#{id}"
       expect(response.body).to include "<meta property=\"isbn\""
+      expect(response.body).to include 'data-isbn="['
+    end
+    it "is accessible from search results" do
+      get "/catalog?search_field=all_fields"
+      expect(response.body).to include "<meta property=\"isbn\""
+      expect(response.body).to include 'data-isbn="['
     end
   end
 

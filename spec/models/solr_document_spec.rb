@@ -23,4 +23,32 @@ RSpec.describe SolrDocument do
       end
     end
   end
+
+  describe "#identifier_data" do
+    context "with identifiers" do
+      let(:properties) do
+        {
+          "lccn_s" => ["2001522653"],
+          "isbn_s" => ["9781400827824"],
+          "oclc_s" => ["19590730", "301985443"]
+        }
+      end
+      it "returns a hash of identifiers for data embeds" do
+        expect(subject.identifier_data).to eq (
+          {
+            :lccn => [
+              "2001522653"
+            ],
+            :isbn => [
+              "9781400827824"
+            ],
+            :oclc => [
+              "19590730",
+              "301985443"
+            ]
+          }
+        )
+      end
+    end
+  end
 end

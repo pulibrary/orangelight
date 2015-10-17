@@ -55,7 +55,7 @@ class CatalogController < ApplicationController
 
     # solr field configuration for search results/index views
     config.index.title_field = 'title_display'
-    config.index.partials = [:index_header, :thumbnail, :index]
+    config.index.partials = [:index_header, :show_identifiers, :thumbnail, :index]
     config.index.display_type_field = 'format'
 
     # solr field configuration for document/show views
