@@ -69,7 +69,8 @@ gem 'library_stdnums'
 gem 'coveralls', require: false
 
 group :development do
-	gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'pry-byebug'
 end
 
 #group :test, :development do
