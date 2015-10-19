@@ -26,7 +26,14 @@
   <% end -%>
 
 </ul>
+</div>
+<div class="col-md-2">
 
-<%= content_tag(:div, class: "document-thumbnail col-md-2", data: document.identifier_data) do %>
+<% # bookmark functions for items/docs -%>
+  <%= render_index_doc_actions document, :wrapping_class => "index-document-functions" %>
+
+<%= content_tag(:div, class: "document-thumbnail", data: document.identifier_data) do %>
   <div class="default"></div>
 <% end %>
+</div>
+</div>
