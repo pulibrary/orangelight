@@ -13,8 +13,6 @@ Rails.application.routes.draw do
     get 'browse/subjects/:id', model: Orangelight::Subject, as: 'browse_subject', to: 'browsables#show'
   end
 
-  get 'guided', to: 'advanced#guided'
-
   Blacklight::Marc.add_routes(self)
   root :to => "catalog#index"
   blacklight_for :catalog

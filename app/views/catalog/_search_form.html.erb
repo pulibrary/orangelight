@@ -24,10 +24,7 @@
 
   <% end %>
   <ul class="search-options">
-      <li>
-        <%= link_to 'Guided Search', guided_path(params), :class=>'guided_search'%>
-      </li>
-      <li>
-        <%= link_to 'Advanced Search', advanced_search_path(params), :class=>'advanced_search'%>
-      </li>
-    </ul>
+    <li>
+      <%= link_to 'Advanced Search', advanced_search_path(params), :class=>'advanced_search'%>
+    </li>
+  </ul>
