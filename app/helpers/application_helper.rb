@@ -44,7 +44,7 @@ module ApplicationHelper
       block += '  '
       block += link_to('[Browse]', "/browse/call_numbers?q=#{call_numb}", class: "browse-cn", 'data-toggle' => "tooltip", 'data-original-title' => "Search: #{call_numb}", title: "Browse: #{call_numb}")
       block += "</li>"
-      block += "<li>Location: #{args[:document]['location'][i]}"
+      block += "<li>Location: #{args[:document]['location_display'][i]}"
       findit = locate_link(args[:document]['location_code_s'][i], args[:document]['id'])
       block += " #{findit}</li></ul>"
       args[:document][args[:field]][i] = block.html_safe

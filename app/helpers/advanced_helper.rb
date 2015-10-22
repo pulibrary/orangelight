@@ -20,15 +20,6 @@ module AdvancedHelper
     BlacklightAdvancedSearch::QueryParser.new(params, blacklight_config).filters_include_value?(field, value)
   end
 
-  def select_menu_for_field_operator
-    options = {
-      t('blacklight_advanced_search.all') => 'AND',
-      t('blacklight_advanced_search.any') => 'OR'
-    }.sort
-
-    return select_tag(:op, options_for_select(options,params[:op]), :class => 'input-small')
-  end
-
   # Current params without fields that will be over-written by adv. search,
   # or other fields we don't want.
   def advanced_search_context
@@ -43,12 +34,9 @@ module AdvancedHelper
     end
   end
 
-  def advanced_labels
-    labels = []
-    search_fields_for_advanced_search.each do |field|
-      labels << field[1][:label] 
-    end
-    labels
+  # Use configured facet partial name for facet or fallback on 'catalog/facet_limit'
+  def advanced_search_facet_partial_name(display_facet)
+    facet_configuration_for_field(display_facet.name).try(:partial) || "catalog/facet_limit"
   end
 
   def advanced_key_value
@@ -83,18 +71,12 @@ module AdvancedHelper
 
   end
 
-  def is_guided?
-    return params[:search_field] == 'guided'
-  end
 end
 
 module BlacklightAdvancedSearch
   class QueryParser
     include AdvancedHelper
     def keyword_op
-
-      # advanced search uses same operation between all fields AND/OR
-      return @params["op"] || "AND" unless is_guided?
 
       # for guided search add the operations if there are queries to join
       # NOTs get added to the query. Only AND/OR are operations
@@ -112,54 +94,39 @@ module BlacklightAdvancedSearch
       unless(@keyword_queries)
         @keyword_queries = {}
 
-        return @keyword_queries unless @params[:search_field] == ::AdvancedController.blacklight_config.advanced_search[:url_key] || is_guided?
+        return @keyword_queries unless @params[:search_field] == ::AdvancedController.blacklight_config.advanced_search[:url_key]
 
 
+        # spaces need to be stripped from the query because they don't get properly stripped in Solr
+        ###### TO GET STARTS WITH TO WORK #######
+        q1 = @params[:f1] == "left_anchor" ? @params[:q1].delete(' ') : @params[:q1]
+        q2 = @params[:f2] == "left_anchor" ? @params[:q2].delete(' ') : @params[:q2]
+        q3 = @params[:f3] == "left_anchor" ? @params[:q3].delete(' ') : @params[:q3]                    
+        #########################################
 
 
-
-        if is_guided?
-
-          # spaces need to be stripped from the query because they don't get properly stripped in Solr
-          ###### TO GET STARTS WITH TO WORK #######
-          q1 = @params[:f1] == "left_anchor" ? @params[:q1].delete(' ') : @params[:q1]
-          q2 = @params[:f2] == "left_anchor" ? @params[:q2].delete(' ') : @params[:q2]
-          q3 = @params[:f3] == "left_anchor" ? @params[:q3].delete(' ') : @params[:q3]                    
-          #########################################
-
-
-          been_combined = false
-          @keyword_queries[@params[:f1]] = q1 unless @params[:q1].blank?
-          unless @params[:q2].blank?
-            if @keyword_queries.has_key?(@params[:f2])
-              @keyword_queries[@params[:f2]] = "(#{@keyword_queries[@params[:f2]]}) " + @params[:op2] + " (#{q2})"
-              been_combined = true
-            elsif @params[:op2] == "NOT"
-              @keyword_queries[@params[:f2]] = "NOT " + q2
-            else
-              @keyword_queries[@params[:f2]] = q2
-            end
+        been_combined = false
+        @keyword_queries[@params[:f1]] = q1 unless @params[:q1].blank?
+        unless @params[:q2].blank?
+          if @keyword_queries.has_key?(@params[:f2])
+            @keyword_queries[@params[:f2]] = "(#{@keyword_queries[@params[:f2]]}) " + @params[:op2] + " (#{q2})"
+            been_combined = true
+          elsif @params[:op2] == "NOT"
+            @keyword_queries[@params[:f2]] = "NOT " + q2
+          else
+            @keyword_queries[@params[:f2]] = q2
           end
-          unless @params[:q3].blank?
-            if @keyword_queries.has_key?(@params[:f3])
-              @keyword_queries[@params[:f3]] = "(#{@keyword_queries[@params[:f3]]})" unless been_combined
-              @keyword_queries[@params[:f3]] = "#{@keyword_queries[@params[:f3]]} " + @params[:op3] + " (#{q3})"
-            elsif @params[:op3] == "NOT"
-              @keyword_queries[@params[:f3]] = "NOT " + q3            
-            else
-              @keyword_queries[@params[:f3]] = q3
-            end
-          end     
-
-        # advanced search behavior  
-        else
-          config.search_fields.each do | key, field_def |
-            if ! @params[ key.to_sym ].blank?
-              @keyword_queries[ key ] = @params[ key.to_sym ]
-            end
-          end          
-        end  
-
+        end
+        unless @params[:q3].blank?
+          if @keyword_queries.has_key?(@params[:f3])
+            @keyword_queries[@params[:f3]] = "(#{@keyword_queries[@params[:f3]]})" unless been_combined
+            @keyword_queries[@params[:f3]] = "#{@keyword_queries[@params[:f3]]} " + @params[:op3] + " (#{q3})"
+          elsif @params[:op3] == "NOT"
+            @keyword_queries[@params[:f3]] = "NOT " + q3            
+          else
+            @keyword_queries[@params[:f3]] = q3
+          end
+        end
       end
 
       return @keyword_queries
@@ -176,9 +143,9 @@ module BlacklightAdvancedSearch::ParsingNestingParser
     keyword_queries.each do |field, query|
       query = query.delete(' ') if field == "left_anchor" 
       queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query( local_param_hash(field, config) )
-      queries << ops.shift if is_guided?
+      queries << ops.shift
     end
-    is_guided? ? queries.join(' ') : queries.join( ' ' + ops + ' ')
+    queries.join(' ')
   end
 end
 
@@ -237,26 +204,7 @@ module BlacklightAdvancedSearch::RenderConstraintsOverride
     if (@advanced_query.nil? || @advanced_query.keyword_queries.empty? )
       return super(my_params)
     else
-      if is_guided?
-        content = guided_search
-      else
-        content = []
-        @advanced_query.keyword_queries.each_pair do |field, query|
-          label = search_field_def_for_key(field)[:label]
-          content << render_constraint_element(
-            label, query,
-            :remove =>
-              catalog_index_path(remove_advanced_keyword_query(field,my_params))
-          )
-        end
-        if (@advanced_query.keyword_op == "OR" &&
-            @advanced_query.keyword_queries.length > 1)
-          content.unshift content_tag(:span, "Any of:", class:'operator')
-          content_tag :span, class: "inclusive_or appliedFilter well" do
-            return safe_join(content.flatten, "\n")
-          end
-        end
-      end
+      content = guided_search
       safe_join(content.flatten, "\n")          
     end
   end
@@ -265,6 +213,6 @@ end
 module BlacklightAdvancedSearch::Controller
   def is_advanced_search? req_params = params
     (req_params[:search_field] == self.blacklight_config.advanced_search[:url_key]) ||
-          req_params[:f_inclusive] || req_params[:search_field] == 'guided'
+          req_params[:f_inclusive]
   end
 end
