@@ -30,12 +30,12 @@
 
 
 <%# Publication Date is a range input %>
-<% pub_date = facet_by_field_name('pub_date_start_sort') %>
+<% pub_date = facet_configuration_for_field('pub_date_start_sort') %>
 <div class="form-group advanced-search-facet">
-  <%= label_tag pub_date.name.parameterize, :class => "col-sm-3 control-label" do %>
-      <%= facet_field_label(pub_date.name) %>
+  <%= label_tag pub_date.field.parameterize, :class => "col-sm-3 control-label" do %>
+      <%= pub_date.label %>
   <% end %>
   <div class="col-sm-9 range_limit">
-    <%= render_range_input(pub_date.name, :begin) %> – <%= render_range_input(pub_date.name, :end) %>
+    <%= render_range_input(pub_date.field, :begin) %> – <%= render_range_input(pub_date.field, :end) %>
   </div>
 </div>
