@@ -9,3 +9,11 @@ describe "Facets rendered" do
     expect(home_facets).to be < search_facets
   end
 end
+
+describe "Advanced limits" do
+  it "will render when clicked from the record" do
+    visit  "/catalog/3"
+    click_link "Advanced Search"
+    click_link "Clear form"
+  end
+end
