@@ -26,13 +26,14 @@
 .list--search-tips > li {
     border: 1px solid #ddd;
     // padding: 1em;
-    border-bottom: 0;
+    // border-bottom: 0;
     list-style-type: none;
+    margin-bottom: 1.5em;
 
-    &:last-child {
-        border-bottom: 1px solid #ddd;
-        padding: 1em;
-    }
+    // &:last-child {
+    //     border-bottom: 1px solid #ddd;
+    //     padding: 1em;
+    // }
     > dl {
         margin: 0;
 
