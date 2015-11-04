@@ -8,7 +8,7 @@
 
 Versions:
 
-* Ruby: 2.1
+* Ruby: 2.2.3
 * Rails: 4.2.4
 * Blacklight: 5.14.0
 * blacklight_advanced_search: 5.1.2
