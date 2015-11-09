@@ -11,78 +11,68 @@
     *:first-letter,
     *:first-line {
         background: transparent !important;
-        color: #000 !important; /* Black prints faster:
+        color: #000 !important;
+        /* Black prints faster:
                                    http://www.sanbeiji.com/archives/953 */
         box-shadow: none !important;
         text-shadow: none !important;
     }
-
     a,
     a:visited {
         text-decoration: underline;
     }
-
     a[href]:after {
         content: " (" attr(href) ")";
     }
-
+    a[href].search-subject:after {
+        content: "";
+    }
     abbr[title]:after {
         content: " (" attr(title) ")";
     }
-
     /*
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
-
     a[href^="#"]:after,
     a[href^="javascript:"]:after {
         content: "";
     }
-
     pre,
     blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
-
     /*
      * Printing Tables:
      * http://css-discuss.incutio.com/wiki/Printing_Tables
      */
-
     thead {
         display: table-header-group;
     }
     tbody {
         display: table-row-group;
     }
-
     tr,
     img {
         page-break-inside: avoid;
     }
-
     td {
         padding: 0;
     }
-
     img {
         max-width: 100% !important;
     }
-
     p,
     h2,
     h3 {
         orphans: 3;
         widows: 3;
     }
-
     h2,
     h3 {
         page-break-after: avoid;
     }
-
     header,
     footer,
     #facets,
@@ -90,19 +80,28 @@
     .search-widgets,
     .pagination,
     .pagination-search-widgets,
-    #sidebar {
+    #sidebar,
+    .umlaut-section,
+    .availability {
         display: none;
     }
-    .document dt, h1 {
+    .document dt,
+    h1 {
         font-weight: bold;
         font-size: 1.2em;
     }
-    #librarian-classic-views, .availability {
+    #librarian-classic-views,
+    .availability {
         padding: 1em;
     }
-    .umlaut-section, .availability {
-        padding: 0;
-        margin: 0 0 1em;
-    }
 
+    .dl-horizontal dt {
+        display: block;
+        clear: both;
+        text-align: left;
+    }
+    .dl-horizontal dd {
+        clear: both;
+        margin-left: 0;
+    }
 }
