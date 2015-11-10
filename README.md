@@ -28,6 +28,8 @@ exit
 ### database configruation
 ```bash
 cp config/database.yml.tmpl config/database.yml
+rake db:create
+rake db:migrate
 ```
 Production credentials: In production you'll need to add production 
 credentials to database.yml
