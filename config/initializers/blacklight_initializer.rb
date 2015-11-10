@@ -13,7 +13,8 @@ module Blacklight::Solr::Document::Marc
     MARC::XMLReader.new(StringIO.new( record )).to_a.first || MARC::Record.new
   end
 
-  def export_as_openurl_ctx_kev(format = nil)  
+  def export_as_openurl_ctx_kev(format = nil)
+
     title = to_marc.find{|field| field.tag == '245'}
     author = to_marc.find{|field| field.tag == '100'}
     corp_author = to_marc.find{|field| field.tag == '110'}
@@ -28,7 +29,7 @@ module Blacklight::Solr::Document::Marc
     end
     export_text = ""
     if format == 'book'
-      export_text << "ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rfr_id=info%3Asid%2Fblacklight.rubyforge.org%3Agenerator&amp;rft.genre=book&amp;"
+      export_text << "ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rfr_id=info%3Asid%2Fpulsearch.princeton.edu%3Agenerator&amp;rft.genre=book&amp;"
       export_text << "rft.btitle=#{(title.nil? or title['a'].nil?) ? "" : CGI::escape(title['a'])}+#{(title.nil? or title['b'].nil?) ? "" : CGI::escape(title['b'])}&amp;"
       export_text << "rft.title=#{(title.nil? or title['a'].nil?) ? "" : CGI::escape(title['a'])}+#{(title.nil? or title['b'].nil?) ? "" : CGI::escape(title['b'])}&amp;"
       export_text << "rft.au=#{(author.nil? or author['a'].nil?) ? "" : CGI::escape(author['a'])}&amp;"
@@ -65,7 +66,14 @@ module Blacklight::Solr::Document::Marc
         export_text << "&amp;rft.isbn=#{(isbn.nil? or isbn['a'].nil?) ? "" : isbn['a']}"
       end
     end
-    export_text << "&amp;rft_id=" + (id.nil? ? "" : CGI::escape("pul_"+id.value))
+    
+    export_text << "&amp;rft_id=" + (id.nil? ? "" : CGI::escape("http://bibdata.princeton.edu/bibliographic/#{id.value}"))
+    unless self["oclc_s"].nil?
+      export_text << "&amp;rft_id=" + CGI::escape("info:oclcnum/#{self['oclc_s'][0]}")
+    end
+    unless self["lccn_s"].nil?
+      export_text << "&amp;rft_id=" + CGI::escape("info:lccn/#{self['lccn_s'][0]}")
+    end
     export_text.html_safe unless export_text.blank?
   end
 

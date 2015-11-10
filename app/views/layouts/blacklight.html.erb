@@ -19,7 +19,7 @@
     <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag "https://getit.princeton.edu/assets/umlaut/update_html.js" %>
+    <%= javascript_include_tag "#{ENV['umlaut_base']}/assets/umlaut/update_html.js" %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
 

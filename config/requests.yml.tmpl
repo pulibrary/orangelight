@@ -1,0 +1,14 @@
+# requests.yml
+
+defaults: &defaults
+  umlaut_base: https://getit.princeton.edu
+  bibdata_base: http://bibdata.princeton.edu/bibliographic
+
+development:
+  umlaut_base: http://localhost:4000
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

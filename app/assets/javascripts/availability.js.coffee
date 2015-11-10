@@ -5,10 +5,11 @@ class AvailabilityUpdater
     this.request_availability()
   availability_url: "http://bibdata.princeton.edu/availability"
   request_availability: ->
-    ids = this.record_ids().toArray()
-    params = $.param({ids: ids})
-    url = "#{@availability_url}?#{params}"
-    $.getJSON(url, this.process_records)
+    if $(".documents-list").length > 0
+      ids = this.record_ids().toArray()
+      params = $.param({ids: ids})
+      url = "#{@availability_url}?#{params}"
+      $.getJSON(url, this.process_records)
   process_records: (records) =>
     for record_id, availability_info of records
       this.apply_record(record_id, availability_info)

@@ -6,7 +6,7 @@ gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Blacklight
-gem 'blacklight', ">= 5.3.0"
+gem 'blacklight', '5.14.0'
 
 gem 'blacklight_folders'
 # slider limit support
@@ -73,7 +73,8 @@ group :development do
   gem 'pry-byebug'
 end
 
-#group :test, :development do
+group :test, :development do
 #	gem "jettywrapper", "~> 1.7"
 #	gem 'rspec-rails', '~> 3.0.0'
-#end
+  gem 'poltergeist'
+end
