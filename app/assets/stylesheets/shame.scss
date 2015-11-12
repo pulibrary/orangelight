@@ -786,7 +786,7 @@ select::-ms-expand {
 // }
 
 .checkbox.toggle_bookmark {
-    padding: 0;
+    padding: 0px 18px 0px 0px;
 }
 
 li .toggle_bookmark input[type=checkbox] {
@@ -837,4 +837,8 @@ a.more_facets_link {
 .search-submit-buttons {
     margin-top: 2em;
     margin-bottom: 2.2em;
+}
+
+.beta {
+    border-left: 4px solid #E0CB52;
 }
