@@ -26,6 +26,20 @@ module ApplicationHelper
     #   args[:document][args[:field]][0], :target => "_blank")
   end
 
+  def proxy_urlify args
+    urls = ''
+    links = JSON.parse(args[:document][args[:field]])
+    links.each do |url, text|
+      link = link_to(text.first, ENV['proxy_base'] + url, :target => "_blank")
+      link = "#{text[1]}: " + link if text[1]
+      link = "<li>#{link}</li>" if links.count > 1
+      urls << link
+    end
+    urls.html_safe
+    # args[:document][args[:field]][0] = link_to(args[:document][args[:field]][1],
+    #   args[:document][args[:field]][0], :target => "_blank")
+  end
+
   def wheretofind args
   	args[:document][args[:field]].each_with_index do |location, i|
   		args[:document][args[:field]][i] = link_to("Locate", "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{args[:document]["id"]}", :target => "_blank")
@@ -34,7 +48,7 @@ module ApplicationHelper
   end
 
   def locate_link location, bib
-    link_to("[Find it]", "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => "_blank", class: "find-it")
+    link_to("[Find it]", "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => "_blank", class: "find-it", 'data-map-location' => "#{location}")
   end
 
 
