@@ -280,111 +280,12 @@ header .input-group-addon {
     clear: none;
 }
 
-// footer.scss
 body {
     background: $light-gray;
 }
 
 main {
     background: $white;
-}
-
-.l-footer {
-    background-color: $light-gray;
-    margin: 2em 0;
-}
-
-footer {
-    h2 {
-        font-size: 16px;
-        margin-bottom: 0.75em;
-        font-weight: bold;
-        color: $dark-orange;
-        font-family: $font-serif;
-        a {
-            color: $dark-orange;
-        }
-    }
-}
-
-footer a {
-    color: black;
-}
-
-.l-region--footer .leaf a {
-    line-height: 1.75em;
-}
-
-.l-region--footer address,
-.l-region--footer .footer--copyright,
-.l-region--footer li a {
-    color: $dark-gray;
-    font-size: 0.9em;
-}
-
-.svg .facebook-logo:before,
-.svg .twitter-logo:before,
-.svg .govdocs-logo:before,
-.svg .friends-logo:before,
-.svg .pu-logo:before {
-    content: ' ';
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-}
-
-.svg .facebook-logo,
-.svg .twitter-logo,
-.svg .govdocs-logo,
-.svg .friends-logo,
-.svg .pu-logo {
-    background-size: contain;
-    display: inline-block;
-    line-height: 11px;
-    height: 24px;
-}
-
-.svg .facebook-logo img,
-.svg .twitter-logo img,
-.svg .govdocs-logo img,
-.svg .friends-logo img,
-.svg .pu-logo img {
-    display: none;
-}
-
-.svg .facebook-logo {
-    background-image: image-url("facebook.svg");
-    width: 24px;
-    margin: 0 0.2em 0.75em;
-}
-
-.svg .twitter-logo {
-    background-image: image-url("twitter.svg");
-    width: 24px;
-    margin: 0 0.2em 0.75em;
-}
-
-.svg .govdocs-logo {
-    background-image: image-url("govdocs.svg");
-    width: 27px;
-    margin: 0 0.2em 0.75em;
-}
-
-.svg .friends-logo {
-    background-image: image-url("friends.svg");
-    width: 91px;
-    margin: 0 0.2em 0.75em;
-}
-
-.svg .pu-logo {
-    background-image: image-url("pu.svg");
-    width: 142px;
-    height: 40px;
-    margin: 0.5em 0 0;
-}
-
-.l-region--footer .footer--copyright {
-    margin-top: 0.5em;
 }
 
 .top-panel-heading.panel-heading {
@@ -623,44 +524,6 @@ header .navbar-nav > li > a {
     }
 }
 
-
-
-.document-thumbnail {
-    display: block;
-    // height: 110px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-    img,
-    .default {
-        display: block;
-        margin: 0 auto;
-        max-width: 80px;
-        height: auto;
-        background-size: contain;
-        background-position: center top;
-    }
-}
-
-#sidebar .document-thumbnail {
-    display: block;
-    height: 160px;
-    width: 100%;
-    text-align: center;
-    img,
-    .default {
-        max-width: 100px;
-        height: auto;
-        background-size: contain;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-#sidebar .availability {
-    clear: both;
-}
-
 .document .blacklight-format .icon {
     display: inline-block;
     width: auto;
@@ -763,10 +626,6 @@ select::-ms-expand {
     display: none;
 }
 
-#librarian-classic-views {
-    padding-left: 30px;
-}
-
 // .add-to-folder-label {
 //     cursor: pointer;
 //     padding: 5px;
@@ -841,4 +700,21 @@ a.more_facets_link {
 
 .beta {
     border-left: 4px solid #E0CB52;
+}
+
+.is-disabled {
+    opacity: .5;
+    background: $light-gray;
+    pointer-events: none;
+}
+.classic-view {
+    padding: 1em;
+    margin-bottom: 0.5em;
+    text-align: center;
+    a {
+        font-size: 13px;
+        line-height: 18px;
+        padding: 0.5em;
+        display: inline-block;
+    }
 }

@@ -1,23 +1,24 @@
 @import "variables/breaks";
+@import "abstractions/mixins";
 
 .dl-horizontal dt,
 .dl-horizontal dd {
-    width: 100%;
-    display: block;
-    clear: both;
-    margin-bottom: 1em;
+  width: 100%;
+  display: block;
+  clear: both;
+  // margin-bottom: 1em;
 }
 
 .dl-horizontal dd ul {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .dl-horizontal dd.blacklight-call_number_display > ul > li {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 
-    &:last-child {
-        margin-bottom: 0;
-    }
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .availability-icon {
@@ -26,24 +27,38 @@
 }
 
 .dl-horizontal .blacklight-call_number_display ul.holding-block li {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
-.blacklight-call_number_display li+li {
+.blacklight-call_number_display li + li {
   margin-top: .3em;
 }
 
-
 @media (min-width: $bp-small) {
-    .dl-horizontal dt {
-        overflow: visible;
-        width: 180px !important;
-        margin-right: 10px;
-        clear: none;
-        display: inline-block;
-    }
-    .dl-horizontal dd {
-        margin-left: 190px;
-        clear: none;
-    }
+  .dl-horizontal dt {
+    overflow: visible;
+    width: 160px;
+    margin-right: 10px;
+    clear: none;
+    display: inline-block;
+    white-space: initial;
+    float: left;
+    clear: left;
+  }
+
+  .dl-horizontal dd {
+    margin-left: 170px;
+    clear: none;
+    margin-bottom: 1em;
+  }
+
+  .dl-horizontal dd:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+
+  .content {
+    margin-left: -30px;
+  }
 }

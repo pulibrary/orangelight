@@ -1,3 +1,5 @@
+@import "abstractions/mixins";
+
 .availability .availability--heading,
 .holding-info .holding-info--heading {
     margin-top: 0;
@@ -5,4 +7,42 @@
 
 .availability .info-url {
   display: none;
+}
+
+.document-thumbnail {
+    display: block;
+    // height: 110px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    img,
+    .default {
+        display: block;
+        margin: 0 auto;
+        max-width: 80px;
+        height: auto;
+        background-size: contain;
+        background-position: center top;
+    }
+}
+
+#sidebar .document-thumbnail {
+    display: block;
+    height: 160px;
+    width: 100%;
+    text-align: center;
+    img,
+    .default {
+        max-width: 100px;
+        height: auto;
+        background-size: contain;
+        margin-left: auto;
+        margin-right: auto;
+        @include vertical-align();
+    }
+}
+
+#sidebar .availability {
+    position: relative;
+    clear: both;
 }
