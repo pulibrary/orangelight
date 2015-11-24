@@ -224,7 +224,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'local_notes_display', :label => 'Local notes'
     config.add_show_field 'rights_reproductions_note_display', :label => 'Rights and reproductions note'
     config.add_show_field 'exhibitions_note_display', :label => 'Exhibitions note'
-    config.add_show_field 'participant_performer_display', :label => 'Participant(s)/Performer(s)'
+    config.add_show_field 'participant_performer_display', :label => 'Participant(s)/&#8203;Performer(s)'
     config.add_show_field 'language_display', :label => 'Language(s)'
     config.add_show_field 'script_display', :label => 'Script'
     config.add_show_field 'contents_display', :label => 'Contents'
