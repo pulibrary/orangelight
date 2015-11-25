@@ -40,6 +40,30 @@ module ApplicationHelper
     #   args[:document][args[:field]][0], :target => "_blank")
   end
 
+  def urlify_with_proxy(args)
+    urls = ''
+    links = JSON.parse(args)
+    links.each do |url, text|
+      link = link_to(text.first, ENV['proxy_base'] + url, :target => "_blank")
+      link = "#{text[1]}: " + link if text[1]
+      link = "<li>#{link}</li>" if links.count > 1
+      urls << link
+      urls << add_marcit_holdings(url)
+    end
+    urls.html_safe
+    # args[:document][args[:field]][0] = link_to(args[:document][args[:field]][1],
+    #   args[:document][args[:field]][0], :target => "_blank")
+  end
+
+  def add_marcit_holdings(url)
+    if /getit\.princeton\.edu/.match(url)
+      content_tag(:div, "", :id => "full_text", :class => ["availability--panel", "availability_full-text"] )
+    else
+      ""
+    end
+
+  end
+
   def wheretofind args
   	args[:document][args[:field]].each_with_index do |location, i|
   		args[:document][args[:field]][i] = link_to("Locate", "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{args[:document]["id"]}", :target => "_blank")

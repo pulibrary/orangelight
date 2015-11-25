@@ -1,6 +1,49 @@
-<%= content_tag(:div, class: "document-thumbnail", data: @document.identifier_data) do %>
-  <div class="default"></div>
+<div class="row">
+  <%= content_tag(:div, class: "document-thumbnail", data: @document.identifier_data) do %>
+    <div class="default"></div>
+  <% end %>
+</div>
+
+<% unless @document['electronic_access_1display'].nil? %>
+  <div class="row location--panel location--online">
+    <div class="panel panel-default">
+      <div class="panel-heading">Online</div>
+      <div class="panel-body">
+        <%= urlify_with_proxy(@document['electronic_access_1display']) %>
+      </div>
+    </div>
+  </div>
 <% end %>
+
+<div class="row location--panel location--holdings">
+  <div class="panel panel-default">
+    <div class="panel-heading">Copies in Library</div>
+    <div class="panel-body">
+    <% JSON.parse(@document['holdings_1display']).each_with_index do |holding, i| %>
+      <% if /Online/.match(holding['location']) %>
+            
+      <% else %>
+      <div class='section--holding' data-location-code="<%= @document['location_code_s'][i] %>">
+        <h2><%= holding['location'] %></h2>
+        <span><%= holding['call_number'] %></span> 
+        <div data-holding-id="To be added" class="request-options">
+          <button type="button" class="btn btn-info">Request from Offsite</button>
+          <p class="viewing-restrictions">Items at this location must be viewed on site.</p>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+<!--
+<div class="row">
+  <div id="holding" class="availability--panel availability_holding"></div>
+</div>
+-->
+
+
 
 <% unless @document.more_like_this.empty? %>
   <div class="panel panel-default">
