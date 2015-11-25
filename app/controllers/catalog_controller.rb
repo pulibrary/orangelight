@@ -82,7 +82,7 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'access_facet', label: 'Access', sort: 'index', collapse: false, home: true
+    config.add_facet_field 'location', :label => 'Library', :limit => 20, sort: 'index', home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }
     config.add_facet_field 'format', :label => 'Format', partial: "facet_format", sort: 'index', :limit => 15, collapse: false, home: true
 
     # num_segments and segments set to defaults here, included to show customizable features
@@ -95,7 +95,6 @@ class CatalogController < ApplicationController
     config.add_facet_field 'genre_facet', :label => 'Subject: Genre', :limit => true
     config.add_facet_field 'subject_era_facet', :label => 'Subject: Era', :limit => true
     config.add_facet_field 'language_facet', :label => 'Language', :limit => true
-    config.add_facet_field 'location', :label => 'Library', :limit => 20, sort: 'index'
     config.add_facet_field 'lc_1letter_facet', :label => 'Classification', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'author_s', :label => 'Author', :limit => true, show: false
     config.add_facet_field 'lc_rest_facet', :label => 'Full call number code', :limit => 25, show: false, sort: 'index'
