@@ -514,6 +514,7 @@ header .navbar-nav > li > a {
 .dropdown-account .dropdown-menu {
     right: 0;
     left: auto;
+    margin-top: 8px;
 }
 
 .checkbox.toggle_bookmark {
@@ -717,4 +718,7 @@ a.more_facets_link {
         padding: 0.5em;
         display: inline-block;
     }
+}
+.renew-items .form-control {
+    max-width: 350px;
 }
