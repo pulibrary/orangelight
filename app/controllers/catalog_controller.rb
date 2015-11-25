@@ -98,22 +98,21 @@ class CatalogController < ApplicationController
     config.add_facet_field 'lc_1letter_facet', :label => 'Classification', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'author_s', :label => 'Author', :limit => true, show: false
     config.add_facet_field 'lc_rest_facet', :label => 'Full call number code', :limit => 25, show: false, sort: 'index'
+    config.add_facet_field 'recently_cataloged_facet', :label => 'Recently Cataloged', :query => {
+       :weeks_1 => { :label => 'Within 1 Week', :fq => "cataloged_tdt:[NOW/DAY-7DAYS NOW/DAY+1DAY]" },
+       :months_1 => { :label => 'Within 1 Month', :fq => "cataloged_tdt:[NOW/DAY-1MONTH NOW/DAY+1DAY]" },
+       :months_6 => { :label => 'Within 6 Months', :fq => "cataloged_tdt:[NOW/DAY-6MONTHS NOW/DAY+1DAY]" }
+    }
+
     config.add_facet_field 'instrumentation_facet', :label => 'Instrumentation', :limit => true
     config.add_facet_field 'call_number_browse_s', label: 'Call number', show: false
-    config.add_facet_field 'sudoc_facet', :label => 'SuDocs', :limit => true, sort: 'index'
 
     config.add_facet_field 'call_number_scheme_facet', :label => 'Call number scheme', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'call_number_group_facet', :label => 'Call number group', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'call_number_full_facet', :label => 'Full call number', :limit => 25, show: false, sort: 'index'
 
     config.add_facet_field 'classification_pivot_field', :label => 'Classification', :pivot => ['lc_1letter_facet', 'lc_rest_facet']
-
-    # config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
-    #    :years_5 => { :label => 'within 5 Years', :fq => "pub_date:[#{Time.now.year - 5 } TO *]" },
-    #    :years_10 => { :label => 'within 10 Years', :fq => "pub_date:[#{Time.now.year - 10 } TO *]" },
-    #    :years_25 => { :label => 'within 25 Years', :fq => "pub_date:[#{Time.now.year - 25 } TO *]" }
-    # }
-
+    config.add_facet_field 'sudoc_facet', :label => 'SuDocs', :limit => true, sort: 'index'
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
