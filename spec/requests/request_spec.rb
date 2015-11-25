@@ -173,14 +173,14 @@ describe "blacklight tests" do
     it "Only facets configured for homepage display are requested in Solr" do
       get "/catalog.json"
       r = JSON.parse(response.body)
-      expect(r["response"]["facets"].any? {|f| f['name'] == 'access_facet'}).to eq true
+      expect(r["response"]["facets"].any? {|f| f['name'] == 'location'}).to eq true
       expect(r["response"]["facets"].any? {|f| f['name'] == 'instrumentation_facet'}).to eq false
     end
 
     it "All configured facets are requested in Solr within a search" do
       get "/catalog.json?search_field=all_fields"
       r = JSON.parse(response.body)
-      expect(r["response"]["facets"].any? {|f| f['name'] == 'access_facet'}).to eq true
+      expect(r["response"]["facets"].any? {|f| f['name'] == 'location'}).to eq true
       expect(r["response"]["facets"].any? {|f| f['name'] == 'instrumentation_facet'}).to eq true
     end
   end
