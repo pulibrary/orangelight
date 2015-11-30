@@ -1,0 +1,14 @@
+.item-selector {
+  margin-bottom: 1.5em;
+  max-height: 187px;
+  overflow: auto;
+  padding: 0;
+
+  input[type=checkbox] {
+    margin-right: 0.5em;
+  }
+
+  label {
+    margin: 0;
+  }
+}
