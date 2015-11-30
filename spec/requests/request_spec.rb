@@ -14,11 +14,11 @@ describe "blacklight tests" do
 
   describe "Multiple locations check" do
     it "items with 3 or more holdings are listed as multiple holdings in search results" do
-      get "/catalog/1984221.json"
+      get "/catalog/857469.json"
       r = JSON.parse(response.body)
-      expect(r["response"]["document"]["location"].length).to eq 3
-        get "/catalog?&search_field=all_fields&q=1984221"
-        expect(response.body).to include '<span class="availability-icon label label-default" title="Click on the record for full availability info">View Record for Availability</span>'
+      expect(r["response"]["document"]["location"].length).to be > 2
+        get "/catalog?&search_field=all_fields&q=857469"
+        expect(response.body).to include '<span class="availability-icon label label-default" title="Click on the record for full availability info">View Record for Full Availability</span>'
     end
     it "displays the location name for an item with a single location" do
       get "/catalog/321.json"
@@ -42,7 +42,7 @@ describe "blacklight tests" do
     end
   end
 
-  describe "Wheretofind check" do
+  describe "stackmap link check" do
     it "provides a link to locate an item for each holding" do
       get "/catalog/430472.json"
       r = JSON.parse(response.body)
@@ -51,6 +51,10 @@ describe "blacklight tests" do
       r["response"]["document"]["location_code_s"].each do |location|
         expect(response.body.include?("target=\"_blank\" class=\"find-it\" href=\"http://library.princeton.edu/searchit/map?loc=#{location}&amp;id=#{docid}\">[Find it]</a>")).to eq true
       end
+    end
+    it "does not provide a find it link for online holdings" do
+      get "/catalog/9088928"
+      expect(response.body.include?('[Find it]')).to eq false
     end
   end
 

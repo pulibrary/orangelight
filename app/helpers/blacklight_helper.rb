@@ -140,10 +140,6 @@ module BlacklightHelper
     "<span class='icon icon-#{var.parameterize}'></span>".html_safe
   end
 
-  def multiple_holdings? document, field_name
-    field_name == 'call_number_display' and document[field_name].size > 2
-  end
-
   def other_versions id_nums, bib_id
     fq = ''
     id_nums.each {|n| fq += "other_version_s:#{n} OR "}
