@@ -10,22 +10,19 @@ class AvailabilityUpdater
     url = "#{@availability_url}?#{params}"
     $.getJSON(url, this.process_records)
   process_records: (records) =>
-    for record_id, availability_info of records
-      this.apply_record(record_id, availability_info)
-  apply_record: (record_id, availability_info) ->
-    if availability_info.more_holdings == true
-      this.record_needs_more_info(record_id)
-    else
-      for location_code, status of availability_info
-        this.apply_record_icon(record_id, location_code, status)
+    for record_id, holding_records of records
+      this.apply_record(record_id, holding_records)
+  apply_record: (record_id, holding_records) ->
+    for holding_id, availability_info of holding_records
+      this.apply_record_icon(record_id, holding_id, availability_info['status'])
     true
   record_needs_more_info: (record_id) ->
     element = $("*[data-record-id='#{record_id}'] .availability-icon")
     element.addClass("label label-default")
     element.text("View Record for Availability")
     element.prop('title', "Click on the record for full availability info")
-  apply_record_icon: (record_id, location_code, status) ->
-    availability_element = $("*[data-record-id='#{record_id}'][data-loc-code='#{location_code}'] .availability-icon")
+  apply_record_icon: (record_id, holding_id, status) ->
+    availability_element = $("*[data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .availability-icon")
     availability_element.addClass("label")
     unavailable_statuses = ["At Bindery", "Claims Returned", "Charged",
       "Hold Request", "In Transit", "Lost", "Missing", "On Hold", "Overdue",
@@ -34,6 +31,12 @@ class AvailabilityUpdater
     availability_element.text(status)
     if status in unavailable_statuses
       availability_element.addClass("label-danger")
+    else if status == 'Unknown'
+      availability_element.addClass("label-default")
+    else if status == 'Limited'
+      availability_element.addClass("label-warning")
+    else if status == 'Online'
+      availability_element.addClass("label-primary")
     else
       availability_element.addClass("label-success")
     availability_element.prop('title', status)

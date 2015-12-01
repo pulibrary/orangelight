@@ -1,17 +1,9 @@
 
 module ApplicationHelper
-  # def make_this_a_link options={}
-  #   options[:document] # the original document
-  #   options[:field] # the field to render
-  #   options[:value] # the value of the field
 
-  #   link_to options[:value], options[:value]
-  # end
 
-  # Creates link for electronic access URL, works only if one electronic access link.
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
-
   def urlify args
     urls = ''
     links = JSON.parse(args[:document][args[:field]])
@@ -21,7 +13,25 @@ module ApplicationHelper
       link = "<li>#{link}</li>" if links.count > 1
       urls << link
     end
-    urls.html_safe
+    if links.count > 1
+      content_tag(:ul, urls.html_safe)
+    else
+      urls.html_safe
+    end
+  end
+
+  # Takes first 2 links for pairing with online holdings in search results
+  def search_links electronic_access
+    urls = []
+    unless electronic_access.nil?
+      links_hash = JSON.parse(electronic_access)
+      links_hash.first(2).each do |url, text|
+        link = link_to(text.first, url, :target => "_blank")
+        link = "#{text[1]}: " + link if text[1]
+        urls << link
+      end
+    end
+    urls
   end
 
   DONT_FIND_IT = ['Fine Annex', 'Forrestal Annex', 'Mudd Manuscript Library', 'Online', 'Rare Books and Special Collections', 'ReCAP']
@@ -38,17 +48,17 @@ module ApplicationHelper
     holdings_hash = JSON.parse(args[:document][args[:field]])
     holdings_hash.each do |id, holding|
       info = ''
+      unless holding['location'].blank?
+        location = "Location: #{holding['location']}"
+        location << locate_link(holding['location_code'], args[:document]['id'], holding['library'])
+        info << content_tag(:li, location.html_safe, class: 'library-location')
+      end
       unless holding['call_number'].blank?
         cn_browse_link = link_to('[Browse]', "/browse/call_numbers?q=#{holding['call_number']}", class: 'browse-cn',
                             'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{holding['call_number']}",
                             title: "Browse: #{holding['call_number']}")
         cn = "Call Number: #{holding['call_number']} #{cn_browse_link}"
         info << content_tag(:li, cn.html_safe, class: 'holding-call-number')
-      end
-      unless holding['location'].blank?
-        location = "Location: #{holding['location']}"
-        location << locate_link(holding['location_code'], args[:document]['id'], holding['library'])
-        info << content_tag(:li, location.html_safe, class: 'library-location')
       end
       block << content_tag(:li, content_tag(:ul, info.html_safe, holding_id: id), class: 'holding-block') unless info.empty?
     end
@@ -57,13 +67,21 @@ module ApplicationHelper
 
   def holding_block_search args
     block = ''
+    links = search_links(args[:document]['electronic_access_1display'])
     holdings_hash = JSON.parse(args[:document][args[:field]])
     holdings_hash.first(2).each do |id, holding|
       render_arrow = !holding['library'].blank? and !holding['call_number'].blank?
       arrow = render_arrow ? ' &raquo; ' : ''
-      info = content_tag(:span, '', class: 'availability-icon').html_safe
-      info << "#{holding['library']}#{arrow}#{holding['call_number']}".html_safe
-      info << locate_link(holding['location_code'], args[:document]['id'], holding['library']).html_safe
+      info = ''
+      if holding['library'] == 'Online'
+        info << content_tag(:span, 'ONLINE', class: 'availability-icon label label-primary',
+                            title: 'Electronic Access')
+        info << links.shift.html_safe
+      else
+        info << content_tag(:span, '', class: 'availability-icon').html_safe
+        info << "#{holding['library']}#{arrow}#{holding['call_number']}".html_safe
+        info << locate_link(holding['location_code'], args[:document]['id'], holding['library']).html_safe
+      end
       block << content_tag(:li, info.html_safe, data: { availability_record: true, record_id: args[:document]['id'], holding_id: id })
     end
     block << content_tag(:li, content_tag(:span, 'View Record for Full Availability', class: 'availability-icon label label-default',

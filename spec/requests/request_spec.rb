@@ -40,6 +40,11 @@ describe "blacklight tests" do
       get "/catalog/844962"
       expect(response.body).to include('Finding aid: <a target="_blank" href="http://arks.princeton.edu/ark:/88435/pz50gw142">arks.princeton.edu</a>')
     end
+
+    it "includes the link for online holdings in search results" do
+      get "/catalog?&search_field=all_fields&q=9088928"
+      expect(response.body).to include('<a target="_blank" href="http://doi.org/10.3886/ICPSR35465">doi.org</a>')
+    end
   end
 
   describe "stackmap link check" do

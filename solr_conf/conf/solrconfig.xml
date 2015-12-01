@@ -244,7 +244,8 @@
         isbn_s,
         oclc_s,
         lccn_s,
-        holdings_1display
+        holdings_1display,
+        electronic_access_1display
       </str>
 
       <str name="facet">true</str>
@@ -430,7 +431,8 @@
         isbn_s,
         oclc_s,
         lccn_s,
-        holdings_1display
+        holdings_1display,
+        electronic_access_1display
       </str>
       
       <str name="facet">true</str>
