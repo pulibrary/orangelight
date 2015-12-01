@@ -4,11 +4,12 @@ module ApplicationHelper
 
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
+  # Proxy Base is added to force remote access when appropriate
   def urlify args
     urls = ''
     links = JSON.parse(args[:document][args[:field]])
     links.each do |url, text|
-      link = link_to(text.first, url, :target => "_blank")
+      link = link_to(text.first, ENV['proxy_base'] + url, :target => "_blank")
       link = "#{text[1]}: " + link if text[1]
       link = "<li>#{link}</li>" if links.count > 1
       urls << link
@@ -39,7 +40,7 @@ module ApplicationHelper
     if DONT_FIND_IT.include?(library)
       ''
     else
-      ' ' + link_to("[Find it]", "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => "_blank", class: "find-it")
+      ' ' + link_to("[Find it]", "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => "_blank", class: "find-it", 'data-map-location' => "#{location}")
     end
   end
 

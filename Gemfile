@@ -73,7 +73,8 @@ group :development do
   gem 'pry-byebug'
 end
 
-#group :test, :development do
+group :test, :development do
 #	gem "jettywrapper", "~> 1.7"
 #	gem 'rspec-rails', '~> 3.0.0'
-#end
+  gem 'poltergeist'
+end
