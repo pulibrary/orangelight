@@ -151,7 +151,7 @@ describe "blacklight tests" do
       id = '6574987'
       get "/catalog/#{id}.marcxml"
       librarian_view = response.body
-      bibdata = Faraday.get("http://bibdata.princeton.edu/bibliographic/#{id}").body
+      bibdata = Faraday.get("https://bibdata.princeton.edu/bibliographic/#{id}").body
       expect(librarian_view).to eq bibdata
     end
   end
