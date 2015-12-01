@@ -9,7 +9,7 @@ require 'faraday'
 module Blacklight::Solr::Document::Marc
   def marc_record_from_marcxml
     id = fetch(_marc_source_field)
-    record = Faraday.get("http://bibdata.princeton.edu/bibliographic/#{id}").body
+    record = Faraday.get("https://bibdata.princeton.edu/bibliographic/#{id}").body
     MARC::XMLReader.new(StringIO.new( record )).to_a.first || MARC::Record.new
   end
 
