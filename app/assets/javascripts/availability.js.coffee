@@ -3,7 +3,7 @@ jQuery ->
 class AvailabilityUpdater
   constructor: ->
     this.request_availability()
-  availability_url: "http://bibdata.princeton.edu/availability"
+  availability_url: "https://bibdata.princeton.edu/availability"
   request_availability: ->
     ids = this.record_ids().toArray()
     params = $.param({ids: ids})
