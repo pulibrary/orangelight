@@ -124,7 +124,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'author_display', :label => 'Author', :helper_method => :browse_name
     config.add_index_field 'pub_created_display', :label => 'Published/Created'
     config.add_index_field 'format', :label => 'Format', helper_method: :format_icon
-    config.add_index_field 'call_number_display', :label => 'Holding info', helper_method: :holding_block_search
+    config.add_index_field 'holdings_1display', :label => 'Holding info', helper_method: :holding_block_search
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
@@ -255,7 +255,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'coden_display', :label => 'Coden designation'
     config.add_show_field 'standard_no_1display', hash: true
     config.add_show_field 'original_language_display', :label => 'Original language'
-    config.add_show_field 'call_number_display', :label => 'Holding info', helper_method: :holding_block
+    config.add_show_field 'holdings_1display', :label => 'Holding info', helper_method: :holding_block
     config.add_show_field 'shelving_title_display', :label => 'Shelving title'
     config.add_show_field 'location_has_display', :label => 'Location has'
     config.add_show_field 'location_has_current_display', :label => 'Location has (current)'

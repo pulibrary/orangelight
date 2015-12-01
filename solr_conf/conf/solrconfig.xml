@@ -238,16 +238,14 @@
         author_display,
         marc_relator_display,
         format,
-        location,
-        location_code_s,
-        call_number_display,
         pub_created_display,
         title_display,
         title_vern_display,
-        isbn_display,
         isbn_s,
         oclc_s,
-        lccn_s
+        lccn_s,
+        holdings_1display,
+        electronic_access_1display
       </str>
 
       <str name="facet">true</str>
@@ -427,13 +425,14 @@
         author_display,
         marc_relator_display,
         format,
-        location,
-        location_code_s,
-        call_number_display,
         pub_created_display,
         title_display,
         title_vern_display,
-        isbn_display,
+        isbn_s,
+        oclc_s,
+        lccn_s,
+        holdings_1display,
+        electronic_access_1display
       </str>
       
       <str name="facet">true</str>

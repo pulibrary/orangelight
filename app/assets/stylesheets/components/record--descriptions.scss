@@ -13,7 +13,7 @@
   margin-bottom: 0;
 }
 
-.dl-horizontal dd.blacklight-call_number_display > ul > li {
+.dl-horizontal dd.blacklight-holdings_1display > ul > li {
   margin-bottom: 1em;
 
   &:last-child {
@@ -26,11 +26,11 @@
   text-transform: uppercase;
 }
 
-.dl-horizontal .blacklight-call_number_display ul.holding-block li {
+.dl-horizontal .blacklight-holdings_1display ul.holding-block li {
   margin-bottom: 0;
 }
 
-.blacklight-call_number_display li + li {
+.blacklight-holdings_1display li + li {
   margin-top: .3em;
 }
 
