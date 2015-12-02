@@ -3,6 +3,11 @@ en:
     application_name: 'Catalog | Princeton University Library'
     welcome: 'Welcome!'
     voyager: 'Main Catalog'
+    umlaut: "Findit @ Princeton"
+    holdings:
+      online: "Online"
+      print: "Copies In Library"
+      stackmap: "Where to Find It"
 
     header_links:
       login: 'My Account'

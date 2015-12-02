@@ -18,6 +18,8 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'coveralls'
+require 'capybara/poltergeist'
+
 Coveralls.wear!('rails')
 
 $in_travis = !ENV['TRAVIS'].nil? && ENV['TRAVIS'] == 'true'

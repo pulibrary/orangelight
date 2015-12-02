@@ -26,9 +26,9 @@
         selector:"#full_text",
         before_update: function(html, count) {
           //hide the section heading on the snippet, we don't want it
-          if(count == 0) {
-            $(html).find(".section_heading h3").hide();
-          }
+          //if(count == 0) {
+          $(html).find(".section_heading h3").hide();
+          //}
           return (count != 0);
         }
       });
