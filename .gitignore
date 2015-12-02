@@ -24,6 +24,7 @@ config/database.yml
 # Ignore whitelist config
 config/ip_whitelist.yml
 config/hostname_whitelist.yml
+config/requests.yml
 
 # Ignore coverage
 coverage/

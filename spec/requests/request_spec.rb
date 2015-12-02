@@ -33,17 +33,17 @@ describe "blacklight tests" do
   describe "Urlify check" do
     it "links to an electronic resource with the appropriate display text" do
       get "/catalog/3"
-      expect(response.body).to include('<a target="_blank" href="http://d-nb.info/991834119/04">Inhaltsverzeichnis</a>')
+      expect(response.body).to include("<a target=\"_blank\" href=\"#{ENV['proxy_base']}http://d-nb.info/991834119/04\">Inhaltsverzeichnis</a>")
     end
 
     it "includes $z as an additional label for the link" do
       get "/catalog/844962"
-      expect(response.body).to include('Finding aid: <a target="_blank" href="http://arks.princeton.edu/ark:/88435/pz50gw142">arks.princeton.edu</a>')
+      expect(response.body).to include("Finding aid: <a target=\"_blank\" href=\"#{ENV['proxy_base']}http://arks.princeton.edu/ark:/88435/pz50gw142\">arks.princeton.edu</a>")
     end
 
     it "includes the link for online holdings in search results" do
       get "/catalog?&search_field=all_fields&q=9088928"
-      expect(response.body).to include('<a target="_blank" href="http://doi.org/10.3886/ICPSR35465">doi.org</a>')
+      expect(response.body).to include("<a target=\"_blank\" href=\"#{ENV['proxy_base']}http://doi.org/10.3886/ICPSR35465\">doi.org</a>")
     end
   end
 
@@ -54,12 +54,12 @@ describe "blacklight tests" do
       docid = r["response"]["document"]["id"]
       get "/catalog/430472"
       r["response"]["document"]["location_code_s"].each do |location|
-        expect(response.body.include?("target=\"_blank\" class=\"find-it\" href=\"http://library.princeton.edu/searchit/map?loc=#{location}&amp;id=#{docid}\">[Find it]</a>")).to eq true
+        expect(response.body.include?("target=\"_blank\" class=\"find-it\" data-map-location=\"#{location}\" href=\"http://library.princeton.edu/searchit/map?loc=#{location}&amp;id=#{docid}\">[Where to Find It]</a>")).to eq true
       end
     end
     it "does not provide a find it link for online holdings" do
       get "/catalog/9088928"
-      expect(response.body.include?('[Find it]')).to eq false
+      expect(response.body.include?('[Where to Find it]')).to eq false
     end
   end
 

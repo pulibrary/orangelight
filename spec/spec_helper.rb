@@ -18,8 +18,11 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'coveralls'
+require 'capybara/poltergeist'
+
 Coveralls.wear!('rails')
 
+$in_travis = !ENV['TRAVIS'].nil? && ENV['TRAVIS'] == 'true'
 
 
 RSpec.configure do |config|
@@ -91,3 +94,8 @@ RSpec.configure do |config|
   end
 =end
 end
+
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, {timeout: 60})
+end
+Capybara.javascript_driver = :poltergeist

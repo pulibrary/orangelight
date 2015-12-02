@@ -2,70 +2,22 @@
 
 <%= render_document_heading_partial %>
 
-<div id="sidebar" class="col-sm-3 col-xs-12 <%= render_document_class %>">
+<div id="sidebar" class="col-sm-2 col-xs-12 <%= render_document_class %>">
   <%= render_document_sidebar_partial %>
   <div id="librarian-classic-views" class="col-sm-12 classic-view">
-    <%= link_to t('blacklight.tools.librarian_view'), librarian_view_catalog_path(@document), {:id => 'librarianLink'} %>
-    | <%= link_to "#{t('blacklight.voyager')} <span class=\"glyphicon glyphicon-share-alt\"></span>".html_safe, voyager_url(@document.id), {:id => 'librarianLink', :target => "_blank"} %>
-  </div>
-
-  <div class="availability is-disabled">
-    <div class="ribbon"><span>Placeholder</span></div>
-    <div id="full_text" class="availability--panel availability_full-text"></div>
-    <div id="holding" class="availability--panel availability_holding">
-      <!-- placholder -->
-      <div class="umlaut" style="">
-                <div class="umlaut-section holding umlaut-section-highlighted">
-          <div class="section_heading">
-            <h3>Copies In Library</h3>
-        </div>
-
-          <div class="umlaut_section_content">
-
-        <div class="umlaut-holdings">
-            <div class="umlaut-holding">
-              <div class="item_status_row">
-                <div class="collection-and-number row-fluid">
-                  <div class="span7 collection-str"><i class="umlaut_icons-famfamfam-book"></i>
-                    ReCAP - Video Collection</div>
-                  <div class="span5 holding-status "> Request from ReCAP</div>
-                </div>
-
-                <div class="status-and-actions row-fluid">
-                  <div class="span7 call-number">DVD 10193 </div>
-
-                  <div class="holding-actions span5">
-                      <a target="_blank" class="request btn btn-mini btn-primary" href="http://library.princeton.edu/requests/index.php?bib=9031545&amp;amp;loc=rcpqv">Request</a>
-                      <a target="_blank" class="info btn btn-mini btn-default info-url" href="http://princeton-primo.hosted.exlibrisgroup.com/primo_library/libweb/action/dlDisplay.do?institution=PRN&amp;vid=PRINCETON&amp;docId=PRN_VOYAGER9031545">More Information</a>
-                  </div>
-
-                </div>
-
-              </div>
-
-
-                <div class="umlaut-holding-notes">
-                  ReCAP - Video Collection -
-                </div>
-
-            </div>
-            <div class="debug_info" style="display:none">
-              <strong>Debug info:</strong> PulService
-              - holding from bib id 9031545
-            </div>
-        </div>
-
-
-          </div></div>
-
-          </div>
-          <!-- end placeholder -->
-    </div>
+    <ul>
+      <li><%= link_to t('blacklight.tools.librarian_view'), librarian_view_catalog_path(@document), {:id => 'librarianLink'} %></li>
+      <li><%= link_to "#{t('blacklight.voyager')} <span class=\"glyphicon glyphicon-share-alt\"></span>".html_safe, voyager_url(@document.id), {:id => 'librarianLink', :target => "_blank"} %></li>
+      <li><%= link_to "#{t('blacklight.umlaut')} <span class=\"glyphicon glyphicon-share-alt\"></span>".html_safe, "#{ENV['umlaut_base']}/resolve?#{@document.export_as_openurl_ctx_kev(document_partial_name(@document))}", {:id => 'getitLink' } %></li>
   </div>
 </div>
 
-<div id="content" class="col-sm-9 col-xs-12 content">
+<div id="content" class="col-sm-7 col-xs-12 content">
   <%= render_document_main_content_partial %>
+</div>
+
+<div id="availability" class="col-sm-3 col-xs-12">
+  <%= render 'show_availability_sidebar' %>
 </div>
 
 

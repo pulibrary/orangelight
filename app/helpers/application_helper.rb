@@ -4,21 +4,31 @@ module ApplicationHelper
 
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
-  def urlify args
+  # Proxy Base is added to force remote access when appropriate
+  def urlify electronic_access
     urls = ''
-    links = JSON.parse(args[:document][args[:field]])
+    links = JSON.parse(electronic_access)
     links.each do |url, text|
-      link = link_to(text.first, url, :target => "_blank")
+      link = link_to(text.first, "#{ENV['proxy_base']}#{url}", :target => "_blank")
       link = "#{text[1]}: " + link if text[1]
       link = "<li>#{link}</li>" if links.count > 1
-      urls << link
+      if add_marcit_holdings(url).empty?
+        urls << link
+      else
+        urls << add_marcit_holdings(url)
+      end
     end
-    if links.count > 1
-      content_tag(:ul, urls.html_safe)
+    urls.html_safe
+  end
+
+  def add_marcit_holdings(url)
+    if /getit\.princeton\.edu/.match(url)
+      content_tag(:div, "", :id => "full_text", :class => ["availability--panel", "availability_full-text"] )
     else
-      urls.html_safe
+      ""
     end
   end
+
 
   # Takes first 2 links for pairing with online holdings in search results
   def search_links electronic_access
@@ -26,7 +36,7 @@ module ApplicationHelper
     unless electronic_access.nil?
       links_hash = JSON.parse(electronic_access)
       links_hash.first(2).each do |url, text|
-        link = link_to(text.first, url, :target => "_blank")
+        link = link_to(text.first, "#{ENV['proxy_base']}#{url}", :target => "_blank")
         link = "#{text[1]}: " + link if text[1]
         urls << link
       end
@@ -39,7 +49,15 @@ module ApplicationHelper
     if DONT_FIND_IT.include?(library)
       ''
     else
-      ' ' + link_to("[Find it]", "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => "_blank", class: "find-it")
+      ' ' + link_to("[#{t('blacklight.holdings.stackmap')}]".html_safe, "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => "_blank", class: "find-it", 'data-map-location' => "#{location}")
+    end
+  end
+
+  def locate_link_with_gylph location, bib, library=nil
+    if DONT_FIND_IT.include?(library)
+      ''
+    else
+      ' ' + link_to("<span class=\"glyphicon glyphicon-map-marker\"></span>".html_safe, "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => "_blank", title: t('blacklight.holdings.stackmap'), class: "find-it", 'data-map-location' => "#{location}")
     end
   end
 
@@ -65,6 +83,37 @@ module ApplicationHelper
     content_tag(:ul, block.html_safe) unless block.empty?
   end
 
+  def holding_request_block (holdings, doc_id)
+    block = ''
+    holdings_hash = JSON.parse(holdings)
+    holdings_hash.each do |id, holding|
+      render_arrow = !holding['library'].blank? and !holding['call_number'].blank?
+      arrow = render_arrow ? ' &raquo; ' : ''
+      info = ''
+      unless holding['location'].blank?
+        location = "#{holding['location']}"
+        location << locate_link_with_gylph(holding['location_code'], doc_id, holding['library'])
+        info << content_tag(:h3, location.html_safe, class: 'library-location')
+      end
+      unless holding['call_number'].blank?
+        cn_browse_link = link_to('[Browse]', "/browse/call_numbers?q=#{holding['call_number']}", class: 'browse-cn',
+                            'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{holding['call_number']}",
+                            title: "Browse: #{holding['call_number']}")
+        cn = "#{holding['call_number']} #{cn_browse_link}"
+        info << content_tag(:span, cn.html_safe, class: 'holding-call-number')
+      end
+      block << content_tag(:div, content_tag(:span, "#{info}#{request_placeholder(doc_id, id)}".html_safe, {'holding_id' => id, 'data-holding-location_code' => holding['location_code']}), class: 'holding-block')unless info.empty?
+    end
+    content_tag(:div, block.html_safe) unless block.empty?
+  end
+
+  def request_placeholder(doc_id, holding_id)
+    placeholder = ""
+    placeholder << content_tag(:div, content_tag(:span, '', class: 'availability-icon').html_safe, {'data-availability-record' => true, 'data-record-id' => doc_id, 'data-holding-id' => holding_id}, class: 'holding-block')
+    placeholder << "<div class=\"location-services\"><a target=\"_blank\" class=\"request btn btn-mini btn-primary\" href=\"/request\">Request</a></div>"
+    placeholder
+  end
+
   def holding_block_search args
     block = ''
     links = search_links(args[:document]['electronic_access_1display'])
@@ -87,29 +136,6 @@ module ApplicationHelper
     block << content_tag(:li, content_tag(:span, 'View Record for Full Availability', class: 'availability-icon label label-default',
                          title: 'Click on the record for full availability info').html_safe) if holdings_hash.length > 2
     content_tag(:ul, block.html_safe) unless block.empty?
-    # if args[:document][args[:field]].size > 2
-    #   block = content_tag(:span, 'View Record for Availability', class: 'availability-icon label label-default', title: 'Click on the record for full availability info').html_safe
-    #   return "#{block}".html_safe
-    # else
-    #   args[:document][args[:field]].each_with_index do |call_numb, i|
-    #     record_block = content_tag(:span,
-    #                                data:
-    #                                {
-    #                                  availability_record: true,
-    #                                  record_id: args[:document]['id'],
-    #                                  loc_code: "#{args[:document]['location_code_s'][i]}"
-    #                                }
-    #                               ) do
-    #       block = content_tag(:span, '', class: 'availability-icon').html_safe
-    #       block += "#{call_numb} &raquo; ".html_safe
-    #       block += "#{args[:document]['location'][i]}"
-    #       findit = locate_link(args[:document]['location_code_s'][i], args[:document]['id'])
-    #       block += " #{findit}".html_safe
-    #       block.html_safe
-    #     end
-    #     args[:document][args[:field]][i] = record_block.html_safe
-    #   end
-    # end
   end
 
   SEPARATOR = '—'
@@ -152,25 +178,6 @@ module ApplicationHelper
     args[:document][args[:field]].each_with_index do |name, i|
       newname = link_to(name, "/?f[author_s][]=#{name}", class: "search-name", 'data-toggle' => "tooltip", 'data-original-title' => "Search: #{name}", title: "Search: #{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", class: "browse-name", 'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{name}", title: "Browse: #{name}", dir: "#{getdir(name)}")
       args[:document][args[:field]][i] = newname.html_safe
-    end
-  end
-
-  def browse_related_name args
-    args[:document][args[:field]].each_with_index do |name, i|
-      rel_term =  /^.*：/.match(name) ? /^.*：/.match(name)[0] : ''
-      rel_name = name.gsub(/^.*：/,'')
-      newname = rel_term + link_to(rel_name, "/?f[author_s][]=#{rel_name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{rel_name}", class: "browse-related-name", dir: "#{getdir(rel_name)}")
-      args[:document][args[:field]][i] = newname.html_safe
-    end
-  end
-
-
-
-  def multiple_locations args
-    if args[:document][args[:field]][1]
-      args[:document][args[:field]] = ["Multiple Locations"]
-    else
-      args[:document][args[:field]][0]
     end
   end
 

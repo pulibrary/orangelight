@@ -19,14 +19,16 @@
   <script type="text/javascript">
     jQuery(document).ready(function(){
       var ctx = $("span.Z3988").attr("title");
-      var umlaut_base = "https://getit.princeton.edu";
+      var umlaut_base = "<%= ENV['umlaut_base'] %>";
       var updater = new Umlaut.HtmlUpdater(umlaut_base, ctx );
       updater.add_section_target({
         umlaut_section_id: "fulltext",
         selector:"#full_text",
         before_update: function(html, count) {
           //hide the section heading on the snippet, we don't want it
+          //if(count == 0) {
           $(html).find(".section_heading h3").hide();
+          //}
           return (count != 0);
         }
       });
