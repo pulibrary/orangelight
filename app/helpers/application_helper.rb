@@ -119,13 +119,19 @@ module ApplicationHelper
     links = search_links(args[:document]['electronic_access_1display'])
     holdings_hash = JSON.parse(args[:document][args[:field]])
     holdings_hash.first(2).each do |id, holding|
-      render_arrow = !holding['library'].blank? and !holding['call_number'].blank?
+      render_arrow = (!holding['library'].blank? and !holding['call_number'].blank?)
       arrow = render_arrow ? ' &raquo; ' : ''
       info = ''
       if holding['library'] == 'Online'
-        info << content_tag(:span, 'ONLINE', class: 'availability-icon label label-primary',
-                            title: 'Electronic Access')
-        info << links.shift.html_safe
+        if links.empty?
+          info << content_tag(:span, 'LINK MISSING', class: 'label label-danger',
+                              title: 'Electronic Access')
+          info << ' Please contact public services about this error.'
+        else
+          info << content_tag(:span, 'ONLINE', class: 'availability-icon label label-primary',
+                              title: 'Electronic Access')
+          info << links.shift.html_safe
+        end
       else
         info << content_tag(:span, '', class: 'availability-icon').html_safe
         info << "#{holding['library']}#{arrow}#{holding['call_number']}".html_safe

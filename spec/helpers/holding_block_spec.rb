@@ -17,10 +17,9 @@ RSpec.describe ApplicationHelper do
           call_number: call_number
         },
         '3595800' => {
-          location: 'Firestone Library',
-          library: 'Firestone Library',
-          location_code: 'f',
-          call_number: 'PS3539.A74Z93 2000'
+          location: 'Online - Online Resources',
+          library: 'Online',
+          location_code: 'elf3',
         },
         '3595801' => {
           location: 'ReCAP',
@@ -76,6 +75,9 @@ RSpec.describe ApplicationHelper do
       end
       it "has an availability icon" do
         expect(search_result).to have_selector ".availability-icon"
+      end
+      it "link missing label appears when 856s is missing from elf location" do
+        expect(search_result).to include "LINK MISSING"
       end
     end
     context "#holding_block record show" do
