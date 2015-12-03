@@ -1,58 +1,82 @@
-#content > .availability {
-  float: right;
+.location--panel {
+  padding-left: 2em;
 }
-.umlaut-section {
-    padding: 1.5rem;
-    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
-    background: white;
+
+.location--panel .panel {
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+  background: white;
+  margin: 0 0 1.5em;
+  border-radius: 0;
+
+  .panel-heading {
+    font-size: 1.2em;
     margin: 0;
-    border-radius: 3px;
+    border-bottom: 2px solid #eee;
+    background: none;
+  }
+
+  .panel-body {
+    font-size: 12px;
+    padding: 0;
+  }
+
+  .availability-icon {
+    background: none;
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 0;
+    margin-right: 0;
+
+    &.label-default {
+      color: #777;
+    }
+    &.label-warning {
+        color: #f0ad4e;
+    }
+    &.label-danger {
+        color: #d9534f;
+    }
+    &.label-success {
+        color: #5cb85c;
+    }
+  }
+  .btn {
+    margin-top: .75em;
+  }
+
+  .holding-block {
+    padding: 1.5em;
+    border-bottom: 1px solid #eee;
+    display: block;
 
     h3 {
-        font-size: 1.2em;
-        margin: 0 0 1em;
-        padding-bottom: 1em;
-        border-bottom: 2px solid #eee;
+      margin: 0 0 0.5em;
+      line-height: 1.2em;
+      font-size: 0.9rem;
+    }
+  }
+
+  .holding-block:last-child, ul li:last-child {
+    border: none;
+  }
+}
+
+.location--online .panel .panel-body {
+    display: block;
+    padding: 1.5em 1.5em 0;
+    a {
+        padding-bottom: 1.5em;
+        display: inline-block;
+    }
+    .umlaut-section a {
+        padding: 0;
+    }
+    .umlaut-section li {
+        margin-bottom: 1.5em;
     }
 }
 
-.umlaut_section_content {
-    font-size: 0.9em;
-}
-
-.umlaut-holding, .response_item {
-    margin-bottom: 1em;
-    padding-bottom: 1.5em;
-    border-bottom: 1px solid #eee;
-}
-
-.response_list {
-    margin-bottom: 0;
-}
-
-.umlaut-holdings div:nth-last-of-type(2), .response_list li:last-child {
-    border: none;
-    padding-bottom: 0;
-    margin-bottom: 0;
-}
-
-.collection-str, .response_link {
-    font-weight: bold;
-}
-
-.holding-status, .call-number, .response_notes, .edition_warning {
-    font-size: 0.8em;
-}
-
-.holding-status , .response_notes, .edition_warning {
-    margin-top: 0.7em;
-}
-
-.umlaut-holding-notes {
-    display: none;
-}
-
-.holding-actions .btn {
-    font-size: 0.9em;
-    margin-top: 1em;
+.availability-icon.label:hover {
+  color: white;
+  text-decoration: none;
 }

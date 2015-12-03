@@ -10,16 +10,15 @@
 <% end %>
 
 <% unless @document['holdings_1display'].nil? %>
+<% h = holding_request_block(@document['holdings_1display'], @document['id']) %>
+  <% unless h.nil? %>
   <div class="row location--panel location--holding">
     <div class="panel panel-default">
       <div class="panel-heading"><%= t('blacklight.holdings.print') %></div>
       <div class="panel-body">
-        <%= holding_request_block(@document['holdings_1display'], @document['id']) %>
+        <%= h %>
       </div>
     </div>
   </div>
+  <% end %>
 <% end %>
-
-<!--
-<div class="row location--panel location--physical" id="holding"></div>
--->

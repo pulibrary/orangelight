@@ -18,12 +18,16 @@ module ApplicationHelper
         urls << add_marcit_holdings(url)
       end
     end
-    urls.html_safe
+    if links.count > 1
+      content_tag(:ul, urls.html_safe)
+    else
+      urls.html_safe
+    end
   end
 
   def add_marcit_holdings(url)
     if /getit\.princeton\.edu/.match(url)
-      content_tag(:div, "", :id => "full_text", :class => ["availability--panel", "availability_full-text"] )
+      content_tag(:div, "", :id => "full_text", :class => ["availability--panel", "availability_full-text"], 'data-umlaut-fulltext' => true )
     else
       ""
     end
@@ -87,22 +91,22 @@ module ApplicationHelper
     block = ''
     holdings_hash = JSON.parse(holdings)
     holdings_hash.each do |id, holding|
-      render_arrow = !holding['library'].blank? and !holding['call_number'].blank?
-      arrow = render_arrow ? ' &raquo; ' : ''
-      info = ''
-      unless holding['location'].blank?
-        location = "#{holding['location']}"
-        location << locate_link_with_gylph(holding['location_code'], doc_id, holding['library'])
-        info << content_tag(:h3, location.html_safe, class: 'library-location')
+      unless holding['location_code'].start_with?('elf')
+        info = ''
+        unless holding['location'].blank?
+          location = "#{holding['location']}"
+          location << locate_link_with_gylph(holding['location_code'], doc_id, holding['library'])
+          info << content_tag(:h3, location.html_safe, class: 'library-location')
+        end
+        unless holding['call_number'].blank?
+          cn_browse_link = link_to('[Browse]', "/browse/call_numbers?q=#{holding['call_number']}", class: 'browse-cn',
+                              'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{holding['call_number']}",
+                              title: "Browse: #{holding['call_number']}")
+          cn = "#{holding['call_number']} #{cn_browse_link}"
+          info << content_tag(:span, cn.html_safe, class: 'holding-call-number')
+        end
+        block << content_tag(:div, content_tag(:span, "#{info}#{request_placeholder(doc_id, id)}".html_safe, {'holding_id' => id, 'data-holding-location_code' => holding['location_code']}), class: 'holding-block')unless info.empty?
       end
-      unless holding['call_number'].blank?
-        cn_browse_link = link_to('[Browse]', "/browse/call_numbers?q=#{holding['call_number']}", class: 'browse-cn',
-                            'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{holding['call_number']}",
-                            title: "Browse: #{holding['call_number']}")
-        cn = "#{holding['call_number']} #{cn_browse_link}"
-        info << content_tag(:span, cn.html_safe, class: 'holding-call-number')
-      end
-      block << content_tag(:div, content_tag(:span, "#{info}#{request_placeholder(doc_id, id)}".html_safe, {'holding_id' => id, 'data-holding-location_code' => holding['location_code']}), class: 'holding-block')unless info.empty?
     end
     content_tag(:div, block.html_safe) unless block.empty?
   end
@@ -110,7 +114,7 @@ module ApplicationHelper
   def request_placeholder(doc_id, holding_id)
     placeholder = ""
     placeholder << content_tag(:div, content_tag(:span, '', class: 'availability-icon').html_safe, {'data-availability-record' => true, 'data-record-id' => doc_id, 'data-holding-id' => holding_id}, class: 'holding-block')
-    placeholder << "<div class=\"location-services\"><a target=\"_blank\" class=\"request btn btn-mini btn-primary\" href=\"/request\">Request</a></div>"
+    placeholder << "<div class=\"location-services\"><a target=\"_blank\" class=\"request btn btn-xs btn-primary\" href=\"/request\">Request</a></div>"
     placeholder
   end
 
@@ -128,19 +132,18 @@ module ApplicationHelper
                               title: 'Electronic Access')
           info << ' Please contact public services about this error.'
         else
-          info << content_tag(:span, 'ONLINE', class: 'availability-icon label label-primary',
-                              title: 'Electronic Access')
-          info << links.shift.html_safe
+        info << link_to('ONLINE', "/catalog/#{args[:document]['id']}", class: 'availability-icon label label-primary',
+                            title: 'Electronic Access')
+        info << links.shift.html_safe
         end
       else
-        info << content_tag(:span, '', class: 'availability-icon').html_safe
+        info << link_to('', "/catalog/#{args[:document]['id']}", class: 'availability-icon').html_safe
         info << "#{holding['library']}#{arrow}#{holding['call_number']}".html_safe
         info << locate_link(holding['location_code'], args[:document]['id'], holding['library']).html_safe
       end
       block << content_tag(:li, info.html_safe, data: { availability_record: true, record_id: args[:document]['id'], holding_id: id })
     end
-    block << content_tag(:li, content_tag(:span, 'View Record for Full Availability', class: 'availability-icon label label-default',
-                         title: 'Click on the record for full availability info').html_safe) if holdings_hash.length > 2
+    block << content_tag(:li, link_to('View Record for Full Availability', "/catalog/#{args[:document]['id']}", class: 'availability-icon label label-default', title: 'Click on the record for full availability info').html_safe) if holdings_hash.length > 2
     content_tag(:ul, block.html_safe) unless block.empty?
   end
 

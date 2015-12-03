@@ -532,8 +532,9 @@ header .navbar-nav > li > a {
     padding-right: 0;
 }
 
-.document dl {
+.content dl {
     font-size: 0.9em;
+    margin-bottom: 0;
 }
 
 .document-metadata {
@@ -709,14 +710,24 @@ a.more_facets_link {
     pointer-events: none;
 }
 .classic-view {
-    padding: 1em;
-    margin-bottom: 0.5em;
     text-align: center;
-    a {
-        font-size: 13px;
-        line-height: 18px;
-        padding: 0.5em;
+    ul {
+        float: left;
+        margin-bottom: 0;
+    }
+    li {
         display: inline-block;
+    }
+    a {
+        font-size: 12px;
+        line-height: 18px;
+        padding: 0.75em;
+        display: inline-block;
+        color: #777777;
+        &:hover {
+            text-decoration: none;
+            color: darken(#777, 20%);
+        }
     }
 }
 .renew-items .form-control {

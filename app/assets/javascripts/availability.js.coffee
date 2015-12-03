@@ -6,7 +6,6 @@ class AvailabilityUpdater
   availability_url: "https://bibdata.princeton.edu/availability"
   request_availability: ->
     if ($(".documents-list").length > 0 || $(".holding-block").length > 0)
-      console.log('I am here')
       ids = this.record_ids().toArray()
       params = $.param({ids: ids})
       url = "#{@availability_url}?#{params}"
