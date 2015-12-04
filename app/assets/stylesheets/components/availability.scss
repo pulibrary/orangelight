@@ -9,7 +9,7 @@
   border-radius: 0;
 
   .panel-heading {
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin: 0;
     border-bottom: 2px solid #eee;
     background: none;
@@ -31,17 +31,18 @@
       color: #777;
     }
     &.label-warning {
-        color: #f0ad4e;
+        color: darken(#f0ad4e, 20%);
     }
     &.label-danger {
-        color: #d9534f;
+        color: darken(#d9534f, 20%);
     }
     &.label-success {
-        color: #5cb85c;
+        color: darken(#5cb85c, 20%);
     }
   }
   .btn {
-    margin-top: .75em;
+    margin-top: .4em;
+    display: none;
   }
 
   .holding-block {
@@ -50,9 +51,9 @@
     display: block;
 
     h3 {
-      margin: 0 0 0.5em;
+      margin: -.3em 0 0.1em;
       line-height: 1.2em;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
   }
 

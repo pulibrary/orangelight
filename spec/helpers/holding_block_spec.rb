@@ -7,7 +7,7 @@ RSpec.describe ApplicationHelper do
     let(:location) { 'Rare Books and Special Collections - Reference Collection in Dulles Reading Room' }
     let(:call_number) { 'PS3539.A74Z93 2000' }
     let(:search_result) { helper.holding_block_search(field_config) }
-    let(:show_result) { helper.holding_block(field_config) }
+    let(:show_result) { helper.holding_request_block(holding_block_json, 1) }
     let(:holding_block_json) do
       {
         holding_id => {
