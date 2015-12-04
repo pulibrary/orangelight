@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <ser:voyagerServiceData xmlns:ser="http://www.endinfosys.com/Voyager/serviceParameters">
+        <ser:serviceData isUB="false" xsi:type="myac:myAccountType" xmlns:myac="http://www.endinfosys.com/Voyager/myAccount" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <myac:expirationDate>2017-10-31 23:00:03</myac:expirationDate>
+            <myac:borrowingBlocks>
+                <myac:title>Blocks</myac:title>
+            </myac:borrowingBlocks>
+            <myac:finesFees>
+                <myac:title>Current Fines/Fees</myac:title>
+            </myac:finesFees>
+            <myac:demerits>
+                <myac:title>Demerits</myac:title>
+                <myac:isDemeritsOn>false</myac:isDemeritsOn>
+            </myac:demerits>
+            <myac:chargedItems>
+                <myac:title>Charged Items</myac:title>
+                </myac:clusterChargedItems>
+            </myac:chargedItems>
+            <myac:availItems>
+                <myac:title>Available Items</myac:title>
+            </myac:availItems>
+            <myac:requests>
+                <myac:title>Pending Requests</myac:title>
+            </myac:requests>
+        </ser:serviceData>
+    </ser:voyagerServiceData>

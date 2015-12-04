@@ -70,11 +70,16 @@ gem 'coveralls', require: false
 
 group :development do
   gem 'capistrano-rails', '~> 1.1.1'
+  gem 'quiet_assets'
+end
+
+group :test do
+  gem "webmock", require: false 
+  gem 'poltergeist'
+  gem 'factory_girl_rails', require: false
+end
+
+group :development, :test do 
   gem 'pry-byebug'
 end
 
-group :test, :development do
-#	gem "jettywrapper", "~> 1.7"
-#	gem 'rspec-rails', '~> 3.0.0'
-  gem 'poltergeist'
-end

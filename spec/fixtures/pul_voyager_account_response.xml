@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <ser:voyagerServiceData xmlns:ser="http://www.endinfosys.com/Voyager/serviceParameters">
+        <ser:serviceData isUB="false" xsi:type="myac:myAccountType" xmlns:myac="http://www.endinfosys.com/Voyager/myAccount" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <myac:expirationDate>2017-10-31 23:00:03</myac:expirationDate>
+            <myac:borrowingBlocks>
+                <myac:title>Blocks</myac:title>
+            </myac:borrowingBlocks>
+            <myac:finesFees>
+                <myac:title>Current Fines/Fees</myac:title>
+            </myac:finesFees>
+            <myac:demerits>
+                <myac:title>Demerits</myac:title>
+                <myac:isDemeritsOn>false</myac:isDemeritsOn>
+            </myac:demerits>
+            <myac:chargedItems>
+                <myac:title>Charged Items</myac:title>
+                <myac:clusterChargedItems>
+                    <myac:cluster>
+                        <myac:clusterName>Princeton University Library</myac:clusterName>
+                        <myac:ubSiteId>1@PRINCETONDB20050302104001</myac:ubSiteId>
+                    </myac:cluster>
+                    <myac:permitRenewal>true</myac:permitRenewal>
+                    <myac:count>5</myac:count>
+                    <myac:chargedItem>
+                        <myac:itemId>5674493</myac:itemId>
+                        <myac:itemBarcode>32101079586127</myac:itemBarcode>
+                        <myac:dueDate>2016-06-15T22:00:00.000-04:00</myac:dueDate>
+                        <myac:origDueDate>2015-06-15T22:00:00.000-04:00</myac:origDueDate>
+                        <myac:todaysDate>2015-12-10T00:52:35.000-05:00</myac:todaysDate>
+                        <myac:title>Writing better lyrics : the essential guide to powerful songwriting / Pat Pattison ; foreword by Gillian Welch. </myac:title>
+                        <myac:author>Pattison, Pat. </myac:author>
+                        <myac:location>Mendel Music Library (MUS)</myac:location>
+                        <myac:locationCode>mus</myac:locationCode>
+                        <myac:callNumber>MT67 .P383 2009</myac:callNumber>
+                        <myac:statusCode>3</myac:statusCode>
+                        <myac:requestCount>0</myac:requestCount>
+                        <myac:copyNumber>1</myac:copyNumber>
+                        <myac:itemtype>General</myac:itemtype>
+                        <myac:renewable>true</myac:renewable>
+                    </myac:chargedItem>
+                    <myac:chargedItem>
+                        <myac:itemId>3498367</myac:itemId>
+                        <myac:itemBarcode>32101048122459</myac:itemBarcode>
+                        <myac:dueDate>2016-06-15T22:00:00.000-04:00</myac:dueDate>
+                        <myac:origDueDate>2015-06-15T22:00:00.000-04:00</myac:origDueDate>
+                        <myac:todaysDate>2015-12-10T00:52:35.000-05:00</myac:todaysDate>
+                        <myac:title>Songwriters on songwriting / Paul Zollo. </myac:title>
+                        <myac:author>Zollo, Paul, 1958- </myac:author>
+                        <myac:location>Mendel Music Library (MUS)</myac:location>
+                        <myac:locationCode>mus</myac:locationCode>
+                        <myac:callNumber>ML3477 .Z64 2003</myac:callNumber>
+                        <myac:statusCode>3</myac:statusCode>
+                        <myac:requestCount>0</myac:requestCount>
+                        <myac:copyNumber>1</myac:copyNumber>
+                        <myac:itemtype>General</myac:itemtype>
+                        <myac:renewable>true</myac:renewable>
+                    </myac:chargedItem>
+                    <myac:chargedItem>
+                        <myac:itemId>6751409</myac:itemId>
+                        <myac:itemBarcode>32101092338803</myac:itemBarcode>
+                        <myac:dueDate>2016-06-15T23:00:00.000-04:00</myac:dueDate>
+                        <myac:origDueDate>2015-06-15T23:00:00.000-04:00</myac:origDueDate>
+                        <myac:todaysDate>2015-12-10T00:52:35.000-05:00</myac:todaysDate>
+                        <myac:title>Astoria : exile people places / Nicos Alexiou. </myac:title>
+                        <myac:author>Alexiou, Nicholas, </myac:author>
+                        <myac:location>Firestone Library (F)</myac:location>
+                        <myac:locationCode>f</myac:locationCode>
+                        <myac:callNumber>PA5638.1.L486 A93 2013</myac:callNumber>
+                        <myac:statusCode>3</myac:statusCode>
+                        <myac:requestCount>0</myac:requestCount>
+                        <myac:copyNumber>1</myac:copyNumber>
+                        <myac:itemtype>General</myac:itemtype>
+                        <myac:renewable>true</myac:renewable>
+                    </myac:chargedItem>
+                    <myac:chargedItem>
+                        <myac:itemId>6929459</myac:itemId>
+                        <myac:itemBarcode>32101092896511</myac:itemBarcode>
+                        <myac:dueDate>2016-06-15T23:00:00.000-04:00</myac:dueDate>
+                        <myac:origDueDate>2015-06-15T23:00:00.000-04:00</myac:origDueDate>
+                        <myac:todaysDate>2015-12-10T00:52:35.000-05:00</myac:todaysDate>
+                        <myac:title>Antioch on the Orontes : a history and a guide / Jørgen Christensen-Ernst. </myac:title>
+                        <myac:author>Christensen-Ernst, Jørgen, </myac:author>
+                        <myac:location>Firestone Library (F)</myac:location>
+                        <myac:locationCode>f</myac:locationCode>
+                        <myac:callNumber>DS99.A6 C47 2012</myac:callNumber>
+                        <myac:statusCode>3</myac:statusCode>
+                        <myac:requestCount>0</myac:requestCount>
+                        <myac:copyNumber>1</myac:copyNumber>
+                        <myac:itemtype>General</myac:itemtype>
+                        <myac:renewable>true</myac:renewable>
+                    </myac:chargedItem>
+                    <myac:chargedItem>
+                        <myac:itemId>6147443</myac:itemId>
+                        <myac:itemBarcode>32101081921866</myac:itemBarcode>
+                        <myac:dueDate>2016-06-15T23:00:00.000-04:00</myac:dueDate>
+                        <myac:origDueDate>2015-06-15T23:00:00.000-04:00</myac:origDueDate>
+                        <myac:todaysDate>2015-12-10T00:52:35.000-05:00</myac:todaysDate>
+                        <myac:title>Essentials of sociology / Anthony Giddens ... [et al.]. </myac:title>
+                        <myac:author xsi:nil="true" />
+                        <myac:location>Firestone Library (F)</myac:location>
+                        <myac:locationCode>f</myac:locationCode>
+                        <myac:callNumber>HM585 .G52 2011</myac:callNumber>
+                        <myac:statusCode>3</myac:statusCode>
+                        <myac:requestCount>0</myac:requestCount>
+                        <myac:copyNumber>1</myac:copyNumber>
+                        <myac:itemtype>General</myac:itemtype>
+                        <myac:renewable>true</myac:renewable>
+                    </myac:chargedItem>
+                </myac:clusterChargedItems>
+            </myac:chargedItems>
+            <myac:availItems>
+                <myac:title>Available Items</myac:title>
+            </myac:availItems>
+            <myac:requests>
+                <myac:title>Pending Requests</myac:title>
+            </myac:requests>
+        </ser:serviceData>
+    </ser:voyagerServiceData>
