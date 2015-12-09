@@ -15,7 +15,7 @@ module ApplicationHelper
       if /getit\.princeton\.edu/.match(url)
         urls << content_tag(:div, "", :id => "full_text", :class => ["availability--panel", "availability_full-text"], 'data-umlaut-fulltext' => true )
       end
-      urls << link
+      urls << content_tag(:div, link.html_safe, class: 'electronic-access')
     end
     if links.count > 1
       content_tag(:ul, urls.html_safe)
@@ -43,7 +43,7 @@ module ApplicationHelper
     if DONT_FIND_IT.include?(library)
       ''
     else
-      ' ' + link_to("[#{t('blacklight.holdings.stackmap')}]".html_safe, "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => "_blank", class: "find-it", 'data-map-location' => "#{location}")
+      ' ' + link_to("[#{t('blacklight.holdings.stackmap')}]".html_safe, "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => '_blank', class: 'find-it', 'data-map-location' => "#{location}")
     end
   end
 
@@ -51,7 +51,7 @@ module ApplicationHelper
     if DONT_FIND_IT.include?(library)
       ''
     else
-      ' ' + link_to("<span class=\"glyphicon glyphicon-map-marker\"></span>".html_safe, "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => "_blank", title: t('blacklight.holdings.stackmap'), class: "find-it", 'data-map-location' => "#{location}")
+      ' ' + link_to('<span class="glyphicon glyphicon-map-marker"></span>'.html_safe, "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => '_blank', 'data-toggle' => 'tooltip', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => "#{location}")
     end
   end
 
@@ -91,14 +91,16 @@ module ApplicationHelper
     links = search_links(args[:document]['electronic_access_1display'])
     holdings_hash = JSON.parse(args[:document][args[:field]])
     holdings_hash.first(2).each do |id, holding|
+      check_availability = true
       render_arrow = (!holding['library'].blank? and !holding['call_number'].blank?)
       arrow = render_arrow ? ' &raquo; ' : ''
       info = ''
       if holding['library'] == 'Online'
+        check_availability = false
         if links.empty?
-          info << content_tag(:span, 'LINK MISSING', class: 'label label-danger',
+          info << content_tag(:span, 'Link Missing', class: 'availability-icon label label-danger',
                               title: 'Availability: Online', 'data-toggle' => 'tooltip')
-          info << ' Please contact public services about this error.'
+          info << 'Online access is not currently available.'
         else
         info << link_to('Online', catalog_path(args[:document]['id']), class: 'availability-icon label label-primary',
                             title: 'Electronic Access')
@@ -109,7 +111,7 @@ module ApplicationHelper
         info << "#{holding['library']}#{arrow}#{holding['call_number']}".html_safe
         info << locate_link(holding['location_code'], args[:document]['id'], holding['library']).html_safe
       end
-      block << content_tag(:li, info.html_safe, data: { availability_record: true, record_id: args[:document]['id'], holding_id: id })
+      block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: args[:document]['id'], holding_id: id })
     end
     if holdings_hash.length > 2
       block << content_tag(:li, link_to('View Record for Full Availability', catalog_path(args[:document]['id']),

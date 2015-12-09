@@ -13,12 +13,12 @@ describe "blacklight tests" do
   end
 
   describe "Multiple locations check" do
-    it "items with 3 or more holdings are listed as multiple holdings in search results" do
+    it "records with 3 or more holdings indicate that the record view has full availability" do
       get "/catalog/857469.json"
       r = JSON.parse(response.body)
       expect(r["response"]["document"]["location"].length).to be > 2
         get "/catalog?&search_field=all_fields&q=857469"
-        expect(response.body).to include '<a class="availability-icon label label-default" title="Click on the record for full availability info" href="/catalog/857469">View Record for Full Availability</a>'
+        expect(response.body).to include '<a class="availability-icon label label-default" title="Click on the record for full availability info" data-toggle="tooltip" href="/catalog/857469">View Record for Full Availability</a>'
     end
     it "displays the location name for an item with a single location" do
       get "/catalog/321.json"
@@ -54,7 +54,8 @@ describe "blacklight tests" do
       docid = r["response"]["document"]["id"]
       get "/catalog/430472"
       r["response"]["document"]["location_code_s"].each do |location|
-        expect(response.body.include?("target=\"_blank\" class=\"find-it\" data-map-location=\"#{location}\" href=\"http://library.princeton.edu/searchit/map?loc=#{location}&amp;id=#{docid}\">[Where to Find It]</a>")).to eq true
+        expect(response.body.include?("class=\"find-it\" data-map-location=\"#{location}\" href=\"http://library.princeton.edu/searchit/map?loc=#{location}&amp;id=#{docid}\"")).to eq true
+
       end
     end
     it "does not provide a find it link for online holdings" do

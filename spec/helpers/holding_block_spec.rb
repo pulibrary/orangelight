@@ -77,7 +77,7 @@ RSpec.describe ApplicationHelper do
         expect(search_result).to have_selector ".availability-icon"
       end
       it "link missing label appears when 856s is missing from elf location" do
-        expect(search_result).to include "LINK MISSING"
+        expect(search_result).to include "Link Missing"
       end
     end
     context "#holding_block record show" do
@@ -92,7 +92,7 @@ RSpec.describe ApplicationHelper do
         expect(show_result).to have_selector "*[data-original-title='Browse: #{call_number}']"
       end
       it "tags the holding record id" do
-        expect(show_result).to have_selector "*[holding_id='#{holding_id}']"
+        expect(show_result).to have_selector "*[data-holding-id='#{holding_id}']"
       end
     end
   end

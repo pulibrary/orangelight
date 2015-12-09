@@ -42,7 +42,7 @@ class AvailabilityUpdater
     element.text("View Record for Full Availability")
     element.prop('title', "Click on the record for full availability info")
   apply_record_icon: (record_id, holding_id, status) ->
-    availability_element = $("*[data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .availability-icon")
+    availability_element = $("*[data-availability-record='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .availability-icon")
     availability_element.addClass("label")
     label = switch
       when status in available_statuses then 'Available'
