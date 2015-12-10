@@ -22,28 +22,32 @@ $( document ).ready(function() {
     $(".holding-call-number").tooltip({
         selector: "[data-toggle='tooltip']",
         placement: "bottom",
-        container: "body"
+        container: "body",
+        trigger: "hover"
     });
 
     //tooltip for availability-icon
     $("[data-record-id]").tooltip({
         selector: "[data-toggle='tooltip']",
         placement: "left",
-        container: "body"
+        container: "body",
+        trigger: "hover"
     });
 
     //tooltip for subject heirarchy
     $(".facet-values").tooltip({
         selector: "[data-toggle='tooltip']",
         placement: "right",
-        container: "body"
+        container: "body",
+        trigger: "hover"
     });
 
     //tooltip for stack map
     $(".library-location").tooltip({
         selector: "[data-toggle='tooltip']",
         placement: "right",
-        container: "body"
+        container: "body",
+        trigger: "hover"
     });
 
     ///////////////////////////////////////////

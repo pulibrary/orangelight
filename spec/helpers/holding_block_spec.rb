@@ -14,7 +14,8 @@ RSpec.describe ApplicationHelper do
           location: location,
           library: library,
           location_code: 'exb', 
-          call_number: call_number
+          call_number: call_number,
+          call_number_browse: call_number
         },
         '3595800' => {
           location: 'Online - Online Resources',
@@ -89,7 +90,7 @@ RSpec.describe ApplicationHelper do
         expect(show_result).to have_link('[Browse]', href: "/browse/call_numbers?q=#{call_number}")
       end
       it "tooltip for the call number browse" do
-        expect(show_result).to have_selector "*[data-original-title='Browse: #{call_number}']"
+        expect(show_result).to have_selector "*[title='Browse: #{call_number}']"
       end
       it "tags the holding record id" do
         expect(show_result).to have_selector "*[data-holding-id='#{holding_id}']"

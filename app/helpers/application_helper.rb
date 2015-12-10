@@ -55,11 +55,15 @@ module ApplicationHelper
     end
   end
 
+
+  # holding record fields: 'location', 'library', 'location_code', 'call_number', 'call_number_browse',
+  # 'shelving_title', 'location_note', 'electronic_access_1display', 'location_has', 'location_has_current',
+  # 'indexes', 'supplements'
   def holding_request_block (holdings, doc_id)
     block = ''
     holdings_hash = JSON.parse(holdings)
     holdings_hash.each do |id, holding|
-      unless holding['location_code'].start_with?('elf')
+      unless holding['location_code'].blank? or holding['location_code'].start_with?('elf')
         info = ''
         unless holding['location'].blank?
           location = "#{holding['location']}"
@@ -68,12 +72,16 @@ module ApplicationHelper
         end
         info << content_tag(:div, content_tag(:span, '', class: 'availability-icon').html_safe, data: { 'availability_record' => true, 'record_id' => doc_id, 'holding_id' => id })
         unless holding['call_number'].blank?
-          cn_browse_link = link_to('[Browse]', "/browse/call_numbers?q=#{holding['call_number']}", class: 'browse-cn',
-                              'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{holding['call_number']}",
-                              title: "Browse: #{holding['call_number']}")
+          cn_browse_link = link_to('[Browse]', "/browse/call_numbers?q=#{holding['call_number_browse']}", class: 'browse-cn',
+                              'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{holding['call_number_browse']}",
+                              title: "Browse: #{holding['call_number_browse']}")
           cn = "#{holding['call_number']} #{cn_browse_link}"
           info << content_tag(:span, cn.html_safe, class: 'holding-call-number')
         end
+        info << content_tag(:div, holding['shelving_title'], class: 'shelving-title') unless holding['shelving_title'].nil?
+        info << content_tag(:div, holding['location_note'], class: 'location-note') unless holding['location_note'].nil?
+        info << content_tag(:div, holding['location_has'], class: 'location-has') unless holding['location_has'].nil?
+        info << content_tag(:div, holding['location_has_current'], class: 'location-has-current') unless holding['location_has_current'].nil?
         info << request_placeholder(doc_id, id).html_safe
         block << content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
       end

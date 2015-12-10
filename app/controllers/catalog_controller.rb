@@ -82,8 +82,10 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'location', :label => 'Library', :limit => 20, sort: 'index', home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }
-    config.add_facet_field 'format', :label => 'Format', partial: "facet_format", sort: 'index', :limit => 15, collapse: false, home: true
+    config.add_facet_field 'location', :label => 'Library', :limit => 20, sort: 'index',
+        home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }
+    config.add_facet_field 'format', :label => 'Format', partial: "facet_format", sort: 'index',
+        :limit => 15, collapse: false, home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }
 
     # num_segments and segments set to defaults here, included to show customizable features
     config.add_facet_field 'pub_date_start_sort', :label => 'Publication Year', :single => true, :range => {
@@ -98,7 +100,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'lc_1letter_facet', :label => 'Classification', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'author_s', :label => 'Author', :limit => true, show: false
     config.add_facet_field 'lc_rest_facet', :label => 'Full call number code', :limit => 25, show: false, sort: 'index'
-    config.add_facet_field 'recently_cataloged_facet', :label => 'Recently Cataloged', :query => {
+    config.add_facet_field 'recently_added_facet', :label => 'Recently Added', home: true, :query => {
        :weeks_1 => { :label => 'Within 1 Week', :fq => "cataloged_tdt:[NOW/DAY-7DAYS NOW/DAY+1DAY]" },
        :months_1 => { :label => 'Within 1 Month', :fq => "cataloged_tdt:[NOW/DAY-1MONTH NOW/DAY+1DAY]" },
        :months_6 => { :label => 'Within 6 Months', :fq => "cataloged_tdt:[NOW/DAY-6MONTHS NOW/DAY+1DAY]" }
@@ -113,6 +115,7 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'classification_pivot_field', :label => 'Classification', :pivot => ['lc_1letter_facet', 'lc_rest_facet']
     config.add_facet_field 'sudoc_facet', :label => 'SuDocs', :limit => true, sort: 'index'
+    config.add_facet_field 'location_code_s', :label => 'Location Code', show: false
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
