@@ -256,7 +256,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'coden_display', :label => 'Coden designation'
     config.add_show_field 'standard_no_1display', hash: true
     config.add_show_field 'original_language_display', :label => 'Original language'
-    config.add_show_field 'holdings_1display', :label => 'Holding info', helper_method: :holding_block
     config.add_show_field 'shelving_title_display', :label => 'Shelving title'
     config.add_show_field 'location_has_display', :label => 'Location has'
     config.add_show_field 'location_has_current_display', :label => 'Location has (current)'

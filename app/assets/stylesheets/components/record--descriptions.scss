@@ -22,7 +22,7 @@
 }
 
 .availability-icon {
-  margin-right: 5px;
+  margin-right: 6px;
   text-transform: uppercase;
 }
 
@@ -48,6 +48,7 @@
 
   .dl-horizontal dd {
     margin-left: 170px;
+    margin-right: -30px;
     clear: none;
     margin-bottom: 1em;
   }
@@ -61,4 +62,8 @@
   .content {
     margin-left: -30px;
   }
+}
+
+.header-row {
+  padding-left: 0px;
 }

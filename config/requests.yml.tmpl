@@ -1,13 +1,12 @@
 # requests.yml
 
 defaults: &defaults
-  umlaut_base: https://getit.princeton.edu
+  umlaut_base: https://getit-dev.princeton.edu
   bibdata_base: https://bibdata.princeton.edu/bibliographic
   proxy_base: https://library.princeton.edu/resolve/lookup?url=
 
 development:
   <<: *defaults
-  umlaut_base: https://getit-dev.princeton.edu
 
 test:
   <<: *defaults

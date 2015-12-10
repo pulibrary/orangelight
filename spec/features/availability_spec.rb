@@ -36,7 +36,7 @@ describe "Availability"  do
       visit "/catalog/8606339"
       sleep 5.seconds
       expect(page.all('.location--online .umlaut .fulltext').length).to eq 1
-      expect(page.all('.location--online .umlaut .fulltext .response_item').length).to eq 5
+      expect(page.all('.location--online .umlaut .fulltext .response_item').length).to be >= 4
     end
   end
 

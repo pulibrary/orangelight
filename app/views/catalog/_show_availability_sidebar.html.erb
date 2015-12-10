@@ -1,5 +1,5 @@
 <% unless @document['electronic_access_1display'].nil? %>
-  <div class="row location--panel location--online">
+  <div class="location--panel location--online">
     <div class="panel panel-default">
       <div class="panel-heading"><%= t('blacklight.holdings.online') %></div>
       <div class="panel-body">
@@ -12,7 +12,7 @@
 <% unless @document['holdings_1display'].nil? %>
 <% h = holding_request_block(@document['holdings_1display'], @document['id']) %>
   <% unless h.nil? %>
-  <div class="row location--panel location--holding">
+  <div class="location--panel location--holding">
     <div class="panel panel-default">
       <div class="panel-heading"><%= t('blacklight.holdings.print') %></div>
       <div class="panel-body">
