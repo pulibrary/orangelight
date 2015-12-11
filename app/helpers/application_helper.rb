@@ -90,7 +90,7 @@ module ApplicationHelper
   end
 
   def request_placeholder(doc_id, holding_id)
-    "<div class=\"location-services\"><a target=\"_blank\" class=\"request btn btn-xs btn-primary\" href=\"/request\">Request</a></div>"
+    "<div class=\"location-services\"><a target=\"_blank\" class=\"request btn btn-xs btn-primary\" title=\"Requesting is not currently functional\" data-toggle=\"tooltip\" href=\"/request\">Request</a></div>"
   end
 
 

@@ -50,6 +50,14 @@ $( document ).ready(function() {
         trigger: "hover"
     });
 
+    //tooltip for disabled request
+    $(".location-services").tooltip({
+        selector: "[data-toggle='tooltip']",
+        placement: "right",
+        container: "body",
+        trigger: "hover"
+    });
+
     ///////////////////////////////////////////
     // temporarily disable blacklight folders//
     //on change, submit form / add to folder //
