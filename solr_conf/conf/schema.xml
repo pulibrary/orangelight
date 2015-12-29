@@ -207,7 +207,7 @@
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}*" replacement="" />                
           <tokenizer class="solr.KeywordTokenizerFactory" />
           <filter class="solr.ICUFoldingFilterFactory" />          
-          <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="50" side="front"/>
+          <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="50"/>
        </analyzer>
        <analyzer type="query">     
           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(\s+)" replacement="" />   
@@ -401,7 +401,7 @@
         <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}][\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}]*)\s+(?=[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])" replacement="$1"/>
         <!-- a korean char guaranteed at the end of the pattern:    pattern="([\p{Hangul}\p{Han}])\s+(?=[\p{Han}\s]*\p{Hangul})" -->
         <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}])\s+(?=[\p{InBopomofo}\p{InBopomofo_Extended}\p{InCJK_Compatibility}\p{InCJK_Compatibility_Forms}\p{InCJK_Compatibility_Ideographs}\p{InCJK_Compatibility_Ideographs_Supplement}\p{InCJK_Radicals_Supplement}\p{InCJK_Symbols_And_Punctuation}\p{InCJK_Unified_Ideographs}\p{InCJK_Unified_Ideographs_Extension_A}\p{InCJK_Unified_Ideographs_Extension_B}\p{InKangxi_Radicals}\p{InHalfwidth_And_Fullwidth_Forms}\p{InIdeographic_Description_Characters}\s]*[\p{InHangul_Jamo}\p{InHangul_Compatibility_Jamo}\p{InHangul_Syllables}])" replacement="$1"/>
-        <tokenizer class="solr.ICUTokenizerFactory" />
+        <tokenizer class="solr.StandardTokenizerFactory" />
         <filter class="solr.CJKWidthFilterFactory"/>
         <filter class="edu.stanford.lucene.analysis.CJKFoldingFilterFactory"/>
         <filter class="solr.ICUTransformFilterFactory" id="Traditional-Simplified"/>
@@ -579,14 +579,11 @@
    <field name="timestamp" type="date" indexed="true" stored="true" default="NOW" multiValued="false"/>
    <!-- default, catch all search field -->
    <field name="text" type="text" indexed="true" stored="false" multiValued="true"/>
-   <field name="title_l" type="title_l" indexed="true" stored="false" multiValued="true"/>   
-   <field name="title_t" type="text" indexed="true" stored="false" multiValued="true"/>
    
-   <!-- these display fields are NOT multi-valued -->
-   <field name="title_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
-   <field name="subtitle_display" type="string" indexed="false" stored="true" multiValued="false"/>
-   <field name="subtitle_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
-   <field name="author_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
+   <!-- these title-index display fields are NOT multi-valued -->
+   <field name="title_display" type="string" indexed="true" stored="true" multiValued="false"/>
+   <field name="title_vern_display" type="string" indexed="true" stored="true" multiValued="false"/>
+
    
    <!-- these fields are also used for display, so they must be stored -->
    <field name="isbn_t" type="text" indexed="true" stored="true" multiValued="true"/>
@@ -622,6 +619,7 @@
    <dynamicField name="*_b"  type="boolean" indexed="true"  stored="true"/>
    <dynamicField name="*_f"  type="float"  indexed="true"  stored="true"/>
    <dynamicField name="*_d"  type="double" indexed="true"  stored="true"/>
+   <dynamicField name="*_la" type="title_l" indexed="true" stored="false" multiValued="true"/>
 
    <dynamicField name="cjk_*" type="text_cjk" stored="false" indexed="true" multiValued="true" />
 
@@ -680,8 +678,7 @@
 
 
    <!-- unstemmed fields -->
-   <copyField source="title_t" dest="title_unstem_search"/>
-   <copyField source="subtitle_t" dest="subtitle_unstem_search"/>
+   <copyField source="title_display" dest="title_unstem_search"/>
    <copyField source="title_addl_t" dest="title_addl_unstem_search"/>
    <copyField source="title_added_entry_t" dest="title_added_entry_unstem_search"/>
    <copyField source="title_series_t" dest="title_series_unstem_search"/>
@@ -724,17 +721,20 @@
    <copyField source="author_addl_t" dest="opensearch_display"/>
    <copyField source="subject_topic_facet" dest="opensearch_display"/>
    <copyField source="subject_t" dest="opensearch_display"/>
-   <copyField source="subject_addl_t" dest="opensearch_display"/>  
+   <copyField source="subject_addl_t" dest="opensearch_display"/>
 
    <!-- left-anchored search fields -->
-   <copyField source="title_t" dest="title_l"/>
-   <copyField source="title_vern_display" dest="title_l"/>
-   <copyField source="title_sort" dest="title_l"/>
-   <copyField source="title_vern_sort" dest="title_l"/>   
-   <copyField source="author_s" dest="title_l"/>
-   <copyField source="author_vern_display" dest="title_l"/>
-   <copyField source="subject_topic_facet" dest="title_l"/>
-   <copyField source="lc_rest_facet" dest="title_l"/>  
+   <copyField source="title_display" dest="title_245_la"/>
+   <copyField source="title_vern_display" dest="title_245_la"/>
+   <copyField source="title_sort" dest="title_245_la"/>
+   <copyField source="title_vern_sort" dest="title_245_la"/>
+   <copyField source="other_title_s" dest="title_la"/>
+   <copyField source="series_title_index" dest="title_la"/>
+   <copyField source="uniform_title_s" dest="title_la"/>
+   <copyField source="content_title_index" dest="title_addl_la"/>
+   <copyField source="contains_title_index" dest="title_addl_la"/>
+   <copyField source="linked_title_index" dest="title_addl_la"/>
+   <copyField source="series_ae_index" dest="title_addl_la"/>
 
 
    <!-- Above, multiple source fields are copied to the [text] field. 
@@ -749,11 +749,9 @@
    <!-- default, catch all search field -->
    <copyField source="text" dest="text"/>
    
-   <!-- these display fields are NOT multi-valued -->
+   <!-- these fields are NOT multi-valued -->
+   <copyField source="title_display" dest="text"/>
    <copyField source="title_vern_display" dest="text"/>
-   <copyField source="subtitle_display" dest="text"/>
-   <copyField source="subtitle_vern_display" dest="text"/>
-   <copyField source="author_vern_display" dest="text"/>
    
    <!-- these fields are also used for display, so they must be stored -->
    <copyField source="isbn_t" dest="text"/>
@@ -814,7 +812,9 @@
    <copyField source="*_sort" dest="text"/>
    <copyField source="*_unstem_search" dest="text"/>
    <copyField source="*spell" dest="text"/>
-   <copyField source="title_l" dest="text"/>   
+   <copyField source="title_245_la" dest="text"/>
+   <copyField source="title_la" dest="text"/>
+   <copyField source="title_addl_la" dest="text"/>
 
    <!-- copy name to alphaNameSort, a field designed for sorting by name -->
    <!-- <copyField source="name" dest="alphaNameSort"/> -->

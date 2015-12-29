@@ -24,7 +24,7 @@ class CatalogController < ApplicationController
   end
 
 
-  self.search_params_logic += [:cjk_mm, :only_home_facets, :left_anchor_strip, :redirect_browse, :tile_sort_starts_with]
+  self.search_params_logic += [:cjk_mm, :only_home_facets, :left_anchor_strip, :redirect_browse]
 
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
@@ -152,7 +152,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'pub_created_display', :label => 'Published/Created'
 
 
-    config.add_show_field 'uniform_title_display', :label => 'Uniform Title'
+    config.add_show_field 'uniform_title_s', :label => 'Uniform Title'
     config.add_show_field 'compiled_created_display', :label => 'Compiled/Created'
     config.add_show_field 'edition_display', :label => 'Εdition'
     config.add_show_field 'medium_support_display', :label => 'Medium/Support'
@@ -250,7 +250,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'related_works_display', :label => 'Related work(s)'
     config.add_show_field 'contains_display', :label => 'Contains'
     config.add_show_field 'place_name_display', :label => 'Place name(s)'
-    config.add_show_field 'other_title_display', :label => 'Other title(s)'
+    config.add_show_field 'other_title_s', :label => 'Other title(s)'
     config.add_show_field 'in_display', :label => 'In'
     config.add_show_field 'constituent_part_display', :label => 'Constituent part(s)'
     config.add_show_field 'isbn_display', :label => 'ISBN'
