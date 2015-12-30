@@ -63,23 +63,138 @@
        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <query>
     <filterCache class="solr.FastLRUCache"
-                 size="1024"
-                 initialSize="1024"
-                 autowarmCount="20"/>
+                 size="8192"
+                 initialSize="8192"
+                 autowarmCount="256"/>
     <queryResultCache class="solr.LRUCache"
-                     size="1024"
-                     initialSize="1024"
-                     autowarmCount="0"/>
+                      size="16384"
+                      initialSize="16384"
+                      autowarmCount="128"/>
 
     <documentCache class="solr.LRUCache"
-                   size="1024"
-                   initialSize="1024"
-                   autowarmCount="0"/>
+                   size="16384"
+                   initialSize="16384"/>
 
     <enableLazyFieldLoading>true</enableLazyFieldLoading>
 
-   <queryResultWindowSize>20</queryResultWindowSize>
-   <queryResultMaxDocsCached>200</queryResultMaxDocsCached>
+   <queryResultWindowSize>100</queryResultWindowSize>
+   <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
+    <listener event="newSearcher" class="solr.QuerySenderListener">
+      <arr name="queries">
+        <lst><str name="q">*:*</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
+        <lst><str name="q">*:*</str><str name="sort">pub_date_start_sort desc, title_sort asc</str></lst>
+        <lst><str name="q">*:*</str><str name="sort">pub_date_start_sort asc, title_sort asc</str></lst>
+        <lst><str name="q">*:*</str><str name="sort">author_sort asc, title_sort asc</str></lst>
+        <lst><str name="q">*:*</str><str name="sort">title_sort asc, pub_date_start_sort desc</str></lst>
+        <lst><str name="q">nature</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
+        <lst><str name="q">time</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
+        <lst><str name="q">book</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
+        <lst><str name="q">science</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
+        <lst><str name="q">music</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
+
+        <lst><str name="fq">format:Audio</str></lst>
+        <lst><str name="fq">format:Book</str></lst>
+        <lst><str name="fq">format:Data File</str></lst>
+        <lst><str name="fq">format:Journal</str></lst>
+        <lst><str name="fq">format:Manuscript</str></lst>
+        <lst><str name="fq">format:Map</str></lst>
+        <lst><str name="fq">format:Mixed Material</str></lst>
+        <lst><str name="fq">format:Musical Score</str></lst>
+        <lst><str name="fq">format:Senior Thesis</str></lst>
+        <lst><str name="fq">format:Thesis</str></lst>
+        <lst><str name="fq">format:Video/Projected Medium</str></lst>
+        <lst><str name="fq">format:Visual Material</str></lst>
+
+        <lst><str name="fq">location:Architecture Library</str></lst>
+        <lst><str name="fq">location:East Asian Library</str></lst>
+        <lst><str name="fq">location:Engineering Library</str></lst>
+        <lst><str name="fq">location:Fine Annex</str></lst>
+        <lst><str name="fq">location:Firestone Library</str></lst>
+        <lst><str name="fq">location:Forrestal Annex</str></lst>
+        <lst><str name="fq">location:Harold P. Furth Plasma Physics Library</str></lst>
+        <lst><str name="fq">location:Lewis Library</str></lst>
+        <lst><str name="fq">location:Marquand Library</str></lst>
+        <lst><str name="fq">location:Mendel Music Library</str></lst>
+        <lst><str name="fq">location:Mudd Manuscript Library</str></lst>
+        <lst><str name="fq">location:Rare Books and Special Collections</str></lst>
+        <lst><str name="fq">location:ReCAP</str></lst>
+        <lst><str name="fq">location:Stokes Library</str></lst>
+        <lst><str name="fq">location:Video Library</str></lst>
+
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-7DAYS NOW/DAY+1DAY]</str></lst>
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-14DAYS NOW/DAY+1DAY]</str></lst>
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-21DAYS NOW/DAY+1DAY]</str></lst>
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-1MONTH NOW/DAY+1DAY]</str></lst>
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-2MONTHS NOW/DAY+1DAY]</str></lst>
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-3MONTHS NOW/DAY+1DAY]</str></lst>
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-6MONTHS NOW/DAY+1DAY]</str></lst>
+
+        <lst><str name="fq">language_facet:English</str></lst>
+        <lst><str name="fq">language_facet:German</str></lst>
+        <lst><str name="fq">language_facet:French</str></lst>
+        <lst><str name="fq">language_facet:Spanish</str></lst>
+        <lst><str name="fq">language_facet:Chinese</str></lst>
+        <lst><str name="fq">language_facet:Italian</str></lst>
+        <lst><str name="fq">language_facet:Russian</str></lst>
+        <lst><str name="fq">language_facet:Arabic</str></lst>
+        <lst><str name="fq">language_facet:Japanese</str></lst>
+        <lst><str name="fq">language_facet:Latin</str></lst>
+
+        <lst><str name="fq">subject_era_facet:20th century</str></lst>
+        <lst><str name="fq">subject_era_facet:19th century</str></lst>
+        <lst><str name="fq">subject_era_facet:18th century</str></lst>
+        <lst><str name="fq">subject_era_facet:21st century</str></lst>
+        <lst><str name="fq">subject_era_facet:17th century</str></lst>
+
+        <lst><str name="fq">lc_1letter_facet:A - General Works</str></lst>
+        <lst><str name="fq">lc_1letter_facet:B - Philosophy, Psychology, Religion</str></lst>
+        <lst><str name="fq">lc_1letter_facet:C - Historical Sciences (Archaeology, Genealogy)</str></lst>
+        <lst><str name="fq">lc_1letter_facet:D - World History</str></lst>
+        <lst><str name="fq">lc_1letter_facet:E - History of the Americas (General)</str></lst>
+        <lst><str name="fq">lc_1letter_facet:F - History of the Americas (Local)</str></lst>
+        <lst><str name="fq">lc_1letter_facet:G - Geography, Anthropology, Recreation</str></lst>
+        <lst><str name="fq">lc_1letter_facet:H - Social Sciences</str></lst>
+        <lst><str name="fq">lc_1letter_facet:J - Political Science</str></lst>
+        <lst><str name="fq">lc_1letter_facet:K - Law</str></lst>
+        <lst><str name="fq">lc_1letter_facet:L - Education</str></lst>
+        <lst><str name="fq">lc_1letter_facet:M - Music</str></lst>
+        <lst><str name="fq">lc_1letter_facet:N - Fine Arts</str></lst>
+        <lst><str name="fq">lc_1letter_facet:P - Language &amp; Literature</str></lst>
+        <lst><str name="fq">lc_1letter_facet:Q - Science</str></lst>
+        <lst><str name="fq">lc_1letter_facet:R - Medicine</str></lst>
+        <lst><str name="fq">lc_1letter_facet:S - Agriculture</str></lst>
+        <lst><str name="fq">lc_1letter_facet:T - Technology</str></lst>
+        <lst><str name="fq">lc_1letter_facet:U - Military Science</str></lst>
+        <lst><str name="fq">lc_1letter_facet:Z - Bibliography, Library Science, Information Resources</str></lst>
+
+        <lst><str name="fq">subject_topic_facet:History</str></lst>
+        <lst><str name="fq">subject_topic_facet:United States</str></lst>
+        <lst><str name="fq">subject_topic_facet:Politics and government</str></lst>
+        <lst><str name="fq">subject_topic_facet:History and criticism</str></lst>
+        <lst><str name="fq">subject_topic_facet:Great Britain</str></lst>
+        <lst><str name="fq">subject_topic_facet:United States. Congress</str></lst>
+        <lst><str name="fq">subject_topic_facet:Claims</str></lst>
+        <lst><str name="fq">subject_topic_facet:Bills, Private</str></lst>
+        <lst><str name="fq">subject_topic_facet:China</str></lst>
+        <lst><str name="fq">subject_topic_facet:France</str></lst>
+
+        <lst><str name="fq">genre_facet:Biography</str></lst>
+        <lst><str name="fq">genre_facet:Congresses</str></lst>
+        <lst><str name="fq">genre_facet:Periodicals</str></lst>
+        <lst><str name="fq">genre_facet:Private bills</str></lst>
+        <lst><str name="fq">genre_facet:Exhibitions</str></lst>
+        <lst><str name="fq">genre_facet:Early works to 1800</str></lst>
+        <lst><str name="fq">genre_facet:Fiction</str></lst>
+        <lst><str name="fq">genre_facet:Maps</str></lst>
+        <lst><str name="fq">genre_facet:Bibliography</str></lst>
+        <lst><str name="fq">genre_facet:Catalogs</str></lst>
+
+        <lst><str name="fq">sudoc_facet:X/Y - Congress</str></lst>
+
+        <lst><str name="fq">acces_facet:Online</str></lst>
+        <lst><str name="fq">acces_facet:In the Library</str></lst>
+      </arr>
+    </listener>
   </query>
 
   <!-- SearchHandler
@@ -101,7 +216,7 @@
       <int name="rows">10</int>
 
       <str name="q.alt">*:*</str>
-      <str name="mm">3&lt;-1 5&lt;-2 6&lt;90%</str>
+      <str name="mm">4&lt;-1 6&lt;90%</str>
 
        <!-- this qf and pf are used by default, if not otherwise specified by
             client. The default blacklight_config will use these for the
@@ -254,6 +369,8 @@
       <str name="facet.field">format</str>
       <str name="facet.field">language_facet</str>
       <str name="facet.field">pub_date_start_sort</str>
+      <str name="facet.method">enum</str>
+      <str name="facet.enum.cache.minDf">25000</str>
 
       <str name="spellcheck">true</str>
       <str name="spellcheck.dictionary">default</str>
@@ -439,19 +556,10 @@
       <str name="facet.mincount">1</str>
       <str name="facet.limit">10</str>
       <str name="facet.field">format</str>
-      <str name="facet.field">instrumentation_facet</str>
-      <str name="facet.field">lc_1letter_facet</str>
-      <str name="facet.field">lc_rest_facet</str>      
-      <str name="facet.field">lc_alpha_facet</str>
-      <str name="facet.field">lc_b4cutter_facet</str>
       <str name="facet.field">language_facet</str>
       <str name="facet.field">pub_date_start_sort</str>
-      <str name="facet.field">subject_era_facet</str>
-      <str name="facet.field">subject_geo_facet</str>
-      <str name="facet.field">subject_topic_facet</str>
-      <str name="facet.field">subject_topic1_facet</str>
-      <str name="facet.field">subject_topic2_facet</str>
-      <str name="facet.field">subject_topicfull_facet</str>
+      <str name="facet.method">enum</str>
+      <str name="facet.enum.cache.minDf">25000</str>
 
       <str name="spellcheck">true</str>
       <str name="spellcheck.dictionary">subject</str>
