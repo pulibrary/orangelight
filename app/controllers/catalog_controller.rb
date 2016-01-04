@@ -82,6 +82,7 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
+    config.add_facet_field 'access_facet', label: 'Access', sort: 'index', collapse: false, home: true
     config.add_facet_field 'location', :label => 'Library', :limit => 20, sort: 'index',
         home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }
     config.add_facet_field 'format', :label => 'Format', partial: "facet_format", sort: 'index',
@@ -101,9 +102,13 @@ class CatalogController < ApplicationController
     config.add_facet_field 'author_s', :label => 'Author', :limit => true, show: false
     config.add_facet_field 'lc_rest_facet', :label => 'Full call number code', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'recently_added_facet', :label => 'Recently Added', home: true, :query => {
-       :weeks_1 => { :label => 'Within 1 Week', :fq => "cataloged_tdt:[NOW/DAY-7DAYS NOW/DAY+1DAY]" },
-       :months_1 => { :label => 'Within 1 Month', :fq => "cataloged_tdt:[NOW/DAY-1MONTH NOW/DAY+1DAY]" },
-       :months_6 => { :label => 'Within 6 Months', :fq => "cataloged_tdt:[NOW/DAY-6MONTHS NOW/DAY+1DAY]" }
+      :weeks_1 => { :label => 'Within 1 Week', :fq => "cataloged_tdt:[NOW/DAY-7DAYS NOW/DAY+1DAY]" },
+      :weeks_2 => { :label => 'Within 2 Weeks', :fq => "cataloged_tdt:[NOW/DAY-14DAYS NOW/DAY+1DAY]" },
+      :weeks_3 => { :label => 'Within 3 Weeks', :fq => "cataloged_tdt:[NOW/DAY-21DAYS NOW/DAY+1DAY]" },
+      :months_1 => { :label => 'Within 1 Month', :fq => "cataloged_tdt:[NOW/DAY-1MONTH NOW/DAY+1DAY]" },
+      :months_2 => { :label => 'Within 2 Months', :fq => "cataloged_tdt:[NOW/DAY-2MONTHS NOW/DAY+1DAY]" },
+      :months_3 => { :label => 'Within 3 Months', :fq => "cataloged_tdt:[NOW/DAY-3MONTHS NOW/DAY+1DAY]" },
+      :months_6 => { :label => 'Within 6 Months', :fq => "cataloged_tdt:[NOW/DAY-6MONTHS NOW/DAY+1DAY]" }
     }
 
     config.add_facet_field 'instrumentation_facet', :label => 'Instrumentation', :limit => true
