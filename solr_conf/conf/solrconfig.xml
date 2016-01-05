@@ -230,8 +230,7 @@
         title_l^200000
         title_unstem_search^100000
         subtitle_unstem_search^50000
-        title_t^25000
-        subtitle_t^10000
+        title_display^25000
         title_addl_unstem_search^5000
         title_addl_t^2500
         title_added_entry_unstem_search^1500
@@ -257,8 +256,7 @@
         title_l^2000000
         title_unstem_search^1000000
         subtitle_unstem_search^500000
-        title_t^250000
-        subtitle_t^100000
+        title_display^250000
         title_addl_unstem_search^50000
         title_addl_t^25000
         title_added_entry_unstem_search^15000
@@ -294,21 +292,32 @@
         cjk_author^10
       </str>
       <str name="left_anchor_qf">
-        title_l
+        title_245_la^100
+        title_la^2
+        title_addl_la
       </str>
       <str name="left_anchor_pf">
-        title_l
+        title_245_la^1000
+        title_la^20
+        title_addl_la^10
       </str>
       <str name="title_qf">
         title_unstem_search^50000
         subtitle_unstem_search^25000
         title_addl_unstem_search^10000
-        title_t^5000
-        subtitle_t^2500
+        title_display^5000
+        title_vern_display
         title_addl_t^100
         title_added_entry_unstem_search^50
         title_added_entry_t^10
         title_series_unstem_search^5
+        other_title_s^5
+        series_title_index^5
+        uniform_title_s^5
+        content_title_index
+        contains_title_index
+        linked_title_index
+        series_ae_index
         title_series_t
         cjk_title
       </str>
@@ -316,12 +325,19 @@
         title_unstem_search^500000
         subtitle_unstem_search^250000
         title_addl_unstem_search^100000
-        title_t^50000
-        subtitle_t^25000
+        title_display^50000
+        title_vern_display
         title_addl_t^1000
         title_added_entry_unstem_search^500
         title_added_entry_t^100
         title_series_t^50
+        other_title_s^50
+        series_title_index^50
+        uniform_title_s^50
+        content_title_index^10
+        contains_title_index^10
+        linked_title_index^10
+        series_ae_index^10
         title_series_unstem_search^10
         cjk_title^10
       </str>
@@ -470,47 +486,69 @@
         author_addl_unstem_search^50
         author_s^20
         author_addl_t
+        cjk_author
       </str>
       <str name="pf_author">
         author_unstem_search^2000
         author_addl_unstem_search^500
         author_s^200
         author_addl_t^10
+        cjk_author^10
+      </str>
+      <str name="qf_left_anchor">
+        title_245_la^100
+        title_la^2
+        title_addl_la
+      </str>
+      <str name="pf_left_anchor">
+        title_245_la^1000
+        title_la^20
+        title_addl_la^10
       </str>
 
-      <str name="qf_left_anchor">
-        title_l
-      </str>
-      <str name="qf_left_anchor">
-        title_l
-      </str>        
-      
       <!-- for user query terms in title text box -->
       <str name="qf_title">
         title_unstem_search^50000
         subtitle_unstem_search^25000
         title_addl_unstem_search^10000
-        title_t^5000
-        subtitle_t^2500
+        title_display^5000
+        title_vern_display
         title_addl_t^100
         title_added_entry_unstem_search^50
         title_added_entry_t^10
         title_series_unstem_search^5
+        other_title_s^5
+        series_title_index^5
+        uniform_title_s^5
+        content_title_index
+        contains_title_index
+        linked_title_index
+        series_ae_index
         title_series_t
+        cjk_title
       </str>
       <str name="pf_title">
         title_unstem_search^500000
         subtitle_unstem_search^250000
         title_addl_unstem_search^100000
-        title_t^50000
-        subtitle_t^25000
+        title_display^50000
+        title_vern_display
         title_addl_t^1000
         title_added_entry_unstem_search^500
         title_added_entry_t^100
         title_series_t^50
+        other_title_s^50
+        series_title_index^50
+        uniform_title_s^50
+        content_title_index^10
+        contains_title_index^10
+        linked_title_index^10
+        series_ae_index^10
         title_series_unstem_search^10
+        cjk_title^10
       </str>
-      
+
+
       <!-- for user query terms in subject text box -->
       <str name="qf_subject">
         subject_topic_unstem_search^200
@@ -519,6 +557,7 @@
         subject_t^50
         subject_addl_unstem_search^10
         subject_addl_t
+        cjk_subject
       </str>
       <str name="pf_subject">
         subject_topic_unstem_search^2000
@@ -527,8 +566,9 @@
         subject_topic_facet^500
         subject_addl_unstem_search^100
         subject_addl_t^10
+        cjk_subject^10
       </str>
-      
+
       <!-- for user query terms in number text box -->
       <str name="qf_number">isbn_t</str>
       

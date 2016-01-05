@@ -50,15 +50,6 @@ module BlacklightHelper
     end
   end
 
-  def tile_sort_starts_with solr_parameters, user_parameters
-    if user_parameters[:search_field] == "left_anchor"
-      unless params[:sort]
-        solr_parameters[:sort] = 'title_sort asc, pub_date_start_sort desc'
-        params[:sort] = 'title_sort asc, pub_date_start_sort desc'
-      end
-    end
-  end
-
   def search_bar_field
     if params[:model] == Orangelight::CallNumber
       'browse_cn'
@@ -108,23 +99,6 @@ module BlacklightHelper
  # override method to never render saved searches in user_util_links
   def render_saved_searches?
     false
-  end
-
-  # google book covers
-  def doc_has_thumbnail? isbn
-    return false unless isbn
-    google = Faraday.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{isbn}").body
-    thumbnail_link = JSON.parse(google)
-    return false if thumbnail_link['items'].nil?
-    return false if thumbnail_link['items'][0]['volumeInfo'].nil?
-    !thumbnail_link['items'][0]['volumeInfo']['imageLinks'].nil?
-  end
-
-  def get_thumbnail isbn
-   google = Faraday.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{isbn}").body
-   thumbnail_link = JSON.parse(google)
-   thumbnail_link.to_s
-   thumbnail_link['items'][0]['volumeInfo']['imageLinks']['smallThumbnail']
   end
 
   ##
