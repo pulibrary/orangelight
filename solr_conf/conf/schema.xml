@@ -728,7 +728,8 @@
    <copyField source="title_vern_display" dest="title_245_la"/>
    <copyField source="title_sort" dest="title_245_la"/>
    <copyField source="title_vern_sort" dest="title_245_la"/>
-   <copyField source="other_title_s" dest="title_la"/>
+   <copyField source="title_no_h_index" dest="title_245_la"/>
+   <copyField source="other_title_index" dest="title_la"/>
    <copyField source="series_title_index" dest="title_la"/>
    <copyField source="uniform_title_s" dest="title_la"/>
    <copyField source="content_title_index" dest="title_addl_la"/>

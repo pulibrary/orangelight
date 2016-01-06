@@ -68,7 +68,7 @@ module BrowseLists
               unless multi_cns.has_key?(sort_cn)
 
                 bibid = record["id"]
-                title = record["title_display"][0] if record["title_display"]
+                title = record["title_display"]
                 if record["title_vern_display"]
                   title = record["title_vern_display"] 
                   dir = StringFunctions.getdir(title)
