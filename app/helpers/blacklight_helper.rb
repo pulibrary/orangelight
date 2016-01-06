@@ -12,6 +12,10 @@ module BlacklightHelper
     field[:hash]
   end
 
+  def linked_record_field? field
+    field[:link_field]
+  end
+
   # This is needed because white space tokenizes regardless of filters
   def left_anchor_strip solr_parameters, user_parameters
     if solr_parameters[:q]
@@ -114,17 +118,17 @@ module BlacklightHelper
     "<span class='icon icon-#{var.parameterize}'></span>".html_safe
   end
 
-  def other_versions id_nums, bib_id
+  def linked_records id_nums, bib_id, field
     fq = ''
-    id_nums.each {|n| fq += "other_version_s:#{n} OR "}
+    id_nums.each {|n| fq += "#{field}:#{n} OR "}
     fq.chomp!(' OR ')
     resp = get_fq_solr_response(fq)
     req = JSON.parse(resp.body)
     other_versions = []
     req['response']['docs'].each do |record|
       unless record['id'] == bib_id
-        title = record['title_display'].nil? ? "Other version: record['id']" : record['title_display'].first
-        other_versions << link_to("#{title}", "/catalog/#{record['id']}", class: 'other_version')
+        title = record['title_display']
+        other_versions << link_to(title, catalog_url(record['id']))
       end
     end
     other_versions.empty? ? [] : [other_versions]

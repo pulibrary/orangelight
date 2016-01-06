@@ -1,4 +1,4 @@
-<% other_versions(document[field], document[:id]).each do |records| %>
+<% linked_records(document[field], document[:id], linked_field).each do |records| %>
   <dt class="blacklight-<%= field.parameterize %>"><%= render_document_show_field_label document, :field => field %></dt>
   <dd class="blacklight-<%= field.parameterize %>">
     <% if records.count == 1 %>

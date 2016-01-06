@@ -26,7 +26,7 @@ $in_travis = !ENV['TRAVIS'].nil? && ENV['TRAVIS'] == 'true'
 
 
 RSpec.configure do |config|
-  config.before :all do
+  config.before :suite do
     system 'rake pulsearch:reindex'
   end
 

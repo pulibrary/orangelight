@@ -37,12 +37,16 @@
   <requestDispatcher handleSelect="true" >
     <requestParsers enableRemoteStreaming="false" multipartUploadLimitInKB="2048" />
   </requestDispatcher>
-  
+
+  <updateLog class="solr.FSUpdateLog">
+    <str name="dir">${solr.data.dir:}</str>
+  </updateLog>
+
   <requestHandler name="standard" class="solr.StandardRequestHandler" />
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
   <requestHandler name="/update" class="solr.UpdateRequestHandler"  />
   <requestHandler name="/admin/" class="org.apache.solr.handler.admin.AdminHandlers" />
-     
+
   <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
     <lst name="invariants">
       <str name="q">solrpingquery</str>
@@ -51,7 +55,15 @@
       <str name="echoParams">all</str>
     </lst>
   </requestHandler>
-   
+
+  <requestHandler name="/get" class="solr.RealTimeGetHandler">
+    <lst name="defaults">
+      <str name="omitHeader">true</str>
+      <str name="wt">json</str>
+      <str name="indent">true</str>
+    </lst>
+  </requestHandler>
+
   <!-- config for the admin interface --> 
   <admin>
     <defaultQuery>solr</defaultQuery>
@@ -311,7 +323,7 @@
         title_added_entry_unstem_search^50
         title_added_entry_t^10
         title_series_unstem_search^5
-        other_title_s^5
+        other_title_index^5
         series_title_index^5
         uniform_title_s^5
         content_title_index
@@ -331,7 +343,7 @@
         title_added_entry_unstem_search^500
         title_added_entry_t^100
         title_series_t^50
-        other_title_s^50
+        other_title_index^50
         series_title_index^50
         uniform_title_s^50
         content_title_index^10
@@ -517,7 +529,7 @@
         title_added_entry_unstem_search^50
         title_added_entry_t^10
         title_series_unstem_search^5
-        other_title_s^5
+        other_title_index^5
         series_title_index^5
         uniform_title_s^5
         content_title_index
@@ -537,7 +549,7 @@
         title_added_entry_unstem_search^500
         title_added_entry_t^100
         title_series_t^50
-        other_title_s^50
+        other_title_index^50
         series_title_index^50
         uniform_title_s^50
         content_title_index^10

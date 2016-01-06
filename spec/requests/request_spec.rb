@@ -207,13 +207,21 @@ describe "blacklight tests" do
   describe "other versions" do
     it "provides links to other versions of record when they are found" do
       get "/catalog/8553130"
-      expect(response.body).not_to include('href="/catalog/8553130"')
-      expect(response.body).to include('href="/catalog/9026021"')
-      expect(response.body).to include('href="/catalog/5291883"')
+      expect(response.body).not_to include('href="http://www.example.com/catalog/8553130"')
+      expect(response.body).to include('href="http://www.example.com/catalog/9026021"')
+      expect(response.body).to include('href="http://www.example.com/catalog/5291883"')
       get "/catalog/9026021"
-      expect(response.body).not_to include('href="/catalog/9026021"')
-      expect(response.body).to include('href="/catalog/8553130"')
-      expect(response.body).to include('href="/catalog/5291883"')
+      expect(response.body).not_to include('href="http://www.example.com/catalog/9026021"')
+      expect(response.body).to include('href="http://www.example.com/catalog/8553130"')
+      expect(response.body).to include('href="http://www.example.com/catalog/5291883"')
+    end
+    it "provides link to linked related record when found" do
+      get "/catalog/4705304"
+      expect(response.body).to include('href="http://www.example.com/catalog/4705307"')
+    end
+    it "provides link to record in which current record is contained when found" do
+      get "/catalog/4705307"
+      expect(response.body).to include('href="http://www.example.com/catalog/4705304"')
     end
   end
 

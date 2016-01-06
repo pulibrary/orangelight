@@ -55,7 +55,6 @@ module ApplicationHelper
     end
   end
 
-
   # holding record fields: 'location', 'library', 'location_code', 'call_number', 'call_number_browse',
   # 'shelving_title', 'location_note', 'electronic_access_1display', 'location_has', 'location_has_current',
   # 'indexes', 'supplements'

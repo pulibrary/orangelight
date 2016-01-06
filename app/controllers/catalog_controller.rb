@@ -250,7 +250,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'related_works_display', :label => 'Related work(s)'
     config.add_show_field 'contains_display', :label => 'Contains'
     config.add_show_field 'place_name_display', :label => 'Place name(s)'
-    config.add_show_field 'other_title_s', :label => 'Other title(s)'
+    config.add_show_field 'other_title_display', :label => 'Other title(s)'
+    config.add_show_field 'other_title_1display', hash: true
     config.add_show_field 'in_display', :label => 'In'
     config.add_show_field 'constituent_part_display', :label => 'Constituent part(s)'
     config.add_show_field 'isbn_display', :label => 'ISBN'
@@ -260,7 +261,9 @@ class CatalogController < ApplicationController
     config.add_show_field 'publisher_no_display', :label => 'Publisher no.'
     config.add_show_field 'lccn_display', :label => 'LCCN'
     config.add_show_field 'oclc_s', :label => 'OCLC'
-    config.add_show_field 'other_version_s', :label => 'Other versions'
+    config.add_show_field 'other_version_s', :label => 'Other versions', link_field: 'other_version_s'
+    config.add_show_field 'contained_in_s', :label => 'Contained in', link_field: 'id'
+    config.add_show_field 'related_record_s', :label => 'Related record(s)', link_field: 'id'
     config.add_show_field 'coden_display', :label => 'Coden designation'
     config.add_show_field 'standard_no_1display', hash: true
     config.add_show_field 'original_language_display', :label => 'Original language'

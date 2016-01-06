@@ -5,8 +5,8 @@
         <%# marc relator code for authors -%>
         <% if json_field?(field) %>
           <%= render 'hash_show', document: document, field: solr_fname %>
-        <% elsif solr_fname == 'other_version_s' %>
-          <%= render 'other_versions_show', document: document, field: solr_fname %>
+        <% elsif linked_record_field?(field) %>
+          <%= render 'other_versions_show', document: document, field: solr_fname, linked_field: field[:link_field] %>
         <% else %>
           <% if solr_fname == 'author_display' && render_document_show_field_value( document, :field => 'marc_relator_display') != ''%>
           <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value document, :field => 'marc_relator_display' %>:</dt>
