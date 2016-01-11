@@ -526,6 +526,12 @@ header .navbar-nav > li > a {
     }
 }
 
+@media (max-width: $bp-small) {
+.search-widgets .checkbox.toggle_bookmark {
+    padding: 0;
+}
+}
+
 .document .blacklight-format .icon {
     display: inline-block;
     width: auto;
@@ -737,4 +743,49 @@ a.more_facets_link {
 
 .glyphicon-map-marker {
     font-size: 1.2em;
+}
+
+.bookmarksTools.nav #emailLink,
+.bookmarksTools.nav #citationLink,
+.bookmarksTools.nav > li > a {
+    background-image: none;
+    background: #f5f4f1;
+    border-radius: 4px;
+    border: 1px solid #e8e6df;
+    color: #333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    margin-bottom: 0;
+    margin: 3px;
+    padding: 6px 12px;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    &:hover {
+        color: #ffffff;
+        background: #337ab7;
+        text-decoration: none;
+    }
+}
+
+.actions .btn-xs {
+    width: 50px;
+    text-transform: capitalize;
+}
+
+.search-widgets .clear-bookmarks {
+    display: none;
+}
+
+#guided_search .form-group {
+    margin-left: 0;
 }

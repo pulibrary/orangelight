@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  #error pages
+  # def catch_404s
+  #   unrouted_uri = request.fullpath
+  #   alert = "The page you were looking for doesn't exist. For help, please email catalog-help@princeton.edu or start over with a new search."
+  #   logger.error alert
+  #   redirect_to root_path, flash: { error: alert }
+  # end
+
   private
   def protect
     @ips = load_ip_whitelist

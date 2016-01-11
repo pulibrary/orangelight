@@ -1,0 +1,9 @@
+@import "variables/colors";
+
+.dropdown-menu > li > a {
+  padding: 3px 10px;
+  &:hover {
+    background: $blue;
+    color: $white;
+  }
+}

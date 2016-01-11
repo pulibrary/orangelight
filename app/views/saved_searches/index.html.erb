@@ -1,0 +1,29 @@
+<div id="content" class="col-md-12">
+
+<h1 class='page-heading'><%= t('blacklight.saved_searches.title') %></h1>
+
+<%- if current_or_guest_user.blank? -%>
+
+  <h2 class='section-heading'><%= t('blacklight.saved_searches.need_login') %></h2>
+
+<%- elsif @searches.blank? -%>
+
+  <h2 class='section-heading'><%= t('blacklight.saved_searches.no_searches') %></h2>
+
+<%- else -%>
+  <%= link_to t('blacklight.saved_searches.clear.action_title'), clear_saved_searches_path, :method => :delete, :data => { :confirm => t('blacklight.saved_searches.clear.action_confirm') }, :class => 'btn btn-danger pull-right' %>
+
+  <h2 class='section-heading'><%= t('blacklight.saved_searches.list_title') %></h2>
+
+  <table class="table table-striped">
+  <%- @searches.each do |search| -%>
+    <tr>
+      <td><%= link_to_previous_search(search.query_params) %></td>
+      <td class="actions"><%= button_to t('blacklight.saved_searches.delete'), forget_search_path(search.id), :class => 'btn btn-default btn-xs pull-right' %></td>
+    </tr>
+  <%- end -%>
+  </table>
+
+<%- end -%>
+
+</div>
