@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'pul-icons';
-    src:    url('/assets/icons/pul-icons.eot?1uuk7m');
-    src:    url('/assets/icons/pul-icons.eot?1uuk7m#iefix') format('embedded-opentype'),
-        url('/assets/icons/pul-icons.ttf?1uuk7m') format('truetype'),
-        url('/assets/icons/pul-icons.woff?1uuk7m') format('woff'),
-        url('/assets/icons/pul-icons.svg?1uuk7m#pul-icons') format('svg');
+    src: font-url('icons/pul-icons.eot?1uuk7m');
+    src: font-url('icons/pul-icons.eot?1uuk7m#iefix') format('embedded-opentype'),
+        font-url('icons/pul-icons.ttf?1uuk7m') format('truetype'),
+        font-url('icons/pul-icons.woff?1uuk7m') format('woff'),
+        font-url('icons/pul-icons.svg?1uuk7m#pul-icons') format('svg');
     font-weight: normal;
     font-style: normal;
 }
