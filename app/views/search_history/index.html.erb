@@ -12,9 +12,9 @@
       <%- if has_user_authentication_provider? -%>
         <td class="actions">
           <%- if current_or_guest_user && search.saved? -%>
-            <%= button_to t('blacklight.search_history.forget'), forget_search_path(search.id), :class => 'btn btn-default' %>
+            <%= button_to t('blacklight.search_history.forget'), forget_search_path(search.id), :class => 'btn btn-default btn-xs pull-right' %>
           <%- else -%>
-            <%= button_to t('blacklight.search_history.save'), save_search_path(search.id), :method => :put, :class => 'btn btn-default' %>
+            <%= button_to t('blacklight.search_history.save'), save_search_path(search.id), :method => :put, :class => 'btn btn-default btn-xs pull-right' %>
           <%- end -%>
         </td>
       <%- end -%>

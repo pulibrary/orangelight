@@ -1,4 +1,5 @@
 @import "abstractions/mixins";
+@import "variables/breaks";
 
 .availability .availability--heading,
 .holding-info .holding-info--heading {
@@ -40,6 +41,17 @@
         margin-left: auto;
         margin-right: auto;
         @include vertical-align();
+    }
+}
+
+@media (min-width: $bp-small) and (max-width: $bp-large) {
+    #sidebar .document-thumbnail {
+        height: 135px;
+        img,
+        .default {
+            font-size: 7em;
+            max-width: 90px;
+        }
     }
 }
 

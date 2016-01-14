@@ -88,4 +88,10 @@ Rails.application.routes.draw do
   #   end
   #
   get "/thumbnail/:id", to: "thumbnail#show"
+
+  # error pages
+  match "/404" => "errors#error", via: [ :get, :post, :patch, :delete ]
+  match "/422" => "errors#error", via: [ :get, :post, :patch, :delete ]
+  match "/500" => "errors#error", via: [ :get, :post, :patch, :delete ]
+  # match '*catch_unknown_routes', to: 'application#catch_404s', via: [:get, :post]
 end
