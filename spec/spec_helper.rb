@@ -19,15 +19,27 @@
 
 require 'coveralls'
 require 'capybara/poltergeist'
+require 'webmock/rspec'
+require 'factory_girl'
+
+# allow connections to localhost, umlaut and bibdata marc record service
+WebMock.disable_net_connect!(allow_localhost: true, allow: ["#{ENV['umlaut_base']}", /\/bibliographic\/\d+/] )
 
 Coveralls.wear!('rails')
 
 $in_travis = !ENV['TRAVIS'].nil? && ENV['TRAVIS'] == 'true'
 
+FactoryGirl.find_definitions
 
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
   config.before :suite do
-    system 'rake pulsearch:reindex'
+    system 'rake pulsearch:rejetty'
+    system 'rake pulsearch:index'
+  end
+
+  config.after :suite do
+    system 'rake jetty:stop'
   end
 
 

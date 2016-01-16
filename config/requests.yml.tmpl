@@ -1,10 +1,12 @@
 # requests.yml
 
 defaults: &defaults
-  umlaut_base: https://getit-dev.princeton.edu
-  bibdata_base: https://bibdata.princeton.edu/bibliographic
-  proxy_base: https://library.princeton.edu/resolve/lookup?url=
-
+  umlaut_base: https://getit.princeton.edu
+  bibdata_base: https://bibdata.princeton.edu
+  proxy_base: http://library.princeton.edu/resolve/lookup?url=
+  stackmap_base: https://library.princeton.edu/utils/map
+  voyager_api_base: http://catalog.princeton.edu:7014
+  
 development:
   <<: *defaults
 

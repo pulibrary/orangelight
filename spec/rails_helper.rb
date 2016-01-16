@@ -40,4 +40,19 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+  config.include Capybara::DSL
+  config.include Features::SessionHelpers, type: :feature
+
+  config.before(:each, type: :feature) do
+    Warden.test_mode!
+    OmniAuth.config.test_mode = true
+  end
+
+  config.after(:each, type: :feature) do
+    Warden.test_reset!
+  end
+end
+
+def fixture(file)
+  File.open(File.join(File.dirname(__FILE__), 'fixtures', file), 'rb')
 end

@@ -54,8 +54,8 @@ describe "blacklight tests" do
       docid = r["response"]["document"]["id"]
       get "/catalog/430472"
       r["response"]["document"]["location_code_s"].each do |location|
-        expect(response.body.include?("class=\"find-it\" data-map-location=\"#{location}\" href=\"http://library.princeton.edu/searchit/map?loc=#{location}&amp;id=#{docid}\"")).to eq true
 
+        expect(response.body.include?("href=\"#{ENV['stackmap_base']}?loc=#{location}&amp;id=#{docid}\"")).to eq true
       end
     end
     it "does not provide a find it link for online holdings" do

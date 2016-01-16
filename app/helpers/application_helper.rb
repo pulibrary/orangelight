@@ -1,3 +1,4 @@
+require './lib/orangelight/voyager_account.rb'
 
 module ApplicationHelper
 
@@ -43,7 +44,7 @@ module ApplicationHelper
     if DONT_FIND_IT.include?(library)
       ''
     else
-      ' ' + link_to("[#{t('blacklight.holdings.stackmap')}]".html_safe, "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => '_blank', class: 'find-it', 'data-map-location' => "#{location}")
+      ' ' + link_to("[#{t('blacklight.holdings.stackmap')}]".html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => "_blank", class: "find-it", 'data-map-location' => "#{location}", 'data-toggle' => "tooltip")
     end
   end
 
@@ -51,7 +52,7 @@ module ApplicationHelper
     if DONT_FIND_IT.include?(library)
       ''
     else
-      ' ' + link_to('<span class="glyphicon glyphicon-map-marker"></span>'.html_safe, "http://library.princeton.edu/searchit/map?loc=#{location}&id=#{bib}", :target => '_blank', 'data-toggle' => 'tooltip', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => "#{location}")
+      ' ' + link_to("<span class=\"glyphicon glyphicon-map-marker\"></span>".html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => "_blank", title: t('blacklight.holdings.stackmap'), class: "find-it", 'data-map-location' => "#{location}", 'data-toggle' => "tooltip")
     end
   end
 
@@ -116,7 +117,7 @@ module ApplicationHelper
       else
         info << link_to('', catalog_path(args[:document]['id']), class: 'availability-icon').html_safe
         info << "#{holding['library']}#{arrow}#{holding['call_number']}".html_safe
-        info << locate_link(holding['location_code'], args[:document]['id'], holding['library']).html_safe
+        info << locate_link_with_gylph(holding['location_code'], args[:document]['id'], holding['library']).html_safe
       end
       block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: args[:document]['id'], holding_id: id })
     end
@@ -183,5 +184,28 @@ module ApplicationHelper
   def voyager_url bibid
     "http://catalog.princeton.edu/cgi-bin/Pwebrecon.cgi?BBID=#{bibid}"
   end
+
+  def current_patron? netid
+    return false unless netid
+    patron_record = Faraday.get "#{ENV['bibdata_base']}/patron/#{netid}"
+    logger.info("#{patron_record.status} response for #{ENV['bibdata_base']}/patron/#{netid}")
+    return false if patron_record.status == 403
+    return false if patron_record.status == 404
+    patron = JSON.parse(patron_record.body).with_indifferent_access
+    logger.info("#{patron.to_hash}")
+    patron
+  end
+
+  def voyager_myaccount? patron
+    voyager_account = Faraday.get "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{patron[:patron_id]}&patronHomeUbId=1@DB"
+    logger.info "#{voyager_account.body}"
+    return false if voyager_account.status == 403
+    return false if voyager_account.status == 404
+    account = VoyagerAccount.new(voyager_account.body)
+    logger.info("#{account.source_doc}")
+    account
+  end
+
+
 
 end

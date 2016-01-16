@@ -1,0 +1,25 @@
+<h2 class="section-heading">Request Information</h2>
+<% if (!@account.request_items.nil?) %>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Item Title</th>
+          <th>Request Expiration Date</th>
+          <th>Pickup Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @account.request_items.each do |item| %>
+          <tr>
+            <td><%= item["itemTitle"] %></td>
+            <td><%= item["expireDate"] %></td>
+            <td><%= item["pickupLocation"] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <p>No outstanding requests</p>
+<% end %>

@@ -1,0 +1,43 @@
+ <h2 class="section-heading">Charged Items</h2>
+<% if (!@account.charged_items.nil?) %>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Item Type</th>
+          <th>Due Date</th>
+          <th>Renew?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @account.charged_items.each do |item| %>
+          <tr>
+            <td><%= item["title"] %></td>
+            <td><%= item["itemtype"] %></td>
+            <td><%= item["dueDate"] %></td>
+            <td>
+            <% if item["renewable"] == 'true' %>
+              <label><input type="checkbox"> Renew</label>
+            <% else %>
+              <span>Not renewable</span>
+            <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <form class="renew-items">
+    <div class="form-group">
+      <select class="form-control">
+        <option>Renew selected items</option>
+        <option>Renew all items from Princeton University Library</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Renew items</button>
+    </form>
+    </div>
+  </div>
+<% else %>
+  <p>You do not have any items out</p>
+<% end %>

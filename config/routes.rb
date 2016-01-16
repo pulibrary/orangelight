@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get '/notes' => 'high_voltage/pages#show', id: 'notes'
   get '/help' => 'high_voltage/pages#show', id: 'help'
 
+  get '/account', to: 'account#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
