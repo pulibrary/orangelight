@@ -25,7 +25,10 @@ require 'factory_girl'
 # allow connections to localhost, umlaut and bibdata marc record service
 WebMock.disable_net_connect!(allow_localhost: true, allow: ["#{ENV['umlaut_base']}", /\/bibliographic\/\d+/] )
 
-Coveralls.wear!('rails')
+Coveralls.wear!('rails') do
+  add_filter '/lib/orangelight/browse_lists.rb'
+  add_filter '/app/models/orangelight.rb'
+end
 
 $in_travis = !ENV['TRAVIS'].nil? && ENV['TRAVIS'] == 'true'
 
