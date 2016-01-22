@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Blacklight
-gem 'blacklight', ">= 5.3.0"
+gem 'blacklight', "<= 5.18.0"
 
 gem 'blacklight_folders'
 # slider limit support
@@ -50,7 +50,7 @@ gem 'faraday'
 gem 'yajl-ruby', require: 'yajl'
 
 gem "devise"
-gem "devise-guests", "~> 0.3"
+gem "devise-guests", '~> 0.5'
 gem "omniauth-cas"
 gem "blacklight-marc", "~> 5.0"
 gem "jettywrapper", "~> 1.7"
