@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <ser:voyagerServiceData xmlns:ser="http://www.endinfosys.com/Voyager/serviceParameters">
+        <ser:serviceData isUB="false" xsi:type="myac:myAccountType" xmlns:myac="http://www.endinfosys.com/Voyager/myAccount" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <myac:expirationDate>2017-10-31 23:00:15</myac:expirationDate>
+            <myac:borrowingBlocks>
+                <myac:title>Blocks</myac:title>
+            </myac:borrowingBlocks>
+            <myac:finesFees>
+                <myac:title>Current Fines/Fees</myac:title>
+            </myac:finesFees>
+            <myac:demerits>
+                <myac:title>Demerits</myac:title>
+                <myac:isDemeritsOn>false</myac:isDemeritsOn>
+            </myac:demerits>
+            <myac:chargedItems>
+                <myac:title>Charged Items</myac:title>
+                <myac:clusterChargedItems>
+                    <myac:cluster>
+                        <myac:clusterName>Princeton University Library</myac:clusterName>
+                        <myac:ubSiteId>1@PRINCETONDB20050302104001</myac:ubSiteId>
+                    </myac:cluster>
+                    <myac:permitRenewal>true</myac:permitRenewal>
+                    <myac:count>2</myac:count>
+                    <myac:chargedItem>
+                        <myac:itemId>7193128</myac:itemId>
+                        <myac:itemBarcode>32101096433097</myac:itemBarcode>
+                        <myac:dueDate>2016-01-26T19:42:52.000-05:00</myac:dueDate>
+                        <myac:origDueDate>2016-01-26T19:42:52.000-05:00</myac:origDueDate>
+                        <myac:todaysDate>2016-01-27T09:14:27.000-05:00</myac:todaysDate>
+                        <myac:title>What are you? : voices of mixed-race young people / [edited by] Pearl Fuyo Gaskins. </myac:title>
+                        <myac:author xsi:nil="true" />
+                        <myac:location>Firestone 3 Hour Reserve (RES). Circ/Reserve Desk</myac:location>
+                        <myac:locationCode>resc</myac:locationCode>
+                        <myac:callNumber>E184.A1 W385 1999</myac:callNumber>
+                        <myac:statusCode>4</myac:statusCode>
+                        <myac:requestCount>0</myac:requestCount>
+                        <myac:copyNumber>50</myac:copyNumber>
+                        <myac:itemtype>Reserve 3 Hour &lt;T></myac:itemtype>
+                        <myac:renewable>true</myac:renewable>
+                    </myac:chargedItem>
+                    <myac:chargedItem>
+                        <myac:itemId>3688389</myac:itemId>
+                        <myac:itemBarcode>32101049903956</myac:itemBarcode>
+                        <myac:dueDate>2016-02-05T23:45:00.000-05:00</myac:dueDate>
+                        <myac:origDueDate>2016-06-15T23:00:00.000-04:00</myac:origDueDate>
+                        <myac:todaysDate>2016-01-27T09:14:27.000-05:00</myac:todaysDate>
+                        <myac:title>Production of presence : what meaning cannot convey / Hans Ulrich Gumbrecht. </myac:title>
+                        <myac:author>Gumbrecht, Hans Ulrich. </myac:author>
+                        <myac:location>Firestone Library (F)</myac:location>
+                        <myac:locationCode>f</myac:locationCode>
+                        <myac:callNumber>BH301.E8 G86 2004</myac:callNumber>
+                        <myac:statusCode>5</myac:statusCode>
+                        <myac:requestCount>1</myac:requestCount>
+                        <myac:copyNumber>1</myac:copyNumber>
+                        <myac:itemtype>General</myac:itemtype>
+                        <myac:renewable>true</myac:renewable>
+                    </myac:chargedItem>
+                </myac:clusterChargedItems>
+            </myac:chargedItems>
+            <myac:availItems>
+                <myac:title>Available Items</myac:title>
+            </myac:availItems>
+            <myac:requests>
+                <myac:title>Pending Requests</myac:title>
+                <myac:requestItem>
+                    <myac:itemID>7114238</myac:itemID>
+                    <myac:illReqID/>
+                    <myac:holdRecallID>587476</myac:holdRecallID>
+                    <myac:replyNote/>
+                    <myac:status>1</myac:status>
+                    <myac:holdType>R</myac:holdType>
+                    <myac:itemTitle>Every fifteen minutes / Lisa Scottoline. </myac:itemTitle>
+                    <myac:articleTitle/>
+                    <myac:expireDate>2016-07-24T00:00:00.000-04:00</myac:expireDate>
+                    <myac:dbKey>1@PRINCETONDB20050302104001</myac:dbKey>
+                    <myac:dbName>Princeton University Library</myac:dbName>
+                    <myac:queuePosition>1</myac:queuePosition>
+                    <myac:pickuplocation>.Firestone Library Circulation Desk</myac:pickuplocation>
+                    <myac:pickuplocationCode>fcirc</myac:pickuplocationCode>
+                    <myac:itemCopyNumber>1</myac:itemCopyNumber>
+                    <myac:statusDate>2016-07-24 00:00:00</myac:statusDate>
+                </myac:requestItem>
+            </myac:requests>
+        </ser:serviceData>
+    </ser:voyagerServiceData>

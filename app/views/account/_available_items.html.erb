@@ -1,7 +1,7 @@
 <h2 class="section-heading">Items Available for Pickup</h2>
 <% if (!@account.avail_items.nil?) %>
   <div class="table-responsive">
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered account-available">
       <thead>
         <tr>
           <th>Item Title</th>
@@ -13,8 +13,8 @@
         <% @account.request_items.each do |item| %>
           <tr>
             <td><%= item["itemTitle"] %></td>
-            <td><%= item["expireDate"] %></td>
-            <td><%= item["pickupLocation"] %></td>
+            <td><%= format_date(item["expireDate"]) %></td>
+            <td><%= item["pickuplocation"] %></td>
           </tr>
         <% end %>
       </tbody>

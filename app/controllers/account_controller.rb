@@ -1,3 +1,5 @@
+require './lib/orangelight/voyager_client.rb'
+
 class AccountController < ApplicationController
   include Blacklight::Configurable
   include ApplicationHelper
@@ -14,6 +16,14 @@ class AccountController < ApplicationController
 
   def renew
     set_patron
+    account_client
+    @voyager_client.renewal_request(params[:renew_items])
+  end
+
+  def cancel
+    set_patron
+    account_client
+    @voyager_client.cancel_active_requests(params[:cancel_requests])
   end
 
   protected
@@ -31,5 +41,20 @@ class AccountController < ApplicationController
       logger.info("#{@patron}")
       @account = voyager_myaccount?(@patron)
     end
+  end
+
+  def account_client
+    if (@patron)
+      VoyagerAccountClient.new(@patron)
+    end
+  end
+
+  def authenticate_patron patron
+  end
+
+  def construct_renew_request items
+  end
+
+  def construct_cancel_request requests
   end
 end

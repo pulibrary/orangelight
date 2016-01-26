@@ -1,16 +1,30 @@
 <h2 class="section-heading">Fines and Fees</h2>
 <% if (!@account.fines_fees.nil?) %>
   <div class="table-responsive">
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered account--fines">
+      <thead>
+        <tr>
+          <td>Date</td>
+          <td>Title</td>
+          <td>Fee /Posting Type</td>
+          <td>Fee</td>
+          <td>Balance</td>
+        </tr>
+      </thead>
       <tbody>
-      <% @account.fines_fee.each do |fine| %>
-        <% fine.each do |key, value| %>
-          <tr>
-            <td><%= key.humanize %></td>
-            <td><%= value %></td>
-          </tr>
-        <% end %>
+      <% @account.fines_fees.each do |fine| %>
+        <tr>
+          <td><%= format_date(fine['date']) %></td>
+          <td><%= fine['title'] %></td>
+          <td><%= fine['postingType'] %></td>
+          <td><%= fine['amount'] %></td>
+          <td><%= fine['balance'] %></td>
+        </tr>
       <% end %>
+      <tr class="account--fines_total">
+        <td colspan="4">Total Due:</td>
+        <td><%= display_account_balance(@account.fines_fees.last) %></td>
+      </tr>
       </tbody>
     </table>
   </div>

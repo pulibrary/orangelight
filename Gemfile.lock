@@ -140,6 +140,9 @@ GEM
       railties (>= 3.0.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
+    faraday-cookie_jar (0.0.6)
+      faraday (>= 0.7.4)
+      http-cookie (~> 1.0.0)
     ffi (1.9.10)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -343,6 +346,7 @@ DEPENDENCIES
   devise-guests (~> 0.5)
   factory_girl_rails
   faraday
+  faraday-cookie_jar
   high_voltage (~> 2.4.0)
   jbuilder (~> 2.0)
   jettywrapper (~> 1.7)

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ser:serviceParameters xmlns:ser="http://www.endinfosys.com/Voyager/serviceParameters">
+<ser:parameters>
+   </ser:parameters>
+      <ser:patronIdentifier lastName="smith">
+      <ser:authFactor type="B">22101007774444</ser:authFactor>
+   </ser:patronIdentifier>
+</ser:serviceParameters>

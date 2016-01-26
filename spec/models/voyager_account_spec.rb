@@ -4,6 +4,7 @@ RSpec.describe VoyagerAccount do
   
   let(:subject) { VoyagerAccount.new(fixture('/pul_voyager_account_response.xml')) }
   let(:subject_with_fines_requests) { VoyagerAccount.new(fixture('/generic_voyager_account_response.xml')) }
+  let(:subject_with_lost_fines) { VoyagerAccount.new(fixture('/account_with_block_fines_recall.xml')) }
   let(:subject_empty_account) { VoyagerAccount.new(fixture('/generic_voyager_account_empty_response.xml')) }
 
   describe "#expiration_date" do
@@ -28,8 +29,8 @@ RSpec.describe VoyagerAccount do
   end
 
   describe "#fines_fees" do
-    xit "Lists fines and fees open on an account" do
-      #Need to confirm what element name ex libris uses for fees
+    it "Lists fines and fees open on an account" do
+      expect(subject_with_lost_fines.fines_fees.size).to eq(3)
     end
 
     it "returns nil when there are no fines or fees" do
@@ -72,7 +73,7 @@ RSpec.describe VoyagerAccount do
 
   describe "#avail_items" do
 
-    xit "Displays a list of available pickup items" do
+    it "Displays a list of available pickup items" do
       #Confirm the data structure Ex Libris uses for items waiting for pickup
     end
 

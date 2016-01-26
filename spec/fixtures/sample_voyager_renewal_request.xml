@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ser:serviceParameters xmlns:ser="http://www.endinfosys.com/Voyager/serviceParameters">
+   <ser:parameters/>
+   <ser:patronIdentifier lastName="Patel" patronHomeUbId="1@QA20012DB20020613131313" patronId="562">
+      <ser:authFactor type="B">150</ser:authFactor>
+   </ser:patronIdentifier>
+   <ser:definedParameters xsi:type="myac:myAccountServiceParametersType" xmlns:myac="http://www.endinfosys.com/Voyager/myAccount" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <myac:itemIdentifier>
+         <myac:itemId>32437</myac:itemId>
+         <myac:ubId>1@QA20012DB20020613131313</myac:ubId>
+      </myac:itemIdentifier>
+   </ser:definedParameters>
+</ser:serviceParameters>

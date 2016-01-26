@@ -256,25 +256,72 @@ module ApplicationHelper
 
   def current_patron? netid
     return false unless netid
-    patron_record = Faraday.get "#{ENV['bibdata_base']}/patron/#{netid}"
-    logger.info("#{patron_record.status} response for #{ENV['bibdata_base']}/patron/#{netid}")
-    return false if patron_record.status == 403
-    return false if patron_record.status == 404
+    begin 
+      patron_record = Faraday.get "#{ENV['bibdata_base']}/patron/#{netid}"
+    rescue Faraday::Error::ConnectionFailed => e
+      logger.info("Unable to connect to #{ENV['bibdata_base']}")
+      return false
+    end
+
+    if patron_record.status == 403
+      logger.info("403 Not Authorized to Connect to Patron Data Service at #{ENV['bibdata_base']}/patron/#{netid}")
+      return false 
+    end
+    if patron_record.status == 404
+      logger.info("404 Patron #{netid} cannot be found in the Patron Data Service.")
+      return false 
+    end
     patron = JSON.parse(patron_record.body).with_indifferent_access
     logger.info("#{patron.to_hash}")
     patron
   end
 
   def voyager_myaccount? patron
-    voyager_account = Faraday.get "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{patron[:patron_id]}&patronHomeUbId=1@DB"
-    logger.info "#{voyager_account.body}"
-    return false if voyager_account.status == 403
-    return false if voyager_account.status == 404
+    begin
+      voyager_account = Faraday.get "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{patron[:patron_id]}&patronHomeUbId=1@DB"
+    rescue Faraday::Error::ConnectionFailed => e
+      logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
+      return false
+    end
+    if voyager_account.status == 403
+      logger.info("403 Not Authorized to Connect to Voyager My Account Service.")
+      return false
+    end
+    if voyager_account.status == 404
+      logger.info("404 Patron id #{patron[:patron_id]} cannot be found in the Voyager My Account Service.")
+      return false 
+    end
     account = VoyagerAccount.new(voyager_account.body)
     logger.info("#{account.source_doc}")
     account
   end
 
+  # Setup item status
+  ITEM_STATUS = YAML.load_file("#{Rails.root}/config/voyager_item_status.yml") rescue {}
 
+  def item_status_to_label item
+    ITEM_STATUS[item['statusCode'].to_i]
+  end
 
+  def format_date raw_date
+    raw_date.to_time.in_time_zone.strftime('%B %e %Y at %l:%M %p')
+  end
+
+  def format_block_statement block_message
+    if block_message == "odue_recall_limit_patron"
+      "You have overdue recalled items. Please return this material Immediately"
+    end
+  end
+
+  def format_hold_cancel item
+    "item-#{item["itemID"]}:holdrecall-#{item["holdRecallID"]}:type-#{item["holdType"]}"
+  end
+
+  def format_renew_string item
+    "item-#{item['itemId']}:barcode-#{item['itemBarcode']}"
+  end
+
+  def display_account_balance fine_fee
+    "#{fine_fee['balanceTotal']}"
+  end
 end

@@ -28,7 +28,7 @@ class VoyagerAccount
 
   def fines_fees
     # not sure if "finesFee" is right element name 
-    fine_nodes = @doc.xpath('//myac:finesFee', 'myac'=> @@voyager_ns)
+    fine_nodes = @doc.xpath('//myac:fineFee', 'myac'=> @@voyager_ns)
     return nil if fine_nodes.empty?
     fines = parse_items(fine_nodes)
   end

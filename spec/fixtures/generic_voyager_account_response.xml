@@ -106,6 +106,7 @@
           <myac:callNumber>PZ3.G139 Car</myac:callNumber>
           <myac:statusCode>2</myac:statusCode>
           <myac:itemtype>BOOK</myac:itemtype>
+          <myac:renewable>true</myac:renewable>
         </myac:chargedItem>
         <myac:chargedItem>
           <myac:itemId>32437</myac:itemId>
@@ -119,6 +120,7 @@
           <myac:callNumber>PZ10.S699 Car</myac:callNumber>
           <myac:statusCode>3</myac:statusCode>
           <myac:itemtype>BOOK</myac:itemtype>
+          <myac:renewable>true</myac:renewable>
         </myac:chargedItem>
       </myac:clusterChargedItems>
     </myac:chargedItems>

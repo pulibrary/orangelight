@@ -40,6 +40,10 @@ RSpec.describe ApplicationHelper do
       expect(patron).to be_falsey
     end
 
+    it "Raises a Connection Error when the Patron Data Service Can't be Reached" do
+      
+    end
+
   end
 
   describe "#voyager_account?" do

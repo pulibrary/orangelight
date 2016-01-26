@@ -43,6 +43,7 @@ gem 'spring',        group: :development
 gem 'capistrano', '~> 3.2.0'
 
 gem 'faraday'
+gem 'faraday-cookie_jar'
 
 gem 'yajl-ruby', require: 'yajl'
 
