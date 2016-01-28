@@ -9,19 +9,21 @@
         <ul>
           <li><%= link_to 'Help', page_path('help') %></li>
           <li><a href="http://library.princeton.edu/help/contact-us">Contact Us</a></li>
-          <%= render :partial=>'/account' %>
+          <%= render :partial=>'/account' unless params[:action] == 'error' %>
         </ul>
       </div>
     </div>
   </div>
-  <div class="header__secondary">
-    <nav class="container" role="navigation">
-      <div id="search-navbar" class="col-xs-12 col-sm-12 col-md-8" role="search">
-        <%= render_search_bar %>
-      </div>
-      <%= render :partial=>'/user_util_links' %>
-    </nav>
-  </div>
+  <% unless params[:action] == 'error' %>
+    <div class="header__secondary">
+      <nav class="container" role="navigation">
+        <div id="search-navbar" class="col-xs-12 col-sm-12 col-md-8" role="search">
+          <%= render_search_bar %>
+        </div>
+        <%= render :partial=>'/user_util_links' %>
+      </nav>
+    </div>
+  <% end %>
 </header>
 
 
