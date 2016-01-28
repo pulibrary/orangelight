@@ -12,3 +12,8 @@ en:
     header_links:
       login: 'My Account'
       search_history: 'Search History'
+    email:
+      text:
+        subject:
+          one: 'PU Library Catalog Shared Record'
+          other: 'PU Library Catalog Shared Records'

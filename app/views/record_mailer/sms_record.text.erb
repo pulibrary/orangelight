@@ -1,0 +1,4 @@
+<% @documents.each do |document| %>
+<%= polymorphic_url(document, @url_gen_params) %>
+<%= document.to_sms_text %>
+<% end %>

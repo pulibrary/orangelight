@@ -24,7 +24,7 @@ class SolrDocument
   SolrDocument.use_extension( Blacklight::Solr::Document::Email )
 
   # SMS uses the semantic field mappings below to generate the body of an SMS email.
-  SolrDocument.use_extension( Blacklight::Solr::Document::Sms )
+  SolrDocument.use_extension( Blacklight::Document::Sms )
 
   # DublinCore uses the semantic field mappings below to assemble an OAI-compliant Dublin Core document
   # Semantic mappings of solr stored fields. Fields may be multi or
