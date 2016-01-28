@@ -59,34 +59,61 @@ module ApplicationHelper
   # holding record fields: 'location', 'library', 'location_code', 'call_number', 'call_number_browse',
   # 'shelving_title', 'location_note', 'electronic_access_1display', 'location_has', 'location_has_current',
   # 'indexes', 'supplements'
-  def holding_request_block (holdings, doc_id)
-    block = ''
+  # process online and physical holding information at the same time
+  # @param [SolrDocument] document - record display fields
+  # @return [String] online - online holding info html
+  # @return [String] physical - physical holding info html
+  def holding_request_block(document)
+    holdings, doc_id = document['holdings_1display'], document['id']
+    physical_holdings = ''
+    online_holdings = ''
+    links = urlify(document['electronic_access_1display'] || '{}')
+    online_holdings << links
     holdings_hash = JSON.parse(holdings)
     holdings_hash.each do |id, holding|
-      unless holding['location_code'].blank? or holding['location_code'].start_with?('elf')
-        info = ''
-        unless holding['location'].blank?
-          location = "#{holding['location']}"
-          location << locate_link_with_gylph(holding['location_code'], doc_id, holding['library'])
-          info << content_tag(:h3, location.html_safe, class: 'library-location')
-        end
-        info << content_tag(:div, content_tag(:span, '', class: 'availability-icon').html_safe, data: { 'availability_record' => true, 'record_id' => doc_id, 'holding_id' => id })
-        unless holding['call_number'].blank?
-          cn_browse_link = link_to('[Browse]', "/browse/call_numbers?q=#{holding['call_number_browse']}", class: 'browse-cn',
-                              'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{holding['call_number_browse']}",
-                              title: "Browse: #{holding['call_number_browse']}")
-          cn = "#{holding['call_number']} #{cn_browse_link}"
-          info << content_tag(:span, cn.html_safe, class: 'holding-call-number')
-        end
-        info << content_tag(:div, holding['shelving_title'], class: 'shelving-title') unless holding['shelving_title'].nil?
-        info << content_tag(:div, holding['location_note'], class: 'location-note') unless holding['location_note'].nil?
-        info << content_tag(:div, holding['location_has'], class: 'location-has') unless holding['location_has'].nil?
-        info << content_tag(:div, holding['location_has_current'], class: 'location-has-current') unless holding['location_has_current'].nil?
-        info << request_placeholder(doc_id, id).html_safe
-        block << content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
+      if holding['location_code'].start_with?('elf')
+        online_holdings << process_online_holding(holding, doc_id, id, links.empty?)
+      elsif !holding['location_code'].blank?
+        physical_holdings << process_physical_holding(holding, doc_id, id)
       end
     end
-    content_tag(:div, block.html_safe) unless block.empty?
+    online = content_tag(:div, online_holdings.html_safe) unless online_holdings.empty?
+    physical = content_tag(:div, physical_holdings.html_safe) unless physical_holdings.empty?
+    [online, physical]
+  end
+
+  def process_online_holding(holding, bib_id, holding_id, link_missing)
+    info = ''
+    if link_missing
+      info << content_tag(:span, 'Link Missing', class: 'availability-icon label label-default',
+                          title: 'Availability: Online', 'data-toggle' => 'tooltip')
+      info = content_tag(:div, info.html_safe, class: 'holding-block',  data: { availability_record: true, record_id: bib_id, holding_id: holding_id })
+    end
+    info
+  end
+
+  def process_physical_holding(holding, bib_id, holding_id)
+    info = ''
+    unless holding['location'].blank?
+      location = "#{holding['location']}"
+      location << locate_link_with_gylph(holding['location_code'], bib_id, holding['library'])
+      info << content_tag(:h3, location.html_safe, class: 'library-location')
+    end
+    info << content_tag(:div, content_tag(:span, '', class: 'availability-icon').html_safe, data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id })
+    unless holding['call_number'].blank?
+      cn_browse_link = link_to('[Browse]', "/browse/call_numbers?q=#{holding['call_number_browse']}", class: 'browse-cn',
+                          'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{holding['call_number_browse']}",
+                          title: "Browse: #{holding['call_number_browse']}")
+      cn = "#{holding['call_number']} #{cn_browse_link}"
+      info << content_tag(:span, cn.html_safe, class: 'holding-call-number')
+    end
+    info << content_tag(:div, holding['shelving_title'], class: 'shelving-title') unless holding['shelving_title'].nil?
+    info << content_tag(:div, holding['location_note'], class: 'location-note') unless holding['location_note'].nil?
+    info << content_tag(:div, holding['location_has'], class: 'location-has') unless holding['location_has'].nil?
+    info << content_tag(:div, holding['location_has_current'], class: 'location-has-current') unless holding['location_has_current'].nil?
+    info << request_placeholder(bib_id, holding_id).html_safe
+    info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
+    info
   end
 
   def request_placeholder(doc_id, holding_id)
@@ -106,13 +133,14 @@ module ApplicationHelper
       if holding['library'] == 'Online'
         check_availability = false
         if links.empty?
-          info << content_tag(:span, 'Link Missing', class: 'availability-icon label label-danger',
+          check_availability = true
+          info << content_tag(:span, 'Link Missing', class: 'availability-icon label label-default',
                               title: 'Availability: Online', 'data-toggle' => 'tooltip')
           info << 'Online access is not currently available.'
         else
-        info << link_to('Online', catalog_path(args[:document]['id']), class: 'availability-icon label label-primary',
-                            title: 'Electronic Access')
-        info << links.shift.html_safe
+          info << link_to('Online', catalog_path(args[:document]['id']), class: 'availability-icon label label-primary',
+                          title: 'Electronic Access')
+          info << links.shift.html_safe
         end
       else
         info << link_to('', catalog_path(args[:document]['id']), class: 'availability-icon').html_safe

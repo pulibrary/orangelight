@@ -7,7 +7,7 @@ RSpec.describe ApplicationHelper do
     let(:location) { 'Rare Books and Special Collections - Reference Collection in Dulles Reading Room' }
     let(:call_number) { 'PS3539.A74Z93 2000' }
     let(:search_result) { helper.holding_block_search(field_config) }
-    let(:show_result) { helper.holding_request_block(holding_block_json, 1) }
+    let(:show_result) { helper.holding_request_block(document) }
     let(:holding_block_json) do
       {
         holding_id => {
@@ -43,13 +43,17 @@ RSpec.describe ApplicationHelper do
       }.to_json.to_s
     end
 
+    let(:document) do
+      {
+          id: '1',
+          holdings_1display: holding_block_json
+      }.with_indifferent_access
+    end
+
     let(:field_config) do
       {
         field: :holdings_1display,
-        document: {
-          id: '1',
-          holdings_1display: holding_block_json
-        }
+        document: document
       }.with_indifferent_access
     end
     context "search results when there are more than two call numbers" do
@@ -81,19 +85,24 @@ RSpec.describe ApplicationHelper do
         expect(search_result).to include "Link Missing"
       end
     end
-    context "#holding_block record show" do
-      it "returns a good string" do
-        expect(show_result).to include call_number
-        expect(show_result).to include library
+    context "#holding_block record show - physical holdings" do
+      it "returns a string with call number and location display values" do
+        expect(show_result.last).to include call_number
+        expect(show_result.last).to include library
       end
       it "link to call number browse" do
-        expect(show_result).to have_link('[Browse]', href: "/browse/call_numbers?q=#{call_number}")
+        expect(show_result.last).to have_link('[Browse]', href: "/browse/call_numbers?q=#{call_number}")
       end
       it "tooltip for the call number browse" do
-        expect(show_result).to have_selector "*[title='Browse: #{call_number}']"
+        expect(show_result.last).to have_selector "*[title='Browse: #{call_number}']"
       end
       it "tags the holding record id" do
-        expect(show_result).to have_selector "*[data-holding-id='#{holding_id}']"
+        expect(show_result.last).to have_selector "*[data-holding-id='#{holding_id}']"
+      end
+    end
+    context "#holding_block record show - online holdings" do
+      it "link missing label appears when 856s is missing from elf location" do
+        expect(show_result.first).to include "Link Missing"
       end
     end
   end
