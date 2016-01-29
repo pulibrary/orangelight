@@ -65,7 +65,7 @@ GEM
     blacklight_advanced_search (5.1.2)
       blacklight (>= 5.2, < 6.0)
       parslet
-    blacklight_folders (1.0.1)
+    blacklight_folders (1.0.0)
       acts_as_list (>= 0.4.0)
       blacklight (>= 5.8.0, < 6)
       cancancan (~> 1.9)
@@ -92,7 +92,7 @@ GEM
     capistrano-rails (1.1.6)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capybara (2.6.0)
+    capybara (2.6.2)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -133,7 +133,7 @@ GEM
       devise
     diff-lcs (1.2.5)
     docile (1.1.5)
-    domain_name (0.5.25)
+    domain_name (0.5.20160128)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -194,6 +194,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (3.0.2)
     netrc (0.11.0)
+    newrelic_rpm (3.14.2.312)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     omniauth (1.2.2)
@@ -300,7 +301,7 @@ GEM
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.0.0)
+    sprockets-rails (3.0.1)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
@@ -326,7 +327,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
-    warden (1.2.4)
+    warden (1.2.5)
       rack (>= 1.0)
     webmock (1.22.6)
       addressable (>= 2.3.6)
@@ -365,6 +366,7 @@ DEPENDENCIES
   lcsort (~> 0.9)
   library_stdnums
   modernizr-rails
+  newrelic_rpm
   omniauth-cas
   pg
   poltergeist

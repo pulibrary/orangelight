@@ -68,6 +68,8 @@ gem 'library_stdnums'
 
 gem 'coveralls', require: false
 
+gem 'newrelic_rpm'
+
 group :development do
   gem 'capistrano-rails', '~> 1.1.1'
   gem 'quiet_assets'
