@@ -33,7 +33,7 @@ shared_path = "#{:deploy_to}/shared"
 # config/redis.yml config/devise.yml config/resque_pool.yml, config/recipients_list.yml, log/resque-pool.stderr.log log/resque-pool.stdout.log
 
 #set :linked_files, %w{config/role_map.yml config/pul_store.yml config/database.yml config/role_map_production.yml config/fedora.yml config/solr.yml config/initializers/secret_token.rb noid-minter-state lae-box-counter-state}
-set :linked_files, %w{config/database.yml config/blacklight.yml config/secrets.yml config/initializers/devise.rb config/ip_whitelist.yml config/requests.yml config/newrewlic.yml}
+set :linked_files, %w{config/database.yml config/blacklight.yml config/secrets.yml config/initializers/devise.rb config/ip_whitelist.yml config/requests.yml config/newrelic.yml}
 set :linked_dirs, %w{tmp/pids tmp/sockets}
 
 
