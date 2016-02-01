@@ -118,9 +118,15 @@ module BlacklightHelper
     "<span class='icon icon-#{var.parameterize}'></span>".html_safe
   end
 
+  # solr fq field is field parameter provided unless id_nums value starts with BIB
   def linked_records id_nums, bib_id, field
     fq = ''
-    id_nums.each {|n| fq += "#{field}:#{n} OR "}
+    id_nums.each do |n|
+      bib_match = /(?:^BIB)(.*)/.match(n)
+      solr_field = bib_match ? 'id' : field
+      n = bib_match[1] if bib_match
+      fq += "#{solr_field}:#{n} OR "
+    end
     fq.chomp!(' OR ')
     resp = get_fq_solr_response(fq)
     req = JSON.parse(resp.body)

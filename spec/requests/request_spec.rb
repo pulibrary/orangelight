@@ -215,13 +215,25 @@ describe "blacklight tests" do
       expect(response.body).to include('href="http://www.example.com/catalog/8553130"')
       expect(response.body).to include('href="http://www.example.com/catalog/5291883"')
     end
-    it "provides link to linked related record when found" do
+    it "provides link to linked related record (774 bib link) when found" do
       get "/catalog/4705304"
       expect(response.body).to include('href="http://www.example.com/catalog/4705307"')
     end
-    it "provides link to record in which current record is contained when found" do
+    it "provides link to record in which current record is contained (773 bib link) when found" do
       get "/catalog/4705307"
       expect(response.body).to include('href="http://www.example.com/catalog/4705304"')
+    end
+    it "provides link to other version of the record when linked via bib id in 776/787" do
+      get "/catalog/3478898"
+      expect(response.body).to include('href="http://www.example.com/catalog/3861539"')
+    end
+    it "does not provide link to bib id in 776/787 if linked record does not exist" do
+      get "/catalog/857469.json"
+      linked_bib = '4478078'
+      r = JSON.parse(response.body)
+      expect(r['response']['document']['other_version_s']).to include("BIB#{linked_bib}")
+      get "/catalog/857469"
+      expect(response.body).not_to include("href=\"http://www.example.com/catalog/#{linked_bib}\"")
     end
   end
 
