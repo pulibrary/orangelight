@@ -8,6 +8,7 @@ en:
       online: "Online"
       print: "Copies In Library"
       stackmap: "Where to Find It"
+      missing: 'There are no holdings available for this record. Consult a library staff member at the nearest Circulation Desk.'
 
     header_links:
       login: 'My Account'
