@@ -1,3 +1,5 @@
+@import "variables/colors";
+
 @font-face {
     font-family: 'pul-icons';
     src: font-url('icons/pul-icons.eot?1uuk7m');
@@ -25,7 +27,7 @@
 }
 
 .icon-senior-thesis:before, .blacklight-senior-thesis .document-thumbnail .default:before {
-    content: "\f60c";
+    content: "\e600";
 }
 .icon-data-file:before, .blacklight-data-file .document-thumbnail .default:before {
     content: "\e601";
@@ -38,6 +40,12 @@
 }
 .icon-audio:before, .blacklight-audio .document-thumbnail .default:before {
     content: "\e604";
+}
+.icon-lp:before, .blacklight-lp .document-thumbnail .default:before {
+    content: "\f2f4";
+}
+.icon-cd:before, .blacklight-cd .document-thumbnail .default:before {
+    content: "\f2f3";
 }
 .icon-musical-score:before, .blacklight-musical-score .document-thumbnail .default:before {
     content: "\e605";
@@ -56,6 +64,16 @@
 }
 .toggle:before {
     content: "\e60a";
+}
+.icon-rssfeed:before {
+    content: "\e900";
+    color: $orange;
+}
+.icon-rssfeed:hover {
+    text-decoration: none;
+    &:before {
+        color: $blue;
+    }
 }
 .icon-book:before, .blacklight-book .document-thumbnail .default:before {
     content: "\e60b";
