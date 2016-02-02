@@ -1,137 +1,182 @@
 @import "variables/colors";
 
 @font-face {
-    font-family: 'pul-icons';
-    src: font-url('icons/pul-icons.eot?1uuk7m');
-    src: font-url('icons/pul-icons.eot?1uuk7m#iefix') format('embedded-opentype'),
-        font-url('icons/pul-icons.ttf?1uuk7m') format('truetype'),
-        font-url('icons/pul-icons.woff?1uuk7m') format('woff'),
-        font-url('icons/pul-icons.svg?1uuk7m#pul-icons') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'pul-icons';
+  src: font-url("icons/pul-icons.eot?1uuk7m");
+  src: font-url("icons/pul-icons.eot?1uuk7m#iefix") format("embedded-opentype"), font-url("icons/pul-icons.ttf?1uuk7m") format("truetype"), font-url("icons/pul-icons.woff?1uuk7m") format("woff"), font-url("icons/pul-icons.svg?1uuk7m#pul-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"], .toggle, .toggle.collapsed, .document-thumbnail .default {
-    font-family: 'pul-icons';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    text-decoration: none;
+[class^="icon-"],
+[class*=" icon-"],
+.toggle,
+.toggle.collapsed,
+.document-thumbnail .default {
+  font-family: 'pul-icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  text-decoration: none;
 
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-senior-thesis:before, .blacklight-senior-thesis .document-thumbnail .default:before {
-    content: "\e600";
+.icon-senior-thesis:before,
+.blacklight-senior-thesis .document-thumbnail .default:before {
+  content: "\e600";
 }
-.icon-data-file:before, .blacklight-data-file .document-thumbnail .default:before {
-    content: "\e601";
+
+.icon-data-file:before,
+.blacklight-data-file .document-thumbnail .default:before {
+  content: "\e601";
 }
-.icon-map:before, .blacklight-map .document-thumbnail .default:before {
-    content: "\e602";
+
+.icon-map:before,
+.blacklight-map .document-thumbnail .default:before {
+  content: "\e602";
 }
-.icon-manuscript:before, .blacklight-manuscript .document-thumbnail .default:before {
-    content: "\e603";
+
+.icon-manuscript:before,
+.blacklight-manuscript .document-thumbnail .default:before,
+.blacklight-manuscript.blacklight-book .document-thumbnail .default:before {
+  content: "\e603";
 }
-.icon-audio:before, .blacklight-audio .document-thumbnail .default:before {
-    content: "\e604";
+
+.icon-audio:before,
+.blacklight-audio .document-thumbnail .default:before {
+  content: "\e604";
 }
-.icon-lp:before, .blacklight-lp .document-thumbnail .default:before {
-    content: "\f2f4";
+
+.icon-lp:before,
+.blacklight-lp .document-thumbnail .default:before {
+  content: "\f2f4";
 }
-.icon-cd:before, .blacklight-cd .document-thumbnail .default:before {
-    content: "\f2f3";
+
+.icon-cd:before,
+.blacklight-cd .document-thumbnail .default:before {
+  content: "\f2f3";
 }
-.icon-musical-score:before, .blacklight-musical-score .document-thumbnail .default:before {
-    content: "\e605";
+
+.icon-musical-score:before,
+.blacklight-musical-score .document-thumbnail .default:before {
+  content: "\e605";
 }
-.icon-video-projected-medium:before, .blacklight-video-projected-medium .document-thumbnail .default:before {
-    content: "\e606";
+
+.icon-video-projected-medium:before,
+.blacklight-video-projected-medium .document-thumbnail .default:before {
+  content: "\e606";
 }
-.icon-visual-material:before, .blacklight-visual-material .document-thumbnail .default:before{
-    content: "\e607";
+
+.icon-visual-material:before,
+.blacklight-visual-material .document-thumbnail .default:before {
+  content: "\e607";
 }
+
+.icon-book:before,
+.blacklight-book .document-thumbnail .default:before {
+  content: "\e60b";
+}
+
+.icon-journal:before,
+.blacklight-journal .document-thumbnail .default:before {
+  content: "\e60c";
+}
+
+.icon-mixed-material:before,
+.blacklight-mixed-material .document-thumbnail .default:before {
+  content: "\e60d";
+}
+
+.icon-dissertation:before,
+.blacklight-dissertation .document-thumbnail .default:before {
+  content: "\e60e";
+}
+
+.icon-unknown:before,
+.blacklight-unknown .document-thumbnail .default:before {
+  content: "\e60f";
+}
+
 .toggle.collapsed:before {
-    content: "\e608";
+  content: "\e608";
 }
+
 .icon-remove:before {
-    content: "\e609";
+  content: "\e609";
 }
+
 .toggle:before {
-    content: "\e60a";
+  content: "\e60a";
 }
+
 .icon-rssfeed:before {
-    content: "\e900";
-    color: $orange;
+  content: "\e900";
+  color: $orange;
 }
+
 .icon-rssfeed:hover {
-    text-decoration: none;
-    &:before {
-        color: $blue;
-    }
+  text-decoration: none;
+
+  &:before {
+    color: $blue;
+  }
 }
-.icon-book:before, .blacklight-book .document-thumbnail .default:before {
-    content: "\e60b";
-}
-.icon-journal:before, .blacklight-journal .document-thumbnail .default:before {
-    content: "\e60c";
-}
-.icon-mixed-material:before, .blacklight-mixed-material .document-thumbnail .default:before {
-    content: "\e60d";
-}
-.icon-dissertation:before, .blacklight-dissertation .document-thumbnail .default:before {
-    content: "\e60e";
-}
-.icon-unknown:before, .blacklight-unknown .document-thumbnail .default:before {
-    content: "\e60f";
-}
+
 .icon-search:before {
-    content: "\e610";
+  content: "\e610";
 }
+
 .icon-bookmark:before {
-    content: "\e901";
+  content: "\e901";
 }
+
 .icon-cite:before {
-    content: "\e902";
-    margin-right: 0.5em;
+  content: "\e902";
+  margin-right: 0.5em;
 }
+
 .icon-share:before {
-    content: "\e903";
-    margin-right: 0.5em;
+  content: "\e903";
+  margin-right: 0.5em;
 }
+
 .icon-external:before {
-    content: "\f636";
-    margin-right: 0.5em;
+  content: "\f636";
+  margin-right: 0.5em;
 }
+
 .icon-mobile:before {
-    content: "\f690";
-    margin-right: 0.5em;
+  content: "\f690";
+  margin-right: 0.5em;
 }
+
 .icon-email:before {
-    content: "\f813";
-    margin-right: 0.5em;
+  content: "\f813";
+  margin-right: 0.5em;
 }
+
 .icon-print:before {
-    content: "\f893";
-    margin-right: 0.5em;
+  content: "\f893";
+  margin-right: 0.5em;
 }
 
 a:link.toggle,
 a:visited.toggle,
 a:hover.toggle,
 a:active.toggle {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .document-thumbnail .default {
-    font-size: 5.5em;
+  font-size: 5.5em;
 }
 
 .icon.toggle {
-    color: black;
+  color: black;
 }
