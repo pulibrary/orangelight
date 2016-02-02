@@ -58,6 +58,14 @@ $( document ).ready(function() {
         trigger: "hover"
     });
 
+    //tooltip for rss/atom feed
+    $("#sortAndPerPage").tooltip({
+        selector: "[data-toggle='tooltip']",
+        placement: "bottom",
+        container: "body",
+        trigger: "hover"
+    });
+
     ///////////////////////////////////////////
     // temporarily disable blacklight folders//
     //on change, submit form / add to folder //
