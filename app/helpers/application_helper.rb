@@ -64,13 +64,13 @@ module ApplicationHelper
   # @return [String] online - online holding info html
   # @return [String] physical - physical holding info html
   def holding_request_block(document)
-    holdings, doc_id = document['holdings_1display'], document['id']
+    doc_id = document['id']
+    holdings = JSON.parse(document['holdings_1display'] || '{}')
+    links = urlify(document['electronic_access_1display'] || '{}')
     physical_holdings = ''
     online_holdings = ''
-    links = urlify(document['electronic_access_1display'] || '{}')
     online_holdings << links
-    holdings_hash = JSON.parse(holdings)
-    holdings_hash.each do |id, holding|
+    holdings.each do |id, holding|
       if holding['location_code'].start_with?('elf')
         online_holdings << process_online_holding(holding, doc_id, id, links.empty?)
       elsif !holding['location_code'].blank?
@@ -79,6 +79,7 @@ module ApplicationHelper
     end
     online = content_tag(:div, online_holdings.html_safe) unless online_holdings.empty?
     physical = content_tag(:div, physical_holdings.html_safe) unless physical_holdings.empty?
+    physical = missing_holdings if physical.nil? and online.nil?
     [online, physical]
   end
 
@@ -90,6 +91,10 @@ module ApplicationHelper
       info = content_tag(:div, info.html_safe, class: 'holding-block',  data: { availability_record: true, record_id: bib_id, holding_id: holding_id })
     end
     info
+  end
+
+  def missing_holdings
+  content_tag(:div, t('blacklight.holdings.missing'), class: 'holding-block')
   end
 
   def process_physical_holding(holding, bib_id, holding_id)
