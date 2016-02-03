@@ -143,7 +143,7 @@ class CatalogController < ApplicationController
 
 
     config.add_show_field 'author_display', :label => 'Author', :helper_method => :browse_name
-    config.add_show_field 'format', :label => 'Formats'
+    config.add_show_field 'format', :label => 'Format', helper_method: :format_render
     config.add_show_field 'url_fulltext_display', :label => 'URL'
     config.add_show_field 'url_suppl_display', :label => 'More Information'
     config.add_show_field 'language_facet', :label => 'Language'
