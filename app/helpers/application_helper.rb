@@ -210,8 +210,13 @@ module ApplicationHelper
   end
 
   def format_icon args
-    var = args[:document][args[:field]][0]
-    "#{render_icon(var)} #{var}".html_safe
+    icon = "#{render_icon(args[:document][args[:field]][0])}"
+    formats = format_render(args)
+    "#{icon} #{formats}".html_safe
+  end
+
+  def format_render args
+    args[:document][args[:field]].join(', ')
   end
 
   def voyager_url bibid
