@@ -56,41 +56,48 @@ module BrowseLists
             csv << [sort_cn, mcn, "ltr", "", "Click on the call number to see all #{f} records", "", "", "?f[#{facet_field}][]=#{mcn}","","Multiple locations"]
           end
         end
-
+        resp = conn.get "/solr/blacklight-core/select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax"
+        num_docs = JSON.parse(resp.body)["response"]["numFound"]
+        rows = 1000000
+        iterations = num_docs/rows + 1
+        start = 0
         cn_fields = "#{facet_field},title_display,title_vern_display,author_display,id,pub_created_display,holdings_1display"
-        cn_request = "/solr/blacklight-core/select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&rows=9999999"
-        resp = conn.get "#{cn_request}"  
-        req = JSON.parse(resp.body) 
-        req["response"]["docs"].each do |record|
-          if record["#{facet_field}"]
-            record["#{facet_field}"].each_with_index do |cn, i|
-              sort_cn = StringFunctions.cn_normalize(cn)
-              unless multi_cns.has_key?(sort_cn)
-                bibid = record["id"]
-                title = record["title_display"]
-                if record["title_vern_display"]
-                  title = record["title_vern_display"] 
-                  dir = StringFunctions.getdir(title)
-                else
-                  dir = "ltr"  #ltr for non alt script
-                end
-                label = cn
-                author = record["author_display"][0..1].last if record["author_display"]
-                date = record["pub_created_display"][0..1].last if record["pub_created_display"]
-                if record["holdings_1display"]
-                  holding_block = JSON.parse(record["holdings_1display"])
-                  holding_record = holding_block.select{|k,h| h["call_number_browse"] == cn}
-                  unless holding_record.empty?
-                    holding_id = holding_record.keys.first 
-                    location = holding_record[holding_id]["library"]
+        iterations.times do
+          cn_request = "/solr/blacklight-core/select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&rows=#{rows}&start=#{start}"
+          resp = conn.get "#{cn_request}"
+          req = JSON.parse(resp.body)
+          req["response"]["docs"].each do |record|
+            if record["#{facet_field}"]
+              record["#{facet_field}"].each_with_index do |cn, i|
+                sort_cn = StringFunctions.cn_normalize(cn)
+                unless multi_cns.has_key?(sort_cn)
+                  bibid = record["id"]
+                  title = record["title_display"]
+                  if record["title_vern_display"]
+                    title = record["title_vern_display"]
+                    dir = StringFunctions.getdir(title)
+                  else
+                    dir = "ltr"  #ltr for non alt script
                   end
+                  label = cn
+                  author = record["author_display"][0..1].last if record["author_display"]
+                  date = record["pub_created_display"][0..1].last if record["pub_created_display"]
+                  if record["holdings_1display"]
+                    holding_block = JSON.parse(record["holdings_1display"])
+                    holding_record = holding_block.select{|k,h| h["call_number_browse"] == cn}
+                    unless holding_record.empty?
+                      holding_id = holding_record.keys.first
+                      location = holding_record[holding_id]["library"]
+                    end
+                  end
+                  holding_id ||= ""
+                  location ||= ""
+                  csv << [sort_cn,label,dir,"",title,author,date,bibid,holding_id,location]
                 end
-                holding_id ||= ""
-                location ||= ""
-                csv << [sort_cn,label,dir,"",title,author,date,bibid,holding_id,location]
               end
             end
-          end        
+          end
+          start += rows
         end
       end
     end
