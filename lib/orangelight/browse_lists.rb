@@ -53,11 +53,11 @@ module BrowseLists
           else
             sort_cn = StringFunctions.cn_normalize(mcn)
             multi_cns[sort_cn] = f
-            csv << [sort_cn, mcn, "ltr", "", "#{f} records for this call number", "", "", "?f[#{facet_field}][]=#{mcn}"]
+            csv << [sort_cn, mcn, "ltr", "", "Click on the call number to see all #{f} records", "", "", "?f[#{facet_field}][]=#{mcn}","","Multiple locations"]
           end
         end
 
-        cn_fields = "#{facet_field},title_display,title_vern_display,author_display,id,pub_created_display"
+        cn_fields = "#{facet_field},title_display,title_vern_display,author_display,id,pub_created_display,holdings_1display"
         cn_request = "/solr/blacklight-core/select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&rows=9999999"
         resp = conn.get "#{cn_request}"  
         req = JSON.parse(resp.body) 
@@ -66,7 +66,6 @@ module BrowseLists
             record["#{facet_field}"].each_with_index do |cn, i|
               sort_cn = StringFunctions.cn_normalize(cn)
               unless multi_cns.has_key?(sort_cn)
-
                 bibid = record["id"]
                 title = record["title_display"]
                 if record["title_vern_display"]
@@ -78,7 +77,17 @@ module BrowseLists
                 label = cn
                 author = record["author_display"][0..1].last if record["author_display"]
                 date = record["pub_created_display"][0..1].last if record["pub_created_display"]
-                csv << [sort_cn,label,dir,"",title,author,date,bibid]
+                if record["holdings_1display"]
+                  holding_block = JSON.parse(record["holdings_1display"])
+                  holding_record = holding_block.select{|k,h| h["call_number_browse"] == cn}
+                  unless holding_record.empty?
+                    holding_id = holding_record.keys.first 
+                    location = holding_record[holding_id]["library"]
+                  end
+                end
+                holding_id ||= ""
+                location ||= ""
+                csv << [sort_cn,label,dir,"",title,author,date,bibid,holding_id,location]
               end
             end
           end        
@@ -96,10 +105,10 @@ module BrowseLists
 
     def load_cn(sql_command, facet_request, conn, facet_field, table_name)
       system(%Q(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
-      system(%Q(#{sql_command} "\\copy #{table_name}(sort,label,dir,scheme,title,author,date,bibid) from '/tmp/#{facet_field}.csv' CSV;"))
-      system(%Q(#{sql_command} "\\copy (Select sort,label,dir,scheme,title,author,date,bibid from #{table_name} order by sort) To '/tmp/#{facet_field}.sorted' With CSV;"))
+      system(%Q(#{sql_command} "\\copy #{table_name}(sort,label,dir,scheme,title,author,date,bibid,holding_id,location) from '/tmp/#{facet_field}.csv' CSV;"))
+      system(%Q(#{sql_command} "\\copy (Select sort,label,dir,scheme,title,author,date,bibid,holding_id,location from #{table_name} order by sort) To '/tmp/#{facet_field}.sorted' With CSV;"))
       system(%Q(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
-      system(%Q(#{sql_command} "\\copy #{table_name}(sort,label,dir,scheme,title,author,date,bibid) from '/tmp/#{facet_field}.sorted' CSV;"))    
+      system(%Q(#{sql_command} "\\copy #{table_name}(sort,label,dir,scheme,title,author,date,bibid,holding_id,location) from '/tmp/#{facet_field}.sorted' CSV;"))    
     end
 
   end
