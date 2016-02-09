@@ -9,7 +9,7 @@
 
   <h3 class='section-heading'><%= t('blacklight.bookmarks.no_bookmarks') %></h3>
 <% else %>
-  <%= render 'sort_and_per_page' %>
+  <%= render 'sort_and_per_page_bookmarks' %>
   <%= render partial: 'tools', locals: { document_list: @document_list } %>
 
   <%= render_document_index %>
