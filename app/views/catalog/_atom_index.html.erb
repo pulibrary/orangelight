@@ -1,0 +1,19 @@
+<% index_fields(document).each do |solr_fname, field| -%>
+  <% if (should_render_index_field?(document, field)) %>
+    <% if (solr_fname == 'holdings_1display') %>
+      <% holdings_hash = JSON.parse(document[solr_fname]) %>
+      <% holdings_hash.first(2).each do |id, holding| %>
+        <% render_arrow = (!holding['library'].blank? and !holding['call_number'].blank?) %>
+        <% arrow = render_arrow ? ' &raquo; ' : '' %>
+        <% holding_info = "#{holding['library']}#{arrow}#{holding['call_number']}" %>
+        <% unless holding_info.blank? %>
+          <%= "#{holding_info}<br>".html_safe %>
+        <% end %>
+      <% end %>
+    <% elsif !document[solr_fname].is_a?(Array) %>
+      <%= document[solr_fname]%><br>
+    <% else %>
+      <%= document[solr_fname].join('<br>').html_safe %><br>
+    <% end %>
+  <% end -%>
+<% end -%>

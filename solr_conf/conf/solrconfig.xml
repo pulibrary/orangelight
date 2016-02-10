@@ -388,7 +388,8 @@
         oclc_s,
         lccn_s,
         holdings_1display,
-        electronic_access_1display
+        electronic_access_1display,
+        cataloged_tdt
       </str>
 
       <str name="facet">true</str>

@@ -156,8 +156,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'compiled_created_display', :label => 'Compiled/Created'
     config.add_show_field 'edition_display', :label => 'Εdition'
     config.add_show_field 'medium_support_display', :label => 'Medium/Support'
-    # This is now routed to the sidebar
-    #config.add_show_field 'electronic_access_1display', :label => 'Electronic access', :helper_method => :urlify
 
     config.add_show_field 'description_display', :label => 'Description'
     config.add_show_field 'arrangement_display', :label => 'Arrangement'

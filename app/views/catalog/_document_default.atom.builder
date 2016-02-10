@@ -1,9 +1,9 @@
 xml.entry do
 
-  xml.title presenter(document).render_document_index_label(document_show_link_field(document))
+  xml.title document[document_show_link_field(document)]
 
   # updated is required, for now we'll just set it to now, sorry
-  xml.updated Time.current.iso8601
+  xml.updated document['cataloged_tdt']
 
   xml.link    "rel" => "alternate", "type" => "text/html", "href" => polymorphic_url(url_for_document(document))
   # add other doc-specific formats, atom only lets us have one per
@@ -19,9 +19,7 @@ xml.entry do
 
   with_format("html") do
     xml.summary "type" => "html" do
-      xml.text! render_document_partial(document,
-      :index,
-      :document_counter => document_counter)
+      xml.text! render partial: 'atom_index', locals: { document: document }
     end
   end
 
