@@ -398,8 +398,10 @@
       <str name="facet.field">format</str>
       <str name="facet.field">language_facet</str>
       <str name="facet.field">pub_date_start_sort</str>
+      <!--
       <str name="facet.method">enum</str>
       <str name="facet.enum.cache.minDf">25000</str>
+        -->
 
       <str name="spellcheck">true</str>
       <str name="spellcheck.dictionary">default</str>
@@ -602,7 +604,8 @@
         oclc_s,
         lccn_s,
         holdings_1display,
-        electronic_access_1display
+        electronic_access_1display,
+        cataloged_tdt
       </str>
       
       <str name="facet">true</str>
@@ -611,9 +614,10 @@
       <str name="facet.field">format</str>
       <str name="facet.field">language_facet</str>
       <str name="facet.field">pub_date_start_sort</str>
+      <!--
       <str name="facet.method">enum</str>
       <str name="facet.enum.cache.minDf">25000</str>
-
+        -->
       <str name="spellcheck">true</str>
       <str name="spellcheck.dictionary">subject</str>
       <str name="spellcheck.onlyMorePopular">true</str>

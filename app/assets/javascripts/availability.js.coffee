@@ -5,7 +5,7 @@ class AvailabilityUpdater
     this.request_availability()
   availability_url: "https://bibdata.princeton.edu/availability"
   id = ''
-  available_statuses = ['Not Charged']
+  available_statuses = ['Not Charged', 'On Shelf']
   returned_statuses = ['In Transit Discharged', 'Discharged']
   in_process_statuses = ['In Process']
   checked_out_statuses = ['Charged', 'Renewed', 'Overdue', 'On Hold',
@@ -13,7 +13,7 @@ class AvailabilityUpdater
     'Remote Storage Request', 'Hold Request', 'Recall Request']
   missing_statuses = ['Missing', 'Lost--Library Applied',
     'Lost--System Applied', 'Claims Returned', 'Withdrawn']
-  available_labels = ['Available', 'Returned', 'In Process', 'Requestable']
+  available_labels = ['Available', 'Returned', 'In Process', 'Requestable', 'On Shelf']
   unavailable_labels = ['Checked Out', 'Missing']
   request_availability: ->
     if $(".documents-list").length > 0

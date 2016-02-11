@@ -9,15 +9,15 @@
 Versions:
 
 * Ruby: 2.2.3
-* Rails: 4.2.4
-* Blacklight: 5.14.0
+* Rails: 4.2.5.1
+* Blacklight: 5.18.0
 * blacklight_advanced_search: 5.1.2
 
 To install run `bundle install`
 
-postgresql configuration
+Application Configuration
 ------------------
-
+### Postgres Installation
 ```bash
 apt-get install postgresql
 su - postgres
@@ -25,7 +25,7 @@ psql -c "CREATE ROLE orangelight with createdb login password 'orange';"
 exit
 ```
 
-### database configruation
+### Database Configruation
 ```bash
 cp config/database.yml.tmpl config/database.yml
 rake db:create
@@ -34,14 +34,14 @@ rake db:migrate
 Production credentials: In production you'll need to add production 
 credentials to database.yml
 
-### Load test data
+### Load Test Data
 ```bash
 rake jetty:clean
 rake jetty:start
 rake pulsearch:index
 rake db:seed
 ```
-### Whitelist configuration
+### Whitelist Configuration
 ```bash
 cp config/ip_whitelist.yml.tmpl config/ip_whitelist.yml
 ```
@@ -54,3 +54,11 @@ cp config/requests.yml.tmpl config/requests.yml
 ```
 
 Configure various options for PUL Requests.
+
+Deploying with Capistrano
+------------------
+Default branch for deployment is `development`. You can specify a branch using the BRANCH environment variable.
+```
+BRANCH=my_branch cap staging deploy # deploys my_branch to staging
+cap staging deploy # deploys development branch to staging
+```
