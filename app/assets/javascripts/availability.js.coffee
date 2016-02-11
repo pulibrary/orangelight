@@ -13,7 +13,8 @@ class AvailabilityUpdater
     'Remote Storage Request', 'Hold Request', 'Recall Request']
   missing_statuses = ['Missing', 'Lost--Library Applied',
     'Lost--System Applied', 'Claims Returned', 'Withdrawn']
-  available_labels = ['Available', 'Returned', 'In Process', 'Requestable', 'On Shelf']
+  available_labels = ['Available', 'Returned', 'In Process', 'Requestable',
+    'On Shelf', 'All Items Available']
   unavailable_labels = ['Checked Out', 'Missing']
   request_availability: ->
     if $(".documents-list").length > 0
@@ -30,19 +31,39 @@ class AvailabilityUpdater
       this.apply_record(record_id, holding_records)
   process_single: (holding_records) =>
     for holding_id, availability_info of holding_records
-      this.apply_record_icon(id, holding_id, availability_info['status'])
+      availability_element = $("*[data-availability-record='true'][data-record-id='#{id}'][data-holding-id='#{holding_id}'] .availability-icon")
+      if availability_info['more_items']
+        this.apply_record_icon(availability_element, "All Items Available")
+        this.get_more_items(holding_id)
+      else
+        this.apply_record_icon(availability_element, availability_info['status'])
   apply_record: (record_id, holding_records) ->
     for holding_id, availability_info of holding_records
       this.record_needs_more_info(record_id) if availability_info['more_items']
-      this.apply_record_icon(record_id, holding_id, availability_info['status'])
+      availability_element = $("*[data-availability-record='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .availability-icon")
+      this.apply_record_icon(availability_element, availability_info['status'])
     true
+  get_more_items: (holding_id) ->
+    url = "#{@availability_url}?mfhd=#{holding_id}"
+    req = $.getJSON url
+    element = $("*[data-holding-id='#{holding_id}']")
+    req.success (data) ->
+      for key, item of data
+        if item['status'] != "Not Charged"
+          li = $("<div>#{item['enum']}: #{item['status']}</div>")
+          element.append(li)
+          span = $("*[data-holding-id='#{holding_id}'] .availability-icon")
+          span.text('Some Items Checked Out')
+          span.prop('title', 'Some Items Checked Out')
+          span.attr('data-original-title', 'Availability: Multivolume')
+          span.removeClass("label-success")
+          span.addClass("label-default")
   record_needs_more_info: (record_id) ->
     element = $("*[data-record-id='#{record_id}'] .more-info")
     element.addClass("label label-default")
     element.text("View Record for Full Availability")
     element.prop('title', "Click on the record for full availability info")
-  apply_record_icon: (record_id, holding_id, status) ->
-    availability_element = $("*[data-availability-record='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .availability-icon")
+  apply_record_icon: (availability_element, status) ->
     availability_element.addClass("label")
     label = switch
       when status in available_statuses then 'Available'
