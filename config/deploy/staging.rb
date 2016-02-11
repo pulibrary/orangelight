@@ -17,7 +17,7 @@ set :rvm_ruby_string, :local        # use the same ruby as used locally for depl
 set :stage, :production
 set :rails_env, 'production'
 
-set :branch, 'development'
+set :branch, ENV['BRANCH'] || 'development'
 
 # Extended Server Syntax
 # ======================
