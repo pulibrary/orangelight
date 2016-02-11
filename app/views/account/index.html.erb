@@ -1,15 +1,13 @@
 <div class="col-md-12">
-  <h1 class="page-heading">My Library Account</h1>
+  <h1 class="page-heading">Your Library Account</h1>
 
   <% if(@patron) %>
-    <%= render 'patron_info' %>
     <%= render 'blocks' %>
+    <%= render 'patron_info' %>
     <%= render 'demerits' %>
-    <%= render 'fines_fees' %>
     <%= render 'charged_items' %>
     <%= render 'request' %>
     <%= render 'available_items' %>
-  <% else %>
-    <p>Your Account Information is not Available</p>
+    <%= render 'fines_fees' %>
   <% end %> 
 </div>

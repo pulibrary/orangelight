@@ -126,7 +126,7 @@ class VoyagerPatronClient
   end
 
   def renew_xml_string items
-    string = %Q(<?xml version="1.0" encoding="UTF-8"?>
+    %Q(<?xml version="1.0" encoding="UTF-8"?>
 <ser:serviceParameters xmlns:ser="http://www.endinfosys.com/Voyager/serviceParameters">
    <ser:parameters/>
    <ser:patronIdentifier lastName="#{@last_name}" patronHomeUbId="#{@ub_id}" patronId="#{@patron_id}">

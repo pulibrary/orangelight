@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'browse/subjects', model: Orangelight::Subject, to: 'browsables#index'
     get 'browse/subjects/:id', model: Orangelight::Subject, as: 'browse_subject', to: 'browsables#show'
   end
+  mount Requests::Engine, at: '/requests'
 
   Blacklight::Marc.add_routes(self)
   root :to => "catalog#index"

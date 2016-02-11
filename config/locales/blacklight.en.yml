@@ -4,6 +4,8 @@ en:
     welcome: 'Welcome!'
     voyager: 'Main Catalog'
     umlaut: 'Findit @ Princeton'
+    account:
+      inaccessible: 'Your Library Account is not available'
     holdings:
       online: 'Online'
       print: 'Copies In Library'
@@ -12,7 +14,7 @@ en:
       missing: 'There are no holdings available for this record. Please consult a library staff member at the nearest Circulation Desk.'
 
     header_links:
-      login: 'My Account'
+      login: 'Your Account'
       search_history: 'Search History'
     email:
       text:

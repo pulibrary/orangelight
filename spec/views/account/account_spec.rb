@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "My Account", :type => :feature do
+describe "Your Account", :type => :feature do
   
   context "User has not signed in" do
 
@@ -10,6 +10,8 @@ describe "My Account", :type => :feature do
     end
     
   end
+
+  context "Princeton Community user has signed in but library account information fails"
 
   context "Princeton Community User has signed in" do
 

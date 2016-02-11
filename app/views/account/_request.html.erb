@@ -1,4 +1,4 @@
-<h2 class="section-heading">Request Information</h2>
+<h2 class="section-heading">Items Available for Pickup</h2>
 <% if (!@account.request_items.nil?) %>
   <%= form_tag('/accounts/cancel', remote: true, id: "request-cancel") do %>
     <div class="table-responsive account--requests">

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationHelper do
+RSpec.describe AccountController do
 
   let(:valid_patron_response) { File.open(fixture_path + '/bibdata_patron_response.json') }
   

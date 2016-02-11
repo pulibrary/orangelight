@@ -68,6 +68,9 @@ gem 'coveralls', require: false
 
 gem 'newrelic_rpm'
 
+#gem 'requests', :path => "/Users/kevinreiss/Projects/blacklight/requests/"
+gem 'requests', :git => "https://github.com/pulibrary/requests.git", :branch => 'request_test_specs'
+
 group :development do
   gem 'capistrano-rails', '~> 1.1.1'
   gem 'quiet_assets'
