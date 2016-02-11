@@ -112,10 +112,10 @@ module ApplicationHelper
       cn = "#{holding['call_number']} #{cn_browse_link}"
       info << content_tag(:span, cn.html_safe, class: 'holding-call-number')
     end
-    info << content_tag(:div, holding['shelving_title'], class: 'shelving-title') unless holding['shelving_title'].nil?
-    info << content_tag(:div, holding['location_note'], class: 'location-note') unless holding['location_note'].nil?
-    info << content_tag(:div, holding['location_has'], class: 'location-has') unless holding['location_has'].nil?
-    info << content_tag(:div, holding['location_has_current'], class: 'location-has-current') unless holding['location_has_current'].nil?
+    info << content_tag(:div, "Shelving title: #{holding['shelving_title'].join(', ')}", class: 'shelving-title') unless holding['shelving_title'].nil?
+    info << content_tag(:div, "Location note: #{holding['location_note'].join(', ')}", class: 'location-note') unless holding['location_note'].nil?
+    info << content_tag(:div, "Location has: #{holding['location_has'].join(', ')}", class: 'location-has') unless holding['location_has'].nil?
+    info << content_tag(:div, "Location has current: #{holding['location_has_current'].join(', ')}", class: 'location-has-current') unless holding['location_has_current'].nil?
     info << request_placeholder(bib_id, holding_id).html_safe
     info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
     info
