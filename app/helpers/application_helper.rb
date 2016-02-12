@@ -104,7 +104,6 @@ module ApplicationHelper
       location << locate_link_with_gylph(holding['location_code'], bib_id, holding['library'])
       info << content_tag(:h3, location.html_safe, class: 'library-location')
     end
-    info << content_tag(:div, content_tag(:span, '', class: 'availability-icon').html_safe, data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id })
     unless holding['call_number'].blank?
       cn_browse_link = link_to('[Browse]', "/browse/call_numbers?q=#{holding['call_number_browse']}", class: 'browse-cn',
                           'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{holding['call_number_browse']}",
@@ -112,13 +111,18 @@ module ApplicationHelper
       cn = "#{holding['call_number']} #{cn_browse_link}"
       info << content_tag(:span, cn.html_safe, class: 'holding-call-number')
     end
-    info << content_tag(:div, "Shelving title: #{holding['shelving_title'].join(', ')}", class: 'shelving-title') unless holding['shelving_title'].nil?
-    info << content_tag(:div, "Location note: #{holding['location_note'].join(', ')}", class: 'location-note') unless holding['location_note'].nil?
-    info << content_tag(:div, "Location has: #{holding['location_has'].join(', ')}", class: 'location-has') unless holding['location_has'].nil?
-    info << content_tag(:div, "Location has current: #{holding['location_has_current'].join(', ')}", class: 'location-has-current') unless holding['location_has_current'].nil?
+    info << content_tag(:div, content_tag(:span, '', class: 'availability-icon').html_safe, data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id })
+    info << content_tag(:div, "#{holding_label('Shelving title:')} #{holding['shelving_title'].join(', ')}".html_safe, class: 'shelving-title') unless holding['shelving_title'].nil?
+    info << content_tag(:div, "#{holding_label('Location note:')} #{holding['location_note'].join(', ')}".html_safe, class: 'location-note') unless holding['location_note'].nil?
+    info << content_tag(:div, "#{holding_label('Location has:')} #{holding['location_has'].join(', ')}".html_safe, class: 'location-has') unless holding['location_has'].nil?
+    info << content_tag(:div, "#{holding_label('Location has current:')} #{holding['location_has_current'].join(', ')}".html_safe, class: 'location-has-current') unless holding['location_has_current'].nil?
     info << request_placeholder(bib_id, holding_id).html_safe
     info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
     info
+  end
+
+  def holding_label(label)
+    content_tag(:span, label, class: 'holding-label')
   end
 
   def request_placeholder(doc_id, holding_id)
