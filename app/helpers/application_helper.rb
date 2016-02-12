@@ -129,11 +129,10 @@ module ApplicationHelper
     "<div class=\"location-services\"><a target=\"_blank\" class=\"request btn btn-xs btn-primary\" title=\"Requesting is not currently functional\" data-toggle=\"tooltip\" href=\"/request\">Request</a></div>"
   end
 
-
-  def holding_block_search args
+  def holding_block_search document
     block = ''
-    links = search_links(args[:document]['electronic_access_1display'])
-    holdings_hash = JSON.parse(args[:document][args[:field]])
+    links = search_links(document['electronic_access_1display'])
+    holdings_hash = JSON.parse(document['holdings_1display'] || '{}')
     holdings_hash.first(2).each do |id, holding|
       check_availability = true
       render_arrow = (!holding['library'].blank? and !holding['call_number'].blank?)
@@ -147,27 +146,31 @@ module ApplicationHelper
                               title: 'Availability: Online', 'data-toggle' => 'tooltip')
           info << 'Online access is not currently available.'
         else
-          info << link_to('Online', catalog_path(args[:document]['id']), class: 'availability-icon label label-primary',
+          info << link_to('Online', catalog_path(document['id']), class: 'availability-icon label label-primary',
                           title: 'Electronic Access')
           info << links.shift.html_safe
         end
       else
-        info << link_to('', catalog_path(args[:document]['id']), class: 'availability-icon').html_safe
+        info << link_to('', catalog_path(document['id']), class: 'availability-icon').html_safe
         info << "#{holding['library']}#{arrow}#{holding['call_number']}".html_safe
-        info << locate_link_with_gylph(holding['location_code'], args[:document]['id'], holding['library']).html_safe
+        info << locate_link_with_gylph(holding['location_code'], document['id'], holding['library']).html_safe
       end
-      block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: args[:document]['id'], holding_id: id })
+      block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id })
     end
     if holdings_hash.length > 2
-      block << content_tag(:li, link_to('View Record for Full Availability', catalog_path(args[:document]['id']),
+      block << content_tag(:li, link_to('View Record for Full Availability', catalog_path(document['id']),
                            class: 'availability-icon label label-default', title: 'Click on the record for full availability info',
                            'data-toggle' => 'tooltip').html_safe)
-    else
-      block << content_tag(:li, link_to(' ', catalog_path(args[:document]['id']),
+    elsif holdings_hash.length != 0
+      block << content_tag(:li, link_to(' ', catalog_path(document['id']),
                            class: 'availability-icon more-info', title: 'Click on the record for full availability info',
-                           'data-toggle' => 'tooltip').html_safe, data: { record_id: args[:document]['id'] })
+                           'data-toggle' => 'tooltip').html_safe, data: { record_id: document['id'] })
     end
-    content_tag(:ul, block.html_safe) unless block.empty?
+    if block.empty?
+      content_tag(:div, t('blacklight.holdings.search_missing'))
+    else
+      content_tag(:ul, block.html_safe)
+    end
   end
 
   SEPARATOR = '—'

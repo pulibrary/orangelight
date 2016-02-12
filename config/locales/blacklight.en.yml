@@ -3,11 +3,12 @@ en:
     application_name: 'Catalog | Princeton University Library'
     welcome: 'Welcome!'
     voyager: 'Main Catalog'
-    umlaut: "Findit @ Princeton"
+    umlaut: 'Findit @ Princeton'
     holdings:
-      online: "Online"
-      print: "Copies In Library"
-      stackmap: "Where to Find It"
+      online: 'Online'
+      print: 'Copies In Library'
+      stackmap: 'Where to Find It'
+      search_missing: 'No holdings available for this record'
       missing: 'There are no holdings available for this record. Consult a library staff member at the nearest Circulation Desk.'
 
     header_links:
