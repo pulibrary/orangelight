@@ -132,7 +132,6 @@ class CatalogController < ApplicationController
     config.add_index_field 'author_display', :label => 'Author', :helper_method => :browse_name
     config.add_index_field 'pub_created_display', :label => 'Published/Created'
     config.add_index_field 'format', :label => 'Format', helper_method: :format_icon
-    config.add_index_field 'holdings_1display', :label => 'Holding info', helper_method: :holding_block_search
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display

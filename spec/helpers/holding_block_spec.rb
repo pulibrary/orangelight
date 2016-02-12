@@ -6,7 +6,8 @@ RSpec.describe ApplicationHelper do
     let(:library) { 'Rare Books and Special Collections' }
     let(:location) { 'Rare Books and Special Collections - Reference Collection in Dulles Reading Room' }
     let(:call_number) { 'PS3539.A74Z93 2000' }
-    let(:search_result) { helper.holding_block_search(field_config) }
+    let(:search_result) { helper.holding_block_search(document) }
+    let(:empty_search_result) { helper.holding_block_search(document_no_holdings) }
     let(:show_result) { helper.holding_request_block(document) }
     let(:holding_block_json) do
       {
@@ -50,6 +51,12 @@ RSpec.describe ApplicationHelper do
       }.with_indifferent_access
     end
 
+    let(:document_no_holdings) do
+      {
+          id: '2'
+      }.with_indifferent_access
+    end
+
     let(:field_config) do
       {
         field: :holdings_1display,
@@ -83,6 +90,9 @@ RSpec.describe ApplicationHelper do
       end
       it "link missing label appears when 856s is missing from elf location" do
         expect(search_result).to include "Link Missing"
+      end
+      it "indicates when there are no holdings for a record" do
+        expect(empty_search_result).to include t('blacklight.holdings.search_missing')
       end
     end
     context "#holding_block record show - physical holdings" do
