@@ -1,0 +1,92 @@
+@import "variables/breaks";
+@import "variables/colors";
+@import "variables/typography";
+
+.button--start-over {
+  // width: 100%;
+  display: inline-block;
+  margin: 0px 0px 0px -3px;
+  padding: 0;
+
+  a {
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+.actions .btn-xs {
+  width: 50px;
+  text-transform: capitalize;
+}
+
+.search-widgets .clear-bookmarks {
+  display: none;
+}
+
+.search-widgets select,
+.navbar-nav > li > a,
+.navbar-nav > li.dropdown > button,
+.button--start-over a,
+.pagination-search-widgets .btn-default,
+.search-widgets button {
+  padding: 6px 12px;
+  margin: 3px;
+  background: $light-gray;
+  border: 1px solid $gray;
+  color: $black;
+
+  &:hover {
+    background: $blue;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+@media (max-width: $bp-small) {
+  .search-widgets li {
+    width: 100%;
+
+    button, .toggle_bookmark {
+      width: 100%;
+    }
+  }
+}
+
+.search-submit-buttons {
+  margin-top: 2em;
+  margin-bottom: 2.2em;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background: $blue;
+  color: $white;
+}
+
+header .navbar-nav > li > a {
+  border: none;
+  border-radius: 3px;
+}
+
+.prev_next_links.btn-group > .dropdown-toggle:not(:first-child) {
+  border-radius: 4px;
+  margin-left: 1em;
+}
+
+.prev_next_links.btn-group > .btn {
+  float: none;
+}
+
+#sort-dropdown .dropdown-toggle,
+#per_page-dropdown .dropdown-toggle {
+  color: $black;
+
+  &:hover,
+  &:active {
+    color: $white;
+    background: $blue;
+
+    .caret {
+      color: $white;
+    }
+  }
+}

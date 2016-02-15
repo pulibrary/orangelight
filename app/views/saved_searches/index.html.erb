@@ -15,7 +15,7 @@
 
   <h2 class='section-heading'><%= t('blacklight.saved_searches.list_title') %></h2>
 
-  <table class="table table-striped">
+  <table class="table-striped">
   <%- @searches.each do |search| -%>
     <tr>
       <td><%= link_to_previous_search(search.query_params) %></td>

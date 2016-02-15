@@ -1,6 +1,29 @@
 @import "variables/breaks";
 @import "variables/colors";
 @import "variables/typography";
+
+.logo__pul {
+  height: 40px;
+  display: inline-block;
+
+  img {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+
+.svg .logo-svg {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.svg .logo-no-svg {
+  display: none;
+}
+
 .l-branding__pul {
     background: $dark-gray;
     border-top: 3px solid $orange;

@@ -1,0 +1,16 @@
+@import "variables/breaks";
+@import "variables/colors";
+@import "abstractions/mixins";
+
+.subject-heirarchy {
+  text-decoration: underline;
+  color: darken($orange, 10%);
+}
+
+.search-subject:hover {
+  color: darken($orange, 10%);
+}
+
+.search-subject:active {
+  text-decoration: none;
+}

@@ -1,0 +1,137 @@
+@import "variables/breaks";
+@import "variables/colors";
+@import "variables/typography";
+
+// search.scss
+header .navbar-form .input-group .input-group-addon {
+  width: 190px;
+}
+
+@media (max-width: 530px) {
+  header .navbar-form .input-group .input-group-addon {
+    width: 15px;
+
+    select {
+      font-size: 12px;
+    }
+  }
+}
+
+header .navbar-form .input-group .input-group-btn {
+  width: 40px;
+}
+
+header .input-group-addon {
+  border: none;
+  padding: 0;
+  background: none;
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    background: $white;
+    padding: 7px 20px 7px 20px;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid $gray;
+    outline: none;
+    font-size: 14px;
+    height: 34px;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    height: 42px;
+  }
+
+  .caret {
+    position: relative;
+    z-index: 3;
+    left: -30px;
+  }
+}
+
+.search-widgets select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 6px 12px;
+  width: 136px;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  display: inline-block;
+}
+
+// .search-widgets .folders {
+//     font-size: 0.85em;
+//     margin-top: 2px;
+// }
+
+.search-widgets .field .caret {
+  position: relative;
+  left: -30px;
+}
+
+.search-widgets .field:hover .caret {
+  color: $white;
+}
+
+.btn .caret, .facets-toggle .caret {
+  margin-left: 2px;
+}
+
+.search_q.form-control,
+.search-btn {
+  height: 42px;
+}
+
+@media (min-width: $bp-medium) {
+  .navbar-form .input-group > .search_q.form-control {
+    width: 250px;
+  }
+}
+
+@media (min-width: $bp-large) {
+  .navbar-form .input-group > .search_q.form-control {
+    width: 375px;
+  }
+}
+
+.search-query-form,
+#search-navbar .search-query-form {
+  margin: 0;
+
+  // padding: 0;
+}
+
+#search-navbar .search-query-form {
+  width: auto;
+}
+
+.search-query-form .input-group {
+  float: left;
+}
+
+.search-options {
+  clear: both;
+  display: block;
+  float: none;
+
+  li {
+    display: inline-block;
+    padding-right: 1em;
+  }
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.ie9 select + .caret {
+  display: none;
+}

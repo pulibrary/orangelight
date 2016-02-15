@@ -31,6 +31,7 @@
 
 @import 'icons/icons';
 
+@import 'components/overrides';
 @import 'components/facets';
 @import 'components/font-face';
 @import 'components/footer';
@@ -42,6 +43,13 @@
 @import 'components/record--sidebar';
 @import 'components/release-notes';
 @import 'components/bookmark-all';
+@import 'components/tables';
+@import 'components/browse';
+@import 'components/pagination';
+@import 'components/search';
+@import 'components/search-options';
+@import 'components/search-results';
+@import 'components/buttons';
 
 @import 'shame';
 @import 'print';

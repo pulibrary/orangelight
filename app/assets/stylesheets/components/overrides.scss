@@ -1,0 +1,161 @@
+@import "variables/breaks";
+@import "variables/colors";
+@import "variables/typography";
+
+body {
+  background: $light-gray;
+  font-family: $font-sans;
+}
+
+main {
+  background: $white;
+  padding: 1em 0 1.5em;
+}
+
+.input-group {
+  width: 100%;
+}
+
+.input-group-addon,
+.input-group-btn {
+  width: auto;
+}
+
+.dropdown-account {
+  .dropdown {
+    float: right;
+  }
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.navbar + .navbar {
+  margin-top: 0;
+}
+
+.navbar-inverse,
+.navbar-default {
+  background-color: $light-gray;
+  border-bottom: 1px solid $gray;
+}
+
+.constraints-container {
+  background: none;
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  margin-bottom: 0.35em;
+  padding: 2px 15px;
+}
+
+.orange {
+  display: inline;
+  color: $orange;
+}
+
+.rtl {
+  direction: rtl;
+  float: right;
+  font-family: verdana, arial;
+}
+
+h3.rtl {
+  color: $orange;
+  text-align: right;
+}
+
+dd.rtl {
+  color: $orange;
+  text-align: right;
+}
+
+rtl {
+  display: inline;
+  float: right;
+}
+
+// .dl-horizontal dt {
+//     overflow: visible;
+//     width: 180px;
+//     margin-right: 10px;
+// }
+
+.dl-horizontal dd {
+  width: auto;
+}
+
+.alert {
+  margin: 10px 0px;
+}
+
+.dl-nested dd {
+  margin-left: 50px;
+  clear: left;
+}
+
+.dl-nested dt {
+  clear: left;
+  text-align: left;
+}
+
+address {
+  margin-bottom: 0;
+}
+
+@media (min-width: $bp-small) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media (min-width: $bp-medium) {
+  .container {
+    width: 950px;
+  }
+}
+
+@media (min-width: $bp-large) {
+  .container {
+    width: 1200px;
+  }
+}
+
+.dropdown-menu {
+  left: auto;
+  right: 3px;
+  min-width: 114px;
+}
+
+.caret {
+  z-index: auto;
+}
+
+.btn-group.open .dropdown-toggle {
+  box-shadow: none;
+}
+
+.dropdown-account .dropdown-menu {
+  right: 0;
+  left: auto;
+  margin-top: 8px;
+}
+
+.tooltip > .tooltip-inner {
+  max-width: 600px !important;
+}
+
+[dir="rtl"] {
+  font-family: verdana, arial;
+}
+
+li[dir="rtl"] {
+  text-align: right;
+}
+
+.search_history .constraint {
+  display: block;
+  text-indent: 0;
+  padding-left: 0;
+}

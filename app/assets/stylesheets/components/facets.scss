@@ -104,7 +104,7 @@ ul.facet-values {
     line-height: 1.4em;
 }
 
-@media max-width bp-small {
+@media (max-width: $bp-small) {
     #facets .top-panel-heading {
         padding-left: 1em;
         padding-top: .5em;
