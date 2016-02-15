@@ -46,3 +46,17 @@ h4 {
 small, .font-small {
     font-size: 0.833em;
 }
+
+.page-heading {
+  display: inline-block;
+  margin-bottom: 1.4em;
+  padding-top: 5px;
+}
+
+.page-heading.my-account {
+  margin-top: 5px;
+}
+
+.welcome-message h2 {
+  margin-top: 0;
+}

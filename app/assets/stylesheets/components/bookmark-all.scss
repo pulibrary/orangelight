@@ -1,3 +1,73 @@
+@import 'variables/breaks';
+@import 'variables/colors';
+@import 'variables/typography';
+
 .bookmark_all {
   display: inline-block;
+}
+
+.bookmarksTools.nav #emailLink,
+.bookmarksTools.nav #citationLink,
+.bookmarksTools.nav > li > a {
+  background-image: none;
+  background: #f5f4f1;
+  border-radius: 4px;
+  border: 1px solid #e8e6df;
+  color: #333;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  margin-bottom: 0;
+  margin: 3px;
+  padding: 6px 12px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:hover {
+    color: #ffffff;
+    background: #337ab7;
+    text-decoration: none;
+  }
+}
+
+.checkbox.toggle_bookmark {
+  text-align: center;
+  margin-bottom: 5px;
+
+  label {
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: $bp-small) {
+  .search-widgets .checkbox.toggle_bookmark {
+    padding: 0;
+  }
+}
+
+.checkbox.toggle_bookmark {
+  padding: 0px 12px 0px 0px;
+}
+
+li .toggle_bookmark input[type=checkbox] {
+  display: none;
+}
+
+li label.toggle_bookmark {
+  padding: 6px 12px;
+  margin: 3px;
+  background: #f5f4f1;
+  border: 1px solid #e8e6df;
+  color: black;
+  line-height: 20px;
+  border-radius: 4px;
+  text-align: center;
 }

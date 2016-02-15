@@ -1,0 +1,99 @@
+@import "variables/breaks";
+@import "variables/colors";
+@import "abstractions/mixins";
+
+table {
+  width: 100%;
+}
+
+.browse thead {
+  th {
+    padding: 10px 15px;
+
+    &:nth-child(4),
+    &:nth-child(2) {
+      min-width: 150px;
+    }
+  }
+}
+
+td {
+  padding: 10px 15px;
+  vertical-align: top;
+
+  &.actions {
+    width: 100px;
+  }
+}
+
+@media (max-width: $bp-medium) {
+  /* Force table to not be like tables anymore */
+  .browse--call-number {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+
+    thead tr {
+      @include visually-hidden;
+    }
+
+    tr {
+      border-bottom: 1px solid $gray;
+      padding: 0.5em;
+    }
+
+    // for call number browse only
+
+    td {
+      /* Behave  like a "row" */
+      border: none;
+      position: relative;
+      padding-left: 1em;
+      padding-top: 2em;
+      margin-bottom: 0.5em;
+
+      &.rtl {
+        float: none;
+      }
+    }
+
+    td:before {
+      /* Now like a table header */
+      position: absolute;
+
+      /* Top/left values mimic padding */
+      top: 6px;
+
+      // left: 6px;
+      width: 45%;
+      white-space: nowrap;
+      font-weight: 700;
+    }
+
+    td:nth-of-type(1):before {
+      content: "Call Number";
+    }
+
+    td:nth-of-type(2):before {
+      content: "Location";
+    }
+
+    td:nth-of-type(3):before {
+      content: "Title";
+    }
+
+    td:empty {
+      display: none;
+    }
+
+    td:nth-of-type(4):before {
+      content: "Creator";
+    }
+
+    td:nth-of-type(5):before {
+      content: "Publication Info";
+    }
+  }
+}

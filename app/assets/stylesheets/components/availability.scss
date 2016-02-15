@@ -1,5 +1,9 @@
+@import "variables/breaks";
+@import "variables/colors";
+@import "variables/typography";
+
 .location--panel .panel {
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+  // box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
   background: white;
   margin: 0 0 1.5em;
   border-radius: 0;
@@ -84,4 +88,24 @@
 
 .record-availability {
   padding-left: 5px;
+}
+
+.top-panel-heading.panel-heading {
+  padding-left: 0;
+}
+
+.panel-group .panel {
+  border-radius: 0;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+  -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+  -o-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+}
+
+.panel-default > .panel-heading {
+  background: $light-gray;
+}
+
+.panel-title > a {
+  font-size: 0.9em;
 }

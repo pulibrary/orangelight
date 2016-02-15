@@ -1,0 +1,25 @@
+@import "variables/breaks";
+@import "variables/colors";
+@import "variables/typography";
+
+.browse {
+  li:nth-child(odd) {
+    background-color: $light-gray;
+  }
+}
+
+.browse-row {
+  padding: 2px 15px;
+
+  .availability-icon {
+    font-size: 0.7em;
+  }
+}
+
+.browse-header .prev_next_links {
+  margin-bottom: 1em;
+}
+
+.row-odd + .alert {
+  margin-top: 0;
+}
