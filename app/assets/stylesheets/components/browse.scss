@@ -2,12 +2,6 @@
 @import "variables/colors";
 @import "variables/typography";
 
-.browse {
-  li:nth-child(odd) {
-    background-color: $light-gray;
-  }
-}
-
 .browse-row {
   padding: 2px 15px;
 
@@ -20,6 +14,20 @@
   margin-bottom: 1em;
 }
 
+.row-odd {
+  background: $light-gray;
+}
+
+.row-even + .alert,
 .row-odd + .alert {
-  margin-top: 0;
+  margin: 0;
+  padding: 10px 15px;
+}
+
+.browse li {
+    padding: 0.5em;
+}
+
+.browse .alert {
+  border-radius: 0;
 }
