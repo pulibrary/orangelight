@@ -69,12 +69,13 @@ module ApplicationHelper
     links = urlify(document['electronic_access_1display'] || '{}')
     physical_holdings = ''
     online_holdings = ''
+    is_journal = document['format'].include?('Journal')
     online_holdings << links
     holdings.each do |id, holding|
       if holding['location_code'].start_with?('elf')
         online_holdings << process_online_holding(holding, doc_id, id, links.empty?)
       elsif !holding['location_code'].blank?
-        physical_holdings << process_physical_holding(holding, doc_id, id)
+        physical_holdings << process_physical_holding(holding, doc_id, id, is_journal)
       end
     end
     online = content_tag(:div, online_holdings.html_safe) unless online_holdings.empty?
@@ -88,7 +89,7 @@ module ApplicationHelper
     if link_missing
       info << content_tag(:span, 'Link Missing', class: 'availability-icon label label-default',
                           title: 'Availability: Online', 'data-toggle' => 'tooltip')
-      info = content_tag(:div, info.html_safe, class: 'holding-block',  data: { availability_record: true, record_id: bib_id, holding_id: holding_id })
+      info = content_tag(:div, info.html_safe, class: 'holding-block', data: { availability_record: true, record_id: bib_id, holding_id: holding_id })
     end
     info
   end
@@ -97,7 +98,7 @@ module ApplicationHelper
   content_tag(:div, t('blacklight.holdings.missing'), class: 'holding-block')
   end
 
-  def process_physical_holding(holding, bib_id, holding_id)
+  def process_physical_holding(holding, bib_id, holding_id, is_journal)
     info = ''
     unless holding['location'].blank?
       location = "#{holding['location']}"
@@ -115,7 +116,7 @@ module ApplicationHelper
     info << content_tag(:div, "#{holding_label('Shelving title:')} #{holding['shelving_title'].join(', ')}".html_safe, class: 'shelving-title') unless holding['shelving_title'].nil?
     info << content_tag(:div, "#{holding_label('Location note:')} #{holding['location_note'].join(', ')}".html_safe, class: 'location-note') unless holding['location_note'].nil?
     info << content_tag(:div, "#{holding_label('Location has:')} #{holding['location_has'].join(', ')}".html_safe, class: 'location-has') unless holding['location_has'].nil?
-    info << content_tag(:div, "#{holding_label('Location has current:')} #{holding['location_has_current'].join(', ')}".html_safe, class: 'location-has-current') unless holding['location_has_current'].nil?
+    info << content_tag(:div, '', class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
     info << request_placeholder(bib_id, holding_id).html_safe
     info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
     info

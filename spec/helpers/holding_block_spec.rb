@@ -9,6 +9,7 @@ RSpec.describe ApplicationHelper do
     let(:search_result) { helper.holding_block_search(document) }
     let(:empty_search_result) { helper.holding_block_search(document_no_holdings) }
     let(:show_result) { helper.holding_request_block(document) }
+    let(:show_result_journal) { helper.holding_request_block(document_journal) }
     let(:holding_block_json) do
       {
         holding_id => {
@@ -47,6 +48,7 @@ RSpec.describe ApplicationHelper do
     let(:document) do
       {
           id: '1',
+          format: ['Book'],
           holdings_1display: holding_block_json
       }.with_indifferent_access
     end
@@ -54,6 +56,15 @@ RSpec.describe ApplicationHelper do
     let(:document_no_holdings) do
       {
           id: '2'
+      }.with_indifferent_access
+    end
+
+
+    let(:document_journal) do
+      {
+          id: '3',
+          format: ['Journal'],
+          holdings_1display: holding_block_json
       }.with_indifferent_access
     end
 
@@ -108,6 +119,12 @@ RSpec.describe ApplicationHelper do
       end
       it "tags the holding record id" do
         expect(show_result.last).to have_selector "*[data-holding-id='#{holding_id}']"
+      end
+      it "includes a div to place current issues when journal format" do
+        expect(show_result_journal.last).to have_selector "*[data-journal]"
+      end
+      it "excludes a div to place current issues when not journal format" do
+        expect(show_result.last).not_to have_selector "*[data-journal]"
       end
     end
     context "#holding_block record show - online holdings" do

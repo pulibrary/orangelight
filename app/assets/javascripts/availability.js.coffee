@@ -32,6 +32,7 @@ class AvailabilityUpdater
   process_single: (holding_records) =>
     for holding_id, availability_info of holding_records
       availability_element = $("*[data-availability-record='true'][data-record-id='#{id}'][data-holding-id='#{holding_id}'] .availability-icon")
+      this.get_issues(holding_id) if $(".journal-current-issues").length > 0
       if availability_info['more_items']
         this.apply_record_icon(availability_element, "All Items Available")
         this.get_more_items(holding_id)
@@ -58,6 +59,14 @@ class AvailabilityUpdater
           span.attr('data-original-title', 'Availability: Multivolume')
           span.removeClass("label-success")
           span.addClass("label-default")
+  get_issues: (holding_id) ->
+    url = "#{@availability_url}?mfhd_serial=#{holding_id}"
+    req = $.getJSON url
+    element = $("*[data-journal='true'][data-holding-id='#{holding_id}']")
+    req.success (data) ->
+      for key, issue of data
+        li = $("<div>#{issue}</div>")
+        element.append(li)
   record_needs_more_info: (record_id) ->
     element = $("*[data-record-id='#{record_id}'] .more-info")
     element.addClass("label label-default")
