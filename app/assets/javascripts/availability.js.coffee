@@ -49,23 +49,27 @@ class AvailabilityUpdater
     req = $.getJSON url
     element = $("*[data-availability-record='true'][data-holding-id='#{holding_id}']")
     req.success (data) ->
+      ul = "<ul class=\"item-status\">"
       for key, item of data
         if item['status'] != "Not Charged"
-          li = $("<div>#{item['enum']}: #{item['status']}</div>")
-          element.append(li)
+          li = "<li>#{item['enum']}: #{item['status']}</li>"
+          ul = ul + li
           span = $("*[data-holding-id='#{holding_id}'] .availability-icon")
-          span.text('Some Items Checked Out')
-          span.prop('title', 'Some Items Checked Out')
+          span.text('Some Items Not Available')
+          span.prop('title', 'Some Items Not Available')
           span.attr('data-original-title', 'Availability: Multivolume')
           span.removeClass("label-success")
           span.addClass("label-default")
+      ul = ul + "</ul>"
+      element.append(ul)
   get_issues: (holding_id) ->
     url = "#{@availability_url}?mfhd_serial=#{holding_id}"
     req = $.getJSON url
     element = $("*[data-journal='true'][data-holding-id='#{holding_id}']")
     req.success (data) ->
+      element.prepend("<div class=\"holding-label\">Current Issues: <span class=\"pull-right trigger\">More</span></div>") if data != ''
       for key, issue of data
-        li = $("<div>#{issue}</div>")
+        li = $("<li>#{issue}</li>")
         element.append(li)
   record_needs_more_info: (record_id) ->
     element = $("*[data-record-id='#{record_id}'] .more-info")

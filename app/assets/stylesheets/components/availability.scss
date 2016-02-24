@@ -30,16 +30,20 @@
     &.label-default {
       color: #777;
     }
+
     &.label-warning {
       color: darken(#f0ad4e, 20%);
     }
+
     &.label-danger {
       color: darken(#d9534f, 20%);
     }
+
     &.label-success {
       color: darken(#5cb85c, 20%);
     }
   }
+
   .btn {
     margin-top: .4em;
   }
@@ -62,23 +66,28 @@
 }
 
 .location--online .panel .panel-body {
-    display: block;
-    padding: 1em;
-    a {
-      display: inline-block;
-    }
-    ul {
-      margin-bottom: 0px;
-    }
-    .electronic-access {
-      margin: .25em 0;
-    }
-    .umlaut-section a {
-      padding: 0;
-    }
-    .umlaut-section li {
-      margin-bottom: 1.5em;
-    }
+  display: block;
+  padding: 1em;
+
+  a {
+    display: inline-block;
+  }
+
+  ul {
+    margin-bottom: 0px;
+  }
+
+  .electronic-access {
+    margin: .25em 0;
+  }
+
+  .umlaut-section a {
+    padding: 0;
+  }
+
+  .umlaut-section li {
+    margin-bottom: 1.5em;
+  }
 }
 
 .availability-icon.label:hover {
@@ -108,4 +117,37 @@
 
 .panel-title > a {
   font-size: 0.9em;
+}
+
+.holding-block {
+  .status,
+  .location-has,
+  .journal-current-issues {
+    margin-bottom: 1em;
+  }
+
+  li {
+    margin-left: 1em;
+   }
+
+  .holding-label {
+    color: $blacklight-gray;
+  }
+
+  .journal-current-issues .trigger {
+    cursor: pointer;
+    color: $blue;
+    &:hover {
+      color: $dark-orange;
+      text-decoration: underline;
+    }
+  }
+
+  .journal-current-issues li:nth-child(n+3) {
+    display: none;
+
+    &.all-issues {
+      display: inline-block;
+    }
+  }
 }

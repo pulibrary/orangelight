@@ -110,20 +110,27 @@ module ApplicationHelper
                           'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{holding['call_number_browse']}",
                           title: "Browse: #{holding['call_number_browse']}")
       cn = "#{holding['call_number']} #{cn_browse_link}"
-      info << content_tag(:span, cn.html_safe, class: 'holding-call-number')
+      info << content_tag(:div, cn.html_safe, class: 'holding-call-number')
     end
-    info << content_tag(:div, content_tag(:span, '', class: 'availability-icon').html_safe, data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id })
-    info << content_tag(:div, "#{holding_label('Shelving title:')} #{holding['shelving_title'].join(', ')}".html_safe, class: 'shelving-title') unless holding['shelving_title'].nil?
-    info << content_tag(:div, "#{holding_label('Location note:')} #{holding['location_note'].join(', ')}".html_safe, class: 'location-note') unless holding['location_note'].nil?
-    info << content_tag(:div, "#{holding_label('Location has:')} #{holding['location_has'].join(', ')}".html_safe, class: 'location-has') unless holding['location_has'].nil?
-    info << content_tag(:div, '', class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
+    info << content_tag(:div, content_tag(:div, '', class: 'availability-icon').html_safe, class: 'holding-status', data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id })
+    info << content_tag(:ul, "#{holding_label('Shelving title:')} #{listify_array(holding['shelving_title'])}".html_safe, class: 'shelving-title') unless holding['shelving_title'].nil?
+    info << content_tag(:ul, "#{holding_label('Location note:')} #{listify_array(holding['location_note'])}".html_safe, class: 'location-note') unless holding['location_note'].nil?
+    info << content_tag(:ul, "#{holding_label('Location has:')} #{listify_array(holding['location_has'])}".html_safe, class: 'location-has') unless holding['location_has'].nil?
+    info << content_tag(:ul, ''.html_safe, class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
     info << request_placeholder(bib_id, holding_id).html_safe
     info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
     info
   end
 
+  def listify_array(arr)
+    arr = arr.map do |e|
+      content_tag(:li, e)
+    end
+    arr = arr.join
+  end
+
   def holding_label(label)
-    content_tag(:span, label, class: 'holding-label')
+    content_tag(:div, label, class: 'holding-label')
   end
 
   def request_placeholder(doc_id, holding_id)

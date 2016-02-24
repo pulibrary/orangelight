@@ -9,7 +9,7 @@ en:
       print: 'Copies In Library'
       stackmap: 'Where to Find It'
       search_missing: 'No holdings available for this record'
-      missing: 'There are no holdings available for this record. Consult a library staff member at the nearest Circulation Desk.'
+      missing: 'There are no holdings available for this record. Please consult a library staff member at the nearest Circulation Desk.'
 
     header_links:
       login: 'My Account'
