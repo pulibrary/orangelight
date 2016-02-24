@@ -47,7 +47,7 @@ class AvailabilityUpdater
   get_more_items: (holding_id) ->
     url = "#{@availability_url}?mfhd=#{holding_id}"
     req = $.getJSON url
-    element = $("*[data-holding-id='#{holding_id}']")
+    element = $("*[data-availability-record='true'][data-holding-id='#{holding_id}']")
     req.success (data) ->
       for key, item of data
         if item['status'] != "Not Charged"
