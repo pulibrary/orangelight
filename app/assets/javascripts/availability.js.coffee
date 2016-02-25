@@ -33,7 +33,7 @@ class AvailabilityUpdater
     for holding_id, availability_info of holding_records
       availability_element = $("*[data-availability-record='true'][data-record-id='#{id}'][data-holding-id='#{holding_id}'] .availability-icon")
       this.get_issues(holding_id) if $(".journal-current-issues").length > 0
-      if availability_info['more_items']
+      if availability_info['more_items'] and availability_info['status'] != "Limited"
         this.apply_record_icon(availability_element, "All Items Available")
         this.get_more_items(holding_id)
       else
