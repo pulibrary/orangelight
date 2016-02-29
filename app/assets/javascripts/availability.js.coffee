@@ -15,7 +15,7 @@ class AvailabilityUpdater
     'Lost--system applied', 'Claims returned', 'Withdrawn']
   available_labels = ['Available', 'Returned', 'In process', 'Requestable',
     'On shelf', 'All items available']
-  unavailable_labels = ['Checked Out', 'Missing']
+  unavailable_labels = ['Checked out', 'Missing']
   request_availability: ->
     if $(".documents-list").length > 0
       ids = this.record_ids().toArray()
