@@ -1,11 +1,12 @@
 //= require 'jquery'
 
-$( document ).ready(function() {
+$(document).ready(function() {
     //link highlighting of subject heirarchy
     $(".search-subject").hover(
         function() {
             $(this).prevAll().addClass("subject-heirarchy");
-        }, function() {
+        },
+        function() {
             $(this).prevAll().removeClass("subject-heirarchy");
         }
     );
@@ -28,12 +29,13 @@ $( document ).ready(function() {
     });
 
     // availability toggle journal current issues
-    $("#availability").on("click", ".trigger", function(event){
+    $("#availability").on("click", ".trigger", function(event) {
         event.preventDefault();
         $(this).parent().siblings().toggleClass("all-issues");
-        $(".trigger").text(function(i, toggle) {
-          return toggle === "More" ? "Less" : "More";
+        $(this).text(function(i, toggle) {
+            return toggle === "More" ? "Less" : "More";
         });
+
     });
 
     ///////////////////////////////////////////
@@ -44,5 +46,3 @@ $( document ).ready(function() {
     // });                                   //
     ///////////////////////////////////////////
 });
-
-

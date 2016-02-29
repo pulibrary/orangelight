@@ -2,27 +2,12 @@
 @import "variables/colors";
 @import "variables/typography";
 
-.location--panel .panel {
-  // box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
-  background: white;
-  margin: 0 0 1.5em;
-  border-radius: 0;
-
-  .panel-heading {
-    font-size: 1.1em;
-    margin: 0;
-    border-bottom: 2px solid #eee;
-    background: none;
-  }
-
-  .panel-body {
-    font-size: 12px;
-    padding: 0;
-  }
-
+.availability-column,
+.holding-block {
   .availability-icon {
+    display: inline-block;
     background: none;
-    text-transform: capitalize;
+    text-transform: initial;
     font-size: 12px;
     padding: 0;
     margin-right: 0;
@@ -42,6 +27,24 @@
     &.label-success {
       color: darken(#5cb85c, 20%);
     }
+  }
+}
+
+.location--panel .panel {
+  background: white;
+  margin: 0 0 1.5em;
+  border-radius: 0;
+
+  .panel-heading {
+    font-size: 1.1em;
+    margin: 0;
+    border-bottom: 2px solid #eee;
+    background: none;
+  }
+
+  .panel-body {
+    font-size: 12px;
+    padding: 0;
   }
 
   .btn {
@@ -90,7 +93,7 @@
   }
 }
 
-.availability-icon.label:hover {
+.blacklight-holdings .availability-icon.label:hover {
   color: white;
   text-decoration: none;
 }
@@ -126,6 +129,10 @@
     margin-bottom: 1em;
   }
 
+  > ul {
+    margin-top: 1em;
+  }
+
   li {
     margin-left: 1em;
    }
@@ -149,5 +156,8 @@
     &.all-issues {
       display: inline-block;
     }
+  }
+  .location-services {
+    margin-top: 1em;
   }
 }
