@@ -156,6 +156,12 @@ class CatalogController < ApplicationController
     config.add_show_field 'edition_display', :label => 'Εdition'
     config.add_show_field 'medium_support_display', :label => 'Medium/Support'
 
+    # Senior Thesis fields
+    config.add_show_field 'advisor_display', :label => 'Advisor(s)', :helper_method => :browse_name
+    config.add_show_field 'department_display', :label => 'Department'
+    config.add_show_field 'class_year_s', :label => 'Class year', link_to_search: true
+    config.add_show_field 'collection_display', :label => 'Appears in collection', :helper_method => :browse_name
+
     config.add_show_field 'description_display', :label => 'Description'
     config.add_show_field 'arrangement_display', :label => 'Arrangement'
     config.add_show_field 'translation_of_display', :label => 'Translation of'

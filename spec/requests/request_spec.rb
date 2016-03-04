@@ -163,6 +163,12 @@ describe "blacklight tests" do
       get "/catalog/#{id}"
       expect(response.body).to include voyager_url(id)
     end
+    it "is not accessible for non-Voyager records" do
+      allow_any_instance_of(Blacklight::Solr::Document::Marc).to receive(:voyager_record?).and_return(false)
+      id = '6574987'
+      get "/catalog/#{id}"
+      expect(response.body).not_to include voyager_url(id)
+    end
   end
 
   describe "identifier metadata" do

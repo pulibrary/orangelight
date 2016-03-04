@@ -10,11 +10,15 @@ module Blacklight::Solr::Document::Marc
   def marc_record_from_marcxml
     id = fetch(_marc_source_field)
     record = Faraday.get("#{ENV['bibdata_base']}/bibliographic/#{id}").body
-    MARC::XMLReader.new(StringIO.new( record )).to_a.first || MARC::Record.new
+    MARC::XMLReader.new(StringIO.new( record )).to_a.first
+  end
+
+  # returns true if Marc record is fetchable from bibdata
+  def voyager_record?
+    !to_marc.nil?
   end
 
   def export_as_openurl_ctx_kev(format = nil)
-
     title = to_marc.find{|field| field.tag == '245'}
     author = to_marc.find{|field| field.tag == '100'}
     corp_author = to_marc.find{|field| field.tag == '110'}
