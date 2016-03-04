@@ -56,7 +56,7 @@ gem "blacklight-marc", "~> 5.0"
 gem "jettywrapper", "~> 1.7"
 
 # rspec, just like jettywrapper appear necessary for cap currently
-gem 'rspec-rails', '~> 3.0.0'
+gem 'rspec-rails', '~> 3.4'
 
 gem 'capybara'
 

@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<% if @document.respond_to?(:export_as_openurl_ctx_kev) %>
+<% if @document.voyager_record? %>
   <!--
        // COinS, for Zotero among others.
        // This document_partial_name(@document) business is not quite right,
