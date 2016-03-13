@@ -11,10 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require modernizr
-//= require turbolinks
 //
 //= require 'blacklight_advanced_search'
 //= require 'blacklight_range_limit'
