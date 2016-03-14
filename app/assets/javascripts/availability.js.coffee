@@ -22,7 +22,7 @@ class AvailabilityUpdater
       params = $.param({ids: ids})
       url = "#{@availability_url}?#{params}"
       $.getJSON(url, this.process_records)
-    else if $(".holding-block").length > 0
+    else if $("*[data-availability-record='true']").length > 0
       id = window.location.pathname.split('/')[2]
       url = "#{@availability_url}?id=#{id}"
       $.getJSON(url, this.process_single)
@@ -106,6 +106,6 @@ class AvailabilityUpdater
     availability_element.attr('data-original-title', "Availability: #{title_case(status)}")
     availability_element.attr('data-toggle', 'tooltip')
   record_ids: ->
-    $("*[data-availability-record][data-record-id]").map((_, x) -> $(x).attr("data-record-id"))
+    $("*[data-availability-record='true'][data-record-id]").map((_, x) -> $(x).attr("data-record-id"))
   title_case = (str) ->
     str[0].toUpperCase() + str[1..str.length - 1].toLowerCase()

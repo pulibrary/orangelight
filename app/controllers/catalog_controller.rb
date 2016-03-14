@@ -100,6 +100,8 @@ class CatalogController < ApplicationController
     config.add_facet_field 'language_facet', :label => 'Language', :limit => true
     config.add_facet_field 'lc_1letter_facet', :label => 'Classification', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'author_s', :label => 'Author', :limit => true, show: false
+    config.add_facet_field 'class_year_s', :label => 'PU Class Year', :limit => true, show: false
+    config.add_facet_field 'department_s', :label => 'PU Department', :limit => true, show: false
     config.add_facet_field 'lc_rest_facet', :label => 'Full call number code', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'recently_added_facet', :label => 'Recently Added', home: true, :query => {
       :weeks_1 => { :label => 'Within 1 Week', :fq => "cataloged_tdt:[NOW/DAY-7DAYS NOW/DAY+1DAY]" },
@@ -141,7 +143,7 @@ class CatalogController < ApplicationController
     # config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
 
 
-    config.add_show_field 'author_display', :label => 'Author', :helper_method => :browse_name
+    config.add_show_field 'author_display', :label => 'Author', helper_method: :browse_name
     config.add_show_field 'format', :label => 'Format', helper_method: :format_render
     config.add_show_field 'url_fulltext_display', :label => 'URL'
     config.add_show_field 'url_suppl_display', :label => 'More Information'
@@ -157,10 +159,10 @@ class CatalogController < ApplicationController
     config.add_show_field 'medium_support_display', :label => 'Medium/Support'
 
     # Senior Thesis fields
-    config.add_show_field 'advisor_display', :label => 'Advisor(s)', :helper_method => :browse_name
-    config.add_show_field 'department_display', :label => 'Department'
+    config.add_show_field 'advisor_display', :label => 'Advisor(s)', helper_method: :browse_name
+    config.add_show_field 'contributor_display', :label => 'Contributor(s)', helper_method: :browse_name
+    config.add_show_field 'department_s', :label => 'Department', link_to_search: true
     config.add_show_field 'class_year_s', :label => 'Class year', link_to_search: true
-    config.add_show_field 'collection_display', :label => 'Appears in collection', :helper_method => :browse_name
 
     config.add_show_field 'description_display', :label => 'Description'
     config.add_show_field 'arrangement_display', :label => 'Arrangement'
@@ -232,7 +234,7 @@ class CatalogController < ApplicationController
 
     config.add_show_field 'binding_note_display', :label => 'Binding note'
     config.add_show_field 'local_notes_display', :label => 'Local notes'
-    config.add_show_field 'rights_reproductions_note_display', :label => 'Rights and reproductions note'
+    config.add_show_field 'rights_reproductions_note_display', :label => 'Rights and reproductions note', helper_method: :html_safe
     config.add_show_field 'exhibitions_note_display', :label => 'Exhibitions note'
     config.add_show_field 'participant_performer_display', :label => 'Participant(s)/&#8203;Performer(s)'
     config.add_show_field 'language_display', :label => 'Language(s)'

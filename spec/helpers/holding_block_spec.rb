@@ -7,9 +7,11 @@ RSpec.describe ApplicationHelper do
     let(:location) { 'Rare Books and Special Collections - Reference Collection in Dulles Reading Room' }
     let(:call_number) { 'PS3539.A74Z93 2000' }
     let(:search_result) { helper.holding_block_search(document) }
+    let(:search_result_thesis) { helper.holding_block_search(document_thesis) }
     let(:empty_search_result) { helper.holding_block_search(document_no_holdings) }
     let(:show_result) { helper.holding_request_block(document) }
     let(:show_result_journal) { helper.holding_request_block(document_journal) }
+    let(:show_result_thesis) { helper.holding_request_block(document_thesis) }
     let(:holding_block_json) do
       {
         holding_id => {
@@ -44,6 +46,16 @@ RSpec.describe ApplicationHelper do
         }
       }.to_json.to_s
     end
+    let(:holdings_thesis_mudd) do
+      {
+        'thesis' => {
+          location: 'Mudd Manuscript Library',
+          library: 'Mudd Manuscript Library',
+          location_code: 'mudd',
+          dspace: true
+        }
+      }.to_json.to_s
+    end
 
     let(:document) do
       {
@@ -65,6 +77,14 @@ RSpec.describe ApplicationHelper do
           id: '3',
           format: ['Journal'],
           holdings_1display: holding_block_json
+      }.with_indifferent_access
+    end
+
+    let(:document_thesis) do
+      {
+          id: '4',
+          format: ['Senior Thesis'],
+          holdings_1display: holdings_thesis_mudd
       }.with_indifferent_access
     end
 
@@ -102,6 +122,9 @@ RSpec.describe ApplicationHelper do
       it "link missing label appears when 856s is missing from elf location" do
         expect(search_result).to include "Link Missing"
       end
+      it "On-site access availability when dspace set to true" do
+        expect(search_result_thesis).to include "On-site access"
+      end
       it "indicates when there are no holdings for a record" do
         expect(empty_search_result).to include t('blacklight.holdings.search_missing')
       end
@@ -119,6 +142,9 @@ RSpec.describe ApplicationHelper do
       end
       it "tags the holding record id" do
         expect(show_result.last).to have_selector "*[data-holding-id='#{holding_id}']"
+      end
+      it "On-site access availability when dspace set to true" do
+        expect(show_result_thesis.last).to include "On-site access"
       end
       it "includes a div to place current issues when journal format" do
         expect(show_result_journal.last).to have_selector "*[data-journal]"
