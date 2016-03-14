@@ -112,7 +112,12 @@ module ApplicationHelper
       cn = "#{holding['call_number']} #{cn_browse_link}"
       info << content_tag(:div, cn.html_safe, class: 'holding-call-number')
     end
-    info << content_tag(:div, content_tag(:div, '', class: 'availability-icon').html_safe, class: 'holding-status', data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id })
+    if holding['dspace']
+      info << content_tag(:span, 'On-site access', class: 'availability-icon label label-warning',
+                          title: 'Availability: On-site', 'data-toggle' => 'tooltip')
+    else
+      info << content_tag(:div, content_tag(:div, '', class: 'availability-icon').html_safe, class: 'holding-status', data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id })
+    end
     info << content_tag(:ul, "#{holding_label('Shelving title:')} #{listify_array(holding['shelving_title'])}".html_safe, class: 'shelving-title') unless holding['shelving_title'].nil?
     info << content_tag(:ul, "#{holding_label('Location note:')} #{listify_array(holding['location_note'])}".html_safe, class: 'location-note') unless holding['location_note'].nil?
     info << content_tag(:ul, "#{holding_label('Location has:')} #{listify_array(holding['location_has'])}".html_safe, class: 'location-has') unless holding['location_has'].nil?
@@ -155,11 +160,17 @@ module ApplicationHelper
           info << 'Online access is not currently available.'
         else
           info << link_to('Online', catalog_path(document['id']), class: 'availability-icon label label-primary',
-                          title: 'Electronic Access')
+                          title: 'Electronic access')
           info << links.shift.html_safe
         end
       else
-        info << link_to('', catalog_path(document['id']), class: 'availability-icon').html_safe
+        if holding['dspace']
+          check_availability = false
+          info << link_to('On-site access', catalog_path(document['id']), class: 'availability-icon label label-warning',
+                          title: 'Availability: On-site')
+        else
+          info << link_to('', catalog_path(document['id']), class: 'availability-icon').html_safe
+        end
         info << "#{holding['library']}#{arrow}#{holding['call_number']}".html_safe
         info << locate_link_with_gylph(holding['location_code'], document['id'], holding['library']).html_safe
       end
@@ -232,6 +243,10 @@ module ApplicationHelper
 
   def format_render args
     args[:document][args[:field]].join(', ')
+  end
+
+  def html_safe args
+    args[:document][args[:field]].each_with_index { |v, i| args[:document][args[:field]][i] = v.html_safe }
   end
 
   def voyager_url bibid
