@@ -32,6 +32,10 @@ class AvailabilityUpdater
   process_single: (holding_records) =>
     for holding_id, availability_info of holding_records
       availability_element = $("*[data-availability-record='true'][data-record-id='#{id}'][data-holding-id='#{holding_id}'] .availability-icon")
+      if availability_info['on_reserve']
+        location = $("*[data-location='true'][data-holding-id='#{holding_id}']")
+        location.text(availability_info['on_reserve'])
+        availability_element.after("<div class=\"copy-number\">Copy number: #{availability_info['copy_number']}</div>")
       this.get_issues(holding_id) if $(".journal-current-issues").length > 0
       if availability_info['more_items'] and availability_info['status'] != "Limited"
         this.apply_record_icon(availability_element, "All items available")
@@ -40,6 +44,9 @@ class AvailabilityUpdater
         this.apply_record_icon(availability_element, availability_info['status'])
   apply_record: (record_id, holding_records) ->
     for holding_id, availability_info of holding_records
+      if availability_info['on_reserve']
+        location = $("*[data-location='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}']")
+        location.text(availability_info['on_reserve'])
       this.record_needs_more_info(record_id) if availability_info['more_items']
       availability_element = $("*[data-availability-record='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .availability-icon")
       this.apply_record_icon(availability_element, availability_info['status'])
