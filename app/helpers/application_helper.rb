@@ -101,8 +101,8 @@ module ApplicationHelper
   def process_physical_holding(holding, bib_id, holding_id, is_journal)
     info = ''
     unless holding['location'].blank?
-      location = "#{holding['location']}"
-      location << locate_link_with_gylph(holding['location_code'], bib_id, holding['library'])
+      location = content_tag(:span, holding['location'], class: 'location-text', data: { location: true, holding_id: holding_id })
+      location << locate_link_with_gylph(holding['location_code'], bib_id, holding['library']).html_safe
       info << content_tag(:h3, location.html_safe, class: 'library-location')
     end
     unless holding['call_number'].blank?
@@ -171,7 +171,8 @@ module ApplicationHelper
         else
           info << link_to('', catalog_path(document['id']), class: 'availability-icon').html_safe
         end
-        info << "#{holding['library']}#{arrow}#{holding['call_number']}".html_safe
+        info << content_tag(:span, holding['library'], class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
+        info << "#{arrow}#{holding['call_number']}".html_safe
         info << locate_link_with_gylph(holding['location_code'], document['id'], holding['library']).html_safe
       end
       block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id })
