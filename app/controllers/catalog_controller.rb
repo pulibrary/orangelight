@@ -101,7 +101,6 @@ class CatalogController < ApplicationController
     config.add_facet_field 'lc_1letter_facet', :label => 'Classification', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'author_s', :label => 'Author', :limit => true, show: false
     config.add_facet_field 'class_year_s', :label => 'PU Class Year', :limit => true, show: false
-    config.add_facet_field 'department_s', :label => 'PU Department', :limit => true, show: false
     config.add_facet_field 'lc_rest_facet', :label => 'Full call number code', :limit => 25, show: false, sort: 'index'
     config.add_facet_field 'recently_added_facet', :label => 'Recently Added', home: true, :query => {
       :weeks_1 => { :label => 'Within 1 Week', :fq => "cataloged_tdt:[NOW/DAY-7DAYS NOW/DAY+1DAY]" },
@@ -161,7 +160,7 @@ class CatalogController < ApplicationController
     # Senior Thesis fields
     config.add_show_field 'advisor_display', :label => 'Advisor(s)', helper_method: :browse_name
     config.add_show_field 'contributor_display', :label => 'Contributor(s)', helper_method: :browse_name
-    config.add_show_field 'department_s', :label => 'Department', link_to_search: true
+    config.add_show_field 'department_display', :label => 'Department', helper_method: :browse_name
     config.add_show_field 'class_year_s', :label => 'Class year', link_to_search: true
 
     config.add_show_field 'description_display', :label => 'Description'
