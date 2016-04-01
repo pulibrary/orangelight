@@ -36,18 +36,7 @@ FactoryGirl.find_definitions
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
-  config.before :suite do
-    system 'rake pulsearch:rejetty'
-    system 'rake pulsearch:index'
-  end
-
-  config.after :suite do
-    system 'rake jetty:stop'
-  end
-
-
   #config.infer_spec_type_from_file_location!
-  
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

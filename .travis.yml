@@ -1,7 +1,7 @@
 language: ruby
 sudo: false
 rvm:
-  - 2.2.3 # Ruby most recent
+  - 2.3.0 # Ruby most recent
 # uncomment this line if your project needs to run something other than `rake`:
 
 before_script:
@@ -9,6 +9,7 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - bundle exec rake jetty:clean
   - bundle exec rake jetty:start
+  - bundle exec rake pulsearch:index
   - RAILS_ENV=test bundle exec rake db:migrate
   - cp config/ip_whitelist.yml.tmpl config/ip_whitelist.yml
   - cp config/requests.yml.tmpl config/requests.yml
