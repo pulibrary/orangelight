@@ -1,4 +1,3 @@
- <h2 class="section-heading">Charged Items</h2>
 <% if (!@account.charged_items.nil?) %>
   <%= form_tag('/account/renew', remote: true, id: "item-renew") do %>
     <div class="table-responsive">
@@ -10,18 +9,24 @@
             <th>Call Number</th>
             <th>Item Type</th>
             <th>Due Date</th>
+            <th>Message</th>
           </tr>
         </thead>
         <tbody>
           <% @account.charged_items.each do |item| %>
-            <tr>
+            <tr data-item-id="<%= item['itemId'] %>">
               <td>
-                <% if item["renewable"] == 'true' %>
-                  <label><input type="checkbox" name="rewew_items[]" 
-                    value="<%= format_renew_string(item) %>"> 
-                    Renew</label>
+                <% unless @account.has_blocks? %>
+                  <% if item["renewable"] == 'true' %>
+                    <label><input id="charged-<%= item["itemId"] %>" 
+                      type="checkbox" name="renew_items[]" 
+                      value="<%= format_renew_string(item) %>"> 
+                      <%= I18n.t('blacklight.account.renew_label') %></label>
+                  <% else %>
+                    <span><%= I18n.t('blacklight.account.not_renewable_due_to_item_status') %></span>
+                  <% end %>
                 <% else %>
-                  <span>Not renewable</span>
+                  <span><%= I18n.t('blacklight.account.not_renewable_due_to_patron_block') %></span>
                 <% end %>
               </td>
               <td><%= item["title"] %></td>
@@ -32,19 +37,25 @@
                   <span>&nbsp;</span>
                 <%= format_date(item['dueDate']) %>
               </td>
+              <td>
+                <span class="item--messages">
+                  <%= message_status(item) %>
+                  <%= renew_status(item) %>
+                </span>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
       <div class="form-group">
-        <select class="form-control">
-          <option>Renew selected items</option>
-          <option>Renew all items from Princeton University Library</option>
+        <select id="renew-choices" class="form-control">
+          <option value="selected-renew">Renew selected items</option>
+          <option value="select-all-renew">Renew all items from Princeton University Library</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary">Renew items</button>
+      <%= button_tag "Renew items", class: 'btn btn-primary', data: { disable_with: 'Submitting Renwal Requests' } %>
     </div>
   <% end %>
 <% else %>
-  <p>You do not have any items out</p>
+  <p><%= I18n.t('blacklight.account.no_pickup_items') %></p>
 <% end %>

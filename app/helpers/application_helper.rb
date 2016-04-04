@@ -1,5 +1,3 @@
-require './lib/orangelight/voyager_account.rb'
-
 module ApplicationHelper
 
 
@@ -254,32 +252,4 @@ module ApplicationHelper
     "http://catalog.princeton.edu/cgi-bin/Pwebrecon.cgi?BBID=#{bibid}"
   end
 
-  # Setup item status
-  ITEM_STATUS = YAML.load_file("#{Rails.root}/config/voyager_item_status.yml") rescue {}
-
-  def item_status_to_label item
-    ITEM_STATUS[item['statusCode'].to_i]
-  end
-
-  def format_date raw_date
-    raw_date.to_time.in_time_zone.strftime('%B %e %Y at %l:%M %p')
-  end
-
-  def format_block_statement block_message
-    if block_message == "odue_recall_limit_patron"
-      "You have overdue recalled items. Please return this material Immediately"
-    end
-  end
-
-  def format_hold_cancel item
-    "item-#{item["itemID"]}:holdrecall-#{item["holdRecallID"]}:type-#{item["holdType"]}"
-  end
-
-  def format_renew_string item
-    "item-#{item['itemId']}:barcode-#{item['itemBarcode']}"
-  end
-
-  def display_account_balance fine_fee
-    "#{fine_fee['balanceTotal']}"
-  end
 end

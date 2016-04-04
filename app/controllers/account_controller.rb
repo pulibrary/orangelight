@@ -1,11 +1,11 @@
-require './lib/orangelight/voyager_client.rb'
+require './lib/orangelight/voyager_patron_client.rb'
+require './lib/orangelight/voyager_account.rb'
 
 class AccountController < ApplicationController
   include Blacklight::Configurable
   include ApplicationHelper
+  include AccountHelper
 
-  # copied from saved searches
-  copy_blacklight_config_from(CatalogController)
   before_filter :require_user_authentication_provider
   before_filter :verify_user 
   
@@ -16,14 +16,44 @@ class AccountController < ApplicationController
 
   def renew
     set_patron
-    account_client
-    @voyager_client.renewal_request(params[:renew_items])
+    unless params[:renew_items].nil?
+      @account = account_client.renewal_request(params[:renew_items])
+    end
+
+    respond_to do |format|
+      if params[:renew_items].nil?
+        format.js { flash.now[:notice] =  I18n.t('blacklight.account.renew_no_items') }
+      elsif !@account.nil? 
+        format.js { flash.now[:notice] =  I18n.t('blacklight.account.renew_success') }
+      else
+        format.js { flash.now[:error] = I18n.t('blacklight.account.renew_fail') }
+      end
+    end
   end
 
+  ## The action has to call 'current_account' this so you "know" have many active requests there were previously attached 
+  ## to account prior to calling the cancel_active_requests for the items whose
+  ## cancellation was requested. Unlike the Renew option successfully cancelled items just
+  ## drop off the list of outstanding requests in the response back from Voyager's CancelService 
+  ## web service. The method cancel_success compares the response to current_account to confirm
+  ## that the cancellation did succeed. 
   def cancel
-    set_patron
-    account_client
-    @voyager_client.cancel_active_requests(params[:cancel_requests])
+    set_patron 
+    unless params[:cancel_requests].nil?
+      current_account
+      initial_hold_requests = @account.outstanding_hold_requests 
+      @account = account_client.cancel_active_requests(params[:cancel_requests])
+    end
+
+    respond_to do |format|
+      if params[:cancel_requests].nil?
+        format.js { flash.now[:notice] =  I18n.t('blacklight.account.cancel_no_items') }
+      elsif cancel_success(initial_hold_requests, @account, params[:cancel_requests])
+        format.js { flash.now[:notice] =  I18n.t('blacklight.account.cancel_success') }
+      else
+        format.js { flash.now[:error] = I18n.t('blacklight.account.cancel_fail') }
+      end
+    end
   end
 
   protected
@@ -31,6 +61,9 @@ class AccountController < ApplicationController
     flash[:notice] = I18n.t('blacklight.saved_searches.need_login') and raise Blacklight::Exceptions::AccessDenied unless current_user
   end
 
+  ## For local dev purposes hardcode a net id string in place of current_user.uid 
+  ## in this method. Hacky, but convienent to see what "real" data looks like for
+  ## edge case patrons. 
   def set_patron
     @netid = current_user.uid
     @patron = current_patron?(@netid)
@@ -38,8 +71,7 @@ class AccountController < ApplicationController
 
   def current_account
     if (@patron)
-      logger.info("#{@patron}")
-      @account = voyager_myaccount?(@patron)
+      @account = voyager_account?(@patron)
     else
       flash.now[:error] = I18n.t('blacklight.account.inaccessible')
     end
@@ -47,7 +79,18 @@ class AccountController < ApplicationController
 
   def account_client
     if (@patron)
-      VoyagerAccountClient.new(@patron)
+      VoyagerPatronClient.new(@patron)
+    end
+  end
+
+  def cancel_success(total_original_items, updated_account, number_of_cancelled_items) 
+    return false if updated_account.nil?
+    total_updated_items = updated_account.outstanding_hold_requests
+    deleted_requests = total_original_items - total_updated_items
+    if number_of_cancelled_items.size == deleted_requests 
+      return true
+    else
+      return false
     end
   end
 
@@ -70,12 +113,16 @@ class AccountController < ApplicationController
       logger.info("404 Patron #{netid} cannot be found in the Patron Data Service.")
       return false 
     end
+    if patron_record.status == 500
+      logger.info("Error Patron Data Service.")
+      return false 
+    end
     patron = JSON.parse(patron_record.body).with_indifferent_access
     logger.info("#{patron.to_hash}")
     patron
   end
 
-  def voyager_myaccount? patron
+  def voyager_account? patron
     begin
       voyager_account = Faraday.get "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{patron[:patron_id]}&patronHomeUbId=1@DB"
     rescue Faraday::Error::ConnectionFailed => e
@@ -91,16 +138,7 @@ class AccountController < ApplicationController
       return false 
     end
     account = VoyagerAccount.new(voyager_account.body)
-    logger.info("#{account.source_doc}")
     account
   end
 
-  def authenticate_patron patron
-  end
-
-  def construct_renew_request items
-  end
-
-  def construct_cancel_request requests
-  end
 end

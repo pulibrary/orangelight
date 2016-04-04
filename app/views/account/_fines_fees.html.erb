@@ -6,7 +6,7 @@
         <tr>
           <td>Date</td>
           <td>Title</td>
-          <td>Fee /Posting Type</td>
+          <td>Fee / Posting Type</td>
           <td>Fee</td>
           <td>Balance</td>
         </tr>
@@ -29,5 +29,5 @@
     </table>
   </div>
 <% else %>
-  <p>No Outstanding Fines or Fees</p>
+  <p><%= I18n.t('blacklight.account.no_fines_fees') %></p>
 <% end %>

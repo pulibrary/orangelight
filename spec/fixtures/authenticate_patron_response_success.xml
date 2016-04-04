@@ -1,0 +1,23 @@
+<ser:voyagerServiceData xmlns:ser="http://www.endinfosys.com/Voyager/serviceParameters">
+    <ser:serviceData xsi:type="pat:patronAuthenticationType" xmlns:pat="http://www.endinfosys.com/Voyager/patronAuthentication" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <pat:patronIdentifier patronId="55555" lastName="Smith" patronHomeUbId="1@PRINCETONDB20050302104001">
+            <pat:authFactor type="B">22101007799999</pat:authFactor>
+        </pat:patronIdentifier>
+        <pat:patronGroups>
+            <pat:groupIds>
+                <pat:id>3</pat:id>
+            </pat:groupIds>
+            <pat:groupCodes>
+                <pat:groupCode>
+                    <pat:databaseCode>LOCAL</pat:databaseCode>
+                    <pat:group>P</pat:group>
+                </pat:groupCode>
+            </pat:groupCodes>
+        </pat:patronGroups>
+        <pat:isLocalPatron>Y</pat:isLocalPatron>
+        <pat:barcode>22101007799999</pat:barcode>
+        <pat:institutionId>1232432443</pat:institutionId>
+        <pat:fullName>bsmith Banana Joe Smith</pat:fullName>
+        <pat:lastName>Smith</pat:lastName>
+    </ser:serviceData>
+</ser:voyagerServiceData>

@@ -45,4 +45,13 @@ $(document).ready(function() {
     //     this.form.submit();               //
     // });                                   //
     ///////////////////////////////////////////
+
+    //Select all items for renew in accoun
+    $("body").on('change', '#renew-choices', function (e) {
+        if ($(this).val() == "select-all-renew") {
+            $('.account--charged_items').find('td input:checkbox').each(function(index) {
+                $(this).prop('checked', true);
+            });
+        }
+    });
 });

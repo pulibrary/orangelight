@@ -1,5 +1,4 @@
 <% if (!@account.borrowing_blocks.nil?) %>
-  <h2 class="section-heading">Active Patron Blocks</h2>
   <div class="table-responsive">
     <table class="table table-striped table-bordered account--blocks">
       <thead>
@@ -21,5 +20,5 @@
     </table>
   </div>
 <% else %>
-  <h2>No Active Blocks</h2>
+  <p><%= I18n.t('blacklight.account.no_blocks') %></p>
 <% end %>

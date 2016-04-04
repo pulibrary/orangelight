@@ -1,13 +1,15 @@
 <div class="col-md-12">
-  <h1 class="page-heading">Your Library Account</h1>
+  <h1 class="page-heading"><%= I18n.t('blacklight.header_links.account_page') %></h1>
 
   <% if(@patron) %>
+    <h2 class="section-heading">Patron Blocks</h2>
     <%= render 'blocks' %>
     <%= render 'patron_info' %>
     <%= render 'demerits' %>
+    <h2 class="section-heading">Charged Items</h2>
     <%= render 'charged_items' %>
-    <%= render 'request' %>
-    <%= render 'available_items' %>
+    <h2 class="section-heading">Outstanding Requests</h2>
+    <%= render 'request_items' %>
     <%= render 'fines_fees' %>
   <% end %> 
 </div>

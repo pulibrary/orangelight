@@ -14,7 +14,7 @@
             </myac:demerits>
             <myac:chargedItems>
                 <myac:title>Charged Items</myac:title>
-                </myac:clusterChargedItems>
+                <myac:clusterChargedItems/>
             </myac:chargedItems>
             <myac:availItems>
                 <myac:title>Available Items</myac:title>

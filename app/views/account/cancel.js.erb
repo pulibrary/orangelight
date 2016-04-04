@@ -1,0 +1,4 @@
+$("#main-flashes").html("<%= escape_javascript(render :partial=>'/flash_msg', layout: 'shared/flash_messages') %>");
+<% unless @account.nil? %>
+$("#request-cancel").replaceWith("<%= escape_javascript(render :partial=>'request_items') %>");
+<% end %>

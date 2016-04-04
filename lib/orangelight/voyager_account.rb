@@ -1,5 +1,3 @@
-#require 'nokogiri'
-
 class VoyagerAccount
 
   attr_reader :doc
@@ -24,6 +22,10 @@ class VoyagerAccount
     block_nodes = @doc.xpath('//myac:borrowingBlock', 'myac'=> @@voyager_ns)
     return nil if block_nodes.empty?
     blocks = parse_items(block_nodes)
+  end
+
+  def has_blocks?
+    return true if !borrowing_blocks.nil?
   end
 
   def fines_fees
@@ -54,7 +56,18 @@ class VoyagerAccount
   def avail_items
     avail_item_nodes = @doc.xpath('//myac:availItem', 'myac'=> @@voyager_ns)
     return nil if avail_item_nodes.empty?
-    items = parse_items(request_item_nodes)
+    items = parse_items(avail_item_nodes)
+  end
+
+  def outstanding_hold_requests
+    total_holds = 0
+    unless avail_items.nil?
+      total_holds = total_holds + avail_items.size
+    end
+    unless request_items.nil?
+      total_holds = total_holds + request_items.size
+    end
+    total_holds
   end
 
   protected
@@ -67,12 +80,25 @@ class VoyagerAccount
   end
 
   # return hash of any children as "child_node_name" => "text_of_child_node"
+  # Special Cases are for messages/renew_status and blocks that may appear in responoses
+  # for charged_items, request_items, and avail_items
   def node_data(node)
     node_data = Hash.new
     children = node.children
     children.each do |child|
-      node_data[child.name] = child.text
+      if child.name == 'messages'
+        node_data[:messages] = node_data(child)
+      elsif child.name == 'renewStatus'
+        node_data[:renew_status] = node_data(child)
+      elsif child.name == 'blocks'
+        node_data[:item_blocks] = node_data(child)
+      else
+        unless child.blank?
+          node_data[child.name] = child.text
+        end
+      end
     end
     node_data
   end
+
 end

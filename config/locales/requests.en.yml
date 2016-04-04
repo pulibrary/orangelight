@@ -1,0 +1,7 @@
+# requests.en.yml
+en:
+  requests:
+    account:
+      pul_auth: "Requesting materials as %{current_user_name}"
+      guest: "Logged in as %{current_user_name}. Options for guest borrowers are displayed below"
+      unauthenticated: "Please sign in to see all requests"

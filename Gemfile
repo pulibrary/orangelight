@@ -68,7 +68,6 @@ gem 'coveralls', require: false
 
 gem 'newrelic_rpm'
 
-#gem 'requests', :path => "/Users/kevinreiss/Projects/blacklight/requests/"
 gem 'requests', :git => "https://github.com/pulibrary/requests.git", :branch => 'request_test_specs'
 
 group :development do
@@ -80,6 +79,7 @@ group :test do
   gem "webmock", require: false 
   gem 'poltergeist'
   gem 'factory_girl_rails', require: false
+  gem 'launchy'
 end
 
 group :development, :test do 

@@ -3,7 +3,21 @@ require 'rails_helper'
 RSpec.describe AccountController do
 
   let(:valid_patron_response) { File.open(fixture_path + '/bibdata_patron_response.json') }
-  
+  let(:generic_voyager_account_response) { VoyagerAccount.new(fixture('/generic_voyager_account_response.xml')) }
+  let(:generic_voyager_account_empty_response) { VoyagerAccount.new(fixture('/generic_voyager_account_empty_response.xml')) }
+  let(:item_ids_to_cancel) {['42287', '42289', '69854', '28010']}
+
+  describe "#cancel_success" do
+    it "returns true when requested cancelled items are sucessfully deleted" do
+      expect(subject.send(:cancel_success, item_ids_to_cancel.size, generic_voyager_account_empty_response, item_ids_to_cancel)).to be_truthy
+    end
+
+    it "returns false when requested cancelled items are not successfully deleted" do
+      expect(subject.send(:cancel_success, item_ids_to_cancel.size, generic_voyager_account_response, item_ids_to_cancel)).to be_falsey
+    end
+  end
+
+
   describe "#patron_account?" do
 
     let(:valid_user) { FactoryGirl.create(:valid_princeton_patron) }
@@ -16,7 +30,7 @@ RSpec.describe AccountController do
         with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
         to_return(status: 200, body: valid_patron_response, headers: {})
 
-      patron = current_patron? valid_user.uid
+      patron = subject.send(:current_patron?, valid_user.uid)
       expect(patron).to be_truthy
     end
 
@@ -26,7 +40,7 @@ RSpec.describe AccountController do
         with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
         to_return(status: 404, body: '<html><title>Not Here</title><body></body></html>', headers: {})
       
-      patron = current_patron? invalid_user.uid
+      patron = subject.send(:current_patron?, invalid_user.uid)
       expect(patron).to be_falsey
     end
 
@@ -36,14 +50,9 @@ RSpec.describe AccountController do
         with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
         to_return(status: 403, body: '<html><title>Not Authorized</title><body></body></html>', headers: {})
       
-      patron = current_patron? unauthorized_user.uid
+      patron = subject.send(:current_patron?, unauthorized_user.uid)
       expect(patron).to be_falsey
     end
-
-    it "Raises a Connection Error when the Patron Data Service Can't be Reached" do
-      
-    end
-
   end
 
   describe "#voyager_account?" do
@@ -59,7 +68,7 @@ RSpec.describe AccountController do
         with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
         to_return(status: 200, body: valid_voyager_response, headers: {})
       
-      account = voyager_myaccount? valid_voyager_patron
+      account = subject.send(:voyager_account?, valid_voyager_patron)
       expect(account).to be_truthy
       expect(account.doc.is_a? Nokogiri::XML::Document).to be_truthy
     end
@@ -70,7 +79,7 @@ RSpec.describe AccountController do
         with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
         to_return(status: 404, body: "Account Not Found", headers: {})
 
-      account = voyager_myaccount? invalid_voyager_patron
+      account = subject.send(:voyager_account?, invalid_voyager_patron)
       expect(account).to be_falsey
     end
 
@@ -80,10 +89,9 @@ RSpec.describe AccountController do
         with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
         to_return(status: 403, body: "Application Not Authorized", headers: {})
 
-      account = voyager_myaccount? unauthorized_voyager_patron
+      account = subject.send(:voyager_account?, unauthorized_voyager_patron)
       expect(account).to be_falsey
     end
-
   end
 
 end
