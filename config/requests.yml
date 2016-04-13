@@ -1,5 +1,4 @@
 # requests.yml
-# fill in with real values
 
 defaults: &defaults
   umlaut_base: https://getit.princeton.edu
@@ -7,14 +6,14 @@ defaults: &defaults
   proxy_base: http://library.princeton.edu/resolve/lookup?url=
   stackmap_base: https://library.princeton.edu/utils/map
   voyager_api_base: http://catalog.princeton.edu:7014
-  voyager_ub_id: 1@DB
   pulsearch_base: https://pulsearch.princeton.edu
-  
 development:
   <<: *defaults
+  voyager_ub_id: 1@DB
 
 test:
   <<: *defaults
+  voyager_ub_id: 1@DB
 
 production:
   <<: *defaults

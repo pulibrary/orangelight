@@ -11,8 +11,6 @@ before_script:
   - bundle exec rake jetty:start
   - bundle exec rake pulsearch:index
   - RAILS_ENV=test bundle exec rake db:migrate
-  - cp config/ip_whitelist.yml.tmpl config/ip_whitelist.yml
-  - cp config/requests.yml.tmpl config/requests.yml
   - export TZ=America/New_York
 
 script: bundle exec rspec spec
