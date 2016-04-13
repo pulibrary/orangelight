@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'browse/subjects', model: Orangelight::Subject, to: 'browsables#index'
     get 'browse/subjects/:id', model: Orangelight::Subject, as: 'browse_subject', to: 'browsables#show'
   end
+  mount Requests::Engine, at: '/requests'
 
   Blacklight::Marc.add_routes(self)
   root :to => "catalog#index"
@@ -33,6 +34,8 @@ Rails.application.routes.draw do
   get '/help' => 'high_voltage/pages#show', id: 'help'
 
   get '/account', to: 'account#index'
+  post '/account/renew', to: 'account#renew'
+  post '/account/cancel', to: 'account#cancel'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

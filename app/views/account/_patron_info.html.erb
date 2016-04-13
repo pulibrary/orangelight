@@ -1,8 +1,11 @@
 <h2 class="section-heading">Account Information</h2>
-<p>
-  <p class="netid"><%= @patron["netid"] %></p>
-  <p class="name">
-    <%= @patron["first_name"] %> <%= @patron["last_name"] %>
-  </p>
-  <p class="barcode"><%= @patron["barcode"] %></p>
-</p>
+<table class="table table-striped table-bordered account--patron_info">
+  <tr>
+    <td>Name</td>
+    <td><%= @patron["first_name"] %> <%= @patron["last_name"] %></td>
+  </tr>
+  <tr>
+    <td>Current Barcode</td>
+    <td><%= @patron["barcode"] %></td>
+  </tr>
+</table>

@@ -1,0 +1,4 @@
+$("#main-flashes").html("<%= escape_javascript(render :partial=>'/flash_msg', layout: 'shared/flash_messages') %>");
+<% unless @account.nil? %>
+$("#item-renew").replaceWith("<%= escape_javascript(render :partial=>'charged_items') %>");
+<% end %>

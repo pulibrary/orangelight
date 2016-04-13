@@ -104,19 +104,6 @@
     </myac:chargedItems>
     <myac:availItems>
       <myac:title>Available Items</myac:title>
-      <myac:availItem>
-        <myac:itemID></myac:itemID>
-        <myac:holdRecallID>1494</myac:holdRecallID>
-        <myac:replyNote/>
-        <myac:status>1</myac:status>
-        <myac:holdType>H</myac:holdType>
-        <myac:itemTitle>Dinosaurs / Kate Petty ; illustrated by Richard Orr, Stephen Bennett.</myac:itemTitle>
-        <myac:expireDate>2008-08-29T05:00:00.000Z</myac:expireDate>
-        <myac:dbKey>QA20012DB20020613131313</myac:dbKey>
-        <myac:dbName>dev65ncdb</myac:dbName>
-        <myac:queuePosition>1</myac:queuePosition>
-        <myac:pickuplocation>Circulation Desk</myac:pickuplocation>
-      </myac:availItem>
     </myac:availItems>
     <myac:requests>
       <myac:title>Pending Requests</myac:title>

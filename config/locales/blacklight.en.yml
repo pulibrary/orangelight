@@ -4,6 +4,22 @@ en:
     welcome: 'Welcome!'
     voyager: 'Main Catalog'
     umlaut: 'Findit @ Princeton'
+    account:
+      inaccessible: 'Your library account is not available'
+      no_requests: 'You have no outstanding requests'
+      no_pickup_items: 'You have no items available for pickup.'
+      no_fines_fees: 'No outstanding fines or fees.'
+      no_blocks: 'No current blocks on your account.'
+      renew_label: 'Renew'
+      overdue_block: 'You have overdue recalled items. Please return this material immediately.'
+      renew_success: 'Your items have been successfully renewed.'
+      renew_fail: 'We were unable to renew all your items.'
+      renew_no_items: 'No items selected for renewal.'
+      not_renewable_due_to_item_status: 'Item not renewable'
+      not_renewable_due_to_patron_block: 'Resolve block to renew'
+      cancel_success: 'We were able to cancel your request.'
+      cancel_fail: 'We were unable to cancel your request.'
+      cancel_no_items: 'No requests selected for cancellation.'
     holdings:
       online: 'Online'
       print: 'Copies In Library'
@@ -12,8 +28,9 @@ en:
       missing: 'There are no holdings available for this record. Please consult a library staff member at the nearest Circulation Desk.'
 
     header_links:
-      login: 'My Account'
+      login: 'Your Account'
       search_history: 'Search History'
+      account_page: 'Your Account'
     email:
       text:
         subject:

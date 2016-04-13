@@ -1,25 +1,31 @@
 <h2 class="section-heading">Items Available for Pickup</h2>
 <% if (!@account.avail_items.nil?) %>
   <div class="table-responsive">
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered account--available_items">
       <thead>
         <tr>
+          <th>Cancel</th>
           <th>Item Title</th>
           <th>Request Expiration Date</th>
           <th>Pickup Location</th>
         </tr>
       </thead>
       <tbody>
-        <% @account.request_items.each do |item| %>
+        <% @account.avail_items.each do |item| %>
           <tr>
+            <td>
+              <label><input id="cancel-<%= item['itemID'] %>" type="checkbox" name="cancel_requests[]" 
+                value="<%= format_hold_cancel(item) %>"> 
+                Cancel</label>
+            </td>
             <td><%= item["itemTitle"] %></td>
-            <td><%= item["expireDate"] %></td>
-            <td><%= item["pickupLocation"] %></td>
+            <td><%= format_date(item["expireDate"]) %></td>
+            <td><%= item["pickuplocation"] %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
 <% else %>
-  <p>No items available for pickup</p>
+  <p><%= I18n.t('blacklight.account.no_pickup_items') %></p>
 <% end %>

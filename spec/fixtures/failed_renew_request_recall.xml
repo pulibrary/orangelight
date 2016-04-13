@@ -1,0 +1,84 @@
+<ser:voyagerServiceData xmlns:ser="http://www.endinfosys.com/Voyager/serviceParameters">
+    <ser:serviceData xsi:type="myac:myAccountType" xmlns:myac="http://www.endinfosys.com/Voyager/myAccount" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <myac:chargedItems>
+            <myac:title>Charged Items</myac:title>
+            <myac:clusterChargedItems>
+                <myac:cluster>
+                    <myac:clusterName>Princeton University Library</myac:clusterName>
+                    <myac:ubSiteId>1@PRINCETONDB20050302104001</myac:ubSiteId>
+                </myac:cluster>
+                <myac:permitRenewal>true</myac:permitRenewal>
+                <myac:count>3</myac:count>
+                <myac:chargedItem>
+                    <myac:itemId>7310830</myac:itemId>
+                    <myac:itemBarcode>32101094794375</myac:itemBarcode>
+                    <myac:dueDate>2016-04-05T13:34:09.000-04:00</myac:dueDate>
+                    <myac:origDueDate>2016-04-05T13:34:09.000-04:00</myac:origDueDate>
+                    <myac:todaysDate>2016-04-05T14:04:47.000-04:00</myac:todaysDate>
+                    <myac:title>Macroeconomics : principles &amp; policy / William J. Baumol, Alan S. Blinder. </myac:title>
+                    <myac:author>Baumol, William J., </myac:author>
+                    <myac:location>Firestone 3 Hour Reserve (RES). Circ/Reserve Desk</myac:location>
+                    <myac:locationCode>resc</myac:locationCode>
+                    <myac:callNumber>HB172.5 .B38 201</myac:callNumber>
+                    <myac:statusCode>2</myac:statusCode>
+                    <myac:requestCount>0</myac:requestCount>
+                    <myac:copyNumber>55</myac:copyNumber>
+                    <myac:itemtype>Reserve 3 Hour &lt;T></myac:itemtype>
+                    <myac:renewable>true</myac:renewable>
+                </myac:chargedItem>
+                <myac:chargedItem>
+                    <myac:itemId>6526437</myac:itemId>
+                    <myac:itemBarcode>32101071144487</myac:itemBarcode>
+                    <myac:dueDate>2016-04-15T23:45:00.000-04:00</myac:dueDate>
+                    <myac:origDueDate>2016-05-03T23:45:00.000-04:00</myac:origDueDate>
+                    <myac:todaysDate>2016-04-05T14:04:47.000-04:00</myac:todaysDate>
+                    <myac:title>Rough guide to Laos / written and researched by Jeff Cranmer and Steven Martin ; with additional contributions from Emma Gibbs and Steven Vickers. </myac:title>
+                    <myac:author>Cranmer, Jeff. </myac:author>
+                    <myac:location>Travel Guides. Firestone 1-7-J</myac:location>
+                    <myac:locationCode>trv</myac:locationCode>
+                    <myac:callNumber>Guide</myac:callNumber>
+                    <myac:statusCode>5</myac:statusCode>
+                    <myac:requestCount>1</myac:requestCount>
+                    <myac:copyNumber>1</myac:copyNumber>
+                    <myac:itemtype>4-Week</myac:itemtype>
+                    <myac:messages>
+                        <myac:message blockCode="31">Items with recall requests may not be renewed.</myac:message>
+                    </myac:messages>
+                    <myac:renewStatus>
+                        <myac:status>Not Renewed</myac:status>
+                        <myac:blocks>
+                            <myac:blockReason>norenew_with_recall_item</myac:blockReason>
+                            <myac:blockCount>0</myac:blockCount>
+                            <myac:blockCode>31</myac:blockCode>
+                            <myac:blockLimit>0</myac:blockLimit>
+                            <myac:blockDisplayName>Items with recall requests may not be renewed.</myac:blockDisplayName>
+                        </myac:blocks>
+                    </myac:renewStatus>
+                    <myac:renewable>true</myac:renewable>
+                </myac:chargedItem>
+                <myac:chargedItem>
+                    <myac:itemId>91173</myac:itemId>
+                    <myac:itemBarcode>32101003967344</myac:itemBarcode>
+                    <myac:dueDate>2016-06-15T23:00:00.000-04:00</myac:dueDate>
+                    <myac:origDueDate>2016-02-15T19:26:00.000-05:00</myac:origDueDate>
+                    <myac:todaysDate>2016-04-05T14:04:47.000-04:00</myac:todaysDate>
+                    <myac:title>Briefe Alexander's von Humboldt an seinen Bruder Wilhelm / herausgegeben von der Familie von Humboldt in Ottmachau. </myac:title>
+                    <myac:author>Humboldt, Alexander von, 1769-1859. </myac:author>
+                    <myac:location>Firestone Library (F)</myac:location>
+                    <myac:locationCode>f</myac:locationCode>
+                    <myac:callNumber>Q143.H9 A12</myac:callNumber>
+                    <myac:statusCode>3</myac:statusCode>
+                    <myac:requestCount>0</myac:requestCount>
+                    <myac:copyNumber>1</myac:copyNumber>
+                    <myac:itemtype>General</myac:itemtype>
+                    <myac:renewable>true</myac:renewable>
+                </myac:chargedItem>
+            </myac:clusterChargedItems>
+        </myac:chargedItems>
+        <myac:messages>
+            <myac:message blockCode="31">Items with recall requests may not be renewed.</myac:message>
+        </myac:messages>
+    </ser:serviceData>
+    <ser:messages>
+        <ser:message blockCode="31" errorCode="" requestCode="" /></ser:messages>
+</ser:voyagerServiceData>

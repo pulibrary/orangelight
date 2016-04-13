@@ -7,14 +7,14 @@
       </a>
       <div class="pull-right menu--level-1 col-xs-12 col-sm-6">
         <ul>
-          <li><%= link_to 'Help', page_path('help') %></li>
+          <li><%= link_to 'Help', main_app.page_path('help') %></li>
           <li><a href="http://library.princeton.edu/help/contact-us">Contact Us</a></li>
           <%= render :partial=>'/account' unless params[:action] == 'error' %>
         </ul>
       </div>
     </div>
   </div>
-  <% unless params[:action] == 'error' %>
+  <% unless params[:action] == 'error' || params[:action] == 'generate' %>
     <div class="header__secondary">
       <nav class="container" role="navigation">
         <div id="search-navbar" class="col-xs-12 col-sm-12 col-md-8" role="search">

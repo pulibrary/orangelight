@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ser:voyagerServiceData xmlns:ser="http://www.endinfosys.com/Voyager/serviceParameters">
+  <ser:serviceData xmlns:myac="http://www.endinfosys.com/Voyager/myAccount" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="myac:myAccountType">
+    <myac:chargedItems>
+      <myac:title>Charged Items</myac:title>
+      <myac:clusterChargedItems>
+        <myac:cluster>
+          <myac:clusterName>Princeton University Library</myac:clusterName>
+          <myac:ubSiteId>1@PRINCETONDB20050302104001</myac:ubSiteId>
+        </myac:cluster>
+        <myac:permitRenewal>true</myac:permitRenewal>
+        <myac:count>2</myac:count>
+        <myac:chargedItem>
+          <myac:itemId>7193128</myac:itemId>
+          <myac:itemBarcode>32101094794375</myac:itemBarcode>
+          <myac:dueDate>2016-04-05T13:34:09.000-04:00</myac:dueDate>
+          <myac:origDueDate>2016-04-05T13:34:09.000-04:00</myac:origDueDate>
+          <myac:todaysDate>2016-04-08T15:14:47.000-04:00</myac:todaysDate>
+          <myac:title>Macroeconomics : principles &amp; policy / William J. Baumol, Alan S. Blinder. </myac:title>
+          <myac:author>Baumol, William J., </myac:author>
+          <myac:location>Firestone 3 Hour Reserve (RES). Circ/Reserve Desk</myac:location>
+          <myac:locationCode>resc</myac:locationCode>
+          <myac:callNumber>HB172.5 .B38 201</myac:callNumber>
+          <myac:statusCode>4</myac:statusCode>
+          <myac:requestCount>0</myac:requestCount>
+          <myac:copyNumber>55</myac:copyNumber>
+          <myac:itemtype>Reserve 3 Hour &lt;T&gt;</myac:itemtype>
+          <myac:messages>
+            <myac:message blockCode="28">Item not authorized for renewal.</myac:message>
+          </myac:messages>
+          <myac:renewStatus>
+            <myac:status>Not Renewed</myac:status>
+            <myac:blocks>
+              <myac:blockReason>norenew_item</myac:blockReason>
+              <myac:blockCount>0</myac:blockCount>
+              <myac:blockCode>28</myac:blockCode>
+              <myac:blockLimit>0</myac:blockLimit>
+              <myac:blockDisplayName>Item not authorized for renewal.</myac:blockDisplayName>
+            </myac:blocks>
+          </myac:renewStatus>
+          <myac:renewable>true</myac:renewable>
+        </myac:chargedItem>
+        <myac:chargedItem>
+          <myac:itemId>3688389</myac:itemId>
+          <myac:itemBarcode>32101003967344</myac:itemBarcode>
+          <myac:dueDate>2016-06-15T23:00:00.000-04:00</myac:dueDate>
+          <myac:origDueDate>2016-02-15T19:26:00.000-05:00</myac:origDueDate>
+          <myac:todaysDate>2016-04-08T15:14:47.000-04:00</myac:todaysDate>
+          <myac:title>Briefe Alexander's von Humboldt an seinen Bruder Wilhelm / herausgegeben von der Familie von Humboldt in Ottmachau. </myac:title>
+          <myac:author>Humboldt, Alexander von, 1769-1859. </myac:author>
+          <myac:location>Firestone Library (F)</myac:location>
+          <myac:locationCode>f</myac:locationCode>
+          <myac:callNumber>Q143.H9 A12</myac:callNumber>
+          <myac:statusCode>3</myac:statusCode>
+          <myac:requestCount>0</myac:requestCount>
+          <myac:copyNumber>1</myac:copyNumber>
+          <myac:itemtype>General</myac:itemtype>
+          <myac:renewed>true</myac:renewed>
+          <myac:renewStatus>
+            <myac:status>Renewed</myac:status>
+          </myac:renewStatus>
+          <myac:renewable>true</myac:renewable>
+        </myac:chargedItem>
+      </myac:clusterChargedItems>
+    </myac:chargedItems>
+    <myac:messages>
+      <myac:message blockCode="28">Item not authorized for renewal.</myac:message>
+    </myac:messages>
+  </ser:serviceData>
+  <ser:messages>
+    <ser:message blockCode="28" errorCode="" requestCode=""/>
+  </ser:messages>
+</ser:voyagerServiceData>

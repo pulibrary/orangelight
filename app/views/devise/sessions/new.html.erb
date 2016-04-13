@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <h2 class="page-heading my-account">My Account</h2>
+  <h2 class="page-heading my-account"><%= I18n.t('blacklight.header_links.account_page') %></h2>
   <div class="login--cas">
     <%- if devise_mapping.omniauthable? %>
       <%- resource_class.omniauth_providers.each do |provider| %>

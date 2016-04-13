@@ -43,6 +43,7 @@ gem 'spring',        group: :development
 gem 'capistrano', '~> 3.2.0'
 
 gem 'faraday'
+gem 'faraday-cookie_jar'
 
 gem 'yajl-ruby', require: 'yajl'
 
@@ -67,6 +68,8 @@ gem 'coveralls', require: false
 
 gem 'newrelic_rpm'
 
+gem 'requests', :git => "https://github.com/pulibrary/requests.git", :branch => 'request_test_specs'
+
 group :development do
   gem 'capistrano-rails', '~> 1.1.1'
   gem 'quiet_assets'
@@ -76,6 +79,7 @@ group :test do
   gem "webmock", require: false 
   gem 'poltergeist'
   gem 'factory_girl_rails', require: false
+  gem 'launchy'
 end
 
 group :development, :test do 
