@@ -25,7 +25,7 @@ set :branch, ENV['BRANCH'] || 'development'
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'pulsearch-dev', user: 'orangelight', roles: [:web, :app, :db]
+server 'pulsearch-dev', user: 'deploy', roles: [:web, :app, :db]
 
 
 # Custom SSH Options
