@@ -1,18 +1,14 @@
 require 'rails_helper'
 
-describe "Your Account", :type => :feature do
-
+describe "Your Account", type: :feature do
   context "User has not signed in" do
-
     it "Account information displays as not available" do
       visit('/account')
       expect(page).to have_content 'Log in with Princeton Net ID'
     end
-
   end
 
   context "Princeton Community User has signed in" do
-
     let(:user) { FactoryGirl.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_response) { fixture('/generic_voyager_account_response.xml') }
@@ -21,14 +17,14 @@ describe "Your Account", :type => :feature do
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
     before(:each) do
-      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}").
-         with(:headers => {'User-Agent'=>'Faraday v0.9.2'}).
-         to_return(:status => 200, :body => valid_patron_response, :headers => {})
+      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .to_return(status: 200, body: valid_patron_response, headers: {})
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
-      stub_request(:get, valid_patron_record_uri).
-        with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
-        to_return(status: 200, body: voyager_account_response, headers: {})
+      stub_request(:get, valid_patron_record_uri)
+        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .to_return(status: 200, body: voyager_account_response, headers: {})
 
       sign_in user
       visit('/account')
@@ -98,14 +94,14 @@ describe "Your Account", :type => :feature do
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
     before(:each) do
-      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}").
-         with(:headers => {'User-Agent'=>'Faraday v0.9.2'}).
-         to_return(:status => 200, :body => valid_patron_response, :headers => {})
+      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .to_return(status: 200, body: valid_patron_response, headers: {})
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
-      stub_request(:get, valid_patron_record_uri).
-        with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
-        to_return(status: 200, body: generic_voyager_account_only_request_items, headers: {})
+      stub_request(:get, valid_patron_record_uri)
+        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .to_return(status: 200, body: generic_voyager_account_only_request_items, headers: {})
 
       sign_in user
       visit('/account')
@@ -114,7 +110,6 @@ describe "Your Account", :type => :feature do
     it "Displays no items for pickup when none are available" do
       expect(page).to have_content I18n.t('blacklight.account.no_pickup_items')
     end
-
   end
 
   context "Princeton Community User has signed in with a block and active requests" do
@@ -124,14 +119,14 @@ describe "Your Account", :type => :feature do
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
     before(:each) do
-      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}").
-         with(:headers => {'User-Agent'=>'Faraday v0.9.2'}).
-         to_return(:status => 200, :body => valid_patron_response, :headers => {})
+      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .to_return(status: 200, body: valid_patron_response, headers: {})
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
-      stub_request(:get, valid_patron_record_uri).
-        with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
-        to_return(status: 200, body: voyager_account_response, headers: {})
+      stub_request(:get, valid_patron_record_uri)
+        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .to_return(status: 200, body: voyager_account_response, headers: {})
 
       sign_in user
       visit('/account')
@@ -176,18 +171,17 @@ describe "Your Account", :type => :feature do
     let(:user) { FactoryGirl.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_response) { fixture('/account_with_block_fines_recall.xml') }
-    # FIXME - Had trouble reading the fixture IO Closed Stream error so faking it right now
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
     before(:each) do
-      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}").
-         with(:headers => {'User-Agent'=>'Faraday v0.9.2'}).
-         to_return(:status => 200, :body => valid_patron_response, :headers => {})
+      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .to_return(status: 200, body: valid_patron_response, headers: {})
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
-      stub_request(:get, valid_patron_record_uri).
-        with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
-        to_return(status: 200, body: voyager_account_response, headers: {})
+      stub_request(:get, valid_patron_record_uri)
+        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .to_return(status: 200, body: voyager_account_response, headers: {})
 
       sign_in user
       visit('/account')
@@ -237,52 +231,50 @@ describe "Your Account", :type => :feature do
     let(:user) { FactoryGirl.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_response) { fixture('/voyager_account_with_recall_and_overdue_fines.xml') }
-    # FIXME - Had trouble reading the fixture IO Closed Stream error so faking it right now
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
-    let(:voyager_authenticate_response) { fixture('/authenticate_patron_response_success.xml')}
+    let(:voyager_authenticate_response) { fixture('/authenticate_patron_response_success.xml') }
     let(:voyager_successful_renew_request) { fixture('/voyager_account_with_recal_and_fines_renew_response.xml') }
-    let(:voyager_dbkey_response) { fixture('/voyager_db_info_response.xml')}
+    let(:voyager_dbkey_response) { fixture('/voyager_db_info_response.xml') }
     let(:voyager_successful_cancel_request) { fixture('/successful_cancelled_request.xml') }
     let(:voyager_cancel_response_request_item) { fixture('/successful_cancel_response_request_item.xml') }
     let(:voyager_cancel_response_avail_item) { fixture('/successful_cancel_response_avail_item.xml') }
     let(:renew_response_only_success) { fixture('/successful_voyager_renew_response.xml') }
 
     before(:each) do
-      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}").
-         with(:headers => {'User-Agent'=>'Faraday v0.9.2'}).
-         to_return(:status => 200, :body => valid_patron_response, :headers => {})
+      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .to_return(status: 200, body: valid_patron_response, headers: {})
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
-      stub_request(:get, valid_patron_record_uri).
-        with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
-        to_return(status: 200, body: voyager_account_response, headers: {})
+      stub_request(:get, valid_patron_record_uri)
+        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .to_return(status: 200, body: voyager_account_response, headers: {})
 
-      stub_request(:get, "#{ENV['voyager_api_base']}/vxws/dbInfo?option=dbinfo").
-        with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
-        to_return(status: 200, body: voyager_dbkey_response, headers: {})
+      stub_request(:get, "#{ENV['voyager_api_base']}/vxws/dbInfo?option=dbinfo")
+        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .to_return(status: 200, body: voyager_dbkey_response, headers: {})
 
-      stub_request(:post, "#{ENV['voyager_api_base']}/vxws/AuthenticatePatronService").
-        with(headers: { "User-Agent"=>"Faraday v0.9.2", "Content-type" => "application/xml" } ).
-        to_return(status: 200, body: voyager_authenticate_response, headers: {})
+      stub_request(:post, "#{ENV['voyager_api_base']}/vxws/AuthenticatePatronService")
+        .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+        .to_return(status: 200, body: voyager_authenticate_response, headers: {})
 
-      stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/RenewService").
-        with(headers: { "User-Agent"=>"Faraday v0.9.2", "Content-type" => "application/xml"} ).
-        to_return(status: 200, body: voyager_successful_renew_request, headers: {})
+      stub_request(:post, "#{ENV['voyager_api_base']}/vxws/RenewService")
+        .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+        .to_return(status: 200, body: voyager_successful_renew_request, headers: {})
 
-      stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/CancelService").
-        with(headers: { "User-Agent"=>"Faraday v0.9.2", "Content-type" => "application/xml"} ).
-        to_return(status: 200, body: voyager_successful_cancel_request, headers: {})
+      stub_request(:post, "#{ENV['voyager_api_base']}/vxws/CancelService")
+        .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+        .to_return(status: 200, body: voyager_successful_cancel_request, headers: {})
 
       sign_in user
       visit('/account')
     end
 
     describe "User can renew", js: true do
-
       it "returns a failure message when the request can't be processed" do
-        stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/RenewService").
-          with(headers: { "User-Agent"=>"Faraday v0.9.2", "Content-type" => "application/xml"} ).
-          to_return(status: 500, body: "Bad thing happened", headers: {})
+        stub_request(:post, "#{ENV['voyager_api_base']}/vxws/RenewService")
+          .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+          .to_return(status: 500, body: "Bad thing happened", headers: {})
 
         check('select-all-renew')
         click_button('Renew selected items')
@@ -295,7 +287,6 @@ describe "Your Account", :type => :feature do
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.renew_no_items'))
       end
-
 
       it "selected items" do
         stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/RenewService").
@@ -343,17 +334,13 @@ describe "Your Account", :type => :feature do
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.renew_partial_fail'))
       end
-
     end
 
     describe "User can cancel", js: true do
-
       it "returns a failure message when the request can't be processed" do
-
-        stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/CancelService").
-          with(headers: { "User-Agent"=>"Faraday v0.9.2", "Content-type" => "application/xml"} ).
-          to_return(status: 500, body: "bad thing happened", headers: {})
-
+        stub_request(:post, "#{ENV['voyager_api_base']}/vxws/CancelService")
+          .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+          .to_return(status: 500, body: "bad thing happened", headers: {})
         check('cancel-7114238')
         click_button('Cancel Requests')
         wait_for_ajax
@@ -367,9 +354,9 @@ describe "Your Account", :type => :feature do
       end
 
       it "selected requests" do
-        stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/CancelService").
-          with(headers: { "User-Agent"=>"Faraday v0.9.2", "Content-type" => "application/xml"} ).
-          to_return(status: 200, body: voyager_cancel_response_avail_item, headers: {})
+        stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/CancelService")
+          .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+          .to_return(status: 200, body: voyager_cancel_response_avail_item, headers: {})
         check('cancel-7114238')
         expect(find('#cancel-7114238')).to be_checked
         click_button('Cancel Requests')
@@ -380,9 +367,9 @@ describe "Your Account", :type => :feature do
       end
 
       it "selected available pickup items" do
-        stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/CancelService").
-          with(headers: { "User-Agent"=>"Faraday v0.9.2", "Content-type" => "application/xml"} ).
-          to_return(status: 200, body: voyager_cancel_response_request_item, headers: {})
+        stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/CancelService")
+          .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+          .to_return(status: 200, body: voyager_cancel_response_request_item, headers: {})
         check('cancel-42289')
         expect(find('#cancel-42289')).to be_checked
         click_button('Cancel Requests')
@@ -403,8 +390,6 @@ describe "Your Account", :type => :feature do
         expect(page).to have_no_selector('#cancel-7114238')
         expect(page).to have_no_selector('#cancel-42289')
       end
-
     end
   end
-
 end

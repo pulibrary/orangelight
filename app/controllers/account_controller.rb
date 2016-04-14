@@ -143,5 +143,4 @@ class AccountController < ApplicationController
     account = VoyagerAccount.new(voyager_account.body)
     account
   end
-
 end

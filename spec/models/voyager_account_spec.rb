@@ -2,16 +2,15 @@ require 'rails_helper'
 require './lib/orangelight/voyager_account.rb'
 
 RSpec.describe VoyagerAccount do
-  
-  let(:subject) { VoyagerAccount.new(fixture('/pul_voyager_account_response.xml')) }
-  let(:subject_with_fines_requests) { VoyagerAccount.new(fixture('/generic_voyager_account_response.xml')) }
-  let(:subject_with_lost_fines) { VoyagerAccount.new(fixture('/account_with_block_fines_recall.xml')) }
-  let(:subject_empty_account) { VoyagerAccount.new(fixture('/generic_voyager_account_empty_response.xml')) }
-  let(:subject_failed_renewal_charged_items) { VoyagerAccount.new(fixture('/request_response_cannot_renew_short_term.xml'))}
-  let(:subject_successful_renewal) { VoyagerAccount.new(fixture('/successful_voyager_renew_response.xml')) }
-  let(:subject_with_only_avail_items) { VoyagerAccount.new(fixture('/generic_voyager_account_only_avail_items.xml')) }
-  let(:subject_with_only_request_items) { VoyagerAccount.new(fixture('/generic_voyager_account_only_request_items.xml')) }
 
+  let(:subject) { described_class.new(fixture('/pul_voyager_account_response.xml')) }
+  let(:subject_with_fines_requests) { described_class.new(fixture('/generic_voyager_account_response.xml')) }
+  let(:subject_with_lost_fines) { described_class.new(fixture('/account_with_block_fines_recall.xml')) }
+  let(:subject_empty_account) { described_class.new(fixture('/generic_voyager_account_empty_response.xml')) }
+  let(:subject_failed_renewal_charged_items) { described_class.new(fixture('/request_response_cannot_renew_short_term.xml')) }
+  let(:subject_successful_renewal) { described_class.new(fixture('/successful_voyager_renew_response.xml')) }
+  let(:subject_with_only_avail_items) { described_class.new(fixture('/generic_voyager_account_only_avail_items.xml')) }
+  let(:subject_with_only_request_items) { described_class.new(fixture('/generic_voyager_account_only_request_items.xml')) }
 
   describe "#expiration_date" do
     it "Contains a Valid Expiration Date" do
@@ -21,7 +20,6 @@ RSpec.describe VoyagerAccount do
     it "returns nil when expiration date is empty" do
       expect(subject_with_fines_requests.expiration_date).to be_nil
     end
-
   end
 
   describe "#borrowing_blocks" do
@@ -81,13 +79,13 @@ RSpec.describe VoyagerAccount do
 
     it "Includes a due date for each Charged Item" do
       subject.charged_items.each do |item|
-        expect(item.has_key?("dueDate")).to eq(true)
+        expect(item.key?("dueDate")).to eq(true)
       end
     end
 
     it "Notes if items can be renewed" do
       subject.charged_items.each do |item|
-        expect(item.has_key?("renewable")).to eq(true)
+        expect(item.key?("renewable")).to eq(true)
       end
     end
 
@@ -111,11 +109,9 @@ RSpec.describe VoyagerAccount do
       expect(failed_renewal[:renew_status][:item_blocks]).to be_truthy
       expect(failed_renewal[:renew_status][:item_blocks]["blockDisplayName"]).to eq('Item not authorized for renewal.')
     end
-
   end
 
   describe "#avail_items" do
-
     it "Displays a list of available pickup items" do
       expect(subject_with_fines_requests.avail_items.size).to eq(1)
     end
@@ -126,13 +122,13 @@ RSpec.describe VoyagerAccount do
 
     it "Includes an expiration date for each active requests" do
       subject_with_fines_requests.avail_items.each do |avail_item|
-        expect(avail_item.has_key?("expireDate")).to eq(true)
+        expect(avail_item.key?("expireDate")).to eq(true)
       end
     end
 
     it "Includes a Pickup Location" do
       subject_with_fines_requests.avail_items.each do |avail_item|
-        expect(avail_item.has_key?("pickuplocation")).to eq(true)
+        expect(avail_item.key?("pickuplocation")).to eq(true)
       end
     end
   end
@@ -148,19 +144,18 @@ RSpec.describe VoyagerAccount do
 
     it "Includes an expiration date for each active requests" do
       subject_with_fines_requests.request_items.each do |request_item|
-        expect(request_item.has_key?("expireDate")).to eq(true)
+        expect(request_item.key?("expireDate")).to eq(true)
       end
     end
 
     it "Includes a Pickup Location" do
       subject_with_fines_requests.request_items.each do |request_item|
-        expect(request_item.has_key?("pickuplocation")).to eq(true)
+        expect(request_item.key?("pickuplocation")).to eq(true)
       end
     end
   end
 
   describe "#outstanding_hold_requests" do
-
     it "returns the total number of outstanding holds" do
       expect(subject_with_fines_requests.outstanding_hold_requests).to eq(4)
     end
@@ -172,7 +167,5 @@ RSpec.describe VoyagerAccount do
     it 'returns the total number of holds when request items is empty' do
       expect(subject_with_only_avail_items.outstanding_hold_requests).to eq(1)
     end
-
   end
-
 end

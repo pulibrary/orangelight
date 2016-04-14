@@ -2,7 +2,6 @@ require 'rails_helper'
 require './lib/orangelight/voyager_account.rb'
 
 RSpec.describe ApplicationHelper do
-
   let(:account_data) { VoyagerAccount.new(fixture('/account_with_block_fines_recall.xml')) }
   let(:item_status_to_label) { helper.item_status_to_label(account_data.charged_items[0]) }
   let(:format_date) { helper.format_date(account_data.charged_items[0]['dueDate']) }
@@ -24,7 +23,6 @@ RSpec.describe ApplicationHelper do
   end
 
   describe "#format_block_statement" do
-
     it "It returns a formatted string when an overdue block is in place" do
       expect(format_block_statement).to eq(I18n.t('blacklight.account.overdue_block'))
     end
@@ -48,5 +46,4 @@ RSpec.describe ApplicationHelper do
       expect(display_account_balance).to eq('664.00 USD')
     end
   end
-
 end
