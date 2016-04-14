@@ -9,7 +9,7 @@
 Versions:
 
 * Ruby: 2.2.3
-* Rails: 4.2.5.1
+* Rails: 4.2.6
 * Blacklight: 5.18.0
 * blacklight_advanced_search: 5.1.2
 
@@ -41,19 +41,6 @@ rake jetty:start
 rake pulsearch:index
 rake db:seed
 ```
-### Whitelist Configuration
-```bash
-cp config/ip_whitelist.yml.tmpl config/ip_whitelist.yml
-```
-
-The application controller checks the ip whitelist to determine whether the user has access to the application. When the whitelist is empty, everyone has access to the application. If it contains ip addresses, then only users whose ip address is in the whitelist can access the application.
-
-### Request and Holding 
-```bash
-cp config/requests.yml.tmpl config/requests.yml
-```
-
-Configure various options for PUL Requests.
 
 Deploying with Capistrano
 ------------------

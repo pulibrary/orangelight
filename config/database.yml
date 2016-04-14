@@ -20,6 +20,9 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
+  collation: C
+  ctype: C
+  template: template0
 
 development:
   <<: *default
@@ -80,6 +83,7 @@ test:
 #
 production:
   <<: *default
-  database: orangelight_production
-  username: orangelight
-  password: <%= ENV['ORANGELIGHT_DATABASE_PASSWORD'] %>
+  database: <%= ENV['OL_DB'] %>
+  username: <%= ENV['OL_DB_USERNAME'] %>
+  password: <%= ENV['OL_DB_PASSWORD'] %>
+  host: <%= ENV['OL_DB_HOST'] %>
