@@ -40,7 +40,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Capistrano
-gem 'capistrano', '~> 3.2.0'
+gem 'capistrano', '~> 3.4.0'
 
 gem 'faraday'
 gem 'faraday-cookie_jar'
@@ -71,7 +71,7 @@ gem 'newrelic_rpm'
 gem 'requests', :git => "https://github.com/pulibrary/requests.git", :branch => 'request_test_specs'
 
 group :development do
-  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-rails', '~> 1.1.6'
   gem 'quiet_assets'
 end
 
