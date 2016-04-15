@@ -8,6 +8,7 @@
             <th>Item</th>
             <th>Call Number</th>
             <th>Item Type</th>
+            <th>Status</th>
             <th>Due Date</th>
             <th>Message</th>
           </tr>
@@ -33,8 +34,11 @@
               <td><%= item["callNumber"] %></td>
               <td><%= item["itemtype"] %></td>
               <td>
-                  <em><%= item_status_to_label(item) %></em>
-                  <span>&nbsp;</span>
+                <em>
+                  <%= item_status_to_label(item) %>
+                </em>
+              </td>
+              <td>
                 <%= format_date(item['dueDate']) %>
               </td>
               <td>
@@ -53,7 +57,7 @@
           <option value="select-all-renew">Renew all items from Princeton University Library</option>
         </select>
       </div>
-      <%= button_tag "Renew items", class: 'btn btn-primary', data: { disable_with: 'Submitting Renwal Requests' } %>
+      <%= button_tag "Renew items", class: 'btn btn-primary', data: { disable_with: 'Submitting Renewal Requests' } %>
     </div>
   <% end %>
 <% else %>
