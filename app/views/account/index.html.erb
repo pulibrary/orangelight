@@ -1,6 +1,6 @@
 <div class="col-md-12">
   <h1 class="page-heading"><%= I18n.t('blacklight.header_links.account_page') %></h1>
-
+  <p>If you have questions, please email <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a> or call (609) 258-3202.</p>
   <% if(@patron) %>
     <h2 class="section-heading">Patron Blocks</h2>
     <%= render 'blocks' %>
@@ -11,5 +11,5 @@
     <h2 class="section-heading">Outstanding Requests</h2>
     <%= render 'request_items' %>
     <%= render 'fines_fees' %>
-  <% end %> 
+  <% end %>
 </div>
