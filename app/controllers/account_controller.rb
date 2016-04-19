@@ -2,7 +2,6 @@ require './lib/orangelight/voyager_patron_client.rb'
 require './lib/orangelight/voyager_account.rb'
 
 class AccountController < ApplicationController
-  include Blacklight::Configurable
   include ApplicationHelper
   include AccountHelper
 
