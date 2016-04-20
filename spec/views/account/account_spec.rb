@@ -306,6 +306,7 @@ describe "Your Account", :type => :feature do
         expect(page).to have_xpath("//tr[@data-item-id='3688389']")
         click_button('Renew items')
         wait_for_ajax
+        expect(page).to have_selector(".success[data-item-id='3688389']")
         expect(find(:xpath, "//tr[@data-item-id='3688389']/td/span[@class='item--messages']/b").text).to eq("Renewed")
       end
 
@@ -314,6 +315,7 @@ describe "Your Account", :type => :feature do
         expect(page).to have_xpath("//tr[@data-item-id='7193128']")
         click_button('Renew items')
         wait_for_ajax
+        expect(page).to have_selector(".danger[data-item-id='7193128']")
         expect(find(:xpath, "//tr[@data-item-id='7193128']/td/span[@class='item--messages']/span[@class='message']").text).to eq("Item not authorized for renewal.")
         expect(find(:xpath, "//tr[@data-item-id='7193128']/td/span[@class='item--messages']/b").text).to eq("Not Renewed")
       end

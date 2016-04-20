@@ -42,5 +42,14 @@ module AccountHelper
       content_tag(:b, "#{item[:renew_status]["status"]}")
     end
   end
-  
+
+  def renew_state item
+    unless item[:renew_status].nil?
+      if item[:renew_status]["status"] == 'Renewed'
+        "success"
+      else
+        "danger"
+      end
+    end
+  end
 end

@@ -15,14 +15,14 @@
         </thead>
         <tbody>
           <% @account.charged_items.each do |item| %>
-            <tr data-item-id="<%= item['itemId'] %>">
+            <tr data-item-id="<%= item['itemId'] %>" class="<%= renew_state(item) %>">
               <td>
                 <% unless @account.has_blocks? %>
                   <% if item["renewable"] == 'true' %>
                     <label><input id="charged-<%= item["itemId"] %>" 
                       type="checkbox" name="renew_items[]" 
                       value="<%= format_renew_string(item) %>"> 
-                      <%= I18n.t('blacklight.account.renew_label') %></label>
+                    </label>
                   <% else %>
                     <span><%= I18n.t('blacklight.account.not_renewable_due_to_item_status') %></span>
                   <% end %>
