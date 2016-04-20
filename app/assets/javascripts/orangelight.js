@@ -47,11 +47,22 @@ $(document).ready(function() {
     ///////////////////////////////////////////
 
     //Select all items for renew in accoun
-    $("body").on('change', '#renew-choices', function (e) {
-        if ($(this).val() == "select-all-renew") {
+    $("body").on('change', '#select-all-renew', function (e) {
+        if (this.checked) {
             $('.account--charged_items').find('td input:checkbox').each(function(index) {
                 $(this).prop('checked', true);
+                $(this).closest("tr").toggleClass("info", this.checked);
+            });
+        } else {
+            $('.account--charged_items').find('td input:checkbox').each(function(index) {
+                $(this).prop('checked', false);
+                $(this).closest("tr").toggleClass("info", this.checked);
             });
         }
+    });
+
+    //Add active class to tr if selected
+    $("body").on('change', 'td input:checkbox', function(e) {
+        $(this).closest("tr").toggleClass("info", this.checked);
     });
 });
