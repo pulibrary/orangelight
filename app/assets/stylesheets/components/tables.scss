@@ -9,10 +9,27 @@ table {
 .browse thead {
   th {
     padding: 10px 15px;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
 
     &:nth-child(4),
     &:nth-child(2) {
       min-width: 150px;
+    }
+  }
+}
+
+.account--charged_items thead {
+  th {
+    // font-family: Arial, sans-serif;
+    font-weight: 700;
+
+    &:nth-child(4) {
+      min-width: 85px;
+    }
+
+    &:nth-child(6) {
+      min-width: 140px;
     }
   }
 }
@@ -28,7 +45,13 @@ td {
 
 @media (max-width: $bp-medium) {
   /* Force table to not be like tables anymore */
-  .browse--call-number {
+  .browse--call-number,
+  .table.account--charged_items,
+  .table.account--demerits,
+  .table.account--fines,
+  .table.account--requests,
+  .table.account--available_items,
+  .table.account--blocks {
     table, thead, tbody, th, td, tr {
       display: block;
     }
@@ -41,7 +64,7 @@ td {
 
     tr {
       border-bottom: 1px solid $gray;
-      padding: 0.5em;
+      padding: 0;
     }
 
     // for call number browse only
@@ -52,11 +75,15 @@ td {
       position: relative;
       padding-left: 1em;
       padding-top: 2em;
-      margin-bottom: 0.5em;
+      padding-bottom: 0.75em;
 
       &.rtl {
         float: none;
       }
+    }
+
+    td:empty {
+      display: none;
     }
 
     td:before {
@@ -70,30 +97,12 @@ td {
       width: 45%;
       white-space: nowrap;
       font-weight: 700;
+      font-family: Arial, sans-serif;
     }
+  }
 
-    td:nth-of-type(1):before {
-      content: "Call Number";
-    }
-
-    td:nth-of-type(2):before {
-      content: "Location";
-    }
-
-    td:nth-of-type(3):before {
-      content: "Title";
-    }
-
-    td:empty {
-      display: none;
-    }
-
-    td:nth-of-type(4):before {
-      content: "Creator";
-    }
-
-    td:nth-of-type(5):before {
-      content: "Publication Info";
-    }
+  .table-bordered,
+  .table-bordered > tbody > tr > td {
+    border: 0;
   }
 }

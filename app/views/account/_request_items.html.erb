@@ -1,37 +1,37 @@
 <%= form_tag('/account/cancel', remote: true, id: "request-cancel") do %>
   <% if (!@account.request_items.nil?) %>
-    <div class="table-responsive account--requests">
-      <table class="table table-striped table-bordered">
-        <thead>
+    <table class="table table-striped table-bordered account--requests">
+      <thead>
+        <tr>
+          <th><label><input type="checkbox" id="select-all"/> <span class="sr-only">Select All</span></label></th>
+          <th>Item Title</th>
+          <th>Request Expiration Date</th>
+          <th>Pickup Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @account.request_items.each do |item| %>
           <tr>
-            <th>Cancel?</th>
-            <th>Item Title</th>
-            <th>Request Expiration Date</th>
-            <th>Pickup Location</th>
+            <td>
+              <label><input id="cancel-<%= item['itemID'] %>" type="checkbox" name="cancel_requests[]"
+              value="<%= format_hold_cancel(item) %>">
+              Cancel</label>
+            </td>
+            <td><%= item["itemTitle"] %></td>
+            <td>
+              <%= "Position: #{item['queuePosition']}" %>
+              <%= "Expires: #{format_date(item["expireDate"])}" %>
+            </td>
+            <td><%= item["pickuplocation"] %></td>
           </tr>
-        </thead>
-        <tbody>
-          <% @account.request_items.each do |item| %>
-            <tr>
-              <td>
-                <label><input id="cancel-<%= item['itemID'] %>" type="checkbox" name="cancel_requests[]" 
-                value="<%= format_hold_cancel(item) %>"> 
-                Cancel</label>
-              </td>
-              <td><%= item["itemTitle"] %></td>
-              <td>
-                <%= "Position: #{item['queuePosition']}" %>
-                <%= "Expires: #{format_date(item["expireDate"])}" %>
-              </td>
-              <td><%= item["pickuplocation"] %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
   <% else %>
     <p><%= I18n.t('blacklight.account.no_requests') %></p>
   <% end %>
   <%= render 'available_items' %>
-  <%= button_tag "Cancel Requests", class: 'btn btn-primary', data: { disable_with: 'Submitting Cancellation Request' } %>
+  <% if (!@account.request_items.nil?) %>
+    <%= button_tag "Cancel Requests", class: 'btn btn-primary', data: { disable_with: 'Submitting Cancellation Request' } %>
+  <% end %>
 <% end %>

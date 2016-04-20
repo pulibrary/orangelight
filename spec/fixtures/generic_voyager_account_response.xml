@@ -105,7 +105,7 @@
     <myac:availItems>
       <myac:title>Available Items</myac:title>
       <myac:availItem>
-        <myac:itemID></myac:itemID>
+        <myac:itemID>1234</myac:itemID>
         <myac:holdRecallID>1494</myac:holdRecallID>
         <myac:replyNote/>
         <myac:status>1</myac:status>

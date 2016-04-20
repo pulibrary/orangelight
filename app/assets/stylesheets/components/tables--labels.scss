@@ -1,0 +1,133 @@
+@import "variables/breaks";
+@import "variables/colors";
+@import "abstractions/mixins";
+
+@media (max-width: $bp-medium) {
+  .browse--call-number {
+    td:nth-of-type(1):before {
+      content: "Call Number";
+    }
+
+    td:nth-of-type(2):before {
+      content: "Location";
+    }
+
+    td:nth-of-type(3):before {
+      content: "Title";
+    }
+
+    td:nth-of-type(4):before {
+      content: "Creator";
+    }
+
+    td:nth-of-type(5):before {
+      content: "Publication Info";
+    }
+  }
+
+  .account--charged_items {
+    td:nth-of-type(2) {
+      padding-top: 0;
+    }
+
+    td:nth-of-type(2):before {
+      display: none;
+    }
+
+    td:nth-of-type(3):before {
+      content: "Call Number";
+    }
+
+    td:nth-of-type(4):before {
+      content: "Item Type";
+    }
+
+    td:nth-of-type(5):before {
+      content: "Status";
+    }
+
+    td:nth-of-type(6):before {
+      content: "Due Date";
+    }
+
+    td:nth-of-type(7):before {
+      content: "Message";
+    }
+  }
+
+  .account--fines {
+    td:nth-of-type(1):before {
+      content: "Date";
+    }
+
+    td:nth-of-type(2):before {
+      content: "Title";
+    }
+
+    td:nth-of-type(3):before {
+      content: "Fee / Posting Type";
+    }
+
+    td:nth-of-type(4):before {
+      content: "Fee";
+    }
+
+    td:nth-of-type(5):before {
+      content: "Balance";
+    }
+
+    .account--fines_total {
+      td {
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+      }
+
+      td:nth-of-type(1) {
+        display: none;
+      }
+
+      td:nth-of-type(2):before {
+        content: "Total Due";
+      }
+    }
+  }
+
+  .account--requests,
+  .account--available_items {
+    td:nth-of-type(2) {
+      padding-top: 0;
+    }
+
+    td:nth-of-type(2):before {
+      display: none;
+    }
+
+    td:nth-of-type(3):before {
+      content: "Request Expiration Date";
+    }
+
+    td:nth-of-type(4):before {
+      content: "Pickup Location";
+    }
+  }
+
+  .account--blocks {
+    td:nth-of-type(1):before {
+      content: "Block Group";
+    }
+
+    td:nth-of-type(2):before {
+      content: "Block Count";
+    }
+
+    td:nth-of-type(3):before {
+      content: "Reason";
+    }
+  }
+}
+
+.account--fines_total {
+  td:nth-of-type(1) {
+    text-align: right;
+  }
+}

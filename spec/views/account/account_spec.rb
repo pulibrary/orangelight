@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 describe "Your Account", :type => :feature do
-  
+
   context "User has not signed in" do
 
     it "Account information displays as not available" do
       visit('/account')
       expect(page).to have_content 'Log in with Princeton Net ID'
     end
-    
+
   end
 
   context "Princeton Community User has signed in" do
@@ -34,7 +34,7 @@ describe "Your Account", :type => :feature do
     end
 
     it "Displays Basic Patron Information" do
-      
+
       expect(page).to have_content 'Your Account'
       expect(page).to have_content 'Joe Student'
       expect(page).to have_content '22101008199999'
@@ -45,17 +45,13 @@ describe "Your Account", :type => :feature do
       expect(page).to have_content 'Due Date'
     end
 
-    it "Displays item eligibility for renewal" do
-      expect(page).to have_content 'Renew?'
-    end
-
     it "Displays an unchecked option to renew item request" do
       expect(page.has_no_checked_field?('renew_items[]')).to be_truthy
     end
 
     it "Displays charged items as renewable" do
       expect(page).to have_css('#item-renew .account--charged_items input')
-      expect(page.first('.account--charged_items input').value).to eq('17365')
+      expect(page.first(".account--charged_items [data-item-id='17365'] input").value).to eq('17365')
     end
 
     it "Displays outstanding fines" do
@@ -131,7 +127,7 @@ describe "Your Account", :type => :feature do
 
     it "Displays the item and hold recall ID" do
       expect(page).to have_css('#request-cancel .account--requests input')
-      expect(page.find('.account--requests input').value).to eq('item-7114238:holdrecall-587476:type-R')
+      expect(page.find(".account--requests #cancel-7114238").value).to eq('item-7114238:holdrecall-587476:type-R')
     end
 
     it "Displays the position of the request in the hold queue" do
@@ -204,9 +200,9 @@ describe "Your Account", :type => :feature do
     it "displays the total amount due" do
       expect(page).to have_css('.account--fines_total')
       expect(page).to have_content('664.00')
-    end 
+    end
 
-    it "It has a data attribute for each charged item" do 
+    it "It has a data attribute for each charged item" do
       expect(page).to have_xpath("//tr[@data-item-id='7247566']")
       expect(page).to have_xpath("//tr[@data-item-id='7114238']")
       expect(page).to have_xpath("//tr[@data-item-id='5331658']")
@@ -263,14 +259,14 @@ describe "Your Account", :type => :feature do
           with(headers: { "User-Agent"=>"Faraday v0.9.2", "Content-type" => "application/xml"} ).
           to_return(status: 500, body: "Bad thing happened", headers: {})
 
-        select('Renew all items from Princeton University Library', from: 'renew-choices')
-        click_button('Renew items')
+        check('select-all-renew')
+        click_button('Renew selected items')
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.renew_fail'))
       end
 
       it "but no items are selected for renewal" do
-        click_button('Renew items')
+        click_button('Renew selected items')
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.renew_no_items'))
       end
@@ -279,41 +275,41 @@ describe "Your Account", :type => :feature do
       it "selected items" do
         check('charged-3688389')
         expect(find('#charged-3688389')).to be_checked
-        click_button('Renew items')
+        click_button('Renew selected items')
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.renew_success'))
       end
 
       # Not sure how to test this one
       it "by selecting all charged items" do
-        select('Renew all items from Princeton University Library', from: 'renew-choices')
+        check('select-all-renew')
         within('#item-renew') do
           all('input[type=checkbox]').each do |checkbox|
             expect(checkbox).to be_checked
-          end 
+          end
         end
       end
 
       it "can renew all selected items" do
-        select('Renew all items from Princeton University Library', from: 'renew-choices')
-        click_button('Renew items')
+        check('select-all-renew')
+        click_button('Renew selected items')
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.renew_success'))
       end
 
       it "displays a confirmation message for each successfully renewed item" do
-        select('Renew all items from Princeton University Library', from: 'renew-choices')
+        check('select-all-renew')
         expect(page).to have_xpath("//tr[@data-item-id='3688389']")
-        click_button('Renew items')
+        click_button('Renew selected items')
         wait_for_ajax
         expect(page).to have_selector(".success[data-item-id='3688389']")
         expect(find(:xpath, "//tr[@data-item-id='3688389']/td/span[@class='item--messages']/b").text).to eq("Renewed")
       end
 
       it "displays a block message for each item that cannot be renewed" do
-        select('Renew all items from Princeton University Library', from: 'renew-choices')
+        check('select-all-renew')
         expect(page).to have_xpath("//tr[@data-item-id='7193128']")
-        click_button('Renew items')
+        click_button('Renew selected items')
         wait_for_ajax
         expect(page).to have_selector(".danger[data-item-id='7193128']")
         expect(find(:xpath, "//tr[@data-item-id='7193128']/td/span[@class='item--messages']/span[@class='message']").text).to eq("Item not authorized for renewal.")
@@ -325,11 +321,11 @@ describe "Your Account", :type => :feature do
     describe "User can cancel", js: true do
 
       it "returns a failure message when the request can't be processed" do
-        
+
         stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/CancelService").
           with(headers: { "User-Agent"=>"Faraday v0.9.2", "Content-type" => "application/xml"} ).
           to_return(status: 500, body: "bad thing happened", headers: {})
-        
+
         check('cancel-7114238')
         click_button('Cancel Requests')
         wait_for_ajax
@@ -382,5 +378,5 @@ describe "Your Account", :type => :feature do
 
     end
   end
-  
+
 end

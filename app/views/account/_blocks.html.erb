@@ -1,24 +1,22 @@
 <% if (!@account.borrowing_blocks.nil?) %>
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered account--blocks">
-      <thead>
+  <table class="table table-striped table-bordered account--blocks">
+    <thead>
+      <tr>
+        <td>Block Group</td>
+        <td>Block Count</td>
+        <td>Reason</td>
+      </tr>
+    </thead>
+    <tbody>
+    <% @account.borrowing_blocks.each do |block| %>
         <tr>
-          <td>Block Group</td>
-          <td>Block Count</td>
-          <td>Reason</td>
+          <td><%= block["patronGroupName"] %></td>
+          <td><%= block["blockCount"] %></td>
+          <td><%= format_block_statement(block["blockReason"]) %></td>
         </tr>
-      </thead>
-      <tbody>
-      <% @account.borrowing_blocks.each do |block| %>
-          <tr>
-            <td><%= block["patronGroupName"] %></td>
-            <td><%= block["blockCount"] %></td>
-            <td><%= format_block_statement(block["blockReason"]) %></td>
-          </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
+    <% end %>
+    </tbody>
+  </table>
 <% else %>
   <p><%= I18n.t('blacklight.account.no_blocks') %></p>
 <% end %>
