@@ -1,11 +1,15 @@
-@import "variables/colors";
+@import "../variables/colors";
+@import "variables";
 
 @font-face {
-  font-family: 'pul-icons';
-  src: font-url("icons/pul-icons.eot?1uuk7m");
-  src: font-url("icons/pul-icons.eot?1uuk7m#iefix") format("embedded-opentype"), font-url("icons/pul-icons.ttf?1uuk7m") format("truetype"), font-url("icons/pul-icons.woff?1uuk7m") format("woff"), font-url("icons/pul-icons.svg?1uuk7m#pul-icons") format("svg");
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'pul-icons';
+    src:    font-url('icons/pul-icons.eot?7ecx6q');
+    src:    font-url('icons/pul-icons.eot?7ecx6q#iefix') format('embedded-opentype'),
+        font-url('icons/pul-icons.ttf?7ecx6q') format('truetype'),
+        font-url('icons/pul-icons.woff?7ecx6q') format('woff'),
+        font-url('icons/pul-icons.svg?7ecx6q#pul-icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 [class^="icon-"],
@@ -13,156 +17,186 @@
 .toggle,
 .toggle.collapsed,
 .document-thumbnail .default {
-  font-family: 'pul-icons';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  text-decoration: none;
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'pul-icons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
 
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-senior-thesis:before,
-.blacklight-senior-thesis .document-thumbnail .default:before {
-  content: "\e600";
+.icon-bookmark {
+    &:before {
+        content: $icon-bookmark;
+    }
 }
-
-.icon-data-file:before,
-.blacklight-data-file .document-thumbnail .default:before {
-  content: "\e601";
+.icon-loading {
+    &:before {
+        content: $icon-loading;
+    }
 }
-
-.icon-map:before,
-.blacklight-map .document-thumbnail .default:before {
-  content: "\e602";
+.icon-cite {
+    &:before {
+        content: $icon-cite;
+    }
 }
-
-.icon-manuscript:before,
-.blacklight-manuscript .document-thumbnail .default:before {
-  content: "\e603";
+.icon-share {
+    &:before {
+        content: $icon-share;
+    }
 }
-
-.icon-audio:before,
-.blacklight-audio .document-thumbnail .default:before {
-  content: "\e604";
+.icon-senior-thesis,
+.blacklight-senior-thesis .document-thumbnail .default {
+    &:before {
+        content: $icon-senior-thesis;
+    }
 }
-
-.icon-lp:before,
-.blacklight-lp .document-thumbnail .default:before {
-  content: "\f2f4";
+.icon-data-file,
+.blacklight-data-file .document-thumbnail .default {
+    &:before {
+        content: $icon-data-file;
+    }
 }
-
-.icon-cd:before,
-.blacklight-cd .document-thumbnail .default:before {
-  content: "\f2f3";
+.icon-map,
+.blacklight-map .document-thumbnail .default {
+    &:before {
+        content: $icon-map;
+    }
 }
-
-.icon-musical-score:before,
-.blacklight-musical-score .document-thumbnail .default:before {
-  content: "\e605";
+.icon-manuscript,
+.blacklight-manuscript .document-thumbnail .default {
+    &:before {
+        content: $icon-manuscript;
+    }
 }
-
-.icon-video-projected-medium:before,
-.blacklight-video-projected-medium .document-thumbnail .default:before {
-  content: "\e606";
+.icon-audio,
+.blacklight-audio .document-thumbnail .default {
+    &:before {
+        content: $icon-audio;
+    }
 }
-
-.icon-visual-material:before,
-.blacklight-visual-material .document-thumbnail .default:before {
-  content: "\e607";
+.icon-musical-score,
+.blacklight-musical-score .document-thumbnail .default {
+    &:before {
+        content: $icon-musical-score;
+    }
 }
-
-.icon-book:before,
-.blacklight-book .document-thumbnail .default:before {
-  content: "\e60b";
+.icon-video-projected-medium,
+.blacklight-video-projected-medium .document-thumbnail .default {
+    &:before {
+        content: $icon-video-projected-medium;
+    }
 }
-
-.icon-journal:before,
-.blacklight-journal .document-thumbnail .default:before {
-  content: "\e60c";
+.icon-visual-material,
+.blacklight-visual-material .document-thumbnail .default {
+    &:before {
+        content: $icon-visual-material;
+    }
 }
-
-.icon-mixed-material:before,
-.blacklight-mixed-material .document-thumbnail .default:before {
-  content: "\e60d";
+.toggle.collapsed {
+    &:before {
+        content: $icon-toggle-collapsed;
+    }
 }
-
-.icon-dissertation:before,
-.blacklight-dissertation .document-thumbnail .default:before {
-  content: "\e60e";
+.icon-remove {
+    &:before {
+        content: $icon-remove;
+    }
 }
-
-.icon-unknown:before,
-.blacklight-unknown .document-thumbnail .default:before {
-  content: "\e60f";
+.toggle {
+    &:before {
+        content: $icon-toggle;
+    }
 }
-
-.toggle.collapsed:before {
-  content: "\e608";
+.icon-book,
+.blacklight-book .document-thumbnail .default {
+    &:before {
+        content: $icon-book;
+    }
 }
-
-.icon-remove:before {
-  content: "\e609";
+.icon-journal,
+.blacklight-journal .document-thumbnail .default {
+    &:before {
+        content: $icon-journal;
+    }
 }
-
-.toggle:before {
-  content: "\e60a";
+.icon-mixed-material,
+.blacklight-mixed-material .document-thumbnail .default {
+    &:before {
+        content: $icon-mixed-material;
+    }
 }
-
-.icon-rssfeed:before {
-  content: "\e900";
-  color: $orange;
+.icon-dissertation,
+.blacklight-dissertation .document-thumbnail .default {
+    &:before {
+        content: $icon-dissertation;
+    }
 }
-
-.icon-rssfeed:hover {
-  text-decoration: none;
-
-  &:before {
-    color: $blue;
-  }
+.icon-unknown,
+.blacklight-unknown .document-thumbnail .default {
+    &:before {
+        content: $icon-unknown;
+    }
 }
-
-.icon-search:before {
-  content: "\e610";
+.icon-search {
+    &:before {
+        content: $icon-search;
+    }
 }
-
-.icon-bookmark:before {
-  content: "\e901";
+.icon-cd {
+    &:before {
+        content: $icon-cd;
+    }
 }
-
-.icon-cite:before {
-  content: "\e902";
-  margin-right: 0.5em;
+.icon-lp {
+    &:before {
+        content: $icon-lp;
+    }
 }
-
-.icon-share:before {
-  content: "\e903";
-  margin-right: 0.5em;
+.icon-external {
+    &:before {
+        content: $icon-external;
+    }
 }
-
-.icon-external:before {
-  content: "\f636";
-  margin-right: 0.5em;
+.icon-mobile {
+    &:before {
+        content: $icon-mobile;
+    }
 }
-
-.icon-mobile:before {
-  content: "\f690";
-  margin-right: 0.5em;
+.icon-email {
+    &:before {
+        content: $icon-email;
+    }
 }
-
-.icon-email:before {
-  content: "\f813";
-  margin-right: 0.5em;
+.icon-print {
+    &:before {
+        content: $icon-print;
+    }
 }
+.icon-spinner {
+    &:before {
+        content: $icon-spinner;
+    }
+}
+.icon-rssfeed {
+    &:before {
+        content: $icon-rssfeed;
+        color: $orange;
+    }
 
-.icon-print:before {
-  content: "\f893";
-  margin-right: 0.5em;
+    &:hover {
+        text-decoration: none;
+
+        &:before {
+            color: $blue;
+        }
+    }
 }
 
 a:link.toggle,
@@ -182,4 +216,42 @@ a:active.toggle {
 
 .glyphicon-map-marker {
   font-size: 1.2em;
+}
+
+.spin {
+  -webkit-animation: spin 2s infinite linear;
+     -moz-animation: spin 2s infinite linear;
+      -ms-animation: spin 2s infinite linear;
+          animation: spin 2s infinite linear;
+          display: inline-block;
+}
+
+.pulse {
+  -webkit-animation: spin 1s infinite steps(8);
+     -moz-animation: spin 1s infinite steps(8);
+      -ms-animation: spin 1s infinite steps(8);
+          animation: spin 1s infinite steps(8);
+          display: inline-block;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
 }

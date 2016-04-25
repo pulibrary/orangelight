@@ -32,6 +32,6 @@
   <% end %>
   <%= render 'available_items' %>
   <% if (!@account.request_items.nil?) %>
-    <%= button_tag "Cancel Requests", class: 'btn btn-primary', data: { disable_with: 'Submitting Cancellation Request' } %>
+    <%= button_tag "Cancel Requests", class: 'btn btn-primary', data: { disable_with: "Submitting Cancellation Request <span class='icon-spinner pulse'></span>" } %>
   <% end %>
 <% end %>

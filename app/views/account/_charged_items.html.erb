@@ -49,7 +49,7 @@
         <% end %>
       </tbody>
     </table>
-    <%= button_tag "Renew selected items", class: 'btn btn-primary', data: { disable_with: 'Submitting Renewal Requests' } %>
+    <%= button_tag "Renew selected items", class: 'btn btn-primary', data: { disable_with: "Submitting Renewal Requests <span class='icon-spinner pulse'></span>" } %>
   <% end %>
 <% else %>
   <p><%= I18n.t('blacklight.account.no_pickup_items') %></p>
