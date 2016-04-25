@@ -1,0 +1,19 @@
+@import "variables/colors";
+
+.flash_messages {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  .alert {
+    animation: slide 1.25s;
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(-100px);
+  }
+}
