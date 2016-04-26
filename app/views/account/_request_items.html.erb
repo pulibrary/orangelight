@@ -15,7 +15,7 @@
             <td>
               <label><input id="cancel-<%= item['itemID'] %>" type="checkbox" name="cancel_requests[]"
               value="<%= format_hold_cancel(item) %>">
-              Cancel</label>
+              <span class="sr-only">Cancel</span></label>
             </td>
             <td><%= item["itemTitle"] %></td>
             <td>
