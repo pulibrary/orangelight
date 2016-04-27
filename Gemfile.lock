@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/pulibrary/stringex.git
+  revision: 357f70511532a35b11a240e5ae06d02725cb8d0a
+  tag: vpton.2.5.2.2
+  specs:
+    stringex (2.5.2)
+
+GIT
   remote: https://github.com/pulibrary/requests.git
   revision: 125eafe93cfa246f071514e4d579e81a4c94af04
   branch: request_test_specs
@@ -12,13 +19,6 @@ GIT
       rails (~> 4.2)
       simple_form
       yaml_db (~> 0.3.0)
-
-GIT
-  remote: git://github.com/pulibrary/stringex.git
-  revision: 357f70511532a35b11a240e5ae06d02725cb8d0a
-  tag: vpton.2.5.2.2
-  specs:
-    stringex (2.5.2)
 
 GEM
   remote: https://rubygems.org/
@@ -405,3 +405,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   webmock
   yajl-ruby
+
+BUNDLED WITH
+   1.11.2

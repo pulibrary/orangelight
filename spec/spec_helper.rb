@@ -23,7 +23,7 @@ require 'webmock/rspec'
 require 'factory_girl'
 
 # allow connections to localhost, umlaut and bibdata marc record service
-WebMock.disable_net_connect!(allow_localhost: true, allow: ["#{ENV['umlaut_base']}", /\/bibliographic\//] )
+WebMock.disable_net_connect!(allow_localhost: true, allow: ["#{ENV['umlaut_base']}", /\/bibliographic\//, /\/locations\//] )
 
 Coveralls.wear!('rails') do
   add_filter '/lib/orangelight/browse_lists.rb'
