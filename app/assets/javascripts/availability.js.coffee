@@ -15,6 +15,7 @@ class AvailabilityUpdater
     'Lost--system applied', 'Claims returned', 'Withdrawn']
   available_labels = ['Available', 'Returned', 'In process', 'Requestable',
     'On shelf', 'All items available']
+  open_location_labels = ['Available', 'All items available']
   unavailable_labels = ['Checked out', 'Missing']
   request_availability: ->
     if $(".documents-list").length > 0
@@ -42,6 +43,13 @@ class AvailabilityUpdater
         this.get_more_items(holding_id)
       else
         this.apply_record_icon(availability_element, availability_info['status'])
+      this.update_location_services(holding_id)
+  update_location_services: (holding_id) ->
+    location_services_element = $(".location-services[data-holding-id='#{holding_id}']")
+    availability_label = $(".holding-status[data-holding-id='#{holding_id}'] .availability-icon.label")
+    availability_label = availability_label.text()
+    if location_services_element.attr('data-open') == 'false' || availability_label not in open_location_labels 
+      location_services_element.show()
   apply_record: (record_id, holding_records) ->
     for holding_id, availability_info of holding_records
       if availability_info['on_reserve']

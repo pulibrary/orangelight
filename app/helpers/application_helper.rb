@@ -99,7 +99,12 @@ module ApplicationHelper
   def process_physical_holding(holding, bib_id, holding_id, is_journal)
     info = ''
     unless holding['location'].blank?
-      location = content_tag(:span, holding['location'], class: 'location-text', data: { location: true, holding_id: holding_id })
+      location = content_tag(:span, holding['location'], class: 'location-text', data: 
+        { 
+          location: true, 
+          holding_id: holding_id
+        }
+      )
       location << locate_link_with_gylph(holding['location_code'], bib_id, holding['library']).html_safe
       info << content_tag(:h3, location.html_safe, class: 'library-location')
     end
@@ -120,7 +125,10 @@ module ApplicationHelper
     info << content_tag(:ul, "#{holding_label('Location note:')} #{listify_array(holding['location_note'])}".html_safe, class: 'location-note') unless holding['location_note'].nil?
     info << content_tag(:ul, "#{holding_label('Location has:')} #{listify_array(holding['location_has'])}".html_safe, class: 'location-has') unless holding['location_has'].nil?
     info << content_tag(:ul, ''.html_safe, class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
-    info << request_placeholder(bib_id, holding_id).html_safe
+    unless holding['dspace']
+      location_rules = LOCATIONS[holding['location_code'].to_sym]
+      info << request_placeholder(bib_id, holding_id, location_rules).html_safe
+    end
     info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
     info
   end
@@ -136,8 +144,10 @@ module ApplicationHelper
     content_tag(:div, label, class: 'holding-label')
   end
 
-  def request_placeholder(doc_id, holding_id)
-    "<div class=\"location-services\"><a target=\"_blank\" class=\"request btn btn-xs btn-primary\" title=\"View Options to Request this Title\" data-toggle=\"tooltip\" href=\"/requests/#{doc_id}\">Request</a></div>"
+  def request_placeholder(doc_id, holding_id, location_rules)
+    content_tag(:div, class: 'location-services', data: { open: location_rules[:open], aeon: location_rules[:aeon_location], holding_id: holding_id }) do
+      link_to "Request", "https://library.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}", title: "View Options to Request copies from this Location", target: "_blank", class: "request btn btn-xs btn-primary", data: { toggle: "tooltip" }
+    end
   end
 
   def holding_block_search document
