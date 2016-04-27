@@ -3,10 +3,10 @@
 <div id='previousNextDocument' class='pagination-search-widgets'>
   <div class="col-xs-12 col-sm-6">
     <div class="button--start-over">
-      <%=link_to t('blacklight.search.start_over'), start_over_path, :class => "catalog_startOverLink btn btn-sm btn-text", :id=>"startOverLink" %>
+      <%=link_to t('blacklight.search.start_over'), start_over_path, :class => "catalog_startOverLink btn btn-primary icon-refresh", :id=>"startOverLink" %>
     </div>
   <% if @previous_document || @next_document %>
-      <%= link_back_to_catalog class: "btn btn-default" %>
+      <%= link_back_to_catalog class: "btn btn-default icon-moveback" %>
       <div class="page_links">
         <%= link_to_previous_document @previous_document %> |
         <%= item_page_entry_info %> |

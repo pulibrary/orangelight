@@ -2,7 +2,7 @@
 
       <div id="appliedParams" class="clearfix constraints-container">
         <div class="button--start-over">
-          <%=link_to t('blacklight.search.start_over'), start_over_path, :class => "catalog_startOverLink btn btn-default", :id=>"startOverLink" %>
+          <%=link_to t('blacklight.search.start_over'), start_over_path, :class => "catalog_startOverLink btn btn-primary icon-refresh", :id=>"startOverLink" %>
         </div>
         <span class="constraints-label sr-only"><%= t('blacklight.search.filters.title') %></span>
         <%= render_constraints(params) %>

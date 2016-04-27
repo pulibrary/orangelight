@@ -12,8 +12,8 @@
     font-style: normal;
 }
 
-[class^="icon-"],
-[class*=" icon-"],
+[class^="icon-"]:before,
+[class*=" icon-"]:before,
 .toggle,
 .toggle.collapsed,
 .document-thumbnail .default {
@@ -25,6 +25,7 @@
     font-variant: normal;
     text-transform: none;
     line-height: 1;
+    margin-right: 6px;
 
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
@@ -41,16 +42,26 @@
         content: $icon-loading;
     }
 }
+.icon-refresh {
+    &:before {
+        content: $icon-refresh;
+    }
+}
+.icon-moveback {
+    &:before {
+        content: $icon-moveback;
+    }
+}
 .icon-cite {
     &:before {
         content: $icon-cite;
-        margin-right: 0.5em;
+        // margin-right: 0.5em;
     }
 }
 .icon-share {
     &:before {
         content: $icon-share;
-        margin-right: 0.5em;
+        // margin-right: 0.5em;
     }
 }
 .icon-senior-thesis,
@@ -164,25 +175,25 @@
 .icon-external {
     &:before {
         content: $icon-external;
-        margin-right: 0.5em;
+        // margin-right: 0.5em;
     }
 }
 .icon-mobile {
     &:before {
         content: $icon-mobile;
-        margin-right: 0.5em;
+        // margin-right: 0.5em;
     }
 }
 .icon-email {
     &:before {
         content: $icon-email;
-        margin-right: 0.5em;
+        // margin-right: 0.5em;
     }
 }
 .icon-print {
     &:before {
         content: $icon-print;
-        margin-right: 0.5em;
+        // margin-right: 0.5em;
     }
 }
 .icon-spinner {

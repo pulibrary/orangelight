@@ -62,3 +62,14 @@ dd.blacklight-electronic_access_display {
 .document .dl-horizontal li {
   list-style-type: none;
 }
+
+.record-wrapper {
+  width: calc(100% - 130px);
+  display: inline-block;
+  padding-left: 1em;
+}
+
+.thumbnail-wrapper {
+  width: 120px;
+  float: right;
+}

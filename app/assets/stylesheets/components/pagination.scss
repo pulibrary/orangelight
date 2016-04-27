@@ -1,3 +1,12 @@
+@import "../variables/breaks";
+
+.pagination-wrapper {
+  @media (max-width: $bp-small) {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 .browse-pager {
   display: inline-block;
 
