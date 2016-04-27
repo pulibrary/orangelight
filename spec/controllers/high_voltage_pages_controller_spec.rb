@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe HighVoltage::PagesController, type: :controller do
-  %w(help notes).each do |page|
+  %w(help about).each do |page|
     context "on GET to /#{page}" do
       before do
         get :show, id: page
