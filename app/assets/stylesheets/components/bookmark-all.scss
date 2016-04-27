@@ -54,7 +54,7 @@
 }
 
 .checkbox.toggle_bookmark {
-  padding: 0px 12px 0px 0px;
+  padding: 0;
 }
 
 li .toggle_bookmark input[type=checkbox] {
@@ -63,11 +63,19 @@ li .toggle_bookmark input[type=checkbox] {
 
 li label.toggle_bookmark {
   padding: 6px 12px;
-  margin: 3px;
+  @media (min-width: $bp-small) {
+    margin: 3px;
+  }
+  margin: 3px 0;
   background: #f5f4f1;
   border: 1px solid #e8e6df;
   color: black;
   line-height: 20px;
   border-radius: 4px;
   text-align: center;
+
+  &:hover {
+    background: $blue;
+    color: $white;
+  }
 }

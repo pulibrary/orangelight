@@ -1,13 +1,13 @@
 <div class="col-md-12">
   <h1 class="page-heading"><%= I18n.t('blacklight.header_links.account_page') %></h1>
   <p>If you have questions, please email <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a> or call (609) 258-3202.</p>
-  <ul class="nav nav-pills">
-    <li><a href="#charged-items">Charged Items</a></li>
-    <li><a href="#outstanding-requests">Outstanding Requests</a></li>
-    <li><a href="#items-available">Items Available for Pickup</a></li>
-    <li><a href="#fines-fees">Fines and Fees</a></li>
-  </ul>
   <% if(@patron) %>
+    <ul class="nav nav-pills">
+      <li><a href="#charged-items">Charged Items</a></li>
+      <li><a href="#outstanding-requests">Outstanding Requests</a></li>
+      <li><a href="#items-available">Items Available for Pickup</a></li>
+      <li><a href="#fines-fees">Fines and Fees</a></li>
+    </ul>
     <h2 class="section-heading">Patron Blocks</h2>
     <%= render 'blocks' %>
     <%= render 'patron_info' %>

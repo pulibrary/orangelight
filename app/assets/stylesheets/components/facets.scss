@@ -4,44 +4,44 @@
 
 .facet_limit-active,
 .facet_limit-active > .panel-heading {
-    color: #333;
-    border-color: #ddd;
+  color: #333;
+  border-color: #ddd;
 }
 
 .facet-values li .selected {
-    color: #333;
+  color: #333;
 }
 
 .facet_limit-active > .panel-heading + .panel-collapse > .panel-body {
-    border-top-color: #ddd;
+  border-top-color: #ddd;
 }
 
 .facet-values .remove {
-    text-indent: 0;
-    margin-left: 1em;
-    vertical-align: middle;
+  text-indent: 0;
+  margin-left: 1em;
+  vertical-align: middle;
 }
 
 .facet-values .remove .glyphicon-remove {
-    top: -1px;
-    font-size: 1.2em;
+  top: -1px;
+  font-size: 1.2em;
 }
 
 .facet-values .icon,
 .facet-values .facet-label,
 .facet-values .facet-count {
-    text-indent: 0;
-    line-height: 1.8em;
-    padding: 0;
+  text-indent: 0;
+  line-height: 1.8em;
+  padding: 0;
 }
 
 .facet-values .icon {
-    font-size: 1.275em;
-    line-height: 1.4em;
+  font-size: 1.275em;
+  line-height: 1.4em;
 }
 
 .icon + .facet-label {
-    padding-left: .5em;
+  padding-left: .5em;
 }
 
 .facet-values .icon,
@@ -49,82 +49,91 @@
 .facet-values .facet-count,
 .facet-label .selected,
 .facet-values .remove .glyphicon-remove {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .facet-values .facet-label,
 .facet-values .facet-count {
-    font-size: .9em;
-    -moz-hyphens: none;
+  font-size: .9em;
+  -moz-hyphens: none;
 }
 
 .facets-heading {
-    margin-top: 0;
-    font-size: 18px;
+  margin-top: 0;
+  font-size: 18px;
 }
 
 .pivot-facet .facet-label {
-    display: inline;
-    padding-left: 0;
-    word-break: none;
+  display: inline;
+  padding-left: 0;
+  word-break: none;
 }
 
 .document .icon,
 .facet-values .icon {
-    width: 22px;
-    height: 22px;
-    display: table-cell;
-    background-position: center;
-    background-size: contain;
-    padding-right: .5em;
+  width: 22px;
+  height: 22px;
+  display: table-cell;
+  background-position: center;
+  background-size: contain;
+  padding-right: .5em;
 }
 
 ul.facet-values {
-    border-spacing: 0 .3em;
-    margin-bottom: 0;
+  border-spacing: 0 .3em;
+  margin-bottom: 0;
 
-    .facet-values,
-    > ul {
-        border-spacing: 0;
-    }
+  .facet-values,
+  > ul {
+    border-spacing: 0;
+  }
 }
 
 .pivot-facet .pivot-facet {
-    width: 100%;
-    padding: 0 0 0 3.5em;
+  width: 100%;
+  padding: 0 0 0 3.5em;
 
-    &.collapse.in,
-    &.collapsing {
-        display: table;
-    }
-
+  &.collapse.in,
+  &.collapsing {
+    display: table;
+  }
 }
 
 .toggle, .toggle-collapsed {
-    line-height: 1.4em;
+  line-height: 1.4em;
 }
 
 @media (max-width: $bp-small) {
-    #facets .top-panel-heading {
-        padding-left: 1em;
-        padding-top: .5em;
-    }
-    h2.facets-heading {
-        font-size: 1.6em;
-        margin-bottom: 0;
-        margin-top: .2em;
-    }
-    .facets-toggle {
-        margin: 0;
-    }
+  #facets .top-panel-heading {
+    padding-left: 1em;
+    padding-top: .5em;
+  }
+
+  h2.facets-heading {
+    font-size: 1.6em;
+    margin-bottom: 0;
+    margin-top: .2em;
+  }
+
+  .facets-toggle {
+    margin: 0;
+  }
 }
 
-@media (max-width: $bp-small){
-    .facets-toggle {
-        margin: 0;
-    }
-    .facets-heading {
-        padding:0.5em;
-        margin-bottom: 0;
-    }
+@media (max-width: $bp-small) {
+  .facets-toggle {
+    margin: 0;
+  }
+
+  .facets-heading {
+    padding: 0.5em;
+    margin-bottom: 0;
+  }
+}
+
+#facets .top-panel-heading {
+  @media (max-width: 768px) {
+    border: 0;
+    margin-bottom: 0;
+  }
 }
