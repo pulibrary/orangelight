@@ -125,10 +125,8 @@ module ApplicationHelper
     info << content_tag(:ul, "#{holding_label('Location note:')} #{listify_array(holding['location_note'])}".html_safe, class: 'location-note') unless holding['location_note'].nil?
     info << content_tag(:ul, "#{holding_label('Location has:')} #{listify_array(holding['location_has'])}".html_safe, class: 'location-has') unless holding['location_has'].nil?
     info << content_tag(:ul, ''.html_safe, class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
-    unless holding['dspace']
-      location_rules = LOCATIONS[holding['location_code'].to_sym]
-      info << request_placeholder(bib_id, holding_id, location_rules).html_safe
-    end
+    location_rules = LOCATIONS[holding['location_code'].to_sym]
+    info << request_placeholder(bib_id, holding_id, location_rules).html_safe
     info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
     info
   end
@@ -145,8 +143,13 @@ module ApplicationHelper
   end
 
   def request_placeholder(doc_id, holding_id, location_rules)
+    if holding_id == 'thesis'
+      holding_link = "https://library.princeton.edu/utils/archives/Theses#{doc_id}"
+    else
+      holding_link = "https://library.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}"
+    end
     content_tag(:div, class: 'location-services', data: { open: location_rules[:open], aeon: location_rules[:aeon_location], holding_id: holding_id }) do
-      link_to "Request", "https://library.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}", title: "View Options to Request copies from this Location", target: "_blank", class: "request btn btn-xs btn-primary", data: { toggle: "tooltip" }
+      link_to "Request", holding_link, title: "View Options to Request copies from this Location", target: "_blank", class: "request btn btn-xs btn-primary", data: { toggle: "tooltip" }
     end
   end
 
