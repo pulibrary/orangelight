@@ -4,20 +4,13 @@
 
 .other-resources ul li {
   display: inline-block;
-
-  padding: 0;
-  border-right: 1px solid $dark-gray;
+  padding: 0 0.8em;
+  margin: 0.25em 0;
+  border-left: 1px solid $dark-gray;
 
   &:first-child {
     padding-left: 0;
-  }
-
-  &:last-child {
-    border: none;
-  }
-
-  a {
-    padding: 0 1em;
+    border-left: 0;
   }
 }
 
