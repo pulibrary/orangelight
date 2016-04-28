@@ -27,6 +27,8 @@ class AvailabilityUpdater
       id = window.location.pathname.split('/')[2]
       url = "#{@availability_url}?id=#{id}"
       $.getJSON(url, this.process_single)
+    else if $(".location-services[data-holding-id='thesis']").length == 1
+      $(".location-services[data-holding-id='thesis']").show()
   process_records: (records) =>
     for record_id, holding_records of records
       this.apply_record(record_id, holding_records)
