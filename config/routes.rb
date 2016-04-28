@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   post '/account/renew', to: 'account#renew'
   post '/account/cancel', to: 'account#cancel'
 
+  get '/request/:id', to: 'request#show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
