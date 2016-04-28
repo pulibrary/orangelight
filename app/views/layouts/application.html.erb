@@ -16,11 +16,7 @@
   <main role="main" id="main-container">
     <div class="container">
 
-      <div class="col-xs-12 col-lg-12 alert alert-warning beta">
-        <p><strong>This is Work-in-Progress</strong><br />
-          There are features missing. Expect things to break.
-        </p>
-      </div>
+      <%= render partial: 'shared/this_is_beta' %>
 
       <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
 
