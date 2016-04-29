@@ -1,0 +1,43 @@
+# Taken from http://www.stephen.fm/universal-google-analytics-turbolinks-coffeescript.html
+class @GoogleAnalytics
+
+  @load: ->
+    window['GoogleAnalyticsObject'] = 'ga'
+    window['ga'] = window['ga'] || ->
+      (window['ga'].q = window['ga'].q || []).push arguments
+    window['ga'].l = 1 * new Date()
+
+    googleScript = document.createElement("script")
+    googleScript.async = 1
+    googleScript.src = '//www.google-analytics.com/analytics.js'
+
+    firstScript = document.getElementsByTagName("script")[0]
+    firstScript.parentNode.insertBefore googleScript, firstScript
+
+    # Creates Google Analytics and additional dependencies
+    # For testing locally, switch 'auto' with  {'cookieDomain': 'none'}
+    ga('create', GoogleAnalytics.analyticsId(), 'auto')
+    ga('require', 'linkid', 'linkid.js')
+    ga('require', 'displayfeatures')
+
+    # Check if Turbolinks is supported
+    if typeof Turbolinks isnt 'undefined' and Turbolinks.supported
+      document.addEventListener "page:change", (->
+        options =
+          page:     document.location.pathname
+          title:    document.title
+          location: document.URL
+        GoogleAnalytics.trackPageview(options)
+      ), true
+    else
+      GoogleAnalytics.trackPageview()
+
+    return true
+
+  @trackPageview: (options = {}) ->
+    ga('send', 'pageview', options)
+
+  @analyticsId: ->
+    '<%= ENV['GOOGLE_ANALYTICS'] %>'
+
+GoogleAnalytics.load()
