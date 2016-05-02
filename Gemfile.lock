@@ -200,6 +200,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    mail_form (1.5.1)
+      actionmailer (>= 3.2, < 5)
+      activemodel (>= 3.2, < 5)
     marc (1.0.0)
       scrub_rb (>= 1.0.1, < 2)
       unf
@@ -387,6 +390,7 @@ DEPENDENCIES
   launchy
   lcsort (~> 0.9)
   library_stdnums
+  mail_form
   modernizr-rails
   newrelic_rpm
   omniauth-cas

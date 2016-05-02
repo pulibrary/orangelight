@@ -20,6 +20,11 @@ en:
       cancel_success: 'We were able to cancel your request.'
       cancel_fail: 'We were unable to cancel your request.'
       cancel_no_items: 'No requests selected for cancellation.'
+    feedback:
+      success: 'Your comments have been submitted'
+      error: 'Please fill in the required form values.'
+      return: 'Back to the Previous Page.'
+      confirmation: 'Thank you for your comments. They are helpful as we work to improve this new Library service.'
     holdings:
       online: 'Online'
       print: 'Copies In Library'

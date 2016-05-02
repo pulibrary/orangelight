@@ -68,6 +68,8 @@ gem 'coveralls', require: false
 
 gem 'newrelic_rpm'
 
+gem 'mail_form'
+
 gem 'requests', :git => "https://github.com/pulibrary/requests.git", :branch => 'request_test_specs'
 
 group :development do
