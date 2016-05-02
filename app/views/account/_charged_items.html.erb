@@ -6,7 +6,6 @@
           <th><% if (!@account.has_blocks?) %><label><input type="checkbox" id="select-all-renew"/> <span class="sr-only">Select All</span></label><% end %></th>
           <th>Item</th>
           <th>Call Number</th>
-          <th>Item Type</th>
           <th>Status</th>
           <th>Due Date</th>
           <th>Message</th>
@@ -29,8 +28,7 @@
               <% end %>
             </td>
             <td><%= item["title"] %></td>
-            <td><%= item["callNumber"] %></td>
-            <td><%= item["itemtype"] %></td>
+            <td><%= charged_item_callnum(item) %></td>
             <td>
               <em>
                 <%= item_status_to_label(item) %>

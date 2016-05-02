@@ -8,6 +8,7 @@ RSpec.describe VoyagerAccount do
   let(:subject_with_lost_fines) { VoyagerAccount.new(fixture('/account_with_block_fines_recall.xml')) }
   let(:subject_empty_account) { VoyagerAccount.new(fixture('/generic_voyager_account_empty_response.xml')) }
   let(:subject_failed_renewal_charged_items) { VoyagerAccount.new(fixture('/request_response_cannot_renew_short_term.xml'))}
+  let(:subject_successful_renewal) { VoyagerAccount.new(fixture('/successful_voyager_renew_response.xml')) }
   let(:subject_with_only_avail_items) { VoyagerAccount.new(fixture('/generic_voyager_account_only_avail_items.xml')) }
   let(:subject_with_only_request_items) { VoyagerAccount.new(fixture('/generic_voyager_account_only_request_items.xml')) }
 
@@ -40,6 +41,16 @@ RSpec.describe VoyagerAccount do
 
     it "returns false when an account does not have active blocks" do
       expect(subject_empty_account.has_blocks?).to be_falsey
+    end
+  end
+
+  describe "#failed_renewals?" do
+    it "returns true when an account has failed renewal attempts" do
+      expect(subject_failed_renewal_charged_items.failed_renewals?).to be_truthy
+    end
+
+    it "returns false when an account does not have have failed renewal attempts" do
+      expect(subject_successful_renewal.failed_renewals?).to be_falsey
     end
   end
 

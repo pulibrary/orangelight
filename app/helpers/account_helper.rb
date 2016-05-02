@@ -52,4 +52,14 @@ module AccountHelper
       end
     end
   end
+
+  def charged_item_callnum item
+    if !item["callNumber"].empty?
+      item["callNumber"]
+    elsif item["locationCode"] == 'bdirect'
+      "Borrow Direct"
+    else
+      nil
+    end
+  end
 end

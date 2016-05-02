@@ -17,6 +17,7 @@ describe "Your Account", :type => :feature do
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_response) { fixture('/generic_voyager_account_response.xml') }
     let(:generic_voyager_account_only_request_items) { fixture('./generic_voyager_account_only_request_items.xml') }
+    let(:voyager_account_with_borrow_direct) { fixture('./account_with_borrow_direct_charged_items.xml') }
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
     before(:each) do
@@ -34,7 +35,6 @@ describe "Your Account", :type => :feature do
     end
 
     it "Displays Basic Patron Information" do
-
       expect(page).to have_content 'Your Account'
       expect(page).to have_content 'Joe Student'
       expect(page).to have_content '22101008199999'
@@ -64,6 +64,30 @@ describe "Your Account", :type => :feature do
 
     it "Displays items for pickup" do
       expect(page).to have_css('.account--available_items')
+    end
+  end
+
+  context "User has charged Borrow Direct Items" do
+    let(:user) { FactoryGirl.create(:valid_princeton_patron) }
+    let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
+    let(:voyager_account_with_borrow_direct) { fixture('./account_with_borrow_direct_charged_items.xml') }
+    let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
+
+    before(:each) do
+      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}").
+         with(:headers => {'User-Agent'=>'Faraday v0.9.2'}).
+         to_return(:status => 200, :body => valid_patron_response, :headers => {})
+
+      valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
+      stub_request(:get, valid_patron_record_uri).
+        with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
+        to_return(status: 200, body: voyager_account_with_borrow_direct, headers: {})
+      sign_in user
+      visit('/account')
+    end
+
+    it "displays items with the call number Borrow Direct" do
+      expect(page).to have_content('Borrow Direct')
     end
   end
 
@@ -221,6 +245,7 @@ describe "Your Account", :type => :feature do
     let(:voyager_successful_cancel_request) { fixture('/successful_cancelled_request.xml') }
     let(:voyager_cancel_response_request_item) { fixture('/successful_cancel_response_request_item.xml') }
     let(:voyager_cancel_response_avail_item) { fixture('/successful_cancel_response_avail_item.xml') }
+    let(:renew_response_only_success) { fixture('/successful_voyager_renew_response.xml') }
 
     before(:each) do
       stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}").
@@ -273,8 +298,11 @@ describe "Your Account", :type => :feature do
 
 
       it "selected items" do
-        check('charged-3688389')
-        expect(find('#charged-3688389')).to be_checked
+        stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/RenewService").
+          with(headers: { "User-Agent"=>"Faraday v0.9.2", "Content-type" => "application/xml"} ).
+          to_return(status: 200, body: renew_response_only_success, headers: {})
+        check('charged-7193128')
+        expect(find('#charged-7193128')).to be_checked
         click_button('Renew selected items')
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.renew_success'))
@@ -288,13 +316,6 @@ describe "Your Account", :type => :feature do
             expect(checkbox).to be_checked
           end
         end
-      end
-
-      it "can renew all selected items" do
-        check('select-all-renew')
-        click_button('Renew selected items')
-        wait_for_ajax
-        expect(page).to have_content(I18n.t('blacklight.account.renew_success'))
       end
 
       it "displays a confirmation message for each successfully renewed item" do
@@ -314,6 +335,13 @@ describe "Your Account", :type => :feature do
         expect(page).to have_selector(".danger[data-item-id='7193128']")
         expect(find(:xpath, "//tr[@data-item-id='7193128']/td/span[@class='item--messages']/span[@class='message']").text).to eq("Item not authorized for renewal.")
         expect(find(:xpath, "//tr[@data-item-id='7193128']/td/span[@class='item--messages']/b").text).to eq("Not Renewed")
+      end
+
+      it 'displays a flash message indicating all items cannot be renewed' do
+        check('select-all-renew')
+        click_button('Renew selected items')
+        wait_for_ajax
+        expect(page).to have_content(I18n.t('blacklight.account.renew_partial_fail'))
       end
 
     end

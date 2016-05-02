@@ -28,6 +28,16 @@ class VoyagerAccount
     return true if !borrowing_blocks.nil?
   end
 
+  def failed_renewals?
+    return true if !messages.nil?
+  end
+
+  def messages
+    renew_message_nodes = @doc.xpath('//myac:chargedItem//myac:messages', 'myac'=> @@voyager_ns)
+    return nil if renew_message_nodes.empty?
+    renew_message_nodes
+  end
+
   def fines_fees
     # not sure if "finesFee" is right element name 
     fine_nodes = @doc.xpath('//myac:fineFee', 'myac'=> @@voyager_ns)
