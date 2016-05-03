@@ -197,8 +197,11 @@
     }
 }
 .icon-spinner {
+    margin-left: 6px;
+
     &:before {
         content: $icon-spinner;
+        margin-right: 0;
     }
 }
 .icon-rssfeed {
