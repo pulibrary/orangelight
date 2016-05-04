@@ -1,3 +1,5 @@
+@import "../variables/colors";
+
 // reset form styling cross-browser
 .form-control,
 .form-control:focus {
@@ -9,4 +11,23 @@
 
 form table th:first-child {
   width: 30px;
+}
+
+.blacklight-feedback h1 {
+  margin-bottom: 0.25em;
+  display: block;
+}
+.blacklight-feedback small {
+  margin-bottom: 2em;
+  display: block;
+}
+
+// overwrite bootstrap glyphicon for errors in input fields
+.form-control-feedback {
+  right: 15px;
+}
+
+.has-error .error {
+  font-weight: bold;
+  color: $brand-danger;
 }

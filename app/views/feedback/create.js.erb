@@ -2,7 +2,7 @@ $(".flash_messages").html("<%= escape_javascript(render :partial=>'/flash_msg', 
 <% if !@feedback_form.errors.full_messages.empty? %>
   $("#new_feedback_form").replaceWith("<%= escape_javascript(render 'form') %>");
   $(".error").each(function( index ) {
-    $(this).parent().addClass('alert alert-danger');
+    $(this).parent().addClass('has-error');
   });
 <% else %>
   $("#new_feedback_form").replaceWith("<%= escape_javascript(render 'return') %>");
