@@ -21,12 +21,12 @@ class AccountController < ApplicationController
 
     respond_to do |format|
       if params[:renew_items].nil?
-        format.js { flash.now[:notice] =  I18n.t('blacklight.account.renew_no_items') }
+        format.js { flash.now[:error] =  I18n.t('blacklight.account.renew_no_items') }
       elsif !@account.nil?
         if @account.failed_renewals?
           format.js { flash.now[:alert] =  I18n.t('blacklight.account.renew_partial_fail') }
         else
-          format.js { flash.now[:notice] =  I18n.t('blacklight.account.renew_success') }
+          format.js { flash.now[:success] =  I18n.t('blacklight.account.renew_success') }
         end
       else
         format.js { flash.now[:error] = I18n.t('blacklight.account.renew_fail') }
@@ -50,9 +50,9 @@ class AccountController < ApplicationController
 
     respond_to do |format|
       if params[:cancel_requests].nil?
-        format.js { flash.now[:notice] =  I18n.t('blacklight.account.cancel_no_items') }
+        format.js { flash.now[:error] =  I18n.t('blacklight.account.cancel_no_items') }
       elsif cancel_success(initial_hold_requests, @account, params[:cancel_requests])
-        format.js { flash.now[:notice] =  I18n.t('blacklight.account.cancel_success') }
+        format.js { flash.now[:success] =  I18n.t('blacklight.account.cancel_success') }
       else
         format.js { flash.now[:error] = I18n.t('blacklight.account.cancel_fail') }
       end
@@ -61,7 +61,7 @@ class AccountController < ApplicationController
 
   protected
   def verify_user
-    flash[:notice] = I18n.t('blacklight.saved_searches.need_login') and raise Blacklight::Exceptions::AccessDenied unless current_user
+    flash[:error] = I18n.t('blacklight.saved_searches.need_login') and raise Blacklight::Exceptions::AccessDenied unless current_user
   end
 
   ## For local dev purposes hardcode a net id string in place of current_user.uid
