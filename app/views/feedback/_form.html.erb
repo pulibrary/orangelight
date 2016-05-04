@@ -1,37 +1,41 @@
 <%= simple_form_for(@feedback_form, url: '/feedback', id: 'feedback_form', remote: true, class: "form-horizontal" ) do |f| %>
-  <div class="form-group">
+  <fieldset class="form-group">
     <label class="control-label col-sm-2" for="name">
       Your Name
     </label>
     <div class="col-sm-10">
       <%= f.text_field :name, class: 'form-control', error: 'Please Provide a Name' %>
       <% unless @feedback_form.errors[:name].empty? %>
-        <span class="error"><%= @feedback_form.errors[:name].first %></span>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <span id="inputError2Status" class="sr-only">(error)</span>
+        <span class="error">This field <%= @feedback_form.errors[:name].first %></span>
       <% end %>
     </div>
-  </div>
-  <div class="form-group">
+  </fieldset>
+  <fieldset class="form-group">
     <label class="control-label col-sm-2" for="email">
       Your Email
     </label>
     <div class="col-sm-10">
       <%= f.email_field :email, class: 'form-control', error: 'Please Provide valid email address', value: @user_email %>
       <% unless @feedback_form.errors[:email].empty? %>
-        <span class="error"><%= @feedback_form.errors[:email].first %></span>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <span id="inputError2Status" class="sr-only">(error)</span>
+        <span class="error">Email <%= @feedback_form.errors[:email].first %></span>
       <% end %>
     </div>
-  </div>
-  <div class="form-group">
+  </fieldset>
+  <fieldset class="form-group">
     <label class="control-label col-sm-2" for="message">
       Questions or Comments
     </label>
     <div class="col-sm-10">
       <%= f.text_area :message, class: 'form-control', rows: '5', error: 'Please describe the problem you encountered or ask a question.' %>
       <% unless @feedback_form.errors[:message].empty? %>
-        <span class="error"><%= @feedback_form.errors[:message].first %></span>
+        <span class="error">This field <%= @feedback_form.errors[:message].first %></span>
       <% end %>
     </div>
-  </div>
+  </fieldset>
   <%= f.hidden_field :current_url %>
   <div class="form-group">
     <div class="col-sm-offset-2 col-md-10">

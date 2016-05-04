@@ -31,14 +31,14 @@ describe "Feedback Form", :type => :feature do
         fill_in 'feedback_form_message', with: 'awesome site'
         click_button 'Send'
         expect(page).to have_content(I18n.t('blacklight.feedback.error'))
-        expect(page).to have_selector('.alert.alert-danger .error')
+        expect(page).to have_selector('.has-error')
       end
     end
   end
 
   context "Princeton Community User has signed in" do
     let(:user) { FactoryGirl.create(:valid_princeton_patron) }
-    
+
     it "Populates Email Field" do
       sign_in user
       visit('/catalog/4747577')

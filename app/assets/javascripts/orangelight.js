@@ -46,7 +46,7 @@ $(document).ready(function() {
     // });                                   //
     ///////////////////////////////////////////
 
-    //Select all items in specific account table to be checked or unchecked 
+    //Select all items in specific account table to be checked or unchecked
     $("body").on("change", "[id^='select-all']", function (e) {
         if (this.checked) {
             $(this).closest("table").find("td input:checkbox").each(function(index) {
@@ -64,5 +64,10 @@ $(document).ready(function() {
     //Add active class to tr if selected
     $("body").on("change", "td input:checkbox", function(e) {
         $(this).closest("tr").toggleClass("info", this.checked);
+    });
+
+    // Auto dismiss alert-info alerts
+    $(".alert-info").fadeTo(2000, 500).slideUp(500, function(){
+        $(".alert-info").alert('close');
     });
 });
