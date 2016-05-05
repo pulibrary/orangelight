@@ -1,8 +1,7 @@
-<div class="col-xs-12 col-lg-12">
-  <p><%= I18n.t('blacklight.feedback.confirmation') %></p>
-  <div class="button--start-over">
-    <a class="catalog_startOverLink btn btn-primary icon-refresh" id="startOverLink" href="/">Start Over</a>
-  </div>
-
-  <%= link_to "#{t('blacklight.feedback.return')}", @feedback_form.current_url, class: 'btn btn-default icon-moveback' %>
+<p><%= I18n.t('blacklight.feedback.confirmation') %></p>
+<div class="button--start-over">
+  <a class="catalog_startOverLink btn btn-primary icon-refresh" id="startOverLink" href="/">Start Over</a>
 </div>
+
+<%= link_to "#{t('blacklight.feedback.return')}", @feedback_form.current_url, class: 'btn btn-default icon-moveback' %>
+

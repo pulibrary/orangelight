@@ -1,4 +1,11 @@
 $(".flash_messages").html("<%= escape_javascript(render :partial=>'/flash_msg', layout: 'shared/flash_messages') %>");
+
+setTimeout(function() {
+  $(".alert-info, .alert-success").fadeOut('slow', function(){
+    $(".alert-info, .alert-success").remove();
+  });
+}, 3000);
+
 <% unless @account.nil? %>
 $("#request-cancel").replaceWith("<%= escape_javascript(render :partial=>'request_items') %>");
 <% end %>

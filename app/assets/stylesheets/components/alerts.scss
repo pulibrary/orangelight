@@ -8,14 +8,14 @@
   z-index: 1000;
 
   .alert {
-    animation: slide 1.25s;
-    -webkit-box-shadow: 0px 2px 51px -4px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 2px 51px -4px rgba(0,0,0,0.75);
-    box-shadow: 0px 2px 51px -4px rgba(0,0,0,0.75);
+    animation: slide-down 1.25s;
+    -webkit-box-shadow: 0px 2px 51px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 2px 51px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 2px 51px -4px rgba(0, 0, 0, 0.75);
   }
 }
 
-@keyframes slide {
+@keyframes slide-down {
   0% {
     transform: translateY(-100px);
   }

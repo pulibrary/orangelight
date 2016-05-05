@@ -66,8 +66,10 @@ $(document).ready(function() {
         $(this).closest("tr").toggleClass("info", this.checked);
     });
 
-    // Auto dismiss alert-info alerts
-    $(".alert-info").fadeTo(2000, 500).slideUp(500, function(){
-        $(".alert-info").alert('close');
-    });
+    // Auto dismiss alert-info and alert-success
+    setTimeout(function() {
+      $(".alert-info, .alert-success").fadeOut('slow', function(){
+        $(".alert-info, .alert-success").remove();
+      });
+    }, 3000);
 });
