@@ -1,8 +1,8 @@
 $(".flash_messages").html("<%= escape_javascript(render :partial=>'/flash_msg', layout: 'shared/flash_messages') %>");
 
 setTimeout(function() {
-  $(".alert-info, .alert-success").fadeOut('slow', function(){
-    $(".alert-info, .alert-success").remove();
+  $(".flash_messages .alert-info, .flash_messages .alert-success").fadeOut('slow', function(){
+    $(".flash_messages .alert-info, .flash_messages .alert-success").remove();
   });
 }, 3000);
 

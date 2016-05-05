@@ -68,8 +68,8 @@ $(document).ready(function() {
 
     // Auto dismiss alert-info and alert-success
     setTimeout(function() {
-      $(".alert-info, .alert-success").fadeOut('slow', function(){
-        $(".alert-info, .alert-success").remove();
+      $(".flash_messages .alert-info, .flash_messages .alert-success").fadeOut('slow', function(){
+        $(".flash_messages .alert-info, .flash_messages .alert-success").remove();
       });
     }, 3000);
 });
