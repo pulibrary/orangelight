@@ -8,14 +8,6 @@ require: rubocop-rspec
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: IgnoreEmptyBlocks.
-Lint/UnusedBlockArgument:
-  Exclude:
-    - 'spec/factories/users.rb'
-    - 'spec/requests/request_spec.rb'
-
 # Offense count: 13
 Lint/UselessAssignment:
   Exclude:
