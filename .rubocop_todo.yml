@@ -57,17 +57,6 @@ Style/ClassAndModuleChildren:
   Exclude:
     - 'config/initializers/blacklight_initializer.rb'
 
-# Offense count: 9
-# Configuration parameters: MinBodyLength.
-Style/GuardClause:
-  Exclude:
-    - 'app/controllers/account_controller.rb'
-    - 'app/controllers/feedback_controller.rb'
-    - 'app/helpers/account_helper.rb'
-    - 'app/helpers/advanced_helper.rb'
-    - 'app/helpers/blacklight_helper.rb'
-    - 'config/initializers/blacklight_initializer.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 Style/LeadingCommentSpace:

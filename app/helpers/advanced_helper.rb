@@ -6,11 +6,9 @@ module AdvancedHelper
   # search used basic search on same field present in advanced.
   def label_tag_default_for(key)
     if !params[key].blank?
-      return params[key]
+      params[key]
     elsif params["search_field"] == key || guided_context(key)
-      return params["q"]
-    else
-      return nil
+      params["q"]
     end
   end
 
@@ -193,7 +191,7 @@ module BlacklightAdvancedSearch
     # is our trigger that we're in advanced mode.
     def render_constraints_query(my_params = params)
       if @advanced_query.nil? || @advanced_query.keyword_queries.empty?
-        return super(my_params)
+        super(my_params)
       else
         content = guided_search
         safe_join(content.flatten, "\n")

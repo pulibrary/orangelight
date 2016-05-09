@@ -1,7 +1,7 @@
 class VoyagerAccount
   attr_reader :doc
   attr_writer :voyager_ns
-  
+
   def initialize(string)
     @doc = Nokogiri::XML(string)
   end

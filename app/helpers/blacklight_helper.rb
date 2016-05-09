@@ -18,19 +18,15 @@ module BlacklightHelper
 
   # This is needed because white space tokenizes regardless of filters
   def left_anchor_strip(solr_parameters, _user_parameters)
-    if solr_parameters[:q]
-      if solr_parameters[:q].include?("{!qf=$left_anchor_qf pf=$left_anchor_pf}")
-        newq = solr_parameters[:q].gsub("{!qf=$left_anchor_qf pf=$left_anchor_pf}", "")
-        solr_parameters[:q] = "{!qf=$left_anchor_qf pf=$left_anchor_pf}" + newq.delete(" ")
-      end
-    end
+    return unless solr_parameters[:q] && solr_parameters[:q].include?("{!qf=$left_anchor_qf pf=$left_anchor_pf}")
+    newq = solr_parameters[:q].gsub("{!qf=$left_anchor_qf pf=$left_anchor_pf}", "")
+    solr_parameters[:q] = "{!qf=$left_anchor_qf pf=$left_anchor_pf}" + newq.delete(" ")
   end
 
   def only_home_facets(solr_parameters, _user_paramters)
-    unless has_search_parameters?
-      solr_parameters['facet.field'] = home_facets
-      solr_parameters['facet.pivot'] = []
-    end
+    return if has_search_parameters?
+    solr_parameters['facet.field'] = home_facets
+    solr_parameters['facet.pivot'] = []
   end
 
   # Returns suitable argument to options_for_select method, to create

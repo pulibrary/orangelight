@@ -151,16 +151,14 @@ module Blacklight::SolrResponse::Spelling
 
     def collation
       # FIXME: DRY up with words
-      spellcheck = response[:spellcheck]
-      if spellcheck && spellcheck[:suggestions]
-        suggestions = spellcheck[:suggestions]
-        unless suggestions.nil?
-          if suggestions.index("collation")
-            suggestions[suggestions.index("collation") + 1]
-          elsif spellcheck.key?("collations")
-            spellcheck['collations'].last
-          end
-        end
+      spellcheck = response.fetch(:spellcheck, {})
+      suggestions =  spellcheck.fetch(:suggestions, nil)
+      return if suggestions.nil?
+
+      if suggestions.index("collation")
+        suggestions[suggestions.index("collation") + 1]
+      elsif spellcheck.key?("collations")
+        spellcheck['collations'].last
       end
     end
   end

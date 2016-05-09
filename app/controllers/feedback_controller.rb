@@ -36,11 +36,9 @@ class FeedbackController < ApplicationController
     end
 
     def current_user_email
-      unless current_user.nil?
-        unless current_user.provider != 'cas'
-          @user_email = "#{current_user.uid}@princeton.edu"
-          @user_email
-        end
-      end
+      return if current_user.nil?
+      return if current_user.provider != 'cas'
+      @user_email = "#{current_user.uid}@princeton.edu"
+      @user_email
     end
 end

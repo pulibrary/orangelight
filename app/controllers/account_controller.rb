@@ -89,11 +89,8 @@ class AccountController < ApplicationController
       return false if updated_account.nil?
       total_updated_items = updated_account.outstanding_hold_requests
       deleted_requests = total_original_items - total_updated_items
-      if number_of_cancelled_items.size == deleted_requests
-        return true
-      else
-        return false
-      end
+      return true if number_of_cancelled_items.size == deleted_requests
+      false
     end
 
   private
