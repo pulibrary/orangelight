@@ -8,11 +8,6 @@ require: rubocop-rspec
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 1
-Lint/Void:
-  Exclude:
-    - 'app/controllers/orangelight/browsables_controller.rb'
-
 # Offense count: 30
 Metrics/AbcSize:
   Max: 252
@@ -57,11 +52,6 @@ RSpec/DescribeClass:
     - 'spec/views/**/*'
     - 'spec/routing/**/*'
     - 'spec/requests/request_spec.rb'
-
-# Offense count: 1
-RSpec/MultipleDescribes:
-  Exclude:
-    - 'spec/features/facets_spec.rb'
 
 # Offense count: 1
 Style/AccessorMethodName:
