@@ -34,19 +34,17 @@ RSpec.describe SolrDocument do
         }
       end
       it "returns a hash of identifiers for data embeds" do
-        expect(subject.identifier_data).to eq (
-          {
-            lccn: [
-              "2001522653"
-            ],
-            isbn: [
-              "9781400827824"
-            ],
-            oclc: [
-              "19590730",
-              "301985443"
-            ]
-          }
+        expect(subject.identifier_data).to eq(
+          lccn: [
+            "2001522653"
+          ],
+          isbn: [
+            "9781400827824"
+          ],
+          oclc: [
+            "19590730",
+            "301985443"
+          ]
         )
       end
     end
