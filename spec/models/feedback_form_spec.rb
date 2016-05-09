@@ -2,13 +2,11 @@ require 'rails_helper'
 
 RSpec.describe FeedbackForm do
   subject { described_class.new(params) }
-  let(:params) {
-    {
-      name: "Bob Smith",
+  let(:params) do
+    { name: "Bob Smith",
       email: "bsmith@university.edu",
-      message: "Awesome Site!!!!"
-    }
-  }
+      message: "Awesome Site!!!!" }
+  end
   describe "A vaild Feedback Email" do
     it "is valid" do
       expect(subject.valid?).to be_truthy
@@ -19,13 +17,11 @@ RSpec.describe FeedbackForm do
     end
 
     context "It has invalid data" do
-      let(:params) {
-        {
-          name: "Bar",
+      let(:params) do
+        { name: "Bar",
           email: "foo",
-          message: nil
-        }
-      }
+          message: nil }
+      end
       it "is invalid" do
         expect(subject.valid?).to be_falsey
       end
