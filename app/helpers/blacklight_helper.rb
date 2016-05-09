@@ -4,43 +4,45 @@ module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior
   require './lib/orangelight/string_functions'
 
-  def getdir(str, opts={})
-    StringFunctions.getdir(str,opts)
+  def getdir(str, opts = {})
+    StringFunctions.getdir(str, opts)
   end
 
-  def json_field? field
+  def json_field?(field)
     field[:hash]
   end
 
-  def linked_record_field? field
+  def linked_record_field?(field)
     field[:link_field]
   end
 
   # This is needed because white space tokenizes regardless of filters
-  def left_anchor_strip solr_parameters, user_parameters
+  def left_anchor_strip(solr_parameters, _user_parameters)
     if solr_parameters[:q]
       if solr_parameters[:q].include?("{!qf=$left_anchor_qf pf=$left_anchor_pf}")
         newq = solr_parameters[:q].gsub("{!qf=$left_anchor_qf pf=$left_anchor_pf}", "")
-        solr_parameters[:q] = "{!qf=$left_anchor_qf pf=$left_anchor_pf}" + newq.gsub(" ", "")
+        solr_parameters[:q] = "{!qf=$left_anchor_qf pf=$left_anchor_pf}" + newq.delete(" ")
       end
     end
   end
 
-  def only_home_facets solr_parameters, user_paramters
-    solr_parameters['facet.field'], solr_parameters['facet.pivot'] = home_facets, [] unless has_search_parameters?
+  def only_home_facets(solr_parameters, _user_paramters)
+    unless has_search_parameters?
+      solr_parameters['facet.field'] = home_facets
+      solr_parameters['facet.pivot'] = []
+    end
   end
 
   # Returns suitable argument to options_for_select method, to create
   # an html select based on #search_field_list with labels for search
   # bar only. Skips search_fields marked :include_in_simple_select => false
   def search_bar_select
-    blacklight_config.search_fields.collect do |key, field_def|
-      [field_def.dropdown_label || field_def.label,  field_def.key] if should_render_field?(field_def)
+    blacklight_config.search_fields.collect do |_key, field_def|
+      [field_def.dropdown_label || field_def.label, field_def.key] if should_render_field?(field_def)
     end.compact
   end
 
-
-  def redirect_browse solr_parameters, user_parameters
+  def redirect_browse(_solr_parameters, user_parameters)
     if user_parameters[:search_field] && user_parameters[:controller] != "advanced"
       if user_parameters[:search_field] == "browse_subject" && !params[:id]
         redirect_to "/browse/subjects?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
@@ -48,8 +50,7 @@ module BlacklightHelper
         redirect_to "/browse/call_numbers?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
       elsif user_parameters[:search_field] == "browse_name" && !params[:id]
         redirect_to "/browse/names?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
-      else
-      end
+            end
 
     end
   end
@@ -67,7 +68,7 @@ module BlacklightHelper
   end
 
   # Adapted from http://discovery-grindstone.blogspot.com/2014/01/cjk-with-solr-for-libraries-part-12.html
-  def cjk_mm solr_parameters, user_parameters
+  def cjk_mm(solr_parameters, user_parameters)
     if user_parameters && user_parameters[:q].present?
       q_str = user_parameters[:q]
       number_of_unigrams = cjk_unigrams_size(q_str)
@@ -85,7 +86,7 @@ module BlacklightHelper
   end
 
   def cjk_unigrams_size(str)
-    if str && str.kind_of?(String)
+    if str && str.is_a?(String)
       str.scan(/\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/).size
     else
       0
@@ -96,11 +97,11 @@ module BlacklightHelper
     "3<86%"
   end
 
-  def browse_related_name_hash name
+  def browse_related_name_hash(name)
     link_to(name, "/?f[author_s][]=#{name}", class: "search-related-name", 'data-toggle' => "tooltip", 'data-original-title' => "Search: #{name}", title: "Search: #{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", class: "browse-related-name", 'data-toggle' => "tooltip", 'data-original-title' => "Search: #{name}", title: "Browse: #{name}")
   end
 
- # override method to never render saved searches in user_util_links
+  # override method to never render saved searches in user_util_links
   def render_saved_searches?
     false
   end
@@ -110,16 +111,16 @@ module BlacklightHelper
   #
   # @param [SolrDocument]
   # @return [String]
-  def render_document_heading_partial(document = @document)
-    render :partial => 'show_header_default'
+  def render_document_heading_partial(_document = @document)
+    render partial: 'show_header_default'
   end
 
-  def render_icon var
+  def render_icon(var)
     "<span class='icon icon-#{var.parameterize}'></span>".html_safe
   end
 
   # solr fq field is field parameter provided unless id_nums value starts with BIB
-  def linked_records id_nums, bib_id, field
+  def linked_records(id_nums, bib_id, field)
     fq = ''
     id_nums.each do |n|
       bib_match = /(?:^BIB)(.*)/.match(n)
@@ -140,7 +141,7 @@ module BlacklightHelper
     other_versions.empty? ? [] : [other_versions]
   end
 
-  def oclc_resolve oclc
+  def oclc_resolve(oclc)
     oclc_norm = StringFunctions.oclc_normalize(oclc)
     unless oclc_norm.nil?
       fq = "oclc_s:#{oclc_norm}"
@@ -154,7 +155,7 @@ module BlacklightHelper
     end
   end
 
-  def isbn_resolve isbn
+  def isbn_resolve(isbn)
     isbn_norm = StdNum::ISBN.normalize(isbn)
     unless isbn_norm.nil?
       fq = "isbn_s:#{isbn_norm}"
@@ -168,7 +169,7 @@ module BlacklightHelper
     end
   end
 
-  def issn_resolve issn
+  def issn_resolve(issn)
     issn_norm = StdNum::ISSN.normalize(issn)
     unless issn_norm.nil?
       fq = "issn_s:#{issn_norm}"
@@ -182,7 +183,7 @@ module BlacklightHelper
     end
   end
 
-  def lccn_resolve lccn
+  def lccn_resolve(lccn)
     lccn_norm = StdNum::LCCN.normalize(lccn)
     unless lccn_norm.nil?
       fq = "lccn_s:#{lccn_norm}"
@@ -204,9 +205,9 @@ module BlacklightHelper
 
   private
 
-    def get_fq_solr_response fq
+    def get_fq_solr_response(fq)
       solr_url = Blacklight.connection_config[:url]
-      conn = Faraday.new(:url => solr_url) do |faraday|
+      conn = Faraday.new(url: solr_url) do |faraday|
         faraday.request  :url_encoded             # form-encode POST params
         faraday.response :logger                  # log requests to STDOUT
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
@@ -214,5 +215,4 @@ module BlacklightHelper
       facet_request = "/solr/blacklight-core/select?fq=#{fq}&fl=id,title_display,author_display&wt=json"
       conn.get facet_request
     end
-
 end

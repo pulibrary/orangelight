@@ -17,14 +17,14 @@ RSpec.describe ApplicationHelper do
         holding_id => {
           location: location,
           library: library,
-          location_code: 'exb', 
+          location_code: 'exb',
           call_number: call_number,
           call_number_browse: call_number
         },
         '3595800' => {
           location: 'Online - Online Resources',
           library: 'Online',
-          location_code: 'elf3',
+          location_code: 'elf3'
         },
         '3595801' => {
           location: 'ReCAP',
@@ -59,32 +59,31 @@ RSpec.describe ApplicationHelper do
 
     let(:document) do
       {
-          id: '1',
-          format: ['Book'],
-          holdings_1display: holding_block_json
+        id: '1',
+        format: ['Book'],
+        holdings_1display: holding_block_json
       }.with_indifferent_access
     end
 
     let(:document_no_holdings) do
       {
-          id: '2'
+        id: '2'
       }.with_indifferent_access
     end
 
-
     let(:document_journal) do
       {
-          id: '3',
-          format: ['Journal'],
-          holdings_1display: holding_block_json
+        id: '3',
+        format: ['Journal'],
+        holdings_1display: holding_block_json
       }.with_indifferent_access
     end
 
     let(:document_thesis) do
       {
-          id: '4',
-          format: ['Senior Thesis'],
-          holdings_1display: holdings_thesis_mudd
+        id: '4',
+        format: ['Senior Thesis'],
+        holdings_1display: holdings_thesis_mudd
       }.with_indifferent_access
     end
 

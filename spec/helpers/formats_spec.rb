@@ -1,14 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper do
-
   let(:format) { ['Dissertation', 'Manuscript', 'Book'] }
   let(:format_display) { helper.format_icon(field_config) }
   let(:render_format) { helper.format_render(field_config) }
   let(:document) do
     {
-        id: '1',
-        format: format
+      id: '1',
+      format: format
     }.with_indifferent_access
   end
 
@@ -35,7 +34,7 @@ RSpec.describe ApplicationHelper do
     end
   end
 
-# blacklight_config.view_config(document_index_view_type).display_type_field]
+  # blacklight_config.view_config(document_index_view_type).display_type_field]
   describe CatalogHelper do
     # let(:blacklight_config) do
     # end

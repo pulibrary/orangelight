@@ -3,12 +3,11 @@ require "faraday"
 include ApplicationHelper
 
 describe "blacklight tests" do
-
   describe "ICU folding keyword search" do
     it "finds an Arabic entry from a Romanized search term" do
       get "/catalog.json?&search_field=all_fields&q=dawwani"
-        r = JSON.parse(response.body)
-        expect(r["response"]["docs"].any? {|d| d["id"] == "4705304"}).to eq true
+      r = JSON.parse(response.body)
+      expect(r["response"]["docs"].any? { |d| d["id"] == "4705304" }).to eq true
     end
   end
 
@@ -17,8 +16,8 @@ describe "blacklight tests" do
       get "/catalog/857469.json"
       r = JSON.parse(response.body)
       expect(r["response"]["document"]["location"].length).to be > 2
-        get "/catalog?&search_field=all_fields&q=857469"
-        expect(response.body).to include '<a class="availability-icon label label-default" title="Click on the record for full availability info" data-toggle="tooltip" href="/catalog/857469">View Record for Full Availability</a>'
+      get "/catalog?&search_field=all_fields&q=857469"
+      expect(response.body).to include '<a class="availability-icon label label-default" title="Click on the record for full availability info" data-toggle="tooltip" href="/catalog/857469">View Record for Full Availability</a>'
     end
     it "displays the location name for an item with a single location" do
       get "/catalog/321.json"
@@ -26,7 +25,7 @@ describe "blacklight tests" do
       expect(r["response"]["document"]["location"].length).to eq 1
       location = r["response"]["document"]["location"][0]
       get "/catalog?&search_field=all_fields&q=321"
-      expect(response.body.include?("#{location}")).to eq true
+      expect(response.body.include?(location.to_s)).to eq true
     end
   end
 
@@ -54,7 +53,6 @@ describe "blacklight tests" do
       docid = r["response"]["document"]["id"]
       get "/catalog/430472"
       r["response"]["document"]["location_code_s"].each do |location|
-
         expect(response.body.include?("href=\"#{ENV['stackmap_base']}?loc=#{location}&amp;id=#{docid}\"")).to eq true
       end
     end
@@ -64,7 +62,7 @@ describe "blacklight tests" do
     end
   end
 
-  SEPARATOR = "—"
+  SEPARATOR = "—".freeze
   describe "subjectify check" do
     it "provides links to facet search based on hierarchy" do
       get "/catalog/6139836.json"
@@ -85,10 +83,9 @@ describe "blacklight tests" do
   end
 
   describe "dir tag check" do
-
     it "adds rtl dir for title and author field in search results" do
       get "/catalog.json?&search_field=all_fields&q=4705304"
-      r = JSON.parse(response.body)["response"]["docs"].select{|d| d["id"] == "4705304"}[0]
+      r = JSON.parse(response.body)["response"]["docs"].select { |d| d["id"] == "4705304" }[0]
       title_vern = r["title_vern_display"]
       author = r["author_display"][0]
       author_vern = r["author_display"][1]
@@ -97,7 +94,6 @@ describe "blacklight tests" do
       expect(response.body.include?("dir=\"rtl\" style=\"float: right;\" href=\"/catalog/#{doc_id}\">#{title_vern}</a>")).to eq true
       expect(response.body.include?("<li dir=\"ltr\"> <a class=\"search-name\" data-toggle=\"tooltip\" data-original-title=\"Search: #{author}\" title=\"Search: #{author}\" href=\"/?f[author_s][]=#{author}\">#{author}</a>")).to eq true
       expect(response.body.include?("<li dir=\"rtl\"> <a class=\"search-name\" data-toggle=\"tooltip\" data-original-title=\"Search: #{author_vern}\" title=\"Search: #{author_vern}\" href=\"/?f[author_s][]=#{author_vern}\">#{author_vern}</a>")).to eq true
-
     end
     it "adds ltr rtl dir for title and related names in document view" do
       get "/catalog/5906024.json"
@@ -116,7 +112,7 @@ describe "blacklight tests" do
     it "finds result despite accents and capitals in query" do
       get "/catalog.json?&search_field=left_anchor&q=s%C3%A8arChing+for"
       r = JSON.parse(response.body)
-      expect(r["response"]["docs"].any? {|d| d["id"] == "6574987"}).to eq true
+      expect(r["response"]["docs"].any? { |d| d["id"] == "6574987" }).to eq true
     end
 
     it "no matches if it doesn't occur at the beginning of the starts with fields" do
@@ -128,7 +124,7 @@ describe "blacklight tests" do
     it "works in advanced search" do
       get "/catalog.json?&search_field=advanced&f1=left_anchor&q1=searching+for&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for"
       r = JSON.parse(response.body)
-      expect(r["response"]["docs"].any? {|d| d["id"] == "6574987"}).to eq true
+      expect(r["response"]["docs"].any? { |d| d["id"] == "6574987" }).to eq true
     end
   end
 
@@ -138,12 +134,12 @@ describe "blacklight tests" do
       expect(response.body.include?('<a class="btn btn-default remove dropdown-toggle" href="/catalog?action=index&amp;controller=catalog&amp;f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=advanced"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remove constraint Title starts with: searching for1</span></a>')).to eq true
       get "/catalog.json?&search_field=advanced&f1=left_anchor&q1=searching+for1&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for"
       r = JSON.parse(response.body)
-      expect(r["response"]["docs"].any? {|d| d["id"] == "6574987"}).to eq false
+      expect(r["response"]["docs"].any? { |d| d["id"] == "6574987" }).to eq false
       get "/catalog?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=advanced"
       expect(response.body.include?('<a class="btn btn-default remove dropdown-toggle" href="/catalog?action=index&amp;controller=catalog&amp;f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=advanced"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remove constraint Starts with: searching for1</span></a>')).to eq false
       get "/catalog.json?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=advanced"
       r = JSON.parse(response.body)
-      expect(r["response"]["docs"].any? {|d| d["id"] == "6574987"}).to eq true
+      expect(r["response"]["docs"].any? { |d| d["id"] == "6574987" }).to eq true
     end
   end
 
@@ -189,15 +185,15 @@ describe "blacklight tests" do
     it "Only facets configured for homepage display are requested in Solr" do
       get "/catalog.json"
       r = JSON.parse(response.body)
-      expect(r["response"]["facets"].any? {|f| f['name'] == 'location'}).to eq true
-      expect(r["response"]["facets"].any? {|f| f['name'] == 'instrumentation_facet'}).to eq false
+      expect(r["response"]["facets"].any? { |f| f['name'] == 'location' }).to eq true
+      expect(r["response"]["facets"].any? { |f| f['name'] == 'instrumentation_facet' }).to eq false
     end
 
     it "All configured facets are requested in Solr within a search" do
       get "/catalog.json?search_field=all_fields"
       r = JSON.parse(response.body)
-      expect(r["response"]["facets"].any? {|f| f['name'] == 'location'}).to eq true
-      expect(r["response"]["facets"].any? {|f| f['name'] == 'instrumentation_facet'}).to eq true
+      expect(r["response"]["facets"].any? { |f| f['name'] == 'location' }).to eq true
+      expect(r["response"]["facets"].any? { |f| f['name'] == 'instrumentation_facet' }).to eq true
     end
   end
 

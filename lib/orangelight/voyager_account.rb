@@ -24,15 +24,15 @@ class VoyagerAccount
   end
 
   def has_blocks?
-    return true if !borrowing_blocks.nil?
+    return true unless borrowing_blocks.nil?
   end
 
   def failed_renewals?
-    return true if !messages.nil?
+    return true unless messages.nil?
   end
 
   def messages
-    renew_message_nodes = @doc.xpath('//myac:chargedItem//myac:messages', 'myac'=> @@voyager_ns)
+    renew_message_nodes = @doc.xpath('//myac:chargedItem//myac:messages', 'myac' => @@voyager_ns)
     return nil if renew_message_nodes.empty?
     renew_message_nodes
   end
@@ -69,12 +69,8 @@ class VoyagerAccount
 
   def outstanding_hold_requests
     total_holds = 0
-    unless avail_items.nil?
-      total_holds += avail_items.size
-    end
-    unless request_items.nil?
-      total_holds += request_items.size
-    end
+    total_holds += avail_items.size unless avail_items.nil?
+    total_holds += request_items.size unless request_items.nil?
     total_holds
   end
 
@@ -102,9 +98,7 @@ class VoyagerAccount
         elsif child.name == 'blocks'
           node_data[:item_blocks] = node_data(child)
         else
-          unless child.blank?
-            node_data[child.name] = child.text
-          end
+          node_data[child.name] = child.text unless child.blank?
         end
       end
       node_data

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-describe "Tools links"  do
-
+describe "Tools links" do
   before(:each) do
     visit  "/catalog?search_field=all_fields&q="
     within ".documents-list" do

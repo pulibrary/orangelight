@@ -5,7 +5,6 @@
 # # Remove bookmark from catalog#show
 # CatalogController.blacklight_config.show.document_actions.delete(:bookmark)
 
-
 # CatalogController.add_results_document_tool(:folder, partial: 'blacklight/folders/folder_control')
 # CatalogController.add_results_collection_tool(:folder, partial: 'blacklight/folders/add_to_folder')
 # CatalogController.add_show_tools_partial(:folder, partial: 'blacklight/folders/show/add_to_folder')

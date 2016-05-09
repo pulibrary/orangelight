@@ -70,14 +70,14 @@ describe "Your Account", type: :feature do
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
     before(:each) do
-      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}").
-         with(:headers => {'User-Agent'=>'Faraday v0.9.2'}).
-         to_return(:status => 200, :body => valid_patron_response, :headers => {})
+      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .to_return(status: 200, body: valid_patron_response, headers: {})
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
-      stub_request(:get, valid_patron_record_uri).
-        with(headers: { "User-Agent"=>"Faraday v0.9.2" }).
-        to_return(status: 200, body: voyager_account_with_borrow_direct, headers: {})
+      stub_request(:get, valid_patron_record_uri)
+        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .to_return(status: 200, body: voyager_account_with_borrow_direct, headers: {})
       sign_in user
       visit('/account')
     end
@@ -289,9 +289,9 @@ describe "Your Account", type: :feature do
       end
 
       it "selected items" do
-        stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/RenewService").
-          with(headers: { "User-Agent"=>"Faraday v0.9.2", "Content-type" => "application/xml"} ).
-          to_return(status: 200, body: renew_response_only_success, headers: {})
+        stub_request(:post, "#{ENV['voyager_api_base']}/vxws/RenewService")
+          .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+          .to_return(status: 200, body: renew_response_only_success, headers: {})
         check('charged-7193128')
         expect(find('#charged-7193128')).to be_checked
         click_button('Renew selected items')

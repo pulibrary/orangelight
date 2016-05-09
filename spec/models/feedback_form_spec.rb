@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe FeedbackForm do
-
   subject { described_class.new(params) }
   let(:params) {
     {

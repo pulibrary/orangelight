@@ -28,7 +28,6 @@ RSpec.describe SolrDocument::Identifier do
         expect(subject.itemprop).to eq nil
       end
     end
-
   end
 
   context "for an isbn" do
@@ -38,7 +37,7 @@ RSpec.describe SolrDocument::Identifier do
         expect(subject.property).to eq "isbn"
       end
     end
-    
+
     describe "#itemprop" do
       it "returns isbn" do
         expect(subject.itemprop).to eq "isbn"

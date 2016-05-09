@@ -11,5 +11,4 @@ module BlacklightConfigurationHelper
   def constraint_query_label(localized_params = params)
     label_for_search_field(localized_params[:search_field])
   end
-
 end

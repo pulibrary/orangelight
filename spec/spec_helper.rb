@@ -23,7 +23,7 @@ require 'webmock/rspec'
 require 'factory_girl'
 
 # allow connections to localhost, umlaut and bibdata marc record service
-WebMock.disable_net_connect!(allow_localhost: true, allow: ["#{ENV['umlaut_base']}", /\/bibliographic\//, /\/locations\//] )
+WebMock.disable_net_connect!(allow_localhost: true, allow: [(ENV['umlaut_base']).to_s, /\/bibliographic\//, /\/locations\//])
 
 Coveralls.wear!('rails') do
   add_filter '/lib/orangelight/browse_lists.rb'
@@ -36,7 +36,7 @@ FactoryGirl.find_definitions
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
-  #config.infer_spec_type_from_file_location!
+#config.infer_spec_type_from_file_location!
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
@@ -100,7 +100,6 @@ RSpec.configure do |config|
 end
 
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, {timeout: 60})
+  Capybara::Poltergeist::Driver.new(app, timeout: 60)
 end
 Capybara.javascript_driver = :poltergeist
-

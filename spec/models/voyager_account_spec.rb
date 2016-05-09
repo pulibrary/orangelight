@@ -2,7 +2,6 @@ require 'rails_helper'
 require './lib/orangelight/voyager_account.rb'
 
 RSpec.describe VoyagerAccount do
-
   let(:subject) { described_class.new(fixture('/pul_voyager_account_response.xml')) }
   let(:subject_with_fines_requests) { described_class.new(fixture('/generic_voyager_account_response.xml')) }
   let(:subject_with_lost_fines) { described_class.new(fixture('/account_with_block_fines_recall.xml')) }

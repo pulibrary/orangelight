@@ -17,6 +17,6 @@ class FeedbackForm < MailForm::Base
   end
 
   def error_message
-    "#{I18n.t(:'blacklight.feedback.error')}"
+    I18n.t(:'blacklight.feedback.error').to_s
   end
 end

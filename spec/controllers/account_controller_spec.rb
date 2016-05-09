@@ -50,7 +50,7 @@ RSpec.describe AccountController do
 
   describe "#voyager_account?" do
     let(:valid_voyager_response) { File.open(fixture_path + '/pul_voyager_account_response.xml').read }
-    let(:valid_voyager_patron) { JSON.parse("#{valid_patron_response.read}").with_indifferent_access }
+    let(:valid_voyager_patron) { JSON.parse(valid_patron_response.read.to_s).with_indifferent_access }
     let(:invalid_voyager_patron) { JSON.parse('{ "patron_id": "foo" }').with_indifferent_access }
     let(:unauthorized_voyager_patron) { JSON.parse('{ "patron_id": "bar" }').with_indifferent_access }
 

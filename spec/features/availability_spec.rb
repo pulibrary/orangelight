@@ -1,11 +1,9 @@
 require 'rails_helper'
 
-describe "Availability"  do
-
+describe "Availability" do
   describe "Physical Holdings are displayed on a record page", js: true do
-
     before(:each) do
-      visit  "/catalog/3256177"
+      visit "/catalog/3256177"
     end
 
     it "within the holdings section", unless: $in_travis do
@@ -24,7 +22,6 @@ describe "Availability"  do
   end
 
   describe "Electronic Holdings are displayed on a record page", js: true do
-
     it "within the online section", unless: $in_travis do
       visit "/catalog/857469"
       sleep 5.seconds
@@ -53,5 +50,4 @@ describe "Availability"  do
       end
     end
   end
-
 end

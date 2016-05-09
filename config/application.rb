@@ -7,7 +7,11 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 # Settings for request system
-ENV.update YAML.load_file('config/requests.yml')[Rails.env] rescue {}
+begin
+  ENV.update YAML.load_file('config/requests.yml')[Rails.env]
+rescue
+  {}
+end
 
 module Orangelight
   class Application < Rails::Application
@@ -25,10 +29,8 @@ module Orangelight
     # config.i18n.default_locale = :de
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
-    #IE Edge
-    config.action_dispatch.default_headers.merge!({
-       'X-UA-Compatible' => 'IE=edge,chrome=1'
-     })
+    # IE Edge
+    config.action_dispatch.default_headers['X-UA-Compatible'] = 'IE=edge,chrome=1'
     require Rails.root.join("lib/blacklight/document/sms")
     require Rails.root.join("lib/custom_public_exceptions")
     config.exceptions_app = CustomPublicExceptions.new(Rails.public_path)

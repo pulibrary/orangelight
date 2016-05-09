@@ -9,15 +9,12 @@ FactoryGirl.define do
     end
 
     factory :valid_princeton_patron do
-
     end
 
     factory :invalid_princeton_patron do
-
     end
 
     factory :unauthorized_princeton_patron do
-
     end
 
     # for patrons without a net ID
@@ -25,6 +22,5 @@ FactoryGirl.define do
       provider 'voyager'
       guest true
     end
-
   end
 end

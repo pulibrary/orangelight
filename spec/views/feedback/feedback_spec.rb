@@ -1,9 +1,7 @@
 require 'rails_helper'
 
-describe "Feedback Form", :type => :feature do
-
+describe "Feedback Form", type: :feature do
   context "User has not signed in" do
-
     before(:each) do
       visit('/catalog/4747577')
       click_link('Contact Us')
@@ -25,7 +23,6 @@ describe "Feedback Form", :type => :feature do
     end
 
     describe "It provides error messages", js: true do
-
       it "When the name field is not filled in" do
         fill_in 'feedback_form_email', with: 'foo@university.edu'
         fill_in 'feedback_form_message', with: 'awesome site'

@@ -2,27 +2,25 @@ module FacetsHelper
   include Blacklight::FacetsHelperBehavior
 
   def initial_collapse(display_facet, not_selected)
-    if (display_facet.class == Blacklight::SolrResponse::Facets::FacetItem)
+    if display_facet.class == Blacklight::SolrResponse::Facets::FacetItem
       not_selected ? 'collapse' : 'collapse in'
     else
       'facet-values'
     end
   end
 
-  def facet_value_id display_facet
+  def facet_value_id(display_facet)
     display_facet.respond_to?('value') ? "id=#{display_facet.field.parameterize}-#{display_facet.value.parameterize}" : ""
   end
 
   def pivot_facet_in_params?(field, item)
-    if item and item.respond_to? :field
-      field = item.field
-    end
+    field = item.field if item && item.respond_to?(:field)
 
     value = facet_value_for_facet_item(item)
 
-    pivot_in_params = true if params[:f] and params[:f][field] and params[:f][field].include?(value)
-    if !item.items.blank?
-      item.items.each {|pivot_item| pivot_in_params = true if pivot_facet_in_params?(pivot_item.field, pivot_item)}
+    pivot_in_params = true if params[:f] && params[:f][field] && params[:f][field].include?(value)
+    unless item.items.blank?
+      item.items.each { |pivot_item| pivot_in_params = true if pivot_facet_in_params?(pivot_item.field, pivot_item) }
     end
     pivot_in_params
   end
@@ -31,11 +29,11 @@ module FacetsHelper
   # Standard display of a SELECTED facet value (e.g. without a link and with a remove button)
   # @params (see #render_facet_value)
   def render_selected_facet_value(facet_field, item)
-    content_tag(:span, :class => "facet-label") do
-      content_tag(:span, facet_display_value(facet_field, item), :class => "selected") +
-      # remove link
-      link_to(content_tag(:span, '', :class => "glyphicon glyphicon-remove", 'data-toggle' => "tooltip", 'data-original-title' => "Remove") + content_tag(:span, '[remove]', :class => 'sr-only'), search_action_path(remove_facet_params(facet_field, item, params)), :class=>"remove")
-    end + render_facet_count(item.hits, :classes => ["selected"])
+    content_tag(:span, class: "facet-label") do
+      content_tag(:span, facet_display_value(facet_field, item), class: "selected") +
+        # remove link
+        link_to(content_tag(:span, '', :class => "glyphicon glyphicon-remove", 'data-toggle' => "tooltip", 'data-original-title' => "Remove") + content_tag(:span, '[remove]', class: 'sr-only'), search_action_path(remove_facet_params(facet_field, item, params)), class: "remove")
+    end + render_facet_count(item.hits, classes: ["selected"])
   end
 
   ##
@@ -43,19 +41,19 @@ module FacetsHelper
   #
   # @param [String] facet field
   # @return [Boolean]
-  def facet_field_in_params? field
+  def facet_field_in_params?(field)
     pivot = facet_configuration_for_field(field).pivot
     if pivot
       pivot_facet_field_in_params?(pivot)
     else
-      params[:f] and params[:f][field]
+      params[:f] && params[:f][field]
     end
   end
 
-  def pivot_facet_field_in_params? pivot
-      in_params = false
-      pivot.each { |field| in_params = true if params[:f] and params[:f][field] }
-      return in_params
+  def pivot_facet_field_in_params?(pivot)
+    in_params = false
+    pivot.each { |field| in_params = true if params[:f] && params[:f][field] }
+    in_params
   end
 
   def render_home_facets
@@ -63,7 +61,6 @@ module FacetsHelper
   end
 
   def home_facets
-    blacklight_config.facet_fields.select {|_, v| v[:home] }.keys
+    blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
   end
-
 end

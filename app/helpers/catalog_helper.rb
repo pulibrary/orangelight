@@ -14,7 +14,8 @@ module CatalogHelper
   end
 
   private
-  def document_types(document)
-    document[blacklight_config.view_config(document_index_view_type).display_type_field]
-  end
+
+    def document_types(document)
+      document[blacklight_config.view_config(document_index_view_type).display_type_field]
+    end
 end

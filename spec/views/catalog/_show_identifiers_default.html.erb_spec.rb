@@ -10,7 +10,7 @@ RSpec.describe "catalog/_show_identifiers_default.html.erb" do
     }
   end
   before do
-    render :partial => "catalog/show_identifiers_default", :locals => {:document => document}
+    render partial: "catalog/show_identifiers_default", locals: { document: document }
   end
   it "displays a meta tag for each lccn" do
     expect(rendered).to have_selector("meta[property='lccn'][content='2001522653']")
@@ -25,7 +25,7 @@ RSpec.describe "catalog/_show_identifiers_default.html.erb" do
 
   context "when there is no identifier" do
     let(:properties) { {} }
-    it "shouldn't display anything" do
+    it "does not display anything" do
       expect(rendered).not_to have_selector("meta")
     end
   end

@@ -22,27 +22,27 @@ class SolrDocument
     end
 
     def data_key
-      identifier_type.gsub("_s","")
+      identifier_type.gsub("_s", "")
     end
 
     private
 
-    def property_mapping
-      {
-        "isbn_s" => "isbn",
-        "lccn_s" => "lccn",
-        "oclc_s" => "http://purl.org/library/oclcnum"
-      }
-    end
+      def property_mapping
+        {
+          "isbn_s" => "isbn",
+          "lccn_s" => "lccn",
+          "oclc_s" => "http://purl.org/library/oclcnum"
+        }
+      end
 
-    def itemprop_mapping
-      {
-        "isbn_s" => "isbn"
-      }
-    end
+      def itemprop_mapping
+        {
+          "isbn_s" => "isbn"
+        }
+      end
 
-    def helper
-      @helper ||= ActionController::Base.helpers
-    end
+      def helper
+        @helper ||= ActionController::Base.helpers
+      end
   end
 end

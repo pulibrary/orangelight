@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe "_header_navbar.html.erb" do
-
   let(:blacklight_config) do
     Blacklight::Configuration.new do |config|
       config.index.title_field = 'title_display'
