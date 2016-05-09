@@ -5,7 +5,7 @@ require './lib/orangelight/string_functions'
 
 module BrowseLists
   class << self
-    def get_connection
+    def connection
       config = Orangelight::Application.config.database_configuration[::Rails.env]
       dbhost = config['host']
       dbuser = config['username']

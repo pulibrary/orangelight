@@ -45,19 +45,6 @@ RSpec/AnyInstance:
   Exclude:
     - 'spec/requests/request_spec.rb'
 
-# Offense count: 1
-RSpec/DescribeClass:
-  Exclude:
-    - 'spec/features/**/*'
-    - 'spec/views/**/*'
-    - 'spec/routing/**/*'
-    - 'spec/requests/request_spec.rb'
-
-# Offense count: 1
-Style/AccessorMethodName:
-  Exclude:
-    - 'lib/orangelight/browse_lists.rb'
-
 # Offense count: 16
 Style/AsciiComments:
   Exclude:
