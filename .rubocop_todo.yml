@@ -57,11 +57,6 @@ Style/ClassAndModuleChildren:
   Exclude:
     - 'config/initializers/blacklight_initializer.rb'
 
-# Offense count: 1
-Style/ClassVars:
-  Exclude:
-    - 'lib/orangelight/voyager_account.rb'
-
 # Offense count: 6
 # Configuration parameters: AllowedVariables.
 Style/GlobalVars:

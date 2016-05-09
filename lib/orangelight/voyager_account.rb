@@ -1,10 +1,13 @@
 class VoyagerAccount
   attr_reader :doc
-
-  @@voyager_ns = 'http://www.endinfosys.com/Voyager/myAccount'
-
+  attr_writer :voyager_ns
+  
   def initialize(string)
     @doc = Nokogiri::XML(string)
+  end
+
+  def voyager_ns
+    @voyager_ns ||= 'http://www.endinfosys.com/Voyager/myAccount'
   end
 
   def source_doc
@@ -12,13 +15,13 @@ class VoyagerAccount
   end
 
   def expiration_date
-    date = @doc.xpath('//myac:expirationDate', 'myac' => @@voyager_ns)
+    date = @doc.xpath('//myac:expirationDate', 'myac' => voyager_ns)
     return nil if date.empty?
     date.text
   end
 
   def borrowing_blocks
-    block_nodes = @doc.xpath('//myac:borrowingBlock', 'myac' => @@voyager_ns)
+    block_nodes = @doc.xpath('//myac:borrowingBlock', 'myac' => voyager_ns)
     return nil if block_nodes.empty?
     parse_items(block_nodes)
   end
@@ -32,37 +35,37 @@ class VoyagerAccount
   end
 
   def messages
-    renew_message_nodes = @doc.xpath('//myac:chargedItem//myac:messages', 'myac' => @@voyager_ns)
+    renew_message_nodes = @doc.xpath('//myac:chargedItem//myac:messages', 'myac' => voyager_ns)
     return nil if renew_message_nodes.empty?
     renew_message_nodes
   end
 
   def fines_fees
-    fine_nodes = @doc.xpath('//myac:fineFee', 'myac' => @@voyager_ns)
+    fine_nodes = @doc.xpath('//myac:fineFee', 'myac' => voyager_ns)
     return nil if fine_nodes.empty?
     parse_items(fine_nodes)
   end
 
   def demerits
-    demerit_nodes = @doc.xpath('//myac:demerit', 'myac' => @@voyager_ns)
+    demerit_nodes = @doc.xpath('//myac:demerit', 'myac' => voyager_ns)
     return nil if demerit_nodes.empty?
     parse_items(demerit_nodes)
   end
 
   def charged_items
-    charged_item_nodes = @doc.xpath('//myac:chargedItem', 'myac' => @@voyager_ns)
+    charged_item_nodes = @doc.xpath('//myac:chargedItem', 'myac' => voyager_ns)
     return nil if charged_item_nodes.empty?
     parse_items(charged_item_nodes)
   end
 
   def request_items
-    request_item_nodes = @doc.xpath('//myac:requestItem', 'myac' => @@voyager_ns)
+    request_item_nodes = @doc.xpath('//myac:requestItem', 'myac' => voyager_ns)
     return nil if request_item_nodes.empty?
     parse_items(request_item_nodes)
   end
 
   def avail_items
-    avail_item_nodes = @doc.xpath('//myac:availItem', 'myac' => @@voyager_ns)
+    avail_item_nodes = @doc.xpath('//myac:availItem', 'myac' => voyager_ns)
     return nil if avail_item_nodes.empty?
     parse_items(avail_item_nodes)
   end
