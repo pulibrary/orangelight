@@ -24,7 +24,7 @@ module AdvancedHelper
   def advanced_search_context
     my_params = params.except :page, :commit, :f_inclusive, :q, :search_field, :op, :action, :index, :sort, :controller, :utf8
 
-    my_params.except! *search_fields_for_advanced_search.map { |_key, field_def| field_def[:key] }
+    my_params.except!(*search_fields_for_advanced_search.map { |_key, field_def| field_def[:key] })
   end
 
   def search_fields_for_advanced_search
