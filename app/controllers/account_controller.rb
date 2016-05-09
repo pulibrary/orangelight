@@ -102,7 +102,7 @@ class AccountController < ApplicationController
       return false unless netid
       begin
         patron_record = Faraday.get "#{ENV['bibdata_base']}/patron/#{netid}"
-      rescue Faraday::Error::ConnectionFailed => e
+      rescue Faraday::Error::ConnectionFailed
         logger.info("Unable to connect to #{ENV['bibdata_base']}")
         return false
       end
@@ -127,7 +127,7 @@ class AccountController < ApplicationController
     def voyager_account?(patron)
       begin
         voyager_account = Faraday.get "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{patron[:patron_id]}&patronHomeUbId=1@DB"
-      rescue Faraday::Error::ConnectionFailed => e
+      rescue Faraday::Error::ConnectionFailed
         logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
         return false
       end

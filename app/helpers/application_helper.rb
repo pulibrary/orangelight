@@ -135,7 +135,7 @@ module ApplicationHelper
     arr = arr.map do |e|
       content_tag(:li, e)
     end
-    arr = arr.join
+    arr.join
   end
 
   def holding_label(label)
@@ -215,7 +215,6 @@ module ApplicationHelper
       end
       all_subjects[i] = subject.split(QUERYSEP)
     end
-    linked_subsubjects = ''
     args[:document][args[:field]].each_with_index do |_subject, i|
       lnk = ''
       lnk_accum = ''

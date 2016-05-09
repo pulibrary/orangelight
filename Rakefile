@@ -23,7 +23,7 @@ task :ci do
 
   Rake::Task['jetty:download'].invoke
   Rake::Task['jetty:clean'].invoke
-  error = nil
+
   error = Jettywrapper.wrap(jetty_params) do
     Rake::Task['spec'].invoke
   end

@@ -61,11 +61,11 @@ module AdvancedHelper
 
   # carries over guided search operations if user switches back to guided search from regular search
   def guided_radio(op_num, op)
-    checked = if params[op_num]
-                params[op_num] == op
-              else
-                op == "AND"
-              end
+    if params[op_num]
+      params[op_num] == op
+    else
+      op == "AND"
+    end
   end
 end
 

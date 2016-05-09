@@ -12,7 +12,7 @@ class VoyagerPatronClient
   def myaccount
     begin
       response = conn.get "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{@patron_id}&patronHomeUbId=1@DB"
-    rescue Faraday::Error::ConnectionFailed => e
+    rescue Faraday::Error::ConnectionFailed
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end
@@ -28,7 +28,7 @@ class VoyagerPatronClient
         req.url '/vxws/dbInfo?option=dbinfo'
         req.headers['Content-Type'] = 'application/xml'
       end
-    rescue Faraday::Error::ConnectionFailed => e
+    rescue Faraday::Error::ConnectionFailed
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end
@@ -56,7 +56,7 @@ class VoyagerPatronClient
         req.headers['Content-Type'] = 'application/xml'
         req.body = authenticate_patron_xml.to_s
       end
-    rescue Faraday::Error::ConnectionFailed => e
+    rescue Faraday::Error::ConnectionFailed
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end
@@ -73,7 +73,7 @@ class VoyagerPatronClient
         Rails.logger.info(req.body.to_s)
         req.headers['Content-Type'] = 'application/xml'
       end
-    rescue Faraday::Error::ConnectionFailed => e
+    rescue Faraday::Error::ConnectionFailed
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end
@@ -83,16 +83,16 @@ class VoyagerPatronClient
   end
 
   def cancel_xml_string(items, dbkey)
-    string = %(<?xml version="1.0" encoding="UTF-8"?>
-<ser:serviceParameters xmlns:ser="http://www.endinfosys.com/Voyager/serviceParameters">
-   <ser:parameters/>
-   <ser:patronIdentifier lastName="#{@last_name}" patronHomeUbId="#{@ub_id}" patronId="#{@patron_id}">
-      <ser:authFactor type="B">#{@barcode}</ser:authFactor>
-   </ser:patronIdentifier>
-   <ser:definedParameters xsi:type="myac:myAccountServiceParametersType" xmlns:myac="http://www.endinfosys.com/Voyager/myAccount" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      #{cancel_item_list(items, dbkey)}
-   </ser:definedParameters>
-</ser:serviceParameters>
+    %(<?xml version="1.0" encoding="UTF-8"?>
+      <ser:serviceParameters xmlns:ser="http://www.endinfosys.com/Voyager/serviceParameters">
+         <ser:parameters/>
+         <ser:patronIdentifier lastName="#{@last_name}" patronHomeUbId="#{@ub_id}" patronId="#{@patron_id}">
+            <ser:authFactor type="B">#{@barcode}</ser:authFactor>
+         </ser:patronIdentifier>
+         <ser:definedParameters xsi:type="myac:myAccountServiceParametersType" xmlns:myac="http://www.endinfosys.com/Voyager/myAccount" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            #{cancel_item_list(items, dbkey)}
+         </ser:definedParameters>
+      </ser:serviceParameters>
     )
   end
 
@@ -123,7 +123,7 @@ class VoyagerPatronClient
         Rails.logger.info(req.body.to_s)
         req.headers['Content-Type'] = 'application/xml'
       end
-    rescue Faraday::Error::ConnectionFailed => e
+    rescue Faraday::Error::ConnectionFailed
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end

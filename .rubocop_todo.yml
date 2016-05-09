@@ -8,16 +8,6 @@ require: rubocop-rspec
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 13
-Lint/UselessAssignment:
-  Exclude:
-    - 'Rakefile'
-    - 'app/controllers/account_controller.rb'
-    - 'app/helpers/advanced_helper.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'config/initializers/blacklight_initializer.rb'
-    - 'lib/orangelight/voyager_patron_client.rb'
-
 # Offense count: 1
 Lint/Void:
   Exclude:
