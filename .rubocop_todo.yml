@@ -8,11 +8,6 @@ require: rubocop-rspec
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 1
-Lint/ElseLayout:
-  Exclude:
-    - 'app/controllers/orangelight/browsables_controller.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: AlignWith, SupportedStyles, AutoCorrect.
