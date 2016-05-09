@@ -127,78 +127,86 @@ module BlacklightAdvancedSearch
   end
 end
 
-module BlacklightAdvancedSearch::ParsingNestingParser
-  def process_query(_params, config)
-    queries = []
-    ops = keyword_op
-    keyword_queries.each do |field, query|
-      query = query.delete(' ') if field == "left_anchor"
-      queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
-      queries << ops.shift
-    end
-    queries.join(' ')
-  end
-end
-
-module BlacklightAdvancedSearch::CatalogHelperOverride
-  def remove_guided_keyword_query(fields, my_params = params)
-    my_params = my_params.dup
-    fields.each do |guided_field|
-      my_params.delete(guided_field)
-    end
-    my_params
-  end
-end
-
-module BlacklightAdvancedSearch::RenderConstraintsOverride
-  def guided_search(my_params = params)
-    constraints = []
-    unless my_params[:q1].blank?
-      label = search_field_def_for_key(my_params[:f1])[:label]
-      query = my_params[:q1]
-      # query = 'NOT ' + my_params[:q1] if my_params[:op1] == 'NOT'
-      constraints << render_constraint_element(
-        label, query,
-        remove:               catalog_index_path(remove_guided_keyword_query([:f1, :q1], my_params))
-      )
-    end
-    unless my_params[:q2].blank?
-      label = search_field_def_for_key(my_params[:f2])[:label]
-      query = my_params[:q2]
-      query = 'NOT ' + my_params[:q2] if my_params[:op2] == 'NOT'
-      constraints << render_constraint_element(
-        label, query,
-        remove:               catalog_index_path(remove_guided_keyword_query([:f2, :q2, :op2], my_params))
-      )
-    end
-    unless my_params[:q3].blank?
-      label = search_field_def_for_key(my_params[:f3])[:label]
-      query = my_params[:q3]
-      query = 'NOT ' + my_params[:q3] if my_params[:op3] == 'NOT'
-      constraints << render_constraint_element(
-        label, query,
-        remove:               catalog_index_path(remove_guided_keyword_query([:f3, :q3, :op3], my_params))
-      )
-    end
-    constraints
-  end
-
-  # Over-ride of Blacklight method, provide advanced constraints if needed,
-  # otherwise call super. Existence of an @advanced_query instance variable
-  # is our trigger that we're in advanced mode.
-  def render_constraints_query(my_params = params)
-    if @advanced_query.nil? || @advanced_query.keyword_queries.empty?
-      return super(my_params)
-    else
-      content = guided_search
-      safe_join(content.flatten, "\n")
+module BlacklightAdvancedSearch
+  module ParsingNestingParser
+    def process_query(_params, config)
+      queries = []
+      ops = keyword_op
+      keyword_queries.each do |field, query|
+        query = query.delete(' ') if field == "left_anchor"
+        queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
+        queries << ops.shift
+      end
+      queries.join(' ')
     end
   end
 end
 
-module BlacklightAdvancedSearch::Controller
-  def is_advanced_search?(req_params = params)
-    (req_params[:search_field] == blacklight_config.advanced_search[:url_key]) ||
-      req_params[:f_inclusive]
+module BlacklightAdvancedSearch
+  module CatalogHelperOverride
+    def remove_guided_keyword_query(fields, my_params = params)
+      my_params = my_params.dup
+      fields.each do |guided_field|
+        my_params.delete(guided_field)
+      end
+      my_params
+    end
+  end
+end
+
+module BlacklightAdvancedSearch
+  module RenderConstraintsOverride
+    def guided_search(my_params = params)
+      constraints = []
+      unless my_params[:q1].blank?
+        label = search_field_def_for_key(my_params[:f1])[:label]
+        query = my_params[:q1]
+        # query = 'NOT ' + my_params[:q1] if my_params[:op1] == 'NOT'
+        constraints << render_constraint_element(
+          label, query,
+          remove:               catalog_index_path(remove_guided_keyword_query([:f1, :q1], my_params))
+        )
+      end
+      unless my_params[:q2].blank?
+        label = search_field_def_for_key(my_params[:f2])[:label]
+        query = my_params[:q2]
+        query = 'NOT ' + my_params[:q2] if my_params[:op2] == 'NOT'
+        constraints << render_constraint_element(
+          label, query,
+          remove:               catalog_index_path(remove_guided_keyword_query([:f2, :q2, :op2], my_params))
+        )
+      end
+      unless my_params[:q3].blank?
+        label = search_field_def_for_key(my_params[:f3])[:label]
+        query = my_params[:q3]
+        query = 'NOT ' + my_params[:q3] if my_params[:op3] == 'NOT'
+        constraints << render_constraint_element(
+          label, query,
+          remove:               catalog_index_path(remove_guided_keyword_query([:f3, :q3, :op3], my_params))
+        )
+      end
+      constraints
+    end
+
+    # Over-ride of Blacklight method, provide advanced constraints if needed,
+    # otherwise call super. Existence of an @advanced_query instance variable
+    # is our trigger that we're in advanced mode.
+    def render_constraints_query(my_params = params)
+      if @advanced_query.nil? || @advanced_query.keyword_queries.empty?
+        return super(my_params)
+      else
+        content = guided_search
+        safe_join(content.flatten, "\n")
+      end
+    end
+  end
+end
+
+module BlacklightAdvancedSearch
+  module Controller
+    def is_advanced_search?(req_params = params)
+      (req_params[:search_field] == blacklight_config.advanced_search[:url_key]) ||
+        req_params[:f_inclusive]
+    end
   end
 end

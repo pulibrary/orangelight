@@ -55,10 +55,7 @@ Style/AsciiComments:
 # SupportedStyles: nested, compact
 Style/ClassAndModuleChildren:
   Exclude:
-    - 'app/helpers/advanced_helper.rb'
-    - 'app/helpers/orangelight/browsables_helper.rb'
     - 'config/initializers/blacklight_initializer.rb'
-    - 'lib/blacklight/document/sms.rb'
 
 # Offense count: 1
 Style/ClassVars:
