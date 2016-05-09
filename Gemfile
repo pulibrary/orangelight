@@ -56,8 +56,8 @@ gem 'capybara'
 gem 'stringex', :git => "git://github.com/pulibrary/stringex.git", :tag => 'vpton.2.5.2.2'
 gem 'lcsort', '~>0.9'
 gem 'library_stdnums'
-gem 'rubocop', require: false
-gem 'rubocop-rspec'
+gem 'rubocop', '~> 0.39', require: false
+gem 'rubocop-rspec', '~> 1.4.1'
 gem 'coveralls', require: false
 gem 'newrelic_rpm'
 
