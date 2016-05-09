@@ -57,13 +57,6 @@ Style/ClassAndModuleChildren:
   Exclude:
     - 'config/initializers/blacklight_initializer.rb'
 
-# Offense count: 6
-# Configuration parameters: AllowedVariables.
-Style/GlobalVars:
-  Exclude:
-    - 'spec/features/availability_spec.rb'
-    - 'spec/spec_helper.rb'
-
 # Offense count: 9
 # Configuration parameters: MinBodyLength.
 Style/GuardClause:

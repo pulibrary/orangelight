@@ -11,8 +11,6 @@ Coveralls.wear!('rails') do
   add_filter '/app/models/orangelight.rb'
 end
 
-$in_travis = !ENV['TRAVIS'].nil? && ENV['TRAVIS'] == 'true'
-
 FactoryGirl.find_definitions
 
 RSpec.configure do |config|
@@ -23,3 +21,7 @@ Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, timeout: 60)
 end
 Capybara.javascript_driver = :poltergeist
+
+def in_travis?
+  !ENV['TRAVIS'].nil? && ENV['TRAVIS'] == 'true'
+end
