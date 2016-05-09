@@ -61,6 +61,6 @@ module AccountHelper
       item["callNumber"]
     elsif item["locationCode"] == 'bdirect'
       "Borrow Direct"
-        end
+    end
   end
 end

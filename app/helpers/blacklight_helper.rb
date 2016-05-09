@@ -50,7 +50,7 @@ module BlacklightHelper
         redirect_to "/browse/call_numbers?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
       elsif user_parameters[:search_field] == "browse_name" && !params[:id]
         redirect_to "/browse/names?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
-            end
+      end
 
     end
   end
