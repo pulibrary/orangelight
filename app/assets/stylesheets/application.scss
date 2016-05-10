@@ -27,30 +27,31 @@
 
 @import 'icons/icons';
 
-@import 'components/overrides';
+@import 'components/alerts';
+@import 'components/availability';
+@import 'components/bookmark-all';
+@import 'components/browse';
+@import 'components/buttons';
+@import 'components/dropdown';
 @import 'components/facets';
 @import 'components/font-face';
 @import 'components/footer';
 @import 'components/front-page';
 @import 'components/header';
 @import 'components/lists';
-@import 'components/availability';
+@import 'components/nav--accounts';
+@import 'components/overrides';
+@import 'components/pagination';
 @import 'components/record--descriptions';
 @import 'components/record--sidebar';
+@import 'components/record--subject';
 @import 'components/release-notes';
-@import 'components/bookmark-all';
-@import 'components/tables';
-@import 'components/tables--labels';
-@import 'components/browse';
-@import 'components/nav--accounts';
-@import 'components/pagination';
 @import 'components/search';
+@import 'components/search--advanced';
 @import 'components/search-options';
 @import 'components/search-results';
-@import 'components/search--advanced';
-@import 'components/buttons';
-@import 'components/dropdown';
-@import 'components/record--subject';
+@import 'components/tables';
+@import 'components/tables--labels';
 @import 'components/user';
 
 @import 'shame';
