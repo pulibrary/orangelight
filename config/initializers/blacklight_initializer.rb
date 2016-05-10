@@ -31,9 +31,9 @@ module Blacklight::Solr::Document::Marc
       format = format.is_a?(Array) ? format[0].downcase.strip : format.downcase.strip
       genre = format_to_openurl_genre(format)
     end
-    export_text = ""
+    export_text = ''
     if format == 'book'
-      export_text << "ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rfr_id=info%3Asid%2Fpulsearch.princeton.edu%3Agenerator&amp;rft.genre=book&amp;"
+      export_text << 'ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rfr_id=info%3Asid%2Fpulsearch.princeton.edu%3Agenerator&amp;rft.genre=book&amp;'
       export_text << "rft.btitle=#{(title.nil? || title['a'].nil?) ? '' : CGI.escape(title['a'])}+#{(title.nil? || title['b'].nil?) ? '' : CGI.escape(title['b'])}&amp;"
       export_text << "rft.title=#{(title.nil? || title['a'].nil?) ? '' : CGI.escape(title['a'])}+#{(title.nil? || title['b'].nil?) ? '' : CGI.escape(title['b'])}&amp;"
       export_text << "rft.au=#{(author.nil? || author['a'].nil?) ? '' : CGI.escape(author['a'])}&amp;"
@@ -43,25 +43,25 @@ module Blacklight::Solr::Document::Marc
       export_text << "rft.pub=#{(publisher_info.nil? || publisher_info['b'].nil?) ? '' : CGI.escape(publisher_info['b'])}&amp;"
       export_text << "rft.edition=#{(edition.nil? || edition['a'].nil?) ? '' : CGI.escape(edition['a'])}&amp;"
       export_text << "rft.isbn=#{(isbn.nil? || isbn['a'].nil?) ? '' : isbn['a']}"
-      export_text << "&amp;rft.genre=book"
+      export_text << '&amp;rft.genre=book'
     elsif format =~ /journal/i # checking using include because institutions may use formats like Journal or Journal/Magazine
-      export_text << "ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rfr_id=info%3Asid%2Fblacklight.rubyforge.org%3Agenerator&amp;rft.genre=article&amp;"
+      export_text << 'ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rfr_id=info%3Asid%2Fblacklight.rubyforge.org%3Agenerator&amp;rft.genre=article&amp;'
       export_text << "rft.title=#{(title.nil? || title['a'].nil?) ? '' : CGI.escape(title['a'])}+#{(title.nil? || title['b'].nil?) ? '' : CGI.escape(title['b'])}&amp;"
       export_text << "rft.atitle=#{(title.nil? || title['a'].nil?) ? '' : CGI.escape(title['a'])}+#{(title.nil? || title['b'].nil?) ? '' : CGI.escape(title['b'])}&amp;"
       export_text << "rft.aucorp=#{CGI.escape(corp_author['a']) if corp_author['a']}+#{CGI.escape(corp_author['b']) if corp_author['b']}&amp;" unless corp_author.blank?
       export_text << "rft.date=#{(publisher_info.nil? || publisher_info['c'].nil?) ? '' : CGI.escape(publisher_info['c'])}&amp;"
       export_text << "rft.issn=#{(issn.nil? || issn['a'].nil?) ? '' : issn['a']}"
-      export_text << "&amp;rft.genre=serial"
+      export_text << '&amp;rft.genre=serial'
     else
-      export_text << "ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fblacklight.rubyforge.org%3Agenerator&amp;"
-      export_text << "rft.title=" + ((title.nil? || title['a'].nil?) ? "" : CGI.escape(title['a']))
-      export_text << ((title.nil? || title['b'].nil?) ? "" : CGI.escape(" ") + CGI.escape(title['b']))
-      export_text << "&amp;rft.creator=" + ((author.nil? || author['a'].nil?) ? "" : CGI.escape(author['a']))
+      export_text << 'ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fblacklight.rubyforge.org%3Agenerator&amp;'
+      export_text << 'rft.title=' + ((title.nil? || title['a'].nil?) ? '' : CGI.escape(title['a']))
+      export_text << ((title.nil? || title['b'].nil?) ? '' : CGI.escape(' ') + CGI.escape(title['b']))
+      export_text << '&amp;rft.creator=' + ((author.nil? || author['a'].nil?) ? '' : CGI.escape(author['a']))
       export_text << "&amp;rft.aucorp=#{CGI.escape(corp_author['a']) if corp_author['a']}+#{CGI.escape(corp_author['b']) if corp_author['b']}" unless corp_author.blank?
-      export_text << "&amp;rft.date=" + ((publisher_info.nil? || publisher_info['c'].nil?) ? "" : CGI.escape(publisher_info['c']))
-      export_text << "&amp;rft.place=" + ((publisher_info.nil? || publisher_info['a'].nil?) ? "" : CGI.escape(publisher_info['a']))
-      export_text << "&amp;rft.pub=" + ((publisher_info.nil? || publisher_info['b'].nil?) ? "" : CGI.escape(publisher_info['b']))
-      export_text << "&amp;rft.format=" + (format.nil? ? "" : CGI.escape(format))
+      export_text << '&amp;rft.date=' + ((publisher_info.nil? || publisher_info['c'].nil?) ? '' : CGI.escape(publisher_info['c']))
+      export_text << '&amp;rft.place=' + ((publisher_info.nil? || publisher_info['a'].nil?) ? '' : CGI.escape(publisher_info['a']))
+      export_text << '&amp;rft.pub=' + ((publisher_info.nil? || publisher_info['b'].nil?) ? '' : CGI.escape(publisher_info['b']))
+      export_text << '&amp;rft.format=' + (format.nil? ? '' : CGI.escape(format))
       export_text << "&amp;rft.genre=#{genre}"
       unless issn.nil?
         export_text << "&amp;rft.issn=#{(issn.nil? || issn['a'].nil?) ? '' : issn['a']}"
@@ -71,22 +71,22 @@ module Blacklight::Solr::Document::Marc
       end
     end
 
-    export_text << "&amp;rft_id=" + (id.nil? ? "" : CGI.escape("http://bibdata.princeton.edu/bibliographic/#{id.value}"))
-    unless self["oclc_s"].nil?
-      export_text << "&amp;rft_id=" + CGI.escape("info:oclcnum/#{self['oclc_s'][0]}")
+    export_text << '&amp;rft_id=' + (id.nil? ? '' : CGI.escape("http://bibdata.princeton.edu/bibliographic/#{id.value}"))
+    unless self['oclc_s'].nil?
+      export_text << '&amp;rft_id=' + CGI.escape("info:oclcnum/#{self['oclc_s'][0]}")
     end
-    unless self["lccn_s"].nil?
-      export_text << "&amp;rft_id=" + CGI.escape("info:lccn/#{self['lccn_s'][0]}")
+    unless self['lccn_s'].nil?
+      export_text << '&amp;rft_id=' + CGI.escape("info:lccn/#{self['lccn_s'][0]}")
     end
     export_text.html_safe unless export_text.blank?
   end
 
   def format_to_openurl_genre(format)
-    return "book" if format == "book"
-    return "bookitem" if format == "book"
-    return "journal" if format == "serial"
-    return "conference" if format == "conference"
-    "unknown"
+    return 'book' if format == 'book'
+    return 'bookitem' if format == 'book'
+    return 'journal' if format == 'serial'
+    return 'conference' if format == 'conference'
+    'unknown'
   end
 end
 
@@ -116,10 +116,10 @@ module Blacklight::SolrResponse::Spelling
             #    true/false
             #    collation
             #    (suggestion for collation)
-            i_stop = if suggestions.index("correctlySpelled") # if extended results
-                       suggestions.index("correctlySpelled")
-                     elsif suggestions.index("collation")
-                       suggestions.index("collation")
+            i_stop = if suggestions.index('correctlySpelled') # if extended results
+                       suggestions.index('correctlySpelled')
+                     elsif suggestions.index('collation')
+                       suggestions.index('collation')
                      else
                        suggestions.length
                      end
@@ -134,7 +134,7 @@ module Blacklight::SolrResponse::Spelling
               #   suggestion =>  [{ frequency =>, word => }] # for extended results
               #   suggestion => ['word'] # for non-extended results
               orig_freq = term_info['origFreq']
-              word_suggestions << if term_info['suggestion'].first.is_a?(Hash) || suggestions.index("correctlySpelled")
+              word_suggestions << if term_info['suggestion'].first.is_a?(Hash) || suggestions.index('correctlySpelled')
                                     term_info['suggestion'].map do |suggestion|
                                       suggestion['word'] if suggestion['freq'] > orig_freq
                                     end
@@ -155,9 +155,9 @@ module Blacklight::SolrResponse::Spelling
       suggestions =  spellcheck.fetch(:suggestions, nil)
       return if suggestions.nil?
 
-      if suggestions.index("collation")
-        suggestions[suggestions.index("collation") + 1]
-      elsif spellcheck.key?("collations")
+      if suggestions.index('collation')
+        suggestions[suggestions.index('collation') + 1]
+      elsif spellcheck.key?('collations')
         spellcheck['collations'].last
       end
     end

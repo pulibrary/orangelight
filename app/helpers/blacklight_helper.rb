@@ -18,9 +18,9 @@ module BlacklightHelper
 
   # This is needed because white space tokenizes regardless of filters
   def left_anchor_strip(solr_parameters, _user_parameters)
-    return unless solr_parameters[:q] && solr_parameters[:q].include?("{!qf=$left_anchor_qf pf=$left_anchor_pf}")
-    newq = solr_parameters[:q].gsub("{!qf=$left_anchor_qf pf=$left_anchor_pf}", "")
-    solr_parameters[:q] = "{!qf=$left_anchor_qf pf=$left_anchor_pf}" + newq.delete(" ")
+    return unless solr_parameters[:q] && solr_parameters[:q].include?('{!qf=$left_anchor_qf pf=$left_anchor_pf}')
+    newq = solr_parameters[:q].gsub('{!qf=$left_anchor_qf pf=$left_anchor_pf}', '')
+    solr_parameters[:q] = '{!qf=$left_anchor_qf pf=$left_anchor_pf}' + newq.delete(' ')
   end
 
   def only_home_facets(solr_parameters, _user_paramters)
@@ -39,12 +39,12 @@ module BlacklightHelper
   end
 
   def redirect_browse(_solr_parameters, user_parameters)
-    if user_parameters[:search_field] && user_parameters[:controller] != "advanced"
-      if user_parameters[:search_field] == "browse_subject" && !params[:id]
+    if user_parameters[:search_field] && user_parameters[:controller] != 'advanced'
+      if user_parameters[:search_field] == 'browse_subject' && !params[:id]
         redirect_to "/browse/subjects?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
-      elsif user_parameters[:search_field] == "browse_cn" && !params[:id]
+      elsif user_parameters[:search_field] == 'browse_cn' && !params[:id]
         redirect_to "/browse/call_numbers?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
-      elsif user_parameters[:search_field] == "browse_name" && !params[:id]
+      elsif user_parameters[:search_field] == 'browse_name' && !params[:id]
         redirect_to "/browse/names?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
       end
 
@@ -90,11 +90,11 @@ module BlacklightHelper
   end
 
   def cjk_mm_val
-    "3<86%"
+    '3<86%'
   end
 
   def browse_related_name_hash(name)
-    link_to(name, "/?f[author_s][]=#{name}", class: "search-related-name", 'data-toggle' => "tooltip", 'data-original-title' => "Search: #{name}", title: "Search: #{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", class: "browse-related-name", 'data-toggle' => "tooltip", 'data-original-title' => "Search: #{name}", title: "Browse: #{name}")
+    link_to(name, "/?f[author_s][]=#{name}", class: 'search-related-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name}", title: "Search: #{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", class: 'browse-related-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name}", title: "Browse: #{name}")
   end
 
   # override method to never render saved searches in user_util_links
@@ -195,7 +195,7 @@ module BlacklightHelper
 
   class PrincetonPresenter < Blacklight::DocumentPresenter
     def field_value_separator
-      "<br/>".html_safe
+      '<br/>'.html_safe
     end
   end
 

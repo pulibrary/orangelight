@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-describe "Your Account", type: :feature do
-  context "User has not signed in" do
-    it "Account information displays as not available" do
+describe 'Your Account', type: :feature do
+  context 'User has not signed in' do
+    it 'Account information displays as not available' do
       visit('/account')
       expect(page).to have_content 'Log in with Princeton Net ID'
     end
   end
 
-  context "Princeton Community User has signed in" do
+  context 'Princeton Community User has signed in' do
     let(:user) { FactoryGirl.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_response) { fixture('/generic_voyager_account_response.xml') }
@@ -23,47 +23,47 @@ describe "Your Account", type: :feature do
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
         .to_return(status: 200, body: voyager_account_response, headers: {})
 
       sign_in user
       visit('/account')
     end
 
-    it "Displays Basic Patron Information" do
+    it 'Displays Basic Patron Information' do
       expect(page).to have_content 'Your Account'
       expect(page).to have_content 'Joe Student'
       expect(page).to have_content '22101008199999'
     end
 
-    it "Displays item charged out with due dates" do
+    it 'Displays item charged out with due dates' do
       expect(page).to have_content 'Charged Items'
       expect(page).to have_content 'Due Date'
     end
 
-    it "Displays an unchecked option to renew item request" do
+    it 'Displays an unchecked option to renew item request' do
       expect(page.has_no_checked_field?('renew_items[]')).to be_truthy
     end
 
-    it "Displays charged items as renewable" do
+    it 'Displays charged items as renewable' do
       expect(page).to have_css('#item-renew .account--charged_items input')
       expect(page.first(".account--charged_items [data-item-id='17365'] input").value).to eq('17365')
     end
 
-    it "Displays outstanding fines" do
+    it 'Displays outstanding fines' do
       expect(page).to have_content I18n.t('blacklight.account.no_fines_fees')
     end
 
-    it "Display active requests" do
+    it 'Display active requests' do
       expect(page).to have_content 'Pickup Location'
     end
 
-    it "Displays items for pickup" do
+    it 'Displays items for pickup' do
       expect(page).to have_css('.account--available_items')
     end
   end
 
-  context "User has charged Borrow Direct Items" do
+  context 'User has charged Borrow Direct Items' do
     let(:user) { FactoryGirl.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_with_borrow_direct) { fixture('./account_with_borrow_direct_charged_items.xml') }
@@ -76,18 +76,18 @@ describe "Your Account", type: :feature do
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
         .to_return(status: 200, body: voyager_account_with_borrow_direct, headers: {})
       sign_in user
       visit('/account')
     end
 
-    it "displays items with the call number Borrow Direct" do
+    it 'displays items with the call number Borrow Direct' do
       expect(page).to have_content('Borrow Direct')
     end
   end
 
-  context "User with no available pickup items has signed in" do
+  context 'User with no available pickup items has signed in' do
     let(:user) { FactoryGirl.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:generic_voyager_account_only_request_items) { fixture('./generic_voyager_account_only_request_items.xml') }
@@ -100,19 +100,19 @@ describe "Your Account", type: :feature do
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
         .to_return(status: 200, body: generic_voyager_account_only_request_items, headers: {})
 
       sign_in user
       visit('/account')
     end
 
-    it "Displays no items for pickup when none are available" do
+    it 'Displays no items for pickup when none are available' do
       expect(page).to have_content I18n.t('blacklight.account.no_pickup_items')
     end
   end
 
-  context "Princeton Community User has signed in with a block and active requests" do
+  context 'Princeton Community User has signed in with a block and active requests' do
     let(:user) { FactoryGirl.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_response) { fixture('/voyager_account_with_block.xml') }
@@ -125,49 +125,49 @@ describe "Your Account", type: :feature do
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
         .to_return(status: 200, body: voyager_account_response, headers: {})
 
       sign_in user
       visit('/account')
     end
 
-    it "displays the patrons block" do
-      expect(page).to have_content("Patron Blocks")
+    it 'displays the patrons block' do
+      expect(page).to have_content('Patron Blocks')
     end
 
     it "displays the reason for the patron's block" do
       expect(page).to have_content(I18n.t('blacklight.account.overdue_block'))
     end
 
-    it "Displays an unchecked option to cancel the request" do
+    it 'Displays an unchecked option to cancel the request' do
       expect(page.has_no_checked_field?('cancel_requests[]')).to be_truthy
     end
 
-    it "Displays the item and hold recall ID" do
+    it 'Displays the item and hold recall ID' do
       expect(page).to have_css('#request-cancel .account--requests input')
-      expect(page.find(".account--requests #cancel-7114238").value).to eq('item-7114238:holdrecall-587476:type-R')
+      expect(page.find('.account--requests #cancel-7114238').value).to eq('item-7114238:holdrecall-587476:type-R')
     end
 
-    it "Displays the position of the request in the hold queue" do
-      expect(page).to have_content("Position: 1")
+    it 'Displays the position of the request in the hold queue' do
+      expect(page).to have_content('Position: 1')
     end
 
-    it "Does not display renewal options when patron has a block" do
+    it 'Does not display renewal options when patron has a block' do
       expect(page).to have_content(I18n.t('blacklight.account.not_renewable_due_to_patron_block'))
       expect(page.has_no_checked_field?('renew_itemss[]')).to be_truthy
     end
 
-    it "Displays a formatted date when the request expires" do
+    it 'Displays a formatted date when the request expires' do
       expect(page).to have_content('Expires: July 24 2016 at 12:00 AM')
     end
 
-    it "Displays the selected Pickup Location" do
+    it 'Displays the selected Pickup Location' do
       expect(page).to have_content('.Firestone Library Circulation Desk')
     end
   end
 
-  context "Princeton Community User has signed in with an overdue item and fines" do
+  context 'Princeton Community User has signed in with an overdue item and fines' do
     let(:user) { FactoryGirl.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_response) { fixture('/account_with_block_fines_recall.xml') }
@@ -180,54 +180,54 @@ describe "Your Account", type: :feature do
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
         .to_return(status: 200, body: voyager_account_response, headers: {})
 
       sign_in user
       visit('/account')
     end
 
-    it "displays item as overdue" do
-      expect(page).to have_content("Overdue")
+    it 'displays item as overdue' do
+      expect(page).to have_content('Overdue')
     end
 
-    it "displays properly formatted overdue dates" do
-      expect(page).to have_content("January 25 2016 at 11:45 PM")
+    it 'displays properly formatted overdue dates' do
+      expect(page).to have_content('January 25 2016 at 11:45 PM')
     end
 
-    it "displays fines and fines" do
-      expect(page).to have_css(".account--fines")
+    it 'displays fines and fines' do
+      expect(page).to have_css('.account--fines')
     end
 
-    it "displays the type of fines" do
+    it 'displays the type of fines' do
       expect(page).to have_content('Overdue')
       expect(page).to have_content('Lost Item Replacement')
     end
 
-    it "displays the amount of fines" do
+    it 'displays the amount of fines' do
       expect(page).to have_content('15.00')
       expect(page).to have_content('599.00')
     end
 
-    it "displays the balance of fines" do
+    it 'displays the balance of fines' do
       expect(page).to have_content('15.00')
       expect(page).to have_content('599.00')
       expect(page).to have_content('50.00')
     end
 
-    it "displays the total amount due" do
+    it 'displays the total amount due' do
       expect(page).to have_css('.account--fines_total')
       expect(page).to have_content('664.00')
     end
 
-    it "It has a data attribute for each charged item" do
+    it 'It has a data attribute for each charged item' do
       expect(page).to have_xpath("//tr[@data-item-id='7247566']")
       expect(page).to have_xpath("//tr[@data-item-id='7114238']")
       expect(page).to have_xpath("//tr[@data-item-id='5331658']")
     end
   end
 
-  context "Princeton Community User has signed in to renew and cancel items" do
+  context 'Princeton Community User has signed in to renew and cancel items' do
     let(:user) { FactoryGirl.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_response) { fixture('/voyager_account_with_recall_and_overdue_fines.xml') }
@@ -247,34 +247,34 @@ describe "Your Account", type: :feature do
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
         .to_return(status: 200, body: voyager_account_response, headers: {})
 
       stub_request(:get, "#{ENV['voyager_api_base']}/vxws/dbInfo?option=dbinfo")
-        .with(headers: { "User-Agent" => "Faraday v0.9.2" })
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
         .to_return(status: 200, body: voyager_dbkey_response, headers: {})
 
       stub_request(:post, "#{ENV['voyager_api_base']}/vxws/AuthenticatePatronService")
-        .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' })
         .to_return(status: 200, body: voyager_authenticate_response, headers: {})
 
       stub_request(:post, "#{ENV['voyager_api_base']}/vxws/RenewService")
-        .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' })
         .to_return(status: 200, body: voyager_successful_renew_request, headers: {})
 
       stub_request(:post, "#{ENV['voyager_api_base']}/vxws/CancelService")
-        .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' })
         .to_return(status: 200, body: voyager_successful_cancel_request, headers: {})
 
       sign_in user
       visit('/account')
     end
 
-    describe "User can renew", js: true do
+    describe 'User can renew', js: true do
       it "returns a failure message when the request can't be processed" do
         stub_request(:post, "#{ENV['voyager_api_base']}/vxws/RenewService")
-          .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
-          .to_return(status: 500, body: "Bad thing happened", headers: {})
+          .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' })
+          .to_return(status: 500, body: 'Bad thing happened', headers: {})
 
         check('select-all-renew')
         click_button('Renew selected items')
@@ -282,15 +282,15 @@ describe "Your Account", type: :feature do
         expect(page).to have_content(I18n.t('blacklight.account.renew_fail'))
       end
 
-      it "but no items are selected for renewal" do
+      it 'but no items are selected for renewal' do
         click_button('Renew selected items')
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.renew_no_items'))
       end
 
-      it "selected items" do
+      it 'selected items' do
         stub_request(:post, "#{ENV['voyager_api_base']}/vxws/RenewService")
-          .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+          .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' })
           .to_return(status: 200, body: renew_response_only_success, headers: {})
         check('charged-7193128')
         expect(find('#charged-7193128')).to be_checked
@@ -300,7 +300,7 @@ describe "Your Account", type: :feature do
       end
 
       # Not sure how to test this one
-      it "by selecting all charged items" do
+      it 'by selecting all charged items' do
         check('select-all-renew')
         within('#item-renew') do
           all('input[type=checkbox]').each do |checkbox|
@@ -309,23 +309,23 @@ describe "Your Account", type: :feature do
         end
       end
 
-      it "displays a confirmation message for each successfully renewed item" do
+      it 'displays a confirmation message for each successfully renewed item' do
         check('select-all-renew')
         expect(page).to have_xpath("//tr[@data-item-id='3688389']")
         click_button('Renew selected items')
         wait_for_ajax
         expect(page).to have_selector(".success[data-item-id='3688389']")
-        expect(find(:xpath, "//tr[@data-item-id='3688389']/td/span[@class='item--messages']/b").text).to eq("Renewed")
+        expect(find(:xpath, "//tr[@data-item-id='3688389']/td/span[@class='item--messages']/b").text).to eq('Renewed')
       end
 
-      it "displays a block message for each item that cannot be renewed" do
+      it 'displays a block message for each item that cannot be renewed' do
         check('select-all-renew')
         expect(page).to have_xpath("//tr[@data-item-id='7193128']")
         click_button('Renew selected items')
         wait_for_ajax
         expect(page).to have_selector(".danger[data-item-id='7193128']")
-        expect(find(:xpath, "//tr[@data-item-id='7193128']/td/span[@class='item--messages']/span[@class='message']").text).to eq("Item not authorized for renewal.")
-        expect(find(:xpath, "//tr[@data-item-id='7193128']/td/span[@class='item--messages']/b").text).to eq("Not Renewed")
+        expect(find(:xpath, "//tr[@data-item-id='7193128']/td/span[@class='item--messages']/span[@class='message']").text).to eq('Item not authorized for renewal.')
+        expect(find(:xpath, "//tr[@data-item-id='7193128']/td/span[@class='item--messages']/b").text).to eq('Not Renewed')
       end
 
       it 'displays a flash message indicating all items cannot be renewed' do
@@ -336,26 +336,26 @@ describe "Your Account", type: :feature do
       end
     end
 
-    describe "User can cancel", js: true do
+    describe 'User can cancel', js: true do
       it "returns a failure message when the request can't be processed" do
         stub_request(:post, "#{ENV['voyager_api_base']}/vxws/CancelService")
-          .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
-          .to_return(status: 500, body: "bad thing happened", headers: {})
+          .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' })
+          .to_return(status: 500, body: 'bad thing happened', headers: {})
         check('cancel-7114238')
         click_button('Cancel Requests')
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.cancel_fail'))
       end
 
-      it "but no requests are selected for cancellation" do
+      it 'but no requests are selected for cancellation' do
         click_button('Cancel Requests')
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.cancel_no_items'))
       end
 
-      it "selected requests" do
+      it 'selected requests' do
         stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/CancelService")
-          .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+          .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' })
           .to_return(status: 200, body: voyager_cancel_response_avail_item, headers: {})
         check('cancel-7114238')
         expect(find('#cancel-7114238')).to be_checked
@@ -366,9 +366,9 @@ describe "Your Account", type: :feature do
         expect(page).to have_selector('#cancel-42289')
       end
 
-      it "selected available pickup items" do
+      it 'selected available pickup items' do
         stub_request(:post,  "#{ENV['voyager_api_base']}/vxws/CancelService")
-          .with(headers: { "User-Agent" => "Faraday v0.9.2", "Content-type" => "application/xml" })
+          .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' })
           .to_return(status: 200, body: voyager_cancel_response_request_item, headers: {})
         check('cancel-42289')
         expect(find('#cancel-42289')).to be_checked
@@ -379,7 +379,7 @@ describe "Your Account", type: :feature do
         expect(page).to have_no_selector('#cancel-42289')
       end
 
-      it "selected requests and pickup items" do
+      it 'selected requests and pickup items' do
         check('cancel-7114238')
         expect(find('#cancel-7114238')).to be_checked
         check('cancel-42289')

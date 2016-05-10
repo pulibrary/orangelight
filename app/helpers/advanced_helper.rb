@@ -7,8 +7,8 @@ module AdvancedHelper
   def label_tag_default_for(key)
     if !params[key].blank?
       params[key]
-    elsif params["search_field"] == key || guided_context(key)
-      params["q"]
+    elsif params['search_field'] == key || guided_context(key)
+      params['q']
     end
   end
 
@@ -33,7 +33,7 @@ module AdvancedHelper
 
   # Use configured facet partial name for facet or fallback on 'catalog/facet_limit'
   def advanced_search_facet_partial_name(display_facet)
-    facet_configuration_for_field(display_facet.name).try(:partial) || "catalog/facet_limit"
+    facet_configuration_for_field(display_facet.name).try(:partial) || 'catalog/facet_limit'
   end
 
   def advanced_key_value
@@ -62,7 +62,7 @@ module AdvancedHelper
     if params[op_num]
       params[op_num] == op
     else
-      op == "AND"
+      op == 'AND'
     end
   end
 end
@@ -74,10 +74,10 @@ module BlacklightAdvancedSearch
       # for guided search add the operations if there are queries to join
       # NOTs get added to the query. Only AND/OR are operations
       @keyword_op = []
-      unless @params[:q1].blank? || @params[:q2].blank? || @params[:op2] == "NOT"
+      unless @params[:q1].blank? || @params[:q2].blank? || @params[:op2] == 'NOT'
         @keyword_op << @params[:op2] if @params[:f1] != @params[:f2]
       end
-      unless @params[:q3].blank? || @params[:op3] == "NOT"
+      unless @params[:q3].blank? || @params[:op3] == 'NOT'
         @keyword_op << @params[:op3] if @params[:f2] != @params[:f3]
       end
       @keyword_op
@@ -91,9 +91,9 @@ module BlacklightAdvancedSearch
 
         # spaces need to be stripped from the query because they don't get properly stripped in Solr
         ###### TO GET STARTS WITH TO WORK #######
-        q1 = @params[:f1] == "left_anchor" ? @params[:q1].delete(' ') : @params[:q1]
-        q2 = @params[:f2] == "left_anchor" ? @params[:q2].delete(' ') : @params[:q2]
-        q3 = @params[:f3] == "left_anchor" ? @params[:q3].delete(' ') : @params[:q3]
+        q1 = @params[:f1] == 'left_anchor' ? @params[:q1].delete(' ') : @params[:q1]
+        q2 = @params[:f2] == 'left_anchor' ? @params[:q2].delete(' ') : @params[:q2]
+        q3 = @params[:f3] == 'left_anchor' ? @params[:q3].delete(' ') : @params[:q3]
         #########################################
 
         been_combined = false
@@ -102,8 +102,8 @@ module BlacklightAdvancedSearch
           if @keyword_queries.key?(@params[:f2])
             @keyword_queries[@params[:f2]] = "(#{@keyword_queries[@params[:f2]]}) " + @params[:op2] + " (#{q2})"
             been_combined = true
-          elsif @params[:op2] == "NOT"
-            @keyword_queries[@params[:f2]] = "NOT " + q2
+          elsif @params[:op2] == 'NOT'
+            @keyword_queries[@params[:f2]] = 'NOT ' + q2
           else
             @keyword_queries[@params[:f2]] = q2
           end
@@ -112,8 +112,8 @@ module BlacklightAdvancedSearch
           if @keyword_queries.key?(@params[:f3])
             @keyword_queries[@params[:f3]] = "(#{@keyword_queries[@params[:f3]]})" unless been_combined
             @keyword_queries[@params[:f3]] = "#{@keyword_queries[@params[:f3]]} " + @params[:op3] + " (#{q3})"
-          elsif @params[:op3] == "NOT"
-            @keyword_queries[@params[:f3]] = "NOT " + q3
+          elsif @params[:op3] == 'NOT'
+            @keyword_queries[@params[:f3]] = 'NOT ' + q3
           else
             @keyword_queries[@params[:f3]] = q3
           end
@@ -131,7 +131,7 @@ module BlacklightAdvancedSearch
       queries = []
       ops = keyword_op
       keyword_queries.each do |field, query|
-        query = query.delete(' ') if field == "left_anchor"
+        query = query.delete(' ') if field == 'left_anchor'
         queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
         queries << ops.shift
       end

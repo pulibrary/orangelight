@@ -27,11 +27,11 @@ module StringFunctions
       opts.fetch(:check_indexes, CHECK_INDEXES).each do |i|
         RTL_RANGE.each do |subrange|
           if str[i]
-            return "rtl" if subrange.cover?(str[i].unpack('U*0')[0])
+            return 'rtl' if subrange.cover?(str[i].unpack('U*0')[0])
           end
         end
       end
-      "ltr"
+      'ltr'
     end
 
     def cn_normalize(str)

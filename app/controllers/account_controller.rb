@@ -106,7 +106,7 @@ class AccountController < ApplicationController
       end
 
       if patron_record.status == 403
-        logger.info("403 Not Authorized to Connect to Patron Data Service at "\
+        logger.info('403 Not Authorized to Connect to Patron Data Service at '\
                     "#{ENV['bibdata_base']}/patron/#{netid}")
         return false
       end
@@ -115,7 +115,7 @@ class AccountController < ApplicationController
         return false
       end
       if patron_record.status == 500
-        logger.info("Error Patron Data Service.")
+        logger.info('Error Patron Data Service.')
         return false
       end
       patron = JSON.parse(patron_record.body).with_indifferent_access
@@ -132,12 +132,12 @@ class AccountController < ApplicationController
         return false
       end
       if voyager_account.status == 403
-        logger.info("403 Not Authorized to Connect to Voyager My Account Service.")
+        logger.info('403 Not Authorized to Connect to Voyager My Account Service.')
         return false
       end
       if voyager_account.status == 404
         logger.info("404 Patron id #{patron[:patron_id]} cannot be "\
-                    "found in the Voyager My Account Service.")
+                    'found in the Voyager My Account Service.')
         return false
       end
       account = VoyagerAccount.new(voyager_account.body)

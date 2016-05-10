@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper do
-  describe "#holding_block helpers" do
+  describe '#holding_block helpers' do
     let(:holding_id) { '3580281' }
     let(:library) { 'Rare Books and Special Collections' }
     let(:location) { 'Rare Books and Special Collections - Reference Collection in Dulles Reading Room' }
@@ -93,68 +93,68 @@ RSpec.describe ApplicationHelper do
         document: document
       }.with_indifferent_access
     end
-    context "search results when there are more than two call numbers" do
-      it "displays View Record for Availability" do
-        expect(search_result).to include "View Record for Full Availability"
+    context 'search results when there are more than two call numbers' do
+      it 'displays View Record for Availability' do
+        expect(search_result).to include 'View Record for Full Availability'
       end
-      it "has an availability icon" do
+      it 'has an availability icon' do
         expect(search_result).to have_selector ".availability-icon[title='Click on the record for full availability info']"
       end
     end
-    context "#holding_block_search" do
-      it "returns a good string" do
+    context '#holding_block_search' do
+      it 'returns a good string' do
         expect(search_result).to include call_number
         expect(search_result).to include library
       end
-      it "tags the record id" do
+      it 'tags the record id' do
         expect(search_result).to have_selector "*[data-availability-record][data-record-id='1']"
       end
-      it "tags the holding record id" do
+      it 'tags the holding record id' do
         expect(search_result).to have_selector "*[data-availability-record][data-holding-id='#{holding_id}']"
       end
-      it "wraps the record" do
-        expect(search_result).to have_selector "*[data-availability-record]"
+      it 'wraps the record' do
+        expect(search_result).to have_selector '*[data-availability-record]'
       end
-      it "has an availability icon" do
-        expect(search_result).to have_selector ".availability-icon"
+      it 'has an availability icon' do
+        expect(search_result).to have_selector '.availability-icon'
       end
-      it "link missing label appears when 856s is missing from elf location" do
-        expect(search_result).to include "Link Missing"
+      it 'link missing label appears when 856s is missing from elf location' do
+        expect(search_result).to include 'Link Missing'
       end
-      it "On-site access availability when dspace set to true" do
-        expect(search_result_thesis).to include "On-site access"
+      it 'On-site access availability when dspace set to true' do
+        expect(search_result_thesis).to include 'On-site access'
       end
-      it "indicates when there are no holdings for a record" do
+      it 'indicates when there are no holdings for a record' do
         expect(empty_search_result).to include t('blacklight.holdings.search_missing')
       end
     end
-    context "#holding_block record show - physical holdings" do
-      it "returns a string with call number and location display values" do
+    context '#holding_block record show - physical holdings' do
+      it 'returns a string with call number and location display values' do
         expect(show_result.last).to include call_number
         expect(show_result.last).to include library
       end
-      it "link to call number browse" do
+      it 'link to call number browse' do
         expect(show_result.last).to have_link('[Browse]', href: "/browse/call_numbers?q=#{call_number}")
       end
-      it "tooltip for the call number browse" do
+      it 'tooltip for the call number browse' do
         expect(show_result.last).to have_selector "*[title='Browse: #{call_number}']"
       end
-      it "tags the holding record id" do
+      it 'tags the holding record id' do
         expect(show_result.last).to have_selector "*[data-holding-id='#{holding_id}']"
       end
-      it "On-site access availability when dspace set to true" do
-        expect(show_result_thesis.last).to include "On-site access"
+      it 'On-site access availability when dspace set to true' do
+        expect(show_result_thesis.last).to include 'On-site access'
       end
-      it "includes a div to place current issues when journal format" do
-        expect(show_result_journal.last).to have_selector "*[data-journal]"
+      it 'includes a div to place current issues when journal format' do
+        expect(show_result_journal.last).to have_selector '*[data-journal]'
       end
-      it "excludes a div to place current issues when not journal format" do
-        expect(show_result.last).not_to have_selector "*[data-journal]"
+      it 'excludes a div to place current issues when not journal format' do
+        expect(show_result.last).not_to have_selector '*[data-journal]'
       end
     end
-    context "#holding_block record show - online holdings" do
-      it "link missing label appears when 856s is missing from elf location" do
-        expect(show_result.first).to include "Link Missing"
+    context '#holding_block record show - online holdings' do
+      it 'link missing label appears when 856s is missing from elf location' do
+        expect(show_result.first).to include 'Link Missing'
       end
     end
   end

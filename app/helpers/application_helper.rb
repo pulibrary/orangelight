@@ -6,11 +6,11 @@ module ApplicationHelper
     urls = ''
     links = JSON.parse(electronic_access)
     links.each do |url, text|
-      link = link_to(text.first, "#{ENV['proxy_base']}#{url}", target: "_blank")
+      link = link_to(text.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
       link = "#{text[1]}: " + link if text[1]
       link = "<li>#{link}</li>" if links.count > 1
       if /getit\.princeton\.edu/ =~ url
-        urls << content_tag(:div, "", :id => "full_text", :class => ["availability--panel", "availability_full-text"], 'data-umlaut-fulltext' => true)
+        urls << content_tag(:div, '', :id => 'full_text', :class => ['availability--panel', 'availability_full-text'], 'data-umlaut-fulltext' => true)
       end
       urls << content_tag(:div, link.html_safe, class: 'electronic-access')
     end
@@ -27,7 +27,7 @@ module ApplicationHelper
     unless electronic_access.nil?
       links_hash = JSON.parse(electronic_access)
       links_hash.first(2).each do |url, text|
-        link = link_to(text.first, "#{ENV['proxy_base']}#{url}", target: "_blank")
+        link = link_to(text.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
         link = "#{text[1]}: " + link if text[1]
         urls << link
       end
@@ -40,7 +40,7 @@ module ApplicationHelper
     if DONT_FIND_IT.include?(library)
       ''
     else
-      ' ' + link_to("[#{t('blacklight.holdings.stackmap')}]".html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => "_blank", class: "find-it", 'data-map-location' => location.to_s, 'data-toggle' => "tooltip")
+      ' ' + link_to("[#{t('blacklight.holdings.stackmap')}]".html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => '_blank', class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
     end
   end
 
@@ -48,7 +48,7 @@ module ApplicationHelper
     if DONT_FIND_IT.include?(library)
       ''
     else
-      ' ' + link_to("<span class=\"glyphicon glyphicon-map-marker\"></span>".html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => "_blank", title: t('blacklight.holdings.stackmap'), class: "find-it", 'data-map-location' => location.to_s, 'data-toggle' => "tooltip")
+      ' ' + link_to('<span class="glyphicon glyphicon-map-marker"></span>'.html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
     end
   end
 
@@ -108,7 +108,7 @@ module ApplicationHelper
     end
     unless holding['call_number'].blank?
       cn_browse_link = link_to('[Browse]', "/browse/call_numbers?q=#{holding['call_number_browse']}", class: 'browse-cn',
-                                                                                                      'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{holding['call_number_browse']}",
+                                                                                                      'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{holding['call_number_browse']}",
                                                                                                       title: "Browse: #{holding['call_number_browse']}")
       cn = "#{holding['call_number']} #{cn_browse_link}"
       info << content_tag(:div, cn.html_safe, class: 'holding-call-number')
@@ -144,7 +144,7 @@ module ApplicationHelper
 
   def request_placeholder(doc_id, holding_id, location_rules)
     content_tag(:div, class: 'location-services', data: { open: location_rules[:open], aeon: location_rules[:aeon_location], holding_id: holding_id }) do
-      link_to "Request", "/request/#{doc_id}?mfhd=#{holding_id}", title: "View Options to Request copies from this Location", target: "_blank", class: "request btn btn-xs btn-primary", data: { toggle: "tooltip" }
+      link_to 'Request', "/request/#{doc_id}?mfhd=#{holding_id}", title: 'View Options to Request copies from this Location', target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
     end
   end
 
@@ -221,19 +221,19 @@ module ApplicationHelper
       full_sub = ''
       all_subjects[i].each_with_index do |subsubject, j|
         lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[subject_facet][]=#{sub_array[i][j]}", class: "search-subject", 'data-toggle' => "tooltip", 'data-original-title' => "Search: #{sub_array[i][j]}", title: "Search: #{sub_array[i][j]}")
-        lnk_accum = lnk + t(SEPARATOR, class: "subject-level")
+                                  "/?f[subject_facet][]=#{sub_array[i][j]}", class: 'search-subject', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{sub_array[i][j]}", title: "Search: #{sub_array[i][j]}")
+        lnk_accum = lnk + t(SEPARATOR, class: 'subject-level')
         full_sub = sub_array[i][j]
       end
       lnk += '  '
-      lnk += link_to('[Browse]', "/browse/subjects?q=#{full_sub}", class: "browse-subject", 'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{full_sub}", title: "Browse: #{full_sub}", dir: getdir(full_sub).to_s)
+      lnk += link_to('[Browse]', "/browse/subjects?q=#{full_sub}", class: 'browse-subject', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{full_sub}", title: "Browse: #{full_sub}", dir: getdir(full_sub).to_s)
       args[:document][args[:field]][i] = lnk.html_safe
     end
   end
 
   def browse_name(args)
     args[:document][args[:field]].each_with_index do |name, i|
-      newname = link_to(name, "/?f[author_s][]=#{name}", class: "search-name", 'data-toggle' => "tooltip", 'data-original-title' => "Search: #{name}", title: "Search: #{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", class: "browse-name", 'data-toggle' => "tooltip", 'data-original-title' => "Browse: #{name}", title: "Browse: #{name}", dir: getdir(name).to_s)
+      newname = link_to(name, "/?f[author_s][]=#{name}", class: 'search-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name}", title: "Search: #{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", class: 'browse-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{name}", title: "Browse: #{name}", dir: getdir(name).to_s)
       args[:document][args[:field]][i] = newname.html_safe
     end
   end

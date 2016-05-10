@@ -12,7 +12,7 @@ class Orangelight::BrowsablesController < ApplicationController
     @model = params[:model].name.demodulize.tableize
     if params[:rpp].nil?
       @rpp = 50
-      @page_link = "?"
+      @page_link = '?'
     else
       @rpp = params[:rpp].to_i
       @page_link = "?rpp=#{@rpp}&"
@@ -28,7 +28,7 @@ class Orangelight::BrowsablesController < ApplicationController
     @start = params[:start].nil? ? 1 : params[:start].to_i
 
     unless params[:q].nil?
-      search_term = if @model == "call_numbers"
+      search_term = if @model == 'call_numbers'
                       StringFunctions.cn_normalize(params[:q])
                     else
                       params[:q].normalize_em

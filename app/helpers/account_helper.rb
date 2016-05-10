@@ -17,7 +17,7 @@ module AccountHelper
   end
 
   def format_block_statement(block_message)
-    return unless block_message == "odue_recall_limit_patron"
+    return unless block_message == 'odue_recall_limit_patron'
     I18n.t('blacklight.account.overdue_block')
   end
 
@@ -35,7 +35,7 @@ module AccountHelper
 
   def message_status(item)
     return if item[:messages].nil?
-    content_tag(:span, (item[:messages]['message']).to_s, class: "message")
+    content_tag(:span, (item[:messages]['message']).to_s, class: 'message')
   end
 
   def renew_status(item)
@@ -45,18 +45,18 @@ module AccountHelper
 
   def renew_state(item)
     return if item[:renew_status].nil?
-    if item[:renew_status]["status"] == 'Renewed'
-      "success"
+    if item[:renew_status]['status'] == 'Renewed'
+      'success'
     else
-      "danger"
+      'danger'
     end
   end
 
   def charged_item_callnum(item)
-    if !item["callNumber"].empty?
-      item["callNumber"]
-    elsif item["locationCode"] == 'bdirect'
-      "Borrow Direct"
+    if !item['callNumber'].empty?
+      item['callNumber']
+    elsif item['locationCode'] == 'bdirect'
+      'Borrow Direct'
     end
   end
 end

@@ -8,10 +8,10 @@ require 'jettywrapper'
 
 Rails.application.load_tasks
 
-ZIP_URL = "https://github.com/projectblacklight/blacklight-jetty/archive/v4.10.0.zip".freeze
+ZIP_URL = 'https://github.com/projectblacklight/blacklight-jetty/archive/v4.10.0.zip'.freeze
 
-Rake::Task["jetty:clean"].enhance do
-  Rake::Task["pulsearch:solr2jetty"].invoke
+Rake::Task['jetty:clean'].enhance do
+  Rake::Task['pulsearch:solr2jetty'].invoke
 end
 
 task :ci do

@@ -97,7 +97,7 @@ class VoyagerPatronClient
   end
 
   def cancel_item_list(items, dbkey)
-    cancel_item_string = ""
+    cancel_item_string = ''
     cancelled_items(items).each do |item|
       item_string = %(<myac:requestIdentifier>
           <myac:itemID>#{item['item_id']}</myac:itemID>
@@ -151,7 +151,7 @@ class VoyagerPatronClient
   end
 
   def format_renewal_items(items)
-    items_string = ""
+    items_string = ''
     items.each do |item|
       string = %(
         <myac:itemIdentifier>
@@ -191,11 +191,11 @@ class VoyagerPatronClient
     # sprint the cancel item string
     # form item-7114238:holdrecall-587476:type-R
     def cancelled_item(item)
-      request_data = item.split(":")
+      request_data = item.split(':')
       item_data = {}
-      item_data["item_id"] = request_data[0].split('-')[1]
-      item_data["hold_recall_id"] = request_data[1].split('-')[1]
-      item_data["hold_type"] = request_data[2].split('-')[1]
+      item_data['item_id'] = request_data[0].split('-')[1]
+      item_data['hold_recall_id'] = request_data[1].split('-')[1]
+      item_data['hold_type'] = request_data[2].split('-')[1]
       item_data
     end
 end

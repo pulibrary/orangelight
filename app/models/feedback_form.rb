@@ -10,9 +10,9 @@ class FeedbackForm < MailForm::Base
   def headers
     {
       subject: "#{I18n.t(:'blacklight.application_name')} Feedback Form",
-      to: ENV['OL_FEEDBACK_TO'] || "test@princeton.edu",
+      to: ENV['OL_FEEDBACK_TO'] || 'test@princeton.edu',
       from: %("#{name}" <#{email}>),
-      cc: ENV['OL_FEEDBACK_CC'] || "test2w@princeton.edu, test3@princeton.edu"
+      cc: ENV['OL_FEEDBACK_CC'] || 'test2w@princeton.edu, test3@princeton.edu'
     }
   end
 
