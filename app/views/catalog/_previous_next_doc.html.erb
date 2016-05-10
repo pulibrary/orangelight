@@ -8,9 +8,10 @@
   <% if @previous_document || @next_document %>
       <%= link_back_to_catalog class: "btn btn-default icon-moveback" %>
       <div class="page_links">
-        <%= link_to_previous_document @previous_document %> |
-        <%= item_page_entry_info %> |
+        <%= link_to_previous_document @previous_document %>
         <%= link_to_next_document @next_document %>
+        <%= item_page_entry_info %>
+
       </div>
   <% end %>
   </div>
