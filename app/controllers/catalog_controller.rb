@@ -115,7 +115,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'call_number_group_facet', label: 'Call number group', limit: 25, show: false, sort: 'index'
     config.add_facet_field 'call_number_full_facet', label: 'Full call number', limit: 25, show: false, sort: 'index'
 
-    config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: ['lc_1letter_facet', 'lc_rest_facet']
+    config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w(lc_1letter_facet lc_rest_facet)
     config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index'
     config.add_facet_field 'location_code_s', label: 'Location Code', show: false
 

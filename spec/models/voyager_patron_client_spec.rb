@@ -18,7 +18,7 @@ RSpec.describe VoyagerPatronClient do
     let(:voyager_successful_renew_request) { fixture('/successful_voyager_renew_response.xml') }
     let(:voyager_failed_renew_request) { fixture('/failed_renew_request_recall.xml') }
     let(:items_to_cancel) { ['item-1722964:holdrecall-602673:type-R'] }
-    let(:renew_item_list) { ['6526437', '91173'] }
+    let(:renew_item_list) { %w(6526437 91173) }
     let(:valid_patron_record_uri) { "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronHomeUbId=1@DB&patronId=#{sample_patron['patron_id']}" }
     let(:valid_db_key_uri) { "#{ENV['voyager_api_base']}/vxws/dbInfo?option=dbinfo" }
     let(:valid_authenticate_uri) { "#{ENV['voyager_api_base']}/vxws/AuthenticatePatronService" }

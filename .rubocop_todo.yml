@@ -72,11 +72,3 @@ Style/PredicateName:
   Exclude:
     - 'app/helpers/advanced_helper.rb'
     - 'lib/orangelight/voyager_account.rb'
-
-# Offense count: 10
-# Cop supports --auto-correct.
-# Configuration parameters: SupportedStyles, WordRegex.
-# SupportedStyles: percent, brackets
-Style/WordArray:
-  EnforcedStyle: percent
-  MinSize: 5

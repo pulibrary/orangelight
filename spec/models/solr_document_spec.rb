@@ -15,7 +15,7 @@ RSpec.describe SolrDocument do
         {
           "lccn_s" => ["2001522653"],
           "isbn_s" => ["9781400827824"],
-          "oclc_s" => ["19590730", "301985443"]
+          "oclc_s" => %w(19590730 301985443)
         }
       end
       it "has an identifier object each" do
@@ -30,7 +30,7 @@ RSpec.describe SolrDocument do
         {
           "lccn_s" => ["2001522653"],
           "isbn_s" => ["9781400827824"],
-          "oclc_s" => ["19590730", "301985443"]
+          "oclc_s" => %w(19590730 301985443)
         }
       end
       it "returns a hash of identifiers for data embeds" do
@@ -41,10 +41,9 @@ RSpec.describe SolrDocument do
           isbn: [
             "9781400827824"
           ],
-          oclc: [
-            "19590730",
-            "301985443"
-          ]
+          oclc: %w(
+            19590730
+            301985443)
         )
       end
     end

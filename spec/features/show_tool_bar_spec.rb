@@ -16,7 +16,7 @@ describe "Tools links" do
     end
   end
 
-  ['RefWorks', 'EndNote'].each do |link_text|
+  %w(RefWorks EndNote).each do |link_text|
     it "provides #{link_text} export options in dropdown" do
       within "#previousNextDocument li.dropdown" do
         find_link(link_text)

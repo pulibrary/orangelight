@@ -6,7 +6,7 @@ RSpec.describe "catalog/_show_identifiers_default.html.erb" do
     {
       "lccn_s" => ["2001522653"],
       "isbn_s" => ["9781400827824"],
-      "oclc_s" => ["19590730", "301985443"]
+      "oclc_s" => %w(19590730 301985443)
     }
   end
   before do

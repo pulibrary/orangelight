@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper do
-  let(:format) { ['Dissertation', 'Manuscript', 'Book'] }
+  let(:format) { %w(Dissertation Manuscript Book) }
   let(:format_display) { helper.format_icon(field_config) }
   let(:render_format) { helper.format_render(field_config) }
   let(:document) do

@@ -4,7 +4,7 @@ RSpec.describe AccountController do
   let(:valid_patron_response) { File.open(fixture_path + '/bibdata_patron_response.json') }
   let(:generic_voyager_account_response) { VoyagerAccount.new(fixture('/generic_voyager_account_response.xml')) }
   let(:generic_voyager_account_empty_response) { VoyagerAccount.new(fixture('/generic_voyager_account_empty_response.xml')) }
-  let(:item_ids_to_cancel) { ['42287', '42289', '69854', '28010'] }
+  let(:item_ids_to_cancel) { %w(42287 42289 69854 28010) }
   describe "#cancel_success" do
     it "returns true when requested cancelled items are sucessfully deleted" do
       expect(subject.send(:cancel_success, item_ids_to_cancel.size, generic_voyager_account_empty_response, item_ids_to_cancel)).to be_truthy

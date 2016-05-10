@@ -49,10 +49,9 @@ class SolrDocument
   private
 
     def identifier_keys
-      [
-        "isbn_s",
-        "lccn_s",
-        "oclc_s"
-      ]
+      %w(
+        isbn_s
+        lccn_s
+        oclc_s)
     end
 end
