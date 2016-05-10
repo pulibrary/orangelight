@@ -93,14 +93,14 @@ RSpec.describe VoyagerAccount do
     end
 
     it "Includes messages attached to an item" do
-      expect(subject_failed_renewal_charged_items.charged_items.is_a? Array).to be true
+      expect(subject_failed_renewal_charged_items.charged_items.is_a?(Array)).to be true
       expect(subject_failed_renewal_charged_items.charged_items.size).to eq(3)
       failed_renewal = subject_failed_renewal_charged_items.charged_items[0]
       expect(failed_renewal[:messages]["message"]).to eq('Item not authorized for renewal.')
     end
 
     it "Includes Renew Status When attached to an item" do
-      expect(subject_failed_renewal_charged_items.charged_items.is_a? Array).to be true
+      expect(subject_failed_renewal_charged_items.charged_items.is_a?(Array)).to be true
       expect(subject_failed_renewal_charged_items.charged_items.size).to eq(3)
       failed_renewal = subject_failed_renewal_charged_items.charged_items[0]
       expect(failed_renewal[:renew_status]).to be_truthy

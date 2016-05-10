@@ -61,7 +61,7 @@ RSpec.describe AccountController do
         .to_return(status: 200, body: valid_voyager_response, headers: {})
       account = subject.send(:voyager_account?, valid_voyager_patron)
       expect(account).to be_truthy
-      expect(account.doc.is_a? Nokogiri::XML::Document).to be_truthy
+      expect(account.doc.is_a?(Nokogiri::XML::Document)).to be_truthy
     end
 
     it "Returns false when the patron record doesn't exist" do

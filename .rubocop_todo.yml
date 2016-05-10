@@ -57,24 +57,11 @@ Style/ClassAndModuleChildren:
   Exclude:
     - 'config/initializers/blacklight_initializer.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-Style/LeadingCommentSpace:
-  Exclude:
-    - 'spec/spec_helper.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/MutableConstant:
   Exclude:
     - 'config/initializers/locations_initializer.rb'
-
-# Offense count: 15
-Style/NestedParenthesizedCalls:
-  Exclude:
-    - 'spec/controllers/account_controller_spec.rb'
-    - 'spec/models/voyager_account_spec.rb'
-    - 'spec/models/voyager_patron_client_spec.rb'
 
 # Offense count: 2
 # Configuration parameters: NamePrefix, NamePrefixBlacklist, NameWhitelist.
