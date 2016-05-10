@@ -5,9 +5,8 @@ module Blacklight
     module Sms
       # Return a text string that will be the body of the email
       def to_sms_text
-        body = ''
-        body << "Call Number: #{self['call_number_display'].uniq.join(', ')}" if self['call_number_display']
-        body
+        return '' unless self['call_number_display']
+        "Call Number: #{self['call_number_display'].uniq.join(', ')}"
       end
     end
   end

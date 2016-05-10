@@ -34,12 +34,12 @@ class AccountController < ApplicationController
     end
   end
 
-  ## The action has to call 'current_account' this so you "know" have many active requests there were previously attached
-  ## to account prior to calling the cancel_active_requests for the items whose
-  ## cancellation was requested. Unlike the Renew option successfully cancelled items just
-  ## drop off the list of outstanding requests in the response back from Voyager's CancelService
-  ## web service. The method cancel_success compares the response to current_account to confirm
-  ## that the cancellation did succeed.
+  # The action has to call 'current_account' this so you "know" have many active requests
+  # there were previously attached to account prior to calling the cancel_active_requests
+  # for the items whose cancellation was requested. Unlike the Renew option successfully
+  # cancelled items just drop off the list of outstanding requests in the response back
+  # from Voyager's CancelService web service. The method cancel_success compares the response
+  # to current_account to confirm that the cancellation did succeed.
   def cancel
     set_patron
     unless params[:cancel_requests].nil?
@@ -62,7 +62,8 @@ class AccountController < ApplicationController
   protected
 
     def verify_user
-      flash[:error] = I18n.t('blacklight.saved_searches.need_login') && raise(Blacklight::Exceptions::AccessDenied) unless current_user
+      flash[:error] = I18n.t('blacklight.saved_searches.need_login') &&
+                      raise(Blacklight::Exceptions::AccessDenied) unless current_user
     end
 
     ## For local dev purposes hardcode a net id string in place of current_user.uid
@@ -105,7 +106,8 @@ class AccountController < ApplicationController
       end
 
       if patron_record.status == 403
-        logger.info("403 Not Authorized to Connect to Patron Data Service at #{ENV['bibdata_base']}/patron/#{netid}")
+        logger.info("403 Not Authorized to Connect to Patron Data Service at "\
+                    "#{ENV['bibdata_base']}/patron/#{netid}")
         return false
       end
       if patron_record.status == 404
@@ -123,7 +125,8 @@ class AccountController < ApplicationController
 
     def voyager_account?(patron)
       begin
-        voyager_account = Faraday.get "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{patron[:patron_id]}&patronHomeUbId=1@DB"
+        voyager_account = Faraday.get "#{ENV['voyager_api_base']}/vxws/MyAccountService?"\
+                                      "patronId=#{patron[:patron_id]}&patronHomeUbId=1@DB"
       rescue Faraday::Error::ConnectionFailed
         logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
         return false
@@ -133,7 +136,8 @@ class AccountController < ApplicationController
         return false
       end
       if voyager_account.status == 404
-        logger.info("404 Patron id #{patron[:patron_id]} cannot be found in the Voyager My Account Service.")
+        logger.info("404 Patron id #{patron[:patron_id]} cannot be "\
+                    "found in the Voyager My Account Service.")
         return false
       end
       account = VoyagerAccount.new(voyager_account.body)

@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     get 'browse/names', model: Orangelight::Name, to: 'browsables#index'
     get 'browse/names/:id', model: Orangelight::Name, as: 'browse_name', to: 'browsables#show'
     get 'browse/subjects', model: Orangelight::Subject, to: 'browsables#index'
-    get 'browse/subjects/:id', model: Orangelight::Subject, as: 'browse_subject', to: 'browsables#show'
+    get 'browse/subjects/:id',
+        model: Orangelight::Subject,
+        as: 'browse_subject',
+        to: 'browsables#show'
   end
   mount Requests::Engine, at: '/requests'
 
@@ -18,7 +21,9 @@ Rails.application.routes.draw do
   root to: "catalog#index"
   blacklight_for :catalog
 
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }, skip: [:passwords, :registration]
+  devise_for :users,
+             controllers: { omniauth_callbacks: "users/omniauth_callbacks" },
+             skip: [:passwords, :registration]
 
   devise_scope :user do
     get "/users/signup" => "devise/registrations#new", :as => :new_user_registration

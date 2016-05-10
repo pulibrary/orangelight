@@ -29,7 +29,19 @@ Metrics/CyclomaticComplexity:
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes.
 # URISchemes: http, https
 Metrics/LineLength:
-  Max: 415
+  Max: 100
+  Exclude:
+    - 'app/controllers/catalog_controller.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'app/helpers/facets_helper.rb'
+    - 'app/helpers/advanced_helper.rb'
+    - 'config/initializers/blacklight_initializer.rb'
+    - 'config/initializers/devise.rb'
+    - 'config/initializers/blacklight_folders.rb'
+    - 'lib/orangelight/browse_lists.rb'
+    - 'lib/orangelight/voyager_patron_client.rb'
+    - 'spec/**/*'
 
 # Offense count: 3
 # Configuration parameters: CountComments.
