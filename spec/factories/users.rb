@@ -4,9 +4,7 @@ FactoryGirl.define do
     sequence(:email) { "email-#{srand}@princeton.edu" }
     provider 'cas'
     password 'foobarfoo'
-    uid do |user|
-      user.username
-    end
+    uid(&:username)
 
     factory :valid_princeton_patron do
     end

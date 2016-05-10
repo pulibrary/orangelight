@@ -74,14 +74,6 @@ Style/PredicateName:
     - 'lib/orangelight/voyager_account.rb'
 
 # Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: IgnoredMethods.
-# IgnoredMethods: respond_to
-Style/SymbolProc:
-  Exclude:
-    - 'spec/factories/users.rb'
-
-# Offense count: 1
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 # SupportedStyles: snake_case, camelCase
 Style/VariableName:
