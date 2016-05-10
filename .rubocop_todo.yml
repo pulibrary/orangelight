@@ -75,13 +75,6 @@ Style/PredicateName:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: AllowAsExpressionSeparator.
-Style/Semicolon:
-  Exclude:
-    - 'Rakefile'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 # Configuration parameters: IgnoredMethods.
 # IgnoredMethods: respond_to
 Style/SymbolProc:
