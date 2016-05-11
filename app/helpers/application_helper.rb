@@ -98,10 +98,10 @@ module ApplicationHelper
     info = ''
     unless holding['location'].blank?
       location = content_tag(:span, holding['location'], class: 'location-text', data:
-        {
-          location: true,
-          holding_id: holding_id
-        }
+                            {
+                              location: true,
+                              holding_id: holding_id
+                            }
                             )
       location << locate_link_with_gylph(holding['location_code'], bib_id, holding['library']).html_safe
       info << content_tag(:h3, location.html_safe, class: 'library-location')
@@ -161,19 +161,20 @@ module ApplicationHelper
         check_availability = false
         if links.empty?
           check_availability = true
-          info << content_tag(:span, 'Link Missing', class: 'availability-icon label label-default',
-                                                     title: 'Availability: Online', 'data-toggle' => 'tooltip')
+          info << content_tag(:span, 'Link Missing',
+                              class: 'availability-icon label label-default', title: 'Availability: Online',
+                              'data-toggle' => 'tooltip')
           info << 'Online access is not currently available.'
         else
-          info << link_to('Online', catalog_path(document['id']), class: 'availability-icon label label-primary',
-                                                                  title: 'Electronic access')
+          info << link_to('Online', catalog_path(document['id']),
+                          class: 'availability-icon label label-primary', title: 'Electronic access')
           info << links.shift.html_safe
         end
       else
         if holding['dspace']
           check_availability = false
-          info << link_to('On-site access', catalog_path(document['id']), class: 'availability-icon label label-warning',
-                                                                          title: 'Availability: On-site')
+          info << link_to('On-site access', catalog_path(document['id']),
+                          class: 'availability-icon label label-warning', title: 'Availability: On-site')
         else
           info << link_to('', catalog_path(document['id']), class: 'availability-icon').html_safe
         end

@@ -32,7 +32,7 @@ Metrics/AbcSize:
     - 'lib/orangelight/browse_lists.rb'
     - 'lib/orangelight/voyager_account.rb'    
     - 'lib/orangelight/voyager_patron_client.rb'
-    
+
 Metrics/BlockNesting:
   Exclude:
     - 'app/helpers/advanced_helper.rb'
