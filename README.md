@@ -25,9 +25,8 @@ psql -c "CREATE ROLE orangelight with createdb login password 'orange';"
 exit
 ```
 
-### Database Configruation
+### Database Configuration
 ```bash
-cp config/database.yml.tmpl config/database.yml
 rake db:create
 rake db:migrate
 ```
@@ -48,4 +47,20 @@ Default branch for deployment is `development`. You can specify a branch using t
 ```
 BRANCH=my_branch cap staging deploy # deploys my_branch to staging
 cap staging deploy # deploys development branch to staging
+```
+
+Testing
+------------------
+### Run All Tests
+
+
+```bash
+rake ci
+```
+
+### Development
+While in development, you run tests without switching to the test solr instance:
+
+```bash
+rspec spec
 ```

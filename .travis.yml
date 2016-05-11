@@ -2,18 +2,13 @@ language: ruby
 sudo: false
 rvm:
   - 2.3.0 # Ruby most recent
-# uncomment this line if your project needs to run something other than `rake`:
+
+env:
+- TZ=America/New_York
 
 before_script:
   - psql -c 'create database orangelight_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
-  - bundle exec rake jetty:clean
-  - bundle exec rake jetty:start
-  - bundle exec rake pulsearch:index
-  - RAILS_ENV=test bundle exec rake db:migrate
-  - export TZ=America/New_York
-
-script: bundle exec rspec spec
 
 branches:
   only:
