@@ -1,0 +1,159 @@
+require: rubocop-rspec
+
+Rails:
+  Enabled: true
+
+AllCops:
+  UseCache: false
+  DisplayCopNames: true
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'vendor/**/*'
+    - 'bin/*'
+    - 'config/deploy.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/account_controller.rb'
+    - 'app/controllers/feedback_controller.rb'
+    - 'app/controllers/orangelight/browsables_controller.rb'
+    - 'app/controllers/users/omniauth_callbacks_controller.rb'
+    - 'app/helpers/advanced_helper.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'app/helpers/blacklight_url_helper.rb'
+    - 'app/helpers/facets_helper.rb'
+    - 'app/models/user.rb'
+    - 'config/initializers/blacklight_initializer.rb'
+    - 'lib/orangelight/browse_lists.rb'
+    - 'lib/orangelight/voyager_account.rb'    
+    - 'lib/orangelight/voyager_patron_client.rb'
+
+Metrics/BlockNesting:
+  Exclude:
+    - 'app/helpers/advanced_helper.rb'
+    - 'config/initializers/blacklight_initializer.rb'
+
+Metrics/ClassLength:
+  Exclude:
+  - 'app/controllers/account_controller.rb'
+  - 'app/controllers/catalog_controller.rb'
+  - 'lib/orangelight/voyager_patron_client.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'app/controllers/orangelight/browsables_controller.rb'
+    - 'app/helpers/advanced_helper.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'app/helpers/blacklight_url_helper.rb'
+    - 'app/helpers/facets_helper.rb'
+    - 'config/initializers/blacklight_initializer.rb'
+    - 'lib/orangelight/browse_lists.rb'
+
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - 'app/controllers/catalog_controller.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'app/helpers/facets_helper.rb'
+    - 'app/helpers/advanced_helper.rb'
+    - 'config/initializers/blacklight_initializer.rb'
+    - 'config/initializers/devise.rb'
+    - 'config/initializers/blacklight_folders.rb'
+    - 'lib/orangelight/browse_lists.rb'
+    - 'lib/orangelight/voyager_patron_client.rb'
+    - 'spec/**/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'app/controllers/account_controller.rb'
+    - 'app/controllers/feedback_controller.rb'
+    - 'app/controllers/orangelight/browsables_controller.rb'
+    - 'app/helpers/advanced_helper.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'app/helpers/blacklight_url_helper.rb'
+    - 'config/initializers/blacklight_initializer.rb'
+    - 'lib/orangelight/browse_lists.rb'
+    - 'lib/orangelight/voyager_account.rb'
+    - 'lib/orangelight/voyager_patron_client.rb'    
+
+Metrics/ModuleLength:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'lib/orangelight/browse_lists.rb'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'app/controllers/orangelight/browsables_controller.rb'
+    - 'app/helpers/advanced_helper.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'app/helpers/blacklight_url_helper.rb'
+    - 'app/helpers/facets_helper.rb'
+    - 'config/initializers/blacklight_initializer.rb'
+    - 'lib/orangelight/browse_lists.rb'
+
+RSpec/AnyInstance:
+  Exclude:
+    - 'spec/requests/request_spec.rb'
+
+Style/AsciiComments:
+  Exclude:
+    - 'lib/orangelight/string_functions.rb'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'config/initializers/blacklight_initializer.rb'
+
+Style/MutableConstant:
+  Exclude:
+    - 'config/initializers/locations_initializer.rb'
+
+Style/PredicateName:
+  Exclude:
+    - 'app/helpers/advanced_helper.rb'
+    - 'lib/orangelight/voyager_account.rb'
+
+Style/IndentationConsistency:
+  EnforcedStyle: rails
+
+Style/CollectionMethods:
+  PreferredMethods:
+    collect: 'map'
+    collect!: 'map!'
+    inject: 'reduce'
+    detect: 'find'
+    find_all: 'select'
+
+Style/Documentation:
+  Enabled: false
+
+Rails/TimeZone:
+  Enabled: false
+
+RSpec/ExampleWording:
+  CustomTransform:
+    be: is
+    have: has
+    not: does not
+    NOT: does NOT
+  IgnoredWords:
+    - only
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/features/**/*'
+    - 'spec/views/**/*'
+    - 'spec/routing/**/*'
+    - 'spec/requests/**/*'

@@ -8,7 +8,6 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'ef8825769a3495a35f8184ac2ad23cbb19cfe5107e10aaf6ec5f1ba3a2325a8f90ba83db08720faf90308e0f451c0dbacc62f2f7e0a8dca517da59b4b9690b6e'
 
-
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
@@ -235,7 +234,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :cas, host: 'fed.princeton.edu', url: 'https://fed.princeton.edu/cas'
-  
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

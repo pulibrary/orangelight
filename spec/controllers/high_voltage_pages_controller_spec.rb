@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 describe HighVoltage::PagesController, type: :controller do
   %w(help about).each do |page|

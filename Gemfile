@@ -41,12 +41,9 @@ gem 'spring',        group: :development
 
 # Capistrano
 gem 'capistrano', '~> 3.4.0'
-
 gem 'faraday'
 gem 'faraday-cookie_jar'
-
 gem 'yajl-ruby', require: 'yajl'
-
 gem "devise"
 gem "devise-guests", '~> 0.5'
 gem "omniauth-cas"
@@ -55,17 +52,13 @@ gem "jettywrapper", "~> 1.7"
 
 # rspec, just like jettywrapper appear necessary for cap currently
 gem 'rspec-rails', '~> 3.4'
-
 gem 'capybara'
-
 gem 'stringex', :git => "git://github.com/pulibrary/stringex.git", :tag => 'vpton.2.5.2.2'
-
 gem 'lcsort', '~>0.9'
-
 gem 'library_stdnums'
-
+gem 'rubocop', '~> 0.39', require: false
+gem 'rubocop-rspec', '~> 1.4.1'
 gem 'coveralls', require: false
-
 gem 'newrelic_rpm'
 
 gem 'mail_form'

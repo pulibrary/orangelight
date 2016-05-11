@@ -5,9 +5,7 @@ class FeedbackController < ApplicationController
   before_action :build_feedback_form, only: [:create]
 
   def new
-    unless !@feedback_form.nil?
-      @feedback_form = FeedbackForm.new()
-    end
+    @feedback_form = FeedbackForm.new if @feedback_form.nil?
     @feedback_form.current_url = request.referer
   end
 
@@ -15,7 +13,7 @@ class FeedbackController < ApplicationController
     respond_to do |format|
       if @feedback_form.valid?
         @feedback_form.deliver
-        format.js { flash.now[:notice] =  I18n.t('blacklight.feedback.success') }
+        format.js { flash.now[:notice] = I18n.t('blacklight.feedback.success') }
         if @feedback_form.current_url.nil?
           redirect_to @feedback_form.current_url
         end
@@ -26,22 +24,21 @@ class FeedbackController < ApplicationController
   end
 
   protected
-  def build_feedback_form
-    @feedback_form = FeedbackForm.new(feedback_form_params)
-    @feedback_form.request = request
-    @feedback_form
-  end
 
-  def feedback_form_params
-    params.require(:feedback_form).permit(:name, :email, :message, :current_url)
-  end
-
-  def current_user_email
-    unless current_user.nil?
-      unless current_user.provider != 'cas'
-        @user_email = "#{current_user.uid}@princeton.edu"
-        @user_email
-      end
+    def build_feedback_form
+      @feedback_form = FeedbackForm.new(feedback_form_params)
+      @feedback_form.request = request
+      @feedback_form
     end
-  end
+
+    def feedback_form_params
+      params.require(:feedback_form).permit(:name, :email, :message, :current_url)
+    end
+
+    def current_user_email
+      return if current_user.nil?
+      return if current_user.provider != 'cas'
+      @user_email = "#{current_user.uid}@princeton.edu"
+      @user_email
+    end
 end

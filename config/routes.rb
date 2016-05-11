@@ -10,19 +10,24 @@ Rails.application.routes.draw do
     get 'browse/names', model: Orangelight::Name, to: 'browsables#index'
     get 'browse/names/:id', model: Orangelight::Name, as: 'browse_name', to: 'browsables#show'
     get 'browse/subjects', model: Orangelight::Subject, to: 'browsables#index'
-    get 'browse/subjects/:id', model: Orangelight::Subject, as: 'browse_subject', to: 'browsables#show'
+    get 'browse/subjects/:id',
+        model: Orangelight::Subject,
+        as: 'browse_subject',
+        to: 'browsables#show'
   end
   mount Requests::Engine, at: '/requests'
 
   Blacklight::Marc.add_routes(self)
-  root :to => "catalog#index"
+  root to: 'catalog#index'
   blacklight_for :catalog
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:passwords, :registration]
+  devise_for :users,
+             controllers: { omniauth_callbacks: 'users/omniauth_callbacks' },
+             skip: [:passwords, :registration]
 
   devise_scope :user do
-    get "/users/signup" => "devise/registrations#new", :as => :new_user_registration
-    post "/users" => "devise/registrations#create", :as => :user_registration
+    get '/users/signup' => 'devise/registrations#new', :as => :new_user_registration
+    post '/users' => 'devise/registrations#create', :as => :user_registration
   end
 
   get '/catalog/oclc/:id', to: 'catalog#oclc'
@@ -40,7 +45,7 @@ Rails.application.routes.draw do
   get '/request/:id', to: 'request#show'
 
   ### For feedback Form
-  get 'feedback', to: "feedback#new"
+  get 'feedback', to: 'feedback#new'
   post 'feedback', to: 'feedback#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -97,11 +102,11 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   #
-  get "/thumbnail/:id", to: "thumbnail#show"
+  get '/thumbnail/:id', to: 'thumbnail#show'
 
   # error pages
-  match "/404" => "errors#missing", via: [ :get, :post, :patch, :delete ]
-  match "/422" => "errors#missing", via: [ :get, :post, :patch, :delete ]
-  match "/500" => "errors#error", via: [ :get, :post, :patch, :delete ]
+  match '/404' => 'errors#missing', via: [:get, :post, :patch, :delete]
+  match '/422' => 'errors#missing', via: [:get, :post, :patch, :delete]
+  match '/500' => 'errors#error', via: [:get, :post, :patch, :delete]
   # match '*catch_unknown_routes', to: 'application#catch_404s', via: [:get, :post]
 end
