@@ -48,7 +48,7 @@ gem "devise"
 gem "devise-guests", '~> 0.5'
 gem "omniauth-cas"
 gem "blacklight-marc", "~> 5.0"
-gem "jettywrapper", "~> 1.7"
+gem "solr_wrapper", "~> 0.12"
 
 # rspec, just like jettywrapper appear necessary for cap currently
 gem 'rspec-rails', '~> 3.4'

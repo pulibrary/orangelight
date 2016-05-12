@@ -6,9 +6,18 @@ rvm:
 env:
 - TZ=America/New_York
 
+jdk:
+  - oraclejdk8
+
+cache:
+  directories:
+  - /tmp/solr-6.0.0
+
 before_script:
   - psql -c 'create database orangelight_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
+  - RAILS_ENV=test bundle exec rake db:create
+  - RAILS_ENV=test bundle exec rake db:migrate
 
 branches:
   only:
