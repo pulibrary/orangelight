@@ -3,36 +3,49 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-require 'rspec/core/rake_task'
+ZIP_URL = 'https://github.com/projectblacklight/blacklight-jetty/archive/v4.10.0.zip'.freeze
+
 require 'jettywrapper'
+require 'rubocop/rake_task'
 
 Rails.application.load_tasks
-
-ZIP_URL = 'https://github.com/projectblacklight/blacklight-jetty/archive/v4.10.0.zip'.freeze
 
 Rake::Task['jetty:clean'].enhance do
   Rake::Task['pulsearch:solr2jetty'].invoke
 end
 
-task :ci do
-  jetty_params = Jettywrapper.load_config.merge(
-    jetty_home: File.expand_path(File.dirname(__FILE__) + '/jetty'),
-    startup_wait: 180,
-    jetty_port: ENV['TEST_JETTY_PORT'] || 8983
-  )
-
-  Rake::Task['jetty:download'].invoke
-  Rake::Task['jetty:clean'].invoke
-
-  error = Jettywrapper.wrap(jetty_params) do
-    Rake::Task['spec'].invoke
-  end
-
-  raise "test failures: #{error}" if error
+desc 'Run style checker'
+RuboCop::RakeTask.new(:rubocop) do |task|
+  task.requires << 'rubocop-rspec'
+  task.fail_on_error = true
 end
 
-# Rake::Task[:default].prerequisites.clear
-task default: []
-Rake::Task[:default].clear
+desc 'Run test suite and style checker'
+task spec: :rubocop
 
-task default: [:ci]
+desc 'Spin up solr and run tests'
+task :ci do
+  if Rails.env.test?
+    # setup test database
+    Rake::Task['db:create'].invoke
+    Rake::Task['db:migrate'].invoke
+
+    Rake::Task['jetty:clean'].invoke
+
+    jetty_params = Jettywrapper.load_config
+    jetty_params[:startup_wait] = 180
+
+    Jettywrapper.wrap(jetty_params) do
+      # load fixtures
+      Rake::Task['pulsearch:index'].invoke
+
+      # run the tests
+      Rake::Task['spec'].invoke
+    end
+  else
+    system('rake ci RAILS_ENV=test')
+  end
+end
+
+Rake::Task[:default].clear
+task default: :ci
