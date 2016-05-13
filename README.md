@@ -29,16 +29,14 @@ exit
 ```bash
 rake db:create
 rake db:migrate
+rake db:seed
 ```
 Production credentials: In production you'll need to add production 
 credentials to database.yml
 
-### Load Test Data
+### Run
 ```bash
-rake jetty:clean
-rake jetty:start
-rake pulsearch:index
-rake db:seed
+rake server
 ```
 
 Deploying with Capistrano
@@ -51,16 +49,33 @@ cap staging deploy # deploys development branch to staging
 
 Testing
 ------------------
-### Run All Tests
+### Database Configuration
+```bash
+rake db:create RAILS_ENV=test
+rake db:migrate RAILS_ENV=test
+rake db:seed RAILS_ENV=test
+```
 
+### Run Tests
 
 ```bash
 rake ci
 ```
 
-### Development
-While in development, you run tests without switching to the test solr instance:
+### Run Tests Separately
 
 ```bash
-rspec spec
+rake server:test
+```
+
+Then, in another terminal window:
+
+```bash
+rake spec
+```
+
+To run a specific test:
+
+```bash
+rake spec SPEC=path/to/your_spec.rb:linenumber
 ```

@@ -9,6 +9,7 @@ WebMock.disable_net_connect!(allow_localhost: true, allow: [(ENV['umlaut_base'])
 Coveralls.wear!('rails') do
   add_filter '/lib/orangelight/browse_lists.rb'
   add_filter '/app/models/orangelight.rb'
+  add_filter '/lib/tasks'
 end
 
 FactoryGirl.find_definitions
