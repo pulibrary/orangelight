@@ -44,7 +44,7 @@ gem 'capistrano', '~> 3.4.0'
 gem 'faraday'
 gem 'faraday-cookie_jar'
 gem 'yajl-ruby', require: 'yajl'
-gem "devise"
+gem "devise", '~> 3.5'
 gem "devise-guests", '~> 0.5'
 gem "omniauth-cas"
 gem "blacklight-marc", "~> 5.0"

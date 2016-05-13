@@ -90,10 +90,10 @@ class CatalogController < ApplicationController
       assumed_boundaries: [1100, Time.now.year + 1],
       segments: true
     }
+    config.add_facet_field 'language_facet', label: 'Language', limit: true
     config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true
     config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true
     config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true
-    config.add_facet_field 'language_facet', label: 'Language', limit: true
     config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, show: false, sort: 'index'
     config.add_facet_field 'author_s', label: 'Author', limit: true, show: false
     config.add_facet_field 'class_year_s', label: 'PU Class Year', limit: true, show: false
@@ -126,7 +126,7 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'author_display', label: 'Author', helper_method: :browse_name
+    config.add_index_field 'author_display', label: 'Author/Artist', helper_method: :browse_name
     config.add_index_field 'pub_created_display', label: 'Published/Created'
     config.add_index_field 'format', label: 'Format', helper_method: :format_icon
 
@@ -137,7 +137,7 @@ class CatalogController < ApplicationController
     # config.add_show_field 'subtitle_display', :label => 'Subtitle'
     # config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
 
-    config.add_show_field 'author_display', label: 'Author', helper_method: :browse_name
+    config.add_show_field 'author_display', label: 'Author/Artist', helper_method: :browse_name
     config.add_show_field 'format', label: 'Format', helper_method: :format_render
     config.add_show_field 'url_fulltext_display', label: 'URL'
     config.add_show_field 'url_suppl_display', label: 'More Information'
@@ -387,7 +387,7 @@ class CatalogController < ApplicationController
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
-    config.spell_max = 5
+    config.spell_max = 0
 
     # Add bookmark all widget
     config.add_results_collection_tool(:bookmark_all)
