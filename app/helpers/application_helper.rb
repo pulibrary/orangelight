@@ -178,7 +178,7 @@ module ApplicationHelper
         else
           info << link_to('', catalog_path(document['id']), class: 'availability-icon').html_safe
         end
-        info << content_tag(:span, holding['library'], class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
+        info << content_tag(:span, holding['location'], class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
         info << "#{arrow}#{holding['call_number']}".html_safe
         info << locate_link_with_gylph(holding['location_code'], document['id'], holding['library']).html_safe
       end

@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: a295a29f54239978fb67bf273738b361c43c76ae
+  revision: 95812b7e6a1aa891b2d70a83e1ad60ba7740a21c
   branch: request_test_specs
   specs:
     requests (0.0.1)
@@ -63,7 +63,7 @@ GEM
     addressable (2.4.0)
     arel (6.0.3)
     ast (2.2.0)
-    autoprefixer-rails (6.3.6)
+    autoprefixer-rails (6.3.6.1)
       execjs
     bcrypt (3.1.11)
     blacklight (5.18.0)
@@ -97,8 +97,8 @@ GEM
     borrow_direct (1.2.0)
       httpclient (~> 2.4)
     builder (3.2.2)
-    byebug (8.2.5)
-    cancancan (1.13.1)
+    byebug (9.0.3)
+    cancancan (1.14.0)
     capistrano (3.4.1)
       i18n
       rake (>= 10.0.0)
@@ -136,7 +136,7 @@ GEM
       safe_yaml (~> 1.0.0)
     deprecation (1.0.0)
       activesupport
-    devise (3.5.9)
+    devise (3.5.10)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -203,7 +203,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0221)
     mini_portile2 (2.0.0)
-    minitest (5.8.4)
+    minitest (5.9.0)
     modernizr-rails (2.7.1)
     multi_json (1.12.0)
     multipart-post (2.0.0)
@@ -236,8 +236,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (3.3.0)
-      byebug (~> 8.0)
+    pry-byebug (3.4.0)
+      byebug (~> 9.0)
       pry (~> 0.10)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
@@ -302,7 +302,7 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     rubocop-rspec (1.4.1)
       rubocop (= 0.39.0)
-    ruby-progressbar (1.8.0)
+    ruby-progressbar (1.8.1)
     rubyzip (1.2.0)
     safe_yaml (1.0.4)
     sass (3.4.22)
@@ -348,7 +348,7 @@ GEM
       ref
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.3)
+    tilt (2.0.4)
     tins (1.6.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
@@ -360,7 +360,7 @@ GEM
     unicode-display_width (1.0.5)
     warden (1.2.6)
       rack (>= 1.0)
-    webmock (2.0.1)
+    webmock (2.0.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
@@ -423,4 +423,4 @@ DEPENDENCIES
   yajl-ruby
 
 BUNDLED WITH
-   1.12.3
+   1.12.4

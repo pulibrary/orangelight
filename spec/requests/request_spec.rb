@@ -25,8 +25,8 @@ describe 'blacklight tests' do
     it 'displays the location name for an item with a single location' do
       get '/catalog/321.json'
       r = JSON.parse(response.body)
-      expect(r['response']['document']['location'].length).to eq 1
-      location = r['response']['document']['location'][0]
+      expect(r['response']['document']['location_display'].length).to eq 1
+      location = r['response']['document']['location_display'][0]
       get '/catalog?&search_field=all_fields&q=321'
       expect(response.body.include?(location.to_s)).to eq true
     end
