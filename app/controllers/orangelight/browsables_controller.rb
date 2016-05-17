@@ -79,7 +79,7 @@ class Orangelight::BrowsablesController < ApplicationController
 
     if @model == 'names'
       @facet = 'author_s'
-    elsif @model == 'subject'
+    elsif @model == 'subjects'
       @facet = 'subject_facet'
     end
 
