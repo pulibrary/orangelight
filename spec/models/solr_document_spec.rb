@@ -48,28 +48,4 @@ RSpec.describe SolrDocument do
       end
     end
   end
-
-  describe 'Blacklight::Document::Sms' do
-    it 'does not include any text if call number not present' do
-      doc = described_class.new
-      sms_text = doc.to_sms_text
-      expect(sms_text).to eq ''
-    end
-    it 'includes call number in text' do
-      doc = described_class.new(call_number_display: ['AB 4209.3'])
-      sms_text = doc.to_sms_text
-      expect(sms_text).to match(/AB 4209.3/)
-    end
-    it 'includes all call numbers if there are multiple holdings' do
-      doc = described_class.new(call_number_display: ['AB 4209.3', 'Electronic Resource'])
-      sms_text = doc.to_sms_text
-      expect(sms_text).to match(/AB 4209.3/)
-      expect(sms_text).to match(/Electronic Resource/)
-    end
-    it 'includes all call numbers if there are multiple holdings' do
-      doc = described_class.new(call_number_display: ['Electronic Resource', 'Electronic Resource', 'Electronic Resource'])
-      sms_text = doc.to_sms_text
-      expect(sms_text.scan(/Electronic Resource/).length).to eq 1
-    end
-  end
 end
