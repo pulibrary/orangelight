@@ -217,6 +217,10 @@
             color: $blue;
         }
     }
+
+    @media (max-width: 500px) {
+        display: none;
+    }
 }
 
 a:link.toggle,

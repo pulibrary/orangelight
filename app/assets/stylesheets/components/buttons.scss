@@ -3,9 +3,8 @@
 @import "variables/typography";
 
 .button--start-over {
-  // width: 100%;
   display: inline-block;
-  margin: 0px 0px 0px -3px;
+  margin: 0 3px 0 0;
   padding: 0;
 
   a {
@@ -25,21 +24,53 @@
 
 .search-widgets .navbar-nav {
   margin: 0;
+
+  li {
+    float: left;
+    display: inline-block;
+    margin-left: 3px;
+  }
 }
+
+.pagination-search-widgets {
+  .btn {
+    vertical-align: initial;
+  }
+}
+
+.search-widgets .btn-group {
+  vertical-align: initial;
+  margin: 10px 0;
+}
+
+
 
 .search-widgets select,
 .navbar-nav > li > a,
 .navbar-nav > li.dropdown > button,
 .pagination-search-widgets .btn-default,
 .search-widgets button,
-.browse-header button {
-  padding: 6px 12px;
-  @media (min-width: $bp-small){
-    margin: 3px;
+.browse-header button,
+#sortAndPerPage .page_links .prev a,
+#sortAndPerPage .page_links .next a,
+.prev.is-disabled,
+.next.is-disabled,
+#previousNextDocument .previous,
+#previousNextDocument .next,
+.checkbox.bookmark_all span,
+.search-widgets .checkbox.toggle_bookmark span,
+.bookmarksTools.nav #emailLink,
+.bookmarksTools.nav #citationLink,
+.bookmarksTools.nav > li > a {
+  @media (min-width: $bp-small) {
+    margin: 3px 3px 3px 0;
   }
+
+  padding: 6px 12px;
   margin: 3px 0;
   background: $light-gray;
   border: 1px solid $gray;
+  border-radius: 4px;
   color: $black;
 
   &:hover {
@@ -49,12 +80,56 @@
   }
 }
 
+.checkbox.bookmark_all span,
+.search-widgets .checkbox.toggle_bookmark span {
+  display: inline-block;
+}
+
+#previousNextDocument .checkbox.toggle_bookmark {
+  margin-bottom: 0;
+}
+
+#previousNextDocument .previous,
+#previousNextDocument .next {
+  opacity: .5;
+  background: $light-gray;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+#previousNextDocument a.previous,
+#previousNextDocument a.next {
+  opacity: 1;
+  pointer-events: initial;
+  cursor: initial;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+#sortAndPerPage .prev a,
+#sortAndPerPage .next a {
+  text-docoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+}
+
 @media (max-width: $bp-small) {
   .search-widgets li {
     width: 100%;
 
-    button, .toggle_bookmark {
+    button,
+    .toggle_bookmark,
+    .toggle_bookmark span {
       width: 100%;
+      display: block;
     }
   }
 }
@@ -96,5 +171,14 @@ header .navbar-nav > li > a {
     .caret {
       color: $white;
     }
+  }
+}
+
+#sort-dropdown,
+#sort-dropdown .dropdown-toggle,
+#per_page-dropdown,
+#per_page-dropdown .dropdown-toggle {
+  @media (max-width: 500px) {
+    width: 100%;
   }
 }

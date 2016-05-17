@@ -1,31 +1,6 @@
-@import "variables/breaks";
+// these rules are temporary
+
 @import "variables/colors";
-@import "variables/typography";
-
-.other-resources ul li {
-  display: inline-block;
-  padding: 0 0.8em;
-  margin: 0.25em 0;
-  border-left: 1px solid $dark-gray;
-
-  &:first-child {
-    padding-left: 0;
-    border-left: 0;
-  }
-}
-
-a.more_facets_link {
-  font-size: 0.95em;
-  line-height: 1.4em;
-}
-
-.login--cas {
-  margin-bottom: 1em;
-}
-
-.new_user {
-  margin-top: 1em;
-}
 
 .beta {
   border-left: 4px solid #E0CB52;
@@ -35,55 +10,5 @@ a.more_facets_link {
   opacity: .5;
   background: $light-gray;
   pointer-events: none;
-}
-
-.classic-view {
-  text-align: center;
-
-  ul {
-    float: left;
-    margin-bottom: 0;
-  }
-
-  li {
-    display: inline-block;
-  }
-
-  a {
-    font-size: 12px;
-    line-height: 18px;
-    padding: 0.75em;
-    display: inline-block;
-    color: #777777;
-
-    &:hover {
-      text-decoration: none;
-      color: darken(#777, 20%);
-    }
-  }
-}
-
-.renew-items .form-control {
-  max-width: 350px;
-}
-
-#guided_search .form-group {
-  margin-left: 0;
-}
-
-#spell {
-  padding: 0 15px;
-
-  h4 {
-    margin: 1em 0 0.5em 0;
-  }
-}
-
-.holding-label {
-  font-weight: bold;
-}
-
-.availability-icon.more-info {
-  display: none;
-  margin: 0;
+  cursor: not-allowed;
 }

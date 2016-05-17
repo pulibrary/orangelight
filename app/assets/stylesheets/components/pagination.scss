@@ -14,3 +14,60 @@
     margin: 0;
   }
 }
+
+#previousNextDocument .page_links {
+  padding: 0;
+  border: 0;
+  display: inline-block;
+
+  .prev,
+  .next,
+  .previous {
+    margin-left: 0;
+    display: inline-block;
+
+    @media (max-width: 500px) {
+      width: 100%;
+    }
+  }
+}
+
+#sortAndPerPage {
+  display: inline-block;
+  width: 100%;
+
+  .pagination-rss {
+    display: inline-block;
+
+    @media (max-width: 500px) {
+      width: 100%;
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+    }
+  }
+
+  .page_links {
+    padding: 10px 0;
+    border: 0;
+
+    @media (max-width: 500px) {
+      padding-bottom: 0;
+    }
+
+    .prev,
+    .next,
+    .prev a,
+    .next a {
+      margin-left: 0;
+      display: inline-block;
+
+      @media (max-width: 500px) {
+        width: 100%;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 6px;
+      }
+    }
+  }
+}

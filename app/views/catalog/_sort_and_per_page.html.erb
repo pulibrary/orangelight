@@ -1,5 +1,7 @@
 <div id="sortAndPerPage" class="clearfix">
-  <%= render :partial => "paginate_compact", :object => @response if show_pagination? %>
-  <%= link_to(" ", catalog_index_path(params.merge(:format => 'atom', sort: 'cataloged_tdt desc, pub_date_start_sort desc, title_sort asc')), :class => "icon-rssfeed", :title => "Subscribe to results feed", 'data-toggle' => "tooltip" ) %>
+  <div class="pagination-rss pull-left">
+    <%= render :partial => "paginate_compact", :object => @response if show_pagination? %>
+    <%= link_to(" ", catalog_index_path(params.merge(:format => 'atom', sort: 'cataloged_tdt desc, pub_date_start_sort desc, title_sort asc')), :class => "icon-rssfeed", :title => "Subscribe to results feed", 'data-toggle' => "tooltip" ) %>
+  </div>
   <%= render_results_collection_tools wrapping_class: "search-widgets pull-right" %>
 </div>

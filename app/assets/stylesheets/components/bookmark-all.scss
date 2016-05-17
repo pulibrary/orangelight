@@ -1,50 +1,38 @@
-@import 'variables/breaks';
-@import 'variables/colors';
-@import 'variables/typography';
+@import "variables/breaks";
+@import "variables/colors";
+@import "variables/typography";
 
 .bookmark_all {
   display: inline-block;
-}
 
-.bookmarksTools.nav #emailLink,
-.bookmarksTools.nav #citationLink,
-.bookmarksTools.nav > li > a {
-  background-image: none;
-  background: #f5f4f1;
-  border-radius: 4px;
-  border: 1px solid #e8e6df;
-  color: #333;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.42857143;
-  margin-bottom: 0;
-  margin: 3px;
-  padding: 6px 12px;
-  text-align: center;
-  touch-action: manipulation;
-  user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
+  @media (max-width: 500px) {
+    width: 100%;
+    margin-top: 0;
 
-  &:hover {
-    color: #ffffff;
-    background: #337ab7;
-    text-decoration: none;
+    label {
+      width: 100%;
+    }
+
+    span {
+      display: block;
+      font-size: 14px;
+      width: 100%;
+    }
   }
 }
 
 .checkbox.toggle_bookmark {
-  text-align: center;
   margin-bottom: 5px;
+  padding: 0;
+  text-align: center;
 
   label {
     padding: 6px 12px;
   }
+}
+
+.search-widgets label.toggle_bookmark {
+  min-width: initial;
 }
 
 @media (max-width: $bp-small) {
@@ -53,29 +41,25 @@
   }
 }
 
-.checkbox.toggle_bookmark {
-  padding: 0;
+.checkbox.bookmark_all {
+  margin-left: 3px;
 }
 
-li .toggle_bookmark input[type=checkbox] {
-  display: none;
+.checkbox.bookmark_all,
+.search-widgets .checkbox.toggle_bookmark {
+  float: right;
+
+  label {
+    padding: 0;
+    display: inline-block;
+  }
+
+  input {
+    display: none;
+  }
 }
 
-li label.toggle_bookmark {
-  padding: 6px 12px;
-  @media (min-width: $bp-small) {
-    margin: 3px;
-  }
-  margin: 3px 0;
-  background: #f5f4f1;
-  border: 1px solid #e8e6df;
-  color: black;
-  line-height: 20px;
-  border-radius: 4px;
-  text-align: center;
-
-  &:hover {
-    background: $blue;
-    color: $white;
-  }
+.search-widgets input[type=checkbox]:checked + span {
+  background: $blue;
+  color: $white;
 }
