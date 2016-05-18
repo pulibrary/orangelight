@@ -144,7 +144,7 @@ module ApplicationHelper
 
   def request_placeholder(doc_id, holding_id, location_rules)
     content_tag(:div, class: 'location-services', data: { open: location_rules[:open], aeon: location_rules[:aeon_location], holding_id: holding_id }) do
-      link_to 'Request', "/request/#{doc_id}?mfhd=#{holding_id}", title: 'View Options to Request copies from this Location', target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
+      link_to 'Request', "https://library.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}", title: 'View Options to Request copies from this Location', target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
     end
   end
 
