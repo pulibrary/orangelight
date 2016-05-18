@@ -42,8 +42,6 @@ Rails.application.routes.draw do
   post '/account/renew', to: 'account#renew'
   post '/account/cancel', to: 'account#cancel'
 
-  get '/request/:id', to: 'request#show'
-
   ### For feedback Form
   get 'feedback', to: 'feedback#new'
   post 'feedback', to: 'feedback#create'
