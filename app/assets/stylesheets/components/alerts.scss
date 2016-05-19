@@ -1,6 +1,6 @@
 @import "variables/colors";
 
-.flash_messages {
+main > .container .flash_messages {
   position: fixed;
   top: 0;
   left: 0;
@@ -18,5 +18,18 @@
 @keyframes slide-down {
   0% {
     transform: translateY(-100px);
+  }
+}
+
+.modal-body .flash_messages {
+  margin-bottom: 15px;
+
+  .container {
+    padding: 0;
+    width: auto;
+  }
+
+  .alert-success .close {
+    display: none;
   }
 }
