@@ -21,3 +21,5 @@ jetty/*
 # Ignore coverage
 coverage/
 
+# Ignore byebug history
+.byebug_history

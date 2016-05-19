@@ -39,6 +39,11 @@ en:
       account_page: 'Your Account'
     email:
       text:
+        publish: 'Published/Created: %{value}'
+        online: 'Online access:'
+        location: 'Location: %{value}'
+        call_number: 'Call number: %{value}'
+        holdings: 'Holdings:'
         subject:
           one: 'PU Library Catalog Shared Record'
           other: 'PU Library Catalog Shared Records'
