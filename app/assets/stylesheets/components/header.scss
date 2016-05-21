@@ -123,14 +123,15 @@
     .l-branding__pul .menu--level-1 ul li {
         font-size: 1.2em;
     }
-    .button--start-over {
+    .button--start-over, .button--edit-search {
         width: 100%;
         a {
             width: 100%;
             font-size: 14px;
         }
     }
-    .button--start-over + .btn {
+    .button--start-over + .btn,
+    .button--edit-search + .btn {
         width: 100%;
     }
     .page_links {
