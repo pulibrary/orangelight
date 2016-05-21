@@ -6,7 +6,7 @@
 .button--edit-search {
   display: inline-block;
   margin: 0 3px 0 0;
-  padding: 0;
+  padding: 1px 0 0 0;
 
   a {
     font-size: 14px;
@@ -21,6 +21,10 @@
 
 .search-widgets .clear-bookmarks {
   display: none;
+}
+
+a.clear-bookmarks {
+  margin: 0 0 0 3px;
 }
 
 .search-widgets .navbar-nav {
@@ -182,4 +186,9 @@ header .navbar-nav > li > a {
   @media (max-width: 500px) {
     width: 100%;
   }
+}
+
+.start-over-row {
+  padding-top: 2px;
+  padding-bottom: 10px;
 }

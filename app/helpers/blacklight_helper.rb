@@ -23,9 +23,15 @@ module BlacklightHelper
     solr_parameters[:q] = '{!qf=$left_anchor_qf pf=$left_anchor_pf}' + newq.delete(' ')
   end
 
-  def only_home_facets(solr_parameters, _user_paramters)
+  def only_home_facets(solr_parameters, _user_parameters)
     return if has_search_parameters?
     solr_parameters['facet.field'] = home_facets
+    solr_parameters['facet.pivot'] = []
+  end
+
+  def only_advanced_facets(solr_parameters, user_parameters)
+    return unless user_parameters[:controller] == 'advanced'
+    solr_parameters['facet.field'] = advanced_facets
     solr_parameters['facet.pivot'] = []
   end
 

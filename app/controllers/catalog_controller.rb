@@ -22,7 +22,7 @@ class CatalogController < ApplicationController
     redirect_to lccn_resolve(params[:id])
   end
 
-  self.search_params_logic += [:cjk_mm, :only_home_facets, :left_anchor_strip, :redirect_browse]
+  self.search_params_logic += [:cjk_mm, :only_home_facets, :only_advanced_facets, :left_anchor_strip, :redirect_browse]
 
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
