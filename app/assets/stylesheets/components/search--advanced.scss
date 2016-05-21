@@ -36,3 +36,30 @@
 #guided_search .form-group {
   margin-left: 0;
 }
+
+.limit-criteria-heading {
+  margin: 0 0 0.8em;
+}
+
+.advanced-search-form .limit-criteria {
+  margin-bottom: 0;
+}
+
+.chosen-container-multi .chosen-choices {
+  min-height: 34px;
+  border-radius: 4px;
+  background-image: none;
+  padding: 0 5px 3.25px;
+}
+
+.chosen-container-multi .chosen-choices li.search-field {
+  margin-top: 3px;
+}
+
+.chosen-container-multi .chosen-choices li.search-choice {
+  margin: 6.5px 5px -1px 0;
+}
+
+#guided_search {
+  padding-bottom: 1.25em;
+}

@@ -17,3 +17,14 @@ context 'with advanced limits' do
     click_link 'Clear form'
   end
 end
+
+context 'advanced search only facets' do
+  it 'will hide facets not configured for advanced search display' do
+    visit '/catalog/?f[format][]=Book'
+    expect(page.all('.blacklight-location_code_s').length).to eq 0
+    expect(page.all('.blacklight-location').length).to eq 1
+    click_link 'Advanced Search'
+    expect(page.all('#location').length).to eq 0
+    expect(page.all('#location_code_s').length).to eq 1
+  end
+end

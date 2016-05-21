@@ -398,10 +398,16 @@
 
       <str name="facet">true</str>
       <str name="facet.mincount">1</str>
+      <str name="f.format.facet.sort">index</str>
+      <str name="f.location_code_s.facet.sort">index</str>
+      <str name="f.language_facet.facet.limit">1000</str>
+      <str name="f.location_code_s.facet.limit">500</str>
       <str name="facet.limit">10</str>
       <str name="facet.field">format</str>
       <str name="facet.field">language_facet</str>
+      <str name="facet.field">location_code_s</str>
       <str name="facet.field">pub_date_start_sort</str>
+
       <!--
       <str name="facet.method">enum</str>
       <str name="facet.enum.cache.minDf">25000</str>

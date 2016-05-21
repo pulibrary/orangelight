@@ -63,4 +63,8 @@ module FacetsHelper
   def home_facets
     blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
   end
+
+  def advanced_facets
+    blacklight_config.facet_fields.select { |_, v| v[:advanced] }.keys
+  end
 end

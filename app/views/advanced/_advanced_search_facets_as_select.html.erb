@@ -7,19 +7,20 @@
 %>
 
 <% facets_from_request(facet_field_names).each do |display_facet| %>
-    <% if should_render_facet?(display_facet) && display_facet.name != 'pub_date_start_sort' %>
-        <div class="form-group advanced-search-facet">
-            <%= label_tag display_facet.name.parameterize, :class => "col-sm-3 control-label" do %>
+    <% if display_facet.items.present? and advanced_facets.include?(display_facet.name) %>
+        <div class="form-group advanced-search-facet row">
+            <%= label_tag display_facet.name.parameterize, :class => "col-sm-4 control-label" do %>
                 <%= facet_field_label(display_facet.name) %>
             <% end %>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
               <%= content_tag(:select, :multiple => true,
                 :name   => "f_inclusive[#{display_facet.name}][]",
                 :id     => display_facet.name.parameterize,
-                :class  => "form-control advanced-search-facet-select") do %>
+                :class  => "form-control advanced-search-facet-select chosen-select",
+                data: { placeholder: "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}" }) do %>
                 <% display_facet.items.each do |facet_item| %>
                   <%= content_tag :option, :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) do %>
-                    <%= facet_item.label %>&nbsp;&nbsp;(<%= number_with_delimiter facet_item.hits %>)
+                    <%= facet_display_value(display_facet.name, facet_item.label) %>&nbsp;&nbsp;(<%= number_with_delimiter facet_item.hits %>)
                     <% end %>
                   <% end %>
                 <% end %>
@@ -31,11 +32,11 @@
 
 <%# Publication Date is a range input %>
 <% pub_date = facet_configuration_for_field('pub_date_start_sort') %>
-<div class="form-group advanced-search-facet">
-  <%= label_tag pub_date.field.parameterize, :class => "col-sm-3 control-label" do %>
+<div class="form-group advanced-search-facet row">
+  <%= label_tag pub_date.field.parameterize, :class => "col-sm-4 control-label" do %>
       <%= pub_date.label %>
   <% end %>
-  <div class="col-sm-9 range_limit">
+  <div class="col-sm-8 range_limit">
     <%= render_range_input(pub_date.field, :begin) %> – <%= render_range_input(pub_date.field, :end) %>
   </div>
 </div>

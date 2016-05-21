@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require modernizr
+//= require chosen-jquery
 //
 //= require 'blacklight_advanced_search'
 //= require 'blacklight_range_limit'
