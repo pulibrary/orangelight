@@ -53,6 +53,7 @@ header .input-group-addon {
     position: relative;
     z-index: 3;
     left: -30px;
+    pointer-events: none;
   }
 }
 
