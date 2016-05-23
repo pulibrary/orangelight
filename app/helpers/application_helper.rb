@@ -143,9 +143,17 @@ module ApplicationHelper
   end
 
   def request_placeholder(doc_id, holding_id, location_rules)
-    content_tag(:div, class: 'location-services', data: { open: location_rules[:open], aeon: location_rules[:aeon_location], holding_id: holding_id }) do
+    content_tag(:div, class: 'location-services', data: { open: open_location?(location_rules), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
       link_to 'Request', "https://library.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}", title: 'View Options to Request copies from this Location', target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
     end
+  end
+
+  def open_location?(location)
+    location.nil? ? false : location[:open]
+  end
+
+  def aeon_location?(location)
+    location.nil? ? false : location[:aeon_location]
   end
 
   def holding_block_search(document)
@@ -247,6 +255,15 @@ module ApplicationHelper
 
   def format_render(args)
     args[:document][args[:field]].join(', ')
+  end
+
+  def render_location_code(value)
+    location = LOCATIONS[value.to_sym]
+    location.nil? ? value : "#{value}: #{location_full_display(location)}"
+  end
+
+  def location_full_display(loc)
+    loc['label'] == '' ? loc['library']['label'] : loc['library']['label'] + ' - ' + loc['label']
   end
 
   def html_safe(args)

@@ -8,5 +8,5 @@ en:
       limit_criteria_heading_html: "Limit results by"
       query_criteria_heading_html: "Find items that match %{select_menu} of"
       sort_label: "Sort results by"
-      start_over: "Clear form"
+      start_over: "Clear search"
       search_btn: "Search"

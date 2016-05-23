@@ -1,3 +1,4 @@
+<div class="col-md-7">
   <% unless (search_context_str = render_search_to_s( advanced_search_context)).blank? %>
     <div class="constraints well search_history">
       <h4><%= t 'blacklight_advanced_search.form.search_context' %></h4>
@@ -15,12 +16,8 @@
     </div>
   </div>
 
-  <div class="search-submit-buttons clearfix">
-    <%= render 'advanced_search_submit_btns' %>
-  </div>
-
-  <hr>
-
+</div>
+<div class="col-md-5">
   <div class="limit-criteria">
     <h3 class="limit-criteria-heading"><%= t('blacklight_advanced_search.form.limit_criteria_heading_html')%></h3>
 
@@ -32,5 +29,10 @@
       <% end %>
     </div>
   </div>
+</div>
+
+<div class="search-submit-buttons clearfix col-sm-7">
+  <%= render 'advanced_search_submit_btns' %>
+</div>
 
 <% end %>
