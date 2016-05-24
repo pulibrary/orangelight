@@ -5,6 +5,7 @@ class FeedbackForm < MailForm::Base
   attribute :email, validate: /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
   attribute :message, validate: true
   attribute :current_url
+  attribute :feedback_desc, captcha: true
   append :remote_ip, :user_agent
 
   def headers
