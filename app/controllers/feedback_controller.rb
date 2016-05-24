@@ -32,7 +32,7 @@ class FeedbackController < ApplicationController
     end
 
     def feedback_form_params
-      params.require(:feedback_form).permit(:name, :email, :message, :current_url)
+      params.require(:feedback_form).permit(:name, :email, :message, :current_url, :feedback_desc)
     end
 
     def current_user_email
