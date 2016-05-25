@@ -106,7 +106,7 @@ a.clear-bookmarks {
 #previousNextDocument a.next {
   opacity: 1;
   pointer-events: initial;
-  cursor: initial;
+  cursor: pointer;
 
   &:hover,
   &:focus,

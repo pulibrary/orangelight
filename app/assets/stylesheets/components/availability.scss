@@ -165,3 +165,53 @@
     display: none;
   }
 }
+
+.panel .find-it {
+  display: block;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+
+  .map-text:hover,
+  .map-text:focus,
+  .map-text:active {
+    text-decoration: underline;
+  }
+}
+
+.availability-icon {
+  margin-right: 10px;
+  text-transform: uppercase;
+  cursor: default;
+
+  // @media (min-width: $bp-small){
+  //   width: 100px;
+  // }
+
+  // &.more-info {
+  //   width: auto;
+  // }
+}
+
+.blacklight-holdings li {
+  .availability-icon {
+    float: left;
+    padding: 6px 5px;
+  }
+  .library-location {
+    display: block;
+
+    .call-number {
+      white-space: pre;
+    }
+  }
+  // .availability-icon + .library-location {
+  //   @media (min-width: $bp-small){
+  //     padding-left: 110px;
+  //   }
+  // }
+}

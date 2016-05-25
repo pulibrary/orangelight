@@ -40,7 +40,7 @@ module ApplicationHelper
     if DONT_FIND_IT.include?(library)
       ''
     else
-      ' ' + link_to("[#{t('blacklight.holdings.stackmap')}]".html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => '_blank', class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
+      ' ' + link_to(%(<span class="map-text">#{t('blacklight.holdings.stackmap')}</span> <span class="glyphicon glyphicon-map-marker"></span>).html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => '_blank', class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
     end
   end
 
@@ -103,13 +103,11 @@ module ApplicationHelper
                               holding_id: holding_id
                             }
                             )
-      location << locate_link_with_gylph(holding['location_code'], bib_id, holding['library']).html_safe
+      location << locate_link(holding['location_code'], bib_id, holding['library']).html_safe
       info << content_tag(:h3, location.html_safe, class: 'library-location')
     end
     unless holding['call_number'].blank?
-      cn_browse_link = link_to('[Browse]', "/browse/call_numbers?q=#{holding['call_number_browse']}", class: 'browse-cn',
-                                                                                                      'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{holding['call_number_browse']}",
-                                                                                                      title: "Browse: #{holding['call_number_browse']}")
+      cn_browse_link = link_to('[Browse]', "/browse/call_numbers?q=#{holding['call_number_browse']}", class: 'browse-cn', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{holding['call_number_browse']}", title: "Browse: #{holding['call_number_browse']}")
       cn = "#{holding['call_number']} #{cn_browse_link}"
       info << content_tag(:div, cn.html_safe, class: 'holding-call-number')
     end
@@ -162,8 +160,6 @@ module ApplicationHelper
     holdings_hash = JSON.parse(document['holdings_1display'] || '{}')
     holdings_hash.first(2).each do |id, holding|
       check_availability = true
-      render_arrow = (!holding['library'].blank? && !holding['call_number'].blank?)
-      arrow = render_arrow ? ' &raquo; ' : ''
       info = ''
       if holding['library'] == 'Online'
         check_availability = false
@@ -174,27 +170,23 @@ module ApplicationHelper
                               'data-toggle' => 'tooltip')
           info << 'Online access is not currently available.'
         else
-          info << link_to('Online', catalog_path(document['id']),
-                          class: 'availability-icon label label-primary', title: 'Electronic access')
+          info << content_tag(:span, 'Online', class: 'availability-icon label label-primary', title: 'Electronic access', 'data-toggle' => 'tooltip')
           info << links.shift.html_safe
         end
       else
         if holding['dspace']
           check_availability = false
-          info << link_to('On-site access', catalog_path(document['id']),
-                          class: 'availability-icon label label-warning', title: 'Availability: On-site')
+          info << content_tag(:span, 'On-site access', class: 'availability-icon label label-warning', title: 'Availability: On-site')
         else
-          info << link_to('', catalog_path(document['id']), class: 'availability-icon').html_safe
+          info << content_tag(:span, '', class: 'availability-icon').html_safe
         end
-        info << content_tag(:span, holding['location'], class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
-        info << "#{arrow}#{holding['call_number']}".html_safe
-        info << locate_link_with_gylph(holding['location_code'], document['id'], holding['library']).html_safe
+        info << content_tag(:div, search_location_display(holding, document), class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
       end
       block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id })
     end
     if holdings_hash.length > 2
       block << content_tag(:li, link_to('View Record for Full Availability', catalog_path(document['id']),
-                                        class: 'availability-icon label label-default', title: 'Click on the record for full availability info',
+                                        class: 'availability-icon label label-default more-info', title: 'Click on the record for full availability info',
                                         'data-toggle' => 'tooltip').html_safe)
     elsif !holdings_hash.empty?
       block << content_tag(:li, link_to(' ', catalog_path(document['id']),
@@ -206,6 +198,13 @@ module ApplicationHelper
     else
       content_tag(:ul, block.html_safe)
     end
+  end
+
+  def search_location_display(holding, document)
+    render_arrow = (!holding['library'].blank? && !holding['call_number'].blank?)
+    arrow = render_arrow ? ' &raquo; ' : ''
+    location_display = holding['location'] + arrow + content_tag(:span, %(#{holding['call_number']}#{locate_link_with_gylph(holding['location_code'], document['id'], holding['library'])}).html_safe, class: 'call-number')
+    location_display.html_safe
   end
 
   SEPARATOR = '—'.freeze
