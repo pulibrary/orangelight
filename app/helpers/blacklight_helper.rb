@@ -40,8 +40,12 @@ module BlacklightHelper
   # bar only. Skips search_fields marked :include_in_simple_select => false
   def search_bar_select
     blacklight_config.search_fields.collect do |_key, field_def|
-      [field_def.dropdown_label || field_def.label, field_def.key] if should_render_field?(field_def)
+      [field_def.dropdown_label || field_def.label, field_def.key, { 'data-placeholder' => placeholder_text(field_def) }] if should_render_field?(field_def)
     end.compact
+  end
+
+  def placeholder_text(field_def)
+    field_def.respond_to?(:placeholder_text) ? field_def.placeholder_text : t('blacklight.search.form.q')
   end
 
   def redirect_browse(_solr_parameters, user_parameters)

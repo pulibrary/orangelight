@@ -76,4 +76,8 @@ $(document).ready(function() {
         $(".flash_messages .alert-info, .flash_messages .alert-success").remove();
       });
     }, 3000);
+
+    $('#search_field').on('change', function(e){
+        $('#q').attr('placeholder', $(this).find(':selected').data('placeholder'));
+    });
 });
