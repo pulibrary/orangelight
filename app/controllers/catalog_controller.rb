@@ -370,10 +370,12 @@ class CatalogController < ApplicationController
     config.add_search_field('browse_name') do |field|
       field.include_in_advanced_search = false
       field.label = 'Author (browse)'
+      field.placeholder_text = 'Last name, first name'
     end
     config.add_search_field('browse_cn') do |field|
       field.include_in_advanced_search = false
       field.label = 'Call number (browse)'
+      field.placeholder_text = 'e.g. P19.737.3'
     end
 
     # "sort results by" select (pulldown)
