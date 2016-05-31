@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 95812b7e6a1aa891b2d70a83e1ad60ba7740a21c
+  revision: 1a5877b3061e28ad6ff70971f0420fe6a3648ea1
   branch: request_test_specs
   specs:
     requests (0.0.1)
@@ -331,7 +331,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    solr_wrapper (0.12.0)
+    solr_wrapper (0.12.1)
       ruby-progressbar
       rubyzip
     spring (1.7.1)
