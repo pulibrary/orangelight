@@ -17,9 +17,11 @@
   </div>
     <div class="pull-right search-widgets col-xs-12 col-sm-6">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <%= link_to "Cite", citation_catalog_path(:id => @document), {:id => 'citeLink', :data => {:ajax_modal => "trigger"}, class: "btn btn-default icon-cite"} %>
-        </li>
+        <% if @document.voyager_record? %>
+          <li>
+            <%= link_to "Cite", citation_catalog_path(:id => @document), {:id => 'citeLink', :data => {:ajax_modal => "trigger"}, class: "btn btn-default icon-cite"} %>
+          </li>
+        <% end %>
 
         <li class="dropdown">
           <button class="btn btn-default" data-toggle="dropdown"><span class="icon-share"></span>Send to <span class="caret"></span></button>
@@ -30,12 +32,14 @@
             <li class="email">
               <%= link_to "Email", email_catalog_path(:id => @document), {:id => 'emailLink', :data => {:ajax_modal => "trigger"}, class: "icon-email"} %>
             </li>
-            <li class="endnote">
-              <%= link_to "EndNote", catalog_path(@document, :format => 'endnote'), class: "icon-external" %>
-            </li>
-            <li class="refworks">
-              <%= link_to "RefWorks", refworks_export_url({url: polymorphic_url(url_for_document(@document), format: :refworks_marc_txt, only_path: false)}), class: "icon-external", :target => "_blank"  %>
-            </li>
+            <% if @document.voyager_record? %>
+              <li class="endnote">
+                <%= link_to "EndNote", catalog_path(@document, :format => 'endnote'), class: "icon-external" %>
+              </li>
+              <li class="refworks">
+                <%= link_to "RefWorks", refworks_export_url({url: polymorphic_url(url_for_document(@document), format: :refworks_marc_txt, only_path: false)}), class: "icon-external", :target => "_blank"  %>
+              </li>
+            <% end %>
             <li class="print">
               <a href="javascript:if(window.print)window.print()"><span class="icon-print"></span>Printer</a>
             </li>
