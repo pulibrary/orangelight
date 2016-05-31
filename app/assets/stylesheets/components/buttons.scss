@@ -192,3 +192,18 @@ header .navbar-nav > li > a {
   padding-top: 2px;
   padding-bottom: 10px;
 }
+
+.back-to-top {
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    position:fixed;
+    bottom: 30px;
+    right: 30px;
+    display:none;
+    background: image-url("up-arrow.svg") center 50% no-repeat rgba(255,255,255,.8);
+
+  &:hover{
+    text-decoration:none;
+  }
+}
