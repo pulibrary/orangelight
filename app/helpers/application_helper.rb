@@ -36,16 +36,16 @@ module ApplicationHelper
   end
 
   DONT_FIND_IT = ['Fine Annex', 'Forrestal Annex', 'Mudd Manuscript Library', 'Online', 'Rare Books and Special Collections', 'ReCAP'].freeze
-  def locate_link(location, bib, library = nil)
-    if DONT_FIND_IT.include?(library)
+  def locate_link(location, bib, call_number, library = nil)
+    if DONT_FIND_IT.include?(library) || call_number.blank?
       ''
     else
       ' ' + link_to(%(<span class="map-text">#{t('blacklight.holdings.stackmap')}</span> <span class="glyphicon glyphicon-map-marker"></span>).html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => '_blank', class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
     end
   end
 
-  def locate_link_with_gylph(location, bib, library = nil)
-    if DONT_FIND_IT.include?(library)
+  def locate_link_with_gylph(location, bib, call_number, library = nil)
+    if DONT_FIND_IT.include?(library) || call_number.blank?
       ''
     else
       ' ' + link_to('<span class="glyphicon glyphicon-map-marker"></span>'.html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
@@ -103,7 +103,7 @@ module ApplicationHelper
                               holding_id: holding_id
                             }
                             )
-      location << locate_link(holding['location_code'], bib_id, holding['library']).html_safe
+      location << locate_link(holding['location_code'], bib_id, holding['call_number'], holding['library']).html_safe
       info << content_tag(:h3, location.html_safe, class: 'library-location')
     end
     unless holding['call_number'].blank?
@@ -203,7 +203,7 @@ module ApplicationHelper
   def search_location_display(holding, document)
     render_arrow = (!holding['library'].blank? && !holding['call_number'].blank?)
     arrow = render_arrow ? ' &raquo; ' : ''
-    location_display = holding['location'] + arrow + content_tag(:span, %(#{holding['call_number']}#{locate_link_with_gylph(holding['location_code'], document['id'], holding['library'])}).html_safe, class: 'call-number')
+    location_display = holding['location'] + arrow + content_tag(:span, %(#{holding['call_number']}#{locate_link_with_gylph(holding['location_code'], document['id'], holding['call_number'], holding['library'])}).html_safe, class: 'call-number')
     location_display.html_safe
   end
 
