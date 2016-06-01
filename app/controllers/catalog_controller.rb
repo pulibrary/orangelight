@@ -245,7 +245,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'other_format_display', label: 'Other format(s)'
     config.add_show_field 'cumulative_index_finding_aid_display', label: 'Cumulative index finding aid'
     config.add_show_field 'subject_display', label: 'Subject(s)', helper_method: :subjectify
-    config.add_show_field 'form_genre_display', label: 'Form genre'
+    config.add_show_field 'form_genre_display', label: 'Form/Genre'
     config.add_show_field 'related_works_display', label: 'Related work(s)'
     config.add_show_field 'contains_display', label: 'Contains'
     config.add_show_field 'place_name_display', label: 'Place name(s)'
@@ -311,7 +311,7 @@ class CatalogController < ApplicationController
     #   :include_in_advanced_search => true
     #   field.include_in_simple_select = false
 
-    config.add_search_field 'all_fields', label: 'All Fields' do |field|
+    config.add_search_field 'all_fields', label: 'Keyword' do |field|
     end
 
     # Now we see how to over-ride Solr request handler defaults, in this
