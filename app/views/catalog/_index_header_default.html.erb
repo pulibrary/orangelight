@@ -16,7 +16,7 @@
           </span>
 
         <% titlealt = render_index_field_value document, :field => 'title_vern_display' %>
-        <% altdir = getdir(titlealt) %>
+        <% altdir = titlealt.dir %>
         <% if titlealt.length != 0 %>
           <% if altdir == "rtl" %>
             <%= link_to_document document, titlealt, :counter => counter, :dir => altdir, :style => "float: right;" %>

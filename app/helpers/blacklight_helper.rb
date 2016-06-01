@@ -4,10 +4,6 @@ module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior
   require './lib/orangelight/string_functions'
 
-  def getdir(str, opts = {})
-    StringFunctions.getdir(str, opts)
-  end
-
   def json_field?(field)
     field[:hash]
   end

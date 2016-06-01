@@ -346,6 +346,7 @@ GEM
     sshkit (1.10.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    string_rtl (0.1.0)
     term-ansicolor (1.3.2)
       tins (~> 1.0)
     therubyracer (0.12.2)
@@ -422,6 +423,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   solr_wrapper (~> 0.12)
   spring
+  string_rtl
   stringex!
   therubyracer
   uglifier (>= 1.3.0)

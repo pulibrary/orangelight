@@ -35,7 +35,7 @@ module BrowseLists
           if i.even?
             label = fac
           else
-            csv << [label.normalize_em, fac.to_s, label, StringFunctions.getdir(label)]
+            csv << [label.normalize_em, fac.to_s, label, label.dir]
           end
         end
       end
@@ -75,7 +75,7 @@ module BrowseLists
               title = record['title_display']
               if record['title_vern_display']
                 title = record['title_vern_display']
-                dir = StringFunctions.getdir(title)
+                dir = title.dir
               else
                 dir = 'ltr' # ltr for non alt script
               end
