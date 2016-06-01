@@ -5,13 +5,13 @@
   <% index_fields(document).each do |solr_fname, field| -%>
     <% if should_render_index_field? document, field %>
       <% if document[solr_fname].length == 1 || !document[solr_fname].is_a?(Array) %>
-        <% valdir = getdir(document[solr_fname])%>
+        <% valdir = Array(document[solr_fname]).first.dir %>
         <% value = render_index_field_value document, :field => solr_fname %>
         <li class="blacklight-<%= solr_fname.parameterize %>" dir="<%= valdir %>"><%= value %></li>
       <% else %>
         <% valdirs = [] %>
         <% document[solr_fname].each do |value| %>
-           <% valdirs << getdir(value) %>
+           <% valdirs << value.dir %>
         <% end %>
 
         <li class="blacklight-<%= solr_fname.parameterize %>">
