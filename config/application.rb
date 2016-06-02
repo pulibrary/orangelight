@@ -33,5 +33,8 @@ module Orangelight
     config.action_dispatch.default_headers['X-UA-Compatible'] = 'IE=edge,chrome=1'
     require Rails.root.join('lib/custom_public_exceptions')
     config.exceptions_app = CustomPublicExceptions.new(Rails.public_path)
+
+    # Redirect to CAS logout after signing out of Orangelight
+    config.x.after_sign_out_url = 'https://fed.princeton.edu/cas/logout'
   end
 end
