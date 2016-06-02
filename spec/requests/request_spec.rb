@@ -291,4 +291,19 @@ describe 'blacklight tests' do
       expect(response).to redirect_to('/catalog?q=cool')
     end
   end
+
+  describe 'mathjax script' do
+    it 'is included in search results' do
+      get '/?f%5Bformat%5D%5B%5D=Book&q=&search_field=all_fields'
+      expect(response.body).to include('mathjax.org')
+    end
+    it 'is included on theses record show page' do
+      get '/catalog/dsp01ft848s955'
+      expect(response.body).to include('mathjax.org')
+    end
+    it 'is excluded on marc record show page' do
+      get '/catalog/4705307'
+      expect(response.body).not_to include('mathjax.org')
+    end
+  end
 end
