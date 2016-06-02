@@ -32,6 +32,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-bookslibrary {
+    &:before {
+        content: $icon-bookslibrary;
+    }
+}
 .icon-bookmark {
     &:before {
         content: $icon-bookmark;
