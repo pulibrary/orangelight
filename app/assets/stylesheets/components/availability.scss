@@ -166,8 +166,10 @@
   }
 }
 
-.panel .find-it {
-  display: block;
+.panel .find-it,
+.panel .browse-cn {
+  display: table;
+  font-size: 12px;
   text-decoration: none;
 
   &:hover,
@@ -176,10 +178,14 @@
     text-decoration: none;
   }
 
-  .map-text:hover,
-  .map-text:focus,
-  .map-text:active {
-    text-decoration: underline;
+  .link-text {
+    margin-right: 4px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: underline;
+    }
   }
 }
 

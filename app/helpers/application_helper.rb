@@ -40,7 +40,7 @@ module ApplicationHelper
     if DONT_FIND_IT.include?(library) || call_number.blank?
       ''
     else
-      ' ' + link_to(%(<span class="map-text">#{t('blacklight.holdings.stackmap')}</span> <span class="glyphicon glyphicon-map-marker"></span>).html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => '_blank', class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
+      ' ' + link_to(%(<span class="link-text">#{t('blacklight.holdings.stackmap')}</span> <span class="glyphicon glyphicon-map-marker"></span>).html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => '_blank', class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
     end
   end
 
@@ -107,7 +107,7 @@ module ApplicationHelper
       info << content_tag(:h3, location.html_safe, class: 'library-location')
     end
     unless holding['call_number'].blank?
-      cn_browse_link = link_to('[Browse]', "/browse/call_numbers?q=#{holding['call_number_browse']}", class: 'browse-cn', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{holding['call_number_browse']}", title: "Browse: #{holding['call_number_browse']}")
+      cn_browse_link = link_to(%(<span class="link-text">#{t('blacklight.holdings.browse')}</span> <span class="icon-bookslibrary"></span>).html_safe, "/browse/call_numbers?q=#{holding['call_number_browse']}", class: 'browse-cn', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{holding['call_number_browse']}", title: "Browse: #{holding['call_number_browse']}")
       cn = "#{holding['call_number']} #{cn_browse_link}"
       info << content_tag(:div, cn.html_safe, class: 'holding-call-number')
     end
