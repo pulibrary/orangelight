@@ -1,0 +1,28 @@
+<% if display_facet.items.present? %>
+    <div class="form-group advanced-search-facet row">
+        <%= label_tag display_facet.name.parameterize, :class => "col-sm-4 control-label" do %>
+            <%= facet_field_label(display_facet.name) %>
+        <% end %>
+        <div class="col-sm-8">
+          <%= content_tag(:select, :multiple => true,
+            :name   => "f_inclusive[#{display_facet.name}][]",
+            :id     => display_facet.name.parameterize,
+            :class  => "form-control advanced-search-facet-select chosen-select",
+            data: { placeholder: "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}" }) do %>
+              <% location_codes_by_lib(display_facet.items).each do |library, items| %>
+                <% library_display = items['item'].nil? ? library : "#{library} (#{number_with_delimiter(items['item'].hits)})" %>
+                <%= content_tag :option, library_display, class: 'group-result', value: library,
+                :selected => facet_value_checked?(display_facet.name, library) %>
+                <% items['recap_codes'].each do |facet_item| %>
+                  <%= content_tag :option, "#{facet_display_value(display_facet.name, facet_item.label)} (#{number_with_delimiter(facet_item.hits)})",
+                  class: 'group-option', :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) %>
+                <% end %>
+                <% items['codes'].each do |facet_item| %>
+                  <%= content_tag :option, "#{facet_display_value(display_facet.name, facet_item.label)} (#{number_with_delimiter(facet_item.hits)})",
+                  class: 'group-option', :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) %>
+                <% end %>
+              <% end %>
+            <% end %>
+        </div>
+    </div>
+<% end %>

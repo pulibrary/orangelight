@@ -12,7 +12,7 @@
     <label><%= radio_button_tag("op2", "NOT", guided_radio(:op2, "NOT")) %> NOT</label>
   </div>
   <div class="search-field">
-    <%= select_tag('f2', options_for_select(advanced_key_value, guided_field(:f2, 'title')), :class=>"search_field") %>
+    <%= select_tag('f2', options_for_select(advanced_key_value, guided_field(:f2, 'author')), :class=>"search_field") %>
     <div name="row2">
       <%= text_field_tag "q2", label_tag_default_for(:q2), :class => 'form-control', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
     </div>
@@ -23,7 +23,7 @@
     <label><%= radio_button_tag("op3", "NOT", guided_radio(:op3, "NOT")) %> NOT</label>
   </div>
   <div class="search-field">
-    <%= select_tag('f3', options_for_select(advanced_key_value, guided_field(:f3, 'author')), :class=>"search_field") %>
+    <%= select_tag('f3', options_for_select(advanced_key_value, guided_field(:f3, 'title')), :class=>"search_field") %>
     <div name="row3">
       <%= text_field_tag "q3", label_tag_default_for(:q3), :class => 'form-control', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
     </div>
