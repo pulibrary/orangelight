@@ -184,7 +184,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'subseries_of_display', label: 'Subseries of'
     config.add_show_field 'has_subseries_display', label: 'Has subseries'
     config.add_show_field 'series_display', label: 'Series'
-    config.add_show_field 'restrictions_note_display', label: 'Restrictions note'
+    config.add_show_field 'restrictions_note_display', label: 'Restrictions note', helper_method: :html_safe
     config.add_show_field 'biographical_historical_note_display', label: 'Biographical/Historical note'
     config.add_show_field 'summary_note_display', label: 'Summary note'
     config.add_show_field 'notes_display', label: 'Notes'
