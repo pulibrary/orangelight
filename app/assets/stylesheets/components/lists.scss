@@ -65,3 +65,25 @@ ul {
         margin-bottom: 0.5em;
     }
 }
+
+// other resources on home page
+.other-resources {
+    h3 {
+        font-size: 1.15em;
+    }
+
+    li {
+        float: left;
+        border-left: 1px solid $gray;
+        padding: 0 10px;
+
+        &:first-child {
+            border-left: 0;
+            padding-left: 0;
+        }
+
+        a {
+            font-size: 0.9em;
+        }
+    }
+}
