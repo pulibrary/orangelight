@@ -13,7 +13,7 @@ describe 'Availability' do
 
     it 'listing invidividual holdings', unless: in_travis? do
       sleep 5.seconds
-      expect(page.all('.location--holding .holding-block').length).to eq 5
+      expect(page.all('.location--holding .holding-block').length).to eq 4
     end
 
     xit 'with individual copies display', unless: in_travis? do

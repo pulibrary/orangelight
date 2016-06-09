@@ -65,6 +65,44 @@ module AdvancedHelper
       op == 'AND'
     end
   end
+
+  def location_codes_by_lib(facet_items)
+    locations = {}
+    non_code_items = []
+    facet_items.each do |item|
+      holding_loc = LOCATIONS[item.value]
+      holding_loc.nil? ? non_code_items << item : add_holding_loc(item, holding_loc, locations)
+    end
+    library_facet_values(non_code_items, locations)
+    locations.sort.to_h
+  end
+
+  private
+
+    def add_holding_loc(item, holding_loc, locations)
+      library = holding_loc['library']['label']
+      add_library(library, locations)
+      locations[library]['codes'] << item
+      add_recap_loc(item, holding_loc, locations)
+    end
+
+    def add_recap_loc(item, holding_loc, locations)
+      unless holding_loc['holding_library'].nil?
+        library = holding_loc['holding_library']['label']
+        add_library(library, locations)
+        locations[library]['recap_codes'] << item
+      end
+    end
+
+    def add_library(library, locations)
+      locations[library] = { 'codes' => [], 'recap_codes' => [] } if locations[library].nil?
+    end
+
+    def library_facet_values(non_code_items, locations)
+      non_code_items.each do |item|
+        locations[item.value]['item'] = item if locations.key?(item.value)
+      end
+    end
 end
 
 module BlacklightAdvancedSearch
@@ -77,7 +115,7 @@ module BlacklightAdvancedSearch
       unless @params[:q1].blank? || @params[:q2].blank? || @params[:op2] == 'NOT'
         @keyword_op << @params[:op2] if @params[:f1] != @params[:f2]
       end
-      unless @params[:q3].blank? || @params[:op3] == 'NOT'
+      unless @params[:q3].blank? || @params[:op3] == 'NOT' || (@params[:q1].blank? && @params[:q2].blank?)
         @keyword_op << @params[:op3] if @params[:f2] != @params[:f3]
       end
       @keyword_op

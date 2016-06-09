@@ -171,6 +171,11 @@ describe 'blacklight tests' do
       r = JSON.parse(response.body)
       expect(r['response']['docs'].any? { |d| d['id'] == '6574987' }).to eq true
     end
+    it 'does not error when only the 3rd query field has a value' do
+      get '/catalog?f1=all_fields&q1=&op2=AND&f2=author&q2=&op3=AND&f3=title&q3='\
+          'anything&search_field=advanced&commit=Search'
+      expect(response.status).to eq(200)
+    end
   end
 
   describe 'librarian view' do

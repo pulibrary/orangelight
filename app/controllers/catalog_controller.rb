@@ -117,8 +117,8 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w(lc_1letter_facet lc_rest_facet)
     config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index'
-    config.add_facet_field 'location_code_s', label: 'Holding Location', advanced: true, limit: true,
-                                              show: false, helper_method: :render_location_code
+    config.add_facet_field 'advanced_location_s', label: 'Holding Location', limit: true, advanced: true,
+                                                  show: false, helper_method: :render_location_code
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request

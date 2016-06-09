@@ -1,13 +1,9 @@
-<%# alternate version of facets on form that renders using multi-select.
-    Has to copy and paste more code from blacklight than default, making
-    it somewhat more fragile. 
-
-    Logic taken from facets_helper_behavior.rb, #render_facet_partials and
-    #render_facet_limit. 
-%>
 
 <% facets_from_request(facet_field_names).each do |display_facet| %>
     <% if display_facet.items.present? and advanced_facets.include?(display_facet.name) %>
+      <% if display_facet.name == 'advanced_location_s' %>
+        <%= render 'location_code_facet', display_facet: display_facet %>
+      <% else %>
         <div class="form-group advanced-search-facet row">
             <%= label_tag display_facet.name.parameterize, :class => "col-sm-4 control-label" do %>
                 <%= facet_field_label(display_facet.name) %>
@@ -26,6 +22,7 @@
                 <% end %>
             </div>
         </div>
+      <% end %>
     <% end %>
 <% end %>
 
