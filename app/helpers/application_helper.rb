@@ -197,6 +197,7 @@ module ApplicationHelper
           check_availability = false
           info << content_tag(:span, 'On-site access', class: 'availability-icon label label-warning', title: 'Availability: On-site')
         else
+          info << content_tag(:span, '', class: 'icon-warning', title: t('blacklight.holdings.paging_request'), 'data-toggle' => 'tooltip').html_safe if pageable?(holding)
           info << content_tag(:span, '', class: 'availability-icon').html_safe
         end
         info << content_tag(:div, search_location_display(holding, document), class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })

@@ -27,6 +27,7 @@ en:
       return: 'Back to the Previous Page.'
       confirmation: 'Thank you for your comments. They are helpful as we work to improve this new Library service.'
     holdings:
+      paging_request: 'Paging request only'
       online: 'Online'
       print: 'Copies In Library'
       stackmap: 'Where to find it'
