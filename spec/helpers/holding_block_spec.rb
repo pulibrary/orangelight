@@ -1,6 +1,55 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper do
+  describe '#pageable?' do
+    let(:pageable_holding) { helper.pageable?(holding_in_range) }
+    let(:not_pageable_holding) { helper.pageable?(holding_out_of_range) }
+    let(:not_lc_call_num) { helper.pageable?(non_lc_call_num) }
+    let(:holding_in_range) do
+      {
+        'location' => 'Firestone Library - Near East Collections',
+        'library' => 'Firestone Library',
+        'location_code' => 'nec',
+        'call_number' => 'PZ6611.T3F545 1987',
+        'call_number_browse' => 'PZ6611.T3F545 1987'
+      }
+    end
+
+    let(:holding_out_of_range) do
+      {
+        'location' => 'Firestone Library - Near East Collections',
+        'library' => 'Firestone Library',
+        'location_code' => 'nec',
+        'call_number' => 'Z6611.T3F545 1987',
+        'call_number_browse' => 'Z6611.T3F545 1987'
+      }
+    end
+
+    let(:non_lc_call_num) do
+      {
+        'location' => 'Firestone Library - Near East Collections',
+        'library' => 'Firestone Library',
+        'location_code' => 'nec',
+        'call_number' => '33334.53535',
+        'call_number_browse' => '33334.53535'
+      }
+    end
+
+    context 'When Holding is in pageable range' do
+      it 'returns true when the call number is in range' do
+        expect(pageable_holding).to be_truthy
+      end
+
+      it 'returns nil when the call number is out of range' do
+        expect(not_pageable_holding).to be_nil
+      end
+
+      it 'returns nil when the call number is not an LC number' do
+        expect(not_lc_call_num).to be_nil
+      end
+    end
+  end
+
   describe '#holding_block helpers' do
     let(:holding_id) { '3580281' }
     let(:library) { 'Rare Books and Special Collections' }
