@@ -39,11 +39,17 @@ RSpec.describe ApplicationHelper do
 
   describe '#open_location?' do
     let(:loc) { { open: true } }
+    let(:holding) { { 'call_number' => 'KF 1232 .B2', 'location_code' => 'f' } }
+    let(:holding_pageable) { { 'call_number' => 'QL 1232 .B8', 'location_code' => 'f' } }
     it 'returns the location open attribute value' do
-      expect(open_location?(loc)).to eq true
+      expect(open_location?(loc, holding)).to eq true
     end
     it 'returns false when nil location is passed to function' do
-      expect(open_location?(nil)).to eq false
+      expect(open_location?(nil, holding)).to eq false
+    end
+
+    it 'returns false when a pageable holding is present' do
+      expect(open_location?(loc, holding_pageable)).to eq false
     end
   end
 

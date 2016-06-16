@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include Requests::Pageable
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
   # Proxy Base is added to force remote access when appropriate
@@ -123,7 +124,7 @@ module ApplicationHelper
     info << content_tag(:ul, ''.html_safe, class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
     unless holding['dspace']
       location_rules = LOCATIONS[holding['location_code'].to_sym]
-      info << request_placeholder(bib_id, holding_id, location_rules).html_safe
+      info << request_placeholder(bib_id, holding_id, location_rules, holding).html_safe
     end
     info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
     info
@@ -140,14 +141,32 @@ module ApplicationHelper
     content_tag(:div, label, class: 'holding-label')
   end
 
-  def request_placeholder(doc_id, holding_id, location_rules)
-    content_tag(:div, class: 'location-services', data: { open: open_location?(location_rules), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
-      link_to 'Request', "https://library.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}", title: 'View Options to Request copies from this Location', target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
+  def request_placeholder(doc_id, holding_id, location_rules, holding)
+    content_tag(:div, class: 'location-services', data: { open: open_location?(location_rules, holding), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
+      if pageable?(holding)
+        link_to 'Paging Request', "https://fulfill.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}", title: 'View Options to Request copies from this Location', target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
+      else
+        link_to 'Request', "https://library.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}", title: 'View Options to Request copies from this Location', target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
+      end
     end
   end
 
-  def open_location?(location)
-    location.nil? ? false : location[:open]
+  def pageable?(holding)
+    if paging_locations.include? holding['location_code']
+      if holding.key?('call_number')
+        if lc_number?(holding['call_number'])
+          in_call_num_range(holding['call_number'], paging_ranges[holding['location_code']])
+        end
+      end
+    end
+  end
+
+  def open_location?(location, holding)
+    if pageable?(holding)
+      false
+    else
+      location.nil? ? false : location[:open]
+    end
   end
 
   def aeon_location?(location)
