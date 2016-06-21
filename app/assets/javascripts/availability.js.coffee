@@ -5,8 +5,11 @@ class AvailabilityUpdater
     this.request_availability()
   availability_url: "https://bibdata.princeton.edu/availability"
   id = ''
+  on_site_status = 'On-site'
+  on_site_unavailable = 'On-site - '
+  circ_desk = 'Check with front desk'
   available_statuses = ['Not charged', 'On shelf']
-  returned_statuses = ['In transit discharged', 'Discharged']
+  returned_statuses = ['Discharged']
   in_process_statuses = ['In process']
   checked_out_statuses = ['Charged', 'Renewed', 'Overdue', 'On hold',
     'In transit', 'In transit on hold', 'At bindery',
@@ -36,9 +39,8 @@ class AvailabilityUpdater
       if availability_info['on_reserve']
         location = $("*[data-location='true'][data-holding-id='#{holding_id}']")
         location.text(availability_info['on_reserve'])
-        availability_element.after("<div class=\"copy-number\">Copy number: #{availability_info['copy_number']}</div>")
       this.get_issues(holding_id) if $(".journal-current-issues").length > 0
-      if availability_info['more_items'] and availability_info['status'] != "Limited"
+      if availability_info['more_items'] and !availability_info['status'].match(on_site_status)
         this.apply_record_icon(availability_element, "All items available")
         this.get_more_items(holding_id)
       else
@@ -101,10 +103,15 @@ class AvailabilityUpdater
     label = switch
       when status in available_statuses then 'Available'
       when status in returned_statuses then 'Returned'
+      when status == 'In transit discharged' then 'In transit'
       when status in in_process_statuses then 'In process'
       when status in checked_out_statuses then 'Checked out'
       when status in missing_statuses then 'Missing'
-      when status == 'Limited' then 'On-site access'
+      when status.match(on_site_unavailable) then circ_desk
+      when status.match(on_site_status) then 'On-site access'
+      when status.match('Order received') then 'Order received'
+      when status.match('Pending order') then 'Pending order'
+      when status.match('On-order') then 'On-order'
       else status
     availability_element.text(label)
     if label in unavailable_labels
@@ -112,6 +119,8 @@ class AvailabilityUpdater
     else if label in available_labels
       availability_element.addClass("label-success")
     else if label == 'On-site access'
+      availability_element.addClass("label-warning")
+    else if label == circ_desk
       availability_element.addClass("label-warning")
     else if label == 'Online'
       availability_element.addClass("label-primary")

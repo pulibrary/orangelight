@@ -1,0 +1,19 @@
+{
+    "1789984": {
+        "2054228": {
+            "more_items": false,
+            "location": "f",
+            "copy_number": 1,
+            "item_id": 2115474,
+            "status": "Discharged",
+            "on_reserve": "Firestone Library - 3 Hour Reserve"
+        },
+        "3636481": {
+            "more_items": false,
+            "location": "res",
+            "copy_number": 50,
+            "item_id": 2689010,
+            "status": "Discharged"
+        }
+    }
+}

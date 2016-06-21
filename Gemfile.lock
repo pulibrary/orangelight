@@ -337,7 +337,8 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    solr_wrapper (0.12.1)
+    solr_wrapper (0.13.1)
+      faraday
       ruby-progressbar
       rubyzip
     spring (1.7.1)
