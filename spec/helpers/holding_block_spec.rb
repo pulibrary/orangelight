@@ -183,7 +183,7 @@ RSpec.describe ApplicationHelper do
         expect(show_result.last).to include library
       end
       it 'link to call number browse' do
-        expect(show_result.last).to have_link(t('blacklight.holdings.browse'), href: "/browse/call_numbers?q=#{call_number}")
+        expect(show_result.last).to have_link(t('blacklight.holdings.browse'), href: "/browse/call_numbers?q=#{CGI.escape call_number}")
       end
       it 'tooltip for the call number browse' do
         expect(show_result.last).to have_selector "*[title='Browse: #{call_number}']"
