@@ -195,7 +195,7 @@ module ApplicationHelper
       else
         if holding['dspace']
           check_availability = false
-          info << content_tag(:span, 'On-site access', class: 'availability-icon label label-warning', title: 'Availability: On-site')
+          info << content_tag(:span, 'On-site access', class: 'availability-icon label label-warning', title: 'Availability: On-site', 'data-toggle' => 'tooltip')
         else
           info << content_tag(:span, '', class: 'icon-warning', title: t('blacklight.holdings.paging_request'), 'data-toggle' => 'tooltip').html_safe if pageable?(holding)
           info << content_tag(:span, '', class: 'availability-icon').html_safe
