@@ -97,8 +97,8 @@ module ApplicationHelper
 
   def process_physical_holding(holding, bib_id, holding_id, is_journal)
     info = ''
-    unless holding['location'].blank?
-      location = content_tag(:span, holding['location'], class: 'location-text', data:
+    unless (holding_loc = holding_location_label(holding)).blank?
+      location = content_tag(:span, holding_loc, class: 'location-text', data:
                             {
                               location: true,
                               holding_id: holding_id
@@ -225,9 +225,10 @@ module ApplicationHelper
   end
 
   def search_location_display(holding, document)
-    render_arrow = (!holding['library'].blank? && !holding['call_number'].blank?)
+    location = holding_location_label(holding)
+    render_arrow = (!location.blank? && !holding['call_number'].blank?)
     arrow = render_arrow ? ' &raquo; ' : ''
-    location_display = holding['location'] + arrow + content_tag(:span, %(#{holding['call_number']}#{locate_link_with_gylph(holding['location_code'], document['id'], holding['call_number'], holding['library'])}).html_safe, class: 'call-number')
+    location_display = location + arrow + content_tag(:span, %(#{holding['call_number']}#{locate_link_with_gylph(holding['location_code'], document['id'], holding['call_number'], holding['library'])}).html_safe, class: 'call-number')
     location_display.html_safe
   end
 
@@ -284,6 +285,12 @@ module ApplicationHelper
   def render_location_code(value)
     location = LOCATIONS[value.to_sym]
     location.nil? ? value : "#{value}: #{location_full_display(location)}"
+  end
+
+  def holding_location_label(holding)
+    loc_code = holding['location_code']
+    location = LOCATIONS[loc_code.to_sym] unless loc_code.nil?
+    location.nil? ? holding['location'] : location_full_display(location)
   end
 
   def location_full_display(loc)
