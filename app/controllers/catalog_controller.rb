@@ -382,11 +382,12 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort asc', label: 'Relevance'
-    config.add_sort_field 'pub_date_start_sort desc, title_sort asc', label: 'Year (newest first)'
-    config.add_sort_field 'pub_date_start_sort asc, title_sort asc', label: 'Year (oldest first)'
-    config.add_sort_field 'author_sort asc, title_sort asc', label: 'Author'
-    config.add_sort_field 'title_sort asc, pub_date_start_sort desc', label: 'Title'
+    config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort asc', label: 'relevance'
+    config.add_sort_field 'pub_date_start_sort desc, title_sort asc', label: 'year (newest first)'
+    config.add_sort_field 'pub_date_start_sort asc, title_sort asc', label: 'year (oldest first)'
+    config.add_sort_field 'author_sort asc, title_sort asc', label: 'author'
+    config.add_sort_field 'title_sort asc, pub_date_start_sort desc', label: 'title'
+    config.add_sort_field 'cataloged_tdt desc, title_sort asc', label: 'catalog date'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
