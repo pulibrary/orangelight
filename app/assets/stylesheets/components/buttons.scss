@@ -98,14 +98,12 @@ a.clear-bookmarks {
 #previousNextDocument .next {
   opacity: .5;
   background: $light-gray;
-  pointer-events: none;
   cursor: not-allowed;
 }
 
 #previousNextDocument a.previous,
 #previousNextDocument a.next {
   opacity: 1;
-  pointer-events: initial;
   cursor: pointer;
 
   &:hover,
