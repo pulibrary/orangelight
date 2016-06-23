@@ -69,7 +69,7 @@ class AvailabilityUpdater
       ul = "<ul class=\"item-status\">"
       for key, item of data
         if item['status'] != "Not Charged"
-          li = "<li>#{item['enum']}: #{title_case(item['status'])}</li>"
+          li = "<li>#{item['enum'] || 'Item'}: #{title_case(item['status'])}</li>"
           ul = ul + li
           span = $("*[data-holding-id='#{holding_id}'] .availability-icon")
           txt = "Some items not available"

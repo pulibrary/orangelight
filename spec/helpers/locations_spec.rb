@@ -37,6 +37,26 @@ RSpec.describe ApplicationHelper do
     end
   end
 
+  describe '#holding_location_label' do
+    let(:fallback) { 'Fallback' }
+    let(:without_code) { { 'location' => fallback } }
+    let(:invalid_code) { { 'location' => fallback, 'location_code' => 'invalid' } }
+    let(:valid_code) { { 'location' => fallback, 'location_code' => 'clas' } }
+
+    it 'returns holding location label when location code lookup successful' do
+      expect(holding_location_label(valid_code)).to eq('Firestone Library - Classics Collection')
+    end
+    it 'returns holding location value when location code lookup fails' do
+      expect(holding_location_label(invalid_code)).to eq(fallback)
+    end
+    it 'returns holding location value when no location code' do
+      expect(holding_location_label(without_code)).to eq(fallback)
+    end
+    it 'returns nil when no location code or holding location value' do
+      expect(holding_location_label({})).to be_nil
+    end
+  end
+
   describe '#open_location?' do
     let(:loc) { { open: true } }
     let(:holding) { { 'call_number' => 'KF 1232 .B2', 'location_code' => 'f' } }
