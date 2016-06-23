@@ -108,7 +108,11 @@ module ApplicationHelper
       info << content_tag(:h3, location.html_safe, class: 'library-location')
     end
     unless holding['call_number'].blank?
-      cn_browse_link = link_to(%(<span class="link-text">#{t('blacklight.holdings.browse')}</span> <span class="icon-bookslibrary"></span>).html_safe, "/browse/call_numbers?q=#{holding['call_number_browse']}", class: 'browse-cn', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{holding['call_number_browse']}", title: "Browse: #{holding['call_number_browse']}")
+      cn_value = holding['call_number_browse'] || holding['call_number']
+      cn_browse_link = link_to(%(<span class="link-text">#{t('blacklight.holdings.browse')}</span> <span class="icon-bookslibrary"></span>).html_safe,
+                               "/browse/call_numbers?q=#{CGI.escape cn_value}",
+                               class: 'browse-cn', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{cn_value}",
+                               title: "Browse: #{cn_value}")
       cn = "#{holding['call_number']} #{cn_browse_link}"
       info << content_tag(:div, cn.html_safe, class: 'holding-call-number')
     end
@@ -249,19 +253,20 @@ module ApplicationHelper
       full_sub = ''
       all_subjects[i].each_with_index do |subsubject, j|
         lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[subject_facet][]=#{sub_array[i][j]}", class: 'search-subject', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{sub_array[i][j]}", title: "Search: #{sub_array[i][j]}")
+                                  "/?f[subject_facet][]=#{CGI.escape sub_array[i][j]}", class: 'search-subject', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{sub_array[i][j]}", title: "Search: #{sub_array[i][j]}")
         lnk_accum = lnk + t(SEPARATOR, class: 'subject-level')
         full_sub = sub_array[i][j]
       end
       lnk += '  '
-      lnk += link_to('[Browse]', "/browse/subjects?q=#{full_sub}", class: 'browse-subject', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{full_sub}", title: "Browse: #{full_sub}", dir: full_sub.dir.to_s)
+      lnk += link_to('[Browse]', "/browse/subjects?q=#{CGI.escape full_sub}", class: 'browse-subject', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{full_sub}", title: "Browse: #{full_sub}", dir: full_sub.dir.to_s)
       args[:document][args[:field]][i] = lnk.html_safe
     end
   end
 
   def browse_name(args)
     args[:document][args[:field]].each_with_index do |name, i|
-      newname = link_to(name, "/?f[author_s][]=#{name}", class: 'search-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name}", title: "Search: #{name}") + '  ' + link_to('[Browse]', "/browse/names?q=#{name}", class: 'browse-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{name}", title: "Browse: #{name}", dir: name.dir.to_s)
+      newname = link_to(name, "/?f[author_s][]=#{CGI.escape name}", class: 'search-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name}", title: "Search: #{name}") + '  ' +
+                link_to('[Browse]', "/browse/names?q=#{CGI.escape name}", class: 'browse-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{name}", title: "Browse: #{name}", dir: name.dir.to_s)
       args[:document][args[:field]][i] = newname.html_safe
     end
   end

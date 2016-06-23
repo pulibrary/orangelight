@@ -83,7 +83,8 @@ describe 'blacklight tests' do
                                         'tooltip" data-original-title="Search: '\
                                         "#{subject[/.*#{c}/]}\" title=\"Search: "\
                                         "#{subject[/.*#{c}/]}\" href=\"/?f[subject_facet][]="\
-                                        "#{subject[/.*#{c}/]}\">#{component}</a>")).to eq true
+                                        "#{CGI.escape subject[/.*#{c}/]}\">"\
+                                        "#{component}</a>")).to eq true
         end
       end
     end
@@ -102,12 +103,12 @@ describe 'blacklight tests' do
                                     "/catalog/#{doc_id}\">#{title_vern}</a>")).to eq true
       expect(response.body.include?('<li dir="ltr"> <a class="search-name" data-toggle="'\
                                     "tooltip\" data-original-title=\"Search: #{author}\" title"\
-                                    "=\"Search: #{author}\" href=\"/?f[author_s][]=#{author}\">"\
+                                    "=\"Search: #{author}\" href=\"/?f[author_s][]=#{CGI.escape author}\">"\
                                     "#{author}</a>")).to eq true
       expect(response.body.include?('<li dir="rtl"> <a class="search-name" data-toggle="'\
                                     "tooltip\" data-original-title=\"Search: #{author_vern}\" "\
                                     "title=\"Search: #{author_vern}\" href=\"/?f[author_s][]="\
-                                    "#{author_vern}\">#{author_vern}</a>")).to eq true
+                                    "#{CGI.escape author_vern}\">#{author_vern}</a>")).to eq true
     end
     it 'adds ltr rtl dir for title and related names in document view' do
       get '/catalog/5906024.json'
@@ -309,6 +310,25 @@ describe 'blacklight tests' do
     it 'is excluded on marc record show page' do
       get '/catalog/4705307'
       expect(response.body).not_to include('mathjax.org')
+    end
+  end
+
+  describe 'escaping search/browse link urls' do
+    it 'search result name facet/browse urls' do
+      get '/?f%5Blocation%5D%5B%5D=East+Asian+Library'
+      expect(response.body).to include('/?f[author_s][]=%E8%83%A1%E9%BA%97%E9%BA%97')
+      expect(response.body).to include('/browse/names?q=%E8%83%A1%E9%BA%97%E9%BA%97')
+    end
+    it 'show page subject facet/browse, call number browse urls' do
+      get '/catalog/4832228'
+      expect(response.body).to include('/browse/subjects?q=Mencius.+%E5%AD%9F%E5%AD%90.')
+      expect(response.body).to include('/?f[subject_facet][]=Mencius.+%E5%AD%9F%E5%AD%90.')
+      expect(response.body).to include('/browse/call_numbers?q=C338%2F4352+vol.500')
+    end
+    it 'show page related name facet/browse urls' do
+      get '/catalog/3871398'
+      expect(response.body).to include('/?f[author_s][]=%E7%A5%9D%E7%A9%86%2C+13th+cent')
+      expect(response.body).to include('/browse/names?q=%E7%A5%9D%E7%A9%86%2C+13th+cent')
     end
   end
 end

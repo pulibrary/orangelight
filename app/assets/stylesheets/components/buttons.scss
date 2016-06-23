@@ -98,7 +98,13 @@ a.clear-bookmarks {
 #previousNextDocument .next {
   opacity: .5;
   background: $light-gray;
-  cursor: not-allowed;
+  cursor: default;
+
+  &:hover {
+    background: $light-gray;
+    color: $black;
+    text-decoration: none;
+  }
 }
 
 #previousNextDocument a.previous,
@@ -109,6 +115,8 @@ a.clear-bookmarks {
   &:hover,
   &:focus,
   &:active {
+    background: $blue;
+    color: $white;
     text-decoration: none;
   }
 }
