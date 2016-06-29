@@ -39,14 +39,14 @@ describe 'Availability' do
 
   describe 'Physical Holdings in temp locations', js: true do
     it 'displays temp location on search results' do
-      visit '/catalog?q=2239217'
+      visit '/catalog?q=7917192'
       sleep 5.seconds
-      expect(page.all('.library-location', text: 'Firestone Library - 24 Hour Reserve').length).to be > 0
+      expect(page.all('.library-location', text: 'Lewis Library - Term Loan Reserves').length).to be > 0
     end
     it 'displays temp location and copy on record show' do
-      visit 'catalog/2239217'
+      visit 'catalog/7917192'
       sleep 5.seconds
-      expect(page.all('h3.library-location', text: 'Firestone Library - 24 Hour Reserve').length).to be > 0
+      expect(page.all('h3.library-location', text: 'Lewis Library - Term Loan Reserves').length).to be > 0
     end
   end
 end

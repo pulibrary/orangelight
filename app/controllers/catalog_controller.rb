@@ -138,19 +138,19 @@ class CatalogController < ApplicationController
     # config.add_show_field 'subtitle_display', :label => 'Subtitle'
     # config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
 
-    config.add_show_field 'author_display', label: 'Author/Artist', helper_method: :browse_name
+    config.add_show_field 'author_display', label: 'Author/&#8203;Artist', helper_method: :browse_name
+    config.add_show_field 'uniform_title_s', label: 'Uniform title'
     config.add_show_field 'format', label: 'Format', helper_method: :format_render
     config.add_show_field 'url_fulltext_display', label: 'URL'
-    config.add_show_field 'url_suppl_display', label: 'More Information'
+    config.add_show_field 'url_suppl_display', label: 'More information'
     config.add_show_field 'language_facet', label: 'Language'
     config.add_show_field 'published_display', label: 'Published'
     config.add_show_field 'published_vern_display', label: 'Published'
-    config.add_show_field 'pub_created_display', label: 'Published/Created'
+    config.add_show_field 'pub_created_display', label: 'Published/&#8203;Created'
 
-    config.add_show_field 'uniform_title_s', label: 'Uniform Title'
-    config.add_show_field 'compiled_created_display', label: 'Compiled/Created'
+    config.add_show_field 'compiled_created_display', label: 'Compiled/&#8203;Created'
     config.add_show_field 'edition_display', label: 'Εdition'
-    config.add_show_field 'medium_support_display', label: 'Medium/Support'
+    config.add_show_field 'medium_support_display', label: 'Medium/&#8203;Support'
 
     # Senior Thesis fields
     config.add_show_field 'advisor_display', label: 'Advisor(s)', helper_method: :browse_name
@@ -159,6 +159,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'class_year_s', label: 'Class year', link_to_search: true
 
     config.add_show_field 'description_display', label: 'Description'
+    config.add_show_field 'numbering_pec_notes_display', label: 'Numbering peculiarities'
     config.add_show_field 'arrangement_display', label: 'Arrangement'
     config.add_show_field 'translation_of_display', label: 'Translation of'
     config.add_show_field 'translated_as_display', label: 'Translated as'
@@ -178,14 +179,12 @@ class CatalogController < ApplicationController
     config.add_show_field 'changed_back_to_display', label: 'Changed back to'
     config.add_show_field 'frequency_display', label: 'Frequency'
     config.add_show_field 'former_frequency_display', label: 'Former frequency'
-    config.add_show_field 'has_supplement_display', label: 'Has supplement'
-    config.add_show_field 'supplement_to_display', label: 'Supplement to'
     config.add_show_field 'linking_notes_display', label: 'Linking notes'
     config.add_show_field 'subseries_of_display', label: 'Subseries of'
     config.add_show_field 'has_subseries_display', label: 'Has subseries'
     config.add_show_field 'series_display', label: 'Series'
     config.add_show_field 'restrictions_note_display', label: 'Restrictions note', helper_method: :html_safe
-    config.add_show_field 'biographical_historical_note_display', label: 'Biographical/Historical note'
+    config.add_show_field 'biographical_historical_note_display', label: 'Biographical/&#8203;Historical note'
     config.add_show_field 'summary_note_display', label: 'Summary note'
     config.add_show_field 'notes_display', label: 'Notes'
 
@@ -194,16 +193,17 @@ class CatalogController < ApplicationController
     config.add_show_field 'dissertation_notes_display', label: 'Dissertation note'
     config.add_show_field 'bib_ref_notes_display', label: 'Bibliographic references'
     config.add_show_field 'scale_notes_display', label: 'Scale'
-    config.add_show_field 'credits_notes_display', label: 'Creation/Production credits'
+    config.add_show_field 'credits_notes_display', label: 'Creation/&#8203;Production credits'
     config.add_show_field 'type_period_notes_display', label: 'Type of report and period covered'
     config.add_show_field 'data_quality_notes_display', label: 'Data quality'
-    config.add_show_field 'numbering_pec_notes_display', label: 'Numbering peculiarities'
     config.add_show_field 'type_comp_data_notes_display', label: 'Type of data'
     config.add_show_field 'date_place_event_notes_display', label: 'Time and place of event'
     config.add_show_field 'target_aud_notes_display', label: 'Target audience'
     config.add_show_field 'geo_cov_notes_display', label: 'Geographic coverage'
     config.add_show_field 'time_period_notes_display', label: 'Time period of content'
     config.add_show_field 'supplement_notes_display', label: 'Supplement note'
+    config.add_show_field 'has_supplement_display', label: 'Has supplement'
+    config.add_show_field 'supplement_to_display', label: 'Supplement to'
     config.add_show_field 'study_prog_notes_display', label: 'Study program information'
     config.add_show_field 'censorship_notes_display', label: 'Censorship note'
     config.add_show_field 'reproduction_notes_display', label: 'Reproduction note'
@@ -243,9 +243,11 @@ class CatalogController < ApplicationController
     config.add_show_field 'references_display', label: 'References'
     config.add_show_field 'cite_as_display', label: 'Cite as'
     config.add_show_field 'other_format_display', label: 'Other format(s)'
-    config.add_show_field 'cumulative_index_finding_aid_display', label: 'Cumulative index finding aid'
+    config.add_show_field 'indexes_display', label: 'Indexes'
+    config.add_show_field 'finding_aid_display', label: 'Finding aid'
+    config.add_show_field 'cumulative_index_finding_aid_display', label: 'Cumulative index/&#8203;Finding aid'
     config.add_show_field 'subject_display', label: 'Subject(s)', helper_method: :subjectify
-    config.add_show_field 'form_genre_display', label: 'Form/Genre'
+    config.add_show_field 'form_genre_display', label: 'Form/&#8203;Genre'
     config.add_show_field 'related_works_display', label: 'Related work(s)'
     config.add_show_field 'contains_display', label: 'Contains'
     config.add_show_field 'place_name_display', label: 'Place name(s)'
@@ -270,7 +272,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'location_has_display', label: 'Location has'
     config.add_show_field 'location_has_current_display', label: 'Location has (current)'
     config.add_show_field 'supplements_display', label: 'Supplements'
-    config.add_show_field 'indexes_display', label: 'Indexes'
     config.add_show_field 'location_notes_display', label: 'Location notes'
     config.add_show_field 'related_name_json_1display', hash: true
     # # 'Other version(s)_display'
