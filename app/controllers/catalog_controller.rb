@@ -182,7 +182,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'linking_notes_display', label: 'Linking notes'
     config.add_show_field 'subseries_of_display', label: 'Subseries of'
     config.add_show_field 'has_subseries_display', label: 'Has subseries'
-    config.add_show_field 'series_display', label: 'Series'
+    config.add_show_field 'series_display', label: 'Series', helper_method: :series_with_links
     config.add_show_field 'restrictions_note_display', label: 'Restrictions note', helper_method: :html_safe
     config.add_show_field 'biographical_historical_note_display', label: 'Biographical/&#8203;Historical note'
     config.add_show_field 'summary_note_display', label: 'Summary note'
@@ -247,7 +247,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'finding_aid_display', label: 'Finding aid'
     config.add_show_field 'cumulative_index_finding_aid_display', label: 'Cumulative index/&#8203;Finding aid'
     config.add_show_field 'subject_display', label: 'Subject(s)', helper_method: :subjectify
-    config.add_show_field 'form_genre_display', label: 'Form/&#8203;Genre'
+    config.add_show_field 'form_genre_display', label: 'Form/&#8203;Genre', helper_method: :subjectify
     config.add_show_field 'related_works_display', label: 'Related work(s)'
     config.add_show_field 'contains_display', label: 'Contains'
     config.add_show_field 'place_name_display', label: 'Place name(s)'
@@ -361,6 +361,25 @@ class CatalogController < ApplicationController
       field.solr_local_parameters = {
         qf: '$left_anchor_qf',
         pf: '$left_anchor_pf'
+      }
+    end
+
+    config.add_search_field('in_series') do |field|
+      field.include_in_advanced_search = false
+      field.include_in_simple_select = false
+      field.label = 'Series starts with'
+      field.solr_local_parameters = {
+        qf: '$in_series_qf',
+        pf: '$in_series_pf'
+      }
+    end
+
+    config.add_search_field('series_title') do |field|
+      field.include_in_simple_select = false
+      field.label = 'Series title'
+      field.solr_local_parameters = {
+        qf: '$series_title_qf',
+        pf: '$series_title_pf'
       }
     end
 
