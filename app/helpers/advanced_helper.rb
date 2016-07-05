@@ -129,7 +129,7 @@ module BlacklightAdvancedSearch
 
         # spaces need to be stripped from the query because they don't get properly stripped in Solr
         ###### TO GET STARTS WITH TO WORK #######
-        q1 = @params[:f1] == 'left_anchor' ? @params[:q1].delete(' ') : @params[:q1]
+        q1 = %w(left_anchor in_series).include?(@params[:f1]) ? @params[:q1].delete(' ') : @params[:q1]
         q2 = @params[:f2] == 'left_anchor' ? @params[:q2].delete(' ') : @params[:q2]
         q3 = @params[:f3] == 'left_anchor' ? @params[:q3].delete(' ') : @params[:q3]
         #########################################

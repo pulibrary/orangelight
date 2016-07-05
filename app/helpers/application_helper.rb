@@ -142,6 +142,26 @@ module ApplicationHelper
     arr.join
   end
 
+  def series_with_links(args)
+    series_titles = args[:document]['more_in_this_series_t'] || []
+    args[:document][args[:field]].each_with_index do |title, i|
+      newtitle = title
+      unless (series_name = series_titles.select { |t| title.start_with?(t) }.first).nil?
+        newtitle << %(  #{more_in_this_series_link(series_name)})
+        series_titles.delete(series_name)
+      end
+      args[:document][args[:field]][i] = newtitle.html_safe
+    end
+  end
+
+  def more_in_this_series_link(title)
+    no_parens = title.gsub(/[()]/, '')
+    link_to('[More in this series]', "/catalog?q1=#{CGI.escape no_parens}&f1=in_series&search_field=advanced",
+            class: 'more-in-series', 'data-toggle' => 'tooltip',
+            'data-original-title' => "More in series: #{title}", title: "More in series: #{title}",
+            dir: title.dir.to_s)
+  end
+
   def holding_label(label)
     content_tag(:div, label, class: 'holding-label')
   end
