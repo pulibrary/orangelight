@@ -8,12 +8,8 @@ Rails.application.routes.draw do
     get 'browse', to: 'browsables#browse'
     get 'browse/call_numbers', model: Orangelight::CallNumber, to: 'browsables#index'
     get 'browse/names', model: Orangelight::Name, to: 'browsables#index'
-    get 'browse/names/:id', model: Orangelight::Name, as: 'browse_name', to: 'browsables#show'
+    get 'browse/name_titles', model: Orangelight::NameTitle, to: 'browsables#index'
     get 'browse/subjects', model: Orangelight::Subject, to: 'browsables#index'
-    get 'browse/subjects/:id',
-        model: Orangelight::Subject,
-        as: 'browse_subject',
-        to: 'browsables#show'
   end
   mount Requests::Engine, at: '/requests'
 

@@ -294,6 +294,15 @@ module ApplicationHelper
     end
   end
 
+  def name_title(args)
+    args[:document][args[:field]].each_with_index do |name_t, i|
+      next unless args[:document]['name_title_browse_s'].include?(name_t)
+      newname_t = link_to(name_t, "/?f[name_title_browse_s][]=#{CGI.escape name_t}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name_t}", title: "Search: #{name_t}") + '  ' +
+                link_to('[Browse]', "/browse/name_titles?q=#{CGI.escape name_t}", class: 'browse-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{name_t}", title: "Browse: #{name_t}", dir: name_t.dir.to_s)
+      args[:document][args[:field]][i] = newname_t.html_safe
+    end
+  end
+
   def format_icon(args)
     icon = render_icon(args[:document][args[:field]][0]).to_s
     formats = format_render(args)

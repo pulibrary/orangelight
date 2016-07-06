@@ -8,6 +8,13 @@ namespace :browse do
                              'author_s', 'orangelight_names')
   end
 
+  desc 'Pull data for names browse'
+  task :name_titles do
+    sql_command, facet_request, conn = BrowseLists.connection
+    BrowseLists.browse_facet(sql_command, facet_request, conn,
+                             'name_title_browse_s', 'orangelight_name_titles')
+  end
+
   desc 'Pull data for subjects browse'
   task :subjects do
     sql_command, facet_request, conn = BrowseLists.connection
@@ -29,6 +36,13 @@ namespace :browse do
                            'author_s', 'orangelight_names')
   end
 
+  desc 'Pull data for names browse'
+  task :load_name_titles do
+    sql_command, facet_request, conn = BrowseLists.connection
+    BrowseLists.load_facet(sql_command, facet_request, conn,
+                           'name_title_browse_s', 'orangelight_name_titles')
+  end
+
   desc 'Pull data for subjects browse'
   task :load_subjects do
     sql_command, facet_request, conn = BrowseLists.connection
@@ -48,6 +62,9 @@ namespace :browse do
     sql_command, facet_request, conn = BrowseLists.connection
     BrowseLists.browse_facet(sql_command, facet_request, conn,
                              'author_s', 'orangelight_names')
+    sql_command, facet_request, conn = BrowseLists.connection
+    BrowseLists.browse_facet(sql_command, facet_request, conn,
+                             'name_title_browse_s', 'orangelight_name_titles')
     BrowseLists.browse_facet(sql_command, facet_request, conn,
                              'subject_facet', 'orangelight_subjects')
     BrowseLists.browse_cn(sql_command, facet_request, conn, 'call_number_browse_s',
@@ -59,6 +76,9 @@ namespace :browse do
     sql_command, facet_request, conn = BrowseLists.connection
     BrowseLists.load_facet(sql_command, facet_request, conn,
                            'author_s', 'orangelight_names')
+    sql_command, facet_request, conn = BrowseLists.connection
+    BrowseLists.load_facet(sql_command, facet_request, conn,
+                           'name_title_browse_s', 'orangelight_name_titles')
     BrowseLists.load_facet(sql_command, facet_request, conn,
                            'subject_facet', 'orangelight_subjects')
     BrowseLists.load_cn(sql_command, facet_request, conn, 'call_number_browse_s',

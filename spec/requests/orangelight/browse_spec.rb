@@ -10,6 +10,10 @@ RSpec.describe 'Orangelight Browsables', type: :request do
       get '/catalog?search_field=browse_name&q=velez'
       expect(response).to redirect_to '/browse/names?search_field=browse_name&q=velez'
     end
+    it 'name_title redirects to browse search' do
+      get '/catalog?search_field=name_title&q=murakami'
+      expect(response).to redirect_to '/browse/name_titles?search_field=name_title&q=murakami'
+    end
     it 'browse_subject redirects to browse search' do
       get '/catalog?search_field=browse_subject&q=art+patron'
       expect(response).to redirect_to '/browse/subjects?search_field=browse_subject&q=art+patron'
@@ -67,6 +71,11 @@ RSpec.describe 'Orangelight Browsables', type: :request do
     it 'Author (browse) is selected by default when browsing by name' do
       get '/browse/names?start=25'
       expect(response.body).to include('<option data-placeholder="Last name, first name" selected="selected" value="browse_name">Author (browse)</option>')
+    end
+
+    it 'Name (sorted by title) is selected by default when browsing by name title' do
+      get '/browse/name_titles?start=25'
+      expect(response.body).to include('<option data-placeholder="Last name, first name. Title" selected="selected" value="name_title">Name title browse</option>')
     end
 
     it 'Subject (browse) is selected by default when browsing by subject' do

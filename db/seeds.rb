@@ -11,9 +11,11 @@ dbhost, dbuser, dbname, password = config['host'], config['username'], config['d
 sql_command = "PGPASSWORD=#{password} psql -U #{dbuser} -h #{dbhost} #{dbname} -c"
 
 system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_names RESTART IDENTITY;"))
+system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_name_titles RESTART IDENTITY;"))
 system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_subjects RESTART IDENTITY;"))
 system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_call_numbers RESTART IDENTITY;"))
 system(%Q(#{sql_command} "\\copy orangelight_names(sort,count,label,dir) from 'spec/fixtures/authors.sorted' CSV;"))
+system(%Q(#{sql_command} "\\copy orangelight_name_titles(sort,count,label,dir) from 'spec/fixtures/name_titles.sorted' CSV;"))
 system(%Q(#{sql_command} "\\copy orangelight_subjects(sort,count,label,dir) from 'spec/fixtures/subjects.sorted' CSV;"))
 system(%Q(#{sql_command} "\\copy orangelight_call_numbers(sort,label,dir,scheme,title,author,date,bibid,holding_id,location) from 'spec/fixtures/call_numbers.sorted' CSV;"))
 

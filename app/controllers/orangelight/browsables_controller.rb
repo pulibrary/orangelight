@@ -79,6 +79,8 @@ class Orangelight::BrowsablesController < ApplicationController
 
     if @model == 'names'
       @facet = 'author_s'
+    elsif @model == 'name_titles'
+      @facet = 'name_title_browse_s'
     elsif @model == 'subjects'
       @facet = 'subject_facet'
     end

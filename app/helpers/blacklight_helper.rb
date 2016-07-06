@@ -52,6 +52,8 @@ module BlacklightHelper
         redirect_to "/browse/call_numbers?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
       elsif user_parameters[:search_field] == 'browse_name' && !params[:id]
         redirect_to "/browse/names?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
+      elsif user_parameters[:search_field] == 'name_title' && !params[:id]
+        redirect_to "/browse/name_titles?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
       end
 
     end
@@ -62,6 +64,8 @@ module BlacklightHelper
       'browse_cn'
     elsif params[:model] == Orangelight::Name
       'browse_name'
+    elsif params[:model] == Orangelight::NameTitle
+      'name_title'
     elsif params[:model] == Orangelight::Subject
       'browse_subject'
     else
