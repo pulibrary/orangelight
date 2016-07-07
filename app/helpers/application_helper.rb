@@ -1,5 +1,7 @@
 module ApplicationHelper
   include Requests::Pageable
+  require './lib/orangelight/string_functions'
+
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
   # Proxy Base is added to force remote access when appropriate
@@ -300,6 +302,30 @@ module ApplicationHelper
       newname_t = link_to(name_t, "/?f[name_title_browse_s][]=#{CGI.escape name_t}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name_t}", title: "Search: #{name_t}") + '  ' +
                 link_to('[Browse]', "/browse/name_titles?q=#{CGI.escape name_t}", class: 'browse-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{name_t}", title: "Browse: #{name_t}", dir: name_t.dir.to_s)
       args[:document][args[:field]][i] = newname_t.html_safe
+    end
+  end
+
+  ZERO_WIDTH = "\u{200B}".freeze
+  def name_title_split(args)
+    args[:document][args[:field]].each_with_index do |name_t, i|
+      split_entry = name_t.split(ZERO_WIDTH)
+      author = split_entry.shift
+      author_s = StringFunctions.trim_punctuation(author)
+      lnk = link_to(author, "/?f[author_s][]=#{CGI.escape author_s}", class: 'search-name', 'data-toggle' => 'tooltip',
+                                                                      'data-original-title' => "Search: #{author_s}", title: "Search: #{author_s}")
+      split_entry.each_with_index do |title_part, j|
+        title = split_entry[0..j].join
+        quote_title = %("#{title}")
+        lnk += link_to(title_part, %(/?q=#{CGI.escape quote_title}&f[author_s][]=#{CGI.escape author_s}&search_field=title),
+                       class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{author+title}",
+                       title: "Search: #{author+title}")
+      end
+      name_t = name_t.gsub(ZERO_WIDTH, '')
+      lnk += '  '
+      lnk += link_to('[Browse]', "/browse/name_titles?q=#{CGI.escape name_t}", class: 'browse-name-title', 'data-toggle' => 'tooltip',
+                                                                                'data-original-title' => "Browse: #{name_t}",
+                                                                                title: "Browse: #{name_t}", dir: name_t.dir.to_s).html_safe
+      args[:document][args[:field]][i] = lnk.html_safe
     end
   end
 

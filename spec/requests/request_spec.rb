@@ -346,4 +346,21 @@ describe 'blacklight tests' do
       expect(response.body).not_to include('/browse/name_titles?q=Science+%28New+York%2C+N.Y.%29')
     end
   end
+
+  describe 'related works/contains name-title search/browse' do
+    let(:subfield_a) { 'Sanūsī, Muḥammad ibn Yūsuf, approximately 1427-approximately 1490. ' }
+    let(:title) { 'Umm al-barāhīn.' }
+    before(:all) { get '/catalog/5906024' }
+    it 'includes browse link for for name-title entry' do
+      expect(response.body).to include("/browse/name_titles?q=#{CGI.escape(subfield_a+title)}")
+    end
+    it 'includes search link just for author, with punctuation stripped' do
+      expect(response.body).to include("/?f[author_s][]=#{CGI.escape(subfield_a[0..-3])}")
+    end
+    it 'includes search link for author with title search' do
+      quote_title = %("#{title}")
+      expect(response.body).to include("/?q=#{CGI.escape(quote_title)}&amp;"\
+                                       "f[author_s][]=#{CGI.escape(subfield_a[0..-3])}&amp;search_field=title")
+    end
+  end
 end

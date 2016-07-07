@@ -2,12 +2,12 @@
 
 $(document).ready(function() {
     //link highlighting of subject heirarchy
-    $(".search-subject").hover(
+    $(".search-subject, .search-name-title").hover(
         function() {
-            $(this).prevAll().addClass("subject-heirarchy");
+            $(this).prevAll().addClass("search-hierarchy");
         },
         function() {
-            $(this).prevAll().removeClass("subject-heirarchy");
+            $(this).prevAll().removeClass("search-hierarchy");
         }
     );
 
