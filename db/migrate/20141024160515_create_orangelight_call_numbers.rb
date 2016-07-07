@@ -4,7 +4,7 @@ class CreateOrangelightCallNumbers < ActiveRecord::Migration
       t.string :label
       t.string :dir
       t.string :scheme
-      t.string :sort, index: true
+      t.string :sort
       t.text :title
       t.text :author
       t.text :date
