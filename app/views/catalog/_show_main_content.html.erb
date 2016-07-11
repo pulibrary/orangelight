@@ -19,9 +19,13 @@
   <script type="text/javascript">
     jQuery(document).ready(function(){
       if($("*[data-umlaut-fulltext='true']").length) {
-        var ctx = $("span.Z3988").attr("title");
+        if($("*[data-url-marcit]").length) {
+          var ctx = $('.availability_full-text').data('url-marcit');
+        } else {
+          var ctx = $("span.Z3988").attr("title");
+        }
         var umlaut_base = "<%= ENV['umlaut_base'] %>";
-        var updater = new Umlaut.HtmlUpdater(umlaut_base, ctx );
+        var updater = new Umlaut.HtmlUpdater( umlaut_base, ctx );
         updater.add_section_target({
           umlaut_section_id: "fulltext",
           selector:"#full_text",
