@@ -61,6 +61,7 @@ RSpec.describe ApplicationHelper do
     let(:show_result) { helper.holding_request_block(document) }
     let(:show_result_journal) { helper.holding_request_block(document_journal) }
     let(:show_result_thesis) { helper.holding_request_block(document_thesis) }
+    let(:show_result_marcit) { helper.urlify(electronic_access_marcit) }
     let(:holding_block_json) do
       {
         holding_id => {
@@ -142,6 +143,15 @@ RSpec.describe ApplicationHelper do
         document: document
       }.with_indifferent_access
     end
+
+    let(:marcit_url) { 'http://getit.princeton.edu/resolve?url%5Fver=Z39.88-2004&ctx%5Fver=Z39.88-2004&ctx%5Fenc=info:ofi/enc:UTF-8&rfr%5Fid=info:sid/sfxit.com:opac%5F856&url%5Fctx%5Ffmt=info:ofi/fmt:kev:mtx:ctx&sfx.ignore%5Fdate%5Fthreshold=1&rft.object%5Fid=954925427238&svc%5Fval%5Ffmt=info:ofi/fmt:kev:mtx:sch%5Fsvc&' }
+    let(:marcit_ctx) { 'url%5Fver=Z39.88-2004&ctx%5Fver=Z39.88-2004&ctx%5Fenc=info:ofi/enc:UTF-8&rfr%5Fid=info:sid/sfxit.com:opac%5F856&url%5Fctx%5Ffmt=info:ofi/fmt:kev:mtx:ctx&sfx.ignore%5Fdate%5Fthreshold=1&rft.object%5Fid=954925427238&svc%5Fval%5Ffmt=info:ofi/fmt:kev:mtx:sch%5Fsvc&' }
+    let(:electronic_access_marcit) do
+      {
+        marcit_url => ['getit.princeton.edu', 'View Princeton online holdings']
+      }.to_json
+    end
+
     context 'search results when there are more than two call numbers' do
       it 'displays View Record for Availability' do
         expect(search_result).to include 'View Record for Full Availability'
@@ -204,6 +214,16 @@ RSpec.describe ApplicationHelper do
     context '#holding_block record show - online holdings' do
       it 'link missing label appears when 856s is missing from elf location' do
         expect(show_result.first).to include 'Link Missing'
+      end
+    end
+    context '#urlify a marcit record' do
+      it 'is marked as full text record' do
+        expect(show_result_marcit).to have_selector "*[data-umlaut-fulltext='true']"
+      end
+
+      it 'has a marcit context object' do
+        expect(show_result_marcit).to include 'data-url-marcit'
+        expect(show_result_marcit).to have_selector "*[data-url-marcit='#{marcit_ctx}']"
       end
     end
   end
