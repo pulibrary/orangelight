@@ -170,7 +170,7 @@ module ApplicationHelper
   def request_placeholder(doc_id, holding_id, location_rules, holding)
     content_tag(:div, class: 'location-services', data: { open: open_location?(location_rules, holding), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
       if pageable?(holding)
-        link_to 'Paging Request', "/requests/#{doc_id}?mfhd=#{holding_id}", title: 'View Options to Request copies from this Location', target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
+        link_to 'Paging Request', "/requests/#{doc_id}?mfhd=#{holding_id}", title: 'View Options to Request copies from this Location', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       else
         link_to 'Request', "https://library.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}", title: 'View Options to Request copies from this Location', target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       end
