@@ -19,7 +19,7 @@ RSpec.describe AdvancedHelper do
         expect(architecture_hash['codes']).to match_array([uesla])
       end
       it 'includes recap location code facet items' do
-        expect(architecture_hash['recap_codes']).to match_array([rcppw])
+        expect(architecture_hash['recap_codes'].include?(rcppw)).to be_truthy
       end
       it 'includes library facet item' do
         expect(architecture_hash['item']).to eq(architecture)
