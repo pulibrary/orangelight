@@ -82,7 +82,10 @@ Metrics/MethodLength:
     - 'config/initializers/blacklight_initializer.rb'
     - 'lib/orangelight/browse_lists.rb'
     - 'lib/orangelight/voyager_account.rb'
-    - 'lib/orangelight/voyager_patron_client.rb'    
+    - 'lib/orangelight/voyager_patron_client.rb'
+    - 'spec/features/course_reserves_spec.rb'
+    - 'spec/requests/course_reserve_spec.rb'
+    - 'spec/repositories/course_reserve_repository_spec.rb'
 
 Metrics/ModuleLength:
   Exclude:
