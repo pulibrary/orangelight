@@ -1,15 +1,15 @@
 <%= form_tag catalog_index_path(search_field: "all_fields"), method: :get do %>
   <div class="form-group">
     <label for="f_instructor_name_">Instructor:</label>
-    <%= select_tag "f[instructor_name][]", options_from_collection_for_select(@courses.instructors.sort, :to_s, :to_s), class: 'form-control', include_blank: true %>
+    <%= select_tag "f[instructor_name][]", options_from_collection_for_select(@courses.instructors.sort, :to_s, :to_s), class: 'form-control chosen-select', include_blank: true %>
   </div>
   <div class="form-group">
     <label for="f_course_">Course:</label>
-    <%= select_tag "f[course][]", options_from_collection_for_select(@courses.course_names.sort, :to_s, :to_s), class: 'form-control', include_blank: true %>
+    <%= select_tag "f[course][]", options_from_collection_for_select(@courses.course_names.sort, :to_s, :to_s), class: 'form-control chosen-select', include_blank: true %>
   </div>
   <div class="form-group">
     <label for="f_department_">Department:</label>
-    <%= select_tag "f[department][]", options_from_collection_for_select(@courses.departments.sort, :to_s, :to_s), class: 'form-control', include_blank: true %>
+    <%= select_tag "f[department][]", options_from_collection_for_select(@courses.departments.sort, :to_s, :to_s), class: 'form-control chosen-select', include_blank: true %>
   </div>
   <%= hidden_field_tag "search_field", "all_fields" %>
   <%= hidden_field_tag "f[filter][]", "Course Reserves" %>
