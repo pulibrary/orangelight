@@ -69,6 +69,8 @@ gem 'string_rtl'
 
 gem 'requests', :git => "https://github.com/pulibrary/requests.git", :branch => 'request_test_specs'
 
+gem 'jquery-datatables-rails', '~> 3.3.0'
+
 group :development do
   gem 'capistrano-rails', '~> 1.1.6'
   gem 'quiet_assets'

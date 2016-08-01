@@ -1,0 +1,17 @@
+div.dataTables_wrapper {
+  .row:first-child {
+    .col-sm-6:first-child {
+      float: right;
+    }
+    .col-sm-6:last-child {
+      float: left;
+      padding-left: 23px;
+    }
+  }
+  .dataTables_length {
+    text-align: right;
+  }
+  .dataTables_filter {
+    text-align: left;
+  }
+}

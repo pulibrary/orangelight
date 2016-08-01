@@ -1,17 +1,22 @@
-<%= form_tag catalog_index_path(search_field: "all_fields"), method: :get do %>
-  <div class="form-group">
-    <label for="f_instructor_name_">Instructor:</label>
-    <%= select_tag "f[instructor_name][]", options_from_collection_for_select(@courses.instructors.sort, :to_s, :to_s), class: 'form-control chosen-select', include_blank: true %>
-  </div>
-  <div class="form-group">
-    <label for="f_course_">Course:</label>
-    <%= select_tag "f[course][]", options_from_collection_for_select(@courses.course_names.sort, :to_s, :to_s), class: 'form-control chosen-select', include_blank: true %>
-  </div>
-  <div class="form-group">
-    <label for="f_department_">Department:</label>
-    <%= select_tag "f[department][]", options_from_collection_for_select(@courses.departments.sort, :to_s, :to_s), class: 'form-control chosen-select', include_blank: true %>
-  </div>
-  <%= hidden_field_tag "search_field", "all_fields" %>
-  <%= hidden_field_tag "f[filter][]", "Course Reserves" %>
-  <%= submit_tag 'Search Course Reserves', class: 'btn btn-default' %>
-<% end %>
+<div class="well well-lg">
+  <h1>Course Reserves</h1>
+  Search for your Course, Instructor, or Department below. Please note that every reserve location has its own loan and shelving policies. Consult library staff in the Firestone Reserve Room and at branch library circulation desks for assistance.
+</div>
+<table class="table data-table" data-page-length="25">
+  <thead>
+    <th>Course</th>
+    <th>Instructor</th>
+    <th>Department</th>
+  </thead>
+  <tbody>
+    <% @courses.to_a.each do |course| %>
+      <tr>
+        <td>
+          <%= link_to course.course_with_id, catalog_index_path(f: {instructor: [course.instructor], course: [course.course_with_id]}, search_field: "all_fields") %>
+        </td>
+        <td><%= course.instructor %></td>
+        <td><%= course.department_with_identifier %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -125,7 +125,11 @@ class CourseReserveRepository
     end
 
     def course_with_id
-      "#{course_number}: #{course_name}"
+      "#{department_code} #{filtered_course_number}: #{course_name}"
+    end
+
+    def filtered_course_number
+      course_number.split(' ').last
     end
   end
 end

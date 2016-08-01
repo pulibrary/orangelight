@@ -11,10 +11,10 @@ describe 'course reserves' do
     it 'returns matching reserve ids' do
       stub_all_query
       stub_bib_ids
-      get '/catalog.json?search_field=all_fields&f[instructor_name][]=Test, Jane&f[filter][]=Course Reserves'
+      get '/catalog.json?search_field=all_fields&f[instructor][]=Test, Jane&f[filter][]=Course Reserves'
       r = JSON.parse(response.body)
       expect(r['response']['docs'].length).to eq 2
-      get '/catalog.json?search_field=all_fields&f[instructor_name][]=Test, Joe&f[filter][]=Course Reserves'
+      get '/catalog.json?search_field=all_fields&f[instructor][]=Test, Joe&f[filter][]=Course Reserves'
       r = JSON.parse(response.body)
       expect(r['response']['docs'].length).to eq 1
     end
@@ -34,8 +34,8 @@ describe 'course reserves' do
     it 'returns only those matching both result sets' do
       stub_all_query
       stub_bib_ids
-      get '/catalog.json?search_field=all_fields&f[instructor_name][]=Test, Jane&f[filter][]=Course Reserves'
-      get '/catalog.json?search_field=all_fields&f[instructor_name][]=Test, Jane&f[course][]=MOL 343: Genetics&f[filter][]=Course Reserves'
+      get '/catalog.json?search_field=all_fields&f[instructor][]=Test, Jane&f[filter][]=Course Reserves'
+      get '/catalog.json?search_field=all_fields&f[instructor][]=Test, Jane&f[course][]=MOL 343: Genetics&f[filter][]=Course Reserves'
       # Ensure non-matching documents aren't deleted.
       expect(Blacklight.default_index.connection.get('select', params: { q: 'type_s:ReserveListing AND instructor_s:"Test, Jane"' })['response']['docs'].length).to eq 2
       r = JSON.parse(response.body)
