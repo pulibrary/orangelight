@@ -107,4 +107,6 @@ Rails.application.routes.draw do
   match '/422' => 'errors#missing', via: [:get, :post, :patch, :delete]
   match '/500' => 'errors#error', via: [:get, :post, :patch, :delete]
   # match '*catch_unknown_routes', to: 'application#catch_404s', via: [:get, :post]
+  #
+  get '/course_reserves', to: 'course_reserves#index'
 end

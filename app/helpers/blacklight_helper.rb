@@ -31,6 +31,27 @@ module BlacklightHelper
     solr_parameters['facet.pivot'] = []
   end
 
+  def course_reserve_filters(solr_parameters, user_parameters)
+    return unless user_parameters[:f]
+    instructor = Array(user_parameters[:f][:instructor_name]).first
+    course = Array(user_parameters[:f][:course]).first
+    department = Array(user_parameters[:f][:department]).first
+    filter = Array(user_parameters[:f][:filter]).first
+    return if instructor.blank? && course.blank? && department.blank? && filter.blank?
+    courses = CourseReserveRepository.all.query(instructor: instructor, course_with_id: course, department_with_identifier: department)
+    index_course_reserves(courses, user_parameters)
+    solr_parameters[:fq] ||= []
+    solr_parameters[:fq].reject! do |x|
+      %w(course instructor_name department filter).include?(x.split('=')[1].split('}')[0])
+    end
+    solr_parameters[:fq] << "{!join from=bib_ids_s to=id fromIndex=#{ReserveIndexer.core}}#{courses.solr_query}"
+  end
+
+  def index_course_reserves(courses, _user_parameters)
+    ReserveIndexer.connection.delete_by_query(courses.solr_query)
+    ReserveIndexer.index!(courses)
+  end
+
   # Returns suitable argument to options_for_select method, to create
   # an html select based on #search_field_list with labels for search
   # bar only. Skips search_fields marked :include_in_simple_select => false
