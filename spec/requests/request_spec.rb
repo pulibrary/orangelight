@@ -331,4 +331,24 @@ describe 'blacklight tests' do
       expect(response.body).to include('/browse/names?q=%E7%A5%9D%E7%A9%86%2C+13th+cent')
     end
   end
+
+  describe 'series_display in search results' do
+    it 'is fetched when doing a more in this series search' do
+      get '/catalog.json?q1=Always+learning.&f1=in_series&search_field=advanced'
+      r = JSON.parse(response.body)
+      expect(r['response']['docs'].select { |d| d['id'] == '7917192' }[0]['series_display']).not_to be_nil
+    end
+    it 'is displayed when doing a series title search' do
+      get '/catalog.json?q3=Heft+%3D+Quaderno+%2F+Merkantilmuseum+Bozen+%3B&f3=series_title&search_field=advanced'
+      r = JSON.parse(response.body)
+      series_title = r['response']['docs'].select { |d| d['id'] == '6139836' }[0]['series_display']
+      get '/catalog?q3=Heft+%3D+Quaderno+%2F+Merkantilmuseum+Bozen+%3B&f3=series_title&search_field=advanced'
+      expect(response.body).to include(series_title.join(', '))
+    end
+    it 'is not included in other search contexts' do
+      get '/catalog.json?q=7917192&search_field=all_fields'
+      r = JSON.parse(response.body)
+      expect(r['response']['docs'].select { |d| d['id'] == '7917192' }[0]['series_display']).to be_nil
+    end
+  end
 end

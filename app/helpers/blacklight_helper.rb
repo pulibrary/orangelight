@@ -19,6 +19,15 @@ module BlacklightHelper
     solr_parameters[:q] = '{!qf=$left_anchor_qf pf=$left_anchor_pf}' + newq.delete(' ')
   end
 
+  def series_title_results(solr_parameters, user_parameters)
+    return unless %w(series_title in_series).include?(user_parameters[:f1]) ||
+                  user_parameters[:f2] == 'series_title' ||
+                  user_parameters[:f3] == 'series_title'
+    solr_parameters[:fl] = 'id,score,author_display,marc_relator_display,format,pub_created_display,'\
+                           'title_display,title_vern_display,isbn_s,oclc_s,lccn_s,holdings_1display,'\
+                           'electronic_access_1display,cataloged_tdt,series_display'
+  end
+
   def only_home_facets(solr_parameters, _user_parameters)
     return if has_search_parameters?
     solr_parameters['facet.field'] = home_facets
