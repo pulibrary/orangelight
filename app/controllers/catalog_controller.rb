@@ -22,7 +22,7 @@ class CatalogController < ApplicationController
     redirect_to lccn_resolve(params[:id])
   end
 
-  self.search_params_logic += [:cjk_mm, :only_home_facets, :only_advanced_facets, :left_anchor_strip, :redirect_browse, :course_reserve_filters]
+  self.search_params_logic += [:cjk_mm, :only_home_facets, :only_advanced_facets, :left_anchor_strip, :redirect_browse, :course_reserve_filters, :series_title_results]
 
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
@@ -127,6 +127,7 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
+    config.add_index_field 'series_display', label: 'Series', helper_method: :series_results
     config.add_index_field 'author_display', label: 'Author/Artist', helper_method: :browse_name
     config.add_index_field 'pub_created_display', label: 'Published/Created'
     config.add_index_field 'format', label: 'Format', helper_method: :format_icon

@@ -155,6 +155,20 @@ module ApplicationHelper
     end
   end
 
+  def series_results(args)
+    series_display =
+      if params[:f1] == 'in_series'
+        same_series_result(params[:q1], args[:document][args[:field]])
+      else
+        args[:document][args[:field]]
+      end
+    args[:document][args[:field]] = series_display.join(', ')
+  end
+
+  def same_series_result(series, series_display)
+    series_display.select { |t| t.start_with?(series) }
+  end
+
   def more_in_this_series_link(title)
     no_parens = title.gsub(/[()]/, '')
     link_to('[More in this series]', "/catalog?q1=#{CGI.escape no_parens}&f1=in_series&search_field=advanced",
