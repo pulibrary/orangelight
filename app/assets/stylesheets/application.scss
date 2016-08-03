@@ -13,6 +13,7 @@
  *= require  'blacklight_range_limit'
  *= require 'blacklight_advanced_search'
  *= require chosen
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require_self
  */
 
@@ -54,5 +55,6 @@
 @import 'components/tables';
 @import 'components/tables--labels';
 @import 'components/user';
+@import 'components/data-tables';
 
 @import 'shame';

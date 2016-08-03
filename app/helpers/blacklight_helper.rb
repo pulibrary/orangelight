@@ -33,7 +33,7 @@ module BlacklightHelper
 
   def course_reserve_filters(solr_parameters, user_parameters)
     return unless user_parameters[:f]
-    instructor = Array(user_parameters[:f][:instructor_name]).first
+    instructor = Array(user_parameters[:f][:instructor]).first
     course = Array(user_parameters[:f][:course]).first
     department = Array(user_parameters[:f][:department]).first
     filter = Array(user_parameters[:f][:filter]).first
@@ -42,7 +42,7 @@ module BlacklightHelper
     index_course_reserves(courses, user_parameters)
     solr_parameters[:fq] ||= []
     solr_parameters[:fq].reject! do |x|
-      %w(course instructor_name department filter).include?(x.split('=')[1].split('}')[0])
+      %w(course instructor department filter).include?(x.split('=')[1].split('}')[0])
     end
     solr_parameters[:fq] << "{!join from=bib_ids_s to=id fromIndex=#{ReserveIndexer.core}}#{courses.solr_query}"
   end

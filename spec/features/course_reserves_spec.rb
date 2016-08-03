@@ -7,10 +7,8 @@ describe 'course reserves functionality' do
   end
   it 'displays appropriate course reserves' do
     visit '/course_reserves'
-    select 'MOL: Molecular Biology', from: 'Department:'
-    select 'Test, Jane', from: 'Instructor:'
-    click_button 'Search Course Reserves'
-    expect(page).to have_selector '.document', count: 2
+    click_link 'MOL 101: From DNA to Human Complexity'
+    expect(page).to have_selector '.document', count: 1
   end
 
   def stub_all_query
