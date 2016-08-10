@@ -20,7 +20,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def after_sign_out_path_for(_resource)
-    Rails.configuration.x.after_sign_out_url
+  def after_sign_out_path_for(resource)
+    if resource == 'barcode'
+      root_url
+    else
+      Rails.configuration.x.after_sign_out_url
+    end
   end
 end

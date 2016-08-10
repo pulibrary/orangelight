@@ -1,26 +1,37 @@
 class User < ActiveRecord::Base
   # include Blacklight::Folders::User
-  attr_accessible :email, :password, :password_confirmation if Rails::VERSION::MAJOR < 4
+
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :rememberable,
+         :trackable, :omniauthable
 
-  devise :omniauthable
   # Method added by Blacklight; Blacklight uses #to_s on your
   # user class to get a user-displayable login/identifier for
   # the account.
   def to_s
-    username
+    username || 'User'
   end
 
-  def self.from_omniauth(access_token)
+  def self.from_cas(access_token)
     User.where(provider: access_token.provider, uid: access_token.uid).first_or_create do |user|
       user.uid = access_token.uid
       user.username = access_token.uid
       user.email = "#{access_token.uid}@princeton.edu"
+      user.password = SecureRandom.urlsafe_base64
+      user.provider = access_token.provider
+    end
+  end
+
+  def self.from_barcode(access_token)
+    User.where(provider: access_token.provider, uid: access_token.uid,
+               username: access_token.info.last_name).first_or_initialize do |user|
+      user.uid = access_token.uid
+      user.username = access_token.info.last_name
+      user.email = access_token.uid
+      user.password = SecureRandom.urlsafe_base64
       user.provider = access_token.provider
     end
   end

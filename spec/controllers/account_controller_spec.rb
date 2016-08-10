@@ -46,6 +46,15 @@ RSpec.describe AccountController do
       patron = subject.send(:current_patron?, unauthorized_user.uid)
       expect(patron).to be_falsey
     end
+
+    it 'Returns false when the http response throws 500' do
+      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
+      stub_request(:get, valid_patron_record_uri)
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .to_return(status: 500, body: 'Error', headers: {})
+      patron = subject.send(:current_patron?, valid_user.uid)
+      expect(patron).to be_falsey
+    end
   end
 
   describe '#voyager_account?' do
