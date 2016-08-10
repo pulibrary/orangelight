@@ -30,8 +30,8 @@ module ApplicationHelper
       links_hash = JSON.parse(electronic_access)
       links_hash.first(2).each do |url, text|
         link = link_to(text.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
-        link = "#{text[1]}: " + link if text[1]
-        urls << link
+        link = "#{text[1]}: ".html_safe + link if text[1]
+        urls << content_tag(:div, link, class: 'library-location')
       end
     end
     urls
@@ -227,7 +227,7 @@ module ApplicationHelper
           info << content_tag(:span, 'Link Missing',
                               class: 'availability-icon label label-default', title: 'Availability: Online',
                               'data-toggle' => 'tooltip')
-          info << 'Online access is not currently available.'
+          info << content_tag(:div, 'Online access is not currently available.', class: 'library-location')
         else
           info << content_tag(:span, 'Online', class: 'availability-icon label label-primary', title: 'Electronic access', 'data-toggle' => 'tooltip')
           info << links.shift.html_safe
@@ -237,8 +237,8 @@ module ApplicationHelper
           check_availability = false
           info << content_tag(:span, 'On-site access', class: 'availability-icon label label-warning', title: 'Availability: On-site', 'data-toggle' => 'tooltip')
         else
-          info << content_tag(:span, '', class: 'icon-warning', title: t('blacklight.holdings.paging_request'), 'data-toggle' => 'tooltip').html_safe if pageable?(holding)
           info << content_tag(:span, '', class: 'availability-icon').html_safe
+          info << content_tag(:span, '', class: 'icon-warning', title: t('blacklight.holdings.paging_request'), 'data-toggle' => 'tooltip').html_safe if pageable?(holding)
         end
         info << content_tag(:div, search_location_display(holding, document), class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
       end
@@ -249,9 +249,9 @@ module ApplicationHelper
                                         class: 'availability-icon label label-default more-info', title: 'Click on the record for full availability info',
                                         'data-toggle' => 'tooltip').html_safe)
     elsif !holdings_hash.empty?
-      block << content_tag(:li, link_to(' ', catalog_path(document['id']),
+      block << content_tag(:li, link_to('', catalog_path(document['id']),
                                         class: 'availability-icon more-info', title: 'Click on the record for full availability info',
-                                        'data-toggle' => 'tooltip').html_safe, data: { record_id: document['id'] })
+                                        'data-toggle' => 'tooltip').html_safe, class: 'empty', data: { record_id: document['id'] })
     end
     if block.empty?
       content_tag(:div, t('blacklight.holdings.search_missing'))

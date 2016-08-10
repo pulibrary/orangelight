@@ -33,6 +33,7 @@
 .holding-label {
   font-weight: bold;
 }
+
 .location--panel .panel {
   background: white;
   margin: 0 0 1.5em;
@@ -138,7 +139,7 @@
 
   li {
     margin-left: 1em;
-   }
+  }
 
   .holding-label {
     color: $blacklight-gray;
@@ -147,6 +148,7 @@
   .journal-current-issues .trigger {
     cursor: pointer;
     color: $blue;
+
     &:hover {
       color: $dark-orange;
       text-decoration: underline;
@@ -160,6 +162,7 @@
       display: block;
     }
   }
+
   .location-services {
     margin-top: 1em;
     display: none;
@@ -191,37 +194,55 @@
 
 .availability-icon {
   margin-right: 10px;
-  text-transform: uppercase;
   cursor: default;
+  font-size: 80%;
+  letter-spacing: 0.05em;
+  width: 95px;
+
+  &.more-info {
+    width: auto;
+  }
 
   // @media (min-width: $bp-small){
   //   width: 100px;
   // }
-
-  // &.more-info {
-  //   width: auto;
-  // }
 }
 
-.blacklight-holdings li {
-  .icon-warning {
-    float: left;
-    height: 22px;
-    font-size: 24px;
-    padding-top: 1px;
-    color: #e87511;
-  }
-  .availability-icon {
-    float: left;
-    padding: 6px 5px;
-  }
-  .library-location {
-    display: block;
+.blacklight-holdings ul {
+  margin-top: 1.5em;
 
-    .call-number {
-      white-space: pre;
+  li {
+    margin-bottom: 6px;
+
+    &.empty {
+      display: none;
+    }
+
+    .icon-warning {
+      float: left;
+      font-size: 24px;
+      padding-top: 1px;
+      color: #e87511;
+      // @include vertical-align;
+    }
+
+    .availability-icon {
+      float: left;
+      padding: 6px 5px;
+      // @include vertical-align;
+    }
+
+    .library-location {
+      display: block;
+      margin-left: 105px;
+      // @include vertical-align;
+
+      // .call-number {
+      //   white-space: pre;
+      // }
     }
   }
+
   // .availability-icon + .library-location {
   //   @media (min-width: $bp-small){
   //     padding-left: 110px;
