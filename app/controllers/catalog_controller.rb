@@ -49,6 +49,9 @@ class CatalogController < ApplicationController
     # new way of calling local document presenter
     config.document_presenter_class = PrincetonPresenter
 
+    config.navbar.partials.delete(:search_history)
+    config.add_nav_action(:reserves, partial: 'course_reserves/nav')
+
     # solr field configuration for search results/index views
     config.index.title_field = 'title_display'
     config.index.partials = [:index_header, :show_identifiers, :thumbnail, :index]
