@@ -16,7 +16,7 @@
           <%= render partial: 'blacklight/nav/search_history' %>
         </li>
         <li>
-          <%= link_to t('blacklight.header_links.logout'), main_app.destroy_user_session_path %>
+          <%= link_to t('blacklight.header_links.logout'), main_app.destroy_user_session_path, :method => :delete %>
         </li>
       </ul>
     </li>
@@ -28,7 +28,7 @@
       </button>
       <ul class="dropdown-menu" role="menu">
         <li>
-          <%= link_to t('blacklight.header_links.login'), main_app.user_omniauth_authorize_path(:cas) %>
+          <%= link_to t('blacklight.header_links.login'), main_app.user_cas_omniauth_authorize_path %>
         </li>
         <li>
           <%= render partial: 'blacklight/nav/search_history' %>

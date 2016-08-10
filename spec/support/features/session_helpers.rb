@@ -32,7 +32,7 @@ module Features
                FactoryGirl.create(:valid_princeton_patron).username
              end
       OmniAuth.config.add_mock(:cas, uid: user)
-      visit user_omniauth_authorize_path(:cas)
+      visit user_cas_omniauth_authorize_path
     end
   end
 end
