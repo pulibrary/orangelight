@@ -56,6 +56,11 @@ RSpec.describe 'Orangelight Browsables', type: :request do
       q_normalized = StringFunctions.cn_normalize('microfilm')
       expect(r[3]['sort']..r[4]['sort']).to cover q_normalized
     end
+
+    it 'escapes call number browse link urls' do
+      get '/browse/call_numbers?q=Islamic+Manuscripts%2C+New+Series+no.+1948'
+      expect(response.body).to include('/catalog/?f[call_number_browse_s][]=Islamic+Manuscripts%2C+New+Series+no.+1948')
+    end
   end
 
   describe 'Selected search box field' do
