@@ -53,7 +53,7 @@ module BrowseLists
           else
             sort_cn = StringFunctions.cn_normalize(mcn)
             multi_cns[sort_cn] = f
-            csv << [sort_cn, mcn, 'ltr', '', "Click on the call number to see all #{f} records", '', '', "?f[#{facet_field}][]=#{mcn}", '', 'Multiple locations']
+            csv << [sort_cn, mcn, 'ltr', '', "Click on the call number to see all #{f} records", '', '', "?f[#{facet_field}][]=#{CGI.escape(mcn)}", '', 'Multiple locations']
           end
         end
         resp = conn.get '/solr/blacklight-core/select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax'
