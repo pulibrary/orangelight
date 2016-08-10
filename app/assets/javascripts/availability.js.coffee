@@ -50,7 +50,7 @@ class AvailabilityUpdater
     location_services_element = $(".location-services[data-holding-id='#{holding_id}']")
     availability_label = $(".holding-status[data-holding-id='#{holding_id}'] .availability-icon.label")
     availability_label = availability_label.text()
-    if location_services_element.attr('data-open') == 'false' || availability_label not in open_location_labels 
+    if location_services_element.attr('data-open') == 'false' || availability_label not in open_location_labels
       location_services_element.show()
   apply_record: (record_id, holding_records) ->
     for holding_id, availability_info of holding_records
@@ -97,6 +97,8 @@ class AvailabilityUpdater
     element.addClass("label label-default")
     element.text("View record for full availability")
     element.attr('title', "Click on the record for full availability info")
+    empty = $("*[data-record-id='#{record_id}'].empty")
+    empty.removeClass("empty")
   apply_record_icon: (availability_element, status) ->
     status = title_case(status)
     availability_element.addClass("label")
