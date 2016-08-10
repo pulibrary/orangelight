@@ -37,7 +37,8 @@ en:
     search:
       edit_search: 'Edit Search'
     header_links:
-      login: 'Your Account'
+      login: 'Login'
+      course_reserves: 'Course Reserves'
       search_history: 'Search History'
       account_page: 'Your Account'
     email:

@@ -9,6 +9,22 @@ describe 'Tools links' do
       end
     end
 
+    [I18n.t('blacklight.header_links.course_reserves'), I18n.t('blacklight.header_links.bookmarks')].each do |link_text|
+      it "#{link_text} appears for navbar" do
+        within '.header__secondary' do
+          find_link(link_text)
+        end
+      end
+    end
+
+    [I18n.t('blacklight.header_links.login'), I18n.t('blacklight.header_links.search_history')].each do |link_text|
+      it "#{link_text} appears for your account dropdown" do
+        within '.menu--level-1' do
+          find_link(link_text)
+        end
+      end
+    end
+
     ['SMS', 'Email', 'Librarian View', 'Cite', I18n.t('blacklight.voyager')].each do |link_text|
       it "#{link_text} appears for record view" do
         within '#main-container' do
