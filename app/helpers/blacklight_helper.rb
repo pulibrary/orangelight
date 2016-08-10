@@ -12,6 +12,11 @@ module BlacklightHelper
     field[:link_field]
   end
 
+  def wildcard_char_strip(solr_parameters, _user_parameters)
+    return unless solr_parameters[:q]
+    solr_parameters[:q] = solr_parameters[:q].delete('?')
+  end
+
   # This is needed because white space tokenizes regardless of filters
   def left_anchor_strip(solr_parameters, _user_parameters)
     return unless solr_parameters[:q] && solr_parameters[:q].include?('{!qf=$left_anchor_qf pf=$left_anchor_pf}')
