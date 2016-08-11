@@ -30,7 +30,7 @@ describe 'Availability' do
     end
 
     it 'display umlaut links for marcit record within the online section', unless: in_travis? do
-      visit '/catalog/8606339'
+      visit '/catalog/9774256'
       sleep 5.seconds
       expect(page.all('.location--online .umlaut .fulltext').length).to eq 1
       expect(page.all('.location--online .umlaut .fulltext .response_item').length).to be >= 4
