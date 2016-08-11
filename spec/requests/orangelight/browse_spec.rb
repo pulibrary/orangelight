@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Orangelight Browsables', type: :request do
-  before(:all) do
-    system 'rake db:seed'
-  end
-
   describe 'Redirect Tests for Browse' do
     it 'browse_name redirects to browse search' do
       get '/catalog?search_field=browse_name&q=velez'
@@ -54,7 +50,7 @@ RSpec.describe 'Orangelight Browsables', type: :request do
       get '/browse/call_numbers.json?q=microfilm'
       r = JSON.parse(response.body)
       q_normalized = StringFunctions.cn_normalize('microfilm')
-      expect(r[3]['sort']..r[4]['sort']).to cover q_normalized
+      expect(r[2]['sort']..r[3]['sort']).to cover q_normalized
     end
 
     it 'escapes call number browse link urls' do
