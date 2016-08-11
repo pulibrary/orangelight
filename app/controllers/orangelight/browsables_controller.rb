@@ -39,7 +39,7 @@ class Orangelight::BrowsablesController < ApplicationController
         @search_term = search_term
         @exact_match = search_term == search_result.sort
         @match = search_result.id
-        @start = search_result.id - 3
+        @start = search_result.id - 1
         @start = 1 if @start < 1
         @query = params[:q]
         # @prev = @start/@rpp+1
