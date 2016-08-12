@@ -1,7 +1,6 @@
 # -*- encoding : utf-8 -*-
 #
 class CatalogController < ApplicationController
-  include Blacklight::Marc::Catalog
   include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog
   include Blacklight::Marc::Catalog
