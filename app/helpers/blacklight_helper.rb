@@ -173,7 +173,7 @@ module BlacklightHelper
     req['response']['docs'].each do |record|
       unless record['id'] == bib_id
         title = record['title_display']
-        other_versions << link_to(title, catalog_url(record['id']))
+        other_versions << link_to(title, solr_document_url(record['id']))
       end
     end
     other_versions.empty? ? [] : [other_versions]

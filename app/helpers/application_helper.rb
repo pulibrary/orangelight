@@ -245,11 +245,11 @@ module ApplicationHelper
       block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id })
     end
     if holdings_hash.length > 2
-      block << content_tag(:li, link_to('View Record for Full Availability', catalog_path(document['id']),
+      block << content_tag(:li, link_to('View Record for Full Availability', solr_document_path(document['id']),
                                         class: 'availability-icon label label-default more-info', title: 'Click on the record for full availability info',
                                         'data-toggle' => 'tooltip').html_safe)
     elsif !holdings_hash.empty?
-      block << content_tag(:li, link_to('', catalog_path(document['id']),
+      block << content_tag(:li, link_to('', solr_document_path(document['id']),
                                         class: 'availability-icon more-info', title: 'Click on the record for full availability info',
                                         'data-toggle' => 'tooltip').html_safe, class: 'empty', data: { record_id: document['id'] })
     end

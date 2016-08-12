@@ -12,7 +12,7 @@
     <% @courses.to_a.each do |course| %>
       <tr>
         <td>
-          <%= link_to course.course_with_id, catalog_index_path(f: {instructor: [course.instructor], course: [course.course_with_id]}, search_field: "all_fields") %>
+          <%= link_to course.course_with_id, search_catalog_path(f: {instructor: [course.instructor], course: [course.course_with_id]}, search_field: "all_fields") %>
         </td>
         <td><%= course.instructor %></td>
         <td><%= course.department_with_identifier %></td>

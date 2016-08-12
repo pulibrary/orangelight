@@ -1,4 +1,4 @@
-<%= form_tag catalog_index_path, :class => 'advanced form-horizontal', :method => :get do  %>
+<%= form_tag search_catalog_path, :class => 'advanced form-horizontal', :method => :get do  %>
   <div class="col-md-7">
     <% unless (search_context_str = render_search_to_s( advanced_search_context)).blank? %>
       <div class="constraints well search_history">
