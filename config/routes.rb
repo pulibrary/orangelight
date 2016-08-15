@@ -19,7 +19,27 @@ Rails.application.routes.draw do
 
   Blacklight::Marc.add_routes(self)
   root to: 'catalog#index'
-  blacklight_for :catalog
+
+  mount Blacklight::Engine => '/'
+
+  concern :searchable, Blacklight::Routes::Searchable.new
+  concern :exportable, Blacklight::Routes::Exportable.new
+
+  resource :catalog, only: [:index], path: '/catalog', controller: 'catalog' do
+    concerns :searchable
+  end
+
+  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
+    concerns :exportable
+  end
+
+  resources :bookmarks do
+    concerns :exportable
+
+    collection do
+      delete 'clear'
+    end
+  end
 
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'sessions' },
