@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     end
   end
 
+  mount BlacklightAdvancedSearch::Engine => '/'
+
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'sessions' },
              skip: [:passwords, :registration]
