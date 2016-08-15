@@ -1,9 +1,8 @@
 <% if has_user_authentication_provider? %>
     <% if current_user %>
-    <% unless current_user.to_s.blank? -%>
     <li class="dropdown dropdown-account">
       <button type="button" class="dropdown-toggle btn-account" data-toggle="dropdown">
-        <%= t(current_user) %> <span class="caret"></span>
+        <%= current_user.to_s %> <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
         <li>
@@ -16,11 +15,10 @@
           <%= link_to t('blacklight.header_links.search_history'), main_app.search_history_path %>
         </li>
         <li>
-          <%= link_to t('blacklight.header_links.logout'), main_app.destroy_user_session_path %>
+          <%= link_to t('blacklight.header_links.logout'), main_app.destroy_user_session_path, :method => :delete %>
         </li>
       </ul>
     </li>
-    <% end %>
     <% else %>
     <li>
       <button type="button" class="dropdown-toggle btn-account" data-toggle="dropdown">
@@ -28,7 +26,7 @@
       </button>
       <ul class="dropdown-menu" role="menu">
         <li>
-          <%= link_to t('blacklight.header_links.login'), main_app.user_omniauth_authorize_path(:cas) %>
+          <%= link_to t('blacklight.header_links.login'), main_app.new_user_session_path %>
         </li>
         <li>
           <%= link_to t('blacklight.header_links.search_history'), main_app.search_history_path %>

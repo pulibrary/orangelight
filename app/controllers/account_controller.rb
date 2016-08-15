@@ -1,5 +1,6 @@
 require './lib/orangelight/voyager_patron_client.rb'
 require './lib/orangelight/voyager_account.rb'
+require './lib/orangelight/bibdata.rb'
 
 class AccountController < ApplicationController
   include ApplicationHelper
@@ -97,30 +98,7 @@ class AccountController < ApplicationController
   private
 
     def current_patron?(netid)
-      return false unless netid
-      begin
-        patron_record = Faraday.get "#{ENV['bibdata_base']}/patron/#{netid}"
-      rescue Faraday::Error::ConnectionFailed
-        logger.info("Unable to connect to #{ENV['bibdata_base']}")
-        return false
-      end
-
-      if patron_record.status == 403
-        logger.info('403 Not Authorized to Connect to Patron Data Service at '\
-                    "#{ENV['bibdata_base']}/patron/#{netid}")
-        return false
-      end
-      if patron_record.status == 404
-        logger.info("404 Patron #{netid} cannot be found in the Patron Data Service.")
-        return false
-      end
-      if patron_record.status == 500
-        logger.info('Error Patron Data Service.')
-        return false
-      end
-      patron = JSON.parse(patron_record.body).with_indifferent_access
-      logger.info(patron.to_hash.to_s)
-      patron
+      Bibdata.get_patron(netid)
     end
 
     def voyager_account?(patron)

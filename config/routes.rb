@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   blacklight_for :catalog
 
   devise_for :users,
-             controllers: { omniauth_callbacks: 'users/omniauth_callbacks' },
+             controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'sessions' },
              skip: [:passwords, :registration]
 
   devise_scope :user do

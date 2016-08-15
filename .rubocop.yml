@@ -29,8 +29,9 @@ Metrics/AbcSize:
     - 'app/helpers/facets_helper.rb'
     - 'app/models/user.rb'
     - 'config/initializers/blacklight_initializer.rb'
+    - 'lib/orangelight/bibdata.rb'
     - 'lib/orangelight/browse_lists.rb'
-    - 'lib/orangelight/voyager_account.rb'    
+    - 'lib/orangelight/voyager_account.rb'
     - 'lib/orangelight/voyager_patron_client.rb'
 
 Metrics/BlockNesting:
@@ -75,11 +76,13 @@ Metrics/MethodLength:
     - 'app/controllers/account_controller.rb'
     - 'app/controllers/feedback_controller.rb'
     - 'app/controllers/orangelight/browsables_controller.rb'
+    - 'app/controllers/users/omniauth_callbacks_controller.rb'
     - 'app/helpers/advanced_helper.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
     - 'app/helpers/blacklight_url_helper.rb'
     - 'config/initializers/blacklight_initializer.rb'
+    - 'lib/orangelight/bibdata.rb'
     - 'lib/orangelight/browse_lists.rb'
     - 'lib/orangelight/voyager_account.rb'
     - 'lib/orangelight/voyager_patron_client.rb'
@@ -115,6 +118,10 @@ Style/AsciiComments:
 Style/ClassAndModuleChildren:
   Exclude:
     - 'config/initializers/blacklight_initializer.rb'
+
+Style/FileName:
+  Exclude:
+    - 'lib/omniauth/strategies/omniauth-barcode.rb'
 
 Style/MutableConstant:
   Exclude:

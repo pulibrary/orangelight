@@ -17,8 +17,7 @@ FactoryGirl.define do
 
     # for patrons without a net ID
     factory :guest_patron do
-      provider 'voyager'
-      guest true
+      provider 'barcode'
     end
   end
 end

@@ -1,10 +1,32 @@
-<div class="col-md-12">
-  <h2 class="page-heading my-account"><%= I18n.t('blacklight.header_links.account_page') %></h2>
-  <div class="login--cas">
-    <%- if devise_mapping.omniauthable? %>
-      <%- resource_class.omniauth_providers.each do |provider| %>
-        <%= link_to "Log in with Princeton Net ID", omniauth_authorize_path(resource_name, provider), :class => "btn btn-primary" %><br />
-      <% end -%>
-    <% end -%>
+<div class='col-md-12'>
+<h1 class='page-heading my-account'><%= I18n.t('blacklight.header_links.login') %></h2>
+</div>
+<div class='col-md-6'>
+  <div class='login-button login--cas'>
+    <%= link_to 'Log in with Princeton Net ID', user_cas_omniauth_authorize_path, :class => 'btn btn-primary' %>
   </div>
+</div>
+
+<div class='col-md-6'>
+  <div class='login-button login--barcode'>
+    <%= link_to 'Log in with Barcode', '#barcode_form', 'data-toggle' => 'collapse',
+        'aria-expanded' => 'false', 'aria-controls' => 'barcode_form', :class => 'btn btn-primary' %>
+  </div>
+  <%= form_for(:barcode, url: user_barcode_omniauth_callback_path, class: 'simple_form', data: { toggle: 'validator' })  do |f| %>
+    <div id='barcode_form' class="well collapse">
+    <div class='field'>
+      <%= f.label 'Last name' %>
+      <%= text_field_tag 'last_name', '', class: 'form-control', autocomplete: 'off', required: true %>
+    </div>
+
+    <div class='field'>
+      <%= f.label 'Barcode' %>
+      <%= text_field_tag 'barcode', '22101', class: 'form-control', autocomplete: 'off', required: true, maxlength: 14, pattern: '[0-9]{14}' %>
+    </div>
+
+    <div class='login_actions'>
+      <%= f.submit 'Log in' %>
+    </div>
+  </div>
+  <% end %>
 </div>
