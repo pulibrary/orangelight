@@ -91,7 +91,7 @@ module Blacklight::Solr::Document::Marc
 end
 
 # Override until this behavior is part of next Blacklight release
-module Blacklight::SolrResponse::Spelling
+module Blacklight::Solr::Response::Spelling
   class Base
     # returns an array of spelling suggestion for specific query words,
     # as provided in the solr response.  Only includes words with higher
