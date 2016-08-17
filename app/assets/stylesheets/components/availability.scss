@@ -8,6 +8,7 @@
     display: inline-block;
     background: none;
     text-transform: none;
+    text-align: left;
     font-size: 12px;
     padding: 0;
     margin-right: 0;
@@ -197,7 +198,7 @@
   cursor: default;
   font-size: 80%;
   letter-spacing: 0.05em;
-  width: 95px;
+  min-width: 95px;
 
   &.more-info {
     width: auto;

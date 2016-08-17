@@ -104,3 +104,20 @@ h1,
   border: 0;
   box-shadow: 0;
 }
+
+.label {
+  border: 0;
+}
+
+#main-content {
+  width: 60%;
+}
+
+#availability {
+  width: 40%;
+
+  .browse-cn,
+  .find-it {
+    display: none;
+  }
+}
