@@ -4,7 +4,7 @@ describe 'Your Account', type: :feature do
   context 'User has not signed in' do
     it 'Account information displays as not available' do
       visit('/account')
-      expect(page).to have_content 'Log in with Princeton Net ID'
+      expect(page).to have_content I18n.t('blacklight.login.netid_button')
     end
   end
 

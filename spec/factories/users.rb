@@ -18,6 +18,8 @@ FactoryGirl.define do
     # for patrons without a net ID
     factory :guest_patron do
       provider 'barcode'
+      sequence(:uid) { srand.to_s[2..15] }
+      username 'Student'
     end
   end
 end
