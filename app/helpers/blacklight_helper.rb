@@ -234,12 +234,6 @@ module BlacklightHelper
     end
   end
 
-  class PrincetonPresenter < Blacklight::DocumentPresenter
-    def field_value_separator
-      '<br/>'.html_safe
-    end
-  end
-
   private
 
     ##

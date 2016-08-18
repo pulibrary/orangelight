@@ -53,9 +53,6 @@ class CatalogController < ApplicationController
     #   :q => query
     # }
 
-    # new way of calling local document presenter
-    config.document_presenter_class = PrincetonPresenter
-
     config.navbar.partials.delete(:search_history)
     config.add_nav_action(:reserves, partial: 'course_reserves/nav')
 
