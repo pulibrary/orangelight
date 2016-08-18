@@ -38,15 +38,25 @@ describe 'Availability' do
   end
 
   describe 'Physical Holdings in temp locations', js: true do
-    it 'displays temp location on search results' do
+    it 'displays temp location on search results along with call number' do
       visit '/catalog?q=7917192'
       sleep 5.seconds
       expect(page.all('.library-location', text: 'Lewis Library - Course Reserve').length).to be > 0
+      expect(page.all('.library-location', text: 'QA303.2 .W45 2014').length).to be > 0
     end
     it 'displays temp location and copy on record show' do
       visit 'catalog/7917192'
       sleep 5.seconds
       expect(page.all('h3.library-location', text: 'Lewis Library - Course Reserve').length).to be > 0
+    end
+  end
+
+  describe 'On-site multiple items all available', js: true do
+    it 'display availability as on-site and does not display individual items' do
+      visit 'catalog/2238036'
+      sleep 5.seconds
+      expect(page.all('.availability-icon.label.label-warning', text: 'On-site access').length).to eq 1
+      expect(page.all('ul.item-status').length).to eq 0
     end
   end
 end

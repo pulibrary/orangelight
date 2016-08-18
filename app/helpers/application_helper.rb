@@ -120,8 +120,11 @@ module ApplicationHelper
     info << if holding['dspace']
               content_tag(:span, 'On-site access', class: 'availability-icon label label-warning',
                                                    title: 'Availability: On-site', 'data-toggle' => 'tooltip')
-            else
+            elsif holding['dspace'].nil?
               content_tag(:div, content_tag(:div, '', class: 'availability-icon').html_safe, class: 'holding-status', data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id })
+            else
+              content_tag(:span, 'Unavailable', class: 'availability-icon label label-danger',
+                                                title: 'Availability: Embargoed', 'data-toggle' => 'tooltip')
             end
     info << content_tag(:div, "Copy number: #{holding['copy_number']}".html_safe, class: 'copy-number') unless holding['copy_number'].nil?
     info << content_tag(:ul, "#{holding_label('Shelving title:')} #{listify_array(holding['shelving_title'])}".html_safe, class: 'shelving-title') unless holding['shelving_title'].nil?
@@ -130,7 +133,9 @@ module ApplicationHelper
     info << content_tag(:ul, ''.html_safe, class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
     unless holding['dspace']
       location_rules = LOCATIONS[holding['location_code'].to_sym]
-      info << request_placeholder(bib_id, holding_id, location_rules, holding).html_safe
+      if pageable?(holding)
+        info << request_placeholder(bib_id, holding_id, location_rules, holding).html_safe
+      end
     end
     info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
     info
@@ -236,9 +241,12 @@ module ApplicationHelper
         if holding['dspace']
           check_availability = false
           info << content_tag(:span, 'On-site access', class: 'availability-icon label label-warning', title: 'Availability: On-site', 'data-toggle' => 'tooltip')
-        else
+        elsif holding['dspace'].nil?
           info << content_tag(:span, '', class: 'availability-icon').html_safe
           info << content_tag(:span, '', class: 'icon-warning', title: t('blacklight.holdings.paging_request'), 'data-toggle' => 'tooltip').html_safe if pageable?(holding)
+        else
+          check_availability = false
+          info << content_tag(:span, 'Unavailable', class: 'availability-icon label label-danger', title: 'Availability: On-site', 'data-toggle' => 'tooltip')
         end
         info << content_tag(:div, search_location_display(holding, document), class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
       end
@@ -264,7 +272,8 @@ module ApplicationHelper
     location = holding_location_label(holding)
     render_arrow = (!location.blank? && !holding['call_number'].blank?)
     arrow = render_arrow ? ' &raquo; ' : ''
-    location_display = location + arrow + content_tag(:span, %(#{holding['call_number']}#{locate_link_with_gylph(holding['location_code'], document['id'], holding['call_number'], holding['library'])}).html_safe, class: 'call-number')
+    location_display = content_tag(:span, location, class: 'results_location') + arrow.html_safe +
+                       content_tag(:span, %(#{holding['call_number']}#{locate_link_with_gylph(holding['location_code'], document['id'], holding['call_number'], holding['library'])}).html_safe, class: 'call-number')
     location_display.html_safe
   end
 
