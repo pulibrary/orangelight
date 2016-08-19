@@ -4,5 +4,39 @@ address .name, address .street {
 }
 
 .login_actions {
-  margin-top: 5px;
+  padding-left: 15px;
+}
+
+.panel-cas {
+  margin: 0 10px 20px;
+
+  .btn {
+  	margin: auto;
+  	display: block;
+  	width: 200px;
+  }
+
+  p {
+  	margin: 10px 0 0;
+  	text-align: center;
+  }
+}
+
+.panel-barcode {
+  margin: 0 10px 20px;
+
+  .panel-heading p {
+  	margin: 0.4em 0 0;
+  	font-size: 0.9em;
+  	padding-left: 0;
+  }
+
+  label {
+  	text-align: right;
+  }
+
+  p {
+  	margin: 10px 0 0;
+  	padding-left: 15px;
+  }
 }

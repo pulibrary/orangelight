@@ -41,6 +41,14 @@ en:
       course_reserves: 'Course Reserves'
       search_history: 'Search History'
       account_page: 'Your Account'
+    login:
+      netid_header: 'Faculty, students, and staff'
+      netid_button: 'Log in with netID'
+      redirect_text: 'You will be redirected to the secure Princeton University Central Authentication Service (CAS) login.'
+      barcode_netid: 'Please log in with netID.'
+      barcode_header: 'Other users'
+      barcode_subheader: 'For borrowers without a netID'
+      barcode_help: 'If you cannot login and you have a new ID card, please stop at a circulation desk to have your barcode activated. Contact Firestone Circulation (609-258-3202) or <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a> for other problems.'
     email:
       text:
         publish: 'Published/Created: %{value}'

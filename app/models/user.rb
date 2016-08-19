@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   # include Blacklight::Folders::User
+  validates :username, presence: true
+  validates :uid, length: { is: 14 }, format: { with: /\A([\d]{14})\z/ },
+                  if: "provider == 'barcode'"
 
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
