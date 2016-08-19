@@ -39,12 +39,6 @@ module BlacklightHelper
     solr_parameters['facet.pivot'] = []
   end
 
-  def only_advanced_facets(solr_parameters)
-    return unless blacklight_params[:controller] == 'advanced'
-    solr_parameters['facet.field'] = advanced_facets
-    solr_parameters['facet.pivot'] = []
-  end
-
   def course_reserve_filters(solr_parameters)
     return unless blacklight_params[:f]
     instructor = Array(blacklight_params[:f][:instructor]).first

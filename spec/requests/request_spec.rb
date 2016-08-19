@@ -144,7 +144,7 @@ describe 'blacklight tests' do
   end
 
   describe 'advanced search tests' do
-    it 'supports advanced render constraints' do
+    xit 'supports advanced render constraints' do
       get '/catalog?&search_field=advanced&f1=left_anchor&q1=searching+for1&op2=AND&f2='\
           'left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for'
       expect(response.body.include?('<a class="btn btn-default remove dropdown-toggle" '\
