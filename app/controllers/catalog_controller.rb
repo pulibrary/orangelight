@@ -5,24 +5,11 @@ class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog
   include Blacklight::Marc::Catalog
+  include Orangelight::Catalog
   include BlacklightHelper
   # include BlacklightAdvancedSearch::ParseBasicQ  # adds AND/OR/NOT search term functionality
 
-  def oclc
-    redirect_to oclc_resolve(params[:id])
-  end
-
-  def isbn
-    redirect_to isbn_resolve(params[:id])
-  end
-
-  def issn
-    redirect_to issn_resolve(params[:id])
-  end
-
-  def lccn
-    redirect_to lccn_resolve(params[:id])
-  end
+  before_action :redirect_browse
 
   configure_blacklight do |config|
     # default advanced config values

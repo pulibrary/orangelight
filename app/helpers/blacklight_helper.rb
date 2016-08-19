@@ -79,18 +79,6 @@ module BlacklightHelper
     field_def.respond_to?(:placeholder_text) ? field_def.placeholder_text : t('blacklight.search.form.q')
   end
 
-  def redirect_browse(_solr_parameters)
-    if blacklight_params[:search_field] && blacklight_params[:controller] != 'advanced'
-      if blacklight_params[:search_field] == 'browse_subject' && !params[:id]
-        redirect_to "/browse/subjects?search_field=#{blacklight_params[:search_field]}&q=#{CGI.escape blacklight_params[:q]}"
-      elsif blacklight_params[:search_field] == 'browse_cn' && !params[:id]
-        redirect_to "/browse/call_numbers?search_field=#{blacklight_params[:search_field]}&q=#{CGI.escape blacklight_params[:q]}"
-      elsif blacklight_params[:search_field] == 'browse_name' && !params[:id]
-        redirect_to "/browse/names?search_field=#{blacklight_params[:search_field]}&q=#{CGI.escape blacklight_params[:q]}"
-      end
-    end
-  end
-
   def search_bar_field
     if params[:model] == Orangelight::CallNumber
       'browse_cn'
