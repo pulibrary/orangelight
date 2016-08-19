@@ -76,7 +76,7 @@ module BlacklightHelper
   end
 
   def placeholder_text(field_def)
-    field_def.respond_to?(:placeholder_text) ? field_def.placeholder_text : t('blacklight.search.form.q')
+    field_def.respond_to?(:placeholder_text) ? field_def.placeholder_text : t('blacklight.search.form.search.placeholder')
   end
 
   def search_bar_field

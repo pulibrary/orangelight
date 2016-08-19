@@ -29,7 +29,7 @@ RSpec.describe BlacklightHelper do
 
     it 'returns default placeholder text value when not defined' do
       allow(config).to receive(:blacklight_config).and_return(blacklight_config)
-      expect(placeholder_text(config.search_field_def_for_key('browse_subject'))).to eq I18n.t('blacklight.search.form.q')
+      expect(placeholder_text(config.search_field_def_for_key('browse_subject'))).to include(I18n.t('blacklight.search.form.search.placeholder'))
     end
   end
 end
