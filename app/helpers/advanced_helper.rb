@@ -31,11 +31,6 @@ module AdvancedHelper
     end
   end
 
-  # Use configured facet partial name for facet or fallback on 'catalog/facet_limit'
-  def advanced_search_facet_partial_name(display_facet)
-    facet_configuration_for_field(display_facet.name).try(:partial) || 'catalog/facet_limit'
-  end
-
   def advanced_key_value
     key_value = []
     search_fields_for_advanced_search.each do |field|
@@ -54,7 +49,8 @@ module AdvancedHelper
 
   # carries over original search query if user switches to guided search from regular search
   def guided_context(key)
-    key == :q1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
+    key == :q1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? &&
+      params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
   end
 
   # carries over guided search operations if user switches back to guided search from regular search
@@ -197,7 +193,6 @@ module BlacklightAdvancedSearch
       unless my_params[:q1].blank?
         label = search_field_def_for_key(my_params[:f1])[:label]
         query = my_params[:q1]
-        # query = 'NOT ' + my_params[:q1] if my_params[:op1] == 'NOT'
         constraints << render_constraint_element(
           label, query,
           remove: search_catalog_path(remove_guided_keyword_query([:f1, :q1], my_params))
@@ -225,24 +220,14 @@ module BlacklightAdvancedSearch
     end
 
     # Over-ride of Blacklight method, provide advanced constraints if needed,
-    # otherwise call super. Existence of an @advanced_query instance variable
-    # is our trigger that we're in advanced mode.
+    # otherwise call super.
     def render_constraints_query(my_params = params)
-      if @advanced_query.nil? || @advanced_query.keyword_queries.empty?
+      if advanced_query.nil? || advanced_query.keyword_queries.empty?
         super(my_params)
       else
         content = guided_search
         safe_join(content.flatten, "\n")
       end
-    end
-  end
-end
-
-module BlacklightAdvancedSearch
-  module Controller
-    def is_advanced_search?(req_params = params)
-      (req_params[:search_field] == blacklight_config.advanced_search[:url_key]) ||
-        req_params[:f_inclusive]
     end
   end
 end
