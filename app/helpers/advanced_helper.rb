@@ -112,7 +112,7 @@ module BlacklightAdvancedSearch
         @keyword_op << @params[:op2] if @params[:f1] != @params[:f2]
       end
       unless @params[:q3].blank? || @params[:op3] == 'NOT' || (@params[:q1].blank? && @params[:q2].blank?)
-        @keyword_op << @params[:op3] if @params[:f2] != @params[:f3]
+        @keyword_op << @params[:op3] unless [@params[:f1], @params[:f2]].include?(@params[:f3])
       end
       @keyword_op
     end
@@ -165,7 +165,6 @@ module BlacklightAdvancedSearch
       queries = []
       ops = keyword_op
       keyword_queries.each do |field, query|
-        query = query.delete(' ') if field == 'left_anchor'
         queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
         queries << ops.shift
       end
