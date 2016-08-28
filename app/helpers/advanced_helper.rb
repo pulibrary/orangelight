@@ -31,6 +31,11 @@ module AdvancedHelper
     end
   end
 
+  # Use configured facet partial name for facet or fallback on 'catalog/facet_limit'
+  def advanced_search_facet_partial_name(display_facet)
+    facet_configuration_for_field(display_facet.name).try(:partial) || "catalog/facet_limit"
+  end
+
   def advanced_key_value
     key_value = []
     search_fields_for_advanced_search.each do |field|
@@ -176,7 +181,7 @@ end
 module BlacklightAdvancedSearch
   module CatalogHelperOverride
     def remove_guided_keyword_query(fields, my_params = params)
-      my_params = my_params.dup
+      my_params = Blacklight::SearchState.new(my_params, blacklight_config).to_h
       fields.each do |guided_field|
         my_params.delete(guided_field)
       end
