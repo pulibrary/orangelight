@@ -33,7 +33,7 @@ module AdvancedHelper
 
   # Use configured facet partial name for facet or fallback on 'catalog/facet_limit'
   def advanced_search_facet_partial_name(display_facet)
-    facet_configuration_for_field(display_facet.name).try(:partial) || "catalog/facet_limit"
+    facet_configuration_for_field(display_facet.name).try(:partial) || 'catalog/facet_limit'
   end
 
   def advanced_key_value

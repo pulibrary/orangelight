@@ -13,7 +13,7 @@ module FacetsHelper
     display_facet.respond_to?('value') ? "id=#{display_facet.field.parameterize}-#{display_facet.value.parameterize}" : ''
   end
 
-  def pivot_facet_child_in_params?(field, item)
+  def pivot_facet_child_in_params?(field, item, pivot_in_params = false)
     field = item.field if item && item.respond_to?(:field)
 
     value = facet_value_for_facet_item(item)
@@ -29,9 +29,6 @@ module FacetsHelper
     field = item.field if item && item.respond_to?(:field)
 
     value = facet_value_for_facet_item(item)
-    unless item.items.blank?
-      item.items.each { |pivot_item| pivot_in_params = true if pivot_facet_in_params?(pivot_item.field, pivot_item) }
-    end
     params[:f] && params[:f][field] && params[:f][field].include?(value)
   end
 
@@ -73,9 +70,5 @@ module FacetsHelper
 
   def home_facets
     blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
-  end
-
-  def advanced_facets
-    blacklight_config.facet_fields.select { |_, v| v[:advanced] }.keys
   end
 end

@@ -120,11 +120,6 @@ module BlacklightHelper
       link_to('[Browse]', "/browse/names?q=#{CGI.escape name}", class: 'browse-related-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name}", title: "Browse: #{name}")
   end
 
-  # override method to never render saved searches in user_util_links
-  def render_saved_searches?
-    false
-  end
-
   ##
   # Render the heading partial for a document
   #

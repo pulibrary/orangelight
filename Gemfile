@@ -6,14 +6,14 @@ gem 'rails', '~> 4.2.5'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Blacklight
-gem 'blacklight', '6.4'
+gem 'blacklight', '~> 6.4'
 
 gem 'rsolr'
 
 # slider limit support
-gem 'blacklight_range_limit'
+gem 'blacklight_range_limit', '~> 6.0'
 # advanced search functionality
-gem 'blacklight_advanced_search'
+gem 'blacklight_advanced_search', '~> 6.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Modernizr.js library
