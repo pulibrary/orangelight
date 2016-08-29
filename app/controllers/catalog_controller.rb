@@ -4,6 +4,7 @@ class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog
   include Blacklight::Marc::Catalog
+  include BlacklightRangeLimit::ControllerOverride
   include Orangelight::Catalog
   include BlacklightHelper
 
