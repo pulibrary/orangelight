@@ -1,10 +1,9 @@
-<% not_selected = !pivot_facet_in_params?( solr_field, display_facet ) %>
-<ul <%=facet_value_id(display_facet)%> class="pivot-facet list-unstyled <%=initial_collapse(display_facet, not_selected)%>">
+<ul <%=facet_value_id(display_facet)%> class="pivot-facet list-unstyled <%=initial_collapse(solr_field, display_facet)%>">
   <% display_facet.items.each do |item| -%>
     <li>
     <span class="facet-values">
     <% unless item.items.blank?  %>
-      <a class="icon toggle collapsed" href="#" data-target=<%='#'+item.field.parameterize+'-'+item.value.parameterize%> data-toggle="collapse"></a>
+      <a class="icon toggle <%= 'collapsed' unless pivot_facet_child_in_params?(solr_field, display_facet) %>" href="#" data-target=<%='#'+item.field.parameterize+'-'+item.value.parameterize%> data-toggle="collapse"></a>
     <% end %>
     <% if pivot_facet_in_params?( solr_field, item ) %>
         <%= render_selected_facet_value(solr_field, item) %>
