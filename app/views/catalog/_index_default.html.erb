@@ -16,7 +16,7 @@
 
         <li class="blacklight-<%= field_name.parameterize %>">
           <ul>
-          <% if doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
+          <% if doc_presenter.configuration.index_fields.fetch(field_name)[:helper_method] %>
             <% values = Array.wrap(doc_presenter.field_value field_name) %>
           <% else %>
             <% values = document[field_name] %>
