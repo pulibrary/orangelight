@@ -27,4 +27,8 @@ class ApplicationController < ActionController::Base
       Rails.configuration.x.after_sign_out_url
     end
   end
+
+  def default_url_options
+    Rails.env.production? ? { protocol: 'https' } : {}
+  end
 end
