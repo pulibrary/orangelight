@@ -1,4 +1,4 @@
-jQuery ->
+$(window).load ->
   window.bookmark_all_manager = new BookmarkAllManager
 class BookmarkAllManager
   constructor: ->

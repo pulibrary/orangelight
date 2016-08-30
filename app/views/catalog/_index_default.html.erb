@@ -1,25 +1,30 @@
+<% doc_presenter = index_presenter(document) %>
 <%# default partial to display solr document fields in catalog index view -%>
-
 <ul class="document-metadata dl-horizontal dl-invert">
 
-  <% index_fields(document).each do |solr_fname, field| -%>
+  <% index_fields(document).each do |field_name, field| -%>
     <% if should_render_index_field? document, field %>
-      <% if document[solr_fname].length == 1 || !document[solr_fname].is_a?(Array) %>
-        <% valdir = Array(document[solr_fname]).first.dir %>
-        <% value = render_index_field_value document, :field => solr_fname %>
-        <li class="blacklight-<%= solr_fname.parameterize %>" dir="<%= valdir %>"><%= value %></li>
+      <% if document[field_name].length == 1 || !document[field_name].is_a?(Array) %>
+        <% valdir = Array(document[field_name]).first.dir %>
+        <% value = doc_presenter.field_value field_name %>
+        <li class="blacklight-<%= field_name.parameterize %>" dir="<%= valdir %>"><%= safe_join(Array.wrap(value)) %></li>
       <% else %>
         <% valdirs = [] %>
-        <% document[solr_fname].each do |value| %>
+        <% document[field_name].each do |value| %>
            <% valdirs << value.dir %>
         <% end %>
 
-        <li class="blacklight-<%= solr_fname.parameterize %>">
-        <ul>
-        <% values = render_index_field_value(document, :field => solr_fname).split("<br/>").each_with_index do |value, i| %>
-            <li dir="<%= valdirs[i] %>"> <%=value.html_safe %> </li>
-        <% end %>
-        </ul>
+        <li class="blacklight-<%= field_name.parameterize %>">
+          <ul>
+          <% if doc_presenter.configuration.index_fields.fetch(field_name)[:helper_method] %>
+            <% values = Array.wrap(doc_presenter.field_value field_name) %>
+          <% else %>
+            <% values = document[field_name] %>
+          <% end %>
+          <% values.each do |value| %>
+            <li dir="<%= valdirs[values.index(value)] %>"> <%= safe_join(Array.wrap(value)) %> </li>
+          <% end %>
+          </ul>
         </li>
       <% end %>
     <% end -%>

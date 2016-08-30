@@ -1,9 +1,9 @@
 module FacetsHelper
   include Blacklight::FacetsHelperBehavior
 
-  def initial_collapse(display_facet, not_selected)
-    if display_facet.class == Blacklight::SolrResponse::Facets::FacetItem
-      not_selected ? 'collapse' : 'collapse in'
+  def initial_collapse(field, display_facet)
+    if display_facet.class == Blacklight::Solr::Response::Facets::FacetItem
+      pivot_facet_child_in_params?(field, display_facet) ? 'collapse in' : 'collapse'
     else
       'facet-values'
     end
@@ -13,16 +13,23 @@ module FacetsHelper
     display_facet.respond_to?('value') ? "id=#{display_facet.field.parameterize}-#{display_facet.value.parameterize}" : ''
   end
 
-  def pivot_facet_in_params?(field, item)
+  def pivot_facet_child_in_params?(field, item, pivot_in_params = false)
     field = item.field if item && item.respond_to?(:field)
 
     value = facet_value_for_facet_item(item)
 
     pivot_in_params = true if params[:f] && params[:f][field] && params[:f][field].include?(value)
     unless item.items.blank?
-      item.items.each { |pivot_item| pivot_in_params = true if pivot_facet_in_params?(pivot_item.field, pivot_item) }
+      item.items.each { |pivot_item| pivot_in_params = true if pivot_facet_child_in_params?(pivot_item.field, pivot_item) }
     end
     pivot_in_params
+  end
+
+  def pivot_facet_in_params?(field, item)
+    field = item.field if item && item.respond_to?(:field)
+
+    value = facet_value_for_facet_item(item)
+    params[:f] && params[:f][field] && params[:f][field].include?(value)
   end
 
   ##
@@ -32,7 +39,8 @@ module FacetsHelper
     content_tag(:span, class: 'facet-label') do
       content_tag(:span, facet_display_value(facet_field, item), class: 'selected') +
         # remove link
-        link_to(content_tag(:span, '', :class => 'glyphicon glyphicon-remove', 'data-toggle' => 'tooltip', 'data-original-title' => 'Remove') + content_tag(:span, '[remove]', class: 'sr-only'), search_action_path(remove_facet_params(facet_field, item, params)), class: 'remove')
+        link_to(content_tag(:span, '', :class => 'glyphicon glyphicon-remove', 'data-toggle' => 'tooltip', 'data-original-title' => 'Remove') +
+                content_tag(:span, '[remove]', class: 'sr-only'), search_action_path(search_state.remove_facet_params(facet_field, item)), class: 'remove')
     end + render_facet_count(item.hits, classes: ['selected'])
   end
 
@@ -62,9 +70,5 @@ module FacetsHelper
 
   def home_facets
     blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
-  end
-
-  def advanced_facets
-    blacklight_config.facet_fields.select { |_, v| v[:advanced] }.keys
   end
 end

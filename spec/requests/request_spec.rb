@@ -177,6 +177,18 @@ describe 'blacklight tests' do
           'anything&search_field=advanced&commit=Search'
       expect(response.status).to eq(200)
     end
+    it 'successful search when the 1st and 3rd query are same field, 2nd query field different' do
+      get '/catalog?f1=all_fields&q1=something&op2=AND&f2=author&q2=&op3=OR&f3=all_fields&q3='\
+          'anything&search_field=advanced&commit=Search'
+      expect(response.status).to eq(200)
+    end
+    it 'title starts with can be ORed across several 3 queries' do
+      get '/catalog.json?f1=left_anchor&q1=Reconstructing+the&op2=OR&f2=left_anchor&q2='\
+          'This+angel+on&op3=OR&f3=left_anchor&q3=Almost+Human&search_field=advanced&commit=Search'
+      r = JSON.parse(response.body)
+      doc_ids = %w(9222024 dsp01ft848s955 dsp017s75dc44p)
+      expect(r['response']['docs'].all? { |d| doc_ids.include?(d['id']) }).to eq true
+    end
   end
 
   describe 'librarian view' do

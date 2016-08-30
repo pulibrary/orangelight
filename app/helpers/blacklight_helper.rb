@@ -12,48 +12,42 @@ module BlacklightHelper
     field[:link_field]
   end
 
-  def wildcard_char_strip(solr_parameters, _user_parameters)
+  def wildcard_char_strip(solr_parameters)
     return unless solr_parameters[:q]
     solr_parameters[:q] = solr_parameters[:q].delete('?')
   end
 
   # This is needed because white space tokenizes regardless of filters
-  def left_anchor_strip(solr_parameters, _user_parameters)
+  def left_anchor_strip(solr_parameters)
     return unless solr_parameters[:q] && solr_parameters[:q].include?('{!qf=$left_anchor_qf pf=$left_anchor_pf}')
     newq = solr_parameters[:q].gsub('{!qf=$left_anchor_qf pf=$left_anchor_pf}', '')
     solr_parameters[:q] = '{!qf=$left_anchor_qf pf=$left_anchor_pf}' + newq.delete(' ')
   end
 
-  def series_title_results(solr_parameters, user_parameters)
-    return unless %w(series_title in_series).include?(user_parameters[:f1]) ||
-                  user_parameters[:f2] == 'series_title' ||
-                  user_parameters[:f3] == 'series_title'
+  def series_title_results(solr_parameters)
+    return unless %w(series_title in_series).include?(blacklight_params[:f1]) ||
+                  blacklight_params[:f2] == 'series_title' ||
+                  blacklight_params[:f3] == 'series_title'
     solr_parameters[:fl] = 'id,score,author_display,marc_relator_display,format,pub_created_display,'\
                            'title_display,title_vern_display,isbn_s,oclc_s,lccn_s,holdings_1display,'\
                            'electronic_access_1display,cataloged_tdt,series_display'
   end
 
-  def only_home_facets(solr_parameters, _user_parameters)
-    return if has_search_parameters?
+  def only_home_facets(solr_parameters)
+    return if search_parameters?
     solr_parameters['facet.field'] = home_facets
     solr_parameters['facet.pivot'] = []
   end
 
-  def only_advanced_facets(solr_parameters, user_parameters)
-    return unless user_parameters[:controller] == 'advanced'
-    solr_parameters['facet.field'] = advanced_facets
-    solr_parameters['facet.pivot'] = []
-  end
-
-  def course_reserve_filters(solr_parameters, user_parameters)
-    return unless user_parameters[:f]
-    instructor = Array(user_parameters[:f][:instructor]).first
-    course = Array(user_parameters[:f][:course]).first
-    department = Array(user_parameters[:f][:department]).first
-    filter = Array(user_parameters[:f][:filter]).first
+  def course_reserve_filters(solr_parameters)
+    return unless blacklight_params[:f]
+    instructor = Array(blacklight_params[:f][:instructor]).first
+    course = Array(blacklight_params[:f][:course]).first
+    department = Array(blacklight_params[:f][:department]).first
+    filter = Array(blacklight_params[:f][:filter]).first
     return if instructor.blank? && course.blank? && department.blank? && filter.blank?
     courses = CourseReserveRepository.all.query(instructor: instructor, course_with_id: course, department_with_identifier: department)
-    index_course_reserves(courses, user_parameters)
+    index_course_reserves(courses)
     solr_parameters[:fq] ||= []
     solr_parameters[:fq].reject! do |x|
       %w(course instructor department filter).include?(x.split('=')[1].split('}')[0])
@@ -61,7 +55,7 @@ module BlacklightHelper
     solr_parameters[:fq] << "{!join from=bib_ids_s to=id fromIndex=#{ReserveIndexer.core}}#{courses.solr_query}"
   end
 
-  def index_course_reserves(courses, _user_parameters)
+  def index_course_reserves(courses)
     ReserveIndexer.connection.delete_by_query(courses.solr_query)
     ReserveIndexer.index!(courses)
   end
@@ -76,20 +70,7 @@ module BlacklightHelper
   end
 
   def placeholder_text(field_def)
-    field_def.respond_to?(:placeholder_text) ? field_def.placeholder_text : t('blacklight.search.form.q')
-  end
-
-  def redirect_browse(_solr_parameters, user_parameters)
-    if user_parameters[:search_field] && user_parameters[:controller] != 'advanced'
-      if user_parameters[:search_field] == 'browse_subject' && !params[:id]
-        redirect_to "/browse/subjects?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
-      elsif user_parameters[:search_field] == 'browse_cn' && !params[:id]
-        redirect_to "/browse/call_numbers?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
-      elsif user_parameters[:search_field] == 'browse_name' && !params[:id]
-        redirect_to "/browse/names?search_field=#{user_parameters[:search_field]}&q=#{CGI.escape user_parameters[:q]}"
-      end
-
-    end
+    field_def.respond_to?(:placeholder_text) ? field_def.placeholder_text : t('blacklight.search.form.search.placeholder')
   end
 
   def search_bar_field
@@ -105,9 +86,9 @@ module BlacklightHelper
   end
 
   # Adapted from http://discovery-grindstone.blogspot.com/2014/01/cjk-with-solr-for-libraries-part-12.html
-  def cjk_mm(solr_parameters, user_parameters)
-    if user_parameters && user_parameters[:q].present?
-      q_str = user_parameters[:q]
+  def cjk_mm(solr_parameters)
+    if blacklight_params && blacklight_params[:q].present?
+      q_str = blacklight_params[:q]
       number_of_unigrams = cjk_unigrams_size(q_str)
       if number_of_unigrams > 2
         num_non_cjk_tokens = q_str.scan(/[[:alnum]]+/).size
@@ -139,11 +120,6 @@ module BlacklightHelper
       link_to('[Browse]', "/browse/names?q=#{CGI.escape name}", class: 'browse-related-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name}", title: "Browse: #{name}")
   end
 
-  # override method to never render saved searches in user_util_links
-  def render_saved_searches?
-    false
-  end
-
   ##
   # Render the heading partial for a document
   #
@@ -173,7 +149,7 @@ module BlacklightHelper
     req['response']['docs'].each do |record|
       unless record['id'] == bib_id
         title = record['title_display']
-        other_versions << link_to(title, catalog_url(record['id']))
+        other_versions << link_to(title, solr_document_url(record['id']))
       end
     end
     other_versions.empty? ? [] : [other_versions]
@@ -235,13 +211,14 @@ module BlacklightHelper
     end
   end
 
-  class PrincetonPresenter < Blacklight::DocumentPresenter
-    def field_value_separator
-      '<br/>'.html_safe
-    end
-  end
-
   private
+
+    ##
+    # Check if any search parameters have been set
+    # @return [Boolean]
+    def search_parameters?
+      !blacklight_params[:q].blank? || !blacklight_params[:f].blank? || !blacklight_params[:search_field].blank?
+    end
 
     def get_fq_solr_response(fq)
       solr_url = Blacklight.connection_config[:url]

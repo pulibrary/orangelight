@@ -1,6 +1,6 @@
 
 <% facets_from_request(facet_field_names).each do |display_facet| %>
-    <% if display_facet.items.present? and advanced_facets.include?(display_facet.name) %>
+    <% if display_facet.items.present? %>
       <% if display_facet.name == 'advanced_location_s' %>
         <%= render 'location_code_facet', display_facet: display_facet %>
       <% else %>

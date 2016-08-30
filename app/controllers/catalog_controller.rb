@@ -1,30 +1,25 @@
 # -*- encoding : utf-8 -*-
 #
 class CatalogController < ApplicationController
-  include Blacklight::Marc::Catalog
+  include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog
+  include Blacklight::Marc::Catalog
+  include BlacklightRangeLimit::ControllerOverride
+  include Orangelight::Catalog
   include BlacklightHelper
-  # include BlacklightAdvancedSearch::ParseBasicQ  # adds AND/OR/NOT search term functionality
 
-  def oclc
-    redirect_to oclc_resolve(params[:id])
-  end
-
-  def isbn
-    redirect_to isbn_resolve(params[:id])
-  end
-
-  def issn
-    redirect_to issn_resolve(params[:id])
-  end
-
-  def lccn
-    redirect_to lccn_resolve(params[:id])
-  end
-
-  self.search_params_logic += [:cjk_mm, :wildcard_char_strip, :only_home_facets, :only_advanced_facets, :left_anchor_strip, :redirect_browse, :course_reserve_filters, :series_title_results]
+  before_action :redirect_browse
 
   configure_blacklight do |config|
+    # default advanced config values
+    config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
+    config.advanced_search[:url_key] ||= 'advanced'
+    config.advanced_search[:query_parser] ||= 'edismax'
+    config.advanced_search[:form_solr_parameters] ||= {}
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w(format language_facet advanced_location_s)
+    config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
+    config.advanced_search[:form_solr_parameters]['facet.pivot'] ||= ''
+
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
 
     # solr path which will be added to solr base url before the other solr params.
@@ -46,10 +41,8 @@ class CatalogController < ApplicationController
     #   :q => query
     # }
 
-    # new way of calling local document presenter
-    config.document_presenter_class = PrincetonPresenter
-
     config.navbar.partials.delete(:search_history)
+    config.navbar.partials.delete(:saved_searches)
     config.add_nav_action(:reserves, partial: 'course_reserves/nav')
 
     # solr field configuration for search results/index views
@@ -84,8 +77,8 @@ class CatalogController < ApplicationController
     config.add_facet_field 'access_facet', label: 'Access', sort: 'index', collapse: false, home: true
     config.add_facet_field 'location', label: 'Library', limit: 20, sort: 'index',
                                        home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }
-    config.add_facet_field 'format', label: 'Format', partial: 'facet_format', sort: 'index', advanced: true,
-                                     limit: 15, collapse: false, home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }
+    config.add_facet_field 'format', label: 'Format', partial: 'facet_format', sort: 'index', limit: 15,
+                                     collapse: false, home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }
 
     # num_segments and segments set to defaults here, included to show customizable features
     config.add_facet_field 'pub_date_start_sort', label: 'Publication Year', single: true, range: {
@@ -93,7 +86,7 @@ class CatalogController < ApplicationController
       assumed_boundaries: [1100, Time.now.year + 1],
       segments: true
     }
-    config.add_facet_field 'language_facet', label: 'Language', limit: true, advanced: true
+    config.add_facet_field 'language_facet', label: 'Language', limit: true
     config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true
     config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true
     config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true
@@ -120,8 +113,8 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w(lc_1letter_facet lc_rest_facet)
     config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index'
-    config.add_facet_field 'advanced_location_s', label: 'Holding Location', limit: true, advanced: true,
-                                                  show: false, helper_method: :render_location_code
+    config.add_facet_field 'advanced_location_s', label: 'Holding Location', show: false,
+                                                  helper_method: :render_location_code
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request

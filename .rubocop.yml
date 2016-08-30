@@ -22,13 +22,14 @@ Metrics/AbcSize:
     - 'app/controllers/feedback_controller.rb'
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/controllers/users/omniauth_callbacks_controller.rb'
+    - 'app/controllers/concerns/orangelight/catalog.rb'
     - 'app/helpers/advanced_helper.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
     - 'app/helpers/blacklight_url_helper.rb'
     - 'app/helpers/facets_helper.rb'
     - 'app/models/user.rb'
-    - 'config/initializers/blacklight_initializer.rb'
+    - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'lib/orangelight/bibdata.rb'
     - 'lib/orangelight/browse_lists.rb'
     - 'lib/orangelight/voyager_account.rb'
@@ -37,7 +38,6 @@ Metrics/AbcSize:
 Metrics/BlockNesting:
   Exclude:
     - 'app/helpers/advanced_helper.rb'
-    - 'config/initializers/blacklight_initializer.rb'
 
 Metrics/ClassLength:
   Exclude:
@@ -48,23 +48,25 @@ Metrics/ClassLength:
 Metrics/CyclomaticComplexity:
   Exclude:
     - 'app/controllers/orangelight/browsables_controller.rb'
+    - 'app/controllers/concerns/orangelight/catalog.rb'
     - 'app/helpers/advanced_helper.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
     - 'app/helpers/blacklight_url_helper.rb'
     - 'app/helpers/facets_helper.rb'
-    - 'config/initializers/blacklight_initializer.rb'
+    - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'lib/orangelight/browse_lists.rb'
 
 Metrics/LineLength:
   Max: 100
   Exclude:
     - 'app/controllers/catalog_controller.rb'
+    - 'app/controllers/concerns/orangelight/catalog.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
     - 'app/helpers/facets_helper.rb'
     - 'app/helpers/advanced_helper.rb'
-    - 'config/initializers/blacklight_initializer.rb'
+    - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'config/initializers/devise.rb'
     - 'config/initializers/blacklight_folders.rb'
     - 'lib/orangelight/browse_lists.rb'
@@ -81,7 +83,7 @@ Metrics/MethodLength:
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
     - 'app/helpers/blacklight_url_helper.rb'
-    - 'config/initializers/blacklight_initializer.rb'
+    - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'lib/orangelight/bibdata.rb'
     - 'lib/orangelight/browse_lists.rb'
     - 'lib/orangelight/voyager_account.rb'
@@ -94,17 +96,19 @@ Metrics/ModuleLength:
   Exclude:
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
+    - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'lib/orangelight/browse_lists.rb'
 
 Metrics/PerceivedComplexity:
   Exclude:
     - 'app/controllers/orangelight/browsables_controller.rb'
+    - 'app/controllers/concerns/orangelight/catalog.rb'
     - 'app/helpers/advanced_helper.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
     - 'app/helpers/blacklight_url_helper.rb'
     - 'app/helpers/facets_helper.rb'
-    - 'config/initializers/blacklight_initializer.rb'
+    - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'lib/orangelight/browse_lists.rb'
 
 RSpec/AnyInstance:
@@ -114,10 +118,6 @@ RSpec/AnyInstance:
 Style/AsciiComments:
   Exclude:
     - 'lib/orangelight/string_functions.rb'
-
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'config/initializers/blacklight_initializer.rb'
 
 Style/FileName:
   Exclude:
@@ -145,6 +145,10 @@ Style/CollectionMethods:
 
 Style/Documentation:
   Enabled: false
+
+Style/RaiseArgs:
+  Exclude:
+    - 'app/models/concerns/blacklight/solr/document/marc.rb'
 
 Rails/TimeZone:
   Enabled: false

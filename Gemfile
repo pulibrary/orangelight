@@ -6,13 +6,14 @@ gem 'rails', '~> 4.2.5'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Blacklight
-gem 'blacklight', "<= 5.18.0"
+gem 'blacklight', '~> 6.4'
 
-gem 'blacklight_folders'
+gem 'rsolr'
+
 # slider limit support
-gem "blacklight_range_limit"
+gem 'blacklight_range_limit', '~> 6.0'
 # advanced search functionality
-gem "blacklight_advanced_search", '5.1.2'
+gem 'blacklight_advanced_search', '~> 6.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Modernizr.js library
@@ -47,16 +48,16 @@ gem 'capistrano', '~> 3.4.0'
 gem 'faraday'
 gem 'faraday-cookie_jar'
 gem 'yajl-ruby', require: 'yajl'
-gem "devise", '~> 4.2'
-gem "devise-guests", '~> 0.5'
-gem "omniauth-cas"
-gem "blacklight-marc", "~> 5.0"
-gem "solr_wrapper", "~> 0.12"
+gem 'devise', '~> 4.2'
+gem 'devise-guests', '~> 0.5'
+gem 'omniauth-cas'
+gem 'blacklight-marc', '~> 6.1'
+gem 'solr_wrapper', '~> 0.12'
 
 # rspec, just like jettywrapper appear necessary for cap currently
 gem 'rspec-rails', '~> 3.4'
 gem 'capybara'
-gem 'stringex', :git => "git://github.com/pulibrary/stringex.git", :tag => 'vpton.2.5.2.2'
+gem 'stringex', :git => 'git://github.com/pulibrary/stringex.git', :tag => 'vpton.2.5.2.2'
 gem 'lcsort', '~>0.9'
 gem 'library_stdnums'
 gem 'rubocop', '~> 0.39', require: false
@@ -67,7 +68,7 @@ gem 'newrelic_rpm'
 gem 'mail_form'
 gem 'string_rtl'
 
-gem 'requests', :git => "https://github.com/pulibrary/requests.git", :branch => 'request_test_specs'
+gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'request_test_specs'
 
 gem 'jquery-datatables-rails', '~> 3.3.0'
 
@@ -77,7 +78,7 @@ group :development do
 end
 
 group :test do
-  gem "webmock", require: false 
+  gem 'webmock', require: false 
   gem 'poltergeist'
   gem 'factory_girl_rails', require: false
   gem 'launchy'
