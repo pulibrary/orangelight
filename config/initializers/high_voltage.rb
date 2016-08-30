@@ -2,4 +2,4 @@
 HighVoltage.route_drawer = HighVoltage::RouteDrawers::Root
 
 # Default Layout
-HighVoltage.layout = 'blacklight'
+HighVoltage.layout = 'application'
