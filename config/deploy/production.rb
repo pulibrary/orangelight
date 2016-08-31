@@ -21,7 +21,11 @@ set :branch, ENV['BRANCH'] || 'development'
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'pulsearch', user: 'deploy', roles: [:web, :app, :db]
+server 'lib-orange-prod2', user: 'deploy', roles: [:web, :app, :db]
+server 'lib-orange-prod3', user: 'deploy', roles: [:web, :app, :db]
+server 'lib-orange-prod4', user: 'deploy', roles: [:web, :app, :db]
+
+set :deploy_to, '/opt/rails_app'
 
 # Custom SSH Options
 # ==================
