@@ -3,11 +3,11 @@ jQuery ->
 class AvailabilityUpdater
   constructor: ->
     this.request_availability()
-  availability_url: "https://bibdata.princeton.edu/availability"
+  availability_url: "<%= ENV['bibdata_base'] %>/availability"
   id = ''
   on_site_status = 'On-site'
   on_site_unavailable = 'On-site - '
-  circ_desk = 'Check with front desk'
+  circ_desk = 'See front desk'
   available_statuses = ['Not charged', 'On shelf']
   returned_statuses = ['Discharged']
   in_process_statuses = ['In process']
@@ -40,8 +40,11 @@ class AvailabilityUpdater
         location = $("*[data-location='true'][data-holding-id='#{holding_id}']")
         location.text(availability_info['on_reserve'])
       this.get_issues(holding_id) if $(".journal-current-issues").length > 0
-      if availability_info['more_items'] and !availability_info['status'].match(on_site_status)
-        this.apply_record_icon(availability_element, "All items available")
+      if availability_info['more_items']
+        if title_case(availability_info['status']).match(on_site_status)
+          this.apply_record_icon(availability_element, "On-site access")
+        else
+          this.apply_record_icon(availability_element, "All items available")
         this.get_more_items(holding_id)
       else
         this.apply_record_icon(availability_element, availability_info['status'])
@@ -55,7 +58,7 @@ class AvailabilityUpdater
   apply_record: (record_id, holding_records) ->
     for holding_id, availability_info of holding_records
       if availability_info['on_reserve']
-        location = $("*[data-location='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}']")
+        location = $("*[data-location='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .results_location")
         location.text(availability_info['on_reserve'])
       this.record_needs_more_info(record_id) if availability_info['more_items']
       availability_element = $("*[data-availability-record='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .availability-icon")
@@ -68,18 +71,26 @@ class AvailabilityUpdater
     req.success (data) ->
       ul = "<ul class=\"item-status\">"
       for key, item of data
-        if item['status'] != "Not Charged"
-          li = "<li>#{item['enum'] || 'Item'}: #{title_case(item['status'])}</li>"
+        status = title_case(item['status'])
+        label = status_label(status)
+        if status not in available_statuses && status != on_site_status
+          li = "<li>#{item['enum'] || 'Item'}: #{status_display(status, label)}</li>"
           ul = ul + li
           span = $("*[data-holding-id='#{holding_id}'] .availability-icon")
-          txt = "Some items not available"
+          txt = if status.match(on_site_unavailable)
+            circ_desk
+          else if label not in unavailable_labels && span.text() != "Some items not available"
+            "Some items may not be available"
+          else
+            "Some items not available"
           span.text(txt)
           span.attr("title", "Availability: " + txt)
           span.attr("data-original-title", "Availability: " + txt)
-          span.removeClass("label-success")
-          span.addClass("label-default")
+          if !status.match(on_site_unavailable)
+            span.removeClass("label-success")
+            span.addClass("label-default")
       ul = ul + "</ul>"
-      element.append(ul)
+      element.append(ul) if ul != "<ul class=\"item-status\"></ul>"
   get_issues: (holding_id) ->
     url = "#{@availability_url}?mfhd_serial=#{holding_id}"
     req = $.getJSON url
@@ -102,19 +113,7 @@ class AvailabilityUpdater
   apply_record_icon: (availability_element, status) ->
     status = title_case(status)
     availability_element.addClass("label")
-    label = switch
-      when status in available_statuses then 'Available'
-      when status in returned_statuses then 'Returned'
-      when status == 'In transit discharged' then 'In transit'
-      when status in in_process_statuses then 'In process'
-      when status in checked_out_statuses then 'Checked out'
-      when status in missing_statuses then 'Missing'
-      when status.match(on_site_unavailable) then circ_desk
-      when status.match(on_site_status) then 'On-site access'
-      when status.match('Order received') then 'Order received'
-      when status.match('Pending order') then 'Pending order'
-      when status.match('On-order') then 'On-order'
-      else status
+    label = status_label(status)
     availability_element.text(label)
     if label in unavailable_labels
       availability_element.addClass("label-danger")
@@ -133,5 +132,24 @@ class AvailabilityUpdater
     availability_element.attr('data-toggle', 'tooltip')
   record_ids: ->
     $("*[data-availability-record='true'][data-record-id]").map((_, x) -> $(x).attr("data-record-id"))
+  status_label = (status) ->
+    switch
+      when status in available_statuses then 'Available'
+      when status in returned_statuses then 'Returned'
+      when status == 'In transit discharged' then 'In transit'
+      when status in in_process_statuses then 'In process'
+      when status in checked_out_statuses then 'Checked out'
+      when status in missing_statuses then 'Missing'
+      when status.match(on_site_unavailable) then circ_desk
+      when status.match(on_site_status) then 'On-site access'
+      when status.match('Order received') then 'Order received'
+      when status.match('Pending order') then 'Pending order'
+      when status.match('On-order') then 'On-order'
+      else status
+  status_display = (status, label) ->
+    if status.match(label) || status.match(on_site_status)
+      status
+    else
+      "#{label} (#{status})"
   title_case = (str) ->
     str[0].toUpperCase() + str[1..str.length - 1].toLowerCase()
