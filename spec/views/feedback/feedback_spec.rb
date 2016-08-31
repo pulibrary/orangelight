@@ -4,7 +4,7 @@ describe 'Feedback Form', type: :feature do
   context 'User has not signed in' do
     before(:each) do
       visit('/catalog/4747577')
-      click_link('Contact Us')
+      click_link('Feedback')
     end
 
     it 'Displays an empty form' do
@@ -48,7 +48,7 @@ describe 'Feedback Form', type: :feature do
         .to_return(status: 200, body: voyager_account_response, headers: {})
       sign_in user
       visit('/catalog/4747577')
-      click_link('Contact Us')
+      click_link('Feedback')
       expect(page).to have_field('feedback_form_email', with: "#{user.uid}@princeton.edu")
     end
   end

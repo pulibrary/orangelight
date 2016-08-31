@@ -1,5 +1,6 @@
 module ApplicationHelper
   include Requests::Pageable
+  include Requests::Aeon
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
   # Proxy Base is added to force remote access when appropriate
@@ -126,17 +127,14 @@ module ApplicationHelper
               content_tag(:span, 'Unavailable', class: 'availability-icon label label-danger',
                                                 title: 'Availability: Embargoed', 'data-toggle' => 'tooltip')
             end
+
     info << content_tag(:div, "Copy number: #{holding['copy_number']}".html_safe, class: 'copy-number') unless holding['copy_number'].nil?
     info << content_tag(:ul, "#{holding_label('Shelving title:')} #{listify_array(holding['shelving_title'])}".html_safe, class: 'shelving-title') unless holding['shelving_title'].nil?
     info << content_tag(:ul, "#{holding_label('Location note:')} #{listify_array(holding['location_note'])}".html_safe, class: 'location-note') unless holding['location_note'].nil?
     info << content_tag(:ul, "#{holding_label('Location has:')} #{listify_array(holding['location_has'])}".html_safe, class: 'location-has') unless holding['location_has'].nil?
     info << content_tag(:ul, ''.html_safe, class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
-    unless holding['dspace']
-      location_rules = LOCATIONS[holding['location_code'].to_sym]
-      if pageable?(holding)
-        info << request_placeholder(bib_id, holding_id, location_rules, holding).html_safe
-      end
-    end
+    location_rules = LOCATIONS[holding['location_code'].to_sym]
+    info << request_placeholder(bib_id, holding_id, location_rules, holding).html_safe
     info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
     info
   end
@@ -187,12 +185,38 @@ module ApplicationHelper
   end
 
   def request_placeholder(doc_id, holding_id, location_rules, holding)
-    content_tag(:div, class: 'location-services', data: { open: open_location?(location_rules, holding), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
+    content_tag(:div, class: "location-services #{show_request(location_rules, holding_id)}", data: { open: open_location?(location_rules, holding), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
       if pageable?(holding)
         link_to 'Paging Request', "/requests/#{doc_id}?mfhd=#{holding_id}", title: 'View Options to Request copies from this Location', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
+      elsif non_voyager?(holding_id)
+        link_to 'Reading Room Request', "/requests/#{doc_id}?mfhd=#{holding_id}", title: 'Request an appointment to view in Reading Room', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       else
-        link_to 'Request', "https://library.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}", title: 'View Options to Request copies from this Location', target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
+        link_to request_label(location_rules), "https://library.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}", title: request_tooltip(location_rules), target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       end
+    end
+  end
+
+  def request_label(location_rules)
+    if aeon_location?(location_rules)
+      'Reading Room Request'
+    else
+      'Request'
+    end
+  end
+
+  def request_tooltip(location_rules)
+    if aeon_location?(location_rules)
+      'Request an appointment to view in Reading Room'
+    else
+      'View Options to Request copies from this Location'
+    end
+  end
+
+  def show_request(location_rules, holding_id)
+    if non_voyager?(holding_id) || aeon_location?(location_rules)
+      'service-always-requestable'
+    else
+      'service-conditional'
     end
   end
 

@@ -211,6 +211,19 @@ RSpec.describe ApplicationHelper do
         expect(show_result.last).not_to have_selector '*[data-journal]'
       end
     end
+
+    context '#holding_block record show - physical holding thesis reading room request' do
+      it 'displays a Reading Room Request button' do
+        expect(show_result_thesis.last).to include 'Reading Room Request'
+      end
+      it 'displays a Reading Room Request Tooltip' do
+        expect(show_result_thesis.last).to have_selector "*[title='Request an appointment to view in Reading Room']"
+      end
+      it 'displays a reading room request as Always requestable' do
+        expect(show_result_thesis.last).to have_selector '.service-always-requestable'
+      end
+    end
+
     context '#holding_block record show - online holdings' do
       it 'link missing label appears when 856s is missing from elf location' do
         expect(show_result.first).to include 'Link Missing'

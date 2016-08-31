@@ -7,6 +7,7 @@ defaults: &defaults
   stackmap_base: https://library.princeton.edu/utils/map
   voyager_api_base: http://catalog.princeton.edu:7014
   pulsearch_base: https://pulsearch.princeton.edu
+  aeon_base: https://library.princeton.edu/aeon/aeon.dll?
 development:
   <<: *defaults
   voyager_ub_id: 1@DB
