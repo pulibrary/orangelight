@@ -82,4 +82,10 @@ RSpec.describe ApplicationHelper do
       expect(aeon_location?(nil)).to eq false
     end
   end
+
+  describe '#current_year' do
+    it 'returns the current year' do
+      expect(current_year).to eq DateTime.now.year
+    end
+  end
 end
