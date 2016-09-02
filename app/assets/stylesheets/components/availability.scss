@@ -167,6 +167,10 @@
   .location-services {
     display: none;
   }
+
+  .location-services.service-always-requestable {
+    display: block;
+  }
 }
 
 .panel .find-it,

@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: e7eb5e6392204aeb737ed4256b02a7a57b22766c
+  revision: a3657da8121544355fad0edde1b04ebc9054791f
   branch: request_test_specs
   specs:
     requests (0.0.1)
@@ -346,7 +346,7 @@ GEM
     sprockets (3.7.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.1.1)
+    sprockets-rails (3.2.0)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
