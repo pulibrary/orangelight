@@ -97,15 +97,16 @@ $(document).ready(function() {
 
     $('.facet_select').one('click', function (e) {
         if ($('#q').val()) {
+            var query = encodeURIComponent($('#q').val())
             var queryDict = {};
             this.href.substr(1).split("&").forEach(function(item) {
                 queryDict[item.split("=")[0]] = item.split("=")[1]
             });
-            if ($('#q').val() != queryDict['q']) {
+            if (query != queryDict['q']) {
                 if (queryDict['q'] == null) {
-                    this.href = this.href + '&q=' + $('#q').val();
+                    this.href = this.href + '&q=' + query;
                 } else {
-                    this.href = this.href.replace('&q='+queryDict['q'], '&q='+$('#q').val());
+                    this.href = this.href.replace('&q='+queryDict['q'], '&q='+query);
                 }
             }
             if ($('#search_field').val() != queryDict['search_field']) {

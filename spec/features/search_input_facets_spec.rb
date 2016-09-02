@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 context 'clicking facet limits with values in the search bar' do
-  it 'includes search input in result', js: true do
+  it 'includes search input in result, url is escaped', js: true do
     visit '/catalog'
     select('Title starts with', from: 'Search in')
-    fill_in('Search...', with: 'The')
+    fill_in('Search...', with: 'The & this')
     click_link 'In the Library'
-    expect(current_url).to include('q=The', 'search_field=left_anchor')
+    expect(current_url).to include('q=The%20%26%20this', 'search_field=left_anchor')
   end
 
   it 'only includes the url parameters once when query is unchanged', js: true do
