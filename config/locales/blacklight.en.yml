@@ -31,7 +31,7 @@ en:
       online: 'Online'
       print: 'Copies In Library'
       stackmap: 'Where to find it'
-      browse: 'Browse nearby items'
+      browse: 'Browse related items'
       search_missing: 'No holdings available for this record'
       missing: 'There are no holdings available for this record. Please consult a library staff member at the nearest Circulation Desk.'
     search:

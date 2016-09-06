@@ -37,15 +37,21 @@
         position: relative;
         z-index: 10;
     }
-    .menu--level-1 > ul,
     .logo__pul img {
-        margin: 0;
-        vertical-align: middle;
-        position: relative;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
+      margin: 0;
+      vertical-align: middle;
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+    .menu--level-1 > ul {
+      margin: 0;
+      vertical-align: middle;
+      position: relative;
+      top: 50%;
+      margin-top: -10px; 
     }
 }
 

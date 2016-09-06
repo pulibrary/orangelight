@@ -6,3 +6,6 @@ $ ->
   # Track if user is clicking on stack map pin icon in show page
   $('#availability .find-it').on 'click', ->
     ga('send', 'event', 'Availability', 'Item Record', 'StackMap Pin')
+
+  $('.intro_tour').on 'click', ->
+    ga('send', 'event', 'Tour', 'Start Tour')
