@@ -43,6 +43,8 @@ gem 'spring',        group: :development
 # jquery multiselect plugin for advanced search
 gem 'chosen-rails'
 
+gem 'introjs-rails', github: 'videmor/intro.js-rails', branch: 'update.introjs'
+
 # Capistrano
 gem 'capistrano', '~> 3.4.0'
 gem 'faraday'

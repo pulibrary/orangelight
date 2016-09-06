@@ -28,7 +28,7 @@ header .input-group-addon {
 
   .caret {
     position: relative;
-    z-index: 3;
+    z-index: 99999991;
     left: -30px;
     pointer-events: none;
   }
@@ -107,12 +107,11 @@ header .input-group-addon {
 .search-query-form,
 #search-navbar .search-query-form {
   margin: 0;
-
-  // padding: 0;
 }
 
 #search-navbar .search-query-form {
   width: auto;
+  padding: 1.4em 0;
 }
 
 .search-query-form .input-group {

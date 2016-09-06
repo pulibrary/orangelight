@@ -6,6 +6,15 @@ GIT
     stringex (2.5.2)
 
 GIT
+  remote: git://github.com/videmor/intro.js-rails.git
+  revision: 6638f10ec30d14e2155508e901afc1ba358fac7a
+  branch: update.introjs
+  specs:
+    introjs-rails (2.1.0)
+      sass-rails (>= 3.2)
+      thor (~> 0.14)
+
+GIT
   remote: https://github.com/pulibrary/requests.git
   revision: a3657da8121544355fad0edde1b04ebc9054791f
   branch: request_test_specs
@@ -421,6 +430,7 @@ DEPENDENCIES
   faraday
   faraday-cookie_jar
   high_voltage (~> 2.4.0)
+  introjs-rails!
   jbuilder (~> 2.0)
   jquery-datatables-rails (~> 3.3.0)
   jquery-rails

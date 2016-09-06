@@ -16,6 +16,7 @@
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require modernizr
 //= require chosen-jquery
+//= require intro
 //
 //= require 'blacklight_advanced_search'
 //= require 'blacklight_range_limit'
