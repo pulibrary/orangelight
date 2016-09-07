@@ -5,7 +5,7 @@ function startIntro(){
       steps: [
         {
           element: '#search_field',
-          intro: 'The catalog can be searched in a variety of ways. Title starts with retrieves an exact title.'
+          intro: 'The catalog can be searched in a variety of ways. <strong>Title starts with</strong> retrieves an exact title.'
         },
         {
           element: '#facet-panel-collapse',
@@ -32,17 +32,17 @@ function resultsPage(){
       steps: [
         {
           element: '.facet_limit.blacklight-access_facet',
-          intro: 'Access limits search by physical (In the Library) or electronic access (Online).',
+          intro: '<strong>Access</strong> limits search by physical <strong>(In the Library)</strong> or electronic access <strong>(Online)</strong>.',
           position: 'right'
         },
         {
           element: '.facet_limit.blacklight-location',
-          intro: 'Library allows you to restrict your search to items held at a specific Princeton library.',
+          intro: '<strong>Library</strong> allows you to restrict your search to items held at a specific Princeton library.',
           position: 'right'
         },
         {
           element: '.facet_limit.blacklight-format',
-          intro: 'Format limits by item type and can be useful for finding journal or video titles.',
+          intro: '<strong>Format</strong> limits by item type and can be useful for finding journal or video titles.',
           position: 'right'
         },
         {
@@ -62,7 +62,7 @@ function resultsPage(){
         },
         {
           element: '#bookmarks_nav',
-          intro: 'A collection of items can be e-mailed from the Bookmarks page or saved for future use by logging in to Your Account.',
+          intro: 'A collection of items can be e-mailed from the <strong>Bookmarks</strong> page or saved for future use by logging in to <strong>Your Account</strong>.',
           position: 'bottom'
         },
       ],
@@ -72,7 +72,7 @@ function resultsPage(){
     });
 
     intro.start().oncomplete(function() {
-      window.location.href = '/catalog/7185628?introjs=record';
+      window.location.href = '/catalog/5787995?introjs=record';
     });
 }
 
@@ -87,12 +87,12 @@ function recordPage(){
         },
         {
           element: '.location--holding',
-          intro: 'The Copies in Library box contains item location, call number, and a link to other related items (Browse related items). If an item requires a special request for retrieval, that link is also located here.',
+          intro: 'The <strong>Copies in Library</strong> box contains item location, call number, and a link to other related items <strong>(Browse related items)</strong>. If an item requires a special request for retrieval, that link is also located here.',
           position: 'left'
         },
         {
           element: 'dd.blacklight-author_display',
-          intro: 'Authors and subjects are followed by [Browse]. Clicking [Browse] returns the author\'s name situated in an alphabetical list of other names. Clicking on the name returns a result list of other items attributed to that author.',
+          intro: 'Authors and subjects are followed by <strong>[Browse]</strong>. Clicking <strong>[Browse]</strong> returns the author\'s name situated in an alphabetical list of other names. Clicking on the name returns a result list of other items attributed to that author.',
           position: 'left'
         },
         {
@@ -107,12 +107,12 @@ function recordPage(){
         },
         {
           element: 'button.btn-account',
-          intro: 'Log in to Your Account to view and renew your currently checked out items.',
+          intro: 'Log in to <strong>Your Account</strong> to view and renew your currently checked out items.',
           position: 'left'
         },
         {
           element: '.advanced_search',
-          intro: 'Advanced search offers a variety of search combinations, with the option to filter by multiple languages.',
+          intro: '<strong>Advanced search</strong> offers a variety of search combinations, with the option to filter by multiple languages.',
           position: 'bottom'
         },
       ],
