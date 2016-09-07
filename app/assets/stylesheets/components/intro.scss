@@ -1,0 +1,34 @@
+@import "variables/colors";
+
+.introjs-fixParent {
+  position: relative !important;
+}
+
+.introjs-helperNumberLayer {
+  line-height: 10px;
+  font-weight: normal;
+  font-family: $font-sans;
+  font-size: 11px;
+}
+
+button.btn-account.introjs-showElement {
+  color: $blue;
+}
+
+.introjs-helperLayer {
+  border: none;
+}
+
+@media (max-width: $bp-small) {
+  .intro_tour {
+    display: none;
+  }
+}
+
+.introjs-tooltiptext > strong {
+  font-size: 14.5px;
+}
+
+[data-holding-id="5879517"] {
+  height: 21px;
+}
