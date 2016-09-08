@@ -37,8 +37,8 @@ describe 'Your Account', type: :feature do
     end
 
     it 'Displays item charged out with due dates' do
-      expect(page).to have_content 'Charged Items'
-      expect(page).to have_content 'Due Date'
+      expect(page).to have_content 'Charged items'
+      expect(page).to have_content 'Due date'
     end
 
     it 'Displays an unchecked option to renew item request' do
@@ -55,7 +55,7 @@ describe 'Your Account', type: :feature do
     end
 
     it 'Display active requests' do
-      expect(page).to have_content 'Pickup Location'
+      expect(page).to have_content 'Pickup location'
     end
 
     it 'Displays items for pickup' do
@@ -133,7 +133,7 @@ describe 'Your Account', type: :feature do
     end
 
     it 'displays the patrons block' do
-      expect(page).to have_content('Patron Blocks')
+      expect(page).to have_content('Patron blocks')
     end
 
     it "displays the reason for the patron's block" do
@@ -342,13 +342,13 @@ describe 'Your Account', type: :feature do
           .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' })
           .to_return(status: 500, body: 'bad thing happened', headers: {})
         check('cancel-7114238')
-        click_button('Cancel Requests')
+        click_button('Cancel requests')
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.cancel_fail'))
       end
 
       it 'but no requests are selected for cancellation' do
-        click_button('Cancel Requests')
+        click_button('Cancel requests')
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.cancel_no_items'))
       end
@@ -359,7 +359,7 @@ describe 'Your Account', type: :feature do
           .to_return(status: 200, body: voyager_cancel_response_avail_item, headers: {})
         check('cancel-7114238')
         expect(find('#cancel-7114238')).to be_checked
-        click_button('Cancel Requests')
+        click_button('Cancel requests')
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.cancel_success'))
         expect(page).to have_no_selector('#cancel-7114238')
@@ -372,7 +372,7 @@ describe 'Your Account', type: :feature do
           .to_return(status: 200, body: voyager_cancel_response_request_item, headers: {})
         check('cancel-42289')
         expect(find('#cancel-42289')).to be_checked
-        click_button('Cancel Requests')
+        click_button('Cancel requests')
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.cancel_success'))
         expect(page).to have_selector('#cancel-7114238')
@@ -384,7 +384,7 @@ describe 'Your Account', type: :feature do
         expect(find('#cancel-7114238')).to be_checked
         check('cancel-42289')
         expect(find('#cancel-42289')).to be_checked
-        click_button('Cancel Requests')
+        click_button('Cancel requests')
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.cancel_success'))
         expect(page).to have_no_selector('#cancel-7114238')

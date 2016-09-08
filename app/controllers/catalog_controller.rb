@@ -82,7 +82,7 @@ class CatalogController < ApplicationController
                                      collapse: false, home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }
 
     # num_segments and segments set to defaults here, included to show customizable features
-    config.add_facet_field 'pub_date_start_sort', label: 'Publication Year', single: true, range: {
+    config.add_facet_field 'pub_date_start_sort', label: 'Publication year', single: true, range: {
       num_segments: 10,
       assumed_boundaries: [1100, Time.now.year + 1],
       segments: true
@@ -93,16 +93,16 @@ class CatalogController < ApplicationController
     config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true
     config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, show: false, sort: 'index'
     config.add_facet_field 'author_s', label: 'Author', limit: true, show: false
-    config.add_facet_field 'class_year_s', label: 'PU Class Year', limit: true, show: false
+    config.add_facet_field 'class_year_s', label: 'PU class year', limit: true, show: false
     config.add_facet_field 'lc_rest_facet', label: 'Full call number code', limit: 25, show: false, sort: 'index'
-    config.add_facet_field 'recently_added_facet', label: 'Recently Added', home: true, query: {
-      weeks_1: { label: 'Within 1 Week', fq: 'cataloged_tdt:[NOW/DAY-7DAYS NOW/DAY+1DAY]' },
-      weeks_2: { label: 'Within 2 Weeks', fq: 'cataloged_tdt:[NOW/DAY-14DAYS NOW/DAY+1DAY]' },
-      weeks_3: { label: 'Within 3 Weeks', fq: 'cataloged_tdt:[NOW/DAY-21DAYS NOW/DAY+1DAY]' },
-      months_1: { label: 'Within 1 Month', fq: 'cataloged_tdt:[NOW/DAY-1MONTH NOW/DAY+1DAY]' },
-      months_2: { label: 'Within 2 Months', fq: 'cataloged_tdt:[NOW/DAY-2MONTHS NOW/DAY+1DAY]' },
-      months_3: { label: 'Within 3 Months', fq: 'cataloged_tdt:[NOW/DAY-3MONTHS NOW/DAY+1DAY]' },
-      months_6: { label: 'Within 6 Months', fq: 'cataloged_tdt:[NOW/DAY-6MONTHS NOW/DAY+1DAY]' }
+    config.add_facet_field 'recently_added_facet', label: 'Recently added', home: true, query: {
+      weeks_1: { label: 'Within 1 week', fq: 'cataloged_tdt:[NOW/DAY-7DAYS NOW/DAY+1DAY]' },
+      weeks_2: { label: 'Within 2 weeks', fq: 'cataloged_tdt:[NOW/DAY-14DAYS NOW/DAY+1DAY]' },
+      weeks_3: { label: 'Within 3 weeks', fq: 'cataloged_tdt:[NOW/DAY-21DAYS NOW/DAY+1DAY]' },
+      months_1: { label: 'Within 1 month', fq: 'cataloged_tdt:[NOW/DAY-1MONTH NOW/DAY+1DAY]' },
+      months_2: { label: 'Within 2 months', fq: 'cataloged_tdt:[NOW/DAY-2MONTHS NOW/DAY+1DAY]' },
+      months_3: { label: 'Within 3 months', fq: 'cataloged_tdt:[NOW/DAY-3MONTHS NOW/DAY+1DAY]' },
+      months_6: { label: 'Within 6 months', fq: 'cataloged_tdt:[NOW/DAY-6MONTHS NOW/DAY+1DAY]' }
     }
 
     config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true
@@ -114,7 +114,7 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w(lc_1letter_facet lc_rest_facet)
     config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index'
-    config.add_facet_field 'advanced_location_s', label: 'Holding Location', show: false,
+    config.add_facet_field 'advanced_location_s', label: 'Holding location', show: false,
                                                   helper_method: :render_location_code
 
     # Have BL send all facet field names to Solr, which has been the default
@@ -405,7 +405,7 @@ class CatalogController < ApplicationController
     config.add_sort_field 'pub_date_start_sort asc, title_sort asc', label: 'year (oldest first)'
     config.add_sort_field 'author_sort asc, title_sort asc', label: 'author'
     config.add_sort_field 'title_sort asc, pub_date_start_sort desc', label: 'title'
-    config.add_sort_field 'cataloged_tdt desc, title_sort asc', label: 'catalog date'
+    config.add_sort_field 'cataloged_tdt desc, title_sort asc', label: 'date cataloged'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.

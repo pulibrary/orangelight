@@ -3,10 +3,11 @@ en:
     application_name: 'Catalog | Princeton University Library'
     welcome: 'Welcome!'
     voyager: 'Main Catalog'
+    orangelight: 'New Catalog'
     umlaut: 'Findit @ Princeton'
     account:
-      inaccessible: 'Your library account is not available'
-      no_requests: 'You have no outstanding requests'
+      inaccessible: 'Your library account is not available.'
+      no_requests: 'You have no outstanding requests.'
       no_pickup_items: 'You have no items available for pickup.'
       no_fines_fees: 'No outstanding fines or fees.'
       no_blocks: 'No current blocks on your account.'
@@ -21,21 +22,27 @@ en:
       cancel_success: 'We were able to cancel your request.'
       cancel_fail: 'We were unable to cancel your request.'
       cancel_no_items: 'No requests selected for cancellation.'
+    bookmarks:
+      clear:
+        action_title: 'Clear bookmarks'
     feedback:
       success: 'Your comments have been submitted'
       error: 'Please fill in the required form values.'
-      return: 'Back to the Previous Page.'
+      return: 'Back to the previous page.'
       confirmation: 'Thank you for your comments. They are helpful as we work to improve this new Library service.'
     holdings:
       paging_request: 'Paging request only'
       online: 'Online'
-      print: 'Copies In Library'
+      print: 'Copies in Library'
       stackmap: 'Where to find it'
       browse: 'Browse related items'
       search_missing: 'No holdings available for this record'
-      missing: 'There are no holdings available for this record. Please consult a library staff member at the nearest Circulation Desk.'
+      missing: 'There are no holdings available for this record. Please consult a library staff member at the nearest circulation desk.'
     search:
-      edit_search: 'Edit Search'
+      edit_search: 'Edit search'
+      start_over: 'Start over'
+      librarian_view:
+        title: 'Staff view'
     header_links:
       login: 'Login'
       course_reserves: 'Course Reserves'
@@ -59,3 +66,11 @@ en:
         subject:
           one: 'PU Library Catalog Shared Record'
           other: 'PU Library Catalog Shared Records'
+    saved_searches:
+      clear:
+        action_title: 'Clear saved searches'
+    search_history:
+      clear:
+        action_title: 'Clear search history'
+    tools:
+      librarian_view: 'Staff view'

@@ -1,4 +1,4 @@
-<h2 class="section-heading" id="fines-fees">Fines and Fees</h2>
+<h2 class="section-heading" id="fines-fees">Fines and fees</h2>
 <% if (!@account.fines_fees.nil?) %>
   <table class="table table-striped table-bordered account--fines">
     <caption>Fines may be paid at the Firestone Circulation Desk or email <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a> for additional payment options.</caption>
@@ -6,7 +6,7 @@
       <tr>
         <td>Date</td>
         <td>Title</td>
-        <td>Fee / Posting Type</td>
+        <td>Fee/Posting type</td>
         <td>Fee</td>
         <td>Balance</td>
       </tr>
@@ -22,7 +22,7 @@
       </tr>
     <% end %>
     <tr class="account--fines_total">
-      <td colspan="4">Total Due:</td>
+      <td colspan="4">Total due:</td>
       <td><%= display_account_balance(@account.fines_fees.last) %></td>
     </tr>
     </tbody>

@@ -6,7 +6,7 @@
 </div>
 
 <div class="browse-header">
-  <h1 class="page-heading col-md-6"> Browse by <%="#{@list_name}" %></h1>
+  <h1 class="page-heading col-md-6"> Browse by <%="#{@list_name.downcase}" %></h1>
   <div class="col-md-6">
     <div class="prev_next_links btn-group pull-right">
       <nav aria-label="top pager" class="browse-pager">
@@ -42,7 +42,7 @@
       <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
 
         <% if orangelight_name.id == @match && @exact_match %>
-          <li class="alert alert-info">
+          <li class="alert alert-info clickable-row" data-href="/catalog/?f[<%=@facet%>][]=<%=CGI.escape orangelight_name.label%>">
             <strong>
         <% else %>
           <li class="row-<%=i.even? ? 'odd' : 'even' %>">
@@ -74,14 +74,14 @@
       <th>Location</th>
       <th>Title</th>
       <th>Creator</th>
-      <th>Publication Info</th>
+      <th>Publication info</th>
     </tr>
   </thead>
 
   <tbody >
     <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
       <% if orangelight_name.id == @match && @exact_match %>
-        <tr class="alert alert-info">
+        <tr class="alert alert-info clickable-row" data-href="/catalog/<%=orangelight_name.bibid%>">
           <strong>
       <% else %>
         <tr class="row-<%=i.even? ? 'odd' : 'even' %>">
