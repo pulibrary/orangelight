@@ -217,7 +217,7 @@ RSpec.describe ApplicationHelper do
         expect(show_result_thesis.last).to include 'Reading Room Request'
       end
       it 'displays a Reading Room Request Tooltip' do
-        expect(show_result_thesis.last).to have_selector "*[title='Request an appointment to view in Reading Room']"
+        expect(show_result_thesis.last).to have_selector "*[title='Request to view in Reading Room']"
       end
       it 'displays a reading room request as Always requestable' do
         expect(show_result_thesis.last).to have_selector '.service-always-requestable'
