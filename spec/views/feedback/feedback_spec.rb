@@ -8,7 +8,7 @@ describe 'Feedback Form', type: :feature do
     end
 
     it 'Displays an empty form' do
-      expect(page).to have_content 'Send Us Feedback'
+      expect(page).to have_content 'Feedback'
       expect(page).to have_field 'feedback_form_name'
       expect(page).to have_field 'feedback_form_email'
       expect(page).to have_field 'feedback_form_message'

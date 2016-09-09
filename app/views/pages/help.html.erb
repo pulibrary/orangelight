@@ -1,6 +1,6 @@
 <div class="col-sm-12 start-over-row">
   <div class="button--start-over">
-    <a class="catalog_startOverLink btn btn-primary icon-refresh" id="startOverLink" href="/">Start Over</a>
+    <a class="catalog_startOverLink btn btn-primary icon-refresh" id="startOverLink" href="/"><%=t('blacklight.search.start_over')%></a>
   </div>
 </div>
 <div class="col-md-12">
@@ -9,7 +9,7 @@
     <ul class="list--search-tips">
       <li>
         <dl>
-          <dt class="tip-heading">Keyword Searching</dt>
+          <dt class="tip-heading">Keyword searching</dt>
           <dd>Combine keywords and attributes to find specific items.
             <dl class="example">
               <dt>Examples:</dt>
@@ -25,7 +25,7 @@
       </li>
       <li>
         <dl>
-          <dt class="tip-heading">Phrase Searching</dt>
+          <dt class="tip-heading">Phrase searching</dt>
           <dd>Use quotation marks to search as a phrase.
             <dl class="example">
               <dt>Examples:</dt>
@@ -41,7 +41,7 @@
       </li>
       <li>
         <dl>
-          <dt class="tip-heading">Requiring Words and Phrases</dt>
+          <dt class="tip-heading">Requiring words and phrases</dt>
           <dd>Use "+" before a term to make it required. (Otherwise results matching only some of your terms may be included).
             <dl class="example">
               <dt>Example:</dt>
@@ -56,7 +56,7 @@
       </li>
       <li>
         <dl>
-          <dt class="tip-heading">Excluding Words or Phrases</dt>
+          <dt class="tip-heading">Excluding words or phrases</dt>
           <dd>Use "-" before a word or phrase to exclude it.
             <dl class="example">
               <dt>Example:</dt>
@@ -71,7 +71,7 @@
       </li>
       <li>
         <dl>
-          <dt class="tip-heading">Joining Queries</dt>
+          <dt class="tip-heading">Joining queries</dt>
           <dd>Use "OR", "AND", and "NOT" to create complex boolean logic. You can use parentheses in your complex expressions. Use the
             <%= link_to('Advanced Search', '/advanced') %>
             to join across mulitple fields.
@@ -88,7 +88,7 @@
       </li>
       <li>
         <dl>
-          <dt class="tip-heading">Truncation and Wildcards</dt>
+          <dt class="tip-heading">Truncation and wildcards</dt>
           <dd>English terms are automatically stemmed to include plural and singular forms, as well as common suffix and tense variations. An asterisk may also be used to truncate any term from either the beginning or end of the word.
           </dd>
         </dl>

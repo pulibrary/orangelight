@@ -40,6 +40,7 @@ class Orangelight::BrowsablesController < ApplicationController
         @exact_match = search_term == search_result.sort
         @match = search_result.id
         @start = search_result.id - 1
+        @start -= 1 if @exact_match
         @start = 1 if @start < 1
         @query = params[:q]
         # @prev = @start/@rpp+1
@@ -72,10 +73,7 @@ class Orangelight::BrowsablesController < ApplicationController
     @prev = @start - @rpp
     @prev = 1 if @prev < 1
     @next = @start + @rpp
-    # @prev ||= @start/@rpp
-    # @next = @start/@rpp+2
     @orangelight_browsables = params[:model].where(id: @start..@page_last)
-    # @orangelight_browsables = params[:model].order(:label).offset(@start).limit(@page_last-@start)
 
     if @model == 'names'
       @facet = 'author_s'
@@ -83,7 +81,7 @@ class Orangelight::BrowsablesController < ApplicationController
       @facet = 'subject_facet'
     end
 
-    @list_name = params[:model].name.demodulize.titleize
+    @list_name = params[:model].name.demodulize.tableize.humanize
 
     respond_to do |format|
       format.html # index.html.erb
