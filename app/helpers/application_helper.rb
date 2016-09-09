@@ -222,9 +222,9 @@ module ApplicationHelper
 
   def pageable?(holding)
     if paging_locations.include? holding['location_code']
-      if holding.key?('call_number')
-        if lc_number?(holding['call_number'])
-          in_call_num_range(holding['call_number'], paging_ranges[holding['location_code']])
+      if holding.key?('call_number_browse')
+        if lc_number?(holding['call_number_browse'])
+          in_call_num_range(holding['call_number_browse'], paging_ranges[holding['location_code']])
         end
       end
     end
