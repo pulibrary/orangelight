@@ -59,8 +59,8 @@ RSpec.describe ApplicationHelper do
 
   describe '#open_location?' do
     let(:loc) { { open: true } }
-    let(:holding) { { 'call_number' => 'KF 1232 .B2', 'location_code' => 'f' } }
-    let(:holding_pageable) { { 'call_number' => 'QL 1232 .B8', 'location_code' => 'f' } }
+    let(:holding) { { 'call_number_browse' => 'KF 1232 .B2', 'location_code' => 'f' } }
+    let(:holding_pageable) { { 'call_number_browse' => 'QL 1232 .B8', 'location_code' => 'f' } }
     it 'returns the location open attribute value' do
       expect(open_location?(loc, holding)).to eq true
     end
