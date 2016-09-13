@@ -32,6 +32,7 @@ en:
       confirmation: 'Thank you for your comments. They are helpful as we work to improve this new Library service.'
     holdings:
       paging_request: 'Paging request only'
+      linked: 'Other versions'
       online: 'Online'
       print: 'Copies in Library'
       stackmap: 'Where to find it'
