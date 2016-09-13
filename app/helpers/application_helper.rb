@@ -128,7 +128,6 @@ module ApplicationHelper
                                                 title: 'Availability: Embargoed', 'data-toggle' => 'tooltip')
             end
 
-    info << content_tag(:div, "Copy number: #{holding['copy_number']}".html_safe, class: 'copy-number') unless holding['copy_number'].nil?
     info << content_tag(:ul, "#{holding_label('Shelving title:')} #{listify_array(holding['shelving_title'])}".html_safe, class: 'shelving-title') unless holding['shelving_title'].nil?
     info << content_tag(:ul, "#{holding_label('Location note:')} #{listify_array(holding['location_note'])}".html_safe, class: 'location-note') unless holding['location_note'].nil?
     info << content_tag(:ul, "#{holding_label('Location has:')} #{listify_array(holding['location_has'])}".html_safe, class: 'location-has') unless holding['location_has'].nil?

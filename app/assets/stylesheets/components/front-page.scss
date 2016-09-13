@@ -1,7 +1,11 @@
 @import "variables/breaks";
 
 @media (min-width: $bp-small) {
-    .welcome-message {
-      padding-top: 3em;
-    }
+  .welcome-message {
+    padding-top: 1.15em;
+  }
+}
+
+.welcome-paragraph {
+  margin-bottom: 10px;
 }

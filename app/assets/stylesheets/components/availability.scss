@@ -98,6 +98,23 @@
   }
 }
 
+.location--linked .panel .panel-body {
+  display: block;
+  padding: 1em 1em 0.5em;
+
+  a {
+    display: inline-block;
+  }
+
+  ul {
+    margin-bottom: 0px;
+  }
+
+  li {
+    margin-bottom: 0.5em;
+  }
+}
+
 .blacklight-holdings .availability-icon.label:hover {
   color: white;
   text-decoration: none;
@@ -108,7 +125,7 @@
 }
 
 .top-panel-heading.panel-heading {
-  padding-left: 0;
+  padding: 0px 15px 10px 0;
 }
 
 .panel-group .panel {

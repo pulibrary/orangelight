@@ -10,6 +10,24 @@
   </div>
 <% end %>
 
+<% linked_records = linked_records(@document['other_version_s'], @document[:id], 'other_version_s') if @document['other_version_s'] %>
+<% unless linked_records.nil? || linked_records.empty? %>
+  <div class="location--panel location--linked">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= t('blacklight.holdings.linked') %></div>
+      <div class="panel-body">
+        <% linked_records.each do |records| %>
+          <ul>
+            <% records.each do |link| %>
+              <li><%= link %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <% unless physical.nil? %>
   <div class="location--panel location--holding">
     <div class="panel panel-default">
