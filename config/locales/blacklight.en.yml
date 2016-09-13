@@ -1,6 +1,6 @@
 en:
   blacklight:
-    application_name: 'Catalog | Princeton University Library'
+    application_name: 'Princeton University Library Catalog'
     welcome: 'Welcome!'
     voyager: 'Main Catalog'
     orangelight: 'New Catalog'
