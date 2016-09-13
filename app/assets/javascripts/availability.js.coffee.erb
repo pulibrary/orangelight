@@ -73,8 +73,11 @@ class AvailabilityUpdater
       for key, item of data
         status = title_case(item['status'])
         label = status_label(status)
-        if status not in available_statuses && status != on_site_status
-          li = "<li>#{item['enum'] || 'Item'}: #{status_display(status, label)}</li>"
+        if (status not in available_statuses && status != on_site_status) || item['temp_loc']
+          if item['temp_loc']
+            li = "<li>#{item['enum'] || 'Item'}: #{item['label']} - #{status_display(status, label)}</li>"
+          else
+            li = "<li>#{item['enum'] || 'Item'}: #{status_display(status, label)}</li>"
           ul = ul + li
           span = $("*[data-holding-id='#{holding_id}'] .availability-icon")
           txt = if status.match(on_site_unavailable)
