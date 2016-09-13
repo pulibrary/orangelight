@@ -380,6 +380,40 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('isbn') do |field|
+      field.include_in_simple_select = false
+      field.label = 'ISBN'
+      field.solr_local_parameters = {
+        qf: 'isbn_t'
+      }
+    end
+
+    config.add_search_field('issn') do |field|
+      field.include_in_simple_select = false
+      field.label = 'ISSN'
+      field.solr_local_parameters = {
+        qf: 'issn_s'
+      }
+    end
+
+    config.add_search_field('lccn') do |field|
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = false
+      field.label = 'LCCN'
+      field.solr_local_parameters = {
+        qf: 'lccn_s'
+      }
+    end
+
+    config.add_search_field('oclc') do |field|
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = false
+      field.label = 'OCLC'
+      field.solr_local_parameters = {
+        qf: 'oclc_s'
+      }
+    end
+
     config.add_search_field('browse_subject') do |field|
       field.include_in_advanced_search = false
       field.label = 'Subject (browse)'
