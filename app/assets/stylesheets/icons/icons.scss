@@ -42,6 +42,11 @@
         content: $icon-bookmark;
     }
 }
+.ask-a-librarian .icon-chat {
+    &:before {
+        content: $icon-chat;
+    }
+}
 .icon-warning {
     &:before {
         content: $icon-warning;
@@ -179,7 +184,7 @@
 }
 .icon-external {
     &:before {
-        content: $icon-external;
+        content: $icon-newtab;
         // margin-right: 0.5em;
     }
 }

@@ -1,0 +1,21 @@
+.ask-a-librarian {
+  h4 {
+    margin-top: 0;
+  }
+
+  a {
+    font-size: 16px;
+
+    &:hover {
+      text-decoration: none;
+      &:before {
+        color: $orange;
+      }
+    }
+
+    &:before {
+      font-size: 1.2em;
+      vertical-align: middle;
+    }
+  }
+}
