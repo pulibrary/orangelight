@@ -19,3 +19,39 @@
     }
   }
 }
+
+.libraryh3lp {
+  .button--libraryh3lp {
+    border: 0;
+    border-radius: 3px;
+    display: inline-block;
+    font-family: $font-serif;
+    font-size: 0.75rem;
+    font-style: italic;
+    font-weight: bold;
+    margin-left: 1em;
+    padding: 3px 7px;
+    position: relative;
+    text-decoration: none;
+    text-shadow: none;
+    top: -2px;
+  }
+}
+
+.button--libraryh3lp__online {
+  background-color: $yellow-light;
+  color: $black;
+
+  &:hover {
+    background: darken($yellow-light, 7%);
+  }
+}
+
+.button--libraryh3lp__offline {
+  background: $light-gray;
+  color: $gray-dark;
+
+  &:hover {
+    background: darken($light-gray, 7%);
+  }
+}
