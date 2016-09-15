@@ -1,4 +1,15 @@
-<div class="col-md-2 ask-a-librarian">
+<div class="col-md-3 ask-a-librarian">
   <h4>Need help?</h4>
   <%= link_to "Ask a librarian", "http://library.princeton.edu/help/ask-a-librarian", class: "icon-chat" %>
+  <span class="needs-js" style="display: none;"></span>
+  <span class="libraryh3lp" jid="libchatpul-main@chat.libraryh3lp.com" style="display: none;"><a class="button--libraryh3lp button--libraryh3lp__online get-help-link" href="http://library.princeton.edu/help/ask-a-librarian"> Online now</a></span>
+  <span class="libraryh3lp" style=""><a class="button--libraryh3lp button--libraryh3lp__offline get-help-link" href="http://library.princeton.edu/help/ask-a-librarian"> Offline now</a></span>
 </div>
+
+<script type="text/javascript">
+  (function() {
+    var x = document.createElement("script"); x.type = "text/javascript"; x.async = true;
+    x.src = (document.location.protocol === "https:" ? "https://" : "http://") + "libraryh3lp.com/js/libraryh3lp.js?multi,poll";
+    var y = document.getElementsByTagName("script")[0]; y.parentNode.insertBefore(x, y);
+  })();
+</script>
