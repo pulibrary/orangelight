@@ -55,7 +55,7 @@ describe 'Availability' do
     it 'display availability as on-site and does not display individual items' do
       visit 'catalog/2238036'
       sleep 5.seconds
-      expect(page.all('.availability-icon.label.label-warning', text: 'On-site access').length).to eq 1
+      expect(page.all('.availability-icon.label.label-success', text: 'On-site access').length).to eq 1
       expect(page.all('ul.item-status').length).to eq 0
     end
   end
