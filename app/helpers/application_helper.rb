@@ -340,8 +340,8 @@ module ApplicationHelper
     end
   end
 
-  def formats_to_exclude
-    holding_id = JSON.parse(@document[:holdings_1display]).first[0]
+  def formats_to_exclude(document)
+    holding_id = JSON.parse(document[:holdings_1display]).first[0]
     if non_voyager?(holding_id)
       [:marc, :marcxml, :refworks_marc_txt, :endnote, :openurl_ctx_kev]
     else
