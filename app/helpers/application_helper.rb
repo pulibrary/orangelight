@@ -186,7 +186,7 @@ module ApplicationHelper
   def request_placeholder(doc_id, holding_id, location_rules, holding)
     content_tag(:div, class: "location-services #{show_request(location_rules, holding_id)}", data: { open: open_location?(location_rules, holding), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
       if pageable?(holding)
-        link_to 'Paging Request', "/requests/#{doc_id}?mfhd=#{holding_id}", title: 'View Options to Request copies from this Location', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
+        link_to 'Paging Request', "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch", title: 'View Options to Request copies from this Location', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       elsif non_voyager?(holding_id)
         link_to 'Reading Room Request', "/requests/#{doc_id}?mfhd=#{holding_id}", title: 'Request to view in Reading Room', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       else
@@ -337,6 +337,15 @@ module ApplicationHelper
       newname = link_to(name, "/?f[author_s][]=#{CGI.escape name}", class: 'search-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name}", title: "Search: #{name}") + '  ' +
                 link_to('[Browse]', "/browse/names?q=#{CGI.escape name}", class: 'browse-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{name}", title: "Browse: #{name}", dir: name.dir.to_s)
       args[:document][args[:field]][i] = newname.html_safe
+    end
+  end
+
+  def formats_to_exclude
+    holding_id = JSON.parse(@document[:holdings_1display]).first[0]
+    if non_voyager?(holding_id)
+      [:marc, :marcxml, :refworks_marc_txt, :endnote, :openurl_ctx_kev]
+    else
+      []
     end
   end
 

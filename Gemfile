@@ -72,6 +72,8 @@ gem 'string_rtl'
 
 gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'request_test_specs'
 
+gem "blacklight_unapi", git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'blacklight_6'
+
 gem 'jquery-datatables-rails', '~> 3.3.0'
 
 group :development do

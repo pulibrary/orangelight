@@ -3,6 +3,8 @@
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog
+  include BlacklightUnapi::ControllerExtension
+
   include Blacklight::Marc::Catalog
   include BlacklightRangeLimit::ControllerOverride
   include Orangelight::Catalog
@@ -446,5 +448,9 @@ class CatalogController < ApplicationController
 
     # Add bookmark all widget
     config.add_results_collection_tool(:bookmark_all)
+
+    config.unapi = {
+      'ris' => { content_type: 'application/x-research-info-systems' }
+    }
   end
 end

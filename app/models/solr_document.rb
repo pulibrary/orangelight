@@ -10,10 +10,16 @@ class SolrDocument
   end
 
   field_semantics.merge!(
-    title: 'title_display',
-    author: 'author_display',
+    title: 'title_citation_display',
+    creator: 'author_citation_display',
     language: 'language_facet',
-    format: 'format'
+    format: 'format',
+    description: 'summary_note_display',
+    date: 'pub_date_start_sort',
+    publisher: 'pub_created_display',
+    subject: 'subject_facet',
+    type: 'format',
+    identifier: 'isbn_s'
   )
 
   # self.unique_key = 'id'
@@ -30,6 +36,9 @@ class SolrDocument
   # Blacklight::Solr::Document#to_semantic_values.
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
+
+  ## Adds RIS
+  use_extension(Blacklight::Document::Ris)
 
   def identifier_data
     identifiers.each_with_object({}) do |identifier, hsh|

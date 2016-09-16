@@ -39,6 +39,9 @@
               <li class="refworks">
                 <%= link_to "RefWorks", refworks_export_url({url: polymorphic_url(url_for_document(@document), format: :refworks_marc_txt, only_path: false)}), class: "icon-external", :target => "_blank"  %>
               </li>
+              <li class="ris">
+              <%= link_to 'RIS', solr_document_path(@document, :format => 'ris'), class: "icon-external" %>
+              </li>
             <% end %>
             <li class="print">
               <a href="javascript:if(window.print)window.print()"><span class="icon-print"></span>Printer</a>

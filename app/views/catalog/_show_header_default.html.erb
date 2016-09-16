@@ -5,5 +5,6 @@
     <% unless titlevalue == '' %>
         <h1 dir="<%= titlevalue.dir %>"> <%= titlevalue %> </h1>
     <% end %>
+    <abbr class="unapi-id" title="<%= @document.id %>"></abbr>
     <%= render_document_heading(@document, :tag => :h1) %>
 </div>
