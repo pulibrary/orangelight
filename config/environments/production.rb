@@ -73,8 +73,7 @@ Rails.application.configure do
     address:              'dss.princeton.edu'
   }
   config.action_mailer.default_options = {
-    from: 'no-reply@princeton.edu',
-    reply_to: 'lsupport@princeton.edu'
+    from: 'no-reply@princeton.edu'
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

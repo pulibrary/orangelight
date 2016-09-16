@@ -450,9 +450,7 @@ class CatalogController < ApplicationController
     config.add_results_collection_tool(:bookmark_all)
 
     config.unapi = {
-      'rdf_dc' => { :content_type => 'text/xml' },
-      'oai_dc_xml' => { :content_type => 'text/xml' },
-      'marc' => { :content_type => 'application/marc' }
+      'ris' => { content_type: 'application/x-research-info-systems' }
     }
   end
 end

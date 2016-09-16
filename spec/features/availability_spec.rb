@@ -41,6 +41,7 @@ describe 'Availability' do
     it 'displays temp location on search results along with call number' do
       visit '/catalog?q=7917192'
       sleep 5.seconds
+      binding.pry
       expect(page.all('.library-location', text: 'Lewis Library - Course Reserve').length).to be > 0
       expect(page.all('.library-location', text: 'QA303.2 .W45 2014').length).to be > 0
     end
