@@ -1,3 +1,8 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+}
+
 a,
 a:visited {
   text-decoration: underline;
@@ -105,6 +110,14 @@ h1,
   box-shadow: 0;
 }
 
+.holding-block,
+.holding-block .availability-icon,
+.library-location,
+.location--panel .panel .holding-block h3,
+.location--online .panel .panel-body a {
+  font-size: 13pt;
+}
+
 .label {
   border: 0;
 }
@@ -120,4 +133,72 @@ h1,
   .find-it {
     display: none;
   }
+}
+
+.dl-horizontal .other-views,
+.dl-horizontal .classic-views {
+  display: none;
+}
+
+.browse--call-number thead tr {
+  position: initial !important;
+  clip: none !important;
+  height: auto !important;
+  width: auto !important;
+
+  th {
+    display: inline;
+  }
+}
+
+.browse--call-number td:before {
+  display: none;
+}
+
+.browse--call-number {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.browse td {
+  display: table-cell;
+  font-size: 13pt;
+
+  &:nth-child(1),
+  &:nth-child(2) {
+    width: 15%;
+  }
+  &:nth-child(3) {
+    width: 30%;
+  }
+  &:nth-child(4),
+  &:nth-child(5) {
+    width: 20%;
+  }
+}
+
+abbr {
+  display: none;
+}
+
+.record-wrapper {
+  width: 100%;
+}
+
+.thumbnail-wrapper {
+  display: none;
+}
+
+.document-metadata {
+  line-height: 1.2em;
+  .blacklight-holdings {
+    margin: 0;
+    ul {
+      margin-top: 3px;
+    }
+  }
+}
+
+#sortAndPerPage {
+  margin: 0;
 }
