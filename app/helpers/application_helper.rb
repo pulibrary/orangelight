@@ -69,12 +69,13 @@ module ApplicationHelper
     physical_holdings = ''
     online_holdings = ''
     is_journal = document['format'].include?('Journal')
+    pub_date = document.key?('pub_date_start_sort') ? document['pub_date_start_sort'] : 0
     online_holdings << links
     holdings.each do |id, holding|
       if holding['location_code'].start_with?('elf')
         online_holdings << process_online_holding(holding, doc_id, id, links.empty?)
       elsif !holding['location_code'].blank?
-        physical_holdings << process_physical_holding(holding, doc_id, id, is_journal)
+        physical_holdings << process_physical_holding(holding, doc_id, id, is_journal, pub_date)
       end
     end
     online = content_tag(:div, online_holdings.html_safe) unless online_holdings.empty?
@@ -97,7 +98,7 @@ module ApplicationHelper
     content_tag(:div, t('blacklight.holdings.missing'), class: 'holding-block')
   end
 
-  def process_physical_holding(holding, bib_id, holding_id, is_journal)
+  def process_physical_holding(holding, bib_id, holding_id, is_journal, pub_date)
     info = ''
     unless (holding_loc = holding_location_label(holding)).blank?
       location = content_tag(:span, holding_loc, class: 'location-text', data:
@@ -133,7 +134,9 @@ module ApplicationHelper
     info << content_tag(:ul, "#{holding_label('Location has:')} #{listify_array(holding['location_has'])}".html_safe, class: 'location-has') unless holding['location_has'].nil?
     info << content_tag(:ul, ''.html_safe, class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
     location_rules = LOCATIONS[holding['location_code'].to_sym]
-    info << request_placeholder(bib_id, holding_id, location_rules, holding).html_safe
+    unless holding_id == 'thesis' && pub_date > 2012
+      info << request_placeholder(bib_id, holding_id, location_rules, holding).html_safe
+    end
     info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
     info
   end
@@ -184,7 +187,7 @@ module ApplicationHelper
   end
 
   def request_placeholder(doc_id, holding_id, location_rules, holding)
-    content_tag(:div, class: "location-services #{show_request(location_rules, holding_id)}", data: { open: open_location?(location_rules, holding), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
+    content_tag(:div, class: "location-services #{show_request(location_rules, holding_id)}", data: { open: open_location?(location_rules, holding), requestable: requestable_location?(location_rules, holding), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
       if pageable?(holding)
         link_to 'Paging Request', "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch", title: 'View Options to Request copies from this Location', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       elsif non_voyager?(holding_id)
@@ -237,6 +240,14 @@ module ApplicationHelper
     end
   end
 
+  def requestable_location?(location, holding)
+    if pageable?(holding)
+      true
+    else
+      location.nil? ? false : location[:requestable]
+    end
+  end
+
   def aeon_location?(location)
     location.nil? ? false : location[:aeon_location]
   end
@@ -269,7 +280,7 @@ module ApplicationHelper
           info << content_tag(:span, '', class: 'icon-warning', title: t('blacklight.holdings.paging_request'), 'data-toggle' => 'tooltip').html_safe if pageable?(holding)
         else
           check_availability = false
-          info << content_tag(:span, 'Unavailable', class: 'availability-icon label label-danger', title: 'Availability: On-site', 'data-toggle' => 'tooltip')
+          info << content_tag(:span, 'Unavailable', class: 'availability-icon label label-danger', title: 'Availability: Material under embargo', 'data-toggle' => 'tooltip')
         end
         info << content_tag(:div, search_location_display(holding, document), class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
       end

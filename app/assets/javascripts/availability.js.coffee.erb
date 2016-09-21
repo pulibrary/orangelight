@@ -14,10 +14,13 @@ class AvailabilityUpdater
   checked_out_statuses = ['Charged', 'Renewed', 'Overdue', 'On hold',
     'In transit', 'In transit on hold', 'At bindery',
     'Remote storage request', 'Hold request', 'Recall request']
-  missing_statuses = ['Missing', 'Lost--library applied',
-    'Lost--system applied', 'Claims returned', 'Withdrawn']
+  missing_statuses = ['Missing', 'Claims returned', 'Withdrawn']
+  long_overdue_statuses = ['Lost--system applied']
+  lost_statuses = ['Lost--library applied']
   available_labels = ['Available', 'Returned', 'In process', 'Requestable',
-    'On shelf', 'All items available']
+    'On shelf', 'All items available', 'On-site access']
+  available_non_requestable_labels = ['Available', 'Returned', 'Requestable',
+    'On shelf', 'All items available', 'On-site access']
   open_location_labels = ['Available', 'All items available']
   unavailable_labels = ['Checked out', 'Missing']
   request_availability: ->
@@ -48,13 +51,22 @@ class AvailabilityUpdater
         this.get_more_items(holding_id)
       else
         this.apply_record_icon(availability_element, availability_info['status'])
-      this.update_location_services(holding_id)
-  update_location_services: (holding_id) ->
+      this.update_location_services(holding_id, availability_info)
+  update_location_services: (holding_id, availability_info) ->
+    status = availability_info['status']
+    temp_status = availability_info['temp_loc']
     location_services_element = $(".location-services[data-holding-id='#{holding_id}']")
     availability_label = $(".holding-status[data-holding-id='#{holding_id}'] .availability-icon.label")
-    availability_label = availability_label.text()
-    if location_services_element.attr('data-open') == 'false' || availability_label not in open_location_labels || location_services_element.attr('data-aeon') == 'true'
-      location_services_element.show()
+    if availability_label.text()
+      availability_label_text = title_case(availability_label.text())
+    display_request = location_services_element.attr('data-requestable')
+    if availability_label_text not in available_non_requestable_labels
+      display_request = 'true'
+    if display_request == 'true'
+      if temp_status
+        location_services_element.hide()
+      else
+        location_services_element.show()
   apply_record: (record_id, holding_records) ->
     for holding_id, availability_info of holding_records
       if availability_info['label']
@@ -92,6 +104,8 @@ class AvailabilityUpdater
           if !status.match(on_site_unavailable)
             span.removeClass("label-success")
             span.addClass("label-default")
+            location_services_element = $(".location-services[data-holding-id='#{holding_id}']")
+            location_services_element.show()
       ul = ul + "</ul>"
       element.append(ul) if ul != "<ul class=\"item-status\"></ul>"
   get_issues: (holding_id) ->
@@ -137,6 +151,8 @@ class AvailabilityUpdater
     $("*[data-availability-record='true'][data-record-id]").map((_, x) -> $(x).attr("data-record-id"))
   status_label = (status) ->
     switch
+      when status in long_overdue_statuses then 'Long overdue'
+      when status in lost_statuses then 'Lost'
       when status in available_statuses then 'Available'
       when status in returned_statuses then 'Returned'
       when status == 'In transit discharged' then 'In transit'

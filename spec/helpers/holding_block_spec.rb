@@ -61,6 +61,7 @@ RSpec.describe ApplicationHelper do
     let(:show_result) { helper.holding_request_block(document) }
     let(:show_result_journal) { helper.holding_request_block(document_journal) }
     let(:show_result_thesis) { helper.holding_request_block(document_thesis) }
+    let(:show_result_thesis_no_request) { helper.holding_request_block(document_thesis_no_request_access) }
     let(:show_result_marcit) { helper.urlify(electronic_access_marcit) }
     let(:holding_block_json) do
       {
@@ -133,7 +134,17 @@ RSpec.describe ApplicationHelper do
       {
         id: '4',
         format: ['Senior Thesis'],
-        holdings_1display: holdings_thesis_mudd
+        holdings_1display: holdings_thesis_mudd,
+        pub_date_start_sort: 2008
+      }.with_indifferent_access
+    end
+
+    let(:document_thesis_no_request_access) do
+      {
+        id: '4',
+        format: ['Senior Thesis'],
+        holdings_1display: holdings_thesis_mudd,
+        pub_date_start_sort: 2013
       }.with_indifferent_access
     end
 
@@ -221,6 +232,12 @@ RSpec.describe ApplicationHelper do
       end
       it 'displays a reading room request as Always requestable' do
         expect(show_result_thesis.last).to have_selector '.service-always-requestable'
+      end
+    end
+
+    context '#holding_block record show - thesis after 2012' do
+      it 'does not display a request button for theses created after 2012' do
+        expect(show_result_thesis_no_request.last).not_to have_selector '.service-always-requestable'
       end
     end
 

@@ -29,8 +29,6 @@ module Blacklight
           pub_citation_display: 'PB',
           isbn_s: 'SN',
           issn_s: 'SN',
-          lccn_s: 'SN',
-          oclc_s: 'SN',
           language_facet: 'LA',
           electronic_access_1display: 'UR',
           subject_facet: 'KW'
