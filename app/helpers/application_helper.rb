@@ -100,6 +100,7 @@ module ApplicationHelper
 
   def process_physical_holding(holding, bib_id, holding_id, is_journal, pub_date)
     info = ''
+    location_rules = LOCATIONS[holding['location_code'].to_sym]
     unless (holding_loc = holding_location_label(holding)).blank?
       location = content_tag(:span, holding_loc, class: 'location-text', data:
                             {
@@ -121,19 +122,17 @@ module ApplicationHelper
     end
     info << if holding['dspace']
               content_tag(:span, 'On-site access', class: 'availability-icon label label-warning',
-                                                   title: 'Availability: On-site', 'data-toggle' => 'tooltip')
+                                                   title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
             elsif holding['dspace'].nil?
-              content_tag(:div, content_tag(:div, '', class: 'availability-icon').html_safe, class: 'holding-status', data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id })
+              content_tag(:div, content_tag(:div, '', class: 'availability-icon').html_safe, class: 'holding-status', data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id, aeon: aeon_location?(location_rules) })
             else
               content_tag(:span, 'Unavailable', class: 'availability-icon label label-danger',
                                                 title: 'Availability: Embargoed', 'data-toggle' => 'tooltip')
             end
-
     info << content_tag(:ul, "#{holding_label('Shelving title:')} #{listify_array(holding['shelving_title'])}".html_safe, class: 'shelving-title') unless holding['shelving_title'].nil?
     info << content_tag(:ul, "#{holding_label('Location note:')} #{listify_array(holding['location_note'])}".html_safe, class: 'location-note') unless holding['location_note'].nil?
     info << content_tag(:ul, "#{holding_label('Location has:')} #{listify_array(holding['location_has'])}".html_safe, class: 'location-has') unless holding['location_has'].nil?
     info << content_tag(:ul, ''.html_safe, class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
-    location_rules = LOCATIONS[holding['location_code'].to_sym]
     unless holding_id == 'thesis' && pub_date > 2012
       info << request_placeholder(bib_id, holding_id, location_rules, holding).html_safe
     end
@@ -257,6 +256,7 @@ module ApplicationHelper
     links = search_links(document['electronic_access_1display'])
     holdings_hash = JSON.parse(document['holdings_1display'] || '{}')
     holdings_hash.first(2).each do |id, holding|
+      location = LOCATIONS[holding['location_code'].to_sym]
       check_availability = true
       info = ''
       if holding['library'] == 'Online'
@@ -274,17 +274,19 @@ module ApplicationHelper
       else
         if holding['dspace']
           check_availability = false
-          info << content_tag(:span, 'On-site access', class: 'availability-icon label label-warning', title: 'Availability: On-site', 'data-toggle' => 'tooltip')
+          info << content_tag(:span, 'On-site access', class: 'availability-icon label label-warning', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
+          info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location Must be requested', 'data-toggle' => 'tooltip').html_safe if aeon_location?(location)
         elsif holding['dspace'].nil?
           info << content_tag(:span, '', class: 'availability-icon').html_safe
-          info << content_tag(:span, '', class: 'icon-warning', title: t('blacklight.holdings.paging_request'), 'data-toggle' => 'tooltip').html_safe if pageable?(holding)
+          info << content_tag(:span, '', class: 'icon-warning icon-request-paging', title: t('blacklight.holdings.paging_request'), 'data-toggle' => 'tooltip').html_safe if pageable?(holding)
+          info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip').html_safe if aeon_location?(location)
         else
           check_availability = false
           info << content_tag(:span, 'Unavailable', class: 'availability-icon label label-danger', title: 'Availability: Material under embargo', 'data-toggle' => 'tooltip')
         end
         info << content_tag(:div, search_location_display(holding, document), class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
       end
-      block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id })
+      block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id, aeon: aeon_location?(location) })
     end
     if holdings_hash.length > 2
       block << content_tag(:li, link_to('View Record for Full Availability', solr_document_path(document['id']),

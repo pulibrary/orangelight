@@ -88,6 +88,18 @@ describe 'Request Options' do
     end
   end
 
+  describe 'An In-transit discharged item', js: true do
+    before(:each) do
+      visit '/catalog/9741216'
+    end
+
+    it 'does not display a request button', unless: in_travis? do
+      sleep 5.seconds
+      expect(page.all('.location--holding').length).to eq 1
+      expect(page).not_to have_selector('.location-services.service-conditional')
+    end
+  end
+
   describe 'Paging location available status', js: true do
     before(:each) do
       visit '/catalog/8908514'
@@ -109,6 +121,17 @@ describe 'Request Options' do
       sleep 5.seconds
       expect(page.all('.location--holding').length).to eq 1
       expect(page).not_to have_selector('.location-services.service-conditional')
+    end
+  end
+
+  describe 'Paging location that has been shelved at a temp location status', js: true do
+    before(:each) do
+      visit '/catalog?search_field=all_fields&q=5318288'
+    end
+
+    it 'does not display a paging request icon', unless: in_travis? do
+      sleep 5.seconds
+      expect(page).not_to have_selector('.icon-warning.icon-paging-request')
     end
   end
 end
