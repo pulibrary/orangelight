@@ -20,7 +20,7 @@ class AvailabilityUpdater
   available_labels = ['Available', 'Returned', 'In process', 'Requestable',
     'On shelf', 'All items available', 'On-site access']
   available_non_requestable_labels = ['Available', 'Returned', 'Requestable',
-    'On shelf', 'All items available', 'On-site access']
+    'On shelf', 'All items available', 'On-site access', 'On-site - in-transit discharged']
   open_location_labels = ['Available', 'All items available']
   unavailable_labels = ['Checked out', 'Missing']
   request_availability: ->
@@ -39,18 +39,19 @@ class AvailabilityUpdater
   process_single: (holding_records) =>
     for holding_id, availability_info of holding_records
       availability_element = $("*[data-availability-record='true'][data-record-id='#{id}'][data-holding-id='#{holding_id}'] .availability-icon")
+      aeon = $("*[data-availability-record='true'][data-record-id='#{id}'][data-holding-id='#{holding_id}']").attr('data-aeon')
       if availability_info['label']
         location = $("*[data-location='true'][data-holding-id='#{holding_id}']")
         location.text(availability_info['label'])
       this.get_issues(holding_id) if $(".journal-current-issues").length > 0
       if availability_info['more_items']
         if title_case(availability_info['status']).match(on_site_status)
-          this.apply_record_icon(availability_element, "On-site access")
+          this.apply_record_icon(availability_element, "On-site access", aeon)
         else
-          this.apply_record_icon(availability_element, "All items available")
+          this.apply_record_icon(availability_element, "All items available", aeon)
         this.get_more_items(holding_id)
       else
-        this.apply_record_icon(availability_element, availability_info['status'])
+        this.apply_record_icon(availability_element, availability_info['status'], aeon)
       this.update_location_services(holding_id, availability_info)
   update_location_services: (holding_id, availability_info) ->
     status = availability_info['status']
@@ -62,6 +63,8 @@ class AvailabilityUpdater
     display_request = location_services_element.attr('data-requestable')
     if availability_label_text not in available_non_requestable_labels
       display_request = 'true'
+    if title_case(status) == 'On-site - in transit discharged'
+      display_request = 'false' 
     if display_request == 'true'
       if temp_status
         location_services_element.hide()
@@ -71,10 +74,13 @@ class AvailabilityUpdater
     for holding_id, availability_info of holding_records
       if availability_info['label']
         location = $("*[data-location='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .results_location")
+        aeon = $("*[data-record-id='#{record_id}'][data-holding-id='#{holding_id}']").attr('data-aeon')
         location.text(availability_info['label'])
       this.record_needs_more_info(record_id) if availability_info['more_items']
       availability_element = $("*[data-availability-record='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .availability-icon")
-      this.apply_record_icon(availability_element, availability_info['status'])
+      if availability_info['temp_loc']
+        $(availability_element).next('.icon-warning').hide()
+      this.apply_record_icon(availability_element, availability_info['status'], aeon)
     true
   get_more_items: (holding_id) ->
     url = "#{@availability_url}?mfhd=#{holding_id}"
@@ -127,7 +133,7 @@ class AvailabilityUpdater
     element.attr('title', "Click on the record for full availability info")
     empty = $("*[data-record-id='#{record_id}'].empty")
     empty.removeClass("empty")
-  apply_record_icon: (availability_element, status) ->
+  apply_record_icon: (availability_element, status, aeon) ->
     status = title_case(status)
     availability_element.addClass("label")
     label = status_label(status)
@@ -144,6 +150,8 @@ class AvailabilityUpdater
       availability_element.addClass("label-primary")
     else
       availability_element.addClass("label-default")
+    if aeon == 'true'
+      status = "On-site access by request"
     availability_element.attr('title', "Availability: #{title_case(status)}")
     availability_element.attr('data-original-title', "Availability: #{title_case(status)}")
     availability_element.attr('data-toggle', 'tooltip')
