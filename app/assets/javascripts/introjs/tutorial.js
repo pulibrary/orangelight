@@ -5,11 +5,11 @@ function startIntro(){
       steps: [
         {
           element: '#search_field',
-          intro: 'The catalog can be searched in a variety of ways. <strong>Title starts with</strong> retrieves an exact title.'
+          intro: 'The catalog can be searched in a variety of ways by clicking the dropdown box. <strong>Title starts with</strong> retrieves an exact title.'
         },
         {
           element: '#facet-panel-collapse',
-          intro: 'Search limits restrict your search and can be applied before or after your enter your terms.',
+          intro: 'Search limits restrict your search and can be applied before or after you enter your terms.',
           position: 'right'
         },
         {
@@ -32,7 +32,7 @@ function resultsPage(){
       steps: [
         {
           element: '.facet_limit.blacklight-access_facet',
-          intro: '<strong>Access</strong> limits search by physical <strong>(In the Library)</strong> or electronic access <strong>(Online)</strong>.',
+          intro: '<strong>Access</strong> limits your search results by physical <strong>(In the Library)</strong> or electronic access <strong>(Online)</strong>.',
           position: 'right'
         },
         {
@@ -82,7 +82,7 @@ function recordPage(){
       steps: [
         {
           element: '#availability',
-          intro: 'The information of each item displays in three columns. The right column contains availability information.',
+          intro: 'Information about each item displays in three columns. The right column contains availability information.',
           position: 'left'
         },
         {
@@ -97,7 +97,7 @@ function recordPage(){
         },
         {
           element: 'dd.blacklight-subject_display',
-          intro: 'Click on any part of the subject heading to run a broad or more narrow subject search.',
+          intro: 'Click on any part of the subject heading to run a broader or narrower subject search.',
           position: 'left'
         },
         {
