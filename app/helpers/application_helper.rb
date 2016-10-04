@@ -108,7 +108,9 @@ module ApplicationHelper
                               holding_id: holding_id
                             }
                             )
-      location << locate_link(holding['location_code'], bib_id, holding['call_number'], holding['library']).html_safe
+      unless pageable?(holding)
+        location << locate_link(holding['location_code'], bib_id, holding['call_number'], holding['library']).html_safe
+      end
       info << content_tag(:h3, location.html_safe, class: 'library-location')
     end
     unless holding['call_number'].blank?
@@ -308,8 +310,13 @@ module ApplicationHelper
     location = holding_location_label(holding)
     render_arrow = (!location.blank? && !holding['call_number'].blank?)
     arrow = render_arrow ? ' &raquo; ' : ''
+    if pageable?(holding)
+      locate_link = ''
+    else
+      locate_link = locate_link_with_gylph(holding['location_code'], document['id'], holding['call_number'], holding['library'])
+    end
     location_display = content_tag(:span, location, class: 'results_location') + arrow.html_safe +
-                       content_tag(:span, %(#{holding['call_number']}#{locate_link_with_gylph(holding['location_code'], document['id'], holding['call_number'], holding['library'])}).html_safe, class: 'call-number')
+                       content_tag(:span, %(#{holding['call_number']}#{locate_link}).html_safe, class: 'call-number')
     location_display.html_safe
   end
 

@@ -12,7 +12,6 @@ module Blacklight
       def self.register_export_formats(document)
         document.will_export_as(:ris, 'application/x-research-info-systems')
         document.will_export_as(:mendeley, 'application/x-research-info-systems')
-        document.will_export_as(:zotero, 'application/x-research-info-systems')
       end
 
       def ris_field_names
