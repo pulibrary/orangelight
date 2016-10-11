@@ -104,19 +104,22 @@ ul.facet-values {
 }
 
 @media (max-width: $bp-small) {
+  #facets {
+    padding: 0;
+  }
   #facets .top-panel-heading {
-    padding-left: 1em;
-    padding-top: .5em;
+    padding: 1em 0;
   }
 
-  h2.facets-heading {
+  #facets .facets-heading {
     font-size: 1.6em;
-    margin-bottom: 0;
-    margin-top: .2em;
+    margin: 0;
+    padding: 0.15em;
   }
 
   .facets-toggle {
     margin: 0;
+    background: $gray;
   }
 }
 

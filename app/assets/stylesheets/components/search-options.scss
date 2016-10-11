@@ -97,7 +97,11 @@
   }
 
   > li > a {
-    display: inline;
+    display: inline-block;
+
+    @media (min-width: 530px) {
+      display: inline;
+    }
   }
 }
 
@@ -122,6 +126,8 @@
   padding-bottom: 0;
 }
 
-ul.search-options {
-  padding-left: 20px;
+@media (min-width: $bp-medium) {
+  ul.search-options {
+    padding-left: 20px;
+  }
 }
