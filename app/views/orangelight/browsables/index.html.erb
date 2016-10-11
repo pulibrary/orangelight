@@ -16,7 +16,7 @@
           <% else %>
           <li><%= link_to '« Previous', @page_link + "start=#{@prev}", class: "btn btn-link" %></li>
           <% end %>
-          <%= content_tag(:li, "#{@start} - #{@page_last} of #{@last_id}", class: "btn disabled", style: "color:black;strong;font-weight:bold;") %>
+          <%= content_tag(:li, "#{number_with_delimiter(@start)} - #{number_with_delimiter(@page_last)} of #{number_with_delimiter(@last_id)}", class: "btn disabled", style: "color:black;strong;font-weight:bold;") %>
           <% if @is_last %>
             <%= content_tag(:li, "Next »", class: "btn disabled") %>
           <% else %>
