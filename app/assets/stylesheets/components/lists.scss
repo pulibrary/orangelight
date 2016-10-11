@@ -72,18 +72,20 @@ ul {
         font-size: 1.15em;
     }
 
-    li {
-        float: left;
-        border-left: 1px solid $gray;
-        padding: 0 10px;
+    @media (min-width: 530px) {
+        li {
+            float: left;
+            border-left: 1px solid $gray;
+            padding: 0 10px;
 
-        &:first-child {
-            border-left: 0;
-            padding-left: 0;
-        }
+            &:first-child {
+                border-left: 0;
+                padding-left: 0;
+            }
 
-        a {
-            font-size: 0.9em;
+            a {
+                font-size: 0.9em;
+            }
         }
     }
 }

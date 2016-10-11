@@ -51,7 +51,7 @@
       vertical-align: middle;
       position: relative;
       top: 50%;
-      margin-top: -10px; 
+      margin-top: -10px;
     }
 }
 
@@ -68,7 +68,10 @@
 
 .menu--level-1 > ul {
     display: block;
-    float: right;
+    @media (min-width: 530px) {
+        float: right;
+    }
+
     > li > a,
     .btn-account {
         color: $gray;
@@ -80,6 +83,16 @@
         float: left;
         padding: 0 20px;
         border-right: 1px solid darken($gray, 40%);
+
+        @media (max-width: 530px) {
+        padding: 0 5px;
+        line-height: 1em;
+
+            button {
+                padding: 0;
+            }
+        }
+
         &:last-child {
             border-right: none;
             padding-right: 0;
@@ -98,11 +111,10 @@
 
 @media (max-width: 500px) {
     .header__secondary .container {
-        height: 140px;
+        height: auto;
     }
     .header__secondary .container .navbar-right {
         width: 100%;
-        margin-top: 1em;
     }
     .search-options,
     .header__secondary .container .navbar-right .navbar-nav,
