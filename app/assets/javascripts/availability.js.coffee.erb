@@ -49,7 +49,7 @@ class AvailabilityUpdater
           this.apply_record_icon(availability_element, "On-site access", aeon)
         else
           this.apply_record_icon(availability_element, "All items available", aeon)
-        this.get_more_items(holding_id)
+        this.get_more_items(holding_id, availability_info['label'])
       else
         this.apply_record_icon(availability_element, availability_info['status'], aeon)
       if availability_info['temp_loc']
@@ -89,7 +89,7 @@ class AvailabilityUpdater
         call_number.find('a.find-it').replaceWith(map_link)
       this.apply_record_icon(availability_element, availability_info['status'], aeon)
     true
-  get_more_items: (holding_id) ->
+  get_more_items: (holding_id, holding_label) ->
     url = "#{@availability_url}?mfhd=#{holding_id}"
     req = $.getJSON url
     element = $("*[data-availability-record='true'][data-holding-id='#{holding_id}']")
@@ -98,12 +98,13 @@ class AvailabilityUpdater
       for key, item of data
         status = title_case(item['status'])
         label = status_label(status)
-        if (status not in available_statuses && status != on_site_status) || item['temp_loc']
-          if item['temp_loc']
-            li = "<li>#{item['enum'] || 'Item'}: #{item['label']} - #{status_display(status, label)}</li>"
-          else
-            li = "<li>#{item['enum'] || 'Item'}: #{status_display(status, label)}</li>"
+        if holding_label != item['label'] || item['temp_loc']
+          li = "<li>#{item['enum'] || 'Item'}: #{item['label']} - #{status_display(status, label)}</li>"
           ul = ul + li
+        if (status not in available_statuses && status != on_site_status)
+          unless holding_label != item['label'] || item['temp_loc']
+            li = "<li>#{item['enum'] || 'Item'}: #{status_display(status, label)}</li>"
+            ul = ul + li
           span = $("*[data-holding-id='#{holding_id}'] .availability-icon")
           txt = if status.match(on_site_unavailable)
             circ_desk
@@ -195,8 +196,7 @@ class AvailabilityUpdater
     else
       location = availability_info['location']
     map_url = "#{base}?loc=#{location}&id=#{record_id}"
-    link_msg = 'Where to find it?'
-    link = "<a target='_blank' title='' class='find-it' data-location-map='#{location}' data-toggle='tooltip' href='#{map_url}' data-original-title='#{link_msg}'>"
+    link = "<a target='_blank' title='' class='find-it' data-location-map='#{location}' data-toggle='tooltip' href='#{map_url}'>"
     marker_span = "<span class='glyphicon glyphicon-map-marker'></span>"
     if marker_only
       link = "#{link}#{marker_span}</a>"
