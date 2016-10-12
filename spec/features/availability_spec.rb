@@ -51,6 +51,15 @@ describe 'Availability' do
     end
   end
 
+  describe 'multiple locations within a single holding', js: true do
+    it 'individual locations display and do not trigger unavailable label' do
+      visit 'catalog/2585108'
+      sleep 2.seconds
+      expect(page.all('.availability-icon.label.label-success', text: 'All items available').length).to be > 0
+      expect(page.all('li', text: 'vol.2: East Asian Library - Reserve - Available (Not charged)').length).to be > 0
+    end
+  end
+
   describe 'On-site multiple items all available', js: true do
     it 'display availability as on-site and does not display individual items' do
       visit 'catalog/2238036'
