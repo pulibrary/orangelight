@@ -31,7 +31,6 @@ a.clear-bookmarks {
   margin: 0;
 
   li {
-    float: left;
     display: inline-block;
     margin-left: 3px;
   }
@@ -60,13 +59,14 @@ a.clear-bookmarks {
 #sortAndPerPage .page_links .next a,
 .prev.is-disabled,
 .next.is-disabled,
-#previousNextDocument .previous,
-#previousNextDocument .next,
+.pagination-search-widgets .previous,
+.pagination-search-widgets .next,
 .checkbox.bookmark_all span,
 .search-widgets .checkbox.toggle_bookmark span,
 .bookmarksTools.nav #emailLink,
 .bookmarksTools.nav #citationLink,
-.bookmarksTools.nav > li > a {
+.bookmarksTools.nav > li > a,
+.bookmark-tool a {
   @media (min-width: $bp-small) {
     margin: 3px 3px 3px 0;
   }
@@ -85,17 +85,28 @@ a.clear-bookmarks {
   }
 }
 
+.bookmark-tool {
+  float: left;
+  margin: 20px 4px 0 0;
+  font-size: 14px;
+
+  @media (max-width: 500px) {
+    margin: 8px 6px 0 0;
+    float: right;
+  }
+}
+
 .checkbox.bookmark_all span,
 .search-widgets .checkbox.toggle_bookmark span {
   display: inline-block;
 }
 
-#previousNextDocument .checkbox.toggle_bookmark {
+.pagination-search-widgets .checkbox.toggle_bookmark {
   margin-bottom: 0;
 }
 
-#previousNextDocument .previous,
-#previousNextDocument .next {
+.pagination-search-widgets .previous,
+.pagination-search-widgets .next {
   opacity: .5;
   background: $light-gray;
   cursor: default;
@@ -107,8 +118,8 @@ a.clear-bookmarks {
   }
 }
 
-#previousNextDocument a.previous,
-#previousNextDocument a.next {
+.pagination-search-widgets a.previous,
+.pagination-search-widgets a.next {
   opacity: 1;
   cursor: pointer;
 
@@ -129,19 +140,6 @@ a.clear-bookmarks {
   &:focus,
   &:active {
     text-decoration: none;
-  }
-}
-
-@media (max-width: $bp-small) {
-  .search-widgets li {
-    width: 100%;
-
-    button,
-    .toggle_bookmark,
-    .toggle_bookmark span {
-      width: 100%;
-      display: block;
-    }
   }
 }
 
@@ -188,9 +186,31 @@ header .navbar-nav > li > a {
 #sort-dropdown,
 #sort-dropdown .dropdown-toggle,
 #per_page-dropdown,
+#per_page-dropdown .dropdown-toggle,
+.checkbox.bookmark_all span,
+// .search-widgets .checkbox.toggle_bookmark span,
+.bookmark_all,
+.bookmark_all label,
+.bookmark_all span {
+  @media (max-width: 500px) {
+    margin: 0;
+    width: auto;
+    float: left;
+    display: inline;
+  }
+}
+
+.checkbox.bookmark_all,
+.search-widgets .checkbox.toggle_bookmark {
+  @media (max-width: 500px) {
+    // float: left;
+    margin-left: 0;
+  }
+}
+
 #per_page-dropdown .dropdown-toggle {
   @media (max-width: 500px) {
-    width: 100%;
+    margin: 0 6px;
   }
 }
 
@@ -216,4 +236,14 @@ header .navbar-nav > li > a {
 
 .login-button {
   margin-bottom: 5px;
+}
+
+.search-widgets .dropdown-menu {
+  @media (max-width: 500px) {
+    right: initial;
+  }
+}
+
+.pagination-search-widgets .col-sm-6 {
+  width: auto;
 }

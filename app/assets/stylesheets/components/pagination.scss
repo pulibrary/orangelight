@@ -17,7 +17,12 @@ ul.pagination {
   }
 }
 
-#previousNextDocument .page_links {
+.pager li > span {
+  border: 0;
+  padding: 0;
+}
+
+.pagination-search-widgets .page_links {
   padding: 0;
   border: 0;
   display: inline-block;
@@ -27,10 +32,6 @@ ul.pagination {
   .previous {
     margin-left: 0;
     display: inline-block;
-
-    @media (max-width: 500px) {
-      width: 100%;
-    }
   }
 }
 
@@ -44,8 +45,6 @@ ul.pagination {
     @media (max-width: 500px) {
       width: 100%;
       font-size: 14px;
-      display: block;
-      margin-bottom: 6px;
     }
   }
 
@@ -65,10 +64,23 @@ ul.pagination {
       display: inline-block;
 
       @media (max-width: 500px) {
-        width: 100%;
+        display: inline;
+        float: left;
+        font-size: 20px;
+        margin: 0 6px 0 0;
+        vertical-align: middle;
+        width: 44px;
+        height: 34px;
+        line-height: 0.9em;
+      }
+    }
+
+    .page_entries {
+      @media (max-width: 500px) {
         font-size: 14px;
-        display: block;
-        margin-bottom: 6px;
+        display: inline;
+        float: right;
+        padding: 10px 6px;
       }
     }
   }

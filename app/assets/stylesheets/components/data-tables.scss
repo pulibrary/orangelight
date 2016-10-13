@@ -15,3 +15,24 @@ div.dataTables_wrapper {
     text-align: left;
   }
 }
+
+@media (max-width: 500px) {
+
+  .reserves-info {
+    display: none;
+  }
+
+  .dataTables_wrapper .dataTables_filter label {
+    white-space: initial;
+
+    input {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  .dataTables_length {
+    display: none;
+  }
+
+}

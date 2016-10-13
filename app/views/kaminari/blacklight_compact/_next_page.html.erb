@@ -6,4 +6,4 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-<span class="next <%= 'is-disabled' if current_page.last? %>"><%= link_to_unless current_page.last?, raw(t 'views.pagination_compact.next'), url, :rel => 'next', :remote => remote %></span>
+<span class="next <%= 'is-disabled' if current_page.last? %>"><%= link_to_unless current_page.last?, raw(t 'blacklight.pagination_compact.next'), url, :rel => 'next', :remote => remote %></span>

@@ -1,31 +1,26 @@
+<%= render 'shared/start_over_row' %>
 
-<div class="constraints-container">
-  <div class="button--start-over">
-      <%=link_to t('blacklight.search.start_over'), start_over_path, :class => "catalog_startOverLink btn btn-primary icon-refresh", :id=>"startOverLink" %>
-  </div>
-</div>
-
-<div class="browse-header">
-  <h1 class="page-heading col-md-6"> Browse by <%="#{@list_name.downcase}" %></h1>
-  <div class="col-md-6">
+<div class="col-md-12">
+  <div class="browse-header">
+    <h1 class="page-heading"> Browse by <%="#{@list_name.downcase}" %></h1>
     <div class="prev_next_links btn-group pull-right">
       <nav aria-label="top pager" class="browse-pager">
         <ul class="pager">
           <% if @is_first %>
-            <%= content_tag(:li, "« Previous", class: "btn disabled") %>
+            <%= content_tag(:li, raw(t 'blacklight.pagination_compact.previous'), class: "") %>
           <% else %>
-          <li><%= link_to '« Previous', @page_link + "start=#{@prev}", class: "btn btn-link" %></li>
+          <li><%= link_to raw(t 'blacklight.pagination_compact.previous'), @page_link + "start=#{@prev}", class: "btn btn-link" %></li>
           <% end %>
-          <%= content_tag(:li, "#{@start} - #{@page_last} of #{@last_id}", class: "btn disabled", style: "color:black;strong;font-weight:bold;") %>
+          <%= content_tag(:li, "#{@start} - #{@page_last} of #{@last_id}", class: "page-count", style: "color:black;strong;font-weight:bold;") %>
           <% if @is_last %>
-            <%= content_tag(:li, "Next »", class: "btn disabled") %>
+            <%= content_tag(:li, raw(t 'blacklight.pagination_compact.next'), class: "btn disabled") %>
           <% else %>
-            <li><%= link_to 'Next »', @page_link + "start=#{@next}", class: "btn btn-link" %></li>
+            <li><%= link_to raw(t 'blacklight.pagination_compact.next'), @page_link + "start=#{@next}", class: "btn btn-link" %></li>
           <% end %>
         </ul>
       </nav>
 
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%=t(:'blacklight.search.per_page.button_label', :count => @rpp) %> <span class="caret"></span></button>
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%=t(:'blacklight.search.per_page.button_label', :count => @rpp).html_safe %> <span class="caret"></span></button>
       <ul class="dropdown-menu" role="menu">
           <li><%= link_to("10", url_for(search_state.params_for_search(:rpp => 10))) %></li>
           <li><%= link_to("25", url_for(search_state.params_for_search(:rpp => 25))) %></li>
@@ -34,97 +29,97 @@
       </ul>
     </div>
   </div>
-</div>
 
 
-<% if @model != 'call_numbers' %>
-  <ul class="browse col-md-12">
+  <% if @model != 'call_numbers' %>
+    <ul class="browse">
+        <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
+
+          <% if orangelight_name.id == @match && @exact_match %>
+            <li class="alert alert-info clickable-row" data-href="/catalog/?f[<%=@facet%>][]=<%=CGI.escape orangelight_name.label%>">
+              <strong>
+          <% else %>
+            <li class="row-<%=i.even? ? 'odd' : 'even' %>">
+          <% end %>
+            &nbsp;
+            <span class="facet-label <%=orangelight_name.dir%>"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{CGI.escape orangelight_name.label}", dir: orangelight_name.dir %>
+              <%= "(#{orangelight_name.count})"%>
+            <%#= link_to "[more info]", "#{@model}/#{orangelight_name.id}", class: "more-info;", dir: orangelight_name.dir %></span>
+          <% if orangelight_name.id == @match && @exact_match %>
+              </strong>
+            </li>
+          <% else %>
+            </li>
+          <% end %>
+          <% if orangelight_name.id == @match && !@exact_match %>
+            <li class="alert alert-info">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong>
+            </li>
+          <% end %>
+        <% end %>
+    </ul>
+
+  <% else %>
+  <div id="content" class="browse-row">
+  <table class="browse browse--call-number documents-list">
+    <thead>
+      <tr>
+        <th> <%= @list_name %> </th>
+        <th>Location</th>
+        <th>Title</th>
+        <th>Creator</th>
+        <th>Publication info</th>
+      </tr>
+    </thead>
+
+    <tbody >
       <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
-
         <% if orangelight_name.id == @match && @exact_match %>
-          <li class="alert alert-info clickable-row" data-href="/catalog/?f[<%=@facet%>][]=<%=CGI.escape orangelight_name.label%>">
+          <tr class="alert alert-info clickable-row" data-href="/catalog/<%=orangelight_name.bibid%>">
             <strong>
         <% else %>
-          <li class="row-<%=i.even? ? 'odd' : 'even' %>">
+          <tr class="row-<%=i.even? ? 'odd' : 'even' %>">
         <% end %>
-          &nbsp;
-          <span class="facet-label <%=orangelight_name.dir%>"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{CGI.escape orangelight_name.label}", dir: orangelight_name.dir %>
-            <%= "(#{orangelight_name.count})"%>
-          <%#= link_to "[more info]", "#{@model}/#{orangelight_name.id}", class: "more-info;", dir: orangelight_name.dir %></span>
+          <td><%= link_to orangelight_name.label, "/catalog/#{orangelight_name.bibid}" %></td>
+          <td class="availability-column" data-availability-record="<%=should_check_availability?(orangelight_name.bibid)%>" data-record-id="<%=bib_for_availability(orangelight_name.bibid)%>" data-holding-id="<%=orangelight_name.holding_id%>">
+            <%= orangelight_name.location %></br><span class="availability-icon label label-default"></span>
+          </td>
+
+          <td class="<%=orangelight_name.dir%>"><%= orangelight_name.title %></td>
+          <td><%= orangelight_name.author %></td>
+          <td><%= orangelight_name.date %></td>
         <% if orangelight_name.id == @match && @exact_match %>
             </strong>
-          </li>
+          </tr>
         <% else %>
-          </li>
+          </tr>
         <% end %>
         <% if orangelight_name.id == @match && !@exact_match %>
-          <li class="alert alert-info">
-          <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong>
-          </li>
+            <tr class="alert alert-info"> <td colspan=5>
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong> </td>
+          </tr>
         <% end %>
       <% end %>
-  </ul>
+    </tbody>
+  </table>
+  </div>
+  <% end %>
 
-<% else %>
-<div id="content" class="browse-row">
-<table class="browse browse--call-number documents-list">
-  <thead>
-    <tr>
-      <th> <%= @list_name %> </th>
-      <th>Location</th>
-      <th>Title</th>
-      <th>Creator</th>
-      <th>Publication info</th>
-    </tr>
-  </thead>
-
-  <tbody >
-    <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
-      <% if orangelight_name.id == @match && @exact_match %>
-        <tr class="alert alert-info clickable-row" data-href="/catalog/<%=orangelight_name.bibid%>">
-          <strong>
-      <% else %>
-        <tr class="row-<%=i.even? ? 'odd' : 'even' %>">
-      <% end %>
-        <td><%= link_to orangelight_name.label, "/catalog/#{orangelight_name.bibid}" %></td>
-        <td class="availability-column" data-availability-record="<%=should_check_availability?(orangelight_name.bibid)%>" data-record-id="<%=bib_for_availability(orangelight_name.bibid)%>" data-holding-id="<%=orangelight_name.holding_id%>">
-          <%= orangelight_name.location %></br><span class="availability-icon label label-default"></span>
-        </td>
-
-        <td class="<%=orangelight_name.dir%>"><%= orangelight_name.title %></td>
-        <td><%= orangelight_name.author %></td>
-        <td><%= orangelight_name.date %></td>
-      <% if orangelight_name.id == @match && @exact_match %>
-          </strong>
-        </tr>
-      <% else %>
-        </tr>
-      <% end %>
-      <% if orangelight_name.id == @match && !@exact_match %>
-          <tr class="alert alert-info"> <td colspan=5>
-          <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong> </td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
-</div>
-<% end %>
-
-<div class="col-md-12">
-  <nav aria-label="bottom pager">
-    <ul class="pager">
-      <% if @is_first %>
-        <%= content_tag(:li, "« Previous", class: "btn disabled") %>
-      <% else %>
-      <li><%= link_to '« Previous', @page_link + "start=#{@prev}", class: "btn btn-link" %></li>
-      <% end %>
-      <%= content_tag(:li, "#{@start} - #{@page_last} of #{@last_id}", class: "btn disabled", style: "color:black;strong;font-weight:bold;") %>
-      <% if @is_last %>
-        <%= content_tag(:li, "Next »", class: "btn disabled") %>
-      <% else %>
-      <li><%= link_to 'Next »', @page_link + "start=#{@next}", class: "btn btn-link" %></li>
-      <% end %>
-    </ul>
-  </nav>
+  <div class="col-md-12">
+    <nav aria-label="bottom pager">
+      <ul class="pager">
+        <% if @is_first %>
+          <%= content_tag(:li, raw(t 'blacklight.pagination_compact.previous'), class: "btn disabled") %>
+        <% else %>
+        <li><%= link_to raw(t 'blacklight.pagination_compact.previous'), @page_link + "start=#{@prev}", class: "btn btn-link" %></li>
+        <% end %>
+        <%= content_tag(:li, "#{@start} - #{@page_last} of #{@last_id}", class: "page-count", style: "color:black;strong;font-weight:bold;") %>
+        <% if @is_last %>
+          <%= content_tag(:li, raw(t 'blacklight.pagination_compact.next'), class: "btn disabled") %>
+        <% else %>
+        <li><%= link_to raw(t 'blacklight.pagination_compact.next'), @page_link + "start=#{@next}", class: "btn btn-link" %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
 </div>

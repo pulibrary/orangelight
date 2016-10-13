@@ -3,10 +3,10 @@
 <div id='previousNextDocument' class='pagination-search-widgets'>
   <div class="col-xs-12 col-sm-6">
     <div class="button--start-over">
-      <%=link_to t('blacklight.search.start_over'), start_over_path, :class => "catalog_startOverLink btn btn-primary icon-refresh", :id=>"startOverLink" %>
+      <%=link_to t('blacklight.search.start_over').html_safe, start_over_path, :class => "catalog_startOverLink btn btn-primary", :id=>"startOverLink" %>
     </div>
   <% if @previous_document || @next_document %>
-      <%= link_back_to_catalog class: "btn btn-default icon-moveback" %>
+      <%= link_back_to_catalog class: "btn btn-default" %>
       <div class="page_links">
         <%= link_to_previous_document @previous_document %>
         <%= link_to_next_document @next_document %>
@@ -19,12 +19,12 @@
       <ul class="nav navbar-nav navbar-right">
         <% if @document.voyager_record? %>
           <li>
-            <%= link_to "Cite", citation_solr_document_path(:id => @document), {:id => 'citeLink', :data => {:ajax_modal => "trigger"}, class: "btn btn-default icon-cite"} %>
+            <%= link_to t('blacklight.search.cite').html_safe, citation_solr_document_path(:id => @document), {:id => 'citeLink', :data => {:ajax_modal => "trigger"}, class: "btn btn-default"} %>
           </li>
         <% end %>
 
         <li class="dropdown">
-          <button class="btn btn-default" data-toggle="dropdown"><span class="icon-share"></span>Send to <span class="caret"></span></button>
+          <button class="btn btn-default" data-toggle="dropdown"><span class="icon-share"></span> Send <span class="hidden-xs hidden-sm">to <span class="caret"></span></span></button>
           <ul class="dropdown-menu" role="menu">
             <li class="sms">
               <%= link_to "SMS", sms_solr_document_path(:id => @document), {:id => 'smsLink', :data => {:ajax_modal => "trigger"}, class: "icon-mobile"} %>

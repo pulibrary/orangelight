@@ -1,0 +1,5 @@
+<%= render_show_doc_actions document_list, document: nil, document_list: @document_list, url_opts: Blacklight::Parameters.sanitize(params.to_unsafe_h) do |config, inner| %>
+  <div class="bookmark-tool">
+    <%= inner %>
+  </div>
+<% end %>

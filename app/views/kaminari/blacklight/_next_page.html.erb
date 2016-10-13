@@ -1,0 +1,17 @@
+<%# Link to the "Next" page
+  - available local variables
+    url:           url to the next page
+    current_page:  a page object for the currently displayed page
+    num_pages:     total number of pages
+    per_page:      number of items to fetch per page
+    remote:        data-remote
+-%>
+<% if current_page.last? %>
+    <li class="disabled">
+      <%= link_to raw(t 'blacklight.pagination_compact.next'), '#', :rel => 'next', :onclick=>'return false;' %>
+    </li>
+<% else %>
+    <li>
+      <%= link_to raw(t 'blacklight.pagination_compact.next'), url, :rel => 'next', :remote => remote %>
+    </li>
+<% end %>

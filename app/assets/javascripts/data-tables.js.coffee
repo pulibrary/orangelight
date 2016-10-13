@@ -4,5 +4,6 @@ jQuery ->
       language: {
         search: "Search by course, instructor, or department:"
       }
+      responsive: true
     }
   )

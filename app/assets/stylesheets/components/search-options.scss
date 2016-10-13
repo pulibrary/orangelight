@@ -2,7 +2,7 @@
 @import "variables/colors";
 @import "variables/typography";
 
-@media (min-width: 500px) and (max-width: $bp-medium) {
+@media (max-width: $bp-medium) {
   .search-options {
     margin-top: 0.6em;
     max-width: 50%;
@@ -10,8 +10,34 @@
 
   .header__secondary .container .navbar-right {
     margin-top: 0.6em;
-    max-width: 50%;
     float: right;
+  }
+}
+
+@media (max-width: 500px) {
+  .header__secondary .container .navbar-right {
+    margin-top: -27px;
+    max-width: initial;
+
+    li:last-child {
+      margin: 0 6px 0 14px;
+    }
+
+    a:hover {
+      background: none;
+      color: $black;
+    }
+
+    a:hover,
+    a:active {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (min-width: 500px) and (max-width: 530px) {
+  .header__secondary .container .navbar-right {
+    margin-top: -47px;
   }
 }
 
@@ -105,6 +131,10 @@
   }
 }
 
+.header__secondary .navbar-right {
+  z-index: 2;
+}
+
 .header__secondary .navbar-right .nav {
   float: right;
   clear: none;
@@ -129,5 +159,32 @@
 @media (min-width: $bp-medium) {
   ul.search-options {
     padding-left: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .search-options a,
+  .header__secondary .navbar-right .nav > li > a,
+  .menu--level-1 > ul > li > a,
+  .menu--level-1 > ul .btn-account {
+    font-size: 12px;
+  }
+
+  .l-branding__pul {
+    height: auto;
+  }
+
+  .l-branding__pul .menu--level-1 {
+    height: auto;
+
+    > ul {
+      margin-top: -10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .menu--level-1 > ul .btn-account {
+    height: auto;
+    padding-top: 10px;
   }
 }
