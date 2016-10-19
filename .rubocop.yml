@@ -15,6 +15,7 @@ AllCops:
     - 'vendor/**/*'
     - 'bin/*'
     - 'config/deploy.rb'
+    - 'config/initializers/blacklight_url_helper_behavior.rb'
 
 Metrics/AbcSize:
   Exclude:

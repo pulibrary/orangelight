@@ -2,6 +2,10 @@
 @import "variables/colors";
 @import "variables/typography";
 
+.browse {
+  clear: both;
+}
+
 .browse-row {
   padding: 2px 15px;
 
@@ -34,4 +38,17 @@
 
 .clickable-row {
   cursor: pointer;
+}
+
+@media (max-width: 540px) {
+  .prev_next_links.pull-right {
+    width: 100%;
+    margin-top: 1em;
+
+    > .dropdown-toggle:not(:first-child) {
+      float: right;
+      margin-top: -1px;
+      margin-left: 0;
+    }
+  }
 }

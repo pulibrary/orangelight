@@ -5,5 +5,14 @@
                 sort: 'cataloged_tdt desc, pub_date_start_sort desc, title_sort asc').except(:controller, :action)),
                 :class => "icon-rssfeed", :title => "Subscribe to results feed", 'data-toggle' => "tooltip" ) %>
   </div>
-  <%= render_results_collection_tools wrapping_class: "search-widgets pull-right" %>
+  <div class="search-widgets pull-right">
+    <% if bookmarks? %>
+      <%= render partial: 'tools', locals: { document_list: @document_list } %>
+    <% end %>
+    <%= render partial: 'sort_widget' %>
+    <%= render partial: 'per_page_widget' %>
+    <% unless bookmarks? %>
+      <%= render partial: 'bookmark_all' %>
+    <% end %>
+  </div>
 </div>

@@ -44,6 +44,14 @@ en:
       start_over: 'Start over'
       librarian_view:
         title: 'Staff view'
+      sort:
+        label: 'Sort<span class="hidden-xs hidden-sm hidden-md"> by %{field}</span>'
+      per_page:
+        button_label: '%{count}<span class="hidden-xs hidden-sm hidden-md"> per page</span>'
+      start_over: '<span class="icon-refresh"></span> <span class="hidden-xs hidden-sm">Start over</span>'
+      cite: '<span class="icon-cite"></span> Cite'
+      bookmarks:
+        present: 'In Bookmarks'
     header_links:
       login: 'Login'
       course_reserves: 'Course Reserves'
@@ -75,3 +83,7 @@ en:
         action_title: 'Clear search history'
     tools:
       librarian_view: 'Staff view'
+    pagination_compact:
+      previous: '&laquo; <span class="hidden-xs hidden-sm"> Previous</span>'
+      next: '<span class="hidden-xs hidden-sm">Next</span> &raquo;'
+    back_to_search: '<span class="icon-moveback"></span> <span class="hidden-xs hidden-sm">Back to search</span>'

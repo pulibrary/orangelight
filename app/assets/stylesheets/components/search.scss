@@ -6,7 +6,7 @@ header .navbar-form .input-group .input-group-addon {
   width: 190px;
 }
 
-@media (max-width: 530px) {
+@media (max-width: 500px) {
   header .navbar-form .input-group .input-group-addon {
     width: 100%;
     clear: both;
@@ -119,7 +119,11 @@ header .input-group-addon {
 
 #search-navbar .search-query-form {
   width: auto;
-  padding: 1.4em 0;
+  padding: 1.4em 0 0;
+
+  @media (min-width: 500px) {
+    padding: 1.4em 0;
+  }
 }
 
 .search-query-form .input-group {
@@ -134,7 +138,7 @@ header .input-group-addon {
   li {
     display: inline-block;
 
-    @media (min-width: 530px) {
+    @media (min-width: 500px) {
       padding-right: 1em;
     }
   }

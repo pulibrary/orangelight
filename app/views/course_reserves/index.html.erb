@@ -1,22 +1,26 @@
-<div class="well well-lg">
+<%= render 'shared/start_over_row' %>
+
+<div class="col-sm-12">
   <h1>Course Reserves</h1>
-  Search for your course, instructor, or department below. Please note that every reserve location has its own loan and shelving policies. Consult Library staff in the Firestone Reserve Room or at branch library circulation desks for assistance.
+  <div class="reserves-info well well-lg">
+    Search for your course, instructor, or department below. Please note that every reserve location has its own loan and shelving policies. Consult Library staff in the Firestone Reserve Room or at branch library circulation desks for assistance.
+  </div>
+  <table class="table data-table responsive no-wrap" data-page-length="25">
+    <thead>
+      <th>Course</th>
+      <th>Instructor</th>
+      <th>Department</th>
+    </thead>
+    <tbody>
+      <% @courses.to_a.each do |course| %>
+        <tr>
+          <td>
+            <%= link_to course.course_with_id, search_catalog_path(f: {instructor: [course.instructor], course: [course.course_with_id]}, search_field: "all_fields") %>
+          </td>
+          <td><%= course.instructor %></td>
+          <td><%= course.department_with_identifier %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-<table class="table data-table" data-page-length="25">
-  <thead>
-    <th>Course</th>
-    <th>Instructor</th>
-    <th>Department</th>
-  </thead>
-  <tbody>
-    <% @courses.to_a.each do |course| %>
-      <tr>
-        <td>
-          <%= link_to course.course_with_id, search_catalog_path(f: {instructor: [course.instructor], course: [course.course_with_id]}, search_field: "all_fields") %>
-        </td>
-        <td><%= course.instructor %></td>
-        <td><%= course.department_with_identifier %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>

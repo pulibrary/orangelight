@@ -2,6 +2,12 @@
 @import "variables/colors";
 @import "variables/typography";
 
+#sidebar {
+  @media (max-width: 500px) {
+    padding-bottom: 0;
+  }
+}
+
 .facet_limit-active,
 .facet_limit-active > .panel-heading {
   color: #333;
