@@ -191,13 +191,13 @@ describe 'blacklight tests' do
     end
   end
 
-  describe 'librarian view' do
+  describe 'staff view' do
     it 'marcxml matches bibdata marcxml for record' do
       id = '6574987'
       get "/catalog/#{id}.marcxml"
-      librarian_view = response.body
+      staff_view = response.body
       bibdata = Faraday.get("https://bibdata.princeton.edu/bibliographic/#{id}").body
-      expect(librarian_view).to eq bibdata
+      expect(staff_view).to eq bibdata
     end
   end
 

@@ -14,5 +14,8 @@ RSpec.describe CatalogController, type: :routing do
     it 'catalog/isbn/99 routes to #isbn' do
       expect(get: '/catalog/isbn/99').to route_to('catalog#isbn', id: '99')
     end
+    it 'catalog/99/staff_view routes to #librarian_view' do
+      expect(get: '/catalog/99/staff_view').to route_to('catalog#librarian_view', id: '99')
+    end
   end
 end
