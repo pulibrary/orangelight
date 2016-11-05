@@ -43,7 +43,7 @@ module ApplicationHelper
     if DONT_FIND_IT.include?(library) || call_number.blank?
       ''
     else
-      ' ' + link_to(%(<span class="link-text">#{t('blacklight.holdings.stackmap')}</span> <span class="glyphicon glyphicon-map-marker"></span>).html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => '_blank', class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
+      ' ' + link_to(%(<span class="link-text">#{t('blacklight.holdings.stackmap')}</span><span class="glyphicon glyphicon-map-marker"></span>).html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
     end
   end
 

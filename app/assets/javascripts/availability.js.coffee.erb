@@ -52,9 +52,6 @@ class AvailabilityUpdater
         this.get_more_items(holding_id, availability_info['label'])
       else
         this.apply_record_icon(availability_element, availability_info['status'], aeon)
-      if availability_info['temp_loc']
-        map_link = stackmap_link(id, availability_info)
-        location.next('a.find-it').replaceWith(map_link)
       this.update_location_services(holding_id, availability_info)
   update_location_services: (holding_id, availability_info) ->
     status = availability_info['status']
@@ -83,10 +80,6 @@ class AvailabilityUpdater
       availability_element = $("*[data-availability-record='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .availability-icon")
       if availability_info['temp_loc']
         $(availability_element).next('.icon-warning').hide()
-        show_marker = true
-        call_number = $("*[data-location='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .call-number")
-        map_link = stackmap_link(record_id, availability_info, show_marker)
-        call_number.find('a.find-it').replaceWith(map_link)
       this.apply_record_icon(availability_element, availability_info['status'], aeon)
     true
   get_more_items: (holding_id, holding_label) ->
@@ -196,7 +189,7 @@ class AvailabilityUpdater
     else
       location = availability_info['location']
     map_url = "#{base}?loc=#{location}&id=#{record_id}"
-    link = "<a target='_blank' title='' class='find-it' data-location-map='#{location}' data-toggle='tooltip' href='#{map_url}'>"
+    link = "<a target='_blank' title='Where to find it' class='find-it' data-location-map='#{location}' data-toggle='tooltip' href='#{map_url}'>"
     marker_span = "<span class='glyphicon glyphicon-map-marker'></span>"
     if marker_only
       link = "#{link}#{marker_span}</a>"
