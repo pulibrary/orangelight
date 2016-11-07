@@ -220,17 +220,32 @@ header .navbar-nav > li > a {
 }
 
 .back-to-top {
-    width: 40px;
-    height: 40px;
-    text-decoration: none;
-    position:fixed;
-    bottom: 30px;
-    right: 30px;
-    display:none;
     background: image-url("up-arrow.svg") center 50% no-repeat rgba(255,255,255,.8);
+    bottom: 30px;
+    display: none;
+    height: 40px;
+    overflow: hidden;
+    position: fixed;
+    right: 10px;
+    text-decoration: none;
+    text-indent: 100%;
+    white-space: nowrap;
+    width: 40px;
+
+    @media only screen and (min-width: 768px) {
+      bottom: 20px;
+      right: 20px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      bottom: 30px;
+      height: 60px;
+      right: 30px;
+      width: 60px;
+    }
 
   &:hover{
-    text-decoration:none;
+    text-decoration: none;
   }
 }
 

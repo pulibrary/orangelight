@@ -86,13 +86,12 @@
 
     .navbar-right,
     .search-options {
-        @media (min-width: $bp-small) {
-          transform: none;
-          margin-top: -11px;
-          margin-bottom: 10px;
-        }
-        @media (min-width: $bp-medium) {
-        }
+      @media (min-width: $bp-small) and (max-width: $bp-medium) {
+        transform: none;
+        margin-top: 0;
+        margin-bottom: 1em;
+        width: auto;
+      }
       top: 50%;
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
