@@ -68,4 +68,13 @@ describe 'Availability' do
       expect(page.all('ul.item-status').length).to eq 0
     end
   end
+
+  describe 'On-site in process item', js: true do
+    it 'displays availability as In-process' do
+      visit 'catalog/9590420'
+      sleep 5.seconds
+      expect(page.all('.availability-icon.label.label-success', text: 'In process').length).to eq 1
+      expect(page.all('ul.item-status').length).to eq 0
+    end
+  end
 end
