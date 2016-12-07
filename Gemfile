@@ -70,7 +70,9 @@ gem 'newrelic_rpm'
 gem 'mail_form'
 gem 'string_rtl'
 
-gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'stable_orangelight'
+#gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'stable_orangelight'
+
+gem 'requests', path: '/Users/Sellis/Development/requests'
 
 gem "blacklight_unapi", git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'blacklight_6'
 
@@ -82,13 +84,12 @@ group :development do
 end
 
 group :test do
-  gem 'webmock', require: false 
+  gem 'webmock', require: false
   gem 'poltergeist'
   gem 'factory_girl_rails', require: false
   gem 'launchy'
 end
 
-group :development, :test do 
+group :development, :test do
   gem 'pry-byebug'
 end
-

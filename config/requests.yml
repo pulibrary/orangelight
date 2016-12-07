@@ -8,9 +8,11 @@ defaults: &defaults
   voyager_api_base: http://catalog.princeton.edu:7014
   pulsearch_base: https://pulsearch.princeton.edu
   aeon_base: https://library.princeton.edu/aeon/aeon.dll?
+  gfa_base: http://libweb5.princeton.edu/RecapRequestService/Default.aspx
 development:
   <<: *defaults
   voyager_ub_id: 1@DB
+  bibdata_base: http://localhost:3001
 
 test:
   <<: *defaults
