@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810220405) do
+ActiveRecord::Schema.define(version: 20161222150444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,14 +52,14 @@ ActiveRecord::Schema.define(version: 20160810220405) do
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
 
   create_table "orangelight_call_numbers", force: :cascade do |t|
-    t.string "label"
+    t.text   "label"
     t.string "dir"
-    t.string "scheme"
-    t.string "sort"
+    t.text   "scheme"
+    t.text   "sort"
     t.text   "title"
     t.text   "author"
     t.text   "date"
-    t.string "bibid"
+    t.text   "bibid"
     t.string "holding_id"
     t.string "location"
   end
