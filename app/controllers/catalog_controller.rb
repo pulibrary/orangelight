@@ -22,6 +22,8 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.pivot'] ||= ''
+    config.advanced_search[:form_solr_parameters]['f.language_facet.facet.limit'] ||= -1
+    config.advanced_search[:form_solr_parameters]['f.language_facet.facet.sort'] ||= 'index'
 
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
 
