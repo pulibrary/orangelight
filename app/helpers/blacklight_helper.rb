@@ -227,7 +227,11 @@ module BlacklightHelper
         faraday.response :logger                  # log requests to STDOUT
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
       end
-      facet_request = "/solr/blacklight-core/select?fq=#{fq}&fl=id,title_display,author_display&wt=json"
+      facet_request = "#{core_url}select?fq=#{fq}&fl=id,title_display,author_display&wt=json"
       conn.get facet_request
+    end
+
+    def core_url
+      Blacklight.default_index.connection.uri.to_s.gsub(%r{^.*\/solr}, '/solr')
     end
 end

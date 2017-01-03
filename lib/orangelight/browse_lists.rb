@@ -14,7 +14,7 @@ module BrowseLists
       sql_command = "PGPASSWORD=#{password} psql -U #{dbuser} -h #{dbhost} #{dbname} -c"
 
       # changes for different facet queries
-      facet_request = '/solr/blacklight-core/select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax&facet.sort=asc&facet.limit=-1&facet.field='
+      facet_request = "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax&facet.sort=asc&facet.limit=-1&facet.field="
       solr_url = Blacklight.connection_config[:url]
       # solr_url = 'http://lib-solr1.princeton.edu:8985'
 
@@ -24,6 +24,10 @@ module BrowseLists
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
       end
       [sql_command, facet_request, conn]
+    end
+
+    def core_url
+      Blacklight.default_index.connection.uri.to_s.gsub(%r{^.*\/solr}, '/solr')
     end
 
     def browse_facet(_sql_command, facet_request, conn, facet_field, table_name)
@@ -56,14 +60,14 @@ module BrowseLists
             csv << [sort_cn, mcn, 'ltr', '', "Click on the call number to see all #{f} records", '', '', "?f[#{facet_field}][]=#{CGI.escape(mcn)}", '', 'Multiple locations']
           end
         end
-        resp = conn.get '/solr/blacklight-core/select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax'
+        resp = conn.get "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax"
         num_docs = JSON.parse(resp.body)['response']['numFound']
         rows = 1_000_000
         iterations = num_docs / rows + 1
         start = 0
         cn_fields = "#{facet_field},title_display,title_vern_display,author_display,id,pub_created_display,holdings_1display"
         iterations.times do
-          cn_request = "/solr/blacklight-core/select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&rows=#{rows}&start=#{start}"
+          cn_request = "#{core_url}select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&rows=#{rows}&start=#{start}"
           resp = conn.get cn_request.to_s
           req = JSON.parse(resp.body)
           req['response']['docs'].each do |record|

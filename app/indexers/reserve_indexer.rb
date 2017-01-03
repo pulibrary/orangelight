@@ -13,7 +13,11 @@ class ReserveIndexer
     end
 
     def core
-      ENV['RESERVES_CORE'] || 'blacklight-core'
+      ENV['RESERVES_CORE'] || default_core
+    end
+
+    def default_core
+      Blacklight.default_index.connection.uri.to_s.gsub(%r{^.*\/solr}, '').delete('/')
     end
   end
   attr_reader :courses
