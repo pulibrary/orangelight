@@ -3,7 +3,7 @@ require 'solr_wrapper'
 desc 'Run test suite'
 task :ci do
   if Rails.env.test?
-    run_solr('ci', { port: '8985' }) do
+    run_solr('test', { port: '8985' }) do
       Rake::Task['pulsearch:solr:index'].invoke
       Rake::Task['spec'].invoke
     end
@@ -49,8 +49,8 @@ def run_solr(environment, solr_params)
 
     # additional solr configuration
     Rake::Task['pulsearch:solr:update'].invoke(solr_dir)
-    solr.with_collection(name: 'blacklight-core', dir: File.join(solr_dir, 'conf')) do
-      puts "\n#{environment.titlecase} solr server running: http://localhost:#{solr.port}/solr/#/blacklight-core"
+    solr.with_collection(name: "blacklight-core-#{environment}", dir: File.join(solr_dir, 'conf')) do
+      puts "\n#{environment.titlecase} solr server running: http://localhost:#{solr.port}/solr/#/blacklight-core-#{environment}"
       puts "\n^C to stop"
       puts " "
       begin
