@@ -1,8 +1,8 @@
 # Orangelight
 
 [![Join the chat at https://gitter.im/pulibrary/orangelight](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pulibrary/orangelight?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/pulibrary/orangelight.png?branch=development)](https://travis-ci.org/pulibrary/orangelight)
-[![Coverage Status](https://coveralls.io/repos/pulibrary/orangelight/badge.png?branch=development)](https://coveralls.io/r/pulibrary/orangelight)
+[![Build Status](https://travis-ci.org/pulibrary/orangelight.png?branch=master)](https://travis-ci.org/pulibrary/orangelight)
+[![Coverage Status](https://coveralls.io/repos/pulibrary/orangelight/badge.png?branch=master)](https://coveralls.io/r/pulibrary/orangelight)
 
 
 
@@ -41,10 +41,10 @@ rake server
 
 Deploying with Capistrano
 ------------------
-Default branch for deployment is `development`. You can specify a branch using the BRANCH environment variable.
+Default branch for deployment is `master`. You can specify a branch using the BRANCH environment variable.
 ```
 BRANCH=my_branch cap staging deploy # deploys my_branch to staging
-cap staging deploy # deploys development branch to staging
+cap staging deploy # deploys master branch to staging
 ```
 
 Testing
