@@ -11,6 +11,14 @@ describe 'blacklight tests' do
     end
   end
 
+  describe 'advanced handling when multiple fields' do
+    it 'handles it' do
+      get '/catalog.json?f1=title&f2=author&f3=title&op2=AND&op3=AND&q1=&q2=Murakami%2C+Haruki&q3=1Q84&search_field=advanced'
+      r = JSON.parse(response.body)
+      expect(r['response']['docs'].length).to eq 3
+    end
+  end
+
   describe 'NOT tests' do
     it 'ignores lowercase' do
       get '/catalog.json?search_field=all_fields&q=demeter+does+not+remember'
