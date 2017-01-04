@@ -11,6 +11,24 @@ describe 'blacklight tests' do
     end
   end
 
+  describe 'NOT tests' do
+    it 'ignores lowercase' do
+      get '/catalog.json?search_field=all_fields&q=demeter+does+not+remember'
+      r = JSON.parse(response.body)
+      expect(r['response']['docs'].length).to eq 1
+    end
+    it 'parses NOT right' do
+      get '/catalog.json?search_field=all_fields&q=demeter+does+NOT+remember'
+      r = JSON.parse(response.body)
+      expect(r['response']['docs'].length).to eq 0
+    end
+    it 'can search for all caps' do
+      get '/catalog.json?search_field=all_fields&q=DEMETER+DOES+NOT+REMEMBER'
+      r = JSON.parse(response.body)
+      expect(r['response']['docs'].length).to eq 1
+    end
+  end
+
   describe 'Multiple locations check' do
     it 'records with 3 or more holdings indicate that the record view has full availability' do
       get '/catalog/857469.json'
