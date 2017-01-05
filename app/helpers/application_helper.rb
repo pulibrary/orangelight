@@ -71,12 +71,12 @@ module ApplicationHelper
     is_journal = document['format'].include?('Journal')
     pub_date = document.key?('pub_date_start_sort') ? document['pub_date_start_sort'] : 0
     online_holdings << links
-    holdings.each do |id, holding|
-      if holding['location_code'].start_with?('elf')
-        online_holdings << process_online_holding(holding, doc_id, id, links.empty?)
-      elsif !holding['location_code'].blank?
-        physical_holdings << process_physical_holding(holding, doc_id, id, is_journal, pub_date)
-      end
+    elf_holdings, other_holdings = holdings.partition { |_id, h| h['location_code'].start_with?('elf') }
+    elf_holdings.each do |id, holding|
+      online_holdings << process_online_holding(holding, doc_id, id, links.empty?)
+    end
+    other_holdings.sort_by { |_id, h| LOCATIONS.keys.index(h['location_code']) }.each do |id, holding|
+      physical_holdings << process_physical_holding(holding, doc_id, id, is_journal, pub_date)
     end
     online = content_tag(:div, online_holdings.html_safe) unless online_holdings.empty?
     physical = content_tag(:div, physical_holdings.html_safe) unless physical_holdings.empty?
