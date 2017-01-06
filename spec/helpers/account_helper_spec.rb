@@ -12,7 +12,7 @@ RSpec.describe ApplicationHelper do
 
   describe '#item_status_to_label' do
     it 'It returns a label when given a numeric item status' do
-      expect(item_status_to_label).to eq('Overdue')
+      expect(item_status_to_label).to eq('Overdue/Recalled')
     end
   end
 

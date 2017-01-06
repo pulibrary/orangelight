@@ -188,7 +188,7 @@ describe 'Your Account', type: :feature do
     end
 
     it 'displays item as overdue' do
-      expect(page).to have_content('Overdue')
+      expect(page).to have_content('Overdue/Recalled')
     end
 
     it 'displays properly formatted overdue dates' do
@@ -200,7 +200,7 @@ describe 'Your Account', type: :feature do
     end
 
     it 'displays the type of fines' do
-      expect(page).to have_content('Overdue')
+      expect(page).to have_content('Overdue/Recalled')
       expect(page).to have_content('Lost Item Replacement')
     end
 
