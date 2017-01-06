@@ -250,6 +250,9 @@ GEM
       addressable (~> 2.3)
       nokogiri (~> 1.5)
       omniauth (~> 1.2)
+    openurl (1.0.0)
+      marc
+      scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
     parser (2.3.1.4)
       ast (~> 2.2)
@@ -451,6 +454,7 @@ DEPENDENCIES
   modernizr-rails
   newrelic_rpm
   omniauth-cas
+  openurl (~> 1.0)
   pg
   poltergeist
   pry-byebug
@@ -473,4 +477,4 @@ DEPENDENCIES
   yajl-ruby
 
 BUNDLED WITH
-   1.13.5
+   1.13.6

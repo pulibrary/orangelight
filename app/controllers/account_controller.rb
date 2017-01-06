@@ -123,7 +123,7 @@ class AccountController < ApplicationController
       url = if params[:q]
               BorrowDirect::GenerateQuery.new.query_url_with(keyword: params[:q])
             elsif params[:query] # code in umlaut borrow direct gem requires 'query' as a param
-              BorrowDirect::GenerateQuery.new.query_url_with(keyword: params[:query])
+              BorrowDirect::GenerateQuery.new.query_url_with(params[:query])
             else
               BorrowDirect::Defaults.html_base_url
             end
