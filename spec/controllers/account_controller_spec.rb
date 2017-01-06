@@ -57,6 +57,45 @@ RSpec.describe AccountController do
     end
   end
 
+  describe '#borrow_direct_redirect' do
+    let(:guest_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_guest.json')).with_indifferent_access }
+    let(:valid_barcode_user) { FactoryGirl.create(:guest_patron) }
+    let(:valid_cas_user) { FactoryGirl.create(:valid_princeton_patron) }
+    it 'Redirects to Borrow Direct for valid cas user' do
+      sign_in(valid_cas_user)
+      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
+      stub_request(:get, valid_patron_record_uri)
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .to_return(status: 200, body: valid_patron_response, headers: {})
+      get :borrow_direct_redirect
+      expect(response.location).to match(%r{https:\/\/borrow-direct.relaisd2d.com\/})
+    end
+    it 'Redirect url includes query when present' do
+      sign_in(valid_cas_user)
+      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
+      stub_request(:get, valid_patron_record_uri)
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .to_return(status: 200, body: valid_patron_response, headers: {})
+      query = 'book title'
+      get :borrow_direct_redirect, q: query
+      expect(response.location).to match(%r{https:\/\/borrow-direct.relaisd2d.com\/})
+      expect(response.location).to include(CGI.escape(query))
+    end
+    it 'Redirects to CAS login page for non-logged in user' do
+      get :borrow_direct_redirect
+      expect(response.location).to match(user_cas_omniauth_authorize_path)
+    end
+    it 'Redirects to Home page for ineligible barcode only user' do
+      sign_in(valid_barcode_user)
+      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_barcode_user.uid}"
+      stub_request(:get, valid_patron_record_uri)
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .to_return(status: 200, body: valid_patron_response, headers: {})
+      get :borrow_direct_redirect
+      expect(response).to redirect_to(root_url)
+    end
+  end
+
   describe '#voyager_account?' do
     let(:valid_voyager_response) { File.open(fixture_path + '/pul_voyager_account_response.xml').read }
     let(:valid_voyager_patron) { JSON.parse(valid_patron_response.read.to_s).with_indifferent_access }

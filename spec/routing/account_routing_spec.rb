@@ -21,5 +21,9 @@ RSpec.describe AccountController, type: :routing do
     it 'Cancel Request Actions route to #cancel when posted' do
       expect(post: '/account/cancel').to route_to('account#cancel')
     end
+
+    it 'Links to borrow direct route to #borrow_direct_redirect' do
+      expect(get: '/borrow-direct').to route_to('account#borrow_direct_redirect')
+    end
   end
 end

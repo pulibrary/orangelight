@@ -7,7 +7,7 @@ class AccountController < ApplicationController
   include AccountHelper
 
   before_action :require_user_authentication_provider
-  before_action :verify_user
+  before_action :verify_user, except: [:borrow_direct_redirect]
 
   def index
     set_patron
@@ -33,6 +33,10 @@ class AccountController < ApplicationController
         format.js { flash.now[:error] = I18n.t('blacklight.account.renew_fail') }
       end
     end
+  end
+
+  def borrow_direct_redirect
+    cas_user
   end
 
   # The action has to call 'current_account' this so you "know" have many active requests
@@ -67,6 +71,20 @@ class AccountController < ApplicationController
                       raise(Blacklight::Exceptions::AccessDenied) unless current_user
     end
 
+    def cas_user
+      if current_user
+        set_patron
+        if @patron && @patron[:barcode] && current_user.provider == 'cas'
+          redirect_to borrow_direct_url(@patron[:barcode])
+        else
+          flash[:error] = I18n.t('blacklight.account.borrow_direct_ineligible')
+          redirect_to root_url
+        end
+      else
+        redirect_to user_cas_omniauth_authorize_path(origin: url_for(params))
+      end
+    end
+
     ## For local dev purposes hardcode a net id string in place of current_user.uid
     ## in this method. Hacky, but convienent to see what "real" data looks like for
     ## edge case patrons.
@@ -99,6 +117,15 @@ class AccountController < ApplicationController
 
     def current_patron?(netid)
       Bibdata.get_patron(netid)
+    end
+
+    def borrow_direct_url(barcode)
+      url = if params[:q]
+              BorrowDirect::GenerateQuery.new.query_url_with(keyword: params[:q])
+            else
+              BorrowDirect::Defaults.html_base_url
+            end
+      %(#{url}&LS=#{BorrowDirect::Defaults.library_symbol}&PI=#{barcode})
     end
 
     def voyager_account?(patron)

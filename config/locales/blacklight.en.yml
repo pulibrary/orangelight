@@ -7,6 +7,7 @@ en:
     umlaut: 'Findit @ Princeton'
     account:
       inaccessible: 'Your library account is not available.'
+      borrow_direct_ineligible: 'Your library account is not eligible for Borrow Direct.'
       no_requests: 'You have no outstanding requests.'
       no_pickup_items: 'You have no items available for pickup.'
       no_fines_fees: 'No outstanding fines or fees.'
@@ -52,6 +53,9 @@ en:
       cite: '<span class="icon-cite"></span> Cite'
       bookmarks:
         present: 'In Bookmarks'
+      zero_results:
+        search_fields: "You searched by %{search_fields}"
+        try_borrow_direct: 'Try Borrow Direct'
     header_links:
       login: 'Login'
       course_reserves: 'Course Reserves'

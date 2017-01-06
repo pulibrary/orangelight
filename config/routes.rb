@@ -67,6 +67,8 @@ Rails.application.routes.draw do
   post '/account/renew', to: 'account#renew'
   post '/account/cancel', to: 'account#cancel'
 
+  get '/borrow-direct', to: 'account#borrow_direct_redirect'
+
   ### For feedback Form
   get 'feedback', to: 'feedback#new'
   post 'feedback', to: 'feedback#create'
