@@ -249,7 +249,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'finding_aid_display', label: 'Finding aid'
     config.add_show_field 'cumulative_index_finding_aid_display', label: 'Cumulative index/&#8203;Finding aid'
     config.add_show_field 'subject_display', label: 'Subject(s)', helper_method: :subjectify
-    config.add_show_field 'form_genre_display', label: 'Form/&#8203;Genre', helper_method: :subjectify
+    config.add_show_field 'form_genre_display', label: 'Form/&#8203;Genre'
     config.add_show_field 'related_works_display', label: 'Related work(s)'
     config.add_show_field 'contains_display', label: 'Contains'
     config.add_show_field 'place_name_display', label: 'Place name(s)'
