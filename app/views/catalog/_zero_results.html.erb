@@ -1,0 +1,14 @@
+<h2><%= t 'blacklight.search.zero_results.title' %></h2>
+<div id="documents" class="noresults">
+  <h3><%= link_to(t('blacklight.search.zero_results.try_borrow_direct'), borrow_direct_path(q: params[:q])) %></h3>
+  <p>To learn more about this service, consult the Library <%= link_to('Borrow Direct', 'https://library.princeton.edu/services/borrowdirect') %> information page.</p>
+  <ul>
+
+    <%- if params[:q] and params[:search_field] and params[:search_field] != blacklight_config.default_search_field.try(:key) -%>
+      <li><%= t 'blacklight.search.zero_results.search_fields', :search_fields => search_field_label(params) %>,  
+      <%= link_to t('blacklight.search.zero_results.search_everything', field: blacklight_config.default_search_field.label), url_for(search_state.params_for_search(search_field: blacklight_config.default_search_field.key)) %>.
+      </li>
+    <%- end %>
+
+  </ul>
+</div>
