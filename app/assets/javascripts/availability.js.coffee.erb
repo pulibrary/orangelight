@@ -46,12 +46,12 @@ class AvailabilityUpdater
       this.get_issues(holding_id) if $(".journal-current-issues").length > 0
       if availability_info['more_items']
         if title_case(availability_info['status']).match(on_site_status)
-          this.apply_record_icon(availability_element, "On-site access", aeon)
+          this.apply_record_icon(availability_element, "On-site access", aeon, availability_info)
         else
-          this.apply_record_icon(availability_element, "All items available", aeon)
+          this.apply_record_icon(availability_element, "All items available", aeon, availability_info)
         this.get_more_items(holding_id, availability_info['label'])
       else
-        this.apply_record_icon(availability_element, availability_info['status'], aeon)
+        this.apply_record_icon(availability_element, availability_info['status'], aeon, availability_info)
       this.update_location_services(holding_id, availability_info)
   update_location_services: (holding_id, availability_info) ->
     status = availability_info['status']
@@ -80,7 +80,7 @@ class AvailabilityUpdater
       availability_element = $("*[data-availability-record='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .availability-icon")
       if availability_info['temp_loc']
         $(availability_element).next('.icon-warning').hide()
-      this.apply_record_icon(availability_element, availability_info['status'], aeon)
+      this.apply_record_icon(availability_element, availability_info['status'], aeon, availability_info)
     true
   get_more_items: (holding_id, holding_label) ->
     url = "#{@availability_url}?mfhd=#{holding_id}"
@@ -96,7 +96,7 @@ class AvailabilityUpdater
           ul = ul + li
         if (status not in available_statuses && status != on_site_status)
           unless holding_label != item['label'] || item['temp_loc']
-            li = "<li>#{item['enum'] || 'Item'}: #{status_display(status, label)}</li>"
+            li = "<li>#{item['enum'] || 'Item'}: #{status_display(status, label, item['due_date'])}</li>"
             ul = ul + li
           span = $("*[data-holding-id='#{holding_id}'] .availability-icon")
           txt = if status.match(on_site_unavailable)
@@ -134,11 +134,11 @@ class AvailabilityUpdater
     element.attr('title', "Click on the record for full availability info")
     empty = $("*[data-record-id='#{record_id}'].empty")
     empty.removeClass("empty")
-  apply_record_icon: (availability_element, status, aeon) ->
+  apply_record_icon: (availability_element, status, aeon, availability_info) ->
     status = title_case(status)
     availability_element.addClass("label")
     label = status_label(status)
-    availability_element.text(label)
+    availability_element.text("#{label}#{due_date(availability_info["due_date"])}")
     if label in unavailable_labels
       availability_element.addClass("label-danger")
     else if label in available_labels
@@ -174,11 +174,15 @@ class AvailabilityUpdater
       when status.match('Pending order') then 'Pending order'
       when status.match('On-order') then 'On-order'
       else status
-  status_display = (status, label) ->
+  status_display = (status, label, date_due) ->
     if status.match(label) || status.match(on_site_status)
       status
     else
-      "#{label} (#{status})"
+      "#{label} #{due_date(date_due)}(#{status})"
+  due_date = (date_string) ->
+    return "" unless date_string?
+    date = new Date(date_string)
+    " - Due #{date.getMonth()}/#{date.getDate()}/#{date.getFullYear()} "
   title_case = (str) ->
     str[0].toUpperCase() + str[1..str.length - 1].toLowerCase()
   stackmap_link = (record_id, availability_info, marker_only = false) ->
