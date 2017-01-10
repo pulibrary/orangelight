@@ -78,6 +78,8 @@ module BlacklightHelper
       'browse_cn'
     elsif params[:model] == Orangelight::Name
       'browse_name'
+    elsif params[:model] == Orangelight::NameTitle
+      'name_title'
     elsif params[:model] == Orangelight::Subject
       'browse_subject'
     else

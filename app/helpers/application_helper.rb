@@ -378,6 +378,17 @@ module ApplicationHelper
     end
   end
 
+  ZERO_WIDTH = "\u{200B}".freeze
+  def name_title(args)
+    args[:document][args[:field]].each_with_index do |name_t, i|
+      name_t = name_t.gsub(ZERO_WIDTH, '')
+      next unless args[:document]['name_title_browse_s'] && args[:document]['name_title_browse_s'].include?(name_t)
+      newname_t = link_to(name_t, "/?f[name_title_browse_s][]=#{CGI.escape name_t}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name_t}", title: "Search: #{name_t}") + '  ' +
+                  link_to('[Browse]', "/browse/name_titles?q=#{CGI.escape name_t}", class: 'browse-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{name_t}", title: "Browse: #{name_t}", dir: name_t.dir.to_s)
+      args[:document][args[:field]][i] = newname_t.html_safe
+    end
+  end
+
   def formats_to_exclude(document)
     holding_id = JSON.parse(document[:holdings_1display]).first[0] if document[:holdings_1display]
     if non_voyager?(holding_id)

@@ -120,6 +120,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index'
     config.add_facet_field 'advanced_location_s', label: 'Holding location', show: false,
                                                   helper_method: :render_location_code
+    config.add_facet_field 'name_title_browse_s', label: 'Author-title heading', show: false
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -163,27 +164,27 @@ class CatalogController < ApplicationController
     config.add_show_field 'description_display', label: 'Description'
     config.add_show_field 'numbering_pec_notes_display', label: 'Numbering peculiarities'
     config.add_show_field 'arrangement_display', label: 'Arrangement'
-    config.add_show_field 'translation_of_display', label: 'Translation of'
-    config.add_show_field 'translated_as_display', label: 'Translated as'
-    config.add_show_field 'issued_with_display', label: 'Issued with'
-    config.add_show_field 'continues_display', label: 'Continues'
-    config.add_show_field 'continues_in_part_display', label: 'Continues in part'
-    config.add_show_field 'formed_from_display', label: 'Formed from'
-    config.add_show_field 'absorbed_display', label: 'Absorbed'
-    config.add_show_field 'absorbed_in_part_display', label: 'Absorbed in part'
-    config.add_show_field 'separated_from_display', label: 'Separated from'
-    config.add_show_field 'continued_by_display', label: 'Continued by'
-    config.add_show_field 'continued_in_part_by_display', label: 'Continued in part by'
-    config.add_show_field 'absorbed_by_display', label: 'Absorbed by'
-    config.add_show_field 'absorbed_in_part_by_display', label: 'Absorbed in part by'
-    config.add_show_field 'split_into_display', label: 'Split into'
-    config.add_show_field 'merged_to_form_display', label: 'Merged to form'
-    config.add_show_field 'changed_back_to_display', label: 'Changed back to'
+    config.add_show_field 'translation_of_display', label: 'Translation of', helper_method: :name_title
+    config.add_show_field 'translated_as_display', label: 'Translated as', helper_method: :name_title
+    config.add_show_field 'issued_with_display', label: 'Issued with', helper_method: :name_title
+    config.add_show_field 'continues_display', label: 'Continues', helper_method: :name_title
+    config.add_show_field 'continues_in_part_display', label: 'Continues in part', helper_method: :name_title
+    config.add_show_field 'formed_from_display', label: 'Formed from', helper_method: :name_title
+    config.add_show_field 'absorbed_display', label: 'Absorbed', helper_method: :name_title
+    config.add_show_field 'absorbed_in_part_display', label: 'Absorbed in part', helper_method: :name_title
+    config.add_show_field 'separated_from_display', label: 'Separated from', helper_method: :name_title
+    config.add_show_field 'continued_by_display', label: 'Continued by', helper_method: :name_title
+    config.add_show_field 'continued_in_part_by_display', label: 'Continued in part by', helper_method: :name_title
+    config.add_show_field 'absorbed_by_display', label: 'Absorbed by', helper_method: :name_title
+    config.add_show_field 'absorbed_in_part_by_display', label: 'Absorbed in part by', helper_method: :name_title
+    config.add_show_field 'split_into_display', label: 'Split into', helper_method: :name_title
+    config.add_show_field 'merged_to_form_display', label: 'Merged to form', helper_method: :name_title
+    config.add_show_field 'changed_back_to_display', label: 'Changed back to', helper_method: :name_title
     config.add_show_field 'frequency_display', label: 'Frequency'
     config.add_show_field 'former_frequency_display', label: 'Former frequency'
     config.add_show_field 'linking_notes_display', label: 'Linking notes'
-    config.add_show_field 'subseries_of_display', label: 'Subseries of'
-    config.add_show_field 'has_subseries_display', label: 'Has subseries'
+    config.add_show_field 'subseries_of_display', label: 'Subseries of', helper_method: :name_title
+    config.add_show_field 'has_subseries_display', label: 'Has subseries', helper_method: :name_title
     config.add_show_field 'series_display', label: 'Series', helper_method: :series_with_links
     config.add_show_field 'restrictions_note_display', label: 'Restrictions note', helper_method: :html_safe
     config.add_show_field 'biographical_historical_note_display', label: 'Biographical/&#8203;Historical note'
@@ -204,8 +205,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'geo_cov_notes_display', label: 'Geographic coverage'
     config.add_show_field 'time_period_notes_display', label: 'Time period of content'
     config.add_show_field 'supplement_notes_display', label: 'Supplement note'
-    config.add_show_field 'has_supplement_display', label: 'Has supplement'
-    config.add_show_field 'supplement_to_display', label: 'Supplement to'
+    config.add_show_field 'has_supplement_display', label: 'Has supplement', helper_method: :name_title
+    config.add_show_field 'supplement_to_display', label: 'Supplement to', helper_method: :name_title
     config.add_show_field 'study_prog_notes_display', label: 'Study program information'
     config.add_show_field 'censorship_notes_display', label: 'Censorship note'
     config.add_show_field 'reproduction_notes_display', label: 'Reproduction note'
@@ -250,13 +251,15 @@ class CatalogController < ApplicationController
     config.add_show_field 'cumulative_index_finding_aid_display', label: 'Cumulative index/&#8203;Finding aid'
     config.add_show_field 'subject_display', label: 'Subject(s)', helper_method: :subjectify
     config.add_show_field 'form_genre_display', label: 'Form/&#8203;Genre'
-    config.add_show_field 'related_works_display', label: 'Related work(s)'
-    config.add_show_field 'contains_display', label: 'Contains'
+    config.add_show_field 'related_works_display', label: 'Related work(s)', helper_method: :name_title
+    config.add_show_field 'contains_display', label: 'Contains', helper_method: :name_title
     config.add_show_field 'place_name_display', label: 'Place name(s)'
     config.add_show_field 'other_title_display', label: 'Other title(s)'
     config.add_show_field 'other_title_1display', hash: true
     config.add_show_field 'in_display', label: 'In'
     config.add_show_field 'constituent_part_display', label: 'Constituent part(s)'
+    config.add_show_field 'other_editions_display', label: 'Other editions'
+    config.add_show_field 'data_source_display', label: 'Data source', helper_method: :name_title
     config.add_show_field 'isbn_display', label: 'ISBN'
     config.add_show_field 'issn_display', label: 'ISSN'
     config.add_show_field 'sudoc_no_display', label: 'SuDoc no.'
@@ -426,6 +429,11 @@ class CatalogController < ApplicationController
       field.include_in_advanced_search = false
       field.label = 'Author (browse)'
       field.placeholder_text = 'Last name, first name'
+    end
+    config.add_search_field('name_title') do |field|
+      field.include_in_advanced_search = false
+      field.label = 'Author (sorted by title)'
+      field.placeholder_text = 'Last name, first name. Title'
     end
     config.add_search_field('browse_cn') do |field|
       field.include_in_advanced_search = false
