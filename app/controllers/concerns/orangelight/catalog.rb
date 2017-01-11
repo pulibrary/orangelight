@@ -29,5 +29,19 @@ module Orangelight
         end
       end
     end
+
+    # Email Action (this will render the appropriate view on GET requests and process the form and send the email on POST requests)
+    def email_action(documents)
+      mail = RecordMailer.email_record(documents, { to: params[:to], reply_to: user_email, message: params[:message] }, url_options)
+      if mail.respond_to? :deliver_now
+        mail.deliver_now
+      else
+        mail.deliver
+      end
+    end
+
+    def user_email
+      return current_user.email if current_or_guest_user.provider == 'cas'
+    end
   end
 end
