@@ -70,6 +70,8 @@ en:
       barcode_subheader: 'For borrowers without a netID'
       barcode_help: 'If you cannot login and you have a new ID card, please stop at a circulation desk to have your barcode activated. Contact Firestone Circulation (609-258-3202) or <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a> for other problems.'
     email:
+      form:
+        title: 'Email the catalog record and (optional) message.'
       text:
         publish: 'Published/Created: %{value}'
         online: 'Online access:'
