@@ -81,6 +81,18 @@ RSpec.describe AccountController do
       expect(response.location).to match(%r{https:\/\/borrow-direct.relaisd2d.com\/})
       expect(response.location).to include(CGI.escape(query))
     end
+    # For interoperability with umlaut
+    it 'Redirect url includes query when present' do
+      sign_in(valid_cas_user)
+      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
+      stub_request(:get, valid_patron_record_uri)
+        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .to_return(status: 200, body: valid_patron_response, headers: {})
+      query = 'book title'
+      get :borrow_direct_redirect, query: query
+      expect(response.location).to match(%r{https:\/\/borrow-direct.relaisd2d.com\/})
+      expect(response.location).to include(CGI.escape(query))
+    end
     it 'Redirects to CAS login page for non-logged in user' do
       get :borrow_direct_redirect
       expect(response.location).to match(user_cas_omniauth_authorize_path)

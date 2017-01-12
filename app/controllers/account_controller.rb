@@ -122,6 +122,8 @@ class AccountController < ApplicationController
     def borrow_direct_url(barcode)
       url = if params[:q]
               BorrowDirect::GenerateQuery.new.query_url_with(keyword: params[:q])
+            elsif params[:query] # code in umlaut borrow direct gem requires 'query' as a param
+              BorrowDirect::GenerateQuery.new.query_url_with(keyword: params[:query])
             else
               BorrowDirect::Defaults.html_base_url
             end
