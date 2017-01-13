@@ -11,7 +11,7 @@
           <% else %>
           <li><%= link_to raw(t 'blacklight.pagination_compact.previous'), @page_link + "start=#{@prev}", class: "btn btn-link" %></li>
           <% end %>
-          <%= content_tag(:li, "#{@start} - #{@page_last} of #{@last_id}", class: "page-count", style: "color:black;strong;font-weight:bold;") %>
+          <%= content_tag(:li, "#{number_with_delimiter(@start)} - #{number_with_delimiter(@page_last)} of #{number_with_delimiter(@last_id)}", class: "page-count", style: "color:black;strong;font-weight:bold;") %>
           <% if @is_last %>
             <%= content_tag(:li, raw(t 'blacklight.pagination_compact.next'), class: "btn disabled") %>
           <% else %>
@@ -44,7 +44,7 @@
             &nbsp;
             <span class="facet-label <%=orangelight_name.dir%>"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{CGI.escape orangelight_name.label}", dir: orangelight_name.dir %>
               <%= "(#{orangelight_name.count})"%>
-            <%#= link_to "[more info]", "#{@model}/#{orangelight_name.id}", class: "more-info;", dir: orangelight_name.dir %></span>
+            </span>
           <% if orangelight_name.id == @match && @exact_match %>
               </strong>
             </li>
@@ -113,7 +113,7 @@
         <% else %>
         <li><%= link_to raw(t 'blacklight.pagination_compact.previous'), @page_link + "start=#{@prev}", class: "btn btn-link" %></li>
         <% end %>
-        <%= content_tag(:li, "#{@start} - #{@page_last} of #{@last_id}", class: "page-count", style: "color:black;strong;font-weight:bold;") %>
+        <%= content_tag(:li, "#{number_with_delimiter(@start)} - #{number_with_delimiter(@page_last)} of #{number_with_delimiter(@last_id)}", class: "page-count", style: "color:black;strong;font-weight:bold;") %>
         <% if @is_last %>
           <%= content_tag(:li, raw(t 'blacklight.pagination_compact.next'), class: "btn disabled") %>
         <% else %>
