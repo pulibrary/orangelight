@@ -43,7 +43,6 @@ class Orangelight::BrowsablesController < ApplicationController
         @start -= 1 if @exact_match
         @start = 1 if @start < 1
         @query = params[:q]
-        # @prev = @start/@rpp+1
       end
     end
 
