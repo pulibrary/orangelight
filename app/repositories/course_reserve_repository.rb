@@ -11,10 +11,6 @@ class CourseReserveRepository
     private
 
       def courses_json
-        courses_data.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '?')
-      end
-
-      def courses_data
         Faraday.get("#{ENV['bibdata_base']}/courses").body
       end
   end
