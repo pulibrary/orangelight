@@ -1,17 +1,19 @@
 # requests.yml
 
 defaults: &defaults
-  umlaut_base: https://getit.princeton.edu
+  umlaut_base: https://getit-dev.princeton.edu
   bibdata_base: https://bibdata.princeton.edu
   proxy_base: http://library.princeton.edu/resolve/lookup?url=
   stackmap_base: https://bibdata.princeton.edu/locations/map
   voyager_api_base: http://catalog.princeton.edu:7014
   pulsearch_base: https://pulsearch.princeton.edu
   aeon_base: https://library.princeton.edu/aeon/aeon.dll?
+  gfa_base: http://libweb5.princeton.edu/RecapRequestService/Default.aspx
 development:
   <<: *defaults
   voyager_ub_id: 1@DB
-
+  # umlaut_base: http://localhost:4000
+  # bibdata_base: http://localhost:7000
 test:
   <<: *defaults
   voyager_ub_id: 1@DB
