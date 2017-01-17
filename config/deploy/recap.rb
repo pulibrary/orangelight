@@ -10,7 +10,7 @@
 
 set :rvm_ruby_string, :local
 
-set :stage, :production, :recap
+set :stage, :production
 set :rails_env, 'production'
 
 set :branch, ENV['BRANCH'] || 'master'
