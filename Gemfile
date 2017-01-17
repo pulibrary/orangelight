@@ -43,7 +43,7 @@ gem 'spring',        group: :development
 # jquery multiselect plugin for advanced search
 gem 'chosen-rails'
 
-gem 'introjs-rails', github: 'videmor/intro.js-rails', branch: 'update.introjs'
+gem 'introjs-rails', git: 'https://github.com/videmor/intro.js-rails', branch: 'update.introjs'
 
 # Capistrano
 gem 'capistrano', '~> 3.4.0'
@@ -59,7 +59,7 @@ gem 'solr_wrapper', '~> 0.12'
 # rspec, just like jettywrapper appear necessary for cap currently
 gem 'rspec-rails', '~> 3.4'
 gem 'capybara'
-gem 'stringex', :git => 'git://github.com/pulibrary/stringex.git', :tag => 'vpton.2.5.2.2'
+gem 'stringex', :git => 'https://github.com/pulibrary/stringex.git', :tag => 'vpton.2.5.2.2'
 gem 'lcsort', '~>0.9'
 gem 'library_stdnums'
 gem 'rubocop', '~> 0.39', require: false
