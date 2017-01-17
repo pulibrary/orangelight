@@ -182,7 +182,7 @@ class AvailabilityUpdater
   due_date = (date_string) ->
     return "" unless date_string?
     date = new Date(date_string)
-    " - Due #{date.getMonth()}/#{date.getDate()}/#{date.getFullYear()} "
+    " - Due #{date.getMonth()+1}/#{date.getDate()}/#{date.getFullYear()} "
   title_case = (str) ->
     str[0].toUpperCase() + str[1..str.length - 1].toLowerCase()
   stackmap_link = (record_id, availability_info, marker_only = false) ->
