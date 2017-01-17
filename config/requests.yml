@@ -9,11 +9,12 @@ defaults: &defaults
   pulsearch_base: https://pulsearch.princeton.edu
   aeon_base: https://library.princeton.edu/aeon/aeon.dll?
   gfa_base: http://libweb5.princeton.edu/RecapRequestService/Default.aspx
+  voyager_ub_id: 1@PRINCETONDB20050302104001
 development:
   <<: *defaults
-  voyager_ub_id: 1@DB
+  #voyager_ub_id: 1@DB
   # umlaut_base: http://localhost:4000
-  # bibdata_base: http://localhost:7000
+  bibdata_base: http://localhost:7000
 test:
   <<: *defaults
   voyager_ub_id: 1@DB
