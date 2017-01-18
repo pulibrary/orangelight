@@ -9,6 +9,7 @@ defaults: &defaults
   pulsearch_base: https://pulsearch.princeton.edu
   aeon_base: https://library.princeton.edu/aeon/aeon.dll?
   gfa_base: http://libweb5.princeton.edu/RecapRequestService/Default.aspx
+  ill_base: https://lib-illiad.princeton.edu/illiad/illiad.dll/OpenURL
   voyager_ub_id: 1@PRINCETONDB20050302104001
 development:
   <<: *defaults
