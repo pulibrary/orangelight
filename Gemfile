@@ -70,7 +70,7 @@ gem 'newrelic_rpm'
 gem 'mail_form'
 gem 'string_rtl'
 
-gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'borrow_direct'
+gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'ill_open_url'
 #gem 'requests', :path => '/Users/kevinreiss/Projects/blacklight/requests'
 gem 'borrow_direct', '~> 1.2.0'
 
