@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 431d688cce47fb1dea60dc4b598957d77111a473
-  branch: ill_open_url
+  revision: ef5cb3e78c361339a768d32e94b6ab784ae576a6
+  branch: development
   specs:
     requests (0.0.1)
       bootstrap-sass (~> 3.3)
