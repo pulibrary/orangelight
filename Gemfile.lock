@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: cca8a1492fafadf3a77bca28aff7f925cd76c5bf
+  revision: d1d443557884aab980050efc9fad282792602e4a
   branch: development
   specs:
     requests (0.0.1)
@@ -151,7 +151,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.4)
-    coveralls (0.8.18)
+    coveralls (0.8.19)
       json (>= 1.8, < 3)
       simplecov (~> 0.12.0)
       term-ansicolor (~> 1.3)
