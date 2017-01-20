@@ -46,13 +46,6 @@ RSpec.describe 'Orangelight Browsables', type: :request do
   end
 
   describe 'Browse Call Number Search' do
-    it 'includes non LC call numbers in search' do
-      get '/browse/call_numbers.json?q=microfilm'
-      r = JSON.parse(response.body)
-      q_normalized = StringFunctions.cn_normalize('microfilm')
-      expect(r[2]['sort']..r[3]['sort']).to cover q_normalized
-    end
-
     it 'escapes call number browse link urls' do
       get '/browse/call_numbers?q=Islamic+Manuscripts%2C+New+Series+no.+1948'
       expect(response.body).to include('/catalog/?f[call_number_browse_s][]=Islamic+Manuscripts%2C+New+Series+no.+1948')
