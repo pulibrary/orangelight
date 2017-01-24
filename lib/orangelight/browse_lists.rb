@@ -91,7 +91,7 @@ module BrowseLists
                 holding_record = holding_block.select { |_k, h| h['call_number_browse'] == cn }
                 unless holding_record.empty?
                   holding_id = holding_record.keys.first
-                  location = holding_record[holding_id]['library']
+                  location = holding_record[holding_id]['location']
                 end
               end
               holding_id ||= ''
