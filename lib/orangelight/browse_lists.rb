@@ -57,7 +57,7 @@ module BrowseLists
           else
             sort_cn = StringFunctions.cn_normalize(mcn)
             multi_cns[sort_cn] = f
-            csv << [sort_cn, mcn, 'ltr', '', "Click on the call number to see all #{f} records", '', '', "?f[#{facet_field}][]=#{CGI.escape(mcn)}", '', 'Multiple locations']
+            csv << [sort_cn, mcn, 'ltr', '', "#{f} titles with this call number", '', '', "?f[#{facet_field}][]=#{CGI.escape(mcn)}", '', 'Multiple locations']
           end
         end
         resp = conn.get "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax"
@@ -90,8 +90,12 @@ module BrowseLists
                 holding_block = JSON.parse(record['holdings_1display'])
                 holding_record = holding_block.select { |_k, h| h['call_number_browse'] == cn }
                 unless holding_record.empty?
-                  holding_id = holding_record.keys.first
-                  location = holding_record[holding_id]['location']
+                  if multiple_locations?(holding_record)
+                    location = 'Multiple locations'
+                  else
+                    holding_id = holding_record.keys.first
+                    location = holding_record[holding_id]['location']
+                  end
                 end
               end
               holding_id ||= ''
@@ -118,6 +122,14 @@ module BrowseLists
       system(%(#{sql_command} "\\copy (Select sort,label,dir,scheme,title,author,date,bibid,holding_id,location from #{table_name} order by sort) To '/tmp/#{facet_field}.sorted' With CSV;"))
       system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
       system(%(#{sql_command} "\\copy #{table_name}(sort,label,dir,scheme,title,author,date,bibid,holding_id,location) from '/tmp/#{facet_field}.sorted' CSV;"))
+    end
+
+    private
+
+    # determines if there are multiple locations for the same call number and same bib
+    def multiple_locations? holdings
+      locations = holdings.select { |_k,h| h['library'] != 'Online' }.map { |_k,h| h['location']}.uniq
+      locations.length > 1
     end
   end
 end

@@ -52,6 +52,26 @@ RSpec.describe 'Orangelight Browsables', type: :request do
     end
   end
 
+  describe 'Multiple locations/titles' do
+    it 'formats multiple titles as n titles with this call number' do
+      get '/browse/call_numbers.json?q=ac102&rpp=5'
+      r = JSON.parse(response.body)
+      expect(r[2]['title']).to match(/\d+ titles with this call number/)
+    end
+    it 'single title with multiple holdings in same location, display single location' do
+      get '/browse/call_numbers.json?q=QA303.2+.W45+2014&rpp=5'
+      r = JSON.parse(response.body)
+      expect(r[2]['title']).to match(/Thomas' calculus/)
+      expect(r[2]['location']).not_to match(/Multiple locations/)
+    end
+    it 'single title with multiple locations' do
+      get '/browse/call_numbers.json?q=RA643.86.B6+B54+2007&rpp=5'
+      r = JSON.parse(response.body)
+      expect(r[2]['title']).not_to match(/\d+ titles with this call number/)
+      expect(r[2]['location']).to match(/Multiple locations/)
+    end
+  end
+
   describe 'Selected search box field' do
     it 'Based on search_field parameter when provided' do
       get '/catalog?q=&search_field=title'
