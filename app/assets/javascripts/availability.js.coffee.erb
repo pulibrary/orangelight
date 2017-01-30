@@ -22,7 +22,7 @@ class AvailabilityUpdater
   available_non_requestable_labels = ['Available', 'Returned', 'Requestable',
     'On shelf', 'All items available', 'On-site access', 'On-site - in-transit discharged']
   open_location_labels = ['Available', 'All items available']
-  unavailable_labels = ['Checked out', 'Missing']
+  unavailable_labels = ['Checked out', 'Missing', 'Lost']
   request_availability: ->
     if $(".documents-list").length > 0
       ids = this.record_ids().toArray()
