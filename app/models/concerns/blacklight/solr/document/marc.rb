@@ -1,10 +1,12 @@
 require 'marc'
+require 'openurl/context_object'
 
 module Blacklight
   module Solr
     module Document
       module Marc
         include Blacklight::Solr::Document::MarcExport
+        include OpenURL
 
         class UnsupportedMarcFormatType < RuntimeError; end
 
@@ -17,72 +19,33 @@ module Blacklight
           @_ruby_marc_obj ||= load_marc
         end
 
-        # returns true if Marc record is fetchable from bibdata
+        # return openurl ctx object
+        def to_ctx(format)
+          @_ctx || build_ctx(format)
+        end
+
+        # returns true if doc originated from voyager
         def voyager_record?
-          !to_marc.nil?
+          if self['id'] =~ /^[0-9]+/
+            true
+          else
+            false
+          end
+        end
+
+        # does we have any standard numbers that can be used by other services
+        def standard_numbers?
+          std_numbers.any? { |v| key? v }
+        end
+
+        def std_numbers
+          %w(lccn_s isbn_s issn_s oclc_s)
         end
 
         def export_as_openurl_ctx_kev(format = nil)
-          title = to_marc.find { |field| field.tag == '245' }
-          author = to_marc.find { |field| field.tag == '100' }
-          corp_author = to_marc.find { |field| field.tag == '110' }
-          publisher_info = to_marc.find { |field| field.tag == '260' }
-          edition = to_marc.find { |field| field.tag == '250' }
-          isbn = to_marc.find { |field| field.tag == '020' }
-          issn = to_marc.find { |field| field.tag == '022' }
-          id = to_marc.find { |field| field.tag == '001' }
-          unless format.nil?
-            format = format.is_a?(Array) ? format[0].downcase.strip : format.downcase.strip
-            genre = format_to_openurl_genre(format)
-          end
-          export_text = ''
-          if format == 'book'
-            export_text << 'ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rfr_id=info%3Asid%2Fpulsearch.princeton.edu%3Agenerator&amp;rft.genre=book&amp;'
-            export_text << "rft.btitle=#{(title.nil? || title['a'].nil?) ? '' : CGI.escape(title['a'])}+#{(title.nil? || title['b'].nil?) ? '' : CGI.escape(title['b'])}&amp;"
-            export_text << "rft.title=#{(title.nil? || title['a'].nil?) ? '' : CGI.escape(title['a'])}+#{(title.nil? || title['b'].nil?) ? '' : CGI.escape(title['b'])}&amp;"
-            export_text << "rft.au=#{(author.nil? || author['a'].nil?) ? '' : CGI.escape(author['a'])}&amp;"
-            export_text << "rft.aucorp=#{CGI.escape(corp_author['a']) if corp_author['a']}+#{CGI.escape(corp_author['b']) if corp_author['b']}&amp;" unless corp_author.blank?
-            export_text << "rft.date=#{(publisher_info.nil? || publisher_info['c'].nil?) ? '' : CGI.escape(publisher_info['c'])}&amp;"
-            export_text << "rft.place=#{(publisher_info.nil? || publisher_info['a'].nil?) ? '' : CGI.escape(publisher_info['a'])}&amp;"
-            export_text << "rft.pub=#{(publisher_info.nil? || publisher_info['b'].nil?) ? '' : CGI.escape(publisher_info['b'])}&amp;"
-            export_text << "rft.edition=#{(edition.nil? || edition['a'].nil?) ? '' : CGI.escape(edition['a'])}&amp;"
-            export_text << "rft.isbn=#{(isbn.nil? || isbn['a'].nil?) ? '' : isbn['a']}"
-            export_text << '&amp;rft.genre=book'
-          elsif format =~ /journal/i # checking using include because institutions may use formats like Journal or Journal/Magazine
-            export_text << 'ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rfr_id=info%3Asid%2Fblacklight.rubyforge.org%3Agenerator&amp;rft.genre=article&amp;'
-            export_text << "rft.title=#{(title.nil? || title['a'].nil?) ? '' : CGI.escape(title['a'])}+#{(title.nil? || title['b'].nil?) ? '' : CGI.escape(title['b'])}&amp;"
-            export_text << "rft.atitle=#{(title.nil? || title['a'].nil?) ? '' : CGI.escape(title['a'])}+#{(title.nil? || title['b'].nil?) ? '' : CGI.escape(title['b'])}&amp;"
-            export_text << "rft.aucorp=#{CGI.escape(corp_author['a']) if corp_author['a']}+#{CGI.escape(corp_author['b']) if corp_author['b']}&amp;" unless corp_author.blank?
-            export_text << "rft.date=#{(publisher_info.nil? || publisher_info['c'].nil?) ? '' : CGI.escape(publisher_info['c'])}&amp;"
-            export_text << "rft.issn=#{(issn.nil? || issn['a'].nil?) ? '' : issn['a']}"
-            export_text << '&amp;rft.genre=serial'
-          else
-            export_text << 'ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc&amp;rfr_id=info%3Asid%2Fblacklight.rubyforge.org%3Agenerator&amp;'
-            export_text << 'rft.title=' + ((title.nil? || title['a'].nil?) ? '' : CGI.escape(title['a']))
-            export_text << ((title.nil? || title['b'].nil?) ? '' : CGI.escape(' ') + CGI.escape(title['b']))
-            export_text << '&amp;rft.creator=' + ((author.nil? || author['a'].nil?) ? '' : CGI.escape(author['a']))
-            export_text << "&amp;rft.aucorp=#{CGI.escape(corp_author['a']) if corp_author['a']}+#{CGI.escape(corp_author['b']) if corp_author['b']}" unless corp_author.blank?
-            export_text << '&amp;rft.date=' + ((publisher_info.nil? || publisher_info['c'].nil?) ? '' : CGI.escape(publisher_info['c']))
-            export_text << '&amp;rft.place=' + ((publisher_info.nil? || publisher_info['a'].nil?) ? '' : CGI.escape(publisher_info['a']))
-            export_text << '&amp;rft.pub=' + ((publisher_info.nil? || publisher_info['b'].nil?) ? '' : CGI.escape(publisher_info['b']))
-            export_text << '&amp;rft.format=' + (format.nil? ? '' : CGI.escape(format))
-            export_text << "&amp;rft.genre=#{genre}"
-            unless issn.nil?
-              export_text << "&amp;rft.issn=#{(issn.nil? || issn['a'].nil?) ? '' : issn['a']}"
-            end
-            unless isbn.nil?
-              export_text << "&amp;rft.isbn=#{(isbn.nil? || isbn['a'].nil?) ? '' : isbn['a']}"
-            end
-          end
-
-          export_text << '&amp;rft_id=' + (id.nil? ? '' : CGI.escape("http://bibdata.princeton.edu/bibliographic/#{id.value}"))
-          unless self['oclc_s'].nil?
-            export_text << '&amp;rft_id=' + CGI.escape("info:oclcnum/#{self['oclc_s'][0]}")
-          end
-          unless self['lccn_s'].nil?
-            export_text << '&amp;rft_id=' + CGI.escape("info:lccn/#{self['lccn_s'][0]}")
-          end
-          export_text.html_safe unless export_text.blank?
+          ctx = to_ctx(format)
+          # send back the encoded string
+          ctx.kev
         end
 
         def format_to_openurl_genre(format)
@@ -94,6 +57,63 @@ module Blacklight
         end
 
         protected
+
+          def build_ctx(format = nil)
+            ctx = ContextObject.new
+            id = self['id']
+            title = self['title_citation_display'].first unless self['title_citation_display'].nil?
+            date = self['pub_date_display'].first unless self['pub_date_display'].nil?
+            author = self['author_citation_display'].first unless self['author_citation_display'].nil?
+            corp_author = self['pub_citation_display'].first unless self['pub_citation_display'].nil?
+            publisher_info = self['pub_citation_display'].first unless self['pub_citation_display'].nil?
+            edition = self['edition_display'].first unless self['edition_display'].nil?
+            unless format.nil?
+              format = format.is_a?(Array) ? format[0].downcase.strip : format.downcase.strip
+              genre = format_to_openurl_genre(format)
+            end
+            if format == 'book'
+              ctx.referent.set_format('book')
+              ctx.referent.set_metadata('genre', 'book')
+              ctx.referent.set_metadata('btitle', title)
+              ctx.referent.set_metadata('title', title)
+              ctx.referent.set_metadata('au', author)
+              ctx.referent.set_metadata('aucorp', corp_author)
+              # Place not easilty discernable in solr doc
+              # ctx.referent.set_metadata('place', publisher_info)
+              ctx.referent.set_metadata('pub', publisher_info)
+              ctx.referent.set_metadata('edition', edition)
+              ctx.referent.set_metadata('isbn', self['isbn_s'].first) unless self['isbn_s'].nil?
+            elsif format =~ /journal/i # checking using include because institutions may use formats like Journal or Journal/Magazine
+              ctx.referent.set_format('journal')
+              ctx.referent.set_metadata('genre', 'serial')
+              ctx.referent.set_metadata('atitle', title)
+              ctx.referent.set_metadata('title', title)
+              # use author display as corp author for journals
+              ctx.referent.set_metadata('aucorp', author)
+              ctx.referent.set_metadata('issn', self['issn_s'].first) unless self['issn_s'].nil?
+            else
+              ctx.referent.set_format(genre) # do we need to do this?
+              ctx.referent.set_metadata('genre', genre)
+              ctx.referent.set_metadata('title', title)
+              ctx.referent.set_metadata('creator', author)
+              ctx.referent.set_metadata('aucorp', corp_author)
+              # place not discernable in solr doc
+              # ctx.referent.set_metadata('place', publisher_info)
+              ctx.referent.set_metadata('pub', publisher_info)
+              ctx.referent.set_metadata('format', format)
+              ctx.referent.set_metadata('issn', self['issn_s'].first) unless self['issn_s'].nil?
+              ctx.referent.set_metadata('isbn', self['isbn_s'].first) unless self['isbn_s'].nil?
+            end
+            ## common metadata for all formats
+            ctx.referent.set_metadata('date', date)
+            # canonical identifier for the citation?
+            ctx.referent.add_identifier("https://bibdata.princeton.edu/bibliographic/#{id}")
+            # add pulsearch refererrer
+            ctx.referrer.add_identifier('info:sid/pulsearch.princeton.edu:generator')
+            ctx.referent.add_identifier("info:oclcnum/#{self['oclc_s'].first}") unless self['oclc_s'].nil?
+            ctx.referent.add_identifier("info:lccn/#{self['lccn_s'].first}") unless self['lccn_s'].nil?
+            ctx
+          end
 
           def marc_source
             @_marc_source ||= fetch(_marc_source_field)

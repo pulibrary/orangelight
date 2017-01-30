@@ -24,6 +24,6 @@
   </div>
 
   <div id="availability" class="col-sm-3 col-xs-12 record-availability">
-    <%= render 'show_availability_sidebar' %>
+    <%= render partial: 'show_availability_sidebar', locals: { document: @document } %>
   </div>
 </div>
