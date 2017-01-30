@@ -1,7 +1,7 @@
 module StringFunctions
   class << self
     def cn_normalize(str)
-      if /^CD \d+$/ =~ str # the normalizer thinks "CD 104" is valid LC
+      if /^[a-zA-Z]{2,3} \d+([qQ]?)$/ =~ str # the normalizer thinks "CD 104" is valid LC
         accession_number(str)
       else
         Lcsort.normalize(str.gsub(/x([A-Z])/, '\1')) || accession_number(str)
@@ -16,8 +16,10 @@ module StringFunctions
 
     def accession_number(str)
       norm = str.upcase
-      norm = norm.gsub('CD-', 'CD') # cds should file together regardless of dash
-      norm.gsub(/(\d+)$/) { |c| format('%07d', c) } # normalize number to 7-digits
+      norm = norm.gsub(/(CD|DVD|LP|LS)-/, '\1') # should file together regardless of dash
+
+      # normalize number to 7-digits, ignore oversize q
+      norm.gsub(/(\d+)(Q?)$/) { format('%07d', Regexp.last_match[1].to_i) }
     end
   end
 end

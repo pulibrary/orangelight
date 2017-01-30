@@ -27,6 +27,15 @@ RSpec.describe StringFunctions do
       it 'the number is sorted as an integer' do
         expect(described_class.cn_normalize('18th-25')).to be < described_class.cn_normalize('18th-24000')
       end
+      it 'oversize q is ignored' do
+        dvd_1 = described_class.cn_normalize('DVD 204')
+        dvd_2 = described_class.cn_normalize('DVD 205q')
+        dvd_3 = described_class.cn_normalize('DVD 206')
+        expect(dvd_1..dvd_3).to cover dvd_2
+      end
+      it 'leading zeros normalize the same as without' do
+        expect(described_class.cn_normalize('CASSETTE 423')).to eq described_class.cn_normalize('CASSETTE 0423')
+      end
     end
   end
 end

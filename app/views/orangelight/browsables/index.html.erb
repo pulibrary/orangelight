@@ -82,7 +82,9 @@
         <% end %>
           <td><%= link_to orangelight_name.label, "/catalog/#{orangelight_name.bibid}" %></td>
           <td class="availability-column" data-availability-record="<%=should_check_availability?(orangelight_name.bibid)%>" data-record-id="<%=bib_for_availability(orangelight_name.bibid)%>" data-holding-id="<%=orangelight_name.holding_id%>">
-            <%= orangelight_name.location %></br><span class="availability-icon label label-default"></span>
+            <%= content_tag(:span, content_tag(:span, orangelight_name.location, class: 'results_location'), class: 'library-location', data: { location: true, record_id: orangelight_name.bibid, holding_id: orangelight_name.holding_id }) %>
+            </br><span class="availability-icon label label-default"></span>
+            <%= content_tag(:span, '', class: 'more-info empty', data: { record_id: orangelight_name.bibid }) unless orangelight_name.location == 'Multiple locations' %>
           </td>
 
           <td class="<%=orangelight_name.dir%>"><%= orangelight_name.title %></td>
