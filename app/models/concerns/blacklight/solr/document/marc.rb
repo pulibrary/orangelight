@@ -73,7 +73,7 @@ module Blacklight
           def build_ctx(format = nil)
             ctx = ContextObject.new
             id = self['id']
-            title = self['title_citation_display'].first unless self['title_citation_display'].nil?
+            # title = self['title_citation_display'].first unless self['title_citation_display'].nil?
             date = self['pub_date_display'].first unless self['pub_date_display'].nil?
             author = self['author_citation_display'].first unless self['author_citation_display'].nil?
             corp_author = self['pub_citation_display'].first unless self['pub_citation_display'].nil?
@@ -86,8 +86,8 @@ module Blacklight
             if format == 'book'
               ctx.referent.set_format('book')
               ctx.referent.set_metadata('genre', 'book')
-              ctx.referent.set_metadata('btitle', title)
-              ctx.referent.set_metadata('title', title)
+              # ctx.referent.set_metadata('btitle', title)
+              # ctx.referent.set_metadata('title', title)
               ctx.referent.set_metadata('au', author)
               ctx.referent.set_metadata('aucorp', corp_author)
               # Place not easilty discernable in solr doc
@@ -98,15 +98,15 @@ module Blacklight
             elsif format =~ /journal/i # checking using include because institutions may use formats like Journal or Journal/Magazine
               ctx.referent.set_format('journal')
               ctx.referent.set_metadata('genre', 'serial')
-              ctx.referent.set_metadata('atitle', title)
-              ctx.referent.set_metadata('title', title)
+              # ctx.referent.set_metadata('atitle', title)
+              # ctx.referent.set_metadata('title', title)
               # use author display as corp author for journals
               ctx.referent.set_metadata('aucorp', author)
               ctx.referent.set_metadata('issn', self['issn_s'].first) unless self['issn_s'].nil?
             else
               ctx.referent.set_format(genre) # do we need to do this?
               ctx.referent.set_metadata('genre', genre)
-              ctx.referent.set_metadata('title', title)
+              # ctx.referent.set_metadata('title', title)
               ctx.referent.set_metadata('creator', author)
               ctx.referent.set_metadata('aucorp', corp_author)
               # place not discernable in solr doc
