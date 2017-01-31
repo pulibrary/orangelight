@@ -22,7 +22,7 @@ describe 'Availability' do
   describe 'Electronic Holdings are displayed on a record page', js: true do
     it 'within the online section', unless: in_travis? do
       visit '/catalog/857469'
-      expect(page).to have_selector '.location--online .panel-body a', count: 1
+      expect(page).to have_selector '.location--online .panel-body a', minimum: 1
     end
 
     it 'display umlaut links for marcit record within the online section', unless: in_travis? do

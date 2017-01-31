@@ -62,7 +62,7 @@ RSpec.describe ApplicationHelper do
     let(:show_result_journal) { helper.holding_request_block(document_journal) }
     let(:show_result_thesis) { helper.holding_request_block(document_thesis) }
     let(:show_result_thesis_no_request) { helper.holding_request_block(document_thesis_no_request_access) }
-    let(:show_result_marcit) { helper.urlify(electronic_access_marcit) }
+    let(:show_result_marcit) { helper.urlify(electronic_access_marcit, document) }
     let(:show_result_umlaut_w_full_text) { helper.umlaut_services }
     let(:holding_block_json) do
       {
