@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<% if online.nil? && document.standard_numbers? %>
+<% if online.nil? && document.standard_numbers? && document.umlaut_fulltext_eligible? %>
   <%= umlaut_services_fulltext(document) %>
 <% end %>
 

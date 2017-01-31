@@ -4,7 +4,7 @@ module ApplicationHelper
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
   # Proxy Base is added to force remote access when appropriate
-  def urlify(electronic_access)
+  def urlify(electronic_access, document)
     urls = ''
     links = JSON.parse(electronic_access)
     links.each do |url, text|
@@ -17,7 +17,7 @@ module ApplicationHelper
       end
       urls << content_tag(:div, link.html_safe, class: 'electronic-access')
     end
-    unless links.keys.any? { |link| /getit\.princeton\.edu/.match(link) } || links.empty?
+    unless links.keys.any? { |link| /getit\.princeton\.edu/.match(link) } || links.empty? || !document.umlaut_fulltext_eligible?
       urls << content_tag(:div, '', :id => 'full_text', :class => ['availability--panel', 'availability_full-text', 'availability_full-text-alternative'], 'data-umlaut-services' => true)
     end
     if links.count > 1
@@ -83,7 +83,7 @@ module ApplicationHelper
   def holding_request_block(document)
     doc_id = document['id']
     holdings = JSON.parse(document['holdings_1display'] || '{}')
-    links = urlify(document['electronic_access_1display'] || '{}')
+    links = urlify(document['electronic_access_1display'] || '{}', document)
     physical_holdings = ''
     online_holdings = ''
     is_journal = document['format'].include?('Journal')
