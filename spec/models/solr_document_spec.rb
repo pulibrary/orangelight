@@ -78,8 +78,9 @@ RSpec.describe SolrDocument do
         expect(subject.to_ctx(subject['format']).to_hash['rft.genre']).to eq('book')
       end
 
-      it 'Has a rft.title param' do
-        expect(subject.to_ctx(subject['format']).to_hash['rft.title']).to eq(subject['title_citation_display'].first)
+      it 'Does not have a rft.title param' do
+        expect(subject.to_ctx(subject['format']).to_hash.key?('rft.title')).to be false
+        # ['rft.title']).to eq(subject['title_citation_display'].first)
       end
     end
 
@@ -96,8 +97,9 @@ RSpec.describe SolrDocument do
         expect(subject.to_ctx(subject['format']).to_hash['rft.genre']).to eq('serial')
       end
 
-      it 'has a journal rft.atitle param' do
-        expect(subject.to_ctx(subject['format']).to_hash['rft.atitle']).to eq(subject['title_citation_display'].first)
+      it 'does not have a journal rft.atitle param' do
+        expect(subject.to_ctx(subject['format']).to_hash.key?('rft.title')).to be false
+        # expect(subject.to_ctx(subject['format']).to_hash['rft.atitle']).to eq(subject['title_citation_display'].first)
       end
     end
 
