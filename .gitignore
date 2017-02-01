@@ -23,7 +23,7 @@ coverage/
 
 # Ignore byebug history
 .byebug_history
-
+.DS_Store
 # Ignore sorl config and libs downloaded from https://github.com/pulibrary/pul_solr/
 solr/conf/*.txt
 solr/conf/*.xml
