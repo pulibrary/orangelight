@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 5d1783207ea99cb2760436059179f9ffb708125e
+  revision: 29304cb889b4e47a077abb7f8a0ad46fe1f5dc2c
   branch: development
   specs:
     requests (0.0.2)
@@ -395,7 +395,7 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.6)
-    tins (1.13.0)
+    tins (1.13.2)
     traject (2.3.3)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
