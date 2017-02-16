@@ -142,7 +142,7 @@ class CatalogController < ApplicationController
     # config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
 
     config.add_show_field 'author_display', label: 'Author/&#8203;Artist', helper_method: :browse_name
-    config.add_show_field 'uniform_title_s', label: 'Uniform title'
+    config.add_show_field 'name_uniform_title_display', label: 'Uniform title', helper_method: :name_title
     config.add_show_field 'format', label: 'Format', helper_method: :format_render
     config.add_show_field 'url_fulltext_display', label: 'URL'
     config.add_show_field 'url_suppl_display', label: 'More information'
@@ -251,8 +251,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'cumulative_index_finding_aid_display', label: 'Cumulative index/&#8203;Finding aid'
     config.add_show_field 'subject_display', label: 'Subject(s)', helper_method: :subjectify
     config.add_show_field 'form_genre_display', label: 'Form/&#8203;Genre'
-    config.add_show_field 'related_works_display', label: 'Related work(s)', helper_method: :name_title
-    config.add_show_field 'contains_display', label: 'Contains', helper_method: :name_title
+    config.add_show_field 'related_works_1display', label: 'Related work(s)', helper_method: :name_title_hierarchy
+    config.add_show_field 'contains_1display', label: 'Contains', helper_method: :name_title_hierarchy
     config.add_show_field 'place_name_display', label: 'Place name(s)'
     config.add_show_field 'other_title_display', label: 'Other title(s)'
     config.add_show_field 'other_title_1display', hash: true

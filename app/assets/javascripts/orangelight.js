@@ -1,13 +1,13 @@
 //= require 'jquery'
 
 $(document).ready(function() {
-    //link highlighting of subject heirarchy
-    $(".search-subject").hover(
+    //link highlighting of hierarchy
+    $(".search-subject, .search-name-title").hover(
         function() {
-            $(this).prevAll().addClass("subject-heirarchy");
+            $(this).prevAll().addClass("field-hierarchy");
         },
         function() {
-            $(this).prevAll().removeClass("subject-heirarchy");
+            $(this).prevAll().removeClass("field-hierarchy");
         }
     );
 
