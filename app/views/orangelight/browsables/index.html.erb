@@ -11,7 +11,7 @@
           <% else %>
           <li><%= link_to raw(t 'blacklight.pagination_compact.previous'), @page_link + "start=#{@prev}", class: "btn btn-link" %></li>
           <% end %>
-          <%= content_tag(:li, "#{@start} - #{@page_last} of #{@last_id}", class: "page-count", style: "color:black;strong;font-weight:bold;") %>
+          <%= content_tag(:li, "#{number_with_delimiter(@start)} - #{number_with_delimiter(@page_last)} of #{number_with_delimiter(@last_id)}", class: "page-count", style: "color:black;strong;font-weight:bold;") %>
           <% if @is_last %>
             <%= content_tag(:li, raw(t 'blacklight.pagination_compact.next'), class: "btn disabled") %>
           <% else %>
@@ -44,7 +44,7 @@
             &nbsp;
             <span class="facet-label <%=orangelight_name.dir%>"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{CGI.escape orangelight_name.label}", dir: orangelight_name.dir %>
               <%= "(#{orangelight_name.count})"%>
-            <%#= link_to "[more info]", "#{@model}/#{orangelight_name.id}", class: "more-info;", dir: orangelight_name.dir %></span>
+            </span>
           <% if orangelight_name.id == @match && @exact_match %>
               </strong>
             </li>
@@ -82,7 +82,9 @@
         <% end %>
           <td><%= link_to orangelight_name.label, "/catalog/#{orangelight_name.bibid}" %></td>
           <td class="availability-column" data-availability-record="<%=should_check_availability?(orangelight_name.bibid)%>" data-record-id="<%=bib_for_availability(orangelight_name.bibid)%>" data-holding-id="<%=orangelight_name.holding_id%>">
-            <%= orangelight_name.location %></br><span class="availability-icon label label-default"></span>
+            <%= content_tag(:span, content_tag(:span, orangelight_name.location, class: 'results_location'), class: 'library-location', data: { location: true, record_id: orangelight_name.bibid, holding_id: orangelight_name.holding_id }) %>
+            </br><span class="availability-icon label label-default"></span>
+            <%= content_tag(:span, '', class: 'more-info empty', data: { record_id: orangelight_name.bibid }) unless orangelight_name.location == 'Multiple locations' %>
           </td>
 
           <td class="<%=orangelight_name.dir%>"><%= orangelight_name.title %></td>
@@ -113,7 +115,7 @@
         <% else %>
         <li><%= link_to raw(t 'blacklight.pagination_compact.previous'), @page_link + "start=#{@prev}", class: "btn btn-link" %></li>
         <% end %>
-        <%= content_tag(:li, "#{@start} - #{@page_last} of #{@last_id}", class: "page-count", style: "color:black;strong;font-weight:bold;") %>
+        <%= content_tag(:li, "#{number_with_delimiter(@start)} - #{number_with_delimiter(@page_last)} of #{number_with_delimiter(@last_id)}", class: "page-count", style: "color:black;strong;font-weight:bold;") %>
         <% if @is_last %>
           <%= content_tag(:li, raw(t 'blacklight.pagination_compact.next'), class: "btn disabled") %>
         <% else %>

@@ -467,6 +467,7 @@ DEPENDENCIES
   modernizr-rails
   newrelic_rpm
   omniauth-cas
+  openurl (~> 1.0)
   pg
   poltergeist
   pry-byebug

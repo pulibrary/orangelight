@@ -62,7 +62,8 @@ RSpec.describe ApplicationHelper do
     let(:show_result_journal) { helper.holding_request_block(document_journal) }
     let(:show_result_thesis) { helper.holding_request_block(document_thesis) }
     let(:show_result_thesis_no_request) { helper.holding_request_block(document_thesis_no_request_access) }
-    let(:show_result_marcit) { helper.urlify(electronic_access_marcit) }
+    let(:show_result_marcit) { helper.urlify(electronic_access_marcit, document) }
+    let(:show_result_umlaut_w_full_text) { helper.umlaut_services }
     let(:holding_block_json) do
       {
         holding_id => {
@@ -145,6 +146,29 @@ RSpec.describe ApplicationHelper do
         format: ['Senior Thesis'],
         holdings_1display: holdings_thesis_mudd,
         pub_date_start_sort: 2013
+      }.with_indifferent_access
+    end
+
+    let(:document_with_standard_numbers_w_online) do
+      {
+        id: '5',
+        oclc_s: ['123456'],
+        isbn_s: ['9781317536571'],
+        electronic_access_1display: '856 link values'
+      }.with_indifferent_access
+    end
+
+    let(:document_with_standard_numbers_no_online) do
+      {
+        id: '5',
+        oclc_s: ['123456']
+      }.with_indifferent_access
+    end
+
+    let(:document_with_no_standard_numbers_no_online) do
+      {
+        id: '5',
+        title_display: 'A Book'
       }.with_indifferent_access
     end
 
@@ -248,7 +272,7 @@ RSpec.describe ApplicationHelper do
     end
     context '#urlify a marcit record' do
       it 'is marked as full text record' do
-        expect(show_result_marcit).to have_selector "*[data-umlaut-fulltext='true']"
+        expect(show_result_marcit).to have_selector "*[data-umlaut-full-text='true']"
       end
 
       it 'has a marcit context object' do

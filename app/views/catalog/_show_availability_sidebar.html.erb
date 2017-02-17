@@ -1,4 +1,4 @@
-<% online, physical = holding_request_block(@document) %>
+<% online, physical = holding_request_block(document) %>
 <% unless online.nil? %>
   <div class="location--panel location--online">
     <div class="panel panel-default">
@@ -10,7 +10,11 @@
   </div>
 <% end %>
 
-<% linked_records = linked_records(@document['other_version_s'], @document[:id], 'other_version_s') if @document['other_version_s'] %>
+<% if online.nil? && document.standard_numbers? && document.umlaut_fulltext_eligible? %>
+  <%= umlaut_services_fulltext(document) %>
+<% end %>
+
+<% linked_records = linked_records(document['other_version_s'], document[:id], 'other_version_s') if document['other_version_s'] %>
 <% unless linked_records.nil? || linked_records.empty? %>
   <div class="location--panel location--linked">
     <div class="panel panel-default">
@@ -37,4 +41,8 @@
       </div>
     </div>
   </div>
+<% end %>
+
+<% if document.standard_numbers? %>
+  <%= umlaut_services %>
 <% end %>

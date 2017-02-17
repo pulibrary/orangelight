@@ -4,7 +4,7 @@ module ApplicationHelper
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
   # Proxy Base is added to force remote access when appropriate
-  def urlify(electronic_access)
+  def urlify(electronic_access, document)
     urls = ''
     links = JSON.parse(electronic_access)
     links.each do |url, text|
@@ -12,16 +12,34 @@ module ApplicationHelper
       link = "#{text[1]}: " + link if text[1]
       link = "<li>#{link}</li>" if links.count > 1
       if /getit\.princeton\.edu/ =~ url
-        marcit_ctx = url.gsub('http://getit.princeton.edu/resolve?', '')
-        urls << content_tag(:div, '', :id => 'full_text', :class => ['availability--panel', 'availability_full-text'], 'data-umlaut-fulltext' => true, 'data-url-marcit' => marcit_ctx)
+        marcit_ctx = url.gsub('http://getit.princeton.edu/resolve?', '') # strip to get only the query_string
+        urls << content_tag(:div, '', :id => 'full_text', :class => ['availability--panel', 'availability_full-text'], 'data-umlaut-full-text' => true, 'data-url-marcit' => marcit_ctx)
       end
       urls << content_tag(:div, link.html_safe, class: 'electronic-access')
+    end
+    unless links.keys.any? { |link| /getit\.princeton\.edu/.match(link) } || links.empty? || !document.umlaut_fulltext_eligible?
+      urls << content_tag(:div, '', :id => 'full_text', :class => ['availability--panel', 'availability_full-text', 'availability_full-text-alternative'], 'data-umlaut-services' => true)
     end
     if links.count > 1
       content_tag(:ul, urls.html_safe)
     else
       urls.html_safe
     end
+  end
+
+  def umlaut_services_fulltext(document)
+    services = ''
+    unless document.key? 'electronic_access_1display'
+      services << content_tag(:div, '', :id => 'full_text', :class => ['availability--panel', 'availability_full-text', 'availability--panel_umlaut'], 'data-umlaut-full-text' => true)
+    end
+    services.html_safe
+  end
+
+  def umlaut_services
+    services = ''
+    services << content_tag(:div, '', :id => 'excerpts', :class => ['availability--panel', 'availability_excerpts', 'availability--panel_umlaut'], 'data-umlaut-services' => true)
+    services << content_tag(:div, '', :id => 'highlighted_link', :class => ['availability--panel', 'availability_highlighted-link', 'availability--panel_umlaut'], 'data-umlaut-services' => true)
+    services.html_safe
   end
 
   # Takes first 2 links for pairing with online holdings in search results
@@ -65,7 +83,7 @@ module ApplicationHelper
   def holding_request_block(document)
     doc_id = document['id']
     holdings = JSON.parse(document['holdings_1display'] || '{}')
-    links = urlify(document['electronic_access_1display'] || '{}')
+    links = urlify(document['electronic_access_1display'] || '{}', document)
     physical_holdings = ''
     online_holdings = ''
     is_journal = document['format'].include?('Journal')

@@ -46,16 +46,29 @@ RSpec.describe 'Orangelight Browsables', type: :request do
   end
 
   describe 'Browse Call Number Search' do
-    it 'includes non LC call numbers in search' do
-      get '/browse/call_numbers.json?q=microfilm'
-      r = JSON.parse(response.body)
-      q_normalized = StringFunctions.cn_normalize('microfilm')
-      expect(r[2]['sort']..r[3]['sort']).to cover q_normalized
-    end
-
     it 'escapes call number browse link urls' do
       get '/browse/call_numbers?q=Islamic+Manuscripts%2C+New+Series+no.+1948'
       expect(response.body).to include('/catalog/?f[call_number_browse_s][]=Islamic+Manuscripts%2C+New+Series+no.+1948')
+    end
+  end
+
+  describe 'Multiple locations/titles' do
+    it 'formats multiple titles as n titles with this call number' do
+      get '/browse/call_numbers.json?q=ac102&rpp=5'
+      r = JSON.parse(response.body)
+      expect(r[2]['title']).to match(/\d+ titles with this call number/)
+    end
+    it 'single title with multiple holdings in same location, display single location' do
+      get '/browse/call_numbers.json?q=QA303.2+.W45+2014&rpp=5'
+      r = JSON.parse(response.body)
+      expect(r[2]['title']).to match(/Thomas' calculus/)
+      expect(r[2]['location']).not_to match(/Multiple locations/)
+    end
+    it 'single title with multiple locations' do
+      get '/browse/call_numbers.json?q=RA643.86.B6+B54+2007&rpp=5'
+      r = JSON.parse(response.body)
+      expect(r[2]['title']).not_to match(/\d+ titles with this call number/)
+      expect(r[2]['location']).to match(/Multiple locations/)
     end
   end
 

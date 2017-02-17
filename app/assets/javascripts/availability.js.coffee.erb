@@ -22,7 +22,7 @@ class AvailabilityUpdater
   available_non_requestable_labels = ['Available', 'Returned', 'Requestable',
     'On shelf', 'All items available', 'On-site access', 'On-site - in-transit discharged']
   open_location_labels = ['Available', 'All items available']
-  unavailable_labels = ['Checked out', 'Missing']
+  unavailable_labels = ['Checked out', 'Missing', 'Lost']
   request_availability: ->
     if $(".documents-list").length > 0
       ids = this.record_ids().toArray()
@@ -80,7 +80,7 @@ class AvailabilityUpdater
       availability_element = $("*[data-availability-record='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .availability-icon")
       if availability_info['temp_loc']
         $(availability_element).next('.icon-warning').hide()
-      this.apply_record_icon(availability_element, availability_info['status'], aeon, availability_info)
+      this.apply_record_icon(availability_element, availability_info['status'], aeon, {})
     true
   get_more_items: (holding_id, holding_label) ->
     url = "#{@availability_url}?mfhd=#{holding_id}"
@@ -182,7 +182,10 @@ class AvailabilityUpdater
   due_date = (date_string) ->
     return "" unless date_string?
     date = new Date(date_string)
-    " - Due #{date.getMonth()}/#{date.getDate()}/#{date.getFullYear()} "
+    now = new Date();
+    long_overdue = now.setDate(now.getDate()-30);
+    return "" if long_overdue > date
+    " - Due #{date.getMonth()+1}/#{date.getDate()}/#{date.getFullYear()} "
   title_case = (str) ->
     str[0].toUpperCase() + str[1..str.length - 1].toLowerCase()
   stackmap_link = (record_id, availability_info, marker_only = false) ->

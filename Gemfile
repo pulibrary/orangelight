@@ -78,6 +78,8 @@ gem "blacklight_unapi", git: 'https://github.com/pulibrary/blacklight_unapi.git'
 
 gem 'jquery-datatables-rails', '~> 3.3.0'
 
+gem 'openurl', '~> 1.0'
+
 group :development do
   gem 'capistrano-rails', '~> 1.1.6'
   gem 'quiet_assets'
