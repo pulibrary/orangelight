@@ -142,7 +142,7 @@ class CatalogController < ApplicationController
     # config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
 
     config.add_show_field 'author_display', label: 'Author/&#8203;Artist', helper_method: :browse_name
-    config.add_show_field 'name_uniform_title_display', label: 'Uniform title', helper_method: :name_title
+    config.add_show_field 'name_uniform_title_1display', label: 'Uniform title', helper_method: :name_title_hierarchy
     config.add_show_field 'format', label: 'Format', helper_method: :format_render
     config.add_show_field 'url_fulltext_display', label: 'URL'
     config.add_show_field 'url_suppl_display', label: 'More information'

@@ -1,6 +1,8 @@
 module ApplicationHelper
   include Requests::Pageable
   include Requests::Aeon
+  require './lib/orangelight/string_functions'
+
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
   # Proxy Base is added to force remote access when appropriate
@@ -394,11 +396,16 @@ module ApplicationHelper
     name_titles.each do |name_t|
       name_title_links = []
       name_t.each_with_index do |part, i|
-        link_accum = name_t[0..i].join(' ')
-        name_title_links << link_to(part, "/?f[name_title_browse_s][]=#{CGI.escape link_accum}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")
+        link_accum = StringFunctions.trim_punctuation(name_t[0..i].join(' '))
+        if i == 0
+          next if args[:field] == 'name_uniform_title_1display'
+          name_title_links << link_to(part, "/?f[author_s][]=#{CGI.escape link_accum}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")
+        else
+          name_title_links << link_to(part, "/?f[name_title_browse_s][]=#{CGI.escape link_accum}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")
+        end
       end
       full_name_title = name_t.join(' ')
-      dirtags << full_name_title.dir.to_s
+      dirtags << StringFunctions.trim_punctuation(full_name_title.dir.to_s)
       name_title_links << link_to('[Browse]', "/browse/name_titles?q=#{CGI.escape full_name_title}", class: 'browse-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{full_name_title}", title: "Browse: #{full_name_title}", dir: full_name_title.dir.to_s)
       all_links << name_title_links.join('<span> </span>').html_safe
     end

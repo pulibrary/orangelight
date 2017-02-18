@@ -83,6 +83,7 @@ class Orangelight::BrowsablesController < ApplicationController
     end
 
     @list_name = params[:model].name.demodulize.tableize.humanize
+    @list_name = 'author-title headings' if @list_name == 'Name titles'
 
     respond_to do |format|
       format.html # index.html.erb
