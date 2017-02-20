@@ -23,7 +23,7 @@ module Users
         redirect_to new_user_session_path
         flash[:error] = I18n.t('blacklight.login.barcode_netid')
       else
-        if params[:referring_path]
+        if params[:referring_path]  && request_path(params[:referring_path])
           request.env['omniauth.origin'] = params[:referring_path]
         end
         sign_in_and_redirect @user, event: :authentication # this will throw if @user not activated
@@ -46,7 +46,8 @@ module Users
         flash[:last_name] = @user.errors[:username] unless @user.errors[:username].empty?
       end
 
-      def get_referring_path
+      def request_path(referrer)
+        return true if referrer =~ /\/requests\/(\w+)/
       end
   end
 end
