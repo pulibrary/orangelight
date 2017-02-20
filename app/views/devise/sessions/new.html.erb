@@ -15,6 +15,7 @@
   </div>
   <div class='panel-body'>
     <%= simple_form_for(@user, url: user_barcode_omniauth_callback_path, class: 'form-horizontal', data: { toggle: 'validator' })  do |f| %>
+        <%= hidden_field_tag 'referring_path', "#{request.referrer}" %>
         <div class='field form-group col-md-12'>
           <%= f.label 'Last name', class: 'control-label col-md-2' %>
           <div class='col-md-5 <%= 'has-error' if flash[:last_name] %>'>

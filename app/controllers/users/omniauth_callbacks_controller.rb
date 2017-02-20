@@ -23,7 +23,9 @@ module Users
         redirect_to new_user_session_path
         flash[:error] = I18n.t('blacklight.login.barcode_netid')
       else
-        @user.save
+        if params[:referring_path]
+          request.env['omniauth.origin'] = params[:referring_path]
+        end
         sign_in_and_redirect @user, event: :authentication # this will throw if @user not activated
         set_flash_message(:notice, :success, kind: 'with barcode') if is_navigational_format?
       end
@@ -42,6 +44,9 @@ module Users
       def flash_validation
         flash[:barcode] = @user.errors[:uid] unless @user.errors[:uid].empty?
         flash[:last_name] = @user.errors[:username] unless @user.errors[:username].empty?
+      end
+
+      def get_referring_path
       end
   end
 end
