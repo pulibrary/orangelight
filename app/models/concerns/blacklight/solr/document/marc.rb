@@ -33,6 +33,14 @@ module Blacklight
           end
         end
 
+        def scsb_record?
+          if self['id'] = /^SCSB-+/
+            true
+          else
+            false
+          end
+        end
+
         def umlaut_fulltext_eligible?
           if (umlaut_full_text_formats & self['format'].map!(&:downcase)).empty?
             false
