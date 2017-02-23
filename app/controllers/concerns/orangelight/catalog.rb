@@ -26,6 +26,8 @@ module Orangelight
           redirect_to "/browse/call_numbers?search_field=#{params[:search_field]}&q=#{CGI.escape params[:q]}"
         elsif params[:search_field] == 'browse_name' && !params[:id]
           redirect_to "/browse/names?search_field=#{params[:search_field]}&q=#{CGI.escape params[:q]}"
+        elsif params[:search_field] == 'name_title' && !params[:id]
+          redirect_to "/browse/name_titles?search_field=#{params[:search_field]}&q=#{CGI.escape params[:q]}"
         end
       end
     end

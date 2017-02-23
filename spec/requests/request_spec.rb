@@ -136,16 +136,16 @@ describe 'blacklight tests' do
                                     "title=\"Search: #{author_vern}\" href=\"/?f[author_s][]="\
                                     "#{CGI.escape author_vern}\">#{author_vern}</a>")).to eq true
     end
-    it 'adds ltr rtl dir for title and related names in document view' do
-      get '/catalog/5906024.json'
+    it 'adds ltr rtl dir for title and other fields in document view' do
+      get '/catalog/4705307.json'
       r = JSON.parse(response.body)['response']['document']
       title_vern = r['title_vern_display']
-      related = r['contains_display'][0]
-      related_vern = r['contains_display'][1]
-      get '/catalog/5906024'
+      note = r['notes_display'][0]
+      note_vern = r['notes_display'].last
+      get '/catalog/4705307'
       expect(response.body.include?("<h1 dir=\"rtl\"> #{title_vern} </h1>")).to eq true
-      expect(response.body.include?("<li dir=\"ltr\"> #{related} </li>")).to eq true
-      expect(response.body.include?("<li dir=\"rtl\"> #{related_vern} </li>")).to eq true
+      expect(response.body.include?("<li dir=\"ltr\"> #{note} </li>")).to eq true
+      expect(response.body.include?("<li dir=\"rtl\"> #{note_vern} </li>")).to eq true
     end
   end
 
@@ -367,6 +367,22 @@ describe 'blacklight tests' do
       get '/catalog/3871398'
       expect(response.body).to include('/?f[author_s][]=%E7%A5%9D%E7%A9%86%2C+13th+cent')
       expect(response.body).to include('/browse/names?q=%E7%A5%9D%E7%A9%86%2C+13th+cent')
+    end
+
+    it 'show page name-title facet/browse urls' do
+      get '/catalog/857469'
+      expect(response.body).to include('/?f[name_title_browse_s][]=Helminthological+Society+of+'\
+                                       'Washington.+Proceedings+of+the+Helminthological+Society+'\
+                                       'of+Washington')
+      expect(response.body).to include('/browse/name_titles?q=Helminthological+Society+of+'\
+                                       'Washington.+Proceedings+of+the+Helminthological+Society+'\
+                                       'of+Washington')
+    end
+    it 'url does not appear for linked titles with no subfield $a' do
+      get '/catalog/857469'
+      expect(response.body).to include('Science (New York, N.Y.)')
+      expect(response.body).not_to include('/?f[name_title_browse_s][]=Science+%28New+York%2C+N.Y.%29')
+      expect(response.body).not_to include('/browse/name_titles?q=Science+%28New+York%2C+N.Y.%29')
     end
   end
 

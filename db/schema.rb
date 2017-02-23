@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222150444) do
+ActiveRecord::Schema.define(version: 20170110113442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 20161222150444) do
   end
 
   add_index "orangelight_call_numbers", ["sort"], name: "index_orangelight_call_numbers_on_sort", using: :btree
+
+  create_table "orangelight_name_titles", force: :cascade do |t|
+    t.text    "label"
+    t.integer "count"
+    t.text    "sort"
+    t.string  "dir"
+  end
+
+  add_index "orangelight_name_titles", ["sort"], name: "index_orangelight_name_titles_on_sort", using: :btree
 
   create_table "orangelight_names", force: :cascade do |t|
     t.text    "label"

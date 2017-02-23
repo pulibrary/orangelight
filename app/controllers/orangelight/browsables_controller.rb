@@ -78,9 +78,12 @@ class Orangelight::BrowsablesController < ApplicationController
       @facet = 'author_s'
     elsif @model == 'subjects'
       @facet = 'subject_facet'
+    elsif @model == 'name_titles'
+      @facet = 'name_title_browse_s'
     end
 
     @list_name = params[:model].name.demodulize.tableize.humanize
+    @list_name = 'author-title headings' if @list_name == 'Name titles'
 
     respond_to do |format|
       format.html # index.html.erb

@@ -6,16 +6,12 @@ RSpec.describe Orangelight::BrowsablesController, type: :routing do
       expect(get: '/browse/names').to route_to('orangelight/browsables#index', model: Orangelight::Name)
     end
 
-    it 'browse/names/1 routes to #show' do
-      expect(get: '/browse/names/1').to route_to('orangelight/browsables#show', id: '1', model: Orangelight::Name)
+    it 'browse/name_titles routes to #index' do
+      expect(get: '/browse/name_titles').to route_to('orangelight/browsables#index', model: Orangelight::NameTitle)
     end
 
     it 'browse/subjects routes to #index' do
       expect(get: '/browse/subjects').to route_to('orangelight/browsables#index', model: Orangelight::Subject)
-    end
-
-    it 'browse/subjects/1 routes to #show' do
-      expect(get: '/browse/subjects/1').to route_to('orangelight/browsables#show', id: '1', model: Orangelight::Subject)
     end
 
     it 'browse/call_numbers routes to #index' do
