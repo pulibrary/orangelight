@@ -1,6 +1,8 @@
 module ApplicationHelper
   include Requests::Pageable
   include Requests::Aeon
+  require './lib/orangelight/string_functions'
+
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
   # Proxy Base is added to force remote access when appropriate
@@ -376,6 +378,45 @@ module ApplicationHelper
                 link_to('[Browse]', "/browse/names?q=#{CGI.escape name}", class: 'browse-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{name}", title: "Browse: #{name}", dir: name.dir.to_s)
       args[:document][args[:field]][i] = newname.html_safe
     end
+  end
+
+  def name_title(args)
+    args[:document][args[:field]].each_with_index do |name_t, i|
+      next unless args[:document]['name_title_browse_s'] && args[:document]['name_title_browse_s'].include?(name_t)
+      newname_t = link_to(name_t, "/?f[name_title_browse_s][]=#{CGI.escape name_t}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name_t}", title: "Search: #{name_t}") + '  ' +
+                  link_to('[Browse]', "/browse/name_titles?q=#{CGI.escape name_t}", class: 'browse-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{name_t}", title: "Browse: #{name_t}", dir: name_t.dir.to_s)
+      args[:document][args[:field]][i] = newname_t.html_safe
+    end
+  end
+
+  def name_title_hierarchy(args)
+    name_titles = JSON.parse(args[:document][args[:field]])
+    all_links = []
+    dirtags = []
+    name_titles.each do |name_t|
+      name_title_links = []
+      name_t.each_with_index do |part, i|
+        link_accum = StringFunctions.trim_punctuation(name_t[0..i].join(' '))
+        if i == 0
+          next if args[:field] == 'name_uniform_title_1display'
+          name_title_links << link_to(part, "/?f[author_s][]=#{CGI.escape link_accum}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")
+        else
+          name_title_links << link_to(part, "/?f[name_title_browse_s][]=#{CGI.escape link_accum}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")
+        end
+      end
+      full_name_title = name_t.join(' ')
+      dirtags << StringFunctions.trim_punctuation(full_name_title.dir.to_s)
+      name_title_links << link_to('[Browse]', "/browse/name_titles?q=#{CGI.escape full_name_title}", class: 'browse-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{full_name_title}", title: "Browse: #{full_name_title}", dir: full_name_title.dir.to_s)
+      all_links << name_title_links.join('<span> </span>').html_safe
+    end
+
+    if all_links.length == 1
+      all_links = content_tag(:div, all_links[0], dir: dirtags[0])
+    else
+      all_links = all_links.map.with_index { |l, i| content_tag(:li, l, dir: dirtags[i]) }
+      all_links = content_tag(:ul, all_links.join.html_safe)
+    end
+    args[:document][args[:field]] = all_links
   end
 
   def formats_to_exclude(document)

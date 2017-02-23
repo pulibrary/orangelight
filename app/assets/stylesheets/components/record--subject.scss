@@ -2,15 +2,17 @@
 @import "variables/colors";
 @import "abstractions/mixins";
 
-.subject-heirarchy {
+.field-hierarchy {
   text-decoration: underline;
   color: darken($orange, 10%);
 }
 
-.search-subject:hover {
+.search-subject:hover,
+.search-name-title:hover {
   color: darken($orange, 10%);
 }
 
-.search-subject:active {
+.search-subject:active,
+.search-name-title:active {
   text-decoration: none;
 }
