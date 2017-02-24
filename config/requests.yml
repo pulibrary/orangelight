@@ -14,7 +14,7 @@ defaults: &defaults
 development:
   <<: *defaults
   #voyager_ub_id: 1@DB
-  umlaut_base: http://localhost:4000
+  #umlaut_base: http://localhost:4000
   bibdata_base: http://localhost:7000
   voyager_ub_id: 1@DB
 test:
