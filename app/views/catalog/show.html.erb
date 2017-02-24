@@ -19,15 +19,6 @@
               </ul>
             </dd>
           </dl>
-        <% elsif @document.scsb_record? %>
-          <dl class="dl-horizontal dl-invert">
-            <dt class="other-views">Other views:</dt>
-            <dd class="classic-views">
-              <ul>
-                <li><%= link_to t('blacklight.tools.librarian_view'), "#{solr_document_path(@document)}.json", {:id => 'staffLink'} %></li>
-              </ul>
-            </dd>
-          </dl>
         <% end %>
     </div>
   </div>
