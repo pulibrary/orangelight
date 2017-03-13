@@ -22,7 +22,7 @@ RSpec.describe AccountController do
     it 'Returns Princeton Patron Account Data using a NetID' do
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
       patron = subject.send(:current_patron?, valid_user.uid)
@@ -32,7 +32,7 @@ RSpec.describe AccountController do
     it "Returns false when an ID doesn't exist" do
       invalid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{invalid_user.uid}"
       stub_request(:get, invalid_patron_record_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 404, body: '<html><title>Not Here</title><body></body></html>', headers: {})
       patron = subject.send(:current_patron?, invalid_user.uid)
       expect(patron).to be_falsey
@@ -41,7 +41,7 @@ RSpec.describe AccountController do
     it "Returns false when the application isn't authorized to access patron data" do
       unauthorized_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{unauthorized_user.uid}"
       stub_request(:get, unauthorized_patron_record_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 403, body: '<html><title>Not Authorized</title><body></body></html>', headers: {})
       patron = subject.send(:current_patron?, unauthorized_user.uid)
       expect(patron).to be_falsey
@@ -50,7 +50,7 @@ RSpec.describe AccountController do
     it 'Returns false when the http response throws 500' do
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 500, body: 'Error', headers: {})
       patron = subject.send(:current_patron?, valid_user.uid)
       expect(patron).to be_falsey
@@ -65,7 +65,7 @@ RSpec.describe AccountController do
       sign_in(valid_cas_user)
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 200, body: valid_patron_response, headers: {})
       get :borrow_direct_redirect
       expect(response.location).to match(%r{https:\/\/borrow-direct.relaisd2d.com\/})
@@ -74,7 +74,7 @@ RSpec.describe AccountController do
       sign_in(valid_cas_user)
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 200, body: valid_patron_response, headers: {})
       query = 'book title'
       get :borrow_direct_redirect, q: query
@@ -86,7 +86,7 @@ RSpec.describe AccountController do
       sign_in(valid_cas_user)
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 200, body: valid_patron_response, headers: {})
       query = 'book title'
       get :borrow_direct_redirect, query: query
@@ -101,7 +101,7 @@ RSpec.describe AccountController do
       sign_in(valid_barcode_user)
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_barcode_user.uid}"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 200, body: valid_patron_response, headers: {})
       get :borrow_direct_redirect
       expect(response).to redirect_to(root_url)
@@ -117,7 +117,7 @@ RSpec.describe AccountController do
     it 'Returns Voyager account data using a valid patron record' do
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 200, body: valid_voyager_response, headers: {})
       account = subject.send(:voyager_account?, valid_voyager_patron)
       expect(account).to be_truthy
@@ -127,7 +127,7 @@ RSpec.describe AccountController do
     it "Returns false when the patron record doesn't exist" do
       invalid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{invalid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
       stub_request(:get, invalid_patron_record_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 404, body: 'Account Not Found', headers: {})
       account = subject.send(:voyager_account?, invalid_voyager_patron)
       expect(account).to be_falsey
@@ -136,7 +136,7 @@ RSpec.describe AccountController do
     it "Returns false when the application isn't authorized to access Voyager account data" do
       unauthorized_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{unauthorized_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
       stub_request(:get, unauthorized_patron_record_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 403, body: 'Application Not Authorized', headers: {})
       account = subject.send(:voyager_account?, unauthorized_voyager_patron)
       expect(account).to be_falsey

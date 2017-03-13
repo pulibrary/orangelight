@@ -27,23 +27,23 @@ RSpec.describe VoyagerPatronClient do
 
     before(:each) do
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 200, body: voyager_account_response, headers: {})
 
       stub_request(:get, valid_db_key_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 200, body: voyager_dbkey_response, headers: {})
 
       stub_request(:post, valid_authenticate_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' }, body: subject.authenticate_patron_xml)
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0', 'Content-type' => 'application/xml' }, body: subject.authenticate_patron_xml)
         .to_return(status: 200, body: voyager_authenticate_response, headers: {})
 
       stub_request(:post,  valid_cancel_request_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' }, body: subject.cancel_xml_string(items_to_cancel, subject.dbkey))
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0', 'Content-type' => 'application/xml' }, body: subject.cancel_xml_string(items_to_cancel, subject.dbkey))
         .to_return(status: 200, body: voyager_successful_cancel_request, headers: {})
 
       stub_request(:post,  valid_renew_request_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' }, body: subject.renew_xml_string(renew_item_list))
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0', 'Content-type' => 'application/xml' }, body: subject.renew_xml_string(renew_item_list))
         .to_return(status: 200, body: voyager_successful_renew_request, headers: {})
     end
 
@@ -111,7 +111,7 @@ RSpec.describe VoyagerPatronClient do
 
       it 'A failed cancel request response still includes the item requested to be cancelled' do
         stub_request(:post, valid_cancel_request_uri)
-          .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' }, body: subject.cancel_xml_string(items_to_cancel, subject.dbkey))
+          .with(headers: { 'User-Agent' => 'Faraday v0.11.0', 'Content-type' => 'application/xml' }, body: subject.cancel_xml_string(items_to_cancel, subject.dbkey))
           .to_return(status: 200, body: voyager_failed_cancel_request, headers: {})
         expect(subject.cancel_active_requests(items_to_cancel).request_items.size).to eq(1)
       end
@@ -153,7 +153,7 @@ RSpec.describe VoyagerPatronClient do
 
       it 'a failed renew item request response has a message' do
         stub_request(:post, valid_renew_request_uri)
-          .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' }, body: subject.renew_xml_string(renew_item_list))
+          .with(headers: { 'User-Agent' => 'Faraday v0.11.0', 'Content-type' => 'application/xml' }, body: subject.renew_xml_string(renew_item_list))
           .to_return(status: 200, body: voyager_failed_renew_request, headers: {})
         expect(subject.renewal_request(renew_item_list).charged_items.size).to eq(3)
         expect(subject.renewal_request(renew_item_list).charged_items[1]).to have_key(:messages)
@@ -162,7 +162,7 @@ RSpec.describe VoyagerPatronClient do
 
       it 'a failed renew item request response has renew status with a block' do
         stub_request(:post, valid_renew_request_uri)
-          .with(headers: { 'User-Agent' => 'Faraday v0.9.2', 'Content-type' => 'application/xml' }, body: subject.renew_xml_string(renew_item_list))
+          .with(headers: { 'User-Agent' => 'Faraday v0.11.0', 'Content-type' => 'application/xml' }, body: subject.renew_xml_string(renew_item_list))
           .to_return(status: 200, body: voyager_failed_renew_request, headers: {})
         expect(subject.renewal_request(renew_item_list).charged_items.size).to eq(3)
         expect(subject.renewal_request(renew_item_list).charged_items[1]).to have_key(:renew_status)
