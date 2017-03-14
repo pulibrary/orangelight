@@ -1,5 +1,4 @@
 module ApplicationHelper
-  include Requests::Pageable
   include Requests::Aeon
   require './lib/orangelight/string_functions'
 
@@ -128,9 +127,7 @@ module ApplicationHelper
                               holding_id: holding_id
                             }
                             )
-      unless pageable?(holding)
-        location << locate_link(holding['location_code'], bib_id, holding['call_number'], holding['library']).html_safe
-      end
+      location << locate_link(holding['location_code'], bib_id, holding['call_number'], holding['library']).html_safe
       info << content_tag(:h3, location.html_safe, class: 'library-location')
     end
     unless holding['call_number'].blank?
@@ -156,7 +153,7 @@ module ApplicationHelper
     info << content_tag(:ul, "#{holding_label('Location has:')} #{listify_array(holding['location_has'])}".html_safe, class: 'location-has') unless holding['location_has'].nil?
     info << content_tag(:ul, ''.html_safe, class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
     unless holding_id == 'thesis' && pub_date > 2012
-      info << request_placeholder(bib_id, holding_id, location_rules, holding).html_safe
+      info << request_placeholder(bib_id, holding_id, location_rules).html_safe
     end
     info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
     info
@@ -207,11 +204,9 @@ module ApplicationHelper
     content_tag(:div, label, class: 'holding-label')
   end
 
-  def request_placeholder(doc_id, holding_id, location_rules, holding)
-    content_tag(:div, class: "location-services #{show_request(location_rules, holding_id)}", data: { open: open_location?(location_rules, holding), requestable: requestable_location?(location_rules, holding), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
-      if pageable?(holding)
-        link_to 'Paging Request', "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch", title: 'View Options to Request copies from this Location', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
-      elsif non_voyager?(holding_id)
+  def request_placeholder(doc_id, holding_id, location_rules)
+    content_tag(:div, class: "location-services #{show_request(location_rules, holding_id)}", data: { open: open_location?(location_rules), requestable: requestable_location?(location_rules), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
+      if non_voyager?(holding_id)
         link_to 'Reading Room Request', "/requests/#{doc_id}?mfhd=#{holding_id}", title: 'Request to view in Reading Room', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       else
         link_to request_label(location_rules), "https://library.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}", title: request_tooltip(location_rules), target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
@@ -243,30 +238,12 @@ module ApplicationHelper
     end
   end
 
-  def pageable?(holding)
-    if paging_locations.include? holding['location_code']
-      if holding.key?('call_number_browse')
-        if lc_number?(holding['call_number_browse'])
-          in_call_num_range(holding['call_number_browse'], paging_ranges[holding['location_code']])
-        end
-      end
-    end
+  def open_location?(location)
+    location.nil? ? false : location[:open]
   end
 
-  def open_location?(location, holding)
-    if pageable?(holding)
-      false
-    else
-      location.nil? ? false : location[:open]
-    end
-  end
-
-  def requestable_location?(location, holding)
-    if pageable?(holding)
-      true
-    else
-      location.nil? ? false : location[:requestable]
-    end
+  def requestable_location?(location)
+    location.nil? ? false : location[:requestable]
   end
 
   def aeon_location?(location)
@@ -300,7 +277,6 @@ module ApplicationHelper
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location Must be requested', 'data-toggle' => 'tooltip').html_safe if aeon_location?(location)
         elsif holding['dspace'].nil?
           info << content_tag(:span, '', class: 'availability-icon').html_safe
-          info << content_tag(:span, '', class: 'icon-warning icon-request-paging', title: t('blacklight.holdings.paging_request'), 'data-toggle' => 'tooltip').html_safe if pageable?(holding)
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip').html_safe if aeon_location?(location)
         else
           check_availability = false
@@ -330,11 +306,7 @@ module ApplicationHelper
     location = holding_location_label(holding)
     render_arrow = (!location.blank? && !holding['call_number'].blank?)
     arrow = render_arrow ? ' &raquo; ' : ''
-    if pageable?(holding)
-      locate_link = ''
-    else
-      locate_link = locate_link_with_gylph(holding['location_code'], document['id'], holding['call_number'], holding['library'])
-    end
+    locate_link = locate_link_with_gylph(holding['location_code'], document['id'], holding['call_number'], holding['library'])
     location_display = content_tag(:span, location, class: 'results_location') + arrow.html_safe +
                        content_tag(:span, %(#{holding['call_number']}#{locate_link}).html_safe, class: 'call-number')
     location_display.html_safe
