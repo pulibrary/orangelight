@@ -55,7 +55,18 @@ class SolrDocument
     end.compact
   end
 
+  def ark
+    return unless full_ark && full_ark.include?('ark:')
+    /.*(ark:(.*))/.match(full_ark)[1]
+  end
+
   private
+
+    def full_ark
+      JSON.parse(first('electronic_access_1display')).keys.find { |x| x.include?('ark:') }
+    rescue
+      ''
+    end
 
     def identifier_keys
       %w(

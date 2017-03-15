@@ -27,3 +27,8 @@
     <%= render partial: 'show_availability_sidebar', locals: { document: @document } %>
   </div>
 </div>
+<% if @document.ark.present? %>
+  <hr class="clear"/>
+  <div id="view" data-ark="<%= @document.ark %>">
+  </div>
+<% end %>
