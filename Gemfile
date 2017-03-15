@@ -85,13 +85,12 @@ group :development do
 end
 
 group :test do
-  gem 'webmock', require: false 
+  gem 'webmock', require: false
   gem 'poltergeist'
   gem 'factory_girl_rails', require: false
   gem 'launchy'
 end
 
-group :development, :test do 
+group :development, :test do
   gem 'pry-byebug'
 end
-
