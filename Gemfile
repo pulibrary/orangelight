@@ -70,9 +70,9 @@ gem 'newrelic_rpm'
 gem 'mail_form'
 gem 'string_rtl'
 
-#gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'development'
+gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'development'
 
-gem 'requests', :path => '/Users/kevinreiss/Projects/blacklight/requests'
+#gem 'requests', :path => '/Users/kevinreiss/Projects/blacklight/requests'
 gem 'borrow_direct', '~> 1.2.0'
 
 gem "blacklight_unapi", git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'blacklight_6'
