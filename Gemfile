@@ -94,3 +94,6 @@ end
 group :development, :test do
   gem 'pry-byebug'
 end
+group :staging, :production do
+  gem 'ddtrace'
+end
