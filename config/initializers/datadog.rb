@@ -3,7 +3,7 @@ if Rails.env.staging? || Rails.env.production?
   Rails.configuration.datadog_trace = {
     auto_instrument: true,
     auto_instrument_redis: true,
-    default_service: "Plum (#{Rails.env})"
+    default_service: "Orangelight (#{Rails.env})"
   }
 
   Datadog::Monkey.patch_all
