@@ -181,11 +181,7 @@ class AvailabilityUpdater
       "#{label} #{due_date(date_due)}(#{status})"
   due_date = (date_string) ->
     return "" unless date_string?
-    date = new Date(date_string)
-    now = new Date();
-    long_overdue = now.setDate(now.getDate()-30);
-    return "" if long_overdue > date
-    " - Due #{date.getMonth()+1}/#{date.getDate()}/#{date.getFullYear()} "
+    " - #{date_string}"
   title_case = (str) ->
     str[0].toUpperCase() + str[1..str.length - 1].toLowerCase()
   stackmap_link = (record_id, availability_info, marker_only = false) ->
