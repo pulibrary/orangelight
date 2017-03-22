@@ -11,7 +11,7 @@ gem 'blacklight', '~> 6.4'
 gem 'rsolr'
 
 # slider limit support
-gem 'blacklight_range_limit', '~> 6.0'
+gem 'blacklight_range_limit', '~> 6.1'
 # advanced search functionality
 gem 'blacklight_advanced_search', '~> 6.0'
 # Use SCSS for stylesheets
@@ -43,7 +43,7 @@ gem 'spring',        group: :development
 # jquery multiselect plugin for advanced search
 gem 'chosen-rails'
 
-gem 'introjs-rails', git: 'https://github.com/videmor/intro.js-rails', branch: 'update.introjs'
+gem 'introjs-rails', git: 'https://github.com/videmor/intro.js-rails.git', branch: 'update.introjs'
 
 # Capistrano
 gem 'capistrano', '~> 3.4.0'
@@ -54,7 +54,7 @@ gem 'devise', '~> 4.2'
 gem 'devise-guests', '~> 0.5'
 gem 'omniauth-cas'
 gem 'blacklight-marc', '~> 6.1'
-gem 'solr_wrapper', '~> 0.12'
+gem 'solr_wrapper', '~> 0.22'
 
 # rspec, just like jettywrapper appear necessary for cap currently
 gem 'rspec-rails', '~> 3.4'
@@ -72,7 +72,6 @@ gem 'string_rtl'
 
 gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'development'
 
-#gem 'requests', :path => '/Users/kevinreiss/Projects/blacklight/requests'
 gem 'borrow_direct', '~> 1.2.0'
 
 gem "blacklight_unapi", git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'blacklight_6'
@@ -87,13 +86,12 @@ group :development do
 end
 
 group :test do
-  gem 'webmock', require: false 
+  gem 'webmock', require: false
   gem 'poltergeist'
   gem 'factory_girl_rails', require: false
   gem 'launchy'
 end
 
-group :development, :test do 
+group :development, :test do
   gem 'pry-byebug'
 end
-

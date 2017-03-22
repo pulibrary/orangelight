@@ -40,11 +40,11 @@ describe 'Feedback Form', type: :feature do
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
     it 'Populates Email Field' do
       stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 200, body: valid_patron_response, headers: {})
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
       stub_request(:get, valid_patron_record_uri)
-        .with(headers: { 'User-Agent' => 'Faraday v0.9.2' })
+        .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
         .to_return(status: 200, body: voyager_account_response, headers: {})
       sign_in user
       visit('/catalog/4747577')
