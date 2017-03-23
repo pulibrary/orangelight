@@ -16,7 +16,7 @@ module Users
       valid_user = @user.valid?
       if patron == false || !last_name_match?(@user.username, patron['last_name']) || !valid_user
         flash_validation
-        redirect_to new_user_session_path
+        redirect_to new_user_session_path(ref: params["referring_path"])
         set_flash_message(:error, :failure,
                           reason: 'barcode or last name did not match active patron')
       elsif netid_patron?(patron)
