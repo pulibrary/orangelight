@@ -81,7 +81,7 @@ module Blacklight
           def build_ctx(format = nil)
             ctx = ContextObject.new
             id = self['id']
-            # title = self['title_citation_display'].first unless self['title_citation_display'].nil?
+            title = self['title_citation_display'].first unless self['title_citation_display'].nil?
             date = self['pub_date_display'].first unless self['pub_date_display'].nil?
             author = self['author_citation_display'].first unless self['author_citation_display'].nil?
             corp_author = self['pub_citation_display'].first unless self['pub_citation_display'].nil?
