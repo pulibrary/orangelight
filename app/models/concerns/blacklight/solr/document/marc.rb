@@ -81,7 +81,7 @@ module Blacklight
           def build_ctx(format = nil)
             ctx = ContextObject.new
             id = self['id']
-            title = self['title_citation_display'].first unless self['title_citation_display'].nil?
+            # title = self['title_citation_display'].first unless self['title_citation_display'].nil?
             date = self['pub_date_display'].first unless self['pub_date_display'].nil?
             author = self['author_citation_display'].first unless self['author_citation_display'].nil?
             corp_author = self['pub_citation_display'].first unless self['pub_citation_display'].nil?
@@ -94,8 +94,8 @@ module Blacklight
             if format == 'book'
               ctx.referent.set_format('book')
               ctx.referent.set_metadata('genre', 'book')
-              ctx.referent.set_metadata('btitle', title)
-              ctx.referent.set_metadata('title', title)
+              # ctx.referent.set_metadata('btitle', title)
+              # ctx.referent.set_metadata('title', title)
               ctx.referent.set_metadata('au', author)
               ctx.referent.set_metadata('aucorp', corp_author)
               # Place not easilty discernable in solr doc
