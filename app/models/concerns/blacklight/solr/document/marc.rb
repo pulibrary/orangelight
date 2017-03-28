@@ -94,8 +94,8 @@ module Blacklight
             if format == 'book'
               ctx.referent.set_format('book')
               ctx.referent.set_metadata('genre', 'book')
-              # ctx.referent.set_metadata('btitle', title)
-              # ctx.referent.set_metadata('title', title)
+              ctx.referent.set_metadata('btitle', title)
+              ctx.referent.set_metadata('title', title)
               ctx.referent.set_metadata('au', author)
               ctx.referent.set_metadata('aucorp', corp_author)
               # Place not easilty discernable in solr doc
