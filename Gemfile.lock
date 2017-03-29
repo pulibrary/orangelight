@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 64d644a2bbb12b7bd3c36c98f86662bea7273f21
+  revision: deaa61beb405c1fac42e843dac4c2e665100cc01
   branch: development
   specs:
     requests (0.0.2)
@@ -386,7 +386,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     string_rtl (0.1.0)
-    term-ansicolor (1.4.0)
+    term-ansicolor (1.5.0)
       tins (~> 1.0)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
@@ -408,7 +408,7 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    tzinfo (1.2.2)
+    tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (3.1.9)
       execjs (>= 0.3.0, < 3)
