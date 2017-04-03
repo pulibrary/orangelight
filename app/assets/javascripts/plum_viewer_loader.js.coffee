@@ -19,3 +19,4 @@ class PlumViewerLoader
     script_tag.attr('src', "https://plum.princeton.edu/universalviewer/dist/uv-2.0.1/lib/embed.js")
     this.element.append(element)
     this.element.append(script_tag)
+    this.element.before($("<hr class='clear'/>"))
