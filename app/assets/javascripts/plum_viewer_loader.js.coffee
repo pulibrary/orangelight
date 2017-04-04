@@ -3,9 +3,9 @@ jQuery ->
 class PlumViewerLoader
   constructor: (@element) ->
     return unless this.element.length > 0
-    $.getJSON("https://plum.princeton.edu/iiif/lookup/#{this.ark()}")
+    $.getJSON("https://plum.princeton.edu/iiif/lookup/#{this.ark()}?no_redirect=true")
       .done( (data) =>
-        this.build_viewer(data['@id'])
+        this.build_viewer(data['url'])
       )
   ark: ->
     this.element.data("ark")
