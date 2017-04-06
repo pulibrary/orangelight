@@ -6,17 +6,19 @@ defaults: &defaults
   proxy_base: http://library.princeton.edu/resolve/lookup?url=
   stackmap_base: https://bibdata.princeton.edu/locations/map
   voyager_api_base: http://catalog.princeton.edu:7014
-  pulsearch_base: https://pulsearch.princeton.edu
+  pulsearch_base: https://pulsearch-recap.princeton.edu
   aeon_base: https://lib-aeon.princeton.edu/aeon/aeon.dll
   gfa_base: http://libweb5.princeton.edu/RecapRequestService/Default.aspx
   ill_base: https://lib-illiad.princeton.edu/illiad/illiad.dll/OpenURL
   voyager_ub_id: 1@PRINCETONDB20050302104001
+  scsb_base: https://uat-recap.htcinc.com:9093
 development:
   <<: *defaults
   #voyager_ub_id: 1@DB
   #umlaut_base: http://localhost:4000
   bibdata_base: http://localhost:7000
   voyager_ub_id: 1@DB
+  #pulsearch_base: http://localhost:3000
 test:
   <<: *defaults
   voyager_ub_id: 1@DB

@@ -387,6 +387,10 @@ module ApplicationHelper
     end
   end
 
+  def recap_note(args)
+    args[:document][args[:field]].uniq
+  end
+
   def name_title_hierarchy(args)
     name_titles = JSON.parse(args[:document][args[:field]])
     all_links = []
