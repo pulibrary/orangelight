@@ -171,4 +171,42 @@ RSpec.describe SolrDocument do
       end
     end
   end
+
+  describe 'ark' do
+    context 'there is no value' do
+      it 'returns nil' do
+        expect(subject.ark).to be_nil
+      end
+    end
+    context 'when it has no ark in 1display' do
+      let(:properties) do
+        {
+          'electronic_access_1display' => { 'test' => 'one' }.to_json
+        }
+      end
+      it 'returns nil' do
+        expect(subject.ark).to be_nil
+      end
+    end
+    context 'when it has an ark in 1display' do
+      let(:properties) do
+        {
+          'electronic_access_1display' => { 'http://arks.princeton.edu/ark:/88435/fj236339x' => 'one' }.to_json
+        }
+      end
+      it 'returns the ark' do
+        expect(subject.ark).to eq 'ark:/88435/fj236339x'
+      end
+    end
+    context 'when it has multiple options only one an ark' do
+      let(:properties) do
+        {
+          'electronic_access_1display' => { 'one' => 'two', 'http://arks.princeton.edu/ark:/88435/fj236339x' => 'one' }.to_json
+        }
+      end
+      it 'returns the ark' do
+        expect(subject.ark).to eq 'ark:/88435/fj236339x'
+      end
+    end
+  end
 end
