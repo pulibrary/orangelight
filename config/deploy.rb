@@ -2,7 +2,7 @@
 lock '>=3.2.1'
 
 set :application, 'orangelight'
-set :repo_url, 'git@github.com:pulibrary/orangelight.git'
+set :repo_url, 'https://github.com/pulibrary/orangelight.git'
 
 # gets overriden to development on staging deploy
 set :branch, 'master'
