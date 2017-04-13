@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: dff201b099527dd941de53a0543bc770964d015a
+  revision: 5db43e01a009156a01abc8c109c1642c19722df7
   branch: scsb_form_demo
   specs:
     requests (0.0.2)
@@ -386,7 +386,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     string_rtl (0.1.0)
-    term-ansicolor (1.5.0)
+    term-ansicolor (1.6.0)
       tins (~> 1.0)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
