@@ -9,21 +9,20 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 4a3450ce1b6646fb27083a9a10c809ab30478544
+  revision: 5d01931e1c821a795a65c3f7317dedc58302bb4b
   branch: scsb_form_demo
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)
       borrow_direct (~> 1.2.0)
       cobravsmongoose (~> 0.0.2)
-      coveralls
       devise
       email_validator
       faraday
       friendly_id (~> 5.1.0)
       lcsort
       openurl (~> 1.0)
-      rails (>= 4.2, < 5.0)
+      rails (>= 4.2, < 5.1)
       simple_form
       yaml_db (~> 0.3.0)
 
@@ -84,7 +83,7 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (6.0.4)
     ast (2.3.0)
-    autoprefixer-rails (6.7.7.1)
+    autoprefixer-rails (6.7.7.2)
       execjs
     bcrypt (3.1.11)
     blacklight (6.8.0)
@@ -150,7 +149,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
-    coveralls (0.8.20)
+    coveralls (0.8.21)
       json (>= 1.8, < 3)
       simplecov (~> 0.14.1)
       term-ansicolor (~> 1.3)
@@ -182,15 +181,15 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
-    faraday (0.12.0.1)
+    faraday (0.12.1)
       multipart-post (>= 1.2, < 3)
     faraday-cookie_jar (0.0.6)
       faraday (>= 0.7.4)
       http-cookie (~> 1.0.0)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
-    globalid (0.3.7)
-      activesupport (>= 4.1.0)
+    globalid (0.4.0)
+      activesupport (>= 4.2.0)
     hashdiff (0.3.2)
     hashie (3.5.5)
     high_voltage (2.4.0)
@@ -230,7 +229,7 @@ GEM
     libv8 (3.16.14.19)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    mail (2.6.4)
+    mail (2.6.5)
       mime-types (>= 1.16, < 4)
     mail_form (1.6.0)
       actionmailer (>= 3.2, < 5.1)
@@ -317,8 +316,9 @@ GEM
     rake (12.0.0)
     rdoc (4.3.0)
     ref (2.0.0)
-    responders (2.3.0)
-      railties (>= 4.2.0, < 5.1)
+    responders (2.4.0)
+      actionpack (>= 4.2.0, < 5.3)
+      railties (>= 4.2.0, < 5.3)
     rsolr (1.1.2)
       builder (>= 2.1.2)
     rspec-core (3.5.4)
@@ -414,7 +414,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.3)
+    unf_ext (0.0.7.4)
     unicode-display_width (1.1.3)
     warden (1.2.7)
       rack (>= 1.0)
