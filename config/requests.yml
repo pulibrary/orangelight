@@ -16,7 +16,7 @@ development:
   #voyager_ub_id: 1@DB
   #umlaut_base: http://localhost:4000
   bibdata_base: http://localhost:7000
-  pulsearch_base: https://pulsearch.princeton.edu
+  #pulsearch_base: https://pulsearch.princeton.edu
 test:
   <<: *defaults
 
