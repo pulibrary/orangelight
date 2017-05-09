@@ -92,11 +92,11 @@ class AvailabilityUpdater
         status = title_case(item['status'])
         label = status_label(status)
         if holding_label != item['label'] || item['temp_loc']
-          li = "<li>#{item['enum'] || 'Item'}: #{item['label']} - #{status_display(status, label)}</li>"
+          li = "<li>#{item['enum_display'] || 'Item'}: #{item['label']} - #{status_display(status, label)}</li>"
           ul = ul + li
         if (status not in available_statuses && status != on_site_status)
           unless holding_label != item['label'] || item['temp_loc']
-            li = "<li>#{item['enum'] || 'Item'}: #{status_display(status, label, item['due_date'])}</li>"
+            li = "<li>#{item['enum_display'] || 'Item'}: #{status_display(status, label, item['due_date'])}</li>"
             ul = ul + li
           span = $("*[data-holding-id='#{holding_id}'] .availability-icon")
           txt = if status.match(on_site_unavailable)
@@ -178,14 +178,10 @@ class AvailabilityUpdater
     if status.match(label) || status.match(on_site_status)
       status
     else
-      "#{label} #{due_date(date_due)}(#{status})"
+      "#{label} #{due_date(date_due)} (#{status})"
   due_date = (date_string) ->
     return "" unless date_string?
-    date = new Date(date_string)
-    now = new Date();
-    long_overdue = now.setDate(now.getDate()-30);
-    return "" if long_overdue > date
-    " - Due #{date.getMonth()+1}/#{date.getDate()}/#{date.getFullYear()} "
+    " - #{date_string}"
   title_case = (str) ->
     str[0].toUpperCase() + str[1..str.length - 1].toLowerCase()
   stackmap_link = (record_id, availability_info, marker_only = false) ->
