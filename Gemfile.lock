@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 921a6f8410187bcbd9ceb55f66ff4f053b250abf
+  revision: 1df5e51bd3cca14f6f360b3d1a3bb1786ffcff5b
   branch: scsb_form_demo
   specs:
     requests (0.0.2)
@@ -83,7 +83,7 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (6.0.4)
     ast (2.3.0)
-    autoprefixer-rails (6.7.7.2)
+    autoprefixer-rails (7.0.1)
       execjs
     bcrypt (3.1.11)
     blacklight (6.8.0)
@@ -244,7 +244,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
-    minitest (5.10.1)
+    minitest (5.10.2)
     modernizr-rails (2.7.1)
     multi_json (1.12.1)
     multipart-post (2.0.0)
@@ -252,7 +252,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (4.1.0)
     newrelic_rpm (4.0.0.332)
-    nokogiri (1.7.1)
+    nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     omniauth (1.6.1)
       hashie (>= 3.4.6, < 3.6.0)
@@ -285,7 +285,7 @@ GEM
     public_suffix (2.0.5)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
-    rack (1.6.5)
+    rack (1.6.6)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.8)
