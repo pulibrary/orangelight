@@ -430,7 +430,7 @@ module ApplicationHelper
   end
 
   def voyager_url(bibid)
-    "http://catalog.princeton.edu/cgi-bin/Pwebrecon.cgi?BBID=#{bibid}"
+    "https://catalog.princeton.edu/cgi-bin/Pwebrecon.cgi?BBID=#{bibid}"
   end
 
   def current_year
