@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 824e1bab8f4790e158e2fbb23ee46cdedb2e8d20
+  revision: 6a0e36e4e3ee2768b86fa7cee72280f9f959dbf4
   branch: scsb_form_demo
   specs:
     requests (0.0.2)
@@ -83,7 +83,7 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (6.0.4)
     ast (2.3.0)
-    autoprefixer-rails (7.1.0)
+    autoprefixer-rails (7.1.1)
       execjs
     bcrypt (3.1.11)
     blacklight (6.8.0)
@@ -360,9 +360,9 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    simple_form (3.4.0)
-      actionpack (> 4, < 5.1)
-      activemodel (> 4, < 5.1)
+    simple_form (3.5.0)
+      actionpack (> 4, < 5.2)
+      activemodel (> 4, < 5.2)
     simplecov (0.14.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
