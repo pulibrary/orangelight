@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 6a0e36e4e3ee2768b86fa7cee72280f9f959dbf4
-  branch: scsb_form_demo
+  revision: 999677d8cc9b40a88d085f2217a8e98285cd76fb
+  branch: development
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)
