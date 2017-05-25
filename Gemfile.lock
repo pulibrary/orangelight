@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 933c8374fe7e7d2dc32fd97e678fc8fa9df25391
+  revision: 6651bffafa5d78434752d7e298bd801041168f60
   branch: implement_scsb_request
   specs:
     requests (0.0.2)
