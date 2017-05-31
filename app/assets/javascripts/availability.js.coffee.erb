@@ -22,7 +22,7 @@ class AvailabilityUpdater
   available_non_requestable_labels = ['Available', 'Returned', 'Requestable',
     'On shelf', 'All items available', 'On-site access', 'On-site - in-transit discharged']
   open_location_labels = ['Available', 'All items available']
-  unavailable_labels = ['Checked out', 'Missing', 'Lost']
+  unavailable_labels = ['Checked out', 'Missing', 'Lost', 'Inaccessible']
   request_availability: ->
     if $(".documents-list").length > 0
       ids = this.record_ids().toArray()
@@ -64,7 +64,7 @@ class AvailabilityUpdater
     if availability_label_text not in available_non_requestable_labels
       display_request = 'true'
     if title_case(status) == 'On-site - in transit discharged'
-      display_request = 'false' 
+      display_request = 'false'
     if display_request == 'true'
       if temp_status
         location_services_element.hide()
@@ -199,5 +199,3 @@ class AvailabilityUpdater
     else
       link = "#{link}<span class='link-text'>Where to find it</span>#{marker_span}</a>"
     link
-
-
