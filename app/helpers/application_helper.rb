@@ -59,7 +59,7 @@ module ApplicationHelper
 
   DONT_FIND_IT = ['Fine Annex', 'Forrestal Annex', 'Mudd Manuscript Library', 'Online', 'Rare Books and Special Collections', 'ReCAP'].freeze
   def locate_link(location, bib, call_number, library = nil)
-    if DONT_FIND_IT.include?(library) || call_number.blank?
+    if DONT_FIND_IT.include?(library) || call_number.blank? || inaccessible?(location)
       ''
     else
       ' ' + link_to(%(<span class="link-text">#{t('blacklight.holdings.stackmap')}</span><span class="glyphicon glyphicon-map-marker"></span>).html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
@@ -67,7 +67,7 @@ module ApplicationHelper
   end
 
   def locate_link_with_gylph(location, bib, call_number, library = nil)
-    if DONT_FIND_IT.include?(library) || call_number.blank?
+    if DONT_FIND_IT.include?(library) || call_number.blank? || inaccessible?(location)
       ''
     else
       ' ' + link_to('<span class="glyphicon glyphicon-map-marker"></span>'.html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}", :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
@@ -115,6 +115,14 @@ module ApplicationHelper
 
   def missing_holdings
     content_tag(:div, t('blacklight.holdings.missing'), class: 'holding-block')
+  end
+
+  def inaccessible?(code)
+    inaccessible_locations.include?(code)
+  end
+
+  def inaccessible_locations
+    %w(sci scith sciref scirefl scilaf scilal scimm)
   end
 
   def process_physical_holding(holding, bib_id, holding_id, is_journal, pub_date)
@@ -208,6 +216,8 @@ module ApplicationHelper
     content_tag(:div, class: "location-services #{show_request(location_rules, holding_id)}", data: { open: open_location?(location_rules), requestable: requestable_location?(location_rules), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
       if non_voyager?(holding_id)
         link_to 'Reading Room Request', "/requests/#{doc_id}?mfhd=#{holding_id}", title: 'Request to view in Reading Room', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
+      elsif inaccessible?(location_rules[:code])
+        link_to 'Request', "/requests/#{doc_id}?mfhd=#{holding_id}", title: 'See Access Options for this Title', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       else
         link_to request_label(location_rules), "https://library.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}", title: request_tooltip(location_rules), target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       end
@@ -278,6 +288,7 @@ module ApplicationHelper
         elsif holding['dspace'].nil?
           info << content_tag(:span, '', class: 'availability-icon').html_safe
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip').html_safe if aeon_location?(location)
+          info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location temporarily unavailable due to construction. Try Borrow Direct or Interlibrary Loan to request a copy from one of our partner libraries.', 'data-toggle' => 'tooltip').html_safe if inaccessible?(location[:code])
         else
           check_availability = false
           info << content_tag(:span, 'Unavailable', class: 'availability-icon label label-danger', title: 'Availability: Material under embargo', 'data-toggle' => 'tooltip')

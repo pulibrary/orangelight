@@ -70,7 +70,7 @@ gem 'newrelic_rpm'
 gem 'mail_form'
 gem 'string_rtl'
 
-gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'stable_orangelight'
+gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'implement_scsb_request'
 gem 'borrow_direct', '~> 1.2.0'
 
 gem "blacklight_unapi", git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'blacklight_6'
