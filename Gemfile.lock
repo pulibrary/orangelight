@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 9bf3e321a854858ff0ee3e6ee4bb3faf701234db
-  branch: implement_scsb_request
+  revision: e904bc17447a84afbbb90b3023c1ece2a1447677
+  branch: master
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)
@@ -414,7 +414,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.2)
+    unf_ext (0.0.7.4)
     unicode-display_width (1.1.3)
     warden (1.2.7)
       rack (>= 1.0)
