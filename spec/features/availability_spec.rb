@@ -35,12 +35,12 @@ describe 'Availability' do
   describe 'Physical Holdings in temp locations', js: true do
     it 'displays temp location on search results along with call number' do
       visit '/catalog?q=7917192'
-      expect(page).to have_selector '.library-location', text: 'Lewis Library - Course Reserve'
+      expect(page).to have_selector '.library-location', text: 'Lewis Library - Term Loan Reserves'
       expect(page).to have_selector '.library-location', text: 'QA303.2 .W45 2014'
     end
     it 'displays temp location and copy on record show' do
       visit 'catalog/7917192'
-      expect(page).to have_selector 'h3.library-location', text: 'Lewis Library - Course Reserve'
+      expect(page).to have_selector 'h3.library-location', text: 'Lewis Library - Term Loan Reserves'
     end
   end
 
