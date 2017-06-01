@@ -1,7 +1,6 @@
 require 'faraday'
 
 module Requests
-
   def config
     @config ||= config_yaml.with_indifferent_access
   end
@@ -9,7 +8,6 @@ module Requests
   private
 
     def config_yaml
-
       unless File.exist?(requests_config_file)
         raise "You are missing a configuration file: #{requests_config_file}. Have you run \"rails generate requests:install\"?"
       end
@@ -30,10 +28,8 @@ module Requests
     def requests_config_file
       "#{Rails.root}/config/requests.yml"
     end
-
     module_function :config, :config_yaml, :requests_config_file
 end
-
 
 # initialize location data
 delivery_locations = Faraday.get("#{Requests.config[:bibdata_base]}/locations/delivery_locations.json")
