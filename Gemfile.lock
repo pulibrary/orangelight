@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 6651bffafa5d78434752d7e298bd801041168f60
-  branch: implement_scsb_request
+  revision: e904bc17447a84afbbb90b3023c1ece2a1447677
+  branch: master
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)
@@ -196,7 +196,7 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httpclient (2.8.3)
-    i18n (0.8.1)
+    i18n (0.8.4)
     jbuilder (2.6.3)
       activesupport (>= 3.0.0, < 5.2)
       multi_json (~> 1.2)
