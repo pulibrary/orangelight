@@ -34,6 +34,7 @@ Metrics/AbcSize:
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'app/models/concerns/blacklight/document/dublin_core.rb'
     - 'app/models/concerns/blacklight/document/ris.rb'
+    - 'config/initializers/requests_initializer.rb'
     - 'lib/orangelight/bibdata.rb'
     - 'lib/orangelight/browse_lists.rb'
     - 'lib/orangelight/voyager_account.rb'
@@ -77,6 +78,7 @@ Metrics/LineLength:
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'config/initializers/devise.rb'
     - 'config/initializers/blacklight_folders.rb'
+    - 'config/initializers/requests_initializer.rb'
     - 'lib/orangelight/browse_lists.rb'
     - 'lib/orangelight/voyager_patron_client.rb'
     - 'spec/**/*'
@@ -95,6 +97,7 @@ Metrics/MethodLength:
     - 'app/models/concerns/blacklight/document/dublin_core.rb'
     - 'app/models/concerns/blacklight/document/ris.rb'
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
+    - 'config/initializers/requests_initializer.rb'
     - 'lib/orangelight/bibdata.rb'
     - 'lib/orangelight/browse_lists.rb'
     - 'lib/orangelight/voyager_account.rb'
@@ -136,7 +139,9 @@ Style/FileName:
 
 Style/MutableConstant:
   Exclude:
+    - 'config/initializers/borrow_direct.rb'
     - 'config/initializers/locations_initializer.rb'
+    
 
 Style/PredicateName:
   Exclude:

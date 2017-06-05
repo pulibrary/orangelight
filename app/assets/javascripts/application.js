@@ -24,5 +24,6 @@
 //
 // Required by Blacklight
 //= require blacklight/blacklight
+//= require requests/requests
 //
 //= require_tree .
