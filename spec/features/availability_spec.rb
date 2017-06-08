@@ -44,6 +44,15 @@ describe 'Availability' do
     end
   end
 
+  describe 'multiple locations within a single holding', js: true do
+    # This item no longer is on reserve I'm not sure what is being tested here.
+    xit 'individual locations display and do not trigger unavailable label', unless: in_travis? do
+      visit 'catalog/2585108'
+      expect(page).to have_selector '.availability-icon.label.label-success', text: 'All items available'
+      expect(page).to have_selector 'li', text: 'vol.2: East Asian Library - Reserve - Available (Not charged)'
+    end
+  end
+
   describe 'On-site multiple items all available', js: true do
     it 'display availability as on-site and does not display individual items' do
       visit 'catalog/2238036'

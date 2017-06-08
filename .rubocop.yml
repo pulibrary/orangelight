@@ -54,6 +54,7 @@ Metrics/CyclomaticComplexity:
   Exclude:
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/controllers/concerns/orangelight/catalog.rb'
+    - 'app/controllers/users/omniauth_callbacks_controller.rb'
     - 'app/helpers/advanced_helper.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
@@ -117,6 +118,7 @@ Metrics/PerceivedComplexity:
   Exclude:
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/controllers/concerns/orangelight/catalog.rb'
+    - 'app/controllers/users/omniauth_callbacks_controller.rb'
     - 'app/helpers/advanced_helper.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
