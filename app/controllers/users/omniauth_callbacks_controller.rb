@@ -16,13 +16,17 @@ module Users
       valid_user = @user.valid?
       if patron == false || !last_name_match?(@user.username, patron['last_name']) || !valid_user
         flash_validation
-        redirect_to new_user_session_path
+        redirect_to new_user_session_path(ref: params['referring_path'])
+        # redirect_to new_user_session_path
         set_flash_message(:error, :failure,
                           reason: 'barcode or last name did not match active patron')
       elsif netid_patron?(patron)
         redirect_to new_user_session_path
         flash[:error] = I18n.t('blacklight.login.barcode_netid')
       else
+        if params[:referring_path] && request_path(params[:referring_path])
+          request.env['omniauth.origin'] = params[:referring_path]
+        end
         @user.save
         sign_in_and_redirect @user, event: :authentication # this will throw if @user not activated
         set_flash_message(:notice, :success, kind: 'with barcode') if is_navigational_format?
@@ -30,6 +34,10 @@ module Users
     end
 
     private
+
+      def request_path(referrer)
+        return true if referrer =~ %r{/requests/(\w+)}
+      end
 
       def last_name_match?(username, last_name)
         !last_name.nil? && username.casecmp(last_name).zero?

@@ -150,6 +150,8 @@ module ApplicationHelper
     info << if holding['dspace']
               content_tag(:span, 'On-site access', class: 'availability-icon label label-warning',
                                                    title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
+            elsif /^scsb.+/ =~ holding['location_code']
+              content_tag(:div, content_tag(:div, '', class: 'availability-icon').html_safe, class: 'holding-status', data: { 'availability_record' => false, 'record_id' => bib_id, 'holding_id' => holding_id, aeon: aeon_location?(location_rules) })
             elsif holding['dspace'].nil?
               content_tag(:div, content_tag(:div, '', class: 'availability-icon').html_safe, class: 'holding-status', data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id, aeon: aeon_location?(location_rules) })
             else
@@ -160,11 +162,30 @@ module ApplicationHelper
     info << content_tag(:ul, "#{holding_label('Location note:')} #{listify_array(holding['location_note'])}".html_safe, class: 'location-note') unless holding['location_note'].nil?
     info << content_tag(:ul, "#{holding_label('Location has:')} #{listify_array(holding['location_has'])}".html_safe, class: 'location-has') unless holding['location_has'].nil?
     info << content_tag(:ul, ''.html_safe, class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
+    if /^scsb.+/ =~ holding['location_code']
+      info << content_tag(:span, 'All items available', class: 'availability-icon label label-success',
+                                                        title: 'Availability: All items available', 'data-toggle' => 'tooltip')
+      recap_item_list(holding)
+    end
     unless holding_id == 'thesis' && pub_date > 2012
       info << request_placeholder(bib_id, holding_id, location_rules).html_safe
     end
     info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
     info
+  end
+
+  def recap_item_list(holding)
+    restricted_items = holding['items'].map do |item|
+      unless item['use_statement'].nil?
+        content_tag(:li, "#{item['use_statement']}: Copy Number #{item['copy_number']}")
+      end
+    end
+    restricted_items.compact!
+    if restricted_items.empty?
+      ''
+    else
+      content_tag(:ul, "#{holding_label('Some Use Restrictions May Apply:')} #{restricted_items.join}".html_safe, class: 'item-list')
+    end
   end
 
   def listify_array(arr)
@@ -241,7 +262,7 @@ module ApplicationHelper
   end
 
   def show_request(location_rules, holding_id)
-    if non_voyager?(holding_id) || aeon_location?(location_rules)
+    if non_voyager?(holding_id) || aeon_location?(location_rules) || /^scsb.+/ =~ location_rules['code']
       'service-always-requestable'
     else
       'service-conditional'
@@ -285,6 +306,9 @@ module ApplicationHelper
           check_availability = false
           info << content_tag(:span, 'On-site access', class: 'availability-icon label label-warning', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location Must be requested', 'data-toggle' => 'tooltip').html_safe if aeon_location?(location)
+        elsif /^scsb.+/ =~ location[:code]
+          info << content_tag(:span, 'Available', class: 'availability-icon label label-success', title: 'Availability: Not Charged', 'data-toggle' => 'tooltip')
+          check_availability = false
         elsif holding['dspace'].nil?
           info << content_tag(:span, '', class: 'availability-icon').html_safe
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip').html_safe if aeon_location?(location)
@@ -446,5 +470,9 @@ module ApplicationHelper
 
   def current_year
     DateTime.now.year
+  end
+
+  def recap_note(args)
+    args[:document][args[:field]].uniq
   end
 end
