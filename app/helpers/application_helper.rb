@@ -177,7 +177,7 @@ module ApplicationHelper
   def recap_item_list(holding)
     restricted_items = holding['items'].map do |item|
       unless item['use_statement'].blank?
-        content_tag(:li, "#{item['use_statement']}")
+        content_tag(:li, item['use_statement'].to_s)
       end
     end
     restricted_items.compact!
