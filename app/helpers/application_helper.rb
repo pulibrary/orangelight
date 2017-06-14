@@ -165,7 +165,7 @@ module ApplicationHelper
     if /^scsb.+/ =~ holding['location_code']
       info << content_tag(:span, 'All items available', class: 'availability-icon label label-success',
                                                         title: 'Availability: All items available', 'data-toggle' => 'tooltip')
-      recap_item_list(holding)
+      info << recap_item_list(holding)
     end
     unless holding_id == 'thesis' && pub_date > 2012
       info << request_placeholder(bib_id, holding_id, location_rules).html_safe
@@ -176,14 +176,15 @@ module ApplicationHelper
 
   def recap_item_list(holding)
     restricted_items = holding['items'].map do |item|
-      unless item['use_statement'].nil?
-        content_tag(:li, "#{item['use_statement']}: Copy Number #{item['copy_number']}")
+      unless item['use_statement'].blank?
+        content_tag(:li, "#{item['use_statement']}")
       end
     end
     restricted_items.compact!
     if restricted_items.empty?
       ''
     else
+      restricted_items.uniq!
       content_tag(:ul, "#{holding_label('Some Use Restrictions May Apply:')} #{restricted_items.join}".html_safe, class: 'item-list')
     end
   end
