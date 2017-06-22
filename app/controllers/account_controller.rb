@@ -81,7 +81,7 @@ class AccountController < ApplicationController
           redirect_to root_url
         end
       else
-        redirect_to user_cas_omniauth_authorize_path(origin: url_for(params))
+        redirect_to user_cas_omniauth_authorize_path(origin: url_for(params.permit!))
       end
     end
 
