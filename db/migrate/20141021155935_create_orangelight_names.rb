@@ -1,4 +1,4 @@
-class CreateOrangelightNames < ActiveRecord::Migration
+class CreateOrangelightNames < ActiveRecord::Migration[4.2]
   def change
     create_table :orangelight_names do |t|
       t.text :label

@@ -1,4 +1,4 @@
-class CreateOrangelightCallNumbers < ActiveRecord::Migration
+class CreateOrangelightCallNumbers < ActiveRecord::Migration[4.2]
   def change
     create_table :orangelight_call_numbers do |t|
       t.string :label
