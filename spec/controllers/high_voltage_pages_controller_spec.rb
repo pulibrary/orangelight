@@ -4,7 +4,7 @@ describe HighVoltage::PagesController, type: :controller do
   %w(help about).each do |page|
     context "on GET to /#{page}" do
       before do
-        get :show, id: page
+        get :show, params: { id: page }
       end
       it 'succeeds' do
         expect(response).to have_http_status(200)
