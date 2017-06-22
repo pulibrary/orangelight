@@ -71,7 +71,7 @@ RSpec.describe AccountController do
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
       query = 'book title'
-      get :borrow_direct_redirect, q: query
+      get :borrow_direct_redirect, params: { q: query }
       expect(response.location).to match(%r{https:\/\/borrow-direct.relaisd2d.com\/})
       expect(response.location).to include(CGI.escape(query))
     end
@@ -82,7 +82,7 @@ RSpec.describe AccountController do
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
       query = 'book title'
-      get :borrow_direct_redirect, query: query
+      get :borrow_direct_redirect, params: { query: query }
       expect(response.location).to match(%r{https:\/\/borrow-direct.relaisd2d.com\/})
       expect(response.location).to include(CGI.escape(query))
     end
