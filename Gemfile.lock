@@ -88,7 +88,6 @@ GEM
     arel (8.0.0)
     ast (2.3.0)
     autoprefixer-rails (7.1.2.3)
-    autoprefixer-rails (7.1.1.2)
       execjs
     bcrypt (3.1.11)
     blacklight (6.8.0)
