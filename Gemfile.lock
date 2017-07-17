@@ -86,7 +86,7 @@ GEM
     autoprefixer-rails (7.1.2.2)
       execjs
     bcrypt (3.1.11)
-    blacklight (6.10.1)
+    blacklight (6.8.0)
       bootstrap-sass (~> 3.2)
       deprecation
       globalid
@@ -444,7 +444,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  blacklight (~> 6.4)
+  blacklight (= 6.8)
   blacklight-marc (~> 6.1)
   blacklight_advanced_search (~> 6.0)
   blacklight_range_limit (~> 6.1)
