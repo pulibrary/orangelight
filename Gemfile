@@ -8,7 +8,7 @@ gem 'pg'
 # Blacklight
 gem 'blacklight', '~> 6.4'
 
-gem 'rsolr'
+gem 'rsolr', '~> 1.1.2'
 
 # slider limit support
 gem 'blacklight_range_limit', '~> 6.1'
