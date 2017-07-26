@@ -236,13 +236,15 @@ module ApplicationHelper
 
   def recap_supervised_items?(holding)
     if holding.key? 'items'
-      restricted_items = []
-      holding['items'].map do |item|
-        if item['use_statement'] == 'Supervised Use'
-          restricted_items << item
-        end
+      restricted_items = holding['items'].map do |item|
+        return true if item['use_statement'] == 'Supervised Use'
       end
-      restricted_items
+      restricted_items.compact!
+      if restricted_items.empty?
+        false
+      else
+        true
+      end
     end
   end
 
