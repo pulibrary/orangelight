@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 37720c2479f74541de22781e5f3cc45b74be17ed
+  revision: 001cfd9b34ac57e242e868afe8af62b710dba537
   branch: recall_fixes
   specs:
     requests (0.0.2)
@@ -181,7 +181,7 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
-    faraday (0.12.1)
+    faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     faraday-cookie_jar (0.0.6)
       faraday (>= 0.7.4)
@@ -245,7 +245,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
-    minitest (5.10.2)
+    minitest (5.10.3)
     modernizr-rails (2.7.1)
     multi_json (1.12.1)
     multipart-post (2.0.0)
