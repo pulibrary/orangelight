@@ -17,6 +17,26 @@ context 'user signs in' do
   end
 end
 
+context 'user signs in upon visiting a request form' do
+  let(:request_path) { '/requests/1424012' }
+  let(:show_path) { '/catalog/1424012' }
+  let(:user) { FactoryGirl.create(:guest_patron) }
+  let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
+  let(:valid_record_response) { fixture('/8908514.json') }
+  it 'redirects the user to the request form' do
+    stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+      .to_return(status: 200, body: valid_patron_response, headers: {})
+    stub_request(:get, "#{ENV['pulsearch_base']}#{show_path}.json")
+      .to_return(status: 200, body: valid_record_response, headers: {})
+    visit request_path
+    # binding.pry
+    click_link('barcode-login')
+    # sign_in user
+    login_as user
+    expect(current_path).to eq request_path
+  end
+end
+
 # describe 'User logs in' do
 #   context 'via the account menu option' do
 #     let(:user) { FactoryGirl.create(:valid_princeton_patron) }

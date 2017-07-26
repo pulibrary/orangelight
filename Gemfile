@@ -6,9 +6,9 @@ gem 'rails', '~> 4.2.5'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Blacklight
-gem 'blacklight', '~> 6.4'
+gem 'blacklight', '6.8'
 
-gem 'rsolr'
+gem 'rsolr', '~> 1.1.2'
 
 # slider limit support
 gem 'blacklight_range_limit', '~> 6.1'
@@ -70,8 +70,8 @@ gem 'newrelic_rpm'
 gem 'mail_form'
 gem 'string_rtl'
 
-gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'master'
-
+gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'recall_fixes'
+# gem 'requests', path: '/Users/kevinreiss/Projects/blacklight/requests'
 gem 'borrow_direct', '~> 1.2.0'
 
 gem "blacklight_unapi", git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'blacklight_6'

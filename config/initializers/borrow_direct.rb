@@ -10,4 +10,6 @@ BorrowDirect::Defaults.api_key = ENV['BD_AUTH_KEY']
 BorrowDirect::Defaults.api_base = 'https://bdtest.relais-host.com'
 # BorrowDirect::Defaults.api_base = BorrowDirect::Defaults::PRODUCTION_API_BASE
 BorrowDirect::Defaults.find_item_patron_barcode = ENV['BD_FIND_BARCODE']
-BorrowDirect::Defaults.timeout = 60
+BorrowDirect::Defaults.timeout = 30
+# Set this when you need to support SCSB requests
+RECAP_KEY = ENV['SCSB_AUTH_KEY']
