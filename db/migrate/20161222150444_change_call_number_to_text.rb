@@ -1,4 +1,4 @@
-class ChangeCallNumberToText < ActiveRecord::Migration
+class ChangeCallNumberToText < ActiveRecord::Migration[4.2]
   def up
     change_column :orangelight_call_numbers, :label, :text
     change_column :orangelight_call_numbers, :sort, :text

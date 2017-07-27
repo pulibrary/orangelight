@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.5'
+gem 'rails', '~> 5.1.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Blacklight
@@ -22,7 +22,7 @@ gem 'modernizr-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.2.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
 
@@ -30,7 +30,7 @@ gem 'therubyracer',  platforms: :ruby
 gem 'jquery-rails'
 
 # Static pages
-gem 'high_voltage', '~> 2.4.0'
+gem 'high_voltage', '~> 3.0.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -70,7 +70,7 @@ gem 'newrelic_rpm'
 gem 'mail_form'
 gem 'string_rtl'
 
-gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'master'
+gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => '0.01-alpha1-master'
 
 gem 'borrow_direct', '~> 1.2.0'
 
@@ -82,7 +82,6 @@ gem 'openurl', '~> 1.0'
 
 group :development do
   gem 'capistrano-rails', '~> 1.1.6'
-  gem 'quiet_assets'
 end
 
 group :test do
@@ -90,6 +89,7 @@ group :test do
   gem 'poltergeist'
   gem 'factory_girl_rails', require: false
   gem 'launchy'
+  gem 'rails-controller-testing'
 end
 
 group :development, :test do

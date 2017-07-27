@@ -1,5 +1,5 @@
 # This migration comes from blacklight_folders (originally 1416883577)
-class CreateBlacklightFoldersFolderItems < ActiveRecord::Migration
+class CreateBlacklightFoldersFolderItems < ActiveRecord::Migration[4.2]
 
   def change
     create_table :blacklight_folders_folder_items do |t|
