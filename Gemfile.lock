@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 0a5d54dc88ed4747528190c6d04590f0c178c0ad
+  revision: a6ed52313ea5ec8b7ecdb834b98e9d4a335fa396
   branch: recall_fixes
   specs:
     requests (0.0.2)
@@ -449,7 +449,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  blacklight (~> 6.4)
+  blacklight (= 6.8)
   blacklight-marc (~> 6.1)
   blacklight_advanced_search (~> 6.0)
   blacklight_range_limit (~> 6.1)
@@ -485,7 +485,7 @@ DEPENDENCIES
   rails (~> 5.1.0)
   rails-controller-testing
   requests!
-  rsolr
+  rsolr (~> 1.1.2)
   rspec-rails (~> 3.4)
   rubocop (~> 0.39)
   rubocop-rspec (~> 1.4.1)
