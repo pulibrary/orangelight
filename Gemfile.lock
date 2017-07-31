@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: a6ed52313ea5ec8b7ecdb834b98e9d4a335fa396
+  revision: dae5fc3c516272c5978d64f9956bb34cbfbb91ce
   branch: recall_fixes
   specs:
     requests (0.0.2)
