@@ -215,11 +215,11 @@ module ApplicationHelper
   def request_placeholder(doc_id, holding_id, location_rules)
     content_tag(:div, class: "location-services #{show_request(location_rules, holding_id)}", data: { open: open_location?(location_rules), requestable: requestable_location?(location_rules), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
       if non_voyager?(holding_id)
-        link_to 'Reading Room Request', "/requests/#{doc_id}?mfhd=#{holding_id}", title: 'Request to view in Reading Room', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
+        link_to 'Reading Room Request', "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch", title: 'Request to view in Reading Room', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       elsif inaccessible?(location_rules[:code])
         link_to 'Request', "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch", title: 'See access options for this title that is inaccessible due to construction.', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       else
-        link_to request_label(location_rules), "https://library.princeton.edu/requests/#{doc_id}?mfhd=#{holding_id}", title: request_tooltip(location_rules), target: '_blank', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
+        link_to request_label(location_rules), "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch", title: request_tooltip(location_rules), class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       end
     end
   end

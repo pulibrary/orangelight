@@ -10,13 +10,12 @@ defaults: &defaults
   aeon_base: https://lib-aeon.princeton.edu/aeon/aeon.dll
   gfa_base: http://libweb5.princeton.edu/ReCAPNoUI/Default.aspx
   ill_base: https://lib-illiad.princeton.edu/illiad/illiad.dll/OpenURL
-  scsb_base: https://uat-recap.htcinc.com:9093
+  scsb_base: https://scsb.recaplib.org:9093
 development:
   <<: *defaults
   voyager_ub_id: 1@DB
 test:
   <<: *defaults
   voyager_ub_id: 1@DB
-
 production:
   <<: *defaults
