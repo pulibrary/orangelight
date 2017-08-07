@@ -15,6 +15,33 @@ context 'user signs in' do
     sign_in user
     expect(current_path).to eq account_path
   end
+
+  context 'user signs in upon visiting a request form' do
+    let(:request_path) { '/requests/1424012' }
+    let(:show_path) { '/catalog/1424012' }
+    let(:user) { FactoryGirl.create(:guest_patron) }
+    let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
+    let(:valid_record_response) { fixture('/8908514.json') }
+    let(:scsb_availability_params) { { bibliographicId: '1424012', institutionId: 'PUL' }.with_indifferent_access }
+    it 'redirects the user to the request form' do
+      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+        .to_return(status: 200, body: valid_patron_response, headers: {})
+      stub_request(:get, "#{ENV['pulsearch_base']}#{show_path}.json")
+        .to_return(status: 200, body: valid_record_response, headers: {})
+      stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+        .with(body: scsb_availability_params,
+              headers: { 'Accept' => 'application/json',
+                         'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                         'Api-Key' => 'TESTME',
+                         'Content-Type' => 'application/json',
+                         'User-Agent' => 'Faraday v0.12.2' })
+        .to_return(status: 200, body: '', headers: {})
+      visit request_path
+      click_link('barcode-login')
+      login_as user
+      expect(current_path).to eq request_path
+    end
+  end
 end
 
 # describe 'User logs in' do
