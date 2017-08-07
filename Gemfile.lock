@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 643542a3300a4768af2a999ae744e99b23467d9a
+  revision: 0a5d54dc88ed4747528190c6d04590f0c178c0ad
   branch: recall_fixes
   specs:
     requests (0.0.2)
@@ -87,7 +87,7 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (8.0.0)
     ast (2.3.0)
-    autoprefixer-rails (7.1.2.3)
+    autoprefixer-rails (7.1.2.4)
       execjs
     bcrypt (3.1.11)
     blacklight (6.8.0)
