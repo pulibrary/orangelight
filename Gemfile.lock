@@ -9,8 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 0a5d54dc88ed4747528190c6d04590f0c178c0ad
-  branch: recall_fixes
+  revision: bac9b4cafc7977dd60b710f3c1de96b92d1cbb91
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)
