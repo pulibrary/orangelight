@@ -6,9 +6,9 @@ gem 'rails', '~> 5.1.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Blacklight
-gem 'blacklight', '~> 6.4'
+gem 'blacklight', '6.8'
 
-gem 'rsolr'
+gem 'rsolr', '~> 1.1.2'
 
 # slider limit support
 gem 'blacklight_range_limit', '~> 6.1'
