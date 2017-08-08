@@ -70,7 +70,7 @@ gem 'newrelic_rpm'
 gem 'mail_form'
 gem 'string_rtl'
 
-gem 'requests', :git => 'https://github.com/pulibrary/requests.git', :branch => 'recall_fixes'
+gem 'requests', :git => 'https://github.com/pulibrary/requests.git'
 
 gem 'borrow_direct', '~> 1.2.0'
 

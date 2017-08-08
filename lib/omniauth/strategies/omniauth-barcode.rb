@@ -17,6 +17,10 @@ module OmniAuth
         hash[:last_name] = last_name.downcase.capitalize
         hash
       end
+
+      def request_phase
+        redirect '/users/sign_in'
+      end
     end
   end
 end

@@ -16,11 +16,11 @@ module Users
       valid_user = @user.valid?
       if patron == false || !last_name_match?(@user.username, patron['last_name']) || !valid_user
         flash_validation
-        redirect_to new_user_session_path
+        redirect_to user_barcode_omniauth_authorize_path(origin: request.env['omniauth.origin'])
         set_flash_message(:error, :failure,
                           reason: 'barcode or last name did not match active patron')
       elsif netid_patron?(patron)
-        redirect_to new_user_session_path
+        redirect_to user_barcode_omniauth_authorize_path(origin: request.env['omniauth.origin'])
         flash[:error] = I18n.t('blacklight.login.barcode_netid')
       else
         @user.save

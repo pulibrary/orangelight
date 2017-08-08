@@ -38,25 +38,25 @@ RSpec.describe Users::OmniauthCallbacksController do
       allow(User).to receive(:from_barcode) { valid_barcode_user }
       allow(Bibdata).to receive(:get_patron) { {} }
       get :barcode
-      expect(response).to redirect_to(new_user_session_path)
+      expect(response).to redirect_to(user_barcode_omniauth_authorize_path)
     end
     it 'valid patron, invalid last name, redirects to login page' do
       allow(User).to receive(:from_barcode) { FactoryGirl.create(:guest_patron, username: 'nope') }
       allow(Bibdata).to receive(:get_patron) { guest_response }
       get :barcode
-      expect(response).to redirect_to(new_user_session_path)
+      expect(response).to redirect_to(user_barcode_omniauth_authorize_path)
     end
     it 'valid patron, invalid barcode, redirects to login page' do
       allow(User).to receive(:from_barcode) { FactoryGirl.build(:guest_patron, uid: 'notabarcode') }
       allow(Bibdata).to receive(:get_patron) { guest_response }
       get :barcode
-      expect(response).to redirect_to(new_user_session_path)
+      expect(response).to redirect_to(user_barcode_omniauth_authorize_path)
     end
     it 'valid netid barcode redirects to login page' do
       allow(User).to receive(:from_barcode) { valid_barcode_user }
       allow(Bibdata).to receive(:get_patron) { valid_netid_response }
       get :barcode
-      expect(response).to redirect_to(new_user_session_path)
+      expect(response).to redirect_to(user_barcode_omniauth_authorize_path)
     end
     it 'expired netid barcode redirects to account page' do
       allow(User).to receive(:from_barcode) { valid_barcode_user }
