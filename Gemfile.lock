@@ -86,10 +86,10 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (8.0.0)
     ast (2.3.0)
-    autoprefixer-rails (7.1.2.3)
+    autoprefixer-rails (7.1.2.4)
       execjs
     bcrypt (3.1.11)
-    blacklight (6.8.0)
+    blacklight (6.10.1)
       bootstrap-sass (~> 3.2)
       deprecation
       globalid
@@ -105,14 +105,13 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 2.1)
-    blacklight_advanced_search (6.2.1)
+    blacklight_advanced_search (6.3.1)
       blacklight (~> 6.0, >= 6.0.1)
       parslet
     blacklight_range_limit (6.1.1)
       blacklight (~> 6.0)
       jquery-rails
       rails (>= 3.0)
-    blankslate (3.1.3)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -270,8 +269,7 @@ GEM
     orm_adapter (0.5.0)
     parser (2.4.0.0)
       ast (~> 2.2)
-    parslet (1.7.1)
-      blankslate (>= 2.0, <= 4.0)
+    parslet (1.8.0)
     pg (0.20.0)
     poltergeist (1.13.0)
       capybara (~> 2.1)
@@ -326,8 +324,10 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rsolr (1.1.2)
+    retriable (3.1.1)
+    rsolr (2.0.2)
       builder (>= 2.1.2)
+      faraday
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -380,8 +380,9 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.1)
     slop (3.6.0)
-    solr_wrapper (0.22.0)
+    solr_wrapper (1.1.0)
       faraday
+      retriable
       ruby-progressbar
       rubyzip
     spring (2.0.1)
@@ -490,7 +491,7 @@ DEPENDENCIES
   rubocop-rspec (~> 1.4.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  solr_wrapper (~> 0.22)
+  solr_wrapper (~> 1.0)
   spring
   string_rtl
   stringex!

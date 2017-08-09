@@ -9,9 +9,9 @@
 Versions:
 
 * Ruby: 2.2.3
-* Rails: 4.2.6
-* Blacklight: 5.18.0
-* blacklight_advanced_search: 5.1.2
+* Rails: 5.1.3
+* Blacklight: 6.10.1
+* blacklight_advanced_search: 6.3.1
 
 To install run `bundle install`
 
@@ -21,7 +21,7 @@ Application Configuration
 ```bash
 apt-get install postgresql
 su - postgres
-psql -c "CREATE ROLE orangelight with createdb login password 'orange';" 
+psql -c "CREATE ROLE orangelight with createdb login password 'orange';"
 exit
 ```
 
@@ -31,7 +31,7 @@ rake db:create
 rake db:migrate
 rake db:seed
 ```
-Production credentials: In production you'll need to add production 
+Production credentials: In production you'll need to add production
 credentials to database.yml
 
 ### Run

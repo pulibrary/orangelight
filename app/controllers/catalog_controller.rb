@@ -100,13 +100,13 @@ class CatalogController < ApplicationController
     config.add_facet_field 'class_year_s', label: 'PU class year', limit: true, show: false
     config.add_facet_field 'lc_rest_facet', label: 'Full call number code', limit: 25, show: false, sort: 'index'
     config.add_facet_field 'recently_added_facet', label: 'Recently added', home: true, query: {
-      weeks_1: { label: 'Within 1 week', fq: 'cataloged_tdt:[NOW/DAY-7DAYS NOW/DAY+1DAY]' },
-      weeks_2: { label: 'Within 2 weeks', fq: 'cataloged_tdt:[NOW/DAY-14DAYS NOW/DAY+1DAY]' },
-      weeks_3: { label: 'Within 3 weeks', fq: 'cataloged_tdt:[NOW/DAY-21DAYS NOW/DAY+1DAY]' },
-      months_1: { label: 'Within 1 month', fq: 'cataloged_tdt:[NOW/DAY-1MONTH NOW/DAY+1DAY]' },
-      months_2: { label: 'Within 2 months', fq: 'cataloged_tdt:[NOW/DAY-2MONTHS NOW/DAY+1DAY]' },
-      months_3: { label: 'Within 3 months', fq: 'cataloged_tdt:[NOW/DAY-3MONTHS NOW/DAY+1DAY]' },
-      months_6: { label: 'Within 6 months', fq: 'cataloged_tdt:[NOW/DAY-6MONTHS NOW/DAY+1DAY]' }
+      weeks_1: { label: 'Within 1 week', fq: 'cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]' },
+      weeks_2: { label: 'Within 2 weeks', fq: 'cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]' },
+      weeks_3: { label: 'Within 3 weeks', fq: 'cataloged_tdt:[NOW/DAY-21DAYS TO NOW/DAY+1DAY]' },
+      months_1: { label: 'Within 1 month', fq: 'cataloged_tdt:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]' },
+      months_2: { label: 'Within 2 months', fq: 'cataloged_tdt:[NOW/DAY-2MONTHS TO NOW/DAY+1DAY]' },
+      months_3: { label: 'Within 3 months', fq: 'cataloged_tdt:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]' },
+      months_6: { label: 'Within 6 months', fq: 'cataloged_tdt:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]' }
     }
 
     config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true
