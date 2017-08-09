@@ -18,6 +18,10 @@ module Orangelight
       redirect_to lccn_resolve(params[:id])
     end
 
+    def voyager
+      redirect_to "/catalog/#{params[:BBID]}"
+    end
+
     def redirect_browse
       if params[:search_field] && params[:controller] != 'advanced'
         if params[:search_field] == 'browse_subject' && !params[:id]
