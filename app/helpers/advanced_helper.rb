@@ -1,5 +1,7 @@
 # Helper methods for the advanced search form
 module AdvancedHelper
+  include BlacklightAdvancedSearch::AdvancedHelperBehavior
+
   # Fill in default from existing search, if present
   # -- if you are using same search fields for basic
   # search and advanced, will even fill in properly if existing
@@ -10,30 +12,6 @@ module AdvancedHelper
     elsif params['search_field'] == key || guided_context(key)
       params['q']
     end
-  end
-
-  # Is facet value in adv facet search results?
-  def facet_value_checked?(field, value)
-    BlacklightAdvancedSearch::QueryParser.new(params, blacklight_config).filters_include_value?(field, value)
-  end
-
-  # Current params without fields that will be over-written by adv. search,
-  # or other fields we don't want.
-  def advanced_search_context
-    my_params = params.permit!.except :page, :commit, :f_inclusive, :q, :search_field, :op, :action, :index, :sort, :controller, :utf8
-
-    my_params.except(*search_fields_for_advanced_search.map { |_key, field_def| field_def[:key] })
-  end
-
-  def search_fields_for_advanced_search
-    @search_fields_for_advanced_search ||= begin
-      blacklight_config.search_fields.select { |_k, v| v.include_in_advanced_search || v.include_in_advanced_search.nil? }
-    end
-  end
-
-  # Use configured facet partial name for facet or fallback on 'catalog/facet_limit'
-  def advanced_search_facet_partial_name(display_facet)
-    facet_configuration_for_field(display_facet.name).try(:partial) || 'catalog/facet_limit'
   end
 
   def advanced_key_value

@@ -20,14 +20,14 @@ namespace :pulsearch do
       solr = RSolr.connect :url => Blacklight.connection_config[:url]
       docs = JSON.parse(File.read('spec/fixtures/current_fixtures.json'))
       solr.add docs
-      solr.update data: '<commit/>'
+      solr.update data: '<commit/>', headers: { 'Content-Type' => 'text/xml' }
     end
 
     desc 'Delete fixtures from Solr'
     task :deindex do
       solr = RSolr.connect :url => Blacklight.connection_config[:url]
-      solr.update data: '<delete><query>*:*</query></delete>'
-      solr.update data: '<commit/>'
+      solr.update data: '<delete><query>*:*</query></delete>', headers: { 'Content-Type' => 'text/xml' }
+      solr.update data: '<commit/>', headers: { 'Content-Type' => 'text/xml' }
     end
   end
 
