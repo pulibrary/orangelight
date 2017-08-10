@@ -336,6 +336,13 @@ describe 'blacklight tests' do
     end
   end
 
+  describe 'voyager record url pattern' do
+    it 'redirects to blacklight catalog url' do
+      get '/cgi-bin/Pwebrecon.cgi?BBID=12345'
+      expect(response).to redirect_to('/catalog/12345')
+    end
+  end
+
   describe 'mathjax script' do
     it 'is included in search results' do
       get '/?f%5Bformat%5D%5B%5D=Book&q=&search_field=all_fields'
