@@ -142,6 +142,10 @@ module ApplicationHelper
     info << if holding['dspace']
               content_tag(:span, 'On-site access', class: 'availability-icon label label-warning',
                                                    title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
+            elsif /^scsb.+/ =~ holding['location_code']
+              unless holding['items'].nil?
+                content_tag(:div, content_tag(:span, '', title: '', class: 'availability-icon label', data: { toggle: 'tooltip' }).html_safe, class: 'holding-status', data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id, 'scsb-barcode' => holding['items'].first['barcode'], 'aeon' => recap_supervised_items?(holding) })
+              end
             elsif holding['dspace'].nil?
               content_tag(:div, content_tag(:div, '', class: 'availability-icon').html_safe, class: 'holding-status', data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id, aeon: aeon_location?(location_rules) })
             else
@@ -152,11 +156,40 @@ module ApplicationHelper
     info << content_tag(:ul, "#{holding_label('Location note:')} #{listify_array(holding['location_note'])}".html_safe, class: 'location-note') unless holding['location_note'].nil?
     info << content_tag(:ul, "#{holding_label('Location has:')} #{listify_array(holding['location_has'])}".html_safe, class: 'location-has') unless holding['location_has'].nil?
     info << content_tag(:ul, ''.html_safe, class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
+    # Label SCSB Use Restrictions
+    if /^scsb.+/ =~ holding['location_code']
+      info << recap_item_list(holding) unless holding['items'].nil?
+    end
     unless holding_id == 'thesis' && pub_date > 2012
-      info << request_placeholder(bib_id, holding_id, location_rules).html_safe
+      info << request_placeholder(bib_id, holding_id, location_rules, holding).html_safe
     end
     info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
     info
+  end
+
+  def recap_item_list(holding)
+    restricted_items = holding['items'].map do |item|
+      unless item['use_statement'].blank?
+        content_tag(:li, item['use_statement'].to_s)
+      end
+    end
+    restricted_items.compact!
+    if restricted_items.empty?
+      ''
+    else
+      restricted_items.uniq!
+      content_tag(:ul, "#{holding_label('Use Restrictions:')} #{restricted_items.join}".html_safe, class: 'item-list')
+    end
+  end
+
+  def recap_supervised_items?(holding)
+    if holding.key? 'items'
+      restricted_items = holding['items'].map do |item|
+        return true if item['use_statement'] == 'Supervised Use'
+      end
+      restricted_items.compact!
+      return false if restricted_items.empty?
+    end
   end
 
   def listify_array(arr)
@@ -204,9 +237,15 @@ module ApplicationHelper
     content_tag(:div, label, class: 'holding-label')
   end
 
-  def request_placeholder(doc_id, holding_id, location_rules)
+  def request_placeholder(doc_id, holding_id, location_rules, holding)
     content_tag(:div, class: "location-services #{show_request(location_rules, holding_id)}", data: { open: open_location?(location_rules), requestable: requestable_location?(location_rules), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
-      if non_voyager?(holding_id)
+      if /^scsb.+/ =~ location_rules['code']
+        if recap_supervised_items?(holding)
+          link_to 'Reading Room Request', "/requests/#{doc_id}?source=pulsearch", title: 'Request to view in Reading Room', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
+        else
+          link_to request_label(location_rules), "/requests/#{doc_id}?source=pulsearch", title: request_tooltip(location_rules), class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
+        end
+      elsif non_voyager?(holding_id)
         link_to 'Reading Room Request', "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch", title: 'Request to view in Reading Room', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
       else
         link_to request_label(location_rules), "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch", title: request_tooltip(location_rules), class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
@@ -231,7 +270,7 @@ module ApplicationHelper
   end
 
   def show_request(location_rules, holding_id)
-    if non_voyager?(holding_id) || aeon_location?(location_rules)
+    if non_voyager?(holding_id) || aeon_location?(location_rules) || /^scsb.+/ =~ location_rules['code']
       'service-always-requestable'
     else
       'service-conditional'
@@ -254,6 +293,7 @@ module ApplicationHelper
     block = ''
     links = search_links(document['electronic_access_1display'])
     holdings_hash = JSON.parse(document['holdings_1display'] || '{}')
+    scsb_multiple = false
     holdings_hash.first(2).each do |id, holding|
       location = LOCATIONS[holding['location_code'].to_sym]
       check_availability = true
@@ -275,6 +315,17 @@ module ApplicationHelper
           check_availability = false
           info << content_tag(:span, 'On-site access', class: 'availability-icon label label-warning', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location Must be requested', 'data-toggle' => 'tooltip').html_safe if aeon_location?(location)
+        elsif /^scsb.+/ =~ location[:code]
+          check_availability = false
+          unless holding['items'].nil?
+            scsb_multiple = true unless holding['items'].count == 1
+            if recap_supervised_items?(holding)
+              info << content_tag(:span, 'On-site access', class: 'availability-icon label label-success', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
+              info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip').html_safe
+            else
+              info << content_tag(:span, '', class: 'availability-icon label', title: '', 'data-scsb-availability' => 'true', 'data-toggle' => 'tooltip', 'data-scsb-barcode' => holding['items'].first['barcode'].to_s).html_safe
+            end
+          end
         elsif holding['dspace'].nil?
           info << content_tag(:span, '', class: 'availability-icon').html_safe
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip').html_safe if aeon_location?(location)
@@ -286,10 +337,14 @@ module ApplicationHelper
       end
       block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id, aeon: aeon_location?(location) })
     end
-    if holdings_hash.length > 2
+
+    if scsb_multiple == true
+      block << content_tag(:li, link_to('View Record for Full Availability', solr_document_path(document['id']), class: 'availability-icon label label-default more-info', title: 'Click on the record for full availability info', 'data-toggle' => 'tooltip').html_safe)
+    elsif holdings_hash.length > 2
       block << content_tag(:li, link_to('View Record for Full Availability', solr_document_path(document['id']),
                                         class: 'availability-icon label label-default more-info', title: 'Click on the record for full availability info',
                                         'data-toggle' => 'tooltip').html_safe)
+
     elsif !holdings_hash.empty?
       block << content_tag(:li, link_to('', solr_document_path(document['id']),
                                         class: 'availability-icon more-info', title: 'Click on the record for full availability info',
@@ -435,5 +490,9 @@ module ApplicationHelper
 
   def current_year
     DateTime.now.year
+  end
+
+  def recap_note(args)
+    args[:document][args[:field]].uniq
   end
 end

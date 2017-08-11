@@ -3,6 +3,7 @@ jQuery ->
 class AvailabilityUpdater
   constructor: ->
     this.request_availability()
+    this.scsb_search_availability()
   availability_url: "<%= ENV['bibdata_base'] %>/availability"
   id = ''
   on_site_status = 'On-site'
@@ -31,11 +32,24 @@ class AvailabilityUpdater
       $.getJSON(url, this.process_records)
     else if $("*[data-availability-record='true']").length > 0
       id = window.location.pathname.split('/')[2]
-      url = "#{@availability_url}?id=#{id}"
-      $.getJSON(url, this.process_single)
+      if id.match /^SCSB-\d+/
+        url = "#{@availability_url}?scsb_id=#{id.replace /^SCSB-/, ''}"
+        $.getJSON(url, this.process_scsb_single)
+      else
+        url = "#{@availability_url}?id=#{id}"
+        $.getJSON(url, this.process_single)
+  scsb_search_availability: ->
+    if $(".documents-list").length > 0
+      barcodes = this.scsb_barcodes().toArray()
+      params = $.param({barcodes: barcodes})
+      url = "#{@availability_url}?#{params}"
+      $.getJSON(url, this.process_barcodes)
   process_records: (records) =>
     for record_id, holding_records of records
       this.apply_record(record_id, holding_records)
+  process_barcodes: (barcodes) =>
+    for barcode_id, item_data of barcodes
+      this.apply_scsb_record(barcode_id, item_data)
   process_single: (holding_records) =>
     for holding_id, availability_info of holding_records
       availability_element = $("*[data-availability-record='true'][data-record-id='#{id}'][data-holding-id='#{holding_id}'] .availability-icon")
@@ -53,6 +67,38 @@ class AvailabilityUpdater
       else
         this.apply_record_icon(availability_element, availability_info['status'], aeon, availability_info)
       this.update_location_services(holding_id, availability_info)
+  process_scsb_single: (item_records) =>
+    if Object.keys(item_records).length > 1
+      multi_items = true
+      for barcode, availability_info of item_records
+        if availability_info['itemAvailabilityStatus'] != 'Available'
+          status_message = 'Some Items Not Available'
+    for barcode, availability_info of item_records
+      availability_element = $("*[data-availability-record='true'][data-record-id='#{id}'][data-scsb-barcode='#{barcode}'] .availability-icon")
+      aeon = $("*[data-availability-record='true'][data-record-id='#{id}'][data-scsb-barcode='#{barcode}']").attr('data-aeon')
+      availability_element.addClass("label")
+      if aeon == 'true'
+        availability_element.addClass("label-success")
+        availability_element.text("On-Site Access")
+        availability_element.attr("title", "Availability: On-site access by request")
+      else if multi_items
+        if status_message
+          availability_element.addClass("label-default")
+          availability_element.text(status_message)
+          availability_element.attr("title", "Availability: Some items not available")
+        else
+          availability_element.addClass("label-success")
+          availability_element.text('All Items Available')
+          availability_element.attr("title", "Availability: All items available")
+      else
+        if availability_info['itemAvailabilityStatus'] == 'Available'
+          availability_element.addClass("label-success")
+          availability_element.text(availability_info['itemAvailabilityStatus'])
+          availability_element.attr("title", "Availability: On shelf")
+        else
+          availability_element.addClass("label-danger")
+          availability_element.text(availability_info['itemAvailabilityStatus'])
+          availability_element.attr("title", "Availability: Checked out")
   update_location_services: (holding_id, availability_info) ->
     status = availability_info['status']
     temp_status = availability_info['temp_loc']
@@ -81,6 +127,17 @@ class AvailabilityUpdater
       if availability_info['temp_loc']
         $(availability_element).next('.icon-warning').hide()
       this.apply_record_icon(availability_element, availability_info['status'], aeon, {})
+    true
+  apply_scsb_record: (barcode, item_data) ->
+    availability_element = $("*[data-scsb-availability='true'][data-scsb-barcode='#{barcode}']")
+    if item_data['itemAvailabilityStatus'] == 'Available'
+      availability_element.addClass("label-success")
+      availability_element.text(item_data['itemAvailabilityStatus'])
+      availability_element.attr("title", "Availability: On Shelf")
+    else
+      availability_element.addClass("label-danger")
+      availability_element.text('Checked Out')
+      availability_element.attr("title", "Availability: Checked Out")
     true
   get_more_items: (holding_id, holding_label) ->
     url = "#{@availability_url}?mfhd=#{holding_id}"
@@ -158,6 +215,8 @@ class AvailabilityUpdater
     availability_element.attr('data-toggle', 'tooltip')
   record_ids: ->
     $("*[data-availability-record='true'][data-record-id]").map((_, x) -> $(x).attr("data-record-id"))
+  scsb_barcodes: ->
+    $("*[data-scsb-availability='true'][data-scsb-barcode]").map((_, x) -> $(x).attr("data-scsb-barcode"))
   status_label = (status) ->
     switch
       when status in long_overdue_statuses then 'Long overdue'

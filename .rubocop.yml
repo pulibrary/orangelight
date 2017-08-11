@@ -43,6 +43,7 @@ Metrics/AbcSize:
 Metrics/BlockNesting:
   Exclude:
     - 'app/helpers/advanced_helper.rb'
+    - 'app/helpers/application_helper.rb'
 
 Metrics/ClassLength:
   Exclude:
@@ -141,7 +142,7 @@ Style/MutableConstant:
   Exclude:
     - 'config/initializers/borrow_direct.rb'
     - 'config/initializers/locations_initializer.rb'
-    
+
 
 Style/PredicateName:
   Exclude:
