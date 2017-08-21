@@ -159,6 +159,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'advisor_display', label: 'Advisor(s)', helper_method: :browse_name
     config.add_show_field 'contributor_display', label: 'Contributor(s)', helper_method: :browse_name
     config.add_show_field 'department_display', label: 'Department', helper_method: :browse_name
+    config.add_show_field 'certificate_display', label: 'Certificate', helper_method: :browse_name
     config.add_show_field 'class_year_s', label: 'Class year', link_to_search: true
 
     config.add_show_field 'description_display', label: 'Description'
