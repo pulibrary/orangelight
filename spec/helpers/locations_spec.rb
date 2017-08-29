@@ -33,7 +33,7 @@ RSpec.describe ApplicationHelper do
     end
 
     it 'renders full location when value is a valid location code' do
-      expect(render_location_code('clas')).to eq('clas: Firestone Library - Classics Collection')
+      expect(render_location_code('clas')).to eq('clas: Firestone Library - Classics Collection (Clas)')
     end
   end
 
@@ -44,7 +44,7 @@ RSpec.describe ApplicationHelper do
     let(:valid_code) { { 'location' => fallback, 'location_code' => 'clas' } }
 
     it 'returns holding location label when location code lookup successful' do
-      expect(holding_location_label(valid_code)).to eq('Firestone Library - Classics Collection')
+      expect(holding_location_label(valid_code)).to eq('Firestone Library - Classics Collection (Clas)')
     end
     it 'returns holding location value when location code lookup fails' do
       expect(holding_location_label(invalid_code)).to eq(fallback)
