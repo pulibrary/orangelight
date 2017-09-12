@@ -3,12 +3,16 @@ require 'rails_helper'
 describe Orangelight::BrowsablesHelper do
   let(:integer_bib) { '234267' }
   let(:non_integer_bib) { '?f[call_number_browse_s][]=PRIN 685 2015' }
+  let(:scsb_bib) { 'SCSB-8096576' }
   describe '#should_check_availability?' do
     it 'returns true when bibid argument is an integer string' do
       expect(helper.should_check_availability?(integer_bib)).to eq(true)
     end
     it 'returns false when bibid argument is not an integer string' do
       expect(helper.should_check_availability?(non_integer_bib)).to eq(false)
+    end
+    it 'returns false when bibid arguement is a SCSB bib' do
+      expect(helper.should_check_availability?(scsb_bib)).to eq(false)
     end
   end
   describe '#bib_for_availability' do

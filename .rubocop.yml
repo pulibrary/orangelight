@@ -43,6 +43,7 @@ Metrics/AbcSize:
 Metrics/BlockNesting:
   Exclude:
     - 'app/helpers/advanced_helper.rb'
+    - 'app/helpers/application_helper.rb'
 
 Metrics/ClassLength:
   Exclude:
@@ -133,6 +134,10 @@ Style/AsciiComments:
   Exclude:
     - 'lib/orangelight/string_functions.rb'
 
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/helpers/scsb_items_helper_spec.rb'
+
 Style/FileName:
   Exclude:
     - 'lib/omniauth/strategies/omniauth-barcode.rb'
@@ -141,7 +146,7 @@ Style/MutableConstant:
   Exclude:
     - 'config/initializers/borrow_direct.rb'
     - 'config/initializers/locations_initializer.rb'
-    
+
 
 Style/PredicateName:
   Exclude:
