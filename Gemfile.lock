@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: d2c4768809e0ad48b32da5f15b557a04e3054a63
+  revision: 55d12e8b193a4734ab54d72cc4ec5146f5fc5f03
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)
@@ -315,7 +315,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (2.2.1)
-    rake (12.0.0)
+    rake (12.1.0)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
