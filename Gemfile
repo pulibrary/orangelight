@@ -59,7 +59,7 @@ gem 'solr_wrapper', '~> 1.0'
 # rspec, just like jettywrapper appear necessary for cap currently
 gem 'rspec-rails', '~> 3.4'
 gem 'capybara'
-gem 'stringex', :git => 'https://github.com/pulibrary/stringex.git', :tag => 'vpton.2.5.2.2'
+gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.5.2.2'
 gem 'lcsort', '~>0.9'
 gem 'library_stdnums'
 gem 'rubocop', '~> 0.39', require: false
@@ -70,7 +70,7 @@ gem 'newrelic_rpm'
 gem 'mail_form'
 gem 'string_rtl'
 
-gem 'requests', :git => 'https://github.com/pulibrary/requests.git'
+gem 'requests', git: 'https://github.com/pulibrary/requests.git'
 
 gem 'borrow_direct', '~> 1.2.0'
 
