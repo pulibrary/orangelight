@@ -115,7 +115,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'call_number_scheme_facet', label: 'Call number scheme', limit: 25, show: false, sort: 'index'
     config.add_facet_field 'call_number_group_facet', label: 'Call number group', limit: 25, show: false, sort: 'index'
     config.add_facet_field 'call_number_full_facet', label: 'Full call number', limit: 25, show: false, sort: 'index'
-
+    config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true
     config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w(lc_1letter_facet lc_rest_facet)
     config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index'
     config.add_facet_field 'advanced_location_s', label: 'Holding location', show: false,
@@ -367,6 +367,15 @@ class CatalogController < ApplicationController
       field.solr_local_parameters = {
         qf: '$left_anchor_qf',
         pf: '$left_anchor_pf'
+      }
+    end
+
+    config.add_search_field('publisher') do |field|
+      field.include_in_simple_select = false
+      field.label = 'Publisher'
+      field.solr_local_parameters = {
+        qf: 'pub_created_unstem_search',
+        pf: 'pub_created_unstem_search'
       }
     end
 
