@@ -185,7 +185,7 @@ module ApplicationHelper
   def recap_supervised_items?(holding)
     if holding.key? 'items'
       restricted_items = holding['items'].select { |item| item['use_statement'] == 'Supervised Use' }
-      !restricted_items.empty?
+      restricted_items.count == holding['items'].count
     else
       false
     end

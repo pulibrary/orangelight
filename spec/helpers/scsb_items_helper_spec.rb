@@ -72,8 +72,8 @@ RSpec.describe ApplicationHelper do
       expect(all_supervised).to be true
     end
 
-    it 'returns true when some items are marked for supervised use' do
-      expect(some_supervised).to be true
+    it 'returns false when some items are marked for supervised use' do
+      expect(some_supervised).to be false
     end
 
     it 'returns false when all items are not marked for supervised use' do
