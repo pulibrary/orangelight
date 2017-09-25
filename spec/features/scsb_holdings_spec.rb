@@ -66,8 +66,8 @@ describe 'SCSB Shared Collection Records' do
     before(:each) do
       visit '/catalog/SCSB-7846265'
     end
-    it 'displays a Reading Room Request' do
-      expect(page).to have_content 'Reading Room Request'
+    it 'displays a Request Button' do
+      expect(page).to have_content 'Request'
     end
   end
 end

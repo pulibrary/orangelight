@@ -79,3 +79,24 @@ To run a specific test:
 ```bash
 rake spec SPEC=path/to/your_spec.rb:linenumber
 ```
+
+## Local development with browse tables
+
+To start up a copy of the project with a solr index of fixture data
+```bash
+bundle exec rake server
+```
+Then, in another terminal window build browse index csv files in /tmp:
+```bash
+RAILS_ENV=development bundle exec rake browse:all
+```
+
+Then, load browse data into the development database:
+```bash
+RAILS_ENV=development bundle exec rake browse:load_all
+```
+
+## Local development with account/request features
+
+You will need a working local copy of https://github.com/pulibrary/marc_liberation.
+Set the ```bidata_base``` value in your dev environment to point at this version. 

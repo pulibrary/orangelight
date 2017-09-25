@@ -17,6 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: <%= ENV['OL_DB_USERNAME'] || 'orangelight' %>
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -84,6 +85,5 @@ test:
 production:
   <<: *default
   database: <%= ENV['OL_DB'] %>
-  username: <%= ENV['OL_DB_USERNAME'] %>
   password: <%= ENV['OL_DB_PASSWORD'] %>
   host: <%= ENV['OL_DB_HOST'] %>
