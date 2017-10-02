@@ -108,8 +108,8 @@ GEM
     blacklight_advanced_search (6.3.1)
       blacklight (~> 6.0, >= 6.0.1)
       parslet
-    blacklight_range_limit (6.1.1)
-      blacklight (~> 6.0)
+    blacklight_range_limit (6.2.1)
+      blacklight (>= 6.0.2)
       jquery-rails
       rails (>= 3.0)
     bootstrap-sass (3.3.7)
@@ -452,7 +452,7 @@ DEPENDENCIES
   blacklight (~> 6.4)
   blacklight-marc (~> 6.1)
   blacklight_advanced_search (~> 6.0)
-  blacklight_range_limit (~> 6.1)
+  blacklight_range_limit (~> 6.2.1)
   blacklight_unapi!
   borrow_direct (~> 1.2.0)
   capistrano (~> 3.4.0)
@@ -501,4 +501,4 @@ DEPENDENCIES
   yajl-ruby
 
 BUNDLED WITH
-   1.14.6
+   1.15.4
