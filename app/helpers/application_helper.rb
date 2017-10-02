@@ -87,7 +87,7 @@ module ApplicationHelper
     links = urlify(document['electronic_access_1display'] || '{}', document)
     physical_holdings = ''
     online_holdings = ''
-    is_journal = document['format'].include?('Journal')
+    is_journal = document.fetch('format', []).include?('Journal')
     pub_date = document.key?('pub_date_start_sort') ? document['pub_date_start_sort'] : 0
     online_holdings << links
     elf_holdings, other_holdings = holdings.partition { |_id, h| h['location_code'].start_with?('elf') }
