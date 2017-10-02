@@ -51,4 +51,13 @@ describe 'Availability' do
       expect(page).not_to have_selector 'ul.item-status'
     end
   end
+
+  describe 'Holdings for SCSB records' do
+    context 'when a record has no format' do
+      it 'still displays the record with a ReCAP location' do
+        visit 'catalog/SCSB-7935196'
+        expect(page).to have_selector '.library-location', text: 'ReCAP'
+      end
+    end
+  end
 end
