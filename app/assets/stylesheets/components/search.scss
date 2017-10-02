@@ -42,6 +42,21 @@ header .input-group-addon {
   }
 }
 
+#search-navbar {
+  padding: 0;
+  @media (min-width: $bp-medium) {
+    width: 70%;
+  }
+
+  .search-query-form {
+    padding: 1.125em 0 0;
+
+    @media (min-width: $bp-medium) {
+      padding: 1.125em 0;
+    }
+  }
+}
+
 #search-navbar .search_field {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -119,29 +134,10 @@ header .input-group-addon {
 
 #search-navbar .search-query-form {
   width: auto;
-  padding: 1.4em 0 0;
-
-  @media (min-width: 500px) {
-    padding: 1.4em 0;
-  }
 }
 
 .search-query-form .input-group {
   float: left;
-}
-
-.search-options {
-  clear: both;
-  display: block;
-  float: none;
-
-  li {
-    display: inline-block;
-
-    @media (min-width: 500px) {
-      padding-right: 1em;
-    }
-  }
 }
 
 select::-ms-expand {

@@ -1,10 +1,12 @@
 <header role="banner">
   <div class="l-branding__pul">
     <div class="container">
-      <a href="https://library.princeton.edu" title="Princeton University Library" class="logo__pul col-xs-12 col-sm-6">
-         <%= image_tag("library_full_logo.svg", class: "logo-svg") %>
-         <%= image_tag("library_full_logo.png", class: "logo-no-svg") %>
-      </a>
+      <div class="logo__pul col-xs-12 col-sm-6">
+        <a href="https://library.princeton.edu" title="Princeton University Library">
+           <%= image_tag("pul-logo-new.svg") %>
+        </a>
+        <%=link_to t('blacklight.orangelight').html_safe, root_path, :class => "site-title" %>
+      </div>
       <div class="pull-right menu--level-1 col-xs-12 col-sm-6">
         <ul>
           <li><%= link_to 'Help', main_app.page_path('help') %></li>
@@ -17,7 +19,7 @@
   <% unless params[:action] == 'error' || params[:action] == 'generate' %>
     <div class="header__secondary">
       <nav class="container" role="navigation">
-        <div id="search-navbar" class="col-xs-12 col-sm-12 col-md-8" role="search">
+        <div id="search-navbar" class="col-xs-12 search-navbar" role="search">
           <%= render_search_bar %>
         </div>
         <%= render :partial=>'/user_util_links' %>
