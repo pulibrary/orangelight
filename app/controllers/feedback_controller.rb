@@ -6,7 +6,7 @@ class FeedbackController < ApplicationController
 
   def new
     @feedback_form = FeedbackForm.new if @feedback_form.nil?
-    @feedback_form.current_url = request.referer
+    @feedback_form.current_url = request.referer || root_url
   end
 
   def create
@@ -14,9 +14,6 @@ class FeedbackController < ApplicationController
       if @feedback_form.valid?
         @feedback_form.deliver
         format.js { flash.now[:notice] = I18n.t('blacklight.feedback.success') }
-        if @feedback_form.current_url.nil?
-          redirect_to @feedback_form.current_url
-        end
       else
         format.js { flash.now[:error] = @feedback_form.error_message }
       end
