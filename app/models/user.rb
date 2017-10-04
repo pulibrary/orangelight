@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # include Blacklight::Folders::User
   validates :username, presence: true
   validates :uid, length: { is: 14 }, format: { with: /\A([\d]{14})\z/ },
-                  if: "provider == 'barcode'"
+                  if: :barcode_provider?
 
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   # the account.
   def to_s
     username || 'User'
+  end
+
+  def barcode_provider?
+    provider == 'barcode'
   end
 
   def self.from_cas(access_token)
