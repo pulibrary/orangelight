@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170110113442) do
 
   create_table "blacklight_folders_folders", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.string "user_type"
+    t.string "user_type", null: false
     t.integer "user_id", null: false
     t.string "visibility"
     t.integer "number_of_members", default: 0, null: false

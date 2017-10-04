@@ -25,7 +25,7 @@
     <%= stylesheet_link_tag "print", media: "print" %>
     <%= javascript_include_tag "application" %>
     <% unless controller.controller_name == "catalog" && controller.action_name == "show" && @document.voyager_record? %>
-    <%= javascript_include_tag "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML", async: true %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML", async: true %>
     <% end %>
     <%= javascript_include_tag "#{ENV['umlaut_base']}/assets/umlaut/update_html.js" %>
     <%= csrf_meta_tags %>
