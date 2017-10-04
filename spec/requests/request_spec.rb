@@ -346,11 +346,11 @@ describe 'blacklight tests' do
   describe 'mathjax script' do
     it 'is included in search results' do
       get '/?f%5Bformat%5D%5B%5D=Book&q=&search_field=all_fields'
-      expect(response.body).to include('mathjax.org')
+      expect(response.body).to include('MathJax.js')
     end
     it 'is included on theses record show page' do
       get '/catalog/dsp01ft848s955'
-      expect(response.body).to include('mathjax.org')
+      expect(response.body).to include('MathJax.js')
     end
     it 'is excluded on marc record show page' do
       get '/catalog/4705307'
