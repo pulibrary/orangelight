@@ -1,7 +1,8 @@
 
 <div class="col-xs-12 header-row">
     <%# bookmark/folder functions -%>
-    <% titlevalue = render_document_show_field_value @document, :field => 'title_vern_display' %>
+    <% doc_presenter = show_presenter(@document) %>
+    <% titlevalue = doc_presenter.field_value :field => 'title_vern_display' %>
     <% unless titlevalue == '' %>
         <h1 dir="<%= titlevalue.dir %>"> <%= titlevalue %> </h1>
     <% end %>
