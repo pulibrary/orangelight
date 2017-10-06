@@ -3,7 +3,7 @@ en:
     application_name: 'Princeton University Library Catalog'
     welcome: 'Welcome!'
     voyager: 'Main Catalog'
-    orangelight: 'New Catalog'
+    orangelight: 'Catalog'
     umlaut: 'Findit @ Princeton'
     account:
       inaccessible: 'Your library account is not available.'
