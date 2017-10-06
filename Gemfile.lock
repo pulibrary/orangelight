@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 37d42183f7611d1c72c72c2b1e4dad7f8ac820bb
+  revision: 69bb7887d1c06d38a0f8529557d6c422ec610e6d
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)
@@ -359,7 +359,7 @@ GEM
     ruby-progressbar (1.8.1)
     rubyzip (1.2.1)
     safe_yaml (1.0.4)
-    sass (3.5.1)
+    sass (3.5.2)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
