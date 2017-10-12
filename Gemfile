@@ -6,7 +6,7 @@ gem 'rails', '~> 5.1.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Blacklight
-gem 'blacklight', '~> 6.11'
+gem 'blacklight', git: 'https://github.com/projectblacklight/blacklight', branch: 'modal-6.x'
 
 gem 'rsolr'
 
