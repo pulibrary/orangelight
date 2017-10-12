@@ -1,4 +1,20 @@
 GIT
+  remote: https://github.com/projectblacklight/blacklight
+  revision: c1361faf72e342074769155992be955b0790ddb7
+  branch: modal-6.x
+  specs:
+    blacklight (6.11.2)
+      bootstrap-sass (~> 3.2)
+      deprecation
+      globalid
+      jbuilder
+      kaminari (>= 0.15)
+      nokogiri (~> 1.6)
+      rails (>= 4.2, < 6)
+      rsolr (>= 1.0.6, < 3)
+      twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
+
+GIT
   remote: https://github.com/pulibrary/blacklight_unapi.git
   revision: 393cd6b816591c4da983627903e69f801b150b6e
   branch: blacklight_6
@@ -9,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 69bb7887d1c06d38a0f8529557d6c422ec610e6d
+  revision: f936aac5bd3e18801673f7d938c68ea090ef00f4
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)
@@ -86,19 +102,9 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (8.0.0)
     ast (2.3.0)
-    autoprefixer-rails (7.1.4.1)
+    autoprefixer-rails (7.1.5)
       execjs
     bcrypt (3.1.11)
-    blacklight (6.11.2)
-      bootstrap-sass (~> 3.2)
-      deprecation
-      globalid
-      jbuilder
-      kaminari (>= 0.15)
-      nokogiri (~> 1.6)
-      rails (>= 4.2, < 6)
-      rsolr (>= 1.0.6, < 3)
-      twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
     blacklight-marc (6.1.1)
       blacklight (> 6.1, < 8.a)
       library_stdnums
@@ -178,7 +184,7 @@ GEM
     dot-properties (0.1.3)
     email_validator (1.6.0)
       activemodel
-    erubi (1.6.1)
+    erubi (1.7.0)
     execjs (2.7.0)
     factory_girl (4.8.0)
       activesupport (>= 3.0.0)
@@ -452,7 +458,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  blacklight (~> 6.11)
+  blacklight!
   blacklight-marc (~> 6.1)
   blacklight_advanced_search (~> 6.0)
   blacklight_range_limit (~> 6.2.1)
