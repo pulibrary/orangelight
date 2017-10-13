@@ -72,6 +72,7 @@ en:
     email:
       form:
         title: 'Email the catalog record and (optional) message.'
+        subject: 'PU Library Catalog Shared Record(s)'
       text:
         publish: 'Published/Created: %{value}'
         online: 'Online access:'
