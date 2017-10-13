@@ -5,6 +5,7 @@ RSpec.describe ApplicationHelper do
     describe '#formats_to_exclude' do
       let(:document) do
         {
+          id: '1',
           'holdings_1display' => %({"9092827":{"location":"Firestone Library","library":"Firestone Library","location_code":"f","call_number":"PS3566.I428 A6 2015","call_number_browse":"PS3566.I428 A6 2015"}})
         }.with_indifferent_access
       end

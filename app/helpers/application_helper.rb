@@ -447,7 +447,7 @@ module ApplicationHelper
 
   def formats_to_exclude(document)
     holding_id = JSON.parse(document[:holdings_1display]).first[0] if document[:holdings_1display]
-    if non_voyager?(holding_id)
+    if non_voyager?(holding_id) || document['id'].start_with?('SCSB')
       [:marc, :marcxml, :refworks_marc_txt, :endnote, :openurl_ctx_kev]
     else
       []
