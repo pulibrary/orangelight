@@ -18,5 +18,9 @@ RSpec.describe CatalogController do
 
       expect(email.reply_to).to eq [user.email]
     end
+    it 'supports a user-submitted subject line' do
+      post :email, params: { id: '9741216', to: 'test@test.com', subject: ['Subject'] }
+      expect(email.subject).to eq 'Subject'
+    end
   end
 end
