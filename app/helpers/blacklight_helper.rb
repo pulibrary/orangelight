@@ -24,6 +24,13 @@ module BlacklightHelper
     solr_parameters[:q] = '{!qf=$left_anchor_qf pf=$left_anchor_pf}' + newq.delete(' ')
   end
 
+  def pul_holdings(solr_parameters)
+    return unless blacklight_params[:f_inclusive] && blacklight_params[:f_inclusive][:advanced_location_s] &&
+                  blacklight_params[:f_inclusive][:advanced_location_s].include?('pul')
+    solr_parameters[:fq].map! { |fq| fq.gsub '"pul"', '*' }
+    solr_parameters[:fq] << '-id:SCSB*'
+  end
+
   def series_title_results(solr_parameters)
     return unless %w(series_title in_series).include?(blacklight_params[:f1]) ||
                   blacklight_params[:f2] == 'series_title' ||

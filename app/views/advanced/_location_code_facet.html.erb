@@ -22,6 +22,8 @@
                   class: 'group-option', :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) %>
                 <% end %>
               <% end %>
+              <%= content_tag :option, 'pul',
+              class: 'group-result', :value => 'pul', :selected => facet_value_checked?(display_facet.name, 'pul') %>
             <% end %>
         </div>
     </div>

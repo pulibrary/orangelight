@@ -75,6 +75,16 @@ describe 'blacklight tests' do
     end
   end
 
+  describe 'pul_holdings check' do
+    it 'excludes scsb items when pul location filter is applied' do
+      get '/catalog.json?per_page=100'
+      expect(response.body).to include('"SCSB-7235709"', '"9741216"')
+      get '/catalog.json?per_page=100&f_inclusive%5Badvanced_location_s%5D%5B%5D=pul'
+      expect(response.body).to include('"9741216"')
+      expect(response.body).not_to include('"SCSB-7235709"')
+    end
+  end
+
   describe 'stackmap link check' do
     it 'provides a link to locate an item for each holding' do
       get '/catalog/430472.json'
