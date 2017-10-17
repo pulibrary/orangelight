@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/projectblacklight/blacklight
-  revision: c1361faf72e342074769155992be955b0790ddb7
-  branch: modal-6.x
+  revision: 1c54dcb6aa0145c3cba284194b051a5c77076d2e
+  branch: release-6.x
   specs:
     blacklight (6.11.2)
       bootstrap-sass (~> 3.2)
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: f936aac5bd3e18801673f7d938c68ea090ef00f4
+  revision: 2672370c9396cf50fd2d9b9ae54a964b8845f5bf
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)
@@ -207,7 +207,8 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httpclient (2.8.3)
-    i18n (0.8.6)
+    i18n (0.9.0)
+      concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -221,18 +222,18 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.6)
-    kaminari (1.0.1)
+    kaminari (1.1.0)
       activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.0.1)
-      kaminari-activerecord (= 1.0.1)
-      kaminari-core (= 1.0.1)
-    kaminari-actionview (1.0.1)
+      kaminari-actionview (= 1.1.0)
+      kaminari-activerecord (= 1.1.0)
+      kaminari-core (= 1.1.0)
+    kaminari-actionview (1.1.0)
       actionview
-      kaminari-core (= 1.0.1)
-    kaminari-activerecord (1.0.1)
+      kaminari-core (= 1.1.0)
+    kaminari-activerecord (1.1.0)
       activerecord
-      kaminari-core (= 1.0.1)
-    kaminari-core (1.0.1)
+      kaminari-core (= 1.1.0)
+    kaminari-core (1.1.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     lcsort (0.9.0)
