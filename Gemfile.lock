@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 4c57ef9fcdb65638987f205fadcbb8449bf8802b
+  revision: eeb95d8babc39eb35a1fbefa4566484d48807533
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)

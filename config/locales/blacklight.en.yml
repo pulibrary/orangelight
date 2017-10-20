@@ -5,6 +5,9 @@ en:
     voyager: 'Main Catalog'
     orangelight: 'Catalog'
     umlaut: 'Findit @ Princeton'
+    scsb:
+      in_library_use: 'Materials must be used within Firestone Library.'
+      supervised_use: 'Materials must be used within the Firestone Library Reading Room by scheduled appointment.'
     account:
       inaccessible: 'Your library account is not available.'
       borrow_direct_ineligible: 'Your library account is not eligible for Borrow Direct.'
