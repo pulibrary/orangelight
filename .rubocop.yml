@@ -167,6 +167,9 @@ Style/CollectionMethods:
 Style/Documentation:
   Enabled: false
 
+Style/Next:
+  Enabled: false
+
 Style/RaiseArgs:
   Exclude:
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
