@@ -170,7 +170,9 @@ module ApplicationHelper
   def recap_item_list(holding)
     restricted_items = holding['items'].map do |item|
       unless item['use_statement'].blank?
-        content_tag(:li, item['use_statement'].to_s)
+        content_tag(:li, title: recap_use_toolip(item['use_statement']), 'data-toggle' => 'tooltip') do
+          content_tag(:span, recap_use_label(item['use_statement']), class: 'icon-warning icon-request-reading-room').html_safe
+        end
       end
     end
     restricted_items.compact!
@@ -179,6 +181,18 @@ module ApplicationHelper
     else
       restricted_items.uniq!
       content_tag(:ul, "#{holding_label('Use Restrictions:')} #{restricted_items.join}".html_safe, class: 'item-list')
+    end
+  end
+
+  def recap_use_label(restriction)
+    "#{restriction} Only"
+  end
+
+  def recap_use_toolip(restriction)
+    if restriction == 'In Library Use'
+      t('blacklight.scsb.in_library_use')
+    else
+      t('blacklight.scsb.supervised_use')
     end
   end
 
