@@ -71,7 +71,7 @@ en:
       barcode_netid: 'Please log in with netID.'
       barcode_header: 'Other users'
       barcode_subheader: 'For borrowers without a netID'
-      barcode_help: 'If you cannot login and you have a new ID card, please stop at a circulation desk to have your barcode activated. Contact Firestone Circulation (609-258-3202) or <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a> for other problems.'
+      barcode_help: 'If you cannot login please stop at Firestone Circulation (609-258-3202) or email <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a>.'
     email:
       form:
         title: 'Email the catalog record and (optional) message.'
