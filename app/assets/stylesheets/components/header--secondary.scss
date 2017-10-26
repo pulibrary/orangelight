@@ -33,6 +33,13 @@
     background: transparent;
     padding: 1em;
     margin: 0;
+    color: darken($blue, 3);
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: underline;
+    }
 
     &:last-child {
       padding-right: 0;
