@@ -9,7 +9,11 @@ module ApplicationHelper
     urls = ''
     links = JSON.parse(electronic_access)
     links.each do |url, text|
-      link = link_to(text.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
+      link = if /Open access/ =~ text.first
+               link_to(text.first, url.to_s, target: '_blank')
+             else
+               link_to(text.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
+             end
       link = "#{text[1]}: " + link if text[1]
       link = "<li>#{link}</li>" if links.count > 1
       if /getit\.princeton\.edu/ =~ url

@@ -14,7 +14,11 @@ RSpec.describe ApplicationHelper do
     let(:show_result_thesis) { helper.holding_request_block(document_thesis) }
     let(:show_result_thesis_no_request) { helper.holding_request_block(document_thesis_no_request_access) }
     let(:show_result_marcit) { helper.urlify(electronic_access_marcit, document) }
+    let(:show_result_open_access) { helper.urlify(open_access_electronic_display, SolrDocument.new(document)) }
+    let(:show_result_non_open_access) { helper.urlify(electronic_display, SolrDocument.new(document)) }
     let(:show_result_umlaut_w_full_text) { helper.umlaut_services }
+    let(:not_umlaut_full_text_eligible) { SolrDocument.new(document_no_umlaut) }
+    let(:umlaut_full_text_eligible) { SolrDocument.new(document) }
     let(:holding_block_json) do
       {
         holding_id => {
@@ -67,7 +71,13 @@ RSpec.describe ApplicationHelper do
         holdings_1display: holding_block_json
       }.with_indifferent_access
     end
-
+    let(:document_no_umlaut) do
+      {
+        id: '5',
+        format: ['Video'],
+        holdings_1display: holding_block_json
+      }.with_indifferent_access
+    end
     let(:document_no_holdings) do
       {
         id: '2'
@@ -137,7 +147,18 @@ RSpec.describe ApplicationHelper do
         marcit_url => ['getit.princeton.edu', 'View Princeton online holdings']
       }.to_json
     end
-
+    let(:open_access_url) { 'http://hdl.handle.net/1802/27831' }
+    let(:open_access_electronic_display) do
+      {
+        open_access_url => ['Open access']
+      }.to_json
+    end
+    let(:electronic_access_url) { 'http://hdl.handle.net/1802/27831' }
+    let(:electronic_display) do
+      {
+        electronic_access_url => ['I am a label']
+      }.to_json
+    end
     context 'search results when there are more than two call numbers' do
       it 'displays View Record for Availability' do
         expect(search_result).to include 'View Record for Full Availability'
@@ -229,6 +250,24 @@ RSpec.describe ApplicationHelper do
       it 'has a marcit context object' do
         expect(show_result_marcit).to include 'data-url-marcit'
         expect(show_result_marcit).to have_selector "*[data-url-marcit='#{marcit_ctx}']"
+      end
+    end
+    context '#urlify an Open access title' do
+      it 'does not have a proxy prefix added' do
+        expect(show_result_open_access).not_to include ENV['proxy_base']
+      end
+    end
+    context '#urlify an non Open access title' do
+      it 'does have a proxy prefix added' do
+        expect(show_result_non_open_access).to include ENV['proxy_base']
+      end
+    end
+    context '#umlaut_format_eligible? formats' do
+      it 'is false when it is not umlaut format' do
+        expect(not_umlaut_full_text_eligible.umlaut_fulltext_eligible?).to be false
+      end
+      it 'is true when it is an umlaut format' do
+        expect(umlaut_full_text_eligible.umlaut_fulltext_eligible?).to be true
       end
     end
   end
