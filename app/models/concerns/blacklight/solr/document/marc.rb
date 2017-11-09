@@ -95,6 +95,7 @@ module Blacklight
               ctx.referent.set_metadata('pub', publisher_info)
               ctx.referent.set_metadata('edition', edition)
               ctx.referent.set_metadata('isbn', self['isbn_s'].first) unless self['isbn_s'].nil?
+              ctx.referent.set_metadata('date', date)
             elsif format =~ /journal/i # checking using include because institutions may use formats like Journal or Journal/Magazine
               ctx.referent.set_format('journal')
               ctx.referent.set_metadata('genre', 'serial')
@@ -115,9 +116,9 @@ module Blacklight
               ctx.referent.set_metadata('format', format)
               ctx.referent.set_metadata('issn', self['issn_s'].first) unless self['issn_s'].nil?
               ctx.referent.set_metadata('isbn', self['isbn_s'].first) unless self['isbn_s'].nil?
+              ctx.referent.set_metadata('date', date)
             end
             ## common metadata for all formats
-            ctx.referent.set_metadata('date', date)
             # canonical identifier for the citation?
             ctx.referent.add_identifier("https://bibdata.princeton.edu/bibliographic/#{id}")
             # add pulsearch refererrer
