@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 770b591b9ca91fc02566155543dc2ba99f3317a4
+  revision: 7d3a8a22bdc6f468b6c5c049bb387edebd0b3076
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)
@@ -296,7 +296,7 @@ GEM
       pry (~> 0.10)
     public_suffix (2.0.5)
     rack (2.0.3)
-    rack-test (0.7.0)
+    rack-test (0.8.0)
       rack (>= 1.0, < 3)
     rails (5.1.4)
       actioncable (= 5.1.4)
@@ -326,7 +326,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (2.2.1)
-    rake (12.2.1)
+    rake (12.3.0)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
