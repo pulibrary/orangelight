@@ -71,7 +71,6 @@ class SolrDocument
     def identifier_keys
       %w(
         isbn_s
-        lccn_s
         oclc_s)
     end
 end

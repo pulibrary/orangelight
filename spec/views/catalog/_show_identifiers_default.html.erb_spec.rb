@@ -12,9 +12,6 @@ RSpec.describe 'catalog/_show_identifiers_default.html.erb' do
   before do
     render partial: 'catalog/show_identifiers_default', locals: { document: document }
   end
-  it 'displays a meta tag for each lccn' do
-    expect(rendered).to have_selector("meta[property='lccn'][content='2001522653']")
-  end
   it 'displays a meta tag for each isbn' do
     expect(rendered).to have_selector("meta[property='isbn'][itemprop='isbn'][content='9781400827824']")
   end
