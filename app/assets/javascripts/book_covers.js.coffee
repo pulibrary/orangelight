@@ -4,8 +4,7 @@ class BookCoverManager
   google_url: "https://books.google.com/books?callback=?&jscmd=viewapi&bibkeys="
   identifiers: {
     isbn: "isbn",
-    oclc: "http://purl.org/library/oclcnum",
-    lccn: "lccn"
+    oclc: "http://purl.org/library/oclcnum"
   }
   constructor: ->
     this.find_book_covers()
