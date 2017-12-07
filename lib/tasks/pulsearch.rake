@@ -4,7 +4,7 @@ require 'json'
 namespace :pulsearch do
   namespace :solr do
     desc 'Updates solr config files from github'
-    task :update, :solr_dir do |t, args|
+    task :update, :solr_dir do |_t, args|
       solr_dir = args[:solr_dir] || Rails.root.join('solr')
 
       ['mapping-ISOLatin1Accent.txt', 'protwords.txt', 'schema.xml', 'solrconfig.xml',
@@ -17,7 +17,7 @@ namespace :pulsearch do
 
     desc 'Posts fixtures to Solr'
     task :index do
-      solr = RSolr.connect :url => Blacklight.connection_config[:url]
+      solr = RSolr.connect url: Blacklight.connection_config[:url]
       docs = JSON.parse(File.read('spec/fixtures/current_fixtures.json'))
       solr.add docs
       solr.update data: '<commit/>', headers: { 'Content-Type' => 'text/xml' }
@@ -25,7 +25,7 @@ namespace :pulsearch do
 
     desc 'Delete fixtures from Solr'
     task :deindex do
-      solr = RSolr.connect :url => Blacklight.connection_config[:url]
+      solr = RSolr.connect url: Blacklight.connection_config[:url]
       solr.update data: '<delete><query>*:*</query></delete>', headers: { 'Content-Type' => 'text/xml' }
       solr.update data: '<commit/>', headers: { 'Content-Type' => 'text/xml' }
     end

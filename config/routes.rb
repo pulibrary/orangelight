@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'sessions' },
-             skip: [:passwords, :registration]
+             skip: %i[passwords registration]
 
   devise_scope :user do
     get '/users/signup' => 'devise/registrations#new', :as => :new_user_registration
@@ -74,9 +74,9 @@ Rails.application.routes.draw do
   get '/thumbnail/:id', to: 'thumbnail#show'
 
   # error pages
-  match '/404' => 'errors#missing', via: [:get, :post, :patch, :delete]
-  match '/422' => 'errors#missing', via: [:get, :post, :patch, :delete]
-  match '/500' => 'errors#error', via: [:get, :post, :patch, :delete]
+  match '/404' => 'errors#missing', via: %i[get post patch delete]
+  match '/422' => 'errors#missing', via: %i[get post patch delete]
+  match '/500' => 'errors#error', via: %i[get post patch delete]
   # match '*catch_unknown_routes', to: 'application#catch_404s', via: [:get, :post]
   #
   get '/course_reserves', to: 'course_reserves#index'

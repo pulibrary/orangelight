@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe SolrDocument::Identifier do
   subject { described_class.new(type, value) }
+
   let(:type) { 'isbn_s' }
   let(:value) { '0' }
+
   describe '#value' do
     it 'returns the value given' do
       expect(subject.value).to eq '0'
@@ -17,6 +19,7 @@ RSpec.describe SolrDocument::Identifier do
   context 'for an lccn' do
     let(:type) { 'lccn_s' }
     let(:value) { '0' }
+
     describe '#property' do
       it 'returns lccn' do
         expect(subject.property).to eq 'lccn'
@@ -32,6 +35,7 @@ RSpec.describe SolrDocument::Identifier do
 
   context 'for an isbn' do
     let(:type) { 'isbn_s' }
+
     describe '#property' do
       it 'returns isbn' do
         expect(subject.property).to eq 'isbn'
@@ -47,6 +51,7 @@ RSpec.describe SolrDocument::Identifier do
 
   context 'for an oclc number' do
     let(:type) { 'oclc_s' }
+
     describe '#property' do
       it 'returns an RDF URI' do
         expect(subject.property).to eq 'http://purl.org/library/oclcnum'

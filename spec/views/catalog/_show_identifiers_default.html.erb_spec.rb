@@ -6,9 +6,10 @@ RSpec.describe 'catalog/_show_identifiers_default.html.erb' do
     {
       'lccn_s' => ['2001522653'],
       'isbn_s' => ['9781400827824'],
-      'oclc_s' => %w(19590730 301985443)
+      'oclc_s' => %w[19590730 301985443]
     }
   end
+
   before do
     render partial: 'catalog/show_identifiers_default', locals: { document: document }
   end
@@ -22,6 +23,7 @@ RSpec.describe 'catalog/_show_identifiers_default.html.erb' do
 
   context 'when there is no identifier' do
     let(:properties) { {} }
+
     it 'does not display anything' do
       expect(rendered).not_to have_selector('meta')
     end

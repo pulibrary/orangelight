@@ -4,7 +4,8 @@ RSpec.describe AccountController do
   let(:valid_patron_response) { File.open(fixture_path + '/bibdata_patron_response.json') }
   let(:generic_voyager_account_response) { VoyagerAccount.new(fixture('/generic_voyager_account_response.xml')) }
   let(:generic_voyager_account_empty_response) { VoyagerAccount.new(fixture('/generic_voyager_account_empty_response.xml')) }
-  let(:item_ids_to_cancel) { %w(42287 42289 69854 28010) }
+  let(:item_ids_to_cancel) { %w[42287 42289 69854 28010] }
+
   describe '#cancel_success' do
     it 'returns true when requested cancelled items are sucessfully deleted' do
       expect(subject.send(:cancel_success, item_ids_to_cancel.size, generic_voyager_account_empty_response, item_ids_to_cancel)).to be_truthy
@@ -19,6 +20,7 @@ RSpec.describe AccountController do
     let(:valid_user) { FactoryGirl.create(:valid_princeton_patron) }
     let(:invalid_user) { FactoryGirl.create(:invalid_princeton_patron) }
     let(:unauthorized_user) { FactoryGirl.create(:unauthorized_princeton_patron) }
+
     it 'Returns Princeton Patron Account Data using a NetID' do
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
       stub_request(:get, valid_patron_record_uri)
@@ -57,6 +59,7 @@ RSpec.describe AccountController do
     let(:guest_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_guest.json')).with_indifferent_access }
     let(:valid_barcode_user) { FactoryGirl.create(:guest_patron) }
     let(:valid_cas_user) { FactoryGirl.create(:valid_princeton_patron) }
+
     it 'Redirects to Borrow Direct for valid cas user' do
       sign_in(valid_cas_user)
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
@@ -112,7 +115,7 @@ RSpec.describe AccountController do
         .to_return(status: 200, body: valid_voyager_response, headers: {})
       account = subject.send(:voyager_account?, valid_voyager_patron)
       expect(account).to be_truthy
-      expect(account.doc.is_a?(Nokogiri::XML::Document)).to be_truthy
+      expect(account.doc).to be_a(Nokogiri::XML::Document)
     end
 
     it "Returns false when the patron record doesn't exist" do

@@ -5,15 +5,16 @@ RSpec.describe Users::OmniauthCallbacksController do
   let(:expired_netid_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_expired.json')).with_indifferent_access }
   let(:guest_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_guest.json')).with_indifferent_access }
   let(:valid_barcode_user) { FactoryGirl.create(:guest_patron) }
-  before(:each) { request.env['devise.mapping'] = Devise.mappings[:user] }
+
+  before { request.env['devise.mapping'] = Devise.mappings[:user] }
 
   describe 'callback response to User object' do
     let(:last_name) { 'LastName' }
     let(:omniauth_response) do
       OmniAuth::AuthHash.new(provider: 'barcode', uid: '12345678901234', info:
-        { last_name: last_name }
-                            )
+        { last_name: last_name })
     end
+
     it 'last_name is mapped to username property' do
       expect(User.from_barcode(omniauth_response).username).to eq last_name
     end

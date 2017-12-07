@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Blacklight::Document::DublinCore do
+  subject { SolrDocument.new(properties) }
+
   let(:properties) do
     {
       'id' => '9618072',
@@ -54,7 +56,7 @@ RSpec.describe Blacklight::Document::DublinCore do
       ]
     }
   end
-  subject { SolrDocument.new(properties) }
+
   describe '#export_as_oai_dc_xml' do
     it 'returns DC fields wrapped in OAI XML' do
       expect(Nokogiri::XML(subject.export_as_oai_dc_xml).xpath('/oai_dc:dc')).to be_truthy

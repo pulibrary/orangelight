@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+
 # This module provides the body of an email export based on the document's semantic values
 module Blacklight
   module Document
@@ -16,11 +16,11 @@ module Blacklight
       private
 
         def add_single_valued_field(body, i18_label, value)
-          body << I18n.t(i18_label, value: value) unless value.blank?
+          body << I18n.t(i18_label, value: value) if value.present?
         end
 
         def add_multi_valued_field(body, i18_label, value)
-          value.each { |v| add_single_valued_field(body, i18_label, v) } unless value.blank?
+          value.each { |v| add_single_valued_field(body, i18_label, v) } if value.present?
         end
 
         def add_holding_fields(body, holding)
@@ -39,7 +39,7 @@ module Blacklight
         end
 
         def add_holdings_text(body, holdings_field)
-          unless holdings_field.blank?
+          if holdings_field.present?
             body << I18n.t('blacklight.email.text.holdings')
             holdings = JSON.parse(self[:holdings_1display])
             first_holding = true
@@ -52,7 +52,7 @@ module Blacklight
         end
 
         def add_online_text(body, links_field)
-          unless links_field.blank?
+          if links_field.present?
             body << I18n.t('blacklight.email.text.online')
             links = JSON.parse(links_field)
             links.each do |url, text|

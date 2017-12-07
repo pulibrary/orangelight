@@ -128,7 +128,7 @@ module BrowseLists
 
     # determines if there are multiple locations for the same call number and same bib
     def multiple_locations?(holdings)
-      locations = holdings.select { |_k, h| h['library'] != 'Online' }.map { |_k, h| h['location'] }.uniq
+      locations = holdings.reject { |_k, h| h['library'] == 'Online' }.map { |_k, h| h['location'] }.uniq
       locations.length > 1
     end
   end

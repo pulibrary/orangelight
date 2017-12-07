@@ -4,7 +4,7 @@ module OmniAuth
       include OmniAuth::Strategy
       include ActionView::Helpers::FormHelper
 
-      option :fields, [:last_name, :barcode]
+      option :fields, %i[last_name barcode]
       option :uid_field, :barcode
 
       uid do

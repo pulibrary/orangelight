@@ -67,8 +67,10 @@ class AccountController < ApplicationController
   protected
 
     def verify_user
-      flash[:error] = I18n.t('blacklight.saved_searches.need_login') &&
-                      raise(Blacklight::Exceptions::AccessDenied) unless current_user
+      unless current_user
+        flash[:error] = I18n.t('blacklight.saved_searches.need_login') &&
+                        raise(Blacklight::Exceptions::AccessDenied)
+      end
     end
 
     def cas_user

@@ -101,7 +101,7 @@ class VoyagerAccount
         elsif child.name == 'blocks'
           node_data[:item_blocks] = node_data(child)
         else
-          node_data[child.name] = child.text unless child.blank?
+          node_data[child.name] = child.text if child.present?
         end
       end
       node_data

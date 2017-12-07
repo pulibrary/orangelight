@@ -68,6 +68,7 @@ RSpec.describe ApplicationHelper do
         ]
       }
     }
+
     it 'returns true when all items are marked for supervised use' do
       expect(all_supervised).to be true
     end

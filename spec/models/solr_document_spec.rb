@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe SolrDocument do
   subject { described_class.new(properties) }
+
   let(:properties) { {} }
 
   describe '#identifiers' do
@@ -14,9 +15,10 @@ RSpec.describe SolrDocument do
       let(:properties) do
         {
           'isbn_s' => ['9781400827824'],
-          'oclc_s' => %w(19590730 301985443)
+          'oclc_s' => %w[19590730 301985443]
         }
       end
+
       it 'has an identifier object each' do
         expect(subject.identifiers.length).to eq 3
       end
@@ -29,7 +31,7 @@ RSpec.describe SolrDocument do
         {
           'lccn_s' => ['2001522653'],
           'isbn_s' => ['9781400827824'],
-          'oclc_s' => %w(19590730 301985443)
+          'oclc_s' => %w[19590730 301985443]
         }
       end
       it 'returns a hash of identifiers for data embeds, excludes lccn' do
@@ -37,9 +39,10 @@ RSpec.describe SolrDocument do
           isbn: [
             '9781400827824'
           ],
-          oclc: %w(
+          oclc: %w[
             19590730
-            301985443)
+            301985443
+          ]
         )
       end
     end
@@ -120,7 +123,7 @@ RSpec.describe SolrDocument do
           'id' => '1213313',
           'lccn_s' => ['2001522653'],
           'isbn_s' => ['9781400827824'],
-          'oclc_s' => %w(19590730 301985443)
+          'oclc_s' => %w[19590730 301985443]
         }
       end
 
@@ -180,6 +183,7 @@ RSpec.describe SolrDocument do
           'electronic_access_1display' => { 'test' => 'one' }.to_json
         }
       end
+
       it 'returns nil' do
         expect(subject.ark).to be_nil
       end
@@ -190,6 +194,7 @@ RSpec.describe SolrDocument do
           'electronic_access_1display' => { 'http://arks.princeton.edu/ark:/88435/fj236339x' => 'one' }.to_json
         }
       end
+
       it 'returns the ark' do
         expect(subject.ark).to eq 'ark:/88435/fj236339x'
       end
@@ -200,6 +205,7 @@ RSpec.describe SolrDocument do
           'electronic_access_1display' => { 'one' => 'two', 'http://arks.princeton.edu/ark:/88435/fj236339x' => 'one' }.to_json
         }
       end
+
       it 'returns the ark' do
         expect(subject.ark).to eq 'ark:/88435/fj236339x'
       end

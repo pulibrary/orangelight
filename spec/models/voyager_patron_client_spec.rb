@@ -9,6 +9,7 @@ RSpec.describe VoyagerPatronClient do
                       'last_name' => 'smith',
                       'patron_id' => '777777' }
     subject { described_class.new(sample_patron) }
+
     let(:voyager_xml_namespace) { 'http://www.endinfosys.com/Voyager/myAccount' }
     let(:voyager_authenticate_response) { fixture('/authenticate_patron_response_success.xml') }
     let(:voyager_dbkey_response) { fixture('/voyager_db_info_response.xml') }
@@ -18,14 +19,14 @@ RSpec.describe VoyagerPatronClient do
     let(:voyager_successful_renew_request) { fixture('/successful_voyager_renew_response.xml') }
     let(:voyager_failed_renew_request) { fixture('/failed_renew_request_recall.xml') }
     let(:items_to_cancel) { ['item-1722964:holdrecall-602673:type-R'] }
-    let(:renew_item_list) { %w(6526437 91173) }
+    let(:renew_item_list) { %w[6526437 91173] }
     let(:valid_patron_record_uri) { "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronHomeUbId=1@DB&patronId=#{sample_patron['patron_id']}" }
     let(:valid_db_key_uri) { "#{ENV['voyager_api_base']}/vxws/dbInfo?option=dbinfo" }
     let(:valid_authenticate_uri) { "#{ENV['voyager_api_base']}/vxws/AuthenticatePatronService" }
     let(:valid_cancel_request_uri) { "#{ENV['voyager_api_base']}/vxws/CancelService" }
     let(:valid_renew_request_uri) { "#{ENV['voyager_api_base']}/vxws/RenewService" }
 
-    before(:each) do
+    before do
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: voyager_account_response, headers: {})
 
@@ -47,13 +48,13 @@ RSpec.describe VoyagerPatronClient do
 
     describe '#myaccount' do
       it 'Returns a successful http response' do
-        expect(subject.myaccount.is_a?(Faraday::Response)).to be_truthy
+        expect(subject.myaccount).to be_a(Faraday::Response)
         expect(subject.myaccount.status).to eq(200)
       end
 
       it 'Returns a well-formed XML Document' do
-        expect(subject.myaccount.body.is_a?(String)).to be_truthy
-        expect(Nokogiri::XML(subject.myaccount.body).is_a?(Nokogiri::XML::Document)).to be_truthy
+        expect(subject.myaccount.body).to be_a(String)
+        expect(Nokogiri::XML(subject.myaccount.body)).to be_a(Nokogiri::XML::Document)
       end
 
       context 'Connectivity Error' do
@@ -66,13 +67,13 @@ RSpec.describe VoyagerPatronClient do
 
     describe '#authenticate' do
       it 'Returns a valid HTTP response with XML data' do
-        expect(subject.authenticate.is_a?(Faraday::Response)).to be_truthy
+        expect(subject.authenticate).to be_a(Faraday::Response)
         expect(subject.authenticate.status).to eq(200)
       end
 
       it 'Returns a well-formed XML Document' do
-        expect(subject.authenticate.body.is_a?(String)).to be_truthy
-        expect(Nokogiri::XML(subject.authenticate.body).is_a?(Nokogiri::XML::Document)).to be_truthy
+        expect(subject.authenticate.body).to be_a(String)
+        expect(Nokogiri::XML(subject.authenticate.body)).to be_a(Nokogiri::XML::Document)
       end
 
       context 'Connectivity Error' do
@@ -98,7 +99,7 @@ RSpec.describe VoyagerPatronClient do
 
     describe '#cancel_active_requests' do
       it 'Returns a Voyager Account Object when successful' do
-        expect(subject.cancel_active_requests(items_to_cancel).is_a?(VoyagerAccount)).to be_truthy
+        expect(subject.cancel_active_requests(items_to_cancel)).to be_a(VoyagerAccount)
       end
 
       it 'A successfully cancel request response does not include the item request requested to be cancelled' do
@@ -123,8 +124,8 @@ RSpec.describe VoyagerPatronClient do
 
     describe '#cancel_xml_string' do
       it 'is a string of well-formed XML' do
-        expect(subject.cancel_xml_string(items_to_cancel, subject.dbkey).is_a?(String)).to be_truthy
-        expect(Nokogiri::XML(subject.cancel_xml_string(items_to_cancel, subject.dbkey)).is_a?(Nokogiri::XML::Document)).to be_truthy
+        expect(subject.cancel_xml_string(items_to_cancel, subject.dbkey)).to be_a(String)
+        expect(Nokogiri::XML(subject.cancel_xml_string(items_to_cancel, subject.dbkey))).to be_a(Nokogiri::XML::Document)
       end
 
       it 'Contains the item id, hold id, and recall id' do
@@ -138,7 +139,7 @@ RSpec.describe VoyagerPatronClient do
 
     describe '#renewal_request' do
       it 'Returns a Voyager Account Object when successful' do
-        expect(subject.renewal_request(renew_item_list).is_a?(VoyagerAccount)).to be_truthy
+        expect(subject.renewal_request(renew_item_list)).to be_a(VoyagerAccount)
       end
 
       it 'A successfully renewed item has a positive renew status' do
@@ -177,8 +178,8 @@ RSpec.describe VoyagerPatronClient do
 
     describe '#renew_xml_string' do
       it 'is a string of well-formed XML' do
-        expect(subject.renew_xml_string(renew_item_list).is_a?(String)).to be_truthy
-        expect(Nokogiri::XML(subject.renew_xml_string(renew_item_list)).is_a?(Nokogiri::XML::Document)).to be_truthy
+        expect(subject.renew_xml_string(renew_item_list)).to be_a(String)
+        expect(Nokogiri::XML(subject.renew_xml_string(renew_item_list))).to be_a(Nokogiri::XML::Document)
       end
 
       it 'contains the item id of the item to be renewed' do

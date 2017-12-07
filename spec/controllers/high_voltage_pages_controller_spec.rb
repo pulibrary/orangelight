@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe HighVoltage::PagesController, type: :controller do
-  %w(help about).each do |page|
+  %w[help about].each do |page|
     context "on GET to /#{page}" do
       before do
         get :show, params: { id: page }
@@ -9,7 +9,7 @@ describe HighVoltage::PagesController, type: :controller do
       it 'succeeds' do
         expect(response).to have_http_status(200)
       end
-      it { should render_template(page) }
+      it { is_expected.to render_template(page) }
     end
   end
 end

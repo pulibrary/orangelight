@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   # include Blacklight::Folders::User
   validates :username, presence: true
   validates :uid, length: { is: 14 }, format: { with: /\A([\d]{14})\z/ },

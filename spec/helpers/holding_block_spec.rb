@@ -159,6 +159,7 @@ RSpec.describe ApplicationHelper do
         electronic_access_url => ['I am a label']
       }.to_json
     end
+
     context 'search results when there are more than two call numbers' do
       it 'displays View Record for Availability' do
         expect(search_result).to include 'View Record for Full Availability'

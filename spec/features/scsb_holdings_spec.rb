@@ -21,7 +21,7 @@ describe 'SCSB Shared Collection Records' do
     end
   end
   context 'Record with no use restrictions' do
-    before(:each) do
+    before do
       visit '/catalog/SCSB-2443272'
     end
     it 'displays a request button' do
@@ -34,7 +34,7 @@ describe 'SCSB Shared Collection Records' do
   end
 
   context 'Record with Supervised Use Restrictions' do
-    before(:each) do
+    before do
       visit '/catalog/SCSB-6593031'
     end
     it 'displays use restrictions' do
@@ -51,7 +51,7 @@ describe 'SCSB Shared Collection Records' do
   end
 
   context 'Record with In Library Use Restriction' do
-    before(:each) do
+    before do
       visit '/catalog/SCSB-2143785'
     end
     it 'displays the restriction' do
@@ -63,7 +63,7 @@ describe 'SCSB Shared Collection Records' do
     end
   end
   context 'Record with In Library Use and Supervised Use Restrictions' do
-    before(:each) do
+    before do
       visit '/catalog/SCSB-7846265'
     end
     it 'displays a Request Button' do
