@@ -24,6 +24,7 @@ set :branch, ENV['BRANCH'] || 'master'
 server 'lib-orange-prod2', user: 'deploy', roles: [:web, :app, :db]
 server 'lib-orange-prod3', user: 'deploy', roles: [:web, :app, :db]
 server 'lib-orange-prod4', user: 'deploy', roles: [:web, :app, :db]
+server 'lib-orange-prod6', user: 'deploy', roles: [:web, :app, :db]
 
 set :deploy_to, '/opt/rails_app'
 
