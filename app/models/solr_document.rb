@@ -92,6 +92,25 @@ class SolrDocument
     iiif_manifest_uris.first
   end
 
+  # Retrieve the set of documents linked to this Object using a Solr Field
+  # @param field [String] the field for this Object which contains the foreign document keys
+  # @param query_field [String] the field in the linked documents to use as a key
+  # @return [LinkedDocumentResolver::LinkedDocuments]
+  def linked_records(field:, query_field: 'id')
+    sibling_ids = Array.wrap(fetch(field, []))
+    root_id = fetch(:id)
+    linked_documents = LinkedDocumentResolver::LinkedDocuments.new(siblings: sibling_ids,
+                                                                   root: root_id,
+                                                                   solr_field: query_field)
+
+    if linked_documents.empty?
+      Rails.logger.warn\
+        "No linked documents found for #{id} using #{query_field}: #{sibling_ids.join(' ')}"
+    end
+
+    linked_documents.decorated(display_fields: %w[id])
+  end
+
   private
 
     def electronic_access_uris

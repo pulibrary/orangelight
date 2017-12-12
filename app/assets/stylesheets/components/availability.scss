@@ -3,7 +3,8 @@
 @import "variables/typography";
 
 .availability-column,
-.holding-block {
+.holding-block,
+.linked-block {
   .availability-icon,
   .more-info {
     display: inline-block;
@@ -41,7 +42,7 @@
   display: none;
 }
 
-.availability--panel_umlaut, .location--panel .panel {
+.availability--panel_umlaut, .location--panel .panel, .location--linked .panel {
   background: white;
   margin: 0 0 1.5em;
   border-radius: 0;
@@ -62,7 +63,7 @@
     margin-top: .9em;
   }
 
-  .holding-block {
+  .holding-block, .linked-block {
     padding: 1.5em 1em;
     border-bottom: 1px solid #eee;
     display: block;
@@ -72,6 +73,10 @@
       line-height: 1.2em;
       font-size: 0.8rem;
     }
+  }
+
+  .linked-block {
+    padding: 0;
   }
 
   .section_heading h3 {
@@ -183,7 +188,7 @@
   font-size: 0.9em;
 }
 
-.holding-block {
+.holding-block, .linked-block {
   .status,
   .location-has,
   .journal-current-issues {

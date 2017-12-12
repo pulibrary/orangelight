@@ -6,7 +6,7 @@ class HoldingRequestsAdapter
 
   # Construct the interface for the Solr Document and Bib. Data API
   # @param document [SolrDocument]
-  # @param bib_data_service [Bibdata]
+  # @param bib_data_service [Class] Class or singleton used for the bibliographic data service
   def initialize(document, bib_data_service)
     @document = document
     @bib_data_service = bib_data_service
@@ -27,12 +27,9 @@ class HoldingRequestsAdapter
   def doc_holdings
     values = @document['holdings_1display'] || '{}'
     JSON.parse(values)
-  end
-
-  # Retrieve the holdings information as a Hash
-  # Deprecated?
-  def doc_holdings_json
-    JSON.parse(doc_holdings)
+  rescue StandardError => error
+    Rails.logger.warn error
+    {}
   end
 
   # Retrieve the electronic access information
@@ -66,6 +63,7 @@ class HoldingRequestsAdapter
   def doc_holdings_physical
     doc_holdings.reject { |_id, h| h['location_code'].start_with?('elf') }
   end
+  alias physical_holdings doc_holdings_physical
 
   # Retrieve the physical holdings records sorted by location code
   # @return [Hash] sorted physical holding information
@@ -73,6 +71,20 @@ class HoldingRequestsAdapter
     doc_holdings_physical.sort_by do |_id, h|
       @bib_data_service.holding_locations.keys.index(h['location_code'])
     end
+  end
+
+  # Retrieve the rules from the bib. data service for each holding
+  # @return [Array<Hash>] the location rules
+  def rules
+    doc_holdings_physical.each_value
+                         .map { |holding| holding_location_rules(holding) }
+                         .reject(&:nil?)
+  end
+
+  # Retrieve the restrictions placed upon physical holdings
+  # @return [Array<String>]
+  def restrictions
+    doc_holdings_physical.each_value.map { |holding| restrictions_for_holding(holding) }
   end
 
   # Determine whether or not the catalog record is for a periodical
@@ -139,6 +151,14 @@ class HoldingRequestsAdapter
   # @return [TrueClass, FalseClass]
   def empty_holding?(holding)
     holding['items'].nil?
+  end
+
+  # Retrieve the restrictions for a given holding
+  # Duplicates PhysicalHoldingsMarkupBuilder.scsb_list
+  # @param holding [Hash]
+  def restrictions_for_holding(holding)
+    return [] unless holding.key? 'items'
+    holding['items'].select { |values| values['use_statement'].present? }
   end
 
   # Determine whether or not the holding is explicitly marked as "Unavailable"

@@ -45,7 +45,7 @@ describe 'SCSB Shared Collection Records' do
       visit '/catalog/SCSB-6593031'
     end
     it 'displays use restrictions' do
-      expect(page).to have_content 'Use Restrictions:'
+      expect(page).to have_content 'Restrictions'
       expect(page).to have_content 'Supervised Use'
     end
     it 'displays a Reading Room Request' do
@@ -62,7 +62,7 @@ describe 'SCSB Shared Collection Records' do
       visit '/catalog/SCSB-2143785'
     end
     it 'displays the restriction' do
-      expect(page).to have_content 'Use Restrictions:'
+      expect(page).to have_content 'Restrictions'
       expect(page).to have_content 'In Library Use'
     end
     it 'displays a request button' do

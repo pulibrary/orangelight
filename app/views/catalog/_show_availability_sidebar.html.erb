@@ -14,20 +14,12 @@
   <%= umlaut_services_fulltext(document) %>
 <% end %>
 
-<% linked_records = linked_records(document['other_version_s'], document[:id], 'other_version_s') if document['other_version_s'] %>
-<% unless linked_records.nil? || linked_records.empty? %>
+<% document_linked_records = document.linked_records(field: 'other_version_s', query_field: 'other_version_s') %>
+<% unless document_linked_records.empty? %>
   <div class="location--panel location--linked">
     <div class="panel panel-default">
       <div class="panel-heading"><%= t('blacklight.holdings.linked') %></div>
-      <div class="panel-body">
-        <% linked_records.each do |records| %>
-          <ul>
-            <% records.each do |link| %>
-              <li><%= link %></li>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
+      <%= render 'show_linked_records', linked_records: document_linked_records %>
     </div>
   </div>
 <% end %>
@@ -38,6 +30,21 @@
       <div class="panel-heading"><%= t('blacklight.holdings.print') %></div>
       <div class="panel-body">
         <%= physical %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% unless holding_requests_adapter.sorted_physical_holdings.empty? %>
+  <div class="restrictions--panel">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= 'Restrictions' %></div>
+      <div class="panel-body">
+        <% holding_requests_adapter.sorted_physical_holdings.each do |_id, holding| %>
+          <% if holding_requests_adapter.scsb_holding?(holding) && !holding_requests_adapter.empty_holding?(holding) %>
+            <%= PhysicalHoldingsMarkupBuilder.scsb_list(holding) %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

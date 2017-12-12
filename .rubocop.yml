@@ -17,6 +17,7 @@ AllCops:
     - 'script/**/*'
     - 'vendor/**/*'
     - 'bin/*'
+    - 'node_modules/**/*'
     - 'config/deploy.rb'
     - 'config/initializers/blacklight_url_helper_behavior.rb'
     - 'spec/views/catalog/_show_availability_sidebar.html.erb_spec.rb'
@@ -59,6 +60,7 @@ Metrics/ClassLength:
   - 'app/services/holding_requests_builder.rb'
   - 'app/services/physical_holdings_markup_builder.rb'
   - 'app/services/online_holdings_markup_builder.rb'
+  - 'app/services/holding_requests_adapter.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:

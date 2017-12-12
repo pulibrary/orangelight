@@ -166,35 +166,17 @@ module BlacklightHelper
     link_to(child.html_safe, path, id: 'citeLink', data: { ajax_modal: 'trigger' }, class: 'btn btn-default')
   end
 
-  # solr fq field is field parameter provided unless id_nums value starts with BIB
-  def linked_records(id_nums, bib_id, field)
-    fq = ''
-    id_nums.each do |n|
-      bib_match = /(?:^BIB)(.*)/.match(n)
-      solr_field = bib_match ? 'id' : field
-      n = bib_match[1] if bib_match
-      fq += "#{solr_field}:#{n} OR "
-    end
-    fq.chomp!(' OR ')
-    resp = get_fq_solr_response(fq)
-    req = JSON.parse(resp.body)
-    other_versions = []
-    if req.dig('response', 'docs')
-      req['response']['docs'].each do |record|
-        unless record['id'] == bib_id
-          title = record['title_display']
-          other_versions << link_to(title, solr_document_url(record['id']))
-        end
-      end
-    end
-    other_versions.empty? ? [] : [other_versions]
+  # Retrieve an instance of the FacetedQueryService
+  # @return [FacetedQueryService] an instance of the service object
+  def faceted_query_service
+    @faceted_query_service ||= FacetedQueryService.new(Blacklight)
   end
 
   def oclc_resolve(oclc)
     oclc_norm = StringFunctions.oclc_normalize(oclc)
     unless oclc_norm.nil?
       fq = "oclc_s:#{oclc_norm}"
-      resp = get_fq_solr_response(fq)
+      resp = faceted_query_service.get_fq_solr_response(fq)
       req = JSON.parse(resp.body)
     end
     if oclc_norm == 0 || req['response']['docs'].empty?
@@ -208,7 +190,7 @@ module BlacklightHelper
     isbn_norm = StdNum::ISBN.normalize(isbn)
     unless isbn_norm.nil?
       fq = "isbn_s:#{isbn_norm}"
-      resp = get_fq_solr_response(fq)
+      resp = faceted_query_service.get_fq_solr_response(fq)
       req = JSON.parse(resp.body)
     end
     if isbn_norm.nil? || req['response']['docs'].empty?
@@ -222,7 +204,7 @@ module BlacklightHelper
     issn_norm = StdNum::ISSN.normalize(issn)
     unless issn_norm.nil?
       fq = "issn_s:#{issn_norm}"
-      resp = get_fq_solr_response(fq)
+      resp = faceted_query_service.get_fq_solr_response(fq)
       req = JSON.parse(resp.body)
     end
     if issn_norm.nil? || req['response']['docs'].empty?
@@ -236,7 +218,7 @@ module BlacklightHelper
     lccn_norm = StdNum::LCCN.normalize(lccn)
     unless lccn_norm.nil?
       fq = "lccn_s:#{lccn_norm}"
-      resp = get_fq_solr_response(fq)
+      resp = faceted_query_service.get_fq_solr_response(fq)
       req = JSON.parse(resp.body)
     end
     if lccn_norm.nil? || req['response']['docs'].empty?
@@ -260,20 +242,5 @@ module BlacklightHelper
     # @return [Boolean]
     def search_parameters?
       blacklight_params[:q].present? || blacklight_params[:f].present? || blacklight_params[:search_field].present?
-    end
-
-    def get_fq_solr_response(fq)
-      solr_url = Blacklight.connection_config[:url]
-      conn = Faraday.new(url: solr_url) do |faraday|
-        faraday.request  :url_encoded             # form-encode POST params
-        faraday.response :logger                  # log requests to STDOUT
-        faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
-      end
-      facet_request = "#{core_url}select?fq=#{fq}&fl=id,title_display,author_display&wt=json"
-      conn.get facet_request
-    end
-
-    def core_url
-      Blacklight.default_index.connection.uri.to_s.gsub(%r{^.*\/solr}, '/solr')
     end
 end

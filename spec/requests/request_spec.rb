@@ -6,6 +6,10 @@ require 'faraday'
 describe 'blacklight tests' do
   include ApplicationHelper
 
+  before do
+    stub_holding_locations
+  end
+
   describe 'ICU folding keyword search' do
     it 'finds an Arabic entry from a Romanized search term' do
       get '/catalog.json?&search_field=all_fields&q=dawwani'

@@ -174,6 +174,9 @@ module ApplicationHelper
     resolved_location ? resolved_location : {}
   end
 
+  # Generate the markup block for individual search result items containing holding information
+  # @param document [SolrDocument] the Solr Document retrieved in the search result set
+  # @return [String] the markup
   def holding_block_search(document)
     block = ''
     links = search_links(document['electronic_access_1display'])
@@ -385,4 +388,10 @@ module ApplicationHelper
     args[:document][args[:field]].uniq
   end
   alias recap_note scsb_note
+
+  # Construct an adapter for Solr Documents and the bib. data service
+  # @return [HoldingRequestsAdapter]
+  def holding_requests_adapter
+    HoldingRequestsAdapter.new(@document, Bibdata)
+  end
 end
