@@ -7,11 +7,11 @@ describe BlacklightHelper do
     allow(self).to receive(:blacklight_params).and_return(blacklight_params)
   end
 
-  describe '#left_anchor_strip' do
-    it 'strips white spaces before sending :q to solr' do
-      query = { q: '{!qf=$left_anchor_qf pf=$left_anchor_pf}searching for' }
-      left_anchor_strip(query)
-      expect(query[:q]).to eq '{!qf=$left_anchor_qf pf=$left_anchor_pf}searchingfor'
+  describe '#left_anchor_escape_whitespace' do
+    it 'escapes white spaces before sending :q to solr' do
+      query = { q: '{!qf=$left_anchor_qf pf=$left_anchor_pf}searching for a test value' }
+      left_anchor_escape_whitespace(query)
+      expect(query[:q]).to eq '{!qf=$left_anchor_qf pf=$left_anchor_pf}searching\ for\ a\ test\ value'
     end
   end
 
