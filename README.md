@@ -49,6 +49,11 @@ cap staging deploy # deploys master branch to staging
 
 Testing
 ------------------
+### Testing prerequisite
+```bash
+brew install phantomjs
+```
+
 ### Database Configuration
 ```bash
 rake db:create RAILS_ENV=test
