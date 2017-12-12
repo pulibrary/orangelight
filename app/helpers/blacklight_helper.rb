@@ -221,6 +221,13 @@ module BlacklightHelper
     end
   end
 
+  # pulls some logic from blacklight's `link_to_document` helper
+  # then adds truncation of link text
+  def truncated_link(doc, field, opts = { counter: nil }, length = 200)
+    label = index_presenter(doc).label(field, opts).truncate(length).html_safe
+    link_to label, url_for_document(doc), document_link_params(doc, opts)
+  end
+
   private
 
     ##

@@ -19,9 +19,9 @@
         <% altdir = titlealt.dir %>
         <% if titlealt.length != 0 %>
           <% if altdir == "rtl" %>
-            <%= link_to_document document, titlealt, :counter => counter, :dir => altdir, :style => "float: right;" %>
+            <%= truncated_link document, titlealt, :counter => counter, :dir => altdir, :style => "float: right;" %>
           <% else %>
-            <%= link_to_document document, titlealt, :counter => counter, :dir => altdir %>
+            <%= truncated_link document, titlealt, :counter => counter, :dir => altdir %>
           <% end %>
           </h3>
 
@@ -29,7 +29,7 @@
 
         <% end %>
 
-        <%= link_to_document document, document_show_link_field(document), :counter => counter %>
+        <%= truncated_link document, document_show_link_field(document), :counter => counter %>
         </h3>
       </div>
 

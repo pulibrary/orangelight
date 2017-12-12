@@ -54,4 +54,31 @@ describe BlacklightHelper do
       expect(query[:q]).to eq '{!qf=$left_anchor_qf pf=$left_anchor_pf}China and Angola: a marriage of convenience'
     end
   end
+
+  describe '#truncated_link' do
+    let(:blacklight_config) do
+      CatalogController.new.blacklight_config
+    end
+
+    let(:document) do
+      SolrDocument.new(
+        'id' => '1',
+        'title_display' => 'Catalogue of a collection of angling books : consisting of 788 volumes on the sport : a set (18 vols.) of the works of Charles Cotton : an ichtyological library (109 vols.) : and a "Waltonian Library" on assemblage of the books (38 vols.) cited by Walton in his "Compleat Angler" : manuscript, 1869.'
+      )
+    end
+
+    let(:truncated) do
+      '<a data-context-href="/catalog/1/track?counter=1&amp;search_id=5" href="/catalog/1">Catalogue of a collection of angling books : consisting of 788 volumes on the sport : a set (18 vols.) of the works of Charles Cotton : an ichtyological library (109 vols.) : and a &quot;Waltonian ...</a>'
+    end
+
+    before do
+      allow(view).to receive(:blacklight_config).and_return(blacklight_config)
+      allow(helper).to receive(:document_link_params).and_return(data: { :"context-href" => '/catalog/1/track?counter=1&search_id=5' })
+      allow(helper).to receive(:url_for_document).and_return(document)
+    end
+
+    it 'truncates the content of a field before linking it' do
+      expect(helper.truncated_link(document, helper.document_show_link_field(document))).to eq truncated
+    end
+  end
 end
