@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 7d3a8a22bdc6f468b6c5c049bb387edebd0b3076
+  revision: 5b5a6227ff76f85d9b36ee878fdf8239b09c57a2
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)
@@ -102,7 +102,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     ast (2.3.0)
-    autoprefixer-rails (7.1.6)
+    autoprefixer-rails (7.2.2)
       execjs
     bcrypt (3.1.11)
     blacklight-marc (6.2.0)
