@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Request Options' do
   describe 'Available status non-requestable location', js: true do
-    before(:each) do
+    before do
       visit '/catalog/9222024'
     end
 
@@ -14,50 +14,50 @@ describe 'Request Options' do
   end
 
   describe 'Unavailable status non-requestable location', js: true do
-    before(:each) do
+    before do
       visit '/catalog/6890057'
     end
 
     it 'does display a request button', unless: in_travis? do
       sleep 5.seconds
       expect(page.all('.location--holding').length).to eq 1
-      expect(page.find_link('Request').visible?).to be_truthy
+      expect(page.find_link('Request')).to be_visible
     end
   end
 
   describe 'In process status non-requestable location', js: true do
-    before(:each) do
+    before do
       visit '/catalog/9618072'
     end
 
     it 'does display a request button', unless: in_travis? do
       sleep 5.seconds
       expect(page.all('.location--holding').length).to eq 1
-      expect(page.find_link('Request').visible?).to be_truthy
+      expect(page.find_link('Request')).to be_visible
     end
   end
 
   describe 'Available status requestable location', js: true do
-    before(:each) do
+    before do
       visit '/catalog/9031545'
     end
 
     it 'does display a request button', unless: in_travis? do
       sleep 5.seconds
       expect(page.all('.location--holding').length).to eq 1
-      expect(page.find_link('Request').visible?).to be_truthy
+      expect(page.find_link('Request')).to be_visible
     end
   end
 
   describe 'Multi-item holding with some requestable items', js: true do
-    before(:each) do
+    before do
       visit '/catalog/6045464'
     end
 
     it 'does display a request button', unless: in_travis? do
       sleep 10.seconds
       expect(page.all('.location--holding').length).to eq 1
-      expect(page.find_link('Request').visible?).to be_truthy
+      expect(page.find_link('Request')).to be_visible
     end
   end
   # This should address borrow direct. evenutally
@@ -77,19 +77,19 @@ describe 'Request Options' do
   # end
 
   describe 'Aeon location', js: true do
-    before(:each) do
+    before do
       visit '/catalog/7916044'
     end
 
     it 'displays an aeon request button', unless: in_travis? do
       sleep 5.seconds
       expect(page.all('.location--holding').length).to eq 1
-      expect(page.find_link('Reading Room Request').visible?).to be_truthy
+      expect(page.find_link('Reading Room Request')).to be_visible
     end
   end
 
   describe 'An In-transit discharged item', js: true do
-    before(:each) do
+    before do
       visit '/catalog/9741216'
     end
 

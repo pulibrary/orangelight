@@ -19,7 +19,7 @@ module FacetsHelper
     value = facet_value_for_facet_item(item)
 
     pivot_in_params = true if params[:f] && params[:f][field] && params[:f][field].include?(value)
-    unless item.items.blank?
+    if item.items.present?
       item.items.each { |pivot_item| pivot_in_params = true if pivot_facet_child_in_params?(pivot_item.field, pivot_item) }
     end
     pivot_in_params

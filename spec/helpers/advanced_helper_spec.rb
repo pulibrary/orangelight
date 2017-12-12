@@ -10,16 +10,18 @@ RSpec.describe AdvancedHelper do
 
   describe '#location_codes_by_lib' do
     let(:subject) { location_codes_by_lib(location_items) }
+
     it 'includes library name as key' do
       expect(subject.key?('Architecture Library')).to be true
     end
     describe 'architecture library' do
       let(:architecture_hash) { subject['Architecture Library'] }
+
       it 'includes holding location code facet items' do
         expect(architecture_hash['codes']).to match_array([ues, uesla, uesrf])
       end
       it 'includes recap location code facet items' do
-        expect(architecture_hash['recap_codes'].include?(rcppw)).to be_truthy
+        expect(architecture_hash['recap_codes']).to include(rcppw)
       end
       it 'includes library facet item' do
         expect(architecture_hash['item']).to eq(architecture)

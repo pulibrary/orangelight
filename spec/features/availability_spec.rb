@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Availability' do
   describe 'Physical Holdings are displayed on a record page', js: true do
-    before(:each) do
+    before do
       visit '/catalog/3256177'
     end
 

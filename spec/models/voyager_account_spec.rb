@@ -33,21 +33,21 @@ RSpec.describe VoyagerAccount do
 
   describe '#has_blocks?' do
     it 'returns true when an account has active blocks' do
-      expect(subject_with_lost_fines.has_blocks?).to be_truthy
+      expect(subject_with_lost_fines).to have_blocks
     end
 
     it 'returns false when an account does not have active blocks' do
-      expect(subject_empty_account.has_blocks?).to be_falsey
+      expect(subject_empty_account).not_to have_blocks
     end
   end
 
   describe '#failed_renewals?' do
     it 'returns true when an account has failed renewal attempts' do
-      expect(subject_failed_renewal_charged_items.failed_renewals?).to be_truthy
+      expect(subject_failed_renewal_charged_items).to be_failed_renewals
     end
 
     it 'returns false when an account does not have have failed renewal attempts' do
-      expect(subject_successful_renewal.failed_renewals?).to be_falsey
+      expect(subject_successful_renewal).not_to be_failed_renewals
     end
   end
 

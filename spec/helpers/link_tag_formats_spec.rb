@@ -9,6 +9,7 @@ RSpec.describe ApplicationHelper do
           'holdings_1display' => %({"9092827":{"location":"Firestone Library","library":"Firestone Library","location_code":"f","call_number":"PS3566.I428 A6 2015","call_number_browse":"PS3566.I428 A6 2015"}})
         }.with_indifferent_access
       end
+
       it 'does not exclude marc derived export formats' do
         expect(formats_to_exclude(document).length).to eq(0)
       end
@@ -23,8 +24,9 @@ RSpec.describe ApplicationHelper do
         }.with_indifferent_access
       end
       let(:exclude_formats) do
-        [:marc, :marcxml, :refworks_marc_txt, :endnote, :openurl_ctx_kev]
+        %i[marc marcxml refworks_marc_txt endnote openurl_ctx_kev]
       end
+
       it 'excludes marc derived export formats' do
         expect(formats_to_exclude(document).length).to eq(5)
         expect(formats_to_exclude(document)).to eq(exclude_formats)

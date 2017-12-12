@@ -6,6 +6,7 @@ RSpec.describe CourseReserveRepository do
       stub_all_query
     end
     subject { described_class.all }
+
     it 'returns a relation of all available course reserves' do
       expect(subject.to_a.length).to eq 2
     end

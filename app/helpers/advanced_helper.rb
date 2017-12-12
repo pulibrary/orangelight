@@ -7,7 +7,7 @@ module AdvancedHelper
   # search and advanced, will even fill in properly if existing
   # search used basic search on same field present in advanced.
   def label_tag_default_for(key)
-    if !params[key].blank?
+    if params[key].present?
       params[key]
     elsif params['search_field'] == key || guided_context(key)
       params['q']
@@ -95,7 +95,7 @@ module BlacklightAdvancedSearch
         @keyword_op << @params[:op2] if @params[:f1] != @params[:f2]
       end
       unless @params[:q3].blank? || @params[:op3] == 'NOT' || (@params[:q1].blank? && @params[:q2].blank?)
-        @keyword_op << @params[:op3] unless [@params[:f1], @params[:f2]].include?(@params[:f3]) && ((@params[:f1] == @params[:f3] && !@params[:q1].blank?) || (@params[:f2] == @params[:f3] && !@params[:q2].blank?))
+        @keyword_op << @params[:op3] unless [@params[:f1], @params[:f2]].include?(@params[:f3]) && ((@params[:f1] == @params[:f3] && @params[:q1].present?) || (@params[:f2] == @params[:f3] && @params[:q2].present?))
       end
       @keyword_op
     end
@@ -108,14 +108,14 @@ module BlacklightAdvancedSearch
 
         # spaces need to be stripped from the query because they don't get properly stripped in Solr
         ###### TO GET STARTS WITH TO WORK #######
-        q1 = %w(left_anchor in_series).include?(@params[:f1]) ? @params[:q1].delete(' ') : @params[:q1]
+        q1 = %w[left_anchor in_series].include?(@params[:f1]) ? @params[:q1].delete(' ') : @params[:q1]
         q2 = @params[:f2] == 'left_anchor' ? @params[:q2].delete(' ') : @params[:q2]
         q3 = @params[:f3] == 'left_anchor' ? @params[:q3].delete(' ') : @params[:q3]
         #########################################
 
         been_combined = false
-        @keyword_queries[@params[:f1]] = q1 unless @params[:q1].blank?
-        unless @params[:q2].blank?
+        @keyword_queries[@params[:f1]] = q1 if @params[:q1].present?
+        if @params[:q2].present?
           if @keyword_queries.key?(@params[:f2])
             @keyword_queries[@params[:f2]] = "(#{@keyword_queries[@params[:f2]]}) " + @params[:op2] + " (#{q2})"
             been_combined = true
@@ -125,7 +125,7 @@ module BlacklightAdvancedSearch
             @keyword_queries[@params[:f2]] = q2
           end
         end
-        unless @params[:q3].blank?
+        if @params[:q3].present?
           if @keyword_queries.key?(@params[:f3])
             @keyword_queries[@params[:f3]] = "(#{@keyword_queries[@params[:f3]]})" unless been_combined
             @keyword_queries[@params[:f3]] = "#{@keyword_queries[@params[:f3]]} " + @params[:op3] + " (#{q3})"
@@ -172,30 +172,30 @@ module BlacklightAdvancedSearch
   module RenderConstraintsOverride
     def guided_search(my_params = params)
       constraints = []
-      unless my_params[:q1].blank?
+      if my_params[:q1].present?
         label = search_field_def_for_key(my_params[:f1])[:label]
         query = my_params[:q1]
         constraints << render_constraint_element(
           label, query,
-          remove: search_catalog_path(remove_guided_keyword_query([:f1, :q1], my_params))
+          remove: search_catalog_path(remove_guided_keyword_query(%i[f1 q1], my_params))
         )
       end
-      unless my_params[:q2].blank?
+      if my_params[:q2].present?
         label = search_field_def_for_key(my_params[:f2])[:label]
         query = my_params[:q2]
         query = 'NOT ' + my_params[:q2] if my_params[:op2] == 'NOT'
         constraints << render_constraint_element(
           label, query,
-          remove: search_catalog_path(remove_guided_keyword_query([:f2, :q2, :op2], my_params))
+          remove: search_catalog_path(remove_guided_keyword_query(%i[f2 q2 op2], my_params))
         )
       end
-      unless my_params[:q3].blank?
+      if my_params[:q3].present?
         label = search_field_def_for_key(my_params[:f3])[:label]
         query = my_params[:q3]
         query = 'NOT ' + my_params[:q3] if my_params[:op3] == 'NOT'
         constraints << render_constraint_element(
           label, query,
-          remove: search_catalog_path(remove_guided_keyword_query([:f3, :q3, :op3], my_params))
+          remove: search_catalog_path(remove_guided_keyword_query(%i[f3 q3 op3], my_params))
         )
       end
       constraints

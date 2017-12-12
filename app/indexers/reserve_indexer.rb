@@ -26,7 +26,7 @@ class ReserveIndexer
   end
 
   def index!
-    documents = courses.map { |x| to_solr(x) }.select { |x| !Array(x[:bib_ids_s]).empty? }
+    documents = courses.map { |x| to_solr(x) }.reject { |x| Array(x[:bib_ids_s]).empty? }
     connection.add(documents, params: { softCommit: true })
   end
 

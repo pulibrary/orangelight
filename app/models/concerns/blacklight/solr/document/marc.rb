@@ -42,7 +42,7 @@ module Blacklight
         end
 
         def umlaut_full_text_formats
-          %w(book journal)
+          %w[book journal]
         end
 
         # does we have any standard numbers that can be used by other services
@@ -51,7 +51,7 @@ module Blacklight
         end
 
         def std_numbers
-          %w(lccn_s isbn_s issn_s oclc_s)
+          %w[lccn_s isbn_s issn_s oclc_s]
         end
 
         def export_as_openurl_ctx_kev(format = nil)
@@ -154,8 +154,9 @@ module Blacklight
           end
 
           def _marc_helper
-            @_marc_helper ||= (
-              Blacklight::Marc::Document.new fetch(_marc_source_field), _marc_format_type)
+            @_marc_helper ||= begin
+                                Blacklight::Marc::Document.new fetch(_marc_source_field), _marc_format_type
+                              end
           end
 
           def _marc_source_field

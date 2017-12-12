@@ -4,6 +4,7 @@ RSpec.describe CatalogController do
   describe '#email' do
     let(:email) { ActionMailer::Base.deliveries[0] }
     let(:user) { FactoryGirl.create(:user) }
+
     before do
       ActionMailer::Base.deliveries.clear
     end

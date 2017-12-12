@@ -4,6 +4,7 @@ describe Orangelight::BrowsablesHelper do
   let(:integer_bib) { '234267' }
   let(:non_integer_bib) { '?f[call_number_browse_s][]=PRIN 685 2015' }
   let(:scsb_bib) { 'SCSB-8096576' }
+
   describe '#should_check_availability?' do
     it 'returns true when bibid argument is an integer string' do
       expect(helper.should_check_availability?(integer_bib)).to eq(true)

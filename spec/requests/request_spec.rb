@@ -101,14 +101,14 @@ describe 'blacklight tests' do
     end
   end
 
-  SEPARATOR = "—".freeze
+  SEPARATOR = '—'.freeze
   describe 'subjectify check' do
     it 'provides links to facet search based on hierarchy' do
       get '/catalog/6139836.json'
       r = JSON.parse(response.body)
       sub_component = []
       fullsubject = r['response']['document']['subject_display']
-      fullsubject.each_with_index do |subject|
+      fullsubject.each do |subject|
         sub_component << subject.split(SEPARATOR)
       end
       get '/catalog/6139836'
@@ -189,8 +189,7 @@ describe 'blacklight tests' do
                                     'AND&amp;q2=searching+for&amp;q3=searching+for&amp;'\
                                     'search_field=advanced"><span class="glyphicon '\
                                     'glyphicon-remove"></span><span class="sr-only">Remove '\
-                                    'constraint Title starts with: searching for1</span></a>')
-            ).to eq true
+                                    'constraint Title starts with: searching for1</span></a>')).to eq true
       get '/catalog.json?&search_field=advanced&f1=left_anchor&q1=searching+for1&op2=AND&f2='\
           'left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for'
       r = JSON.parse(response.body)
@@ -202,8 +201,7 @@ describe 'blacklight tests' do
                                     'AND&amp;q2=searching+for&amp;q3=searching+for&amp;'\
                                     'search_field=advanced"><span class="glyphicon '\
                                     'glyphicon-remove"></span><span class="sr-only">'\
-                                    'Remove constraint Starts with: searching for1</span></a>')
-            ).to eq false
+                                    'Remove constraint Starts with: searching for1</span></a>')).to eq false
       get '/catalog.json?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=advanced'
       r = JSON.parse(response.body)
       expect(r['response']['docs'].any? { |d| d['id'] == '6574987' }).to eq true
@@ -222,7 +220,7 @@ describe 'blacklight tests' do
       get '/catalog.json?f1=left_anchor&q1=Reconstructing+the&op2=OR&f2=left_anchor&q2='\
           'This+angel+on&op3=OR&f3=left_anchor&q3=Almost+Human&search_field=advanced&commit=Search'
       r = JSON.parse(response.body)
-      doc_ids = %w(9222024 dsp01ft848s955 dsp017s75dc44p)
+      doc_ids = %w[9222024 dsp01ft848s955 dsp017s75dc44p]
       expect(r['response']['docs'].all? { |d| doc_ids.include?(d['id']) }).to eq true
     end
   end

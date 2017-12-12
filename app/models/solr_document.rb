@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+
 class SolrDocument
   # include Blacklight::Folders::SolrDocument
   include Blacklight::Solr::Document
@@ -69,8 +69,9 @@ class SolrDocument
     end
 
     def identifier_keys
-      %w(
+      %w[
         isbn_s
-        oclc_s)
+        oclc_s
+      ]
     end
 end

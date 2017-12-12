@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Tools links' do
   context 'With MARC-based records' do
-    before(:each) do
+    before do
       visit  '/catalog?search_field=all_fields&q='
       within '.documents-list' do
         first(:link).click
@@ -33,7 +33,7 @@ describe 'Tools links' do
       end
     end
 
-    %w(RefWorks EndNote).each do |link_text|
+    %w[RefWorks EndNote].each do |link_text|
       it "provides #{link_text} export options in dropdown" do
         within '#previousNextDocument li.dropdown' do
           find_link(link_text)
@@ -50,7 +50,7 @@ describe 'Tools links' do
   end
 
   context 'With non-MARC-based records' do
-    before(:each) do
+    before do
       visit  '/catalog?search_field=all_fields&q=dsp01ft848s955'
       within '.documents-list' do
         first(:link).click
@@ -63,7 +63,7 @@ describe 'Tools links' do
       end
     end
 
-    %w(RefWorks EndNote).each do |link_text|
+    %w[RefWorks EndNote].each do |link_text|
       it "provides #{link_text} export options in dropdown" do
         within '#previousNextDocument li.dropdown' do
           expect(page).not_to have_link(link_text)

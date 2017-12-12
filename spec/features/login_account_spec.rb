@@ -5,6 +5,7 @@ context 'user signs in' do
   let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
   let(:voyager_account_response) { fixture('/generic_voyager_account_response.xml') }
   let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
+
   it 'brings user to account page' do
     stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
       .to_return(status: 200, body: valid_patron_response, headers: {})

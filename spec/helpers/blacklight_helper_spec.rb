@@ -27,7 +27,7 @@ describe BlacklightHelper do
     end
 
     context 'when mixed with cjk in search' do
-      let(:blacklight_params) { { q: "毛沢東 dai" } }
+      let(:blacklight_params) { { q: '毛沢東 dai' } }
 
       it 'requires all non cjk characters' do
         solr_params = {}

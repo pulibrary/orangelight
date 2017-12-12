@@ -52,7 +52,7 @@ class CourseReserveRepository
       end
 
       def to_s
-        (['type_s:ReserveListing'] + [:instructor, :course, :department].map do |x|
+        (['type_s:ReserveListing'] + %i[instructor course department].map do |x|
           to_query(x)
         end).compact.join(' AND ')
       end

@@ -18,6 +18,7 @@ RSpec.describe Blacklight::Document::Email do
                              '"location_has":["Juzʼ 1-juzʼ 2"]}}'
         }
       end
+
       it 'includes both Romanized and vernacular script' do
         expect(subject).to match('Title: al-Amāzīgh')
         expect(subject).to match('Title: الأمازيغ')
@@ -39,6 +40,7 @@ RSpec.describe Blacklight::Document::Email do
     end
     describe 'record with no holdings' do
       let(:properties) { {} }
+
       it 'excludes author label when not present' do
         expect(subject).not_to match('Author:')
       end
@@ -58,6 +60,7 @@ RSpec.describe Blacklight::Document::Email do
           format: ['Senior Thesis']
         }
       end
+
       it 'includes online access label' do
         expect(subject).to match('Online access:')
       end

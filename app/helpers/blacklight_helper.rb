@@ -32,7 +32,7 @@ module BlacklightHelper
   end
 
   def series_title_results(solr_parameters)
-    return unless %w(series_title in_series).include?(blacklight_params[:f1]) ||
+    return unless %w[series_title in_series].include?(blacklight_params[:f1]) ||
                   blacklight_params[:f2] == 'series_title' ||
                   blacklight_params[:f3] == 'series_title'
     solr_parameters[:fl] = 'id,score,author_display,marc_relator_display,format,pub_created_display,'\
@@ -57,7 +57,7 @@ module BlacklightHelper
     index_course_reserves(courses)
     solr_parameters[:fq] ||= []
     solr_parameters[:fq].reject! do |x|
-      %w(course instructor department filter).include?(x.split('=')[1].split('}')[0])
+      %w[course instructor department filter].include?(x.split('=')[1].split('}')[0])
     end
     solr_parameters[:fq] << "{!join from=bib_ids_s to=id fromIndex=#{ReserveIndexer.core}}#{courses.solr_query}"
   end
@@ -226,7 +226,7 @@ module BlacklightHelper
     # Check if any search parameters have been set
     # @return [Boolean]
     def search_parameters?
-      !blacklight_params[:q].blank? || !blacklight_params[:f].blank? || !blacklight_params[:search_field].blank?
+      blacklight_params[:q].present? || blacklight_params[:f].present? || blacklight_params[:search_field].present?
     end
 
     def get_fq_solr_response(fq)

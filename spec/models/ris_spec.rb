@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Blacklight::Document::Ris do
   subject { SolrDocument.new(properties).export_as_ris }
+
   context 'For a standard MARC Record' do
     describe '#export_as_ris' do
       let(:properties) do

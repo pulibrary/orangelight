@@ -16,7 +16,7 @@ describe 'Your Account', type: :feature do
     let(:voyager_account_with_borrow_direct) { fixture('./account_with_borrow_direct_charged_items.xml') }
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
-    before(:each) do
+    before do
       stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
@@ -40,7 +40,7 @@ describe 'Your Account', type: :feature do
     end
 
     it 'Displays an unchecked option to renew item request' do
-      expect(page.has_no_checked_field?('renew_items[]')).to be_truthy
+      expect(page).to have_no_checked_field('renew_items[]')
     end
 
     it 'Displays charged items as renewable' do
@@ -67,7 +67,7 @@ describe 'Your Account', type: :feature do
     let(:voyager_account_with_borrow_direct) { fixture('./account_with_borrow_direct_charged_items.xml') }
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
-    before(:each) do
+    before do
       stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
@@ -89,7 +89,7 @@ describe 'Your Account', type: :feature do
     let(:generic_voyager_account_only_request_items) { fixture('./generic_voyager_account_only_request_items.xml') }
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
-    before(:each) do
+    before do
       stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
@@ -112,7 +112,7 @@ describe 'Your Account', type: :feature do
     let(:voyager_account_response) { fixture('/voyager_account_with_block.xml') }
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
-    before(:each) do
+    before do
       stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
@@ -133,7 +133,7 @@ describe 'Your Account', type: :feature do
     end
 
     it 'Displays an unchecked option to cancel the request' do
-      expect(page.has_no_checked_field?('cancel_requests[]')).to be_truthy
+      expect(page).to have_no_checked_field('cancel_requests[]')
     end
 
     it 'Displays the item and hold recall ID' do
@@ -147,7 +147,7 @@ describe 'Your Account', type: :feature do
 
     it 'Does not display renewal options when patron has a block' do
       expect(page).to have_content(I18n.t('blacklight.account.not_renewable_due_to_patron_block'))
-      expect(page.has_no_checked_field?('renew_itemss[]')).to be_truthy
+      expect(page).to have_no_checked_field('renew_itemss[]')
     end
 
     it 'Displays a formatted date when the request expires' do
@@ -165,7 +165,7 @@ describe 'Your Account', type: :feature do
     let(:voyager_account_response) { fixture('/account_with_block_fines_recall.xml') }
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
-    before(:each) do
+    before do
       stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
@@ -210,7 +210,7 @@ describe 'Your Account', type: :feature do
       expect(page).to have_content('664.00')
     end
 
-    it 'It has a data attribute for each charged item' do
+    it 'has a data attribute for each charged item' do
       expect(page).to have_xpath("//tr[@data-item-id='7247566']")
       expect(page).to have_xpath("//tr[@data-item-id='7114238']")
       expect(page).to have_xpath("//tr[@data-item-id='5331658']")
@@ -230,7 +230,7 @@ describe 'Your Account', type: :feature do
     let(:voyager_cancel_response_avail_item) { fixture('/successful_cancel_response_avail_item.xml') }
     let(:renew_response_only_success) { fixture('/successful_voyager_renew_response.xml') }
 
-    before(:each) do
+    before do
       stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
         .to_return(status: 200, body: valid_patron_response, headers: {})
 

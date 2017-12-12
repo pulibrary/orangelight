@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'builder'
 # This module provide Dublin Core export based on the document's semantic values
 module Blacklight
@@ -17,9 +18,9 @@ module Blacklight
       end
 
       def dublin_core_field_names
-        [:contributor, :coverage, :creator, :date, :description, :format,
-         :identifier, :language, :publisher, :relation, :rights, :source,
-         :subject, :title, :type]
+        %i[contributor coverage creator date description format
+           identifier language publisher relation rights source
+           subject title type]
       end
 
       # dublin core elements are mapped against the #dublin_core_field_names whitelist.

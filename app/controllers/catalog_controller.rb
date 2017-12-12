@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+
 #
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
@@ -18,7 +18,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w(format language_facet advanced_location_s)
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[format language_facet advanced_location_s]
     config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.pivot'] ||= ''
@@ -52,11 +52,11 @@ class CatalogController < ApplicationController
 
     # solr field configuration for search results/index views
     config.index.title_field = 'title_display'
-    config.index.partials = [:index_header, :show_identifiers, :thumbnail, :index]
+    config.index.partials = %i[index_header show_identifiers thumbnail index]
     config.index.display_type_field = 'format'
 
     # solr field configuration for document/show views
-    config.show.partials = [:show_identifiers, :show]
+    config.show.partials = %i[show_identifiers show]
     # config.show.title_field = 'title_display'
     # config.show.display_type_field = 'format'
 
@@ -116,7 +116,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'call_number_group_facet', label: 'Call number group', limit: 25, show: false, sort: 'index'
     config.add_facet_field 'call_number_full_facet', label: 'Full call number', limit: 25, show: false, sort: 'index'
     config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true
-    config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w(lc_1letter_facet lc_rest_facet)
+    config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet]
     config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index'
     config.add_facet_field 'advanced_location_s', label: 'Holding location', show: false,
                                                   helper_method: :render_location_code

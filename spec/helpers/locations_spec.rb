@@ -60,6 +60,7 @@ RSpec.describe ApplicationHelper do
   describe '#open_location?' do
     let(:loc) { { open: true } }
     let(:holding) { { 'call_number_browse' => 'KF 1232 .B2', 'location_code' => 'f' } }
+
     it 'returns the location open attribute value' do
       expect(open_location?(loc)).to eq true
     end
@@ -70,6 +71,7 @@ RSpec.describe ApplicationHelper do
 
   describe '#aeon_location?' do
     let(:loc) { { aeon_location: true } }
+
     it 'returns the location aeon_location attribute value' do
       expect(aeon_location?(loc)).to eq true
     end

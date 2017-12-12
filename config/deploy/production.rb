@@ -21,10 +21,10 @@ set :branch, ENV['BRANCH'] || 'master'
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'lib-orange-prod2', user: 'deploy', roles: [:web, :app, :db]
-server 'lib-orange-prod3', user: 'deploy', roles: [:web, :app, :db]
-server 'lib-orange-prod4', user: 'deploy', roles: [:web, :app, :db]
-server 'lib-orange-prod6', user: 'deploy', roles: [:web, :app, :db]
+server 'lib-orange-prod2', user: 'deploy', roles: %i[web app db]
+server 'lib-orange-prod3', user: 'deploy', roles: %i[web app db]
+server 'lib-orange-prod4', user: 'deploy', roles: %i[web app db]
+server 'lib-orange-prod6', user: 'deploy', roles: %i[web app db]
 
 set :deploy_to, '/opt/rails_app'
 

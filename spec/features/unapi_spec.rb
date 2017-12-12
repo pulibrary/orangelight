@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Unapi suport' do
   describe 'Show Page', js: true do
-    before(:each) do
+    before do
       visit '/catalog/3256177'
     end
     it 'contains an unapi reference in an abbr tag' do
@@ -12,7 +12,7 @@ describe 'Unapi suport' do
   end
 
   describe 'Search Results Page', js: true do
-    before(:each) do
+    before do
       visit '/catalog?search_field=all_fields&q='
     end
     it 'contains an unapi reference for every search result' do
@@ -22,7 +22,7 @@ describe 'Unapi suport' do
   end
 
   describe 'RIS response' do
-    before(:each) do
+    before do
       visit '/catalog/3256177.ris'
     end
     it 'returns the correct mime type for RIS' do
@@ -31,7 +31,7 @@ describe 'Unapi suport' do
   end
 
   describe 'Un API resource' do
-    before(:each) do
+    before do
       visit '/unapi?id=3256177&format=ris'
     end
     it 'returns the correct mime type for RIS' do

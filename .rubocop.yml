@@ -1,4 +1,5 @@
 require: rubocop-rspec
+inherit_from: .rubocop_todo.yml
 
 Rails:
   Enabled: true
@@ -7,6 +8,8 @@ AllCops:
   UseCache: false
   DisplayCopNames: true
   Include:
+    - '**/Capfile'
+    - '**/Gemfile'
     - '**/Rakefile'
     - '**/config.ru'
   Exclude:
@@ -83,6 +86,10 @@ Metrics/LineLength:
     - 'lib/orangelight/browse_lists.rb'
     - 'lib/orangelight/voyager_patron_client.rb'
     - 'spec/**/*'
+    - 'app/views/catalog/_document_default.atom.builder'
+    - 'lib/tasks/pulsearch.rake'
+    - 'lib/tasks/server.rake'
+    - '**/Gemfile'
 
 Metrics/MethodLength:
   Exclude:
@@ -138,7 +145,7 @@ Style/BlockDelimiters:
   Exclude:
     - 'spec/helpers/scsb_items_helper_spec.rb'
 
-Style/FileName:
+Naming/FileName:
   Exclude:
     - 'lib/omniauth/strategies/omniauth-barcode.rb'
 
@@ -148,12 +155,12 @@ Style/MutableConstant:
     - 'config/initializers/locations_initializer.rb'
 
 
-Style/PredicateName:
+Naming/PredicateName:
   Exclude:
     - 'app/helpers/advanced_helper.rb'
     - 'lib/orangelight/voyager_account.rb'
 
-Style/IndentationConsistency:
+Layout/IndentationConsistency:
   EnforcedStyle: rails
 
 Style/CollectionMethods:
@@ -195,3 +202,17 @@ RSpec/DescribeClass:
     - 'spec/views/**/*'
     - 'spec/routing/**/*'
     - 'spec/requests/**/*'
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/**/*'

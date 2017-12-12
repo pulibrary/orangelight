@@ -133,13 +133,12 @@ module ApplicationHelper
     info = ''
     location_rules = LOCATIONS[holding['location_code'].to_sym]
     cn_value = holding['call_number_browse'] || holding['call_number']
-    unless (holding_loc = holding_location_label(holding)).blank?
+    if (holding_loc = holding_location_label(holding)).present?
       location = content_tag(:span, holding_loc, class: 'location-text', data:
                             {
                               location: true,
                               holding_id: holding_id
-                            }
-                            )
+                            })
       location << locate_link(holding['location_code'], bib_id, cn_value, holding['library']).html_safe
       info << content_tag(:h3, location.html_safe, class: 'library-location')
     end
@@ -181,7 +180,7 @@ module ApplicationHelper
 
   def recap_item_list(holding)
     restricted_items = holding['items'].map do |item|
-      unless item['use_statement'].blank?
+      if item['use_statement'].present?
         content_tag(:li, title: recap_use_toolip(item['use_statement']), 'data-toggle' => 'tooltip') do
           content_tag(:span, recap_use_label(item['use_statement']), class: 'icon-warning icon-request-reading-room').html_safe
         end
@@ -384,7 +383,7 @@ module ApplicationHelper
 
   def search_location_display(holding, document)
     location = holding_location_label(holding)
-    render_arrow = (!location.blank? && !holding['call_number'].blank?)
+    render_arrow = (location.present? && holding['call_number'].present?)
     arrow = render_arrow ? ' &raquo; ' : ''
     cn_value = holding['call_number_browse'] || holding['call_number']
     locate_link = locate_link_with_gylph(holding['location_code'], document['id'], cn_value, holding['library'])
@@ -475,7 +474,7 @@ module ApplicationHelper
   def formats_to_exclude(document)
     holding_id = JSON.parse(document[:holdings_1display]).first[0] if document[:holdings_1display]
     if non_voyager?(holding_id) || document['id'].start_with?('SCSB')
-      [:marc, :marcxml, :refworks_marc_txt, :endnote, :openurl_ctx_kev]
+      %i[marc marcxml refworks_marc_txt endnote openurl_ctx_kev]
     else
       []
     end

@@ -4,10 +4,10 @@ class SearchBuilder < Blacklight::SearchBuilder
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include BlacklightHelper
 
-  self.default_processor_chain += [:cleanup_boolean_operators, :add_advanced_search_to_solr,
-                                   :cjk_mm, :wildcard_char_strip, :only_home_facets,
-                                   :left_anchor_strip, :course_reserve_filters,
-                                   :series_title_results, :pul_holdings]
+  self.default_processor_chain += %i[cleanup_boolean_operators add_advanced_search_to_solr
+                                     cjk_mm wildcard_char_strip only_home_facets
+                                     left_anchor_strip course_reserve_filters
+                                     series_title_results pul_holdings]
 
   def cleanup_boolean_operators(solr_parameters)
     return add_advanced_parse_q_to_solr(solr_parameters) if run_advanced_parse?(solr_parameters)
