@@ -106,7 +106,7 @@ module ApplicationHelper
     elf_holdings.each do |id, holding|
       online_holdings << process_online_holding(holding, doc_id, id, links.empty?)
     end
-    other_holdings.sort_by { |_id, h| LOCATIONS.keys.index(h['location_code']) }.each do |id, holding|
+    other_holdings.sort_by { |_id, h| Orangelight.locations.keys.index(h['location_code']) }.each do |id, holding|
       physical_holdings << process_physical_holding(holding, doc_id, id, is_journal, pub_date)
     end
     online = content_tag(:div, online_holdings.html_safe) unless online_holdings.empty?
@@ -131,7 +131,7 @@ module ApplicationHelper
 
   def process_physical_holding(holding, bib_id, holding_id, is_journal, pub_date)
     info = ''
-    location_rules = LOCATIONS[holding['location_code'].to_sym]
+    location_rules = Orangelight.locations[holding['location_code'].to_sym]
     cn_value = holding['call_number_browse'] || holding['call_number']
     if (holding_loc = holding_location_label(holding)).present?
       location = content_tag(:span, holding_loc, class: 'location-text', data:
@@ -319,7 +319,7 @@ module ApplicationHelper
     holdings_hash = JSON.parse(document['holdings_1display'] || '{}')
     scsb_multiple = false
     holdings_hash.first(2).each do |id, holding|
-      location = LOCATIONS[holding['location_code'].to_sym]
+      location = Orangelight.locations[holding['location_code'].to_sym]
       check_availability = true
       info = ''
       if holding['library'] == 'Online'
@@ -491,13 +491,13 @@ module ApplicationHelper
   end
 
   def render_location_code(value)
-    location = LOCATIONS[value.to_sym]
+    location = Orangelight.locations[value.to_sym]
     location.nil? ? value : "#{value}: #{location_full_display(location)}"
   end
 
   def holding_location_label(holding)
     loc_code = holding['location_code']
-    location = LOCATIONS[loc_code.to_sym] unless loc_code.nil?
+    location = Orangelight.locations[loc_code.to_sym] unless loc_code.nil?
     location.nil? ? holding['location'] : location_full_display(location)
   end
 
