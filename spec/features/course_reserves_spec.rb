@@ -12,7 +12,7 @@ describe 'course reserves functionality' do
   end
 
   def stub_all_query
-    stub_request(:get, 'https://bibdata.princeton.edu/courses')
+    stub_request(:get, "#{ENV['bibdata_base']}/courses")
       .to_return(status: 200,
                  body: all_results.to_json)
   end
@@ -25,25 +25,25 @@ describe 'course reserves functionality' do
   end
 
   def stub_1
-    stub_request(:get, 'https://bibdata.princeton.edu/bib_ids?reserve_id[]=1958&reserve_id[]=2088')
+    stub_request(:get, "#{ENV['bibdata_base']}/bib_ids?reserve_id[]=1958&reserve_id[]=2088")
       .to_return(status: 200,
                  body: (reserve_1 + reserve_3).to_json)
   end
 
   def stub_2
-    stub_request(:get, 'https://bibdata.princeton.edu/bib_ids?reserve_id[]=1958&reserve_id[]=2087&reserve_id[]=2088')
+    stub_request(:get, "#{ENV['bibdata_base']}/bib_ids?reserve_id[]=1958&reserve_id[]=2087&reserve_id[]=2088")
       .to_return(status: 200,
                  body: (reserve_1 + reserve_2 + reserve_3).to_json)
   end
 
   def stub_3
-    stub_request(:get, 'https://bibdata.princeton.edu/bib_ids?reserve_id[]=2087')
+    stub_request(:get, "#{ENV['bibdata_base']}/bib_ids?reserve_id[]=2087")
       .to_return(status: 200,
                  body: reserve_2.to_json)
   end
 
   def stub_4
-    stub_request(:get, 'https://bibdata.princeton.edu/bib_ids?reserve_id[]=2088')
+    stub_request(:get, "#{ENV['bibdata_base']}/bib_ids?reserve_id[]=2088")
       .to_return(status: 200,
                  body: reserve_3.to_json)
   end
