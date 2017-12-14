@@ -195,6 +195,22 @@ RSpec.describe ApplicationHelper do
         expect(empty_search_result).to include t('blacklight.holdings.search_missing')
       end
     end
+    context '#holding_block_search with a missing location code' do
+      let(:holding_block_json) do
+        {
+          holding_id => {
+            location: location,
+            library: library,
+            call_number: call_number,
+            call_number_browse: call_number
+          }
+        }.to_json.to_s
+      end
+
+      it 'includes the item in the result without an error' do
+        expect(search_result).to include call_number
+      end
+    end
     context '#holding_block record show - physical holdings' do
       it 'returns a string with call number and location display values' do
         expect(show_result.last).to include call_number

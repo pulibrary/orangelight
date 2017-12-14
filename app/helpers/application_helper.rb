@@ -313,13 +313,19 @@ module ApplicationHelper
     location.nil? ? false : location[:aeon_location]
   end
 
+  def holding_location(holding)
+    location_code = holding.fetch('location_code', '').to_sym
+    resolved_location = Orangelight.locations[location_code]
+    resolved_location ? resolved_location : {}
+  end
+
   def holding_block_search(document)
     block = ''
     links = search_links(document['electronic_access_1display'])
     holdings_hash = JSON.parse(document['holdings_1display'] || '{}')
     scsb_multiple = false
     holdings_hash.first(2).each do |id, holding|
-      location = Orangelight.locations[holding['location_code'].to_sym]
+      location = holding_location(holding)
       check_availability = true
       info = ''
       if holding['library'] == 'Online'
