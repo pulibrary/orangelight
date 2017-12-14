@@ -81,6 +81,8 @@ gem 'openurl', '~> 1.0'
 
 gem 'honeybadger', '~> 3.1'
 
+gem 'sitemap_generator', '~> 6.0'
+
 gem 'voight_kampff', '~> 1.1'
 
 group :development do

@@ -37,5 +37,7 @@ module Orangelight
 
     # Redirect to CAS logout after signing out of Orangelight
     config.x.after_sign_out_url = 'https://fed.princeton.edu/cas/logout'
+
+    config.robots = OpenStruct.new(config_for(:robots))
   end
 end

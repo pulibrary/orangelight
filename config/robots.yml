@@ -1,0 +1,34 @@
+# Configuration file for generation robots.txt
+defaults: &defaults
+  sitemap_url: https://pulsearch.princeton.edu/sitemap.xml.gz
+  disallowed_paths:
+    - '/*?q=*'
+    - '/*?f*'
+    - '/requests'
+    - '/catalog/*/'
+    - '/catalog/endnote'
+    - '/catalog/opensearch'
+    - '/catalog/range_limit'
+    - '/catalog/email'
+    - '/catalog/sms'
+    - '/catalog/citation'
+    - '/bookmarks'
+    - '/users'
+    - '/cgi-bin'
+    - '/account'
+    - '/borrow-direct'
+    - '/thumbnail'
+    - '/unapi'
+    - '/404'
+    - '/422'
+    - '/500'
+    - '/search_history'
+    - '/suggest'
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
