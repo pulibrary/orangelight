@@ -1,4 +1,3 @@
-# initialize holding location data
 require 'holding_locations'
 
 module Orangelight
@@ -9,3 +8,6 @@ module Orangelight
 
   module_function :locations
 end
+
+# initialize holding locations data
+Orangelight.locations
