@@ -62,17 +62,17 @@ module ApplicationHelper
   end
 
   DONT_FIND_IT = ['Fine Annex', 'Forrestal Annex', 'Mudd Manuscript Library', 'Online', 'Rare Books and Special Collections', 'ReCAP'].freeze
-  def locate_link(location, bib, call_number, library)
-    link = locate_url(location, bib, call_number, library)
+  def locate_link(location, call_number, library)
+    link = locate_url(location, @document, call_number, library)
     if link.nil?
       ''
     else
-      ' ' + link_to(%(<span class="link-text">#{t('blacklight.holdings.stackmap')}</span><span class="glyphicon glyphicon-map-marker"></span>).html_safe, "/catalog/#{bib}/stackmap?loc=#{location}", :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
+      ' ' + link_to(%(<span class="link-text">#{t('blacklight.holdings.stackmap')}</span><span class="glyphicon glyphicon-map-marker"></span>).html_safe, link, :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
     end
   end
 
-  def locate_link_with_gylph(location, bib, call_number, library)
-    link = locate_url(location, bib, call_number, library)
+  def locate_link_with_glyph(location, document, call_number, library)
+    link = locate_url(location, document, call_number, library)
     if link.nil?
       ''
     else
@@ -80,9 +80,9 @@ module ApplicationHelper
     end
   end
 
-  def locate_url(location, bib, call_number, library = nil)
+  def locate_url(location, document, call_number, library = nil)
     unless DONT_FIND_IT.include?(library) || call_number.nil?
-      "/catalog/#{bib}/stackmap?loc=#{location}"
+      ::StackmapService::Url.new(document: document, loc: location, cn: call_number).url
     end
   end
 
@@ -139,7 +139,7 @@ module ApplicationHelper
                               location: true,
                               holding_id: holding_id
                             })
-      location << locate_link(holding['location_code'], bib_id, cn_value, holding['library']).html_safe
+      location << locate_link(holding['location_code'], cn_value, holding['library']).html_safe
       info << content_tag(:h3, location.html_safe, class: 'library-location')
     end
     unless cn_value.nil?
@@ -386,7 +386,7 @@ module ApplicationHelper
     render_arrow = (location.present? && holding['call_number'].present?)
     arrow = render_arrow ? ' &raquo; ' : ''
     cn_value = holding['call_number_browse'] || holding['call_number']
-    locate_link = locate_link_with_gylph(holding['location_code'], document['id'], cn_value, holding['library'])
+    locate_link = locate_link_with_glyph(holding['location_code'], document, cn_value, holding['library'])
     location_display = content_tag(:span, location, class: 'results_location') + arrow.html_safe +
                        content_tag(:span, %(#{holding['call_number']}#{locate_link}).html_safe, class: 'call-number')
     location_display.html_safe
