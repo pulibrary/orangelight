@@ -4,7 +4,6 @@ defaults: &defaults
   umlaut_base: https://getit.princeton.edu
   bibdata_base: https://bibdata.princeton.edu
   proxy_base: https://library.princeton.edu/resolve/lookup?url=
-  stackmap_base: https://bibdata.princeton.edu/locations/map
   voyager_api_base: https://catalog.princeton.edu:7014
   pulsearch_base: https://pulsearch.princeton.edu
   aeon_base: https://lib-aeon.princeton.edu/aeon/aeon.dll

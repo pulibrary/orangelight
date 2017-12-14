@@ -8,6 +8,7 @@ class CatalogController < ApplicationController
   include Blacklight::Marc::Catalog
   include BlacklightRangeLimit::ControllerOverride
   include Orangelight::Catalog
+  include Orangelight::Stackmap
   include BlacklightHelper
 
   before_action :redirect_browse

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   mount Requests::Engine, at: '/requests'
 
   get 'catalog/:id/staff_view', to: 'catalog#librarian_view', as: 'staff_view_solr_document'
+  get 'catalog/:id/stackmap', to: 'catalog#stackmap'
+
   Blacklight::Marc.add_routes(self)
   root to: 'catalog#index'
 

@@ -89,10 +89,10 @@ describe 'blacklight tests' do
     it 'provides a link to locate an item for each holding' do
       get '/catalog/430472.json'
       r = JSON.parse(response.body)
-      docid = r['response']['document']['id']
+      bib = r['response']['document']['id']
       get '/catalog/430472'
       r['response']['document']['location_code_s'].each do |location|
-        expect(response.body.include?("href=\"#{ENV['stackmap_base']}?loc=#{location}&amp;id=#{docid}")).to eq true
+        expect(response.body.include?("href=\"/catalog/#{bib}/stackmap?loc=#{location}\"")).to eq true
       end
     end
     it 'does not provide a find it link for online holdings' do

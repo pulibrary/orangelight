@@ -67,7 +67,7 @@ module ApplicationHelper
     if link.nil?
       ''
     else
-      ' ' + link_to(%(<span class="link-text">#{t('blacklight.holdings.stackmap')}</span><span class="glyphicon glyphicon-map-marker"></span>).html_safe, "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}&callno=#{call_number}", :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
+      ' ' + link_to(%(<span class="link-text">#{t('blacklight.holdings.stackmap')}</span><span class="glyphicon glyphicon-map-marker"></span>).html_safe, "/catalog/#{bib}/stackmap?loc=#{location}", :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
     end
   end
 
@@ -82,7 +82,7 @@ module ApplicationHelper
 
   def locate_url(location, bib, call_number, library = nil)
     unless DONT_FIND_IT.include?(library) || call_number.nil?
-      "#{ENV['stackmap_base']}?loc=#{location}&id=#{bib}&callno=#{call_number}"
+      "/catalog/#{bib}/stackmap?loc=#{location}"
     end
   end
 

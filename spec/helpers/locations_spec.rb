@@ -12,7 +12,7 @@ RSpec.describe ApplicationHelper do
     it 'Returns a Stackmap Link for a Mapping Location' do
       stackmap_link = locate_url(stackmap_location, bib, call_number, stackmap_library)
       expect(stackmap_link).to be_truthy
-      expect(stackmap_link).to eq("#{ENV['stackmap_base']}?loc=#{stackmap_location}&id=#{bib}&callno=#{call_number}")
+      expect(stackmap_link).to eq("/catalog/#{bib}/stackmap?loc=#{stackmap_location}")
     end
 
     it 'Does not return a stackmap link for an inaccessible location' do
