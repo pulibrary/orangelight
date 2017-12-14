@@ -24,4 +24,20 @@ RSpec.describe CatalogController do
       expect(email.subject).to eq 'Subject'
     end
   end
+
+  describe 'GET #show' do
+    context 'with an invalid document id' do
+      let(:id) { 'notavalidid' }
+
+      it 'returns a 404 response for an html request' do
+        get :show, params: { id: id }
+        expect(response.status).to eq 404
+      end
+
+      it 'returns a 404 response for an xml request' do
+        get :show, format: :xml, params: { id: id }
+        expect(response.status).to eq 404
+      end
+    end
+  end
 end
