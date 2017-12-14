@@ -5,7 +5,7 @@ class StackmapService
     # @param document [SolrDocument] Solr document for bib record
     # @param loc [String] Bib record location code
     # @param cn [String] optional provided call number
-    def initialize(document:, loc:, cn:)
+    def initialize(document:, loc:, cn: nil)
       @document = document
       @loc = loc
       @cn = cn
@@ -17,6 +17,8 @@ class StackmapService
       if valid?
         if locator_libs.include? lib
           locator_url
+        elsif missing_stackmap_reserves.include? @loc
+          missing_stackmap_reserves[@loc]
         elsif stackmap_libs.include? lib
           stackmap_url
         else
@@ -75,7 +77,12 @@ class StackmapService
       end
 
       def missing_stackmap_reserves
-        %w[ueso piaprr pplr scigr]
+        {
+          'ueso' => 'https://library.princeton.edu/architecture',
+          'piaprr' => 'https://library.princeton.edu/stokes',
+          'pplr' => 'https://library.princeton.edu/plasma-physics',
+          'scigr' => 'https://library.princeton.edu/lewis'
+        }
       end
 
       def by_title_locations
