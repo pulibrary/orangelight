@@ -12,6 +12,13 @@ class CatalogController < ApplicationController
 
   before_action :redirect_browse
 
+  rescue_from Blacklight::Exceptions::RecordNotFound do
+    respond_to do |format|
+      format.html { render file: Rails.root.join('public', 'x404'), layout: false, status: :not_found }
+      format.any  { head :not_found }
+    end
+  end
+
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
