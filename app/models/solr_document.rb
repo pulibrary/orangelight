@@ -2,6 +2,7 @@
 class SolrDocument
   # include Blacklight::Folders::SolrDocument
   include Blacklight::Solr::Document
+  include Orangelight::Document::Export
   # The following shows how to setup this blacklight document to display marc documents
   extension_parameters[:marc_source_field] = :id
   extension_parameters[:marc_format_type] = :marcxml

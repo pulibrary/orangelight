@@ -477,15 +477,6 @@ module ApplicationHelper
     args[:document][args[:field]] = all_links
   end
 
-  def formats_to_exclude(document)
-    holding_id = JSON.parse(document[:holdings_1display]).first[0] if document[:holdings_1display]
-    if non_voyager?(holding_id) || document['id'].start_with?('SCSB')
-      %i[marc marcxml refworks_marc_txt endnote openurl_ctx_kev]
-    else
-      []
-    end
-  end
-
   def format_icon(args)
     icon = render_icon(args[:document][args[:field]][0]).to_s
     formats = format_render(args)
