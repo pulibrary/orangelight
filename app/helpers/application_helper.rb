@@ -140,7 +140,7 @@ module ApplicationHelper
                               holding_id: holding_id
                             })
       location << locate_link(holding['location_code'], cn_value, holding['library']).html_safe
-      info << content_tag(:h3, location.html_safe, class: 'library-location')
+      info << content_tag(:h3, location.html_safe, class: 'library-location', data: { holding_id: holding_id })
     end
     unless cn_value.nil?
       cn_browse_link = link_to(%(<span class="link-text">#{t('blacklight.holdings.browse')}</span> <span class="icon-bookslibrary"></span>).html_safe,

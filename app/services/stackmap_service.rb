@@ -55,10 +55,10 @@ class StackmapService
 
       # use the optionally provided call number
       def callno
-        @cn ||= get_callno
+        @cn ||= preferred_callno
       end
 
-      def get_callno
+      def preferred_callno
         if by_title_locations.include? @loc
           @document['title_sort'].first
         else

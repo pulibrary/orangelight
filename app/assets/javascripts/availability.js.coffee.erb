@@ -66,6 +66,10 @@ class AvailabilityUpdater
         this.get_more_items(holding_id, availability_info['label'])
       else
         this.apply_record_icon(availability_element, availability_info['status'], aeon, availability_info)
+      if availability_info['temp_loc']
+        current_map_link = $("*[data-holding-id='#{holding_id}'] .find-it")
+        temp_map_link = stackmap_link(id, availability_info)
+        current_map_link.replaceWith(temp_map_link)
       this.update_location_services(holding_id, availability_info)
   process_scsb_single: (item_records) =>
     if Object.keys(item_records).length > 1
@@ -125,7 +129,10 @@ class AvailabilityUpdater
       this.record_needs_more_info(record_id) if availability_info['more_items']
       availability_element = $("*[data-availability-record='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .availability-icon")
       if availability_info['temp_loc']
+        current_map_link = $("*[data-location='true'][data-record-id='#{record_id}'][data-holding-id='#{holding_id}'] .find-it")
         $(availability_element).next('.icon-warning').hide()
+        temp_map_link = stackmap_link(record_id, availability_info, true)
+        current_map_link.replaceWith(temp_map_link)
       this.apply_record_icon(availability_element, availability_info['status'], aeon, {})
     true
   apply_scsb_record: (barcode, item_data) ->
@@ -243,7 +250,7 @@ class AvailabilityUpdater
     " - #{date_string}"
   title_case = (str) ->
     str[0].toUpperCase() + str[1..str.length - 1].toLowerCase()
-  stackmap_link = (record_id, availability_info, marker_only = false) ->
+  stackmap_link = (record_id, availability_info, marker_only) ->
     temp_status = availability_info['temp_loc']
     if temp_status
       location = availability_info['temp_loc']
