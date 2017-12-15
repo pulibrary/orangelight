@@ -36,7 +36,7 @@ RSpec.describe CourseReserveRepository do
   end
 
   def stub_all_query
-    stub_request(:get, 'https://bibdata.princeton.edu/courses')
+    stub_request(:get, "#{ENV['bibdata_base']}/courses")
       .to_return(status: 200,
                  body: all_results.to_json)
   end
