@@ -15,14 +15,12 @@ class StackmapService
     # @return [String] stackmap url
     def url
       if valid?
-        if locator_libs.include? lib
-          locator_url
-        elsif missing_stackmap_reserves.include? @loc
+        if missing_stackmap_reserves.include? @loc
           missing_stackmap_reserves[@loc]
         elsif stackmap_libs.include? lib
           stackmap_url
         else
-          fallback_url
+          locator_url
         end
       else
         fallback_url
