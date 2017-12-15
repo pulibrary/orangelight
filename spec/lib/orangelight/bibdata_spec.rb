@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe HoldingLocations do
-  describe '#load' do
-    subject { described_class.load }
+RSpec.describe Bibdata do
+  describe '#holding_locations' do
+    subject { described_class.holding_locations }
 
     let(:response) { instance_double(Faraday::Response, status: status, body: body) }
     let(:status) { 200 }
@@ -17,6 +17,8 @@ RSpec.describe HoldingLocations do
 
     context 'with an unsuccessful response from bibdata' do
       let(:status) { 500 }
+
+      before { Rails.cache.clear }
 
       it 'returns an empty hash' do
         expect(subject).to be_empty

@@ -49,7 +49,7 @@ module AdvancedHelper
     locations = {}
     non_code_items = []
     facet_items.each do |item|
-      holding_loc = Orangelight.locations[item.value]
+      holding_loc = Bibdata.holding_locations[item.value]
       holding_loc.nil? ? non_code_items << item : add_holding_loc(item, holding_loc, locations)
     end
     library_facet_values(non_code_items, locations)

@@ -90,7 +90,7 @@ class StackmapService
       end
 
       def holding_location
-        @holding_location ||= Orangelight.locations[@loc]
+        @holding_location ||= Bibdata.holding_locations[@loc]
       end
 
       def lib
