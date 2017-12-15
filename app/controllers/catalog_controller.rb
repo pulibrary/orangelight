@@ -14,10 +14,7 @@ class CatalogController < ApplicationController
   before_action :redirect_browse
 
   rescue_from Blacklight::Exceptions::RecordNotFound do
-    respond_to do |format|
-      format.html { render file: Rails.root.join('public', 'x404'), layout: false, status: :not_found }
-      format.any  { head :not_found }
-    end
+    redirect_to '/404'
   end
 
   configure_blacklight do |config|
