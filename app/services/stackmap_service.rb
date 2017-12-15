@@ -45,8 +45,10 @@ class StackmapService
         "#{stackmap_url}?#{stackmap_params.to_query}"
       end
 
+      # redirects to catalog record page if location or call number is missing_stackmap_reserves
+      # takes user to catalog home page if @document (bibid) is missing
       def fallback_url
-        "https://pulsearch.princeton.edu/catalog/#{bibid}"
+        "/catalog/#{@document.to_param}"
       end
 
       def bibid
@@ -60,7 +62,7 @@ class StackmapService
 
       def preferred_callno
         if by_title_locations.include? @loc
-          @document['title_sort'].first
+          @document['title_display']
         else
           @document['call_number_browse_s'].first
         end
@@ -98,7 +100,7 @@ class StackmapService
       end
 
       def valid?
-        !holding_location.nil? && !@document.empty?
+        !holding_location.nil? && !@document.nil?
       end
   end
 end
