@@ -89,10 +89,10 @@ describe 'blacklight tests' do
     it 'provides a link to locate an item for each holding' do
       get '/catalog/430472.json'
       r = JSON.parse(response.body)
-      docid = r['response']['document']['id']
+      bib = r['response']['document']['id']
       get '/catalog/430472'
       r['response']['document']['location_code_s'].each do |location|
-        expect(response.body.include?("href=\"#{ENV['stackmap_base']}?loc=#{location}&amp;id=#{docid}")).to eq true
+        expect(response.body).to include("href=\"https://library.princeton.edu/locator/index.php?loc=#{location}&amp;id=#{bib}\"")
       end
     end
     it 'does not provide a find it link for online holdings' do
@@ -348,6 +348,13 @@ describe 'blacklight tests' do
     it 'redirects to blacklight catalog url' do
       get '/cgi-bin/Pwebrecon.cgi?BBID=12345'
       expect(response).to redirect_to('/catalog/12345')
+    end
+  end
+
+  describe 'stackmap url pattern' do
+    it 'redirects to stackmap url' do
+      get '/catalog/9030657/stackmap?loc=f'
+      expect(response).to redirect_to('https://library.princeton.edu/locator/index.php?loc=f&id=9030657')
     end
   end
 

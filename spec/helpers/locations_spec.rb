@@ -4,7 +4,7 @@ RSpec.describe ApplicationHelper do
   describe '#locate_url helper method' do
     let(:stackmap_location) { 'f' }
     let(:stackmap_ineligible_location) { 'annexa' }
-    let(:bib) { '123456' }
+    let(:bib) { { id: '123456' } }
     let(:call_number) { 'RCPXR-6136516' }
     let(:stackmap_library) { 'Firestone' }
     let(:stackmap_ineligible_library) { 'Fine Annex' }
@@ -12,7 +12,7 @@ RSpec.describe ApplicationHelper do
     it 'Returns a Stackmap Link for a Mapping Location' do
       stackmap_link = locate_url(stackmap_location, bib, call_number, stackmap_library)
       expect(stackmap_link).to be_truthy
-      expect(stackmap_link).to eq("#{ENV['stackmap_base']}?loc=#{stackmap_location}&id=#{bib}&callno=#{call_number}")
+      expect(stackmap_link).to include("?loc=#{stackmap_location}&id=#{bib[:id]}")
     end
 
     it 'Does not return a stackmap link for an inaccessible location' do
