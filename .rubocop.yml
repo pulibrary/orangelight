@@ -181,6 +181,11 @@ Style/RaiseArgs:
   Exclude:
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
 
+Style/HashSyntax:
+  Exclude:
+    - 'app/controllers/catalog_controller.rb'
+    - 'spec/helpers/blacklight_helper_spec.rb'
+
 Rails/TimeZone:
   Enabled: false
 
