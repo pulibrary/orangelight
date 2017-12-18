@@ -14,6 +14,13 @@ module CatalogHelper
     "#{document_class_prefix}#{type.try(:parameterize) || type}"
   end
 
+  # Determine whether or not to render the availability
+  #
+  # @return [TrueClass, FalseClass]
+  def render_availability?
+    !request.bot?
+  end
+
   private
 
     def document_types(document)

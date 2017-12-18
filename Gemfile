@@ -81,6 +81,8 @@ gem 'openurl', '~> 1.0'
 
 gem 'honeybadger', '~> 3.1'
 
+gem 'voight_kampff', '~> 1.1'
+
 group :development do
   gem 'capistrano-rails', '~> 1.1.6'
 end
