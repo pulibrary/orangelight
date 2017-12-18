@@ -81,11 +81,11 @@
           <tr class="row-<%=i.even? ? 'odd' : 'even' %>">
         <% end %>
           <td><%= link_to orangelight_name.label, "/catalog/#{orangelight_name.bibid}" %></td>
-          <td class="availability-column" data-availability-record="<%=should_check_availability?(orangelight_name.bibid)%>" data-record-id="<%=bib_for_availability(orangelight_name.bibid)%>" data-holding-id="<%=orangelight_name.holding_id%>">
+          <td class="availability-column" data-availability-record="<%= should_check_availability?(orangelight_name.bibid) %>" data-record-id="<%= bib_for_availability(orangelight_name.bibid) %>" data-holding-id="<%= orangelight_name.holding_id %>">
             <%= content_tag(:span, content_tag(:span, orangelight_name.location, class: 'results_location'), class: 'library-location', data: { location: true, record_id: orangelight_name.bibid, holding_id: orangelight_name.holding_id }) %>
             </br><span class="availability-icon label label-default"></span>
             <%= content_tag(:span, '', class: 'more-info empty', data: { record_id: orangelight_name.bibid }) unless orangelight_name.location == 'Multiple locations' %>
-            <% if /^SCSB-\d+/ =~ orangelight_name.bibid %>
+            <% if recap_id?(orangelight_name.bibid) %>
               </br>
               <span class="more-info label label-default" data-record-id="<%= orangelight_name.bibid %>" title="Click on the record for full availability info">View record for full availability</span>
             <% end %>
