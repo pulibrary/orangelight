@@ -27,8 +27,6 @@ server 'lib-orange-prod4', user: 'deploy', roles: %i[web app db]
 server 'lib-orange-prod6', user: 'deploy', roles: %i[web app db]
 
 set :deploy_to, '/opt/rails_app'
-after 'deploy:published', 'sitemap:create'
-after 'deploy:published', 'pulsearch:robots_txt'
 
 # Custom SSH Options
 # ==================

@@ -1,5 +1,19 @@
 # Service for generating robots.txt from the routes
 class RobotsGeneratorService
+  # Generate a robots.txt with the default values
+  def self.default
+    file_path = Rails.root.join('public', 'robots.txt')
+    robots = RobotsGeneratorService.new(
+      path: file_path,
+      disallowed_paths: Rails.configuration.robots.disallowed_paths
+    )
+    robots.insert_group(user_agent: '*')
+    robots.insert_crawl_delay(10)
+    robots.insert_sitemap(Rails.configuration.robots.sitemap_url)
+    robots.generate
+    robots.write
+  end
+
   # Constructor
   # @param path [String] path for the robots.txt
   # @param path [Array<String>] an array of disallowed paths
