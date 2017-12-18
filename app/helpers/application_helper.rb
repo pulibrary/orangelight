@@ -106,7 +106,7 @@ module ApplicationHelper
     elf_holdings.each do |id, holding|
       online_holdings << process_online_holding(holding, doc_id, id, links.empty?)
     end
-    other_holdings.sort_by { |_id, h| Orangelight.locations.keys.index(h['location_code']) }.each do |id, holding|
+    other_holdings.sort_by { |_id, h| Bibdata.holding_locations.keys.index(h['location_code']) }.each do |id, holding|
       physical_holdings << process_physical_holding(holding, doc_id, id, is_journal, pub_date)
     end
     online = content_tag(:div, online_holdings.html_safe) unless online_holdings.empty?
@@ -131,7 +131,7 @@ module ApplicationHelper
 
   def process_physical_holding(holding, bib_id, holding_id, is_journal, pub_date)
     info = ''
-    location_rules = Orangelight.locations[holding['location_code'].to_sym]
+    location_rules = Bibdata.holding_locations[holding['location_code'].to_sym]
     cn_value = holding['call_number_browse'] || holding['call_number']
     if (holding_loc = holding_location_label(holding)).present?
       location = content_tag(:span, holding_loc, class: 'location-text', data:
@@ -315,7 +315,7 @@ module ApplicationHelper
 
   def holding_location(holding)
     location_code = holding.fetch('location_code', '').to_sym
-    resolved_location = Orangelight.locations[location_code]
+    resolved_location = Bibdata.holding_locations[location_code]
     resolved_location ? resolved_location : {}
   end
 
@@ -497,13 +497,13 @@ module ApplicationHelper
   end
 
   def render_location_code(value)
-    location = Orangelight.locations[value.to_sym]
+    location = Bibdata.holding_locations[value.to_sym]
     location.nil? ? value : "#{value}: #{location_full_display(location)}"
   end
 
   def holding_location_label(holding)
     loc_code = holding['location_code']
-    location = Orangelight.locations[loc_code.to_sym] unless loc_code.nil?
+    location = Bibdata.holding_locations[loc_code.to_sym] unless loc_code.nil?
     location.nil? ? holding['location'] : location_full_display(location)
   end
 

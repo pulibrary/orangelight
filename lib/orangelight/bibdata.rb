@@ -1,4 +1,4 @@
-module Bibdata
+class Bibdata
   class << self
     def get_patron(id)
       return false unless id
@@ -26,5 +26,33 @@ module Bibdata
       Rails.logger.info(patron.to_hash.to_s)
       patron
     end
+
+    def holding_locations
+      # check cache; return unless nil
+      locations = Rails.cache.fetch('holding_locations', expires_in: 24.hours)
+      return locations unless locations.nil?
+
+      # don't cache if we didn't get a success
+      response = Faraday.get("#{ENV['bibdata_base']}/locations/holding_locations.json")
+      return {} unless response.status == 200
+
+      locations = sorted_locations(response)
+      Rails.cache.write('holding_locations', locations, expires_in: 24.hours)
+      locations
+    end
+
+    private
+
+      def sorted_locations(response)
+        locations_hash = {}.with_indifferent_access
+        JSON.parse(response.body).each do |location|
+          locations_hash[location['code']] = location.with_indifferent_access
+        end
+        sorted = locations_hash.sort_by do |_i, l|
+          [l['library']['order'], l['library']['label'], l['label']]
+        end
+
+        sorted.to_h.with_indifferent_access
+      end
   end
 end
