@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 context 'user signs in' do
-  let(:user) { FactoryGirl.create(:valid_princeton_patron) }
+  let(:user) { FactoryBot.create(:valid_princeton_patron) }
   let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
   let(:voyager_account_response) { fixture('/generic_voyager_account_response.xml') }
   let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
@@ -20,7 +20,7 @@ end
 
 # describe 'User logs in' do
 #   context 'via the account menu option' do
-#     let(:user) { FactoryGirl.create(:valid_princeton_patron) }
+#     let(:user) { FactoryBot.create(:valid_princeton_patron) }
 #     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
 #     let(:voyager_account_response) { fixture('/generic_voyager_account_response.xml') }
 #     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
@@ -40,7 +40,7 @@ end
 
 #   context 'from the request page' do
 #     let(:requestable_record) { 890_851_4 }
-#     let(:user) { FactoryGirl.create(:valid_princeton_patron) }
+#     let(:user) { FactoryBot.create(:valid_princeton_patron) }
 #     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
 #     it 'brings user back to the request page when the request is initiated from there' do
 #       stub_request(:get, 'https://pulsearch.princeton.edu/catalog/8908514.json')

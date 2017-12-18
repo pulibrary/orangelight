@@ -186,10 +186,10 @@ GEM
       activemodel
     erubi (1.7.0)
     execjs (2.7.0)
-    factory_girl (4.9.0)
+    factory_bot (4.8.2)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.9.0)
-      factory_girl (~> 4.9.0)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
@@ -476,7 +476,7 @@ DEPENDENCIES
   coveralls
   devise (~> 4.2)
   devise-guests (~> 0.5)
-  factory_girl_rails
+  factory_bot_rails
   faraday
   faraday-cookie_jar
   high_voltage (~> 3.0.0)

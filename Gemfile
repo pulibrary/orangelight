@@ -86,7 +86,7 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl_rails', require: false
+  gem 'factory_bot_rails', require: false
   gem 'launchy'
   gem 'poltergeist'
   gem 'rails-controller-testing'

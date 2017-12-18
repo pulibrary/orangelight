@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe BookmarksController do
   describe '#print' do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryBot.create(:user) }
 
     it 'renders the email record mailer' do
       sign_in user
