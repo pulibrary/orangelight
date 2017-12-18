@@ -29,7 +29,7 @@ module Features
       user = if who.instance_of?(User)
                who.username
              else
-               FactoryGirl.create(:valid_princeton_patron).username
+               FactoryBot.create(:valid_princeton_patron).username
              end
       OmniAuth.config.add_mock(:cas, uid: user)
       visit user_cas_omniauth_authorize_path

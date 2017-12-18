@@ -9,7 +9,7 @@ describe 'Your Account', type: :feature do
   end
 
   context 'Princeton Community User has signed in' do
-    let(:user) { FactoryGirl.create(:valid_princeton_patron) }
+    let(:user) { FactoryBot.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_response) { fixture('/generic_voyager_account_response.xml') }
     let(:generic_voyager_account_only_request_items) { fixture('./generic_voyager_account_only_request_items.xml') }
@@ -62,7 +62,7 @@ describe 'Your Account', type: :feature do
   end
 
   context 'User has charged Borrow Direct Items' do
-    let(:user) { FactoryGirl.create(:valid_princeton_patron) }
+    let(:user) { FactoryBot.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_with_borrow_direct) { fixture('./account_with_borrow_direct_charged_items.xml') }
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
@@ -84,7 +84,7 @@ describe 'Your Account', type: :feature do
   end
 
   context 'User with no available pickup items has signed in' do
-    let(:user) { FactoryGirl.create(:valid_princeton_patron) }
+    let(:user) { FactoryBot.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:generic_voyager_account_only_request_items) { fixture('./generic_voyager_account_only_request_items.xml') }
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
@@ -107,7 +107,7 @@ describe 'Your Account', type: :feature do
   end
 
   context 'Princeton Community User has signed in with a block and active requests' do
-    let(:user) { FactoryGirl.create(:valid_princeton_patron) }
+    let(:user) { FactoryBot.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_response) { fixture('/voyager_account_with_block.xml') }
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
@@ -160,7 +160,7 @@ describe 'Your Account', type: :feature do
   end
 
   context 'Princeton Community User has signed in with an overdue item and fines' do
-    let(:user) { FactoryGirl.create(:valid_princeton_patron) }
+    let(:user) { FactoryBot.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_response) { fixture('/account_with_block_fines_recall.xml') }
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
@@ -218,7 +218,7 @@ describe 'Your Account', type: :feature do
   end
 
   context 'Princeton Community User has signed in to renew and cancel items' do
-    let(:user) { FactoryGirl.create(:valid_princeton_patron) }
+    let(:user) { FactoryBot.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_response) { fixture('/voyager_account_with_recall_and_overdue_fines.xml') }
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }

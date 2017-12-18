@@ -17,9 +17,9 @@ RSpec.describe AccountController do
   end
 
   describe '#patron_account?' do
-    let(:valid_user) { FactoryGirl.create(:valid_princeton_patron) }
-    let(:invalid_user) { FactoryGirl.create(:invalid_princeton_patron) }
-    let(:unauthorized_user) { FactoryGirl.create(:unauthorized_princeton_patron) }
+    let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
+    let(:invalid_user) { FactoryBot.create(:invalid_princeton_patron) }
+    let(:unauthorized_user) { FactoryBot.create(:unauthorized_princeton_patron) }
 
     it 'Returns Princeton Patron Account Data using a NetID' do
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
@@ -57,8 +57,8 @@ RSpec.describe AccountController do
 
   describe '#borrow_direct_redirect' do
     let(:guest_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_guest.json')).with_indifferent_access }
-    let(:valid_barcode_user) { FactoryGirl.create(:guest_patron) }
-    let(:valid_cas_user) { FactoryGirl.create(:valid_princeton_patron) }
+    let(:valid_barcode_user) { FactoryBot.create(:guest_patron) }
+    let(:valid_cas_user) { FactoryBot.create(:valid_princeton_patron) }
 
     it 'Redirects to Borrow Direct for valid cas user' do
       sign_in(valid_cas_user)

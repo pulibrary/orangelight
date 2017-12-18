@@ -4,7 +4,7 @@ RSpec.describe Users::OmniauthCallbacksController do
   let(:valid_netid_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response.json')).with_indifferent_access }
   let(:expired_netid_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_expired.json')).with_indifferent_access }
   let(:guest_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_guest.json')).with_indifferent_access }
-  let(:valid_barcode_user) { FactoryGirl.create(:guest_patron) }
+  let(:valid_barcode_user) { FactoryBot.create(:guest_patron) }
 
   before { request.env['devise.mapping'] = Devise.mappings[:user] }
 
@@ -25,7 +25,7 @@ RSpec.describe Users::OmniauthCallbacksController do
 
   describe 'logging in' do
     it 'valid cas login redirects to account page' do
-      allow(User).to receive(:from_cas) { FactoryGirl.create(:valid_princeton_patron) }
+      allow(User).to receive(:from_cas) { FactoryBot.create(:valid_princeton_patron) }
       get :cas
       expect(response).to redirect_to(account_path)
     end
@@ -42,13 +42,13 @@ RSpec.describe Users::OmniauthCallbacksController do
       expect(response).to redirect_to(user_barcode_omniauth_authorize_path)
     end
     it 'valid patron, invalid last name, redirects to login page' do
-      allow(User).to receive(:from_barcode) { FactoryGirl.create(:guest_patron, username: 'nope') }
+      allow(User).to receive(:from_barcode) { FactoryBot.create(:guest_patron, username: 'nope') }
       allow(Bibdata).to receive(:get_patron) { guest_response }
       get :barcode
       expect(response).to redirect_to(user_barcode_omniauth_authorize_path)
     end
     it 'valid patron, invalid barcode, redirects to login page' do
-      allow(User).to receive(:from_barcode) { FactoryGirl.build(:guest_patron, uid: 'notabarcode') }
+      allow(User).to receive(:from_barcode) { FactoryBot.build(:guest_patron, uid: 'notabarcode') }
       allow(Bibdata).to receive(:get_patron) { guest_response }
       get :barcode
       expect(response).to redirect_to(user_barcode_omniauth_authorize_path)

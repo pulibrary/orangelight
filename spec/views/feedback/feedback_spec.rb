@@ -34,7 +34,7 @@ describe 'Feedback Form', type: :feature do
   end
 
   context 'Princeton Community User has signed in' do
-    let(:user) { FactoryGirl.create(:valid_princeton_patron) }
+    let(:user) { FactoryBot.create(:valid_princeton_patron) }
     let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
     let(:voyager_account_response) { fixture('/generic_voyager_account_response.xml') }
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
