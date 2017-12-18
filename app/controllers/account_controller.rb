@@ -1,6 +1,5 @@
 require './lib/orangelight/voyager_patron_client.rb'
 require './lib/orangelight/voyager_account.rb'
-require './lib/orangelight/bibdata.rb'
 
 class AccountController < ApplicationController
   include ApplicationHelper
