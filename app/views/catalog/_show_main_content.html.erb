@@ -1,5 +1,5 @@
 <% @page_title = t('blacklight.search.show.title', :document_title => document_show_html_title, :application_name => application_name).html_safe %>
-<% content_for(:head) { render_link_rel_alternates(@document, { exclude: formats_to_exclude(@document) }) }%>
+<% content_for(:head) { render_link_rel_alternates(@document) }%>
 
 <div id="document" class="document <%= render_document_class %>" itemscope  itemtype="<%= @document.itemtype %>">
   <div id="doc_<%= @document.id.to_s.parameterize %>">

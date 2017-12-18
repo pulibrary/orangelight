@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ApplicationHelper
 
 RSpec.describe SolrDocument do
   subject { described_class.new(properties) }
@@ -208,6 +209,46 @@ RSpec.describe SolrDocument do
 
       it 'returns the ark' do
         expect(subject.ark).to eq 'ark:/88435/fj236339x'
+      end
+    end
+  end
+
+  describe '#export_formats' do
+    context 'with a voyager record' do
+      let(:properties) do
+        {
+          'id' => '8908514',
+          'holdings_1display' => { '8908514' => '{}' }.to_json
+        }
+      end
+
+      it 'includes voyager-only formats' do
+        expect(subject.export_formats).to have_key :endnote
+      end
+    end
+
+    context 'with a thesis record' do
+      let(:properties) do
+        {
+          'id' => 'dsp01zk51vk08g',
+          'holdings_1display' => { 'thesis' => '{}' }.to_json
+        }
+      end
+
+      it 'does not include voyager-only formats' do
+        expect(subject.export_formats).not_to have_key :endnote
+      end
+    end
+
+    context 'with a SCSB record' do
+      let(:properties) do
+        {
+          'id' => 'SCSB-6593031'
+        }
+      end
+
+      it 'does not include voyager-only formats' do
+        expect(subject.export_formats).not_to have_key :endnote
       end
     end
   end
