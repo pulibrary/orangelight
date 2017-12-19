@@ -10,12 +10,14 @@ context 'clicking facet limits with values in the search bar' do
   end
 
   it 'only includes the url parameters once when query is unchanged', js: true do
+    stub_holding_locations
     visit '/?f[access_facet][]=In+the+Library&q=The&search_field=left_anchor'
     click_link 'Book'
     expect(current_url.scan(/q=The/).size).to eq 1
   end
 
   it 'updates url parameters if search input is updated', js: true do
+    stub_holding_locations
     visit '/?f[access_facet][]=In+the+Library&q=The&search_field=left_anchor'
     fill_in('Search...', with: 'next')
     click_link 'Book'

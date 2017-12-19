@@ -58,6 +58,9 @@ RSpec.configure do |config|
   config.after(:each, type: :feature) do
     Warden.test_reset!
   end
+
+  config.before(:suite) { Rails.cache.clear }
+  config.after { Rails.cache.clear }
 end
 
 def fixture(file)

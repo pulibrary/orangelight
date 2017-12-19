@@ -8,6 +8,8 @@ RSpec.describe AdvancedHelper do
   let(:uesrf) { Blacklight::Solr::Response::Facets::FacetItem.new(hits: '792', value: 'uesrf') }
   let(:location_items) { [architecture, rcppw, ues, uesla, uesrf] }
 
+  before { stub_holding_locations }
+
   describe '#location_codes_by_lib' do
     let(:subject) { location_codes_by_lib(location_items) }
 

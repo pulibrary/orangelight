@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe 'SCSB Shared Collection Records' do
+  before { stub_holding_locations }
+
   context 'Search Results Page' do
     it 'displays view full record for multi-item records' do
       visit '/catalog?search_field=all_fields&q=SCSB-2443272'

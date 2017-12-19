@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe 'Tools links' do
+  before { stub_holding_locations }
+
   context 'With MARC-based records' do
     before do
       visit  '/catalog?search_field=all_fields&q='

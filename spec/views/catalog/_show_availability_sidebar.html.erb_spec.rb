@@ -62,6 +62,7 @@ RSpec.describe 'catalog/_show_availability_sidebar.html.erb' do
       }
     end
     it 'has all possible umlaut additional services included' do
+      stub_holding_locations
       render partial: 'catalog/show_availability_sidebar', locals: { document: document }
       expect(rendered).to have_selector '#highlighted_link'
       expect(rendered).to have_selector '#excerpts'
@@ -80,6 +81,7 @@ RSpec.describe 'catalog/_show_availability_sidebar.html.erb' do
       }
     end
     it 'has no umlaut additional services included' do
+      stub_holding_locations
       render partial: 'catalog/show_availability_sidebar', locals: { document: document }
       expect(rendered).not_to have_selector '#highlighted_link'
       expect(rendered).not_to have_selector '#excerpts'
@@ -101,6 +103,9 @@ RSpec.describe 'catalog/_show_availability_sidebar.html.erb' do
         'holdings_1display' => "{\"13395\":{\"location\":\"Forrestal Annex - Temporary\",\"library\":\"Forrestal Annex\",\"location_code\":\"anxafst\",\"copy_number\":\"1\",\"call_number\":\"PS3563.A3294 xT3\",\"call_number_browse\":\"PS3563.A3294 xT3\"}}"
       }
     end
+
+    before { stub_holding_locations }
+
     it 'has highlighted links and excerpt umlaut blocks' do
       render partial: 'catalog/show_availability_sidebar', locals: { document: document }
       expect(rendered).to have_selector '#highlighted_link'
@@ -124,6 +129,9 @@ RSpec.describe 'catalog/_show_availability_sidebar.html.erb' do
         'holdings_1display' => "{\"13395\":{\"location\":\"Forrestal Annex - Temporary\",\"library\":\"Forrestal Annex\",\"location_code\":\"anxafst\",\"copy_number\":\"1\",\"call_number\":\"PS3563.A3294 xT3\",\"call_number_browse\":\"PS3563.A3294 xT3\"}}"
       }
     end
+
+    before { stub_holding_locations }
+
     it 'has highlighted links and excerpt umlaut blocks' do
       render partial: 'catalog/show_availability_sidebar', locals: { document: document }
       expect(rendered).to have_selector '#highlighted_link'

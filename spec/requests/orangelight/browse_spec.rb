@@ -78,6 +78,7 @@ RSpec.describe 'Orangelight Browsables', type: :request do
 
   describe 'Selected search box field' do
     it 'Based on search_field parameter when provided' do
+      stub_holding_locations
       get '/catalog?q=&search_field=title'
       expect(response.body).to include('selected="selected" value="title">Title (keyword)</option>')
     end

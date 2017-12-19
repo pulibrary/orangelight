@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe 'Feedback Form', type: :feature do
+  before { stub_holding_locations }
+
   context 'User has not signed in' do
     before do
       visit('/catalog/4747577')
