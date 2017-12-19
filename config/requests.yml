@@ -13,6 +13,7 @@ defaults: &defaults
 development:
   <<: *defaults
   voyager_ub_id: 1@DB
+  bibdata_base: https://bibdata-dev.princeton.edu
 test:
   <<: *defaults
   voyager_ub_id: 1@DB
