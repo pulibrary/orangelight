@@ -1,7 +1,6 @@
 module ApplicationHelper
   include Requests::Aeon
   require './lib/orangelight/string_functions'
-  require './lib/orangelight/bibdata'
 
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
