@@ -23,9 +23,11 @@
     </div>
   </div>
 
-  <div id="availability" class="col-sm-3 col-xs-12 record-availability">
-    <%= render partial: 'show_availability_sidebar', locals: { document: @document } %>
-  </div>
+  <% if render_availability? %>
+    <div id="availability" class="col-sm-3 col-xs-12 record-availability">
+      <%= render partial: 'show_availability_sidebar', locals: { document: @document } %>
+    </div>
+  <% end %>
 </div>
 <% if @document.ark.present? %>
   <div id="view" data-ark="<%= @document.ark %>">

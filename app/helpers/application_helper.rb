@@ -1,6 +1,7 @@
 module ApplicationHelper
   include Requests::Aeon
   require './lib/orangelight/string_functions'
+  require './lib/orangelight/bibdata'
 
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
@@ -326,12 +327,12 @@ module ApplicationHelper
     scsb_multiple = false
     holdings_hash.first(2).each do |id, holding|
       location = holding_location(holding)
-      check_availability = true
+      check_availability = render_availability?
       info = ''
       if holding['library'] == 'Online'
         check_availability = false
         if links.empty?
-          check_availability = true
+          check_availability = render_availability?
           info << content_tag(:span, 'Link Missing',
                               class: 'availability-icon label label-default', title: 'Availability: Online',
                               'data-toggle' => 'tooltip')

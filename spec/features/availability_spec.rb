@@ -10,7 +10,7 @@ describe 'Availability' do
       expect(page).to have_selector('.location--holding', count: 1)
     end
 
-    it 'listing invidividual holdings', unless: in_travis? do
+    it 'listing individual holdings', unless: in_travis? do
       expect(page).to have_selector('.location--holding .holding-block', count: 4)
     end
 
@@ -57,6 +57,43 @@ describe 'Availability' do
       it 'still displays the record with a ReCAP location' do
         visit 'catalog/SCSB-7935196'
         expect(page).to have_selector '.library-location', text: 'ReCAP'
+      end
+    end
+  end
+
+  context 'when visited by an indexing bot' do
+    before do
+      page.driver.add_headers('User-Agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 (compatible; AdsBot-Google-Mobile; +http://www.google.com/mobile/adsbot.html)')
+    end
+
+    describe 'viewing a catalog record', js: true do
+      before do
+        visit '/catalog/3256177'
+      end
+
+      it 'does not render the holding section' do
+        expect(page).not_to have_selector('.location--holding')
+      end
+    end
+
+    describe 'viewing a record for an electronic holding', js: true do
+      before do
+        visit '/catalog/857469'
+      end
+
+      it 'does not render the online section' do
+        expect(page).not_to have_selector('.location--online')
+      end
+    end
+
+    describe 'viewing a record for a holding in a temp location', js: true do
+      before do
+        page.driver.add_headers('User-Agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 (compatible; AdsBot-Google-Mobile; +http://www.google.com/mobile/adsbot.html)')
+        visit '/catalog?q=7917192'
+      end
+
+      it 'does not render the location' do
+        expect(page).not_to have_selector('.location--holding')
       end
     end
   end
