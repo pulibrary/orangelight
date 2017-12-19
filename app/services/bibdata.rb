@@ -1,5 +1,8 @@
 class Bibdata
   class << self
+    # rubocop:disable MethodLength
+    # rubocop:disable AbcSize
+    # ignore rubocop warnings; complexity and length step from error checking.
     def get_patron(id)
       return false unless id
       begin
