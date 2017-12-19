@@ -1,5 +1,3 @@
-require './lib/orangelight/bibdata.rb'
-
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def cas
