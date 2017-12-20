@@ -44,12 +44,12 @@ set :linked_dirs, %w{tmp/pids tmp/sockets}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
+# set :default_env, { path: "/home/vagrant/.rvm/gems/ruby-2.2.3/bin:$PATH" }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
 namespace :deploy do
-
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -58,17 +58,24 @@ namespace :deploy do
     end
   end
 
-  after :publishing, :restart
-    
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
-
     end
   end
+
+  task :robots_txt do
+    on roles(:app) do
+      within release_path do
+        execute :rake, 'pulsearch:robots_txt'
+      end
+    end
+  end
+  after :publishing, :restart
+  after :publishing, :robots_txt
+
   after :finishing, 'deploy:cleanup'
 end
