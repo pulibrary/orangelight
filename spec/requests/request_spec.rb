@@ -450,4 +450,11 @@ describe 'blacklight tests' do
       expect(r['response']['docs'].select { |d| d['id'] == '7917192' }[0]['series_display']).to be_nil
     end
   end
+
+  describe 'voyager login url pattern' do
+    it 'redirects to the account page' do
+      get '/cgi-bin/Pwebrecon.cgi?PAGE=pbLogon'
+      expect(response).to redirect_to('/account')
+    end
+  end
 end
