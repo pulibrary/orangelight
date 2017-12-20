@@ -487,6 +487,17 @@ module ApplicationHelper
     args[:document][args[:field]].join(', ')
   end
 
+  def location_has(args)
+    location_notes = JSON.parse(args[:document][:holdings_1display]).collect { |_k, v| v['location_has'] }.flatten
+    if location_notes.length > 1
+      content_tag(:ul) do
+        location_notes.map { |note| content_tag(:li, note) }.join.html_safe
+      end
+    else
+      location_notes
+    end
+  end
+
   def render_location_code(value)
     location = Bibdata.holding_locations[value.to_sym]
     location.nil? ? value : "#{value}: #{location_full_display(location)}"

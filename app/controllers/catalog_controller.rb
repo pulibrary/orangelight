@@ -196,6 +196,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'biographical_historical_note_display', label: 'Biographical/&#8203;Historical note'
     config.add_show_field 'summary_note_display', label: 'Summary note'
     config.add_show_field 'notes_display', label: 'Notes'
+    config.add_show_field 'holdings_1display', label: 'Location has', if: :online_holding_note?, helper_method: :location_has
 
     config.add_show_field 'with_notes_display', label: 'With'
     config.add_show_field 'bibliographic_notes_display', label: 'Bibliographic history'
