@@ -49,5 +49,10 @@ module Orangelight
     def user_email
       return current_user.email if current_or_guest_user.provider == 'cas'
     end
+
+    def online_holding_note?(_field_config, document)
+      location_notes = JSON.parse(document[:holdings_1display] || '{}').collect { |_k, v| v['location_has'] }
+      document[:electronic_access_1display].present? && location_notes.any?
+    end
   end
 end
