@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe 'Request Options' do
+  before { stub_holding_locations }
+
   describe 'Available status non-requestable location', js: true do
     before do
       visit '/catalog/9222024'

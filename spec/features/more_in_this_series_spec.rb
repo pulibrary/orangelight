@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 context 'viewing record with series title' do
+  before { stub_holding_locations }
+
   it 'does not appear for 490 series titles' do
     visit '/catalog/5525311'
     expect(page.all('a.more-in-series').length).to eq 0

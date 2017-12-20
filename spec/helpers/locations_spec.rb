@@ -10,6 +10,7 @@ RSpec.describe ApplicationHelper do
     let(:stackmap_ineligible_library) { 'Fine Annex' }
 
     it 'Returns a Stackmap Link for a Mapping Location' do
+      stub_holding_locations
       stackmap_link = locate_url(stackmap_location, bib, call_number, stackmap_library)
       expect(stackmap_link).to be_truthy
       expect(stackmap_link).to include("?loc=#{stackmap_location}&id=#{bib[:id]}")
@@ -27,6 +28,8 @@ RSpec.describe ApplicationHelper do
   end
 
   describe '#render_location_code' do
+    before { stub_holding_locations }
+
     it 'returns value when value is not a valid location code' do
       value = 'blah'
       expect(render_location_code(value)).to eq value
@@ -44,9 +47,13 @@ RSpec.describe ApplicationHelper do
     let(:valid_code) { { 'location' => fallback, 'location_code' => 'clas' } }
 
     it 'returns holding location label when location code lookup successful' do
+      stub_holding_locations
       expect(holding_location_label(valid_code)).to eq('Firestone Library - Classics Collection (Clas)')
     end
     it 'returns holding location value when location code lookup fails' do
+      stub_request(:get, "#{ENV['bibdata_base']}/locations/holding_locations.json")
+        .to_return(status: 500,
+                   body: '')
       expect(holding_location_label(invalid_code)).to eq(fallback)
     end
     it 'returns holding location value when no location code' do

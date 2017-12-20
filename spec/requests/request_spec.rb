@@ -38,6 +38,8 @@ describe 'blacklight tests' do
   end
 
   describe 'Multiple locations check' do
+    before { stub_holding_locations }
+
     it 'records with 3 or more holdings indicate that the record view has full availability' do
       get '/catalog/857469.json'
       r = JSON.parse(response.body)
@@ -59,6 +61,8 @@ describe 'blacklight tests' do
   end
 
   describe 'Urlify check' do
+    before { stub_holding_locations }
+
     it 'links to an electronic resource with the appropriate display text' do
       get '/catalog/3'
       expect(response.body).to include("<a target=\"_blank\" href=\"#{ENV['proxy_base']}http://d-nb.info/991834119/04\">Inhaltsverzeichnis</a>")
@@ -87,6 +91,7 @@ describe 'blacklight tests' do
 
   describe 'stackmap link check' do
     it 'provides a link to locate an item for each holding' do
+      stub_holding_locations
       get '/catalog/430472.json'
       r = JSON.parse(response.body)
       bib = r['response']['document']['id']
@@ -104,6 +109,7 @@ describe 'blacklight tests' do
   SEPARATOR = '—'.freeze
   describe 'subjectify check' do
     it 'provides links to facet search based on hierarchy' do
+      stub_holding_locations
       get '/catalog/6139836.json'
       r = JSON.parse(response.body)
       sub_component = []
@@ -127,6 +133,8 @@ describe 'blacklight tests' do
   end
 
   describe 'dir tag check' do
+    before { stub_holding_locations }
+
     it 'adds rtl dir for title and author field in search results' do
       get '/catalog.json?&search_field=all_fields&q=4705304'
       r = JSON.parse(response.body)['response']['docs'].select { |d| d['id'] == '4705304' }[0]
@@ -181,6 +189,7 @@ describe 'blacklight tests' do
 
   describe 'advanced search tests' do
     it 'supports advanced render constraints' do
+      stub_holding_locations
       get '/catalog?&search_field=advanced&f1=left_anchor&q1=searching+for1&op2=AND&f2='\
           'left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for'
       expect(response.body.include?('<a class="btn btn-default remove dropdown-toggle" '\
@@ -236,6 +245,8 @@ describe 'blacklight tests' do
   end
 
   describe 'classic catalog link' do
+    before { stub_holding_locations }
+
     it 'is accessible from record show view' do
       id = '6574987'
       get "/catalog/#{id}"
@@ -250,6 +261,8 @@ describe 'blacklight tests' do
   end
 
   describe 'identifier metadata' do
+    before { stub_holding_locations }
+
     it 'is accessible from show view' do
       id = '7916044'
       get "/catalog/#{id}"
@@ -281,6 +294,7 @@ describe 'blacklight tests' do
 
   describe 'facets in search results' do
     it 'are configured with a tooltip for removing the book format facet parameter' do
+      stub_holding_locations
       get '/?f%5Bformat%5D%5B%5D=Book&q=&search_field=all_fields'
       expect(response.body.include?('<span class="glyphicon glyphicon-remove" data-toggle="tooltip" data-original-title="Remove"></span>')).to eq true
       get '/?q=&search_field=all_fields'
@@ -300,10 +314,12 @@ describe 'blacklight tests' do
       expect(response.body).to include('href="http://www.example.com/catalog/5291883"')
     end
     it 'provides link to linked related record (774 bib link) when found' do
+      stub_holding_locations
       get '/catalog/4705304'
       expect(response.body).to include('href="http://www.example.com/catalog/4705307"')
     end
     it 'provides link to record in which current record is contained (773 bib link) when found' do
+      stub_holding_locations
       get '/catalog/4705307'
       expect(response.body).to include('href="http://www.example.com/catalog/4705304"')
     end
@@ -312,6 +328,7 @@ describe 'blacklight tests' do
       expect(response.body).to include('href="http://www.example.com/catalog/3861539"')
     end
     it 'does not provide link to bib id in 776/787 if linked record does not exist' do
+      stub_holding_locations
       get '/catalog/857469.json'
       linked_bib = '4478078'
       r = JSON.parse(response.body)
@@ -353,6 +370,7 @@ describe 'blacklight tests' do
 
   describe 'stackmap url pattern' do
     it 'redirects to stackmap url' do
+      stub_holding_locations
       get '/catalog/9030657/stackmap?loc=f'
       expect(response).to redirect_to('https://library.princeton.edu/locator/index.php?loc=f&id=9030657')
     end
@@ -360,6 +378,7 @@ describe 'blacklight tests' do
 
   describe 'mathjax script' do
     it 'is included in search results' do
+      stub_holding_locations
       get '/?f%5Bformat%5D%5B%5D=Book&q=&search_field=all_fields'
       expect(response.body).to include('MathJax.js')
     end
@@ -368,12 +387,15 @@ describe 'blacklight tests' do
       expect(response.body).to include('MathJax.js')
     end
     it 'is excluded on marc record show page' do
+      stub_holding_locations
       get '/catalog/4705307'
       expect(response.body).not_to include('mathjax.org')
     end
   end
 
   describe 'escaping search/browse link urls' do
+    before { stub_holding_locations }
+
     it 'search result name facet/browse urls' do
       get '/?f%5Blocation%5D%5B%5D=East+Asian+Library'
       expect(response.body).to include('/?f[author_s][]=%E8%83%A1%E9%BA%97%E9%BA%97')
@@ -415,6 +437,7 @@ describe 'blacklight tests' do
       expect(r['response']['docs'].select { |d| d['id'] == '7917192' }[0]['series_display']).not_to be_nil
     end
     it 'is displayed when doing a series title search' do
+      stub_holding_locations
       get '/catalog.json?q3=Heft+%3D+Quaderno+%2F+Merkantilmuseum+Bozen+%3B&f3=series_title&search_field=advanced'
       r = JSON.parse(response.body)
       series_title = r['response']['docs'].select { |d| d['id'] == '6139836' }[0]['series_display']

@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'Unapi suport' do
   describe 'Show Page', js: true do
     before do
+      stub_holding_locations
       visit '/catalog/3256177'
     end
     it 'contains an unapi reference in an abbr tag' do
@@ -13,6 +14,7 @@ describe 'Unapi suport' do
 
   describe 'Search Results Page', js: true do
     before do
+      stub_holding_locations
       visit '/catalog?search_field=all_fields&q='
     end
     it 'contains an unapi reference for every search result' do

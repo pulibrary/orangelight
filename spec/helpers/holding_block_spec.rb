@@ -161,6 +161,8 @@ RSpec.describe ApplicationHelper do
     end
 
     context 'search results when there are more than two call numbers' do
+      before { stub_holding_locations }
+
       it 'displays View Record for Availability' do
         expect(search_result).to include 'View Record for Full Availability'
       end
@@ -169,6 +171,8 @@ RSpec.describe ApplicationHelper do
       end
     end
     context '#holding_block_search' do
+      before { stub_holding_locations }
+
       it 'returns a good string' do
         expect(search_result).to include call_number
         expect(search_result).to include library
@@ -207,11 +211,15 @@ RSpec.describe ApplicationHelper do
         }.to_json.to_s
       end
 
+      before { stub_holding_locations }
+
       it 'includes the item in the result without an error' do
         expect(search_result).to include call_number
       end
     end
     context '#holding_block record show - physical holdings' do
+      before { stub_holding_locations }
+
       it 'returns a string with call number and location display values' do
         expect(show_result.last).to include call_number
         expect(show_result.last).to include library
@@ -237,6 +245,8 @@ RSpec.describe ApplicationHelper do
     end
 
     context '#holding_block record show - physical holding thesis reading room request' do
+      before { stub_holding_locations }
+
       it 'displays a Reading Room Request button' do
         expect(show_result_thesis.last).to include 'Reading Room Request'
       end
@@ -250,12 +260,14 @@ RSpec.describe ApplicationHelper do
 
     context '#holding_block record show - thesis after 2012' do
       it 'does not display a request button for theses created after 2012' do
+        stub_holding_locations
         expect(show_result_thesis_no_request.last).not_to have_selector '.service-always-requestable'
       end
     end
 
     context '#holding_block record show - online holdings' do
       it 'link missing label appears when 856s is missing from elf location' do
+        stub_holding_locations
         expect(show_result.first).to include 'Link Missing'
       end
     end

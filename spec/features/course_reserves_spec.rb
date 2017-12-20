@@ -6,6 +6,7 @@ describe 'course reserves functionality' do
     stub_bib_ids
   end
   it 'displays appropriate course reserves' do
+    stub_holding_locations
     visit '/course_reserves'
     click_link 'MOL 101: From DNA to Human Complexity'
     expect(page).to have_selector '.document', count: 1

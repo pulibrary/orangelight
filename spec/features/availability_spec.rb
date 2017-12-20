@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'Availability' do
   describe 'Physical Holdings are displayed on a record page', js: true do
     before do
+      stub_holding_locations
       visit '/catalog/3256177'
     end
 
@@ -21,6 +22,7 @@ describe 'Availability' do
 
   describe 'Electronic Holdings are displayed on a record page', js: true do
     it 'within the online section', unless: in_travis? do
+      stub_holding_locations
       visit '/catalog/857469'
       expect(page).to have_selector '.location--online .panel-body a', minimum: 1
     end
@@ -34,11 +36,13 @@ describe 'Availability' do
 
   describe 'Physical Holdings in temp locations', js: true do
     it 'displays temp location on search results along with call number' do
+      stub_holding_locations
       visit '/catalog?q=7917192'
       expect(page).to have_selector '.library-location', text: 'Lewis Library - Course Reserve'
       expect(page).to have_selector '.library-location', text: 'QA303.2 .W45 2014'
     end
     it 'displays temp location and copy on record show' do
+      stub_holding_locations
       visit 'catalog/7917192'
       expect(page).to have_selector 'h3.library-location', text: 'Lewis Library - Course Reserve'
     end
@@ -46,6 +50,7 @@ describe 'Availability' do
 
   describe 'On-site multiple items all available', js: true do
     it 'display availability as on-site and does not display individual items' do
+      stub_holding_locations
       visit 'catalog/2238036'
       expect(page).to have_selector '.availability-icon.label.label-success', text: 'On-site access', count: 1
       expect(page).not_to have_selector 'ul.item-status'
@@ -55,6 +60,7 @@ describe 'Availability' do
   describe 'Holdings for SCSB records' do
     context 'when a record has no format' do
       it 'still displays the record with a ReCAP location' do
+        stub_holding_locations
         visit 'catalog/SCSB-7935196'
         expect(page).to have_selector '.library-location', text: 'ReCAP'
       end

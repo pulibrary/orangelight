@@ -13,6 +13,8 @@ RSpec.describe StackmapService::Url do
     }
   end
 
+  before { stub_holding_locations }
+
   describe '#url with valid params' do
     describe 'firestone, call number provided' do
       let(:location) { 'f' }
