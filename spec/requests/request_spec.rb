@@ -237,6 +237,9 @@ describe 'blacklight tests' do
   describe 'staff view' do
     it 'marcxml matches bibdata marcxml for record' do
       id = '6574987'
+      stub_request(:get, "#{ENV['bibdata_base']}/bibliographic/#{id}")
+        .to_return(status: 200,
+                   body: File.read(File.join(fixture_path, 'bibdata', "#{id}.xml")))
       get "/catalog/#{id}.marcxml"
       staff_view = response.body
       bibdata = Faraday.get("#{ENV['bibdata_base']}/bibliographic/#{id}").body
