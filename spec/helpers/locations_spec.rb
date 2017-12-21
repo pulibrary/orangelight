@@ -64,18 +64,6 @@ RSpec.describe ApplicationHelper do
     end
   end
 
-  describe '#open_location?' do
-    let(:loc) { { open: true } }
-    let(:holding) { { 'call_number_browse' => 'KF 1232 .B2', 'location_code' => 'f' } }
-
-    it 'returns the location open attribute value' do
-      expect(open_location?(loc)).to eq true
-    end
-    it 'returns false when nil location is passed to function' do
-      expect(open_location?(nil)).to eq false
-    end
-  end
-
   describe '#aeon_location?' do
     let(:loc) { { aeon_location: true } }
 

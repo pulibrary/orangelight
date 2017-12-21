@@ -2,36 +2,9 @@ module ApplicationHelper
   include Requests::Aeon
   require './lib/orangelight/string_functions'
 
-  # First argument of link_to is optional display text. If null, the second argument
-  # (URL) is the display text for the link.
-  # Proxy Base is added to force remote access when appropriate
-  def urlify(electronic_access, document)
-    urls = ''
-    links = JSON.parse(electronic_access)
-    links.each do |url, text|
-      link = if /Open access/ =~ text.first
-               link_to(text.first, url.to_s, target: '_blank')
-             else
-               link_to(text.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
-             end
-      link = "#{text[1]}: " + link if text[1]
-      link = "<li>#{link}</li>" if links.count > 1
-      if /getit\.princeton\.edu/ =~ url
-        marcit_ctx = url.gsub('http://getit.princeton.edu/resolve?', '') # strip to get only the query_string
-        urls << content_tag(:div, '', :id => 'full_text', :class => ['availability--panel', 'availability_full-text'], 'data-umlaut-full-text' => true, 'data-url-marcit' => marcit_ctx)
-      end
-      urls << content_tag(:div, link.html_safe, class: 'electronic-access')
-    end
-    unless links.keys.any? { |link| /getit\.princeton\.edu/.match(link) } || links.empty? || !document.umlaut_fulltext_eligible?
-      urls << content_tag(:div, '', :id => 'full_text', :class => ['availability--panel', 'availability_full-text', 'availability_full-text-alternative'], 'data-umlaut-services' => true)
-    end
-    if links.count > 1
-      content_tag(:ul, urls.html_safe)
-    else
-      urls.html_safe
-    end
-  end
-
+  # Generate the markup for the <div> containing a link to the umlaut service endpoint for a given record
+  # @param document [SolrDocument] the Solr Document for the record
+  # @return [String] the markup
   def umlaut_services_fulltext(document)
     services = ''
     unless document.key? 'electronic_access_1display'
@@ -40,6 +13,8 @@ module ApplicationHelper
     services.html_safe
   end
 
+  # Generate the markup for two <div> elements containing links to umlaut services
+  # @return [String] the markup
   def umlaut_services
     services = ''
     services << content_tag(:div, '', :id => 'excerpts', :class => ['availability--panel', 'availability_excerpts', 'availability--panel_umlaut'], 'data-umlaut-services' => true)
@@ -47,7 +22,10 @@ module ApplicationHelper
     services.html_safe
   end
 
+  # Generate an Array of <div> elements wrapping links to proxied service endpoints for access
   # Takes first 2 links for pairing with online holdings in search results
+  # @param electronic_access [Hash] electronic resource information
+  # @return [Array<String>] array containing the links in the <div>'s
   def search_links(electronic_access)
     urls = []
     unless electronic_access.nil?
@@ -61,31 +39,51 @@ module ApplicationHelper
     urls
   end
 
+  # The String constants specifying the libraries for which stack map location links should not be generated
   DONT_FIND_IT = ['Fine Annex', 'Forrestal Annex', 'Mudd Manuscript Library', 'Online', 'Rare Books and Special Collections', 'ReCAP'].freeze
-  def locate_link(location, call_number, library)
-    link = locate_url(location, @document, call_number, library)
-    if link.nil?
-      ''
-    else
-      ' ' + link_to(%(<span class="link-text">#{t('blacklight.holdings.stackmap')}</span><span class="glyphicon glyphicon-map-marker"></span>).html_safe, link, :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
-    end
-  end
 
-  def locate_link_with_glyph(location, document, call_number, library)
-    link = locate_url(location, document, call_number, library)
-    if link.nil?
-      ''
-    else
-      ' ' + link_to('<span class="glyphicon glyphicon-map-marker"></span>'.html_safe, link, :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
-    end
-  end
-
+  # Retrieve a URL for a stack map location URL given a record, a call number, and the library in which it is held
+  # @param location [Hash] location information for the item holding
+  # @param document [SolrDocument] the Solr Document for the record
+  # @param call_number [String] the call number for the holding
+  # @param library [String] the library in which the item is held
+  # @return [StackmapService::Url] the stack map location
   def locate_url(location, document, call_number, library = nil)
     unless DONT_FIND_IT.include?(library) || call_number.nil?
       ::StackmapService::Url.new(document: document, loc: location, cn: call_number).url
     end
   end
 
+  # Generate the link markup for a given item holding within a library
+  # @param location [Hash] location information for the item holding
+  # @param call_number [String] the call number for the holding
+  # @param library [String] the library in which the item is held
+  # @return [String] the markup
+  def locate_link(location, call_number, library)
+    link = locate_url(location, @document, call_number, library)
+    if link.nil?
+      ''
+    else
+      ' ' + link_to(%(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span><span class="glyphicon glyphicon-map-marker"></span>).html_safe, link, :target => '_blank', title: I18n.t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
+    end
+  end
+
+  # Generate the link markup (styled with a glyphicon image) for a given item holding within a library
+  # @param location [Hash] location information for the item holding
+  # @param document [SolrDocument] the Solr Document for the record
+  # @param call_number [String] the call number for the holding
+  # @param library [String] the library in which the item is held
+  # @return [String] the markup
+  def locate_link_with_glyph(location, document, call_number, library)
+    link = locate_url(location, document, call_number, library)
+    if link.nil?
+      ''
+    else
+      ' ' + link_to('<span class="glyphicon glyphicon-map-marker"></span>'.html_safe, link, :target => '_blank', title: I18n.t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
+    end
+  end
+
+  # Generate the markup for the block containing links for requests to item holdings
   # holding record fields: 'location', 'library', 'location_code', 'call_number', 'call_number_browse',
   # 'shelving_title', 'location_note', 'electronic_access_1display', 'location_has', 'location_has_current',
   # 'indexes', 'supplements'
@@ -94,119 +92,17 @@ module ApplicationHelper
   # @return [String] online - online holding info html
   # @return [String] physical - physical holding info html
   def holding_request_block(document)
-    doc_id = document['id']
-    holdings = JSON.parse(document['holdings_1display'] || '{}')
-    links = urlify(document['electronic_access_1display'] || '{}', document)
-    physical_holdings = ''
-    online_holdings = ''
-    is_journal = document.fetch('format', []).include?('Journal')
-    pub_date = document.key?('pub_date_start_sort') ? document['pub_date_start_sort'] : 0
-    online_holdings << links
-    elf_holdings, other_holdings = holdings.partition { |_id, h| h['location_code'].start_with?('elf') }
-    elf_holdings.each do |id, holding|
-      online_holdings << process_online_holding(holding, doc_id, id, links.empty?)
-    end
-    other_holdings.sort_by { |_id, h| Bibdata.holding_locations.keys.index(h['location_code']) }.each do |id, holding|
-      physical_holdings << process_physical_holding(holding, doc_id, id, is_journal, pub_date)
-    end
-    online = content_tag(:div, online_holdings.html_safe) unless online_holdings.empty?
-    physical = content_tag(:div, physical_holdings.html_safe) unless physical_holdings.empty?
-    physical = missing_holdings if physical.nil? && online.nil?
-    [online, physical]
+    adapter = HoldingRequestsAdapter.new(document, Bibdata)
+    markup_builder = HoldingRequestsBuilder.new(adapter: adapter,
+                                                online_markup_builder: OnlineHoldingsMarkupBuilder,
+                                                physical_markup_builder: PhysicalHoldingsMarkupBuilder)
+    online_markup, physical_markup = markup_builder.build
+    [online_markup, physical_markup]
   end
 
-  def process_online_holding(_holding, bib_id, holding_id, link_missing)
-    info = ''
-    if link_missing
-      info << content_tag(:span, 'Link Missing', class: 'availability-icon label label-default',
-                                                 title: 'Availability: Online', 'data-toggle' => 'tooltip')
-      info = content_tag(:div, info.html_safe, class: 'holding-block', data: { availability_record: true, record_id: bib_id, holding_id: holding_id })
-    end
-    info
-  end
-
-  def missing_holdings
-    content_tag(:div, t('blacklight.holdings.missing'), class: 'holding-block')
-  end
-
-  def process_physical_holding(holding, bib_id, holding_id, is_journal, pub_date)
-    info = ''
-    location_rules = Bibdata.holding_locations[holding['location_code'].to_sym]
-    cn_value = holding['call_number_browse'] || holding['call_number']
-    if (holding_loc = holding_location_label(holding)).present?
-      location = content_tag(:span, holding_loc, class: 'location-text', data:
-                            {
-                              location: true,
-                              holding_id: holding_id
-                            })
-      location << locate_link(holding['location_code'], cn_value, holding['library']).html_safe
-      info << content_tag(:h3, location.html_safe, class: 'library-location', data: { holding_id: holding_id })
-    end
-    unless cn_value.nil?
-      cn_browse_link = link_to(%(<span class="link-text">#{t('blacklight.holdings.browse')}</span> <span class="icon-bookslibrary"></span>).html_safe,
-                               "/browse/call_numbers?q=#{CGI.escape cn_value}",
-                               class: 'browse-cn', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{cn_value}",
-                               title: "Browse: #{cn_value}")
-      cn = "#{holding['call_number']} #{cn_browse_link}"
-      info << content_tag(:div, cn.html_safe, class: 'holding-call-number')
-    end
-    info << if holding['dspace']
-              content_tag(:span, 'On-site access', class: 'availability-icon label label-warning',
-                                                   title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
-            elsif /^scsb.+/ =~ holding['location_code']
-              unless holding['items'].nil?
-                content_tag(:div, content_tag(:span, '', title: '', class: 'availability-icon label', data: { toggle: 'tooltip' }).html_safe, class: 'holding-status', data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id, 'scsb-barcode' => holding['items'].first['barcode'], 'aeon' => recap_supervised_items?(holding) })
-              end
-            elsif holding['dspace'].nil?
-              content_tag(:div, content_tag(:div, '', class: 'availability-icon').html_safe, class: 'holding-status', data: { 'availability_record' => true, 'record_id' => bib_id, 'holding_id' => holding_id, aeon: aeon_location?(location_rules) })
-            else
-              content_tag(:span, 'Unavailable', class: 'availability-icon label label-danger',
-                                                title: 'Availability: Embargoed', 'data-toggle' => 'tooltip')
-            end
-    info << content_tag(:ul, "#{holding_label('Shelving title:')} #{listify_array(holding['shelving_title'])}".html_safe, class: 'shelving-title') unless holding['shelving_title'].nil?
-    info << content_tag(:ul, "#{holding_label('Location note:')} #{listify_array(holding['location_note'])}".html_safe, class: 'location-note') unless holding['location_note'].nil?
-    info << content_tag(:ul, "#{holding_label('Location has:')} #{listify_array(holding['location_has'])}".html_safe, class: 'location-has') unless holding['location_has'].nil?
-    info << content_tag(:ul, ''.html_safe, class: 'journal-current-issues', data: { journal: true, holding_id: holding_id }) if is_journal
-    # Label SCSB Use Restrictions
-    if /^scsb.+/ =~ holding['location_code']
-      info << recap_item_list(holding) unless holding['items'].nil?
-    end
-    unless holding_id == 'thesis' && pub_date > 2012
-      info << request_placeholder(bib_id, holding_id, location_rules, holding).html_safe
-    end
-    info = content_tag(:div, info.html_safe, class: 'holding-block') unless info.empty?
-    info
-  end
-
-  def recap_item_list(holding)
-    restricted_items = holding['items'].map do |item|
-      if item['use_statement'].present?
-        content_tag(:li, title: recap_use_toolip(item['use_statement']), 'data-toggle' => 'tooltip') do
-          content_tag(:span, recap_use_label(item['use_statement']), class: 'icon-warning icon-request-reading-room').html_safe
-        end
-      end
-    end
-    restricted_items.compact!
-    if restricted_items.empty?
-      ''
-    else
-      restricted_items.uniq!
-      content_tag(:ul, "#{holding_label('Use Restrictions:')} #{restricted_items.join}".html_safe, class: 'item-list')
-    end
-  end
-
-  def recap_use_label(restriction)
-    "#{restriction} Only"
-  end
-
-  def recap_use_toolip(restriction)
-    if restriction == 'In Library Use'
-      t('blacklight.scsb.in_library_use')
-    else
-      t('blacklight.scsb.supervised_use')
-    end
-  end
-
+  # Determine whether or not a ReCAP holding has items restricted to supervised use
+  # @param holding [Hash] holding values
+  # @return [TrueClass, FalseClass]
   def recap_supervised_items?(holding)
     if holding.key? 'items'
       restricted_items = holding['items'].select { |item| item['use_statement'] == 'Supervised Use' }
@@ -216,13 +112,8 @@ module ApplicationHelper
     end
   end
 
-  def listify_array(arr)
-    arr = arr.map do |e|
-      content_tag(:li, e)
-    end
-    arr.join
-  end
-
+  # Blacklight show field helper for the facet "series_display"
+  # @param args [Hash]
   def series_with_links(args)
     series_titles = args[:document]['more_in_this_series_t'] || []
     args[:document][args[:field]].each_with_index do |title, i|
@@ -235,6 +126,8 @@ module ApplicationHelper
     end
   end
 
+  # Blacklight index field helper for the facet "series_display"
+  # @param args [Hash]
   def series_results(args)
     series_display =
       if params[:f1] == 'in_series'
@@ -245,10 +138,17 @@ module ApplicationHelper
     args[:document][args[:field]] = series_display.join(', ')
   end
 
+  # Retrieve the same series for that one being displayed
+  # @param series [String] series name
+  # @param series_display [Array<String>] series being displayed
+  # @param [Array<String>] similarly named series
   def same_series_result(series, series_display)
     series_display.select { |t| t.start_with?(series) }
   end
 
+  # Generate a query link for all items within a given series using a title
+  # @param title [String] the title of the series
+  # @return [String] the link markup
   def more_in_this_series_link(title)
     no_parens = title.gsub(/[()]/, '')
     link_to('[More in this series]', "/catalog?q1=#{CGI.escape no_parens}&f1=in_series&search_field=advanced",
@@ -257,62 +157,15 @@ module ApplicationHelper
             dir: title.dir.to_s)
   end
 
-  def holding_label(label)
-    content_tag(:div, label, class: 'holding-label')
-  end
-
-  def request_placeholder(doc_id, holding_id, location_rules, holding)
-    content_tag(:div, class: "location-services #{show_request(location_rules, holding_id)}", data: { open: open_location?(location_rules), requestable: requestable_location?(location_rules), aeon: aeon_location?(location_rules), holding_id: holding_id }) do
-      if /^scsb.+/ =~ location_rules['code']
-        if recap_supervised_items?(holding)
-          link_to 'Reading Room Request', "/requests/#{doc_id}?source=pulsearch", title: 'Request to view in Reading Room', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
-        else
-          link_to request_label(location_rules), "/requests/#{doc_id}?source=pulsearch", title: request_tooltip(location_rules), class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
-        end
-      elsif non_voyager?(holding_id)
-        link_to 'Reading Room Request', "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch", title: 'Request to view in Reading Room', class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
-      else
-        link_to request_label(location_rules), "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch", title: request_tooltip(location_rules), class: 'request btn btn-xs btn-primary', data: { toggle: 'tooltip' }
-      end
-    end
-  end
-
-  def request_label(location_rules)
-    if aeon_location?(location_rules)
-      'Reading Room Request'
-    else
-      'Request'
-    end
-  end
-
-  def request_tooltip(location_rules)
-    if aeon_location?(location_rules)
-      'Request to view in Reading Room'
-    else
-      'View Options to Request copies from this Location'
-    end
-  end
-
-  def show_request(location_rules, holding_id)
-    if non_voyager?(holding_id) || aeon_location?(location_rules) || /^scsb.+/ =~ location_rules['code']
-      'service-always-requestable'
-    else
-      'service-conditional'
-    end
-  end
-
-  def open_location?(location)
-    location.nil? ? false : location[:open]
-  end
-
-  def requestable_location?(location)
-    location.nil? ? false : location[:requestable]
-  end
-
+  # Determines whether or not this is an aeon location (for an item holding)
+  # @param location [Hash] location values
+  # @return [TrueClass, FalseClass]
   def aeon_location?(location)
     location.nil? ? false : location[:aeon_location]
   end
 
+  # Retrieve the location information for a given item holding
+  # @param [Hash] holding values
   def holding_location(holding)
     location_code = holding.fetch('location_code', '').to_sym
     resolved_location = Bibdata.holding_locations[location_code]
@@ -381,7 +234,7 @@ module ApplicationHelper
                                         'data-toggle' => 'tooltip').html_safe, class: 'empty', data: { record_id: document['id'] })
     end
     if block.empty?
-      content_tag(:div, t('blacklight.holdings.search_missing'))
+      content_tag(:div, I18n.t('blacklight.holdings.search_missing'))
     else
       content_tag(:ul, block.html_safe)
     end
@@ -421,7 +274,7 @@ module ApplicationHelper
       all_subjects[i].each_with_index do |subsubject, j|
         lnk = lnk_accum + link_to(subsubject,
                                   "/?f[subject_facet][]=#{CGI.escape sub_array[i][j]}", class: 'search-subject', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{sub_array[i][j]}", title: "Search: #{sub_array[i][j]}")
-        lnk_accum = lnk + t(SEPARATOR, class: 'subject-level')
+        lnk_accum = lnk + I18n.t(SEPARATOR, class: 'subject-level')
         full_sub = sub_array[i][j]
       end
       lnk += '  '
@@ -509,6 +362,7 @@ module ApplicationHelper
     location.nil? ? holding['location'] : location_full_display(location)
   end
 
+  #     location = Bibdata.holding_locations[value.to_sym]
   def location_full_display(loc)
     loc['label'] == '' ? loc['library']['label'] : loc['library']['label'] + ' - ' + loc['label']
   end

@@ -42,6 +42,9 @@ Metrics/AbcSize:
     - 'lib/orangelight/browse_lists.rb'
     - 'lib/orangelight/voyager_account.rb'
     - 'lib/orangelight/voyager_patron_client.rb'
+    - 'app/services/holding_requests_builder.rb'
+    - 'app/services/physical_holdings_markup_builder.rb'
+    - 'app/services/online_holdings_markup_builder.rb'
 
 Metrics/BlockNesting:
   Exclude:
@@ -53,6 +56,9 @@ Metrics/ClassLength:
   - 'app/controllers/account_controller.rb'
   - 'app/controllers/catalog_controller.rb'
   - 'lib/orangelight/voyager_patron_client.rb'
+  - 'app/services/holding_requests_builder.rb'
+  - 'app/services/physical_holdings_markup_builder.rb'
+  - 'app/services/online_holdings_markup_builder.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:
@@ -67,6 +73,8 @@ Metrics/CyclomaticComplexity:
     - 'app/models/concerns/blacklight/document/ris.rb'
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'lib/orangelight/browse_lists.rb'
+    - 'app/services/holding_requests_builder.rb'
+    - 'app/services/physical_holdings_markup_builder.rb'
 
 Metrics/LineLength:
   Max: 100
@@ -114,6 +122,9 @@ Metrics/MethodLength:
     - 'spec/features/course_reserves_spec.rb'
     - 'spec/requests/course_reserve_spec.rb'
     - 'spec/repositories/course_reserve_repository_spec.rb'
+    - 'app/services/holding_requests_builder.rb'
+    - 'app/services/physical_holdings_markup_builder.rb'
+    - 'app/services/online_holdings_markup_builder.rb'
 
 Metrics/ModuleLength:
   Exclude:
@@ -133,6 +144,8 @@ Metrics/PerceivedComplexity:
     - 'app/helpers/facets_helper.rb'
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'lib/orangelight/browse_lists.rb'
+    - 'app/services/holding_requests_builder.rb'
+    - 'app/services/physical_holdings_markup_builder.rb'
 
 RSpec/AnyInstance:
   Exclude:
@@ -189,6 +202,14 @@ Style/HashSyntax:
 
 Rails/TimeZone:
   Enabled: false
+
+Rails/OutputSafety:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'app/services/holding_requests_builder.rb'
+    - 'app/services/physical_holdings_markup_builder.rb'
+    - 'app/services/online_holdings_markup_builder.rb'
 
 RSpec/ExampleWording:
   CustomTransform:

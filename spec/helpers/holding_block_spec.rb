@@ -9,13 +9,12 @@ RSpec.describe ApplicationHelper do
     let(:search_result) { helper.holding_block_search(document) }
     let(:search_result_thesis) { helper.holding_block_search(document_thesis) }
     let(:empty_search_result) { helper.holding_block_search(document_no_holdings) }
-    let(:show_result) { helper.holding_request_block(document) }
-    let(:show_result_journal) { helper.holding_request_block(document_journal) }
-    let(:show_result_thesis) { helper.holding_request_block(document_thesis) }
-    let(:show_result_thesis_no_request) { helper.holding_request_block(document_thesis_no_request_access) }
-    let(:show_result_marcit) { helper.urlify(electronic_access_marcit, document) }
-    let(:show_result_open_access) { helper.urlify(open_access_electronic_display, SolrDocument.new(document)) }
-    let(:show_result_non_open_access) { helper.urlify(electronic_display, SolrDocument.new(document)) }
+
+    let(:show_result) { helper.holding_request_block(SolrDocument.new(document)) }
+    let(:show_result_journal) { helper.holding_request_block(SolrDocument.new(document_journal)) }
+    let(:show_result_thesis) { helper.holding_request_block(SolrDocument.new(document_thesis)) }
+    let(:show_result_thesis_no_request) { helper.holding_request_block(SolrDocument.new(document_thesis_no_request_access)) }
+
     let(:show_result_umlaut_w_full_text) { helper.umlaut_services }
     let(:not_umlaut_full_text_eligible) { SolrDocument.new(document_no_umlaut) }
     let(:umlaut_full_text_eligible) { SolrDocument.new(document) }
@@ -271,26 +270,7 @@ RSpec.describe ApplicationHelper do
         expect(show_result.first).to include 'Link Missing'
       end
     end
-    context '#urlify a marcit record' do
-      it 'is marked as full text record' do
-        expect(show_result_marcit).to have_selector "*[data-umlaut-full-text='true']"
-      end
 
-      it 'has a marcit context object' do
-        expect(show_result_marcit).to include 'data-url-marcit'
-        expect(show_result_marcit).to have_selector "*[data-url-marcit='#{marcit_ctx}']"
-      end
-    end
-    context '#urlify an Open access title' do
-      it 'does not have a proxy prefix added' do
-        expect(show_result_open_access).not_to include ENV['proxy_base']
-      end
-    end
-    context '#urlify an non Open access title' do
-      it 'does have a proxy prefix added' do
-        expect(show_result_non_open_access).to include ENV['proxy_base']
-      end
-    end
     context '#umlaut_format_eligible? formats' do
       it 'is false when it is not umlaut format' do
         expect(not_umlaut_full_text_eligible.umlaut_fulltext_eligible?).to be false

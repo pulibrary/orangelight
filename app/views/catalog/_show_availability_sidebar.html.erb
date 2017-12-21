@@ -1,5 +1,5 @@
 <% online, physical = holding_request_block(document) %>
-<% unless online.nil? %>
+<% unless online.blank? %>
   <div class="location--panel location--online">
     <div class="panel panel-default">
       <div class="panel-heading"><%= t('blacklight.holdings.online') %></div>
@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<% if online.nil? && document.standard_numbers? && document.umlaut_fulltext_eligible? %>
+<% if online.blank? && document.standard_numbers? && document.umlaut_fulltext_eligible? %>
   <%= umlaut_services_fulltext(document) %>
 <% end %>
 
