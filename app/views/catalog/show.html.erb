@@ -1,5 +1,4 @@
 <%= render 'previous_next_doc' %>
-<div id="content">
   <div id="main-content" class="col-sm-9 col-xs-12 main-content">
     <%= render_document_heading_partial %>
 
@@ -28,7 +27,6 @@
       <%= render partial: 'show_availability_sidebar', locals: { document: @document } %>
     </div>
   <% end %>
-</div>
 <% if @document.ark.present? %>
   <div id="view" data-ark="<%= @document.ark %>">
   </div>
