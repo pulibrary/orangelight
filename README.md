@@ -105,3 +105,10 @@ RAILS_ENV=development bundle exec rake browse:load_all
 
 You will need a working local copy of https://github.com/pulibrary/marc_liberation.
 Set the ```bidata_base``` value in your dev environment to point at this version. 
+
+## Running javascript unit tests
+
+`$ yarn install`
+`$ yarn test`
+
+Debugging instructions: https://facebook.github.io/jest/docs/en/troubleshooting.html
