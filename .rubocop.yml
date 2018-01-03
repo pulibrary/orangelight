@@ -20,7 +20,6 @@ AllCops:
     - 'config/deploy.rb'
     - 'config/initializers/blacklight_url_helper_behavior.rb'
     - 'spec/views/catalog/_show_availability_sidebar.html.erb_spec.rb'
-    - 'node_modules/**/*'
 
 Metrics/AbcSize:
   Exclude:

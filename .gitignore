@@ -29,6 +29,3 @@ coverage/
 solr/conf/*.txt
 solr/conf/*.xml
 solr/conf/*.jar
-/public/packs
-/public/packs-test
-/node_modules
