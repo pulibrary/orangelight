@@ -222,12 +222,12 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     location.nil? ? false : location[:aeon_location]
   end
 
-  def self.recap_location?(location)
+  def self.scsb_location?(location)
     /^scsb.+/ =~ location['code']
   end
 
   def self.requestable?(adapter, holding_id, location)
-    !adapter.voyager_holding?(holding_id) || aeon_location?(location) || recap_location?(location)
+    !adapter.voyager_holding?(holding_id) || aeon_location?(location) || scsb_location?(location)
   end
 
   # Generate the CSS class for holding based upon its location and ID
@@ -402,7 +402,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       markup << self.class.call_number_link(holding, cn_value) unless cn_value.nil?
       markup << if @adapter.repository_holding?(holding)
                   self.class.holding_location_repository
-                elsif @adapter.recap_holding?(holding) && !@adapter.empty_holding?(holding)
+                elsif @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
                   self.class.holding_location_recap(holding, bib_id, holding_id)
                 elsif @adapter.unavailable_holding?(holding)
                   self.class.holding_location_unavailable
@@ -421,7 +421,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
 
       markup << self.class.journal_issues_list(holding_id) if @adapter.journal?
 
-      if @adapter.recap_holding?(holding) && !@adapter.empty_holding?(holding)
+      if @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
         markup << self.class.recap_list(holding)
       end
 

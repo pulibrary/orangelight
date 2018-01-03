@@ -56,15 +56,26 @@ class SolrDocument
     end.compact
   end
 
+  # Retrieve the value of the ARK identifier
+  # @return [String] the ARK for the resource
   def ark
-    return unless full_ark && full_ark.include?('ark:')
-    /.*(ark:(.*))/.match(full_ark)[1]
+    return unless full_ark
+    m = /.*(ark:(.*))/.match(full_ark)
+    m[1]
   end
 
   private
 
+    def electronic_access_uris
+      electronic_access = first('electronic_access_1display')
+      values = JSON.parse(electronic_access)
+      values.keys
+    rescue
+      []
+    end
+
     def full_ark
-      JSON.parse(first('electronic_access_1display')).keys.find { |x| x.include?('ark:') }
+      electronic_access_uris.find { |x| x.include?('ark:') }
     rescue
       ''
     end

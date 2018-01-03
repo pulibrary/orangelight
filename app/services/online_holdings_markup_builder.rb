@@ -47,6 +47,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
       markup = "#{texts[1]}: " + link if texts[1]
       markup = "<li>#{link}</li>" if electronic_access.count > 1
 
+      # This should be restructured into #electronic_access_link
       if /getit\.princeton\.edu/ =~ url
         # strip to get only the query_string
         marcit_ctx = url.gsub('http://getit.princeton.edu/resolve?', '')

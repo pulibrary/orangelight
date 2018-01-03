@@ -126,9 +126,9 @@ class HoldingRequestsAdapter
     holding['dspace']
   end
 
-  # Determine whether or not the holding is for a ReCAP item
+  # Determine whether or not the holding is for a SCSB items with ReCAP
   # @return [TrueClass, FalseClass]
-  def recap_holding?(holding)
+  def scsb_holding?(holding)
     /^scsb.+/ =~ holding['location_code']
   end
 
