@@ -103,7 +103,7 @@ module ApplicationHelper
   # Determine whether or not a ReCAP holding has items restricted to supervised use
   # @param holding [Hash] holding values
   # @return [TrueClass, FalseClass]
-  def recap_supervised_items?(holding)
+  def scsb_supervised_items?(holding)
     if holding.key? 'items'
       restricted_items = holding['items'].select { |item| item['use_statement'] == 'Supervised Use' }
       restricted_items.count == holding['items'].count
@@ -202,7 +202,7 @@ module ApplicationHelper
           check_availability = false
           unless holding['items'].nil?
             scsb_multiple = true unless holding['items'].count == 1
-            if recap_supervised_items?(holding)
+            if scsb_supervised_items?(holding)
               info << content_tag(:span, 'On-site access', class: 'availability-icon label label-success', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
               info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip').html_safe
             else
@@ -379,7 +379,8 @@ module ApplicationHelper
     DateTime.now.year
   end
 
-  def recap_note(args)
+  def scsb_note(args)
     args[:document][args[:field]].uniq
   end
+  alias recap_note scsb_note
 end

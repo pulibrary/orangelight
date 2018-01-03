@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper do
-  describe '#recap_supervised_items?' do
-    let(:all_supervised) { helper.recap_supervised_items?(all_supervised_items) }
-    let(:some_supervised) { helper.recap_supervised_items?(some_supervised_items) }
-    let(:none_supervised) { helper.recap_supervised_items?(no_supervised_items) }
+  describe '#scsb_supervised_items?' do
+    let(:all_supervised) { helper.scsb_supervised_items?(all_supervised_items) }
+    let(:some_supervised) { helper.scsb_supervised_items?(some_supervised_items) }
+    let(:none_supervised) { helper.scsb_supervised_items?(no_supervised_items) }
     let(:all_supervised_items) {
       {
         'location' => 'ReCAP',

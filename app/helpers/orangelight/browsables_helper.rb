@@ -1,6 +1,6 @@
 module Orangelight
   module BrowsablesHelper
-    def recap_id?(bib_id)
+    def scsb_id?(bib_id)
       /^SCSB-\d+/ =~ bib_id
     end
 
@@ -13,7 +13,7 @@ module Orangelight
     end
 
     def should_check_availability?(bib_id)
-      !recap_id?(bib_id) && valid_bib_id?(bib_id) && render_availability?
+      !scsb_id?(bib_id) && valid_bib_id?(bib_id) && render_availability?
     end
   end
 end

@@ -101,7 +101,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                 'data-toggle' => 'tooltip')
   end
 
-  def self.holding_location_recap_span
+  def self.holding_location_scsb_span
     markup = content_tag(:span, '',
                          title: '',
                          class: 'availability-icon label',
@@ -109,15 +109,15 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     markup
   end
 
-  def self.holding_location_recap(holding, bib_id, holding_id)
-    content_tag(:div, holding_location_recap_span.html_safe,
+  def self.holding_location_scsb(holding, bib_id, holding_id)
+    content_tag(:div, holding_location_scsb_span.html_safe,
                 class: 'holding-status',
                 data: {
                   'availability_record' => true,
                   'record_id' => bib_id,
                   'holding_id' => holding_id,
                   'scsb-barcode' => holding['items'].first['barcode'],
-                  'aeon' => recap_supervised_items?(holding)
+                  'aeon' => scsb_supervised_items?(holding)
                 })
   end
 
@@ -165,11 +165,11 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                 data: { journal: true, holding_id: holding_id })
   end
 
-  def self.recap_use_label(restriction)
+  def self.scsb_use_label(restriction)
     "#{restriction} Only"
   end
 
-  def self.recap_use_toolip(restriction)
+  def self.scsb_use_toolip(restriction)
     if restriction == 'In Library Use'
       I18n.t('blacklight.scsb.in_library_use')
     else
@@ -180,23 +180,23 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # Generate the markup for a list item <li> containing a ReCAP holding
   # @param item [Hash] the values for a given ReCAP holding
   # @return [String] the markup
-  def self.recap_list_item(item, children)
+  def self.scsb_list_item(item, children)
     content_tag(:li, children.html_safe,
-                title: recap_use_toolip(item['use_statement']),
+                title: scsb_use_toolip(item['use_statement']),
                 'data-toggle' => 'tooltip')
   end
 
   # Generate the markup for an unordered list <ol> containing ReCAP holding
   # @param holding [Hash] the values for a given ReCAP holding
   # @return [String] the markup
-  def self.recap_list(holding)
+  def self.scsb_list(holding)
     restricted_items = holding['items'].map do |values|
       item_markup = ''
       if values['use_statement'].present?
         child = content_tag(:span,
-                            recap_use_label(values['use_statement']),
+                            scsb_use_label(values['use_statement']),
                             class: 'icon-warning icon-request-reading-room')
-        item_markup = recap_list_item(values, child)
+        item_markup = scsb_list_item(values, child)
       end
       item_markup
     end
@@ -281,7 +281,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     end
   end
 
-  def self.recap_supervised_request_link
+  def self.scsb_supervised_request_link
     link_to('Reading Room Request',
             "/requests/#{doc_id}?source=pulsearch",
             title: 'Request to view in Reading Room',
@@ -289,7 +289,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
             data: { toggle: 'tooltip' })
   end
 
-  def self.recap_request_link
+  def self.scsb_request_link
     link_to(request_label(location_rules),
             "/requests/#{doc_id}?source=pulsearch",
             title: request_tooltip(location_rules),
@@ -313,7 +313,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
             data: { toggle: 'tooltip' })
   end
 
-  def self.recap_supervised_items?(holding)
+  def self.scsb_supervised_items?(holding)
     if holding.key? 'items'
       restricted_items = holding['items'].select do |item|
         item['use_statement'] == 'Supervised Use'
@@ -337,7 +337,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     doc_id = adapter.doc_id
     markup = location_services_block(adapter, holding_id, location_rules)
     link = if /^scsb.+/ =~ location_rules['code']
-             if recap_supervised_items?(holding)
+             if scsb_supervised_items?(holding)
                link_to('Reading Room Request',
                        "/requests/#{doc_id}?source=pulsearch",
                        title: 'Request to view in Reading Room',
@@ -403,7 +403,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       markup << if @adapter.repository_holding?(holding)
                   self.class.holding_location_repository
                 elsif @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
-                  self.class.holding_location_recap(holding, bib_id, holding_id)
+                  self.class.holding_location_scsb(holding, bib_id, holding_id)
                 elsif @adapter.unavailable_holding?(holding)
                   self.class.holding_location_unavailable
                 else
@@ -422,7 +422,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       markup << self.class.journal_issues_list(holding_id) if @adapter.journal?
 
       if @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
-        markup << self.class.recap_list(holding)
+        markup << self.class.scsb_list(holding)
       end
 
       unless holding_id == 'thesis' && @adapter.pub_date > 2012
