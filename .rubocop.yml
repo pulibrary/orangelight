@@ -222,3 +222,7 @@ Metrics/BlockLength:
 RSpec/ExampleLength:
   Exclude:
     - 'spec/**/*'
+
+Rails/UnknownEnv:
+  Exclude:
+    - 'app/controllers/application_controller.rb'
