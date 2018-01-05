@@ -85,7 +85,7 @@
             <%= content_tag(:span, content_tag(:span, orangelight_name.location, class: 'results_location'), class: 'library-location', data: { location: true, record_id: orangelight_name.bibid, holding_id: orangelight_name.holding_id }) %>
             </br><span class="availability-icon label label-default"></span>
             <%= content_tag(:span, '', class: 'more-info empty', data: { record_id: orangelight_name.bibid }) unless orangelight_name.location == 'Multiple locations' %>
-            <% if recap_id?(orangelight_name.bibid) %>
+            <% if scsb_id?(orangelight_name.bibid) %>
               </br>
               <span class="more-info label label-default" data-record-id="<%= orangelight_name.bibid %>" title="Click on the record for full availability info">View record for full availability</span>
             <% end %>

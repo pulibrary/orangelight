@@ -1,0 +1,316 @@
+require 'rails_helper'
+
+RSpec.describe PhysicalHoldingsMarkupBuilder do
+  let(:location_rules) do
+    {
+      'label': 'German Languages Theses',
+      'code': 'sdt',
+      'aeon_location': false,
+      'recap_electronic_delivery_location': false,
+      'open': false,
+      'requestable': true,
+      'always_requestable': false,
+      'circulates': true,
+      'url': 'https://bibdata.princeton.edu/locations/holding_locations/sdt.json',
+      'library': {
+        'label': 'Forrestal Annex',
+        'code': 'annexa',
+        'order': 3
+      },
+      'holding_library': nil,
+      'hours_location': nil
+    }.with_indifferent_access
+  end
+  let(:adapter) { instance_double(HoldingRequestsAdapter) }
+  let(:holding_id) { '3668455' }
+  let(:location) { 'Firestone Library' }
+  let(:call_number) { 'PS3539.A74Z93 2000' }
+  let(:holding) do
+    {
+      holding_id => {
+        location: location,
+        library: 'Firestone Library',
+        location_code: 'f',
+        call_number: call_number
+      }
+    }
+  end
+  let(:document) { instance_double(SolrDocument) }
+
+  before do
+    stub_holding_locations
+    allow(document).to receive(:to_s).and_return('123456')
+    allow(adapter).to receive(:document).and_return(document)
+    allow(adapter).to receive(:doc_id).and_return('123456')
+    allow(adapter).to receive(:voyager_holding?).and_return(true)
+    allow(adapter).to receive(:doc_electronic_access).and_return('http://arks.princeton.edu/ark:/88435/dsp0141687h654': ['DataSpace', 'Citation only'])
+    allow(adapter).to receive(:umlaut_accessible?).and_return(true)
+  end
+
+  describe '.request_label' do
+    let(:request_label) { described_class.request_label(location_rules) }
+
+    context 'for holdings within aeon locations' do
+      let(:location_rules) do
+        {
+          'label': 'Sylvia Beach Collection',
+          'code': 'beac',
+          'aeon_location': true,
+          'recap_electronic_delivery_location': false,
+          'open': false,
+          'requestable': false,
+          'always_requestable': true,
+          'circulates': false,
+          'url': 'https://bibdata.princeton.edu/locations/holding_locations/beac.json',
+          'library': {
+            'label': 'Rare Books and Special Collections',
+            'code': 'rare',
+            'order': 2
+          },
+          'holding_library': nil,
+          'hours_location': {
+            'label': 'Firestone Library - Rare Books and Special Collections',
+            'code': 'rbsc'
+          }
+        }.with_indifferent_access
+      end
+
+      it 'generates a reading room request label' do
+        expect(request_label).to eq 'Reading Room Request'
+      end
+    end
+
+    it 'generates a generic request label' do
+      expect(request_label).to eq 'Request'
+    end
+  end
+
+  describe '.request_tooltip' do
+    let(:request_tooltip) { described_class.request_tooltip(location_rules) }
+
+    context 'for holdings within aeon locations' do
+      let(:location_rules) do
+        {
+          'label': 'Sylvia Beach Collection',
+          'code': 'beac',
+          'aeon_location': true,
+          'recap_electronic_delivery_location': false,
+          'open': false,
+          'requestable': false,
+          'always_requestable': true,
+          'circulates': false,
+          'url': 'https://bibdata.princeton.edu/locations/holding_locations/beac.json',
+          'library': {
+            'label': 'Rare Books and Special Collections',
+            'code': 'rare',
+            'order': 2
+          },
+          'holding_library': nil,
+          'hours_location': {
+            'label': 'Firestone Library - Rare Books and Special Collections',
+            'code': 'rbsc'
+          }
+        }
+      end
+
+      it 'generates a tooltip for requesting a view within the reading room' do
+        expect(request_tooltip).to eq 'Request to view in Reading Room'
+      end
+    end
+
+    it 'generates a tooltip for viewing options for requests' do
+      expect(request_tooltip).to eq 'View Options to Request copies from this Location'
+    end
+  end
+
+  describe '.holding_location_span' do
+    let(:holding_location_span_markup) { described_class.holding_location_span('test-location', 'test-holding-id') }
+
+    it 'generates the markup for a holding location' do
+      expect(holding_location_span_markup).to include '<span class="location-text"'
+      expect(holding_location_span_markup).to include 'test-location'
+      expect(holding_location_span_markup).to include 'data-holding-id="test-holding-id"'
+    end
+  end
+
+  describe '.holding_location_container' do
+    let(:holding_location_container_markup) { described_class.holding_location_container(adapter, holding, location, holding_id, call_number) }
+
+    it 'generates the markup for a holding location' do
+      expect(holding_location_container_markup).to include '<span class="location-text"'
+      expect(holding_location_container_markup).to include 'Firestone Library'
+      expect(holding_location_container_markup).to include 'data-holding-id="3668455"'
+      expect(holding_location_container_markup).to include 'href="/catalog/123456"'
+    end
+  end
+
+  describe '.holding_location' do
+    let(:holding_location_markup) { described_class.holding_location(adapter, holding, location, holding_id, call_number) }
+
+    it 'generates the markup for the holding locations' do
+      expect(holding_location_markup).to include '<h3 class="library-location"'
+      expect(holding_location_markup).to include '<span class="location-text"'
+      expect(holding_location_markup).to include 'Firestone Library'
+      expect(holding_location_markup).to include 'data-holding-id="3668455"'
+      expect(holding_location_markup).to include 'href="/catalog/123456"'
+    end
+  end
+
+  describe '.location_services_block' do
+    let(:location_services_block_markup) { described_class.location_services_block(adapter, holding_id, location_rules) }
+
+    it 'generates the markup for the location services container' do
+      expect(location_services_block_markup).to include '<div class="location-services service-conditional"'
+      expect(location_services_block_markup).to include 'data-open="false"'
+      expect(location_services_block_markup).to include 'data-requestable="true"'
+      expect(location_services_block_markup).to include 'data-aeon="false"'
+      expect(location_services_block_markup).to include 'data-holding-id="3668455"'
+    end
+  end
+
+  describe '.request_placeholder' do
+    let(:request_placeholder_markup) { described_class.request_placeholder(adapter, holding_id, location_rules, holding) }
+
+    it 'generates the markup for request links' do
+      expect(request_placeholder_markup).to include '<div class="location-services service-conditional"'
+      expect(request_placeholder_markup).to include 'data-open="false"'
+      expect(request_placeholder_markup).to include 'data-requestable="true"'
+      expect(request_placeholder_markup).to include 'data-aeon="false"'
+      expect(request_placeholder_markup).to include 'data-holding-id="3668455"'
+      expect(request_placeholder_markup).to include '<a title="View Options to Request copies from this Location"'
+      expect(request_placeholder_markup).to include 'href="/requests/123456?mfhd=3668455&amp;source=pulsearch"'
+    end
+  end
+
+  describe '.show_request' do
+    let(:css_class) { described_class.show_request(adapter, location, id) }
+    let(:id) { '9092827' }
+    let(:location) do
+      {
+        'label': 'African American Studies Reading Room (AAS). B-7-B',
+        'code': 'aas',
+        'aeon_location': false,
+        'recap_electronic_delivery_location': false,
+        'open': true,
+        'requestable': false,
+        'always_requestable': false,
+        'circulates': false,
+        'url': 'https://bibdata.princeton.edu/locations/holding_locations/aas.json',
+        'library': {
+          'label': 'Firestone Library',
+          'code': 'firestone',
+          'order': 1
+        },
+        'holding_library': nil,
+        'hours_location': {
+          'label': 'Firestone Library - Building and Circulation/Reserves Hours',
+          'code': 'firestone'
+        }
+      }
+    end
+
+    context 'with non-Voyager holdings' do
+      let(:id) { 'thesis' }
+      let(:location) do
+        {
+          'label': 'German Languages Theses',
+          'code': 'sdt',
+          'aeon_location': false,
+          'recap_electronic_delivery_location': false,
+          'open': false,
+          'requestable': true,
+          'always_requestable': false,
+          'circulates': true,
+          'url': 'https://bibdata.princeton.edu/locations/holding_locations/sdt.json',
+          'library': {
+            'label': 'Forrestal Annex',
+            'code': 'annexa',
+            'order': 3
+          },
+          'holding_library': nil,
+          'hours_location': nil
+        }.with_indifferent_access
+      end
+
+      before do
+        allow(adapter).to receive(:voyager_holding?).and_return(false)
+      end
+
+      it 'generates a "service-always-requestable" class' do
+        expect(css_class).to eq 'service-always-requestable'
+      end
+    end
+
+    context 'with an aeon holding' do
+      let(:location) do
+        {
+          'label': 'Sylvia Beach Collection',
+          'code': 'beac',
+          'aeon_location': true,
+          'recap_electronic_delivery_location': false,
+          'open': false,
+          'requestable': false,
+          'always_requestable': true,
+          'circulates': false,
+          'url': 'https://bibdata.princeton.edu/locations/holding_locations/beac.json',
+          'library': {
+            'label': 'Rare Books and Special Collections',
+            'code': 'rare',
+            'order': 2
+          },
+          'holding_library': nil,
+          'hours_location': {
+            'label': 'Firestone Library - Rare Books and Special Collections',
+            'code': 'rbsc'
+          }
+        }.with_indifferent_access
+      end
+
+      it 'generates a "service-always-requestable" class' do
+        expect(css_class).to eq 'service-always-requestable'
+      end
+    end
+
+    context 'with a SCSB holding' do
+      let(:location) do
+        {
+          'label': '',
+          'code': 'scsbcul',
+          'aeon_location': false,
+          'recap_electronic_delivery_location': true,
+          'open': false,
+          'requestable': true,
+          'always_requestable': false,
+          'circulates': true,
+          'url': 'https://bibdata.princeton.edu/locations/holding_locations/scsbcul.json',
+          'library': {
+            'label': 'ReCAP',
+            'code': 'recap',
+            'order': 3
+          },
+          'holding_library': nil,
+          'hours_location': nil
+        }.with_indifferent_access
+      end
+
+      it 'generates a "service-always-requestable" class' do
+        expect(css_class).to eq 'service-always-requestable'
+      end
+    end
+
+    it 'generates a "service-conditional" class' do
+      expect(css_class).to eq 'service-conditional'
+    end
+  end
+
+  describe '.open_location?' do
+    let(:loc) { { open: true } }
+
+    it 'returns the location open attribute value' do
+      expect(described_class.open_location?(loc)).to eq true
+    end
+    it 'returns false when nil location is passed to function' do
+      expect(described_class.open_location?(nil)).to eq false
+    end
+  end
+end

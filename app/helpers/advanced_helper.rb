@@ -62,10 +62,10 @@ module AdvancedHelper
       library = holding_loc['library']['label']
       add_library(library, locations)
       locations[library]['codes'] << item
-      add_recap_loc(item, holding_loc, locations)
+      add_scsb_loc(item, holding_loc, locations)
     end
 
-    def add_recap_loc(item, holding_loc, locations)
+    def add_scsb_loc(item, holding_loc, locations)
       unless holding_loc['holding_library'].nil?
         library = holding_loc['holding_library']['label']
         add_library(library, locations)
