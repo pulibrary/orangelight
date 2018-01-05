@@ -3,7 +3,12 @@ jQuery ->
 class PlumViewerLoader
   constructor: (@element) ->
     return unless this.element.length > 0
-    $.getJSON("https://plum.princeton.edu/iiif/lookup/#{this.ark()}?no_redirect=true")
+    this.fetch_viewer("https://figgy.princeton.edu")
+      .fail( () =>
+        this.fetch_viewer("https://plum.princeton.edu")
+      )
+  fetch_viewer: (url) ->
+    $.getJSON("#{url}/iiif/lookup/#{this.ark()}?no_redirect=true")
       .done( (data) =>
         this.build_viewer(data['url'])
       )
