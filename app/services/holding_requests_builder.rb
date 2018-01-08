@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HoldingRequestsBuilder
   extend ActionView::Helpers::TagHelper
   extend ActionView::Helpers::UrlHelper

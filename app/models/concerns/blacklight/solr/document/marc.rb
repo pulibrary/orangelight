@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'marc'
 require 'openurl/context_object'
 
@@ -26,7 +28,7 @@ module Blacklight
 
         # returns true if doc originated from voyager
         def voyager_record?
-          if self['id'] =~ /^[0-9]+/
+          if self['id'].match?(/^[0-9]+/)
             true
           else
             false
@@ -96,7 +98,7 @@ module Blacklight
               ctx.referent.set_metadata('edition', edition)
               ctx.referent.set_metadata('isbn', self['isbn_s'].first) unless self['isbn_s'].nil?
               ctx.referent.set_metadata('date', date)
-            elsif format =~ /journal/i # checking using include because institutions may use formats like Journal or Journal/Magazine
+            elsif format.match?(/journal/i) # checking using include because institutions may use formats like Journal or Journal/Magazine
               ctx.referent.set_format('journal')
               ctx.referent.set_metadata('genre', 'serial')
               # ctx.referent.set_metadata('atitle', title)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/orangelight/voyager_patron_client.rb'
 require './lib/orangelight/voyager_account.rb'
 
@@ -15,9 +17,7 @@ class AccountController < ApplicationController
 
   def renew
     set_patron
-    unless params[:renew_items].nil?
-      @account = account_client.renewal_request(params[:renew_items])
-    end
+    @account = account_client.renewal_request(params[:renew_items]) unless params[:renew_items].nil?
 
     respond_to do |format|
       if params[:renew_items].nil?

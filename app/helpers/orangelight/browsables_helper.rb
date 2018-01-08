@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Orangelight
   module BrowsablesHelper
     def scsb_id?(bib_id)
