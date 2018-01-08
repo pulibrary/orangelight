@@ -54,4 +54,10 @@ RSpec.describe CatalogController do
       end
     end
   end
+  describe 'session tracking' do
+    it 'does not error if the session is invalid' do
+      post :track, params: { id: '8938641', counter: 2, search_id: 123 }
+      expect(response).to redirect_to(solr_document_path('8938641'))
+    end
+  end
 end
