@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 context 'clicking facet limits with values in the search bar' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AccountHelper
   ## Helpers available to accounts.
   ## FIXME - Move to

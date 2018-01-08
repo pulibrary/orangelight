@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'csv'
 require 'faraday'
 require 'yajl/json_gem'

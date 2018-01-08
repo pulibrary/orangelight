@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -47,7 +49,7 @@ gem 'introjs-rails', git: 'https://github.com/videmor/intro.js-rails.git', branc
 # Capistrano
 gem 'blacklight-marc', '~> 6.1'
 gem 'capistrano', '~> 3.4.0'
-gem 'devise', '~> 4.2'
+gem 'devise', '~> 4.4'
 gem 'devise-guests', '~> 0.5'
 gem 'faraday'
 gem 'faraday-cookie_jar'

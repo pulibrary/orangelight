@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 module ApplicationHelper
   include Requests::Aeon
   require './lib/orangelight/string_functions'
@@ -198,7 +200,7 @@ module ApplicationHelper
           check_availability = false
           info << content_tag(:span, 'On-site access', class: 'availability-icon label label-warning', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location Must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe if aeon_location?(location)
-        elsif /^scsb.+/ =~ location[:code]
+        elsif /^scsb.+/.match? location[:code]
           check_availability = false
           unless holding['items'].nil?
             scsb_multiple = true unless holding['items'].count == 1
@@ -293,7 +295,7 @@ module ApplicationHelper
 
   def name_title(args)
     args[:document][args[:field]].each_with_index do |name_t, i|
-      next unless args[:document]['name_title_browse_s'] && args[:document]['name_title_browse_s'].include?(name_t)
+      next unless args[:document]['name_title_browse_s']&.include?(name_t)
       newname_t = link_to(name_t, "/?f[name_title_browse_s][]=#{CGI.escape name_t}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name_t}", title: "Search: #{name_t}") + '  ' +
                   link_to('[Browse]', "/browse/name_titles?q=#{CGI.escape name_t}", class: 'browse-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{name_t}", title: "Browse: #{name_t}", dir: name_t.dir.to_s)
       args[:document][args[:field]][i] = newname_t.html_safe
