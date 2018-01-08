@@ -10,8 +10,7 @@
 
 set :rvm_ruby_string, :local # use the same ruby as used locally for deployment
 
-set :stage, :production
-set :rails_env, 'production'
+set :rails_env, 'staging'
 
 set :branch, ENV['BRANCH'] || 'master'
 
@@ -21,7 +20,7 @@ set :branch, ENV['BRANCH'] || 'master'
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'pulsearch-dev', user: 'deploy', roles: %i[web app db]
+server 'catalog-staging1', user: 'deploy', roles: %i[web app db]
 
 # Custom SSH Options
 # ==================

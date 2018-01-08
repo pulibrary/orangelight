@@ -19,3 +19,5 @@ test:
   voyager_ub_id: 1@DB
 production:
   <<: *defaults
+staging:
+  <<: *defaults
