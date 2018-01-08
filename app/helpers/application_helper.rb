@@ -64,7 +64,7 @@ module ApplicationHelper
     if link.nil?
       ''
     else
-      ' ' + link_to(%(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span><span class="glyphicon glyphicon-map-marker"></span>).html_safe, link, :target => '_blank', title: I18n.t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
+      ' ' + link_to(%(<span class="link-text">#{t('blacklight.holdings.stackmap')}</span><span class="glyphicon glyphicon-map-marker"></span>).html_safe, link, :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
     end
   end
 
@@ -79,7 +79,7 @@ module ApplicationHelper
     if link.nil?
       ''
     else
-      ' ' + link_to('<span class="glyphicon glyphicon-map-marker"></span>'.html_safe, link, :target => '_blank', title: I18n.t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
+      ' ' + link_to('<span class="glyphicon glyphicon-map-marker"></span>'.html_safe, link, :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
     end
   end
 
@@ -234,7 +234,7 @@ module ApplicationHelper
                                         'data-toggle' => 'tooltip').html_safe, class: 'empty', data: { record_id: document['id'] })
     end
     if block.empty?
-      content_tag(:div, I18n.t('blacklight.holdings.search_missing'))
+      content_tag(:div, t('blacklight.holdings.search_missing'))
     else
       content_tag(:ul, block.html_safe)
     end
@@ -274,7 +274,7 @@ module ApplicationHelper
       all_subjects[i].each_with_index do |subsubject, j|
         lnk = lnk_accum + link_to(subsubject,
                                   "/?f[subject_facet][]=#{CGI.escape sub_array[i][j]}", class: 'search-subject', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{sub_array[i][j]}", title: "Search: #{sub_array[i][j]}")
-        lnk_accum = lnk + I18n.t(SEPARATOR, class: 'subject-level')
+        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
         full_sub = sub_array[i][j]
       end
       lnk += '  '
