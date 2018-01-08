@@ -185,6 +185,18 @@ describe 'blacklight tests' do
       r = JSON.parse(response.body)
       expect(r['response']['docs'].any? { |d| d['id'] == '6574987' }).to eq true
     end
+
+    context 'with punctuation marks in the title' do
+      it 'handles whitespace characters padding punctuation' do
+        get '/catalog.json?search_field=left_anchor&q=JSTOR+%5Belectronic+resource%5D+%3A'
+        r = JSON.parse(response.body)
+        expect(r['response']['docs'].any? { |d| d['id'] == '2837968' }).to eq true
+
+        get '/catalog.json?search_field=left_anchor&q=JSTOR+%5Belectronic+resource%5D%3A'
+        r = JSON.parse(response.body)
+        expect(r['response']['docs'].any? { |d| d['id'] == '2837968' }).to eq true
+      end
+    end
   end
 
   describe 'advanced search tests' do
@@ -231,6 +243,24 @@ describe 'blacklight tests' do
       r = JSON.parse(response.body)
       doc_ids = %w[9222024 dsp01ft848s955 dsp017s75dc44p]
       expect(r['response']['docs'].all? { |d| doc_ids.include?(d['id']) }).to eq true
+    end
+
+    context 'with punctuation marks in the title' do
+      it 'handles whitespace characters padding punctuation in the left_anchor field' do
+        get '/catalog.json?f1=left_anchor&q1=JSTOR+%5Belectronic+resource%5D+%3A&op2='\
+            'AND&f2=author&q2=&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D='\
+            '&range%5Bpub_date_start_sort%5D%5Bend%5D=&sort=score+desc%2C+pub_date_start_sort'\
+            '+desc%2C+title_sort+asc&search_field=advanced&commit=Search'
+        r = JSON.parse(response.body)
+        expect(r['response']['docs'].any? { |d| d['id'] == '2837968' }).to eq true
+
+        get '/catalog.json?f1=left_anchor&q1=JSTOR+%5Belectronic+resource%5D%3A&op2='\
+            'AND&f2=author&q2=&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D='\
+            '&range%5Bpub_date_start_sort%5D%5Bend%5D=&sort=score+desc%2C+pub_date_start_sort'\
+            '+desc%2C+title_sort+asc&search_field=advanced&commit=Search'
+        r = JSON.parse(response.body)
+        expect(r['response']['docs'].any? { |d| d['id'] == '2837968' }).to eq true
+      end
     end
   end
 

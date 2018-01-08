@@ -22,7 +22,11 @@ module BlacklightHelper
   def left_anchor_escape_whitespace(solr_parameters)
     return unless solr_parameters[:q] && solr_parameters[:q].include?('{!qf=$left_anchor_qf pf=$left_anchor_pf}')
     query = solr_parameters[:q].gsub('{!qf=$left_anchor_qf pf=$left_anchor_pf}', '')
-    solr_parameters[:q] = '{!qf=$left_anchor_qf pf=$left_anchor_pf}' + query.gsub(/(\s)/, '\\\\\1')
+    # Escape any remaining whitespace
+    query.gsub!(/(\s)/, '\\\\\1')
+    # Handle cases where the space is before (or around) punctuation marks
+    query.gsub!(/\s+([:])/, '*\1')
+    solr_parameters[:q] = '{!qf=$left_anchor_qf pf=$left_anchor_pf}' + query
   end
 
   def pul_holdings(solr_parameters)

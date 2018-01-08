@@ -111,6 +111,10 @@ module BlacklightAdvancedSearch
         q2 = @params[:f2] == 'left_anchor' ? escape_quotes(@params[:q2]) : @params[:q2]
         q3 = @params[:f3] == 'left_anchor' ? escape_quotes(@params[:q3]) : @params[:q3]
 
+        # Whitespace padding punctuation also needs to be removed
+        q2 = @params[:f2] == 'left_anchor' ? clean_punc_whitespace(q2) : q2
+        q3 = @params[:f3] == 'left_anchor' ? clean_punc_whitespace(q3) : q3
+
         been_combined = false
         @keyword_queries[@params[:f1]] = q1 if @params[:q1].present?
         if @params[:q2].present?
@@ -146,6 +150,12 @@ module BlacklightAdvancedSearch
       def escape_quotes(query)
         cleaned_query = query.gsub(/"+/, '')
         '"' + cleaned_query + '"'
+      end
+
+      # @param query [String] the query within which whitespace padding punctuation marks are removed
+      # @return [String] the cleaned query
+      def clean_punc_whitespace(query)
+        query.gsub(/\s+([:])/, '*\1')
       end
   end
 end
