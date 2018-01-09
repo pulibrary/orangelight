@@ -157,29 +157,25 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     end
   end
 
-  describe '.location_services_block' do
-    let(:location_services_block_markup) { described_class.location_services_block(adapter, holding_id, location_rules, request_link) }
-
-    it 'generates the markup for the location services container' do
-      expect(location_services_block_markup).to include '<div class="location-services service-conditional"'
-      expect(location_services_block_markup).to include 'data-open="false"'
-      expect(location_services_block_markup).to include 'data-requestable="true"'
-      expect(location_services_block_markup).to include 'data-aeon="false"'
-      expect(location_services_block_markup).to include 'data-holding-id="3668455"'
-    end
-  end
-
   describe '.request_placeholder' do
-    let(:request_placeholder_markup) { described_class.request_placeholder(adapter, holding_id, location_rules, holding) }
+    let(:controller) { instance_double(ApplicationController) }
+    let(:request_placeholder_markup) { described_class.request_placeholder(controller, adapter, holding_id, location_rules, holding) }
+
+    before do
+      allow(controller).to receive(:render_to_string)
+      request_placeholder_markup
+    end
 
     it 'generates the markup for request links' do
-      expect(request_placeholder_markup).to include '<div class="location-services service-conditional"'
-      expect(request_placeholder_markup).to include 'data-open="false"'
-      expect(request_placeholder_markup).to include 'data-requestable="true"'
-      expect(request_placeholder_markup).to include 'data-aeon="false"'
-      expect(request_placeholder_markup).to include 'data-holding-id="3668455"'
-      expect(request_placeholder_markup).to include '<a title="View Options to Request copies from this Location"'
-      expect(request_placeholder_markup).to include 'href="/requests/123456?mfhd=3668455&amp;source=pulsearch"'
+      expect(controller).to have_received(:render_to_string).with(partial: 'location_services',
+                                                                  locals: {
+                                                                    classes: 'service-conditional',
+                                                                    holding_id: '3668455',
+                                                                    link: '<a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/123456?mfhd=3668455&amp;source=pulsearch">Request</a>',
+                                                                    open: false,
+                                                                    requestable: true,
+                                                                    aeon: false
+                                                                  })
     end
   end
 

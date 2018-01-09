@@ -88,12 +88,14 @@ module ApplicationHelper
   # 'shelving_title', 'location_note', 'electronic_access_1display', 'location_has', 'location_has_current',
   # 'indexes', 'supplements'
   # process online and physical holding information at the same time
+  # @param [ApplicationController]
   # @param [SolrDocument] document - record display fields
   # @return [String] online - online holding info html
   # @return [String] physical - physical holding info html
   def holding_request_block(document)
     adapter = HoldingRequestsAdapter.new(document, Bibdata)
-    markup_builder = HoldingRequestsBuilder.new(adapter: adapter,
+    markup_builder = HoldingRequestsBuilder.new(controller: controller,
+                                                adapter: adapter,
                                                 online_markup_builder: OnlineHoldingsMarkupBuilder,
                                                 physical_markup_builder: PhysicalHoldingsMarkupBuilder)
     online_markup, physical_markup = markup_builder.build

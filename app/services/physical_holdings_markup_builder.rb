@@ -334,7 +334,13 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   # Generate the links for a given holding
-  def self.request_placeholder(adapter, holding_id, location_rules, holding)
+  # @param controller [ApplicationController]
+  # @param adapter [HoldingRequestsAdapter]
+  # @param holding_id [String]
+  # @param location_rules [Hash]
+  # @param holding [Hash]
+  # @return [String]
+  def self.request_placeholder(controller, adapter, holding_id, location_rules, holding)
     doc_id = adapter.doc_id
     link = if /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)
@@ -363,13 +369,22 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
            end
-    markup = location_services_block(adapter, holding_id, location_rules, link)
-    markup
+    controller.render_to_string(partial: 'location_services',
+                                locals: {
+                                  classes: show_request(adapter, location_rules, holding_id),
+                                  holding_id: holding_id,
+                                  link: link.html_safe,
+                                  open: open_location?(location_rules),
+                                  requestable: requestable_location?(location_rules),
+                                  aeon: aeon_location?(location_rules)
+                                })
   end
 
   # Constructor
+  # @param controller [ApplicationController] Rails controller (for rendering template partials)
   # @param adapter [HoldingRequestsAdapter] adapter for the SolrDocument and Bibdata API
-  def initialize(adapter)
+  def initialize(controller, adapter)
+    @controller = controller
     @adapter = adapter
   end
 
@@ -427,7 +442,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
 
       unless holding_id == 'thesis' && @adapter.pub_date > 2012
         request_placeholder_markup = \
-          self.class.request_placeholder(@adapter, holding_id, location_rules, holding)
+          self.class.request_placeholder(@controller, @adapter, holding_id, location_rules, holding)
         markup << request_placeholder_markup.html_safe
       end
       markup = self.class.holding_block(markup) unless markup.empty?

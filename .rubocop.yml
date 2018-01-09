@@ -210,6 +210,7 @@ Rails/OutputSafety:
     - 'app/services/holding_requests_builder.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'app/services/online_holdings_markup_builder.rb'
+    - 'spec/views/catalog/_location_services.html.erb_spec.rb'
 
 RSpec/ExampleWording:
   CustomTransform:
