@@ -35,10 +35,10 @@ xml.entry do
       # encode properly. See:
       # http://tools.ietf.org/html/rfc4287#section-4.1.3.3
       type = type.downcase
-      if type.downcase.match?(/\+|\/xml$/)
+      if /\+|\/xml$/.match?(type.downcase)
         # xml, just put it right in
         content_element << data
-      elsif type.downcase.match?(/text\//)
+      elsif /text\//.match?(type.downcase)
         # text, escape
         content_element.text! data
       else
