@@ -247,9 +247,10 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param adapter [HoldingRequestsAdapter] adapter for the Solr Document and Bibdata
   # @param holding_id [String]
   # @param location_rules [Hash]
+  # @param link [String]
   # @return [String] block markup
-  def self.location_services_block(adapter, holding_id, location_rules)
-    content_tag(:div, '',
+  def self.location_services_block(adapter, holding_id, location_rules, link)
+    content_tag(:div, link,
                 class: "location-services #{show_request(adapter, location_rules, holding_id)}",
                 data: {
                   open: open_location?(location_rules),
@@ -335,7 +336,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # Generate the links for a given holding
   def self.request_placeholder(adapter, holding_id, location_rules, holding)
     doc_id = adapter.doc_id
-    markup = location_services_block(adapter, holding_id, location_rules)
     link = if /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)
                link_to('Reading Room Request',
@@ -363,7 +363,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
            end
-    markup << link
+    markup = location_services_block(adapter, holding_id, location_rules, link)
     markup
   end
 

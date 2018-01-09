@@ -25,6 +25,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   let(:holding_id) { '3668455' }
   let(:location) { 'Firestone Library' }
   let(:call_number) { 'PS3539.A74Z93 2000' }
+  let(:request_link) { '<a href="/requests/1232432">Request</a>' }
   let(:holding) do
     {
       holding_id => {
@@ -157,7 +158,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   end
 
   describe '.location_services_block' do
-    let(:location_services_block_markup) { described_class.location_services_block(adapter, holding_id, location_rules) }
+    let(:location_services_block_markup) { described_class.location_services_block(adapter, holding_id, location_rules, request_link) }
 
     it 'generates the markup for the location services container' do
       expect(location_services_block_markup).to include '<div class="location-services service-conditional"'
