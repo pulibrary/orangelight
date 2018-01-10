@@ -78,4 +78,16 @@ namespace :deploy do
   after :publishing, :robots_txt
 
   after :finishing, 'deploy:cleanup'
+
+  # We shouldn't need this because it should be built in to Rails 5.1
+  # see https://github.com/rails/webpacker/issues/1037
+  desc 'Run yarn install'
+  task :yarn_install do
+    on roles(:web) do
+      within release_path do
+        execute("cd #{release_path} && yarn install")
+      end
+    end
+  end
+  before "deploy:assets:precompile", "deploy:yarn_install"
 end
