@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "^3.2.0",
+    "coffeescript": "1.12.7"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "22.0.4",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "jest": "22.0.4",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "roots": [
+      "spec/javascript"
+    ],
+    "transform": {".*": "./node_modules/babel-jest"},
+    "moduleFileExtensions": [
+      "js",
+      "es6"
+    ]
+  }
+}
