@@ -17,6 +17,10 @@ class CatalogController < ApplicationController
     redirect_to '/404'
   end
 
+  rescue_from ActionController::InvalidAuthenticityToken do
+    redirect_to solr_document_path(params[:id])
+  end
+
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
