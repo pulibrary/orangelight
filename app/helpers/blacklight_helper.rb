@@ -24,8 +24,6 @@ module BlacklightHelper
     query = solr_parameters[:q].gsub('{!qf=$left_anchor_qf pf=$left_anchor_pf}', '')
     # Escape any remaining whitespace
     query.gsub!(/(\s)/, '\\\\\1')
-    # Handle cases where the space is before (or around) punctuation marks
-    query.gsub!(/\s+([:])/, '*\1')
     solr_parameters[:q] = '{!qf=$left_anchor_qf pf=$left_anchor_pf}' + query
   end
 
