@@ -30,6 +30,6 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    Rails.env.production? ? { protocol: 'https' } : {}
+    Rails.env.production? || Rails.env.staging? ? { protocol: 'https' } : {}
   end
 end
