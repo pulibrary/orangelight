@@ -33,7 +33,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     return '' if link.nil?
 
     child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
-      <span class="glyphicon glyphicon-map-marker"></span>)
+      <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>)
     markup = link_to(child.html_safe, link,
                      :target => '_blank',
                      title: I18n.t('blacklight.holdings.stackmap'),
