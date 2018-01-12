@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 class Orangelight::BrowsablesController < ApplicationController
   # before_action :set_orangelight_browsable, only: [:show]

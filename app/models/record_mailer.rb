@@ -3,7 +3,7 @@
 # Only works for documents with a #to_marc right now.
 class RecordMailer < ActionMailer::Base
   def email_record(documents, details, url_gen_params)
-    subject = if details[:subject] && details[:subject].first.present?
+    subject = if details[:subject]&.first.present?
                 details[:subject].first
               else
                 I18n.t('blacklight.email.text.subject', count: documents.length, title: '')

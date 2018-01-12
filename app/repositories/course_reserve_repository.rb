@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CourseReserveRepository
   class << self
     def all

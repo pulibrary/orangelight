@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'faraday'
-include ApplicationHelper
 
 describe 'blacklight tests' do
+  include ApplicationHelper
+
   describe 'ICU folding keyword search' do
     it 'finds an Arabic entry from a Romanized search term' do
       get '/catalog.json?&search_field=all_fields&q=dawwani'
@@ -106,7 +109,7 @@ describe 'blacklight tests' do
     end
   end
 
-  SEPARATOR = '—'.freeze
+  SEPARATOR = '—'
   describe 'subjectify check' do
     it 'provides links to facet search based on hierarchy' do
       stub_holding_locations
