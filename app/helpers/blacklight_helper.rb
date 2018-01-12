@@ -1,5 +1,3 @@
-# frozen_string_literal: false
-
 require 'library_stdnums'
 
 module BlacklightHelper
@@ -22,7 +20,7 @@ module BlacklightHelper
   # Escape all whitespace characters within Solr queries specifying left anchor query facets
   # @param solr_parameters [Blacklight::Solr::Request] the parameters for the Solr query
   def left_anchor_escape_whitespace(solr_parameters)
-    return unless solr_parameters[:q]&.include?('{!qf=$left_anchor_qf pf=$left_anchor_pf}')
+    return unless solr_parameters[:q] && solr_parameters[:q].include?('{!qf=$left_anchor_qf pf=$left_anchor_pf}')
     query = solr_parameters[:q].gsub('{!qf=$left_anchor_qf pf=$left_anchor_pf}', '')
     # Escape any remaining whitespace
     query.gsub!(/(\s)/, '\\\\\1')

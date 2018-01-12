@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class StackmapLocationFactory
   # Constructor
   # @param resolver_service [Class] API for the resolution service

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'sitemap_generator'
 
 SitemapGenerator::Sitemap.default_host = "#{ENV['APPLICATION_HOST_PROTOCOL']}://#{ENV['APPLICATION_HOST']}" || 'http://localhost'

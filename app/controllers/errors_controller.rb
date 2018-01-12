@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ErrorsController < ApplicationController
   def error
     render status: :error

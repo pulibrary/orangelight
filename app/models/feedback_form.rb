@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'mail_form'
 
 class FeedbackForm < MailForm::Base

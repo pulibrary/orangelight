@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Bibdata
   class << self
     # rubocop:disable MethodLength
@@ -59,7 +57,5 @@ class Bibdata
 
         sorted.to_h.with_indifferent_access
       end
-    # rubocop:enable MethodLength
-    # rubocop:enable AbcSize
   end
 end

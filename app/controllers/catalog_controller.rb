@@ -1,5 +1,5 @@
-# frozen_string_literal: false
 
+#
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog

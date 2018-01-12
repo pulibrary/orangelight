@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # # Remove bookmark from the navbar
 # CatalogController.blacklight_config.navbar.partials.delete(:bookmark)
 # # Remove bookmark from catalog#index

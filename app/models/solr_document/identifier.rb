@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class SolrDocument
   class Identifier
     attr_reader :identifier_type, :value

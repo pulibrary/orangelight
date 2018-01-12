@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'coveralls'
 require 'capybara/poltergeist'
 require 'webmock/rspec'

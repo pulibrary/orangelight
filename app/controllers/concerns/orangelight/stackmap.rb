@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Orangelight
   module Stackmap
     extend ActiveSupport::Concern

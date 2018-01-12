@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   # mount Blacklight::Folders::Engine, at: "blacklight"
   # namespace :orangelight do
