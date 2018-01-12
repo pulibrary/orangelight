@@ -8,7 +8,7 @@
 
 Versions:
 
-* Ruby: 2.3.1
+* Ruby: 2.4.2
 * Rails: 5.1.4
 * Blacklight: 6.10.1
 * blacklight_advanced_search: 6.3.1
@@ -104,7 +104,7 @@ RAILS_ENV=development bundle exec rake browse:load_all
 ## Local development with account/request features
 
 You will need a working local copy of https://github.com/pulibrary/marc_liberation.
-Set the ```bidata_base``` value in your dev environment to point at this version. 
+Set the ```bidata_base``` value in your dev environment to point at this version.
 
 ## Running javascript unit tests
 
