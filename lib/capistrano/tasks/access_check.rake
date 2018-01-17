@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # from capistrano setup guide
 
 desc 'Check that we can access everything'

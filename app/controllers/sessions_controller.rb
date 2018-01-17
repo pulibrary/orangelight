@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class SessionsController < Devise::SessionsController
   # DELETE /resource/sign_out
   def destroy

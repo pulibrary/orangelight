@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 xml.entry do
   xml.title document[document_show_link_field(document)]
 
@@ -35,10 +33,10 @@ xml.entry do
       # encode properly. See:
       # http://tools.ietf.org/html/rfc4287#section-4.1.3.3
       type = type.downcase
-      if /\+|\/xml$/.match?(type.downcase)
+      if type.downcase =~ /\+|\/xml$/
         # xml, just put it right in
         content_element << data
-      elsif /text\//.match?(type.downcase)
+      elsif type.downcase =~ /text\//
         # text, escape
         content_element.text! data
       else

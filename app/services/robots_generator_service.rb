@@ -1,5 +1,3 @@
-# frozen_string_literal: false
-
 # Service for generating robots.txt from the routes
 class RobotsGeneratorService
   # Generate a robots.txt with the default values

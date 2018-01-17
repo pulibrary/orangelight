@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require './lib/orangelight/browse_lists'
 
 namespace :browse do

@@ -12,7 +12,7 @@ Capybara/CurrentPathExpectation:
     - 'spec/features/login_account_spec.rb'
 
 # Offense count: 4
-Style/RescueStandardError:
+Lint/RescueWithoutErrorClass:
   Exclude:
     - 'app/helpers/account_helper.rb'
     - 'app/models/solr_document.rb'

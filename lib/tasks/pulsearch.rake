@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rsolr'
 require 'json'
 require Rails.root.join('app', 'services', 'robots_generator_service').to_s

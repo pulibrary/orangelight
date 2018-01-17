@@ -1,10 +1,7 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
+include ApplicationHelper
 
 RSpec.describe SolrDocument do
-  include ApplicationHelper
-
   subject { described_class.new(properties) }
 
   let(:properties) { {} }

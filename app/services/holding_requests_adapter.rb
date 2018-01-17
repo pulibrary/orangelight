@@ -1,5 +1,3 @@
-# frozen_string_literal: false
-
 # Adapter for SolrDocument instances and the Bibdata Class
 class HoldingRequestsAdapter
   attr_reader :document

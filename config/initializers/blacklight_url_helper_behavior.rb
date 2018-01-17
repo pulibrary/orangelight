@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Blacklight::UrlHelperBehavior.module_eval do
   # Link to the previous document in the current search context
   def link_to_previous_document(previous_document)

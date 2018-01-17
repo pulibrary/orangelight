@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
 module StringFunctions
   class << self
     def cn_normalize(str)
-      if /^[a-zA-Z]{2,3} \d+([qQ]?)$/.match? str # the normalizer thinks "CD 104" is valid LC
+      if /^[a-zA-Z]{2,3} \d+([qQ]?)$/ =~ str # the normalizer thinks "CD 104" is valid LC
         accession_number(str)
       else
         Lcsort.normalize(str.gsub(/x([A-Z])/, '\1')) || accession_number(str)
