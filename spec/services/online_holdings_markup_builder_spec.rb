@@ -43,7 +43,7 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
     allow(adapter).to receive(:document).and_return(document)
     allow(adapter).to receive(:doc_id).and_return('123456')
     allow(adapter).to receive(:voyager_holding?).and_return(true)
-    allow(adapter).to receive(:doc_electronic_access).and_return('http://arks.princeton.edu/ark:/88435/dsp0141687h654': ['DataSpace', 'Citation only'])
+    allow(adapter).to receive(:doc_electronic_access).and_return('http://gateway.proquest.com/url': ['gateway.proquest.com'], 'http://arks.princeton.edu/ark:/88435/dsp0141687h654': ['DataSpace', 'Citation only'])
     allow(adapter).to receive(:umlaut_accessible?).and_return(true)
   end
 
@@ -71,6 +71,7 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
     let(:urlified_markup) { described_class.urlify(adapter) }
 
     it 'generates electronic access links for a catalog record' do
+      expect(urlified_markup).to include 'href="https://library.princeton.edu/resolve/lookup?url=http://gateway.proquest.com/url">gateway.proquest.com</a>'
       expect(urlified_markup).to include 'Citation only: <a target="_blank"'
       expect(urlified_markup).to include 'href="https://library.princeton.edu/resolve/lookup?url=http://arks.princeton.edu/ark:/88435/dsp0141687h654"'
       expect(urlified_markup).to include 'DataSpace</a>'
