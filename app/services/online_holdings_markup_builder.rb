@@ -44,8 +44,8 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
     electronic_access = adapter.doc_electronic_access
     electronic_access.each do |url, texts|
       link = electronic_access_link(url, texts)
-      markup = "#{texts[1]}: " + link if texts[1]
-      markup = "<li>#{link}</li>" if electronic_access.count > 1
+      link = "#{texts[1]}: " + link if texts[1]
+      link = "<li>#{link}</li>" if electronic_access.count > 1
 
       # This should be restructured into #electronic_access_link
       if /getit\.princeton\.edu/ =~ url
