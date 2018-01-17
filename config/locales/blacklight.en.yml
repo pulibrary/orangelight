@@ -52,8 +52,8 @@ en:
         label: 'Sort<span class="hidden-xs hidden-sm hidden-md"> by %{field}</span>'
       per_page:
         button_label: '%{count}<span class="hidden-xs hidden-sm hidden-md"> per page</span>'
-      start_over: '<span class="icon-refresh"></span> <span class="hidden-xs hidden-sm">Start over</span>'
-      cite: '<span class="icon-cite"></span> Cite'
+      start_over: 'Start over'
+      cite: 'Cite'
       bookmarks:
         present: 'In Bookmarks'
       zero_results:

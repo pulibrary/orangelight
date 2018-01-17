@@ -11,6 +11,11 @@ describe 'Facets' do
       search_facets = page.all('.facet_limit').length
       expect(home_facets).to be < search_facets
     end
+
+    it 'renders accessible facets' do
+      visit '/catalog'
+      expect(page).to have_selector '.facet-values .icon[aria-hidden="true"]', minimum: 10
+    end
   end
 
   context 'with advanced limits' do

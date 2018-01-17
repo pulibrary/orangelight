@@ -14,7 +14,7 @@
             <dd class="classic-views">
               <ul>
                 <li><%= link_to t('blacklight.tools.librarian_view'), staff_view_solr_document_path(@document), {:id => 'staffLink'} %></li>
-                <li><%= link_to "#{t('blacklight.voyager')} <span class=\"glyphicon glyphicon-share-alt\"></span>".html_safe, voyager_url(@document.id), {:id => 'voyagerLink', :target => "_blank"} %></li>
+                <li><%= link_to "#{t('blacklight.voyager')} <span class=\"glyphicon glyphicon-share-alt\" aria-hidden=\"true\"></span>".html_safe, voyager_url(@document.id), {:id => 'voyagerLink', :target => "_blank"} %></li>
               </ul>
             </dd>
           </dl>

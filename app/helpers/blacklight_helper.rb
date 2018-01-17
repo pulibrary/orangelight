@@ -141,8 +141,27 @@ module BlacklightHelper
     render partial: 'show_header_default'
   end
 
+  # Generates markup for a <span> elements containing icons given a string value
+  # @param value [String] value used for the CSS class
+  # @return [String] markup for the <span> element
   def render_icon(var)
-    "<span class='icon icon-#{var.parameterize}'></span>".html_safe
+    "<span class='icon icon-#{var.parameterize}' aria-hidden='true'></span>".html_safe
+  end
+
+  # Generate the link to "start over" searches
+  # @param path [String] the URL path for the link
+  # @return [String] the markup for the link
+  def render_start_over_link(path)
+    child = "<span class=\"icon-refresh\" aria-hidden=\"true\"></span> <span class=\"hidden-xs hidden-sm\">#{t('blacklight.search.start_over')}</span>"
+    link_to(child.html_safe, path, class: 'catalog_startOverLink btn btn-primary', id: 'startOverLink')
+  end
+
+  # Generate the link to citations for Documents
+  # @param path [String] the URL path for the link
+  # @return [String] the markup for the link
+  def render_cite_link(path)
+    child = "<span class=\"icon-cite\" aria-hidden=\"true\"></span> #{t('blacklight.search.cite')}"
+    link_to(child.html_safe, path, id: 'citeLink', data: { ajax_modal: 'trigger' }, class: 'btn btn-default')
   end
 
   # solr fq field is field parameter provided unless id_nums value starts with BIB
