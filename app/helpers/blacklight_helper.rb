@@ -177,10 +177,12 @@ module BlacklightHelper
     resp = get_fq_solr_response(fq)
     req = JSON.parse(resp.body)
     other_versions = []
-    req['response']['docs'].each do |record|
-      unless record['id'] == bib_id
-        title = record['title_display']
-        other_versions << link_to(title, solr_document_url(record['id']))
+    if req['response']
+      req['response']['docs'].each do |record|
+        unless record['id'] == bib_id
+          title = record['title_display']
+          other_versions << link_to(title, solr_document_url(record['id']))
+        end
       end
     end
     other_versions.empty? ? [] : [other_versions]
