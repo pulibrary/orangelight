@@ -6,17 +6,9 @@ task :ci do
     run_solr('test', port: '8985') do
       Rake::Task['pulsearch:solr:index'].invoke
       Rake::Task['spec'].invoke
-      Rake::Task['yarn:test'].invoke
     end
   else
     system('rake ci RAILS_ENV=test')
-  end
-end
-
-namespace :yarn do
-  desc 'Run jest tests'
-  task :test do
-    sh('yarn', 'test') if Rails.env.test? || Rails.env.development?
   end
 end
 
