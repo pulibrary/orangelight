@@ -26,6 +26,9 @@ describe 'SCSB Shared Collection Records' do
     before do
       visit '/catalog/SCSB-2443272'
     end
+    it 'does not have a use restriction label' do
+      expect(page).not_to have_content 'Use Restrictions'
+    end
     it 'displays a request button' do
       expect(page).to have_content 'Request'
     end

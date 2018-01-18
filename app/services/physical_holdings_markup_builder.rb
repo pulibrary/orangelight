@@ -201,8 +201,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       item_markup
     end
 
-    restricted_items.compact!
-
+    restricted_items.reject! { |e| e.to_s.empty? }
     return '' if restricted_items.empty?
 
     restricted_items.uniq!
