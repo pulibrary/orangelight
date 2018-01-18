@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 require 'builder'
 # This module provide Dublin Core export based on the document's semantic values
@@ -41,9 +41,7 @@ module Blacklight
         ris += ris_authors
         each do |field, values|
           Array.wrap(values).each do |v|
-            if ris_field_name?(field)
-              ris += "#{ris_field_name?(field)} - #{v}\n"
-            end
+            ris += "#{ris_field_name?(field)} - #{v}\n" if ris_field_name?(field)
           end
         end
         ris += 'ER - '

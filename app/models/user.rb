@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # include Blacklight::Folders::User
   validates :username, presence: true

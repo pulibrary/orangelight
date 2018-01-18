@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VoyagerAccount
   attr_reader :doc
   attr_writer :voyager_ns

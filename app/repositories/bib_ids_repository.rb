@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BibIdsRepository
   class << self
     def for(reserve_ids)

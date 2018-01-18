@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # Generate a <span> element for a holding location
   # @param location [String] the location value
@@ -335,7 +337,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # Generate the links for a given holding
   def self.request_placeholder(adapter, holding_id, location_rules, holding)
     doc_id = adapter.doc_id
-    link = if /^scsb.+/ =~ location_rules['code']
+    link = if /^scsb.+/.match? location_rules['code']
              if scsb_supervised_items?(holding)
                link_to('Reading Room Request',
                        "/requests/#{doc_id}?source=pulsearch",
@@ -410,14 +412,10 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                                                       holding_id,
                                                       location_rules)
                 end
-      if @adapter.shelving_title?(holding)
-        markup << self.class.shelving_titles_list(holding)
-      end
-      if @adapter.location_note?(holding)
-        markup << self.class.location_notes_list(holding)
-      end
-      markup << self.class.location_has_list(holding) if @adapter.location_has?(holding)
 
+      markup << self.class.shelving_titles_list(holding) if @adapter.shelving_title?(holding)
+      markup << self.class.location_notes_list(holding) if @adapter.location_note?(holding)
+      markup << self.class.location_has_list(holding) if @adapter.location_has?(holding)
       markup << self.class.journal_issues_list(holding_id) if @adapter.journal?
 
       if @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)

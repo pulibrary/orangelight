@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   # Generate a block of markup for an online holding
   # @param bib_id [String] the ID for the SolrDocument
@@ -24,7 +26,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param url [String] the URL to the service endpoint
   # @param text [String] the label for the link
   def self.electronic_access_link(url, texts)
-    markup = if /Open access/ =~ texts.first
+    markup = if /Open access/.match? texts.first
                link_to(texts.first, url.to_s, target: '_blank')
              else
                link_to(texts.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
@@ -48,7 +50,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
       link = "<li>#{link}</li>" if electronic_access.count > 1
 
       # This should be restructured into #electronic_access_link
-      if /getit\.princeton\.edu/ =~ url
+      if /getit\.princeton\.edu/.match? url
         # strip to get only the query_string
         marcit_ctx = url.gsub('http://getit.princeton.edu/resolve?', '')
         markup << content_tag(:div, '',

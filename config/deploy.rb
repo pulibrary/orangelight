@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config valid only for Capistrano 3.1
 lock '>=3.2.1'
 
@@ -44,7 +46,7 @@ set :linked_dirs, %w{tmp/pids tmp/sockets}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
-# set :default_env, { path: "/home/vagrant/.rvm/gems/ruby-2.2.3/bin:$PATH" }
+# set :default_env, { path: "/home/vagrant/.rvm/gems/ruby-x.x.x/bin:$PATH" }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5

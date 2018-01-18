@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StackmapService
   # A url to the stackmap for the bib record
   class Url

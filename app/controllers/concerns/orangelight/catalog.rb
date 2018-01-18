@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Orangelight
   module Catalog
     extend ActiveSupport::Concern
