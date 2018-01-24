@@ -4,7 +4,7 @@ defaults: &defaults
   umlaut_base: https://getit.princeton.edu
   bibdata_base: https://bibdata.princeton.edu
   proxy_base: https://library.princeton.edu/resolve/lookup?url=
-  voyager_api_base: https://catalog.princeton.edu:7014
+  voyager_api_base: https://webvoyage.princeton.edu:7014
   pulsearch_base: https://pulsearch.princeton.edu
   aeon_base: https://lib-aeon.princeton.edu/aeon/aeon.dll
   gfa_base: http://libweb5.princeton.edu/ReCAPNoUI/Default.aspx
@@ -17,6 +17,7 @@ development:
 test:
   <<: *defaults
   voyager_ub_id: 1@DB
+  bibdata_base: https://bibdata-dev.princeton.edu
 production:
   <<: *defaults
 staging:
