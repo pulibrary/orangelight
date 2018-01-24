@@ -19,7 +19,9 @@
   <div class="location--panel location--linked">
     <div class="panel panel-default">
       <div class="panel-heading"><%= t('blacklight.holdings.linked') %></div>
-      <%= render 'show_linked_records', linked_records: document_linked_records %>
+      <div class="panel-body">
+        <%= render 'show_linked_records', linked_records: document_linked_records %>
+      </div>
     </div>
   </div>
 <% end %>

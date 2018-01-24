@@ -1,45 +1,23 @@
-<div class="linked-block">
-  <div class="container-fluid">
-    <div>
-      <%= link_to(linked_record.title, solr_document_url(linked_record.id)) %>
-    </div>
+<li class="linked-block">
+  <%= link_to(linked_record.title, solr_document_url(linked_record.id)) %>
 
-    <% if linked_record.fields.count == 1 %>
-      <span>
-        <%= render_document_show_field_label(linked_record.document, :field => linked_record.fields.keys.last).html_safe %>
-      </span>
-      <% linked_record.fields.values.last.each do |field_value| %>
-        <span><%= field_value %></span>
-      <% end %>
-    <% else %>
-      <ul>
-        <% linked_record.fields.each do |field_name, field_values| %>
-          <div><%= render_document_show_field_label(linked_record.document, :field => field_name).html_safe %></div>
-          <li>
-            <% field_values.each do |field_value| %>
-              <span><%= field_value %></span>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
+  <% if linked_record.fields.count == 1 %>
+    <div><span>
+      <%= render_document_show_field_label(linked_record.document, :field => linked_record.fields.keys.last).html_safe %>
+    </span>
+    <% linked_record.fields.values.last.each do |field_value| %>
+      <span><%= field_value %></span></div>
     <% end %>
-  </div>
-  <% holding_requests_adapter = HoldingRequestsAdapter.new(linked_record.document, Bibdata) %>
-  <% unless holding_requests_adapter.doc_holdings_physical.empty? %>
-    <% holding = holding_requests_adapter.doc_holdings_physical.first.last %>
-    <% bib_id = holding_requests_adapter.doc_id %>
-    <% holding_id = holding_requests_adapter.doc_holdings_physical.first.first %>
-    <% location_rules = holding_requests_adapter.rules.first %>
-    <div class="container-fluid">
-      <% if holding_requests_adapter.repository_holding?(holding) %>
-        <%= PhysicalHoldingsMarkupBuilder.holding_location_repository %>
-      <% elsif holding_requests_adapter.scsb_holding?(holding) && !holding_requests_adapter.empty_holding?(holding) %>
-        <%= PhysicalHoldingsMarkupBuilder.holding_location_scsb(holding, bib_id, holding_id) %>
-      <% elsif holding_requests_adapter.unavailable_holding?(holding) %>
-        <%= PhysicalHoldingsMarkupBuilder.holding_location_unavailable %>
-      <% else %>
-        <%= PhysicalHoldingsMarkupBuilder.holding_location_default(bib_id, holding_id, location_rules) %>
+  <% else %>
+    <ul>
+      <% linked_record.fields.each do |field_name, field_values| %>
+        <div><%= render_document_show_field_label(linked_record.document, :field => field_name).html_safe %></div>
+        <li>
+          <% field_values.each do |field_value| %>
+            <span><%= field_value %></span>
+          <% end %>
+        </li>
       <% end %>
-    </div>
+    </ul>
   <% end %>
-</div>
+</li>

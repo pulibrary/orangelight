@@ -1,5 +1,5 @@
-<% linked_records.each do |linked_record| %>
-  <div class="panel-body">
-    <%= render 'show_linked_record', linked_record: linked_record %>
-  </div>
-<% end %>
+<ul>
+	<% linked_records.each do |linked_record| %>
+	    <%= render 'show_linked_record', linked_record: linked_record %>
+	<% end %>
+</ul>
