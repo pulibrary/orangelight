@@ -17,6 +17,7 @@ development:
 test:
   <<: *defaults
   voyager_ub_id: 1@DB
+  bibdata_base: https://bibdata-dev.princeton.edu
 production:
   <<: *defaults
 staging:
