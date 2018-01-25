@@ -179,7 +179,7 @@ module BlacklightHelper
     resp = get_fq_solr_response(fq)
     req = JSON.parse(resp.body)
     other_versions = []
-    if req['response']
+    if req.dig('response', 'docs')
       req['response']['docs'].each do |record|
         unless record['id'] == bib_id
           title = record['title_display']
