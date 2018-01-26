@@ -209,7 +209,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     restricted_items.uniq!
 
     children = restricted_items.join
-    content_tag(:ul, children.html_safe, class: 'item-list')
+    content_tag(:ul, children.html_safe, class: 'restrictions-list item-list')
   end
 
   def self.open_location?(location)
