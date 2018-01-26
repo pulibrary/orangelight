@@ -39,9 +39,7 @@ class HoldingRequestsAdapter
   # @return [String] electronic access value
   def doc_electronic_access
     string_values = @document['electronic_access_1display'] || '{}'
-    values = JSON.parse(string_values)
-    values.delete('iiif_manifest_paths') if values.key?('iiif_manifest_paths')
-    values
+    JSON.parse(string_values).delete_if { |k, _v| k == 'iiif_manifest_paths' }
   end
 
   # Parse IIIF Manifest links from the electronic access information
