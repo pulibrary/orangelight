@@ -44,7 +44,8 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
     markup = ''
 
     electronic_access = adapter.doc_electronic_access
-    electronic_access.each do |url, texts|
+    electronic_access.each do |url, electronic_texts|
+      texts = electronic_texts.flatten
       link = electronic_access_link(url, texts)
       link = "#{texts[1]}: " + link if texts[1]
       link = "<li>#{link}</li>" if electronic_access.count > 1
