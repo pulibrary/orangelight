@@ -27,7 +27,7 @@
       <%= render partial: 'show_availability_sidebar', locals: { document: @document } %>
     </div>
   <% end %>
-<% if @document.ark.present? %>
-  <div id="view" data-ark="<%= @document.ark %>">
+<% if @document.ark.present? || @document.iiif_manifest_uri.present? %>
+  <div id="view" data-ark="<%= @document.ark %>" data-iiif-manifest-url="<%= @document.iiif_manifest_uri %>" >
   </div>
 <% end %>

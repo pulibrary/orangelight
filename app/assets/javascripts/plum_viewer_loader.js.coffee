@@ -3,17 +3,24 @@ jQuery ->
 class PlumViewerLoader
   constructor: (@element) ->
     return unless this.element.length > 0
-    this.fetch_viewer("https://figgy.princeton.edu")
-      .fail( () =>
-        this.fetch_viewer("https://plum.princeton.edu")
-      )
-  fetch_viewer: (url) ->
-    $.getJSON("#{url}/iiif/lookup/#{this.ark()}?no_redirect=true")
+    if this.iiif_manifest_url()
+      this.fetch_viewer_with_url(this.iiif_manifest_url())
+    else
+      this.fetch_viewer_from_ark("https://figgy.princeton.edu")
+        .fail( () =>
+          this.fetch_viewer_from_ark("https://plum.princeton.edu")
+        )
+  fetch_viewer_from_ark: (repo_url) ->
+    $.getJSON("#{repo_url}/iiif/lookup/#{this.ark()}?no_redirect=true")
       .done( (data) =>
         this.build_viewer(data['url'])
       )
+  fetch_viewer_with_url: (url) ->
+      this.build_viewer(url)
   ark: ->
     this.element.data("ark")
+  iiif_manifest_url: ->
+    this.element.data("iiif-manifest-url")
   build_viewer: (manifest) ->
     element = $(document.createElement('div'))
     element.addClass('uv')
