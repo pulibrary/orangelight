@@ -36,6 +36,7 @@ describe 'Facets' do
       click_link I18n.t('blacklight.search.edit_search')
       expect(page.all('#location').length).to eq 0
       expect(page.all('#advanced_location_s').length).to eq 1
+      expect(page.all('#access_facet').length).to eq 1
     end
   end
 end
