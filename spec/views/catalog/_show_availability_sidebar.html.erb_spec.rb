@@ -3,6 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe 'catalog/_show_availability_sidebar.html.erb' do
+  let(:blacklight_config) do
+    CatalogController.new.blacklight_config
+  end
+
+  before do
+    stub_holding_locations
+    allow(view).to receive(:blacklight_config).and_return(blacklight_config)
+  end
+
   describe '#umlaut_services for a record with a marcit online option' do
     let(:document) { SolrDocument.new(properties) }
     let(:properties) do
@@ -17,9 +26,7 @@ RSpec.describe 'catalog/_show_availability_sidebar.html.erb' do
         'holdings_1display' => "{\"9592399\":{\"location\":\"Online - *ONLINE*\",\"library\":\"Online\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"}}"
       }
     end
-    # before do
-    #   render partial: 'catalog/show_availability_sidebar', locals: { document: document }
-    # end
+
     it 'has all umlaut additional services' do
       render partial: 'catalog/show_availability_sidebar', locals: { document: document }
       expect(rendered).to have_selector '#highlighted_link'
@@ -64,7 +71,6 @@ RSpec.describe 'catalog/_show_availability_sidebar.html.erb' do
       }
     end
     it 'has all possible umlaut additional services included' do
-      stub_holding_locations
       render partial: 'catalog/show_availability_sidebar', locals: { document: document }
       expect(rendered).to have_selector '#highlighted_link'
       expect(rendered).to have_selector '#excerpts'
@@ -83,7 +89,6 @@ RSpec.describe 'catalog/_show_availability_sidebar.html.erb' do
       }
     end
     it 'has no umlaut additional services included' do
-      stub_holding_locations
       render partial: 'catalog/show_availability_sidebar', locals: { document: document }
       expect(rendered).not_to have_selector '#highlighted_link'
       expect(rendered).not_to have_selector '#excerpts'
@@ -105,8 +110,6 @@ RSpec.describe 'catalog/_show_availability_sidebar.html.erb' do
         'holdings_1display' => "{\"13395\":{\"location\":\"Forrestal Annex - Temporary\",\"library\":\"Forrestal Annex\",\"location_code\":\"anxafst\",\"copy_number\":\"1\",\"call_number\":\"PS3563.A3294 xT3\",\"call_number_browse\":\"PS3563.A3294 xT3\"}}"
       }
     end
-
-    before { stub_holding_locations }
 
     it 'has highlighted links and excerpt umlaut blocks' do
       render partial: 'catalog/show_availability_sidebar', locals: { document: document }
@@ -131,8 +134,6 @@ RSpec.describe 'catalog/_show_availability_sidebar.html.erb' do
         'holdings_1display' => "{\"13395\":{\"location\":\"Forrestal Annex - Temporary\",\"library\":\"Forrestal Annex\",\"location_code\":\"anxafst\",\"copy_number\":\"1\",\"call_number\":\"PS3563.A3294 xT3\",\"call_number_browse\":\"PS3563.A3294 xT3\"}}"
       }
     end
-
-    before { stub_holding_locations }
 
     it 'has highlighted links and excerpt umlaut blocks' do
       render partial: 'catalog/show_availability_sidebar', locals: { document: document }

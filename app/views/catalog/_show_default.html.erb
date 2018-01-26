@@ -7,13 +7,13 @@
         <% if json_field?(field) %>
           <%= render 'hash_show', document: document, field: field_name %>
         <% elsif linked_record_field?(field) %>
-          <%= render 'other_versions_show', document: document, field: field_name, linked_field: field[:link_field] %>
+          <%= render 'other_versions_show', document: document, field: field, linked_records: document.linked_records(field: field.field) %>
         <% else %>
-          <% if field_name == 'author_display' && doc_presenter.field_value(:field => 'marc_relator_display') != '' %>
-            <dt class="blacklight-<%= field_name.parameterize %>"><%= doc_presenter.field_value(:field => 'marc_relator_display') %>:</dt>
+          <% if field_name == 'author_display' && doc_presenter.field_value(field: 'marc_relator_display') != '' %>
+            <dt class="blacklight-<%= field_name.parameterize %>"><%= doc_presenter.field_value(field: 'marc_relator_display') %>:</dt>
           <%# author is default if no marc relator, default for other fields -%>
           <% else %>
-            <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label(document, :field => field_name).html_safe %></dt>
+            <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label(document, field: field_name).html_safe %></dt>
           <% end %>
 
           <% if document[field_name].length == 1 || !document[field_name].is_a?(Array) %>

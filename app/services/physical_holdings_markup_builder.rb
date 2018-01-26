@@ -195,7 +195,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     restricted_items = holding['items'].map do |values|
       item_markup = ''
       if values['use_statement'].present?
-        child = content_tag(:span,
+        child = content_tag(:div,
                             scsb_use_label(values['use_statement']),
                             class: 'icon-warning icon-request-reading-room')
         item_markup = scsb_list_item(values, child)
@@ -207,7 +207,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     return '' if restricted_items.empty?
 
     restricted_items.uniq!
-    children = "#{holding_label('Use Restrictions:')} #{restricted_items.join}"
+
+    children = restricted_items.join
     content_tag(:ul, children.html_safe, class: 'item-list')
   end
 
@@ -224,7 +225,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   def self.scsb_location?(location)
-    /^scsb.+/ =~ location['code']
+    location.nil? ? false : /^scsb.+/ =~ location['code']
   end
 
   def self.requestable?(adapter, holding_id, location)
@@ -248,7 +249,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param adapter [HoldingRequestsAdapter] adapter for the Solr Document and Bibdata
   # @param holding_id [String]
   # @param location_rules [Hash]
-  # @param link [String]
+  # @param link [String] link markup
   # @return [String] block markup
   def self.location_services_block(adapter, holding_id, location_rules, link)
     content_tag(:div, link,
@@ -337,7 +338,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # Generate the links for a given holding
   def self.request_placeholder(adapter, holding_id, location_rules, holding)
     doc_id = adapter.doc_id
-    link = if /^scsb.+/.match? location_rules['code']
+    link = if !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)
                link_to('Reading Room Request',
                        "/requests/#{doc_id}?source=pulsearch",
@@ -375,7 +376,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   # Builds the markup for online and physical holdings for a given record
-  # @return [Array<String>] the markup for the online and physical holdings
+  # @return [String] the markup for the online and physical holdings
   def build
     physical_holdings_block
   end
@@ -418,10 +419,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       markup << self.class.location_has_list(holding) if @adapter.location_has?(holding)
       markup << self.class.journal_issues_list(holding_id) if @adapter.journal?
 
-      if @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
-        markup << self.class.scsb_list(holding)
-      end
-
       unless holding_id == 'thesis' && @adapter.pub_date > 2012
         request_placeholder_markup = \
           self.class.request_placeholder(@adapter, holding_id, location_rules, holding)
@@ -447,6 +444,17 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       markup = ''
       children = physical_holdings
       markup = self.class.content_tag(:div, children.html_safe) unless children.empty?
+      markup
+    end
+
+    # Generate the restrictions markup
+    def restrictions_block
+      markup = ''
+      @adapter.sorted_physical_holdings.each_value do |holding|
+        if @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
+          markup << self.class.scsb_list(holding)
+        end
+      end
       markup
     end
 end
