@@ -28,6 +28,8 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   def self.electronic_access_link(url, texts)
     markup = if /Open access/.match? texts.first
                link_to(texts.first, url.to_s, target: '_blank')
+             elsif %r{(\/catalog\/.+?#view)} =~ url.to_s
+               link_to('Digital content below', $&)
              else
                link_to(texts.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
              end
