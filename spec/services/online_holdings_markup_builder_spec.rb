@@ -118,5 +118,17 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
         expect(urlified_markup).to include ENV['proxy_base']
       end
     end
+
+    context '.urlify with multiple, nested electronic access titles' do
+      let(:electronic_access_url) { 'http://hdl.handle.net/1802/27831' }
+
+      before do
+        allow(adapter).to receive(:doc_electronic_access).and_return(electronic_access_url => [['I am a label'], ['I am another label']])
+      end
+
+      it 'flattens the set of electronic access titles' do
+        expect(urlified_markup).to include ENV['proxy_base']
+      end
+    end
   end
 end
