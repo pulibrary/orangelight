@@ -18,7 +18,8 @@ class LinkedDocumentResolver
     # Retrieves the Solr documents for each adjacent node
     # @return [Array<SolrDocument>] sibling documents
     def siblings
-      return [] unless response.key?('response') && !response['response']['docs'].empty?
+      return [] unless @siblings.present? && response.key?('response') &&
+                       !response['response']['docs'].empty?
 
       sibling_docs = response['response']['docs'].reject { |document| document['id'] == @root }
       sibling_docs.map { |document| SolrDocument.new(document) }
