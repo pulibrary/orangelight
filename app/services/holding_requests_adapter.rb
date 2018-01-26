@@ -37,18 +37,11 @@ class HoldingRequestsAdapter
 
   # Retrieve the electronic access information
   # @return [String] electronic access value
-  def doc_electronic_access
-    string_values = @document['electronic_access_1display'] || '{}'
-    JSON.parse(string_values).delete_if { |k, _v| k == 'iiif_manifest_paths' }
-  end
+  delegate :doc_electronic_access, to: :@document
 
   # Parse IIIF Manifest links from the electronic access information
   # @return [Hash] IIIF Manifests information
-  def iiif_manifests
-    string_values = @document['electronic_access_1display'] || '{}'
-    values = JSON.parse(string_values)
-    values.fetch('iiif_manifest_paths', {})
-  end
+  delegate :iiif_manifests, to: :@document
 
   # Determine whether or not the electronic resources are accessible using getit
   # @return [TrueClass, FalseClass]

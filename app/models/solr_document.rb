@@ -68,7 +68,7 @@ class SolrDocument
   # Retrieve the electronic access information
   # @return [String] electronic access value
   def doc_electronic_access
-    string_values = @document['electronic_access_1display'] || '{}'
+    string_values = first('electronic_access_1display') || '{}'
     JSON.parse(string_values).delete_if { |k, _v| k == 'iiif_manifest_paths' }
   end
 
@@ -80,10 +80,14 @@ class SolrDocument
     values.fetch('iiif_manifest_paths', {})
   end
 
+  # IIIF Manifest URIs from the electronic access information
+  # @return [Array<String>] URIs to IIIF Manifests
   def iiif_manifest_uris
     iiif_manifests.values
   end
 
+  # The default IIIF Manifest URI from the electronic access information
+  # @return [String] URIs to IIIF Manifests
   def iiif_manifest_uri
     iiif_manifest_uris.first
   end
