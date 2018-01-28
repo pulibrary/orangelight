@@ -1,5 +1,5 @@
 <% unless linked_records.empty? %>
-  <dt class="blacklight-<%= field.parameterize %>"><%= render_document_show_field_label document, :field => field %></dt>
+  <dt class="blacklight-<%= field.parameterize %>"><%= render_document_show_field_label(document, field: field.field) %></dt>
   <dd class="blacklight-<%= field.parameterize %>">
     <% if linked_records.count == 1 %>
       <%= link_to linked_records.first.title, solr_document_url(linked_records.first.id) %>
