@@ -29,7 +29,7 @@ describe 'Tools links' do
       end
     end
 
-    ['SMS', 'Email', I18n.t('blacklight.tools.librarian_view'), 'Cite', I18n.t('blacklight.voyager')].each do |link_text|
+    ['SMS', 'Email', I18n.t('blacklight.tools.librarian_view'), 'Cite'].each do |link_text|
       it "#{link_text} appears for record view" do
         within '#main-container' do
           find_link(link_text)

@@ -4,8 +4,8 @@ defaults: &defaults
   umlaut_base: https://getit.princeton.edu
   bibdata_base: https://bibdata.princeton.edu
   proxy_base: https://library.princeton.edu/resolve/lookup?url=
-  voyager_api_base: https://catalog.princeton.edu:7014
-  pulsearch_base: https://pulsearch.princeton.edu
+  voyager_api_base: https://webvoyage.princeton.edu:7014
+  pulsearch_base: https://catalog.princeton.edu
   aeon_base: https://lib-aeon.princeton.edu/aeon/aeon.dll
   gfa_base: http://libweb5.princeton.edu/ReCAPNoUI/Default.aspx
   ill_base: https://lib-illiad.princeton.edu/illiad/illiad.dll/OpenURL
