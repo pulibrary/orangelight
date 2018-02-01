@@ -17348,7 +17348,7 @@
             "Journal"
         ],
         "holdings_1display": [
-            "{\"671799\":{\"call_number\":\"*OEL 76-1344\",\"call_number_browse\":\"*OEL 76-1344\",\"location\":\"ReCAP\",\"library\":\"ReCAP\",\"location_code\":\"scsbnypl\",\"location_has\":[\"Oct., 1977- Mar., 1978\"],\"items\":[{\"holding_id\":\"671799\",\"enumeration\":\"Oct., 1977- Mar., 1978\",\"id\":\"1118538\",\"use_statement\":\"In Library Use\",\"status_at_load\":\"Available\",\"barcode\":\"33433004579631\",\"copy_number\":\"1\",\"cgc\":\"Open\",\"collection_code\":\"NA\"}]}}"
+            "{\"671799\":{\"call_number\":\"*OEL 76-1344\",\"call_number_browse\":\"*OEL 76-1344\",\"location\":\"ReCAP\",\"library\":\"ReCAP\",\"location_code\":\"scsbnypl\",\"location_has\":[\"Oct., 1977- Mar., 1978\"],\"items\":[{\"holding_id\":\"671799\",\"enumeration\":\"Oct., 1977- Mar., 1978\",\"id\":\"1118538\",\"use_statement\":\"In Library Use\",\"status_at_load\":\"Available\",\"barcode\":\"33433004579631\",\"copy_number\":\"1\",\"cgc\":\"Open\",\"collection_code\":\"NA\"}]},\"671798\":{\"call_number\":\"*OEL 76-1344\",\"call_number_browse\":\"*OEL 76-1344\",\"location\":\"ReCAP\",\"library\":\"ReCAP\",\"location_code\":\"scsbnypl\",\"location_has\":[\"Oct., 1977- Mar., 1978\"],\"items\":[{\"holding_id\":\"671798\",\"enumeration\":\"Oct., 1977- Mar., 1978\",\"id\":\"1118538\",\"use_statement\":\"In Library Use\",\"status_at_load\":\"Available\",\"barcode\":\"33433004579631\",\"copy_number\":\"1\",\"cgc\":\"Open\",\"collection_code\":\"NA\"}]}}"
         ],
         "id": [
             "SCSB-7235709"

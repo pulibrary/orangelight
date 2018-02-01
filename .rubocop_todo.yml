@@ -142,11 +142,6 @@ RSpec/ReturnFromStub:
     - 'spec/controllers/omniauth_callbacks_controller_spec.rb'
     - 'spec/models/voyager_patron_client_spec.rb'
 
-# Offense count: 5
-RSpec/SubjectStub:
-  Exclude:
-    - 'spec/models/voyager_patron_client_spec.rb'
-
 # Offense count: 1
 # Configuration parameters: IgnoreSymbolicNames.
 RSpec/VerifiedDoubles:

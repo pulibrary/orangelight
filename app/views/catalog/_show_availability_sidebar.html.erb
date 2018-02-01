@@ -14,16 +14,12 @@
   <%= umlaut_services_fulltext(document) %>
 <% end %>
 
-<% unless holding_requests_adapter.restrictions.flatten.empty? %>
+<% unless holding_requests_adapter.restrictions.empty? %>
   <div class="restrictions--panel">
     <div class="panel panel-default">
       <div class="panel-heading"><%= 'Restrictions' %></div>
       <div class="panel-body">
-        <% holding_requests_adapter.sorted_physical_holdings.each do |_id, holding| %>
-          <% if holding_requests_adapter.scsb_holding?(holding) && !holding_requests_adapter.empty_holding?(holding) %>
-            <%= PhysicalHoldingsMarkupBuilder.scsb_list(holding) %>
-          <% end %>
-        <% end %>
+        <%= PhysicalHoldingsMarkupBuilder.restrictions_markup(holding_requests_adapter.restrictions) %>
       </div>
     </div>
   </div>

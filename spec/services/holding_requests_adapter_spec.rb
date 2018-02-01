@@ -17,6 +17,20 @@ RSpec.describe HoldingRequestsAdapter do
     end
   end
 
+  context 'Restrictions display' do
+    let(:holdings_hash) do
+      {
+        '671799' => { 'location_code' => 'scsbnypl', 'items' => [{ 'holding_id' => '671799', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] },
+        '671798' => { 'location_code' => 'scsbnypl', 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] }
+      }
+    end
+
+    it 'repeated restrictions appear only once' do
+      allow(holdings).to receive(:doc_holdings).and_return(holdings_hash)
+      expect(holdings.restrictions).to eq ['In Library Use']
+    end
+  end
+
   context 'with IIIF Manifest URLs indexed' do
     before do
       allow(document).to receive(:doc_electronic_access).and_return(JSON.parse('{"https://pulsearch.princeton.edu/catalog/4609321#view":["arks.princeton.edu"],"https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs":["drive.google.com","Curatorial documentation"],"iiif_manifest_paths":{"http://arks.princeton.edu/ark:/88435/7d278t10z":"https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest","http://arks.princeton.edu/ark:/88435/xp68kg247":"https://figgy.princeton.edu/concern/scanned_resources/42570d35-13b3-4bce-8fd0-7e465decb0e1/manifest"}}'))

@@ -25,7 +25,7 @@ $(document).ready(function() {
     });
 
     //tooltip for everything else
-    $("#content").tooltip({
+    $("#main-container").tooltip({
         selector: "[data-toggle='tooltip']",
         placement: "bottom",
         container: "body",
