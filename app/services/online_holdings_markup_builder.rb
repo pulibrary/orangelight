@@ -36,6 +36,18 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
     markup
   end
 
+  # Method for cleaning URLs
+  # @see https://github.com/pulibrary/orangelight/issues/1185
+  # @param url [String] the URL for an online holding
+  # @return [String] the cleaned URL
+  def self.clean_url(url)
+    if /go\.galegroup\.com.+?%257C/.match? url
+      URI.decode_www_form_component(url)
+    else
+      url
+    end
+  end
+
   # Generate the markup for the electronic access block
   # First argument of link_to is optional display text. If null, the second argument
   # (URL) is the display text for the link.
@@ -48,6 +60,8 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
     electronic_access = adapter.doc_electronic_access
     electronic_access.each do |url, electronic_texts|
       texts = electronic_texts.flatten
+      url = clean_url(url)
+
       link = electronic_access_link(url, texts)
       link = "#{texts[1]}: " + link if texts[1]
       link = "<li>#{link}</li>" if electronic_access.count > 1
