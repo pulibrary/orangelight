@@ -139,5 +139,17 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
         expect(urlified_markup).to include ENV['proxy_base']
       end
     end
+
+    context 'when a URL contains an encoded "|" character' do
+      let(:gale_go_url) { 'http://go.galegroup.com/ps/i.do?id=GALE%257C9781440840869&v=2.1&u=prin77918&it=etoc&p=GVRL&sw=w' }
+
+      before do
+        allow(adapter).to receive(:doc_electronic_access).and_return(gale_go_url => ['go.galegroup.com'])
+      end
+
+      it 'ensures that the "|" character does not get encoded twice' do
+        expect(urlified_markup).to include 'http://go.galegroup.com/ps/i.do?id=GALE%7C9781440840869'
+      end
+    end
   end
 end
