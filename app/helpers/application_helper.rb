@@ -66,7 +66,7 @@ module ApplicationHelper
     if link.nil?
       ''
     else
-      ' ' + link_to(%(<span class="link-text">#{t('blacklight.holdings.stackmap')}</span><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>).html_safe, link, :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
+      ' ' + link_to(%(<span class="link-text">#{t('blacklight.holdings.stackmap')}</span><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>).html_safe, link, :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip', 'aria-label' => 'Where to find it')
     end
   end
 
@@ -81,7 +81,7 @@ module ApplicationHelper
     if link.nil?
       ''
     else
-      ' ' + link_to('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>'.html_safe, link, :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip')
+      ' ' + link_to('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>'.html_safe, link, :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip', 'aria-label' => 'Where to find it')
     end
   end
 
