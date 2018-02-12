@@ -17,19 +17,19 @@
     white-space: normal;
 
     &.label-default {
-      color: #777;
+      color: $gray-light;
     }
 
     &.label-warning {
-      color: darken(#f0ad4e, 20%);
+      color: $dark-orange;
     }
 
     &.label-danger {
-      color: darken(#d9534f, 20%);
+      color: $brand-danger;
     }
 
     &.label-success {
-      color: darken(#5cb85c, 20%);
+      color: $brand-success;
     }
   }
 }
@@ -298,6 +298,10 @@
       float: left;
       padding: 6px 5px;
       // @include vertical-align;
+
+      &.label-warning {
+        color: $black;
+      }
     }
 
     .library-location {
