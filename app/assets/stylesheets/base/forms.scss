@@ -35,3 +35,7 @@ form table th:first-child {
 .blacklight-feedback-hidden {
   display: none;
 }
+
+.blacklight-feedback .form-group {
+  overflow: auto;
+}
