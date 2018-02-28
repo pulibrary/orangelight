@@ -12,8 +12,9 @@ RSpec.describe Users::OmniauthCallbacksController do
 
   describe 'callback response to User object' do
     let(:last_name) { 'LastName' }
+    let(:uid) { '12345678901234' }
     let(:omniauth_response) do
-      OmniAuth::AuthHash.new(provider: 'barcode', uid: '12345678901234', info:
+      OmniAuth::AuthHash.new(provider: 'barcode', uid: uid, info:
         { last_name: last_name })
     end
 
@@ -36,6 +37,23 @@ RSpec.describe Users::OmniauthCallbacksController do
       allow(Bibdata).to receive(:get_patron) { guest_response }
       get :barcode
       expect(response).to redirect_to(account_path)
+    end
+    context 'with a valid guest barcode containing whitespace' do
+      let(:last_name) { 'LastName' }
+      let(:uid) { '22101 002369676' }
+      let(:omniauth_response) { OmniAuth::AuthHash.new provider: 'barcode', uid: uid, info: { last_name: last_name } }
+
+      before do
+        controller.request.env['omniauth.auth'] = omniauth_response
+        stub_request(:get, 'https://bibdata-dev.princeton.edu/patron/22101002369676').to_return(status: 200, body: JSON.generate(guest_response))
+      end
+
+      it 'strips the whitespace' do
+        get :barcode
+        expect(assigns(:user)).to be_a User
+        user = assigns(:user)
+        expect(user.uid).to eq '22101002369676'
+      end
     end
     it 'invalid patron redirects to login page' do
       allow(User).to receive(:from_barcode) { valid_barcode_user }
