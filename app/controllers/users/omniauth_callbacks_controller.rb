@@ -3,7 +3,7 @@
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def cas
-      @user = User.from_cas(request.env['omniauth.auth'])
+      @user = User.from_cas access_token_in_request_params
 
       sign_in_and_redirect @user, event: :authentication # this will throw if @user is not activated
       if is_navigational_format?
@@ -13,7 +13,7 @@ module Users
     end
 
     def barcode
-      @user = User.from_barcode(request.env['omniauth.auth'])
+      @user = User.from_barcode barcode_token_in_request_params
       patron = Bibdata.get_patron(@user.uid)
       valid_user = @user.valid?
       if patron == false || !last_name_match?(@user.username, patron['last_name']) || !valid_user
@@ -44,6 +44,23 @@ module Users
       def flash_validation
         flash[:barcode] = @user.errors[:uid] unless @user.errors[:uid].empty?
         flash[:last_name] = @user.errors[:username] unless @user.errors[:username].empty?
+      end
+
+      # Accesses the access token passed within the request headers
+      # @return [OmniAuth::AuthHash,nil] the access token
+      def access_token_in_request_params
+        request.env['omniauth.auth']
+      end
+
+      # Accesses and cleans the access token passed within the request headers
+      # This cleaning is for clients authenticating using patron barcodes
+      # @return [OmniAuth::AuthHash,nil] the access token
+      def barcode_token_in_request_params
+        access_token = access_token_in_request_params
+        unless access_token.nil? || access_token.uid.empty?
+          access_token.uid = access_token.uid.gsub(/\s/, '')
+        end
+        access_token
       end
   end
 end
