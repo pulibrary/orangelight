@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: a561263b7fcef3a2e9903ffa464e8f16a06ccc10
+  revision: 3b2d5848eb7217b737c72bd9f4d0c581b6eae3e6
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)
@@ -196,7 +196,7 @@ GEM
     faraday-cookie_jar (0.0.6)
       faraday (>= 0.7.4)
       http-cookie (~> 1.0.0)
-    ffi (1.9.21)
+    ffi (1.9.23)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     globalid (0.4.1)
@@ -296,7 +296,7 @@ GEM
       pry (~> 0.10)
     public_suffix (3.0.1)
     rack (2.0.4)
-    rack-test (0.8.2)
+    rack-test (0.8.3)
       rack (>= 1.0, < 3)
     rails (5.1.5)
       actioncable (= 5.1.5)
