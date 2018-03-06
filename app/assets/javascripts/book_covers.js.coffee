@@ -23,7 +23,23 @@ class BookCoverManager
     true
   fetch_identifiers: (identifiers) ->
     url = "#{@google_url}#{identifiers.join(",")}"
-    $.getJSON(url).done(this.process_results)
+    $.getJSON(url).done(this.process_results, this.update_open_graph_metadata)
+
+  # Update the Open Graph metadata within <meta> elements
+  # @param {Object} data - Data retrieved from the Google Books API.
+  update_open_graph_metadata: (data) ->
+    for identifier, info of data
+      if info.thumbnail_url?
+        thumbnail_url = info.thumbnail_url.replace(/zoom=./,"zoom=1").replace("&edge=curl","")
+
+        og_image_elements = $('meta[property="og:image"]')
+        if og_image_elements.length
+          og_image_element = $(og_image_elements[0])
+          og_image_element.prop('content', thumbnail_url)
+        else
+          og_image_element = $("<meta property=\"og:image\" content=\"#{thumbnail_url}\">")
+          $("head").append(og_image_element)
+
   process_results: (data) ->
     for identifier, info of data
       if info.thumbnail_url?
@@ -36,6 +52,7 @@ class BookCoverManager
         new_thumbnail = $("<img alt='' src='#{thumbnail_url}'>")
         $(thumbnail_element).html('')
         $(thumbnail_element).append(new_thumbnail)
+
   find_identifier: (identifier_type, property) ->
     identifier = $("meta[property='#{property}']")
     identifier = identifier
