@@ -400,6 +400,14 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('notes') do |field|
+      field.include_in_simple_select = false
+      field.label = 'Notes'
+      field.solr_local_parameters = {
+        qf: 'notes_index'
+      }
+    end
+
     config.add_search_field('series_title') do |field|
       field.include_in_simple_select = false
       field.label = 'Series title'
