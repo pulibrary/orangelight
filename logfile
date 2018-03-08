@@ -1,0 +1,6 @@
+FATAL:  "/usr/local/var/postgres" is not a valid data directory
+DETAIL:  File "/usr/local/var/postgres/PG_VERSION" does not contain valid data.
+HINT:  You might need to initdb.
+FATAL:  "/usr/local/var/postgres" is not a valid data directory
+DETAIL:  File "/usr/local/var/postgres/PG_VERSION" does not contain valid data.
+HINT:  You might need to initdb.
