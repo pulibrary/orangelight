@@ -62,7 +62,8 @@ module BlacklightHelper
     index_course_reserves(courses)
     solr_parameters[:fq] ||= []
     solr_parameters[:fq].reject! do |x|
-      %w[course instructor department filter].include?(x.split('=')[1].split('}')[0])
+      x = x.split('=')[1].split('}')[0] unless x.split('=')[1].nil?
+      %w[course instructor department filter].include?(x)
     end
     solr_parameters[:fq] << "{!join from=bib_ids_s to=id fromIndex=#{ReserveIndexer.core}}#{courses.solr_query}"
   end

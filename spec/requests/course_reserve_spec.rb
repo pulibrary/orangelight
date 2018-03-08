@@ -45,6 +45,16 @@ describe 'course reserves' do
     end
   end
 
+  describe 'course_reserve_filters' do
+    it 'builds array from solr_parameters[:fq] and traps nil if first part cannot split \'=\' ' do
+      stub_all_query
+      stub_bib_ids
+      get '/catalog.json?search_field=all_fields&f[instructor][]=Himpele, J.&f[course][]=ANT 454: Transcultural Cinema&f[recently_added_facet][]=months_2&f[filter][]=Course Reserves'
+      r = JSON.parse(response.body)
+      expect(r['response']['docs'].length).to eq 1
+    end
+  end
+
   def stub_all_query
     stub_request(:get, "#{ENV['bibdata_base']}/courses")
       .to_return(status: 200,
@@ -56,6 +66,7 @@ describe 'course reserves' do
     stub_2
     stub_3
     stub_4
+    stub_5
   end
 
   def stub_1
@@ -82,6 +93,12 @@ describe 'course reserves' do
                  body: reserve_3.to_json)
   end
 
+  def stub_5
+    stub_request(:get, "#{ENV['bibdata_base']}/bib_ids?reserve_id[]=9194")
+      .to_return(status: 200,
+                 body: reserve_4.to_json)
+  end
+
   def reserve_1
     [
       {
@@ -105,6 +122,15 @@ describe 'course reserves' do
       {
         reserve_list_id: 2088,
         bib_id: 345_682
+      }
+    ]
+  end
+
+  def reserve_4
+    [
+      {
+        reserve_list_id: 9194,
+        bib_id: 10_628_252
       }
     ]
   end
@@ -140,6 +166,16 @@ describe 'course reserves' do
         section_id: 0,
         instructor_first_name: 'Joe',
         instructor_last_name: 'Test'
+      },
+      {
+        reserve_list_id: 9194,
+        department_name: 'Anthropology',
+        department_code: 'ANT',
+        course_name: 'Transcultural Cinema',
+        course_number: 'ANT 454',
+        section_id: 0,
+        instructor_first_name: 'J.',
+        instructor_last_name: 'Himpele'
       }
     ]
   end
