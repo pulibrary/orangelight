@@ -475,6 +475,14 @@ describe 'blacklight tests' do
     end
   end
 
+  describe 'notes field in advanced search' do
+    it 'record with notes field is retrieved' do
+      get '/catalog.json?q1=Stoller+Eric+Kohn&f1=notes&search_field=advanced'
+      r = JSON.parse(response.body)
+      expect(r['response']['docs'].select { |d| d['id'] == '10585552' }.length).to eq(1)
+    end
+  end
+
   describe 'voyager login url pattern' do
     it 'redirects to the account page' do
       get '/cgi-bin/Pwebrecon.cgi?PAGE=pbLogon'
