@@ -73,18 +73,11 @@ class HoldingRequestsAdapter
     end
   end
 
-  # Retrieve the rules from the bib. data service for each holding
-  # @return [Array<Hash>] the location rules
-  def rules
-    doc_holdings_physical.each_value
-                         .map { |holding| holding_location_rules(holding) }
-                         .reject(&:nil?)
-  end
-
   # Retrieve the restrictions placed upon physical holdings
   # @return [Array<String>]
   def restrictions
     doc_holdings_physical.each_value.map { |holding| restrictions_for_holding(holding) }
+                         .flatten.compact.uniq
   end
 
   # Determine whether or not the catalog record is for a periodical
@@ -158,7 +151,7 @@ class HoldingRequestsAdapter
   # @param holding [Hash]
   def restrictions_for_holding(holding)
     return [] unless holding.key? 'items'
-    holding['items'].select { |values| values['use_statement'].present? }
+    holding['items'].map { |values| values['use_statement'] }
   end
 
   # Determine whether or not the holding is explicitly marked as "Unavailable"

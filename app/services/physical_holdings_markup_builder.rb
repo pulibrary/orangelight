@@ -179,37 +179,22 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     end
   end
 
-  # Generate the markup for a list item <li> containing a ReCAP holding
-  # @param item [Hash] the values for a given ReCAP holding
+  # Generate the markup for record restrictions
+  # @param holding [Hash] the restrictions for all holdings
   # @return [String] the markup
-  def self.scsb_list_item(item, children)
-    content_tag(:li, children.html_safe,
-                title: scsb_use_toolip(item['use_statement']),
-                'data-toggle' => 'tooltip')
-  end
-
-  # Generate the markup for an unordered list <ol> containing ReCAP holding
-  # @param holding [Hash] the values for a given ReCAP holding
-  # @return [String] the markup
-  def self.scsb_list(holding)
-    restricted_items = holding['items'].map do |values|
-      item_markup = ''
-      if values['use_statement'].present?
-        child = content_tag(:div,
-                            scsb_use_label(values['use_statement']),
-                            class: 'icon-warning icon-request-reading-room')
-        item_markup = scsb_list_item(values, child)
-      end
-      item_markup
+  def self.restrictions_markup(restrictions)
+    restricted_items = restrictions.map do |value|
+      content_tag(:div, scsb_use_label(value),
+                  class: 'icon-warning icon-request-reading-room',
+                  title: scsb_use_toolip(value),
+                  'data-toggle' => 'tooltip')
     end
-
-    restricted_items.reject! { |e| e.to_s.empty? }
-    return '' if restricted_items.empty?
-
-    restricted_items.uniq!
-
-    children = restricted_items.join
-    content_tag(:ul, children.html_safe, class: 'restrictions-list item-list')
+    if restricted_items.length > 1
+      list = restricted_items.map { |value| content_tag(:li, value) }
+      content_tag(:ul, list.join.html_safe, class: 'restrictions-list item-list')
+    else
+      restricted_items.join.html_safe
+    end
   end
 
   def self.open_location?(location)
@@ -444,17 +429,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       markup = ''
       children = physical_holdings
       markup = self.class.content_tag(:div, children.html_safe) unless children.empty?
-      markup
-    end
-
-    # Generate the restrictions markup
-    def restrictions_block
-      markup = ''
-      @adapter.sorted_physical_holdings.each_value do |holding|
-        if @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
-          markup << self.class.scsb_list(holding)
-        end
-      end
       markup
     end
 end

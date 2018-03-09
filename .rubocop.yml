@@ -155,6 +155,11 @@ RSpec/AnyInstance:
   Exclude:
     - 'spec/requests/request_spec.rb'
 
+RSpec/SubjectStub:
+  Exclude:
+    - 'spec/models/voyager_patron_client_spec.rb'
+    - 'spec/services/holding_requests_adapter_spec.rb'
+
 Style/AsciiComments:
   Exclude:
     - 'lib/orangelight/string_functions.rb'
