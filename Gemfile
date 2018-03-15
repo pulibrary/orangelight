@@ -89,6 +89,10 @@ gem 'voight_kampff', '~> 1.1'
 
 gem 'webpacker', '3.2.0'
 
+gem 'lograge'
+
+gem 'logstash-event'
+
 group :development do
   gem 'capistrano-rails', '~> 1.1.6'
 end

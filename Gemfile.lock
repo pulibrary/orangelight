@@ -240,6 +240,12 @@ GEM
     lcsort (0.9.0)
     library_stdnums (1.6.0)
     libv8 (3.16.14.19)
+    lograge (0.9.0)
+      actionpack (>= 4)
+      activesupport (>= 4)
+      railties (>= 4)
+      request_store (~> 1.0)
+    logstash-event (1.2.02)
     loofah (2.2.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -334,6 +340,8 @@ GEM
       ffi (>= 0.5.0, < 2)
     rdoc (4.3.0)
     ref (2.0.0)
+    request_store (1.4.0)
+      rack (>= 1.4)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -497,6 +505,8 @@ DEPENDENCIES
   launchy
   lcsort (~> 0.9)
   library_stdnums
+  lograge
+  logstash-event
   mail_form
   modernizr-rails
   newrelic_rpm
