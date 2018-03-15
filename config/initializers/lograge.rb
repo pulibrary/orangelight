@@ -9,8 +9,7 @@ Rails.application.configure do
   config.lograge.formatter = Lograge::Formatters::Logstash.new
 
   # This is is useful if you want to log query parameters
-  config.lograge.custom_options = lambda do |event|
-    { ddsource: ['ruby'],
-      params: event.payload[:params].reject { |k| %w[controller action].include? k } }
+  config.lograge.custom_options = lambda do |_event|
+    { ddsource: ['ruby'] }
   end
 end
