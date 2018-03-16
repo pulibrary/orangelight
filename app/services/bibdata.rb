@@ -28,7 +28,6 @@ class Bibdata
         return false
       end
       patron = JSON.parse(patron_record.body).with_indifferent_access
-      Rails.logger.info(patron.to_hash.to_s)
       patron
     end
 
