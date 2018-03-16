@@ -41,5 +41,8 @@ module Orangelight
     config.x.after_sign_out_url = 'https://fed.princeton.edu/cas/logout'
 
     config.robots = OpenStruct.new(config_for(:robots))
+    config.semantic_logger.backtrace_level = :info
+    config.rails_semantic_logger.quiet_assets = true
+    config.rails_semantic_logger.format = :json
   end
 end
