@@ -167,6 +167,8 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.3)
+    ddtrace (0.11.3)
+      msgpack
     deprecation (1.0.0)
       activesupport
     devise (4.4.1)
@@ -264,12 +266,12 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     modernizr-rails (2.7.1)
+    msgpack (1.2.4)
     multi_json (1.12.2)
     multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.2.0)
-    newrelic_rpm (4.7.1.340)
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -491,6 +493,7 @@ DEPENDENCIES
   chosen-rails
   coffee-rails (~> 4.2.0)
   coveralls
+  ddtrace
   devise (~> 4.4)
   devise-guests (~> 0.5)
   factory_bot_rails
@@ -509,7 +512,6 @@ DEPENDENCIES
   logstash-event
   mail_form
   modernizr-rails
-  newrelic_rpm
   omniauth-cas
   openurl (~> 1.0)
   pg

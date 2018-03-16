@@ -60,9 +60,9 @@ gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
 # rspec, just like jettywrapper appear necessary for cap currently
 gem 'capybara'
 gem 'coveralls', require: false
+gem 'ddtrace'
 gem 'lcsort', '~>0.9'
 gem 'library_stdnums'
-gem 'newrelic_rpm'
 gem 'rspec-rails', '~> 3.4'
 gem 'rubocop', '~> 0.49', require: false
 gem 'rubocop-rspec', '~> 1.20.1'
