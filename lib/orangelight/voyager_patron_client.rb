@@ -18,7 +18,6 @@ class VoyagerPatronClient
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end
-    Rails.logger.info(response.body.to_s)
     response
   end
 
@@ -34,7 +33,6 @@ class VoyagerPatronClient
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end
-    Rails.logger.info(response.body.to_s)
     extract_db_keys(response.body)
   end
 
@@ -62,7 +60,6 @@ class VoyagerPatronClient
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end
-    Rails.logger.info(response.body.to_s)
     response
   end
 
@@ -72,7 +69,6 @@ class VoyagerPatronClient
       response = conn.post do |req|
         req.url '/vxws/CancelService'
         req.body = cancel_xml_string(items, dbkey)
-        Rails.logger.info(req.body.to_s)
         req.headers['Content-Type'] = 'application/xml'
       end
     rescue Faraday::Error::ConnectionFailed
@@ -80,7 +76,6 @@ class VoyagerPatronClient
       return false
     end
     Rails.logger.info(response.status.to_s)
-    Rails.logger.info(Nokogiri::XML(response.body).to_xml.to_s)
     parse_response(response)
   end
 
@@ -120,17 +115,13 @@ class VoyagerPatronClient
     begin
       response = conn.post do |req|
         req.url '/vxws/RenewService'
-        Rails.logger.info(items)
         req.body = renew_xml_string(items).to_s
-        Rails.logger.info(req.body.to_s)
         req.headers['Content-Type'] = 'application/xml'
       end
     rescue Faraday::Error::ConnectionFailed
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end
-    Rails.logger.info(response.status.to_s)
-    Rails.logger.info(Nokogiri::XML(response.body).to_xml.to_s)
     parse_response(response)
   end
 
