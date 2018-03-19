@@ -10,10 +10,12 @@ class PlumViewerLoader
         .fail( () =>
           this.fetch_viewer_from_ark("https://plum.princeton.edu")
         )
+
   fetch_viewer_from_ark: (repo_url) ->
     $.getJSON("#{repo_url}/iiif/lookup/#{this.ark()}?no_redirect=true")
-      .done( (data) =>
-        this.build_viewer(data['url'])
+      .done((manifest) =>
+        manifest_url = manifest['url']
+        this.build_viewer(manifest_url)
       )
   fetch_viewer_with_url: (url) ->
       this.build_viewer(url)

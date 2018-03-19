@@ -24,6 +24,7 @@ class BookCoverManager
   fetch_identifiers: (identifiers) ->
     url = "#{@google_url}#{identifiers.join(",")}"
     $.getJSON(url).done(this.process_results)
+
   process_results: (data) ->
     for identifier, info of data
       if info.thumbnail_url?
@@ -36,6 +37,7 @@ class BookCoverManager
         new_thumbnail = $("<img alt='' src='#{thumbnail_url}'>")
         $(thumbnail_element).html('')
         $(thumbnail_element).append(new_thumbnail)
+
   find_identifier: (identifier_type, property) ->
     identifier = $("meta[property='#{property}']")
     identifier = identifier
