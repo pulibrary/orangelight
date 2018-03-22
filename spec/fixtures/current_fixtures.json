@@ -18621,59 +18621,224 @@
         ]
     },
     {
-      "id":"3395923",
-      "numeric_id_b":true,
-      "author_display":["Reade, Charles, 1814-1884"],
-      "author_citation_display":["Reade, Charles","Parrish, Morris Longstreth"],
-      "author_roles_1display":"{\"secondary_authors\":[\"Reade, Charles\",\"Parrish, Morris Longstreth\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Reade, Charles\"}",
-      "author_s":["Reade, Charles, 1814-1884","Parrish, Morris Longstreth, 1867-1944"],
-      "opensearch_display":["Reade, Charles, 1814-1884","Parrish, Morris Longstreth, 1867-1944","Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, by Anthony Trollope and Charles Reade.","Reade, Charles, 1814-1884. Shilly Shally","English drama"],
-      "marc_relator_display":["Author"],
-      "title_display":"Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, [1872] / by Anthony Trollope and Charles Reade.",
-      "title_t":["Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, by Anthony Trollope and Charles Reade."],
-      "title_citation_display":["Shilly Shally, or, Ralph the heir : a comedy in three acts :"],
-      "compiled_created_display":["[1872] /"],
-      "compiled_created_t":["Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, by Anthony Trollope and Charles Reade."],
-      "pub_created_display":["[]"],
-      "pub_created_s":["[]"],
-      "pub_date_display":["1872"],
-      "pub_date_start_sort":1872,
-      "cataloged_tdt":"2001-07-13T18:52:41Z",
-      "format":["Manuscript","Book"],
-      "electronic_access_1display":"{\"https://pulsearch.princeton.edu/catalog/3395923#view\":[\"arks.princeton.edu\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/w95051854\":\"https://figgy.princeton.edu/concern/scanned_resources/ab2c354b-ff2d-4a0a-9334-1b14316efe3a/manifest\"}}",
-      "description_display":["2 v. ; 30 cm."],
-      "description_t":["2 v. ; 30 cm."],
-      "linking_notes_display":["Forms part of the Morris L. Parrish collection of Victorian novelists (C0171)."],
-      "contained_in_s":["830298"],
-      "summary_note_display":["Two sets of original manuscript sheets (folded) for Acts 1 and 2."],
-      "notes_display":["\"S.G. Saunders Copyist 22 [Ann] Street Devonport Street Commercial Road. E. 1872\"--v. 1, f. 35.","\"To be returned to Charles Reade Esq. D.C.L. 2 Albert Terrace Knightsbridge London S.W.\""],
-      "binding_note_display":["Original wrappers, stitched; in slipcase."],
-      "language_facet":["English"],
-      "language_code_s":["eng"],
-      "provenance_display":["Bookplate of Morris L. Parrish."],
-      "source_acquisition_display":["Acc. no. AM 19660."],
-      "other_format_display":["Also available in an electronic version."],
-      "subject_display":["Reade, Charles, 1814-1884. Shilly Shally","English drama—19th century"],
-      "subject_t":["Reade, Charles, 1814-1884. Shilly Shally","English drama—19th century"],
-      "subject_facet":["Reade, Charles, 1814-1884. Shilly Shally","English drama—19th century"],
-      "form_genre_display":["Manuscripts, English 19th century."],
-      "related_name_json_1display":"{\"Former owner\":[\"Reade, Charles, 1814-1884\",\"Parrish, Morris Longstreth, 1867-1944\"]}",
-      "place_name_display":["England London."],
-      "other_title_display":["Ralph the heir"],
-      "alt_title_246_display":["Ralph the heir"],
-      "in_display":["Morris L. Parrish collection of Victorian novelists. 1806-1958"],
-      "oclc_s":["49365071"],
-      "other_version_s":["ocm49365071"],
-      "subject_era_facet":["19th century"],
-      "holdings_1display":"{\"3724483\":{\"location\":\"Rare Books and Special Collections - South East (MSS)\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"hsvm\",\"call_number\":\"C0171 (no. 109)\",\"call_number_browse\":\"C0171 (no. 109)\"},\"8818833\":{\"location\":\"Online - *ONLINE*\",\"library\":\"Online\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"}}",
-      "location_code_s":["hsvm","elf1"],
-      "location":["Rare Books and Special Collections"],
-      "location_display":["Rare Books and Special Collections - South East (MSS)","Online - *ONLINE*"],
-      "advanced_location_s":["hsvm","elf1","Rare Books and Special Collections","Online"],
-      "name_title_browse_s":["Reade, Charles, 1814-1884. Shilly Shally, or, Ralph the heir"],
-      "call_number_display":["C0171 (no. 109)","Electronic Resource"],
-      "call_number_browse_s":["C0171 (no. 109)","Electronic Resource"],
-      "timestamp":"2018-01-24T19:46:06.008Z"
+        "id": [
+        "3395923"
+        ],
+        "numeric_id_b": [
+        true
+        ],
+        "cjk_all": [
+        "Reade, Charles, 1814-1884. http://id.loc.gov/authorities/names/n50043928",
+        "Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, [1872] / by Anthony Trollope and Charles Reade.",
+        "Ralph the heir",
+        "2 v. ; 30 cm.",
+        "\"S.G. Saunders Copyist 22 [Ann] Street Devonport Street Commercial Road. E. 1872\"--v. 1, f. 35.",
+        "\"To be returned to Charles Reade Esq. D.C.L. 2 Albert Terrace Knightsbridge London S.W.\"",
+        "Original wrappers, stitched; in slipcase.",
+        "Two sets of original manuscript sheets (folded) for Acts 1 and 2.",
+        "Also available in an electronic version.",
+        "Acc. no. AM 19660.",
+        "Bookplate of Morris L. Parrish.",
+        "Forms part of the Morris L. Parrish collection of Victorian novelists (C0171).",
+        "Reade, Charles, 1814-1884. Shilly Shally.",
+        "English drama 19th century. http://id.loc.gov/authorities/subjects/sh85043344",
+        "Manuscripts, English 19th century. lcsh",
+        "Reade, Charles, 1814-1884, former owner. http://id.loc.gov/authorities/names/n50043928",
+        "Parrish, Morris Longstreth, 1867-1944, former owner. http://id.loc.gov/authorities/names/n50050790",
+        "England London.",
+        "nnbd Morris L. Parrish collection of Victorian novelists. 1806-1958. 830298",
+        "http://arks.princeton.edu/ark:/88435/w95051854",
+        "3724483 hsvm C0171 (no. 109)",
+        "8818833 elf1 Electronic Resource"
+        ],
+        "author_display": [
+        "Reade, Charles, 1814-1884"
+        ],
+        "author_sort": [
+        "Reade, Charles, 1814-1884"
+        ],
+        "author_citation_display": [
+        "Reade, Charles",
+        "Parrish, Morris Longstreth"
+        ],
+        "author_roles_1display": [
+        "{\"secondary_authors\":[\"Reade, Charles\",\"Parrish, Morris Longstreth\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Reade, Charles\"}"
+        ],
+        "author_s": [
+        "Reade, Charles, 1814-1884",
+        "Parrish, Morris Longstreth, 1867-1944"
+        ],
+        "marc_relator_display": [
+        "Author"
+        ],
+        "title_display": [
+        "Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, [1872] / by Anthony Trollope and Charles Reade."
+        ],
+        "title_a_index": [
+        "Shilly Shally, or, Ralph the heir"
+        ],
+        "title_sort": [
+        "Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, [1872] / by Anthony Trollope and Charles Reade."
+        ],
+        "title_no_h_index": [
+        "Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, [1872] / by Anthony Trollope and Charles Reade."
+        ],
+        "title_t": [
+        "Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, by Anthony Trollope and Charles Reade."
+        ],
+        "title_citation_display": [
+        "Shilly Shally, or, Ralph the heir : a comedy in three acts :"
+        ],
+        "linked_title_index": [
+        "Morris L. Parrish collection of Victorian novelists."
+        ],
+        "compiled_created_display": [
+        "[1872] /"
+        ],
+        "compiled_created_t": [
+        "Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, by Anthony Trollope and Charles Reade."
+        ],
+        "pub_date_display": [
+        "1872"
+        ],
+        "pub_date_start_sort": [
+        "1872"
+        ],
+        "cataloged_tdt": [
+        "2001-07-13T17:52:41Z"
+        ],
+        "format": [
+        "Manuscript",
+        "Book"
+        ],
+        "electronic_access_1display": [
+        "{\"https://catalog.princeton.edu/catalog/3395923#view\":[\"Digital content below\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/w95051854\":\"https://figgy.princeton.edu/concern/scanned_resources/ab2c354b-ff2d-4a0a-9334-1b14316efe3a/manifest\"}}"
+        ],
+        "description_display": [
+        "2 v. ; 30 cm."
+        ],
+        "description_t": [
+        "2 v. ; 30 cm."
+        ],
+        "linking_notes_display": [
+        "Forms part of the Morris L. Parrish collection of Victorian novelists (C0171)."
+        ],
+        "geo_related_record_display": [
+        "Morris L. Parrish collection of Victorian novelists. 1806-1958"
+        ],
+        "contained_in_s": [
+        "830298"
+        ],
+        "notes_index": [
+        "\"S.G. Saunders Copyist 22 [Ann] Street Devonport Street Commercial Road. E. 1872\"--v. 1, f. 35.",
+        "\"To be returned to Charles Reade Esq. D.C.L. 2 Albert Terrace Knightsbridge London S.W.\"",
+        "Original wrappers, stitched; in slipcase.",
+        "Two sets of original manuscript sheets (folded) for Acts 1 and 2.",
+        "Also available in an electronic version.",
+        "Acc. no. AM 19660.",
+        "Bookplate of Morris L. Parrish.",
+        "Forms part of the Morris L. Parrish collection of Victorian novelists (C0171)."
+        ],
+        "summary_note_display": [
+        "Two sets of original manuscript sheets (folded) for Acts 1 and 2."
+        ],
+        "notes_display": [
+        "\"S.G. Saunders Copyist 22 [Ann] Street Devonport Street Commercial Road. E. 1872\"--v. 1, f. 35.",
+        "\"To be returned to Charles Reade Esq. D.C.L. 2 Albert Terrace Knightsbridge London S.W.\""
+        ],
+        "binding_note_display": [
+        "Original wrappers, stitched; in slipcase."
+        ],
+        "language_facet": [
+        "English"
+        ],
+        "publication_place_facet": [
+        "New Jersey"
+        ],
+        "language_code_s": [
+        "eng"
+        ],
+        "provenance_display": [
+        "Bookplate of Morris L. Parrish."
+        ],
+        "source_acquisition_display": [
+        "Acc. no. AM 19660."
+        ],
+        "other_format_display": [
+        "Also available in an electronic version."
+        ],
+        "subject_display": [
+        "Reade, Charles, 1814-1884. Shilly Shally",
+        "English drama—19th century"
+        ],
+        "subject_facet": [
+        "Reade, Charles, 1814-1884. Shilly Shally",
+        "English drama—19th century"
+        ],
+        "subject_topic_facet": [
+        "Reade, Charles, 1814-1884. Shilly Shally",
+        "English drama"
+        ],
+        "form_genre_display": [
+        "Manuscripts, English 19th century."
+        ],
+        "related_name_json_1display": [
+        "{\"Former owner\":[\"Reade, Charles, 1814-1884\",\"Parrish, Morris Longstreth, 1867-1944\"]}"
+        ],
+        "place_name_display": [
+        "England London."
+        ],
+        "other_title_index": [
+        "Ralph the heir"
+        ],
+        "other_title_display": [
+        "Ralph the heir"
+        ],
+        "alt_title_246_display": [
+        "Ralph the heir"
+        ],
+        "in_display": [
+        "Morris L. Parrish collection of Victorian novelists. 1806-1958"
+        ],
+        "oclc_s": [
+        "49365071"
+        ],
+        "standard_no_index": [
+        "49365071",
+        "3395923"
+        ],
+        "other_version_s": [
+        "ocm49365071"
+        ],
+        "subject_era_facet": [
+        "19th century"
+        ],
+        "holdings_1display": [
+        "{\"3724483\":{\"location\":\"hsvm\",\"library\":\"hsvm\",\"location_code\":\"hsvm\",\"call_number\":\"C0171 (no. 109)\",\"call_number_browse\":\"C0171 (no. 109)\"},\"8818833\":{\"location\":\"elf1\",\"library\":\"elf1\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"}}"
+        ],
+        "location_code_s": [
+        "hsvm",
+        "elf1"
+        ],
+        "access_facet": [
+        "In the Library",
+        "Online"
+        ],
+        "advanced_location_s": [
+        "hsvm",
+        "elf1"
+        ],
+        "name_title_browse_s": [
+        "Reade, Charles, 1814-1884. Shilly Shally, or, Ralph the heir"
+        ],
+        "call_number_display": [
+        "C0171 (no. 109)",
+        "Electronic Resource"
+        ],
+        "call_number_browse_s": [
+        "C0171 (no. 109)",
+        "Electronic Resource"
+        ]
     },
     {
         "id": [
@@ -19071,5 +19236,282 @@
         "DVD 10950"
         ],
         "timestamp": "2018-03-01T02:59:34.596Z"
+    },
+    {
+        "id": [
+        "8181849"
+        ],
+        "numeric_id_b": [
+        true
+        ],
+        "cjk_all": [
+        "880-01 Jizang, 549-623, author.",
+        "880-02 Jing ming xuan lun",
+        "880-03 Jōmyō genron / Kyōto Kokuritsu Hakubutsukan hen ; kaisetsu Ishihara Harumichi (Hokkaidō Daigaku Meiyo Kyōju), Akao Eikei (Kyōto Kokuritsu Hakubutsukan Gakugeibu Jōseki Kenkyūin).",
+        "880-04 Kokuhō Jōmyō genron",
+        "880-05 Kyōto Kokuritsu Hakubutsukan shozō kokuhō Jōmyō genron",
+        "880-06 Shohan.",
+        "880-07 Tōkyō : Bensei Shuppan, 2014.",
+        "©2014",
+        "2 volumes : illustrations ; 31 cm",
+        "text txt rdacontent",
+        "unmediated n rdamedia",
+        "volume nc rdacarrier",
+        "Facsimile reproduction of a manuscript collection of scrolls dated between 706 and Kamakura period held at Kyōto Kokuritsu Hakubutsukan.",
+        "Latter statement of responsibility from volume 1, colophon.",
+        "Includes bibliographical references.",
+        "Tripiṭaka. Sūtrapiṭaka. Vimalakīrtinirdeśa Outlines, syllabi, etc.",
+        "Tripiṭaka. Sūtrapiṭaka. Vimalakīrtinirdeśa. fast (OCoLC)fst01361012",
+        "Tripiṭaka. Sūtrapiṭaka. Vimalakīrtinirdeśa Outlines, syllabi, etc. Early works to 1800.",
+        "Early works. fast (OCoLC)fst01411636",
+        "Outlines and syllabi. fast (OCoLC)fst01423836",
+        "880-08 Ishizuka, Harumichi, 1942- writer of supplementary textual content.",
+        "880-09 Akao, Eikei, 1954- writer of supplementary textual content.",
+        "880-10 Kyōto Kokuritsu Hakubutsukan, editor.",
+        "100-01 吉藏, 549-623, author.",
+        "240-02 浄名玄論",
+        "245-03 浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授), 赤尾栄慶 (京都国立博物館学芸部上席研究員).",
+        "246-04 国宝浄名玄論",
+        "246-05 京都国立博物館所蔵国宝浄名玄論",
+        "250-06 初版.",
+        "264-07 東京 : 勉誠出版, 2014.",
+        "700-08 石塚晴通, 1942- writer of supplementary textual content.",
+        "700-09 赤尾栄慶, 1954- writer of supplementary textual content.",
+        "710-10 京都国立博物館, editor.",
+        "7948111 rcppa BQ2215 .J59 2014 tr fr gest cjk",
+        "7948111 vol.1-2"
+        ],
+        "author_display": [
+        "Jizang, 549-623",
+        "吉藏, 549-623"
+        ],
+        "author_sort": [
+        "Jizang, 549-623"
+        ],
+        "author_citation_display": [
+        "Jizang",
+        "Ishizuka, Harumichi",
+        "Akao, Eikei",
+        "Kyōto Kokuritsu Hakubutsukan"
+        ],
+        "author_roles_1display": [
+        "{\"secondary_authors\":[\"Ishizuka, Harumichi\",\"Akao, Eikei\",\"吉藏\",\"石塚晴通\",\"赤尾栄慶\"],\"translators\":[],\"editors\":[\"Kyōto Kokuritsu Hakubutsukan\",\"京都国立博物館\"],\"compilers\":[],\"primary_author\":\"Jizang\"}"
+        ],
+        "cjk_author": [
+        "吉藏, 549-623, author"
+        ],
+        "author_s": [
+        "Jizang, 549-623",
+        "Ishizuka, Harumichi, 1942-",
+        "Akao, Eikei, 1954-",
+        "Kyōto Kokuritsu Hakubutsukan",
+        "吉藏, 549-623",
+        "石塚晴通, 1942-",
+        "赤尾栄慶, 1954-",
+        "京都国立博物館"
+        ],
+        "marc_relator_display": [
+        "Author"
+        ],
+        "uniform_title_s": [
+        "Jing ming xuan lun",
+        "浄名玄論"
+        ],
+        "title_display": [
+        "Jōmyō genron / Kyōto Kokuritsu Hakubutsukan hen ; kaisetsu Ishihara Harumichi (Hokkaidō Daigaku Meiyo Kyōju), Akao Eikei (Kyōto Kokuritsu Hakubutsukan Gakugeibu Jōseki Kenkyūin)."
+        ],
+        "title_a_index": [
+        "Jōmyō genron",
+        "浄名玄論"
+        ],
+        "title_vern_display": [
+        "浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授), 赤尾栄慶 (京都国立博物館学芸部上席研究員)."
+        ],
+        "cjk_title": [
+        "浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授), 赤尾栄慶 (京都国立博物館学芸部上席研究員)."
+        ],
+        "title_sort": [
+        "Jōmyō genron / Kyōto Kokuritsu Hakubutsukan hen ; kaisetsu Ishihara Harumichi (Hokkaidō Daigaku Meiyo Kyōju), Akao Eikei (Kyōto Kokuritsu Hakubutsukan Gakugeibu Jōseki Kenkyūin)."
+        ],
+        "title_vern_sort": [
+        "浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授), 赤尾栄慶 (京都国立博物館学芸部上席研究員)."
+        ],
+        "title_no_h_index": [
+        "Jōmyō genron / Kyōto Kokuritsu Hakubutsukan hen ; kaisetsu Ishihara Harumichi (Hokkaidō Daigaku Meiyo Kyōju), Akao Eikei (Kyōto Kokuritsu Hakubutsukan Gakugeibu Jōseki Kenkyūin).",
+        "浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授), 赤尾栄慶 (京都国立博物館学芸部上席研究員)."
+        ],
+        "title_t": [
+        "Jōmyō genron / Kyōto Kokuritsu Hakubutsukan hen ; kaisetsu Ishihara Harumichi (Hokkaidō Daigaku Meiyo Kyōju), Akao Eikei (Kyōto Kokuritsu Hakubutsukan Gakugeibu Jōseki Kenkyūin)."
+        ],
+        "title_citation_display": [
+        "Jōmyō genron /",
+        "浄名玄論 /"
+        ],
+        "compiled_created_t": [
+        "Jōmyō genron / Kyōto Kokuritsu Hakubutsukan hen ; kaisetsu Ishihara Harumichi (Hokkaidō Daigaku Meiyo Kyōju), Akao Eikei (Kyōto Kokuritsu Hakubutsukan Gakugeibu Jōseki Kenkyūin).",
+        "浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授), 赤尾栄慶 (京都国立博物館学芸部上席研究員)."
+        ],
+        "edition_display": [
+        "Shohan.",
+        "初版."
+        ],
+        "pub_created_vern_display": [
+        "東京 : 勉誠出版, 2014."
+        ],
+        "pub_created_display": [
+        "Tōkyō : Bensei Shuppan, 2014.",
+        "東京 : 勉誠出版, 2014.",
+        "©2014"
+        ],
+        "pub_created_s": [
+        "Tōkyō : Bensei Shuppan, 2014.",
+        "©2014",
+        "東京 : 勉誠出版, 2014."
+        ],
+        "pub_citation_display": [
+        "Tōkyō: Bensei Shuppan",
+        "東京: 勉誠出版"
+        ],
+        "pub_date_display": [
+        "2014"
+        ],
+        "pub_date_start_sort": [
+        "2014"
+        ],
+        "pub_date_end_sort": [
+        "0706"
+        ],
+        "cataloged_tdt": [
+        "2017-04-27T13:27:43Z"
+        ],
+        "format": [
+        "Book"
+        ],
+        "description_display": [
+        "2 volumes : illustrations ; 31 cm"
+        ],
+        "description_t": [
+        "2 volumes : illustrations ; 31 cm"
+        ],
+        "notes_index": [
+        "Facsimile reproduction of a manuscript collection of scrolls dated between 706 and Kamakura period held at Kyōto Kokuritsu Hakubutsukan.",
+        "Latter statement of responsibility from volume 1, colophon.",
+        "Includes bibliographical references."
+        ],
+        "notes_display": [
+        "Facsimile reproduction of a manuscript collection of scrolls dated between 706 and Kamakura period held at Kyōto Kokuritsu Hakubutsukan.",
+        "Latter statement of responsibility from volume 1, colophon."
+        ],
+        "bib_ref_notes_display": [
+        "Includes bibliographical references."
+        ],
+        "language_facet": [
+        "Japanese",
+        "Chinese"
+        ],
+        "publication_place_facet": [
+        "Japan"
+        ],
+        "language_code_s": [
+        "jpn",
+        "chi"
+        ],
+        "subject_display": [
+        "Tripiṭaka. Sūtrapiṭaka. Vimalakīrtinirdeśa—Outlines, syllabi, etc",
+        "Tripiṭaka. Sūtrapiṭaka. Vimalakīrtinirdeśa—Outlines, syllabi, etc—Early works to 1800"
+        ],
+        "subject_facet": [
+        "Tripiṭaka. Sūtrapiṭaka. Vimalakīrtinirdeśa—Outlines, syllabi, etc",
+        "Tripiṭaka. Sūtrapiṭaka. Vimalakīrtinirdeśa—Outlines, syllabi, etc—Early works to 1800"
+        ],
+        "subject_topic_facet": [
+        "Tripiṭaka. Sūtrapiṭaka. Vimalakīrtinirdeśa"
+        ],
+        "lc_1letter_facet": [
+        "B - Philosophy, Psychology, Religion"
+        ],
+        "lc_rest_facet": [
+        "BQ - Buddhism"
+        ],
+        "call_number_scheme_facet": [
+        "Library of Congress"
+        ],
+        "call_number_group_facet": [
+        "B - Philosophy, Psychology, Religion"
+        ],
+        "call_number_full_facet": [
+        "BQ - Buddhism"
+        ],
+        "form_genre_display": [
+        "Early works.",
+        "Outlines and syllabi."
+        ],
+        "genre_facet": [
+        "Outlines, syllabi, etc"
+        ],
+        "related_name_json_1display": [
+        "{\"Writer of supplementary textual content\":[\"Ishizuka, Harumichi, 1942-\",\"Akao, Eikei, 1954-\",\"石塚晴通, 1942-\",\"赤尾栄慶, 1954-\"],\"Editor\":[\"Kyōto Kokuritsu Hakubutsukan\",\"京都国立博物館\"]}"
+        ],
+        "other_title_index": [
+        "Kokuhō Jōmyō genron",
+        "Kyōto Kokuritsu Hakubutsukan shozō kokuhō Jōmyō genron",
+        "国宝浄名玄論",
+        "京都国立博物館所蔵国宝浄名玄論"
+        ],
+        "other_title_display": [
+        "Kokuhō Jōmyō genron",
+        "Kyōto Kokuritsu Hakubutsukan shozō kokuhō Jōmyō genron",
+        "国宝浄名玄論",
+        "京都国立博物館所蔵国宝浄名玄論"
+        ],
+        "alt_title_246_display": [
+        "Kokuhō Jōmyō genron",
+        "Kyōto Kokuritsu Hakubutsukan shozō kokuhō Jōmyō genron",
+        "国宝浄名玄論",
+        "京都国立博物館所蔵国宝浄名玄論"
+        ],
+        "isbn_display": [
+        "9784585220732 ((set))",
+        "4585220739 ((set))"
+        ],
+        "isbn_s": [
+        "9784585220732"
+        ],
+        "oclc_s": [
+        "902811484"
+        ],
+        "standard_no_index": [
+        "ocn902811484",
+        "902811484"
+        ],
+        "other_version_s": [
+        "ocn902811484",
+        "9784585220732"
+        ],
+        "holdings_1display": [
+        "{\"7948111\":{\"location\":\"rcppa\",\"library\":\"rcppa\",\"location_code\":\"rcppa\",\"call_number\":\"BQ2215 .J59 2014\",\"call_number_browse\":\"BQ2215 .J59 2014\"}}"
+        ],
+        "location_code_s": [
+        "rcppa"
+        ],
+        "access_facet": [
+        "In the Library"
+        ],
+        "advanced_location_s": [
+        "rcppa"
+        ],
+        "name_uniform_title_1display": [
+        "[[\"Jizang, 549-623.\",\"Jing ming xuan lun\"],[\"吉藏, 549-623.\",\"浄名玄論\"]]"
+        ],
+        "name_title_browse_s": [
+        "Jizang, 549-623. Jing ming xuan lun",
+        "吉藏, 549-623. 浄名玄論"
+        ],
+        "call_number_display": [
+        "BQ2215 .J59 2014"
+        ],
+        "call_number_browse_s": [
+        "BQ2215 .J59 2014"
+        ]
     }
 ]
