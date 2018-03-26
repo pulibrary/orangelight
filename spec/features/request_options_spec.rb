@@ -10,7 +10,7 @@ describe 'Request Options' do
       visit '/catalog/9222024'
     end
 
-    it 'does not display a request button', unless: in_travis? do
+    it 'does not display a request button', unless: in_ci? do
       sleep 5.seconds
       expect(page.all('.location--holding').length).to eq 1
       expect(page).not_to have_selector('.location-services.service-conditional')
@@ -22,10 +22,10 @@ describe 'Request Options' do
       visit '/catalog/6890057'
     end
 
-    it 'does display a request button', unless: in_travis? do
+    it 'does not display a request button', unless: in_ci? do
       sleep 5.seconds
       expect(page.all('.location--holding').length).to eq 1
-      expect(page.find_link('Request')).to be_visible
+      expect(page).not_to have_selector('.location-services.service-conditional')
     end
   end
 
@@ -34,7 +34,7 @@ describe 'Request Options' do
       visit '/catalog/9618072'
     end
 
-    it 'does display a request button', unless: in_travis? do
+    it 'does display a request button', unless: in_ci? do
       sleep 5.seconds
       expect(page.all('.location--holding').length).to eq 1
       expect(page.find_link('Request')).to be_visible
@@ -46,7 +46,7 @@ describe 'Request Options' do
       visit '/catalog/9031545'
     end
 
-    it 'does display a request button', unless: in_travis? do
+    it 'does display a request button', unless: in_ci? do
       sleep 5.seconds
       expect(page.all('.location--holding').length).to eq 1
       expect(page.find_link('Request')).to be_visible
@@ -58,7 +58,7 @@ describe 'Request Options' do
       visit '/catalog/6045464'
     end
 
-    it 'does display a request button', unless: in_travis? do
+    it 'does display a request button', unless: in_ci? do
       sleep 10.seconds
       expect(page.all('.location--holding').length).to eq 1
       expect(page.find_link('Request')).to be_visible
@@ -85,7 +85,7 @@ describe 'Request Options' do
       visit '/catalog/7916044'
     end
 
-    it 'displays an aeon request button', unless: in_travis? do
+    it 'displays an aeon request button', unless: in_ci? do
       sleep 5.seconds
       expect(page.all('.location--holding').length).to eq 1
       expect(page.find_link('Reading Room Request')).to be_visible
@@ -97,7 +97,7 @@ describe 'Request Options' do
       visit '/catalog/9741216'
     end
 
-    it 'does not display a request button', unless: in_travis? do
+    it 'does not display a request button', unless: in_ci? do
       sleep 5.seconds
       expect(page.all('.location--holding').length).to eq 1
       expect(page).not_to have_selector('.location-services.service-conditional')

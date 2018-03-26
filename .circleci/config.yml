@@ -1,0 +1,92 @@
+version: 2
+jobs:
+  build:
+
+    # Primary command image where all commands run
+    docker:
+      - image: circleci/ruby:2.4.2-node-browsers
+        environment:
+          RAILS_ENV: test
+          ORANGELIGHT_HOST: localhost
+          ORANGELIGHT_USER: postgres
+
+      # Service container image available at 'host: localhost'
+      - image: postgres:10   
+        environment:
+          POSTGRES_USER: orangelight
+          POSTGRES_DB: orangelight_test
+          POSTGRES_PASSWORD: ""
+
+    working_directory: ~/orangelight
+
+    steps:
+      - checkout
+      #set timezone to est
+      - run:
+          name: Set Timezone to EST
+          command: echo 'America/New_York' = /etc/timezone
+      
+      # Restore bundle cache
+      - restore_cache:
+          keys:
+          - orangelight-{{ checksum "Gemfile.lock" }}
+          - orangelight-
+      
+      # Bundle install dependencies
+      - run:
+          name: Install dependencies
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+      
+      - run: sudo apt install postgresql-client
+
+      - save_cache:
+          key: orangelight-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+
+      # Only necessary if app uses webpacker or yarn in some other way
+      - restore_cache:
+          keys:
+            - orangelight-{{ checksum "yarn.lock" }}
+            - orangelight-
+      
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+            
+      # Store yarn / webpacker cache
+      - save_cache:
+          key: orangelight-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+      - run:
+          name: Start Solr test instance
+          command: bundle exec rake server:test
+          background: true
+
+      - run: bin/jetty_wait    
+
+      - run:
+          name: npm install
+          command: npm install
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Database setup
+          command: bundle exec rake db:setup
+
+      - run:
+          name: Run rubocop
+          command: bundle exec rake rubocop
+
+      - run:
+          name: Run Rspec
+          command: bundle exec rspec spec
+          
+      - run:
+          name: Run JS unit tests
+          command: bundle exec yarn test

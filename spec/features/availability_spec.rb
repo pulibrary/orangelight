@@ -9,27 +9,27 @@ describe 'Availability' do
       visit '/catalog/3256177'
     end
 
-    it 'within the holdings section', unless: in_travis? do
+    it 'within the holdings section', unless: in_ci? do
       expect(page).to have_selector('.location--holding', count: 1)
     end
 
-    it 'listing individual holdings', unless: in_travis? do
+    it 'listing individual holdings', unless: in_ci? do
       expect(page).to have_selector('.location--holding .holding-block', count: 4)
     end
 
-    xit 'with individual copies display', unless: in_travis? do
+    xit 'with individual copies display', unless: in_ci? do
       # Add via Bib data
     end
   end
 
   describe 'Electronic Holdings are displayed on a record page', js: true do
-    it 'within the online section', unless: in_travis? do
+    it 'within the online section', unless: in_ci? do
       stub_holding_locations
       visit '/catalog/857469'
       expect(page).to have_selector '.location--online .panel-body a', minimum: 1
     end
 
-    it 'display umlaut links for marcit record within the online section', unless: in_travis? do
+    it 'display umlaut links for marcit record within the online section', unless: in_ci? do
       visit '/catalog/9774256'
       expect(page).to have_selector '.location--online .umlaut .fulltext', count: 1
       expect(page).to have_selector '.location--online .umlaut .fulltext .response_item', minimum: 4
@@ -37,19 +37,19 @@ describe 'Availability' do
   end
 
   describe 'Physical Holdings in temp locations', js: true do
-    xit 'displays temp location on search results along with call number', unless: in_travis? do # Temporarily skipped due to access issues with Bibdata
+    xit 'displays temp location on search results along with call number', unless: in_ci? do # Temporarily skipped due to access issues with Bibdata
       visit '/catalog?q=7917192'
       expect(page).to have_selector '.library-location', text: 'Lewis Library - Course Reserve'
       expect(page).to have_selector '.library-location', text: 'QA303.2 .W45 2014'
     end
-    xit 'displays temp location and copy on record show', unless: in_travis? do # Temporarily skipped due to access issues with Bibdata
+    xit 'displays temp location and copy on record show', unless: in_ci? do # Temporarily skipped due to access issues with Bibdata
       visit 'catalog/7917192'
       expect(page).to have_selector 'h3.library-location', text: 'Lewis Library - Course Reserve'
     end
   end
 
   describe 'On-site multiple items all available', js: true do
-    xit 'display availability as on-site and does not display individual items', unless: in_travis? do # Temporarily skipped due to access issues with Bibdata
+    xit 'display availability as on-site and does not display individual items', unless: in_ci? do # Temporarily skipped due to access issues with Bibdata
       visit 'catalog/2238036'
       expect(page).to have_selector '.availability-icon.label.label-success', text: 'On-site access', count: 1
       expect(page).not_to have_selector 'ul.item-status'

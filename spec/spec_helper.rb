@@ -27,6 +27,6 @@ Capybara.register_driver :poltergeist do |app|
 end
 Capybara.javascript_driver = :poltergeist
 
-def in_travis?
-  !ENV['TRAVIS'].nil? && ENV['TRAVIS'] == 'true'
+def in_ci?
+  !ENV['CI'].nil? && ENV['CI'] == 'true'
 end
