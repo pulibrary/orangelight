@@ -7,9 +7,6 @@ class PlumViewerLoader
       this.fetch_viewer_with_url(this.iiif_manifest_url())
     else
       this.fetch_viewer_from_ark("https://figgy.princeton.edu")
-        .fail( () =>
-          this.fetch_viewer_from_ark("https://plum.princeton.edu")
-        )
 
   fetch_viewer_from_ark: (repo_url) ->
     $.getJSON("#{repo_url}/iiif/lookup/#{this.ark()}?no_redirect=true")
@@ -26,11 +23,11 @@ class PlumViewerLoader
   build_viewer: (manifest) ->
     element = $(document.createElement('div'))
     element.addClass('uv')
-    element.attr('data-config', "https://plum.princeton.edu/uv_config.json")
+    element.attr('data-config', "https://figgy.princeton.edu/uv_config.json")
     element.attr('data-uri', manifest)
     script_tag = $(document.createElement('script'))
     script_tag.attr('id', 'embedUV')
-    script_tag.attr('src', "https://plum.princeton.edu/universalviewer/dist/uv-2.0.1/lib/embed.js")
+    script_tag.attr('src', "https://figgy.princeton.edu/universalviewer/dist/uv-2.0.1/lib/embed.js")
     this.element.append(element)
     this.element.append(script_tag)
     this.element.before($("<hr class='clear'/><div class='uv__overlay' onClick='style.pointerEvents=\"none\"'></div>"))
