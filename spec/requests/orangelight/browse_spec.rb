@@ -56,6 +56,16 @@ RSpec.describe 'Orangelight Browsables', type: :request do
       get '/browse/call_numbers?q=Islamic+Manuscripts%2C+New+Series+no.+1948'
       expect(response.body).to include('/catalog/?f[call_number_browse_s][]=Islamic+Manuscripts%2C+New+Series+no.+1948')
     end
+    it 'displays full publisher information' do
+      get '/browse/call_numbers.json?q=QA303.2+.W45+2014'
+      r = JSON.parse(response.body)
+      expect(r[3]['date']).to include('Boston : Pearson, [2014]')
+    end
+    it 'displays pub_created_vern_display field' do
+      get '/browse/call_numbers.json?q=BQ2215+.J59+2014'
+      r = JSON.parse(response.body)
+      expect(r[2]['date']).to eq '東京 : 勉誠出版, 2014.'
+    end
   end
 
   describe 'Multiple locations/titles' do
@@ -67,14 +77,14 @@ RSpec.describe 'Orangelight Browsables', type: :request do
     it 'single title with multiple holdings in same location, display single location' do
       get '/browse/call_numbers.json?q=QA303.2+.W45+2014&rpp=5'
       r = JSON.parse(response.body)
-      expect(r[2]['title']).to match(/Thomas' calculus/)
+      expect(r[2]['title']).to match(/Thomas' calculus : multivariable/)
       expect(r[2]['location']).not_to match(/Multiple locations/)
     end
     it 'single title with multiple locations' do
       get '/browse/call_numbers.json?q=RA643.86.B6+B54+2007&rpp=5'
       r = JSON.parse(response.body)
-      expect(r[2]['title']).not_to match(/\d+ titles with this call number/)
-      expect(r[2]['location']).to match(/Multiple locations/)
+      expect(r[3]['title']).not_to match(/\d+ titles with this call number/)
+      expect(r[3]['location']).to match(/Multiple locations/)
     end
   end
 
