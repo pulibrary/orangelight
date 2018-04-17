@@ -67,7 +67,7 @@ module BrowseLists
         rows = 1_000_000
         iterations = num_docs / rows + 1
         start = 0
-        cn_fields = "#{facet_field},title_display,title_vern_display,author_display,id,pub_created_vern_display,pub_created_display,holdings_1display"
+        cn_fields = "#{facet_field},title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display"
         iterations.times do
           cn_request = "#{core_url}select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&rows=#{rows}&start=#{start}"
           resp = conn.get cn_request.to_s
@@ -91,7 +91,11 @@ module BrowseLists
                 date = record['pub_created_display'][0]
               end
               label = cn
-              author = record['author_display'][0..1].last if record['author_display']
+              if record['author_display']
+                author = record['author_display'][0..1].last
+              elsif record['author_s']
+                author = record['author_s'][0]
+              end
               if record['holdings_1display']
                 holding_block = JSON.parse(record['holdings_1display'])
                 holding_record = holding_block.select { |_k, h| h['call_number_browse'] == cn }
