@@ -116,7 +116,12 @@ class SolrDocument
     def electronic_access_uris
       electronic_access = first('electronic_access_1display')
       values = JSON.parse(electronic_access)
-      values.keys
+      uris = values.keys
+      if values['iiif_manifest_paths']
+        uris.delete('iiif_manifest_paths')
+        uris += values['iiif_manifest_paths'].keys
+      end
+      uris
     rescue
       []
     end
