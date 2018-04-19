@@ -12,10 +12,10 @@
 
 development:
   adapter: solr
-  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core-development" %>
+  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/orangelight-core-development" %>
 test: &test
   adapter: solr
-  url: <%= "http://127.0.0.1:#{ENV['SOLR_TEST_PORT'] || 8888}/solr/blacklight-core-test" %>
+  url: <%= "http://127.0.0.1:#{ENV['SOLR_TEST_PORT'] || 8888}/solr/orangelight-core-test" %>
 staging:
   adapter: solr
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>

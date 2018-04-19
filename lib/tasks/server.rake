@@ -59,8 +59,8 @@ def run_solr(environment, solr_params)
 
     # additional solr configuration
     Rake::Task['pulsearch:solr:update'].invoke(solr_dir)
-    solr.with_collection(name: "blacklight-core-#{environment}", dir: File.join(solr_dir, 'conf')) do
-      puts "\n#{environment.titlecase} solr server running: http://localhost:#{solr.port}/solr/#/blacklight-core-#{environment}"
+    solr.with_collection(name: "orangelight-core-#{environment}", dir: File.join(solr_dir, 'conf')) do
+      puts "\n#{environment.titlecase} solr server running: http://localhost:#{solr.port}/solr/#/orangelight-core-#{environment}"
       puts "\n^C to stop"
       puts ' '
       begin
