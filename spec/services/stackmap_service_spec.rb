@@ -57,6 +57,14 @@ RSpec.describe StackmapService::Url do
         expect(subject).to include({ callno: properties[:title_display] }.to_query)
       end
     end
+    describe 'by title location with provided call number' do
+      let(:location) { 'sprps' }
+      let(:call_number) { 'Q43.2' }
+
+      it 'uses title as the call number value' do
+        expect(subject).to include({ callno: properties[:title_display] }.to_query)
+      end
+    end
     describe 'non-stackmap location' do
       let(:location) { 'pplr' }
 

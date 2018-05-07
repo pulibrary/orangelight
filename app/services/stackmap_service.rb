@@ -55,16 +55,16 @@ class StackmapService
         @bibid ||= @document[:id]
       end
 
-      # use the optionally provided call number
+      # use the optionally provided call number unless if by title location
       def callno
-        @cn ||= preferred_callno
+        @cn = preferred_callno
       end
 
       def preferred_callno
         if by_title_locations.include? @loc
           @document['title_display']
         else
-          @document['call_number_browse_s'].first
+          @cn || @document['call_number_browse_s'].first
         end
       end
 
