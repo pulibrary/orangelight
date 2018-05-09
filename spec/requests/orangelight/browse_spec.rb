@@ -34,14 +34,22 @@ RSpec.describe 'Orangelight Browsables', type: :request do
       expect(r[0]['id']).to eq 7
     end
 
-    it 'shows last complete page if start param > db entries' do
-      get '/browse/subjects.json?rpp=10000'
+    it 'sets rpp=50 if rpp value is not in [10, 25, 50, 100]' do
+      get '/browse/call_numbers.json?rpp=10764433.975.98000'
       r = JSON.parse(response.body)
-      subject_count = r.length
-      rpp = 10
-      get "/browse/subjects.json?start=9999&rpp=#{rpp}"
-      r = JSON.parse(response.body)
-      expect(r[0]['id']).to eq subject_count - rpp + 1
+      expect(r.length).to eq 50
+    end
+
+    it 'shows last complete page if start param > db entries for any accepted rpp' do
+      rpp = [10, 25, 50, 100]
+      rpp.each do |v|
+        get "/browse/call_numbers.json?start=180&rpp=#{v}"
+        r1 = JSON.parse(response.body)
+        get "/browse/call_numbers.json?start=400&rpp=#{v}"
+        r2 = JSON.parse(response.body)
+        expect(r1[0]['id']).to eq r2[0]['id']
+        expect(r1.length).to eq r2.length
+      end
     end
 
     it 'shows the first page if start param < 1' do
