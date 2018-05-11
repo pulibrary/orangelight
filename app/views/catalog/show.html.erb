@@ -24,7 +24,14 @@
       <%= render partial: 'show_availability_sidebar', locals: { document: @document } %>
     </div>
   <% end %>
-<% if @document.ark.present? || @document.iiif_manifest_uri.present? %>
-  <div id="view" data-ark="<%= @document.ark %>" data-iiif-manifest-url="<%= @document.iiif_manifest_uri %>" >
-  </div>
-<% end %>
+<% if @document.iiif_manifest_uris.present? %>
+  <div id="arks_length" class="sr-only"><%= @document.iiif_manifest_uris.count %></div>
+  <%  @document.iiif_manifest_uris.each_with_index do |uri,i| %>
+    <% if i == 0 %>
+      <div id="view" data-ark="<%= @document.ark %>"></div> 
+    <% else %>  
+      <div id="view_<%= i %>" data-ark="<%= @document.ark %>" data-iiif-manifest-url="<%= uri %>" >
+      </div>
+    <% end %>
+  <% end %>
+<% end %>  

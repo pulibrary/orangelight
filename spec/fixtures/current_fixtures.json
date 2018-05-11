@@ -1424,7 +1424,7 @@
             "2 v. (324; 319 leaves) ; 40.5 x 28.8 cm. (fol.)"
         ],
         "electronic_access_1display": [
-            "{\"http://arks.princeton.edu/ark:/88435/7d278t10z\":[\"arks.princeton.edu\"],\"http://arks.princeton.edu/ark:/88435/xp68kg247\":[\"arks.princeton.edu\"]}"
+            "{\"https://catalog.princeton.edu/catalog/4609321#view\":[\"Digital content below\"],\"http://arks.princeton.edu/ark:/88435/xp68kg247\":[\"arks.princeton.edu\"],\"https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs\":[\"drive.google.com\",\"Curatorial documentation\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/7d278t10z\":\"https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest\"}}"
         ],
         "format": [
             "Book"
@@ -19513,5 +19513,172 @@
         "call_number_browse_s": [
         "BQ2215 .J59 2014"
         ]
+    },
+    {
+        "id": "3943643",
+        "numeric_id_b": true,
+        "author_display": [
+        "Ptolemy, active 2nd century"
+        ],
+        "author_citation_display": [
+        "Ptolemy",
+        "Pirckheimer, Willibald",
+        "Regiomontanus, Joannes",
+        "Martini, Giuseppe",
+        "Kane, Grenville"
+        ],
+        "author_roles_1display": "{\"secondary_authors\":[\"Pirckheimer, Willibald\",\"Regiomontanus, Joannes\",\"Martini, Giuseppe\",\"Kane, Grenville\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Ptolemy\"}",
+        "author_s": [
+        "Ptolemy, active 2nd century",
+        "Pirckheimer, Willibald, 1470-1530",
+        "Regiomontanus, Joannes, 1436-1476",
+        "Martini, Giuseppe, 1870-1944",
+        "Kane, Grenville, 1854-1943"
+        ],
+        "opensearch_display": [
+        "Ptolemy, active 2nd century",
+        "Pirckheimer, Willibald, 1470-1530",
+        "Regiomontanus, Joannes, 1436-1476",
+        "Martini, Giuseppe, 1870-1944",
+        "Kane, Grenville, 1854-1943",
+        "Claudii Ptolemaei Geographicae enarrationis libri octo / Bilibaldo Pirckeymhero interprete ; annotationes Ioannis de Regio Monte in errores commissos a Iacobo Angelo in translatione sua.",
+        "Geography, Ancient",
+        "Geography",
+        "Atlases",
+        "Early maps"
+        ],
+        "marc_relator_display": [
+        "Author"
+        ],
+        "uniform_title_s": [
+        "Geographia. Latin"
+        ],
+        "title_display": "Claudii Ptolemaei Geographicae enarrationis libri octo / Bilibaldo Pirckeymhero interprete ; annotationes Ioannis de Regio Monte in errores commissos a Iacobo Angelo in translatione sua.",
+        "title_t": [
+        "Claudii Ptolemaei Geographicae enarrationis libri octo / Bilibaldo Pirckeymhero interprete ; annotationes Ioannis de Regio Monte in errores commissos a Iacobo Angelo in translatione sua."
+        ],
+        "title_citation_display": [
+        "Claudii Ptolemaei Geographicae enarrationis libri octo /"
+        ],
+        "compiled_created_t": [
+        "Claudii Ptolemaei Geographicae enarrationis libri octo / Bilibaldo Pirckeymhero interprete ; annotationes Ioannis de Regio Monte in errores commissos a Iacobo Angelo in translatione sua."
+        ],
+        "pub_created_display": [
+        "Argentoragi [Strasbourg] : Iohannes Grieningerus, communibus Iohannis Koberger impensis excudebat, 1525."
+        ],
+        "pub_created_s": [
+        "Argentoragi [Strasbourg] : Iohannes Grieningerus, communibus Iohannis Koberger impensis excudebat, 1525."
+        ],
+        "pub_citation_display": [
+        "Argentoragi [Strasbourg]: Iohannes Grieningerus, communibus Iohannis Koberger impensis excudebat"
+        ],
+        "pub_date_display": [
+        "1525"
+        ],
+        "pub_date_start_sort": 1525,
+        "cataloged_tdt": "2003-08-07T18:12:48Z",
+        "format": [
+        "Book"
+        ],
+        "electronic_access_1display": "{\"https://catalog.princeton.edu/catalog/3943643#view\":[\"Digital content below\",\"EXKA Ptolemy 1525a\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/np193c809\":\"https://figgy.princeton.edu/concern/scanned_resources/654b1426-9c07-461d-8e43-7145499efc3a/manifest\",\"http://arks.princeton.edu/ark:/88435/kw52jc00n\":\"https://figgy.princeton.edu/concern/scanned_resources/b975163a-db0f-4c61-a2bc-9c0fff0a0cce/manifest\"}}",
+        "description_display": [
+        "[260] p. : ill. (diagrams), 50 double maps ; 40 cm."
+        ],
+        "description_t": [
+        "[260] p. : ill. (diagrams), 50 double maps ; 40 cm."
+        ],
+        "notes_display": [
+        "Imprint from colophon.",
+        "The maps are the same as in Grieninger's 1522 edition.",
+        "The two Princeton copies contain different issues of many pages: whereas the typesetting remains identical in each version, the woodcut borders and ornamental headpieces are either present or absent in the respective issues.",
+        "ExKa copy The text block is made up from two distinct copies: the leaves of the Geographia and the Index are devoid of any annotations while the leaves of the maps are heavily annotated, chiefly in a consistent italic hand, but other hands are present as well. One leaf in the Geographia has been inserted (that before bk 8, c. 1). This inserted leaf is annotated and is kindred to the annotated leaves of the maps.",
+        "ExKa copy Tipped onto the leaf facing map 28 (Oceani occidentalis seu terre nove tabula) is a typewritten English translation of six ms. Latin annotations on this map of the New World.",
+        "ExKa copy 2 Purchased in 2016 from a Belgian private collection. The text block is made up from two distinct copies: while the leaves with maps are devoid of annotations, the text pages of the Geographia are heavily annotated by the same italic hands found in the ExKa (Kane) copy. Thus, the two long-separated parts of this annotated copy, each bound with the necessary leaves from another copy (or two), have been reunited at Princeton."
+        ],
+        "binding_note_display": [
+        "ExKa copy is rebacked with contemporary boards in morocco stamped in blind, evidence of ties present."
+        ],
+        "language_facet": [
+        "Latin"
+        ],
+        "language_code_s": [
+        "lat"
+        ],
+        "provenance_display": [
+        "ExKa copy has bookplate of Grenville Kane, who purchased this book from Giuseppe Martini in 1921.",
+        "ExKa copy has signature on titlepage: Alexandro Volpy."
+        ],
+        "other_format_display": [
+        "Also available in an electronic version."
+        ],
+        "subject_display": [
+        "Geography, Ancient",
+        "Geography—Early works to 1800",
+        "Atlases—Early works to 1800",
+        "Early maps"
+        ],
+        "subject_t": [
+        "Geography, Ancient",
+        "Geography—Early works to 1800",
+        "Atlases—Early works to 1800",
+        "Early maps"
+        ],
+        "subject_facet": [
+        "Geography, Ancient",
+        "Geography—Early works to 1800",
+        "Atlases—Early works to 1800",
+        "Early maps"
+        ],
+        "form_genre_display": [
+        "World atlases 1525.",
+        "Annotations (Provenance)"
+        ],
+        "related_name_json_1display": "{\"Tr\":[\"Pirckheimer, Willibald, 1470-1530\"],\"Related name\":[\"Regiomontanus, Joannes, 1436-1476\"],\"Former owner\":[\"Martini, Giuseppe, 1870-1944\",\"Kane, Grenville, 1854-1943\"]}",
+        "other_title_display": [
+        "Geographicae enarrationis libri octo."
+        ],
+        "alt_title_246_display": [
+        "Geographicae enarrationis libri octo."
+        ],
+        "oclc_s": [
+        "53202221"
+        ],
+        "other_version_s": [
+        "ocm53202221"
+        ],
+        "holdings_1display": "{\"4235956\":{\"location\":\"Rare Books and Special Collections - South East (RB)\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"hsvr\",\"call_number\":\"EXKA Ptolemy 1525\",\"call_number_browse\":\"Ptolemy 1525\"},\"9460592\":{\"location\":\"Online - *ONLINE*\",\"library\":\"Online\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"},\"9830372\":{\"location\":\"Rare Books and Special Collections - South East (RB)\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"hsvr\",\"call_number\":\"EXKA Ptolemy 1525a\",\"call_number_browse\":\"Ptolemy 1525a\"}}",
+        "location_code_s": [
+        "hsvr",
+        "elf1"
+        ],
+        "location": [
+        "Rare Books and Special Collections"
+        ],
+        "location_display": [
+        "Rare Books and Special Collections - South East (RB)",
+        "Online - *ONLINE*"
+        ],
+        "advanced_location_s": [
+        "hsvr",
+        "elf1",
+        "Rare Books and Special Collections",
+        "Online"
+        ],
+        "name_uniform_title_1display": "[[\"Ptolemy, active 2nd century.\",\"Geographia.\",\"Latin\"]]",
+        "name_title_browse_s": [
+        "Ptolemy, active 2nd century. Geographia",
+        "Ptolemy, active 2nd century. Geographia. Latin"
+        ],
+        "call_number_display": [
+        "EXKA Ptolemy 1525",
+        "Electronic Resource",
+        "EXKA Ptolemy 1525a"
+        ],
+        "call_number_browse_s": [
+        "Ptolemy 1525",
+        "Electronic Resource",
+        "Ptolemy 1525a"
+        ],
+        "timestamp": "2018-03-20T04:40:26.830Z"
     }
 ]
