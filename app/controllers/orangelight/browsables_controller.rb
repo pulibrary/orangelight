@@ -7,6 +7,7 @@ class Orangelight::BrowsablesController < ApplicationController
   # GET /orangelight/names.json
   def index
     # if rpp isn't specified default is 50
+    # if rpp has values other than 10, 25, 50, 100 then set it to 50
     # previous/next page links need to pass
     # manually set rpp
 
@@ -15,14 +16,14 @@ class Orangelight::BrowsablesController < ApplicationController
       @rpp = 50
       @page_link = '?'
     else
-      @rpp = params[:rpp].to_i
+      rpp_range = [10, 25, 50, 100]
+      @rpp = if rpp_range.include? params[:rpp].to_i
+               params[:rpp].to_i
+             else
+               50
+             end
       @page_link = "?rpp=#{@rpp}&"
     end
-    # if params[:page].nil?
-    #   @page=1
-    # else
-    #   @page = params[:page].to_i
-    # end
 
     # @start gets the id of the first entry to display on page
     # specific ids are given based on search results
