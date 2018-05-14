@@ -387,6 +387,8 @@ describe 'blacklight tests' do
     it 'redirects to blacklight catalog url' do
       get '/cgi-bin/Pwebrecon.cgi?BBID=12345'
       expect(response).to redirect_to('/catalog/12345')
+      get '/cgi-bin/Pwebrecon.cgi?bbid=12345'
+      expect(response).to redirect_to('/catalog/12345')
     end
   end
 
