@@ -21,7 +21,8 @@ module Orangelight
     end
 
     def voyager
-      redirect_to "/catalog/#{params[:BBID]}"
+      bib_id = params[:BBID] || params[:bbid]
+      redirect_to "/catalog/#{bib_id}"
     end
 
     def redirect_browse
