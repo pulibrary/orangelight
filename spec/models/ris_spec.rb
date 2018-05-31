@@ -11,12 +11,8 @@ RSpec.describe Blacklight::Document::Ris do
         {
           'id' => '9618072',
           'author_roles_1display' => %({"secondary_authors":[],"translators":[],"editors":[],"compilers":[],"primary_author":"Kim, Mu-bong"}),
-          'title_display' => "Yŏkchu pulsŏl amit'agyŏng ŏnhae pulchŏng simdaranigyŏng ŏnhae.",
+          'title_citation_display' => ["Yŏkchu Pulsŏl Amit'agyŏng ŏnhae ; Yŏkchu Pulchŏngsim taranigyŏng ŏnhae /", '역주 불설 아미타경 언해 ; 역주 불정심 다라니경 언해 /'],
           'title_vern_display' => '역주불설아미타경언해불정심다라니경언해',
-          'title_citation_display' => [
-            "Yŏkchu pulsŏl amit'agyŏng ŏnhae pulchŏng simdaranigyŏng ŏnhae",
-            '역주불설아미타경언해불정심다라니경언해'
-          ],
           'compiled_created_t' => [
             "Yŏkchu pulsŏl amit'agyŏng ŏnhae pulchŏng simdaranigyŏng ŏnhae.",
             '역주불설아미타경언해불정심다라니경언해'
@@ -40,9 +36,6 @@ RSpec.describe Blacklight::Document::Ris do
           'format' => [
             'Book'
           ],
-          'description_display' => [
-            '295 p.'
-          ],
           'description_t' => [
             '295 p.'
           ],
@@ -57,6 +50,16 @@ RSpec.describe Blacklight::Document::Ris do
           ],
           'isbn_s' => [
             '9788982757365'
+          ],
+          "call_number_display": [
+            'BQ2043.K6 T757 2008'
+          ],
+          "form_genre_display": [
+            'Commentaries.'
+          ],
+          "notes_display": [
+            'Includes photocopy of original text, with pages numbered in opposite direction.',
+            'Translation and commentaries of: Tripiṭaka. Sūtrapiṭaka. Sukhāvatīvyūha (Smaller) and Dharanī.'
           ]
         }
       end
@@ -69,8 +72,8 @@ RSpec.describe Blacklight::Document::Ris do
         expect(subject).to match(/AU - \w+/)
       end
 
-      it 'Contains title information' do
-        expect(subject).to match(/TI - Yŏkchu pulsŏl amit'agyŏng ŏnhae pulchŏng simdaranigyŏng ŏnhae./)
+      it 'Contains title citation information' do
+        expect(subject).to match(/TI - Yŏkchu Pulsŏl Amit'agyŏng ŏnhae ; Yŏkchu Pulchŏngsim taranigyŏng ŏnhae /)
       end
 
       it 'Contains vernacular title as a secondary title' do
@@ -79,6 +82,18 @@ RSpec.describe Blacklight::Document::Ris do
 
       it 'Contains an end of record character' do
         expect(subject).to match(/\nER - $/)
+      end
+
+      it 'Contains call number information' do
+        expect(subject).to match(/CN - BQ2043.K6 T757 2008/)
+      end
+
+      it 'Contains form genre' do
+        expect(subject).to match(/M3 - Commentaries/)
+      end
+
+      it 'Contains notes' do
+        expect(subject).to match(/N1 - Includes photocopy of original text, with pages numbered in opposite direction./)
       end
     end
   end
