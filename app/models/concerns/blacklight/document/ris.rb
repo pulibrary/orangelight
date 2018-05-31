@@ -17,14 +17,18 @@ module Blacklight
 
       def ris_field_names
         {
-          title_display: 'TI',
+          title_citation_display: 'TI',
+          call_number_display: 'CN',
+          form_genre_display: 'M3',
+          summary_note_display: 'AB',
+          notes_display: 'N1',
+          source_acquisition_display: 'N1',
+          edition_display: 'ET',
+          number_of_pages_citation_display: 'SP',
           advisor_display: 'A2',
           department_display: 'A2',
           title_vern_display: 'T2',
-          description_display: 'N2',
-          summary_note_display: 'N2',
           series_display: 'T3',
-          edition_display: 'VL',
           pub_date_display: 'PY',
           pub_citation_display: 'PB',
           isbn_s: 'SN',
