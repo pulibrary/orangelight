@@ -27,6 +27,9 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   let(:holding_id) { '3668455' }
   let(:location) { 'Firestone Library' }
   let(:call_number) { 'PS3539.A74Z93 2000' }
+  let(:shelving_title) { ['Shelving title'] }
+  let(:supplements) { ['Supplement note'] }
+  let(:indexes) { ['Index note 1', 'Index note 2'] }
   let(:request_link) { '<a href="/requests/1232432">Request</a>' }
   let(:holding) do
     {
@@ -34,8 +37,11 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         location: location,
         library: 'Firestone Library',
         location_code: 'f',
-        call_number: call_number
-      }
+        call_number: call_number,
+        shelving_title: shelving_title,
+        supplements: supplements,
+        indexes: indexes
+      }.with_indifferent_access
     }
   end
   let(:document) { instance_double(SolrDocument) }
@@ -133,6 +139,34 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(holding_location_span_markup).to include '<span class="location-text"'
       expect(holding_location_span_markup).to include 'test-location'
       expect(holding_location_span_markup).to include 'data-holding-id="test-holding-id"'
+    end
+  end
+
+  describe '.shelving_title' do
+    let(:shelving_title_markup) { described_class.shelving_titles_list(holding.first[1]) }
+
+    it 'generates the markup for a supplement note' do
+      expect(shelving_title_markup).to include "<li>#{shelving_title[0]}</li>"
+      expect(shelving_title_markup).to include '<ul class="shelving-title">'
+    end
+  end
+
+  describe '.supplements_list' do
+    let(:supplements_list_markup) { described_class.supplements_list(holding.first[1]) }
+
+    it 'generates the markup for a supplement note' do
+      expect(supplements_list_markup).to include "<li>#{supplements[0]}</li>"
+      expect(supplements_list_markup).to include '<ul class="holding-supplements">'
+    end
+  end
+
+  describe '.indexes_list' do
+    let(:indexes_list_markup) { described_class.indexes_list(holding.first[1]) }
+
+    it 'generates the markup for a supplement note' do
+      expect(indexes_list_markup).to include "<li>#{indexes[0]}</li>"
+      expect(indexes_list_markup).to include "<li>#{indexes[1]}</li>"
+      expect(indexes_list_markup).to include '<ul class="holding-indexes">'
     end
   end
 

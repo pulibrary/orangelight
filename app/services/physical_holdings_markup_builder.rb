@@ -161,6 +161,16 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     content_tag(:ul, children.html_safe, class: 'location-has')
   end
 
+  def self.supplements_list(holding)
+    children = "#{holding_label('Supplements:')} #{listify_array(holding['supplements'])}"
+    content_tag(:ul, children.html_safe, class: 'holding-supplements')
+  end
+
+  def self.indexes_list(holding)
+    children = "#{holding_label('Indexes:')} #{listify_array(holding['indexes'])}"
+    content_tag(:ul, children.html_safe, class: 'holding-indexes')
+  end
+
   def self.journal_issues_list(holding_id)
     content_tag(:ul, '',
                 class: 'journal-current-issues',
@@ -402,6 +412,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       markup << self.class.shelving_titles_list(holding) if @adapter.shelving_title?(holding)
       markup << self.class.location_notes_list(holding) if @adapter.location_note?(holding)
       markup << self.class.location_has_list(holding) if @adapter.location_has?(holding)
+      markup << self.class.supplements_list(holding) if @adapter.supplements?(holding)
+      markup << self.class.indexes_list(holding) if @adapter.indexes?(holding)
       markup << self.class.journal_issues_list(holding_id) if @adapter.journal?
 
       unless holding_id == 'thesis' && @adapter.pub_date > 2012

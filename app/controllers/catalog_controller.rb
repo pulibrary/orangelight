@@ -283,22 +283,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'coden_display', label: 'Coden designation'
     config.add_show_field 'standard_no_1display', hash: true
     config.add_show_field 'original_language_display', label: 'Original language'
-    config.add_show_field 'shelving_title_display', label: 'Shelving title'
-    config.add_show_field 'location_has_display', label: 'Location has'
-    config.add_show_field 'location_has_current_display', label: 'Location has (current)'
-    config.add_show_field 'supplements_display', label: 'Supplements'
-    config.add_show_field 'location_notes_display', label: 'Location notes'
     config.add_show_field 'related_name_json_1display', hash: true
     config.add_show_field 'recap_notes_display', label: 'RCP', helper_method: :recap_note
-    # # 'Other version(s)_display'
-    # # 'Contained in_display'
-    # # 'Related record(s)_display'
-    # # 'Holdings information_display'
-    # # 'Item details_display'
-    # # 'Order information_display'
-    # # 'E-items_display'
-    # # 'Status_display'
-    # # 'Linked resources_display'
 
     #     "fielded" search configuration. Used by pulldown among other places.
     #     For supported keys in hash, see rdoc for Blacklight::SearchFields
