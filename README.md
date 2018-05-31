@@ -1,7 +1,7 @@
 # Orangelight
 
 [![Join the chat at https://gitter.im/pulibrary/orangelight](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pulibrary/orangelight?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/pulibrary/orangelight.png?branch=master)](https://travis-ci.org/pulibrary/orangelight)
+[![CircleCI](https://circleci.com/gh/pulibrary/orangelight.svg?style=svg)](https://circleci.com/gh/pulibrary/orangelight)
 [![Coverage Status](https://coveralls.io/repos/pulibrary/orangelight/badge.png?branch=master)](https://coveralls.io/r/pulibrary/orangelight)
 
 
