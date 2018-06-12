@@ -25,13 +25,18 @@
     </div>
   <% end %>
 <% if @document.iiif_manifest_uris.present? %>
+<div class="col-sm-12 col-xs-12">
   <div id="arks_length" class="sr-only"><%= @document.iiif_manifest_uris.count %></div>
   <%  @document.iiif_manifest_uris.each_with_index do |uri,i| %>
     <% if i == 0 %>
-      <div id="view" data-ark="<%= @document.ark %>"></div> 
-    <% else %>  
-      <div id="view_<%= i %>" data-ark="<%= @document.ark %>" data-iiif-manifest-url="<%= uri %>" >
+      <div id="view" data-ark="<%= @document.ark %>" class="intrinsic-container intrinsic-container-16x9">
+        <iframe src="https://figgy.princeton.edu/uv#?manifest=<%= uri %>" allowfullscreen="true"></iframe>
+      </div>
+    <% else %>
+      <div id="view_<%= i %>" data-ark="<%= @document.ark %>" data-iiif-manifest-url="<%= uri %>" class="intrinsic-container intrinsic-container-16x9">
+        <iframe src="https://figgy.princeton.edu/uv#?manifest=<%= uri %>" allowfullscreen="true"></iframe>
       </div>
     <% end %>
   <% end %>
-<% end %>  
+</div>
+<% end %>
