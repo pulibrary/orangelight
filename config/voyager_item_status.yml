@@ -1,26 +1,26 @@
 ---
-1: Not Charged 
-9: In Transit Discharged 
-11: Discharged 
-22: In Process 
+1: Not Charged
+9: In Transit Discharged
+11: Discharged
+22: In Process
 5: Recalled
-6: Hold Request 
-16: Damaged 
+6: Hold Request
+16: Damaged
 19: Cataloging Review
-20: Circulation Review 
-21: Scheduled 
-23: Call Slip Request 
-24: Short Loan Request 
-2: Charged 
-3: Renewed 
-4: Overdue/Recalled
-7: On Hold 
-8: In Transit 
-10: In Transit On Hold 
-12: Missing 
+20: Circulation Review
+21: Scheduled
+23: Call Slip Request
+24: Short Loan Request
+2: Charged
+3: Renewed
+4: Overdue
+7: On Hold
+8: In Transit
+10: In Transit On Hold
+12: Missing
 13: Lost--Library Applied
 14: Lost--System Applied
-15: Claims Returned 
-17: Withdrawn 
-18: At Bindery 
+15: Claims Returned
+17: Withdrawn
+18: At Bindery
 25: Remote Storage Request
