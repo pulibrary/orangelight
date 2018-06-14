@@ -30,13 +30,13 @@
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
     <link rel="unapi-server" type="application/xml" title="unAPI" href="/unapi"/>
-
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    <%= render 'shared/matomo' if rails_env? %>
   </head>
+  
   <body class="<%= render_body_class %>">
   <%= render :partial => 'shared/header_navbar' %>
 

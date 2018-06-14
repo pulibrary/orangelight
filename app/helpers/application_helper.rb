@@ -4,6 +4,11 @@ module ApplicationHelper
   include Requests::Aeon
   require './lib/orangelight/string_functions'
 
+  # Check the Rails Environment. Currently used for Matomo to support staging and production.
+  def rails_env?
+    Rails.env.production? || Rails.env.staging?
+  end
+
   # Generate the markup for the <div> containing a link to the umlaut service endpoint for a given record
   # @param document [SolrDocument] the Solr Document for the record
   # @return [String] the markup

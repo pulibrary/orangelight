@@ -256,3 +256,10 @@ RSpec/ExampleLength:
 Rails/UnknownEnv:
   Exclude:
     - 'app/controllers/application_controller.rb'
+
+Rails/UnknownEnv:
+  Environments:
+    - staging
+    - production
+    - development
+    - test    
