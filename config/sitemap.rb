@@ -6,12 +6,6 @@ SitemapGenerator::Sitemap.default_host = "#{ENV['APPLICATION_HOST_PROTOCOL']}://
 SitemapGenerator::Sitemap.create do
   add '/'
 
-  add '/browse'
-  add '/browse/call_numbers'
-  add '/browse/names'
-  add '/browse/name_titles'
-  add '/browse/subjects'
-
   add '/help'
   add '/feedback'
   add '/course_reserves'
