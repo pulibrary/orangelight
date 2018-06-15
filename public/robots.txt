@@ -4,6 +4,11 @@ Sitemap: https://pulsearch.princeton.edu/sitemap.xml.gz
 Disallow: /*?q=*
 Disallow: /*?f*
 Disallow: /requests
+Disallow: /browse
+Disallow: /browse/call_numbers
+Disallow: /browse/names
+Disallow: /browse/name_titles
+Disallow: /browse/subjects
 Disallow: /catalog/*/
 Disallow: /catalog/endnote
 Disallow: /catalog/opensearch
