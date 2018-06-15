@@ -6,7 +6,7 @@ module ApplicationHelper
 
   # Check the Rails Environment. Currently used for Matomo to support staging and production.
   def rails_env?
-    Rails.env.production? || Rails.env.staging?
+    Rails.env.production?
   end
 
   # Generate the markup for the <div> containing a link to the umlaut service endpoint for a given record
