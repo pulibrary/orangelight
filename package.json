@@ -18,7 +18,9 @@
     "roots": [
       "spec/javascript"
     ],
-    "transform": {".*": "./node_modules/babel-jest"},
+    "transform": {
+      ".*": "./node_modules/babel-jest"
+    },
     "moduleFileExtensions": [
       "js",
       "es6"
