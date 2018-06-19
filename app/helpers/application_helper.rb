@@ -4,7 +4,7 @@ module ApplicationHelper
   include Requests::Aeon
   require './lib/orangelight/string_functions'
 
-  # Check the Rails Environment. Currently used for Matomo to support staging and production.
+  # Check the Rails Environment. Currently used for Matomo to support production.
   def rails_env?
     Rails.env.production?
   end
