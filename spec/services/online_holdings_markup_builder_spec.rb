@@ -73,7 +73,7 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
 
       it 'generates electronic access links for a catalog record which link to the IIIF Viewer' do
         expect(link_markup).to include '<a href="/catalog/4609321#view"'
-        expect(link_markup).to include 'Digital content below'
+        expect(link_markup).to include 'Digital content'
       end
     end
   end
