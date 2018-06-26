@@ -19680,5 +19680,578 @@
         "Ptolemy 1525a"
         ],
         "timestamp": "2018-03-20T04:40:26.830Z"
-    }
+    },
+    {
+        "id": "3943643z",
+        "numeric_id_b": true,
+        "author_display": [
+        "Ptolemy, active 2nd century"
+        ],
+        "author_citation_display": [
+        "Ptolemy",
+        "Pirckheimer, Willibald",
+        "Regiomontanus, Joannes",
+        "Martini, Giuseppe",
+        "Kane, Grenville"
+        ],
+        "author_roles_1display": "{\"secondary_authors\":[\"Pirckheimer, Willibald\",\"Regiomontanus, Joannes\",\"Martini, Giuseppe\",\"Kane, Grenville\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Ptolemy\"}",
+        "author_s": [
+        "Ptolemy, active 2nd century",
+        "Pirckheimer, Willibald, 1470-1530",
+        "Regiomontanus, Joannes, 1436-1476",
+        "Martini, Giuseppe, 1870-1944",
+        "Kane, Grenville, 1854-1943"
+        ],
+        "opensearch_display": [
+        "Ptolemy, active 2nd century",
+        "Pirckheimer, Willibald, 1470-1530",
+        "Regiomontanus, Joannes, 1436-1476",
+        "Martini, Giuseppe, 1870-1944",
+        "Kane, Grenville, 1854-1943",
+        "Claudii Ptolemaei Geographicae enarrationis libri octo / Bilibaldo Pirckeymhero interprete ; annotationes Ioannis de Regio Monte in errores commissos a Iacobo Angelo in translatione sua.",
+        "Geography, Ancient",
+        "Geography",
+        "Atlases",
+        "Early maps"
+        ],
+        "marc_relator_display": [
+        "Author"
+        ],
+        "uniform_title_s": [
+        "Geographia. Latin"
+        ],
+        "title_display": "Claudii Ptolemaei Geographicae enarrationis libri octo / Bilibaldo Pirckeymhero interprete ; annotationes Ioannis de Regio Monte in errores commissos a Iacobo Angelo in translatione sua.",
+        "title_t": [
+        "Claudii Ptolemaei Geographicae enarrationis libri octo / Bilibaldo Pirckeymhero interprete ; annotationes Ioannis de Regio Monte in errores commissos a Iacobo Angelo in translatione sua."
+        ],
+        "title_citation_display": [
+        "Claudii Ptolemaei Geographicae enarrationis libri octo /"
+        ],
+        "compiled_created_t": [
+        "Claudii Ptolemaei Geographicae enarrationis libri octo / Bilibaldo Pirckeymhero interprete ; annotationes Ioannis de Regio Monte in errores commissos a Iacobo Angelo in translatione sua."
+        ],
+        "pub_created_display": [
+        "Argentoragi [Strasbourg] : Iohannes Grieningerus, communibus Iohannis Koberger impensis excudebat, 1525."
+        ],
+        "pub_created_s": [
+        "Argentoragi [Strasbourg] : Iohannes Grieningerus, communibus Iohannis Koberger impensis excudebat, 1525."
+        ],
+        "pub_citation_display": [
+        "Argentoragi [Strasbourg]: Iohannes Grieningerus, communibus Iohannis Koberger impensis excudebat"
+        ],
+        "pub_date_display": [
+        "1525"
+        ],
+        "pub_date_start_sort": 1525,
+        "cataloged_tdt": "2003-08-07T18:12:48Z",
+        "format": [
+        "Book"
+        ],
+        "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/np193c809\":[\"arks.princeton.edu\"],\"http://arks.princeton.edu/ark:/88435/kw52jc00n\":[\"arks.princeton.edu\"]}",
+        "description_display": [
+        "[260] p. : ill. (diagrams), 50 double maps ; 40 cm."
+        ],
+        "description_t": [
+        "[260] p. : ill. (diagrams), 50 double maps ; 40 cm."
+        ],
+        "notes_display": [
+        "Imprint from colophon.",
+        "The maps are the same as in Grieninger's 1522 edition.",
+        "The two Princeton copies contain different issues of many pages: whereas the typesetting remains identical in each version, the woodcut borders and ornamental headpieces are either present or absent in the respective issues.",
+        "ExKa copy The text block is made up from two distinct copies: the leaves of the Geographia and the Index are devoid of any annotations while the leaves of the maps are heavily annotated, chiefly in a consistent italic hand, but other hands are present as well. One leaf in the Geographia has been inserted (that before bk 8, c. 1). This inserted leaf is annotated and is kindred to the annotated leaves of the maps.",
+        "ExKa copy Tipped onto the leaf facing map 28 (Oceani occidentalis seu terre nove tabula) is a typewritten English translation of six ms. Latin annotations on this map of the New World.",
+        "ExKa copy 2 Purchased in 2016 from a Belgian private collection. The text block is made up from two distinct copies: while the leaves with maps are devoid of annotations, the text pages of the Geographia are heavily annotated by the same italic hands found in the ExKa (Kane) copy. Thus, the two long-separated parts of this annotated copy, each bound with the necessary leaves from another copy (or two), have been reunited at Princeton."
+        ],
+        "binding_note_display": [
+        "ExKa copy is rebacked with contemporary boards in morocco stamped in blind, evidence of ties present."
+        ],
+        "language_facet": [
+        "Latin"
+        ],
+        "language_code_s": [
+        "lat"
+        ],
+        "provenance_display": [
+        "ExKa copy has bookplate of Grenville Kane, who purchased this book from Giuseppe Martini in 1921.",
+        "ExKa copy has signature on titlepage: Alexandro Volpy."
+        ],
+        "other_format_display": [
+        "Also available in an electronic version."
+        ],
+        "subject_display": [
+        "Geography, Ancient",
+        "Geography—Early works to 1800",
+        "Atlases—Early works to 1800",
+        "Early maps"
+        ],
+        "subject_t": [
+        "Geography, Ancient",
+        "Geography—Early works to 1800",
+        "Atlases—Early works to 1800",
+        "Early maps"
+        ],
+        "subject_facet": [
+        "Geography, Ancient",
+        "Geography—Early works to 1800",
+        "Atlases—Early works to 1800",
+        "Early maps"
+        ],
+        "form_genre_display": [
+        "World atlases 1525.",
+        "Annotations (Provenance)"
+        ],
+        "related_name_json_1display": "{\"Tr\":[\"Pirckheimer, Willibald, 1470-1530\"],\"Related name\":[\"Regiomontanus, Joannes, 1436-1476\"],\"Former owner\":[\"Martini, Giuseppe, 1870-1944\",\"Kane, Grenville, 1854-1943\"]}",
+        "other_title_display": [
+        "Geographicae enarrationis libri octo."
+        ],
+        "alt_title_246_display": [
+        "Geographicae enarrationis libri octo."
+        ],
+        "oclc_s": [
+        "53202221"
+        ],
+        "other_version_s": [
+        "ocm53202221"
+        ],
+        "holdings_1display": "{\"4235956\":{\"location\":\"Rare Books and Special Collections - South East (RB)\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"hsvr\",\"call_number\":\"EXKA Ptolemy 1525\",\"call_number_browse\":\"Ptolemy 1525\"},\"9460592\":{\"location\":\"Online - *ONLINE*\",\"library\":\"Online\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"},\"9830372\":{\"location\":\"Rare Books and Special Collections - South East (RB)\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"hsvr\",\"call_number\":\"EXKA Ptolemy 1525a\",\"call_number_browse\":\"Ptolemy 1525a\"}}",
+        "location_code_s": [
+        "hsvr",
+        "elf1"
+        ],
+        "location": [
+        "Rare Books and Special Collections"
+        ],
+        "location_display": [
+        "Rare Books and Special Collections - South East (RB)",
+        "Online - *ONLINE*"
+        ],
+        "advanced_location_s": [
+        "hsvr",
+        "elf1",
+        "Rare Books and Special Collections",
+        "Online"
+        ],
+        "name_uniform_title_1display": "[[\"Ptolemy, active 2nd century.\",\"Geographia.\",\"Latin\"]]",
+        "name_title_browse_s": [
+        "Ptolemy, active 2nd century. Geographia",
+        "Ptolemy, active 2nd century. Geographia. Latin"
+        ],
+        "call_number_display": [
+        "EXKA Ptolemy 1525",
+        "Electronic Resource",
+        "EXKA Ptolemy 1525a"
+        ],
+        "call_number_browse_s": [
+        "Ptolemy 1525",
+        "Electronic Resource",
+        "Ptolemy 1525a"
+        ],
+        "timestamp": "2018-03-20T04:40:26.830Z"
+    },
+    {
+        "id": "6868324",
+        "numeric_id_b": true,
+        "author_citation_display": [
+        "Gayetty, J. I.",
+        "Parker, S. L.",
+        "Mudd, Kostka",
+        "McCammon, R. L."
+        ],
+        "author_roles_1display": "{\"secondary_authors\":[\"Gayetty, J. I.\",\"Parker, S. L.\",\"Mudd, Kostka\",\"McCammon, R. L.\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+        "author_s": [
+        "Gayetty, J. I.",
+        "Parker, S. L.",
+        "Mudd, Kostka",
+        "McCammon, R. L."
+        ],
+        "opensearch_display": [
+        "Gayetty, J. I.",
+        "Parker, S. L.",
+        "Mudd, Kostka",
+        "McCammon, R. L.",
+        "Pennsylvania: (Lycoming) Trout Run Quadrangle [cartographic material].",
+        "Topographic maps"
+        ],
+        "title_display": "Pennsylvania: (Lycoming) Trout Run Quadrangle [cartographic material].",
+        "title_t": [
+        "Pennsylvania: (Lycoming) Trout Run Quadrangle [cartographic material]."
+        ],
+        "title_citation_display": [
+        "Pennsylvania: (Lycoming) Trout Run Quadrangle"
+        ],
+        "compiled_created_t": [
+        "Pennsylvania: (Lycoming) Trout Run Quadrangle [cartographic material]."
+        ],
+        "edition_display": [
+        "Edition of 1923"
+        ],
+        "pub_created_display": [
+        "[Washington, D.C.] : U.S. Geological Survey, 1923."
+        ],
+        "pub_created_s": [
+        "[Washington, D.C.] : U.S. Geological Survey, 1923."
+        ],
+        "pub_citation_display": [
+        "Washington, D.C.: U.S. Geological Survey"
+        ],
+        "pub_date_display": [
+        "1923"
+        ],
+        "pub_date_start_sort": 1923,
+        "cataloged_tdt": "2011-10-19T14:38:54Z",
+        "format": [
+        "Map"
+        ],
+        "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/2j62s638c\":[\"arks.princeton.edu\"],\"http://arks.princeton.edu/ark:/88435/t722hb52k\":[\"arks.princeton.edu\"]}",
+        "description_display": [
+        "Polyconic proj. (W 77°15ʹ--W 77°0ʹ/N 41°30ʹ--N 41°15ʹ)"
+        ],
+        "description_t": [
+        "Scale 1:62,500 Polyconic proj. (W 77°15ʹ--W 77°0ʹ/N 41°30ʹ--N 41°15ʹ)"
+        ],
+        "coverage_display": [
+        "northlimit=41.5; eastlimit=-77; southlimit=41.25; westlimit=-77.25; units=degrees; projection=EPSG:4326"
+        ],
+        "scale_display": [
+        "Scale 1:62,500"
+        ],
+        "projection_display": [
+        "Polyconic proj."
+        ],
+        "notes_display": [
+        "United States. Geological Survey.",
+        "U.S.G.S.",
+        "Alternate title: Trout Run, PA. Polyconic projection. Relief shown by 20 feet contour interval and spot heights. Surveyed in 1921. Surveyed in cooperation with the State of Pennsylvania. Verso: The topographic maps of the United States."
+        ],
+        "language_display": [
+        "In English."
+        ],
+        "language_facet": [
+        "English"
+        ],
+        "language_code_s": [
+        "eng"
+        ],
+        "subject_display": [
+        "Topographic maps"
+        ],
+        "subject_t": [
+        "Topographic maps"
+        ],
+        "subject_facet": [
+        "Topographic maps"
+        ],
+        "related_name_json_1display": "{\"Related name\":[\"Gayetty, J. I.\",\"Parker, S. L.\",\"Mudd, Kostka\",\"McCammon, R. L.\"]}",
+        "holdings_1display": "{\"6781483\":{\"location\":\"Lewis Library - Map Collection. Map Case\",\"library\":\"Lewis Library\",\"location_code\":\"scimc\",\"call_number\":\"G3821.C2.s62.U5G4 Trout Run\",\"call_number_browse\":\"G3821.C2.s62.U5G4 Trout Run\"},\"7322619\":{\"location\":\"Online - *ONLINE*\",\"library\":\"Online\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"}}",
+        "location_code_s": [
+        "scimc",
+        "elf1"
+        ],
+        "location": [
+        "Lewis Library"
+        ],
+        "location_display": [
+        "Lewis Library - Map Collection. Map Case",
+        "Online - *ONLINE*"
+        ],
+        "advanced_location_s": [
+        "scimc",
+        "elf1",
+        "Lewis Library",
+        "Online"
+        ],
+        "call_number_display": [
+        "G3821.C2.s62.U5G4 Trout Run",
+        "Electronic Resource"
+        ],
+        "call_number_browse_s": [
+        "G3821.C2.s62.U5G4 Trout Run",
+        "Electronic Resource"
+        ],
+        "timestamp": "2018-06-14T20:36:14.410Z"
+    },
+    {
+        "id": "6109323",
+        "numeric_id_b": true,
+        "author_display": [
+        "Joanne, Adolphe Laurent, 1813-1881"
+        ],
+        "author_citation_display": [
+        "Joanne, Adolphe Laurent",
+        "Erhard (Firm)"
+        ],
+        "author_roles_1display": "{\"secondary_authors\":[\"Joanne, Adolphe Laurent\",\"Erhard (Firm)\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Joanne, Adolphe Laurent\"}",
+        "author_s": [
+        "Joanne, Adolphe Laurent, 1813-1881",
+        "Erhard (Firm)"
+        ],
+        "opensearch_display": [
+        "Joanne, Adolphe Laurent, 1813-1881",
+        "Erhard (Firm)",
+        "Seine [map] / gravé chez Erhard, 12, rue Duguay-Trouin.",
+        "Franco-Prussian War, 1870-1871",
+        "Paris (France)",
+        "Seine (France)"
+        ],
+        "marc_relator_display": [
+        "Author"
+        ],
+        "title_display": "Seine [map] / gravé chez Erhard, 12, rue Duguay-Trouin.",
+        "title_t": [
+        "Seine [map] / gravé chez Erhard, 12, rue Duguay-Trouin."
+        ],
+        "title_citation_display": [
+        "Seine"
+        ],
+        "compiled_created_t": [
+        "Seine [map] / gravé chez Erhard, 12, rue Duguay-Trouin."
+        ],
+        "pub_created_display": [
+        "Paris : imp. Monrocq, 3, rue Suger, [août 1870]"
+        ],
+        "pub_created_s": [
+        "Paris : imp. Monrocq, 3, rue Suger, [août 1870]"
+        ],
+        "pub_citation_display": [
+        "Paris: imp. Monrocq, 3, rue Suger"
+        ],
+        "pub_date_display": [
+        "1870"
+        ],
+        "pub_date_start_sort": 1870,
+        "cataloged_tdt": "2010-04-27T15:49:24Z",
+        "format": [
+        "Map"
+        ],
+        "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/0v8382995\":[\"arks.princeton.edu\",\"See the map\"]}",
+        "description_display": [
+        "(E 2°05ʹ30ʺ--E 2°36ʹ15ʺ/N 48°59ʹ00ʺ--N 48°43ʹ45ʺ).",
+        "1 map : col. ; 23 x 31 cm."
+        ],
+        "description_t": [
+        "Scale [ca. 1:125,000]. (E 2°05ʹ30ʺ--E 2°36ʹ15ʺ/N 48°59ʹ00ʺ--N 48°43ʹ45ʺ).",
+        "1 map : col. ; 23 x 31 cm."
+        ],
+        "number_of_pages_citation_display": [
+        "1 map"
+        ],
+        "coverage_display": [
+        "northlimit=048.983414; eastlimit=002.604433; southlimit=048.729403; westlimit=002.091852; units=degrees; projection=EPSG:4326"
+        ],
+        "geocode_display": [
+        "France"
+        ],
+        "scale_display": [
+        "Scale [ca. 1:125,000]."
+        ],
+        "notes_display": [
+        "In upper margin : France par Adolphe Joanne.",
+        "From: Atlas de la défense nationale : cartes des dix-sept départmenents envahis ou menacés par l'ennemi / atlas dressé sous la direction de Adolphe Joanne. Paris : Hachette, 1870.",
+        "Date of publication from Vallée."
+        ],
+        "language_facet": [
+        "French"
+        ],
+        "language_code_s": [
+        "fre"
+        ],
+        "references_display": [
+        "Vallée, L. Catalogue des plans de Paris 1658"
+        ],
+        "subject_display": [
+        "Franco-Prussian War, 1870-1871—Maps",
+        "Paris (France)—Maps",
+        "Seine (France)—Maps"
+        ],
+        "subject_t": [
+        "Franco-Prussian War, 1870-1871—Maps",
+        "Paris (France)—Maps",
+        "Seine (France)—Maps"
+        ],
+        "subject_facet": [
+        "Franco-Prussian War, 1870-1871—Maps",
+        "Paris (France)—Maps",
+        "Seine (France)—Maps"
+        ],
+        "form_genre_display": [
+        "Maps France Paris 1870.",
+        "Maps France Seine 1870."
+        ],
+        "related_name_json_1display": "{\"Engraver\":[\"Erhard (Firm)\"]}",
+        "related_works_1display": "[[\"Joanne, Adolphe Laurent, 1813-1881.\",\"Atlas de la défense nationale.\"]]",
+        "holdings_1display": "{\"6146402\":{\"location\":\"Rare Books and Special Collections - Historic Maps Collection\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"map\",\"call_number\":\"HMC01.1996\",\"call_number_browse\":\"HMC01.1996\"},\"7316975\":{\"location\":\"Online - *ONLINE*\",\"library\":\"Online\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"}}",
+        "location_code_s": [
+        "map",
+        "elf1"
+        ],
+        "location": [
+        "Rare Books and Special Collections"
+        ],
+        "location_display": [
+        "Rare Books and Special Collections - Historic Maps Collection",
+        "Online - *ONLINE*"
+        ],
+        "advanced_location_s": [
+        "map",
+        "elf1",
+        "Rare Books and Special Collections",
+        "Online"
+        ],
+        "name_title_browse_s": [
+        "Joanne, Adolphe Laurent, 1813-1881. Atlas de la défense nationale",
+        "Joanne, Adolphe Laurent, 1813-1881. Seine"
+        ],
+        "call_number_display": [
+        "HMC01.1996",
+        "Electronic Resource"
+        ],
+        "call_number_browse_s": [
+        "HMC01.1996",
+        "Electronic Resource"
+        ],
+        "timestamp": "2018-06-14T19:22:58.628Z"
+    },
+    {
+        "id": "6773431",
+        "numeric_id_b": true,
+        "author_citation_display": [
+        "Kodama, Kōta"
+        ],
+        "author_roles_1display": "{\"secondary_authors\":[\"Kodama, Kōta\",\"児玉幸多\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+        "author_s": [
+        "Kodama, Kōta, 1909-2007",
+        "児玉幸多, 1909-2007"
+        ],
+        "opensearch_display": [
+        "Kodama, Kōta, 1909-2007",
+        "児玉幸多, 1909-2007",
+        "Hyōjun Nihon shi kakezu [map] / Kodama Kōta hen.",
+        "Japan",
+        "Historical geography"
+        ],
+        "title_display": "Hyōjun Nihon shi kakezu [map] / Kodama Kōta hen.",
+        "title_vern_display": "標準日本史掛図 / 児玉幸多編.",
+        "title_t": [
+        "Hyōjun Nihon shi kakezu [map] / Kodama Kōta hen."
+        ],
+        "title_citation_display": [
+        "Hyōjun Nihon shi kakezu",
+        "標準日本史掛図"
+        ],
+        "compiled_created_t": [
+        "Hyōjun Nihon shi kakezu [map] / Kodama Kōta hen.",
+        "標準日本史掛図 / 児玉幸多編."
+        ],
+        "pub_created_vern_display": [
+        "東京 : 吉川弘文館, 昭和30-32 [1955-57]"
+        ],
+        "pub_created_display": [
+        "Tōkyō : Yoshikawa Kōbunkan, Shōwa 30-32 [1955-57]",
+        "東京 : 吉川弘文館, 昭和30-32 [1955-57]"
+        ],
+        "pub_created_s": [
+        "Tōkyō : Yoshikawa Kōbunkan, Shōwa 30-32 [1955-57]",
+        "東京 : 吉川弘文館, 昭和30-32 [1955-57]"
+        ],
+        "pub_citation_display": [
+        "Tōkyō: Yoshikawa Kōbunkan",
+        "東京: 吉川弘文館"
+        ],
+        "pub_date_display": [
+        "1955"
+        ],
+        "pub_date_start_sort": 1955,
+        "pub_date_end_sort": 1957,
+        "cataloged_tdt": "2011-08-11T13:20:31Z",
+        "format": [
+        "Map"
+        ],
+        "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/8336h435c\":[\"arks.princeton.edu\",\"See dai 1\"],\"http://arks.princeton.edu/ark:/88435/4b29b8439\":[\"arks.princeton.edu\",\"See dai 1 label\"],\"http://arks.princeton.edu/ark:/88435/kp78gj86g\":[\"arks.princeton.edu\",\"See dai 2\"],\"http://arks.princeton.edu/ark:/88435/fx719p95r\":[\"arks.princeton.edu\",\"See dai 2 label\"],\"http://arks.princeton.edu/ark:/88435/b5644v03v\":[\"arks.princeton.edu\",\"See dai 2 label 2\"],\"http://arks.princeton.edu/ark:/88435/6h440v95h\":[\"arks.princeton.edu\",\"See dai 3\"],\"http://arks.princeton.edu/ark:/88435/2r36v102x\":[\"arks.princeton.edu\",\"See dai 3 label\"],\"http://arks.princeton.edu/ark:/88435/z029p721v\":[\"arks.princeton.edu\",\"See dai 3 label 2\"],\"http://arks.princeton.edu/ark:/88435/0k225d50m\":[\"arks.princeton.edu\",\"See dai 5\"],\"http://arks.princeton.edu/ark:/88435/vt150m70s\":[\"arks.princeton.edu\",\"See dai 5 label\"],\"http://arks.princeton.edu/ark:/88435/r207tr79g\":[\"arks.princeton.edu\",\"See dai 6\"],\"http://arks.princeton.edu/ark:/88435/mc87ps69x\":[\"arks.princeton.edu\",\"See dai 6 label\"],\"http://arks.princeton.edu/ark:/88435/gm80hx786\":[\"arks.princeton.edu\",\"See dai 7\"],\"http://arks.princeton.edu/ark:/88435/bv73c288g\":[\"arks.princeton.edu\",\"See dai 7 label\"],\"http://arks.princeton.edu/ark:/88435/73666696n\":[\"arks.princeton.edu\",\"See dai 8\"],\"http://arks.princeton.edu/ark:/88435/3b591c02j\":[\"arks.princeton.edu\",\"See dai 8 label\"],\"http://arks.princeton.edu/ark:/88435/zk51vk227\":[\"arks.princeton.edu\",\"See dai 9\"],\"http://arks.princeton.edu/ark:/88435/tt44pq31n\":[\"arks.princeton.edu\",\"See dai 9 label\"],\"http://arks.princeton.edu/ark:/88435/q524jr21h\":[\"arks.princeton.edu\",\"See dai 10\"],\"http://arks.princeton.edu/ark:/88435/kd17cw30x\":[\"arks.princeton.edu\",\"See dai 10 label\"],\"http://arks.princeton.edu/ark:/88435/fn1071402\":[\"arks.princeton.edu\",\"See dai 11\"],\"http://arks.princeton.edu/ark:/88435/9w032548c\":[\"arks.princeton.edu\",\"See dai 11 label\"],\"http://arks.princeton.edu/ark:/88435/6395w9542\":[\"arks.princeton.edu\",\"See dai 12\"],\"http://arks.princeton.edu/ark:/88435/2b88qf620\":[\"arks.princeton.edu\",\"See dai 12 label\"]}",
+        "description_display": [
+        "12 maps : col. ; 105 x 148 on sheet 114 x 152."
+        ],
+        "description_t": [
+        "Scales differ.",
+        "12 maps : col. ; 105 x 148 on sheet 114 x 152."
+        ],
+        "number_of_pages_citation_display": [
+        "12 maps"
+        ],
+        "geocode_display": [
+        "Japan"
+        ],
+        "scale_display": [
+        "Scales differ."
+        ],
+        "notes_display": [
+        "Each map is clothbacked and mounted on wooden rods in scroll.",
+        "Multiple maps on one sheet.",
+        "Library has: dai 1-3, 5-12."
+        ],
+        "language_facet": [
+        "Japanese"
+        ],
+        "language_code_s": [
+        "jpn"
+        ],
+        "language_iana_s": [
+        "ja"
+        ],
+        "subject_display": [
+        "Japan—Historical geography—Maps"
+        ],
+        "subject_t": [
+        "Japan—Historical geography—Maps"
+        ],
+        "subject_facet": [
+        "Japan—Historical geography—Maps"
+        ],
+        "form_genre_display": [
+        "Wall maps, Japanese 1955-1957."
+        ],
+        "related_name_json_1display": "{\"Related name\":[\"Kodama, Kōta, 1909-2007\",\"児玉幸多, 1909-2007\"]}",
+        "other_title_display": [
+        "Nihon shi kakezu",
+        "日本史掛図"
+        ],
+        "alt_title_246_display": [
+        "Nihon shi kakezu",
+        "日本史掛図"
+        ],
+        "oclc_s": [
+        "61500431"
+        ],
+        "other_version_s": [
+        "ocm61500431"
+        ],
+        "holdings_1display": "{\"6754334\":{\"location\":\"ReCAP - Historic Maps Off-Site Storage\",\"library\":\"ReCAP\",\"location_code\":\"rcpxp\",\"call_number\":\"HMC01.6745\",\"call_number_browse\":\"HMC01.6745\",\"location_has\":[\"Only dai 1-3, 5-12.\"]},\"7321551\":{\"location\":\"Online - *ONLINE*\",\"library\":\"Online\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"}}",
+        "location_code_s": [
+        "rcpxp",
+        "elf1"
+        ],
+        "location": [
+        "ReCAP",
+        "Rare Books and Special Collections"
+        ],
+        "location_display": [
+        "ReCAP - Historic Maps Off-Site Storage",
+        "Online - *ONLINE*"
+        ],
+        "advanced_location_s": [
+        "rcpxp",
+        "elf1",
+        "ReCAP",
+        "Online",
+        "Rare Books and Special Collections"
+        ],
+        "call_number_display": [
+        "HMC01.6745",
+        "Electronic Resource"
+        ],
+        "call_number_browse_s": [
+        "HMC01.6745",
+        "Electronic Resource"
+        ],
+        "timestamp": "2018-06-25T15:13:42.906Z"
+        }
 ]

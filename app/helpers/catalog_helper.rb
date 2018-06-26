@@ -21,6 +21,16 @@ module CatalogHelper
     !request.bot?
   end
 
+  # Returns array with only 2 arks.
+  # Currenlty is used in the catalog/show.html.erb
+  # for the figgy ajax call in the figgy_viewer_loader.js
+  def ark_array
+    doc_hash = @document.select { |key, value| value if key == 'electronic_access_1display' }.to_h
+    res_parse = JSON.parse(doc_hash['electronic_access_1display'])
+    res = res_parse.map { |key, _value| key.sub('http://arks.princeton.edu/', '') }
+    res[0..1]
+  end
+
   private
 
     def document_types(document)

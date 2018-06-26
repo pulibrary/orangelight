@@ -29,7 +29,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
     markup = if /Open access/.match? texts.first
                link_to(texts.first, url.to_s, target: '_blank')
              elsif %r{(\/catalog\/.+?#view)} =~ url.to_s
-               link_to('Digital content below', $&)
+               link_to('Digital content', $&)
              else
                link_to(texts.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
              end
