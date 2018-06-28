@@ -1424,7 +1424,7 @@
             "2 v. (324; 319 leaves) ; 40.5 x 28.8 cm. (fol.)"
         ],
         "electronic_access_1display": [
-            "{\"https://catalog.princeton.edu/catalog/4609321#view\":[\"Digital content below\"],\"http://arks.princeton.edu/ark:/88435/xp68kg247\":[\"arks.princeton.edu\"],\"https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs\":[\"drive.google.com\",\"Curatorial documentation\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/7d278t10z\":\"https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest\"}}"
+            "{\"https://catalog.princeton.edu/catalog/4609321#view\":[\"Digital content below\"],\"https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs\":[\"drive.google.com\",\"Curatorial documentation\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/7d278t10z\":\"https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest\",\"http://arks.princeton.edu/ark:/88435/xp68kg247\":\"https://figgy.princeton.edu/concern/scanned_resources/42570d35-13b3-4bce-8fd0-7e465decb0e1/manifest\"}}"
         ],
         "format": [
             "Book"

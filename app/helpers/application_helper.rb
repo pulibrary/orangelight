@@ -37,13 +37,25 @@ module ApplicationHelper
     urls = []
     unless electronic_access.nil?
       links_hash = JSON.parse(electronic_access)
+      links_hash.delete('iiif_manifest_paths')
       links_hash.first(2).each do |url, text|
-        link = link_to(text.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
+        link = electronic_access_link(url, text)
         link = "#{text[1]}: ".html_safe + link if text[1]
         urls << content_tag(:div, link, class: 'library-location')
       end
     end
     urls
+  end
+
+  def electronic_access_link(url, texts)
+    markup = if /Open access/.match? texts.first
+               link_to(texts.first, url.to_s, target: '_blank')
+             elsif %r{(\/catalog\/.+?#view)} =~ url.to_s
+               link_to('Digital content', $&)
+             else
+               link_to(texts.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
+             end
+    markup
   end
 
   # The String constants specifying the libraries for which stack map location links should not be generated
