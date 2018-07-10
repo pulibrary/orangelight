@@ -202,6 +202,45 @@ describe 'blacklight tests' do
         expect(r['response']['docs'].any? { |d| d['id'] == '2837968' }).to eq true
       end
     end
+
+    context 'with user-supplied * in query string' do
+      it 'are handled in simple search' do
+        get '/catalog.json?search_field=left_anchor&q=JSTOR*'
+        r = JSON.parse(response.body)
+        expect(r['response']['docs'].any? { |d| d['id'] == '2837968' }).to eq true
+      end
+      it 'are handled in advanced search' do
+        get '/catalog.json?f1=left_anchor&q1=JSTOR*&search_field=advanced'
+        r = JSON.parse(response.body)
+        expect(r['response']['docs'].any? { |d| d['id'] == '2837968' }).to eq true
+      end
+    end
+
+    context 'solr operator charaters' do
+      it 'are handled in simple search' do
+        get '/catalog.json?search_field=left_anchor&q=JSTOR%7B%7D%3A%26%26%7C%7C"%2B%5E~-%2F%3F+%5BElectronic+Resource%5D'
+        r = JSON.parse(response.body)
+        expect(r['response']['docs'].any? { |d| d['id'] == '2837968' }).to eq true
+      end
+      it 'are handled in advanced search' do
+        get '/catalog.json?f1=left_anchor&q1=JSTOR%7B%7D%3A%26%26%7C%7C"%2B%5E~-%2F%3F+%5BElectronic+Resource%5D&search_field=advanced'
+        r = JSON.parse(response.body)
+        expect(r['response']['docs'].any? { |d| d['id'] == '2837968' }).to eq true
+      end
+    end
+
+    context 'cjk characters' do
+      it 'are searchable in simple search' do
+        get "/catalog.json?search_field=left_anchor&q=#{CGI.escape('浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授)')}"
+        r = JSON.parse(response.body)
+        expect(r['response']['docs'].any? { |d| d['id'] == '8181849' }).to eq true
+      end
+      it 'are searchable in advanced search' do
+        get "/catalog.json?f1=left_anchor&q1=#{CGI.escape('浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授)')}&search_field=advanced"
+        r = JSON.parse(response.body)
+        expect(r['response']['docs'].any? { |d| d['id'] == '8181849' }).to eq true
+      end
+    end
   end
 
   describe 'advanced search tests' do
@@ -235,6 +274,11 @@ describe 'blacklight tests' do
     it 'does not error when only the 3rd query field has a value' do
       get '/catalog?f1=all_fields&q1=&op2=AND&f2=author&q2=&op3=AND&f3=title&q3='\
           'anything&search_field=advanced&commit=Search'
+      expect(response.status).to eq(200)
+    end
+    it 'does not error when there are stray quotation marks' do
+      get '/catalog?f1=all_fields&q1="b"&op2=AND&f2=author&q2=a"&op3=AND&f3=title&q3='\
+          'anythi"ng&search_field=advanced&commit=Search'
       expect(response.status).to eq(200)
     end
     it 'successful search when the 1st and 3rd query are same field, 2nd query field different' do

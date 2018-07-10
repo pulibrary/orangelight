@@ -109,9 +109,9 @@ module BlacklightAdvancedSearch
         return @keyword_queries unless @params[:search_field] == ::AdvancedController.blacklight_config.advanced_search[:url_key]
 
         # Spaces need to be stripped from the query because they don't get properly stripped in Solr
-        q1 = %w[left_anchor in_series].include?(@params[:f1]) ? escape_quotes(@params[:q1]) : @params[:q1]
-        q2 = @params[:f2] == 'left_anchor' ? escape_quotes(@params[:q2]) : @params[:q2]
-        q3 = @params[:f3] == 'left_anchor' ? escape_quotes(@params[:q3]) : @params[:q3]
+        q1 = %w[left_anchor in_series].include?(@params[:f1]) ? prep_left_anchor_search(@params[:q1]) : odd_quotes(@params[:q1])
+        q2 = @params[:f2] == 'left_anchor' ? prep_left_anchor_search(@params[:q2]) : odd_quotes(@params[:q2])
+        q3 = @params[:f3] == 'left_anchor' ? prep_left_anchor_search(@params[:q3]) : odd_quotes(@params[:q3])
 
         been_combined = false
         @keyword_queries[@params[:f1]] = q1 if @params[:q1].present?
@@ -136,18 +136,37 @@ module BlacklightAdvancedSearch
           end
         end
       end
-
       @keyword_queries
     end
 
     private
 
-      # Escape quotes for any given advanced search query
-      # @param query [String] the query within which quotes are being escaped
+      # Remove stray quotation mark if there are an odd number of them
+      # @param query [String] the query
+      # @return [String] the query with an even number of quotation marks
+      def odd_quotes(query)
+        if query&.count('"')&.odd?
+          query.sub(/"/, '')
+        else
+          query
+        end
+      end
+
+      # Escape spaces for left-anchor search fields and adds asterisk if not present
+      # Removes quotation marks
+      # @param query [String] the query within which whitespace is being escaped
       # @return [String] the escaped query
-      def escape_quotes(query)
-        cleaned_query = query.gsub(/"+/, '')
-        '"' + cleaned_query + '"'
+      def prep_left_anchor_search(query)
+        if query
+          cleaned_query = query.gsub(/(\s)/, '\\\\\\\\\1')
+          cleaned_query = cleaned_query.delete('"')
+          cleaned_query = cleaned_query.gsub(/(["\{\}\[\]\^\~\(\)])/, '\\\\\\\\\1')
+          if cleaned_query.end_with?('*')
+            cleaned_query
+          else
+            cleaned_query + '*'
+          end
+        end
       end
   end
 end

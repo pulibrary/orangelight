@@ -10,10 +10,15 @@ describe BlacklightHelper do
   end
 
   describe '#left_anchor_escape_whitespace' do
-    it 'escapes white spaces before sending :q to solr' do
+    it 'escapes white spaces before sending :q to solr along with wildcard character' do
       query = { q: '{!qf=$left_anchor_qf pf=$left_anchor_pf}searching for a test value' }
       left_anchor_escape_whitespace(query)
-      expect(query[:q]).to eq '{!qf=$left_anchor_qf pf=$left_anchor_pf}searching\ for\ a\ test\ value'
+      expect(query[:q]).to eq '{!qf=$left_anchor_qf pf=$left_anchor_pf}searching\ for\ a\ test\ value*'
+    end
+    it 'only a single wildcard character is included when user supplies the wildcard in query' do
+      query = { q: '{!qf=$left_anchor_qf pf=$left_anchor_pf}searching for a test value*' }
+      left_anchor_escape_whitespace(query)
+      expect(query[:q]).to eq '{!qf=$left_anchor_qf pf=$left_anchor_pf}searching\ for\ a\ test\ value*'
     end
   end
 
