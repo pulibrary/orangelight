@@ -462,11 +462,11 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
     config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort asc', label: 'relevance'
-    config.add_sort_field 'pub_date_start_sort desc, title_sort asc', label: 'year (newest first)'
-    config.add_sort_field 'pub_date_start_sort asc, title_sort asc', label: 'year (oldest first)'
-    config.add_sort_field 'author_sort asc, title_sort asc', label: 'author'
-    config.add_sort_field 'title_sort asc, pub_date_start_sort desc', label: 'title'
-    config.add_sort_field 'cataloged_tdt desc, title_sort asc', label: 'date cataloged'
+    config.add_sort_field 'pub_date_start_sort desc, title_sort asc, score desc', label: 'year (newest first)'
+    config.add_sort_field 'pub_date_start_sort asc, title_sort asc, score desc', label: 'year (oldest first)'
+    config.add_sort_field 'author_sort asc, title_sort asc, score desc', label: 'author'
+    config.add_sort_field 'title_sort asc, pub_date_start_sort desc, score desc', label: 'title'
+    config.add_sort_field 'cataloged_tdt desc, title_sort asc, score desc', label: 'date cataloged'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
