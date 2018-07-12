@@ -24,10 +24,19 @@ RSpec.describe HoldingRequestsAdapter do
         '671798' => { 'location_code' => 'scsbnypl', 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] }
       }
     end
+    let(:holdings_hash_empty_use_statement) do
+      {
+        '671799' => { 'location_code' => 'scsbnypl', 'items' => [{ 'holding_id' => '671799', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => '', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] }
+      }
+    end
 
     it 'repeated restrictions appear only once' do
       allow(holdings).to receive(:doc_holdings).and_return(holdings_hash)
       expect(holdings.restrictions).to eq ['In Library Use']
+    end
+    it 'Empty use_statement fields are excluded' do
+      allow(holdings).to receive(:doc_holdings).and_return(holdings_hash_empty_use_statement)
+      expect(holdings.restrictions).to eq []
     end
   end
 
