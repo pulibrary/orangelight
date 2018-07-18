@@ -58,7 +58,7 @@ module Blacklight
       private
 
         def ris_format
-          ris_format_mapping[self[:format].first]
+          ris_format_mapping[self[:format].first] unless self[:format].nil?
         end
 
         def ris_format_mapping
