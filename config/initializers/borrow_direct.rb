@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-BorrowDirect::Defaults.html_base_url = 'https://pulsearch.princeton.edu/borrow-direct'
+BorrowDirect::Defaults.html_base_url = 'https://catalog.princeton.edu/borrow-direct'
 
 # Set Relais base URL as a constant for internal use
 RELAIS_BASE = 'https://borrow-direct.relaisd2d.com/service-proxy/?command=mkauth'
