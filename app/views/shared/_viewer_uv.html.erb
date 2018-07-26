@@ -14,7 +14,7 @@
                 }
                 if (ark_length === 1) {
                     elem1 = document.querySelector('div#view_1.intrinsic-container.intrinsic-container-16x9');
-                    elem1.parentNode.removeChild(elem);
+                    elem1.parentNode.removeChild(elem1);
                 }
             }
 
@@ -50,14 +50,13 @@
                                     result.push(JSON.parse(oReq[i].response)["url"]);
                                     callback(i, result);
                                 } else {
-                                    elem1 = document.querySelector('div#view_1.intrinsic-container.intrinsic-container-16x9');
-                                    if (elem1) {
-                                        elem1.parentNode.removeChild(elem1);
-                                    }
-                                    elem = document.querySelector('div#view.intrinsic-container.intrinsic-container-16x9');
-                                    if (elem) {
-                                       elem.parentNode.removeChild(elem);
-                                    }
+                                    if (i === 0) {
+                                            elem = document.querySelector('div#view.intrinsic-container.intrinsic-container-16x9');
+                                            elem.parentNode.removeChild(elem);
+                                        } else {
+                                            elem1 = document.querySelector('div#view_1.intrinsic-container.intrinsic-container-16x9');
+                                            elem1.parentNode.removeChild(elem1);
+                                        }
                                 }
                             }
                         };
