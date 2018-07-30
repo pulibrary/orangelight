@@ -42,4 +42,14 @@ describe 'Unapi suport' do
       expect(page.response_headers['Content-Type']).to eq('application/x-research-info-systems')
     end
   end
+
+  describe 'trap nil format' do
+    before do
+      stub_holding_locations
+      visit 'catalog/SCSB-7935196.ris'
+    end
+    it 'returns the correct mime type for RIS when format is missing' do
+      expect(page.status_code).to eq(200)
+    end
+  end
 end
