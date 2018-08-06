@@ -10,6 +10,8 @@ defaults: &defaults
     - '/browse/names'
     - '/browse/name_titles'
     - '/browse/subjects'
+    - '/catalog.atom'
+    - '/catalog.rss'
     - '/catalog/*/'
     - '/catalog/endnote'
     - '/catalog/opensearch'
