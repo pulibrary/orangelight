@@ -8,7 +8,7 @@
     <h1 class="page-heading"><%= t('blacklight.search.librarian_view.title') %></h1>
 </div>
 
-<%- if @document.respond_to?(:to_marc) -%>
+<%- if @document.respond_to?(:to_marc) && @document.to_marc.present? -%>
   <%= render "marc_view" %>
 <%- else %>
   <%= t('blacklight.search.librarian_view.empty') %>
