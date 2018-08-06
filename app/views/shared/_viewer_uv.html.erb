@@ -51,18 +51,20 @@
                                     callback(i, result);
                                 } else {
                                     if (ark_length === 1) {
-                                            elem1 = document.querySelector('div#view_1.intrinsic-container.intrinsic-container-16x9');
-                                            elem1.parentNode.removeChild(elem1);
-                                        } else {
-                                            if (i === 0) {
-                                                elem = document.querySelector('div#view.intrinsic-container.intrinsic-container-16x9');
-                                                elem.parentNode.removeChild(elem);
-                                            }
-                                            if  (i === 1) {
-                                                elem1 = document.querySelector('div#view_1.intrinsic-container.intrinsic-container-16x9');
-                                                elem1.parentNode.removeChild(elem1);
-                                            }
+                                        elem = document.querySelector('div#view.intrinsic-container.intrinsic-container-16x9');
+                                        elem.parentNode.removeChild(elem);
+                                        elem1 = document.querySelector("div#view_1.intrinsic-container.intrinsic-container-16x9");
+                                        elem1.parentNode.removeChild(elem1);
+                                    } else {
+                                        if (i === 0) {
+                                            elem = document.querySelector('div#view.intrinsic-container.intrinsic-container-16x9');
+                                            elem.parentNode.removeChild(elem);
                                         }
+                                        if (i === 1) {
+                                            elem1 = document.querySelector("div#view_1.intrinsic-container.intrinsic-container-16x9");
+                                            elem1.parentNode.removeChild(elem1);
+                                        }
+                                    }
                                 }
                             }
                         };
