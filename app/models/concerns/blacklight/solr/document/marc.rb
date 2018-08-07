@@ -16,9 +16,24 @@ module Blacklight
           Blacklight::Solr::Document::MarcExport.register_export_formats(document)
         end
 
-        # ruby-marc object
+        # Accesses the MARC::Record constructed from data retrieved over the HTTP
+        # @return [MARC::Record]
         def to_marc
           @_ruby_marc_obj ||= load_marc
+        end
+
+        # Generate the string-serialized XML from the remote MARC record
+        # @return [String]
+        def export_as_marcxml
+          return '' unless to_marc
+          super
+        end
+
+        # Generate the refworks citation format from the remote MARC record
+        # @return
+        def export_as_refworks_marc_txt
+          return '' unless to_marc
+          super
         end
 
         # return openurl ctx object
@@ -134,8 +149,12 @@ module Blacklight
             @_marc_source ||= fetch(_marc_source_field)
           end
 
+          # Construct a MARC::Record using MARC record data retrieved over the HTTP
+          # @return [MARC::Record]
           def load_marc
-            case _marc_format_type.to_s
+            marc_format = _marc_format_type.to_s
+
+            case marc_format
             when 'marcxml'
               marc_record_from_marcxml
             when 'marc21'
@@ -147,12 +166,19 @@ module Blacklight
             end
           rescue StandardError => e
             Rails.logger.error("Blacklight failed to parse MARC record. Exception was: #{e}")
+            nil
           end
 
+          # Construct a MARC::Record using MARC-XML data retrieved over the HTTP
+          # @return [MARC::Record]
           def marc_record_from_marcxml
             id = fetch(_marc_source_field)
-            record = Faraday.get("#{ENV['bibdata_base']}/bibliographic/#{id}").body
-            MARC::XMLReader.new(StringIO.new(record)).to_a.first
+
+            response = Faraday.get("#{ENV['bibdata_base']}/bibliographic/#{id}")
+            response_stream = StringIO.new(response.body)
+            marc_reader = MARC::XMLReader.new(response_stream)
+            marc_records = marc_reader.to_a
+            marc_records.first
           end
 
           def _marc_helper

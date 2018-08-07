@@ -5,14 +5,119 @@ require 'rails_helper'
 RSpec.describe SolrDocument do
   include ApplicationHelper
 
-  subject { described_class.new(properties) }
+  subject(:solr_document) { described_class.new(properties) }
 
-  let(:properties) { {} }
+  let(:properties) do
+    {}
+  end
+
+  describe '#to_marc' do
+    let(:bibid) { '6574987' }
+    let(:properties) do
+      {
+        'id' => bibid
+      }
+    end
+    let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
+
+    before do
+      stub_request(:get, "#{ENV['bibdata_base']}/bibliographic/#{bibid}").to_return(
+        status: 200,
+        body: marc_xml
+      )
+    end
+
+    it 'retrieves the MARC data from over the HTTP and constructs a MARC::Record object' do
+      expect(solr_document.to_marc).to be_a MARC::Record
+      expect(solr_document.to_marc.to_xml.to_s).to eq(marc_xml)
+    end
+
+    context 'when the remote MARC record cannot be retrieved' do
+      before do
+        stub_request(:get, "#{ENV['bibdata_base']}/bibliographic/#{bibid}").to_return(
+          status: 500,
+          body: ''
+        )
+      end
+      it 'returns nil' do
+        expect(solr_document.to_marc).to be nil
+      end
+    end
+  end
+
+  describe '#export_as_marcxml' do
+    let(:bibid) { '6574987' }
+    let(:properties) do
+      {
+        'id' => bibid
+      }
+    end
+    let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
+
+    before do
+      stub_request(:get, "#{ENV['bibdata_base']}/bibliographic/#{bibid}").to_return(
+        status: 200,
+        body: marc_xml
+      )
+    end
+
+    it 'generates the XML from the remote MARC record' do
+      expect(solr_document.export_as_marcxml).to eq(marc_xml)
+    end
+
+    context 'when the remote MARC record cannot be retrieved' do
+      before do
+        stub_request(:get, "#{ENV['bibdata_base']}/bibliographic/#{bibid}").to_return(
+          status: 500,
+          body: ''
+        )
+      end
+      it 'returns an empty String' do
+        expect(solr_document.export_as_marcxml).to eq('')
+      end
+    end
+  end
+
+  describe '#export_as_refworks_marc_txt' do
+    let(:bibid) { '6574987' }
+    let(:properties) do
+      {
+        'id' => bibid
+      }
+    end
+    let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
+    let(:refworks_txt) do
+      "LEADER 00468cam a22001455a 4500001    6574987\n005    20110919084640.0\n008    110602s2011    nju           000 0 eng  \n040    NjP |cNjP\n100 1  Velez, Carlos.\n245 10 Searching for a modern aesthetic : |bfrom furniture to design / |cCarlos Velez.\n260     |c2011\n300    139 p. : |bill. ; |c29 x 23 cm.\n500    Advisor(s): Spyridon Papapetros, Lucia Allais\n502    Thesis (Senior)--Princeton University, 2011.\n852 8   |06536318 |brcppw |hSen. Th. 2011 Vel |xtr fr uesla\n959    2011-06-02 09:01:58 -0500\n"
+    end
+
+    before do
+      stub_request(:get, "#{ENV['bibdata_base']}/bibliographic/#{bibid}").to_return(
+        status: 200,
+        body: marc_xml
+      )
+    end
+
+    it 'generates the refworks record' do
+      expect(solr_document.export_as_refworks_marc_txt).to eq(refworks_txt)
+    end
+
+    context 'when the remote MARC record cannot be retrieved' do
+      before do
+        stub_request(:get, "#{ENV['bibdata_base']}/bibliographic/#{bibid}").to_return(
+          status: 500,
+          body: ''
+        )
+      end
+      it 'returns an empty String' do
+        expect(solr_document.export_as_refworks_marc_txt).to eq('')
+      end
+    end
+  end
 
   describe '#identifiers' do
     context 'with no identifiers' do
       it 'is a blank array' do
-        expect(subject.identifiers).to eq []
+        expect(solr_document.identifiers).to eq []
       end
     end
     context 'with identifiers' do
@@ -24,7 +129,7 @@ RSpec.describe SolrDocument do
       end
 
       it 'has an identifier object each' do
-        expect(subject.identifiers.length).to eq 3
+        expect(solr_document.identifiers.length).to eq 3
       end
     end
   end
@@ -39,7 +144,7 @@ RSpec.describe SolrDocument do
         }
       end
       it 'returns a hash of identifiers for data embeds, excludes lccn' do
-        expect(subject.identifier_data).to eq(
+        expect(solr_document.identifier_data).to eq(
           isbn: [
             '9781400827824'
           ],
@@ -62,8 +167,8 @@ RSpec.describe SolrDocument do
     let(:format_string) { 'info:ofi/fmt:kev:mtx:book' }
 
     it 'returns an encoded string' do
-      expect((subject.export_as_openurl_ctx_kev('book').is_a? String)).to be true
-      expect(subject.export_as_openurl_ctx_kev('book')).to include("rft_val_fmt=#{CGI.escape(format_string)}")
+      expect((solr_document.export_as_openurl_ctx_kev('book').is_a? String)).to be true
+      expect(solr_document.export_as_openurl_ctx_kev('book')).to include("rft_val_fmt=#{CGI.escape(format_string)}")
     end
   end
 
@@ -78,12 +183,11 @@ RSpec.describe SolrDocument do
       end
 
       it 'returns a ctx with a format book' do
-        expect(subject.to_ctx(subject['format']).to_hash['rft.genre']).to eq('book')
+        expect(solr_document.to_ctx(solr_document['format']).to_hash['rft.genre']).to eq('book')
       end
 
       it 'Does not have a rft.title param' do
-        expect(subject.to_ctx(subject['format']).to_hash.key?('rft.title')).to be false
-        # ['rft.title']).to eq(subject['title_citation_display'].first)
+        expect(solr_document.to_ctx(solr_document['format']).to_hash.key?('rft.title')).to be false
       end
     end
 
@@ -97,12 +201,11 @@ RSpec.describe SolrDocument do
       end
 
       it 'returns a ctx with a format serial' do
-        expect(subject.to_ctx(subject['format']).to_hash['rft.genre']).to eq('serial')
+        expect(solr_document.to_ctx(solr_document['format']).to_hash['rft.genre']).to eq('serial')
       end
 
       it 'does not have a journal rft.atitle param' do
-        expect(subject.to_ctx(subject['format']).to_hash.key?('rft.title')).to be false
-        # expect(subject.to_ctx(subject['format']).to_hash['rft.atitle']).to eq(subject['title_citation_display'].first)
+        expect(solr_document.to_ctx(solr_document['format']).to_hash.key?('rft.title')).to be false
       end
     end
 
@@ -115,7 +218,7 @@ RSpec.describe SolrDocument do
       end
 
       it 'returns a ctx with format unknown' do
-        expect(subject.to_ctx(subject['format']).to_hash['rft.genre']).to eq('unknown')
+        expect(solr_document.to_ctx(solr_document['format']).to_hash['rft.genre']).to eq('unknown')
       end
     end
   end
@@ -132,7 +235,7 @@ RSpec.describe SolrDocument do
       end
 
       it 'returns true when one or more standard number keys are present' do
-        expect(subject.standard_numbers?).to be true
+        expect(solr_document.standard_numbers?).to be true
       end
     end
 
@@ -144,7 +247,7 @@ RSpec.describe SolrDocument do
       end
 
       it 'returns false when no standard number keys are present' do
-        expect(subject.standard_numbers?).to be false
+        expect(solr_document.standard_numbers?).to be false
       end
     end
   end
@@ -158,7 +261,7 @@ RSpec.describe SolrDocument do
       end
 
       it 'returns true with a voyager record' do
-        expect(subject.voyager_record?).to be true
+        expect(solr_document.voyager_record?).to be true
       end
     end
 
@@ -170,7 +273,7 @@ RSpec.describe SolrDocument do
       end
 
       it 'returns false when it did not originate from voyager' do
-        expect(subject.voyager_record?).to be false
+        expect(solr_document.voyager_record?).to be false
       end
     end
   end
@@ -178,7 +281,7 @@ RSpec.describe SolrDocument do
   describe 'ark' do
     context 'there is no value' do
       it 'returns nil' do
-        expect(subject.ark).to be_nil
+        expect(solr_document.ark).to be_nil
       end
     end
     context 'when it has no ark in 1display' do
@@ -189,7 +292,7 @@ RSpec.describe SolrDocument do
       end
 
       it 'returns nil' do
-        expect(subject.ark).to be_nil
+        expect(solr_document.ark).to be_nil
       end
     end
     context 'when it has an ark in 1display' do
@@ -200,7 +303,7 @@ RSpec.describe SolrDocument do
       end
 
       it 'returns the ark' do
-        expect(subject.ark).to eq 'ark:/88435/fj236339x'
+        expect(solr_document.ark).to eq 'ark:/88435/fj236339x'
       end
     end
     context 'when it has multiple options only one an ark' do
@@ -211,7 +314,7 @@ RSpec.describe SolrDocument do
       end
 
       it 'returns the ark' do
-        expect(subject.ark).to eq 'ark:/88435/fj236339x'
+        expect(solr_document.ark).to eq 'ark:/88435/fj236339x'
       end
     end
   end
@@ -226,7 +329,7 @@ RSpec.describe SolrDocument do
       end
 
       it 'includes voyager-only formats' do
-        expect(subject.export_formats).to have_key :endnote
+        expect(solr_document.export_formats).to have_key :endnote
       end
     end
 
@@ -239,7 +342,7 @@ RSpec.describe SolrDocument do
       end
 
       it 'does not include voyager-only formats' do
-        expect(subject.export_formats).not_to have_key :endnote
+        expect(solr_document.export_formats).not_to have_key :endnote
       end
     end
 
@@ -251,7 +354,7 @@ RSpec.describe SolrDocument do
       end
 
       it 'does not include voyager-only formats' do
-        expect(subject.export_formats).not_to have_key :endnote
+        expect(solr_document.export_formats).not_to have_key :endnote
       end
     end
   end
@@ -264,9 +367,9 @@ RSpec.describe SolrDocument do
     end
 
     it 'exposes electronic access links' do
-      expect(subject.doc_electronic_access).to be_a Hash
-      expect(subject.doc_electronic_access).to include 'https://pulsearch.princeton.edu/catalog/4609321#view' => ['arks.princeton.edu']
-      expect(subject.doc_electronic_access).to include 'https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs' => ['drive.google.com', 'Curatorial documentation']
+      expect(solr_document.doc_electronic_access).to be_a Hash
+      expect(solr_document.doc_electronic_access).to include 'https://pulsearch.princeton.edu/catalog/4609321#view' => ['arks.princeton.edu']
+      expect(solr_document.doc_electronic_access).to include 'https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs' => ['drive.google.com', 'Curatorial documentation']
     end
 
     context 'with IIIF Manifest URLs indexed' do
@@ -276,10 +379,10 @@ RSpec.describe SolrDocument do
         }
       end
       it 'does not expose the manifest URLs' do
-        expect(subject.doc_electronic_access).to be_a Hash
-        expect(subject.doc_electronic_access).not_to have_key('iiif_manifests')
-        expect(subject.doc_electronic_access).to include 'https://pulsearch.princeton.edu/catalog/4609321#view' => ['arks.princeton.edu']
-        expect(subject.doc_electronic_access).to include 'https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs' => ['drive.google.com', 'Curatorial documentation']
+        expect(solr_document.doc_electronic_access).to be_a Hash
+        expect(solr_document.doc_electronic_access).not_to have_key('iiif_manifests')
+        expect(solr_document.doc_electronic_access).to include 'https://pulsearch.princeton.edu/catalog/4609321#view' => ['arks.princeton.edu']
+        expect(solr_document.doc_electronic_access).to include 'https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs' => ['drive.google.com', 'Curatorial documentation']
       end
     end
   end
@@ -291,11 +394,11 @@ RSpec.describe SolrDocument do
       }
     end
     it 'parses the manifest URLs' do
-      expect(subject.iiif_manifests).to be_a Hash
-      expect(subject.iiif_manifests).to include 'http://arks.princeton.edu/ark:/88435/7d278t10z' => 'https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest'
-      expect(subject.iiif_manifests).to include 'http://arks.princeton.edu/ark:/88435/xp68kg247' => 'https://figgy.princeton.edu/concern/scanned_resources/42570d35-13b3-4bce-8fd0-7e465decb0e1/manifest'
-      expect(subject.iiif_manifests).not_to include 'https://pulsearch.princeton.edu/catalog/4609321#view' => ['arks.princeton.edu']
-      expect(subject.iiif_manifests).not_to include 'https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs' => ['drive.google.com', 'Curatorial documentation']
+      expect(solr_document.iiif_manifests).to be_a Hash
+      expect(solr_document.iiif_manifests).to include 'http://arks.princeton.edu/ark:/88435/7d278t10z' => 'https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest'
+      expect(solr_document.iiif_manifests).to include 'http://arks.princeton.edu/ark:/88435/xp68kg247' => 'https://figgy.princeton.edu/concern/scanned_resources/42570d35-13b3-4bce-8fd0-7e465decb0e1/manifest'
+      expect(solr_document.iiif_manifests).not_to include 'https://pulsearch.princeton.edu/catalog/4609321#view' => ['arks.princeton.edu']
+      expect(solr_document.iiif_manifests).not_to include 'https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs' => ['drive.google.com', 'Curatorial documentation']
     end
   end
 end
