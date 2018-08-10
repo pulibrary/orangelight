@@ -371,8 +371,8 @@ class CatalogController < ApplicationController
       field.include_in_simple_select = false
       field.label = 'Publisher'
       field.solr_local_parameters = {
-        qf: 'pub_created_unstem_search',
-        pf: 'pub_created_unstem_search'
+        qf: '$publisher_qf',
+        pf: '$publisher_pf'
       }
     end
 
@@ -390,7 +390,8 @@ class CatalogController < ApplicationController
       field.include_in_simple_select = false
       field.label = 'Notes'
       field.solr_local_parameters = {
-        qf: 'notes_index'
+        qf: '$notes_qf',
+        pf: '$notes_pf'
       }
     end
 
