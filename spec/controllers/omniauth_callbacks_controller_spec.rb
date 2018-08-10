@@ -45,7 +45,7 @@ RSpec.describe Users::OmniauthCallbacksController do
 
       before do
         controller.request.env['omniauth.auth'] = omniauth_response
-        stub_request(:get, 'https://bibdata-dev.princeton.edu/patron/22101002369676').to_return(status: 200, body: JSON.generate(guest_response))
+        stub_request(:get, 'https://bibdata-staging.princeton.edu/patron/22101002369676').to_return(status: 200, body: JSON.generate(guest_response))
       end
 
       it 'strips the whitespace' do
