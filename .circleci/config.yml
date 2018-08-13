@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Set Timezone to EST
           command: echo 'America/New_York' = /etc/timezone
-      
+
       # Restore bundle cache
       - restore_cache:
           keys:
