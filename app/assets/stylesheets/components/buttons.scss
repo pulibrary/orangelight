@@ -262,3 +262,8 @@ header .navbar-nav > li > a {
 .pagination-search-widgets .col-sm-6 {
   width: auto;
 }
+
+:focus {
+  outline: 2px solid #5E9ED6 !important;
+  outline-offset: 0 !important;
+}
