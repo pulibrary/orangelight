@@ -499,6 +499,11 @@ describe 'blacklight tests' do
   end
 
   describe 'series_display in search results' do
+    it 'retrieves results when series ends in trailing semi-colon' do
+      get '/catalog.json?q1=ICPSR+%3B&f1=in_series&search_field=advanced'
+      r = JSON.parse(response.body)
+      expect(r['response']['docs'].any? { |d| d['id'] == '9088928' }).to eq true
+    end
     it 'is fetched when doing a more in this series search' do
       get '/catalog.json?q1=Always+learning.&f1=in_series&search_field=advanced'
       r = JSON.parse(response.body)

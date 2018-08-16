@@ -159,7 +159,7 @@ module BlacklightAdvancedSearch
       def prep_left_anchor_search(query)
         if query
           cleaned_query = query.gsub(/(\s)/, '\\\\\\\\\1')
-          cleaned_query = cleaned_query.delete('"')
+          cleaned_query = cleaned_query.delete('"').chomp(';').rstrip
           cleaned_query = cleaned_query.gsub(/(["\{\}\[\]\^\~\(\)])/, '\\\\\\\\\1')
           if cleaned_query.end_with?('*')
             cleaned_query
