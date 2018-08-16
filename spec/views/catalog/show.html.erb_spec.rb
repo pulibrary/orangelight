@@ -53,4 +53,16 @@ RSpec.describe 'catalog/show' do
       expect(page).to have_selector('div#view_1')
     end
   end
+
+  describe 'Location_has field in main column', js: true do
+    it 'does not display if physical holdings are present' do
+      visit 'catalog/857469'
+      expect(page).not_to have_selector('#doc_857469 > dl > dt.blacklight-holdings_1display')
+    end
+
+    it 'displays if physical holdings are not present' do
+      visit 'catalog/6010813'
+      expect(page).to have_selector('#doc_6010813 > dl > dt.blacklight-holdings_1display')
+    end
+  end
 end

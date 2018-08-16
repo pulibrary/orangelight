@@ -55,7 +55,7 @@ module Orangelight
 
     def online_holding_note?(_field_config, document)
       location_notes = JSON.parse(document[:holdings_1display] || '{}').collect { |_k, v| v['location_has'] }
-      document[:electronic_access_1display].present? && location_notes.any?
+      document[:electronic_access_1display].present? && location_notes.any? && document[:location].blank?
     end
   end
 end
