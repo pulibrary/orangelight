@@ -13,16 +13,21 @@
        // This document_partial_name(@document) business is not quite right,
        // but has been there for a while.
        // If we add non-MARC doc types to the project they need to respond to this
-       // method with a valid ctx object.
+       // method with a valid ctx (context) object.
   -->
   <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_partial_name(@document)) %>"></span>
   <script type="text/javascript">
     jQuery(document).ready(function() {
+      // marcit is the service that provides all the eJournal 856 urls in the catalog that start with "getit.princeton.edu".
+      //   Those URLs contain an exact ID value used by SFX that the COinS generation function isn't aware of.
+      //    So we make sure the 856 openURL is sent over to umlaut rather than the default one the helper produces from the solr doc's metadata.
       if($("*[data-umlaut-full-text='true']").length || $("*[data-umlaut-services='true']").length) {
         if($("*[data-url-marcit]").length) {
+          // pull the marcit url
           var ctx = $('.availability_full-text').data('url-marcit');
           var ctx_type = "marcit";
         } else {
+          // pulls the helper-generated openurl querystring
           var ctx = $("span.Z3988").attr("title");
         }
         var umlaut_base = "<%= ENV['umlaut_base'] %>";
