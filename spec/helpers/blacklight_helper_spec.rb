@@ -22,6 +22,27 @@ describe BlacklightHelper do
     end
   end
 
+  describe '#html_facets' do
+    let(:solr_parameters) { {} }
+
+    describe 'when blacklight format param nil' do
+      let(:blacklight_params) { {} }
+
+      it 'solr facet param is unaffected' do
+        html_facets(solr_parameters)
+        expect(solr_parameters[:facet]).to be_nil
+      end
+    end
+    describe 'when blacklight format param is rss' do
+      let(:blacklight_params) { { format: 'rss' } }
+
+      it 'solr facet param is set to false' do
+        html_facets(solr_parameters)
+        expect(solr_parameters[:facet]).to eq false
+      end
+    end
+  end
+
   describe '#cjk_mm' do
     context 'when the search is all cjk' do
       let(:blacklight_params) { { q: '毛沢東' } }

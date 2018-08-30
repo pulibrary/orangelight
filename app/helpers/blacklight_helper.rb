@@ -55,6 +55,13 @@ module BlacklightHelper
     solr_parameters['facet.pivot'] = []
   end
 
+  # only fetch facets when an html page is requested
+  def html_facets(solr_parameters)
+    return if blacklight_params[:format].nil? || blacklight_params[:format] == 'html' ||
+              blacklight_params[:format] == 'json'
+    solr_parameters[:facet] = false
+  end
+
   def course_reserve_filters(solr_parameters)
     return unless blacklight_params[:f]
     instructor = Array(blacklight_params[:f][:instructor]).first
