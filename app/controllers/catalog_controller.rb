@@ -101,7 +101,6 @@ class CatalogController < ApplicationController
       segments: true
     }
     config.add_facet_field 'language_facet', label: 'Language', limit: true
-    config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true
     config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true
     config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true
     config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, show: false, sort: 'index'
