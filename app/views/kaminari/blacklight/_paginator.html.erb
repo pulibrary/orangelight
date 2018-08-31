@@ -13,11 +13,11 @@
     <%= prev_page_tag %>
     <%= next_page_tag  %>
     <% each_relevant_page do |page| -%>
-      <% if page.left_outer? || page.right_outer? || page.inside_window? -%>
+      <% if page.left_outer? || page.inside_window? -%>
         <%= page_tag page %>
       <% elsif !page.was_truncated? -%>
         <%= gap_tag %>
       <% end -%>
-    <% end -%>  
+    <% end -%>
   </ul>
 <% end -%>
