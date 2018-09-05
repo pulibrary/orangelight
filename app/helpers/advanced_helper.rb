@@ -179,7 +179,7 @@ module BlacklightAdvancedSearch
     # @return [Array<String>]
     def process_query(_params, config)
       if config.advanced_search.nil?
-        Blacklight.logger.error "Failed to parse the advanced search, advanced search config. settings are not accessible for: #{config}"
+        Blacklight.logger.error "Failed to parse the advanced search, config. settings are not accessible for: #{config}"
         return []
       end
 

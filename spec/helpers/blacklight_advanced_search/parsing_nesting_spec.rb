@@ -39,7 +39,7 @@ RSpec.describe BlacklightAdvancedSearch::ParsingNestingParser do
 
       it 'logs an error and returns an empty query' do
         expect(queries).to be_empty
-        expect(Blacklight.logger).to have_received(:error).with(/Failed to parse the advanced search, advanced search config\. settings are not accessible for\:/)
+        expect(Blacklight.logger).to have_received(:error).with(/Failed to parse the advanced search, config\. settings are not accessible for\:/)
       end
     end
   end
