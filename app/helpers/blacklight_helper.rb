@@ -6,10 +6,6 @@ module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior
   require './lib/orangelight/string_functions'
 
-  def default_search_query?(params)
-    params[:q] && params[:search_field] && params[:q].empty? && params[:search_field] == 'all_fields'
-  end
-
   # (see Blacklight::SearchHelper#search_results)
   def search_results(user_params)
     builder = search_builder.with(user_params)
@@ -282,5 +278,17 @@ module BlacklightHelper
     # @return [Boolean]
     def search_parameters?
       blacklight_params[:q].present? || blacklight_params[:f].present? || blacklight_params[:search_field].present?
+    end
+
+    # Determines whether or not this is a default query
+    # @param [ActionController::Parameters] params
+    # @return [Boolean]
+    def default_search_query?(params)
+      params[:q] &&
+        params[:search_field] &&
+        !params[:page] &&
+        !params[:f] &&
+        params[:q].empty? &&
+        params[:search_field] == 'all_fields'
     end
 end
