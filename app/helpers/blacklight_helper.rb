@@ -6,34 +6,6 @@ module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior
   require './lib/orangelight/string_functions'
 
-  def default_search_query?(params)
-    params[:q] && params[:search_field] && params[:q].empty? && params[:search_field] == 'all_fields'
-  end
-
-  # (see Blacklight::SearchHelper#search_results)
-  def search_results(user_params)
-    builder = search_builder.with(user_params)
-    builder.page = user_params[:page] if user_params[:page]
-    builder.rows = (user_params[:per_page] || user_params[:rows]) if user_params[:per_page] || user_params[:rows]
-
-    builder = yield(builder) if block_given?
-    response = if default_search_query?(user_params)
-                 Rails.cache.fetch("#{Time.zone.today.day}/default_search_response", expires_in: 24.hours) do
-                   repository.search(builder)
-                 end
-               else
-                 repository.search(builder)
-               end
-
-    if response.grouped? && grouped_key_for_results
-      [response.group(grouped_key_for_results), []]
-    elsif response.grouped? && response.grouped.length == 1
-      [response.grouped.first, []]
-    else
-      [response, response.documents]
-    end
-  end
-
   def json_field?(field)
     field[:hash]
   end
