@@ -253,6 +253,11 @@ RSpec/ExampleLength:
   Exclude:
     - 'spec/**/*'
 
+RSpec/VerifiedDoubles:
+  Exclude:
+    - 'spec/helpers/blacklight_advanced_search/parsing_nesting_spec.rb'
+    - 'spec/views/catalog/_sort_and_per_page.html.erb_spec.rb'
+
 Rails/UnknownEnv:
   Exclude:
     - 'app/controllers/application_controller.rb'

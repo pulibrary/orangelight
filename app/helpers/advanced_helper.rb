@@ -173,7 +173,16 @@ end
 
 module BlacklightAdvancedSearch
   module ParsingNestingParser
+    # Iterates through the keyword queries and appends each operator the extracting queries
+    # @param [ActiveSupport::HashWithIndifferentAccess] _params
+    # @param [Blacklight::Configuration] config
+    # @return [Array<String>]
     def process_query(_params, config)
+      if config.advanced_search.nil?
+        Blacklight.logger.error "Failed to parse the advanced search, config. settings are not accessible for: #{config}"
+        return []
+      end
+
       queries = []
       ops = keyword_op
       keyword_queries.each do |field, query|
