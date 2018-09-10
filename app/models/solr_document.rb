@@ -43,10 +43,13 @@ class SolrDocument
   use_extension(Blacklight::Document::Ris)
 
   def identifier_data
-    identifiers.each_with_object({}) do |identifier, hsh|
+    values = identifiers.each_with_object({}) do |identifier, hsh|
       hsh[identifier.data_key.to_sym] ||= []
       hsh[identifier.data_key.to_sym] << identifier.value
     end
+
+    values[:'bib-id'] = id unless iiif_manifest_uris.empty?
+    values
   end
 
   def identifiers

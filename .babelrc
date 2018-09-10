@@ -1,5 +1,6 @@
 {
-  "presets": [["es2015", { "modules": false }]],
+  "sourceMaps": true,
+  "presets": [["es2015", { "modules": false }], "stage-3"],
   "env": {
     "test": {
       "plugins": ["transform-es2015-modules-commonjs"]
@@ -8,6 +9,8 @@
   "plugins": [
     "syntax-dynamic-import",
     "transform-object-rest-spread",
+    "syntax-async-functions",
+    "transform-regenerator",
     ["transform-class-properties", { "spec": true }]
   ]
 }
