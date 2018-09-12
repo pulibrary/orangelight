@@ -1,7 +1,15 @@
 {
   "dependencies": {
     "@rails/webpacker": "^3.2.0",
-    "coffeescript": "1.12.7"
+    "apollo-boost": "^0.1.10",
+    "apollo-client": "^2.4.1",
+    "apollo-link-http": "^1.5.4",
+    "babel-eslint": "^9.0.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "coffeescript": "1.12.7",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
+    "unfetch": "^3.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -16,7 +24,7 @@
   },
   "jest": {
     "verbose": true,
-    "testURL":"http://localhost/",
+    "testURL": "http://localhost/",
     "roots": [
       "spec/javascript"
     ],

@@ -53,11 +53,13 @@ gem 'devise', '~> 4.4'
 gem 'devise-guests', '~> 0.5'
 gem 'faraday'
 gem 'faraday-cookie_jar'
+gem 'global'
 gem 'omniauth-cas'
 gem 'solr_wrapper', '~> 1.0'
 gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
 
 # rspec, just like jettywrapper appear necessary for cap currently
+gem 'babel-transpiler'
 gem 'capybara'
 gem 'coveralls', require: false
 gem 'ddtrace'
@@ -67,6 +69,7 @@ gem 'rspec-rails', '~> 3.4'
 gem 'rubocop', '~> 0.49', require: false
 gem 'rubocop-rspec', '~> 1.20.1'
 gem 'rubyzip', '>= 1.2.2'
+gem 'sprockets-es6'
 gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.5.2.2'
 
 gem 'mail_form'

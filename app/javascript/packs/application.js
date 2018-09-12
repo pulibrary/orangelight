@@ -6,5 +6,7 @@
 //
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
+import figgy_thumbnail_manager from '../orangelight/figgy_thumbnail_manager'
 
-import availability_updater from '../orangelight/availability'
+// Ensure that this is available for the DOM
+window.FiggyThumbnailManager = figgy_thumbnail_manager
