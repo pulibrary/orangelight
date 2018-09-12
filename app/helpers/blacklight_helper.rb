@@ -280,15 +280,38 @@ module BlacklightHelper
       blacklight_params[:q].present? || blacklight_params[:f].present? || blacklight_params[:search_field].present?
     end
 
+    # Determines whether or not a query is provided in the request
+    # @param [ActionController::Parameters] params
+    # @return [Boolean]
+    def empty_search_query?(params)
+      params[:q].blank?
+    end
+
+    # Determines whether or not the request is scoped for all fields
+    # @param [ActionController::Parameters] params
+    # @return [Boolean]
+    def all_search_fields_query?(params)
+      params[:search_field] && params[:search_field] == 'all_fields'
+    end
+
+    # Determines whether or not the request is scoped for a specific page number
+    # @param [ActionController::Parameters] params
+    # @return [Boolean]
+    def first_page_query?(params)
+      !params[:page]
+    end
+
+    # Determines whether or not the request facets upon any fields
+    # @param [ActionController::Parameters] params
+    # @return [Boolean]
+    def faceted_query?(params)
+      params[:f]
+    end
+
     # Determines whether or not this is a default query
     # @param [ActionController::Parameters] params
     # @return [Boolean]
     def default_search_query?(params)
-      params[:q] &&
-        params[:search_field] &&
-        !params[:page] &&
-        !params[:f] &&
-        params[:q].empty? &&
-        params[:search_field] == 'all_fields'
+      empty_search_query?(params) && all_search_fields_query?(params) && first_page_query?(params) && !faceted_query?(params)
     end
 end
