@@ -23,7 +23,6 @@ RSpec.describe 'catalog/show' do
       it 'will display one viewer from 2 arks, one is suppressed' do
         visit '/catalog/6868324'
         expect(page.find('#ark_array_id')['data-ark']).to eq('["ark:/88435/2j62s638c", "ark:/88435/t722hb52k"]')
-        expect(page).to render_template(partial: '_viewer_uv')
         expect(page).to have_selector('div#view')
       end
 
@@ -31,7 +30,6 @@ RSpec.describe 'catalog/show' do
         visit '/catalog/6773431'
         expect(page.find('#ark_array_id')['data-ark']).to eq('["ark:/88435/8336h435c", "ark:/88435/4b29b8439"]')
         expect(page).to have_selector('#ark_array_id')
-        expect(page).to render_template(partial: '_viewer_uv')
         expect(page).to have_selector('div#view')
       end
     end
@@ -40,7 +38,6 @@ RSpec.describe 'catalog/show' do
       visit 'catalog/6109323'
       expect(page.find('#ark_array_id')['data-ark']).to eq('["ark:/88435/0v8382995"]')
       expect(page).to have_selector('#ark_array_id')
-      expect(page).to render_template(partial: '_viewer_uv')
       expect(page).to have_selector('div#view')
     end
 
@@ -48,7 +45,6 @@ RSpec.describe 'catalog/show' do
       visit 'catalog/3943643z'
       expect(page.find('#ark_array_id')['data-ark']).to eq('["ark:/88435/np193c809", "ark:/88435/kw52jc00n"]')
       expect(page).to have_selector('#ark_array_id')
-      expect(page).to render_template(partial: '_viewer_uv')
       expect(page).to have_selector('div#view')
       expect(page).to have_selector('div#view_1')
     end

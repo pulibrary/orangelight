@@ -114,6 +114,12 @@ class SolrDocument
     linked_documents.decorated(display_fields: %w[id])
   end
 
+  def ark_pair
+    return [] if full_arks.empty?
+    values = full_arks.map { |url| url.sub('http://arks.princeton.edu/', '') }
+    values[0..1]
+  end
+
   private
 
     def electronic_access_uris
@@ -129,10 +135,12 @@ class SolrDocument
       []
     end
 
+    def full_arks
+      electronic_access_uris.select { |x| x.include?('ark:') }
+    end
+
     def full_ark
-      electronic_access_uris.find { |x| x.include?('ark:') }
-    rescue
-      ''
+      full_arks.first
     end
 
     def identifier_keys

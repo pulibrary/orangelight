@@ -1,0 +1,2 @@
+default:
+  url: <%= ENV['FIGGY_URL'] || 'http://localhost:3000' %>

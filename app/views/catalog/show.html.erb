@@ -36,11 +36,10 @@
       <% end %>
     <% end %>
   <% elsif @document.ark.present? %>
-    <div id="ark_array_id" class="sr-only" data-ark="<%= ark_array %>"></div>
+    <div id="ark_array_id" class="sr-only" data-ark="<%= @document.ark_pair %>"></div>
       <!-- Loading the uv3 figgy viewer, using an ajax call on the solr document arks. -->
       <!-- Currently we display no more than 2 viewers. -->
       <div id="view" class="intrinsic-container intrinsic-container-16x9"></div>
       <div id="view_1" class="intrinsic-container intrinsic-container-16x9"></div>
-      <%= render 'shared/viewer_uv'%> 
   <% end %>
 </div>
