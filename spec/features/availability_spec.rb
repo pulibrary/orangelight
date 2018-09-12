@@ -66,11 +66,7 @@ describe 'Availability' do
     end
   end
 
-  context 'when visited by an indexing bot' do
-    before do
-      page.driver.add_headers('User-Agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 (compatible; AdsBot-Google-Mobile; +http://www.google.com/mobile/adsbot.html)')
-    end
-
+  context 'when visited by an indexing bot', driver: :iphone do
     describe 'viewing a catalog record', js: true do
       before do
         visit '/catalog/3256177'
@@ -93,7 +89,6 @@ describe 'Availability' do
 
     describe 'viewing a record for a holding in a temp location', js: true do
       before do
-        page.driver.add_headers('User-Agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1 (compatible; AdsBot-Google-Mobile; +http://www.google.com/mobile/adsbot.html)')
         visit '/catalog?q=7917192'
       end
 

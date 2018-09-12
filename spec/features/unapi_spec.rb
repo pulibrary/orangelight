@@ -2,26 +2,30 @@
 
 require 'rails_helper'
 
-describe 'Unapi suport' do
+describe 'Unapi support' do
   describe 'Show Page', js: true do
     before do
       stub_holding_locations
-      visit '/catalog/3256177'
     end
     it 'contains an unapi reference in an abbr tag' do
-      expect(page).to have_selector('.unapi-id')
-      expect(page).to have_xpath("//abbr[@title='3256177']")
+      visit '/catalog/3256177'
+      doc = Nokogiri::HTML.parse(page.body)
+
+      expect(doc.css('.unapi-id')).not_to be_empty
+      expect(doc.xpath("//abbr[@title='3256177']")).not_to be_empty
     end
   end
 
   describe 'Search Results Page', js: true do
     before do
       stub_holding_locations
-      visit '/catalog?search_field=all_fields&q='
     end
     it 'contains an unapi reference for every search result' do
-      expect(page.all('.unapi-id').length).to eq 20
-      expect(page).to have_xpath('//abbr[@title]')
+      visit '/catalog?search_field=all_fields&q='
+      doc = Nokogiri::HTML.parse(page.body)
+
+      expect(doc.css('.unapi-id').length).to eq 20
+      expect(doc.xpath('//abbr[@title]')).not_to be_empty
     end
   end
 
