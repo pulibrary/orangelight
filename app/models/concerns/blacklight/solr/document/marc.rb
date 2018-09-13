@@ -22,16 +22,66 @@ module Blacklight
           @_ruby_marc_obj ||= load_marc
         end
 
+        # These are registered by default
+        # @see Blacklight::Solr::Document::MarcExport.register_export_formats
+
         # Generate the string-serialized XML from the remote MARC record
+        # @see Blacklight::Solr::Document::MarcExport#export_as_marcxml
         # @return [String]
         def export_as_marcxml
           return '' unless to_marc
           super
         end
 
+        # @see Blacklight::Solr::Document::MarcExport#export_as_marc
+        # @return [String]
+        def export_as_marc
+          return '' unless to_marc
+          super
+        end
+
+        # @see Blacklight::Solr::Document::MarcExport#export_as_openurl_ctx_kev
+        # @return [String]
+        def export_as_openurl_ctx_kev(format = nil)
+          ctx = to_ctx(format)
+          # send back the encoded string
+          ctx.kev
+        end
+
         # Generate the refworks citation format from the remote MARC record
-        # @return
+        # @see Blacklight::Solr::Document::MarcExport#export_as_refworks_marc_txt
+        # @return [String]
         def export_as_refworks_marc_txt
+          return '' unless to_marc
+          super
+        end
+
+        # These are not registered by default, but still provided as public methods
+
+        # @see Blacklight::Solr::Document::MarcExport#export_as_apa_citation_txt
+        # @return [String]
+        def export_as_apa_citation_txt
+          return '' unless to_marc
+          super
+        end
+
+        # @see Blacklight::Solr::Document::MarcExport#export_as_mla_citation_txt
+        # @return [String]
+        def export_as_mla_citation_txt
+          return '' unless to_marc
+          super
+        end
+
+        # @see Blacklight::Solr::Document::MarcExport#export_as_chicago_citation_txt
+        # @return [String]
+        def export_as_chicago_citation_txt
+          return '' unless to_marc
+          super
+        end
+
+        # @see Blacklight::Solr::Document::MarcExport#export_as_endnote
+        # @return [String]
+        def export_as_endnote
           return '' unless to_marc
           super
         end
@@ -69,12 +119,6 @@ module Blacklight
 
         def std_numbers
           %w[lccn_s isbn_s issn_s oclc_s]
-        end
-
-        def export_as_openurl_ctx_kev(format = nil)
-          ctx = to_ctx(format)
-          # send back the encoded string
-          ctx.kev
         end
 
         def format_to_openurl_genre(format)
@@ -145,8 +189,31 @@ module Blacklight
             ctx
           end
 
+          # Retrieves the bib. ID from the Solr Document
+          # @return [String]
           def marc_source
             @_marc_source ||= fetch(_marc_source_field)
+          end
+
+          # Retrieve the MARC 21 bitstream over the HTTP
+          # @return [MARC::Record]
+          def marc_record_from_marc21
+            return if marc_source.blank?
+            MARC::Record.new_from_marc marc_source
+          end
+
+          # Retrieve the MARC JSON over the HTTP
+          # @return [MARC::Record]
+          def marc_record_from_json
+            return if marc_source.blank?
+
+            begin
+              marc_json = JSON.parse(marc_source)
+            rescue JSON::ParserError => json_error
+              Rails.logger.error "#{self.class}: Failed to parse the MARC JSON: #{json_error}"
+              return
+            end
+            MARC::Record.new_from_hash marc_json
           end
 
           # Construct a MARC::Record using MARC record data retrieved over the HTTP
@@ -158,9 +225,9 @@ module Blacklight
             when 'marcxml'
               marc_record_from_marcxml
             when 'marc21'
-              return MARC::Record.new_from_marc(fetch(_marc_source_field))
+              marc_record_from_marc21
             when 'json'
-              return MARC::Record.new_from_hash(JSON.parse(fetch(_marc_source_field)))
+              marc_record_from_json
             else
               raise UnsupportedMarcFormatType.new("Only marcxml, marc21, and json are supported, this documents format is #{_marc_format_type} and the current extension parameters are #{self.class.extension_parameters.inspect}")
             end
