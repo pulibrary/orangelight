@@ -33,7 +33,7 @@
 
   <% if @model != 'call_numbers' %>
     <ul class="browse">
-        <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
+        <% @orangelight_browsables_sorted.each_with_index do |orangelight_name, i| %>
 
           <% if orangelight_name.id == @match && @exact_match %>
             <li class="alert alert-info clickable-row" data-href="/catalog/?f[<%=@facet%>][]=<%=CGI.escape orangelight_name.label%>">
@@ -73,7 +73,7 @@
     </thead>
 
     <tbody >
-      <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
+      <% @orangelight_browsables_sorted.each_with_index do |orangelight_name, i| %>
         <% if orangelight_name.id == @match && @exact_match %>
           <tr class="alert alert-info clickable-row" data-href="/catalog/<%=orangelight_name.bibid%>">
             <strong>
