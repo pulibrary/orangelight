@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Orangelight::BrowsablesController < ApplicationController
-  # before_action :set_orangelight_browsable, only: [:show]
-
   # GET /orangelight/names
   # GET /orangelight/names.json
   def index
@@ -11,14 +9,14 @@ class Orangelight::BrowsablesController < ApplicationController
     # previous/next page links need to pass
     # manually set rpp
 
-    @model = params[:model].name.demodulize.tableize
-    if params[:rpp].nil?
+    @model = model_table_name
+    if rpp_param.nil?
       @rpp = 50
       @page_link = '?'
     else
       rpp_range = [10, 25, 50, 100]
-      @rpp = if rpp_range.include? params[:rpp].to_i
-               params[:rpp].to_i
+      @rpp = if rpp_range.include? requested_rpp
+               requested_rpp
              else
                50
              end
@@ -27,15 +25,11 @@ class Orangelight::BrowsablesController < ApplicationController
 
     # @start gets the id of the first entry to display on page
     # specific ids are given based on search results
-    @start = params[:start].nil? ? 1 : params[:start].to_i
+    @start = first_model_id
 
-    unless params[:q].nil?
-      search_term = if @model == 'call_numbers'
-                      StringFunctions.cn_normalize(params[:q])
-                    else
-                      params[:q].normalize_em
-                    end
-      search_result = params[:model].where('sort <= ?', search_term).last
+    unless query_param.nil?
+      search_result = model_param.where('sort <= ?', search_term).last
+
       unless search_result.nil?
         @search_result = search_result.label
         @search_term = search_term
@@ -44,16 +38,12 @@ class Orangelight::BrowsablesController < ApplicationController
         @start = search_result.id - 1
         @start -= 1 if @exact_match
         @start = 1 if @start < 1
-        @query = params[:q]
+        @query = query_param
       end
     end
 
     # gets last page of table's results
-    @last_id = if params[:model].last
-                 params[:model].last.id
-               else
-                 1
-               end
+    @last_id = last_model_id
 
     # makes sure no next page link is shown for last page
     @is_last = (@last_id - @rpp + 1) <= @start
@@ -74,18 +64,16 @@ class Orangelight::BrowsablesController < ApplicationController
     @prev = @start - @rpp
     @prev = 1 if @prev < 1
     @next = @start + @rpp
-    @orangelight_browsables = params[:model].where(id: @start..@page_last)
+    @orangelight_browsables = model_param.where(id: @start..@page_last)
 
-    if @model == 'names'
+    if browsing_names?
       @facet = 'author_s'
-    elsif @model == 'subjects'
+    elsif browsing_subjects?
       @facet = 'subject_facet'
-    elsif @model == 'name_titles'
+    elsif browsing_titles?
       @facet = 'name_title_browse_s'
     end
-
-    @list_name = params[:model].name.demodulize.tableize.humanize
-    @list_name = 'author-title headings' if @list_name == 'Name titles'
+    @list_name = list_name
 
     respond_to do |format|
       format.html # index.html.erb
@@ -93,16 +81,109 @@ class Orangelight::BrowsablesController < ApplicationController
     end
   end
 
-  # GET /orangelight/names/1
-  # GET /orangelight/names/1.json
-  # def show
-  # end
-
   private
+
+    # Retrieve the Model mapped to the request parameter
+    # @return [Class]
+    def model_param
+      params[:model]
+    end
+
+    # Generates the name of the table mapped to the model in the request
+    # @return [String]
+    def model_table_name
+      model_name = model_param.name
+      model_class = model_name.demodulize
+      model_class.tableize
+    end
+
+    # Determines whether or not the client is requesting to browse call numbers
+    # @return [Boolean]
+    def browsing_call_numbers?
+      model_table_name == 'call_numbers'
+    end
+
+    # Determines whether or not the client is requesting to browse names
+    # @return [Boolean]
+    def browsing_names?
+      model_table_name == 'names'
+    end
+
+    # Determines whether or not the client is requesting to browse subjects
+    # @return [Boolean]
+    def browsing_subjects?
+      model_table_name == 'subjects'
+    end
+
+    # Determines whether or not the client is requesting to browse titles
+    # @return [Boolean]
+    def browsing_titles?
+      model_table_name == 'name_titles'
+    end
+
+    # Generates the name of the list (based upon the model for the request)
+    # @return [String]
+    def list_name
+      value = model_table_name.humanize
+      return 'author-title headings' if value == 'Name titles'
+      value
+    end
+
+    # Retrieves the ID requested by the client
+    # @return [String]
+    def id_param
+      params[:id]
+    end
+
+    # Retrieves the query transmitted by the client
+    # @return [String]
+    def query_param
+      params[:q]
+    end
+
+    # Retrieves the ID for the first object requested by the client
+    # @return [String]
+    def start_param
+      params[:start]
+    end
+
+    # Retrieves the ID of the first object for this request
+    # @return [Integer]
+    def first_model_id
+      return 1 if start_param.nil?
+      start_param.to_i
+    end
+
+    # Normalizes the query transmitted by the client
+    # @return [String]
+    def search_term
+      return StringFunctions.cn_normalize(query_param) if browsing_call_numbers?
+
+      query_param.normalize_em
+    end
+
+    # Retrieves the ID of the last object for this request
+    # @return [Integer]
+    def last_model_id
+      return model_param.last.id if model_param.last
+      1
+    end
+
+    # Retrieves the requested rows per page (rpp) from the client
+    # @return [String]
+    def rpp_param
+      params[:rpp]
+    end
+
+    # Generates the requested rows per page as an Integer
+    # @return [Integer]
+    def requested_rpp
+      rpp_param.to_i
+    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_orangelight_browsable
-      @orangelight_browsable = params[:model].find(params[:id]) if params[:model]
+      @orangelight_browsable = model_param.find(id_param) if model_param
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
