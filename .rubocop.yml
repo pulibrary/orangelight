@@ -103,6 +103,7 @@ Metrics/LineLength:
     - 'lib/tasks/pulsearch.rake'
     - 'lib/tasks/server.rake'
     - '**/Gemfile'
+    - 'app/controllers/orangelight/browsables_controller.rb'
 
 Metrics/MethodLength:
   Exclude:

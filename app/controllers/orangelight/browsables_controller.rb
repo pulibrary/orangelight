@@ -87,6 +87,12 @@ class Orangelight::BrowsablesController < ApplicationController
     @list_name = params[:model].name.demodulize.tableize.humanize
     @list_name = 'author-title headings' if @list_name == 'Name titles'
 
+    if @model == 'call_numbers'
+      @orangelight_browsables_sorted = Orangelight::CallNumber.sort_by_label_date(@orangelight_browsables.sort)
+    else
+      @orangelight_browsables_sorted = @orangelight_browsables.sort
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @orangelight_browsables }
