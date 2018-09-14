@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 0aed6806eccd09a738c2e43eb4f57215b4c5d98c
+  revision: 9f3ba588687737ab2acd6cd07e7b162f2da2dcfa
   specs:
     requests (0.0.2)
       bootstrap-sass (~> 3.3)
@@ -102,7 +102,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     ast (2.3.0)
-    autoprefixer-rails (8.5.0)
+    autoprefixer-rails (9.1.4)
       execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -175,7 +175,7 @@ GEM
       msgpack
     deprecation (1.0.0)
       activesupport
-    devise (4.4.3)
+    devise (4.5.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 6.0)
@@ -197,7 +197,7 @@ GEM
     factory_bot_rails (4.8.2)
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
-    faraday (0.15.1)
+    faraday (0.15.2)
       multipart-post (>= 1.2, < 3)
     faraday-cookie_jar (0.0.6)
       faraday (>= 0.7.4)
@@ -216,7 +216,7 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httpclient (2.8.3)
-    i18n (1.0.1)
+    i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -268,7 +268,7 @@ GEM
     marc-fastxmlwriter (1.0.0)
       marc (~> 1.0)
     method_source (0.9.0)
-    mini_mime (1.0.0)
+    mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     modernizr-rails (2.7.1)
@@ -279,7 +279,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (4.2.0)
     nio4r (2.3.1)
-    nokogiri (1.8.3)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
@@ -312,7 +312,7 @@ GEM
     rack (2.0.5)
     rack-proxy (0.6.3)
       rack
-    rack-test (1.0.0)
+    rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.1.6)
       actioncable (= 5.1.6)
@@ -386,7 +386,7 @@ GEM
     ruby-progressbar (1.9.0)
     rubyzip (1.2.2)
     safe_yaml (1.0.4)
-    sass (3.5.6)
+    sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
