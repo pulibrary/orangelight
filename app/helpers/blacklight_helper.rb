@@ -13,13 +13,7 @@ module BlacklightHelper
     builder.rows = (user_params[:per_page] || user_params[:rows]) if user_params[:per_page] || user_params[:rows]
 
     builder = yield(builder) if block_given?
-    response = if default_search_query?(user_params)
-                 Rails.cache.fetch("#{Time.zone.today.day}/default_search_response", expires_in: 24.hours) do
-                   repository.search(builder)
-                 end
-               else
-                 repository.search(builder)
-               end
+    response = repository.search(builder)
 
     if response.grouped? && grouped_key_for_results
       [response.group(grouped_key_for_results), []]

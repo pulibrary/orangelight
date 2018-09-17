@@ -27,23 +27,37 @@ class AvailabilityUpdater
   request_availability: ->
     if $(".documents-list").length > 0
       ids = this.record_ids().toArray()
+      return if ids.length < 1
       params = $.param({ids: ids})
       url = "#{@availability_url}?#{params}"
       $.getJSON(url, this.process_records)
+        .fail (jqXHR, textStatus, errorThrown) =>
+          console.error("Failed to retrieve availability data for the bib. records " + ids.join(", ") + ": " + errorThrown)
+
     else if $("*[data-availability-record='true']").length > 0
       id = window.location.pathname.split('/')[2]
       if id.match /^SCSB-\d+/
         url = "#{@availability_url}?scsb_id=#{id.replace /^SCSB-/, ''}"
         $.getJSON(url, this.process_scsb_single)
+          .fail (jqXHR, textStatus, errorThrown) =>
+            console.error("Failed to retrieve availability data for the SCSB record " + id + ": " + errorThrown)
+
       else
         url = "#{@availability_url}?id=#{id}"
         $.getJSON(url, this.process_single)
+          .fail (jqXHR, textStatus, errorThrown) =>
+            console.error("Failed to retrieve availability data for the bib. record " + id + ": " + errorThrown)
+
   scsb_search_availability: ->
     if $(".documents-list").length > 0
       barcodes = this.scsb_barcodes().toArray()
+      return if barcodes.length < 1
       params = $.param({barcodes: barcodes})
       url = "#{@availability_url}?#{params}"
       $.getJSON(url, this.process_barcodes)
+        .fail (jqXHR, textStatus, errorThrown) =>
+          console.error("Failed to retrieve availability data for the SCSB barcodes " + barcodes.join(", ") + ": " + errorThrown)
+
   process_records: (records) =>
     for record_id, holding_records of records
       this.apply_record(record_id, holding_records)
@@ -149,6 +163,9 @@ class AvailabilityUpdater
   get_more_items: (holding_id, holding_label) ->
     url = "#{@availability_url}?mfhd=#{holding_id}"
     req = $.getJSON url
+            .fail (jqXHR, textStatus, errorThrown) =>
+              console.error("Failed to retrieve availability data for the holding ID " + holding_id + ": " + errorThrown)
+
     element = $("*[data-availability-record='true'][data-holding-id='#{holding_id}']")
     req.success (data) ->
       ul = "<ul class=\"item-status\">"
@@ -182,6 +199,9 @@ class AvailabilityUpdater
   get_issues: (holding_id) ->
     url = "#{@availability_url}?mfhd_serial=#{holding_id}"
     req = $.getJSON url
+            .fail (jqXHR, textStatus, errorThrown) =>
+              console.error("Failed to retrieve availability data for the serial holding ID/MFHD " + holding_id + ": " + errorThrown)
+
     element = $("*[data-journal='true'][data-holding-id='#{holding_id}']")
     req.success (data) ->
       if data.length > 1
