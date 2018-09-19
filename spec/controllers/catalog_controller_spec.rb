@@ -62,4 +62,14 @@ RSpec.describe CatalogController do
       expect(response).to redirect_to(solr_document_path('8938641'))
     end
   end
+  describe 'excessive paging' do
+    it 'does not error when paging is reasonable' do
+      get :index, params: { q: 'asdf', page: 2 }
+      expect(response.status).to eq(200)
+    end
+    it 'errors when paging is excessive' do
+      get :index, params: { q: 'asdf', page: 1500 }
+      expect(response.status).to eq(400)
+    end
+  end
 end

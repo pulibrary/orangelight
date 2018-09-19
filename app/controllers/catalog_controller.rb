@@ -479,4 +479,10 @@ class CatalogController < ApplicationController
       'ris' => { content_type: 'application/x-research-info-systems' }
     }
   end
+
+  def index
+    super
+  rescue ActionController::BadRequest
+    render file: Rails.public_path.join('x400.html'), layout: true, status: :bad_request
+  end
 end
