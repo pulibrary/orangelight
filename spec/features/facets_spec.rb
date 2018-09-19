@@ -9,7 +9,7 @@ describe 'Facets' do
     it 'renders only a subset of all the facets on the homepage' do
       visit '/catalog'
       home_facets = page.all('.facet_limit').length
-      visit '/catalog?search_field=all_fields'
+      visit '/catalog?search_field=all_fields&q=eight'
       search_facets = page.all('.facet_limit').length
       expect(home_facets).to be < search_facets
     end

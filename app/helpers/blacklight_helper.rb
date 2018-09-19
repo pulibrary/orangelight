@@ -274,7 +274,7 @@ module BlacklightHelper
     # @param [ActionController::Parameters] params
     # @return [Boolean]
     def search_parameters?(params)
-      params[:q].present? || params[:f].present?
+      !params[:q].nil? || params[:f].present?
     end
 
     # Determines whether or not the user is requesting an excessively high page of results
