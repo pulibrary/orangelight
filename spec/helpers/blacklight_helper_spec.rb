@@ -109,4 +109,34 @@ describe BlacklightHelper do
       expect(helper.truncated_link(document, helper.document_show_link_field(document))).to eq truncated
     end
   end
+
+  describe '#excessive_paging?' do
+    let(:excessive) { 9999 }
+    let(:reasonable) { 123 }
+
+    it 'allows reasonable paging with a search query' do
+      params = { page: reasonable, q: 'anything' }
+      expect(excessive_paging?(params)).to be false
+    end
+
+    it 'allows reasonable paging with a facet query' do
+      params = { page: reasonable, f: 'anything' }
+      expect(excessive_paging?(params)).to be false
+    end
+
+    it 'does not allow paging without a search or facet' do
+      params = { page: reasonable }
+      expect(excessive_paging?(params)).to be true
+    end
+
+    it 'does not allow excessive paging with a search query' do
+      params = { page: excessive, q: 'anything' }
+      expect(excessive_paging?(params)).to be true
+    end
+
+    it 'does not allow excessive paging with a facet query' do
+      params = { page: excessive, f: 'anything' }
+      expect(excessive_paging?(params)).to be true
+    end
+  end
 end

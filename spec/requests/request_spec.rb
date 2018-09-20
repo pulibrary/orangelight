@@ -351,7 +351,7 @@ describe 'blacklight tests' do
     end
 
     it 'All configured facets are requested in Solr within a search' do
-      get '/catalog.json?search_field=all_fields'
+      get '/catalog.json?search_field=all_fields&q=camilla'
       r = JSON.parse(response.body)
       expect(r['response']['facets'].any? { |f| f['name'] == 'location' }).to eq true
       expect(r['response']['facets'].any? { |f| f['name'] == 'instrumentation_facet' }).to eq true

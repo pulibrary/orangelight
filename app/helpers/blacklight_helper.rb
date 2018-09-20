@@ -8,6 +8,8 @@ module BlacklightHelper
 
   # (see Blacklight::SearchHelper#search_results)
   def search_results(user_params)
+    raise ActionController::BadRequest if excessive_paging?(user_params)
+
     builder = search_builder.with(user_params)
     builder.page = user_params[:page] if user_params[:page]
     builder.rows = (user_params[:per_page] || user_params[:rows]) if user_params[:per_page] || user_params[:rows]
@@ -68,7 +70,7 @@ module BlacklightHelper
   end
 
   def only_home_facets(solr_parameters)
-    return if search_parameters?
+    return if search_parameters?(solr_parameters)
     solr_parameters['facet.field'] = home_facets
     solr_parameters['facet.pivot'] = []
   end
@@ -269,43 +271,19 @@ module BlacklightHelper
 
     ##
     # Check if any search parameters have been set
-    # @return [Boolean]
-    def search_parameters?
-      blacklight_params[:q].present? || blacklight_params[:f].present? || blacklight_params[:search_field].present?
-    end
-
-    # Determines whether or not a query is provided in the request
     # @param [ActionController::Parameters] params
     # @return [Boolean]
-    def empty_search_query?(params)
-      params[:q].blank?
+    def search_parameters?(params)
+      !params[:q].nil? || params[:f].present?
     end
 
-    # Determines whether or not the request is scoped for all fields
+    # Determines whether or not the user is requesting an excessively high page of results
     # @param [ActionController::Parameters] params
     # @return [Boolean]
-    def all_search_fields_query?(params)
-      params[:search_field] && params[:search_field] == 'all_fields'
-    end
-
-    # Determines whether or not the request is scoped for a specific page number
-    # @param [ActionController::Parameters] params
-    # @return [Boolean]
-    def first_page_query?(params)
-      !params[:page]
-    end
-
-    # Determines whether or not the request facets upon any fields
-    # @param [ActionController::Parameters] params
-    # @return [Boolean]
-    def faceted_query?(params)
-      params[:f]
-    end
-
-    # Determines whether or not this is a default query
-    # @param [ActionController::Parameters] params
-    # @return [Boolean]
-    def default_search_query?(params)
-      empty_search_query?(params) && all_search_fields_query?(params) && first_page_query?(params) && !faceted_query?(params)
+    def excessive_paging?(params)
+      page = params[:page].to_i || 0
+      return false if page <= 1
+      return false if search_parameters?(params) && page < 1000
+      true
     end
 end
