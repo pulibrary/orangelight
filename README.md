@@ -38,6 +38,10 @@ credentials to database.yml
 ```bash
 rake server
 ```
+Then, in a separate tab, run:
+```
+bin/webpack-dev-server
+```
 
 Deploying with Capistrano
 ------------------
