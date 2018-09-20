@@ -3,7 +3,7 @@
 BorrowDirect::Defaults.html_base_url = 'https://catalog.princeton.edu/borrow-direct'
 
 # Set Relais base URL as a constant for internal use
-RELAIS_BASE = 'https://borrow-direct.relaisd2d.com/service-proxy/?command=mkauth'
+RELAIS_BASE = 'https://bd.relaisd2d.com/?'
 # Set a default BD LibrarySymbol for your library
 BorrowDirect::Defaults.library_symbol = 'PRINCETON'
 

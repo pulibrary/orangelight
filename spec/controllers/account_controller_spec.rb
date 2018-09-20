@@ -68,7 +68,7 @@ RSpec.describe AccountController do
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
       get :borrow_direct_redirect
-      expect(response.location).to match(%r{https:\/\/borrow-direct.relaisd2d.com\/})
+      expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
     end
     it 'Redirect url includes query when present' do
       sign_in(valid_cas_user)
@@ -77,7 +77,7 @@ RSpec.describe AccountController do
         .to_return(status: 200, body: valid_patron_response, headers: {})
       query = 'book title'
       get :borrow_direct_redirect, params: { q: query }
-      expect(response.location).to match(%r{https:\/\/borrow-direct.relaisd2d.com\/})
+      expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
       expect(response.location).to include(CGI.escape(query))
     end
     # For interoperability with umlaut
@@ -88,7 +88,7 @@ RSpec.describe AccountController do
         .to_return(status: 200, body: valid_patron_response, headers: {})
       query = 'book title'
       get :borrow_direct_redirect, params: { query: query }
-      expect(response.location).to match(%r{https:\/\/borrow-direct.relaisd2d.com\/})
+      expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
       expect(response.location).to include(CGI.escape(query))
     end
     it 'Redirects to CAS login page for non-logged in user' do
