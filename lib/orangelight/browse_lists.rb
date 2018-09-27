@@ -21,6 +21,8 @@ module BrowseLists
       # solr_url = 'http://lib-solr1.princeton.edu:8985'
 
       conn = Faraday.new(url: solr_url) do |faraday|
+        faraday.options[:open_timeout] = 2000
+        faraday.options[:timeout] = 2000
         faraday.request  :url_encoded             # form-encode POST params
         faraday.response :logger                  # log requests to STDOUT
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
@@ -64,7 +66,7 @@ module BrowseLists
         end
         resp = conn.get "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax"
         num_docs = JSON.parse(resp.body)['response']['numFound']
-        rows = 1_000_000
+        rows = 500_000
         iterations = num_docs / rows + 1
         start = 0
         cn_fields = "#{facet_field},title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display"
