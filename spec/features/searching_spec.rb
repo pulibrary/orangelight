@@ -40,4 +40,21 @@ describe 'searching' do
       expect(current_url).not_to include 'f_inclusive%5Bformat%5D%5B%5D=Journal'
     end
   end
+  context 'wrong date_range_limit', js: true do
+    it 'advanced search will not raise an error' do
+      visit '/advanced'
+      page.find(:xpath, '//*[@id="range_pub_date_start_sort_begin"]').set '2000'
+      page.find(:xpath, '//*[@id="range_pub_date_start_sort_end"]').set '1900'
+      expect { page.find(:xpath, '//*[@id="advanced-search-submit"]').click }.not_to raise_error
+      sleep 5.seconds
+      expect(page).to have_current_path('/')
+      expect(page).to have_content 'The start year must be before the end year.'
+    end
+    it 'publication year facet will not raise an error' do
+      visit '/?utf8=%E2%9C%93&search_field=all_fields&q=cats&range%5Bpub_date_start_sort%5D%5Bbegin%5D=2000&range%5Bpub_date_start_sort%5D%5Bend%5D=1900&commit=Limit'
+      expect { page }.not_to raise_error
+      expect(page).to have_current_path('/')
+      expect(page).to have_content 'The start year must be before the end year.'
+    end
+  end
 end
