@@ -24,6 +24,13 @@ GIT
       rails
 
 GIT
+  remote: https://github.com/pulibrary/lcsort.git
+  revision: 50a7f363526fe620fc0ed4edefafaa15c68cdc46
+  branch: issues-14-jrgriffiniii-lc-call-number-sort
+  specs:
+    lcsort (0.9.0)
+
+GIT
   remote: https://github.com/pulibrary/requests.git
   revision: 9f3ba588687737ab2acd6cd07e7b162f2da2dcfa
   specs:
@@ -245,7 +252,6 @@ GEM
     kaminari-core (1.1.1)
     launchy (2.4.3)
       addressable (~> 2.3)
-    lcsort (0.9.0)
     library_stdnums (1.6.0)
     libv8 (3.16.14.19)
     lograge (0.9.0)
@@ -518,7 +524,7 @@ DEPENDENCIES
   jquery-datatables-rails (~> 3.3.0)
   jquery-rails
   launchy
-  lcsort (~> 0.9)
+  lcsort!
   library_stdnums
   lograge
   logstash-event

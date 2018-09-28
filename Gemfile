@@ -63,7 +63,7 @@ gem 'babel-transpiler'
 gem 'capybara'
 gem 'coveralls', require: false
 gem 'ddtrace'
-gem 'lcsort', '~>0.9'
+gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
 gem 'rspec-rails', '~> 3.4'
 gem 'rubocop', '~> 0.49', require: false
