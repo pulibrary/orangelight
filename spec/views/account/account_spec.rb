@@ -381,4 +381,33 @@ describe 'Your Account', type: :feature do
       end
     end
   end
+
+  context 'when the user cannot be verified as an account holder' do
+    let(:user) { FactoryBot.create(:valid_princeton_patron) }
+    let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
+    let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
+    let(:response) { instance_double(Faraday::Response) }
+    let(:valid_patron_record_uri) do
+      "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
+    end
+
+    before do
+      allow(response).to receive(:status).and_return(200)
+      allow(response).to receive(:body).and_return(File.read(valid_patron_response))
+      allow(Faraday).to receive(:get).with("#{ENV['bibdata_base']}/patron/#{user.uid}").and_return(response)
+      allow(Faraday).to receive(:get).with(valid_patron_record_uri).and_raise(Faraday::Error::ConnectionFailed, 'connection failed')
+
+      sign_in user
+      visit('/account')
+    end
+
+    it 'displays items with the call number Borrow Direct' do
+      expect(page).not_to have_content I18n.t('blacklight.account.no_blocks')
+      expect(page).not_to have_content I18n.t('blacklight.account.no_pickup_items')
+      expect(page).not_to have_content 'Account demerits'
+      expect(page).not_to have_content I18n.t('blacklight.account.no_fines_fees')
+      expect(page).not_to have_content 'Account information'
+      expect(page).not_to have_content I18n.t('blacklight.account.no_requests')
+    end
+  end
 end

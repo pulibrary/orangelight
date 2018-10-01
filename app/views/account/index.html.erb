@@ -9,14 +9,16 @@
       <li><a href="#items-available">Items available for pickup</a></li>
       <li><a href="#fines-fees">Fines and fees</a></li>
     </ul>
-    <h2 class="section-heading">Patron blocks</h2>
-    <%= render 'blocks' %>
-    <%= render 'patron_info' %>
-    <%= render 'demerits' %>
-    <h2 class="section-heading" id="charged-items">Charged items</h2>
-    <%= render 'charged_items' %>
-    <h2 class="section-heading" id="outstanding-requests">Outstanding requests</h2>
-    <%= render 'request_items' %>
-    <%= render 'fines_fees' %>
+    <% if(@account) %>
+      <h2 class="section-heading">Patron blocks</h2>
+      <%= render 'blocks' %>
+      <%= render 'patron_info' %>
+      <%= render 'demerits' %>
+      <h2 class="section-heading" id="charged-items">Charged items</h2>
+      <%= render 'charged_items' %>
+      <h2 class="section-heading" id="outstanding-requests">Outstanding requests</h2>
+      <%= render 'request_items' %>
+      <%= render 'fines_fees' %>
+    <% end %>
   <% end %>
 </div>
