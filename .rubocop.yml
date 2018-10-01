@@ -48,6 +48,7 @@ Metrics/AbcSize:
     - 'app/services/holding_requests_builder.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'app/services/online_holdings_markup_builder.rb'
+    - 'app/helpers/catalog_helper.rb'
 
 Metrics/BlockNesting:
   Exclude:
@@ -105,6 +106,7 @@ Metrics/LineLength:
     - 'lib/tasks/server.rake'
     - '**/Gemfile'
     - 'app/controllers/orangelight/browsables_controller.rb'
+    - 'app/helpers/catalog_helper.rb'
 
 Metrics/MethodLength:
   Exclude:
