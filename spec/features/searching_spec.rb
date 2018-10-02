@@ -29,6 +29,13 @@ describe 'searching' do
     end
   end
 
+  context 'Availability: On-site by request' do
+    it 'On-site label is green' do
+      visit '/?f%5Baccess_facet%5D%5B%5D=In+the+Library&q=id%3Adsp*&search_field=all_fields'
+      expect(page).to have_selector '#documents > div.document.blacklight-senior-thesis.document-position-0 > div > div.record-wrapper > ul > li.blacklight-holdings > ul > li:nth-child(1) > span.availability-icon.label.label-success'
+    end
+  end
+
   context 'chosen selected values' do
     it 'removes a chosen selected value' do
       visit '/catalog?utf8=%E2%9C%93&f1=all_fields&q3=&f_inclusive%5Bformat%5D%5B%5D=Journal&search_field=advanced&commit=Search'
@@ -40,6 +47,7 @@ describe 'searching' do
       expect(current_url).not_to include 'f_inclusive%5Bformat%5D%5B%5D=Journal'
     end
   end
+
   context 'wrong date_range_limit', js: true do
     it 'advanced search will not raise an error' do
       visit '/advanced'
