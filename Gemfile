@@ -75,7 +75,7 @@ gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.
 gem 'mail_form'
 gem 'string_rtl'
 
-gem 'requests', git: 'https://github.com/pulibrary/requests.git'
+gem 'requests', git: 'https://github.com/pulibrary/requests.git', branch: 'issues-378-jrgriffiniii-mfhd-nil'
 
 gem 'borrow_direct', '~> 1.2.0'
 
