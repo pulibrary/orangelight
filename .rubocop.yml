@@ -49,6 +49,7 @@ Metrics/AbcSize:
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'app/services/online_holdings_markup_builder.rb'
     - 'app/helpers/catalog_helper.rb'
+    - 'app/controllers/catalog_controller.rb'
 
 Metrics/BlockNesting:
   Exclude:
