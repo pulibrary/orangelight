@@ -42,5 +42,24 @@ RSpec.describe BlacklightAdvancedSearch::ParsingNestingParser do
         expect(Blacklight.logger).to have_received(:error).with(/Failed to parse the advanced search, config\. settings are not accessible for\:/)
       end
     end
+
+    context 'there are invalid keyword queries' do
+      let(:keyword_queries) do
+        {
+          'title' => '(Yu pu za shuo) AND ("")',
+          'all_fields' => '(something) OR (anything)'
+        }
+      end
+
+      before do
+        allow(Rails.logger).to receive(:warn)
+      end
+
+      it 'parses only the valid queries and logs a warning' do
+        allow(advanced_search).to receive(:[]).with(:query_parser).and_return('edismax')
+        expect(queries).to eq '_query_:"{!dismax mm=1}something anything" '
+        expect(Rails.logger).to have_received(:warn).with('Failed to parse the query: (Yu pu za shuo) AND (""): Extra input after last repetition at line 1 char 21.')
+      end
+    end
   end
 end
