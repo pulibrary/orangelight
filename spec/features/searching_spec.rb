@@ -65,4 +65,13 @@ describe 'searching' do
       expect(page).to have_content 'The start year must be before the end year.'
     end
   end
+
+  context 'raise flash error if BadRequest', js: true do
+    it 'will display a flash message if there is a BadRequest error' do
+      visit '/catalog/range_limit?%20%20%20%20range_end=1990&%20%20%20%20range_field=pub_date_start_sort&%20%20%20%20range_start=1981'
+      expect { page }.not_to raise_error
+      expect(page).to have_current_path('/')
+      expect(page).to have_content 'This is not a valid request.'
+    end
+  end
 end
