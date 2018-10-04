@@ -20,6 +20,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'config/deploy.rb'
     - 'config/initializers/blacklight_url_helper_behavior.rb'
+    - 'config/environments/**/*'
     - 'spec/views/catalog/_show_availability_sidebar.html.erb_spec.rb'
     - 'node_modules/**/*'
 
@@ -107,6 +108,7 @@ Metrics/LineLength:
     - '**/Gemfile'
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/helpers/catalog_helper.rb'
+    - 'lib/orangelight/middleware/invalid_parameter_handler.rb'
 
 Metrics/MethodLength:
   Exclude:
