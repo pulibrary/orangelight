@@ -186,7 +186,16 @@ module BlacklightAdvancedSearch
       queries = []
       ops = keyword_op
       keyword_queries.each do |field, query|
-        queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
+        query_parser_config = config.advanced_search[:query_parser]
+        begin
+          parsed = ParsingNesting::Tree.parse(query, query_parser_config)
+        rescue Parslet::ParseFailed => parse_failure
+          logger.warn "Failed to parse the query: #{query}: #{parse_failure}"
+          next
+        end
+        local_param = local_param_hash(field, config)
+
+        queries << parsed.to_query(local_param)
         queries << ops.shift
       end
       queries.join(' ')
