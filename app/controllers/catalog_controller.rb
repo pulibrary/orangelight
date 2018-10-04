@@ -495,6 +495,7 @@ class CatalogController < ApplicationController
   end
 
   # @see Blacklight::Catalog#facet
+  # @see https://github.com/projectblacklight/blacklight/blob/v6.13.0/app/controllers/concerns/blacklight/catalog.rb#L68
   # displays values and pagination links for a single facet field
   def facet
     @facet = blacklight_config.facet_fields[params[:id]]
