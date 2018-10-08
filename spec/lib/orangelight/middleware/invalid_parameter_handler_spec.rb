@@ -47,5 +47,25 @@ describe Orangelight::Middleware::InvalidParameterHandler do
         expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request\: Invalid query parameters\: invalid %\-encoding \(%2B%2B%2\) within the environment/)
       end
     end
+
+    context 'when the HTTP request contains an nil facet values list' do
+      let(:query_string) do
+        'f%5Bformat%5D%5B'
+      end
+
+      before do
+        allow(Rails.logger).to receive(:error)
+      end
+
+      it 'returns a 400 response and logs an error' do
+        status, headers, body = invalid_parameter_handler.call(env)
+
+        expect(body.join).to eq('Bad Request')
+        expect(status).to eq(400)
+        expect(headers['Content-Type']).to eq('application/json; charset=UTF-8')
+        expect(headers['Content-Length']).to eq('11')
+        expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request\: Facet field \[format\]\[ has a nil value within the environment nil/)
+      end
+    end
   end
 end
