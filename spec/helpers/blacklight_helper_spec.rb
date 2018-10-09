@@ -138,6 +138,11 @@ describe BlacklightHelper do
       params = { page: excessive, f: 'anything' }
       expect(excessive_paging?(params)).to be true
     end
+
+    it 'allows paging for advanced search' do
+      params = { page: reasonable, search_field: 'advanced' }
+      expect(excessive_paging?(params)).to be false
+    end
   end
 
   describe '#user_params_valid' do
