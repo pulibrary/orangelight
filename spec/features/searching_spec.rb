@@ -74,4 +74,12 @@ describe 'searching' do
       expect(page).to have_content 'This is not a valid request.'
     end
   end
+
+  context 'with an invalid field list parameter in the advanced search' do
+    it 'will return results without an error' do
+      visit '/catalog?q1=NSF%20Series&search_field=advanced&f1=in_series2121121121212.1'
+      expect { page }.not_to raise_error
+      expect(page).to have_content 'No results found for your search'
+    end
+  end
 end

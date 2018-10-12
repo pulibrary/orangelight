@@ -193,10 +193,13 @@ module BlacklightAdvancedSearch
           Blacklight.logger.warn "Failed to parse the query: #{query}: #{parse_failure}"
           next
         end
-        local_param = local_param_hash(field, config)
 
-        queries << parsed.to_query(local_param)
-        queries << ops.shift
+        # Test if the field is valid
+        if config.search_fields[field]
+          local_param = local_param_hash(field, config)
+          queries << parsed.to_query(local_param)
+          queries << ops.shift
+        end
       end
       queries.join(' ')
     end
@@ -219,31 +222,37 @@ module BlacklightAdvancedSearch
   module RenderConstraintsOverride
     def guided_search(my_params = params)
       constraints = []
-      if my_params[:q1].present?
-        label = search_field_def_for_key(my_params[:f1])[:label]
-        query = my_params[:q1]
-        constraints << render_constraint_element(
-          label, query,
-          remove: search_catalog_path(remove_guided_keyword_query(%i[f1 q1], my_params))
-        )
+      if my_params[:q1].present? && my_params[:f1].present?
+        label = search_field_def_for_key(my_params[:f1]).try(:label)
+        if label
+          query = my_params[:q1]
+          constraints << render_constraint_element(
+            label, query,
+            remove: search_catalog_path(remove_guided_keyword_query(%i[f1 q1], my_params))
+          )
+        end
       end
-      if my_params[:q2].present?
-        label = search_field_def_for_key(my_params[:f2])[:label]
-        query = my_params[:q2]
-        query = 'NOT ' + my_params[:q2] if my_params[:op2] == 'NOT'
-        constraints << render_constraint_element(
-          label, query,
-          remove: search_catalog_path(remove_guided_keyword_query(%i[f2 q2 op2], my_params))
-        )
+      if my_params[:q2].present? && my_params[:f2].present?
+        label = search_field_def_for_key(my_params[:f2]).try(:label)
+        if label
+          query = my_params[:q2]
+          query = 'NOT ' + my_params[:q2] if my_params[:op2] == 'NOT'
+          constraints << render_constraint_element(
+            label, query,
+            remove: search_catalog_path(remove_guided_keyword_query(%i[f2 q2 op2], my_params))
+          )
+        end
       end
-      if my_params[:q3].present?
-        label = search_field_def_for_key(my_params[:f3])[:label]
-        query = my_params[:q3]
-        query = 'NOT ' + my_params[:q3] if my_params[:op3] == 'NOT'
-        constraints << render_constraint_element(
-          label, query,
-          remove: search_catalog_path(remove_guided_keyword_query(%i[f3 q3 op3], my_params))
-        )
+      if my_params[:q3].present? && my_params[:f3].present?
+        label = search_field_def_for_key(my_params[:f3]).try(:label)
+        if label
+          query = my_params[:q3]
+          query = 'NOT ' + my_params[:q3] if my_params[:op3] == 'NOT'
+          constraints << render_constraint_element(
+            label, query,
+            remove: search_catalog_path(remove_guided_keyword_query(%i[f3 q3 op3], my_params))
+          )
+        end
       end
       constraints
     end

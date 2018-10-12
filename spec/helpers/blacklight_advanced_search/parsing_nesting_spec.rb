@@ -19,6 +19,7 @@ RSpec.describe BlacklightAdvancedSearch::ParsingNestingParser do
 
     before do
       allow(config).to receive(:advanced_search).and_return(advanced_search)
+      allow(config).to receive(:search_fields).and_return(keyword_queries)
       allow(self).to receive(:local_param_hash).with('all_fields', config).and_return({})
       allow(self).to receive(:local_param_hash).with('title', config).and_return("spellcheck.dictionary": 'title', qf: '$title_qf', pf: '$title_pf')
       allow(self).to receive(:keyword_op).and_return([])
