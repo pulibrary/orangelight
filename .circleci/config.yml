@@ -4,7 +4,7 @@ jobs:
 
     # Primary command image where all commands run
     docker:
-      - image: circleci/ruby:2.4.2-node-browsers
+      - image: circleci/ruby:2.4.4-node-browsers
         environment:
           RAILS_ENV: test
           ORANGELIGHT_HOST: localhost
