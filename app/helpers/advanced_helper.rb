@@ -190,7 +190,7 @@ module BlacklightAdvancedSearch
         begin
           parsed = ParsingNesting::Tree.parse(query, query_parser_config)
         rescue Parslet::ParseFailed => parse_failure
-          logger.warn "Failed to parse the query: #{query}: #{parse_failure}"
+          Blacklight.logger.warn "Failed to parse the query: #{query}: #{parse_failure}"
           next
         end
         local_param = local_param_hash(field, config)
