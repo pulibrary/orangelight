@@ -25,20 +25,20 @@
           <button class="btn btn-default" data-toggle="dropdown"><span class="icon-share" aria-hidden="true"></span> Send <span class="hidden-xs hidden-sm">to <span class="caret"></span></span></button>
           <ul class="dropdown-menu" role="menu">
             <li class="sms">
-              <%= link_to "SMS", sms_solr_document_path(:id => @document), {:id => 'smsLink', :data => {:ajax_modal => "trigger"}, class: "icon-mobile"} %>
+              <%= link_to "SMS", sms_solr_document_path(:id => @document), {:id => 'smsLink', :data => {:ajax_modal => "trigger"}, class: "icon-mobile", rel: 'nofollow'} %>
             </li>
             <li class="email">
-              <%= link_to "Email", email_solr_document_path(:id => @document), {:id => 'emailLink', :data => {:ajax_modal => "trigger"}, class: "icon-email"} %>
+              <%= link_to "Email", email_solr_document_path(:id => @document), {:id => 'emailLink', :data => {:ajax_modal => "trigger"}, class: "icon-email", rel: 'nofollow'} %>
             </li>
             <% if @document.voyager_record? %>
               <li class="endnote">
-                <%= link_to "EndNote", solr_document_path(@document, :format => 'endnote'), class: "icon-external" %>
+                <%= link_to "EndNote", solr_document_path(@document, :format => 'endnote'), rel: 'nofollow', class: "icon-external" %>
               </li>
               <li class="refworks">
-                <%= link_to "RefWorks", refworks_export_url({url: polymorphic_url(url_for_document(@document), format: :refworks_marc_txt, only_path: false)}), class: "icon-external", :target => "_blank"  %>
+                <%= link_to "RefWorks", refworks_export_url({url: polymorphic_url(url_for_document(@document), format: :refworks_marc_txt, only_path: false)}), rel: 'nofollow', class: "icon-external", :target => "_blank"  %>
               </li>
               <li class="ris">
-              <%= link_to 'RIS', solr_document_path(@document, :format => 'ris'), class: "icon-external" %>
+              <%= link_to 'RIS', solr_document_path(@document, :format => 'ris'), rel: 'nofollow', class: "icon-external" %>
               </li>
             <% end %>
             <li class="print">
