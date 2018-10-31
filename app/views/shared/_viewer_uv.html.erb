@@ -27,14 +27,14 @@
                         iframeUv3View[i] = document.createElement("iframe");
                         iframeUv3View[i].setAttribute("allowFullScreen", "true");
                         iframeUv3View[i].id = "iframe";
-                        iframeUv3View[i].src = "https://figgy.princeton.edu/uv/uv#?manifest=" + result[i];
+                        iframeUv3View[i].src = "https://figgy-staging.princeton.edu/uv/uv#?manifest=" + result[i];
                         document.getElementById("view").appendChild(iframeUv3View[i]);
                     } else {
                         arkOnline = document.querySelectorAll('#availability > div.location--panel.location--online > div > div.panel-body > div > ul > div.electronic-access');
                         iframeUv3View[i] = document.createElement("iframe");
                         iframeUv3View[i].setAttribute('allowFullScreen', 'true');
                         iframeUv3View[i].id = "iframe_" + i;
-                        iframeUv3View[i].src = "https://figgy.princeton.edu/uv/uv#?manifest=" + result[i];
+                        iframeUv3View[i].src = "https://figgy-staging.princeton.edu/uv/uv#?manifest=" + result[i];
                         document.getElementById("view_" + i).appendChild(iframeUv3View[i]);
                     }
             }
@@ -43,7 +43,7 @@
                     for (i = 0; i < ark_length; i++) {
                         (function(i){
                         oReq[i] = new XMLHttpRequest();
-                        oReq[i].open("GET", "https://figgy.princeton.edu/iiif/lookup/" + ark_array[i] + "?no_redirect=true", true);
+                        oReq[i].open("GET", "https://figgy-staging.princeton.edu/iiif/lookup/" + ark_array[i] + "?no_redirect=true", true);
                         oReq[i].onreadystatechange = function () {
                             if (oReq[i].readyState == 4) {
                                 if (oReq[i].status == 200) {
