@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe BlacklightHelper do
-  let(:blacklight_params) {}
+  let(:blacklight_params) { {} }
 
   before do
     allow(self).to receive(:blacklight_params).and_return(blacklight_params)
@@ -120,7 +120,8 @@ describe BlacklightHelper do
     end
 
     it 'allows reasonable paging with a facet query' do
-      params = { page: reasonable, f: 'anything' }
+      params = { page: reasonable }
+      blacklight_params[:f] = 'anything'
       expect(excessive_paging?(params)).to be false
     end
 
@@ -135,7 +136,8 @@ describe BlacklightHelper do
     end
 
     it 'does not allow excessive paging with a facet query' do
-      params = { page: excessive, f: 'anything' }
+      params = { page: excessive }
+      blacklight_params[:f] = 'anything'
       expect(excessive_paging?(params)).to be true
     end
 
