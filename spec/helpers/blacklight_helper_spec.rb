@@ -141,6 +141,15 @@ describe BlacklightHelper do
       expect(excessive_paging?(params)).to be true
     end
 
+    context 'with nil blacklight_params' do
+      let(:blacklight_params) {}
+
+      it 'does not error if blacklight_params is blank' do
+        params = { page: excessive }
+        expect(excessive_paging?(params)).to be true
+      end
+    end
+
     it 'allows paging for advanced search' do
       params = { page: reasonable, search_field: 'advanced' }
       expect(excessive_paging?(params)).to be false
