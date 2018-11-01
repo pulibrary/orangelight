@@ -110,52 +110,6 @@ describe BlacklightHelper do
     end
   end
 
-  describe '#excessive_paging?' do
-    let(:excessive) { 9999 }
-    let(:reasonable) { 123 }
-
-    it 'allows reasonable paging with a search query' do
-      params = { page: reasonable, q: 'anything' }
-      expect(excessive_paging?(params)).to be false
-    end
-
-    it 'allows reasonable paging with a facet query' do
-      params = { page: reasonable }
-      blacklight_params[:f] = 'anything'
-      expect(excessive_paging?(params)).to be false
-    end
-
-    it 'does not allow paging without a search or facet' do
-      params = { page: reasonable }
-      expect(excessive_paging?(params)).to be true
-    end
-
-    it 'does not allow excessive paging with a search query' do
-      params = { page: excessive, q: 'anything' }
-      expect(excessive_paging?(params)).to be true
-    end
-
-    it 'does not allow excessive paging with a facet query' do
-      params = { page: excessive }
-      blacklight_params[:f] = 'anything'
-      expect(excessive_paging?(params)).to be true
-    end
-
-    context 'with nil blacklight_params' do
-      let(:blacklight_params) {}
-
-      it 'does not error if blacklight_params is blank' do
-        params = { page: excessive }
-        expect(excessive_paging?(params)).to be true
-      end
-    end
-
-    it 'allows paging for advanced search' do
-      params = { page: reasonable, search_field: 'advanced' }
-      expect(excessive_paging?(params)).to be false
-    end
-  end
-
   describe '#user_params_valid' do
     it 'will raise a BadRequest for params key leading and trailing whitespaces' do
       params['   range_end'] = '1990'

@@ -14,7 +14,6 @@ module BlacklightHelper
   end
 
   def search_results(user_params)
-    raise ActionController::BadRequest if excessive_paging?(user_params)
     user_params_valid(user_params)
 
     builder = search_builder.with(user_params)
@@ -73,12 +72,6 @@ module BlacklightHelper
     solr_parameters[:fl] = 'id,score,author_display,marc_relator_display,format,pub_created_display,'\
                            'title_display,title_vern_display,isbn_s,oclc_s,lccn_s,holdings_1display,'\
                            'electronic_access_1display,cataloged_tdt,series_display'
-  end
-
-  def only_home_facets(solr_parameters)
-    return if search_parameters?(solr_parameters)
-    solr_parameters['facet.field'] = home_facets
-    solr_parameters['facet.pivot'] = []
   end
 
   # only fetch facets when an html page is requested
@@ -272,24 +265,4 @@ module BlacklightHelper
     label = index_presenter(doc).label(field, opts).truncate(length).html_safe
     link_to label, url_for_document(doc), document_link_params(doc, opts)
   end
-
-  private
-
-    ##
-    # Check if any search parameters have been set
-    # @param [ActionController::Parameters] params
-    # @return [Boolean]
-    def search_parameters?(params)
-      !params[:q].nil? || (blacklight_params && blacklight_params[:f].present?) || params[:search_field] == 'advanced'
-    end
-
-    # Determines whether or not the user is requesting an excessively high page of results
-    # @param [ActionController::Parameters] params
-    # @return [Boolean]
-    def excessive_paging?(params)
-      page = params[:page].to_i || 0
-      return false if page <= 1
-      return false if search_parameters?(params) && page < 1000
-      true
-    end
 end
