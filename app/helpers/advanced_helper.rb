@@ -58,6 +58,16 @@ module AdvancedHelper
     locations.sort.to_h
   end
 
+  def generate_solr_fq
+    filters.map do |solr_field, value_list|
+      value_list = value_list.values if value_list.is_a?(Hash)
+
+      "#{solr_field}:(" +
+        Array(value_list).collect { |v| '"' + v.gsub('"', '\"') + '"' }.join(' OR  ') +
+        ')'
+    end
+  end
+
   private
 
     def add_holding_loc(item, holding_loc, locations)
