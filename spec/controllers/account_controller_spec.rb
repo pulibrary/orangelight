@@ -75,10 +75,10 @@ RSpec.describe AccountController do
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
-      query = 'book title'
+      query = 'a book title'
       get :borrow_direct_redirect, params: { q: query }
       expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
-      expect(response.location).to include(CGI.escape(query))
+      expect(response.location).to include('a%20book%20title')
     end
     # For interoperability with umlaut
     it 'Redirect url includes query when present' do
@@ -86,10 +86,10 @@ RSpec.describe AccountController do
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
-      query = 'book title'
+      query = 'a book title'
       get :borrow_direct_redirect, params: { query: query }
       expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
-      expect(response.location).to include(CGI.escape(query))
+      expect(response.location).to include('a%20book%20title')
     end
     it 'Redirects to CAS login page for non-logged in user' do
       get :borrow_direct_redirect

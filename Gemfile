@@ -77,7 +77,7 @@ gem 'string_rtl'
 
 gem 'requests', git: 'https://github.com/pulibrary/requests.git'
 
-gem 'borrow_direct', '~> 1.2.0'
+gem 'borrow_direct', git: 'https://github.com/pulibrary/borrow_direct.git', branch: 'generate_query_encoding_fix'
 
 gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'blacklight_6'
 
