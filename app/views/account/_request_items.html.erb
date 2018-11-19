@@ -1,4 +1,9 @@
-<%= form_tag('/account/cancel', remote: true, id: "request-cancel") do %>
+<h2 class="section-heading" id="requests">Requested items</h2>
+
+<%= form_tag('/account/cancel', remote: true, id: "request-cancel", class: "table--overflow") do %>
+  <%= render 'available_items' %>
+
+  <h3 class="section-heading" id="outstanding-requests">Outstanding requests</h3>
   <% if (!@account.request_items.nil?) %>
     <table class="table table-striped table-bordered account--requests">
       <thead>
@@ -30,7 +35,6 @@
   <% else %>
     <p><%= I18n.t('blacklight.account.no_requests') %></p>
   <% end %>
-  <%= render 'available_items' %>
   <% if (!@account.request_items.nil?) or (!@account.avail_items.nil?) %>
     <%= button_tag "Cancel requests", class: 'btn btn-primary', data: { disable_with: "Submitting cancellation request <span class='icon-spinner pulse'></span>" } %>
   <% end %>

@@ -8,6 +8,10 @@ table {
   caption {
     color: $black;
   }
+
+  th {
+    font-weight: normal;
+  }
 }
 
 .browse thead {
@@ -23,21 +27,6 @@ table {
   }
 }
 
-.account--charged_items thead {
-  th {
-    // font-family: Arial, sans-serif;
-    font-weight: 700;
-
-    &:nth-child(4) {
-      min-width: 95px;
-    }
-
-    &:nth-child(6) {
-      min-width: 140px;
-    }
-  }
-}
-
 td {
   padding: 10px 15px;
   vertical-align: top;
@@ -48,13 +37,23 @@ td {
 }
 
 @media (max-width: $bp-medium) {
+  .table--overflow {
+    overflow: auto;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .table-bordered {
+    border-left: 0;
+    border-right: 0;
+  }
+
   /* Force table to not be like tables anymore */
   .browse--call-number,
-  .table.account--charged_items,
   .table.account--demerits,
   .table.account--fines,
-  .table.account--requests,
-  .table.account--available_items,
   .table.account--blocks {
     table, thead, tbody, th, td, tr {
       display: block;
@@ -103,11 +102,6 @@ td {
       font-weight: 700;
       font-family: Arial, sans-serif;
     }
-  }
-
-  .table-bordered,
-  .table-bordered > tbody > tr > td {
-    border: 0;
   }
 }
 

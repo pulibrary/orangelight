@@ -1,0 +1,50 @@
+.blacklight-account {
+  .account--patron_info {
+
+    dt,
+    dd {
+      display: inline;
+      font-weight: inherit;
+    }
+
+    dt:after {
+      content: ":";
+    }
+  }
+
+  .account--sidebar {
+    padding-left: 0;
+  }
+
+  .account--main {
+    padding-right: 0;
+  }
+
+  @media (max-width: $bp-medium) {
+    .account--sidebar,
+    .account--main {
+      padding: 0;
+    }
+  }
+
+  .account--sidebar .nav {
+    margin-bottom: 1em;
+
+    li {
+      float: none;
+    }
+  }
+
+  .page-heading {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    font-size: 1.1em;
+  }
+
+  .item--due {
+    min-width: 145px;
+  }
+}
