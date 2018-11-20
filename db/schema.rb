@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110113442) do
+ActiveRecord::Schema.define(version: 20181120150710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20170110113442) do
     t.text "bibid"
     t.string "holding_id"
     t.string "location"
+    t.index ["label"], name: "index_orangelight_call_numbers_on_label"
     t.index ["sort"], name: "index_orangelight_call_numbers_on_sort"
   end
 
