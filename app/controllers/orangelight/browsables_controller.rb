@@ -28,7 +28,7 @@ class Orangelight::BrowsablesController < ApplicationController
     @start = first_model_id
 
     unless query_param.nil?
-      search_result = model_param.where('sort <= ?', search_term).last
+      search_result = model_param.where('sort <= ?', search_term).order('sort').last
 
       unless search_result.nil?
         @search_result = search_result.label
