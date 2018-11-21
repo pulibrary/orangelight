@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181120150710) do
+ActiveRecord::Schema.define(version: 20181121002728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20181120150710) do
     t.integer "count"
     t.text "sort"
     t.string "dir"
+    t.index ["id", "sort"], name: "index_orangelight_names_on_id_and_sort"
     t.index ["sort"], name: "index_orangelight_names_on_sort"
   end
 
