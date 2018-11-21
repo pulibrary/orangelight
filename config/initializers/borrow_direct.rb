@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-BorrowDirect::Defaults.html_base_url = 'https://catalog.princeton.edu/borrow-direct'
+bd_base_url = "#{ENV['APPLICATION_HOST_PROTOCOL']}://#{ENV['APPLICATION_HOST']}" || 'http://localhost:3000'
+BorrowDirect::Defaults.html_base_url = "#{bd_base_url}/borrow-direct"
 
 # Set Relais base URL as a constant for internal use
 RELAIS_BASE = 'https://bd.relaisd2d.com/?'

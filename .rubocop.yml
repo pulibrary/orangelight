@@ -96,6 +96,7 @@ Metrics/LineLength:
     - 'app/models/concerns/blacklight/document/dublin_core.rb'
     - 'app/models/concerns/blacklight/document/ris.rb'
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
+    - 'config/initializers/borrow_direct.rb'
     - 'config/initializers/devise.rb'
     - 'config/initializers/blacklight_folders.rb'
     - 'config/initializers/requests_initializer.rb'
