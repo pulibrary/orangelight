@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/borrow_direct.git
-  revision: 48984922eb5679a18e8b463e2cc43e801da04e97
+  revision: bef881cf56a6e15052345e9f088730f8ac28b20c
   branch: generate_query_encoding_fix
   specs:
     borrow_direct (1.2.0)
