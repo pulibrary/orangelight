@@ -1,24 +1,32 @@
 <%= render 'shared/start_over_row' %>
 <div class="col-md-12">
-  <h1 class="page-heading"><%= I18n.t('blacklight.header_links.account_page') %></h1>
-  <p>If you have questions, please email <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a> or call (609) 258-3202.</p>
+  <h1 class="page-heading"><%= @patron["first_name"] %> <%= @patron["last_name"] %>'s account</h1>
+  <dl class="account--patron_info">
+    <dt>Barcode</dt>
+    <dd><%= @patron["barcode"] %></dd>
+  </dl>
+
+  <div class="col-md-3 account--sidebar">
   <% if(@patron) %>
     <ul class="nav nav-pills">
       <li><a href="#charged-items">Charged items</a></li>
-      <li><a href="#outstanding-requests">Outstanding requests</a></li>
       <li><a href="#items-available">Items available for pickup</a></li>
+      <li><a href="#outstanding-requests">Outstanding requests</a></li>
       <li><a href="#fines-fees">Fines and fees</a></li>
     </ul>
+  </div>
+  <div class="col-md-9 account--main">
+    <p>If you have questions, please email <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a> or call (609) 258-3202.</p>
     <% if(@account) %>
       <h2 class="section-heading">Patron blocks</h2>
       <%= render 'blocks' %>
-      <%= render 'patron_info' %>
       <%= render 'demerits' %>
       <h2 class="section-heading" id="charged-items">Charged items</h2>
       <%= render 'charged_items' %>
-      <h2 class="section-heading" id="outstanding-requests">Outstanding requests</h2>
+      <h2 class="section-heading" id="requests">Requested items</h2>
       <%= render 'request_items' %>
       <%= render 'fines_fees' %>
     <% end %>
+  </div>
   <% end %>
 </div>

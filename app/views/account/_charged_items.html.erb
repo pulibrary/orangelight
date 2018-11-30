@@ -1,14 +1,13 @@
 <% if (!@account.charged_items.nil?) %>
-  <%= form_tag('/account/renew', remote: true, id: "item-renew") do %>
+  <%= form_tag('/account/renew', remote: true, id: "item-renew", class: "table--overflow") do %>
     <table class="table table-striped table-bordered account--charged_items">
       <thead>
         <tr>
-          <th><% if (!@account.has_blocks?) %><label><input type="checkbox" id="select-all-renew"/> <span>Select all</span></label><% end %></th>
+          <th><% if (!@account.has_blocks?) %><label><input type="checkbox" id="select-all-renew"/> <span class="sr-only">Select all</span></label><% end %></th>
           <th>Item</th>
           <th>Call number</th>
-          <th>Status</th>
           <th>Due date</th>
-          <th>Message</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
@@ -29,16 +28,12 @@
             </td>
             <td><%= item["title"] %></td>
             <td><%= charged_item_callnum(item) %></td>
-            <td>
-              <em>
-                <%= item_status_to_label(item) %>
-              </em>
-            </td>
-            <td>
+            <td class="item--due">
               <%= format_date(item['dueDate']) %>
             </td>
             <td>
               <span class="item--messages">
+                <em><%= item_status_to_label(item) %></em>
                 <%= message_status(item) %>
                 <%= renew_status(item) %>
               </span>
