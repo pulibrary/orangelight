@@ -1,4 +1,3 @@
-<h2 class="section-heading" id="charged-items">Charged items</h2>
 <% if (!@account.charged_items.nil?) %>
   <%= form_tag('/account/renew', remote: true, id: "item-renew", class: "table--overflow") do %>
     <table class="table table-striped table-bordered account--charged_items">
