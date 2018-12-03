@@ -40,8 +40,8 @@ class BookmarksController < CatalogController
     def csv_fields
       {
         id: 'ID',
-        title_display: 'Title',
-        author_citation_display: 'Author',
+        title_citation_display: 'Title',
+        author_display: 'Author',
         format: 'Format',
         language_facet: 'Language',
         pub_citation_display: 'Published/Created',
