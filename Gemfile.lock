@@ -315,7 +315,7 @@ GEM
       byebug (~> 9.1)
       pry (~> 0.10)
     public_suffix (3.0.1)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-proxy (0.6.3)
       rack
     rack-test (1.1.0)
