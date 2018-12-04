@@ -111,6 +111,7 @@ Metrics/LineLength:
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/helpers/catalog_helper.rb'
     - 'lib/orangelight/middleware/invalid_parameter_handler.rb'
+    - 'app/models/solr_document.rb'
 
 Metrics/MethodLength:
   Exclude:

@@ -289,3 +289,25 @@ a:active.toggle {
             transform: rotate(359deg);
   }
 }
+
+.glyphicon-zoom-in {
+    top: -1px;
+    font-size: 0.25em;
+    position: absolute;
+    right: 0px; 
+    bottom: 0px;
+}
+
+.close-white {
+    color: #000000;
+    opacity: 1;
+}
+
+.modal-header-viewer {
+    border-bottom: 1px #3e3b3b;
+    padding: 5px;
+}
+
+.modal-body-viewer {
+    padding: 5px;
+}
