@@ -40,8 +40,8 @@ class BookmarksController < CatalogController
     def csv_fields
       {
         id: 'ID',
-        title_citation_display: 'Title',
-        author_display: 'Author',
+        title_citation_display: ['Title', 'Title (Original Script)'],
+        author_display: ['Author', 'Author (Original Script)'],
         format: 'Format',
         language_facet: 'Language',
         pub_citation_display: 'Published/Created',
@@ -56,10 +56,20 @@ class BookmarksController < CatalogController
 
     def csv_output
       CSV.generate(csv_bom, headers: true) do |csv|
-        csv << csv_fields.values
+        csv << csv_fields.values.flatten
         @documents.each do |doc|
-          csv << csv_fields.keys.map { |field| Array(doc[field]).join('; ') }
+          csv << csv_fields.keys.map { |field| csv_values(doc, field) }.flatten
         end
       end
+    end
+
+    def csv_values(doc, field)
+      csv_fields[field].is_a?(Array) ? two_values(doc[field]) : Array(doc[field]).join('; ')
+    end
+
+    def two_values(arr)
+      values = arr || ['', '']
+      values << '' if values.length == 1
+      values.map { |v| v.chomp(' /') }
     end
 end
