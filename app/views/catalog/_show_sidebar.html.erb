@@ -1,5 +1,9 @@
 <%= content_tag(:div, class: "document-thumbnail", data: @document.identifier_data) do %>
-  <div class="default"></div>
+  <div class="default">
+    <% if @document.iiif_manifest_uris.present? || @document.ark.present? %>
+      <a href="#viewer-modal", data-toggle="modal"><span class="glyphicon glyphicon-zoom-in"></span></a>
+    <% end %>
+  </div>
 <% end %>
 
 <% unless @document.more_like_this.empty? %>
