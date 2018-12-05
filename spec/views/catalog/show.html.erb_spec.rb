@@ -10,22 +10,22 @@ RSpec.describe 'catalog/show' do
   context 'when entries describe a scanned resource published using an ARK', js: true do
     it 'renders a viewer' do
       visit '/catalog/4609321'
-      expect(page).to have_selector('div#viewer-1')
+      expect(page).to have_selector('div#view')
     end
   end
 
   context 'when entries describe a scanned map published using an ARK', js: true do
     it 'renders a viewer' do
       visit 'catalog/6109323'
-      expect(page).to have_selector('div#viewer-1')
+      expect(page).to have_selector('div#view')
     end
   end
 
   context 'when entries describe resources published using multiple ARKs', js: true do
     it 'renders multiple viewers' do
       visit '/catalog/3943643'
-      expect(page).to have_selector('div#viewer-1')
-      expect(page).to have_selector('div#viewer-2')
+      expect(page).to have_selector('div#view')
+      expect(page).to have_selector('div#view_1')
     end
   end
 
@@ -33,13 +33,13 @@ RSpec.describe 'catalog/show' do
     it 'will display only one viewer for the entire set' do
       visit '/catalog/6868324'
 
-      expect(page).to have_selector('div#viewer-1')
-      expect(page).not_to have_selector('div#viewer-2')
+      expect(page).to have_selector('div#view')
+      expect(page).not_to have_selector('div#view_1')
 
       visit '/catalog/6773431'
 
-      expect(page).to have_selector('div#viewer-1')
-      expect(page).not_to have_selector('div#viewer-2')
+      expect(page).to have_selector('div#view')
+      expect(page).not_to have_selector('div#view_1')
     end
   end
 

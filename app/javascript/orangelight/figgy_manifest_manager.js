@@ -33,13 +33,17 @@ class FiggyViewer {
     return elements[this.idx]
   }
 
+  buildViewerId() {
+    return this.idx == 0 ? 'view' : `view_${this.idx}`
+  }
+
   updateArkLinkElement() {
     const arkLinkElement = this.getArkLinkElement()
     if (!arkLinkElement) {
       return
     }
 
-    arkLinkElement.href = `#viewer-${this.idx + 1}`
+    arkLinkElement.href = '#' + this.buildViewerId()
     arkLinkElement.removeAttribute("target")
   }
 
@@ -59,7 +63,7 @@ class FiggyViewer {
   constructViewerElement() {
     const viewerElement = document.createElement("div")
     viewerElement.setAttribute("class", "intrinsic-container intrinsic-container-16x9")
-    viewerElement.id = `viewer-${this.idx + 1}`
+    viewerElement.id = this.buildViewerId()
 
     const iFrameElement = this.constructIFrame()
     viewerElement.appendChild(iFrameElement)
