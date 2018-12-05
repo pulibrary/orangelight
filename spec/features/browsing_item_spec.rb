@@ -17,4 +17,15 @@ describe 'browsing a catalog item', js: true do
     expect(page).to have_selector '.icon-share[aria-hidden="true"]', visible: false
     expect(page).to have_selector '.icon-print[aria-hidden="true"]', visible: false
   end
+
+  context 'when an entry has a title statement' do
+    before do
+      visit 'catalog/8181849'
+    end
+
+    it 'renders the title and title statement separately' do
+      expect(page).to have_selector '.header-row h1', text: 'Jōmyō genron / 浄名玄論'
+      expect(page).to have_selector '.header-row h2', text: 'Kyōto Kokuritsu Hakubutsukan hen ; kaisetsu Ishihara Harumichi (Hokkaidō Daigaku Meiyo Kyōju), Akao Eikei (Kyōto Kokuritsu Hakubutsukan Gakugeibu Jōseki Kenkyūin).'
+    end
+  end
 end

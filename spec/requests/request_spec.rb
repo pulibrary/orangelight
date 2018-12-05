@@ -162,7 +162,7 @@ describe 'blacklight tests' do
     it 'adds ltr rtl dir for title and other fields in document view' do
       get '/catalog/4705307.json'
       r = JSON.parse(response.body)['response']['document']
-      title_vern = r['title_vern_display']
+      title_vern = '[Risālat al-Zawrāʼ]. / [رسالة الزوراء]'
       note = r['notes_display'][0]
       note_vern = r['notes_display'].last
       get '/catalog/4705307'
