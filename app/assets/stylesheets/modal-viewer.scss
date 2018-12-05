@@ -1,0 +1,29 @@
+input#modal-viewer-trigger {
+  position: absolute;
+  top: -800px;
+}
+.modal-viewer-overlay {
+  opacity: 0;
+  z-index: -200;
+  transform: scale(0.5);
+  transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+input:checked ~ .modal-viewer-overlay {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 800;
+}
+/*.modal-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+  &:hover {
+    color: #000;
+  }
+}*/

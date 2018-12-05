@@ -1,9 +1,13 @@
 <%= content_tag(:div, class: "document-thumbnail", data: @document.identifier_data) do %>
   <div class="default">
-    <% if @document.iiif_manifest_uris.present? || @document.ark.present? %>
-      <a href="#viewer-modal", data-toggle="modal"><span class="glyphicon glyphicon-zoom-in"></span></a>
-    <% end %>
   </div>
+  <% if @document.iiif_manifest_uris.present? || @document.ark.present? %>  
+    <input id="modal-viewer-trigger" type="checkbox">
+    <label for="modal-viewer-trigger">
+      <span class="glyphicon glyphicon-zoom-in glyphicon-zoom-in-size"></span>
+    </label>
+    <%= render "catalog/thumbnail_modal_viewer" %>
+  <% end %>
 <% end %>
 
 <% unless @document.more_like_this.empty? %>

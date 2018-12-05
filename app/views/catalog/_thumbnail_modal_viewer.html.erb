@@ -1,34 +1,29 @@
-<div class="modal fade" id="viewer-modal" title="Viewer">
-  <div class="modal-content">
-    <div class="modal-header modal-header-viewer">
-      <!-- <button aria-hidden="true" class="close close-white" data-dismiss="modal" type="button">×</button> -->
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    </div>
-    <div class="modal-body">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12">
-          <% if @document.iiif_manifest_uris.present? %>
-            <div id="arks_length" class="sr-only"><%= @document.iiif_manifest_uris.count %></div>
-            <%  @document.iiif_manifest_uris.each_with_index do |uri,i| %>
-              <% if i == 0 %>
-                <div id="view" data-ark="<%= @document.ark %>" data-iiif-manifest-url="<%= uri %>" class="intrinsic-container intrinsic-container-16x9">
-                  <iframe src="https://figgy.princeton.edu/uv/uv#?manifest=<%= uri %>" allowfullscreen="true"></iframe>
-                </div>
-              <% else %>
-                <div id="view_<%= i %>" data-ark="<%= @document.ark %>" data-iiif-manifest-url="<%= uri %>" class="intrinsic-container intrinsic-container-16x9">
-                  <iframe src="https://figgy.princeton.edu/uv/uv#?manifest=<%= uri %>" allowfullscreen="true"></iframe>
-                </div>
-              <% end %>
+<div class="modal-viewer-overlay" tabindex="-1">
+  <div class="modal-viewer-wrap">
+    <!-- <label for="modal-viewer_trigger">&#10006;</label> -->
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <% if @document.iiif_manifest_uris.present? %>
+          <div id="arks_length" class="sr-only"><%= @document.iiif_manifest_uris.count %></div>
+          <%  @document.iiif_manifest_uris.each_with_index do |uri,i| %>
+            <% if i == 0 %>
+              <div id="view" data-ark="<%= @document.ark %>" data-iiif-manifest-url="<%= uri %>" class="intrinsic-container intrinsic-container-16x9">
+                <iframe src="https://figgy.princeton.edu/uv/uv#?manifest=<%= uri %>" allowfullscreen="true"></iframe>
+              </div>
+            <% else %>
+              <div id="view_<%= i %>" data-ark="<%= @document.ark %>" data-iiif-manifest-url="<%= uri %>" class="intrinsic-container intrinsic-container-16x9">
+                <iframe src="https://figgy.princeton.edu/uv/uv#?manifest=<%= uri %>" allowfullscreen="true"></iframe>
+              </div>
             <% end %>
-          <% elsif @document.ark.present? %>
-            <div id="ark_array_id" class="sr-only" data-ark="<%= ark_array %>"></div>
-              <!-- Loading the uv3 figgy viewer, using an ajax call on the solr document arks. -->
-              <!-- Currently we display no more than 2 viewers. -->
-              <div id="view" class="intrinsic-container intrinsic-container-16x9"></div>
-              <div id="view_1" class="intrinsic-container intrinsic-container-16x9"></div>
-              <%= render 'shared/viewer_uv'%> 
           <% end %>
-        </div>
+        <% elsif @document.ark.present? %>
+          <div id="ark_array_id" class="sr-only" data-ark="<%= ark_array %>"></div>
+            <!-- Loading the uv3 figgy viewer, using an ajax call on the solr document arks. -->
+            <!-- Currently we display no more than 2 viewers. -->
+            <div id="view" class="intrinsic-container intrinsic-container-16x9"></div>
+            <div id="view_1" class="intrinsic-container intrinsic-container-16x9"></div>
+            <%= render 'shared/viewer_uv'%>
+        <% end %>
       </div>
     </div>
   </div>
