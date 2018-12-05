@@ -160,9 +160,9 @@ describe 'blacklight tests' do
                                     "#{CGI.escape author_vern}\">#{author_vern}</a>")).to eq true
     end
     it 'adds ltr rtl dir for title and other fields in document view' do
-      get '/catalog/4705307/raw'
-      r = JSON.parse(response.body)
-      title_vern = r['title_vern_display']
+      get '/catalog/4705307.json'
+      r = JSON.parse(response.body)['response']['document']
+      title_vern = '[Risālat al-Zawrāʼ]. / [رسالة الزوراء]'
       note = r['notes_display'][0]
       note_vern = r['notes_display'].last
       get '/catalog/4705307'

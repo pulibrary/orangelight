@@ -140,6 +140,45 @@ module BlacklightHelper
       link_to('[Browse]', "/browse/names?q=#{CGI.escape name}", class: 'browse-related-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name}", title: "Browse: #{name}")
   end
 
+  # Build the presenter used for rendering the show View of the Document
+  # @return [Blacklight::Presenters::ShowPresenter]
+  def document_show_presenter
+    show_presenter(@document)
+  end
+
+  # Access the text directionality of the title field for the Document
+  # @param field [String] the field indexed used as the Document title
+  # @return [String]
+  def document_title_dir(field: 'title_vern_display')
+    field = document_show_presenter.field_value field: field
+    field.dir
+  end
+
+  # Generate the title of the Document using 245$b values
+  # @see SolrDocument#title_remainder_display
+  # @return [String]
+  def document_title
+    @document.title_remainder_display.join(' / ')
+  end
+
+  ##
+  # Render the document "heading" (title) in a content tag
+  # @overload render_document_heading(document, options)
+  #   @param [SolrDocument] document
+  #   @param [Hash] options
+  #   @option options [Symbol] :tag
+  # @overload render_document_heading(options)
+  #   @param [Hash] options
+  #   @option options [Symbol] :tag
+  def render_document_title_without_citation(*args)
+    options = args.extract_options!
+    document = args.first
+    tag = options.fetch(:tag, :h4)
+    document ||= @document
+
+    content_tag(tag, document.title_without_citation, itemprop: 'name')
+  end
+
   ##
   # Render the heading partial for a document
   #

@@ -43,4 +43,26 @@ describe 'browsing a catalog item', js: true do
       expect(page).to have_selector '.electronic-access a[href$="3395923#view"]', text: 'Digital content'
     end
   end
+
+  context 'when an entry has a title statement' do
+    before do
+      visit 'catalog/8181849'
+    end
+
+    it 'renders the title and title statement separately' do
+      expect(page).to have_selector '.header-row h1', text: 'Jōmyō genron / 浄名玄論'
+      expect(page).to have_selector '.header-row h2', text: 'Kyōto Kokuritsu Hakubutsukan hen ; kaisetsu Ishihara Harumichi (Hokkaidō Daigaku Meiyo Kyōju), Akao Eikei (Kyōto Kokuritsu Hakubutsukan Gakugeibu Jōseki Kenkyūin).'
+    end
+  end
+
+  context 'when the title_display field is nearly identical to the title_citation_display field' do
+    before do
+      visit 'catalog/4609321'
+    end
+
+    it 'only renders the title_display' do
+      expect(page).to have_selector '.header-row h1', text: 'Bible, Latin'
+      expect(page).not_to have_selector '.header-row h2'
+    end
+  end
 end

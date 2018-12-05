@@ -46,6 +46,13 @@ class SolrDocument
   ## Adds RIS
   use_extension(Blacklight::Document::Ris)
 
+  # Specify the delimiting characters use in MARC field 245$b
+  # @see https://www.loc.gov/marc/bibliographic/bd245.html
+  # @return [Array<String>]
+  def self.title_b_delimiters
+    %w[/].freeze
+  end
+
   def identifier_data
     values = identifiers.each_with_object({}) do |identifier, hsh|
       hsh[identifier.data_key.to_sym] ||= []
@@ -110,6 +117,33 @@ class SolrDocument
                                                                    root: root_id,
                                                                    solr_field: query_field)
     linked_documents.decorated(display_fields: %w[id])
+  end
+
+  # Generate the title string from the 245$b field values
+  # @return [Array<String>]
+  def title_remainder_display
+    values = fetch(:title_citation_display)
+
+    values.map do |value|
+      output = []
+      self.class.title_b_delimiters.each do |delimiter|
+        output << value.strip.gsub(delimiter, '')
+      end
+      output.join(' ')
+    end
+  end
+
+  # Generate the Document title by removing 245$b from the concatenated 245 subfields
+  # @return [String]
+  def title_without_citation
+    output = fetch(:title_display)
+    title_b_values = fetch(:title_citation_display)
+
+    title_b_values.each do |title_b|
+      output = output.gsub(title_b, '')
+    end
+
+    output
   end
 
   def full_arks
