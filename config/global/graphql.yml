@@ -1,2 +1,2 @@
 default:
-  uri: <%= ENV['GRAPHQL_API_URL'] || 'http://localhost:3000/graphql' %>
+  uri: <%= ENV['GRAPHQL_API_URL'] || 'https://figgy.princeton.edu/graphql' %>

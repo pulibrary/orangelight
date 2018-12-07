@@ -1,2 +1,2 @@
 default:
-  url: <%= ENV['FIGGY_URL'] || 'http://localhost:3000' %>
+  url: <%= ENV['FIGGY_URL'] || 'https://figgy.princeton.edu' %>
