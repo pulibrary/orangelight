@@ -67,6 +67,7 @@ Metrics/ClassLength:
   - 'app/services/online_holdings_markup_builder.rb'
   - 'app/services/holding_requests_adapter.rb'
   - 'app/controllers/orangelight/browsables_controller.rb'
+  - 'app/models/solr_document.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:

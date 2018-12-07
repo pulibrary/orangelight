@@ -108,6 +108,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    archive-zip (0.11.0)
+      io-like (~> 0.3.0)
     arel (8.0.0)
     ast (2.3.0)
     autoprefixer-rails (9.1.4)
@@ -153,11 +155,15 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
+    childprocess (0.9.0)
+      ffi (~> 1.0, >= 1.0.11)
     chosen-rails (1.8.3)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
       sass-rails (>= 3.2)
-    cliver (0.3.2)
+    chromedriver-helper (2.1.0)
+      archive-zip (~> 0.10)
+      nokogiri (~> 1.8)
     cobravsmongoose (0.0.2)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -224,6 +230,7 @@ GEM
     httpclient (2.8.3)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
+    io-like (0.3.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -303,10 +310,6 @@ GEM
       ast (~> 2.3)
     parslet (1.8.1)
     pg (0.21.0)
-    poltergeist (1.17.0)
-      capybara (~> 2.1)
-      cliver (~> 0.3.1)
-      websocket-driver (>= 0.2.0)
     powerpack (0.1.1)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -407,6 +410,9 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    selenium-webdriver (3.141.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.2, >= 1.2.2)
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -508,6 +514,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.1.6)
   capybara
   chosen-rails
+  chromedriver-helper
   coffee-rails (~> 4.2.0)
   coveralls
   ddtrace
@@ -533,7 +540,6 @@ DEPENDENCIES
   omniauth-cas
   openurl (~> 1.0)
   pg
-  poltergeist
   pry-byebug
   rails (~> 5.1.0)
   rails-controller-testing
@@ -545,6 +551,7 @@ DEPENDENCIES
   rubyzip (>= 1.2.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  selenium-webdriver
   sitemap_generator (~> 6.0)
   solr_wrapper (~> 1.0)
   spring

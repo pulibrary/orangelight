@@ -12,6 +12,9 @@ async function loadResourcesByBibId(bibId) {
            thumbnailUrl
          },
          url,
+         members {
+           id
+         },
          ... on ScannedResource {
            manifestUrl
          },

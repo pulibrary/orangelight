@@ -22,25 +22,7 @@
   </div>
 <% end %>
 <div class="col-sm-12 col-xs-12" >
-  <% if @document.iiif_manifest_uris.present? %>
-    <div id="arks_length" class="sr-only"><%= @document.iiif_manifest_uris.count %></div>
-    <%  @document.iiif_manifest_uris.each_with_index do |uri,i| %>
-      <% if i == 0 %>
-        <div id="view" data-ark="<%= @document.ark %>" data-iiif-manifest-url="<%= uri %>" class="intrinsic-container intrinsic-container-16x9">
-          <iframe src="https://figgy.princeton.edu/uv/uv#?manifest=<%= uri %>" allowfullscreen="true"></iframe>
-        </div>
-      <% else %>
-        <div id="view_<%= i %>" data-ark="<%= @document.ark %>" data-iiif-manifest-url="<%= uri %>" class="intrinsic-container intrinsic-container-16x9">
-          <iframe src="https://figgy.princeton.edu/uv/uv#?manifest=<%= uri %>" allowfullscreen="true"></iframe>
-        </div>
-      <% end %>
-    <% end %>
-  <% elsif @document.ark.present? %>
-    <div id="ark_array_id" class="sr-only" data-ark="<%= ark_array %>"></div>
-      <!-- Loading the uv3 figgy viewer, using an ajax call on the solr document arks. -->
-      <!-- Currently we display no more than 2 viewers. -->
-      <div id="view" class="intrinsic-container intrinsic-container-16x9"></div>
-      <div id="view_1" class="intrinsic-container intrinsic-container-16x9"></div>
-      <%= render 'shared/viewer_uv'%> 
+  <% if @document.full_arks.present? %>
+    <div class="document-viewers" data-bib-id="<%= @document.id %>"></div>
   <% end %>
 </div>
