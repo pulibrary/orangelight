@@ -118,4 +118,23 @@ describe BlacklightHelper do
       expect { user_params_valid(params) }.to raise_error(ActionController::BadRequest)
     end
   end
+
+  describe '#render_facet_partials' do
+    let(:blacklight_config) { Blacklight::Configuration.new }
+
+    before do
+      allow(helper).to receive(:blacklight_config).and_return blacklight_config
+      allow(Rails.logger).to receive(:error)
+      allow(helper).to receive(:render_home_facets).and_call_original
+      allow(helper).to receive(:facets_from_request).and_raise(StandardError)
+      allow(helper).to receive(:head)
+    end
+
+    it 'renders home facets when an error is encountered' do
+      helper.render_facet_partials
+
+      expect(Rails.logger).to have_received(:error).with(/Failed to render the facet partials for/)
+      expect(helper).to have_received(:head).with(:bad_request)
+    end
+  end
 end
