@@ -145,6 +145,7 @@ class SolrDocument
       output = output.gsub(title_b, '')
     end
 
+    return '' if output.gsub(/[[:punct:]]/, '').strip.empty?
     output
   end
 

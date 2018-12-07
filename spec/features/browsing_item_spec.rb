@@ -28,4 +28,15 @@ describe 'browsing a catalog item', js: true do
       expect(page).to have_selector '.header-row h2', text: 'Kyōto Kokuritsu Hakubutsukan hen ; kaisetsu Ishihara Harumichi (Hokkaidō Daigaku Meiyo Kyōju), Akao Eikei (Kyōto Kokuritsu Hakubutsukan Gakugeibu Jōseki Kenkyūin).'
     end
   end
+
+  context 'when the title_display field is nearly identical to the title_citation_display field' do
+    before do
+      visit 'catalog/4609321'
+    end
+
+    it 'only renders the title_display' do
+      expect(page).to have_selector '.header-row h1', text: 'Bible, Latin'
+      expect(page).not_to have_selector '.header-row h2'
+    end
+  end
 end
