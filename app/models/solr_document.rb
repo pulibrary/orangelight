@@ -48,7 +48,7 @@ class SolrDocument
       hsh[identifier.data_key.to_sym] << identifier.value
     end
 
-    values[:'bib-id'] = id unless iiif_manifest_uris.empty?
+    values[:'bib-id'] = id unless id.nil?
     values
   end
 

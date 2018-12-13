@@ -19792,7 +19792,7 @@
     },
     {
         "id": "6109323",
-        "numeric_id_b": true,
+        "numeric_id_b": "true",
         "author_display": [
         "Joanne, Adolphe Laurent, 1813-1881"
         ],
@@ -20073,5 +20073,116 @@
         "Electronic Resource"
         ],
         "timestamp": "2018-06-25T15:13:42.906Z"
-        }
+    },
+    {
+      "id": "3753928",
+      "numeric_id_b": "true",
+      "author_citation_display": [
+        "Robinson, Karl Davis"
+      ],
+      "author_roles_1display": "{\"secondary_authors\":[\"Robinson, Karl Davis\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+      "author_s": [
+        "Robinson, Karl Davis, 1884-1961"
+      ],
+      "title_display": "Robinson igo z\u014dsho mokuroku = Catalogue of the Robinson go collection.",
+      "title_vern_display": "\u30ed\u30d3\u30f3\u30bd\u30f3\u56f2\u7881\u85cf\u66f8\u76ee\u9304= Catalogue of the Robinson go collection.",
+      "title_t": [
+        "Robinson igo z\u014dsho mokuroku = Catalogue of the Robinson go collection."
+      ],
+      "title_citation_display": [
+        "Robinson igo z\u014dsho mokuroku = Catalogue of the Robinson go collection",
+        "\u30ed\u30d3\u30f3\u30bd\u30f3\u56f2\u7881\u85cf\u66f8\u76ee\u9304= Catalogue of the Robinson go collection"
+      ],
+      "compiled_created_t": [
+        "Robinson igo z\u014dsho mokuroku = Catalogue of the Robinson go collection.",
+        "\u30ed\u30d3\u30f3\u30bd\u30f3\u56f2\u7881\u85cf\u66f8\u76ee\u9304= Catalogue of the Robinson go collection."
+      ],
+      "pub_created_display": [
+        "Princeton, N.J. : Gest Oriental Library, Princeton University, 1975."
+      ],
+      "pub_created_s": [
+        "Princeton, N.J. : Gest Oriental Library, Princeton University, 1975."
+      ],
+      "pub_citation_display": [
+        "Princeton, N.J.: Gest Oriental Library, Princeton University"
+      ],
+      "pub_date_display": [
+        "1975"
+      ],
+      "pub_date_start_sort": 1975,
+      "cataloged_tdt": "2014-06-04T14:14:03Z",
+      "format": [
+        "Book"
+      ],
+      "electronic_access_1display": "{\"http:\/\/library.princeton.edu\/projects\/ea\/toc\/3753928.32101090118355.1-Fulltext.pdf\":[\"library.princeton.edu\"]}",
+      "description_display": [
+        "[55] leaves ; 29 cm."
+      ],
+      "description_t": [
+        "[55] leaves ; 29 cm."
+      ],
+      "number_of_pages_citation_display": [
+        "[55] leaves"
+      ],
+      "notes_display": [
+        "Cover title."
+      ],
+      "language_facet": [
+        "Japanese"
+      ],
+      "language_code_s": [
+        "jpn"
+      ],
+      "language_iana_s": [
+        "ja"
+      ],
+      "subject_display": [
+        "Go (Game)\u2014Bibliography\u2014Catalogs",
+        "Princeton University Library\u2014Catalogs",
+        "Robinson, Karl Davis, 1884-1961\u2014Library\u2014Catalogs"
+      ],
+      "subject_facet": [
+        "Go (Game)\u2014Bibliography\u2014Catalogs",
+        "Princeton University Library\u2014Catalogs",
+        "Robinson, Karl Davis, 1884-1961\u2014Library\u2014Catalogs"
+      ],
+      "related_name_json_1display": "{\"Related name\":[\"Robinson, Karl Davis, 1884-1961\"]}",
+      "other_title_display": [
+        "Catalogue of the Robinson go collection",
+        "Robinson go collection"
+      ],
+      "alt_title_246_display": [
+        "Catalogue of the Robinson go collection",
+        "Robinson go collection"
+      ],
+      "oclc_s": [
+        "153538715"
+      ],
+      "other_version_s": [
+        "ocn153538715"
+      ],
+      "holdings_1display": "{\"4063203\":{\"location\":\"East Asian Library - Reference\",\"library\":\"East Asian Library\",\"location_code\":\"hyjrf\",\"copy_number\":\"2\",\"call_number\":\"BJ6870.1\/6233\",\"call_number_browse\":\"BJ6870.1\/6233\",\"location_has\":[\"COPY 2\",\"shelved in Chinese Bibliographer's Office\"]},\"4063204\":{\"location\":\"East Asian Library - Rare Books\",\"library\":\"East Asian Library\",\"location_code\":\"hyjrare\",\"copy_number\":\"3\",\"call_number\":\"BJ6870.1\/6233\",\"call_number_browse\":\"BJ6870.1\/6233\",\"location_has\":[\"COPY 3\",\"NOT TO CIRCULATE\",\"Shelved in reading room of Mudd Library\"]}}",
+      "location_code_s": [
+        "hyjrf",
+        "hyjrare"
+      ],
+      "location": [
+        "East Asian Library"
+      ],
+      "location_display": [
+        "East Asian Library - Reference",
+        "East Asian Library - Rare Books"
+      ],
+      "advanced_location_s": [
+        "hyjrf",
+        "hyjrare",
+        "East Asian Library"
+      ],
+      "call_number_display": [
+        "BJ6870.1\/6233"
+      ],
+      "call_number_browse_s": [
+        "BJ6870.1\/6233"
+      ]
+    }
 ]
