@@ -1,0 +1,287 @@
+<record xmlns="http://www.loc.gov/MARC21/slim">
+<leader>05204cam a2200757 a 4500</leader>
+<controlfield tag="001">7994866</controlfield>
+<controlfield tag="005">20160915152919.0</controlfield>
+<controlfield tag="006">m o d </controlfield>
+<controlfield tag="007">cr mn |||||a|a</controlfield>
+<controlfield tag="008">120911m18401908xx a s 000 0 eng d</controlfield>
+<datafield ind1=" " ind2=" " tag="035">
+<subfield code="a">AC006700</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="040">
+<subfield code="a">UkMbAM-D</subfield>
+<subfield code="c">UkMbAM-D</subfield>
+<subfield code="d">UkMbAM-D</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="043">
+<subfield code="a">a-cc---</subfield>
+<subfield code="a">e-uk---</subfield>
+<subfield code="a">a------</subfield>
+<subfield code="a">a-ja---</subfield>
+<subfield code="a">a-ii---</subfield>
+</datafield>
+<datafield ind1="0" ind2="0" tag="245">
+<subfield code="a">China and the Chinese.</subfield>
+<subfield code="n">Volume 65</subfield>
+<subfield code="h">[electronic resource].</subfield>
+</datafield>
+<datafield ind1="1" ind2=" " tag="246">
+<subfield code="i">Vol. 65 in collection with title:</subfield>
+<subfield code="a">Pamphlets relating to China</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="260">
+<subfield code="c">[1840-1908]</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="300">
+<subfield code="a">8 items, bound :</subfield>
+<subfield code="b">ill.</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="500">
+<subfield code="a">
+Binder's title: China and the Chinese : a collection of pamphlets relating thereto. Volume 65.
+</subfield>
+</datafield>
+<datafield ind1="0" ind2=" " tag="505">
+<subfield code="a">
+The bombardment of Canton : six letters addressed to the editor of the "Daily news" / by a twelve years' resident in China [i.e. Andrew Shortrede] -- Fifty years' work amongst young men in all lands : a review of the work of the Young Men's Christian associations. English ed. -- Church work among white settlers beyond the sea (Pan-Anglican papers) -- The opium question, as between nation and nation / by a barrister at law [i.e. Samuel Warren] -- Our opium trade with China / by Samuel S. Mander ; with appendix -- The fifth report of the Committee of the London East India and China Association : presented to the General Meeting, held at their office, January 28, 1841 -- Notes on the law of storms, as applying to the tempests of the Indian and Chinese seas : drawn up for the use of the Expedition to China / by Henry Piddington, March 1840 -- The centenary volume of the Baptist Missionary Society, 1792-1892 / contributors, W.J. Henderson [et al.] ; editor, John Brown Myers.
+</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="533">
+<subfield code="a">Electronic reproduction.</subfield>
+<subfield code="b">Marlborough, England :</subfield>
+<subfield code="c">Adam Matthew Digital.</subfield>
+<subfield code="b">[Chicago, Ill.] :</subfield>
+<subfield code="c">
+Adam Matthew Education [North American distributor],
+</subfield>
+<subfield code="d">c2012</subfield>
+<subfield code="f">
+(China : culture and society : the Wason Pamphlet Collection, Cornell University)
+</subfield>
+</datafield>
+<datafield ind1="1" ind2=" " tag="535">
+<subfield code="a">Wason Collection, Cornell University</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Barrier Forts, Battle of the, China, 1856.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="651">
+<subfield code="a">Guangzhou (China)</subfield>
+<subfield code="x">History.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="651">
+<subfield code="a">Great Britain</subfield>
+<subfield code="x">Foreign relations</subfield>
+<subfield code="z">China.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="651">
+<subfield code="a">China</subfield>
+<subfield code="x">Foreign relations</subfield>
+<subfield code="z">Great Britain.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Young Men's Christian associations.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Proselytizing</subfield>
+<subfield code="z">Asia.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Missions</subfield>
+<subfield code="z">China.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Missions</subfield>
+<subfield code="z">Japan.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Missions</subfield>
+<subfield code="z">China.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Opium abuse.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Opium trade</subfield>
+<subfield code="z">China.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Opium trade</subfield>
+<subfield code="z">India.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="651">
+<subfield code="a">Great Britain</subfield>
+<subfield code="x">Commerce</subfield>
+<subfield code="z">China.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="651">
+<subfield code="a">China</subfield>
+<subfield code="x">Commerce</subfield>
+<subfield code="z">Great Britain.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="651">
+<subfield code="a">Great Britain</subfield>
+<subfield code="x">Commerce</subfield>
+<subfield code="z">Asia.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="651">
+<subfield code="a">Asia</subfield>
+<subfield code="x">Commerce</subfield>
+<subfield code="z">Great Britain.</subfield>
+</datafield>
+<datafield ind1="2" ind2="0" tag="610">
+<subfield code="a">East India and China Association.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Storms</subfield>
+<subfield code="z">China Sea.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Storms</subfield>
+<subfield code="z">Indian Ocean.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Typhoons</subfield>
+<subfield code="z">China Sea.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Typhoons</subfield>
+<subfield code="z">Indian Ocean.</subfield>
+</datafield>
+<datafield ind1="2" ind2="0" tag="610">
+<subfield code="a">Baptist Missionary Society</subfield>
+<subfield code="x">History.</subfield>
+</datafield>
+<datafield ind1="1" ind2=" " tag="700">
+<subfield code="a">Henderson, W. J.</subfield>
+<subfield code="q">(William John)</subfield>
+</datafield>
+<datafield ind1="1" ind2=" " tag="700">
+<subfield code="a">Myers, John Brown,</subfield>
+<subfield code="d">1844 or 5-1915.</subfield>
+</datafield>
+<datafield ind1="1" ind2="2" tag="700">
+<subfield code="a">Shortrede, Andrew,</subfield>
+<subfield code="d">fl. 1830-1843.</subfield>
+<subfield code="t">Bombardment of Canton.</subfield>
+</datafield>
+<datafield ind1="1" ind2="2" tag="700">
+<subfield code="t">Fifty years' work amongst young men in all lands.</subfield>
+</datafield>
+<datafield ind1="1" ind2="2" tag="700">
+<subfield code="a">Warren, Samuel,</subfield>
+<subfield code="d">1807-1877.</subfield>
+<subfield code="t">Opium question, as between nation and nation.</subfield>
+</datafield>
+<datafield ind1="1" ind2="2" tag="700">
+<subfield code="a">Mander, Samuel S.</subfield>
+<subfield code="t">Our opium trade with China.</subfield>
+</datafield>
+<datafield ind1="1" ind2="2" tag="700">
+<subfield code="a">Piddington, Henry,</subfield>
+<subfield code="d">1797-1858.</subfield>
+<subfield code="t">
+Notes on the law of storms, as applying to the tempests of the Indian and Chinese seas.
+</subfield>
+</datafield>
+<datafield ind1="2" ind2="2" tag="710">
+<subfield code="a">Baptist Missionary Society.</subfield>
+<subfield code="t">
+Centenary volume of the Baptist Missionary Society, 1792-1892.
+</subfield>
+</datafield>
+<datafield ind1="2" ind2="2" tag="710">
+<subfield code="a">East India and China Association.</subfield>
+<subfield code="t">
+Report of the Committee of the London East India and China Association.
+</subfield>
+</datafield>
+<datafield ind1="2" ind2=" " tag="710">
+<subfield code="a">Cornell University.</subfield>
+<subfield code="b">Library.</subfield>
+<subfield code="b">Wason Collection.</subfield>
+</datafield>
+<datafield ind1="2" ind2=" " tag="710">
+<subfield code="a">Adam Matthew Digital (Firm)</subfield>
+</datafield>
+<datafield ind1="2" ind2=" " tag="710">
+<subfield code="a">Adam Matthew Education (Firm)</subfield>
+</datafield>
+<datafield ind1="0" ind2="2" tag="730">
+<subfield code="a">Church work among white settlers beyond the sea.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="830">
+<subfield code="a">China (Adam Matthew Digital (Firm) : 2012)</subfield>
+</datafield>
+<datafield ind1="4" ind2="0" tag="856">
+<subfield code="3">The bombardment of Canton</subfield>
+<subfield code="u">
+http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_01_0554
+</subfield>
+</datafield>
+<datafield ind1="4" ind2="0" tag="856">
+<subfield code="3">Fifty years' work amongst young men in all lands</subfield>
+<subfield code="u">
+http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_02_0555
+</subfield>
+</datafield>
+<datafield ind1="4" ind2="0" tag="856">
+<subfield code="3">Church work among white settlers beyond the sea</subfield>
+<subfield code="u">
+http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_03_0556
+</subfield>
+</datafield>
+<datafield ind1="4" ind2="0" tag="856">
+<subfield code="3">The opium question, as between nation and nation</subfield>
+<subfield code="u">
+http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_04_0557
+</subfield>
+</datafield>
+<datafield ind1="4" ind2="0" tag="856">
+<subfield code="3">Our opium trade with China</subfield>
+<subfield code="u">
+http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_05_0558
+</subfield>
+</datafield>
+<datafield ind1="4" ind2="0" tag="856">
+<subfield code="3">
+The fifth report of the Committee of the London East India and China Association
+</subfield>
+<subfield code="u">
+http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_06_0559
+</subfield>
+</datafield>
+<datafield ind1="4" ind2="0" tag="856">
+<subfield code="3">
+Notes on the law of storms, as applying to the tempests of the Indian and Chinese seas
+</subfield>
+<subfield code="u">
+http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_07_0560
+</subfield>
+</datafield>
+<datafield ind1="4" ind2="0" tag="856">
+<subfield code="3">
+The centenary volume of the Baptist Missionary Society 1792-1892
+</subfield>
+<subfield code="u">
+http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_08_0561
+</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="902">
+<subfield code="a">jwl</subfield>
+<subfield code="b">z</subfield>
+<subfield code="6">a</subfield>
+<subfield code="7">m</subfield>
+<subfield code="d">w</subfield>
+<subfield code="f">0</subfield>
+<subfield code="e">20131220</subfield>
+</datafield>
+<datafield ind1="8" ind2=" " tag="852">
+<subfield code="0">7773074</subfield>
+<subfield code="b">elf1</subfield>
+<subfield code="h">Electronic Resource</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="959">
+<subfield code="a">2013-12-20 13:57:33 -0500</subfield>
+</datafield>
+</record>
