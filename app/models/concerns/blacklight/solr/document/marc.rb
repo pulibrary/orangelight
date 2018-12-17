@@ -262,6 +262,26 @@ module Blacklight
             # TODO: Raise if not present
             self.class.extension_parameters[:marc_format_type]
           end
+
+          # Overwites the get_author_list(record) method from the module Blacklight::Solr::Document::MarcExport
+          def get_author_list(record)
+            author_list = []
+            authors_primary = record.find { |f| f.tag == '100' }
+            begin
+              author_primary = authors_primary.find { |s| s.code == 'a' }.value unless authors_primary.nil?
+            rescue StandardError
+              ''
+            end
+            author_list.push(clean_end_punctuation(author_primary)) unless author_primary.nil?
+            authors_secondary = record.find_all { |f| f.tag == '700' }
+            authors_secondary&.each do |l|
+              unless l.find { |s| s.code == 'a' }.nil?
+                author_list.push(clean_end_punctuation(l.find { |s| s.code == 'a' }.value)) unless l.find { |s| s.code == 'a' }.value.nil?
+              end
+            end
+            author_list.uniq!
+            author_list
+          end
       end
     end
   end
