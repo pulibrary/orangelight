@@ -2,10 +2,12 @@
 import loadResourcesByBibId from './load-resources-by-bib-id'
 
 class FiggyViewer {
-  constructor(idx, element, manifestUrl) {
+  // There may be more than one ARK minted which resolves to the same manifested resource
+  constructor(idx, element, manifestUrl, arks) {
     this.idx = idx
     this.element = element
     this.manifestUrl = manifestUrl
+    this.arks = arks
   }
 
   getAvailabilityElement() {
@@ -30,6 +32,7 @@ class FiggyViewer {
     if (elements.length < 1) {
       elements = availabilityElement.querySelectorAll('li > a')
     }
+    // This assumes that there is a one-to-one mapping between the ARK electronic resource links in the DOM and the UniversalViewer instances
     return elements[this.idx]
   }
 
@@ -76,17 +79,21 @@ class FiggyViewer {
     if (!viewerElement) {
       return null
     }
-    this.updateArkLinkElement()
+
+    if (this.arks.length > 0) {
+      this.updateArkLinkElement()
+    }
 
     this.element.appendChild(viewerElement)
   }
 }
 
 class FiggyViewerSet {
-  constructor(element, query, variables, jQuery) {
+  constructor(element, query, variables, arks, jQuery) {
     this.element = element
     this.query = query
     this.variables = variables
+    this.arks = arks
     this.jQuery = jQuery
   }
 
@@ -129,7 +136,7 @@ class FiggyViewerSet {
     const manifestUrls = await this.getManifestUrls()
 
     manifestUrls.forEach((manifestUrl, idx) => {
-      const viewer = new FiggyViewer(idx, this.element, manifestUrl)
+      const viewer = new FiggyViewer(idx, this.element, manifestUrl, this.arks)
       viewer.render()
     })
   }
@@ -203,8 +210,9 @@ class FiggyManifestManager {
   static buildViewers(element) {
     const $element = window.jQuery(element)
     const bibId = $element.data('bib-id')
+    const arks = $element.data('arks') || []
 
-    return new FiggyViewerSet(element, loadResourcesByBibId, bibId.toString(), window.jQuery)
+    return new FiggyViewerSet(element, loadResourcesByBibId, bibId.toString(), arks, window.jQuery)
   }
 }
 
