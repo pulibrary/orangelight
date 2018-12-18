@@ -489,6 +489,10 @@ class CatalogController < ApplicationController
     }
   end
 
+  def render_search_results_as_json
+    { response: { docs: @document_list, facets: search_facets_as_json, pages: pagination_info(@response) } }
+  end
+
   def index
     super
   rescue ActionController::BadRequest
