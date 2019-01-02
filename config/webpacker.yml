@@ -30,6 +30,9 @@ default: &default
     - .jpg
     - .es6
 
+  # Reference: https://webpack.js.org/configuration/devtool/
+  dev_tool: source-map
+
 development:
   <<: *default
   compile: true
