@@ -78,6 +78,5 @@ module FacetsHelper
     super
   rescue StandardError => error
     Rails.logger.error("#{self.class}: Failed to render the facet partials for #{fields.join(',')}: #{error}")
-    head :bad_request
   end
 end
