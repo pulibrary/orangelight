@@ -5,7 +5,7 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
   include BlacklightUnapi::ControllerExtension
 
-  include Blacklight::Marc::Catalog
+  #include Blacklight::Marc::Catalog
   include BlacklightRangeLimit::ControllerOverride
   include Orangelight::Catalog
   include Orangelight::Stackmap
