@@ -49,6 +49,23 @@ module BrowseLists
       end
     end
 
+    def browse_subject(_sql_command, facet_request, conn)
+      facet_field = 'subject_facet'
+      table_name = 'orangelight_subjects'
+      resp = conn.get "#{facet_request}#{facet_field}"
+      req = JSON.parse(resp.body)
+      CSV.open("/tmp/#{table_name}.csv", 'wb') do |csv|
+        label = ''
+        req['facet_counts']['facet_fields'][facet_field.to_s].each_with_index do |fac, i|
+          if i.even?
+            label = fac
+          else
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Library of Congress subject heading']
+          end
+        end
+      end
+    end
+
     def browse_cn(_sql_command, facet_request, conn, facet_field, _table_name)
       resp = conn.get "#{facet_request}#{facet_field}&facet.mincount=2"
       req = JSON.parse(resp.body)
@@ -126,6 +143,14 @@ module BrowseLists
       system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '/tmp/#{table_name}.csv' CSV;"))
       system(%(#{sql_command} \"\\copy (Select sort,count,label,dir from #{table_name} order by sort) To '/tmp/#{table_name}.sorted' With CSV;"))
       load_facet_file(sql_command, "/tmp/#{table_name}.sorted", table_name)
+    end
+
+    def load_subject(sql_command, _facet_request, _conn, _facet_field, table_name)
+      system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
+      system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir,vocabulary) from '/tmp/#{table_name}.csv' CSV;"))
+      system(%(#{sql_command} \"\\copy (Select sort,count,label,dir,vocabulary from #{table_name} order by sort) To '/tmp/#{table_name}.sorted' With CSV;"))
+      system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
+      system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir,vocabulary) from '/tmp/#{table_name}.sorted' CSV;"))
     end
 
     def load_cn(sql_command, _facet_request, _conn, facet_field, table_name)
