@@ -24,7 +24,42 @@
   </div>
 </div>
 <div class="col-12">
-  <% if @model != 'call_numbers' %>
+  <% if @model == 'subjects' %>
+  <div id="content" class="browse-row">
+  <table class="browse browse--subjects documents-list">
+    <thead>
+      <tr>
+        <th> <%= @list_name %> </th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody >
+      <% @orangelight_browsables.each_with_index do |orangelight_subject, i| %>
+        <% if orangelight_subject.id == @match && @exact_match %>
+          <tr class="alert alert-info clickable-row" data-href="/catalog/?f[<%=@facet%>][]=<%=CGI.escape orangelight_subject.label%>">
+            <strong>
+        <% else %>
+          <tr class="row-<%=i.even? ? 'odd' : 'even' %>">
+        <% end %>
+          <td class="<%=orangelight_subject.dir%>"><%= link_to orangelight_subject.label, "/catalog/?f[#{@facet}][]=#{CGI.escape orangelight_subject.label}", dir: orangelight_subject.dir %>
+            <%= "(#{orangelight_subject.count})"%></td>
+          <td><%= orangelight_subject.vocabulary %></td>
+        <% if orangelight_subject.id == @match && @exact_match %>
+            </strong>
+          </tr>
+        <% else %>
+          </tr>
+        <% end %>
+        <% if orangelight_subject.id == @match && !@exact_match %>
+            <tr class="alert alert-info"> <td colspan=5>
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong> </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+  <% elsif @model != 'call_numbers' %>
     <ul class="browse">
       <% @orangelight_browsables.sort.each_with_index do |orangelight_name, i| %>
 
