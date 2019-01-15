@@ -347,7 +347,7 @@ class CatalogController < ApplicationController
 
     config.add_show_field 'subject_display', label: 'Subject(s)', helper_method: :subjectify
     config.add_show_field 'form_genre_display', label: 'Form/&#8203;Genre'
-
+    config.add_show_field 'form_genre_remaining_display', label: 'Other form/&#8203;genre'
     config.add_show_field 'place_name_display', label: 'Place name(s)'
     config.add_show_field 'other_title_display', label: 'Other title(s)'
     config.add_show_field 'other_title_1display', hash: true
