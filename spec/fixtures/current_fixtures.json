@@ -1213,8 +1213,11 @@
         "description_t": [
             "23 v. ; 24 cm."
         ],
+        "rbgenr_s": [
+            "Publishers' catalogs—New York (State)—New York"
+        ],
         "form_genre_display": [
-            "Publishers' catalogs New York (State) New York."
+            "Publishers' catalogs—New York (State)—New York"
         ],
         "format": [
             "Book"
@@ -1602,8 +1605,8 @@
             "{\"http://arks.princeton.edu/ark:/88435/5t34sk87c\":[\"arks.princeton.edu\"]}"
         ],
         "form_genre_display": [
-            "Wills England 10th century.",
-            "Parchment."
+            "Wills—England—10th century",
+            "Parchment"
         ],
         "format": [
             "Manuscript",
@@ -4085,10 +4088,10 @@
             "{\"http://arks.princeton.edu/ark:/88435/9k41zd556\":[\"arks.princeton.edu\"]}"
         ],
         "form_genre_display": [
-            "Manuscripts, Arabic 16th century.",
-            "Illuminated manuscripts Islamic Empire 16th century.",
-            "Headpieces (layout features) Islamic Empire 16th century.",
-            "Miniatures (Illuminations) Islamic Empire 16th century."
+            "Manuscripts, Arabic—16th century",
+            "Illuminated manuscripts—Islamic Empire—16th century",
+            "Headpieces (layout features)—Islamic Empire—16th century",
+            "Miniatures (Illuminations)—Islamic Empire—16th century"
         ],
         "format": [
             "Manuscript",
@@ -5326,8 +5329,8 @@
             "{\"http://arks.princeton.edu/ark:/88435/pz50gw142\":[\"arks.princeton.edu\",\"Finding aid\"]}"
         ],
         "form_genre_display": [
-            "Photoprints 20th century.",
-            "Slides 20th century."
+            "Photoprints—20th century",
+            "Slides—20th century"
         ],
         "format": [
             "Manuscript"
@@ -6845,8 +6848,8 @@
             "\u0627\u0645 \u0627\u0644\u0628\u0631\u0627\u0647\u064a\u0646."
         ],
         "form_genre_display": [
-            "Manuscripts, Arabic 17th century.",
-            "Manuscripts, Arabic."
+            "Manuscripts, Arabic—17th century",
+            "Manuscripts, Arabic"
         ],
         "format": [
             "Manuscript",
@@ -11796,6 +11799,10 @@
             "Feature films.",
             "Fiction films."
         ],
+        "lcgft_s": [
+            "Feature films",
+            "Fiction films"
+        ],
         "format": [
             "Video/Projected medium"
         ],
@@ -12387,7 +12394,7 @@
             "{\"http://arks.princeton.edu/ark:/88435/q524jq073\":[\"arks.princeton.edu\"]}"
         ],
         "form_genre_display": [
-            "Gameboards Japanese 20th century."
+            "Gameboards—Japanese—20th century"
         ],
         "format": [
             "Visual material"
@@ -13831,7 +13838,7 @@
             "1 v. (97 leaves); 30 cm."
         ],
         "form_genre_display": [
-            "Manuscripts 19th century."
+            "Manuscripts—19th century."
         ],
         "format": [
             "Manuscript",
@@ -19026,6 +19033,14 @@
             "[Brooklyn, N.Y.] : Icarus Films, [2017]",
             "[Paris] : Les Films de La Pleiade, 1956-1971.",
             "\u00a91956-1971"
+        ],
+        "lcgft_s": [
+        "Documentary films",
+        "Nonfiction films",
+        "Video recordings for the hearing impaired"
+        ],
+        "related_name_json_1display": [
+        "{\"Film director\":[\"Rouch, Jean\"],\"Writer of supplemental textual content\":[\"Stoller, Paul\",\"Kohn, Eric\"],\"Distributor\":[\"Icarus Films\"],\"Producer\":[\"Films de la Pléiade (Firm)\"]}"
         ],
         "pub_date_display": [
             "2017"

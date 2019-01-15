@@ -33,13 +33,14 @@
     </thead>
     <tbody >
       <% @orangelight_browsables.each_with_index do |orangelight_subject, i| %>
+        <% facet_field = vocab_type(orangelight_subject.vocabulary) %>
         <% if orangelight_subject.id == @match && @exact_match %>
-          <tr class="alert alert-info clickable-row" data-href="/catalog/?f[<%=@facet%>][]=<%=CGI.escape orangelight_subject.label%>">
+          <tr class="alert alert-info clickable-row" data-href="/catalog/?f[<%=facet_field%>][]=<%=CGI.escape orangelight_subject.label%>">
             <strong>
         <% else %>
           <tr class="row-<%=i.even? ? 'odd' : 'even' %>">
         <% end %>
-          <td class="<%=orangelight_subject.dir%>"><%= link_to orangelight_subject.label, "/catalog/?f[#{@facet}][]=#{CGI.escape orangelight_subject.label}", dir: orangelight_subject.dir %>
+          <td class="<%=orangelight_subject.dir%>"><%= link_to orangelight_subject.label, "/catalog/?f[#{facet_field}][]=#{CGI.escape orangelight_subject.label}", dir: orangelight_subject.dir %>
             <%= "(#{orangelight_subject.count})"%></td>
           <td><%= orangelight_subject.vocabulary %></td>
         <% if orangelight_subject.id == @match && @exact_match %>
