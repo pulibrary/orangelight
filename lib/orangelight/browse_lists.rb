@@ -76,17 +76,34 @@ module BrowseLists
     end
 
     def browse_subject(_sql_command, facet_request, conn)
-      facet_field = 'subject_facet'
+      subject_facet = 'subject_facet'
+      lcgft_s = 'lcgft_s'
+      rbgenr_s = 'rbgenr_s'
       table_name = 'orangelight_subjects'
-      resp = conn.get "#{facet_request}#{facet_field}"
-      req = JSON.parse(resp.body)
+      subjects = JSON.parse(conn.get("#{facet_request}#{subject_facet}").body)
+      lcgft = JSON.parse(conn.get("#{facet_request}#{lcgft_s}").body)
+      rbgenr = JSON.parse(conn.get("#{facet_request}#{rbgenr_s}").body)
       CSV.open("/tmp/#{table_name}.csv", 'wb') do |csv|
         label = ''
-        req['facet_counts']['facet_fields'][facet_field.to_s].each_with_index do |fac, i|
+        subjects['facet_counts']['facet_fields'][subject_facet].each_with_index do |fac, i|
           if i.even?
             label = fac
           else
             csv << [label.normalize_em, fac.to_s, label, label.dir, 'Library of Congress subject heading']
+          end
+        end
+        lcgft['facet_counts']['facet_fields'][lcgft_s].each_with_index do |fac, i|
+          if i.even?
+            label = fac
+          else
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Library of Congress genre/form term']
+          end
+        end
+        rbgenr['facet_counts']['facet_fields'][rbgenr_s].each_with_index do |fac, i|
+          if i.even?
+            label = fac
+          else
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Rare books genre term']
           end
         end
       end

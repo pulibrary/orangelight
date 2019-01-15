@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2022_08_15_122519) do
     t.datetime "updated_at"
     t.string "document_type"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+    t.string "vocabulary"
   end
 
   create_table "flipflop_features", force: :cascade do |t|

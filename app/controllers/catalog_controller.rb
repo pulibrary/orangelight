@@ -372,7 +372,11 @@ class CatalogController < ApplicationController
     config.add_show_field 'other_format_display', label: 'Other format(s)'
     config.add_show_field 'indexes_display', label: 'Indexes'
     config.add_show_field 'finding_aid_display', label: 'Finding aid'
-    config.add_show_field 'cumulative_index_finding_aid_display', label: "Cumulative index/\u200BFinding aid"
+    config.add_show_field 'cumulative_index_finding_aid_display', label: 'Cumulative index/&#8203;Finding aid'
+
+    config.add_show_field 'subject_display', label: 'Subject(s)', helper_method: :subjectify
+    config.add_show_field 'form_genre_display', label: 'Form/&#8203;Genre'
+
     config.add_show_field 'place_name_display', label: 'Place name(s)'
     config.add_show_field 'other_title_display', label: 'Other title(s)'
     config.add_show_field 'other_title_1display', hash: true
