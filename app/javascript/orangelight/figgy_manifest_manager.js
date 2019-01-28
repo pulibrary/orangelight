@@ -182,7 +182,7 @@ class FiggyThumbnail {
       return null
     }
 
-    const $element = this.jQuery(`<img alt="" src="${thumbnail.thumbnailUrl}">`)
+    const $element = this.jQuery(`<img alt="" src="${thumbnail.iiifServiceUrl}/square/225,/0/default.jpg">`)
     return $element
   }
 
@@ -192,7 +192,8 @@ class FiggyThumbnail {
     if (!$thumbnailElement) {
       return
     }
-
+    $element.addClass('has-viewer-link')
+    $element.wrap('<a href="#view"></a>').append('<span class="sr-only">Go to viewer</span>')
     $element.empty()
     $element.append($thumbnailElement)
   }
