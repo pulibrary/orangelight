@@ -1,0 +1,132 @@
+.stackmap-cn, .stackmap-library {
+  font-weight: bold;
+}
+
+#stackmap-modal {
+  .modal-header {
+    background-color: $light-gray;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+
+  .modal-body {
+
+    .stackmap-wrapper {
+      width: 568px;
+      height: 500px;
+
+      &[data-library*="Engineering"] {
+        height: 300px;
+      }
+
+      &[data-library*="Lewis"] {
+        height: 335px;
+      }
+
+      &[data-library*="Furth"] {
+        height: 695px;
+      }
+
+      &[data-library*="Stokes"] {
+        height: 690px;
+      }
+
+      &[data-library*="Asian"] {
+        height: 340px;
+      }
+
+      &[data-library*="Marquand"] {
+        height: 675px;
+      }
+
+      &[data-library*="Mendel"] {
+        height: 515px;
+      }
+    }
+
+    .stackmap-src {
+      border: 0;
+      width: 785px;
+      height: 695px;
+
+      transform: scale(0.725);
+      transform-origin: top left;
+
+      &[src*="Engineering"] {
+        width: 970px;
+        height: 525px;
+        transform: scale(0.585);
+      }
+
+      &[src*="Lewis"] {
+        width: 945px;
+        height: 570px;
+        transform: scale(0.585);
+      }
+
+      &[src*="Furth"] {
+        width: 1000px;
+        height: 1210px;
+        transform: scale(0.575);
+      }
+
+      &[src*="Stokes"] {
+        width: 945px;
+        height: 1315px;
+        transform: scale(0.525);
+      }
+
+      &[src*="Asian"] {
+        width: 990px;
+        height: 576px;
+        transform: scale(0.585);
+      }
+
+      &[src*="Marquand"] {
+        width: 965px;
+        height: 1155px;
+        transform: scale(0.585);
+      }
+
+      &[src*="Mendel"] {
+        width: 980px;
+        height: 875px;
+        transform: scale(0.585);
+      }
+    }
+  }
+
+  .modal-footer {
+    padding: 0;
+
+    ul {
+      margin: 0;
+    }
+
+    li {
+      float: left;
+      width: calc(50% - 1px);
+      padding: 1em;
+      text-align: center;
+      background: $light-gray;
+
+      &:first-child {
+        border-bottom-left-radius: 6px;
+        border-right: 1px solid #e5e5e5;
+      }
+
+      &:last-child {
+        border-bottom-right-radius: 6px;
+      }
+    }
+
+    a {
+      color: $black;
+    }
+
+    svg {
+      vertical-align: middle;
+      margin-right: 0.325rem;
+    }
+  }
+}

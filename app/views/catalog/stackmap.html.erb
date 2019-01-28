@@ -1,0 +1,72 @@
+<% doc_presenter = show_presenter(@document) %>
+<% titlevalue = doc_presenter.field_value :field => 'title_vern_display' %>
+<div id='stackmap-modal'>
+  <div class="modal-header">
+  	<button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
+    <% unless titlevalue == '' %>
+        <h4 class="modal-title" id="myModalLabel" dir="<%= titlevalue.dir %>"> <%= titlevalue %> </h4>
+    <% end %>
+    <h4 class="modal-title" id="myModalLabel"><%= doc_presenter.field_value :field => 'title_display' %></h4>
+  </div>
+
+
+  <div class="modal-body">
+    <p>
+      Call number <span class="stackmap-cn"><%= @call_number %></span> is located in <span class="stackmap-library"><%= @location_label %></span>.
+    </p>
+    <div class="stackmap-wrapper">
+      <iframe class="stackmap-src" src=<%= @url %>></iframe>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <ul>
+      <li>
+        <a href="https://library.princeton.edu/help/trace-materials" target="_blank">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px"
+height="16px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<g id="Outline_Icons_1_">
+<g id="Outline_Icons">
+<g>
+  <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M22.498,12.31
+    c0.105,6.075-4.923,11.086-10.998,11.192c-6.074,0.104-10.893-4.734-10.998-10.81C0.396,6.619,5.426,1.606,11.5,1.502
+    C17.574,1.396,22.393,6.236,22.498,12.31z"/>
+
+    <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="11.5" y1="14" x2="11.5" y2="7"/>
+  <path fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" d="M12,17.5c0,0.276-0.224,0.5-0.5,0.5l0,0
+    c-0.276,0-0.5-0.224-0.5-0.5l0,0c0-0.276,0.224-0.5,0.5-0.5l0,0C11.776,17,12,17.224,12,17.5L12,17.5z"/>
+</g>
+</g>
+<g id="New_icons_1_">
+</g>
+</g>
+<g id="Invisible_Shape">
+<rect fill="none" width="24" height="24"/>
+</g>
+</svg>Report a missing book</a>
+      </li>
+      <li>
+        <a href="https://library.princeton.edu/ask-us" target="_blank">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px"
+height="16px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<g id="Outline_Icons_1_">
+<g id="Outline_Icons">
+<g>
+
+    <circle fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="11.5" cy="12.5" r="11"/>
+  <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.5,10
+    c0-1.656,1.343-3,3-3c1.656,0,3,1.344,3,3c0,1.658-1.344,3-3,3v3"/>
+  <path fill="none" stroke="#000000" stroke-linejoin="round" stroke-miterlimit="10" d="M12,18.5c0,0.276-0.224,0.5-0.5,0.5l0,0
+    c-0.276,0-0.5-0.224-0.5-0.5l0,0c0-0.276,0.224-0.5,0.5-0.5l0,0C11.776,18,12,18.224,12,18.5L12,18.5z"/>
+</g>
+</g>
+<g id="New_icons_1_">
+</g>
+</g>
+<g id="Invisible_Shape">
+<rect fill="none" width="24" height="24"/>
+</g>
+</svg>Ask a reference question</a>
+      </li>
+    </ul>
+  </div>
+</div>

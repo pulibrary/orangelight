@@ -7,15 +7,12 @@ class StackmapLocationFactory
     @resolver_service = resolver_service
   end
 
-  # Generates a URL using a Solr Document and holding information
-  # @param document [SolrDocument] a Solr Document for the catalog record
-  # @param location [Hash] location information for the holding
+  # Checks to see if provided holding info should resolve to a stackmap url
   # @param call_number [String] the call number for the holding
   # @param library [String] the library in which the holding is located
-  # @return [Object] the object modeling the resource to which the holding is resolved
-  def resolve(document:, location:, call_number:, library:)
-    return if excluded?(library) || call_number.nil?
-    @resolver_service.new(document: document, loc: location, cn: call_number)
+  # @return [Boolean] Exclude stackmap url if return value is true
+  def exclude?(call_number:, library:)
+    excluded?(library) || call_number.nil?
   end
 
   private
