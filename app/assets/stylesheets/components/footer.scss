@@ -2,109 +2,119 @@
 @import 'variables/colors';
 @import 'variables/typography';
 
-.l-footer .block--menu .menu {
-    display: none;
-}
-
-@media (min-width: $bp-small) {
-    .l-footer .block--menu .menu {
-        display: block;
-    }
-}
-
 .l-footer {
-    margin: 2em 0;
+  background-color: $black;
+  border-top: 5px solid $orange;
+  font-size: 0.875rem;
 }
 
-footer {
-    h2 {
-        font-size: 16px;
-        margin-bottom: 0.75em;
-        font-weight: bold;
-        color: $dark-orange;
-        font-family: $font-serif;
-        a {
-            color: $dark-orange;
-        }
+.l-region--footer {
+  clear: both;
+
+  address,
+  .footer--copyright,
+  a {
+    color: $white;
+    font-style: normal;
+    font-family: franklin-gothic-urw, sans-serif;
+    font-weight: 400;
+  }
+
+  .footer--copyright {
+    margin-top: 0.5em;
+  }
+
+  h2,
+  h2 a {
+    color: $white;
+    font-family: franklin-gothic-urw, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 0.75em;
+
+    &:hover {
+      text-decoration: none;
     }
+  }
+
+  .leaf {
+    list-style: none;
+
+    a {
+      line-height: 1.75em;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
 }
 
-footer a {
-    color: black;
-}
+// SVG logo
+.svg {
+  .facebook-logo img,
+  .twitter-logo img,
+  .govdocs-logo img,
+  .friends-logo img,
+  .pu-logo img {
+    display: none;
+  }
 
-.l-region--footer .leaf a {
-    line-height: 1.75em;
-}
-
-.l-region--footer address,
-.l-region--footer .footer--copyright,
-.l-region--footer li a {
-    color: $dark-gray;
-    font-size: 0.9em;
-}
-
-.svg .facebook-logo:before,
-.svg .twitter-logo:before,
-.svg .govdocs-logo:before,
-.svg .friends-logo:before,
-.svg .pu-logo:before {
-    content: ' ';
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-}
-
-.svg .facebook-logo,
-.svg .twitter-logo,
-.svg .govdocs-logo,
-.svg .friends-logo,
-.svg .pu-logo {
+  .facebook-logo,
+  .twitter-logo,
+  .govdocs-logo,
+  .friends-logo,
+  .pu-logo {
     background-size: contain;
     display: inline-block;
-    line-height: 11px;
     height: 24px;
-}
+    line-height: 11px;
 
-.svg .facebook-logo img,
-.svg .twitter-logo img,
-.svg .govdocs-logo img,
-.svg .friends-logo img,
-.svg .pu-logo img {
-    display: none;
-}
 
-.svg .facebook-logo {
-    background-image: image-url("facebook.svg");
-    width: 24px;
+    &::before {
+      content: " ";
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  .footer--icons {
+    margin-top: 1em;
+
+    li {
+      float: left;
+    }
+  }
+
+  .facebook-logo {
+    background-image: image-url("logo-facebook-white.svg");
     margin: 0 0.2em 0.75em;
-}
-
-.svg .twitter-logo {
-    background-image: image-url("twitter.svg");
     width: 24px;
-    margin: 0 0.2em 0.75em;
-}
+  }
 
-.svg .govdocs-logo {
+  .twitter-logo {
+    background-image: image-url("logo-twitter-bird-white.svg");
+    margin: 0 0.2em 0.75em;
+    width: 24px;
+  }
+
+  .govdocs-logo {
     background-image: image-url("govdocs.svg");
-    width: 27px;
     margin: 0 0.2em 0.75em;
-}
+    width: 24px;
+  }
 
-.svg .friends-logo {
+  .friends-logo {
     background-image: image-url("friends.svg");
-    width: 91px;
     margin: 0 0.2em 0.75em;
-}
+    width: 85px;
+  }
 
-.svg .pu-logo {
-    background-image: image-url("pu.svg");
-    width: 142px;
+  .pu-logo {
+    background-image: image-url("logo-white.svg");
     height: 40px;
     margin: 0.5em 0 0;
-}
-
-.l-region--footer .footer--copyright {
-    margin-top: 0.5em;
+    width: 141px;
+  }
 }
