@@ -95,6 +95,16 @@ $(document).ready(function() {
         return false;
     });
 
+    $('.document-thumbnail').click(function(e){
+        var target = $('#view');
+        if( target.length ) {
+            e.preventDefault();
+            $('html, body').stop().animate({
+                scrollTop: target.offset().top
+            }, 800);
+        }
+    });
+
     $('.facet_select').one('click', function (e) {
         if ($('#q').val()) {
             var query = encodeURIComponent($('#q').val())
