@@ -3,8 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe StackmapService::Url do
-  subject { described_class.new(document: document, loc: location, cn: call_number).url }
+  subject { url_service.url }
 
+  let(:url_service) { described_class.new(document: document, loc: location, cn: call_number) }
   let(:document) { SolrDocument.new(properties) }
   let(:call_number) { nil }
   let(:properties) do
@@ -22,15 +23,15 @@ RSpec.describe StackmapService::Url do
       let(:location) { 'f' }
       let(:call_number) { 'Q43.2' }
 
-      it 'resolves to firestone locator with loc and bibid' do
-        expect(subject).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}")
+      it 'resolves to embeded firestone locator with loc and bibid' do
+        expect(subject).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
       end
     end
     describe 'firestone, no call number provided' do
       let(:location) { 'f' }
 
-      it 'resolves to firestone locator with loc and bibid' do
-        expect(subject).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}")
+      it 'resolves to embeded firestone locator with loc and bibid' do
+        expect(subject).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
       end
     end
     describe 'mendel, call number provided' do
@@ -40,6 +41,10 @@ RSpec.describe StackmapService::Url do
       it 'resolves to stackmap with provided call number' do
         expect(subject).to include('princeton.stackmap')
         expect(subject).to include(call_number)
+      end
+
+      it 'the library is the location label when the holding location has no label' do
+        expect(url_service.location_label).to eq('Mendel Music Library')
       end
     end
     describe 'mendel, no call number provided' do
@@ -55,6 +60,12 @@ RSpec.describe StackmapService::Url do
 
       it 'uses title as the call number value' do
         expect(subject).to include({ callno: properties[:title_display] }.to_query)
+      end
+      it 'preferred_callno is accessible as a public method' do
+        expect(url_service.preferred_callno).to eq(properties[:title_display])
+      end
+      it 'location label is used instead of library when present' do
+        expect(url_service.location_label).to eq('Periodicals')
       end
     end
     describe 'by title location with provided call number' do

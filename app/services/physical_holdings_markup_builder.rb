@@ -21,25 +21,22 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param [String] the markup
   def self.locate_link(adapter, location, call_number, library)
     locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
-    resolved = locator.resolve(
-      location: location,
-      document: adapter.document,
-      call_number: call_number,
-      library: library
-    )
-    return '' if resolved.nil?
+    return '' if locator.exclude?(call_number: call_number, library: library)
 
-    link = resolved.url
-    return '' if link.nil?
+    stackmap_url = "/catalog/#{adapter.doc_id}/stackmap?loc=#{location}"
+    stackmap_url << "&cn=#{call_number}" if call_number
 
     child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
       <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>)
-    markup = link_to(child.html_safe, link,
-                     :target => '_blank',
+    markup = link_to(child.html_safe, stackmap_url,
                      title: I18n.t('blacklight.holdings.stackmap'),
                      class: 'find-it',
-                     'data-map-location' => location.to_s,
-                     'data-toggle' => 'tooltip')
+                     data: {
+                       'map-location' => location.to_s,
+                       'ajax-modal' => 'trigger',
+                       'call-number' => call_number,
+                       'library' => library
+                     })
     ' ' + markup
   end
 

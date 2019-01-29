@@ -46,9 +46,6 @@ module ApplicationHelper
     urls
   end
 
-  # The String constants specifying the libraries for which stack map location links should not be generated
-  DONT_FIND_IT = ['Fine Annex', 'Forrestal Annex', 'Mudd Manuscript Library', 'Online', 'Rare Books and Special Collections', 'ReCAP'].freeze
-
   # Retrieve a URL for a stack map location URL given a record, a call number, and the library in which it is held
   # @param location [Hash] location information for the item holding
   # @param document [SolrDocument] the Solr Document for the record
@@ -56,22 +53,9 @@ module ApplicationHelper
   # @param library [String] the library in which the item is held
   # @return [StackmapService::Url] the stack map location
   def locate_url(location, document, call_number, library = nil)
-    unless DONT_FIND_IT.include?(library) || call_number.nil?
+    locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
+    unless locator.exclude?(call_number: call_number, library: library)
       ::StackmapService::Url.new(document: document, loc: location, cn: call_number).url
-    end
-  end
-
-  # Generate the link markup for a given item holding within a library
-  # @param location [Hash] location information for the item holding
-  # @param call_number [String] the call number for the holding
-  # @param library [String] the library in which the item is held
-  # @return [String] the markup
-  def locate_link(location, call_number, library)
-    link = locate_url(location, @document, call_number, library)
-    if link.nil?
-      ''
-    else
-      ' ' + link_to(%(<span class="link-text">#{t('blacklight.holdings.stackmap')}</span><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>).html_safe, link, :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip', 'aria-label' => 'Where to find it')
     end
   end
 
@@ -83,10 +67,12 @@ module ApplicationHelper
   # @return [String] the markup
   def locate_link_with_glyph(location, document, call_number, library)
     link = locate_url(location, document, call_number, library)
+    stackmap_url = "/catalog/#{document['id']}/stackmap?loc=#{location}"
+    stackmap_url << "&cn=#{call_number}" if call_number
     if link.nil?
       ''
     else
-      ' ' + link_to('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>'.html_safe, link, :target => '_blank', title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-toggle' => 'tooltip', 'aria-label' => 'Where to find it')
+      ' ' + link_to('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>'.html_safe, stackmap_url, title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-ajax-modal' => 'trigger', 'aria-label' => 'Where to find it')
     end
   end
 

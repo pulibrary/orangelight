@@ -6,7 +6,12 @@ module Orangelight
 
     def stackmap
       @response, @document = fetch params[:id]
-      redirect_to ::StackmapService::Url.new(document: @document, loc: params[:loc]).url
+      stackmap_service = ::StackmapService::Url.new(document: @document,
+                                                    loc: params[:loc], cn: params[:cn])
+      @url = stackmap_service.url
+      @call_number = stackmap_service.preferred_callno
+      @location_label = stackmap_service.location_label
+      render layout: false if request.xhr?
     end
   end
 end

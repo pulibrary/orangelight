@@ -170,26 +170,15 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     end
   end
 
-  describe '.holding_location_container' do
-    let(:holding_location_container_markup) { described_class.holding_location_container(adapter, holding, location, holding_id, call_number) }
-
-    it 'generates the markup for a holding location' do
-      expect(holding_location_container_markup).to include '<span class="location-text"'
-      expect(holding_location_container_markup).to include 'Firestone Library'
-      expect(holding_location_container_markup).to include 'data-holding-id="3668455"'
-      expect(holding_location_container_markup).to include 'href="/catalog/123456"'
-    end
-  end
-
   describe '.holding_location' do
-    let(:holding_location_markup) { described_class.holding_location(adapter, holding, location, holding_id, call_number) }
+    let(:holding_location_markup) { described_class.holding_location(adapter, holding.first[1], location, holding_id, call_number) }
 
     it 'generates the markup for the holding locations' do
       expect(holding_location_markup).to include '<h3 class="library-location"'
       expect(holding_location_markup).to include '<span class="location-text"'
       expect(holding_location_markup).to include 'Firestone Library'
       expect(holding_location_markup).to include 'data-holding-id="3668455"'
-      expect(holding_location_markup).to include 'href="/catalog/123456"'
+      expect(holding_location_markup).to include "href=\"/catalog/123456/stackmap?loc=f&amp;cn=#{call_number}\""
     end
   end
 

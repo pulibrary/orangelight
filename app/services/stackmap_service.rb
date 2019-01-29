@@ -29,10 +29,22 @@ class StackmapService
       end
     end
 
+    def preferred_callno
+      if by_title_locations.include? @loc
+        @document['title_display']
+      else
+        @cn || @document['call_number_browse_s'].first
+      end
+    end
+
+    def location_label
+      holding_location[:label].presence || holding_location[:library][:label]
+    end
+
     private
 
       def locator_url
-        "https://library.princeton.edu/locator/index.php?loc=#{@loc}&id=#{bibid}"
+        "https://library.princeton.edu/locator/index.php?loc=#{@loc}&id=#{bibid}&embed=true"
       end
 
       def stackmap_url
@@ -58,20 +70,6 @@ class StackmapService
       # use the optionally provided call number unless if by title location
       def callno
         @cn = preferred_callno
-      end
-
-      def preferred_callno
-        if by_title_locations.include? @loc
-          @document['title_display']
-        else
-          @cn || @document['call_number_browse_s'].first
-        end
-      end
-
-      # Need to include all non-stackmap libraries here to support the Main Catalog
-      # that displays the locator link on EVERY record.
-      def locator_libs
-        %w[firestone hrc annexa annexb mudd online rare recap]
       end
 
       def stackmap_libs
