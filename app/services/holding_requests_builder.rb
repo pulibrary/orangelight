@@ -8,7 +8,14 @@ class HoldingRequestsBuilder
   # @param children [String] the children for the holding block
   # @return [String] the markup
   def self.holding_block(children)
-    content_tag(:div, children.html_safe, class: 'holding-block') unless children.empty?
+    content_tag(:tr, children.html_safe, class: 'holding-block') unless children.empty?
+  end
+
+  # Generate <div> container for holding details
+  # @param children [String] the children for the holding details
+  # @return [String] the markup
+  def self.holding_details(children)
+    content_tag(:td, children.html_safe, class: 'holding-details') unless children.empty?
   end
 
   # Generate <div> container for missing item holdings

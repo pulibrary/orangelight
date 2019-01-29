@@ -2,7 +2,7 @@
   <%= link_to(linked_record.title, solr_document_url(linked_record.id)) %>
 
   <% if linked_record.fields.count == 1 %>
-    <div><span>
+    <div class="linked-block-id"><span>
       <%= render_document_show_field_label(linked_record.document, :field => linked_record.fields.keys.last).html_safe %>
     </span>
     <% linked_record.fields.values.last.each do |field_value| %>

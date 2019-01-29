@@ -35,14 +35,16 @@
 }
 
 .holding-label {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .availability--panel_umlaut {
   display: none;
 }
 
-.availability--panel_umlaut, .location--panel .panel, .location--linked .panel {
+.availability--panel_umlaut,
+.location--panel .panel,
+.location--linked .panel {
   background: white;
   margin: 0 0 1.5em;
   border-radius: 0;
@@ -54,8 +56,9 @@
     background: none;
   }
 
-  .umlaut_section_content, .panel-body, .umlaut .section_prompt {
-    font-size: 12px;
+  .umlaut_section_content,
+  .panel-body,
+  .umlaut .section_prompt {
     padding: 0;
   }
 
@@ -63,7 +66,8 @@
     margin-top: .9em;
   }
 
-  .holding-block, .linked-block {
+  .holding-block,
+  .linked-block {
     padding: 1.5em 1em;
     border-bottom: 1px solid #eee;
     display: block;
@@ -79,38 +83,9 @@
     padding: 0;
   }
 
-  .section_heading h3 {
-      font-size: 1.1em;
-      margin: 0;
-      line-height: 1.45em;
-      background: none;
-      padding-bottom: none;
-  }
-
   .holding-block:last-child, ul li:last-child {
     border: none;
   }
-}
-
-.availability--panel_umlaut {
-  .umlaut-section {
-    border: 2px solid #eee;
-  }
-
-  .section_heading {
-    border-bottom: 2px solid #eee;
-    padding: 10px 15px;
-  }
-
-  .umlaut_section_content {
-    padding: 1em;
-  }
-
-  .section_prompt {
-    padding: 0;
-    margin: 0;
-  }
-
 }
 
 .location--online .panel .panel-body {
@@ -161,14 +136,6 @@
   text-decoration: none;
 }
 
-.record-availability {
-  padding-left: 5px;
-
-  @media (max-width: 500px) {
-    padding: 15px;
-  }
-}
-
 .top-panel-heading.panel-heading {
   padding: 0px 15px 10px 0;
 }
@@ -189,7 +156,8 @@
   font-size: 0.9em;
 }
 
-.holding-block, .linked-block {
+.holding-block,
+.linked-block {
   .status,
   .location-has,
   .journal-current-issues {
@@ -200,27 +168,21 @@
     margin-top: 1em;
   }
 
-  li {
-    margin-left: 1em;
-    text-indent: -1em;
-    padding-left: 1em;
-  }
-
-  .holding-label {
-    color: $blacklight-gray;
-  }
-
-  .journal-current-issues .trigger {
+  .holding-details .trigger {
     cursor: pointer;
     color: $blue;
+    padding: 0 5px;
+    border: 1px solid $blue;
+    display: inline-block;
+    margin-top: 0.5rem;
 
     &:hover {
-      color: $dark-orange;
-      text-decoration: underline;
+      color: $white;
+      background: $blue;
     }
   }
 
-  .journal-current-issues li:nth-child(n+3) {
+  .journal-current-issues li:nth-child(n+2) {
     display: none;
 
     &.all-issues {
@@ -228,19 +190,46 @@
     }
   }
 
-  .location-services {
+  .location-services a {
     display: none;
   }
 
-  .location-services.service-always-requestable {
-    display: block;
+  .location-services.service-always-requestable a {
+    display: inline-block;
   }
 }
 
-.panel .find-it,
-.panel .browse-cn {
+.availability--online,
+.availability--physical,
+.availability--other-versions,
+.availability--excerpts,
+.availability--highlighted {
+  font-size: 14px;
+  margin-bottom: 1.25rem;
+}
+
+.availability--online {
+  div {
+    display: inline;
+  }
+
+  li {
+    margin-bottom: .25rem;
+
+    .response_coverage_statement {
+      padding-left: 5px;
+      color: $gray-light;
+    }
+
+    .response_notes {
+      color: $gray-light;
+    }
+  }
+}
+
+.availability-table .find-it,
+.availability-table .browse-cn {
   display: table;
-  font-size: 12px;
   text-decoration: none;
 
   &:hover,
@@ -260,6 +249,114 @@
   }
 }
 
+.availability-table {
+  display: inline-block;
+  font-size: 14px;
+
+  thead,
+  tbody {
+    display: inline-block;
+    width: 100%;
+  }
+
+  th {
+    color: $gray-light;
+  }
+
+  tr {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 0.75rem;
+
+    &:last-child {
+      border-bottom: 0;
+
+      td {
+        padding-bottom: 0;
+      }
+
+      td:last-child > li:first-child {
+        padding-top: 10px;
+      }
+    }
+
+    th,
+    td {
+      border: 0;
+      display: block;
+      flex: 1;
+      padding: 10px 15px 10px 0;
+
+      &:nth-child(3) {
+        flex: 0 0 135px;
+      }
+    }
+
+    th:last-child {
+      display: none;
+    }
+
+    td:last-child{
+      width: 100%;
+      flex: auto;
+    }
+
+    .location-services {
+      padding-right: 0;
+    }
+
+    .holding-details {
+      padding: 0 0 0 1em;
+      color: $gray-light;
+
+      ul,
+      li {
+        font-size: .875rem;
+      }
+    }
+  }
+}
+
+.availability--other-versions {
+  .linked-block {
+    margin-bottom: .75em;
+  }
+
+  .linked-block-id {
+    margin-left: 1em;
+    color: $gray-light;
+    font-size: 12px;
+  }
+}
+
+.availability--excerpts {
+  .section_prompt {
+    display: none;
+  }
+
+  .response_item {
+    margin-bottom: .75em;
+  }
+
+  .response_notes {
+    margin-left: 1em;
+    color: $gray-light;
+    font-size: 12px;
+  }
+}
+
+.availability--highlighted {
+  .response_item {
+    margin-bottom: .75em;
+  }
+
+  .response_source {
+    margin-left: 1em;
+    color: $gray-light;
+    font-size: 12px;
+  }
+}
+
 .availability-icon {
   margin-right: 10px;
   cursor: default;
@@ -270,10 +367,6 @@
   &.more-info {
     width: auto;
   }
-
-  // @media (min-width: $bp-small){
-  //   width: 100px;
-  // }
 }
 
 .blacklight-holdings ul {
@@ -291,13 +384,11 @@
       font-size: 24px;
       padding-top: 1px;
       color: #e87511;
-      // @include vertical-align;
     }
 
     .availability-icon {
       float: left;
       padding: 6px 5px;
-      // @include vertical-align;
 
       &.label-warning {
         color: $black;
@@ -313,18 +404,21 @@
         margin: 0;
         width: 100%;
       }
-
-      // @include vertical-align;
-
-      // .call-number {
-      //   white-space: pre;
-      // }
     }
   }
-
-  // .availability-icon + .library-location {
-  //   @media (min-width: $bp-small){
-  //     padding-left: 110px;
-  //   }
-  // }
 }
+
+.holding-block .location-text,
+.holding-block .holding-call-number {
+  font-weight: 500;
+
+  a {
+    font-weight: normal;
+  }
+}
+
+.record-availability, .document {
+  h3 {
+      margin-top: 1rem;
+    }
+  }

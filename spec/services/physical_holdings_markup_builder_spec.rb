@@ -170,11 +170,22 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     end
   end
 
+  describe '.multi_item_availability' do
+    let(:bib_id) { '9092827' }
+    let(:multi_item_availability_markup) { described_class.multi_item_availability(bib_id, holding_id) }
+
+    it 'generates the markup to support loading multi-item availability' do
+      expect(multi_item_availability_markup).to include "data-record-id=\"#{bib_id}\""
+      expect(multi_item_availability_markup).to include "data-holding-id=\"#{holding_id}\""
+      expect(multi_item_availability_markup).to include '<ul class="item-status"'
+    end
+  end
+
   describe '.holding_location' do
     let(:holding_location_markup) { described_class.holding_location(adapter, holding.first[1], location, holding_id, call_number) }
 
     it 'generates the markup for the holding locations' do
-      expect(holding_location_markup).to include '<h3 class="library-location"'
+      expect(holding_location_markup).to include '<td class="library-location"'
       expect(holding_location_markup).to include '<span class="location-text"'
       expect(holding_location_markup).to include 'Firestone Library'
       expect(holding_location_markup).to include 'data-holding-id="3668455"'
@@ -186,7 +197,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     let(:location_services_block_markup) { described_class.location_services_block(adapter, holding_id, location_rules, request_link) }
 
     it 'generates the markup for the location services container' do
-      expect(location_services_block_markup).to include '<div class="location-services service-conditional"'
+      expect(location_services_block_markup).to include '<td class="location-services service-conditional"'
       expect(location_services_block_markup).to include 'data-open="false"'
       expect(location_services_block_markup).to include 'data-requestable="true"'
       expect(location_services_block_markup).to include 'data-aeon="false"'
@@ -198,7 +209,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     let(:request_placeholder_markup) { described_class.request_placeholder(adapter, holding_id, location_rules, holding) }
 
     it 'generates the markup for request links' do
-      expect(request_placeholder_markup).to include '<div class="location-services service-conditional"'
+      expect(request_placeholder_markup).to include '<td class="location-services service-conditional"'
       expect(request_placeholder_markup).to include 'data-open="false"'
       expect(request_placeholder_markup).to include 'data-requestable="true"'
       expect(request_placeholder_markup).to include 'data-aeon="false"'
@@ -260,6 +271,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
       before do
         allow(adapter).to receive(:voyager_holding?).and_return(false)
+        allow(adapter).to receive(:pub_date).and_return(2010)
       end
 
       it 'generates a "service-always-requestable" class' do

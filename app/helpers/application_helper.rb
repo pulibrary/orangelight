@@ -15,7 +15,7 @@ module ApplicationHelper
   def umlaut_services_fulltext(document)
     services = ''
     unless document.key? 'electronic_access_1display'
-      services << content_tag(:div, '', :id => 'full_text', :class => ['availability--panel', 'availability_full-text', 'availability--panel_umlaut'], 'data-umlaut-full-text' => true)
+      services << content_tag(:div, '', :id => 'full_text', :class => ['availability--online', 'availability_full-text', 'availability--panel_umlaut'], 'data-umlaut-full-text' => true)
     end
     services.html_safe
   end
@@ -24,8 +24,8 @@ module ApplicationHelper
   # @return [String] the markup
   def umlaut_services
     services = ''
-    services << content_tag(:div, '', :id => 'excerpts', :class => ['availability--panel', 'availability_excerpts', 'availability--panel_umlaut'], 'data-umlaut-services' => true)
-    services << content_tag(:div, '', :id => 'highlighted_link', :class => ['availability--panel', 'availability_highlighted-link', 'availability--panel_umlaut'], 'data-umlaut-services' => true)
+    services << content_tag(:div, '', :id => 'excerpts', :class => ['availability--excerpts', 'availability_excerpts', 'availability--panel_umlaut'], 'data-umlaut-services' => true)
+    services << content_tag(:div, '', :id => 'highlighted_link', :class => ['availability--highlighted', 'availability_highlighted-link', 'availability--panel_umlaut'], 'data-umlaut-services' => true)
     services.html_safe
   end
 

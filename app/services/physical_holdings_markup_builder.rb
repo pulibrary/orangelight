@@ -64,7 +64,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   def self.holding_location(adapter, holding, location, holding_id, call_number)
     location = holding_location_container(adapter, holding, location, holding_id, call_number)
     markup = ''
-    markup << content_tag(:h3, location.html_safe,
+    markup << content_tag(:td, location.html_safe,
                           class: 'library-location',
                           data: { holding_id: holding_id })
     markup
@@ -78,7 +78,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   def self.call_number_link(holding, cn_value)
-    markup = ''
+    cn = ''
     unless cn_value.nil?
       children = call_number_span
       cn_browse_link = link_to(children.html_safe,
@@ -88,16 +88,17 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                                'data-toggle' => 'tooltip',
                                'data-original-title' => "Browse: #{cn_value}")
       cn = "#{holding['call_number']} #{cn_browse_link}"
-      markup << content_tag(:div, cn.html_safe, class: 'holding-call-number')
     end
-    markup
+    content_tag(:td, cn.html_safe, class: 'holding-call-number')
   end
 
   def self.holding_location_repository
-    content_tag(:span, 'On-site access',
-                class: 'availability-icon label label-warning',
-                title: 'Availability: On-site by request',
-                'data-toggle' => 'tooltip')
+    children = content_tag(:span,
+                           'On-site access',
+                           class: 'availability-icon label label-success',
+                           title: 'Availability: On-site by request',
+                           'data-toggle' => 'tooltip')
+    content_tag(:td, children.html_safe)
   end
 
   def self.holding_location_scsb_span
@@ -109,7 +110,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   def self.holding_location_scsb(holding, bib_id, holding_id)
-    content_tag(:div, holding_location_scsb_span.html_safe,
+    content_tag(:td, holding_location_scsb_span.html_safe,
                 class: 'holding-status',
                 data: {
                   'availability_record' => true,
@@ -122,8 +123,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
 
   # For when a holding record has a value for the "dspace" key, but it is set to false
   def self.holding_location_default(bib_id, holding_id, location_rules)
-    children = content_tag(:div, '', class: 'availability-icon')
-    content_tag(:div,
+    children = content_tag(:span, '', class: 'availability-icon')
+    content_tag(:td,
                 children.html_safe,
                 class: 'holding-status',
                 data: {
@@ -135,36 +136,49 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   def self.holding_location_unavailable
-    content_tag(:span, 'Unavailable', class: 'availability-icon label label-danger',
-                                      title: 'Availability: Embargoed', 'data-toggle' => 'tooltip')
+    children = content_tag(:span,
+                           'Unavailable',
+                           class: 'availability-icon label label-danger',
+                           title: 'Availability: Embargoed',
+                           'data-toggle' => 'tooltip')
+    content_tag(:td, children.html_safe, class: 'holding-status')
   end
 
   def self.holding_label(label)
-    content_tag(:div, label, class: 'holding-label')
+    content_tag(:li, label, class: 'holding-label')
   end
 
   def self.shelving_titles_list(holding)
-    children = "#{holding_label('Shelving title:')} #{listify_array(holding['shelving_title'])}"
+    children = "#{holding_label('Shelving title')} #{listify_array(holding['shelving_title'])}"
     content_tag(:ul, children.html_safe, class: 'shelving-title')
   end
 
   def self.location_notes_list(holding)
-    children = "#{holding_label('Location note:')} #{listify_array(holding['location_note'])}"
+    children = "#{holding_label('Location note')} #{listify_array(holding['location_note'])}"
     content_tag(:ul, children.html_safe, class: 'location-note')
   end
 
   def self.location_has_list(holding)
-    children = "#{holding_label('Location has:')} #{listify_array(holding['location_has'])}"
+    children = "#{holding_label('Location has')} #{listify_array(holding['location_has'])}"
     content_tag(:ul, children.html_safe, class: 'location-has')
   end
 
+  def self.multi_item_availability(bib_id, holding_id)
+    content_tag(:ul, '',
+                class: 'item-status',
+                data: {
+                  'record_id' => bib_id,
+                  'holding_id' => holding_id
+                })
+  end
+
   def self.supplements_list(holding)
-    children = "#{holding_label('Supplements:')} #{listify_array(holding['supplements'])}"
+    children = "#{holding_label('Supplements')} #{listify_array(holding['supplements'])}"
     content_tag(:ul, children.html_safe, class: 'holding-supplements')
   end
 
   def self.indexes_list(holding)
-    children = "#{holding_label('Indexes:')} #{listify_array(holding['indexes'])}"
+    children = "#{holding_label('Indexes')} #{listify_array(holding['indexes'])}"
     content_tag(:ul, children.html_safe, class: 'holding-indexes')
   end
 
@@ -191,7 +205,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @return [String] the markup
   def self.restrictions_markup(restrictions)
     restricted_items = restrictions.map do |value|
-      content_tag(:div, scsb_use_label(value),
+      content_tag(:td, scsb_use_label(value),
                   class: 'icon-warning icon-request-reading-room',
                   title: scsb_use_toolip(value),
                   'data-toggle' => 'tooltip')
@@ -224,13 +238,17 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     !adapter.voyager_holding?(holding_id) || aeon_location?(location) || scsb_location?(location)
   end
 
+  def self.thesis?(adapter, holding_id)
+    holding_id == 'thesis' && adapter.pub_date > 2012
+  end
+
   # Generate the CSS class for holding based upon its location and ID
   # @param adapter [HoldingRequestsAdapter] adapter for the Solr Document and Bibdata
   # @param location [Hash] location information
   # @param holding_id [String]
   # @return [String] the CSS class
   def self.show_request(adapter, location, holding_id)
-    if requestable?(adapter, holding_id, location)
+    if requestable?(adapter, holding_id, location) && !thesis?(adapter, holding_id)
       'service-always-requestable'
     else
       'service-conditional'
@@ -244,7 +262,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param link [String] link markup
   # @return [String] block markup
   def self.location_services_block(adapter, holding_id, location_rules, link)
-    content_tag(:div, link,
+    content_tag(:td, link,
                 class: "location-services #{show_request(adapter, location_rules, holding_id)}",
                 data: {
                   open: open_location?(location_rules),
@@ -393,7 +411,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                                              holding_id,
                                              cn_value)
       end
-      markup << self.class.call_number_link(holding, cn_value) unless cn_value.nil?
+      markup << self.class.call_number_link(holding, cn_value)
       markup << if @adapter.repository_holding?(holding)
                   self.class.holding_location_repository
                 elsif @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
@@ -406,18 +424,24 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                                                       location_rules)
                 end
 
-      markup << self.class.shelving_titles_list(holding) if @adapter.shelving_title?(holding)
-      markup << self.class.location_notes_list(holding) if @adapter.location_note?(holding)
-      markup << self.class.location_has_list(holding) if @adapter.location_has?(holding)
-      markup << self.class.supplements_list(holding) if @adapter.supplements?(holding)
-      markup << self.class.indexes_list(holding) if @adapter.indexes?(holding)
-      markup << self.class.journal_issues_list(holding_id) if @adapter.journal?
+      request_placeholder_markup = \
+        self.class.request_placeholder(@adapter, holding_id, location_rules, holding)
+      markup << request_placeholder_markup.html_safe
 
-      unless holding_id == 'thesis' && @adapter.pub_date > 2012
-        request_placeholder_markup = \
-          self.class.request_placeholder(@adapter, holding_id, location_rules, holding)
-        markup << request_placeholder_markup.html_safe
-      end
+      holding_notes = ''
+
+      holding_notes << self.class.shelving_titles_list(holding) if @adapter.shelving_title?(holding)
+      holding_notes << self.class.location_notes_list(holding) if @adapter.location_note?(holding)
+      holding_notes << self.class.location_has_list(holding) if @adapter.location_has?(holding)
+      holding_notes << self.class.multi_item_availability(bib_id, holding_id)
+      holding_notes << self.class.supplements_list(holding) if @adapter.supplements?(holding)
+      holding_notes << self.class.indexes_list(holding) if @adapter.indexes?(holding)
+      holding_notes << self.class.journal_issues_list(holding_id) if @adapter.journal?
+
+      holding_notes = self.class.holding_details(holding_notes) unless holding_notes.empty?
+
+      markup << holding_notes
+
       markup = self.class.holding_block(markup) unless markup.empty?
       markup
     end
@@ -437,7 +461,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     def physical_holdings_block
       markup = ''
       children = physical_holdings
-      markup = self.class.content_tag(:div, children.html_safe) unless children.empty?
+      markup = self.class.content_tag(:tbody, children.html_safe) unless children.empty?
       markup
     end
 end

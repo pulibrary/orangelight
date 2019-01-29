@@ -35,7 +35,7 @@ $(document).ready(function() {
     // availability toggle journal current issues
     $("#availability").on("click", ".trigger", function(event) {
         event.preventDefault();
-        $(this).parent().siblings().toggleClass("all-issues");
+        $(this).siblings(".journal-current-issues").children().toggleClass("all-issues");
         $(this).text(function(i, toggle) {
             return toggle === "More" ? "Less" : "More";
         });

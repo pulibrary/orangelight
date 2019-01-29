@@ -37,8 +37,8 @@ en:
     holdings:
       paging_request: 'Paging request only'
       linked: 'Other versions'
-      online: 'Online'
-      print: 'Copies in Library'
+      online: 'Available Online'
+      print: 'Copies in the Library'
       stackmap: 'Where to find it'
       browse: 'Browse related items'
       search_missing: 'No holdings available for this record'
@@ -59,6 +59,8 @@ en:
       zero_results:
         search_fields: "You searched by %{search_fields}"
         try_borrow_direct: 'Try Borrow Direct'
+      show:
+        label: '%{label}'
     header_links:
       login: 'Login'
       course_reserves: 'Course Reserves'

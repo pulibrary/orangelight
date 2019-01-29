@@ -10,6 +10,7 @@ body {
 main {
   background: $white;
   padding: 1em 0 1.5em;
+  min-height: calc(100vh - 419px);
 }
 
 .input-group {

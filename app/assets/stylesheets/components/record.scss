@@ -1,0 +1,236 @@
+.blacklight-catalog-show {
+  [dir="rtl"] {
+    font-family: verdana, arial;
+  }
+
+  h1 {
+    font-family: $font-sans;
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    line-height: 1.25;
+  }
+
+  .main-content {
+    font-family: $font-sans;
+    font-size: 1rem;
+    font-display: fallback;
+    line-height: 1.5;
+
+    h2,
+    h3 {
+      font-family: $font-sans-alt;
+      font-weight: 600;
+      font-size: 1.25rem;
+      line-height: 1.25;
+    }
+
+    dt,
+    dd,
+    th {
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    th {
+      font-family: $font-sans-alt;
+      font-weight: 500;
+      color: $blacklight-gray;
+    }
+
+    th {
+      padding-top: 0.75rem;
+      padding-bottom: 0;
+    }
+
+    dd {
+      margin-bottom: 0.75rem;
+      max-width: 75ch;
+    }
+
+    .top-fields {
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .top-fields,
+    .availability--online,
+    .availability--physical {
+      border-bottom: 2px solid $light-gray;
+      padding-bottom: .75rem;
+    }
+
+    .availability--online,
+    .availability--physical
+    .availability-table {
+      font-family: $font-sans-alt;
+      font-size: 1rem;
+
+      .label {
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: initial;
+      }
+
+      .find-it,
+      .browse-cn {
+        font-size: 0.875rem;
+      }
+
+      .holding-details ul {
+        margin-bottom: 0;
+      }
+
+      .holding-details .holding-label {
+        color: $blacklight-gray;
+      }
+
+      .holding-details li {
+        color: $black;
+      }
+
+      .item-status:empty {
+        display: none;
+      }
+    }
+
+    .document-details,
+    .availability--online > ul:first-of-type,
+    .umlaut_section_content ul:first-of-type {
+      padding-top: 0.5rem;
+    }
+
+    .availability--online .electronic-access + .availability_full-text .response_list {
+      padding-top: 0;
+    }
+
+    iframe {
+      border: 0;
+    }
+  }
+
+  #aside h3  {
+    font-family: $font-sans-alt;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.25;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  .restrictions--panel.alert-warning {
+    font-family: $font-sans-alt;
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    text-align: center;
+    border-color: #faf2cc;
+    color: $black;
+  }
+
+  .availability--excerpts,
+  .availability--highlighted,
+  .availability--other-versions {
+    border: 1px solid $gray;
+
+    .section_heading,
+    .section-heading {
+      padding: 10px 15px;
+      border-bottom: 1px solid transparent;
+      color: #333;
+      border-color: #ddd;
+
+      h3 {
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    .umlaut_section_content,
+    .section-content {
+      padding: 15px;
+    }
+  }
+}
+
+#sidebar .document-thumbnail.has-viewer-link {
+  cursor: pointer;
+  position: relative;
+
+  &:hover img  {
+    opacity: 0.75;
+  }
+
+  &:before {
+    content: "\e096";
+    position: absolute;
+    z-index: 2;
+    width: 3rem;
+    background-color: $black;
+    height: 3rem;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    color: #ffffff;
+    bottom: -25px;
+    right: -25px;
+    transform: translate(-50%, -50%);
+    font-family: "Glyphicons Halflings";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    font-size: 1.25rem;
+    line-height: 2;
+  }
+
+  &:hover:before {
+    background-color: $blue;
+  }
+}
+
+@media (max-width: $bp-small) {
+  #main-content {
+    .availability-table td {
+      width: 100%;
+      flex: auto;
+    }
+
+    .availability-table thead {
+      visibility: hidden;
+      height: 1px;
+
+      tr,
+      th {
+        padding: 0;
+      }
+    }
+
+    .availability-table tbody tr:first-child,
+    .availability-table tbody tr:first-child .library-location {
+      padding-top: 0;
+    }
+  }
+}
+
+#content {
+  float: right;
+  margin-bottom: 1.25rem;
+}
+
+.holding-details {
+  font-size: .875rem;
+}
+
+.current-issues {
+  margin-top: .5rem;
+}
+
+
+@media (min-width: $bp-large) {
+  .journal-current-issues {
+    columns: 3;
+  }
+}
