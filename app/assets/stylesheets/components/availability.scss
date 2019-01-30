@@ -194,7 +194,8 @@
     display: none;
   }
 
-  .location-services.service-always-requestable a {
+  .location-services.service-always-requestable a,
+  .location-services[data-requestable="true"] a {
     display: inline-block;
   }
 }
