@@ -120,7 +120,7 @@ class AvailabilityUpdater
   update_location_services: (holding_id, availability_info) ->
     status = availability_info['status']
     temp_status = availability_info['temp_loc']
-    location_services_element = $(".location-services[data-holding-id='#{holding_id}']")
+    location_services_element = $(".location-services[data-holding-id='#{holding_id}'] a")
     availability_label = $(".holding-status[data-holding-id='#{holding_id}'] .availability-icon.label")
     if availability_label.text()
       availability_label_text = title_case(availability_label.text())
@@ -166,9 +166,9 @@ class AvailabilityUpdater
             .fail (jqXHR, textStatus, errorThrown) =>
               console.error("Failed to retrieve availability data for the holding ID " + holding_id + ": " + errorThrown)
 
-    element = $("*[data-availability-record='true'][data-holding-id='#{holding_id}']")
+    element = $(".holding-details[data-holding-id='#{holding_id}']")
     req.success (data) ->
-      ul = "<ul class=\"item-status\">"
+      ul = ""
       for key, item of data
         status = title_case(item['status'])
         label = status_label(status)
@@ -194,8 +194,7 @@ class AvailabilityUpdater
             span.addClass("label-default")
             location_services_element = $(".location-services[data-holding-id='#{holding_id}']")
             location_services_element.show()
-      ul = ul + "</ul>"
-      element.append(ul) if ul != "<ul class=\"item-status\"></ul>"
+      element.append(ul) if ul != ""
   get_issues: (holding_id) ->
     url = "#{@availability_url}?mfhd_serial=#{holding_id}"
     req = $.getJSON url
@@ -205,9 +204,10 @@ class AvailabilityUpdater
     element = $("*[data-journal='true'][data-holding-id='#{holding_id}']")
     req.success (data) ->
       if data.length > 1
-        element.prepend("<div class=\"holding-label\">Current issues: <span class=\"pull-right trigger\">More</span></div>")
+        element.before("<div class=\"holding-label current-issues\">Current issues:</div>")
+        element.after("<div class=\"trigger\">More</div>")
       else if data != ''
-        element.prepend("<div class=\"holding-label\">Current issues:</div>")
+        element.before("<div class=\"holding-label current-issues\">Current issues:</div>")
       for key, issue of data
         li = $("<li>#{issue}</li>")
         element.append(li)
@@ -277,7 +277,7 @@ class AvailabilityUpdater
     else
       location = availability_info['location']
     map_url = "/catalog/#{record_id}/stackmap?loc=#{location}"
-    link = "<a target='_blank' title='Where to find it' class='find-it' data-location-map='#{location}' data-toggle='tooltip' href='#{map_url}'>"
+    link = "<a title='Where to find it' class='find-it' data-location-map='#{location}' data-ajax-modal='trigger' href='#{map_url}'>"
     marker_span = "<span class='glyphicon glyphicon-map-marker'></span>"
     if marker_only
       link = "#{link}#{marker_span}</a>"

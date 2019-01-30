@@ -1,6 +1,7 @@
+<h2>Details</h2>
 <% doc_presenter = show_presenter(document) %>
 <%# default partial to display solr document fields in catalog show view -%>
-<dl class="dl-horizontal  dl-invert">
+<dl class="dl-horizontal  dl-invert document-details">
   <% document_show_fields(document).each do |field_name, field| -%>
     <% if should_render_show_field? document, field %>
         <%# marc relator code for authors -%>
@@ -10,7 +11,7 @@
           <%= render 'other_versions_show', document: document, field: field, linked_records: document.linked_records(field: field.field) %>
         <% else %>
           <% if field_name == 'author_display' && doc_presenter.field_value(field: 'marc_relator_display') != '' %>
-            <dt class="blacklight-<%= field_name.parameterize %>"><%= doc_presenter.field_value(field: 'marc_relator_display') %>:</dt>
+            <dt class="blacklight-<%= field_name.parameterize %>"><%= doc_presenter.field_value(field: 'marc_relator_display') %></dt>
           <%# author is default if no marc relator, default for other fields -%>
           <% else %>
             <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label(document, field: field_name).html_safe %></dt>

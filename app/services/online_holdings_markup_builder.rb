@@ -70,18 +70,18 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
       if /getit\.princeton\.edu/.match? url
         # strip to get only the query_string
         marcit_ctx = url.gsub('http://getit.princeton.edu/resolve?', '')
-        markup << content_tag(:div, '',
+        markup << content_tag(:li, '',
                               id: 'full_text',
                               class: ['availability--panel', 'availability_full-text'],
                               'data-umlaut-full-text' => true,
                               'data-url-marcit' => marcit_ctx)
       end
 
-      markup << content_tag(:div, link.html_safe, class: 'electronic-access')
+      markup << content_tag(:li, link.html_safe, class: 'electronic-access')
     end
 
     unless adapter.umlaut_accessible?
-      markup << content_tag(:div, '',
+      markup << content_tag(:li, '',
                             id: 'full_text',
                             class: ['availability--panel',
                                     'availability_full-text',
@@ -129,7 +129,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
     def online_holdings_block
       markup = ''
       children = online_holdings
-      markup = self.class.content_tag(:div, children.html_safe) unless children.empty?
+      markup = self.class.content_tag(:ul, children.html_safe) unless children.empty?
       markup
     end
 end

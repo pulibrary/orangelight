@@ -1342,175 +1342,53 @@
         ]
     },
     {
-        "access_facet": [
-            "In the Library"
-        ],
-        "advanced_location_s": [
-            "whs",
-            "Rare Books and Special Collections"
-        ],
-        "author_citation_display": [
-            "Gutenberg, Johann",
-            "Fogel, Johannes",
-            "Predigerkirche (Erfurt, Germany)",
-            "Brinley, George",
-            "Ives, Brayton",
-            "Cole, Hamilton",
-            "Ellsworth, James W."
-        ],
-        "author_roles_1display": [
-            "{\"secondary_authors\":[\"Gutenberg, Johann\",\"Fogel, Johannes\",\"Predigerkirche (Erfurt, Germany)\",\"Brinley, George\",\"Ives, Brayton\",\"Cole, Hamilton\",\"Ellsworth, James W.\"],\"translators\":[],\"editors\":[],\"compilers\":[]}"
-        ],
-        "author_s": [
-            "Gutenberg, Johann, 1397?-1468",
-            "Fogel, Johannes, active 1455-1462",
-            "Predigerkirche (Erfurt, Germany)",
-            "Brinley, George, 1817-1875",
-            "Ives, Brayton, 1840-1914",
-            "Cole, Hamilton",
-            "Ellsworth, James W. (James William), 1849-1925"
-        ],
-        "binding_note_display": [
-            "WHS copy is apparently one of three copies bound by Johannes Fogel of Erfurt."
-        ],
-        "call_number_browse_s": [
-            "48.1",
-            "113.2"
-        ],
-        "call_number_display": [
-            "48.1",
-            "113.2"
-        ],
-        "cataloged_tdt": [
-            "2016-12-27T20:52:25Z"
-        ],
-        "cjk_all": [
-            "Bible. Latin. Vulgate. 1456.",
-            "Biblia Latina.",
-            "Gutenberg Bible",
-            "Mazarin Bible",
-            "Mazarine Bible",
-            "[Mainz : Johann Gutenberg and Johann Fust, before August 1456].",
-            "2 v. (324; 319 leaves) ; 40.5 x 28.8 cm. (fol.)",
-            "Commonly known in English as Gutenberg Bible, formerly known as Mazarin or Mazarine Bible.",
-            "Stillwell B460.",
-            "Goff B-526.",
-            "WHS copy has 12 leaves supplied from other copies and 5 leaves supplied in facsimile; the 17 leaves are vol. I fo. 1 and vol. II fo. 1, 17, 25, 46, 70, 149, 155, 156, 191, 217, 235, 268, 270, 275, 279, and 305. NjP",
-            "WHS also has fragment ([1] leaf ; 32.7 x 21 cm.) from Ezekiel ch. 34. NjP",
-            "WHS copy has provenance: Predigerkirche, Erfurt, Germany; George Brinley; Brayton Ives; Hamilton Cole; and James W. Ellsworth. NjP",
-            "WHS copy is apparently one of three copies bound by Johannes Fogel of Erfurt. NjP",
-            "mlc",
-            "Gutenberg, Johann, 1397?-1468, printer.",
-            "Fogel, Johannes, active 1455-1462, binder. NjP.",
-            "Predigerkirche (Erfurt, Germany), former owner. NjP",
-            "Brinley, George, 1817-1875, former owner. NjP",
-            "Ives, Brayton, 1840-1914, former owner. NjP",
-            "Cole, Hamilton, former owner. NjP",
-            "Ellsworth, James W. (James William), 1849-1925 former owner. NjP",
-            "http://arks.princeton.edu/ark:/88435/7d278t10z",
-            "http://arks.princeton.edu/ark:/88435/xp68kg247",
-            "4847980 whs 1 48.1 Former call number: S4.2",
-            "4847980 vol.1-2",
-            "4848993 whs 2 113.2 Former call number: 3.3.1",
-            "4848993 fragment (one leaf from Ezekiel 34)"
-        ],
-        "compiled_created_t": [
-            "Biblia Latina."
-        ],
-        "description_display": [
-            "2 v. (324; 319 leaves) ; 40.5 x 28.8 cm. (fol.)"
-        ],
-        "description_t": [
-            "2 v. (324; 319 leaves) ; 40.5 x 28.8 cm. (fol.)"
-        ],
-        "electronic_access_1display": [
-            "{\"https://catalog.princeton.edu/catalog/4609321#view\":[\"Digital content below\"],\"http://arks.princeton.edu/ark:/88435/xp68kg247\":[\"arks.princeton.edu\"],\"https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs\":[\"drive.google.com\",\"Curatorial documentation\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/7d278t10z\":\"https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest\"}}"
-        ],
-        "format": [
-            "Book"
-        ],
-        "holdings_1display": [
-            "{\"4847980\":{\"location\":\"Rare Books and Special Collections - William H. Scheide Library\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"whs\",\"copy_number\":\"1\",\"call_number\":\"48.1\",\"call_number_browse\":\"48.1\",\"location_has\":[\"vol.1-2\"]},\"4848993\":{\"location\":\"Rare Books and Special Collections - William H. Scheide Library\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"whs\",\"copy_number\":\"2\",\"call_number\":\"113.2\",\"call_number_browse\":\"113.2\",\"location_has\":[\"fragment (one leaf from Ezekiel 34)\"]}}"
-        ],
-        "id": [
-            "4609321"
-        ],
-        "language_code_s": [
-            "lat"
-        ],
-        "language_facet": [
-            "Latin"
-        ],
-        "location": [
-            "Rare Books and Special Collections"
-        ],
-        "location_code_s": [
-            "whs"
-        ],
-        "location_display": [
-            "Rare Books and Special Collections - William H. Scheide Library"
-        ],
-        "notes_display": [
-            "Commonly known in English as Gutenberg Bible, formerly known as Mazarin or Mazarine Bible.",
-            "WHS copy has 12 leaves supplied from other copies and 5 leaves supplied in facsimile; the 17 leaves are vol. I fo. 1 and vol. II fo. 1, 17, 25, 46, 70, 149, 155, 156, 191, 217, 235, 268, 270, 275, 279, and 305.",
-            "WHS also has fragment ([1] leaf ; 32.7 x 21 cm.) from Ezekiel ch. 34."
-        ],
-        "other_title_display": [
-            "Gutenberg Bible",
-            "Mazarin Bible",
-            "Mazarine Bible"
-        ],
-        "other_title_index": [
-            "Gutenberg Bible",
-            "Mazarin Bible",
-            "Mazarine Bible"
-        ],
-        "provenance_display": [
-            "WHS copy has provenance: Predigerkirche, Erfurt, Germany; George Brinley; Brayton Ives; Hamilton Cole; and James W. Ellsworth."
-        ],
-        "pub_citation_display": [
-            "Mainz: Johann Gutenberg and Johann Fust"
-        ],
-        "pub_created_display": [
-            "[Mainz : Johann Gutenberg and Johann Fust, before August 1456]."
-        ],
-        "pub_created_s": [
-            "[Mainz : Johann Gutenberg and Johann Fust, before August 1456]."
-        ],
-        "pub_date_display": [
-            "1456"
-        ],
-        "pub_date_start_sort": [
-            "1456"
-        ],
-        "references_display": [
-            "Stillwell B460.",
-            "Goff B-526."
-        ],
-        "related_name_json_1display": [
-            "{\"Printer\":[\"Gutenberg, Johann, 1397?-1468\"],\"Binder\":[\"Fogel, Johannes, active 1455-1462\"],\"Former owner\":[\"Predigerkirche (Erfurt, Germany)\",\"Brinley, George, 1817-1875\",\"Ives, Brayton, 1840-1914\",\"Cole, Hamilton\",\"Ellsworth, James W. (James William), 1849-1925\"]}"
-        ],
-        "title_a_index": [
-            "Biblia Latina"
-        ],
-        "title_citation_display": [
-            "Biblia Latina."
-        ],
-        "title_display": [
-            "Biblia Latina."
-        ],
-        "title_no_h_index": [
-            "Biblia Latina."
-        ],
-        "title_sort": [
-            "Biblia Latina."
-        ],
-        "title_t": [
-            "Biblia Latina."
-        ],
-        "uniform_title_s": [
-            "Bible. Latin. Vulgate. 1456"
-        ]
+        "id": ["4609321"],
+        "numeric_id_b": [true],
+        "cjk_all": [""],
+        "cjk_notes": [""],
+        "author_citation_display": ["Gutenberg, Johann", "Fogel, Johannes", "Predigerkirche (Erfurt, Germany)", "Brinley, George", "Ives, Brayton", "Cole, Hamilton", "Ellsworth, James W."],
+        "author_roles_1display": ["{\"secondary_authors\":[\"Gutenberg, Johann\",\"Fogel, Johannes\",\"Predigerkirche (Erfurt, Germany)\",\"Brinley, George\",\"Ives, Brayton\",\"Cole, Hamilton\",\"Ellsworth, James W.\"],\"translators\":[],\"editors\":[],\"compilers\":[]}"],
+        "author_s": ["Gutenberg, Johann, 1397?-1468", "Fogel, Johannes, active 1455-1462", "Predigerkirche (Erfurt, Germany)", "Brinley, George, 1817-1875", "Ives, Brayton, 1840-1914", "Cole, Hamilton", "Ellsworth, James W. (James William), 1849-1925"],
+        "uniform_title_s": ["Bible. Latin. Vulgate. 1456"],
+        "title_display": ["Bible, Latin."],
+        "title_a_index": ["Bible, Latin"],
+        "title_sort": ["Bible, Latin."],
+        "title_no_h_index": ["Bible, Latin."],
+        "title_t": ["Bible, Latin."],
+        "title_citation_display": ["Bible, Latin"],
+        "compiled_created_t": ["Bible, Latin."],
+        "pub_created_display": ["[Mainz : Johann Gutenberg and Johann Fust, before August 1456]."],
+        "pub_created_s": ["[Mainz : Johann Gutenberg and Johann Fust, before August 1456]."],
+        "pub_citation_display": ["Mainz: Johann Gutenberg and Johann Fust"],
+        "pub_date_display": ["1456"],
+        "pub_date_start_sort": ["1456"],
+        "cataloged_tdt": ["2016-12-27T20:52:25Z"],
+        "format": ["Book"],
+        "electronic_access_1display": ["{\"https://catalog.princeton.edu/catalog/4609321#view\":[\"Digital content\"],\"https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs\":[\"drive.google.com\",\"Curatorial documentation\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/7d278t10z\":\"https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest\"}}"],
+        "description_display": ["2 v. (324; 319 leaves) ; 40.5 x 28.8 cm. (fol.)"],
+        "description_t": ["2 v. (324; 319 leaves) ; 40.5 x 28.8 cm. (fol.)"],
+        "number_of_pages_citation_display": ["2 v. (324; 319 leaves)"],
+        "notes_index": ["Commonly known in English as the Gutenberg Bible, also known as the Mazarine Bible.", "GW 4201.", "Goff B-526.", "WHS copy has 12 leaves supplied from other copies and 5 leaves supplied in facsimile; the 17 leaves are vol. I fo. 1 and vol. II fo. 1, 17, 25, 46, 70, 149, 155, 156, 191, 217, 235, 268, 270, 275, 279, and 305. NjP", "WHS copy has provenance: Predigerkirche, Erfurt, Germany; George Brinley; Brayton Ives; Hamilton Cole; and James W. Ellsworth. NjP", "Princeton copy 2: A single imperfect paper leaf from the Gutenberg Bible, the first printed Bible. The leaf is vol. II fo. 122 (the 2nd leaf of quire 13), with text of the last verses of Ezekiel 33, all of Ezekiel 34, and beginning verses of Ezekiel 35. The leaf comes from an otherwise lost copy of the Gutenberg Bible. It is one of nineteen such leaves, all belonging to quires 13 and 14 of volume II, that were cut down to a smaller size and pasted together to create pasteboard for some unidentified bookbinding, probably in the sixteenth century. About a dozen copies of the Gutenberg Bible, most of which were printed on vellum, are known only from fragmentary preservation as bookbinding materials. These cut-down paper leaves came to light when the Vienna bookdealers Gilhofer \u0026 Ranschburg offered them leaf by leaf in an auction of 3 April 1911. Two other leaves from this group are at the Library of Congress, a third is at Dartmouth College Library, and a fourth is at the State Library of New South Wales in Sydney. The rubrication of the copy is simple, using only red ink. NjP", "WHS copy is one of three copies bound in the workshop of Johannes Fogel of Erfurt. NjP", "mlc"],
+        "notes_display": ["Commonly known in English as the Gutenberg Bible, also known as the Mazarine Bible.", "WHS copy has 12 leaves supplied from other copies and 5 leaves supplied in facsimile; the 17 leaves are vol. I fo. 1 and vol. II fo. 1, 17, 25, 46, 70, 149, 155, 156, 191, 217, 235, 268, 270, 275, 279, and 305.", "Princeton copy 2: A single imperfect paper leaf from the Gutenberg Bible, the first printed Bible. The leaf is vol. II fo. 122 (the 2nd leaf of quire 13), with text of the last verses of Ezekiel 33, all of Ezekiel 34, and beginning verses of Ezekiel 35. The leaf comes from an otherwise lost copy of the Gutenberg Bible. It is one of nineteen such leaves, all belonging to quires 13 and 14 of volume II, that were cut down to a smaller size and pasted together to create pasteboard for some unidentified bookbinding, probably in the sixteenth century. About a dozen copies of the Gutenberg Bible, most of which were printed on vellum, are known only from fragmentary preservation as bookbinding materials. These cut-down paper leaves came to light when the Vienna bookdealers Gilhofer \u0026 Ranschburg offered them leaf by leaf in an auction of 3 April 1911. Two other leaves from this group are at the Library of Congress, a third is at Dartmouth College Library, and a fourth is at the State Library of New South Wales in Sydney. The rubrication of the copy is simple, using only red ink."],
+        "binding_note_display": ["WHS copy is one of three copies bound in the workshop of Johannes Fogel of Erfurt."],
+        "language_facet": ["Latin"],
+        "publication_place_facet": ["Germany"],
+        "language_code_s": ["lat"],
+        "language_iana_s": ["la"],
+        "provenance_display": ["WHS copy has provenance: Predigerkirche, Erfurt, Germany; George Brinley; Brayton Ives; Hamilton Cole; and James W. Ellsworth."],
+        "references_display": ["GW 4201.", "Goff B-526."],
+        "related_name_json_1display": ["{\"Printer\":[\"Gutenberg, Johann, 1397?-1468\"],\"Binder\":[\"Fogel, Johannes, active 1455-1462\"],\"Former owner\":[\"Predigerkirche (Erfurt, Germany)\",\"Brinley, George, 1817-1875\",\"Ives, Brayton, 1840-1914\",\"Cole, Hamilton\",\"Ellsworth, James W. (James William), 1849-1925\"]}"],
+        "other_title_index": ["Gutenberg Bible", "Mazarin Bible", "Mazarine Bible"],
+        "other_title_display": ["Gutenberg Bible", "Mazarin Bible", "Mazarine Bible"],
+        "alt_title_246_display": ["Gutenberg Bible", "Mazarin Bible", "Mazarine Bible"],
+        "holdings_1display": ["{\"4847980\":{\"location\":\"Rare Books and Special Collections - William H. Scheide Library\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"whs\",\"copy_number\":\"1\",\"call_number\":\"48.1\",\"call_number_browse\":\"48.1\",\"location_has\":[\"vol.1-2\"]},\"4848993\":{\"location\":\"Rare Books and Special Collections - William H. Scheide Library\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"whs\",\"copy_number\":\"2\",\"call_number\":\"113.2\",\"call_number_browse\":\"113.2\",\"location_has\":[\"fragment (one leaf from Ezekiel 34)\",\"Princeton copy 2\"]}}"],
+        "location_code_s": ["whs"],
+        "location": ["Rare Books and Special Collections"],
+        "location_display": ["Rare Books and Special Collections - William H. Scheide Library"],
+        "access_facet": ["In the Library"],
+        "advanced_location_s": ["whs", "Rare Books and Special Collections"],
+        "call_number_display": ["48.1", "113.2"],
+        "call_number_browse_s": ["48.1", "113.2"]
     },
     {
         "access_facet": [
@@ -20184,5 +20062,52 @@
       "call_number_browse_s": [
         "BJ6870.1\/6233"
       ]
+    },
+    {"id":["2520232"],"numeric_id_b":[true],"cjk_all":[""],"cjk_notes":[""],"author_display":["Boswell, James, 1740-1795"],"author_sort":["Boswell, James, 1740-1795"],"author_citation_display":["Boswell, James","Seward, William","Knight, Phillipina Deane","Knight, Ellis Cornelia","Ess, Henry N.","Millhauser, De Witt"],"author_roles_1display":["{\"secondary_authors\":[\"Seward, William\",\"Knight, Phillipina Deane\",\"Knight, Ellis Cornelia\",\"Ess, Henry N.\",\"Millhauser, De Witt\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Boswell, James\"}"],"author_s":["Boswell, James, 1740-1795","Seward, William, 1747-1799","Knight, Phillipina Deane, Lady, 1726 or 7-1799","Knight, Ellis Cornelia, 1757-1837","Ess, Henry N. (Henry Newton), 1921-2000","Millhauser, De Witt, 1884-1946"],"marc_relator_display":["Author"],"uniform_title_s":["Life of Samuel Johnson"],"title_display":["The life of Samuel Johnson, LL.D. : comprehending an account of his studies and numerous works, in chronological order, a series of his epistolary correspondence and conversations with many eminent persons, and various original pieces of his composition, never before published : the whole exhibiting a view of literature and literary men in Great-Britain, for near half a century, during which he flourished : in two volumes / by James Boswell, Esq."],"title_a_index":["The life of Samuel Johnson, LL.D."],"title_sort":["life of Samuel Johnson, LL.D. : comprehending an account of his studies and numerous works, in chronological order, a series of his epistolary correspondence and conversations with many eminent persons, and various original pieces of his composition, never before published : the whole exhibiting a view of literature and literary men in Great-Britain, for near half a century, during which he flourished : in two volumes / by James Boswell, Esq."],"title_no_h_index":["The life of Samuel Johnson, LL.D. : comprehending an account of his studies and numerous works, in chronological order, a series of his epistolary correspondence and conversations with many eminent persons, and various original pieces of his composition, never before published : the whole exhibiting a view of literature and literary men in Great-Britain, for near half a century, during which he flourished : in two volumes / by James Boswell, Esq.","life of Samuel Johnson, LL.D. : comprehending an account of his studies and numerous works, in chronological order, a series of his epistolary correspondence and conversations with many eminent persons, and various original pieces of his composition, never before published : the whole exhibiting a view of literature and literary men in Great-Britain, for near half a century, during which he flourished : in two volumes / by James Boswell, Esq."],"title_t":["The life of Samuel Johnson, LL.D. : comprehending an account of his studies and numerous works, in chronological order, a series of his epistolary correspondence and conversations with many eminent persons, and various original pieces of his composition, never before published : the whole exhibiting a view of literature and literary men in Great-Britain, for near half a century, during which he flourished : in two volumes / by James Boswell, Esq."],"title_citation_display":["The life of Samuel Johnson, LL.D. : comprehending an account of his studies and numerous works, in chronological order, a series of his epistolary correspondence and conversations with many eminent persons, and various original pieces of his composition, never before published : the whole exhibiting a view of literature and literary men in Great-Britain, for near half a century, during which he flourished : in two volumes"],"compiled_created_t":["The life of Samuel Johnson, LL.D. : comprehending an account of his studies and numerous works, in chronological order, a series of his epistolary correspondence and conversations with many eminent persons, and various original pieces of his composition, never before published : the whole exhibiting a view of literature and literary men in Great-Britain, for near half a century, during which he flourished : in two volumes / by James Boswell, Esq."],"pub_created_display":["London: : Printed by Henry Baldwin, for Charles Dilly ..., 1791."],"pub_created_s":["London: : Printed by Henry Baldwin, for Charles Dilly ..., 1791."],"pub_citation_display":["London:: Printed by Henry Baldwin, for Charles Dilly ..."],"pub_date_display":["1791"],"pub_date_start_sort":["1791"],"cataloged_tdt":["2001-02-21T21:58:58Z"],"format":["Book"],"description_display":["2 v. : port., facsims. ; 29 cm. (4to)"],"description_t":["2 v. : port., facsims. ; 29 cm. (4to)"],"number_of_pages_citation_display":["2 v."],"notes_index":["Includes index.","ESTC t064481","Ex copy 9 Bequest; Henry N. Ess III, Princeton Class of 1942; 2001. NjP","Ex copy 9 Bookplate of Sir James Hope of Hopetoun. NjP","The principal corrections and additions to the first edition of Mr. Boswell's Life of Dr. Johnson. London, Printed by H. Baldwin for C. Dilly, 1793. 42 p. 28 cm. Copies 1,2,3 \u0026 6 have \"give\", v.1, p. 135, .10; c.3 \u0026 5 have misprint \"gve\".","RHT copy is presentation copy to William Seward with inscription by author.","EXOV Copy 1. Formerly belonged to Ellis Cornelia Knight, and to her mother, Lady Phillipina Knight, who annotated it copiously. - cf. Princeton Univ. Library Chronicle, IV, nos. 2-3, p. 37-49. Imperfect: t.p., v.2, wanting.","Ex Copy 2. Extra-illustrated. Bound in 2 parts at ends of vols. 1-2, copy 6.","EXOV copy 7 presented in memory of De Witt Millhauser by Mr. and Mrs. William M. Cahn, Jr., Class of 1933; \"Corrections and additions\" bound in at end of v.2.","Ex copy 11 has annotations by at least three, and possibly four or even five, readers in the margins of vol. 2, commenting on the text and each other's notes. NjP","Ex copy 8 in Cosway bindings, with miniature of Johnson mounted in front cover of vol. 1, Boswell in vol. 2; from the estate of Dr. Howard T. Behrman."],"notes_display":["Includes index.","The principal corrections and additions to the first edition of Mr. Boswell's Life of Dr. Johnson. London, Printed by H. Baldwin for C. Dilly, 1793. 42 p. 28 cm. Copies 1,2,3 \u0026 6 have \"give\", v.1, p. 135, .10; c.3 \u0026 5 have misprint \"gve\".","Ex Copy 2. Extra-illustrated. Bound in 2 parts at ends of vols. 1-2, copy 6.","EXOV copy 7 presented in memory of De Witt Millhauser by Mr. and Mrs. William M. Cahn, Jr., Class of 1933; \"Corrections and additions\" bound in at end of v.2."],"binding_note_display":["Ex copy 8 in Cosway bindings, with miniature of Johnson mounted in front cover of vol. 1, Boswell in vol. 2; from the estate of Dr. Howard T. Behrman."],"language_facet":["English"],"publication_place_facet":["England"],"language_code_s":["eng"],"language_iana_s":["en"],"provenance_display":["Ex copy 9 Bookplate of Sir James Hope of Hopetoun.","Ex copy 11 has annotations by at least three, and possibly four or even five, readers in the margins of vol. 2, commenting on the text and each other's notes."],"source_acquisition_display":["Ex copy 9 Bequest; Henry N. Ess III, Princeton Class of 1942; 2001.","RHT copy is presentation copy to William Seward with inscription by author.","EXOV Copy 1. Formerly belonged to Ellis Cornelia Knight, and to her mother, Lady Phillipina Knight, who annotated it copiously. - cf. Princeton Univ. Library Chronicle, IV, nos. 2-3, p. 37-49. Imperfect: t.p., v.2, wanting."],"references_display":["ESTC t064481"],"references_url_display":["ESTC t064481"],"subject_display":["Johnson, Samuel, 1709-1784"],"subject_facet":["Johnson, Samuel, 1709-1784"],"subject_topic_facet":["Johnson, Samuel, 1709-1784"],"lc_1letter_facet":["P - Language \u0026 Literature"],"lc_rest_facet":["PR - English Literature"],"call_number_scheme_facet":["Library of Congress"],"call_number_group_facet":["P - Language \u0026 Literature"],"call_number_full_facet":["PR - English Literature"],"form_genre_display":["Annotations (Provenance) 18th century.","Extra-illustration"],"related_name_json_1display":["{\"Former owner\":[\"Seward, William, 1747-1799\",\"Knight, Phillipina Deane, Lady, 1726 or 7-1799\",\"Knight, Ellis Cornelia, 1757-1837\",\"Millhauser, De Witt, 1884-1946\"],\"Donor\":[\"Ess, Henry N. (Henry Newton), 1921-2000\"]}"],"lccn_display":["   48034914  "],"lccn_s":["48034914"],"oclc_s":["6441833"],"standard_no_index":["ocm06441833"],"other_version_s":["ocm06441833"],"holdings_1display":["{\"2822999\":{\"location\":\"Rare Books and Special Collections - Oversize \",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"exov\",\"copy_number\":\"1\",\"call_number\":\"3804.3.59\",\"call_number_browse\":\"3804.3.59\",\"location_has\":[\"v.1-2\"]},\"2823000\":{\"location\":\"Rare Books and Special Collections - South East (RB)\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"hsvr\",\"copy_number\":\"2\",\"call_number\":\"EX 3804.3.59\",\"call_number_browse\":\"3804.3.59\",\"location_has\":[\"v.1-2\"]},\"2823001\":{\"location\":\"Rare Books and Special Collections - Oversize \",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"exov\",\"copy_number\":\"3\",\"call_number\":\"3804.3.59\",\"call_number_browse\":\"3804.3.59\",\"location_has\":[\"v.1-2\"]},\"2823002\":{\"location\":\"Rare Books and Special Collections - Oversize \",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"exov\",\"copy_number\":\"4\",\"call_number\":\"3804.3.59\",\"call_number_browse\":\"3804.3.59\",\"location_has\":[\"v.1-2\"]},\"2823003\":{\"location\":\"Rare Books and Special Collections - Oversize \",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"exov\",\"copy_number\":\"5\",\"call_number\":\"3804.3.59\",\"call_number_browse\":\"3804.3.59\",\"location_has\":[\"v.1-2\"]},\"2823004\":{\"location\":\"Rare Books and Special Collections - Oversize \",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"exov\",\"copy_number\":\"6\",\"call_number\":\"3804.3.59\",\"call_number_browse\":\"3804.3.59\",\"location_has\":[\"v.1-2\"]},\"2823005\":{\"location\":\"Rare Books and Special Collections - Oversize \",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"exov\",\"copy_number\":\"7\",\"call_number\":\"3804.3.59\",\"call_number_browse\":\"3804.3.59\",\"location_has\":[\"v.1-2\"]},\"2823006\":{\"location\":\"Rare Books and Special Collections - Rare Books\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"ex\",\"copy_number\":\"8\",\"call_number\":\"3804.3.59\",\"call_number_browse\":\"3804.3.59\",\"location_has\":[\"v.1-2\"]},\"2823007\":{\"location\":\"Rare Books and Special Collections - South East (RB)\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"hsvr\",\"call_number\":\"RHT 18th-41\",\"copy_number\":\"1\",\"call_number_browse\":\"18th-41\",\"location_has\":[\"vol.1-2\"]},\"3745618\":{\"location\":\"Rare Books and Special Collections - Rare Books\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"ex\",\"copy_number\":\"9\",\"call_number\":\"Oversize 2003-0405Q\",\"call_number_browse\":\"2003-0405Q\",\"location_has\":[\"vol.1-2\"]},\"10180392\":{\"location\":\"Rare Books and Special Collections - Rare Books\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"ex\",\"copy_number\":\"10\",\"call_number\":\"oversize item 7700745q\",\"call_number_browse\":\"item 7700745q\"}}"],"location_code_s":["exov","hsvr","ex"],"location":["Rare Books and Special Collections"],"location_display":["Rare Books and Special Collections - Oversize ","Rare Books and Special Collections - South East (RB)","Rare Books and Special Collections - Rare Books"],"access_facet":["In the Library"],"advanced_location_s":["exov","hsvr","ex","Rare Books and Special Collections"],"name_uniform_title_1display":["[[\"Boswell, James, 1740-1795.\",\"Life of Samuel Johnson\"]]"],"name_title_browse_s":["Boswell, James, 1740-1795. Life of Samuel Johnson"],"call_number_display":["3804.3.59","EX 3804.3.59","RHT 18th-41","Oversize 2003-0405Q","oversize item 7700745q"],"call_number_browse_s":["3804.3.59","18th-41","2003-0405Q","item 7700745q"]},
+    {
+        "id": ["426420"],
+        "numeric_id_b": [true],
+        "author_roles_1display": ["{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}"],
+        "uniform_title_s": ["Nature (London, England)"],
+        "title_display": ["Nature."],
+        "title_t": ["Nature."],
+        "title_citation_display": ["Nature"],
+        "compiled_created_t": ["Nature."],
+        "pub_created_display": ["London : Macmillan Journals, 1869-"],
+        "pub_created_s": ["London : Macmillan Journals, 1869-"],
+        "pub_citation_display": ["London: Macmillan Journals"],
+        "pub_date_display": ["1869"],
+        "pub_date_start_sort": [1869],
+        "pub_date_end_sort": [9999],
+        "cataloged_tdt": ["2000-06-13T05:00:00Z"],
+        "format": ["Journal"],
+        "description_display": ["v. : ill. ; 26-28 cm.", "Vol. 1, no. 1 (Nov. 4, 1869)-"],
+        "description_t": ["v. : ill. ; 26-28 cm.", "Vol. 1, no. 1 (Nov. 4, 1869)-", "With v. 7, no. 158, issue numbering is independent of volume numbering."],
+        "number_of_pages_citation_display": ["v."],
+        "frequency_display": ["Weekly"],
+        "has_supplement_display": ["Nature. Supplement"],
+        "linking_notes_display": ["Vols. 229-246, Jan. 1971-Dec. 1973, issued in three parts. The two new parts, Nature. New biology, and Nature. Physical sciences, continued the volume numbering of Nature in addition to carrying their own issue numbering. With v. 246, Dec. 1973, Nature: new biology, and Nature: physical sciences, ceased publication and were absorbed by Nature."],
+        "numbering_pec_notes_display": ["With v. 7, no. 158, issue numbering is independent of volume numbering."],
+        "supplement_notes_display": ["Supplements accompany some issues."],
+        "language_facet": ["English"],
+        "language_code_s": ["eng"],
+        "language_iana_s": ["en"],
+        "subject_display": ["Science—Periodicals"],
+        "subject_facet": ["Science—Periodicals"],
+        "other_title_display": ["Nature (London)", "Nature. New biology 1971-1973", "Nature. Physical sciences 1971-1973"],
+        "alt_title_246_display": ["Nature. New biology 1971-1973", "Nature. Physical sciences 1971-1973"],
+        "issn_display": ["0028-0836"],
+        "lccn_display": ["   12037118 //r863 "],
+        "lccn_s": ["12037118"],
+        "issn_s": ["00280836"],
+        "oclc_s": ["1586310"],
+        "other_version_s": ["00280836", "03022889", "ocm01586310"],
+        "holdings_1display": ["{\"464634\":{\"location\":\"Lewis Library - Serials (shelved by serial title)\",\"library\":\"Lewis Library\",\"location_code\":\"sciss\",\"copy_number\":\"1\",\"call_number\":\"8001.673\",\"call_number_browse\":\"8001.673\",\"location_has\":[\"Vol. 1, no. 1 (Nov. 4, 1869)-v. 557, issue no. 7707 (31 May 2018)\",\"LACKS: no. 7434, 7544\",\"CURRENT ISSUES IN: Lewis Library (SCI)\"]},\"464638\":{\"location\":\"Engineering Library - Serials\",\"library\":\"Engineering Library\",\"location_code\":\"stss\",\"copy_number\":\"1\",\"call_number\":\"Q1 .N3\",\"call_number_browse\":\"Q1 .N3\",\"location_has\":[\"LATEST YEAR ONLY RETAINED\"]},\"464640\":{\"location\":\"ReCAP - Lewis Library use only\",\"library\":\"ReCAP\",\"location_code\":\"rcppn\",\"call_number\":\"Q1 .N3\",\"call_number_browse\":\"Q1 .N3\",\"location_has\":[\"Vol. 9 (Nov. 1873)-v. 553, issue no. 7689 (25 Jan. 2018)\",\"LACKS: v. 12-16; v. 43-81; no. 7024, 7542, 7544\",\"CURRENT ISSUES IN: Lewis Library (SCI)\"]},\"3538795\":{\"location\":\"Fine Annex\",\"library\":\"Fine Annex\",\"location_code\":\"anxb\",\"copy_number\":\"1\",\"call_number\":\"Q1 .N3\",\"call_number_browse\":\"Q1 .N3\",\"location_has\":[\"Vol. 212, no. 5057 (Oct. 1966)-v. 342, no. 6252 (Dec. 21/28, 1989)\",\"LACKS: v. 221, no. 5175-5178\"]}}"],
+        "location_code_s": ["sciss", "stss", "rcppn", "anxb"],
+        "location": ["Lewis Library", "Engineering Library", "ReCAP", "Fine Annex"],
+        "location_display": ["Lewis Library - Serials (shelved by serial title)", "Engineering Library - Serials", "ReCAP - Lewis Library use only", "Fine Annex"],
+        "advanced_location_s": ["sciss", "stss", "rcppn", "anxb", "Lewis Library", "Engineering Library", "ReCAP", "Fine Annex"],
+        "call_number_display": ["8001.673", "Q1 .N3"],
+        "call_number_browse_s": ["8001.673", "Q1 .N3"]
     }
 ]

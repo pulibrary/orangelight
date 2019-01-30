@@ -37,6 +37,7 @@
     white-space: normal;
     float: left;
     clear: left;
+    text-align: left;
   }
 
   .dl-horizontal dd {
@@ -51,12 +52,15 @@
     content: '';
     clear: both;
   }
-
-  .content {
-    margin-left: -25px;
-  }
 }
 
 .header-row {
   padding-left: 0px;
+  margin-bottom: 1em;
+
+  h2 {
+    font-size: 1.1em;
+    margin-top: 0.5em;
+    margin-bottom: 1.18em;
+  }
 }

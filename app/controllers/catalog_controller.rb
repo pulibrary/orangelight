@@ -158,30 +158,32 @@ class CatalogController < ApplicationController
     # config.add_show_field 'subtitle_display', :label => 'Subtitle'
     # config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
 
-    config.add_show_field 'author_display', label: 'Author/&#8203;Artist', helper_method: :browse_name
-    config.add_show_field 'name_uniform_title_1display', label: 'Uniform title', helper_method: :name_title_hierarchy
-    config.add_show_field 'format', label: 'Format', helper_method: :format_render
-    config.add_show_field 'url_fulltext_display', label: 'URL'
-    config.add_show_field 'url_suppl_display', label: 'More information'
-    config.add_show_field 'language_facet', label: 'Language'
-    config.add_show_field 'published_display', label: 'Published'
-    config.add_show_field 'published_vern_display', label: 'Published'
-    config.add_show_field 'pub_created_display', label: 'Published/&#8203;Created'
+    # Top fields in show page / prioritized information
+    config.add_show_field 'author_display', label: 'Author/&#8203;Artist', helper_method: :browse_name, if: false
+    config.add_show_field 'name_uniform_title_1display', label: 'Uniform title', helper_method: :name_title_hierarchy, if: false
+    config.add_show_field 'format', label: 'Format', helper_method: :format_render, if: false
+    config.add_show_field 'language_facet', label: 'Language', if: false
+    config.add_show_field 'edition_display', label: 'Εdition', if: false
+    config.add_show_field 'pub_created_display', label: 'Published/&#8203;Created', if: false
+    config.add_show_field 'description_display', label: 'Description', if: false
 
-    config.add_show_field 'compiled_created_display', label: 'Compiled/&#8203;Created'
-    config.add_show_field 'edition_display', label: 'Εdition'
-    config.add_show_field 'medium_support_display', label: 'Medium/&#8203;Support'
-
-    # Senior Thesis fields
+    # Senior Thesis linked fields
     config.add_show_field 'advisor_display', label: 'Advisor(s)', helper_method: :browse_name
     config.add_show_field 'contributor_display', label: 'Contributor(s)', helper_method: :browse_name
     config.add_show_field 'department_display', label: 'Department', helper_method: :browse_name
     config.add_show_field 'certificate_display', label: 'Certificate', helper_method: :browse_name
     config.add_show_field 'class_year_s', label: 'Class year', link_to_search: true
 
-    config.add_show_field 'description_display', label: 'Description'
-    config.add_show_field 'numbering_pec_notes_display', label: 'Numbering peculiarities'
-    config.add_show_field 'arrangement_display', label: 'Arrangement'
+    # Linked fields pushed to top of supplemental info
+    config.add_show_field 'subject_display', label: 'Subject(s)', helper_method: :subjectify
+    config.add_show_field 'related_name_json_1display', hash: true
+    config.add_show_field 'form_genre_display', label: 'Form/&#8203;Genre'
+    config.add_show_field 'related_works_1display', label: 'Related work(s)', helper_method: :name_title_hierarchy
+    config.add_show_field 'series_display', label: 'Series', helper_method: :series_with_links
+    config.add_show_field 'contains_1display', label: 'Contains', helper_method: :name_title_hierarchy
+    config.add_show_field 'data_source_display', label: 'Data source', helper_method: :name_title
+    config.add_show_field 'contained_in_s', label: 'Contained in', link_field: 'id'
+    config.add_show_field 'related_record_s', label: 'Related record(s)', link_field: 'id'
     config.add_show_field 'translation_of_display', label: 'Translation of', helper_method: :name_title
     config.add_show_field 'translated_as_display', label: 'Translated as', helper_method: :name_title
     config.add_show_field 'issued_with_display', label: 'Issued with', helper_method: :name_title
@@ -198,18 +200,26 @@ class CatalogController < ApplicationController
     config.add_show_field 'split_into_display', label: 'Split into', helper_method: :name_title
     config.add_show_field 'merged_to_form_display', label: 'Merged to form', helper_method: :name_title
     config.add_show_field 'changed_back_to_display', label: 'Changed back to', helper_method: :name_title
+    config.add_show_field 'subseries_of_display', label: 'Subseries of', helper_method: :name_title
+    config.add_show_field 'has_subseries_display', label: 'Has subseries', helper_method: :name_title
+    config.add_show_field 'has_supplement_display', label: 'Has supplement', helper_method: :name_title
+    config.add_show_field 'supplement_to_display', label: 'Supplement to', helper_method: :name_title
+
+    # Fields that are not links
+    config.add_show_field 'url_fulltext_display', label: 'URL'
+    config.add_show_field 'url_suppl_display', label: 'More information'
+    config.add_show_field 'compiled_created_display', label: 'Compiled/&#8203;Created'
+    config.add_show_field 'medium_support_display', label: 'Medium/&#8203;Support'
+    config.add_show_field 'numbering_pec_notes_display', label: 'Numbering peculiarities'
+    config.add_show_field 'arrangement_display', label: 'Arrangement'
     config.add_show_field 'frequency_display', label: 'Frequency'
     config.add_show_field 'former_frequency_display', label: 'Former frequency'
     config.add_show_field 'linking_notes_display', label: 'Linking notes'
-    config.add_show_field 'subseries_of_display', label: 'Subseries of', helper_method: :name_title
-    config.add_show_field 'has_subseries_display', label: 'Has subseries', helper_method: :name_title
-    config.add_show_field 'series_display', label: 'Series', helper_method: :series_with_links
     config.add_show_field 'restrictions_note_display', label: 'Restrictions note', helper_method: :html_safe
     config.add_show_field 'biographical_historical_note_display', label: 'Biographical/&#8203;Historical note'
     config.add_show_field 'summary_note_display', label: 'Summary note'
     config.add_show_field 'notes_display', label: 'Notes'
     config.add_show_field 'holdings_1display', label: 'Location has', if: :online_holding_note?, helper_method: :location_has
-
     config.add_show_field 'with_notes_display', label: 'With'
     config.add_show_field 'bibliographic_notes_display', label: 'Bibliographic history'
     config.add_show_field 'dissertation_notes_display', label: 'Dissertation note'
@@ -224,8 +234,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'geo_cov_notes_display', label: 'Geographic coverage'
     config.add_show_field 'time_period_notes_display', label: 'Time period of content'
     config.add_show_field 'supplement_notes_display', label: 'Supplement note'
-    config.add_show_field 'has_supplement_display', label: 'Has supplement', helper_method: :name_title
-    config.add_show_field 'supplement_to_display', label: 'Supplement to', helper_method: :name_title
     config.add_show_field 'study_prog_notes_display', label: 'Study program information'
     config.add_show_field 'censorship_notes_display', label: 'Censorship note'
     config.add_show_field 'reproduction_notes_display', label: 'Reproduction note'
@@ -247,7 +255,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'accumulation_notes_display', label: 'Accumulation and frequency of use'
     config.add_show_field 'awards_notes_display', label: 'Awards'
     config.add_show_field 'source_desc_notes_display', label: 'Source of description'
-
     config.add_show_field 'binding_note_display', label: 'Binding note'
     config.add_show_field 'local_notes_display', label: 'Local notes'
     config.add_show_field 'rights_reproductions_note_display', label: 'Rights and reproductions note', helper_method: :html_safe
@@ -268,17 +275,12 @@ class CatalogController < ApplicationController
     config.add_show_field 'indexes_display', label: 'Indexes'
     config.add_show_field 'finding_aid_display', label: 'Finding aid'
     config.add_show_field 'cumulative_index_finding_aid_display', label: 'Cumulative index/&#8203;Finding aid'
-    config.add_show_field 'subject_display', label: 'Subject(s)', helper_method: :subjectify
-    config.add_show_field 'form_genre_display', label: 'Form/&#8203;Genre'
-    config.add_show_field 'related_works_1display', label: 'Related work(s)', helper_method: :name_title_hierarchy
-    config.add_show_field 'contains_1display', label: 'Contains', helper_method: :name_title_hierarchy
     config.add_show_field 'place_name_display', label: 'Place name(s)'
     config.add_show_field 'other_title_display', label: 'Other title(s)'
     config.add_show_field 'other_title_1display', hash: true
     config.add_show_field 'in_display', label: 'In'
     config.add_show_field 'constituent_part_display', label: 'Constituent part(s)'
     config.add_show_field 'other_editions_display', label: 'Other editions'
-    config.add_show_field 'data_source_display', label: 'Data source', helper_method: :name_title
     config.add_show_field 'isbn_display', label: 'ISBN'
     config.add_show_field 'issn_display', label: 'ISSN'
     config.add_show_field 'sudoc_no_display', label: 'SuDoc no.'
@@ -286,12 +288,9 @@ class CatalogController < ApplicationController
     config.add_show_field 'publisher_no_display', label: 'Publisher no.'
     config.add_show_field 'lccn_display', label: 'LCCN'
     config.add_show_field 'oclc_s', label: 'OCLC'
-    config.add_show_field 'contained_in_s', label: 'Contained in', link_field: 'id'
-    config.add_show_field 'related_record_s', label: 'Related record(s)', link_field: 'id'
     config.add_show_field 'coden_display', label: 'Coden designation'
     config.add_show_field 'standard_no_1display', hash: true
     config.add_show_field 'original_language_display', label: 'Original language'
-    config.add_show_field 'related_name_json_1display', hash: true
     config.add_show_field 'recap_notes_display', label: 'RCP', helper_method: :recap_note
 
     #     "fielded" search configuration. Used by pulldown among other places.

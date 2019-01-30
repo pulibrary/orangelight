@@ -1,0 +1,12 @@
+<% online, physical = holding_request_block(document) %>
+<% document_linked_records = document.linked_records(field: 'other_version_s', query_field: 'other_version_s') %>
+<% unless document_linked_records.empty? %>
+  <div class="location--panel location--linked availability--other-versions">
+    <div class="section-heading"><h3><%= t('blacklight.holdings.linked') %></h3></div>
+    <div class="section-content"><%= render 'show_linked_records', linked_records: document_linked_records %></div>
+  </div>
+<% end %>
+
+<% if document.standard_numbers? %>
+  <%= umlaut_services %>
+<% end %>

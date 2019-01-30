@@ -21,16 +21,6 @@ module CatalogHelper
     !request.bot?
   end
 
-  # Returns array with only 2 arks.
-  # Currenlty is used in the catalog/show.html.erb
-  # for the figgy ajax call in the figgy_viewer_loader.js
-  def ark_array
-    doc_hash = @document.select { |key, value| value if key == 'electronic_access_1display' }.to_h
-    res_parse = JSON.parse(doc_hash['electronic_access_1display'])
-    res = res_parse.map { |key, _value| key.sub('http://arks.princeton.edu/', '') }
-    res[0..1]
-  end
-
   # @see Blacklight::CatalogHelperBehavior#render_search_to_page_title_filter
   # @param [facet]
   # @param [values]
@@ -60,6 +50,11 @@ module CatalogHelper
     end
 
     constraints.join(' / ')
+  end
+
+  def render_top_field?(document, field, field_name)
+    !should_render_show_field?(document, field) && document[field_name].present? &&
+      field_name != 'holdings_1display'
   end
 
   private
