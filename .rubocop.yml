@@ -251,6 +251,11 @@ RSpec/DescribeClass:
 RSpec/NamedSubject:
   Enabled: false
 
+RSpec/NestedGroups:
+  Exclude:
+    - 'spec/helpers/facets_helper_spec.rb'
+    - 'spec/models/voyager_patron_client_spec.rb'
+
 RSpec/MultipleExpectations:
   Enabled: false
 
