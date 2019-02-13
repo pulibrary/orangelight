@@ -150,6 +150,17 @@ module ApplicationHelper
             dir: title.dir.to_s)
   end
 
+  # For reference notes that end with a url convert the note into link
+  # @param args [Hash]
+  def references_url(args)
+    args[:document][args[:field]].each_with_index do |reference, i|
+      if (url = reference[/ (http.*)$/])
+        reference = reference.chomp(url)
+        args[:document][args[:field]][i] = link_to(reference, url.gsub(/\s/, ''), target: '_blank')
+      end
+    end
+  end
+
   # Determines whether or not this is an aeon location (for an item holding)
   # @param location [Hash] location values
   # @return [TrueClass, FalseClass]
