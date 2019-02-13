@@ -101,7 +101,7 @@ module Blacklight
         end
 
         def umlaut_fulltext_eligible?
-          if (umlaut_full_text_formats & fetch('format', []).map!(&:downcase)).empty?
+          if (umlaut_full_text_formats & fetch('format', []).map(&:downcase)).empty?
             false
           else
             true

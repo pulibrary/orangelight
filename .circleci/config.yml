@@ -4,14 +4,14 @@ jobs:
 
     # Primary command image where all commands run
     docker:
-      - image: circleci/ruby:2.4.4-node-browsers
+      - image: circleci/ruby:2.4.5-node-browsers
         environment:
           RAILS_ENV: test
           ORANGELIGHT_HOST: localhost
           ORANGELIGHT_USER: postgres
 
       # Service container image available at 'host: localhost'
-      - image: postgres:10   
+      - image: postgres:10
         environment:
           POSTGRES_USER: orangelight
           POSTGRES_DB: orangelight_test
@@ -31,12 +31,12 @@ jobs:
           keys:
           - orangelight-{{ checksum "Gemfile.lock" }}
           - orangelight-
-      
+
       # Bundle install dependencies
       - run:
           name: Install dependencies
           command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
-      
+
       - run: sudo apt update && sudo apt install postgresql-client phantomjs
 
       - save_cache:
@@ -49,11 +49,11 @@ jobs:
           keys:
             - orangelight-{{ checksum "yarn.lock" }}
             - orangelight-
-      
+
       - run:
           name: Yarn Install
           command: yarn install --cache-folder ~/.cache/yarn
-            
+
       # Store yarn / webpacker cache
       - save_cache:
           key: orangelight-{{ checksum "yarn.lock" }}
@@ -65,7 +65,7 @@ jobs:
           command: bundle exec rake server:test
           background: true
 
-      - run: bin/jetty_wait    
+      - run: bin/jetty_wait
 
       - run:
           name: npm install
@@ -86,7 +86,7 @@ jobs:
       - run:
           name: Run Rspec
           command: bundle exec rspec spec
-          
+
       - run:
           name: Run JS unit tests
           command: bundle exec yarn test
