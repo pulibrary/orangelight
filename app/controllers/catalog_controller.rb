@@ -269,7 +269,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'source_acquisition_display', label: 'Source acquisition'
     config.add_show_field 'publications_about_display', label: 'Publications about'
     config.add_show_field 'indexed_in_display', label: 'Indexed in'
-    config.add_show_field 'references_display', label: 'References'
+    config.add_show_field 'references_url_display', label: 'References', helper_method: :references_url
     config.add_show_field 'cite_as_display', label: 'Cite as'
     config.add_show_field 'other_format_display', label: 'Other format(s)'
     config.add_show_field 'indexes_display', label: 'Indexes'

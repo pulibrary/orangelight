@@ -20109,5 +20109,268 @@
         "advanced_location_s": ["sciss", "stss", "rcppn", "anxb", "Lewis Library", "Engineering Library", "ReCAP", "Fine Annex"],
         "call_number_display": ["8001.673", "Q1 .N3"],
         "call_number_browse_s": ["8001.673", "Q1 .N3"]
+    },
+    {
+    "id": [
+    "10096131"
+    ],
+    "numeric_id_b": [
+    true
+    ],
+    "cjk_all": [
+    ""
+    ],
+    "cjk_notes": [
+    ""
+    ],
+    "author_display": [
+    "Wert, Giaches de, 1535-1596"
+    ],
+    "author_sort": [
+    "Wert, Giaches de, 1535-1596"
+    ],
+    "author_citation_display": [
+    "Wert, Giaches de",
+    "Gardane, Antonio",
+    "Gardane (Firm)",
+    "Farnese, Ottavio",
+    "Meyer, André"
+    ],
+    "author_roles_1display": [
+    "{\"secondary_authors\":[\"Gardane, Antonio\",\"Gardane (Firm)\",\"Farnese, Ottavio\",\"Meyer, André\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Wert, Giaches de\"}"
+    ],
+    "author_s": [
+    "Wert, Giaches de, 1535-1596",
+    "Gardane, Antonio, 1509-1569",
+    "Gardane (Firm)",
+    "Farnese, Ottavio, 1520-1586",
+    "Meyer, André, 1884-1974"
+    ],
+    "marc_relator_display": [
+    "Composer"
+    ],
+    "uniform_title_s": [
+    "Madrigals, book 2"
+    ],
+    "title_display": [
+    "Il secondo libro de madregali a cinque voci / di Giaches de Wert."
+    ],
+    "title_a_index": [
+    "Il secondo libro de madregali a cinque voci"
+    ],
+    "title_sort": [
+    "secondo libro de madregali a cinque voci / di Giaches de Wert."
+    ],
+    "title_no_h_index": [
+    "Il secondo libro de madregali a cinque voci / di Giaches de Wert.",
+    "secondo libro de madregali a cinque voci / di Giaches de Wert."
+    ],
+    "title_t": [
+    "Il secondo libro de madregali a cinque voci / di Giaches de Wert."
+    ],
+    "title_citation_display": [
+    "Il secondo libro de madregali a cinque voci"
+    ],
+    "compiled_created_t": [
+    "Il secondo libro de madregali a cinque voci / di Giaches de Wert."
+    ],
+    "edition_display": [
+    "Novamente con nova giunta ristampati."
+    ],
+    "pub_created_display": [
+    "In Venetia : Appresso di Antonio Gardano, 1564."
+    ],
+    "pub_created_s": [
+    "In Venetia : Appresso di Antonio Gardano, 1564."
+    ],
+    "pub_citation_display": [
+    "In Venetia: Appresso di Antonio Gardano"
+    ],
+    "pub_date_display": [
+    "1564"
+    ],
+    "pub_date_start_sort": [
+    "1564"
+    ],
+    "cataloged_tdt": [
+    "2017-01-31T15:50:22Z"
+    ],
+    "format": [
+    "Musical score"
+    ],
+    "medium_support_display": [
+    "4to rdabf"
+    ],
+    "electronic_access_1display": [
+    "{\"http://arks.princeton.edu/ark:/88435/br86b7064\":[\"arks.princeton.edu\"]}"
+    ],
+    "electronic_access_index": [
+    "http://arks.princeton.edu/ark:/88435/br86b7064"
+    ],
+    "description_display": [
+    "5 part books ; 16 x 22 cm, 4⁰"
+    ],
+    "description_t": [
+    "5 part books ; 16 x 22 cm, 4⁰"
+    ],
+    "number_of_pages_citation_display": [
+    "5 part books"
+    ],
+    "notes_index": [
+    "Italian words.",
+    "Staff notation.",
+    "Collection of madrigals for five voices (SATB5), mostly with a seconda parte, followed by one madrigal (\"Accend' i cor\") for six voices, and one madrigal (\"Trionfo d'Amore\") for 7 voices, as indicated in the titles.",
+    "The quinto part book also contains the sesto parte (in tenor clef) of no. 15 on pp. 25 and 27 and the settima parte (in alto clef) of no. 16 on pp. 29, 31, 33, 35, and 37 (the corresponding sesto parte is in the basso part book).",
+    "Table of contents (“Tavola Delli Madrigali”), including titles of the second and third parts of the madrigals, in alphabetical order at the end of each partbook.",
+    "Title from the canto part book title page.",
+    "Dedication in Italian by \"Giaches de Vuert\" to \"Ottavio Farnese, Duca di Parma & Piacenza\" on the title page verso of each part book.",
+    "Princeton copy 1: Imperfect: canto, alto, and quinto part books only, wanting the tenore and basso part books; the alto part book lacks the final page with the table of contents. NjP",
+    "Princeton copy 1: canto (16 leaves); alto (15 leaves; leaf 16 missing); quinto (20 leaves); original foliation: canto: [i-ii]. 1-29, [30]; alto: [i-ii], 1-29, [p. 30 missing]; quinto: [i-ii]. 1-37, [38] NjP",
+    "Music treasures at Princeton NjP",
+    "L'alba cui dolci (seconda parte: Almo pastor) -- Gionto m'ha amor (seconda parte: Nulla posso levar) -- Far potess'io vendetta (seconda parte: L'alma cui morte)-- Dura legge d'amor (seconda parte: So come sta tra fior) -- Voi ch'ascoltate (seconda parte: Ma ben veggi'hor) -- I'vo piangendo (seconda parte: Si che s'io viss'in guerra) -- Qual dopoi giorni -- Lasso che mal accorto (seconda parte: Da hora'innanzi) -- Amor io fallo (seconda parte: Pero s'oltra suo stil) -- Quand' io mi volg'indietro (seconda parte: Io mi riscuoto)-- Cantai hor piango (seconda parte: Tengan dunque ver me) -- Superbi colli (seconda parte: Cosi se ben col tempo) -- Si e debil'il filo -- La verginella (seconda parte: Ma non si tosto [a 4]; tertia parte: Sia vil a gl'altri) -- Accend' i cor (a 6) (seconda parte: Che nel mezzo) -- Trionfo d'Amore (dialogo a 7): Nel tempo che rinova (seconda parte: Vago d'udir).",
+    "RISM (Répertoire international des sources musicales), A/I, W 862",
+    "RISM (Répertoire international des sources musicales), 990068313 https://opac.rism.info/search?id=00000990068313&View=rism",
+    "Lewis, Mary S., Antonio Gardano, Venetian Music Printer 1538-1569, 3 vols. (1988-2005) vol. 3, no. 347",
+    "Collection musicale André Meyer (1961) p. 69",
+    "Also available in an electronic version.",
+    "Princeton copy 1: Stamp on rear fly leaf of quinto part book: \"Provenant de la collection musicale d'André Meyer, décédé en Mai 1974, F. Meyer Octobre 84\" NjP"
+    ],
+    "notes_display": [
+    "Collection of madrigals for five voices (SATB5), mostly with a seconda parte, followed by one madrigal (\"Accend' i cor\") for six voices, and one madrigal (\"Trionfo d'Amore\") for 7 voices, as indicated in the titles.",
+    "The quinto part book also contains the sesto parte (in tenor clef) of no. 15 on pp. 25 and 27 and the settima parte (in alto clef) of no. 16 on pp. 29, 31, 33, 35, and 37 (the corresponding sesto parte is in the basso part book).",
+    "Table of contents (“Tavola Delli Madrigali”), including titles of the second and third parts of the madrigals, in alphabetical order at the end of each partbook.",
+    "Title from the canto part book title page.",
+    "Dedication in Italian by \"Giaches de Vuert\" to \"Ottavio Farnese, Duca di Parma & Piacenza\" on the title page verso of each part book.",
+    "Princeton copy 1: Imperfect: canto, alto, and quinto part books only, wanting the tenore and basso part books; the alto part book lacks the final page with the table of contents.",
+    "Princeton copy 1: canto (16 leaves); alto (15 leaves; leaf 16 missing); quinto (20 leaves); original foliation: canto: [i-ii]. 1-29, [30]; alto: [i-ii], 1-29, [p. 30 missing]; quinto: [i-ii]. 1-37, [38]",
+    "Music treasures at Princeton"
+    ],
+    "language_display": [
+    "Italian words.",
+    "Staff notation."
+    ],
+    "language_facet": [
+    "Italian"
+    ],
+    "publication_place_facet": [
+    "Italy"
+    ],
+    "script_display": [
+    "Staff notation."
+    ],
+    "language_code_s": [
+    "ita"
+    ],
+    "language_iana_s": [
+    "it"
+    ],
+    "contents_display": [
+    "L'alba cui dolci (seconda parte: Almo pastor) -- Gionto m'ha amor (seconda parte: Nulla posso levar) -- Far potess'io vendetta (seconda parte: L'alma cui morte)-- Dura legge d'amor (seconda parte: So come sta tra fior) -- Voi ch'ascoltate (seconda parte: Ma ben veggi'hor) -- I'vo piangendo (seconda parte: Si che s'io viss'in guerra) -- Qual dopoi giorni -- Lasso che mal accorto (seconda parte: Da hora'innanzi) -- Amor io fallo (seconda parte: Pero s'oltra suo stil) -- Quand' io mi volg'indietro (seconda parte: Io mi riscuoto)-- Cantai hor piango (seconda parte: Tengan dunque ver me) -- Superbi colli (seconda parte: Cosi se ben col tempo) -- Si e debil'il filo -- La verginella (seconda parte: Ma non si tosto [a 4]; tertia parte: Sia vil a gl'altri) -- Accend' i cor (a 6) (seconda parte: Che nel mezzo) -- Trionfo d'Amore (dialogo a 7): Nel tempo che rinova (seconda parte: Vago d'udir)."
+    ],
+    "provenance_display": [
+    "Princeton copy 1: Stamp on rear fly leaf of quinto part book: \"Provenant de la collection musicale d'André Meyer, décédé en Mai 1974, F. Meyer Octobre 84\""
+    ],
+    "references_display": [
+    "RISM (Répertoire international des sources musicales), A/I, W 862",
+    "RISM (Répertoire international des sources musicales), 990068313",
+    "Lewis, Mary S., Antonio Gardano, Venetian Music Printer 1538-1569, 3 vols. (1988-2005) vol. 3, no. 347",
+    "Collection musicale André Meyer (1961) p. 69"
+    ],
+    "references_url_display": [
+    "RISM (Répertoire international des sources musicales), A/I, W 862",
+    "RISM (Répertoire international des sources musicales), 990068313 https://opac.rism.info/search?id=00000990068313&View=rism",
+    "Lewis, Mary S., Antonio Gardano, Venetian Music Printer 1538-1569, 3 vols. (1988-2005) vol. 3, no. 347",
+    "Collection musicale André Meyer (1961) p. 69"
+    ],
+    "other_format_display": [
+    "Also available in an electronic version."
+    ],
+    "subject_display": [
+    "Madrigals, Italian"
+    ],
+    "subject_facet": [
+    "Madrigals, Italian"
+    ],
+    "lcgft_s": [
+    "Part books",
+    "Madrigals (Music)"
+    ],
+    "subject_topic_facet": [
+    "Madrigals, Italian"
+    ],
+    "lc_1letter_facet": [
+    "M - Music"
+    ],
+    "lc_rest_facet": [
+    "M - Music"
+    ],
+    "call_number_scheme_facet": [
+    "Library of Congress"
+    ],
+    "call_number_group_facet": [
+    "M - Music"
+    ],
+    "call_number_full_facet": [
+    "M - Music"
+    ],
+    "form_genre_display": [
+    "Part books",
+    "Madrigals (Music)"
+    ],
+    "related_name_json_1display": [
+    "{\"Printer\":[\"Gardane, Antonio, 1509-1569\",\"Gardane (Firm)\"],\"Dedicatee\":[\"Farnese, Ottavio, 1520-1586\"],\"Former owner\":[\"Meyer, André, 1884-1974\"]}"
+    ],
+    "place_name_display": [
+    "Italy Venice"
+    ],
+    "oclc_s": [
+    "36095716"
+    ],
+    "standard_no_index": [
+    "ocm36095716",
+    "36095716"
+    ],
+    "other_version_s": [
+    "ocm36095716"
+    ],
+    "holdings_1display": [
+    "{\"9889458\":{\"location\":\"Rare Books and Special Collections - Rare Books\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"ex\",\"call_number\":\"N-000893\",\"call_number_browse\":\"N-000893\",\"location_has\":[\"3 pts. (canto, alto and quinto)\",\"Princeton copy 1\"]},\"10505235\":{\"location\":\"Online - *ONLINE*\",\"library\":\"Online\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"}}"
+    ],
+    "location_code_s": [
+    "ex",
+    "elf1"
+    ],
+    "location": [
+    "Rare Books and Special Collections"
+    ],
+    "location_display": [
+    "Rare Books and Special Collections - Rare Books",
+    "Online - *ONLINE*"
+    ],
+    "access_facet": [
+    "In the Library",
+    "Online"
+    ],
+    "advanced_location_s": [
+    "ex",
+    "elf1",
+    "Rare Books and Special Collections",
+    "Online"
+    ],
+    "name_uniform_title_1display": [
+    "[[\"Wert, Giaches de, 1535-1596.\",\"Madrigals,\",\"book 2\"]]"
+    ],
+    "name_title_browse_s": [
+    "Wert, Giaches de, 1535-1596. Madrigals",
+    "Wert, Giaches de, 1535-1596. Madrigals, book 2"
+    ],
+    "call_number_display": [
+    "N-000893",
+    "Electronic Resource"
+    ],
+    "call_number_browse_s": [
+    "N-000893",
+    "Electronic Resource"
+    ]
     }
 ]
