@@ -166,7 +166,7 @@ class AvailabilityUpdater
             .fail (jqXHR, textStatus, errorThrown) =>
               console.error("Failed to retrieve availability data for the holding ID " + holding_id + ": " + errorThrown)
 
-    element = $(".holding-details[data-holding-id='#{holding_id}']")
+    element = $(".item-status[data-holding-id='#{holding_id}']")
     req.success (data) ->
       ul = ""
       for key, item of data
@@ -194,7 +194,9 @@ class AvailabilityUpdater
             span.addClass("label-default")
             location_services_element = $(".location-services[data-holding-id='#{holding_id}']")
             location_services_element.show()
-      element.append(ul) if ul != ""
+      if ul != ""
+        element.before("<div class=\"holding-label item-status-label\">Item status</div>")
+        element.append(ul)
   get_issues: (holding_id) ->
     url = "#{@availability_url}?mfhd_serial=#{holding_id}"
     req = $.getJSON url
@@ -204,10 +206,10 @@ class AvailabilityUpdater
     element = $("*[data-journal='true'][data-holding-id='#{holding_id}']")
     req.success (data) ->
       if data.length > 1
-        element.before("<div class=\"holding-label current-issues\">Current issues:</div>")
+        element.before("<div class=\"holding-label current-issues\">Current issues</div>")
         element.after("<div class=\"trigger\">More</div>")
       else if data != ''
-        element.before("<div class=\"holding-label current-issues\">Current issues:</div>")
+        element.before("<div class=\"holding-label current-issues\">Current issues</div>")
       for key, issue of data
         li = $("<li>#{issue}</li>")
         element.append(li)
