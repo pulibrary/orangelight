@@ -1,5 +1,6 @@
 
 import loadResourcesByBibId from './load-resources-by-bib-id'
+import loadResourcesByBibIds from './load-resources-by-bib-ids'
 
 class FiggyViewer {
   // There may be more than one ARK minted which resolves to the same manifested resource
@@ -32,6 +33,7 @@ class FiggyViewer {
     if (elements.length < 1) {
       elements = availabilityElement.querySelectorAll('li > a')
     }
+
     // This assumes that there is a one-to-one mapping between the ARK electronic resource links in the DOM and the UniversalViewer instances
     return elements[this.idx]
   }
@@ -142,42 +144,37 @@ class FiggyViewerSet {
   }
 }
 
-class FiggyThumbnail {
-  constructor(element, query, variables, jQuery) {
-    this.element = element
+// Queries for resources using multiple bib. IDs
+class FiggyThumbnailSet {
+  constructor(elements, query, jQuery) {
+    this.elements = elements
+    this.$elements = jQuery(elements)
     this.query = query
-    this.variables = variables
     this.jQuery = jQuery
   }
 
   async fetchResources() {
-    const data = await this.query.call(this, this.variables)
+    this.bibIds = this.$elements.map((idx, element) => this.jQuery(element).data('bib-id').toString())
+    const variables = { bibIds: this.bibIds.toArray() }
+    this.thumbnails = {}
+    const data = await this.query.call(this, variables.bibIds)
     if (!data) {
       return null;
     }
 
-    const resources = data.resourcesByBibid
-    return resources
-  }
+    const resources = data.resourcesByBibids
+    this.resources = resources
 
-  async getResource() {
-    this.resources = await this.fetchResources()
-    if (!this.resources || this.resources.length < 1) {
-      return null
+    // Cache the thumbnail URLs
+    for (let resource of this.resources) {
+      const bibId = resource.sourceMetadataIdentifier
+      this.thumbnails[bibId] = resource.thumbnail
     }
-    return this.resources[0]
+    return this.resources
   }
 
-  async getThumbnail() {
-    const resource = await this.getResource()
-    if (!resource) {
-      return null
-    }
-    return resource.thumbnail
-  }
-
-  async constructThumbnailElement() {
-    const thumbnail = await this.getThumbnail()
+  constructThumbnailElement(bibId) {
+    const thumbnail = this.thumbnails[bibId]
     if (!thumbnail) {
       return null
     }
@@ -187,24 +184,26 @@ class FiggyThumbnail {
   }
 
   async render() {
-    const $element = this.jQuery(this.element)
-    const $thumbnailElement = await this.constructThumbnailElement()
-    if (!$thumbnailElement) {
-      return
-    }
-    $element.addClass('has-viewer-link')
-    $element.wrap('<a href="#view"></a>').append('<span class="sr-only">Go to viewer</span>')
-    $element.empty()
-    $element.append($thumbnailElement)
+    await this.fetchResources()
+    this.$elements.map((idx, element) => {
+      const $element = this.jQuery(element)
+      const bibId = $element.data('bib-id')
+      const $thumbnailElement = this.constructThumbnailElement(bibId)
+      if (!$thumbnailElement) {
+        return
+      }
+      $element.empty()
+      $element.addClass('has-viewer-link')
+      $element.wrap('<a href="#view"></a>').append('<span class="sr-only">Go to viewer</span>')
+      $element.append($thumbnailElement)
+    })
   }
 }
 
 class FiggyManifestManager {
 
-  static buildThumbnail(element) {
-    const $element = window.jQuery(element)
-    const bibId = $element.data('bib-id')
-    return new FiggyThumbnail(element, loadResourcesByBibId, bibId.toString(), window.jQuery)
+  static buildThumbnailSet($elements) {
+    return new FiggyThumbnailSet($elements, loadResourcesByBibIds, window.jQuery)
   }
 
   // Build multiple viewers
