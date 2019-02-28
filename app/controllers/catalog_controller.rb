@@ -293,6 +293,51 @@ class CatalogController < ApplicationController
     config.add_show_field 'original_language_display', label: 'Original language'
     config.add_show_field 'recap_notes_display', label: 'RCP', helper_method: :recap_note
 
+    # Numismatics fields
+    config.add_show_field 'issue_number_s', label: 'Issue', link_to_search: true, if: false
+    config.add_show_field 'issue_references_t', label: 'References', if: false
+    config.add_show_field 'accession_info_t'
+    config.add_show_field 'analysis_t', label: 'Analysis'
+    config.add_show_field 'counter_stamp_t', label: 'Counter Stamp'
+    config.add_show_field 'die_axis_t', label: 'Die Axis'
+    config.add_show_field 'find_date_t', label: 'Find Date'
+    config.add_show_field 'find_description_t', label: 'Find Description'
+    config.add_show_field 'find_feature_t', label: 'Find Feature'
+    config.add_show_field 'find_locus_t', label: 'Find Locus'
+    config.add_show_field 'find_number_t', label: 'Find Number'
+    config.add_show_field 'find_place_t', label: 'Find Place'
+    config.add_show_field 'issue_color_t', label: 'Color'
+    config.add_show_field 'issue_denomination_t', label: 'Denomination'
+    config.add_show_field 'issue_edge_t', label: 'Edge'
+    config.add_show_field 'issue_era_t', label: 'Era'
+    config.add_show_field 'issue_master_t', label: 'Master'
+    config.add_show_field 'issue_metal_t', label: 'Metal'
+    config.add_show_field 'issue_place_t', label: 'Place'
+    config.add_show_field 'issue_object_type_t', label: 'Object Type'
+    config.add_show_field 'issue_obverse_attributes_t', label: 'Obverse Attributes'
+    config.add_show_field 'issue_obverse_figure_description_t', label: 'Obverse Figure Description'
+    config.add_show_field 'issue_obverse_figure_relationship_t', label: 'Obverse Figure Relationship'
+    config.add_show_field 'issue_obverse_figure_t', label: 'Obverse Figure'
+    config.add_show_field 'issue_obverse_legend_t', label: 'Obverse Legend'
+    config.add_show_field 'issue_obverse_orientation_t', label: 'Obverse Orientation'
+    config.add_show_field 'issue_obverse_part_t', label: 'Obverse Part'
+    config.add_show_field 'issue_obverse_symbol_t', label: 'Obverse Symbol'
+    config.add_show_field 'issue_reverse_attributes_t', label: 'Reverse Attributes'
+    config.add_show_field 'issue_reverse_figure_description_t', label: 'Reverse Figure Description'
+    config.add_show_field 'issue_reverse_figure_relationship_t', label: 'Reverse Figure Relationship'
+    config.add_show_field 'issue_reverse_figure_t', label: 'Reverse Figure'
+    config.add_show_field 'issue_reverse_legend_t', label: 'Reverse Legend'
+    config.add_show_field 'issue_reverse_orientation_t', label: 'Reverse Orientation'
+    config.add_show_field 'issue_reverse_part_t', label: 'Reverse Part'
+    config.add_show_field 'issue_reverse_symbol_t', label: 'Reverse Symbol'
+    config.add_show_field 'issue_ruler_t', label: 'Ruler'
+    config.add_show_field 'issue_series_t', label: 'Series'
+    config.add_show_field 'issue_shape_t', label: 'Shape'
+    config.add_show_field 'issue_workshop_t', label: 'Workshop'
+    config.add_show_field 'size_t', label: 'Size'
+    config.add_show_field 'technique_t', label: 'Technique'
+    config.add_show_field 'weight_t', label: 'Weight'
+
     #     "fielded" search configuration. Used by pulldown among other places.
     #     For supported keys in hash, see rdoc for Blacklight::SearchFields
 
