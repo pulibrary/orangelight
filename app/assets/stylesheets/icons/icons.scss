@@ -65,13 +65,11 @@
 .icon-cite {
     &:before {
         content: $icon-cite;
-        // margin-right: 0.5em;
     }
 }
 .icon-share {
     &:before {
         content: $icon-share;
-        // margin-right: 0.5em;
     }
 }
 .icon-senior-thesis,
@@ -186,31 +184,26 @@
 .blacklight-coin .document-thumbnail .default {
     &:before {
         content: $icon-coins-stack;
-        // content: $icon-coins-flat;
     }
 }
 .icon-external {
     &:before {
         content: $icon-newtab;
-        // margin-right: 0.5em;
     }
 }
 .icon-mobile {
     &:before {
         content: $icon-mobile;
-        // margin-right: 0.5em;
     }
 }
 .icon-email {
     &:before {
         content: $icon-email;
-        // margin-right: 0.5em;
     }
 }
 .icon-print {
     &:before {
         content: $icon-print;
-        // margin-right: 0.5em;
     }
 }
 .icon-spinner {
