@@ -5,7 +5,7 @@
     <%= select_tag('f1', options_for_select(advanced_key_value, guided_field(:f1, 'all_fields')), :class=>"search_field") %>
     <div name="row1">
       <label for='q1' class='sr-only'>Advanced search terms</label>
-      <%= text_field_tag "q1", label_tag_default_for(:q1), :class => 'form-control', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
+      <%= text_field_tag "q1", label_tag_default_for(:q1), :class => 'form-control', autocorrect: "off", autocapitalize: "off", autocomplete: "off", spellcheck: "false" %>
     </div>
   </div>
   <div class="search-operators" role="radiogroup" aria-label="Search operators">
@@ -18,7 +18,7 @@
     <%= select_tag('f2', options_for_select(advanced_key_value, guided_field(:f2, 'author')), :class=>"search_field") %>
     <div name="row2">
       <label for='q2' class='sr-only'>Advanced search terms - second parameter</label>
-      <%= text_field_tag "q2", label_tag_default_for(:q2), :class => 'form-control', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
+      <%= text_field_tag "q2", label_tag_default_for(:q2), :class => 'form-control', autocorrect: "off", autocapitalize: "off", autocomplete: "off", spellcheck: "false" %>
     </div>
   </div>
   <div class="search-operators" role="radiogroup" aria-label="Search operators">
