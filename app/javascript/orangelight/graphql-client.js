@@ -17,7 +17,8 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
           name: "Resource",
           possibleTypes: [
             { name: "ScannedResource" },
-            { name: "ScannedMap" }
+            { name: "ScannedMap" },
+            { name: "Coin" }
           ],
         },
       ],

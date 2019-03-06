@@ -1,11 +1,11 @@
 import apollo from './graphql-client.js'
 import gql from 'graphql-tag'
 
-async function loadResourcesByBibId(bibId) {
+async function loadResourcesByOrangelightId(id) {
 
   const query = gql`
-    query GetResourcesByBibId($bibId: String!) {
-      resourcesByBibid(bibId: $bibId) {
+    query GetResourcesByOrangelightId($id: String!) {
+      resourcesByOrangelightId(id: $id) {
          id,
          thumbnail {
            iiifServiceUrl,
@@ -20,12 +20,15 @@ async function loadResourcesByBibId(bibId) {
          },
          ... on ScannedMap {
            manifestUrl
+         },
+         ... on Coin {
+           manifestUrl
          }
       }
     }`
 
   const variables = {
-    bibId: bibId
+    id: id
   }
 
   try {
@@ -39,4 +42,4 @@ async function loadResourcesByBibId(bibId) {
   }
 }
 
-export default loadResourcesByBibId
+export default loadResourcesByOrangelightId

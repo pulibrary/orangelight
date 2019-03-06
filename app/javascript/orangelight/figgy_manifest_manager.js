@@ -1,6 +1,6 @@
 
-import loadResourcesByBibId from './load-resources-by-bib-id'
-import loadResourcesByBibIds from './load-resources-by-bib-ids'
+import loadResourcesByOrangelightId from './load-resources-by-orangelight-id'
+import loadResourcesByOrangelightIds from './load-resources-by-orangelight-ids'
 
 class FiggyViewer {
   // There may be more than one ARK minted which resolves to the same manifested resource
@@ -105,7 +105,7 @@ class FiggyViewerSet {
       return null;
     }
 
-    const resources = data.resourcesByBibid
+    const resources = data.resourcesByOrangelightId
     return resources
   }
 
@@ -162,12 +162,12 @@ class FiggyThumbnailSet {
       return null;
     }
 
-    const resources = data.resourcesByBibids
+    const resources = data.resourcesByOrangelightIds
     this.resources = resources
 
     // Cache the thumbnail URLs
     for (let resource of this.resources) {
-      const bibId = resource.sourceMetadataIdentifier
+      const bibId = resource.orangelightId
       this.thumbnails[bibId] = resource.thumbnail
     }
     return this.resources
@@ -203,7 +203,7 @@ class FiggyThumbnailSet {
 class FiggyManifestManager {
 
   static buildThumbnailSet($elements) {
-    return new FiggyThumbnailSet($elements, loadResourcesByBibIds, window.jQuery)
+    return new FiggyThumbnailSet($elements, loadResourcesByOrangelightIds, window.jQuery)
   }
 
   // Build multiple viewers
@@ -212,7 +212,7 @@ class FiggyManifestManager {
     const bibId = $element.data('bib-id')
     const arks = $element.data('arks') || []
 
-    return new FiggyViewerSet(element, loadResourcesByBibId, bibId.toString(), arks, window.jQuery)
+    return new FiggyViewerSet(element, loadResourcesByOrangelightId, bibId.toString(), arks, window.jQuery)
   }
 }
 

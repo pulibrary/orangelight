@@ -43,6 +43,13 @@ RSpec.describe 'catalog/show' do
     end
   end
 
+  context 'when entries describe a coin', js: true do
+    xit 'will render a viewer when coins are in figgy production' do
+      visit 'catalog/coin-2'
+      expect(page).to have_selector('div#view')
+    end
+  end
+
   describe 'the location for physical holdings', js: true do
     context 'if physical holding information is recorded in the entry' do
       it 'is not rendered' do
