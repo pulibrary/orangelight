@@ -58,8 +58,8 @@ gem 'omniauth-cas'
 gem 'solr_wrapper', '~> 1.0'
 gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
 
-# rspec, just like jettywrapper appear necessary for cap currently
 gem 'babel-transpiler'
+gem 'bootstrap-sass', '~> 3.4'
 gem 'capybara'
 gem 'coveralls', require: false
 gem 'ddtrace'
