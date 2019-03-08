@@ -1,3 +1,7 @@
+@page {
+  margin: 1.25cm;
+}
+
 body,
 .blacklight-catalog-show h1,
 .blacklight-catalog-show .main-content dt,
@@ -21,10 +25,6 @@ body,
   font-size: 14pt;
 }
 
-.blacklight-catalog-show h2 {
-  display: none;
-}
-
 a,
 a:visited {
   text-decoration: underline;
@@ -43,36 +43,12 @@ blockquote {
 // Printing Tables:
 // http://css-discuss.incutio.com/wiki/Printing_Tables
 
-thead {
-  display: table-header-group;
-}
-
 tbody {
   display: table-row-group;
 }
 
-img, {
-  page-break-inside: avoid;
-}
-
 td {
   padding: 0;
-}
-
-img {
-  max-width: 100% !important;
-}
-
-p,
-h2,
-h3 {
-  orphans: 3;
-  widows: 3;
-}
-
-h2,
-h3 {
-  page-break-after: avoid;
 }
 
 header,
@@ -91,7 +67,8 @@ footer,
 .index-document-functions,
 .alert.announcement,
 .icon-rssfeed,
-.request.btn {
+.request.btn,
+.blacklight-catalog-show h2 {
   display: none;
 }
 
@@ -107,7 +84,7 @@ h1,
 .blacklight-catalog-show .main-content .top-fields,
 .blacklight-catalog-show .main-content .availability--online,
 .blacklight-catalog-show .main-content .availability--physical,
-.blacklight-catalog-show .main-content .availability--online > ul:first-of-type {
+.blacklight-catalog-show .main-content .availability--online>ul:first-of-type {
   border: 0;
   padding: 0;
   margin: 0;
@@ -115,16 +92,6 @@ h1,
 
 .blacklight-catalog-show h3 {
   margin-bottom: 0;
-}
-
-.blacklight-catalog-show .content {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-
-  .record-availability {
-    order: 3;
-  }
 }
 
 #librarian-classic-views,
@@ -160,12 +127,16 @@ h1,
   box-shadow: 0;
 }
 
+.holding-block {
+  display: block;
+}
+
 .holding-block,
 .holding-block .availability-icon,
 .library-location,
 .location--panel .panel .holding-block h3,
 .location--online .panel .panel-body a {
-  font-size: 13pt;
+  font-size: 12pt;
 }
 
 .label {
@@ -173,6 +144,8 @@ h1,
 }
 
 .availability-table {
+  display: block;
+
   thead,
   tr .location-services,
   .browse-cn,
@@ -180,8 +153,10 @@ h1,
     display: none;
   }
 
+  tbody,
   tr {
     display: block;
+
     td {
       padding: 0;
     }
@@ -254,9 +229,11 @@ h1,
   &:nth-child(2) {
     width: 15%;
   }
+
   &:nth-child(3) {
     width: 30%;
   }
+
   &:nth-child(4),
   &:nth-child(5) {
     width: 20%;
@@ -277,8 +254,10 @@ abbr {
 
 .document-metadata {
   line-height: 1.2em;
+
   .blacklight-holdings {
     margin: 0;
+
     ul {
       margin-top: 3px;
     }
