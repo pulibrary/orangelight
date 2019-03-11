@@ -69,6 +69,7 @@ gem 'rspec-rails', '~> 3.4'
 gem 'rubocop', '~> 0.49', require: false
 gem 'rubocop-rspec', '~> 1.20.1'
 gem 'rubyzip', '>= 1.2.2'
+gem 'sneakers'
 gem 'sprockets-es6'
 gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.5.2.2'
 
