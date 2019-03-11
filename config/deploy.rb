@@ -93,3 +93,14 @@ namespace :deploy do
   end
   before "deploy:assets:precompile", "deploy:yarn_install"
 end
+
+namespace :sneakers do
+  task :restart do
+    on roles(:worker) do
+      execute :sudo, :service, 'orangelight-sneakers', :restart
+    end
+  end
+end
+
+after 'deploy:reverted', 'sneakers:restart'
+after 'deploy:published', 'sneakers:restart'
