@@ -1,0 +1,22 @@
+defaults: &defaults
+  events:
+    server: 'amqp://localhost:5672'
+    exchange: 'orangelight_events'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  events:
+    server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
+    exchange: 'orangelight_events'
+
+staging:
+  <<: *defaults
+  events:
+    server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
+    exchange: 'orangelight_events'
