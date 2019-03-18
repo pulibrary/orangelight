@@ -63,4 +63,18 @@ RSpec.describe 'catalog/show' do
       expect(page).to have_selector('#doc_6010813 > dl > dt.blacklight-holdings_1display')
     end
   end
+
+  describe 'the issue number' do
+    it 'has a link to the issue' do
+      visit 'catalog/coin-1'
+      expect(page).to have_link('1', href: '/?f[issue_number_s][]=1')
+    end
+  end
+
+  describe 'the class year' do
+    it 'has a link to the class year' do
+      visit 'catalog/dsp0141687h654'
+      expect(page).to have_link('2014', href: '/?f[class_year_s][]=2014')
+    end
+  end
 end

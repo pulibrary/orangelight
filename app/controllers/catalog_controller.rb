@@ -172,8 +172,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'contributor_display', label: 'Contributor(s)', helper_method: :browse_name
     config.add_show_field 'department_display', label: 'Department', helper_method: :browse_name
     config.add_show_field 'certificate_display', label: 'Certificate', helper_method: :browse_name
-    config.add_show_field 'class_year_s', label: 'Class year', link_to_search: true
 
+    config.add_show_field 'class_year_s', label: 'Class year', helper_method: :link_to_search_value
     # Linked fields pushed to top of supplemental info
     config.add_show_field 'subject_display', label: 'Subject(s)', helper_method: :subjectify
     config.add_show_field 'related_name_json_1display', hash: true
@@ -294,7 +294,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'recap_notes_display', label: 'RCP', helper_method: :recap_note
 
     # Numismatics fields
-    config.add_show_field 'issue_number_s', label: 'Issue', link_to_search: true, if: false
+    config.add_show_field 'issue_number_s', label: 'Issue', helper_method: :link_to_search_value, if: false
     config.add_show_field 'issue_references_t', label: 'References', if: false
     config.add_show_field 'accession_info_t'
     config.add_show_field 'analysis_t', label: 'Analysis'
