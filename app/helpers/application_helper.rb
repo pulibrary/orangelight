@@ -307,6 +307,15 @@ module ApplicationHelper
     end
   end
 
+  def link_to_search_value(args)
+    if args[:document][args[:field]].present?
+      args[:document][args[:field]].each_with_index do |field, i|
+        field_link = link_to(field, "/?f[#{args[:field]}][]=#{CGI.escape field}", class: 'search-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{field}", title: "Search: #{field}")
+        args[:document][args[:field]][i] = field_link
+      end
+    end
+  end
+
   def name_title_hierarchy(args)
     name_titles = JSON.parse(args[:document][args[:field]])
     all_links = []
