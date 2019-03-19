@@ -20880,6 +20880,9 @@
         "find_place_t": [
             "Antioch"
         ],
+        "find_place_facet": [
+            "Antioch"
+        ],
         "format": [
             "Coin"
         ],
@@ -20887,9 +20890,17 @@
         "issue_denomination_t": [
             "large"
         ],
+        "issue_denomination_facet": [
+            "large"
+        ],
+        "issue_denomination_sort": "large",
         "issue_metal_t": [
             "bronze"
         ],
+        "issue_metal_facet": [
+            "bronze"
+        ],
+        "issue_metal_sort": "bronze",
         "issue_number_s": [
             "1"
         ],
@@ -20908,9 +20919,14 @@
         "issue_place_t": [
             "Antioch, Syria"
         ],
+        "issue_place_facet": [
+            "Antioch, Syria"
+        ],
+        "issue_place_sort": "Antioch, Syria",
         "issue_references_t": [
             "Waage-GRBCC 269"
         ],
+        "issue_references_sort": "Waage-GRBCC 269",
         "issue_reverse_figure_description_t": [
             "Zeus resting on long scepter and holding a Nike, who faces him, in extended r."
         ],
@@ -20977,6 +20993,9 @@
         "find_place_t": [
             "Antioch, Syria"
         ],
+        "find_place_facet": [
+            "Antioch, Syria"
+        ],
         "format": [
             "Coin"
         ],
@@ -20987,6 +21006,10 @@
         "issue_denomination_t": [
             "1/2 Penny"
         ],
+        "issue_denomination_facet": [
+            "1/2 Penny"
+        ],
+        "issue_denomination_sort": "1/2 Penny",
         "issue_edge_t": [
             "GOTT MIT UNS"
         ],
@@ -20999,6 +21022,10 @@
         "issue_metal_t": [
             "copper"
         ],
+        "issue_metal_facet": [
+            "copper"
+        ],
+        "issue_metal_sort": "copper",
         "issue_number_s": "1",
         "issue_object_type_t": [
             "coin"
@@ -21031,9 +21058,14 @@
         "issue_place_t": [
             "Great Britain"
         ],
+        "issue_place_facet": [
+            "Great Britain"
+        ],
+        "issue_place_sort": "Great Britain",
         "issue_references_t": [
             "short-title citation part citation number"
         ],
+        "issue_references_sort": "short-title citation part citation number",
         "issue_reverse_attributes_t": [
             "above",
             "2 within \u0404"
@@ -21061,6 +21093,13 @@
         ],
         "issue_ruler_t": [
             "George I"
+        ],
+        "issue_ruler_sort": "George I",
+        "issue_artists_t": [
+          "Paul Bargas"
+        ],
+        "issue_artists_facet": [
+          "Paul Bargas"
         ],
         "issue_series_t": [
             "Hibernia"
@@ -21868,6 +21907,9 @@
         "find_place_t": [
             "Antioch"
         ],
+        "find_place_facet": [
+            "Antioch"
+        ],
         "format": [
             "Coin"
         ],
@@ -21875,9 +21917,17 @@
         "issue_denomination_t": [
             "large"
         ],
+        "issue_denomination_facet": [
+            "large"
+        ],
+        "issue_denomination_sort": "large",
         "issue_metal_t": [
             "bronze"
         ],
+        "issue_metal_facet": [
+            "bronze"
+        ],
+        "issue_metal_sort": "bronze",
         "issue_number_s": [
             "1"
         ],
@@ -21896,9 +21946,14 @@
         "issue_place_t": [
             "Antioch, Syria"
         ],
+        "issue_place_facet": [
+            "Antioch, Syria"
+        ],
+        "issue_place_sort": "Antioch, Syria",
         "issue_references_t": [
             "Waage-GRBCC 269"
         ],
+        "issue_references_sort": "Waage-GRBCC 269",
         "issue_reverse_figure_description_t": [
             "Zeus resting on long scepter and holding a Nike, who faces him, in extended r."
         ],
@@ -21965,6 +22020,9 @@
         "find_place_t": [
             "Antioch, Syria"
         ],
+        "find_place_facet": [
+            "Antioch, Syria"
+        ],
         "format": [
             "Coin"
         ],
@@ -21975,6 +22033,10 @@
         "issue_denomination_t": [
             "1/2 Penny"
         ],
+        "issue_denomination_facet": [
+            "1/2 Penny"
+        ],
+        "issue_denomination_sort": "1/2 Penny",
         "issue_edge_t": [
             "GOTT MIT UNS"
         ],
@@ -21987,6 +22049,10 @@
         "issue_metal_t": [
             "copper"
         ],
+        "issue_metal_facet": [
+            "copper"
+        ],
+        "issue_metal_sort": "copper",
         "issue_number_s": "1",
         "issue_object_type_t": [
             "coin"
@@ -22019,9 +22085,14 @@
         "issue_place_t": [
             "Great Britain"
         ],
+        "issue_place_facet": [
+            "Great Britain"
+        ],
+        "issue_place_sort": "Great Britain",
         "issue_references_t": [
             "short-title citation part citation number"
         ],
+        "issue_references_sort": "short-title citation part citation number",
         "issue_reverse_attributes_t": [
             "above",
             "2 within \u0404"
@@ -22050,6 +22121,7 @@
         "issue_ruler_t": [
             "George I"
         ],
+        "issue_ruler_sort": "George I",
         "issue_series_t": [
             "Hibernia"
         ],
