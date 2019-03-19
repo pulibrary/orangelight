@@ -1,0 +1,35 @@
+<%= form_tag search_catalog_path, :class => 'advanced form-horizontal', :method => :get do  %>
+  <div class="col-md-7">
+    <% unless (search_context_str = render_search_to_s(advanced_search_context)).blank? %>
+      <div class="constraints well search_history">
+        <h4 class="advanced-search-context"><%= t 'blacklight_advanced_search.form.search_context' %></h4>
+        <%= search_context_str %>
+      </div>
+    <% end %>
+    <%= render_hash_as_hidden_fields(search_state.params_for_search(advanced_search_context.except(:model, :rpp, :start)).except(:f_inclusive)) %>
+
+    <div class="input-criteria">
+      <div id="guided_search">
+        <%= render 'advanced/guided_search_fields' %>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-5">
+    <div class="limit-criteria">
+      <h2 class="limit-criteria-heading"><%= t('blacklight_advanced_search.form.limit_criteria_heading_html')%></h2>
+
+      <div id="advanced_search_facets" class="limit_input">
+        <% if blacklight_config.try(:advanced_search).try {|h| h[:form_facet_partial] } %>
+          <%= render blacklight_config.advanced_search[:form_facet_partial] %>
+        <% else %>
+          <%= render 'advanced/numismatics/facets_as_select' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="search-submit-buttons clearfix col-sm-7">
+    <%= render 'advanced/numismatics/submit_btns' %>
+  </div>
+<% end %>

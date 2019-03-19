@@ -35,7 +35,8 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[access_facet format language_facet advanced_location_s]
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[issue_metal_facet issue_place_facet issue_denomination_facet issue_ruler_facet issue_artists_facet find_place_facet]
+    #config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[access_facet format language_facet advanced_location_s]
     config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.pivot'] ||= ''
@@ -153,6 +154,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'find_locus_s', label: 'Find Locus', show: false
     config.add_facet_field 'find_number_s', label: 'Find Number', show: false
     config.add_facet_field 'find_place_s', label: 'Find Place', show: false
+    config.add_facet_field 'issue_artists_s', label: 'Artist', show: false
     config.add_facet_field 'issue_color_s', label: 'Color', show: false
     config.add_facet_field 'issue_denomination_s', label: 'Denomination', show: false
     config.add_facet_field 'issue_edge_s', label: 'Edge', show: false
@@ -352,6 +354,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'find_locus_s', label: 'Find Locus', helper_method: :link_to_search_value
     config.add_show_field 'find_number_s', label: 'Find Number', helper_method: :link_to_search_value
     config.add_show_field 'find_place_s', label: 'Find Place', helper_method: :link_to_search_value
+    config.add_show_field 'issue_artists_s', label: 'Artist', helper_method: :link_to_search_value
     config.add_show_field 'issue_color_s', label: 'Color', helper_method: :link_to_search_value
     config.add_show_field 'issue_denomination_s', label: 'Denomination', helper_method: :link_to_search_value
     config.add_show_field 'issue_edge_s', label: 'Edge', helper_method: :link_to_search_value

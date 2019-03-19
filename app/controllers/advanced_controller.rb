@@ -8,4 +8,8 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
 
     super
   end
+
+  def numismatics
+     @response = get_advanced_search_facets unless request.method == :post
+  end
 end
