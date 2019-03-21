@@ -49,7 +49,7 @@ gem 'introjs-rails', git: 'https://github.com/videmor/intro.js-rails.git', branc
 # Capistrano
 gem 'blacklight-marc', '~> 6.1'
 gem 'capistrano', '~> 3.4.0'
-gem 'devise', '~> 4.4'
+gem 'devise', '>= 4.6.0'
 gem 'devise-guests', '~> 0.5'
 gem 'faraday'
 gem 'faraday-cookie_jar'
