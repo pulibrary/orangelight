@@ -139,6 +139,51 @@ class CatalogController < ApplicationController
                                                   helper_method: :render_location_code
     config.add_facet_field 'name_title_browse_s', label: 'Author-title heading', show: false
 
+    # Numismatics facets
+    config.add_facet_field 'issue_number_s', label: 'Issue', show: false
+    config.add_facet_field 'issue_references_s', label: 'References', show: false
+    config.add_facet_field 'accession_info_s', label: 'Accession info', show: false
+    config.add_facet_field 'analysis_s', label: 'Analysis', show: false
+    config.add_facet_field 'counter_stamp_s', label: 'Counter Stamp', show: false
+    config.add_facet_field 'die_axis_s', label: 'Die Axis', show: false
+    config.add_facet_field 'find_date_s', label: 'Find Date', show: false
+    config.add_facet_field 'find_description_s', label: 'Find Description', show: false
+    config.add_facet_field 'find_feature_s', label: 'Find Feature', show: false
+    config.add_facet_field 'find_locus_s', label: 'Find Locus', show: false
+    config.add_facet_field 'find_number_s', label: 'Find Number', show: false
+    config.add_facet_field 'find_place_s', label: 'Find Place', show: false
+    config.add_facet_field 'issue_color_s', label: 'Color', show: false
+    config.add_facet_field 'issue_denomination_s', label: 'Denomination', show: false
+    config.add_facet_field 'issue_edge_s', label: 'Edge', show: false
+    config.add_facet_field 'issue_era_s', label: 'Era', show: false
+    config.add_facet_field 'issue_master_s', label: 'Master', show: false
+    config.add_facet_field 'issue_metal_s', label: 'Metal', show: false
+    config.add_facet_field 'issue_place_s', label: 'Place', show: false
+    config.add_facet_field 'issue_object_type_s', label: 'Object Type', show: false
+    config.add_facet_field 'issue_obverse_attributes_s', label: 'Obverse Attributes', show: false
+    config.add_facet_field 'issue_obverse_figure_description_s', label: 'Obverse Figure Description', show: false
+    config.add_facet_field 'issue_obverse_figure_relationship_s', label: 'Obverse Figure Relationship', show: false
+    config.add_facet_field 'issue_obverse_figure_s', label: 'Obverse Figure', show: false
+    config.add_facet_field 'issue_obverse_legend_s', label: 'Obverse Legend', show: false
+    config.add_facet_field 'issue_obverse_orientation_s', label: 'Obverse Orientation', show: false
+    config.add_facet_field 'issue_obverse_part_s', label: 'Obverse Part', show: false
+    config.add_facet_field 'issue_obverse_symbol_s', label: 'Obverse Symbol', show: false
+    config.add_facet_field 'issue_reverse_attributes_s', label: 'Reverse Attributes', show: false
+    config.add_facet_field 'issue_reverse_figure_description_s', label: 'Reverse Figure Description', show: false
+    config.add_facet_field 'issue_reverse_figure_relationship_s', label: 'Reverse Figure Relationship', show: false
+    config.add_facet_field 'issue_reverse_figure_s', label: 'Reverse Figure', show: false
+    config.add_facet_field 'issue_reverse_legend_s', label: 'Reverse Legend', show: false
+    config.add_facet_field 'issue_reverse_orientation_s', label: 'Reverse Orientation', show: false
+    config.add_facet_field 'issue_reverse_part_s', label: 'Reverse Part', show: false
+    config.add_facet_field 'issue_reverse_symbol_s', label: 'Reverse Symbol', show: false
+    config.add_facet_field 'issue_ruler_s', label: 'Ruler', show: false
+    config.add_facet_field 'issue_series_s', label: 'Series', show: false
+    config.add_facet_field 'issue_shape_s', label: 'Shape', show: false
+    config.add_facet_field 'issue_workshop_s', label: 'Workshop', show: false
+    config.add_facet_field 'size_s', label: 'Size', show: false
+    config.add_facet_field 'technique_s', label: 'Technique', show: false
+    config.add_facet_field 'weight_s', label: 'Weight', show: false
+
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
@@ -295,48 +340,48 @@ class CatalogController < ApplicationController
 
     # Numismatics fields
     config.add_show_field 'issue_number_s', label: 'Issue', helper_method: :link_to_search_value, if: false
-    config.add_show_field 'issue_references_t', label: 'References', if: false
-    config.add_show_field 'accession_info_t'
-    config.add_show_field 'analysis_t', label: 'Analysis'
-    config.add_show_field 'counter_stamp_t', label: 'Counter Stamp'
-    config.add_show_field 'die_axis_t', label: 'Die Axis'
-    config.add_show_field 'find_date_t', label: 'Find Date'
-    config.add_show_field 'find_description_t', label: 'Find Description'
-    config.add_show_field 'find_feature_t', label: 'Find Feature'
-    config.add_show_field 'find_locus_t', label: 'Find Locus'
-    config.add_show_field 'find_number_t', label: 'Find Number'
-    config.add_show_field 'find_place_t', label: 'Find Place'
-    config.add_show_field 'issue_color_t', label: 'Color'
-    config.add_show_field 'issue_denomination_t', label: 'Denomination'
-    config.add_show_field 'issue_edge_t', label: 'Edge'
-    config.add_show_field 'issue_era_t', label: 'Era'
-    config.add_show_field 'issue_master_t', label: 'Master'
-    config.add_show_field 'issue_metal_t', label: 'Metal'
-    config.add_show_field 'issue_place_t', label: 'Place'
-    config.add_show_field 'issue_object_type_t', label: 'Object Type'
-    config.add_show_field 'issue_obverse_attributes_t', label: 'Obverse Attributes'
-    config.add_show_field 'issue_obverse_figure_description_t', label: 'Obverse Figure Description'
-    config.add_show_field 'issue_obverse_figure_relationship_t', label: 'Obverse Figure Relationship'
-    config.add_show_field 'issue_obverse_figure_t', label: 'Obverse Figure'
-    config.add_show_field 'issue_obverse_legend_t', label: 'Obverse Legend'
-    config.add_show_field 'issue_obverse_orientation_t', label: 'Obverse Orientation'
-    config.add_show_field 'issue_obverse_part_t', label: 'Obverse Part'
-    config.add_show_field 'issue_obverse_symbol_t', label: 'Obverse Symbol'
-    config.add_show_field 'issue_reverse_attributes_t', label: 'Reverse Attributes'
-    config.add_show_field 'issue_reverse_figure_description_t', label: 'Reverse Figure Description'
-    config.add_show_field 'issue_reverse_figure_relationship_t', label: 'Reverse Figure Relationship'
-    config.add_show_field 'issue_reverse_figure_t', label: 'Reverse Figure'
-    config.add_show_field 'issue_reverse_legend_t', label: 'Reverse Legend'
-    config.add_show_field 'issue_reverse_orientation_t', label: 'Reverse Orientation'
-    config.add_show_field 'issue_reverse_part_t', label: 'Reverse Part'
-    config.add_show_field 'issue_reverse_symbol_t', label: 'Reverse Symbol'
-    config.add_show_field 'issue_ruler_t', label: 'Ruler'
-    config.add_show_field 'issue_series_t', label: 'Series'
-    config.add_show_field 'issue_shape_t', label: 'Shape'
-    config.add_show_field 'issue_workshop_t', label: 'Workshop'
-    config.add_show_field 'size_t', label: 'Size'
-    config.add_show_field 'technique_t', label: 'Technique'
-    config.add_show_field 'weight_t', label: 'Weight'
+    config.add_show_field 'issue_references_s', label: 'References', helper_method: :link_to_search_value, if: false
+    config.add_show_field 'accession_info_s', label: 'Accession info', helper_method: :link_to_search_value
+    config.add_show_field 'analysis_s', label: 'Analysis', helper_method: :link_to_search_value
+    config.add_show_field 'counter_stamp_s', label: 'Counter Stamp', helper_method: :link_to_search_value
+    config.add_show_field 'die_axis_s', label: 'Die Axis', helper_method: :link_to_search_value
+    config.add_show_field 'find_date_s', label: 'Find Date', helper_method: :link_to_search_value
+    config.add_show_field 'find_description_s', label: 'Find Description', helper_method: :link_to_search_value
+    config.add_show_field 'find_feature_s', label: 'Find Feature', helper_method: :link_to_search_value
+    config.add_show_field 'find_locus_s', label: 'Find Locus', helper_method: :link_to_search_value
+    config.add_show_field 'find_number_s', label: 'Find Number', helper_method: :link_to_search_value
+    config.add_show_field 'find_place_s', label: 'Find Place', helper_method: :link_to_search_value
+    config.add_show_field 'issue_color_s', label: 'Color', helper_method: :link_to_search_value
+    config.add_show_field 'issue_denomination_s', label: 'Denomination', helper_method: :link_to_search_value
+    config.add_show_field 'issue_edge_s', label: 'Edge', helper_method: :link_to_search_value
+    config.add_show_field 'issue_era_s', label: 'Era', helper_method: :link_to_search_value
+    config.add_show_field 'issue_master_s', label: 'Master', helper_method: :link_to_search_value
+    config.add_show_field 'issue_metal_s', label: 'Metal', helper_method: :link_to_search_value
+    config.add_show_field 'issue_place_s', label: 'Place', helper_method: :link_to_search_value
+    config.add_show_field 'issue_object_type_s', label: 'Object Type', helper_method: :link_to_search_value
+    config.add_show_field 'issue_obverse_attributes_s', label: 'Obverse Attributes', helper_method: :link_to_search_value
+    config.add_show_field 'issue_obverse_figure_description_s', label: 'Obverse Figure Description', helper_method: :link_to_search_value
+    config.add_show_field 'issue_obverse_figure_relationship_s', label: 'Obverse Figure Relationship', helper_method: :link_to_search_value
+    config.add_show_field 'issue_obverse_figure_s', label: 'Obverse Figure', helper_method: :link_to_search_value
+    config.add_show_field 'issue_obverse_legend_s', label: 'Obverse Legend', helper_method: :link_to_search_value
+    config.add_show_field 'issue_obverse_orientation_s', label: 'Obverse Orientation', helper_method: :link_to_search_value
+    config.add_show_field 'issue_obverse_part_s', label: 'Obverse Part', helper_method: :link_to_search_value
+    config.add_show_field 'issue_obverse_symbol_s', label: 'Obverse Symbol', helper_method: :link_to_search_value
+    config.add_show_field 'issue_reverse_attributes_s', label: 'Reverse Attributes', helper_method: :link_to_search_value
+    config.add_show_field 'issue_reverse_figure_description_s', label: 'Reverse Figure Description', helper_method: :link_to_search_value
+    config.add_show_field 'issue_reverse_figure_relationship_s', label: 'Reverse Figure Relationship', helper_method: :link_to_search_value
+    config.add_show_field 'issue_reverse_figure_s', label: 'Reverse Figure', helper_method: :link_to_search_value
+    config.add_show_field 'issue_reverse_legend_s', label: 'Reverse Legend', helper_method: :link_to_search_value
+    config.add_show_field 'issue_reverse_orientation_s', label: 'Reverse Orientation', helper_method: :link_to_search_value
+    config.add_show_field 'issue_reverse_part_s', label: 'Reverse Part', helper_method: :link_to_search_value
+    config.add_show_field 'issue_reverse_symbol_s', label: 'Reverse Symbol', helper_method: :link_to_search_value
+    config.add_show_field 'issue_ruler_s', label: 'Ruler', helper_method: :link_to_search_value
+    config.add_show_field 'issue_series_s', label: 'Series', helper_method: :link_to_search_value
+    config.add_show_field 'issue_shape_s', label: 'Shape', helper_method: :link_to_search_value
+    config.add_show_field 'issue_workshop_s', label: 'Workshop', helper_method: :link_to_search_value
+    config.add_show_field 'size_s', label: 'Size', helper_method: :link_to_search_value
+    config.add_show_field 'technique_s', label: 'Technique', helper_method: :link_to_search_value
+    config.add_show_field 'weight_s', label: 'Weight', helper_method: :link_to_search_value
 
     #     "fielded" search configuration. Used by pulldown among other places.
     #     For supported keys in hash, see rdoc for Blacklight::SearchFields

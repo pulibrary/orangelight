@@ -20853,217 +20853,106 @@
             "Online",
             "In the Library"
         ],
-        "accession_info_t": [
+        "accession_info_s": [
             "Gift of: Antioch Excavation, Princeton, 1/1/1939"
         ],
         "advanced_location_s": [
             "num"
         ],
-        "die_axis_t": [
+        "die_axis_s": [
             "1"
         ],
-        "find_date_t": [
+        "find_date_s": [
             "5/11/1935"
         ],
-        "find_description_t": [
+        "find_description_s": [
             "North big wall"
         ],
-        "find_feature_t": [
+        "find_feature_s": [
             "Theater"
         ],
-        "find_locus_t": [
+        "find_locus_s": [
             "DH 20-N"
         ],
-        "find_number_t": [
+        "find_number_s": [
             "C4846"
         ],
-        "find_place_t": [
+        "find_place_s": [
             "Antioch"
         ],
         "format": [
             "Coin"
         ],
-        "id": "coin-2",
-        "issue_denomination_t": [
+        "id": "coin-3",
+        "issue_denomination_s": [
             "large"
         ],
-        "issue_metal_t": [
+        "issue_denomination_sort": "large",
+        "issue_metal_s": [
             "bronze"
         ],
+        "issue_metal_sort": "bronze",
         "issue_number_s": [
             "1"
         ],
-        "issue_object_type_t": [
+        "issue_object_type_s": [
             "coin"
         ],
-        "issue_obverse_figure_t": [
+        "issue_obverse_figure_s": [
             "Zeus"
         ],
-        "issue_obverse_orientation_t": [
+        "issue_obverse_orientation_s": [
             "right"
         ],
-        "issue_obverse_part_t": [
+        "issue_obverse_part_s": [
             "head"
         ],
-        "issue_place_t": [
+        "issue_place_s": [
             "Antioch, Syria"
         ],
-        "issue_references_t": [
+        "issue_place_sort": "Antioch, Syria",
+        "issue_references_s": [
             "Waage-GRBCC 269"
         ],
-        "issue_reverse_figure_description_t": [
+        "issue_references_sort": "Waage-GRBCC 269",
+        "issue_reverse_figure_description_s": [
             "Zeus resting on long scepter and holding a Nike, who faces him, in extended r."
         ],
-        "issue_reverse_figure_t": [
+        "issue_reverse_figure_s": [
             "Zeus"
         ],
-        "issue_reverse_legend_t": [
+        "issue_reverse_legend_s": [
             "\u0391\u039d\u03a4\u0399\u039f\u03a7\u0395\u03a9\u039d \u03a4\u0397\u03a3 \u039c\u0397\u03a4\u03a1\u039f\u03a0\u039f\u039b\u0395\u03a9\u0395"
         ],
-        "issue_reverse_orientation_t": [
+        "issue_reverse_orientation_s": [
             "left"
         ],
-        "issue_reverse_part_t": [
+        "issue_reverse_part_s": [
             "seated"
         ],
-        "location": [
-            "Rare Books and Special Collections"
+        "call_number_display": "Coin 3",
+        "call_number_browse_s": "Coin 3",
+        "location_code_s": [
+        "num"
         ],
+        "location": [
+        "Rare Books and Special Collections"
+        ],
+        "location_display": [
+        "Rare Books and Special Collections - Numismatics Collection"
+        ],
+        "holdings_1display": "{\"numismatics\":{\"location\":\"Rare Books and Special Collections - Numismatics Collection\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"num\",\"call_number\":\"Coin 3\",\"call_number_browse\":\"Coin 3\"}}",
         "notes_display": [
             "Date illegible, datation based on Waage 269"
         ],
         "pub_date_end_sort": "-50",
         "pub_date_start_sort": "-92",
-        "size_t": [
+        "size_s": [
             "23.5"
         ],
-        "title_display": "Coin: 2",
-        "weight_t": [
+        "title_display": "Coin: 3",
+        "weight_s": [
             "11.97"
-        ]
-    },
-    {
-        "access_facet": [
-            "Online",
-            "In the Library"
-        ],
-        "advanced_location_s": [
-            "num"
-        ],
-        "analysis_t": [
-            "holed at 12 o'clock, 16.73 grams"
-        ],
-        "counter_stamp_t": [
-            "two small counter-stamps visible as small circles on reverse, without known parallel"
-        ],
-        "die_axis_t": [
-            "6"
-        ],
-        "find_date_t": [
-            "5/27/1939?"
-        ],
-        "find_description_t": [
-            "at join of carcares and w. cavea surface"
-        ],
-        "find_feature_t": [
-            "Hill A?"
-        ],
-        "find_locus_t": [
-            "8-N 40"
-        ],
-        "find_number_t": [
-            "2237"
-        ],
-        "find_place_t": [
-            "Antioch, Syria"
-        ],
-        "format": [
-            "Coin"
-        ],
-        "id": "coin-1",
-        "issue_color_t": [
-            "green"
-        ],
-        "issue_denomination_t": [
-            "1/2 Penny"
-        ],
-        "issue_edge_t": [
-            "GOTT MIT UNS"
-        ],
-        "issue_era_t": [
-            "uncertain"
-        ],
-        "issue_master_t": [
-            "William Wood"
-        ],
-        "issue_metal_t": [
-            "copper"
-        ],
-        "issue_number_s": "1",
-        "issue_object_type_t": [
-            "coin"
-        ],
-        "issue_obverse_attributes_t": [
-            "to left and right",
-            "around edge"
-        ],
-        "issue_obverse_figure_description_t": [
-            "Harp at left side, 5 strings."
-        ],
-        "issue_obverse_figure_relationship_t": [
-            "Victory behind"
-        ],
-        "issue_obverse_figure_t": [
-            "bust"
-        ],
-        "issue_obverse_legend_t": [
-            "GEORGIUS\u2022DEI\u2022GRATIA\u2022REX\u2022"
-        ],
-        "issue_obverse_orientation_t": [
-            "right"
-        ],
-        "issue_obverse_part_t": [
-            "standing"
-        ],
-        "issue_obverse_symbol_t": [
-            "cornucopia"
-        ],
-        "issue_place_t": [
-            "Great Britain"
-        ],
-        "issue_references_t": [
-            "short-title citation part citation number"
-        ],
-        "issue_reverse_attributes_t": [
-            "above",
-            "2 within \u0404"
-        ],
-        "issue_reverse_figure_description_t": [
-            "Harp at right side, 11 strings. Right arm holding up a palm-branch"
-        ],
-        "issue_reverse_figure_relationship_t": [
-            "corn-ear behind head"
-        ],
-        "issue_reverse_figure_t": [
-            "Hibernia"
-        ],
-        "issue_reverse_legend_t": [
-            "\u2022HIBERNIA\u20221723\u2022"
-        ],
-        "issue_reverse_orientation_t": [
-            "left"
-        ],
-        "issue_reverse_part_t": [
-            "seated"
-        ],
-        "issue_reverse_symbol_t": [
-            "goat head"
-        ],
-        "issue_ruler_t": [
-            "George I"
-        ],
-        "issue_series_t": [
-            "Hibernia"
         ]
     },
     {
@@ -21841,92 +21730,106 @@
             "Online",
             "In the Library"
         ],
-        "accession_info_t": [
+        "accession_info_s": [
             "Gift of: Antioch Excavation, Princeton, 1/1/1939"
         ],
         "advanced_location_s": [
             "num"
         ],
-        "die_axis_t": [
+        "die_axis_s": [
             "1"
         ],
-        "find_date_t": [
+        "find_date_s": [
             "5/11/1935"
         ],
-        "find_description_t": [
+        "find_description_s": [
             "North big wall"
         ],
-        "find_feature_t": [
+        "find_feature_s": [
             "Theater"
         ],
-        "find_locus_t": [
+        "find_locus_s": [
             "DH 20-N"
         ],
-        "find_number_t": [
+        "find_number_s": [
             "C4846"
         ],
-        "find_place_t": [
+        "find_place_s": [
             "Antioch"
         ],
         "format": [
             "Coin"
         ],
+        "pub_created_display": "George I, 1/2 Penny, City",
         "id": "coin-2",
-        "issue_denomination_t": [
+        "issue_denomination_s": [
             "large"
         ],
-        "issue_metal_t": [
+        "issue_denomination_sort": "large",
+        "issue_metal_s": [
             "bronze"
         ],
+        "issue_metal_sort": "bronze",
         "issue_number_s": [
             "1"
         ],
-        "issue_object_type_t": [
+        "issue_object_type_s": [
             "coin"
         ],
-        "issue_obverse_figure_t": [
+        "issue_obverse_figure_s": [
             "Zeus"
         ],
-        "issue_obverse_orientation_t": [
+        "issue_obverse_orientation_s": [
             "right"
         ],
-        "issue_obverse_part_t": [
+        "issue_obverse_part_s": [
             "head"
         ],
-        "issue_place_t": [
+        "issue_place_s": [
             "Antioch, Syria"
         ],
-        "issue_references_t": [
+        "issue_place_sort": "Antioch, Syria",
+        "issue_references_s": [
             "Waage-GRBCC 269"
         ],
-        "issue_reverse_figure_description_t": [
+        "issue_references_sort": "Waage-GRBCC 269",
+        "issue_reverse_figure_description_s": [
             "Zeus resting on long scepter and holding a Nike, who faces him, in extended r."
         ],
-        "issue_reverse_figure_t": [
+        "issue_reverse_figure_s": [
             "Zeus"
         ],
-        "issue_reverse_legend_t": [
+        "issue_reverse_legend_s": [
             "\u0391\u039d\u03a4\u0399\u039f\u03a7\u0395\u03a9\u039d \u03a4\u0397\u03a3 \u039c\u0397\u03a4\u03a1\u039f\u03a0\u039f\u039b\u0395\u03a9\u0395"
         ],
-        "issue_reverse_orientation_t": [
+        "issue_reverse_orientation_s": [
             "left"
         ],
-        "issue_reverse_part_t": [
+        "issue_reverse_part_s": [
             "seated"
         ],
-        "location": [
-            "Rare Books and Special Collections"
+        "call_number_display": "Coin 2",
+        "call_number_browse_s": "Coin 2",
+        "location_code_s": [
+        "num"
         ],
+        "location": [
+        "Rare Books and Special Collections"
+        ],
+        "location_display": [
+        "Rare Books and Special Collections - Numismatics Collection"
+        ],
+        "holdings_1display": "{\"numismatics\":{\"location\":\"Rare Books and Special Collections - Numismatics Collection\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"num\",\"call_number\":\"Coin 2\",\"call_number_browse\":\"Coin 2\"}}",
         "notes_display": [
             "Date illegible, datation based on Waage 269"
         ],
         "pub_date_end_sort": "-50",
         "pub_date_start_sort": "-92",
-        "size_t": [
+        "size_s": [
             "23.5"
         ],
         "title_display": "Coin: 2",
-        "weight_t": [
+        "weight_s": [
             "11.97"
         ]
     },
@@ -21938,130 +21841,144 @@
         "advanced_location_s": [
             "num"
         ],
-        "analysis_t": [
+        "analysis_s": [
             "holed at 12 o'clock, 16.73 grams"
         ],
-        "counter_stamp_t": [
+        "counter_stamp_s": [
             "two small counter-stamps visible as small circles on reverse, without known parallel"
         ],
-        "die_axis_t": [
+        "die_axis_s": [
             "6"
         ],
-        "find_date_t": [
+        "find_date_s": [
             "5/27/1939?"
         ],
-        "find_description_t": [
+        "find_description_s": [
             "at join of carcares and w. cavea surface"
         ],
-        "find_feature_t": [
+        "find_feature_s": [
             "Hill A?"
         ],
-        "find_locus_t": [
+        "find_locus_s": [
             "8-N 40"
         ],
-        "find_number_t": [
+        "find_number_s": [
             "2237"
         ],
-        "find_place_t": [
+        "find_place_s": [
             "Antioch, Syria"
         ],
         "format": [
             "Coin"
         ],
         "id": "coin-1",
-        "issue_color_t": [
+        "issue_color_s": [
             "green"
         ],
-        "issue_denomination_t": [
+        "issue_denomination_s": [
             "1/2 Penny"
         ],
-        "issue_edge_t": [
+        "issue_denomination_sort": "1/2 Penny",
+        "issue_edge_s": [
             "GOTT MIT UNS"
         ],
-        "issue_era_t": [
+        "issue_era_s": [
             "uncertain"
         ],
-        "issue_master_t": [
+        "issue_master_s": [
             "William Wood"
         ],
-        "issue_metal_t": [
+        "issue_metal_s": [
             "copper"
         ],
+        "issue_metal_sort": "copper",
         "issue_number_s": "1",
-        "issue_object_type_t": [
+        "issue_object_type_s": [
             "coin"
         ],
-        "issue_obverse_attributes_t": [
+        "issue_obverse_attributes_s": [
             "to left and right",
             "around edge"
         ],
-        "issue_obverse_figure_description_t": [
+        "issue_obverse_figure_description_s": [
             "Harp at left side, 5 strings."
         ],
-        "issue_obverse_figure_relationship_t": [
+        "issue_obverse_figure_relationship_s": [
             "Victory behind"
         ],
-        "issue_obverse_figure_t": [
+        "issue_obverse_figure_s": [
             "bust"
         ],
-        "issue_obverse_legend_t": [
+        "issue_obverse_legend_s": [
             "GEORGIUS\u2022DEI\u2022GRATIA\u2022REX\u2022"
         ],
-        "issue_obverse_orientation_t": [
+        "issue_obverse_orientation_s": [
             "right"
         ],
-        "issue_obverse_part_t": [
+        "issue_obverse_part_s": [
             "standing"
         ],
-        "issue_obverse_symbol_t": [
+        "issue_obverse_symbol_s": [
             "cornucopia"
         ],
-        "issue_place_t": [
+        "issue_place_s": [
             "Great Britain"
         ],
-        "issue_references_t": [
+        "issue_place_sort": "Great Britain",
+        "issue_references_s": [
             "short-title citation part citation number"
         ],
-        "issue_reverse_attributes_t": [
+        "issue_references_sort": "short-title citation part citation number",
+        "issue_reverse_attributes_s": [
             "above",
             "2 within \u0404"
         ],
-        "issue_reverse_figure_description_t": [
+        "issue_reverse_figure_description_s": [
             "Harp at right side, 11 strings. Right arm holding up a palm-branch"
         ],
-        "issue_reverse_figure_relationship_t": [
+        "issue_reverse_figure_relationship_s": [
             "corn-ear behind head"
         ],
-        "issue_reverse_figure_t": [
+        "issue_reverse_figure_s": [
             "Hibernia"
         ],
-        "issue_reverse_legend_t": [
+        "issue_reverse_legend_s": [
             "\u2022HIBERNIA\u20221723\u2022"
         ],
-        "issue_reverse_orientation_t": [
+        "issue_reverse_orientation_s": [
             "left"
         ],
-        "issue_reverse_part_t": [
+        "issue_reverse_part_s": [
             "seated"
         ],
-        "issue_reverse_symbol_t": [
+        "issue_reverse_symbol_s": [
             "goat head"
         ],
-        "issue_ruler_t": [
+        "issue_ruler_s": [
             "George I"
         ],
-        "issue_series_t": [
+        "issue_ruler_sort": "George I",
+        "issue_series_s": [
             "Hibernia"
         ],
-        "issue_shape_t": [
+        "issue_shape_s": [
             "round"
         ],
-        "issue_workshop_t": [
+        "issue_workshop_s": [
             "Bristol"
         ],
-        "location": [
-            "Firestone"
+        "call_number_display": "Coin 1",
+        "call_number_browse_s": "Coin 1",
+        "location_code_s": [
+        "num"
         ],
+        "location": [
+        "Rare Books and Special Collections"
+        ],
+        "location_display": [
+        "Rare Books and Special Collections - Numismatics Collection"
+        ],
+        "holdings_1display": "{\"numismatics\":{\"location\":\"Rare Books and Special Collections - Numismatics Collection\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"num\",\"call_number\":\"Coin 1\",\"call_number_browse\":\"Coin 1\"}}",
         "notes_display": [
             "Abraham Usher| John Field| Charles Meredith.",
             "Black and red ink.",
@@ -22069,14 +21986,14 @@
         ],
         "pub_date_end_sort": -41,
         "pub_date_start_sort": -91,
-        "size_t": [
+        "size_s": [
             "27"
         ],
-        "technique_t": [
+        "technique_s": [
             "Cast"
         ],
         "title_display": "Coin: 1",
-        "weight_t": [
+        "weight_s": [
             "8.26"
         ]
     }
