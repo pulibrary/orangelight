@@ -35,7 +35,15 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[issue_metal_facet issue_place_facet issue_denomination_facet issue_ruler_facet issue_artists_facet find_place_facet]
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[issue_metal_s issue_place_s
+      issue_denomination_s issue_ruler_s issue_artists_s find_place_s issue_references_s accession_info_s
+      analysis_s counter_stamp_s die_axis_s find_date_s find_description_s find_feature_s find_locus_s
+      find_number_s issue_color_s issue_edge_s issue_era_s issue_master_s issue_object_type_s issue_obverse_attributes_s
+      issue_obverse_figure_description_s issue_obverse_figure_relationship_s issue_obverse_figure_s issue_obverse_legend_s
+      issue_obverse_orientation_s issue_obverse_part_s issue_obverse_symbol_s issue_reverse_attributes_s
+      issue_reverse_figure_description_s issue_reverse_figure_relationship_s issue_reverse_figure_s issue_reverse_legend_s
+      issue_reverse_orientation_s issue_reverse_part_s issue_reverse_symbol_s issue_ruler_s issue_series_s issue_shape_s
+      issue_workshop_s size_s technique_s weight_s]
     #config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[access_facet format language_facet advanced_location_s]
     config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
@@ -416,6 +424,7 @@ class CatalogController < ApplicationController
     #   field.include_in_simple_select = false
 
     config.add_search_field 'all_fields', label: 'Keyword' do |field|
+      field.include_in_numismatics_search = true
     end
 
     # Now we see how to over-ride Solr request handler defaults, in this
@@ -539,20 +548,43 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('coin_number') do |field|
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = false
+      field.include_in_numismatics_search = true
+      field.label = 'Coin number'
+      field.solr_local_parameters = {
+        qf: 'id'
+      }
+    end
+
+    config.add_search_field('issue_number') do |field|
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = false
+      field.include_in_numismatics_search = true
+      field.label = 'Issue number'
+      field.solr_local_parameters = {
+        qf: 'issue_number_s'
+      }
+    end
+
     config.add_search_field('browse_subject') do |field|
       field.include_in_advanced_search = false
       field.label = 'Subject (browse)'
     end
+
     config.add_search_field('browse_name') do |field|
       field.include_in_advanced_search = false
       field.label = 'Author (browse)'
       field.placeholder_text = 'Last name, first name'
     end
+
     config.add_search_field('name_title') do |field|
       field.include_in_advanced_search = false
       field.label = 'Author (sorted by title)'
       field.placeholder_text = 'Last name, first name. Title'
     end
+
     config.add_search_field('browse_cn') do |field|
       field.include_in_advanced_search = false
       field.label = 'Call number (browse)'

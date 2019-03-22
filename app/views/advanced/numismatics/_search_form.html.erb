@@ -1,5 +1,5 @@
 <%= form_tag search_catalog_path, :class => 'advanced form-horizontal', :method => :get do  %>
-  <div class="col-md-7">
+  <div class="col-md-12">
     <% unless (search_context_str = render_search_to_s(advanced_search_context)).blank? %>
       <div class="constraints well search_history">
         <h4 class="advanced-search-context"><%= t 'blacklight_advanced_search.form.search_context' %></h4>
@@ -10,12 +10,10 @@
 
     <div class="input-criteria">
       <div id="guided_search">
-        <%= render 'advanced/guided_search_fields' %>
+        <%= render 'advanced/numismatics/search_fields' %>
       </div>
     </div>
 
-  </div>
-  <div class="col-md-5">
     <div class="limit-criteria">
       <h2 class="limit-criteria-heading"><%= t('blacklight_advanced_search.form.limit_criteria_heading_html')%></h2>
 

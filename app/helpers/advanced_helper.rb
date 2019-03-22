@@ -24,6 +24,14 @@ module AdvancedHelper
     key_value
   end
 
+  def numismatics_key_value
+    key_value = []
+    search_fields_for_numismatics_search.each do |field|
+      key_value << [field[1][:label], field[0]]
+    end
+    key_value
+  end
+
   # carries over original search field and original guided search fields if user switches to guided search from regular search
   def guided_field(field_num, default_val)
     if field_num == :f1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
@@ -69,6 +77,10 @@ module AdvancedHelper
   end
 
   private
+
+    def search_fields_for_numismatics_search
+      blacklight_config.search_fields.select { |_k, v| v.include_in_numismatics_search }
+    end
 
     def add_holding_loc(item, holding_loc, locations)
       library = holding_loc['library']['label']

@@ -1,0 +1,37 @@
+
+<div class="numismatics-search-field">
+  <div class="search-field">
+    <label for="f1" class="sr-only">Options for numismatics search</label>
+    <%= select_tag('f1', options_for_select(numismatics_key_value, guided_field(:f1, 'all_fields')), :class=>"search_field") %>
+    <div name="row1">
+      <label for='q1' class='sr-only'>Numismatics search terms</label>
+      <%= text_field_tag "q1", label_tag_default_for(:q1), :class => 'form-control', autocorrect: "off", autocapitalize: "off", autocomplete: "off", spellcheck: "false" %>
+    </div>
+  </div>
+  <div class="search-operators" role="radiogroup" aria-label="Search operators">
+    <label><%= radio_button_tag("op2", "AND", guided_radio(:op2, "AND")) %> AND</label>
+    <label><%= radio_button_tag("op2", "OR", guided_radio(:op2, "OR")) %> OR</label>
+    <label><%= radio_button_tag("op2", "NOT", guided_radio(:op2, "NOT")) %> NOT</label>
+  </div>
+  <div class="search-field">
+    <label for="f2" class="sr-only">Options for numismatics search - second parameter</label>
+    <%= select_tag('f2', options_for_select(numismatics_key_value, guided_field(:f2, 'coin_number')), :class=>"search_field") %>
+    <div name="row2">
+      <label for='q2' class='sr-only'>Numismatics search terms - second parameter</label>
+      <%= text_field_tag "q2", label_tag_default_for(:q2), :class => 'form-control', autocorrect: "off", autocapitalize: "off", autocomplete: "off", spellcheck: "false" %>
+    </div>
+  </div>
+  <div class="search-operators" role="radiogroup" aria-label="Search operators">
+    <label><%= radio_button_tag("op3", "AND", guided_radio(:op3, "AND")) %> AND</label>
+    <label><%= radio_button_tag("op3", "OR", guided_radio(:op3, "OR")) %> OR</label>
+    <label><%= radio_button_tag("op3", "NOT", guided_radio(:op3, "NOT")) %> NOT</label>
+  </div>
+  <div class="search-field">
+    <label for="f3" class="sr-only">Options for numismatics search - third parameter</label>
+    <%= select_tag('f3', options_for_select(numismatics_key_value, guided_field(:f3, 'issue_number')), :class=>"search_field") %>
+    <div name="row3">
+      <label for='q3' class='sr-only'>Numismatics search terms - third parameter</label>
+      <%= text_field_tag "q3", label_tag_default_for(:q3), :class => 'form-control', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
+    </div>
+  </div>
+</div>
