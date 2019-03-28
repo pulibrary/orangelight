@@ -7,12 +7,13 @@ RSpec.describe StackmapService::Url do
 
   let(:url_service) { described_class.new(document: document, loc: location, cn: call_number) }
   let(:document) { SolrDocument.new(properties) }
+  let(:doc_cn) { ['doc call number'] }
   let(:call_number) { nil }
   let(:properties) do
     {
       id: '1234567',
       title_display: 'Title',
-      call_number_browse_s: ['doc call number']
+      call_number_browse_s: doc_cn
     }
   end
 
@@ -34,6 +35,20 @@ RSpec.describe StackmapService::Url do
         expect(subject).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
       end
     end
+
+    describe 'firestone, doc has no call number' do
+      let(:location) { 'f' }
+      let(:doc_cn) { nil }
+
+      it 'resolves to embeded firestone locator with loc and bibid' do
+        expect(subject).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
+      end
+
+      it 'preferred_callno returns nil' do
+        expect(url_service.preferred_callno).to be_nil
+      end
+    end
+
     describe 'mendel, call number provided' do
       let(:location) { 'mus' }
       let(:call_number) { 'Q43.2' }
@@ -55,6 +70,7 @@ RSpec.describe StackmapService::Url do
         expect(subject).to include({ callno: properties[:call_number_browse_s].first }.to_query)
       end
     end
+
     describe 'by title location' do
       let(:location) { 'sprps' }
 

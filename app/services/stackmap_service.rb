@@ -33,7 +33,7 @@ class StackmapService
       if by_title_locations.include? @loc
         @document['title_display']
       else
-        @cn || @document['call_number_browse_s'].first
+        @cn || @document['call_number_browse_s']&.first
       end
     end
 
