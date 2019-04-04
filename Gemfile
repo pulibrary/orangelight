@@ -92,7 +92,7 @@ gem 'sitemap_generator', '~> 6.0'
 
 gem 'voight_kampff', '~> 1.1'
 
-gem 'webpacker', '3.2.0'
+gem 'webpacker', '~> 4.0'
 
 gem 'lograge'
 
