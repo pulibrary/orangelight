@@ -58,8 +58,11 @@ class FiggyViewer {
     iframeElement.id = `iframe-${this.idx + 1}`
 
     // This needs to be retrieved using Global
-    const figgyUrl = window.Global.figgy.url
-    const src = `${figgyUrl}/uv/uv#?manifest=${this.manifestUrl}&config=${figgyUrl}/uv/uv_config.json`
+    // const figgyUrl = window.Global.figgy.url
+    const figgyUrl = 'https://figgy-staging.princeton.edu'
+    // const src = `${figgyUrl}/uv/uv#?manifest=${this.manifestUrl}&config=${figgyUrl}/uv/uv_config.json`
+    const src = `${figgyUrl}/m3/?manifest=${this.manifestUrl}`
+    // const src = 'https://figgy-staging.princeton.edu/m3/?manifest=https://figgy-staging.princeton.edu/concern/scanned_resources/5c17218c-c321-4220-b5a9-a6bfa65468dc/manifest'
     iframeElement.src = src
 
     return iframeElement

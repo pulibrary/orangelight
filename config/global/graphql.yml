@@ -1,2 +1,2 @@
 default:
-  uri: <%= ENV['GRAPHQL_API_URL'] || 'https://figgy.princeton.edu/graphql' %>
+  uri: <%= ENV['GRAPHQL_API_URL'] || 'https://figgy-staging.princeton.edu/graphql' %>
