@@ -88,6 +88,19 @@ To run a specific test:
 rake spec SPEC=path/to/your_spec.rb:linenumber
 ```
 
+## Local development with Figgy
+
+Orangelight is configured to use two environment variables in order to query and retrieve [IIIF Manifests](https://iiif.io/api/presentation/2.1/#manifest) for resources linked to catalog records in the [Figgy digital object repository](https://github.com/pulibrary/figgy).  By default, these are provided with the following values:
+```bash
+GRAPHQL_API_URL=https://figgy.princeton.edu/graphql
+FIGGY_URL=https://figgy.princeton.edu
+```
+
+This will ensure that Orangelight will search for linked resources in the production environment.  To test against linked resources in the staging environment, please use the following invocation when starting the Rails server:
+```bash
+GRAPHQL_API_URL=https://figgy-staging.princeton.edu/graphql FIGGY_URL=https://figgy-staging.princeton.edu bundle exec rails s
+```
+
 ## Local development with browse tables
 
 To start up a copy of the project with a solr index of fixture data
