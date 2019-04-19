@@ -74,12 +74,22 @@ describe 'searching' do
       expect(page).to have_content 'This is not a valid request.'
     end
   end
-
   context 'with an invalid field list parameter in the advanced search' do
     it 'will return results without an error' do
       visit '/catalog?q1=NSF%20Series&search_field=advanced&f1=in_series2121121121212.1'
       expect { page }.not_to raise_error
       expect(page).to have_content 'No results found for your search'
+    end
+  end
+  context 'when searching with an invalid facet parameter' do
+    it 'will log the error' do
+      allow(Rails.logger).to receive(:error)
+
+      visit '/catalog?q=test&f=1'
+      expect { page }.not_to raise_error
+      expect(page.status_code).to eq 400
+      expect(page).to have_content 'Bad Request'
+      expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request: Invalid facet parameter passed: 1/)
     end
   end
 end

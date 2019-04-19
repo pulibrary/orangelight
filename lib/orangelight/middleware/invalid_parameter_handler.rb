@@ -52,7 +52,10 @@ module Orangelight
 
         # Check if facet fields have empty value lists
         def facet_fields_values(params)
-          params.fetch(:f, []).collect do |facet_field, value_list|
+          facet_parameter = params.fetch(:f, [])
+          raise ActionController::BadRequest, "Invalid facet parameter passed: #{facet_parameter}" unless facet_parameter.is_a?(Array) || facet_parameter.is_a?(Hash)
+
+          facet_parameter.collect do |facet_field, value_list|
             next unless value_list.nil?
             raise ActionController::BadRequest, "Facet field #{facet_field} has a nil value"
           end
@@ -77,7 +80,8 @@ module Orangelight
         def valid_message_patterns
           [
             /invalid %-encoding/,
-            /Facet field/
+            /Facet field/,
+            /Invalid facet/
           ]
         end
 
