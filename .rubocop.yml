@@ -26,6 +26,7 @@ AllCops:
 
 Metrics/AbcSize:
   Exclude:
+    - 'app/controllers/application_controller.rb'
     - 'app/controllers/account_controller.rb'
     - 'app/controllers/feedback_controller.rb'
     - 'app/controllers/orangelight/browsables_controller.rb'

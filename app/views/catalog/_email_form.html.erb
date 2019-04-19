@@ -2,6 +2,7 @@
 
   <div class="modal-body">
     <%= render :partial=>'/flash_msg' %>
+    <% if current_user %>
     <div class="form-group">
       <label class="control-label col-sm-2" for="to">
         <%= t('blacklight.email.form.to') %>
@@ -42,4 +43,7 @@
   <div class="modal-footer">
   <button type="submit" class="btn btn-primary"> <%= t('blacklight.sms.form.submit') %></button>
   </div>
+  <% else %>
+      Please <%= link_to("sign in", main_app.new_user_session_path(origin: "#{request.fullpath}")) %> to share the catalog record(s).
+  <% end %>
 <% end %>
