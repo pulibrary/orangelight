@@ -12,7 +12,11 @@ Versions:
 * Blacklight: 6.10.1
 * blacklight_advanced_search: 6.3.1
 
-To install run `bundle install`
+To install run 
+  ```
+  bundle install
+  yarn install
+  ```
 
 Application Configuration
 ------------------
