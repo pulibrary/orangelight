@@ -141,6 +141,7 @@ class CatalogController < ApplicationController
 
     # Numismatics facets
     config.add_facet_field 'issue_number_s', label: 'Issue', show: false
+    config.add_facet_field 'issue_monogram_title_s', label: 'Monogram', show: false
     config.add_facet_field 'issue_references_s', label: 'References', show: false
     config.add_facet_field 'accession_info_s', label: 'Accession info', show: false
     config.add_facet_field 'analysis_s', label: 'Analysis', show: false

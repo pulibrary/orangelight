@@ -21996,5 +21996,116 @@
         "weight_s": [
             "8.26"
         ]
-    }
+    },
+    {
+"id": "coin-1167",
+"title_display": "Coin: 1167",
+"pub_created_display": "shekel, Tyre",
+"access_facet": [
+"Online",
+"In the Library"
+],
+"call_number_display": [
+"Coin 1167"
+],
+"call_number_browse_s": [
+"Coin 1167"
+],
+"location_code_s": [
+"num"
+],
+"location": [
+"Rare Books and Special Collections"
+],
+"location_display": [
+"Rare Books and Special Collections - Numismatics Collection"
+],
+"format": [
+"Coin"
+],
+"advanced_location_s": [
+"num"
+],
+"find_place_s": [
+null
+],
+"die_axis_s": [
+12
+],
+"size_s": [
+"29"
+],
+"weight_s": [
+"13.86"
+],
+"holdings_1display": "{\"numismatics\":{\"location\":\"Rare Books and Special Collections - Numismatics Collection\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"num\",\"call_number\":\"Coin 1167\",\"call_number_browse\":\"Coin 1167\"}}",
+"pub_date_start_sort": -79,
+"pub_date_end_sort": -78,
+"issue_object_type_s": [
+"coin"
+],
+"issue_denomination_s": [
+"shekel"
+],
+"issue_denomination_sort": "shekel",
+"issue_number_s": "616",
+"issue_metal_s": [
+"silver"
+],
+"issue_metal_sort": "silver",
+"issue_era_s": [
+"Phoenician Era of Alexander"
+],
+"issue_ruler_s": [
+null
+],
+"issue_master_s": [
+null
+],
+"issue_place_s": [
+"Tyre, Phoenicia, Syria"
+],
+"issue_place_sort": "Tyre, Phoenicia, Syria",
+"issue_obverse_figure_s": [
+"Melqarth"
+],
+"issue_obverse_part_s": [
+"bust"
+],
+"issue_obverse_orientation_s": [
+"right"
+],
+"issue_obverse_figure_description_s": [
+"with side burns, laureate, wearing lion skin knotted around neck; border of dots."
+],
+"issue_reverse_figure_s": [
+"eagler"
+],
+"issue_reverse_part_s": [
+"standing"
+],
+"issue_reverse_orientation_s": [
+"left"
+],
+"issue_reverse_figure_description_s": [
+"with r. foot on beak of ship and palm branch over r. shoulder; l.  date and club, between legs Phoenician letter, r. monogram or letter; border of dots."
+],
+"issue_reverse_legend_s": [
+"ΤΥΡΟΥΙΕΡΑΣ ΚΑΙΑΣΥΛΟΥ"
+],
+"issue_reverse_attributes_s": [
+"a37, Phoenician Letter",
+"a1167, Archaic Monogram"
+],
+"issue_references_s": [
+"BMC.Phoen Tyre 140",
+"Sear  5191v"
+],
+"issue_references_sort": "BMC.Phoen Tyre 140",
+"issue_monogram_title_s": [
+"Archaic Monogram",
+"Phoenician Letter"
+],
+"issue_monogram_1display": "[{\"title\":\"Archaic Monogram\",\"document_id\":\"989fab88-4b19-46c1-8e84-91ea058b2eb6\"},{\"title\":\"Phoenician Letter\",\"document_id\":\"c8a827ac-f7c4-4c77-864c-0a7ff4bb3033\"}]"
+}
 ]

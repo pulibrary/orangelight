@@ -2,6 +2,12 @@
   <div class="default"></div>
 <% end %>
 
+<% if monograms = @document['issue_monogram_1display'] %>
+  <h3> Monograms </h3>
+  <% JSON.parse(monograms).each do |monogram,_v| %>
+    <%= content_tag(:p, link_to(monogram['title'], "/?f[issue_monogram_title_s][]=#{CGI.escape monogram['title']}", class: 'search-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{monogram['title']}", title: "Search: #{monogram['title']}"), data: { 'monogram-id' => monogram['document_id']}) %>
+  <% end %>
+<% end %>
 <% unless @document.more_like_this.empty? %>
   <div class="panel panel-default">
     <div class="panel-heading">More Like This</div>
