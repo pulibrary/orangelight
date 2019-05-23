@@ -1,4 +1,5 @@
 
+import loadResourcesByFiggyIds from './load-resources-by-figgy-ids'
 import loadResourcesByOrangelightId from './load-resources-by-orangelight-id'
 import loadResourcesByOrangelightIds from './load-resources-by-orangelight-ids'
 
@@ -173,6 +174,26 @@ class FiggyThumbnailSet {
     return this.resources
   }
 
+  async fetchMonogramResources() {
+    this.ids = this.$elements.map((idx, element) => this.jQuery(element).data('monogram-id').toString())
+    const variables = { ids: this.ids.toArray() }
+    this.thumbnails = {}
+    const data = await this.query.call(this, variables.ids)
+    if (!data) {
+      return null;
+    }
+
+    const resources = data.resourcesByFiggyIds
+    this.resources = resources
+
+    // Cache the thumbnail URLs
+    for (let resource of this.resources) {
+      const id = resource.id
+      this.thumbnails[id] = resource.thumbnail
+    }
+    return this.resources
+  }
+
   constructThumbnailElement(bibId) {
     const thumbnail = this.thumbnails[bibId]
     if (!thumbnail) {
@@ -180,6 +201,16 @@ class FiggyThumbnailSet {
     }
 
     const $element = this.jQuery(`<img alt="" src="${thumbnail.iiifServiceUrl}/square/225,/0/default.jpg">`)
+    return $element
+  }
+
+  constructMonogramThumbnailElement(figgyId) {
+    const thumbnail = this.thumbnails[figgyId]
+    if (!thumbnail) {
+      return null
+    }
+
+    const $element = this.jQuery(`<img alt="" src="${thumbnail.iiifServiceUrl}/full/225,/0/default.jpg">`)
     return $element
   }
 
@@ -198,12 +229,29 @@ class FiggyThumbnailSet {
       $element.append($thumbnailElement)
     })
   }
+
+  async renderMonogram() {
+    await this.fetchMonogramResources()
+    this.$elements.map((idx, element) => {
+      const $element = this.jQuery(element)
+      const monogramId = $element.data('monogram-id')
+      const $thumbnailElement = this.constructMonogramThumbnailElement(monogramId)
+      if (!$thumbnailElement) {
+        return
+      }
+      $element.after($thumbnailElement)
+    })
+  }
 }
 
 class FiggyManifestManager {
 
   static buildThumbnailSet($elements) {
     return new FiggyThumbnailSet($elements, loadResourcesByOrangelightIds, window.jQuery)
+  }
+
+  static buildMonogramThumbnails($monogramIds) {
+    return new FiggyThumbnailSet($monogramIds, loadResourcesByFiggyIds, window.jQuery)
   }
 
   // Build multiple viewers

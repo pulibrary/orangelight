@@ -50,6 +50,19 @@ RSpec.describe 'catalog/show' do
     end
   end
 
+  context 'for coins with monograms' do
+    xit 'will render a monogram thumbnail with figgy production coins', js: true do
+      visit 'catalog/coin-1167'
+      expect(page).to have_selector('div#view')
+    end
+
+    it 'displays each monogram label with link to search' do
+      visit 'catalog/coin-1167'
+      expect(page).to have_link('Archaic Monogram', href: '/?f[issue_monogram_title_s][]=Archaic+Monogram')
+      expect(page).to have_link('Phoenician Letter', href: '/?f[issue_monogram_title_s][]=Phoenician+Letter')
+    end
+  end
+
   describe 'the location for physical holdings', js: true do
     context 'if physical holding information is recorded in the entry' do
       it 'is not rendered' do
