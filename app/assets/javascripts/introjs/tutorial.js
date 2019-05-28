@@ -22,7 +22,7 @@ function startIntro(){
       doneLabel: 'Continue'
     });
     intro.start().oncomplete(function() {
-      window.location.href = '/catalog?introjs=results&search_field=all_fields&q=Egypt+foreign+relations';
+      window.location.href = '/catalog?introjs=results&search_field=all_fields&q=Soviet+foreign+policy';
     });
 }
 
@@ -81,13 +81,13 @@ function recordPage(){
     intro.setOptions({
       steps: [
         {
-          element: '#availability',
-          intro: 'Information about each item displays in three columns. The right column contains availability information.',
+          element: '#content',
+          intro: 'Information about each item displays in two columns. The right column contains bibliographic and access information.',
           position: 'left'
         },
         {
-          element: '.location--holding',
-          intro: 'The <strong>Copies in Library</strong> box contains item location, call number, and a link to other related items <strong>(Browse related items)</strong>. If an item requires a special request for retrieval, that link is also located here.',
+          element: '.availability--physical',
+          intro: 'The <strong>Copies in Library</strong> section contains item location, call number, and a link to other related items <strong>(Browse related items)</strong>. If an item requires a special request for retrieval, that link is also located here.',
           position: 'left'
         },
         {
