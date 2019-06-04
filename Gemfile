@@ -98,6 +98,8 @@ gem 'lograge'
 
 gem 'logstash-event'
 
+gem 'whenever', '~> 0.11'
+
 group :development do
   gem 'capistrano-rails', '~> 1.1.6'
 end
