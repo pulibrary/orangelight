@@ -49,6 +49,18 @@ module Orangelight
       end
     end
 
+    def validate_email_params
+      if current_user.nil?
+        flash[:error] = 'You must be logged in to send an email.'
+      elsif params[:to].blank?
+        flash[:error] = I18n.t('blacklight.email.errors.to.blank')
+      elsif !params[:to].match(Blacklight::Engine.config.email_regexp)
+        flash[:error] = I18n.t('blacklight.email.errors.to.invalid', to: params[:to])
+      end
+
+      flash[:error].blank?
+    end
+
     def user_email
       return current_user.email if current_or_guest_user.provider == 'cas'
     end
