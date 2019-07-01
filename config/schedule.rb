@@ -58,6 +58,10 @@ every 1.day, at: '3:00am', roles: [:cron_prod3] do
   )
 end
 
+# rubocop:disable Metrics/LineLength
+job_type :logging_rake, 'cd :path && :environment_variable=:environment SOLR_URL=:solr_url :bundle_command rake :task :output'
+# rubocop:enable Metrics/LineLength
+
 every :tuesday, at: '2:00am', roles: [:sitemap] do
   rake 'sitemap:refresh', output: { error: '/tmp/ol_sitemap.log', standard: '/tmp/ol_sitemap.log' }
 end
