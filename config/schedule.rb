@@ -22,9 +22,7 @@
 
 set :job_template, "bash -l -c 'export PATH=\"/usr/local/bin/:$PATH\" && :job'"
 
-# rubocop:disable Metrics/LineLength
 job_type :browse_facet_update, 'cd :path && :environment_variable=:environment SOLR_URL=:solr_url :bundle_command rake :task --silent :output'
-# rubocop:enable Metrics/LineLength
 
 every 1.day, at: '1:15am', roles: [:cron_prod1] do
   browse_facet_update(
@@ -58,6 +56,8 @@ every 1.day, at: '3:00am', roles: [:cron_prod3] do
   )
 end
 
+job_type :logging_rake, 'cd :path && :environment_variable=:environment bundle exec rake :task :output'
+
 every :tuesday, at: '2:00am', roles: [:sitemap] do
-  rake 'sitemap:refresh', output: { error: '/tmp/ol_sitemap.log', standard: '/tmp/ol_sitemap.log' }
+  logging_rake 'sitemap:refresh', output: { error: '/tmp/ol_sitemap.log', standard: '/tmp/ol_sitemap.log' }
 end

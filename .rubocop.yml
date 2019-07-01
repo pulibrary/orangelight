@@ -114,6 +114,7 @@ Metrics/LineLength:
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/helpers/catalog_helper.rb'
     - 'lib/orangelight/middleware/invalid_parameter_handler.rb'
+    - 'config/schedule.rb'
 
 Metrics/MethodLength:
   Exclude:
