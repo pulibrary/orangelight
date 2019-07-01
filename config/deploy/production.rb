@@ -29,6 +29,7 @@ server 'lib-orange-prod4', user: 'deploy', roles: %i[web app db]
 server 'lib-orange-prod6', user: 'deploy', roles: %i[web app db]
 
 set :deploy_to, '/opt/rails_app'
+set :log_level, :info
 
 # Custom SSH Options
 # ==================
