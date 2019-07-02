@@ -31,7 +31,7 @@ RSpec.describe RobotsGeneratorService do
       expect(service_class).to have_received(:new).with(path: path, disallowed_paths: disallowed_paths)
       expect(service).to have_received(:insert_group).with(user_agent: '*')
       expect(service).to have_received(:insert_crawl_delay).with(10)
-      expect(service).to have_received(:insert_sitemap).with('https://pulsearch.princeton.edu/sitemap.xml.gz')
+      expect(service).to have_received(:insert_sitemap).with('https://catalog.princeton.edu/sitemap.xml.gz')
       expect(service).to have_received(:generate)
       expect(service).to have_received(:write)
     end
