@@ -2,6 +2,8 @@
 defaults: &defaults
   sitemap_url: https://catalog.princeton.edu/sitemap.xml.gz
   disallowed_paths:
+    - '/?q=*'
+    - '/?f*'
     - '/*?q=*'
     - '/*?f*'
     - '/requests'
