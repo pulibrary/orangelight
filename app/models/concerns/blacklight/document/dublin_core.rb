@@ -48,7 +48,7 @@ module Blacklight
                  'xmlns:rdf' => 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
                  'xmlns:dc' => 'http://purl.org/dc/elements/1.1/',
                  'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance') do
-          xml.tag!('rdf:Description', 'rdf:about' => "https://pulsearch.princeton.edu/catalog/#{id}") do
+          xml.tag!('rdf:Description', 'rdf:about' => "https://catalog.princeton.edu/catalog/#{id}") do
             to_semantic_values.select { |field, _values| dublin_core_field_name? field }.each do |field, values|
               Array.wrap(values).each do |v|
                 xml.tag! "dc:#{field}", v

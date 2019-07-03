@@ -183,7 +183,7 @@ module Blacklight
             # canonical identifier for the citation?
             ctx.referent.add_identifier("https://bibdata.princeton.edu/bibliographic/#{id}")
             # add pulsearch refererrer
-            ctx.referrer.add_identifier('info:sid/pulsearch.princeton.edu:generator')
+            ctx.referrer.add_identifier('info:sid/catalog.princeton.edu:generator')
             ctx.referent.add_identifier("info:oclcnum/#{self['oclc_s'].first}") unless self['oclc_s'].nil?
             ctx.referent.add_identifier("info:lccn/#{self['lccn_s'].first}") unless self['lccn_s'].nil?
             ctx

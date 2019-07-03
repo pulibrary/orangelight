@@ -1,6 +1,6 @@
 # Configuration file for generation robots.txt
 defaults: &defaults
-  sitemap_url: https://pulsearch.princeton.edu/sitemap.xml.gz
+  sitemap_url: https://catalog.princeton.edu/sitemap.xml.gz
   disallowed_paths:
     - '/*?q=*'
     - '/*?f*'
