@@ -7,6 +7,15 @@ GIT
       parslet
 
 GIT
+  remote: https://github.com/pulibrary/blacklight_unapi.git
+  revision: e51b38c6abdfd151f32d43d2fe627df1dc6bffe5
+  branch: update-bl-7-bundler
+  specs:
+    blacklight_unapi (0.1.0)
+      blacklight (~> 7.0)
+      rails
+
+GIT
   remote: https://github.com/pulibrary/borrow_direct.git
   revision: bef881cf56a6e15052345e9f088730f8ac28b20c
   branch: generate_query_encoding_fix
@@ -48,13 +57,6 @@ GIT
     introjs-rails (2.1.0)
       sass-rails (>= 3.2)
       thor (~> 0.14)
-
-PATH
-  remote: ../blacklight_unapi
-  specs:
-    blacklight_unapi (0.1.0)
-      blacklight (>= 6.0)
-      rails
 
 GEM
   remote: https://rubygems.org/

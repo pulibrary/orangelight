@@ -80,7 +80,7 @@ gem 'requests', git: 'https://github.com/pulibrary/requests.git'
 
 gem 'borrow_direct', git: 'https://github.com/pulibrary/borrow_direct.git', branch: 'generate_query_encoding_fix'
 
-gem 'blacklight_unapi', path: './../blacklight_unapi' #, git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'blacklight_6'
+gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'update-bl-7-bundler'
 
 gem 'jquery-datatables-rails', '~> 3.3.0'
 
