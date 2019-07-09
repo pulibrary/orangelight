@@ -120,13 +120,13 @@ GEM
       kaminari (>= 0.15)
       nokogiri (~> 1.6)
       rails (~> 5.1)
-    blacklight-marc (6.2.0)
-      blacklight (> 6.1, < 8.a)
+    blacklight-marc (7.0.0.rc1)
+      blacklight (> 7.0.0.a, < 8.a)
       library_stdnums
       marc (>= 0.4.3, < 1.1)
       marc-fastxmlwriter
       rails
-      traject (~> 2.1)
+      traject (~> 3.0)
     blacklight_range_limit (7.1.0)
       blacklight (>= 7.0)
       rails (>= 3.0)
@@ -229,8 +229,15 @@ GEM
     hashie (3.5.7)
     high_voltage (3.0.0)
     honeybadger (3.2.0)
+    http (3.3.0)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.0)
+      http_parser.rb (~> 0.6.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    http-form_data (2.1.1)
+    http_parser.rb (0.6.0)
     httpclient (2.8.3)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
@@ -474,13 +481,15 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.8)
     tins (1.16.3)
-    traject (2.3.4)
+    traject (3.1.0)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
       hashie (~> 3.1)
+      http (~> 3.0)
       httpclient (~> 2.5)
       marc (~> 1.0)
       marc-fastxmlwriter (~> 1.0)
+      nokogiri (~> 1.9)
       slop (>= 3.4.5, < 4.0)
       yell
     tzinfo (1.2.5)
@@ -514,7 +523,7 @@ GEM
     yaml_db (0.6.0)
       rails (>= 3.0, < 5.2)
       rake (>= 0.8.7)
-    yell (2.0.7)
+    yell (2.2.0)
 
 PLATFORMS
   ruby
@@ -522,7 +531,7 @@ PLATFORMS
 DEPENDENCIES
   babel-transpiler
   blacklight (~> 7.0)
-  blacklight-marc (~> 6.1)
+  blacklight-marc (~> 7.0.0.rc1)
   blacklight_advanced_search!
   blacklight_range_limit
   blacklight_unapi!
