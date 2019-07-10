@@ -109,12 +109,6 @@ class SolrDocument
     linked_documents = LinkedDocumentResolver::LinkedDocuments.new(siblings: sibling_ids,
                                                                    root: root_id,
                                                                    solr_field: query_field)
-
-    if linked_documents.empty?
-      Rails.logger.warn\
-        "No linked documents found for #{id} using #{query_field}: #{sibling_ids.join(' ')}"
-    end
-
     linked_documents.decorated(display_fields: %w[id])
   end
 
