@@ -7,7 +7,8 @@ require 'selenium/webdriver'
 require 'webmock/rspec'
 
 # allow connections to localhost, umlaut and bibdata marc record service
-WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!(allow_localhost: true,
+                             allow: 'chromedriver.storage.googleapis.com')
 
 Coveralls.wear!('rails') do
   add_filter '/lib/orangelight/browse_lists.rb'
@@ -40,6 +41,7 @@ Capybara.register_driver :headless_chrome do |app|
                                  desired_capabilities: capabilities,
                                  http_client: http_client)
 end
+
 Capybara.javascript_driver = :headless_chrome
 
 Capybara.register_driver :iphone do |app|
