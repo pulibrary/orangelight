@@ -105,11 +105,10 @@ group :development do
 end
 
 group :test do
-  gem 'chromedriver-helper'
   gem 'factory_bot_rails', require: false
   gem 'launchy'
   gem 'rails-controller-testing'
-  gem 'selenium-webdriver'
+  gem 'webdrivers'
   gem 'webmock', require: false
 end
 
