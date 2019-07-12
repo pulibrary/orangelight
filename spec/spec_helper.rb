@@ -6,6 +6,8 @@ require 'factory_bot'
 require 'selenium/webdriver'
 require 'webmock/rspec'
 
+Capybara.server = :webrick
+
 # allow connections to localhost, umlaut and bibdata marc record service
 WebMock.disable_net_connect!(allow_localhost: true,
                              allow: 'chromedriver.storage.googleapis.com')
