@@ -63,6 +63,7 @@ gem 'bootstrap'
 gem 'capybara'
 gem 'coveralls', require: false
 gem 'ddtrace'
+gem 'font-awesome-rails'
 gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
 gem 'rspec-rails', '~> 3.4'
