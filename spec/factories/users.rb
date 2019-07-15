@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :user do
-    sequence(:username) { |n| "username#{srand}" }
-    sequence(:email) { |n| "email-#{srand}@princeton.edu" }
+    sequence(:username) { "username#{srand}" }
+    sequence(:email) { "email-#{srand}@princeton.edu" }
     provider { 'cas' }
     password { 'foobarfoo' }
     uid(&:username)
