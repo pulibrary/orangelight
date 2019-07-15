@@ -20,3 +20,7 @@
   pointer-events: none;
   cursor: not-allowed;
 }
+
+#search_field.custom-select {
+  height: calc(1.75em + 0.75rem + 2px);
+}
