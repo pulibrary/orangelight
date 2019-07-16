@@ -55,13 +55,17 @@ class HoldingRequestsAdapter
   # Retrieve only the ELF holding records
   # @return [Hash] ELF holding information
   def doc_holdings_elf
-    doc_holdings.select { |_id, h| h['location_code'].start_with?('elf') }
+    doc_holdings.select do |_id, h|
+      h.key?('location_code') && h['location_code'].start_with?('elf')
+    end
   end
 
   # Retrieve only the records for physical holdings
   # @return [Hash] physical holding information
   def doc_holdings_physical
-    doc_holdings.reject { |_id, h| h['location_code'].start_with?('elf') }
+    doc_holdings.select do |_id, h|
+      h.key?('location_code') && !h['location_code'].start_with?('elf')
+    end
   end
   alias physical_holdings doc_holdings_physical
 

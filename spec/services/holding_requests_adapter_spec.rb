@@ -66,4 +66,36 @@ RSpec.describe HoldingRequestsAdapter do
       expect(holdings.iiif_manifests).not_to include 'https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs' => ['drive.google.com', 'Curatorial documentation']
     end
   end
+
+  describe '#doc_holdings_elf' do
+    context 'When location codes are not available' do
+      let(:holdings_hash) do
+        {
+          '671799' => { 'items' => [{ 'holding_id' => '671799', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] },
+          '671798' => { 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] }
+        }
+      end
+
+      it 'returns an empty array' do
+        allow(holdings).to receive(:doc_holdings).and_return(holdings_hash)
+        expect(holdings.doc_holdings_elf).to be_empty
+      end
+    end
+  end
+
+  describe '#doc_holdings_physical' do
+    context 'When location codes are not available' do
+      let(:holdings_hash) do
+        {
+          '671799' => { 'items' => [{ 'holding_id' => '671799', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] },
+          '671798' => { 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] }
+        }
+      end
+
+      it 'returns an empty array' do
+        allow(holdings).to receive(:doc_holdings).and_return(holdings_hash)
+        expect(holdings.doc_holdings_physical).to be_empty
+      end
+    end
+  end
 end
