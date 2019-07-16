@@ -213,7 +213,9 @@ GEM
     faraday-cookie_jar (0.0.6)
       faraday (>= 0.7.4)
       http-cookie (~> 1.0.0)
-    ffi (1.11.1)
+    ffi (1.9.25)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     global (1.1.0)
@@ -538,6 +540,7 @@ DEPENDENCIES
   factory_bot_rails
   faraday
   faraday-cookie_jar
+  font-awesome-rails
   global
   high_voltage (~> 3.0.0)
   honeybadger
