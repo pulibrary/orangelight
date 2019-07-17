@@ -4,8 +4,8 @@
 <dl class="dl-horizontal  dl-invert top-fields">
   <% document_show_fields(document).each do |field_name, field| -%>
     <% if render_top_field? document, field, field_name %>
-      <% if field_name == 'author_display' && doc_presenter.field_value(field: 'marc_relator_display') != '' %>
-        <dt class="blacklight-<%= field_name.parameterize %>"><%= doc_presenter.field_value(field: 'marc_relator_display') %></dt>
+      <% if field_name == 'author_display' && document['marc_relator_display'] %>
+        <dt class="blacklight-<%= field_name.parameterize %>"><%= document['marc_relator_display'].first %></dt>
       <%# author is default if no marc relator, default for other fields -%>
       <% else %>
         <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label(document, field: field_name).html_safe %></dt>
@@ -13,7 +13,7 @@
       <% if document[field_name].length == 1 || !document[field_name].is_a?(Array) %>
           <% valdir = Array(document[field_name]).first.dir %>
           <% if doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
-            <% value = doc_presenter.field_value field_name %>
+            <% value = doc_presenter.field_value(field) %>
           <% else %>
             <% value = document[field_name] %>
           <% end %>
@@ -27,7 +27,7 @@
           <dd class="blacklight-<%= field_name.parameterize %>">
             <ul>
             <% if doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
-              <% values = Array.wrap(doc_presenter.field_value field_name) %>
+              <% values = Array.wrap(doc_presenter.field_value(field)) %>
             <% else %>
               <% values = document[field_name] %>
             <% end %>

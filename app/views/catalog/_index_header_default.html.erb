@@ -14,22 +14,18 @@
           <span class="document-counter">
             <%= t('blacklight.search.documents.counter', :counter => counter) if counter %>
           </span>
+        <% if titlealt = document['title_vern_display'] %>
+          <% altdir = titlealt.dir %>
+            <% if altdir == "rtl" %>
+              <%= truncated_link document, titlealt, :counter => counter, :dir => altdir, :style => "float: right;" %>
+            <% else %>
+              <%= truncated_link document, titlealt, :counter => counter, :dir => altdir %>
+            <% end %>
+            </h3>
 
-        <% titlealt = index_presenter(document).field_value 'title_vern_display' %>
-        <% altdir = titlealt.dir %>
-        <% if titlealt.length != 0 %>
-          <% if altdir == "rtl" %>
-            <%= truncated_link document, titlealt, :counter => counter, :dir => altdir, :style => "float: right;" %>
-          <% else %>
-            <%= truncated_link document, titlealt, :counter => counter, :dir => altdir %>
-          <% end %>
-          </h3>
-
-          <h3 class="index_title">
-
+            <h3 class="index_title">
         <% end %>
 
         <%= truncated_link document, document_show_link_field(document), :counter => counter %>
         </h3>
       </div>
-
