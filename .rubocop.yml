@@ -125,15 +125,9 @@ Naming/FileName:
     - 'Capfile'
     - 'Gemfile'
 
-# TODO: Fix
 Naming/PredicateName:
   Exclude:
     - 'lib/orangelight/voyager_account.rb'
-
-# TODO: Fix
-Naming/VariableNumber:
-  Exclude:
-    - 'spec/lib/orangelight/string_functions_spec.rb'
 
 # TODO: Fix
 RSpec/NamedSubject:
