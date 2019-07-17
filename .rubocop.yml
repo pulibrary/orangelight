@@ -1,17 +1,9 @@
 require: rubocop-rspec
-inherit_from: .rubocop_todo.yml
-
-Rails:
-  Enabled: true
-
+inherit_gem:
+  bixby: bixby_default.yml
 AllCops:
-  UseCache: false
   DisplayCopNames: true
-  Include:
-    - '**/Capfile'
-    - '**/Gemfile'
-    - '**/Rakefile'
-    - '**/config.ru'
+  TargetRubyVersion: 2.4
   Exclude:
     - 'db/**/*'
     - 'script/**/*'
@@ -24,34 +16,37 @@ AllCops:
     - 'spec/views/catalog/_show_availability_sidebar.html.erb_spec.rb'
     - 'node_modules/**/*'
 
+# TODO: Fix
+# Cop supports --auto-correct.
+Lint/UnneededDisable:
+  Exclude:
+    - 'app/services/bibdata.rb'
+
 Metrics/AbcSize:
   Exclude:
-    - 'app/controllers/application_controller.rb'
+    - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'app/controllers/account_controller.rb'
-    - 'app/controllers/feedback_controller.rb'
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/controllers/users/omniauth_callbacks_controller.rb'
+    - 'app/controllers/account_controller.rb:'
     - 'app/controllers/concerns/orangelight/catalog.rb'
     - 'app/helpers/advanced_helper.rb'
-    - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
-    - 'app/helpers/blacklight_url_helper.rb'
-    - 'app/helpers/facets_helper.rb'
-    - 'app/models/user.rb'
-    - 'app/models/concerns/blacklight/solr/document/marc.rb'
-    - 'app/models/concerns/blacklight/document/dublin_core.rb'
-    - 'app/models/concerns/blacklight/document/ris.rb'
-    - 'app/services/linked_document_resolver.rb'
-    - 'config/initializers/requests_initializer.rb'
-    - 'lib/orangelight/bibdata.rb'
-    - 'lib/orangelight/browse_lists.rb'
-    - 'lib/orangelight/voyager_account.rb'
-    - 'lib/orangelight/voyager_patron_client.rb'
-    - 'app/services/holding_requests_builder.rb'
+    - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
-    - 'app/services/online_holdings_markup_builder.rb'
-    - 'app/helpers/catalog_helper.rb'
+    - 'lib/orangelight/browse_lists.rb'
+
+Metrics/BlockLength:
+  Exclude:
     - 'app/controllers/catalog_controller.rb'
+    - 'app/views/catalog/_document_default.atom.builder'
+    - 'app/helpers/application_helper.rb'
+    - 'config/routes.rb'
+    - 'config/deploy/staging.rb'
+    - 'lib/tasks/browse.rake'
+    - 'lib/tasks/pulsearch.rake'
+    - 'lib/orangelight/browse_lists.rb'
+    - 'spec/**/*'
 
 Metrics/BlockNesting:
   Exclude:
@@ -60,229 +55,206 @@ Metrics/BlockNesting:
 
 Metrics/ClassLength:
   Exclude:
-  - 'app/controllers/account_controller.rb'
-  - 'app/controllers/catalog_controller.rb'
-  - 'lib/orangelight/voyager_patron_client.rb'
-  - 'app/services/holding_requests_builder.rb'
-  - 'app/services/physical_holdings_markup_builder.rb'
-  - 'app/services/online_holdings_markup_builder.rb'
-  - 'app/services/holding_requests_adapter.rb'
-  - 'app/controllers/orangelight/browsables_controller.rb'
-  - 'app/models/solr_document.rb'
+    - 'app/controllers/catalog_controller.rb'
+    - 'app/controllers/orangelight/browsables_controller.rb'
+    - 'app/controllers/account_controller.rb'
+    - 'app/services/physical_holdings_markup_builder.rb'
+    - 'lib/orangelight/voyager_patron_client.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:
+    - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/controllers/concerns/orangelight/catalog.rb'
-    - 'app/helpers/advanced_helper.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/helpers/blacklight_helper.rb'
-    - 'app/helpers/blacklight_url_helper.rb'
     - 'app/helpers/facets_helper.rb'
-    - 'app/models/concerns/blacklight/document/dublin_core.rb'
-    - 'app/models/concerns/blacklight/document/ris.rb'
-    - 'app/models/concerns/blacklight/solr/document/marc.rb'
-    - 'lib/orangelight/browse_lists.rb'
-    - 'app/services/holding_requests_builder.rb'
+    - 'app/helpers/advanced_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
+    - 'lib/orangelight/browse_lists.rb'
 
 Metrics/LineLength:
-  Max: 100
   Exclude:
-    - 'app/controllers/catalog_controller.rb'
-    - 'app/controllers/concerns/orangelight/catalog.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/helpers/blacklight_helper.rb'
-    - 'app/helpers/facets_helper.rb'
-    - 'app/helpers/advanced_helper.rb'
-    - 'app/models/concerns/blacklight/document/dublin_core.rb'
-    - 'app/models/concerns/blacklight/document/ris.rb'
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
-    - 'config/deploy/staging.rb'
-    - 'config/initializers/borrow_direct.rb'
-    - 'config/initializers/devise.rb'
-    - 'config/initializers/blacklight_folders.rb'
-    - 'config/initializers/requests_initializer.rb'
-    - 'config/sitemap.rb'
-    - 'lib/orangelight/browse_lists.rb'
-    - 'lib/orangelight/voyager_patron_client.rb'
-    - 'spec/**/*'
-    - 'app/views/catalog/_document_default.atom.builder'
-    - 'lib/tasks/pulsearch.rake'
-    - 'lib/tasks/server.rake'
-    - '**/Gemfile'
-    - 'app/controllers/orangelight/browsables_controller.rb'
-    - 'app/helpers/catalog_helper.rb'
-    - 'lib/orangelight/middleware/invalid_parameter_handler.rb'
-    - 'config/schedule.rb'
+    - 'app/helpers/advanced_helper.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'spec/features/searching_spec.rb'
+    - 'spec/models/solr_document_spec.rb'
+    - 'spec/controllers/bookmarks_controller_spec.rb'
+    - 'spec/views/catalog/umlaut_services_spec.rb'
+    - 'spec/helpers/holding_block_spec.rb'
+    - 'spec/helpers/blacklight_helper_spec.rb'
+    - 'spec/services/online_holdings_markup_builder_spec.rb'
+    - 'spec/services/holding_requests_adapter_spec.rb'
 
 Metrics/MethodLength:
   Exclude:
-    - 'app/controllers/concerns/orangelight/catalog.rb'
-    - 'app/controllers/account_controller.rb'
-    - 'app/controllers/feedback_controller.rb'
+    - 'app/models/concerns/blacklight/document/ris.rb'
+    - 'app/models/concerns/blacklight/document/dublin_core.rb'
+    - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/controllers/users/omniauth_callbacks_controller.rb'
+    - 'app/controllers/account_controller.rb'
     - 'app/helpers/advanced_helper.rb'
     - 'app/helpers/application_helper.rb'
-    - 'app/helpers/blacklight_helper.rb'
-    - 'app/helpers/blacklight_url_helper.rb'
-    - 'app/models/concerns/blacklight/document/dublin_core.rb'
-    - 'app/models/concerns/blacklight/document/ris.rb'
-    - 'app/models/concerns/blacklight/solr/document/marc.rb'
-    - 'config/initializers/requests_initializer.rb'
-    - 'lib/orangelight/bibdata.rb'
-    - 'lib/orangelight/browse_lists.rb'
-    - 'lib/orangelight/voyager_account.rb'
-    - 'lib/orangelight/voyager_patron_client.rb'
-    - 'spec/features/course_reserves_spec.rb'
-    - 'spec/requests/course_reserve_spec.rb'
-    - 'spec/repositories/course_reserve_repository_spec.rb'
-    - 'app/services/holding_requests_builder.rb'
-    - 'app/services/physical_holdings_markup_builder.rb'
     - 'app/services/online_holdings_markup_builder.rb'
+    - 'app/services/physical_holdings_markup_builder.rb'
+    - 'spec/features/course_reserves_spec.rb'
+    - 'spec/repositories/course_reserve_repository_spec.rb'
+    - 'spec/requests/course_reserve_spec.rb'
+    - 'lib/tasks/server.rake'
+    - 'lib/orangelight/browse_lists.rb'
 
 Metrics/ModuleLength:
   Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'app/helpers/blacklight_helper.rb'
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'app/helpers/application_helper.rb'
     - 'lib/orangelight/browse_lists.rb'
 
 Metrics/PerceivedComplexity:
   Exclude:
+    - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/controllers/concerns/orangelight/catalog.rb'
-    - 'app/helpers/advanced_helper.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/helpers/blacklight_helper.rb'
-    - 'app/helpers/blacklight_url_helper.rb'
     - 'app/helpers/facets_helper.rb'
-    - 'app/models/concerns/blacklight/solr/document/marc.rb'
-    - 'lib/orangelight/browse_lists.rb'
-    - 'app/services/holding_requests_builder.rb'
+    - 'app/helpers/advanced_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
+    - 'lib/orangelight/browse_lists.rb'
 
-RSpec/AnyInstance:
-  Exclude:
-    - 'spec/requests/request_spec.rb'
-
-RSpec/SubjectStub:
-  Exclude:
-    - 'spec/models/voyager_patron_client_spec.rb'
-    - 'spec/services/holding_requests_adapter_spec.rb'
-
-Style/AsciiComments:
-  Exclude:
-    - 'lib/orangelight/string_functions.rb'
-
-Style/BlockDelimiters:
-  Exclude:
-    - 'spec/helpers/scsb_items_helper_spec.rb'
-
+# Look into this
 Naming/FileName:
   Exclude:
+    - 'Capfile'
+    - 'Gemfile'
     - 'lib/omniauth/strategies/omniauth-barcode.rb'
 
-Style/MutableConstant:
-  Exclude:
-    - 'config/initializers/borrow_direct.rb'
-    - 'config/initializers/locations_initializer.rb'
-
-
+# TODO: Fix
 Naming/PredicateName:
   Exclude:
-    - 'app/helpers/advanced_helper.rb'
     - 'lib/orangelight/voyager_account.rb'
 
-Layout/IndentationConsistency:
-  EnforcedStyle: rails
-
-Style/CollectionMethods:
-  PreferredMethods:
-    collect: 'map'
-    collect!: 'map!'
-    inject: 'reduce'
-    detect: 'find'
-    find_all: 'select'
-
-Style/Documentation:
-  Enabled: false
-
-Style/Next:
-  Enabled: false
-
-Style/RaiseArgs:
+# TODO: Fix
+Naming/VariableNumber:
   Exclude:
-    - 'app/models/concerns/blacklight/solr/document/marc.rb'
+    - 'spec/lib/orangelight/string_functions_spec.rb'
 
-Style/HashSyntax:
+# TODO: Fix
+# cop supports --auto-correct.
+Performance/HashEachMethods:
   Exclude:
-    - 'app/controllers/catalog_controller.rb'
-    - 'spec/helpers/blacklight_helper_spec.rb'
+    - 'app/models/concerns/blacklight/document/email.rb'
+    - 'spec/models/dublin_core_spec.rb'
 
-Rails/TimeZone:
-  Enabled: false
-
-Rails/OutputSafety:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'app/helpers/blacklight_helper.rb'
-    - 'app/services/holding_requests_builder.rb'
-    - 'app/services/physical_holdings_markup_builder.rb'
-    - 'app/services/online_holdings_markup_builder.rb'
-
-RSpec/ExampleWording:
-  CustomTransform:
-    be: is
-    have: has
-    not: does not
-    NOT: does NOT
-  IgnoredWords:
-    - only
-
-RSpec/FilePath:
+# TODO: Fix
+RSpec/NamedSubject:
   Enabled: false
 
 RSpec/DescribeClass:
   Exclude:
     - 'spec/features/**/*'
     - 'spec/views/**/*'
-    - 'spec/routing/**/*'
     - 'spec/requests/**/*'
 
-RSpec/NamedSubject:
-  Enabled: false
-
-RSpec/NestedGroups:
-  Exclude:
-    - 'spec/helpers/facets_helper_spec.rb'
-    - 'spec/models/voyager_patron_client_spec.rb'
-
-RSpec/MultipleExpectations:
-  Enabled: false
-
-Metrics/BlockLength:
-  Exclude:
-    - 'spec/**/*'
-    - 'app/controllers/catalog_controller.rb'
-
 RSpec/ExampleLength:
-  Exclude:
-    - 'spec/**/*'
+  Enabled: false
 
+# TODO: Fix
+RSpec/RepeatedDescription:
+  Exclude:
+    - 'spec/controllers/account_controller_spec.rb'
+
+# TODO: Fix
+RSpec/SubjectStub:
+  Exclude:
+    - 'spec/models/voyager_patron_client_spec.rb'
+    - 'spec/services/holding_requests_adapter_spec.rb'
+
+# TODO: Fix
 RSpec/VerifiedDoubles:
   Exclude:
     - 'spec/helpers/blacklight_advanced_search/parsing_nesting_spec.rb'
     - 'spec/views/catalog/_sort_and_per_page.html.erb_spec.rb'
 
-Rails/UnknownEnv:
+# TODO: Fix
+Rails/FilePath:
   Exclude:
-    - 'app/controllers/application_controller.rb'
+    - 'app/helpers/account_helper.rb'
+    - 'config/application.rb'
+    - 'config/initializers/requests_initializer.rb'
+    - 'spec/rails_helper.rb'
 
-Rails/UnknownEnv:
-  Environments:
-    - staging
-    - production
-    - development
-    - test
+# Should fix
+Rails/OutputSafety:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'app/services/holding_requests_builder.rb'
+    - 'app/services/online_holdings_markup_builder.rb'
+    - 'app/services/physical_holdings_markup_builder.rb'
+
+Rails/TimeZone:
+  Exclude:
+    - 'app/controllers/catalog_controller.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'spec/helpers/locations_spec.rb'
+
+# TODO: Fix
+# Cop supports --auto-correct.
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/helpers/scsb_items_helper_spec.rb'
+
+# Should fix
+Style/GuardClause:
+  Exclude:
+    - 'app/controllers/account_controller.rb'
+    - 'app/controllers/concerns/orangelight/catalog.rb'
+    - 'app/controllers/users/omniauth_callbacks_controller.rb'
+    - 'app/helpers/advanced_helper.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'app/models/concerns/blacklight/document/dublin_core.rb'
+    - 'app/models/concerns/blacklight/document/email.rb'
+    - 'app/models/concerns/blacklight/document/ris.rb'
+
+# TODO: Fix
+# Cop supports --auto-correct.
+Style/HashSyntax:
+  Exclude:
+    - 'app/controllers/catalog_controller.rb'
+    - 'spec/helpers/blacklight_helper_spec.rb'
+
+# TODO: Fix
+Style/IfInsideElse:
+  Exclude:
+    - 'lib/orangelight/voyager_account.rb'
+
+# TODO: Fix
+# Cop supports --auto-correct.
+Style/IfUnlessModifier:
+  Exclude:
+    - 'app/controllers/users/omniauth_callbacks_controller.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/views/catalog/_document_default.atom.builder'
+    - 'config/initializers/requests_initializer.rb'
+
+# TODO: Fix
+Style/Next:
+  Enabled: false
+
+# TODO: Fix
+# Cop supports --auto-correct.
+Style/NumericPredicate:
+  Exclude:
+    - 'spec/**/*'
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+
+# TODO: Fix
+# Cop supports --auto-correct.
+Style/RaiseArgs:
+  Exclude:
+    - 'app/models/concerns/blacklight/solr/document/marc.rb'
