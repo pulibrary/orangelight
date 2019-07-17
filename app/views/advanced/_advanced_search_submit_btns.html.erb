@@ -1,4 +1,5 @@
-<div class="sort-buttons pull-left">    
+<div class="sort-buttons pull-left">
+  <% sort_fields = active_sort_fields.values.map { |field_config| [sort_field_label(field_config.key), field_config.key] } %>
   <%= label_tag(:sort, t('blacklight_advanced_search.form.sort_label'), :class => "control-label") %>
   <%= select_tag(:sort, options_for_select(sort_fields, h(params[:sort])), :class => "sort-select") %>
   <%= hidden_field_tag(:search_field, blacklight_config.advanced_search[:url_key]) %>
