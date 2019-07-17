@@ -6,7 +6,7 @@
     <% if should_render_index_field? document, field %>
       <% if document[field_name].length == 1 || !document[field_name].is_a?(Array) %>
         <% valdir = Array(document[field_name]).first.dir %>
-        <% value = doc_presenter.field_value field_name %>
+        <% value = doc_presenter.field_value field %>
         <li class="blacklight-<%= field_name.parameterize %>" dir="<%= valdir %>"><%= safe_join(Array.wrap(value)) %></li>
       <% else %>
         <% valdirs = [] %>
@@ -17,7 +17,7 @@
         <li class="blacklight-<%= field_name.parameterize %>">
           <ul>
           <% if doc_presenter.configuration.index_fields.fetch(field_name)[:helper_method] %>
-            <% values = Array.wrap(doc_presenter.field_value field_name) %>
+            <% values = Array.wrap(doc_presenter.field_value field) %>
           <% else %>
             <% values = document[field_name] %>
           <% end %>
