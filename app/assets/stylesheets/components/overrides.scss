@@ -120,6 +120,7 @@ address {
 @media (min-width: $bp-large) {
   .container {
     width: 1200px;
+    max-width: 1200px;
   }
 }
 
