@@ -124,7 +124,6 @@ Naming/FileName:
   Exclude:
     - 'Capfile'
     - 'Gemfile'
-    - 'lib/omniauth/strategies/omniauth-barcode.rb'
 
 # TODO: Fix
 Naming/PredicateName:
