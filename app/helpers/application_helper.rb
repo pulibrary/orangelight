@@ -54,9 +54,7 @@ module ApplicationHelper
   # @return [StackmapService::Url] the stack map location
   def locate_url(location, document, call_number, library = nil)
     locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
-    unless locator.exclude?(call_number: call_number, library: library)
-      ::StackmapService::Url.new(document: document, loc: location, cn: call_number).url
-    end
+    ::StackmapService::Url.new(document: document, loc: location, cn: call_number).url unless locator.exclude?(call_number: call_number, library: library)
   end
 
   # Generate the link markup (styled with a glyphicon image) for a given item holding within a library
@@ -324,7 +322,7 @@ module ApplicationHelper
       name_title_links = []
       name_t.each_with_index do |part, i|
         link_accum = StringFunctions.trim_punctuation(name_t[0..i].join(' '))
-        if i == 0
+        if i.zero?
           next if args[:field] == 'name_uniform_title_1display'
           name_title_links << link_to(part, "/?f[author_s][]=#{CGI.escape link_accum}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")
         else

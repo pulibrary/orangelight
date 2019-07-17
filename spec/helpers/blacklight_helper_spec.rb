@@ -101,7 +101,7 @@ describe BlacklightHelper do
 
     before do
       allow(view).to receive(:blacklight_config).and_return(blacklight_config)
-      allow(helper).to receive(:document_link_params).and_return(data: { :"context-href" => '/catalog/1/track?counter=1&search_id=5' })
+      allow(helper).to receive(:document_link_params).and_return(data: { "context-href": '/catalog/1/track?counter=1&search_id=5' })
       allow(helper).to receive(:url_for_document).and_return(document)
     end
 

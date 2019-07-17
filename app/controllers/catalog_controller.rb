@@ -22,11 +22,11 @@ class CatalogController < ApplicationController
   end
 
   rescue_from BlacklightRangeLimit::InvalidRange do
-    redirect_to '/', :flash => { :error => 'The start year must be before the end year.' }
+    redirect_to '/', flash: { error: 'The start year must be before the end year.' }
   end
 
   rescue_from ActionController::BadRequest do
-    redirect_to '/', :flash => { :error => 'This is not a valid request.' }
+    redirect_to '/', flash: { error: 'This is not a valid request.' }
   end
 
   configure_blacklight do |config|
@@ -421,7 +421,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('title') do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
-      field.solr_parameters = { :'spellcheck.dictionary' => 'title' }
+      field.solr_parameters = { 'spellcheck.dictionary': 'title' }
       field.dropdown_label = 'Title (keyword)'
 
       # :solr_local_parameters will be sent using Solr LocalParams
@@ -435,7 +435,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('author') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
+      field.solr_parameters = { 'spellcheck.dictionary': 'author' }
       field.dropdown_label = 'Author (keyword)'
       field.label = 'Author/Creator'
       field.solr_local_parameters = {
@@ -448,7 +448,7 @@ class CatalogController < ApplicationController
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
     config.add_search_field('subject') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
+      field.solr_parameters = { 'spellcheck.dictionary': 'subject' }
       field.dropdown_label = 'Subject (keyword)'
       field.qt = 'search'
       field.solr_local_parameters = {
