@@ -1,11 +1,11 @@
 <%= render 'constraints' %>
 <%= render 'did_you_mean' %>
 
-<div id="sidebar" class="col-md-4 col-sm-5">
+<div id="sidebar" class="col-12 col-md-5 col-lg-4">
   <%= render 'search_sidebar' %>
 </div>
 
-<div id="content" class="col-md-8 col-sm-7">
+<div id="content" class="col-12 col-md-7 col-lg-8">
   <% unless has_search_parameters? %>
     <%# if there are no input/search related params, display the "home" partial -%>
     <%= render 'home' %>
