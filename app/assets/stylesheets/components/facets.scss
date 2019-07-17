@@ -155,3 +155,11 @@ a.more_facets_link {
 .facets .facets-heading {
   margin: 1em 0 0.5em;
 }
+
+.facet-limit {
+  margin-bottom: $spacer;
+
+  .card-body {
+    padding: $spacer;
+  }
+}
