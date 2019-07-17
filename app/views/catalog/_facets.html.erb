@@ -1,10 +1,10 @@
 <% # main container for facets/limits menu -%>
 <% if has_facet_values?  %>
-<div id="facets" class="facets sidenav">
+<div id="facets" class="facets sidenav facets-toggleable">
 
   <div class="top-panel-heading panel-heading">
-    <button type="button" class="facets-toggle" data-toggle="collapse" data-target="#facet-panel-collapse">
-      <span class="sr-only">Toggle facets</span>
+    <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#facet-panel-collapse">
+      <span class="d-none">Toggle facets</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
@@ -15,7 +15,7 @@
     </h2>
   </div>
 
-  <div id="facet-panel-collapse" class="collapse panel-group">
+  <div id="facet-panel-collapse" class="facets-collapse collapse">
     <%= has_search_parameters? ? render_facet_partials : render_home_facets %>
   </div>
 </div>
