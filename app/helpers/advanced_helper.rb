@@ -233,7 +233,7 @@ module BlacklightAdvancedSearch
     def guided_search(my_params = params)
       constraints = []
       if my_params[:q1].present? && my_params[:f1].present?
-        label = search_field_def_for_key(my_params[:f1]).try(:label)
+        label = blacklight_config.search_fields[my_params[:f1]].try(:label)
         if label
           query = my_params[:q1]
           constraints << render_constraint_element(
@@ -243,7 +243,7 @@ module BlacklightAdvancedSearch
         end
       end
       if my_params[:q2].present? && my_params[:f2].present?
-        label = search_field_def_for_key(my_params[:f2]).try(:label)
+        label = blacklight_config.search_fields[my_params[:f2]].try(:label)
         if label
           query = my_params[:q2]
           query = 'NOT ' + my_params[:q2] if my_params[:op2] == 'NOT'
@@ -254,7 +254,7 @@ module BlacklightAdvancedSearch
         end
       end
       if my_params[:q3].present? && my_params[:f3].present?
-        label = search_field_def_for_key(my_params[:f3]).try(:label)
+        label = blacklight_config.search_fields[my_params[:f3]].try(:label)
         if label
           query = my_params[:q3]
           query = 'NOT ' + my_params[:q3] if my_params[:op3] == 'NOT'
