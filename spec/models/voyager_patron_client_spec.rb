@@ -60,9 +60,12 @@ RSpec.describe VoyagerPatronClient do
       end
 
       context 'Connectivity Error' do
+        before do
+          stub_request(:get, valid_patron_record_uri).to_raise(Faraday::Error::ConnectionFailed)
+        end
         it "Returns false when it can't connect" do
-          allow(client).to receive(:myaccount) { false }
           expect { client.myaccount }.not_to raise_error
+          expect(client.myaccount).to be false
         end
       end
     end
@@ -79,9 +82,12 @@ RSpec.describe VoyagerPatronClient do
       end
 
       context 'Connectivity Error' do
+        before do
+          stub_request(:post, valid_authenticate_uri).to_raise(Faraday::Error::ConnectionFailed)
+        end
         it "Returns false when it can't connect" do
-          allow(client).to receive(:authenticate) { false }
           expect { client.authenticate }.not_to raise_error
+          expect(client.authenticate).to be false
         end
       end
     end
@@ -92,9 +98,12 @@ RSpec.describe VoyagerPatronClient do
       end
 
       context 'Connectivity Error' do
+        before do
+          stub_request(:get, valid_db_key_uri).to_raise(Faraday::Error::ConnectionFailed)
+        end
         it "Returns false when it can't connect" do
-          allow(client).to receive(:dbkey) { false }
           expect { client.dbkey }.not_to raise_error
+          expect(client.dbkey).to be false
         end
       end
     end
@@ -117,9 +126,12 @@ RSpec.describe VoyagerPatronClient do
         expect(client.cancel_active_requests(items_to_cancel).request_items.size).to eq(1)
       end
       context 'Connectivity Error' do
+        before do
+          stub_request(:post, valid_cancel_request_uri).to_raise(Faraday::Error::ConnectionFailed)
+        end
         it "Returns false when it can't connect" do
-          allow(client).to receive(:cancel_active_requests) { false }
-          expect { client.cancel_active_requests }.not_to raise_error
+          expect { client.cancel_active_requests(items_to_cancel) }.not_to raise_error
+          expect(client.cancel_active_requests(items_to_cancel)).to be false
         end
       end
     end
@@ -171,9 +183,12 @@ RSpec.describe VoyagerPatronClient do
       end
 
       context 'Connectivity Error' do
+        before do
+          stub_request(:post, valid_renew_request_uri).to_raise(Faraday::Error::ConnectionFailed)
+        end
         it "Returns false when it can't connect" do
-          allow(client).to receive(:renewal_request) { false }
-          expect { client.renewal_request }.not_to raise_error
+          expect { client.renewal_request(renew_item_list) }.not_to raise_error
+          expect(client.renewal_request(renew_item_list)).to be false
         end
       end
     end

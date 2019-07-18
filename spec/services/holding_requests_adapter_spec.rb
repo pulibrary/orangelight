@@ -30,13 +30,20 @@ RSpec.describe HoldingRequestsAdapter do
       }
     end
 
-    it 'repeated restrictions appear only once' do
-      allow(holdings).to receive(:doc_holdings).and_return(holdings_hash)
-      expect(holdings.restrictions).to eq ['In Library Use']
+    context 'with repeared restrictions' do
+      let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
+
+      it 'they appear only once' do
+        expect(holdings.restrictions).to eq ['In Library Use']
+      end
     end
-    it 'Empty use_statement fields are excluded' do
-      allow(holdings).to receive(:doc_holdings).and_return(holdings_hash_empty_use_statement)
-      expect(holdings.restrictions).to eq []
+
+    context 'with empty use_statement fields' do
+      let(:document) { { 'holdings_1display' => holdings_hash_empty_use_statement.to_json } }
+
+      it 'they are excluded' do
+        expect(holdings.restrictions).to eq []
+      end
     end
   end
 
