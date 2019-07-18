@@ -72,7 +72,7 @@ RSpec.describe AccountController do
       get :borrow_direct_redirect
       expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
     end
-    it 'Redirect url includes query when present' do
+    it 'Redirect url includes query when param q is present' do
       sign_in(valid_cas_user)
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
@@ -83,7 +83,7 @@ RSpec.describe AccountController do
       expect(response.location).to include('a%20book%20title')
     end
     # For interoperability with umlaut
-    it 'Redirect url includes query when present' do
+    it 'Redirect url includes query when param query is present' do
       sign_in(valid_cas_user)
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
