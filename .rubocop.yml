@@ -139,11 +139,6 @@ RSpec/ExampleLength:
   Enabled: false
 
 # TODO: Fix
-RSpec/RepeatedDescription:
-  Exclude:
-    - 'spec/controllers/account_controller_spec.rb'
-
-# TODO: Fix
 RSpec/SubjectStub:
   Exclude:
     - 'spec/models/voyager_patron_client_spec.rb'
