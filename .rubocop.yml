@@ -172,10 +172,5 @@ Style/GuardClause:
     - 'app/models/concerns/blacklight/document/ris.rb'
 
 # TODO: Fix
-Style/IfInsideElse:
-  Exclude:
-    - 'lib/orangelight/voyager_account.rb'
-
-# TODO: Fix
 Style/Next:
   Enabled: false
