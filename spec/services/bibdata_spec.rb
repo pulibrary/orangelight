@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Bibdata do
   describe '#holding_locations' do
-    subject { described_class.holding_locations }
+    subject(:locations) { described_class.holding_locations }
 
     let(:response) { instance_double(Faraday::Response, status: status, body: body) }
     let(:status) { 200 }
@@ -13,7 +13,7 @@ RSpec.describe Bibdata do
     before { allow(Faraday).to receive(:get).and_return(response) }
     context 'with a successful response from bibdata' do
       it 'returns the holdings location hash' do
-        expect(subject).to include('aas')
+        expect(locations).to include('aas')
       end
     end
 
@@ -23,7 +23,7 @@ RSpec.describe Bibdata do
       before { Rails.cache.clear }
 
       it 'returns an empty hash' do
-        expect(subject).to be_empty
+        expect(locations).to be_empty
       end
     end
   end
