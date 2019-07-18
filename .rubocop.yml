@@ -139,12 +139,6 @@ RSpec/ExampleLength:
   Enabled: false
 
 # TODO: Fix
-RSpec/SubjectStub:
-  Exclude:
-    - 'spec/models/voyager_patron_client_spec.rb'
-    - 'spec/services/holding_requests_adapter_spec.rb'
-
-# TODO: Fix
 RSpec/VerifiedDoubles:
   Exclude:
     - 'spec/helpers/blacklight_advanced_search/parsing_nesting_spec.rb'
