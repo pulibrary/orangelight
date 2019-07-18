@@ -144,14 +144,6 @@ RSpec/VerifiedDoubles:
     - 'spec/helpers/blacklight_advanced_search/parsing_nesting_spec.rb'
     - 'spec/views/catalog/_sort_and_per_page.html.erb_spec.rb'
 
-# TODO: Fix
-Rails/FilePath:
-  Exclude:
-    - 'app/helpers/account_helper.rb'
-    - 'config/application.rb'
-    - 'config/initializers/requests_initializer.rb'
-    - 'spec/rails_helper.rb'
-
 # Should fix
 Rails/OutputSafety:
   Exclude:
