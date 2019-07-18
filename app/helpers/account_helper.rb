@@ -5,7 +5,7 @@ module AccountHelper
   ## FIXME - Move to
   ### Setup item status
   ITEM_STATUS = begin
-                  YAML.load_file("#{Rails.root}/config/voyager_item_status.yml")
+                  YAML.load_file(Rails.root.join('config', 'voyager_item_status.yml'))
                 rescue
                   {}
                 end
