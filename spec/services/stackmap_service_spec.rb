@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe StackmapService::Url do
-  subject { url_service.url }
+  subject(:url) { url_service.url }
 
   let(:url_service) { described_class.new(document: document, loc: location, cn: call_number) }
   let(:document) { SolrDocument.new(properties) }
@@ -25,14 +25,14 @@ RSpec.describe StackmapService::Url do
       let(:call_number) { 'Q43.2' }
 
       it 'resolves to embeded firestone locator with loc and bibid' do
-        expect(subject).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
+        expect(url).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
       end
     end
     describe 'firestone, no call number provided' do
       let(:location) { 'f' }
 
       it 'resolves to embeded firestone locator with loc and bibid' do
-        expect(subject).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
+        expect(url).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
       end
     end
 
@@ -41,7 +41,7 @@ RSpec.describe StackmapService::Url do
       let(:doc_cn) { nil }
 
       it 'resolves to embeded firestone locator with loc and bibid' do
-        expect(subject).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
+        expect(url).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
       end
 
       it 'preferred_callno returns nil' do
@@ -54,8 +54,8 @@ RSpec.describe StackmapService::Url do
       let(:call_number) { 'Q43.2' }
 
       it 'resolves to stackmap with provided call number' do
-        expect(subject).to include('princeton.stackmap')
-        expect(subject).to include(call_number)
+        expect(url).to include('princeton.stackmap')
+        expect(url).to include(call_number)
       end
 
       it 'the library is the location label when the holding location has no label' do
@@ -66,8 +66,8 @@ RSpec.describe StackmapService::Url do
       let(:location) { 'mus' }
 
       it 'resolves to stackmap with document call number' do
-        expect(subject).to include('princeton.stackmap')
-        expect(subject).to include({ callno: properties[:call_number_browse_s].first }.to_query)
+        expect(url).to include('princeton.stackmap')
+        expect(url).to include({ callno: properties[:call_number_browse_s].first }.to_query)
       end
     end
 
@@ -75,7 +75,7 @@ RSpec.describe StackmapService::Url do
       let(:location) { 'sprps' }
 
       it 'uses title as the call number value' do
-        expect(subject).to include({ callno: properties[:title_display] }.to_query)
+        expect(url).to include({ callno: properties[:title_display] }.to_query)
       end
       it 'preferred_callno is accessible as a public method' do
         expect(url_service.preferred_callno).to eq(properties[:title_display])
@@ -89,14 +89,14 @@ RSpec.describe StackmapService::Url do
       let(:call_number) { 'Q43.2' }
 
       it 'uses title as the call number value' do
-        expect(subject).to include({ callno: properties[:title_display] }.to_query)
+        expect(url).to include({ callno: properties[:title_display] }.to_query)
       end
     end
     describe 'non-stackmap location' do
       let(:location) { 'pplr' }
 
       it 'resolves to branch library page' do
-        expect(subject).to eq('https://library.princeton.edu/plasma-physics')
+        expect(url).to eq('https://library.princeton.edu/plasma-physics')
       end
     end
   end
@@ -105,14 +105,14 @@ RSpec.describe StackmapService::Url do
       let(:location) { 'not-a-location' }
 
       it 'resolves to catalog show page url' do
-        expect(subject).to include("/catalog/#{properties[:id]}")
+        expect(url).to include("/catalog/#{properties[:id]}")
       end
     end
     describe 'nil location' do
       let(:location) { nil }
 
       it 'resolves to catalog show page url' do
-        expect(subject).to include("/catalog/#{properties[:id]}")
+        expect(url).to include("/catalog/#{properties[:id]}")
       end
     end
     describe 'missing doc' do
@@ -120,7 +120,7 @@ RSpec.describe StackmapService::Url do
       let(:document) { nil }
 
       it 'resolves to catalog homepage' do
-        expect(subject).to match(%r{catalog/$})
+        expect(url).to match(%r{catalog/$})
       end
     end
   end

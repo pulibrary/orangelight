@@ -20,8 +20,8 @@ RSpec.describe StringFunctions do
       it 'alphabetic characters are made upper case' do
         microfiche = described_class.cn_normalize('MICROFICHE')
         microfilm = described_class.cn_normalize('microfilm')
-        microfilm_1 = described_class.cn_normalize('MICROFILM 1')
-        expect(microfiche..microfilm_1).to cover microfilm
+        microfilm1 = described_class.cn_normalize('MICROFILM 1')
+        expect(microfiche..microfilm1).to cover microfilm
       end
       it 'CD and CD- file the same' do
         expect(described_class.cn_normalize('CD 4032')).to eq described_class.cn_normalize('CD- 4032')
@@ -30,10 +30,10 @@ RSpec.describe StringFunctions do
         expect(described_class.cn_normalize('18th-25')).to be < described_class.cn_normalize('18th-24000')
       end
       it 'oversize q is ignored' do
-        dvd_1 = described_class.cn_normalize('DVD 204')
-        dvd_2 = described_class.cn_normalize('DVD 205q')
-        dvd_3 = described_class.cn_normalize('DVD 206')
-        expect(dvd_1..dvd_3).to cover dvd_2
+        dvd1 = described_class.cn_normalize('DVD 204')
+        dvd2 = described_class.cn_normalize('DVD 205q')
+        dvd3 = described_class.cn_normalize('DVD 206')
+        expect(dvd1..dvd3).to cover dvd2
       end
       it 'leading zeros normalize the same as without' do
         expect(described_class.cn_normalize('CASSETTE 423')).to eq described_class.cn_normalize('CASSETTE 0423')

@@ -17,11 +17,11 @@ RSpec.describe CatalogController do
 
       expect(email.reply_to).to eq [user.email]
     end
-    it 'supports a user-submitted subject line' do
+    it 'supports a user-submitted note line' do
       sign_in user
 
-      post :email, params: { id: '9741216', to: 'test@test.com', subject: ['Subject'] }
-      expect(email.subject).to eq 'Subject'
+      post :email, params: { id: '9741216', to: 'test@test.com', note: ['Subject'] }
+      expect(email.note).to eq 'Subject'
     end
     it 'does not send an email if not logged in' do
       post :email, params: { id: '9741216', to: 'test@test.com' }
@@ -30,7 +30,7 @@ RSpec.describe CatalogController do
     end
   end
   describe '#online_holding_note?' do
-    subject { described_class.new.online_holding_note?(nil, document) }
+    subject(:note) { described_class.new.online_holding_note?(nil, document) }
 
     let(:link) { 'field not blank' }
     let(:holdings) do
@@ -41,21 +41,21 @@ RSpec.describe CatalogController do
       let(:document) { { electronic_access_1display: link, holdings_1display: holdings } }
 
       it 'returns true' do
-        expect(subject).to be true
+        expect(note).to be true
       end
     end
     describe 'document with link missing holding note' do
       let(:document) { { electronic_access_1display: link } }
 
       it 'returns false' do
-        expect(subject).to be false
+        expect(note).to be false
       end
     end
     describe 'document missing link with holding note' do
       let(:document) { { holdings_1display: holdings } }
 
       it 'returns false' do
-        expect(subject).to be false
+        expect(note).to be false
       end
     end
   end

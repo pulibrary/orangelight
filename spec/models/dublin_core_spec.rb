@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Blacklight::Document::DublinCore do
-  subject { SolrDocument.new(properties) }
+  subject(:document) { SolrDocument.new(properties) }
 
   let(:properties) do
     {
@@ -61,20 +61,20 @@ RSpec.describe Blacklight::Document::DublinCore do
 
   describe '#export_as_oai_dc_xml' do
     it 'returns DC fields wrapped in OAI XML' do
-      expect(Nokogiri::XML(subject.export_as_oai_dc_xml).xpath('/oai_dc:dc')).to be_truthy
-      expect(subject.to_semantic_values).to be_truthy
-      subject.to_semantic_values.keys.each do |field|
-        expect(Nokogiri::XML(subject.export_as_rdf_dc).xpath("//dc:#{field}")).to be_truthy
+      expect(Nokogiri::XML(document.export_as_oai_dc_xml).xpath('/oai_dc:dc')).to be_truthy
+      expect(document.to_semantic_values).to be_truthy
+      document.to_semantic_values.each_key do |field|
+        expect(Nokogiri::XML(document.export_as_rdf_dc).xpath("//dc:#{field}")).to be_truthy
       end
     end
   end
 
   describe '#export_as_rdf_dc' do
     it 'contains DC fields wrapped in RDF XML' do
-      expect(Nokogiri::XML(subject.export_as_rdf_dc).xpath('/rdf:RDF')).to be_truthy
-      expect(subject.to_semantic_values).to be_truthy
-      subject.to_semantic_values.keys.each do |field|
-        expect(Nokogiri::XML(subject.export_as_rdf_dc).xpath("//dc:#{field}")).to be_truthy
+      expect(Nokogiri::XML(document.export_as_rdf_dc).xpath('/rdf:RDF')).to be_truthy
+      expect(document.to_semantic_values).to be_truthy
+      document.to_semantic_values.each_key do |field|
+        expect(Nokogiri::XML(document.export_as_rdf_dc).xpath("//dc:#{field}")).to be_truthy
       end
     end
   end
