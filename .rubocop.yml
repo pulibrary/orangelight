@@ -129,10 +129,6 @@ Naming/PredicateName:
   Exclude:
     - 'lib/orangelight/voyager_account.rb'
 
-# TODO: Fix
-RSpec/NamedSubject:
-  Enabled: false
-
 RSpec/DescribeClass:
   Exclude:
     - 'spec/features/**/*'

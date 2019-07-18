@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Blacklight::Document::Email do
-  subject { SolrDocument.new(properties).to_email_text }
+  subject(:document) { SolrDocument.new(properties).to_email_text }
 
   describe '#to_email_text' do
     describe 'record with vernacular script' do
@@ -22,32 +22,32 @@ RSpec.describe Blacklight::Document::Email do
       end
 
       it 'includes both Romanized and vernacular script' do
-        expect(subject).to match('Title: al-Amāzīgh')
-        expect(subject).to match('Title: الأمازيغ')
+        expect(document).to match('Title: al-Amāzīgh')
+        expect(document).to match('Title: الأمازيغ')
       end
       it 'includes a label for each value in multivalued field' do
-        expect(subject).to match('Published\/Created: al-Muhandisīn')
-        expect(subject).to match('Published\/Created: المهندسين،')
+        expect(document).to match('Published\/Created: al-Muhandisīn')
+        expect(document).to match('Published\/Created: المهندسين،')
       end
       it 'excludes online information if no links present' do
-        expect(subject).not_to match('Online access:')
+        expect(document).not_to match('Online access:')
       end
       it 'includes holding information when present' do
-        expect(subject).to match('Holdings:')
+        expect(document).to match('Holdings:')
       end
       it 'individual holding information is tabbed' do
-        expect(subject).to match("\tLocation: ReCAP")
-        expect(subject).to match("\tCall number: DT194")
+        expect(document).to match("\tLocation: ReCAP")
+        expect(document).to match("\tCall number: DT194")
       end
     end
     describe 'record with no holdings' do
       let(:properties) { {} }
 
       it 'excludes author label when not present' do
-        expect(subject).not_to match('Author:')
+        expect(document).not_to match('Author:')
       end
       it 'excludes holdings label when not present' do
-        expect(subject).not_to match('Holdings:')
+        expect(document).not_to match('Holdings:')
       end
     end
     describe 'thesis online record' do
@@ -64,16 +64,16 @@ RSpec.describe Blacklight::Document::Email do
       end
 
       it 'includes online access label' do
-        expect(subject).to match('Online access:')
+        expect(document).to match('Online access:')
       end
       it 'includes link with link text tabbed over' do
-        expect(subject).to match("\tFull text - DataSpace: http://arks.princeton.edu")
+        expect(document).to match("\tFull text - DataSpace: http://arks.princeton.edu")
       end
       it 'includes format' do
-        expect(subject).to match('Format: Senior Thesis')
+        expect(document).to match('Format: Senior Thesis')
       end
       it 'includes library name when location field is not present in holdings' do
-        expect(subject).to match('Location: Online')
+        expect(document).to match('Location: Online')
       end
     end
   end
