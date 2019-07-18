@@ -7,8 +7,7 @@ RSpec.describe BlacklightAdvancedSearch::ParsingNestingParser do
     subject(:queries) { process_query(_params, config) }
 
     let(:_params) { instance_double(ActiveSupport::HashWithIndifferentAccess) }
-    # instance_double cannot be used to stub #advanced_search for Blacklight::Configuration
-    let(:config) { double('Blacklight::Configuration') }
+    let(:config) { Class.new }
     let(:advanced_search) { instance_double(Blacklight::OpenStructWithHashAccess) }
     let(:keyword_queries) do
       {
