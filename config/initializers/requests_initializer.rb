@@ -26,7 +26,7 @@ module Requests
     end
 
     def requests_config_file
-      "#{Rails.root}/config/requests.yml"
+      Rails.root.join('config', 'requests.yml')
     end
     module_function :config, :config_yaml, :requests_config_file
 end
