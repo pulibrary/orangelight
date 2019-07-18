@@ -203,11 +203,10 @@ module BlacklightAdvancedSearch
         end
 
         # Test if the field is valid
-        if config.search_fields[field]
-          local_param = local_param_hash(field, config)
-          queries << parsed.to_query(local_param)
-          queries << ops.shift
-        end
+        next unless config.search_fields[field]
+        local_param = local_param_hash(field, config)
+        queries << parsed.to_query(local_param)
+        queries << ops.shift
       end
       queries.join(' ')
     end
