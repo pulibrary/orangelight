@@ -118,7 +118,6 @@ Metrics/PerceivedComplexity:
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists.rb'
 
-# Look into this
 Naming/FileName:
   Exclude:
     - 'Capfile'
@@ -138,11 +137,6 @@ RSpec/ExampleLength:
   Enabled: false
 
 # TODO: Fix
-RSpec/VerifiedDoubles:
-  Exclude:
-    - 'spec/helpers/blacklight_advanced_search/parsing_nesting_spec.rb'
-    - 'spec/views/catalog/_sort_and_per_page.html.erb_spec.rb'
-
 # Should fix
 Rails/OutputSafety:
   Exclude:
@@ -158,6 +152,7 @@ Rails/TimeZone:
     - 'app/helpers/application_helper.rb'
     - 'spec/helpers/locations_spec.rb'
 
+# TODO: Fix
 # Should fix
 Style/GuardClause:
   Exclude:
