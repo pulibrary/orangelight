@@ -9,16 +9,18 @@ RSpec.describe AccountController do
   let(:item_ids_to_cancel) { %w[42287 42289 69854 28010] }
 
   describe '#cancel_success' do
+    subject(:account_controller) { described_class.new }
     it 'returns true when requested cancelled items are sucessfully deleted' do
-      expect(subject.send(:cancel_success, item_ids_to_cancel.size, generic_voyager_account_empty_response, item_ids_to_cancel)).to be_truthy
+      expect(account_controller.send(:cancel_success, item_ids_to_cancel.size, generic_voyager_account_empty_response, item_ids_to_cancel)).to be_truthy
     end
 
     it 'returns false when requested cancelled items are not successfully deleted' do
-      expect(subject.send(:cancel_success, item_ids_to_cancel.size, generic_voyager_account_response, item_ids_to_cancel)).to be_falsey
+      expect(account_controller.send(:cancel_success, item_ids_to_cancel.size, generic_voyager_account_response, item_ids_to_cancel)).to be_falsey
     end
   end
 
   describe '#patron_account?' do
+    subject(:account_controller) { described_class.new }
     let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
     let(:invalid_user) { FactoryBot.create(:invalid_princeton_patron) }
     let(:unauthorized_user) { FactoryBot.create(:unauthorized_princeton_patron) }
@@ -28,7 +30,7 @@ RSpec.describe AccountController do
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
-      patron = subject.send(:current_patron?, valid_user.uid)
+      patron = account_controller.send(:current_patron?, valid_user.uid)
       expect(patron).to be_truthy
     end
 
@@ -36,7 +38,7 @@ RSpec.describe AccountController do
       invalid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{invalid_user.uid}"
       stub_request(:get, invalid_patron_record_uri)
         .to_return(status: 404, body: '<html><title>Not Here</title><body></body></html>', headers: {})
-      patron = subject.send(:current_patron?, invalid_user.uid)
+      patron = account_controller.send(:current_patron?, invalid_user.uid)
       expect(patron).to be_falsey
     end
 
@@ -44,7 +46,7 @@ RSpec.describe AccountController do
       unauthorized_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{unauthorized_user.uid}"
       stub_request(:get, unauthorized_patron_record_uri)
         .to_return(status: 403, body: '<html><title>Not Authorized</title><body></body></html>', headers: {})
-      patron = subject.send(:current_patron?, unauthorized_user.uid)
+      patron = account_controller.send(:current_patron?, unauthorized_user.uid)
       expect(patron).to be_falsey
     end
 
@@ -52,7 +54,7 @@ RSpec.describe AccountController do
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 500, body: 'Error', headers: {})
-      patron = subject.send(:current_patron?, valid_user.uid)
+      patron = account_controller.send(:current_patron?, valid_user.uid)
       expect(patron).to be_falsey
     end
   end
@@ -106,6 +108,7 @@ RSpec.describe AccountController do
   end
 
   describe '#voyager_account?' do
+    subject(:account_controller) { described_class.new }
     let(:valid_voyager_response) { File.open(fixture_path + '/pul_voyager_account_response.xml').read }
     let(:valid_voyager_patron) { JSON.parse(valid_patron_response.read.to_s).with_indifferent_access }
     let(:invalid_voyager_patron) { JSON.parse('{ "patron_id": "foo" }').with_indifferent_access }
@@ -115,7 +118,7 @@ RSpec.describe AccountController do
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_voyager_response, headers: {})
-      account = subject.send(:voyager_account?, valid_voyager_patron)
+      account = account_controller.send(:voyager_account?, valid_voyager_patron)
       expect(account).to be_truthy
       expect(account.doc).to be_a(Nokogiri::XML::Document)
     end
@@ -124,7 +127,7 @@ RSpec.describe AccountController do
       invalid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{invalid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
       stub_request(:get, invalid_patron_record_uri)
         .to_return(status: 404, body: 'Account Not Found', headers: {})
-      account = subject.send(:voyager_account?, invalid_voyager_patron)
+      account = account_controller.send(:voyager_account?, invalid_voyager_patron)
       expect(account).to be_falsey
     end
 
@@ -132,7 +135,7 @@ RSpec.describe AccountController do
       unauthorized_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{unauthorized_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
       stub_request(:get, unauthorized_patron_record_uri)
         .to_return(status: 403, body: 'Application Not Authorized', headers: {})
-      account = subject.send(:voyager_account?, unauthorized_voyager_patron)
+      account = account_controller.send(:voyager_account?, unauthorized_voyager_patron)
       expect(account).to be_falsey
     end
   end

@@ -13,10 +13,10 @@ RSpec.describe AdvancedHelper do
   before { stub_holding_locations }
 
   describe '#location_codes_by_lib' do
-    let(:subject) { location_codes_by_lib(location_items) }
+    subject(:codes) { location_codes_by_lib(location_items) }
 
     it 'includes library name as key' do
-      expect(subject.key?('Architecture Library')).to be true
+      expect(codes.key?('Architecture Library')).to be true
     end
     describe 'architecture library' do
       let(:architecture_hash) { subject['Architecture Library'] }
