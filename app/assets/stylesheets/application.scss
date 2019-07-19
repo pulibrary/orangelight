@@ -24,15 +24,16 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png');
 
 @import 'chosen';
 
+@import 'variables/breaks';
+@import 'variables/colors';
+@import 'variables/typography';
+
 @import 'blacklight';
 @import 'font-awesome';
 @import 'blacklight_marc';
 
 @import 'requests/request';
 @import 'abstractions/mixins';
-@import 'variables/breaks';
-@import 'variables/colors';
-@import 'variables/typography';
 
 @import 'base/forms';
 @import 'base/typography';
