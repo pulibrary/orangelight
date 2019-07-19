@@ -115,6 +115,7 @@ Metrics/LineLength:
     - 'app/helpers/catalog_helper.rb'
     - 'lib/orangelight/middleware/invalid_parameter_handler.rb'
     - 'config/schedule.rb'
+    - 'app/repositories/course_reserve_repository.rb'
 
 Metrics/MethodLength:
   Exclude:

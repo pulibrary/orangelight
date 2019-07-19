@@ -3,17 +3,21 @@
 class CourseReserveRepository
   class << self
     def all
-      Relation.new(
-        MultiJson.load(
-          courses_json
-        )
-      )
+      Relation.new(courses)
     end
 
     private
 
-      def courses_json
-        Faraday.get("#{ENV['bibdata_base']}/courses").body
+      def courses_response
+        Faraday.get("#{ENV['bibdata_base']}/courses")
+      end
+
+      def courses
+        values = courses_response.body
+        MultiJson.load(values)
+      rescue Faraday::ClientError => client_error
+        Rails.logger.error("Failed to retrieve the course information from the server: #{client_error.message}")
+        []
       end
   end
 
