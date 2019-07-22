@@ -35,6 +35,21 @@ RSpec.describe CourseReserveRepository do
         2087
       ]
     end
+
+    context 'when the course reserve server is unavailable' do
+      let(:relation) { described_class.all }
+
+      before do
+        allow(Faraday).to receive(:get).and_raise(Faraday::ClientError, 'error')
+        allow(Rails.logger).to receive(:error)
+      end
+
+      it 'logs an error message' do
+        expect(relation).to be_a CourseReserveRepository::Relation
+        expect(relation.courses).to eq []
+        expect(Rails.logger).to have_received(:error).with('Failed to retrieve the course information from the server: error')
+      end
+    end
   end
 
   def stub_all_query
