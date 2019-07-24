@@ -16,7 +16,6 @@ Coveralls.wear!('rails') do
   add_filter '/lib/orangelight/browse_lists.rb'
   add_filter '/app/models/orangelight.rb'
   add_filter '/lib/tasks'
-  add_filter 'app/controllers/saved_searches_controller.rb'
   add_filter 'app/controllers/search_history_controller.rb'
 end
 
