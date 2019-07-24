@@ -88,9 +88,6 @@ en:
         subject:
           one: 'PU Library Catalog Shared Record'
           other: 'PU Library Catalog Shared Records'
-    saved_searches:
-      clear:
-        action_title: 'Clear saved searches'
     search_history:
       clear:
         action_title: 'Clear search history'
