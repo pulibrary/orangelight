@@ -121,6 +121,7 @@ module BrowseLists
     end
 
     def load_facet(sql_command, _facet_request, _conn, _facet_field, table_name)
+      system(%(cp /tmp/#{table_name}.sorted /tmp/#{table_name}.sorted.backup))
       system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
       system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '/tmp/#{table_name}.csv' CSV;"))
       system(%(#{sql_command} \"\\copy (Select sort,count,label,dir from #{table_name} order by sort) To '/tmp/#{table_name}.sorted' With CSV;"))
@@ -129,6 +130,7 @@ module BrowseLists
     end
 
     def load_cn(sql_command, _facet_request, _conn, facet_field, table_name)
+      system(%(cp /tmp/#{facet_field}.sorted /tmp/#{facet_field}.sorted.backup))
       system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
       system(%(#{sql_command} "\\copy #{table_name}(sort,label,dir,scheme,title,author,date,bibid,holding_id,location) from '/tmp/#{facet_field}.csv' CSV;"))
       system(%(#{sql_command} "\\copy (Select sort,label,dir,scheme,title,author,date,bibid,holding_id,location from #{table_name} order by sort) To '/tmp/#{facet_field}.sorted' With CSV;"))
