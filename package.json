@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@rails/webpacker": "^4.0.2",
+    "@rails/webpacker": "^4.0.7",
     "apollo-boost": "^0.1.10",
     "apollo-client": "^2.4.1",
     "apollo-link-http": "^1.5.4",
