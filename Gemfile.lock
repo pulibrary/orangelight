@@ -115,6 +115,9 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     bcrypt (3.1.13)
+    bixby (1.0.0)
+      rubocop (~> 0.50, <= 0.52.1)
+      rubocop-rspec (~> 1.22, <= 1.22.2)
     blacklight (7.0.1)
       deprecation
       globalid
@@ -410,8 +413,8 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
-    rubocop-rspec (1.20.1)
-      rubocop (>= 0.51.0)
+    rubocop-rspec (1.22.2)
+      rubocop (>= 0.52.1)
     ruby-progressbar (1.10.1)
     rubyzip (1.2.3)
     safe_yaml (1.0.5)
@@ -540,6 +543,7 @@ PLATFORMS
 
 DEPENDENCIES
   babel-transpiler
+  bixby
   blacklight (~> 7.0)
   blacklight-marc (~> 6.2)
   blacklight_advanced_search!
@@ -584,8 +588,6 @@ DEPENDENCIES
   requests!
   rsolr
   rspec-rails (~> 3.4)
-  rubocop (= 0.52.1)
-  rubocop-rspec (= 1.20.1)
   rubyzip (>= 1.2.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
