@@ -421,24 +421,27 @@ class CatalogController < ApplicationController
 
     config.add_search_field('title') do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
-      field.solr_parameters = { :'spellcheck.dictionary' => 'title' }
+      field.solr_parameters = {
+        'spellcheck.dictionary': 'title',
+        qf: '${title_qf}',
+        pf: '${title_pf}'
+      }
       field.dropdown_label = 'Title (keyword)'
-
-      # :solr_local_parameters will be sent using Solr LocalParams
-      # syntax, as eg {! qf=$title_qf }. This is neccesary to use
-      # Solr parameter de-referencing like $title_qf.
-      # See: http://wiki.apache.org/solr/LocalParams
-      field.solr_local_parameters = {
+      field.solr_adv_parameters = {
         qf: '$title_qf',
         pf: '$title_pf'
       }
     end
 
     config.add_search_field('author') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
+      field.solr_parameters = {
+        'spellcheck.dictionary' => 'author',
+        qf: '${author_qf}',
+        pf: '${author_pf}'
+      }
       field.dropdown_label = 'Author (keyword)'
       field.label = 'Author/Creator'
-      field.solr_local_parameters = {
+      field.solr_adv_parameters = {
         qf: '$author_qf',
         pf: '$author_pf'
       }
@@ -448,10 +451,14 @@ class CatalogController < ApplicationController
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
     config.add_search_field('subject') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
+      field.solr_parameters = {
+        'spellcheck.dictionary': 'subject',
+        qf: '${subject_qf}',
+        pf: '${subject_pf}'
+      }
       field.dropdown_label = 'Subject (keyword)'
       field.qt = 'search'
-      field.solr_local_parameters = {
+      field.solr_adv_parameters = {
         qf: '$subject_qf',
         pf: '$subject_pf'
       }
@@ -459,7 +466,11 @@ class CatalogController < ApplicationController
 
     config.add_search_field('left_anchor') do |field|
       field.label = 'Title starts with'
-      field.solr_local_parameters = {
+      field.solr_parameters = {
+        qf: '${left_anchor_qf}',
+        pf: '${left_anchor_pf}'
+      }
+      field.solr_adv_parameters = {
         qf: '$left_anchor_qf',
         pf: '$left_anchor_pf'
       }
@@ -468,7 +479,7 @@ class CatalogController < ApplicationController
     config.add_search_field('publisher') do |field|
       field.include_in_simple_select = false
       field.label = 'Publisher'
-      field.solr_local_parameters = {
+      field.solr_adv_parameters = {
         qf: '$publisher_qf',
         pf: '$publisher_pf'
       }
@@ -478,7 +489,7 @@ class CatalogController < ApplicationController
       field.include_in_advanced_search = false
       field.include_in_simple_select = false
       field.label = 'Series starts with'
-      field.solr_local_parameters = {
+      field.solr_adv_parameters = {
         qf: '$in_series_qf',
         pf: '$in_series_pf'
       }
@@ -487,7 +498,7 @@ class CatalogController < ApplicationController
     config.add_search_field('notes') do |field|
       field.include_in_simple_select = false
       field.label = 'Notes'
-      field.solr_local_parameters = {
+      field.solr_adv_parameters = {
         qf: '$notes_qf',
         pf: '$notes_pf'
       }
@@ -496,7 +507,7 @@ class CatalogController < ApplicationController
     config.add_search_field('series_title') do |field|
       field.include_in_simple_select = false
       field.label = 'Series title'
-      field.solr_local_parameters = {
+      field.solr_adv_parameters = {
         qf: '$series_title_qf',
         pf: '$series_title_pf'
       }
@@ -505,7 +516,7 @@ class CatalogController < ApplicationController
     config.add_search_field('isbn') do |field|
       field.include_in_simple_select = false
       field.label = 'ISBN'
-      field.solr_local_parameters = {
+      field.solr_adv_parameters = {
         qf: 'isbn_t'
       }
     end
@@ -513,7 +524,7 @@ class CatalogController < ApplicationController
     config.add_search_field('issn') do |field|
       field.include_in_simple_select = false
       field.label = 'ISSN'
-      field.solr_local_parameters = {
+      field.solr_adv_parameters = {
         qf: 'issn_s'
       }
     end
@@ -522,7 +533,7 @@ class CatalogController < ApplicationController
       field.include_in_simple_select = false
       field.include_in_advanced_search = false
       field.label = 'LCCN'
-      field.solr_local_parameters = {
+      field.solr_adv_parameters = {
         qf: 'lccn_s'
       }
     end
@@ -531,7 +542,7 @@ class CatalogController < ApplicationController
       field.include_in_simple_select = false
       field.include_in_advanced_search = false
       field.label = 'OCLC'
-      field.solr_local_parameters = {
+      field.solr_adv_parameters = {
         qf: 'oclc_s'
       }
     end
