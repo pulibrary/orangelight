@@ -14,7 +14,7 @@ class CourseReserveRepository
 
       def courses
         values = courses_response.body
-        MultiJson.load(values)
+        JSON.parse(values)
       rescue Faraday::ClientError => client_error
         Rails.logger.error("Failed to retrieve the course information from the server: #{client_error.message}")
         []
