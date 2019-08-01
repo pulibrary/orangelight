@@ -48,13 +48,13 @@ module BlacklightHelper
   # Ends all left-anchor searches with wildcards for matches that begin with search string
   # @param solr_parameters [Blacklight::Solr::Request] the parameters for the Solr query
   def left_anchor_escape_whitespace(solr_parameters)
-    return unless solr_parameters[:q]&.include?('{!qf=$left_anchor_qf pf=$left_anchor_pf}')
-    query = solr_parameters[:q].gsub('{!qf=$left_anchor_qf pf=$left_anchor_pf}', '')
+    return unless solr_parameters[:qf] == '${left_anchor_qf}'
+    query = solr_parameters[:q].dup
     # Escape any remaining whitespace and solr operator characters
     query.gsub!(/(\s)/, '\\\\\1')
     query.gsub!(/(["\{\}\[\]\^\~])/, '\\\\\1')
     query.gsub!(/[\(\)]/, '')
-    solr_parameters[:q] = '{!qf=$left_anchor_qf pf=$left_anchor_pf}' + query
+    solr_parameters[:q] = query
     solr_parameters[:q] += '*' unless query.end_with?('*')
   end
 
