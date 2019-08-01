@@ -32,9 +32,25 @@ every 1.day, at: '1:15am', roles: [:cron_prod1] do
   )
 end
 
+every 1.day, at: '6:20am', roles: [:cron_prod1] do
+  browse_facet_update(
+    'browse:load_call_numbers',
+    solr_url: ENV['SOLR_URL'],
+    output: '/tmp/cron_log.log'
+  )
+end
+
 every 1.day, at: '2:00am', roles: [:cron_prod1] do
   browse_facet_update(
     'browse:name_titles',
+    solr_url: ENV['SOLR_URL'],
+    output: '/tmp/cron_log.log'
+  )
+end
+
+every 1.day, at: '6:00am', roles: [:cron_prod1] do
+  browse_facet_update(
+    'browse:load_name_titles',
     solr_url: ENV['SOLR_URL'],
     output: '/tmp/cron_log.log'
   )
@@ -48,9 +64,25 @@ every 1.day, at: '2:30am', roles: [:cron_prod2] do
   )
 end
 
+every 1.day, at: '5:50am', roles: [:cron_prod2] do
+  browse_facet_update(
+    'browse:load_names',
+    solr_url: ENV['SOLR_URL'],
+    output: '/tmp/cron_log.log'
+  )
+end
+
 every 1.day, at: '3:00am', roles: [:cron_prod3] do
   browse_facet_update(
     'browse:subjects',
+    solr_url: ENV['SOLR_URL'],
+    output: '/tmp/cron_log.log'
+  )
+end
+
+every 1.day, at: '6:10am', roles: [:cron_prod3] do
+  browse_facet_update(
+    'browse:load_subjects',
     solr_url: ENV['SOLR_URL'],
     output: '/tmp/cron_log.log'
   )
