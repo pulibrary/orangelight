@@ -67,8 +67,6 @@ gem 'font-awesome-rails'
 gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
 gem 'rspec-rails', '~> 3.4'
-gem 'rubocop', '0.52.1', require: false
-gem 'rubocop-rspec', '1.20.1'
 gem 'rubyzip', '>= 1.2.2'
 gem 'sneakers'
 gem 'sprockets-es6'
@@ -114,5 +112,6 @@ group :test do
 end
 
 group :development, :test do
+  gem 'bixby'
   gem 'pry-byebug'
 end
