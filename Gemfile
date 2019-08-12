@@ -7,14 +7,14 @@ gem 'rails', '~> 5.1.6.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Blacklight
-gem 'blacklight', git: 'https://github.com/projectblacklight/blacklight', branch: 'release-6.x'
+gem 'blacklight', '~> 7.0'
 
 gem 'rsolr'
 
 # slider limit support
 gem 'blacklight_range_limit', '~> 6.3.2'
 # advanced search functionality
-gem 'blacklight_advanced_search', '~> 6.4'
+gem 'blacklight_advanced_search' , git: 'https://github.com/projectblacklight/blacklight_advanced_search.git'#, '~> 6.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Modernizr.js library
@@ -80,7 +80,7 @@ gem 'requests', git: 'https://github.com/pulibrary/requests.git'
 
 gem 'borrow_direct', git: 'https://github.com/pulibrary/borrow_direct.git', branch: 'generate_query_encoding_fix'
 
-gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'blacklight_6'
+gem 'blacklight_unapi', path: './../blacklight_unapi' #, git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'blacklight_6'
 
 gem 'jquery-datatables-rails', '~> 3.3.0'
 
