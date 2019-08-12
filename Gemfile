@@ -66,8 +66,8 @@ gem 'ddtrace'
 gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
 gem 'rspec-rails', '~> 3.4'
-gem 'rubocop', '~> 0.49', require: false
-gem 'rubocop-rspec', '~> 1.20.1'
+gem 'rubocop', '0.52.1', require: false
+gem 'rubocop-rspec', '1.20.1'
 gem 'rubyzip', '>= 1.2.2'
 gem 'sneakers'
 gem 'sprockets-es6'
@@ -82,11 +82,11 @@ gem 'borrow_direct', git: 'https://github.com/pulibrary/borrow_direct.git', bran
 
 gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'update-bl-7-bundler'
 
-gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'jquery-datatables-rails', '~> 3.4.0'
 
 gem 'openurl', '~> 1.0'
 
-gem 'honeybadger', '~> 3.1'
+gem 'honeybadger'
 
 gem 'sitemap_generator', '~> 6.0'
 
@@ -101,7 +101,7 @@ gem 'logstash-event'
 gem 'whenever', '~> 0.11'
 
 group :development do
-  gem 'capistrano-rails', '~> 1.1.6'
+  gem 'capistrano-rails'
 end
 
 group :test do
