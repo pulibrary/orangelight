@@ -82,9 +82,9 @@ RSpec.describe HoldingRequestsAdapter do
           '671798' => { 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] }
         }
       end
+      let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
 
       it 'returns an empty array' do
-        allow(holdings).to receive(:doc_holdings).and_return(holdings_hash)
         expect(holdings.doc_holdings_elf).to be_empty
       end
     end
@@ -98,9 +98,9 @@ RSpec.describe HoldingRequestsAdapter do
           '671798' => { 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] }
         }
       end
+      let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
 
       it 'returns an empty array' do
-        allow(holdings).to receive(:doc_holdings).and_return(holdings_hash)
         expect(holdings.doc_holdings_physical).to be_empty
       end
     end
