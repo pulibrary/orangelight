@@ -44,7 +44,7 @@ module Blacklight
             body << I18n.t('blacklight.email.text.holdings')
             holdings = JSON.parse(self[:holdings_1display])
             first_holding = true
-            holdings.each do |_mfhd, holding|
+            holdings.each_value do |holding|
               body << '' unless first_holding # blank line to separate holdings
               add_holding_fields(body, holding)
               first_holding = false

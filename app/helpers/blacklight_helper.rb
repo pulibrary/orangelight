@@ -137,7 +137,7 @@ module BlacklightHelper
       number_of_unigrams = cjk_unigrams_size(q_str)
       if number_of_unigrams > 2
         num_non_cjk_tokens = q_str.scan(/[[:alnum]]+/).size
-        if num_non_cjk_tokens > 0
+        if num_non_cjk_tokens.positive?
           lower_limit = cjk_mm_val[0].to_i
           mm = (lower_limit + num_non_cjk_tokens).to_s + cjk_mm_val[1, cjk_mm_val.size]
           solr_parameters['mm'] = mm
@@ -210,7 +210,7 @@ module BlacklightHelper
       resp = faceted_query_service.get_fq_solr_response(fq)
       req = JSON.parse(resp.body)
     end
-    if oclc_norm == 0 || req['response']['docs'].empty?
+    if oclc_norm.zero? || req['response']['docs'].empty?
       "/catalog?q=#{oclc}"
     else
       "/catalog/#{req['response']['docs'].first['id']}"

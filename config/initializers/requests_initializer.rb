@@ -10,9 +10,7 @@ module Requests
   private
 
     def config_yaml
-      unless File.exist?(requests_config_file)
-        raise "You are missing a configuration file: #{requests_config_file}. Have you run \"rails generate requests:install\"?"
-      end
+      raise "You are missing a configuration file: #{requests_config_file}. Have you run \"rails generate requests:install\"?" unless File.exist?(requests_config_file)
 
       begin
         requests_erb = ERB.new(IO.read(requests_config_file)).result(binding)
