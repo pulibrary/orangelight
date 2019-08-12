@@ -12,9 +12,9 @@ gem 'blacklight', '~> 7.0'
 gem 'rsolr'
 
 # slider limit support
-gem 'blacklight_range_limit', '~> 6.3.2'
+gem 'blacklight_range_limit'
 # advanced search functionality
-gem 'blacklight_advanced_search' , git: 'https://github.com/projectblacklight/blacklight_advanced_search.git'#, '~> 6.0'
+gem 'blacklight_advanced_search', git: 'https://github.com/projectblacklight/blacklight_advanced_search', branch: 'master'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Modernizr.js library
@@ -25,7 +25,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.2.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+gem 'mini_racer'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -59,7 +59,7 @@ gem 'solr_wrapper', '~> 1.0'
 gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
 
 gem 'babel-transpiler'
-gem 'bootstrap-sass', '~> 3.4'
+gem 'bootstrap'
 gem 'capybara'
 gem 'coveralls', require: false
 gem 'ddtrace'
@@ -80,7 +80,7 @@ gem 'requests', git: 'https://github.com/pulibrary/requests.git'
 
 gem 'borrow_direct', git: 'https://github.com/pulibrary/borrow_direct.git', branch: 'generate_query_encoding_fix'
 
-gem 'blacklight_unapi', path: './../blacklight_unapi' #, git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'blacklight_6'
+gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'update-bl-7-bundler'
 
 gem 'jquery-datatables-rails', '~> 3.3.0'
 
