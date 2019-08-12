@@ -13,9 +13,7 @@ xml.entry do
 
   xml.id polymorphic_url(url_for_document(document))
 
-  if document.to_semantic_values.key? :author
-    xml.author { xml.name(document.to_semantic_values[:author].first) }
-  end
+  xml.author { xml.name(document.to_semantic_values[:author].first) } if document.to_semantic_values.key? :author
 
   with_format('html') do
     xml.summary 'type' => 'html' do

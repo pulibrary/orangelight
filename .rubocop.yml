@@ -16,12 +16,6 @@ AllCops:
     - 'spec/views/catalog/_show_availability_sidebar.html.erb_spec.rb'
     - 'node_modules/**/*'
 
-# TODO: Fix
-# Cop supports --auto-correct.
-Lint/UnneededDisable:
-  Exclude:
-    - 'app/services/bibdata.rb'
-
 Metrics/AbcSize:
   Exclude:
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
@@ -143,13 +137,6 @@ Naming/VariableNumber:
     - 'spec/lib/orangelight/string_functions_spec.rb'
 
 # TODO: Fix
-# cop supports --auto-correct.
-Performance/HashEachMethods:
-  Exclude:
-    - 'app/models/concerns/blacklight/document/email.rb'
-    - 'spec/models/dublin_core_spec.rb'
-
-# TODO: Fix
 RSpec/NamedSubject:
   Enabled: false
 
@@ -202,12 +189,6 @@ Rails/TimeZone:
     - 'app/helpers/application_helper.rb'
     - 'spec/helpers/locations_spec.rb'
 
-# TODO: Fix
-# Cop supports --auto-correct.
-Style/BlockDelimiters:
-  Exclude:
-    - 'spec/helpers/scsb_items_helper_spec.rb'
-
 # Should fix
 Style/GuardClause:
   Exclude:
@@ -222,40 +203,10 @@ Style/GuardClause:
     - 'app/models/concerns/blacklight/document/ris.rb'
 
 # TODO: Fix
-# Cop supports --auto-correct.
-Style/HashSyntax:
-  Exclude:
-    - 'app/controllers/catalog_controller.rb'
-    - 'spec/helpers/blacklight_helper_spec.rb'
-
-# TODO: Fix
 Style/IfInsideElse:
   Exclude:
     - 'lib/orangelight/voyager_account.rb'
 
 # TODO: Fix
-# Cop supports --auto-correct.
-Style/IfUnlessModifier:
-  Exclude:
-    - 'app/controllers/users/omniauth_callbacks_controller.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/views/catalog/_document_default.atom.builder'
-    - 'config/initializers/requests_initializer.rb'
-
-# TODO: Fix
 Style/Next:
   Enabled: false
-
-# TODO: Fix
-# Cop supports --auto-correct.
-Style/NumericPredicate:
-  Exclude:
-    - 'spec/**/*'
-    - 'app/helpers/application_helper.rb'
-    - 'app/helpers/blacklight_helper.rb'
-
-# TODO: Fix
-# Cop supports --auto-correct.
-Style/RaiseArgs:
-  Exclude:
-    - 'app/models/concerns/blacklight/solr/document/marc.rb'
