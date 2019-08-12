@@ -7,7 +7,7 @@ RSpec.describe ApplicationHelper do
     let(:all_supervised) { helper.scsb_supervised_items?(all_supervised_items) }
     let(:some_supervised) { helper.scsb_supervised_items?(some_supervised_items) }
     let(:none_supervised) { helper.scsb_supervised_items?(no_supervised_items) }
-    let(:all_supervised_items) {
+    let(:all_supervised_items) do
       {
         'location' => 'ReCAP',
         'library' => 'ReCAP',
@@ -27,8 +27,8 @@ RSpec.describe ApplicationHelper do
             'collection_code' => 'NA' }
         ]
       }
-    }
-    let(:some_supervised_items) {
+    end
+    let(:some_supervised_items) do
       {
         'location' => 'ReCAP',
         'library' => 'ReCAP',
@@ -48,8 +48,8 @@ RSpec.describe ApplicationHelper do
             'collection_code' => 'NA' }
         ]
       }
-    }
-    let(:no_supervised_items) {
+    end
+    let(:no_supervised_items) do
       {
         'location' => 'ReCAP',
         'library' => 'ReCAP',
@@ -69,7 +69,7 @@ RSpec.describe ApplicationHelper do
             'collection_code' => 'NA' }
         ]
       }
-    }
+    end
 
     it 'returns true when all items are marked for supervised use' do
       expect(all_supervised).to be true
