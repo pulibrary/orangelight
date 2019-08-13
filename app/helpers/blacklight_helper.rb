@@ -194,7 +194,7 @@ module BlacklightHelper
   # @return [String] the markup for the link
   def render_cite_link(path)
     child = "<span class=\"icon-cite\" aria-hidden=\"true\"></span> #{t('blacklight.search.cite')}"
-    link_to(child.html_safe, path, id: 'citeLink', data: { ajax_modal: 'trigger' }, class: 'btn btn-default')
+    link_to(child.html_safe, path, id: 'citeLink', data: { blacklight_modal: 'trigger' }, class: 'btn btn-default')
   end
 
   # Retrieve an instance of the FacetedQueryService
