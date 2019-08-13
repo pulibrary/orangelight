@@ -126,7 +126,7 @@ module ApplicationHelper
       else
         args[:document][args[:field]]
       end
-    args[:document][args[:field]] = series_display.join(', ')
+    series_display.join(', ')
   end
 
   # Retrieve the same series for that one being displayed
@@ -341,7 +341,7 @@ module ApplicationHelper
       all_links = all_links.map.with_index { |l, i| content_tag(:li, l, dir: dirtags[i]) }
       all_links = content_tag(:ul, all_links.join.html_safe)
     end
-    args[:document][args[:field]] = all_links
+    all_links
   end
 
   def format_icon(args)

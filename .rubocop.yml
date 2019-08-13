@@ -52,6 +52,7 @@ Metrics/ClassLength:
     - 'app/controllers/catalog_controller.rb'
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/controllers/account_controller.rb'
+    - 'app/services/holding_requests_adapter.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/voyager_patron_client.rb'
 
