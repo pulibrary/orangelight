@@ -64,6 +64,7 @@ class CatalogController < ApplicationController
     # }
 
     config.navbar.partials.delete(:search_history)
+    config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark')
     config.add_nav_action(:reserves, partial: 'course_reserves/nav')
 
     # solr field configuration for search results/index views
@@ -583,6 +584,8 @@ class CatalogController < ApplicationController
 
     # Add bookmark all widget
     config.add_results_collection_tool(:bookmark_all)
+
+    config.add_results_document_tool(:bookmark, partial: 'bookmark_control')
 
     config.unapi = {
       'ris' => { content_type: 'application/x-research-info-systems' }
