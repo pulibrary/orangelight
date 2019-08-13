@@ -3,7 +3,7 @@
 defaults: &defaults
   umlaut_base: https://getit.princeton.edu
   bibdata_base: https://bibdata.princeton.edu
-  proxy_base: https://library.princeton.edu/resolve/lookup?url=
+  proxy_base: https://lib-prod.princeton.edu/resolve/lookup?url=
   voyager_api_base: https://webvoyage.princeton.edu:7014
   pulsearch_base: https://catalog.princeton.edu
   aeon_base: https://lib-aeon.princeton.edu/aeon/aeon.dll
