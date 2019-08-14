@@ -5,7 +5,7 @@ module Orangelight
     extend ActiveSupport::Concern
 
     def stackmap
-      @response, @document = fetch params[:id]
+      @response, @document = search_service.fetch params[:id]
       stackmap_service = ::StackmapService::Url.new(document: @document,
                                                     loc: params[:loc], cn: params[:cn])
       @url = stackmap_service.url
