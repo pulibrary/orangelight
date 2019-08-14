@@ -125,8 +125,7 @@ module BrowseLists
       system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
       system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '/tmp/#{table_name}.csv' CSV;"))
       system(%(#{sql_command} \"\\copy (Select sort,count,label,dir from #{table_name} order by sort) To '/tmp/#{table_name}.sorted' With CSV;"))
-      system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
-      system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '/tmp/#{table_name}.sorted' CSV;"))
+      load_facet_file(sql_command, "/tmp/#{table_name}.sorted", table_name)
     end
 
     def load_cn(sql_command, _facet_request, _conn, facet_field, table_name)
@@ -134,8 +133,17 @@ module BrowseLists
       system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
       system(%(#{sql_command} "\\copy #{table_name}(sort,label,dir,scheme,title,author,date,bibid,holding_id,location) from '/tmp/#{facet_field}.csv' CSV;"))
       system(%(#{sql_command} "\\copy (Select sort,label,dir,scheme,title,author,date,bibid,holding_id,location from #{table_name} order by sort) To '/tmp/#{facet_field}.sorted' With CSV;"))
+      load_cn_file(sql_command, "/tmp/#{facet_field}.sorted", table_name)
+    end
+
+    def load_facet_file(sql_command, sorted_file, table_name)
       system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
-      system(%(#{sql_command} "\\copy #{table_name}(sort,label,dir,scheme,title,author,date,bibid,holding_id,location) from '/tmp/#{facet_field}.sorted' CSV;"))
+      system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '#{sorted_file}' CSV;"))
+    end
+
+    def load_cn_file(sql_command, sorted_file, table_name)
+      system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
+      system(%(#{sql_command} "\\copy #{table_name}(sort,label,dir,scheme,title,author,date,bibid,holding_id,location) from '#{sorted_file}' CSV;"))
     end
 
     private
