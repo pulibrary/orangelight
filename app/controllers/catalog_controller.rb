@@ -30,6 +30,8 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    config.raw_endpoint.enabled = true
+
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     config.advanced_search[:url_key] ||= 'advanced'
