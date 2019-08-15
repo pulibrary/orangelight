@@ -51,8 +51,8 @@ describe Orangelight::Middleware::InvalidParameterHandler do
         expect { JSON.parse(body_content) }.not_to raise_error(JSON::ParserError)
         json_response = JSON.parse(body_content)
 
-        expect(json_response).to include('response')
-        expect(json_response['response']).to include('docs')
+        expect(json_response).to include('data')
+        expect(json_response).to include('included')
       end
     end
 
