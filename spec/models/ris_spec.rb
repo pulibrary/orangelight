@@ -124,7 +124,7 @@ RSpec.describe Blacklight::Document::Ris do
       end
 
       it 'Contains an ARK' do
-        expect(document).to match(%r{UR - http://arks.princeton.edu/ark:/88435/dsp01bn999692c})
+        expect(document).to include 'UR - {"http://arks.princeton.edu/ark:/88435/dsp01bn999692c":["DataSpace","Full text"]}'
       end
 
       it 'Has a first Author' do

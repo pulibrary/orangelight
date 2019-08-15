@@ -43,7 +43,7 @@ module Blacklight
         indexed_urls
         ris = "TY - #{ris_format}\n"
         ris += ris_authors
-        each do |field, values|
+        to_h.each do |field, values|
           Array.wrap(values).each do |v|
             ris += "#{ris_field_name?(field)} - #{v}\n" if ris_field_name?(field)
           end
@@ -110,7 +110,7 @@ module Blacklight
         def indexed_urls
           unless self[:electronic_access_1display].nil?
             url_values = JSON.parse(self[:electronic_access_1display]).keys
-            self[:electronic_access_1display] = url_values
+            to_h[:electronic_access_1display] = url_values
           end
         end
     end

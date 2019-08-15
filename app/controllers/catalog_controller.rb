@@ -30,6 +30,8 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    config.raw_endpoint.enabled = true
+
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     config.advanced_search[:url_key] ||= 'advanced'
@@ -62,6 +64,11 @@ class CatalogController < ApplicationController
     #  # :rows => 1
     #   :q => query
     # }
+
+    config.add_show_tools_partial(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
+    config.add_show_tools_partial(:email, callback: :email_action, validator: :validate_email_params)
+    config.add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
+    config.add_show_tools_partial(:citation)
 
     config.navbar.partials.delete(:search_history)
     config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark')

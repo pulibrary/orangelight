@@ -17,11 +17,11 @@ RSpec.describe CatalogController do
 
       expect(email.reply_to).to eq [user.email]
     end
-    it 'supports a user-submitted note line' do
+    it 'supports a user-submitted subject line' do
       sign_in user
 
-      post :email, params: { id: '9741216', to: 'test@test.com', note: ['Subject'] }
-      expect(email.note).to eq 'Subject'
+      post :email, params: { id: '9741216', to: 'test@test.com', subject: ['Subject'] }
+      expect(email.subject).to eq 'Subject'
     end
     it 'does not send an email if not logged in' do
       post :email, params: { id: '9741216', to: 'test@test.com' }

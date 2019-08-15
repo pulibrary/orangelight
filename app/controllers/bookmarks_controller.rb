@@ -29,7 +29,7 @@ class BookmarksController < CatalogController
     def fetch_bookmarked_documents
       bookmarks = token_or_current_or_guest_user.bookmarks
       bookmark_ids = bookmarks.collect { |b| b.document_id.to_s }
-      _, @documents = fetch(bookmark_ids, rows: bookmark_ids.length)
+      _, @documents = search_service.fetch(bookmark_ids, rows: bookmark_ids.length, fl: '*')
     end
 
     # byte-order-mark declaring our output as UTF-8 (required for non-ASCII to be handled by Excel)

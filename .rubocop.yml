@@ -139,7 +139,6 @@ RSpec/ExampleLength:
   Enabled: false
 
 # TODO: Fix
-# Should fix
 Rails/OutputSafety:
   Exclude:
     - 'app/helpers/application_helper.rb'
@@ -155,7 +154,6 @@ Rails/TimeZone:
     - 'spec/helpers/locations_spec.rb'
 
 # TODO: Fix
-# Should fix
 Style/GuardClause:
   Exclude:
     - 'app/controllers/account_controller.rb'
