@@ -21,6 +21,7 @@ FactoryBot.define do
     factory :guest_patron do
       provider { 'barcode' }
       sequence(:uid) { srand.to_s[2..15] }
+      sequence(:username) { "Student" }
     end
   end
 end
