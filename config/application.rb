@@ -43,3 +43,14 @@ module Orangelight
     config.robots = OpenStruct.new(config_for(:robots))
   end
 end
+
+require 'faraday'
+module Faraday
+  class Adapter
+    class NetHttp < Faraday::Adapter
+      def ssl_verify_mode(ssl)
+        OpenSSL::SSL::VERIFY_NONE
+      end
+    end
+  end
+end
