@@ -210,7 +210,7 @@ module BlacklightHelper
       resp = faceted_query_service.get_fq_solr_response(fq)
       req = JSON.parse(resp.body)
     end
-    if oclc_norm.zero? || req['response']['docs'].empty?
+    if oclc_norm.to_i.zero? || req['response']['docs'].empty?
       "/catalog?q=#{oclc}"
     else
       "/catalog/#{req['response']['docs'].first['id']}"
