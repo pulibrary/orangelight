@@ -42,14 +42,6 @@ $(document).ready(function() {
 
     });
 
-    ///////////////////////////////////////////
-    // temporarily disable blacklight folders//
-    //on change, submit form / add to folder //
-    // $('#folder_id').change(function() {   //
-    //     this.form.submit();               //
-    // });                                   //
-    ///////////////////////////////////////////
-
     //Select all items in specific account table to be checked or unchecked
     $("body").on("change", "[id^='select-all']", function (e) {
         if (this.checked) {
