@@ -10,31 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181120150710) do
+ActiveRecord::Schema.define(version: 20190816202403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "blacklight_folders_folder_items", id: :serial, force: :cascade do |t|
-    t.integer "folder_id", null: false
-    t.integer "bookmark_id", null: false
-    t.integer "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["bookmark_id"], name: "index_blacklight_folders_folder_items_on_bookmark_id"
-    t.index ["folder_id"], name: "index_blacklight_folders_folder_items_on_folder_id"
-  end
-
-  create_table "blacklight_folders_folders", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.string "user_type", null: false
-    t.integer "user_id", null: false
-    t.string "visibility"
-    t.integer "number_of_members", default: 0, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["user_type", "user_id"], name: "index_blacklight_folders_folders_on_user_type_and_user_id"
-  end
 
   create_table "bookmarks", id: :serial, force: :cascade do |t|
     t.integer "user_id", null: false
