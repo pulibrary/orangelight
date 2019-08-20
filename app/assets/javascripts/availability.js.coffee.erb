@@ -280,7 +280,7 @@ class AvailabilityUpdater
       location = availability_info['location']
     map_url = "/catalog/#{record_id}/stackmap?loc=#{location}"
     link = "<a title='Where to find it' class='find-it' data-location-map='#{location}' data-blacklight-modal='trigger' href='#{map_url}'>"
-    marker_span = "<span class='glyphicon glyphicon-map-marker'></span>"
+    marker_span = "<span class='fa fa-map-marker'></span>"
     if marker_only
       link = "#{link}#{marker_span}</a>"
     else
