@@ -70,7 +70,7 @@ module ApplicationHelper
     if link.nil?
       ''
     else
-      ' ' + link_to('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>'.html_safe, stackmap_url, title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-blacklight-modal' => 'trigger', 'aria-label' => 'Where to find it')
+      ' ' + link_to('<span class="fa fa-map-marker" aria-hidden="true"></span>'.html_safe, stackmap_url, title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-blacklight-modal' => 'trigger', 'aria-label' => 'Where to find it')
     end
   end
 

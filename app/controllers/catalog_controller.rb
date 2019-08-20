@@ -25,10 +25,6 @@ class CatalogController < ApplicationController
     redirect_to '/', flash: { error: 'The start year must be before the end year.' }
   end
 
-  rescue_from ActionController::BadRequest do
-    redirect_to '/', flash: { error: 'This is not a valid request.' }
-  end
-
   configure_blacklight do |config|
     config.raw_endpoint.enabled = true
 

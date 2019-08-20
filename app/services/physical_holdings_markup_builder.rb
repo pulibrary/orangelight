@@ -27,7 +27,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     stackmap_url << "&cn=#{call_number}" if call_number
 
     child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
-      <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>)
+      <span class="fa fa-map-marker" aria-hidden="true"></span>)
     markup = link_to(child.html_safe, stackmap_url,
                      title: I18n.t('blacklight.holdings.stackmap'),
                      class: 'find-it',
