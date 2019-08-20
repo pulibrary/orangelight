@@ -66,7 +66,7 @@ describe 'searching' do
     end
   end
 
-  context 'Show error page if request parameters contain spaces' do
+  context 'when a request parameter contains a space' do
     it 'displays an error message' do
       visit '/catalog/range_limit?%20%20%20%20range_end=1990&%20%20%20%20range_field=pub_date_start_sort&%20%20%20%20range_start=1981'
       expect { page }.not_to raise_error
