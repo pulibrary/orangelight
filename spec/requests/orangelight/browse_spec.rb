@@ -77,7 +77,7 @@ RSpec.describe 'Orangelight Browsables', type: :request do
     it 'displays author_s when author_display is not present' do
       get '/browse/call_numbers.json?q=48.1'
       r = JSON.parse(response.body)
-      expect(r[2]['author']).to eq 'Gutenberg, Johann, 1397?-1468'
+      expect(r[3]['author']).to eq 'Gutenberg, Johann, 1397?-1468'
     end
   end
 
@@ -85,7 +85,7 @@ RSpec.describe 'Orangelight Browsables', type: :request do
     it 'formats multiple titles as n titles with this call number' do
       get '/browse/call_numbers.json?q=ac102&rpp=5'
       r = JSON.parse(response.body)
-      expect(r[2]['title']).to match(/\d+ titles with this call number/)
+      expect(r[3]['title']).to match(/\d+ titles with this call number/)
     end
     it 'single title with multiple holdings in same location, display single location' do
       get '/browse/call_numbers.json?q=QA303.2+.W45+2014&rpp=5'
