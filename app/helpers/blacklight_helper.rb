@@ -6,31 +6,6 @@ module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior
   require './lib/orangelight/string_functions'
 
-  # (see Blacklight::SearchHelper#search_results)
-
-  # raise a BadRequest error if ActionController params have key with leading or trailing whitespaces
-  def user_params_valid(params)
-    params.each { |k| raise ActionController::BadRequest if ((k[0].match?(/\s/) || k[-1].match?(/\s/)) && (k.is_a? String)) == true }
-  end
-
-  def search_results(user_params)
-    user_params_valid(user_params)
-
-    builder = search_builder.with(user_params)
-    builder.page = user_params[:page] if user_params[:page]
-    builder.rows = (user_params[:per_page] || user_params[:rows]) if user_params[:per_page] || user_params[:rows]
-    builder = yield(builder) if block_given?
-    response = repository.search(builder)
-
-    if response.grouped? && grouped_key_for_results
-      [response.group(grouped_key_for_results), []]
-    elsif response.grouped? && response.grouped.length == 1
-      [response.grouped.first, []]
-    else
-      [response, response.documents]
-    end
-  end
-
   def json_field?(field)
     field[:hash]
   end
