@@ -5,13 +5,15 @@
       <div class="button--start-over">
         <%= render_start_over_link(start_over_path) %>
       </div>
-      <% if @search_context[:prev] || @search_context[:next] %>
-        <%= link_back_to_catalog class: 'btn btn-outline-primary button--back-to-search', label:  t('blacklight.back_to_search').html_safe %>
-        <div class="page_links">
-          <%= link_to_previous_document @search_context[:prev] %>
-          <%= link_to_next_document @search_context[:next] %>
-          <%= item_page_entry_info %>
-        </div>
+      <% if @search_context %>
+        <% if @search_context[:prev] || @search_context[:next] %>
+          <%= link_back_to_catalog class: 'btn btn-outline-primary button--back-to-search', label:  t('blacklight.back_to_search').html_safe %>
+          <div class="page_links">
+            <%= link_to_previous_document @search_context[:prev] %>
+            <%= link_to_next_document @search_context[:next] %>
+            <%= item_page_entry_info %>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div class="search-widgets">

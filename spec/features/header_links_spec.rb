@@ -15,9 +15,7 @@ describe 'Tools links' do
 
     [I18n.t('blacklight.header_links.course_reserves'), I18n.t('blacklight.header_links.bookmarks')].each do |link_text|
       it "#{link_text} appears for navbar" do
-        within '.header__secondary' do
-          find_link(link_text)
-        end
+        find('.navbar-item * a', text: link_text)
       end
     end
 
@@ -39,7 +37,7 @@ describe 'Tools links' do
 
     %w[RefWorks EndNote].each do |link_text|
       it "provides #{link_text} export options in dropdown" do
-        within '#previousNextDocument li.dropdown' do
+        within '.search-widgets li.dropdown' do
           find_link(link_text)
         end
       end
@@ -69,7 +67,7 @@ describe 'Tools links' do
 
     %w[RefWorks EndNote].each do |link_text|
       it "provides #{link_text} export options in dropdown" do
-        within '#previousNextDocument li.dropdown' do
+        within '.search-widgets li.dropdown' do
           expect(page).not_to have_link(link_text)
         end
       end
