@@ -21,22 +21,22 @@
   }
 }
 
-.checkbox.toggle_bookmark {
+.checkbox.toggle-bookmark {
   margin-bottom: 5px;
   padding: 0;
   text-align: center;
 
   label {
-    padding: 6px 12px;
+    cursor: pointer;
   }
 }
 
-.search-widgets label.toggle_bookmark {
+.search-widgets label.toggle-bookmark {
   min-width: initial;
 }
 
 @media (max-width: $bp-small) {
-  .search-widgets .checkbox.toggle_bookmark {
+  .search-widgets .checkbox.toggle-bookmark {
     padding: 0;
   }
 }
@@ -46,7 +46,7 @@
 }
 
 .checkbox.bookmark_all,
-.search-widgets .checkbox.toggle_bookmark {
+.search-widgets .checkbox.toggle-bookmark {
   float: right;
 
   label {

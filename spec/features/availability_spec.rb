@@ -51,7 +51,7 @@ describe 'Availability' do
   describe 'On-site multiple items all available', js: true do
     xit 'display availability as on-site and does not display individual items', unless: in_ci? do # Temporarily skipped due to access issues with Bibdata
       visit 'catalog/2238036'
-      expect(page).to have_selector '.availability-icon.label.label-success', text: 'On-site access', count: 1
+      expect(page).to have_selector '.availability-icon.badge.badge-success', text: 'On-site access', count: 1
       expect(page).not_to have_selector 'ul.item-status'
     end
   end
