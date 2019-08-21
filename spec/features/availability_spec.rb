@@ -50,7 +50,7 @@ describe 'Availability' do
     it 'display availability as on-site and does not display individual items', unless: in_ci? do
       stub_holding_locations
       visit 'catalog/2238036'
-      expect(page).to have_selector '.availability-icon.label.label-success', text: 'On-site access', count: 1
+      expect(page).to have_selector '.availability-icon.badge.badge-success', text: 'On-site access', count: 1
     end
   end
 

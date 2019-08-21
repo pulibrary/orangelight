@@ -9,7 +9,7 @@ describe('AvailabilityUpdater', function() {
     document.body.innerHTML =
       '<div>' +
       '<li data-availability-record="true" data-record-id="8938641" data-holding-id="8856502" data-aeon="false">' +
-      '  <span class="availability-icon label label-primary" title="" data-toggle="tooltip" data-original-title="Electronic access">Online</span>' +
+      '  <span class="availability-icon badge badge-primary" title="" data-toggle="tooltip" data-original-title="Electronic access">Online</span>' +
       '</li>' +
       '</div>'
     let u = new updater
