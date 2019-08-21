@@ -110,15 +110,6 @@ describe BlacklightHelper do
     end
   end
 
-  describe '#user_params_valid' do
-    it 'will raise a BadRequest for params key leading and trailing whitespaces' do
-      params['   range_end'] = '1990'
-      params[' range_field'] = 'pub_date_start_sort'
-      params['  range_start  '] = '1981'
-      expect { user_params_valid(params) }.to raise_error(ActionController::BadRequest)
-    end
-  end
-
   describe '#render_facet_partials' do
     let(:blacklight_config) { Blacklight::Configuration.new }
 
