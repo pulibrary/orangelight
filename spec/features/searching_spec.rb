@@ -32,7 +32,7 @@ describe 'searching' do
   context 'Availability: On-site by request' do
     it 'On-site label is green' do
       visit '/?f%5Baccess_facet%5D%5B%5D=In+the+Library&q=id%3Adsp*&search_field=all_fields'
-      expect(page).to have_selector '#documents > article.document.blacklight-senior-thesis.document-position-0 > div > div.record-wrapper > ul > li.blacklight-holdings > ul > li:nth-child(1) > span.availability-icon.label.label-success'
+      expect(page).to have_selector '#documents > article.document.blacklight-senior-thesis.document-position-0 > div > div.record-wrapper > ul > li.blacklight-holdings > ul > li:nth-child(1) > span.availability-icon.badge.badge-success'
     end
   end
 
