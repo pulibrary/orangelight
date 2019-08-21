@@ -97,7 +97,7 @@ $(document).ready(function() {
         }
     });
 
-    $('.facet_select').one('click', function (e) {
+    $('.facet-select').one('click', function (e) {
         if ($('#q').val()) {
             var query = encodeURIComponent($('#q').val())
             var queryDict = {};
