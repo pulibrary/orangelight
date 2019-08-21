@@ -8,9 +8,9 @@ describe 'Facets' do
   context 'with facets rendered' do
     it 'renders only a subset of all the facets on the homepage' do
       visit '/catalog'
-      home_facets = page.all('.facet_limit').length
+      home_facets = page.all('.facet-limit').length
       visit '/catalog?search_field=all_fields&q=eight'
-      search_facets = page.all('.facet_limit').length
+      search_facets = page.all('.facet-limit').length
       expect(home_facets).to be < search_facets
     end
 

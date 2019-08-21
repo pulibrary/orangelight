@@ -15,10 +15,11 @@ describe 'course reserves' do
       stub_bib_ids
       get '/catalog.json?search_field=all_fields&f[instructor][]=Test, Jane&f[filter][]=Course Reserves'
       r = JSON.parse(response.body)
-      expect(r['response']['docs'].length).to eq 2
+      r['data'].length
+      expect(r['data'].length).to eq 2
       get '/catalog.json?search_field=all_fields&f[instructor][]=Test, Joe&f[filter][]=Course Reserves'
       r = JSON.parse(response.body)
-      expect(r['response']['docs'].length).to eq 1
+      expect(r['data'].length).to eq 1
     end
   end
 
@@ -28,7 +29,7 @@ describe 'course reserves' do
       stub_bib_ids
       get '/catalog.json?search_field=all_fields&f[department][]=MOL: Molecular Biology&f[filter][]=Course Reserves'
       r = JSON.parse(response.body)
-      expect(r['response']['docs'].length).to eq 3
+      expect(r['data'].length).to eq 3
     end
   end
 
@@ -41,7 +42,7 @@ describe 'course reserves' do
       # Ensure non-matching documents aren't deleted.
       expect(Blacklight.default_index.connection.get('select', params: { q: 'type_s:ReserveListing AND instructor_s:"Test, Jane"' })['response']['docs'].length).to eq 2
       r = JSON.parse(response.body)
-      expect(r['response']['docs'].length).to eq 1
+      expect(r['data'].length).to eq 1
     end
   end
 
