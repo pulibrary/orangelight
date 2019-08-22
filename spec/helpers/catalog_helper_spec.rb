@@ -52,14 +52,16 @@ describe CatalogHelper do
       end
     end
   end
-  #   def render_top_field?(document, field, field_name)
-  #   !should_render_show_field?(document, field) && document[field_name].present? &&
+  #   def render_top_field?(document, field_name)
+  #   !should_render_show_field?(document) && document[field_name].present? &&
   #     field_name != 'holdings_1display'
   # end
   describe '#render_top_field?' do
     let(:field_name) { 'top_field' }
     let(:other_field_name) { 'other_field' }
     let(:holding_field) { 'holdings_1display' }
+    let(:view_context) { double(blacklight_config: blacklight_config, document_index_view_type: 'show') }
+    let(:presenter) { Blacklight::ShowPresenter.new(document, view_context) }
     let(:field) { blacklight_config.show_fields.first[1] }
     let(:document) { SolrDocument.new(properties) }
     let(:properties) do
@@ -69,24 +71,32 @@ describe CatalogHelper do
       }
     end
 
+    before do
+      allow(helper).to receive(:presenter).and_return(presenter)
+    end
+
     it 'returns true when catalog controller if option is set to false' do
+      allow(view_context).to receive(:should_render_field?).and_return(false)
       blacklight_config.add_show_field field_name, if: false
-      expect(helper.render_top_field?(document, field, field_name)).to eq true
+      expect(helper.render_top_field?(document, field_name)).to eq true
     end
 
     it 'returns false when field name is not configured with if option' do
+      allow(view_context).to receive(:should_render_field?).and_return(true)
       blacklight_config.add_show_field field_name
-      expect(helper.render_top_field?(document, field, field_name)).to eq false
+      expect(helper.render_top_field?(document, field_name)).to eq false
     end
 
     it 'returns false when field name is configured but field not present in document' do
+      allow(view_context).to receive(:should_render_field?).and_return(false)
       blacklight_config.add_show_field other_field_name, if: false
-      expect(helper.render_top_field?(document, field, other_field_name)).to eq false
+      expect(helper.render_top_field?(document, other_field_name)).to eq false
     end
 
     it 'returns false for holding field' do
+      allow(view_context).to receive(:should_render_field?).and_return(false)
       blacklight_config.add_show_field holding_field, if: false
-      expect(helper.render_top_field?(document, field, holding_field)).to eq false
+      expect(helper.render_top_field?(document, holding_field)).to eq false
     end
   end
 end

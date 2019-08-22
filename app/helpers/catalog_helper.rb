@@ -52,8 +52,8 @@ module CatalogHelper
     constraints.join(' / ')
   end
 
-  def render_top_field?(document, field, field_name)
-    !should_render_show_field?(document, field) && document[field_name].present? &&
+  def render_top_field?(document, field_name)
+    presenter(document).fields_to_render[field_name].nil? && document[field_name].present? &&
       field_name != 'holdings_1display'
   end
 

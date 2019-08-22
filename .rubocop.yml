@@ -130,15 +130,6 @@ Naming/PredicateName:
   Exclude:
     - 'lib/orangelight/voyager_account.rb'
 
-RSpec/DescribeClass:
-  Exclude:
-    - 'spec/features/**/*'
-    - 'spec/views/**/*'
-    - 'spec/requests/**/*'
-
-RSpec/ExampleLength:
-  Enabled: false
-
 # TODO: Fix
 Rails/OutputSafety:
   Exclude:
@@ -153,6 +144,19 @@ Rails/TimeZone:
     - 'app/controllers/catalog_controller.rb'
     - 'app/helpers/application_helper.rb'
     - 'spec/helpers/locations_spec.rb'
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/features/**/*'
+    - 'spec/views/**/*'
+    - 'spec/requests/**/*'
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/VerifiedDoubles:
+  Exclude:
+    - 'spec/helpers/catalog_helper_spec.rb'
 
 # TODO: Fix
 Style/GuardClause:
