@@ -1,9 +1,11 @@
 <div id="sortAndPerPage" class="clearfix">
   <div class="pagination-rss pull-left">
+    <div class="page_links">
     <%= render :partial => "paginate_compact", :object => @response if show_pagination? %>
     <%= link_to(" ", search_catalog_path(params.permit!.merge(format: 'atom',
                 sort: 'cataloged_tdt desc, pub_date_start_sort desc, title_sort asc').except(:controller, :action)),
                 :class => "icon-rssfeed", :title => "Subscribe to results feed", 'data-toggle' => "tooltip" ) %>
+    </div>
   </div>
   <div class="search-widgets pull-right">
     <% if bookmarks? %>
