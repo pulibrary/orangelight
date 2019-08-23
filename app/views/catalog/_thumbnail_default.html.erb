@@ -1,4 +1,4 @@
-<%- if has_thumbnail?(document) && tn = render_thumbnail_tag(document, {}, :counter => document_counter_with_offset(document_counter)) %>
+<%- if presenter(document).thumbnail.exists? && tn = presenter(document).thumbnail.thumbnail_tag({}, :counter => document_counter_with_offset(document_counter)) %>
 <%= content_tag(:div, class: "document-thumbnail", data: document.identifier_data) do %>
   <%= tn %>
 <% end %>
