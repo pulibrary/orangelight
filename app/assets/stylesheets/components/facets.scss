@@ -14,9 +14,14 @@
   border-color: #ddd;
 }
 
-.facet-values li .selected {
-  color: #333;
+.facet-values {
+  li {
+    .selected {
+      @extend .text-dark;
+    }
+  }
 }
+  
 
 .facet_limit-active > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #ddd;
@@ -28,9 +33,9 @@
   vertical-align: middle;
 }
 
-.facet-values .remove .glyphicon-remove {
+.facet-values .remove .fa-times {
   top: -1px;
-  font-size: 1.2em;
+  font-size: 1.5em;
 }
 
 .facet-values .icon,
@@ -54,7 +59,7 @@
 .facet-values .facet-label,
 .facet-values .facet-count,
 .facet-label .selected,
-.facet-values .remove .glyphicon-remove {
+.facet-values .remove .fa-times {
   vertical-align: middle;
 }
 
