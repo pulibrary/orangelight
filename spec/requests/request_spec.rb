@@ -185,6 +185,11 @@ describe 'blacklight tests' do
       expect(r['response']['pages']['total_count']).to eq 0
     end
 
+    it 'page loads without erroring when query is not provided' do
+      get '/catalog.json?per_page=100&search_field=left_anchor'
+      expect(response.status).to eq(200)
+    end
+
     it 'works in advanced search' do
       get '/catalog.json?&search_field=advanced&f1=left_anchor&q1=searching+for&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for'
       r = JSON.parse(response.body)
