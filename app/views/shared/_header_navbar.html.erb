@@ -25,6 +25,11 @@
         <div class="row">
           <div id="search-navbar" class="search-navbar navbar" role="search">
             <%= render_search_bar %>
+            <ul class="search-options">
+              <li>
+                <%= link_to 'Advanced Search', blacklight_advanced_search_engine.advanced_search_path, :class=>'advanced_search'%>
+              </li>
+            </ul>
           </div>
           <%= render :partial=>'/user_util_links' %>
         <div>
