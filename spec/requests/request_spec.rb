@@ -402,6 +402,10 @@ describe 'blacklight tests' do
       get '/catalog/857469'
       expect(response.body).not_to include("href=\"http://www.example.com/catalog/#{linked_bib}\"")
     end
+    it 'does not error when a # character is incorrectly in the id field' do
+      get '/catalog/2910021'
+      expect(response.status).to eq(200)
+    end
   end
 
   describe 'standard no search' do

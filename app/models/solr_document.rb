@@ -104,7 +104,7 @@ class SolrDocument
   # @param query_field [String] the field in the linked documents to use as a key
   # @return [LinkedDocumentResolver::LinkedDocuments]
   def linked_records(field:, query_field: 'id')
-    sibling_ids = Array.wrap(fetch(field, []))
+    sibling_ids = clean_ids(Array.wrap(fetch(field, [])))
     root_id = fetch(:id)
     linked_documents = LinkedDocumentResolver::LinkedDocuments.new(siblings: sibling_ids,
                                                                    root: root_id,
@@ -133,6 +133,10 @@ class SolrDocument
 
     def full_ark
       full_arks.first
+    end
+
+    def clean_ids(id_values)
+      id_values.map { |id| id.delete('#') }
     end
 
     def identifier_keys

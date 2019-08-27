@@ -22107,5 +22107,160 @@ null
 "Phoenician Letter"
 ],
 "issue_monogram_1display": "[{\"title\":\"Archaic Monogram\",\"document_id\":\"989fab88-4b19-46c1-8e84-91ea058b2eb6\"},{\"title\":\"Phoenician Letter\",\"document_id\":\"c8a827ac-f7c4-4c77-864c-0a7ff4bb3033\"}]"
+},
+{
+"id": [
+"2910021"
+],
+"numeric_id_b": [
+true
+],
+"cjk_all": [
+""
+],
+"cjk_notes": [
+""
+],
+"author_display": [
+"Howells, William Dean, 1837-1920"
+],
+"author_sort": [
+"Howells, William Dean, 1837-1920"
+],
+"author_citation_display": [
+"Howells, William Dean",
+"Higginson, Thomas Wentworth",
+"Bibliophile Society (Boston, Mass.)"
+],
+"author_roles_1display": [
+"{\"secondary_authors\":[\"Higginson, Thomas Wentworth\",\"Bibliophile Society (Boston, Mass.)\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Howells, William Dean\"}"
+],
+"author_s": [
+"Howells, William Dean, 1837-1920",
+"Higginson, Thomas Wentworth, 1823-1911",
+"Bibliophile Society (Boston, Mass.)"
+],
+"marc_relator_display": [
+"Author"
+],
+"title_display": [
+"The letters of Howells to Higginson."
+],
+"title_a_index": [
+"The letters of Howells to Higginson"
+],
+"title_sort": [
+"letters of Howells to Higginson."
+],
+"title_no_h_index": [
+"The letters of Howells to Higginson.",
+"letters of Howells to Higginson."
+],
+"title_t": [
+"The letters of Howells to Higginson."
+],
+"title_citation_display": [
+"The letters of Howells to Higginson"
+],
+"linked_title_index": [
+"Annual report of the Bibliophile Society for ..."
+],
+"compiled_created_t": [
+"The letters of Howells to Higginson."
+],
+"pub_created_display": [
+"Boston : Bibliophile Society, [1929]."
+],
+"pub_created_s": [
+"Boston : Bibliophile Society, [1929]."
+],
+"pub_citation_display": [
+"Boston: Bibliophile Society"
+],
+"pub_date_display": [
+"1929"
+],
+"pub_date_start_sort": [
+"1929"
+],
+"format": [
+"Book"
+],
+"description_display": [
+"p. 17-56 ; 24 cm."
+],
+"description_t": [
+"p. 17-56 ; 24 cm."
+],
+"number_of_pages_citation_display": [
+"p. 17-56"
+],
+"geo_related_record_display": [
+"Bibliophile Society (Boston, Mass.) Annual report of the Bibliophile Society for ... 27th (1929)"
+],
+"contained_in_s": [
+"(OCoLC)#4163933"
+],
+"notes_index": [
+"Forms part of the Twenty-seventh annual report of the Bibliophile society, 1901-1927."
+],
+"notes_display": [
+"Forms part of the Twenty-seventh annual report of the Bibliophile society, 1901-1927."
+],
+"language_facet": [
+"English"
+],
+"publication_place_facet": [
+"Massachusetts"
+],
+"language_code_s": [
+"eng"
+],
+"language_iana_s": [
+"en"
+],
+"related_name_json_1display": [
+"{\"Related name\":[\"Higginson, Thomas Wentworth, 1823-1911\",\"Bibliophile Society (Boston, Mass.)\"]}"
+],
+"in_display": [
+"Bibliophile Society (Boston, Mass.) Annual report of the Bibliophile Society for ... 27th (1929)"
+],
+"oclc_s": [
+"16847846"
+],
+"standard_no_index": [
+"ocm16847846"
+],
+"other_version_s": [
+"ocm16847846"
+],
+"holdings_1display": [
+"{\"3224345\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"copy_number\":\"1\",\"call_number\":\"PS2033 .A435 1929\",\"call_number_browse\":\"PS2033 .A435 1929\"}}"
+],
+"location_code_s": [
+"f"
+],
+"location": [
+"Firestone Library"
+],
+"location_display": [
+"Firestone Library"
+],
+"access_facet": [
+"In the Library"
+],
+"advanced_location_s": [
+"f",
+"Firestone Library"
+],
+"name_title_browse_s": [
+"Howells, William Dean, 1837-1920. The letters of Howells to Higginson"
+],
+"call_number_display": [
+"PS2033 .A435 1929"
+],
+"call_number_browse_s": [
+"PS2033 .A435 1929"
+]
 }
 ]
