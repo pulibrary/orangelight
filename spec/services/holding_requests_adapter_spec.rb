@@ -98,4 +98,21 @@ RSpec.describe HoldingRequestsAdapter do
       end
     end
   end
+  describe '#sorted_physical_holdings' do
+    context 'When location code is invalid' do
+      let(:holdings_hash) do
+        {
+          '671798' => { 'location_code' => 'invalid' },
+          '671799' => { 'location_code' => 'scsbnypl' }
+        }
+      end
+      let(:holding_locations) { { 'scsbnypl' => [] } }
+
+      it 'holding is sorted last' do
+        allow(bib_data_service).to receive(:holding_locations).and_return(holding_locations)
+        allow(holdings).to receive(:doc_holdings).and_return(holdings_hash)
+        expect(holdings.sorted_physical_holdings.map { |h| h[0] }).to eq %w[671799 671798]
+      end
+    end
+  end
 end

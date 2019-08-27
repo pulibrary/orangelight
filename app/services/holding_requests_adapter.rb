@@ -73,7 +73,7 @@ class HoldingRequestsAdapter
   # @return [Hash] sorted physical holding information
   def sorted_physical_holdings
     doc_holdings_physical.sort_by do |_id, h|
-      @bib_data_service.holding_locations.keys.index(h['location_code'])
+      @bib_data_service.holding_locations.keys.index(h['location_code']) || end_of_list
     end
   end
 
@@ -200,5 +200,11 @@ class HoldingRequestsAdapter
     return false if @document.fetch(:id, '').start_with?('SCSB')
     return false if %w[thesis visuals].include? holding_id
     true
+  end
+
+  # When the holding location code is invalid, the holding should appear last
+  # @return Integer
+  def end_of_list
+    999
   end
 end
