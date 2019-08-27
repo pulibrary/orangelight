@@ -169,6 +169,6 @@ a.more_facets_link {
   margin-bottom: $spacer;
 
   .card-body {
-    padding: $spacer;
+    padding: $spacer ($spacer * 2);
   }
 }

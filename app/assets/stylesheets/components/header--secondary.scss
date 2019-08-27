@@ -4,7 +4,6 @@
   line-height: 1.4rem;
 
   @media (min-width: $bp-medium) {
-    padding: 1em 0;
     font-size: 14px;
   }
 }
@@ -12,7 +11,6 @@
 // Bookmarks and Course Reserves
 .header__secondary .navbar-right {
   z-index: 2;
-  display: inline-block;
   padding-right: 0;
   margin-top: -46px;
   width: 70%;
@@ -21,8 +19,10 @@
 
   @media (min-width: $bp-medium) {
     width: 30%;
-    padding-right: 1em;
     margin-top: 0;
+    justify-content: flex-end;
+    flex-basis: 0;
+    flex-grow: 1;
   }
 
   .navbar-nav {
@@ -50,4 +50,8 @@
       }
     }
   }
+}
+
+.navbar-item {
+  font-size: 14px;
 }
