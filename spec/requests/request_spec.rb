@@ -257,8 +257,8 @@ describe 'blacklight tests' do
                                     'href="/catalog?action=index&amp;controller=catalog&amp;'\
                                     'f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3='\
                                     'AND&amp;q2=searching+for&amp;q3=searching+for&amp;'\
-                                    'search_field=advanced"><span class="glyphicon '\
-                                    'glyphicon-remove"></span><span class="sr-only">Remove '\
+                                    'search_field=advanced"><i class="fa '\
+                                    'fa-times"></i><span class="sr-only">Remove '\
                                     'constraint Title starts with: searching for1</span></a>')).to eq true
       get '/catalog.json?&search_field=advanced&f1=left_anchor&q1=searching+for1&op2=AND&f2='\
           'left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for'
@@ -269,8 +269,8 @@ describe 'blacklight tests' do
                                     'href="/catalog?action=index&amp;controller=catalog&amp;'\
                                     'f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3='\
                                     'AND&amp;q2=searching+for&amp;q3=searching+for&amp;'\
-                                    'search_field=advanced"><span class="glyphicon '\
-                                    'glyphicon-remove"></span><span class="sr-only">'\
+                                    'search_field=advanced"><i class="fa '\
+                                    'fa-times"></i><span class="sr-only">'\
                                     'Remove constraint Starts with: searching for1</span></a>')).to eq false
       get '/catalog.json?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=advanced'
       r = JSON.parse(response.body)
