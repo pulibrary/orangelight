@@ -1,6 +1,7 @@
 @import "variables/breaks";
 @import "variables/colors";
 @import "variables/typography";
+@import "abstractions/mixins";
 
 #sidebar {
   @media (max-width: 500px) {
@@ -21,7 +22,7 @@
     }
   }
 }
-  
+
 
 .facet_limit-active > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #ddd;
@@ -30,7 +31,7 @@
 .facet-values .remove {
   text-indent: 0;
   margin-left: 1em;
-  vertical-align: middle;
+  @include vertical-align();
 }
 
 .facet-values .remove
@@ -38,7 +39,6 @@
     position: relative;
   }
   .fa-times {
-    top: -3px;
     font-size: 1.5em;
   }
 
