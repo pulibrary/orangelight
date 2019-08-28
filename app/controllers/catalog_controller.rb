@@ -199,6 +199,17 @@ class CatalogController < ApplicationController
     config.add_index_field 'author_display', label: 'Author/Artist', helper_method: :browse_name
     config.add_index_field 'pub_created_display', label: 'Published/Created'
     config.add_index_field 'format', label: 'Format', helper_method: :format_icon
+    config.add_index_field 'holdings_1display', show: false
+    config.add_index_field 'isbn_t', show: false
+    config.add_index_field 'score', show: false
+    config.add_index_field 'marc_relator_display', show: false
+    config.add_index_field 'title_display', show: false
+    config.add_index_field 'title_vern_display', show: false
+    config.add_index_field 'isbn_s', show: false
+    config.add_index_field 'oclc_s', show: false
+    config.add_index_field 'lccn_s', show: false
+    config.add_index_field 'electronic_access_1display', show: false
+    config.add_index_field 'cataloged_tdt', show: false
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
