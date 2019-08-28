@@ -26,8 +26,8 @@
       end
     %>
 
-    <%= link_to(content_tag(:span, '', class: 'glyphicon glyphicon-remove') + accessible_remove_label,
-            options[:remove], class: 'btn btn-default remove dropdown-toggle'
+    <%= link_to(content_tag(:i, '', :class => 'fa fa-times', 'aria-hidden' => 'true') + accessible_remove_label,
+            options[:remove], class: 'btn btn-default remove'
         ) %>
   <%- end -%>
 </span>

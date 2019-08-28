@@ -53,7 +53,7 @@
           <% end %>
           <% if orangelight_name.id == @match && !@exact_match %>
             <li class="alert alert-info">
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong>
+            <i class="fa fa-search" aria-hidden="true"></i> <strong>Your query "<%= @query %>" would be here.</strong>
             </li>
           <% end %>
         <% end %>
@@ -102,7 +102,7 @@
         <% end %>
         <% if orangelight_name.id == @match && !@exact_match %>
             <tr class="alert alert-info"> <td colspan=5>
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong> </td>
+            <i class="fa fa-search" aria-hidden="true"></i> <strong>Your query "<%= @query %>" would be here.</strong> </td>
           </tr>
         <% end %>
       <% end %>
