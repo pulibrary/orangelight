@@ -1,5 +1,5 @@
 <%= simple_form_for(@feedback_form, url: '/feedback', id: 'feedback_form', remote: true, class: "form-horizontal" ) do |f| %>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="control-label col-sm-2" for="name" id="name">
       Your name
     </label>
@@ -12,7 +12,7 @@
       <% end %>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="control-label col-sm-2" for="email" id="email">
       Your email
     </label>
@@ -25,7 +25,7 @@
       <% end %>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="control-label col-sm-2" for="message" id="message">
       Questions or comments
     </label>
@@ -36,7 +36,7 @@
       <% end %>
     </div>
   </div>
-  <div class="form-group blacklight-feedback-hidden">
+  <div class="form-group row blacklight-feedback-hidden">
     <label class="control-label col-sm-2" for="feedback_desc" id="feedback_desc">
       If you are a human do not fill in this value
     </label>
@@ -46,8 +46,8 @@
   </div>
 
   <%= f.hidden_field :current_url %>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-md-10">
+  <div class="form-group row">
+    <div class="col-sm-12">
       <%= f.submit t('blacklight.sms.form.submit'), class: 'btn btn-primary pull-right' %>
     </div>
   </div>
