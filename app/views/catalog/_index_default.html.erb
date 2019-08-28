@@ -2,7 +2,7 @@
 <%# default partial to display solr document fields in catalog index view -%>
 <ul class="document-metadata dl-horizontal dl-invert">
 <abbr class="unapi-id" title="<%= document.id %>"></abbr>
-  <% doc_presenter.fields_to_render.each do |field_name, field| -%>
+  <% doc_presenter.fields_to_render.reject { |_,field| field.show == false }.each do |field_name, field| -%>
     <% if document[field_name].length == 1 || !document[field_name].is_a?(Array) %>
       <% valdir = Array(document[field_name]).first.dir %>
       <% value = doc_presenter.field_value field %>
