@@ -7,36 +7,52 @@ address .name, address .street {
   padding-left: 15px;
 }
 
-.panel-cas {
+.card-cas {
   margin: 0 10px 20px;
 
   .btn {
-  	margin: auto;
-  	display: block;
-  	width: 200px;
+    margin: auto;
+    display: block;
+    width: 200px;
   }
 
   p {
-  	margin: 10px 0 0;
-  	text-align: center;
+    margin: 10px 0 0;
+    text-align: center;
+  }
+
+  .card-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 18px;
   }
 }
 
-.panel-barcode {
+.card-barcode {
   margin: 0 10px 20px;
 
-  .panel-heading p {
-  	margin: 0.4em 0 0;
-  	font-size: 0.9em;
-  	padding-left: 0;
+  .card-header p {
+    margin: 0.4em 0 0;
+    font-size: 0.9em;
+    padding-left: 0;
   }
 
   label {
-  	text-align: right;
+    @media (min-width: 768px) {
+      text-align: right;
+    }
+    margin-bottom: 5px;
+    font-weight: 700;
   }
 
   p {
-  	margin: 10px 0 0;
-  	padding-left: 15px;
+    margin: 10px 0 0;
+    padding-left: 0px;
+  }
+
+  .card-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 18px;
   }
 }
