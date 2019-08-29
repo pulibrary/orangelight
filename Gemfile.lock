@@ -39,10 +39,11 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 5ea3025f46d71940413d7a8fceed91e0c6cba256
+  revision: 6c926c4fc12ee9fa16f773b49033d883bdce512f
+  branch: OL-blacklight-7
   specs:
     requests (0.0.2)
-      bootstrap-sass (~> 3.3)
+      bootstrap
       borrow_direct (~> 1.2.0)
       cobravsmongoose (~> 0.0.2)
       devise
@@ -141,9 +142,6 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
     builder (3.2.3)
     bunny (2.14.2)
       amq-protocol (~> 2.3, >= 2.3.0)
