@@ -24,7 +24,6 @@
             <div class='col-md-5 <%= 'has-error' if flash[:last_name] %>'>
               <%= text_field_tag 'last_name', '', class: 'form-control', autocomplete: 'off' %>
               <% if flash[:last_name] %>
-                <i class="fa fa-times form-control-feedback" aria-hidden="true"></i>
                 <span id="inputError2Status" class="sr-only">(error)</span>
                 <span class="error">Last name can't be blank</span>
               <% end %>
@@ -36,7 +35,6 @@
             <div class='col-md-5 <%= 'has-error' if flash[:barcode] %>'>
               <%= text_field_tag 'barcode', '22101', class: 'form-control', autocomplete: 'off' %>
               <% if flash[:barcode] %>
-                <i class="fa fa-times form-control-feedback" aria-hidden="true"></i>
                 <span id="inputError2Status" class="sr-only">(error)</span>
                 <span class="error">Barcode must be a 14-digit number</span>
               <% end %>
