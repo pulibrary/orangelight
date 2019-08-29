@@ -1,55 +1,55 @@
-<div class='panel panel-primary panel-cas'>
-  <div class='panel-heading'>
-    <%= content_tag :h2, t('blacklight.login.netid_header'), class: 'panel-title' %>
+<div class="col px-0">
+  <div class='card card-cas'>
+    <div class='card-header text-white bg-primary'>
+      <%= content_tag :h2, t('blacklight.login.netid_header'), class: 'card-title' %>
+    </div>
+    <div class='card-body text-center'>
+      <%= link_to t('blacklight.login.netid_button'), user_cas_omniauth_authorize_path, :class => 'btn btn-primary' %>
+      <p class="card-text"><%=t('blacklight.login.redirect_text')%></p>
+      <p><a role="button" data-toggle="collapse" href="#collapseBarcode" aria-expanded="false" aria-controls="collapseBarcode">
+        <%=t('blacklight.login.barcode_text')%>
+      </a></p>
+    </div>
   </div>
-  <div class='panel-body'>
-    <%= link_to t('blacklight.login.netid_button'), user_cas_omniauth_authorize_path, :class => 'btn btn-primary' %>
-    <p><%=t('blacklight.login.redirect_text')%></p>
-    <p><a role="button" data-toggle="collapse" href="#collapseBarcode" aria-expanded="false" aria-controls="collapseBarcode">
-      <%=t('blacklight.login.barcode_text')%>
-    </a></p>
-  </div>
-</div>
 
-<div class='panel panel-default panel-barcode collapse' id="collapseBarcode">
-  <div class='panel-heading'>
-    <%= content_tag :h2, t('blacklight.login.barcode_header'), class: 'panel-title' %>
-    <p><%=t('blacklight.login.barcode_subheader')%></p>
-  </div>
-  <div class='panel-body'>
-    <%= simple_form_for(@user, url: user_barcode_omniauth_callback_path, class: 'form-horizontal', data: { toggle: 'validator' })  do |f| %>
-        <div class='field form-group col-md-12'>
-          <%= f.label 'Last name', class: 'control-label col-md-2' %>
-          <div class='col-md-5 <%= 'has-error' if flash[:last_name] %>'>
-            <%= text_field_tag 'last_name', '', class: 'form-control', autocomplete: 'off' %>
-            <% if flash[:last_name] %>
-              <i class="fa fa-times form-control-feedback" aria-hidden="true"></i>
-              <span id="inputError2Status" class="sr-only">(error)</span>
-              <span class="error">Last name can't be blank</span>
-            <% end %>
+  <div class='card card-barcode collapse' id="collapseBarcode">
+    <div class='card-header'>
+      <%= content_tag :h2, t('blacklight.login.barcode_header'), class: 'card-title' %>
+      <p><%=t('blacklight.login.barcode_subheader')%></p>
+    </div>
+    <div class='card-body'>
+      <%= simple_form_for(@user, url: user_barcode_omniauth_callback_path, class: 'form-horizontal', data: { toggle: 'validator' })  do |f| %>
+          <div class='field form-group col-md-12 row'>
+            <%= f.label 'Last name', class: 'control-label col-md-2 col-form-label' %>
+            <div class='col-md-5 <%= 'has-error' if flash[:last_name] %>'>
+              <%= text_field_tag 'last_name', '', class: 'form-control', autocomplete: 'off' %>
+              <% if flash[:last_name] %>
+                <span id="inputError2Status" class="sr-only">(error)</span>
+                <span class="error">Last name can't be blank</span>
+              <% end %>
+            </div>
           </div>
-        </div>
 
-        <div class='field form-group col-md-12'>
-          <%= f.label 'Barcode', class: 'control-label col-md-2' %>
-          <div class='col-md-5 <%= 'has-error' if flash[:barcode] %>'>
-            <%= text_field_tag 'barcode', '22101', class: 'form-control', autocomplete: 'off' %>
-            <% if flash[:barcode] %>
-              <i class="fa fa-times form-control-feedback" aria-hidden="true"></i>
-              <span id="inputError2Status" class="sr-only">(error)</span>
-              <span class="error">Barcode must be a 14-digit number</span>
-            <% end %>
+          <div class='field form-group col-md-12 row'>
+            <%= f.label 'Barcode', class: 'control-label col-md-2 col-form-label' %>
+            <div class='col-md-5 <%= 'has-error' if flash[:barcode] %>'>
+              <%= text_field_tag 'barcode', '22101', class: 'form-control', autocomplete: 'off' %>
+              <% if flash[:barcode] %>
+                <span id="inputError2Status" class="sr-only">(error)</span>
+                <span class="error">Barcode must be a 14-digit number</span>
+              <% end %>
+            </div>
           </div>
-        </div>
 
-        <div class='login_actions form-group'>
-          <div class='col-md-offset-2 col-md-10'>
-            <%= f.submit 'Log in', class: 'btn btn-default' %>
+          <div class='login_actions form-group row'>
+            <div class='offset-md-2 col-md-10'>
+              <%= f.submit 'Log in', class: 'btn btn-outline-secondary' %>
+            </div>
           </div>
-        </div>
-    <% end %>
-    <div class='col-md-offset-2 col-md-8'>
-      <p><%=t('blacklight.login.barcode_help').html_safe%></p>
+      <% end %>
+      <div class='offset-md-2 col-md-8'>
+        <p><%=t('blacklight.login.barcode_help').html_safe%></p>
+      </div>
     </div>
   </div>
 </div>
