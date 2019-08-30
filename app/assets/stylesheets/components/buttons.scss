@@ -9,7 +9,7 @@
   padding: 1px 0 0 0;
 
   a {
-    font-size: 14px;
+    font-size: 16px;
     margin: 0;
   }
 }
@@ -51,7 +51,15 @@ a.clear-bookmarks {
   margin: 10px 0;
 }
 
+.btn-outline-secondary {
+  color: $black;
+}
 
+.search-constraint-value:hover,
+.search-constraint-value > .btn-outline-secondary:active {
+  background-color: transparent;
+  color: $black;
+}
 
 .search-widgets select,
 .navbar-nav > li > a,
@@ -269,4 +277,12 @@ header .navbar-nav > li > a {
 :focus {
   outline: 2px solid #5E9ED6 !important;
   outline-offset: 0 !important;
+}
+
+.applied-filter .filter-name:after {
+  font-family: FontAwesome;
+  color: #777777;
+  content: "\f054";
+  font-size: 70%;
+  padding-left: 5px;
 }
