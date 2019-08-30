@@ -160,7 +160,7 @@ module BlacklightHelper
   # @param path [String] the URL path for the link
   # @return [String] the markup for the link
   def render_start_over_link(path)
-    child = "<span class=\"icon-refresh\" aria-hidden=\"true\"></span> <span class=\"d-none d-md-block\">#{t('blacklight.search.start_over')}</span>"
+    child = "<span class=\"icon-refresh\" aria-hidden=\"true\"></span> <span class=\"d-none d-lg-inline\">#{t('blacklight.search.start_over')}</span>"
     link_to(child.html_safe, path, class: 'catalog_startOverLink btn btn-primary', id: 'startOverLink')
   end
 

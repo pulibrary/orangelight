@@ -24,7 +24,7 @@
           </li>
         <% end %>
         <li class="dropdown">
-          <button class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"><span class="icon-share" aria-hidden="true"></span> Send <span class="d-none d-md-block">to <span class="caret"></span></span></button>
+          <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"><span class="icon-share" aria-hidden="true"></span> Send <span class="d-none d-lg-inline">to <span class="caret"></span></span></button>
           <ul class="dropdown-menu" role="menu">
             <li class="sms">
               <%= link_to "SMS", sms_solr_document_path(:id => @document), {:id => 'smsLink', :data => {:blacklight_modal => "trigger"}, class: "icon-mobile dropdown-item", rel: 'nofollow'} %>
