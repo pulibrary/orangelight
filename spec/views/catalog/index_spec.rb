@@ -19,4 +19,12 @@ RSpec.describe 'catalog/index' do
       expect(response['data'][0]['attributes'].keys).to include('title_display', 'holdings_1display')
     end
   end
+
+  describe 'advanced search' do
+    it 'inclusive facets display when applied' do
+      visit '/catalog?f_inclusive%5Bformat%5D%5B%5D=Audio&search_field=advanced'
+      expect(page).to have_selector('.blacklight-format.facet_limit-active')
+      expect(page).to have_selector('.advanced_facet_limit')
+    end
+  end
 end
