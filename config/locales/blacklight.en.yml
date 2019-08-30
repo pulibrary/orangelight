@@ -1,4 +1,8 @@
 en:
+  views:
+    pagination:
+      previous: '&laquo; <span class="d-none d-lg-inline"> Previous</span>'
+      next: '<span class="d-none d-lg-inline">Next</span> &raquo;'
   blacklight:
     application_name: 'Princeton University Library Catalog'
     welcome: 'Welcome!'
