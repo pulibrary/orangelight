@@ -52,13 +52,19 @@ a.clear-bookmarks {
 }
 
 .btn-outline-secondary {
-  color: $black;
+  color: $dark;
+  border-color: #ccc;
+  &:hover, &:active {
+    background-color: #ddd;
+    border-color: #bbb;
+    color: $dark;
+  }
 }
 
 .search-constraint-value:hover,
-.search-constraint-value > .btn-outline-secondary:active {
+.search-constraint-value:active {
   background-color: transparent;
-  color: $black;
+  color: $dark;
 }
 
 .search-widgets select,
