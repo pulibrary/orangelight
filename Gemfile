@@ -75,7 +75,7 @@ gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.
 gem 'mail_form'
 gem 'string_rtl'
 
-gem 'requests', git: 'https://github.com/pulibrary/requests.git'
+gem 'requests', git: 'https://github.com/pulibrary/requests.git', branch: 'OL-blacklight-7'
 
 gem 'borrow_direct', git: 'https://github.com/pulibrary/borrow_direct.git', branch: 'generate_query_encoding_fix'
 
