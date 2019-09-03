@@ -74,6 +74,7 @@
 
   .menu--level-1>ul {
     display: inline-block;
+    margin-bottom: 11px;
 
     @media (min-width: 645px) {
       margin-top: 0;
@@ -108,10 +109,8 @@
     }
   }
 
-  @media (min-width: 645px) {
-    .dropdown-menu {
-      top: 35px;
-    }
+  .dropdown-menu-right {
+    margin-top: 14px;
   }
 
   >li {
@@ -130,9 +129,8 @@
   }
 }
 
-.l-branding__pul .logo__pul {
-  margin: 0;
-  padding: 0;
+.l-branding__pul .container {
+  max-width: initial;
 }
 
 .search-options a {
