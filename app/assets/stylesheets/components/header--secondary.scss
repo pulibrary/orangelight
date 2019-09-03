@@ -1,5 +1,9 @@
+.header__secondary .container {
+  max-width: initial;
+}
+
 .search-options,
-.header__secondary .navbar-right {
+.header__secondary .user-utils a {
   font-size: $text-small;
   line-height: 1.4rem;
 
@@ -8,31 +12,41 @@
   }
 }
 
+.search-bar .navbar,
+.user-utils,
+.user-utils .nav {
+  padding: 0;
+}
+
 // Bookmarks and Course Reserves
-.header__secondary .navbar-right {
-  z-index: 2;
-  padding-right: 0;
-  margin-top: -46px;
-  width: 70%;
-  float: right;
-  text-align: center;
+.header__secondary .user-utils {
+  // z-index: 2;
+  // padding-right: 0;
+  // margin-top: -46px;
+  // width: 70%;
+  // float: right;
+  // text-align: center;
 
   @media (min-width: $bp-medium) {
-    width: 30%;
-    margin-top: 0;
+    // width: 30%;
+    // margin-top: 0;
     justify-content: flex-end;
     flex-basis: 0;
     flex-grow: 1;
   }
 
-  .navbar-nav {
+  .nav {
     float: right;
     margin: 0;
   }
 
+  .nav-link {
+    display: initial;
+  }
+
   li a {
     background: transparent;
-    padding: 1em;
+    padding: 1rem;
     margin: 0;
     color: darken($blue, 3);
 
@@ -50,8 +64,4 @@
       }
     }
   }
-}
-
-.navbar-item {
-  font-size: 14px;
 }

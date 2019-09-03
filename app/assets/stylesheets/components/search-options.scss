@@ -6,14 +6,17 @@
 .search-options {
   margin-bottom: 0;
   display: inline-block;
-  flex-grow: 1;
+  flex: 1;
+
+  @media (min-width: $bp-medium) {
+    flex: initial;
+  }
 
   li {
-    padding: 1em 1em 1em 0;
+    padding: 1em 0;
 
-    a {
-      padding: 1em 1em 1em 0;
-      @media (min-width: $bp-medium) {
+    @media (min-width: $bp-medium) {
+      a {
         padding-left: 1em;
       }
     }

@@ -2,12 +2,12 @@
 @import "variables/colors";
 @import "variables/typography";
 
-header .navbar-form .input-group .input-group-addon {
+header .navbar-form .input-group .custom-select {
   width: 190px;
 }
 
 @media (max-width: 500px) {
-  header .navbar-form .input-group .input-group-addon {
+  header .navbar-form .input-group .custom-select {
     width: 100%;
     clear: both;
     display: block;
@@ -29,21 +29,9 @@ header .navbar-form .input-group .input-group-btn {
   width: 40px;
 }
 
-header .input-group-addon {
-  border: none;
-  padding: 0;
-  background: none;
-
-  .caret {
-    position: relative;
-    z-index: 99999991;
-    left: -30px;
-    pointer-events: none;
-  }
-}
-
 #search-navbar {
-  padding: 0;
+  padding: 0 1rem;
+  width: 100%;
 
   .search-query-form {
     padding: 1.125em 0 0;
@@ -130,11 +118,40 @@ header .input-group-addon {
 }
 
 #search-navbar .search-query-form {
-  width: auto;
+  width: 100%; 
+
+  @media (min-width: $bp-medium) {
+    width: auto;
+  }
+}
+
+.search-navbar .search-input {
+  flex: 1;
+
+  @media (min-width: $bp-medium) {
+    min-width: 250px;
+  }
+
+  @media (min-width: $bp-large) {
+    min-width: 375px;
+  }
+
+  input {
+    width: 100%;
+  }
 }
 
 .search-query-form .input-group {
   float: left;
+  width: 100%;
+}
+
+.search-query-form .input-group-prepend {
+  width: 100%;
+
+  @media (min-width: $bp-small) {
+    width: auto;
+  }
 }
 
 select::-ms-expand {
