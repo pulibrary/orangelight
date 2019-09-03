@@ -10,6 +10,7 @@ class CatalogController < ApplicationController
   include Orangelight::Catalog
   include Orangelight::Stackmap
   include BlacklightHelper
+  include ActionView::Helpers::TagHelper
 
   before_action :redirect_browse
 
@@ -619,4 +620,42 @@ class CatalogController < ApplicationController
       format.json
     end
   end
+
+  ##
+  # Render the facet constraints
+  # @param [Hash] localized_params query parameters
+  # @return [String]
+  def render_constraints_filters(localized_params = params)
+    # rubocop:disable Rails/OutputSafety
+    return ''.html_safe unless localized_params[:f]
+    # rubocop:enable Rails/OutputSafety
+    path = search_state_class.new(localized_params, blacklight_config, self)
+    content = []
+    localized_params[:f].each_pair do |facet, values|
+      content << render_filter_element(facet, values, path)
+    end
+
+    safe_join(content.flatten, "\n")
+  end
+
+  # Overrides to BlacklightRangeLimit::ViewHelperOverride
+  # @params my_params [ActionController::Parameters]
+  # @return [String] markup
+  def render_safe_constraints_filters(my_params = params)
+    return unless my_params[:range]
+
+    my_params[:range] = my_params[:range].reject { |_k, v| v.nil? }
+    render_constraints_filters(my_params)
+  end
+
+  ##
+  # Render the actual constraints, not including header or footer
+  # info.
+  #
+  # @param [Hash] localized_params query parameters
+  # @return [String]
+  def render_constraints(localized_params = params)
+    render_constraints_query(localized_params) + render_safe_constraints_filters(localized_params)
+  end
+  helper_method :render_constraints
 end
