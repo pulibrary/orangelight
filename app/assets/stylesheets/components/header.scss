@@ -27,24 +27,25 @@
 .l-branding__pul {
   background: $black-pul;
   border-top: 3px solid $orange;
-  min-height: 40px;
+  min-height: 52px;
+  padding: 0.25rem;
   position: relative;
   clear: both;
 
   .menu--level-1,
   .logo__pul {
-    height: 52px;
-    position: relative;
     z-index: 10;
 
-    @media (min-width: 645px) {
-      width: 50%;
+    @media (min-width: 576px) and (max-width: 589px) {
+      &.col-sm-auto {
+        width: 100%;
+      }
     }
   }
 
   .logo__pul a {
     display: inline-block; // float: left;
-    height: 38px;
+    height: 26px;
 
     img {
       height: 34px;
@@ -74,25 +75,24 @@
 
   .menu--level-1>ul {
     display: inline-block;
-    margin-bottom: 11px;
+    margin-bottom: 0;
+    padding: 0.5rem 0 0;
+
+    @media (min-width: 590px) {
+      display: initial;
+      padding: 0;
+    }
 
     @media (min-width: 645px) {
       margin-top: 0;
-      @include vertical-align;
     }
-  }
-}
-
-@media (min-width: $bp-small) {
-  .l-branding__pul {
-    height: 55px;
   }
 }
 
 .menu--level-1>ul {
   display: block;
 
-  @media (min-width: 645px) {
+  @media (min-width: 590px) {
     float: right;
   }
 
@@ -116,7 +116,6 @@
   >li {
     float: left;
     padding: 0 1rem;
-    // border-right: 1px solid darken($gray, 40%);
 
     @media (max-width: 645px) {
       line-height: 1em;
@@ -206,7 +205,7 @@
   }
 }
 
-@media (max-width: 645px) {
+@media (max-width: 590px) {
   .logo__pul {
     text-align: center;
   }
@@ -214,7 +213,7 @@
   .l-branding__pul .menu--level-1 {
     margin: 0;
     text-align: center;
-    width: 100%;
+    // width: 100%;
     li {
       display: inline-block;
     }
