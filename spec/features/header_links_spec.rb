@@ -11,8 +11,8 @@ describe 'Tools links' do
     end
 
     it 'displays links in the navbar, account dropdown, and record view' do
-      expect(page).to have_selector('.navbar-item * a', text: 'Course Reserves')
-      expect(page).to have_selector('.navbar-item * a', text: 'Bookmark')
+      expect(page).to have_selector('.nav-item a', text: 'Course Reserves')
+      expect(page).to have_selector('.nav-item a', text: 'Bookmark')
       expect(page).to have_button('Send to')
 
       within '.menu--level-1' do
