@@ -1,18 +1,21 @@
 <%= render 'shared/start_over_row' %>
 <% if(@patron) %>
-  <div class="col-md-12">
-    <h1 class="page-heading"><%= @patron["first_name"] %> <%= @patron["last_name"] %>'s account</h1>
-    <dl class="account--patron_info">
-      <dt>Barcode</dt>
-      <dd><%= @patron["barcode"] %></dd>
-    </dl>
-
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="page-heading"><%= @patron["first_name"] %> <%= @patron["last_name"] %>'s account</h1>
+      <dl class="account--patron_info">
+        <dt>Barcode</dt>
+        <dd><%= @patron["barcode"] %></dd>
+      </dl>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-3 account--sidebar">
       <ul class="nav nav-pills">
-        <li><a href="#charged-items">Charged items</a></li>
-        <li><a href="#items-available">Items available for pickup</a></li>
-        <li><a href="#outstanding-requests">Outstanding requests</a></li>
-        <li><a href="#fines-fees">Fines and fees</a></li>
+        <li class="nav-item w-100"><a class="nav-link" href="#charged-items">Charged items</a></li>
+        <li class="nav-item w-100"><a class="nav-link" href="#items-available">Items available for pickup</a></li>
+        <li class="nav-item w-100"><a class="nav-link" href="#outstanding-requests">Outstanding requests</a></li>
+        <li class="nav-item w-100"><a class="nav-link" href="#fines-fees">Fines and fees</a></li>
       </ul>
     </div>
     <div class="col-md-9 account--main">
