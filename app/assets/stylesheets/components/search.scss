@@ -6,7 +6,7 @@ header .navbar-form .input-group .custom-select {
   width: 190px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 575px) {
   header .navbar-form .input-group .custom-select {
     width: 100%;
     clear: both;
@@ -149,7 +149,7 @@ header .navbar-form .input-group .input-group-btn {
 .search-query-form .input-group-prepend {
   width: 100%;
 
-  @media (min-width: $bp-small) {
+  @media (min-width: 575px) {
     width: auto;
   }
 }

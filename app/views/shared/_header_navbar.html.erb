@@ -2,14 +2,14 @@
 <header>
   <div class="l-branding__pul">
     <div class="container">
-      <div class="row">
-        <div class="logo__pul col-12 col-sm-6">
+      <div class="row align-items-center">
+        <div class="logo__pul col-12 col-sm-auto">
           <a href="https://library.princeton.edu" title="Princeton University Library">
              <%= image_tag("pul-logo-new.svg") %>
           </a>
           <%=link_to t('blacklight.orangelight').html_safe, main_app.root_path, :class => "site-title" %>
         </div>
-        <div class="pull-right menu--level-1 col-12 col-sm-6">
+        <div class="pull-right menu--level-1 col-12 col-sm-auto ml-auto">
           <ul>
             <li><%= link_to 'Help', main_app.page_path('help') %></li>
             <li><a href="/feedback">Feedback</a></li>
