@@ -1,13 +1,13 @@
 <% #Using the Bootstrap Pagination class  -%>
 <div class='pagination-search-widgets col'>
   <div class="row">
-    <div class="col">
+    <div class="col-xs-12 pl-1">
       <div class="button--start-over">
         <%= render_start_over_link(start_over_path) %>
       </div>
       <% if @search_context %>
         <% if @search_context[:prev] || @search_context[:next] %>
-          <%= link_back_to_catalog class: 'btn btn-outline-primary button--back-to-search', label:  t('blacklight.back_to_search').html_safe %>
+          <%= link_back_to_catalog class: 'btn btn-default button--back-to-search', label:  t('blacklight.back_to_search').html_safe %>
           <div class="page_links">
             <%= link_to_previous_document @search_context[:prev] %>
             <%= link_to_next_document @search_context[:next] %>
@@ -16,8 +16,8 @@
         <% end %>
       <% end %>
     </div>
-    <div class="search-widgets">
-      <ul class="navbar">
+    <div class="search-widgets col pr-1">
+      <ul class="navbar navbar-nav pull-right">
         <% if @document.voyager_record? %>
           <li>
             <%= render_cite_link(citation_solr_document_path(id: @document)) %>
