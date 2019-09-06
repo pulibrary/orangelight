@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: aea08ca3dbf0cba6cbeb162d252eb30d08c6e616
+  revision: e4d425cc706c334101c663243560c477fab73716
   branch: OL-blacklight-7
   specs:
     requests (0.0.2)
