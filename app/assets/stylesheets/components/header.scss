@@ -111,6 +111,7 @@
 
   .dropdown-menu-right {
     margin-top: 14px;
+    min-width: 128px;
   }
 
   >li {
@@ -213,14 +214,6 @@
   .l-branding__pul .menu--level-1 {
     margin: 0;
     text-align: center;
-    // width: 100%;
-    li {
-      display: inline-block;
-    }
-  }
-
-  .l-branding__pul .menu--level-1 ul li {
-    font-size: 1.2em;
   }
 
   .menu--level-1 > ul > li > a,
