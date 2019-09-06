@@ -15,9 +15,6 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap
-//= require dataTables/jquery.dataTables
-//= require dataTables/extras/dataTables.responsive
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require modernizr
 //= require chosen-jquery
 //= require intro
