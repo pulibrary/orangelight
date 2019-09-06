@@ -81,7 +81,7 @@ gem 'borrow_direct', git: 'https://github.com/pulibrary/borrow_direct.git', bran
 
 gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'master'
 
-gem 'jquery-datatables-rails', '~> 3.4.0'
+gem 'jquery-datatables'
 
 gem 'openurl', '~> 1.0'
 
