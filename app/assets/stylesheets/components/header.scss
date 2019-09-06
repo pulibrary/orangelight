@@ -171,7 +171,7 @@
   .pagination-search-widgets {
 
     .search-widgets li {
-      margin: 0 6px 0 0;
+      margin: 0 6px 6px 0;
 
       a,
       button.btn {
@@ -244,12 +244,14 @@
     .search-widgets .navbar-nav {
       margin: 0 auto;
       display: table;
+      float: none;
     }
 
     .page_links {
       width: auto;
       float: right;
       text-align: center;
+      margin-right: 3px;
 
       .previous,
       .next {
@@ -267,7 +269,7 @@
   .pagination-search-widgets {
 
     .search-widgets li {
-      margin: 0 6px 0 0;
+      margin: 0 6px 6px 0;
 
       &:last-child {
         margin-right: 0;
@@ -293,4 +295,3 @@
     }
   }
 }
-

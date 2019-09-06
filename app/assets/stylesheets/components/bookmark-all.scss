@@ -44,6 +44,8 @@
 
 .checkbox.bookmark_all {
   margin-left: 3px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .checkbox.bookmark_all,
@@ -53,7 +55,7 @@
   label {
     padding: 0;
     display: inline-block;
-    margin: 10px 0;
+    margin: 0;
   }
 
   input {
