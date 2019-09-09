@@ -33,6 +33,8 @@ a.clear-bookmarks {
 
 .search-widgets .navbar-nav {
   margin: 0;
+  flex-direction: row;
+  padding: 0;
 
   li {
     display: inline-block;
@@ -117,6 +119,8 @@ a.clear-bookmarks {
 .checkbox.bookmark_all span,
 .search-widgets .checkbox.toggle-bookmark span {
   display: inline-block;
+  padding-bottom: 7px;
+  margin-right: 0;
 }
 
 .pagination-search-widgets .checkbox.toggle-bookmark {
@@ -206,7 +210,6 @@ header .navbar-nav > li > a {
 #per_page-dropdown,
 #per_page-dropdown .dropdown-toggle,
 .checkbox.bookmark_all span,
-// .search-widgets .checkbox.toggle-bookmark span,
 .bookmark_all,
 .bookmark_all label,
 .bookmark_all span {
