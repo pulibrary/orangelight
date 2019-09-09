@@ -55,14 +55,6 @@ Naming/VariableNumber:
   Exclude:
     - 'spec/lib/orangelight/string_functions_spec.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: AutoCorrect.
-Performance/HashEachMethods:
-  Exclude:
-    - 'app/models/concerns/blacklight/document/email.rb'
-    - 'spec/models/dublin_core_spec.rb'
-
 # Offense count: 1
 RSpec/BeforeAfterAll:
   Exclude:
@@ -149,7 +141,7 @@ RSpec/VerifiedDoubles:
     - 'spec/views/catalog/_sort_and_per_page.html.erb_spec.rb'
 
 # Offense count: 5
-Rails/FilePath:
+RSpec/FilePath:
   Exclude:
     - 'app/helpers/account_helper.rb'
     - 'config/application.rb'

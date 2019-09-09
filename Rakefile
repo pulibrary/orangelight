@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('../config/application', __FILE__)
+require File.expand_path('config/application', __dir__)
 
 require 'rubocop/rake_task'
 require 'solr_wrapper/rake_task'

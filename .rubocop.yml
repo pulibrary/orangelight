@@ -1,4 +1,6 @@
-require: rubocop-rspec
+require:
+  - rubocop-rails
+  - rubocop-rspec
 inherit_from: .rubocop_todo.yml
 
 Rails:
@@ -197,7 +199,7 @@ Naming/PredicateName:
     - 'lib/orangelight/voyager_account.rb'
 
 Layout/IndentationConsistency:
-  EnforcedStyle: rails
+  EnforcedStyle: indented_internal_methods
 
 Style/CollectionMethods:
   PreferredMethods:
@@ -278,12 +280,10 @@ RSpec/VerifiedDoubles:
     - 'spec/views/catalog/_sort_and_per_page.html.erb_spec.rb'
 
 Rails/UnknownEnv:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
-
-Rails/UnknownEnv:
   Environments:
     - staging
     - production
     - development
     - test
+  Exclude:
+    - 'app/controllers/application_controller.rb'
