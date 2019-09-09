@@ -265,4 +265,15 @@ module BlacklightHelper
     label = index_presenter(doc).label(field, opts).truncate(length).html_safe
     link_to label, url_for_document(doc), document_link_params(doc, opts)
   end
+
+  # Ensures that Nil values are rejected from GET parameters passed for faceted
+  #   range queries
+  # @see BlacklightRangeLimit::ViewHelperOverride#render_constraints_filters
+  # @params my_params [ActionController::Parameters]
+  # @return [String] markup
+  def render_constraints_filters(my_params = params)
+
+    my_params[:range] = my_params[:range].reject { |_k, v| v.nil? }
+    super(my_params)
+  end
 end

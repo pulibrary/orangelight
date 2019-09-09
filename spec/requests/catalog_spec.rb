@@ -13,4 +13,10 @@ describe 'search requests for the catalog' do
 
     expect(response.status).to eq(200)
   end
+
+  it 'handles malformed faceted range requests' do
+    get '/catalog?f%5Brecently_added_facet%5D%5B%5D=months_3&range%5Bpub'
+
+    expect(response.status).to eq(200)
+  end
 end
