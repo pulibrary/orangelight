@@ -1,7 +1,7 @@
 <% #Using the Bootstrap Pagination class  -%>
 <div class='pagination-search-widgets col'>
   <div class="row">
-    <div class="col-xs-12 pl-1">
+    <div class="col-xs-12 px-4">
       <div class="button--start-over">
         <%= render_start_over_link(start_over_path) %>
       </div>
@@ -16,7 +16,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="search-widgets col pr-1">
+    <div class="search-widgets col pr-4">
       <ul class="navbar navbar-nav pull-right">
         <% if @document.voyager_record? %>
           <li>
