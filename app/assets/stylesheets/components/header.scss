@@ -234,7 +234,7 @@
   }
 }
 
-@media (max-width: 565px) {
+@media (max-width: $bp-medium) {
   .pagination-search-widgets {
     .col-xs-12 {
       width: 100%;
