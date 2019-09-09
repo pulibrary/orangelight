@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('../boot', __FILE__)
+require File.expand_path('boot', __dir__)
 
 require 'rails/all'
 
@@ -33,8 +33,8 @@ module Orangelight
 
     # IE Edge
     config.action_dispatch.default_headers['X-UA-Compatible'] = 'IE=edge,chrome=1'
-    require Rails.root.join('lib/custom_public_exceptions')
-    require Rails.root.join('lib/omniauth/strategies/omniauth-barcode')
+    require Rails.root.join('lib', 'custom_public_exceptions')
+    require Rails.root.join('lib', 'omniauth', 'strategies', 'omniauth-barcode')
     config.exceptions_app = CustomPublicExceptions.new(Rails.public_path)
 
     # Redirect to CAS logout after signing out of Orangelight

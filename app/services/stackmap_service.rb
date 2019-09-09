@@ -6,11 +6,11 @@ class StackmapService
     # Constructor
     # @param document [SolrDocument] Solr document for bib record
     # @param loc [String] Bib record location code
-    # @param cn [String] optional provided call number
-    def initialize(document:, loc:, cn: nil)
+    # @param call_number [String] optional provided call number
+    def initialize(document:, loc:, call_number: nil)
       @document = document
       @loc = loc
-      @cn = cn
+      @cn = call_number
     end
 
     # Return the correct stackmap url ased on the location information of the bib record

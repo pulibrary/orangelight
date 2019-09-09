@@ -10,11 +10,11 @@ module Orangelight
       def call(env)
         validate_for!(env)
         @app.call(env)
-      rescue ActionController::BadRequest => bad_request_error
-        raise bad_request_error if raise_error?(bad_request_error.message)
+      rescue ActionController::BadRequest => e
+        raise e if raise_error?(e.message)
 
-        Rails.logger.error "Invalid parameters passed in the request: #{bad_request_error} within the environment #{@request.inspect}"
-        return bad_request_response(env)
+        Rails.logger.error "Invalid parameters passed in the request: #{e} within the environment #{@request.inspect}"
+        bad_request_response(env)
       end
 
       private
@@ -57,6 +57,7 @@ module Orangelight
 
           facet_parameter.collect do |facet_field, value_list|
             next unless value_list.nil?
+
             raise ActionController::BadRequest, "Facet field #{facet_field} has a nil value"
           end
         end

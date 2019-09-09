@@ -38,7 +38,7 @@ module ApplicationHelper
     unless electronic_access.nil?
       links_hash = JSON.parse(electronic_access)
       links_hash.first(2).each do |url, text|
-        link = link_to(text.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
+        link = link_to(text.first, "#{ENV['proxy_base']}#{url}", target: '_blank', rel: 'noopener')
         link = "#{text[1]}: ".html_safe + link if text[1]
         urls << content_tag(:div, link, class: 'library-location')
       end
@@ -55,7 +55,7 @@ module ApplicationHelper
   def locate_url(location, document, call_number, library = nil)
     locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
     unless locator.exclude?(call_number: call_number, library: library)
-      ::StackmapService::Url.new(document: document, loc: location, cn: call_number).url
+      ::StackmapService::Url.new(document: document, loc: location, call_number: call_number).url
     end
   end
 
@@ -156,7 +156,7 @@ module ApplicationHelper
     args[:document][args[:field]].each_with_index do |reference, i|
       if (url = reference[/ (http.*)$/])
         reference = reference.chomp(url)
-        args[:document][args[:field]][i] = link_to(reference, url.gsub(/\s/, ''), target: '_blank')
+        args[:document][args[:field]][i] = link_to(reference, url.gsub(/\s/, ''), target: '_blank', rel: 'noopener')
       end
     end
   end
@@ -173,7 +173,7 @@ module ApplicationHelper
   def holding_location(holding)
     location_code = holding.fetch('location_code', '').to_sym
     resolved_location = Bibdata.holding_locations[location_code]
-    resolved_location ? resolved_location : {}
+    resolved_location || {}
   end
 
   # Generate the markup block for individual search result items containing holding information
@@ -301,6 +301,7 @@ module ApplicationHelper
   def name_title(args)
     args[:document][args[:field]].each_with_index do |name_t, i|
       next unless args[:document]['name_title_browse_s']&.include?(name_t)
+
       newname_t = link_to(name_t, "/?f[name_title_browse_s][]=#{CGI.escape name_t}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name_t}", title: "Search: #{name_t}") + '  ' +
                   link_to('[Browse]', "/browse/name_titles?q=#{CGI.escape name_t}", class: 'browse-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{name_t}", title: "Browse: #{name_t}", dir: name_t.dir.to_s)
       args[:document][args[:field]][i] = newname_t.html_safe
@@ -326,6 +327,7 @@ module ApplicationHelper
         link_accum = StringFunctions.trim_punctuation(name_t[0..i].join(' '))
         if i == 0
           next if args[:field] == 'name_uniform_title_1display'
+
           name_title_links << link_to(part, "/?f[author_s][]=#{CGI.escape link_accum}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")
         else
           name_title_links << link_to(part, "/?f[name_title_browse_s][]=#{CGI.escape link_accum}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")

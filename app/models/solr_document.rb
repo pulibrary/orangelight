@@ -68,6 +68,7 @@ class SolrDocument
   # @return [String] the ARK for the resource
   def ark
     return unless full_ark
+
     m = /.*(ark:(.*))/.match(full_ark)
     m[1]
   end

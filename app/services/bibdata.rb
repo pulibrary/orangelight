@@ -7,6 +7,7 @@ class Bibdata
     # ignore rubocop warnings; complexity and length step from error checking.
     def get_patron(id)
       return false unless id
+
       begin
         patron_record = Faraday.get "#{ENV['bibdata_base']}/patron/#{id}"
       rescue Faraday::Error::ConnectionFailed

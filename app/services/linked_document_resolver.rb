@@ -80,6 +80,7 @@ class LinkedDocumentResolver
       # @return [Hash] the response (parsed from JSON)
       def response
         return @response unless @response.nil?
+
         http_response = faceted_query_service.get_fq_solr_response(facet_query)
         @response = JSON.parse(http_response.body)
       end

@@ -126,6 +126,7 @@ class Orangelight::BrowsablesController < ApplicationController
     def list_name
       value = model_table_name.humanize
       return 'author-title headings' if value == 'Name titles'
+
       value
     end
 
@@ -151,6 +152,7 @@ class Orangelight::BrowsablesController < ApplicationController
     # @return [Integer]
     def first_model_id
       return 1 if start_param.nil?
+
       start_param.to_i
     end
 
@@ -166,6 +168,7 @@ class Orangelight::BrowsablesController < ApplicationController
     # @return [Integer]
     def last_model_id
       return model_param.last.id if model_param.last
+
       1
     end
 

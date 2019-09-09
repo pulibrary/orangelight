@@ -16,7 +16,7 @@ module FacetsHelper
   end
 
   def pivot_facet_child_in_params?(field, item, pivot_in_params = false)
-    field = item.field if item && item.respond_to?(:field)
+    field = item.field if item&.respond_to?(:field)
 
     value = facet_value_for_facet_item(item)
 
@@ -28,7 +28,7 @@ module FacetsHelper
   end
 
   def pivot_facet_in_params?(field, item)
-    field = item.field if item && item.respond_to?(:field)
+    field = item.field if item&.respond_to?(:field)
 
     value = facet_value_for_facet_item(item)
     params[:f] && params[:f][field] && params[:f][field].include?(value)
@@ -76,8 +76,8 @@ module FacetsHelper
 
   def render_facet_partials(fields = facet_field_names, options = {})
     super
-  rescue StandardError => error
-    Rails.logger.error("#{self.class}: Failed to render the facet partials for #{fields.join(',')}: #{error}")
+  rescue StandardError => e
+    Rails.logger.error("#{self.class}: Failed to render the facet partials for #{fields.join(',')}: #{e}")
     head :bad_request if respond_to?(:head)
   end
 end

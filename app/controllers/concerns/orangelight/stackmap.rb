@@ -7,7 +7,7 @@ module Orangelight
     def stackmap
       @response, @document = fetch params[:id]
       stackmap_service = ::StackmapService::Url.new(document: @document,
-                                                    loc: params[:loc], cn: params[:cn])
+                                                    loc: params[:loc], call_number: params[:cn])
       @url = stackmap_service.url
       @call_number = stackmap_service.preferred_callno
       @location_label = stackmap_service.location_label

@@ -5,7 +5,8 @@ module AccountHelper
   ## FIXME - Move to
   ### Setup item status
   ITEM_STATUS = begin
-                  YAML.load_file("#{Rails.root}/config/voyager_item_status.yml")
+                  item_status_file_path = Rails.root.join('config', 'voyager_item_status.yml')
+                  YAML.load_file(item_status_file_path)
                 rescue
                   {}
                 end
@@ -20,6 +21,7 @@ module AccountHelper
 
   def format_block_statement(block_message)
     return unless block_message == 'odue_recall_limit_patron'
+
     I18n.t('blacklight.account.overdue_block')
   end
 
@@ -37,16 +39,19 @@ module AccountHelper
 
   def message_status(item)
     return if item[:messages].nil?
+
     content_tag(:span, (item[:messages]['message']).to_s, class: 'message')
   end
 
   def renew_status(item)
     return if item[:renew_status].nil?
+
     content_tag(:b, (item[:renew_status]['status']).to_s)
   end
 
   def renew_state(item)
     return if item[:renew_status].nil?
+
     if item[:renew_status]['status'] == 'Renewed'
       'success'
     else

@@ -14,7 +14,7 @@ RSpec.describe ApplicationHelper do
     let(:args_object) { { field: field, document: document } }
 
     it 'converts reference notes ending with a url to an html link' do
-      expect(references_url(args_object)).to include(link_to(reference_note, url, target: '_blank'))
+      expect(references_url(args_object)).to include(link_to(reference_note, url, target: '_blank', rel: 'noopener'))
     end
 
     it 'keeps reference notes without url the same' do

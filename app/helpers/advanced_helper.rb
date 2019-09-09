@@ -29,6 +29,7 @@ module AdvancedHelper
     if field_num == :f1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
       return search_fields_for_advanced_search[params[:search_field]].key || default_val
     end
+
     params[field_num] || default_val
   end
 
@@ -39,11 +40,11 @@ module AdvancedHelper
   end
 
   # carries over guided search operations if user switches back to guided search from regular search
-  def guided_radio(op_num, op)
+  def guided_radio(op_num, operator)
     if params[op_num]
-      params[op_num] == op
+      params[op_num] == operator
     else
-      op == 'AND'
+      operator == 'AND'
     end
   end
 
@@ -199,8 +200,8 @@ module BlacklightAdvancedSearch
         query_parser_config = config.advanced_search[:query_parser]
         begin
           parsed = ParsingNesting::Tree.parse(query, query_parser_config)
-        rescue Parslet::ParseFailed => parse_failure
-          Blacklight.logger.warn "Failed to parse the query: #{query}: #{parse_failure}"
+        rescue Parslet::ParseFailed => e
+          Blacklight.logger.warn "Failed to parse the query: #{query}: #{e}"
           next
         end
 

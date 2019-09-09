@@ -76,9 +76,11 @@ module BrowseLists
           req = JSON.parse(resp.body)
           req['response']['docs'].each do |record|
             next unless record[facet_field.to_s]
+
             record[facet_field.to_s].each_with_index do |cn, _i|
               sort_cn = StringFunctions.cn_normalize(cn)
               next if multi_cns.key?(sort_cn)
+
               bibid = record['id']
               title = record['title_display']
               if record['title_vern_display']
@@ -148,10 +150,10 @@ module BrowseLists
 
     private
 
-    # determines if there are multiple locations for the same call number and same bib
-    def multiple_locations?(holdings)
-      locations = holdings.reject { |_k, h| h['library'] == 'Online' }.map { |_k, h| h['location'] }.uniq
-      locations.length > 1
-    end
+      # determines if there are multiple locations for the same call number and same bib
+      def multiple_locations?(holdings)
+        locations = holdings.reject { |_k, h| h['library'] == 'Online' }.map { |_k, h| h['location'] }.uniq
+        locations.length > 1
+      end
   end
 end

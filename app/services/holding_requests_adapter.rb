@@ -27,8 +27,8 @@ class HoldingRequestsAdapter
   def doc_holdings
     values = @document['holdings_1display'] || '{}'
     JSON.parse(values)
-  rescue StandardError => error
-    Rails.logger.warn error
+  rescue StandardError => e
+    Rails.logger.warn e
     {}
   end
 
@@ -105,6 +105,7 @@ class HoldingRequestsAdapter
   # @return [String] the location string
   def location_full_display(location)
     return location['library']['label'] if location.fetch('label') == ''
+
     location['library']['label'] + ' - ' + location['label']
   end
 
@@ -114,6 +115,7 @@ class HoldingRequestsAdapter
   def holding_location_rules(holding)
     loc_code = holding.fetch('location_code', nil)
     return loc_code if loc_code.nil?
+
     @bib_data_service.holding_locations[loc_code.to_sym]
   end
 
@@ -155,6 +157,7 @@ class HoldingRequestsAdapter
   # @param holding [Hash]
   def restrictions_for_holding(holding)
     return [] unless holding.key? 'items'
+
     holding['items'].map { |values| values['use_statement'] }.reject(&:blank?)
   end
 
@@ -199,6 +202,7 @@ class HoldingRequestsAdapter
   def voyager_holding?(holding_id)
     return false if @document.fetch(:id, '').start_with?('SCSB')
     return false if %w[thesis visuals].include? holding_id
+
     true
   end
 

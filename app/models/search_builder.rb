@@ -14,6 +14,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def cleanup_boolean_operators(solr_parameters)
     return add_advanced_parse_q_to_solr(solr_parameters) if run_advanced_parse?(solr_parameters)
+
     solr_parameters[:q] = cleaned_query(solr_parameters[:q])
   end
 
@@ -31,6 +32,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def only_home_facets(solr_parameters)
     return if search_parameters?
+
     solr_parameters['facet.field'] = home_facets
     solr_parameters['facet.pivot'] = []
   end
@@ -48,6 +50,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     page = blacklight_params[:page].to_i || 0
     return false if page <= 1
     return false if search_parameters? && page < 1000
+
     true
   end
 

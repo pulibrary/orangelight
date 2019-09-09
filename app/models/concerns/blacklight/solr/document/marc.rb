@@ -18,9 +18,11 @@ module Blacklight
 
         # Accesses the MARC::Record constructed from data retrieved over the HTTP
         # @return [MARC::Record]
+        # rubocop:disable Naming/MemoizedInstanceVariableName
         def to_marc
           @_ruby_marc_obj ||= load_marc
         end
+        # rubocop:enable Naming/MemoizedInstanceVariableName
 
         # These are registered by default
         # @see Blacklight::Solr::Document::MarcExport.register_export_formats
@@ -30,6 +32,7 @@ module Blacklight
         # @return [String]
         def export_as_marcxml
           return '' unless to_marc
+
           super
         end
 
@@ -37,6 +40,7 @@ module Blacklight
         # @return [String]
         def export_as_marc
           return '' unless to_marc
+
           super
         end
 
@@ -53,6 +57,7 @@ module Blacklight
         # @return [String]
         def export_as_refworks_marc_txt
           return '' unless to_marc
+
           super
         end
 
@@ -62,6 +67,7 @@ module Blacklight
         # @return [String]
         def export_as_apa_citation_txt
           return '' unless to_marc
+
           super
         end
 
@@ -69,6 +75,7 @@ module Blacklight
         # @return [String]
         def export_as_mla_citation_txt
           return '' unless to_marc
+
           super
         end
 
@@ -76,6 +83,7 @@ module Blacklight
         # @return [String]
         def export_as_chicago_citation_txt
           return '' unless to_marc
+
           super
         end
 
@@ -83,6 +91,7 @@ module Blacklight
         # @return [String]
         def export_as_endnote
           return '' unless to_marc
+
           super
         end
 
@@ -126,6 +135,7 @@ module Blacklight
           return 'bookitem' if format == 'book'
           return 'journal' if format == 'serial'
           return 'conference' if format == 'conference'
+
           'unknown'
         end
 
@@ -191,14 +201,17 @@ module Blacklight
 
           # Retrieves the bib. ID from the Solr Document
           # @return [String]
+          # rubocop:disable Naming/MemoizedInstanceVariableName
           def marc_source
             @_marc_source ||= fetch(_marc_source_field)
           end
+          # rubocop:enable Naming/MemoizedInstanceVariableName
 
           # Retrieve the MARC 21 bitstream over the HTTP
           # @return [MARC::Record]
           def marc_record_from_marc21
             return if marc_source.blank?
+
             MARC::Record.new_from_marc marc_source
           end
 
@@ -209,8 +222,8 @@ module Blacklight
 
             begin
               marc_json = JSON.parse(marc_source)
-            rescue JSON::ParserError => json_error
-              Rails.logger.error "#{self.class}: Failed to parse the MARC JSON: #{json_error}"
+            rescue JSON::ParserError => e
+              Rails.logger.error "#{self.class}: Failed to parse the MARC JSON: #{e}"
               return
             end
             MARC::Record.new_from_hash marc_json

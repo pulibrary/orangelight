@@ -39,12 +39,12 @@ module StringFunctions
 
     private
 
-    def accession_number(str)
-      norm = str.upcase
-      norm = norm.gsub(/(CD|DVD|LP|LS)-/, '\1') # should file together regardless of dash
+      def accession_number(str)
+        norm = str.upcase
+        norm = norm.gsub(/(CD|DVD|LP|LS)-/, '\1') # should file together regardless of dash
 
-      # normalize number to 7-digits, ignore oversize q
-      norm.gsub(/(\d+)(Q?)$/) { format('%07d', Regexp.last_match[1].to_i) }
-    end
+        # normalize number to 7-digits, ignore oversize q
+        norm.gsub(/(\d+)(Q?)$/) { format('%07d', Regexp.last_match[1].to_i) }
+      end
   end
 end

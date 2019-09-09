@@ -41,6 +41,7 @@ module BlacklightHelper
 
   def wildcard_char_strip(solr_parameters)
     return unless solr_parameters[:q]
+
     solr_parameters[:q] = solr_parameters[:q].delete('?')
   end
 
@@ -48,8 +49,9 @@ module BlacklightHelper
   # Ends all left-anchor searches with wildcards for matches that begin with search string
   # @param solr_parameters [Blacklight::Solr::Request] the parameters for the Solr query
   def left_anchor_escape_whitespace(solr_parameters)
-    return unless solr_parameters[:qf] == '${left_anchor_qf}' && solr_parameters[:q]
-    query = solr_parameters[:q].dup
+    return unless solr_parameters[:q]&.include?('{!qf=$left_anchor_qf pf=$left_anchor_pf}')
+
+    query = solr_parameters[:q].gsub('{!qf=$left_anchor_qf pf=$left_anchor_pf}', '')
     # Escape any remaining whitespace and solr operator characters
     query.gsub!(/(\s)/, '\\\\\1')
     query.gsub!(/(["\{\}\[\]\^\~])/, '\\\\\1')
@@ -61,6 +63,7 @@ module BlacklightHelper
   def pul_holdings(solr_parameters)
     return unless blacklight_params[:f_inclusive] && blacklight_params[:f_inclusive][:advanced_location_s] &&
                   blacklight_params[:f_inclusive][:advanced_location_s].include?('pul')
+
     solr_parameters[:fq].map! { |fq| fq.gsub '"pul"', '*' }
     solr_parameters[:fq] << '-id:SCSB*'
   end
@@ -69,6 +72,7 @@ module BlacklightHelper
     return unless %w[series_title in_series].include?(blacklight_params[:f1]) ||
                   blacklight_params[:f2] == 'series_title' ||
                   blacklight_params[:f3] == 'series_title'
+
     solr_parameters[:fl] = 'id,score,author_display,marc_relator_display,format,pub_created_display,'\
                            'title_display,title_vern_display,isbn_s,oclc_s,lccn_s,holdings_1display,'\
                            'electronic_access_1display,cataloged_tdt,series_display'
@@ -78,16 +82,19 @@ module BlacklightHelper
   def html_facets(solr_parameters)
     return if blacklight_params[:format].nil? || blacklight_params[:format] == 'html' ||
               blacklight_params[:format] == 'json'
+
     solr_parameters[:facet] = false
   end
 
   def course_reserve_filters(solr_parameters)
     return unless blacklight_params[:f]
+
     instructor = Array(blacklight_params[:f][:instructor]).first
     course = Array(blacklight_params[:f][:course]).first
     department = Array(blacklight_params[:f][:department]).first
     filter = Array(blacklight_params[:f][:filter]).first
     return if instructor.blank? && course.blank? && department.blank? && filter.blank?
+
     courses = CourseReserveRepository.all.query(instructor: instructor, course_with_id: course, department_with_identifier: department)
     index_course_reserves(courses)
     solr_parameters[:fq] ||= []
@@ -149,7 +156,7 @@ module BlacklightHelper
   end
 
   def cjk_unigrams_size(str)
-    if str && str.is_a?(String)
+    if str&.is_a?(String)
       str.scan(/\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/).size
     else
       0
@@ -272,7 +279,6 @@ module BlacklightHelper
   # @params my_params [ActionController::Parameters]
   # @return [String] markup
   def render_constraints_filters(my_params = params)
-
     my_params[:range] = my_params[:range].reject { |_k, v| v.nil? }
     super(my_params)
   end

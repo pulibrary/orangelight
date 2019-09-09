@@ -10,6 +10,7 @@ module CatalogHelper
   def render_document_class(document = @document)
     types = document_types(document)
     return if types.blank?
+
     type = types.first
     "#{document_class_prefix}#{type.try(:parameterize) || type}"
   end
@@ -26,6 +27,7 @@ module CatalogHelper
   # @param [values]
   def render_search_to_page_title_filter(facet, values)
     return '' if values.blank?
+
     super(facet, values)
   end
 

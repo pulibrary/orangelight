@@ -28,6 +28,7 @@ SitemapGenerator::Sitemap.create do
     end
 
     break if response['nextCursorMark'] == cursor_mark
+
     cursor_mark = response['nextCursorMark']
   end
 end

@@ -44,16 +44,19 @@ class CourseReserveRepository
 
       def instructor=(instructor)
         return if instructor.blank?
+
         @instructor = instructor
       end
 
       def course=(course)
         return if course.blank?
+
         @course = course
       end
 
       def department=(department)
         return if department.blank?
+
         @department = department
       end
 
@@ -68,6 +71,7 @@ class CourseReserveRepository
         def to_query(field)
           value = send(field)
           return unless value
+
           "#{field}_s:\"#{value}\""
         end
     end

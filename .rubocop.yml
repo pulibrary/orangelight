@@ -5,15 +5,17 @@ inherit_from: .rubocop_todo.yml
 
 Rails:
   Enabled: true
-
+#Include:
+#    - '**/Capfile'
+#    - '**/Gemfile'
+#    - '**/Rakefile'
+#    - '**/config.ru'
+#    - 'app/**/*.rb'
+#    - 'spec/**/*.rb'
 AllCops:
   UseCache: false
   DisplayCopNames: true
-  Include:
-    - '**/Capfile'
-    - '**/Gemfile'
-    - '**/Rakefile'
-    - '**/config.ru'
+
   Exclude:
     - 'db/**/*'
     - 'script/**/*'

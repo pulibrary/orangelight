@@ -9,6 +9,7 @@ module Orangelight
       # Exclude certain export formats for records not in Voyager.
       def will_export_as(short_name, content_type = nil)
         return if formats_to_exclude.include? short_name
+
         super
       end
 
@@ -20,6 +21,7 @@ module Orangelight
 
         def formats_to_exclude
           return [] if voyager?
+
           formats
         end
 
@@ -33,6 +35,7 @@ module Orangelight
         def voyager?
           return false if fetch(:id, '').start_with?('SCSB')
           return false if %w[thesis visuals].include? holding_id
+
           true
         end
     end
