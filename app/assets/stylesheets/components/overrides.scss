@@ -105,23 +105,23 @@ address {
   margin-bottom: 0;
 }
 
-@media (min-width: $bp-small) {
+@media (min-width: $bp-medium) {
   .container {
     width: 100%;
     max-width: 100%;
   }
 }
 
-@media (min-width: $bp-medium) {
-  .container {
-    width: $bp-medium;
-  }
-}
-
 @media (min-width: $bp-large) {
   .container {
     width: $bp-large;
-    max-width: $bp-large;
+  }
+}
+
+@media (min-width: $bp-xlarge) {
+  .container {
+    width: $bp-xlarge;
+    max-width: $bp-xlarge;
   }
 }
 

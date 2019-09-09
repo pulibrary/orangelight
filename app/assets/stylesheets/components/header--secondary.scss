@@ -7,7 +7,7 @@
   font-size: $text-small;
   line-height: 1.4rem;
 
-  @media (min-width: $bp-medium) {
+  @media (min-width: $bp-large) {
     font-size: 14px;
   }
 }
@@ -27,7 +27,7 @@
   // float: right;
   // text-align: center;
 
-  @media (min-width: $bp-medium) {
+  @media (min-width: $bp-large) {
     // width: 30%;
     // margin-top: 0;
     justify-content: flex-end;
@@ -59,7 +59,7 @@
     &:last-child {
       padding-right: 0;
 
-      @media (min-width: $bp-small) {
+      @media (min-width: $bp-medium) {
         padding-right: 1em;
       }
     }

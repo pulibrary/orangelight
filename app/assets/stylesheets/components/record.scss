@@ -191,7 +191,7 @@
   }
 }
 
-@media (max-width: $bp-small) {
+@media (max-width: $bp-medium) {
   #main-content {
     .availability-table td {
       width: 100%;
@@ -229,7 +229,7 @@
 }
 
 
-@media (min-width: $bp-large) {
+@media (min-width: $bp-xlarge) {
   .journal-current-issues {
     columns: 3;
   }
