@@ -164,7 +164,7 @@
   }
 
   &:before {
-    content: "\e096";
+    content: "\f065";
     position: absolute;
     z-index: 2;
     width: 3rem;
@@ -176,7 +176,7 @@
     bottom: -25px;
     right: -25px;
     transform: translate(-50%, -50%);
-    font-family: "Glyphicons Halflings";
+    font-family: FontAwesome;
     speak: none;
     font-style: normal;
     font-weight: normal;
