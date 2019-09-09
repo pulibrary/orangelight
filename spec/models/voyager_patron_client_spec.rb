@@ -6,11 +6,12 @@ require './lib/orangelight/voyager_patron_client.rb'
 require './lib/orangelight/voyager_account.rb'
 
 RSpec.describe VoyagerPatronClient do
+  subject { described_class.new(sample_patron) }
+
   context 'A valid Princeton User' do
     sample_patron = { 'barcode' => '2232323232323',
                       'last_name' => 'smith',
                       'patron_id' => '777777' }
-    subject { described_class.new(sample_patron) }
 
     let(:voyager_xml_namespace) { 'http://www.endinfosys.com/Voyager/myAccount' }
     let(:voyager_authenticate_response) { fixture('/authenticate_patron_response_success.xml') }
