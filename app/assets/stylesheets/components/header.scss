@@ -36,7 +36,7 @@
   .logo__pul {
     z-index: 10;
 
-    @media (min-width: 576px) and (max-width: 589px) {
+    @media (min-width: $bp-small) and (max-width: 589px) {
       &.col-sm-auto {
         width: 100%;
       }
@@ -263,7 +263,7 @@
   }
 }
 
-@media (max-width: $bp-medium) {
+@media (max-width: $bp-large) {
   .pagination-search-widgets {
 
     .search-widgets li {

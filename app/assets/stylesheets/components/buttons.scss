@@ -85,7 +85,7 @@ a.clear-bookmarks {
 .bookmarksTools.nav #citationLink,
 .bookmarksTools.nav > li > a,
 .bookmark-tool a {
-  @media (min-width: $bp-small) {
+  @media (min-width: $bp-medium) {
     margin: 3px 3px 3px 0;
   }
 

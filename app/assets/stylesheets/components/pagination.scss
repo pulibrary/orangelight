@@ -3,7 +3,7 @@
 ul.pagination {
   margin: 0;
 
-  @media (max-width: $bp-small) {
+  @media (max-width: $bp-medium) {
     width: 100%;
     text-align: center;
   }
