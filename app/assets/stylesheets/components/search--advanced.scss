@@ -22,14 +22,14 @@
 
   select.form-control {
     margin-bottom: 1em;
-    @media (min-width: $bp-small) {
+    @media (min-width: $bp-medium) {
       width: auto;
       margin-bottom: 0;
     }
   }
 
   div {
-    @media (min-width: $bp-small) {
+    @media (min-width: $bp-medium) {
       display: inline-block;
       float: right;
       width: calc(100% - 150px);

@@ -36,7 +36,7 @@ header .navbar-form .input-group .input-group-btn {
   .search-query-form {
     padding: 1.125em 0 0;
 
-    @media (min-width: $bp-medium) {
+    @media (min-width: $bp-large) {
       padding: 1.125em 0;
     }
   }
@@ -100,13 +100,13 @@ header .navbar-form .input-group .input-group-btn {
   height: 42px;
 }
 
-@media (min-width: $bp-medium) {
+@media (min-width: $bp-large) {
   .navbar-form .input-group > .search_q.form-control {
     width: 250px;
   }
 }
 
-@media (min-width: $bp-large) {
+@media (min-width: $bp-xlarge) {
   .navbar-form .input-group > .search_q.form-control {
     width: 375px;
   }
@@ -120,7 +120,7 @@ header .navbar-form .input-group .input-group-btn {
 #search-navbar .search-query-form {
   width: 100%; 
 
-  @media (min-width: $bp-medium) {
+  @media (min-width: $bp-large) {
     width: auto;
   }
 }
@@ -128,11 +128,11 @@ header .navbar-form .input-group .input-group-btn {
 .search-navbar .search-input {
   flex: 1;
 
-  @media (min-width: $bp-medium) {
+  @media (min-width: $bp-large) {
     min-width: 250px;
   }
 
-  @media (min-width: $bp-large) {
+  @media (min-width: $bp-xlarge) {
     min-width: 375px;
   }
 

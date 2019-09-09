@@ -8,14 +8,14 @@
   display: inline-block;
   flex: 1;
 
-  @media (min-width: $bp-medium) {
+  @media (min-width: $bp-large) {
     flex: initial;
   }
 
   li {
     padding: 1em 0;
 
-    @media (min-width: $bp-medium) {
+    @media (min-width: $bp-large) {
       a {
         padding-left: 1em;
       }

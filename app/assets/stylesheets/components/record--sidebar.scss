@@ -51,7 +51,7 @@
     }
 }
 
-@media (min-width: $bp-small) and (max-width: $bp-large) {
+@media (min-width: $bp-medium) and (max-width: $bp-xlarge) {
     #sidebar .document-thumbnail {
         height: 135px;
         img,
