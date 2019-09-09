@@ -66,7 +66,7 @@ gem 'ddtrace'
 gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
 gem 'rspec-rails', '~> 3.4'
-gem 'rubocop', '~> 0.49', require: false
+gem 'rubocop', '~> 0.74', require: false
 gem 'rubocop-rails'
 gem 'rubocop-rspec', '~> 1.20.1'
 gem 'rubyzip', '>= 1.2.2'
