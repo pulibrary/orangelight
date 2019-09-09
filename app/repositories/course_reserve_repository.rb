@@ -15,8 +15,8 @@ class CourseReserveRepository
       def courses
         values = courses_response.body
         JSON.parse(values)
-      rescue Faraday::ClientError => client_error
-        Rails.logger.error("Failed to retrieve the course information from the server: #{client_error.message}")
+      rescue Faraday::ClientError => e
+        Rails.logger.error("Failed to retrieve the course information from the server: #{e.message}")
         []
       end
   end
