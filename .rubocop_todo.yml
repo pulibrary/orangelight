@@ -154,6 +154,13 @@ Rails/OutputSafety:
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
 
+Rails/HelperInstanceVariable:
+  Exclude:
+    - 'app/helpers/advanced_helper.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/helpers/blacklight_helper.rb'
+    - 'app/helpers/catalog_helper.rb'
+
 # Offense count: 5
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 # SupportedStyles: nested, compact
