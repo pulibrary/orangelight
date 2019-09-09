@@ -17,8 +17,6 @@ Coveralls.wear!('rails') do
   add_filter 'app/controllers/search_history_controller.rb'
 end
 
-FactoryBot.find_definitions
-
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 end
