@@ -3,7 +3,7 @@
 @import "variables/typography";
 
 header .navbar-form .input-group .custom-select {
-  width: 190px;
+  width: auto;
 }
 
 @media (max-width: 575px) {
@@ -118,7 +118,7 @@ header .navbar-form .input-group .input-group-btn {
 }
 
 #search-navbar .search-query-form {
-  width: 100%; 
+  width: 100%;
 
   @media (min-width: $bp-large) {
     width: auto;
