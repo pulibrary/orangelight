@@ -22,4 +22,4 @@ production:
   <<: *defaults
 staging:
   <<: *defaults
-  bibdata_base: https://bibdata-staging.princeton.edu
+  bibdata_base: https://bibdata.princeton.edu # change back when ready to merge
