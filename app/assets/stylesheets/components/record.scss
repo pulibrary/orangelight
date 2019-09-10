@@ -109,6 +109,17 @@
     }
   }
 
+#aside {
+  @media (min-width: $bp-medium) {
+    position: absolute;
+    top: 175px
+  }
+  @media (min-width: $bp-xlarge) {
+    position: absolute;
+    top: 275px
+  }
+}
+
   #aside h3  {
     font-family: $font-sans-alt;
     font-weight: 500;
