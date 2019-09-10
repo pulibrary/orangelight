@@ -1,13 +1,8 @@
 <%= render 'previous_next_doc' %>
 <div id="main-content" class="col-12 main-content">
-  <div class="row">  
+  <div class="row">
     <div id="sidebar" class="col-12 col-md-3 <%= render_document_class %>">
       <%= render_document_sidebar_partial %>
-      <div id="aside" class="col <%= render_document_class %>">
-        <h2 class="sr-only">Supplementary Information</h2>
-        <%= render partial: 'show_restrictions', locals: { document: @document } %>
-        <%= render partial: 'show_other_versions', locals: { document: @document } %>
-      </div>
     </div>
     <div id="content" class="col-12 col-md-9 content">
       <%= render_document_heading_partial %>
@@ -26,6 +21,11 @@
           </dd>
         </dl>
       <% end %>
+    </div>
+    <div id="aside" class="col-12 col-md-3 <%= render_document_class %>">
+      <h2 class="sr-only">Supplementary Information</h2>
+      <%= render partial: 'show_restrictions', locals: { document: @document } %>
+      <%= render partial: 'show_other_versions', locals: { document: @document } %>
     </div>
   </div>
 </div>
