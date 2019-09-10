@@ -113,11 +113,11 @@ RSpec.describe HoldingRequestsAdapter do
           '671799' => { 'location_code' => 'scsbnypl' }
         }
       end
+      let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
       let(:holding_locations) { { 'scsbnypl' => [] } }
 
       it 'holding is sorted last' do
         allow(bib_data_service).to receive(:holding_locations).and_return(holding_locations)
-        allow(holdings).to receive(:doc_holdings).and_return(holdings_hash)
         expect(holdings.sorted_physical_holdings.map { |h| h[0] }).to eq %w[671799 671798]
       end
     end
