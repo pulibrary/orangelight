@@ -1,5 +1,19 @@
+$stackmap-scale: 0.585;
+$locator-scale: 0.8;
+
 .stackmap-cn, .stackmap-library {
   font-weight: bold;
+}
+
+.modal-dialog {
+  @media (min-width: $bp-small)  {
+    width: 90%;
+    max-width: 90%;
+  }
+
+  @media (min-width: $bp-medium)  {
+    max-width: 650px;
+  }
 }
 
 #stackmap-modal {
@@ -11,93 +25,50 @@
 
   .modal-body {
 
+    p {
+      margin-bottom: 1em;
+    }
+
     .stackmap-wrapper {
       width: 568px;
-      height: 500px;
-
-      &[data-library*="Engineering"] {
-        height: 300px;
-      }
-
-      &[data-library*="Lewis"] {
-        height: 335px;
-      }
-
-      &[data-library*="Furth"] {
-        height: 695px;
-      }
-
-      &[data-library*="Stokes"] {
-        height: 690px;
-      }
-
-      &[data-library*="Asian"] {
-        height: 340px;
-      }
-
-      &[data-library*="Marquand"] {
-        height: 675px;
-      }
-
-      &[data-library*="Mendel"] {
-        height: 515px;
-      }
+      height: 505px;
     }
 
     .stackmap-src {
       border: 0;
-      width: 785px;
-      height: 695px;
+      width: 150vw;
+      height: 850px;
 
-      transform: scale(0.725);
+      transform: scale($stackmap-scale);
       transform-origin: top left;
 
-      &[src*="Engineering"] {
-        width: 970px;
-        height: 525px;
-        transform: scale(0.585);
+      &[src*="locator"] {
+        height: 650px;
+        transform: scale($locator-scale);
+        width: 115vw;
+
+        @media (min-width: $bp-small) {
+          width: 107vw;
+        }
+
+        @media (min-width: $bp-medium) {
+          width: calc(618px/#{$locator-scale});
+        }
       }
 
-      &[src*="Lewis"] {
-        width: 945px;
-        height: 570px;
-        transform: scale(0.585);
+      @media (min-width: $bp-small) {
+        width: 140vw;
       }
 
-      &[src*="Furth"] {
-        width: 1000px;
-        height: 1210px;
-        transform: scale(0.575);
-      }
-
-      &[src*="Stokes"] {
-        width: 945px;
-        height: 1315px;
-        transform: scale(0.525);
-      }
-
-      &[src*="Asian"] {
-        width: 990px;
-        height: $bp-small;
-        transform: scale(0.585);
-      }
-
-      &[src*="Marquand"] {
-        width: 965px;
-        height: 1155px;
-        transform: scale(0.585);
-      }
-
-      &[src*="Mendel"] {
-        width: 980px;
-        height: 875px;
-        transform: scale(0.585);
+      @media (min-width: $bp-medium) {
+        width: calc(618px/#{$stackmap-scale});
       }
     }
   }
 
   .modal-footer {
     padding: 0;
+    background: whitesmoke;
 
     ul {
       margin: 0;
@@ -112,10 +83,10 @@
 
       &:first-child {
         border-bottom-left-radius: 6px;
-        border-right: 1px solid #e5e5e5;
       }
 
       &:last-child {
+        border-left: 1px solid #e5e5e5;
         border-bottom-right-radius: 6px;
       }
     }
