@@ -46,6 +46,7 @@ ul {
 a,
 a:visited {
   text-decoration: underline;
+  color: black;
 }
 
 // Printing Tables:
@@ -293,4 +294,9 @@ abbr {
   li {
     margin-bottom: 1em;
   }
+}
+
+/* Hides blocks from print view */
+.hide-print {
+  display: none;
 }
