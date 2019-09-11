@@ -75,8 +75,11 @@
 }
 
 .advanced-facet-label {
-  text-align: right;
   padding-top: 4px;
+
+  @media (min-width: $bp-medium) {
+    text-align: right;
+  }
 }
 
 .advanced.row {
@@ -85,7 +88,7 @@
 }
 
 .clear-form {
-  color: #007bff;
+  color: darken($blue, 3);
 }
 
 .well > h4 {
