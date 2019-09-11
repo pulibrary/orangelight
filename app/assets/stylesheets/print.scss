@@ -10,34 +10,42 @@ body,
 .blacklight-catalog-show .main-content .availability--online,
 .blacklight-catalog-show .main-content .availability--physical .availability-table {
   font-family: Arial, Helvetica, sans-serif;
-}
-
-body,
-.blacklight-catalog-show .main-content dt,
-.blacklight-catalog-show .main-content dd,
-.blacklight-catalog-show .main-content h3,
-.blacklight-catalog-show .main-content .availability--online,
-.blacklight-catalog-show .main-content .availability--physical .availability-table {
   font-size: 12pt;
 }
 
-.blacklight-catalog-show h1 {
+.document dt,
+.top-fields dt,
+.panel-heading {
   font-size: 14pt;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  width: 100%;
+}
+
+dd {
+  margin-bottom: 1em;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.constraints-container,
+.blacklight-catalog-show h1 {
+  font-size: 16pt;
+  font-weight: bold;
+  margin-bottom: 1em;
+  width: 100%;
+
+  .remove {
+    display: none;
+  }
 }
 
 a,
 a:visited {
   text-decoration: underline;
-}
-
-a[href]:after {
-  content: "";
-}
-
-pre,
-blockquote {
-  border: 1px solid #999;
-  page-break-inside: avoid;
 }
 
 // Printing Tables:
@@ -68,17 +76,10 @@ footer,
 .alert.announcement,
 .icon-rssfeed,
 .request.btn,
-.blacklight-catalog-show h2 {
+.blacklight-catalog-show h2,
+.application-heading,
+.blacklight-catalog-index h2 {
   display: none;
-}
-
-.document dt,
-.top-fields dt,
-h1,
-.panel-heading {
-  font-weight: bold;
-  font-size: 13pt;
-  width: 100%;
 }
 
 .blacklight-catalog-show .main-content .top-fields,
@@ -90,8 +91,8 @@ h1,
   margin: 0;
 }
 
-.blacklight-catalog-show h3 {
-  margin-bottom: 0;
+.availability--physical h3 {
+  margin-bottom: 0.5em;
 }
 
 #librarian-classic-views,
@@ -139,6 +140,10 @@ h1,
   font-size: 12pt;
 }
 
+.holding-block td {
+  display: block;
+}
+
 .badge {
   border: 0;
 }
@@ -163,9 +168,11 @@ h1,
   }
 }
 
-
+#content,
 .blacklight-catalog-show .content {
   width: 100%;
+  max-width: 100%;
+  flex-basis: 100%;
 }
 
 .browse-name,
@@ -194,6 +201,16 @@ h1,
   button {
     display: none;
   }
+
+  .modal-title {
+    font-size: 16pt;
+  }
+}
+
+#stackmap-modal iframe {
+  width: 100vh;
+  height: 100vh;
+  border: 0;
 }
 
 .dl-horizontal .other-views,
@@ -266,4 +283,14 @@ abbr {
 
 #sortAndPerPage {
   margin: 0;
+}
+
+.blacklight-catalog-index .blacklight-holdings {
+  border-left: 2px solid lightgray;
+  padding-left: 1em;
+  margin-top: 1em;
+
+  li {
+    margin-bottom: 1em;
+  }
 }
