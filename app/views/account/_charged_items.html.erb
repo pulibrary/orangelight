@@ -3,7 +3,7 @@
     <table class="table table-striped table-bordered account--charged_items">
       <thead>
         <tr>
-          <th><% if (!@account.has_blocks?) %><label><input type="checkbox" id="select-all-renew"/> <span class="sr-only">Select all</span></label><% end %></th>
+          <th class="hide-print"><% if (!@account.has_blocks?) %><label><input type="checkbox" id="select-all-renew"/> <span class="sr-only">Select all</span></label><% end %></th>
           <th>Item</th>
           <th>Call number</th>
           <th>Due date</th>
@@ -13,7 +13,7 @@
       <tbody>
         <% @account.charged_items.each do |item| %>
           <tr data-item-id="<%= item['itemId'] %>" class="<%= renew_state(item) %>">
-            <td>
+            <td class="hide-print">
               <% unless @account.has_blocks? %>
                 <% if item["renewable"] == 'true' %>
                   <label><input id="charged-<%= item["itemId"] %>"
@@ -42,7 +42,7 @@
         <% end %>
       </tbody>
     </table>
-    <%= button_tag "Renew selected items", class: 'btn btn-primary', data: { disable_with: "Submitting renewal requests <span class='icon-spinner pulse'></span>" } %>
+    <%= button_tag "Renew selected items", class: 'btn btn-primary hide-print', data: { disable_with: "Submitting renewal requests <span class='icon-spinner pulse'></span>" } %>
   <% end %>
 <% else %>
   <p><%= I18n.t('blacklight.account.no_pickup_items') %></p>
