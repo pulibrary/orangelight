@@ -1,12 +1,13 @@
-<% doc_presenter = show_presenter(@document) %>
-<% titlevalue = doc_presenter.field_value :field => 'title_vern_display' %>
+<% titlevalue = @document['title_vern_display'] %>
 <div id='stackmap-modal'>
-  <div class="modal-header">
-  	<button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
-    <% unless titlevalue == '' %>
-        <h4 class="modal-title" id="myModalLabel" dir="<%= titlevalue.dir %>"> <%= titlevalue %> </h4>
+  <div class="modal-header d-block">
+    <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    <% unless titlevalue.nil? %>
+      <h5 class="modal-title" id="myModalLabel" dir="<%= titlevalue.dir %>"> <%= titlevalue %> </h5>
     <% end %>
-    <h4 class="modal-title" id="myModalLabel"><%= doc_presenter.field_value :field => 'title_display' %></h4>
+    <h5 class="modal-title" id="myModalLabel"><%= @document['title_display'] %></h5>
   </div>
 
 
@@ -18,8 +19,8 @@
       <iframe class="stackmap-src" src=<%= @url %>></iframe>
     </div>
   </div>
-  <div class="modal-footer">
-    <ul>
+  <div class="modal-footer justify-content-center">
+    <ul class="w-100">
       <li>
         <a href="https://library.princeton.edu/help/trace-materials" target="_blank">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px"

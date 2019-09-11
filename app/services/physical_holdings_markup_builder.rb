@@ -33,7 +33,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                      class: 'find-it',
                      data: {
                        'map-location' => location.to_s,
-                       'ajax-modal' => 'trigger',
+                       'blacklight-modal' => 'trigger',
                        'call-number' => call_number,
                        'library' => library
                      })
