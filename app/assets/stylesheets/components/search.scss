@@ -138,6 +138,12 @@ header .navbar-form .input-group .input-group-btn {
 
   input {
     width: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    @media (min-width: 575px) {
+      border-radius: 0;
+    }
   }
 }
 
@@ -160,4 +166,13 @@ select::-ms-expand {
 
 .ie9 select + .caret {
   display: none;
+}
+
+#search_field.custom-select {
+  height: calc(1.75em + 0.75rem + 2px);
+  
+  @media (min-width: 575px) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }
