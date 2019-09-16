@@ -109,14 +109,19 @@
     }
   }
 
-#aside {
+#aside, #sidebar {
   @media (min-width: $bp-medium) {
-    position: absolute;
-    top: 175px
+    width: 25%;
+    float: left;
+    padding-right: 1em;
   }
-  @media (min-width: $bp-xlarge) {
-    position: absolute;
-    top: 275px
+}
+
+#content {
+  @media (min-width: $bp-medium) {
+    width: 75%;
+    float: right;
+    padding-left: 1em;
   }
 }
 
@@ -227,7 +232,6 @@
 }
 
 #content {
-  float: right;
   margin-bottom: 1.25rem;
 }
 
