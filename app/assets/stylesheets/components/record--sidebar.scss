@@ -35,6 +35,7 @@
 #sidebar .document-thumbnail {
     display: block;
     height: 250px;
+    max-width: 250px;
     width: 100%;
     text-align: center;
     margin-bottom: 2em;
@@ -54,6 +55,7 @@
 @media (min-width: $bp-medium) and (max-width: $bp-xlarge) {
     #sidebar .document-thumbnail {
         height: 135px;
+        max-width: 120px;
         img,
         .default {
             font-size: 7em;
