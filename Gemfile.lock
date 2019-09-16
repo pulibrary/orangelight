@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/projectblacklight/blacklight_advanced_search
-  revision: a936db016f05061f2f8c488d19a4f98292132f20
+  revision: ae7e3b7242337dceaabb23d212466e7504dedb0e
   branch: master
   specs:
     blacklight_advanced_search (7.0.0.alpha)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 735fad67c3b407bc773bca0b74319b1b8f805821
+  revision: d4a188c6a5dfe9dbaed87060ab77566872a2320e
   specs:
     requests (0.0.2)
       bootstrap
@@ -112,8 +112,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.6.0)
-      public_suffix (>= 2.0.2, < 4.0)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     amq-protocol (2.3.0)
     arel (8.0.0)
     ast (2.4.0)
@@ -154,7 +154,7 @@ GEM
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capybara (3.25.0)
+    capybara (3.29.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -162,7 +162,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    childprocess (1.0.1)
+    childprocess (2.0.0)
       rake (< 13.0)
     chosen-rails (1.8.7)
       coffee-rails (>= 3.2)
@@ -188,7 +188,7 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
-    ddtrace (0.25.0)
+    ddtrace (0.27.0)
       msgpack
     deprecation (1.0.0)
       activesupport
@@ -228,10 +228,10 @@ GEM
       activesupport (>= 2.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    hashdiff (0.4.0)
+    hashdiff (1.0.0)
     hashie (3.6.0)
     high_voltage (3.0.0)
-    honeybadger (4.3.1)
+    honeybadger (4.5.1)
     http (3.3.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -280,9 +280,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    mail_form (1.7.1)
-      actionmailer (>= 3.2, < 6)
-      activemodel (>= 3.2, < 6)
+    mail_form (1.8.0)
+      actionmailer (>= 5.0)
+      activemodel (>= 5.0)
     marc (1.0.4)
       scrub_rb (>= 1.0.1, < 2)
       unf
@@ -295,7 +295,7 @@ GEM
       libv8 (>= 6.9.411)
     minitest (5.11.3)
     modernizr-rails (2.7.1)
-    msgpack (1.3.0)
+    msgpack (1.3.1)
     multipart-post (2.1.1)
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
@@ -315,7 +315,7 @@ GEM
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
     parallel (1.17.0)
-    parser (2.6.3.0)
+    parser (2.6.4.1)
       ast (~> 2.4.0)
     parslet (1.8.2)
     pg (1.1.4)
@@ -327,7 +327,7 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
-    public_suffix (3.1.1)
+    public_suffix (4.0.1)
     rack (2.0.7)
     rack-proxy (0.6.5)
       rack
@@ -366,7 +366,7 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     rdoc (4.3.0)
-    regexp_parser (1.5.1)
+    regexp_parser (1.6.0)
     request_store (1.4.1)
       rack (>= 1.4)
     responders (3.0.0)
@@ -403,7 +403,7 @@ GEM
     rubocop-rspec (1.22.2)
       rubocop (>= 0.52.1)
     ruby-progressbar (1.10.1)
-    rubyzip (1.2.3)
+    rubyzip (1.2.4)
     safe_yaml (1.0.5)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -428,8 +428,8 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    selenium-webdriver (3.142.3)
-      childprocess (>= 0.5, < 2.0)
+    selenium-webdriver (3.142.4)
+      childprocess (>= 0.5, < 3.0)
       rubyzip (~> 1.2, >= 1.2.2)
     serverengine (2.0.7)
       sigdump (~> 0.2.2)
@@ -468,7 +468,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sshkit (1.19.1)
+    sshkit (1.20.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     string_rtl (0.1.0)
@@ -477,8 +477,8 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
-    tins (1.21.0)
-    traject (3.1.0)
+    tins (1.21.1)
+    traject (3.2.0)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
       hashie (~> 3.1)
@@ -501,11 +501,11 @@ GEM
       rack (>= 1.4, < 3.0)
     warden (1.2.8)
       rack (>= 2.0.6)
-    webdrivers (4.1.0)
+    webdrivers (4.1.2)
       nokogiri (~> 1.6)
       rubyzip (~> 1.0)
       selenium-webdriver (>= 3.0, < 4.0)
-    webmock (3.6.0)
+    webmock (3.7.3)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -532,7 +532,7 @@ PLATFORMS
 DEPENDENCIES
   babel-transpiler
   bixby
-  blacklight (~> 7.0)
+  blacklight (~> 7.0.0)
   blacklight-marc!
   blacklight_advanced_search!
   blacklight_range_limit
