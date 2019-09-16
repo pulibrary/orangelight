@@ -533,12 +533,18 @@ class CatalogController < ApplicationController
       field.solr_adv_parameters = {
         qf: 'isbn_t'
       }
+      field.solr_parameters = {
+        qf: 'isbn_t'
+      }
     end
 
     config.add_search_field('issn') do |field|
       field.include_in_simple_select = false
       field.label = 'ISSN'
       field.solr_adv_parameters = {
+        qf: 'issn_s'
+      }
+      field.solr_parameters = {
         qf: 'issn_s'
       }
     end
@@ -550,12 +556,18 @@ class CatalogController < ApplicationController
       field.solr_adv_parameters = {
         qf: 'lccn_s'
       }
+      field.solr_parameters = {
+        qf: 'lccn_s'
+      }
     end
 
     config.add_search_field('oclc') do |field|
       field.include_in_simple_select = false
       field.include_in_advanced_search = false
       field.label = 'OCLC'
+      field.solr_adv_parameters = {
+        qf: 'oclc_s'
+      }
       field.solr_adv_parameters = {
         qf: 'oclc_s'
       }
