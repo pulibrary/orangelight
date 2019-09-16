@@ -7,7 +7,7 @@ gem 'rails', '~> 5.1.6.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Blacklight
-gem 'blacklight', '~> 7.0'
+gem 'blacklight', '~> 7.0.0'
 
 gem 'rsolr'
 
