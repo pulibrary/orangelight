@@ -16,7 +16,7 @@ describe Orangelight::Middleware::InvalidParameterHandler do
         'QUERY_STRING' => query_string,
         'REQUEST_URI' => "/catalog?#{query_string}",
         'PATH_INFO' => '/',
-        'HTTP_ACCEPT' => 'application/json',
+        'HTTP_ACCEPT' => 'text/html',
         'rack.input' => ''
       }
     end
@@ -51,8 +51,8 @@ describe Orangelight::Middleware::InvalidParameterHandler do
         expect { JSON.parse(body_content) }.not_to raise_error(JSON::ParserError)
         json_response = JSON.parse(body_content)
 
-        expect(json_response).to include('response')
-        expect(json_response['response']).to include('docs')
+        expect(json_response).to include('data')
+        expect(json_response).to include('included')
       end
     end
 
@@ -65,13 +65,12 @@ describe Orangelight::Middleware::InvalidParameterHandler do
         allow(Rails.logger).to receive(:error)
       end
 
-      it 'returns a 400 response and logs an error' do
+      it 'returns a 400 response, displays an error message, and logs the error' do
         status, headers, body = invalid_parameter_handler.call(env)
 
-        expect(body.join).to eq('Bad Request')
+        expect(body.join).to include('For help, please email', 'start over')
         expect(status).to eq(400)
-        expect(headers['Content-Type']).to eq('application/json; charset=UTF-8')
-        expect(headers['Content-Length']).to eq('11')
+        expect(headers['Content-Type']).to eq('text/html; charset=UTF-8')
         expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request\: Invalid query parameters\: invalid %\-encoding \(%2B%2B%2\) within the environment/)
       end
     end
@@ -85,13 +84,12 @@ describe Orangelight::Middleware::InvalidParameterHandler do
         allow(Rails.logger).to receive(:error)
       end
 
-      it 'returns a 400 response and logs an error' do
+      it 'returns a 400 response, displays an error message, and logs the error' do
         status, headers, body = invalid_parameter_handler.call(env)
 
-        expect(body.join).to eq('Bad Request')
+        expect(body.join).to include('For help, please email', 'start over')
         expect(status).to eq(400)
-        expect(headers['Content-Type']).to eq('application/json; charset=UTF-8')
-        expect(headers['Content-Length']).to eq('11')
+        expect(headers['Content-Type']).to eq('text/html; charset=UTF-8')
         expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request\: Facet field \[format\]\[ has a nil value within the environment nil/)
       end
     end
@@ -105,13 +103,12 @@ describe Orangelight::Middleware::InvalidParameterHandler do
         allow(Rails.logger).to receive(:error)
       end
 
-      it 'returns a 400 response and logs an error' do
+      it 'returns a 400 response, displays an error message, and logs the error' do
         status, headers, body = invalid_parameter_handler.call(env)
 
-        expect(body.join).to eq('Bad Request')
+        expect(body.join).to include('For help, please email', 'start over')
         expect(status).to eq(400)
-        expect(headers['Content-Type']).to eq('application/json; charset=UTF-8')
-        expect(headers['Content-Length']).to eq('11')
+        expect(headers['Content-Type']).to eq('text/html; charset=UTF-8')
         expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request\: Invalid query parameters\: invalid %\-encoding \(%2B%2B%2\) within the environment/)
       end
     end

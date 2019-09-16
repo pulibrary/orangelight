@@ -27,13 +27,13 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     stackmap_url << "&cn=#{call_number}" if call_number
 
     child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
-      <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>)
+      <span class="fa fa-map-marker" aria-hidden="true"></span>)
     markup = link_to(child.html_safe, stackmap_url,
                      title: I18n.t('blacklight.holdings.stackmap'),
                      class: 'find-it',
                      data: {
                        'map-location' => location.to_s,
-                       'ajax-modal' => 'trigger',
+                       'blacklight-modal' => 'trigger',
                        'call-number' => call_number,
                        'library' => library
                      })
@@ -95,7 +95,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   def self.holding_location_repository
     children = content_tag(:span,
                            'On-site access',
-                           class: 'availability-icon label label-success',
+                           class: 'availability-icon badge badge-success',
                            title: 'Availability: On-site by request',
                            'data-toggle' => 'tooltip')
     content_tag(:td, children.html_safe)
@@ -104,7 +104,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   def self.holding_location_scsb_span
     markup = content_tag(:span, '',
                          title: '',
-                         class: 'availability-icon label',
+                         class: 'availability-icon badge',
                          data: { toggle: 'tooltip' })
     markup
   end
@@ -138,7 +138,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   def self.holding_location_unavailable
     children = content_tag(:span,
                            'Unavailable',
-                           class: 'availability-icon label label-danger',
+                           class: 'availability-icon badge badge-danger',
                            title: 'Availability: Embargoed',
                            'data-toggle' => 'tooltip')
     content_tag(:td, children.html_safe, class: 'holding-status')

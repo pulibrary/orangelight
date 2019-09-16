@@ -31,7 +31,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def only_home_facets(solr_parameters)
     return if search_parameters?
-    solr_parameters['facet.field'] = home_facets
+    solr_parameters['facet.field'] = blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
     solr_parameters['facet.pivot'] = []
   end
 

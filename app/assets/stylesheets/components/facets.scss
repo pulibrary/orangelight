@@ -1,6 +1,7 @@
 @import "variables/breaks";
 @import "variables/colors";
 @import "variables/typography";
+@import "abstractions/mixins";
 
 #sidebar {
   @media (max-width: 500px) {
@@ -14,9 +15,14 @@
   border-color: #ddd;
 }
 
-.facet-values li .selected {
-  color: #333;
+.facet-values {
+  li {
+    .selected {
+      @extend .text-dark;
+    }
+  }
 }
+
 
 .facet_limit-active > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #ddd;
@@ -25,13 +31,14 @@
 .facet-values .remove {
   text-indent: 0;
   margin-left: 1em;
-  vertical-align: middle;
+  @include vertical-align();
 }
 
-.facet-values .remove .glyphicon-remove {
-  top: -1px;
-  font-size: 1.2em;
-}
+.facet-values .remove
+  .fa {
+    position: relative;
+    font-size: 1.5em;
+  }
 
 .facet-values .icon,
 .facet-values .facet-label,
@@ -54,7 +61,7 @@
 .facet-values .facet-label,
 .facet-values .facet-count,
 .facet-label .selected,
-.facet-values .remove .glyphicon-remove {
+.facet-values .remove .fa-times {
   vertical-align: middle;
 }
 
@@ -109,7 +116,7 @@ ul.facet-values {
   line-height: 1.4em;
 }
 
-@media (max-width: $bp-small) {
+@media (max-width: $bp-medium) {
   #facets {
     padding: 0;
   }
@@ -129,7 +136,7 @@ ul.facet-values {
   }
 }
 
-@media (max-width: $bp-small) {
+@media (max-width: $bp-medium) {
   .facets-toggle {
     margin: 0;
   }
@@ -154,4 +161,12 @@ a.more_facets_link {
 
 .facets .facets-heading {
   margin: 1em 0 0.5em;
+}
+
+.facet-limit {
+  margin-bottom: $spacer;
+
+  .card-body {
+    padding: $spacer ($spacer * 2);
+  }
 }

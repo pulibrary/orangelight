@@ -102,8 +102,8 @@ class VoyagerAccount
           node_data[:renew_status] = node_data(child)
         elsif child.name == 'blocks'
           node_data[:item_blocks] = node_data(child)
-        else
-          node_data[child.name] = child.text if child.present?
+        elsif child.present?
+          node_data[child.name] = child.text
         end
       end
       node_data

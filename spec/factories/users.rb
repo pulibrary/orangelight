@@ -4,8 +4,8 @@ FactoryBot.define do
   factory :user do
     sequence(:username) { "username#{srand}" }
     sequence(:email) { "email-#{srand}@princeton.edu" }
-    provider 'cas'
-    password 'foobarfoo'
+    provider { 'cas' }
+    password { 'foobarfoo' }
     uid(&:username)
 
     factory :valid_princeton_patron do
@@ -19,9 +19,9 @@ FactoryBot.define do
 
     # for patrons without a net ID
     factory :guest_patron do
-      provider 'barcode'
+      provider { 'barcode' }
       sequence(:uid) { srand.to_s[2..15] }
-      username 'Student'
+      sequence(:username) { "Student" }
     end
   end
 end

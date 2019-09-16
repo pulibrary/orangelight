@@ -41,7 +41,7 @@ module FacetsHelper
     content_tag(:span, class: 'facet-label') do
       content_tag(:span, facet_display_value(facet_field, item), class: 'selected') +
         # remove link
-        link_to(content_tag(:span, '', :class => 'glyphicon glyphicon-remove', 'data-toggle' => 'tooltip', 'data-original-title' => 'Remove') +
+        link_to(content_tag(:i, '', :class => 'fa fa-times', 'aria-hidden' => 'true', 'data-toggle' => 'tooltip', 'data-original-title' => 'Remove') +
                 content_tag(:span, '[remove]', class: 'sr-only'), search_action_path(search_state.remove_facet_params(facet_field, item)), class: 'remove')
     end + render_facet_count(item.hits, classes: ['selected'])
   end

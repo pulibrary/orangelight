@@ -11,6 +11,10 @@
   }
 }
 
+.advanced.form-horizontal {
+  width: 100%;
+}
+
 .search-field {
   &.form-group {
     margin-bottom: 0;
@@ -18,14 +22,14 @@
 
   select.form-control {
     margin-bottom: 1em;
-    @media (min-width: $bp-small) {
+    @media (min-width: $bp-medium) {
       width: auto;
       margin-bottom: 0;
     }
   }
 
   div {
-    @media (min-width: $bp-small) {
+    @media (min-width: $bp-medium) {
       display: inline-block;
       float: right;
       width: calc(100% - 150px);
@@ -66,6 +70,25 @@
 
 .page-header {
   margin: 5px 0 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.advanced-facet-label {
+  padding-top: 4px;
+
+  @media (min-width: $bp-medium) {
+    text-align: right;
+  }
+}
+
+.advanced.row {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.clear-form {
+  color: darken($blue, 3);
 }
 
 .well > h4 {

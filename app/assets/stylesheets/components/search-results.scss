@@ -73,6 +73,13 @@ dd.blacklight-electronic_access_display {
 .thumbnail-wrapper {
   width: 120px;
   float: right;
+  padding-left: 10px;
+}
+
+// remove when https://github.com/projectblacklight/blacklight/pull/2125 is released
+.documents-list .document .document-thumbnail {
+    margin-bottom: ($spacer * 3);
+    padding-left: ($spacer * 2);
 }
 
 #spell {

@@ -1,0 +1,15 @@
+<div class="previous">
+  <% if @is_first %>
+    <%= content_tag(:a, raw(t 'blacklight.pagination_compact.previous'), class: "nav-link is-disabled") %>
+  <% else %>
+  <%= link_to raw(t 'blacklight.pagination_compact.previous'), @page_link + "start=#{@prev}", class: "nav-link" %>
+<% end %>
+</div>
+<div class="next">
+  <% if @is_last %>
+    <%= content_tag(:a, raw(t 'blacklight.pagination_compact.next'), class: "nav-link is-disabled") %>
+  <% else %>
+    <%= link_to raw(t 'blacklight.pagination_compact.next'), @page_link + "start=#{@next}", class: "nav-link" %>
+  <% end %>
+</div>
+<%= content_tag(:a, "#{number_with_delimiter(@start)} - #{number_with_delimiter(@page_last)} of #{number_with_delimiter(@last_id)}", class: "nav-link", style: "color:black;strong;font-weight:bold;") %>

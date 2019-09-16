@@ -229,7 +229,7 @@ module Blacklight
             when 'json'
               marc_record_from_json
             else
-              raise UnsupportedMarcFormatType.new("Only marcxml, marc21, and json are supported, this documents format is #{_marc_format_type} and the current extension parameters are #{self.class.extension_parameters.inspect}")
+              raise UnsupportedMarcFormatType, "Only marcxml, marc21, and json are supported, this documents format is #{_marc_format_type} and the current extension parameters are #{self.class.extension_parameters.inspect}"
             end
           rescue StandardError => e
             Rails.logger.error("Blacklight failed to parse MARC record. Exception was: #{e}")

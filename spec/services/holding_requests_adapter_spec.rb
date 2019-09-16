@@ -30,13 +30,20 @@ RSpec.describe HoldingRequestsAdapter do
       }
     end
 
-    it 'repeated restrictions appear only once' do
-      allow(holdings).to receive(:doc_holdings).and_return(holdings_hash)
-      expect(holdings.restrictions).to eq ['In Library Use']
+    context 'with repeared restrictions' do
+      let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
+
+      it 'they appear only once' do
+        expect(holdings.restrictions).to eq ['In Library Use']
+      end
     end
-    it 'Empty use_statement fields are excluded' do
-      allow(holdings).to receive(:doc_holdings).and_return(holdings_hash_empty_use_statement)
-      expect(holdings.restrictions).to eq []
+
+    context 'with empty use_statement fields' do
+      let(:document) { { 'holdings_1display' => holdings_hash_empty_use_statement.to_json } }
+
+      it 'they are excluded' do
+        expect(holdings.restrictions).to eq []
+      end
     end
   end
 
@@ -75,9 +82,9 @@ RSpec.describe HoldingRequestsAdapter do
           '671798' => { 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] }
         }
       end
+      let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
 
       it 'returns an empty array' do
-        allow(holdings).to receive(:doc_holdings).and_return(holdings_hash)
         expect(holdings.doc_holdings_elf).to be_empty
       end
     end
@@ -91,9 +98,9 @@ RSpec.describe HoldingRequestsAdapter do
           '671798' => { 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] }
         }
       end
+      let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
 
       it 'returns an empty array' do
-        allow(holdings).to receive(:doc_holdings).and_return(holdings_hash)
         expect(holdings.doc_holdings_physical).to be_empty
       end
     end
@@ -106,11 +113,11 @@ RSpec.describe HoldingRequestsAdapter do
           '671799' => { 'location_code' => 'scsbnypl' }
         }
       end
+      let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
       let(:holding_locations) { { 'scsbnypl' => [] } }
 
       it 'holding is sorted last' do
         allow(bib_data_service).to receive(:holding_locations).and_return(holding_locations)
-        allow(holdings).to receive(:doc_holdings).and_return(holdings_hash)
         expect(holdings.sorted_physical_holdings.map { |h| h[0] }).to eq %w[671799 671798]
       end
     end

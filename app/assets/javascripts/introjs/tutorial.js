@@ -56,7 +56,7 @@ function resultsPage(){
           position: 'bottom'
         },
         {
-          element: 'form.bookmark_toggle',
+          element: 'form.bookmark-toggle',
           intro: 'Items may also be bookmarked individually.',
           position: 'bottom'
         },

@@ -8,7 +8,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   def self.online_link(bib_id, holding_id)
     children = content_tag(
       :span, 'Link Missing',
-      class: 'availability-icon label label-default',
+      class: 'availability-icon badge badge-secondary',
       title: 'Availability: Online',
       'data-toggle' => 'tooltip'
     )

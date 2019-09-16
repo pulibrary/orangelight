@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Blacklight::Document::Ris do
-  subject { SolrDocument.new(properties).export_as_ris }
+  subject(:document) { SolrDocument.new(properties).export_as_ris }
 
   context 'For a standard MARC Record' do
     describe '#export_as_ris' do
@@ -65,35 +65,35 @@ RSpec.describe Blacklight::Document::Ris do
       end
 
       it 'Starts with a valid RIS Format' do
-        expect(subject).to match(/^TY - BOOK/)
+        expect(document).to match(/^TY - BOOK/)
       end
 
       it 'Contains valid author information' do
-        expect(subject).to match(/AU - \w+/)
+        expect(document).to match(/AU - \w+/)
       end
 
       it 'Contains title citation information' do
-        expect(subject).to match(/TI - Yŏkchu Pulsŏl Amit'agyŏng ŏnhae ; Yŏkchu Pulchŏngsim taranigyŏng ŏnhae /)
+        expect(document).to match(/TI - Yŏkchu Pulsŏl Amit'agyŏng ŏnhae ; Yŏkchu Pulchŏngsim taranigyŏng ŏnhae /)
       end
 
       it 'Contains vernacular title as a secondary title' do
-        expect(subject).to match(/T2 - 역주불설아미타경언해불정심다라니경언해/)
+        expect(document).to match(/T2 - 역주불설아미타경언해불정심다라니경언해/)
       end
 
       it 'Contains an end of record character' do
-        expect(subject).to match(/\nER - $/)
+        expect(document).to match(/\nER - $/)
       end
 
       it 'Contains call number information' do
-        expect(subject).to match(/CN - BQ2043.K6 T757 2008/)
+        expect(document).to match(/CN - BQ2043.K6 T757 2008/)
       end
 
       it 'Contains form genre' do
-        expect(subject).to match(/M3 - Commentaries/)
+        expect(document).to match(/M3 - Commentaries/)
       end
 
       it 'Contains notes' do
-        expect(subject).to match(/N1 - Includes photocopy of original text, with pages numbered in opposite direction./)
+        expect(document).to match(/N1 - Includes photocopy of original text, with pages numbered in opposite direction./)
       end
     end
   end
@@ -120,23 +120,23 @@ RSpec.describe Blacklight::Document::Ris do
       end
 
       it 'is listed as a GEN RIS format' do
-        expect(subject).to match(/^TY - GEN/)
+        expect(document).to match(/^TY - GEN/)
       end
 
       it 'Contains an ARK' do
-        expect(subject).to match(%r{UR - http://arks.princeton.edu/ark:/88435/dsp01bn999692c})
+        expect(document).to include 'UR - {"http://arks.princeton.edu/ark:/88435/dsp01bn999692c":["DataSpace","Full text"]}'
       end
 
       it 'Has a first Author' do
-        expect(subject).to match(/AU - Doe, Jane/)
+        expect(document).to match(/AU - Doe, Jane/)
       end
 
       it 'lists the department as a second author' do
-        expect(subject).to match(/A2 - Princeton University. Department of Computer Science/)
+        expect(document).to match(/A2 - Princeton University. Department of Computer Science/)
       end
 
       it 'lists the advisor as a second author' do
-        expect(subject).to match(/A2 - Smith, Joe/)
+        expect(document).to match(/A2 - Smith, Joe/)
       end
     end
   end

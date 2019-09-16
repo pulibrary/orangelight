@@ -108,18 +108,20 @@ address {
 @media (min-width: $bp-small) {
   .container {
     width: 100%;
-  }
-}
-
-@media (min-width: $bp-medium) {
-  .container {
-    width: 950px;
+    max-width: 100%;
   }
 }
 
 @media (min-width: $bp-large) {
   .container {
-    width: 1200px;
+    width: $bp-large;
+  }
+}
+
+@media (min-width: $bp-xlarge) {
+  .container {
+    width: $bp-xlarge;
+    max-width: $bp-xlarge;
   }
 }
 

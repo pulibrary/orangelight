@@ -15,43 +15,46 @@
 
     span {
       display: block;
-      font-size: 14px;
       width: 100%;
     }
   }
 }
 
-.checkbox.toggle_bookmark {
+.checkbox.toggle-bookmark {
   margin-bottom: 5px;
   padding: 0;
   text-align: center;
 
   label {
-    padding: 6px 12px;
+    cursor: pointer;
+    margin-left: -10px;
   }
 }
 
-.search-widgets label.toggle_bookmark {
+.search-widgets label.toggle-bookmark {
   min-width: initial;
 }
 
-@media (max-width: $bp-small) {
-  .search-widgets .checkbox.toggle_bookmark {
+@media (max-width: $bp-medium) {
+  .search-widgets .checkbox.toggle-bookmark {
     padding: 0;
   }
 }
 
 .checkbox.bookmark_all {
   margin-left: 3px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .checkbox.bookmark_all,
-.search-widgets .checkbox.toggle_bookmark {
+.search-widgets .checkbox.toggle-bookmark {
   float: right;
 
   label {
     padding: 0;
     display: inline-block;
+    margin: 0;
   }
 
   input {

@@ -9,7 +9,7 @@ RSpec.describe 'catalog/_sort_and_per_page' do
 
   before do
     allow(view).to receive(:blacklight_config).and_return(blacklight_config)
-    assign(:response, double('Solr::Response', limit_value: 1))
+    assign(:response, instance_double('Solr::Response', limit_value: 1))
     stub_template 'catalog/_paginate_compact.html.erb' => 'paginate_compact'
     stub_template 'catalog/_sort_widget.html.erb' => 'sort_widget'
     stub_template 'catalog/_per_page_widget.html.erb' => 'per_page_widget'

@@ -5,7 +5,7 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
   include BlacklightUnapi::ControllerExtension
 
-  include Blacklight::Marc::Catalog
+  # include Blacklight::Marc::Catalog
   include BlacklightRangeLimit::ControllerOverride
   include Orangelight::Catalog
   include Orangelight::Stackmap
@@ -22,14 +22,12 @@ class CatalogController < ApplicationController
   end
 
   rescue_from BlacklightRangeLimit::InvalidRange do
-    redirect_to '/', :flash => { :error => 'The start year must be before the end year.' }
-  end
-
-  rescue_from ActionController::BadRequest do
-    redirect_to '/', :flash => { :error => 'This is not a valid request.' }
+    redirect_to '/', flash: { error: 'The start year must be before the end year.' }
   end
 
   configure_blacklight do |config|
+    config.raw_endpoint.enabled = true
+
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     config.advanced_search[:url_key] ||= 'advanced'
@@ -63,8 +61,13 @@ class CatalogController < ApplicationController
     #   :q => query
     # }
 
+    config.add_show_tools_partial(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
+    config.add_show_tools_partial(:email, callback: :email_action, validator: :validate_email_params)
+    config.add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
+    config.add_show_tools_partial(:citation)
+
     config.navbar.partials.delete(:search_history)
-    config.navbar.partials.delete(:saved_searches)
+    config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark')
     config.add_nav_action(:reserves, partial: 'course_reserves/nav')
 
     # solr field configuration for search results/index views
@@ -196,6 +199,17 @@ class CatalogController < ApplicationController
     config.add_index_field 'author_display', label: 'Author/Artist', helper_method: :browse_name
     config.add_index_field 'pub_created_display', label: 'Published/Created'
     config.add_index_field 'format', label: 'Format', helper_method: :format_icon
+    config.add_index_field 'holdings_1display', show: false
+    config.add_index_field 'isbn_t', show: false
+    config.add_index_field 'score', show: false
+    config.add_index_field 'marc_relator_display', show: false
+    config.add_index_field 'title_display', show: false
+    config.add_index_field 'title_vern_display', show: false
+    config.add_index_field 'isbn_s', show: false
+    config.add_index_field 'oclc_s', show: false
+    config.add_index_field 'lccn_s', show: false
+    config.add_index_field 'electronic_access_1display', show: false
+    config.add_index_field 'cataloged_tdt', show: false
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
@@ -584,6 +598,8 @@ class CatalogController < ApplicationController
 
     # Add bookmark all widget
     config.add_results_collection_tool(:bookmark_all)
+
+    config.add_results_document_tool(:bookmark, partial: 'bookmark_control')
 
     config.unapi = {
       'ris' => { content_type: 'application/x-research-info-systems' }

@@ -6,31 +6,6 @@ module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior
   require './lib/orangelight/string_functions'
 
-  # (see Blacklight::SearchHelper#search_results)
-
-  # raise a BadRequest error if ActionController params have key with leading or trailing whitespaces
-  def user_params_valid(params)
-    params.each { |k| raise ActionController::BadRequest if ((k[0].match?(/\s/) || k[-1].match?(/\s/)) && (k.is_a? String)) == true }
-  end
-
-  def search_results(user_params)
-    user_params_valid(user_params)
-
-    builder = search_builder.with(user_params)
-    builder.page = user_params[:page] if user_params[:page]
-    builder.rows = (user_params[:per_page] || user_params[:rows]) if user_params[:per_page] || user_params[:rows]
-    builder = yield(builder) if block_given?
-    response = repository.search(builder)
-
-    if response.grouped? && grouped_key_for_results
-      [response.group(grouped_key_for_results), []]
-    elsif response.grouped? && response.grouped.length == 1
-      [response.grouped.first, []]
-    else
-      [response, response.documents]
-    end
-  end
-
   def json_field?(field)
     field[:hash]
   end
@@ -137,7 +112,7 @@ module BlacklightHelper
       number_of_unigrams = cjk_unigrams_size(q_str)
       if number_of_unigrams > 2
         num_non_cjk_tokens = q_str.scan(/[[:alnum]]+/).size
-        if num_non_cjk_tokens > 0
+        if num_non_cjk_tokens.positive?
           lower_limit = cjk_mm_val[0].to_i
           mm = (lower_limit + num_non_cjk_tokens).to_s + cjk_mm_val[1, cjk_mm_val.size]
           solr_parameters['mm'] = mm
@@ -185,7 +160,7 @@ module BlacklightHelper
   # @param path [String] the URL path for the link
   # @return [String] the markup for the link
   def render_start_over_link(path)
-    child = "<span class=\"icon-refresh\" aria-hidden=\"true\"></span> <span class=\"hidden-xs hidden-sm\">#{t('blacklight.search.start_over')}</span>"
+    child = "<span class=\"icon-refresh\" aria-hidden=\"true\"></span> <span class=\"d-none d-lg-inline\">#{t('blacklight.search.start_over')}</span>"
     link_to(child.html_safe, path, class: 'catalog_startOverLink btn btn-primary', id: 'startOverLink')
   end
 
@@ -194,7 +169,7 @@ module BlacklightHelper
   # @return [String] the markup for the link
   def render_cite_link(path)
     child = "<span class=\"icon-cite\" aria-hidden=\"true\"></span> #{t('blacklight.search.cite')}"
-    link_to(child.html_safe, path, id: 'citeLink', data: { ajax_modal: 'trigger' }, class: 'btn btn-default')
+    link_to(child.html_safe, path, id: 'citeLink', data: { blacklight_modal: 'trigger' }, class: 'btn btn-default')
   end
 
   # Retrieve an instance of the FacetedQueryService
@@ -210,7 +185,7 @@ module BlacklightHelper
       resp = faceted_query_service.get_fq_solr_response(fq)
       req = JSON.parse(resp.body)
     end
-    if oclc_norm == 0 || req['response']['docs'].empty?
+    if oclc_norm.to_i.zero? || req['response']['docs'].empty?
       "/catalog?q=#{oclc}"
     else
       "/catalog/#{req['response']['docs'].first['id']}"

@@ -7,30 +7,30 @@ RSpec.describe CourseReserveRepository do
     before do
       stub_all_query
     end
-    subject { described_class.all }
+    subject(:repository) { described_class.all }
 
     it 'returns a relation of all available course reserves' do
-      expect(subject.to_a.length).to eq 2
+      expect(repository.to_a.length).to eq 2
     end
     it 'has bulk accessors for instructors' do
-      expect(subject.instructors).to eq [
+      expect(repository.instructors).to eq [
         'Schupbach, Gertrud M.',
         'Bassler, Bonnie L.'
       ]
     end
     it 'has bulk accessors for departments' do
-      expect(subject.departments).to eq [
+      expect(repository.departments).to eq [
         'MOL: Molecular Biology'
       ]
     end
     it 'has bulk accessors for courses' do
-      expect(subject.course_names).to eq [
+      expect(repository.course_names).to eq [
         'MOL 342: Genetics',
         'MOL 101: From DNA to Human Complexity'
       ]
     end
     it 'has bulk accessors for reserve IDs' do
-      expect(subject.reserve_list_ids).to eq [
+      expect(repository.reserve_list_ids).to eq [
         1958,
         2087
       ]

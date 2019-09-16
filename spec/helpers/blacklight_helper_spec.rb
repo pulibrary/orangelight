@@ -101,21 +101,12 @@ describe BlacklightHelper do
 
     before do
       allow(view).to receive(:blacklight_config).and_return(blacklight_config)
-      allow(helper).to receive(:document_link_params).and_return(data: { :"context-href" => '/catalog/1/track?counter=1&search_id=5' })
+      allow(helper).to receive(:document_link_params).and_return(data: { "context-href": '/catalog/1/track?counter=1&search_id=5' })
       allow(helper).to receive(:url_for_document).and_return(document)
     end
 
     it 'truncates the content of a field before linking it' do
       expect(helper.truncated_link(document, helper.document_show_link_field(document))).to eq truncated
-    end
-  end
-
-  describe '#user_params_valid' do
-    it 'will raise a BadRequest for params key leading and trailing whitespaces' do
-      params['   range_end'] = '1990'
-      params[' range_field'] = 'pub_date_start_sort'
-      params['  range_start  '] = '1981'
-      expect { user_params_valid(params) }.to raise_error(ActionController::BadRequest)
     end
   end
 

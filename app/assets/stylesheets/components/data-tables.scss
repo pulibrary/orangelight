@@ -1,31 +1,34 @@
 div.dataTables_wrapper {
   .row:first-child {
-    .col-sm-6:first-child {
+    .col-sm-12:first-child {
       float: right;
+      order: 13;
     }
-    .col-sm-6:last-child {
+    .col-sm-12:last-child {
       float: left;
       padding-left: 23px;
     }
   }
-  .dataTables_length {
+  #DataTables_Table_0_length {
     text-align: right;
   }
-  .dataTables_filter {
+  #DataTables_Table_0_filter {
     text-align: left;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
+
+  #DataTables_Table_0_filter label {
+    white-space: normal;
+  }
 
   .reserves-info {
     display: none;
   }
 
-  .dataTables_wrapper .dataTables_filter label {
-    white-space: normal;
-
-    input {
+  div.dataTables_wrapper div.dataTables_filter {
+    input.form-control.form-control-sm {
       width: 100%;
       margin: 0;
     }

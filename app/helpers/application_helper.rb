@@ -54,9 +54,7 @@ module ApplicationHelper
   # @return [StackmapService::Url] the stack map location
   def locate_url(location, document, call_number, library = nil)
     locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
-    unless locator.exclude?(call_number: call_number, library: library)
-      ::StackmapService::Url.new(document: document, loc: location, cn: call_number).url
-    end
+    ::StackmapService::Url.new(document: document, loc: location, cn: call_number).url unless locator.exclude?(call_number: call_number, library: library)
   end
 
   # Generate the link markup (styled with a glyphicon image) for a given item holding within a library
@@ -72,7 +70,7 @@ module ApplicationHelper
     if link.nil?
       ''
     else
-      ' ' + link_to('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>'.html_safe, stackmap_url, title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-ajax-modal' => 'trigger', 'aria-label' => 'Where to find it')
+      ' ' + link_to('<span class="fa fa-map-marker" aria-hidden="true"></span>'.html_safe, stackmap_url, title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-blacklight-modal' => 'trigger', 'aria-label' => 'Where to find it')
     end
   end
 
@@ -128,7 +126,7 @@ module ApplicationHelper
       else
         args[:document][args[:field]]
       end
-    args[:document][args[:field]] = series_display.join(', ')
+    series_display.join(', ')
   end
 
   # Retrieve the same series for that one being displayed
@@ -193,27 +191,27 @@ module ApplicationHelper
         if links.empty?
           check_availability = render_availability?
           info << content_tag(:span, 'Link Missing',
-                              class: 'availability-icon label label-default', title: 'Availability: Online',
+                              class: 'availability-icon badge badge-secondary', title: 'Availability: Online',
                               'data-toggle' => 'tooltip')
           info << content_tag(:div, 'Online access is not currently available.', class: 'library-location')
         else
-          info << content_tag(:span, 'Online', class: 'availability-icon label label-primary', title: 'Electronic access', 'data-toggle' => 'tooltip')
+          info << content_tag(:span, 'Online', class: 'availability-icon badge badge-primary', title: 'Electronic access', 'data-toggle' => 'tooltip')
           info << links.shift.html_safe
         end
       else
         if holding['dspace']
           check_availability = false
-          info << content_tag(:span, 'On-site access', class: 'availability-icon label label-success', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
+          info << content_tag(:span, 'On-site access', class: 'availability-icon badge badge-success', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location Must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe if aeon_location?(location)
         elsif /^scsb.+/.match? location[:code]
           check_availability = false
           unless holding['items'].nil?
             scsb_multiple = true unless holding['items'].count == 1
             if scsb_supervised_items?(holding)
-              info << content_tag(:span, 'On-site access', class: 'availability-icon label label-success', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
+              info << content_tag(:span, 'On-site access', class: 'availability-icon badge badge-success', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
               info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe
             else
-              info << content_tag(:span, '', class: 'availability-icon label', title: '', 'data-scsb-availability' => 'true', 'data-toggle' => 'tooltip', 'data-scsb-barcode' => holding['items'].first['barcode'].to_s).html_safe
+              info << content_tag(:span, '', class: 'availability-icon badge', title: '', 'data-scsb-availability' => 'true', 'data-toggle' => 'tooltip', 'data-scsb-barcode' => holding['items'].first['barcode'].to_s).html_safe
             end
           end
         elsif holding['dspace'].nil?
@@ -221,7 +219,7 @@ module ApplicationHelper
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe if aeon_location?(location)
         else
           check_availability = false
-          info << content_tag(:span, 'Unavailable', class: 'availability-icon label label-danger', title: 'Availability: Material under embargo', 'data-toggle' => 'tooltip')
+          info << content_tag(:span, 'Unavailable', class: 'availability-icon badge badge-danger', title: 'Availability: Material under embargo', 'data-toggle' => 'tooltip')
         end
         info << content_tag(:div, search_location_display(holding, document), class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
       end
@@ -229,10 +227,10 @@ module ApplicationHelper
     end
 
     if scsb_multiple == true
-      block << content_tag(:li, link_to('View Record for Full Availability', solr_document_path(document['id']), class: 'availability-icon label label-default more-info', title: 'Click on the record for full availability info', 'data-toggle' => 'tooltip').html_safe)
+      block << content_tag(:li, link_to('View Record for Full Availability', solr_document_path(document['id']), class: 'availability-icon badge badge-secondary more-info', title: 'Click on the record for full availability info', 'data-toggle' => 'tooltip').html_safe)
     elsif holdings_hash.length > 2
       block << content_tag(:li, link_to('View Record for Full Availability', solr_document_path(document['id']),
-                                        class: 'availability-icon label label-default more-info', title: 'Click on the record for full availability info',
+                                        class: 'availability-icon badge badge-secondary more-info', title: 'Click on the record for full availability info',
                                         'data-toggle' => 'tooltip').html_safe)
 
     elsif !holdings_hash.empty?
@@ -324,7 +322,7 @@ module ApplicationHelper
       name_title_links = []
       name_t.each_with_index do |part, i|
         link_accum = StringFunctions.trim_punctuation(name_t[0..i].join(' '))
-        if i == 0
+        if i.zero?
           next if args[:field] == 'name_uniform_title_1display'
           name_title_links << link_to(part, "/?f[author_s][]=#{CGI.escape link_accum}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")
         else
@@ -343,7 +341,7 @@ module ApplicationHelper
       all_links = all_links.map.with_index { |l, i| content_tag(:li, l, dir: dirtags[i]) }
       all_links = content_tag(:ul, all_links.join.html_safe)
     end
-    args[:document][args[:field]] = all_links
+    all_links
   end
 
   def format_icon(args)

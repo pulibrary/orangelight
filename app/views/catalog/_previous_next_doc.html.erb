@@ -1,67 +1,57 @@
 <% #Using the Bootstrap Pagination class  -%>
-<% #DEPRECATED - using id="previousNextDocument" as a selector is deprecated and will be removed in Blacklight 6.0 %>
-<div id='previousNextDocument' class='pagination-search-widgets'>
-  <div class="col-xs-12 col-sm-6">
-    <div class="button--start-over">
-      <%= render_start_over_link(start_over_path) %>
-    </div>
-  <% if @previous_document || @next_document %>
-      <%= link_back_to_catalog class: "btn btn-default" %>
-      <div class="page_links">
-        <%= link_to_previous_document @previous_document %>
-        <%= link_to_next_document @next_document %>
-        <%= item_page_entry_info %>
+<div class='pagination-search-widgets col'>
+  <div class="row">
+    <div class="col-xs-12 px-4">
+      <div class="button--start-over">
+        <%= render_start_over_link(start_over_path) %>
       </div>
-  <% end %>
-  </div>
-    <div class="pull-right search-widgets col-xs-12 col-sm-6">
-      <ul class="nav navbar-nav navbar-right">
+      <% if @search_context %>
+        <% if @search_context[:prev] || @search_context[:next] %>
+          <%= link_back_to_catalog class: 'btn btn-default button--back-to-search', label:  t('blacklight.back_to_search').html_safe %>
+          <div class="page_links">
+            <%= link_to_previous_document @search_context[:prev] %>
+            <%= link_to_next_document @search_context[:next] %>
+            <%= item_page_entry_info %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="search-widgets col pr-4">
+      <ul class="navbar navbar-nav pull-right">
         <% if @document.voyager_record? %>
           <li>
             <%= render_cite_link(citation_solr_document_path(id: @document)) %>
           </li>
         <% end %>
         <li class="dropdown">
-          <button class="btn btn-default" data-toggle="dropdown"><span class="icon-share" aria-hidden="true"></span> Send <span class="hidden-xs hidden-sm">to <span class="caret"></span></span></button>
-          <ul class="dropdown-menu" role="menu">
+          <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"><span class="icon-share" aria-hidden="true"></span> Send <span class="d-none d-lg-inline">to <span class="caret"></span></span></button>
+          <ul class="dropdown-menu position-absolute" role="menu">
             <li class="sms">
-              <%= link_to "SMS", sms_solr_document_path(:id => @document), {:id => 'smsLink', :data => {:ajax_modal => "trigger"}, class: "icon-mobile", rel: 'nofollow'} %>
+              <%= link_to "SMS", sms_solr_document_path(:id => @document), {:id => 'smsLink', :data => {:blacklight_modal => "trigger"}, class: "icon-mobile dropdown-item", rel: 'nofollow'} %>
             </li>
             <li class="email">
-              <%= link_to "Email", email_solr_document_path(:id => @document), {:id => 'emailLink', :data => {:ajax_modal => "trigger"}, class: "icon-email", rel: 'nofollow'} %>
+              <%= link_to "Email", email_solr_document_path(:id => @document), {:id => 'emailLink', :data => {:blacklight_modal => "trigger"}, class: "icon-email dropdown-item", rel: 'nofollow'} %>
             </li>
             <% if @document.voyager_record? %>
               <li class="endnote">
-                <%= link_to "EndNote", solr_document_path(@document, :format => 'endnote'), rel: 'nofollow', class: "icon-external" %>
+                <%= link_to "EndNote", solr_document_path(@document, :format => 'endnote'), rel: 'nofollow', class: "icon-external dropdown-item" %>
               </li>
               <li class="refworks">
-                <%= link_to "RefWorks", refworks_export_url({url: polymorphic_url(url_for_document(@document), format: :refworks_marc_txt, only_path: false)}), rel: 'nofollow', class: "icon-external", :target => "_blank"  %>
+                <%= link_to "RefWorks", refworks_export_url({url: polymorphic_url(url_for_document(@document), format: :refworks_marc_txt, only_path: false)}), rel: 'nofollow', class: "icon-external dropdown-item", :target => "_blank"  %>
               </li>
               <li class="ris">
-              <%= link_to 'RIS', solr_document_path(@document, :format => 'ris'), rel: 'nofollow', class: "icon-external" %>
+              <%= link_to 'RIS', solr_document_path(@document, :format => 'ris'), rel: 'nofollow', class: "icon-external dropdown-item" %>
               </li>
             <% end %>
             <li class="print">
-              <a href="javascript:if(window.print)window.print()"><span class="icon-print" aria-hidden="true"></span>Printer</a>
+              <a href="javascript:if(window.print)window.print()" class="dropdown-item"><span class="icon-print" aria-hidden="true"></span>Printer</a>
             </li>
           </ul>
         </li>
         <li>
-        <%#= render 'blacklight/folders/show/add_to_folder' %>
           <%= render(:partial => 'catalog/bookmark_control', :locals => {:document=> @document}) %>
         </li>
-        <!-- <li> -->
-          <%# in_folders = Blacklight::Folders::Folder.for_user(current_or_guest_user).with_document(@document) %>
-            <%# unless in_folders.empty? %>
-              <!-- <div class="folders"> -->
-                  <!-- Contained in -->
-                  <!-- <ul> -->
-                    <%# in_folders.each do |folder| %>
-                      <!-- <li> <%#= link_to folder.name, blacklight_folders.folder_path(folder) %> </li> -->
-                    <%# end %>
-                  <!-- </ul> -->
-            <%# end %>
-        <!-- </li> -->
       </ul>
     </div>
+  </div>
 </div>

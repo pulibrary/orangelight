@@ -16,19 +16,19 @@
     margin-right: 0;
     white-space: normal;
 
-    &.label-default {
+    &.badge-secondary {
       color: $gray-light;
     }
 
-    &.label-warning {
+    &.badge-warning {
       color: $dark-orange;
     }
 
-    &.label-danger {
+    &.badge-danger {
       color: $brand-danger;
     }
 
-    &.label-success {
+    &.badge-success {
       color: $brand-success;
     }
   }
@@ -131,7 +131,7 @@
   }
 }
 
-.blacklight-holdings .availability-icon.label:hover {
+.blacklight-holdings .availability-icon.badge:hover {
   color: white;
   text-decoration: none;
 }
@@ -391,7 +391,7 @@
       float: left;
       padding: 6px 5px;
 
-      &.label-warning {
+      &.badge-warning {
         color: $black;
       }
     }

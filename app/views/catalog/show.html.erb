@@ -1,30 +1,31 @@
 <%= render 'previous_next_doc' %>
-<div id="main-content" class="col-xs-12 main-content">
-  <div id="sidebar" class="col-sm-3 col-xs-12 <%= render_document_class %>">
-    <%= render_document_sidebar_partial %>
-  </div>
-
-  <div id="content" class="col-sm-9 col-xs-12 content">
-    <%= render_document_heading_partial %>
-    <%= render partial: 'show_top_fields', locals: { document: @document } %>
-    <% if render_availability? %>
-      <div id="availability" class="record-availability">
-        <%= render partial: 'show_availability', locals: { document: @document } %>
-      </div>
-    <% end %>
-    <%= render_document_main_content_partial %>
-    <% if @document.voyager_record? %>
-      <dl class="dl-horizontal dl-invert">
-        <dt class="other-views">Other views</dt>
-        <dd class="classic-views">
-          <%= link_to t('blacklight.tools.librarian_view'), staff_view_solr_document_path(@document), {:id => 'staffLink'} %>
-        </dd>
-      </dl>
-    <% end %>
-  </div>
-  <div id="aside" class="col-sm-3 col-xs-12 <%= render_document_class %>">
-    <h2 class="sr-only">Supplementary Information</h2>
-    <%= render partial: 'show_restrictions', locals: { document: @document } %>
-    <%= render partial: 'show_other_versions', locals: { document: @document } %>
+<div id="main-content" class="col-12 main-content">
+  <div class="row">
+    <div id="sidebar" class="col-12 col-md-3 <%= render_document_class %>">
+      <%= render_document_sidebar_partial %>
+    </div>
+    <div id="content" class="col-12 col-md-9 content">
+      <%= render_document_heading_partial %>
+      <%= render partial: 'show_top_fields', locals: { document: @document } %>
+      <% if render_availability? %>
+        <div id="availability" class="record-availability">
+          <%= render partial: 'show_availability', locals: { document: @document } %>
+        </div>
+      <% end %>
+      <%= render_document_main_content_partial %>
+      <% if @document.voyager_record? %>
+        <dl class="dl-horizontal dl-invert">
+          <dt class="other-views">Other views</dt>
+          <dd class="classic-views">
+            <%= link_to t('blacklight.tools.librarian_view'), staff_view_solr_document_path(@document), {:id => 'staffLink'} %>
+          </dd>
+        </dl>
+      <% end %>
+    </div>
+    <div id="aside" class="col-12 col-md-3 <%= render_document_class %>">
+      <h2 class="sr-only">Supplementary Information</h2>
+      <%= render partial: 'show_restrictions', locals: { document: @document } %>
+      <%= render partial: 'show_other_versions', locals: { document: @document } %>
+    </div>
   </div>
 </div>

@@ -2,7 +2,7 @@
 @import "variables/colors";
 @import "abstractions/mixins";
 
-@media (max-width: $bp-medium) {
+@media (max-width: $bp-large) {
   .browse--call-number {
     td:nth-of-type(1):before {
       content: "Call Number";

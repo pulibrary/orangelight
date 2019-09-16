@@ -2,28 +2,37 @@
 <header>
   <div class="l-branding__pul">
     <div class="container">
-      <div class="logo__pul col-xs-12 col-sm-6">
-        <a href="https://library.princeton.edu" title="Princeton University Library">
-           <%= image_tag("pul-logo-new.svg") %>
-        </a>
-        <%=link_to t('blacklight.orangelight').html_safe, main_app.root_path, :class => "site-title" %>
-      </div>
-      <div class="pull-right menu--level-1 col-xs-12 col-sm-6">
-        <ul>
-          <li><%= link_to 'Help', main_app.page_path('help') %></li>
-          <li><a href="/feedback">Feedback</a></li>
-          <%= render :partial=>'/account' %>
-        </ul>
+      <div class="row align-items-center">
+        <div class="logo__pul col-12 col-sm-auto">
+          <a href="https://library.princeton.edu" title="Princeton University Library">
+             <%= image_tag("pul-logo-new.svg") %>
+          </a>
+          <%=link_to t('blacklight.orangelight').html_safe, main_app.root_path, :class => "site-title" %>
+        </div>
+        <div class="pull-right menu--level-1 col-12 col-sm-auto ml-auto">
+          <ul>
+            <li><%= link_to 'Help', main_app.page_path('help') %></li>
+            <li><a href="/feedback">Feedback</a></li>
+            <%= render :partial=>'/account' %>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
   <% unless params[:action] == 'generate' %>
     <div class="header__secondary">
       <nav class="container">
-        <div id="search-navbar" class="col-xs-12 search-navbar" role="search">
-          <%= render_search_bar %>
-        </div>
-        <%= render :partial=>'/user_util_links' %>
+        <div class="row">
+          <div id="search-navbar" class="search-navbar navbar" role="search">
+            <%= render_search_bar %>
+            <ul class="search-options">
+              <li>
+                <%= link_to 'Advanced Search', blacklight_advanced_search_engine.advanced_search_path, :class=>'advanced_search'%>
+              </li>
+            </ul>
+            <%= render :partial=>'/user_util_links' %>
+          </div>
+        <div>
       </nav>
     </div>
   <% end %>

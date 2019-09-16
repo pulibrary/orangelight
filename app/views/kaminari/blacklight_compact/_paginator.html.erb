@@ -18,18 +18,14 @@
   <%# #render checks if total_pages > 1, so we can't put our fallback
   in here .. -%>
   <%= paginator.render do -%>
-    <div class="page_links">
-      <%= prev_page_tag %>
-      <%= next_page_tag %>
-      <span class="page_entries">
-        <%= page_entries_info %>
-      </span>
-    </div>
+    <%= prev_page_tag %>
+    <%= next_page_tag %>
+    <span class="page_entries">
+      <%= page_entries_info %>
+    </span>
   <% end -%>
 <% else -%>
-    <div class="page_links">
-      <span class="page_entries">
-        <%= page_entries_info %>
-      </span>
-    </div>
+  <span class="page_entries">
+    <%= page_entries_info %>
+  </span>
 <% end -%>

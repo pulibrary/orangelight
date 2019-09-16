@@ -10,20 +10,20 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
 //= require jquery
 //= require jquery_ujs
-//= require dataTables/jquery.dataTables
-//= require dataTables/extras/dataTables.responsive
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require popper
+//= require bootstrap
 //= require modernizr
 //= require chosen-jquery
 //= require intro
 //
 //= require 'blacklight_advanced_search'
-//= require 'blacklight_range_limit'
 //
 // Required by Blacklight
 //= require blacklight/blacklight
+//= require 'blacklight_range_limit'
 //= require requests/requests
 //= require babel/polyfill
 //

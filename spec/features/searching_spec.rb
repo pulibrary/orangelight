@@ -9,12 +9,12 @@ describe 'searching' do
 
   it 'renders an accessible search button' do
     visit '/catalog'
-    expect(page).to have_selector '.glyphicon-search[aria-hidden="true"]'
+    expect(page).to have_selector '.fa-search[aria-hidden="true"]'
   end
 
   it 'renders an accessible link to the stack map' do
     visit '/catalog?q=&search_field=all_fields'
-    expect(page).to have_selector '.glyphicon-map-marker[aria-hidden="true"]'
+    expect(page).to have_selector '.fa-map-marker[aria-hidden="true"]'
   end
 
   it 'renders an accessible icon for item icons' do
@@ -32,7 +32,7 @@ describe 'searching' do
   context 'Availability: On-site by request' do
     it 'On-site label is green' do
       visit '/?f%5Baccess_facet%5D%5B%5D=In+the+Library&q=id%3Adsp*&search_field=all_fields'
-      expect(page).to have_selector '#documents > div.document.blacklight-senior-thesis.document-position-0 > div > div.record-wrapper > ul > li.blacklight-holdings > ul > li:nth-child(1) > span.availability-icon.label.label-success'
+      expect(page).to have_selector '#documents > article.document.blacklight-senior-thesis.document-position-0 > div > div.record-wrapper > ul > li.blacklight-holdings > ul > li:nth-child(1) > span.availability-icon.badge.badge-success'
     end
   end
 
@@ -66,12 +66,11 @@ describe 'searching' do
     end
   end
 
-  context 'raise flash error if BadRequest', js: true do
-    it 'will display a flash message if there is a BadRequest error' do
+  context 'when a request parameter contains a space' do
+    it 'displays an error message' do
       visit '/catalog/range_limit?%20%20%20%20range_end=1990&%20%20%20%20range_field=pub_date_start_sort&%20%20%20%20range_start=1981'
       expect { page }.not_to raise_error
-      expect(page).to have_current_path('/')
-      expect(page).to have_content 'This is not a valid request.'
+      expect(page).to have_content 'For help, please email', 'start over'
     end
   end
   context 'with an invalid field list parameter in the advanced search' do
@@ -82,13 +81,13 @@ describe 'searching' do
     end
   end
   context 'when searching with an invalid facet parameter' do
-    it 'will log the error' do
+    it 'returns a 400 response, displays an error message, and logs the error' do
       allow(Rails.logger).to receive(:error)
 
       visit '/catalog?q=test&f=1'
       expect { page }.not_to raise_error
       expect(page.status_code).to eq 400
-      expect(page).to have_content 'Bad Request'
+      expect(page).to have_content 'For help, please email', 'start over'
       expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request: Invalid facet parameter passed: 1/)
     end
   end

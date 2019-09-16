@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # mount Blacklight::Folders::Engine, at: "blacklight"
-  # namespace :orangelight do
-  #   resources :names
-  # end
-
   scope module: 'orangelight' do
     get 'browse', to: 'browsables#browse'
     get 'browse/call_numbers', model: Orangelight::CallNumber, to: 'browsables#index'
@@ -17,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'catalog/:id/staff_view', to: 'catalog#librarian_view', as: 'staff_view_solr_document'
 
-  Blacklight::Marc.add_routes(self)
+  concern :marc_viewable, Blacklight::Marc::Routes::MarcViewable.new
   root to: 'catalog#index'
 
   mount Blacklight::Engine => '/'
@@ -32,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
-    concerns :exportable
+    concerns [:exportable, :marc_viewable]
     member do
       get 'stackmap'
     end

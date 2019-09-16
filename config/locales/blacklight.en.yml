@@ -1,4 +1,8 @@
 en:
+  views:
+    pagination:
+      previous: '&laquo; <span class="d-none d-lg-inline"> Previous</span>'
+      next: '<span class="d-none d-lg-inline">Next</span> &raquo;'
   blacklight:
     application_name: 'Princeton University Library Catalog'
     welcome: 'Welcome!'
@@ -49,9 +53,9 @@ en:
       librarian_view:
         title: 'Staff view'
       sort:
-        label: 'Sort<span class="hidden-xs hidden-sm hidden-md"> by %{field}</span>'
+        label: 'Sort<span class="d-none d-xl-inline"> by %{field}</span>'
       per_page:
-        button_label: '%{count}<span class="hidden-xs hidden-sm hidden-md"> per page</span>'
+        button_label: '%{count}<span class="d-none d-xl-inline"> per page</span>'
       start_over: 'Start over'
       cite: 'Cite'
       bookmarks:
@@ -88,15 +92,12 @@ en:
         subject:
           one: 'PU Library Catalog Shared Record'
           other: 'PU Library Catalog Shared Records'
-    saved_searches:
-      clear:
-        action_title: 'Clear saved searches'
     search_history:
       clear:
         action_title: 'Clear search history'
     tools:
       librarian_view: 'Staff view'
     pagination_compact:
-      previous: '&laquo; <span class="hidden-xs hidden-sm"> Previous</span>'
-      next: '<span class="hidden-xs hidden-sm">Next</span> &raquo;'
-    back_to_search: '<span class="icon-moveback"></span> <span class="hidden-xs hidden-sm">Back to search</span>'
+      previous: '&laquo; <span class="d-none d-lg-inline"> Previous</span>'
+      next: '<span class="d-none d-lg-inline">Next</span> &raquo;'
+    back_to_search: '<span class="icon-moveback"></span> <span class="d-none d-lg-inline">Back to search</span>'

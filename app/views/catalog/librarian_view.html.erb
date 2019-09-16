@@ -1,6 +1,7 @@
+<% @document = SolrDocument.new(id: params[:id]) %>
 <div class="pagination-search-widgets">
     <div class="col-md-12">
-    <%= link_to "Back to item", solr_document_path(@document), :class => "btn btn-default" %>
+    <%= link_to "Back to item", solr_document_path(@document), :class => "btn btn-primary" %>
     </div>
 </div>
 
@@ -9,7 +10,7 @@
 </div>
 
 <%- if @document.respond_to?(:to_marc) && @document.to_marc.present? -%>
-  <%= render "marc_view" %>
+  <%= render "marc_view", document: @document %>
 <%- else %>
   <%= t('blacklight.search.librarian_view.empty') %>
 <%- end -%>

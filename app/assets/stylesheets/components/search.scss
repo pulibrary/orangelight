@@ -2,12 +2,12 @@
 @import "variables/colors";
 @import "variables/typography";
 
-header .navbar-form .input-group .input-group-addon {
-  width: 190px;
+header .navbar-form .input-group .custom-select {
+  width: auto;
 }
 
-@media (max-width: 500px) {
-  header .navbar-form .input-group .input-group-addon {
+@media (max-width: 575px) {
+  header .navbar-form .input-group .custom-select {
     width: 100%;
     clear: both;
     display: block;
@@ -29,29 +29,14 @@ header .navbar-form .input-group .input-group-btn {
   width: 40px;
 }
 
-header .input-group-addon {
-  border: none;
-  padding: 0;
-  background: none;
-
-  .caret {
-    position: relative;
-    z-index: 99999991;
-    left: -30px;
-    pointer-events: none;
-  }
-}
-
 #search-navbar {
-  padding: 0;
-  @media (min-width: $bp-medium) {
-    width: 70%;
-  }
+  padding: 0 1rem;
+  width: 100%;
 
   .search-query-form {
     padding: 1.125em 0 0;
 
-    @media (min-width: $bp-medium) {
+    @media (min-width: $bp-large) {
       padding: 1.125em 0;
     }
   }
@@ -115,13 +100,13 @@ header .input-group-addon {
   height: 42px;
 }
 
-@media (min-width: $bp-medium) {
+@media (min-width: $bp-large) {
   .navbar-form .input-group > .search_q.form-control {
     width: 250px;
   }
 }
 
-@media (min-width: $bp-large) {
+@media (min-width: $bp-xlarge) {
   .navbar-form .input-group > .search_q.form-control {
     width: 375px;
   }
@@ -133,11 +118,46 @@ header .input-group-addon {
 }
 
 #search-navbar .search-query-form {
-  width: auto;
+  width: 100%;
+
+  @media (min-width: $bp-large) {
+    width: auto;
+  }
+}
+
+.search-navbar .search-input {
+  flex: 1;
+
+  @media (min-width: $bp-large) {
+    min-width: 250px;
+  }
+
+  @media (min-width: $bp-xlarge) {
+    min-width: 375px;
+  }
+
+  input {
+    width: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    @media (min-width: 575px) {
+      border-radius: 0;
+    }
+  }
 }
 
 .search-query-form .input-group {
   float: left;
+  width: 100%;
+}
+
+.search-query-form .input-group-prepend {
+  width: 100%;
+
+  @media (min-width: 575px) {
+    width: auto;
+  }
 }
 
 select::-ms-expand {
@@ -146,4 +166,13 @@ select::-ms-expand {
 
 .ie9 select + .caret {
   display: none;
+}
+
+#search_field.custom-select {
+  height: calc(1.75em + 0.75rem + 2px);
+  
+  @media (min-width: 575px) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }

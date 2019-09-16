@@ -7,14 +7,14 @@ gem 'rails', '~> 5.1.6.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Blacklight
-gem 'blacklight', git: 'https://github.com/projectblacklight/blacklight', branch: 'release-6.x'
+gem 'blacklight', '~> 7.0'
 
 gem 'rsolr'
 
 # slider limit support
-gem 'blacklight_range_limit', '~> 6.3.2'
+gem 'blacklight_range_limit'
 # advanced search functionality
-gem 'blacklight_advanced_search', '~> 6.4'
+gem 'blacklight_advanced_search', git: 'https://github.com/projectblacklight/blacklight_advanced_search', branch: 'master'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Modernizr.js library
@@ -25,7 +25,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.2.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+gem 'mini_racer'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -47,7 +47,7 @@ gem 'chosen-rails'
 gem 'introjs-rails', git: 'https://github.com/videmor/intro.js-rails.git', branch: 'update.introjs'
 
 # Capistrano
-gem 'blacklight-marc', '~> 6.1'
+gem 'blacklight-marc', git: 'https://github.com/projectblacklight/blacklight-marc.git', ref: 'c0ff1d9'
 gem 'capistrano', '~> 3.4.0'
 gem 'devise', '>= 4.6.0'
 gem 'devise-guests', '~> 0.5'
@@ -59,15 +59,14 @@ gem 'solr_wrapper', '~> 1.0'
 gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
 
 gem 'babel-transpiler'
-gem 'bootstrap-sass', '~> 3.4'
+gem 'bootstrap'
 gem 'capybara'
 gem 'coveralls', require: false
 gem 'ddtrace'
+gem 'font-awesome-rails'
 gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
 gem 'rspec-rails', '~> 3.4'
-gem 'rubocop', '~> 0.49', require: false
-gem 'rubocop-rspec', '~> 1.20.1'
 gem 'rubyzip', '>= 1.2.2'
 gem 'sneakers'
 gem 'sprockets-es6'
@@ -80,13 +79,13 @@ gem 'requests', git: 'https://github.com/pulibrary/requests.git'
 
 gem 'borrow_direct', git: 'https://github.com/pulibrary/borrow_direct.git', branch: 'generate_query_encoding_fix'
 
-gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'blacklight_6'
+gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'master'
 
-gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'jquery-datatables'
 
 gem 'openurl', '~> 1.0'
 
-gem 'honeybadger', '~> 3.1'
+gem 'honeybadger'
 
 gem 'sitemap_generator', '~> 6.0'
 
@@ -101,18 +100,18 @@ gem 'logstash-event'
 gem 'whenever', '~> 0.11'
 
 group :development do
-  gem 'capistrano-rails', '~> 1.1.6'
+  gem 'capistrano-rails'
 end
 
 group :test do
-  gem 'chromedriver-helper'
   gem 'factory_bot_rails', require: false
   gem 'launchy'
   gem 'rails-controller-testing'
-  gem 'selenium-webdriver'
+  gem 'webdrivers'
   gem 'webmock', require: false
 end
 
 group :development, :test do
+  gem 'bixby'
   gem 'pry-byebug'
 end

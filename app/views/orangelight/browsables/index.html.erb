@@ -1,62 +1,53 @@
 <%= render 'shared/start_over_row' %>
 
-<div class="col-md-12">
+<div class="col-12">
   <div class="browse-header">
     <h1 class="page-heading"> Browse by <%="#{@list_name.downcase}" %></h1>
-    <div class="prev_next_links btn-group pull-right">
-      <nav aria-label="top pager" class="browse-pager">
-        <ul class="pager">
-          <% if @is_first %>
-            <%= content_tag(:li, raw(t 'blacklight.pagination_compact.previous'), class: "") %>
-          <% else %>
-          <li><%= link_to raw(t 'blacklight.pagination_compact.previous'), @page_link + "start=#{@prev}", class: "btn btn-link" %></li>
-          <% end %>
-          <%= content_tag(:li, "#{number_with_delimiter(@start)} - #{number_with_delimiter(@page_last)} of #{number_with_delimiter(@last_id)}", class: "page-count", style: "color:black;strong;font-weight:bold;") %>
-          <% if @is_last %>
-            <%= content_tag(:li, raw(t 'blacklight.pagination_compact.next'), class: "btn disabled") %>
-          <% else %>
-            <li><%= link_to raw(t 'blacklight.pagination_compact.next'), @page_link + "start=#{@next}", class: "btn btn-link" %></li>
-          <% end %>
-        </ul>
-      </nav>
+    <div class="d-flex prev_next_links btn-group float-md-right flex-wrap" role="group" aria-label="Previous Next Links">
+      
+        <nav aria-label="top pager" class="nav">
+          <%= render "orangelight/browsables/browse_pagination"%>
+        </nav>
 
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%=t(:'blacklight.search.per_page.button_label', :count => @rpp).html_safe %> <span class="caret"></span></button>
-      <ul class="dropdown-menu" role="menu">
-          <li><%= link_to("10", url_for(search_state.params_for_search(:rpp => 10))) %></li>
-          <li><%= link_to("25", url_for(search_state.params_for_search(:rpp => 25))) %></li>
-          <li><%= link_to("50", url_for(search_state.params_for_search(:rpp => 50))) %></li>
-          <li><%= link_to("100", url_for(search_state.params_for_search(:rpp => 100))) %></li>
-      </ul>
+      <div class="ml-auto">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%=t(:'blacklight.search.per_page.button_label', :count => @rpp).html_safe %></button>
+        <ul class="dropdown-menu" role="menu">
+          <%= link_to("10", url_for(search_state.params_for_search(:rpp => 10)), class: "dropdown-item")  %>
+          <%= link_to("25", url_for(search_state.params_for_search(:rpp => 25)), class: "dropdown-item") %>
+          <%= link_to("50", url_for(search_state.params_for_search(:rpp => 50)), class: "dropdown-item") %>
+          <%= link_to("100", url_for(search_state.params_for_search(:rpp => 100)), class: "dropdown-item") %>
+        </ul>
+      </div>
     </div>
   </div>
-
-
+</div>
+<div class="col-12">
   <% if @model != 'call_numbers' %>
     <ul class="browse">
-        <% @orangelight_browsables.sort.each_with_index do |orangelight_name, i| %>
+      <% @orangelight_browsables.sort.each_with_index do |orangelight_name, i| %>
 
-          <% if orangelight_name.id == @match && @exact_match %>
-            <li class="alert alert-info clickable-row" data-href="/catalog/?f[<%=@facet%>][]=<%=CGI.escape orangelight_name.label%>">
-              <strong>
-          <% else %>
-            <li class="row-<%=i.even? ? 'odd' : 'even' %>">
-          <% end %>
-            &nbsp;
-            <span class="facet-label <%=orangelight_name.dir%>"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{CGI.escape orangelight_name.label}", dir: orangelight_name.dir %>
-              <%= "(#{orangelight_name.count})"%>
-            </span>
-          <% if orangelight_name.id == @match && @exact_match %>
-              </strong>
-            </li>
-          <% else %>
-            </li>
-          <% end %>
-          <% if orangelight_name.id == @match && !@exact_match %>
-            <li class="alert alert-info">
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong>
-            </li>
-          <% end %>
+        <% if orangelight_name.id == @match && @exact_match %>
+          <li class="alert alert-info clickable-row" data-href="/catalog/?f[<%=@facet%>][]=<%=CGI.escape orangelight_name.label%>">
+            <strong>
+        <% else %>
+          <li class="row-<%=i.even? ? 'odd' : 'even' %>">
         <% end %>
+          &nbsp;
+          <span class="facet-label <%=orangelight_name.dir%>"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{CGI.escape orangelight_name.label}", dir: orangelight_name.dir %>
+            <%= "(#{orangelight_name.count})"%>
+          </span>
+        <% if orangelight_name.id == @match && @exact_match %>
+            </strong>
+          </li>
+        <% else %>
+          </li>
+        <% end %>
+        <% if orangelight_name.id == @match && !@exact_match %>
+          <li class="alert alert-info">
+          <i class="fa fa-search" aria-hidden="true"></i> <strong>Your query "<%= @query %>" would be here.</strong>
+          </li>
+        <% end %>
+      <% end %>
     </ul>
 
   <% else %>
@@ -83,11 +74,11 @@
           <td><%= link_to orangelight_name.label, "/catalog/#{orangelight_name.bibid}" %></td>
           <td class="availability-column" data-availability-record="<%= should_check_availability?(orangelight_name.bibid) %>" data-record-id="<%= bib_for_availability(orangelight_name.bibid) %>" data-holding-id="<%= orangelight_name.holding_id %>">
             <%= content_tag(:span, content_tag(:span, orangelight_name.location, class: 'results_location'), class: 'library-location', data: { location: true, record_id: orangelight_name.bibid, holding_id: orangelight_name.holding_id }) %>
-            </br><span class="availability-icon label label-default"></span>
+            </br><span class="availability-icon badge badge-secondary"></span>
             <%= content_tag(:span, '', class: 'more-info empty', data: { record_id: orangelight_name.bibid }) unless orangelight_name.location == 'Multiple locations' %>
             <% if scsb_id?(orangelight_name.bibid) %>
               </br>
-              <span class="more-info label label-default" data-record-id="<%= orangelight_name.bibid %>" title="Click on the record for full availability info">View record for full availability</span>
+              <span class="more-info badge badge-secondary" data-record-id="<%= orangelight_name.bibid %>" title="Click on the record for full availability info">View record for full availability</span>
             <% end %>
           </td>
 
@@ -102,7 +93,7 @@
         <% end %>
         <% if orangelight_name.id == @match && !@exact_match %>
             <tr class="alert alert-info"> <td colspan=5>
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> <strong>Your query "<%= @query %>" would be here.</strong> </td>
+            <i class="fa fa-search" aria-hidden="true"></i> <strong>Your query "<%= @query %>" would be here.</strong> </td>
           </tr>
         <% end %>
       <% end %>
@@ -110,22 +101,11 @@
   </table>
   </div>
   <% end %>
-
-  <div class="col-md-12">
-    <nav aria-label="bottom pager">
-      <ul class="pager">
-        <% if @is_first %>
-          <%= content_tag(:li, raw(t 'blacklight.pagination_compact.previous'), class: "btn disabled") %>
-        <% else %>
-        <li><%= link_to raw(t 'blacklight.pagination_compact.previous'), @page_link + "start=#{@prev}", class: "btn btn-link" %></li>
-        <% end %>
-        <%= content_tag(:li, "#{number_with_delimiter(@start)} - #{number_with_delimiter(@page_last)} of #{number_with_delimiter(@last_id)}", class: "page-count", style: "color:black;strong;font-weight:bold;") %>
-        <% if @is_last %>
-          <%= content_tag(:li, raw(t 'blacklight.pagination_compact.next'), class: "btn disabled") %>
-        <% else %>
-        <li><%= link_to raw(t 'blacklight.pagination_compact.next'), @page_link + "start=#{@next}", class: "btn btn-link" %></li>
-        <% end %>
-      </ul>
+</div>
+<div class="col-12">
+  <div class="prev_next_links" role="group" aria-label="Previous Next Links">
+    <nav aria-label="bottom pager" class="nav justify-content-center">
+      <%= render "orangelight/browsables/browse_pagination"%>
     </nav>
   </div>
 </div>

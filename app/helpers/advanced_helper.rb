@@ -26,9 +26,7 @@ module AdvancedHelper
 
   # carries over original search field and original guided search fields if user switches to guided search from regular search
   def guided_field(field_num, default_val)
-    if field_num == :f1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
-      return search_fields_for_advanced_search[params[:search_field]].key || default_val
-    end
+    return search_fields_for_advanced_search[params[:search_field]].key || default_val if field_num == :f1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
     params[field_num] || default_val
   end
 
@@ -205,11 +203,10 @@ module BlacklightAdvancedSearch
         end
 
         # Test if the field is valid
-        if config.search_fields[field]
-          local_param = local_param_hash(field, config)
-          queries << parsed.to_query(local_param)
-          queries << ops.shift
-        end
+        next unless config.search_fields[field]
+        local_param = local_param_hash(field, config)
+        queries << parsed.to_query(local_param)
+        queries << ops.shift
       end
       queries.join(' ')
     end
@@ -233,7 +230,7 @@ module BlacklightAdvancedSearch
     def guided_search(my_params = params)
       constraints = []
       if my_params[:q1].present? && my_params[:f1].present?
-        label = search_field_def_for_key(my_params[:f1]).try(:label)
+        label = blacklight_config.search_fields[my_params[:f1]].try(:label)
         if label
           query = my_params[:q1]
           constraints << render_constraint_element(
@@ -243,7 +240,7 @@ module BlacklightAdvancedSearch
         end
       end
       if my_params[:q2].present? && my_params[:f2].present?
-        label = search_field_def_for_key(my_params[:f2]).try(:label)
+        label = blacklight_config.search_fields[my_params[:f2]].try(:label)
         if label
           query = my_params[:q2]
           query = 'NOT ' + my_params[:q2] if my_params[:op2] == 'NOT'
@@ -254,7 +251,7 @@ module BlacklightAdvancedSearch
         end
       end
       if my_params[:q3].present? && my_params[:f3].present?
-        label = search_field_def_for_key(my_params[:f3]).try(:label)
+        label = blacklight_config.search_fields[my_params[:f3]].try(:label)
         if label
           query = my_params[:q3]
           query = 'NOT ' + my_params[:q3] if my_params[:op3] == 'NOT'
