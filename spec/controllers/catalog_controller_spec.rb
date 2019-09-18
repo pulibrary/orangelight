@@ -75,14 +75,4 @@ RSpec.describe CatalogController do
       expect(response.status).to eq(400)
     end
   end
-
-  describe 'rendering facet values and links' do
-    context 'when the display information cannot be retrieved for the facet' do
-      it 'renders an error message' do
-        expect do
-          get :facet, params: { id: 'publication_place_facet_nonexistent', f: { 'format' => ['Audio'] }, '++++f' => { 'lc_1letter_facet' => ['M+-+Music'] } }
-        end.to raise_error(ActionController::RoutingError, 'Not Found')
-      end
-    end
-  end
 end
