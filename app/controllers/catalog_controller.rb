@@ -627,24 +627,4 @@ class CatalogController < ApplicationController
   rescue ActionController::BadRequest
     render file: Rails.public_path.join('x400.html'), layout: true, status: :bad_request
   end
-
-  # @see Blacklight::Catalog#facet
-  # @see https://github.com/projectblacklight/blacklight/blob/v6.13.0/app/controllers/concerns/blacklight/catalog.rb#L68
-  # displays values and pagination links for a single facet field
-  def facet
-    @facet = blacklight_config.facet_fields[params[:id]]
-    raise ActionController::RoutingError, 'Not Found' unless @facet
-    @response = get_facet_field_response(@facet.key, params)
-    @display_facet = @response.aggregations[@facet.field]
-    raise ActionController::RoutingError, 'Not Found' unless @display_facet
-    @pagination = facet_paginator(@facet, @display_facet)
-    respond_to do |format|
-      format.html do
-        # Draw the partial for the "more" facet modal window:
-        return render layout: false if request.xhr?
-        # Otherwise draw the facet selector for users who have javascript disabled.
-      end
-      format.json
-    end
-  end
 end
