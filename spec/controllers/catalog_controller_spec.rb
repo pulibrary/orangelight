@@ -75,4 +75,12 @@ RSpec.describe CatalogController do
       expect(response.status).to eq(400)
     end
   end
+
+  describe 'facet paging too deep' do
+    it 'returns 404' do
+      get :facet, params: { id: 'format', 'facet.page': 251 }
+
+      expect(response).to redirect_to '/404'
+    end
+  end
 end

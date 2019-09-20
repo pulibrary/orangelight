@@ -627,4 +627,14 @@ class CatalogController < ApplicationController
   rescue ActionController::BadRequest
     render file: Rails.public_path.join('x400.html'), layout: true, status: :bad_request
   end
+
+  FACET_PAGINATION_THRESHOLD = 250
+  before_action only: :facet do
+    if params['facet.page'] && params['facet.page'].to_i > FACET_PAGINATION_THRESHOLD
+      Rails.logger.info("Facet pagination threshold exceeded for #{request.ip} (#{request.user_agent}). Params: #{params}")
+      flash[:error] = "You have paginated too deep into facets. Please contact us using the feedback form if you have a
+                       need to view facets past page #{FACET_PAGINATION_THRESHOLD}."
+      redirect_to '/404'
+    end
+  end
 end
