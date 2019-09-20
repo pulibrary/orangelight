@@ -7,7 +7,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   include BlacklightHelper
 
   self.default_processor_chain += %i[cleanup_boolean_operators add_advanced_search_to_solr
-                                     cjk_mm wildcard_char_strip excessive_paging_error
+                                     cjk_mm wildcard_char_strip
                                      only_home_facets left_anchor_escape_whitespace
                                      course_reserve_filters series_title_results
                                      pul_holdings html_facets]
@@ -33,22 +33,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     return if search_parameters?
     solr_parameters['facet.field'] = blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
     solr_parameters['facet.pivot'] = []
-  end
-
-  # Determines whether or not the user is requesting an excessively high page of results
-  # @param [ActionController::Parameters] params
-  # @return [Boolean]
-  def excessive_paging_error(_solr_parameters)
-    raise ActionController::BadRequest if excessive_paging?
-  end
-
-  # Determines whether or not the user is requesting an excessively high page of results
-  # @return [Boolean]
-  def excessive_paging?
-    page = blacklight_params[:page].to_i || 0
-    return false if page <= 1
-    return false if search_parameters? && page < 1000
-    true
   end
 
   ##

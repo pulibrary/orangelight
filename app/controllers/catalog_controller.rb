@@ -622,10 +622,14 @@ class CatalogController < ApplicationController
     { response: { docs: @document_list, facets: search_facets_as_json, pages: pagination_info(@response) } }
   end
 
-  def index
-    super
-  rescue ActionController::BadRequest
-    render file: Rails.public_path.join('x400.html'), layout: true, status: :bad_request
+  PAGINATION_THRESHOLD = 50
+  before_action only: :index do
+    if params[:page] && params[:page].to_i > PAGINATION_THRESHOLD
+      Rails.logger.info("Pagination threshold exceeded for #{request.ip} (#{request.user_agent}). Params: #{params}")
+      flash[:error] = "You have paginated too deep into the result set. Please contact us using the feedback form if you
+                       have a need to view results past page #{PAGINATION_THRESHOLD}."
+      redirect_to '/404'
+    end
   end
 
   FACET_PAGINATION_THRESHOLD = 250

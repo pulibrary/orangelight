@@ -70,16 +70,19 @@ RSpec.describe CatalogController do
       get :index, params: { q: 'asdf', page: 2 }
       expect(response.status).to eq(200)
     end
-    it 'errors when paging is excessive' do
-      get :index, params: { q: 'asdf', page: 1500 }
-      expect(response.status).to eq(400)
+    it 'redirects to 404 when paging is excessive' do
+      get :index, params: { q: 'asdf', page: 51 }
+      expect(response).to redirect_to '/404'
     end
   end
 
-  describe 'facet paging too deep' do
-    it 'returns 404' do
+  describe 'excessive facet paging' do
+    it 'does not error when facet paging is reasonable' do
+      get :index, params: { q: 'asdf', page: 2 }
+      expect(response.status).to eq(200)
+    end
+    it 'redirects to 404 when paging is excessive' do
       get :facet, params: { id: 'format', 'facet.page': 251 }
-
       expect(response).to redirect_to '/404'
     end
   end
