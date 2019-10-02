@@ -115,10 +115,10 @@ class CatalogController < ApplicationController
     config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true
     config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true
     config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true
-    config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, show: false, sort: 'index'
-    config.add_facet_field 'author_s', label: 'Author', limit: true, show: false
-    config.add_facet_field 'class_year_s', label: 'PU class year', limit: true, show: false
-    config.add_facet_field 'lc_rest_facet', label: 'Full call number code', limit: 25, show: false, sort: 'index'
+    config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, include_in_request: false, sort: 'index'
+    config.add_facet_field 'author_s', label: 'Author', limit: true, include_in_request: false
+    config.add_facet_field 'class_year_s', label: 'PU class year', limit: true, include_in_request: false
+    config.add_facet_field 'lc_rest_facet', label: 'Full call number code', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'recently_added_facet', label: 'Recently added', home: true, query: {
       weeks_1: { label: 'Within 1 week', fq: 'cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]' },
       weeks_2: { label: 'Within 2 weeks', fq: 'cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]' },
@@ -130,63 +130,63 @@ class CatalogController < ApplicationController
     }
 
     config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true
-    config.add_facet_field 'call_number_browse_s', label: 'Call number', show: false
+    config.add_facet_field 'call_number_browse_s', label: 'Call number', include_in_request: false
 
-    config.add_facet_field 'call_number_scheme_facet', label: 'Call number scheme', limit: 25, show: false, sort: 'index'
-    config.add_facet_field 'call_number_group_facet', label: 'Call number group', limit: 25, show: false, sort: 'index'
-    config.add_facet_field 'call_number_full_facet', label: 'Full call number', limit: 25, show: false, sort: 'index'
+    config.add_facet_field 'call_number_scheme_facet', label: 'Call number scheme', limit: 25, include_in_request: false, sort: 'index'
+    config.add_facet_field 'call_number_group_facet', label: 'Call number group', limit: 25, include_in_request: false, sort: 'index'
+    config.add_facet_field 'call_number_full_facet', label: 'Full call number', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true
     config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet]
     config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index'
-    config.add_facet_field 'advanced_location_s', label: 'Holding location', show: false,
+    config.add_facet_field 'advanced_location_s', label: 'Holding location', include_in_request: false,
                                                   helper_method: :render_location_code
-    config.add_facet_field 'name_title_browse_s', label: 'Author-title heading', show: false
+    config.add_facet_field 'name_title_browse_s', label: 'Author-title heading', include_in_request: false
 
     # Numismatics facets
-    config.add_facet_field 'issue_number_s', label: 'Issue', show: false
-    config.add_facet_field 'issue_monogram_title_s', label: 'Monogram', show: false
-    config.add_facet_field 'issue_references_s', label: 'References', show: false
-    config.add_facet_field 'accession_info_s', label: 'Accession info', show: false
-    config.add_facet_field 'analysis_s', label: 'Analysis', show: false
-    config.add_facet_field 'counter_stamp_s', label: 'Counter Stamp', show: false
-    config.add_facet_field 'die_axis_s', label: 'Die Axis', show: false
-    config.add_facet_field 'find_date_s', label: 'Find Date', show: false
-    config.add_facet_field 'find_description_s', label: 'Find Description', show: false
-    config.add_facet_field 'find_feature_s', label: 'Find Feature', show: false
-    config.add_facet_field 'find_locus_s', label: 'Find Locus', show: false
-    config.add_facet_field 'find_number_s', label: 'Find Number', show: false
-    config.add_facet_field 'find_place_s', label: 'Find Place', show: false
-    config.add_facet_field 'issue_color_s', label: 'Color', show: false
-    config.add_facet_field 'issue_denomination_s', label: 'Denomination', show: false
-    config.add_facet_field 'issue_edge_s', label: 'Edge', show: false
-    config.add_facet_field 'issue_era_s', label: 'Era', show: false
-    config.add_facet_field 'issue_master_s', label: 'Master', show: false
-    config.add_facet_field 'issue_metal_s', label: 'Metal', show: false
-    config.add_facet_field 'issue_place_s', label: 'Place', show: false
-    config.add_facet_field 'issue_object_type_s', label: 'Object Type', show: false
-    config.add_facet_field 'issue_obverse_attributes_s', label: 'Obverse Attributes', show: false
-    config.add_facet_field 'issue_obverse_figure_description_s', label: 'Obverse Figure Description', show: false
-    config.add_facet_field 'issue_obverse_figure_relationship_s', label: 'Obverse Figure Relationship', show: false
-    config.add_facet_field 'issue_obverse_figure_s', label: 'Obverse Figure', show: false
-    config.add_facet_field 'issue_obverse_legend_s', label: 'Obverse Legend', show: false
-    config.add_facet_field 'issue_obverse_orientation_s', label: 'Obverse Orientation', show: false
-    config.add_facet_field 'issue_obverse_part_s', label: 'Obverse Part', show: false
-    config.add_facet_field 'issue_obverse_symbol_s', label: 'Obverse Symbol', show: false
-    config.add_facet_field 'issue_reverse_attributes_s', label: 'Reverse Attributes', show: false
-    config.add_facet_field 'issue_reverse_figure_description_s', label: 'Reverse Figure Description', show: false
-    config.add_facet_field 'issue_reverse_figure_relationship_s', label: 'Reverse Figure Relationship', show: false
-    config.add_facet_field 'issue_reverse_figure_s', label: 'Reverse Figure', show: false
-    config.add_facet_field 'issue_reverse_legend_s', label: 'Reverse Legend', show: false
-    config.add_facet_field 'issue_reverse_orientation_s', label: 'Reverse Orientation', show: false
-    config.add_facet_field 'issue_reverse_part_s', label: 'Reverse Part', show: false
-    config.add_facet_field 'issue_reverse_symbol_s', label: 'Reverse Symbol', show: false
-    config.add_facet_field 'issue_ruler_s', label: 'Ruler', show: false
-    config.add_facet_field 'issue_series_s', label: 'Series', show: false
-    config.add_facet_field 'issue_shape_s', label: 'Shape', show: false
-    config.add_facet_field 'issue_workshop_s', label: 'Workshop', show: false
-    config.add_facet_field 'size_s', label: 'Size', show: false
-    config.add_facet_field 'technique_s', label: 'Technique', show: false
-    config.add_facet_field 'weight_s', label: 'Weight', show: false
+    config.add_facet_field 'issue_number_s', label: 'Issue', include_in_request: false
+    config.add_facet_field 'issue_monogram_title_s', label: 'Monogram', include_in_request: false
+    config.add_facet_field 'issue_references_s', label: 'References', include_in_request: false
+    config.add_facet_field 'accession_info_s', label: 'Accession info', include_in_request: false
+    config.add_facet_field 'analysis_s', label: 'Analysis', include_in_request: false
+    config.add_facet_field 'counter_stamp_s', label: 'Counter Stamp', include_in_request: false
+    config.add_facet_field 'die_axis_s', label: 'Die Axis', include_in_request: false
+    config.add_facet_field 'find_date_s', label: 'Find Date', include_in_request: false
+    config.add_facet_field 'find_description_s', label: 'Find Description', include_in_request: false
+    config.add_facet_field 'find_feature_s', label: 'Find Feature', include_in_request: false
+    config.add_facet_field 'find_locus_s', label: 'Find Locus', include_in_request: false
+    config.add_facet_field 'find_number_s', label: 'Find Number', include_in_request: false
+    config.add_facet_field 'find_place_s', label: 'Find Place', include_in_request: false
+    config.add_facet_field 'issue_color_s', label: 'Color', include_in_request: false
+    config.add_facet_field 'issue_denomination_s', label: 'Denomination', include_in_request: false
+    config.add_facet_field 'issue_edge_s', label: 'Edge', include_in_request: false
+    config.add_facet_field 'issue_era_s', label: 'Era', include_in_request: false
+    config.add_facet_field 'issue_master_s', label: 'Master', include_in_request: false
+    config.add_facet_field 'issue_metal_s', label: 'Metal', include_in_request: false
+    config.add_facet_field 'issue_place_s', label: 'Place', include_in_request: false
+    config.add_facet_field 'issue_object_type_s', label: 'Object Type', include_in_request: false
+    config.add_facet_field 'issue_obverse_attributes_s', label: 'Obverse Attributes', include_in_request: false
+    config.add_facet_field 'issue_obverse_figure_description_s', label: 'Obverse Figure Description', include_in_request: false
+    config.add_facet_field 'issue_obverse_figure_relationship_s', label: 'Obverse Figure Relationship', include_in_request: false
+    config.add_facet_field 'issue_obverse_figure_s', label: 'Obverse Figure', include_in_request: false
+    config.add_facet_field 'issue_obverse_legend_s', label: 'Obverse Legend', include_in_request: false
+    config.add_facet_field 'issue_obverse_orientation_s', label: 'Obverse Orientation', include_in_request: false
+    config.add_facet_field 'issue_obverse_part_s', label: 'Obverse Part', include_in_request: false
+    config.add_facet_field 'issue_obverse_symbol_s', label: 'Obverse Symbol', include_in_request: false
+    config.add_facet_field 'issue_reverse_attributes_s', label: 'Reverse Attributes', include_in_request: false
+    config.add_facet_field 'issue_reverse_figure_description_s', label: 'Reverse Figure Description', include_in_request: false
+    config.add_facet_field 'issue_reverse_figure_relationship_s', label: 'Reverse Figure Relationship', include_in_request: false
+    config.add_facet_field 'issue_reverse_figure_s', label: 'Reverse Figure', include_in_request: false
+    config.add_facet_field 'issue_reverse_legend_s', label: 'Reverse Legend', include_in_request: false
+    config.add_facet_field 'issue_reverse_orientation_s', label: 'Reverse Orientation', include_in_request: false
+    config.add_facet_field 'issue_reverse_part_s', label: 'Reverse Part', include_in_request: false
+    config.add_facet_field 'issue_reverse_symbol_s', label: 'Reverse Symbol', include_in_request: false
+    config.add_facet_field 'issue_ruler_s', label: 'Ruler', include_in_request: false
+    config.add_facet_field 'issue_series_s', label: 'Series', include_in_request: false
+    config.add_facet_field 'issue_shape_s', label: 'Shape', include_in_request: false
+    config.add_facet_field 'issue_workshop_s', label: 'Workshop', include_in_request: false
+    config.add_facet_field 'size_s', label: 'Size', include_in_request: false
+    config.add_facet_field 'technique_s', label: 'Technique', include_in_request: false
+    config.add_facet_field 'weight_s', label: 'Weight', include_in_request: false
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
