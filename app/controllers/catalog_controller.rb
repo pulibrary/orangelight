@@ -115,10 +115,6 @@ class CatalogController < ApplicationController
     config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true
     config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true
     config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true
-    config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, include_in_request: false, sort: 'index'
-    config.add_facet_field 'author_s', label: 'Author', limit: true, include_in_request: false
-    config.add_facet_field 'class_year_s', label: 'PU class year', limit: true, include_in_request: false
-    config.add_facet_field 'lc_rest_facet', label: 'Full call number code', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'recently_added_facet', label: 'Recently added', home: true, query: {
       weeks_1: { label: 'Within 1 week', fq: 'cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]' },
       weeks_2: { label: 'Within 2 weeks', fq: 'cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]' },
@@ -130,14 +126,23 @@ class CatalogController < ApplicationController
     }
 
     config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true
+    config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true
+    config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet]
+    config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index'
+
+    # The following facet configurations are purely for display purposes. They
+    # will not show up in the facet bar, but without them the labels and other
+    # configuration which show up when a user clicks that field in the show page
+    # will be wrong.
+    config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, include_in_request: false, sort: 'index'
+    config.add_facet_field 'author_s', label: 'Author', limit: true, include_in_request: false
+    config.add_facet_field 'class_year_s', label: 'PU class year', limit: true, include_in_request: false
+    config.add_facet_field 'lc_rest_facet', label: 'Full call number code', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'call_number_browse_s', label: 'Call number', include_in_request: false
 
     config.add_facet_field 'call_number_scheme_facet', label: 'Call number scheme', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'call_number_group_facet', label: 'Call number group', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'call_number_full_facet', label: 'Full call number', limit: 25, include_in_request: false, sort: 'index'
-    config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true
-    config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet]
-    config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index'
     config.add_facet_field 'advanced_location_s', label: 'Holding location', include_in_request: false,
                                                   helper_method: :render_location_code
     config.add_facet_field 'name_title_browse_s', label: 'Author-title heading', include_in_request: false
