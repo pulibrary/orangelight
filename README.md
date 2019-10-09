@@ -9,10 +9,10 @@ Versions:
 
 * Ruby: 2.4.4
 * Rails: 5.1.4
-* Blacklight: 6.10.1
-* blacklight_advanced_search: 6.3.1
+* Blacklight: 7.0.1
+* blacklight_advanced_search: 7.0.0.alpha
 
-To install run 
+To install run
   ```
   bundle install
   yarn install
@@ -25,6 +25,13 @@ Application Configuration
 apt-get install postgresql
 su - postgres
 psql -c "CREATE ROLE orangelight with createdb login password 'orange';"
+exit
+```
+#### Postgres On Mac
+Follow the instructions on [codementor](https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb) to install postgres on a Mac. Then run the following commands to create the orangelight user:
+```bash
+psql postgres
+CREATE ROLE orangelight with createdb login password 'orange';
 exit
 ```
 
