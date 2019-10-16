@@ -1,8 +1,8 @@
 # Orangelight
 
 [![CircleCI](https://circleci.com/gh/pulibrary/orangelight.svg?style=svg)](https://circleci.com/gh/pulibrary/orangelight)
-[![Coverage Status](https://coveralls.io/repos/pulibrary/orangelight/badge.png?branch=master)](https://coveralls.io/r/pulibrary/orangelight)
-
+[![Coverage
+Status](https://coveralls.io/repos/github/pulibrary/orangelight/badge.svg?branch=master)](https://coveralls.io/github/pulibrary/orangelight?branch=master)
 
 
 Versions:
