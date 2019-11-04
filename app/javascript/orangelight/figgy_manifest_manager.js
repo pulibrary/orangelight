@@ -60,7 +60,8 @@ class FiggyViewer {
 
     // This needs to be retrieved using Global
     const figgyUrl = window.Global.figgy.url
-    const src = `${figgyUrl}/viewer#?manifest=${this.manifestUrl}&config=${figgyUrl}/uv/uv_config.json`
+    const figgyId = figgyUrl.replace("/manifest","").replace(/.*\//,"")
+    const src = `${figgyUrl}/viewer#?manifest=${this.manifestUrl}&config=${figgyUrl}/viewer/config/${figgyId}.json`
     iframeElement.src = src
 
     return iframeElement
