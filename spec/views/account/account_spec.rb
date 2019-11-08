@@ -7,7 +7,8 @@ describe 'Your Account', type: :feature do
     it 'Account information displays as not available' do
       visit('/account')
 
-      expect(page).to have_content I18n.t('blacklight.login.netid_button')
+      expect(page).to have_content I18n.t('blacklight.login.netid_login_msg')
+      expect(page).to have_content I18n.t('blacklight.login.barcode_login_msg')
       expect(page).not_to have_css('dt'), text: 'Barcode'
     end
   end
