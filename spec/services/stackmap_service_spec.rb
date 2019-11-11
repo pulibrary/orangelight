@@ -25,14 +25,14 @@ RSpec.describe StackmapService::Url do
       let(:call_number) { 'Q43.2' }
 
       it 'resolves to embeded firestone locator with loc and bibid' do
-        expect(url).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
+        expect(url).to eq("https://locator-prod.princeton.edu/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
       end
     end
     describe 'firestone, no call number provided' do
       let(:location) { 'f' }
 
       it 'resolves to embeded firestone locator with loc and bibid' do
-        expect(url).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
+        expect(url).to eq("https://locator-prod.princeton.edu/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
       end
     end
 
@@ -41,7 +41,7 @@ RSpec.describe StackmapService::Url do
       let(:doc_cn) { nil }
 
       it 'resolves to embeded firestone locator with loc and bibid' do
-        expect(url).to eq("https://library.princeton.edu/locator/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
+        expect(url).to eq("https://locator-prod.princeton.edu/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
       end
 
       it 'preferred_callno returns nil' do

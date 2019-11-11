@@ -44,7 +44,7 @@ class StackmapService
     private
 
       def locator_url
-        "https://library.princeton.edu/locator/index.php?loc=#{@loc}&id=#{bibid}&embed=true"
+        "https://locator-prod.princeton.edu/index.php?loc=#{@loc}&id=#{bibid}&embed=true"
       end
 
       def stackmap_url
