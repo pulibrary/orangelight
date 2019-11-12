@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   concern :exportable, Blacklight::Routes::Exportable.new
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
 
+  resources :sitemap, defaults: { format: :xml }, only: [:index, :show]
+
   resource :catalog, only: [:index], path: '/catalog', controller: 'catalog' do
     concerns :searchable
     concerns :range_searchable
