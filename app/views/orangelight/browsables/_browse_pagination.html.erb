@@ -2,8 +2,8 @@
   <% if @is_first %>
     <%= content_tag(:a, raw(t 'blacklight.pagination_compact.previous'), class: "nav-link is-disabled") %>
   <% else %>
-  <%= link_to raw(t 'blacklight.pagination_compact.previous'), @page_link + "start=#{@prev}", class: "nav-link" %>
-<% end %>
+    <%= link_to raw(t 'blacklight.pagination_compact.previous'), @page_link + "start=#{@prev}", class: "nav-link" %>
+  <% end %>
 </div>
 <div class="next">
   <% if @is_last %>

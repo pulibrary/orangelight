@@ -3,10 +3,10 @@
 Rails.application.routes.draw do
   scope module: 'orangelight' do
     get 'browse', to: 'browsables#browse'
-    get 'browse/call_numbers', model: Orangelight::CallNumber, to: 'browsables#index'
-    get 'browse/names', model: Orangelight::Name, to: 'browsables#index'
-    get 'browse/name_titles', model: Orangelight::NameTitle, to: 'browsables#index'
-    get 'browse/subjects', model: Orangelight::Subject, to: 'browsables#index'
+    get 'browse/call_numbers', model: 'call_numbers', to: 'browsables#index'
+    get 'browse/names', model: 'names', to: 'browsables#index'
+    get 'browse/name_titles', model: 'name_titles', to: 'browsables#index'
+    get 'browse/subjects', model: 'subjects', to: 'browsables#index'
   end
   mount Requests::Engine, at: '/requests'
 

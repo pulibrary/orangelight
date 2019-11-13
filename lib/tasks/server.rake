@@ -33,7 +33,7 @@ end
 namespace :server do
   desc 'Run development solr'
   task :dev do
-    run_solr('development', port: '8983') do
+    run_browse_lists_solr('development', port: '8983') do
       Rake::Task['pulsearch:solr:index'].invoke
       sleep
     end
@@ -42,7 +42,7 @@ namespace :server do
   desc 'Run test solr'
   task :test do
     if Rails.env.test?
-      run_solr('test', port: '8888') do
+      run_browse_lists_solr('test', port: '8888') do
         Rake::Task['pulsearch:solr:index'].invoke
         sleep
       end

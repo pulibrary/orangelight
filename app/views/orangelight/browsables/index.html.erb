@@ -24,9 +24,9 @@
 <div class="col-12">
   <% if @model != 'call_numbers' %>
     <ul class="browse">
-      <% @orangelight_browsables.sort.each_with_index do |orangelight_name, i| %>
+      <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
 
-        <% if orangelight_name.id == @match && @exact_match %>
+        <% if orangelight_name.index == @match && @exact_match %>
           <li class="alert alert-info clickable-row" data-href="/catalog/?f[<%=@facet%>][]=<%=CGI.escape orangelight_name.label%>">
             <strong>
         <% else %>
@@ -36,13 +36,13 @@
           <span class="facet-label <%=orangelight_name.dir%>"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{CGI.escape orangelight_name.label}", dir: orangelight_name.dir %>
             <%= "(#{orangelight_name.count})"%>
           </span>
-        <% if orangelight_name.id == @match && @exact_match %>
+        <% if orangelight_name.index == @match && @exact_match %>
             </strong>
           </li>
         <% else %>
           </li>
         <% end %>
-        <% if orangelight_name.id == @match && !@exact_match %>
+        <% if orangelight_name.index == @match && !@exact_match %>
           <li class="alert alert-info">
           <i class="fa fa-search" aria-hidden="true"></i> <strong>Your query "<%= @query %>" would be here.</strong>
           </li>
@@ -64,8 +64,10 @@
     </thead>
 
     <tbody >
-      <% @orangelight_browsables.sort.each_with_index do |orangelight_name, i| %>
-        <% if orangelight_name.id == @match && @exact_match %>
+      <% @orangelight_browsables.each_with_index do |orangelight_name, i| %>
+
+        <% if orangelight_name.index == @match && @exact_match %>
+
           <tr class="alert alert-info clickable-row" data-href="/catalog/<%=orangelight_name.bibid%>">
             <strong>
         <% else %>
@@ -85,13 +87,13 @@
           <td class="<%=orangelight_name.dir%>"><%= orangelight_name.title %></td>
           <td><%= orangelight_name.author %></td>
           <td><%= orangelight_name.date %></td>
-        <% if orangelight_name.id == @match && @exact_match %>
+        <% if orangelight_name.index == @match && @exact_match %>
             </strong>
           </tr>
         <% else %>
           </tr>
         <% end %>
-        <% if orangelight_name.id == @match && !@exact_match %>
+        <% if orangelight_name.index == @match && !@exact_match %>
             <tr class="alert alert-info"> <td colspan=5>
             <i class="fa fa-search" aria-hidden="true"></i> <strong>Your query "<%= @query %>" would be here.</strong> </td>
           </tr>

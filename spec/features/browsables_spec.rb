@@ -5,8 +5,10 @@ require 'rails_helper'
 describe 'Browsables' do
   describe 'Browse by Call Number' do
     it 'displays two browse entries before exact match' do
-      visit '/browse/call_numbers?q=PL856.U673+A61213+2011&rpp=10'
-      expect(page.all('tr')[3][:class]).to eq('alert alert-info clickable-row')
+      visit '/browse/call_numbers?q=DVD%200010193&rpp=100'
+      elements = page.all('tr.clickable-row')
+      expect(elements).not_to be_empty
+      expect(elements.first[:class]).to eq('alert alert-info clickable-row')
     end
   end
 

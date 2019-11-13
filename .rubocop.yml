@@ -29,6 +29,7 @@ Metrics/AbcSize:
     - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists.rb'
+    - 'lib/tasks/browse.rake'
 
 Metrics/BlockLength:
   Exclude:
@@ -67,6 +68,7 @@ Metrics/CyclomaticComplexity:
     - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists.rb'
+    - 'config/initializers/orangelight_config.rb'
 
 Metrics/LineLength:
   Exclude:
@@ -101,6 +103,8 @@ Metrics/MethodLength:
     - 'spec/requests/course_reserve_spec.rb'
     - 'lib/tasks/server.rake'
     - 'lib/orangelight/browse_lists.rb'
+    - 'config/initializers/orangelight_config.rb'
+    - 'lib/tasks/browse.rake'
 
 Metrics/ModuleLength:
   Exclude:

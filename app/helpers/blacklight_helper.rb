@@ -83,7 +83,9 @@ module BlacklightHelper
   # bar only. Skips search_fields marked :include_in_simple_select => false
   def search_bar_select
     blacklight_config.search_fields.collect do |_key, field_def|
-      [field_def.dropdown_label || field_def.label, field_def.key, { 'data-placeholder' => placeholder_text(field_def) }] if should_render_field?(field_def)
+      field_label = field_def.dropdown_label || field_def.label
+      data_placeholder = placeholder_text(field_def)
+      [field_label, field_def.key, { 'data-placeholder' => data_placeholder }] if should_render_field?(field_def)
     end.compact
   end
 
@@ -92,13 +94,13 @@ module BlacklightHelper
   end
 
   def search_bar_field
-    if params[:model] == Orangelight::CallNumber
+    if params[:model] == 'call_numbers'
       'browse_cn'
-    elsif params[:model] == Orangelight::Name
+    elsif params[:model] == 'names'
       'browse_name'
-    elsif params[:model] == Orangelight::NameTitle
+    elsif params[:model] == 'name_titles'
       'name_title'
-    elsif params[:model] == Orangelight::Subject
+    elsif params[:model] == 'subjects'
       'browse_subject'
     else
       params[:search_field]
