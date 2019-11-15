@@ -41,21 +41,5 @@ module Orangelight
     config.x.after_sign_out_url = 'https://fed.princeton.edu/cas/logout'
 
     config.robots = OpenStruct.new(config_for(:robots))
-
-    # This mocks the structure of the Blacklight repository configuration
-    connection = OpenStruct.new(
-      {
-        uri: URI("http://localhost:8983/solr/browse-lists-core-#{Rails.env}")
-      }
-    )
-    default_index = OpenStruct.new(
-      {
-        connection: connection
-      }
-    )
-
-    config.browse_lists = OpenStruct.new(
-      default_index: default_index
-    )
   end
 end
