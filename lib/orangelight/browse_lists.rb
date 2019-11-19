@@ -179,7 +179,7 @@ module BrowseLists
     end
     # rubocop:enable Metrics/ParameterLists
 
-    def browse_call_numbers(facet_field, model_name)
+    def browse_call_numbers(facet_field)
       request = blacklight_facet_request(facet_field, 2)
       req = blacklight_response(request)
 
