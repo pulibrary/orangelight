@@ -146,6 +146,10 @@ class Orangelight::BrowsablesController < ApplicationController
     end
   end
 
+=begin
+<%= content_tag(:a, "#{number_with_delimiter(@start)} - #{number_with_delimiter(@page_last)} of #{number_with_delimiter(@last_id)}", class: "nav-link", style: "color:black;strong;font-weight:bold;") %>
+=end
+
   # Updates the page link using the request parameters
   def update_page_link
     return @page_link = '?' if rpp_param.nil?
