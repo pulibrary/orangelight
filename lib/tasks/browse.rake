@@ -63,7 +63,6 @@ namespace :browse do
       ENV['SOLR_TEST_PORT'] = solr.port
 
       # Create the Solr collection
-      solr_client = SolrWrapper::Client.new(solr.url)
       solr.delete(browse_lists_collection_name)
       solr.create(name: browse_lists_collection_name, dir: browse_lists_conf_path)
 
