@@ -11,24 +11,56 @@ namespace :browse do
     end
   end
 
-  desc 'Generate and load the data for the names browse list'
-  task names: [:environment] do
-    BrowseLists.browse_facet('author_s', 'names')
+  namespace :names do
+    desc 'Update the browse list for the author names'
+    task :update, [:last_updated_time] => [:environment] do |_t, args|
+      abort "usage: rake browse:names:update[TIME_OF_LAST_CATALOG_UPDATE]" unless args[:last_updated_time]
+      BrowseLists.update_browse_facet('author_s', 'names', args[:last_updated_time])
+    end
+
+    desc 'Generate and load the data for the names browse list'
+    task all: [:environment] do
+      BrowseLists.browse_facet('author_s', 'names')
+    end
   end
 
-  desc 'Generate and load the data for the titles browse list'
-  task name_titles: [:environment] do
-    BrowseLists.browse_facet('name_title_browse_s', 'name_titles')
+  namespace :name_titles do
+    desc 'Update the browse list for the titles browse list'
+    task :update, [:last_updated_time] => [:environment] do |_t, args|
+      abort "usage: rake browse:name_titles:update[TIME_OF_LAST_CATALOG_UPDATE]" unless args[:last_updated_time]
+      BrowseLists.update_browse_facet('name_title_browse_s', 'name_titles', args[:last_updated_time])
+    end
+
+    desc 'Generate and load the data for the titles browse list'
+    task all: [:environment] do
+      BrowseLists.browse_facet('name_title_browse_s', 'name_titles')
+    end
   end
 
-  desc 'Generate and load the data for the subjects browse list'
-  task subjects: [:environment] do
-    BrowseLists.browse_facet('subject_facet', 'subjects')
+  namespace :subjects do
+    desc 'Update the browse list for the subjects browse list'
+    task :update, [:last_updated_time] => [:environment] do |_t, args|
+      abort "usage: rake browse:subjects:update[TIME_OF_LAST_CATALOG_UPDATE]" unless args[:last_updated_time]
+      BrowseLists.update_browse_facet('name_title_browse_s', 'name_titles', args[:last_updated_time])
+    end
+
+    desc 'Generate and load the data for the subjects browse list'
+    task all: [:environment] do
+      BrowseLists.browse_facet('subject_facet', 'subjects')
+    end
   end
 
-  desc 'Generate and load the data for the call numbers browse list'
-  task call_numbers: [:environment] do
-    BrowseLists.browse_call_numbers('call_number_browse_s', 'call_numbers')
+  namespace :call_numbers do
+    desc 'Update the browse list for the call numbers browse list'
+    task :update, [:last_updated_time] => [:environment] do |_t, args|
+      abort "usage: rake browse:call_numbers:update[TIME_OF_LAST_CATALOG_UPDATE]" unless args[:last_updated_time]
+      BrowseLists.update_browse_call_numbers('call_number_browse_s', 'call_numbers', args[:last_updated_time])
+    end
+
+    desc 'Generate and load the data for the call numbers browse list'
+    task all: [:environment] do
+      BrowseLists.browse_call_numbers('call_number_browse_s', 'call_numbers')
+    end
   end
 
   desc 'Generate and load the data for all browse lists'
