@@ -63,7 +63,6 @@ namespace :browse do
       ENV['SOLR_TEST_PORT'] = solr.port
 
       # Create the Solr collection
-      # This *will* fail should one attempt to run this both in the "development" and "test" environments simultaneously, but should be fine for only a single environment.
       solr_client = SolrWrapper::Client.new(solr.url)
       solr.delete(browse_lists_collection_name) if solr_client.exists?(browse_lists_collection_name)
       solr.create(name: browse_lists_collection_name, dir: browse_lists_conf_path)
