@@ -16,7 +16,7 @@ module BrowseLists
 
     def update_browse_call_numbers(facet_field, model_name, last_updated_time)
       request_date = Date.parse(last_updated_time)
-      request_time = request_date.to_time
+      request_time = request_date.to_time_in_current_zone
       solr_request_time = request_time.utc.strftime('%Y-%m-%dT%H:%M:%SZ')
       request = blacklight_service.blacklight_updated_facet_request(facet_field, solr_request_time, 2)
       server_response = blacklight_service.blacklight_response(request)
@@ -73,7 +73,7 @@ module BrowseLists
 
     def update_browse_facet(facet_field, model_name, last_updated_time)
       request_date = Date.parse(last_updated_time)
-      request_time = request_date.to_time
+      request_time = request_date.to_time_in_current_zone
       solr_request_time = request_time.utc.strftime('%Y-%m-%dT%H:%M:%SZ')
       request = blacklight_service.blacklight_updated_facet_request(facet_field, solr_request_time)
       response = blacklight_service.blacklight_response(request)

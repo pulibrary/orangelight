@@ -30,6 +30,7 @@ Metrics/AbcSize:
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists.rb'
     - 'lib/tasks/browse.rake'
+    - 'lib/orangelight/browse_lists/call_number_request_service.rb'
 
 Metrics/BlockLength:
   Exclude:
@@ -41,6 +42,7 @@ Metrics/BlockLength:
     - 'lib/tasks/browse.rake'
     - 'lib/tasks/pulsearch.rake'
     - 'lib/orangelight/browse_lists.rb'
+    - 'lib/orangelight/browse_lists/call_number_request_service.rb'
     - 'spec/**/*'
 
 Metrics/BlockNesting:
@@ -56,6 +58,8 @@ Metrics/ClassLength:
     - 'app/services/holding_requests_adapter.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/voyager_patron_client.rb'
+    - 'lib/orangelight/browse_lists/blacklight_service.rb'
+    - 'lib/orangelight/browse_lists/call_number_request_service.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:
@@ -69,6 +73,7 @@ Metrics/CyclomaticComplexity:
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists.rb'
     - 'config/initializers/orangelight_config.rb'
+    - 'lib/orangelight/browse_lists/call_number_request_service.rb'
 
 Metrics/LineLength:
   Exclude:
@@ -105,6 +110,9 @@ Metrics/MethodLength:
     - 'lib/orangelight/browse_lists.rb'
     - 'config/initializers/orangelight_config.rb'
     - 'lib/tasks/browse.rake'
+    - 'lib/orangelight/browse_lists/blacklight_service.rb'
+    - 'lib/orangelight/browse_lists/call_number_request_service.rb'
+    - 'lib/orangelight/browse_lists/facet_request_service.rb'
 
 Metrics/ModuleLength:
   Exclude:
@@ -112,6 +120,10 @@ Metrics/ModuleLength:
     - 'app/helpers/blacklight_helper.rb'
     - 'app/helpers/application_helper.rb'
     - 'lib/orangelight/browse_lists.rb'
+
+Metrics/ParameterLists:
+  Exclude:
+    - 'lib/orangelight/browse_lists/call_number_request_service.rb'
 
 Metrics/PerceivedComplexity:
   Exclude:
@@ -124,6 +136,7 @@ Metrics/PerceivedComplexity:
     - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists.rb'
+    - 'lib/orangelight/browse_lists/call_number_request_service.rb'
 
 Naming/FileName:
   Exclude:

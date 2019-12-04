@@ -103,7 +103,7 @@ module BrowseLists
     def blacklight_response(request_url)
       solr_client.get(request_url.to_s)
     end
-    alias :query_response :blacklight_response
+    alias query_response blacklight_response
 
     # Build a query for the Blacklight index
     # @param rows [Integer]
@@ -134,7 +134,7 @@ module BrowseLists
 
       blacklight_query_uri(http_query)
     end
-    alias :find_all_query :blacklight_query_request
+    alias find_all_query blacklight_query_request
 
     # Build a query for the Blacklight index limited by a timestamp
     # @param [String] the Solr datestamp
@@ -153,7 +153,7 @@ module BrowseLists
 
       blacklight_query_uri(http_query)
     end
-    alias :find_updated_query :blacklight_updated_query_request
+    alias find_updated_query blacklight_updated_query_request
 
     def blacklight_query_uri(http_query)
       path = File.join(blacklight_core_url.path, 'select')

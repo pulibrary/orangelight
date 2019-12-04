@@ -3,17 +3,19 @@
 module BrowseLists
   # @class structures and transmits requests for call number documents
   class CallNumberRequestService
-
     # determines if there are multiple locations for the same call number and same bib
     # @param [Hash] holdings
     # @return [Boolean]
     def self.multiple_locations?(holdings)
-      locations = holdings.reject { |_k, h|
+      online_holdings = holdings.reject do |_k, h|
         h['library'] == 'Online'
-      }.map { |_k, h|
+      end
+
+      locations = online_holdings.map do |_k, h|
         h['location']
-      }.uniq
-      locations.length > 1
+      end
+
+      locations.uniq.length > 1
     end
 
     # @constructor

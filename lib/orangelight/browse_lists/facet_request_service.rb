@@ -11,7 +11,7 @@ module BrowseLists
     end
 
     delegate :build_from_facet, to: :@browse_list_document_builder
-    alias :build_document :build_from_facet
+    alias build_document build_from_facet
 
     def add_browse_facet(facet_field, model_name, server_response)
       browse_documents = []
