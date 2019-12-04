@@ -9,6 +9,27 @@ describe 'course reserves' do
     conn.delete_by_query('type_s:ReserveListing')
     conn.commit
   end
+
+  context 'when the URL is not provided' do
+    let(:env_bibdata) { ENV['bibdata'] }
+
+    before do
+      env_bibdata
+      ENV['bibdata_base'] = nil
+    end
+
+    after do
+      ENV['bibdata_base'] = env_bibdata
+    end
+
+    it 'quietly does not retrieve the data' do
+      get '/catalog.json?search_field=all_fields&f[instructor][]=Test, Jane&f[filter][]=Course Reserves'
+      r = JSON.parse(response.body)
+      r['data'].length
+      expect(r['data']).to be_empty
+    end
+  end
+
   describe 'searching with an instructor name given' do
     it 'returns matching reserve ids' do
       stub_all_query

@@ -8,11 +8,18 @@ class CourseReserveRepository
 
     private
 
+      def bibdata_url
+        ENV['bibdata_base']
+      end
+
       def courses_response
-        Faraday.get("#{ENV['bibdata_base']}/courses")
+        courses_url = "#{bibdata_url}/courses"
+        Faraday.get(courses_url)
       end
 
       def courses
+        return {} unless bibdata_url
+
         values = courses_response.body
         JSON.parse(values)
       rescue Faraday::ClientError => client_error
