@@ -110,7 +110,8 @@ class CourseReserveRepository
     private
 
       def courses=(courses)
-        @courses = courses.map { |x| Course.new(*x.values) }
+        valid_course_values = courses.select { |value| value.respond_to?(:values) }
+        @courses = valid_course_values.map { |x| Course.new(*x.values) }
       end
   end
 

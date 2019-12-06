@@ -50,6 +50,20 @@ RSpec.describe CourseReserveRepository do
         expect(Rails.logger).to have_received(:error).with('Failed to retrieve the course information from the server: error')
       end
     end
+
+    context 'when 500 responses are received for course reserve data' do
+      before do
+        stub_request(:get, "#{ENV['bibdata_base']}/courses")
+          .to_return(
+            status: 500,
+            body: ["status", 500].to_json
+          )
+      end
+
+      it 'returns a relation of all available course reserves' do
+        expect(repository.to_a).to be_empty
+      end
+    end
   end
 
   def stub_all_query
