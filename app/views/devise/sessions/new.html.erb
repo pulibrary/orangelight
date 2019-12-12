@@ -13,10 +13,6 @@
   </div>
 
   <div class='card card-barcode collapse' id="collapseBarcode">
-    <div class='card-header'>
-      <%= content_tag :h2, t('blacklight.login.barcode_header'), class: 'card-title' %>
-      <p><%=t('blacklight.login.barcode_subheader')%></p>
-    </div>
     <div class='card-body'>
       <%= simple_form_for(@user, url: user_barcode_omniauth_callback_path, class: 'form-horizontal', data: { toggle: 'validator' })  do |f| %>
           <div class='field form-group col-md-12 row'>

@@ -76,9 +76,9 @@ en:
       redirect_text: 'You will be redirected to the secure Princeton University Central Authentication Service (CAS) login.'
       barcode_login_msg: 'Log in with a barcode (affiliates, family members, guest borrowers, etc)'
       barcode_netid: 'Please log in with netID.'
-      barcode_header: 'Other users'
-      barcode_subheader: 'For borrowers without a netID'
-      barcode_help: 'If you cannot login please stop at Firestone Circulation (609-258-3202) or email <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a>.'
+      barcode_header: ''
+      barcode_subheader: ''
+      barcode_help: 'If you cannot log in, please stop at Firestone Circulation (609-258-3202) or email <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a>.'
     email:
       form:
         title: 'Email the catalog record and (optional) message.'
