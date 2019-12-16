@@ -2,6 +2,8 @@
 @import "variables/colors";
 @import "variables/typography";
 
+$search-box-form-height: calc(1.75em + 0.75rem + 2px);
+
 header .navbar-form .input-group .custom-select {
   width: auto;
 }
@@ -95,11 +97,6 @@ header .navbar-form .input-group .input-group-btn {
   margin-left: 2px;
 }
 
-.search_q.form-control,
-.search-btn {
-  height: 42px;
-}
-
 @media (min-width: $bp-large) {
   .navbar-form .input-group > .search_q.form-control {
     width: 250px;
@@ -168,8 +165,13 @@ select::-ms-expand {
   display: none;
 }
 
+.search_q.form-control,
+.search-btn {
+  height: $search-box-form-height;
+}
+
 #search_field.custom-select {
-  height: calc(1.75em + 0.75rem + 2px);
+  height: $search-box-form-height;
   
   @media (min-width: 575px) {
     border-top-right-radius: 0;
