@@ -242,7 +242,9 @@ class CatalogController < ApplicationController
     # Linked fields pushed to top of supplemental info
     config.add_show_field 'subject_display', label: 'Subject(s)', helper_method: :subjectify
     config.add_show_field 'related_name_json_1display', hash: true
-    config.add_show_field 'form_genre_display', label: 'Form/&#8203;Genre'
+    config.add_show_field 'lcgft_s', label: 'Library of Congress genre', helper_method: :subjectify
+    config.add_show_field 'rbgenr_s', label: 'Rare books genre', helper_method: :subjectify
+    config.add_show_field 'aat_s', label: 'Getty AAT genre', helper_method: :subjectify
     config.add_show_field 'related_works_1display', label: 'Related work(s)', helper_method: :name_title_hierarchy
     config.add_show_field 'series_display', label: 'Series', helper_method: :series_with_links
     config.add_show_field 'contains_1display', label: 'Contains', helper_method: :name_title_hierarchy
