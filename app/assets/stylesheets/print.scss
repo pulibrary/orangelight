@@ -300,3 +300,24 @@ abbr {
 .hide-print {
   display: none;
 }
+
+.blacklight-catalog-librarian_view {
+  font-family: monospace;
+  font-size: 11pt;
+
+  .btn {
+    display: none;
+  }
+
+  #marc_view div {
+    display: inline-block;
+
+    &.subfields {
+      display: inline;
+    }
+    &.field {
+      display: block;
+      padding-bottom: .25rem;
+    }
+  }
+}
