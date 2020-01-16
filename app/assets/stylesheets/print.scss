@@ -312,6 +312,9 @@ abbr {
   #marc_view div {
     display: inline-block;
 
+    &.subfields {
+      display: inline;
+    }
     &.field {
       display: block;
       padding-bottom: .25rem;
