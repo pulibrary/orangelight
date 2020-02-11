@@ -15,9 +15,10 @@ class AvailabilityUpdater
   checked_out_statuses = ['Charged', 'Renewed', 'Overdue', 'On hold',
     'In transit', 'In transit on hold', 'In transit discharged', 'At bindery',
     'Remote storage request', 'Hold request', 'Recall request']
-  missing_statuses = ['Missing', 'Claims returned', 'Withdrawn']
-  long_overdue_statuses = ['Lost--system applied']
-  lost_statuses = ['Lost--library applied']
+  missing_statuses = ['Missing', 'Claims returned', 'Withdrawn',
+    'On-site - missing', 'On-site - claims returned', 'On-site - withdrawn']
+  long_overdue_statuses = ['Lost--system applied', 'On-site - lost--system applied']
+  lost_statuses = ['Lost--library applied', 'On-site - lost--library applied']
   available_labels = ['Available', 'Returned', 'In process', 'Requestable',
     'On shelf', 'All items available', 'On-site access']
   available_non_requestable_labels = ['Available', 'Returned', 'Requestable',
