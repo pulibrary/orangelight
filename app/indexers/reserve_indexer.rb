@@ -11,17 +11,10 @@ class ReserveIndexer
     end
 
     def connection_url
-      (Blacklight.default_index.connection.uri.to_s.split('/')[0..-2] + [core]).join('/')
-    end
-
-    def core
-      ENV['RESERVES_CORE'] || default_core
-    end
-
-    def default_core
-      Blacklight.default_index.connection.uri.to_s.gsub(%r{^.*\/solr}, '').delete('/')
+      ENV['RESERVES_SOLR_URL'] || Blacklight.default_index.connection.uri.to_s.chomp('/')
     end
   end
+
   attr_reader :courses
   def initialize(courses)
     @courses = courses
