@@ -11,8 +11,8 @@ class StackmapLocationFactory
   # @param call_number [String] the call number for the holding
   # @param library [String] the library in which the holding is located
   # @return [Boolean] Exclude stackmap url if return value is true
-  def exclude?(call_number:, library:)
-    excluded?(library) || call_number?(call_number, library)
+  def exclude?(call_number:, library:, loc:)
+    excluded?(library) || call_number?(call_number, library) || excluded_loc?(loc)
   end
 
   private
@@ -29,6 +29,16 @@ class StackmapLocationFactory
         'Rare Books and Special Collections',
         'ReCAP'
       ].include?(library)
+    end
+
+    def excluded_loc?(loc)
+      [
+        'sci',
+        'scith',
+        'sciref',
+        'sciefa',
+        'sciss'
+      ].include?(loc)
     end
 
     # Exclude the stackmap link for records without call numbers,

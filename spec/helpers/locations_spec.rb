@@ -7,10 +7,12 @@ RSpec.describe ApplicationHelper do
     let(:stackmap_location) { 'mus' }
     let(:locator_location) { 'f' }
     let(:stackmap_ineligible_location) { 'annexa' }
+    let(:stackmap_ineligible_lewis_location) { 'sci' }
     let(:bib) { { id: '123456' } }
     let(:call_number) { 'RCPXR-6136516' }
     let(:locator_library) { 'Firestone Library' }
     let(:stackmap_library) { 'Mendel Music Library' }
+    let(:lewis_library) { 'Lewis Library' }
     let(:stackmap_ineligible_library) { 'Fine Annex' }
 
     before { stub_holding_locations }
@@ -23,6 +25,11 @@ RSpec.describe ApplicationHelper do
 
     it 'Does not return a stackmap link for an inaccessible location' do
       stackmap_link = locate_url(stackmap_ineligible_location, bib, call_number, stackmap_ineligible_library)
+      expect(stackmap_link).to be_nil
+    end
+
+    it 'Does not return a stackmap link for an inaccessible lewis library location' do
+      stackmap_link = locate_url(stackmap_ineligible_lewis_location, bib, call_number, stackmap_lewis_library)
       expect(stackmap_link).to be_nil
     end
 

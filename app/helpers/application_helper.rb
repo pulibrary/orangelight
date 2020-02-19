@@ -54,7 +54,7 @@ module ApplicationHelper
   # @return [StackmapService::Url] the stack map location
   def locate_url(location, document, call_number, library = nil)
     locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
-    ::StackmapService::Url.new(document: document, loc: location, cn: call_number).url unless locator.exclude?(call_number: call_number, library: library)
+    ::StackmapService::Url.new(document: document, loc: location, cn: call_number).url unless locator.exclude?(call_number: call_number, library: library, loc: location)
   end
 
   # Generate the link markup (styled with a glyphicon image) for a given item holding within a library
