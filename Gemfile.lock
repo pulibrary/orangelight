@@ -214,7 +214,7 @@ GEM
     factory_bot_rails (5.0.2)
       factory_bot (~> 5.0.2)
       railties (>= 4.2.0)
-    faraday (1.0.0)
+    faraday (0.17.3)
       multipart-post (>= 1.2, < 3)
     faraday-cookie_jar (0.0.6)
       faraday (>= 0.7.4)
@@ -549,7 +549,7 @@ DEPENDENCIES
   devise (>= 4.6.0)
   devise-guests (~> 0.5)
   factory_bot_rails
-  faraday
+  faraday (~> 0.17)
   faraday-cookie_jar
   font-awesome-rails
   global
