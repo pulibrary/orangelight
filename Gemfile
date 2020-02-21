@@ -51,7 +51,7 @@ gem 'blacklight-marc', git: 'https://github.com/projectblacklight/blacklight-mar
 gem 'capistrano', '~> 3.4.0'
 gem 'devise', '>= 4.6.0'
 gem 'devise-guests', '~> 0.5'
-gem 'faraday'
+gem 'faraday', '~> 0.17'
 gem 'faraday-cookie_jar'
 gem 'global'
 gem 'omniauth-cas'
