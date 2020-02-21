@@ -27,7 +27,8 @@ class StackmapLocationFactory
         'Mudd Manuscript Library',
         'Online',
         'Rare Books and Special Collections',
-        'ReCAP'
+        'ReCAP',
+        'Lewis Library' # Temporarily inaccessible
       ].include?(library)
     end
 
