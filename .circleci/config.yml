@@ -18,6 +18,16 @@ jobs:
     working_directory: ~/orangelight
     steps: &build_steps
       - checkout
+      - run:
+          name: Install Java 8
+          command: |
+            sudo apt update
+            sudo apt install software-properties-common apt-transport-https
+            wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+            sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+            sudo apt update
+            sudo apt install adoptopenjdk-8-hotspot
+            sudo update-alternatives --set java /usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/bin/java
       #set timezone to est
       - run:
           name: Set Timezone to EST
@@ -31,7 +41,6 @@ jobs:
       - run:
           name: Install dependencies
           command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
-      - run: sudo apt update
       - run:
           name: Install Chrome
           command: |
