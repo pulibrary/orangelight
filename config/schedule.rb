@@ -27,7 +27,7 @@ job_type :browse_facet_update, 'cd :path && :environment_variable=:environment S
 every [:sunday, :wednesday, :friday], at: '1:15am', roles: [:cron_prod1] do
   browse_facet_update(
     'browse:call_numbers',
-    solr_url: 'http://lib-solr3.princeton.edu:8983/solr/catalog-production',
+    solr_url: ENV['SOLR_URL'],
     output: '/tmp/cron_log.log'
   )
 end
