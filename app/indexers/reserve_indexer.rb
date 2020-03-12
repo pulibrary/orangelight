@@ -14,6 +14,8 @@ class ReserveIndexer
       (Blacklight.default_index.connection.uri.to_s.split('/')[0..-2] + [core]).join('/')
     end
 
+    # We only specify the core because it cannot be on a different server from
+    # the catalog core due to the use of a cross-core join.
     def core
       ENV['RESERVES_CORE'] || default_core
     end
