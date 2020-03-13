@@ -156,7 +156,7 @@ class HoldingRequestsAdapter
   def restrictions_for_holding(holding)
     if holding.key? 'items'
       holding['items'].map { |values| values['use_statement'] }.reject(&:blank?)
-    elsif holding['library'] == 'Mudd Manuscript Library'
+    elsif holding['library'] == 'Mudd Manuscript Library' || holding['location_code'] == 'rcpph'
       ['Mudd']
     else
       []

@@ -213,7 +213,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param holding [Hash] the restrictions for all holdings
   # @return [String] the markup
   def self.restrictions_markup(restrictions)
-    return mudd_closure_message if restrictions.first == 'Mudd'
+    return mudd_closure_message if restrictions.first == "Mudd"
     restricted_items = restrictions.map do |value|
       content_tag(:td, scsb_use_label(value),
                   class: 'icon-warning icon-request-reading-room',
