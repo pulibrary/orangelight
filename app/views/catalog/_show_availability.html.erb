@@ -14,6 +14,11 @@
 <% unless physical.empty? %>
   <div class="availability--physical">
     <h3><%= t('blacklight.holdings.print') %></h3>
+      <% if holding_requests_adapter.doc_holdings.any? {|_,h| h["library"] == "Mudd Manuscript Library"} %>
+      <div class="alert alert-warning mudd-closure">
+        <%= PhysicalHoldingsMarkupBuilder.mudd_closure_message %>
+      </div>
+      <% end %>
     <table class="availability-table">
       <thead>
         <tr>

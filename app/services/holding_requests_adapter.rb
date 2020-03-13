@@ -154,8 +154,13 @@ class HoldingRequestsAdapter
   # Duplicates PhysicalHoldingsMarkupBuilder.scsb_list
   # @param holding [Hash]
   def restrictions_for_holding(holding)
-    return [] unless holding.key? 'items'
-    holding['items'].map { |values| values['use_statement'] }.reject(&:blank?)
+    if holding.key? 'items'
+      holding['items'].map { |values| values['use_statement'] }.reject(&:blank?)
+    elsif holding['library'] == 'Mudd Manuscript Library'
+      ['Mudd']
+    else
+      []
+    end
   end
 
   # Determine whether or not the holding is explicitly marked as "Unavailable"
