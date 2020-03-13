@@ -54,6 +54,8 @@ Rails.application.routes.draw do
     post '/users' => 'devise/registrations#create', :as => :user_registration
   end
 
+  get '/numismatics', to: 'advanced#numismatics'
+
   get '/catalog/oclc/:id', to: 'catalog#oclc'
   get '/catalog/isbn/:id', to: 'catalog#isbn'
   get '/catalog/lccn/:id', to: 'catalog#lccn'
