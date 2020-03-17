@@ -326,7 +326,7 @@
         "pub_date_end_sort": "2013",
         "pub_date_start_sort": "2013",
         "source_acquisition_display": "Gift of Hand Papermaking Inc., 2013.",
-        "subject_display": [
+        "lc_subject_display": [
             "Devil in art",
             "Serpents in the Bible",
             "Broadsides\u2014Washington (D.C.)\u20142013",
@@ -439,7 +439,7 @@
         "pub_date_start_sort": "1540",
         "related_name_json_1display": "{\"Related name\":[\"Freeman, Samuel, 1773-1857\",\"Smith, William Ramond\",\"Mitchell, J.\",\"Worthington\",\"Landseer, George, ca. 1834-1878\",\"Audinet, Philipp, 1766-1837\",\"Barenger, M.S.\",\"Cook, H.\",\"Aldegrever, Heinrich, 1502-ca. 1561\",\"Finden, Edward Francis, 1791-1857\",\"Freebairn, A.\",\"Picart, Charles, ca. 1780-ca. 1837\",\"Lewis, Frederick Christian, I, 1779-1856\",\"Lewis, G.\",\"Deveria, Eugene, 1805-1865\",\"Angus, William, 1752-1821\"]}",
         "source_acquisition_display": [],
-        "subject_display": [
+        "lc_subject_display": [
             "Boats and boating in art",
             "Music in art",
             "Coasts in art",
@@ -912,7 +912,7 @@
             "NJPG94-S192",
             "857469"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Science\u2014Periodicals"
         ],
         "subject_facet": [
@@ -1103,7 +1103,7 @@
         "standard_no_index": [
             "954925427238"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Science\u2014Periodicals"
         ],
         "subject_facet": [
@@ -1305,7 +1305,7 @@
         "related_name_json_1display": [
             "{\"Related name\":[\"Scribner, Armstrong, and Company\",\"Charles Scribner and Company\"]}"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Charles Scribner's Sons\u2014Catalogs",
             "Publishers' catalogs\u2014United States",
             "Booksellers' catalogs\u2014United States"
@@ -1668,7 +1668,7 @@
         "related_name_json_1display": [
             "{\"Former owner\":[\"Selden, John, 1584-1654\",\"Hale, Matthew, 1609-1676\",\"Scheide, William H. (William Hurd), 1914-2014\"],\"Related name\":[\"St. Albans Abbey\"],\"Bookseller\":[\"H.P. Kraus (Firm)\"]}"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Manuscripts, English (Old)\u2014New Jersey\u2014Princeton"
         ],
         "subject_facet": [
@@ -1914,7 +1914,7 @@
             "ocm59109978",
             "59109978"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Fellini, Federico\u2014Interviews",
             "Fellini, Federico\u2014Drama",
             "Motion picture producers and directors\u2014Italy\u2014Drama",
@@ -2122,7 +2122,7 @@
             "ocn701017688",
             "701017688"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Man-woman relationships\u2014Fiction",
             "Japan\u2014Fiction"
         ],
@@ -2320,7 +2320,7 @@
             "701545498",
             "7629176"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Murakami, Haruki, 1949- 1Q84",
             "Murakami, Haruki, 1949-\u2014Criticism and interpretation"
         ],
@@ -2492,7 +2492,7 @@
             "ocm46609535",
             "2837968"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Humanities\u2014Periodicals",
             "Social sciences\u2014Periodicals"
         ],
@@ -2682,7 +2682,7 @@
             "22308384",
             "NJPG92-B478"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Syria\u2014Congresses"
         ],
         "subject_facet": [
@@ -2862,7 +2862,7 @@
         "standard_no_index": [
             "ocm67146578"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Islam\u2014Doctrines\u2014Early works to 1800",
             "Manuscripts, Arabic\u2014New Jersey\u2014Princeton"
         ],
@@ -3078,7 +3078,7 @@
             "ocn946030254",
             "946030254"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Airports\u2014Middle West\u2014Directories",
             "Heliports\u2014Middle West\u2014Directories",
             "Seaplane bases\u2014Middle West\u2014Directories"
@@ -3306,7 +3306,7 @@
             "GVRL8HDW",
             "ocn893425765"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Manufacturing industries\u2014United States\u2014Statistics",
             "Wholesale trade\u2014United States\u2014Statistics",
             "Retail trade\u2014United States\u2014Statistics",
@@ -3525,7 +3525,7 @@
             "15281357",
             "NJPG88-C360"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Operas\u2014Scores"
         ],
         "subject_facet": [
@@ -3705,7 +3705,7 @@
             "ocn881665954",
             "881665954"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "American literature\u201420th century",
             "American literature\u201421st century",
             "American wit and humor\u201420th century",
@@ -3933,7 +3933,7 @@
         "standard_no_index": [
             "7617477"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Man-woman relationships\u2014Fiction",
             "Japan\u2014Fiction"
         ],
@@ -4166,7 +4166,7 @@
         "standard_no_index": [
             "ocm67146416"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Islam\u2014Doctrines\u2014Early works to 1800",
             "Manuscripts, Arabic\u2014New Jersey\u2014Princeton"
         ],
@@ -4374,7 +4374,7 @@
             "44090472",
             "DCLC0034664-B"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Tate, Allen, 1899-1979",
             "Southern States\u2014Intellectual life\u201420th century",
             "Authors, American\u2014Southern States\u2014Biography",
@@ -4567,7 +4567,7 @@
             "7375602",
             "NJPG0815-S"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "World Data Center A for Glaciology\u2014Catalogs",
             "Glaciology\u2014Bibliography\u2014Catalogs",
             "Snow\u2014Bibliography\u2014Catalogs",
@@ -4755,7 +4755,7 @@
             "6237903",
             "CTYA6237903-B"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "E\u0301cole de Paris",
             "Art\u2014France\u2014Paris\u201420th century",
             "Art, French\u2014France\u2014Paris\u201420th century",
@@ -4948,7 +4948,7 @@
             "ocm00966189",
             "966189"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Electronic music"
         ],
         "subject_facet": [
@@ -5098,7 +5098,7 @@
         "series_display": [
             "Always learning."
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Calculus\u2014Textbooks"
         ],
         "subject_facet": [
@@ -5228,7 +5228,7 @@
             "13154067",
             "NJPG86-B55361"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "International relations",
             "World politics\u20141985-1995"
         ],
@@ -5366,7 +5366,7 @@
             "NJPG91-A17",
             "844962"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Aylwin Azo\u0301car, Patricio",
             "Bu\u0308chi Buc, Hernan",
             "Walker Erra\u0301zuriz, Francisco",
@@ -5575,7 +5575,7 @@
         "standard_no_index": [
             "ebr10386064"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "United States. Supreme Court\u2014Officials and employees\u2014Selection and appointment",
             "Judges\u2014Selection and appointment\u2014United States",
             "Political questions and judicial power\u2014United States"
@@ -5828,7 +5828,7 @@
         "standard_no_index": [
             "ocm10663999"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Operas",
             "Genevie\u0300ve, of Brabant\u2014Drama"
         ],
@@ -6002,7 +6002,7 @@
         "standard_no_index": [
             "ocm01397695"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Zurbara\u0301n, Francisco de, 1598-1664"
         ],
         "subject_facet": [
@@ -6191,7 +6191,7 @@
         "standard_no_index": [
             "NJPG98-B21119"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Morimura, Yasumasa, 1951-\u2014Exhibitions",
             "Morimusa, Yasumasa, 1951-\u2014Portraits\u2014Exhibitions",
             "Female impersonators in art\u2014Exhibitions",
@@ -6378,7 +6378,7 @@
             "37427",
             "19612"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Cats\u2014Juvenile literature"
         ],
         "subject_facet": [
@@ -6744,7 +6744,7 @@
             "ocn124074888",
             "124074888"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "United States. Supreme Court\u2014Officials and employees\u2014Selection and appointment",
             "Judges\u2014Selection and appointment\u2014United States",
             "Political questions and judicial power\u2014United States"
@@ -6917,7 +6917,7 @@
             "ocn436109995",
             "436109995"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Sanu\u0304si\u0304, Muh\u0323ammad ibn Yu\u0304suf, approximately 1427-approximately 1490. Umm al-bara\u0304hi\u0304n.",
             "Islam\u2014Doctrines\u2014Early works to 1800"
         ],
@@ -7104,7 +7104,7 @@
         "standard_no_index": [
             "ocn642206027"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "United States. Supreme Court\u2014Officials and employees\u2014Selection and appointment",
             "Judges\u2014Selection and appointment\u2014United States",
             "Political questions and judicial power\u2014United States"
@@ -7285,7 +7285,7 @@
         "standard_no_index": [
             "ocm35316510"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Mencius. Mengzi",
             "Mencius. \u5b5f\u5b50."
         ],
@@ -7473,7 +7473,7 @@
         "standard_no_index": [
             "NJPG98-B34264"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Economics"
         ],
         "subject_facet": [
@@ -7669,7 +7669,7 @@
             "ocn913302997",
             "913302997"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Artists in motion pictures",
             "Biographical films\u2014United States\u2014History and criticism",
             "Art and popular culture\u2014United States",
@@ -7849,7 +7849,7 @@
         "standard_no_index": [
             "NJPX97-B706"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Korean resistance movements, 1905-1945"
         ],
         "subject_facet": [
@@ -8121,7 +8121,7 @@
             "ocn960721123",
             "960721123"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Tripit\u0323aka. Su\u0304trapit\u0323aka. Sukha\u0304vati\u0304vyu\u0304ha (Smaller). Korean",
             "Tripit\u0323aka. Su\u0304trapit\u0323aka. Sukha\u0304vati\u0304vyu\u0304ha (Smaller)\u2014Commentaries",
             "Tripit\u0323aka. Su\u0304trapi\u0304t\u0323aka. Dha\u0304ran\u0323i\u0304. Korean",
@@ -8355,7 +8355,7 @@
             " 37282",
             "932386459"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Velde, Adriaen van de, 1636-1672\u2014Exhibitions"
         ],
         "subject_facet": [
@@ -8530,7 +8530,7 @@
             " 107347",
             "650437639"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Menz family\u2014Art patronage\u2014Exhibitions",
             "Art patrons\u2014Italy\u2014Bolzano (Trentino-Alto Adige)\u2014Exhibitions",
             "Art\u2014Italy\u2014Bolzano (Trentino-Alto Adige)\u2014Exhibitions"
@@ -9053,7 +9053,7 @@
             "ocn154694691",
             "154694691"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "AIDS (Disease)\u2014Patients\u2014Brazil",
             "AIDS (Disease)\u2014Patients\u2014Care\u2014Brazil",
             "AIDS (Disease)\u2014Treatment\u2014Brazil",
@@ -9230,7 +9230,7 @@
             "31214190",
             "NJPG88-B1222"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Qur\u02bcan\u2014Criticism, interpretation, etc\u2014Manuscripts\u2014Catalogs",
             "Manuscripts, Arabic\u2014Catalogs"
         ],
@@ -9422,7 +9422,7 @@
             "76954756",
             "MABX95-B758"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Hasidism"
         ],
         "subject_facet": [
@@ -9613,7 +9613,7 @@
             "301985443",
             "19590730"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Booksellers and bookselling\u2014Italy\u2014Directories"
         ],
         "subject_facet": [
@@ -9792,7 +9792,7 @@
         "related_name_json_1display": [
             "{\"Author\":[\"Cooper, Samuel, 1725-1783\",\"Warren, Joseph, 1741-1775\",\"Church, Benjamin, 1734-1778\",\"Adams, Samuel, 1722-1803\"],\"Printer\":[\"Edes and Gill\"],\"Related name\":[\"Boston (Mass.).\"],\"Bookseller\":[\"Goodspeed's Book Shop (Boston, Mass.)\"]}"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Boston Massacre, 1770\u2014Anniversaries, etc",
             "United States\u2014History\u2014Revolution, 1775-1783\u2014Causes"
         ],
@@ -9993,7 +9993,7 @@
         "standard_no_index": [
             "ocm00220260"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Great Britain\u2014Relations\u2014France",
             "France\u2014Relations\u2014Great Britain",
             "Comparative literature\u2014French and English",
@@ -10424,7 +10424,7 @@
         "standard_no_index": [
             "ocm38866435"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Drawing, Italian"
         ],
         "subject_facet": [
@@ -10592,7 +10592,7 @@
         "standard_no_index": [
             "ocm06678681"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Great Britain\u2014Relations\u2014France",
             "France\u2014Relations\u2014Great Britain",
             "Great Britain\u2014Civilization\u2014History"
@@ -10826,7 +10826,7 @@
             "1184940",
             "NJPG88-S1774"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Cities and towns\u2014United States\u2014Statistics\u2014Periodicals",
             "United States\u2014Statistics\u2014Periodicals"
         ],
@@ -11046,7 +11046,7 @@
             "153844960",
             "NJPX97-B2556"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Encyclopedias and dictionaries, Chinese"
         ],
         "subject_facet": [
@@ -11213,7 +11213,7 @@
             "NYCXV5056383-B",
             "L1652719"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Great Britain\u2014Foreign relations\u2014Japan",
             "Japan\u2014Foreign relations\u2014Great Britain"
         ],
@@ -11375,7 +11375,7 @@
             "ocm43467847",
             "794856411"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Imams (Shiites)\u2014Biography"
         ],
         "subject_facet": [
@@ -11566,7 +11566,7 @@
         "standard_no_index": [
             "ocm00268922"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Great Britain\u2014Foreign relations\u2014Soviet Union",
             "Soviet Union\u2014Foreign relations\u2014Great Britain",
             "Soviet Union\u2014History\u2014Revolution, 1917-1921",
@@ -11884,7 +11884,7 @@
             "ocn910337424",
             "910337424"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Families\u2014Korea (South)\u2014Drama",
             "Fathers\u2014Korea (South)\u2014Drama"
         ],
@@ -12275,7 +12275,7 @@
         "standard_no_index": [
             "ocm00718112"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Cats\u2014Poetry"
         ],
         "subject_facet": [
@@ -12468,7 +12468,7 @@
             "1007273",
             "86683"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Sugoroku (Game)",
             "World War, 1939-1945\u2014Southeast Asia\u2014Pictorial works",
             "World War, 1939-1945\u2014Occupied territories\u2014Pictorial works",
@@ -12662,7 +12662,7 @@
         "standard_no_index": [
             "ocm16748904"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Cats",
             "Mammals\u2014Anatomy",
             "Dissection"
@@ -12864,7 +12864,7 @@
             "82449034",
             "NJPG99-A18"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Modern Greek Studies Association",
             "Journal of modern Greek studies",
             "Byzantine literature",
@@ -13161,7 +13161,7 @@
             "13631815",
             "NJPG90-B55394"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "England\u2014Social life and customs\u201418th century\u2014Fiction",
             "Young women\u2014England\u2014Crimes against\u2014Fiction"
         ],
@@ -13524,7 +13524,7 @@
             "493977348",
             "76935538"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Christian antiquities\u2014Scotland\u2014Dumfriesshire",
             "Excavations (Archaeology)\u2014Scotland\u2014Dumfriesshire",
             "Dumfriesshire (Scotland)\u2014Antiquities"
@@ -13901,7 +13901,7 @@
             "49366284",
             "3388644"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Cotton, Charles, 1630-1687",
             "Walton, Izaak, 1593-1683. Compleat angler",
             "Fishing\u201419th century\u2014Bibliography"
@@ -14091,7 +14091,7 @@
             "38898068",
             "NJPG99-B16492"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Byliny\u2014Translations into English"
         ],
         "subject_facet": [
@@ -14295,7 +14295,7 @@
             "ocn910334443",
             "910334443"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Sudden death\u2014Fiction",
             "Loss (Psychology)\u2014Fiction",
             "Grief\u2014Fiction"
@@ -14460,7 +14460,7 @@
             "NYBGAFQ1057-D",
             "3478898"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Si ku quan shu",
             "Chinese literature",
             "Chinese classics",
@@ -14653,7 +14653,7 @@
             "ocn887941255",
             "887941255"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Demeter (Greek deity)\u2014Poetry",
             "Persephone (Greek deity)\u2014Poetry",
             "Women\u2014Psychology\u2014Poetry"
@@ -15035,7 +15035,7 @@
             "ocn801607770",
             "801607770"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "China\u2014Foreign economic relations\u2014Angola",
             "Angola\u2014Foreign economic relations\u2014China",
             "China\u2014Relations\u2014Angola",
@@ -15275,7 +15275,7 @@
         "standard_no_index": [
             "DCLC9821762-B"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "China\u2014Civilization\u2014Sources"
         ],
         "subject_facet": [
@@ -15482,7 +15482,7 @@
         "standard_no_index": [
             "NJPX02-B1162"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Cao, Xueqin, approximately 1717-1763. Hong lou meng"
         ],
         "subject_facet": [
@@ -15631,7 +15631,7 @@
         "standard_no_index": [
             "ocm18067041"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Kaffraria\u2014Description and travel",
             "Africa\u2014Description and travel"
         ],
@@ -15900,7 +15900,7 @@
             "ocn892962929",
             "892962929"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Chorale preludes (Piano)",
             "Sonatas (Piano)",
             "Piano music, Arranged",
@@ -16198,7 +16198,7 @@
             "ocn186953391",
             "186953391"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Piano music",
             "Marches (Piano)",
             "Suites (Piano)",
@@ -16442,7 +16442,7 @@
             "704916640",
             "ocn704916640"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Concertos (Piano)",
             "Concertos (Violin and piano with chamber orchestra)",
             "Suites (Instrumental ensemble)"
@@ -16644,7 +16644,7 @@
             "RLINGEAC02626531-B",
             "9528689"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Concertos (Piano)"
         ],
         "subject_facet": [
@@ -16809,7 +16809,7 @@
         "standard_no_index": [
             "ocm07386866"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Sonatas (Violin and continuo)"
         ],
         "subject_facet": [
@@ -17013,7 +17013,7 @@
             "NYCG10030620-B",
             "285"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Sculpture\u2014Syria\u2014Tadmur",
             "Lamps",
             "Tombs\u2014Syria\u2014Tadmur"
@@ -17276,7 +17276,7 @@
             "NYCG85-S5927",
             "403828"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Music\u2014Periodicals",
             "Music\u201419th century"
         ],
@@ -17782,7 +17782,7 @@
             "N - S",
             "N - S"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Arabic newspapers\u2014Indexes"
         ],
         "subject_facet": [
@@ -17907,7 +17907,7 @@
         "recap_notes_display": [
             "N - S"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Capital punishment\u2014Bibliography",
             "Criminal law\u2014Italy\u2014Bibliography"
         ],
@@ -18028,7 +18028,7 @@
             "N - S",
             "N - S"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Institution for the Deaf and Dumb (Halifax, N.S.)"
         ],
         "subject_facet": [
@@ -18151,7 +18151,7 @@
             "N - S",
             "N - S"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Fire Insurance Patrol of the City of Philadelphia\u2014Periodicals",
             "Fire insurance\u2014Pennsylvania\u2014Philadelphia\u2014Periodicals"
         ],
@@ -18393,7 +18393,7 @@
         "standard_no_index": [
             "9998703"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Kurth, Ernst",
             "Kurth, Ernst. Muskpsychologie",
             "Music\u2014Psychological aspects",
@@ -18580,7 +18580,7 @@
         "restrictions_note_display": [
             "Use of these data is restricted to Princeton University students, faculty, and staff for non-commercial statistical analysis and research purposes only."
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Indians of North America\u2014Canada\u2014Statistics",
             "Native peoples\u2014Canada\u2014Statistics",
             "Demographic surveys\u2014Canada"
@@ -18806,7 +18806,7 @@
             "49365071",
             "3395923"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Reade, Charles, 1814-1884. Shilly Shally",
             "English drama\u201419th century"
         ],
@@ -19052,7 +19052,7 @@
             "1012941693",
             "on1012941693"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Rouch, Jean",
             "Video recording in ethnology\u2014Africa",
             "Ethnographic films"
@@ -19211,7 +19211,7 @@
         ],
         "pub_date_start_sort": 2001,
         "related_name_json_1display": "{\"Film director\":[\"Ca\u0301rdenas, Marcelina\"],\"Production company\":[\"CEFREC (Organization)\",\"Coordinadora Audiovisual Indi\u0301gena Originaria de Bolivia\",\"Plan Nacional Indi\u0301gena Originario de Comunicacio\u0301n Audiovisual (Bolivia)\"],\"Film distributor\":[\"Newsreel (Firm)\"]}",
-        "subject_display": [
+        "lc_subject_display": [
             "Man-woman relationships\u2014Bolivia\u2014Drama",
             "Indians of South America\u2014Bolivia\u2014Social life and customs\u2014Drama",
             "Indians of South America\u2014Bolivia\u2014Social conditions\u2014Drama"
@@ -19475,7 +19475,7 @@
             "ocn902811484",
             "902811484"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Tripit\u0323aka. Su\u0304trapit\u0323aka. Vimalaki\u0304rtinirdes\u0301a\u2014Outlines, syllabi, etc",
             "Tripit\u0323aka. Su\u0304trapit\u0323aka. Vimalaki\u0304rtinirdes\u0301a\u2014Outlines, syllabi, etc\u2014Early works to 1800"
         ],
@@ -19649,7 +19649,7 @@
         ],
         "pub_date_start_sort": 1525,
         "related_name_json_1display": "{\"Tr\":[\"Pirckheimer, Willibald, 1470-1530\"],\"Related name\":[\"Regiomontanus, Joannes, 1436-1476\"],\"Former owner\":[\"Martini, Giuseppe, 1870-1944\",\"Kane, Grenville, 1854-1943\"]}",
-        "subject_display": [
+        "lc_subject_display": [
             "Geography, Ancient",
             "Geography\u2014Early works to 1800",
             "Atlases\u2014Early works to 1800",
@@ -19776,7 +19776,7 @@
         "scale_display": [
             "Scale 1:62,500"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Topographic maps"
         ],
         "subject_facet": [
@@ -19911,7 +19911,7 @@
         "scale_display": [
             "Scale [ca. 1:125,000]."
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Franco-Prussian War, 1870-1871\u2014Maps",
             "Paris (France)\u2014Maps",
             "Seine (France)\u2014Maps"
@@ -20058,7 +20058,7 @@
         "scale_display": [
             "Scales differ."
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Japan\u2014Historical geography\u2014Maps"
         ],
         "subject_facet": [
@@ -20169,7 +20169,7 @@
         ],
         "pub_date_start_sort": 1975,
         "related_name_json_1display": "{\"Related name\":[\"Robinson, Karl Davis, 1884-1961\"]}",
-        "subject_display": [
+        "lc_subject_display": [
             "Go (Game)\u2014Bibliography\u2014Catalogs",
             "Princeton University Library\u2014Catalogs",
             "Robinson, Karl Davis, 1884-1961\u2014Library\u2014Catalogs"
@@ -20393,7 +20393,7 @@
         "standard_no_index": [
             "ocm06441833"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Johnson, Samuel, 1709-1784"
         ],
         "subject_facet": [
@@ -20563,7 +20563,7 @@
         "pub_date_start_sort": [
             1869
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Science\u2014Periodicals"
         ],
         "subject_facet": [
@@ -20816,7 +20816,7 @@
             "ocm36095716",
             "36095716"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Madrigals, Italian"
         ],
         "subject_facet": [
@@ -21046,7 +21046,7 @@
         ],
         "pub_date_start_sort": 1975,
         "related_name_json_1display": "{\"Related name\":[\"Robinson, Karl Davis, 1884-1961\"]}",
-        "subject_display": [
+        "lc_subject_display": [
             "Go (Game)\u2014Bibliography\u2014Catalogs",
             "Princeton University Library\u2014Catalogs",
             "Robinson, Karl Davis, 1884-1961\u2014Library\u2014Catalogs"
@@ -21270,7 +21270,7 @@
         "standard_no_index": [
             "ocm06441833"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Johnson, Samuel, 1709-1784"
         ],
         "subject_facet": [
@@ -21440,7 +21440,7 @@
         "pub_date_start_sort": [
             1869
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Science\u2014Periodicals"
         ],
         "subject_facet": [
@@ -21693,7 +21693,7 @@
             "ocm36095716",
             "36095716"
         ],
-        "subject_display": [
+        "lc_subject_display": [
             "Madrigals, Italian"
         ],
         "subject_facet": [

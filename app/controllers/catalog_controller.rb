@@ -240,7 +240,8 @@ class CatalogController < ApplicationController
 
     config.add_show_field 'class_year_s', label: 'Class year', helper_method: :link_to_search_value
     # Linked fields pushed to top of supplemental info
-    config.add_show_field 'subject_display', label: 'Subject(s)', helper_method: :subjectify
+    config.add_show_field 'lc_subject_display', label: 'Subject(s)', helper_method: :subjectify
+    config.add_show_field 'siku_subject_display', label: 'Chinese traditional subject(s)', helper_method: :subjectify
     config.add_show_field 'related_name_json_1display', hash: true
     config.add_show_field 'lcgft_s', label: 'Library of Congress genre', helper_method: :subjectify
     config.add_show_field 'rbgenr_s', label: 'Rare books genre', helper_method: :subjectify
