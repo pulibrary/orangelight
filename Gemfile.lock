@@ -451,7 +451,7 @@ GEM
       rake
       serverengine (~> 2.0.5)
       thor
-    solr_wrapper (1.2.0)
+    solr_wrapper (2.2.0)
       faraday
       retriable
       ruby-progressbar
@@ -581,7 +581,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   sitemap_generator (~> 6.0)
   sneakers
-  solr_wrapper (~> 1.0)
+  solr_wrapper (~> 2.0)
   spring
   sprockets-es6
   string_rtl
