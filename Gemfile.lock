@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 7a2486682327f144aa1b2122c498ff11d9ad96ca
+  revision: 4bc9732592f5eecec3898735f774643717a62f4a
   specs:
     requests (0.0.2)
       bootstrap
@@ -301,7 +301,7 @@ GEM
       net-ssh (>= 2.6.5, < 6.0.0)
     net-ssh (5.2.0)
     nio4r (2.5.2)
-    nokogiri (1.10.8)
+    nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     omniauth (1.9.0)
       hashie (>= 3.4.6, < 3.7.0)
