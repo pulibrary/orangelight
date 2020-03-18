@@ -2,6 +2,7 @@
 <div id="main-content" class="col-12 main-content">
   <div id="sidebar" class="<%= render_document_class %>">
     <%= render_document_sidebar_partial %>
+    <%= render partial: 'show_restrictions', locals: { document: @document } %>
   </div>
   <div id="content" class="content">
     <%= render_document_heading_partial %>
@@ -23,7 +24,6 @@
   </div>
   <div id="aside" class="<%= render_document_class %>">
     <h2 class="sr-only">Supplementary Information</h2>
-    <%= render partial: 'show_restrictions', locals: { document: @document } %>
     <%= render partial: 'show_other_versions', locals: { document: @document } %>
   </div>
 </div>
