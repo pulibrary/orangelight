@@ -200,11 +200,13 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     end
   end
 
+  # TODO: Remove this method once Mudd has re-opened
   def self.mudd_closure_message
     "Mudd Library collections are unavailable until approximately June 3, 2020 due to
     a #{link_to('renovation.', mudd_url)}".html_safe
   end
 
+  # TODO: Remove this method once Mudd has re-opened
   def self.mudd_url
     "https://library.princeton.edu/special-collections/policies/access-mudd-library-during-renovation"
   end
@@ -213,7 +215,9 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param holding [Hash] the restrictions for all holdings
   # @return [String] the markup
   def self.restrictions_markup(restrictions)
+    # TODO: Remove this line once Mudd has re-opened
     return mudd_closure_message if restrictions.first == "Mudd"
+
     restricted_items = restrictions.map do |value|
       content_tag(:td, scsb_use_label(value),
                   class: 'icon-warning icon-request-reading-room',

@@ -154,6 +154,11 @@ class HoldingRequestsAdapter
   # Duplicates PhysicalHoldingsMarkupBuilder.scsb_list
   # @param holding [Hash]
   def restrictions_for_holding(holding)
+    # TODO: Uncomment these once Mudd has re-opened
+    # return [] unless holding.key? 'items'
+    # holding['items'].map { |values| values['use_statement'] }.reject(&:blank?)
+
+    # TODO: Remove this block once Mudd has re-opened
     if holding.key? 'items'
       holding['items'].map { |values| values['use_statement'] }.reject(&:blank?)
     elsif holding['library'] == 'Mudd Manuscript Library' || holding['location_code'] == 'rcpph'
