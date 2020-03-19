@@ -105,5 +105,18 @@ namespace :sneakers do
   end
 end
 
+namespace :cache do
+  desc 'Run rake cache:clear'
+  task :clear do
+    on roles(:web) do
+      within current_path do
+        with :rails_env => fetch(:rails_env) do
+          execute :rake, 'cache:clear'
+        end
+      end
+    end
+  end
+end
+
 after 'deploy:reverted', 'sneakers:restart'
 after 'deploy:published', 'sneakers:restart'
