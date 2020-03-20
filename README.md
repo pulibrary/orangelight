@@ -61,6 +61,13 @@ BRANCH=my_branch cap staging deploy # deploys my_branch to staging
 cap staging deploy # deploys master branch to staging
 ```
 
+## Staging Mail Catcher
+  To see mail that has been sent on the staging server you must ssh tunnel into the server
+  ```
+  ssh -L 1082:localhost:1080 pulsys@catalog-staging1
+  ```
+  Once the tunnel is open [you can see the mail that has been sent on staging here]( http://localhost:1082/)
+
 Testing
 ------------------
 ### Testing prerequisite
@@ -139,3 +146,27 @@ Set the ```bidata_base``` value in your dev environment to point at this version
 `$ yarn test`
 
 Debugging instructions: https://facebook.github.io/jest/docs/en/troubleshooting.html
+
+## Development Mailcatcher
+
+   * Modify `config/environments/development.rb` and add
+     ```
+     config.action_mailer.delivery_method = :smtp
+     config.action_mailer.smtp_settings = {
+       :address => "localhost", 
+       :port => 1025
+     }
+     ```
+
+   * run mail catcher
+     run once 
+     ```
+     gem install mailcatcher
+     ```
+     run every time
+     ```
+     mailcatcher
+     ```
+   
+     [you can see the mail that has been sent here]( http://localhost:1080/)
+
