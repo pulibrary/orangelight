@@ -118,7 +118,7 @@ describe 'blacklight tests' do
       get '/catalog/6139836/raw'
       r = JSON.parse(response.body)
       sub_component = []
-      fullsubject = r['subject_display']
+      fullsubject = r['lc_subject_display']
       fullsubject.each do |subject|
         sub_component << subject.split(SEPARATOR)
       end

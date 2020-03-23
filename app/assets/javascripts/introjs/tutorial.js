@@ -96,7 +96,7 @@ function recordPage(){
           position: 'left'
         },
         {
-          element: 'dd.blacklight-subject_display',
+          element: 'dd.blacklight-lc_subject_display',
           intro: 'Click on any part of the subject heading to run a broader or narrower subject search.',
           position: 'left'
         },
