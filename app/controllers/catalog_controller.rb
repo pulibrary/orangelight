@@ -252,6 +252,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'data_source_display', label: 'Data source', helper_method: :name_title
     config.add_show_field 'contained_in_s', label: 'Contained in', link_field: 'id'
     config.add_show_field 'related_record_s', label: 'Related record(s)', link_field: 'id'
+    config.add_show_field 'other_editions_s', label: 'Other available editions', link_field: 'id'
     config.add_show_field 'translation_of_display', label: 'Translation of', helper_method: :name_title
     config.add_show_field 'translated_as_display', label: 'Translated as', helper_method: :name_title
     config.add_show_field 'issued_with_display', label: 'Issued with', helper_method: :name_title
