@@ -83,7 +83,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address:              'lib-ponyexpr.princeton.edu'
+    address: "#{ENV['SMTP_HOST'] || 'lib-ponyexpr.princeton.edu' }"
+    port: (ENV['SMTP_PORT'] || 25).to_i
   }
   config.action_mailer.default_options = {
     from: 'no-reply@princeton.edu'
