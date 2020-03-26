@@ -318,7 +318,7 @@ GEM
     parser (2.6.4.1)
       ast (~> 2.4.0)
     parslet (1.8.2)
-    pg (1.1.4)
+    pg (1.2.3)
     popper_js (1.16.0)
     powerpack (0.1.2)
     pry (0.12.2)
@@ -595,4 +595,4 @@ DEPENDENCIES
   yajl-ruby (>= 1.3.1)
 
 BUNDLED WITH
-   1.17.3
+   2.1.4

@@ -4,7 +4,7 @@ set :rvm_ruby_string, :local # use the same ruby as used locally for deployment
 set :rails_env, 'staging'
 set :branch, ENV['BRANCH'] || 'master'
 
-server 'catalog-staging1', user: 'deploy', roles: %i[web app db]
+server 'catalog-staging1', user: 'deploy', roles: %i[web app db worker]
 
 namespace :env do
   desc 'Set an Orangelight environment variable'
