@@ -32,6 +32,8 @@ jobs:
       - run:
           name: Set Timezone to EST
           command: echo 'America/New_York' = /etc/timezone
+      # Install Bundler
+      - run: gem install bundler -v '~> 2.0'
       # Restore bundle cache
       - restore_cache:
           keys:
