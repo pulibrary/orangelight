@@ -75,4 +75,32 @@ RSpec.describe CatalogController do
       expect(response.status).to eq(400)
     end
   end
+
+  describe 'show includes the hathi url' do
+    before do
+      stub_hathi
+    end
+
+    it 'sets the assign hathi_url for an item with hathi data' do
+      get :show, params: { id: '426420' }
+      expect(response.status).to eq(200)
+      expect(assigns(:hathi_url)).to eq(
+        "https://babel.hathitrust.org/Shibboleth.sso/Login?entityID=" \
+        "https://idp.princeton.edu/idp/shibboleth" \
+        "&target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fpt%3Fid%3Duc1.c2754878"
+      )
+    end
+
+    it 'sets the assign hathi_url it nil for an item without hathi data' do
+      get :show, params: { id: '8938641' }
+      expect(response.status).to eq(200)
+      expect(assigns(:hathi_url)).to be_nil
+    end
+
+    it 'sets the assign hathi_url it nil for a SCSB item' do
+      get :show, params: { id: 'SCSB-2443272' }
+      expect(response.status).to eq(200)
+      expect(assigns(:hathi_url)).to be_nil
+    end
+  end
 end

@@ -90,4 +90,11 @@ RSpec.describe 'catalog/show' do
       expect(page).to have_link('2014', href: '/?f[class_year_s][]=2014')
     end
   end
+
+  describe 'the hahti url' do
+    it 'has a link to the hathi url' do
+      visit 'catalog/857469'
+      expect(page).to have_link('Hathi version', href: 'https://babel.hathitrust.org/Shibboleth.sso/Login?entityID=https://idp.princeton.edu/idp/shibboleth&target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fpt%3Fid%3Dmdp.39015015749305')
+    end
+  end
 end

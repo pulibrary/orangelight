@@ -3,7 +3,9 @@
 require 'rails_helper'
 
 describe 'Feedback Form', type: :feature do
-  before { stub_holding_locations }
+  before do
+    stub_holding_locations
+  end
 
   context 'User has not signed in' do
     before do

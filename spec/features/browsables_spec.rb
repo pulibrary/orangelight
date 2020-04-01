@@ -13,6 +13,7 @@ describe 'Browsables' do
   describe 'Browse by author-title heading' do
     before(:all) do
       stub_holding_locations
+      stub_hathi
       visit '/catalog/8237778'
     end
     it 'name-uniform title link, hierarchical, does not display name' do

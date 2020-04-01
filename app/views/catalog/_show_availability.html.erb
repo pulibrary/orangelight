@@ -7,6 +7,10 @@
   </div>
 <% end %>
 
+<% unless @hathi_url.blank? %>
+   <%= render "hathi_online"%>
+<% end %>
+
 <% if online.blank? && document.standard_numbers? && document.umlaut_fulltext_eligible? %>
   <%= umlaut_services_fulltext(document) %>
 <% end %>
