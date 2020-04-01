@@ -27,7 +27,7 @@ def stub_hathi
   stub_request(:get, "https://catalog.hathitrust.org/api/volumes/brief/oclc/1586310.json")
     .to_return(body: File.new('spec/fixtures/hathi_1586310.json'), status: 200)
 
-  stub_request(:get, "https://catalog.hathitrust.org/api/volumes/brief/lccn/17024346.json")
+  stub_request(:get, "https://catalog.hathitrust.org/api/volumes/brief/oclc/53849218.json")
     .to_return(body: File.new('spec/fixtures/hathi_17024346.json'), status: 200)
 
   stub_request(:get, "https://catalog.hathitrust.org/api/volumes/brief/oclc/3280195.json")
