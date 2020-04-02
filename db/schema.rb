@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190816202403) do
+ActiveRecord::Schema.define(version: 20200402142258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20190816202403) do
     t.datetime "updated_at"
     t.string "document_type"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "hathi_pul_matches", force: :cascade do |t|
+    t.string "oclc"
+    t.string "pul_id"
+    t.string "item_type"
+    t.string "access"
+    t.string "rights"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orangelight_call_numbers", id: :serial, force: :cascade do |t|
