@@ -1,9 +1,10 @@
 <% online, physical = holding_request_block(document) %>
 <h2 class="sr-only">Availability</h2>
-<% unless online.blank? %>
+<% unless online.blank? &&  @hathi_url.blank? %>
   <div class="availability--online">
-    <h3><%= t('blacklight.holdings.online') %></h3>
-    <%= online %>
+    <h3><%= t('blacklight.holdings.online')  %></h3>
+    <%= render "hathi_online" if @hathi_url.present?%>
+    <%= online if online.present? %>
   </div>
 <% end %>
 

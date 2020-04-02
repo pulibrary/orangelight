@@ -636,4 +636,13 @@ class CatalogController < ApplicationController
   rescue ActionController::BadRequest
     render file: Rails.public_path.join('x400.html'), layout: true, status: :bad_request
   end
+
+  def show
+    return_val = super
+    unless params[:id].upcase.starts_with?("SCSB")
+      @hathi_url = HathiUrl.new(oclc_id: @document["oclc_s"]&.first, isbn: @document["isbn_s"]&.first,
+                                lccn: @document["lccn_s"]&.first).url
+    end
+    return_val
+  end
 end
