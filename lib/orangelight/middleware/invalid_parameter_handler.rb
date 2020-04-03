@@ -57,6 +57,8 @@ module Orangelight
           raise ActionController::BadRequest, "Invalid facet parameter passed: #{facet_parameter}" unless facet_parameter.is_a?(Array) || facet_parameter.is_a?(Hash)
 
           facet_parameter.collect do |facet_field, value_list|
+            raise ActionController::BadRequest, "Facet field #{facet_field} has a scalar value #{value_list}" if value_list.is_a?(String)
+
             next unless value_list.nil?
             raise ActionController::BadRequest, "Facet field #{facet_field} has a nil value"
           end
