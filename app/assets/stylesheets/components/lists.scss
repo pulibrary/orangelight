@@ -73,7 +73,7 @@ ul {
 
     @media (min-width: 530px) {
         li {
-            float: left;
+            display: inline-block;
             border-left: 1px solid $gray;
             padding: 0 10px;
 
@@ -86,17 +86,5 @@ ul {
                 font-size: 0.9em;
             }
         }
-    }
-}
-
-// temporary hathi-trust access message on the home page
-.hathitrust-temporary-access {
-    padding-top: 2rem;
-    .card {
-        border: 0;
-    }
-    .card-body {
-        width: 100%;
-        padding: 1rem;
     }
 }

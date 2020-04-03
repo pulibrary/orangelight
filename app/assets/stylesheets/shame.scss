@@ -20,3 +20,35 @@
   pointer-events: none;
   cursor: not-allowed;
 }
+
+// temporary hathi-trust access message on the home page
+.hathitrust-temporary-access {
+  .card {
+      border: 0;
+  }
+  .card-body {
+      width: 100%;
+      padding: 1rem;
+  }
+}
+
+.hathitrust-temporary-access {
+  clear: both;
+  display: flex;
+  flex-direction: row;
+  background-color: $yellow-light;
+  margin-top: 2rem;
+  padding: 1rem;
+  
+  .hathi-text {
+    padding-left: 1rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+}

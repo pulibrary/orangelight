@@ -19,7 +19,7 @@ class HathiUrl
 
     def build_hathi_url(key:, id:)
       return if id.blank?
-      json_data = Net::HTTP.get(hathi_ap_url(key: key, id: id))
+      json_data = Net::HTTP.get(hathi_api_url(key: key, id: id))
       hathi_data = JSON.parse(json_data)
       hathi_url(hathi_data['items'].first['htid']) if hathi_data['items'].count.positive?
     rescue JSON::ParserError => e
@@ -34,7 +34,7 @@ class HathiUrl
       end
     end
 
-    def hathi_ap_url(key:, id:)
+    def hathi_api_url(key:, id:)
       URI("https://catalog.hathitrust.org/api/volumes/brief/#{key}/#{id}.json")
     end
 

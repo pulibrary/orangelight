@@ -14,9 +14,19 @@
 </div>
 <%# start: Temporary message for the HathiTrust access.%>
 <div class="hathitrust-temporary-access">
-  <div class="card card-body bg-light">
-      Many print items are now available online from Hathi Trust.
-      Look for the "Temporary Digital Access from Hathi Trust" link in the "Available Online" section.
+  <div class="hathi-homepage-image">
+   <%= link_to "https://library.princeton.edu/news/general/2020-04-03/over-5-million-books-puls-print-collection-now-available-online-through-new" do %>
+      <%= image_tag("hathitrust-logo-elephant-fullbleed.svg",  size: "100x100") %>
+    <% end %>
+  </div>
+  <div class="hathi-text">
+    <%= link_to "https://library.princeton.edu/news/general/2020-04-03/over-5-million-books-puls-print-collection-now-available-online-through-new" do %>
+    <h3>Expanded Online Access: Hathi Trust</h3>
+    <% end %>
+    <p>
+    Many print items are now available online from Hathi Trust.
+    Look for the "Temporary Digital Access from Hathi Trust" link in the "Available Online" section.
+    </p>
   </div>
 </div>
 <%# end: Temporary message for the HathiTrust access.%>
