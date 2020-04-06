@@ -52,3 +52,24 @@
     margin-top: 0;
   }
 }
+
+.covid19-temporary-access {
+  clear: both;
+  display: flex;
+  flex-direction: row;
+  background-color: $yellow-light;
+  margin-top: 2rem;
+  padding: 1rem;
+  
+  .covid19-text {
+    padding-left: 1rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+}
