@@ -39,7 +39,8 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 1af057c1709c21d12078188995af33de38a549f4
+  revision: 28e948e0180379138714c7f7403c9e8acce9f42f
+  branch: send_to_illiad
   specs:
     requests (0.0.2)
       bootstrap
