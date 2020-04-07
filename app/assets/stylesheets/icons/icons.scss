@@ -3,13 +3,13 @@
 
 @font-face {
     font-family: 'pul-icons';
-    src:    font-url('icons/pul-icons.eot?7ecx6q');
-    src:    font-url('icons/pul-icons.eot?7ecx6q#iefix') format('embedded-opentype'),
-        font-url('icons/pul-icons.ttf?7ecx6q') format('truetype'),
-        font-url('icons/pul-icons.woff?7ecx6q') format('woff'),
-        font-url('icons/pul-icons.svg?7ecx6q#pul-icons') format('svg');
+    src:
+        font-url('icons/pul-icons.ttf?llihnc') format('truetype'),
+        font-url('icons/pul-icons.woff?llihnc') format('woff'),
+        font-url('icons/pul-icons.svg?llihnc#pul-icons') format('svg');
     font-weight: normal;
     font-style: normal;
+    font-display: block;
 }
 
 [class^="icon-"]:before,
@@ -32,180 +32,224 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-bell {
+    &:before {
+        content: $icon-bell;
+    }
+}
+
+.icon-announce {
+    &:before {
+        content: $icon-announce;
+    }
+}
+
 .icon-bookslibrary {
     &:before {
         content: $icon-bookslibrary;
     }
 }
+
 .icon-bookmark {
     &:before {
         content: $icon-bookmark;
     }
 }
+
 .ask-a-librarian .icon-chat {
     &:before {
         content: $icon-chat;
     }
 }
+
 .icon-warning {
     &:before {
         content: $icon-warning;
     }
 }
+
 .icon-refresh {
     &:before {
         content: $icon-refresh;
     }
 }
+
 .icon-moveback {
     &:before {
         content: $icon-moveback;
     }
 }
+
 .icon-cite {
     &:before {
         content: $icon-cite;
     }
 }
+
 .icon-share {
     &:before {
         content: $icon-share;
     }
 }
+
 .icon-senior-thesis,
 .blacklight-senior-thesis .document-thumbnail .default {
     &:before {
         content: $icon-senior-thesis;
     }
 }
+
 .icon-data-file,
 .blacklight-data-file .document-thumbnail .default {
     &:before {
         content: $icon-data-file;
     }
 }
+
 .icon-map,
 .blacklight-map .document-thumbnail .default {
     &:before {
         content: $icon-map;
     }
 }
+
 .icon-manuscript,
 .blacklight-manuscript .document-thumbnail .default {
     &:before {
         content: $icon-manuscript;
     }
 }
+
 .icon-audio,
 .blacklight-audio .document-thumbnail .default {
     &:before {
         content: $icon-audio;
     }
 }
+
 .icon-musical-score,
 .blacklight-musical-score .document-thumbnail .default {
     &:before {
         content: $icon-musical-score;
     }
 }
+
 .icon-video-projected-medium,
 .blacklight-video-projected-medium .document-thumbnail .default {
     &:before {
         content: $icon-video-projected-medium;
     }
 }
+
 .icon-visual-material,
 .blacklight-visual-material .document-thumbnail .default {
     &:before {
         content: $icon-visual-material;
     }
 }
+
 .toggle.collapsed {
     &:before {
         content: $icon-toggle-collapsed;
     }
 }
+
 .icon-remove {
     &:before {
         content: $icon-remove;
     }
 }
+
 .toggle {
     &:before {
         content: $icon-toggle;
     }
 }
+
 .icon-book,
 .blacklight-book .document-thumbnail .default {
     &:before {
         content: $icon-book;
     }
 }
+
 .icon-journal,
 .blacklight-journal .document-thumbnail .default {
     &:before {
         content: $icon-journal;
     }
 }
+
 .icon-mixed-material,
 .blacklight-mixed-material .document-thumbnail .default {
     &:before {
         content: $icon-mixed-material;
     }
 }
+
 .icon-dissertation,
 .blacklight-dissertation .document-thumbnail .default {
     &:before {
         content: $icon-dissertation;
     }
 }
+
 .icon-unknown,
 .blacklight-unknown .document-thumbnail .default {
     &:before {
         content: $icon-unknown;
     }
 }
+
 .icon-search {
     &:before {
         content: $icon-search;
     }
 }
+
 .icon-cd {
     &:before {
         content: $icon-cd;
     }
 }
+
 .icon-lp {
     &:before {
         content: $icon-lp;
     }
 }
+
 .icon-coin,
 .blacklight-coin .document-thumbnail .default {
     &:before {
         content: $icon-coins-flat;
     }
 }
+
 .icon-external {
     &:before {
         content: $icon-newtab;
     }
 }
+
 .icon-mobile {
     &:before {
         content: $icon-mobile;
     }
 }
+
 .icon-email {
     &:before {
         content: $icon-email;
     }
 }
+
 .icon-print {
     &:before {
         content: $icon-print;
     }
 }
+
 .icon-spinner {
     margin-left: 6px;
 
@@ -214,6 +258,7 @@
         margin-right: 0;
     }
 }
+
 .icon-rssfeed {
     &:before {
         content: $icon-rssfeed;
@@ -237,55 +282,57 @@ a:link.toggle,
 a:visited.toggle,
 a:hover.toggle,
 a:active.toggle {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .document-thumbnail .default {
-  font-size: 5.5em;
+    font-size: 5.5em;
 }
 
 .icon.toggle {
-  color: black;
+    color: black;
 }
 
 .glyphicon-map-marker {
-  font-size: 1.2em;
+    font-size: 1.2em;
 }
 
 .spin {
-  -webkit-animation: spin 2s infinite linear;
-     -moz-animation: spin 2s infinite linear;
-      -ms-animation: spin 2s infinite linear;
-          animation: spin 2s infinite linear;
-          display: inline-block;
+    -webkit-animation: spin 2s infinite linear;
+    -moz-animation: spin 2s infinite linear;
+    -ms-animation: spin 2s infinite linear;
+    animation: spin 2s infinite linear;
+    display: inline-block;
 }
 
 .pulse {
-  -webkit-animation: spin 1s infinite steps(8);
-     -moz-animation: spin 1s infinite steps(8);
-      -ms-animation: spin 1s infinite steps(8);
-          animation: spin 1s infinite steps(8);
-          display: inline-block;
+    -webkit-animation: spin 1s infinite steps(8);
+    -moz-animation: spin 1s infinite steps(8);
+    -ms-animation: spin 1s infinite steps(8);
+    animation: spin 1s infinite steps(8);
+    display: inline-block;
 }
 
 @-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
-  }
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
 }
 
 @keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
-  }
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
 }
