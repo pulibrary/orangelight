@@ -22262,5 +22262,134 @@ true
 "call_number_browse_s": [
 "PS2033 .A435 1929"
 ]
+},
+{
+"id": "9770811",
+"numeric_id_b": true,
+"author_display": [
+"Chekhov, Anton Pavlovich, 1860-1904",
+"Чехов, Антон Павлович, 1860-1904"
+],
+"author_citation_display": [
+"Chekhov, Anton Pavlovich"
+],
+"author_roles_1display": "{\"secondary_authors\":[\"Чехов, Антон Павлович\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Chekhov, Anton Pavlovich\"}",
+"author_s": [
+"Chekhov, Anton Pavlovich, 1860-1904",
+"Чехов, Антон Павлович, 1860-1904"
+],
+"marc_relator_display": [
+"Author"
+],
+"uniform_title_s": [
+"Plays. Selections"
+],
+"title_display": "Pʹesy / Anton Chekhov.",
+"title_vern_display": "Пьесы / Антон Чехов.",
+"title_t": [
+"Pʹesy / Anton Chekhov."
+],
+"title_citation_display": [
+"Pʹesy",
+"Пьесы"
+],
+"compiled_created_t": [
+"Pʹesy / Anton Chekhov.",
+"Пьесы / Антон Чехов."
+],
+"pub_created_vern_display": [
+"Москва : Летний сад, 2015."
+],
+"pub_created_display": [
+"Moskva : Letniĭ sad, 2015.",
+"Москва : Летний сад, 2015."
+],
+"pub_created_s": [
+"Moskva : Letniĭ sad, 2015.",
+"Москва : Летний сад, 2015."
+],
+"pub_citation_display": [
+"Moskva: Letniĭ sad",
+"Москва: Летний сад"
+],
+"pub_date_display": [
+"2015"
+],
+"pub_date_start_sort": 2015,
+"pub_date_end_sort": 1897,
+"cataloged_tdt": "2016-11-15T22:09:29Z",
+"format": [
+"Book"
+],
+"description_display": [
+"vii, 334 pages ; 15 cm"
+],
+"description_t": [
+"vii, 334 pages ; 15 cm"
+],
+"number_of_pages_citation_display": [
+"vii, 334 pages"
+],
+"other_editions_s": [
+"(OCoLC)78364531",
+"(ОCoLC)78364531"
+],
+"language_facet": [
+"Russian"
+],
+"language_code_s": [
+"rus"
+],
+"language_iana_s": [
+"ru"
+],
+"contents_display": [
+"Medvi︠e︡dʹ-- Predlozhenīe -- Ivanovʺ -- Lebedinai︠a︡ pi︠e︡sni︠a︡ -- Tragikʺ po nevoli︠e︡ --Chaĭka -- Di︠a︡di︠a︡ Vani︠a︡.",
+"Медвѣдь-- Предложеніе -- Ивановъ -- Лебединая пѣсня -- Трагикъ по неволѣ --Чайка -- Дядя Ваня."
+],
+"other_editions_display": [
+"Reproduction of (manifestation): Chekhov, Anton Pavlovich, 1860-1904. Pʹesy S.-Peterburgʺ : Izdanīe A.S. Suvorina, 1897",
+"Reproduction of (manifestation): Чехов, Антон Павлович, 1860-1904. Пьесы С.-Петербургъ : Изданіе А.С. Суворина, 1897"
+],
+"isbn_display": [
+"9785988562320",
+"5988562329"
+],
+"isbn_s": [
+"9785988562320"
+],
+"oclc_s": [
+"964907363"
+],
+"other_version_s": [
+"ocn964907363",
+"9785988562320"
+],
+"holdings_1display": "{\"9588984\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"call_number\":\"PG3455 .A2 2015\",\"call_number_browse\":\"PG3455 .A2 2015\"}}",
+"location_code_s": [
+"f"
+],
+"location": [
+"Firestone Library"
+],
+"location_display": [
+"Firestone Library"
+],
+"advanced_location_s": [
+"f",
+"Firestone Library"
+],
+"name_uniform_title_1display": "[[\"Chekhov, Anton Pavlovich, 1860-1904.\",\"Plays.\",\"Selections\"]]",
+"name_title_browse_s": [
+"Chekhov, Anton Pavlovich, 1860-1904. Plays",
+"Chekhov, Anton Pavlovich, 1860-1904. Plays. Selections",
+"Чехов, Антон Павлович, 1860-1904. Пьесы"
+],
+"call_number_display": [
+"PG3455 .A2 2015"
+],
+"call_number_browse_s": [
+"PG3455 .A2 2015"
+]
 }
 ]
