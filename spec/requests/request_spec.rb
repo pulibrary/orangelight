@@ -413,6 +413,10 @@ describe 'blacklight tests' do
       get '/catalog/2910021'
       expect(response.status).to eq(200)
     end
+    it 'does not error when a unicode character is incorrectly in the other_editions_s field' do
+      get '/catalog/9770811'
+      expect(response.status).to eq(200)
+    end
   end
 
   describe 'standard no search' do

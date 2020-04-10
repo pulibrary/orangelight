@@ -136,7 +136,9 @@ class SolrDocument
     end
 
     def clean_ids(id_values)
-      id_values.map { |id| id.delete('#') }
+      out = id_values.map { |id| id.delete('#') }
+      # Strip all non-ascii characters from ids
+      out.map { |id| id.gsub(/[^[:ascii:]]/, "") }
     end
 
     def identifier_keys
