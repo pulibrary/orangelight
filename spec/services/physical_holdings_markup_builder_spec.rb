@@ -54,6 +54,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     allow(adapter).to receive(:voyager_holding?).and_return(true)
     allow(adapter).to receive(:doc_electronic_access).and_return('http://arks.princeton.edu/ark:/88435/dsp0141687h654': ['DataSpace', 'Citation only'])
     allow(adapter).to receive(:umlaut_accessible?).and_return(true)
+    allow(adapter).to receive(:unavailable_holding?).and_return(false)
   end
 
   describe '.request_label' do
@@ -194,7 +195,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   end
 
   describe '.location_services_block' do
-    let(:location_services_block_markup) { described_class.location_services_block(adapter, holding_id, location_rules, request_link) }
+    let(:location_services_block_markup) { described_class.location_services_block(adapter, holding_id, location_rules, request_link, holding) }
 
     it 'generates the markup for the location services container' do
       expect(location_services_block_markup).to include '<td class="location-services service-conditional"'

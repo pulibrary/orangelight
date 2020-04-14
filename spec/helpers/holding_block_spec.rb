@@ -16,6 +16,7 @@ RSpec.describe ApplicationHelper do
     let(:show_result_journal) { helper.holding_request_block(SolrDocument.new(document_journal)) }
     let(:show_result_thesis) { helper.holding_request_block(SolrDocument.new(document_thesis)) }
     let(:show_result_thesis_no_request) { helper.holding_request_block(SolrDocument.new(document_thesis_no_request_access)) }
+    let(:show_result_thesis_embargoed) { helper.holding_request_block(SolrDocument.new(document_thesis_embargoed)) }
 
     let(:show_result_umlaut_w_full_text) { helper.umlaut_services }
     let(:not_umlaut_full_text_eligible) { SolrDocument.new(document_no_umlaut) }
@@ -65,6 +66,17 @@ RSpec.describe ApplicationHelper do
       }.to_json.to_s
     end
 
+    let(:holdings_thesis_mudd_embargoed) do
+      {
+        'thesis' => {
+          location: 'Mudd Manuscript Library',
+          library: 'Mudd Manuscript Library',
+          location_code: 'mudd',
+          dspace: false
+        }
+      }.to_json.to_s
+    end
+
     let(:document) do
       {
         id: '1',
@@ -108,6 +120,15 @@ RSpec.describe ApplicationHelper do
         format: ['Senior Thesis'],
         holdings_1display: holdings_thesis_mudd,
         pub_date_start_sort: 2013
+      }.with_indifferent_access
+    end
+
+    let(:document_thesis_embargoed) do
+      {
+        id: '4',
+        format: ['Senior Thesis'],
+        holdings_1display: holdings_thesis_mudd_embargoed,
+        pub_date_start_sort: 2021
       }.with_indifferent_access
     end
 
@@ -237,6 +258,9 @@ RSpec.describe ApplicationHelper do
       it 'On-site access availability when dspace set to true' do
         expect(show_result_thesis.last).to include 'On-site access'
       end
+      it 'On-site access availability when dspace set to false' do
+        expect(show_result_thesis_embargoed.last).to include 'Unavailable'
+      end
       it 'includes a div to place current issues when journal format' do
         expect(show_result_journal.last).to have_selector '*[data-journal]'
       end
@@ -263,6 +287,17 @@ RSpec.describe ApplicationHelper do
       it 'does not display a request button for theses created after 2012' do
         stub_holding_locations
         expect(show_result_thesis_no_request.last).not_to have_selector '.service-always-requestable'
+      end
+    end
+
+    context '#holding_block record show - thesis embargoed' do
+      before { stub_holding_locations }
+      it 'does not display a request button for theses with dspace:false' do
+        expect(show_result_thesis_embargoed.last).not_to have_selector '.service-always-requestable'
+        expect(show_result_thesis_embargoed.last).to have_selector '.service-conditional'
+      end
+      it 'does not display a Reading Room Request button' do
+        expect(show_result_thesis_embargoed.last).to include 'data-requestable="false"'
       end
     end
 
