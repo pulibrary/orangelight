@@ -121,7 +121,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                 })
   end
 
-  # For when a holding record has a value for the "dspace" key, but it is set to false
   def self.holding_location_default(bib_id, holding_id, location_rules)
     children = content_tag(:span, '', class: 'availability-icon')
     content_tag(:td,
@@ -135,6 +134,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                 })
   end
 
+  # For when a holding record has a value for the "dspace" key, but it is set to false
   def self.holding_location_unavailable
     children = content_tag(:span,
                            'Unavailable',
@@ -236,8 +236,9 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     location.nil? ? false : location[:open]
   end
 
-  def self.requestable_location?(location)
-    location.nil? ? false : location[:requestable]
+  def self.requestable_location?(location, adapter, holding)
+    return false if location.nil? || adapter.unavailable_holding?(holding)
+    location[:requestable]
   end
 
   def self.aeon_location?(location)
@@ -275,12 +276,12 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param location_rules [Hash]
   # @param link [String] link markup
   # @return [String] block markup
-  def self.location_services_block(adapter, holding_id, location_rules, link)
+  def self.location_services_block(adapter, holding_id, location_rules, link, holding)
     content_tag(:td, link,
                 class: "location-services #{show_request(adapter, location_rules, holding_id)}",
                 data: {
                   open: open_location?(location_rules),
-                  requestable: requestable_location?(location_rules),
+                  requestable: requestable_location?(location_rules, adapter, holding),
                   aeon: aeon_location?(location_rules),
                   holding_id: holding_id
                 })
@@ -389,7 +390,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
            end
-    markup = location_services_block(adapter, holding_id, location_rules, link)
+    markup = location_services_block(adapter, holding_id, location_rules, link, holding)
     markup
   end
 
@@ -430,6 +431,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                   self.class.holding_location_repository
                 elsif @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
                   self.class.holding_location_scsb(holding, bib_id, holding_id)
+                # dspace: false
                 elsif @adapter.unavailable_holding?(holding)
                   self.class.holding_location_unavailable
                 else
