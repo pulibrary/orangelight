@@ -274,6 +274,15 @@ describe 'Your Account', type: :feature do
         expect(page).to have_content(I18n.t('blacklight.account.renew_fail'))
       end
 
+      it "returns a failure message when there's a connection error" do
+        stub_request(:post, "#{ENV['voyager_api_base']}/vxws/RenewService")
+          .to_raise(Faraday::Error::ConnectionFailed)
+        check('select-all-renew')
+        click_button('Renew selected items')
+        wait_for_ajax
+        expect(page).to have_content(I18n.t('blacklight.account.renew_fail'))
+      end
+
       it 'but no items are selected for renewal' do
         click_button('Renew selected items')
         wait_for_ajax

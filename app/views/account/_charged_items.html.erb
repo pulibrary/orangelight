@@ -1,4 +1,4 @@
-<% if (!@account.charged_items.nil?) %>
+<% if (@account && !@account.charged_items.nil?) %>
   <%= form_tag('/account/renew', remote: true, id: "item-renew", class: "table--overflow") do %>
     <table class="table table-striped table-bordered account--charged_items">
       <thead>
