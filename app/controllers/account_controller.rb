@@ -22,7 +22,7 @@ class AccountController < ApplicationController
     respond_to do |format|
       if params[:renew_items].nil?
         format.js { flash.now[:error] = I18n.t('blacklight.account.renew_no_items') }
-      elsif !@account.nil?
+      elsif @account
         if @account.failed_renewals?
           format.js { flash.now[:alert] = I18n.t('blacklight.account.renew_partial_fail') }
         else
