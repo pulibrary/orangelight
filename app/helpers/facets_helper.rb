@@ -16,7 +16,7 @@ module FacetsHelper
   end
 
   def pivot_facet_child_in_params?(field, item, pivot_in_params = false)
-    field = item.field if item && item.respond_to?(:field)
+    field = item.field if item&.respond_to?(:field)
 
     value = facet_value_for_facet_item(item)
 
@@ -28,7 +28,7 @@ module FacetsHelper
   end
 
   def pivot_facet_in_params?(field, item)
-    field = item.field if item && item.respond_to?(:field)
+    field = item.field if item&.respond_to?(:field)
 
     value = facet_value_for_facet_item(item)
     params[:f] && params[:f][field] && params[:f][field].include?(value)

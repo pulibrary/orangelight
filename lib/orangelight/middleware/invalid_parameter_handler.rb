@@ -14,7 +14,7 @@ module Orangelight
         raise bad_request_error if raise_error?(bad_request_error.message)
 
         Rails.logger.error "Invalid parameters passed in the request: #{bad_request_error} within the environment #{@request.inspect}"
-        return bad_request_response(env)
+        bad_request_response(env)
       end
 
       private
