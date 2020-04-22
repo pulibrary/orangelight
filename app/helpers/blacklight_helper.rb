@@ -124,7 +124,7 @@ module BlacklightHelper
   end
 
   def cjk_unigrams_size(str)
-    if str && str.is_a?(String)
+    if str&.is_a?(String)
       str.scan(/\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/).size
     else
       0

@@ -4,10 +4,10 @@ require 'rails_helper'
 
 RSpec.describe CourseReserveRepository do
   describe '.all' do
+    subject(:repository) { described_class.all }
     before do
       stub_all_query
     end
-    subject(:repository) { described_class.all }
 
     it 'returns a relation of all available course reserves' do
       expect(repository.to_a.length).to eq 2
