@@ -16,6 +16,6 @@ system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_subjects RESTART IDENTITY;"
 system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_call_numbers RESTART IDENTITY;"))
 system(%Q(#{sql_command} "\\copy orangelight_names(sort,count,label,dir) from 'spec/fixtures/authors.sorted' CSV;"))
 system(%Q(#{sql_command} "\\copy orangelight_name_titles(sort,count,label,dir) from 'spec/fixtures/name_titles.sorted' CSV;"))
-system(%Q(#{sql_command} "\\copy orangelight_subjects(sort,count,label,dir) from 'spec/fixtures/subjects.sorted' CSV;"))
+system(%Q(#{sql_command} "\\copy orangelight_subjects(sort,count,label,dir,vocabulary) from 'spec/fixtures/subjects.sorted' CSV;"))
 system(%Q(#{sql_command} "\\copy orangelight_call_numbers(sort,label,dir,scheme,title,author,date,bibid,holding_id,location) from 'spec/fixtures/call_numbers.sorted' CSV;"))
 
