@@ -42,14 +42,7 @@ class CatalogController < ApplicationController
 
     config.numismatics_search ||= Blacklight::OpenStructWithHashAccess.new
     config.numismatics_search[:facet_fields] ||= %w[issue_metal_s issue_place_s
-      issue_denomination_s issue_ruler_s issue_artists_s find_place_s issue_references_s accession_info_s
-      analysis_s counter_stamp_s die_axis_s find_date_s find_description_s find_feature_s find_locus_s
-      find_number_s issue_color_s issue_edge_s issue_era_s issue_master_s issue_object_type_s issue_obverse_attributes_s
-      issue_obverse_figure_description_s issue_obverse_figure_relationship_s issue_obverse_figure_s issue_obverse_legend_s
-      issue_obverse_orientation_s issue_obverse_part_s issue_obverse_symbol_s issue_reverse_attributes_s
-      issue_reverse_figure_description_s issue_reverse_figure_relationship_s issue_reverse_figure_s issue_reverse_legend_s
-      issue_reverse_orientation_s issue_reverse_part_s issue_reverse_symbol_s issue_ruler_s issue_series_s issue_shape_s
-      issue_workshop_s size_s technique_s weight_s]
+      issue_denomination_s issue_ruler_s issue_artists_s find_place_s accession_info_s issue_object_type_s]
 
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
 
