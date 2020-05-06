@@ -41,8 +41,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]['f.language_facet.facet.sort'] ||= 'index'
 
     config.numismatics_search ||= Blacklight::OpenStructWithHashAccess.new
-    config.numismatics_search[:facet_fields] ||= %w[issue_metal_s issue_place_s
-      issue_denomination_s issue_ruler_s issue_artists_s find_place_s accession_info_s issue_object_type_s]
+    config.numismatics_search[:facet_fields] ||= %w[issue_metal_s issue_city_s issue_state_s issue_region_s issue_denomination_s issue_ruler_s issue_artists_s find_place_s accession_info_s issue_object_type_s]
 
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
 
@@ -155,7 +154,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'issue_number_s', label: 'Issue', include_in_request: false
     config.add_facet_field 'issue_monogram_title_s', label: 'Monogram', include_in_request: false
     config.add_facet_field 'issue_references_s', label: 'References', include_in_request: false
-    config.add_facet_field 'accession_info_s', label: 'Accession info', include_in_request: false
+    config.add_facet_field 'accession_info_s', label: 'Donor', include_in_request: false
     config.add_facet_field 'analysis_s', label: 'Analysis', include_in_request: false
     config.add_facet_field 'counter_stamp_s', label: 'Counter Stamp', include_in_request: false
     config.add_facet_field 'die_axis_s', label: 'Die Axis', include_in_request: false
@@ -171,7 +170,9 @@ class CatalogController < ApplicationController
     config.add_facet_field 'issue_era_s', label: 'Era', include_in_request: false
     config.add_facet_field 'issue_master_s', label: 'Master', include_in_request: false
     config.add_facet_field 'issue_metal_s', label: 'Metal', include_in_request: false
-    config.add_facet_field 'issue_place_s', label: 'Place', include_in_request: false
+    config.add_facet_field 'issue_city_s', label: 'City', include_in_request: false
+    config.add_facet_field 'issue_state_s', label: 'State', include_in_request: false
+    config.add_facet_field 'issue_region_s', label: 'Region', include_in_request: false
     config.add_facet_field 'issue_object_type_s', label: 'Object Type', include_in_request: false
     config.add_facet_field 'issue_obverse_attributes_s', label: 'Obverse Attributes', include_in_request: false
     config.add_facet_field 'issue_obverse_figure_description_s', label: 'Obverse Figure Description', include_in_request: false
@@ -385,7 +386,9 @@ class CatalogController < ApplicationController
     config.add_show_field 'issue_era_s', label: 'Era', helper_method: :link_to_search_value
     config.add_show_field 'issue_master_s', label: 'Master', helper_method: :link_to_search_value
     config.add_show_field 'issue_metal_s', label: 'Metal', helper_method: :link_to_search_value
-    config.add_show_field 'issue_place_s', label: 'Place', helper_method: :link_to_search_value
+    config.add_show_field 'issue_city_s', label: 'City', helper_method: :link_to_search_value
+    config.add_show_field 'issue_state_s', label: 'State', helper_method: :link_to_search_value
+    config.add_show_field 'issue_region_s', label: 'Region', helper_method: :link_to_search_value
     config.add_show_field 'issue_object_type_s', label: 'Object Type', helper_method: :link_to_search_value
     config.add_show_field 'issue_obverse_attributes_s', label: 'Obverse Attributes', helper_method: :link_to_search_value
     config.add_show_field 'issue_obverse_figure_description_s', label: 'Obverse Figure Description', helper_method: :link_to_search_value
