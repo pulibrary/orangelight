@@ -42,7 +42,7 @@ class CatalogController < ApplicationController
 
     config.numismatics_search ||= Blacklight::OpenStructWithHashAccess.new
     config.numismatics_search[:facet_fields] ||= %w[issue_metal_s issue_city_s issue_state_s issue_region_s issue_denomination_s
-                                                    issue_ruler_s issue_artists_s find_place_s accession_info_s issue_object_type_s]
+                                                    issue_ruler_s issue_artists_s find_place_s donor_s issue_object_type_s]
 
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
 
@@ -156,7 +156,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'issue_number_s', label: 'Issue', include_in_request: false
     config.add_facet_field 'issue_monogram_title_s', label: 'Monogram', include_in_request: false
     config.add_facet_field 'issue_references_s', label: 'References', include_in_request: false
-    config.add_facet_field 'accession_info_s', label: 'Donor', include_in_request: false
+    config.add_facet_field 'donor_s', label: 'Donor', include_in_request: false
     config.add_facet_field 'analysis_s', label: 'Analysis', include_in_request: false
     config.add_facet_field 'counter_stamp_s', label: 'Counter Stamp', include_in_request: false
     config.add_facet_field 'die_axis_s', label: 'Die Axis', include_in_request: false
@@ -372,7 +372,7 @@ class CatalogController < ApplicationController
     # Numismatics fields
     config.add_show_field 'issue_number_s', label: 'Issue', helper_method: :link_to_search_value, if: false
     config.add_show_field 'issue_references_s', label: 'References', helper_method: :link_to_search_value, if: false
-    config.add_show_field 'accession_info_s', label: 'Donor', helper_method: :link_to_search_value
+    config.add_show_field 'donor_s', label: 'Donor', helper_method: :link_to_search_value
     config.add_show_field 'analysis_s', label: 'Analysis', helper_method: :link_to_search_value
     config.add_show_field 'counter_stamp_s', label: 'Counter Stamp', helper_method: :link_to_search_value
     config.add_show_field 'die_axis_s', label: 'Die Axis', helper_method: :link_to_search_value
