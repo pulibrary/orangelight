@@ -20854,7 +20854,7 @@
             "In the Library"
         ],
         "accession_info_s": [
-            "Gift of: Antioch Excavation, Princeton, 1/1/1939"
+            "Allan Marquand"
         ],
         "advanced_location_s": [
             "num"
@@ -21731,7 +21731,7 @@
             "In the Library"
         ],
         "accession_info_s": [
-            "Gift of: Antioch Excavation, Princeton, 1/1/1939"
+            "Allan Marquand"
         ],
         "advanced_location_s": [
             "num"
@@ -22066,6 +22066,15 @@ null
 "Tyre, Phoenicia, Syria"
 ],
 "issue_place_sort": "Tyre, Phoenicia, Syria",
+"issue_city_s": [
+"Tyre"
+],
+"issue_state_s": [
+"Phoenicia"
+],
+"issue_region_s": [
+"Syria"
+],
 "issue_obverse_figure_s": [
 "Melqarth"
 ],
@@ -22100,6 +22109,9 @@ null
 "issue_references_s": [
 "BMC.Phoen Tyre 140",
 "Sear  5191v"
+],
+"issue_artists_s": [
+"Augustin Dupre"
 ],
 "issue_references_sort": "BMC.Phoen Tyre 140",
 "issue_monogram_title_s": [
