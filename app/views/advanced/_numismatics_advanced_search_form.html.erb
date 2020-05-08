@@ -8,6 +8,8 @@
     <% end %>
     <div class="col-md-5">
         <%= render_hash_as_hidden_fields(search_state.params_for_search(advanced_search_context.except(:model, :rpp, :start)).except(:f_inclusive)) %>
+        <%# Indicate that this a numismatics advanced search %>
+        <%= render_hash_as_hidden_fields({'advanced_type' => 'numismatics'}) %>
         <div>
           <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_object_type_s' } %>
           <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_denomination_s' } %>

@@ -23,4 +23,22 @@ describe 'advanced searching' do
     expect(page).to have_selector('label', exact_text: 'Publication date range (starting year)')
     expect(page).to have_selector('label', exact_text: 'Publication date range (ending year)')
   end
+
+  context 'with a numismatics advanced search type' do
+    it 'provides labels to numismatics form elements' do
+      visit '/numismatics'
+      expect(page).to have_selector('label', exact_text: 'Object Type')
+      expect(page).to have_selector('label', exact_text: 'Denomination')
+      expect(page).to have_selector('label', exact_text: 'Metal')
+      expect(page).to have_selector('label', exact_text: 'City')
+      expect(page).to have_selector('label', exact_text: 'State')
+      expect(page).to have_selector('label', exact_text: 'Region')
+      expect(page).to have_selector('label', exact_text: 'Ruler')
+      expect(page).to have_selector('label', exact_text: 'Artist')
+      expect(page).to have_selector('label', exact_text: 'Find Place')
+      expect(page).to have_selector('label', exact_text: 'Donor')
+      expect(page).to have_selector('label', exact_text: 'Year')
+      expect(page).to have_selector('label', exact_text: 'Keyword')
+    end
+  end
 end
