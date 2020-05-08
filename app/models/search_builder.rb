@@ -10,11 +10,23 @@ class SearchBuilder < Blacklight::SearchBuilder
                                      cjk_mm wildcard_char_strip excessive_paging_error
                                      only_home_facets left_anchor_escape_whitespace
                                      course_reserve_filters series_title_results
-                                     pul_holdings html_facets]
+                                     pul_holdings html_facets numismatics_facets numismatics_advanced]
 
   def cleanup_boolean_operators(solr_parameters)
     return add_advanced_parse_q_to_solr(solr_parameters) if run_advanced_parse?(solr_parameters)
     solr_parameters[:q] = cleaned_query(solr_parameters[:q])
+  end
+
+  # Only search for coin records when querying with the numismatics advanced search
+  def numismatics_advanced(solr_parameters)
+    return unless blacklight_params[:advanced_type] == 'numismatics'
+    solr_parameters[:fq] << "format:Coin"
+  end
+
+  def numismatics_facets(solr_parameters)
+    return unless blacklight_params[:action] == 'numismatics'
+    blacklight_config.advanced_search[:form_solr_parameters]['facet.field'] = blacklight_config.numismatics_search['facet_fields']
+    solr_parameters['facet.field'] = blacklight_config.numismatics_search['facet_fields']
   end
 
   def cleaned_query(query)

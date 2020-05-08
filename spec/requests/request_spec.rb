@@ -542,4 +542,12 @@ describe 'blacklight tests' do
       expect(response).to redirect_to('/account')
     end
   end
+
+  describe 'numismatics advanced search' do
+    it 'only returns coin records' do
+      get '/catalog.json?advanced_type=numismatics&q=*'
+      r = JSON.parse(response.body)
+      expect(r['data'].length).to eq 4
+    end
+  end
 end

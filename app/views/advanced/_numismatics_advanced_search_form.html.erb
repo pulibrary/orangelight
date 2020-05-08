@@ -1,0 +1,62 @@
+<%= form_tag search_catalog_path, :class => 'advanced form-horizontal', :method => :get do  %>
+  <div class="advanced row">
+    <% unless (search_context_str = render_search_to_s(advanced_search_context)).blank? %>
+      <div class="constraints well search_history">
+        <h4 class="advanced-search-context"><%= t 'blacklight_advanced_search.form.search_context' %></h4>
+        <%= search_context_str %>
+      </div>
+    <% end %>
+    <div class="col-md-5">
+        <%= render_hash_as_hidden_fields(search_state.params_for_search(advanced_search_context.except(:model, :rpp, :start)).except(:f_inclusive)) %>
+        <%# Indicate that this a numismatics advanced search %>
+        <%= render_hash_as_hidden_fields({'advanced_type' => 'numismatics'}) %>
+        <div>
+          <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_object_type_s' } %>
+          <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_denomination_s' } %>
+          <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_metal_s' } %>
+          <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_city_s' } %>
+          <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_state_s' } %>
+          <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_region_s' } %>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <%= render_hash_as_hidden_fields(search_state.params_for_search(advanced_search_context.except(:model, :rpp, :start)).except(:f_inclusive)) %>
+        <div>
+          <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_ruler_s' } %>
+          <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_artists_s' } %>
+          <%= render partial: 'facet_as_select', locals: { facet_field_name: 'find_place_s' } %>
+          <%= render partial: 'facet_as_select', locals: { facet_field_name: 'donor_s' } %>
+        </div>
+        <%# Publication Date is a range input %>
+        <% pub_date = facet_configuration_for_field('pub_date_start_sort') %>
+        <div class="form-group advanced-search-facet row">
+          <%= label_tag pub_date.field.parameterize, :class => "col-sm-4 control-label advanced-facet-label" do %>
+              Year
+          <% end %>
+          <div class="col-sm-8 range_limit">
+            <label for="range_pub_date_start_sort_begin" class="sr-only">date range (starting year)</label>
+            <%= render_range_input(pub_date.field, :begin) %> –
+            <label for="range_pub_date_start_sort_end" class="sr-only">date range (ending year)</label>
+            <%= render_range_input(pub_date.field, :end) %>
+          </div>
+        </div>
+        <div class="form-group advanced-search-facet row">
+            <%= select_tag('f1', options_for_select(advanced_key_value, guided_field(:f1, 'all_fields')), style: "display: none;", class: "search_field") %>
+            <label for="q1" class="col-sm-4 control-label advanced-facet-label">Keyword</label>
+            <label for='q1' class='sr-only'>Keyword search</label>
+          <div class="col-sm-8">
+            <%= text_field_tag "q1", label_tag_default_for(:q1),
+              class: 'form-control',
+              autocorrect: "off",
+              autocapitalize: "off",
+              autocomplete: "off",
+              spellcheck: "false" %>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="search-submit-buttons clearfix col-sm-7">
+    <%= render 'advanced_search_submit_btns' %>
+  </div>
+<% end %>

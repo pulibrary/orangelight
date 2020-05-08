@@ -240,4 +240,14 @@ module BlacklightHelper
     label = index_presenter(doc).label(field, opts).truncate(length).html_safe
     link_to label, url_for_document(doc), document_link_params(doc, opts)
   end
+
+  # Links to correct advanced search page based on advanced_type parameter value
+  def edit_search_link
+    url = blacklight_advanced_search_engine.advanced_search_path(params.permit!.except(:controller, :action).to_h)
+    if params[:advanced_type] == 'numismatics'
+      url.gsub('/advanced', '/numismatics')
+    else
+      url
+    end
+  end
 end

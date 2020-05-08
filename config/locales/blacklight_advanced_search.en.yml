@@ -4,6 +4,7 @@ en:
     any: any
     form:
       title: Advanced Search
+      numismatics_title: Numismatics Search
       search_context: Within search
       limit_criteria_heading_html: "Limit results by"
       query_criteria_heading_html: "Find items that match %{select_menu} of"
