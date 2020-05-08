@@ -19,7 +19,7 @@
           <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_region_s' } %>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-7">
         <%= render_hash_as_hidden_fields(search_state.params_for_search(advanced_search_context.except(:model, :rpp, :start)).except(:f_inclusive)) %>
         <div>
           <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_ruler_s' } %>
