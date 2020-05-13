@@ -280,6 +280,38 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       end
     end
 
+    context 'with non-Voyager holdings' do
+      let(:id) { 'numismatics' }
+      let(:location) do
+        {
+          'label': 'Numismatics Collection',
+          'code': 'num',
+          'aeon_location': true,
+          'recap_electronic_delivery_location': false,
+          'open': false,
+          'requestable': true,
+          'always_requestable': true,
+          'circulates': false,
+          'url': 'https://bibdata.princeton.edu/locations/holding_locations/num.json',
+          'library': {
+            'label': 'Special Collections ',
+            'code': 'rare',
+            'order': 2
+          },
+          'holding_library': nil,
+          'hours_location': nil
+        }.with_indifferent_access
+      end
+
+      before do
+        allow(adapter).to receive(:voyager_holding?).and_return(false)
+      end
+
+      it 'generates a "service-always-requestable" class' do
+        expect(css_class).to eq 'service-always-requestable'
+      end
+    end
+
     context 'with an aeon holding' do
       let(:location) do
         {

@@ -135,7 +135,7 @@ class HoldingRequestsAdapter
   # Determine whether or not the holding is for a repository item
   # @return [TrueClass, FalseClass]
   def repository_holding?(holding)
-    holding['dspace']
+    holding['dspace'] || holding['location_code'] == 'num'
   end
 
   # Determine whether or not the holding is for a SCSB items with ReCAP
@@ -208,7 +208,7 @@ class HoldingRequestsAdapter
   # @return [TrueClass, FalseClass]
   def voyager_holding?(holding_id)
     return false if @document.fetch(:id, '').start_with?('SCSB')
-    return false if %w[thesis visuals].include? holding_id
+    return false if %w[thesis numismatics visuals].include? holding_id
     true
   end
 

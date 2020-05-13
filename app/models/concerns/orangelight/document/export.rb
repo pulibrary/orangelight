@@ -32,7 +32,7 @@ module Orangelight
 
         def voyager?
           return false if fetch(:id, '').start_with?('SCSB')
-          return false if %w[thesis visuals].include? holding_id
+          return false if %w[thesis numismatics visuals].include? holding_id
           true
         end
     end
