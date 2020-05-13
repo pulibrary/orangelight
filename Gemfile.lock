@@ -39,8 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 55d49bc1492cf412660b34e5d82968dfb1ef6f83
-  branch: allow_coins
+  revision: 07fa74567db827362bf4373a2520e50bb3781bcf
   specs:
     requests (0.0.2)
       bootstrap

@@ -267,7 +267,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param holding_id [String]
   # @return [String] the CSS class
   def self.show_request(adapter, location, holding_id)
-    if requestable?(adapter, holding_id, location) && (!thesis?(adapter, holding_id) || !numismatics?(holding_id))
+    if requestable?(adapter, holding_id, location) && !thesis?(adapter, holding_id) || numismatics?(holding_id)
       'service-always-requestable'
     else
       'service-conditional'

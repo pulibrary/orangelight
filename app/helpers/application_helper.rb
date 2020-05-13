@@ -199,7 +199,7 @@ module ApplicationHelper
           info << links.shift.html_safe
         end
       else
-        if holding['dspace']
+        if holding['dspace'] || holding['location_code'] == 'num'
           check_availability = false
           info << content_tag(:span, 'On-site access', class: 'availability-icon badge badge-success', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe if aeon_location?(location)
