@@ -208,7 +208,7 @@ class HoldingRequestsAdapter
   # @return [TrueClass, FalseClass]
   def voyager_holding?(holding_id)
     return false if @document.fetch(:id, '').start_with?('SCSB')
-    return false if %w[thesis visuals].include? holding_id
+    return false if %w[thesis numismatics visuals].include? holding_id
     true
   end
 

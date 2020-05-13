@@ -257,13 +257,17 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     holding_id == 'thesis' && adapter.pub_date > 2012
   end
 
+  def self.numismatics?(holding_id)
+    holding_id == 'numismatics'
+  end
+
   # Generate the CSS class for holding based upon its location and ID
   # @param adapter [HoldingRequestsAdapter] adapter for the Solr Document and Bibdata
   # @param location [Hash] location information
   # @param holding_id [String]
   # @return [String] the CSS class
   def self.show_request(adapter, location, holding_id)
-    if requestable?(adapter, holding_id, location) && !thesis?(adapter, holding_id)
+    if requestable?(adapter, holding_id, location) && (!thesis?(adapter, holding_id) || !numismatics?(holding_id))
       'service-always-requestable'
     else
       'service-conditional'
