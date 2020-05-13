@@ -135,7 +135,7 @@ class HoldingRequestsAdapter
   # Determine whether or not the holding is for a repository item
   # @return [TrueClass, FalseClass]
   def repository_holding?(holding)
-    holding['dspace']
+    holding['dspace'] || holding['location_code'] == 'num'
   end
 
   # Determine whether or not the holding is for a SCSB items with ReCAP
