@@ -11,7 +11,15 @@ RSpec.describe HathiUrl do
   context 'with a valid oclc number' do
     let(:oclc_id) { '42579288' }
     it 'returns hathi item url' do
-      hathi_url = described_class.new(oclc_id: oclc_id, isbn: nil, lccn: nil)
+      hathi_url = described_class.new(oclc_id: oclc_id)
+      expect(hathi_url.url).to eq("#{hathi_base_url}mdp.39015047450062")
+    end
+  end
+
+  context 'with a valid hathi identifier' do
+    let(:hathi_identifier) { 'mdp.39015047450062' }
+    it 'returns hathi item url' do
+      hathi_url = described_class.new(oclc_id: nil, hathi_identifier: hathi_identifier)
       expect(hathi_url.url).to eq("#{hathi_base_url}mdp.39015047450062")
     end
   end
@@ -45,28 +53,8 @@ RSpec.describe HathiUrl do
   context 'with an invalid oclc number' do
     let(:oclc_id) { '42579288x' }
     it 'returns nil' do
-      hathi_url = described_class.new(oclc_id: oclc_id, isbn: nil, lccn: nil)
+      hathi_url = described_class.new(oclc_id: oclc_id)
       expect(hathi_url.url).to be_nil
-    end
-  end
-
-  context 'with a valid isbn number' do
-    let(:isbn) { '1576070751' }
-    it 'returns hathi item url' do
-      pending "update to hathi to allow this match"
-      hathi_url = described_class.new(oclc_id: nil, isbn: isbn, lccn: nil)
-
-      expect(hathi_url.url).to eq("#{hathi_base_url}mdp.39015047450062")
-    end
-  end
-
-  context 'with a valid isbn number' do
-    let(:lccn) { '99047618' }
-    it 'returns hathi item url' do
-      pending "update to hathi to allow this match"
-      hathi_url = described_class.new(oclc_id: nil, isbn: nil, lccn: lccn)
-
-      expect(hathi_url.url).to eq("#{hathi_base_url}mdp.39015047450062")
     end
   end
 end

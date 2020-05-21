@@ -648,10 +648,7 @@ class CatalogController < ApplicationController
 
   def show
     return_val = super
-    unless params[:id].upcase.starts_with?("SCSB")
-      @hathi_url = HathiUrl.new(oclc_id: @document["oclc_s"]&.first, isbn: @document["isbn_s"]&.first,
-                                lccn: @document["lccn_s"]&.first).url
-    end
+    @hathi_url = HathiUrl.new(hathi_identifier: @document["hathi_identifier_s"]&.first).url unless params[:id].upcase.starts_with?("SCSB")
     return_val
   end
 end

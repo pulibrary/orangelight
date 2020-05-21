@@ -2,18 +2,16 @@
 class HathiUrl
   attr_reader :url, :maximum_retries, :sleep_duration
 
-  # rubocop:disable Lint/UnusedMethodArgument
-  def initialize(oclc_id:, isbn: nil, lccn: nil, maximum_retries: 2, sleep_duration: 10)
+  def initialize(oclc_id: nil, hathi_identifier: nil, maximum_retries: 2, sleep_duration: 10)
     @retry_count = 0
     @maximum_retries = maximum_retries
     @sleep_duration = sleep_duration
-    @url = build_hathi_url(key: 'oclc', id: oclc_id)
-    # only match on oclc for the moment
-    # @url = build_hathi_url(key: 'oclc', id: oclc_id) ||
-    #        build_hathi_url(key: 'isbn', id: isbn) ||
-    #        build_hathi_url(key: 'lccn', id: lccn)
+    if hathi_identifier.present?
+      @url = hathi_url(hathi_identifier)
+    elsif oclc_id.present?
+      @url = build_hathi_url(key: 'oclc', id: oclc_id)
+    end
   end
-  # rubocop:enable Lint/UnusedMethodArgument
 
   private
 

@@ -789,6 +789,9 @@
             "Guide to scientific instruments",
             "AAAS observer"
         ],
+        "hathi_identifier_s": [
+            "mdp.39015015749305"
+        ],
         "holdings_1display": [
             "{\"977093\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"copy_number\":\"1\",\"call_number\":\"Q1 .S3543\",\"call_number_browse\":\"Q1 .S3543\",\"location_has\":[\"New ser., v. 23, no. 575 (Jan. 5, 1906)-v. 352, no. 6289 (May 27, 2016)\",\"LACKS: no. 2221, 4421, 4488, 4526, 4986-88, 6227\",\"CURRENT ISSUES IN: DeLong Room (RACK-PR). Firestone\"]},\"977094\":{\"location\":\"ReCAP - Use in Firestone Microforms only\",\"library\":\"ReCAP\",\"location_code\":\"rcppf\",\"copy_number\":\"1\",\"call_number\":\"MICROFILM S01159\",\"call_number_browse\":\"MICROFILM S01159\",\"location_has\":[\"[Vol. 1], no. 1 (Feb. 9, 1883)-v. 23, no. 581 (Mar. 23, 1894); new ser., v. 1, no. 1 (Jan. 4, 1895)-v. 22, no. 574 (Dec. 29, 1905)\",\"Positive service microfilm\"]},\"977095\":{\"location\":\"Harold P. Furth Plasma Physics Library - Periodicals\",\"library\":\"Harold P. Furth Plasma Physics Library\",\"location_code\":\"pplps\",\"copy_number\":\"1\",\"call_number\":\"Q1 .S35\",\"call_number_browse\":\"Q1 .S35\",\"location_has\":[\"Vol. 191, no. 4222 (1976)-v. 290, no. 5495 (17 Nov. 2000)\",\"LACKS: no. 4307, 4350; v. 207-210; no. 4554, 4727-32, 4738, 4777-83, 4883-84, 5034-46, 5085-90, 5102, 5185, 5240, 5242, 5260  [may lack a few other early issues]\"]},\"977096\":{\"location\":\"Lewis Library - Serials (shelved by serial title)\",\"library\":\"Lewis Library\",\"location_code\":\"sciss\",\"call_number\":\"8001.846\",\"call_number_browse\":\"8001.846\",\"location_has\":[\"Vol. 3 (1884)-v. 7 (1886) ; new ser., v. 1, no. 1 (Jan. 4, 1895)-v. 354, no. 6319 (23 Dec. 2016)\",\"LACKS: v. 139; v. 351, no. 6273-76; v. 353, no. 6299-6302\",\"CURRENT ISSUES IN: Lewis Library (SCI)\"]},\"977097\":{\"location\":\"ReCAP - Lewis Library use only\",\"library\":\"ReCAP\",\"location_code\":\"rcppn\",\"copy_number\":\"1\",\"call_number\":\"8001.846\",\"call_number_browse\":\"8001.846\",\"location_has\":[\"Vol. 91 (Jan. 1940)-v. 353, no. 6307 (30 Sept. 2016)\",\"CURRENT ISSUES IN: Lewis Library (SCI)\"]},\"977099\":{\"location\":\"Stokes Library - Periodicals\",\"library\":\"Stokes Library\",\"location_code\":\"spiaps\",\"copy_number\":\"1\",\"call_number\":\"8001.846\",\"call_number_browse\":\"8001.846\",\"location_has\":[\"CURRENT YEAR ONLY IN: (SPIA)\"]},\"977101\":{\"location\":\"Engineering Library - Serials\",\"library\":\"Engineering Library\",\"location_code\":\"stss\",\"copy_number\":\"1\",\"call_number\":\"Q1 .S35\",\"call_number_browse\":\"Q1 .S35\",\"location_has\":[\"CURRENT YEAR ISSUES ONLY\"]},\"977105\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"copy_number\":\"2\",\"call_number\":\"Q1 .S3543\",\"call_number_browse\":\"Q1 .S3543\",\"location_has\":[\"COPY 2:  New ser., v. 23, no 575 (Jan. 5, 1906)-v. 166\",\"LACKS: many issues in v. 23-110; v. 111-125; v. 128; v. 134-137;v. 139-142; v. 144-145; v. 146, no. ?; v. 147-163\"]},\"977106\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"copy_number\":\"3\",\"call_number\":\"Q1 .S3543\",\"call_number_browse\":\"Q1 .S3543\",\"location_has\":[\"COPY 3: Vol. 63, no. 1618-v. 90, no. 2348\"]},\"3555490\":{\"location\":\"ReCAP\",\"library\":\"ReCAP\",\"location_code\":\"rcppa\",\"copy_number\":\"1\",\"call_number\":\"Q1 .S35\",\"call_number_browse\":\"Q1 .S35\",\"location_has\":[\"Vol. 167 (1970)-v. 266, no. 2065 (23 Dec. 1994)\",\"LACKS: many earlier issues\"]},\"8684831\":{\"location\":\"Online - *ONLINE*\",\"library\":\"Online\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"}}"
         ],
@@ -20472,6 +20475,9 @@
         "frequency_display": [
             "Weekly"
         ],
+        "hathi_identifier_s": [
+            "uc1.c2754878"
+        ],
         "has_supplement_display": [
             "Nature. Supplement"
         ],
@@ -21351,6 +21357,9 @@
         ],
         "has_supplement_display": [
             "Nature. Supplement"
+        ],
+        "hathi_identifier_s": [
+            "uc1.c2754878"
         ],
         "holdings_1display": [
             "{\"464634\":{\"location\":\"Lewis Library - Serials (shelved by serial title)\",\"library\":\"Lewis Library\",\"location_code\":\"sciss\",\"copy_number\":\"1\",\"call_number\":\"8001.673\",\"call_number_browse\":\"8001.673\",\"location_has\":[\"Vol. 1, no. 1 (Nov. 4, 1869)-v. 557, issue no. 7707 (31 May 2018)\",\"LACKS: no. 7434, 7544\",\"CURRENT ISSUES IN: Lewis Library (SCI)\"]},\"464638\":{\"location\":\"Engineering Library - Serials\",\"library\":\"Engineering Library\",\"location_code\":\"stss\",\"copy_number\":\"1\",\"call_number\":\"Q1 .N3\",\"call_number_browse\":\"Q1 .N3\",\"location_has\":[\"LATEST YEAR ONLY RETAINED\"]},\"464640\":{\"location\":\"ReCAP - Lewis Library use only\",\"library\":\"ReCAP\",\"location_code\":\"rcppn\",\"call_number\":\"Q1 .N3\",\"call_number_browse\":\"Q1 .N3\",\"location_has\":[\"Vol. 9 (Nov. 1873)-v. 553, issue no. 7689 (25 Jan. 2018)\",\"LACKS: v. 12-16; v. 43-81; no. 7024, 7542, 7544\",\"CURRENT ISSUES IN: Lewis Library (SCI)\"]},\"3538795\":{\"location\":\"Fine Annex\",\"library\":\"Fine Annex\",\"location_code\":\"anxb\",\"copy_number\":\"1\",\"call_number\":\"Q1 .N3\",\"call_number_browse\":\"Q1 .N3\",\"location_has\":[\"Vol. 212, no. 5057 (Oct. 1966)-v. 342, no. 6252 (Dec. 21/28, 1989)\",\"LACKS: v. 221, no. 5175-5178\"]}}"
