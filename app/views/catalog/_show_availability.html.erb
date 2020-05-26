@@ -1,4 +1,9 @@
 <% online, physical = holding_request_block(document) %>
+<% if current_user&.can_pickup? %>
+  <% physical = physical.gsub(">Firestone Request</a>",">Request Pick-up</a>").html_safe %>
+<% else %>
+  <% physical = physical.gsub(">Firestone Request</a>",">Request</a>").html_safe %>
+<% end %>
 <h2 class="sr-only">Availability</h2>
 <% unless online.blank? &&  @hathi_url.blank? %>
   <div class="availability--online">

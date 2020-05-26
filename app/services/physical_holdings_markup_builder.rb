@@ -297,6 +297,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   def self.request_label(location_rules)
     if aeon_location?(location_rules)
       'Reading Room Request'
+    elsif location_rules['library']['code'] == 'firestone' && location_rules["circulates"] == true
+      'Firestone Request'
     else
       'Request'
     end
