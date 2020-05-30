@@ -41,5 +41,10 @@ module Orangelight
     config.x.after_sign_out_url = 'https://fed.princeton.edu/cas/logout'
 
     config.robots = OpenStruct.new(config_for(:robots))
+
+    config.pilot_users = []
+    pilot_users = config_for(:pilot_users)
+    pilot_users_eligible = pilot_users["eligible"]
+    config.pilot_users = pilot_users_eligible.split if pilot_users_eligible
   end
 end

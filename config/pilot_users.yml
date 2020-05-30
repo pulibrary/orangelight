@@ -1,0 +1,11 @@
+development:
+  eligible: <%= ENV["PILOT_USERS"] || "" %>
+
+test:
+  eligible: <%= ENV["PILOT_USERS"] || "" %>
+
+production:
+  eligible: <%= ENV["PILOT_USERS"] || "" %>
+
+staging:
+  eligible: <%= ENV["PILOT_USERS"] || "" %>
