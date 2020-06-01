@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: aa193410e6416f5e42ec8ebab035e2fa8a0b6235
+  revision: 1dbf70916eaa7af297e8dc08cf7f08f9b4ef05c5
   specs:
     requests (0.0.2)
       bootstrap
