@@ -39,7 +39,8 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: aa193410e6416f5e42ec8ebab035e2fa8a0b6235
+  revision: 9e88317cb41141d747c604b7e8ac9a3f13ab3d56
+  branch: hold_expiration_date
   specs:
     requests (0.0.2)
       bootstrap
