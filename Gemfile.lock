@@ -39,7 +39,8 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: c14b1a8d06e406e0c97fcb9ab3d46723f025d3ad
+  revision: fc96a6597ff93630f13f907cbedcd5cd1f609260
+  branch: add-library-in-use-status-colun
   specs:
     requests (0.0.2)
       bootstrap
