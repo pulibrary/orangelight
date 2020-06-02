@@ -137,8 +137,8 @@ RAILS_ENV=development bundle exec rake browse:load_all
 
 ## Local development with account/request features
 
-You will need a working local copy of https://github.com/pulibrary/marc_liberation.
-Set the ```bidata_base``` value in your dev environment to point at this version.
+You will need a working local copy of [Bibdata](https://github.com/pulibrary/marc_liberation).
+Start the Bibdata server, and then set the ```bidata_base``` value in OrangeLight's `config/requests.yml` file to the local URL where Bibdata is running (e.g., `http://localhost:{port}`).
 
 ## Running javascript unit tests
 
@@ -153,13 +153,13 @@ Debugging instructions: https://facebook.github.io/jest/docs/en/troubleshooting.
      ```
      config.action_mailer.delivery_method = :smtp
      config.action_mailer.smtp_settings = {
-       :address => "localhost", 
+       :address => "localhost",
        :port => 1025
      }
      ```
 
    * run mail catcher
-     run once 
+     run once
      ```
      gem install mailcatcher
      ```
@@ -167,6 +167,5 @@ Debugging instructions: https://facebook.github.io/jest/docs/en/troubleshooting.
      ```
      mailcatcher
      ```
-   
-     [you can see the mail that has been sent here]( http://localhost:1080/)
 
+     [you can see the mail that has been sent here]( http://localhost:1080/)
