@@ -118,6 +118,28 @@ namespace :cache do
   end
 end
 
+namespace :smtp do
+  desc 'Turn off mail catcher on staging'
+  task :turn_off_mailcatcher do
+    on roles(:mailcatcher) do
+      execute :sed,"'s/^export\ SMTP_HOST=.*/export\ SMTP_HOST=lib-ponyexpr\.princeton\.edu/' app_configs/orangelight > app_configs/orangelight2"
+      execute :sed,"'s/^export\ SMTP_PORT=.*/export\ SMTP_PORT=25/' app_configs/orangelight2 > app_configs/orangelight"
+      execute :rm,"app_configs/orangelight2"
+      invoke "deploy:restart"
+    end
+  end
+
+  desc 'Turn on mail catcher on staging'
+  task :turn_on_mailcatcher do
+    on roles(:mailcatcher) do
+      execute :sed,"'s/^export\ SMTP_HOST=.*/export\ SMTP_HOST=localhost/' app_configs/orangelight > app_configs/orangelight2"
+      execute :sed,"'s/^export\ SMTP_PORT=.*/export\ SMTP_PORT=1025/' app_configs/orangelight2 > app_configs/orangelight"
+      execute :rm,"app_configs/orangelight2"
+      invoke "deploy:restart"
+    end
+  end
+end
+
 namespace :pilot do
   desc 'Set pilot users'
   task :users do
