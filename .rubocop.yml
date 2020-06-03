@@ -55,6 +55,7 @@ Metrics/ClassLength:
     - 'app/services/holding_requests_adapter.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/voyager_patron_client.rb'
+    - 'spec/mailers/previews/*'
 
 Metrics/CyclomaticComplexity:
   Exclude:
@@ -83,6 +84,7 @@ Metrics/LineLength:
     - 'spec/services/online_holdings_markup_builder_spec.rb'
     - 'spec/services/holding_requests_adapter_spec.rb'
     - 'app/repositories/course_reserve_repository.rb'
+    - 'spec/mailers/previews/*'
 
 Metrics/MethodLength:
   Exclude:
@@ -101,6 +103,7 @@ Metrics/MethodLength:
     - 'spec/requests/course_reserve_spec.rb'
     - 'lib/tasks/server.rake'
     - 'lib/orangelight/browse_lists.rb'
+    - 'spec/mailers/previews/*'
 
 Metrics/ModuleLength:
   Exclude:
