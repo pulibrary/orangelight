@@ -203,7 +203,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # TODO: Remove this method once Mudd has re-opened
   def self.mudd_closure_message
     "Mudd Library collections are unavailable until further notice due to
-    a #{link_to('renovation.', mudd_url)}".html_safe
+    a renovation. See our #{link_to('webpage', mudd_url)} for the most current information.".html_safe
   end
 
   # TODO: Remove this method once Mudd has re-opened
