@@ -26,11 +26,6 @@ class User < ApplicationRecord
     provider == 'barcode'
   end
 
-  def can_pickup?
-    pickup_users = Rails.application.config.pilot_users
-    true if pickup_users.include? uid
-  end
-
   # Retrieves a user authenticated using the CAS
   # @param access_token []
   # @return [User,nil]
