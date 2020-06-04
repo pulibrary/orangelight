@@ -9,17 +9,17 @@ div.dataTables_wrapper {
       padding-left: 23px;
     }
   }
-  #DataTables_Table_0_length {
-    text-align: right;
+  div.dataTables_length {
+    text-align: right !important;
   }
-  #DataTables_Table_0_filter {
-    text-align: left;
+  div.dataTables_filter {
+    text-align: left !important;
   }
 }
 
 @media (max-width: 550px) {
 
-  #DataTables_Table_0_filter label {
+  .dataTables_filter label {
     white-space: normal;
   }
 
