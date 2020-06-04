@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: cf70cef98c26d8824a6c55c220a5d4946bd82d7e
+  revision: 745b495c6c99ced8bfc20bbae2c3cddadc808120
   specs:
     requests (0.0.2)
       bootstrap
@@ -49,6 +49,7 @@ GIT
       email_validator
       faraday
       friendly_id (~> 5.1.0)
+      jquery-datatables
       jquery-rails
       lcsort
       openurl (~> 1.0)
