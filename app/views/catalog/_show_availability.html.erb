@@ -5,10 +5,9 @@
   <% physical = physical.gsub(">Firestone Request</a>",">Request</a>").html_safe %>
 <% end %>
 <h2 class="sr-only">Availability</h2>
-<% unless online.blank? &&  @hathi_url.blank? %>
+<% unless online.blank? %>
   <div class="availability--online">
     <h3><%= t('blacklight.holdings.online')  %></h3>
-    <%= render "hathi_online" if @hathi_url.present?%>
     <%= online if online.present? %>
   </div>
 <% end %>
