@@ -91,7 +91,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     end
 
     it 'generates a generic request label' do
-      expect(request_label).to eq 'Request'
+      expect(request_label).to eq 'Request Pick-up or Digitization'
     end
   end
 
