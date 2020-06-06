@@ -140,20 +140,5 @@ namespace :smtp do
   end
 end
 
-namespace :pilot do
-  desc 'Set pilot users'
-  task :users do
-    if ENV["PILOT_USERS"].nil?
-      puts "PILOT_USERS environment variable should be set to run this command"
-      puts "PILOT_USERS=\"kr2 cc62 cac9\" cap staging pilot:users"
-    else
-      on roles(:web) do
-        execute :echo, "export PILOT_USERS=\\\"#{ENV["PILOT_USERS"]}\\\" > app_configs/pilot_user"
-        invoke "deploy:restart"
-      end
-    end
-  end
-end
-
 after 'deploy:reverted', 'sneakers:restart'
 after 'deploy:published', 'sneakers:restart'

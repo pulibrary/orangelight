@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 745b495c6c99ced8bfc20bbae2c3cddadc808120
+  revision: 9379df85d6b59ddb4799114394406edca14ce963
   specs:
     requests (0.0.2)
       bootstrap
@@ -247,12 +247,12 @@ GEM
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
     httpclient (2.8.3)
-    i18n (1.8.2)
+    i18n (1.8.3)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
-    jquery-datatables (1.10.19.1)
+    jquery-datatables (1.10.20)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
