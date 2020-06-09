@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 34b8a7087190b0e620723eff8c81f26bf9992555
+  revision: 5f3032ef7157f7ef7ae4042d533504c89e717b09
   specs:
     requests (0.0.2)
       bootstrap
@@ -224,7 +224,7 @@ GEM
     faraday-cookie_jar (0.0.6)
       faraday (>= 0.7.4)
       http-cookie (~> 1.0.0)
-    ffi (1.13.0)
+    ffi (1.13.1)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     friendly_id (5.1.0)
