@@ -295,7 +295,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param location_rules [Hash] the location for the holding
   # @return [String] the label
   def self.request_label(location_rules)
-    open_libraries = ['firestone', 'annexa', 'recap', 'marquand', 'mendel', 'stokes', 'eastasian']
+    open_libraries = ['firestone', 'annexa', 'recap', 'marquand', 'mendel', 'stokes', 'eastasian', 'architecture']
     if aeon_location?(location_rules)
       'Reading Room Request'
     elsif open_libraries.include?(location_rules['library']['code']) && location_rules["circulates"] == true
