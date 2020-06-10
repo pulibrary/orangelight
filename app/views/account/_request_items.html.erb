@@ -8,8 +8,8 @@
         <tr>
           <th class="hide-print"><label><input type="checkbox" id="select-all-requests"/> <span class="sr-only">Select all</span></label></th>
           <th>Item</th>
-          <th>Request expiration date</th>
-          <th>Pickup location</th>
+          <th>Status</th>
+          <th>Link to Download</th>
         </tr>
       </thead>
       <tbody>
@@ -22,9 +22,9 @@
             </td>
             <td><%= item["LoanTitle"] %> / <%= item["LoanAuthor"] %></td>
             <td>
-              ?
+              <%= item["TransactionStatus"] %>
             </td>
-            <td>Firestone</td>
+            <td><a href="">Download PDF</a></td>
           </tr>
         <% end %>
       </tbody>

@@ -66,6 +66,16 @@ class AccountController < ApplicationController
     end
   end
 
+  def cancel_ill_requests
+    set_patron
+    unless params[:cancel_requests].nil?
+      current_account
+      # not finding the method here
+      response = IlliadPatronClient.new(@patron).cancel_ill_requests(params[:cancel_requests])
+    end
+    response
+  end
+
   protected
 
     def verify_user

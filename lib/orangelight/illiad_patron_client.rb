@@ -27,6 +27,21 @@ class IlliadPatronClient
     response
   end
 
+  def cancel_ill_requests(transactions)
+    begin
+      response = conn.put do |req|
+        req.url "ILLiadWebPlatform/transaction/#{transactions[0]}/route"
+        req.headers['ApiKey'] = @illiad_api_key
+        req.headers['Content-Type'] = 'application/json'
+        req.body = { :Status => 'Cancelled by Customer' }
+      end
+    rescue Faraday::Error::ConnectionFailed
+      Rails.logger.info("Unable to Connect to #{@illiad_api_base}")
+      return false
+    end
+    response
+  end
+
   private
     def conn
       Faraday.new(url: @illiad_api_base.to_s) do |builder|
