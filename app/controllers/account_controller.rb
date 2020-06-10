@@ -2,6 +2,8 @@
 
 require './lib/orangelight/voyager_patron_client.rb'
 require './lib/orangelight/voyager_account.rb'
+require './lib/orangelight/illiad_patron_client.rb'
+require './lib/orangelight/illiad_account.rb'
 
 class AccountController < ApplicationController
   include ApplicationHelper
@@ -13,6 +15,7 @@ class AccountController < ApplicationController
   def index
     set_patron
     current_account
+    illiad_patron_client
   end
 
   def renew
@@ -104,6 +107,12 @@ class AccountController < ApplicationController
 
     def account_client
       VoyagerPatronClient.new(@patron) if @patron
+    end
+
+    def illiad_patron_client
+      @illiad_account = IlliadAccount.new(@patron) if @patron
+      response = IlliadPatronClient.new(@patron).outstanding_ill_requests
+      @illiad_transactions = JSON.parse(response.body)
     end
 
     def cancel_success(total_original_items, updated_account, number_of_cancelled_items)
