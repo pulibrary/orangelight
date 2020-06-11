@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 19527dbfc0fd3415cec3c6ef339e3990bce56682
+  revision: 5f795dbcb8359a150b5217d9391de6c1cd8c4f20
   specs:
     requests (0.0.2)
       bootstrap
@@ -197,7 +197,7 @@ GEM
       msgpack
     deprecation (1.0.0)
       activesupport
-    devise (4.7.1)
+    devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
