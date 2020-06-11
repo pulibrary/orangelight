@@ -33,13 +33,19 @@ class IlliadPatronClient
         req.url "ILLiadWebPlatform/transaction/#{transactions[0]}/route"
         req.headers['ApiKey'] = @illiad_api_key
         req.headers['Content-Type'] = 'application/json'
-        req.body = { :Status => 'Cancelled by Customer' }
+        req.body = { Status: 'Cancelled by Customer' }.to_json
       end
     rescue Faraday::Error::ConnectionFailed
       Rails.logger.info("Unable to Connect to #{@illiad_api_base}")
       return false
     end
     response
+  end
+
+  def bodytest
+    {
+        Status: 'Cancelled by Customer'
+    }
   end
 
   private

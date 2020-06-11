@@ -71,6 +71,7 @@ class AccountController < ApplicationController
     unless params[:cancel_requests].nil?
       current_account
       # not finding the method here
+      #byebug
       response = IlliadPatronClient.new(@patron).cancel_ill_requests(params[:cancel_requests])
     end
     response
