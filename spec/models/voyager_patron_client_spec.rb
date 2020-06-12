@@ -59,6 +59,16 @@ RSpec.describe VoyagerPatronClient do
         expect(Nokogiri::XML(client.myaccount.body)).to be_a(Nokogiri::XML::Document)
       end
 
+      context 'Timeout Error' do
+        before do
+          stub_request(:get, valid_patron_record_uri).to_raise(Faraday::TimeoutError)
+        end
+        it "Returns false when it can't connect" do
+          expect { client.myaccount }.not_to raise_error
+          expect(client.myaccount).to be false
+        end
+      end
+
       context 'Connectivity Error' do
         before do
           stub_request(:get, valid_patron_record_uri).to_raise(Faraday::Error::ConnectionFailed)
@@ -81,6 +91,16 @@ RSpec.describe VoyagerPatronClient do
         expect(Nokogiri::XML(client.authenticate.body)).to be_a(Nokogiri::XML::Document)
       end
 
+      context 'Timeout Error' do
+        before do
+          stub_request(:post, valid_authenticate_uri).to_raise(Faraday::TimeoutError)
+        end
+        it "Returns false when it can't connect" do
+          expect { client.authenticate }.not_to raise_error
+          expect(client.authenticate).to be false
+        end
+      end
+
       context 'Connectivity Error' do
         before do
           stub_request(:post, valid_authenticate_uri).to_raise(Faraday::Error::ConnectionFailed)
@@ -95,6 +115,16 @@ RSpec.describe VoyagerPatronClient do
     describe '#dbkey' do
       it 'Returns current DB key' do
         expect(client.dbkey).to eq('QA20082DB28836413431413')
+      end
+
+      context 'Timeout Error' do
+        before do
+          stub_request(:get, valid_db_key_uri).to_raise(Faraday::TimeoutError)
+        end
+        it "Returns false when it can't connect" do
+          expect { client.dbkey }.not_to raise_error
+          expect(client.dbkey).to be false
+        end
       end
 
       context 'Connectivity Error' do
@@ -125,6 +155,17 @@ RSpec.describe VoyagerPatronClient do
           .to_return(status: 200, body: voyager_failed_cancel_request, headers: {})
         expect(client.cancel_active_requests(items_to_cancel).request_items.size).to eq(1)
       end
+
+      context 'Timeout Error' do
+        before do
+          stub_request(:post, valid_cancel_request_uri).to_raise(Faraday::TimeoutError)
+        end
+        it "Returns false when it can't connect" do
+          expect { client.cancel_active_requests(items_to_cancel) }.not_to raise_error
+          expect(client.cancel_active_requests(items_to_cancel)).to be false
+        end
+      end
+
       context 'Connectivity Error' do
         before do
           stub_request(:post, valid_cancel_request_uri).to_raise(Faraday::Error::ConnectionFailed)
@@ -180,6 +221,16 @@ RSpec.describe VoyagerPatronClient do
         expect(client.renewal_request(renew_item_list).charged_items.size).to eq(3)
         expect(client.renewal_request(renew_item_list).charged_items[1]).to have_key(:renew_status)
         expect(client.renewal_request(renew_item_list).charged_items[1][:renew_status]['status']).to eq('Not Renewed')
+      end
+
+      context 'Timeout Error' do
+        before do
+          stub_request(:post, valid_renew_request_uri).to_raise(Faraday::TimeoutError)
+        end
+        it "Returns false when it can't connect" do
+          expect { client.renewal_request(renew_item_list) }.not_to raise_error
+          expect(client.renewal_request(renew_item_list)).to be false
+        end
       end
 
       context 'Connectivity Error' do
