@@ -39,7 +39,8 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 41afbebedf8aadb185198da1796e5a659d5dc2ce
+  revision: ee36df51acfb0399e9359a36cdb4793daf0ce1c2
+  branch: marquand_no_circ_item
   specs:
     requests (0.0.2)
       bootstrap
