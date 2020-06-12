@@ -16,7 +16,7 @@ class IlliadPatronClient
   def outstanding_ill_requests
     begin
       response = conn.get do |req|
-        req.url "/ILLiadWebPlatform/Transaction/UserRequests/#{@netid}?filter=TransactionStatus eq 'Request Sent' HTTP/1.1"
+        req.url "/ILLiadWebPlatform/Transaction/UserRequests/#{@netid}?filter=TransactionStatus ne 'Cancelled by ILL Staff'"
         req.headers['Accept'] = 'application/json'
         req.headers['ApiKey'] = @illiad_api_key
       end
