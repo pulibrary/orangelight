@@ -14,7 +14,7 @@ class VoyagerPatronClient
   def myaccount
     begin
       response = conn.get "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{@patron_id}&patronHomeUbId=1@DB"
-    rescue Faraday::Error::ConnectionFailed
+    rescue Faraday::Error::ConnectionFailed, Faraday::TimeoutError
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end
@@ -29,7 +29,7 @@ class VoyagerPatronClient
         req.url '/vxws/dbInfo?option=dbinfo'
         req.headers['Content-Type'] = 'application/xml'
       end
-    rescue Faraday::Error::ConnectionFailed
+    rescue Faraday::Error::ConnectionFailed, Faraday::TimeoutError
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end
@@ -56,7 +56,7 @@ class VoyagerPatronClient
         req.headers['Content-Type'] = 'application/xml'
         req.body = authenticate_patron_xml.to_s
       end
-    rescue Faraday::Error::ConnectionFailed
+    rescue Faraday::Error::ConnectionFailed, Faraday::TimeoutError
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end
@@ -71,7 +71,7 @@ class VoyagerPatronClient
         req.body = cancel_xml_string(items, dbkey)
         req.headers['Content-Type'] = 'application/xml'
       end
-    rescue Faraday::Error::ConnectionFailed
+    rescue Faraday::Error::ConnectionFailed, Faraday::TimeoutError
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end
@@ -118,7 +118,7 @@ class VoyagerPatronClient
         req.body = renew_xml_string(items).to_s
         req.headers['Content-Type'] = 'application/xml'
       end
-    rescue Faraday::Error::ConnectionFailed
+    rescue Faraday::Error::ConnectionFailed, Faraday::TimeoutError
       Rails.logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
       return false
     end
