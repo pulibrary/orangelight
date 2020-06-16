@@ -1,0 +1,11 @@
+$(".flash_messages").html("<%= escape_javascript(render :partial=>'/flash_msg', layout: 'shared/flash_messages') %>");
+
+setTimeout(function() {
+  $(".flash_messages .alert-info, .flash_messages .alert-success").fadeOut('slow', function(){
+    $(".flash_messages .alert-info, .flash_messages .alert-success").remove();
+  });
+}, 3000);
+
+<% unless @account.nil? %>
+$("#ill-request-cancel").replaceWith("<%= escape_javascript(render :partial=>'ill_request_items') %>");
+<% end %>

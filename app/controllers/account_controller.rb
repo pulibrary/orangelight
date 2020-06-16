@@ -72,7 +72,15 @@ class AccountController < ApplicationController
       current_account
       response = IlliadPatronClient.new(@patron).cancel_ill_requests(params[:cancel_requests])
     end
-    response
+    respond_to do |format|
+      if params[:cancel_requests].nil?
+        format.js { flash.now[:error] = I18n.t('blacklight.account.cancel_no_items') }
+      elsif cancel_ill_success(response)
+        format.js { flash.now[:success] = I18n.t('blacklight.account.cancel_success') }
+      else
+        format.js { flash.now[:error] = I18n.t('blacklight.account.cancel_fail') }
+      end
+    end
   end
 
   protected
@@ -130,6 +138,12 @@ class AccountController < ApplicationController
       deleted_requests = total_original_items - total_updated_items
       return true if number_of_cancelled_items.size == deleted_requests
       false
+    end
+
+    def cancel_ill_success(response)
+      r = JSON.parse(response.body)
+      return true if r['TransactionStatus'] == 'Cancelled by ILL Staff'
+      return false
     end
 
   private

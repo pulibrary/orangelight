@@ -38,25 +38,6 @@ GIT
       httpclient (~> 2.4)
 
 GIT
-  remote: https://github.com/pulibrary/requests.git
-  revision: aa193410e6416f5e42ec8ebab035e2fa8a0b6235
-  specs:
-    requests (0.0.2)
-      bootstrap
-      borrow_direct (~> 1.2.0)
-      cobravsmongoose (~> 0.0.2)
-      devise
-      email_validator
-      faraday
-      friendly_id (~> 5.1.0)
-      jquery-rails
-      lcsort
-      openurl (~> 1.0)
-      rails (~> 5.2.4)
-      simple_form
-      yaml_db (~> 0.7.0)
-
-GIT
   remote: https://github.com/pulibrary/stringex.git
   revision: 357f70511532a35b11a240e5ae06d02725cb8d0a
   tag: vpton.2.5.2.2
@@ -71,6 +52,25 @@ GIT
     introjs-rails (2.1.0)
       sass-rails (>= 3.2)
       thor (~> 0.14)
+
+PATH
+  remote: /Users/elliss/Development/requests
+  specs:
+    requests (0.0.2)
+      bootstrap
+      borrow_direct (~> 1.2.0)
+      cobravsmongoose (~> 0.0.2)
+      devise
+      email_validator
+      faraday
+      friendly_id (~> 5.1.0)
+      jquery-datatables
+      jquery-rails
+      lcsort
+      openurl (~> 1.0)
+      rails (~> 5.2.4)
+      simple_form
+      yaml_db (~> 0.7.0)
 
 GEM
   remote: https://rubygems.org/
