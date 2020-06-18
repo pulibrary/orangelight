@@ -141,7 +141,9 @@ class AccountController < ApplicationController
     end
 
     def cancel_ill_success(response)
+      illiad_patron_client
       r = JSON.parse(response.body)
+      # make regex to look for "Cancelled"
       return true if r['TransactionStatus'] == 'Cancelled by ILL Staff'
       return false
     end
