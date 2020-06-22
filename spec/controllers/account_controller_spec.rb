@@ -4,7 +4,6 @@ require 'rails_helper'
 
 RSpec.describe AccountController do
   let(:valid_patron_response) { File.open(fixture_path + '/bibdata_patron_response.json') }
-  let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
   let(:generic_voyager_account_response) { VoyagerAccount.new(fixture('/generic_voyager_account_response.xml')) }
   let(:generic_voyager_account_empty_response) { VoyagerAccount.new(fixture('/generic_voyager_account_empty_response.xml')) }
   let(:item_ids_to_cancel) { %w[42287 42289 69854 28010] }
@@ -20,8 +19,9 @@ RSpec.describe AccountController do
     end
   end
 
-  describe '#illiad_patron_client?' do
+  describe '#illiad_patron_client' do
     subject(:account_controller) { described_class.new }
+    let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
     let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
 
     it 'Returns Non-canceled Illiad Transactions' do
@@ -38,6 +38,26 @@ RSpec.describe AccountController do
            })
       illiad_response = account_controller.send(:illiad_patron_client, patron)
       expect(illiad_response.size).to eq 2
+    end
+  end
+
+  describe 'cancel_ill_requests' do
+    let(:params_cancel_requests) { ['1093597'] }
+    let(:cancel_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
+    it 'Cancels Illiad Transactions' do
+      # valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
+      # stub_request(:get, valid_patron_record_uri)
+      #   .to_return(status: 200, body: valid_patron_response, headers: {})
+      # patron = account_controller.send(:current_patron?, valid_user.uid)
+      cancel_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
+      canceled_items = stub_request(:put, cancel_ill_requests_uri)
+        .with(body: '{ "Status" : "Cancelled by Customer" }')
+        .to_return(status: 200, body: cancel_ill_requests_response, headers: {
+       	  'Content-Type'=>'application/json',
+       	  'Apikey'=>'TESTME'
+           })
+      #byebug
+      #expect(JSON.parse(canceled_items["TransactionStatus"])).to eq "Cancelled by ILL Staff"
     end
   end
 
