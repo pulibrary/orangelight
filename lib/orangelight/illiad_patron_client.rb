@@ -9,8 +9,16 @@ class IlliadPatronClient
     @last_name = patron['last_name']
     @patron_id = patron['patron_id']
     @netid = patron['netid']
-    @illiad_api_key = (ENV['ILLIAD_API_KEY']).to_s
-    @illiad_api_base = 'https://lib-illiad.princeton.edu'
+    @illiad_api_key = illiad_api_key
+    @illiad_api_base = ENV['ILLIAD_API_BASE_URL']
+  end
+
+  def illiad_api_key
+    if !Rails.env.test?
+      (ENV['ILLIAD_API_KEY']).to_s
+    else
+      'TESTME'
+    end
   end
 
   def outstanding_ill_requests
@@ -44,11 +52,12 @@ class IlliadPatronClient
 
   def bodytest
     {
-        Status: 'Cancelled by Customer'
+      Status: 'Cancelled by Customer'
     }
   end
 
   private
+
     def conn
       Faraday.new(url: @illiad_api_base.to_s) do |builder|
         builder.use :cookie_jar

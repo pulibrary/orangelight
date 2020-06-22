@@ -15,7 +15,7 @@ class AccountController < ApplicationController
   def index
     set_patron
     current_account
-    illiad_patron_client
+    illiad_patron_client(@patron)
   end
 
   def renew
@@ -126,9 +126,9 @@ class AccountController < ApplicationController
       VoyagerPatronClient.new(@patron) if @patron
     end
 
-    def illiad_patron_client
-      @illiad_account = IlliadAccount.new(@patron) if @patron
-      response = IlliadPatronClient.new(@patron).outstanding_ill_requests
+    def illiad_patron_client(patron)
+      @illiad_account = IlliadAccount.new(patron) if patron
+      response = IlliadPatronClient.new(patron).outstanding_ill_requests
       @illiad_transactions = JSON.parse(response.body)
     end
 
@@ -145,7 +145,7 @@ class AccountController < ApplicationController
       r = JSON.parse(response.body)
       # make regex to look for "Cancelled"
       return true if r['TransactionStatus'] == 'Cancelled by ILL Staff'
-      return false
+      false
     end
 
   private

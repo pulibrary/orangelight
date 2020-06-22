@@ -10,7 +10,7 @@ class IlliadAccount
     @patron_id = patron['patron_id']
     @netid = patron['netid']
     @illiad_api_key = (ENV['ILLIAD_API_KEY']).to_s
-    @illiad_api_base = 'https://lib-illiad.princeton.edu'
+    @illiad_api_base = ENV['ILLIAD_API_BASE_URL']
   end
 
   def verify_user
@@ -28,6 +28,7 @@ class IlliadAccount
   end
 
   private
+
     def conn
       Faraday.new(url: @illiad_api_base.to_s) do |builder|
         builder.use :cookie_jar
