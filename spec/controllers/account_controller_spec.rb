@@ -29,6 +29,7 @@ RSpec.describe AccountController do
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
       patron = account_controller.send(:current_patron?, valid_user.uid)
+      ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
       outstanding_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Transaction/UserRequests/#{patron['netid']}?$filter=TransactionStatus ne 'Cancelled by ILL Staff'"
       stub_request(:get, outstanding_ill_requests_uri)
         .to_return(status: 200, body: outstanding_ill_requests_response, headers: {
@@ -43,10 +44,10 @@ RSpec.describe AccountController do
 
   describe 'cancel_ill_requests' do
     subject(:account_controller) { described_class.new }
-    let(:cancel_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
+    let(:cancel_ill_requests_response) { File.open(fixture_path + '/cancel_ill_requests_response.json') }
 
     it 'Cancels Illiad Transactions' do
-      body = JSON.parse(cancel_ill_requests_response.read).body
+      body = JSON.parse(cancel_ill_requests_response.read)
       cancel_success = account_controller.send(:cancel_ill_success, body)
       expect(cancel_success).to be_truthy
     end
