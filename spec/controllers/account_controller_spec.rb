@@ -32,32 +32,23 @@ RSpec.describe AccountController do
       outstanding_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Transaction/UserRequests/#{patron['netid']}?$filter=TransactionStatus ne 'Cancelled by ILL Staff'"
       stub_request(:get, outstanding_ill_requests_uri)
         .to_return(status: 200, body: outstanding_ill_requests_response, headers: {
-       	  'Accept'=>'application/json',
-       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       	  'Apikey'=>'TESTME'
-           })
+                     'Accept' => 'application/json',
+                     'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                     'Apikey' => 'TESTME'
+                   })
       illiad_response = account_controller.send(:illiad_patron_client, patron)
       expect(illiad_response.size).to eq 2
     end
   end
 
   describe 'cancel_ill_requests' do
-    let(:params_cancel_requests) { ['1093597'] }
+    subject(:account_controller) { described_class.new }
     let(:cancel_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
+
     it 'Cancels Illiad Transactions' do
-      # valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
-      # stub_request(:get, valid_patron_record_uri)
-      #   .to_return(status: 200, body: valid_patron_response, headers: {})
-      # patron = account_controller.send(:current_patron?, valid_user.uid)
-      cancel_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
-      canceled_items = stub_request(:put, cancel_ill_requests_uri)
-        .with(body: '{ "Status" : "Cancelled by Customer" }')
-        .to_return(status: 200, body: cancel_ill_requests_response, headers: {
-       	  'Content-Type'=>'application/json',
-       	  'Apikey'=>'TESTME'
-           })
-      #byebug
-      #expect(JSON.parse(canceled_items["TransactionStatus"])).to eq "Cancelled by ILL Staff"
+      body = JSON.parse(cancel_ill_requests_response.read).body
+      cancel_success = account_controller.send(:cancel_ill_success, body)
+      expect(cancel_success).to be_truthy
     end
   end
 

@@ -71,11 +71,12 @@ class AccountController < ApplicationController
     unless params[:cancel_requests].nil?
       current_account
       response = IlliadPatronClient.new(@patron).cancel_ill_requests(params[:cancel_requests])
+      body = JSON.parse(response.body)
     end
     respond_to do |format|
       if params[:cancel_requests].nil?
         format.js { flash.now[:error] = I18n.t('blacklight.account.cancel_no_items') }
-      elsif cancel_ill_success(response)
+      elsif cancel_ill_success(body)
         format.js { flash.now[:success] = I18n.t('blacklight.account.cancel_success') }
       else
         format.js { flash.now[:error] = I18n.t('blacklight.account.cancel_fail') }
@@ -141,10 +142,8 @@ class AccountController < ApplicationController
     end
 
     def cancel_ill_success(response)
-      illiad_patron_client
-      r = JSON.parse(response.body)
-      # make regex to look for "Cancelled"
-      return true if r['TransactionStatus'] == 'Cancelled by ILL Staff'
+      # make regex to look for starts with "Cancelled"
+      return true if response['TransactionStatus'].match(/^Cancelled/)
       false
     end
 

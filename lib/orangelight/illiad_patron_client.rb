@@ -13,14 +13,6 @@ class IlliadPatronClient
     @illiad_api_base = ENV['ILLIAD_API_BASE_URL']
   end
 
-  def illiad_api_key
-    if !Rails.env.test?
-      (ENV['ILLIAD_API_KEY']).to_s
-    else
-      'TESTME'
-    end
-  end
-
   def outstanding_ill_requests
     begin
       response = conn.get do |req|
@@ -50,12 +42,6 @@ class IlliadPatronClient
     response
   end
 
-  def bodytest
-    {
-      Status: 'Cancelled by Customer'
-    }
-  end
-
   private
 
     def conn
@@ -63,6 +49,14 @@ class IlliadPatronClient
         builder.use :cookie_jar
         builder.adapter Faraday.default_adapter
         builder.response :logger
+      end
+    end
+
+    def illiad_api_key
+      if !Rails.env.test?
+        (ENV['ILLIAD_API_KEY']).to_s
+      else
+        'TESTME'
       end
     end
 end
