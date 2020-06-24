@@ -52,12 +52,41 @@ RSpec.describe AccountController do
 
   describe 'cancel_ill_requests' do
     subject(:account_controller) { described_class.new }
+    let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
     let(:cancel_ill_requests_response) { File.open(fixture_path + '/cancel_ill_requests_response.json') }
+    let(:params_cancel_requests) { ['1093597'] }
+    let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
+    let(:valid_voyager_response) { File.open(fixture_path + '/pul_voyager_account_response.xml').read }
+
+    before do
+      ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
+      sign_in(valid_user)
+      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
+      stub_request(:get, valid_patron_record_uri)
+        .to_return(status: 200, body: valid_patron_response, headers: {})
+      patron = account_controller.send(:current_patron?, valid_user.uid)
+      outstanding_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Transaction/UserRequests/#{patron['netid']}?$filter=TransactionStatus%20ne%20'Cancelled%20by%20ILL%20Staff'"
+      valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{patron['patron_id']}&patronHomeUbId=1@DB"
+      stub_request(:get, valid_patron_record_uri)
+        .to_return(status: 200, body: valid_voyager_response, headers: {})
+      stub_request(:get, outstanding_ill_requests_uri)
+        .to_return(status: 200, body: outstanding_ill_requests_response, headers: {
+                     'Accept' => 'application/json',
+                     'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                     'Apikey' => 'TESTME'
+                   })
+      cancel_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
+      stub_request(:put, cancel_ill_requests_uri)
+        .with(body: "{\"Status\":\"Cancelled by Customer\"}")
+        .to_return(status: 200, body: cancel_ill_requests_response, headers: {
+       	  'Content-Type'=>'application/json',
+       	  'Apikey'=>'TESTME'
+           })
+    end
 
     it 'Cancels Illiad Transactions' do
-      body = JSON.parse(cancel_ill_requests_response.read)
-      cancel_success = account_controller.send(:cancel_ill_success, body)
-      expect(cancel_success).to be_truthy
+      post :cancel_ill_requests, params: {cancel_requests: params_cancel_requests}, format: :js
+      expect(flash.now[:success]).to eq I18n.t('blacklight.account.cancel_success')
     end
   end
 
