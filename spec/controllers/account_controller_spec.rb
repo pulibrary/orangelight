@@ -79,13 +79,13 @@ RSpec.describe AccountController do
       stub_request(:put, cancel_ill_requests_uri)
         .with(body: "{\"Status\":\"Cancelled by Customer\"}")
         .to_return(status: 200, body: cancel_ill_requests_response, headers: {
-       	  'Content-Type'=>'application/json',
-       	  'Apikey'=>'TESTME'
-           })
+                     'Content-Type' => 'application/json',
+                     'Apikey' => 'TESTME'
+                   })
     end
 
     it 'Cancels Illiad Transactions' do
-      post :cancel_ill_requests, params: {cancel_requests: params_cancel_requests}, format: :js
+      post :cancel_ill_requests, params: { cancel_requests: params_cancel_requests }, format: :js
       expect(flash.now[:success]).to eq I18n.t('blacklight.account.cancel_success')
     end
   end

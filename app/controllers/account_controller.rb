@@ -143,7 +143,7 @@ class AccountController < ApplicationController
 
     def cancel_ill_success(response)
       # make regex to look for starts with "Cancelled"
-      return true if response['TransactionStatus'].match(/^Cancelled/)
+      return true if response['TransactionStatus'] =~ /^Cancelled/
       false
     end
 
