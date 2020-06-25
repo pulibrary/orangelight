@@ -19,8 +19,8 @@ RSpec.describe IlliadPatronClient do
     describe '#outstanding_ill_requests' do
       before do
         ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
-        outstanding_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Transaction/UserRequests/#{sample_patron['netid']}?$filter=TransactionStatus%20ne%20'Cancelled%20by%20ILL%20Staff'"
-        stub_request(:get, outstanding_ill_requests_uri)
+        current_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Transaction/UserRequests/#{sample_patron['netid']}?$filter=TransactionStatus%20ne%20'Cancelled%20by%20ILL%20Staff'"
+        stub_request(:get, current_ill_requests_uri)
           .to_return(status: 200, body: outstanding_ill_requests_response, headers: {
                        'Accept' => 'application/json',
                        'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
@@ -41,9 +41,9 @@ RSpec.describe IlliadPatronClient do
         stub_request(:put, cancel_ill_requests_uri)
           .with(body: "{\"Status\":\"Cancelled by Customer\"}")
           .to_return(status: 200, body: cancel_ill_requests_response, headers: {
-         	  'Content-Type'=>'application/json',
-         	  'Apikey'=>'TESTME'
-             })
+                       'Content-Type' => 'application/json',
+                       'Apikey' => 'TESTME'
+                     })
       end
 
       it 'Cancels an ILLiad transaction' do
