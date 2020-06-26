@@ -1,7 +1,6 @@
 <%= form_tag('/account/cancel_ill_requests', remote: true, id: "ill-request-cancel", class: "table--overflow") do %>
-  <%= render 'available_items' %>
 
-  <h3 class="section-heading" id="outstanding-requests">Outstanding ILL/AE requests</h3>
+  <h3 class="section-heading" id="outstanding-requests">Outstanding Digitization Requests</h3>
   <% if (!@illiad_transactions.blank?) %>
     <table class="table table-striped table-bordered account--requests">
       <thead>
@@ -9,7 +8,7 @@
           <th class="hide-print"></th>
           <th>Item</th>
           <th>Status</th>
-          <th>Link to Download</th>
+          <th>More Information</th>
         </tr>
       </thead>
       <tbody>
@@ -24,7 +23,7 @@
             <td>
               <%= item["TransactionStatus"] %>
             </td>
-            <td><a href="">Download PDF</a></td>
+            <td><a href="https://lib-illiad.princeton.edu/illiad/illiad.dll?Action=10&Form=63&&Value=<%= item['TransactionNumber'] %>">View Details</a></td>
           </tr>
         <% end %>
       </tbody>

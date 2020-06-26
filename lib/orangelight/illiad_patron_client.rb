@@ -17,7 +17,7 @@ class IlliadPatronClient
     # Use "ProcessType eq DocDel" for digital requests
     begin
       response = conn.get do |req|
-        req.url "/ILLiadWebPlatform/Transaction/UserRequests/#{@netid}?$filter=TransactionStatus ne 'Cancelled by ILL Staff'"
+        req.url "/ILLiadWebPlatform/Transaction/UserRequests/#{@netid}?$filter=TransactionStatus eq 'Awaiting Catalog Request Processing'"
         req.headers['Accept'] = 'application/json'
         req.headers['ApiKey'] = @illiad_api_key
       end
