@@ -14,6 +14,7 @@ class IlliadPatronClient
   end
 
   def outstanding_ill_requests
+    # Use "ProcessType eq DocDel" for digital requests
     begin
       response = conn.get do |req|
         req.url "/ILLiadWebPlatform/Transaction/UserRequests/#{@netid}?$filter=TransactionStatus ne 'Cancelled by ILL Staff'"
