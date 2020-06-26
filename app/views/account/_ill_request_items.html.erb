@@ -1,5 +1,4 @@
 <%= form_tag('/account/cancel_ill_requests', remote: true, id: "ill-request-cancel", class: "table--overflow") do %>
-  <%= render 'available_items' %>
 
   <h3 class="section-heading" id="outstanding-requests">Outstanding Digitization Requests</h3>
   <% if (!@illiad_transactions.blank?) %>
