@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: c570beaa7fe1a4e6cb84e83137f91e05206b4897
+  revision: 0c305807661fb860eb74a1beea09235e79f0e15a
   branch: i617-illiad-api
   specs:
     requests (0.0.2)
@@ -315,8 +315,8 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    omniauth (1.9.0)
-      hashie (>= 3.4.6, < 3.7.0)
+    omniauth (1.9.1)
+      hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
     omniauth-cas (1.1.1)
       addressable (~> 2.3)
@@ -339,7 +339,7 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
-    public_suffix (4.0.1)
+    public_suffix (4.0.5)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
