@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: ad67dfd1c35cce6388d186054dd37b7f5667ef4d
+  revision: 0d2bc66dbfb36a7e0f247c19df370ffc699d0bbb
   branch: i617-illiad-api
   specs:
     requests (0.0.2)
