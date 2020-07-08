@@ -3,8 +3,18 @@
 require 'rails_helper'
 
 describe 'Feedback Form', type: :feature do
+  let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
   before do
     stub_holding_locations
+    ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
+    current_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Transaction/UserRequests/jstudent?$filter=" \
+      "ProcessType%20eq%20'Borrowing'%20and%20TransactionStatus%20ne%20'Request%20Finished'%20and%20not%20startswith%28TransactionStatus,'Cancelled'%29"
+    stub_request(:get, current_ill_requests_uri)
+      .to_return(status: 200, body: outstanding_ill_requests_response, headers: {
+                   'Accept' => 'application/json',
+                   'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                   'Apikey' => 'TESTME'
+                 })
   end
 
   context 'User has not signed in' do

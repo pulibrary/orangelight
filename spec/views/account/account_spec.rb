@@ -3,6 +3,19 @@
 require 'rails_helper'
 
 describe 'Your Account', type: :feature do
+  let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
+  before do
+    ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
+    current_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Transaction/UserRequests/jstudent?$filter=" \
+      "ProcessType%20eq%20'Borrowing'%20and%20TransactionStatus%20ne%20'Request%20Finished'%20and%20not%20startswith%28TransactionStatus,'Cancelled'%29"
+    stub_request(:get, current_ill_requests_uri)
+      .to_return(status: 200, body: outstanding_ill_requests_response, headers: {
+                   'Accept' => 'application/json',
+                   'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                   'Apikey' => 'TESTME'
+                 })
+  end
+
   context 'User has not signed in' do
     it 'Account information displays as not available' do
       visit('/account')
@@ -293,6 +306,9 @@ describe 'Your Account', type: :feature do
         stub_request(:post, "#{ENV['voyager_api_base']}/vxws/RenewService")
           .with(headers: { 'Content-type' => 'application/xml' })
           .to_return(status: 200, body: renew_response_only_success, headers: {})
+        # We have added additional expect statements to address what seem to be timing issues
+        expect(page).to have_content("What are you? : voices of mixed-race young people / [edited by] Pearl Fuyo Gaskins.")
+        expect(find('#charged-7193128')).not_to be_checked
         check('charged-7193128')
         expect(find('#charged-7193128')).to be_checked
         click_button('Renew selected items')
@@ -343,13 +359,13 @@ describe 'Your Account', type: :feature do
           .with(headers: { 'User-Agent' => 'Faraday v0.11.0', 'Content-type' => 'application/xml' })
           .to_return(status: 500, body: 'bad thing happened', headers: {})
         check('cancel-7114238')
-        click_button('Cancel requests')
+        find(:xpath, "(//button[text()='Cancel requests'])[2]").click
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.cancel_fail'))
       end
 
       it 'but no requests are selected for cancellation' do
-        click_button('Cancel requests')
+        find(:xpath, "(//button[text()='Cancel requests'])[2]").click
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.cancel_no_items'))
       end
@@ -360,7 +376,7 @@ describe 'Your Account', type: :feature do
           .to_return(status: 200, body: voyager_cancel_response_avail_item, headers: {})
         check('cancel-7114238')
         expect(find('#cancel-7114238')).to be_checked
-        click_button('Cancel requests')
+        find(:xpath, "(//button[text()='Cancel requests'])[2]").click
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.cancel_success'))
         expect(page).to have_no_selector('#cancel-7114238')
@@ -373,7 +389,7 @@ describe 'Your Account', type: :feature do
           .to_return(status: 200, body: voyager_cancel_response_request_item, headers: {})
         check('cancel-42289')
         expect(find('#cancel-42289')).to be_checked
-        click_button('Cancel requests')
+        find(:xpath, "(//button[text()='Cancel requests'])[2]").click
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.cancel_success'))
         expect(page).to have_selector('#cancel-7114238')
@@ -385,7 +401,7 @@ describe 'Your Account', type: :feature do
         expect(find('#cancel-7114238')).to be_checked
         check('cancel-42289')
         expect(find('#cancel-42289')).to be_checked
-        click_button('Cancel requests')
+        find(:xpath, "(//button[text()='Cancel requests'])[2]").click
         wait_for_ajax
         expect(page).to have_content(I18n.t('blacklight.account.cancel_success'))
         expect(page).to have_no_selector('#cancel-7114238')

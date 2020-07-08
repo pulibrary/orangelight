@@ -7,6 +7,18 @@ RSpec.describe AccountController do
   let(:generic_voyager_account_response) { VoyagerAccount.new(fixture('/generic_voyager_account_response.xml')) }
   let(:generic_voyager_account_empty_response) { VoyagerAccount.new(fixture('/generic_voyager_account_empty_response.xml')) }
   let(:item_ids_to_cancel) { %w[42287 42289 69854 28010] }
+  let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
+  before do
+    ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
+    current_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Transaction/UserRequests/jstudent?$filter=" \
+      "ProcessType%20eq%20'Borrowing'%20and%20TransactionStatus%20ne%20'Request%20Finished'%20and%20not%20startswith%28TransactionStatus,'Cancelled'%29"
+    stub_request(:get, current_ill_requests_uri)
+      .to_return(status: 200, body: outstanding_ill_requests_response, headers: {
+                   'Accept' => 'application/json',
+                   'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                   'Apikey' => 'TESTME'
+                 })
+  end
 
   describe '#cancel_success' do
     subject(:account_controller) { described_class.new }
@@ -19,7 +31,62 @@ RSpec.describe AccountController do
     end
   end
 
-  describe '#patron_account?' do
+  describe '#illiad_patron_client' do
+    subject(:account_controller) { described_class.new }
+    let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
+    let(:valid_voyager_response) { File.open(fixture_path + '/pul_voyager_account_response.xml').read }
+
+    before do
+      ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
+      sign_in(valid_user)
+      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
+      stub_request(:get, valid_patron_record_uri)
+        .to_return(status: 200, body: valid_patron_response, headers: {})
+      patron = account_controller.send(:current_patron?, valid_user.uid)
+      valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{patron['patron_id']}&patronHomeUbId=1@DB"
+      stub_request(:get, valid_patron_record_uri)
+        .to_return(status: 200, body: valid_voyager_response, headers: {})
+    end
+
+    it 'Returns Non-canceled Illiad Transactions' do
+      get :index
+      expect(assigns(:illiad_transactions).size).to eq 2
+    end
+  end
+
+  describe 'cancel_ill_requests' do
+    subject(:account_controller) { described_class.new }
+    let(:cancel_ill_requests_response) { File.open(fixture_path + '/cancel_ill_requests_response.json') }
+    let(:params_cancel_requests) { ['1093597'] }
+    let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
+    let(:valid_voyager_response) { File.open(fixture_path + '/pul_voyager_account_response.xml').read }
+
+    before do
+      ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
+      sign_in(valid_user)
+      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
+      stub_request(:get, valid_patron_record_uri)
+        .to_return(status: 200, body: valid_patron_response, headers: {})
+      patron = account_controller.send(:current_patron?, valid_user.uid)
+      valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{patron['patron_id']}&patronHomeUbId=1@DB"
+      stub_request(:get, valid_patron_record_uri)
+        .to_return(status: 200, body: valid_voyager_response, headers: {})
+      cancel_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
+      stub_request(:put, cancel_ill_requests_uri)
+        .with(body: "{\"Status\":\"Cancelled by Customer\"}")
+        .to_return(status: 200, body: cancel_ill_requests_response, headers: {
+                     'Content-Type' => 'application/json',
+                     'Apikey' => 'TESTME'
+                   })
+    end
+
+    it 'Cancels Illiad Transactions' do
+      post :cancel_ill_requests, params: { cancel_requests: params_cancel_requests }, format: :js
+      expect(flash.now[:success]).to eq I18n.t('blacklight.account.cancel_success')
+    end
+  end
+
+  describe '#current_patron?' do
     subject(:account_controller) { described_class.new }
     let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
     let(:invalid_user) { FactoryBot.create(:invalid_princeton_patron) }

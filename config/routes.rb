@@ -70,6 +70,7 @@ Rails.application.routes.draw do
   get '/account', to: 'account#index'
   post '/account/renew', to: 'account#renew'
   post '/account/cancel', to: 'account#cancel'
+  post '/account/cancel_ill_requests', to: 'account#cancel_ill_requests'
 
   get '/borrow-direct', to: 'account#borrow_direct_redirect'
 

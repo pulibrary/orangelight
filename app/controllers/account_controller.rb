@@ -2,6 +2,8 @@
 
 require './lib/orangelight/voyager_patron_client.rb'
 require './lib/orangelight/voyager_account.rb'
+require './lib/orangelight/illiad_patron_client.rb'
+require './lib/orangelight/illiad_account.rb'
 
 class AccountController < ApplicationController
   include ApplicationHelper
@@ -63,6 +65,24 @@ class AccountController < ApplicationController
     end
   end
 
+  def cancel_ill_requests
+    set_patron
+    unless params[:cancel_requests].nil?
+      current_account
+      response = IlliadPatronClient.new(@patron).cancel_ill_requests(params[:cancel_requests])
+    end
+    illiad_patron_client(@patron)
+    respond_to do |format|
+      if params[:cancel_requests].nil?
+        format.js { flash.now[:error] = I18n.t('blacklight.account.cancel_no_items') }
+      elsif cancel_ill_success(response)
+        format.js { flash.now[:success] = I18n.t('blacklight.account.cancel_success') }
+      else
+        format.js { flash.now[:error] = I18n.t('blacklight.account.cancel_fail') }
+      end
+    end
+  end
+
   protected
 
     def verify_user
@@ -92,6 +112,7 @@ class AccountController < ApplicationController
     def set_patron
       @netid = current_user.uid
       @patron = current_patron?(@netid)
+      illiad_patron_client(@patron)
     end
 
     def current_account
@@ -106,12 +127,23 @@ class AccountController < ApplicationController
       VoyagerPatronClient.new(@patron) if @patron
     end
 
+    def illiad_patron_client(patron)
+      @illiad_account = IlliadAccount.new(patron) if patron
+      response = IlliadPatronClient.new(patron).outstanding_ill_requests
+      @illiad_transactions = JSON.parse(response.body)
+    end
+
     def cancel_success(total_original_items, updated_account, number_of_cancelled_items)
       return false if updated_account.nil?
       total_updated_items = updated_account.outstanding_hold_requests
       deleted_requests = total_original_items - total_updated_items
       return true if number_of_cancelled_items.size == deleted_requests
       false
+    end
+
+    def cancel_ill_success(response)
+      bodies = response.map { |rep| JSON.parse(rep.body) }
+      bodies.reject { |body| body['TransactionStatus'] =~ /^Cancelled/ }.empty?
     end
 
   private

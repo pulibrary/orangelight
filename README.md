@@ -52,6 +52,14 @@ Then, in a separate tab, run:
 ```
 bin/webpack-dev-server
 ```
+Or run Solr in a separate tab
+```
+rake server:dev
+```
+And in a separate terminal:
+```
+rails server
+```
 
 Deploying with Capistrano
 ------------------
