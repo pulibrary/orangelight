@@ -128,9 +128,13 @@ class AccountController < ApplicationController
     end
 
     def illiad_patron_client(patron)
-      @illiad_account = IlliadAccount.new(patron) if patron
-      response = IlliadPatronClient.new(patron).outstanding_ill_requests
-      @illiad_transactions = JSON.parse(response.body)
+      @illiad_transactions = []
+      return unless patron && current_user.provider == 'cas'
+
+      @illiad_account = IlliadAccount.new(patron)
+      return unless @illiad_account.verify_user
+
+      @illiad_transactions = IlliadPatronClient.new(patron).outstanding_ill_requests
     end
 
     def cancel_success(total_original_items, updated_account, number_of_cancelled_items)

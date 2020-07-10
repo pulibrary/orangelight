@@ -24,9 +24,9 @@ class IlliadPatronClient
       end
     rescue Faraday::Error::ConnectionFailed
       Rails.logger.info("Unable to Connect to #{@illiad_api_base}")
-      return false
+      return []
     end
-    response
+    parse_response(response)
   end
 
   def cancel_ill_requests(transactions)
@@ -43,6 +43,17 @@ class IlliadPatronClient
   end
 
   private
+
+    def parse_response(response)
+      return [] unless response.success?
+      json_data = JSON.parse(response.body)
+      # allow dispplay of either Loan or Article fields
+      json_data.each do |item|
+        item["PhotoJournalTitle"] ||= item["LoanTitle"]
+        item["PhotoArticleAuthor"] ||= item["LoanAuthor"]
+      end
+      json_data
+    end
 
     def cancel_ill_request(transaction)
       conn.put do |req|

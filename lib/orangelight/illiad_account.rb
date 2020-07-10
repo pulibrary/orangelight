@@ -24,7 +24,7 @@ class IlliadAccount
       Rails.logger.info("Unable to Connect to #{@illiad_api_base}")
       return false
     end
-    response
+    response.success?
   end
 
   private

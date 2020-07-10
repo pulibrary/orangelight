@@ -8,6 +8,8 @@ RSpec.describe AccountController do
   let(:generic_voyager_account_empty_response) { VoyagerAccount.new(fixture('/generic_voyager_account_empty_response.xml')) }
   let(:item_ids_to_cancel) { %w[42287 42289 69854 28010] }
   let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
+  let(:verify_user_response) { File.open(fixture_path + '/ill_verify_user_response.json') }
+  let(:current_illiad_user_uri) { "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Users/jstudent" }
   before do
     ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
     current_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Transaction/UserRequests/jstudent?$filter=" \
@@ -18,6 +20,8 @@ RSpec.describe AccountController do
                    'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
                    'Apikey' => 'TESTME'
                  })
+    stub_request(:get, current_illiad_user_uri)
+      .to_return(status: 200, body: verify_user_response)
   end
 
   describe '#cancel_success' do
@@ -51,6 +55,24 @@ RSpec.describe AccountController do
     it 'Returns Non-canceled Illiad Transactions' do
       get :index
       expect(assigns(:illiad_transactions).size).to eq 2
+    end
+
+    context "barcode user" do
+      let(:valid_user) { FactoryBot.create(:guest_patron) }
+
+      it 'Returns no Illiad Transactions' do
+        get :index
+        expect(assigns(:illiad_transactions).size).to eq 0
+      end
+    end
+
+    context "cas user with no illiad account" do
+      it 'Returns no Illiad Transactions' do
+        stub_request(:get, current_illiad_user_uri)
+          .to_return(status: 404, body: '{"Message":"User jstudent was not found."}')
+        get :index
+        expect(assigns(:illiad_transactions).size).to eq 0
+      end
     end
   end
 
