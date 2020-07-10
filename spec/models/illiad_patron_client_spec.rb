@@ -15,12 +15,14 @@ RSpec.describe IlliadPatronClient do
     let(:cancel_ill_requests_response) { File.open(fixture_path + '/cancel_ill_requests_response.json') }
     let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
     let(:params_cancel_requests) { ['1093597'] }
+    let(:current_ill_requests_uri) do
+      "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Transaction/UserRequests/#{sample_patron['netid']}?$filter=" \
+       "ProcessType%20eq%20'Borrowing'%20and%20TransactionStatus%20ne%20'Request%20Finished'%20and%20not%20startswith%28TransactionStatus,'Cancelled'%29"
+    end
 
     describe '#outstanding_ill_requests' do
       before do
         ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
-        current_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Transaction/UserRequests/#{sample_patron['netid']}?$filter=" \
-          "ProcessType%20eq%20'Borrowing'%20and%20TransactionStatus%20ne%20'Request%20Finished'%20and%20not%20startswith%28TransactionStatus,'Cancelled'%29"
         stub_request(:get, current_ill_requests_uri)
           .to_return(status: 200, body: outstanding_ill_requests_response, headers: {
                        'Accept' => 'application/json',
@@ -30,8 +32,17 @@ RSpec.describe IlliadPatronClient do
       end
 
       it 'Returns a successful http response' do
-        expect(client.outstanding_ill_requests).to be_a(Faraday::Response)
-        expect(client.outstanding_ill_requests.status).to eq(200)
+        requests = client.outstanding_ill_requests
+        expect(requests.count).to eq(2)
+        expect(requests.first["PhotoJournalTitle"]).to eq("Pʹesy")
+        expect(requests.first["PhotoArticleAuthor"]).to eq("Chekhov, Anton Pavlovich")
+      end
+
+      context 'a faraday error' do
+        it 'returns false' do
+          stub_request(:get, current_ill_requests_uri).and_raise(Faraday::ConnectionFailed, "failed")
+          expect(client.outstanding_ill_requests.count).to eq(0)
+        end
       end
     end
 

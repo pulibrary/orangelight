@@ -13,11 +13,11 @@ RSpec.describe IlliadAccount do
                       'netid' => 'jstudent' }
     subject(:client) { described_class.new(sample_patron) }
     let(:verify_user_response) { File.open(fixture_path + '/ill_verify_user_response.json') }
+    let(:verify_user_uri) { "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Users/#{sample_patron['netid']}" }
 
     describe '#verify user' do
       before do
         ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
-        verify_user_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Users/#{sample_patron['netid']}"
         stub_request(:get, verify_user_uri)
           .to_return(status: 200, body: verify_user_response, headers: {
                        'Accept' => 'application/json',
@@ -26,9 +26,22 @@ RSpec.describe IlliadAccount do
                      })
       end
 
-      it 'Returns a successful http response' do
-        expect(client.verify_user).to be_a(Faraday::Response)
-        expect(client.verify_user.status).to eq(200)
+      it 'Returns true' do
+        expect(client.verify_user).to be_truthy
+      end
+
+      context 'an invalid user' do
+        it 'Returns false' do
+          stub_request(:get, verify_user_uri).to_return(status: 404, body: "")
+          expect(client.verify_user).to be_falsy
+        end
+      end
+
+      context 'a faraday error' do
+        it 'returns false' do
+          stub_request(:get, verify_user_uri).and_raise(Faraday::ConnectionFailed, "failed")
+          expect(client.verify_user).to be_falsy
+        end
       end
     end
   end
