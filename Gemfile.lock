@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 03b00057d34a78fec61e048a7f7e8171d1c83a6d
+  revision: c855676ff2be969d2558cac0b3c7bced24df9072
   specs:
     requests (0.0.2)
       bootstrap
@@ -129,7 +129,7 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
-    bcrypt (3.1.13)
+    bcrypt (3.1.15)
     bixby (2.0.0)
       rubocop (= 0.63.1)
       rubocop-rspec (= 1.31.0)
@@ -248,7 +248,7 @@ GEM
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
     httpclient (2.8.3)
-    i18n (1.8.3)
+    i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
     jbuilder (2.9.1)
