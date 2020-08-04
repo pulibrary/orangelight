@@ -26,3 +26,6 @@ staging:
 alma_qa:
   <<: *defaults
   bibdata_base: https://bibdata.princeton.edu
+qa:
+  <<: *defaults
+  bibdata_base: https://bibdata.princeton.edu

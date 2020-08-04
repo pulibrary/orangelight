@@ -26,4 +26,9 @@ alma_qa:
   events:
     server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
     exchange: 'orangelight_events'
+qa:
+  <<: *defaults
+  events:
+    server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
+    exchange: 'orangelight_events'
 

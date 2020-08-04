@@ -38,6 +38,7 @@ Metrics/BlockLength:
     - 'config/routes.rb'
     - 'config/deploy/staging.rb'
     - 'config/deploy/alma_qa.rb'
+    - 'config/deploy/qa.rb'
     - 'lib/tasks/browse.rake'
     - 'lib/tasks/pulsearch.rake'
     - 'lib/orangelight/browse_lists.rb'
