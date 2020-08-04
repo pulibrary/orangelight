@@ -23,3 +23,6 @@ production:
 staging:
   <<: *defaults
   bibdata_base: https://bibdata.princeton.edu # change back when ready to merge
+alma_qa:
+  <<: *defaults
+  bibdata_base: https://bibdata.princeton.edu

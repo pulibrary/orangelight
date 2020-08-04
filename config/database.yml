@@ -92,3 +92,7 @@ staging:
   <<: *default
   database: <%= ENV['OL_DB'] %>
   host: <%= ENV['OL_DB_HOST'] %>
+alma_qa:
+  <<: *default
+  database: <%= ENV['OL_DB'] %>
+  host: <%= ENV['OL_DB_HOST'] %>

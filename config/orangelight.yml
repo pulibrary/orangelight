@@ -20,4 +20,10 @@ staging:
   events:
     server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
     exchange: 'orangelight_events'
-    
+
+alma_qa:
+  <<: *defaults
+  events:
+    server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
+    exchange: 'orangelight_events'
+
