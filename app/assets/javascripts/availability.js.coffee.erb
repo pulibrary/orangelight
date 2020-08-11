@@ -22,7 +22,7 @@ class AvailabilityUpdater
   available_labels = ['Available', 'Returned', 'In process', 'Requestable',
     'On shelf', 'All items available', 'On-site access']
   available_non_requestable_labels = ['Available', 'Returned', 'Requestable',
-    'On shelf', 'All items available', 'On-site access', 'On-site - in-transit discharged']
+    'On shelf', 'All items available', 'On-site access', 'On-site - in-transit discharged', 'Reserved for digital lending']
   open_location_labels = ['Available', 'All items available']
   unavailable_labels = ['Checked out', 'Missing', 'Lost']
   request_availability: ->
@@ -35,6 +35,7 @@ class AvailabilityUpdater
         .fail (jqXHR, textStatus, errorThrown) =>
           console.error("Failed to retrieve availability data for the bib. records " + ids.join(", ") + ": " + errorThrown)
 
+    # a show page
     else if $("*[data-availability-record='true']").length > 0
       id = window.location.pathname.split('/')[2]
       if id.match /^SCSB-\d+/
@@ -80,7 +81,11 @@ class AvailabilityUpdater
           this.apply_record_icon(availability_element, "All items available", aeon, availability_info)
         this.get_more_items(holding_id, availability_info['label'])
       else
-        this.apply_record_icon(availability_element, availability_info['status'], aeon, availability_info)
+        if availability_info["patron_group_charged"] == "CDL"
+          this.apply_record_icon(availability_element, "Reserved for Digital Lending" , aeon, availability_info)
+          this.insert_online_link()
+        else
+          this.apply_record_icon(availability_element, availability_info['status'], aeon, availability_info)
       if availability_info['temp_loc']
         current_map_link = $("*[data-holding-id='#{holding_id}'] .find-it")
         temp_map_link = stackmap_link(id, availability_info)
@@ -135,6 +140,12 @@ class AvailabilityUpdater
         location_services_element.hide()
       else
         location_services_element.show()
+  insert_online_link: () ->
+    online_div = $(".availability--online:visible")
+    if online_div.length < 1
+      physical_div = $(".availability--physical")
+      online_div = '<div class="availability--online"><h3>Available Online</h3><ul><li>Princeton users: <a href="#view">View digital content</a></li></ul></div>'
+      $(online_div).insertBefore(physical_div)
   apply_record: (record_id, holding_records) ->
     for holding_id, availability_info of holding_records
       if availability_info['label']
@@ -225,7 +236,9 @@ class AvailabilityUpdater
     status = title_case(status)
     availability_element.addClass("badge")
     label = status_label(status)
-    availability_element.text("#{label}#{due_date(availability_info["due_date"])}")
+    if !availability_info["patron_group_charged"] == "CDL"
+      label = "#{label}#{due_date(availability_info["due_date"])}"
+    availability_element.text(label)
     if label in unavailable_labels
       availability_element.addClass("badge-danger")
     else if label in available_labels
