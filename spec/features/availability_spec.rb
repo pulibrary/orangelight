@@ -18,6 +18,25 @@ describe 'Availability' do
     end
   end
 
+  # This test is quite brittle and will break once this item is removed from
+  # CDL. It seems valid to remove it if it hasn't been refactored by then, and
+  # at least create an issue to replace it with a jest test during a refactor of
+  # this javascript.
+  describe 'An item reserved for controlled digital lending', js: true do
+    before do
+      stub_holding_locations
+      visit '/catalog/7699003'
+    end
+
+    it 'adds a link to the digital object', unless: in_ci? do
+      expect(page).to have_selector('.availability--online a', count: 1)
+      expect(page).to have_selector('h3', text: "Available Online")
+      expect(page).to have_selector('li', text: "Princeton users: View digital content")
+      expect(page).to have_selector('.holding-status', text: "Reserved for digital lending", exact_text: true)
+      expect(page).not_to have_selector('a.request')
+    end
+  end
+
   describe 'Electronic Holdings are displayed on a record page', js: true do
     it 'within the online section', unless: in_ci? do
       stub_holding_locations
