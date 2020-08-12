@@ -134,7 +134,7 @@ class AvailabilityUpdater
     if availability_label_text not in available_non_requestable_labels
       display_request = 'true'
     if availability_label_text == "Reserved for digital lending"
-      location_services_element.hide()
+      location_services_element.remove()
     if title_case(status) == 'On-site - in transit discharged'
       display_request = 'false'
     if display_request == 'true'
