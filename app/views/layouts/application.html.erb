@@ -39,7 +39,8 @@
     <%= render 'shared/matomo' if rails_env? %>
   </head>
 
-  <body class="<%= render_body_class %>">
+  <body class="<%= render_body_class %>"
+        data-availability-base-url="<%= ENV['bibdata_base'] %>/availability">
   <%= render :partial => 'shared/header_navbar' %>
 
   <%= render partial: 'shared/modal' %> <!-- only render if page is using modal -->
