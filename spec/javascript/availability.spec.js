@@ -50,4 +50,17 @@ describe('AvailabilityUpdater', function() {
     expect(u.record_ids()).toEqual(['10585552', '7058493'])
   })
 
+  test('record_ids() on a call number browse page', () => {
+    document.body.innerHTML =
+      '<table><tbody>' +
+      '  <tr>' +
+      '    <td class="availability-column" data-availability-record="true" data-record-id="2939035" data-holding-id="3253750"></td>' +
+      '  </tr>' +
+      '    <td class="availability-column" data-availability-record="true" data-record-id="3821268" data-holding-id="4126404"></td>' +
+      '  <tr>' +
+      '  </tr>' +
+      '</table></tbody>'
+    let u = new updater
+    expect(u.record_ids()).toEqual(['2939035', '3821268'])
+  })
 })
