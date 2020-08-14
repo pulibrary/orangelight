@@ -113,7 +113,7 @@ $( document ).ready(function() {
       request_availability() {
         let url;
         if ($(".documents-list").length > 0) {
-          const ids = this.record_ids().toArray();
+          const ids = availability_updater2.record_ids();
           if (ids.length < 1) { return; }
           const params = $.param({ids});
           url = `${this.availability_url}?${params}`;
@@ -437,9 +437,6 @@ $( document ).ready(function() {
         availability_element.attr('title', `Availability: ${title_case(status)}`);
         availability_element.attr('data-original-title', `Availability: ${title_case(status)}`);
         return availability_element.attr('data-toggle', 'tooltip');
-      }
-      record_ids() {
-        return $("*[data-availability-record='true'][data-record-id]").map((_, x) => $(x).attr("data-record-id"));
       }
       scsb_barcodes() {
         return $("*[data-scsb-availability='true'][data-scsb-barcode]").map((_, x) => $(x).attr("data-scsb-barcode"));
