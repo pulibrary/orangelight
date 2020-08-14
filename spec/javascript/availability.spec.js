@@ -5,6 +5,25 @@ describe('AvailabilityUpdater', function() {
     expect(updater).not.toBe(undefined)
   })
 
+  // TODO: This method isn't covered by the feature tests
+  test('scsb_barcodes() on a search results page', () => {
+    // This is only used on search results page
+    // show pages use `data-availability-record` for scsb barcodes
+    // browse pages don't run availability for scsb items
+    document.body.innerHTML =
+      '<article>' +
+      '  <div class="row">' +
+      '    <div class="record-wrapper">' +
+      '      <ul class="document-metadata dl-horizontal dl-invert">' +
+      '        <li class="blacklight-holdings"><ul><li data-availability-record="false" data-record-id="SCSB-8562843" data-holding-id="8720897" data-aeon="false"><span class="availability-icon badge" title data-scsb-availability="true" data-toggle="tooltip" data-scsb-barcode="33433038233809"></span></li>' +
+      '      </ul>' +
+      '    </div>' +
+      '  </div>' +
+      '</article>'
+    let u = new updater
+    expect(u.scsb_barcodes()).toEqual(['33433038233809'])
+  })
+
   test('record_ids() on a show page', () => {
     document.body.innerHTML =
       '<div>' +

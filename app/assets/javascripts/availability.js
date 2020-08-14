@@ -144,7 +144,7 @@ $( document ).ready(function() {
 
       scsb_search_availability() {
         if ($(".documents-list").length > 0) {
-          const barcodes = this.scsb_barcodes().toArray();
+          const barcodes = availability_updater2.scsb_barcodes();
           if (barcodes.length < 1) { return; }
           const params = $.param({barcodes});
           const url = `${this.availability_url}?${params}`;
@@ -437,9 +437,6 @@ $( document ).ready(function() {
         availability_element.attr('title', `Availability: ${title_case(status)}`);
         availability_element.attr('data-original-title', `Availability: ${title_case(status)}`);
         return availability_element.attr('data-toggle', 'tooltip');
-      }
-      scsb_barcodes() {
-        return $("*[data-scsb-availability='true'][data-scsb-barcode]").map((_, x) => $(x).attr("data-scsb-barcode"));
       }
     };
     AvailabilityUpdater.initClass();
