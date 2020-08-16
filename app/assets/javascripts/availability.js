@@ -25,13 +25,13 @@ $( document ).ready(function() {
     let available_non_requestable_labels = undefined;
     let open_location_labels = undefined;
     let unavailable_labels = undefined;
-    let status_label = undefined;
     let status_display = undefined;
     let due_date = undefined;
-    let title_case = undefined;
     let stackmap_link = undefined;
+    let au2 = undefined;
     AvailabilityUpdater = class AvailabilityUpdater {
       static initClass() {
+        au2 = new AvailabilityUpdater2
         this.prototype.availability_url = $("body").data("availability-base-url");
         id = '';
         on_site_status = 'On-site';
@@ -53,24 +53,6 @@ $( document ).ready(function() {
           'On shelf', 'All items available', 'On-site access', 'On-site - in-transit discharged', 'Reserved for digital lending'];
         open_location_labels = ['Available', 'All items available'];
         unavailable_labels = ['Checked out', 'Missing', 'Lost'];
-        status_label = function(status) {
-          switch (false) {
-            case !Array.from(long_overdue_statuses).includes(status): return 'Long overdue';
-            case !Array.from(lost_statuses).includes(status): return 'Lost';
-            case !Array.from(available_statuses).includes(status): return 'Available';
-            case !Array.from(returned_statuses).includes(status): return 'Returned';
-            case status !== 'In transit discharged': return 'In transit';
-            case !Array.from(in_process_statuses).includes(status): return 'In process';
-            case !Array.from(checked_out_statuses).includes(status): return 'Checked out';
-            case !Array.from(missing_statuses).includes(status): return 'Missing';
-            case !status.match(on_site_unavailable): return circ_desk;
-            case !status.match(on_site_status): return 'On-site access';
-            case !status.match('Order received'): return 'Order received';
-            case !status.match('Pending order'): return 'Pending order';
-            case !status.match('On-order'): return 'On-order';
-            default: return status;
-          }
-        };
         status_display = function(status, label, date_due) {
           if (status.match(label) || status.match(on_site_status)) {
             return status;
@@ -82,7 +64,6 @@ $( document ).ready(function() {
           if (date_string == null) { return ""; }
           return ` - ${date_string}`;
         };
-        title_case = str => str[0].toUpperCase() + str.slice(1, +(str.length - 1) + 1 || undefined).toLowerCase();
         stackmap_link = function(record_id, availability_info, marker_only) {
           let location;
           const temp_status = availability_info['temp_loc'];
@@ -102,6 +83,7 @@ $( document ).ready(function() {
           return link;
         };
       }
+
       constructor() {
         this.process_records = this.process_records.bind(this);
         this.process_barcodes = this.process_barcodes.bind(this);
@@ -110,10 +92,11 @@ $( document ).ready(function() {
         this.request_availability();
         this.scsb_search_availability();
       }
+
       request_availability() {
         let url;
         if ($(".documents-list").length > 0) {
-          const ids = availability_updater2.record_ids();
+          const ids = au2.record_ids();
           if (ids.length < 1) { return; }
           const params = $.param({ids});
           url = `${this.availability_url}?${params}`;
@@ -144,7 +127,7 @@ $( document ).ready(function() {
 
       scsb_search_availability() {
         if ($(".documents-list").length > 0) {
-          const barcodes = availability_updater2.scsb_barcodes();
+          const barcodes = au2.scsb_barcodes();
           if (barcodes.length < 1) { return; }
           const params = $.param({barcodes});
           const url = `${this.availability_url}?${params}`;
@@ -160,21 +143,23 @@ $( document ).ready(function() {
           const result = [];
           for (let record_id in records) {
             const holding_records = records[record_id];
-            result.push(this.apply_record(record_id, holding_records));
+            result.push(au2.apply_record(record_id, holding_records));
           }
           return result;
         })();
       }
+
       process_barcodes(barcodes) {
         return (() => {
           const result = [];
           for (let barcode_id in barcodes) {
             const item_data = barcodes[barcode_id];
-            result.push(this.apply_scsb_record(barcode_id, item_data));
+            result.push(au2.apply_scsb_record(barcode_id, item_data));
           }
           return result;
         })();
       }
+
       process_single(holding_records) {
         return (() => {
           const result = [];
@@ -186,20 +171,20 @@ $( document ).ready(function() {
               const location = $(`*[data-location='true'][data-holding-id='${holding_id}']`);
               location.text(availability_info['label']);
             }
-            if ($(".journal-current-issues").length > 0) { this.get_issues(holding_id); }
+            if ($(".journal-current-issues").length > 0) { au2.get_issues(holding_id); }
             if (availability_info['more_items']) {
-              if (title_case(availability_info['status']).match(on_site_status)) {
-                this.apply_record_icon(availability_element, "On-site access", aeon, availability_info);
+              if (au2.title_case(availability_info['status']).match(on_site_status)) {
+                au2.apply_record_icon(availability_element, "On-site access", aeon, availability_info);
               } else {
-                this.apply_record_icon(availability_element, "All items available", aeon, availability_info);
+                au2.apply_record_icon(availability_element, "All items available", aeon, availability_info);
               }
-              this.get_more_items(holding_id, availability_info['label']);
+              au2.get_more_items(holding_id, availability_info['label']);
             } else {
               if (availability_info["patron_group_charged"] === "CDL") {
-                this.apply_record_icon(availability_element, "Reserved for Digital Lending" , aeon, availability_info);
+                au2.apply_record_icon(availability_element, "Reserved for Digital Lending" , aeon, availability_info);
                 this.insert_online_link();
               } else {
-                this.apply_record_icon(availability_element, availability_info['status'], aeon, availability_info);
+                au2.apply_record_icon(availability_element, availability_info['status'], aeon, availability_info);
               }
             }
             if (availability_info['temp_loc']) {
@@ -212,6 +197,7 @@ $( document ).ready(function() {
           return result;
         })();
       }
+
       process_scsb_single(item_records) {
         let availability_info, barcode, multi_items, status_message;
         if (Object.keys(item_records).length > 1) {
@@ -259,6 +245,7 @@ $( document ).ready(function() {
           return result;
         })();
       }
+
       update_location_services(holding_id, availability_info) {
         let availability_label_text;
         const status = availability_info['status'];
@@ -266,7 +253,7 @@ $( document ).ready(function() {
         const location_services_element = $(`.location-services[data-holding-id='${holding_id}'] a`);
         const availability_label = $(`.holding-status[data-holding-id='${holding_id}'] .availability-icon.badge`);
         if (availability_label.text()) {
-          availability_label_text = title_case(availability_label.text());
+          availability_label_text = au2.title_case(availability_label.text());
         }
         let display_request = location_services_element.attr('data-requestable');
         if (!Array.from(available_non_requestable_labels).includes(availability_label_text)) {
@@ -275,7 +262,7 @@ $( document ).ready(function() {
         if (availability_label_text === "Reserved for digital lending") {
           location_services_element.remove();
         }
-        if (title_case(status) === 'On-site - in transit discharged') {
+        if (au2.title_case(status) === 'On-site - in transit discharged') {
           display_request = 'false';
         }
         if (display_request === 'true') {
@@ -286,6 +273,7 @@ $( document ).ready(function() {
           }
         }
       }
+
       insert_online_link() {
         let online_div = $(".availability--online:visible");
         if (online_div.length < 1) {
@@ -294,150 +282,8 @@ $( document ).ready(function() {
           return $(online_div).insertBefore(physical_div);
         }
       }
-      apply_record(record_id, holding_records) {
-        for (let holding_id in holding_records) {
-          var aeon;
-          const availability_info = holding_records[holding_id];
-          if (availability_info['label']) {
-            const location = $(`*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .results_location`);
-            aeon = $(`*[data-record-id='${record_id}'][data-holding-id='${holding_id}']`).attr('data-aeon');
-            location.text(availability_info['label']);
-          }
-          if (availability_info['more_items']) { this.record_needs_more_info(record_id); }
-          const availability_element = $(`*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .availability-icon`);
-          if (availability_info['temp_loc']) {
-            const current_map_link = $(`*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .find-it`);
-            $(availability_element).next('.icon-warning').hide();
-            const temp_map_link = stackmap_link(record_id, availability_info, true);
-            current_map_link.replaceWith(temp_map_link);
-          }
-          this.apply_record_icon(availability_element, availability_info['status'], aeon, {});
-        }
-        return true;
-      }
-      apply_scsb_record(barcode, item_data) {
-        const availability_element = $(`*[data-scsb-availability='true'][data-scsb-barcode='${barcode}']`);
-        if (item_data['itemAvailabilityStatus'] === 'Available') {
-          availability_element.addClass("badge-success");
-          availability_element.text(item_data['itemAvailabilityStatus']);
-          availability_element.attr("title", "Availability: On Shelf");
-        } else {
-          availability_element.addClass("badge-danger");
-          availability_element.text('Checked Out');
-          availability_element.attr("title", "Availability: Checked Out");
-        }
-        return true;
-      }
-      get_more_items(holding_id, holding_label) {
-        const url = `${this.availability_url}?mfhd=${holding_id}`;
-        const req = $.getJSON(url)
-          .fail((jqXHR, textStatus, errorThrown) => {
-            return console.error(`Failed to retrieve availability data for the holding ID ${holding_id}: ${errorThrown}`);
-          });
 
-        const element = $(`.item-status[data-holding-id='${holding_id}']`);
-        return req.success(function(data) {
-          let ul = "";
-          for (let key in data) {
-            var li;
-            const item = data[key];
-            const status = title_case(item['status']);
-            const label = status_label(status);
-            if ((holding_label !== item['label']) || item['temp_loc']) {
-              li = `<li>${item['enum_display'] || 'Item'}: ${item['label']} - ${status_display(status, label)}</li>`;
-              ul = ul + li;
-            }
-            if (!Array.from(available_statuses).includes(status) && (status !== on_site_status)) {
-              if ((holding_label === item['label']) && !item['temp_loc']) {
-                li = `<li>${item['enum_display'] || 'Item'}: ${status_display(status, label, item['due_date'])}</li>`;
-                ul = ul + li;
-              }
-              const span = $(`*[data-holding-id='${holding_id}'] .availability-icon`);
-              const txt = status.match(on_site_unavailable) ?
-                circ_desk
-                : !Array.from(unavailable_labels).includes(label) && (span.text() !== "Some items not available") ?
-                "Some items may not be available"
-                :
-                "Some items not available";
-              span.text(txt);
-              span.attr("title", `Availability: ${txt}`);
-              span.attr("data-original-title", `Availability: ${txt}`);
-              if (!status.match(on_site_unavailable)) {
-                span.removeClass("badge-success");
-                span.addClass("badge-secondary");
-                const location_services_element = $(`.location-services[data-holding-id='${holding_id}']`);
-                location_services_element.show();
-              }
-            }
-          }
-          if (ul !== "") {
-            element.before("<div class=\"holding-label item-status-label\">Item status</div>");
-            return element.append(ul);
-          }
-        });
-      }
-      get_issues(holding_id) {
-        const url = `${this.availability_url}?mfhd_serial=${holding_id}`;
-        const req = $.getJSON(url)
-          .fail((jqXHR, textStatus, errorThrown) => {
-            return console.error(`Failed to retrieve availability data for the serial holding ID/MFHD ${holding_id}: ${errorThrown}`);
-          });
 
-        const element = $(`*[data-journal='true'][data-holding-id='${holding_id}']`);
-        return req.success(function(data) {
-          if (data.length > 1) {
-            element.before("<div class=\"holding-label current-issues\">Current issues</div>");
-            element.after("<div class=\"trigger\">More</div>");
-          } else if (data !== '') {
-            element.before("<div class=\"holding-label current-issues\">Current issues</div>");
-          }
-          return (() => {
-            const result = [];
-            for (let key in data) {
-              const issue = data[key];
-              const li = $(`<li>${issue}</li>`);
-              result.push(element.append(li));
-            }
-            return result;
-          })();
-        });
-      }
-      record_needs_more_info(record_id) {
-        const element = $(`*[data-record-id='${record_id}'] .more-info`);
-        element.addClass("badge badge-secondary");
-        element.text("View record for full availability");
-        element.attr('title', "Click on the record for full availability info");
-        const empty = $(`*[data-record-id='${record_id}'].empty`);
-        return empty.removeClass("empty");
-      }
-      apply_record_icon(availability_element, status, aeon, availability_info) {
-        status = title_case(status);
-        availability_element.addClass("badge");
-        let label = status_label(status);
-        if (!availability_info["patron_group_charged"] === "CDL") {
-          label = `${label}${due_date(availability_info["due_date"])}`;
-        }
-        availability_element.text(label);
-        if (Array.from(unavailable_labels).includes(label)) {
-          availability_element.addClass("badge-danger");
-        } else if (Array.from(available_labels).includes(label)) {
-          availability_element.addClass("badge-success");
-        } else if (label === 'On-site access') {
-          availability_element.addClass("badge-warning");
-        } else if (label === circ_desk) {
-          availability_element.addClass("badge-warning");
-        } else if (label === 'Online') {
-          availability_element.addClass("badge-primary");
-        } else {
-          availability_element.addClass("badge-secondary");
-        }
-        if (aeon === 'true') {
-          status = "On-site access by request";
-        }
-        availability_element.attr('title', `Availability: ${title_case(status)}`);
-        availability_element.attr('data-original-title', `Availability: ${title_case(status)}`);
-        return availability_element.attr('data-toggle', 'tooltip');
-      }
     };
     AvailabilityUpdater.initClass();
     return AvailabilityUpdater;
