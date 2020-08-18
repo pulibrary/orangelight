@@ -28,6 +28,7 @@ gem 'coffee-rails', '~> 4.2.0'
 gem 'mini_racer'
 
 # Use jquery as the JavaScript library
+# jest tests use yarn to get jquery; if upgrading here keep that version in sync
 gem 'jquery-rails'
 
 # Static pages
