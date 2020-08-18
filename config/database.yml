@@ -96,3 +96,8 @@ alma_qa:
   <<: *default
   database: <%= ENV['OL_DB'] %>
   host: <%= ENV['OL_DB_HOST'] %>
+qa:
+  <<: *default
+  database: <%= ENV['OL_DB'] %>
+  host: <%= ENV['OL_DB_HOST'] %>
+

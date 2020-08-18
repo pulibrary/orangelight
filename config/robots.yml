@@ -46,3 +46,5 @@ staging:
   <<: *defaults
 alma_qa:
   <<: *defaults
+qa:
+  <<: *defaults
