@@ -7,6 +7,8 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 import figgy_manifest_manager from '../orangelight/figgy_manifest_manager'
+import availability_updater2 from '../orangelight/availability'
 
 // Ensure that this is available for the DOM
 window.FiggyManifestManager = figgy_manifest_manager
+window.AvailabilityUpdater2 = availability_updater2
