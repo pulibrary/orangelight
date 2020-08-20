@@ -1,4 +1,4 @@
-import updater from '../../app/javascript/orangelight/availability'
+import updater from 'orangelight/availability'
 
 describe('AvailabilityUpdater', function() {
   test('hooked up right', () => {

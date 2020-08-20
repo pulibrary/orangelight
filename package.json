@@ -40,6 +40,10 @@
     "moduleFileExtensions": [
       "js",
       "es6"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "app/javascript"
     ]
   }
 }
