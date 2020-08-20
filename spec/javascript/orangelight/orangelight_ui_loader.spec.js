@@ -1,6 +1,6 @@
 import loader from 'orangelight/orangelight_ui_loader'
 
-describe('OrangelightUILoader', function() {
+describe('OrangelightUiLoader', function() {
   test('hooked up right', () => {
     expect(loader).not.toBe(undefined)
   })
@@ -12,7 +12,7 @@ describe('OrangelightUILoader', function() {
       '<input type="tel" id="two">'+
       '<input type="text" id="three"></div>'
     let l = new loader
-    l.run()
+    l.setup_modal_focus()
     expect(document.activeElement.id).toEqual('')
 
     // trigger event
