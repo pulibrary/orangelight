@@ -1,4 +1,4 @@
-import AvailabilityUpdater2 from '../orangelight/availability'
+import AvailabilityUpdater from '../orangelight/availability'
 export default class OrangelightUiLoader {
   run() {
     this.setup_availability()
@@ -12,7 +12,7 @@ export default class OrangelightUiLoader {
   }
 
   setup_availability() {
-    let au2 = new AvailabilityUpdater2
+    let au2 = new AvailabilityUpdater
     au2.request_availability();
     au2.scsb_search_availability();
   }
