@@ -79,45 +79,49 @@ module BrowseLists
             record[facet_field.to_s].each_with_index do |cn, _i|
               sort_cn = StringFunctions.cn_normalize(cn)
               next if multi_cns.key?(sort_cn)
-              bibid = record['id']
-              title = record['title_display']
-              if record['title_vern_display']
-                title = record['title_vern_display']
-                dir = title.dir
-              else
-                dir = 'ltr' # ltr for non alt script
-              end
-              if record['pub_created_vern_display']
-                date = record['pub_created_vern_display'][0]
-              elsif record['pub_created_display'].present?
-                date = record['pub_created_display'][0]
-              end
-              label = cn
-              if record['author_display']
-                author = record['author_display'][0..1].last
-              elsif record['author_s']
-                author = record['author_s'][0]
-              end
-              if record['holdings_1display']
-                holding_block = JSON.parse(record['holdings_1display'])
-                holding_record = holding_block.select { |_k, h| h['call_number_browse'] == cn }
-                unless holding_record.empty?
-                  if multiple_locations?(holding_record)
-                    location = 'Multiple locations'
-                  else
-                    holding_id = holding_record.keys.first
-                    location = holding_record[holding_id]['location']
-                  end
-                end
-              end
-              holding_id ||= ''
-              location ||= ''
-              csv << [sort_cn, label, dir, '', title, author, date, bibid, holding_id, location]
+              csv << parse_call_number_row(record, cn)
             end
           end
           start += rows
         end
       end
+    end
+
+    def parse_call_number_row(record, cn)
+      bibid = record['id']
+      title = record['title_display']
+      if record['title_vern_display']
+        title = record['title_vern_display']
+        dir = title.dir
+      else
+        dir = 'ltr' # ltr for non alt script
+      end
+      if record['pub_created_vern_display']
+        date = record['pub_created_vern_display'][0]
+      elsif record['pub_created_display'].present?
+        date = record['pub_created_display'][0]
+      end
+      label = cn
+      if record['author_display']
+        author = record['author_display'][0..1].last
+      elsif record['author_s']
+        author = record['author_s'][0]
+      end
+      if record['holdings_1display']
+        holding_block = JSON.parse(record['holdings_1display'])
+        holding_record = holding_block.select { |_k, h| h['call_number_browse'] == cn }
+        unless holding_record.empty?
+          if multiple_locations?(holding_record)
+            location = 'Multiple locations'
+          else
+            holding_id = holding_record.keys.first
+            location = holding_record[holding_id]['location']
+          end
+        end
+      end
+      holding_id ||= ''
+      location ||= ''
+      [sort_cn, label, dir, '', title, author, date, bibid, holding_id, location]
     end
 
     def load_facet(sql_command, _facet_request, _conn, _facet_field, table_name)
