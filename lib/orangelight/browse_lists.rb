@@ -6,6 +6,7 @@ require 'yajl/json_gem'
 require './lib/orangelight/string_functions'
 
 module BrowseLists
+  class BrowseListFailed < StandardError; end
   class << self
     def connection
       config = Orangelight::Application.config.database_configuration[::Rails.env]
@@ -71,18 +72,30 @@ module BrowseLists
         start = 0
         cn_fields = "#{facet_field},title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display"
         iterations.times do
+          retries = 0
           cn_request = "#{core_url}select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&sort=id%20asc&rows=#{rows}&start=#{start}"
-          resp = conn.get cn_request.to_s
-          req = JSON.parse(resp.body)
-          req['response']['docs'].each do |record|
-            next unless record[facet_field.to_s]
-            record[facet_field.to_s].each_with_index do |cn, _i|
-              sort_cn = StringFunctions.cn_normalize(cn)
-              next if multi_cns.key?(sort_cn)
-              csv << parse_call_number_row(record, cn)
+          loop do
+            resp = conn.get cn_request.to_s
+            req = JSON.parse(resp.body)
+            if req['response']
+              req['response']['docs'].each do |record|
+                next unless record[facet_field.to_s]
+                record[facet_field.to_s].each_with_index do |cn, _i|
+                  sort_cn = StringFunctions.cn_normalize(cn)
+                  next if multi_cns.key?(sort_cn)
+                  last_row = parse_call_number_row(record, cn)
+                  csv << last_row
+                end
+              end
+              start += rows
+            else
+              Rails.logger.error "Call number browse generation failed at iteration with start #{start}."
+              Rails.logger.error "Response from solr was: #{resp}"
+              Rails.logger.error "Last row was: #{last_row}"
+              raise BrowseListFailed if retries >= 2
+              retries += 1
             end
           end
-          start += rows
         end
       end
     end
