@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 require 'rails_helper'
 require 'orangelight/browse_lists'
+require 'orangelight/browse_lists/call_number_csv'
 
-RSpec.describe BrowseLists do
-  describe ".browse_cn" do
+RSpec.describe BrowseLists::CallNumberCSV do
+  describe "#write" do
     before do
       WebMock.disable_net_connect!
 
@@ -40,11 +41,8 @@ RSpec.describe BrowseLists do
 
       allow(described_class).to receive(:output_root).and_return(output_root)
 
-      _sql_command, facet_request, conn = described_class.connection
-      described_class.browse_cn(
-        nil, facet_request, conn,
-        'call_number_browse_s', nil, rows: 500
-      )
+      _sql_command, facet_request, conn = BrowseLists.connection
+      described_class.new(facet_request, conn, output_root, rows: 500).write
 
       csv_file = output_root.join("call_number_browse_s.csv")
       expect(File.exist?(csv_file)).to be true
