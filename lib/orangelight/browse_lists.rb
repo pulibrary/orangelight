@@ -83,7 +83,7 @@ module BrowseLists
                 record[facet_field.to_s].each_with_index do |cn, _i|
                   sort_cn = StringFunctions.cn_normalize(cn)
                   next if multi_cns.key?(sort_cn)
-                  last_row = parse_call_number_row(record, cn, sort_cn)
+                  last_row = parse_call_number_row(record, cn)
                   csv << last_row
                 end
               end
@@ -100,7 +100,7 @@ module BrowseLists
       end
     end
 
-    def parse_call_number_row(record, cn, sort_cn)
+    def parse_call_number_row(record, cn)
       bibid = record['id']
       title = record['title_display']
       if record['title_vern_display']
