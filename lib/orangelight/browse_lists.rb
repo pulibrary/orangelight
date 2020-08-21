@@ -6,7 +6,6 @@ require 'yajl/json_gem'
 require './lib/orangelight/string_functions'
 
 module BrowseLists
-  class BrowseListFailed < StandardError; end
   class << self
     def connection
       config = Orangelight::Application.config.database_configuration[::Rails.env]
@@ -72,69 +71,53 @@ module BrowseLists
         start = 0
         cn_fields = "#{facet_field},title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display"
         iterations.times do
-          retries = 0
           cn_request = "#{core_url}select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&sort=id%20asc&rows=#{rows}&start=#{start}"
-          loop do
-            resp = conn.get cn_request.to_s
-            req = JSON.parse(resp.body)
-            if req['response']
-              req['response']['docs'].each do |record|
-                next unless record[facet_field.to_s]
-                record[facet_field.to_s].each_with_index do |cn, _i|
-                  sort_cn = StringFunctions.cn_normalize(cn)
-                  next if multi_cns.key?(sort_cn)
-                  last_row = parse_call_number_row(record, cn, sort_cn)
-                  csv << last_row
+          resp = conn.get cn_request.to_s
+          req = JSON.parse(resp.body)
+          req['response']['docs'].each do |record|
+            next unless record[facet_field.to_s]
+            record[facet_field.to_s].each_with_index do |cn, _i|
+              sort_cn = StringFunctions.cn_normalize(cn)
+              next if multi_cns.key?(sort_cn)
+              bibid = record['id']
+              title = record['title_display']
+              if record['title_vern_display']
+                title = record['title_vern_display']
+                dir = title.dir
+              else
+                dir = 'ltr' # ltr for non alt script
+              end
+              if record['pub_created_vern_display']
+                date = record['pub_created_vern_display'][0]
+              elsif record['pub_created_display'].present?
+                date = record['pub_created_display'][0]
+              end
+              label = cn
+              if record['author_display']
+                author = record['author_display'][0..1].last
+              elsif record['author_s']
+                author = record['author_s'][0]
+              end
+              if record['holdings_1display']
+                holding_block = JSON.parse(record['holdings_1display'])
+                holding_record = holding_block.select { |_k, h| h['call_number_browse'] == cn }
+                unless holding_record.empty?
+                  if multiple_locations?(holding_record)
+                    location = 'Multiple locations'
+                  else
+                    holding_id = holding_record.keys.first
+                    location = holding_record[holding_id]['location']
+                  end
                 end
               end
-              start += rows
-            else
-              Rails.logger.error "Call number browse generation failed at iteration with start #{start}."
-              Rails.logger.error "Response from solr was: #{resp}"
-              Rails.logger.error "Last row was: #{last_row}"
-              raise BrowseListFailed if retries >= 2
-              retries += 1
+              holding_id ||= ''
+              location ||= ''
+              csv << [sort_cn, label, dir, '', title, author, date, bibid, holding_id, location]
             end
           end
+          start += rows
         end
       end
-    end
-
-    def parse_call_number_row(record, cn, sort_cn)
-      bibid = record['id']
-      title = record['title_display']
-      if record['title_vern_display']
-        title = record['title_vern_display']
-        dir = title.dir
-      else
-        dir = 'ltr' # ltr for non alt script
-      end
-      if record['pub_created_vern_display']
-        date = record['pub_created_vern_display'][0]
-      elsif record['pub_created_display'].present?
-        date = record['pub_created_display'][0]
-      end
-      label = cn
-      if record['author_display']
-        author = record['author_display'][0..1].last
-      elsif record['author_s']
-        author = record['author_s'][0]
-      end
-      if record['holdings_1display']
-        holding_block = JSON.parse(record['holdings_1display'])
-        holding_record = holding_block.select { |_k, h| h['call_number_browse'] == cn }
-        unless holding_record.empty?
-          if multiple_locations?(holding_record)
-            location = 'Multiple locations'
-          else
-            holding_id = holding_record.keys.first
-            location = holding_record[holding_id]['location']
-          end
-        end
-      end
-      holding_id ||= ''
-      location ||= ''
-      [sort_cn, label, dir, '', title, author, date, bibid, holding_id, location]
     end
 
     def load_facet(sql_command, _facet_request, _conn, _facet_field, table_name)
