@@ -30,6 +30,10 @@ module BrowseLists
       [sql_command, facet_request, conn]
     end
 
+    def output_root
+      Pathname.new('/tmp')
+    end
+
     def core_url
       Blacklight.default_index.connection.uri.to_s.gsub(%r{^.*\/solr}, '/solr')
     end
@@ -37,7 +41,7 @@ module BrowseLists
     def browse_facet(_sql_command, facet_request, conn, facet_field, table_name)
       resp = conn.get "#{facet_request}#{facet_field}"
       req = JSON.parse(resp.body)
-      CSV.open("/tmp/#{table_name}.csv", 'wb') do |csv|
+      CSV.open(output_root.join("#{table_name}.csv"), 'wb') do |csv|
         label = ''
         req['facet_counts']['facet_fields'][facet_field.to_s].each_with_index do |fac, i|
           if i.even?
@@ -49,10 +53,13 @@ module BrowseLists
       end
     end
 
-    def browse_cn(_sql_command, facet_request, conn, facet_field, _table_name)
+    # rubocop:disable Metrics/ParameterLists
+    def browse_cn(_sql_command, facet_request, conn, facet_field, _table_name, rows: 50_000)
+      # Collect all the call numbers with facet count > 2
+      # This request takes a minute or so
       resp = conn.get "#{facet_request}#{facet_field}&facet.mincount=2"
       req = JSON.parse(resp.body)
-      CSV.open("/tmp/#{facet_field}.csv", 'wb') do |csv|
+      CSV.open(output_root.join("#{facet_field}.csv"), 'wb') do |csv|
         mcn = ''
         multi_cns = {}
         req['facet_counts']['facet_fields'][facet_field.to_s].each_with_index do |f, i|
@@ -64,13 +71,21 @@ module BrowseLists
             csv << [sort_cn, mcn, 'ltr', '', "#{f} titles with this call number", '', '', "?f[#{facet_field}][]=#{CGI.escape(mcn)}", '', 'Multiple locations']
           end
         end
+        # Count of all items in the index
         resp = conn.get "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax"
         num_docs = JSON.parse(resp.body)['response']['numFound']
-        rows = 500_000
-        iterations = num_docs / rows + 1
+        iterations =
+          if (num_docs % rows).zero?
+            num_docs / rows
+          else
+            num_docs / rows + 1
+          end
+
         start = 0
         cn_fields = "#{facet_field},title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display"
         iterations.times do
+          # Get the actual items. With 50_000 rows it takes about a minute;
+          # adjust further if there are continued timeout problems
           cn_request = "#{core_url}select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&sort=id%20asc&rows=#{rows}&start=#{start}"
           resp = conn.get cn_request.to_s
           req = JSON.parse(resp.body)
@@ -119,6 +134,7 @@ module BrowseLists
         end
       end
     end
+    # rubocop:enable Metrics/ParameterLists
 
     def load_facet(sql_command, _facet_request, _conn, _facet_field, table_name)
       system(%(cp /tmp/#{table_name}.sorted /tmp/#{table_name}.sorted.backup))
