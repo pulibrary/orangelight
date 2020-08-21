@@ -50,6 +50,8 @@ module BrowseLists
     end
 
     def browse_cn(_sql_command, facet_request, conn, facet_field, _table_name)
+      # Collect all the call numbers with facet count > 2
+      # This request takes a minute or so
       resp = conn.get "#{facet_request}#{facet_field}&facet.mincount=2"
       req = JSON.parse(resp.body)
       CSV.open("/tmp/#{facet_field}.csv", 'wb') do |csv|
@@ -64,10 +66,12 @@ module BrowseLists
             csv << [sort_cn, mcn, 'ltr', '', "#{f} titles with this call number", '', '', "?f[#{facet_field}][]=#{CGI.escape(mcn)}", '', 'Multiple locations']
           end
         end
+        # Count of all items in the index
         resp = conn.get "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax"
         num_docs = JSON.parse(resp.body)['response']['numFound']
-        rows = 500_000
+        rows = 50_000
         iterations = num_docs / rows + 1
+
         start = 0
         cn_fields = "#{facet_field},title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display"
         iterations.times do
