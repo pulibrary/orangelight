@@ -7,7 +7,7 @@ set :application, 'orangelight'
 set :repo_url, 'https://github.com/pulibrary/orangelight.git'
 
 # gets overriden to development on staging deploy
-set :branch, 'master'
+set :branch, ENV.fetch('BRANCH', 'master')
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
