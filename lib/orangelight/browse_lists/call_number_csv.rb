@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module BrowseLists
+  class SolrResponseError < StandardError; end
   class CallNumberCSV
     attr_reader :output_root, :facet_request, :conn, :rows
     attr_accessor :multi_cn_lookup
@@ -49,15 +50,10 @@ module BrowseLists
       # Append the rest of the call numbers to the file
       def write_single_call_numbers
         start = 0
-        cn_fields = "#{facet_field},title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display"
-
         CSV.open(filename, 'ab') do |csv|
           iterations.times do
-            # Get the actual items
-            cn_request = "#{core_url}select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&sort=id%20asc&rows=#{rows}&start=#{start}"
-            resp = conn.get cn_request.to_s
-            req = JSON.parse(resp.body)
-            req['response']['docs'].each do |record|
+            body = solr_page_body(start)
+            body['response']['docs'].each do |record|
               next unless record[facet_field]
               record[facet_field].each do |cn|
                 sort_cn = StringFunctions.cn_normalize(cn)
@@ -68,6 +64,24 @@ module BrowseLists
             start += rows
           end
         end
+      end
+
+      # Get a page of solr results for actual items starting at the given number
+      def solr_page_body(start)
+        retries = 0
+        req = {}
+        cn_fields = "#{facet_field},title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display"
+        loop do
+          # Get the actual items
+          cn_request = "#{core_url}select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&sort=id%20asc&rows=#{rows}&start=#{start}"
+          resp = conn.get cn_request.to_s
+          req = JSON.parse(resp.body)
+          break if req['response']
+          Rails.logger.error "Call number browse generation failed at iteration with start #{start}. Response from solr was: #{resp}"
+          raise SolrResponseError if retries >= 2
+          retries += 1
+        end
+        req
       end
 
       # calculate the number of pages to fetch from solr
