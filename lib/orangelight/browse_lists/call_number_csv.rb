@@ -15,11 +15,6 @@ module BrowseLists
 
     def write
       write_multiple_call_numbers
-      write_single_call_numbers
-    end
-
-    def run
-      write_multiple_call_numbers
       write_remaining_call_numbers
     end
 
@@ -88,55 +83,6 @@ module BrowseLists
           retries += 1
         end
         req
-      end
-
-      # Append the rest of the call numbers to the file
-      def write_single_call_numbers
-        start = 0
-        CSV.open(filename, 'ab') do |csv|
-          iterations.times do
-            body = solr_page_body(start)
-            body['response']['docs'].each do |record|
-              next unless record[facet_field]
-              record[facet_field].each do |cn|
-                sort_cn = StringFunctions.cn_normalize(cn)
-                next if multi_cn_lookup.key?(sort_cn)
-                csv << parse_cn_row(record, cn, sort_cn)
-              end
-            end
-            start += rows
-          end
-        end
-      end
-
-      # Get a page of solr results for actual items starting at the given number
-      def solr_page_body(start)
-        retries = 0
-        req = {}
-        cn_fields = "#{facet_field},title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display"
-        loop do
-          # Get the actual items
-          cn_request = "#{core_url}select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&sort=id%20asc&rows=#{rows}&start=#{start}"
-          resp = conn.get cn_request.to_s
-          req = JSON.parse(resp.body)
-          break if req['response']
-          Rails.logger.error "Call number browse generation failed at iteration with start #{start}. Response from solr was: #{resp}"
-          raise SolrResponseError if retries >= 2
-          retries += 1
-        end
-        req
-      end
-
-      # calculate the number of pages to fetch from solr
-      def iterations
-        # Get count of all items in the index
-        resp = conn.get "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax"
-        num_docs = JSON.parse(resp.body)['response']['numFound']
-        if (num_docs % rows).zero?
-          num_docs / rows
-        else
-          num_docs / rows + 1
-        end
       end
 
       def parse_cn_row(record, cn, sort_cn)
