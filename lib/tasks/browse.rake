@@ -28,7 +28,7 @@ namespace :browse do
   desc 'Pull data for call numbers browse'
   task :call_numbers do
     _sql_command, facet_request, conn = BrowseLists.connection
-    BrowseLists::CallNumberCSV.new(facet_request, conn).write
+    BrowseLists::CallNumberCSV.new(facet_request, conn).run
   end
 
   desc 'Sort and load data for names browse'

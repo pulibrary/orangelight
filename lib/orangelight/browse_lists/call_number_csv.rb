@@ -18,6 +18,11 @@ module BrowseLists
       write_single_call_numbers
     end
 
+    def run
+      write_multiple_call_numbers
+      write_remaining_call_numbers
+    end
+
     def filename
       output_root.join("#{facet_field}.csv")
     end
@@ -45,6 +50,44 @@ module BrowseLists
             csv << [sort_cn, mcn, 'ltr', '', "#{record_count} titles with this call number", '', '', "?f[#{facet_field}][]=#{CGI.escape(mcn)}", '', 'Multiple locations']
           end
         end
+      end
+
+      # Append the rest of the call numbers to the file
+      def write_remaining_call_numbers
+        cursor_mark = '*'
+        CSV.open(filename, 'ab') do |csv|
+          loop do
+            body = solr_cursor_page_body(cursor_mark)
+            body['response']['docs'].each do |record|
+              next unless record[facet_field]
+              record[facet_field].each do |cn|
+                sort_cn = StringFunctions.cn_normalize(cn)
+                next if multi_cn_lookup.key?(sort_cn)
+                csv << parse_cn_row(record, cn, sort_cn)
+              end
+            end
+            next_cursor_mark = body['nextCursorMark']
+            break if cursor_mark == next_cursor_mark
+            cursor_mark = next_cursor_mark
+          end
+        end
+      end
+
+      # Get a page of solr results for actual items starting at the given number
+      def solr_cursor_page_body(cursor_mark)
+        retries = 0
+        req = {}
+        cn_fields = "#{facet_field},title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display"
+        loop do
+          cn_request = "#{core_url}select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&sort=id%20asc&rows=#{rows}&cursorMark=#{cursor_mark}"
+          resp = conn.get cn_request.to_s
+          req = JSON.parse(resp.body)
+          break if req['response']
+          Rails.logger.error "Call number browse generation failed at iteration with cursor mark #{cursor_mark}. Response from solr was: #{resp}"
+          raise SolrResponseError if retries >= 2
+          retries += 1
+        end
+        req
       end
 
       # Append the rest of the call numbers to the file
