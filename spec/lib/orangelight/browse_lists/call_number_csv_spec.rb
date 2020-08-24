@@ -37,7 +37,7 @@ RSpec.describe BrowseLists::CallNumberCSV do
         allow: 'chromedriver.storage.googleapis.com'
       )
       # delete the test csv from tmp
-      FileUtils.remove_file(output_root, true)
+      FileUtils.remove_dir(output_root, true)
     end
 
     it "generates a csv" do
