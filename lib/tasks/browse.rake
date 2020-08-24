@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require './lib/orangelight/browse_lists'
+require './lib/orangelight/browse_lists/call_number_csv'
 
 namespace :browse do
   desc 'Pull data for names browse'
