@@ -5,7 +5,7 @@ module BrowseLists
   class CallNumberCSV
     attr_reader :output_root, :facet_request, :conn, :rows
     attr_accessor :multi_cn_lookup
-    def initialize(facet_request, conn, output_root, rows: 250_000)
+    def initialize(facet_request, conn, output_root: Pathname.new("/tmp"), rows: 250_000)
       @output_root = output_root
       @facet_request = facet_request
       @conn = conn
