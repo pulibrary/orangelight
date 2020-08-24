@@ -7,7 +7,7 @@
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
-export default class AvailabilityUpdater2 {
+export default class AvailabilityUpdater {
 
   constructor() {
     this.availability_url = $("body").data("availability-base-url");
