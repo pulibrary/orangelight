@@ -4,7 +4,7 @@ module BrowseLists
   class CallNumberCSV
     attr_reader :output_root, :facet_request, :conn, :rows
     attr_accessor :multi_cn_lookup
-    def initialize(facet_request, conn, output_root, rows: 50_000)
+    def initialize(facet_request, conn, output_root, rows: 250_000)
       @output_root = output_root
       @facet_request = facet_request
       @conn = conn
@@ -53,8 +53,7 @@ module BrowseLists
 
         CSV.open(filename, 'ab') do |csv|
           iterations.times do
-            # Get the actual items. With 50_000 rows it takes about a minute;
-            # adjust further if there are continued timeout problems
+            # Get the actual items
             cn_request = "#{core_url}select?q=*%3A*&fl=#{cn_fields}&wt=json&indent=true&defType=edismax&facet=false&sort=id%20asc&rows=#{rows}&start=#{start}"
             resp = conn.get cn_request.to_s
             req = JSON.parse(resp.body)
