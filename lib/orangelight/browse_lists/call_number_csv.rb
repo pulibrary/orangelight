@@ -68,7 +68,7 @@ module BrowseLists
         end
       end
 
-      # Get a page of solr results for actual items starting at the given number
+      # Get a page of solr results for actual items starting at the given cursor
       def solr_cursor_page_body(cursor_mark)
         retries = 0
         req = {}
