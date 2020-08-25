@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   mount Requests::Engine, at: '/requests'
 
   get 'catalog/:id/staff_view', to: 'catalog#librarian_view', as: 'staff_view_solr_document'
+  get 'catalog/:id/hathi', to: 'catalog#hathi', constraints: ->(req) { req.format == :json }
 
   concern :marc_viewable, Blacklight::Marc::Routes::MarcViewable.new
   root to: 'catalog#index'

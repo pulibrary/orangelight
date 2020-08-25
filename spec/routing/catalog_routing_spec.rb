@@ -20,4 +20,14 @@ RSpec.describe CatalogController, type: :routing do
       expect(get: '/catalog/99/staff_view').to route_to('catalog#librarian_view', id: '99')
     end
   end
+
+  describe 'hathi routes' do
+    it 'catalog/99/hathi has no route' do
+      expect(get: '/catalog/99/hathi').not_to be_routable
+    end
+
+    it 'catalog/99/hathi.json routes to #hathi' do
+      expect(get: '/catalog/99/hathi.json').to route_to('catalog#hathi', id: '99', format: 'json')
+    end
+  end
 end
