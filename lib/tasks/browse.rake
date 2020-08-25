@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require './lib/orangelight/browse_lists'
+require './lib/orangelight/browse_lists/call_number_csv'
 
 namespace :browse do
   desc 'Pull data for names browse'
@@ -26,9 +27,8 @@ namespace :browse do
 
   desc 'Pull data for call numbers browse'
   task :call_numbers do
-    sql_command, facet_request, conn = BrowseLists.connection
-    BrowseLists.browse_cn(sql_command, facet_request, conn,
-                          'call_number_browse_s', 'orangelight_call_numbers')
+    _sql_command, facet_request, conn = BrowseLists.connection
+    BrowseLists::CallNumberCSV.new(facet_request, conn).write
   end
 
   desc 'Sort and load data for names browse'
