@@ -645,4 +645,13 @@ class CatalogController < ApplicationController
   rescue ActionController::BadRequest
     render file: Rails.public_path.join('x400.html'), layout: true, status: :bad_request
   end
+
+  def hathi
+    _, document = search_service.fetch(params[:id])
+    unless params[:id].upcase.starts_with?("SCSB")
+      hathi_url = HathiUrl.new(oclc_id: document["oclc_s"]&.first).url
+      render(json: { hathi_url: hathi_url }) && return if hathi_url
+    end
+    render json: { error: "not-found" }.to_json, status: 404
+  end
 end

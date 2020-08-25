@@ -24,6 +24,7 @@ class HathiUrl
       hathi_url(hathi_data['items'].first['htid']) if hathi_data['items'].count.positive?
     rescue JSON::ParserError => e
       Rails.logger.warn(e.message)
+      # retry due to request rate throttling
       @retry_count += 1
       if @retry_count <= maximum_retries
         sleep sleep_duration

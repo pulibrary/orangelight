@@ -76,6 +76,37 @@ RSpec.describe CatalogController do
     end
   end
 
+  describe 'hathi url api' do
+    before do
+      stub_hathi
+    end
+
+    context 'when the item has hathi data' do
+      it 'returns the hathi_url' do
+        hathi_url =
+          "https://babel.hathitrust.org/Shibboleth.sso/Login?entityID=" \
+          "https://idp.princeton.edu/idp/shibboleth" \
+          "&target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fpt%3Fid%3Duc1.c2754878"
+
+        get :hathi, params: { id: '426420', format: :json }
+        expect(response.status).to eq(200)
+        expect(response.body).to eq(
+          { hathi_url: hathi_url }.to_json
+        )
+      end
+    end
+
+    context 'when the item does not have hathi data' do
+      it 'returns 404' do
+        get :hathi, params: { id: '8938641', format: :json }
+        expect(response.status).to eq(404)
+        expect(response.body).to eq(
+          { error: "not-found" }.to_json
+        )
+      end
+    end
+  end
+
   describe 'show does not include the hathi url' do
     before do
       stub_hathi
