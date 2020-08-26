@@ -5,6 +5,38 @@ describe('AvailabilityUpdater', function() {
     expect(updater).not.toBe(undefined)
   })
 
+  test('insert_online_header() when there was no header', () => {
+    document.body.innerHTML =
+      '<div class="wrapper"><div class="availability--physical"></div></div>'
+    let u = new updater
+    u.insert_online_header()
+
+    const onlineDiv = document.getElementsByClassName('availability--online:visible')
+    expect(onlineDiv.length).toEqual(1)
+  })
+
+  test("insert_online_header() doesn't add a new one when there was already a header", () => {
+    document.body.innerHTML =
+      '<div class="wrapper"><div class="availability--online:visible"></div><div class="availability--physical"></div></div>'
+    let u = new updater
+    u.insert_online_header()
+
+    const onlineDiv = document.getElementsByClassName('availability--online:visible')
+    expect(onlineDiv.length).toEqual(1)
+  })
+
+  test("insert_online_link() adds a new link to the list", () => {
+    document.body.innerHTML =
+      '<div class="wrapper"><div class="availability--online:visible"><ul></ul></div><div class="availability--physical"></div></div>'
+    let u = new updater
+    u.insert_online_link()
+
+    const link = document.getElementsByTagName('li')
+    expect(link.length).toEqual(1)
+    let link_item = link.item(0)
+    expect(link.item(0).textContent).toEqual("Princeton users: View digital content")
+  })
+
   // TODO: This method isn't covered by the feature tests
   test('scsb_barcodes() on a search results page', () => {
     // This is only used on search results page

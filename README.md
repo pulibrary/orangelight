@@ -153,7 +153,13 @@ Start the Bibdata server, and then set the ```bidata_base``` value in OrangeLigh
 `$ yarn install`
 `$ yarn test`
 
-Debugging instructions: https://facebook.github.io/jest/docs/en/troubleshooting.html
+### Debugging jest tests
+
+1. Place a `debugger;` line in your javascript
+1. Open up Chrome and type in the address bar: chrome://inspect
+1. Click on "Open dedicated DevTools for Node"
+1. Back in terminal run `yarn test:debug [path_to_test]` (This has been added to
+   package.json)
 
 ## Development Mailcatcher
 
