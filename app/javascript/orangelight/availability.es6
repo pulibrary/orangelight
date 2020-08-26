@@ -8,6 +8,8 @@
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
 import { insert_online_link } from 'orangelight/insert_online_link'
+import HathiConnector from 'orangelight/hathi_connector'
+
 export default class AvailabilityUpdater {
 
   constructor() {
@@ -137,6 +139,10 @@ export default class AvailabilityUpdater {
           const current_map_link = $(`*[data-holding-id='${holding_id}'] .find-it`);
           const temp_map_link = this.stackmap_link(this.id, availability_info);
           current_map_link.replaceWith(temp_map_link);
+          if (availability_info['temp_loc'] == "etas") {
+            const hathi_connector = new HathiConnector
+            hathi_connector.insert_hathi_link()
+          }
         }
         result.push(this.update_location_services(holding_id, availability_info));
       }

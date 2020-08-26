@@ -30,11 +30,11 @@ describe('AvailabilityUpdater', function() {
     let u = new updater
     insert_online_link()
 
-    const link = document.getElementsByTagName('li')
-    expect(link.length).toEqual(1)
-    let link_item = link.item(0)
-    expect(link.item(0).textContent).toEqual("Princeton users: View digital content")
-    const anchor = link_item.getElementsByTagName('a').item(0)
+    const li_elements = document.getElementsByTagName('li')
+    expect(li_elements.length).toEqual(1)
+    let list_item = li_elements.item(0)
+    expect(list_item.textContent).toEqual("Princeton users: View digital content")
+    const anchor = list_item.getElementsByTagName('a').item(0)
     expect(anchor.getAttribute("href")).toEqual("#view")
   })
 
