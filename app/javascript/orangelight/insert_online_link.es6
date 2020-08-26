@@ -7,9 +7,9 @@ export const insert_online_header = () => {
   }
 }
 
-export const insert_online_link = () => {
+export const insert_online_link = (link = "#view") => {
   insert_online_header()
   const online_list = $("div[class^='availability--online'] ul");
-  const online_link = '<li>Princeton users: <a href="#view">View digital content</a></li></div>';
+  const online_link = `<li>Princeton users: <a href="${link}">View digital content</a></li></div>`;
   return $(online_list).append(online_link);
 }
