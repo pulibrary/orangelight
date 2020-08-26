@@ -7,6 +7,7 @@
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
+import { insert_online_link } from 'orangelight/insert_online_link'
 export default class AvailabilityUpdater {
 
   constructor() {
@@ -127,7 +128,7 @@ export default class AvailabilityUpdater {
         } else {
           if (availability_info["patron_group_charged"] === "CDL") {
             this.apply_record_icon(availability_element, "Reserved for Digital Lending" , aeon, availability_info);
-            this.insert_online_link();
+            insert_online_link();
           } else {
             this.apply_record_icon(availability_element, availability_info['status'], aeon, availability_info);
           }
@@ -318,22 +319,6 @@ export default class AvailabilityUpdater {
         return location_services_element.show();
       }
     }
-  }
-
-  insert_online_header() {
-    const online_div = $("div[class^='availability--online']");
-    if (online_div.length < 1) {
-      const physical_div = $(".availability--physical");
-      const online_div = '<div class="availability--online:visible"><h3>Available Online</h3><ul></ul></div>';
-      return $(online_div).insertBefore(physical_div);
-    }
-  }
-
-  insert_online_link() {
-    this.insert_online_header()
-    const online_list = $("div[class^='availability--online'] ul");
-    const online_link = '<li>Princeton users: <a href="#view">View digital content</a></li></div>';
-    return $(online_list).append(online_link);
   }
 
   apply_record(record_id, holding_records) {

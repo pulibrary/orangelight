@@ -1,4 +1,5 @@
 import updater from 'orangelight/availability'
+import { insert_online_link, insert_online_header } from 'orangelight/insert_online_link'
 
 describe('AvailabilityUpdater', function() {
   test('hooked up right', () => {
@@ -8,8 +9,7 @@ describe('AvailabilityUpdater', function() {
   test('insert_online_header() when there was no header', () => {
     document.body.innerHTML =
       '<div class="wrapper"><div class="availability--physical"></div></div>'
-    let u = new updater
-    u.insert_online_header()
+    insert_online_header()
 
     const onlineDiv = document.getElementsByClassName('availability--online:visible')
     expect(onlineDiv.length).toEqual(1)
@@ -18,8 +18,7 @@ describe('AvailabilityUpdater', function() {
   test("insert_online_header() doesn't add a new one when there was already a header", () => {
     document.body.innerHTML =
       '<div class="wrapper"><div class="availability--online:visible"></div><div class="availability--physical"></div></div>'
-    let u = new updater
-    u.insert_online_header()
+    insert_online_header()
 
     const onlineDiv = document.getElementsByClassName('availability--online:visible')
     expect(onlineDiv.length).toEqual(1)
@@ -29,7 +28,7 @@ describe('AvailabilityUpdater', function() {
     document.body.innerHTML =
       '<div class="wrapper"><div class="availability--online:visible"><ul></ul></div><div class="availability--physical"></div></div>'
     let u = new updater
-    u.insert_online_link()
+    insert_online_link()
 
     const link = document.getElementsByTagName('li')
     expect(link.length).toEqual(1)
