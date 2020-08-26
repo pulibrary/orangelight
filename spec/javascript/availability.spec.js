@@ -11,22 +11,22 @@ describe('AvailabilityUpdater', function() {
       '<div class="wrapper"><div class="availability--physical"></div></div>'
     insert_online_header()
 
-    const onlineDiv = document.getElementsByClassName('availability--online:visible')
+    const onlineDiv = document.getElementsByClassName('availability--online')
     expect(onlineDiv.length).toEqual(1)
   })
 
   test("insert_online_header() doesn't add a new one when there was already a header", () => {
     document.body.innerHTML =
-      '<div class="wrapper"><div class="availability--online:visible"></div><div class="availability--physical"></div></div>'
+      '<div class="wrapper"><div class="availability--online"></div><div class="availability--physical"></div></div>'
     insert_online_header()
 
-    const onlineDiv = document.getElementsByClassName('availability--online:visible')
+    const onlineDiv = document.getElementsByClassName('availability--online')
     expect(onlineDiv.length).toEqual(1)
   })
 
   test("insert_online_link() adds a new link to the list", () => {
     document.body.innerHTML =
-      '<div class="wrapper"><div class="availability--online:visible"><ul></ul></div><div class="availability--physical"></div></div>'
+      '<div class="wrapper"><div class="availability--online"><ul></ul></div><div class="availability--physical"></div></div>'
     let u = new updater
     insert_online_link()
 

@@ -8,7 +8,7 @@ describe('HathiConnector', function() {
 
   test('process_hathi_data()', async () => {
     document.body.innerHTML =
-      '<div class="wrapper"><div class="availability--online:visible"><ul></ul></div><div class="availability--physical"></div></div>'
+      '<div class="wrapper"><div class="availability--online"><ul></ul></div><div class="availability--physical"></div></div>'
     const expectedUrl =
         'https://babel.hathitrust.org/Shibboleth.sso/Login?entityID=' +
       'https://idp.princeton.edu/idp/shibboleth&target=' +
