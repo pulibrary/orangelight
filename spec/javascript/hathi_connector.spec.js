@@ -12,10 +12,11 @@ describe('HathiConnector', function() {
     expect(connector.oclc_number()).toEqual("42579288")
   })
 
-  test('get_hathi_id()', () => {
+  test('get_hathi_id()', async () => {
     const oclc_number = "42579288"
     const connector = new hathi_connector
-    expect(connector.get_hathi_id(oclc_number)).toEqual("mdp.39015047450062")
+    const id = await connector.get_hathi_id(oclc_number)
+    expect(id).toEqual("mdp.39015047450062")
   })
 
   test('get_url()', () => {

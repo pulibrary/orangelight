@@ -7,10 +7,11 @@ export default class HathiConnector {
     return this.base_url + this.get_hathi_id(this.oclc_number())
   }
 
-  get_hathi_id(oclc_number) {
+  async get_hathi_id(oclc_number) {
     // The API also offers isbn or lccn but we're just using oclc number
-    const url = `https://catalog.hathitrust.org/api/volumes/brief/oclc/${oclc_number}.json`
+    const url = `https://catalog.hathitrust.org/api/volumes/brief/oclc/${oclc_number}.json?callback=?`
     //fetch(url).then(response => response.json()).then(data => data)
+    return $.getJSON(url).promise().then((data) => console.log(data))
   }
 
   oclc_number() {
