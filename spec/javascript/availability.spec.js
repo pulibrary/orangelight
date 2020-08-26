@@ -37,6 +37,7 @@ describe('AvailabilityUpdater', function() {
     expect(list_item.textContent).toEqual("Princeton users: View digital content")
     const anchor = list_item.getElementsByTagName('a').item(0)
     expect(anchor.getAttribute("href")).toEqual("#view")
+    expect(anchor.getAttribute("target")).toEqual("_self")
   })
 
   // TODO: This method isn't covered by the feature tests

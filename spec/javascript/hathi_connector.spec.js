@@ -25,6 +25,7 @@ describe('HathiConnector', function() {
     expect(list_item.textContent).toEqual("Princeton users: View digital content")
     const anchor = list_item.getElementsByTagName('a').item(0)
     expect(anchor.getAttribute("href")).toEqual(expectedUrl)
+    expect(anchor.getAttribute("target")).toEqual("_blank")
   })
 
   test('oclc_number()', () => {
