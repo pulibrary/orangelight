@@ -29,6 +29,7 @@ describe('AvailabilityUpdater', function() {
       '<div class="wrapper"><div class="availability--online"><ul></ul></div><div class="availability--physical"></div></div>'
     let u = new updater
     insert_online_link()
+    insert_online_link()
 
     const li_elements = document.getElementsByTagName('li')
     expect(li_elements.length).toEqual(1)

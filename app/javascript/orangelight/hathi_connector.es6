@@ -12,7 +12,7 @@ export default class HathiConnector {
     const base_url = "https://babel.hathitrust.org/Shibboleth.sso/Login?entityID=https://idp.princeton.edu/idp/shibboleth&target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fpt%3Fid%3D"
     let mdp_id = hathiData.items[0].htid
     let url = base_url + mdp_id
-    insert_online_link(url)
+    insert_online_link(url, "hathi_link")
   }
 
   oclc_number() {
