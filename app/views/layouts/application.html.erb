@@ -29,6 +29,7 @@
     <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML", async: true %>
     <% end %>
     <%= javascript_include_tag "#{ENV['umlaut_base']}/assets/umlaut/update_html.js" %>
+    <%= javascript_include_tag "https://books.google.com/books/previewlib.js" %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
     <link rel="unapi-server" type="application/xml" title="unAPI" href="/unapi"/>

@@ -1,4 +1,3 @@
-
 import loadResourcesByFiggyIds from './load-resources-by-figgy-ids'
 import loadResourcesByOrangelightId from './load-resources-by-orangelight-id'
 import loadResourcesByOrangelightIds from './load-resources-by-orangelight-ids'

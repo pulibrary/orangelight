@@ -1,4 +1,3 @@
-
 window.jQuery(document).ready(() => {
   const $elements = window.jQuery(".document-thumbnail[data-bib-id]")
   const thumbnails = FiggyManifestManager.buildThumbnailSet($elements)
@@ -8,7 +7,11 @@ window.jQuery(document).ready(() => {
   monograms.renderMonogram()
 
   window.jQuery(".document-viewers").each((idx, element) => {
-     const viewerSet = FiggyManifestManager.buildViewers(element)
-     viewerSet.render()
+    const viewerSet = FiggyManifestManager.buildViewers(element)
+    // await here
+    viewerSet.render()
+    // check to see if the viewer was populated. If not, add in the google books
+    // wizard
+    // new GoogleBooksSnippets
   })
 })
