@@ -31,11 +31,7 @@ export default class OrangelightUiLoader {
 
     $(".document-viewers").each(async (_, element) => {
       const viewerSet = FiggyManifestManager.buildViewers(element)
-      // await here
       await viewerSet.render()
-      // check to see if the viewer was populated. If not, add in the google books
-      // wizard
-      // new GoogleBooksSnippets
       const google_books_snippets = new GoogleBooksSnippets
       if(google_books_snippets.has_figgy_viewer === false)
         google_books_snippets.insert_snippet()
