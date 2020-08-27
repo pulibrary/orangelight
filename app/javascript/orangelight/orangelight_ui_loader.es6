@@ -1,5 +1,6 @@
 import AvailabilityUpdater from '../orangelight/availability'
 import FiggyManifestManager from '../orangelight/figgy_manifest_manager'
+import GoogleBooksSnippets from '../orangelight/google_books_snippets'
 
 export default class OrangelightUiLoader {
   run() {
@@ -35,6 +36,9 @@ export default class OrangelightUiLoader {
       // check to see if the viewer was populated. If not, add in the google books
       // wizard
       // new GoogleBooksSnippets
+      const google_books_snippets = new GoogleBooksSnippets
+      window.google_books_snippets = google_books_snippets
+      google_books_snippets.insert_snippet()
     })
   }
 }
