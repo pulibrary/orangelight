@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 3298291a316b2afc6b40f0212a4f0f49ba07d1e8
+  revision: 7b7ea58ea130625a4767c080a2b199a1915746cc
   specs:
     requests (0.0.2)
       bootstrap
@@ -123,7 +123,7 @@ GEM
     amq-protocol (2.3.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.8.6.1)
+    autoprefixer-rails (9.8.6.3)
       execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -282,7 +282,7 @@ GEM
       railties (>= 4)
       request_store (~> 1.0)
     logstash-event (1.2.02)
-    loofah (2.6.0)
+    loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
