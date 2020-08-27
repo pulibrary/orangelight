@@ -6,7 +6,7 @@ describe('HathiConnector', function() {
     expect(hathi_connector).not.toBe(undefined)
   })
 
-  test('process_hathi_data()', async () => {
+  test('process_hathi_data() inserts online link when there is a result', async () => {
     document.body.innerHTML =
       '<div class="wrapper"><div class="availability--online"><ul></ul></div><div class="availability--physical"></div></div>'
     const expectedUrl =
@@ -26,6 +26,19 @@ describe('HathiConnector', function() {
     const anchor = list_item.getElementsByTagName('a').item(0)
     expect(anchor.getAttribute("href")).toEqual(expectedUrl)
     expect(anchor.getAttribute("target")).toEqual("_blank")
+  })
+
+  test('process_hathi_data() does nothing when there is no result from hathi', async () => {
+    document.body.innerHTML =
+      '<div class="wrapper"><div class="availability--online"><ul></ul></div><div class="availability--physical"></div></div>'
+    let json_response = await fs.readFile("spec/fixtures/hathi_42579288.json", 'utf8')
+    json_response = { "records": {}, "items": [] }
+
+    const connector = new hathi_connector
+    connector.process_hathi_data(json_response)
+
+    const li_elements = document.getElementsByTagName('li')
+    expect(li_elements.length).toEqual(0)
   })
 
   test('oclc_number()', () => {
