@@ -29,16 +29,16 @@ export default class OrangelightUiLoader {
     const monograms = FiggyManifestManager.buildMonogramThumbnails($monogramIds)
     monograms.renderMonogram()
 
-    $(".document-viewers").each((_, element) => {
+    $(".document-viewers").each(async (_, element) => {
       const viewerSet = FiggyManifestManager.buildViewers(element)
       // await here
-      viewerSet.render()
+      await viewerSet.render()
       // check to see if the viewer was populated. If not, add in the google books
       // wizard
       // new GoogleBooksSnippets
       const google_books_snippets = new GoogleBooksSnippets
-      window.google_books_snippets = google_books_snippets
-      google_books_snippets.insert_snippet()
+      if(google_books_snippets.has_figgy_viewer === false)
+        google_books_snippets.insert_snippet()
     })
   }
 }
