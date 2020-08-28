@@ -1,8 +1,4 @@
 export default class GoogleBooksSnippets {
-  constructor() {
-    google.books.load()
-  }
-
   get has_figgy_viewer() {
     return $(".document-viewers > .intrinsic-container").length > 0
   }
@@ -12,8 +8,9 @@ export default class GoogleBooksSnippets {
   }
 
   insert_snippet() {
+    google.books.load()
     google.books.setOnLoadCallback(() => {
-      $(".document-viewers").append("<div id='google-book-wizard'></div>")
+      $(".document-viewers").append("<div class='intrinsic-container intrinsic-container-google-books'><div id='google-book-wizard'></div></div>")
       const viewer = new google.books.DefaultViewer(document.getElementById("google-book-wizard"))
       viewer.load(`ISBN:${this.isbn}`, this.not_found);
     })
