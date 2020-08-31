@@ -300,7 +300,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       'Reading Room Request'
     elsif open_libraries.include?(location_rules['library']['code']) && location_rules["circulates"] == true
       'Request Pick-up or Digitization'
-    elsif open_libraries.include?(location_rules['library']['code'])
+    elsif open_libraries.include?(location_rules['library']['code']) &&
+          location_rules["code"] != "scsbcul" # TODO: remove this when columbia is circulating again
       'Digitization Request'
     else
       'Request'
