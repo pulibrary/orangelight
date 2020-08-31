@@ -28,7 +28,7 @@ Metrics/AbcSize:
     - 'app/helpers/blacklight_helper.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
-    - 'lib/orangelight/browse_lists.rb'
+    - 'lib/orangelight/browse_lists/call_number_csv.rb'
 
 Metrics/BlockLength:
   Exclude:
@@ -41,8 +41,8 @@ Metrics/BlockLength:
     - 'config/deploy/qa.rb'
     - 'lib/tasks/browse.rake'
     - 'lib/tasks/pulsearch.rake'
-    - 'lib/orangelight/browse_lists.rb'
     - 'spec/**/*'
+    - 'lib/tasks/server.rake'
 
 Metrics/BlockNesting:
   Exclude:
@@ -58,6 +58,7 @@ Metrics/ClassLength:
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/voyager_patron_client.rb'
     - 'spec/mailers/previews/*'
+    - 'lib/orangelight/browse_lists/call_number_csv.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:
@@ -69,7 +70,7 @@ Metrics/CyclomaticComplexity:
     - 'app/helpers/blacklight_helper.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
-    - 'lib/orangelight/browse_lists.rb'
+    - 'lib/orangelight/browse_lists/call_number_csv.rb'
 
 Metrics/LineLength:
   Exclude:
@@ -105,6 +106,7 @@ Metrics/MethodLength:
     - 'spec/requests/course_reserve_spec.rb'
     - 'lib/tasks/server.rake'
     - 'lib/orangelight/browse_lists.rb'
+    - 'lib/orangelight/browse_lists/call_number_csv.rb'
     - 'spec/mailers/previews/*'
 
 Metrics/ModuleLength:
@@ -112,7 +114,6 @@ Metrics/ModuleLength:
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'app/helpers/blacklight_helper.rb'
     - 'app/helpers/application_helper.rb'
-    - 'lib/orangelight/browse_lists.rb'
 
 Metrics/PerceivedComplexity:
   Exclude:
@@ -124,7 +125,7 @@ Metrics/PerceivedComplexity:
     - 'app/helpers/blacklight_helper.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
-    - 'lib/orangelight/browse_lists.rb'
+    - 'lib/orangelight/browse_lists/call_number_csv.rb'
 
 Naming/FileName:
   Exclude:

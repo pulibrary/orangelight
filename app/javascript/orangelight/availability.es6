@@ -7,7 +7,10 @@
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
-export default class AvailabilityUpdater2 {
+import { insert_online_link } from 'orangelight/insert_online_link'
+import HathiConnector from 'orangelight/hathi_connector'
+
+export default class AvailabilityUpdater {
 
   constructor() {
     this.availability_url = $("body").data("availability-base-url");
@@ -127,7 +130,7 @@ export default class AvailabilityUpdater2 {
         } else {
           if (availability_info["patron_group_charged"] === "CDL") {
             this.apply_record_icon(availability_element, "Reserved for Digital Lending" , aeon, availability_info);
-            this.insert_online_link();
+            insert_online_link();
           } else {
             this.apply_record_icon(availability_element, availability_info['status'], aeon, availability_info);
           }
@@ -136,6 +139,10 @@ export default class AvailabilityUpdater2 {
           const current_map_link = $(`*[data-holding-id='${holding_id}'] .find-it`);
           const temp_map_link = this.stackmap_link(this.id, availability_info);
           current_map_link.replaceWith(temp_map_link);
+          if (availability_info['temp_loc'] == "etas") {
+            const hathi_connector = new HathiConnector
+            hathi_connector.insert_hathi_link()
+          }
         }
         result.push(this.update_location_services(holding_id, availability_info));
       }
@@ -317,15 +324,6 @@ export default class AvailabilityUpdater2 {
       } else {
         return location_services_element.show();
       }
-    }
-  }
-
-  insert_online_link() {
-    let online_div = $(".availability--online:visible");
-    if (online_div.length < 1) {
-      const physical_div = $(".availability--physical");
-      online_div = '<div class="availability--online"><h3>Available Online</h3><ul><li>Princeton users: <a href="#view">View digital content</a></li></ul></div>';
-      return $(online_div).insertBefore(physical_div);
     }
   }
 
