@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: fef6f85dbd1d376eb14e6ed0ac2cda8999654154
+  revision: 4922ab10f19cf843e5c0a4ab7481b1fcfc1a184e
   specs:
     requests (0.0.2)
       bootstrap
@@ -512,8 +512,8 @@ GEM
     unicode-display_width (1.4.1)
     voight_kampff (1.1.3)
       rack (>= 1.4, < 3.0)
-    warden (1.2.8)
-      rack (>= 2.0.6)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     webdrivers (4.1.2)
       nokogiri (~> 1.6)
       rubyzip (~> 1.0)
