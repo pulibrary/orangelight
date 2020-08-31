@@ -1,0 +1,19 @@
+name: orangelight
+services:
+  orangelight_test_solr:
+    type: solr:8.4
+    portforward: true
+    core: orangelight-core-test
+    config:
+      dir: "solr/conf"
+  orangelight_development_solr:
+    type: solr:8.4
+    portforward: true
+    core: orangelight-core-dev
+    config:
+      dir: "solr/conf"
+proxy:
+  orangelight_test_solr:
+    - orangelight.test.solr.lndo.site:8983
+  orangelight_development_solr:
+    - orangelight.dev.solr.lndo.site:8983

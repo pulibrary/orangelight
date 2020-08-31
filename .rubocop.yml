@@ -42,6 +42,7 @@ Metrics/BlockLength:
     - 'lib/tasks/browse.rake'
     - 'lib/tasks/pulsearch.rake'
     - 'spec/**/*'
+    - 'lib/tasks/server.rake'
 
 Metrics/BlockNesting:
   Exclude:
