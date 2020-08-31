@@ -33,18 +33,28 @@ end
 namespace :server do
   desc 'Run development solr'
   task :dev do
-    run_solr('development', port: '8983') do
+    if ENV["lando_orangelight_development_solr_conn_port"]
       Rake::Task['pulsearch:solr:index'].invoke
-      sleep
+      puts("Indexing to Lando. Running at http://localhost:#{ENV['lando_orangelight_development_solr_conn_port']}")
+    else
+      run_solr('development', port: '8983') do
+        Rake::Task['pulsearch:solr:index'].invoke
+        sleep
+      end
     end
   end
 
   desc 'Run test solr'
   task :test do
     if Rails.env.test?
-      run_solr('test', port: '8888') do
+      if ENV["lando_orangelight_test_solr_conn_port"]
         Rake::Task['pulsearch:solr:index'].invoke
-        sleep
+        puts("Indexing to Lando. Running at http://localhost:#{ENV['lando_orangelight_test_solr_conn_port']}")
+      else
+        run_solr('test', port: '8888') do
+          Rake::Task['pulsearch:solr:index'].invoke
+          sleep
+        end
       end
     else
       system('rake server:test RAILS_ENV=test')
