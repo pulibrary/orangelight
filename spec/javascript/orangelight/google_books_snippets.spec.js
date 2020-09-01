@@ -28,6 +28,7 @@ describe('GoogleBooksSnippets', function () {
 
   test('insert_snippet adds the google books snippet inside the document-viewers container', () => {
     document.body.innerHTML =
+      '<div class="document-thumbnail"><img alt="" src="https://books.google.com/books/content?id=5FTiCgAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1"></div>' +
       '<meta property="isbn" itemprop="isbn" content="9780618643103">' +
       '<div class="document-viewers"></div>'
     const google_books_snippets = new GoogleBooksSnippets
@@ -41,5 +42,9 @@ describe('GoogleBooksSnippets', function () {
 
     const header = document.getElementById("google-books-header")
     expect(header.textContent).toBe("Digital Preview")
+
+    const thumbnail = document.getElementsByClassName("document-thumbnail")[0]
+    expect(thumbnail.className).toBe("document-thumbnail has-viewer-link")
+    expect(thumbnail.parentElement.href).toBe("http://localhost/#view")
   })
 })
