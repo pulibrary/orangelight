@@ -10,7 +10,7 @@ export default class GoogleBooksSnippets {
   insert_snippet() {
     google.books.load()
     google.books.setOnLoadCallback(() => {
-      $(".document-viewers").append("<div class='intrinsic-container intrinsic-container-google-books'><div id='google-book-wizard'></div></div>")
+      $(".document-viewers").append("<div id='google-books-wrapper'><div id='google-books-header'><h2>Digital Preview</h2></div><div class='intrinsic-container intrinsic-container-google-books'><div id='google-book-wizard'></div></div></div>")
       const viewer = new google.books.DefaultViewer(document.getElementById("google-book-wizard"))
       viewer.load(`ISBN:${this.isbn}`, this.not_found);
     })
