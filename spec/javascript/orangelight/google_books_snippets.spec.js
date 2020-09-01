@@ -23,22 +23,23 @@ describe('GoogleBooksSnippets', function () {
   test("isbn returns the meta isbn value", () => {
     document.body.innerHTML = '<meta property="isbn" itemprop="isbn" content="9780618643103">'
     const google_books_snippets = new GoogleBooksSnippets
-    expect(google_books_snippets.isbn).toBe("9780618643103")
+    expect(google_books_snippets.isbn).toEqual(["9780618643103"])
   })
 
   test('insert_snippet adds the google books snippet inside the document-viewers container', () => {
     document.body.innerHTML =
       '<div class="document-thumbnail"><img alt="" src="https://books.google.com/books/content?id=5FTiCgAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1"></div>' +
       '<meta property="isbn" itemprop="isbn" content="9780618643103">' +
+      '<meta property="isbn" itemprop="isbn" content="9781911300069">' +
       '<div class="document-viewers"></div>'
     const google_books_snippets = new GoogleBooksSnippets
-    const load = jest.fn()
+    const load = jest.fn().mockImplementation((_element, _fail, success_fn) => { success_fn() })
     window.google.books.DefaultViewer = jest.fn().mockImplementation(() => { return { load }})
 
     google_books_snippets.insert_snippet()
     const element = document.getElementById("google-book-wizard")
     expect(element).not.toBe(null)
-    expect(load).toHaveBeenCalledWith("ISBN:9780618643103", google_books_snippets.not_found)
+    expect(load).toHaveBeenCalledWith(["ISBN:9780618643103", "ISBN:9781911300069"], google_books_snippets.not_found, google_books_snippets.addThumbnailLink)
 
     const header = document.getElementById("google-books-header")
     expect(header.textContent).toBe("Digital Preview")

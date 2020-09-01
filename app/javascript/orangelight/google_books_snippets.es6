@@ -4,7 +4,7 @@ export default class GoogleBooksSnippets {
     }
 
     get isbn() {
-        return document.querySelector("meta[property='isbn']").content
+      return $("meta[property='isbn']").map(function(){ return $(this).attr("content")}).toArray()
     }
 
     insert_snippet() {
@@ -12,8 +12,7 @@ export default class GoogleBooksSnippets {
         google.books.setOnLoadCallback(() => {
             $(".document-viewers").append("<div id='view' class='google-books-wrapper'><div id='google-books-header'><h2>Digital Preview</h2></div><div class='intrinsic-container intrinsic-container-google-books'><div id='google-book-wizard'></div></div></div>")
             const viewer = new google.books.DefaultViewer(document.getElementById("google-book-wizard"))
-            viewer.load(`ISBN:${this.isbn}`, this.not_found);
-            this.addThumbnailLink()
+            viewer.load(this.isbn.map((isbn) => `ISBN:${isbn}`), this.not_found, this.addThumbnailLink);
         })
     }
 
@@ -24,6 +23,6 @@ export default class GoogleBooksSnippets {
     }
 
     not_found() {
-        $("#google-book-wizard").remove()
+        $(".google-books-wrapper").remove()
     }
 }
