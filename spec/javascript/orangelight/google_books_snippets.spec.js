@@ -38,5 +38,8 @@ describe('GoogleBooksSnippets', function () {
     const element = document.getElementById("google-book-wizard")
     expect(element).not.toBe(null)
     expect(load).toHaveBeenCalledWith("ISBN:9780618643103", google_books_snippets.not_found)
+
+    const header = document.getElementById("google-books-header")
+    expect(header.textContent).toBe("Digital Preview")
   })
 })
