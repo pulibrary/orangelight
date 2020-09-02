@@ -319,38 +319,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     end
   end
 
-  def self.scsb_supervised_request_link
-    link_to('Reading Room Request',
-            "/requests/#{doc_id}?source=pulsearch",
-            title: 'Request to view in Reading Room',
-            class: 'request btn btn-xs btn-primary',
-            data: { toggle: 'tooltip' })
-  end
-
-  def self.scsb_request_link
-    link_to(request_label(location_rules),
-            "/requests/#{doc_id}?source=pulsearch",
-            title: request_tooltip(location_rules),
-            class: 'request btn btn-xs btn-primary',
-            data: { toggle: 'tooltip' })
-  end
-
-  def self.ils_request_link
-    link_to(request_label(location_rules),
-            "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch",
-            title: request_tooltip(location_rules),
-            class: 'request btn btn-xs btn-primary',
-            data: { toggle: 'tooltip' })
-  end
-
-  def self.request_link
-    link_to('Reading Room Request',
-            "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch",
-            title: 'Request to view in Reading Room',
-            class: 'request btn btn-xs btn-primary',
-            data: { toggle: 'tooltip' })
-  end
-
   def self.scsb_supervised_items?(holding)
     if holding.key? 'items'
       restricted_items = holding['items'].select do |item|
