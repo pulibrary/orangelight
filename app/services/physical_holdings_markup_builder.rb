@@ -312,8 +312,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
 
   def self.etas_restricted?(location_rules, adapter)
     return false unless location_rules["code"] == "scsbcul"
-    bibid = adapter.document.fetch("other_id_s")
-    access_records = adapter.hathi_access(bibid)
+    bibids = adapter.document.fetch("other_id_s")
+    access_records = adapter.hathi_access(bibids.first)
     return true if access_records.select { |r| r["origin"] == "CUL" }.select { |r| r["status"] == "DENY" }.present?
     false
   end
