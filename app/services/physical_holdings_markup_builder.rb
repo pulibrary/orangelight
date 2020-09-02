@@ -314,8 +314,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     return false unless location_rules["code"] == "scsbcul"
     bibids = adapter.document.fetch("other_id_s")
     access_records = adapter.hathi_access(bibids.first)
-    return true if access_records.select { |r| r["origin"] == "CUL" }.select { |r| r["status"] == "DENY" }.present?
-    false
+    access_records.select { |r| r["origin"] == "CUL" && r["status"] == "DENY" }.present?
   end
 
   # Generate a request tooltip based upon the holding location
