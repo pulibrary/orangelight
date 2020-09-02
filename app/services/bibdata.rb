@@ -30,6 +30,13 @@ class Bibdata
       patron
     end
 
+    def hathi_access(bib_id)
+      response = Faraday.get("#{ENV['bibdata_base']}/hathi/access?bib_id=#{bib_id}")
+      return {} unless response.status == 200
+
+      JSON.parse(response.body)
+    end
+
     def holding_locations
       # check cache; return unless nil
       locations = Rails.cache.fetch('holding_locations', expires_in: 24.hours)
