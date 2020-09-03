@@ -3,7 +3,13 @@
 require 'rails_helper'
 
 describe 'SCSB Shared Collection Records' do
-  before { stub_holding_locations }
+  before do
+    stub_holding_locations
+    # stub for SCSB-2443272
+    stub_request(:get, "#{ENV['bibdata_base']}/hathi/access?bib_id=403828").to_return(status: 200, body: '[]')
+    # stub for SCSB-2143785
+    stub_request(:get, "#{ENV['bibdata_base']}/hathi/access?bib_id=285").to_return(status: 200, body: '[]')
+  end
 
   context 'Search Results Page' do
     it 'displays view full record for multi-item records' do

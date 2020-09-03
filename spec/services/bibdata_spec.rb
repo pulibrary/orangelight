@@ -27,4 +27,32 @@ RSpec.describe Bibdata do
       end
     end
   end
+
+  describe '#hathi_access' do
+    context 'with a successful response from bibdata' do
+      it 'returns the holdings location hash' do
+        body = '[{"oclc_number": "19774500","bibid": "1000066","status": "DENY","origin": "CUL"}]'
+        stub_request(:get, "#{ENV['bibdata_base']}/hathi/access?bib_id=1000066")
+          .to_return(status: 200, body: body)
+        expect(described_class.hathi_access("1000066")).to eq(
+          [
+            {
+              "oclc_number" => "19774500",
+              "bibid" => "1000066",
+              "status" => "DENY",
+              "origin" => "CUL"
+            }
+          ]
+        )
+      end
+    end
+
+    context 'with an unsuccessful response from bibdata' do
+      it 'returns an empty hash' do
+        stub_request(:get, "#{ENV['bibdata_base']}/hathi/access?bib_id=1000066")
+          .to_return(status: 500)
+        expect(described_class.hathi_access("1000066")).to be_empty
+      end
+    end
+  end
 end

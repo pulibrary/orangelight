@@ -21,6 +21,7 @@ class HoldingRequestsAdapter
   # Access the holding locations from Bib. Data
   # @return [Hash] location hash structure
   delegate :holding_locations, to: :@bib_data_service
+  delegate :hathi_access, to: :@bib_data_service
 
   # Retrieve the holdings information from the Solr Document
   # @return [Hash] holdings values

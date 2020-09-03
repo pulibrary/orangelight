@@ -293,19 +293,28 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
 
   # Generate a request label based upon the holding location
   # @param location_rules [Hash] the location for the holding
+  # @param adapter [HoldingRequestsAdapter] adapter for the SolrDocument and Bibdata API
   # @return [String] the label
-  def self.request_label(location_rules)
+  def self.request_label(location_rules, adapter)
     open_libraries = ['firestone', 'annexa', 'recap', 'marquand', 'mendel', 'stokes', 'eastasian', 'architecture', 'engineering', 'lewis']
     if aeon_location?(location_rules)
       'Reading Room Request'
     elsif open_libraries.include?(location_rules['library']['code']) && location_rules["circulates"] == true
-      'Request Pick-up or Digitization'
-    elsif open_libraries.include?(location_rules['library']['code']) &&
-          location_rules["code"] != "scsbcul" # TODO: remove this when columbia is circulating again
-      'Digitization Request'
+      if etas_restricted?(location_rules, adapter)
+        'Digitization Request'
+      else
+        'Request Pick-up or Digitization'
+      end
     else
       'Request'
     end
+  end
+
+  def self.etas_restricted?(location_rules, adapter)
+    return false unless location_rules["code"] == "scsbcul"
+    bibids = adapter.document.fetch("other_id_s")
+    access_records = adapter.hathi_access(bibids.first)
+    access_records.select { |r| r["origin"] == "CUL" && r["status"] == "DENY" }.present?
   end
 
   # Generate a request tooltip based upon the holding location
@@ -349,7 +358,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                        class: 'request btn btn-xs btn-primary',
                        data: { toggle: 'tooltip' })
              else
-               link_to(request_label(location_rules),
+               link_to(request_label(location_rules, adapter),
                        "/requests/#{doc_id}?source=pulsearch",
                        title: request_tooltip(location_rules),
                        class: 'request btn btn-xs btn-primary',
@@ -362,7 +371,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
            else
-             link_to(request_label(location_rules),
+             link_to(request_label(location_rules, adapter),
                      "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch",
                      title: request_tooltip(location_rules),
                      class: 'request btn btn-xs btn-primary',
