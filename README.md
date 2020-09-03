@@ -44,22 +44,28 @@ rake db:seed
 Production credentials: In production you'll need to add production
 credentials to database.yml
 
-### Run
-```bash
-rake server
-```
-Then, in a separate tab, run:
-```
-bin/webpack-dev-server
-```
-Or run Solr in a separate tab
-```
-rake server:dev
-```
-And in a separate terminal:
-```
-rails server
-```
+### Run the devlopment Environment locally
+**All commands are assumed to be run from your local orangelight directory**
+
+1. Start Solr using Lando  
+   ```
+   lando start
+   ```
+   *Note: You can stop lando by running `lando stop` and you can start fresh using `lando destroy`*
+1. Index data into solr 
+    *This step is only required if this is your first time running or you have run a `lando destroy`*
+    ```
+    rake pulsearch:solr:index
+    ```
+1. Run a rails server 
+   ```
+   rails s
+   ```
+   *This will continue running until you Ctrl C, you will need a new tab or window for the next step*
+1. Run webpack to serve assets 
+   ```
+   bin/webpack-dev-server
+   ```
 
 Deploying with Capistrano
 ------------------
@@ -92,27 +98,27 @@ rake db:seed RAILS_ENV=test
 
 ### Run Tests
 
-```bash
-rake ci
-```
+1. Start lando if it is not already started. 
+    *The same lando is used for both test and development.*
+   ```
+   lando start
+   ```
+1. Index data into solr 
+    *This step is only required if this is your first time running or you have run a `lando destroy`*
+   ```
+   RAILS_ENV=test rake pulsearch:solr:index
+   ``` 
+1. Run the all the tests 
+    ```
+    rake spec
+    ```
 
-### Run Tests Separately
-
-```bash
-rake server:test
-```
-
-Then, in another terminal window:
-
-```bash
-rake spec
-```
-
-To run a specific test:
-
-```bash
-rake spec SPEC=path/to/your_spec.rb:linenumber
-```
+#### To run a specific test
+  1. Run steps one and two above
+  1. run the individual test
+      ```bash
+      rake spec SPEC=path/to/your_spec.rb:linenumber
+      ```
 
 ## Local development with Figgy
 
