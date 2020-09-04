@@ -31,7 +31,8 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
              elsif %r{(\/catalog\/.+?#view)} =~ url.to_s
                link_to('Digital content', $&)
              else
-               link_to(texts.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
+               link_to(texts.first, "#{ENV['proxy_base']}#{url}", target: '_blank', onclick: "ga('send', 'event', 'proxied link', 'click', '#{url}');")
+
              end
     markup
   end
