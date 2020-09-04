@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 1188e952033e44e396ea18a52eec1f9de9232c71
+  revision: c9cac49826f5ac76d040f49edd0d7642964fa72f
   specs:
     requests (0.0.2)
       bootstrap
@@ -129,7 +129,7 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
-    bcrypt (3.1.15)
+    bcrypt (3.1.16)
     bixby (2.0.0)
       rubocop (= 0.63.1)
       rubocop-rspec (= 1.31.0)
