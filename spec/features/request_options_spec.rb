@@ -69,7 +69,7 @@ describe 'Request Options' do
       end
     end
   end
-  # This should address borrow direct. evenutally
+  # This should address borrow direct. eventually
   # If monograph - direct user to borrow direct fallback ILL, Recall
   # If serial - direct user to ILL, fallback Recall
   # describe 'Unavailable status requestable location', js: true do
