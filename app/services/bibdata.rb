@@ -30,8 +30,8 @@ class Bibdata
       patron
     end
 
-    def hathi_access(bib_id)
-      response = Faraday.get("#{ENV['bibdata_base']}/hathi/access?bib_id=#{bib_id}")
+    def hathi_access(oclc_number)
+      response = Faraday.get("#{ENV['bibdata_base']}/hathi/access?oclc=#{oclc_number}")
       return {} unless response.status == 200
 
       JSON.parse(response.body)

@@ -117,8 +117,8 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
     context 'for columbia items not on etas' do
       before do
-        allow(document).to receive(:fetch).with("other_id_s").and_return(['9752216'])
-        allow(adapter).to receive(:hathi_access).with('9752216').and_return(
+        allow(document).to receive(:fetch).with("oclc_s").and_return(['19774500'])
+        allow(adapter).to receive(:hathi_access).with('19774500').and_return(
           [
             {
               "oclc_number" => "19774500",
@@ -148,8 +148,8 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
     context 'for columbia items on etas' do
       before do
-        allow(document).to receive(:fetch).with("other_id_s").and_return(['1000066'])
-        allow(adapter).to receive(:hathi_access).with('1000066').and_return(
+        allow(document).to receive(:fetch).with("oclc_s").and_return(['19774500'])
+        allow(adapter).to receive(:hathi_access).with('19774500').and_return(
           [
             {
               "oclc_number" => "19774500",
@@ -158,7 +158,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
               "origin" => "CUL"
             },
             {
-              "oclc_number" => "42579288",
+              "oclc_number" => "19774500",
               "bibid" => "1000066",
               "status" => "ALLOW",
               "origin" => "PUL"
