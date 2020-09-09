@@ -117,6 +117,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
     context 'for columbia items not on etas' do
       before do
+        allow(document).to receive(:key?).with("oclc_s").and_return(true)
         allow(document).to receive(:fetch).with("oclc_s").and_return(['19774500'])
         allow(adapter).to receive(:hathi_access).with('19774500').and_return(
           [
@@ -146,8 +147,30 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       end
     end
 
+    context 'for columbia items not on etas missing oclc_s' do
+      before do
+        allow(document).to receive(:key?).with("oclc_s").and_return(false)
+      end
+      let(:location_rules) do
+        {
+          'code': 'scsbcul',
+          'aeon_location': false,
+          'circulates': true,
+          'library': {
+            'label': 'ReCAP',
+            'code': 'recap',
+            'order': 3
+          }
+        }.with_indifferent_access
+      end
+      it 'generates a digitization request label' do
+        expect(request_label).to eq 'Request Pick-up or Digitization'
+      end
+    end
+
     context 'for columbia items on etas' do
       before do
+        allow(document).to receive(:key?).with("oclc_s").and_return(true)
         allow(document).to receive(:fetch).with("oclc_s").and_return(['19774500'])
         allow(adapter).to receive(:hathi_access).with('19774500').and_return(
           [
