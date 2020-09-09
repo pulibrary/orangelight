@@ -1,9 +1,37 @@
+import HathiConnector from 'orangelight/hathi_connector'
 import updater from 'orangelight/availability'
+
+jest.mock('orangelight/hathi_connector')
+
+beforeEach(() => {
+  // Clear all instances and calls to constructor and all methods:
+  HathiConnector.mockClear();
+});
 
 describe('AvailabilityUpdater', function() {
   test('hooked up right', () => {
     expect(updater).not.toBe(undefined)
   })
+
+  test('process_single when the record has a temporary etas location shows a link', () => {
+
+    document.body.innerHTML =
+      '<td class="holding-status" data-availability-record="true" data-record-id="999998" data-holding-id="1153009" data-aeon="false"><span class="availability-icon"></span></td>'
+    const holding_records = {"1153009":{"more_items":false,"location":"rcppa","temp_loc":"etas","course_reserves":[],"copy_number":1,"item_id":1244099,"on_reserve":"N","patron_group_charged":null,"status":"On-Site","label":"Online - HathiTrust Emergency Temporary Access"}}
+    let u = new updater
+    u.process_single(holding_records)
+    expect(HathiConnector).toHaveBeenCalled()
+})
+
+  test('process_single when the record has a temporary etas location and is checked out does not show a link', () => {
+
+    document.body.innerHTML =
+      '<td class="holding-status" data-availability-record="true" data-record-id="999998" data-holding-id="1153009" data-aeon="false"><span class="availability-icon"></span></td>'
+    const holding_records = {"1153009":{"more_items":false,"location":"rcppa","temp_loc":"etas","course_reserves":[],"copy_number":1,"item_id":1244099,"on_reserve":"N","patron_group_charged":null,"status":"Charged","label":"Online - HathiTrust Emergency Temporary Access"}}
+    let u = new updater
+    u.process_single(holding_records)
+    expect(HathiConnector).not.toHaveBeenCalled()
+})
 
   // TODO: This method isn't covered by the feature tests
   test('scsb_barcodes() on a search results page', () => {
