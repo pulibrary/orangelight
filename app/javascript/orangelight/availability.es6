@@ -139,7 +139,7 @@ export default class AvailabilityUpdater {
           const current_map_link = $(`*[data-holding-id='${holding_id}'] .find-it`);
           const temp_map_link = this.stackmap_link(this.id, availability_info);
           current_map_link.replaceWith(temp_map_link);
-          if (availability_info['temp_loc'] == "etas") {
+          if (availability_info['temp_loc'] == "etas" || availability_info['temp_loc'] == "etasrcp") {
             const hathi_connector = new HathiConnector
             hathi_connector.insert_hathi_link()
           }
