@@ -140,8 +140,10 @@ export default class AvailabilityUpdater {
           const temp_map_link = this.stackmap_link(this.id, availability_info);
           current_map_link.replaceWith(temp_map_link);
           if (availability_info['temp_loc'] == "etas" || availability_info['temp_loc'] == "etasrcp") {
-            const hathi_connector = new HathiConnector
-            hathi_connector.insert_hathi_link()
+            if (!(this.checked_out_statuses).includes(availability_info['status'])) {
+              const hathi_connector = new HathiConnector
+              hathi_connector.insert_hathi_link()
+            }
           }
         }
         result.push(this.update_location_services(holding_id, availability_info));
