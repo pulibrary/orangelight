@@ -140,7 +140,7 @@ export default class AvailabilityUpdater {
           const temp_map_link = this.stackmap_link(this.id, availability_info);
           current_map_link.replaceWith(temp_map_link);
           if (availability_info['temp_loc'] == "etas" || availability_info['temp_loc'] == "etasrcp") {
-            if (!(this.checked_out_statuses).includes(availability_info['status'])) {
+            if (this.is_not_checked_out(availability_info['status'])) {
               const hathi_connector = new HathiConnector
               hathi_connector.insert_hathi_link()
             }
@@ -150,6 +150,10 @@ export default class AvailabilityUpdater {
       }
       return result;
     })();
+  }
+
+  is_not_checked_out(status) {
+    return !(this.checked_out_statuses).map(s => s.toLowerCase()).includes(status.toLowerCase())
   }
 
   process_scsb_single(item_records) {

@@ -23,6 +23,16 @@ describe('AvailabilityUpdater', function() {
     expect(HathiConnector).toHaveBeenCalled()
 })
 
+  test('process_single when the record has a temporary etas location and is on hold does not show a link', () => {
+
+    document.body.innerHTML =
+      '<td class="holding-status" data-availability-record="true" data-record-id="999998" data-holding-id="1153009" data-aeon="false"><span class="availability-icon"></span></td>'
+    const holding_records = {"1153009":{"more_items":false,"location":"rcppa","temp_loc":"etas","course_reserves":[],"copy_number":1,"item_id":1244099,"on_reserve":"N","patron_group_charged":null,"status":"On Hold","label":"Online - HathiTrust Emergency Temporary Access"}}
+    let u = new updater
+    u.process_single(holding_records)
+    expect(HathiConnector).not.toHaveBeenCalled()
+})
+
   test('process_single when the record has a temporary etas location and is checked out does not show a link', () => {
 
     document.body.innerHTML =
