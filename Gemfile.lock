@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 3ebec87573eeaaa4c9ec6185a7d8357af7f659e8
+  revision: 9d596796898d3ac65a20dae2599fb7259457833a
   specs:
     requests (0.0.2)
       bootstrap
@@ -123,7 +123,7 @@ GEM
     amq-protocol (2.3.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.8.6.3)
+    autoprefixer-rails (10.0.0)
       execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -311,7 +311,7 @@ GEM
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
     net-ssh (5.2.0)
-    nio4r (2.5.3)
+    nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     omniauth (1.9.1)
@@ -477,7 +477,7 @@ GEM
       babel-source (>= 5.8.11)
       babel-transpiler
       sprockets (>= 3.0.0)
-    sprockets-rails (3.2.1)
+    sprockets-rails (3.2.2)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
