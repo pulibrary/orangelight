@@ -69,10 +69,10 @@ credentials to database.yml
 
 Deploying with Capistrano
 ------------------
-Default branch for deployment is `master`. You can specify a branch using the BRANCH environment variable.
+Default branch for deployment is `main`. You can specify a branch using the BRANCH environment variable.
 ```
 BRANCH=my_branch cap staging deploy # deploys my_branch to staging
-cap staging deploy # deploys master branch to staging
+cap staging deploy # deploys main branch to staging
 ```
 
 ## Staging Mail Catcher
