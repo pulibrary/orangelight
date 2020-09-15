@@ -33,4 +33,15 @@ describe('insert_online_link', function() {
     expect(anchor.getAttribute("href")).toEqual("#view")
     expect(anchor.getAttribute("target")).toEqual("_self")
   })
+
+  test("insert_online_link() can accept a content builder", () => {
+    document.body.innerHTML =
+      '<div class="wrapper"><div class="availability--online"><ul></ul></div><div class="availability--physical"></div></div>'
+    insert_online_link("#view", "id", (link, target) => `${link}${target}`)
+
+    const li_elements = document.getElementsByTagName('li')
+    expect(li_elements.length).toEqual(1)
+    let list_item = li_elements.item(0)
+    expect(list_item.textContent).toEqual("#view_self")
+  })
 })
