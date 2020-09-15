@@ -36,31 +36,3 @@ hr.clear {
     height: 100%;
     border: none;
 }
-
-.intrinsic-container-google-books {
-  padding-bottom: 50%;
-}
-
-#google-book-wizard {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-#google-books-header {
-  text-align: center;
-  border: solid rgb(190,190,190);
-  border-width: 1px 0 0 0;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  background-image: url("https://www.google.com/googlebooks/images/branding-background.png");
-  background-size: contain;
-  h2 {
-    padding: 0;
-    margin: 0;
-    height: 100%;
-  }
-}
