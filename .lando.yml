@@ -12,6 +12,9 @@ services:
     core: orangelight-core-dev
     config:
       dir: "solr/conf"
+  orangelight_database:
+    type: postgres:10
+    portforward: true
 proxy:
   orangelight_test_solr:
     - orangelight.test.solr.lndo.site:8983

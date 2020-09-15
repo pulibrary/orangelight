@@ -17,8 +17,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: <%= ENV['OL_DB_USERNAME'] || 'orangelight' %>
-  password: <%= ENV['OL_DB_PASSWORD'] || 'orange' %>
+  host: <%= ENV["lando_orangelight_database_conn_host"] || ENV["OL_DB_HOST"] || "localhost" %>
+  port: <%= ENV["lando_orangelight_database_conn_port"] || ENV["OL_DB_PORT"] %>
+  username: <%= ENV["lando_orangelight_database_creds_user"] || ENV["OL_DB_USERNAME"] || "orangelight" %>
+  password: <%= ENV["lando_orangelight_database_creds_password"] || ENV["OL_DB_PASSWORD"] || "orange" %>
+  database: <%= ENV['OL_DB'] %>
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -29,33 +32,6 @@ default: &default
 development: &development
   <<: *default
   database: orangelight_development
-
-  # The specified database role being used to connect to postgres.
-  # To create additional roles in postgres see `$ createuser --help`.
-  # When left blank, postgres will use the default role. This is
-  # the same name as the operating system user that initialized the database.
-  # username: orangelight
-  #
-  # # The password associated with the postgres role (username).
-  # password: orange
-  #
-  # Connect on a TCP socket. Omitted by default since the client uses a
-  # domain socket that doesn't need configuration. Windows does not have
-  # domain sockets, so uncomment these lines.
-  host: localhost
-
-  # The TCP port the server listens on. Defaults to 5432.
-  # If your server runs on a different port number, change accordingly.
-  port: 5432
-
-  # Schema search path. The server defaults to $user,public
-  #schema_search_path: myapp,sharedapp,public
-
-  # Minimum log levels, in increasing order:
-  #   debug5, debug4, debug3, debug2, debug1,
-  #   log, notice, warning, error, fatal, and panic
-  # Defaults to warning.
-  #min_messages: notice
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -85,19 +61,10 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['OL_DB'] %>
-  host: <%= ENV['OL_DB_HOST'] %>
 
 staging:
   <<: *default
-  database: <%= ENV['OL_DB'] %>
-  host: <%= ENV['OL_DB_HOST'] %>
 alma_qa:
   <<: *default
-  database: <%= ENV['OL_DB'] %>
-  host: <%= ENV['OL_DB_HOST'] %>
 qa:
   <<: *default
-  database: <%= ENV['OL_DB'] %>
-  host: <%= ENV['OL_DB_HOST'] %>
-

@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 config = Orangelight::Application.config.database_configuration[::Rails.env]
-dbhost, dbuser, dbname, password = config['host'], config['username'], config['database'], config['password']
-sql_command = "PGPASSWORD=#{password} psql -U #{dbuser} -h #{dbhost} #{dbname} -c"
+dbhost, dbuser, dbname, password, port = config['host'], config['username'], config['database'], config['password'], config['port'] || 5432
+sql_command = "PGPASSWORD=#{password} psql -U #{dbuser} -h #{dbhost} -p #{port} #{dbname} -c"
 
 system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_names RESTART IDENTITY;"))
 system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_name_titles RESTART IDENTITY;"))
