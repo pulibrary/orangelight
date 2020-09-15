@@ -1,4 +1,5 @@
 import GoogleBooksSnippets from 'orangelight/google_books_snippets'
+import { promises as fs } from 'fs';
 
 describe('GoogleBooksSnippets', function () {
   beforeEach(() => {
@@ -26,26 +27,25 @@ describe('GoogleBooksSnippets', function () {
     expect(google_books_snippets.isbn).toEqual(["9780618643103"])
   })
 
-  test('insert_snippet adds the google books snippet inside the document-viewers container', () => {
+  test('insert_snippet adds the google book link to available content', async () => {
     document.body.innerHTML =
-      '<div class="document-thumbnail"><img alt="" src="https://books.google.com/books/content?id=5FTiCgAAQBAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1"></div>' +
+      '<div class="wrapper"><div class="availability--online"><ul></ul></div><div class="availability--physical"></div></div>' +
       '<meta property="isbn" itemprop="isbn" content="9780618643103">' +
-      '<meta property="isbn" itemprop="isbn" content="9781911300069">' +
-      '<div class="document-viewers"></div>'
+      '<meta property="isbn" itemprop="isbn" content="9781911300069">'
     const google_books_snippets = new GoogleBooksSnippets
-    const load = jest.fn().mockImplementation((_element, _fail, success_fn) => { success_fn() })
-    window.google.books.DefaultViewer = jest.fn().mockImplementation(() => { return { load }})
+    let json_response = await fs.readFile("spec/fixtures/google_book_search.json", 'utf8')
+    json_response = JSON.parse(json_response)
+    $.getJSON = jest.fn().mockImplementation(() => { return { 'promise': () => Promise.resolve(json_response)} })
+    const expectedUrl = "https://www.google.com/books/edition/_/5FTiCgAAQBAJ?hl=en&gbpv=1&pg=PP1"
 
-    google_books_snippets.insert_snippet()
-    const element = document.getElementById("google-book-wizard")
-    expect(element).not.toBe(null)
-    expect(load).toHaveBeenCalledWith(["ISBN:9780618643103", "ISBN:9781911300069"], google_books_snippets.not_found, google_books_snippets.addThumbnailLink)
+    await google_books_snippets.insert_snippet()
 
-    const header = document.getElementById("google-books-header")
-    expect(header.textContent).toBe("Digital Preview")
-
-    const thumbnail = document.getElementsByClassName("document-thumbnail")[0]
-    expect(thumbnail.className).toBe("document-thumbnail has-viewer-link")
-    expect(thumbnail.parentElement.href).toBe("http://localhost/#view")
+    const li_elements = document.getElementsByTagName('li')
+    expect(li_elements.length).toEqual(1)
+    const list_item = li_elements.item(0)
+    expect(list_item.textContent.startsWith("Google Preview")).toEqual(true)
+    const anchor = list_item.getElementsByTagName('a').item(0)
+    expect(anchor.getAttribute("href")).toEqual(expectedUrl)
+    expect(anchor.getAttribute("target")).toEqual("_blank")
   })
 })
