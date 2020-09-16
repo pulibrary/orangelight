@@ -67,7 +67,7 @@ describe('GoogleBooksSnippets', function () {
     const li_elements = document.getElementsByTagName('li')
     expect(li_elements.length).toEqual(1)
     const list_item = li_elements.item(0)
-    expect(list_item.textContent.startsWith("Google Preview")).toEqual(true)
+    expect(list_item.textContent.startsWith("Google Books (Partial View)")).toEqual(true)
     const anchor = list_item.getElementsByTagName('a').item(0)
     expect(anchor.getAttribute("href")).toEqual(expectedUrl)
     expect(anchor.getAttribute("target")).toEqual("_blank")

@@ -33,11 +33,12 @@ export default class GoogleBooksSnippets {
       const result = response[key]
       if(result.preview === "partial" || result.preview === "full")
       {
+        const previewString = result.preview.charAt(0).toUpperCase() + result.preview.slice(1)
         const url = new URL(result.preview_url)
         const bookId = url.searchParams.get("id")
         const link = `https://www.google.com/books/edition/_/${bookId}?hl=en&gbpv=1&pg=PP1`
         const content = (link, target) => {
-          return `<a href="${link}" target="${target}">Google Preview</a><p>${this.contentStatement}</p>`
+          return `<a href="${link}" target="${target}">Google Books (${previewString} View)</a><p>${this.contentStatement}</p>`
         }
         insert_online_link(link, "google_preview_link", content)
         break
