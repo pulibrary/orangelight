@@ -9,11 +9,16 @@ export default class GoogleBooksSnippets {
     return $("meta[property='isbn']").map(function(){ return $(this).attr("content")}).toArray()
   }
 
+  get isJournal() {
+    return $("dd.blacklight-format").text().trim() === "Journal"
+  }
+
   get googleUrl() {
     return `https://books.google.com/books?callback=?&jscmd=viewapi&bibkeys=://books.google.com/books?callback=?&jscmd=viewapi&bibkeys=${this.isbn.join(",")}`
   }
 
   async insert_snippet() {
+    if (this.isJournal) return
     return $.getJSON(this.googleUrl).promise()
       .then(this.process_google_response.bind(this))
   }

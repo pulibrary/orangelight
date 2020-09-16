@@ -27,6 +27,30 @@ describe('GoogleBooksSnippets', function () {
     expect(google_books_snippets.isbn).toEqual(["9780618643103"])
   })
 
+  test("isJournal returns true if format is set", () => {
+    // Weird spacing is true in prod, so make sure it's tested.
+    document.body.innerHTML = '<dd class="blacklight-format" dir="ltr">Journal' +
+                              '                 </dd>'
+    const google_books_snippets = new GoogleBooksSnippets
+    expect(google_books_snippets.isJournal).toEqual(true)
+    document.body.innerHTML = '<dd class="blacklight-format" dir="ltr">Other</dd>'
+    expect(google_books_snippets.isJournal).toEqual(false)
+  })
+
+  test('insert_snippet does nothing if a journal', async () => {
+    document.body.innerHTML =
+      '<div class="wrapper"><div class="availability--online"><ul></ul></div><div class="availability--physical"></div></div>' +
+      '<meta property="isbn" itemprop="isbn" content="9780618643103">' +
+      '<meta property="isbn" itemprop="isbn" content="9781911300069">' +
+      '<dd class="blacklight-format" dir="ltr">Journal</dd>'
+    const google_books_snippets = new GoogleBooksSnippets
+
+    await google_books_snippets.insert_snippet()
+
+    const li_elements = document.getElementsByTagName('li')
+    expect(li_elements.length).toEqual(0)
+  })
+
   test('insert_snippet adds the google book link to available content', async () => {
     document.body.innerHTML =
       '<div class="wrapper"><div class="availability--online"><ul></ul></div><div class="availability--physical"></div></div>' +
