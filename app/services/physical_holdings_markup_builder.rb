@@ -293,18 +293,10 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
 
   # Generate a request label based upon the holding location
   # @param location_rules [Hash] the location for the holding
-  # @param adapter [HoldingRequestsAdapter] adapter for the SolrDocument and Bibdata API
   # @return [String] the label
-  def self.request_label(location_rules, adapter)
-    open_libraries = ['firestone', 'annexa', 'recap', 'marquand', 'mendel', 'stokes', 'eastasian', 'architecture', 'engineering', 'lewis']
+  def self.request_label(location_rules)
     if aeon_location?(location_rules)
       'Reading Room Request'
-    elsif open_libraries.include?(location_rules['library']['code']) && location_rules["circulates"] == true
-      if etas_restricted?(location_rules, adapter)
-        'Digitization Request'
-      else
-        'Request Pick-up or Digitization'
-      end
     else
       'Request'
     end
@@ -359,7 +351,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                        class: 'request btn btn-xs btn-primary',
                        data: { toggle: 'tooltip' })
              else
-               link_to(request_label(location_rules, adapter),
+               link_to(request_label(location_rules),
                        "/requests/#{doc_id}?source=pulsearch",
                        title: request_tooltip(location_rules),
                        class: 'request btn btn-xs btn-primary',
@@ -372,7 +364,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
            else
-             link_to(request_label(location_rules, adapter),
+             link_to(request_label(location_rules),
                      "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch",
                      title: request_tooltip(location_rules),
                      class: 'request btn btn-xs btn-primary',

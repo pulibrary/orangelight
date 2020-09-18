@@ -58,7 +58,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   end
 
   describe '.request_label' do
-    let(:request_label) { described_class.request_label(location_rules, adapter) }
+    let(:request_label) { described_class.request_label(location_rules) }
 
     context 'for holdings within aeon locations' do
       let(:location_rules) do
@@ -92,118 +92,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
     context 'for circulating locations' do
       it 'generates a generic request label' do
-        expect(request_label).to eq 'Request Pick-up or Digitization'
-      end
-    end
-
-    context 'for nypl items' do
-      let(:location_rules) do
-        {
-          'code': 'scsbnypl',
-          'aeon_location': false,
-          'circulates': true,
-          'library': {
-            'label': 'ReCAP',
-            'code': 'recap',
-            'order': 3
-          }
-        }.with_indifferent_access
-      end
-
-      it 'generates a pickup or digitization request label' do
-        expect(request_label).to eq 'Request Pick-up or Digitization'
-      end
-    end
-
-    context 'for columbia items not on etas' do
-      before do
-        allow(document).to receive(:key?).with("oclc_s").and_return(true)
-        allow(document).to receive(:fetch).with("oclc_s").and_return(['19774500'])
-        allow(adapter).to receive(:hathi_access).with('19774500').and_return(
-          [
-            {
-              "oclc_number" => "19774500",
-              "bibid" => "1000066",
-              "status" => "ALLOW",
-              "origin" => "CUL"
-            }
-          ]
-        )
-      end
-      let(:location_rules) do
-        {
-          'code': 'scsbcul',
-          'aeon_location': false,
-          'circulates': true,
-          'library': {
-            'label': 'ReCAP',
-            'code': 'recap',
-            'order': 3
-          }
-        }.with_indifferent_access
-      end
-      it 'generates a digitization request label' do
-        expect(request_label).to eq 'Request Pick-up or Digitization'
-      end
-    end
-
-    context 'for columbia items not on etas missing oclc_s' do
-      before do
-        allow(document).to receive(:key?).with("oclc_s").and_return(false)
-      end
-      let(:location_rules) do
-        {
-          'code': 'scsbcul',
-          'aeon_location': false,
-          'circulates': true,
-          'library': {
-            'label': 'ReCAP',
-            'code': 'recap',
-            'order': 3
-          }
-        }.with_indifferent_access
-      end
-      it 'generates a digitization request label' do
-        expect(request_label).to eq 'Request Pick-up or Digitization'
-      end
-    end
-
-    context 'for columbia items on etas' do
-      before do
-        allow(document).to receive(:key?).with("oclc_s").and_return(true)
-        allow(document).to receive(:fetch).with("oclc_s").and_return(['19774500'])
-        allow(adapter).to receive(:hathi_access).with('19774500').and_return(
-          [
-            {
-              "oclc_number" => "19774500",
-              "bibid" => "1000066",
-              "status" => "DENY",
-              "origin" => "CUL"
-            },
-            {
-              "oclc_number" => "19774500",
-              "bibid" => "1000066",
-              "status" => "ALLOW",
-              "origin" => "PUL"
-            }
-          ]
-        )
-      end
-      let(:location_rules) do
-        {
-          'code': 'scsbcul',
-          'aeon_location': false,
-          'circulates': true,
-          'library': {
-            'label': 'ReCAP',
-            'code': 'recap',
-            'order': 3
-          }
-        }.with_indifferent_access
-      end
-
-      it 'generates a digitization request label' do
-        expect(request_label).to eq 'Digitization Request'
+        expect(request_label).to eq 'Request'
       end
     end
   end
