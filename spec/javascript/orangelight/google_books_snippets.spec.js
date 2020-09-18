@@ -51,6 +51,20 @@ describe('GoogleBooksSnippets', function () {
     expect(li_elements.length).toEqual(0)
   })
 
+  test('insert_snippet does nothing if online only', async () => {
+    document.body.innerHTML =
+      '<div id="document" data-location="[&quot;elf1&quot;, &quot;Online&quot;]"></div>' +
+      '<div class="wrapper"><div class="availability--online"><ul></ul></div><div class="availability--physical"></div></div>' +
+      '<meta property="isbn" itemprop="isbn" content="9780618643103">' +
+      '<meta property="isbn" itemprop="isbn" content="9781911300069">'
+    const google_books_snippets = new GoogleBooksSnippets
+
+    await google_books_snippets.insert_snippet()
+
+    const li_elements = document.getElementsByTagName('li')
+    expect(li_elements.length).toEqual(0)
+  })
+
   test('insert_snippet adds the google book link to available content', async () => {
     document.body.innerHTML =
       '<div class="wrapper"><div class="availability--online"><ul></ul></div><div class="availability--physical"></div></div>' +
