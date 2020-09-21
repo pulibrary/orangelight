@@ -18,33 +18,19 @@ To install run
   yarn install
   ```
 
-Application Configuration
-------------------
-### Postgres Installation
-```bash
-apt-get install postgresql
-su - postgres
-psql -c "CREATE ROLE orangelight with createdb login password 'orange';"
-exit
-```
-#### Postgres On Mac
-Follow the instructions on [codementor](https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb) to install postgres on a Mac. Then run the following commands to create the orangelight user:
-```bash
-psql postgres
-CREATE ROLE orangelight with createdb login password 'orange';
-exit
-```
-
 ### Database Configuration
+
+Ensure Postgres is started via Lando - `lando start`.
+
 ```bash
 rake db:create
 rake db:migrate
 rake db:seed
 ```
-Production credentials: In production you'll need to add production
-credentials to database.yml
 
-### Run the devlopment Environment locally
+You can access the database console via `rails dbconsole -p`.
+
+### Run the development Environment locally
 **All commands are assumed to be run from your local orangelight directory**
 
 1. Start Solr using Lando  
