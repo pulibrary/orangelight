@@ -45,6 +45,16 @@
     "moduleDirectories": [
       "node_modules",
       "app/javascript"
-    ]
+    ],
+    "globals": {
+      "Global": {
+        "graphql": {
+          "uri": "https://figgy.princeton.edu/graphql"
+        },
+        "figgy": {
+          "uri": "https://figgy.princeton.edu"
+        }
+      }
+    }
   }
 }

@@ -1,0 +1,14 @@
+{
+    "9781501315732": {
+        "bib_key": "9781501315732",
+        "info_url": "https://books.google.com/books?id=5FTiCgAAQBAJ&source=gbs_ViewAPI",
+        "preview_url": "https://books.google.com/books?id=5FTiCgAAQBAJ&printsec=frontcover&source=gbs_ViewAPI",
+        "thumbnail_url": "https://books.google.com/books/content?id=5FTiCgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl",
+        "preview": "partial",
+        "embeddable": true,
+        "can_download_pdf": false,
+        "can_download_epub": false,
+        "is_pdf_drm_enabled": false,
+        "is_epub_drm_enabled": false
+    }
+}

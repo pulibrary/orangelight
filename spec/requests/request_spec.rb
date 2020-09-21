@@ -347,6 +347,16 @@ describe 'blacklight tests' do
     end
   end
 
+  describe 'location metadata' do
+    before { stub_holding_locations }
+
+    it 'is accessible from show view' do
+      id = '7916044'
+      get "/catalog/#{id}"
+      expect(response.body).to include 'data-location="[&quot;elf1&quot;, &quot;rcpph&quot;, &quot;Online&quot;, &quot;ReCAP&quot;]"'
+    end
+  end
+
   describe 'homepage facets' do
     it 'Only facets configured for homepage display are requested in Solr' do
       get '/catalog.json'
