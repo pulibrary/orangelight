@@ -12,11 +12,10 @@
  *
  *= require  'blacklight_range_limit'
  *= require 'blacklight_advanced_search'
+ *= require chosen
  *= require introjs
  *= require_self
  */
-
-@import 'chosen';
 
 @import 'variables/breaks';
 @import 'variables/colors';
