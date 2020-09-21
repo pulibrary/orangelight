@@ -29,7 +29,11 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
     markup = if /Open access/.match? texts.first
                link_to(texts.first, url.to_s, target: '_blank')
              elsif %r{(\/catalog\/.+?#view)} =~ url.to_s
-               link_to('Digital content', $&)
+               if texts.first == "arks.princeton.edu"
+                 link_to('Digital content', $&)
+               else
+                 link_to(texts.first, $&)
+               end
              else
                link_to(texts.first, "#{ENV['proxy_base']}#{url}", target: '_blank', onclick: "ga('send', 'event', 'proxied link', 'click', '#{url}');")
 

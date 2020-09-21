@@ -15,7 +15,7 @@ set :rvm_ruby_string, :local
 set :stage, :production
 set :rails_env, 'production'
 
-set :branch, ENV['BRANCH'] || 'master'
+set :branch, ENV['BRANCH'] || 'main'
 
 # Extended Server Syntax
 # ======================

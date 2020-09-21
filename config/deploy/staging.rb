@@ -2,7 +2,7 @@
 
 set :rvm_ruby_string, :local # use the same ruby as used locally for deployment
 set :rails_env, 'staging'
-set :branch, ENV['BRANCH'] || 'master'
+set :branch, ENV['BRANCH'] || 'main'
 
 server 'lib-orange-staging1', user: 'deploy', roles: %i[web app db worker mailcatcher]
 server 'lib-orange-staging2', user: 'deploy', roles: %i[web app db worker mailcatcher]

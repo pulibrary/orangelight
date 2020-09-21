@@ -7,7 +7,11 @@ export const insert_online_header = () => {
   }
 }
 
-export const insert_online_link = (link = "#view", id = "cdl_link") => {
+export const online_link_content = (link, target) => {
+  return `Princeton users: <a href="${link}" target="${target}">View digital content</a>`;
+}
+
+export const insert_online_link = (link = "#view", id = "cdl_link", content = online_link_content) => {
   insert_online_header()
   const existing_online_link = $(`#${id}`)
   if (existing_online_link.length > 0)
@@ -16,6 +20,6 @@ export const insert_online_link = (link = "#view", id = "cdl_link") => {
   if (link.charAt(0) === "#")
     target = "_self"
   const online_list = $("div[class^='availability--online']:not(.availability--panel_umlaut) ul");
-  const online_link = `<li id='${id}'>Princeton users: <a href="${link}" target="${target}">View digital content</a></li></div>`;
+  const online_link = `<li id='${id}'>${content(link, target)}</li></div>`;
   return $(online_list).append(online_link);
 }

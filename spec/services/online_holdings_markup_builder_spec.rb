@@ -76,6 +76,13 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
         expect(link_markup).to include 'Digital content'
       end
     end
+    context "with a labeled link to the IIIF viewer" do
+      let(:link_markup) { described_class.electronic_access_link('https://pulsearch.princeton.edu/catalog/4609321#view', ['Selected images']) }
+      it 'generates electronic access links for a catalog record which link to the IIIF Viewer' do
+        expect(link_markup).to include '<a href="/catalog/4609321#view"'
+        expect(link_markup).to include 'Selected images'
+      end
+    end
   end
 
   describe '.urlify' do
