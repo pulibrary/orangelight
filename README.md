@@ -27,8 +27,8 @@ rake db:create
 rake db:migrate
 rake db:seed
 ```
-Production credentials: In production you'll need to add production
-credentials to database.yml
+
+You can access the database console via `rails dbconsole -p`.
 
 ### Run the development Environment locally
 **All commands are assumed to be run from your local orangelight directory**
