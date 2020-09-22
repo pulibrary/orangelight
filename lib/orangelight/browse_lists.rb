@@ -13,7 +13,8 @@ module BrowseLists
       dbuser = config['username']
       dbname = config['database']
       password = config['password']
-      sql_command = "PGPASSWORD=#{password} psql -U #{dbuser} -h #{dbhost} #{dbname} -c"
+      port = config['port']
+      sql_command = "PGPASSWORD=#{password} psql -U #{dbuser} -h #{dbhost} -p #{port} #{dbname} -c"
 
       # changes for different facet queries
       facet_request = "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax&facet.sort=asc&facet.limit=-1&facet.field="
