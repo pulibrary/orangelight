@@ -97,8 +97,7 @@ namespace :browse do
                              'name_title_browse_s', 'orangelight_name_titles')
     BrowseLists.browse_facet(sql_command, facet_request, conn,
                              'subject_facet', 'orangelight_subjects')
-    BrowseLists.browse_cn(sql_command, facet_request, conn, 'call_number_browse_s',
-                          'orangelight_call_numbers')
+    BrowseLists::CallNumberCSV.new(facet_request, conn).write
   end
 
   desc 'Sort and load data for all browse tables'
