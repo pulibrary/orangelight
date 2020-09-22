@@ -50,7 +50,7 @@ jobs:
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
             sudo apt-get update
             sudo apt-get -y install google-chrome-stable
-      - run: sudo apt install postgresql-client phantomjs
+      - run: sudo apt install postgresql-client
       - save_cache:
           key: orangelight-{{ checksum "Gemfile.lock" }}
           paths:
