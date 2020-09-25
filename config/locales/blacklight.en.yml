@@ -14,7 +14,7 @@ en:
       supervised_use: 'Materials must be used within the Firestone Library Reading Room by scheduled appointment.'
     account:
       inaccessible: 'Your library account is not available.'
-      borrow_direct_ineligible: 'Your library account is not eligible for Borrow Direct.'
+      borrow_direct_ineligible: 'Your library account is not currently authorized to use Borrow Direct.'
       no_requests: 'You have no outstanding requests.'
       no_pickup_items: 'You have no items available for pickup.'
       no_fines_fees: 'No outstanding fines or fees.'
