@@ -118,6 +118,7 @@ Metrics/ModuleLength:
 Metrics/PerceivedComplexity:
   Exclude:
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
+    - 'app/controllers/account_controller.rb'
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/controllers/concerns/orangelight/catalog.rb'
     - 'app/helpers/facets_helper.rb'
