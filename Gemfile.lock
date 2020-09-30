@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 0890472867710b2ff7b0339a05c3a0f927e8f7c1
+  revision: 13aa5b05367472daa52b8f2766242e448afaa7b5
   specs:
     requests (0.0.2)
       bootstrap
@@ -123,7 +123,7 @@ GEM
     amq-protocol (2.3.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (10.0.0.2)
+    autoprefixer-rails (10.0.1.0)
       execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -447,7 +447,7 @@ GEM
     serverengine (2.0.7)
       sigdump (~> 0.2.2)
     sigdump (0.2.4)
-    simple_form (5.0.2)
+    simple_form (5.0.3)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     simplecov (0.16.1)
