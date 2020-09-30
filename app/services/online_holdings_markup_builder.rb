@@ -35,8 +35,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
                  link_to(texts.first, $&)
                end
              else
-               link_to(texts.first, "#{ENV['proxy_base']}#{url}", target: '_blank', onclick: "ga('send', 'event', 'proxied link', 'click', '#{url}');")
-
+               link_to(texts.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
              end
     markup
   end
