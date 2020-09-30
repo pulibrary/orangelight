@@ -73,7 +73,6 @@ Metrics/CyclomaticComplexity:
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
 
 Metrics/LineLength:
-  Max: 250
   Exclude:
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'app/helpers/advanced_helper.rb'

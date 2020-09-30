@@ -72,7 +72,7 @@ describe 'blacklight tests' do
 
     it 'links to an electronic resource with the appropriate display text' do
       get '/catalog/3'
-      expect(response.body).to include("<a target=\"_blank\" onclick=\"ga('send', 'event', 'proxied link', 'click', 'http://d-nb.info/991834119/04');\" href=\"#{ENV['proxy_base']}http://d-nb.info/991834119/04\">Inhaltsverzeichnis</a>")
+      expect(response.body).to include("<a target=\"_blank\" href=\"#{ENV['proxy_base']}http://d-nb.info/991834119/04\">Inhaltsverzeichnis</a>")
     end
 
     it 'includes $z as an additional label for the link' do
