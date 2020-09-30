@@ -6,6 +6,7 @@ RSpec.describe AccountController do
   let(:valid_patron_response) { File.open(fixture_path + '/bibdata_patron_response.json') }
   let(:campus_authorized_patron) { File.open(fixture_path + '/bibdata_patron_auth_response.json') }
   let(:campus_unauthorized_patron) { File.open(fixture_path + '/bibdata_patron_unauth_response.json') }
+  let(:campus_trained_patron) { File.open(fixture_path + '/bibdata_patron_trained_response.json') }
   let(:generic_voyager_account_response) { VoyagerAccount.new(fixture('/generic_voyager_account_response.xml')) }
   let(:generic_voyager_account_empty_response) { VoyagerAccount.new(fixture('/generic_voyager_account_empty_response.xml')) }
   let(:item_ids_to_cancel) { %w[42287 42289 69854 28010] }
@@ -160,6 +161,14 @@ RSpec.describe AccountController do
       valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: campus_authorized_patron, headers: {})
+      get :borrow_direct_redirect
+      expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
+    end
+    it 'Redirects to Borrow Direct for valid cas user who has taken training to be on campus' do
+      sign_in(valid_cas_user)
+      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
+      stub_request(:get, valid_patron_record_uri)
+        .to_return(status: 200, body: campus_trained_patron, headers: {})
       get :borrow_direct_redirect
       expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
     end
