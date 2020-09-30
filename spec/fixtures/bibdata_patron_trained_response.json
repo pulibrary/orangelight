@@ -11,5 +11,5 @@
     "expire_date": "2022-10-31T23:00:03.000-05:00",
     "patron_id": 77777,
     "campus_authorized": false,
-    "campus_authorized_category": "none"
+    "campus_authorized_category": "trained"
 }
