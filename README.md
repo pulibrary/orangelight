@@ -39,7 +39,7 @@ You can access the database console via `rails dbconsole -p`.
    ```
    *Note: You can stop lando by running `lando stop` and you can start fresh using `lando destroy`*
 1. Index data into solr 
-    *This step is only required if this is your first time running or you have run a `lando destroy`*
+    *This step is only required if this is your first time running, you have run a `lando destroy`, or you added a fixture to current_fixtures.json*
     ```
     rake pulsearch:solr:index
     ```
@@ -90,7 +90,7 @@ rake db:seed RAILS_ENV=test
    lando start
    ```
 1. Index data into solr 
-    *This step is only required if this is your first time running or you have run a `lando destroy`*
+    *This step is only required if this is your first time running, you have run a `lando destroy`, or you added a fixture to current_fixtures.json*
    ```
    RAILS_ENV=test rake pulsearch:solr:index
    ``` 
@@ -105,6 +105,13 @@ rake db:seed RAILS_ENV=test
       ```bash
       rake spec SPEC=path/to/your_spec.rb:linenumber
       ```
+
+### Adding a record to the test/dev index
+
+Grab a record from marc liberation's `/bibliographic/:bib_id/solr` endpoint. Add
+it to the bottom of `spec/fixtures/current_fixtures.json`. Note that file
+contains a list so you have to make sure you add a comma to the end of the last
+record and keep the closing bracket at the end of the file. Then run `rake pulsearch:solr:index` for both the dev and the test environment, as specified above.
 
 ## Local development with Figgy
 
