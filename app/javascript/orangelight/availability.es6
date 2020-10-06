@@ -373,7 +373,7 @@ export default class AvailabilityUpdater {
     status = this.title_case(status);
     availability_element.addClass("badge");
     let label = this.status_label(status);
-    if (!availability_info["patron_group_charged"] === "CDL") {
+    if (availability_info["patron_group_charged"] !== "CDL") {
       label = `${label}${this.due_date(availability_info["due_date"])}`;
     }
     availability_element.text(label);
