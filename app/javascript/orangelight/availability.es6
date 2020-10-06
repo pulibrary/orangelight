@@ -20,15 +20,9 @@ export default class AvailabilityUpdater {
     this.on_site_unavailable = 'On-site - ';
     this.circ_desk = 'See front desk';
     this.available_statuses = ['Not charged', 'On shelf'];
-    this.returned_statuses = ['Discharged'];
-    this.in_process_statuses = ['In process', 'On-site - in process'];
     this.checked_out_statuses = ['Charged', 'Renewed', 'Overdue', 'On hold',
       'In transit', 'In transit on hold', 'In transit discharged', 'At bindery',
       'Remote storage request', 'Hold request', 'Recall request'];
-    this.missing_statuses = ['Missing', 'Claims returned', 'Withdrawn',
-      'On-site - missing', 'On-site - claims returned', 'On-site - withdrawn'];
-    this.long_overdue_statuses = ['Lost--system applied', 'On-site - lost--system applied'];
-    this.lost_statuses = ['Lost--library applied', 'On-site - lost--library applied'];
     this.available_labels = ['Available', 'Returned', 'In process', 'Requestable',
       'On shelf', 'All items available', 'On-site access'];
     this.available_non_requestable_labels = ['Available', 'Returned', 'Requestable',
@@ -120,19 +114,12 @@ export default class AvailabilityUpdater {
           location.text(availability_info['label']);
         }
         if ($(".journal-current-issues").length > 0) { this.get_issues(holding_id); }
+        this.apply_record_icon(availability_element, availability_info['status'], aeon, availability_info, availability_info['status_label']);
         if (availability_info['more_items']) {
-          if (this.title_case(availability_info['status']).match(this.on_site_status)) {
-            this.apply_record_icon(availability_element, "On-site access", aeon, availability_info);
-          } else {
-            this.apply_record_icon(availability_element, "All items available", aeon, availability_info);
-          }
           this.get_more_items(holding_id, availability_info['label']);
         } else {
           if (availability_info["patron_group_charged"] === "CDL") {
-            this.apply_record_icon(availability_element, "Reserved for Digital Lending" , aeon, availability_info);
             insert_online_link();
-          } else {
-            this.apply_record_icon(availability_element, availability_info['status'], aeon, availability_info);
           }
         }
         if (availability_info['temp_loc']) {
@@ -254,20 +241,20 @@ export default class AvailabilityUpdater {
         var li;
         const item = data[key];
         const status = this.title_case(item['status']);
-        const label = this.status_label(status);
+        const status_label = item['status_label'];
         if ((holding_label !== item['label']) || item['temp_loc']) {
-          li = `<li>${item['enum_display'] || 'Item'}: ${item['label']} - ${this.status_display(status, label)}</li>`;
+          li = `<li>${item['enum_display'] || 'Item'}: ${item['label']} - ${this.status_display(status, status_label)}</li>`;
           ul = ul + li;
         }
         if (!Array.from(this.available_statuses).includes(status) && (status !== this.on_site_status)) {
           if ((holding_label === item['label']) && !item['temp_loc']) {
-            li = `<li>${item['enum_display'] || 'Item'}: ${this.status_display(status, label, item['due_date'])}</li>`;
+            li = `<li>${item['enum_display'] || 'Item'}: ${this.status_display(status, status_label, item['due_date'])}</li>`;
             ul = ul + li;
           }
           const span = $(`*[data-holding-id='${holding_id}'] .availability-icon`);
           const txt = status.match(this.on_site_unavailable) ?
             this.circ_desk
-            : !Array.from(this.unavailable_labels).includes(label) && (span.text() !== "Some items not available") ?
+            : !Array.from(this.unavailable_labels).includes(status_label) && (span.text() !== "Some items not available") ?
             "Some items may not be available"
             :
             "Some items not available";
@@ -350,7 +337,7 @@ export default class AvailabilityUpdater {
         const temp_map_link = this.stackmap_link(record_id, availability_info, true);
         current_map_link.replaceWith(temp_map_link);
       }
-      this.apply_record_icon(availability_element, availability_info['status'], aeon, {});
+      this.apply_record_icon(availability_element, availability_info['status'], aeon, {}, availability_info['status_label']);
     }
     return true;
   }
@@ -369,10 +356,10 @@ export default class AvailabilityUpdater {
     return true;
   }
 
-  apply_record_icon(availability_element, status, aeon, availability_info) {
+  apply_record_icon(availability_element, status, aeon, availability_info, status_label) {
     status = this.title_case(status);
     availability_element.addClass("badge");
-    let label = this.status_label(status);
+    let label = status_label;
     if (availability_info["patron_group_charged"] !== "CDL") {
       label = `${label}${this.due_date(availability_info["due_date"])}`;
     }
@@ -432,24 +419,5 @@ export default class AvailabilityUpdater {
   due_date(date_string) {
     if (date_string == null) { return ""; }
     return ` - ${date_string}`;
-  };
-
-  status_label(status) {
-    switch (false) {
-      case !Array.from(this.long_overdue_statuses).includes(status): return 'Long overdue';
-      case !Array.from(this.lost_statuses).includes(status): return 'Lost';
-      case !Array.from(this.available_statuses).includes(status): return 'Available';
-      case !Array.from(this.returned_statuses).includes(status): return 'Returned';
-      case status !== 'In transit discharged': return 'In transit';
-      case !Array.from(this.in_process_statuses).includes(status): return 'In process';
-      case !Array.from(this.checked_out_statuses).includes(status): return 'Checked out';
-      case !Array.from(this.missing_statuses).includes(status): return 'Missing';
-      case !status.match(this.on_site_unavailable): return this.circ_desk;
-      case !status.match(this.on_site_status): return 'On-site access';
-      case !status.match('Order received'): return 'Order received';
-      case !status.match('Pending order'): return 'Pending order';
-      case !status.match('On-order'): return 'On-order';
-      default: return status;
-    }
   };
 }
