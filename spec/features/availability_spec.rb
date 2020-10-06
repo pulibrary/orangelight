@@ -65,11 +65,35 @@ describe 'Availability' do
     end
   end
 
-  describe 'On-site multiple items all available', js: true do
+  describe 'Multiple items all available', js: true do
     it 'display availability as on-site and does not display individual items', unless: in_ci? do
       stub_holding_locations
-      visit 'catalog/2238036'
+      visit 'catalog/857469'
+      expect(page).to have_selector '.availability-icon.badge.badge-success', text: 'All items available'
+    end
+  end
+
+  describe 'On-site multiple items all available', js: true do
+    it 'displays availability as on-site and does not display individual items', unless: in_ci? do
+      stub_holding_locations
+      visit 'catalog/7777379'
       expect(page).to have_selector '.availability-icon.badge.badge-success', text: 'On-site access', count: 1
+    end
+  end
+
+  describe 'On-site multiple items unavailable', js: true do
+    it 'displays See front desk and does not display individual items', unless: in_ci? do
+      stub_holding_locations
+      visit 'catalog/2238036'
+      expect(page).to have_selector '.availability-icon.badge.badge-success', text: 'See front desk', count: 1
+    end
+  end
+
+  describe 'Checked out item', js: true do
+    it 'shows due date', unless: in_ci? do
+      stub_holding_locations
+      visit 'catalog/12052273'
+      expect(page).to have_selector '.availability-icon.badge.badge-secondary', text: 'Checked out - 12/30/2020', count: 1
     end
   end
 
