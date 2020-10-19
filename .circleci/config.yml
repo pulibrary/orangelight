@@ -19,6 +19,19 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install the NVM
+          command: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+      - run:
+          name: Install Node LTS/erbium
+          command: |
+            nvm install lts/erbium
+            nvm use lts/erbium
+      - run:
+          name: Install Yarn
+          command: |
+            curl -o- -L https://yarnpkg.com/install.sh | bash
+      - run:
           name: Install Java 8
           command: |
             sudo apt update
