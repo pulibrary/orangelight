@@ -16,6 +16,7 @@ To install run
   ```
   bundle install
   yarn install
+  rake pulsearch:solr:update
   ```
 
 ### Database Configuration
