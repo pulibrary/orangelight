@@ -373,11 +373,11 @@ class CatalogController < ApplicationController
     ## Issue Description
     config.add_show_field 'issue_number_s', label: 'Issue', helper_method: :link_to_search_value, if: false
     config.add_show_field 'issue_object_type_s', label: 'Object Type', helper_method: :link_to_search_value
-    ### Department, Collection
+    ### Department, Collection (Figgy: "numismatic_collection")
     config.add_show_field 'issue_ruler_s', label: 'Ruler', helper_method: :link_to_search_value
     config.add_show_field 'issue_metal_s', label: 'Metal', helper_method: :link_to_search_value
     config.add_show_field 'issue_denomination_s', label: 'Denomination', helper_method: :link_to_search_value
-    ### Date CE
+    ### Date CE (Figgy: "issue_earliest_date" - "issue_latest_date")
     config.add_show_field 'issue_era_s', label: 'Era', helper_method: :link_to_search_value
     config.add_show_field 'issue_region_s', label: 'Region', helper_method: :link_to_search_value
     config.add_show_field 'issue_state_s', label: 'State', helper_method: :link_to_search_value
@@ -385,8 +385,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'issue_master_s', label: 'Master', helper_method: :link_to_search_value
     config.add_show_field 'issue_workshop_s', label: 'Workshop', helper_method: :link_to_search_value
     config.add_show_field 'issue_series_s', label: 'Series', helper_method: :link_to_search_value
-    ### Artist
-    ### Subject
+    ### Artist (Figgy object: "issue_numismatic_artist")
+    ### Subject (Figgy object: "issue_numismatic_subject")
 
     ## References
     config.add_show_field 'issue_references_s', label: 'References', helper_method: :link_to_search_value, if: false
@@ -427,13 +427,13 @@ class CatalogController < ApplicationController
     config.add_show_field 'find_description_s', label: 'Find Description', helper_method: :link_to_search_value
 
     ## Acession
-    ### Accession ID
+    ### Accession ID (Figgy: "numismatic_accession_id")
 
     ## Source Information
     config.add_show_field 'donor_s', label: 'Donor', helper_method: :link_to_search_value
     ### Dealer
     ### Date of Accession
-    ### Number of Accession
+    ### Number of Accession (Figgy: "number_in_accession")
 
     ## Provenance
     ### Provenance Name
