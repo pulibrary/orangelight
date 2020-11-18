@@ -370,28 +370,28 @@ class CatalogController < ApplicationController
     config.add_show_field 'recap_notes_display', label: 'RCP', helper_method: :recap_note
 
     # Numismatics fields
+    ## Issue Description
     config.add_show_field 'issue_number_s', label: 'Issue', helper_method: :link_to_search_value, if: false
-    config.add_show_field 'issue_references_s', label: 'References', helper_method: :link_to_search_value, if: false
-    config.add_show_field 'donor_s', label: 'Donor', helper_method: :link_to_search_value
-    config.add_show_field 'analysis_s', label: 'Analysis', helper_method: :link_to_search_value
-    config.add_show_field 'counter_stamp_s', label: 'Counter Stamp', helper_method: :link_to_search_value
-    config.add_show_field 'die_axis_s', label: 'Die Axis', helper_method: :link_to_search_value
-    config.add_show_field 'find_date_s', label: 'Find Date', helper_method: :link_to_search_value
-    config.add_show_field 'find_description_s', label: 'Find Description', helper_method: :link_to_search_value
-    config.add_show_field 'find_feature_s', label: 'Find Feature', helper_method: :link_to_search_value
-    config.add_show_field 'find_locus_s', label: 'Find Locus', helper_method: :link_to_search_value
-    config.add_show_field 'find_number_s', label: 'Find Number', helper_method: :link_to_search_value
-    config.add_show_field 'find_place_s', label: 'Find Place', helper_method: :link_to_search_value
-    config.add_show_field 'issue_color_s', label: 'Color', helper_method: :link_to_search_value
-    config.add_show_field 'issue_denomination_s', label: 'Denomination', helper_method: :link_to_search_value
-    config.add_show_field 'issue_edge_s', label: 'Edge', helper_method: :link_to_search_value
-    config.add_show_field 'issue_era_s', label: 'Era', helper_method: :link_to_search_value
-    config.add_show_field 'issue_master_s', label: 'Master', helper_method: :link_to_search_value
-    config.add_show_field 'issue_metal_s', label: 'Metal', helper_method: :link_to_search_value
-    config.add_show_field 'issue_city_s', label: 'City', helper_method: :link_to_search_value
-    config.add_show_field 'issue_state_s', label: 'State', helper_method: :link_to_search_value
-    config.add_show_field 'issue_region_s', label: 'Region', helper_method: :link_to_search_value
     config.add_show_field 'issue_object_type_s', label: 'Object Type', helper_method: :link_to_search_value
+    ### Department, Collection
+    config.add_show_field 'issue_ruler_s', label: 'Ruler', helper_method: :link_to_search_value
+    config.add_show_field 'issue_metal_s', label: 'Metal', helper_method: :link_to_search_value
+    config.add_show_field 'issue_denomination_s', label: 'Denomination', helper_method: :link_to_search_value
+    ### Date CE
+    config.add_show_field 'issue_era_s', label: 'Era', helper_method: :link_to_search_value
+    config.add_show_field 'issue_region_s', label: 'Region', helper_method: :link_to_search_value
+    config.add_show_field 'issue_state_s', label: 'State', helper_method: :link_to_search_value
+    config.add_show_field 'issue_city_s', label: 'City', helper_method: :link_to_search_value
+    config.add_show_field 'issue_master_s', label: 'Master', helper_method: :link_to_search_value
+    config.add_show_field 'issue_workshop_s', label: 'Workshop', helper_method: :link_to_search_value
+    config.add_show_field 'issue_series_s', label: 'Series', helper_method: :link_to_search_value
+    ### Artist
+    ### Subject
+
+    ## References
+    config.add_show_field 'issue_references_s', label: 'References', helper_method: :link_to_search_value, if: false
+
+    ## Coin Description
     config.add_show_field 'issue_obverse_attributes_s', label: 'Obverse Attributes', helper_method: :link_to_search_value
     config.add_show_field 'issue_obverse_figure_description_s', label: 'Obverse Figure Description', helper_method: :link_to_search_value
     config.add_show_field 'issue_obverse_figure_relationship_s', label: 'Obverse Figure Relationship', helper_method: :link_to_search_value
@@ -408,13 +408,37 @@ class CatalogController < ApplicationController
     config.add_show_field 'issue_reverse_orientation_s', label: 'Reverse Orientation', helper_method: :link_to_search_value
     config.add_show_field 'issue_reverse_part_s', label: 'Reverse Part', helper_method: :link_to_search_value
     config.add_show_field 'issue_reverse_symbol_s', label: 'Reverse Symbol', helper_method: :link_to_search_value
-    config.add_show_field 'issue_ruler_s', label: 'Ruler', helper_method: :link_to_search_value
-    config.add_show_field 'issue_series_s', label: 'Series', helper_method: :link_to_search_value
-    config.add_show_field 'issue_shape_s', label: 'Shape', helper_method: :link_to_search_value
-    config.add_show_field 'issue_workshop_s', label: 'Workshop', helper_method: :link_to_search_value
     config.add_show_field 'size_s', label: 'Size', helper_method: :link_to_search_value
-    config.add_show_field 'technique_s', label: 'Technique', helper_method: :link_to_search_value
     config.add_show_field 'weight_s', label: 'Weight', helper_method: :link_to_search_value
+    config.add_show_field 'die_axis_s', label: 'Die Axis', helper_method: :link_to_search_value
+    config.add_show_field 'technique_s', label: 'Technique', helper_method: :link_to_search_value
+    config.add_show_field 'issue_shape_s', label: 'Shape', helper_method: :link_to_search_value
+    config.add_show_field 'issue_edge_s', label: 'Edge', helper_method: :link_to_search_value
+    config.add_show_field 'issue_color_s', label: 'Color', helper_method: :link_to_search_value
+    config.add_show_field 'counter_stamp_s', label: 'Counter Stamp', helper_method: :link_to_search_value
+    config.add_show_field 'analysis_s', label: 'Analysis', helper_method: :link_to_search_value
+
+    ## Find Information
+    config.add_show_field 'find_place_s', label: 'Find Place', helper_method: :link_to_search_value
+    config.add_show_field 'find_number_s', label: 'Find Number', helper_method: :link_to_search_value
+    config.add_show_field 'find_date_s', label: 'Find Date', helper_method: :link_to_search_value
+    config.add_show_field 'find_locus_s', label: 'Find Locus', helper_method: :link_to_search_value
+    config.add_show_field 'find_feature_s', label: 'Find Feature', helper_method: :link_to_search_value
+    config.add_show_field 'find_description_s', label: 'Find Description', helper_method: :link_to_search_value
+
+    ## Acession
+    ### Accession ID
+
+    ## Source Information
+    config.add_show_field 'donor_s', label: 'Donor', helper_method: :link_to_search_value
+    ### Dealer
+    ### Date of Accession
+    ### Number of Accession
+
+    ## Provenance
+    ### Provenance Name
+    ### Provenance Date
+    ### Provenance Number
 
     #     "fielded" search configuration. Used by pulldown among other places.
     #     For supported keys in hash, see rdoc for Blacklight::SearchFields
