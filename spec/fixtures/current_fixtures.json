@@ -21872,6 +21872,24 @@
             "Coin"
         ],
         "id": "coin-1",
+        "numismatic_collection_s": [ 
+            "Firestone" 
+        ],
+        "issue_date_s" : [
+            "-91 to -41"
+        ],
+        "issue_artist_s": [
+            "name1 name2, artist signature"
+        ],
+        "issue_subject_s": [
+            "Other Person, Athena"
+        ],
+        "numismatic_accession_s" : [
+            "1: 2001-01-01 name1 name2"
+        ],
+        "numismatic_provenance_s": [
+            "name1 name2; 12/04/1999; note"
+        ],
         "issue_color_s": [
             "green"
         ],

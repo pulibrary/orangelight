@@ -13,6 +13,11 @@ describe 'Numismatics Records' do
       expect(page).to have_content 'Die Axis'
       expect(page).to have_content 'Obverse Attributes'
       expect(page).to have_content 'Reverse Attributes'
+      expect(page).to have_content 'Date'
+      expect(page).to have_content 'Artist'
+      expect(page).to have_content 'Subject'
+      expect(page).to have_content 'Accession'
+      expect(page).to have_content 'Provenance'
     end
   end
 end
