@@ -152,7 +152,12 @@ class CatalogController < ApplicationController
     config.add_facet_field 'name_title_browse_s', label: 'Author-title heading', include_in_request: false
 
     # Numismatics facets
+    config.add_facet_field 'numismatic_collection_s', label: 'Numismatic Collection', include_in_request: false
+    config.add_facet_field 'issue_date_s', label: 'Date', include_in_request: false
     config.add_facet_field 'issue_artists_s', label: 'Artist', include_in_request: false
+    config.add_facet_field 'issue_subject_s', label: 'Subject', include_in_request: false
+    config.add_facet_field 'numismatic_accession_s', label: 'Accession', include_in_request: false
+    config.add_facet_field 'numismatic_provenance_s', label: 'Provenance', include_in_request: false
     config.add_facet_field 'issue_number_s', label: 'Issue', include_in_request: false
     config.add_facet_field 'issue_monogram_title_s', label: 'Monogram', include_in_request: false
     config.add_facet_field 'issue_references_s', label: 'References', include_in_request: false
