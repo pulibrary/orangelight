@@ -99,6 +99,7 @@ gem 'lograge'
 gem 'logstash-event'
 
 gem 'whenever', '~> 0.11'
+gem 'yard'
 
 group :development do
   gem 'capistrano-rails'
