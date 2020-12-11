@@ -3,6 +3,7 @@
 [![CircleCI](https://circleci.com/gh/pulibrary/orangelight.svg?style=svg)](https://circleci.com/gh/pulibrary/orangelight)
 [![Coverage
 Status](https://coveralls.io/repos/github/pulibrary/orangelight/badge.svg?branch=main)](https://coveralls.io/github/pulibrary/orangelight?branch=main)
+[![InchCI](https://inch-ci.org/github/pulibrary/orangelight.svg?branch=main)](https://inch-ci.org/github/pulibrary/orangelight)
 
 
 Versions:
