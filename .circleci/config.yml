@@ -8,6 +8,7 @@ jobs:
           RAILS_ENV: test
           ORANGELIGHT_HOST: localhost
           ORANGELIGHT_USER: postgres
+          NVM_HOME: ~/.nvm
 
       # Service container image available at 'host: localhost'
       - image: postgres:10
@@ -18,6 +19,24 @@ jobs:
     working_directory: ~/orangelight
     steps:
       - checkout
+      - run:
+          name: Install the NVM
+          command: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+            [ -s "/home/circleci/.nvm/nvm.sh" ]
+            source /home/circleci/.nvm/nvm.sh
+            echo 'The NVM has been installed'
+      - run:
+          name: Install Node LTS/erbium
+          command: |
+            source ~/.nvm/nvm.sh
+            nvm install lts/erbium
+            nvm use lts/erbium
+      - run:
+          name: Install Yarn
+          command: |
+            source ~/.nvm/nvm.sh
+            curl -o- -L https://yarnpkg.com/install.sh | bash
       - run:
           name: Install Java 8
           command: |
@@ -62,7 +81,9 @@ jobs:
             - orangelight-
       - run:
           name: Yarn Install
-          command: yarn install --cache-folder ~/.cache/yarn
+          command: |
+            source ~/.nvm/nvm.sh
+            yarn install --cache-folder ~/.cache/yarn
       # Store yarn / webpacker cache
       - save_cache:
           key: orangelight-{{ checksum "yarn.lock" }}
