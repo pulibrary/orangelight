@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 9bd7d5c107435fa4178235243c882feff79e77a9
+  revision: 035bb970dab2fa23ba8c0723efcda1b7a8c4a580
   branch: main
   specs:
     requests (0.0.2)
@@ -226,7 +226,7 @@ GEM
     faraday-cookie_jar (0.0.6)
       faraday (>= 0.7.4)
       http-cookie (~> 1.0.0)
-    ffi (1.13.1)
+    ffi (1.14.2)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     friendly_id (5.1.0)
@@ -503,7 +503,7 @@ GEM
       nokogiri (~> 1.9)
       slop (>= 3.4.5, < 4.0)
       yell
-    tzinfo (1.2.8)
+    tzinfo (1.2.9)
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
