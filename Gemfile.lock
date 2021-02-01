@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 74dad84657390c118024b7cc8dd69d6e9f8e3249
+  revision: 14039db9221293f67c518d1ae62547638e4e5610
   branch: main
   specs:
     requests (0.0.2)
@@ -124,7 +124,7 @@ GEM
     amq-protocol (2.3.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (10.2.0.0)
+    autoprefixer-rails (10.2.4.0)
       execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
