@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 14039db9221293f67c518d1ae62547638e4e5610
+  revision: 1a0c830f272cd2a9705c47c8842fdcefdd70dd11
   branch: main
   specs:
     requests (0.0.2)
@@ -249,7 +249,7 @@ GEM
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
     httpclient (2.8.3)
-    i18n (1.8.7)
+    i18n (1.8.8)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
     jbuilder (2.9.1)
