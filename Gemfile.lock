@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: dc3510d33b643dce9e1c9727c74758e7b1b0e5fc
+  revision: 99b560969e37f404430e4498d010593bb3a47ff4
   branch: main
   specs:
     requests (0.0.2)
@@ -304,7 +304,7 @@ GEM
     mini_portile2 (2.5.0)
     mini_racer (0.2.6)
       libv8 (>= 6.9.411)
-    minitest (5.14.3)
+    minitest (5.14.4)
     modernizr-rails (2.7.1)
     msgpack (1.3.1)
     multipart-post (2.1.1)
