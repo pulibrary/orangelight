@@ -27,6 +27,12 @@ RSpec.describe AccountController do
       .to_return(status: 200, body: verify_user_response)
   end
 
+  describe '#index' do
+    it "can access the use_alma flag" do
+      expect { Rails.configuration.use_alma }.not_to raise_error
+    end
+  end
+
   describe '#cancel_success' do
     subject(:account_controller) { described_class.new }
     it 'returns true when requested cancelled items are sucessfully deleted' do
