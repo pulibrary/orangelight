@@ -21,9 +21,13 @@ namespace :pulsearch do
     desc 'Posts fixtures to Solr'
     task :index do
       solr = RSolr.connect url: Blacklight.connection_config[:url]
-      docs = JSON.parse(File.read('spec/fixtures/current_fixtures.json'))
-      solr.add docs
-      solr.update data: '<commit/>', headers: { 'Content-Type' => 'text/xml' }
+      ['spec/fixtures/voyager', 'spec/fixtures/alma'].each do |dir|
+        Dir["#{dir}/**/*.json"].each do |file_path|
+          doc = JSON.parse(File.read(file_path))
+          solr.add doc
+          solr.update data: '<commit/>', headers: { 'Content-Type' => 'text/xml' }
+        end
+      end
     end
 
     desc 'Delete fixtures from Solr'

@@ -1,0 +1,117 @@
+{
+    "id": "99122306151806421",
+    "numeric_id_b": true,
+    "author_citation_display": [
+        "Nature Publishing Group"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Nature Publishing Group\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "author_s": [
+        "Nature Publishing Group"
+    ],
+    "uniform_title_s": [
+        "Nature (Online)"
+    ],
+    "title_display": "Nature.",
+    "title_t": [
+        "Nature."
+    ],
+    "title_citation_display": [
+        "Nature"
+    ],
+    "compiled_created_t": [
+        "Nature."
+    ],
+    "pub_created_display": [
+        "London : Springer Nature."
+    ],
+    "pub_created_s": [
+        "London : Springer Nature."
+    ],
+    "pub_citation_display": [
+        "London: Springer Nature"
+    ],
+    "pub_date_display": [
+        "1869"
+    ],
+    "pub_date_start_sort": 1869,
+    "pub_date_end_sort": 9999,
+    "format": [
+        "Journal"
+    ],
+    "description_display": [
+        "Print began with v. 1 (Nov. 4, 1869)."
+    ],
+    "description_t": [
+        "Print began with v. 1 (Nov. 4, 1869)."
+    ],
+    "absorbed_display": [
+        "Nature Physical Science"
+    ],
+    "absorbed_in_part_display": [
+        "Nature New Biology"
+    ],
+    "frequency_display": [
+        "Weekly"
+    ],
+    "restrictions_note_display": [
+        "Use copy"
+    ],
+    "notes_display": [
+        "Weekly international journal publishing peer-reviewed research in all fields of science and technology."
+    ],
+    "reproduction_notes_display": [
+        "Electronic reproduction. [Place of publication not identified] : HathiTrust Digital Library, 2010."
+    ],
+    "system_details_notes_display": [
+        "Master and use copy. Digital master created according to Benchmark for Faithful Digital Reproductions of Monographs and Serials, Version 1. Digital Library Federation, December 2002.",
+        "Mode of access: World Wide Web."
+    ],
+    "source_desc_notes_display": [
+        "Vol. 385, no. 6612 (Jan. 9, 1997); title from journal homepage (publisher's Web site, viewed Sept. 28, 2005).",
+        "Vol. 576, no. 7787 (19 Dec. 2019) (SpringerLink website, viewed Dec. 30, 2019)."
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_code_s": [
+        "eng"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Science\u2014Periodicals"
+    ],
+    "subject_facet": [
+        "Science\u2014Periodicals"
+    ],
+    "related_name_json_1display": "{\"Issuing body\":[\"Nature Publishing Group\"]}",
+    "other_title_display": [
+        "NATURE (LOND)",
+        "Nature (Basingstoke, Online)",
+        "Nature (Basingstoke. Online)"
+    ],
+    "issn_display": [
+        "1476-4687"
+    ],
+    "lccn_display": [
+        "  2005233250"
+    ],
+    "coden_display": [
+        "NATUAS"
+    ],
+    "lccn_s": [
+        "2005233250"
+    ],
+    "issn_s": [
+        "14764687"
+    ],
+    "oclc_s": [
+        "47076528"
+    ],
+    "other_version_s": [
+        "14764687",
+        "ocm47076528",
+        "00280836"
+    ]
+}
