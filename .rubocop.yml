@@ -89,6 +89,7 @@ Metrics/LineLength:
     - 'spec/services/holding_requests_adapter_spec.rb'
     - 'app/repositories/course_reserve_repository.rb'
     - 'spec/mailers/previews/*'
+    - 'spec/lib/orangelight/browse_lists/call_number_csv_spec.rb'
 
 Metrics/MethodLength:
   Exclude:
