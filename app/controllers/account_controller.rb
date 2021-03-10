@@ -111,13 +111,13 @@ class AccountController < ApplicationController
     ## edge case patrons.
     def set_patron
       @netid = current_user.uid
-      @patron = current_patron?(@netid)
+      @patron = current_patron(@netid)
       illiad_patron_client(@patron)
     end
 
     def current_account
       if @patron
-        @account = voyager_account?(@patron)
+        @account = voyager_account(@patron)
       else
         flash.now[:error] = I18n.t('blacklight.account.inaccessible')
       end
@@ -152,7 +152,7 @@ class AccountController < ApplicationController
 
   private
 
-    def current_patron?(netid)
+    def current_patron(netid)
       Bibdata.get_patron(netid)
     end
 
@@ -167,24 +167,23 @@ class AccountController < ApplicationController
       %(#{url}&LS=#{BorrowDirect::Defaults.library_symbol}&PI=#{barcode})
     end
 
-    def voyager_account?(patron)
+    def voyager_account(patron)
       begin
-        voyager_account = Faraday.get "#{ENV['voyager_api_base']}/vxws/MyAccountService?"\
+        response = Faraday.get "#{ENV['voyager_api_base']}/vxws/MyAccountService?"\
                                       "patronId=#{patron[:patron_id]}&patronHomeUbId=1@DB"
       rescue Faraday::Error::ConnectionFailed
         logger.info("Unable to Connect to #{ENV['voyager_api_base']}")
         return false
       end
-      if voyager_account.status == 403
+      if response.status == 403
         logger.info('403 Not Authorized to Connect to Voyager My Account Service.')
         return false
       end
-      if voyager_account.status == 404
+      if response.status == 404
         logger.info("404 Patron id #{patron[:patron_id]} cannot be "\
                     'found in the Voyager My Account Service.')
         return false
       end
-      account = VoyagerAccount.new(voyager_account.body)
-      account
+      VoyagerAccount.new(response.body)
     end
 end
