@@ -146,4 +146,24 @@ describe 'Availability' do
       end
     end
   end
+
+  context 'when using Alma' do
+    before do
+      allow(Rails.configuration).to receive(:use_alma).and_return(true)
+    end
+
+    describe 'Electronic Holdings', js: true do
+      it 'within the online section it does not display links', unless: in_ci? do
+        stub_holding_locations
+        visit '/catalog/99122306151806421'
+        expect(page).not_to have_selector '.availability--online a'
+      end
+
+      it 'does not display umlaut links for marcit record within the online section', unless: in_ci? do
+        visit '/catalog/99122306151806421'
+        expect(page).not_to have_selector '.availability--online .umlaut .fulltext'
+        expect(page).not_to have_selector '.availability--online .umlaut .fulltext .response_item'
+      end
+    end
+  end
 end

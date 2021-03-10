@@ -1,0 +1,142 @@
+{
+    "id": "994264203506421",
+    "numeric_id_b": true,
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "uniform_title_s": [
+        "Nature (London, England)"
+    ],
+    "title_display": "Nature.",
+    "title_t": [
+        "Nature."
+    ],
+    "title_citation_display": [
+        "Nature"
+    ],
+    "compiled_created_t": [
+        "Nature."
+    ],
+    "pub_created_display": [
+        "London : Macmillan Journals, 1869-"
+    ],
+    "pub_created_s": [
+        "London : Macmillan Journals, 1869-"
+    ],
+    "pub_citation_display": [
+        "London: Macmillan Journals"
+    ],
+    "pub_date_display": [
+        "1869"
+    ],
+    "pub_date_start_sort": 1869,
+    "pub_date_end_sort": 9999,
+    "cataloged_tdt": "2020-12-02T12:41:30Z",
+    "format": [
+        "Journal"
+    ],
+    "description_display": [
+        "v. : ill. ; 26-28 cm.",
+        "Vol. 1, no. 1 (Nov. 4, 1869)-"
+    ],
+    "description_t": [
+        "v. : ill. ; 26-28 cm.",
+        "Vol. 1, no. 1 (Nov. 4, 1869)-",
+        "With v. 7, no. 158, issue numbering is independent of volume numbering."
+    ],
+    "number_of_pages_citation_display": [
+        "v."
+    ],
+    "frequency_display": [
+        "Weekly"
+    ],
+    "has_supplement_display": [
+        "Nature. Supplement"
+    ],
+    "linking_notes_display": [
+        "Vols. 229-246, Jan. 1971-Dec. 1973, issued in three parts. The two new parts, Nature. New biology, and Nature. Physical sciences, continued the volume numbering of Nature in addition to carrying their own issue numbering. With v. 246, Dec. 1973, Nature: new biology, and Nature: physical sciences, ceased publication and were absorbed by Nature."
+    ],
+    "numbering_pec_notes_display": [
+        "With v. 7, no. 158, issue numbering is independent of volume numbering."
+    ],
+    "supplement_notes_display": [
+        "Supplements accompany some issues."
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_code_s": [
+        "eng"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Science\u2014Periodicals"
+    ],
+    "subject_facet": [
+        "Science\u2014Periodicals",
+        "Periodicals"
+    ],
+    "lcgft_s": [
+        "Periodicals"
+    ],
+    "other_title_display": [
+        "Nature (London)",
+        "Nature. New biology 1971-1973",
+        "Nature. Physical sciences 1971-1973"
+    ],
+    "alt_title_246_display": [
+        "Nature. New biology 1971-1973",
+        "Nature. Physical sciences 1971-1973"
+    ],
+    "issn_display": [
+        "0028-0836"
+    ],
+    "lccn_display": [
+        "   12037118 //r863 "
+    ],
+    "lccn_s": [
+        "12037118"
+    ],
+    "issn_s": [
+        "00280836"
+    ],
+    "oclc_s": [
+        "1586310"
+    ],
+    "other_version_s": [
+        "00280836",
+        "03022889",
+        "ocm01586310"
+    ],
+    "recap_notes_display": [
+        " - "
+    ],
+    "location_code_s": [
+        "engineer",
+        "lewis",
+        "firestone",
+        "recap",
+        "annex"
+    ],
+    "advanced_location_s": [
+        "engineer",
+        "lewis",
+        "firestone",
+        "recap",
+        "annex"
+    ],
+    "call_number_display": [
+        "Q1 .N3 ",
+        "8001.673 ",
+        "",
+        "Q1 .N3 wtd ",
+        "8001.673 wtd "
+    ],
+    "call_number_browse_s": [
+        "Q1 .N3 ",
+        "8001.673 ",
+        "",
+        "Q1 .N3 wtd ",
+        "8001.673 wtd "
+    ]
+}
