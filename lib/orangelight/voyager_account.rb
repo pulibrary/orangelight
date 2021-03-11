@@ -48,12 +48,6 @@ class VoyagerAccount
     parse_items(fine_nodes)
   end
 
-  def demerits
-    demerit_nodes = @doc.xpath('//myac:demerit', 'myac' => voyager_ns)
-    return nil if demerit_nodes.empty?
-    parse_items(demerit_nodes)
-  end
-
   def charged_items
     charged_item_nodes = @doc.xpath('//myac:chargedItem', 'myac' => voyager_ns)
     return nil if charged_item_nodes.empty?
