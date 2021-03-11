@@ -63,16 +63,6 @@ RSpec.describe VoyagerAccount do
     end
   end
 
-  describe '#demerits' do
-    it 'Lists demerits open on an account' do
-      expect(account_with_fines_requests.demerits.size).to eq(5)
-    end
-
-    it 'returns nil when there are no demerits' do
-      expect(account_empty_account.demerits).to be_nil
-    end
-  end
-
   describe '#charged_items' do
     it "Contains a list of the account's current charged items" do
       expect(account.charged_items.size).to eq(5)
