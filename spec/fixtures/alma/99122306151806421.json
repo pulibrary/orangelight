@@ -113,5 +113,6 @@
         "14764687",
         "ocm47076528",
         "00280836"
-    ]
+    ],
+    "electronic_portfolio_s": ["{\"desc\":\"Available from 1869 until 1923.\",\"title\":\"Biodiversity Heritage Library Free\",\"url\":\"https://na07.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&amp;portfolio_pid=53443322570006421&amp;Force_direct=true\",\"start\":\"1869\",\"end\":\"1923\"}", "{\"desc\":\"Available from 1869 volume: 1 issue: 1.\",\"title\":\"Nature\",\"url\":\"https://na07.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&amp;portfolio_pid=53443322610006421&amp;Force_direct=true\",\"start\":\"1869\",\"end\":\"latest\"}"]
 }

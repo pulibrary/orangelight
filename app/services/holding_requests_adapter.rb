@@ -41,6 +41,11 @@ class HoldingRequestsAdapter
   # @return [Hash] IIIF Manifests information
   delegate :iiif_manifests, to: :@document
 
+  # Retrieve the electronic portfolio information
+  # @return [String] electronic portfolio values
+  delegate :electronic_portfolios, to: :@document
+  delegate :sibling_electronic_portfolios, to: :@document
+
   # Determine whether or not the electronic resources are accessible using getit
   # @return [TrueClass, FalseClass]
   def getit_accessible?
