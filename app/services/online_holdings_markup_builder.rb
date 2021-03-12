@@ -97,6 +97,28 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
     markup
   end
 
+  # Returns electronic portforlio link markup.
+  # Replaces Umlaut AJAX data when using Alma.
+  # @param adapter [HoldingRequestsAdapter] the adapter for Solr and Bibdata
+  # @return [String] the markup
+  def self.electronic_portfolio_markup(adapter)
+    markup = ''
+
+    portfolios = adapter.electronic_portfolios + adapter.sibling_electronic_portfolios
+    portfolios.each do |portfolio|
+      start_date = portfolio['start']
+      end_date = portfolio['end']
+      date_range = "#{start_date} - #{end_date}: " if start_date && end_date
+      label = "#{date_range}#{portfolio['title']}"
+      link = link_to(label, portfolio["url"], target: '_blank')
+      link += " #{portfolio['desc']}"
+      link = "<li>#{link}</li>"
+      markup << content_tag(:li, link.html_safe, class: 'electronic-access')
+    end
+
+    markup
+  end
+
   # Constructor
   # @param adapter [HoldingRequestsAdapter] adapter for the SolrDocument and Bibdata API
   def initialize(adapter)
@@ -125,6 +147,10 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
           markup << self.class.online_link(@adapter.doc_id, holding_id)
         end
       end
+
+      # For Alma records, add links from the electronic portfolio field
+      markup << self.class.electronic_portfolio_markup(@adapter)
+
       markup
     end
 
