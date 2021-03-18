@@ -79,6 +79,13 @@ class SolrDocument
     JSON.parse(string_values).delete_if { |k, _v| k == 'iiif_manifest_paths' }
   end
 
+  # Retrieve electronic portfolio values and parse
+  # @return [Array<Hash>] array of electronic portfolio hashes
+  def electronic_portfolios
+    values = fetch('electronic_portfolio_s', [])
+    values.map { |v| JSON.parse(v) }
+  end
+
   # Parse IIIF Manifest links from the electronic access information
   # @return [Hash] IIIF Manifests information
   def iiif_manifests
@@ -116,6 +123,12 @@ class SolrDocument
     electronic_access_uris.select { |x| x.include?('ark:') }
   end
 
+  # Retrieves electronic portfolio values from sibling documents
+  # @return [Array<Hash>] array of electronic portfolio hashes
+  def sibling_electronic_portfolios
+    sibling_documents.flat_map(&:electronic_portfolios)
+  end
+
   private
 
     def electronic_access_uris
@@ -146,5 +159,16 @@ class SolrDocument
         isbn_s
         oclc_s
       ]
+    end
+
+    # Retrieves sibling documents linked by values on the other_version_s field
+    # @return [Array<SolrDocument>] array of sibling solr documents
+    def sibling_documents
+      sibling_ids = clean_ids(Array.wrap(fetch('other_version_s', [])))
+      root_id = fetch(:id)
+      linked_documents = LinkedDocumentResolver::LinkedDocuments.new(siblings: sibling_ids,
+                                                                     root: root_id,
+                                                                     solr_field: 'other_version_s')
+      linked_documents.siblings
     end
 end

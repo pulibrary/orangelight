@@ -152,17 +152,32 @@ describe 'Availability' do
       allow(Rails.configuration).to receive(:use_alma).and_return(true)
     end
 
-    describe 'Electronic Holdings', js: true do
-      it 'within the online section it does not display links', unless: in_ci? do
-        stub_holding_locations
+    describe 'Electronic Holdings' do
+      it 'within the online section, it displays electronic portfolio links' do
         visit '/catalog/99122306151806421'
-        expect(page).not_to have_selector '.availability--online a'
+        expect(page).to have_text '1869 - 1923: Biodiversity Heritage Library Free'
+        expect(page).to have_text 'Available from 1869 volume: 1 issue: 1.'
+
+        # Electronic portfolio link with an embargo
+        expect(page).to have_text '1990 - 2020: ProQuest Central'
+
+        # Renders portfolio link that does not include a date range
+        expect(page).to have_text 'PressReader'
+        expect(page).not_to have_text ': PressReader'
       end
 
-      it 'does not display umlaut links for marcit record within the online section', unless: in_ci? do
+      it 'does not display umlaut links for marcit record within the online section', js: true do
         visit '/catalog/99122306151806421'
         expect(page).not_to have_selector '.availability--online .umlaut .fulltext'
         expect(page).not_to have_selector '.availability--online .umlaut .fulltext .response_item'
+      end
+
+      context 'with a sibling record that does not have electronic portfolio values' do
+        it 'within the online section, it displays the links of its sibling record' do
+          visit '/catalog/994264203506421'
+          expect(page).to have_text '1869 - 1923: Biodiversity Heritage Library Free'
+          expect(page).to have_text 'Available from 1869 volume: 1 issue: 1.'
+        end
       end
     end
   end

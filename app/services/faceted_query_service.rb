@@ -18,7 +18,7 @@ class FacetedQueryService
     end
     facet_request = \
       "#{core_url}select?fq=#{fq}&fl=id,title_display,author_display,\
-      isbn_display,issn_display,lccn_display,oclc_s,holdings_1display&wt=json"
+      isbn_display,issn_display,lccn_display,oclc_s,holdings_1display,electronic_portfolio_s&wt=json"
     conn.get facet_request
   end
 
