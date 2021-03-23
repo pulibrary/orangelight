@@ -28,7 +28,7 @@ class StackmapLocationFactory
         'Online',
         'Rare Books and Special Collections',
         'ReCAP',
-        'Lewis Library' # Temporarily inaccessible
+        'Marquand Library at Firestone'
       ].include?(library)
     end
 
