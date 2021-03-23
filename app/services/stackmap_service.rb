@@ -73,7 +73,7 @@ class StackmapService
       end
 
       def stackmap_libs
-        %w[architecture eastasian engineering lewis mendel marquand plasma stokes]
+        %w[architecture eastasian engineering lewis mendel plasma stokes]
       end
 
       def missing_stackmap_reserves
