@@ -28,7 +28,7 @@ class StackmapLocationFactory
         'Online',
         'Rare Books and Special Collections',
         'ReCAP',
-        'Marquand Library at Firestone'
+        'Marquand Library'
       ].include?(library)
     end
 
