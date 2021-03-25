@@ -56,28 +56,6 @@ module BlacklightHelper
     solr_parameters[:facet] = false
   end
 
-  def course_reserve_filters(solr_parameters)
-    return unless blacklight_params[:f]
-    instructor = Array(blacklight_params[:f][:instructor]).first
-    course = Array(blacklight_params[:f][:course]).first
-    department = Array(blacklight_params[:f][:department]).first
-    filter = Array(blacklight_params[:f][:filter]).first
-    return if instructor.blank? && course.blank? && department.blank? && filter.blank?
-    courses = CourseReserveRepository.all.query(instructor: instructor, course_with_id: course, department_with_identifier: department)
-    index_course_reserves(courses)
-    solr_parameters[:fq] ||= []
-    solr_parameters[:fq].reject! do |x|
-      x = x.split('=')[1].split('}')[0] unless x.split('=')[1].nil?
-      %w[course instructor department filter].include?(x)
-    end
-    solr_parameters[:fq] << "{!join from=bib_ids_s to=id fromIndex=#{ReserveIndexer.core}}#{courses.solr_query}"
-  end
-
-  def index_course_reserves(courses)
-    ReserveIndexer.connection.delete_by_query(courses.solr_query)
-    ReserveIndexer.index!(courses)
-  end
-
   # Returns suitable argument to options_for_select method, to create
   # an html select based on #search_field_list with labels for search
   # bar only. Skips search_fields marked :include_in_simple_select => false

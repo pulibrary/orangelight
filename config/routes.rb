@@ -86,5 +86,4 @@ Rails.application.routes.draw do
   match '/500' => 'errors#error', via: %i[get post patch delete]
   # match '*catch_unknown_routes', to: 'application#catch_404s', via: [:get, :post]
   #
-  get '/course_reserves', to: 'course_reserves#index'
 end

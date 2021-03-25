@@ -589,7 +589,6 @@ DEPENDENCIES
   honeybadger
   introjs-rails!
   jbuilder (~> 2.0)
-  jquery-datatables
   jquery-rails
   launchy
   lcsort (>= 0.9.1)
