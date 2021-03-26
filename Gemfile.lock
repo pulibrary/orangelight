@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: d2855bd8ca0019ca9f389e44433328dd4bcc3650
+  revision: d05d8b4bea750b3410ca7daa6872a815344dccdf
   branch: main
   specs:
     requests (0.0.2)
@@ -299,8 +299,10 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.2)
-    mimemagic (0.3.5)
-    mini_mime (1.0.2)
+    mimemagic (0.3.9)
+      nokogiri (~> 1)
+      rake
+    mini_mime (1.0.3)
     mini_portile2 (2.5.0)
     mini_racer (0.2.6)
       libv8 (>= 6.9.411)
