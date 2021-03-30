@@ -13,12 +13,19 @@ Versions:
 * Blacklight: 7.0.1
 * blacklight_advanced_search: 7.0.0.alpha
 
+If you don't have `yarn` installed you can install it with
+  ```
+  npm install -g yarn
+  ```
+
 To install run
   ```
   bundle install
   yarn install
   rake pulsearch:solr:update
   ```
+
+On macOS: If the command `yarn install` gives error "No Xcode or CLT version detected" try [re-installing xCode tools](https://medium.com/@mrjohnkilonzi/how-to-resolve-no-xcode-or-clt-version-detected-d0cf2b10a750).
 
 ### Database Configuration
 
@@ -35,22 +42,22 @@ You can access the database console via `rails dbconsole -p`.
 ### Run the development Environment locally
 **All commands are assumed to be run from your local orangelight directory**
 
-1. Start Solr using Lando  
+1. Start Solr using Lando
    ```
    lando start
    ```
    *Note: You can stop lando by running `lando stop` and you can start fresh using `lando destroy`*
-1. Index data into solr 
+1. Index data into solr
     *This step is only required if this is your first time running, you have run a `lando destroy`, or you added a fixture to current_fixtures.json*
     ```
     rake pulsearch:solr:index
     ```
-1. Run a rails server 
+1. Run a rails server
    ```
    rails s
    ```
    *This will continue running until you Ctrl C, you will need a new tab or window for the next step*
-1. Run webpack to serve assets 
+1. Run webpack to serve assets
    ```
    bin/webpack-dev-server
    ```
@@ -86,17 +93,17 @@ rake db:seed RAILS_ENV=test
 
 ### Run Tests
 
-1. Start lando if it is not already started. 
+1. Start lando if it is not already started.
     *The same lando is used for both test and development.*
    ```
    lando start
    ```
-1. Index data into solr 
+1. Index data into solr
     *This step is only required if this is your first time running, you have run a `lando destroy`, or you added a fixture to current_fixtures.json*
    ```
    RAILS_ENV=test rake pulsearch:solr:index
-   ``` 
-1. Run the all the tests 
+   ```
+1. Run the all the tests
     ```
     rake spec
     ```
