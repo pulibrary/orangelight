@@ -41,7 +41,8 @@
   </head>
 
   <body class="<%= render_body_class %>"
-        data-availability-base-url="<%= ENV['bibdata_base'] %>/availability">
+        data-bibdata-base-url="<%= ENV['bibdata_base'] %>"
+        data-use-alma-flag="<%= Rails.configuration.use_alma %>">
   <%= render :partial => 'shared/header_navbar' %>
 
   <%= render partial: 'shared/modal' %> <!-- only render if page is using modal -->
