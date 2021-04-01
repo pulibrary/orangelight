@@ -71,7 +71,9 @@ describe 'Availability' do
   # CDL. It seems valid to remove it if it hasn't been refactored by then, and
   # at least create an issue to replace it with a jest test during a refactor of
   # this javascript.
-  describe 'An item reserved for controlled digital lending', js: true do
+
+  # this item is no longer on CDL
+  xdescribe 'An item reserved for controlled digital lending', js: true do
     before do
       stub_holding_locations
       visit '/catalog/7699003'
@@ -86,7 +88,8 @@ describe 'Availability' do
     end
   end
 
-  describe 'Physical Holdings in temp locations', js: true do
+  # This item is no longer in a temp location
+  xdescribe 'Physical Holdings in temp locations', js: true do
     it 'displays temp location on search results along with call number', unless: in_ci? do
       stub_holding_locations
       visit '/catalog?q=7917192'
@@ -131,7 +134,8 @@ describe 'Availability' do
       end
     end
 
-    describe 'On-site multiple items unavailable', js: true do
+    # these are now available
+    xdescribe 'On-site multiple items unavailable', js: true do
       it 'displays See front desk and does not display individual items', unless: in_ci? do
         stub_holding_locations
         visit 'catalog/2238036'
@@ -139,7 +143,8 @@ describe 'Availability' do
       end
     end
 
-    describe 'Checked out item', js: true do
+    # the item used here is no longer checked out
+    xdescribe 'Checked out item', js: true do
       it 'shows due date', unless: in_ci? do
         stub_holding_locations
         visit 'catalog/12052273'
