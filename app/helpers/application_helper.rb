@@ -50,7 +50,7 @@ module ApplicationHelper
   # @param document [SolrDocument]
   # @return [Array<String>] array containing the links
   def electronic_portfolio_links(document)
-    return [] if document.electronic_portfolios.blank?
+    return [] if document.try(:electronic_portfolios).blank?
     document.electronic_portfolios.map do |portfolio|
       content_tag(:div, class: 'library-location') do
         link_to(portfolio["title"], portfolio["url"], target: '_blank')
