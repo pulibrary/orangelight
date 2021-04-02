@@ -46,6 +46,18 @@ module ApplicationHelper
     urls
   end
 
+  # Returns electronic portfolio links for Alma records.
+  # @param document [SolrDocument]
+  # @return [Array<String>] array containing the links
+  def electronic_portfolio_links(document)
+    return [] if document.electronic_portfolios.blank?
+    document.electronic_portfolios.map do |portfolio|
+      content_tag(:div, class: 'library-location') do
+        link_to(portfolio["title"], portfolio["url"], target: '_blank')
+      end
+    end
+  end
+
   # Retrieve a URL for a stack map location URL given a record, a call number, and the library in which it is held
   # @param location [Hash] location information for the item holding
   # @param document [SolrDocument] the Solr Document for the record
@@ -179,8 +191,18 @@ module ApplicationHelper
   # @return [String] the markup
   def holding_block_search(document)
     block = ''
-    links = search_links(document['electronic_access_1display'])
-    holdings_hash = JSON.parse(document['holdings_1display'] || '{}')
+    portfolio_links = electronic_portfolio_links(document)
+    # Create stub holdings for Alma's electronic profiles so the below logic will work.
+    # Alma does not have an 'Online' library for holdings, so we fake it to keep
+    # the old logic around.
+    # @TODO: Remove when Voyager is gone.
+    portfolio_holdings = Hash[
+      portfolio_links.map do |_portfolio|
+        [SecureRandom.uuid, { 'library' => 'Online' }]
+      end
+    ]
+    links = search_links(document['electronic_access_1display']) + portfolio_links
+    holdings_hash = JSON.parse(document['holdings_1display'] || '{}').merge(portfolio_holdings)
     scsb_multiple = false
     holdings_hash.first(2).each do |id, holding|
       location = holding_location(holding)

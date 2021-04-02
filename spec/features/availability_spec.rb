@@ -153,6 +153,12 @@ describe 'Availability' do
     end
 
     describe 'Electronic Holdings' do
+      it "displays an online badge in search results" do
+        stub_holding_locations
+        visit "/catalog?q=99122306151806421"
+
+        expect(page).to have_selector ".availability-icon", text: "Online"
+      end
       it 'within the online section, it displays electronic portfolio links' do
         visit '/catalog/99122306151806421'
         expect(page).to have_text '1869 - 1923: Biodiversity Heritage Library Free'
