@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: e375c13982ece5baa4d6aa1ef9d9ed54034724ef
+  revision: 1d8ce6fcd3c6388bff197f5b06c5f02822da14b3
   branch: main
   specs:
     requests (0.0.2)
@@ -249,7 +249,7 @@ GEM
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
     httpclient (2.8.3)
-    i18n (1.8.9)
+    i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
     jbuilder (2.9.1)
@@ -296,9 +296,9 @@ GEM
       unf
     marc-fastxmlwriter (1.0.0)
       marc (~> 1.0)
-    marcel (1.0.0)
+    marcel (1.0.1)
     method_source (0.9.2)
-    mini_mime (1.0.3)
+    mini_mime (1.1.0)
     mini_portile2 (2.5.0)
     mini_racer (0.2.6)
       libv8 (>= 6.9.411)
