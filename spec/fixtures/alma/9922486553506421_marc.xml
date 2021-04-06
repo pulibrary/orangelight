@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<record>\n    
+	<leader>01226cam a2200313 a 4500</leader>\n    
+	<controlfield tag="001">9922486553506421</controlfield>\n    
+	<controlfield tag="005">20170622003921.0</controlfield>\n    
+	<controlfield tag="008">990423s1997    nyu      b    000 1 eng  </controlfield>\n    
+	<datafield ind1=" " ind2=" " tag="010">\n      
+		<subfield code="a">   98119521  </subfield>\n    
+	</datafield>\n    
+	<datafield ind1=" " ind2=" " tag="020">\n      
+		<subfield code="a">0375400699</subfield>\n    
+	</datafield>\n    
+	<datafield ind1=" " ind2=" " tag="035">\n      
+		<subfield code="a">(OCoLC)38574386</subfield>\n    
+	</datafield>\n    
+	<datafield ind1=" " ind2=" " tag="035">\n      
+		<subfield code="a">(CStRLIN)NJPG99-B22826</subfield>\n    
+	</datafield>\n    
+	<datafield ind1=" " ind2=" " tag="035">\n      
+		<subfield code="9">CKF4266TS</subfield>\n    
+	</datafield>\n    
+	<datafield ind1=" " ind2=" " tag="035">\n      
+		<subfield code="a">(NjP)2248655-princetondb</subfield>\n    
+	</datafield>\n    
+	<datafield ind1=" " ind2=" " tag="040">\n      
+		<subfield code="a">DLC</subfield>\n      
+		<subfield code="c">DLC</subfield>\n      
+		<subfield code="d">NjP</subfield>\n    
+	</datafield>\n    
+	<datafield ind1="1" ind2=" " tag="041">\n      
+		<subfield code="a">eng</subfield>\n      
+		<subfield code="h">spa</subfield>\n    
+	</datafield>\n    
+	<datafield ind1="0" ind2="0" tag="050">\n      
+		<subfield code="a">PQ8180.17.A73</subfield>\n      
+		<subfield code="b">A813 1997</subfield>\n    
+	</datafield>\n    
+	<datafield ind1="0" ind2="0" tag="082">\n      
+		<subfield code="a">863</subfield>\n      
+		<subfield code="2">21</subfield>\n    
+	</datafield>\n    
+	<datafield ind1="1" ind2=" " tag="100">\n      
+		<subfield code="a">García Márquez, Gabriel,</subfield>\n      
+		<subfield code="d">1927-2014.</subfield>\n      
+		<subfield code="0">http://id.loc.gov/authorities/names/n79063441</subfield>\n    
+	</datafield>\n    
+	<datafield ind1="1" ind2="0" tag="240">\n      
+		<subfield code="a">Amor en los tiempos del cólera.</subfield>\n      
+		<subfield code="l">English</subfield>\n    
+	</datafield>\n    
+	<datafield ind1="1" ind2="0" tag="245">\n      
+		<subfield code="a">Love in the time of cholera /</subfield>\n      
+		<subfield code="c">Gabriel García Márquez ; translated from the Spanish by Edith Grossman ; with an introduction by Nicholas Shakespeare.</subfield>\n    
+	</datafield>\n    
+	<datafield ind1=" " ind2=" " tag="260">\n      
+		<subfield code="a">New York :</subfield>\n      
+		<subfield code="b">A.A. Knopf,</subfield>\n      
+		<subfield code="c">1997.</subfield>\n    
+	</datafield>\n    
+	<datafield ind1=" " ind2=" " tag="300">\n      
+		<subfield code="a">xxxiii, 422 p. ;</subfield>\n      
+		<subfield code="c">21 cm.</subfield>\n    
+	</datafield>\n    
+	<datafield ind1="0" ind2=" " tag="490">\n      
+		<subfield code="a">Everyman's library ;</subfield>\n      
+		<subfield code="v">235</subfield>\n    
+	</datafield>\n    
+	<datafield ind1=" " ind2=" " tag="546">\n      
+		<subfield code="a">Translation of: El amor en los tiempos del cólera.</subfield>\n    
+	</datafield>\n    
+	<datafield ind1=" " ind2=" " tag="504">\n      
+		<subfield code="a">Includes bibliographical references (p. xxvii).</subfield>\n    
+	</datafield>\n    
+	<datafield ind1="1" ind2=" " tag="700">\n      
+		<subfield code="a">Grossman, Edith,</subfield>\n      
+		<subfield code="d">1936-</subfield>\n      
+		<subfield code="0">http://id.loc.gov/authorities/names/n86033167</subfield>\n    
+	</datafield>\n    
+	<datafield ind1=" " ind2=" " tag="998">\n      
+		<subfield code="a">04/23/99</subfield>\n      
+		<subfield code="s">9110</subfield>\n      
+		<subfield code="n">NjP</subfield>\n      
+		<subfield code="w">DCLC98119521B</subfield>\n      
+		<subfield code="d">04/23/99</subfield>\n      
+		<subfield code="c">JR</subfield>\n      
+		<subfield code="b">JR</subfield>\n      
+		<subfield code="i">990423</subfield>\n      
+		<subfield code="l">NJPG</subfield>\n    
+	</datafield>\n    
+	<datafield ind1=" " ind2=" " tag="911">\n      
+		<subfield code="a">19990506</subfield>\n    
+	</datafield>\n    
+	<datafield ind1=" " ind2=" " tag="912">\n      
+		<subfield code="a">19990423000000.0</subfield>\n    
+	</datafield>\n  
+	<datafield ind1=" " ind2=" " tag="INT">
+		<subfield code="a">P</subfield>
+	</datafield>
+	<datafield ind1=" " ind2=" " tag="INST">
+		<subfield code="a">01PRI_INST</subfield>
+	</datafield>
+	<datafield ind1=" " ind2=" " tag="AVA">
+		<subfield code="0">9922486553506421</subfield>
+		<subfield code="8">22117511410006421</subfield>
+		<subfield code="a">01PRI_INST</subfield>
+		<subfield code="b">firestone</subfield>
+		<subfield code="c">Firestone Library (F)</subfield>
+		<subfield code="d">PQ8180.17.A73 A813 1997</subfield>
+		<subfield code="e">unavailable</subfield>
+		<subfield code="f">1</subfield>
+		<subfield code="g">1</subfield>
+		<subfield code="j">stacks</subfield>
+		<subfield code="k">0</subfield>
+		<subfield code="p">1</subfield>
+		<subfield code="q">Firestone Library</subfield>
+	</datafield>
+</record>
