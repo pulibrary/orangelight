@@ -194,7 +194,9 @@ module ApplicationHelper
     portfolio_links = electronic_portfolio_links(document)
     # Create stub holdings for Alma's electronic profiles so the below logic will work.
     # Alma does not have an 'Online' library for holdings, so we fake it to keep
-    # the old logic around.
+    # the old logic around. When Voyager is gone we will no longer have 'Online'
+    # libraries, so we can extract the portfolio logic out of the below in such
+    # a way that a holding is not required for display.
     # @TODO: Remove when Voyager is gone.
     portfolio_holdings = Hash[
       portfolio_links.map do |_portfolio|
