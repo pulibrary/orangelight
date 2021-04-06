@@ -1,47 +1,135 @@
-import HathiConnector from 'orangelight/hathi_connector'
 import updater from 'orangelight/availability'
-
-jest.mock('orangelight/hathi_connector')
-
-beforeEach(() => {
-  // Clear all instances and calls to constructor and all methods:
-  HathiConnector.mockClear();
-});
+import { promises as fs } from 'fs';
 
 describe('AvailabilityUpdater', function() {
   test('hooked up right', () => {
     expect(updater).not.toBe(undefined)
   })
 
-  test('process_single when the record has a temporary etas location shows a link', () => {
-
+  test('search results page with available, unavailable, mixed holdings display desired labels and badges', async () => {
+    const avail_id = "99120385083506421"
+    const unavail_id = "99121744283506421"
+    const mixed_id = "99119590233506421"
     document.body.innerHTML =
-      '<td class="holding-status" data-availability-record="true" data-record-id="999998" data-holding-id="1153009" data-aeon="false"><span class="availability-icon"></span></td>'
-    const holding_records = {"1153009":{"more_items":false,"location":"rcppa","temp_loc":"etas","course_reserves":[],"copy_number":1,"item_id":1244099,"on_reserve":"N","patron_group_charged":null,"status":"On-Site","label":"Online - HathiTrust Emergency Temporary Access"}}
+      '<div id="documents" class="documents-list">' +
+        '<article>' +
+          '<div class="row">' +
+            '<div class="record-wrapper">' +
+              '<ul class="document-metadata dl-horizontal dl-invert">' +
+                '<li class="blacklight-holdings">' +
+                  '<ul>' +
+                    `<li data-availability-record="true" data-record-id="${avail_id}" data-holding-id="2224357860006421" data-aeon="false"><span class="availability-icon"></span></li>` +
+                  '</ul>' +
+                '</li>' +
+              '</ul>' +
+            '</div>' +
+          '</div>' +
+        '</article>' +
+        '<article>' +
+          '<div class="row">' +
+            '<div class="record-wrapper">' +
+              '<ul class="document-metadata dl-horizontal dl-invert">' +
+                '<li class="blacklight-holdings">' +
+                  '<ul>' +
+                    `<li data-availability-record="true" data-record-id="${unavail_id}" data-holding-id="2278269270006421" data-aeon="false"><span class="availability-icon"></span></li>` +
+                  '</ul>' +
+                '</li>' +
+              '</ul>' +
+            '</div>' +
+          '</div>' +
+        '</article>' +
+        '<article>' +
+          '<div class="row">' +
+            '<div class="record-wrapper">' +
+              '<ul class="document-metadata dl-horizontal dl-invert">' +
+                '<li class="blacklight-holdings">' +
+                  '<ul>' +
+                    `<li data-availability-record="true" data-record-id="${mixed_id}" data-holding-id="22186788410006421" data-aeon="false"><span class="availability-icon"></span></li>` +
+                  '</ul>' +
+                '</li>' +
+              '</ul>' +
+            '</div>' +
+          '</div>' +
+        '</article>' +
+      '</div>'
+    let bibdata_response = await fs.readFile("spec/fixtures/bibliographic_availability_3_bibs.json", 'utf8')
+    bibdata_response = JSON.parse(bibdata_response)
+
     let u = new updater
-    u.process_single(holding_records)
-    expect(HathiConnector).toHaveBeenCalled()
-})
+    u.process_results_list(bibdata_response)
 
-  test('process_single when the record has a temporary etas location and is on hold does not show a link', () => {
+    const available_result = $(`*[data-record-id="${avail_id}"] .availability-icon`)
+    expect(available_result.hasClass('badge')).toBe(true)
+    expect(available_result.hasClass('badge-success')).toBe(true)
+    expect(available_result.text()).toEqual("Available")
 
+    const unavailable_result = $(`*[data-record-id="${unavail_id}"] .availability-icon`)
+    expect(unavailable_result.hasClass('badge')).toBe(true)
+    expect(unavailable_result.hasClass('badge-danger')).toBe(true)
+    expect(unavailable_result.text()).toEqual("Unavailable")
+
+    const mixed_result = $(`*[data-record-id="${mixed_id}"] .availability-icon`)
+    expect(mixed_result.hasClass('badge')).toBe(true)
+    expect(mixed_result.hasClass('badge-secondary')).toBe(true)
+    expect(mixed_result.text()).toEqual("Some items not available")
+  })
+
+  test('record show page with an available holding displays the status label in green', () => {
     document.body.innerHTML =
-      '<td class="holding-status" data-availability-record="true" data-record-id="999998" data-holding-id="1153009" data-aeon="false"><span class="availability-icon"></span></td>'
-    const holding_records = {"1153009":{"more_items":false,"location":"rcppa","temp_loc":"etas","course_reserves":[],"copy_number":1,"item_id":1244099,"on_reserve":"N","patron_group_charged":null,"status":"On Hold","label":"Online - HathiTrust Emergency Temporary Access"}}
+      '<table><tr>' +
+        '<td class="holding-status" data-availability-record="true" data-record-id="99118400923506421" data-holding-id="22105449840006421" data-aeon="false">' +
+          '<span class="availability-icon"></span>' +
+        '</td>' +
+      '</tr></table>';
+    const holding_records = {"99118400923506421":{"22105449840006421":{"on_reserve":"N","location":"stacks","label":"Firestone Library (F)","status_label":"Available","more_items":false,"holding_type":"physical","id":"22105449840006421"}}}
     let u = new updater
+    u.id = '99118400923506421'
     u.process_single(holding_records)
-    expect(HathiConnector).not.toHaveBeenCalled()
-})
 
-  test('process_single when the record has a temporary etas location and is checked out does not show a link', () => {
+    const badge = document.getElementsByClassName('availability-icon')[0]
 
+    expect(badge.classList.values()).toContain('badge')
+    expect(badge.classList.values()).toContain('badge-success')
+    expect(badge.textContent).toEqual('Available')
+  })
+
+  test('record show page with an unavailable holding displays the status label in red', () => {
     document.body.innerHTML =
-      '<td class="holding-status" data-availability-record="true" data-record-id="999998" data-holding-id="1153009" data-aeon="false"><span class="availability-icon"></span></td>'
-    const holding_records = {"1153009":{"more_items":false,"location":"rcppa","temp_loc":"etas","course_reserves":[],"copy_number":1,"item_id":1244099,"on_reserve":"N","patron_group_charged":null,"status":"Charged","label":"Online - HathiTrust Emergency Temporary Access"}}
+      '<table><tr>' +
+        '<td class="holding-status" data-availability-record="true" data-record-id="99118400923506421" data-holding-id="22105449840006421" data-aeon="false">' +
+          '<span class="availability-icon"></span>' +
+        '</td>' +
+      '</tr></table>';
+    const holding_records = {"99118400923506421":{"22105449840006421":{"on_reserve":"N","location":"stacks","label":"Firestone Library (F)","status_label":"Unavailable","more_items":false,"holding_type":"physical","id":"22105449840006421"}}}
     let u = new updater
+    u.id = '99118400923506421'
     u.process_single(holding_records)
-    expect(HathiConnector).not.toHaveBeenCalled()
-})
+
+    const badge = document.getElementsByClassName('availability-icon')[0]
+
+    expect(badge.classList.values()).toContain('badge')
+    expect(badge.classList.values()).toContain('badge-danger')
+    expect(badge.textContent).toEqual('Unavailable')
+  })
+
+  test('record show page with an mixed availability holding displays the status label in gray', () => {
+    document.body.innerHTML =
+      '<table><tr>' +
+        '<td class="holding-status" data-availability-record="true" data-record-id="99118400923506421" data-holding-id="22105449840006421" data-aeon="false">' +
+          '<span class="availability-icon"></span>' +
+        '</td>' +
+      '</tr></table>';
+    const holding_records = {"99118400923506421":{"22105449840006421":{"on_reserve":"N","location":"stacks","label":"Firestone Library (F)","status_label":"Some items not available","more_items":false,"holding_type":"physical","id":"22105449840006421"}}}
+    let u = new updater
+    u.id = '99118400923506421'
+    u.process_single(holding_records)
+
+    const badge = document.getElementsByClassName('availability-icon')[0]
+
+    expect(badge.classList.values()).toContain('badge')
+    expect(badge.classList.values()).toContain('badge-secondary')
+    expect(badge.textContent).toEqual('Some items not available')
+  })
 
   // TODO: This method isn't covered by the feature tests
   test('scsb_barcodes() on a search results page', () => {
@@ -60,17 +148,6 @@ describe('AvailabilityUpdater', function() {
       '</article>'
     let u = new updater
     expect(u.scsb_barcodes()).toEqual(['33433038233809'])
-  })
-
-  test('record_ids() on a show page', () => {
-    document.body.innerHTML =
-      '<div>' +
-      '<li data-availability-record="true" data-record-id="8938641" data-holding-id="8856502" data-aeon="false">' +
-      '  <span class="availability-icon badge badge-primary" title="" data-toggle="tooltip" data-original-title="Electronic access">Online</span>' +
-      '</li>' +
-      '</div>'
-    let u = new updater
-    expect(u.record_ids()).toEqual(['8938641'])
   })
 
   test('record_ids() on a search results page', () => {

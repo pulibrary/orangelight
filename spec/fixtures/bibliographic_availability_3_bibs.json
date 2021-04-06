@@ -1,0 +1,35 @@
+{
+  "99119590233506421": {
+    "22186788410006421": {
+      "on_reserve": "N",
+      "location": "pj",
+      "label": "RECAP: Marquand Library use only",
+      "status_label": "Some items not available",
+      "more_items": false,
+      "holding_type": "physical",
+      "id": "22186788410006421"
+    }
+  },
+  "99120385083506421": {
+    "2224357860006421": {
+      "on_reserve": "N",
+      "location": "stacks",
+      "label": "Firestone Library (F)",
+      "status_label": "Available",
+      "more_items": false,
+      "holding_type": "physical",
+      "id": "2224357860006421"
+    }
+  },
+  "99121744283506421": {
+    "2278269270006421": {
+      "on_reserve": "N",
+      "location": "stacks",
+      "label": "Firestone Library (F)",
+      "status_label": "Unavailable",
+      "more_items": false,
+      "holding_type": "physical",
+      "id": "2278269270006421"
+    }
+  }
+}
