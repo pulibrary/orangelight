@@ -1,4 +1,6 @@
+<% # Copied from https://github.com/projectblacklight/blacklight-marc/blob/8228966ab0d880a4d06c22b86c1766a7ab6d6fea/app/views/catalog/_marc_view.html.erb %>
 <div id="marc_view" class="modal-body">
+  <% # Added AVA/AVE here, this is the only change in this file. %>
   <% fields = document.to_marc.find_all{|f| (('000'...'999').to_a + ["AVA", "AVE"]).include?(f.tag)}  %>
   <div class="field"><%= t('blacklight.search.librarian_view.leader', :leader => document.to_marc.leader) %></div>
   <%- fields.each do |field| -%>
