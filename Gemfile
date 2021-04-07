@@ -116,4 +116,5 @@ end
 group :development, :test do
   gem 'bixby'
   gem 'pry-byebug'
+  gem 'solargraph'
 end

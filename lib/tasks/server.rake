@@ -30,6 +30,27 @@ task :server, [:rails_server_args] do |_t, args|
   end
 end
 
+namespace :servers do
+  task initialize: :environment do
+    Rake::Task["db:create"].invoke
+    Rake::Task["db:migrate"].invoke
+    Rake::Task["db:seed"].invoke
+    Rake::Task["pulsearch:solr:index"].invoke
+  end
+
+  desc "Start the Apache Solr and PostgreSQL container services using Lando."
+  task start: :environment do
+    system("lando start")
+    system("rake servers:initialize")
+    system("rake servers:initialize RAILS_ENV=test")
+  end
+
+  desc "Stop the Lando Apache Solr and PostgreSQL container services."
+  task stop: :environment do
+    system("lando stop")
+  end
+end
+
 namespace :server do
   desc 'Run development solr'
   task :dev do
