@@ -2,7 +2,7 @@
 
 class EventHandler
   include Sneakers::Worker
-  from_queue :orangelight
+  from_queue :"catalog_#{Rails.env}"
 
   def work(msg)
     msg = JSON.parse(msg)
