@@ -14,6 +14,10 @@ class CatalogController < ApplicationController
   before_action :redirect_browse
 
   rescue_from Blacklight::Exceptions::RecordNotFound do
+    alma_id = "99#{params[:id]}3506421"
+    search_service.fetch(alma_id)
+    redirect_to solr_document_path(id: alma_id)
+  rescue Blacklight::Exceptions::RecordNotFound
     redirect_to '/404'
   end
 

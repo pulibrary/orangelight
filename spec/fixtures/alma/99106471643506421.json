@@ -1,0 +1,180 @@
+{
+    "id": [
+        "99106471643506421"
+    ],
+    "numeric_id_b": [
+        true
+    ],
+    "cjk_all": [
+        ""
+    ],
+    "cjk_notes": [
+        ""
+    ],
+    "author_display": [
+        "Avery, Eric, born 1948"
+    ],
+    "author_sort": [
+        "Avery, Eric, born 1948"
+    ],
+    "author_citation_display": [
+        "Avery, Eric",
+        "Urvil, Nobue Urushihara"
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[\"Urvil, Nobue Urushihara\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Avery, Eric\"}"
+    ],
+    "author_s": [
+        "Avery, Eric, born 1948",
+        "Urvil, Nobue Urushihara"
+    ],
+    "marc_relator_display": [
+        "Engraver"
+    ],
+    "title_display": [
+        "History."
+    ],
+    "title_a_index": [
+        "History"
+    ],
+    "title_sort": [
+        "History."
+    ],
+    "title_no_h_index": [
+        "History."
+    ],
+    "title_t": [
+        "History."
+    ],
+    "title_citation_display": [
+        "History"
+    ],
+    "compiled_created_t": [
+        "History."
+    ],
+    "pub_created_display": [
+        "1984."
+    ],
+    "pub_created_s": [
+        "1984."
+    ],
+    "pub_date_display": [
+        "1984"
+    ],
+    "pub_date_start_sort": [
+        "1984"
+    ],
+    "format": [
+        "Visual material"
+    ],
+    "description_display": [
+        "1 item ; sheet 57 x 78.5 cm."
+    ],
+    "description_t": [
+        "1 item ; sheet 57 x 78.5 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "1 item"
+    ],
+    "notes_index": [
+        "Medium: Linocuts (prints) on chiri handmade paper",
+        "Numbered in pencil, lower left \"4/10\".",
+        "Item description: Printed by Nobue Urushihara Urvil.",
+        "Signed in pencil, lower right: \"E Avery\".",
+        "Unsigned by Urvil.",
+        "Location history: 1st Floor/Graphic Arts/Drawer F-10 // GC024",
+        "Housing: Housed in Mylar sleeve.",
+        "Name authorization: Avery verified in Smith College Museum of Art website. Not in ULAN.",
+        "Purchased 2014 from Eric Avery.",
+        "Name authorization: Urvil not verified. Not in ULAN. Not in LC."
+    ],
+    "notes_display": [
+        "Medium: Linocuts (prints) on chiri handmade paper",
+        "Numbered in pencil, lower left \"4/10\".",
+        "Item description: Printed by Nobue Urushihara Urvil.",
+        "Signed in pencil, lower right: \"E Avery\".",
+        "Unsigned by Urvil."
+    ],
+    "language_code_s": [
+        "zxx"
+    ],
+    "language_iana_s": [
+        "zxx"
+    ],
+    "lc_subject_display": [
+        "Caricature",
+        "Political cartoons\u2014United States\u201420th century",
+        "United States\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Nicaragua\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Honduras\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "El Salvador\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Guatemala\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Mexico\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Devil\u2014Caricatures and cartoons",
+        "Human skeleton\u2014Caricatures and cartoons"
+    ],
+    "subject_unstem_search": [
+        "Caricature",
+        "Political cartoons\u2014United States\u201420th century",
+        "United States\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Nicaragua\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Honduras\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "El Salvador\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Guatemala\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Mexico\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Devil\u2014Caricatures and cartoons",
+        "Human skeleton\u2014Caricatures and cartoons"
+    ],
+    "siku_subject_unstem_search": null,
+    "subject_facet": [
+        "Caricature",
+        "Political cartoons\u2014United States\u201420th century",
+        "United States\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Nicaragua\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Honduras\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "El Salvador\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Guatemala\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Mexico\u2014History\u201420th century\u2014Caricatures and cartoons",
+        "Devil\u2014Caricatures and cartoons",
+        "Human skeleton\u2014Caricatures and cartoons"
+    ],
+    "subject_topic_facet": [
+        "Caricature",
+        "Political cartoons",
+        "United States",
+        "History",
+        "Nicaragua",
+        "Honduras",
+        "El Salvador",
+        "Guatemala",
+        "Mexico",
+        "Devil",
+        "Human skeleton"
+    ],
+    "genre_facet": [
+        "Caricatures and cartoons"
+    ],
+    "related_name_json_1display": [
+        "{\"Attributed to\":[\"Urvil, Nobue Urushihara\"],\"Printmaker\":[\"Urvil, Nobue Urushihara\"]}"
+    ],
+    "standard_no_index": [
+        "46563",
+        "10647164",
+        "10647164-princetondb"
+    ],
+    "subject_era_facet": [
+        "20th century"
+    ],
+    "name_title_browse_s": [
+        "Avery, Eric, born 1948. History"
+    ],
+    "call_number_display": [
+        "GA 2015.00160 "
+    ],
+    "call_number_browse_s": [
+        "GA 2015.00160 "
+    ],
+    "call_number_locator_display": [
+        "GA 2015.00160"
+    ]
+}

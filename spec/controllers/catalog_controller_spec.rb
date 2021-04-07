@@ -3,6 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe CatalogController do
+  describe "#show" do
+    context "when given a Voyager ID, where only Alma is indexed" do
+      it "redirects to the Alma ID" do
+        get :show, params: { id: "10647164" }
+
+        expect(response).to redirect_to "/catalog/99106471643506421"
+      end
+    end
+  end
   describe '#email' do
     let(:email) { ActionMailer::Base.deliveries[0] }
     let(:user) { FactoryBot.create(:user) }
