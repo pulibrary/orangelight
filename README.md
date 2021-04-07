@@ -22,36 +22,19 @@ To install run
   ```
   bundle install
   yarn install
-  rake pulsearch:solr:update
   ```
 
 On macOS: If the command `yarn install` gives error "No Xcode or CLT version detected" try [re-installing xCode tools](https://medium.com/@mrjohnkilonzi/how-to-resolve-no-xcode-or-clt-version-detected-d0cf2b10a750).
 
-### Database Configuration
-
-Ensure Postgres is started via Lando - `lando start`.
-
-```bash
-rake db:create
-rake db:migrate
-rake db:seed
-```
-
-You can access the database console via `rails dbconsole -p`.
-
 ### Run the development Environment locally
 **All commands are assumed to be run from your local orangelight directory**
 
-1. Start Solr using Lando
+1. Start all the servers/set up database/seed index
    ```
-   lando start
+   rake servers:start
    ```
-   *Note: You can stop lando by running `lando stop` and you can start fresh using `lando destroy`*
-1. Index data into solr
-    *This step is only required if this is your first time running, you have run a `lando destroy`, or you added a fixture to current_fixtures.json*
-    ```
-    rake pulsearch:solr:index
-    ```
+   *Note: You can stop everything with `rake servers:stop`
+
 1. Run a rails server
    ```
    rails s
@@ -79,30 +62,13 @@ cap staging deploy # deploys main branch to staging
 
 Testing
 ------------------
-### Testing prerequisite
-```bash
-brew install phantomjs
-```
-
-### Database Configuration
-```bash
-rake db:create RAILS_ENV=test
-rake db:migrate RAILS_ENV=test
-rake db:seed RAILS_ENV=test
-```
-
 ### Run Tests
 
-1. Start lando if it is not already started.
-    *The same lando is used for both test and development.*
+1. Start all the servers/set up database/seed index
    ```
-   lando start
+   rake servers:start
    ```
-1. Index data into solr
-    *This step is only required if this is your first time running, you have run a `lando destroy`, or you added a fixture to current_fixtures.json*
-   ```
-   RAILS_ENV=test rake pulsearch:solr:index
-   ```
+   *Note: You can stop everything with `rake servers:stop`
 1. Run the all the tests
     ```
     rake spec
