@@ -5,14 +5,6 @@ require 'rails_helper'
 RSpec.describe EventHandler do
   let(:handler) { described_class.new }
 
-  describe "queue selection" do
-    context "by default" do
-      it "uses the catalog_environment queue" do
-        expect(described_class.queue_name).to eq "catalog_test"
-      end
-    end
-  end
-
   describe '#work' do
     let(:processor) { instance_double(EventProcessor, process: process) }
     let(:process) {}
