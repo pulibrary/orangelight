@@ -7,7 +7,17 @@ Sneakers.configure(
   amqp: Orangelight.config['events']['server'],
   exchange: Orangelight.config['events']['exchange'],
   exchange_type: :fanout,
-  handler: Sneakers::Handlers::Maxretry
+  handler: Sneakers::Handlers::Maxretry,
+  before_fork: lambda {
+    ActiveSupport.on_load(:active_record) do
+      ActiveRecord::Base.connection_pool.disconnect!
+    end
+  },
+  after_fork: lambda {
+    ActiveSupport.on_load(:active_record) do
+      ActiveRecord::Base.establish_connection
+    end
+  }
 )
 Sneakers.logger.level = Logger::INFO
 
