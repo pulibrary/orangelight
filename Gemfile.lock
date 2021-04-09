@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 1d8ce6fcd3c6388bff197f5b06c5f02822da14b3
+  revision: 756c5a7fb7947a432646ab438f4752902c5e556d
   branch: main
   specs:
     requests (0.0.2)
@@ -213,7 +213,7 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dot-properties (0.1.3)
-    email_validator (2.2.2)
+    email_validator (2.2.3)
       activemodel
     erubi (1.10.0)
     execjs (2.7.0)
