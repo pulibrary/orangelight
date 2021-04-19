@@ -8,8 +8,8 @@ Status](https://coveralls.io/repos/github/pulibrary/orangelight/badge.svg?branch
 
 Versions:
 
-* Ruby: 2.6.5
-* Rails: 5.2.4
+* Ruby: 2.6.6
+* Rails: 5.2.5
 * Blacklight: 7.0.1
 * blacklight_advanced_search: 7.0.0.alpha
 
@@ -80,6 +80,11 @@ Testing
       ```bash
       rake spec SPEC=path/to/your_spec.rb:linenumber
       ```
+#### Building the browselists
+```ruby
+RAILS_ENV=test bundle exec rake browse:all
+RAILS_ENV=test bundle exec rake browse:load_all
+```
 
 ### Adding a record to the test/dev index
 
