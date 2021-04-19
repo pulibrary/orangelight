@@ -40,6 +40,7 @@ namespace :servers do
 
   desc "Start the Apache Solr and PostgreSQL container services using Lando."
   task start: :environment do
+    Rake::Task["pulsearch:solr:update"].invoke
     system("lando start")
     system("rake servers:initialize")
     system("rake servers:initialize RAILS_ENV=test")
