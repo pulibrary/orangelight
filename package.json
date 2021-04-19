@@ -11,7 +11,7 @@
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "unfetch": "^3.1.1",
-    "serialize-javascript": "^3.1.0"
+    "serialize-javascript": "^5.0.1"
   },
   "devComments": {
     "jquery": "Keep version in sync with jquery-rails, obtained through bundler"
