@@ -142,15 +142,6 @@ Start the Bibdata server, and then set the ```bidata_base``` value in OrangeLigh
 
 ## Development Mailcatcher
 
-   * Modify `config/environments/development.rb` and add
-     ```
-     config.action_mailer.delivery_method = :smtp
-     config.action_mailer.smtp_settings = {
-       :address => "localhost",
-       :port => 1025
-     }
-     ```
-
    * run mail catcher
      run once
      ```
