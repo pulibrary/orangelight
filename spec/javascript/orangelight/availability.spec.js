@@ -1,5 +1,6 @@
 import updater from 'orangelight/availability'
 import { promises as fs } from 'fs';
+import * as orangelight_online_link from '../../../app/javascript/orangelight/insert_online_link'
 
 describe('AvailabilityUpdater', function() {
   test('hooked up right', () => {
@@ -129,6 +130,44 @@ describe('AvailabilityUpdater', function() {
     expect(badge.classList.values()).toContain('badge')
     expect(badge.classList.values()).toContain('badge-secondary')
     expect(badge.textContent).toEqual('Some items not available')
+  })
+
+  test('record show page with an item on CDL adds link to viewer', () => {
+    document.body.innerHTML =
+      '<table><tr>' +
+        '<td class="holding-status" data-availability-record="true" data-record-id="9965126093506421" data-holding-id="22202918790006421" data-aeon="false">' +
+          '<span class="availability-icon"></span>' +
+        '</td>' +
+      '</tr></table>';
+    const holding_records = {"9965126093506421":{"22202918790006421":{"on_reserve":"N","location":"firestone$stacks","label":"Stacks","status_label":"Unavailable","cdl":true,"holding_type":"physical","id":"22202918790006421"}}}
+
+    const spy = jest.spyOn(orangelight_online_link, 'insert_online_link')
+
+    let u = new updater
+    u.id = '9965126093506421'
+    u.process_single(holding_records)
+
+    expect(spy).toHaveBeenCalled()
+    spy.mockRestore()
+  })
+
+  test('record show page with an item not on CDL does not add a link', () => {
+    document.body.innerHTML =
+      '<table><tr>' +
+        '<td class="holding-status" data-availability-record="true" data-record-id="9965126093506421" data-holding-id="22202918790006421" data-aeon="false">' +
+          '<span class="availability-icon"></span>' +
+        '</td>' +
+      '</tr></table>';
+    const holding_records = {"9965126093506421":{"22202918790006421":{"on_reserve":"N","location":"firestone$stacks","label":"Stacks","status_label":"Unavailable","cdl":false,"holding_type":"physical","id":"22202918790006421"}}}
+
+    const spy = jest.spyOn(orangelight_online_link, 'insert_online_link')
+
+    let u = new updater
+    u.id = '9965126093506421'
+    u.process_single(holding_records)
+
+    expect(spy).not.toHaveBeenCalled()
+    spy.mockRestore()
   })
 
   // TODO: This method isn't covered by the feature tests
