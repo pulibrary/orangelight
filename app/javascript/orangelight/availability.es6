@@ -125,8 +125,7 @@ export default class AvailabilityUpdater {
           location.text(availability_info['label']);
         }
         this.apply_availability_label(availability_element, availability_info);
-        // TODO: not in new endpoint yet
-        if (availability_info["patron_group_charged"] === "CDL") {
+        if (availability_info["cdl"]) {
           insert_online_link();
         }
         // TODO: We don't yet know if etas will still exist
