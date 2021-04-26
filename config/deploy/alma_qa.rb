@@ -4,7 +4,7 @@ set :rvm_ruby_string, :local # use the same ruby as used locally for deployment
 set :rails_env, 'alma_qa'
 set :branch, ENV['BRANCH'] || 'main'
 
-server 'lib-orange-alma-qa1.princeton.edu', user: 'deploy', roles: %i[web app db worker mailcatcher]
+server 'catalog-qa1.princeton.edu', user: 'deploy', roles: %i[web app db worker mailcatcher]
 
 namespace :env do
   desc 'Set an Orangelight environment variable'
