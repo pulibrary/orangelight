@@ -8,7 +8,6 @@ SitemapGenerator::Sitemap.create do
 
   add '/help'
   add '/feedback'
-  add '/course_reserves'
 
   add '/advanced'
 
