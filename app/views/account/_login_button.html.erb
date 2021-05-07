@@ -1,0 +1,3 @@
+<% if Rails.configuration.use_alma && !current_user %>
+  <%= link_to t('blacklight.header_links.login'), main_app.new_user_session_path, :class => 'btn btn-primary pull-right' %>
+<% end %>
