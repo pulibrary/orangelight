@@ -389,6 +389,10 @@ module ApplicationHelper
     end
   end
 
+  def bibdata_location_code_to_sym(value)
+    Bibdata.holding_locations[value.to_sym]
+  end
+
   def render_location_code(value)
     location = Bibdata.holding_locations[value.to_sym]
     location.nil? ? value : "#{value}: #{location_full_display(location)}"
@@ -396,13 +400,27 @@ module ApplicationHelper
 
   def holding_location_label(holding)
     loc_code = holding['location_code']
-    location = Bibdata.holding_locations[loc_code.to_sym] unless loc_code.nil?
-    location.nil? ? holding['location'] : location_full_display(location)
+    location = bibdata_location_code_to_sym(loc_code) unless loc_code.nil?
+    # If the Bibdata location is nil, get the solr document indexed location value.
+    if Rails.configuration.use_alma
+      alma_location_display(holding, location) unless location.blank? && holding.blank?
+    else
+      location.nil? ? holding['location'] : location_full_display(location)
+    end
   end
 
-  #     location = Bibdata.holding_locations[value.to_sym]
+  # location = Bibdata.holding_locations[value.to_sym]
   def location_full_display(loc)
     loc['label'] == '' ? loc['library']['label'] : loc['library']['label'] + ' - ' + loc['label']
+  end
+
+  # alma location display on search results
+  def alma_location_display(holding, location)
+    if location.nil?
+      "#{holding['library']} - #{holding['location']}"
+    else
+      "#{location['library']['label']} - #{location['label']}"
+    end
   end
 
   def html_safe(args)

@@ -160,7 +160,7 @@ describe 'Availability' do
 
     describe 'Electronic Holdings' do
       it "displays an online badge in search results" do
-        stub_holding_locations
+        stub_alma_holdings
         visit "/catalog?q=99122306151806421"
 
         expect(page).to have_selector ".availability-icon", text: "Online"
