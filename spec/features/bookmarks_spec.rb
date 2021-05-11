@@ -10,9 +10,7 @@ RSpec.describe 'bookmarks' do
         voyager_account_response = fixture('/generic_voyager_account_response.xml')
         valid_voyager_patron = JSON.parse('{"patron_id": "77777"}').with_indifferent_access
         valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
-        # I'm not sure why current_user gets created with this id but it seems
-        # to happen reliably
-        stub_request(:get, "#{ENV['bibdata_base']}/patron/1234")
+        stub_request(:get, /#{Regexp.quote(ENV['bibdata_base'])}\/patron\/.*/)
           .to_return(status: 200, body: valid_patron_response, headers: {})
         stub_request(:get, valid_patron_record_uri)
           .to_return(status: 200, body: voyager_account_response, headers: {})
