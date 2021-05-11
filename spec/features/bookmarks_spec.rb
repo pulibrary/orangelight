@@ -3,6 +3,28 @@
 require 'rails_helper'
 
 RSpec.describe 'bookmarks' do
+  context 'when using Voyager' do
+    describe 'login link' do
+      it 'brings user to account page on login' do
+        valid_patron_response = fixture('/bibdata_patron_response.json')
+        voyager_account_response = fixture('/generic_voyager_account_response.xml')
+        valid_voyager_patron = JSON.parse('{"patron_id": "77777"}').with_indifferent_access
+        valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
+        # I'm not sure why current_user gets created with this id but it seems
+        # to happen reliably
+        stub_request(:get, "#{ENV['bibdata_base']}/patron/1234")
+          .to_return(status: 200, body: valid_patron_response, headers: {})
+        stub_request(:get, valid_patron_record_uri)
+          .to_return(status: 200, body: voyager_account_response, headers: {})
+        visit '/bookmarks'
+        click_button "Your Account"
+        click_link "Login"
+        click_link "Princeton faculty, staff, and students log in with NetID"
+        expect(current_path).to eq account_path
+      end
+    end
+  end
+
   describe 'action buttons' do
     it 'has a clear bookmarks button' do
       visit '/bookmarks'
@@ -28,6 +50,13 @@ RSpec.describe 'bookmarks' do
         within('#content') do
           expect(page).to have_link("Login", class: "btn-primary")
         end
+      end
+
+      it 'brings user back to bookmarks page on login' do
+        visit '/bookmarks'
+        click_link "Login"
+        click_link "Princeton faculty, staff, and students log in with NetID"
+        expect(current_path).to eq bookmarks_path
       end
     end
 
