@@ -12,13 +12,13 @@ describe 'Tools links' do
 
     it 'displays links in the navbar, account dropdown, and record view' do
       expect(page).to have_selector('.nav-item a', text: 'Bookmark')
-      expect(page).to have_selector('.nav-item a', text: 'Search History')
       expect(page).to have_button('Send to')
       expect(page).not_to have_selector('.nav-item a', text: 'Course Reserves')
 
       within '.menu--level-1' do
         expect(page).to have_link('Login')
-        expect(page).not_to have_link('Search History')
+        expect(page).to have_link('Search History')
+        expect(page).to have_link('Bookmarks')
       end
 
       within '#main-container' do

@@ -3,76 +3,96 @@
 require 'rails_helper'
 
 describe 'Account login' do
-  let(:alma_account_url) { "https://princeton.alma.exlibrisgroup.com/discovery/account?vid=01PRI_INST:Services&lang=EN&section=overview" }
-
-  describe 'sign in' do
-    let(:user) { FactoryBot.create(:valid_princeton_patron) }
-    let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
-    let(:voyager_account_response) { fixture('/generic_voyager_account_response.xml') }
-    let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
-    before do
-      ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
-      current_illiad_user_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Users/jstudent"
-      stub_request(:get, current_illiad_user_uri).to_return(status: 404, body: '{"Message":"User jstudent was not found."}')
-    end
-
-    it 'brings user to account page' do
-      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
-        .to_return(status: 200, body: valid_patron_response, headers: {})
-
-      valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
-      stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: voyager_account_response, headers: {})
-      sign_in user
-      expect(current_path).to eq account_path
-    end
-  end
-
-  describe 'login link', js: true do
-    let(:user) { FactoryBot.create(:valid_princeton_patron) }
-    it "goes to the sign in page" do
-      visit "/"
-      click_button("Your Account")
-      expect(page).to have_link("Login", href: "/users/sign_in")
-    end
-
-    context 'when using Alma' do
+  context 'when using Voyager' do
+    describe 'sign in' do
+      let(:user) { FactoryBot.create(:valid_princeton_patron) }
+      let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
+      let(:voyager_account_response) { fixture('/generic_voyager_account_response.xml') }
+      let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
       before do
-        allow(Rails.configuration).to receive(:use_alma).and_return(true)
+        ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
+        current_illiad_user_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Users/jstudent"
+        stub_request(:get, current_illiad_user_uri).to_return(status: 404, body: '{"Message":"User jstudent was not found."}')
       end
 
-      it "opens the library card app in a new window" do
+      it 'brings user to account page' do
+        stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+          .to_return(status: 200, body: valid_patron_response, headers: {})
+
+        valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
+        stub_request(:get, valid_patron_record_uri)
+          .to_return(status: 200, body: voyager_account_response, headers: {})
+        sign_in user
+        expect(current_path).to eq account_path
+      end
+    end
+
+    describe 'Your Account menu when not logged in', js: true do
+      let(:user) { FactoryBot.create(:valid_princeton_patron) }
+      it "goes to the sign in page" do
         visit "/"
         click_button("Your Account")
-        expect(page).to have_link("Your Account", href: alma_account_url)
-        expect(find_link("Your Account")[:target]).to eq("_blank")
+        within('li.show') do
+          expect(page).to have_link("Login", href: "/users/sign_in")
+          expect(page).to have_link("Bookmarks", href: bookmarks_path)
+          expect(page).to have_link("Search History", href: blacklight.search_history_path)
+        end
+      end
+    end
+
+    describe 'Your Account menu for logged in user', js: true do
+      let(:user) { FactoryBot.create(:user) }
+      before do
+        login_as user
+      end
+
+      it "goes to the account page" do
+        visit "/"
+        click_button(user.username)
+        within('li.show') do
+          link = find_link("Your Account")
+          expect(URI(link[:href]).path).to eq "/account"
+          expect(page).to have_link("Bookmarks", href: bookmarks_path)
+          expect(page).to have_link("Search History", href: blacklight.search_history_path)
+          expect(page).to have_link("Log Out")
+        end
       end
     end
   end
 
-  describe 'Your Account link for logged in user', js: true do
+  context 'when using Alma' do
     let(:user) { FactoryBot.create(:user) }
+    let(:alma_account_url) { "https://princeton.alma.exlibrisgroup.com/discovery/account?vid=01PRI_INST:Services&lang=EN&section=overview" }
     before do
-      login_as user
+      allow(Rails.configuration).to receive(:use_alma).and_return(true)
     end
 
-    it "goes to the account page" do
-      visit "/"
-      click_button(user.username)
-      link = find_link("Your Account")
-      expect(URI(link[:href]).path).to eq "/account"
-    end
-
-    context 'when using Alma' do
-      before do
-        allow(Rails.configuration).to receive(:use_alma).and_return(true)
+    describe 'Your Account menu', js: true do
+      it "lists correct options when not logged in" do
+        visit "/"
+        click_button("Your Account")
+        within('li.show') do
+          link = find_link("My Library Card")
+          expect(link[:href]).to eq alma_account_url
+          expect(link[:target]).to eq("_blank")
+          expect(page).to have_link("Bookmarks", href: bookmarks_path)
+          expect(page).to have_link("Search History", href: blacklight.search_history_path)
+          expect(page).not_to have_link("Log Out")
+        end
       end
 
-      it "opens the library card app in a new window" do
+      it "lists correct options when logged in" do
+        login_as user
         visit "/"
         click_button(user.username)
-        link = find_link("Your Account")
-        expect(link[:href]).to eq alma_account_url
+        within('li.show') do
+          link = find_link("My Library Card")
+          expect(link[:href]).to eq alma_account_url
+          expect(link[:target]).to eq("_blank")
+          expect(page).to have_link("Bookmarks", href: bookmarks_path)
+          expect(page).to have_link("Search History", href: blacklight.search_history_path)
+          expect(page).to have_link("Log Out")
+        end
       end
     end
   end
