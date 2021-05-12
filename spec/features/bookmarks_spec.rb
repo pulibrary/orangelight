@@ -21,15 +21,13 @@ RSpec.describe 'bookmarks' do
         expect(current_path).to eq account_path
       end
     end
-  end
 
-  describe 'action buttons' do
-    it 'has a clear bookmarks button' do
-      visit '/bookmarks'
-      expect(page).to have_link("Clear bookmarks")
-    end
+    describe 'action buttons' do
+      it 'has a clear bookmarks button' do
+        visit '/bookmarks'
+        expect(page).to have_link("Clear bookmarks")
+      end
 
-    context 'when using Voyager' do
       it 'does not have a login button' do
         visit '/bookmarks'
         within('#content') do
@@ -37,12 +35,21 @@ RSpec.describe 'bookmarks' do
         end
       end
     end
+  end
 
-    context 'when using Alma, not logged in' do
-      before do
-        allow(Rails.configuration).to receive(:use_alma).and_return(true)
+  context 'when using Alma' do
+    before do
+      allow(Rails.configuration).to receive(:use_alma).and_return(true)
+    end
+
+    describe 'action buttons' do
+      it 'has a clear bookmarks button' do
+        visit '/bookmarks'
+        expect(page).to have_link("Clear bookmarks")
       end
+    end
 
+    context 'when not logged in' do
       it 'has a login button' do
         visit '/bookmarks'
         within('#content') do
@@ -58,14 +65,11 @@ RSpec.describe 'bookmarks' do
       end
     end
 
-    context 'when using Alma, logged in' do
+    context 'when logged in' do
       let(:user) { FactoryBot.create(:user) }
-      before do
-        allow(Rails.configuration).to receive(:use_alma).and_return(true)
-        login_as user
-      end
 
       it 'does not have a login button' do
+        login_as user
         visit '/bookmarks'
         within('#content') do
           expect(page).not_to have_link("Login", class: "btn-primary")

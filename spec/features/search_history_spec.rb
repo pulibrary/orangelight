@@ -25,10 +25,8 @@ RSpec.describe 'search history' do
         expect(current_path).to eq account_path
       end
     end
-  end
 
-  describe 'action buttons' do
-    context 'when using Voyager' do
+    describe 'action buttons' do
       context 'and no searches have been performed' do
         it 'does not have a login button' do
           visit '/search_history'
@@ -51,11 +49,14 @@ RSpec.describe 'search history' do
         end
       end
     end
+  end
 
-    context 'when using Alma, not logged in' do
+  context 'when using Alma' do
+    context 'and not logged in' do
       before do
         allow(Rails.configuration).to receive(:use_alma).and_return(true)
       end
+
       context 'and no searches have been performed' do
         it 'has a login button' do
           visit '/search_history'
@@ -85,14 +86,11 @@ RSpec.describe 'search history' do
       end
     end
 
-    context 'when using Alma, logged in' do
+    context 'and logged in' do
       let(:user) { FactoryBot.create(:user) }
-      before do
-        allow(Rails.configuration).to receive(:use_alma).and_return(true)
-        login_as user
-      end
 
       it 'does not have a login button' do
+        login_as user
         visit '/search_history'
         within('#content') do
           expect(page).not_to have_link("Login", class: "btn-primary")
