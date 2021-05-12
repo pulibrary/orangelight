@@ -2,11 +2,11 @@
 <div id="content" class="col-md-12">
 <h1 class='page-heading'><%=t('blacklight.search_history.title')%></h1>
 <%- if @searches.blank? -%>
-  <%= render 'account/login_button' %>
+  <%= render 'account/login_links', feature_page: "search history" %>
   <h2 class='section-heading'><%=t('blacklight.search_history.no_history')%></h2>
 <%- else -%>
   <%= link_to t('blacklight.search_history.clear.action_title'), blacklight.clear_search_history_path, :method => :delete, :data => { :confirm => t('blacklight.search_history.clear.action_confirm') }, :class => 'clear-search-history btn btn-danger pull-right' %>
-  <%= render 'account/login_button' %>
+  <%= render 'account/login_links', feature_page: "search history" %>
   <h2 class='section-heading'><%=t('blacklight.search_history.recent')%></h2>
   <table class="table table-striped search_history">
     <%-  @searches.each_with_index do |search,index| -%>

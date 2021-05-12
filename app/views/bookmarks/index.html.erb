@@ -2,7 +2,7 @@
 <div id="content" class="col-md-12">
 <h1 class='page-heading'><%= t('blacklight.bookmarks.title') %></h1>
 <%= render 'clear_bookmarks_widget' %>
-<%= render 'account/login_button' %>
+<%= render 'account/login_links', feature_page: "bookmarks" %>
 <%- if current_or_guest_user.blank? -%>
 
   <h2 class='section-heading'><%= t('blacklight.bookmarks.need_login') %></h2>

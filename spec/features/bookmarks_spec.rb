@@ -28,10 +28,10 @@ RSpec.describe 'bookmarks' do
         expect(page).to have_link("Clear bookmarks")
       end
 
-      it 'does not have a login button' do
+      it 'does not have login links' do
         visit '/bookmarks'
         within('#content') do
-          expect(page).not_to have_link("Login")
+          expect(page).not_to have_link("log in")
         end
       end
     end
@@ -50,16 +50,16 @@ RSpec.describe 'bookmarks' do
     end
 
     context 'when not logged in' do
-      it 'has a login button' do
+      it 'has login links' do
         visit '/bookmarks'
         within('#content') do
-          expect(page).to have_link("Login", class: "btn-primary")
+          expect(page).to have_link("log in")
         end
       end
 
-      it 'brings user back to bookmarks page on login' do
+      it 'logging in brings user back to bookmarks page' do
         visit '/bookmarks'
-        click_link "Login"
+        click_link "log in"
         click_link "Princeton faculty, staff, and students log in with NetID"
         expect(current_path).to eq bookmarks_path
       end
@@ -68,11 +68,11 @@ RSpec.describe 'bookmarks' do
     context 'when logged in' do
       let(:user) { FactoryBot.create(:user) }
 
-      it 'does not have a login button' do
+      it 'does not have login links' do
         login_as user
         visit '/bookmarks'
         within('#content') do
-          expect(page).not_to have_link("Login", class: "btn-primary")
+          expect(page).not_to have_link("log in")
         end
       end
     end

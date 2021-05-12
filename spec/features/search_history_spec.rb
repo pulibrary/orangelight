@@ -28,23 +28,23 @@ RSpec.describe 'search history' do
 
     describe 'action buttons' do
       context 'and no searches have been performed' do
-        it 'does not have a login button' do
+        it 'does not have login links' do
           visit '/search_history'
           within('#content') do
-            expect(page).not_to have_link("Login")
+            expect(page).not_to have_link("log in")
           end
         end
       end
 
       context 'and a search has been performed' do
-        it 'has a clear search history button and no login button' do
+        it 'has a clear search history button and no login links' do
           stub_holding_locations
           visit '/'
           find_button('search').click
           visit '/search_history'
           within('#content') do
             expect(page).to have_link("Clear search history")
-            expect(page).not_to have_link("Login")
+            expect(page).not_to have_link("log in")
           end
         end
       end
@@ -58,29 +58,29 @@ RSpec.describe 'search history' do
       end
 
       context 'and no searches have been performed' do
-        it 'has a login button' do
+        it 'has login links' do
           visit '/search_history'
           within('#content') do
-            expect(page).to have_link("Login", class: "btn-primary")
+            expect(page).to have_link("log in")
           end
         end
 
-        it 'brings user back to search history page on login' do
+        it 'logging in brings user back to search history page' do
           visit '/search_history'
-          click_link "Login"
+          click_link "log in"
           click_link "Princeton faculty, staff, and students log in with NetID"
           expect(current_path).to eq blacklight.search_history_path
         end
       end
 
       context 'and searches have been performed' do
-        it 'has a login button' do
+        it 'has login links' do
           stub_holding_locations
           visit '/'
           find_button('search').click
           visit '/search_history'
           within('#content') do
-            expect(page).to have_link("Login", class: "btn-primary")
+            expect(page).to have_link("log in")
           end
         end
       end
@@ -89,11 +89,11 @@ RSpec.describe 'search history' do
     context 'and logged in' do
       let(:user) { FactoryBot.create(:user) }
 
-      it 'does not have a login button' do
+      it 'does not have login links' do
         login_as user
         visit '/search_history'
         within('#content') do
-          expect(page).not_to have_link("Login", class: "btn-primary")
+          expect(page).not_to have_link("log in")
         end
       end
     end
