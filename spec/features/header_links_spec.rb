@@ -18,6 +18,7 @@ describe 'Tools links' do
       within '.menu--level-1' do
         expect(page).to have_link('Login')
         expect(page).to have_link('Search History')
+        expect(page).to have_link('Bookmarks')
       end
 
       within '#main-container' do

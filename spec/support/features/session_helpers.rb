@@ -3,6 +3,7 @@
 module Features
   # Provides methods for login and logout within Feature Tests
   module SessionHelpers
+    include Warden::Test::Helpers
     # Regular login
     def login_as(user)
       user.reload # because the user isn't re-queried via Warden

@@ -1,0 +1,7 @@
+<% if Rails.configuration.use_alma && !current_user %>
+  <div class='card'>
+    <div class='card-body'>
+      To view previously saved <%= feature_page %>, please <%= link_to "log in", main_app.new_user_session_path(origin: request.fullpath) %> to your catalog account.
+    </div>
+  </div>
+<% end %>
