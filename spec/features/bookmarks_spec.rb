@@ -6,11 +6,14 @@ RSpec.describe 'bookmarks' do
   context 'when using Voyager' do
     describe 'login link' do
       it 'brings user to account page on login' do
+        ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
+        current_illiad_user_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Users/jstudent"
+        stub_request(:get, current_illiad_user_uri).to_return(status: 404, body: '{"Message":"User jstudent was not found."}')
         valid_patron_response = fixture('/bibdata_patron_response.json')
         voyager_account_response = fixture('/generic_voyager_account_response.xml')
         valid_voyager_patron = JSON.parse('{"patron_id": "77777"}').with_indifferent_access
         valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
-        stub_request(:get, /#{Regexp.quote(ENV['bibdata_base'])}\/patron\/.*/)
+        stub_request(:get, /#{Regexp.quote(Requests.config['bibdata_base'])}\/patron\/.*/)
           .to_return(status: 200, body: valid_patron_response, headers: {})
         stub_request(:get, valid_patron_record_uri)
           .to_return(status: 200, body: voyager_account_response, headers: {})

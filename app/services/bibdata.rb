@@ -7,9 +7,9 @@ class Bibdata
     def get_patron(id)
       return false unless id
       begin
-        patron_record = Faraday.get "#{ENV['bibdata_base']}/patron/#{id}"
+        patron_record = Faraday.get "#{Requests.config['bibdata_base']}/patron/#{id}"
       rescue Faraday::Error::ConnectionFailed
-        Rails.logger.info("Unable to connect to #{ENV['bibdata_base']}")
+        Rails.logger.info("Unable to connect to #{Requests.config['bibdata_base']}")
         return false
       end
 
@@ -31,7 +31,7 @@ class Bibdata
     end
 
     def hathi_access(oclc_number)
-      response = Faraday.get("#{ENV['bibdata_base']}/hathi/access?oclc=#{oclc_number}")
+      response = Faraday.get("#{Requests.config['bibdata_base']}/hathi/access?oclc=#{oclc_number}")
       return {} unless response.status == 200
 
       JSON.parse(response.body)
@@ -43,7 +43,7 @@ class Bibdata
       return locations unless locations.nil?
 
       # don't cache if we didn't get a success
-      response = Faraday.get("#{ENV['bibdata_base']}/locations/holding_locations.json")
+      response = Faraday.get("#{Requests.config['bibdata_base']}/locations/holding_locations.json")
       return {} unless response.status == 200
 
       locations = sorted_locations(response)

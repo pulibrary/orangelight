@@ -19,7 +19,7 @@ describe 'email form' do
     expect(page).not_to have_button('Send')
   end
   it 'shows send button for authenticated users' do
-    stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+    stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")
       .to_return(status: 200, body: valid_patron_response, headers: {})
 
     valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"

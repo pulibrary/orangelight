@@ -21,7 +21,7 @@ RSpec.describe SolrDocument do
     let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
 
     before do
-      stub_request(:get, "#{ENV['bibdata_base']}/bibliographic/#{bibid}").to_return(
+      stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
         status: 200,
         body: marc_xml
       )
@@ -34,7 +34,7 @@ RSpec.describe SolrDocument do
 
     context 'when the remote MARC record cannot be retrieved' do
       before do
-        stub_request(:get, "#{ENV['bibdata_base']}/bibliographic/#{bibid}").to_return(
+        stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
           status: 500,
           body: ''
         )
@@ -55,7 +55,7 @@ RSpec.describe SolrDocument do
     let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
 
     before do
-      stub_request(:get, "#{ENV['bibdata_base']}/bibliographic/#{bibid}").to_return(
+      stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
         status: 200,
         body: marc_xml
       )
@@ -67,7 +67,7 @@ RSpec.describe SolrDocument do
 
     context 'when the remote MARC record cannot be retrieved' do
       before do
-        stub_request(:get, "#{ENV['bibdata_base']}/bibliographic/#{bibid}").to_return(
+        stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
           status: 500,
           body: ''
         )
@@ -91,7 +91,7 @@ RSpec.describe SolrDocument do
     end
 
     before do
-      stub_request(:get, "#{ENV['bibdata_base']}/bibliographic/#{bibid}").to_return(
+      stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
         status: 200,
         body: marc_xml
       )
@@ -103,7 +103,7 @@ RSpec.describe SolrDocument do
 
     context 'when the remote MARC record cannot be retrieved' do
       before do
-        stub_request(:get, "#{ENV['bibdata_base']}/bibliographic/#{bibid}").to_return(
+        stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
           status: 500,
           body: ''
         )

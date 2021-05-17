@@ -52,7 +52,7 @@ RSpec.describe AccountController do
     before do
       ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
       sign_in(valid_user)
-      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
       patron = account_controller.send(:current_patron, valid_user.uid)
@@ -95,7 +95,7 @@ RSpec.describe AccountController do
     before do
       ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
       sign_in(valid_user)
-      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
       patron = account_controller.send(:current_patron, valid_user.uid)
@@ -124,7 +124,7 @@ RSpec.describe AccountController do
     let(:unauthorized_user) { FactoryBot.create(:unauthorized_princeton_patron) }
 
     it 'Returns Princeton Patron Account Data using a NetID' do
-      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
@@ -133,7 +133,7 @@ RSpec.describe AccountController do
     end
 
     it "Returns false when an ID doesn't exist" do
-      invalid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{invalid_user.uid}"
+      invalid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{invalid_user.uid}"
       stub_request(:get, invalid_patron_record_uri)
         .to_return(status: 404, body: '<html><title>Not Here</title><body></body></html>', headers: {})
       patron = account_controller.send(:current_patron, invalid_user.uid)
@@ -141,7 +141,7 @@ RSpec.describe AccountController do
     end
 
     it "Returns false when the application isn't authorized to access patron data" do
-      unauthorized_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{unauthorized_user.uid}"
+      unauthorized_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{unauthorized_user.uid}"
       stub_request(:get, unauthorized_patron_record_uri)
         .to_return(status: 403, body: '<html><title>Not Authorized</title><body></body></html>', headers: {})
       patron = account_controller.send(:current_patron, unauthorized_user.uid)
@@ -149,7 +149,7 @@ RSpec.describe AccountController do
     end
 
     it 'Returns false when the http response throws 500' do
-      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 500, body: 'Error', headers: {})
       patron = account_controller.send(:current_patron, valid_user.uid)
@@ -164,7 +164,7 @@ RSpec.describe AccountController do
 
     it 'Redirects to Borrow Direct for valid cas user authorized to be on campus' do
       sign_in(valid_cas_user)
-      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: campus_authorized_patron, headers: {})
       get :borrow_direct_redirect
@@ -172,7 +172,7 @@ RSpec.describe AccountController do
     end
     it 'Redirects to Borrow Direct for valid cas user who has taken training to be on campus' do
       sign_in(valid_cas_user)
-      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: campus_trained_patron, headers: {})
       get :borrow_direct_redirect
@@ -180,7 +180,7 @@ RSpec.describe AccountController do
     end
     it 'Redirects to Home page for a valid user not authorized to be on campus' do
       sign_in(valid_cas_user)
-      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: campus_unauthorized_patron, headers: {})
       get :borrow_direct_redirect
@@ -188,7 +188,7 @@ RSpec.describe AccountController do
     end
     it 'Redirect url includes query when param q is present' do
       sign_in(valid_cas_user)
-      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: campus_authorized_patron, headers: {})
       query = 'a book title'
@@ -199,7 +199,7 @@ RSpec.describe AccountController do
     # For interoperability with umlaut
     it 'Redirect url includes query when param query is present' do
       sign_in(valid_cas_user)
-      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_cas_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: campus_authorized_patron, headers: {})
       query = 'a book title'
@@ -213,7 +213,7 @@ RSpec.describe AccountController do
     end
     it 'Redirects to Home page for ineligible barcode only user' do
       sign_in(valid_barcode_user)
-      valid_patron_record_uri = "#{ENV['bibdata_base']}/patron/#{valid_barcode_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_barcode_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
       get :borrow_direct_redirect

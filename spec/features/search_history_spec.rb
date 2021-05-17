@@ -12,7 +12,7 @@ RSpec.describe 'search history' do
         valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
         ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
         current_illiad_user_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Users/jstudent"
-        stub_request(:get, /#{Regexp.quote(ENV['bibdata_base'])}\/patron\/.*/)
+        stub_request(:get, /#{Regexp.quote(Requests.config['bibdata_base'])}\/patron\/.*/)
           .to_return(status: 200, body: valid_patron_response, headers: {})
         stub_request(:get, valid_patron_record_uri)
           .to_return(status: 200, body: voyager_account_response, headers: {})

@@ -61,7 +61,7 @@ RSpec.describe ApplicationHelper do
       expect(holding_location_label(valid_code)).to eq('Firestone Library - Classics Collection (Clas)')
     end
     it 'returns holding location value when location code lookup fails' do
-      stub_request(:get, "#{ENV['bibdata_base']}/locations/holding_locations.json")
+      stub_request(:get, "#{Requests.config['bibdata_base']}/locations/holding_locations.json")
         .to_return(status: 500,
                    body: '')
       expect(holding_location_label(invalid_code)).to eq(fallback)
