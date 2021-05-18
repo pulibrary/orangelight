@@ -23,7 +23,7 @@ set :branch, ENV['BRANCH'] || 'main'
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'lib-pulindexer1', user: 'deploy', roles: %i[cron_prod1]
+server 'lib-pulindexer1', user: 'deploy', roles: %i[cron_prod1 cron_db]
 server 'lib-pulindexer2', user: 'deploy', roles: %i[cron_prod2]
 server 'lib-pulindexer3', user: 'deploy', roles: %i[cron_prod3]
 
