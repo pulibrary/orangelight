@@ -5,6 +5,25 @@ require 'rails_helper'
 describe 'Request Options' do
   before { stub_holding_locations }
 
+  describe 'the request page', js: true do
+    before do
+      visit '/catalog/9618072'
+    end
+
+    it 'clicking the request button loads the request page' do
+      stub_request(:get, "https://catalog.princeton.edu/catalog/9618072/raw")
+        .to_return(status: 200, body: {}.to_json, headers: {})
+      stub_request(:get, "https://bibdata-staging.princeton.edu/availability?id=9618072")
+        .to_return(status: 200, body: {}.to_json, headers: {})
+      stub_request(:get, "https://bibdata-staging.princeton.edu/locations/delivery_locations.json")
+        .to_return(status: 200, body: {}.to_json, headers: {})
+      using_wait_time 5 do
+        click_link('Request')
+        expect(page)
+      end
+    end
+  end
+
   describe 'Available status non-requestable location', js: true do
     before do
       visit '/catalog/9222024'
