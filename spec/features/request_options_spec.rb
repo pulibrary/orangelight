@@ -19,7 +19,7 @@ describe 'Request Options' do
         .to_return(status: 200, body: {}.to_json, headers: {})
       using_wait_time 5 do
         click_link('Request')
-        expect(page)
+        expect(current_path).to eq "/requests/9618072"
       end
     end
   end
