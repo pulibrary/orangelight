@@ -16,7 +16,7 @@ describe 'Account login' do
       end
 
       it 'brings user to account page' do
-        stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+        stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")
           .to_return(status: 200, body: valid_patron_response, headers: {})
 
         valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
@@ -105,7 +105,7 @@ end
 #     let(:voyager_account_response) { fixture('/generic_voyager_account_response.xml') }
 #     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 #     it 'brings user to the account page' do
-#       stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+#       stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")
 #         .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
 #         .to_return(status: 200, body: valid_patron_response, headers: {})
 
@@ -126,7 +126,7 @@ end
 #       stub_request(:get, 'https://pulsearch.princeton.edu/catalog/8908514.json')
 #         .with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Faraday v0.11.0' })
 #         .to_return(status: 200, body: fixture('/8908514.json'), headers: {})
-#       stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+#       stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")
 #         .with(headers: { 'User-Agent' => 'Faraday v0.11.0' })
 #         .to_return(status: 200, body: valid_patron_response, headers: {})
 #       visit "/requests/#{requestable_record}"

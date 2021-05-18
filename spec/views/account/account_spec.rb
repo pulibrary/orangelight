@@ -28,7 +28,7 @@ describe 'Your Account', type: :feature do
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
     before do
-      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+      stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
@@ -79,7 +79,7 @@ describe 'Your Account', type: :feature do
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
     before do
-      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+      stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
@@ -101,7 +101,7 @@ describe 'Your Account', type: :feature do
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
     before do
-      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+      stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
@@ -124,7 +124,7 @@ describe 'Your Account', type: :feature do
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
     before do
-      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+      stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
@@ -177,7 +177,7 @@ describe 'Your Account', type: :feature do
     let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
 
     before do
-      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+      stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
@@ -242,7 +242,7 @@ describe 'Your Account', type: :feature do
     let(:renew_response_only_success) { fixture('/successful_voyager_renew_response.xml') }
 
     before do
-      stub_request(:get, "#{ENV['bibdata_base']}/patron/#{user.uid}")
+      stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
       valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
@@ -415,7 +415,7 @@ describe 'Your Account', type: :feature do
     before do
       allow(response).to receive(:status).and_return(200)
       allow(response).to receive(:body).and_return(File.read(valid_patron_response))
-      allow(Faraday).to receive(:get).with("#{ENV['bibdata_base']}/patron/#{user.uid}").and_return(response)
+      allow(Faraday).to receive(:get).with("#{Requests.config['bibdata_base']}/patron/#{user.uid}").and_return(response)
       allow(Faraday).to receive(:get).with(valid_patron_record_uri).and_raise(Faraday::Error::ConnectionFailed, 'connection failed')
 
       sign_in user

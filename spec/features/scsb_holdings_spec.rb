@@ -6,9 +6,9 @@ describe 'SCSB Shared Collection Records' do
   before do
     stub_holding_locations
     # stub for SCSB-2443272
-    stub_request(:get, "#{ENV['bibdata_base']}/hathi/access?oclc=3280195").to_return(status: 200, body: '[]')
+    stub_request(:get, "#{Requests.config['bibdata_base']}/hathi/access?oclc=3280195").to_return(status: 200, body: '[]')
     # stub for SCSB-2143785
-    stub_request(:get, "#{ENV['bibdata_base']}/hathi/access?oclc=3605150").to_return(status: 200, body: '[]')
+    stub_request(:get, "#{Requests.config['bibdata_base']}/hathi/access?oclc=3605150").to_return(status: 200, body: '[]')
   end
 
   context 'Search Results Page' do

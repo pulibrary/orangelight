@@ -10,6 +10,7 @@ require_relative "lando_env"
 Bundler.require(*Rails.groups)
 
 # Settings for request system
+# TODO: Get rid of this.
 begin
   ENV.update YAML.load_file('config/requests.yml')[Rails.env]
 rescue

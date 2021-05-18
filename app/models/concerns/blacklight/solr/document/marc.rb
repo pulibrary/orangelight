@@ -241,7 +241,7 @@ module Blacklight
           def marc_record_from_marcxml
             id = fetch(_marc_source_field)
 
-            response = Faraday.get("#{ENV['bibdata_base']}/bibliographic/#{id}")
+            response = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}")
             response_stream = StringIO.new(response.body)
             marc_reader = MARC::XMLReader.new(response_stream)
             marc_records = marc_reader.to_a

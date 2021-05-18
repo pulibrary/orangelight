@@ -32,7 +32,7 @@ RSpec.describe Bibdata do
     context 'with a successful response from bibdata' do
       it 'returns the holdings location hash' do
         body = '[{"oclc_number": "19774500","bibid": "1000066","status": "DENY","origin": "CUL"}]'
-        stub_request(:get, "#{ENV['bibdata_base']}/hathi/access?oclc=19774500")
+        stub_request(:get, "#{Requests.config['bibdata_base']}/hathi/access?oclc=19774500")
           .to_return(status: 200, body: body)
         expect(described_class.hathi_access("19774500")).to eq(
           [
@@ -49,7 +49,7 @@ RSpec.describe Bibdata do
 
     context 'with an unsuccessful response from bibdata' do
       it 'returns an empty hash' do
-        stub_request(:get, "#{ENV['bibdata_base']}/hathi/access?oclc=19774500")
+        stub_request(:get, "#{Requests.config['bibdata_base']}/hathi/access?oclc=19774500")
           .to_return(status: 404)
         expect(described_class.hathi_access("19774500")).to be_empty
       end
