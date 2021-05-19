@@ -58,7 +58,7 @@ gem 'solr_wrapper', '~> 2.0'
 gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
 
 gem 'babel-transpiler'
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.6'
 gem 'capybara'
 gem 'coveralls', require: false
 gem 'ddtrace'
