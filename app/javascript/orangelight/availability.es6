@@ -24,6 +24,7 @@ export default class AvailabilityUpdater {
     this.process_results_list = this.process_results_list.bind(this);
     this.process_barcodes = this.process_barcodes.bind(this);
     this.process_single = this.process_single.bind(this);
+    this.update_single = this.update_single.bind(this);
     this.process_scsb_single = this.process_scsb_single.bind(this);
   }
 
@@ -115,6 +116,32 @@ export default class AvailabilityUpdater {
 
   // show page
   process_single(holding_records) {
+    var dataComplete = true;
+    for (let holding_id in holding_records[this.id]) {
+      const availability_info = holding_records[this.id][holding_id];
+      if (availability_info['temp_location'] === true) {
+        dataComplete = false; // The data that we get from Alma for temporary locations is incomplete.
+        break;
+      }
+    }
+
+    if (dataComplete) {
+      // Update the page with the data that we already have.
+      this.update_single(holding_records);
+      return;
+    }
+
+    // Make a separate call (with deep=true) to get more information before updating the page.
+    var url = `${this.bibdata_base_url}/bibliographic/${this.id}/availability.json?deep=true`;
+    $.getJSON(url, this.update_single)
+      .fail((jqXHR, textStatus, errorThrown) => {
+        return console.error(`Failed to retrieve deep availability data for bib. record ${this.id}: ${errorThrown}`);
+      });
+
+    return;
+  }
+
+  update_single(holding_records) {
     return (() => {
       const result = [];
       for (let holding_id in holding_records[this.id]) {
@@ -131,12 +158,12 @@ export default class AvailabilityUpdater {
         // TODO: We don't yet know if etas will still exist
         // TODO: we don't have a temp_loc yet
         // hathi ETAS and stackmap stuff
-        if (availability_info['temp_loc']) {
+        if (availability_info['temp_location']) {
           const current_map_link = $(`*[data-holding-id='${holding_id}'] .find-it`);
           const temp_map_link = this.stackmap_link(this.id, availability_info);
           current_map_link.replaceWith(temp_map_link);
 
-          if (availability_info['temp_loc'] == "etas" || availability_info['temp_loc'] == "etasrcp") {
+          if (availability_info['temp_location'] == "etas" || availability_info['temp_location'] == "etasrcp") {
             const hathi_connector = new HathiConnector
             hathi_connector.insert_hathi_link()
           }
