@@ -20,6 +20,7 @@ test:
   bibdata_base: https://bibdata-staging.princeton.edu
 production:
   <<: *defaults
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
 staging:
   <<: *defaults
   bibdata_base: https://bibdata.princeton.edu
