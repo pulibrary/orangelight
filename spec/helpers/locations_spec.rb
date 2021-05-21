@@ -74,6 +74,45 @@ RSpec.describe ApplicationHelper do
     end
   end
 
+  context 'when using Alma' do
+    before do
+      allow(Rails.configuration).to receive(:use_alma).and_return(true)
+    end
+
+    let(:fallback) { 'Fallback' }
+    let(:without_code) { { 'library' => 'Library Name', 'location' => fallback } }
+    let(:invalid_code) { { 'library' => 'Library Name', 'location' => fallback, 'location_code' => 'invalid' } }
+    let(:valid_code) { { 'library' => 'Library Name', 'location' => fallback, 'location_code' => 'aas' } }
+
+    it 'returns holding location label when location code lookup successful' do
+      stub_holding_locations
+      expect(holding_location_label(valid_code)).to eq('Firestone Library - African American Studies Reading Room (AAS). B-7-B')
+    end
+    it 'returns holding location value when location code lookup fails' do
+      stub_request(:get, "#{Requests.config['bibdata_base']}/locations/holding_locations.json")
+        .to_return(status: 500,
+                   body: '')
+      expect(holding_location_label(invalid_code)).to eq('Library Name - Fallback')
+    end
+    it 'returns holding location value when no location code' do
+      expect(holding_location_label(without_code)).to eq('Library Name - Fallback')
+    end
+    it 'returns nil when no location code or holding location value' do
+      expect(holding_location_label({})).to be_nil # -
+    end
+  end
+
+  describe '#aeon_location?' do
+    let(:loc) { { aeon_location: true } }
+
+    it 'returns the location aeon_location attribute value' do
+      expect(aeon_location?(loc)).to eq true
+    end
+    it 'returns false when nil location is passed to function' do
+      expect(aeon_location?(nil)).to eq false
+    end
+  end
+
   describe '#aeon_location?' do
     let(:loc) { { aeon_location: true } }
 
