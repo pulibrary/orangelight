@@ -151,6 +151,56 @@ describe('AvailabilityUpdater', function() {
     spy.mockRestore()
   })
 
+  test('record has temporary locations and complete data', () => {
+    const holding_records = {
+      "9959958323506421": {
+        "22272063570006421": {
+          "on_reserve": "N",
+          "location": "lewis$resterm",
+          "label": "sciresp: Lewis: Term Loan",
+          "status_label": "Available",
+          "copy_number": "1",
+          "cdl": false,
+          "temp_location": true,
+          "id": "22272063570006421"
+        }
+      }
+    }
+
+    // in this case we expect to call update_single
+    let u = new updater
+    u.id = '9959958323506421'
+    const spy = jest.spyOn(u, 'update_single')
+    u.process_single(holding_records)
+    expect(spy).toHaveBeenCalled()
+    spy.mockRestore()
+  })
+
+  test('record has temporary locations and incomplete data', () => {
+    const holding_records = {
+      "9959958323506421": {
+        "fake_id_1": {
+          "on_reserve": "N",
+          "location": "lewis$resterm",
+          "label": "sciresp: Lewis: Term Loan",
+          "status_label": "Available",
+          "copy_number": "1",
+          "cdl": false,
+          "temp_location": true,
+          "id": "fake_id_1"
+        }
+      }
+    }
+
+    // in this case we expect NOT to call update_single since we have incomplete data
+    let u = new updater
+    u.id = '9959958323506421'
+    const spy = jest.spyOn(u, 'update_single')
+    u.process_single(holding_records)
+    expect(spy).not.toHaveBeenCalled()
+    spy.mockRestore()
+  })
+
   test('record show page with an item not on CDL does not add a link', () => {
     document.body.innerHTML =
       '<table><tr>' +

@@ -119,7 +119,7 @@ export default class AvailabilityUpdater {
     var dataComplete = true;
     for (let holding_id in holding_records[this.id]) {
       const availability_info = holding_records[this.id][holding_id];
-      if (availability_info['temp_location'] === true) {
+      if ((availability_info['temp_location'] === true) && holding_id.startsWith('fake_id_')) {
         dataComplete = false; // The data that we get from Alma for temporary locations is incomplete.
         break;
       }
