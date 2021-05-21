@@ -27,6 +27,7 @@ staging:
 alma_qa:
   <<: *defaults
   bibdata_base: https://bibdata-alma-staging.princeton.edu
+  scsb_base: https://uat-recap.htcinc.com:9093
   pulsearch_base: https://catalog-alma-qa.princeton.edu
 qa:
   <<: *defaults
