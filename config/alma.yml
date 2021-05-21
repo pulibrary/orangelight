@@ -1,0 +1,15 @@
+default: &default
+  read_write_apikey: <%= ENV['ALMA_BIB_READ_WRITE'] %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+  read_write_apikey: 'TESTME'
+
+alma_qa:
+  <<: *default
+
+production:
+  <<: *default
