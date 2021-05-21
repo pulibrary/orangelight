@@ -45,5 +45,7 @@ module Orangelight
     config.robots = OpenStruct.new(config_for(:robots))
 
     config.use_alma = ActiveModel::Type::Boolean.new.cast(ENV['USE_ALMA'])
+
+    config.alma = config_for(:alma).with_indifferent_access
   end
 end
