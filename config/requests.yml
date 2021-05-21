@@ -24,7 +24,7 @@ staging:
   <<: *defaults
 alma_qa:
   <<: *defaults
-  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-alma-staging.princeton.edu" %>
+  bibdata_base: https://bibdata-alma-staging.princeton.edu
   scsb_base: https://uat-recap.htcinc.com:9093
   pulsearch_base: https://catalog-alma-qa.princeton.edu
 qa:
