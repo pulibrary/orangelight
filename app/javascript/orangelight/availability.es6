@@ -92,10 +92,11 @@ export default class AvailabilityUpdater {
     return result;
   }
 
+  // search results
   process_result(record_id, holding_records) {
     for (let holding_id in holding_records) {
       const availability_info = holding_records[holding_id];
-      // a library name
+      // In Alma the label from the endpoint includes both the library name and the location.
       if (availability_info['label']) {
         const location = $(`*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .results_location`);
         location.text(availability_info['label']);
@@ -114,6 +115,7 @@ export default class AvailabilityUpdater {
   }
 
   // show page
+  // In Alma the label from the endpoint includes both the library name and the location.
   process_single(holding_records) {
     return (() => {
       const result = [];
