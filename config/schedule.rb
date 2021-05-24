@@ -94,6 +94,6 @@ every :tuesday, at: '2:00am', roles: [:sitemap] do
   logging_rake 'sitemap:refresh', output: { error: '/tmp/ol_sitemap.log', standard: '/tmp/ol_sitemap.log' }
 end
 
-every 1.day at: '11pm', roles: [:cron_db] do
+every 1.day, at: '11pm', roles: [:cron_db] do
   logging_rake 'orangelight:clean:guest_users', output: { error: '/tmp/clean_guest_users.log', standard: '/tmp/clean_guest_users.log' }
 end
