@@ -31,7 +31,7 @@
             // pulls the helper-generated openurl querystring
             var ctx = $("span.Z3988").attr("title");
           }
-          var umlaut_base = "<%= ENV['umlaut_base'] %>";
+          var umlaut_base = "<%= Requests.config['umlaut_base'] %>";
           var updater = new Umlaut.HtmlUpdater( umlaut_base, ctx );
           updater.add_section_target({
             umlaut_section_id: "fulltext",

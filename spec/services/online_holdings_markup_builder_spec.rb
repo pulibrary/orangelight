@@ -119,7 +119,7 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
       end
 
       it 'does not have a proxy prefix added' do
-        expect(urlified_markup).not_to include ENV['proxy_base']
+        expect(urlified_markup).not_to include Requests.config['proxy_base']
       end
     end
 
@@ -131,7 +131,7 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
       end
 
       it 'does have a proxy prefix added' do
-        expect(urlified_markup).to include ENV['proxy_base']
+        expect(urlified_markup).to include Requests.config['proxy_base']
       end
     end
 
@@ -143,7 +143,7 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
       end
 
       it 'flattens the set of electronic access titles' do
-        expect(urlified_markup).to include ENV['proxy_base']
+        expect(urlified_markup).to include Requests.config['proxy_base']
       end
     end
 
