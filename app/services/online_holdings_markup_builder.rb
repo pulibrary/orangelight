@@ -35,7 +35,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
                  link_to(texts.first, $&)
                end
              else
-               link_to(texts.first, "#{ENV['proxy_base']}#{url}", target: '_blank')
+               link_to(texts.first, "#{Requests.config['proxy_base']}#{url}", target: '_blank')
              end
     markup
   end
