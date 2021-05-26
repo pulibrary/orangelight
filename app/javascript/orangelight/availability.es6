@@ -284,15 +284,24 @@ export default class AvailabilityUpdater {
   apply_availability_label(availability_element, availability_info) {
     availability_element.addClass("badge");
     let status_label = availability_info['status_label'];
+    let isCdl = availability_info['cdl'];
     status_label = `${status_label}${this.due_date(availability_info["due_date"])}`;
-    availability_element.text(status_label);
     if (status_label.toLowerCase() === 'unavailable') {
-      availability_element.addClass("badge-danger");
+      if (isCdl) {
+        // If the item is on CDL we display "Online" as the availability
+        // rather than "Unavailable"
+        status_label = "Online";
+        availability_element.attr("title", "Available online. Physical copy might not be available.");
+        availability_element.addClass("badge-secondary");
+      } else {
+        availability_element.addClass("badge-danger");
+      }
     } else if (status_label.toLowerCase() === 'available') {
       availability_element.addClass("badge-success");
     } else {
       availability_element.addClass("badge-secondary");
     }
+    availability_element.text(status_label);
   }
 
   title_case(str) {
