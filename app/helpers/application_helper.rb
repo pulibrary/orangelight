@@ -247,6 +247,7 @@ module ApplicationHelper
         end
         info << content_tag(:div, search_location_display(holding, document), class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
       end
+      info << content_tag(:span, "Online", class: 'badge badge-primary hidden', 'data-availability-cdl' => true)
       block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id, aeon: aeon_location?(location) })
     end
 

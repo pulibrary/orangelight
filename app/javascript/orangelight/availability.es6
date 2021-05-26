@@ -110,7 +110,7 @@ export default class AvailabilityUpdater {
         const temp_map_link = this.stackmap_link(record_id, availability_info, true);
         current_map_link.replaceWith(temp_map_link);
       }
-      this.apply_availability_label(availability_element, availability_info);
+      this.apply_availability_label(availability_element, availability_info, true);
     }
     return true;
   }
@@ -153,7 +153,7 @@ export default class AvailabilityUpdater {
           const location = $(`*[data-location='true'][data-holding-id='${holding_id}']`);
           location.text(availability_info['label']);
         }
-        this.apply_availability_label(availability_element, availability_info);
+        this.apply_availability_label(availability_element, availability_info, false);
         if (availability_info["cdl"]) {
           insert_online_link();
         }
@@ -281,20 +281,18 @@ export default class AvailabilityUpdater {
     return true;
   }
 
-  apply_availability_label(availability_element, availability_info) {
+  apply_availability_label(availability_element, availability_info, addCdlBadge) {
     availability_element.addClass("badge");
     let status_label = availability_info['status_label'];
     let isCdl = availability_info['cdl'];
     status_label = `${status_label}${this.due_date(availability_info["due_date"])}`;
     if (status_label.toLowerCase() === 'unavailable') {
-      if (isCdl) {
-        // If the item is on CDL we display "Online" as the availability
-        // rather than "Unavailable"
-        status_label = "Online";
-        availability_element.attr("title", "Available online. Physical copy might not be available.");
-        availability_element.addClass("badge-secondary");
-      } else {
-        availability_element.addClass("badge-danger");
+      availability_element.addClass("badge-danger");
+      if (isCdl && addCdlBadge) {
+        // In this case althought the _physical_ copy is not available we
+        // display an extra badge to indicate that it is available _online_.
+        availability_element.attr("title", "Physical copy is not available.");
+        availability_element.parent().find(`*[data-availability-cdl='true']`).removeClass('hidden');
       }
     } else if (status_label.toLowerCase() === 'available') {
       availability_element.addClass("badge-success");
