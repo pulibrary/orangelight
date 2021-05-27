@@ -8,7 +8,9 @@
       <ul class="dropdown-menu dropdown-menu-right" role="menu">
         <li role="menuitem">
           <% if Rails.configuration.use_alma %>
-            <%= link_to "My Library Card", "https://princeton.alma.exlibrisgroup.com/discovery/account?vid=01PRI_INST:Services&lang=EN&section=overview", target: "_blank" %>
+            <%= link_to("https://princeton.alma.exlibrisgroup.com/discovery/account?vid=01PRI_INST:Services&lang=EN&section=overview", target: "_blank") do %>
+              "My Library Card" <i class="fa fa-external-link" aria-hidden="true"></i>
+            <% end %>
           <% else %>
             <%= link_to I18n.t('blacklight.header_links.account_page'), main_app.page_path('account') %>
           <% end %>
@@ -29,7 +31,9 @@
       <ul class="dropdown-menu dropdown-menu-right" role="menu">
         <li role="menuitem">
           <% if Rails.configuration.use_alma %>
-            <%= link_to "My Library Card", "https://princeton.alma.exlibrisgroup.com/discovery/account?vid=01PRI_INST:Services&lang=EN&section=overview", target: "_blank" %>
+            <%= link_to("https://princeton.alma.exlibrisgroup.com/discovery/account?vid=01PRI_INST:Services&lang=EN&section=overview", target: "_blank") do %>
+              "My Library Card" <i class="fa fa-external-link" aria-hidden="true"></i>
+            <% end %>
           <% else %>
             <%= link_to t('blacklight.header_links.login'), main_app.new_user_session_path %>
           <% end %>
