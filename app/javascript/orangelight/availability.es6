@@ -286,20 +286,22 @@ export default class AvailabilityUpdater {
     let status_label = availability_info['status_label'];
     let isCdl = availability_info['cdl'];
     status_label = `${status_label}${this.due_date(availability_info["due_date"])}`;
+    availability_element.text(status_label);
     if (status_label.toLowerCase() === 'unavailable') {
       availability_element.addClass("badge-danger");
       if (isCdl && addCdlBadge) {
-        // In this case althought the _physical_ copy is not available we
-        // display an extra badge to indicate that it is available _online_.
-        availability_element.attr("title", "Physical copy is not available.");
-        availability_element.parent().find(`*[data-availability-cdl='true']`).removeClass('hidden');
+        // The _physical_ copy is not available but we highlight that the _online_ copy is.
+        availability_element.attr('title', 'Physical copy is not available.');
+        let cdlPlaceholder = availability_element.parent().next().find("*[data-availability-cdl='true']");
+        cdlPlaceholder.text('Online');
+        cdlPlaceholder.attr('title', 'Online copy available via Controlled Digital Lending');
+        cdlPlaceholder.addClass('badge badge-primary');
       }
     } else if (status_label.toLowerCase() === 'available') {
       availability_element.addClass("badge-success");
     } else {
       availability_element.addClass("badge-secondary");
     }
-    availability_element.text(status_label);
   }
 
   title_case(str) {
