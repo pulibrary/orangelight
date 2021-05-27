@@ -316,5 +316,49 @@ RSpec.describe ApplicationHelper do
         expect(umlaut_full_text_eligible.umlaut_fulltext_eligible?).to be true
       end
     end
+
+    context 'when using Alma' do
+      before do
+        allow(Rails.configuration).to receive(:use_alma).and_return(true)
+      end
+      let(:search_result) { helper.holding_block_search(document) }
+      let(:call_number) { 'CD- 2018-11-11' }
+      let(:library) { 'Mendel Music Library' }
+      let(:document) do
+        {
+          id: '99112325153506421',
+          format: ['Audio'],
+          holdings_1display: holding_block_json
+        }.with_indifferent_access
+      end
+      let(:holding_block_json) do
+        {
+          '22270490550006421' => {
+            location: 'Mendel Music Library: Reserve',
+            library: library,
+            location_code: 'mendel$res',
+            call_number: call_number,
+            call_number_browse: call_number
+          },
+          '22270490570006421' => {
+            location: 'Remote Storage (ReCAP)',
+            library: library,
+            location_code: 'mendel$pk',
+            call_number: 'CD- 2018-11-11 MASTER',
+            call_number_browse: 'CD- 2018-11-11 MASTER'
+          }
+        }.to_json.to_s
+      end
+      context '#holding_block record show - physical holdings' do
+        before { stub_holding_locations }
+
+        it 'returns a string with call number and location display values' do
+          expect(show_result.last).to include call_number
+          expect(show_result.last).to include library
+          expect(show_result.last).to include 'Remote Storage (ReCAP)'
+          expect(show_result.last).to include 'Mendel Music Library: Reserve'
+        end
+      end
+    end
   end
 end
