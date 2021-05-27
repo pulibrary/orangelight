@@ -386,4 +386,65 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(described_class.open_location?(nil)).to eq false
     end
   end
+
+  context 'When using Alma' do
+    before do
+      allow(Rails.configuration).to receive(:use_alma).and_return(true)
+      stub_holding_locations
+      allow(document).to receive(:to_s).and_return('99112325153506421')
+      allow(adapter).to receive(:document).and_return(document)
+      allow(adapter).to receive(:doc_id).and_return('99112325153506421')
+      allow(adapter).to receive(:unavailable_holding?).and_return(false)
+    end
+
+    describe '.holding_location' do
+      let(:location_rules) do
+        {
+          'label': 'Mendel Music Library: Reserve',
+          'code': 'mendel$res',
+          'aeon_location': false,
+          'recap_electronic_delivery_location': false,
+          'open': false,
+          'requestable': true,
+          'always_requestable': false,
+          'circulates': true,
+          'remote_storage': "",
+          'url': 'https://bibdata-alma-staging.princeton.edu/locations/holding_locations/mendel$res',
+          'library': {
+            'label': 'Mendel Music Library',
+            'code': 'mendel',
+            'order': 0
+          },
+          'holding_library': nil,
+          'hours_location': nil
+        }.with_indifferent_access
+      end
+
+      let(:adapter) { instance_double(HoldingRequestsAdapter) }
+      let(:holding_id) { '22270490550006421' }
+      let(:location) { 'Mendel Music Library: Reserve' }
+      let(:call_number) { 'CD- 2018-11-11' }
+      let(:request_link) { '<a href="/requests/99112325153506421">Request</a>' }
+      let(:holding) do
+        {
+          holding_id => {
+            location: location,
+            library: 'Mendel Music Library',
+            location_code: 'mendel$res',
+            call_number: call_number
+          }.with_indifferent_access
+        }
+      end
+      let(:document) { instance_double(SolrDocument) }
+      let(:holding_location_markup) { described_class.holding_location(adapter, holding.first[1], location, holding_id, call_number) }
+
+      it 'generates the markup for the holding locations' do
+        expect(holding_location_markup).to include '<td class="library-location"'
+        expect(holding_location_markup).to include '<span class="location-text"'
+        expect(holding_location_markup).to include 'Mendel Music Library: Reserve'
+        expect(holding_location_markup).to include 'data-holding-id="22270490550006421"'
+        expect(holding_location_markup).to include "href=\"/catalog/99112325153506421/stackmap?loc=mendel$res&amp;cn=#{call_number}\""
+      end
+    end
+  end
 end

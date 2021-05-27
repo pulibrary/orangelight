@@ -269,6 +269,7 @@ module ApplicationHelper
     end
   end
 
+  # Location display in the search results page
   def search_location_display(holding, document)
     location = holding_location_label(holding)
     render_arrow = (location.present? && holding['call_number'].present?)
