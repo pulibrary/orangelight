@@ -156,7 +156,7 @@ class HoldingRequestsAdapter
   # Determine whether or not the holding is for a repository item
   # @return [TrueClass, FalseClass]
   def repository_holding?(holding)
-    holding['dspace'] || holding['location_code'] == 'num'
+    holding['dspace'] || holding['location_code'] == (Rails.configuration.use_alma ? 'rare$num' : 'num')
   end
 
   # Determine whether or not the holding is for a SCSB items with ReCAP
