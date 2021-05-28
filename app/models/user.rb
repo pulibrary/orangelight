@@ -59,6 +59,6 @@ class User < ApplicationRecord
   def self.expire_guest_accounts
     User
       .where("guest = ? and updated_at < ?", true, Time.now.utc - 7.days)
-      .find_each(&:destroy)
+      .find_each(batch_size: 25_000, &:destroy)
   end
 end
