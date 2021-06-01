@@ -220,6 +220,55 @@ describe('AvailabilityUpdater', function() {
     spy.mockRestore()
   })
 
+  test('extra Online availability added for CDL records that are reported as unavailable', () => {
+    document.body.innerHTML = '<ul>'+
+      '  <li data-availability-record="true" data-record-id="9965126093506421" data-holding-id="22202918790006421" data-aeon="false">' +
+      '    <span class="availability-icon"></span>' +
+      '    <div class="library-location" data-location="true" data-record-id="9965126093506421" data-holding-id="22202918790006421">' +
+      '      <span class="results_location">Firestone Library - Stacks</span> » ' +
+      '      <span class="call-number">PS3558.A62424 B43 2010 ' +
+      '        <a title="Where to find it" class="find-it" data-map-location="firestone$stacks" data-blacklight-modal="trigger" ' +
+      '           aria-label="Where to find it" href="/catalog/9965126093506421/stackmap?loc=firestone$stacks&amp;cn=PS3558.A62424 B43 2010">' +
+      '          <span class="fa fa-map-marker" aria-hidden="true"></span>' +
+      '        </a>' +
+      '      </span>' +
+      '    </div>' +
+      '  </li>' +
+      '  <li>' +
+      '    <span class="badge badge-primary" data-availability-cdl="true"></span>' +
+      '  </li>' +
+      '  <li class="empty" data-record-id="9965126093506421">' +
+      '    <a class="availability-icon more-info" title="Click on the record for full availability info" data-toggle="tooltip" href="/catalog/9965126093506421"></a>' +
+      '  </li>' +
+      '</ul>';
+
+    const availability_response = {
+      "9965126093506421" : {
+        "22202918790006421" : {
+          "on_reserve": "N",
+          "location": "firestone$stacks",
+          "label": "Firestone Library - Stacks",
+          "status_label": "Unavailable",
+          "copy_number": null,
+          "cdl": true,
+          "temp_location": false,
+          "id": "22202918790006421"
+        }
+      }
+    };
+    const holding_data = availability_response["9965126093506421"]["22202918790006421"];
+
+    const cdl_element = $("*[data-availability-cdl='true']")[0];
+    const av_element = $(`*[data-availability-record='true'][data-record-id='9965126093506421'][data-holding-id='22202918790006421'] .availability-icon`);
+
+    let u = new updater;
+    u.id = '9965126093506421';
+
+    expect(cdl_element.textContent).not.toContain('Online');
+    u.apply_availability_label(av_element, holding_data, true);
+    expect(cdl_element.textContent).toContain('Online');
+  })
+
   // TODO: This method isn't covered by the feature tests
   test('scsb_barcodes() on a search results page', () => {
     // This is only used on search results page
