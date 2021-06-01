@@ -248,6 +248,11 @@ module ApplicationHelper
         info << content_tag(:div, search_location_display(holding, document), class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
       end
       block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id, aeon: aeon_location?(location) })
+
+      if Rails.configuration.use_alma
+        cdl_placeholder = content_tag(:span, '', class: 'badge badge-primary', 'data-availability-cdl' => true)
+        block << content_tag(:li, cdl_placeholder.html_safe)
+      end
     end
 
     if scsb_multiple == true

@@ -110,7 +110,7 @@ export default class AvailabilityUpdater {
         const temp_map_link = this.stackmap_link(record_id, availability_info, true);
         current_map_link.replaceWith(temp_map_link);
       }
-      this.apply_availability_label(availability_element, availability_info);
+      this.apply_availability_label(availability_element, availability_info, true);
     }
     return true;
   }
@@ -153,7 +153,7 @@ export default class AvailabilityUpdater {
           const location = $(`*[data-location='true'][data-holding-id='${holding_id}']`);
           location.text(availability_info['label']);
         }
-        this.apply_availability_label(availability_element, availability_info);
+        this.apply_availability_label(availability_element, availability_info, false);
         if (availability_info["cdl"]) {
           insert_online_link();
         }
@@ -281,13 +281,22 @@ export default class AvailabilityUpdater {
     return true;
   }
 
-  apply_availability_label(availability_element, availability_info) {
+  apply_availability_label(availability_element, availability_info, addCdlBadge) {
     availability_element.addClass("badge");
     let status_label = availability_info['status_label'];
+    let isCdl = availability_info['cdl'];
     status_label = `${status_label}${this.due_date(availability_info["due_date"])}`;
     availability_element.text(status_label);
     if (status_label.toLowerCase() === 'unavailable') {
       availability_element.addClass("badge-danger");
+      if (isCdl && addCdlBadge) {
+        // The _physical_ copy is not available but we highlight that the _online_ copy is.
+        availability_element.attr('title', 'Physical copy is not available.');
+        let cdlPlaceholder = availability_element.parent().next().find("*[data-availability-cdl='true']");
+        cdlPlaceholder.text('Online');
+        cdlPlaceholder.attr('title', 'Online copy available via Controlled Digital Lending');
+        cdlPlaceholder.addClass('badge badge-primary');
+      }
     } else if (status_label.toLowerCase() === 'available') {
       availability_element.addClass("badge-success");
     } else {
