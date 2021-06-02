@@ -105,6 +105,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
     markup = ''
 
     portfolios = adapter.electronic_portfolios + adapter.sibling_electronic_portfolios
+    return '' if portfolios.present? && portfolios[0].key?('thesis')
     portfolios.each do |portfolio|
       start_date = portfolio['start']
       end_date = portfolio['end']
