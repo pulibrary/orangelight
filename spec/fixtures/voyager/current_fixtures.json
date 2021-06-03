@@ -180,52 +180,51 @@
         ]
     },
     {
-        "access_facet": "In the Library",
-        "advanced_location_s": [
-            "mudd",
-            "Mudd Manuscript Library"
-        ],
-        "author_display": [
-            "Tydings, Eleanor Davis"
-        ],
-        "author_s": [
-            "Tydings, Eleanor Davis",
-            "Princeton University. Department of History"
-        ],
-        "author_sort": "Tydings, Eleanor Davis",
-        "call_number_browse_s": "AC102 202",
-        "call_number_display": "AC102 202",
-        "class_year_s": [
-            "1990"
-        ],
-        "department_display": [
-            "Princeton University. Department of History"
-        ],
-        "description_display": [
-            "94 Pages"
-        ],
-        "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/dsp01tq57ns24j\":[\"DataSpace\",\"Citation only\"]}",
-        "format": "Senior thesis",
-        "holdings_1display": "{\"thesis\":{\"location\":\"Mudd Manuscript Library\",\"library\":\"Mudd Manuscript Library\",\"location_code\":\"mudd\",\"call_number\":\"AC102 202\",\"call_number_browse\":\"AC102 202\",\"dspace\":true}}",
         "id": "dsp01tq57ns24j",
-        "language_facet": "English",
-        "location": "Mudd Manuscript Library",
-        "location_code_s": "mudd",
-        "location_display": "Mudd Manuscript Library",
-        "pub_date_end_sort": [
-            "1990"
-        ],
-        "pub_date_start_sort": [
-            "1990"
-        ],
-        "restrictions_note_display": null,
-        "rights_reproductions_note_display": [
-            "This thesis can be viewed in person at the <a href=http://mudd.princeton.edu>Mudd Manuscript Library</a>.  \nTo order a copy complete the <a href=\"http://rbsc.princeton.edu/senior-thesis-order-form\" target=\"_blank\">Senior Thesis Request Form</a>.  \nFor more information contact <a href=mailto:mudd@princeton.edu>mudd@princeton.edu</a>."
-        ],
+        "title_t": "The 1950 Election Defeat of Senator Millard E. Tydings: Trouble in Maryland on Many Fronts",
         "title_citation_display": "The 1950 Election Defeat of Senator Millard E. Tydings: Trouble in Maryland on Many Fronts",
         "title_display": "The 1950 Election Defeat of Senator Millard E. Tydings: Trouble in Maryland on Many Fronts",
         "title_sort": "1950electiondefeatofsenatormillardetydingstroubleinmarylandonmanyfronts",
-        "title_t": "The 1950 Election Defeat of Senator Millard E. Tydings: Trouble in Maryland on Many Fronts"
+        "author_sort": "Tydings, Eleanor Davis",
+        "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/dsp01tq57ns24j\":[\"DataSpace\",\"Citation only\"]}",
+        "restrictions_note_display": [
+          "This thesis can be viewed in person at the <a href=http://mudd.princeton.edu>Mudd Manuscript Library</a>.  \nTo order a copy complete the <a href=\"http://rbsc.princeton.edu/senior-thesis-order-form\" target=\"_blank\">Senior Thesis Request Form</a>.  \nFor more information contact <a href=mailto:mudd@princeton.edu>mudd@princeton.edu</a>."
+        ],
+        "call_number_display": "AC102 202",
+        "call_number_browse_s": "AC102 202",
+        "language_facet": "English",
+        "author_display": [
+          "Tydings, Eleanor Davis"
+        ],
+        "author_s": [
+          "Tydings, Eleanor Davis",
+          "Princeton University. Department of History"
+        ],
+        "department_display": [
+          "Princeton University. Department of History"
+        ],
+        "description_display": [
+          "94 Pages"
+        ],
+        "location": "Mudd Manuscript Library",
+        "location_display": "Mudd Manuscript Library",
+        "location_code_s": "mudd",
+        "advanced_location_s": [
+          "mudd",
+          "Mudd Manuscript Library"
+        ],
+        "access_facet": "In the Library",
+        "holdings_1display": "{\"thesis\":{\"location\":\"Mudd Manuscript Library\",\"library\":\"Mudd Manuscript Library\",\"location_code\":\"mudd\",\"call_number\":\"AC102 202\",\"call_number_browse\":\"AC102 202\",\"dspace\":true}}",
+        "class_year_s": [
+          "1990"
+        ],
+        "pub_date_start_sort": [
+          "1990"
+        ],
+        "pub_date_end_sort": [
+          "1990"
+        ],
+        "format": "Senior thesis"
     },
     {
         "access_facet": "In the Library",
