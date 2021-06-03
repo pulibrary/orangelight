@@ -1,0 +1,104 @@
+[
+    {
+        "id": "dsp01wd3760321",
+        "title_t": "The Show Must Go On... And On, And On: The Lasting Appeal of the Stage Comedy",
+        "title_citation_display": "The Show Must Go On... And On, And On: The Lasting Appeal of the Stage Comedy",
+        "title_display": "The Show Must Go On... And On, And On: The Lasting Appeal of the Stage Comedy",
+        "title_sort": "showmustgoonandonandonthelastingappealofthestagecomedy",
+        "author_sort": "White-Mink, Chamari",
+        "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/dsp01wd3760321\":[\"DataSpace\",\"Citation only\"]}",
+        "restrictions_note_display": [
+          "Walk-in Access. This thesis can only be viewed on computer terminals at the <a href=http://mudd.princeton.edu>Mudd Manuscript Library</a>."
+        ],
+        "call_number_display": "AC102",
+        "call_number_browse_s": "AC102",
+        "language_facet": [
+          "English"
+        ],
+        "author_display": [
+          "White-Mink, Chamari"
+        ],
+        "author_s": [
+          "White-Mink, Chamari",
+          "Huerta, Monica",
+          "Princeton University. Department of English",
+          "Princeton University. Program in Theater"
+        ],
+        "advisor_display": [
+          "Huerta, Monica"
+        ],
+        "department_display": [
+          "Princeton University. Department of English"
+        ],
+        "certificate_display": [
+          "Princeton University. Program in Theater"
+        ],
+        "location": "Mudd Manuscript Library",
+        "location_display": "Mudd Manuscript Library",
+        "location_code_s": "mudd$stacks",
+        "advanced_location_s": [
+          "mudd$stacks",
+          "Mudd Manuscript Library"
+        ],
+        "access_facet": "In the Library",
+        "holdings_1display": "{\"thesis\":{\"location\":\"Mudd Manuscript Library\",\"library\":\"Mudd Manuscript Library\",\"location_code\":\"mudd$stacks\",\"call_number\":\"AC102\",\"call_number_browse\":\"AC102\",\"dspace\":true}}",
+        "class_year_s": [
+          "2020"
+        ],
+        "pub_date_start_sort": [
+          "2020"
+        ],
+        "pub_date_end_sort": [
+          "2020"
+        ],
+        "format": "Senior thesis"
+      },
+      {
+        "id": "dsp01w6634604k",
+        "title_t": "Unfinished Business: An Examination of Unrevived, Unproduced, and Incomplete Musical Theatre",
+        "title_citation_display": "Unfinished Business: An Examination of Unrevived, Unproduced, and Incomplete Musical Theatre",
+        "title_display": "Unfinished Business: An Examination of Unrevived, Unproduced, and Incomplete Musical Theatre",
+        "title_sort": "unfinishedbusinessanexaminationofunrevivedunproducedandincompletemusicaltheatre",
+        "author_sort": "Plunkett, William Anderson",
+        "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/dsp01w6634604k\":[\"DataSpace\",\"Full text\"]}",
+        "restrictions_note_display": null,
+        "call_number_display": "AC102",
+        "call_number_browse_s": "AC102",
+        "language_facet": [
+          "English"
+        ],
+        "author_display": [
+          "Plunkett, William Anderson"
+        ],
+        "author_s": [
+          "Plunkett, William Anderson",
+          "Wolf, Stacy",
+          "Wolff, Tamsen",
+          "Princeton University. Program in Theater"
+        ],
+        "advisor_display": [
+          "Wolf, Stacy"
+        ],
+        "contributor_display": [
+          "Wolff, Tamsen"
+        ],
+        "certificate_display": [
+          "Princeton University. Program in Theater"
+        ],
+        "description_display": [
+          "82 pages"
+        ],
+        "access_facet": "Online",
+        "electronic_portfolio_s": "{\"thesis\":{\"call_number\":\"AC102\",\"call_number_browse\":\"AC102\",\"dspace\":true}}",
+        "class_year_s": [
+          "2016"
+        ],
+        "pub_date_start_sort": [
+          "2016"
+        ],
+        "pub_date_end_sort": [
+          "2016"
+        ],
+        "format": "Senior thesis"
+      }
+]
