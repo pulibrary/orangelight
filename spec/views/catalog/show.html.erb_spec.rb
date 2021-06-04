@@ -24,8 +24,8 @@ RSpec.describe 'catalog/show' do
   context 'when entries describe resources published using multiple ARKs', js: true do
     it 'renders multiple viewers' do
       visit '/catalog/3943643'
-      expect(page).to have_selector('div#view')
-      expect(page).to have_selector('div#view_1')
+      expect(page).to have_selector('div#viewer-container')
+      expect(page).to have_selector('div#viewer-container_1')
     end
   end
 
