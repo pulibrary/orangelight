@@ -30,7 +30,7 @@ describe('insert_online_link', function() {
     let list_item = li_elements.item(0)
     expect(list_item.textContent).toEqual("Princeton users: View digital content")
     const anchor = list_item.getElementsByTagName('a').item(0)
-    expect(anchor.getAttribute("href")).toEqual("#view")
+    expect(anchor.getAttribute("href")).toEqual("#viewer-container")
     expect(anchor.getAttribute("target")).toEqual("_self")
   })
 
