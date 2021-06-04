@@ -53,9 +53,18 @@ class Bibdata
 
     private
 
+      def parse_holding_locations(response:)
+        JSON.parse(response.body)
+      rescue JSON::ParserError => parse_error
+        Rails.logger.warn("Unable to parse response from the locations endpoint: #{parse_error}")
+        []
+      end
+
       def sorted_locations(response)
         locations_hash = {}.with_indifferent_access
-        JSON.parse(response.body).each do |location|
+        holding_locations_response = parse_holding_locations(response: response)
+
+        holding_locations_response.each do |location|
           locations_hash[location['code']] = location.with_indifferent_access
         end
         sorted = locations_hash.sort_by do |_i, l|
