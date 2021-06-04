@@ -3,7 +3,32 @@
 require 'rails_helper'
 
 describe 'Request Options' do
-  before { stub_holding_locations }
+  let(:availability_response) do
+    {
+      "11811100": {
+        "more_items": false,
+        "location": "nec",
+        "copy_number": 0,
+        "item_id": 8_408_416,
+        "on_reserve": "N",
+        "patron_group_charged": nil,
+        "status": "Not Charged",
+        "label": "Firestone Library - Near East Collections (NEC)",
+        "status_label": "Available"
+      }
+    }
+  end
+
+  before do
+    stub_holding_locations
+    stub_request(:get,
+                 "#{Requests.config['bibdata_base']}/bibliographic/9618072/holdings/9455965/availability.json")
+      .to_return(
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.generate(availability_response)
+      )
+  end
 
   describe 'the request page', js: true do
     before do
