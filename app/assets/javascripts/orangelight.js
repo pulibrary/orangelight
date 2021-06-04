@@ -88,7 +88,7 @@ $(document).ready(function() {
     });
 
     $('.document-thumbnail').click(function(e){
-        var target = $('#view');
+        var target = $('#viewer-container');
         if( target.length ) {
             e.preventDefault();
             $('html, body').stop().animate({
