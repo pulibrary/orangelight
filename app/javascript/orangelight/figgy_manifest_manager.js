@@ -39,7 +39,7 @@ class FiggyViewer {
   }
 
   buildViewerId() {
-    return this.idx == 0 ? 'view' : `view_${this.idx}`
+    return this.idx == 0 ? 'viewer-container' : `viewer-container_${this.idx}`
   }
 
   updateArkLinkElement() {
@@ -241,7 +241,7 @@ class FiggyThumbnailSet {
       }
       $element.empty()
       $element.addClass('has-viewer-link')
-      $element.wrap('<a href="#view"></a>').append('<span class="sr-only">Go to viewer</span>')
+      $element.wrap('<a href="#viewer-container"></a>').append('<span class="sr-only">Go to viewer</span>')
       $element.append($thumbnailElement)
     })
   }
