@@ -11,6 +11,8 @@ describe 'Request Options' do
     end
 
     it 'clicking the request button loads the request page' do
+      stub_request(:get, "https://bibdata-staging.princeton.edu/bibliographic/9618072/holdings/9455965/availability.json")
+        .to_return(status: 200, body: {}.to_json, headers: {})
       stub_request(:get, "https://catalog.princeton.edu/catalog/9618072/raw")
         .to_return(status: 200, body: {}.to_json, headers: {})
       stub_request(:get, "https://bibdata-staging.princeton.edu/availability?id=9618072")
