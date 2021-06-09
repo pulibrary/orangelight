@@ -166,7 +166,7 @@ describe BlacklightHelper do
       let(:current_search_session) { FakeInvalidCurrentSearchSession.new }
       let(:search_session) { {} }
       it "produces a default link (i.e. does not crash)" do
-        expect(link_back_to_catalog_safe).to eq("/")
+        expect(link_back_to_catalog_safe).to include("http://test.host/")
       end
     end
   end
