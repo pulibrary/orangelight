@@ -236,6 +236,6 @@ module BlacklightHelper
     # invalid back to catalog link. In that case, rather than blowing up on the user, we
     # render a valid link. This link does not preserve the user's previous setings and that is
     # OK because very likely their session is corrupted.
-    "/"
+    link_to "Back to search", root_url
   end
 end
