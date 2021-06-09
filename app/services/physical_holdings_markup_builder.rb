@@ -237,8 +237,15 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   def self.requestable_location?(location, adapter, holding)
-    return false if location.nil? || adapter.unavailable_holding?(holding)
-    location[:requestable]
+    if location.nil?
+      false
+    elsif adapter.unavailable_holding?(holding)
+      false
+    elsif Orangelight.read_only_mode
+      false
+    else
+      location[:requestable]
+    end
   end
 
   def self.aeon_location?(location)
