@@ -23,7 +23,7 @@ export default class OrangelightUiLoader {
     } else {
       au2 = new VoyagerAvailabilityUpdater
     }
-    au2.request_availability();
+    au2.request_availability(true);
     au2.scsb_search_availability();
   }
 
