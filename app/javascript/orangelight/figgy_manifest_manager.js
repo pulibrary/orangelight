@@ -153,6 +153,25 @@ class FiggyThumbnailSet {
     this.jQuery = jQuery
   }
 
+  static bibIdPrefix = '99'
+  static bibIdSuffix = '3506421'
+
+  static parseBibId(orangelightId) {
+    let parsed;
+
+    // 9946093213506421
+    // 4609321
+    const prefixPattern = `^${this.bibIdPrefix}`
+    const prefixExpr = new RegExp(prefixPattern)
+    const suffixPattern = `${this.bibIdSuffix}$`
+    const suffixExpr = new RegExp(suffixPattern)
+
+    parsed = orangelightId.replace(prefixExpr, '')
+    parsed = orangelightId.replace(suffixExpr, '')
+
+    return parsed
+  }
+
   async fetchResources() {
     this.bibIds = this.$elements.map((idx, element) => this.jQuery(element).data('bib-id').toString())
 
@@ -167,16 +186,13 @@ class FiggyThumbnailSet {
     this.resources = resources
 
     // Cache the thumbnail URLs
-    for (let i = 0; i < this.resources.length; i++) {
-      let resource = this.resources[i]
+    for (let resource of this.resources) {
       const orangelightId = resource.orangelightId
       this.thumbnails[orangelightId] = resource.thumbnail
 
-      const bibId = this.bibIds[i]
-
-      if (bibId) {
-        this.thumbnails[bibId] = resource.thumbnail
-      }
+      // Voyager/Alma bib. IDs are constructed using a prefix and suffix
+      const bibId = this.constructor.parseBibId(orangelightId)
+      this.thumbnails[bibId] = resource.thumbnail
     }
 
     return this.resources
