@@ -10,11 +10,10 @@ end
 
 Capybara.register_driver(:selenium) do |app|
   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w[headless disable-gpu disable-setuid-sandbox window-size=7680,4320] }
+    chromeOptions: { args: %w[disable-gpu disable-setuid-sandbox window-size=7680,4320] }
   )
 
   browser_options = ::Selenium::WebDriver::Chrome::Options.new
-  browser_options.args << "--headless"
   browser_options.args << "--disable-gpu"
 
   http_client = Selenium::WebDriver::Remote::Http::Default.new
@@ -27,10 +26,6 @@ Capybara.register_driver(:selenium) do |app|
                                  http_client: http_client,
                                  options: browser_options)
 end
-
-Capybara.server = :webrick
-Capybara.javascript_driver = :selenium
-Capybara.default_max_wait_time = 60
 
 # This was needed for my local workstation, perhaps :selenium is overridden elsewhere?
 Capybara.register_driver(:selenium_headless) do |app|
@@ -66,3 +61,7 @@ Capybara.register_driver :iphone do |app|
                                  desired_capabilities: capabilities,
                                  http_client: http_client)
 end
+
+Capybara.server = :webrick
+Capybara.javascript_driver = :selenium_headless
+Capybara.default_max_wait_time = 60
