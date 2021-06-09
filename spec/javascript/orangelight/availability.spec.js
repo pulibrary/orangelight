@@ -151,6 +151,23 @@ describe('AvailabilityUpdater', function() {
     spy.mockRestore()
   })
 
+  // Make sure that the code to handle undetermined availability status updates
+  // the HTML correctly.
+  test('undetermined availability for show page', () => {
+    document.body.innerHTML =
+      '<table><tr>' +
+        '<td class="holding-status" data-availability-record="true" data-record-id="9965126093506421" data-holding-id="22202918790006421" data-aeon="false">' +
+          '<span class="availability-icon"></span>' +
+        '</td>' +
+      '</tr></table>';
+
+    let u = new updater
+    u.id = '9965126093506421'
+    u.update_single_undetermined();
+
+    expect(document.body.innerHTML).toContain("Undetermined");
+  })
+
   test('record has temporary locations and complete data', () => {
     const holding_records = {
       "9959958323506421": {
