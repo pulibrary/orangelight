@@ -193,7 +193,7 @@ export default class AvailabilityUpdater {
   // the call to the Availability endpoint fails.
   update_single_undetermined() {
     $(`*[data-availability-record='true'] span`).text("Undetermined");
-    $(`*[data-availability-record='true'] span`).attr("title", "Cannot determine real-time availability for this item at this time.");
+    $(`*[data-availability-record='true'] span`).attr("title", "Cannot determine real-time availability for item at this time.");
     $(`*[data-availability-record='true'] span`).addClass("badge badge-secondary");
   }
 
