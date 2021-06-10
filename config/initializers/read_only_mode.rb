@@ -6,7 +6,7 @@ module Orangelight
   end
 
   def read_only_message
-    default_msg = "Orangelight is in read-only mode."
+    default_msg = "Catalog is in read-only mode."
     @read_only_message ||= ENV.fetch("ORANGELIGHT_READ_ONLY_MESSAGE", default_msg)
   end
 
