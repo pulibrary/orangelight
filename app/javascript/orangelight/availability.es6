@@ -25,10 +25,11 @@ export default class AvailabilityUpdater {
     this.process_barcodes = this.process_barcodes.bind(this);
     this.process_single = this.process_single.bind(this);
     this.update_single = this.update_single.bind(this);
+    this.update_single_undetermined = this.update_single_undetermined.bind(this);
     this.process_scsb_single = this.process_scsb_single.bind(this);
   }
 
-  request_availability() {
+  request_availability(allowRetry) {
     let url;
     // a search results page or a call number browse page
     if ($(".documents-list").length > 0) {
@@ -54,6 +55,18 @@ export default class AvailabilityUpdater {
         url = `${this.bibdata_base_url}/bibliographic/${this.id}/availability.json`;
         return $.getJSON(url, this.process_single)
           .fail((jqXHR, textStatus, errorThrown) => {
+            if (jqXHR.status == 429) {
+              if (allowRetry) {
+                console.log(`Retrying availability for record ${this.id}`);
+                window.setTimeout(() => {
+                  this.request_availability(false);
+                }, 1500);
+              } else {
+                console.error(`Failed to retrieve availability data for the bib (retry). Record ${this.id}: ${errorThrown}`);
+                this.update_single_undetermined();
+              }
+              return;
+            }
             return console.error(`Failed to retrieve availability data for the bib. record ${this.id}: ${errorThrown}`);
           });
       }
@@ -174,6 +187,14 @@ export default class AvailabilityUpdater {
       }
       return result;
     })();
+  }
+
+  // This method is used to set the availability info to Undetermined when
+  // the call to the Availability endpoint fails.
+  update_single_undetermined() {
+    $(`*[data-availability-record='true'] span`).text("Undetermined");
+    $(`*[data-availability-record='true'] span`).attr("title", "Cannot determine real-time availability for item at this time.");
+    $(`*[data-availability-record='true'] span`).addClass("badge badge-secondary");
   }
 
   process_scsb_single(item_records) {
