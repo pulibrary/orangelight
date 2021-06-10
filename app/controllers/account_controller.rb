@@ -13,8 +13,13 @@ class AccountController < ApplicationController
   before_action :verify_user, except: [:borrow_direct_redirect]
 
   def index
-    set_patron
-    current_account
+    if Orangelight.read_only_mode
+      msg = "Account page is disabled. #{Orangelight.read_only_message}"
+      redirect_to root_path, flash: { notice: msg }
+    else
+      set_patron
+      current_account
+    end
   end
 
   def renew
