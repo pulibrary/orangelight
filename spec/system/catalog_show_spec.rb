@@ -3,6 +3,13 @@
 require 'rails_helper'
 
 describe 'Viewing Catalog Documents', type: :system, js: true do
+  let(:availability_fixture_path) do
+    File.join(fixture_path, 'bibdata', 'availability.json')
+  end
+  let(:availability_fixture) do
+    File.read(availability_fixture_path)
+  end
+
   before do
     stub_holding_locations
   end
@@ -34,6 +41,7 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
 
     it 'renders the thumbnail using the IIIF Manifest' do
       visit "catalog/#{document_id}"
+
       expect(page).to have_selector ".document-thumbnail.has-viewer-link"
       node = page.find(".document-thumbnail.has-viewer-link")
       expect(node["data-bib-id"]).not_to be_empty
