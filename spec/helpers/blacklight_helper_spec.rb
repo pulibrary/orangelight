@@ -11,18 +11,6 @@ describe BlacklightHelper do
     end
   end
 
-  class FakeValidCurrentSearchSession
-    def query_params
-      { action: "show", controller: "catalog", id: "123" }
-    end
-  end
-
-  class FakeInvalidCurrentSearchSession
-    def query_params
-      { action: "index", controller: "advanced", id: "123" }
-    end
-  end
-
   before do
     allow(self).to receive(:blacklight_params).and_return(blacklight_params)
     allow(self).to receive(:current_or_guest_user).and_return(User.new)
@@ -154,18 +142,27 @@ describe BlacklightHelper do
   describe "#link_back_to_catalog_safe" do
     context "with valid parameters" do
       let(:search_state) { FakeSearchState.new }
-      let(:current_search_session) { FakeValidCurrentSearchSession.new }
+      let(:valid_session) { instance_double(Search) }
       let(:search_session) { {} }
       it "produces a link" do
+        allow(valid_session).to receive(:query_params).and_return(
+          action: "show", controller: "catalog", id: "123"
+        )
+        allow(self).to receive(:current_search_session).and_return(valid_session)
         expect(link_back_to_catalog_safe).to include("/catalog/123")
       end
     end
 
     context "invalid parameters" do
       let(:search_state) { FakeSearchState.new }
-      let(:current_search_session) { FakeInvalidCurrentSearchSession.new }
+      let(:invalid_session) { instance_double(Search) }
       let(:search_session) { {} }
+
       it "produces a default link (i.e. does not crash)" do
+        allow(invalid_session).to receive(:query_params).and_return(
+          action: "index", controller: "advanced", id: "123"
+        )
+        allow(self).to receive(:current_search_session).and_return(invalid_session)
         expect(link_back_to_catalog_safe).to include("http://test.host/")
       end
     end
