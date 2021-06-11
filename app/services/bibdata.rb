@@ -1,33 +1,36 @@
 # frozen_string_literal: true
 
 class Bibdata
+  # This might be better derived from Faraday::ServerError
+  class ServerError < StandardError; end
+  class PerSecondThresholdError < StandardError; end
+  class ResourceNotFoundError < StandardError; end
+  class ForbiddenError < StandardError; end
+
   class << self
     # rubocop:disable MethodLength
     # ignore rubocop warnings; complexity and length step from error checking.
-    def get_patron(id)
-      return false unless id
-      begin
-        patron_record = Faraday.get "#{Requests.config['bibdata_base']}/patron/#{id}"
-      rescue Faraday::Error::ConnectionFailed
-        Rails.logger.info("Unable to connect to #{Requests.config['bibdata_base']}")
-        return false
-      end
+    def get_patron(user)
+      return unless user.uid
 
-      if patron_record.status == 403
-        Rails.logger.info('403 Not Authorized to Connect to Patron Data Service at '\
-                    "#{ENV['bibdata_base']}/patron/#{id}")
-        return false
-      end
-      if patron_record.status == 404
-        Rails.logger.info("404 Patron #{id} cannot be found in the Patron Data Service.")
-        return false
-      end
-      if patron_record.status == 500
-        Rails.logger.info('Error Patron Data Service.')
-        return false
-      end
-      patron = JSON.parse(patron_record.body).with_indifferent_access
-      patron
+      api_response = api_request_patron(id: user.uid)
+
+      build_api_patron(api_response: api_response, user: user)
+    rescue ServerError
+      Rails.logger.error('An error was encountered with the Patron Data Service.')
+      nil
+    rescue PerSecondThresholdError => per_second_error
+      Rails.logger.error("The maximum number of HTTP requests per second for the Alma API has been exceeded.")
+      raise(per_second_error)
+    rescue ResourceNotFoundError
+      Rails.logger.error("404 Patron #{user.uid} cannot be found in the Patron Data Service.")
+      nil
+    rescue ForbiddenError
+      Rails.logger.error("403 Not Authorized to Connect to Patron Data Service at #{api_base_uri}/patron/#{user.uid}")
+      nil
+    rescue Faraday::Error::ConnectionFailed
+      Rails.logger.error("Unable to connect to #{api_base_uri}")
+      nil
     end
 
     def hathi_access(oclc_number)
@@ -52,6 +55,35 @@ class Bibdata
     end
 
     private
+
+      def api_base_uri
+        Requests.config['bibdata_base']
+      end
+
+      def api_request_patron(id:)
+        api_response = Faraday.get("#{api_base_uri}/patron/#{id}")
+
+        case api_response.status
+        when 500
+          raise(ServerError)
+        when 429
+          raise(PerSecondThresholdError)
+        when 404
+          raise(ResourceNotFoundError)
+        when 403
+          raise(ForbiddenError)
+        end
+
+        api_response
+      end
+
+      def build_api_patron(api_response:, user:)
+        base_patron_json = JSON.parse(api_response.body)
+        patron_json = base_patron_json.merge(
+          valid: user.valid?
+        )
+        patron_json.with_indifferent_access
+      end
 
       def sorted_locations(response)
         locations_hash = {}.with_indifferent_access

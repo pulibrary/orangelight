@@ -74,6 +74,7 @@ Metrics/CyclomaticComplexity:
     - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
+    - 'app/services/bibdata.rb'
 
 Metrics/LineLength:
   Exclude:
