@@ -111,7 +111,7 @@ class AccountController < ApplicationController
     ## edge case patrons.
     def set_patron
       @netid = current_user.uid
-      @patron = current_patron(@netid)
+      @patron = current_patron(current_user)
       illiad_patron_client(@patron)
     end
 
@@ -152,8 +152,8 @@ class AccountController < ApplicationController
 
   private
 
-    def current_patron(netid)
-      Bibdata.get_patron(netid)
+    def current_patron(user)
+      Bibdata.get_patron(user)
     end
 
     def borrow_direct_url(barcode)
