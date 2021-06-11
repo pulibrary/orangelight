@@ -25,7 +25,7 @@ export default class AvailabilityUpdater {
     this.process_barcodes = this.process_barcodes.bind(this);
     this.process_single = this.process_single.bind(this);
     this.update_single = this.update_single.bind(this);
-    this.update_av_undertermined = this.update_av_undertermined.bind(this);
+    this.update_availability_undetermined = this.update_availability_undetermined.bind(this);
     this.process_scsb_single = this.process_scsb_single.bind(this);
   }
 
@@ -42,16 +42,16 @@ export default class AvailabilityUpdater {
             if (allowRetry) {
               console.log(`Retrying availability for records ${bib_ids.join()}`);
               window.setTimeout(() => {
-                this.update_av_retrying();
+                this.update_availability_retrying();
                 this.request_availability(false);
               }, 1500);
             } else {
               console.error(`Failed to retrieve availability data for bibs (retry). Records ${bib_ids.join()}: ${errorThrown}`);
-              this.update_av_undertermined();
+              this.update_availability_undetermined();
             }
             return;
           }
-          return console.error(`Failed to retrieve availability data thes bib. records ${bib_ids.join(", ")}: ${errorThrown}`);
+          return console.error(`Failed to retrieve availability data for bibs. Records ${bib_ids.join(", ")}: ${errorThrown}`);
         });
 
     // a show page
@@ -72,12 +72,12 @@ export default class AvailabilityUpdater {
               if (allowRetry) {
                 console.log(`Retrying availability for record ${this.id}`);
                 window.setTimeout(() => {
-                  this.update_av_retrying();
+                  this.update_availability_retrying();
                   this.request_availability(false);
                 }, 1500);
               } else {
                 console.error(`Failed to retrieve availability data for the bib (retry). Record ${this.id}: ${errorThrown}`);
-                this.update_av_undertermined();
+                this.update_availability_undetermined();
               }
               return;
             }
@@ -204,15 +204,15 @@ export default class AvailabilityUpdater {
   }
 
   // Sets the availability badge to indicate that we are retrying to fetch the information
-  update_av_retrying() {
+  update_availability_retrying() {
     var avBadges = $(`*[data-availability-record='true'] span.availability-icon`);
-    $(avBadges).text("Retrying...");
+    $(avBadges).text("Loading...");
     $(avBadges).attr("title", "Fetching real-time availability");
     $(avBadges).addClass("badge badge-secondary");
   }
 
   // Sets the availability badge to indicate that we could not determine the availability
-  update_av_undertermined() {
+  update_availability_undetermined() {
     var avBadges = $(`*[data-availability-record='true'] span.availability-icon`);
     $(avBadges).text("Undetermined");
     $(avBadges).attr("title", "Cannot determine real-time availability for item at this time.");
