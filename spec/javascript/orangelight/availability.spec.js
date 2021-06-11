@@ -163,7 +163,7 @@ describe('AvailabilityUpdater', function() {
 
     let u = new updater
     u.id = '9965126093506421'
-    u.update_av_undertermined();
+    u.update_availability_undetermined();
 
     expect(document.body.innerHTML).toContain("Undetermined");
   })
