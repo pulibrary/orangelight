@@ -129,6 +129,11 @@ module Blacklight
           'unknown'
         end
 
+        # We allow the user to retry in very specific scenarios.
+        def can_retry?
+          @can_retry
+        end
+
         protected
 
           def build_ctx(format = nil)
@@ -242,6 +247,7 @@ module Blacklight
             id = fetch(_marc_source_field)
 
             response = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}")
+            @can_retry = response.status == 429
             response_stream = StringIO.new(response.body)
             marc_reader = MARC::XMLReader.new(response_stream)
             marc_records = marc_reader.to_a
