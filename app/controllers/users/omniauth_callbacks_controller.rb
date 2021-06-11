@@ -13,25 +13,42 @@ module Users
     end
 
     def barcode
-      @user = User.from_barcode barcode_token_in_request_params
-      patron = Bibdata.get_patron(@user.uid)
-      valid_user = @user.valid?
-      if patron == false || !last_name_match?(@user.username, patron['last_name']) || !valid_user
+      if !patron_valid?
         flash_validation
-        redirect_to user_barcode_omniauth_authorize_path(origin: request.env['omniauth.origin'])
         set_flash_message(:error, :failure,
                           reason: 'barcode or last name did not match active patron')
+        redirect_to user_barcode_omniauth_authorize_path(origin: omniauth_origin)
       elsif netid_patron?(patron)
-        redirect_to user_barcode_omniauth_authorize_path(origin: request.env['omniauth.origin'])
         flash[:error] = I18n.t('blacklight.login.barcode_netid')
+        redirect_to user_barcode_omniauth_authorize_path(origin: omniauth_origin)
       else
         @user.save
         sign_in_and_redirect @user, event: :authentication # this will throw if @user not activated
         set_flash_message(:notice, :success, kind: 'with barcode') if is_navigational_format?
       end
+    rescue Bibdata::PerSecondThresholdError
+      set_flash_message(:error, :failure,
+                        reason: "We're sorry we are currently unable to complete this request due to request load")
+      redirect_to user_barcode_omniauth_authorize_path(origin: omniauth_origin)
     end
 
     private
+
+      def barcode_user
+        @user ||= User.from_barcode(barcode_token_in_request_params)
+      end
+
+      def patron
+        @patron ||= Bibdata.get_patron(barcode_user)
+      end
+
+      def patron_valid?
+        !patron.nil? && last_name_match?(@user.username, patron['last_name']) && @user.valid?
+      end
+
+      def omniauth_origin
+        request.env['omniauth.origin']
+      end
 
       def last_name_match?(username, last_name)
         !last_name.nil? && username.casecmp(last_name).zero?

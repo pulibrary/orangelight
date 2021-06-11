@@ -85,5 +85,20 @@ RSpec.describe Users::OmniauthCallbacksController do
       get :barcode
       expect(response).to redirect_to(account_path)
     end
+    context 'when a 429 response is received from the Alma API endpoint' do
+      before do
+        allow(User).to receive(:from_barcode) { valid_barcode_user }
+        allow(Bibdata).to receive(:get_patron).and_raise(Bibdata::PerSecondThresholdError)
+      end
+
+      it 'expired netid barcode redirects to account page' do
+        client = get(:barcode)
+
+        expect(response).to redirect_to(user_barcode_omniauth_authorize_path)
+
+        expect(client.request.flash[:error]).not_to be_empty
+        expect(client.request.flash[:error]).to eq("Could not authenticate because We're sorry we are currently unable to complete this request due to request load. Please try again.")
+      end
+    end
   end
 end
