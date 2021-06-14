@@ -91,13 +91,13 @@ RSpec.describe Users::OmniauthCallbacksController do
         allow(Bibdata).to receive(:get_patron).and_raise(Bibdata::PerSecondThresholdError)
       end
 
-      it 'expired netid barcode redirects to account page' do
+      it 'redirects to the account page with an error message for the user' do
         client = get(:barcode)
 
         expect(response).to redirect_to(user_barcode_omniauth_authorize_path)
 
         expect(client.request.flash[:error]).not_to be_empty
-        expect(client.request.flash[:error]).to eq("Could not authenticate because We're sorry we are currently unable to complete this request due to request load. Please try again.")
+        expect(client.request.flash[:error]).to eq("Could not authenticate because the current request load is high. Please try again.")
       end
     end
   end
