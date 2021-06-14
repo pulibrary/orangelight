@@ -239,7 +239,7 @@ module ApplicationHelper
             end
           end
         elsif holding['dspace'].nil?
-          info << content_tag(:span, '', class: 'availability-icon').html_safe
+          info << content_tag(:span, 'Loading...', class: 'availability-icon badge badge-secondary').html_safe
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe if aeon_location?(location)
         else
           check_availability = false
