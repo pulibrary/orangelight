@@ -134,18 +134,16 @@ describe BlacklightHelper do
   end
 
   describe "#link_back_to_catalog_safe" do
-    let(:blacklight_config) { CatalogController.new.blacklight_config }
-    let(:search_state) { Blacklight::SearchState.new({}, blacklight_config) }
-    let(:search_session) { {} }
-
     context "with valid parameters" do
       let(:valid_session) { instance_double(Search) }
       it "produces a link" do
         allow(valid_session).to receive(:query_params).and_return(
           action: "show", controller: "catalog", id: "123"
         )
-        allow(self).to receive(:current_search_session).and_return(valid_session)
-        expect(link_back_to_catalog_safe).to include("/catalog/123")
+        allow(helper).to receive(:current_search_session).and_return(valid_session)
+        allow(helper).to receive(:blacklight_config).and_return(CatalogController.new.blacklight_config)
+        allow(helper).to receive(:search_session).and_return({})
+        expect(helper.link_back_to_catalog_safe).to include("/catalog/123")
       end
     end
 
@@ -155,8 +153,10 @@ describe BlacklightHelper do
         allow(invalid_session).to receive(:query_params).and_return(
           action: "index", controller: "advanced", id: "123"
         )
-        allow(self).to receive(:current_search_session).and_return(invalid_session)
-        expect(link_back_to_catalog_safe).to include("http://test.host/")
+        allow(helper).to receive(:current_search_session).and_return(invalid_session)
+        allow(helper).to receive(:blacklight_config).and_return(CatalogController.new.blacklight_config)
+        allow(helper).to receive(:search_session).and_return({})
+        expect(helper.link_back_to_catalog_safe).to include("http://test.host/")
       end
     end
   end
