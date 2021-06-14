@@ -5,12 +5,6 @@ require 'rails_helper'
 describe BlacklightHelper do
   let(:blacklight_params) { {} }
 
-  class FakeSearchState
-    def reset(search_session)
-      search_session
-    end
-  end
-
   before do
     allow(self).to receive(:blacklight_params).and_return(blacklight_params)
     allow(self).to receive(:current_or_guest_user).and_return(User.new)
@@ -140,10 +134,12 @@ describe BlacklightHelper do
   end
 
   describe "#link_back_to_catalog_safe" do
+    let(:blacklight_config) { CatalogController.new.blacklight_config }
+    let(:search_state) { Blacklight::SearchState.new({}, blacklight_config) }
+    let(:search_session) { {} }
+
     context "with valid parameters" do
-      let(:search_state) { FakeSearchState.new }
       let(:valid_session) { instance_double(Search) }
-      let(:search_session) { {} }
       it "produces a link" do
         allow(valid_session).to receive(:query_params).and_return(
           action: "show", controller: "catalog", id: "123"
@@ -154,10 +150,7 @@ describe BlacklightHelper do
     end
 
     context "invalid parameters" do
-      let(:search_state) { FakeSearchState.new }
       let(:invalid_session) { instance_double(Search) }
-      let(:search_session) { {} }
-
       it "produces a default link (i.e. does not crash)" do
         allow(invalid_session).to receive(:query_params).and_return(
           action: "index", controller: "advanced", id: "123"
