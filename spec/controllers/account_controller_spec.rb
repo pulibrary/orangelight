@@ -138,7 +138,7 @@ RSpec.describe AccountController do
     let(:invalid_user) { FactoryBot.create(:invalid_princeton_patron) }
     let(:unauthorized_user) { FactoryBot.create(:unauthorized_princeton_patron) }
 
-    it 'Returns Princeton Patron Account Data using a NetID' do
+    it 'returns Princeton Patron Account Data using a persisted User Model' do
       valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
@@ -147,7 +147,7 @@ RSpec.describe AccountController do
       expect(patron).to be_truthy
     end
 
-    it "Returns false when an ID doesn't exist" do
+    it "returns a nil value when a user ID cannot be resolved to a persisted User Model" do
       invalid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{invalid_user.uid}"
       stub_request(:get, invalid_patron_record_uri)
         .to_return(status: 404, body: '<html><title>Not Here</title><body></body></html>', headers: {})
@@ -155,7 +155,7 @@ RSpec.describe AccountController do
       expect(patron).to be nil
     end
 
-    it "Returns false when the application isn't authorized to access patron data" do
+    it "returns a nil value when the application isn't authorized to access patron data" do
       unauthorized_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{unauthorized_user.uid}"
       stub_request(:get, unauthorized_patron_record_uri)
         .to_return(status: 403, body: '<html><title>Not Authorized</title><body></body></html>', headers: {})
@@ -163,7 +163,7 @@ RSpec.describe AccountController do
       expect(patron).to be nil
     end
 
-    it 'Returns false when the http response throws 500' do
+    it 'returns a nil value when the HTTP response to the API request has a 500 status code' do
       valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 500, body: 'Error', headers: {})
