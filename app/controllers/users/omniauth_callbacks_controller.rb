@@ -28,7 +28,7 @@ module Users
       end
     rescue Bibdata::PerSecondThresholdError
       set_flash_message(:error, :failure,
-                        reason: "We're sorry we are currently unable to complete this request due to request load")
+                        reason: 'the current request load is high')
       redirect_to user_barcode_omniauth_authorize_path(origin: omniauth_origin)
     end
 
