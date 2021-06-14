@@ -31,6 +31,21 @@ RSpec.describe AccountController do
     it "can access the use_alma flag" do
       expect { Rails.configuration.use_alma }.not_to raise_error
     end
+
+    context 'when Orangelight is in read only mode' do
+      let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
+
+      before do
+        sign_in(valid_user)
+        allow(Orangelight).to receive(:read_only_mode).and_return(true)
+      end
+
+      it 'redirects to root and flashes an explanatory message' do
+        get :index
+        expect(response).to redirect_to(root_path)
+        expect(flash[:notice]).to include("Account page is disabled", "read-only")
+      end
+    end
   end
 
   describe '#cancel_success' do
