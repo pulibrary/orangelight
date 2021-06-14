@@ -96,7 +96,7 @@ RSpec.describe Bibdata do
     context 'with a successful response from the bibdata endpoint' do
       let(:status) { 200 }
 
-      it 'returns the patron' do
+      it 'returns the patron user data' do
         expect(patron.symbolize_keys).to include(body)
         expect(patron.symbolize_keys).to include(valid: true)
       end
