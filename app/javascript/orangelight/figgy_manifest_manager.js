@@ -146,6 +146,15 @@ class FiggyViewerSet {
 
 // Queries for resources using multiple bib. IDs
 class FiggyThumbnailSet {
+  static bibIdPrefix = '99'
+  static bibIdSuffix = '3506421'
+
+  static buildBibId(orangelightId) {
+    const built = `${this.bibIdPrefix}${orangelightId}${this.bibIdSuffix}`
+
+    return built
+  }
+
   constructor(elements, query, jQuery) {
     this.elements = elements
     this.$elements = jQuery(elements)
@@ -155,6 +164,7 @@ class FiggyThumbnailSet {
 
   async fetchResources() {
     this.bibIds = this.$elements.map((idx, element) => this.jQuery(element).data('bib-id').toString())
+
     const variables = { bibIds: this.bibIds.toArray() }
     this.thumbnails = {}
     const data = await this.query.call(this, variables.bibIds)
@@ -167,9 +177,14 @@ class FiggyThumbnailSet {
 
     // Cache the thumbnail URLs
     for (let resource of this.resources) {
-      const bibId = resource.orangelightId
+      const orangelightId = resource.orangelightId
+      this.thumbnails[orangelightId] = resource.thumbnail
+
+      // Voyager/Alma bib. IDs are constructed using a prefix and suffix
+      const bibId = this.constructor.buildBibId(orangelightId)
       this.thumbnails[bibId] = resource.thumbnail
     }
+
     return this.resources
   }
 
@@ -195,6 +210,7 @@ class FiggyThumbnailSet {
 
   constructThumbnailElement(bibId) {
     const thumbnail = this.thumbnails[bibId]
+
     if (!thumbnail) {
       return null
     }
@@ -219,6 +235,7 @@ class FiggyThumbnailSet {
       const $element = this.jQuery(element)
       const bibId = $element.data('bib-id')
       const $thumbnailElement = this.constructThumbnailElement(bibId)
+
       if (!$thumbnailElement) {
         return
       }
