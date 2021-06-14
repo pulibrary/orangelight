@@ -85,5 +85,20 @@ RSpec.describe Users::OmniauthCallbacksController do
       get :barcode
       expect(response).to redirect_to(account_path)
     end
+    context 'when a 429 response is received from the Alma API endpoint' do
+      before do
+        allow(User).to receive(:from_barcode) { valid_barcode_user }
+        allow(Bibdata).to receive(:get_patron).and_raise(Bibdata::PerSecondThresholdError)
+      end
+
+      it 'redirects to the account page with an error message for the user' do
+        client = get(:barcode)
+
+        expect(response).to redirect_to(user_barcode_omniauth_authorize_path)
+
+        expect(client.request.flash[:error]).not_to be_empty
+        expect(client.request.flash[:error]).to eq("Could not authenticate because the current request load is high. Please try again.")
+      end
+    end
   end
 end
