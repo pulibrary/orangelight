@@ -10,12 +10,12 @@ config = Orangelight::Application.config.database_configuration[::Rails.env]
 dbhost, dbuser, dbname, password, port = config['host'], config['username'], config['database'], config['password'], config['port'] || 5432
 sql_command = "PGPASSWORD=#{password} psql -U #{dbuser} -h #{dbhost} -p #{port} #{dbname} -c"
 
-system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_names RESTART IDENTITY;"))
-system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_name_titles RESTART IDENTITY;"))
-system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_subjects RESTART IDENTITY;"))
-system(%Q(#{sql_command} "TRUNCATE TABLE orangelight_call_numbers RESTART IDENTITY;"))
-system(%Q(#{sql_command} "\\copy orangelight_names(sort,count,label,dir) from 'spec/fixtures/authors.sorted' CSV;"))
-system(%Q(#{sql_command} "\\copy orangelight_name_titles(sort,count,label,dir) from 'spec/fixtures/name_titles.sorted' CSV;"))
-system(%Q(#{sql_command} "\\copy orangelight_subjects(sort,count,label,dir) from 'spec/fixtures/subjects.sorted' CSV;"))
-system(%Q(#{sql_command} "\\copy orangelight_call_numbers(sort,label,dir,scheme,title,author,date,bibid,holding_id,location) from 'spec/fixtures/call_numbers.sorted' CSV;"))
+system(%Q(#{sql_command} "TRUNCATE TABLE #{BrowseLists.table_prefix}_names RESTART IDENTITY;"))
+system(%Q(#{sql_command} "TRUNCATE TABLE #{BrowseLists.table_prefix}_name_titles RESTART IDENTITY;"))
+system(%Q(#{sql_command} "TRUNCATE TABLE #{BrowseLists.table_prefix}_subjects RESTART IDENTITY;"))
+system(%Q(#{sql_command} "TRUNCATE TABLE #{BrowseLists.table_prefix}_call_numbers RESTART IDENTITY;"))
+system(%Q(#{sql_command} "\\copy #{BrowseLists.table_prefix}_names(sort,count,label,dir) from 'spec/fixtures/authors.sorted' CSV;"))
+system(%Q(#{sql_command} "\\copy #{BrowseLists.table_prefix}_name_titles(sort,count,label,dir) from 'spec/fixtures/name_titles.sorted' CSV;"))
+system(%Q(#{sql_command} "\\copy #{BrowseLists.table_prefix}_subjects(sort,count,label,dir) from 'spec/fixtures/subjects.sorted' CSV;"))
+system(%Q(#{sql_command} "\\copy #{BrowseLists.table_prefix}_call_numbers(sort,label,dir,scheme,title,author,date,bibid,holding_id,location) from 'spec/fixtures/call_numbers.sorted' CSV;"))
 
