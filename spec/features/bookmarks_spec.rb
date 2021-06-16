@@ -78,6 +78,14 @@ RSpec.describe 'bookmarks' do
           expect(page).not_to have_link("log in")
         end
       end
+
+      it "displays bookmarks for old voyager IDs" do
+        Bookmark.create(user: user, document_id: "10647164", document_type: "SolrDocument")
+        login_as user
+        visit "/bookmarks"
+
+        expect(page).to have_content "History."
+      end
     end
   end
 end
