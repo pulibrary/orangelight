@@ -2,7 +2,7 @@
 
 class Orangelight::CallNumber < ApplicationRecord
   def self.table_name_prefix
-    'orangelight_'
+    "#{BrowseLists.table_prefix}_"
   end
 
   # Compares two CallNumber instances
