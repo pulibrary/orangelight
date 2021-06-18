@@ -128,6 +128,7 @@ class HoldingRequestsAdapter
   # @return [String] the location label
   # Record page location label display
   def holding_location_label(holding)
+    # location is the information coming from bibdata
     location = holding_location_rules(holding)
     if Rails.configuration.use_alma
       location.nil? ? alma_location_label_display_holding(holding) : alma_location_label_display_bibdata_location(location)
@@ -136,14 +137,16 @@ class HoldingRequestsAdapter
     end
   end
 
-  # Alma location display on record page using the solr indexed holding
-  def alma_location_label_display_holding(holding)
-    "#{holding['library']} - #{holding['location']}"
+  # Alma location display on record page using the location info from bibdata.
+  # This is a location fall back if Javascript does not work.
+  def alma_location_label_display_bibdata_location(location)
+    location['library']['label'].present? ? "#{location['library']['label']} - #{location['label']}".rstrip.chomp(' -') : location['library']['label']
   end
 
-  # Alma location display on record page using the location info from bibdata
-  def alma_location_label_display_bibdata_location(location)
-    "#{location['library']['label']} - #{location['label']}"
+  # Alma location display on record page using the solr indexed holding
+  # This is a location fall back if Javascript does not work and bibdata returns nil.
+  def alma_location_label_display_holding(holding)
+    "#{holding['library']} - #{holding['location']}".rstrip.chomp(' -')
   end
 
   # Retrieve the call number from holding values
