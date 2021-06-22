@@ -1,0 +1,40 @@
+[
+    {
+      "label": "Stacks",
+      "code": "firestone$stacks",
+      "aeon_location": false,
+      "recap_electronic_delivery_location": false,
+      "open": true,
+      "requestable": true,
+      "always_requestable": false,
+      "circulates": true,
+      "remote_storage": "",
+      "url": "https://bibdata-alma-staging.princeton.edu/locations/holding_locations/firestone$stacks.json",
+      "library": {
+        "label": "Firestone Library",
+        "code": "firestone",
+        "order": 0
+      },
+      "holding_library": null,
+      "hours_location": null
+    },
+    {
+      "label": "",
+      "code": "rare$cat",
+      "aeon_location": false,
+      "recap_electronic_delivery_location": false,
+      "open": true,
+      "requestable": true,
+      "always_requestable": false,
+      "circulates": true,
+      "remote_storage": "",
+      "url": "https://bibdata-alma-staging.princeton.edu/locations/holding_locations/rare$cat.json",
+      "library": {
+        "label": "Special Collections",
+        "code": "rare",
+        "order": 0
+      },
+      "holding_library": null,
+      "hours_location": null
+    }
+]
