@@ -140,13 +140,13 @@ class HoldingRequestsAdapter
   # Alma location display on record page using the location info from bibdata.
   # This is a location fall back if Javascript does not work.
   def alma_location_label_display_bibdata_location(location)
-    location['library']['label'].present? ? "#{location['library']['label']} - #{location['label']}".rstrip.chomp(' -') : location['library']['label']
+    [location['library']['label'], location['label']].select(&:present?).join(" - ")
   end
 
   # Alma location display on record page using the solr indexed holding
   # This is a location fall back if Javascript does not work and bibdata returns nil.
   def alma_location_label_display_holding(holding)
-    "#{holding['library']} - #{holding['location']}".rstrip.chomp(' -')
+    [holding['library'], holding['location']].select(&:present?).join(' - ')
   end
 
   # Retrieve the call number from holding values

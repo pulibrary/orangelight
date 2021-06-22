@@ -418,9 +418,9 @@ module ApplicationHelper
   # Alma location display on search results
   def alma_location_display(holding, location)
     if location.nil?
-      "#{holding['library']} - #{holding['location']}".rstrip.chomp(' -')
+      [holding['library'], holding['location']].select(&:present?).join(' - ')
     else
-      "#{location['library']['label']} - #{location['label']}".rstrip.chomp(' -')
+      [location['library']['label'], location['label']].select(&:present?).join(' - ')
     end
   end
 
