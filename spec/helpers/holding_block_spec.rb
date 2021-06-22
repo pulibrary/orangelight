@@ -317,10 +317,11 @@ RSpec.describe ApplicationHelper do
       end
     end
 
-    context 'when using Alma' do
+    context 'when using Alma, location not found' do
       before do
         allow(Rails.configuration).to receive(:use_alma).and_return(true)
       end
+
       let(:search_result) { helper.holding_block_search(document) }
       let(:call_number) { 'CD- 2018-11-11' }
       let(:library) { 'Mendel Music Library' }
@@ -346,6 +347,13 @@ RSpec.describe ApplicationHelper do
             location_code: 'mendel$pk',
             call_number: 'CD- 2018-11-11 MASTER',
             call_number_browse: 'CD- 2018-11-11 MASTER'
+          },
+          '22270490580006421' => {
+            location: '',
+            library: 'Very Special Library',
+            location_code: 'xspecial&nil',
+            call_number: 'special',
+            call_number_browse: 'special'
           }
         }.to_json.to_s
       end
@@ -355,8 +363,53 @@ RSpec.describe ApplicationHelper do
         it 'returns a string with call number and location display values' do
           expect(show_result.last).to include call_number
           expect(show_result.last).to include library
-          expect(show_result.last).to include 'Remote Storage (ReCAP)'
-          expect(show_result.last).to include 'Mendel Music Library: Reserve'
+          expect(show_result.last).to include 'Mendel Music Library - Remote Storage (ReCAP)'
+          expect(show_result.last).to include 'Mendel Music Library - Mendel Music Library: Reserve'
+          expect(show_result.last).to include 'Very Special Library'
+          expect(show_result.last).not_to include 'Very Special Library -'
+        end
+      end
+    end
+
+    context 'when using Alma, location found' do
+      before do
+        allow(Rails.configuration).to receive(:use_alma).and_return(true)
+      end
+
+      let(:search_result) { helper.holding_block_search(document) }
+      let(:call_number) { 'CD- 2018-11-11' }
+      let(:document) do
+        {
+          id: '99112325153506421',
+          format: ['Book'],
+          holdings_1display: holding_block_json
+        }.with_indifferent_access
+      end
+      let(:holding_block_json) do
+        {
+          '22270490550006421' => {
+            location: 'Stacks',
+            library: 'Firestone',
+            location_code: 'firestone$stacks',
+            call_number: call_number,
+            call_number_browse: call_number
+          },
+          '22270490580006421' => {
+            location: '',
+            library: 'Rare Books Catalog',
+            location_code: 'rare$cat',
+            call_number: 'special',
+            call_number_browse: 'special'
+          }
+        }.to_json.to_s
+      end
+      context '#holding_block record show - physical holdings' do
+        before { stub_alma_holding_locations }
+
+        it 'returns a string with call number and location display values' do
+          expect(show_result.last).to include 'Firestone Library - Stacks'
+          expect(show_result.last).to include 'Special Collections'
+          expect(show_result.last).not_to include 'Special Collections -'
         end
       end
     end
