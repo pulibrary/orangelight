@@ -16,7 +16,7 @@
           <% end %>
         </li>
         <% if Rails.configuration.use_alma %>
-          <li role="menuitem"><%= link_to "Digitization Requests", digitization_requests_path %></li>
+          <li role="menuitem"><%= link_to "Digitization Requests", main_app.digitization_requests_path %></li>
         <% end %>
         <li role="menuitem"><%= render partial: 'blacklight/nav/bookmark' %></li>
         <li role="menuitem"><%= render partial: 'blacklight/nav/search_history' %></li>
@@ -42,7 +42,7 @@
           <% end %>
         </li>
         <% if Rails.configuration.use_alma %>
-          <li role="menuitem"><%= link_to "Digitization Requests", digitization_requests_path %></li>
+          <li role="menuitem"><%= link_to "Digitization Requests", main_app.digitization_requests_path %></li>
         <% end %>
         <li role="menuitem"><%= render partial: 'blacklight/nav/bookmark' %></li>
         <li role="menuitem"><%= render partial: 'blacklight/nav/search_history' %></li>
