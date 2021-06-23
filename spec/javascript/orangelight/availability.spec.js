@@ -75,6 +75,66 @@ describe('AvailabilityUpdater', function() {
     expect(mixed_result.text()).toEqual("Some items not available")
   })
 
+  test('search results availability for records in temporary locations says Check Record', () => {
+    document.body.innerHTML =
+      '<li class="blacklight-holdings">' +
+      '    <ul>' +
+      '        <li data-availability-record="true" data-record-id="9959958323506421" data-holding-id="22272063570006421" data-aeon="false">' +
+      '            <span class="availability-icon badge badge-secondary">Loading...</span>' +
+      '            <div class="library-location" data-location="true" data-record-id="9959958323506421" data-holding-id="22272063570006421">' +
+      '                <span class="results_location">Lewis Library - Lewis Library</span> &raquo; ' +
+      '                <span class="call-number">QC33 .M52 2003 ' +
+      '                    <a title="Where to find it" class="find-it" data-map-location="lewis$stacks" data-blacklight-modal="trigger" aria-label="Where to find it" href="...">' +
+      '                        <span class="fa fa-map-marker" aria-hidden="true"></span>' +
+      '                    </a>' +
+      '                </span>' +
+      '            </div>' +
+      '        </li>' +
+      '        <li data-availability-record="true" data-record-id="9959958323506421" data-holding-id="22272063520006421" data-aeon="false">' +
+      '            <span class="availability-icon badge badge-secondary">Loading...</span>' +
+      '            <div class="library-location" data-location="true" data-record-id="9959958323506421" data-holding-id="22272063520006421">' +
+      '                <span class="results_location">Lewis Library - Lewis Library</span> &raquo; ' +
+      '                <span class="call-number">QC33 .M52 2003 ' +
+      '                    <a title="Where to find it" class="find-it" data-map-location="lewis$stacks" data-blacklight-modal="trigger" aria-label="Where to find it" href="...">' +
+      '                        <span class="fa fa-map-marker" aria-hidden="true"></span>' +
+      '                    </a>' +
+      '                </span>' +
+      '            </div>' +
+      '        </li>' +
+      '        <li class="empty" data-record-id="9959958323506421">' +
+      '            <a class="availability-icon more-info" title="Click on the record for full availability info" data-toggle="tooltip" href="/catalog/9959958323506421"></a>' +
+      '        </li>' +
+      '    </ul>' +
+      '</li>'
+
+    const apiResponse = {
+      "9959958323506421": {
+        "fake_id_1": {
+          "on_reserve":"Y",
+          "location":"lewis$resterm",
+          "label":"Lewis Library - sciresp Lewis: Term Loan",
+          "status_label":"Available",
+          "copy_number":null,
+          "cdl":false,
+          "temp_location":true,
+          "id":"fake_id_1"
+        }
+      }
+    }
+
+
+    const badgesBefore = document.getElementsByClassName('availability-icon')
+    expect(badgesBefore[0].textContent).toEqual('Loading...')
+
+    const bibId = '9959958323506421'
+    const holdingData = apiResponse[bibId]
+    let u = new updater
+    u.process_result(bibId, holdingData)
+
+    const badgesAfter = document.getElementsByClassName('availability-icon')
+    expect(badgesAfter[0].textContent).toEqual('Check record for availability')
+  })
+
   test('record show page with an available holding displays the status label in green', () => {
     document.body.innerHTML =
       '<table><tr>' +

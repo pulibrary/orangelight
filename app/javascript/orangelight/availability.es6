@@ -123,15 +123,25 @@ export default class AvailabilityUpdater {
   // search results
   process_result(record_id, holding_records) {
     for (let holding_id in holding_records) {
-      const availability_info = holding_records[holding_id];
+      if (holding_id.startsWith('fake_id_')) {
+        // In this case we cannot correlate the holding data from the availability API
+        // (holding_records) with the holding data already on the page (from Solr).
+        // In this case we set all of them to "Check record" because we can get this
+        // information in the Show page.
+        const badges = $(`*[data-availability-record='true'][data-record-id='${record_id}'] span.availability-icon`);
+        badges.text("Check record for availability")
+        return true;
+      }
+
       // In Alma the label from the endpoint includes both the library name and the location.
+      const availability_info = holding_records[holding_id];
       if (availability_info['label']) {
         const location = $(`*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .results_location`);
         location.text(availability_info['label']);
       }
       const availability_element = $(`*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .availability-icon`);
 
-      if (availability_info['temp_loc']) {
+      if (availability_info['temp_location']) {
         const current_map_link = $(`*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .find-it`);
         $(availability_element).next('.icon-warning').hide();
         const temp_map_link = this.stackmap_link(record_id, availability_info, true);
