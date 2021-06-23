@@ -39,8 +39,8 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: ac4b6410f9e7f704c43ebcb566398e80102e31fe
-  branch: main
+  revision: bd166380fad8d5338b4f9fb138564a61a99b66de
+  branch: alma
   specs:
     requests (0.0.2)
       alma
@@ -192,7 +192,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.8)
     coveralls (0.8.23)
       json (>= 1.8, < 3)
       simplecov (~> 0.16.1)
@@ -236,7 +236,7 @@ GEM
     faraday-cookie_jar (0.0.6)
       faraday (>= 0.7.4)
       http-cookie (~> 1.0.0)
-    ffi (1.15.3)
+    ffi (1.15.1)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     friendly_id (5.1.0)
@@ -295,7 +295,7 @@ GEM
       railties (>= 4)
       request_store (~> 1.0)
     logstash-event (1.2.02)
-    loofah (2.10.0)
+    loofah (2.9.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -558,7 +558,7 @@ GEM
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
-    websocket-driver (0.7.5)
+    websocket-driver (0.7.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     whenever (0.11.0)
