@@ -129,7 +129,7 @@ export default class AvailabilityUpdater {
         // In this case we set all of them to "Check record" because we can get this
         // information in the Show page.
         const badges = $(`*[data-availability-record='true'][data-record-id='${record_id}'] span.availability-icon`);
-        badges.text("Check record")
+        badges.text("Check record for availability")
         return true;
       }
 
