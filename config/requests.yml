@@ -2,7 +2,7 @@
 
 defaults: &defaults
   umlaut_base: https://getit.princeton.edu
-  bibdata_base: https://bibdata.princeton.edu
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
   proxy_base: https://library.princeton.edu/resolve/lookup?url=
   voyager_api_base: https://webvoyage.princeton.edu:7014
   pulsearch_base: https://catalog.princeton.edu
@@ -13,22 +13,19 @@ defaults: &defaults
 development:
   <<: *defaults
   voyager_ub_id: 1@DB
-  bibdata_base: https://bibdata-staging.princeton.edu
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
 test:
   <<: *defaults
   voyager_ub_id: 1@DB
-  bibdata_base: https://bibdata-staging.princeton.edu
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
 production:
   <<: *defaults
-  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
 staging:
   <<: *defaults
-  bibdata_base: https://bibdata.princeton.edu
 alma_qa:
   <<: *defaults
-  bibdata_base: https://bibdata-alma-staging.princeton.edu
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-alma-staging.princeton.edu" %>
   scsb_base: https://uat-recap.htcinc.com:9093
   pulsearch_base: https://catalog-alma-qa.princeton.edu
 qa:
   <<: *defaults
-  bibdata_base: https://bibdata.princeton.edu
