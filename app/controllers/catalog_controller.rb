@@ -673,4 +673,26 @@ class CatalogController < ApplicationController
   rescue ActionController::BadRequest
     render file: Rails.public_path.join('x400.html'), layout: true, status: :bad_request
   end
+
+  def show
+    # Let Blacklight do the normal flow
+    value = super
+
+    host_id = nil
+    if @document.id == "9929455793506421" || @document["contained_in_s"]
+      # This value should come from @document["contained_in_s"] but right now the value
+      # it's empty because we are indexing subfield x instead of subfield w.
+      host_id = "9929455793506421" || @document["contained_in_s"]
+    end
+
+    if host_id
+      # TODO: Fetch Solr document for host_id, grab its holdings, and merge them into the
+      # data for the current record. This might be tricky since adding data to a Blacklight
+      # SolrDocument is not just a straight `prop = value` kind of a thing, but we should be
+      # able to figure it out.
+      host_holdings = "{\"22269289940006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"3488.93344.333\",\"call_number_browse\":\"3488.93344.333\",\"items\":[{\"holding_id\":\"22269289940006421\",\"id\":\"23269289930006421\",\"status_at_load\":\"1\",\"collection_code\":\"pa\",\"barcode\":\"32101066958685\",\"copy_number\":\"1\"}]}}"
+      @document["holdings_1display"] = host_holdings
+    end
+    value
+  end
 end
