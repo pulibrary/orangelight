@@ -2,11 +2,7 @@
 
 class EventHandler
   include Sneakers::Worker
-  if Rails.configuration.use_alma
-    from_queue :catalog_alma_qa
-  else
-    from_queue :orangelight
-  end
+  from_queue :"catalog_#{Rails.env}"
 
   def work(msg)
     msg = JSON.parse(msg)
