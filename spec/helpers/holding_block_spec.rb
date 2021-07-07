@@ -8,9 +8,9 @@ RSpec.describe ApplicationHelper do
     let(:library) { 'Rare Books and Special Collections' }
     let(:location) { 'Rare Books and Special Collections - Reference Collection in Dulles Reading Room' }
     let(:call_number) { 'PS3539.A74Z93 2000' }
-    let(:search_result) { helper.holding_block_search(document) }
-    let(:search_result_thesis) { helper.holding_block_search(document_thesis) }
-    let(:empty_search_result) { helper.holding_block_search(document_no_holdings) }
+    let(:search_result) { helper.holding_block_search(SolrDocument.new(document)) }
+    let(:search_result_thesis) { helper.holding_block_search(SolrDocument.new(document_thesis)) }
+    let(:empty_search_result) { helper.holding_block_search(SolrDocument.new(document_no_holdings)) }
 
     let(:show_result) { helper.holding_request_block(SolrDocument.new(document)) }
     let(:show_result_journal) { helper.holding_request_block(SolrDocument.new(document_journal)) }
