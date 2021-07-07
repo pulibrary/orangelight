@@ -26,8 +26,7 @@ class HoldingRequestsAdapter
   # Retrieve the holdings information from the Solr Document
   # @return [Hash] holdings values
   def doc_holdings
-    values = @document['holdings_1display'] || '{}'
-    JSON.parse(values)
+    @document.holdings_all_display
   rescue StandardError => error
     Rails.logger.warn error
     {}
