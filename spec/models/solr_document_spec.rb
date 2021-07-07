@@ -401,4 +401,36 @@ RSpec.describe SolrDocument do
       expect(solr_document.iiif_manifests).not_to include 'https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs' => ['drive.google.com', 'Curatorial documentation']
     end
   end
+
+  describe '#holdings_all_display' do
+    let(:host_doc_holdings) do
+      '{"22269289940006421":{"location_code":"recap$pa","location":"Remote Storage","library":"ReCAP","call_number":"3488.93344.333","call_number_browse":"3488.93344.333","items":[{"holding_id":"22269289940006421","id":"23269289930006421","status_at_load":"1","barcode":"32101066958685","copy_number":"1"}]}}'
+    end
+
+    let(:contained_doc_holdings) do
+      '{"1234567890":{"location_code":"abc$yx","location":"Some location","library":"ABC","call_number":"1234.56789.abc","call_number_browse":"1234.56789.abc","items":[{"holding_id":"1234567890","id":"9988776655","status_at_load":"1","barcode":"123123123","copy_number":"1"}]}}'
+    end
+
+    let(:combined_holdings) do
+      combined = {}
+      JSON.parse(host_doc_holdings).each { |k, v| combined[k] = v }
+      JSON.parse(contained_doc_holdings).each { |k, v| combined[k] = v }
+      combined
+    end
+
+    it 'returns the original holdings if the record is not contained' do
+      solr_document = described_class.new(id: "99121886293506421", holdings_1display: host_doc_holdings)
+      expect(solr_document.holdings_all_display).to eq JSON.parse(host_doc_holdings)
+    end
+
+    it 'returns the holdings from the host record if the record is contained' do
+      solr_document = described_class.new(id: "9929455793506421", "contained_in_s": ["99121886293506421"])
+      expect(solr_document.holdings_all_display).to eq JSON.parse(host_doc_holdings)
+    end
+
+    it 'returns the combined holdings if the record is contained and has its own holdings' do
+      solr_document = described_class.new(id: "9929455793506421", "contained_in_s": ["99121886293506421"], holdings_1display: contained_doc_holdings)
+      expect(solr_document.holdings_all_display).to eq combined_holdings
+    end
+  end
 end
