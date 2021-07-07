@@ -31,7 +31,7 @@ RSpec.describe HoldingRequestsAdapter do
     end
 
     context 'with repeared restrictions' do
-      let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
+      let(:document) { SolrDocument.new({ 'holdings_1display' => holdings_hash.to_json }) }
 
       it 'they appear only once' do
         expect(holdings.restrictions).to eq ['In Library Use']
@@ -113,7 +113,7 @@ RSpec.describe HoldingRequestsAdapter do
           '671799' => { 'location_code' => 'scsbnypl' }
         }
       end
-      let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
+      let(:document) { SolrDocument.new({ 'holdings_1display' => holdings_hash.to_json }) }
       let(:holding_locations) { { 'scsbnypl' => [] } }
 
       it 'holding is sorted last' do
