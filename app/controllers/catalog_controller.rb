@@ -223,6 +223,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'pub_created_display', label: 'Published/Created'
     config.add_index_field 'format', label: 'Format', helper_method: :format_icon
     config.add_index_field 'holdings_1display', show: false
+    config.add_index_field 'contained_in_s', show: false
     config.add_index_field 'isbn_t', show: false
     config.add_index_field 'score', show: false
     config.add_index_field 'marc_relator_display', show: false

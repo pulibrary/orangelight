@@ -204,7 +204,7 @@ module ApplicationHelper
       end
     ]
     links = search_links(document['electronic_access_1display']) + portfolio_links
-    holdings_hash = JSON.parse(document['holdings_1display'] || '{}').merge(portfolio_holdings)
+    holdings_hash = document.holdings_all_display.merge(portfolio_holdings)
     scsb_multiple = false
     holdings_hash.first(2).each do |id, holding|
       location = holding_location(holding)
