@@ -132,15 +132,16 @@ class SolrDocument
   # Returns the holdings_1display of the record plus the holdings_1display of the host record
   def holdings_all_display
     host_id = self["contained_in_s"]&.first
-    return JSON.parse(self["holdings_1display"] || '{}') if host_id.nil?
+    holdings = JSON.parse(self["holdings_1display"] || '{}')
+    return holdings if host_id.nil?
 
-    # Get the holdings from the host record
-    # TODO: combine with self["holdings_1display"]
+    # Fetch and append the holdings from the host record
     @holdings_all ||= begin
-      params = { q: "id:#{RSolr.solr_escape(host_id)}" }
-      host_response = Blacklight.default_index.connection.get('select', params: params)
-      host_doc = host_response["response"]["docs"].first
-      JSON.parse(host_doc["holdings_1display"])
+      host_doc = doc_by_id(host_id)
+      host_holdings = JSON.parse(host_doc&.dig("holdings_1display") || '{}')
+      combined_holdings = holdings
+      host_holdings.each { |k, v| combined_holdings[k] = v }
+      combined_holdings
     end
   end
 
@@ -185,5 +186,11 @@ class SolrDocument
                                                                      root: root_id,
                                                                      solr_field: 'other_version_s')
       linked_documents.siblings
+    end
+
+    def doc_by_id(id)
+      params = { q: "id:#{RSolr.solr_escape(id)}" }
+      solr_response = Blacklight.default_index.connection.get('select', params: params)
+      solr_response["response"]["docs"].first
     end
 end
