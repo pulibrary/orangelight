@@ -129,6 +129,21 @@ class SolrDocument
     sibling_documents.flat_map(&:electronic_portfolios)
   end
 
+  # Returns the holdings_1display of the record plus the holdings_1display of the host record
+  def holdings_all_display
+    host_id = self["contained_in_s"]&.first
+    return JSON.parse(self["holdings_1display"] || '{}') if host_id.nil?
+
+    # Get the holdings from the host record
+    # TODO: combine with self["holdings_1display"]
+    @holdings_all ||= begin
+      params = { q: "id:#{RSolr.solr_escape(host_id)}" }
+      host_response = Blacklight.default_index.connection.get('select', params: params)
+      host_doc = host_response["response"]["docs"].first
+      JSON.parse(host_doc["holdings_1display"])
+    end
+  end
+
   private
 
     def electronic_access_uris
