@@ -25,14 +25,11 @@ RSpec.describe AccountController do
       .to_return(status: 200, body: valid_patron_response, headers: {})
   end
   describe "#index" do
-    context "when alma is set up and you're logged in" do
-      it "redirects to digitization_requests" do
-        allow(Rails.configuration).to receive(:use_alma).and_return(true)
-        sign_in(valid_user)
-        get "/account"
+    it "redirects to digitization_requests" do
+      sign_in(valid_user)
+      get "/account"
 
-        expect(response).to redirect_to "/account/digitization_requests"
-      end
+      expect(response).to redirect_to "/account/digitization_requests"
     end
   end
   describe "#digitization_requests" do

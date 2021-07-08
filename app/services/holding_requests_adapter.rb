@@ -129,11 +129,7 @@ class HoldingRequestsAdapter
   def holding_location_label(holding)
     # location is the information coming from bibdata
     location = holding_location_rules(holding)
-    if Rails.configuration.use_alma
-      location.nil? ? alma_location_label_display_holding(holding) : alma_location_label_display_bibdata_location(location)
-    else
-      location.nil? ? holding['location'] : location_full_display(location)
-    end
+    location.nil? ? alma_location_label_display_holding(holding) : alma_location_label_display_bibdata_location(location)
   end
 
   # Alma location display on record page using the location info from bibdata.
@@ -158,7 +154,7 @@ class HoldingRequestsAdapter
   # Determine whether or not the holding is for a repository item
   # @return [TrueClass, FalseClass]
   def repository_holding?(holding)
-    holding['dspace'] || holding['location_code'] == (Rails.configuration.use_alma ? 'rare$num' : 'num')
+    holding['dspace'] || holding['location_code'] == 'rare$num'
   end
 
   # Determine whether or not the holding is for a SCSB items with ReCAP

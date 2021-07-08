@@ -8,11 +8,7 @@ require './lib/orangelight/string_functions'
 module BrowseLists
   class << self
     def table_prefix
-      if Rails.configuration.use_alma
-        "alma_orangelight"
-      else
-        "orangelight"
-      end
+      "alma_orangelight"
     end
 
     def connection
