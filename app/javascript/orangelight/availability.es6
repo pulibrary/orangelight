@@ -163,7 +163,7 @@ export default class AvailabilityUpdater {
   // `holding_records` has data for two bibs: `this.id` and `this.host_id`.
   process_single(holding_records) {
     this.process_single_for_bib(holding_records, this.id)
-    if (this.host_id) {
+    if (this.host_id !== "") {
       this.process_single_for_bib(holding_records, this.host_id)
     }
   }
