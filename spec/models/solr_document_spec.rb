@@ -412,10 +412,7 @@ RSpec.describe SolrDocument do
     end
 
     let(:combined_holdings) do
-      combined = {}
-      JSON.parse(host_doc_holdings).each { |k, v| combined[k] = v }
-      JSON.parse(contained_doc_holdings).each { |k, v| combined[k] = v }
-      combined
+      JSON.parse(host_doc_holdings).merge(JSON.parse(contained_doc_holdings))
     end
 
     it 'returns the original holdings if the record is not contained' do
