@@ -34,6 +34,7 @@ module Features
              else
                FactoryBot.create(:valid_princeton_patron).username
              end
+      OmniAuth.config.test_mode = true
       OmniAuth.config.add_mock(:cas, uid: user)
       visit user_cas_omniauth_authorize_path
     end

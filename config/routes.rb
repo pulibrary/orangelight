@@ -69,10 +69,7 @@ Rails.application.routes.draw do
 
   get '/account', to: 'account#index'
   get '/account/digitization_requests', to: 'account#digitization_requests', as: "digitization_requests"
-  post '/account/renew', to: 'account#renew'
-  post '/account/cancel', to: 'account#cancel'
   post '/account/cancel_ill_requests', to: 'account#cancel_ill_requests'
-
   get '/borrow-direct', to: 'account#borrow_direct_redirect'
 
   ### For feedback Form
