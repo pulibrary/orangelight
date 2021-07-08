@@ -1,9 +1,7 @@
 <div class="col-12 alert alert-warning announcement">
   <div class="container">
     <p>
-    <% if Rails.configuration.use_alma %>
-      <h1>Thank you for testing the Catalog Alma QA site!</h2> Please provide feedback via the <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS0FRa8h-7_iCtBeIRGbD2pI7zcqWAmz5hxLFip6dR7If3Nw/viewform">Alma Catalog Testing Feedback Form.</a>
-    <% elsif Orangelight.read_only_mode %>
+    <% if Orangelight.read_only_mode %>
       <%= Orangelight.read_only_message %>
     <% else %>
       Many Library services are available online. Please visit our <a href="https://library.princeton.edu/2020-21-resources">information page</a>.

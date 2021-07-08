@@ -41,8 +41,7 @@
   </head>
 
   <body class="<%= render_body_class %>"
-        data-bibdata-base-url="<%= Requests.config['bibdata_base'] %>"
-        data-use-alma-flag="<%= Rails.configuration.use_alma %>">
+        data-bibdata-base-url="<%= Requests.config['bibdata_base'] %>" >
   <%= render :partial => 'shared/header_navbar' %>
 
   <%= render partial: 'shared/modal' %> <!-- only render if page is using modal -->

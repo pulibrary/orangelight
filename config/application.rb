@@ -44,9 +44,6 @@ module Orangelight
     config.x.after_sign_out_url = 'https://fed.princeton.edu/cas/logout'
 
     config.robots = OpenStruct.new(config_for(:robots))
-
-    config.use_alma = ActiveModel::Type::Boolean.new.cast(ENV['USE_ALMA'])
-
     config.alma = config_for(:alma).with_indifferent_access
   end
 end
