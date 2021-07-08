@@ -12,16 +12,8 @@ RSpec.describe AccountController, type: :routing do
       expect(get: '/account/renew').not_to be_routable
     end
 
-    it 'Renew Actions route to #renew when posted' do
-      expect(post: '/account/renew').to route_to('account#renew')
-    end
-
     it 'Cancel Request Actions produce error when requested via get' do
       expect(get: '/account/cancel').not_to be_routable
-    end
-
-    it 'Cancel Request Actions route to #cancel when posted' do
-      expect(post: '/account/cancel').to route_to('account#cancel')
     end
 
     it 'Links to borrow direct route to #borrow_direct_redirect' do
