@@ -16,6 +16,7 @@ export default class AvailabilityUpdater {
     this.bibdata_base_url = $("body").data("bibdata-base-url");
     this.availability_url = `${this.bibdata_base_url}/availability`;
     this.id = '';
+    this.host_id = '';
 
     this.available_non_requestable_labels = ['Available', 'Returned', 'Requestable',
       'On shelf', 'All items available', 'On-site access',
@@ -57,6 +58,7 @@ export default class AvailabilityUpdater {
     // a show page
     } else if ($("*[data-availability-record='true']").length > 0) {
       this.id = window.location.pathname.split('/')[2];
+      this.host_id = $("#main-content").data("host-id") || "";
       if (this.id.match(/^SCSB-\d+/)) {
         url = `${this.availability_url}?scsb_id=${this.id.replace(/^SCSB-/, '')}`;
         return $.getJSON(url, this.process_scsb_single)
@@ -65,7 +67,10 @@ export default class AvailabilityUpdater {
           });
 
       } else {
-        url = `${this.bibdata_base_url}/bibliographic/${this.id}/availability.json`;
+        url = `${this.bibdata_base_url}/bibliographic/availability.json?bib_ids=${this.id}`;
+        if (this.host_id !== "") {
+          url += `,${this.host_id}`
+        }
         return $.getJSON(url, this.process_single)
           .fail((jqXHR, textStatus, errorThrown) => {
             if (jqXHR.status == 429) {
@@ -152,12 +157,22 @@ export default class AvailabilityUpdater {
     return true;
   }
 
-  // show page
-  // In Alma the label from the endpoint includes both the library name and the location.
+  // process_single() is used in the Show page and typically `holding_records` only has the
+  // information for a single bib since we are on the Show page. But occasionally the record
+  // that we are showing is bound with another (host) record and in those instances
+  // `holding_records` has data for two bibs: `this.id` and `this.host_id`.
   process_single(holding_records) {
+    this.process_single_for_bib(holding_records, this.id)
+    if (this.host_id) {
+      this.process_single_for_bib(holding_records, this.host_id)
+    }
+  }
+
+  // process_single_for_bib() processes the data for a specific mms_id within the `holding_records`
+  process_single_for_bib(holding_records, mms_id) {
     var dataComplete = true;
-    for (let holding_id in holding_records[this.id]) {
-      const availability_info = holding_records[this.id][holding_id];
+    for (let holding_id in holding_records[mms_id]) {
+      const availability_info = holding_records[mms_id][holding_id];
       if ((availability_info['temp_location'] === true) && holding_id.startsWith('fake_id_')) {
         dataComplete = false; // The data that we get from Alma for temporary locations is incomplete.
         break;
@@ -166,29 +181,31 @@ export default class AvailabilityUpdater {
 
     if (dataComplete) {
       // Update the page with the data that we already have.
-      this.update_single(holding_records);
+      this.update_single(holding_records, mms_id);
       return;
     }
 
     // Make a separate call (with deep=true) to get more information before updating the page.
-    var url = `${this.bibdata_base_url}/bibliographic/${this.id}/availability.json?deep=true`;
+    var url = `${this.bibdata_base_url}/bibliographic/${mms_id}/availability.json?deep=true`;
     $.getJSON(url, this.update_single)
       .fail((jqXHR, textStatus, errorThrown) => {
-        return console.error(`Failed to retrieve deep availability data for bib. record ${this.id}: ${errorThrown}`);
+        return console.error(`Failed to retrieve deep availability data for bib. record ${mms_id}: ${errorThrown}`);
       });
 
     return;
   }
 
-  update_single(holding_records) {
+  update_single(holding_records, id) {
     return (() => {
       const result = [];
-      for (let holding_id in holding_records[this.id]) {
-        const availability_info = holding_records[this.id][holding_id];
+      for (let holding_id in holding_records[id]) {
+        const availability_info = holding_records[id][holding_id];
+        // Notice that the HTML element for availability uses the original MMS ID (this.id) in `data-record-id`
+        // regardless of whether the holding is for the original MMS ID or for the host record (this.host_id).
         const availability_element = $(`*[data-availability-record='true'][data-record-id='${this.id}'][data-holding-id='${holding_id}'] .availability-icon`);
         if (availability_info['label']) {
-          const location = $(`*[data-location='true'][data-holding-id='${holding_id}']`);
-          location.text(availability_info['label']);
+          const holding_location = $(`*[data-location='true'][data-holding-id='${holding_id}']`);
+          holding_location.text(availability_info['label']);
         }
         this.apply_availability_label(availability_element, availability_info, false);
         if (availability_info["cdl"]) {
@@ -199,7 +216,7 @@ export default class AvailabilityUpdater {
         // hathi ETAS and stackmap stuff
         if (availability_info['temp_location']) {
           const current_map_link = $(`*[data-holding-id='${holding_id}'] .find-it`);
-          const temp_map_link = this.stackmap_link(this.id, availability_info);
+          const temp_map_link = this.stackmap_link(id, availability_info);
           current_map_link.replaceWith(temp_map_link);
 
           if (availability_info['temp_location'] == "etas" || availability_info['temp_location'] == "etasrcp") {
