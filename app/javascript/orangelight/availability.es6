@@ -154,6 +154,13 @@ export default class AvailabilityUpdater {
       }
       this.apply_availability_label(availability_element, availability_info, true);
     }
+
+    // Bib data does not know about bound-with records and therefore we don't get availability
+    // information for holdings coming from the host record. For those holdings we ask the user
+    // to check the record since in `process_single()` we do the extra work to get that information.
+    const boundWithBadges = $(`*[data-availability-record='true'][data-record-id='${record_id}'][data-bound-with='true'] span.availability-icon`);
+    boundWithBadges.text("Check record for availability")
+
     return true;
   }
 
