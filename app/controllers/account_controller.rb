@@ -16,11 +16,8 @@ class AccountController < ApplicationController
     if Orangelight.read_only_mode
       msg = "Account page is disabled. #{Orangelight.read_only_message}"
       redirect_to root_path, flash: { notice: msg }
-    elsif Rails.configuration.use_alma
-      redirect_to digitization_requests_path
     else
-      set_patron
-      current_account
+      redirect_to digitization_requests_path
     end
   end
 

@@ -16,12 +16,4 @@ RSpec.describe 'shared/_announcement' do
       expect(rendered).to match(/test message/)
     end
   end
-
-  context 'in Alma mode' do
-    it 'renders an Alma message' do
-      allow(Rails.configuration).to receive(:use_alma).and_return(true)
-      render
-      expect(rendered).to match(/Catalog Alma QA site/)
-    end
-  end
 end
