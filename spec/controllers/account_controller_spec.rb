@@ -7,9 +7,6 @@ RSpec.describe AccountController do
   let(:campus_authorized_patron) { File.open(fixture_path + '/bibdata_patron_auth_response.json') }
   let(:campus_unauthorized_patron) { File.open(fixture_path + '/bibdata_patron_unauth_response.json') }
   let(:campus_trained_patron) { File.open(fixture_path + '/bibdata_patron_trained_response.json') }
-  let(:generic_voyager_account_response) { VoyagerAccount.new(fixture('/generic_voyager_account_response.xml')) }
-  let(:generic_voyager_account_empty_response) { VoyagerAccount.new(fixture('/generic_voyager_account_empty_response.xml')) }
-  let(:item_ids_to_cancel) { %w[42287 42289 69854 28010] }
   let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
   let(:verify_user_response) { File.open(fixture_path + '/ill_verify_user_response.json') }
   let(:current_illiad_user_uri) { "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Users/jstudent" }
@@ -44,17 +41,6 @@ RSpec.describe AccountController do
     end
   end
 
-  describe '#cancel_success' do
-    subject(:account_controller) { described_class.new }
-    it 'returns true when requested cancelled items are sucessfully deleted' do
-      expect(account_controller.send(:cancel_success, item_ids_to_cancel.size, generic_voyager_account_empty_response, item_ids_to_cancel)).to be_truthy
-    end
-
-    it 'returns false when requested cancelled items are not successfully deleted' do
-      expect(account_controller.send(:cancel_success, item_ids_to_cancel.size, generic_voyager_account_response, item_ids_to_cancel)).to be_falsey
-    end
-  end
-
   describe '#illiad_patron_client' do
     subject(:account_controller) { described_class.new }
     let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
@@ -73,7 +59,7 @@ RSpec.describe AccountController do
     end
 
     it 'Returns Non-canceled Illiad Transactions' do
-      get :index
+      get :borrow_direct_redirect
       expect(assigns(:illiad_transactions).size).to eq 2
     end
 
@@ -81,7 +67,7 @@ RSpec.describe AccountController do
       let(:valid_user) { FactoryBot.create(:guest_patron) }
 
       it 'Returns no Illiad Transactions' do
-        get :index
+        get :borrow_direct_redirect
         expect(assigns(:illiad_transactions).size).to eq 0
       end
     end
@@ -90,7 +76,7 @@ RSpec.describe AccountController do
       it 'Returns no Illiad Transactions' do
         stub_request(:get, current_illiad_user_uri)
           .to_return(status: 404, body: '{"Message":"User jstudent was not found."}')
-        get :index
+        get :borrow_direct_redirect
         expect(assigns(:illiad_transactions).size).to eq 0
       end
     end
@@ -229,39 +215,6 @@ RSpec.describe AccountController do
         .to_return(status: 200, body: valid_patron_response, headers: {})
       get :borrow_direct_redirect
       expect(response).to redirect_to(root_url)
-    end
-  end
-
-  describe '#voyager_account' do
-    subject(:account_controller) { described_class.new }
-    let(:valid_voyager_response) { File.open(fixture_path + '/pul_voyager_account_response.xml').read }
-    let(:valid_voyager_patron) { JSON.parse(valid_patron_response.read.to_s).with_indifferent_access }
-    let(:invalid_voyager_patron) { JSON.parse('{ "patron_id": "foo" }').with_indifferent_access }
-    let(:unauthorized_voyager_patron) { JSON.parse('{ "patron_id": "bar" }').with_indifferent_access }
-
-    it 'Returns Voyager account data using a valid patron record' do
-      valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
-      stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: valid_voyager_response, headers: {})
-      account = account_controller.send(:voyager_account, valid_voyager_patron)
-      expect(account).to be_truthy
-      expect(account.doc).to be_a(Nokogiri::XML::Document)
-    end
-
-    it "Returns false when the patron record doesn't exist" do
-      invalid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{invalid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
-      stub_request(:get, invalid_patron_record_uri)
-        .to_return(status: 404, body: 'Account Not Found', headers: {})
-      account = account_controller.send(:voyager_account, invalid_voyager_patron)
-      expect(account).to be_falsey
-    end
-
-    it "Returns false when the application isn't authorized to access Voyager account data" do
-      unauthorized_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{unauthorized_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
-      stub_request(:get, unauthorized_patron_record_uri)
-        .to_return(status: 403, body: 'Application Not Authorized', headers: {})
-      account = account_controller.send(:voyager_account, unauthorized_voyager_patron)
-      expect(account).to be_falsey
     end
   end
 end
