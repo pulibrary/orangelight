@@ -92,7 +92,7 @@ module Blacklight
         end
 
         # returns true if doc originated from voyager
-        def voyager_record?
+        def alma_record?
           if /^[0-9]+/.match?(self['id'])
             true
           else

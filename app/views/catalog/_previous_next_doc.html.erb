@@ -18,7 +18,7 @@
     </div>
     <div class="search-widgets col pr-4">
       <ul class="navbar navbar-nav pull-right">
-        <% if @document.voyager_record? %>
+        <% if @document.alma_record? %>
           <li>
             <%= render_cite_link(citation_solr_document_path(id: @document)) %>
           </li>
@@ -32,7 +32,7 @@
             <li class="email">
               <%= link_to "Email", email_solr_document_path(:id => @document), {:id => 'emailLink', :data => {:blacklight_modal => "trigger"}, class: "icon-email dropdown-item", rel: 'nofollow'} %>
             </li>
-            <% if @document.voyager_record? %>
+            <% if @document.alma_record? %>
               <li class="endnote">
                 <%= link_to "EndNote", solr_document_path(@document, :format => 'endnote'), rel: 'nofollow', class: "icon-external dropdown-item" %>
               </li>
