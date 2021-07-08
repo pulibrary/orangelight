@@ -130,7 +130,7 @@ class SolrDocument
   end
 
   def host_id
-    host_id = self["contained_in_s"]&.first
+    self["contained_in_s"]&.first
   end
 
   # Returns the holdings_1display of the record plus the holdings_1display of the host record
