@@ -252,28 +252,28 @@ RSpec.describe SolrDocument do
     end
   end
 
-  describe 'voyager_record?' do
-    context 'A voyager record' do
+  describe 'alma_record?' do
+    context 'A alma record' do
       let(:properties) do
         {
           'id' => '1213313'
         }
       end
 
-      it 'returns true with a voyager record' do
-        expect(solr_document.voyager_record?).to be true
+      it 'returns true with a alma record' do
+        expect(solr_document.alma_record?).to be true
       end
     end
 
-    context 'A non-voyager record' do
+    context 'A non-alma record' do
       let(:properties) do
         {
           'id' => 'dsp1213313'
         }
       end
 
-      it 'returns false when it did not originate from voyager' do
-        expect(solr_document.voyager_record?).to be false
+      it 'returns false when it did not originate from alma' do
+        expect(solr_document.alma_record?).to be false
       end
     end
   end
