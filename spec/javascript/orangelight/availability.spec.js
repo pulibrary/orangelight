@@ -321,6 +321,24 @@ describe('AvailabilityUpdater', function() {
     process_single_for_bib.mockRestore()
   })
 
+
+  test('record search results page for a bound-with record', () => {
+    // Notice the data-bound-with="true"
+    document.body.innerHTML =
+      '<table><tr>' +
+        '<td class="holding-status" data-availability-record="true" data-record-id="9929455793506421" data-holding-id="22269289940006421" data-aeon="false" data-bound-with="true">' +
+          '<span class="availability-icon"></span>' +
+        '</td>' +
+      '</tr></table>';
+    const holding_records = {"9929455793506421":{}}
+    const holding_badge = $("*[data-availability-record='true'][data-record-id='9929455793506421'][data-bound-with='true'] span.availability-icon")[0];
+
+    let u = new updater
+    u.process_result("9929455793506421", holding_records)
+
+    expect(holding_badge.textContent).toContain('Check record for availability');
+  })
+
   test('extra Online availability added for CDL records that are reported as unavailable', () => {
     document.body.innerHTML = '<ul>'+
       '  <li data-availability-record="true" data-record-id="9965126093506421" data-holding-id="22202918790006421" data-aeon="false">' +
