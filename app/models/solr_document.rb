@@ -129,9 +129,12 @@ class SolrDocument
     sibling_documents.flat_map(&:electronic_portfolios)
   end
 
+  def host_id
+    host_id = self["contained_in_s"]&.first
+  end
+
   # Returns the holdings_1display of the record plus the holdings_1display of the host record
   def holdings_all_display
-    host_id = self["contained_in_s"]&.first
     holdings = JSON.parse(self["holdings_1display"] || '{}')
     return holdings if host_id.nil?
 
