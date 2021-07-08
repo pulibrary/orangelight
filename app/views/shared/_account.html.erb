@@ -1,6 +1,5 @@
 <% if has_user_authentication_provider? %>
   <% if current_user %>
-
     <li class="dropdown dropdown-account">
       <button type="button" class="dropdown-toggle btn-account" data-toggle="dropdown">
         <%= current_user.to_s %> <span class="caret"></span>
@@ -20,7 +19,6 @@
       </ul>
     </li>
   <% else %>
-
     <li>
       <button type="button" class="dropdown-toggle btn-account" data-toggle="dropdown">
         <%= t('blacklight.header_links.account_page') %> <span class="caret"></span>
