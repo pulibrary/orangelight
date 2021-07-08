@@ -133,6 +133,11 @@ class SolrDocument
     self["contained_in_s"]&.first
   end
 
+  def bound_with?
+    return true if host_id
+    false
+  end
+
   # Returns the holdings_1display of the record plus the holdings_1display of the host record
   def holdings_all_display
     holdings = JSON.parse(self["holdings_1display"] || '{}')
