@@ -139,9 +139,7 @@ class SolrDocument
     @holdings_all ||= begin
       host_doc = doc_by_id(host_id)
       host_holdings = JSON.parse(host_doc&.dig("holdings_1display") || '{}')
-      combined_holdings = holdings
-      host_holdings.each { |k, v| combined_holdings[k] = v }
-      combined_holdings
+      holdings.merge(host_holdings)
     end
   end
 
