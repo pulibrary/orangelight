@@ -28,10 +28,6 @@ RSpec.describe AccountController do
   end
 
   describe '#index' do
-    it "can access the use_alma flag" do
-      expect { Rails.configuration.use_alma }.not_to raise_error
-    end
-
     context 'when Orangelight is in read only mode' do
       let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
 

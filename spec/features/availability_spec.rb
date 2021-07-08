@@ -103,93 +103,37 @@ describe 'Availability' do
     end
   end
 
-  context 'when using Voyager' do
-    describe 'Electronic Holdings are displayed on a record page', js: true do
-      it 'within the online section', unless: in_ci? do
-        stub_holding_locations
-        visit '/catalog/857469'
-        expect(page).to have_selector '.availability--online a', minimum: 1
-      end
+  describe 'Electronic Holdings' do
+    it "displays an online badge in search results" do
+      stub_holding_locations
+      visit "/catalog?q=99122306151806421"
 
-      it 'display umlaut links for marcit record within the online section', unless: in_ci? do
-        visit '/catalog/9774256'
-        expect(page).to have_selector '.availability--online .umlaut .fulltext', count: 1
-        expect(page).to have_selector '.availability--online .umlaut .fulltext .response_item', minimum: 4
-      end
+      expect(page).to have_selector ".availability-icon", text: "Online"
+    end
+    it 'within the online section, it displays electronic portfolio links' do
+      visit '/catalog/99122306151806421'
+      expect(page).to have_text '1869 - 1923: Biodiversity Heritage Library Free'
+      expect(page).to have_text 'Available from 1869 volume: 1 issue: 1.'
+
+      # Electronic portfolio link with an embargo
+      expect(page).to have_text '1990 - 2020: ProQuest Central'
+
+      # Renders portfolio link that does not include a date range
+      expect(page).to have_text 'PressReader'
+      expect(page).not_to have_text ': PressReader'
     end
 
-    describe 'Multiple items all available', js: true do
-      it 'display availability as on-site and does not display individual items', unless: in_ci? do
-        stub_holding_locations
-        visit 'catalog/857469'
-        expect(page).to have_selector '.availability-icon.badge.badge-success', text: 'All items available'
-      end
+    it 'does not display umlaut links for marcit record within the online section', js: true do
+      visit '/catalog/99122306151806421'
+      expect(page).not_to have_selector '.availability--online .umlaut .fulltext'
+      expect(page).not_to have_selector '.availability--online .umlaut .fulltext .response_item'
     end
 
-    describe 'On-site multiple items all available', js: true do
-      it 'displays availability as on-site and does not display individual items', unless: in_ci? do
-        stub_holding_locations
-        visit 'catalog/7777379'
-        expect(page).to have_selector '.availability-icon.badge.badge-success', text: 'On-site access', count: 1
-      end
-    end
-
-    # these are now available
-    xdescribe 'On-site multiple items unavailable', js: true do
-      it 'displays See front desk and does not display individual items', unless: in_ci? do
-        stub_holding_locations
-        visit 'catalog/2238036'
-        expect(page).to have_selector '.availability-icon.badge.badge-success', text: 'See front desk', count: 1
-      end
-    end
-
-    # the item used here is no longer checked out
-    xdescribe 'Checked out item', js: true do
-      it 'shows due date', unless: in_ci? do
-        stub_holding_locations
-        visit 'catalog/12052273'
-        expect(page).to have_selector '.availability-icon.badge.badge-secondary', text: 'Checked out - 12/30/2020', count: 1
-      end
-    end
-  end
-
-  context 'when using Alma' do
-    before do
-      allow(Rails.configuration).to receive(:use_alma).and_return(true)
-    end
-
-    describe 'Electronic Holdings' do
-      it "displays an online badge in search results" do
-        stub_holding_locations
-        visit "/catalog?q=99122306151806421"
-
-        expect(page).to have_selector ".availability-icon", text: "Online"
-      end
-      it 'within the online section, it displays electronic portfolio links' do
-        visit '/catalog/99122306151806421'
+    context 'with a sibling record that does not have electronic portfolio values' do
+      it 'within the online section, it displays the links of its sibling record' do
+        visit '/catalog/994264203506421'
         expect(page).to have_text '1869 - 1923: Biodiversity Heritage Library Free'
         expect(page).to have_text 'Available from 1869 volume: 1 issue: 1.'
-
-        # Electronic portfolio link with an embargo
-        expect(page).to have_text '1990 - 2020: ProQuest Central'
-
-        # Renders portfolio link that does not include a date range
-        expect(page).to have_text 'PressReader'
-        expect(page).not_to have_text ': PressReader'
-      end
-
-      it 'does not display umlaut links for marcit record within the online section', js: true do
-        visit '/catalog/99122306151806421'
-        expect(page).not_to have_selector '.availability--online .umlaut .fulltext'
-        expect(page).not_to have_selector '.availability--online .umlaut .fulltext .response_item'
-      end
-
-      context 'with a sibling record that does not have electronic portfolio values' do
-        it 'within the online section, it displays the links of its sibling record' do
-          visit '/catalog/994264203506421'
-          expect(page).to have_text '1869 - 1923: Biodiversity Heritage Library Free'
-          expect(page).to have_text 'Available from 1869 volume: 1 issue: 1.'
-        end
       end
     end
   end
