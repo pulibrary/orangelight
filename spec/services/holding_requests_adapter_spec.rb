@@ -104,6 +104,14 @@ RSpec.describe HoldingRequestsAdapter do
         expect(holdings.doc_holdings_physical).to be_empty
       end
     end
+
+    context 'when parsing the holdings raises an exception' do
+      let(:document) { { 'holdings_1display' => 'not json' } }
+
+      it 'returns an empty array' do
+        expect(holdings.doc_holdings_physical).to be_empty
+      end
+    end
   end
   describe '#sorted_physical_holdings' do
     context 'When location code is invalid' do
