@@ -105,14 +105,6 @@ class HoldingRequestsAdapter
   # Should these be refactored into static methods
   # (or should a decorator be used for holding values?)
 
-  # Generate a full string for the location values
-  # @param location [Hash] location information
-  # @return [String] the location string
-  def location_full_display(location)
-    return location['library']['label'] if location.fetch('label') == ''
-    location['library']['label'] + ' - ' + location['label']
-  end
-
   # Retrieve the location rules from holding values
   # @param holding [Hash] the holding values
   # @return [Hash] location values
