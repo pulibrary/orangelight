@@ -87,19 +87,14 @@ RSpec.describe AccountController do
     let(:cancel_ill_requests_response) { File.open(fixture_path + '/cancel_ill_requests_response.json') }
     let(:params_cancel_requests) { ['1093597'] }
     let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
-    let(:valid_voyager_response) { File.open(fixture_path + '/pul_voyager_account_response.xml').read }
 
     before do
       ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
       sign_in(valid_user)
       valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
+      cancel_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
-      patron = account_controller.send(:current_patron, valid_user)
-      valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{patron['patron_id']}&patronHomeUbId=1@DB"
-      stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: valid_voyager_response, headers: {})
-      cancel_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
       stub_request(:put, cancel_ill_requests_uri)
         .with(body: "{\"Status\":\"Cancelled by Customer\"}")
         .to_return(status: 200, body: cancel_ill_requests_response, headers: {
@@ -108,9 +103,26 @@ RSpec.describe AccountController do
                    })
     end
 
-    it 'Cancels Illiad Transactions' do
-      post :cancel_ill_requests, params: { cancel_requests: params_cancel_requests }, format: :js
-      expect(flash.now[:success]).to eq I18n.t('blacklight.account.cancel_success')
+    context 'with a canceled transaction' do
+      it 'Cancels Illiad Transactions' do
+        post :cancel_ill_requests, params: { cancel_requests: params_cancel_requests }, format: :js
+        expect(flash.now[:success]).to eq I18n.t('blacklight.account.cancel_success')
+      end
+    end
+
+    context 'with no cancel_requests parameter' do
+      it 'flashes an error message' do
+        post :cancel_ill_requests, format: :js
+        expect(flash.now[:error]).to eq I18n.t('blacklight.account.cancel_no_items')
+      end
+    end
+
+    context 'the response contains an error' do
+      let(:cancel_ill_requests_response) { File.open(fixture_path + '/cancel_ill_requests_failed_response.json') }
+      it 'flashes an error message' do
+        post :cancel_ill_requests, params: { cancel_requests: params_cancel_requests }, format: :js
+        expect(flash.now[:error]).to eq I18n.t('blacklight.account.cancel_fail')
+      end
     end
   end
 
