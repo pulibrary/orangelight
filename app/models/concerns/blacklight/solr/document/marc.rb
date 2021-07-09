@@ -91,7 +91,7 @@ module Blacklight
           @_ctx || build_ctx(format)
         end
 
-        # returns true if doc originated from voyager
+        # returns true if doc originated from alma
         def alma_record?
           if /^[0-9]+/.match?(self['id'])
             true
