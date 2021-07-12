@@ -11,6 +11,7 @@ defaults: &defaults
   ill_base: https://lib-illiad.princeton.edu/illiad/illiad.dll/OpenURL
   scsb_base: https://scsb.recaplib.org:9093
   clancy_base: <%= ENV['CLANCY_BASE_URL'] || "https://example.caiasoft.com/api" %>
+  illiad_api_key: <%= ENV['ILLIAD_API_KEY'] %>
 development:
   <<: *defaults
   voyager_ub_id: 1@DB
@@ -19,6 +20,7 @@ test:
   <<: *defaults
   voyager_ub_id: 1@DB
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
+  illiad_api_key: 'TESTME'
 production:
   <<: *defaults
 staging:
