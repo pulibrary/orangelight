@@ -41,6 +41,10 @@ RSpec.describe FeedbackForm do
     it 'pulls TO header from configuration' do
       expect(form.headers[:to]).to eq 'test@princeton.edu'
     end
+    
+    it 'pulls CC header from configuration' do
+      expect(form.headers[:cc]).to eq 'test2w@princeton.edu, test3@princeton.edu'
+    end
 
     it "Contains the submitter's email address" do
       expect(form.headers[:from]).to eq('"Bob Smith" <bsmith@university.edu>')

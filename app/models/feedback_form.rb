@@ -15,7 +15,7 @@ class FeedbackForm < MailForm::Base
       subject: "#{I18n.t(:'blacklight.application_name')} Feedback Form",
       to: Orangelight.config["feedback_form"]["to"],
       from: %("#{name}" <#{email}>),
-      cc: ENV['OL_FEEDBACK_CC'] || 'test2w@princeton.edu, test3@princeton.edu'
+      cc: Orangelight.config["feedback_form"]["cc"]
     }
   end
 
