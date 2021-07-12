@@ -19,11 +19,13 @@ RSpec.describe IlliadAccount do
       before do
         ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
         stub_request(:get, verify_user_uri)
-          .to_return(status: 200, body: verify_user_response, headers: {
-                       'Accept' => 'application/json',
-                       'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-                       'Apikey' => 'TESTME'
-                     })
+          .with(
+            headers: {
+              'Accept' => 'application/json',
+              'Apikey' => 'TESTME'
+            }
+          )
+          .to_return(status: 200, body: verify_user_response, headers: {})
       end
 
       it 'Returns true' do

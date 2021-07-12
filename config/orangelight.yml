@@ -2,12 +2,18 @@ defaults: &defaults
   events:
     server: 'amqp://localhost:5672'
     exchange: 'orangelight_events'
+  feedback_form:
+    to: <%= ENV['OL_FEEDBACK_TO'] %>
+    cc: <%= ENV['OL_FEEDBACK_CC'] %>
 
 development:
   <<: *defaults
 
 test:
   <<: *defaults
+  feedback_form:
+    to: 'test@princeton.edu'
+    cc: 'test2w@princeton.edu, test3@princeton.edu'
 
 production:
   <<: *defaults
@@ -31,4 +37,3 @@ qa:
   events:
     server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
     exchange: 'orangelight_events'
-
