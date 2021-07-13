@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'shared/_announcement' do
   it 'renders an announcement' do
     render
-    expect(rendered).to match(/Many Library services are available online/)
+    expect(rendered).to match(/System upgrade/)
   end
 
   context 'in read-only mode' do
