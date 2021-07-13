@@ -218,19 +218,13 @@ export default class AvailabilityUpdater {
         if (availability_info["cdl"]) {
           insert_online_link();
         }
-        // TODO: We don't yet know if etas will still exist
-        // TODO: we don't have a temp_loc yet
-        // hathi ETAS and stackmap stuff
+
         if (availability_info['temp_location']) {
           const current_map_link = $(`*[data-holding-id='${holding_id}'] .find-it`);
           const temp_map_link = this.stackmap_link(id, availability_info);
           current_map_link.replaceWith(temp_map_link);
-
-          if (availability_info['temp_location'] == "etas" || availability_info['temp_location'] == "etasrcp") {
-            const hathi_connector = new HathiConnector
-            hathi_connector.insert_hathi_link()
-          }
         }
+
         result.push(this.update_request_button(holding_id, availability_info));
       }
       return result;
