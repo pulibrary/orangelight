@@ -8,7 +8,6 @@
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
 import { insert_online_link } from 'orangelight/insert_online_link'
-import HathiConnector from 'orangelight/hathi_connector'
 
 export default class AvailabilityUpdater {
 
