@@ -194,7 +194,7 @@ export default class AvailabilityUpdater {
 
     // Make a separate call (with deep=true) to get more information before updating the page.
     var url = `${this.bibdata_base_url}/bibliographic/${mms_id}/availability.json?deep=true`;
-    $.getJSON(url, this.update_single)
+    $.getJSON(url, (data) => { this.update_single(data, mms_id); })
       .fail((jqXHR, textStatus, errorThrown) => {
         return console.error(`Failed to retrieve deep availability data for bib. record ${mms_id}: ${errorThrown}`);
       });
