@@ -44,4 +44,58 @@ namespace :server do
       system('rake server:test RAILS_ENV=test')
     end
   end
+
+  desc 'Load test against Solr'
+  task :load_test_solr do
+    solr_uri = run_lando_solr
+
+    siege_file = Tempfile.new('siege.json')
+    system("/usr/bin/env siege --internet --concurrent=5 --time=10S --json-output #{solr_uri} > #{siege_file.path}")
+
+    siege_file.read
+    siege_file.close
+    puts("Please find the siege test results in #{siege_file.path}")
+  end
+
+  desc 'Load test against Rails'
+  task :load_test, [:rails_server_args] do |_t, args|
+    solr_uri = run_lando_solr
+
+    Open3.popen3("/usr/bin/env bundle exec rails server #{args[:rails_server_args]}") do |stdin, stdout, stderr, wait_thr|
+      siege_file = Tempfile.new('siege.json')
+      system("/usr/bin/env siege --internet --concurrent=5 --time=10S --json-output #{solr_uri} > #{siege_file.path}")
+
+      siege_file.read
+      siege_file.close
+      puts("Please find the siege test results in #{siege_file.path}")
+    end
+  end
+end
+
+def run_lando_solr
+  scheme = 'http'
+  host = 'localhost'
+  port = nil
+  path = nil
+
+  if Rails.env.test?
+    if ENV["lando_orangelight_test_solr_conn_port"]
+      port = ENV['lando_orangelight_test_solr_conn_port']
+    else
+      port = '8888'
+    end
+
+    path = "/solr/orangelight-core-test/select"
+  else
+    if ENV["lando_orangelight_development_solr_conn_port"]
+      port = ENV['lando_orangelight_development_solr_conn_port']
+    else
+      port = '8983'
+    end
+
+    path = "/solr/orangelight-core-development/select"
+  end
+
+  Rake::Task['pulsearch:solr:index'].invoke
+  URI::HTTP.build(scheme: scheme, host: host, port: port, path: path)
 end
