@@ -228,7 +228,7 @@ describe('AvailabilityUpdater', function() {
     expect(document.body.innerHTML).toContain("Undetermined");
   })
 
-  test('record has temporary locations and complete data', () => {
+  test('when record has temporary locations and complete data', () => {
     const holding_records = {
       "9959958323506421": {
         "22272063570006421": {
@@ -244,16 +244,16 @@ describe('AvailabilityUpdater', function() {
       }
     }
 
-    // in this case we expect to call update_single
+    // We expect to call update_single
     let u = new updater
     u.id = '9959958323506421'
-    const spy = jest.spyOn(u, 'update_single')
+    const update_single = jest.spyOn(u, 'update_single')
     u.process_single(holding_records)
-    expect(spy).toHaveBeenCalled()
-    spy.mockRestore()
+    expect(update_single).toHaveBeenCalledWith(holding_records, u.id)
+    update_single.mockRestore()
   })
 
-  test('record has temporary locations and incomplete data', () => {
+  test('when record has temporary locations and incomplete data it makes an extra call to get the full data', () => {
     const holding_records = {
       "9959958323506421": {
         "fake_id_1": {
@@ -269,13 +269,17 @@ describe('AvailabilityUpdater', function() {
       }
     }
 
-    // in this case we expect NOT to call update_single since we have incomplete data
+    // We expect an AJAX call to bib data but with the `deep=true` parameter.
+    // Notice that we are not testing that it calls `update_single` when the AJAX call completes
+    // (since we are mocking the AJAX call) but there are other tests that take care of that.
+    // Not ideal but good enough.
     let u = new updater
+    u.bibdata_base_url = 'http://mock_url'
     u.id = '9959958323506421'
-    const spy = jest.spyOn(u, 'update_single')
+    const getJSON = jest.spyOn($, 'getJSON')
     u.process_single(holding_records)
-    expect(spy).not.toHaveBeenCalled()
-    spy.mockRestore()
+    expect(getJSON).toHaveBeenCalledWith("http://mock_url/bibliographic/9959958323506421/availability.json?deep=true", expect.any(Function) )
+    getJSON.mockRestore()
   })
 
   test('record show page with an item not on CDL does not add a link', () => {
