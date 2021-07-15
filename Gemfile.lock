@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: ca86a5ded00d4d63e98a7a39a85d69c5c6ca9172
+  revision: ab320fcde061409a9886a83095670ac71d6beead
   branch: alma
   specs:
     requests (0.0.2)
