@@ -61,7 +61,7 @@ namespace :server do
   task :load_test, [:rails_server_args] do |_t, args|
     solr_uri = run_lando_solr
 
-    Open3.popen3("/usr/bin/env bundle exec rails server #{args[:rails_server_args]}") do |stdin, stdout, stderr, wait_thr|
+    Open3.popen3("/usr/bin/env bundle exec rails server #{args[:rails_server_args]}") do |_stdin, _stdout, _stderr, _wait_thr|
       siege_file = Tempfile.new('siege.json')
       system("/usr/bin/env siege --internet --concurrent=5 --time=10S --json-output #{solr_uri} > #{siege_file.path}")
 
@@ -79,19 +79,19 @@ def run_lando_solr
   path = nil
 
   if Rails.env.test?
-    if ENV["lando_orangelight_test_solr_conn_port"]
-      port = ENV['lando_orangelight_test_solr_conn_port']
-    else
-      port = '8888'
-    end
+    port = if ENV["lando_orangelight_test_solr_conn_port"]
+             ENV['lando_orangelight_test_solr_conn_port']
+           else
+             '8888'
+           end
 
     path = "/solr/orangelight-core-test/select"
   else
-    if ENV["lando_orangelight_development_solr_conn_port"]
-      port = ENV['lando_orangelight_development_solr_conn_port']
-    else
-      port = '8983'
-    end
+    port = if ENV["lando_orangelight_development_solr_conn_port"]
+             ENV['lando_orangelight_development_solr_conn_port']
+           else
+             '8983'
+           end
 
     path = "/solr/orangelight-core-development/select"
   end

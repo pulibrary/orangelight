@@ -42,35 +42,35 @@ describe 'Load Testing', type: :system, js: true do
   end
 
   before do
-    solr.add(document_fixture)
-    solr.commit
-
     stub_holding_locations
-
-    visit "catalog/#{document_id}"
-    system("/usr/bin/env siege --internet --concurrent=5 --time=#{siege_time}S --json-output #{target_uri} > #{siege_file.path}")
   end
 
-  after do
-    siege_file.close
-    siege_file.unlink
+  let(:noun_file) do
+    Rails.root.join('spec', 'fixtures', 'load_testing_urls', "nouns.txt")
   end
 
-  it 'renders the thumbnail using the IIIF Manifest' do
-    expect(siege_report).to include("successful_transactions")
-    expect(siege_report["successful_transactions"]).to be > 0
-    expect(siege_report).to include("failed_transactions")
-    expect(siege_report["failed_transactions"]).to be <= 0
+  let(:adj_file) do
+    Rails.root.join('spec', 'fixtures', 'load_testing_urls', "adjectives.txt")
   end
 
-  context 'when the Figgy GraphQL responds with a bib. ID' do
-    let(:document_id) { '4609321' }
+  let(:base_url) do
+    page.server.base_url
+  end
 
-    it 'renders the thumbnail using the IIIF Manifest' do
-      expect(siege_report).to include("successful_transactions")
-      expect(siege_report["successful_transactions"]).to be > 0
-      expect(siege_report).to include("failed_transactions")
-      expect(siege_report["failed_transactions"]).to be <= 0
+  let(:url_generator) do
+    UrlFileGenerator.new(noun_file: noun_file, adj_file: adj_file, base_url: base_url)
+  end
+
+  let(:urls) do
+    url_generator.generate
+  end
+
+  context 'when requesting URLs in series' do
+    it "accesses the search results" do
+      urls.each do |url|
+        visit(url.to_s)
+        expect(page).to have_selector('h1', text: "Princeton University Library Catalog")
+      end
     end
   end
 end
