@@ -64,6 +64,13 @@ Testing
 ------------------
 ### Run Tests
 
+#### Dependencies
+
+To install the [siege](https://github.com/JoeDog/siege) utility used for load testing, please invoke the following on macOS environments:
+  ```
+  brew install siege
+  ```
+
 1. Start all the servers/set up database/seed index
    ```
    rake servers:start
