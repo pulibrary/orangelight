@@ -114,4 +114,5 @@ group :development, :test do
   gem 'bixby'
   gem 'pry-byebug'
   gem 'solargraph'
+  gem 'terminal-table'
 end

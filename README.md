@@ -64,13 +64,6 @@ Testing
 ------------------
 ### Run Tests
 
-#### Dependencies
-
-To install the [siege](https://github.com/JoeDog/siege) utility used for load testing, please invoke the following on macOS environments:
-  ```
-  brew install siege
-  ```
-
 1. Start all the servers/set up database/seed index
    ```
    rake servers:start
@@ -168,3 +161,31 @@ Start the Bibdata server, and then set the ```bidata_base``` value in OrangeLigh
      ```
 
      [you can see the mail that has been sent here]( http://localhost:1080/)
+
+## Performance Testing
+### Dependencies
+
+To install the [siege](https://github.com/JoeDog/siege) utility used for load testing, please invoke the following on macOS environments:
+
+```bash
+$ brew install siege
+```
+
+### Running the Tests
+
+One may run a series of performance tests against the production deployment of the Rails app:
+
+```bash
+# Running tests against 100 randomly-generated URLs
+$ bundle exec rake performance:test[100]
+$ open load_test.csv
+```
+
+There are also tests for the Solr installation:
+
+```bash
+# Running tests over 10 seconds
+$ bundle exec rake performance:solr:test[10]
+$ open siege.json
+```
+

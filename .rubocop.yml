@@ -29,6 +29,7 @@ Metrics/AbcSize:
     - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
+    - 'spec/support/load_test_job.rb'
 
 Metrics/BlockLength:
   Exclude:
@@ -43,6 +44,7 @@ Metrics/BlockLength:
     - 'lib/tasks/pulsearch.rake'
     - 'spec/**/*'
     - 'lib/tasks/server.rake'
+    - 'lib/tasks/performance.rake'
 
 Metrics/BlockNesting:
   Exclude:
@@ -113,6 +115,8 @@ Metrics/MethodLength:
     - 'lib/orangelight/browse_lists.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
     - 'spec/mailers/previews/*'
+    - 'spec/support/load_test_job.rb'
+    - 'lib/tasks/performance.rake'
 
 Metrics/ModuleLength:
   Exclude:

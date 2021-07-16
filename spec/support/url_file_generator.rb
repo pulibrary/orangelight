@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class UrlFileGenerator
-  def initialize(noun_file:, adj_file:, base_url:)
+  attr_reader :lines
+  def initialize(noun_file:, adj_file:, base_url:, lines: 10)
     @noun_file = noun_file
     @adj_file = adj_file
 
     @base_url = base_url
+    @lines = lines
   end
 
   # Specify number of lines for the file.
@@ -26,11 +28,11 @@ class UrlFileGenerator
     end
   end
 
-  def generate(lines: 10)
+  def generate
     output = []
 
     lines.times do
-      output << "#{generate_url}\n"
+      output << generate_url
     end
 
     output
