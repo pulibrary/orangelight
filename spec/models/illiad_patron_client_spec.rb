@@ -24,11 +24,13 @@ RSpec.describe IlliadPatronClient do
       before do
         ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
         stub_request(:get, current_ill_requests_uri)
-          .to_return(status: 200, body: outstanding_ill_requests_response, headers: {
-                       'Accept' => 'application/json',
-                       'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-                       'Apikey' => 'TESTME'
-                     })
+          .with(
+            headers: {
+              'Accept' => 'application/json',
+              'Apikey' => 'TESTME'
+            }
+          )
+          .to_return(status: 200, body: outstanding_ill_requests_response, headers: {})
       end
 
       it 'Returns a successful http response' do
@@ -51,11 +53,13 @@ RSpec.describe IlliadPatronClient do
         ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
         cancel_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
         stub_request(:put, cancel_ill_requests_uri)
-          .with(body: "{\"Status\":\"Cancelled by Customer\"}")
-          .to_return(status: 200, body: cancel_ill_requests_response, headers: {
-                       'Content-Type' => 'application/json',
-                       'Apikey' => 'TESTME'
-                     })
+          .with(
+            headers: {
+              'Apikey' => 'TESTME'
+            },
+            body: "{\"Status\":\"Cancelled by Customer\"}"
+          )
+          .to_return(status: 200, body: cancel_ill_requests_response, headers: {})
       end
 
       it 'Cancels an ILLiad transaction' do
