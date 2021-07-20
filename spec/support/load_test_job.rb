@@ -42,6 +42,18 @@ class LoadTestJob
     @logger ||= Logger.new(STDOUT)
   end
 
+  def self.parse_siege_results(json_file_path:)
+    json_file_contents = File.read(json_file_path)
+    parsed = JSON.parse(json_file_contents)
+
+    values = {
+      headings: parsed.keys,
+      rows: [parsed.values]
+    }
+
+    OpenStruct.new(values)
+  end
+
   def self.headings
     [
       'URL',
@@ -70,11 +82,13 @@ class LoadTestJob
     generated_urls.each do |url|
       logger.info("Requesting #{url}...")
       session.visit(url)
-      time = DateTime.now.iso8601
+      # rubocop:disable Rails/TimeZone
+      time = DateTime.now
+      # rubocop:enable Rails/TimeZone
 
       row = {
         url: url,
-        time: time.iso8601
+        time: time
       }
 
       search_result_articles = session.find_all('#documents .document')

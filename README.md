@@ -177,15 +177,15 @@ One may run a series of performance tests against the production deployment of t
 
 ```bash
 # Running tests against 100 randomly-generated URLs
-$ bundle exec rake performance:test[100]
-$ open load_test.csv
+$ bundle exec rake performance:test[10]
+$ open tmp/load_test.csv
 ```
 
 There are also tests for the Solr installation:
 
 ```bash
 # Running tests over 10 seconds
-$ bundle exec rake performance:solr:test[10]
-$ open siege.json
+$ bundle exec rake performance:solr:test[10S]
+$ open tmp/load_test_solr.json
 ```
 

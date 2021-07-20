@@ -36,23 +36,24 @@ namespace :performance do
     task :test, [:time] do |_t, args|
       time = args[:time]
 
-      siege_file = Tempfile.new('siege.json')
-      system("/usr/bin/env siege --internet --concurrent=5 --time=#{time} --json-output #{lando_solr_uri} > #{siege_file.path}")
+      siege_file = Rails.root.join('tmp', 'load_test_solr.json')
+      system("/usr/bin/env siege --internet --concurrent=5 --time=#{time} --json-output #{lando_solr_uri} > #{siege_file}")
 
-      siege_file.read
-      siege_file.close
-      STDOUT.puts("Please find the Solr performance test results in #{siege_file.path}")
+      results = LoadTestJob.parse_siege_results(json_file_path: siege_file)
+      table = Terminal::Table.new(title: "Load Test Results (Solr)", headings: results.headings, rows: results.rows)
+      STDOUT.puts(table)
+      STDOUT.puts("Please find the Solr performance test results in #{siege_file}")
     end
   end
 
   desc 'Performing load testing against the production Rails environment'
   task :test, [:requests] do |_t, args|
-    requests = args[:requests]
+    requests = args[:requests] || 1
     results = LoadTestJob.perform_now(requests: requests.to_i)
 
-    results_file = Tempfile.new('load_test.csv')
+    results_file = Rails.root.join('tmp', 'load_test.csv')
 
-    CSV.open(results_file.path, "wb") do |csv|
+    CSV.open(results_file, "wb") do |csv|
       csv << results.headings
       results.rows.each do |row|
         csv << row
@@ -61,6 +62,6 @@ namespace :performance do
 
     table = Terminal::Table.new(title: "Load Test Results", headings: results.headings, rows: results.rows)
     STDOUT.puts(table)
-    STDOUT.puts("Please find the Rails app. test results in #{results_file.path}")
+    STDOUT.puts("Please find the Rails app. test results in #{results_file}")
   end
 end
