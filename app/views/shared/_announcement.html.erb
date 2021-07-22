@@ -1,13 +1,19 @@
-<div class="col-12 alert alert-warning announcement">
-  <div class="container">
-    <p>
-    <% if Rails.configuration.use_alma %>
-      <h1>Thank you for testing the Catalog Alma QA site!</h2> Please provide feedback via the <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS0FRa8h-7_iCtBeIRGbD2pI7zcqWAmz5hxLFip6dR7If3Nw/viewform">Alma Catalog Testing Feedback Form</a> or in the #catalog-alma-feedback channel on Slack.
-    <% elsif Orangelight.read_only_mode %>
-      <%= Orangelight.read_only_message %>
-    <% else %>
-    System upgrade: July 16 through August 8. <a href="https://library.princeton.edu/news/general/2021-08-02/pul-launch-new-service-platform-summer-2021-hathitrust-etas-update">Learn more</a>.
-    <% end %>
-    </p>
+<%# to remove messages altogether, set this to empty string %>
+<% message = 'System upgrade: July 16 through August 8. <a href="https://library.princeton.edu/news/general/2021-08-02/pul-launch-new-service-platform-summer-2021-hathitrust-etas-update">Learn more</a>.'.html_safe %>
+<% if Orangelight.read_only_mode %>
+  <div class="col-12 alert alert-warning announcement">
+    <div class="container">
+      <p>
+      <%= message %> <%= Orangelight.read_only_message %>
+      </p>
+    </div>
   </div>
-</div>
+<% elsif message.present? %>
+  <div class="col-12 alert alert-warning announcement">
+    <div class="container">
+      <p>
+      <%= message %>
+      </p>
+    </div>
+  </div>
+<% end %>
