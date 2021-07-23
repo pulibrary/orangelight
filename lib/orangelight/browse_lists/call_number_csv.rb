@@ -113,7 +113,7 @@ module BrowseLists
               location = 'Multiple locations'
             else
               holding_id = holding_record.keys.first
-              location = holding_record[holding_id]['location']
+              location = [holding_record[holding_id]['library'], holding_record[holding_id]['location']].select(&:present?).join(" - ")
             end
           end
         end

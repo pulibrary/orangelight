@@ -43,7 +43,7 @@ RSpec.describe 'Orangelight Browsables', type: :request do
     it 'shows last complete page if start param > db entries for any accepted rpp' do
       rpp = [10, 25, 50, 100]
       rpp.each do |v|
-        get "/browse/call_numbers.json?start=180&rpp=#{v}"
+        get "/browse/call_numbers.json?start=255&rpp=#{v}"
         r1 = JSON.parse(response.body)
         get "/browse/call_numbers.json?start=400&rpp=#{v}"
         r2 = JSON.parse(response.body)

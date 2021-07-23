@@ -4,9 +4,17 @@ require 'rails_helper'
 
 describe 'Browsables' do
   describe 'Browse by Call Number' do
+    before do
+      visit '/browse/call_numbers?q=PN842+.S539+2006&rpp=10'
+    end
     it 'displays two browse entries before exact match' do
-      visit '/browse/call_numbers?q=PL856.U673+A61213+2011&rpp=10'
       expect(page.all('tr')[3][:class]).to eq('alert alert-info clickable-row')
+    end
+    it 'has a call number link' do
+      expect(page.all('tr')[3]).to have_xpath("//a", text: "PN842 .S539 2006")
+    end
+    it 'has the library name if it exists' do
+      expect(page).to have_xpath('//*[@id="content"]/table/tbody/tr[3]//td[2]', text: 'Firestone Library - Near East Collections')
     end
   end
 
