@@ -241,8 +241,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       false
     elsif adapter.unavailable_holding?(holding)
       false
-    elsif Orangelight.read_only_mode
-      false
     else
       location[:requestable]
     end
