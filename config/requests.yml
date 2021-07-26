@@ -2,7 +2,7 @@
 
 defaults: &defaults
   umlaut_base: https://getit.princeton.edu
-  bibdata_base: https://bibdata.princeton.edu
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
   proxy_base: https://library.princeton.edu/resolve/lookup?url=
   voyager_api_base: https://webvoyage.princeton.edu:7014
   pulsearch_base: https://catalog.princeton.edu
@@ -10,24 +10,26 @@ defaults: &defaults
   gfa_base: http://libweb5.princeton.edu/ReCAPNoUI/Default.aspx
   ill_base: https://lib-illiad.princeton.edu/illiad/illiad.dll/OpenURL
   scsb_base: https://scsb.recaplib.org:9093
+  clancy_base: <%= ENV['CLANCY_BASE_URL'] || "https://example.caiasoft.com/api" %>
+  illiad_api_key: <%= ENV['ILLIAD_API_KEY'] %>
+  illiad_api_base: <%= ENV['ILLIAD_API_BASE_URL'] %>
 development:
   <<: *defaults
   voyager_ub_id: 1@DB
-  bibdata_base: https://bibdata-staging.princeton.edu
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
 test:
   <<: *defaults
   voyager_ub_id: 1@DB
-  bibdata_base: https://bibdata-staging.princeton.edu
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
+  illiad_api_key: 'TESTME'
 production:
   <<: *defaults
-  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
 staging:
   <<: *defaults
-  bibdata_base: https://bibdata.princeton.edu
 alma_qa:
   <<: *defaults
-  bibdata_base: https://bibdata-alma-staging.princeton.edu
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-alma-staging.princeton.edu" %>
+  scsb_base: https://uat-recap.htcinc.com:9093
   pulsearch_base: https://catalog-alma-qa.princeton.edu
 qa:
   <<: *defaults
-  bibdata_base: https://bibdata.princeton.edu

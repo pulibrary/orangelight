@@ -4,6 +4,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 require_relative "lando_env"
+require_relative "../lib/orangelight/browse_lists"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -43,7 +44,6 @@ module Orangelight
     config.x.after_sign_out_url = 'https://fed.princeton.edu/cas/logout'
 
     config.robots = OpenStruct.new(config_for(:robots))
-
-    config.use_alma = ActiveModel::Type::Boolean.new.cast(ENV['USE_ALMA'])
+    config.alma = config_for(:alma).with_indifferent_access
   end
 end

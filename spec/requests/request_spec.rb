@@ -560,4 +560,13 @@ describe 'blacklight tests' do
       expect(r['data'].length).to eq 4
     end
   end
+
+  describe "bento search JSON API requirements" do
+    it "returns electronic_portfolio_s" do
+      get "/catalog.json?q=99122306151806421"
+      json = JSON.parse(response.body)
+
+      expect(json["data"][0]["attributes"]["electronic_portfolio_s"]).not_to be_blank
+    end
+  end
 end

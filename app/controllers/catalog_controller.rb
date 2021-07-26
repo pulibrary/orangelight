@@ -215,11 +215,15 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
+    # NOTE: Most of these are added with show: false so they show up in the JSON
+    #   output for bento search. If you need to add a field to JSON display
+    #   (catalog.json), add it here!
     config.add_index_field 'series_display', label: 'Series', helper_method: :series_results
     config.add_index_field 'author_display', label: 'Author/Artist', helper_method: :browse_name
     config.add_index_field 'pub_created_display', label: 'Published/Created'
     config.add_index_field 'format', label: 'Format', helper_method: :format_icon
     config.add_index_field 'holdings_1display', show: false
+    config.add_index_field 'contained_in_s', show: false
     config.add_index_field 'isbn_t', show: false
     config.add_index_field 'score', show: false
     config.add_index_field 'marc_relator_display', show: false
@@ -230,6 +234,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'lccn_s', show: false
     config.add_index_field 'electronic_access_1display', show: false
     config.add_index_field 'cataloged_tdt', show: false
+    config.add_index_field 'electronic_portfolio_s', show: false
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display

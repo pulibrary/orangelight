@@ -31,7 +31,7 @@ RSpec.describe HoldingRequestsAdapter do
     end
 
     context 'with repeared restrictions' do
-      let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
+      let(:document) { SolrDocument.new('holdings_1display' => holdings_hash.to_json) }
 
       it 'they appear only once' do
         expect(holdings.restrictions).to eq ['In Library Use']
@@ -104,6 +104,14 @@ RSpec.describe HoldingRequestsAdapter do
         expect(holdings.doc_holdings_physical).to be_empty
       end
     end
+
+    context 'when parsing the holdings raises an exception' do
+      let(:document) { { 'holdings_1display' => 'not json' } }
+
+      it 'returns an empty array' do
+        expect(holdings.doc_holdings_physical).to be_empty
+      end
+    end
   end
   describe '#sorted_physical_holdings' do
     context 'When location code is invalid' do
@@ -113,7 +121,7 @@ RSpec.describe HoldingRequestsAdapter do
           '671799' => { 'location_code' => 'scsbnypl' }
         }
       end
-      let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
+      let(:document) { SolrDocument.new('holdings_1display' => holdings_hash.to_json) }
       let(:holding_locations) { { 'scsbnypl' => [] } }
 
       it 'holding is sorted last' do

@@ -52,6 +52,7 @@ en:
       start_over: 'Start over'
       librarian_view:
         title: 'Staff view'
+        retry: 'Could not retrieve MARC data, please reload this page to try again.'
       sort:
         label: 'Sort<span class="d-none d-xl-inline"> by %{field}</span>'
       per_page:

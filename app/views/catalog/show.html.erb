@@ -1,5 +1,5 @@
 <%= render 'previous_next_doc' %>
-<div id="main-content" class="col-12 main-content">
+<div id="main-content" class="col-12 main-content" data-host-id="<%= @document.host_id %>">
   <div id="sidebar" class="<%= render_document_class %>">
     <%= render_document_sidebar_partial %>
     <%= render partial: 'show_restrictions', locals: { document: @document } %>
@@ -13,7 +13,7 @@
       </div>
     <% end %>
     <%= render_document_main_content_partial %>
-    <% if @document.voyager_record? %>
+    <% if @document.alma_record? %>
       <dl class="dl-horizontal dl-invert">
         <dt class="other-views">Other views</dt>
         <dd class="classic-views">

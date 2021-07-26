@@ -204,7 +204,7 @@ module ApplicationHelper
       end
     ]
     links = search_links(document['electronic_access_1display']) + portfolio_links
-    holdings_hash = JSON.parse(document['holdings_1display'] || '{}').merge(portfolio_holdings)
+    holdings_hash = document.holdings_all_display.merge(portfolio_holdings)
     scsb_multiple = false
     holdings_hash.first(2).each do |id, holding|
       location = holding_location(holding)
@@ -223,7 +223,7 @@ module ApplicationHelper
           info << links.shift.html_safe
         end
       else
-        if holding['dspace'] || holding['location_code'] == (Rails.configuration.use_alma ? 'rare$num' : 'num')
+        if holding['dspace'] || holding['location_code'] == 'rare$num'
           check_availability = false
           info << content_tag(:span, 'On-site access', class: 'availability-icon badge badge-success', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe if aeon_location?(location)
@@ -239,7 +239,7 @@ module ApplicationHelper
             end
           end
         elsif holding['dspace'].nil?
-          info << content_tag(:span, '', class: 'availability-icon').html_safe
+          info << content_tag(:span, 'Loading...', class: 'availability-icon badge badge-secondary').html_safe
           info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe if aeon_location?(location)
         else
           check_availability = false
@@ -247,12 +247,10 @@ module ApplicationHelper
         end
         info << content_tag(:div, search_location_display(holding, document), class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
       end
-      block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id, aeon: aeon_location?(location) })
+      block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id, aeon: aeon_location?(location), bound_with: document.bound_with? })
 
-      if Rails.configuration.use_alma
-        cdl_placeholder = content_tag(:span, '', class: 'badge badge-primary', 'data-availability-cdl' => true)
-        block << content_tag(:li, cdl_placeholder.html_safe)
-      end
+      cdl_placeholder = content_tag(:span, '', class: 'badge badge-primary', 'data-availability-cdl' => true)
+      block << content_tag(:li, cdl_placeholder.html_safe)
     end
 
     if scsb_multiple == true
@@ -408,19 +406,15 @@ module ApplicationHelper
     loc_code = holding['location_code']
     location = bibdata_location_code_to_sym(loc_code) unless loc_code.nil?
     # If the Bibdata location is nil, use the location value from the solr document.
-    if Rails.configuration.use_alma
-      alma_location_display(holding, location) unless location.blank? && holding.blank?
-    else
-      location.nil? ? holding['location'] : location_full_display(location)
-    end
+    alma_location_display(holding, location) unless location.blank? && holding.blank?
   end
 
   # Alma location display on search results
   def alma_location_display(holding, location)
     if location.nil?
-      "#{holding['library']} - #{holding['location']}"
+      [holding['library'], holding['location']].select(&:present?).join(' - ')
     else
-      "#{location['library']['label']} - #{location['label']}"
+      [location['library']['label'], location['label']].select(&:present?).join(' - ')
     end
   end
 

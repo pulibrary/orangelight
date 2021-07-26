@@ -37,7 +37,7 @@ Metrics/BlockLength:
     - 'app/helpers/application_helper.rb'
     - 'config/routes.rb'
     - 'config/deploy/staging.rb'
-    - 'config/deploy/alma_qa.rb'
+    - 'config/deploy/alma-qa.rb'
     - 'config/deploy/qa.rb'
     - 'lib/tasks/browse.rake'
     - 'lib/tasks/pulsearch.rake'
@@ -74,6 +74,7 @@ Metrics/CyclomaticComplexity:
     - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
+    - 'app/services/bibdata.rb'
 
 Metrics/LineLength:
   Exclude:
@@ -136,6 +137,8 @@ Naming/FileName:
   Exclude:
     - 'Capfile'
     - 'Gemfile'
+    - 'config/deploy/alma-production.rb'
+    - 'config/deploy/alma-qa.rb'
 
 Naming/PredicateName:
   Exclude:

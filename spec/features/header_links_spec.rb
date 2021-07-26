@@ -16,7 +16,6 @@ describe 'Tools links' do
       expect(page).not_to have_selector('.nav-item a', text: 'Course Reserves')
 
       within '.menu--level-1' do
-        expect(page).to have_link('Login')
         expect(page).to have_link('Search History')
         expect(page).to have_link('Bookmarks')
       end

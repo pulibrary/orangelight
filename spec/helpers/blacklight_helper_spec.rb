@@ -7,6 +7,10 @@ describe BlacklightHelper do
 
   before do
     allow(self).to receive(:blacklight_params).and_return(blacklight_params)
+    allow(self).to receive(:current_or_guest_user).and_return(User.new)
+    allow(self).to receive(:search_action_path) do |*args|
+      search_catalog_url(*args)
+    end
   end
 
   describe '#left_anchor_escape_whitespace' do
@@ -126,6 +130,34 @@ describe BlacklightHelper do
 
       expect(Rails.logger).to have_received(:error).with(/Failed to render the facet partials for/)
       expect(helper).to have_received(:head).with(:bad_request)
+    end
+  end
+
+  describe "#link_back_to_catalog_safe" do
+    context "with valid parameters" do
+      let(:valid_session) { instance_double(Search) }
+      it "produces a link" do
+        allow(valid_session).to receive(:query_params).and_return(
+          action: "show", controller: "catalog", id: "123"
+        )
+        allow(helper).to receive(:current_search_session).and_return(valid_session)
+        allow(helper).to receive(:blacklight_config).and_return(CatalogController.new.blacklight_config)
+        allow(helper).to receive(:search_session).and_return({})
+        expect(helper.link_back_to_catalog_safe).to include("/catalog/123")
+      end
+    end
+
+    context "invalid parameters" do
+      let(:invalid_session) { instance_double(Search) }
+      it "produces a default link (i.e. does not crash)" do
+        allow(invalid_session).to receive(:query_params).and_return(
+          action: "index", controller: "advanced", id: "123"
+        )
+        allow(helper).to receive(:current_search_session).and_return(invalid_session)
+        allow(helper).to receive(:blacklight_config).and_return(CatalogController.new.blacklight_config)
+        allow(helper).to receive(:search_session).and_return({})
+        expect(helper.link_back_to_catalog_safe).to include("http://test.host/")
+      end
     end
   end
 end

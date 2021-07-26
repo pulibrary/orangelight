@@ -8,9 +8,9 @@ RSpec.describe ApplicationHelper do
     let(:library) { 'Rare Books and Special Collections' }
     let(:location) { 'Rare Books and Special Collections - Reference Collection in Dulles Reading Room' }
     let(:call_number) { 'PS3539.A74Z93 2000' }
-    let(:search_result) { helper.holding_block_search(document) }
-    let(:search_result_thesis) { helper.holding_block_search(document_thesis) }
-    let(:empty_search_result) { helper.holding_block_search(document_no_holdings) }
+    let(:search_result) { helper.holding_block_search(SolrDocument.new(document)) }
+    let(:search_result_thesis) { helper.holding_block_search(SolrDocument.new(document_thesis)) }
+    let(:empty_search_result) { helper.holding_block_search(SolrDocument.new(document_no_holdings)) }
 
     let(:show_result) { helper.holding_request_block(SolrDocument.new(document)) }
     let(:show_result_journal) { helper.holding_request_block(SolrDocument.new(document_journal)) }
@@ -239,35 +239,6 @@ RSpec.describe ApplicationHelper do
         expect(search_result).to include call_number
       end
     end
-    context '#holding_block record show - physical holdings' do
-      before { stub_holding_locations }
-
-      it 'returns a string with call number and location display values' do
-        expect(show_result.last).to include call_number
-        expect(show_result.last).to include library
-      end
-      it 'link to call number browse' do
-        expect(show_result.last).to have_link(t('blacklight.holdings.browse'), href: "/browse/call_numbers?q=#{CGI.escape call_number}")
-      end
-      it 'tooltip for the call number browse' do
-        expect(show_result.last).to have_selector "*[title='Browse: #{call_number}']"
-      end
-      it 'tags the holding record id' do
-        expect(show_result.last).to have_selector "*[data-holding-id='#{holding_id}']"
-      end
-      it 'On-site access availability when dspace set to true' do
-        expect(show_result_thesis.last).to include 'On-site access'
-      end
-      it 'On-site access availability when dspace set to false' do
-        expect(show_result_thesis_embargoed.last).to include 'Unavailable'
-      end
-      it 'includes a div to place current issues when journal format' do
-        expect(show_result_journal.last).to have_selector '*[data-journal]'
-      end
-      it 'excludes a div to place current issues when not journal format' do
-        expect(show_result.last).not_to have_selector '*[data-journal]'
-      end
-    end
 
     context '#holding_block record show - physical holding thesis reading room request' do
       before { stub_holding_locations }
@@ -317,10 +288,7 @@ RSpec.describe ApplicationHelper do
       end
     end
 
-    context 'when using Alma' do
-      before do
-        allow(Rails.configuration).to receive(:use_alma).and_return(true)
-      end
+    context '#holding_block record show - physical holdings' do
       let(:search_result) { helper.holding_block_search(document) }
       let(:call_number) { 'CD- 2018-11-11' }
       let(:library) { 'Mendel Music Library' }
@@ -346,18 +314,46 @@ RSpec.describe ApplicationHelper do
             location_code: 'mendel$pk',
             call_number: 'CD- 2018-11-11 MASTER',
             call_number_browse: 'CD- 2018-11-11 MASTER'
+          },
+          '22270490580006421' => {
+            location: '',
+            library: 'Very Special Library',
+            location_code: 'xspecial&nil',
+            call_number: 'special',
+            call_number_browse: 'special'
           }
         }.to_json.to_s
       end
-      context '#holding_block record show - physical holdings' do
-        before { stub_holding_locations }
 
-        it 'returns a string with call number and location display values' do
-          expect(show_result.last).to include call_number
-          expect(show_result.last).to include library
-          expect(show_result.last).to include 'Remote Storage (ReCAP)'
-          expect(show_result.last).to include 'Mendel Music Library: Reserve'
-        end
+      before { stub_holding_locations }
+
+      it 'returns a string with call number and location display values' do
+        expect(show_result.last).to include call_number
+        expect(show_result.last).to include library
+        expect(show_result.last).to include 'Remote Storage (ReCAP)'
+        expect(show_result.last).to include 'Mendel Music Library: Reserve'
+      end
+
+      it 'link to call number browse' do
+        expect(show_result.last).to have_link(t('blacklight.holdings.browse'), href: "/browse/call_numbers?q=#{CGI.escape call_number}")
+      end
+      it 'tooltip for the call number browse' do
+        expect(show_result.last).to have_selector "*[title='Browse: #{call_number}']"
+      end
+      it 'tags the holding record id' do
+        expect(show_result.last).to have_selector "*[data-holding-id='22270490550006421']"
+      end
+      it 'On-site access availability when dspace set to true' do
+        expect(show_result_thesis.last).to include 'On-site access'
+      end
+      it 'On-site access availability when dspace set to false' do
+        expect(show_result_thesis_embargoed.last).to include 'Unavailable'
+      end
+      it 'includes a div to place current issues when journal format' do
+        expect(show_result_journal.last).to have_selector '*[data-journal]'
+      end
+      it 'excludes a div to place current issues when not journal format' do
+        expect(show_result.last).not_to have_selector '*[data-journal]'
       end
     end
   end

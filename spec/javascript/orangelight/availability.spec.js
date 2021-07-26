@@ -75,6 +75,66 @@ describe('AvailabilityUpdater', function() {
     expect(mixed_result.text()).toEqual("Some items not available")
   })
 
+  test('search results availability for records in temporary locations says Check Record', () => {
+    document.body.innerHTML =
+      '<li class="blacklight-holdings">' +
+      '    <ul>' +
+      '        <li data-availability-record="true" data-record-id="9959958323506421" data-holding-id="22272063570006421" data-aeon="false">' +
+      '            <span class="availability-icon badge badge-secondary">Loading...</span>' +
+      '            <div class="library-location" data-location="true" data-record-id="9959958323506421" data-holding-id="22272063570006421">' +
+      '                <span class="results_location">Lewis Library - Lewis Library</span> &raquo; ' +
+      '                <span class="call-number">QC33 .M52 2003 ' +
+      '                    <a title="Where to find it" class="find-it" data-map-location="lewis$stacks" data-blacklight-modal="trigger" aria-label="Where to find it" href="...">' +
+      '                        <span class="fa fa-map-marker" aria-hidden="true"></span>' +
+      '                    </a>' +
+      '                </span>' +
+      '            </div>' +
+      '        </li>' +
+      '        <li data-availability-record="true" data-record-id="9959958323506421" data-holding-id="22272063520006421" data-aeon="false">' +
+      '            <span class="availability-icon badge badge-secondary">Loading...</span>' +
+      '            <div class="library-location" data-location="true" data-record-id="9959958323506421" data-holding-id="22272063520006421">' +
+      '                <span class="results_location">Lewis Library - Lewis Library</span> &raquo; ' +
+      '                <span class="call-number">QC33 .M52 2003 ' +
+      '                    <a title="Where to find it" class="find-it" data-map-location="lewis$stacks" data-blacklight-modal="trigger" aria-label="Where to find it" href="...">' +
+      '                        <span class="fa fa-map-marker" aria-hidden="true"></span>' +
+      '                    </a>' +
+      '                </span>' +
+      '            </div>' +
+      '        </li>' +
+      '        <li class="empty" data-record-id="9959958323506421">' +
+      '            <a class="availability-icon more-info" title="Click on the record for full availability info" data-toggle="tooltip" href="/catalog/9959958323506421"></a>' +
+      '        </li>' +
+      '    </ul>' +
+      '</li>'
+
+    const apiResponse = {
+      "9959958323506421": {
+        "fake_id_1": {
+          "on_reserve":"Y",
+          "location":"lewis$resterm",
+          "label":"Lewis Library - sciresp Lewis: Term Loan",
+          "status_label":"Available",
+          "copy_number":null,
+          "cdl":false,
+          "temp_location":true,
+          "id":"fake_id_1"
+        }
+      }
+    }
+
+
+    const badgesBefore = document.getElementsByClassName('availability-icon')
+    expect(badgesBefore[0].textContent).toEqual('Loading...')
+
+    const bibId = '9959958323506421'
+    const holdingData = apiResponse[bibId]
+    let u = new updater
+    u.process_result(bibId, holdingData)
+
+    const badgesAfter = document.getElementsByClassName('availability-icon')
+    expect(badgesAfter[0].textContent).toEqual('View record for availability')
+  })
+
   test('record show page with an available holding displays the status label in green', () => {
     document.body.innerHTML =
       '<table><tr>' +
@@ -151,7 +211,24 @@ describe('AvailabilityUpdater', function() {
     spy.mockRestore()
   })
 
-  test('record has temporary locations and complete data', () => {
+  // Make sure that the code to handle undetermined availability status updates
+  // the HTML correctly.
+  test('undetermined availability for show page', () => {
+    document.body.innerHTML =
+      '<table><tr>' +
+        '<td class="holding-status" data-availability-record="true" data-record-id="9965126093506421" data-holding-id="22202918790006421" data-aeon="false">' +
+          '<span class="availability-icon"></span>' +
+        '</td>' +
+      '</tr></table>';
+
+    let u = new updater
+    u.id = '9965126093506421'
+    u.update_availability_undetermined();
+
+    expect(document.body.innerHTML).toContain("Undetermined");
+  })
+
+  test('when record has temporary locations and complete data', () => {
     const holding_records = {
       "9959958323506421": {
         "22272063570006421": {
@@ -167,16 +244,16 @@ describe('AvailabilityUpdater', function() {
       }
     }
 
-    // in this case we expect to call update_single
+    // We expect to call update_single
     let u = new updater
     u.id = '9959958323506421'
-    const spy = jest.spyOn(u, 'update_single')
+    const update_single = jest.spyOn(u, 'update_single')
     u.process_single(holding_records)
-    expect(spy).toHaveBeenCalled()
-    spy.mockRestore()
+    expect(update_single).toHaveBeenCalledWith(holding_records, u.id)
+    update_single.mockRestore()
   })
 
-  test('record has temporary locations and incomplete data', () => {
+  test('when record has temporary locations and incomplete data it makes an extra call to get the full data', () => {
     const holding_records = {
       "9959958323506421": {
         "fake_id_1": {
@@ -192,13 +269,17 @@ describe('AvailabilityUpdater', function() {
       }
     }
 
-    // in this case we expect NOT to call update_single since we have incomplete data
+    // We expect an AJAX call to bib data but with the `deep=true` parameter.
+    // Notice that we are not testing that it calls `update_single` when the AJAX call completes
+    // (since we are mocking the AJAX call) but there are other tests that take care of that.
+    // Not ideal but good enough.
     let u = new updater
+    u.bibdata_base_url = 'http://mock_url'
     u.id = '9959958323506421'
-    const spy = jest.spyOn(u, 'update_single')
+    const getJSON = jest.spyOn($, 'getJSON')
     u.process_single(holding_records)
-    expect(spy).not.toHaveBeenCalled()
-    spy.mockRestore()
+    expect(getJSON).toHaveBeenCalledWith("http://mock_url/bibliographic/9959958323506421/availability.json?deep=true", expect.any(Function) )
+    getJSON.mockRestore()
   })
 
   test('record show page with an item not on CDL does not add a link', () => {
@@ -218,6 +299,48 @@ describe('AvailabilityUpdater', function() {
 
     expect(spy).not.toHaveBeenCalled()
     spy.mockRestore()
+  })
+
+  test('record show page for a bound-with record', () => {
+    document.body.innerHTML =
+      '<table><tr>' +
+        '<td class="holding-status" data-availability-record="true" data-record-id="9929455793506421" data-holding-id="22269289940006421" data-aeon="false">' +
+          '<span class="availability-icon"></span>' +
+        '</td>' +
+      '</tr></table>';
+    const holding_records = {
+      "9929455793506421":{},
+      "99121886293506421":{"22269289940006421":{"on_reserve":"N","location":"recap$pa","label":"ReCAP - ReCAP - rcppa RECAP","status_label":"Available","copy_number":null,"cdl":false,"temp_location":false,"id":"22269289940006421"}}
+    }
+
+    let u = new updater
+    u.id = '9929455793506421'         // contained bib
+    u.host_id = '99121886293506421'   // host bib
+
+    const process_single_for_bib = jest.spyOn(u, 'process_single_for_bib')
+    u.process_single(holding_records)
+
+    expect(process_single_for_bib).toHaveBeenCalledWith(holding_records, u.id)
+    expect(process_single_for_bib).toHaveBeenCalledWith(holding_records, u.host_id)
+    process_single_for_bib.mockRestore()
+  })
+
+
+  test('record search results page for a bound-with record', () => {
+    // Notice the data-bound-with="true"
+    document.body.innerHTML =
+      '<table><tr>' +
+        '<td class="holding-status" data-availability-record="true" data-record-id="9929455793506421" data-holding-id="22269289940006421" data-aeon="false" data-bound-with="true">' +
+          '<span class="availability-icon"></span>' +
+        '</td>' +
+      '</tr></table>';
+    const holding_records = {"9929455793506421":{}}
+    const holding_badge = $("*[data-availability-record='true'][data-record-id='9929455793506421'][data-bound-with='true'] span.availability-icon")[0];
+
+    let u = new updater
+    u.process_result("9929455793506421", holding_records)
+
+    expect(holding_badge.textContent).toContain('View record for availability');
   })
 
   test('extra Online availability added for CDL records that are reported as unavailable', () => {

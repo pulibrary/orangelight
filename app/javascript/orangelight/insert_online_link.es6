@@ -11,7 +11,7 @@ export const online_link_content = (link, target) => {
   return `Princeton users: <a href="${link}" target="${target}">View digital content</a>`;
 }
 
-export const insert_online_link = (link = "#view", id = "cdl_link", content = online_link_content) => {
+export const insert_online_link = (link = "#viewer-container", id = "cdl_link", content = online_link_content) => {
   insert_online_header()
   const existing_online_link = $(`#${id}`)
   if (existing_online_link.length > 0)

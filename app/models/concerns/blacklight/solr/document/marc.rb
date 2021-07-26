@@ -91,8 +91,8 @@ module Blacklight
           @_ctx || build_ctx(format)
         end
 
-        # returns true if doc originated from voyager
-        def voyager_record?
+        # returns true if doc originated from alma
+        def alma_record?
           if /^[0-9]+/.match?(self['id'])
             true
           else
@@ -127,6 +127,11 @@ module Blacklight
           return 'journal' if format == 'serial'
           return 'conference' if format == 'conference'
           'unknown'
+        end
+
+        # We allow the user to retry in very specific scenarios.
+        def can_retry?
+          @can_retry
         end
 
         protected
@@ -242,6 +247,7 @@ module Blacklight
             id = fetch(_marc_source_field)
 
             response = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}")
+            @can_retry = response.status == 429
             response_stream = StringIO.new(response.body)
             marc_reader = MARC::XMLReader.new(response_stream)
             marc_records = marc_reader.to_a

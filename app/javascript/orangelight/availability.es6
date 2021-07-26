@@ -8,7 +8,6 @@
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
 import { insert_online_link } from 'orangelight/insert_online_link'
-import HathiConnector from 'orangelight/hathi_connector'
 
 export default class AvailabilityUpdater {
 
@@ -16,6 +15,7 @@ export default class AvailabilityUpdater {
     this.bibdata_base_url = $("body").data("bibdata-base-url");
     this.availability_url = `${this.bibdata_base_url}/availability`;
     this.id = '';
+    this.host_id = '';
 
     this.available_non_requestable_labels = ['Available', 'Returned', 'Requestable',
       'On shelf', 'All items available', 'On-site access',
@@ -25,10 +25,11 @@ export default class AvailabilityUpdater {
     this.process_barcodes = this.process_barcodes.bind(this);
     this.process_single = this.process_single.bind(this);
     this.update_single = this.update_single.bind(this);
+    this.update_availability_undetermined = this.update_availability_undetermined.bind(this);
     this.process_scsb_single = this.process_scsb_single.bind(this);
   }
 
-  request_availability() {
+  request_availability(allowRetry) {
     let url;
     // a search results page or a call number browse page
     if ($(".documents-list").length > 0) {
@@ -37,12 +38,26 @@ export default class AvailabilityUpdater {
       url = `${this.bibdata_base_url}/bibliographic/availability.json?bib_ids=${bib_ids.join()}`;
       return $.getJSON(url, this.process_results_list)
         .fail((jqXHR, textStatus, errorThrown) => {
-          return console.error(`Failed to retrieve availability data for the bib. records ${bib_ids.join(", ")}: ${errorThrown}`);
+          if (jqXHR.status == 429) {
+            if (allowRetry) {
+              console.log(`Retrying availability for records ${bib_ids.join()}`);
+              window.setTimeout(() => {
+                this.update_availability_retrying();
+                this.request_availability(false);
+              }, 1500);
+            } else {
+              console.error(`Failed to retrieve availability data for bibs (retry). Records ${bib_ids.join()}: ${errorThrown}`);
+              this.update_availability_undetermined();
+            }
+            return;
+          }
+          return console.error(`Failed to retrieve availability data for bibs. Records ${bib_ids.join(", ")}: ${errorThrown}`);
         });
 
     // a show page
     } else if ($("*[data-availability-record='true']").length > 0) {
       this.id = window.location.pathname.split('/')[2];
+      this.host_id = $("#main-content").data("host-id") || "";
       if (this.id.match(/^SCSB-\d+/)) {
         url = `${this.availability_url}?scsb_id=${this.id.replace(/^SCSB-/, '')}`;
         return $.getJSON(url, this.process_scsb_single)
@@ -51,9 +66,25 @@ export default class AvailabilityUpdater {
           });
 
       } else {
-        url = `${this.bibdata_base_url}/bibliographic/${this.id}/availability.json`;
+        url = `${this.bibdata_base_url}/bibliographic/availability.json?bib_ids=${this.id}`;
+        if (this.host_id !== "") {
+          url += `,${this.host_id}`
+        }
         return $.getJSON(url, this.process_single)
           .fail((jqXHR, textStatus, errorThrown) => {
+            if (jqXHR.status == 429) {
+              if (allowRetry) {
+                console.log(`Retrying availability for record ${this.id}`);
+                window.setTimeout(() => {
+                  this.update_availability_retrying();
+                  this.request_availability(false);
+                }, 1500);
+              } else {
+                console.error(`Failed to retrieve availability data for the bib (retry). Record ${this.id}: ${errorThrown}`);
+                this.update_availability_undetermined();
+              }
+              return;
+            }
             return console.error(`Failed to retrieve availability data for the bib. record ${this.id}: ${errorThrown}`);
           });
       }
@@ -96,15 +127,25 @@ export default class AvailabilityUpdater {
   // search results
   process_result(record_id, holding_records) {
     for (let holding_id in holding_records) {
-      const availability_info = holding_records[holding_id];
+      if (holding_id.startsWith('fake_id_')) {
+        // In this case we cannot correlate the holding data from the availability API
+        // (holding_records) with the holding data already on the page (from Solr).
+        // In this case we set all of them to "Check record" because we can get this
+        // information in the Show page.
+        const badges = $(`*[data-availability-record='true'][data-record-id='${record_id}'] span.availability-icon`);
+        badges.text("View record for availability")
+        return true;
+      }
+
       // In Alma the label from the endpoint includes both the library name and the location.
+      const availability_info = holding_records[holding_id];
       if (availability_info['label']) {
         const location = $(`*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .results_location`);
         location.text(availability_info['label']);
       }
       const availability_element = $(`*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .availability-icon`);
 
-      if (availability_info['temp_loc']) {
+      if (availability_info['temp_location']) {
         const current_map_link = $(`*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .find-it`);
         $(availability_element).next('.icon-warning').hide();
         const temp_map_link = this.stackmap_link(record_id, availability_info, true);
@@ -112,15 +153,32 @@ export default class AvailabilityUpdater {
       }
       this.apply_availability_label(availability_element, availability_info, true);
     }
+
+    // Bib data does not know about bound-with records and therefore we don't get availability
+    // information for holdings coming from the host record. For those holdings we ask the user
+    // to check the record since in `process_single()` we do the extra work to get that information.
+    const boundWithBadges = $(`*[data-availability-record='true'][data-record-id='${record_id}'][data-bound-with='true'] span.availability-icon`);
+    boundWithBadges.text("View record for availability")
+
     return true;
   }
 
-  // show page
-  // In Alma the label from the endpoint includes both the library name and the location.
+  // process_single() is used in the Show page and typically `holding_records` only has the
+  // information for a single bib since we are on the Show page. But occasionally the record
+  // that we are showing is bound with another (host) record and in those instances
+  // `holding_records` has data for two bibs: `this.id` and `this.host_id`.
   process_single(holding_records) {
+    this.process_single_for_bib(holding_records, this.id)
+    if (this.host_id !== "") {
+      this.process_single_for_bib(holding_records, this.host_id)
+    }
+  }
+
+  // process_single_for_bib() processes the data for a specific mms_id within the `holding_records`
+  process_single_for_bib(holding_records, mms_id) {
     var dataComplete = true;
-    for (let holding_id in holding_records[this.id]) {
-      const availability_info = holding_records[this.id][holding_id];
+    for (let holding_id in holding_records[mms_id]) {
+      const availability_info = holding_records[mms_id][holding_id];
       if ((availability_info['temp_location'] === true) && holding_id.startsWith('fake_id_')) {
         dataComplete = false; // The data that we get from Alma for temporary locations is incomplete.
         break;
@@ -129,51 +187,63 @@ export default class AvailabilityUpdater {
 
     if (dataComplete) {
       // Update the page with the data that we already have.
-      this.update_single(holding_records);
+      this.update_single(holding_records, mms_id);
       return;
     }
 
     // Make a separate call (with deep=true) to get more information before updating the page.
-    var url = `${this.bibdata_base_url}/bibliographic/${this.id}/availability.json?deep=true`;
-    $.getJSON(url, this.update_single)
+    var url = `${this.bibdata_base_url}/bibliographic/${mms_id}/availability.json?deep=true`;
+    $.getJSON(url, (data) => { this.update_single(data, mms_id); })
       .fail((jqXHR, textStatus, errorThrown) => {
-        return console.error(`Failed to retrieve deep availability data for bib. record ${this.id}: ${errorThrown}`);
+        return console.error(`Failed to retrieve deep availability data for bib. record ${mms_id}: ${errorThrown}`);
       });
 
     return;
   }
 
-  update_single(holding_records) {
+  update_single(holding_records, id) {
     return (() => {
       const result = [];
-      for (let holding_id in holding_records[this.id]) {
-        const availability_info = holding_records[this.id][holding_id];
+      for (let holding_id in holding_records[id]) {
+        const availability_info = holding_records[id][holding_id];
+        // Notice that the HTML element for availability uses the original MMS ID (this.id) in `data-record-id`
+        // regardless of whether the holding is for the original MMS ID or for the host record (this.host_id).
         const availability_element = $(`*[data-availability-record='true'][data-record-id='${this.id}'][data-holding-id='${holding_id}'] .availability-icon`);
         if (availability_info['label']) {
-          const location = $(`*[data-location='true'][data-holding-id='${holding_id}']`);
-          location.text(availability_info['label']);
+          const holding_location = $(`*[data-location='true'][data-holding-id='${holding_id}']`);
+          holding_location.text(availability_info['label']);
         }
         this.apply_availability_label(availability_element, availability_info, false);
         if (availability_info["cdl"]) {
           insert_online_link();
         }
-        // TODO: We don't yet know if etas will still exist
-        // TODO: we don't have a temp_loc yet
-        // hathi ETAS and stackmap stuff
+
         if (availability_info['temp_location']) {
           const current_map_link = $(`*[data-holding-id='${holding_id}'] .find-it`);
-          const temp_map_link = this.stackmap_link(this.id, availability_info);
+          const temp_map_link = this.stackmap_link(id, availability_info);
           current_map_link.replaceWith(temp_map_link);
-
-          if (availability_info['temp_location'] == "etas" || availability_info['temp_location'] == "etasrcp") {
-            const hathi_connector = new HathiConnector
-            hathi_connector.insert_hathi_link()
-          }
         }
+
         result.push(this.update_request_button(holding_id, availability_info));
       }
       return result;
     })();
+  }
+
+  // Sets the availability badge to indicate that we are retrying to fetch the information
+  update_availability_retrying() {
+    var avBadges = $(`*[data-availability-record='true'] span.availability-icon`);
+    $(avBadges).text("Loading...");
+    $(avBadges).attr("title", "Fetching real-time availability");
+    $(avBadges).addClass("badge badge-secondary");
+  }
+
+  // Sets the availability badge to indicate that we could not determine the availability
+  update_availability_undetermined() {
+    var avBadges = $(`*[data-availability-record='true'] span.availability-icon`);
+    $(avBadges).text("Undetermined");
+    $(avBadges).attr("title", "Cannot determine real-time availability for item at this time.");
+    $(avBadges).addClass("badge badge-secondary");
   }
 
   process_scsb_single(item_records) {
@@ -287,6 +357,7 @@ export default class AvailabilityUpdater {
     let isCdl = availability_info['cdl'];
     status_label = `${status_label}${this.due_date(availability_info["due_date"])}`;
     availability_element.text(status_label);
+    availability_element.attr('title', '');
     if (status_label.toLowerCase() === 'unavailable') {
       availability_element.addClass("badge-danger");
       if (isCdl && addCdlBadge) {

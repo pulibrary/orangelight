@@ -7,6 +7,10 @@ require './lib/orangelight/string_functions'
 
 module BrowseLists
   class << self
+    def table_prefix
+      "alma_orangelight"
+    end
+
     def connection
       config = Orangelight::Application.config.database_configuration[::Rails.env]
       dbhost = config['host']

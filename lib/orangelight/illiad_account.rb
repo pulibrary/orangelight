@@ -9,8 +9,8 @@ class IlliadAccount
     @last_name = patron['last_name']
     @patron_id = patron['patron_id']
     @netid = patron['netid']
-    @illiad_api_key = (ENV['ILLIAD_API_KEY']).to_s
-    @illiad_api_base = ENV['ILLIAD_API_BASE_URL']
+    @illiad_api_key = Requests.config["illiad_api_key"]
+    @illiad_api_base = Requests.config["illiad_api_base"]
   end
 
   def verify_user

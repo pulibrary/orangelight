@@ -1,0 +1,504 @@
+[
+  {
+    "id": "dsp01wd3760321",
+    "title_t": "The Show Must Go On... And On, And On: The Lasting Appeal of the Stage Comedy",
+    "title_citation_display": "The Show Must Go On... And On, And On: The Lasting Appeal of the Stage Comedy",
+    "title_display": "The Show Must Go On... And On, And On: The Lasting Appeal of the Stage Comedy",
+    "title_sort": "showmustgoonandonandonthelastingappealofthestagecomedy",
+    "author_sort": "White-Mink, Chamari",
+    "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/dsp01wd3760321\":[\"DataSpace\",\"Citation only\"]}",
+    "restrictions_note_display": [
+      "Walk-in Access. This thesis can only be viewed on computer terminals at the <a href=http://mudd.princeton.edu>Mudd Manuscript Library</a>."
+    ],
+    "call_number_display": "AC102",
+    "call_number_browse_s": "AC102",
+    "language_facet": [
+      "English"
+    ],
+    "author_display": [
+      "White-Mink, Chamari"
+    ],
+    "author_s": [
+      "White-Mink, Chamari",
+      "Huerta, Monica",
+      "Princeton University. Department of English",
+      "Princeton University. Program in Theater"
+    ],
+    "advisor_display": [
+      "Huerta, Monica"
+    ],
+    "department_display": [
+      "Princeton University. Department of English"
+    ],
+    "certificate_display": [
+      "Princeton University. Program in Theater"
+    ],
+    "location": "Mudd Manuscript Library",
+    "location_display": "Mudd Manuscript Library",
+    "location_code_s": "mudd$stacks",
+    "advanced_location_s": [
+      "mudd$stacks",
+      "Mudd Manuscript Library"
+    ],
+    "access_facet": "In the Library",
+    "holdings_1display": "{\"thesis\":{\"location\":\"Mudd Manuscript Library\",\"library\":\"Mudd Manuscript Library\",\"location_code\":\"mudd$stacks\",\"call_number\":\"AC102\",\"call_number_browse\":\"AC102\",\"dspace\":true}}",
+    "class_year_s": [
+      "2020"
+    ],
+    "pub_date_start_sort": [
+      "2020"
+    ],
+    "pub_date_end_sort": [
+      "2020"
+    ],
+    "format": "Senior thesis"
+  },
+  {
+    "id": "dsp01w6634604k",
+    "title_t": "Unfinished Business: An Examination of Unrevived, Unproduced, and Incomplete Musical Theatre",
+    "title_citation_display": "Unfinished Business: An Examination of Unrevived, Unproduced, and Incomplete Musical Theatre",
+    "title_display": "Unfinished Business: An Examination of Unrevived, Unproduced, and Incomplete Musical Theatre",
+    "title_sort": "unfinishedbusinessanexaminationofunrevivedunproducedandincompletemusicaltheatre",
+    "author_sort": "Plunkett, William Anderson",
+    "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/dsp01w6634604k\":[\"DataSpace\",\"Full text\"]}",
+    "restrictions_note_display": null,
+    "call_number_display": "AC102",
+    "call_number_browse_s": "AC102",
+    "language_facet": [
+      "English"
+    ],
+    "author_display": [
+      "Plunkett, William Anderson"
+    ],
+    "author_s": [
+      "Plunkett, William Anderson",
+      "Wolf, Stacy",
+      "Wolff, Tamsen",
+      "Princeton University. Program in Theater"
+    ],
+    "advisor_display": [
+      "Wolf, Stacy"
+    ],
+    "contributor_display": [
+      "Wolff, Tamsen"
+    ],
+    "certificate_display": [
+      "Princeton University. Program in Theater"
+    ],
+    "description_display": [
+      "82 pages"
+    ],
+    "access_facet": "Online",
+    "electronic_portfolio_s": "{\"thesis\":{\"call_number\":\"AC102\",\"call_number_browse\":\"AC102\",\"dspace\":true}}",
+    "class_year_s": [
+      "2016"
+    ],
+    "pub_date_start_sort": [
+      "2016"
+    ],
+    "pub_date_end_sort": [
+      "2016"
+    ],
+    "format": "Senior thesis"
+  },
+  {
+    "id": "99116547863506421",
+    "numeric_id_b": true,
+    "author_display": [
+      "Nakanoin, Michifuyu, 1315-1363",
+      "中院通冬, 1315-1363"
+    ],
+    "author_citation_display": [
+      "Nakanoin, Michifuyu",
+      "Tōkyō Daigaku"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"中院通冬\"],\"translators\":[],\"editors\":[\"Tōkyō Daigaku\",\"東京大學.\"],\"compilers\":[],\"primary_author\":\"Nakanoin, Michifuyu\"}",
+    "author_s": [
+      "Nakanoin, Michifuyu, 1315-1363",
+      "Tōkyō Daigaku. Shiryō Hensanjo",
+      "中院通冬, 1315-1363",
+      "東京大學. 史料編纂所"
+    ],
+    "marc_relator_display": [
+      "Author"
+    ],
+    "title_display": "Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan.",
+    "title_vern_display": "中院一品記 / 東京大學史料編纂所編纂.",
+    "title_t": [
+      "Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan."
+    ],
+    "title_citation_display": [
+      "Nakanoin ipponki",
+      "中院一品記"
+    ],
+    "compiled_created_t": [
+      "Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan.",
+      "中院一品記 / 東京大學史料編纂所編纂."
+    ],
+    "pub_created_vern_display": [
+      "東京 : 岩波書店, 2018-"
+    ],
+    "pub_created_display": [
+      "Tōkyō : Iwanami Shōten, 2018-",
+      "東京 : 岩波書店, 2018-"
+    ],
+    "pub_created_s": [
+      "Tōkyō : Iwanami Shōten, 2018-",
+      "東京 : 岩波書店, 2018-"
+    ],
+    "pub_citation_display": [
+      "Tōkyō: Iwanami Shōten",
+      "東京: 岩波書店"
+    ],
+    "pub_date_display": [
+      "2018"
+    ],
+    "pub_date_start_sort": 2018,
+    "pub_date_end_sort": 9999,
+    "cataloged_tdt": "2020-12-03T03:12:18Z",
+    "format": [
+      "Book"
+    ],
+    "description_display": [
+      "volumes : illustrations ; 22 cm"
+    ],
+    "description_t": [
+      "volumes : illustrations ; 22 cm"
+    ],
+    "number_of_pages_citation_display": [
+      "volumes"
+    ],
+    "geocode_display": [
+      "Japan"
+    ],
+    "series_display": [
+      "Dai Nihon kokiroku.",
+      "大日本古記錄.",
+      "大日本古記錄"
+    ],
+    "more_in_this_series_t": [
+      "Dai Nihon kokiroku",
+      "大日本古記錄."
+    ],
+    "bib_ref_notes_display": [
+      "Includes bibliographical references and index."
+    ],
+    "language_facet": [
+      "Japanese"
+    ],
+    "language_code_s": [
+      "jpn"
+    ],
+    "language_iana_s": [
+      "ja"
+    ],
+    "contents_display": [
+      "[1]. Kenmu sannen nigatsu yori Kōei gannen rokugatsu ni itaru",
+      "jō. Kenmu 3-nen 2-gatsu yori Kōei gannen 6-gatsu ni itaru",
+      "[1]. 自建武三年二月至康永元年六月",
+      "上. 自建武三年二月至康永元年六月"
+    ],
+    "lc_subject_display": [
+      "Nakanoin, Michifuyu, 1315-1363—Diaries",
+      "Japan—History—Kamakura period, 1185-1333—Sources",
+      "Japan—History—Period of northern and southern courts, 1336-1392—Sources"
+    ],
+    "subject_facet": [
+      "Nakanoin, Michifuyu, 1315-1363—Diaries",
+      "Japan—History—Kamakura period, 1185-1333—Sources",
+      "Japan—History—Period of northern and southern courts, 1336-1392—Sources",
+      "Diaries"
+    ],
+    "lcgft_s": [
+      "Diaries"
+    ],
+    "related_name_json_1display": "{\"Editor\":[\"Tōkyō Daigaku. Shiryō Hensanjo\",\"東京大學. 史料編纂所\"]}",
+    "other_title_display": [
+      "Nakanoin 1-honki",
+      "中院 1品記"
+    ],
+    "alt_title_246_display": [
+      "Nakanoin 1-honki",
+      "中院 1品記"
+    ],
+    "isbn_display": [
+      "9784000099851 ((v. 1))",
+      "400009985X ((v. 1))"
+    ],
+    "lccn_display": [
+      "  2018430599"
+    ],
+    "lccn_s": [
+      "2018430599"
+    ],
+    "isbn_s": [
+      "9784000099851"
+    ],
+    "oclc_s": [
+      "1062349585"
+    ],
+    "other_version_s": [
+      "on1062349585",
+      "9784000099851"
+    ],
+    "subject_era_facet": [
+      "1185-1392",
+      "Japan: Kamakura period, 1185-1333",
+      "Japan: Period of northern and southern courts, 1336-1392"
+    ],
+    "holdings_1display": "{\"22211952510006421\":{\"location_code\":\"eastasian$hy\",\"location\":\"\",\"library\":\"East Asian Library\",\"call_number\":\"J3306/5047.4 pt.31\",\"call_number_browse\":\"J3306/5047.4 pt.31\",\"items\":[{\"holding_id\":\"22211952510006421\",\"id\":\"23211952500006421\",\"status_at_load\":\"1\",\"collection_code\":\"hy\",\"enumeration\":\"vol.1\",\"barcode\":\"32101113265852\",\"copy_number\":\"0\"}]}}",
+    "recap_notes_display": [
+      " - "
+    ],
+    "location_code_s": [
+      "eastasian$hy"
+    ],
+    "location": [
+      "East Asian Library"
+    ],
+    "location_display": [
+      "East Asian Library"
+    ],
+    "advanced_location_s": [
+      "eastasian$hy",
+      "East Asian Library"
+    ],
+    "name_title_browse_s": [
+      "Nakanoin, Michifuyu, 1315-1363. Nakanoin ipponki",
+      "中院通冬, 1315-1363. 中院一品記"
+    ],
+    "call_number_display": [
+      "J3306/5047.4 pt.31 "
+    ],
+    "call_number_browse_s": [
+      "J3306/5047.4 pt.31 "
+    ],
+    "call_number_locator_display": [
+      "J3306/5047.4 pt.31"
+    ]
+  },
+  {
+    "id": [
+      "9929455793506421"
+    ],
+    "numeric_id_b": [
+      true
+    ],
+    "cjk_all": [
+      ""
+    ],
+    "cjk_notes": [
+      ""
+    ],
+    "author_display": [
+      "Schoeppl, Mizzi, 1895-"
+    ],
+    "author_sort": [
+      "Schoeppl, Mizzi, 1895-"
+    ],
+    "author_citation_display": [
+      "Schoeppl, Mizzi"
+    ],
+    "author_roles_1display": [
+      "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Schoeppl, Mizzi\"}"
+    ],
+    "author_s": [
+      "Schoeppl, Mizzi, 1895-"
+    ],
+    "marc_relator_display": [
+      "Author"
+    ],
+    "title_display": [
+      "Zwischenakt; sittenroman, von Oswald Strehlen [pseud.]"
+    ],
+    "title_a_index": [
+      "Zwischenakt"
+    ],
+    "title_sort": [
+      "Zwischenakt; sittenroman, von Oswald Strehlen [pseud.]"
+    ],
+    "title_no_h_index": [
+      "Zwischenakt; sittenroman, von Oswald Strehlen [pseud.]"
+    ],
+    "title_t": [
+      "Zwischenakt; sittenroman, von Oswald Strehlen [pseud.]"
+    ],
+    "title_citation_display": [
+      "Zwischenakt; sittenroman"
+    ],
+    "series_statement_index": [
+      "Mascotte-bücher. 51"
+    ],
+    "linked_title_index": [
+      "Multi-title collection including Suchende seelen; and 2 other(s)."
+    ],
+    "compiled_created_t": [
+      "Zwischenakt; sittenroman, von Oswald Strehlen [pseud.]"
+    ],
+    "pub_created_display": [
+      "Dresden [c1921]"
+    ],
+    "pub_created_s": [
+      "Dresden [c1921]"
+    ],
+    "pub_citation_display": [
+      "Dresden"
+    ],
+    "pub_date_display": [
+      "1921"
+    ],
+    "pub_date_start_sort": [
+      "1921"
+    ],
+    "format": [
+      "Book"
+    ],
+    "description_display": [
+      "80 p."
+    ],
+    "description_t": [
+      "80 p."
+    ],
+    "number_of_pages_citation_display": [
+      "80 p."
+    ],
+    "series_display": [
+      "Mascotte-bücher. 51"
+    ],
+    "geo_related_record_display": [
+      "Multi-title collection including Suchende seelen; and 2 other(s)."
+    ],
+    "contained_in_s": [
+      "99121886293506421"
+    ],
+    "notes_index": [
+      "No. 3 of a volume of pamphlets."
+    ],
+    "notes_display": [
+      "No. 3 of a volume of pamphlets."
+    ],
+    "language_facet": [
+      "German"
+    ],
+    "publication_place_facet": [
+      "Germany"
+    ],
+    "language_code_s": [
+      "ger"
+    ],
+    "language_iana_s": [
+      "de"
+    ],
+    "subject_unstem_search": null,
+    "siku_subject_unstem_search": null,
+    "subject_facet": [
+      "Fiction"
+    ],
+    "lcgft_s": [
+      "Fiction"
+    ],
+    "genre_facet": [
+      "Fiction"
+    ],
+    "in_display": [
+      "Multi-title collection including Suchende seelen; and 2 other(s)."
+    ],
+    "oclc_s": [
+      "43257636"
+    ],
+    "standard_no_index": [
+      "ocm43257636",
+      "2945579",
+      "2945579-princetondb"
+    ],
+    "other_version_s": [
+      "ocm43257636"
+    ],
+    "name_title_browse_s": [
+      "Schoeppl, Mizzi, 1895-. Zwischenakt"
+    ],
+    "access_facet": []
+  },
+  {
+    "id": [
+      "99121886293506421"
+    ],
+    "numeric_id_b": [
+      true
+    ],
+    "cjk_all": [
+      ""
+    ],
+    "cjk_notes": [
+      ""
+    ],
+    "author_roles_1display": [
+      "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+    ],
+    "title_display": [
+      "Multi-title collection including Suchende seelen; and 2 other(s). updated 4-23-21 11:14 AM"
+    ],
+    "title_a_index": [
+      "Multi-title collection including Suchende seelen; and 2 other(s)."
+    ],
+    "title_sort": [
+      "Multi-title collection including Suchende seelen; and 2 other(s). updated 4-23-21 11:14 AM"
+    ],
+    "title_no_h_index": [
+      "Multi-title collection including Suchende seelen; and 2 other(s). updated 4-23-21 11:14 AM"
+    ],
+    "title_t": [
+      "Multi-title collection including Suchende seelen; and 2 other(s). updated 4-23-21 11:14 AM"
+    ],
+    "title_citation_display": [
+      "Multi-title collection including Suchende seelen; and 2 other(s). updated 4-23-21 11:14 AM"
+    ],
+    "linked_title_index": [
+      "Suchende seelen;",
+      "Zwischenakt; sittenroman,",
+      "Das ewige rätsel; roman,"
+    ],
+    "compiled_created_t": [
+      "Multi-title collection including Suchende seelen; and 2 other(s). updated 4-23-21 11:14 AM"
+    ],
+    "pub_date_display": [
+      "2013"
+    ],
+    "pub_date_start_sort": [
+      "2013"
+    ],
+    "format": [
+      "Book"
+    ],
+    "related_record_s": [
+      "9929455783506421",
+      "9929455793506421",
+      "9929455773506421"
+    ],
+    "language_facet": [
+      "English",
+      "German"
+    ],
+    "publication_place_facet": [
+      "No place, unknown, or undetermined",
+      "Germany"
+    ],
+    "language_code_s": [
+      "eng",
+      "ger"
+    ],
+    "language_iana_s": [
+      "en",
+      "de"
+    ],
+    "subject_unstem_search": null,
+    "siku_subject_unstem_search": null,
+    "constituent_part_display": [
+      "Suchende seelen",
+      "Zwischenakt; sittenroman",
+      "Das ewige rätsel; roman"
+    ],
+    "access_facet": [],
+    "holdings_1display":"{\"22269289940006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"3488.93344.333\",\"call_number_browse\":\"3488.93344.333\",\"items\":[{\"holding_id\":\"22269289940006421\",\"id\":\"23269289930006421\",\"status_at_load\":\"1\",\"barcode\":\"32101066958685\",\"copy_number\":\"1\"}]}}"
+  }
+]

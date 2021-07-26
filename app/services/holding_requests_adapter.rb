@@ -26,8 +26,7 @@ class HoldingRequestsAdapter
   # Retrieve the holdings information from the Solr Document
   # @return [Hash] holdings values
   def doc_holdings
-    values = @document['holdings_1display'] || '{}'
-    JSON.parse(values)
+    @document.holdings_all_display
   rescue StandardError => error
     Rails.logger.warn error
     {}
@@ -106,14 +105,6 @@ class HoldingRequestsAdapter
   # Should these be refactored into static methods
   # (or should a decorator be used for holding values?)
 
-  # Generate a full string for the location values
-  # @param location [Hash] location information
-  # @return [String] the location string
-  def location_full_display(location)
-    return location['library']['label'] if location.fetch('label') == ''
-    location['library']['label'] + ' - ' + location['label']
-  end
-
   # Retrieve the location rules from holding values
   # @param holding [Hash] the holding values
   # @return [Hash] location values
@@ -128,22 +119,21 @@ class HoldingRequestsAdapter
   # @return [String] the location label
   # Record page location label display
   def holding_location_label(holding)
+    # location is the information coming from bibdata
     location = holding_location_rules(holding)
-    if Rails.configuration.use_alma
-      location.nil? ? alma_location_label_display_holding(holding) : alma_location_label_display_bibdata_location(location)
-    else
-      location.nil? ? holding['location'] : location_full_display(location)
-    end
+    location.nil? ? alma_location_label_display_holding(holding) : alma_location_label_display_bibdata_location(location)
+  end
+
+  # Alma location display on record page using the location info from bibdata.
+  # This is a location fall back if Javascript does not work.
+  def alma_location_label_display_bibdata_location(location)
+    [location['library']['label'], location['label']].select(&:present?).join(" - ")
   end
 
   # Alma location display on record page using the solr indexed holding
+  # This is a location fall back if Javascript does not work and bibdata returns nil.
   def alma_location_label_display_holding(holding)
-    "#{holding['library']} - #{holding['location']}"
-  end
-
-  # Alma location display on record page using the location info from bibdata
-  def alma_location_label_display_bibdata_location(location)
-    "#{location['library']['label']} - #{location['label']}"
+    [holding['library'], holding['location']].select(&:present?).join(' - ')
   end
 
   # Retrieve the call number from holding values
@@ -156,7 +146,7 @@ class HoldingRequestsAdapter
   # Determine whether or not the holding is for a repository item
   # @return [TrueClass, FalseClass]
   def repository_holding?(holding)
-    holding['dspace'] || holding['location_code'] == (Rails.configuration.use_alma ? 'rare$num' : 'num')
+    holding['dspace'] || holding['location_code'] == 'rare$num'
   end
 
   # Determine whether or not the holding is for a SCSB items with ReCAP

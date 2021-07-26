@@ -52,47 +52,27 @@ RSpec.describe ApplicationHelper do
 
   describe '#holding_location_label' do
     let(:fallback) { 'Fallback' }
-    let(:without_code) { { 'location' => fallback } }
-    let(:invalid_code) { { 'location' => fallback, 'location_code' => 'invalid' } }
-    let(:valid_code) { { 'location' => fallback, 'location_code' => 'clas' } }
-
-    it 'returns holding location label when location code lookup successful' do
-      stub_holding_locations
-      expect(holding_location_label(valid_code)).to eq('Firestone Library - Classics Collection (Clas)')
-    end
-    it 'returns holding location value when location code lookup fails' do
-      stub_request(:get, "#{Requests.config['bibdata_base']}/locations/holding_locations.json")
-        .to_return(status: 500,
-                   body: '')
-      expect(holding_location_label(invalid_code)).to eq(fallback)
-    end
-    it 'returns holding location value when no location code' do
-      expect(holding_location_label(without_code)).to eq(fallback)
-    end
-    it 'returns nil when no location code or holding location value' do
-      expect(holding_location_label({})).to be_nil
-    end
-  end
-
-  context 'when using Alma' do
-    before do
-      allow(Rails.configuration).to receive(:use_alma).and_return(true)
-    end
-
-    let(:fallback) { 'Fallback' }
     let(:without_code) { { 'library' => 'Library Name', 'location' => fallback } }
     let(:invalid_code) { { 'library' => 'Library Name', 'location' => fallback, 'location_code' => 'invalid' } }
     let(:valid_code) { { 'library' => 'Library Name', 'location' => fallback, 'location_code' => 'aas' } }
+    let(:code_location_blank) { { 'library' => 'Library Name', 'location' => '', 'location_code' => 'aas' } }
 
     it 'returns holding location label when location code lookup successful' do
       stub_holding_locations
       expect(holding_location_label(valid_code)).to eq('Firestone Library - African American Studies Reading Room (AAS). B-7-B')
     end
-    it 'returns holding location value when location code lookup fails' do
-      stub_request(:get, "#{Requests.config['bibdata_base']}/locations/holding_locations.json")
-        .to_return(status: 500,
-                   body: '')
-      expect(holding_location_label(invalid_code)).to eq('Library Name - Fallback')
+    context 'when location code lookup fails' do
+      before do
+        stub_request(:get, "#{Requests.config['bibdata_base']}/locations/holding_locations.json")
+          .to_return(status: 500,
+                     body: '')
+      end
+      it 'returns holding location value' do
+        expect(holding_location_label(invalid_code)).to eq('Library Name - Fallback')
+      end
+      it 'does not include a trailing dash when indexed location is blank' do
+        expect(holding_location_label(code_location_blank)).to eq('Library Name')
+      end
     end
     it 'returns holding location value when no location code' do
       expect(holding_location_label(without_code)).to eq('Library Name - Fallback')

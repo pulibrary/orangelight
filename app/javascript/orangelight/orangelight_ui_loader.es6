@@ -1,5 +1,4 @@
 import AvailabilityUpdater from '../orangelight/availability'
-import VoyagerAvailabilityUpdater from '../orangelight/voyager_availability'
 import FiggyManifestManager from '../orangelight/figgy_manifest_manager'
 import GoogleBooksSnippets from '../orangelight/google_books_snippets'
 
@@ -18,12 +17,8 @@ export default class OrangelightUiLoader {
 
   setup_availability() {
     let au2
-    if ($("body").data("use-alma-flag")) {
-      au2 = new AvailabilityUpdater
-    } else {
-      au2 = new VoyagerAvailabilityUpdater
-    }
-    au2.request_availability();
+    au2 = new AvailabilityUpdater
+    au2.request_availability(true);
     au2.scsb_search_availability();
   }
 

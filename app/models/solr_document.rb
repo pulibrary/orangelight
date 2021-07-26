@@ -129,6 +129,28 @@ class SolrDocument
     sibling_documents.flat_map(&:electronic_portfolios)
   end
 
+  def host_id
+    self["contained_in_s"]&.first
+  end
+
+  def bound_with?
+    return true if host_id
+    false
+  end
+
+  # Returns the holdings_1display of the record plus the holdings_1display of the host record
+  def holdings_all_display
+    holdings = JSON.parse(self["holdings_1display"] || '{}')
+    return holdings if host_id.nil?
+
+    # Fetch and append the holdings from the host record
+    @holdings_all ||= begin
+      host_doc = doc_by_id(host_id)
+      host_holdings = JSON.parse(host_doc&.dig("holdings_1display") || '{}')
+      holdings.merge(host_holdings)
+    end
+  end
+
   private
 
     def electronic_access_uris
@@ -170,5 +192,11 @@ class SolrDocument
                                                                      root: root_id,
                                                                      solr_field: 'other_version_s')
       linked_documents.siblings
+    end
+
+    def doc_by_id(id)
+      params = { q: "id:#{RSolr.solr_escape(id)}" }
+      solr_response = Blacklight.default_index.connection.get('select', params: params)
+      solr_response["response"]["docs"].first
     end
 end
