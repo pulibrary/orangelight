@@ -40,7 +40,7 @@ GIT
 GIT
   remote: https://github.com/pulibrary/requests.git
   revision: 25d80345c618da7b2efa152b77d26403e426652d
-  branch: main
+  branch: voyager
   specs:
     requests (0.0.2)
       bootstrap
