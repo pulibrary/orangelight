@@ -14,7 +14,7 @@ class AccountController < ApplicationController
 
   def index
     if Orangelight.read_only_mode
-      msg = "Account page is disabled. #{Orangelight.read_only_message}"
+      msg = "Account page is disabled during our system upgrade. We expect services to return on August 2nd."
       redirect_to root_path, flash: { notice: msg }
     else
       set_patron

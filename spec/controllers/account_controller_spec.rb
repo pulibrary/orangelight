@@ -43,7 +43,7 @@ RSpec.describe AccountController do
       it 'redirects to root and flashes an explanatory message' do
         get :index
         expect(response).to redirect_to(root_path)
-        expect(flash[:notice]).to include("Account page is disabled", "read-only")
+        expect(flash[:notice]).to include("Account page is disabled during our system upgrade. We expect services to return on August 2nd.")
       end
     end
   end
