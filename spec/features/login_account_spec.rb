@@ -10,7 +10,7 @@ describe 'Account login' do
       visit "/"
       click_button("Your Account")
       within('li.show') do
-        link = find_link("My Library Card")
+        link = find_link("Library Account")
         expect(link[:href]).to eq alma_account_url
         expect(link[:target]).to eq("_blank")
         expect(has_css?('i.fa-external-link', count: 1)).to eq true
@@ -26,7 +26,7 @@ describe 'Account login' do
       visit "/"
       click_button(user.username)
       within('li.show') do
-        link = find_link("My Library Card")
+        link = find_link("Library Account")
         expect(link[:href]).to eq alma_account_url
         expect(link[:target]).to eq("_blank")
         expect(has_css?('i.fa-external-link', count: 1)).to eq true
