@@ -183,6 +183,10 @@ export default class AvailabilityUpdater {
         dataComplete = false; // The data that we get from Alma for temporary locations is incomplete.
         break;
       }
+      if (availability_info['status_label'] == 'Unavailable') {
+        dataComplete = false; // Retry to see if it is available via CDL
+        break;
+      }
     }
 
     if (dataComplete) {
