@@ -154,7 +154,7 @@ describe('AvailabilityUpdater', function() {
     expect(badge.textContent).toEqual('Available')
   })
 
-  test('record show page with an unavailable holding displays the status label in red', () => {
+  test('record show page with unavailable holdings makes a second to get more info', () => {
     document.body.innerHTML =
       '<table><tr>' +
         '<td class="holding-status" data-availability-record="true" data-record-id="99118400923506421" data-holding-id="22105449840006421" data-aeon="false">' +
@@ -163,14 +163,12 @@ describe('AvailabilityUpdater', function() {
       '</tr></table>';
     const holding_records = {"99118400923506421":{"22105449840006421":{"on_reserve":"N","location":"stacks","label":"Firestone Library (F)","status_label":"Unavailable","more_items":false,"holding_type":"physical","id":"22105449840006421"}}}
     let u = new updater
+    u.bibdata_base_url = 'http://mock_url'
     u.id = '99118400923506421'
+    const getJSON = jest.spyOn($, 'getJSON')
     u.process_single(holding_records)
-
-    const badge = document.getElementsByClassName('availability-icon')[0]
-
-    expect(badge.classList.values()).toContain('badge')
-    expect(badge.classList.values()).toContain('badge-danger')
-    expect(badge.textContent).toEqual('Unavailable')
+    expect(getJSON).toHaveBeenCalledWith("http://mock_url/bibliographic/99118400923506421/availability.json?deep=true", expect.any(Function) )
+    getJSON.mockRestore()
   })
 
   test('record show page with an mixed availability holding displays the status label in gray', () => {
