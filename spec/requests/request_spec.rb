@@ -89,7 +89,7 @@ describe 'blacklight tests' do
   describe 'pul_holdings check' do
     it 'excludes scsb items when pul location filter is applied' do
       get '/catalog.json?per_page=100&f_inclusive%5Badvanced_location_s%5D%5B%5D=pul'
-      expect(response.body).to include('"9741216"')
+      expect(response.body).to include('"99118884033506421"')
       expect(response.body).not_to include('"SCSB-7235709"')
     end
   end

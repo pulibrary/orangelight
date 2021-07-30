@@ -131,6 +131,7 @@ describe 'Availability' do
 
     context 'with a sibling record that does not have electronic portfolio values' do
       it 'within the online section, it displays the links of its sibling record' do
+        stub_holding_locations
         visit '/catalog/994264203506421'
         expect(page).to have_text '1869 - 1923: Biodiversity Heritage Library Free'
         expect(page).to have_text 'Available from 1869 volume: 1 issue: 1.'
