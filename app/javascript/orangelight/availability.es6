@@ -66,7 +66,7 @@ export default class AvailabilityUpdater {
           });
 
       } else {
-        url = `${this.bibdata_base_url}/bibliographic/availability.json?bib_ids=${this.id}`;
+        url = `${this.bibdata_base_url}/bibliographic/availability.json?bib_ids=${this.id}&deep=true`;
         if (this.host_id !== "") {
           url += `,${this.host_id}`
         }
