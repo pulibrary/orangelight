@@ -42,16 +42,6 @@ jobs:
           command: |
             source ~/.nvm/nvm.sh
             curl -o- -L https://yarnpkg.com/install.sh | bash
-      - run:
-          name: Install Java 8
-          command: |
-            sudo apt update
-            sudo apt install software-properties-common apt-transport-https
-            wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
-            sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
-            sudo apt update
-            sudo apt install adoptopenjdk-8-hotspot
-            sudo update-alternatives --set java /usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/bin/java
       #set timezone to est
       - run:
           name: Set Timezone to EST
@@ -94,9 +84,6 @@ jobs:
           key: orangelight-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      - run:
-          name: npm install
-          command: npm install
       - run:
           name: Load config into solr
           command: |
