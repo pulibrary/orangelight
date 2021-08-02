@@ -4,7 +4,14 @@ require 'orangelight/browse_lists'
 require 'orangelight/browse_lists/call_number_csv'
 
 RSpec.describe BrowseLists::CallNumberCSV do
-  let(:solr_url) { Blacklight.connection_config[:url] }
+  let(:solr_url) do
+    # Remove Solr auth username and password used in CI.
+    # Faraday adds as Base64 encoded credentials in the
+    # Authorization header. Causes issues with webmocks
+    uri = Blacklight.default_index.connection.uri.dup
+    uri.user = nil
+    uri.to_s
+  end
 
   describe "#write" do
     let(:output_root) { Rails.root.join("tmp", "spec") }
@@ -14,17 +21,17 @@ RSpec.describe BrowseLists::CallNumberCSV do
       WebMock.disable_net_connect!
 
       stub_request(
-        :get, "#{solr_url}/select?defType=edismax&facet.field=call_number_browse_s&facet.limit=-1&facet.mincount=2&facet.sort=asc&fl=id&indent=true&q=*:*&wt=json"
+        :get, "#{solr_url}select?defType=edismax&facet.field=call_number_browse_s&facet.limit=-1&facet.mincount=2&facet.sort=asc&fl=id&indent=true&q=*:*&wt=json"
       )
         .to_return(status: 200, body: file_fixture("call_number_browse/multi_call_numbers.json"), headers: {})
 
       stub_request(
-        :get, "#{solr_url}/select?cursorMark=*&defType=edismax&facet=false&fl=call_number_browse_s,title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display&indent=true&q=*:*&rows=500&sort=id%20asc&wt=json"
+        :get, "#{solr_url}select?cursorMark=*&defType=edismax&facet=false&fl=call_number_browse_s,title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display&indent=true&q=*:*&rows=500&sort=id%20asc&wt=json"
       )
         .to_return(status: 200, body: file_fixture("call_number_browse/index_entries_rows500_cursor_p1.json"), headers: {})
 
       stub_request(
-        :get, "#{solr_url}/select?cursorMark=AoEoMTAwMDA1NjY=&defType=edismax&facet=false&fl=call_number_browse_s,title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display&indent=true&q=*:*&rows=500&sort=id%20asc&wt=json"
+        :get, "#{solr_url}select?cursorMark=AoEoMTAwMDA1NjY=&defType=edismax&facet=false&fl=call_number_browse_s,title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display&indent=true&q=*:*&rows=500&sort=id%20asc&wt=json"
       )
         .to_return(status: 200, body: file_fixture("call_number_browse/index_entries_rows500_cursor_p2.json"), headers: {})
     end
@@ -57,7 +64,7 @@ RSpec.describe BrowseLists::CallNumberCSV do
       before do
         allow(Rails.logger).to receive(:error)
         stub_request(
-          :get, "#{solr_url}/select?cursorMark=*&defType=edismax&facet=false&fl=call_number_browse_s,title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display&indent=true&q=*:*&rows=500&sort=id%20asc&wt=json"
+          :get, "#{solr_url}select?cursorMark=*&defType=edismax&facet=false&fl=call_number_browse_s,title_display,title_vern_display,author_display,author_s,id,pub_created_vern_display,pub_created_display,holdings_1display&indent=true&q=*:*&rows=500&sort=id%20asc&wt=json"
         )
           .to_return(status: 200, body: {}.to_json, headers: {})
       end
