@@ -16,6 +16,10 @@ jobs:
           POSTGRES_USER: orangelight
           POSTGRES_DB: orangelight_test
           POSTGRES_HOST_AUTH_METHOD: trust
+
+      # Custom solr container image
+      - image: pulibrary/pulmap-solr:8.4
+        command: server/scripts/ci-start.sh
     working_directory: ~/orangelight
     steps:
       - checkout
@@ -90,13 +94,15 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
-          name: Start Solr test instance
-          command: bundle exec rake server:test
-          background: true
-      - run: bin/jetty_wait
-      - run:
           name: npm install
           command: npm install
+      - run:
+          name: Load config into solr
+          command: |
+            cd solr/conf
+            zip -1 -r solr_config.zip ./*
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@127.0.0.1:8983/solr/admin/configs?action=UPLOAD&name=pulmap"
+            curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8983/api/collections/  -d '{create: {name: pulmap-core-test, config: pulmap, numShards: 1}}'
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
