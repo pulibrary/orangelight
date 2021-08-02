@@ -183,7 +183,7 @@ export default class AvailabilityUpdater {
         dataComplete = false; // The data that we get from Alma for temporary locations is incomplete.
         break;
       }
-      if (availability_info['status_label'] == 'Unavailable') {
+      if ((availability_info['status_label'] == 'Unavailable') && (availability_info['cdl'] !== true)) {
         dataComplete = false; // Retry to see if it is available via CDL
         break;
       }
@@ -199,6 +199,7 @@ export default class AvailabilityUpdater {
     var url = `${this.bibdata_base_url}/bibliographic/${mms_id}/availability.json?deep=true`;
     $.getJSON(url, (data) => { this.update_single(data, mms_id); })
       .fail((jqXHR, textStatus, errorThrown) => {
+        // Notice that this console.error() message shows in the console output when running `yarn test`
         return console.error(`Failed to retrieve deep availability data for bib. record ${mms_id}: ${errorThrown}`);
       });
 
