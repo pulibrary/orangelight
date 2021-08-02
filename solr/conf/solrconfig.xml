@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!--
+ This is a stripped down config file used for a simple example...
+ It is *not* a good example to work from.
+-->
+<config>
+  <luceneMatchVersion>8.4.1</luceneMatchVersion>
+
+  <lib dir="${solr.install.dir}/contrib/analysis-extras/lib" />
+  <lib dir="${solr.install.dir}/contrib/analysis-extras/lucene-libs" />
+  <lib dir="conf" />
+
+  <directoryFactory name="DirectoryFactory"
+                    class="${solr.directoryFactory:solr.StandardDirectoryFactory}">
+  </directoryFactory>
+
+  <updateHandler class="solr.DirectUpdateHandler2">
+    <updateLog>
+      <str name="dir">${solr.core0.data.dir:}</str>
+    </updateLog>
+  </updateHandler>
+
+  <codecFactory class="solr.SchemaCodecFactory"/>
+  <schemaFactory class="ClassicIndexSchemaFactory"/>
+
+  <dataDir>${solr.blacklight-core.data.dir:}</dataDir>
+
+  <requestDispatcher handleSelect="true" >
+    <requestParsers enableRemoteStreaming="false" multipartUploadLimitInKB="2048" />
+  </requestDispatcher>
+
+  <updateLog class="solr.FSUpdateLog">
+    <str name="dir">${solr.data.dir:}</str>
+  </updateLog>
+
+  <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
+
+  <requestHandler name="/update" class="solr.UpdateRequestHandler" >
+    <lst name="defaults">
+      <str name="update.chain">dedupe</str>
+    </lst>
+  </requestHandler>
+
+  <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
+    <lst name="invariants">
+      <str name="q">solrpingquery</str>
+    </lst>
+    <lst name="defaults">
+      <str name="echoParams">all</str>
+    </lst>
+  </requestHandler>
+
+  <updateRequestProcessorChain name="dedupe">
+    <processor class="solr.processor.SignatureUpdateProcessorFactory">
+      <bool name="enabled">true</bool>
+      <str name="signatureField">hashed_id_s</str>
+      <bool name="overwriteDupes">false</bool>
+      <str name="fields">id</str>
+      <str name="signatureClass">solr.processor.Lookup3Signature</str>
+    </processor>
+    <processor class="solr.LogUpdateProcessorFactory" />
+    <processor class="solr.RunUpdateProcessorFactory" />
+  </updateRequestProcessorChain>
+
+  <requestHandler name="/get" class="solr.RealTimeGetHandler">
+    <lst name="defaults">
+      <str name="omitHeader">true</str>
+      <str name="wt">json</str>
+      <str name="indent">true</str>
+    </lst>
+  </requestHandler>
+
+  <!-- config for the admin interface -->
+  <admin>
+    <defaultQuery>solr</defaultQuery>
+  </admin>
+
+
+  <query>
+    <filterCache class="solr.FastLRUCache"
+                 size="2048"
+                 initialSize="2048"
+                 autowarmCount="64"/>
+    <queryResultCache class="solr.LRUCache"
+                      size="4096"
+                      initialSize="4096"
+                      autowarmCount="32"/>
+
+    <documentCache class="solr.LRUCache"
+                   size="4096"
+                   initialSize="4096"/>
+
+    <enableLazyFieldLoading>true</enableLazyFieldLoading>
+
+   <queryResultWindowSize>100</queryResultWindowSize>
+   <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
+    <listener event="newSearcher" class="solr.QuerySenderListener">
+      <arr name="queries">
+        <lst><str name="q">*:*</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
+        <lst><str name="q">*:*</str><str name="sort">pub_date_start_sort desc, title_sort asc</str></lst>
+        <lst><str name="q">*:*</str><str name="sort">pub_date_start_sort asc, title_sort asc</str></lst>
+        <lst><str name="q">*:*</str><str name="sort">author_sort asc, title_sort asc</str></lst>
+        <lst><str name="q">*:*</str><str name="sort">title_sort asc, pub_date_start_sort desc</str></lst>
+        <lst><str name="q">nature</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
+        <lst><str name="q">time</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
+        <lst><str name="q">book</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
+        <lst><str name="q">science</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
+        <lst><str name="q">music</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
+
+        <lst><str name="fq">format:Audio</str></lst>
+        <lst><str name="fq">format:Book</str></lst>
+        <lst><str name="fq">format:Data File</str></lst>
+        <lst><str name="fq">format:Journal</str></lst>
+        <lst><str name="fq">format:Manuscript</str></lst>
+        <lst><str name="fq">format:Map</str></lst>
+        <lst><str name="fq">format:Mixed Material</str></lst>
+        <lst><str name="fq">format:Musical Score</str></lst>
+        <lst><str name="fq">format:Senior Thesis</str></lst>
+        <lst><str name="fq">format:Thesis</str></lst>
+        <lst><str name="fq">format:Video/Projected Medium</str></lst>
+        <lst><str name="fq">format:Visual Material</str></lst>
+
+        <lst><str name="fq">location:Architecture Library</str></lst>
+        <lst><str name="fq">location:East Asian Library</str></lst>
+        <lst><str name="fq">location:Engineering Library</str></lst>
+        <lst><str name="fq">location:Fine Annex</str></lst>
+        <lst><str name="fq">location:Firestone Library</str></lst>
+        <lst><str name="fq">location:Forrestal Annex</str></lst>
+        <lst><str name="fq">location:Harold P. Furth Plasma Physics Library</str></lst>
+        <lst><str name="fq">location:Lewis Library</str></lst>
+        <lst><str name="fq">location:Marquand Library</str></lst>
+        <lst><str name="fq">location:Mendel Music Library</str></lst>
+        <lst><str name="fq">location:Mudd Manuscript Library</str></lst>
+        <lst><str name="fq">location:Rare Books and Special Collections</str></lst>
+        <lst><str name="fq">location:ReCAP</str></lst>
+        <lst><str name="fq">location:Stokes Library</str></lst>
+        <lst><str name="fq">location:Video Library</str></lst>
+
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]</str></lst>
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]</str></lst>
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-21DAYS TO NOW/DAY+1DAY]</str></lst>
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]</str></lst>
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-2MONTHS TO NOW/DAY+1DAY]</str></lst>
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]</str></lst>
+        <lst><str name="fq">cataloged_tdt:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]</str></lst>
+
+        <lst><str name="fq">language_facet:English</str></lst>
+        <lst><str name="fq">language_facet:German</str></lst>
+        <lst><str name="fq">language_facet:French</str></lst>
+        <lst><str name="fq">language_facet:Spanish</str></lst>
+        <lst><str name="fq">language_facet:Chinese</str></lst>
+        <lst><str name="fq">language_facet:Italian</str></lst>
+        <lst><str name="fq">language_facet:Russian</str></lst>
+        <lst><str name="fq">language_facet:Arabic</str></lst>
+        <lst><str name="fq">language_facet:Japanese</str></lst>
+        <lst><str name="fq">language_facet:Latin</str></lst>
+
+        <lst><str name="fq">subject_era_facet:20th century</str></lst>
+        <lst><str name="fq">subject_era_facet:19th century</str></lst>
+        <lst><str name="fq">subject_era_facet:18th century</str></lst>
+        <lst><str name="fq">subject_era_facet:21st century</str></lst>
+        <lst><str name="fq">subject_era_facet:17th century</str></lst>
+
+        <lst><str name="fq">lc_1letter_facet:A - General Works</str></lst>
+        <lst><str name="fq">lc_1letter_facet:B - Philosophy, Psychology, Religion</str></lst>
+        <lst><str name="fq">lc_1letter_facet:C - Historical Sciences (Archaeology, Genealogy)</str></lst>
+        <lst><str name="fq">lc_1letter_facet:D - World History</str></lst>
+        <lst><str name="fq">lc_1letter_facet:E - History of the Americas (General)</str></lst>
+        <lst><str name="fq">lc_1letter_facet:F - History of the Americas (Local)</str></lst>
+        <lst><str name="fq">lc_1letter_facet:G - Geography, Anthropology, Recreation</str></lst>
+        <lst><str name="fq">lc_1letter_facet:H - Social Sciences</str></lst>
+        <lst><str name="fq">lc_1letter_facet:J - Political Science</str></lst>
+        <lst><str name="fq">lc_1letter_facet:K - Law</str></lst>
+        <lst><str name="fq">lc_1letter_facet:L - Education</str></lst>
+        <lst><str name="fq">lc_1letter_facet:M - Music</str></lst>
+        <lst><str name="fq">lc_1letter_facet:N - Fine Arts</str></lst>
+        <lst><str name="fq">lc_1letter_facet:P - Language &amp; Literature</str></lst>
+        <lst><str name="fq">lc_1letter_facet:Q - Science</str></lst>
+        <lst><str name="fq">lc_1letter_facet:R - Medicine</str></lst>
+        <lst><str name="fq">lc_1letter_facet:S - Agriculture</str></lst>
+        <lst><str name="fq">lc_1letter_facet:T - Technology</str></lst>
+        <lst><str name="fq">lc_1letter_facet:U - Military Science</str></lst>
+        <lst><str name="fq">lc_1letter_facet:Z - Bibliography, Library Science, Information Resources</str></lst>
+
+        <lst><str name="fq">subject_topic_facet:History</str></lst>
+        <lst><str name="fq">subject_topic_facet:United States</str></lst>
+        <lst><str name="fq">subject_topic_facet:Politics and government</str></lst>
+        <lst><str name="fq">subject_topic_facet:History and criticism</str></lst>
+        <lst><str name="fq">subject_topic_facet:Great Britain</str></lst>
+        <lst><str name="fq">subject_topic_facet:United States. Congress</str></lst>
+        <lst><str name="fq">subject_topic_facet:Claims</str></lst>
+        <lst><str name="fq">subject_topic_facet:Bills, Private</str></lst>
+        <lst><str name="fq">subject_topic_facet:China</str></lst>
+        <lst><str name="fq">subject_topic_facet:France</str></lst>
+
+        <lst><str name="fq">genre_facet:Biography</str></lst>
+        <lst><str name="fq">genre_facet:Congresses</str></lst>
+        <lst><str name="fq">genre_facet:Periodicals</str></lst>
+        <lst><str name="fq">genre_facet:Private bills</str></lst>
+        <lst><str name="fq">genre_facet:Exhibitions</str></lst>
+        <lst><str name="fq">genre_facet:Early works to 1800</str></lst>
+        <lst><str name="fq">genre_facet:Fiction</str></lst>
+        <lst><str name="fq">genre_facet:Maps</str></lst>
+        <lst><str name="fq">genre_facet:Bibliography</str></lst>
+        <lst><str name="fq">genre_facet:Catalogs</str></lst>
+
+        <lst><str name="fq">sudoc_facet:X/Y - Congress</str></lst>
+
+        <lst><str name="fq">acces_facet:Online</str></lst>
+        <lst><str name="fq">acces_facet:In the Library</str></lst>
+      </arr>
+    </listener>
+  </query>
+
+  <!-- SearchHandler
+
+       http://wiki.apache.org/solr/SearchHandler
+
+       For processing Search Queries, the primary Request Handler
+       provided with Solr is "SearchHandler" It delegates to a sequent
+       of SearchComponents (see below) and supports distributed
+       queries across multiple shards
+    -->
+   <requestHandler name="search" class="solr.SearchHandler" default="true">
+    <!-- default values for query parameters can be specified, these
+         will be overridden by parameters in the request
+      -->
+    <lst name="defaults">
+      <str name="defType">edismax</str>
+      <str name="echoParams">explicit</str>
+      <int name="rows">10</int>
+      <str name="sow">on</str>
+      <str name="q.alt">*:*</str>
+      <str name="mm">6&lt;90%</str>
+
+      <!-- boost local holdings (add 50 to the score) to reduce unnecessary requests -->
+      <str name="bf">if(field(numeric_id_b),50,0)</str>
+
+       <!-- this qf and pf are used by default, if not otherwise specified by
+            client. The default blacklight_config will use these for the
+            "keywords" search. See the author_qf/author_pf, title_qf, etc
+            below, which the default blacklight_config will specify for
+            those searches. You may also be interested in:
+            http://wiki.apache.org/solr/LocalParams
+       -->
+
+      <str name="qf">
+        title_a_index^1500
+        author_main_unstem_search^1000
+        title_unstem_search^40
+        title_display^40
+        author_unstem_search^40
+        subject_topic_unstem_search^18
+        subject_unstem_search^15
+        subject_topic_index^12
+        subject_t^10
+        subject_addl_unstem_search^8
+        subject_addl_t^4
+        isbn_t^3
+        issn_s^3
+        lccn_s^3
+        text
+        description_t
+        cjk_all
+      </str>
+      <str name="pf">
+        title_245a_lr^16000
+        title_245_lr^16000
+        title_a_index^12000
+        author_main_unstem_search^10000
+        title_unstem_search^400
+        title_display^400
+        author_unstem_search^400
+        subject_topic_unstem_search^180
+        subject_unstem_search^150
+        subject_topic_index^120
+        subject_t^100
+        subject_addl_unstem_search^80
+        subject_addl_t^40
+        isbn_t^30
+        issn_s^30
+        lccn_s^30
+        text^10
+        description_t^10
+        cjk_all^10
+      </str>
+      <str name="author_qf">
+        author_main_unstem_search^20
+        author_unstem_search^10
+        cjk_author
+      </str>
+      <str name="author_pf">
+        author_main_unstem_search^200
+        author_unstem_search^100
+        cjk_author^10
+      </str>
+      <str name="left_anchor_qf">
+        title_245a_la^50
+        title_245_la^10
+        title_la^2
+        title_addl_la
+      </str>
+      <str name="left_anchor_pf">
+        title_245a_lr^600
+        title_245_lr^600
+        title_245a_la^500
+        title_245_la^100
+        title_lr^100
+        title_la^20
+        title_addl_la^10
+      </str>
+      <str name="in_series_qf">
+        more_in_this_series_la
+      </str>
+      <str name="in_series_pf">
+        more_in_this_series_la
+      </str>
+      <str name="publisher_qf">
+        pub_created_unstem_search
+        cjk_publisher
+      </str>
+      <str name="publisher_pf">
+        pub_created_unstem_search
+        cjk_publisher
+      </str>
+      <str name="notes_qf">
+        notes_index
+        cjk_notes
+      </str>
+      <str name="notes_pf">
+        notes_index
+        cjk_notes
+      </str>
+      <str name="series_title_qf">
+        series_title_index^5
+        series_ae_index
+        series_statement_index
+        linked_series_title_index
+        linked_series_index
+        original_version_series_index
+        cjk_series_title
+      </str>
+      <str name="series_title_pf">
+        series_title_index^50
+        series_ae_index^10
+        series_statement_index^10
+        linked_series_title_index^10
+        linked_series_index^10
+        original_version_series_index^10
+        cjk_series_title^10
+      </str>
+      <str name="title_qf">
+        title_a_index^500
+        title_unstem_search^100
+        title_display^50
+        other_title_index^5
+        series_title_index^5
+        uniform_title_s^5
+        title_vern_display
+        content_title_index
+        contains_title_index
+        linked_title_index
+        series_ae_index
+        series_statement_index
+        linked_series_title_index
+        linked_series_index
+        original_version_series_index
+        cjk_title
+      </str>
+      <str name="title_pf">
+        title_245a_lr^5500
+        title_245_lr^5500
+        title_a_index^5000
+        title_unstem_search^1000
+        title_display^500
+        other_title_index^50
+        series_title_index^50
+        uniform_title_s^50
+        title_vern_display^10
+        content_title_index^10
+        contains_title_index^10
+        linked_title_index^10
+        series_ae_index^10
+        series_statement_index^10
+        linked_series_title_index^10
+        linked_series_index^10
+        original_version_series_index^10
+        cjk_title^10
+      </str>
+      <str name="subject_qf">
+        subject_topic_unstem_search^25
+        subject_unstem_search^20
+        cjk_subject
+      </str>
+      <str name="subject_pf">
+        subject_topic_unstem_search^250
+        subject_unstem_search^200
+        cjk_subject^10
+      </str>
+
+      <int name="ps">3</int>
+      <float name="tie">0.01</float>
+
+      <str name="fl">
+        id,
+        score,
+        author_display,
+        marc_relator_display,
+        format,
+        pub_created_display,
+        title_display,
+        title_vern_display,
+        isbn_s,
+        oclc_s,
+        lccn_s,
+        holdings_1display,
+        electronic_access_1display,
+        electronic_portfolio_s,
+        cataloged_tdt
+      </str>
+
+      <str name="facet">true</str>
+      <str name="facet.mincount">1</str>
+      <str name="facet.limit">10</str>
+      <str name="facet.field">format</str>
+      <str name="facet.field">language_facet</str>
+      <str name="facet.field">pub_date_start_sort</str>
+      <str name="facet.field">advanced_location_s</str>
+      <str name="f.format.facet.sort">index</str>
+      <str name="f.advanced_location_s.facet.sort">index</str>
+      <str name="f.language_facet.facet.limit">1000</str>
+      <str name="f.advanced_location_s.facet.limit">500</str>
+
+      <!--
+      <str name="facet.method">enum</str>
+      <str name="facet.enum.cache.minDf">25000</str>
+        -->
+
+    </lst>
+    <!-- In addition to defaults, "appends" params can be specified
+         to identify values which should be appended to the list of
+         multi-val params from the query (or the existing "defaults").
+      -->
+    <!-- In this example, the param "fq=instock:true" would be appended to
+         any query time fq params the user may specify, as a mechanism for
+         partitioning the index, independent of any user selected filtering
+         that may also be desired (perhaps as a result of faceted searching).
+
+         NOTE: there is *absolutely* nothing a client can do to prevent these
+         "appends" values from being used, so don't use this mechanism
+         unless you are sure you always want it.
+      -->
+    <!--
+       <lst name="appends">
+         <str name="fq">inStock:true</str>
+       </lst>
+      -->
+    <!-- "invariants" are a way of letting the Solr maintainer lock down
+         the options available to Solr clients.  Any params values
+         specified here are used regardless of what values may be specified
+         in either the query, the "defaults", or the "appends" params.
+
+         In this example, the facet.field and facet.query params would
+         be fixed, limiting the facets clients can use.  Faceting is
+         not turned on by default - but if the client does specify
+         facet=true in the request, these are the only facets they
+         will be able to see counts for; regardless of what other
+         facet.field or facet.query params they may specify.
+
+         NOTE: there is *absolutely* nothing a client can do to prevent these
+         "invariants" values from being used, so don't use this mechanism
+         unless you are sure you always want it.
+      -->
+    <!--
+       <lst name="invariants">
+         <str name="facet.field">cat</str>
+         <str name="facet.field">manu_exact</str>
+         <str name="facet.query">price:[* TO 500]</str>
+         <str name="facet.query">price:[500 TO *]</str>
+       </lst>
+      -->
+    <!-- If the default list of SearchComponents is not desired, that
+         list can either be overridden completely, or components can be
+         prepended or appended to the default list.  (see below)
+      -->
+    <!--
+       <arr name="components">
+         <str>nameOfCustomComponent1</str>
+         <str>nameOfCustomComponent2</str>
+       </arr>
+      -->
+
+  </requestHandler>
+
+  <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
+  <requestHandler name="document" class="solr.SearchHandler" >
+    <lst name="defaults">
+      <str name="echoParams">all</str>
+      <str name="fl">*</str>
+      <str name="rows">1</str>
+      <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
+    </lst>
+  </requestHandler>
+</config>

@@ -25,10 +25,7 @@ coverage/
 .byebug_history
 # Ignore dreaded .DS_Store
 .DS_Store
-# Ignore sorl config and libs downloaded from https://github.com/pulibrary/pul_solr/
-solr/conf/*.txt
-solr/conf/*.xml
-solr/conf/*.jar
+
 /public/packs
 /public/packs-test
 /node_modules
