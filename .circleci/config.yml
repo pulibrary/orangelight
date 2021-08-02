@@ -1,7 +1,7 @@
-version: 2
-jobs:
-  build:
-    # Primary command image where all commands run
+---
+version: 2.1
+executors:
+  orangelight-executor:
     docker:
       - image: circleci/ruby:2.6-node-browsers
         environment:
@@ -10,20 +10,47 @@ jobs:
           ORANGELIGHT_USER: postgres
           SOLR_URL: http://solr:SolrRocks@localhost:8983/solr/orangelight-core-test
           NVM_HOME: ~/.nvm
-
-      # Service container image available at 'host: localhost'
       - image: postgres:10
         environment:
           POSTGRES_USER: orangelight
           POSTGRES_DB: orangelight_test
           POSTGRES_HOST_AUTH_METHOD: trust
-
-      # Custom solr container image
       - image: pulibrary/orangelight-solr:8.4
         command: server/scripts/ci-start.sh
     working_directory: ~/orangelight
+  basic-executor:
+    docker:
+      - image: circleci/ruby:2.6-node-browsers
+        environment:
+          RAILS_ENV: test
+          NVM_HOME: ~/.nvm
+    working_directory: ~/orangelight
+
+commands:
+  setup-bundler:
     steps:
+      - run: gem install bundler -v '2.2.14'
+      # Restore bundle cache
+      - restore_cache:
+          keys:
+          - orangelight-{{ checksum "Gemfile.lock" }}
+          - orangelight-
+      # Bundle install dependencies
+      - run:
+          name: Install dependencies
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+      - save_cache:
+          key: orangelight-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+jobs:
+  build:
+    executor: basic-executor
+    steps:
+      - attach_workspace:
+          at: '~/orangelight'
       - checkout
+      - setup-bundler
       - run:
           name: Install the NVM
           command: |
@@ -42,33 +69,6 @@ jobs:
           command: |
             source ~/.nvm/nvm.sh
             curl -o- -L https://yarnpkg.com/install.sh | bash
-      #set timezone to est
-      - run:
-          name: Set Timezone to EST
-          command: echo 'America/New_York' = /etc/timezone
-      # Install Bundler
-      - run: gem install bundler -v '2.2.14'
-      # Restore bundle cache
-      - restore_cache:
-          keys:
-          - orangelight-{{ checksum "Gemfile.lock" }}
-          - orangelight-
-      # Bundle install dependencies
-      - run:
-          name: Install dependencies
-          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
-      - run:
-          name: Install Chrome
-          command: |
-            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-            sudo apt-get update
-            sudo apt-get -y install google-chrome-stable
-      - run: sudo apt install postgresql-client
-      - save_cache:
-          key: orangelight-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ./vendor/bundle
       # Only necessary if app uses webpacker or yarn in some other way
       - restore_cache:
           keys:
@@ -84,6 +84,34 @@ jobs:
           key: orangelight-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+      - persist_to_workspace:
+          root: '~/orangelight'
+          paths: '*'
+
+  test:
+    executor: orangelight-executor
+    steps:
+      - attach_workspace:
+          at: '~/orangelight'
+      - setup-bundler
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run: sudo apt install postgresql-client
+      - run:
+          name: Database setup
+          command: bundle exec rake db:setup
+      #set timezone to est
+      - run:
+          name: Set Timezone to EST
+          command: echo 'America/New_York' = /etc/timezone
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+            sudo apt-get update
+            sudo apt-get -y install google-chrome-stable
       - run:
           name: Load config into solr
           command: |
@@ -91,15 +119,6 @@ jobs:
             zip -1 -r solr_config.zip ./*
             curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@127.0.0.1:8983/solr/admin/configs?action=UPLOAD&name=orangelight"
             curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8983/api/collections/  -d '{create: {name: orangelight-core-test, config: orangelight, numShards: 1}}'
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run:
-          name: Database setup
-          command: bundle exec rake db:setup
-      - run:
-          name: Run rubocop
-          command: bundle exec rake rubocop
       - run:
           name: Index Test Data
           command: bundle exec rake pulsearch:solr:index
@@ -109,9 +128,22 @@ jobs:
       - run:
           name: Run JS unit tests
           command: bundle exec yarn test
+
+  rubocop:
+    executor: basic-executor
+    steps:
+      - attach_workspace:
+          at: '~/orangelight'
+      - setup-bundler
+      - run: bundle exec rubocop
+
 workflows:
-  version: 2
-  build_accept_deploy:
+  build_accept:
     jobs:
       - build
-
+      - rubocop:
+         requires:
+          - build
+      - test:
+         requires:
+          - build
