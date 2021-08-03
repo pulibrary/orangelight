@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_212034) do
+ActiveRecord::Schema.define(version: 2021_08_02_203055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,45 +63,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_212034) do
     t.datetime "updated_at"
     t.string "document_type"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
-  end
-
-  create_table "orangelight_call_numbers", id: :serial, force: :cascade do |t|
-    t.text "label"
-    t.string "dir"
-    t.text "scheme"
-    t.text "sort"
-    t.text "title"
-    t.text "author"
-    t.text "date"
-    t.text "bibid"
-    t.string "holding_id"
-    t.string "location"
-    t.index ["label"], name: "index_orangelight_call_numbers_on_label"
-    t.index ["sort"], name: "index_orangelight_call_numbers_on_sort"
-  end
-
-  create_table "orangelight_name_titles", id: :serial, force: :cascade do |t|
-    t.text "label"
-    t.integer "count"
-    t.text "sort"
-    t.string "dir"
-    t.index ["sort"], name: "index_orangelight_name_titles_on_sort"
-  end
-
-  create_table "orangelight_names", id: :serial, force: :cascade do |t|
-    t.text "label"
-    t.integer "count"
-    t.text "sort"
-    t.string "dir"
-    t.index ["sort"], name: "index_orangelight_names_on_sort"
-  end
-
-  create_table "orangelight_subjects", id: :serial, force: :cascade do |t|
-    t.text "label"
-    t.integer "count"
-    t.text "sort"
-    t.string "dir"
-    t.index ["sort"], name: "index_orangelight_subjects_on_sort"
   end
 
   create_table "searches", id: :serial, force: :cascade do |t|
