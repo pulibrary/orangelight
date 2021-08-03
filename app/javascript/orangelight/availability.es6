@@ -199,8 +199,11 @@ export default class AvailabilityUpdater {
     var url = `${this.bibdata_base_url}/bibliographic/${mms_id}/availability.json?deep=true`;
     $.getJSON(url, (data) => { this.update_single(data, mms_id); })
       .fail((jqXHR, textStatus, errorThrown) => {
-        // Notice that this console.error() message shows in the console output when running `yarn test`
-        return console.error(`Failed to retrieve deep availability data for bib. record ${mms_id}: ${errorThrown}`);
+        // Notice that this console.error() message shows in the Terminal output when running `yarn test`
+        // even while all the tests pass. The only way I have found to prevent it from showing up in the
+        // Terminal is by declaring this gratuitous variable WITHOUT var/let/const.
+        dummy_var_1 = true
+        return console.error(`Failed to retrieve deep availability data for bib. record ${mms_id}: ${errorThrown}`)
       });
 
     return;
