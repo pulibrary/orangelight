@@ -274,13 +274,13 @@ describe('AvailabilityUpdater', function() {
     let u = new updater
     u.bibdata_base_url = 'http://mock_url'
     u.id = '9959958323506421'
-    const getJSON = jest.spyOn($, 'getJSON')
+    let getJSON = jest.spyOn($, 'getJSON')
     u.process_single(holding_records)
-    expect(getJSON).toHaveBeenCalledWith("http://mock_url/bibliographic/9959958323506421/availability.json?deep=true", expect.any(Function) )
+    expect(getJSON).toHaveBeenCalledWith("http://mock_url/bibliographic/9959958323506421/availability.json?deep=true", expect.any(Function))
     getJSON.mockRestore()
   })
 
-  test('record show page with an item not on CDL does not add a link', () => {
+  test('record show page with an item Unavailable and not on CDL it makes an extra call to get the full data', () => {
     document.body.innerHTML =
       '<table><tr>' +
         '<td class="holding-status" data-availability-record="true" data-record-id="9965126093506421" data-holding-id="22202918790006421" data-aeon="false">' +
@@ -289,14 +289,13 @@ describe('AvailabilityUpdater', function() {
       '</tr></table>';
     const holding_records = {"9965126093506421":{"22202918790006421":{"on_reserve":"N","location":"firestone$stacks","label":"Stacks","status_label":"Unavailable","cdl":false,"holding_type":"physical","id":"22202918790006421"}}}
 
-    const spy = jest.spyOn(orangelight_online_link, 'insert_online_link')
-
     let u = new updater
+    u.bibdata_base_url = 'http://mock_url'
     u.id = '9965126093506421'
+    let getJSON = jest.spyOn($, 'getJSON')
     u.process_single(holding_records)
-
-    expect(spy).not.toHaveBeenCalled()
-    spy.mockRestore()
+    expect(getJSON).toHaveBeenCalledWith("http://mock_url/bibliographic/9965126093506421/availability.json?deep=true", expect.any(Function))
+    getJSON.mockRestore()
   })
 
   test('record show page for a bound-with record', () => {
