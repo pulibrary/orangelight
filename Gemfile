@@ -55,7 +55,6 @@ gem 'faraday', '~> 0.17'
 gem 'faraday-cookie_jar'
 gem 'global'
 gem 'omniauth-cas'
-gem 'solr_wrapper', '~> 2.0'
 gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
 
 gem 'babel-transpiler'

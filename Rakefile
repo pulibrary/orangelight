@@ -3,7 +3,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 require 'rubocop/rake_task' if Rails.env.development? || Rails.env.test?
-require 'solr_wrapper/rake_task'
 require 'honeybadger/init/ruby'
 require 'sneakers/tasks'
 
@@ -19,6 +18,3 @@ if defined? RuboCop
   desc 'Run test suite and style checker'
   task spec: :rubocop
 end
-
-Rake::Task[:default].clear
-task default: :ci
