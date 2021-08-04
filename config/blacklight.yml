@@ -15,7 +15,7 @@ development:
   url: <%= ENV['SOLR_URL'] || "http://#{ENV["lando_orangelight_development_solr_conn_host"] || "127.0.0.1"}:#{ENV["lando_orangelight_development_solr_conn_port"] || 8983}/solr/orangelight-core-dev" %>
 test: &test
   adapter: solr
-  url: <%= "http://#{ENV["lando_orangelight_test_solr_conn_host"] || "127.0.0.1"}:#{ENV['SOLR_TEST_PORT'] || ENV["lando_orangelight_test_solr_conn_port"] || 8888}/solr/orangelight-core-test" %>
+  url: <%= ENV['SOLR_URL'] || "http://#{ENV["lando_orangelight_test_solr_conn_host"] || "127.0.0.1"}:#{ENV['SOLR_TEST_PORT'] || ENV["lando_orangelight_test_solr_conn_port"] || 8888}/solr/orangelight-core-test" %>
 staging:
   adapter: solr
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>

@@ -20,18 +20,36 @@ module BrowseLists
       port = config['port']
       sql_command = "PGPASSWORD=#{password} psql -U #{dbuser} -h #{dbhost} -p #{port} #{dbname} -c"
 
-      # changes for different facet queries
-      facet_request = "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax&facet.sort=asc&facet.limit=-1&facet.field="
-      solr_url = Blacklight.connection_config[:url]
-
-      conn = Faraday.new(url: solr_url) do |faraday|
+      conn = Faraday.new(url: solr_connection.to_s) do |faraday|
         faraday.options[:open_timeout] = 2000
         faraday.options[:timeout] = 2000
         faraday.request  :url_encoded             # form-encode POST params
         faraday.response :logger                  # log requests to STDOUT
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+        faraday.basic_auth(solr_user, solr_password) if basic_auth? # enable Solr auth
       end
+
       [sql_command, facet_request, conn]
+    end
+
+    def facet_request
+      "#{core_url}select?q=*%3A*&fl=id&wt=json&indent=true&defType=edismax&facet.sort=asc&facet.limit=-1&facet.field="
+    end
+
+    def solr_connection
+      Blacklight.default_index.connection.uri
+    end
+
+    def solr_user
+      solr_connection.user
+    end
+
+    def solr_password
+      solr_connection.password
+    end
+
+    def basic_auth?
+      solr_user && solr_password
     end
 
     def output_root
@@ -39,7 +57,7 @@ module BrowseLists
     end
 
     def core_url
-      Blacklight.default_index.connection.uri.to_s.gsub(%r{^.*\/solr}, '/solr')
+      solr_connection.to_s.gsub(%r{^.*\/solr}, '/solr')
     end
 
     def browse_facet(_sql_command, facet_request, conn, facet_field, table_name)

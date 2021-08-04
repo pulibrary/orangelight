@@ -1,32 +1,9 @@
 # frozen_string_literal: true
 
-require 'solr_wrapper'
-
-desc 'Run test suite'
-task :ci do
-  if Rails.env.test?
-    run_solr('test', port: '8985') do
-      Rake::Task['pulsearch:solr:index'].invoke
-      Rake::Task['spec'].invoke
-      Rake::Task['yarn:test'].invoke
-    end
-  else
-    system('rake ci RAILS_ENV=test')
-  end
-end
-
 namespace :yarn do
   desc 'Run jest tests'
   task :test do
     sh('yarn', 'test') if Rails.env.test? || Rails.env.development?
-  end
-end
-
-desc 'Run solr and orangelight for interactive development'
-task :server, [:rails_server_args] do |_t, args|
-  run_solr('development', port: '8983') do
-    Rake::Task['pulsearch:solr:index'].invoke
-    system "bundle exec rails s #{args[:rails_server_args]}"
   end
 end
 
@@ -40,7 +17,6 @@ namespace :servers do
 
   desc "Start the Apache Solr and PostgreSQL container services using Lando."
   task start: :environment do
-    Rake::Task["pulsearch:solr:update"].invoke
     system("lando start")
     system("rake servers:initialize")
     system("rake servers:initialize RAILS_ENV=test")
@@ -55,51 +31,17 @@ end
 namespace :server do
   desc 'Run development solr'
   task :dev do
-    if ENV["lando_orangelight_development_solr_conn_port"]
-      Rake::Task['pulsearch:solr:index'].invoke
-      puts("Indexing to Lando. Running at http://localhost:#{ENV['lando_orangelight_development_solr_conn_port']}")
-    else
-      run_solr('development', port: '8983') do
-        Rake::Task['pulsearch:solr:index'].invoke
-        sleep
-      end
-    end
+    Rake::Task['pulsearch:solr:index'].invoke
+    puts("Indexing to Lando. Running at http://localhost:#{ENV['lando_orangelight_development_solr_conn_port']}")
   end
 
   desc 'Run test solr'
   task :test do
     if Rails.env.test?
-      if ENV["lando_orangelight_test_solr_conn_port"]
-        Rake::Task['pulsearch:solr:index'].invoke
-        puts("Indexing to Lando. Running at http://localhost:#{ENV['lando_orangelight_test_solr_conn_port']}")
-      else
-        run_solr('test', port: '8888') do
-          Rake::Task['pulsearch:solr:index'].invoke
-          sleep
-        end
-      end
+      Rake::Task['pulsearch:solr:index'].invoke
+      puts("Indexing to Lando. Running at http://localhost:#{ENV['lando_orangelight_test_solr_conn_port']}")
     else
       system('rake server:test RAILS_ENV=test')
-    end
-  end
-end
-
-def run_solr(environment, solr_params)
-  solr_dir = File.join(File.expand_path('.', File.dirname(__FILE__)), '../../', 'solr')
-  SolrWrapper.wrap(solr_params) do |solr|
-    ENV['SOLR_TEST_PORT'] = solr.port
-
-    # additional solr configuration
-    Rake::Task['pulsearch:solr:update'].invoke(solr_dir)
-    solr.with_collection(name: "orangelight-core-#{environment}", dir: File.join(solr_dir, 'conf')) do
-      puts "\n#{environment.titlecase} solr server running: http://localhost:#{solr.port}/solr/#/orangelight-core-#{environment}"
-      puts "\n^C to stop"
-      puts ' '
-      begin
-        yield
-      rescue Interrupt
-        puts 'Shutting down...'
-      end
     end
   end
 end

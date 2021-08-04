@@ -93,6 +93,14 @@ it to the bottom of `spec/fixtures/current_fixtures.json`. Note that file
 contains a list so you have to make sure you add a comma to the end of the last
 record and keep the closing bracket at the end of the file. Then run `rake pulsearch:solr:index` for both the dev and the test environment, as specified above.
 
+## Update Solr configuration
+
+Run the following command to update pull in Solr configuration updates from the pul_solr repo:
+
+```bash
+rake pulsearch:solr:update
+```
+
 ## Local development with Figgy
 
 Orangelight is configured to use two environment variables in order to query and retrieve [IIIF Manifests](https://iiif.io/api/presentation/2.1/#manifest) for resources linked to catalog records in the [Figgy digital object repository](https://github.com/pulibrary/figgy).  By default, these are provided with the following values:
@@ -110,7 +118,7 @@ GRAPHQL_API_URL=https://figgy-staging.princeton.edu/graphql FIGGY_URL=https://fi
 
 To start up a copy of the project with a solr index of fixture data
 ```bash
-bundle exec rake server
+rake servers:start
 ```
 Then, in another terminal window build browse index csv files in /tmp:
 ```bash

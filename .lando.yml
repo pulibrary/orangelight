@@ -1,13 +1,19 @@
 name: orangelight
 services:
   orangelight_test_solr:
-    type: solr:8.4
+    type: solr:custom
+    overrides:
+      image: pulibrary/orangelight-solr:8.4
+      command: server/scripts/lando-start.sh
     portforward: true
     core: orangelight-core-test
     config:
       dir: "solr/conf"
   orangelight_development_solr:
-    type: solr:8.4
+    type: solr:custom
+    overrides:
+      image: pulibrary/orangelight-solr:8.4
+      command: server/scripts/lando-start.sh
     portforward: true
     core: orangelight-core-dev
     config:
