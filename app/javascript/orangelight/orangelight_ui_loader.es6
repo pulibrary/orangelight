@@ -24,11 +24,15 @@ export default class OrangelightUiLoader {
 
   setup_viewers() {
     const $elements = $(".document-thumbnail[data-bib-id]")
-    const thumbnails = FiggyManifestManager.buildThumbnailSet($elements)
-    thumbnails.render()
+    if($elements.length > 0) {
+      const thumbnails = FiggyManifestManager.buildThumbnailSet($elements)
+      thumbnails.render()
+    }
     const $monogramIds = $("p[data-monogram-id]")
-    const monograms = FiggyManifestManager.buildMonogramThumbnails($monogramIds)
-    monograms.renderMonogram()
+    if($monogramIds.length > 0 ) {
+      const monograms = FiggyManifestManager.buildMonogramThumbnails($monogramIds)
+      monograms.renderMonogram()
+    }
 
     $(".document-viewers").each(async (_, element) => {
       const viewerSet = FiggyManifestManager.buildViewers(element)
