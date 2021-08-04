@@ -1,5 +1,5 @@
 <li class="linked-block">
-  <%= link_to(linked_record.title, solr_document_url(linked_record.id)) %>
+  <%= link_to(linked_record.title || "Unknown", solr_document_url(linked_record.id)) %>
 
   <% if linked_record.fields.count == 1 %>
     <div class="linked-block-id"><span>

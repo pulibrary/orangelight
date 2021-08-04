@@ -31,7 +31,7 @@ class DecoratorService
     # Access the title
     # @return [String]
     def title
-      @document.fetch(@title_field)
+      @document.fetch(@title_field, nil)
     end
 
     # Access the ID for the Solr Document
