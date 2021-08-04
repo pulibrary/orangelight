@@ -27,6 +27,7 @@ export default class AvailabilityUpdater {
     this.update_single = this.update_single.bind(this);
     this.update_availability_undetermined = this.update_availability_undetermined.bind(this);
     this.process_scsb_single = this.process_scsb_single.bind(this);
+    this.availability_url_show = this.availability_url_show.bind(this);
   }
 
   request_availability(allowRetry) {
@@ -66,11 +67,7 @@ export default class AvailabilityUpdater {
           });
 
       } else {
-        url = `${this.bibdata_base_url}/bibliographic/availability.json?deep=true&bib_ids=${this.id}`;
-        if (this.host_id !== "") {
-          url += `,${this.host_id}`
-        }
-        return $.getJSON(url, this.process_single)
+        return $.getJSON(this.availability_url_show(), this.process_single)
           .fail((jqXHR, textStatus, errorThrown) => {
             if (jqXHR.status == 429) {
               if (allowRetry) {
@@ -89,6 +86,14 @@ export default class AvailabilityUpdater {
           });
       }
     }
+  }
+
+  availability_url_show() {
+    let url = `${this.bibdata_base_url}/bibliographic/availability.json?deep=true&bib_ids=${this.id}`
+    if (this.host_id !== "") {
+      url += `,${this.host_id}`
+    }
+    return url
   }
 
   scsb_search_availability() {
