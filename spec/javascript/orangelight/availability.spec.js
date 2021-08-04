@@ -458,4 +458,14 @@ describe('AvailabilityUpdater', function() {
     let u = new updater
     expect(u.record_ids()).toEqual(['2939035', '3821268'])
   })
+
+  test('account for bound-with records when building URL to request availability', () => {
+    let u = new updater
+    u.bibdata_base_url = 'http://mock_url'
+    u.id = '9965126093506421'
+    expect(u.availability_url_show()).toEqual('http://mock_url/bibliographic/availability.json?deep=true&bib_ids=9965126093506421')
+
+    u.host_id = '9900126093506421'
+    expect(u.availability_url_show()).toEqual('http://mock_url/bibliographic/availability.json?deep=true&bib_ids=9965126093506421,9900126093506421')
+  })
 })
