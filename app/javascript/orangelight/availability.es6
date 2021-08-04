@@ -330,6 +330,9 @@ export default class AvailabilityUpdater {
     if (availability_label_text === "Reserved for digital lending") {
       location_services_element.remove();
     }
+    if (availability_info['on_reserve'] === 'Y') {
+      return location_services_element.remove();
+    }
     if (availability_info['status_label'].toLowerCase() === 'unavailable') {
       display_request = 'false';
     }
