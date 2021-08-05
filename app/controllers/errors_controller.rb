@@ -2,7 +2,7 @@
 
 class ErrorsController < ApplicationController
   def error
-    render status: :error
+    render status: 500
   end
 
   def missing
