@@ -38,6 +38,7 @@ class StackmapService
     end
 
     def location_label
+      return nil if holding_location.nil?
       holding_location[:label].presence || holding_location[:library][:label]
     end
 

@@ -107,6 +107,9 @@ RSpec.describe StackmapService::Url do
       it 'resolves to catalog show page url' do
         expect(url).to include("/catalog/#{properties[:id]}")
       end
+      it 'returns nil for the location label' do
+        expect(url_service.location_label).to be nil
+      end
     end
     describe 'nil location' do
       let(:location) { nil }
