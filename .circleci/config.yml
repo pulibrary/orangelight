@@ -15,7 +15,7 @@ executors:
           POSTGRES_USER: orangelight
           POSTGRES_DB: orangelight_test
           POSTGRES_HOST_AUTH_METHOD: trust
-      - image: pulibrary/orangelight-solr:8.4
+      - image: pulibrary/ci-solr:8.4-v1.0.0
         command: server/scripts/ci-start.sh
     working_directory: ~/orangelight
   basic-executor:
