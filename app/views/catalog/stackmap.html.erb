@@ -13,7 +13,7 @@
 
   <div class="modal-body">
     <p>
-      Call number <span class="stackmap-cn"><%= @call_number %></span> is located in <span class="stackmap-library"><%= @location_label %></span>.
+      Call number <span class="stackmap-cn"><%= @call_number %></span> is located in <span class="stackmap-library"><%= @location_label || '(cannot be determined)' %></span>.
     </p>
     <div class="stackmap-wrapper">
       <iframe class="stackmap-src" src=<%= @url %>></iframe>
