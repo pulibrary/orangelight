@@ -11,6 +11,9 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
 
   def numismatics
     @response = get_advanced_search_facets unless request.method == :post
-    render :numismatics
+    respond_to do |format|
+      format.html { render :numismatics }
+      format.json { render plain: "Format not supported", status: 400 }
+    end
   end
 end
