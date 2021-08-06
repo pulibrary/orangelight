@@ -74,7 +74,7 @@ module Users
       # @return [OmniAuth::AuthHash,nil] the access token
       def barcode_token_in_request_params
         access_token = access_token_in_request_params
-        access_token.uid = access_token.uid.gsub(/\s/, '') unless access_token.nil? || access_token.uid.empty?
+        access_token.uid = access_token.uid.gsub(/\s/, '') unless access_token.nil? || access_token.uid.blank?
         access_token
       end
   end
