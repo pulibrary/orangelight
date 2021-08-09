@@ -30,6 +30,7 @@ class User < ApplicationRecord
   # @param access_token []
   # @return [User,nil]
   def self.from_cas(access_token)
+    access_token.uid = access_token.uid.downcase
     User.where(provider: access_token.provider, uid: access_token.uid).first_or_create do |user|
       user.uid = access_token.uid
       user.username = access_token.uid
