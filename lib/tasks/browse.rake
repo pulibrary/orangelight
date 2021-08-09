@@ -26,7 +26,7 @@ namespace :browse do
   end
 
   desc 'Pull data for call numbers browse'
-  task :call_numbers do
+  task call_numbers: :environment do
     _sql_command, facet_request, conn = BrowseLists.connection
     BrowseLists::CallNumberCSV.new(facet_request, conn).write
   end
