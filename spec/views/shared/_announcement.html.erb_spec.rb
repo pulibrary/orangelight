@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'shared/_announcement' do
   it 'renders an announcement' do
     render
-    expect(rendered).to match(/System upgrade/)
+    expect(rendered).to match(//)
   end
 
   context 'in read-only mode' do
