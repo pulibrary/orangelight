@@ -22,7 +22,8 @@ class SearchBuilder < Blacklight::SearchBuilder
   # query to prevent the error and let the query to be parsed as if the ending "()" was not present.
   # Notice that we must update the value in `blacklight_params[:q]`
   def parslet_trick(_solr_parameters)
-    return unless (blacklight_params[:q] || "").strip.end_with?("()")
+    return unless blacklight_params[:q].is_a?(String)
+    return unless blacklight_params[:q].strip.end_with?("()")
     blacklight_params[:q] = blacklight_params[:q].strip.gsub("()", "")
   end
 
