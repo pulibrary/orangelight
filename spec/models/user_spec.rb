@@ -23,4 +23,13 @@ RSpec.describe User do
       expect { described_class.expire_guest_accounts }.to change { described_class.count }.by(-100)
     end
   end
+
+  describe ".from_cas" do
+    it "finds the user in the database" do
+      access_token = OmniAuth::AuthHash.new(provider: "provider", uid: "1234")
+      described_class.from_cas(access_token)
+      expect(User.last.provider).to eq("provider")
+      expect(User.last.uid).to eq("1234")
+    end
+  end
 end
