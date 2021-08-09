@@ -25,11 +25,15 @@ RSpec.describe User do
   end
 
   describe ".from_cas" do
-    it "finds the user in the database" do
-      access_token = OmniAuth::AuthHash.new(provider: "provider", uid: "1234")
+    let(:access_token) { access_token = OmniAuth::AuthHash.new(provider: "provider", uid: "testUSER123") }
+
+    it "finds or creates user in the database" do
+      expect{ described_class.from_cas(access_token) }.to change(User, :count).by(1)
+    end
+
+    it "downcases User.username" do
       described_class.from_cas(access_token)
-      expect(User.last.provider).to eq("provider")
-      expect(User.last.uid).to eq("1234")
+      expect(User.last.username).to eq("testuser123")
     end
   end
 end
