@@ -26,6 +26,21 @@ RSpec.describe Users::OmniauthCallbacksController do
     end
   end
 
+  describe 'bad omniauth session' do
+    let(:omniauth_response_nil_uid) do
+      OmniAuth::AuthHash.new(provider: 'barcode', uid: nil, info: { last_name: "" })
+    end
+    before do
+      controller.request.env['omniauth.auth'] = omniauth_response_nil_uid
+    end
+    it 'handles nil UID' do
+      allow(User).to receive(:from_barcode) { valid_barcode_user }
+      allow(Bibdata).to receive(:get_patron) { guest_response }
+      get :barcode
+      expect(response).to redirect_to(account_path)
+    end
+  end
+
   describe 'logging in' do
     it 'valid cas login redirects to account page' do
       allow(User).to receive(:from_cas) { FactoryBot.create(:valid_princeton_patron) }
