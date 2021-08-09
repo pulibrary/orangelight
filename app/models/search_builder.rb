@@ -6,7 +6,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include BlacklightHelper
 
-  self.default_processor_chain += %i[cleanup_boolean_operators add_advanced_search_to_solr
+  self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators add_advanced_search_to_solr
                                      cjk_mm wildcard_char_strip excessive_paging_error
                                      only_home_facets left_anchor_escape_whitespace
                                      series_title_results pul_holdings html_facets
@@ -15,6 +15,15 @@ class SearchBuilder < Blacklight::SearchBuilder
   def cleanup_boolean_operators(solr_parameters)
     return add_advanced_parse_q_to_solr(solr_parameters) if run_advanced_parse?(solr_parameters)
     solr_parameters[:q] = cleaned_query(solr_parameters[:q])
+  end
+
+  # Blacklight uses Parslet https://rubygems.org/gems/parslet/versions/2.0.0 to parse the user query
+  # and unfortunately Parslet gets confused when the user's query ends with "()". Here we tweak the
+  # query to prevent the error and let the query to be parsed as if the ending "()" was not present.
+  # Notice that we must update the value in `blacklight_params[:q]`
+  def parslet_trick(solr_parameters)
+    return unless (blacklight_params[:q] || "").strip.end_with?("()")
+    blacklight_params[:q] = blacklight_params[:q].strip.gsub("()", "")
   end
 
   # Only search for coin records when querying with the numismatics advanced search
