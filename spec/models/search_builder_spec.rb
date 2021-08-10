@@ -43,5 +43,11 @@ RSpec.describe SearchBuilder do
       search_builder.blacklight_params[:search_field] = 'advanced'
       expect(search_builder.excessive_paging?).to be false
     end
+
+    it 'handles query ending with empty parenthesis' do
+      search_builder.blacklight_params[:q] = 'hello world ()'
+      search_builder.parslet_trick({})
+      expect(search_builder.blacklight_params[:q].end_with?("()")).to be false
+    end
   end
 end
