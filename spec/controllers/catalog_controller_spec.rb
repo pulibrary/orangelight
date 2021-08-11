@@ -112,4 +112,18 @@ RSpec.describe CatalogController do
       expect(assigns(:hathi_url)).to be_nil
     end
   end
+
+  describe 'home page' do
+    it 'renders empty searches for the home page' do
+      expect(controller).to have_received(:render_empty_search)
+      get :index, params: {}
+      expect(response.status).to eq 200
+    end
+
+    it 'does not consider empty search when there are parameters in the URL' do
+      expect(controller).not_to have_received(:render_empty_search)
+      get :index, params: { q: "coffee" }
+      expect(response.status).to eq 200
+    end
+  end
 end
