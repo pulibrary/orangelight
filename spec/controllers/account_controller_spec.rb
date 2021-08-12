@@ -24,19 +24,16 @@ RSpec.describe AccountController do
       .to_return(status: 200, body: verify_user_response)
   end
 
-  describe '#index' do
+  describe '#digitization_requests' do
     context 'when Orangelight is in read only mode' do
-      let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
-
       before do
-        sign_in(valid_user)
         allow(Orangelight).to receive(:read_only_mode).and_return(true)
       end
 
       it 'redirects to root and flashes an explanatory message' do
-        get :index
+        get :digitization_requests
         expect(response).to redirect_to(root_path)
-        expect(flash[:notice]).to include("Account page is disabled", "read-only")
+        expect(flash[:notice]).to include("Account login unavailable during maintenace.")
       end
     end
   end

@@ -26,16 +26,6 @@ describe 'Request Options' do
     end
   end
 
-  describe 'the request button when orangelight is in read-only mode', js: true do
-    it 'does display a request button' do
-      allow(Orangelight).to receive(:read_only_mode).and_return(true)
-      visit '/catalog/9618072'
-      using_wait_time 5 do
-        expect(page).to have_selector('td[data-requestable="true"]')
-      end
-    end
-  end
-
   describe 'Available status non-requestable location', js: true do
     before do
       visit '/catalog/9222024'

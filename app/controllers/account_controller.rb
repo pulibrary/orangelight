@@ -5,16 +5,12 @@ require './lib/orangelight/illiad_account.rb'
 class AccountController < ApplicationController
   include ApplicationHelper
 
+  before_action :read_only_redirect
   before_action :require_user_authentication_provider
   before_action :verify_user, except: [:borrow_direct_redirect]
 
   def index
-    if Orangelight.read_only_mode
-      msg = "Account page is disabled. #{Orangelight.read_only_message}"
-      redirect_to root_path, flash: { notice: msg }
-    else
-      redirect_to digitization_requests_path
-    end
+    redirect_to digitization_requests_path
   end
 
   def digitization_requests
@@ -41,6 +37,13 @@ class AccountController < ApplicationController
   end
 
   protected
+
+    def read_only_redirect
+      if Orangelight.read_only_mode
+        flash[:notice] = 'Account login unavailable during maintenace.'
+        redirect_to(root_url) && return
+      end
+    end
 
     def verify_user
       unless current_user
