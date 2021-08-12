@@ -670,8 +670,52 @@ class CatalogController < ApplicationController
   end
 
   def index
-    super
+    if home_page?
+      render_empty_search
+    else
+      super
+    end
   rescue ActionController::BadRequest
     render file: Rails.public_path.join('x400.html'), layout: true, status: :bad_request
   end
+
+  private
+
+    def render_empty_search
+      # This code is a copy of Blacklight::Catalog.index() method but adapted to use
+      # a cached version of the data rather than requesting the data from Solr.
+      # See https://github.com/projectblacklight/blacklight/blob/v7.0.1/app/controllers/concerns/blacklight/catalog.rb#L25-L41
+      @response = empty_solr_response
+      @document_list = @response.documents
+      respond_to do |format|
+        format.html { store_preferred_view }
+        format.rss  { render layout: false }
+        format.atom { render layout: false }
+        format.json do
+          @presenter = Blacklight::JsonPresenter.new(@response, blacklight_config)
+        end
+        additional_response_formats(format)
+        document_export_formats(format)
+      end
+    end
+
+    def home_page?
+      # When only the "controller" and "action" keys are in the request (i.e. no query or facets)
+      # we consider it the home page.
+      params.keys.count == 2
+    end
+
+    def empty_solr_response
+      raw_response = JSON.parse(empty_raw_response)
+      Blacklight::Solr::Response.new(raw_response, raw_response["responseHeader"]["params"], blacklight_config: @blacklight_config)
+    end
+
+    def empty_raw_response
+      Rails.cache.fetch("home_page_empty_raw_response", expires_in: 3.hours) do
+        Rails.logger.info "Cached home page results"
+        # We cannot cache the Blacklight::Solr::Response as-is so we convert it to JSON first
+        (response, _deprecated_document_list) = search_service.search_results
+        response.to_json
+      end
+    end
 end

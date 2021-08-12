@@ -112,4 +112,24 @@ RSpec.describe CatalogController do
       expect(assigns(:hathi_url)).to be_nil
     end
   end
+
+  describe 'home page' do
+    let(:solr_empty_query) { File.open(fixture_path + '/solr_empty_query.json').read }
+
+    before do
+      allow(Rails.cache).to receive(:fetch).and_return solr_empty_query
+    end
+
+    it 'uses the cache for an empty search' do
+      get :index, params: {}
+      expect(response.status).to eq 200
+      expect(Rails.cache).to have_received(:fetch)
+    end
+
+    it 'does not use the cache for a search with arguments' do
+      get :index, params: { q: "coffee" }
+      expect(response.status).to eq 200
+      expect(Rails.cache).not_to have_received(:fetch)
+    end
+  end
 end
