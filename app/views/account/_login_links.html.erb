@@ -1,7 +1,11 @@
 <% if !current_user %>
   <div class='card'>
     <div class='card-body'>
-      To view previously saved <%= feature_page %>, please <%= link_to "log in", main_app.new_user_session_path(origin: request.fullpath) %> to your catalog account.
+      <% if Orangelight.read_only_mode %>
+        Previously saved <%= feature_page %> unavailable during maintenance.
+      <% else %>
+        To view previously saved <%= feature_page %>, please <%= link_to "log in", main_app.new_user_session_path(origin: request.fullpath) %> to your catalog account.
+      <% end %>
     </div>
   </div>
 <% end %>

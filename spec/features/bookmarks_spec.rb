@@ -26,6 +26,17 @@ RSpec.describe 'bookmarks' do
     end
   end
 
+  context 'when orangelight is in readonly mode' do
+    it 'has a maintenance message' do
+      allow(Orangelight).to receive(:read_only_mode).and_return(true)
+      visit '/bookmarks'
+      within('#content') do
+        expect(page).not_to have_link("log in")
+        expect(page).to have_content("unavailable during maintenance")
+      end
+    end
+  end
+
   context 'when logged in' do
     let(:user) { FactoryBot.create(:user) }
 
