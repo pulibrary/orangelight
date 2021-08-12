@@ -114,20 +114,22 @@ RSpec.describe CatalogController do
   end
 
   describe 'home page' do
+    let(:solr_empty_query) { File.open(fixture_path + '/solr_empty_query.json').read }
+
     before do
-      allow(Rails.logger).to receive(:info).and_return nil
+      allow(Rails.cache).to receive(:fetch).and_return solr_empty_query
     end
 
-    it 'renders empty searches for the home page' do
+    it 'uses the cache for an empty search' do
       get :index, params: {}
       expect(response.status).to eq 200
-      expect(Rails.logger).to have_received(:info).with("Cached home page results")
+      expect(Rails.cache).to have_received(:fetch)
     end
 
-    it 'does not consider empty search when there are parameters in the URL' do
+    it 'does not use the cache for a search with arguments' do
       get :index, params: { q: "coffee" }
       expect(response.status).to eq 200
-      expect(Rails.logger).to_not have_received(:info).with("Cached home page results")
+      expect(Rails.cache).not_to have_received(:fetch)
     end
   end
 end
