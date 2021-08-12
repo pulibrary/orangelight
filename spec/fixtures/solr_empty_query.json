@@ -1,0 +1,566 @@
+{
+    "responseHeader": {
+        "status": 0,
+        "QTime": 2,
+        "params": {
+            "f.access_facet.facet.sort": "index",
+            "facet.field": [
+                "access_facet",
+                "location",
+                "format",
+                "recently_added_facet"
+            ],
+            "f.subject_era_facet.facet.limit": "11",
+            "f.location.facet.mincount": "1",
+            "sort": "score desc, pub_date_start_sort desc, title_sort asc",
+            "f.location.facet.sort": "index",
+            "rows": "20",
+            "facet.query": [
+                "cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]",
+                "cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]",
+                "cataloged_tdt:[NOW/DAY-21DAYS TO NOW/DAY+1DAY]",
+                "cataloged_tdt:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]",
+                "cataloged_tdt:[NOW/DAY-2MONTHS TO NOW/DAY+1DAY]",
+                "cataloged_tdt:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]",
+                "cataloged_tdt:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]"
+            ],
+            "f.location.facet.limit": "21",
+            "f.subject_topic_facet.facet.limit": "11",
+            "f.sudoc_facet.facet.limit": "11",
+            "f.format.facet.mincount": "1",
+            "f.instrumentation_facet.facet.limit": "11",
+            "f.sudoc_facet.facet.sort": "index",
+            "stats": "true",
+            "f.format.facet.sort": "index",
+            "f.genre_facet.facet.limit": "11",
+            "facet": "true",
+            "wt": "json",
+            "f.format.facet.limit": "16",
+            "f.language_facet.facet.limit": "11",
+            "f.publication_place_facet.facet.limit": "11",
+            "stats.field": "pub_date_start_sort"
+        }
+    },
+    "response": {
+        "numFound": 130,
+        "start": 0,
+        "maxScore": 51.0,
+        "docs": [
+            {
+                "id": "99116547863506421",
+                "author_display": [
+                    "Nakanoin, Michifuyu, 1315-1363",
+                    "中院通冬, 1315-1363"
+                ],
+                "marc_relator_display": [
+                    "Author"
+                ],
+                "title_display": "Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan.",
+                "title_vern_display": "中院一品記 / 東京大學史料編纂所編纂.",
+                "pub_created_display": [
+                    "Tōkyō : Iwanami Shōten, 2018-",
+                    "東京 : 岩波書店, 2018-"
+                ],
+                "cataloged_tdt": "2020-12-03T03:12:18Z",
+                "format": [
+                    "Book"
+                ],
+                "lccn_s": [
+                    "2018430599"
+                ],
+                "isbn_s": [
+                    "9784000099851"
+                ],
+                "oclc_s": [
+                    "1062349585"
+                ],
+                "holdings_1display": "{\"22211952510006421\":{\"location_code\":\"eastasian$hy\",\"location\":\"\",\"library\":\"East Asian Library\",\"call_number\":\"J3306/5047.4 pt.31\",\"call_number_browse\":\"J3306/5047.4 pt.31\",\"items\":[{\"holding_id\":\"22211952510006421\",\"id\":\"23211952500006421\",\"status_at_load\":\"1\",\"collection_code\":\"hy\",\"enumeration\":\"vol.1\",\"barcode\":\"32101113265852\",\"copy_number\":\"0\"}]}}",
+                "score": 51.0
+            },
+            {
+                "cataloged_tdt": "2018-01-11T19:34:38Z",
+                "format": [
+                    "Video/Projected medium"
+                ],
+                "holdings_1display": "{\"10329434\":{\"location\":\"vidl\",\"library\":\"vidl\",\"location_code\":\"vidl\",\"call_number\":\"DVD 10921\",\"call_number_browse\":\"DVD 10921\",\"location_has\":[\"disc 1-disc 4, booklet\"]}}",
+                "id": "10585552",
+                "oclc_s": [
+                    "1012941693"
+                ],
+                "pub_created_display": [
+                    "[Brooklyn, N.Y.] : Icarus Films, [2017]",
+                    "[Paris] : Les Films de La Pleiade, 1956-1971.",
+                    "©1956-1971"
+                ],
+                "title_display": "Eight films by Jean Rouch.",
+                "score": 51.0
+            },
+            {
+                "id": "12052273",
+                "title_display": "Nerven / directed and written by: Robert Reinert.",
+                "pub_created_display": [
+                    "Germany : Edition Filmmuseum : Film & kunst GmbH, 2015."
+                ],
+                "cataloged_tdt": "2020-08-26T09:32:40Z",
+                "format": [
+                    "Video/Projected medium"
+                ],
+                "isbn_s": [
+                    "9783958600416"
+                ],
+                "oclc_s": [
+                    "982202735"
+                ],
+                "holdings_1display": "{\"11699689\":{\"location\":\"Firestone Library - Circulation Desk\",\"library\":\"Firestone Library\",\"location_code\":\"vidl\",\"call_number\":\"DVD 11389\",\"call_number_browse\":\"DVD 11389\"}}",
+                "score": 51.0
+            },
+            {
+                "id": "9770811",
+                "author_display": [
+                    "Chekhov, Anton Pavlovich, 1860-1904",
+                    "Чехов, Антон Павлович, 1860-1904"
+                ],
+                "marc_relator_display": [
+                    "Author"
+                ],
+                "title_display": "Pʹesy / Anton Chekhov.",
+                "title_vern_display": "Пьесы / Антон Чехов.",
+                "pub_created_display": [
+                    "Moskva : Letniĭ sad, 2015.",
+                    "Москва : Летний сад, 2015."
+                ],
+                "cataloged_tdt": "2016-11-15T22:09:29Z",
+                "format": [
+                    "Book"
+                ],
+                "isbn_s": [
+                    "9785988562320"
+                ],
+                "oclc_s": [
+                    "964907363"
+                ],
+                "holdings_1display": "{\"9588984\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"call_number\":\"PG3455 .A2 2015\",\"call_number_browse\":\"PG3455 .A2 2015\"}}",
+                "score": 51.0
+            },
+            {
+                "author_display": [
+                    "Jizang, 549-623",
+                    "吉藏, 549-623"
+                ],
+                "cataloged_tdt": "2017-04-27T13:27:43Z",
+                "format": [
+                    "Book"
+                ],
+                "holdings_1display": "{\"7948111\":{\"location\":\"rcppa\",\"library\":\"rcppa\",\"location_code\":\"rcppa\",\"call_number\":\"BQ2215 .J59 2014\",\"call_number_browse\":\"BQ2215 .J59 2014\"}}",
+                "id": "8181849",
+                "isbn_s": [
+                    "9784585220732"
+                ],
+                "marc_relator_display": [
+                    "Author"
+                ],
+                "oclc_s": [
+                    "902811484"
+                ],
+                "pub_created_display": [
+                    "Tōkyō : Bensei Shuppan, 2014.",
+                    "東京 : 勉誠出版, 2014.",
+                    "©2014"
+                ],
+                "title_display": "Jōmyō genron / Kyōto Kokuritsu Hakubutsukan hen ; kaisetsu Ishihara Harumichi (Hokkaidō Daigaku Meiyo Kyōju), Akao Eikei (Kyōto Kokuritsu Hakubutsukan Gakugeibu Jōseki Kenkyūin).",
+                "title_vern_display": "浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授), 赤尾栄慶 (京都国立博物館学芸部上席研究員).",
+                "score": 51.0
+            },
+            {
+                "id": "99121886293506421",
+                "title_display": "Multi-title collection including Suchende seelen; and 2 other(s). updated 4-23-21 11:14 AM",
+                "format": [
+                    "Book"
+                ],
+                "holdings_1display": "{\"22269289940006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"3488.93344.333\",\"call_number_browse\":\"3488.93344.333\",\"items\":[{\"holding_id\":\"22269289940006421\",\"id\":\"23269289930006421\",\"status_at_load\":\"1\",\"barcode\":\"32101066958685\",\"copy_number\":\"1\"}]}}",
+                "score": 51.0
+            },
+            {
+                "id": "7777379",
+                "author_display": [
+                    "Sewell, Brian"
+                ],
+                "marc_relator_display": [
+                    "Author"
+                ],
+                "title_display": "Outsider : always almost, never quite : an autobiography / Brian Sewell.",
+                "pub_created_display": [
+                    "London : Quartet Books Ltd, 2011-2012."
+                ],
+                "cataloged_tdt": "2013-12-06T09:35:27Z",
+                "format": [
+                    "Book"
+                ],
+                "lccn_s": [
+                    "2011535686"
+                ],
+                "isbn_s": [
+                    "9780704372498",
+                    "9780704372917"
+                ],
+                "oclc_s": [
+                    "778314371"
+                ],
+                "holdings_1display": "{\"7570045\":{\"location\":\"Marquand Library\",\"library\":\"Marquand Library\",\"location_code\":\"sa\",\"call_number\":\"N7483.S46 A3 2011\",\"call_number_browse\":\"N7483.S46 A3 2011\",\"location_has\":[\"1-2\"]}}",
+                "score": 51.0
+            },
+            {
+                "id": "7699003",
+                "author_display": [
+                    "Larson, Ron, 1941-"
+                ],
+                "marc_relator_display": [
+                    "Author"
+                ],
+                "title_display": "College algebra / Ron Larson, Robert Hostetler ; with the assistance of David C. Falvo.",
+                "pub_created_display": [
+                    "Boston : Houghton Mifflin Co., [2007]",
+                    "©2007"
+                ],
+                "cataloged_tdt": "2013-08-19T14:35:44Z",
+                "format": [
+                    "Book"
+                ],
+                "lccn_s": [
+                    "2005929677"
+                ],
+                "isbn_s": [
+                    "9780618643103"
+                ],
+                "oclc_s": [
+                    "123502188"
+                ],
+                "holdings_1display": "{\"7500479\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"7504001\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"2\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"7504003\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"3\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664737\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"4\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664739\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"5\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664742\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"6\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664743\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"7\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664744\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"8\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664745\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"9\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664746\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"10\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664747\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"11\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664749\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"12\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664750\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"13\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664752\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"14\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664753\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"15\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664754\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"16\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664755\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"17\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664756\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"18\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664757\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"19\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664758\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"20\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664759\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"21\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664760\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"22\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664761\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"23\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664762\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"24\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664763\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"25\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664764\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"26\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664765\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"27\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664766\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"28\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664768\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"29\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"},\"11664770\":{\"location\":\"Stokes Library - SPIA\",\"library\":\"Stokes Library\",\"location_code\":\"spia\",\"copy_number\":\"30\",\"call_number\":\"QA152.3 .L28 2007\",\"call_number_browse\":\"QA152.3 .L28 2007\"}}",
+                "score": 51.0
+            },
+            {
+                "cataloged_tdt": "2018-04-03T12:34:38Z",
+                "format": [
+                    "Video/Projected medium"
+                ],
+                "holdings_1display": "{\"10368070\":{\"location\":\"Firestone Library - Circulation Desk\",\"library\":\"Firestone Library\",\"location_code\":\"vidl\",\"call_number\":\"DVD 10950\",\"call_number_browse\":\"DVD 10950\"}}",
+                "id": "10628252",
+                "oclc_s": [
+                    "856427274"
+                ],
+                "pub_created_display": [
+                    "New York, NY : Distributed by TWN, 2001."
+                ],
+                "title_display": "Llanthupi munakuy : Quererse en las sombras = Loving each other in the shadows / director, Marcelina Cárdenas ; produced by CEFREC-CAIB ; una producción del Plan Nacional Indígena Originario de Comunicación Audiovisual.",
+                "score": 51.0
+            },
+            {
+                "id": "99106471643506421",
+                "author_display": [
+                    "Avery, Eric, born 1948"
+                ],
+                "marc_relator_display": [
+                    "Engraver"
+                ],
+                "title_display": "History.",
+                "pub_created_display": [
+                    "1984."
+                ],
+                "format": [
+                    "Visual material"
+                ],
+                "score": 51.0
+            },
+            {
+                "id": "162632",
+                "author_display": [
+                    "Edwards, Ruth Dudley"
+                ],
+                "marc_relator_display": [
+                    "Author"
+                ],
+                "title_display": "James Connolly / Ruth Dudley Edwards.",
+                "pub_created_display": [
+                    "Dublin : Gill and Macmillan, 1981."
+                ],
+                "cataloged_tdt": "2000-06-13T00:00:00Z",
+                "format": [
+                    "Book"
+                ],
+                "lccn_s": [
+                    "82105656"
+                ],
+                "isbn_s": [
+                    "9780717111121",
+                    "9780717111114"
+                ],
+                "oclc_s": [
+                    "8391816"
+                ],
+                "holdings_1display": "{\"179618\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"copy_number\":\"1\",\"call_number\":\"DA965.C7 E36 1981\",\"call_number_browse\":\"DA965.C7 E36 1981\"}}",
+                "score": 51.0
+            },
+            {
+                "cataloged_tdt": "2014-06-04T14:14:03Z",
+                "electronic_access_1display": "{\"http://library.princeton.edu/projects/ea/toc/3753928.32101090118355.1-Fulltext.pdf\":[\"library.princeton.edu\"]}",
+                "format": [
+                    "Book"
+                ],
+                "holdings_1display": "{\"4063203\":{\"location\":\"East Asian Library - Reference\",\"library\":\"East Asian Library\",\"location_code\":\"hyjrf\",\"copy_number\":\"2\",\"call_number\":\"BJ6870.1/6233\",\"call_number_browse\":\"BJ6870.1/6233\",\"location_has\":[\"COPY 2\",\"shelved in Chinese Bibliographer's Office\"]},\"4063204\":{\"location\":\"East Asian Library - Rare Books\",\"library\":\"East Asian Library\",\"location_code\":\"hyjrare\",\"copy_number\":\"3\",\"call_number\":\"BJ6870.1/6233\",\"call_number_browse\":\"BJ6870.1/6233\",\"location_has\":[\"COPY 3\",\"NOT TO CIRCULATE\",\"Shelved in reading room of Mudd Library\"]}}",
+                "id": "3753928",
+                "oclc_s": [
+                    "153538715"
+                ],
+                "pub_created_display": [
+                    "Princeton, N.J. : Gest Oriental Library, Princeton University, 1975."
+                ],
+                "title_display": "Robinson igo zōsho mokuroku = Catalogue of the Robinson go collection.",
+                "title_vern_display": "ロビンソン囲碁藏書目錄= Catalogue of the Robinson go collection.",
+                "score": 51.0
+            },
+            {
+                "cataloged_tdt": "2011-08-11T13:20:31Z",
+                "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/8336h435c\":[\"arks.princeton.edu\",\"See dai 1\"],\"http://arks.princeton.edu/ark:/88435/4b29b8439\":[\"arks.princeton.edu\",\"See dai 1 label\"],\"http://arks.princeton.edu/ark:/88435/kp78gj86g\":[\"arks.princeton.edu\",\"See dai 2\"],\"http://arks.princeton.edu/ark:/88435/fx719p95r\":[\"arks.princeton.edu\",\"See dai 2 label\"],\"http://arks.princeton.edu/ark:/88435/b5644v03v\":[\"arks.princeton.edu\",\"See dai 2 label 2\"],\"http://arks.princeton.edu/ark:/88435/6h440v95h\":[\"arks.princeton.edu\",\"See dai 3\"],\"http://arks.princeton.edu/ark:/88435/2r36v102x\":[\"arks.princeton.edu\",\"See dai 3 label\"],\"http://arks.princeton.edu/ark:/88435/z029p721v\":[\"arks.princeton.edu\",\"See dai 3 label 2\"],\"http://arks.princeton.edu/ark:/88435/0k225d50m\":[\"arks.princeton.edu\",\"See dai 5\"],\"http://arks.princeton.edu/ark:/88435/vt150m70s\":[\"arks.princeton.edu\",\"See dai 5 label\"],\"http://arks.princeton.edu/ark:/88435/r207tr79g\":[\"arks.princeton.edu\",\"See dai 6\"],\"http://arks.princeton.edu/ark:/88435/mc87ps69x\":[\"arks.princeton.edu\",\"See dai 6 label\"],\"http://arks.princeton.edu/ark:/88435/gm80hx786\":[\"arks.princeton.edu\",\"See dai 7\"],\"http://arks.princeton.edu/ark:/88435/bv73c288g\":[\"arks.princeton.edu\",\"See dai 7 label\"],\"http://arks.princeton.edu/ark:/88435/73666696n\":[\"arks.princeton.edu\",\"See dai 8\"],\"http://arks.princeton.edu/ark:/88435/3b591c02j\":[\"arks.princeton.edu\",\"See dai 8 label\"],\"http://arks.princeton.edu/ark:/88435/zk51vk227\":[\"arks.princeton.edu\",\"See dai 9\"],\"http://arks.princeton.edu/ark:/88435/tt44pq31n\":[\"arks.princeton.edu\",\"See dai 9 label\"],\"http://arks.princeton.edu/ark:/88435/q524jr21h\":[\"arks.princeton.edu\",\"See dai 10\"],\"http://arks.princeton.edu/ark:/88435/kd17cw30x\":[\"arks.princeton.edu\",\"See dai 10 label\"],\"http://arks.princeton.edu/ark:/88435/fn1071402\":[\"arks.princeton.edu\",\"See dai 11\"],\"http://arks.princeton.edu/ark:/88435/9w032548c\":[\"arks.princeton.edu\",\"See dai 11 label\"],\"http://arks.princeton.edu/ark:/88435/6395w9542\":[\"arks.princeton.edu\",\"See dai 12\"],\"http://arks.princeton.edu/ark:/88435/2b88qf620\":[\"arks.princeton.edu\",\"See dai 12 label\"]}",
+                "format": [
+                    "Map"
+                ],
+                "holdings_1display": "{\"6754334\":{\"location\":\"ReCAP - Historic Maps Off-Site Storage\",\"library\":\"ReCAP\",\"location_code\":\"rcpxp\",\"call_number\":\"HMC01.6745\",\"call_number_browse\":\"HMC01.6745\",\"location_has\":[\"Only dai 1-3, 5-12.\"]},\"7321551\":{\"location\":\"Online - *ONLINE*\",\"library\":\"Online\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"}}",
+                "id": "6773431",
+                "oclc_s": [
+                    "61500431"
+                ],
+                "pub_created_display": [
+                    "Tōkyō : Yoshikawa Kōbunkan, Shōwa 30-32 [1955-57]",
+                    "東京 : 吉川弘文館, 昭和30-32 [1955-57]"
+                ],
+                "title_display": "Hyōjun Nihon shi kakezu [map] / Kodama Kōta hen.",
+                "title_vern_display": "標準日本史掛図 / 児玉幸多編.",
+                "score": 51.0
+            },
+            {
+                "id": "2910021",
+                "author_display": [
+                    "Howells, William Dean, 1837-1920"
+                ],
+                "marc_relator_display": [
+                    "Author"
+                ],
+                "title_display": "The letters of Howells to Higginson.",
+                "pub_created_display": [
+                    "Boston : Bibliophile Society, [1929]."
+                ],
+                "format": [
+                    "Book"
+                ],
+                "oclc_s": [
+                    "16847846"
+                ],
+                "holdings_1display": "{\"3224345\":{\"location\":\"Firestone Library\",\"library\":\"Firestone Library\",\"location_code\":\"f\",\"copy_number\":\"1\",\"call_number\":\"PS2033 .A435 1929\",\"call_number_browse\":\"PS2033 .A435 1929\"}}",
+                "score": 51.0
+            },
+            {
+                "cataloged_tdt": "2011-10-19T14:38:54Z",
+                "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/2j62s638c\":[\"arks.princeton.edu\"],\"http://arks.princeton.edu/ark:/88435/t722hb52k\":[\"arks.princeton.edu\"]}",
+                "format": [
+                    "Map"
+                ],
+                "holdings_1display": "{\"6781483\":{\"location\":\"Lewis Library - Map Collection. Map Case\",\"library\":\"Lewis Library\",\"location_code\":\"scimc\",\"call_number\":\"G3821.C2.s62.U5G4 Trout Run\",\"call_number_browse\":\"G3821.C2.s62.U5G4 Trout Run\"},\"7322619\":{\"location\":\"Online - *ONLINE*\",\"library\":\"Online\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"}}",
+                "id": "6868324",
+                "pub_created_display": [
+                    "[Washington, D.C.] : U.S. Geological Survey, 1923."
+                ],
+                "title_display": "Pennsylvania: (Lycoming) Trout Run Quadrangle [cartographic material].",
+                "score": 51.0
+            },
+            {
+                "id": "9929455793506421",
+                "author_display": [
+                    "Schoeppl, Mizzi, 1895-"
+                ],
+                "marc_relator_display": [
+                    "Author"
+                ],
+                "title_display": "Zwischenakt; sittenroman, von Oswald Strehlen [pseud.]",
+                "pub_created_display": [
+                    "Dresden [c1921]"
+                ],
+                "format": [
+                    "Book"
+                ],
+                "oclc_s": [
+                    "43257636"
+                ],
+                "score": 51.0
+            },
+            {
+                "author_display": [
+                    "Reade, Charles, 1814-1884"
+                ],
+                "cataloged_tdt": "2001-07-13T17:52:41Z",
+                "electronic_access_1display": "{\"https://catalog.princeton.edu/catalog/3395923#view\":[\"Digital content below\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/w95051854\":\"https://figgy.princeton.edu/concern/scanned_resources/ab2c354b-ff2d-4a0a-9334-1b14316efe3a/manifest\"}}",
+                "format": [
+                    "Manuscript",
+                    "Book"
+                ],
+                "holdings_1display": "{\"3724483\":{\"location\":\"hsvm\",\"library\":\"hsvm\",\"location_code\":\"hsvm\",\"call_number\":\"C0171 (no. 109)\",\"call_number_browse\":\"C0171 (no. 109)\"},\"8818833\":{\"location\":\"elf1\",\"library\":\"elf1\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"}}",
+                "id": "3395923",
+                "marc_relator_display": [
+                    "Author"
+                ],
+                "oclc_s": [
+                    "49365071"
+                ],
+                "title_display": "Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, [1872] / by Anthony Trollope and Charles Reade.",
+                "score": 51.0
+            },
+            {
+                "author_display": [
+                    "Joanne, Adolphe Laurent, 1813-1881"
+                ],
+                "cataloged_tdt": "2010-04-27T15:49:24Z",
+                "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/0v8382995\":[\"arks.princeton.edu\",\"See the map\"]}",
+                "format": [
+                    "Map"
+                ],
+                "holdings_1display": "{\"6146402\":{\"location\":\"Rare Books and Special Collections - Historic Maps Collection\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"map\",\"call_number\":\"HMC01.1996\",\"call_number_browse\":\"HMC01.1996\"},\"7316975\":{\"location\":\"Online - *ONLINE*\",\"library\":\"Online\",\"location_code\":\"elf1\",\"call_number\":\"Electronic Resource\",\"call_number_browse\":\"Electronic Resource\"}}",
+                "id": "6109323",
+                "marc_relator_display": [
+                    "Author"
+                ],
+                "pub_created_display": [
+                    "Paris : imp. Monrocq, 3, rue Suger, [août 1870]"
+                ],
+                "title_display": "Seine [map] / gravé chez Erhard, 12, rue Duguay-Trouin.",
+                "score": 51.0
+            },
+            {
+                "cataloged_tdt": "2000-06-13T05:00:00Z",
+                "format": [
+                    "Journal"
+                ],
+                "holdings_1display": "{\"464634\":{\"location\":\"Lewis Library - Serials (shelved by serial title)\",\"library\":\"Lewis Library\",\"location_code\":\"sciss\",\"copy_number\":\"1\",\"call_number\":\"8001.673\",\"call_number_browse\":\"8001.673\",\"location_has\":[\"Vol. 1, no. 1 (Nov. 4, 1869)-v. 557, issue no. 7707 (31 May 2018)\",\"LACKS: no. 7434, 7544\",\"CURRENT ISSUES IN: Lewis Library (SCI)\"]},\"464638\":{\"location\":\"Engineering Library - Serials\",\"library\":\"Engineering Library\",\"location_code\":\"stss\",\"copy_number\":\"1\",\"call_number\":\"Q1 .N3\",\"call_number_browse\":\"Q1 .N3\",\"location_has\":[\"LATEST YEAR ONLY RETAINED\"]},\"464640\":{\"location\":\"ReCAP - Lewis Library use only\",\"library\":\"ReCAP\",\"location_code\":\"rcppn\",\"call_number\":\"Q1 .N3\",\"call_number_browse\":\"Q1 .N3\",\"location_has\":[\"Vol. 9 (Nov. 1873)-v. 553, issue no. 7689 (25 Jan. 2018)\",\"LACKS: v. 12-16; v. 43-81; no. 7024, 7542, 7544\",\"CURRENT ISSUES IN: Lewis Library (SCI)\"]},\"3538795\":{\"location\":\"Fine Annex\",\"library\":\"Fine Annex\",\"location_code\":\"anxb\",\"copy_number\":\"1\",\"call_number\":\"Q1 .N3\",\"call_number_browse\":\"Q1 .N3\",\"location_has\":[\"Vol. 212, no. 5057 (Oct. 1966)-v. 342, no. 6252 (Dec. 21/28, 1989)\",\"LACKS: v. 221, no. 5175-5178\"]}}",
+                "id": "426420",
+                "lccn_s": [
+                    "12037118"
+                ],
+                "oclc_s": [
+                    "1586310"
+                ],
+                "pub_created_display": [
+                    "London : Macmillan Journals, 1869-"
+                ],
+                "title_display": "Nature.",
+                "score": 51.0
+            },
+            {
+                "id": "994264203506421",
+                "title_display": "Nature.",
+                "pub_created_display": [
+                    "London : Macmillan Journals, 1869-"
+                ],
+                "cataloged_tdt": "2020-12-02T12:41:30Z",
+                "format": [
+                    "Journal"
+                ],
+                "lccn_s": [
+                    "12037118"
+                ],
+                "oclc_s": [
+                    "1586310"
+                ],
+                "score": 51.0
+            }
+        ]
+    },
+    "facet_counts": {
+        "facet_queries": {
+            "cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]": 0,
+            "cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]": 0,
+            "cataloged_tdt:[NOW/DAY-21DAYS TO NOW/DAY+1DAY]": 0,
+            "cataloged_tdt:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]": 0,
+            "cataloged_tdt:[NOW/DAY-2MONTHS TO NOW/DAY+1DAY]": 0,
+            "cataloged_tdt:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]": 0,
+            "cataloged_tdt:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]": 0
+        },
+        "facet_fields": {
+            "access_facet": [
+                "In the Library",
+                96,
+                "Online",
+                28
+            ],
+            "location": [
+                "East Asian Library",
+                10,
+                "Engineering Library",
+                3,
+                "Fine Annex",
+                2,
+                "Firestone Library",
+                25,
+                "Forrestal Annex",
+                2,
+                "Harold P. Furth Plasma Physics Library",
+                1,
+                "Lewis Library",
+                9,
+                "Marquand Library",
+                5,
+                "Mendel Music Library",
+                2,
+                "Mudd Manuscript Library",
+                4,
+                "Rare Books and Special Collections",
+                29,
+                "ReCAP",
+                35,
+                "Special Collections",
+                1,
+                "Stokes Library",
+                3
+            ],
+            "format": [
+                "Audio",
+                5,
+                "Book",
+                79,
+                "Coin",
+                4,
+                "Data file",
+                2,
+                "Journal",
+                13,
+                "Manuscript",
+                9,
+                "Map",
+                4,
+                "Musical score",
+                4,
+                "Senior thesis",
+                8,
+                "Video/Projected medium",
+                5,
+                "Visual material",
+                4
+            ],
+            "recently_added_facet": []
+        },
+        "facet_ranges": {},
+        "facet_intervals": {},
+        "facet_heatmaps": {}
+    },
+    "stats": {
+        "stats_fields": {
+            "pub_date_start_sort": {
+                "min": -92.0,
+                "max": 2020.0,
+                "count": 127,
+                "missing": 3,
+                "sum": 236519.0,
+                "sumOfSquares": 459204129.0,
+                "mean": 1862.3543307086613,
+                "stddev": 385.4696687377755
+            }
+        }
+    }
+}
