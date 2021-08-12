@@ -1,6 +1,16 @@
 # frozen_string_literal: false
 
 class DBMigrateUppercaseUsernames
+  def self.run
+    find_uppercase_users.map { |uppercase_user|
+      find_lowercase_user(uppercase_user).map { |lowercase_user|
+        merge_bookmarks(uppercase_user, lowercase_user)
+        merge_searches(uppercase_user, lowercase_user)
+        delete_uppercase_user(uppercase_user)
+      }
+    }
+  end
+
   # find all users with uppercase letters in their username
   def find_uppercase_users
     User.where("uid ~ ?", "[A-Z]").to_a
