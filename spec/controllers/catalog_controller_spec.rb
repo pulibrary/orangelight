@@ -114,16 +114,20 @@ RSpec.describe CatalogController do
   end
 
   describe 'home page' do
+    before do
+      allow(Rails.logger).to receive(:info).and_return nil
+    end
+
     it 'renders empty searches for the home page' do
-      expect(controller).to have_received(:render_empty_search)
       get :index, params: {}
       expect(response.status).to eq 200
+      expect(Rails.logger).to have_received(:info).with("Cached home page results")
     end
 
     it 'does not consider empty search when there are parameters in the URL' do
-      expect(controller).not_to have_received(:render_empty_search)
       get :index, params: { q: "coffee" }
       expect(response.status).to eq 200
+      expect(Rails.logger).to_not have_received(:info).with("Cached home page results")
     end
   end
 end
