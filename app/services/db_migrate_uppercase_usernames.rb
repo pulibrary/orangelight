@@ -29,7 +29,7 @@ class DBMigrateUppercaseUsernames
 
     # find lowercase version of the user with uppercase letters in their username
     def find_lowercase_user
-      User.find_by(username: uppercase_user.uid.downcase)
+      User.find_by(username: uppercase_user.uid.downcase) || User.create(uid: uppercase_user.uid.downcase, username: uppercase_user.uid.downcase)
     end
 
     # merge uppercase user's bookmarks into lowercase user's bookmarks
