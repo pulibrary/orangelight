@@ -5,18 +5,23 @@ require 'rails_helper'
 RSpec.describe DBMigrateUppercaseUsernames do
   let(:username) { "testUSER123" }
   let!(:uppercase_user) { FactoryBot.create(:user, username: username) }
-  let(:lowercase_user) { FactoryBot.create(:user, username: username.downcase) }
 
   describe "self.run" do
     context "when there is an equivalent lowercase user" do
+      let!(:lowercase_user) { FactoryBot.create(:user, username: username.downcase) }
+
       it "merges bookmarks into existing user" do
-        lowercase_user
         uppercase_user.bookmarks.create([{ document_id: '9741216', document_type: 'SolrDocument' }])
         expect { described_class.run }.to change(lowercase_user.bookmarks, :count).by(1)
       end
 
+      it "doesn't merge bookmark into existing user if they already have it" do
+        uppercase_user.bookmarks.create([{ document_id: '9741216', document_type: 'SolrDocument' }])
+        lowercase_user.bookmarks.create([{ document_id: '9741216', document_type: 'SolrDocument' }])
+        expect { described_class.run }.to change(lowercase_user.bookmarks, :count).by(0)
+      end
+
       it "merges searches into existing user" do
-        lowercase_user
         uppercase_user.searches.create([{ query_params: 'history' }])
         expect { described_class.run }.to change(lowercase_user.searches, :count).by(1)
       end
