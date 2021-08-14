@@ -51,7 +51,7 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
     end
 
     context 'when the Figgy GraphQL responds with a different bib. ID' do
-      let(:document_id) { '4609321' }
+      let(:document_id) { '9946093213506421' }
 
       it 'renders the thumbnail using the IIIF Manifest' do
         visit "catalog/#{document_id}"

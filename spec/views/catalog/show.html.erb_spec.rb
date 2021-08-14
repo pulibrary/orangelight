@@ -9,7 +9,7 @@ RSpec.describe 'catalog/show' do
 
   context 'when entries describe a scanned resource published using an ARK', js: true do
     it 'renders a viewer' do
-      visit '/catalog/4609321'
+      visit '/catalog/9946093213506421'
       expect(page).to have_selector('div#view')
     end
   end
@@ -23,7 +23,7 @@ RSpec.describe 'catalog/show' do
 
   context 'when entries describe resources published using multiple ARKs', js: true do
     it 'renders multiple viewers' do
-      visit '/catalog/3943643'
+      visit '/catalog/9939436433506421'
       expect(page).to have_selector('div#viewer-container')
       expect(page).to have_selector('div#viewer-container_1')
     end

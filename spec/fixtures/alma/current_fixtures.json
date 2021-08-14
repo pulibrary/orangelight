@@ -16452,5 +16452,695 @@
         "Z209.N56 E2 1928",
         "Pamphlets",
         "2006-1620N"]
-    }
+    },
+    {
+      "id":[
+        "9939436433506421"
+      ],
+      "numeric_id_b":[
+        true
+      ],
+      "cjk_all":[
+        ""
+      ],
+      "cjk_notes":[
+        ""
+      ],
+      "author_display":[
+        "Ptolemy, active 2nd century"
+      ],
+      "author_sort":[
+        "Ptolemy, active 2nd century"
+      ],
+      "author_citation_display":[
+        "Ptolemy",
+        "Pirckheimer, Willibald",
+        "Regiomontanus, Joannes",
+        "Martini, Giuseppe",
+        "Kane, Grenville"
+      ],
+      "author_roles_1display":[
+        "{\"secondary_authors\":[\"Pirckheimer, Willibald\",\"Regiomontanus, Joannes\",\"Martini, Giuseppe\",\"Kane, Grenville\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Ptolemy\"}"
+      ],
+      "author_s":[
+        "Ptolemy, active 2nd century",
+        "Pirckheimer, Willibald, 1470-1530",
+        "Regiomontanus, Joannes, 1436-1476",
+        "Martini, Giuseppe, 1870-1944",
+        "Kane, Grenville, 1854-1943"
+      ],
+      "marc_relator_display":[
+        "Author"
+      ],
+      "uniform_title_s":[
+        "Geographia. Latin"
+      ],
+      "title_display":[
+        "Claudii Ptolemaei Geographicae enarrationis libri octo / Bilibaldo Pirckeymhero interprete ; annotationes Ioannis de Regio Monte in errores commissos a Iacobo Angelo in translatione sua."
+      ],
+      "title_a_index":[
+        "Claudii Ptolemaei Geographicae enarrationis libri octo"
+      ],
+      "title_sort":[
+        "Claudii Ptolemaei Geographicae enarrationis libri octo / Bilibaldo Pirckeymhero interprete ; annotationes Ioannis de Regio Monte in errores commissos a Iacobo Angelo in translatione sua."
+      ],
+      "title_no_h_index":[
+        "Claudii Ptolemaei Geographicae enarrationis libri octo / Bilibaldo Pirckeymhero interprete ; annotationes Ioannis de Regio Monte in errores commissos a Iacobo Angelo in translatione sua."
+      ],
+      "title_t":[
+        "Claudii Ptolemaei Geographicae enarrationis libri octo / Bilibaldo Pirckeymhero interprete ; annotationes Ioannis de Regio Monte in errores commissos a Iacobo Angelo in translatione sua."
+      ],
+      "title_citation_display":[
+        "Claudii Ptolemaei Geographicae enarrationis libri octo"
+      ],
+      "compiled_created_t":[
+        "Claudii Ptolemaei Geographicae enarrationis libri octo / Bilibaldo Pirckeymhero interprete ; annotationes Ioannis de Regio Monte in errores commissos a Iacobo Angelo in translatione sua."
+      ],
+      "pub_created_display":[
+        "Argentoragi [Strasbourg] : Iohannes Grieningerus, communibus Iohannis Koberger impensis excudebat, 1525."
+      ],
+      "pub_created_s":[
+        "Argentoragi [Strasbourg] : Iohannes Grieningerus, communibus Iohannis Koberger impensis excudebat, 1525."
+      ],
+      "pub_citation_display":[
+        "Argentoragi [Strasbourg]: Iohannes Grieningerus, communibus Iohannis Koberger impensis excudebat"
+      ],
+      "pub_date_display":[
+        "1525"
+      ],
+      "pub_date_start_sort":[
+        "1525"
+      ],
+      "cataloged_tdt":[
+        "2021-07-12T21:27:48Z"
+      ],
+      "format":[
+        "Book"
+      ],
+      "electronic_access_1display":[
+        "{\"http://arks.princeton.edu/ark:/88435/np193c809\":[\"arks.princeton.edu\",\"EXKA Ptolemy 1525\"],\"http://arks.princeton.edu/ark:/88435/kw52jc00n\":[\"arks.princeton.edu\",\"EXKA Ptolemy 1525a\"]}"
+      ],
+      "electronic_access_index":[
+        "http://arks.princeton.edu/ark:/88435/np193c809 EXKA Ptolemy 1525",
+        "http://arks.princeton.edu/ark:/88435/kw52jc00n EXKA Ptolemy 1525a"
+      ],
+      "description_display":[
+        "[260] p. : ill. (diagrams), 50 double maps ; 40 cm."
+      ],
+      "description_t":[
+        "[260] p. : ill. (diagrams), 50 double maps ; 40 cm."
+      ],
+      "number_of_pages_citation_display":[
+        "[260] p."
+      ],
+      "notes_index":[
+        "Imprint from colophon.",
+        "The maps are the same as in Grieninger's 1522 edition.",
+        "The two Princeton copies contain different issues of many pages: whereas the typesetting remains identical in each version, the woodcut borders and ornamental headpieces are either present or absent in the respective issues.",
+        "ExKa copy The text block is made up from two distinct copies: the leaves of the Geographia and the Index are devoid of any annotations while the leaves of the maps are heavily annotated, chiefly in a consistent italic hand, but other hands are present as well. One leaf in the Geographia has been inserted (that before bk 8, c. 1). This inserted leaf is annotated and is kindred to the annotated leaves of the maps. NjP",
+        "ExKa copy Tipped onto the leaf facing map 28 (Oceani occidentalis seu terre nove tabula) is a typewritten English translation of six ms. Latin annotations on this map of the New World. NjP",
+        "ExKa copy 2 Purchased in 2016 from a Belgian private collection. The text block is made up from two distinct copies: while the leaves with maps are devoid of annotations, the text pages of the Geographia are heavily annotated by the same italic hands found in the ExKa (Kane) copy. Thus, the two long-separated parts of this annotated copy, each bound with the necessary leaves from another copy (or two), have been reunited at Princeton.",
+        "ExKa copy has bookplate of Grenville Kane, who purchased this book from Giuseppe Martini in 1921. NjP",
+        "ExKa copy has signature on titlepage: Alexandro Volpy. NjP",
+        "ExKa copy is rebacked with contemporary boards in morocco stamped in blind, evidence of ties present. NjP",
+        "Examined 10/24/05. 50 maps (49 double page, 1 on verso of previous map).",
+        "Also available in an electronic version."
+      ],
+      "notes_display":[
+        "Imprint from colophon.",
+        "The maps are the same as in Grieninger's 1522 edition.",
+        "The two Princeton copies contain different issues of many pages: whereas the typesetting remains identical in each version, the woodcut borders and ornamental headpieces are either present or absent in the respective issues.",
+        "ExKa copy The text block is made up from two distinct copies: the leaves of the Geographia and the Index are devoid of any annotations while the leaves of the maps are heavily annotated, chiefly in a consistent italic hand, but other hands are present as well. One leaf in the Geographia has been inserted (that before bk 8, c. 1). This inserted leaf is annotated and is kindred to the annotated leaves of the maps.",
+        "ExKa copy Tipped onto the leaf facing map 28 (Oceani occidentalis seu terre nove tabula) is a typewritten English translation of six ms. Latin annotations on this map of the New World.",
+        "ExKa copy 2 Purchased in 2016 from a Belgian private collection. The text block is made up from two distinct copies: while the leaves with maps are devoid of annotations, the text pages of the Geographia are heavily annotated by the same italic hands found in the ExKa (Kane) copy. Thus, the two long-separated parts of this annotated copy, each bound with the necessary leaves from another copy (or two), have been reunited at Princeton."
+      ],
+      "binding_note_display":[
+        "ExKa copy is rebacked with contemporary boards in morocco stamped in blind, evidence of ties present."
+      ],
+      "language_facet":[
+        "Latin"
+      ],
+      "publication_place_facet":[
+        "France"
+      ],
+      "language_code_s":[
+        "lat"
+      ],
+      "language_iana_s":[
+        "la"
+      ],
+      "provenance_display":[
+        "ExKa copy has bookplate of Grenville Kane, who purchased this book from Giuseppe Martini in 1921.",
+        "ExKa copy has signature on titlepage: Alexandro Volpy."
+      ],
+      "other_format_display":[
+        "Also available in an electronic version."
+      ],
+      "lc_subject_display":[
+        "Geography, Ancient",
+        "Geography—Early works to 1800",
+        "Atlases—Early works to 1800",
+        "Early maps"
+      ],
+      "subject_unstem_search":[
+        "Geography, Ancient",
+        "Geography—Early works to 1800",
+        "Atlases—Early works to 1800",
+        "Early maps"
+      ],
+      "siku_subject_unstem_search":null,
+      "subject_facet":[
+        "Geography, Ancient",
+        "Geography—Early works to 1800",
+        "Atlases—Early works to 1800",
+        "Early maps",
+        "World atlases—1525",
+        "Annotations (Provenance)"
+      ],
+      "aat_s":[
+        "World atlases—1525"
+      ],
+      "rbgenr_s":[
+        "Annotations (Provenance)"
+      ],
+      "subject_topic_facet":[
+        "Geography, Ancient",
+        "Geography",
+        "Atlases",
+        "Early maps"
+      ],
+      "lc_1letter_facet":[
+        "G - Geography, Anthropology, Recreation"
+      ],
+      "lc_rest_facet":[
+        "G - Geography, Anthropology, Recreation"
+      ],
+      "call_number_scheme_facet":[
+        "Library of Congress"
+      ],
+      "call_number_group_facet":[
+        "G - Geography, Anthropology, Recreation"
+      ],
+      "call_number_full_facet":[
+        "G - Geography, Anthropology, Recreation"
+      ],
+      "genre_facet":[
+        "World atlases",
+        "Annotations (Provenance)",
+        "Early works to 1800"
+      ],
+      "related_name_json_1display":[
+        "{\"Tr\":[\"Pirckheimer, Willibald, 1470-1530\"],\"Related name\":[\"Regiomontanus, Joannes, 1436-1476\"],\"Former owner\":[\"Martini, Giuseppe, 1870-1944\",\"Kane, Grenville, 1854-1943\"]}"
+      ],
+      "other_title_index":[
+        "Geographicae enarrationis libri octo."
+      ],
+      "other_title_display":[
+        "Geographicae enarrationis libri octo."
+      ],
+      "alt_title_246_display":[
+        "Geographicae enarrationis libri octo."
+      ],
+      "oclc_s":[
+        "53202221"
+      ],
+      "standard_no_index":[
+        "53202221",
+        "notisARA7365",
+        "B1820",
+        "MNUGARA7365-B",
+        "3943643",
+        "3943643-princetondb"
+      ],
+      "other_version_s":[
+        "ocm53202221"
+      ],
+      "holdings_1display":[
+        "{\"22502735580006421\":{\"location_code\":\"rare$hsvr\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"Ptolemy 1525a EXKA\",\"call_number_browse\":\"Ptolemy 1525a EXKA\",\"items\":[{\"holding_id\":\"22502735580006421\",\"id\":\"23502735570006421\",\"status_at_load\":\"1\",\"barcode\":\"32101097158883\",\"copy_number\":\"0\"}]},\"22502735610006421\":{\"location_code\":\"rare$hsvr\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"Ptolemy 1525 EXKA\",\"call_number_browse\":\"Ptolemy 1525 EXKA\",\"items\":[{\"holding_id\":\"22502735610006421\",\"id\":\"23502735600006421\",\"status_at_load\":\"1\",\"copy_number\":\"1\"}]}}"
+      ],
+      "location_code_s":[
+        "rare$hsvr"
+      ],
+      "location":[
+        "Special Collections"
+      ],
+      "location_display":[
+        "Rare Books"
+      ],
+      "advanced_location_s":[
+        "rare$hsvr",
+        "Special Collections"
+      ],
+      "name_uniform_title_1display":[
+        "[[\"Ptolemy, active 2nd century.\",\"Geographia.\",\"Latin\"]]"
+      ],
+      "name_title_browse_s":[
+        "Ptolemy, active 2nd century. Geographia",
+        "Ptolemy, active 2nd century. Geographia. Latin"
+      ],
+      "call_number_display":[
+        "EXKA Ptolemy 1525a",
+        "EXKA Ptolemy 1525"
+      ],
+      "call_number_browse_s":[
+        "Ptolemy 1525a EXKA",
+        "Ptolemy 1525 EXKA"
+      ],
+      "call_number_locator_display":[
+        "Ptolemy 1525a",
+        "Ptolemy 1525"
+      ],
+      "electronic_portfolio_s":[
+        "{\"desc\":null,\"title\":\"Full Text\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\\u0026portfolio_pid=53859630300006421\\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+        "{\"desc\":null,\"title\":\"Full Text\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\\u0026portfolio_pid=53859630320006421\\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+      ],
+      "access_facet":[
+        "Online",
+        "In the Library"
+      ]
+    },
+    {
+      "id":[
+        "9946093213506421"
+      ],
+      "numeric_id_b":[
+        true
+      ],
+      "cjk_all":[
+        ""
+      ],
+      "cjk_notes":[
+        ""
+      ],
+      "author_citation_display":[
+        "Gutenberg, Johann",
+        "Fogel, Johannes",
+        "Brinley, George",
+        "Ives, Brayton",
+        "Cole, Hamilton",
+        "Ellsworth, James W.",
+        "Predigerkirche (Erfurt, Germany)"
+      ],
+      "author_roles_1display":[
+        "{\"secondary_authors\":[\"Gutenberg, Johann\",\"Fogel, Johannes\",\"Brinley, George\",\"Ives, Brayton\",\"Cole, Hamilton\",\"Ellsworth, James W.\",\"Predigerkirche (Erfurt, Germany)\"],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+      ],
+      "author_s":[
+        "Gutenberg, Johann, 1397?-1468",
+        "Fogel, Johannes, active 1455-1462",
+        "Brinley, George, 1817-1875",
+        "Ives, Brayton, 1840-1914",
+        "Cole, Hamilton",
+        "Ellsworth, James W. (James William), 1849-1925",
+        "Predigerkirche (Erfurt, Germany)"
+      ],
+      "uniform_title_s":[
+        "Bible. Latin. Vulgate. 1456"
+      ],
+      "title_display":[
+        "Bible, Latin."
+      ],
+      "title_a_index":[
+        "Bible, Latin"
+      ],
+      "title_sort":[
+        "Bible, Latin."
+      ],
+      "title_no_h_index":[
+        "Bible, Latin."
+      ],
+      "title_t":[
+        "Bible, Latin."
+      ],
+      "title_citation_display":[
+        "Bible, Latin"
+      ],
+      "compiled_created_t":[
+        "Bible, Latin."
+      ],
+      "pub_created_display":[
+        "[Mainz : Johann Gutenberg and Johann Fust, before August 1456]."
+      ],
+      "pub_created_s":[
+        "[Mainz : Johann Gutenberg and Johann Fust, before August 1456]."
+      ],
+      "pub_citation_display":[
+        "Mainz: Johann Gutenberg and Johann Fust"
+      ],
+      "pub_date_display":[
+        "1456"
+      ],
+      "pub_date_start_sort":[
+        "1456"
+      ],
+      "cataloged_tdt":[
+        "2021-07-13T07:07:33Z"
+      ],
+      "format":[
+        "Book"
+      ],
+      "electronic_access_1display":[
+        "{\"http://arks.princeton.edu/ark:/88435/7d278t10z\":[\"arks.princeton.edu\"],\"https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs\":[\"drive.google.com\",\"Curatorial documentation\"]}"
+      ],
+      "electronic_access_index":[
+        "http://arks.princeton.edu/ark:/88435/7d278t10z",
+        "Curatorial documentation https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs"
+      ],
+      "description_display":[
+        "2 v. (324; 319 leaves) ; 40.5 x 28.8 cm. (fol.)"
+      ],
+      "description_t":[
+        "2 v. (324; 319 leaves) ; 40.5 x 28.8 cm. (fol.)"
+      ],
+      "number_of_pages_citation_display":[
+        "2 v. (324; 319 leaves)"
+      ],
+      "notes_index":[
+        "Commonly known in English as the Gutenberg Bible, also known as the Mazarine Bible.",
+        "GW 4201.",
+        "Goff B-526.",
+        "WHS copy has 12 leaves supplied from other copies and 5 leaves supplied in facsimile; the 17 leaves are vol. I fo. 1 and vol. II fo. 1, 17, 25, 46, 70, 149, 155, 156, 191, 217, 235, 268, 270, 275, 279, and 305. NjP",
+        "WHS copy has provenance: Predigerkirche, Erfurt, Germany; George Brinley; Brayton Ives; Hamilton Cole; and James W. Ellsworth. NjP",
+        "Princeton copy 2: A single imperfect paper leaf from the Gutenberg Bible, the first printed Bible. The leaf is vol. II fo. 122 (the 2nd leaf of quire 13), with text of the last verses of Ezekiel 33, all of Ezekiel 34, and beginning verses of Ezekiel 35. The leaf comes from an otherwise lost copy of the Gutenberg Bible. It is one of nineteen such leaves, all belonging to quires 13 and 14 of volume II, that were cut down to a smaller size and pasted together to create pasteboard for some unidentified bookbinding, probably in the sixteenth century. About a dozen copies of the Gutenberg Bible, most of which were printed on vellum, are known only from fragmentary preservation as bookbinding materials. These cut-down paper leaves came to light when the Vienna bookdealers Gilhofer \u0026 Ranschburg offered them leaf by leaf in an auction of 3 April 1911. Two other leaves from this group are at the Library of Congress, a third is at Dartmouth College Library, and a fourth is at the State Library of New South Wales in Sydney. The rubrication of the copy is simple, using only red ink. NjP",
+        "Also available in an electronic version.",
+        "WHS copy is one of three copies bound in the workshop of Johannes Fogel of Erfurt. NjP",
+        "mlc"
+      ],
+      "notes_display":[
+        "Commonly known in English as the Gutenberg Bible, also known as the Mazarine Bible.",
+        "WHS copy has 12 leaves supplied from other copies and 5 leaves supplied in facsimile; the 17 leaves are vol. I fo. 1 and vol. II fo. 1, 17, 25, 46, 70, 149, 155, 156, 191, 217, 235, 268, 270, 275, 279, and 305.",
+        "Princeton copy 2: A single imperfect paper leaf from the Gutenberg Bible, the first printed Bible. The leaf is vol. II fo. 122 (the 2nd leaf of quire 13), with text of the last verses of Ezekiel 33, all of Ezekiel 34, and beginning verses of Ezekiel 35. The leaf comes from an otherwise lost copy of the Gutenberg Bible. It is one of nineteen such leaves, all belonging to quires 13 and 14 of volume II, that were cut down to a smaller size and pasted together to create pasteboard for some unidentified bookbinding, probably in the sixteenth century. About a dozen copies of the Gutenberg Bible, most of which were printed on vellum, are known only from fragmentary preservation as bookbinding materials. These cut-down paper leaves came to light when the Vienna bookdealers Gilhofer \u0026 Ranschburg offered them leaf by leaf in an auction of 3 April 1911. Two other leaves from this group are at the Library of Congress, a third is at Dartmouth College Library, and a fourth is at the State Library of New South Wales in Sydney. The rubrication of the copy is simple, using only red ink."
+      ],
+      "binding_note_display":[
+        "WHS copy is one of three copies bound in the workshop of Johannes Fogel of Erfurt."
+      ],
+      "language_facet":[
+        "Latin"
+      ],
+      "publication_place_facet":[
+        "Germany"
+      ],
+      "language_code_s":[
+        "lat"
+      ],
+      "language_iana_s":[
+        "la"
+      ],
+      "provenance_display":[
+        "WHS copy has provenance: Predigerkirche, Erfurt, Germany; George Brinley; Brayton Ives; Hamilton Cole; and James W. Ellsworth."
+      ],
+      "references_display":[
+        "GW 4201.",
+        "Goff B-526."
+      ],
+      "references_url_display":[
+        "GW 4201.",
+        "Goff B-526."
+      ],
+      "other_format_display":[
+        "Also available in an electronic version."
+      ],
+      "subject_unstem_search":null,
+      "siku_subject_unstem_search":null,
+      "related_name_json_1display":[
+        "{\"Printer\":[\"Gutenberg, Johann, 1397?-1468\"],\"Binder\":[\"Fogel, Johannes, active 1455-1462\"],\"Former owner\":[\"Brinley, George, 1817-1875\",\"Ives, Brayton, 1840-1914\",\"Cole, Hamilton\",\"Ellsworth, James W. (James William), 1849-1925\",\"Predigerkirche (Erfurt, Germany)\"]}"
+      ],
+      "other_title_index":[
+        "Gutenberg Bible",
+        "Mazarin Bible",
+        "Mazarine Bible"
+      ],
+      "other_title_display":[
+        "Gutenberg Bible",
+        "Mazarin Bible",
+        "Mazarine Bible"
+      ],
+      "alt_title_246_display":[
+        "Gutenberg Bible",
+        "Mazarin Bible",
+        "Mazarine Bible"
+      ],
+      "standard_no_index":[
+        "4609321",
+        "4609321-princetondb"
+      ],
+      "holdings_1display":[
+        "{\"22607612970006421\":{\"location_code\":\"rare$whs\",\"location\":\"William H. Scheide Library\",\"library\":\"Special Collections\",\"call_number\":\"48.1\",\"call_number_browse\":\"48.1\",\"location_has\":[\"vol.1-2\"],\"items\":[{\"holding_id\":\"22607612970006421\",\"id\":\"23607612950006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 2\",\"barcode\":\"32101040882449\",\"copy_number\":\"0\"},{\"holding_id\":\"22607612970006421\",\"id\":\"23607612960006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 1\",\"barcode\":\"32101040882431\",\"copy_number\":\"0\"}]},\"22607612920006421\":{\"location_code\":\"rare$whs\",\"location\":\"William H. Scheide Library\",\"library\":\"Special Collections\",\"call_number\":\"113.2\",\"call_number_browse\":\"113.2\",\"location_has\":[\"fragment (one leaf from Ezekiel 34)\",\"Princeton copy 2\"],\"items\":[{\"holding_id\":\"22607612920006421\",\"id\":\"23607612910006421\",\"status_at_load\":\"1\",\"barcode\":\"32101040883280\",\"copy_number\":\"0\"}]}}"
+      ],
+      "location_code_s":[
+        "rare$whs"
+      ],
+      "location":[
+        "Special Collections"
+      ],
+      "location_display":[
+        "William H. Scheide Library"
+      ],
+      "advanced_location_s":[
+        "rare$whs",
+        "Special Collections"
+      ],
+      "call_number_display":[
+        "48.1",
+        "113.2"
+      ],
+      "call_number_browse_s":[
+        "48.1",
+        "113.2"
+      ],
+      "call_number_locator_display":[
+        "48.1",
+        "113.2"
+      ],
+      "electronic_portfolio_s":[
+        "{\"desc\":null,\"title\":\"Full Text\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\\u0026portfolio_pid=53834227420006421\\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+        "{\"desc\":null,\"title\":\"Full Text\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\\u0026portfolio_pid=53834227440006421\\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+      ],
+      "access_facet":[
+        "Online",
+        "In the Library"
+      ]
+    },
+{
+   "id":[
+      "9933959233506421"
+   ],
+   "numeric_id_b":[
+      true
+   ],
+   "cjk_all":[
+      ""
+   ],
+   "cjk_notes":[
+      ""
+   ],
+   "author_display":[
+      "Reade, Charles, 1814-1884"
+   ],
+   "author_sort":[
+      "Reade, Charles, 1814-1884"
+   ],
+   "author_citation_display":[
+      "Reade, Charles",
+      "Parrish, Morris Longstreth"
+   ],
+   "author_roles_1display":[
+      "{\"secondary_authors\":[\"Reade, Charles\",\"Parrish, Morris Longstreth\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Reade, Charles\"}"
+   ],
+   "author_s":[
+      "Reade, Charles, 1814-1884",
+      "Parrish, Morris Longstreth, 1867-1944"
+   ],
+   "marc_relator_display":[
+      "Author"
+   ],
+   "title_display":[
+      "Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, [1872] / by Anthony Trollope and Charles Reade."
+   ],
+   "title_a_index":[
+      "Shilly Shally, or, Ralph the heir"
+   ],
+   "title_sort":[
+      "Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, [1872] / by Anthony Trollope and Charles Reade."
+   ],
+   "title_no_h_index":[
+      "Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, [1872] / by Anthony Trollope and Charles Reade."
+   ],
+   "title_t":[
+      "Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, by Anthony Trollope and Charles Reade."
+   ],
+   "title_citation_display":[
+      "Shilly Shally, or, Ralph the heir : a comedy in three acts"
+   ],
+   "linked_title_index":[
+      "Morris L. Parrish collection of Victorian novelists."
+   ],
+   "compiled_created_display":[
+      "[1872] /"
+   ],
+   "compiled_created_t":[
+      "Shilly Shally, or, Ralph the heir : a comedy in three acts : manuscript, by Anthony Trollope and Charles Reade."
+   ],
+   "pub_date_display":[
+      "1872"
+   ],
+   "pub_date_start_sort":[
+      "1872"
+   ],
+   "cataloged_tdt":[
+      "2021-07-21T03:33:01Z"
+   ],
+   "format":[
+      "Manuscript",
+      "Book"
+   ],
+   "electronic_access_1display":[
+      "{\"http://arks.princeton.edu/ark:/88435/w95051854\":[\"arks.princeton.edu\"]}"
+   ],
+   "electronic_access_index":[
+      "http://arks.princeton.edu/ark:/88435/w95051854"
+   ],
+   "description_display":[
+      "2 v. ; 30 cm."
+   ],
+   "description_t":[
+      "2 v. ; 30 cm."
+   ],
+   "number_of_pages_citation_display":[
+      "2"
+   ],
+   "linking_notes_display":[
+      "Forms part of the Morris L. Parrish collection of Victorian novelists (C0171)."
+   ],
+   "geo_related_record_display":[
+      "Morris L. Parrish collection of Victorian novelists. 1806-1958"
+   ],
+   "contained_in_s":[
+      "998302983506421"
+   ],
+   "notes_index":[
+      "\"S.G. Saunders Copyist 22 [Ann] Street Devonport Street Commercial Road. E. 1872\"--v. 1, f. 35.",
+      "\"To be returned to Charles Reade Esq. D.C.L. 2 Albert Terrace Knightsbridge London S.W.\"",
+      "Original wrappers, stitched; in slipcase.",
+      "Two sets of original manuscript sheets (folded) for Acts 1 and 2.",
+      "Also available in an electronic version.",
+      "Acc. no. AM 19660.",
+      "Bookplate of Morris L. Parrish.",
+      "Forms part of the Morris L. Parrish collection of Victorian novelists (C0171)."
+   ],
+   "summary_note_display":[
+      "Two sets of original manuscript sheets (folded) for Acts 1 and 2."
+   ],
+   "notes_display":[
+      "\"S.G. Saunders Copyist 22 [Ann] Street Devonport Street Commercial Road. E. 1872\"--v. 1, f. 35.",
+      "\"To be returned to Charles Reade Esq. D.C.L. 2 Albert Terrace Knightsbridge London S.W.\""
+   ],
+   "binding_note_display":[
+      "Original wrappers, stitched; in slipcase."
+   ],
+   "language_facet":[
+      "English"
+   ],
+   "publication_place_facet":[
+      "New Jersey"
+   ],
+   "language_code_s":[
+      "eng"
+   ],
+   "language_iana_s":[
+      "en"
+   ],
+   "provenance_display":[
+      "Bookplate of Morris L. Parrish."
+   ],
+   "source_acquisition_display":[
+      "Acc. no. AM 19660."
+   ],
+   "other_format_display":[
+      "Also available in an electronic version."
+   ],
+   "lc_subject_display":[
+      "Reade, Charles, 1814-1884—Shilly Shally",
+      "English drama—19th century"
+   ],
+   "subject_unstem_search":[
+      "Reade, Charles, 1814-1884—Shilly Shally",
+      "English drama—19th century"
+   ],
+   "siku_subject_unstem_search":null,
+   "subject_facet":[
+      "Reade, Charles, 1814-1884—Shilly Shally",
+      "English drama—19th century"
+   ],
+   "subject_topic_facet":[
+      "Reade, Charles, 1814-1884. Shilly Shally",
+      "English drama"
+   ],
+   "related_name_json_1display":[
+      "{\"Former owner\":[\"Reade, Charles, 1814-1884\",\"Parrish, Morris Longstreth, 1867-1944\"]}"
+   ],
+   "place_name_display":[
+      "England London."
+   ],
+   "other_title_index":[
+      "Ralph the heir"
+   ],
+   "other_title_display":[
+      "Ralph the heir"
+   ],
+   "alt_title_246_display":[
+      "Ralph the heir"
+   ],
+   "in_display":[
+      "Morris L. Parrish collection of Victorian novelists. 1806-1958"
+   ],
+   "oclc_s":[
+      "49365071"
+   ],
+   "standard_no_index":[
+      "49365071",
+      "3395923",
+      "3395923-princetondb"
+   ],
+   "other_version_s":[
+      "ocm49365071"
+   ],
+   "subject_era_facet":[
+      "19th century"
+   ],
+   "holdings_1display":[
+      "{\"22637558650006421\":{\"location_code\":\"rare$hsvm\",\"location\":\"Manuscripts\",\"library\":\"Special Collections\",\"call_number\":\"C0171 (no. 109)\",\"call_number_browse\":\"C0171 (no. 109)\"}}"
+   ],
+   "location_code_s":[
+      "rare$hsvm"
+   ],
+   "location":[
+      "Special Collections"
+   ],
+   "location_display":[
+      "Manuscripts"
+   ],
+   "advanced_location_s":[
+      "rare$hsvm",
+      "Special Collections"
+   ],
+   "name_title_browse_s":[
+      "Reade, Charles, 1814-1884. Shilly Shally, or, Ralph the heir"
+   ],
+   "call_number_display":[
+      "C0171 (no. 109)"
+   ],
+   "call_number_browse_s":[
+      "C0171 (no. 109)"
+   ],
+   "call_number_locator_display":[
+      "C0171 (no. 109)"
+   ],
+   "electronic_portfolio_s":[
+      "{\"desc\":null,\"title\":\"Full Text\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\\u0026portfolio_pid=53855514130006421\\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+   ],
+   "access_facet":[
+      "Online",
+      "In the Library"
+   ]
+}
 ]

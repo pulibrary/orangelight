@@ -31,7 +31,7 @@ describe 'browsing a catalog item', js: true do
 
   context 'when an entry has a bib. ID and ARK for a resource published in Figgy' do
     before do
-      visit 'catalog/3395923'
+      visit 'catalog/9933959233506421'
     end
 
     it 'updates the thumbnail and constructs an instance of the Universal Viewer' do
