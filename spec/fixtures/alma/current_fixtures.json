@@ -878,7 +878,7 @@
     ]
     },
     {
-    "id": "99122280909906421",
+    "id": "99125141335606421",
     "numeric_id_b": true,
     "author_citation_display": [
     "Tonam Ŏmun Hakhoe (Korea)"
@@ -1070,7 +1070,7 @@
     ]
     },
     {
-    "id": "99122280913406421",
+    "id": "99125141337506421",
     "numeric_id_b": true,
     "author_citation_display": [
     "Sŏul Kukchepŏp Yŏn'guwŏn."
@@ -1445,7 +1445,7 @@
     ]
     },
     {
-    "id": "99122289975906421",
+    "id": "99125144500406421",
     "numeric_id_b": true,
     "author_citation_display": [
     "ZAO \"Medit͡sinskie izdanii͡a\""
@@ -1682,7 +1682,7 @@
     ]
     },
     {
-    "id": "99122410491906421",
+    "id": "99125136955806421",
     "numeric_id_b": true,
     "author_citation_display": [
     "Kungnip Minsok Pangmulgwan (Korea)"
@@ -1907,7 +1907,7 @@
     ]
     },
     {
-    "id": "99122365096206421",
+    "id": "99125106703706421",
     "numeric_id_b": true,
     "author_citation_display": [
     "Gradska biblioteka Pančevo"
@@ -2531,7 +2531,7 @@
     ]
     },
     {
-    "id": "99122420492106421",
+    "id": "99125164511706421",
     "numeric_id_b": true,
     "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
     "title_display": "Asimmetrii͡a",
@@ -3283,7 +3283,7 @@
     ]
     },
     {
-    "id": "99122280895906421",
+    "id": "99125141410006421",
     "numeric_id_b": true,
     "author_citation_display": [
     "Ōsaka Daigaku"
@@ -13080,7 +13080,7 @@
     ]
     },
     {
-    "id": "99122416288906421",
+    "id": "99125305025806421",
     "numeric_id_b": true,
     "author_display": [
     "Geonauki (Conference)"
@@ -17142,5 +17142,702 @@
       "Online",
       "In the Library"
    ]
+},
+{
+  "id": "9937539283506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+  "Robinson, Karl Davis"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Robinson, Karl Davis\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+  "Robinson, Karl Davis, 1884-1961"
+  ],
+  "title_display": "Robinson igo zōsho mokuroku = Catalogue of the Robinson go collection.",
+  "title_vern_display": "ロビンソン囲碁藏書目錄= Catalogue of the Robinson go collection.",
+  "title_t": [
+  "Robinson igo zōsho mokuroku = Catalogue of the Robinson go collection."
+  ],
+  "title_citation_display": [
+  "Robinson igo zōsho mokuroku = Catalogue of the Robinson go collection",
+  "ロビンソン囲碁藏書目錄= Catalogue of the Robinson go collection"
+  ],
+  "compiled_created_t": [
+  "Robinson igo zōsho mokuroku = Catalogue of the Robinson go collection.",
+  "ロビンソン囲碁藏書目錄= Catalogue of the Robinson go collection."
+  ],
+  "pub_created_display": [
+  "Princeton, N.J. : Gest Oriental Library, Princeton University, 1975."
+  ],
+  "pub_created_s": [
+  "Princeton, N.J. : Gest Oriental Library, Princeton University, 1975."
+  ],
+  "pub_citation_display": [
+  "Princeton, N.J.: Gest Oriental Library, Princeton University"
+  ],
+  "pub_date_display": [
+  "1975"
+  ],
+  "pub_date_start_sort": 1975,
+  "cataloged_tdt": "2021-07-12T19:21:56Z",
+  "format": [
+  "Book"
+  ],
+  "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/ww72bg285\":[\"Digital content\"]}",
+  "description_display": [
+  "[55] leaves ; 29 cm."
+  ],
+  "description_t": [
+  "[55] leaves ; 29 cm."
+  ],
+  "number_of_pages_citation_display": [
+  "[55] leaves"
+  ],
+  "notes_display": [
+  "Cover title."
+  ],
+  "language_facet": [
+  "Japanese"
+  ],
+  "language_code_s": [
+  "jpn"
+  ],
+  "language_iana_s": [
+  "ja"
+  ],
+  "lc_subject_display": [
+  "Go (Game)—Bibliography—Catalogs",
+  "Princeton University. Library—Catalogs",
+  "Robinson, Karl Davis, 1884-1961—Library—Catalogs"
+  ],
+  "subject_facet": [
+  "Go (Game)—Bibliography—Catalogs",
+  "Princeton University. Library—Catalogs",
+  "Robinson, Karl Davis, 1884-1961—Library—Catalogs",
+  "Catalogs"
+  ],
+  "lcgft_s": [
+  "Catalogs"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Robinson, Karl Davis, 1884-1961\"]}",
+  "other_title_display": [
+  "Catalogue of the Robinson go collection",
+  "Robinson go collection"
+  ],
+  "alt_title_246_display": [
+  "Catalogue of the Robinson go collection",
+  "Robinson go collection"
+  ],
+  "oclc_s": [
+  "51014321"
+  ],
+  "other_version_s": [
+  "ocm51014321"
+  ],
+  "holdings_1display": "{\"22512433480006421\":{\"location_code\":\"eastasian$cjkref\",\"location\":\"Reference\",\"library\":\"East Asian Library\",\"call_number\":\"GV459.5 .R63 1975\",\"call_number_browse\":\"GV459.5 .R63 1975\",\"location_has\":[\"COPY 2\",\"shelved in Japanese Bibliographer's Office\"],\"items\":[{\"holding_id\":\"22512433480006421\",\"id\":\"23512433470006421\",\"status_at_load\":\"1\",\"barcode\":\"32101093282703\",\"copy_number\":\"0\"}]},\"22512433500006421\":{\"location_code\":\"eastasian$cjkref\",\"location\":\"Reference\",\"library\":\"East Asian Library\",\"call_number\":\"GV459.5 .R63 1975\",\"call_number_browse\":\"GV459.5 .R63 1975\",\"location_has\":[\"COPY 1\"],\"items\":[{\"holding_id\":\"22512433500006421\",\"id\":\"23512433490006421\",\"status_at_load\":\"1\",\"barcode\":\"32101090118355\",\"copy_number\":\"1\"}]},\"22512433460006421\":{\"location_code\":\"eastasian$pl\",\"location\":\"Remote Storage (ReCAP): East Asian Library Use Only\",\"library\":\"East Asian Library\",\"call_number\":\"BJ6870.1/6233\",\"call_number_browse\":\"BJ6870.1/6233\",\"items\":[{\"holding_id\":\"22512433460006421\",\"id\":\"23512433450006421\",\"status_at_load\":\"1\",\"barcode\":\"32101092458619\",\"copy_number\":\"0\"}]}}",
+  "location_code_s": [
+  "eastasian$cjkref",
+  "eastasian$pl"
+  ],
+  "location": [
+  "East Asian Library"
+  ],
+  "location_display": [
+  "Reference",
+  "Remote Storage (ReCAP): East Asian Library Use Only"
+  ],
+  "advanced_location_s": [
+  "eastasian$cjkref",
+  "eastasian$pl",
+  "East Asian Library"
+  ],
+  "call_number_display": [
+  "GV459.5 .R63 1975",
+  "BJ6870.1/6233"
+  ],
+  "call_number_browse_s": [
+  "GV459.5 .R63 1975",
+  "BJ6870.1/6233"
+  ],
+  "call_number_locator_display": [
+  "GV459.5 .R63 1975",
+  "BJ6870.1/6233"
+  ],
+  "electronic_portfolio_s": [
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53846574820006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+  ]
+},
+{
+  "id": "9968683243506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+  "Gayetty, J. I.",
+  "Parker, S. L.",
+  "Mudd, Kostka",
+  "McCammon, R. L."
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Gayetty, J. I.\",\"Parker, S. L.\",\"Mudd, Kostka\",\"McCammon, R. L.\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+  "Gayetty, J. I.",
+  "Parker, S. L.",
+  "Mudd, Kostka",
+  "McCammon, R. L."
+  ],
+  "title_display": "Pennsylvania: (Lycoming) Trout Run Quadrangle [cartographic material].",
+  "title_t": [
+  "Pennsylvania: (Lycoming) Trout Run Quadrangle [cartographic material]."
+  ],
+  "title_citation_display": [
+  "Pennsylvania: (Lycoming) Trout Run Quadrangle"
+  ],
+  "compiled_created_t": [
+  "Pennsylvania: (Lycoming) Trout Run Quadrangle [cartographic material]."
+  ],
+  "edition_display": [
+  "Edition of 1923"
+  ],
+  "pub_created_display": [
+  "[Washington, D.C.] : U.S. Geological Survey, 1923."
+  ],
+  "pub_created_s": [
+  "[Washington, D.C.] : U.S. Geological Survey, 1923."
+  ],
+  "pub_citation_display": [
+  "Washington, D.C.: U.S. Geological Survey"
+  ],
+  "pub_date_display": [
+  "1923"
+  ],
+  "pub_date_start_sort": 1923,
+  "cataloged_tdt": "2021-07-20T22:57:25Z",
+  "format": [
+  "Map"
+  ],
+  "electronic_access_1display": "{\"https://catalog.princeton.edu/catalog/6868324#view\":[\"Digital content\"],\"http://arks.princeton.edu/ark:/88435/t722hb52k\":[\"arks.princeton.edu\"]}",
+  "description_display": [
+  "Polyconic proj. (W 77°15ʹ--W 77°0ʹ/N 41°30ʹ--N 41°15ʹ)"
+  ],
+  "description_t": [
+  "Scale 1:62,500 Polyconic proj. (W 77°15ʹ--W 77°0ʹ/N 41°30ʹ--N 41°15ʹ)"
+  ],
+  "coverage_display": [
+  "northlimit=41.5; eastlimit=-77; southlimit=41.25; westlimit=-77.25; units=degrees; projection=EPSG:4326"
+  ],
+  "scale_display": [
+  "Scale 1:62,500"
+  ],
+  "projection_display": [
+  "Polyconic proj."
+  ],
+  "notes_display": [
+  "United States. Geological Survey.",
+  "U.S.G.S.",
+  "Alternate title: Trout Run, PA. Polyconic projection. Relief shown by 20 feet contour interval and spot heights. Surveyed in 1921. Surveyed in cooperation with the State of Pennsylvania. Verso: The topographic maps of the United States."
+  ],
+  "language_display": [
+  "In English."
+  ],
+  "language_facet": [
+  "English"
+  ],
+  "language_code_s": [
+  "eng"
+  ],
+  "language_iana_s": [
+  "en"
+  ],
+  "lc_subject_display": [
+  "Topographic maps"
+  ],
+  "subject_facet": [
+  "Topographic maps"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Gayetty, J. I.\",\"Parker, S. L.\",\"Mudd, Kostka\",\"McCammon, R. L.\"]}",
+  "holdings_1display": "{\"22511321690006421\":{\"location_code\":\"lewis$mapmc\",\"location\":\"Lewis Library: Map Collection. Map Case\",\"library\":\"Lewis Library\",\"call_number\":\"G3821.C2.s62.U5G4 Trout Run\",\"call_number_browse\":\"G3821.C2.s62.U5G4 Trout Run\"}}",
+  "location_code_s": [
+  "lewis$mapmc"
+  ],
+  "location": [
+  "Lewis Library"
+  ],
+  "location_display": [
+  "Lewis Library: Map Collection. Map Case"
+  ],
+  "advanced_location_s": [
+  "lewis$mapmc",
+  "Lewis Library"
+  ],
+  "call_number_display": [
+  "G3821.C2.s62.U5G4 Trout Run"
+  ],
+  "call_number_browse_s": [
+  "G3821.C2.s62.U5G4 Trout Run"
+  ],
+  "call_number_locator_display": [
+  "G3821.C2.s62.U5G4 Trout Run"
+  ],
+  "electronic_portfolio_s": [
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53838625660006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53838625640006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+  ]
+},
+{
+  "id": "9967734313506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+  "Kodama, Kōta"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Kodama, Kōta\",\"児玉幸多\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+  "Kodama, Kōta, 1909-2007",
+  "児玉幸多, 1909-2007"
+  ],
+  "title_display": "Hyōjun Nihon shi kakezu [map] / Kodama Kōta hen.",
+  "title_vern_display": "標準日本史掛図 / 児玉幸多編.",
+  "title_t": [
+  "Hyōjun Nihon shi kakezu [map] / Kodama Kōta hen."
+  ],
+  "title_citation_display": [
+  "Hyōjun Nihon shi kakezu",
+  "標準日本史掛図"
+  ],
+  "compiled_created_t": [
+  "Hyōjun Nihon shi kakezu [map] / Kodama Kōta hen.",
+  "標準日本史掛図 / 児玉幸多編."
+  ],
+  "pub_created_vern_display": [
+  "東京 : 吉川弘文館, 昭和30-32 [1955-57]"
+  ],
+  "pub_created_display": [
+  "Tōkyō : Yoshikawa Kōbunkan, Shōwa 30-32 [1955-57]",
+  "東京 : 吉川弘文館, 昭和30-32 [1955-57]"
+  ],
+  "pub_created_s": [
+  "Tōkyō : Yoshikawa Kōbunkan, Shōwa 30-32 [1955-57]",
+  "東京 : 吉川弘文館, 昭和30-32 [1955-57]"
+  ],
+  "pub_citation_display": [
+  "Tōkyō: Yoshikawa Kōbunkan",
+  "東京: 吉川弘文館"
+  ],
+  "pub_date_display": [
+  "1955"
+  ],
+  "pub_date_start_sort": 1955,
+  "pub_date_end_sort": 1957,
+  "cataloged_tdt": "2021-07-13T05:44:38Z",
+  "format": [
+  "Map"
+  ],
+  "electronic_access_1display": "{\"https://catalog.princeton.edu/catalog/6773431#view\":[\"Digital content\",\"See dai 1\"],\"http://arks.princeton.edu/ark:/88435/4b29b8439\":[\"arks.princeton.edu\",\"See dai 1 label\"],\"http://arks.princeton.edu/ark:/88435/kp78gj86g\":[\"arks.princeton.edu\",\"See dai 2\"],\"http://arks.princeton.edu/ark:/88435/fx719p95r\":[\"arks.princeton.edu\",\"See dai 2 label\"],\"http://arks.princeton.edu/ark:/88435/b5644v03v\":[\"arks.princeton.edu\",\"See dai 2 label 2\"],\"http://arks.princeton.edu/ark:/88435/6h440v95h\":[\"arks.princeton.edu\",\"See dai 3\"],\"http://arks.princeton.edu/ark:/88435/2r36v102x\":[\"arks.princeton.edu\",\"See dai 3 label\"],\"http://arks.princeton.edu/ark:/88435/z029p721v\":[\"arks.princeton.edu\",\"See dai 3 label 2\"],\"http://arks.princeton.edu/ark:/88435/0k225d50m\":[\"arks.princeton.edu\",\"See dai 5\"],\"http://arks.princeton.edu/ark:/88435/vt150m70s\":[\"arks.princeton.edu\",\"See dai 5 label\"],\"http://arks.princeton.edu/ark:/88435/r207tr79g\":[\"arks.princeton.edu\",\"See dai 6\"],\"http://arks.princeton.edu/ark:/88435/mc87ps69x\":[\"arks.princeton.edu\",\"See dai 6 label\"],\"http://arks.princeton.edu/ark:/88435/gm80hx786\":[\"arks.princeton.edu\",\"See dai 7\"],\"http://arks.princeton.edu/ark:/88435/bv73c288g\":[\"arks.princeton.edu\",\"See dai 7 label\"],\"http://arks.princeton.edu/ark:/88435/73666696n\":[\"arks.princeton.edu\",\"See dai 8\"],\"http://arks.princeton.edu/ark:/88435/3b591c02j\":[\"arks.princeton.edu\",\"See dai 8 label\"],\"http://arks.princeton.edu/ark:/88435/zk51vk227\":[\"arks.princeton.edu\",\"See dai 9\"],\"http://arks.princeton.edu/ark:/88435/tt44pq31n\":[\"arks.princeton.edu\",\"See dai 9 label\"],\"http://arks.princeton.edu/ark:/88435/q524jr21h\":[\"arks.princeton.edu\",\"See dai 10\"],\"http://arks.princeton.edu/ark:/88435/kd17cw30x\":[\"arks.princeton.edu\",\"See dai 10 label\"],\"http://arks.princeton.edu/ark:/88435/fn1071402\":[\"arks.princeton.edu\",\"See dai 11\"],\"http://arks.princeton.edu/ark:/88435/9w032548c\":[\"arks.princeton.edu\",\"See dai 11 label\"],\"http://arks.princeton.edu/ark:/88435/6395w9542\":[\"arks.princeton.edu\",\"See dai 12\"],\"http://arks.princeton.edu/ark:/88435/2b88qf620\":[\"arks.princeton.edu\",\"See dai 12 label\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/8336h435c\":\"https://figgy.princeton.edu/concern/scanned_maps/c39fcf59-aa14-4b09-8f03-eaee89400874/manifest\"}}",
+  "description_display": [
+  "(E 60°00ʹ00ʺ--E 170°00ʹ00ʺ/N 70°00ʹ00ʺ--S 20°00ʹ00ʺ).",
+  "12 maps : col. ; 105 x 148 on sheet 114 x 152."
+  ],
+  "description_t": [
+  "Scales differ. (E 60°00ʹ00ʺ--E 170°00ʹ00ʺ/N 70°00ʹ00ʺ--S 20°00ʹ00ʺ).",
+  "12 maps : col. ; 105 x 148 on sheet 114 x 152."
+  ],
+  "number_of_pages_citation_display": [
+  "12 maps"
+  ],
+  "coverage_display": [
+  "northlimit=070.0; eastlimit=170.0; southlimit=-020.0; westlimit=060.0; units=degrees; projection=EPSG:4326"
+  ],
+  "geocode_display": [
+  "Japan"
+  ],
+  "scale_display": [
+  "Scales differ."
+  ],
+  "notes_display": [
+  "Each map is clothbacked and mounted on wooden rods in scroll.",
+  "Multiple maps on one sheet.",
+  "Library has: dai 1-3, 5-12."
+  ],
+  "language_facet": [
+  "Japanese"
+  ],
+  "language_code_s": [
+  "jpn"
+  ],
+  "language_iana_s": [
+  "ja"
+  ],
+  "lc_subject_display": [
+  "Japan—Historical geography—Maps"
+  ],
+  "subject_facet": [
+  "Japan—Historical geography—Maps",
+  "Maps"
+  ],
+  "lcgft_s": [
+  "Maps"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Kodama, Kōta, 1909-2007\",\"児玉幸多, 1909-2007\"]}",
+  "other_title_display": [
+  "Nihon shi kakezu",
+  "日本史掛図"
+  ],
+  "alt_title_246_display": [
+  "Nihon shi kakezu",
+  "日本史掛図"
+  ],
+  "oclc_s": [
+  "61500431"
+  ],
+  "other_version_s": [
+  "ocm61500431"
+  ],
+  "holdings_1display": "{\"22625523630006421\":{\"location_code\":\"rare$xp\",\"location\":\"Remote Storage (ReCAP): Historic Maps. Special Collections Use Only\",\"library\":\"Special Collections\",\"call_number\":\"HMC01.6745\",\"call_number_browse\":\"HMC01.6745\",\"location_has\":[\"Only dai 1-3, 5-12.\"],\"items\":[{\"holding_id\":\"22625523630006421\",\"id\":\"23625523610006421\",\"status_at_load\":\"1\",\"enumeration\":\"Dai 8, 9, 10, 11, 12\",\"barcode\":\"32101037629456\",\"copy_number\":\"1\"},{\"holding_id\":\"22625523630006421\",\"id\":\"23625523590006421\",\"status_at_load\":\"1\",\"enumeration\":\"Dai 3\",\"barcode\":\"32101037555388\",\"copy_number\":\"1\"},{\"holding_id\":\"22625523630006421\",\"id\":\"23625523620006421\",\"status_at_load\":\"1\",\"enumeration\":\"Dai 1, 5, 6, 7\",\"barcode\":\"32101037629464\",\"copy_number\":\"1\"},{\"holding_id\":\"22625523630006421\",\"id\":\"23625523600006421\",\"status_at_load\":\"1\",\"enumeration\":\"Dai 2\",\"barcode\":\"32101037555396\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+  "rare$xp"
+  ],
+  "location": [
+  "Special Collections"
+  ],
+  "location_display": [
+  "Remote Storage (ReCAP): Historic Maps. Special Collections Use Only"
+  ],
+  "advanced_location_s": [
+  "rare$xp",
+  "Special Collections"
+  ],
+  "call_number_display": [
+  "HMC01.6745"
+  ],
+  "call_number_browse_s": [
+  "HMC01.6745"
+  ],
+  "call_number_locator_display": [
+  "HMC01.6745"
+  ],
+  "electronic_portfolio_s": [
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811040006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810980006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811020006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810790006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810860006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811000006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810940006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811060006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811080006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810960006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811100006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810840006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810880006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810900006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811120006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811140006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811160006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810660006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810820006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810920006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810770006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810730006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810750006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810680006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+  ]
+},
+{
+  "id": "998574693506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+  "American Association for the Advancement of Science"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"American Association for the Advancement of Science\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+  "American Association for the Advancement of Science"
+  ],
+  "uniform_title_s": [
+  "Science (Cambridge, Mass.)"
+  ],
+  "title_display": "Science.",
+  "title_t": [
+  "Science."
+  ],
+  "title_citation_display": [
+  "Science"
+  ],
+  "compiled_created_t": [
+  "Science."
+  ],
+  "pub_created_display": [
+  "Cambridge, Mass. : M. King, 1883-"
+  ],
+  "pub_created_s": [
+  "Cambridge, Mass. : M. King, 1883-"
+  ],
+  "pub_citation_display": [
+  "Cambridge, Mass: M. King"
+  ],
+  "pub_date_display": [
+  "1883"
+  ],
+  "pub_date_start_sort": 1883,
+  "pub_date_end_sort": 9999,
+  "cataloged_tdt": "2021-07-13T01:32:32Z",
+  "format": [
+  "Journal"
+  ],
+  "electronic_access_1display": "{\"http://catalog.hathitrust.org/Record/008883092\":[\"catalog.hathitrust.org\"]}",
+  "description_display": [
+  "v. : ill. ; 26-32 cm.",
+  "[Vol. 1], no. 1 (Feb. 9, 1883)-v. 23, no. 581 (Mar. 23, 1894) ; new ser., v. 1, no. 1 (Jan. 4, 1895)-"
+  ],
+  "description_t": [
+  "v. : ill. ; 26-32 cm.",
+  "[Vol. 1], no. 1 (Feb. 9, 1883)-v. 23, no. 581 (Mar. 23, 1894) ; new ser., v. 1, no. 1 (Jan. 4, 1895)-"
+  ],
+  "number_of_pages_citation_display": [
+  "v."
+  ],
+  "issued_with_display": [
+  "Helminthological Society of Washington. Proceedings of the Helminthological Society of Washington"
+  ],
+  "continues_display": [
+  "Science (New York, N.Y.)"
+  ],
+  "absorbed_display": [
+  "Scientific monthly"
+  ],
+  "frequency_display": [
+  "Weekly (except last week in Dec.)"
+  ],
+  "has_supplement_display": [
+  "Guide to scientific instruments",
+  "AAAS observer"
+  ],
+  "linking_notes_display": [
+  "Vols. for 1911-1913 contain: the Proceedings of the Helminthological Society of Washington, 1st-15th meeting."
+  ],
+  "geo_related_record_display": [
+  "Helminthological Society of Washington. Proceedings of the Helminthological Society of Washington"
+  ],
+  "notes_display": [
+  "Since Jan. 1901, includes the official proceedings and most of the papers of the American Association for the Advancement of Science.",
+  "Place of publication varies."
+  ],
+  "source_desc_notes_display": [
+  "Title from caption."
+  ],
+  "language_facet": [
+  "English"
+  ],
+  "language_code_s": [
+  "eng"
+  ],
+  "language_iana_s": [
+  "en"
+  ],
+  "lc_subject_display": [
+  "Science—Periodicals"
+  ],
+  "subject_facet": [
+  "Science—Periodicals",
+  "Periodicals"
+  ],
+  "lcgft_s": [
+  "Periodicals"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"American Association for the Advancement of Science\"]}",
+  "other_title_display": [
+  "Science (Washington, D.C.)",
+  "Science magazine"
+  ],
+  "alt_title_246_display": [
+  "Science magazine"
+  ],
+  "issn_display": [
+  "0036-8075"
+  ],
+  "lccn_display": [
+  "   17024346 //r862 "
+  ],
+  "lccn_s": [
+  "17024346"
+  ],
+  "issn_s": [
+  "00368075"
+  ],
+  "oclc_s": [
+  "5933538"
+  ],
+  "other_version_s": [
+  "00368075",
+  "ocm05933538",
+  "ocm03638006",
+  "ocm12333704",
+  "ocm53849218",
+  "ocn516785848",
+  "ocn818817037"
+  ],
+  "location_code_s": [
+  "firestone$stacks",
+  "recap$pa",
+  "lewis$pn",
+  "firestone$pf",
+  "plasma$ps",
+  "engineer$serial",
+  "lewis$serial",
+  "stokes$spiaps"
+  ],
+  "location": [
+  "Firestone Library",
+  "ReCAP",
+  "Lewis Library",
+  "Harold P. Furth Plasma Physics Library",
+  "Engineering Library",
+  "Stokes Library"
+  ],
+  "location_display": [
+  "Stacks",
+  "Remote Storage",
+  "Remote Storage (ReCAP): Lewis Library Use Only",
+  "Remote Storage (ReCAP): Firestone Library Use Only",
+  "Periodicals",
+  "Serials",
+  "Serials (shelved by serial title)",
+  "Periodicals. Wallace Hall"
+  ],
+  "advanced_location_s": [
+  "firestone$stacks",
+  "recap$pa",
+  "lewis$pn",
+  "firestone$pf",
+  "plasma$ps",
+  "engineer$serial",
+  "lewis$serial",
+  "stokes$spiaps",
+  "Firestone Library",
+  "ReCAP",
+  "Lewis Library",
+  "Harold P. Furth Plasma Physics Library",
+  "Engineering Library",
+  "Stokes Library"
+  ],
+  "linked_title_s": [
+  "Helminthological Society of Washington. Proceedings of the Helminthological Society of Washington"
+  ],
+  "name_title_browse_s": [
+  "Helminthological Society of Washington. Proceedings of the Helminthological Society of Washington"
+  ],
+  "call_number_display": [
+  "Q1 .S3543",
+  "Q1 .S35",
+  "8001.846",
+  "MICROFILM S01159"
+  ],
+  "call_number_browse_s": [
+  "Q1 .S3543",
+  "Q1 .S35",
+  "8001.846",
+  "MICROFILM S01159"
+  ],
+  "call_number_locator_display": [
+  "Q1 .S3543",
+  "Q1 .S35",
+  "8001.846",
+  "MICROFILM S01159"
+  ],
+  "holdings_1display": "{\"22579865350006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"Q1 .S3543\",\"call_number_browse\":\"Q1 .S3543\",\"location_has\":[\"COPY 2:  New ser., v. 23, no 575 (Jan. 5, 1906)-v. 166\",\"LACKS: many issues in v. 23-110; v. 111-125; v. 128; v. 134-137;v. 139-142; v. 144-145; v. 146, no. ?; v. 147-163\"],\"items\":[{\"holding_id\":\"22579865350006421\",\"id\":\"23579865280006421\",\"status_at_load\":\"1\",\"enumeration\":\"vol.47\",\"barcode\":\"32101076185550\",\"copy_number\":\"2\"},{\"holding_id\":\"22579865350006421\",\"id\":\"23579865250006421\",\"status_at_load\":\"1\",\"enumeration\":\"vol.45\",\"barcode\":\"32101076185535\",\"copy_number\":\"2\"}]}}"
+},
+{
+  "id": "9960108133506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+  "Statistics Canada"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Statistics Canada\",\"Statistics Canada\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+  "Statistics Canada",
+  "Statistics Canada. Social and Aboriginal Statistics Division"
+  ],
+  "title_display": "Aboriginal peoples survey [electronic resource] = Enquête auprès des peuples autochtones.",
+  "title_t": [
+  "Aboriginal peoples survey [electronic resource] = Enquête auprès des peuples autochtones."
+  ],
+  "title_citation_display": [
+  "Aboriginal peoples survey Enquête auprès des peuples autochtones"
+  ],
+  "compiled_created_t": [
+  "Aboriginal peoples survey [electronic resource] = Enquête auprès des peuples autochtones."
+  ],
+  "pub_created_display": [
+  "Ottawa : Statistics Canada, 1991-"
+  ],
+  "pub_created_s": [
+  "Ottawa : Statistics Canada, 1991-"
+  ],
+  "pub_citation_display": [
+  "Ottawa: Statistics Canada"
+  ],
+  "pub_date_display": [
+  "2006"
+  ],
+  "pub_date_start_sort": 2006,
+  "cataloged_tdt": "2021-07-21T00:41:57Z",
+  "format": [
+  "Book"
+  ],
+  "electronic_access_1display": "{\"http://dss.princeton.edu/cgi-bin/catalog/search.cgi?studyno=3168\":[\"dss.princeton.edu\",\"Data\"]}",
+  "geocode_display": [
+  "Canada"
+  ],
+  "restrictions_note_display": [
+  "Use of these data is restricted to Princeton University students, faculty, and staff for non-commercial statistical analysis and research purposes only."
+  ],
+  "summary_note_display": [
+  "The Aboriginal Peoples Survey collected data on Aboriginal people 6 years of age and over (First Nations people living off reserve, Métis and Inuit) in urban, rural and northern locations throughout Canada. Although people living on reserve were not included in the provinces, all First Nations people, Métis and Inuit living in the territories were included."
+  ],
+  "notes_display": [
+  "Data accessible via the Data and Statistical Services (DSS) website.",
+  "Title from title screen (viewed on February 4, 2010).",
+  "\"Catalogue no. 89M0026X.\""
+  ],
+  "system_details_notes_display": [
+  "Mode of access: Internet."
+  ],
+  "language_display": [
+  "In English and French."
+  ],
+  "language_facet": [
+  "English",
+  "French"
+  ],
+  "language_code_s": [
+  "eng",
+  "fre"
+  ],
+  "language_iana_s": [
+  "en",
+  "fr"
+  ],
+  "lc_subject_display": [
+  "Indians of North America—Canada—Statistics",
+  "Indigenous peoples—Canada—Statistics",
+  "Demographic surveys—Canada"
+  ],
+  "subject_facet": [
+  "Indians of North America—Canada—Statistics",
+  "Indigenous peoples—Canada—Statistics",
+  "Demographic surveys—Canada",
+  "Statistics"
+  ],
+  "lcgft_s": [
+  "Statistics"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Statistics Canada\",\"Statistics Canada. Social and Aboriginal Statistics Division\"]}",
+  "other_title_display": [
+  "Enquête auprès des peuples autochtones",
+  "APS"
+  ],
+  "alt_title_246_display": [
+  "Enquête auprès des peuples autochtones",
+  "APS"
+  ],
+  "electronic_portfolio_s": [
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53857090070006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+  ]
 }
 ]

@@ -16,7 +16,7 @@ RSpec.describe 'catalog/show' do
 
   context 'when entries describe a scanned map published using an ARK', js: true do
     it 'renders a viewer' do
-      visit 'catalog/6109323'
+      visit 'catalog/9961093233506421'
       expect(page).to have_selector('div#view')
     end
   end
@@ -31,12 +31,12 @@ RSpec.describe 'catalog/show' do
 
   context 'when entries describe a set of scanned maps published using ARKs', js: true do
     it 'will display only one viewer for the entire set' do
-      visit '/catalog/6868324'
+      visit '/catalog/9968683243506421'
 
       expect(page).to have_selector('div#view')
       expect(page).not_to have_selector('div#view_1')
 
-      visit '/catalog/6773431'
+      visit '/catalog/9967734313506421'
 
       expect(page).to have_selector('div#view')
       expect(page).not_to have_selector('div#view_1')
@@ -66,14 +66,14 @@ RSpec.describe 'catalog/show' do
   describe 'the location for physical holdings', js: true do
     context 'if physical holding information is recorded in the entry' do
       it 'is not rendered' do
-        visit 'catalog/857469'
-        expect(page).not_to have_selector('#doc_857469 > dl > dt.blacklight-holdings_1display')
+        visit 'catalog/9960108133506421'
+        expect(page).not_to have_selector('#doc_9960108133506421 > dl > dt.blacklight-holdings_1display')
       end
     end
 
     it 'is rendered' do
-      visit 'catalog/6010813'
-      expect(page).to have_selector('#doc_6010813 > dl > dt.blacklight-holdings_1display')
+      visit 'catalog/998574693506421'
+      expect(page).to have_selector('#doc_998574693506421 > dl > dt.blacklight-holdings_1display')
     end
   end
 
@@ -93,7 +93,7 @@ RSpec.describe 'catalog/show' do
 
   describe 'the hahti url' do
     it 'has a link to the hathi url' do
-      visit 'catalog/857469'
+      visit 'catalog/998574693506421'
       expect(page).not_to have_link('Temporary Digital Access from Hathi Trust', href: 'https://babel.hathitrust.org/Shibboleth.sso/Login?entityID=https://idp.princeton.edu/idp/shibboleth&target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fpt%3Fid%3Dmdp.39015015749305')
     end
   end
