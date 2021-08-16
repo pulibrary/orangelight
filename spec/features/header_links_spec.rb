@@ -7,7 +7,7 @@ describe 'Tools links' do
 
   context 'With MARC-based records' do
     before do
-      visit '/catalog/10585552'
+      visit '/catalog/99105855523506421'
     end
 
     it 'displays links in the navbar, account dropdown, and record view' do

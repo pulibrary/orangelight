@@ -7,28 +7,28 @@ describe 'Request Options' do
 
   describe 'the request page', js: true do
     before do
-      visit '/catalog/9618072'
+      visit '/catalog/9996180723506421'
     end
 
     it 'clicking the request button loads the request page' do
-      stub_request(:get, "https://bibdata-staging.princeton.edu/bibliographic/9618072/holdings/9455965/availability.json")
+      stub_request(:get, "https://bibdata-staging.princeton.edu/bibliographic/9996180723506421/holdings/22691241270006421/availability.json")
         .to_return(status: 200, body: {}.to_json, headers: {})
-      stub_request(:get, "https://catalog.princeton.edu/catalog/9618072/raw")
+      stub_request(:get, "https://catalog.princeton.edu/catalog/9996180723506421/raw")
         .to_return(status: 200, body: {}.to_json, headers: {})
-      stub_request(:get, "https://bibdata-staging.princeton.edu/availability?id=9618072")
+      stub_request(:get, "https://bibdata-staging.princeton.edu/availability?id=9996180723506421")
         .to_return(status: 200, body: {}.to_json, headers: {})
       stub_request(:get, "https://bibdata-staging.princeton.edu/locations/delivery_locations.json")
         .to_return(status: 200, body: {}.to_json, headers: {})
       using_wait_time 5 do
         click_link('Request')
-        expect(current_path).to eq "/requests/9618072"
+        expect(current_path).to eq "/requests/9996180723506421"
       end
     end
   end
 
   describe 'Available status non-requestable location', js: true do
     before do
-      visit '/catalog/9222024'
+      visit '/catalog/9992220243506421'
     end
 
     it 'does not display a request button', unless: in_ci? do
@@ -41,7 +41,7 @@ describe 'Request Options' do
 
   describe 'Unavailable status non-requestable location', js: true do
     before do
-      visit '/catalog/6890057'
+      visit '/catalog/9968900573506421'
     end
 
     it 'does not display a request button', unless: in_ci? do
@@ -54,7 +54,7 @@ describe 'Request Options' do
 
   describe 'In process status non-requestable location', js: true do
     before do
-      visit '/catalog/9618072'
+      visit '/catalog/9996180723506421'
     end
 
     it 'does display a request button', unless: in_ci? do
@@ -67,7 +67,7 @@ describe 'Request Options' do
 
   describe 'Available status requestable location', js: true do
     before do
-      visit '/catalog/9031545'
+      visit '/catalog/9990315453506421'
     end
 
     it 'does display a request button', unless: in_ci? do
@@ -80,7 +80,7 @@ describe 'Request Options' do
 
   describe 'Multi-item holding with some requestable items', js: true do
     before do
-      visit '/catalog/6045464'
+      visit '/catalog/9960454643506421'
     end
 
     # This no longer tests for the request button, as CORS headers must be enabled for the bibdata installation to avoid JavaScript/AJAX errors in Chrome
@@ -109,7 +109,7 @@ describe 'Request Options' do
 
   describe 'Aeon location', js: true do
     before do
-      visit '/catalog/7916044'
+      visit '/catalog/9979160443506421'
     end
 
     it 'displays an aeon request button', unless: in_ci? do
@@ -122,7 +122,7 @@ describe 'Request Options' do
 
   describe 'An In-transit discharged item', js: true do
     before do
-      visit '/catalog/9741216'
+      visit '/catalog/9997412163506421'
     end
 
     it 'does not display a request button', unless: in_ci? do
@@ -135,7 +135,7 @@ describe 'Request Options' do
 
   describe 'Paging location available status', js: true do
     before do
-      visit '/catalog/8908514'
+      visit '/catalog/9989085143506421'
     end
 
     xit 'does display a paging request button' do
@@ -148,7 +148,7 @@ describe 'Request Options' do
 
   describe 'Paging location that has been shelved at a temp location status', js: true do
     before do
-      visit '/catalog/5318288'
+      visit '/catalog/9953182883506421'
     end
 
     xit 'does display a request button', unless: in_ci? do
@@ -161,7 +161,7 @@ describe 'Request Options' do
 
   describe 'Paging location that has been shelved at a temp location status', js: true do
     before do
-      visit '/catalog?search_field=all_fields&q=5318288'
+      visit '/catalog?search_field=all_fields&q=9953182883506421'
     end
 
     xit 'does not display a paging request icon', unless: in_ci? do
