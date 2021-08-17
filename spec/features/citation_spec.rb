@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'citation' do
-  before do
+  it 'will render successfully even if there is not a subfield a' do
     stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/9979948663506421")
       .with(
         headers: {
@@ -13,8 +13,7 @@ describe 'citation' do
         }
       )
       .to_return(status: 200, body: "", headers: {})
-  end
-  it 'will render successfully even if there is not a subfield a' do
+
     visit '/catalog/9979948663506421/citation'
     expect(current_url).to include '/catalog/9979948663506421/citation'
     expect(page.status_code).to eq 200
