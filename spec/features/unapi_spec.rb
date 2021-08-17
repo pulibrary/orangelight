@@ -8,11 +8,11 @@ describe 'Unapi support' do
       stub_holding_locations
     end
     it 'contains an unapi reference in an abbr tag' do
-      visit '/catalog/3256177'
+      visit '/catalog/9932561773506421'
       doc = Nokogiri::HTML.parse(page.body)
 
       expect(doc.css('.unapi-id')).not_to be_empty
-      expect(doc.xpath("//abbr[@title='3256177']")).not_to be_empty
+      expect(doc.xpath("//abbr[@title='9932561773506421']")).not_to be_empty
     end
   end
 
@@ -31,7 +31,7 @@ describe 'Unapi support' do
 
   describe 'RIS response' do
     before do
-      visit '/catalog/3256177.ris'
+      visit '/catalog/9932561773506421.ris'
     end
     it 'returns the correct mime type for RIS' do
       expect(page.response_headers['Content-Type']).to eq('application/x-research-info-systems; charset=utf-8')
@@ -40,7 +40,7 @@ describe 'Unapi support' do
 
   describe 'Un API resource' do
     before do
-      visit '/unapi?id=3256177&format=ris'
+      visit '/unapi?id=9932561773506421&format=ris'
     end
     it 'returns the correct mime type for RIS' do
       expect(page.response_headers['Content-Type']).to eq('application/x-research-info-systems')

@@ -7,7 +7,7 @@ describe 'Tools links' do
 
   context 'With MARC-based records' do
     before do
-      visit '/catalog/10585552'
+      visit '/catalog/99115031773506421'
     end
 
     it 'displays links in the navbar, account dropdown, and record view' do
@@ -36,7 +36,7 @@ describe 'Tools links' do
 
   context 'With non-MARC-based records' do
     before do
-      visit  '/catalog/dsp01ft848s955'
+      visit  '/catalog/dsp017s75dc44p'
     end
 
     it 'does not have cite, RefWorks, or EndNote links' do

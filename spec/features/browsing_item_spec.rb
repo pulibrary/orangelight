@@ -8,19 +8,19 @@ describe 'browsing a catalog item', js: true do
   end
 
   it 'renders an accessible icon for citing the item' do
-    visit 'catalog/3478898'
+    visit 'catalog/9934788983506421'
     expect(page).to have_selector '.icon-cite[aria-hidden="true"]', visible: false
   end
 
   it 'renders an accessible icon for sending items to a printer' do
-    visit 'catalog/3478898'
+    visit 'catalog/9934788983506421'
     expect(page).to have_selector '.icon-share[aria-hidden="true"]', visible: false
     expect(page).to have_selector '.icon-print[aria-hidden="true"]', visible: false
   end
 
   context 'when an entry has a bib. ID for a resource published in Figgy' do
     before do
-      visit 'catalog/3753928'
+      visit 'catalog/9970446223506421'
     end
 
     it 'updates the thumbnail and constructs an instance of the Universal Viewer' do
@@ -31,7 +31,7 @@ describe 'browsing a catalog item', js: true do
 
   context 'when an entry has a bib. ID and ARK for a resource published in Figgy' do
     before do
-      visit 'catalog/3395923'
+      visit 'catalog/9970446223506421'
     end
 
     it 'updates the thumbnail and constructs an instance of the Universal Viewer' do
@@ -40,7 +40,7 @@ describe 'browsing a catalog item', js: true do
     end
 
     it 'updates the link to the ARK with a fragment identifier for the UV' do
-      expect(page).to have_selector '.electronic-access a[href$="3395923#view"]', text: 'Digital content'
+      expect(page).to have_selector '.availability--online a[href$="7044622#view"]', text: 'Table of contents'
     end
   end
 end

@@ -22,7 +22,7 @@ describe 'blacklight tests' do
     it 'handles it' do
       get '/catalog.json?f1=title&f2=author&f3=title&op2=AND&op3=AND&q1=&q2=Murakami%2C+Haruki&q3=1Q84&search_field=advanced'
       r = JSON.parse(response.body)
-      expect(r['data'].length).to eq 3
+      expect(r['data'].length).to eq 4
     end
   end
 
@@ -295,7 +295,7 @@ describe 'blacklight tests' do
       get '/catalog.json?f1=left_anchor&q1=Reconstructing+the&op2=OR&f2=left_anchor&q2='\
           'This+angel+on&op3=OR&f3=left_anchor&q3=Almost+Human&search_field=advanced&commit=Search'
       r = JSON.parse(response.body)
-      doc_ids = %w[9222024 dsp01ft848s955 dsp017s75dc44p]
+      doc_ids = %w[9992220243506421 9222024 dsp01ft848s955 dsp017s75dc44p]
       expect(r['data'].all? { |d| doc_ids.include?(d['id']) }).to eq true
     end
 
