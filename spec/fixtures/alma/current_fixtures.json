@@ -27185,5 +27185,556 @@
   "access_facet": [
     "In the Library"
   ]
+},
+{
+  "id": "9970446223506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+  "Chinese Rare Books Project"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Chinese Rare Books Project\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+  "Chinese Rare Books Project"
+  ],
+  "title_display": "[Miao Yao zu sheng huo tu].",
+  "title_vern_display": "[苗猺族生活圖].",
+  "title_t": [
+  "[Miao Yao zu sheng huo tu]."
+  ],
+  "title_citation_display": [
+  "[Miao Yao zu sheng huo tu].",
+  "[苗猺族生活圖]."
+  ],
+  "compiled_created_t": [
+  "[Miao Yao zu sheng huo tu].",
+  "[苗猺族生活圖]."
+  ],
+  "edition_display": [
+  "Shou hui cai tu ben.",
+  "手繪彩圖本."
+  ],
+  "pub_created_display": [
+  "[between 1736 and 1926]"
+  ],
+  "pub_created_s": [
+  "[between 1736 and 1926]"
+  ],
+  "pub_date_display": [
+  "1736"
+  ],
+  "pub_date_start_sort": 1736,
+  "pub_date_end_sort": 1926,
+  "cataloged_tdt": "2021-07-12T23:52:08Z",
+  "format": [
+  "Book"
+  ],
+  "electronic_access_1display": "{\"https://catalog.princeton.edu/catalog/7044622#view\":[\"Table of contents\"],\"https://catalog.princeton.edu/catalog/7044622#view_1\":[\"Digital content\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/1831cp579\":\"https://figgy.princeton.edu/concern/scanned_resources/f4ca996b-cd14-4179-aa4d-acd35edcc840/manifest\",\"http://arks.princeton.edu/ark:/88435/wm117q35h\":\"https://figgy.princeton.edu/concern/scanned_resources/465998ec-5dd4-4dd8-a0fe-0934008b9df8/manifest\"}}",
+  "description_display": [
+  "1 volume : illustrations ; 38 cm"
+  ],
+  "description_t": [
+  "1 volume : illustrations ; 38 cm"
+  ],
+  "number_of_pages_citation_display": [
+  "1 volume"
+  ],
+  "geocode_display": [
+  "Guizhou Sheng (China)"
+  ],
+  "notes_display": [
+  "In case.",
+  "書名取自《普林斯頓大學葛思德東方圖書館舊籍書目》.",
+  "木夾外簽條上有\"葛思德華文藏書庫珍藏之印\".",
+  "40幅彩繪人物圖裱于20葉, 配木夾板成一冊. 圖26.5 x 25 cm.(高x寬), 裱葉雙葉對折36.5 x 29.5 cm. 每圖有鉛筆標號, 配有解說. 圖中無山水背景, 解說不包括詩, 族名不另起行."
+  ],
+  "language_facet": [
+  "Chinese"
+  ],
+  "language_code_s": [
+  "chi"
+  ],
+  "language_iana_s": [
+  "zh"
+  ],
+  "other_format_display": [
+  "Also available in an electronic version."
+  ],
+  "lc_subject_display": [
+  "Hmong (Asian people)—China—Guizhou Sheng—Pictorial works",
+  "Ethnology—China—Guizhou Sheng—Pictorial works"
+  ],
+  "siku_subject_display": [
+  "Shi bu—Di li lei—Za zhi",
+  "Zi bu—Yi shu lei—Shu hua",
+  "史部—地理類—雜志.",
+  "子部—藝術類—書畫."
+  ],
+  "subject_facet": [
+  "Hmong (Asian people)—China—Guizhou Sheng—Pictorial works",
+  "Ethnology—China—Guizhou Sheng—Pictorial works",
+  "Shi bu—Di li lei—Za zhi",
+  "Zi bu—Yi shu lei—Shu hua",
+  "史部—地理類—雜志.",
+  "子部—藝術類—書畫."
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Chinese Rare Books Project\"]}",
+  "other_title_display": [
+  "國中最初居民數種",
+  "黔苗圖說",
+  "百苗圖"
+  ],
+  "alt_title_246_display": [
+  "Guo zhong zui chu ju min shu zhong",
+  "Qian Miao tu shuo",
+  "Bai Miao tu",
+  "國中最初居民數種",
+  "黔苗圖說",
+  "百苗圖"
+  ],
+  "other_title_1display": "{\"Penciled on first blank leaf\":[\"Guo zhong zui chu ju min shu zhong\",\"國中最初居民數種\"],\"Also known as\":[\"Qian Miao tu shuo\",\"Bai Miao tu\",\"黔苗圖說\",\"百苗圖\"]}",
+  "oclc_s": [
+  "785740708"
+  ],
+  "other_version_s": [
+  "ocn785740708"
+  ],
+  "holdings_1display": "{\"22561744170006421\":{\"location_code\":\"rare$hycrare\",\"location\":\"East Asian Library Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"TC223/2146Q Oversize\",\"call_number_browse\":\"TC223/2146Q Oversize\",\"items\":[{\"holding_id\":\"22561744170006421\",\"id\":\"23561744160006421\",\"status_at_load\":\"1\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+  "rare$hycrare"
+  ],
+  "location": [
+  "Special Collections"
+  ],
+  "location_display": [
+  "East Asian Library Rare Books"
+  ],
+  "advanced_location_s": [
+  "rare$hycrare",
+  "Special Collections"
+  ],
+  "call_number_display": [
+  "Oversize TC223/2146Q"
+  ],
+  "call_number_browse_s": [
+  "TC223/2146Q Oversize"
+  ],
+  "call_number_locator_display": [
+  "TC223/2146Q"
+  ],
+  "electronic_portfolio_s": [
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53837284010006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53837284030006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+  ]
+},
+{
+  "id": "9961093233506421",
+  "numeric_id_b": true,
+  "author_display": [
+  "Joanne, Adolphe Laurent, 1813-1881"
+  ],
+  "author_citation_display": [
+  "Joanne, Adolphe Laurent",
+  "Erhard (Firm)"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Joanne, Adolphe Laurent\",\"Erhard (Firm)\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Joanne, Adolphe Laurent\"}",
+  "author_s": [
+  "Joanne, Adolphe Laurent, 1813-1881",
+  "Erhard (Firm)"
+  ],
+  "marc_relator_display": [
+  "Author"
+  ],
+  "title_display": "Seine [map] / gravé chez Erhard, 12, rue Duguay-Trouin.",
+  "title_t": [
+  "Seine [map] / gravé chez Erhard, 12, rue Duguay-Trouin."
+  ],
+  "title_citation_display": [
+  "Seine"
+  ],
+  "compiled_created_t": [
+  "Seine [map] / gravé chez Erhard, 12, rue Duguay-Trouin."
+  ],
+  "pub_created_display": [
+  "Paris : imp. Monrocq, 3, rue Suger, [août 1870]"
+  ],
+  "pub_created_s": [
+  "Paris : imp. Monrocq, 3, rue Suger, [août 1870]"
+  ],
+  "pub_citation_display": [
+  "Paris: imp. Monrocq, 3, rue Suger"
+  ],
+  "pub_date_display": [
+  "1870"
+  ],
+  "pub_date_start_sort": 1870,
+  "cataloged_tdt": "2021-07-13T03:39:30Z",
+  "format": [
+  "Map"
+  ],
+  "electronic_access_1display": "{\"https://catalog.princeton.edu/catalog/6109323#view\":[\"Digital content\",\"See the map\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/0v8382995\":\"https://figgy.princeton.edu/concern/scanned_maps/9450a33b-e279-4e66-9277-27972f6a75a4/manifest\"}}",
+  "description_display": [
+  "(E 2°05ʹ30ʺ--E 2°36ʹ15ʺ/N 48°59ʹ00ʺ--N 48°43ʹ45ʺ).",
+  "1 map : col. ; 23 x 31 cm."
+  ],
+  "description_t": [
+  "Scale [ca. 1:125,000]. (E 2°05ʹ30ʺ--E 2°36ʹ15ʺ/N 48°59ʹ00ʺ--N 48°43ʹ45ʺ).",
+  "1 map : col. ; 23 x 31 cm."
+  ],
+  "number_of_pages_citation_display": [
+  "1 map"
+  ],
+  "coverage_display": [
+  "northlimit=048.983414; eastlimit=002.604433; southlimit=048.729403; westlimit=002.091852; units=degrees; projection=EPSG:4326"
+  ],
+  "geocode_display": [
+  "France"
+  ],
+  "scale_display": [
+  "Scale [ca. 1:125,000]."
+  ],
+  "notes_display": [
+  "In upper margin : France par Adolphe Joanne.",
+  "From: Atlas de la défense nationale : cartes des dix-sept départmenents envahis ou menacés par l'ennemi / atlas dressé sous la direction de Adolphe Joanne. Paris : Hachette, 1870.",
+  "Date of publication from Vallée."
+  ],
+  "language_facet": [
+  "French"
+  ],
+  "language_code_s": [
+  "fre"
+  ],
+  "language_iana_s": [
+  "fr"
+  ],
+  "references_display": [
+  "Vallée, L. Catalogue des plans de Paris 1658"
+  ],
+  "references_url_display": [
+  "Vallée, L. Catalogue des plans de Paris 1658"
+  ],
+  "lc_subject_display": [
+  "Franco-Prussian War, 1870-1871—Maps",
+  "Paris (France)—Maps",
+  "Seine (France)—Maps"
+  ],
+  "subject_facet": [
+  "Franco-Prussian War, 1870-1871—Maps",
+  "Paris (France)—Maps",
+  "Seine (France)—Maps",
+  "Maps—France—Paris—1870",
+  "Maps—France—Seine—1870",
+  "Maps"
+  ],
+  "lcgft_s": [
+  "Maps"
+  ],
+  "aat_s": [
+  "Maps—France—Paris—1870",
+  "Maps—France—Seine—1870"
+  ],
+  "related_name_json_1display": "{\"Engraver\":[\"Erhard (Firm)\"]}",
+  "related_works_1display": "[[\"Joanne, Adolphe Laurent, 1813-1881.\",\"Atlas de la défense nationale.\"]]",
+  "holdings_1display": "{\"22602418290006421\":{\"location_code\":\"rare$map\",\"location\":\"Rare Books Historic Map Collection\",\"library\":\"Special Collections\",\"call_number\":\"HMC01.1996\",\"call_number_browse\":\"HMC01.1996\",\"items\":[{\"holding_id\":\"22602418290006421\",\"id\":\"23602418280006421\",\"status_at_load\":\"1\",\"barcode\":\"32101071563314\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+  "rare$map"
+  ],
+  "location": [
+  "Special Collections"
+  ],
+  "location_display": [
+  "Rare Books Historic Map Collection"
+  ],
+  "advanced_location_s": [
+  "rare$map",
+  "Special Collections"
+  ],
+  "name_title_browse_s": [
+  "Joanne, Adolphe Laurent, 1813-1881. Atlas de la défense nationale",
+  "Joanne, Adolphe Laurent, 1813-1881. Seine"
+  ],
+  "call_number_display": [
+  "HMC01.1996"
+  ],
+  "call_number_browse_s": [
+  "HMC01.1996"
+  ],
+  "call_number_locator_display": [
+  "HMC01.1996"
+  ],
+  "electronic_portfolio_s": [
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53820679600006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+  ]
+},
+{
+  "id": "9968683243506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+  "Gayetty, J. I.",
+  "Parker, S. L.",
+  "Mudd, Kostka",
+  "McCammon, R. L."
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Gayetty, J. I.\",\"Parker, S. L.\",\"Mudd, Kostka\",\"McCammon, R. L.\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+  "Gayetty, J. I.",
+  "Parker, S. L.",
+  "Mudd, Kostka",
+  "McCammon, R. L."
+  ],
+  "title_display": "Pennsylvania: (Lycoming) Trout Run Quadrangle [cartographic material].",
+  "title_t": [
+  "Pennsylvania: (Lycoming) Trout Run Quadrangle [cartographic material]."
+  ],
+  "title_citation_display": [
+  "Pennsylvania: (Lycoming) Trout Run Quadrangle"
+  ],
+  "compiled_created_t": [
+  "Pennsylvania: (Lycoming) Trout Run Quadrangle [cartographic material]."
+  ],
+  "edition_display": [
+  "Edition of 1923"
+  ],
+  "pub_created_display": [
+  "[Washington, D.C.] : U.S. Geological Survey, 1923."
+  ],
+  "pub_created_s": [
+  "[Washington, D.C.] : U.S. Geological Survey, 1923."
+  ],
+  "pub_citation_display": [
+  "Washington, D.C.: U.S. Geological Survey"
+  ],
+  "pub_date_display": [
+  "1923"
+  ],
+  "pub_date_start_sort": 1923,
+  "cataloged_tdt": "2021-07-20T22:57:25Z",
+  "format": [
+  "Map"
+  ],
+  "electronic_access_1display": "{\"https://catalog.princeton.edu/catalog/6868324#view\":[\"Digital content\"],\"http://arks.princeton.edu/ark:/88435/t722hb52k\":[\"arks.princeton.edu\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/2j62s638c\":\"https://figgy.princeton.edu/concern/scanned_maps/a65bd135-5356-4613-8089-d90fc445cfda/manifest\"}}",
+  "description_display": [
+  "Polyconic proj. (W 77°15ʹ--W 77°0ʹ/N 41°30ʹ--N 41°15ʹ)"
+  ],
+  "description_t": [
+  "Scale 1:62,500 Polyconic proj. (W 77°15ʹ--W 77°0ʹ/N 41°30ʹ--N 41°15ʹ)"
+  ],
+  "coverage_display": [
+  "northlimit=41.5; eastlimit=-77; southlimit=41.25; westlimit=-77.25; units=degrees; projection=EPSG:4326"
+  ],
+  "scale_display": [
+  "Scale 1:62,500"
+  ],
+  "projection_display": [
+  "Polyconic proj."
+  ],
+  "notes_display": [
+  "United States. Geological Survey.",
+  "U.S.G.S.",
+  "Alternate title: Trout Run, PA. Polyconic projection. Relief shown by 20 feet contour interval and spot heights. Surveyed in 1921. Surveyed in cooperation with the State of Pennsylvania. Verso: The topographic maps of the United States."
+  ],
+  "language_display": [
+  "In English."
+  ],
+  "language_facet": [
+  "English"
+  ],
+  "language_code_s": [
+  "eng"
+  ],
+  "language_iana_s": [
+  "en"
+  ],
+  "lc_subject_display": [
+  "Topographic maps"
+  ],
+  "subject_facet": [
+  "Topographic maps"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Gayetty, J. I.\",\"Parker, S. L.\",\"Mudd, Kostka\",\"McCammon, R. L.\"]}",
+  "holdings_1display": "{\"22511321690006421\":{\"location_code\":\"lewis$mapmc\",\"location\":\"Lewis Library: Map Collection. Map Case\",\"library\":\"Lewis Library\",\"call_number\":\"G3821.C2.s62.U5G4 Trout Run\",\"call_number_browse\":\"G3821.C2.s62.U5G4 Trout Run\"}}",
+  "location_code_s": [
+  "lewis$mapmc"
+  ],
+  "location": [
+  "Lewis Library"
+  ],
+  "location_display": [
+  "Lewis Library: Map Collection. Map Case"
+  ],
+  "advanced_location_s": [
+  "lewis$mapmc",
+  "Lewis Library"
+  ],
+  "call_number_display": [
+  "G3821.C2.s62.U5G4 Trout Run"
+  ],
+  "call_number_browse_s": [
+  "G3821.C2.s62.U5G4 Trout Run"
+  ],
+  "call_number_locator_display": [
+  "G3821.C2.s62.U5G4 Trout Run"
+  ],
+  "electronic_portfolio_s": [
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53838625660006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53838625640006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+  ]
+},
+{
+  "id": "9967734313506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+  "Kodama, Kōta"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Kodama, Kōta\",\"児玉幸多\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+  "Kodama, Kōta, 1909-2007",
+  "児玉幸多, 1909-2007"
+  ],
+  "title_display": "Hyōjun Nihon shi kakezu [map] / Kodama Kōta hen.",
+  "title_vern_display": "標準日本史掛図 / 児玉幸多編.",
+  "title_t": [
+  "Hyōjun Nihon shi kakezu [map] / Kodama Kōta hen."
+  ],
+  "title_citation_display": [
+  "Hyōjun Nihon shi kakezu",
+  "標準日本史掛図"
+  ],
+  "compiled_created_t": [
+  "Hyōjun Nihon shi kakezu [map] / Kodama Kōta hen.",
+  "標準日本史掛図 / 児玉幸多編."
+  ],
+  "pub_created_vern_display": [
+  "東京 : 吉川弘文館, 昭和30-32 [1955-57]"
+  ],
+  "pub_created_display": [
+  "Tōkyō : Yoshikawa Kōbunkan, Shōwa 30-32 [1955-57]",
+  "東京 : 吉川弘文館, 昭和30-32 [1955-57]"
+  ],
+  "pub_created_s": [
+  "Tōkyō : Yoshikawa Kōbunkan, Shōwa 30-32 [1955-57]",
+  "東京 : 吉川弘文館, 昭和30-32 [1955-57]"
+  ],
+  "pub_citation_display": [
+  "Tōkyō: Yoshikawa Kōbunkan",
+  "東京: 吉川弘文館"
+  ],
+  "pub_date_display": [
+  "1955"
+  ],
+  "pub_date_start_sort": 1955,
+  "pub_date_end_sort": 1957,
+  "cataloged_tdt": "2021-07-13T05:44:38Z",
+  "format": [
+  "Map"
+  ],
+  "electronic_access_1display": "{\"https://catalog.princeton.edu/catalog/6773431#view\":[\"Digital content\",\"See dai 1\"],\"http://arks.princeton.edu/ark:/88435/4b29b8439\":[\"arks.princeton.edu\",\"See dai 1 label\"],\"http://arks.princeton.edu/ark:/88435/kp78gj86g\":[\"arks.princeton.edu\",\"See dai 2\"],\"http://arks.princeton.edu/ark:/88435/fx719p95r\":[\"arks.princeton.edu\",\"See dai 2 label\"],\"http://arks.princeton.edu/ark:/88435/b5644v03v\":[\"arks.princeton.edu\",\"See dai 2 label 2\"],\"http://arks.princeton.edu/ark:/88435/6h440v95h\":[\"arks.princeton.edu\",\"See dai 3\"],\"http://arks.princeton.edu/ark:/88435/2r36v102x\":[\"arks.princeton.edu\",\"See dai 3 label\"],\"http://arks.princeton.edu/ark:/88435/z029p721v\":[\"arks.princeton.edu\",\"See dai 3 label 2\"],\"http://arks.princeton.edu/ark:/88435/0k225d50m\":[\"arks.princeton.edu\",\"See dai 5\"],\"http://arks.princeton.edu/ark:/88435/vt150m70s\":[\"arks.princeton.edu\",\"See dai 5 label\"],\"http://arks.princeton.edu/ark:/88435/r207tr79g\":[\"arks.princeton.edu\",\"See dai 6\"],\"http://arks.princeton.edu/ark:/88435/mc87ps69x\":[\"arks.princeton.edu\",\"See dai 6 label\"],\"http://arks.princeton.edu/ark:/88435/gm80hx786\":[\"arks.princeton.edu\",\"See dai 7\"],\"http://arks.princeton.edu/ark:/88435/bv73c288g\":[\"arks.princeton.edu\",\"See dai 7 label\"],\"http://arks.princeton.edu/ark:/88435/73666696n\":[\"arks.princeton.edu\",\"See dai 8\"],\"http://arks.princeton.edu/ark:/88435/3b591c02j\":[\"arks.princeton.edu\",\"See dai 8 label\"],\"http://arks.princeton.edu/ark:/88435/zk51vk227\":[\"arks.princeton.edu\",\"See dai 9\"],\"http://arks.princeton.edu/ark:/88435/tt44pq31n\":[\"arks.princeton.edu\",\"See dai 9 label\"],\"http://arks.princeton.edu/ark:/88435/q524jr21h\":[\"arks.princeton.edu\",\"See dai 10\"],\"http://arks.princeton.edu/ark:/88435/kd17cw30x\":[\"arks.princeton.edu\",\"See dai 10 label\"],\"http://arks.princeton.edu/ark:/88435/fn1071402\":[\"arks.princeton.edu\",\"See dai 11\"],\"http://arks.princeton.edu/ark:/88435/9w032548c\":[\"arks.princeton.edu\",\"See dai 11 label\"],\"http://arks.princeton.edu/ark:/88435/6395w9542\":[\"arks.princeton.edu\",\"See dai 12\"],\"http://arks.princeton.edu/ark:/88435/2b88qf620\":[\"arks.princeton.edu\",\"See dai 12 label\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/8336h435c\":\"https://figgy.princeton.edu/concern/scanned_maps/c39fcf59-aa14-4b09-8f03-eaee89400874/manifest\"}}",
+  "description_display": [
+  "(E 60°00ʹ00ʺ--E 170°00ʹ00ʺ/N 70°00ʹ00ʺ--S 20°00ʹ00ʺ).",
+  "12 maps : col. ; 105 x 148 on sheet 114 x 152."
+  ],
+  "description_t": [
+  "Scales differ. (E 60°00ʹ00ʺ--E 170°00ʹ00ʺ/N 70°00ʹ00ʺ--S 20°00ʹ00ʺ).",
+  "12 maps : col. ; 105 x 148 on sheet 114 x 152."
+  ],
+  "number_of_pages_citation_display": [
+  "12 maps"
+  ],
+  "coverage_display": [
+  "northlimit=070.0; eastlimit=170.0; southlimit=-020.0; westlimit=060.0; units=degrees; projection=EPSG:4326"
+  ],
+  "geocode_display": [
+  "Japan"
+  ],
+  "scale_display": [
+  "Scales differ."
+  ],
+  "notes_display": [
+  "Each map is clothbacked and mounted on wooden rods in scroll.",
+  "Multiple maps on one sheet.",
+  "Library has: dai 1-3, 5-12."
+  ],
+  "language_facet": [
+  "Japanese"
+  ],
+  "language_code_s": [
+  "jpn"
+  ],
+  "language_iana_s": [
+  "ja"
+  ],
+  "lc_subject_display": [
+  "Japan—Historical geography—Maps"
+  ],
+  "subject_facet": [
+  "Japan—Historical geography—Maps",
+  "Maps"
+  ],
+  "lcgft_s": [
+  "Maps"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Kodama, Kōta, 1909-2007\",\"児玉幸多, 1909-2007\"]}",
+  "other_title_display": [
+  "Nihon shi kakezu",
+  "日本史掛図"
+  ],
+  "alt_title_246_display": [
+  "Nihon shi kakezu",
+  "日本史掛図"
+  ],
+  "oclc_s": [
+  "61500431"
+  ],
+  "other_version_s": [
+  "ocm61500431"
+  ],
+  "holdings_1display": "{\"22625523630006421\":{\"location_code\":\"rare$xp\",\"location\":\"Remote Storage (ReCAP): Historic Maps. Special Collections Use Only\",\"library\":\"Special Collections\",\"call_number\":\"HMC01.6745\",\"call_number_browse\":\"HMC01.6745\",\"location_has\":[\"Only dai 1-3, 5-12.\"],\"items\":[{\"holding_id\":\"22625523630006421\",\"id\":\"23625523610006421\",\"status_at_load\":\"1\",\"enumeration\":\"Dai 8, 9, 10, 11, 12\",\"barcode\":\"32101037629456\",\"copy_number\":\"1\"},{\"holding_id\":\"22625523630006421\",\"id\":\"23625523590006421\",\"status_at_load\":\"1\",\"enumeration\":\"Dai 3\",\"barcode\":\"32101037555388\",\"copy_number\":\"1\"},{\"holding_id\":\"22625523630006421\",\"id\":\"23625523620006421\",\"status_at_load\":\"1\",\"enumeration\":\"Dai 1, 5, 6, 7\",\"barcode\":\"32101037629464\",\"copy_number\":\"1\"},{\"holding_id\":\"22625523630006421\",\"id\":\"23625523600006421\",\"status_at_load\":\"1\",\"enumeration\":\"Dai 2\",\"barcode\":\"32101037555396\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+  "rare$xp"
+  ],
+  "location": [
+  "Special Collections"
+  ],
+  "location_display": [
+  "Remote Storage (ReCAP): Historic Maps. Special Collections Use Only"
+  ],
+  "advanced_location_s": [
+  "rare$xp",
+  "Special Collections"
+  ],
+  "call_number_display": [
+  "HMC01.6745"
+  ],
+  "call_number_browse_s": [
+  "HMC01.6745"
+  ],
+  "call_number_locator_display": [
+  "HMC01.6745"
+  ],
+  "electronic_portfolio_s": [
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811040006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810980006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811020006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810790006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810860006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811000006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810940006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811060006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811080006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810960006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811100006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810840006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810880006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810900006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811120006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811140006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881811160006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810660006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810820006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810920006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810770006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810730006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810750006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+  "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810680006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+  ]
 }
 ]
