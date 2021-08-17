@@ -27921,5 +27921,270 @@
   "access_facet": [
     "In the Library"
   ]
+},
+{
+  "id": [
+    "99124977073506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+  ],
+  "title_display": [
+    "Multi-title collection including Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung and 4 other(s)."
+  ],
+  "title_a_index": [
+    "Multi-title collection including Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung and 4 other(s)."
+  ],
+  "title_sort": [
+    "Multi-title collection including Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung and 4 other(s)."
+  ],
+  "title_no_h_index": [
+    "Multi-title collection including Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung and 4 other(s)."
+  ],
+  "title_t": [
+    "Multi-title collection including Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung and 4 other(s)."
+  ],
+  "title_citation_display": [
+    "Multi-title collection including Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung and 4 other(s)."
+  ],
+  "linked_title_index": [
+    "Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung",
+    "Das Herz des Menschen : ein Tempel Gottes oder eine Werkstätte des Satans : in zehn Figuren sinnbildlich dargestellt : zur Erweckung und Beförderung des christlichen Sinnes : nach der vierten verbesserten augsburger Auflage.",
+    "Die Geschichte der Kinder im Walde : mit vielen bunten Bildern geziert.",
+    "Die Geschichte Joseph's und seiner Brüder : eine biblische Erzählung.",
+    "The history of the house that Jack built : embellished with numerous colored engravings."
+  ],
+  "compiled_created_t": [
+    "Multi-title collection including Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung and 4 other(s)."
+  ],
+  "cataloged_tdt": [
+    "2021-07-13T17:02:22Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "related_record_s": [
+    "9947055653506421",
+    "9947054993506421",
+    "9949519533506421",
+    "9947055743506421",
+    "9947055343506421"
+  ],
+  "language_facet": [
+    "Multiple languages"
+  ],
+  "publication_place_facet": [
+    "Pennsylvania"
+  ],
+  "language_code_s": [
+    "mul"
+  ],
+  "language_iana_s": [
+    "mul"
+  ],
+  "subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "constituent_part_display": [
+    "Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung",
+    "Das Herz des Menschen : ein Tempel Gottes oder eine Werkstätte des Satans : in zehn Figuren sinnbildlich dargestellt : zur Erweckung und Beförderung des christlichen Sinnes : nach der vierten verbesserten augsburger Auflage",
+    "Die Geschichte der Kinder im Walde : mit vielen bunten Bildern geziert",
+    "Die Geschichte Joseph's und seiner Brüder : eine biblische Erzählung",
+    "The history of the house that Jack built : embellished with numerous colored engravings"
+  ],
+  "holdings_1display": [
+    "{\"22747139640006421\":{\"location_code\":\"rare$gax\",\"location\":\"Graphic Arts Collection\",\"library\":\"Special Collections\",\"call_number\":\"2006-1398N\",\"call_number_browse\":\"2006-1398N\",\"items\":[{\"holding_id\":\"22747139640006421\",\"id\":\"23747139620006421\",\"status_at_load\":\"1\",\"barcode\":\"32101054083488\",\"copy_number\":\"1\"}]}}"
+  ],
+  "location_code_s": [
+    "rare$gax"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Graphic Arts Collection"
+  ],
+  "advanced_location_s": [
+    "rare$gax",
+    "Special Collections"
+  ],
+  "call_number_display": [
+    "2006-1398N"
+  ],
+  "call_number_browse_s": [
+    "2006-1398N"
+  ],
+  "call_number_locator_display": [
+    "2006-1398N"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
+},
+{
+  "id": [
+    "9947055653506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_citation_display": [
+    "Peters, Gustav Sigismund"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"Peters, Gustav Sigismund\"],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+  ],
+  "author_s": [
+    "Peters, Gustav Sigismund, 1793-1847"
+  ],
+  "title_display": [
+    "Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung."
+  ],
+  "title_a_index": [
+    "Die Geschichte Joseph's und seiner Brüder"
+  ],
+  "title_sort": [
+    "Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung."
+  ],
+  "title_no_h_index": [
+    "Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung.",
+    "Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung."
+  ],
+  "title_t": [
+    "Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung."
+  ],
+  "title_citation_display": [
+    "Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung"
+  ],
+  "linked_title_index": [
+    "Multi-title collection including Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung and 4 other(s)."
+  ],
+  "compiled_created_t": [
+    "Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung."
+  ],
+  "pub_created_display": [
+    "Harrisburg, Pa. : Gedruckt und zu haben bey G.S. Peters., 1837."
+  ],
+  "pub_created_s": [
+    "Harrisburg, Pa. : Gedruckt und zu haben bey G.S. Peters., 1837."
+  ],
+  "pub_citation_display": [
+    "Harrisburg, Pa.: Gedruckt und zu haben bey G.S. Peters"
+  ],
+  "pub_date_display": [
+    "1837"
+  ],
+  "pub_date_start_sort": [
+    "1837"
+  ],
+  "cataloged_tdt": [
+    "2021-07-12T16:56:12Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "18 leaves : ill. ; 14 cm."
+  ],
+  "description_t": [
+    "18 leaves : ill. ; 14 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "18 leaves"
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung and 4 other(s)."
+  ],
+  "contained_in_s": [
+    "99124977073506421"
+  ],
+  "notes_index": [
+    "In printed wrapper.",
+    "Wood engravings printed in color.",
+    "Princeton holds two copies, with varying illustrations on back cover, together in case of six books published by G.S. Peters. NjP"
+  ],
+  "notes_display": [
+    "In printed wrapper.",
+    "Wood engravings printed in color.",
+    "Princeton holds two copies, with varying illustrations on back cover, together in case of six books published by G.S. Peters."
+  ],
+  "language_facet": [
+    "German"
+  ],
+  "publication_place_facet": [
+    "Pennsylvania"
+  ],
+  "language_code_s": [
+    "ger"
+  ],
+  "language_iana_s": [
+    "de"
+  ],
+  "lc_subject_display": [
+    "Joseph (Son of Jacob)",
+    "Bible—Biography",
+    "Bible stories"
+  ],
+  "subject_unstem_search": [
+    "Joseph (Son of Jacob)",
+    "Bible—Biography",
+    "Bible stories"
+  ],
+  "siku_subject_unstem_search": null,
+  "subject_facet": [
+    "Joseph (Son of Jacob)",
+    "Bible—Biography",
+    "Bible stories",
+    "Juvenile literature—1837",
+    "Printed wrappers (Binding).",
+    "Color printing (Printing)."
+  ],
+  "rbgenr_s": [
+    "Juvenile literature—1837",
+    "Printed wrappers (Binding).",
+    "Color printing (Printing)."
+  ],
+  "subject_topic_facet": [
+    "Joseph (Son of Jacob)",
+    "Bible",
+    "Bible stories"
+  ],
+  "genre_facet": [
+    "Juvenile literature",
+    "Printed wrappers (Binding).",
+    "Color printing (Printing).",
+    "Biography"
+  ],
+  "related_name_json_1display": [
+    "{\"Publisher\":[\"Peters, Gustav Sigismund, 1793-1847\"]}"
+  ],
+  "place_name_display": [
+    "United States Pennsylvania Harrisburg."
+  ],
+  "in_display": [
+    "Multi-title collection including Die Geschichte Joseph's und seiner Brüder. : Eine biblische Erzählung and 4 other(s)."
+  ],
+  "standard_no_index": [
+    "MAAR8606262651-B",
+    "4705565",
+    "4705565-princetondb"
+  ],
+  "access_facet": [
+
+  ]
 }
 ]
