@@ -27736,5 +27736,190 @@
   "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810750006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
   "{\"desc\":null,\"title\":null,\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53881810680006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
   ]
+},
+{
+  "id": [
+    "9931488793506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    "신재홍． 독립군의전투　/ 신재홍집필. 서울특별시　: 민족문화문고간행회, 1982. 민족운동총서　; 第4集"
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_display": [
+    "Sin, Chae-hong",
+    "신재홍．"
+  ],
+  "author_sort": [
+    "Sin, Chae-hong"
+  ],
+  "author_citation_display": [
+    "Sin, Chae-hong"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"신재홍．\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Sin, Chae-hong\"}"
+  ],
+  "cjk_author": [
+    "신재홍．"
+  ],
+  "author_s": [
+    "Sin, Chae-hong",
+    "신재홍．"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": [
+    "Tongnipkun ŭi chŏnt'u / Sin Chae-hong chipp'il."
+  ],
+  "title_a_index": [
+    "Tongnipkun ŭi chŏnt'u",
+    "독립군의전투　"
+  ],
+  "title_vern_display": [
+    "독립군의전투　/ 신재홍집필."
+  ],
+  "title_sort": [
+    "Tongnipkun ŭi chŏnt'u / Sin Chae-hong chipp'il."
+  ],
+  "title_vern_sort": [
+    "독립군의전투　/ 신재홍집필."
+  ],
+  "title_no_h_index": [
+    "Tongnipkun ŭi chŏnt'u / Sin Chae-hong chipp'il.",
+    "독립군의전투　/ 신재홍집필."
+  ],
+  "title_t": [
+    "Tongnipkun ŭi chŏnt'u / Sin Chae-hong chipp'il."
+  ],
+  "title_citation_display": [
+    "Tongnipkun ŭi chŏnt'u",
+    "독립군의전투　"
+  ],
+  "series_title_index": [
+    "Minjok undong ch'ongsŏ ; che 4-chip",
+    "민족운동총서　; 第4集"
+  ],
+  "cjk_title": [
+    "독립군의전투　/ 신재홍집필.",
+    "민족운동총서　; 第4集"
+  ],
+  "cjk_series_title": [
+    "민족운동총서　; 第4集"
+  ],
+  "compiled_created_t": [
+    "Tongnipkun ŭi chŏnt'u / Sin Chae-hong chipp'il.",
+    "독립군의전투　/ 신재홍집필."
+  ],
+  "pub_created_vern_display": [
+    "서울특별시　: 민족문화문고간행회, 1982."
+  ],
+  "pub_created_display": [
+    "Sŏul T'ŭkpyŏlsi : Minjok Munhwa Mun'go Kanhaenghoe, 1982.",
+    "서울특별시　: 민족문화문고간행회, 1982."
+  ],
+  "pub_created_s": [
+    "Sŏul T'ŭkpyŏlsi : Minjok Munhwa Mun'go Kanhaenghoe, 1982.",
+    "서울특별시　: 민족문화문고간행회, 1982."
+  ],
+  "pub_citation_display": [
+    "Sŏul T'ŭkpyŏlsi: Minjok Munhwa Mun'go Kanhaenghoe",
+    "서울특별시　: 민족문화문고간행회"
+  ],
+  "pub_date_display": [
+    "1982"
+  ],
+  "pub_date_start_sort": [
+    "1982"
+  ],
+  "cataloged_tdt": [
+    "2021-07-13T11:37:21Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "472, 27 p. : ill., maps ; 23 cm."
+  ],
+  "description_t": [
+    "472, 27 p. : ill., maps ; 23 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "472, 27 p."
+  ],
+  "series_display": [
+    "Minjok undong ch'ongsŏ ; che 4-chip",
+    "민족운동총서　; 第4集"
+  ],
+  "more_in_this_series_t": [
+    "Minjok undong ch'ongsŏ",
+    "민족운동총서　"
+  ],
+  "language_facet": [
+    "Korean"
+  ],
+  "publication_place_facet": [
+    "Korea (South)"
+  ],
+  "language_code_s": [
+    "kor"
+  ],
+  "language_iana_s": [
+    "ko"
+  ],
+  "lc_subject_display": [
+    "Korean resistance movements, 1905-1945"
+  ],
+  "subject_unstem_search": [
+    "Korean resistance movements, 1905-1945"
+  ],
+  "siku_subject_unstem_search": null,
+  "subject_facet": [
+    "Korean resistance movements, 1905-1945"
+  ],
+  "subject_topic_facet": [
+    "Korean resistance movements, 1905-1945"
+  ],
+  "standard_no_index": [
+    "NJPX97-B706",
+    "3148879",
+    "3148879-princetondb"
+  ],
+  "holdings_1display": [
+    "{\"22688650370006421\":{\"location_code\":\"eastasian$cjk\",\"location\":\"\",\"library\":\"East Asian Library\",\"call_number\":\"DS916.55 .M56 vol.4\",\"call_number_browse\":\"DS916.55 .M56 vol.4\",\"items\":[{\"holding_id\":\"22688650370006421\",\"id\":\"23688650360006421\",\"status_at_load\":\"1\",\"barcode\":\"32101032841288\",\"copy_number\":\"1\"}]}}"
+  ],
+  "location_code_s": [
+    "eastasian$cjk"
+  ],
+  "location": [
+    "East Asian Library"
+  ],
+  "location_display": [
+    ""
+  ],
+  "advanced_location_s": [
+    "eastasian$cjk",
+    "East Asian Library"
+  ],
+  "name_title_browse_s": [
+    "Sin, Chae-hong. Tongnipkun ŭi chŏnt'u",
+    "신재홍．. 독립군의전투　"
+  ],
+  "call_number_display": [
+    "DS916.55 .M56 vol.4"
+  ],
+  "call_number_browse_s": [
+    "DS916.55 .M56 vol.4"
+  ],
+  "call_number_locator_display": [
+    "DS916.55 .M56 vol.4"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
 }
 ]

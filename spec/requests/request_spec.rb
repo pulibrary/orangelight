@@ -22,7 +22,7 @@ describe 'blacklight tests' do
     it 'handles it' do
       get '/catalog.json?f1=title&f2=author&f3=title&op2=AND&op3=AND&q1=&q2=Murakami%2C+Haruki&q3=1Q84&search_field=advanced'
       r = JSON.parse(response.body)
-      expect(r['data'].length).to eq 3
+      expect(r['data'].length).to eq 4
     end
   end
 
