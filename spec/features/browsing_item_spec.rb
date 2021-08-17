@@ -20,7 +20,7 @@ describe 'browsing a catalog item', js: true do
 
   context 'when an entry has a bib. ID for a resource published in Figgy' do
     before do
-      visit 'catalog/9937539283506421'
+      visit 'catalog/9970446223506421'
     end
 
     it 'updates the thumbnail and constructs an instance of the Universal Viewer' do
@@ -31,7 +31,7 @@ describe 'browsing a catalog item', js: true do
 
   context 'when an entry has a bib. ID and ARK for a resource published in Figgy' do
     before do
-      visit 'catalog/9933959233506421'
+      visit 'catalog/9970446223506421'
     end
 
     it 'updates the thumbnail and constructs an instance of the Universal Viewer' do
@@ -40,7 +40,7 @@ describe 'browsing a catalog item', js: true do
     end
 
     it 'updates the link to the ARK with a fragment identifier for the UV' do
-      expect(page).to have_selector '.electronic-access a[href$="3395923#view"]', text: 'Digital content'
+      expect(page).to have_selector '.availability--online a[href$="7044622#view"]', text: 'Table of contents'
     end
   end
 end
