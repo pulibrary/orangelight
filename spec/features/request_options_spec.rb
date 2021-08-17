@@ -3,25 +3,25 @@
 require 'rails_helper'
 
 describe 'Request Options' do
-  before { stub_holding_locations }
+  before { stub_alma_holding_locations }
 
   describe 'the request page', js: true do
     before do
-      visit '/catalog/9996180723506421'
+      stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/99113436223506421/holdings/22553672700006421/availability.json")
+        .to_return(status: 200, body: {}.to_json, headers: {})
+      stub_request(:get, "https://catalog.princeton.edu/catalog/99113436223506421/raw")
+        .to_return(status: 200, body: {}.to_json, headers: {})
+      stub_request(:get, "#{Requests.config['bibdata_base']}/availability?id=99113436223506421")
+        .to_return(status: 200, body: {}.to_json, headers: {})
+      stub_request(:get, "#{Requests.config['bibdata_base']}/locations/delivery_locations.json")
+        .to_return(status: 200, body: {}.to_json, headers: {})
+      visit '/catalog/99113436223506421'
     end
 
     it 'clicking the request button loads the request page' do
-      stub_request(:get, "https://bibdata-staging.princeton.edu/bibliographic/9996180723506421/holdings/22691241270006421/availability.json")
-        .to_return(status: 200, body: {}.to_json, headers: {})
-      stub_request(:get, "https://catalog.princeton.edu/catalog/9996180723506421/raw")
-        .to_return(status: 200, body: {}.to_json, headers: {})
-      stub_request(:get, "https://bibdata-staging.princeton.edu/availability?id=9996180723506421")
-        .to_return(status: 200, body: {}.to_json, headers: {})
-      stub_request(:get, "https://bibdata-staging.princeton.edu/locations/delivery_locations.json")
-        .to_return(status: 200, body: {}.to_json, headers: {})
       using_wait_time 5 do
-        click_link('Request')
-        expect(current_path).to eq "/requests/9996180723506421"
+        click_link 'Request'
+        expect(current_path).to eq "/requests/99113436223506421"
       end
     end
   end
@@ -105,44 +105,6 @@ describe 'Request Options' do
       using_wait_time 5 do
         expect(page.all('.holding-block').length).to eq 1
         expect(page.find_link('Reading Room Request')).to be_visible
-      end
-    end
-  end
-
-  describe 'Paging location available status', js: true do
-    before do
-      visit '/catalog/9989085143506421'
-    end
-
-    xit 'does display a paging request button' do
-      using_wait_time 5 do
-        expect(page.all('.holding-block').length).to eq 1
-        expect(page.find_link('Paging Request').visible?).to be_truthy
-      end
-    end
-  end
-
-  describe 'Paging location that has been shelved at a temp location status', js: true do
-    before do
-      visit '/catalog/9953182883506421'
-    end
-
-    xit 'does display a request button', unless: in_ci? do
-      using_wait_time 5 do
-        expect(page.all('.holding-block').length).to eq 1
-        expect(page).not_to have_selector('.location-services.service-conditional')
-      end
-    end
-  end
-
-  describe 'Paging location that has been shelved at a temp location status', js: true do
-    before do
-      visit '/catalog?search_field=all_fields&q=9953182883506421'
-    end
-
-    xit 'does not display a paging request icon', unless: in_ci? do
-      using_wait_time 5 do
-        expect(page).not_to have_selector('.icon-warning.icon-paging-request')
       end
     end
   end
