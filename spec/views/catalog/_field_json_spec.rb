@@ -8,7 +8,7 @@ RSpec.describe 'catalog/index' do
       visit '/catalog/9967734313506421.json'
       response = JSON.parse(page.body)
       expect(response['data']['attributes']['format']['attributes']['value']).to eq(['Map'])
-      expect(response['data']['attributes']['holdings_1display']['attributes']['value'].keys).to include('6754334', '7321551')
+      expect(response['data']['attributes']['holdings_1display']['attributes']['value'].keys).to include('22625523630006421')
     end
   end
 end
