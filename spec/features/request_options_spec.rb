@@ -40,20 +40,6 @@ describe 'Request Options' do
     end
   end
 
-  # data-requestable in bibdata is true for all the locations
-  # describe 'Unavailable status non-requestable location', js: true do
-  #   before do
-  #     visit '/catalog/9968900573506421'
-  #   end
-
-  #   it 'does not display a request button', unless: in_ci? do
-  #     using_wait_time 5 do
-  #       expect(page.all('.holding-block').length).to eq 1
-  #       expect(page).to have_selector('td[data-requestable="false"]')
-  #     end
-  #   end
-  # end
-
   describe 'Available status requestable location', js: true do
     before do
       visit '/catalog/9990315453506421'
