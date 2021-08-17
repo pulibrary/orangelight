@@ -26,44 +26,33 @@ describe 'Request Options' do
     end
   end
 
-  describe 'Available status non-requestable location', js: true do
+  describe 'On site access status in non-circulate location', js: true do
     before do
-      visit '/catalog/9992220243506421'
+      visit '/catalog/99118600973506421'
     end
 
-    it 'does not display a request button', unless: in_ci? do
+    it 'displays a Reading Room Request button', unless: in_ci? do
       using_wait_time 5 do
         expect(page.all('.holding-block').length).to eq 1
-        expect(page).to have_selector('td[data-requestable="false"]')
+        expect(page).to have_selector('td[data-requestable="true"]')
+        expect(page).to have_selector('td[data-aeon="true"]')
       end
     end
   end
 
-  describe 'Unavailable status non-requestable location', js: true do
-    before do
-      visit '/catalog/9968900573506421'
-    end
+  # data-requestable in bibdata is true for all the locations
+  # describe 'Unavailable status non-requestable location', js: true do
+  #   before do
+  #     visit '/catalog/9968900573506421'
+  #   end
 
-    it 'does not display a request button', unless: in_ci? do
-      using_wait_time 5 do
-        expect(page.all('.holding-block').length).to eq 1
-        expect(page).to have_selector('td[data-requestable="false"]')
-      end
-    end
-  end
-
-  describe 'In process status non-requestable location', js: true do
-    before do
-      visit '/catalog/9996180723506421'
-    end
-
-    it 'does display a request button', unless: in_ci? do
-      using_wait_time 5 do
-        expect(page.all('.holding-block').length).to eq 1
-        expect(page.find_link('Request')).to be_visible
-      end
-    end
-  end
+  #   it 'does not display a request button', unless: in_ci? do
+  #     using_wait_time 5 do
+  #       expect(page.all('.holding-block').length).to eq 1
+  #       expect(page).to have_selector('td[data-requestable="false"]')
+  #     end
+  #   end
+  # end
 
   describe 'Available status requestable location', js: true do
     before do
@@ -109,26 +98,13 @@ describe 'Request Options' do
 
   describe 'Aeon location', js: true do
     before do
-      visit '/catalog/9979160443506421'
+      visit '/catalog/99118600973506421'
     end
 
     it 'displays an aeon request button', unless: in_ci? do
       using_wait_time 5 do
         expect(page.all('.holding-block').length).to eq 1
         expect(page.find_link('Reading Room Request')).to be_visible
-      end
-    end
-  end
-
-  describe 'An In-transit discharged item', js: true do
-    before do
-      visit '/catalog/9997412163506421'
-    end
-
-    it 'does not display a request button', unless: in_ci? do
-      using_wait_time 5 do
-        expect(page.all('.holding-block').length).to eq 1
-        expect(page).to have_selector('td[data-requestable="false"]')
       end
     end
   end

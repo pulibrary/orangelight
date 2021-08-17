@@ -40,7 +40,7 @@ describe 'browsing a catalog item', js: true do
     end
 
     it 'updates the link to the ARK with a fragment identifier for the UV' do
-      expect(page).to have_selector '.electronic-access a[href$="9933959233506421#view"]', text: 'Digital content'
+      expect(page).to have_selector '.electronic-access a[href$="3395923#view"]', text: 'Digital content'
     end
   end
 end
