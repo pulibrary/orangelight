@@ -363,6 +363,7 @@ export default class AvailabilityUpdater {
     availability_element.addClass("badge");
     let status_label = availability_info['status_label'];
     let isCdl = availability_info['cdl'];
+    let badgeClass = "badge-danger";
     status_label = `${status_label}${this.due_date(availability_info["due_date"])}`;
     availability_element.text(status_label);
     availability_element.attr('title', '');
@@ -392,10 +393,11 @@ export default class AvailabilityUpdater {
         availability_element.addClass("badge-danger");
       }
     } else if (status_label.toLowerCase() === 'available') {
-      availability_element.addClass("badge-success");
+      badgeClass = "badge-success";
     } else {
-      availability_element.addClass("badge-secondary");
+      badgeClass = "badge-secondary";
     }
+    availability_element.addClass(badgeClass);
   }
 
   title_case(str) {
@@ -425,4 +427,8 @@ export default class AvailabilityUpdater {
     if (date_string == null) { return ""; }
     return ` - ${date_string}`;
   };
+
+  on_site_use_location(location) {
+    return location == "marquand$stacks";
+  }
 }
