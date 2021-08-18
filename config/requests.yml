@@ -16,6 +16,7 @@ defaults: &defaults
   recap_partner_locations:
     scsbcul: "CUL"
     scsbnypl: "NYPL"
+    scsbhl: "HL"
 development:
   <<: *defaults
   voyager_ub_id: 1@DB
