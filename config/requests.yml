@@ -13,6 +13,9 @@ defaults: &defaults
   clancy_base: <%= ENV['CLANCY_BASE_URL'] || "https://example.caiasoft.com/api" %>
   illiad_api_key: <%= ENV['ILLIAD_API_KEY'] %>
   illiad_api_base: <%= ENV['ILLIAD_API_BASE_URL'] %>
+  recap_partner_locations:
+    scsbcul: "CUL"
+    scsbnypl: "NYPL"
 development:
   <<: *defaults
   voyager_ub_id: 1@DB
