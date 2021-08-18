@@ -17,13 +17,13 @@ RSpec.describe ApplicationHelper do
             'use_statement' => 'Supervised Use',
             'barcode' => '33433098463957',
             'copy_number' => '1',
-            'cgc' => 'Shared',
+            'cgd' => 'Shared',
             'collection_code' => 'NA' },
           { 'holding_id' => '7985322',
             'use_statement' => 'Supervised Use',
             'barcode' => '33433091627434',
             'copy_number' => '1',
-            'cgc' => 'Shared',
+            'cgd' => 'Shared',
             'collection_code' => 'NA' }
         ]
       }
@@ -38,13 +38,13 @@ RSpec.describe ApplicationHelper do
             'use_statement' => 'In Library Use',
             'barcode' => '33433098463957',
             'copy_number' => '1',
-            'cgc' => 'Shared',
+            'cgd' => 'Shared',
             'collection_code' => 'NA' },
           { 'holding_id' => '7985322',
             'use_statement' => 'Supervised Use',
             'barcode' => '33433091627434',
             'copy_number' => '1',
-            'cgc' => 'Shared',
+            'cgd' => 'Shared',
             'collection_code' => 'NA' }
         ]
       }
@@ -59,13 +59,13 @@ RSpec.describe ApplicationHelper do
             'use_statement' => '',
             'barcode' => '33433098463957',
             'copy_number' => '1',
-            'cgc' => 'Shared',
+            'cgd' => 'Shared',
             'collection_code' => 'NA' },
           { 'holding_id' => '7985322',
             'use_statement' => '',
             'barcode' => '33433091627434',
             'copy_number' => '1',
-            'cgc' => 'Shared',
+            'cgd' => 'Shared',
             'collection_code' => 'NA' }
         ]
       }
