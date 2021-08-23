@@ -184,14 +184,7 @@ RSpec.describe AccountController do
       get :borrow_direct_redirect
       expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
     end
-    it 'Redirects to Home page for a valid user not authorized to be on campus' do
-      sign_in(valid_cas_user)
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
-      stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: campus_unauthorized_patron, headers: {})
-      get :borrow_direct_redirect
-      expect(response).to redirect_to(root_url)
-    end
+
     it 'Redirect url includes query when param q is present' do
       sign_in(valid_cas_user)
       valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
