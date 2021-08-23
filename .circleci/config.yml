@@ -33,14 +33,14 @@ commands:
       # Restore bundle cache
       - restore_cache:
           keys:
-          - orangelight-{{ checksum "Gemfile.lock" }}
-          - orangelight-
+          - orangelight-1-{{ checksum "Gemfile.lock" }}
+          - orangelight-1-
       # Bundle install dependencies
       - run:
           name: Install dependencies
           command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
       - save_cache:
-          key: orangelight-{{ checksum "Gemfile.lock" }}
+          key: orangelight-1-{{ checksum "Gemfile.lock" }}
           paths:
             - ./vendor/bundle
 jobs:
@@ -72,8 +72,8 @@ jobs:
       # Only necessary if app uses webpacker or yarn in some other way
       - restore_cache:
           keys:
-            - orangelight-{{ checksum "yarn.lock" }}
-            - orangelight-
+            - orangelight-1-{{ checksum "yarn.lock" }}
+            - orangelight-1-
       - run:
           name: Yarn Install
           command: |
@@ -81,7 +81,7 @@ jobs:
             yarn install --cache-folder ~/.cache/yarn
       # Store yarn / webpacker cache
       - save_cache:
-          key: orangelight-{{ checksum "yarn.lock" }}
+          key: orangelight-1-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
       - persist_to_workspace:
