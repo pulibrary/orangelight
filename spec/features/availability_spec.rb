@@ -5,7 +5,7 @@ describe 'Availability' do
   describe 'Physical Holdings are displayed on a record page', js: true do
     before do
       stub_holding_locations
-      visit '/catalog/3256177'
+      visit '/catalog/9932561773506421'
     end
 
     it 'within the holdings section', unless: in_ci? do
@@ -36,7 +36,7 @@ describe 'Availability' do
     describe 'viewing a catalog record', js: true do
       before do
         stub_holding_locations
-        visit '/catalog/3256177'
+        visit '/catalog/9932561773506421'
       end
 
       xit 'does not render the holding section' do
@@ -47,7 +47,7 @@ describe 'Availability' do
     describe 'viewing a record for an electronic holding', js: true do
       before do
         stub_holding_locations
-        visit '/catalog/857469'
+        visit '/catalog/998574693506421'
       end
 
       xit 'does not render the online section' do
@@ -58,7 +58,7 @@ describe 'Availability' do
     describe 'viewing a record for a holding in a temp location', js: true do
       before do
         stub_holding_locations
-        visit '/catalog?q=7917192'
+        visit '/catalog?q=9979171923506421'
       end
 
       xit 'does not render the location' do
@@ -76,7 +76,7 @@ describe 'Availability' do
   xdescribe 'An item reserved for controlled digital lending', js: true do
     before do
       stub_holding_locations
-      visit '/catalog/7699003'
+      visit '/catalog/9976990033506421'
     end
 
     it 'adds a link to the digital object', unless: in_ci? do
@@ -92,13 +92,13 @@ describe 'Availability' do
   xdescribe 'Physical Holdings in temp locations', js: true do
     it 'displays temp location on search results along with call number', unless: in_ci? do
       stub_holding_locations
-      visit '/catalog?q=7917192'
+      visit '/catalog?q=9979171923506421'
       expect(page).to have_selector '.library-location', text: 'Lewis Library - Term Loan Reserves'
       expect(page).to have_selector '.library-location', text: 'QA303.2 .W45 2014'
     end
     it 'displays temp location and copy on record show', unless: in_ci? do
       stub_holding_locations
-      visit 'catalog/7917192'
+      visit 'catalog/9979171923506421'
       expect(page).to have_selector '.library-location', text: 'Lewis Library - Term Loan Reserves'
     end
   end

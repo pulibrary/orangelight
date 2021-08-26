@@ -25,7 +25,8 @@ module Blacklight
         end
 
         def add_holding_fields(body, holding)
-          location = holding['location'] || holding['library']
+          location = holding['library']
+          location += ' - ' + holding['location'] if holding['location'].present?
           body << "\t" + I18n.t('blacklight.email.text.location', value: location) if location
           cn = holding['call_number']
           body << "\t" + I18n.t('blacklight.email.text.call_number', value: cn) if cn

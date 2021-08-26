@@ -13,6 +13,10 @@ defaults: &defaults
   clancy_base: <%= ENV['CLANCY_BASE_URL'] || "https://example.caiasoft.com/api" %>
   illiad_api_key: <%= ENV['ILLIAD_API_KEY'] %>
   illiad_api_base: <%= ENV['ILLIAD_API_BASE_URL'] %>
+  recap_partner_locations:
+    scsbcul: "CUL"
+    scsbnypl: "NYPL"
+    scsbhl: "HL"
 development:
   <<: *defaults
   voyager_ub_id: 1@DB
@@ -29,7 +33,8 @@ staging:
 alma_qa:
   <<: *defaults
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
-  scsb_base: https://uat-recap.htcinc.com:9093
+  # scsb_base: https://uat-recap.htcinc.com:9093
+  scsb_base: https://scsb.recaplib.org:9093
   pulsearch_base: https://catalog-qa.princeton.edu
 qa:
   <<: *defaults

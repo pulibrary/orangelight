@@ -22,7 +22,7 @@ describe 'Browsables' do
     before(:all) do
       stub_holding_locations
       stub_hathi
-      visit '/catalog/8237778'
+      visit '/catalog/9982377783506421'
     end
     it 'name-uniform title link, hierarchical, does not display name' do
       brahms = 'Brahms, Johannes, 1833-1897.'
