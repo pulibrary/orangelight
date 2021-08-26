@@ -367,23 +367,26 @@ export default class AvailabilityUpdater {
     availability_element.text(status_label);
     availability_element.attr('title', '');
     if (status_label.toLowerCase() === 'unavailable') {
+      // The physical copy is not available but we highlight that the online copy is.
       if (isCdl) {
         if (addCdlBadge) {
+          // Add an Online badge, next to Unavailable.
+          // (used in the Search Results page)
           availability_element.addClass("badge-danger");
           availability_element.attr('title', 'Physical copy is not available.');
-          // The _physical_ copy is not available but we highlight that the _online_ copy is.
+
           let cdlPlaceholder = availability_element.parent().next().find("*[data-availability-cdl='true']");
           cdlPlaceholder.text('Online');
           cdlPlaceholder.attr('title', 'Online copy available via Controlled Digital Lending');
           cdlPlaceholder.addClass('badge badge-primary');
         } else {
-          // Remove the request button and switch the availability to indicate that it's available Online.
-          const location_services_element = $(`.location-services[data-holding-id='${availability_info['id']}'] a`);
-          location_services_element.remove();
-
+          // Display Online, instead of Unavailable, and remove the request button.
+          // (used in the Show page)
           availability_element.text('Online');
           availability_element.attr('title', 'Online copy available via Controlled Digital Lending');
           availability_element.addClass("badge-secondary");
+          const location_services_element = $(`.location-services[data-holding-id='${availability_info['id']}'] a`);
+          location_services_element.remove();
         }
       } else {
         availability_element.addClass("badge-danger");
