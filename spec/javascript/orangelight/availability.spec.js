@@ -490,9 +490,9 @@ describe('AvailabilityUpdater', function() {
     let u = new updater;
     u.id = '99101378413506421';
 
-    expect(av_element[0].textContent).not.toContain('Ask a librarian');
+    expect(av_element[0].textContent).not.toContain('Ask Staff');
     u.apply_availability_label(av_element, holding_data, true);
-    expect(av_element[0].textContent).toContain('Ask a librarian');
+    expect(av_element[0].textContent).toContain('Ask Staff');
   })
 
   // TODO: This method isn't covered by the feature tests
