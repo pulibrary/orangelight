@@ -265,6 +265,12 @@ module ApplicationHelper
                                         class: 'availability-icon more-info', title: 'Click on the record for full availability info',
                                         'data-toggle' => 'tooltip').html_safe, class: 'empty', data: { record_id: document['id'] })
     end
+
+    if block.empty? && links.count > 0
+      # All other options came up empty but since we have electronic access let's show Online rather than no holdings.
+      block << content_tag(:span, 'Online', class: 'availability-icon badge badge-primary', title: 'Electronic access', 'data-toggle' => 'tooltip')
+    end
+
     if block.empty?
       content_tag(:div, t('blacklight.holdings.search_missing'))
     else
