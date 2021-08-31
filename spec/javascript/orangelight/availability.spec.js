@@ -392,6 +392,63 @@ describe('AvailabilityUpdater', function() {
     expect(cdl_element.textContent).toContain('Online');
   })
 
+  test('in the Show page we display Online instead of Unavailable for CDL records', () => {
+    document.body.innerHTML = '<table><tbody>' +
+    '<tr class="holding-block">' +
+    '  <td class="library-location" data-holding-id="22745424290006421">' +
+    '    <span class="location-text" data-location="true" data-holding-id="22745424290006421">Firestone Library - Firestone Library</span>' +
+    '    <a title="Where to find it" class="find-it" data-map-location="firestone$stacks" data-blacklight-modal="trigger"' +
+    '      data-call-number="HB172 .G664 2016" data-library="Firestone Library"' +
+    '      href="/catalog/9999490563506421/stackmap?loc=firestone$stacks&amp;cn=HB172 .G664 2016">' +
+    '      <span class="link-text">Where to find it</span>' +
+    '      <span class="fa fa-map-marker" aria-hidden="true"></span>' +
+    '    </a>' +
+    '  </td>' +
+    '  <td class="holding-call-number">HB172 .G664 2016' +
+    '    <a class="browse-cn" title="Browse: HB172 .G664 2016" data-toggle="tooltip"' +
+    '      data-original-title="Browse: HB172 .G664 2016" href="/browse/call_numbers?q=HB172+.G664+2016">' +
+    '      <span class="link-text">Browse related items</span>' +
+    '      <span class="icon-bookslibrary"></span>' +
+    '    </a>' +
+    '  </td>' +
+    '  <td class="holding-status" data-availability-record="true" data-record-id="9999490563506421"' +
+    '    data-holding-id="22745424290006421" data-aeon="false">' +
+    '    <span class="availability-icon badge " title=""></span>' +
+    '  </td>' +
+    '  <td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false"' +
+    '    data-holding-id="22745424290006421"></td>' +
+    '  <td class="holding-details">' +
+    '    <ul class="item-status" data-record-id="9999490563506421" data-holding-id="22745424290006421"></ul>' +
+    '  </td>' +
+    '</tr>' +
+    '</tbody></table>';
+
+    const availability_response = {
+      "9999490563506421": {
+        "22745424290006421": {
+          "on_reserve": "N",
+          "location": "firestone$stacks",
+          "label": "Firestone Library - Firestone Library",
+          "status_label": "Unavailable",
+          "copy_number": null,
+          "cdl": true,
+          "temp_location": false,
+          "id": "22745424290006421"
+        }
+      }
+    }
+
+    const holding_data = availability_response["9999490563506421"]["22745424290006421"];
+
+    const av_element = $(`*[data-availability-record='true'][data-record-id='9999490563506421'][data-holding-id='22745424290006421'] .availability-icon`);
+    let u = new updater;
+    u.id = '9999490563506421';
+
+    expect(av_element[0].textContent).not.toContain('Online');
+    u.apply_availability_label(av_element, holding_data, false);
+    expect(av_element[0].textContent).toContain('Online');
+  })
+
   // TODO: This method isn't covered by the feature tests
   test('scsb_barcodes() on a search results page', () => {
     // This is only used on search results page
