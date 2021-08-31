@@ -266,7 +266,7 @@ module ApplicationHelper
                                         'data-toggle' => 'tooltip').html_safe, class: 'empty', data: { record_id: document['id'] })
     end
 
-    if block.empty? && links.count > 0
+    if block.empty? && links.present?
       # All other options came up empty but since we have electronic access let's show Online rather than no holdings.
       block << content_tag(:span, 'Online', class: 'availability-icon badge badge-primary', title: 'Electronic access', 'data-toggle' => 'tooltip')
     end
