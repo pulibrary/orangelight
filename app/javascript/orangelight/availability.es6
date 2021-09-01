@@ -363,6 +363,7 @@ export default class AvailabilityUpdater {
     availability_element.addClass("badge");
     let status_label = availability_info['status_label'];
     let isCdl = availability_info['cdl'];
+    let badgeClass = "badge-danger";
     status_label = `${status_label}${this.due_date(availability_info["due_date"])}`;
     availability_element.text(status_label);
     availability_element.attr('title', '');
@@ -388,14 +389,20 @@ export default class AvailabilityUpdater {
           const location_services_element = $(`.location-services[data-holding-id='${availability_info['id']}'] a`);
           location_services_element.remove();
         }
-      } else {
+      } else if (this.on_site_use_marquand_location(availability_info["location"])) {
+        availability_element.text("Ask Staff");
+        availability_element.attr('title', 'Ask a member of our staff for access to this item.');
+        badgeClass = "badge-secondary"
+      }
+      else {
         availability_element.addClass("badge-danger");
       }
     } else if (status_label.toLowerCase() === 'available') {
-      availability_element.addClass("badge-success");
+      badgeClass = "badge-success";
     } else {
-      availability_element.addClass("badge-secondary");
+      badgeClass = "badge-secondary";
     }
+    availability_element.addClass(badgeClass);
   }
 
   title_case(str) {
@@ -425,4 +432,8 @@ export default class AvailabilityUpdater {
     if (date_string == null) { return ""; }
     return ` - ${date_string}`;
   };
+
+  on_site_use_marquand_location(location) {
+    return location == "marquand$stacks" || location == "marquand$pj";
+  }
 }
