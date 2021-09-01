@@ -389,7 +389,12 @@ export default class AvailabilityUpdater {
           const location_services_element = $(`.location-services[data-holding-id='${availability_info['id']}'] a`);
           location_services_element.remove();
         }
-      } else {
+      } else if (this.on_site_use_marquand_location(availability_info["location"])) {
+        availability_element.text("Ask Staff");
+        availability_element.attr('title', 'Ask a member of our staff for access to this item.');
+        badgeClass = "badge-secondary"
+      }
+      else {
         availability_element.addClass("badge-danger");
       }
     } else if (status_label.toLowerCase() === 'available') {
