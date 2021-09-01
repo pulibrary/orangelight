@@ -245,16 +245,16 @@ RSpec.describe ApplicationHelper do
         {
           id: '1',
           format: ['Book'],
-          electronic_access_1display: '{"https://purl.fdlp.gov/GPO/LPS40377":["purl.fdlp.gov"]}'
+          electronic_access_1display: '{"https://library.princeton.edu/resource/28076":["library.princeton.edu"]}'
         }.with_indifferent_access
       end
 
       before { stub_holding_locations }
 
-      it 'includes the online badge since there is an electronic access link' do
-        # In this case we just look for the Online badge (the link is not rendered.)
+      it 'includes the online badge and link since there is an electronic access link' do
         holdings_block = helper.holding_block_search(SolrDocument.new(document))
         expect(holdings_block).to include ">Online</span"
+        expect(holdings_block).to include "library.princeton.edu"
       end
     end
 

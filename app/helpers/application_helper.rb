@@ -267,8 +267,12 @@ module ApplicationHelper
     end
 
     if block.empty? && links.present?
-      # All other options came up empty but since we have electronic access let's show Online rather than no holdings.
-      block << content_tag(:span, 'Online', class: 'availability-icon badge badge-primary', title: 'Electronic access', 'data-toggle' => 'tooltip')
+      # All other options came up empty but since we have electronic access let's show the
+      # Online badge with the electronic access link (rather than a misleading "No holdings")
+      info = ''
+      info << content_tag(:span, 'Online', class: 'availability-icon badge badge-primary', title: 'Electronic access', 'data-toggle' => 'tooltip')
+      info << links.shift.html_safe
+      block << content_tag(:li, info.html_safe)
     end
 
     if block.empty?
