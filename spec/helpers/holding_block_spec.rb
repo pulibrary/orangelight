@@ -251,8 +251,8 @@ RSpec.describe ApplicationHelper do
 
       before { stub_holding_locations }
 
-      it 'includes the online badge for the link' do
-        # In this case we just look the Online badge (the link is not rendered.)
+      it 'includes the online badge since there is an electronic access link' do
+        # In this case we just look for the Online badge (the link is not rendered.)
         holdings_block = helper.holding_block_search(SolrDocument.new(document))
         expect(holdings_block).to include ">Online</span"
       end
