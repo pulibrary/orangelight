@@ -240,6 +240,24 @@ RSpec.describe ApplicationHelper do
       end
     end
 
+    context '#holding_block_search with links only' do
+      let(:document) do
+        {
+          id: '1',
+          format: ['Book'],
+          electronic_access_1display: '{"https://purl.fdlp.gov/GPO/LPS40377":["purl.fdlp.gov"]}'
+        }.with_indifferent_access
+      end
+
+      before { stub_holding_locations }
+
+      it 'includes the online badge for the link' do
+        # In this case we just look the Online badge (the link is not rendered.)
+        holdings_block = helper.holding_block_search(SolrDocument.new(document))
+        expect(holdings_block).to include ">Online</span"
+      end
+    end
+
     context '#holding_block record show - physical holding thesis reading room request' do
       before { stub_holding_locations }
 
