@@ -428,7 +428,7 @@ export default class AvailabilityUpdater {
     return ` - ${date_string}`;
   };
 
-  on_site_use_location(location) {
-    return location == "marquand$stacks";
+  on_site_use_marquand_location(location) {
+    return location == "marquand$stacks" || location == "marquand$pj";
   }
 }
