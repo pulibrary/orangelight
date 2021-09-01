@@ -454,7 +454,7 @@ describe('AvailabilityUpdater', function() {
       '<tbody>' +
       '  <tr class="holding-block">' +
       '    <td class="library-location" data-holding-id="22555592710006421">' +
-      '      <span class="location-text" data-location="true" data-holding-id="22555592710006421">Marquand Library - Marquand Library</span>' +
+      '      <span class="location-text" data-location="true" data-holding-id="22555592710006421">Marquand Library - Remote Storage: Marquand Use Only</span>' +
       '    </td>' +
       '    <td class="holding-call-number"></td>' +
       '    <td class="holding-status" data-availability-record="true" data-record-id="99101378413506421" data-holding-id="22555592710006421" data-aeon="false">'  +
