@@ -35,9 +35,11 @@ RSpec.describe BookmarksController do
       expect(body).to include(headers)
       data1.each do |value|
         expect(body).to include(value)
+        expect(body).to include("'9997412163506421'")
       end
       data2.each do |value|
         expect(body).to include(value)
+        expect(body).to include("'9935444363506421'")
       end
 
       expect(body).not_to include(bad_value)
