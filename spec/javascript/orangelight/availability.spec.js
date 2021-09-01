@@ -460,7 +460,7 @@ describe('AvailabilityUpdater', function() {
       '    <td class="holding-status" data-availability-record="true" data-record-id="99101378413506421" data-holding-id="22555592710006421" data-aeon="false">'  +
       '      <span class="availability-icon badge badge-secondary" title=""></span>' +
       '    </td>' +
-      '    <td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false" data-holding-id="22555592710006421">' +
+      '    <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="22555592710006421">' +
       '     <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/99101378413506421?mfhd=22555592710006421&amp;source=pulsearch">Request</a>' +
       '    </td>' +
       '    <td class="holding-details">' +
@@ -475,7 +475,7 @@ describe('AvailabilityUpdater', function() {
         "22555592710006421":{
           "on_reserve":"N",
           "location":"marquand$stacks",
-          "label":"Marquand Library - Marquand Library",
+          "label":"Marquand Library - Remote Storage: Marquand Use Only",
           "status_label":"Unavailable",
           "copy_number":null,
           "cdl":false,
