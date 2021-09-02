@@ -14,4 +14,3 @@ RSpec.describe Blacklight::Solr::Document::MarcExportOverride do
     expect(dummy_class.clean_end_punctuation(nil)).to eq ""
   end
 end
-
