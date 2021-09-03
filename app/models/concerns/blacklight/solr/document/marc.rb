@@ -10,6 +10,10 @@ module Blacklight
         include Blacklight::Solr::Document::MarcExport
         include OpenURL
 
+        # Prepend our overloaded method to bypass bug in Blacklight
+        # See https://stackoverflow.com/questions/5944278/overriding-method-by-another-defined-in-module
+        prepend Blacklight::Solr::Document::MarcExportOverride
+
         class UnsupportedMarcFormatType < RuntimeError; end
 
         def self.extended(document)
