@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: 31cda7377174b3610a254494f1fa414b81373ae9
+  revision: 045a64720b655e3188c081c76bde0b0b32a19a44
   branch: main
   specs:
     requests (0.0.2)
@@ -313,7 +313,7 @@ GEM
     method_source (0.9.2)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0704)
+    mime-types-data (3.2021.0901)
     mini_mime (1.1.0)
     mini_portile2 (2.6.1)
     minitest (5.14.4)
@@ -402,6 +402,7 @@ GEM
       railties (>= 5.0)
     reverse_markdown (1.4.0)
       nokogiri
+    rexml (3.2.5)
     rsolr (2.2.1)
       builder (>= 2.1.2)
       faraday (>= 0.9.0)
@@ -557,7 +558,8 @@ GEM
     websocket-extensions (0.1.5)
     whenever (0.11.0)
       chronic (>= 0.6.3)
-    xml-simple (1.1.8)
+    xml-simple (1.1.9)
+      rexml
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yajl-ruby (1.4.1)
