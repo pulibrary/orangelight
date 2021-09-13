@@ -34,7 +34,7 @@ shared_path = "#{:deploy_to}/shared"
 # config/redis.yml config/devise.yml config/resque_pool.yml, config/recipients_list.yml, log/resque-pool.stderr.log log/resque-pool.stdout.log
 
 # set :linked_files, %w{config/database.yml}
-set :linked_dirs, %w{tmp/pids tmp/sockets}
+set :linked_dirs, %w{log tmp/pids tmp/sockets}
 
 set :whenever_roles, ->{ [:cron_prod1, :cron_prod2, :cron_prod3, :sitemap, :cron_db] }
 
