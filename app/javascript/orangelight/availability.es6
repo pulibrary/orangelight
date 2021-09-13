@@ -417,14 +417,19 @@ export default class AvailabilityUpdater {
     } else {
       location = availability_info['location'];
     }
-    const map_url = `/catalog/${record_id}/stackmap?loc=${location}`;
-    let link = `<a title='Where to find it' class='find-it' data-location-map='${location}' data-blacklight-modal='trigger' href='${map_url}'>`;
-    const marker_span = "<span class='fa fa-map-marker'></span>";
-    if (marker_only) {
-      link = `${link}${marker_span}</a>`;
-    } else {
-      link = `${link}<span class='link-text'>Where to find it</span>${marker_span}</a>`;
+
+    var link = '';
+    if (find_it_location(location)) {
+      const map_url = `/catalog/${record_id}/stackmap?loc=${location}`;
+      const marker_span = "<span class='fa fa-map-marker'></span>";
+      link = `<a title='Where to find it' class='find-it' data-location-map='${location}' data-blacklight-modal='trigger' href='${map_url}'>`;
+      if (marker_only) {
+        link = `${link}${marker_span}</a>`;
+      } else {
+        link = `${link}<span class='link-text'>Where to find it</span>${marker_span}</a>`;
+      }
     }
+
     return link;
   };
 
@@ -435,5 +440,10 @@ export default class AvailabilityUpdater {
 
   on_site_use_marquand_location(location) {
     return location == "marquand$stacks" || location == "marquand$pj";
+  }
+
+  /* Currently this logic is duplicated in Ruby code in ApplicationHelper::find_it_location. */
+  find_it_location(location) {
+    return location.startsWith("plasma$") == false
   }
 }
