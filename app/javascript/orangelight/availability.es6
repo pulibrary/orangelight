@@ -363,24 +363,46 @@ export default class AvailabilityUpdater {
     availability_element.addClass("badge");
     let status_label = availability_info['status_label'];
     let isCdl = availability_info['cdl'];
+    let badgeClass = "badge-danger";
     status_label = `${status_label}${this.due_date(availability_info["due_date"])}`;
     availability_element.text(status_label);
     availability_element.attr('title', '');
     if (status_label.toLowerCase() === 'unavailable') {
-      availability_element.addClass("badge-danger");
-      if (isCdl && addCdlBadge) {
-        // The _physical_ copy is not available but we highlight that the _online_ copy is.
-        availability_element.attr('title', 'Physical copy is not available.');
-        let cdlPlaceholder = availability_element.parent().next().find("*[data-availability-cdl='true']");
-        cdlPlaceholder.text('Online');
-        cdlPlaceholder.attr('title', 'Online copy available via Controlled Digital Lending');
-        cdlPlaceholder.addClass('badge badge-primary');
+      // The physical copy is not available but we highlight that the online copy is.
+      if (isCdl) {
+        if (addCdlBadge) {
+          // Add an Online badge, next to Unavailable.
+          // (used in the Search Results page)
+          availability_element.addClass("badge-danger");
+          availability_element.attr('title', 'Physical copy is not available.');
+
+          let cdlPlaceholder = availability_element.parent().next().find("*[data-availability-cdl='true']");
+          cdlPlaceholder.text('Online');
+          cdlPlaceholder.attr('title', 'Online copy available via Controlled Digital Lending');
+          cdlPlaceholder.addClass('badge badge-primary');
+        } else {
+          // Display Online, instead of Unavailable, and remove the request button.
+          // (used in the Show page)
+          availability_element.text('Online');
+          availability_element.attr('title', 'Online copy available via Controlled Digital Lending');
+          availability_element.addClass("badge-secondary");
+          const location_services_element = $(`.location-services[data-holding-id='${availability_info['id']}'] a`);
+          location_services_element.remove();
+        }
+      } else if (this.on_site_use_marquand_location(availability_info["location"])) {
+        availability_element.text("Ask Staff");
+        availability_element.attr('title', 'Ask a member of our staff for access to this item.');
+        badgeClass = "badge-secondary"
+      }
+      else {
+        availability_element.addClass("badge-danger");
       }
     } else if (status_label.toLowerCase() === 'available') {
-      availability_element.addClass("badge-success");
+      badgeClass = "badge-success";
     } else {
-      availability_element.addClass("badge-secondary");
+      badgeClass = "badge-secondary";
     }
+    availability_element.addClass(badgeClass);
   }
 
   title_case(str) {
@@ -410,4 +432,8 @@ export default class AvailabilityUpdater {
     if (date_string == null) { return ""; }
     return ` - ${date_string}`;
   };
+
+  on_site_use_marquand_location(location) {
+    return location == "marquand$stacks" || location == "marquand$pj";
+  }
 }

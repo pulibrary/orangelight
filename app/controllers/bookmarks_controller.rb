@@ -97,7 +97,13 @@ class BookmarksController < CatalogController
     end
 
     def csv_values(doc, field)
-      csv_fields[field].is_a?(Array) ? two_values(doc[field]) : Array(doc[field]).join('; ')
+      if csv_fields[field] == 'ID'
+        "'#{doc[field]}'"
+      elsif csv_fields[field].is_a?(Array)
+        two_values(doc[field])
+      else
+        Array(doc[field]).join('; ')
+      end
     end
 
     def two_values(arr)

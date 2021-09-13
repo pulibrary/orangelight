@@ -240,6 +240,24 @@ RSpec.describe ApplicationHelper do
       end
     end
 
+    context '#holding_block_search with links only' do
+      let(:document) do
+        {
+          id: '1',
+          format: ['Book'],
+          electronic_access_1display: '{"https://library.princeton.edu/resource/28076":["library.princeton.edu"]}'
+        }.with_indifferent_access
+      end
+
+      before { stub_holding_locations }
+
+      it 'includes the online badge and link since there is an electronic access link' do
+        holdings_block = helper.holding_block_search(SolrDocument.new(document))
+        expect(holdings_block).to include ">Online</span"
+        expect(holdings_block).to include "library.princeton.edu"
+      end
+    end
+
     context '#holding_block record show - physical holding thesis reading room request' do
       before { stub_holding_locations }
 

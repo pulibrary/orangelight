@@ -45,6 +45,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     }
   end
   let(:document) { instance_double(SolrDocument) }
+  let(:builder) { described_class.new(adapter) }
 
   before do
     stub_holding_locations
@@ -136,7 +137,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   end
 
   describe '.holding_location_span' do
-    let(:holding_location_span_markup) { described_class.holding_location_span('test-location', 'test-holding-id') }
+    let(:holding_location_span_markup) { builder.holding_location_span('test-location', 'test-holding-id') }
 
     it 'generates the markup for a holding location' do
       expect(holding_location_span_markup).to include '<span class="location-text"'
@@ -185,7 +186,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   end
 
   describe '.holding_location' do
-    let(:holding_location_markup) { described_class.holding_location(adapter, holding.first[1], location, holding_id, call_number) }
+    let(:holding_location_markup) { builder.holding_location(holding.first[1], location, holding_id, call_number) }
 
     it 'generates the markup for the holding locations' do
       expect(holding_location_markup).to include '<td class="library-location"'
@@ -431,7 +432,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       }
     end
     let(:document) { instance_double(SolrDocument) }
-    let(:holding_location_markup) { described_class.holding_location(adapter, holding.first[1], location, holding_id, call_number) }
+    let(:holding_location_markup) { builder.holding_location(holding.first[1], location, holding_id, call_number) }
 
     it 'generates the markup for the holding locations' do
       expect(holding_location_markup).to include '<td class="library-location"'

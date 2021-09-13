@@ -1,75 +1,6 @@
 # frozen_string_literal: false
 
 class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
-  # Generate a <span> element for a holding location
-  # @param location [String] the location value
-  # @param holding_id [String] the ID for the holding
-  # @return [String] <span> markup
-  def self.holding_location_span(location, holding_id)
-    content_tag(:span, location,
-                class: 'location-text',
-                data: { location: true, holding_id: holding_id })
-  end
-
-  # Generate the link for a specific holding
-  # @param adapter [HoldingRequestsAdapter] adapter for the the Solr Document and Bibdata
-  # @param holding [Hash] the information for the holding
-  # @param location [Hash] the location information for the holding
-  # @param holding_id [String] the ID for the holding
-  # @param call_number [String] the call number
-  # @param library [String] the library in which the holding resides
-  # @param [String] the markup
-  def self.locate_link(adapter, location, call_number, library)
-    locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
-    return '' if locator.exclude?(call_number: call_number, library: library)
-
-    stackmap_url = "/catalog/#{adapter.doc_id}/stackmap?loc=#{location}"
-    stackmap_url << "&cn=#{call_number}" if call_number
-
-    child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
-      <span class="fa fa-map-marker" aria-hidden="true"></span>)
-    markup = link_to(child.html_safe, stackmap_url,
-                     title: I18n.t('blacklight.holdings.stackmap'),
-                     class: 'find-it',
-                     data: {
-                       'map-location' => location.to_s,
-                       'blacklight-modal' => 'trigger',
-                       'call-number' => call_number,
-                       'library' => library
-                     })
-    ' ' + markup
-  end
-
-  # Generate the links for a specific holding
-  # @param adapter [HoldingRequestsAdapter] adapter for the the Solr Document and Bibdata
-  # @param holding [Hash] the information for the holding
-  # @param location [Hash] the location information for the holding
-  # @param holding_id [String] the ID for the holding
-  # @param call_number [String] the call number
-  # @param [String] the markup
-  def self.holding_location_container(adapter, holding, location, holding_id, call_number)
-    markup = holding_location_span(location, holding_id)
-    link_markup = locate_link(adapter, holding['location_code'], call_number, holding['library'])
-    markup << link_markup.html_safe
-    markup
-  end
-
-  # Generate the markup block for a specific holding
-  # @param adapter [HoldingRequestsAdapter] adapter for the the Solr Document and Bibdata
-  # @param holding [Hash] the information for the holding
-  # @param location [Hash] the location information for the holding
-  # @param holding_id [String] the ID for the holding
-  # @param call_number [String] the call number
-  # @param [String] the markup
-  def self.holding_location(adapter, holding, location, holding_id, call_number)
-    location = holding_location_container(adapter, holding, location, holding_id, call_number)
-    markup = ''
-    markup << content_tag(:td, location.html_safe,
-                          class: 'library-location',
-                          data: { holding_id: holding_id })
-    markup
-  end
-
   # Generate <span> markup used in links for browsing by call numbers
   # @return [String] the markup
   def self.call_number_span
@@ -200,24 +131,10 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     end
   end
 
-  # TODO: Remove this method once Mudd has re-opened
-  def self.mudd_closure_message
-    "Mudd Library collections are unavailable until further notice due to
-    a renovation. See our #{link_to('webpage', mudd_url)} for the most current information.".html_safe
-  end
-
-  # TODO: Remove this method once Mudd has re-opened
-  def self.mudd_url
-    "https://library.princeton.edu/special-collections/policies/access-mudd-library-during-renovation"
-  end
-
   # Generate the markup for record restrictions
   # @param holding [Hash] the restrictions for all holdings
   # @return [String] the markup
   def self.restrictions_markup(restrictions)
-    # TODO: Remove this line once Mudd has re-opened
-    return mudd_closure_message if restrictions.first == "Mudd"
-
     restricted_items = restrictions.map do |value|
       content_tag(:td, scsb_use_label(value),
                   class: 'icon-warning icon-request-reading-room',
@@ -379,6 +296,9 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     markup
   end
 
+  attr_reader :adapter
+  delegate :content_tag, :link_to, to: :class
+
   # Constructor
   # @param adapter [HoldingRequestsAdapter] adapter for the SolrDocument and Bibdata API
   def initialize(adapter)
@@ -389,6 +309,72 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @return [String] the markup for the online and physical holdings
   def build
     physical_holdings_block
+  end
+
+  # Generate a <span> element for a holding location
+  # @param location [String] the location value
+  # @param holding_id [String] the ID for the holding
+  # @return [String] <span> markup
+  def holding_location_span(location, holding_id)
+    content_tag(:span, location,
+                class: 'location-text',
+                data: { location: true, holding_id: holding_id })
+  end
+
+  # Generate the link for a specific holding
+  # @param holding [Hash] the information for the holding
+  # @param location [Hash] the location information for the holding
+  # @param holding_id [String] the ID for the holding
+  # @param call_number [String] the call number
+  # @param library [String] the library in which the holding resides
+  # @param [String] the markup
+  def locate_link(location, call_number, library)
+    locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
+    return '' if locator.exclude?(call_number: call_number, library: library)
+
+    stackmap_url = "/catalog/#{adapter.doc_id}/stackmap?loc=#{location}"
+    stackmap_url << "&cn=#{call_number}" if call_number
+
+    child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
+      <span class="fa fa-map-marker" aria-hidden="true"></span>)
+    markup = link_to(child.html_safe, stackmap_url,
+                     title: I18n.t('blacklight.holdings.stackmap'),
+                     class: 'find-it',
+                     data: {
+                       'map-location' => location.to_s,
+                       'blacklight-modal' => 'trigger',
+                       'call-number' => call_number,
+                       'library' => library
+                     })
+    ' ' + markup
+  end
+
+  # Generate the links for a specific holding
+  # @param holding [Hash] the information for the holding
+  # @param location [Hash] the location information for the holding
+  # @param holding_id [String] the ID for the holding
+  # @param call_number [String] the call number
+  # @param [String] the markup
+  def holding_location_container(holding, location, holding_id, call_number)
+    markup = holding_location_span(location, holding_id)
+    link_markup = locate_link(holding['location_code'], call_number, holding['library'])
+    markup << link_markup.html_safe
+    markup
+  end
+
+  # Generate the markup block for a specific holding
+  # @param holding [Hash] the information for the holding
+  # @param location [Hash] the location information for the holding
+  # @param holding_id [String] the ID for the holding
+  # @param call_number [String] the call number
+  # @param [String] the markup
+  def holding_location(holding, location, holding_id, call_number)
+    location = holding_location_container(holding, location, holding_id, call_number)
+    markup = ''
+    markup << content_tag(:td, location.html_safe,
+                          class: 'library-location',
+                          data: { holding_id: holding_id })
+    markup
   end
 
   private
@@ -405,11 +391,12 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       cn_value = @adapter.call_number(holding)
       holding_loc = @adapter.holding_location_label(holding)
       if holding_loc.present?
-        markup = self.class.holding_location(@adapter,
-                                             holding,
-                                             holding_loc,
-                                             holding_id,
-                                             cn_value)
+        markup = holding_location(
+          holding,
+          holding_loc,
+          holding_id,
+          cn_value
+        )
       end
       markup << self.class.call_number_link(holding, cn_value)
       markup << if @adapter.repository_holding?(holding)
