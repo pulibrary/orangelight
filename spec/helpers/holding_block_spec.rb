@@ -275,7 +275,7 @@ RSpec.describe ApplicationHelper do
 
       before { stub_holding_locations }
 
-      # For mosst locations we display a map icon to help patrons if they want to fetch the item
+      # For most locations we display a map icon to help patrons if they want to fetch the item
       it 'includes the find it icon' do
         search_result = helper.holding_block_search(SolrDocument.new(document_with_find_it_link))
         expect(search_result).to include "fa-map-marker"
