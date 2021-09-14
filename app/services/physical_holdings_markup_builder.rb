@@ -268,26 +268,26 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     link = if !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)
                link_to('Reading Room Request',
-                       "/requests/#{doc_id}?source=pulsearch",
+                       "/requests/#{doc_id}",
                        title: 'Request to view in Reading Room',
                        class: 'request btn btn-xs btn-primary',
                        data: { toggle: 'tooltip' })
              else
                link_to(request_label(location_rules),
-                       "/requests/#{doc_id}?source=pulsearch",
+                       "/requests/#{doc_id}",
                        title: request_tooltip(location_rules),
                        class: 'request btn btn-xs btn-primary',
                        data: { toggle: 'tooltip' })
              end
            elsif !adapter.voyager_holding?(holding_id)
              link_to('Reading Room Request',
-                     "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch",
+                     "/requests/#{doc_id}?mfhd=#{holding_id}",
                      title: 'Request to view in Reading Room',
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
            else
              link_to(request_label(location_rules),
-                     "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch",
+                     "/requests/#{doc_id}?mfhd=#{holding_id}",
                      title: request_tooltip(location_rules),
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })

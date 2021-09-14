@@ -219,7 +219,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(request_placeholder_markup).to include 'data-aeon="false"'
       expect(request_placeholder_markup).to include 'data-holding-id="3668455"'
       expect(request_placeholder_markup).to include '<a title="View Options to Request copies from this Location"'
-      expect(request_placeholder_markup).to include 'href="/requests/123456?mfhd=3668455&amp;source=pulsearch"'
+      expect(request_placeholder_markup).to include 'href="/requests/123456?mfhd=3668455"'
     end
   end
 
