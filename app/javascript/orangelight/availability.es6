@@ -419,7 +419,7 @@ export default class AvailabilityUpdater {
     }
 
     var link = '';
-    if (find_it_location(location)) {
+    if (this.find_it_location(location)) {
       const map_url = `/catalog/${record_id}/stackmap?loc=${location}`;
       const marker_span = "<span class='fa fa-map-marker'></span>";
       link = `<a title='Where to find it' class='find-it' data-location-map='${location}' data-blacklight-modal='trigger' href='${map_url}'>`;
@@ -442,8 +442,11 @@ export default class AvailabilityUpdater {
     return location == "marquand$stacks" || location == "marquand$pj";
   }
 
-  /* Currently this logic is duplicated in Ruby code in ApplicationHelper::find_it_location. */
+  /* Currently this logic is duplicated in Ruby code in application_helper.rb (ApplicationHelper::find_it_location) */
   find_it_location(location) {
-    return location.startsWith("plasma$") == false
+    if (location.startsWith("plasma$") || location.startsWith("marquand$")) {
+      return false
+    }
+    return true
   }
 }

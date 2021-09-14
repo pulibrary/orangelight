@@ -240,6 +240,54 @@ RSpec.describe ApplicationHelper do
       end
     end
 
+    context '#holding_block_search and the find it pin icon' do
+      let(:document_with_find_it_link) do
+        {
+          id: '1',
+          format: ['Book'],
+          holdings_1display: {
+            "22123123123" => {
+              location_code: "firestone$stacks",
+              call_number: "FIRE-123",
+              call_number_browse: "FIRE-123",
+              location: "Stacks",
+              library: "Firestone"
+            }
+          }.to_json.to_s
+        }.with_indifferent_access
+      end
+
+      let(:document_without_find_it_link) do
+        {
+          id: '1',
+          format: ['Book'],
+          holdings_1display: {
+            "22789789789" => {
+              location_code: "plasma$stacks",
+              call_number: "PLASMA-123",
+              call_number_browse: "PLASMA-123",
+              location: "Stacks",
+              library: "Plasma"
+            }
+          }.to_json.to_s
+        }.with_indifferent_access
+      end
+
+      before { stub_holding_locations }
+
+      # For mosst locations we display a map icon to help patrons if they want to fetch the item
+      it 'includes the find it icon' do
+        search_result = helper.holding_block_search(SolrDocument.new(document_with_find_it_link))
+        expect(search_result).to include "fa-map-marker"
+      end
+
+      # For certain locations we do not display the map icon since the location is not accessible by patrons
+      it 'does not include the find it icon' do
+        search_result = helper.holding_block_search(SolrDocument.new(document_without_find_it_link))
+        expect(search_result).not_to include "fa-map-marker"
+      end
+    end
+
     context '#holding_block_search with links only' do
       let(:document) do
         {

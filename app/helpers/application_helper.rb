@@ -456,8 +456,10 @@ module ApplicationHelper
     HoldingRequestsAdapter.new(@document, Bibdata)
   end
 
+  # Returns true for locations where the use can walk and fetch an item.
+  # Currently this logic is duplicated in Javascript code in availability.es6
   def find_it_location?(location_code)
-    return false if (location_code || "").start_with?("plasma$")
+    return false if (location_code || "").start_with?("plasma$", "marquand$")
     true
   end
 end
