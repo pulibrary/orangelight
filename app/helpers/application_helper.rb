@@ -79,7 +79,7 @@ module ApplicationHelper
     link = locate_url(location, document, call_number, library)
     stackmap_url = "/catalog/#{document['id']}/stackmap?loc=#{location}"
     stackmap_url << "&cn=#{call_number}" if call_number
-    if link.nil?
+    if link.nil? || (find_it_location?(location) == false)
       ''
     else
       ' ' + link_to('<span class="fa fa-map-marker" aria-hidden="true"></span>'.html_safe, stackmap_url, title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-blacklight-modal' => 'trigger', 'aria-label' => 'Where to find it')
@@ -454,5 +454,12 @@ module ApplicationHelper
   # @return [HoldingRequestsAdapter]
   def holding_requests_adapter
     HoldingRequestsAdapter.new(@document, Bibdata)
+  end
+
+  # Returns true for locations where the user can walk and fetch an item.
+  # Currently this logic is duplicated in Javascript code in availability.es6
+  def find_it_location?(location_code)
+    return false if (location_code || "").start_with?("plasma$", "marquand$")
+    true
   end
 end

@@ -1,6 +1,8 @@
 # frozen_string_literal: false
 
 class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
+  include ApplicationHelper
+
   # Generate <span> markup used in links for browsing by call numbers
   # @return [String] the markup
   def self.call_number_span
@@ -335,17 +337,20 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     stackmap_url = "/catalog/#{adapter.doc_id}/stackmap?loc=#{location}"
     stackmap_url << "&cn=#{call_number}" if call_number
 
-    child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
-      <span class="fa fa-map-marker" aria-hidden="true"></span>)
-    markup = link_to(child.html_safe, stackmap_url,
-                     title: I18n.t('blacklight.holdings.stackmap'),
-                     class: 'find-it',
-                     data: {
-                       'map-location' => location.to_s,
-                       'blacklight-modal' => 'trigger',
-                       'call-number' => call_number,
-                       'library' => library
-                     })
+    markup = ''
+    if find_it_location?(location)
+      child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
+        <span class="fa fa-map-marker" aria-hidden="true"></span>)
+      markup = link_to(child.html_safe, stackmap_url,
+                       title: I18n.t('blacklight.holdings.stackmap'),
+                       class: 'find-it',
+                       data: {
+                         'map-location' => location.to_s,
+                         'blacklight-modal' => 'trigger',
+                         'call-number' => call_number,
+                         'library' => library
+                       })
+    end
     ' ' + markup
   end
 
