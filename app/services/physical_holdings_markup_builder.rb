@@ -1,7 +1,7 @@
 # frozen_string_literal: false
 
 class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
-  include ApplicationHelper # needed for find_it_location method
+  include ApplicationHelper
 
   # Generate <span> markup used in links for browsing by call numbers
   # @return [String] the markup
