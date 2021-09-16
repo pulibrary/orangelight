@@ -461,7 +461,7 @@ describe('AvailabilityUpdater', function() {
       '      <span class="availability-icon badge badge-secondary" title=""></span>' +
       '    </td>' +
       '    <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="22555592710006421">' +
-      '     <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/99101378413506421?mfhd=22555592710006421&amp;source=pulsearch">Request</a>' +
+      '     <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/99101378413506421?mfhd=22555592710006421">Request</a>' +
       '    </td>' +
       '    <td class="holding-details">' +
       '      <ul class="item-status" data-record-id="99101378413506421" data-holding-id="22555592710006421"></ul>' +
@@ -595,7 +595,7 @@ describe('AvailabilityUpdater', function() {
       '            <td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false"' +
       '                data-holding-id="22614245530006421"><a title="View Options to Request copies from this Location"' +
       '                    class="request btn btn-xs btn-primary" data-toggle="tooltip"' +
-      '                    href="/requests/99115992283506421?mfhd=22614245530006421&amp;source=pulsearch">Request</a></td>' +
+      '                    href="/requests/99115992283506421?mfhd=22614245530006421">Request</a></td>' +
       '            <td class="holding-details">' +
       '                <ul class="item-status" data-record-id="99115992283506421" data-holding-id="22614245530006421"></ul>' +
       '            </td>' +
@@ -613,7 +613,7 @@ describe('AvailabilityUpdater', function() {
       '                data-aeon="false" data-holding-id="22614245510006421"><a' +
       '                    title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary"' +
       '                    data-toggle="tooltip"' +
-      '                    href="/requests/99115992283506421?mfhd=22614245510006421&amp;source=pulsearch">Request</a></td>' +
+      '                    href="/requests/99115992283506421?mfhd=22614245510006421">Request</a></td>' +
       '            <td class="holding-details">' +
       '                <ul class="item-status" data-record-id="99115992283506421" data-holding-id="22614245510006421"></ul>' +
       '            </td>' +
