@@ -59,7 +59,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   end
 
   describe '.request_label' do
-    let(:request_label) { described_class.request_label(location_rules) }
+    let(:request_label) { builder.request_label(location_rules) }
 
     context 'for holdings within aeon locations' do
       let(:location_rules) do
@@ -210,7 +210,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   end
 
   describe '.request_placeholder' do
-    let(:request_placeholder_markup) { described_class.request_placeholder(adapter, holding_id, location_rules, holding) }
+    let(:request_placeholder_markup) { builder.request_placeholder(adapter, holding_id, location_rules, holding) }
 
     it 'generates the markup for request links' do
       expect(request_placeholder_markup).to include '<td class="location-services service-conditional"'
