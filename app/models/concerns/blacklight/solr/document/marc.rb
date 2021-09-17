@@ -100,18 +100,6 @@ module Blacklight
           end
         end
 
-        def umlaut_fulltext_eligible?
-          if (umlaut_full_text_formats & fetch('format', []).map(&:downcase)).empty?
-            false
-          else
-            true
-          end
-        end
-
-        def umlaut_full_text_formats
-          %w[book journal]
-        end
-
         # does we have any standard numbers that can be used by other services
         def standard_numbers?
           std_numbers.any? { |v| key? v }

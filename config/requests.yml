@@ -1,7 +1,6 @@
 # requests.yml
 
 defaults: &defaults
-  umlaut_base: https://getit.princeton.edu
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
   proxy_base: https://library.princeton.edu/resolve/lookup?url=
   voyager_api_base: https://webvoyage.princeton.edu:7014

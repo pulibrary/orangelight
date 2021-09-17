@@ -18,9 +18,6 @@ RSpec.describe ApplicationHelper do
     let(:show_result_thesis_no_request) { helper.holding_request_block(SolrDocument.new(document_thesis_no_request_access)) }
     let(:show_result_thesis_embargoed) { helper.holding_request_block(SolrDocument.new(document_thesis_embargoed)) }
 
-    let(:show_result_umlaut_w_full_text) { helper.umlaut_services }
-    let(:not_umlaut_full_text_eligible) { SolrDocument.new(document_no_umlaut) }
-    let(:umlaut_full_text_eligible) { SolrDocument.new(document) }
     let(:holding_block_json) do
       {
         holding_id => {
@@ -81,13 +78,6 @@ RSpec.describe ApplicationHelper do
       {
         id: '1',
         format: ['Book'],
-        holdings_1display: holding_block_json
-      }.with_indifferent_access
-    end
-    let(:document_no_umlaut) do
-      {
-        id: '5',
-        format: ['Video'],
         holdings_1display: holding_block_json
       }.with_indifferent_access
     end
@@ -276,15 +266,6 @@ RSpec.describe ApplicationHelper do
       it 'link missing label appears when 856s is missing from elf location' do
         stub_holding_locations
         expect(show_result.first).to include 'Link Missing'
-      end
-    end
-
-    context '#umlaut_format_eligible? formats' do
-      it 'is false when it is not umlaut format' do
-        expect(not_umlaut_full_text_eligible.umlaut_fulltext_eligible?).to be false
-      end
-      it 'is true when it is an umlaut format' do
-        expect(umlaut_full_text_eligible.umlaut_fulltext_eligible?).to be true
       end
     end
 
