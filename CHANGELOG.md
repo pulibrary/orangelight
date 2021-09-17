@@ -4,6 +4,33 @@
 
 - Hide stack map links for certain locations [#2725](https://github.com/pulibrary/orangelight/pull/2725) ([@hectorcorrea](https://github.com/hectorcorrea))
 
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of github.com:pulibrary/orangelight (bess.sadler@princeton.edu)
+
+#### 🔩 Dependency Updates
+
+- Bump tar from 4.4.13 to 4.4.19 [#2736](https://github.com/pulibrary/orangelight/pull/2736) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Upgrade webpack to 5.4.3 [#2733](https://github.com/pulibrary/orangelight/pull/2733) (bess.sadler@princeton.edu)
+- Remove unused sdoc [#2732](https://github.com/pulibrary/orangelight/pull/2732) (bess.sadler@princeton.edu)
+- Bump color-string from 1.5.3 to 1.6.0 [#2693](https://github.com/pulibrary/orangelight/pull/2693) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump url-parse from 1.4.7 to 1.5.3 [#2666](https://github.com/pulibrary/orangelight/pull/2666) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump path-parse from 1.0.6 to 1.0.7 [#2646](https://github.com/pulibrary/orangelight/pull/2646) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 3
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Bess Sadler ([@bess](https://github.com/bess))
+- Hector Correa ([@hectorcorrea](https://github.com/hectorcorrea))
+
+---
+
+# v1.1.0 (Fri Sep 17 2021)
+
+#### 🚀 Enhancement
+
+- Hide stack map links for certain locations [#2725](https://github.com/pulibrary/orangelight/pull/2725) ([@hectorcorrea](https://github.com/hectorcorrea))
+
 #### 🔩 Dependency Updates
 
 - Bump color-string from 1.5.3 to 1.6.0 [#2693](https://github.com/pulibrary/orangelight/pull/2693) ([@dependabot[bot]](https://github.com/dependabot[bot]))
