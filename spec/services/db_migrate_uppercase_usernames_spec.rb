@@ -25,6 +25,12 @@ RSpec.describe DBMigrateUppercaseUsernames do
         uppercase_user.searches.create([{ query_params: 'history' }])
         expect { described_class.run }.to change(lowercase_user.searches, :count).by(1)
       end
+
+      it "doesn't merge search into existing user if they already have it" do
+        uppercase_user.searches.create([{ query_params: 'history' }])
+        lowercase_user.searches.create([{ query_params: 'history' }])
+        expect { described_class.run }.to change(lowercase_user.searches, :count).by(0)
+      end
     end
 
     context "when there is not an equivalent lowercase user" do
