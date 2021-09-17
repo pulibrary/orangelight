@@ -36,24 +36,16 @@ class DBMigrateUppercaseUsernames
     def merge_bookmarks(lowercase_user)
       uppercase_user_bookmarks = Bookmark.where(user_id: uppercase_user.id)
       lowercase_user_bookmarks = Bookmark.where(user_id: lowercase_user.id).to_a
-      lowercase_bookmarks_doc_ids = []
-      lowercase_user_bookmarks.each { |lowercase_bookmark| lowercase_bookmarks_doc_ids.push(lowercase_bookmark.document_id) }
-      uppercase_user_bookmarks.each do |uppercase_bookmark|
-        lowercase_user_bookmarks = lowercase_user_bookmarks.push(uppercase_bookmark) unless lowercase_bookmarks_doc_ids.include? uppercase_bookmark.document_id
-      end
-      lowercase_user.bookmarks = lowercase_user_bookmarks
+      lowercase_bookmarks_doc_ids = lowercase_user_bookmarks.map(&:document_id)
+      lowercase_user.bookmarks = lowercase_user_bookmarks + uppercase_user_bookmarks.reject { |bookmark| lowercase_bookmarks_doc_ids.include? bookmark.document_id }
     end
 
     # merge uppercase user's searches into lowercase user's searches
     def merge_searches(lowercase_user)
       uppercase_user_searches = Search.where(user_id: uppercase_user.id)
       lowercase_user_searches = Search.where(user_id: lowercase_user.id).to_a
-      lowercase_searches_queries = []
-      lowercase_user_searches.each { |lowercase_search| lowercase_searches_queries.push(lowercase_search.query_params) }
-      uppercase_user_searches.each do |uppercase_search|
-        lowercase_user_searches = lowercase_user_searches.push(uppercase_search) unless lowercase_searches_queries.include? uppercase_search.query_params
-      end
-      lowercase_user.searches = lowercase_user_searches
+      lowercase_searches_queries = lowercase_user_searches.map(&:query_params)
+      lowercase_user.searches = lowercase_user_searches + uppercase_user_searches.reject { |search| lowercase_searches_queries.include? search.query_params }
     end
   end
 end
