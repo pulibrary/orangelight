@@ -125,7 +125,7 @@ RSpec.describe StackmapService::Url do
       end
     end
     describe 'missing doc' do
-      let(:location) { 'f' }
+      let(:location) { 'firestone$stacks' }
       let(:document) { nil }
 
       it 'resolves to catalog homepage' do
