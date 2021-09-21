@@ -397,7 +397,7 @@ RSpec.describe ApplicationHelper do
         expect(show_result.last).to include call_number
         expect(show_result.last).to include library
         expect(show_result.last).to include 'Remote Storage (ReCAP)'
-        expect(show_result.last).to include 'Mendel Music Library: Reserve'
+        expect(show_result.last).to include 'Mendel Music Library - Reserve'
       end
 
       it 'link to call number browse' do
