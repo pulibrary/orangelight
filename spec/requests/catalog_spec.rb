@@ -13,4 +13,17 @@ describe 'search requests for the catalog' do
 
     expect(response.status).to eq(200)
   end
+
+  context "BadRequest when clicking back to search" do
+    # This url produces ActionController::BadRequest
+    let(:url) do
+      '/catalog?utf8=%E2%9C&f1=all_fields'
+    end
+
+    it 'redirects the user to start over' do
+      get url
+      expect(response.status).to eq(400)
+      expect(response.body).to match(/start over/)
+    end
+  end
 end

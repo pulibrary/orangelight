@@ -48,7 +48,7 @@ describe Orangelight::Middleware::InvalidParameterHandler do
 
         body = output.last
         body_content = body.first
-        expect { JSON.parse(body_content) }.not_to raise_error(JSON::ParserError)
+        expect { JSON.parse(body_content) }.not_to raise_error
         json_response = JSON.parse(body_content)
 
         expect(json_response).to include('data')
@@ -110,6 +110,25 @@ describe Orangelight::Middleware::InvalidParameterHandler do
         expect(status).to eq(400)
         expect(headers['Content-Type']).to eq('text/html; charset=UTF-8')
         expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request\: Invalid query parameters\: invalid %\-encoding \(%2B%2B%2\) within the environment/)
+      end
+    end
+
+    context 'when the HTTP request contains invalid characters' do
+      let(:query_string) do
+        'utf8=%E2%9C'
+      end
+
+      before do
+        allow(Rails.logger).to receive(:error)
+      end
+
+      it 'returns a 400 response, displays an error message, and logs the error' do
+        status, headers, body = invalid_parameter_handler.call(env)
+
+        expect(body.join).to include('For help, please email', 'start over')
+        expect(status).to eq(400)
+        expect(headers['Content-Type']).to eq('text/html; charset=UTF-8')
+        expect(Rails.logger).to have_received(:error).with(/Invalid encoding/)
       end
     end
   end
