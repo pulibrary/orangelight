@@ -4,9 +4,9 @@ require 'rails_helper'
 
 RSpec.describe ApplicationHelper do
   describe '#locate_url helper method' do
-    let(:stackmap_location) { 'mus' }
-    let(:locator_location) { 'f' }
-    let(:stackmap_ineligible_location) { 'annexa' }
+    let(:stackmap_location) { 'mendel$stacks' }
+    let(:locator_location) { 'firestone$stacks' }
+    let(:stackmap_ineligible_location) { 'annex$noncirc' }
     let(:bib) { { id: '123456' } }
     let(:call_number) { 'RCPXR-6136516' }
     let(:locator_library) { 'Firestone Library' }
@@ -46,7 +46,7 @@ RSpec.describe ApplicationHelper do
     end
 
     it 'renders full location when value is a valid location code' do
-      expect(render_location_code('clas')).to eq('clas: Firestone Library - Classics Collection (Clas)')
+      expect(render_location_code('firestone$clas')).to eq('firestone$clas: Firestone Library - Classics Collection')
     end
   end
 
@@ -54,12 +54,12 @@ RSpec.describe ApplicationHelper do
     let(:fallback) { 'Fallback' }
     let(:without_code) { { 'library' => 'Library Name', 'location' => fallback } }
     let(:invalid_code) { { 'library' => 'Library Name', 'location' => fallback, 'location_code' => 'invalid' } }
-    let(:valid_code) { { 'library' => 'Library Name', 'location' => fallback, 'location_code' => 'aas' } }
-    let(:code_location_blank) { { 'library' => 'Library Name', 'location' => '', 'location_code' => 'aas' } }
+    let(:valid_code) { { 'library' => 'Library Name', 'location' => fallback, 'location_code' => 'firestone$aas' } }
+    let(:code_location_blank) { { 'library' => 'Library Name', 'location' => '', 'location_code' => 'firestone$aas' } }
 
     it 'returns holding location label when location code lookup successful' do
       stub_holding_locations
-      expect(holding_location_label(valid_code)).to eq('Firestone Library - African American Studies Reading Room (AAS). B-7-B')
+      expect(holding_location_label(valid_code)).to eq('Firestone Library - African American Studies Reading Room')
     end
     context 'when location code lookup fails' do
       before do

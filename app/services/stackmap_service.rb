@@ -74,20 +74,20 @@ class StackmapService
       end
 
       def stackmap_libs
-        %w[architecture eastasian engineering lewis mendel plasma stokes]
+        %w[arch eastasian engineer lewis mendel plasma stokes]
       end
 
       def missing_stackmap_reserves
         {
-          'ueso' => 'https://library.princeton.edu/architecture',
-          'piaprr' => 'https://library.princeton.edu/stokes',
-          'pplr' => 'https://library.princeton.edu/plasma-physics',
-          'scigr' => 'https://library.princeton.edu/lewis'
+          'arch$res3hr' => 'https://library.princeton.edu/architecture',
+          'stokes$respiapr' => 'https://library.princeton.edu/stokes',
+          'plasma$res' => 'https://library.princeton.edu/plasma-physics',
+          'lewis$gr' => 'https://library.princeton.edu/lewis'
         }
       end
 
       def by_title_locations
-        %w[sciss pplps sprps spiaps]
+        %w[lewis$serial plasma$ps stokes$sprps stokes$spiaps]
       end
 
       def holding_location

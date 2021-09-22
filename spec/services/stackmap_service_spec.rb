@@ -21,7 +21,7 @@ RSpec.describe StackmapService::Url do
 
   describe '#url with valid params' do
     describe 'firestone, call number provided' do
-      let(:location) { 'f' }
+      let(:location) { 'firestone$stacks' }
       let(:call_number) { 'Q43.2' }
 
       it 'resolves to embeded firestone locator with loc and bibid' do
@@ -29,7 +29,7 @@ RSpec.describe StackmapService::Url do
       end
     end
     describe 'firestone, no call number provided' do
-      let(:location) { 'f' }
+      let(:location) { 'firestone$stacks' }
 
       it 'resolves to embeded firestone locator with loc and bibid' do
         expect(url).to eq("https://locator-prod.princeton.edu/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
@@ -37,7 +37,7 @@ RSpec.describe StackmapService::Url do
     end
 
     describe 'firestone, doc has no call number' do
-      let(:location) { 'f' }
+      let(:location) { 'firestone$stacks' }
       let(:doc_cn) { nil }
 
       it 'resolves to embeded firestone locator with loc and bibid' do
@@ -50,20 +50,17 @@ RSpec.describe StackmapService::Url do
     end
 
     describe 'mendel, call number provided' do
-      let(:location) { 'mus' }
+      let(:location) { 'mendel$stacks' }
       let(:call_number) { 'Q43.2' }
 
       it 'resolves to stackmap with provided call number' do
         expect(url).to include('princeton.stackmap')
         expect(url).to include(call_number)
       end
-
-      it 'the library is the location label when the holding location has no label' do
-        expect(url_service.location_label).to eq('Mendel Music Library')
-      end
     end
+
     describe 'mendel, no call number provided' do
-      let(:location) { 'mus' }
+      let(:location) { 'mendel$stacks' }
 
       it 'resolves to stackmap with document call number' do
         expect(url).to include('princeton.stackmap')
@@ -71,8 +68,17 @@ RSpec.describe StackmapService::Url do
       end
     end
 
+    describe 'no location label' do
+      let(:location) { 'annex$UNASSIGNED' }
+      let(:call_number) { 'Q43.2' }
+
+      it 'the library is the location label when the holding location has no label' do
+        expect(url_service.location_label).to eq('Forrestal Annex')
+      end
+    end
+
     describe 'by title location' do
-      let(:location) { 'sprps' }
+      let(:location) { 'stokes$sprps' }
 
       it 'uses title as the call number value' do
         expect(url).to include({ callno: properties[:title_display] }.to_query)
@@ -81,11 +87,11 @@ RSpec.describe StackmapService::Url do
         expect(url_service.preferred_callno).to eq(properties[:title_display])
       end
       it 'location label is used instead of library when present' do
-        expect(url_service.location_label).to eq('Periodicals')
+        expect(url_service.location_label).to eq('Periodicals. Wallace Hall')
       end
     end
     describe 'by title location with provided call number' do
-      let(:location) { 'sprps' }
+      let(:location) { 'stokes$sprps' }
       let(:call_number) { 'Q43.2' }
 
       it 'uses title as the call number value' do
@@ -93,7 +99,7 @@ RSpec.describe StackmapService::Url do
       end
     end
     describe 'non-stackmap location' do
-      let(:location) { 'pplr' }
+      let(:location) { 'plasma$res' }
 
       it 'resolves to branch library page' do
         expect(url).to eq('https://library.princeton.edu/plasma-physics')
@@ -119,7 +125,7 @@ RSpec.describe StackmapService::Url do
       end
     end
     describe 'missing doc' do
-      let(:location) { 'f' }
+      let(:location) { 'firestone$stacks' }
       let(:document) { nil }
 
       it 'resolves to catalog homepage' do
