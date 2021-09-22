@@ -51,12 +51,6 @@ class HoldingRequestsAdapter
     doc_electronic_access.keys.any? { |link| /getit\.princeton\.edu/.match(link) }
   end
 
-  # Determine whether or not the electronic resources are accessible using umlaut
-  # @return [TrueClass, FalseClass]
-  def umlaut_accessible?
-    getit_accessible? || doc_electronic_access.empty? || !@document.umlaut_fulltext_eligible?
-  end
-
   # Retrieve only the ELF holding records
   # @return [Hash] ELF holding information
   def doc_holdings_elf

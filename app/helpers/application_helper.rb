@@ -9,26 +9,6 @@ module ApplicationHelper
     Rails.env.production?
   end
 
-  # Generate the markup for the <div> containing a link to the umlaut service endpoint for a given record
-  # @param document [SolrDocument] the Solr Document for the record
-  # @return [String] the markup
-  def umlaut_services_fulltext(document)
-    services = ''
-    unless document.key? 'electronic_access_1display'
-      services << content_tag(:div, '', :id => 'full_text', :class => ['availability--online', 'availability_full-text', 'availability--panel_umlaut'], 'data-umlaut-full-text' => true)
-    end
-    services.html_safe
-  end
-
-  # Generate the markup for two <div> elements containing links to umlaut services
-  # @return [String] the markup
-  def umlaut_services
-    services = ''
-    services << content_tag(:div, '', :id => 'excerpts', :class => ['availability--excerpts', 'availability_excerpts', 'availability--panel_umlaut'], 'data-umlaut-services' => true)
-    services << content_tag(:div, '', :id => 'highlighted_link', :class => ['availability--highlighted', 'availability_highlighted-link', 'availability--panel_umlaut'], 'data-umlaut-services' => true)
-    services.html_safe
-  end
-
   # Generate an Array of <div> elements wrapping links to proxied service endpoints for access
   # Takes first 2 links for pairing with online holdings in search results
   # @param electronic_access [Hash] electronic resource information

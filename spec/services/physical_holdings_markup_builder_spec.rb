@@ -54,7 +54,6 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     allow(adapter).to receive(:doc_id).and_return('123456')
     allow(adapter).to receive(:voyager_holding?).and_return(true)
     allow(adapter).to receive(:doc_electronic_access).and_return('http://arks.princeton.edu/ark:/88435/dsp0141687h654': ['DataSpace', 'Citation only'])
-    allow(adapter).to receive(:umlaut_accessible?).and_return(true)
     allow(adapter).to receive(:unavailable_holding?).and_return(false)
   end
 

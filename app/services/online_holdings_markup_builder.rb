@@ -84,15 +84,6 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
       markup << content_tag(:li, link.html_safe, class: 'electronic-access')
     end
 
-    unless adapter.umlaut_accessible?
-      markup << content_tag(:li, '',
-                            id: 'full_text',
-                            class: ['availability--panel',
-                                    'availability_full-text',
-                                    'availability_full-text-alternative'],
-                            'data-umlaut-services' => true)
-    end
-
     return content_tag(:ul, markup.html_safe) if electronic_access.count > 1
     markup
   end

@@ -5,11 +5,7 @@
     <h3><%= t('blacklight.holdings.online')  %></h3>
     <%= online if online.present? %>
   </div>
-<% end %>
-
-<% if online.blank? && document.standard_numbers? && document.umlaut_fulltext_eligible? %>
-  <%= umlaut_services_fulltext(document) %>
-<% end %>
+<% end %> 
 
 <% unless physical.empty? %>
   <div class="availability--physical">
