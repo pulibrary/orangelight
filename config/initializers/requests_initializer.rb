@@ -19,7 +19,7 @@ module Requests
       end
 
       begin
-        YAML.safe_load(requests_erb, [], [], true)[Rails.env]
+        YAML.safe_load(requests_erb, aliases: true)[Rails.env]
       rescue => e
         raise("#{requests_config_file} was found, but could not be parsed.\n#{e.inspect}")
       end
