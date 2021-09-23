@@ -1,14 +1,20 @@
 # frozen_string_literal: false
 
 class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
+  include ApplicationHelper
+
   # Generate <span> markup used in links for browsing by call numbers
   # @return [String] the markup
-  def self.call_number_span
+  def call_number_span
     %(<span class="link-text">#{I18n.t('blacklight.holdings.browse')}</span>\
       <span class="icon-bookslibrary"></span>)
   end
 
-  def self.call_number_link(holding, cn_value)
+  ##
+  # Add call number link
+  # @param [Hash] holding
+  # @param [String] cn_value - a call number
+  def call_number_link(holding, cn_value)
     cn = ''
     unless cn_value.nil?
       children = call_number_span
@@ -23,7 +29,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     content_tag(:td, cn.html_safe, class: 'holding-call-number')
   end
 
-  def self.holding_location_repository
+  def holding_location_repository
     children = content_tag(:span,
                            'On-site access',
                            class: 'availability-icon badge badge-success',
@@ -32,7 +38,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     content_tag(:td, children.html_safe)
   end
 
-  def self.holding_location_scsb_span
+  def holding_location_scsb_span
     markup = content_tag(:span, '',
                          title: '',
                          class: 'availability-icon badge',
@@ -40,7 +46,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     markup
   end
 
-  def self.holding_location_scsb(holding, bib_id, holding_id)
+  def holding_location_scsb(holding, bib_id, holding_id)
     content_tag(:td, holding_location_scsb_span.html_safe,
                 class: 'holding-status',
                 data: {
@@ -52,7 +58,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                 })
   end
 
-  def self.holding_location_default(bib_id, holding_id, location_rules)
+  def holding_location_default(bib_id, holding_id, location_rules)
     children = content_tag(:span, '', class: 'availability-icon')
     content_tag(:td,
                 children.html_safe,
@@ -61,12 +67,12 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                   'availability_record' => true,
                   'record_id' => bib_id,
                   'holding_id' => holding_id,
-                  aeon: aeon_location?(location_rules)
+                  aeon: self.class.aeon_location?(location_rules)
                 })
   end
 
   # For when a holding record has a value for the "dspace" key, but it is set to false
-  def self.holding_location_unavailable
+  def holding_location_unavailable
     children = content_tag(:span,
                            'Unavailable',
                            class: 'availability-icon badge badge-danger',
@@ -167,6 +173,10 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     location.nil? ? false : location[:aeon_location]
   end
 
+  def aeon_location?(location)
+    self.class.aeon_location?(location)
+  end
+
   def self.scsb_location?(location)
     location.nil? ? false : /^scsb.+/ =~ location['code']
   end
@@ -216,7 +226,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # Generate a request label based upon the holding location
   # @param location_rules [Hash] the location for the holding
   # @return [String] the label
-  def self.request_label(location_rules)
+  def request_label(location_rules)
     if aeon_location?(location_rules)
       'Reading Room Request'
     else
@@ -254,6 +264,10 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     end
   end
 
+  def scsb_supervised_items?(holding)
+    self.class.scsb_supervised_items?(holding)
+  end
+
   ##
   def self.listify_array(arr)
     arr = arr.map do |e|
@@ -263,36 +277,37 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   # Generate the links for a given holding
-  def self.request_placeholder(adapter, holding_id, location_rules, holding)
+  # TODO: Come back and remove class method calls
+  def request_placeholder(adapter, holding_id, location_rules, holding)
     doc_id = adapter.doc_id
     link = if !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)
                link_to('Reading Room Request',
-                       "/requests/#{doc_id}?source=pulsearch",
+                       "/requests/#{doc_id}",
                        title: 'Request to view in Reading Room',
                        class: 'request btn btn-xs btn-primary',
                        data: { toggle: 'tooltip' })
              else
                link_to(request_label(location_rules),
-                       "/requests/#{doc_id}?source=pulsearch",
-                       title: request_tooltip(location_rules),
+                       "/requests/#{doc_id}",
+                       title: self.class.request_tooltip(location_rules),
                        class: 'request btn btn-xs btn-primary',
                        data: { toggle: 'tooltip' })
              end
            elsif !adapter.voyager_holding?(holding_id)
              link_to('Reading Room Request',
-                     "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch",
+                     "/requests/#{doc_id}?mfhd=#{holding_id}",
                      title: 'Request to view in Reading Room',
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
            else
              link_to(request_label(location_rules),
-                     "/requests/#{doc_id}?mfhd=#{holding_id}&source=pulsearch",
-                     title: request_tooltip(location_rules),
+                     "/requests/#{doc_id}?mfhd=#{holding_id}",
+                     title: self.class.request_tooltip(location_rules),
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
            end
-    markup = location_services_block(adapter, holding_id, location_rules, link, holding)
+    markup = self.class.location_services_block(adapter, holding_id, location_rules, link, holding)
     markup
   end
 
@@ -335,17 +350,20 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     stackmap_url = "/catalog/#{adapter.doc_id}/stackmap?loc=#{location}"
     stackmap_url << "&cn=#{call_number}" if call_number
 
-    child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
-      <span class="fa fa-map-marker" aria-hidden="true"></span>)
-    markup = link_to(child.html_safe, stackmap_url,
-                     title: I18n.t('blacklight.holdings.stackmap'),
-                     class: 'find-it',
-                     data: {
-                       'map-location' => location.to_s,
-                       'blacklight-modal' => 'trigger',
-                       'call-number' => call_number,
-                       'library' => library
-                     })
+    markup = ''
+    if find_it_location?(location)
+      child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
+        <span class="fa fa-map-marker" aria-hidden="true"></span>)
+      markup = link_to(child.html_safe, stackmap_url,
+                       title: I18n.t('blacklight.holdings.stackmap'),
+                       class: 'find-it',
+                       data: {
+                         'map-location' => location.to_s,
+                         'blacklight-modal' => 'trigger',
+                         'call-number' => call_number,
+                         'library' => library
+                       })
+    end
     ' ' + markup
   end
 
@@ -398,22 +416,21 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
           cn_value
         )
       end
-      markup << self.class.call_number_link(holding, cn_value)
+      markup << call_number_link(holding, cn_value)
       markup << if @adapter.repository_holding?(holding)
-                  self.class.holding_location_repository
+                  holding_location_repository
                 elsif @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
-                  self.class.holding_location_scsb(holding, bib_id, holding_id)
+                  holding_location_scsb(holding, bib_id, holding_id)
                 # dspace: false
                 elsif @adapter.unavailable_holding?(holding)
-                  self.class.holding_location_unavailable
+                  holding_location_unavailable
                 else
-                  self.class.holding_location_default(bib_id,
-                                                      holding_id,
-                                                      location_rules)
+                  holding_location_default(bib_id,
+                                           holding_id,
+                                           location_rules)
                 end
 
-      request_placeholder_markup = \
-        self.class.request_placeholder(@adapter, holding_id, location_rules, holding)
+      request_placeholder_markup = request_placeholder(@adapter, holding_id, location_rules, holding)
       markup << request_placeholder_markup.html_safe
 
       holding_notes = ''

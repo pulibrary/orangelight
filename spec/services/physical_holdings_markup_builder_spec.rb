@@ -54,12 +54,11 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     allow(adapter).to receive(:doc_id).and_return('123456')
     allow(adapter).to receive(:voyager_holding?).and_return(true)
     allow(adapter).to receive(:doc_electronic_access).and_return('http://arks.princeton.edu/ark:/88435/dsp0141687h654': ['DataSpace', 'Citation only'])
-    allow(adapter).to receive(:umlaut_accessible?).and_return(true)
     allow(adapter).to receive(:unavailable_holding?).and_return(false)
   end
 
   describe '.request_label' do
-    let(:request_label) { described_class.request_label(location_rules) }
+    let(:request_label) { builder.request_label(location_rules) }
 
     context 'for holdings within aeon locations' do
       let(:location_rules) do
@@ -210,7 +209,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   end
 
   describe '.request_placeholder' do
-    let(:request_placeholder_markup) { described_class.request_placeholder(adapter, holding_id, location_rules, holding) }
+    let(:request_placeholder_markup) { builder.request_placeholder(adapter, holding_id, location_rules, holding) }
 
     it 'generates the markup for request links' do
       expect(request_placeholder_markup).to include '<td class="location-services service-conditional"'
@@ -219,7 +218,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(request_placeholder_markup).to include 'data-aeon="false"'
       expect(request_placeholder_markup).to include 'data-holding-id="3668455"'
       expect(request_placeholder_markup).to include '<a title="View Options to Request copies from this Location"'
-      expect(request_placeholder_markup).to include 'href="/requests/123456?mfhd=3668455&amp;source=pulsearch"'
+      expect(request_placeholder_markup).to include 'href="/requests/123456?mfhd=3668455"'
     end
   end
 

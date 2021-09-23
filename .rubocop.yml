@@ -84,7 +84,6 @@ Metrics/LineLength:
     - 'spec/features/searching_spec.rb'
     - 'spec/models/solr_document_spec.rb'
     - 'spec/controllers/bookmarks_controller_spec.rb'
-    - 'spec/views/catalog/umlaut_services_spec.rb'
     - 'spec/features/availability_spec.rb'
     - 'spec/helpers/holding_block_spec.rb'
     - 'spec/helpers/blacklight_helper_spec.rb'

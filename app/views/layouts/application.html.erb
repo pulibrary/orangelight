@@ -28,7 +28,6 @@
     <% unless controller.controller_name == "catalog" && controller.action_name == "show" && @document.alma_record? %>
     <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML", async: true %>
     <% end %>
-    <%= javascript_include_tag "#{Requests.config['umlaut_base']}/assets/umlaut/update_html.js" %>
     <%= javascript_include_tag "https://www.google.com/books/jsapi.js" %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>

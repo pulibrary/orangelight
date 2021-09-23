@@ -46,7 +46,6 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
     allow(adapter).to receive(:doc_id).and_return('123456')
     allow(adapter).to receive(:voyager_holding?).and_return(true)
     allow(adapter).to receive(:doc_electronic_access).and_return('http://gateway.proquest.com/url': ['gateway.proquest.com'], 'http://arks.princeton.edu/ark:/88435/dsp0141687h654': ['DataSpace', 'Citation only'])
-    allow(adapter).to receive(:umlaut_accessible?).and_return(true)
   end
 
   describe '.electronic_access_link' do
@@ -100,10 +99,6 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
 
       before do
         allow(adapter).to receive(:doc_electronic_access).and_return(marcit_url => ['getit.princeton.edu', 'View Princeton online holdings'])
-      end
-
-      it 'is marked as full text record' do
-        expect(urlified_markup).to include 'data-umlaut-full-text="true"'
       end
 
       it 'has a marcit context object' do

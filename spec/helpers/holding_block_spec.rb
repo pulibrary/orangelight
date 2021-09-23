@@ -18,9 +18,6 @@ RSpec.describe ApplicationHelper do
     let(:show_result_thesis_no_request) { helper.holding_request_block(SolrDocument.new(document_thesis_no_request_access)) }
     let(:show_result_thesis_embargoed) { helper.holding_request_block(SolrDocument.new(document_thesis_embargoed)) }
 
-    let(:show_result_umlaut_w_full_text) { helper.umlaut_services }
-    let(:not_umlaut_full_text_eligible) { SolrDocument.new(document_no_umlaut) }
-    let(:umlaut_full_text_eligible) { SolrDocument.new(document) }
     let(:holding_block_json) do
       {
         holding_id => {
@@ -81,13 +78,6 @@ RSpec.describe ApplicationHelper do
       {
         id: '1',
         format: ['Book'],
-        holdings_1display: holding_block_json
-      }.with_indifferent_access
-    end
-    let(:document_no_umlaut) do
-      {
-        id: '5',
-        format: ['Video'],
         holdings_1display: holding_block_json
       }.with_indifferent_access
     end
@@ -240,6 +230,54 @@ RSpec.describe ApplicationHelper do
       end
     end
 
+    context '#holding_block_search and the find it pin icon' do
+      let(:document_with_find_it_link) do
+        {
+          id: '1',
+          format: ['Book'],
+          holdings_1display: {
+            "22123123123" => {
+              location_code: "firestone$stacks",
+              call_number: "FIRE-123",
+              call_number_browse: "FIRE-123",
+              location: "Stacks",
+              library: "Firestone"
+            }
+          }.to_json.to_s
+        }.with_indifferent_access
+      end
+
+      let(:document_without_find_it_link) do
+        {
+          id: '1',
+          format: ['Book'],
+          holdings_1display: {
+            "22789789789" => {
+              location_code: "plasma$stacks",
+              call_number: "PLASMA-123",
+              call_number_browse: "PLASMA-123",
+              location: "Stacks",
+              library: "Plasma"
+            }
+          }.to_json.to_s
+        }.with_indifferent_access
+      end
+
+      before { stub_holding_locations }
+
+      # For most locations a map icon is displayed to help patrons if they want to fetch the item.
+      it 'includes the find it icon' do
+        search_result = helper.holding_block_search(SolrDocument.new(document_with_find_it_link))
+        expect(search_result).to include "fa-map-marker"
+      end
+
+      # For certain locations a map icon is not displayed if the location is not accessible by patrons.
+      it 'does not include the find it icon' do
+        search_result = helper.holding_block_search(SolrDocument.new(document_without_find_it_link))
+        expect(search_result).not_to include "fa-map-marker"
+      end
+    end
+
     context '#holding_block_search with links only' do
       let(:document) do
         {
@@ -297,15 +335,6 @@ RSpec.describe ApplicationHelper do
       end
     end
 
-    context '#umlaut_format_eligible? formats' do
-      it 'is false when it is not umlaut format' do
-        expect(not_umlaut_full_text_eligible.umlaut_fulltext_eligible?).to be false
-      end
-      it 'is true when it is an umlaut format' do
-        expect(umlaut_full_text_eligible.umlaut_fulltext_eligible?).to be true
-      end
-    end
-
     context '#holding_block record show - physical holdings' do
       let(:search_result) { helper.holding_block_search(document) }
       let(:call_number) { 'CD- 2018-11-11' }
@@ -349,7 +378,7 @@ RSpec.describe ApplicationHelper do
         expect(show_result.last).to include call_number
         expect(show_result.last).to include library
         expect(show_result.last).to include 'Remote Storage (ReCAP)'
-        expect(show_result.last).to include 'Mendel Music Library: Reserve'
+        expect(show_result.last).to include 'Mendel Music Library - Reserve'
       end
 
       it 'link to call number browse' do

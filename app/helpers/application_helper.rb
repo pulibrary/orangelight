@@ -9,26 +9,6 @@ module ApplicationHelper
     Rails.env.production?
   end
 
-  # Generate the markup for the <div> containing a link to the umlaut service endpoint for a given record
-  # @param document [SolrDocument] the Solr Document for the record
-  # @return [String] the markup
-  def umlaut_services_fulltext(document)
-    services = ''
-    unless document.key? 'electronic_access_1display'
-      services << content_tag(:div, '', :id => 'full_text', :class => ['availability--online', 'availability_full-text', 'availability--panel_umlaut'], 'data-umlaut-full-text' => true)
-    end
-    services.html_safe
-  end
-
-  # Generate the markup for two <div> elements containing links to umlaut services
-  # @return [String] the markup
-  def umlaut_services
-    services = ''
-    services << content_tag(:div, '', :id => 'excerpts', :class => ['availability--excerpts', 'availability_excerpts', 'availability--panel_umlaut'], 'data-umlaut-services' => true)
-    services << content_tag(:div, '', :id => 'highlighted_link', :class => ['availability--highlighted', 'availability_highlighted-link', 'availability--panel_umlaut'], 'data-umlaut-services' => true)
-    services.html_safe
-  end
-
   # Generate an Array of <div> elements wrapping links to proxied service endpoints for access
   # Takes first 2 links for pairing with online holdings in search results
   # @param electronic_access [Hash] electronic resource information
@@ -79,7 +59,7 @@ module ApplicationHelper
     link = locate_url(location, document, call_number, library)
     stackmap_url = "/catalog/#{document['id']}/stackmap?loc=#{location}"
     stackmap_url << "&cn=#{call_number}" if call_number
-    if link.nil?
+    if link.nil? || (find_it_location?(location) == false)
       ''
     else
       ' ' + link_to('<span class="fa fa-map-marker" aria-hidden="true"></span>'.html_safe, stackmap_url, title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-blacklight-modal' => 'trigger', 'aria-label' => 'Where to find it')
@@ -454,5 +434,12 @@ module ApplicationHelper
   # @return [HoldingRequestsAdapter]
   def holding_requests_adapter
     HoldingRequestsAdapter.new(@document, Bibdata)
+  end
+
+  # Returns true for locations where the user can walk and fetch an item.
+  # Currently this logic is duplicated in Javascript code in availability.es6
+  def find_it_location?(location_code)
+    return false if (location_code || "").start_with?("plasma$", "marquand$")
+    true
   end
 end

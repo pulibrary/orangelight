@@ -72,10 +72,15 @@ module Orangelight
           end
         end
 
-        def raise_error?(message)
-          valid_message_patterns.each do |pattern|
-            return false if message.match?(pattern)
-          end
+        ##
+        # Previously, we were rescuing only from exceptions we recognized.
+        # The problem with that is that there will be exceptions we don't recognize and
+        # haven't been able to diagnose (see, e.g., https://github.com/pulibrary/orangelight/issues/1455)
+        # and when those happen we want to provide the user with a graceful way forward,
+        # not just an error screen. Therefore, we should rescue all errors, log the problem,
+        # and redirect the user somewhere helpful.
+        def raise_error?(_message)
+          false
         end
 
         def request_content_type(env)
