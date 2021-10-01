@@ -176,10 +176,7 @@ RSpec.describe ApplicationHelper do
       before { stub_holding_locations }
 
       it 'displays View Record for Availability' do
-        expect(search_result).to include 'View Record for Full Availability'
-      end
-      it 'has an availability icon' do
-        expect(search_result).to have_selector ".availability-icon[title='Click on the record for full availability info']"
+        expect(search_result).to include 'View record for information on additional holdings'
       end
     end
     context '#holding_block_search' do

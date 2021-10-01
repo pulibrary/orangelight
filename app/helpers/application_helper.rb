@@ -236,10 +236,7 @@ module ApplicationHelper
     if scsb_multiple == true
       block << content_tag(:li, link_to('View Record for Full Availability', solr_document_path(document['id']), class: 'availability-icon badge badge-secondary more-info', title: 'Click on the record for full availability info', 'data-toggle' => 'tooltip').html_safe)
     elsif holdings_hash.length > 2
-      block << content_tag(:li, link_to('View Record for Full Availability', solr_document_path(document['id']),
-                                        class: 'availability-icon badge badge-secondary more-info', title: 'Click on the record for full availability info',
-                                        'data-toggle' => 'tooltip').html_safe)
-
+      block << content_tag(:span, "View record for information on additional holdings", "style" => "font-size: small; font-style: italic;")
     elsif !holdings_hash.empty?
       block << content_tag(:li, link_to('', solr_document_path(document['id']),
                                         class: 'availability-icon more-info', title: 'Click on the record for full availability info',
