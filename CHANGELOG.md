@@ -56,6 +56,35 @@
 
 ---
 
+# v1.3.0 (Mon Oct 04 2021)
+
+#### 🚀 Enhancement
+
+- Availability label in Search Results [#2758](https://github.com/pulibrary/orangelight/pull/2758) ([@hectorcorrea](https://github.com/hectorcorrea))
+- Removed umlaut [#2677](https://github.com/pulibrary/orangelight/pull/2677) ([@XanderGardner](https://github.com/XanderGardner))
+
+#### 🐛 Bug Fix
+
+- Updating requests to get the enumeration for books in the pickup email [#2763](https://github.com/pulibrary/orangelight/pull/2763) ([@carolyncole](https://github.com/carolyncole))
+- Change request initializer to match Gem template [#2739](https://github.com/pulibrary/orangelight/pull/2739) ([@bess](https://github.com/bess))
+- Updating requests to get on order recap items to display correctly [#2749](https://github.com/pulibrary/orangelight/pull/2749) ([@carolyncole](https://github.com/carolyncole))
+- Adjusted values to new values now that we have migrated to Alma [#2740](https://github.com/pulibrary/orangelight/pull/2740) ([@hectorcorrea](https://github.com/hectorcorrea))
+- Rescue and redirect from all BadRequest errors [#2742](https://github.com/pulibrary/orangelight/pull/2742) ([@bess](https://github.com/bess))
+
+#### 🔩 Dependency Updates
+
+- Bump nokogiri from 1.12.4 to 1.12.5 [#2754](https://github.com/pulibrary/orangelight/pull/2754) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 5
+
+- [@carolyncole](https://github.com/carolyncole)
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Bess Sadler ([@bess](https://github.com/bess))
+- Hector Correa ([@hectorcorrea](https://github.com/hectorcorrea))
+- Xander Gardner ([@XanderGardner](https://github.com/XanderGardner))
+
+---
+
 # v1.1.0 (Fri Sep 17 2021)
 
 #### 🚀 Enhancement
