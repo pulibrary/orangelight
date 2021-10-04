@@ -132,7 +132,7 @@ describe('AvailabilityUpdater', function() {
     u.process_result(bibId, holdingData)
 
     const badgesAfter = document.getElementsByClassName('availability-icon')
-    expect(badgesAfter[0].textContent).toEqual('View record for availability')
+    expect(badgesAfter[0].textContent).toEqual('View record for Full Availability')
   })
 
   test('record show page with an available holding displays the status label in green', () => {
@@ -340,7 +340,7 @@ describe('AvailabilityUpdater', function() {
     let u = new updater
     u.process_result("9929455793506421", holding_records)
 
-    expect(holding_badge.textContent).toContain('View record for availability');
+    expect(holding_badge.textContent).toContain('View record for Full Availability');
   })
 
   test('extra Online availability added for CDL records that are reported as unavailable', () => {
