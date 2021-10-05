@@ -124,7 +124,7 @@ RSpec.describe Blacklight::Document::Ris do
       end
 
       it 'Contains an ARK' do
-        expect(document).to include 'UR - {"http://arks.princeton.edu/ark:/88435/dsp01bn999692c":["DataSpace","Full text"]}'
+        expect(document).to include 'UR - http://arks.princeton.edu/ark:/88435/dsp01bn999692c'
       end
 
       it 'Has a first Author' do
@@ -138,6 +138,31 @@ RSpec.describe Blacklight::Document::Ris do
       it 'lists the advisor as a second author' do
         expect(document).to match(/A2 - Smith, Joe/)
       end
+    end
+  end
+
+  context 'For a work with a URL' do
+    let(:properties) do
+      {
+        "id": "9945502073506421",
+        "author_roles_1display":
+          "{\"secondary_authors\":[\"Stets, Jan E.\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Turner, Jonathan H.\"}",
+        "format": [
+          "Book"
+        ],
+        "title_citation_display": [
+          "The sociology of emotions"
+        ],
+        "electronic_access_1display":
+        "{\"http://www.loc.gov/catdir/description/cam051/2004018645.html\":[\"Publisher description\"],\"http://www.loc.gov/catdir/toc/ecip0421/2004018645.html\":[\"Table of contents\"]}"
+      }
+    end
+    it "handles authors in the author_roles_1display field" do
+      expect(document).to match(/AU - Turner, Jonathan H./)
+      expect(document).to match(/A2 - Stets, Jan E./)
+    end
+    it "has a proper url in the UR field" do
+      expect(document).to match(/UR - http/)
     end
   end
 end
