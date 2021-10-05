@@ -6,7 +6,7 @@ describe 'Account login' do
   let(:alma_account_url) { "https://princeton.alma.exlibrisgroup.com/discovery/account?vid=01PRI_INST:Services&lang=EN&section=overview" }
 
   describe 'Your Account menu', js: true do
-    it "lists correct options when not logged in" do
+    xit "lists correct options when not logged in" do
       visit "/"
       click_button("Your Account")
       within('li.show') do
@@ -21,7 +21,7 @@ describe 'Account login' do
       end
     end
 
-    it "lists correct options when logged in" do
+    xit "lists correct options when logged in" do
       login_as user
       visit "/"
       click_button(user.username)
