@@ -7,7 +7,7 @@ class AccountController < ApplicationController
 
   before_action :read_only_redirect, except: [:redirect_to_alma]
   before_action :require_user_authentication_provider, except: [:redirect_to_alma]
-  before_action :verify_user, except: [:borrow_direct_redirect, redirect_to_alma]
+  before_action :verify_user, except: [:borrow_direct_redirect, :redirect_to_alma]
 
   def index
     redirect_to digitization_requests_path
