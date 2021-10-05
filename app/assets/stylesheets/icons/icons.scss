@@ -226,6 +226,20 @@
     }
 }
 
+.icon-language-statement,
+.blacklight-language-statement .document-thumbnail .default {
+    &:before {
+        content: $icon-language-statement;
+    }
+}
+
+.icon-open-dataset,
+.blacklight-open-dataset .document-thumbnail .default {
+    &:before {
+        content: $icon-open-dataset;
+    }
+}
+
 .icon-external {
     &:before {
         content: $icon-newtab;
