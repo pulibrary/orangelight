@@ -679,6 +679,10 @@ class CatalogController < ApplicationController
     render file: Rails.public_path.join('x400.html'), layout: true, status: :bad_request
   end
 
+  def redirect_to_alma
+    render "redirect_to_alma"
+  end
+
   private
 
     def render_empty_search
