@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
       request.flash.keep('notice')
       params[:origin].chomp('/email')
     elsif !request.env['omniauth.origin'].nil? &&
-          /request|borrow-direct|email|bookmarks|search_history/.match(request.env['omniauth.origin'])
+          /request|borrow-direct|email|bookmarks|search_history|redirect-to-alma/.match(request.env['omniauth.origin'])
       request.env['omniauth.origin']
     else
       account_path
