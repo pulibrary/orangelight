@@ -138,7 +138,7 @@ export default class AvailabilityUpdater {
         // In this case we set all of them to "Check record" because we can get this
         // information in the Show page.
         const badges = $(`*[data-availability-record='true'][data-record-id='${record_id}'] span.availability-icon`);
-        badges.text("View record for availability")
+        badges.text("View record for Full Availability")
         return true;
       }
 
@@ -163,7 +163,7 @@ export default class AvailabilityUpdater {
     // information for holdings coming from the host record. For those holdings we ask the user
     // to check the record since in `process_single()` we do the extra work to get that information.
     const boundWithBadges = $(`*[data-availability-record='true'][data-record-id='${record_id}'][data-bound-with='true'] span.availability-icon`);
-    boundWithBadges.text("View record for availability")
+    boundWithBadges.text("View record for Full Availability")
 
     return true;
   }
