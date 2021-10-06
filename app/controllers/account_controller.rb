@@ -41,7 +41,7 @@ class AccountController < ApplicationController
   end
 
   def user_id
-    render json: {user_id: current_user&.uid}
+    render json: { user_id: current_user&.uid }
   end
 
   protected
