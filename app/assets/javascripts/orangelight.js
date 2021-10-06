@@ -124,4 +124,20 @@ $(document).ready(function() {
     $('.clickable-row').on("click",function(){
       window.location = $(this).data('href');
     });
+
+    $('#unauthenticated-library-account-link').on("click",function(){
+        // Update the page with the id of the user once they have authenticated.
+        // Since we don't know how long it will take the user to authenticate via CAS
+        // we set up a timer to check every couple of seconds.
+        var getUserIdTimer = setInterval(function(){
+            $.getJSON("/account/user-id", function(data) {
+                if (data.user_id !== null) {
+                    clearInterval(getUserIdTimer);
+                    $("button.dropdown-toggle.btn-account").text(data.user_id);
+                }
+            });
+        }, 2000);
+        return true;
+      });
+
 });

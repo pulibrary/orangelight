@@ -5,9 +5,9 @@ require './lib/orangelight/illiad_account.rb'
 class AccountController < ApplicationController
   include ApplicationHelper
 
-  before_action :read_only_redirect, except: [:redirect_to_alma]
-  before_action :require_user_authentication_provider, except: [:redirect_to_alma]
-  before_action :verify_user, except: [:borrow_direct_redirect, :redirect_to_alma]
+  before_action :read_only_redirect, except: [:redirect_to_alma, :user_id]
+  before_action :require_user_authentication_provider, except: [:redirect_to_alma, :user_id]
+  before_action :verify_user, except: [:borrow_direct_redirect, :redirect_to_alma, :user_id]
 
   def index
     redirect_to digitization_requests_path
@@ -38,6 +38,11 @@ class AccountController < ApplicationController
 
   def redirect_to_alma
     render "redirect_to_alma"
+  end
+
+  def user_id
+    Rails.logger.info "user id requested: #{current_user&.uid}"
+    render json: {user_id: current_user&.uid}
   end
 
   protected
