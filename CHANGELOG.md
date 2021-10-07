@@ -1,3 +1,24 @@
+# v1.4.0 (Thu Oct 07 2021)
+
+#### 🚀 Enhancement
+
+- Add reference to Statement on Language in Description and to PUL Open Dataset [#2767](https://github.com/pulibrary/orangelight/pull/2767) ([@kelynch](https://github.com/kelynch))
+- Proxy Library Account through CAS [#2766](https://github.com/pulibrary/orangelight/pull/2766) ([@hectorcorrea](https://github.com/hectorcorrea))
+
+#### 🐛 Bug Fix
+
+- Update subject browselists for dev [#2756](https://github.com/pulibrary/orangelight/pull/2756) ([@christinach](https://github.com/christinach))
+- RIS / Zotero exports need a URL in the UR field [#2768](https://github.com/pulibrary/orangelight/pull/2768) ([@bess](https://github.com/bess))
+
+#### Authors: 4
+
+- Bess Sadler ([@bess](https://github.com/bess))
+- Christina Chortaria ([@christinach](https://github.com/christinach))
+- Hector Correa ([@hectorcorrea](https://github.com/hectorcorrea))
+- Kate Lynch ([@kelynch](https://github.com/kelynch))
+
+---
+
 # v1.3.0 (Mon Oct 04 2021)
 
 #### 🚀 Enhancement
