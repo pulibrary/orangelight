@@ -28187,68 +28187,271 @@
 
   ]
 },
-  {
-    "id":["9945502073506421"],
-    "numeric_id_b":[true],
-    "cjk_all":[""],
-    "cjk_notes":[""],
-    "author_display":["Turner, Jonathan H."],
-    "author_sort":["Turner, Jonathan H."],
-    "author_citation_display":["Turner, Jonathan H.","Stets, Jan E."],
-    "author_roles_1display":["{\"secondary_authors\":[\"Stets, Jan E.\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Turner, Jonathan H.\"}"],
-    "author_s":["Turner, Jonathan H.","Stets, Jan E."],
-    "marc_relator_display":["Author"],
-    "title_display":["The sociology of emotions / Jonathan H. Turner, Jan E. Stets."],
-    "title_a_index":["The sociology of emotions"],
-    "title_sort":["sociology of emotions / Jonathan H. Turner, Jan E. Stets."],
-    "title_no_h_index":["The sociology of emotions / Jonathan H. Turner, Jan E. Stets.","sociology of emotions / Jonathan H. Turner, Jan E. Stets."],
-    "title_t":["The sociology of emotions / Jonathan H. Turner, Jan E. Stets."],
-    "title_citation_display":["The sociology of emotions"],
-    "compiled_created_t":["The sociology of emotions / Jonathan H. Turner, Jan E. Stets."],
-    "pub_created_display":["Cambridge, UK ; New York : Cambridge University Press, 2005."],
-    "pub_created_s":["Cambridge, UK ; New York : Cambridge University Press, 2005."],
-    "pub_citation_display":["New York: Cambridge University Press"],
-    "pub_date_display":["2005"],
-    "pub_date_start_sort":["2005"],
-    "cataloged_tdt":["2021-07-13T16:54:21Z"],
-    "format":["Book"],
-    "electronic_access_1display":["{\"http://www.loc.gov/catdir/description/cam051/2004018645.html\":[\"Publisher description\"],\"http://www.loc.gov/catdir/toc/ecip0421/2004018645.html\":[\"Table of contents\"]}"],"electronic_access_index":["Publisher description http://www.loc.gov/catdir/description/cam051/2004018645.html","Table of contents http://www.loc.gov/catdir/toc/ecip0421/2004018645.html"],"description_display":["xvii, 349 p. : ill. ; 24 cm."],
-    "description_t":["xvii, 349 p. : ill. ; 24 cm."],
-    "number_of_pages_citation_display":["xvii, 349 p."],
-    "notes_index":["Includes bibliographical references (p. 319-337) and index."],
-    "bib_ref_notes_display":["Includes bibliographical references (p. 319-337) and index."],
-    "language_facet":["English"],
-    "publication_place_facet":["England"],
-    "language_code_s":["eng"],
-    "language_iana_s":["en"],
-    "lc_subject_display":["Emotions—Social aspects","Social interaction","Interpersonal relations","Social psychology"],
-    "subject_unstem_search":["Emotions—Social aspects","Social interaction","Interpersonal relations","Social psychology"],
-    "siku_subject_unstem_search":null,
-    "subject_facet":["Emotions—Social aspects","Social interaction","Interpersonal relations","Social psychology"],
-    "subject_topic_facet":["Emotions","Social aspects","Social interaction","Interpersonal relations","Social psychology"],
-    "lc_1letter_facet":["H - Social Sciences"],
-    "lc_rest_facet":["HM - Sociology"],
-    "call_number_scheme_facet":["Library of Congress"],
-    "call_number_group_facet":["H - Social Sciences"],
-    "call_number_full_facet":["HM - Sociology"],
-    "related_name_json_1display":["{\"Related name\":[\"Stets, Jan E.\"]}"],
-    "isbn_display":["0521847451 (hardback)","0521612225 (pbk.)"],
-    "lccn_display":["  2004018645"],
-    "lccn_s":["2004018645"],
-    "isbn_s":["9780521847452","9780521612227"],
-    "oclc_s":["56195004"],
-    "standard_no_index":["OCM56195004","4550207","4550207-princetondb"],
-    "other_version_s":["ocm56195004","9780521847452","9780521612227"],
-    "holdings_1display":["{\"22745685020006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"HM1033 .T87 2005\",\"call_number_browse\":\"HM1033 .T87 2005\",\"items\":[{\"holding_id\":\"22745685020006421\",\"id\":\"23745685010006421\",\"status_at_load\":\"1\",\"barcode\":\"32101057814111\",\"copy_number\":\"1\"}]}}"],
-    "location_code_s":["firestone$stacks"],
-    "location":["Firestone Library"],
-    "location_display":["Stacks"],
-    "advanced_location_s":["firestone$stacks","Firestone Library"],
-    "name_title_browse_s":["Turner, Jonathan H.. The sociology of emotions"],
-    "call_number_display":["HM1033 .T87 2005"],
-    "call_number_browse_s":["HM1033 .T87 2005"],
-    "call_number_locator_display":["HM1033 .T87 2005"],
-    "electronic_portfolio_s":["{\"desc\":null,\"title\":\"Full Text\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53827030770006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}"],
-    "access_facet":["Online","In the Library"]
-  }
+{
+  "id":["9945502073506421"],
+  "numeric_id_b":[true],
+  "cjk_all":[""],
+  "cjk_notes":[""],
+  "author_display":["Turner, Jonathan H."],
+  "author_sort":["Turner, Jonathan H."],
+  "author_citation_display":["Turner, Jonathan H.","Stets, Jan E."],
+  "author_roles_1display":["{\"secondary_authors\":[\"Stets, Jan E.\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Turner, Jonathan H.\"}"],
+  "author_s":["Turner, Jonathan H.","Stets, Jan E."],
+  "marc_relator_display":["Author"],
+  "title_display":["The sociology of emotions / Jonathan H. Turner, Jan E. Stets."],
+  "title_a_index":["The sociology of emotions"],
+  "title_sort":["sociology of emotions / Jonathan H. Turner, Jan E. Stets."],
+  "title_no_h_index":["The sociology of emotions / Jonathan H. Turner, Jan E. Stets.","sociology of emotions / Jonathan H. Turner, Jan E. Stets."],
+  "title_t":["The sociology of emotions / Jonathan H. Turner, Jan E. Stets."],
+  "title_citation_display":["The sociology of emotions"],
+  "compiled_created_t":["The sociology of emotions / Jonathan H. Turner, Jan E. Stets."],
+  "pub_created_display":["Cambridge, UK ; New York : Cambridge University Press, 2005."],
+  "pub_created_s":["Cambridge, UK ; New York : Cambridge University Press, 2005."],
+  "pub_citation_display":["New York: Cambridge University Press"],
+  "pub_date_display":["2005"],
+  "pub_date_start_sort":["2005"],
+  "cataloged_tdt":["2021-07-13T16:54:21Z"],
+  "format":["Book"],
+  "electronic_access_1display":["{\"http://www.loc.gov/catdir/description/cam051/2004018645.html\":[\"Publisher description\"],\"http://www.loc.gov/catdir/toc/ecip0421/2004018645.html\":[\"Table of contents\"]}"],"electronic_access_index":["Publisher description http://www.loc.gov/catdir/description/cam051/2004018645.html","Table of contents http://www.loc.gov/catdir/toc/ecip0421/2004018645.html"],"description_display":["xvii, 349 p. : ill. ; 24 cm."],
+  "description_t":["xvii, 349 p. : ill. ; 24 cm."],
+  "number_of_pages_citation_display":["xvii, 349 p."],
+  "notes_index":["Includes bibliographical references (p. 319-337) and index."],
+  "bib_ref_notes_display":["Includes bibliographical references (p. 319-337) and index."],
+  "language_facet":["English"],
+  "publication_place_facet":["England"],
+  "language_code_s":["eng"],
+  "language_iana_s":["en"],
+  "lc_subject_display":["Emotions—Social aspects","Social interaction","Interpersonal relations","Social psychology"],
+  "subject_unstem_search":["Emotions—Social aspects","Social interaction","Interpersonal relations","Social psychology"],
+  "siku_subject_unstem_search":null,
+  "subject_facet":["Emotions—Social aspects","Social interaction","Interpersonal relations","Social psychology"],
+  "subject_topic_facet":["Emotions","Social aspects","Social interaction","Interpersonal relations","Social psychology"],
+  "lc_1letter_facet":["H - Social Sciences"],
+  "lc_rest_facet":["HM - Sociology"],
+  "call_number_scheme_facet":["Library of Congress"],
+  "call_number_group_facet":["H - Social Sciences"],
+  "call_number_full_facet":["HM - Sociology"],
+  "related_name_json_1display":["{\"Related name\":[\"Stets, Jan E.\"]}"],
+  "isbn_display":["0521847451 (hardback)","0521612225 (pbk.)"],
+  "lccn_display":["  2004018645"],
+  "lccn_s":["2004018645"],
+  "isbn_s":["9780521847452","9780521612227"],
+  "oclc_s":["56195004"],
+  "standard_no_index":["OCM56195004","4550207","4550207-princetondb"],
+  "other_version_s":["ocm56195004","9780521847452","9780521612227"],
+  "holdings_1display":["{\"22745685020006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"HM1033 .T87 2005\",\"call_number_browse\":\"HM1033 .T87 2005\",\"items\":[{\"holding_id\":\"22745685020006421\",\"id\":\"23745685010006421\",\"status_at_load\":\"1\",\"barcode\":\"32101057814111\",\"copy_number\":\"1\"}]}}"],
+  "location_code_s":["firestone$stacks"],
+  "location":["Firestone Library"],
+  "location_display":["Stacks"],
+  "advanced_location_s":["firestone$stacks","Firestone Library"],
+  "name_title_browse_s":["Turner, Jonathan H.. The sociology of emotions"],
+  "call_number_display":["HM1033 .T87 2005"],
+  "call_number_browse_s":["HM1033 .T87 2005"],
+  "call_number_locator_display":["HM1033 .T87 2005"],
+  "electronic_portfolio_s":["{\"desc\":null,\"title\":\"Full Text\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53827030770006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}"],
+  "access_facet":["Online","In the Library"]
+},
+{
+  "id": [
+    "9922655623506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_display": [
+    "Driver, Harold E. (Harold Edson), 1907-1992"
+  ],
+  "author_sort": [
+    "Driver, Harold E. (Harold Edson), 1907-1992"
+  ],
+  "author_citation_display": [
+    "Driver, Harold E."
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Driver, Harold E.\"}"
+  ],
+  "author_s": [
+    "Driver, Harold E. (Harold Edson), 1907-1992"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": [
+    "Indians of North America [by] Harold E. Driver."
+  ],
+  "title_a_index": [
+    "Indians of North America"
+  ],
+  "title_sort": [
+    "Indians of North America [by] Harold E. Driver."
+  ],
+  "title_no_h_index": [
+    "Indians of North America [by] Harold E. Driver."
+  ],
+  "title_t": [
+    "Indians of North America [by] Harold E. Driver."
+  ],
+  "title_citation_display": [
+    "Indians of North America"
+  ],
+  "compiled_created_t": [
+    "Indians of North America [by] Harold E. Driver."
+  ],
+  "edition_display": [
+    "2d ed., rev."
+  ],
+  "pub_created_display": [
+    "Chicago, University of Chicago Press [1969]"
+  ],
+  "pub_created_s": [
+    "Chicago, University of Chicago Press [1969]"
+  ],
+  "pub_citation_display": [
+    "Chicago: University of Chicago Press"
+  ],
+  "pub_date_display": [
+    "1969"
+  ],
+  "pub_date_start_sort": [
+    "1969"
+  ],
+  "cataloged_tdt": [
+    "2021-07-12T18:06:35Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "xvii, 632 p. illus., maps (1 fold. in pocket) 24 cm."
+  ],
+  "description_t": [
+    "xvii, 632 p. illus., maps (1 fold. in pocket) 24 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "xvii, 632 p."
+  ],
+  "notes_index": [
+    "Bibliography: p. 567-593."
+  ],
+  "bib_ref_notes_display": [
+    "Bibliography: p. 567-593."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "publication_place_facet": [
+    "Illinois"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Indians of North America",
+    "Indians of Mexico",
+    "Indians of Central America",
+    "Indians of the West Indies",
+    "Indigenous Studies"
+  ],
+  "subject_unstem_search": [
+    "Indians of North America",
+    "Indians of Mexico",
+    "Indians of Central America",
+    "Indians of the West Indies",
+    "Indigenous Studies"
+  ],
+  "siku_subject_unstem_search": null,
+  "subject_facet": [
+    "Indians of North America",
+    "Indians of Mexico",
+    "Indians of Central America",
+    "Indians of the West Indies",
+    "Indigenous Studies"
+  ],
+  "subject_topic_facet": [
+    "Indians of North America",
+    "Indians of Mexico",
+    "Indians of Central America",
+    "Indians of the West Indies",
+    "Indigenous Studies"
+  ],
+  "lc_1letter_facet": [
+    "E - History of the Americas (General)"
+  ],
+  "lc_rest_facet": [
+    "E - History of the Americas (General)"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "E - History of the Americas (General)"
+  ],
+  "call_number_full_facet": [
+    "E - History of the Americas (General)"
+  ],
+  "isbn_display": [
+    "0226164667"
+  ],
+  "lccn_display": [
+    "   79076207  "
+  ],
+  "lccn_s": [
+    "79076207"
+  ],
+  "isbn_s": [
+    "9780226164663"
+  ],
+  "oclc_s": [
+    "84249"
+  ],
+  "standard_no_index": [
+    "ocm00084249",
+    "2265562",
+    "2265562-princetondb"
+  ],
+  "other_version_s": [
+    "9780226164663",
+    "ocm00084249"
+  ],
+  "holdings_1display": [
+    "{\"22499209380006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"1070.3093.2.1969\",\"call_number_browse\":\"1070.3093.2.1969\",\"items\":[{\"holding_id\":\"22499209380006421\",\"id\":\"23499209370006421\",\"status_at_load\":\"0\",\"copy_number\":\"1\"}]}}"
+  ],
+  "location_code_s": [
+    "firestone$stacks"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "firestone$stacks",
+    "Firestone Library"
+  ],
+  "name_title_browse_s": [
+    "Driver, Harold E. (Harold Edson), 1907-1992. Indians of North America"
+  ],
+  "call_number_display": [
+    "1070.3093.2.1969"
+  ],
+  "call_number_browse_s": [
+    "1070.3093.2.1969"
+  ],
+  "call_number_locator_display": [
+    "1070.3093.2.1969"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
+}
 ]
