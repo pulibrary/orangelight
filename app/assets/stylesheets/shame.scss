@@ -107,3 +107,57 @@
     margin-top: 0;
   }
 }
+
+.language-statement {
+  clear: both;
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+  padding: 1rem;
+  border: solid 2px $gray;
+  .icon-language-statement::before {
+      font-size: 2.5rem;
+      padding: 1.75rem;
+      color: white;
+      background-color: #e87511;
+      display: inline-block;
+  }
+  .language-statement-text {
+    padding-left: 1rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+}
+
+.open-dataset {
+  clear: both;
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+  padding: 1rem;
+  border: solid 2px $gray;
+  .icon-open-dataset::before {
+      font-size: 2.5rem;
+      padding: 1.75rem;
+      color: white;
+      background-color: #edd553;
+      display: inline-block;
+  }
+  .open-dataset-text {
+    padding-left: 1rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+}

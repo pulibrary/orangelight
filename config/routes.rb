@@ -66,6 +66,7 @@ Rails.application.routes.draw do
 
   get '/notes' => 'high_voltage/pages#show', id: 'notes'
   get '/help' => 'high_voltage/pages#show', id: 'help'
+  get '/dataset' => 'high_voltage/pages#show', id: 'dataset'
 
   get '/account', to: 'account#index'
   get '/account/digitization_requests', to: 'account#digitization_requests', as: "digitization_requests"
