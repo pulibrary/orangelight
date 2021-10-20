@@ -106,6 +106,19 @@ class SolrDocument
     iiif_manifest_uris.first
   end
 
+  # Returns the MMS_IDs found in the electronic_access_1display display for URLs that follow the
+  # pattern https://catalog.princeton.edu/catalog\{mms_id}#view except the one for the current ID.
+  # These URLs are found when the Figgy manifest is registered for another (related) MMS_ID rather
+  # than for the current one.
+  def related_bibs_iiif_manifest
+    @related_bibs_iiif_manifest ||= begin
+      string_values = first('electronic_access_1display') || '{}'
+      values = JSON.parse(string_values)
+      mms_ids = values.keys.map { |key| key[/https\:\/\/catalog.princeton.edu\/catalog\/(\d*)#view/, 1] }.compact
+      mms_ids.select { |mms_id| mms_id != id }
+    end
+  end
+
   # Retrieve the set of documents linked to this Object using a Solr Field
   # @param field [String] the field for this Object which contains the foreign document keys
   # @param query_field [String] the field in the linked documents to use as a key
