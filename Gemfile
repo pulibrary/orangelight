@@ -100,6 +100,7 @@ group :development do
 end
 
 group :test do
+  gem "axe-core-rspec"
   gem 'factory_bot_rails', require: false
   gem 'launchy'
   gem 'rails-controller-testing'
