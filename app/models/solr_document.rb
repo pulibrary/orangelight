@@ -114,9 +114,12 @@ class SolrDocument
     @related_bibs_iiif_manifest ||= begin
       string_values = first('electronic_access_1display') || '{}'
       values = JSON.parse(string_values)
-      mms_ids = values.keys.map { |key| key[/https\:\/\/catalog.princeton.edu\/catalog\/(\d*)#view/, 1] }.compact
+      mms_ids = values.keys.map { |key| key[/https\:\/\/catalog.princeton.edu\/catalog\/(\d*)#view/, 1] }.compact.uniq
       mms_ids.select { |mms_id| mms_id != id }
     end
+  rescue => ex
+    Rails.logger.error "Error calculating related_bibs_iiif_manifest for #{id}: #{ex.message}"
+    []
   end
 
   # Retrieve the set of documents linked to this Object using a Solr Field
