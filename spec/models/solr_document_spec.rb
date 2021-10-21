@@ -402,6 +402,74 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe '#related_bibs_iiif_manifest' do
+    context "without related mms_id" do
+      let(:properties) do
+        {
+          'id' => '9956597633506421'
+        }
+      end
+      it 'returns an empty list' do
+        expect(solr_document.related_bibs_iiif_manifest).to eq []
+      end
+    end
+    context 'with one related mms_id' do
+      let(:properties) do
+        {
+          'id' => '9956597633506421',
+          'electronic_access_1display' => "{\"https://catalog.princeton.edu/catalog/9956630863506421#view\":[\"Index\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/zk51vm39g\":\"https://figgy.princeton.edu/concern/scanned_resources/10a91d1b-bba8-418a-9590-0718149fa0cd/manifest\"}}"
+        }
+      end
+      it 'finds the related mms_id' do
+        expect(solr_document.related_bibs_iiif_manifest).to eq ["9956630863506421"]
+      end
+    end
+    context 'with one related Voyager mms_id' do
+      let(:properties) do
+        {
+          'id' => '9956597633506421',
+          'electronic_access_1display' => "{\"https://catalog.princeton.edu/catalog/5663086#view\":[\"Index\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/zk51vm39g\":\"https://figgy.princeton.edu/concern/scanned_resources/10a91d1b-bba8-418a-9590-0718149fa0cd/manifest\"}}"
+        }
+      end
+      it 'finds the related Alma mms_id' do
+        expect(solr_document.related_bibs_iiif_manifest).to eq ["9956630863506421"]
+      end
+    end
+    context 'with a duplicated related mms_id' do
+      let(:properties) do
+        {
+          'id' => '9970802153506421',
+          'electronic_access_1display' => "{\"https://catalog.princeton.edu/catalog/7078205#view\":[\"Table of contents\"],\"https://catalog.princeton.edu/catalog/7078205#view_1\":[\"Page images\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/8623j234x\":\"https://figgy.princeton.edu/concern/scanned_resources/0f282e1e-58ce-47f0-b647-edca822ac532/manifest\",\"http://arks.princeton.edu/ark:/88435/np193b460\":\"https://figgy.princeton.edu/concern/scanned_resources/1a768d6d-4b82-45fb-85cd-50cba358b4d9/manifest\"}}"
+        }
+      end
+      it 'finds the related mms_id' do
+        expect(solr_document.related_bibs_iiif_manifest).to eq ["9970782053506421"]
+      end
+    end
+    context 'with one related mms_id that points to the same bib' do
+      let(:properties) do
+        {
+          'id' => '9956597633506421',
+          'electronic_access_1display' => "{\"https://catalog.princeton.edu/catalog/9956597633506421#view\":[\"Index\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/zk51vm39g\":\"https://figgy.princeton.edu/concern/scanned_resources/10a91d1b-bba8-418a-9590-0718149fa0cd/manifest\"}}"
+        }
+      end
+      it 'returns an empty list' do
+        expect(solr_document.related_bibs_iiif_manifest).to eq []
+      end
+    end
+    context 'with a link that does not point to catalog.princeton.edu' do
+      let(:properties) do
+        {
+          'id' => '9956597633506421',
+          'electronic_access_1display' => "{\"https://blahblah.princeton.edu/catalog/9956597633506421#view\":[\"Index\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/zk51vm39g\":\"https://figgy.princeton.edu/concern/scanned_resources/10a91d1b-bba8-418a-9590-0718149fa0cd/manifest\"}}"
+        }
+      end
+      it 'returns an empty list' do
+        expect(solr_document.related_bibs_iiif_manifest).to eq []
+      end
+    end
+  end
+
   describe '#holdings_all_display' do
     let(:host_doc_holdings) do
       '{"22747139640006421":{"location_code":"rare$gax","location":"Graphic Arts Collection","library":"Special Collections","call_number":"2006-1398N","call_number_browse":"2006-1398N","items":[{"holding_id":"22747139640006421","id":"23747139620006421","status_at_load":"1","barcode":"32101054083488","copy_number":"1"}]}}'

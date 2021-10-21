@@ -1,1 +1,7 @@
+<!-- Viewer for the current MMS_ID -->
 <div id="view" class="document-viewers" data-bib-id="<%= @document.id %>"></div>
+
+<!-- Viewer for related MMS_IDs -->
+<% @document.related_bibs_iiif_manifest.each_with_index do |related_bib, ix| %>
+  <div id="view_<%= ix+1 %>" class="document-viewers" data-bib-id="<%= related_bib %>"></div>
+<% end %>
