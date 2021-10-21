@@ -417,11 +417,22 @@ RSpec.describe SolrDocument do
       let(:properties) do
         {
           'id' => '9956597633506421',
-          'electronic_access_1display' => "{\"https://catalog.princeton.edu/catalog/5663086#view\":[\"Index\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/zk51vm39g\":\"https://figgy.princeton.edu/concern/scanned_resources/10a91d1b-bba8-418a-9590-0718149fa0cd/manifest\"}}"
+          'electronic_access_1display' => "{\"https://catalog.princeton.edu/catalog/9956630863506421#view\":[\"Index\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/zk51vm39g\":\"https://figgy.princeton.edu/concern/scanned_resources/10a91d1b-bba8-418a-9590-0718149fa0cd/manifest\"}}"
         }
       end
       it 'finds the related mms_id' do
-        expect(solr_document.related_bibs_iiif_manifest).to eq ["5663086"]
+        expect(solr_document.related_bibs_iiif_manifest).to eq ["9956630863506421"]
+      end
+    end
+    context 'with one related Voyager mms_id' do
+      let(:properties) do
+        {
+          'id' => '9956597633506421',
+          'electronic_access_1display' => "{\"https://catalog.princeton.edu/catalog/5663086#view\":[\"Index\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/zk51vm39g\":\"https://figgy.princeton.edu/concern/scanned_resources/10a91d1b-bba8-418a-9590-0718149fa0cd/manifest\"}}"
+        }
+      end
+      it 'finds the related Alma mms_id' do
+        expect(solr_document.related_bibs_iiif_manifest).to eq ["9956630863506421"]
       end
     end
     context 'with a duplicated related mms_id' do
@@ -432,7 +443,7 @@ RSpec.describe SolrDocument do
         }
       end
       it 'finds the related mms_id' do
-        expect(solr_document.related_bibs_iiif_manifest).to eq ["7078205"]
+        expect(solr_document.related_bibs_iiif_manifest).to eq ["9970782053506421"]
       end
     end
     context 'with one related mms_id that points to the same bib' do
