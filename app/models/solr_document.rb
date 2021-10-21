@@ -115,7 +115,7 @@ class SolrDocument
       string_values = first('electronic_access_1display') || '{}'
       values = JSON.parse(string_values)
       mms_ids = values.keys.map { |key| key[/https\:\/\/catalog.princeton.edu\/catalog\/(\d*)#view/, 1] }.compact.uniq
-      mms_ids.map { |id| ensure_alma_id(id) }.select { |mms_id| mms_id != id }
+      mms_ids.map { |id| ensure_voyager_to_alma_id(id) }.select { |mms_id| mms_id != id }
     end
   rescue => ex
     Rails.logger.error "Error calculating related_bibs_iiif_manifest for #{id}: #{ex.message}"
@@ -123,7 +123,7 @@ class SolrDocument
   end
 
   # Makes sure an ID is an Alma ID or converts it to one if it is not.
-  def ensure_alma_id(id)
+  def ensure_voyager_to_alma_id(id)
     return id if id.length > 7 && id.start_with?("99")
     "99#{id}3506421"
   end
