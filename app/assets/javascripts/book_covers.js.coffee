@@ -33,7 +33,6 @@ class BookCoverManager
         type_matches = $("*[data-#{identifier_type}]")
         thumbnail_element = type_matches.filter( -> $(this).data(identifier_type).indexOf(identifier) != -1)[0]
         thumbnail_url = info.thumbnail_url.replace(/zoom=./,"zoom=1").replace("&edge=curl","")
-        console.log(thumbnail_url)
         new_thumbnail = $("<img alt='' src='#{thumbnail_url}'>")
         $(thumbnail_element).html('')
         $(thumbnail_element).append(new_thumbnail)
