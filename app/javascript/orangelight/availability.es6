@@ -7,7 +7,6 @@
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
-import { bigIntLiteral } from '@babel/types';
 import { insert_online_link } from 'orangelight/insert_online_link'
 
 export default class AvailabilityUpdater {
@@ -38,6 +37,8 @@ export default class AvailabilityUpdater {
       const bib_ids = this.record_ids();
       if (bib_ids.length < 1) { return; }
 
+      // Default batch size to the largest page size in OL. The number of actual bib_ids
+      // is usually the same as the number of bibs on the page.
       var batch_size = 100;
       var urlParams = new URLSearchParams(window.location.search);
       if (urlParams.has('alma_batch_size')) {
@@ -47,6 +48,7 @@ export default class AvailabilityUpdater {
       }
 
       const batches = this.ids_to_batches(bib_ids, batch_size);
+      console.log(`Batches requested at ${new Date().toISOString()}`);
       console.log(`size: ${batch_size}, batches: ${batches.length}, ids: ${bib_ids.length}`);
       for(var i= 0; i < batches.length; i++) {
 
@@ -73,25 +75,6 @@ export default class AvailabilityUpdater {
           });
 
       }
-
-      // url = `${this.bibdata_base_url}/bibliographic/availability.json?bib_ids=${bib_ids.join()}`;
-      // return $.getJSON(url, this.process_results_list)
-      //   .fail((jqXHR, textStatus, errorThrown) => {
-      //     if (jqXHR.status == 429) {
-      //       if (allowRetry) {
-      //         console.log(`Retrying availability for records ${bib_ids.join()}`);
-      //         window.setTimeout(() => {
-      //           this.update_availability_retrying();
-      //           this.request_availability(false);
-      //         }, 1500);
-      //       } else {
-      //         console.error(`Failed to retrieve availability data for bibs (retry). Records ${bib_ids.join()}: ${errorThrown}`);
-      //         this.update_availability_undetermined();
-      //       }
-      //       return;
-      //     }
-      //     return console.error(`Failed to retrieve availability data for bibs. Records ${bib_ids.join(", ")}: ${errorThrown}`);
-      //   });
 
     // a show page
     } else if ($("*[data-availability-record='true']").length > 0) {
@@ -159,6 +142,7 @@ export default class AvailabilityUpdater {
   }
 
   process_results_list(records) {
+    console.log(`Batch finished at ${new Date().toISOString()}`);
     let result = [];
     for (let record_id in records) {
       const holding_records = records[record_id];
