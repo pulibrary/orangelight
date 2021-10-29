@@ -35,45 +35,23 @@ export default class AvailabilityUpdater {
     // a search results page or a call number browse page
     if ($(".documents-list").length > 0) {
       const bib_ids = this.record_ids();
-      if (bib_ids.length < 1) { return; }
-
-      // Default batch size to the largest page size in OL. The number of actual bib_ids
-      // is usually the same as the number of bibs on the page.
-      var batch_size = 100;
-      var urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.has('alma_batch_size')) {
-        // Break down the bibdata/Alma API calls in batches if and only if we have our
-        // super secret query string parameter in the URL.
-        batch_size = parseInt(urlParams.get('alma_batch_size'), 10);
+      if (bib_ids.length < 1) {
+        return;
       }
 
+      const batch_size = 10;
       const batches = this.ids_to_batches(bib_ids, batch_size);
-      console.log(`Batches requested at ${new Date().toISOString()}`);
-      console.log(`size: ${batch_size}, batches: ${batches.length}, ids: ${bib_ids.length}`);
-      for(var i= 0; i < batches.length; i++) {
+      console.log(`Requested at ${new Date().toISOString()}, batch size: ${batch_size}, batches: ${batches.length}, ids: ${bib_ids.length}`);
 
+      for(var i= 0; i < batches.length; i++) {
         var batch_url = `${this.bibdata_base_url}/bibliographic/availability.json?bib_ids=${batches[i].join()}`;
         console.log(`batch: ${i}, url: ${batch_url}`);
-
         $.getJSON(batch_url, this.process_results_list)
-          .fail((jqXHR, textStatus, errorThrown) => {
-            // TODO: how do we report/retry the correct a given batch
-            if (jqXHR.status == 429) {
-              if (allowRetry) {
-                console.log(`Retrying availability for records ${bib_ids.join()}`);
-                window.setTimeout(() => {
-                  this.update_availability_retrying();
-                  this.request_availability(false);
-                }, 1500);
-              } else {
-                console.error(`Failed to retrieve availability data for bibs (retry). Records ${bib_ids.join()}: ${errorThrown}`);
-                this.update_availability_undetermined();
-              }
-              return;
-            }
-            return console.error(`Failed to retrieve availability data for bibs. Records ${bib_ids.join(", ")}: ${errorThrown}`);
+          .fail((jqXHR, _textStatus, errorThrown) => {
+            // Log that there were problems fetching a batch. Unfortunately we don't know exactly
+            // which batch so we cannot include that information.
+            console.error(`Failed to retrieve availability data for batch. HTTP status: ${jqXHR.status}: ${errorThrown}`);
           });
-
       }
 
     // a show page
