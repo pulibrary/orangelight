@@ -35,25 +35,24 @@ export default class AvailabilityUpdater {
     // a search results page or a call number browse page
     if ($(".documents-list").length > 0) {
       const bib_ids = this.record_ids();
-      if (bib_ids.length < 1) { return; }
-      url = `${this.bibdata_base_url}/bibliographic/availability.json?bib_ids=${bib_ids.join()}`;
-      return $.getJSON(url, this.process_results_list)
-        .fail((jqXHR, textStatus, errorThrown) => {
-          if (jqXHR.status == 429) {
-            if (allowRetry) {
-              console.log(`Retrying availability for records ${bib_ids.join()}`);
-              window.setTimeout(() => {
-                this.update_availability_retrying();
-                this.request_availability(false);
-              }, 1500);
-            } else {
-              console.error(`Failed to retrieve availability data for bibs (retry). Records ${bib_ids.join()}: ${errorThrown}`);
-              this.update_availability_undetermined();
-            }
-            return;
-          }
-          return console.error(`Failed to retrieve availability data for bibs. Records ${bib_ids.join(", ")}: ${errorThrown}`);
-        });
+      if (bib_ids.length < 1) {
+        return;
+      }
+
+      const batch_size = 10;
+      const batches = this.ids_to_batches(bib_ids, batch_size);
+      console.log(`Requested at ${new Date().toISOString()}, batch size: ${batch_size}, batches: ${batches.length}, ids: ${bib_ids.length}`);
+
+      for(var i= 0; i < batches.length; i++) {
+        var batch_url = `${this.bibdata_base_url}/bibliographic/availability.json?bib_ids=${batches[i].join()}`;
+        console.log(`batch: ${i}, url: ${batch_url}`);
+        $.getJSON(batch_url, this.process_results_list)
+          .fail((jqXHR, _textStatus, errorThrown) => {
+            // Log that there were problems fetching a batch. Unfortunately we don't know exactly
+            // which batch so we cannot include that information.
+            console.error(`Failed to retrieve availability data for batch. HTTP status: ${jqXHR.status}: ${errorThrown}`);
+          });
+      }
 
     // a show page
     } else if ($("*[data-availability-record='true']").length > 0) {
@@ -121,6 +120,7 @@ export default class AvailabilityUpdater {
   }
 
   process_results_list(records) {
+    console.log(`Batch finished at ${new Date().toISOString()}`);
     let result = [];
     for (let record_id in records) {
       const holding_records = records[record_id];
@@ -305,6 +305,22 @@ export default class AvailabilityUpdater {
     ).map(function(node) {
       return node.getAttribute("data-record-id")
     })
+  }
+
+  ids_to_batches(ids, batch_size) {
+    var batches = [];
+    var batch_count = Math.floor(ids.length / batch_size) + (ids.length % batch_size);
+    var i, begin, end, batch;
+    for (i=0; i < batch_count; i++) {
+      begin = i * batch_size;
+      end = begin + batch_size;
+      batch = ids.slice(begin, end);
+      if (batch.length == 0) {
+        break;
+      }
+      batches.push(batch);
+    }
+    return batches;
   }
 
   scsb_barcodes() {
