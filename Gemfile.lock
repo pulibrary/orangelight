@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: e3b10a0c31148bca26de7a162385016c06858b11
+  revision: dad6078a269f2508e1c06011131585e856b0b331
   branch: main
   specs:
     requests (0.0.2)
@@ -311,9 +311,9 @@ GEM
     marcel (1.0.1)
     maruku (0.7.3)
     method_source (0.9.2)
-    mime-types (3.3.1)
+    mime-types (3.4.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0901)
+    mime-types-data (3.2021.1115)
     mini_mime (1.1.1)
     mini_portile2 (2.6.1)
     minitest (5.14.4)
