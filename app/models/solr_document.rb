@@ -164,9 +164,12 @@ class SolrDocument
   def holdings_all_display
     holdings = JSON.parse(self["holdings_1display"] || '{}')
     return holdings if host_id.nil?
+
     # Fetch and append the holdings from the host record
     host_id.each do |id|
-      holdings.merge!(JSON.parse(doc_by_id(id)&.dig("holdings_1display") || '{}'))
+      host_solr_document = doc_by_id(id)
+      host_holdings = host_solr_document&.dig("holdings_1display")
+      holdings.merge!(JSON.parse(host_holdings)) if host_holdings.present? # do not merge an empty holding
     end
     holdings
   end
