@@ -471,31 +471,26 @@ RSpec.describe SolrDocument do
   end
 
   describe '#holdings_all_display' do
-    let(:host_doc_holdings) do
-      '{"22747139640006421":{"location_code":"rare$gax","location":"Graphic Arts Collection","library":"Special Collections","call_number":"2006-1398N","call_number_browse":"2006-1398N","items":[{"holding_id":"22747139640006421","id":"23747139620006421","status_at_load":"1","barcode":"32101054083488","copy_number":"1"}]}}'
-    end
-
-    let(:contained_doc_holdings) do
-      '{"1234567890":{"location_code":"abc$yx","location":"Some location","library":"ABC","call_number":"1234.56789.abc","call_number_browse":"1234.56789.abc","items":[{"holding_id":"1234567890","id":"9988776655","status_at_load":"1","barcode":"123123123","copy_number":"1"}]}}'
-    end
-
+    let(:host_holdings_99124977073506421) { "{\"22747139640006421\":{\"location_code\":\"rare$gax\",\"location\":\"Graphic Arts Collection\",\"library\":\"Special Collections\",\"call_number\":\"2006-1398N\",\"call_number_browse\":\"2006-1398N\",\"items\":[{\"holding_id\":\"22747139640006421\",\"id\":\"23747139620006421\",\"status_at_load\":\"1\",\"barcode\":\"32101054083488\",\"copy_number\":\"1\"}]}}" }
+    let(:constituent_holdings_9923427953506421) { "{\"22509251160006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"HJ5118 .H4 1733\",\"call_number_browse\":\"HJ5118 .H4 1733\"}}" }
+    let(:host_holdings_99125038613506421) { "{\"22692760320006421\":{\"location_code\":\"rare$exw\",\"location\":\"Orlando F. Weber Collection of Economic History\",\"library\":\"Special Collections\",\"call_number\":\"HJ5118 .Z99 v.1\",\"call_number_browse\":\"HJ5118 .Z99 v.1\",\"location_has\":[\"Princeton copy 1\"],\"items\":[{\"holding_id\":\"22692760320006421\",\"id\":\"23692760310006421\",\"status_at_load\":\"1\",\"barcode\":\"32101071303885\",\"copy_number\":\"1\"}]}}" }
+    let(:host_holdings_99125026373506421) { "{\"22541176420006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"Nelson 362030\",\"call_number_browse\":\"Nelson 362030\",\"items\":[{\"holding_id\":\"22541176420006421\",\"id\":\"23541176410006421\",\"status_at_load\":\"1\",\"barcode\":\"32101070784895\",\"copy_number\":\"1\"}]}}" }
     let(:combined_holdings) do
-      JSON.parse(host_doc_holdings).merge(JSON.parse(contained_doc_holdings))
+      JSON.parse(constituent_holdings_9923427953506421).merge(JSON.parse(host_holdings_99125038613506421)).merge(JSON.parse(host_holdings_99125026373506421))
     end
 
     it 'returns the original holdings if the record is not contained' do
-      solr_document = described_class.new(id: "99124977073506421", holdings_1display: host_doc_holdings)
-      expect(solr_document.holdings_all_display).to eq JSON.parse(host_doc_holdings)
+      solr_document = described_class.new(id: "99124977073506421", holdings_1display: host_holdings_99124977073506421)
+      expect(solr_document.holdings_all_display).to eq JSON.parse(host_holdings_99124977073506421)
     end
 
-    # See https://github.com/pulibrary/orangelight/issues/2661
-    xit 'returns the holdings from the host record if the record is contained' do
+    it 'returns the holdings from the host record if the record is contained and has no holdings' do
       solr_document = described_class.new(id: "9947055653506421", "contained_in_s": ["99124977073506421"])
-      expect(solr_document.holdings_all_display).to eq JSON.parse(host_doc_holdings)
+      expect(solr_document.holdings_all_display).to eq JSON.parse(host_holdings_99124977073506421)
     end
 
-    xit 'returns the combined holdings if the record is contained and has its own holdings' do
-      solr_document = described_class.new(id: "9929455793506421", "contained_in_s": ["99124994093506421"], holdings_1display: contained_doc_holdings)
+    it 'returns the combined holdings if the record is contained and has its own holdings' do
+      solr_document = described_class.new(id: "9923427953506421", "contained_in_s": ["99125038613506421", "99125026373506421"], holdings_1display: constituent_holdings_9923427953506421)
       expect(solr_document.holdings_all_display).to eq combined_holdings
     end
   end

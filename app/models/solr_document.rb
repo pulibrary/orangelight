@@ -152,7 +152,7 @@ class SolrDocument
   end
 
   def host_id
-    self["contained_in_s"]&.first
+    self["contained_in_s"]
   end
 
   def bound_with?
@@ -166,11 +166,12 @@ class SolrDocument
     return holdings if host_id.nil?
 
     # Fetch and append the holdings from the host record
-    @holdings_all ||= begin
-      host_doc = doc_by_id(host_id)
-      host_holdings = JSON.parse(host_doc&.dig("holdings_1display") || '{}')
-      holdings.merge(host_holdings)
+    host_id.each do |id|
+      host_solr_document = doc_by_id(id)
+      host_holdings = host_solr_document&.dig("holdings_1display")
+      holdings.merge!(JSON.parse(host_holdings)) if host_holdings.present? # do not merge an empty holding
     end
+    holdings
   end
 
   private

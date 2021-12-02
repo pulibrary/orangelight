@@ -28453,5 +28453,243 @@
   "access_facet": [
     "In the Library"
   ]
+},
+{
+  "id": [
+    "99125038613506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+  ],
+  "title_display": [
+    "Multi-title collection including Some seasonable animadversions on excises: occasion'd by a pamphlet lately publish'd, entituled, Considerations ocasion'd by the Craftsman .. and 9 other(s)."
+  ],
+  "title_a_index": [
+    "Multi-title collection including Some seasonable animadversions on excises: occasion'd by a pamphlet lately publish'd, entituled, Considerations ocasion'd by the Craftsman .. and 9 other(s)."
+  ],
+  "title_sort": [
+    "Multi-title collection including Some seasonable animadversions on excises: occasion'd by a pamphlet lately publish'd, entituled, Considerations ocasion'd by the Craftsman .. and 9 other(s)."
+  ],
+  "title_no_h_index": [
+    "Multi-title collection including Some seasonable animadversions on excises: occasion'd by a pamphlet lately publish'd, entituled, Considerations ocasion'd by the Craftsman .. and 9 other(s)."
+  ],
+  "title_t": [
+    "Multi-title collection including Some seasonable animadversions on excises: occasion'd by a pamphlet lately publish'd, entituled, Considerations ocasion'd by the Craftsman .. and 9 other(s)."
+  ],
+  "title_citation_display": [
+    "Multi-title collection including Some seasonable animadversions on excises: occasion'd by a pamphlet lately publish'd, entituled, Considerations ocasion'd by the Craftsman .. and 9 other(s)."
+  ],
+  "linked_title_index": [
+    "Some seasonable animadversions on excises: occasion'd by a pamphlet lately publish'd, entituled, Considerations ocasion'd by the Craftsman ..",
+    "The budget opened. Or, An answer to a pamphlet intitled, A letter from a member of Parliament to his friends in the country, concerning the duties on wine and tobacco.",
+    "The reply of a member of Parliament to the mayor of his corporation.",
+    "A letter from the Mayor of the antient borough of Guzzle-Down to Sir Francis Wronghead, their R-----e in P--------t /",
+    "The case of the planters of tobacco in Virginia, as represented by themselves /",
+    "Some general considerations concerning the alteration and improvement of publick revenues.",
+    "Observations upon the laws of excise : shewing I. That excises must be destructive of trade in general. II. That excises are inconsistent with the liberties of a free people.",
+    "A letter from a member of Parliament to his friends in the country, concerning the duties on wine and tobacco.",
+    "A review of the excise-scheme : in answer to a pamphlet, entitled The rise and fall of the late projected excise, impartially considered : with some proper hints to the electors of Great Britain.",
+    "The late excise scheme dissected: or, An exact copy of the late bill, for repealing several subsidies, and an impost, now payable on tobacco, &c. with all the blanks filled up, as the probably would have been, if the bill had passed into a law; and proper observations on each paragraph."
+  ],
+  "compiled_created_t": [
+    "Multi-title collection including Some seasonable animadversions on excises: occasion'd by a pamphlet lately publish'd, entituled, Considerations ocasion'd by the Craftsman .. and 9 other(s)."
+  ],
+  "cataloged_tdt": [
+    "2021-07-13T12:00:05Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "related_record_s": [
+    "9924628373506421",
+    "9924563233506421",
+    "9923427953506421",
+    "9924708843506421",
+    "9925119293506421",
+    "9926163023506421",
+    "9924709743506421",
+    "9924592673506421",
+    "9926132193506421",
+    "9924539723506421"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "publication_place_facet": [
+    "England"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "constituent_part_display": [
+    "Some seasonable animadversions on excises: occasion'd by a pamphlet lately publish'd, entituled, Considerations ocasion'd by the Craftsman ..",
+    "The budget opened. Or, An answer to a pamphlet intitled, A letter from a member of Parliament to his friends in the country, concerning the duties on wine and tobacco",
+    "The reply of a member of Parliament to the mayor of his corporation",
+    "A letter from the Mayor of the antient borough of Guzzle-Down to Sir Francis Wronghead, their R-----e in P--------t",
+    "The case of the planters of tobacco in Virginia, as represented by themselves",
+    "Some general considerations concerning the alteration and improvement of publick revenues",
+    "Observations upon the laws of excise : shewing I. That excises must be destructive of trade in general. II. That excises are inconsistent with the liberties of a free people",
+    "A letter from a member of Parliament to his friends in the country, concerning the duties on wine and tobacco",
+    "A review of the excise-scheme : in answer to a pamphlet, entitled The rise and fall of the late projected excise, impartially considered : with some proper hints to the electors of Great Britain",
+    "The late excise scheme dissected: or, An exact copy of the late bill, for repealing several subsidies, and an impost, now payable on tobacco, &c. with all the blanks filled up, as the probably would have been, if the bill had passed into a law; and proper observations on each paragraph"
+  ],
+  "holdings_1display": [
+    "{\"22692760320006421\":{\"location_code\":\"rare$exw\",\"location\":\"Orlando F. Weber Collection of Economic History\",\"library\":\"Special Collections\",\"call_number\":\"HJ5118 .Z99 v.1\",\"call_number_browse\":\"HJ5118 .Z99 v.1\",\"location_has\":[\"Princeton copy 1\"],\"items\":[{\"holding_id\":\"22692760320006421\",\"id\":\"23692760310006421\",\"status_at_load\":\"1\",\"barcode\":\"32101071303885\",\"copy_number\":\"1\"}]}}"
+  ],
+  "location_code_s": [
+    "rare$exw"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Orlando F. Weber Collection of Economic History"
+  ],
+  "advanced_location_s": [
+    "rare$exw",
+    "Special Collections"
+  ],
+  "call_number_display": [
+    "HJ5118 .Z99 v.1"
+  ],
+  "call_number_browse_s": [
+    "HJ5118 .Z99 v.1"
+  ],
+  "call_number_locator_display": [
+    "HJ5118 .Z99 v.1"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
+},
+{
+  "id": [
+    "99125026373506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+  ],
+  "title_display": [
+    "Multi-title collection including The practicability of suppressing vice, by means of societies instituted for that purpose : a sermon, delivered before the Moral Society, in East-Hampton, (Long-Island.) September 21, 1803 and 7 other(s)."
+  ],
+  "title_a_index": [
+    "Multi-title collection including The practicability of suppressing vice, by means of societies instituted for that purpose : a sermon, delivered before the Moral Society, in East-Hampton, (Long-Island.) September 21, 1803 and 7 other(s)."
+  ],
+  "title_sort": [
+    "Multi-title collection including The practicability of suppressing vice, by means of societies instituted for that purpose : a sermon, delivered before the Moral Society, in East-Hampton, (Long-Island.) September 21, 1803 and 7 other(s)."
+  ],
+  "title_no_h_index": [
+    "Multi-title collection including The practicability of suppressing vice, by means of societies instituted for that purpose : a sermon, delivered before the Moral Society, in East-Hampton, (Long-Island.) September 21, 1803 and 7 other(s)."
+  ],
+  "title_t": [
+    "Multi-title collection including The practicability of suppressing vice, by means of societies instituted for that purpose : a sermon, delivered before the Moral Society, in East-Hampton, (Long-Island.) September 21, 1803 and 7 other(s)."
+  ],
+  "title_citation_display": [
+    "Multi-title collection including The practicability of suppressing vice, by means of societies instituted for that purpose : a sermon, delivered before the Moral Society, in East-Hampton, (Long-Island.) September 21, 1803 and 7 other(s)."
+  ],
+  "linked_title_index": [
+    "The practicability of suppressing vice, by means of societies instituted for that purpose : a sermon, delivered before the Moral Society, in East-Hampton, (Long-Island.) September 21, 1803",
+    "The reply of a member of Parliament to the mayor of his corporation.",
+    "The true means of establishing public happiness : a sermon, delivered on the 7th of July, 1795, before the Connecticut Society of Cincinnati, and published at their request.",
+    "God's revenge against gambling : exemplified in the miserable lives and untimely deaths of a number of persons of both sexes, who had sacrificed their health, wealth, and honor at gambling tables. With curious anecdotes of the following unfortunate gamblers: - I. Miss Fanny Braddock... II. Drisden Harwood ... III. Jack Gilmore ... IV. T. Alston ... V. Maria Antoinette ... VI. Other awful cases of young gamblers, and their untimely ends /",
+    "The drunkard's looking-glass : reflecting a faithful likeness of the drunkard in sundry very interesting attitudes : with lively representations of the many strange capers which he cuts at different stages of his disease ... /",
+    "An answer to Judge Rush, on his \"Observations on the character of Jesus Christ.\" : [Four lines of quotations].",
+    "Features of Mr. Jay's treaty : To which is annexed a view of the commerce of the United States, as it stands at present, and as it is fixed by Mr. Jay's treaty.",
+    "The Case of the bank contract : in answer to the infamous scurrilities of several libels lately printed in The craftsman ..."
+  ],
+  "compiled_created_t": [
+    "Multi-title collection including The practicability of suppressing vice, by means of societies instituted for that purpose : a sermon, delivered before the Moral Society, in East-Hampton, (Long-Island.) September 21, 1803 and 7 other(s)."
+  ],
+  "cataloged_tdt": [
+    "2021-07-12T21:59:46Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "related_record_s": [
+    "9965562543506421",
+    "9923427953506421",
+    "9919228113506421",
+    "995455203506421",
+    "9965560623506421",
+    "9965563643506421",
+    "9965563773506421",
+    "9923207903506421"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "publication_place_facet": [
+    "Various places"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "constituent_part_display": [
+    "The practicability of suppressing vice, by means of societies instituted for that purpose : a sermon, delivered before the Moral Society, in East-Hampton, (Long-Island.) September 21, 1803",
+    "The reply of a member of Parliament to the mayor of his corporation",
+    "The true means of establishing public happiness : a sermon, delivered on the 7th of July, 1795, before the Connecticut Society of Cincinnati, and published at their request",
+    "God's revenge against gambling : exemplified in the miserable lives and untimely deaths of a number of persons of both sexes, who had sacrificed their health, wealth, and honor at gambling tables. With curious anecdotes of the following unfortunate gamblers: - I. Miss Fanny Braddock... II. Drisden Harwood ... III. Jack Gilmore ... IV. T. Alston ... V. Maria Antoinette ... VI. Other awful cases of young gamblers, and their untimely ends",
+    "The drunkard's looking-glass : reflecting a faithful likeness of the drunkard in sundry very interesting attitudes : with lively representations of the many strange capers which he cuts at different stages of his disease ...",
+    "An answer to Judge Rush, on his \"Observations on the character of Jesus Christ.\" : [Four lines of quotations].",
+    "Features of Mr. Jay's treaty : To which is annexed a view of the commerce of the United States, as it stands at present, and as it is fixed by Mr. Jay's treaty",
+    "The Case of the bank contract : in answer to the infamous scurrilities of several libels lately printed in The craftsman ..."
+  ],
+  "holdings_1display": [
+    "{\"22541176420006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"Nelson 362030\",\"call_number_browse\":\"Nelson 362030\",\"items\":[{\"holding_id\":\"22541176420006421\",\"id\":\"23541176410006421\",\"status_at_load\":\"1\",\"barcode\":\"32101070784895\",\"copy_number\":\"1\"}]}}"
+  ],
+  "location_code_s": [
+    "rare$ex"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Rare Books"
+  ],
+  "advanced_location_s": [
+    "rare$ex",
+    "Special Collections"
+  ],
+  "call_number_display": [
+    "Nelson 362030"
+  ],
+  "call_number_browse_s": [
+    "Nelson 362030"
+  ],
+  "call_number_locator_display": [
+    "Nelson 362030"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
 }
 ]
