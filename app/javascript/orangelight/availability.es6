@@ -7,7 +7,6 @@
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
-import { thisExpression } from '@babel/types';
 import { insert_online_link } from 'orangelight/insert_online_link'
 
 export default class AvailabilityUpdater {
@@ -215,14 +214,14 @@ export default class AvailabilityUpdater {
 
   update_single(holding_records, id) {
     return (() => {
-      const result = [];
+      let result = [];
       for (let holding_id in holding_records[id]) {
-        const availability_info = holding_records[id][holding_id];
+        let availability_info = holding_records[id][holding_id];
         // case :constituent with host ids.
         // data-record-id has a different this.id when there are host ids.
-        const availability_element = $(`*[data-availability-record='true'][data-record-id='${this.id}'][data-holding-id='${holding_id}'] .availability-icon`);
+        let availability_element = $(`*[data-availability-record='true'][data-record-id='${id}'][data-holding-id='${holding_id}'] .availability-icon`);
         if (availability_info['label']) {
-          const holding_location = $(`*[data-location='true'][data-holding-id='${holding_id}']`);
+          let holding_location = $(`*[data-location='true'][data-holding-id='${holding_id}']`);
           holding_location.text(availability_info['label']);
         }
         this.apply_availability_label(availability_element, availability_info, false);
@@ -231,8 +230,8 @@ export default class AvailabilityUpdater {
         }
 
         if (availability_info['temp_location']) {
-          const current_map_link = $(`*[data-holding-id='${holding_id}'] .find-it`);
-          const temp_map_link = this.stackmap_link(id, availability_info);
+          let current_map_link = $(`*[data-holding-id='${holding_id}'] .find-it`);
+          let temp_map_link = this.stackmap_link(id, availability_info);
           current_map_link.replaceWith(temp_map_link);
         }
 
