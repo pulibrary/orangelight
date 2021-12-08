@@ -7,6 +7,7 @@
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
+import { thisExpression } from '@babel/types';
 import { insert_online_link } from 'orangelight/insert_online_link'
 
 export default class AvailabilityUpdater {
@@ -86,10 +87,11 @@ export default class AvailabilityUpdater {
       }
     }
   }
-
+  /* example with three host ids: https://bibdata.princeton.edu/bibliographic/availability.json?deep=true&bib_ids=9923427953506421,99125038613506421,99125026373506421,99124945733506421 */
+  // the record id is 9923427953506421
   availability_url_show() {
     let url = `${this.bibdata_base_url}/bibliographic/availability.json?deep=true&bib_ids=${this.id}`
-    if (this.host_id !== "") {
+    if (this.host_id.length > 0) {
       url += `,${this.host_id}`
     }
     return url
@@ -172,10 +174,15 @@ export default class AvailabilityUpdater {
   // information for a single bib since we are on the Show page. But occasionally the record
   // that we are showing is bound with another (host) record and in those instances
   // `holding_records` has data for two bibs: `this.id` and `this.host_id`.
-  process_single(holding_records) {
+  process_single(holding_records) { 
     this.process_single_for_bib(holding_records, this.id)
-    if (this.host_id !== "") {
-      this.process_single_for_bib(holding_records, this.host_id)
+    // Availability response in bibdata should be refactored not to include the host holdings under the mms_id of the record page.
+    // problematic availability response behaviour for constituent record page with host records. 
+    // It treats host records as holdings of the constituent record. 
+    if (this.host_id.length > 0) {
+      this.host_id.forEach( (mms_id) => {
+        this.process_single_for_bib(holding_records, mms_id)
+      })
     }
   }
 
@@ -204,15 +211,15 @@ export default class AvailabilityUpdater {
       });
 
     return;
-  }
+  };
 
   update_single(holding_records, id) {
     return (() => {
       const result = [];
       for (let holding_id in holding_records[id]) {
         const availability_info = holding_records[id][holding_id];
-        // Notice that the HTML element for availability uses the original MMS ID (this.id) in `data-record-id`
-        // regardless of whether the holding is for the original MMS ID or for the host record (this.host_id).
+        // case :constituent with host ids.
+        // data-record-id has a different this.id when there are host ids.
         const availability_element = $(`*[data-availability-record='true'][data-record-id='${this.id}'][data-holding-id='${holding_id}'] .availability-icon`);
         if (availability_info['label']) {
           const holding_location = $(`*[data-location='true'][data-holding-id='${holding_id}']`);
@@ -380,6 +387,7 @@ export default class AvailabilityUpdater {
     let status_label = availability_info['status_label'];
     let isCdl = availability_info['cdl'];
     let badgeClass = "badge-danger";
+    // We can't dipslay due date from Alma.
     status_label = `${status_label}${this.due_date(availability_info["due_date"])}`;
     availability_element.text(status_label);
     availability_element.attr('title', '');

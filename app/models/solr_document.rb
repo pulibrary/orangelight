@@ -151,26 +151,47 @@ class SolrDocument
     sibling_documents.flat_map(&:electronic_portfolios)
   end
 
+  def solr_document_id
+    self["id"]
+  end
+
   def host_id
-    self["contained_in_s"]
+    self["contained_in_s"].reject(&:empty?) if self["contained_in_s"].present?
   end
 
   def bound_with?
-    return true if host_id
+    return true if host_id.present?
     false
+  end
+
+  # host_id an Array of host id(s)
+  # appends the host_id in each host_holding
+  # merges host_holding in holdings
+  def holdings_with_host_id(holdings)
+    host_id.each do |id|
+      host_solr_document = doc_by_id(id)
+      host_holdings = host_solr_document&.dig("holdings_1display")
+      host_holdings_parse = JSON.parse(host_holdings)
+      host_holding_id = host_holdings_parse.first[0]
+      # append the host_id as mms_id in the host_holdings
+      host_holdings_parse[host_holding_id]["mms_id"] = id
+
+      holdings.merge!(host_holdings_parse) if host_holdings_parse.present? # do not merge an empty holding
+    end
   end
 
   # Returns the holdings_1display of the record plus the holdings_1display of the host record
   def holdings_all_display
     holdings = JSON.parse(self["holdings_1display"] || '{}')
-    return holdings if host_id.nil?
 
-    # Fetch and append the holdings from the host record
-    host_id.each do |id|
-      host_solr_document = doc_by_id(id)
-      host_holdings = host_solr_document&.dig("holdings_1display")
-      holdings.merge!(JSON.parse(host_holdings)) if host_holdings.present? # do not merge an empty holding
+    holdings.each do |k, _val|
+      # append the solr document id in each holding
+      holdings[k].merge!("mms_id" => solr_document_id) if holdings[k].present?
     end
+    return holdings unless host_id.present?
+    # Append the host_id in the host_holdings
+    # merge the host_holdings in holdings
+    holdings_with_host_id(holdings)
     holdings
   end
 

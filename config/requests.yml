@@ -19,7 +19,7 @@ defaults: &defaults
 development:
   <<: *defaults
   voyager_ub_id: 1@DB
-  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
 test:
   <<: *defaults
   voyager_ub_id: 1@DB
