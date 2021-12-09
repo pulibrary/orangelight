@@ -173,7 +173,7 @@ export default class AvailabilityUpdater {
   // information for a single bib since we are on the Show page. But occasionally the record
   // that we are showing is bound with another (host) record and in those instances
   // `holding_records` has data for two bibs: `this.id` and `this.host_id`.
-  process_single(holding_records) { 
+  process_single(holding_records) {
     this.process_single_for_bib(holding_records, this.id)
     // Availability response in bibdata should be refactored not to include the host holdings under the mms_id of the record page.
     // problematic availability response behaviour for constituent record page with host records. 

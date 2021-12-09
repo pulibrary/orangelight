@@ -277,12 +277,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   def doc_id(holding)
-    host_id = adapter.host_id
-    if host_id.count.positive?
-      holding.dig("mms_id")
-    else
-      adapter.doc_id
-    end
+    holding.dig("mms_id") || adapter.doc_id
   end
 
   # Generate the links for a given holding
