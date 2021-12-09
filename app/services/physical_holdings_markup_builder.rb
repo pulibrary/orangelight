@@ -288,7 +288,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # Generate the links for a given holding
   # TODO: Come back and remove class method calls
   def request_placeholder(adapter, holding_id, location_rules, holding)
-    # check if it is a boundwith and iterate through the host ids so that it will be "/request/#{doc_id}", where doc_id is the host_id
+    # check if it is a boundwith and read the id for each holding
+    # so that it will be "/request/#{doc_id}", where doc_id can be either the record page mms_id or the host id(s) if they exist.
     doc_id = doc_id(holding)
     link = if !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)

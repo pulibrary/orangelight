@@ -171,12 +171,13 @@ class SolrDocument
     host_id.each do |id|
       host_solr_document = doc_by_id(id)
       host_holdings = host_solr_document&.dig("holdings_1display")
-      host_holdings_parse = JSON.parse(host_holdings)
+      host_holdings_parse = JSON.parse(host_holdings || '{}')
+      next unless host_holdings_parse.present? # do not merge an empty holding
       host_holding_id = host_holdings_parse.first[0]
       # append the host_id as mms_id in the host_holdings
       host_holdings_parse[host_holding_id]["mms_id"] = id
 
-      holdings.merge!(host_holdings_parse) if host_holdings_parse.present? # do not merge an empty holding
+      holdings.merge!(host_holdings_parse)
     end
   end
 
