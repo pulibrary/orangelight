@@ -46,26 +46,26 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     markup
   end
 
-  def holding_location_scsb(holding, bib_id, holding_id)
+  def holding_location_scsb(holding, doc_id, holding_id)
     content_tag(:td, holding_location_scsb_span.html_safe,
                 class: 'holding-status',
                 data: {
                   'availability_record' => true,
-                  'record_id' => bib_id,
+                  'record_id' => doc_id,
                   'holding_id' => holding_id,
                   'scsb-barcode' => holding['items'].first['barcode'],
                   'aeon' => scsb_supervised_items?(holding)
                 })
   end
 
-  def holding_location_default(bib_id, holding_id, location_rules)
+  def holding_location_default(doc_id, holding_id, location_rules)
     children = content_tag(:span, '', class: 'availability-icon')
     content_tag(:td,
                 children.html_safe,
                 class: 'holding-status',
                 data: {
                   'availability_record' => true,
-                  'record_id' => bib_id,
+                  'record_id' => doc_id,
                   'holding_id' => holding_id,
                   aeon: self.class.aeon_location?(location_rules)
                 })
@@ -100,11 +100,11 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     content_tag(:ul, children.html_safe, class: 'location-has')
   end
 
-  def self.multi_item_availability(bib_id, holding_id)
+  def self.multi_item_availability(doc_id, holding_id)
     content_tag(:ul, '',
                 class: 'item-status',
                 data: {
-                  'record_id' => bib_id,
+                  'record_id' => doc_id,
                   'holding_id' => holding_id
                 })
   end
@@ -276,10 +276,16 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     arr.join
   end
 
+  def doc_id(holding)
+    holding.dig("mms_id") || adapter.doc_id
+  end
+
   # Generate the links for a given holding
   # TODO: Come back and remove class method calls
   def request_placeholder(adapter, holding_id, location_rules, holding)
-    doc_id = adapter.doc_id
+    # check if it is a boundwith and read the id for each holding
+    # so that it will be "/request/#{doc_id}", where doc_id can be either the record page mms_id or the host id(s) if they exist.
+    doc_id = doc_id(holding)
     link = if !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)
                link_to('Reading Room Request',
@@ -343,11 +349,12 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param call_number [String] the call number
   # @param library [String] the library in which the holding resides
   # @param [String] the markup
-  def locate_link(location, call_number, library)
+  def locate_link(location, call_number, library, holding)
+    doc_id = doc_id(holding)
     locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
     return '' if locator.exclude?(call_number: call_number, library: library)
 
-    stackmap_url = "/catalog/#{adapter.doc_id}/stackmap?loc=#{location}"
+    stackmap_url = "/catalog/#{doc_id}/stackmap?loc=#{location}"
     stackmap_url << "&cn=#{call_number}" if call_number
 
     markup = ''
@@ -375,7 +382,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param [String] the markup
   def holding_location_container(holding, location, holding_id, call_number)
     markup = holding_location_span(location, holding_id)
-    link_markup = locate_link(holding['location_code'], call_number, holding['library'])
+    link_markup = locate_link(holding['location_code'], call_number, holding['library'], holding)
     markup << link_markup.html_safe
     markup
   end
@@ -403,8 +410,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     # @return [String] the markup
     def process_physical_holding(holding, holding_id)
       markup = ''
+      doc_id = doc_id(holding)
 
-      bib_id = @adapter.doc_id
       location_rules = @adapter.holding_location_rules(holding)
       cn_value = @adapter.call_number(holding)
       holding_loc = @adapter.holding_location_label(holding)
@@ -420,12 +427,12 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       markup << if @adapter.repository_holding?(holding)
                   holding_location_repository
                 elsif @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
-                  holding_location_scsb(holding, bib_id, holding_id)
+                  holding_location_scsb(holding, doc_id, holding_id)
                 # dspace: false
                 elsif @adapter.unavailable_holding?(holding)
                   holding_location_unavailable
                 else
-                  holding_location_default(bib_id,
+                  holding_location_default(doc_id,
                                            holding_id,
                                            location_rules)
                 end
@@ -438,7 +445,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       holding_notes << self.class.shelving_titles_list(holding) if @adapter.shelving_title?(holding)
       holding_notes << self.class.location_notes_list(holding) if @adapter.location_note?(holding)
       holding_notes << self.class.location_has_list(holding) if @adapter.location_has?(holding)
-      holding_notes << self.class.multi_item_availability(bib_id, holding_id)
+      holding_notes << self.class.multi_item_availability(doc_id, holding_id)
       holding_notes << self.class.supplements_list(holding) if @adapter.supplements?(holding)
       holding_notes << self.class.indexes_list(holding) if @adapter.indexes?(holding)
       holding_notes << self.class.journal_issues_list(holding_id) if @adapter.journal?

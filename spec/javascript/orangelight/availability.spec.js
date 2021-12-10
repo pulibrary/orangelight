@@ -304,24 +304,25 @@ describe('AvailabilityUpdater', function() {
   test('record show page for a bound-with record', () => {
     document.body.innerHTML =
       '<table><tr>' +
-        '<td class="holding-status" data-availability-record="true" data-record-id="9929455793506421" data-holding-id="22269289940006421" data-aeon="false">' +
+        '<td class="holding-status" data-availability-record="true" data-record-id="99124994093506421" data-holding-id="22488152160006421" data-aeon="false">' +
           '<span class="availability-icon"></span>' +
         '</td>' +
       '</tr></table>';
     const holding_records = {
       "9929455793506421":{},
-      "99121886293506421":{"22269289940006421":{"on_reserve":"N","location":"recap$pa","label":"ReCAP - ReCAP - rcppa RECAP","status_label":"Available","copy_number":null,"cdl":false,"temp_location":false,"id":"22269289940006421"}}
+      "99124994093506421":{"22488152160006421":{"on_reserve":"N","location":"recap$pa","label":"ReCAP - ReCAP - rcppa RECAP","status_label":"Available","copy_number":null,"cdl":false,"temp_location":false,"id":"22488152160006421"}}
     }
 
     let u = new updater
-    u.id = '9929455793506421'         // contained bib
-    u.host_id = '99121886293506421'   // host bib
+    u.id = '9929455793506421'         // constituent record
+    u.host_id = ["99124994093506421"]  // host mms_id
+    u.mms_id = u.host_id[0] // 
 
     const process_single_for_bib = jest.spyOn(u, 'process_single_for_bib')
     u.process_single(holding_records)
 
     expect(process_single_for_bib).toHaveBeenCalledWith(holding_records, u.id)
-    expect(process_single_for_bib).toHaveBeenCalledWith(holding_records, u.host_id)
+    expect(process_single_for_bib).toHaveBeenCalledWith(holding_records, u.mms_id)
     process_single_for_bib.mockRestore()
   })
 

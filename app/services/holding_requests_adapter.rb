@@ -18,6 +18,12 @@ class HoldingRequestsAdapter
     @document.fetch('id')
   end
 
+  # Retrieve the host id(s) for the constituent record
+  # @return <Array>
+  def host_id
+    @document.fetch('contained_in_s', [])
+  end
+
   # Access the holding locations from Bib. Data
   # @return [Hash] location hash structure
   delegate :holding_locations, to: :@bib_data_service

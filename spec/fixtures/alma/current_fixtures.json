@@ -28691,5 +28691,362 @@
   "access_facet": [
     "In the Library"
   ]
+},
+{
+  "id": [
+    "9923427953506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_display": [
+    "Hervey, John Hervey, Baron, 1696-1743"
+  ],
+  "author_sort": [
+    "Hervey, John Hervey, Baron, 1696-1743"
+  ],
+  "author_citation_display": [
+    "Hervey, John Hervey"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Hervey, John Hervey\"}"
+  ],
+  "author_s": [
+    "Hervey, John Hervey, Baron, 1696-1743"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": [
+    "The reply of a member of Parliament to the mayor of his corporation."
+  ],
+  "title_a_index": [
+    "The reply of a member of Parliament to the mayor of his corporation"
+  ],
+  "title_sort": [
+    "reply of a member of Parliament to the mayor of his corporation."
+  ],
+  "title_no_h_index": [
+    "The reply of a member of Parliament to the mayor of his corporation.",
+    "reply of a member of Parliament to the mayor of his corporation."
+  ],
+  "title_t": [
+    "The reply of a member of Parliament to the mayor of his corporation."
+  ],
+  "title_citation_display": [
+    "The reply of a member of Parliament to the mayor of his corporation"
+  ],
+  "linked_title_index": [
+    "Multi-title collection including Some seasonable animadversions on excises: occasion'd by a pamphlet lately publish'd, entituled, Considerations ocasion'd by the Craftsman .. and 9 other(s).",
+    "Multi-title collection including The practicability of suppressing vice, by means of societies instituted for that purpose : a sermon, delivered before the Moral Society, in East-Hampton, (Long-Island.) September 21, 1803 and 7 other(s).",
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "compiled_created_t": [
+    "The reply of a member of Parliament to the mayor of his corporation."
+  ],
+  "pub_created_display": [
+    "London : Printed by J. Roberts ..., 1733."
+  ],
+  "pub_created_s": [
+    "London : Printed by J. Roberts ..., 1733."
+  ],
+  "pub_citation_display": [
+    "London: Printed by J. Roberts ..."
+  ],
+  "pub_date_display": [
+    "1733"
+  ],
+  "pub_date_start_sort": [
+    "1733"
+  ],
+  "cataloged_tdt": [
+    "2021-07-12T15:03:31Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "39, [1] p. ; 22 cm. (8vo in 4s)"
+  ],
+  "description_t": [
+    "39, [1] p. ; 22 cm. (8vo in 4s)"
+  ],
+  "number_of_pages_citation_display": [
+    "39, [1] p."
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including Some seasonable animadversions on excises: occasion'd by a pamphlet lately publish'd, entituled, Considerations ocasion'd by the Craftsman .. and 9 other(s).",
+    "Multi-title collection including The practicability of suppressing vice, by means of societies instituted for that purpose : a sermon, delivered before the Moral Society, in East-Hampton, (Long-Island.) September 21, 1803 and 7 other(s).",
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99125038613506421",
+    "99125026373506421",
+    "99124945733506421"
+  ],
+  "notes_index": [
+    "By Lord Hervey. Cf. ESTC.",
+    "In support of the Excise Bill.",
+    "Last page blank.",
+    "Cover title.",
+    "Rcpxr vol. 29: No. 7 in a volume of pamphlets. NjP",
+    "Princeton copy 1 ExW no. 7 of pamphlets. NjP",
+    "Ex Nelson copy: No. 8 in a volume of pamphlets. NjP",
+    "ESTC t044605"
+  ],
+  "notes_display": [
+    "By Lord Hervey. Cf. ESTC.",
+    "In support of the Excise Bill.",
+    "Last page blank.",
+    "Cover title.",
+    "Rcpxr vol. 29: No. 7 in a volume of pamphlets.",
+    "Princeton copy 1 ExW no. 7 of pamphlets.",
+    "Ex Nelson copy: No. 8 in a volume of pamphlets."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "publication_place_facet": [
+    "England"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "references_display": [
+    "ESTC t044605"
+  ],
+  "references_url_display": [
+    "ESTC t044605"
+  ],
+  "lc_subject_display": [
+    "Taxation of articles of consumption—Great Britain",
+    "Wine—Taxation—Great Britain",
+    "Tobacco—Taxation—Great Britain"
+  ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "Taxation of articles of consumption—Great Britain",
+    "Wine—Taxation—Great Britain",
+    "Tobacco—Taxation—Great Britain"
+  ],
+  "subject_unstem_search": [
+    "Taxation of articles of consumption—Great Britain",
+    "Wine—Taxation—Great Britain",
+    "Tobacco—Taxation—Great Britain"
+  ],
+  "siku_subject_unstem_search": null,
+  "subject_facet": [
+    "Taxation of articles of consumption—Great Britain",
+    "Wine—Taxation—Great Britain",
+    "Tobacco—Taxation—Great Britain"
+  ],
+  "subject_topic_facet": [
+    "Taxation of articles of consumption",
+    "Great Britain",
+    "Wine",
+    "Taxation",
+    "Tobacco"
+  ],
+  "lc_1letter_facet": [
+    "H - Social Sciences"
+  ],
+  "lc_rest_facet": [
+    "HB - Economic Theory, Demography"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "H - Social Sciences"
+  ],
+  "call_number_full_facet": [
+    "HB - Economic Theory, Demography"
+  ],
+  "in_display": [
+    "Multi-title collection including Some seasonable animadversions on excises: occasion'd by a pamphlet lately publish'd, entituled, Considerations ocasion'd by the Craftsman .. and 9 other(s).",
+    "Multi-title collection including The practicability of suppressing vice, by means of societies instituted for that purpose : a sermon, delivered before the Moral Society, in East-Hampton, (Long-Island.) September 21, 1803 and 7 other(s).",
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "oclc_s": [
+    "12640592"
+  ],
+  "standard_no_index": [
+    "ocm12640592",
+    "2342795",
+    "2342795-princetondb"
+  ],
+  "other_version_s": [
+    "ocm12640592"
+  ],
+  "holdings_1display": [
+    "{\"22509251160006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"HJ5118 .H4 1733\",\"call_number_browse\":\"HJ5118 .H4 1733\"}}"
+  ],
+  "location_code_s": [
+    "rare$ex"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Rare Books"
+  ],
+  "advanced_location_s": [
+    "rare$ex",
+    "Special Collections"
+  ],
+  "name_title_browse_s": [
+    "Hervey, John Hervey, Baron, 1696-1743. The reply of a member of Parliament to the mayor of his corporation"
+  ],
+  "call_number_display": [
+    "HJ5118 .H4 1733"
+  ],
+  "call_number_browse_s": [
+    "HJ5118 .H4 1733"
+  ],
+  "call_number_locator_display": [
+    "HJ5118 .H4 1733"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
+},
+{
+  "id": [
+    "99124945733506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+  ],
+  "title_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "title_a_index": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "title_sort": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "title_no_h_index": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "title_t": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "title_citation_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "linked_title_index": [
+    "The Grand accuser, the greatest of all criminals",
+    "Reflections upon the Corporation and Test-acts, as they relate to the Protestant dissenters.",
+    "Letters, in the original, with translations, and messages, that passed between the King, Queen, Prince, and Princess of Wales; on occasion of the birth of the young Princess.",
+    "Remarks on the state anatomy of Great Britain in a letter to a Member of Parliament : which may serve to obviate the ill designs, and expose the false reasonings of that pamphlet.",
+    "Observations on the conduct of Great-Britain with regard to the negociations and other transactions abroad.",
+    "The reply of a member of Parliament to the mayor of his corporation.",
+    "A Hue and cry after part of a pack of hounds, which broke out of their kennel in Westminster. To which is added Modern characters, by another hand.",
+    "Sedition and defamation display'd: in a letter to the author of the Craftsman.",
+    "The case of Hugh Speke ... and family ...",
+    "The King of Spain's declaration of war against Great Britain : done at Buen Retiro, on the 28th of November /",
+    "A serious address to the electors of Great Britain. In which the conduct ... both of the Court and Country parties are ... represented ...",
+    "Remarks upon the present crisis : humbly address'd to the knights, citizens and burgesses, to serve in the present parliament.",
+    "Three speeches against continuing the army, &c., : as they were spoken in the House of Commons the last session of Parliament : to which are added the reasons given by the Lords, who protested against the bill for punishing mutiny and desertion."
+  ],
+  "compiled_created_t": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "cataloged_tdt": [
+    "2021-07-13T01:16:44Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "related_record_s": [
+    "9926212973506421",
+    "9926272693506421",
+    "9926343413506421",
+    "9926272943506421",
+    "9926335583506421",
+    "9923427953506421",
+    "9926273983506421",
+    "9926126193506421",
+    "9926327173506421",
+    "9926276813506421",
+    "9926326703506421",
+    "9926223093506421",
+    "9926256233506421"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "publication_place_facet": [
+    "England"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "constituent_part_display": [
+    "The Grand accuser, the greatest of all criminals",
+    "Reflections upon the Corporation and Test-acts, as they relate to the Protestant dissenters",
+    "Letters, in the original, with translations, and messages, that passed between the King, Queen, Prince, and Princess of Wales; on occasion of the birth of the young Princess",
+    "Remarks on the state anatomy of Great Britain in a letter to a Member of Parliament : which may serve to obviate the ill designs, and expose the false reasonings of that pamphlet",
+    "Observations on the conduct of Great-Britain with regard to the negociations and other transactions abroad",
+    "The reply of a member of Parliament to the mayor of his corporation",
+    "A Hue and cry after part of a pack of hounds, which broke out of their kennel in Westminster. To which is added Modern characters, by another hand",
+    "Sedition and defamation display'd: in a letter to the author of the Craftsman",
+    "The case of Hugh Speke ... and family ...",
+    "The King of Spain's declaration of war against Great Britain : done at Buen Retiro, on the 28th of November",
+    "A serious address to the electors of Great Britain. In which the conduct ... both of the Court and Country parties are ... represented ...",
+    "Remarks upon the present crisis : humbly address'd to the knights, citizens and burgesses, to serve in the present parliament",
+    "Three speeches against continuing the army, &c., : as they were spoken in the House of Commons the last session of Parliament : to which are added the reasons given by the Lords, who protested against the bill for punishing mutiny and desertion"
+  ],
+  "holdings_1display": [
+    "{\"22576837650006421\":{\"location_code\":\"rare$xr\",\"location\":\"Remote Storage (ReCAP): Rare Books. Special Collections Use Only\",\"library\":\"Special Collections\",\"call_number\":\"1446.999 v.29\",\"call_number_browse\":\"1446.999 v.29\",\"items\":[{\"holding_id\":\"22576837650006421\",\"id\":\"23576837640006421\",\"status_at_load\":\"1\",\"enumeration\":\"v.29\",\"barcode\":\"32101037458120\",\"copy_number\":\"1\"}]}}"
+  ],
+  "location_code_s": [
+    "rare$xr"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Remote Storage (ReCAP): Rare Books. Special Collections Use Only"
+  ],
+  "advanced_location_s": [
+    "rare$xr",
+    "Special Collections"
+  ],
+  "call_number_display": [
+    "1446.999 v.29"
+  ],
+  "call_number_browse_s": [
+    "1446.999 v.29"
+  ],
+  "call_number_locator_display": [
+    "1446.999 v.29"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
 }
 ]

@@ -55,6 +55,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     allow(adapter).to receive(:voyager_holding?).and_return(true)
     allow(adapter).to receive(:doc_electronic_access).and_return('http://arks.princeton.edu/ark:/88435/dsp0141687h654': ['DataSpace', 'Citation only'])
     allow(adapter).to receive(:unavailable_holding?).and_return(false)
+    allow(adapter).to receive(:host_id).and_return([])
   end
 
   describe '.request_label' do
@@ -219,6 +220,60 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(request_placeholder_markup).to include 'data-holding-id="3668455"'
       expect(request_placeholder_markup).to include '<a title="View Options to Request copies from this Location"'
       expect(request_placeholder_markup).to include 'href="/requests/123456?mfhd=3668455"'
+    end
+
+    context "when there is a host" do
+      let(:location_rules) do
+        {
+          "label": "Orlando F. Weber Collection of Economic History",
+          "code": "rare$exw",
+          "aeon_location": true,
+          "recap_electronic_delivery_location": false,
+          "open": false,
+          "requestable": true,
+          "always_requestable": true,
+          "circulates": false,
+          "remote_storage": "",
+          "fulfillment_unit": "Closed",
+          "library": {
+            "label": "Special Collections",
+            "code": "rare",
+            "order": 0
+          },
+          "holding_library": nil,
+          "hours_location": nil,
+          "delivery_locations": []
+        }
+      end
+      let(:holding_id) { "22692760320006421" }
+      let(:holding) do
+        {
+          holding_id => {
+            location: "Orlando F. Weber Collection of Economic History",
+            library: 'Firestone Library',
+            location_code: 'rare$exw',
+            call_number: call_number,
+            shelving_title: shelving_title,
+            supplements: supplements,
+            indexes: indexes,
+            mms_id: "99125038613506421"
+          }.with_indifferent_access
+        }
+      end
+      before do
+        allow(adapter).to receive(:document).and_return(document)
+        allow(adapter).to receive(:host_id).and_return(["99125038613506421"])
+        allow(holding).to receive(:dig).and_return("99125038613506421")
+      end
+      it 'generates the request link for the host record' do
+        expect(request_placeholder_markup).to include '<td class="location-services service-always-requestable"'
+        expect(request_placeholder_markup).to include 'data-open="false"'
+        expect(request_placeholder_markup).to include 'data-requestable="true"'
+        expect(request_placeholder_markup).to include 'data-aeon="true"'
+        expect(request_placeholder_markup).to include 'data-holding-id="22692760320006421"'
+        expect(request_placeholder_markup).to include '<a title="Request to view in Reading Room"'
+        expect(request_placeholder_markup).to include 'href="/requests/99125038613506421?mfhd=22692760320006421"'
+      end
     end
   end
 
