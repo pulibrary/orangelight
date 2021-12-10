@@ -450,49 +450,49 @@ describe('AvailabilityUpdater', function() {
     expect(av_element[0].textContent).toContain('Online');
   })
 
-  test('special case for Marquand Stacks items reported as unavailable', () => {
+  test('special case for Marquand locations - marquand$stacks,marquand$pj,marquand$ref,marquand$ph,marquand$fesrf - items to display status: Ask Staff', () => {
     document.body.innerHTML = '<table class="availability-table">' +
       '<tbody>' +
       '  <tr class="holding-block">' +
-      '    <td class="library-location" data-holding-id="22555592710006421">' +
-      '      <span class="location-text" data-location="true" data-holding-id="22555592710006421">Marquand Library - Remote Storage: Marquand Use Only</span>' +
+      '    <td class="library-location" data-holding-id="22642015240006421">' +
+      '      <span class="location-text" data-location="true" data-holding-id="22642015240006421">Marquand Library - Remote Storage (ReCAP): Marquand Library Use Only</span>' +
       '    </td>' +
       '    <td class="holding-call-number"></td>' +
-      '    <td class="holding-status" data-availability-record="true" data-record-id="99101378413506421" data-holding-id="22555592710006421" data-aeon="false">'  +
+      '    <td class="holding-status" data-availability-record="true" data-record-id="99124187703506421" data-holding-id="22642015240006421" data-aeon="false">'  +
       '      <span class="availability-icon badge badge-secondary" title=""></span>' +
       '    </td>' +
-      '    <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="22555592710006421">' +
-      '     <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/99101378413506421?mfhd=22555592710006421">Request</a>' +
+      '    <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="22642015240006421">' +
+      '     <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/99124187703506421?mfhd=22642015240006421">Request</a>' +
       '    </td>' +
       '    <td class="holding-details">' +
-      '      <ul class="item-status" data-record-id="99101378413506421" data-holding-id="22555592710006421"></ul>' +
+      '      <ul class="item-status" data-record-id="99124187703506421" data-holding-id="22642015240006421"></ul>' +
       '    </td>' +
       '  </tr>' +
       '</tbody>' +
       '</table>';
 
     const availability_response = {
-      "99101378413506421":{
-        "22555592710006421":{
-          "on_reserve":"N",
-          "location":"marquand$stacks",
-          "label":"Marquand Library - Remote Storage: Marquand Use Only",
-          "status_label":"Unavailable",
-          "copy_number":null,
-          "cdl":false,
-          "temp_location":false,
-          "id":"22555592710006421"
+      "99124187703506421": {
+        "22642015240006421": {
+        "on_reserve": "N",
+        "location": "marquand$pj",
+        "label": "Marquand Library - Remote Storage (ReCAP): Marquand Library Use Only",
+        "status_label": "Unavailable",
+        "copy_number": null,
+        "cdl": false,
+        "temp_location": false,
+        "id": "22642015240006421"
         }
       }
     }
-    const holding_data = availability_response["99101378413506421"]["22555592710006421"];
-    const av_element = $(`*[data-availability-record='true'][data-record-id='99101378413506421'][data-holding-id='22555592710006421'] .availability-icon`);
+    const holding_data = availability_response["99124187703506421"]["22642015240006421"];
+    const av_element = $(`*[data-availability-record='true'][data-record-id='99124187703506421'][data-holding-id='22642015240006421'] .availability-icon`);
 
     let u = new updater;
-    u.id = '99101378413506421';
+    u.id = '99124187703506421';
 
     expect(av_element[0].textContent).not.toContain('Ask Staff');
-    u.apply_availability_label(av_element, holding_data, true);
+    u.apply_availability_label(av_element, holding_data, false);
     expect(av_element[0].textContent).toContain('Ask Staff');
   })
 
