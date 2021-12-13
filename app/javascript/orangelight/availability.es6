@@ -386,7 +386,7 @@ export default class AvailabilityUpdater {
     let status_label = availability_info['status_label'];
     let isCdl = availability_info['cdl'];
     let badgeClass = "badge-danger";
-    // We can't dipslay due date from Alma.
+    // We can't display due date from Alma.
     status_label = `${status_label}${this.due_date(availability_info["due_date"])}`;
     availability_element.text(status_label);
     availability_element.attr('title', '');
@@ -462,8 +462,9 @@ export default class AvailabilityUpdater {
   };
 
   on_site_use_marquand_location(location) {
-    return location == "marquand$stacks" || location == "marquand$pj";
-  }
+    let marquand_location = ["marquand$stacks", "marquand$pj", "marquand$ref","marquand$ph", "marquand$fesrf"]
+    return marquand_location.includes(location);
+  };
 
   /* Currently this logic is duplicated in Ruby code in application_helper.rb (ApplicationHelper::find_it_location) */
   find_it_location(location) {
