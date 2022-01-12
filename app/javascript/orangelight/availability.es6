@@ -56,7 +56,7 @@ export default class AvailabilityUpdater {
 
     // a show page
     } else if ($("*[data-availability-record='true']").length > 0) {
-      this.id = window.location.pathname.split('/')[2];
+      this.id = window.location.pathname.split('/').pop();
       this.host_id = $("#main-content").data("host-id") || "";
       if (this.id.match(/^SCSB-\d+/)) {
         url = `${this.availability_url}?scsb_id=${this.id.replace(/^SCSB-/, '')}`;
