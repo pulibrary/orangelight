@@ -166,6 +166,7 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
+    bootstrap-select-rails (1.13.8)
     builder (3.2.4)
     bunny (2.14.2)
       amq-protocol (~> 2.3, >= 2.3.0)
@@ -600,6 +601,7 @@ DEPENDENCIES
   blacklight_range_limit
   blacklight_unapi!
   bootstrap (~> 4.6)
+  bootstrap-select-rails
   borrow_direct!
   capistrano (~> 3.4.0)
   capistrano-rails

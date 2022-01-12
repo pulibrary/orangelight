@@ -62,5 +62,8 @@
     <%= render partial: 'show_digital_content', locals: { document: @document } %>
   <% end %>
   <%= render :partial => 'shared/footer' %>
+  <!-- This is an odd location for a script tag in rails, but this was the place that made the select work correctly
+       I tried many different spots in the rails pipeline, but none of them worked fully. -->
+  <script src="https://developer.snapappointments.com/bootstrap-select/dist,_js,_bootstrap-select.min.js+search,_main.js+js,_base.js.pagespeed.jc.TbEa0Z3RJi.js"></script><script>eval(mod_pagespeed_2HaUiZdTC$);</script>
   </body>
 </html>

@@ -4,15 +4,16 @@
         <%= render 'location_code_facet', display_facet: display_facet %>
       <% else %>
         <div class="form-group advanced-search-facet row">
-            <%= label_tag display_facet.name.parameterize, :class => "col-sm-4 control-label advanced-facet-label" do %>
+            <%= label_tag display_facet.name.parameterize, :class => "col-sm-4 control-label advanced-facet-label", :for => display_facet.name.parameterize do %>
                 <%= facet_field_label(display_facet.name) %>
             <% end %>
             <div class="col-sm-8">
-              <%= content_tag(:select, :multiple => true,
+              <%= content_tag(:select, :multiple => true, "aria-hidden" => "true",
                 :name   => "f_inclusive[#{display_facet.name}][]",
                 :id     => display_facet.name.parameterize,
-                :class  => "form-control advanced-search-facet-select chosen-select",
-                data: { placeholder: "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}" }) do %>
+                :class  => "form-control custom-select selectpicker",
+                :title  => "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}",
+                :data   => { "live-search": "true" }) do %>
                 <% display_facet.items.each do |facet_item| %>
                   <%= content_tag :option, :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) do %>
                     <%= facet_display_value(display_facet.name, facet_item.label) %>&nbsp;&nbsp;(<%= number_with_delimiter facet_item.hits %>)
