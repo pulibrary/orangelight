@@ -31,6 +31,7 @@ describe 'Request Options' do
       visit '/catalog/99118600973506421'
     end
 
+    # need to be on VPN for this test to pass
     it 'displays a Reading Room Request button', unless: in_ci? do
       using_wait_time 5 do
         expect(page.all('.holding-block').length).to eq 1
@@ -45,6 +46,7 @@ describe 'Request Options' do
       visit '/catalog/9990315453506421'
     end
 
+    # need to be on VPN for this test to pass
     it 'does display a request button', unless: in_ci? do
       using_wait_time 5 do
         expect(page.all('.holding-block').length).to eq 1
@@ -87,6 +89,7 @@ describe 'Request Options' do
       visit '/catalog/99118600973506421'
     end
 
+    # need to be on VPN for this test to pass
     it 'displays an aeon request button', unless: in_ci? do
       using_wait_time 5 do
         expect(page.all('.holding-block').length).to eq 1
