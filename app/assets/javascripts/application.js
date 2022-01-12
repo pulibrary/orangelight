@@ -19,6 +19,8 @@
 //= require chosen-jquery
 //= require intro
 //
+//= require bootstrap/alert
+//= require bootstrap/tab
 //= require 'blacklight_advanced_search'
 //
 // Required by Blacklight
