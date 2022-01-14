@@ -3,7 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe SearchBuilder do
-  subject(:search_builder) { described_class.new([]) }
+  subject(:search_builder) { described_class.new([], scope) }
+
+  let(:blacklight_config) { Blacklight::Configuration.new }
+  let(:scope) { double blacklight_config: blacklight_config }
 
   describe '#excessive_paging' do
     let(:excessive) { 9999 }
