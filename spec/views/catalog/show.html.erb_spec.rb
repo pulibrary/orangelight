@@ -97,4 +97,28 @@ RSpec.describe 'catalog/show' do
       expect(page).not_to have_link('Temporary Digital Access from Hathi Trust', href: 'https://babel.hathitrust.org/Shibboleth.sso/Login?entityID=https://idp.princeton.edu/idp/shibboleth&target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fpt%3Fid%3Dmdp.39015015749305')
     end
   end
+
+  context 'it has a lang attribute in the document view' do
+    it 'defaults to en if there is no language_primary_iana_s field' do
+      visit 'catalog/99124945733506421'
+      header_title = find(:xpath, "//*[@id='content']/div[1]/h1")
+      expect(header_title['lang']).to eq 'en'
+    end
+    it 'has the language from the language_primary_iana_s field' do
+      visit 'catalog/99125428126306421'
+      header_title = find(:xpath, "//*[@id='content']/div[1]/h1")
+      expect(header_title['lang']).to eq 'it'
+    end
+  end
+  context 'when there is a vernacular title and a heading title' do
+    it 'has a lang title in both headers' do
+      visit 'catalog/9939238033506421'
+
+      vernacular_title = find(:css, "#content > div.col-12.header-row > h1:nth-child(1)")
+      expect(vernacular_title['lang']).to eq 'zh'
+
+      header_title = find(:css, "#content > div.col-12.header-row > h1:nth-child(3)")
+      expect(header_title['lang']).to eq 'zh'
+    end
+  end
 end

@@ -163,7 +163,7 @@ describe 'blacklight tests' do
       note = r['notes_display'][0]
       note_vern = r['notes_display'].last
       get '/catalog/4705307'
-      expect(response.body.include?("<h1 dir=\"rtl\"> #{title_vern} </h1>")).to eq true
+      expect(response.body.include?("<h1 dir=\"rtl\" lang=\"en\"> #{title_vern} </h1>")).to eq true
       expect(response.body.include?("<li dir=\"ltr\"> #{note} </li>")).to eq true
       expect(response.body.include?("<li dir=\"rtl\"> #{note_vern} </li>")).to eq true
     end

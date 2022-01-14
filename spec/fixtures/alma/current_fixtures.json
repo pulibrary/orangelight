@@ -29048,5 +29048,507 @@
   "access_facet": [
     "In the Library"
   ]
+},
+{
+	"id": [
+		"99125428126306421"
+	],
+	"numeric_id_b": [
+		true
+	],
+	"cjk_all": [
+		""
+	],
+	"cjk_notes": [
+		""
+	],
+	"author_display": [
+		"Proietti, Giorgia"
+	],
+	"author_sort": [
+		"Proietti, Giorgia"
+	],
+	"author_citation_display": [
+		"Proietti, Giorgia"
+	],
+	"author_roles_1display": [
+		"{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Proietti, Giorgia\"}"
+	],
+	"author_s": [
+		"Proietti, Giorgia"
+	],
+	"marc_relator_display": [
+		"Author"
+	],
+	"title_display": [
+		"Prima di Erodoto : aspetti della memoria delle Guerre persiane / Giorgia Proietti."
+	],
+	"title_a_index": [
+		"Prima di Erodoto"
+	],
+	"title_sort": [
+		"Prima di Erodoto : aspetti della memoria delle Guerre persiane / Giorgia Proietti."
+	],
+	"title_no_h_index": [
+		"Prima di Erodoto : aspetti della memoria delle Guerre persiane / Giorgia Proietti."
+	],
+	"title_t": [
+		"Prima di Erodoto : aspetti della memoria delle Guerre persiane / Giorgia Proietti."
+	],
+	"title_citation_display": [
+		"Prima di Erodoto : aspetti della memoria delle Guerre persiane"
+	],
+	"series_statement_index": [
+		"Hermes. Einzelschriften, 0341-0064 ; Einzelschrift 120"
+	],
+	"series_ae_index": [
+		"Hermes. Einzelschriften ; Heft 120."
+	],
+	"compiled_created_t": [
+		"Prima di Erodoto : aspetti della memoria delle Guerre persiane / Giorgia Proietti."
+	],
+	"pub_created_display": [
+		"Stuttgart : Franz Steiner Verlag, [2021]",
+		"Memmingen : Druck: Memminger MedienCentrum, [2021]",
+		"©2021"
+	],
+	"pub_created_s": [
+		"Stuttgart : Franz Steiner Verlag, [2021]",
+		"Memmingen : Druck: Memminger MedienCentrum, [2021]",
+		"©2021"
+	],
+	"pub_citation_display": [
+		"Stuttgart: Franz Steiner Verlag",
+		"Memmingen: Druck: Memminger MedienCentrum"
+	],
+	"pub_date_display": [
+		"2021"
+	],
+	"pub_date_start_sort": [
+		"2021"
+	],
+	"pub_date_end_sort": [
+		"2021"
+	],
+	"cataloged_tdt": [
+		"2021-12-16T18:26:50Z"
+	],
+	"format": [
+		"Book"
+	],
+	"description_display": [
+		"xvii, 546 pages : illustrations ; 25 cm"
+	],
+	"description_t": [
+		"xvii, 546 pages : illustrations ; 25 cm"
+	],
+	"number_of_pages_citation_display": [
+		"xvii, 546 pages"
+	],
+	"geocode_display": [
+		"Greece"
+	],
+	"series_display": [
+		"Hermes. Einzelschriften ; Heft 120.",
+		"Hermes. Einzelschriften, 0341-0064 ; Einzelschrift 120"
+	],
+	"more_in_this_series_t": [
+		"Hermes. Einzelschriften"
+	],
+	"notes_index": [
+		"Includes quotations in Greek, with Italian translation, and includes quotations in English.",
+		"Introduction (\"Before the 'Histories'\", pages ix-xi) and \"Summary of the book\" (pages 456-463) in English.",
+		"Includes bibliographical references (pages 465-536) and indexes.",
+		"Questo libro riguarda la memoria delle Guerre persiane ad Atene, in rapporto con lo scenario panellenico, dall'immediato dopo Maratona fino alla cosiddetta 'prima Guerra del Peloponneso' (461?446). Esso analizza tutte le forme di memoria pre-storiografiche (poesia, iscrizioni, monumenti, topografia, teatro, riti, culti, festival, discorso pubblico) attraverso le quali le Guerre persiane vennero ricordate e rappresentate prima che Erodoto le raccontasse in forma storiografica.0Andando a riempire una lacuna nella ricerca attuale, il libro prende le mosse dalla consapevolezza per cui le Guerre persiane così come sono raccontate nelle Storie di Erodoto non corrispondono esattamente alla storia fattuale, ma sono invece l'esito di un processo multiforme e stratificato di memorializzazione, che decennio dopo decennio ha riplasmato gli eventi alla luce delle esigenze presenti. Combinando un approccio filologico alla documentazione letteraria, epigrafica e archeologica con un panorama teorico e metodologico influenzato dall'antropologia culturale e dagli studi sulla memoria, esso ricostruisce le immagini e i significati associati a ciascuno strato di tale processo, offrendo così una sorta di 'stratigrafia della memoria' delle Guerre persiane prima di Erodoto."
+	],
+	"summary_note_display": [
+		"Questo libro riguarda la memoria delle Guerre persiane ad Atene, in rapporto con lo scenario panellenico, dall'immediato dopo Maratona fino alla cosiddetta 'prima Guerra del Peloponneso' (461?446). Esso analizza tutte le forme di memoria pre-storiografiche (poesia, iscrizioni, monumenti, topografia, teatro, riti, culti, festival, discorso pubblico) attraverso le quali le Guerre persiane vennero ricordate e rappresentate prima che Erodoto le raccontasse in forma storiografica.0Andando a riempire una lacuna nella ricerca attuale, il libro prende le mosse dalla consapevolezza per cui le Guerre persiane così come sono raccontate nelle Storie di Erodoto non corrispondono esattamente alla storia fattuale, ma sono invece l'esito di un processo multiforme e stratificato di memorializzazione, che decennio dopo decennio ha riplasmato gli eventi alla luce delle esigenze presenti. Combinando un approccio filologico alla documentazione letteraria, epigrafica e archeologica con un panorama teorico e metodologico influenzato dall'antropologia culturale e dagli studi sulla memoria, esso ricostruisce le immagini e i significati associati a ciascuno strato di tale processo, offrendo così una sorta di 'stratigrafia della memoria' delle Guerre persiane prima di Erodoto."
+	],
+	"notes_display": [
+		"Introduction (\"Before the 'Histories'\", pages ix-xi) and \"Summary of the book\" (pages 456-463) in English."
+	],
+	"bib_ref_notes_display": [
+		"Includes bibliographical references (pages 465-536) and indexes."
+	],
+	"language_display": [
+		"Includes quotations in Greek, with Italian translation, and includes quotations in English."
+	],
+	"language_facet": [
+		"Italian",
+		"Greek, Ancient (to 1453)",
+		"English"
+	],
+	"publication_place_facet": [
+		"Germany"
+	],
+	"language_code_s": [
+		"ita",
+		"grc",
+		"eng"
+	],
+	"language_iana_s": [
+		"it",
+		"grc",
+		"en"
+	],
+	"language_iana_primary_s": [
+		"it"
+	],
+	"lc_subject_display": [
+		"Herodotus—History",
+		"Greece—History—Persian Wars, 500-449 B.C."
+	],
+	"lc_subject_include_archaic_search_terms_index": [
+		"Herodotus—History",
+		"Greece—History—Persian Wars, 500-449 B.C."
+	],
+	"subject_unstem_search": [
+		"Herodotus—History",
+		"Greece—History—Persian Wars, 500-449 B.C."
+	],
+	"siku_subject_unstem_search": null,
+	"subject_facet": [
+		"Herodotus—History",
+		"Greece—History—Persian Wars, 500-449 B.C."
+	],
+	"subject_topic_facet": [
+		"Herodotus. History",
+		"Greece",
+		"History"
+	],
+	"lc_1letter_facet": [
+		"D - World History"
+	],
+	"lc_rest_facet": [
+		"DF - Greece (History)"
+	],
+	"call_number_scheme_facet": [
+		"Library of Congress"
+	],
+	"call_number_group_facet": [
+		"D - World History"
+	],
+	"call_number_full_facet": [
+		"DF - Greece (History)"
+	],
+	"isbn_display": [
+		"9783515128872 ((hardbound ; : acid-free paper))",
+		"3515128875 ((hardbound ; : acid-free paper))"
+	],
+	"standard_no_024_index": [
+		"9783515128872"
+	],
+	"standard_no_1display": [
+		"{\"International Article Number\":[\"9783515128872\"]}"
+	],
+	"isbn_s": [
+		"9783515128872"
+	],
+	"oclc_s": [
+		"1258953847"
+	],
+	"standard_no_index": [
+		"1258953847",
+		"on1258953847"
+	],
+	"other_version_s": [
+		"9783515128872",
+		"on1258953847",
+		"on1258696267"
+	],
+	"subject_era_facet": [
+		"500-449 B.C",
+		"Greece: Persian Wars, 500-449 B.C"
+	],
+	"holdings_1display": [
+		"{\"22910398870006421\":{\"location_code\":\"firestone$clas\",\"location\":\"Classics Collection\",\"library\":\"Firestone Library\",\"call_number\":\"DF225 .P75 2021\",\"call_number_browse\":\"DF225 .P75 2021\",\"items\":[{\"holding_id\":\"22910398870006421\",\"id\":\"23910398850006421\",\"status_at_load\":\"1\",\"barcode\":\"32101108133123\"}]}}"
+	],
+	"location_code_s": [
+		"firestone$clas"
+	],
+	"location": [
+		"Firestone Library"
+	],
+	"location_display": [
+		"Classics Collection"
+	],
+	"advanced_location_s": [
+		"firestone$clas",
+		"Firestone Library"
+	],
+	"name_title_browse_s": [
+		"Proietti, Giorgia. Prima di Erodoto"
+	],
+	"call_number_display": [
+		"DF225 .P75 2021"
+	],
+	"call_number_browse_s": [
+		"DF225 .P75 2021"
+	],
+	"call_number_locator_display": [
+		"DF225 .P75 2021"
+	],
+	"access_facet": [
+		"In the Library"
+	]
+},
+{
+	"id": [
+		"9939238033506421"
+	],
+	"numeric_id_b": [
+		true
+	],
+	"cjk_all": [
+		"葉其蓁. 抱乙子幼科指掌遺藁 : 五卷 / 葉其蓁編輯 ; [葉] 大本述. 幼科指掌.  [China : s.n.], 清乾隆癸亥 [8年, 1743] 子部 醫家類 兒科. sk 葉大本, 述. 書業堂, 藏板. 封面鐫\"抱乙子遺藁南汇葉困菴先生編輯幼科指掌書業堂藏板\". 乾隆癸亥李大倫\"序\"言刻書事. 框19 x 13.1公分, 9行18字, 白口, 左右雙邊, 單黑魚尾. 版心上鐫\"幼科\", 中鐫卷次."
+	],
+	"cjk_notes": [
+		"封面鐫\"抱乙子遺藁南汇葉困菴先生編輯幼科指掌書業堂藏板\". 乾隆癸亥李大倫\"序\"言刻書事. 框19 x 13.1公分, 9行18字, 白口, 左右雙邊, 單黑魚尾. 版心上鐫\"幼科\", 中鐫卷次."
+	],
+	"author_display": [
+		"Ye, Qizhen",
+		"葉其蓁."
+	],
+	"author_sort": [
+		"Ye, Qizhen"
+	],
+	"author_citation_display": [
+		"Ye, Qizhen",
+		"Ye, Daben",
+		"Shu ye tang",
+		"Chinese Rare Books Project"
+	],
+	"author_roles_1display": [
+		"{\"secondary_authors\":[\"葉其蓁.\",\"Ye, Daben\",\"葉大本\",\"Shu ye tang\",\"書業堂\",\"Chinese Rare Books Project\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Ye, Qizhen\"}"
+	],
+	"cjk_author": [
+		"葉其蓁.",
+		"葉大本",
+		"書業堂"
+	],
+	"author_s": [
+		"Ye, Qizhen",
+		"葉其蓁.",
+		"Ye, Daben",
+		"葉大本",
+		"Shu ye tang",
+		"書業堂",
+		"Chinese Rare Books Project"
+	],
+	"marc_relator_display": [
+		"Author"
+	],
+	"title_display": [
+		"Baoyizi you ke zhi zhang yi gao : wu juan / Ye Qizhen bian ji ; [Ye] Daben shu."
+	],
+	"title_a_index": [
+		"Baoyizi you ke zhi zhang yi gao",
+		"抱乙子幼科指掌遺藁"
+	],
+	"title_vern_display": [
+		"抱乙子幼科指掌遺藁 : 五卷 / 葉其蓁編輯 ; [葉] 大本述."
+	],
+	"title_sort": [
+		"Baoyizi you ke zhi zhang yi gao : wu juan / Ye Qizhen bian ji ; [Ye] Daben shu."
+	],
+	"title_vern_sort": [
+		"抱乙子幼科指掌遺藁 : 五卷 / 葉其蓁編輯 ; [葉] 大本述."
+	],
+	"title_no_h_index": [
+		"Baoyizi you ke zhi zhang yi gao : wu juan / Ye Qizhen bian ji ; [Ye] Daben shu.",
+		"抱乙子幼科指掌遺藁 : 五卷 / 葉其蓁編輯 ; [葉] 大本述."
+	],
+	"title_t": [
+		"Baoyizi you ke zhi zhang yi gao : wu juan / Ye Qizhen bian ji ; [Ye] Daben shu."
+	],
+	"title_citation_display": [
+		"Baoyizi you ke zhi zhang yi gao : wu juan",
+		"抱乙子幼科指掌遺藁 : 五卷"
+	],
+	"cjk_title": [
+		"抱乙子幼科指掌遺藁 : 五卷 / 葉其蓁編輯 ; [葉] 大本述.",
+		"幼科指掌. "
+	],
+	"compiled_created_t": [
+		"Baoyizi you ke zhi zhang yi gao : wu juan / Ye Qizhen bian ji ; [Ye] Daben shu.",
+		"抱乙子幼科指掌遺藁 : 五卷 / 葉其蓁編輯 ; [葉] 大本述."
+	],
+	"pub_created_vern_display": [
+		"[China : s.n.], 清乾隆癸亥 [8年, 1743]"
+	],
+	"pub_created_display": [
+		"[China : s.n.], Qing Qianlong gui hai [8 nian, 1743]",
+		"[China : s.n.], 清乾隆癸亥 [8年, 1743]"
+	],
+	"pub_created_s": [
+		"[China : s.n.], Qing Qianlong gui hai [8 nian, 1743]",
+		"[China : s.n.], 清乾隆癸亥 [8年, 1743]"
+	],
+	"pub_citation_display": [
+		"China: s.n."
+	],
+	"pub_date_display": [
+		"1743"
+	],
+	"pub_date_start_sort": [
+		"1743"
+	],
+	"cataloged_tdt": [
+		"2020-12-08T21:51:07Z"
+	],
+	"format": [
+		"Book"
+	],
+	"electronic_access_1display": [
+		"{\"https://catalog.princeton.edu/catalog/3923803#view\":[\"Digital content\"],\"https://libimages1.princeton.edu/loris/CHRBPageImages/NJPX95B837.jp2/full/full/0/default.jpg\":[\"First page of main text\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/hd76s271v\":\"https://figgy.princeton.edu/concern/scanned_resources/794f89bb-1c8f-401f-a9ee-9a3c1f3af2d9/manifest\"}}"
+	],
+	"electronic_access_index": [
+		"http://arks.princeton.edu/ark:/88435/hd76s271v",
+		"First page of main text https://libimages1.princeton.edu/loris/CHRBPageImages/NJPX95B837.jp2/full/full/0/default.jpg"
+	],
+	"description_display": [
+		"6 v. ; 26 cm."
+	],
+	"description_t": [
+		"6 v. ; 26 cm."
+	],
+	"number_of_pages_citation_display": [
+		"6 v."
+	],
+	"notes_index": [
+		"In case. NjP-G",
+		"Also available in an electronic version."
+	],
+	"notes_display": [
+		"In case.",
+		"封面鐫\"抱乙子遺藁南汇葉困菴先生編輯幼科指掌書業堂藏板\".",
+		"乾隆癸亥李大倫\"序\"言刻書事.",
+		"框19 x 13.1公分, 9行18字, 白口, 左右雙邊, 單黑魚尾. 版心上鐫\"幼科\", 中鐫卷次."
+	],
+	"language_facet": [
+		"Chinese"
+	],
+	"publication_place_facet": [
+		"China"
+	],
+	"language_code_s": [
+		"chi"
+	],
+	"language_iana_s": [
+		"zh"
+	],
+	"language_iana_primary_s": [
+		"zh"
+	],
+	"other_format_display": [
+		"Also available in an electronic version."
+	],
+	"lc_subject_display": [
+		"Pediatrics—Early works to 1800",
+		"Medicine, Chinese—Formulae, receipts, prescriptions"
+	],
+	"lc_subject_include_archaic_search_terms_index": [
+		"Pediatrics—Early works to 1800",
+		"Medicine, Chinese—Formulae, receipts, prescriptions"
+	],
+	"siku_subject_display": [
+		"Zi bu—Yi jia lei—Er ke.",
+		"子部—醫家類—兒科."
+	],
+	"subject_unstem_search": [
+		"Pediatrics—Early works to 1800",
+		"Medicine, Chinese—Formulae, receipts, prescriptions"
+	],
+	"siku_subject_unstem_search": [
+		"Zi bu—Yi jia lei—Er ke.",
+		"子部—醫家類—兒科."
+	],
+	"subject_facet": [
+		"Pediatrics—Early works to 1800",
+		"Medicine, Chinese—Formulae, receipts, prescriptions",
+		"Zi bu—Yi jia lei—Er ke.",
+		"子部—醫家類—兒科."
+	],
+	"cjk_subject": [
+		"子部 醫家類 兒科."
+	],
+	"subject_topic_facet": [
+		"Pediatrics",
+		"Early works to 1800",
+		"Medicine, Chinese",
+		"Zi bu",
+		"Yi jia lei",
+		"Er ke.",
+		"子部",
+		"醫家類",
+		"兒科."
+	],
+	"genre_facet": [
+		"Formulae, receipts, prescriptions"
+	],
+	"related_name_json_1display": [
+		"{\"Shu\":[\"Ye, Daben\"],\"述\":[\"葉大本\"],\"Cang ban\":[\"Shu ye tang\"],\"藏板\":[\"書業堂\"],\"Related name\":[\"Chinese Rare Books Project\"]}"
+	],
+	"other_title_index": [
+		"You ke zhi zhang.",
+		"幼科指掌. "
+	],
+	"other_title_display": [
+		"You ke zhi zhang.",
+		"幼科指掌. "
+	],
+	"alt_title_246_display": [
+		"You ke zhi zhang.",
+		"幼科指掌. "
+	],
+	"oclc_s": [
+		"52666963"
+	],
+	"standard_no_index": [
+		"3923803",
+		"NJPX95-B837",
+		"ocm52666963",
+		"3923803-princetondb"
+	],
+	"other_version_s": [
+		"ocm52666963"
+	],
+	"holdings_1display": [
+		"{\"227413470006421\":{\"location_code\":\"rare$hycrare\",\"location\":\"East Asian Library Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"TC91/2877\",\"call_number_browse\":\"TC91/2877\",\"location_has\":[\"Vol.1-v.6\"]}}"
+	],
+	"location_code_s": [
+		"rare$hycrare"
+	],
+	"location": [
+		"Special Collections"
+	],
+	"location_display": [
+		"East Asian Library Rare Books"
+	],
+	"advanced_location_s": [
+		"rare$hycrare",
+		"Special Collections"
+	],
+	"name_title_browse_s": [
+		"Ye, Qizhen. Baoyizi you ke zhi zhang yi gao",
+		"葉其蓁.. 抱乙子幼科指掌遺藁"
+	],
+	"call_number_display": [
+		"TC91/2877"
+	],
+	"call_number_browse_s": [
+		"TC91/2877"
+	],
+	"call_number_locator_display": [
+		"TC91/2877"
+	],
+	"electronic_portfolio_s": [
+		"{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na07.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53372339140006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+		"{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na07.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53372339110006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+	],
+	"access_facet": [
+		"Online",
+		"In the Library"
+	]
 }
 ]

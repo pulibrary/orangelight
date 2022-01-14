@@ -118,6 +118,16 @@ module BlacklightHelper
       link_to('[Browse]', "/browse/names?q=#{CGI.escape name}", class: 'browse-related-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name}", title: "Browse: #{name}")
   end
 
+  # render_document_heading from Blacklight 7.0.0
+  # https://github.com/projectblacklight/blacklight/blob/237dd74fe6e6dcb11152c69c213aa2ed62bcd5b1/app/helpers/blacklight/blacklight_helper_behavior.rb#L208
+  def render_document_heading(*args)
+    options = args.extract_options!
+    document = args.first
+    tag = options.fetch(:tag, :h4)
+    document ||= @document
+    content_tag(tag, presenter(document).heading, itemprop: "name", lang: language_iana_primary_value)
+  end
+
   ##
   # Render the heading partial for a document
   #
