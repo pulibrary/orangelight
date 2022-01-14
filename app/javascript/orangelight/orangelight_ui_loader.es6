@@ -1,12 +1,14 @@
 import AvailabilityUpdater from '../orangelight/availability'
 import FiggyManifestManager from '../orangelight/figgy_manifest_manager'
 import GoogleBooksSnippets from '../orangelight/google_books_snippets'
+import { handleBtnKeyDown } from './accessible_facets'
 
 export default class OrangelightUiLoader {
   run() {
     this.setup_availability()
     this.setup_modal_focus()
     this.setup_viewers()
+    handleBtnKeyDown()
   }
 
   setup_modal_focus() {
