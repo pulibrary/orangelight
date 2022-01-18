@@ -183,3 +183,14 @@ Style/GuardClause:
     - 'app/models/concerns/blacklight/document/dublin_core.rb'
     - 'app/models/concerns/blacklight/document/email.rb'
     - 'app/models/concerns/blacklight/document/ris.rb'
+
+Rails/UnknownEnv:
+  Environments:
+    - qa
+    - staging
+    - production
+    - test
+    - development
+
+Rails/RakeEnvironment:
+  Enabled: false
