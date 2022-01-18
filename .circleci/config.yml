@@ -1,9 +1,11 @@
 ---
 version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.1
 executors:
   orangelight-executor:
     docker:
-      - image: circleci/ruby:2.6-node-browsers
+      - image: cimg/ruby:2.7.5-browsers
         environment:
           RAILS_ENV: test
           ORANGELIGHT_HOST: localhost
@@ -20,7 +22,7 @@ executors:
     working_directory: ~/orangelight
   basic-executor:
     docker:
-      - image: circleci/ruby:2.6-node-browsers
+      - image: cimg/ruby:2.7.5-browsers
         environment:
           RAILS_ENV: test
           NVM_HOME: ~/.nvm
@@ -33,14 +35,14 @@ commands:
       # Restore bundle cache
       - restore_cache:
           keys:
-          - orangelight-1-{{ checksum "Gemfile.lock" }}
-          - orangelight-1-
+          - orangelight-v2.1-{{ checksum "Gemfile.lock" }}
+          - orangelight-v2.1-
       # Bundle install dependencies
       - run:
           name: Install dependencies
-          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+          command: bundle config set --local path 'vendor/bundle'; bundle check  || bundle install --jobs 4 --retry 3
       - save_cache:
-          key: orangelight-1-{{ checksum "Gemfile.lock" }}
+          key: orangelight-v2.1-{{ checksum "Gemfile.lock" }}
           paths:
             - ./vendor/bundle
 jobs:
@@ -72,8 +74,8 @@ jobs:
       # Only necessary if app uses webpacker or yarn in some other way
       - restore_cache:
           keys:
-            - orangelight-1-{{ checksum "yarn.lock" }}
-            - orangelight-1-
+            - orangelight-v2.1-{{ checksum "yarn.lock" }}
+            - orangelight-v2.1-
       - run:
           name: Yarn Install
           command: |
@@ -81,7 +83,7 @@ jobs:
             yarn install --cache-folder ~/.cache/yarn
       # Store yarn / webpacker cache
       - save_cache:
-          key: orangelight-1-{{ checksum "yarn.lock" }}
+          key: orangelight-v2.1-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
       - persist_to_workspace:
@@ -91,6 +93,13 @@ jobs:
   test:
     executor: orangelight-executor
     steps:
+      - browser-tools/install-browser-tools
+      - checkout
+      - run: |
+          ruby --version
+          node --version
+          java --version
+          google-chrome --version
       - attach_workspace:
           at: '~/orangelight'
       - setup-bundler

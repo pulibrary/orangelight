@@ -10,7 +10,7 @@ end
 
 Capybara.register_driver(:selenium) do |app|
   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w[disable-gpu disable-setuid-sandbox window-size=7680,4320] }
+    'goog:chromeOptions': { args: %w[disable-gpu disable-setuid-sandbox window-size=7680,4320] }
   )
 
   browser_options = ::Selenium::WebDriver::Chrome::Options.new
@@ -30,7 +30,7 @@ end
 # This was needed for my local workstation, perhaps :selenium is overridden elsewhere?
 Capybara.register_driver(:selenium_headless) do |app|
   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w[headless disable-gpu disable-setuid-sandbox window-size=7680,4320] }
+    'goog:chromeOptions': { args: %w[headless disable-gpu disable-setuid-sandbox window-size=7680,4320] }
   )
 
   browser_options = ::Selenium::WebDriver::Chrome::Options.new
@@ -50,7 +50,7 @@ end
 
 Capybara.register_driver :iphone do |app|
   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w[headless disable-gpu disable-setuid-sandbox window-size=7680,4320 use-mobile-user-agent user-agent=iPhone] }
+    'goog:chromeOptions': { args: %w[headless disable-gpu disable-setuid-sandbox window-size=7680,4320 use-mobile-user-agent user-agent=iPhone] }
   )
 
   http_client = Selenium::WebDriver::Remote::Http::Default.new

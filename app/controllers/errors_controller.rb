@@ -2,7 +2,7 @@
 
 class ErrorsController < ApplicationController
   def error
-    render status: 500
+    render status: :internal_server_error
   end
 
   def missing

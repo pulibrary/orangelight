@@ -44,9 +44,10 @@ gem 'chosen-rails'
 
 gem 'introjs-rails', git: 'https://github.com/videmor/intro.js-rails.git', branch: 'update.introjs'
 
-# Capistrano
 gem 'blacklight-marc', git: 'https://github.com/projectblacklight/blacklight-marc.git', ref: 'c0ff1d9'
+# Capistrano
 gem 'capistrano', '~> 3.4.0'
+gem 'capistrano-passenger'
 gem 'devise', '>= 4.6.0'
 gem 'devise-guests', '~> 0.5'
 gem 'faraday', '~> 0.17'

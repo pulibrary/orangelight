@@ -27,7 +27,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param text [String] the label for the link
   def self.electronic_access_link(url, texts)
     markup = if /Open access/.match? texts.first
-               link_to(texts.first, url.to_s, target: '_blank')
+               link_to(texts.first, url.to_s, target: '_blank', rel: 'noopener')
              elsif %r{(\/catalog\/.+?#view)} =~ url.to_s
                if texts.first == "arks.princeton.edu"
                  link_to('Digital content', $&)
@@ -35,7 +35,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
                  link_to(texts.first, $&)
                end
              else
-               link_to(texts.first, "#{Requests.config['proxy_base']}#{url}", target: '_blank')
+               link_to(texts.first, "#{Requests.config['proxy_base']}#{url}", target: '_blank', rel: 'noopener')
              end
     markup
   end
@@ -102,7 +102,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
       end_date = portfolio['end']
       date_range = "#{start_date} - #{end_date}: " if start_date && end_date
       label = "#{date_range}#{portfolio['title']}"
-      link = link_to(label, portfolio["url"], target: '_blank')
+      link = link_to(label, portfolio["url"], target: '_blank', rel: 'noopener')
       link += " #{portfolio['desc']}"
       link = "<li>#{link}</li>"
       markup << content_tag(:li, link.html_safe, class: 'electronic-access')
