@@ -69,17 +69,19 @@ describe 'blacklight tests' do
 
     it 'links to an electronic resource with the appropriate display text' do
       get '/catalog/3'
-      expect(response.body).to include("<a target=\"_blank\" href=\"#{Requests.config['proxy_base']}http://d-nb.info/991834119/04\">Inhaltsverzeichnis</a>")
+      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"#{Requests.config['proxy_base']}http://d-nb.info/991834119/04\">Inhaltsverzeichnis</a>")
     end
 
     it 'includes $z as an additional label for the link' do
       get '/catalog/844962'
-      expect(response.body).to include("Finding aid: <a target=\"_blank\" href=\"#{Requests.config['proxy_base']}http://arks.princeton.edu/ark:/88435/pz50gw142\">arks.princeton.edu</a>")
+      expect(response.body).to(
+        include("Finding aid: <a target=\"_blank\" rel=\"noopener\" href=\"#{Requests.config['proxy_base']}http://arks.princeton.edu/ark:/88435/pz50gw142\">arks.princeton.edu</a>")
+      )
     end
 
     it 'includes the link for online holdings in search results' do
       get '/catalog?&search_field=all_fields&q=9088928'
-      expect(response.body).to include("<a target=\"_blank\" href=\"#{Requests.config['proxy_base']}http://doi.org/10.3886/ICPSR35465\">doi.org</a>")
+      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"#{Requests.config['proxy_base']}http://doi.org/10.3886/ICPSR35465\">doi.org</a>")
     end
   end
 
@@ -539,7 +541,7 @@ describe 'blacklight tests' do
     it 'record with notes field is retrieved' do
       get '/catalog.json?q1=Stoller+Eric+Kohn&f1=notes&search_field=advanced'
       r = JSON.parse(response.body)
-      expect(r['data'].select { |d| d['id'] == '10585552' }.length).to eq(1)
+      expect(r['data'].count { |d| d['id'] == '10585552' }).to eq(1)
     end
   end
 

@@ -26,7 +26,9 @@ module AdvancedHelper
 
   # carries over original search field and original guided search fields if user switches to guided search from regular search
   def guided_field(field_num, default_val)
-    return search_fields_for_advanced_search[params[:search_field]].key || default_val if field_num == :f1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
+    if field_num == :f1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
+      return search_fields_for_advanced_search[params[:search_field]].key || default_val
+    end
     params[field_num] || default_val
   end
 
@@ -105,7 +107,9 @@ module BlacklightAdvancedSearch
         @keyword_op << @params[:op2] if @params[:f1] != @params[:f2]
       end
       unless @params[:q3].blank? || @params[:op3] == 'NOT' || (@params[:q1].blank? && @params[:q2].blank?)
-        @keyword_op << @params[:op3] unless [@params[:f1], @params[:f2]].include?(@params[:f3]) && ((@params[:f1] == @params[:f3] && @params[:q1].present?) || (@params[:f2] == @params[:f3] && @params[:q2].present?))
+        unless [@params[:f1], @params[:f2]].include?(@params[:f3]) && ((@params[:f1] == @params[:f3] && @params[:q1].present?) || (@params[:f2] == @params[:f3] && @params[:q2].present?))
+          @keyword_op << @params[:op3]
+        end
       end
       @keyword_op
     end

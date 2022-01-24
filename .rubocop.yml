@@ -171,7 +171,17 @@ RSpec/VerifiedDoubles:
   Exclude:
     - 'spec/helpers/catalog_helper_spec.rb'
 
-# TODO: Fix
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - staging
+
+# TODO: Fix all below here
 Style/GuardClause:
   Exclude:
     - 'app/controllers/account_controller.rb'
@@ -183,3 +193,13 @@ Style/GuardClause:
     - 'app/models/concerns/blacklight/document/dublin_core.rb'
     - 'app/models/concerns/blacklight/document/email.rb'
     - 'app/models/concerns/blacklight/document/ris.rb'
+
+Rails/RakeEnvironment:
+  Enabled: false
+
+Rails/ContentTag:
+  Enabled: false
+
+Rails/ApplicationMailer:
+  Exclude:
+    - 'app/models/record_mailer.rb'

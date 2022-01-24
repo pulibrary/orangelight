@@ -23,7 +23,7 @@
     <%= stylesheet_link_tag "application", media: "screen" %>
     <%= stylesheet_link_tag "print", media: "print" %>
     <%= javascript_include_tag "application" %>
-    <script><%= Global.generate_js(only: %w(graphql figgy)).html_safe %></script>
+    <script>window.Global = {"graphql":<%= Global.graphql.to_json.html_safe %>,"figgy":<%= Global.figgy.to_json.html_safe %>}</script>
     <%= javascript_pack_tag 'application' %>
     <% unless controller.controller_name == "catalog" && controller.action_name == "show" && @document.alma_record? %>
     <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML", async: true %>

@@ -8,6 +8,8 @@ require 'capistrano/deploy'
 
 require 'capistrano/rails'
 
+require "capistrano/passenger"
+
 require 'whenever/capistrano'
 
 # Includes tasks from other gems included in your Gemfile

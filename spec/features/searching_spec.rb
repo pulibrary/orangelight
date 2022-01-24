@@ -84,7 +84,7 @@ describe 'searching' do
     it 'displays an error message' do
       visit '/catalog/range_limit?%20%20%20%20range_end=1990&%20%20%20%20range_field=pub_date_start_sort&%20%20%20%20range_start=1981'
       expect { page }.not_to raise_error
-      expect(page).to have_content 'For help, please email', 'start over'
+      expect(page).to have_content(/.*For help, please email.*start over.*/)
     end
   end
   context 'with an invalid field list parameter in the advanced search' do
@@ -101,7 +101,7 @@ describe 'searching' do
       visit '/catalog?q=test&f=1'
       expect { page }.not_to raise_error
       expect(page.status_code).to eq 400
-      expect(page).to have_content 'For help, please email', 'start over'
+      expect(page).to have_content(/.*For help, please email.*start over.*/)
       expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request: Invalid facet parameter passed: 1/)
     end
   end
@@ -112,7 +112,7 @@ describe 'searching' do
       visit "/catalog?q=&f[author_s]=#{CGI.escape('汪精衛, 1883-1944')}"
       expect { page }.not_to raise_error
       expect(page.status_code).to eq 400
-      expect(page).to have_content 'For help, please email', 'start over'
+      expect(page).to have_content(/.*For help, please email.*start over.*/)
       expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request: Facet field author_s has a scalar value 汪精衛, 1883-1944/)
     end
   end

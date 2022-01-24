@@ -18,7 +18,7 @@ module ApplicationHelper
     unless electronic_access.nil?
       links_hash = JSON.parse(electronic_access)
       links_hash.first(2).each do |url, text|
-        link = link_to(text.first, "#{Requests.config['proxy_base']}#{url}", target: '_blank')
+        link = link_to(text.first, "#{Requests.config['proxy_base']}#{url}", target: '_blank', rel: 'noopener')
         link = "#{text[1]}: ".html_safe + link if text[1]
         urls << content_tag(:div, link, class: 'library-location')
       end
@@ -33,7 +33,7 @@ module ApplicationHelper
     return [] if document.try(:electronic_portfolios).blank?
     document.electronic_portfolios.map do |portfolio|
       content_tag(:div, class: 'library-location') do
-        link_to(portfolio["title"], portfolio["url"], target: '_blank')
+        link_to(portfolio["title"], portfolio["url"], target: '_blank', rel: 'noopener')
       end
     end
   end
@@ -101,7 +101,7 @@ module ApplicationHelper
     series_titles = args[:document]['more_in_this_series_t'] || []
     args[:document][args[:field]].each_with_index do |title, i|
       newtitle = title
-      unless (series_name = series_titles.select { |t| title.start_with?(t) }.first).nil?
+      unless (series_name = series_titles.find { |t| title.start_with?(t) }).nil?
         newtitle << %(  #{more_in_this_series_link(series_name)})
         series_titles.delete(series_name)
       end
@@ -146,7 +146,7 @@ module ApplicationHelper
     args[:document][args[:field]].each_with_index do |reference, i|
       if (url = reference[/ (http.*)$/])
         reference = reference.chomp(url)
-        args[:document][args[:field]][i] = link_to(reference, url.gsub(/\s/, ''), target: '_blank')
+        args[:document][args[:field]][i] = link_to(reference, url.gsub(/\s/, ''), target: '_blank', rel: 'noopener')
       end
     end
   end
@@ -206,7 +206,9 @@ module ApplicationHelper
         if holding['dspace'] || holding['location_code'] == 'rare$num'
           check_availability = false
           info << content_tag(:span, 'On-site access', class: 'availability-icon badge badge-success', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
-          info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe if aeon_location?(location)
+          if aeon_location?(location)
+            info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe
+          end
         elsif /^scsb.+/.match? location[:code]
           check_availability = false
           unless holding['items'].nil?
@@ -220,7 +222,9 @@ module ApplicationHelper
           end
         elsif holding['dspace'].nil?
           info << content_tag(:span, 'Loading...', class: 'availability-icon badge badge-secondary').html_safe
-          info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe if aeon_location?(location)
+          if aeon_location?(location)
+            info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe
+          end
         else
           check_availability = false
           info << content_tag(:span, 'Unavailable', class: 'availability-icon badge badge-danger', title: 'Availability: Material under embargo', 'data-toggle' => 'tooltip')
