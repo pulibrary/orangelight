@@ -453,6 +453,8 @@ GEM
       rspec-mocks (~> 3.9.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.4)
+    rspec_junit_formatter (0.5.1)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (0.85.1)
       parallel (~> 1.10)
       parser (>= 2.7.0.1)
@@ -669,6 +671,7 @@ DEPENDENCIES
   requests!
   rsolr
   rspec-rails (~> 3.4)
+  rspec_junit_formatter
   rubyzip (>= 1.2.2)
   sass-rails (~> 5.0)
   sitemap_generator (~> 6.0)

@@ -132,10 +132,13 @@ jobs:
           command: bundle exec rake pulsearch:solr:index
       - run:
           name: Run Rspec
-          command: bundle exec rspec spec
+          command: bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
+          when: always
       - run:
           name: Run JS unit tests
           command: bundle exec yarn test
+      - store_test_results:
+          path: ~/rspec
 
   rubocop:
     executor: basic-executor
