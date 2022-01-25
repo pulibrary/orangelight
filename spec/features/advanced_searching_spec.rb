@@ -24,6 +24,24 @@ describe 'advanced searching' do
     expect(page).to have_selector('label', exact_text: 'Publication date range (ending year)')
   end
 
+  it 'allows searching by format', js: true do
+    visit '/advanced'
+    expect(page).to have_selector('label', exact_text: 'Format')
+    format_button = find_button('Type or select formats')
+    format_button.click
+    drop_down = format_button.sibling(".dropdown-menu")
+    expect(drop_down).to have_content("Musical score")
+    expect(drop_down).to have_content("Senior thesis")
+    drop_down.find("input").fill_in(with: "co")
+    expect(drop_down).to have_content("Musical score")
+    expect(drop_down).to have_content("Coin")
+    expect(drop_down).not_to have_content("Senior thesis")
+    page.find('li', text: 'Musical score').click
+    click_button("advanced-search-submit")
+    expect(page).to have_content("Il secondo libro de madregali a cinque voci / di Giaches de Wert.")
+    expect(page).not_to have_content("Огонек : роман")
+  end
+
   context 'with a numismatics advanced search type' do
     it 'provides labels to numismatics form elements' do
       visit '/numismatics'
