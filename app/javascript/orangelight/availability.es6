@@ -133,10 +133,10 @@ export default class AvailabilityUpdater {
   // search results
   process_result(record_id, holding_records) {
     for (let holding_id in holding_records) {
-      if (holding_id.match(/[a-zA-Z]\$[a-zA-Z]/) || holding_id.startsWith('fake_id_')) {
+      if (holding_id.match(/[a-zA-Z]\$[a-zA-Z]/)) {
         // In this case we cannot correlate the holding data from the availability API
         // (holding_records) with the holding data already on the page (from Solr).
-        // In this case we set all of them to "Check record" because we can get this
+        // In this case we set all of them to "View record for Full Availability" because we can get this
         // information in the Show page.
         const badges = $(`*[data-availability-record='true'][data-record-id='${record_id}'] span.availability-icon`);
         badges.text("View record for Full Availability")
@@ -172,45 +172,18 @@ export default class AvailabilityUpdater {
   // process_single() is used in the Show page and typically `holding_records` only has the
   // information for a single bib since we are on the Show page. But occasionally the record
   // that we are showing is bound with another (host) record and in those instances
-  // `holding_records` has data for two bibs: `this.id` and `this.host_id`.
+  // `holding_records` has data for two or more bibs: `this.id`, `this.host_id`.
   process_single(holding_records) {
-    this.process_single_for_bib(holding_records, this.id)
+    this.update_single(holding_records, this.id)
     // Availability response in bibdata should be refactored not to include the host holdings under the mms_id of the record page.
     // problematic availability response behaviour for constituent record page with host records. 
-    // It treats host records as holdings of the constituent record. 
+    // It treats host records as holdings of the constituent record. see: https://github.com/pulibrary/bibdata/issues/1739
     if (this.host_id.length > 0) {
       this.host_id.forEach( (mms_id) => {
-        this.process_single_for_bib(holding_records, mms_id)
+        this.update_single(holding_records, mms_id)
       })
     }
   }
-
-  // process_single_for_bib() processes the data for a specific mms_id within the `holding_records`
-  process_single_for_bib(holding_records, mms_id) {
-    var dataComplete = true;
-    for (let holding_id in holding_records[mms_id]) {
-      const availability_info = holding_records[mms_id][holding_id];
-      if ((availability_info['temp_location'] === true) && holding_id.match(/[a-zA-Z]\$[a-zA-Z]/) || holding_id.startsWith('fake_id_')) {
-        dataComplete = false; // The data that we get from Alma for temporary locations is incomplete.
-        break;
-      }
-    }
-
-    if (dataComplete) {
-      // Update the page with the data that we already have.
-      this.update_single(holding_records, mms_id);
-      return;
-    }
-
-    // Make a separate call (with deep=true) to get more information before updating the page.
-    var url = `${this.bibdata_base_url}/bibliographic/${mms_id}/availability.json?deep=true`;
-    $.getJSON(url, (data) => { this.update_single(data, mms_id); })
-      .fail((jqXHR, textStatus, errorThrown) => {
-        return console.error(`Failed to retrieve deep availability data for bib. record ${mms_id}: ${errorThrown}`);
-      });
-
-    return;
-  };
 
   update_single(holding_records, id) {
     return (() => {
@@ -234,7 +207,6 @@ export default class AvailabilityUpdater {
           let temp_map_link = this.stackmap_link(id, availability_info);
           current_map_link.replaceWith(temp_map_link);
         }
-
         result.push(this.update_request_button(holding_id, availability_info));
       }
       return result;
@@ -359,7 +331,7 @@ export default class AvailabilityUpdater {
       display_request = 'false';
     }
     if (display_request === 'true') {
-      if (availability_info['temp_loc']) {
+      if (availability_info['temp_location']) {
         return location_services_element.hide();
       } else {
         return location_services_element.show();

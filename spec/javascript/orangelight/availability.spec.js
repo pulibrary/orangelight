@@ -75,49 +75,54 @@ describe('AvailabilityUpdater', function() {
     expect(mixed_result.text()).toEqual("Some items not available")
   })
 
-  test('search results availability for records in temporary locations says Check Record', () => {
+  test('search results availability for records in temporary locations says View record for Full Availability', () => {
     document.body.innerHTML =
-      '<li class="blacklight-holdings">' +
-      '    <ul>' +
-      '        <li data-availability-record="true" data-record-id="9959958323506421" data-holding-id="22272063570006421" data-aeon="false">' +
-      '            <span class="availability-icon badge badge-secondary">Loading...</span>' +
-      '            <div class="library-location" data-location="true" data-record-id="9959958323506421" data-holding-id="22272063570006421">' +
-      '                <span class="results_location">Lewis Library - Lewis Library</span> &raquo; ' +
-      '                <span class="call-number">QC33 .M52 2003 ' +
-      '                    <a title="Where to find it" class="find-it" data-map-location="lewis$stacks" data-blacklight-modal="trigger" aria-label="Where to find it" href="...">' +
-      '                        <span class="fa fa-map-marker" aria-hidden="true"></span>' +
-      '                    </a>' +
-      '                </span>' +
-      '            </div>' +
-      '        </li>' +
-      '        <li data-availability-record="true" data-record-id="9959958323506421" data-holding-id="22272063520006421" data-aeon="false">' +
-      '            <span class="availability-icon badge badge-secondary">Loading...</span>' +
-      '            <div class="library-location" data-location="true" data-record-id="9959958323506421" data-holding-id="22272063520006421">' +
-      '                <span class="results_location">Lewis Library - Lewis Library</span> &raquo; ' +
-      '                <span class="call-number">QC33 .M52 2003 ' +
-      '                    <a title="Where to find it" class="find-it" data-map-location="lewis$stacks" data-blacklight-modal="trigger" aria-label="Where to find it" href="...">' +
-      '                        <span class="fa fa-map-marker" aria-hidden="true"></span>' +
-      '                    </a>' +
-      '                </span>' +
-      '            </div>' +
-      '        </li>' +
-      '        <li class="empty" data-record-id="9959958323506421">' +
-      '            <a class="availability-icon more-info" title="Click on the record for full availability info" data-toggle="tooltip" href="/catalog/9959958323506421"></a>' +
-      '        </li>' +
-      '    </ul>' +
-      '</li>'
+    '<li class="blacklight-holdings">'+
+    '  <ul>'+
+    '    <li data-availability-record="true" data-record-id="9972879153506421" data-holding-id="lewis$resterm" data-aeon="false" data-bound-with="false">'+
+    '      <span class="availability-icon badge badge-secondary">Loading...</span>'+
+    '      <div class="library-location" data-location="true" data-record-id="9972879153506421" data-holding-id="lewis$resterm">'+
+    '        <span class="results_location">Lewis Library - Term Loan Reserves</span> » <span class="call-number">QP355.2 .P76 2013 <a title="Where to find it" class="find-it"'+
+    '      data-map-location="lewis$resterm" data-blacklight-modal="trigger" aria-label="Where to find it"'+
+    '      href="/catalog/9972879153506421/stackmap?loc=lewis$resterm&amp;cn=QP355.2%20.P76%202013"></a></span>'+
+    '      </div>'+
+    '    </li>'+
+    '    <li data-availability-record="true" data-record-id="9972879153506421" data-holding-id="22732100160006421" data-aeon="false" data-bound-with="false">'+
+    '      <span class="availability-icon badge badge-secondary">Loading...</span>'+
+    '      <div class="library-location" data-location="true" data-record-id="9972879153506421" data-holding-id="22732100160006421">'+
+    '        <span class="results_location">Engineering Library - Stacks</span> » <span class="call-number">QP355.2 .P76 2013 <a title="Where to find it" class="find-it"'+
+    '        data-map-location="engineer$stacks" data-blacklight-modal="trigger" aria-label="Where to find it"'+
+    '        href="/catalog/9972879153506421/stackmap?loc=engineer$stacks&amp;cn=QP355.2%20.P76%202013"></a></span>'+
+    '      </div>'+
+    '    </li>'+
+    '    <li class="empty" data-record-id="9972879153506421">'+
+    '      <a class="availability-icon more-info" title="Click on the record for full availability info" data-toggle="tooltip" href="/catalog/9972879153506421"></a>'+
+    '    </li>'+
+    '  </ul>'+
+    '</li>'
+
 
     const apiResponse = {
-      "9959958323506421": {
+      "9972879153506421": {
         "lewis$resterm": {
-          "on_reserve":"Y",
-          "location":"lewis$resterm",
-          "label":"Lewis Library - sciresp Lewis: Term Loan",
-          "status_label":"Available",
-          "copy_number":null,
-          "cdl":false,
-          "temp_location":true,
-          "id":"lewis$resterm"
+        "on_reserve": "N",
+        "location": "lewis$resterm",
+        "label": "Lewis Library - Term Loan Reserves",
+        "status_label": "Available",
+        "copy_number": null,
+        "cdl": false,
+        "temp_location": true,
+        "id": "lewis$resterm"
+        },
+        "22732100160006421": {
+        "on_reserve": "N",
+        "location": "engineer$stacks",
+        "label": "Engineering Library - Stacks",
+        "status_label": "Available",
+        "copy_number": null,
+        "cdl": false,
+        "temp_location": false,
+        "id": "22732100160006421"
         }
       }
     }
@@ -126,7 +131,7 @@ describe('AvailabilityUpdater', function() {
     const badgesBefore = document.getElementsByClassName('availability-icon')
     expect(badgesBefore[0].textContent).toEqual('Loading...')
 
-    const bibId = '9959958323506421'
+    const bibId = '9972879153506421'
     const holdingData = apiResponse[bibId]
     let u = new updater
     u.process_result(bibId, holdingData)
@@ -228,58 +233,89 @@ describe('AvailabilityUpdater', function() {
     expect(document.body.innerHTML).toContain("Undetermined");
   })
 
-  test('when record has temporary locations and complete data', () => {
-    const holding_records = {
-      "9959958323506421": {
-        "22272063570006421": {
-          "on_reserve": "N",
-          "location": "lewis$resterm",
-          "label": "sciresp: Lewis: Term Loan",
-          "status_label": "Available",
-          "copy_number": "1",
-          "cdl": false,
-          "temp_location": true,
-          "id": "22272063570006421"
-        }
-      }
-    }
+  test('when a record has temporary and permanent locations we display the status for both', () => {
+    document.body.innerHTML = '<table>'+
+    '  <tbody>'+
+    '    <tr class="holding-block">'+
+    '      <td class="library-location" data-holding-id="22732100160006421">'+
+    '        <span class="location-text" data-location="true" data-holding-id="22732100160006421">Engineering Library - Stacks</span> <a title="Where to find it" class="find-it"'+ 
+    'data-map-location="engineer$stacks" data-blacklight-modal="trigger" data-call-number="QP355.2 .P76 2013" data-library="Engineering Library"'+ 
+    'href="/catalog/9972879153506421/stackmap?loc=engineer$stacks&amp;cn=QP355.2%20.P76%202013"><span class="link-text">Where to find it</span> </a>'+
+    '      </td>'+
+    '      <td class="holding-call-number">'+
+    '        QP355.2 .P76 2013 <a class="browse-cn" title="Browse: QP355.2 .P76 2013" data-toggle="tooltip" data-original-title="Browse: QP355.2 .P76 2013"'+ 
+    'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Browse related items</span> </a>'+
+    '      </td>'+
+    '      <td class="holding-status" data-availability-record="true" data-record-id="9972879153506421" data-holding-id="22732100160006421" data-aeon="false">'+
+    '        <span class="availability-icon" title=""></span>'+
+    '      </td>'+
+    '      <td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false" data-holding-id="22732100160006421">'+
+    '        <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip"'+ 'href="/requests/9972879153506421?mfhd=22732100160006421">Request</a>'+
+    '      </td>'+
+    '      <td class="holding-details">'+
+    '        <ul class="item-status" data-record-id="9972879153506421" data-holding-id="22732100160006421"></ul>'+
+    '      </td>'+
+    '    </tr>'+
+    '    <tr class="holding-block">'+
+    '      <td class="library-location" data-holding-id="lewis$resterm">'+
+    '        <span class="location-text" data-location="true" data-holding-id="lewis$resterm">Lewis Library - Term Loan Reserves</span> <a title="Where to find it" class="find-it"'+ 
+    'data-location-map="lewis$resterm" data-blacklight-modal="trigger" href="/catalog/9972879153506421/stackmap?loc=lewis$resterm"><span class="link-text">Where to find it</span></a>'+
+    '      </td>'+
+    '      <td class="holding-call-number">'+
+    '        QP355.2 .P76 2013 <a class="browse-cn" title="Browse: QP355.2 .P76 2013" data-toggle="tooltip" data-original-title="Browse: QP355.2 .P76 2013"'+ 
+    'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Browse related items</span> </a>'+
+    '      </td>'+
+    '      <td class="holding-status" data-availability-record="true" data-record-id="9972879153506421" data-holding-id="lewis$resterm" data-aeon="false">'+
+    '        <span class="availability-icon" title=""></span>'+
+    '      </td>'+
+    '      <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="lewis$resterm">'+
+    '        <a title="" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/9972879153506421?mfhd=22732100140006421" data-original-title="View Options to Request copies'+ 
+    'from this Location">Request</a>'+
+    '      </td>'+
+    '      <td class="holding-details">'+
+    '        <ul class="item-status" data-record-id="9972879153506421" data-holding-id="lewis$resterm"></ul>'+
+    '      </td>'+
+    '    </tr>'+
+    '  </tbody>'+
+    '</table>'
 
-    // We expect to call update_single
-    let u = new updater
-    u.id = '9959958323506421'
-    const update_single = jest.spyOn(u, 'update_single')
-    u.process_single(holding_records)
-    expect(update_single).toHaveBeenCalledWith(holding_records, u.id)
-    update_single.mockRestore()
-  })
-
-  test('when record has temporary locations and incomplete data it makes an extra call to get the full data', () => {
-    const holding_records = {
-      "9959958323506421": {
+    const availability_response = {
+      "9972879153506421": {
         "lewis$resterm": {
-          "on_reserve": "N",
-          "location": "lewis$resterm",
-          "label": "sciresp: Lewis: Term Loan",
-          "status_label": "Available",
-          "copy_number": "1",
-          "cdl": false,
-          "temp_location": true,
-          "id": "lewis$resterm"
+        "on_reserve": "N",
+        "location": "lewis$resterm",
+        "label": "Lewis Library - Term Loan Reserves",
+        "status_label": "Available",
+        "copy_number": null,
+        "cdl": false,
+        "temp_location": true,
+        "id": "lewis$resterm"
+        },
+        "22732100160006421": {
+        "on_reserve": "N",
+        "location": "engineer$stacks",
+        "label": "Engineering Library - Stacks",
+        "status_label": "Available",
+        "copy_number": null,
+        "cdl": false,
+        "temp_location": false,
+        "id": "22732100160006421"
         }
       }
     }
-
-    // We expect an AJAX call to bib data but with the `deep=true` parameter.
-    // Notice that we are not testing that it calls `update_single` when the AJAX call completes
-    // (since we are mocking the AJAX call) but there are other tests that take care of that.
-    // Not ideal but good enough.
     let u = new updater
-    u.bibdata_base_url = 'http://mock_url'
-    u.id = '9959958323506421'
-    const getJSON = jest.spyOn($, 'getJSON')
-    u.process_single(holding_records)
-    expect(getJSON).toHaveBeenCalledWith("http://mock_url/bibliographic/9959958323506421/availability.json?deep=true", expect.any(Function) )
-    getJSON.mockRestore()
+    u.id = '9972879153506421'
+    u.process_single(availability_response)
+
+    const badge = document.getElementsByClassName('availability-icon')[0]
+    expect(badge.classList.values()).toContain('badge')
+    expect(badge.classList.values()).toContain('badge-success')
+    expect(badge.textContent).toEqual('Available')
+
+    const badge_second = document.getElementsByClassName('availability-icon')[1]
+    expect(badge_second.classList.values()).toContain('badge')
+    expect(badge_second.classList.values()).toContain('badge-success')
+    expect(badge_second.textContent).toEqual('Available')
   })
 
   test('record show page with an item not on CDL does not add a link', () => {
@@ -318,12 +354,12 @@ describe('AvailabilityUpdater', function() {
     u.host_id = ["99124994093506421"]  // host mms_id
     u.mms_id = u.host_id[0] // 
 
-    const process_single_for_bib = jest.spyOn(u, 'process_single_for_bib')
+    const update_single = jest.spyOn(u, 'update_single')
     u.process_single(holding_records)
 
-    expect(process_single_for_bib).toHaveBeenCalledWith(holding_records, u.id)
-    expect(process_single_for_bib).toHaveBeenCalledWith(holding_records, u.mms_id)
-    process_single_for_bib.mockRestore()
+    expect(update_single).toHaveBeenCalledWith(holding_records, u.id)
+    expect(update_single).toHaveBeenCalledWith(holding_records, u.mms_id)
+    update_single.mockRestore()
   })
 
 

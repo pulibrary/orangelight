@@ -52,7 +52,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     allow(document).to receive(:to_s).and_return('123456')
     allow(adapter).to receive(:document).and_return(document)
     allow(adapter).to receive(:doc_id).and_return('123456')
-    allow(adapter).to receive(:voyager_holding?).and_return(true)
+    allow(adapter).to receive(:alma_holding?).and_return(true)
     allow(adapter).to receive(:doc_electronic_access).and_return('http://arks.princeton.edu/ark:/88435/dsp0141687h654': ['DataSpace', 'Citation only'])
     allow(adapter).to receive(:unavailable_holding?).and_return(false)
     allow(adapter).to receive(:host_id).and_return([])
@@ -275,6 +275,58 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'href="/requests/99125038613506421?mfhd=22692760320006421"'
       end
     end
+    context "when there is temporary location with a request button" do
+      let(:location_rules) do
+        {
+          "label": "Term Loan Reserves",
+          "code": "lewis$resterm",
+          "aeon_location": false,
+          "recap_electronic_delivery_location": false,
+          "open": false,
+          "requestable": true,
+          "always_requestable": false,
+          "circulates": true,
+          "remote_storage": "",
+          "fulfillment_unit": "General",
+          "library": {
+            "label": "Lewis Library",
+            "code": "lewis",
+            "order": 0
+          },
+          "holding_library": nil,
+          "hours_location": nil,
+          "delivery_locations": []
+        }
+      end
+      let(:holding_id) { "lewis$resterm" }
+      let(:holding) do
+        {
+          "location_code": "lewis$resterm",
+          "current_location": "Term Loan Reserves",
+          "current_library": "Lewis Library",
+          "call_number": "QC173.454 .A48 2010",
+          "call_number_browse": "QC173.454 .A48 2010",
+          "items": [{ "holding_id": "22753114530006421",
+                      "id": "23753114520006421",
+                      "status_at_load": "0",
+                      "barcode": "32101078273891",
+                      "copy_number": "1" }]
+        }.with_indifferent_access
+      end
+      before do
+        allow(adapter).to receive(:doc_id).and_return('9960861053506421')
+        allow(adapter).to receive(:document).and_return(document)
+      end
+      it 'generates the request link with mfhd the first items holding_id' do
+        expect(request_placeholder_markup).to include '<td class="location-services service-conditional"'
+        expect(request_placeholder_markup).to include 'data-open="false"'
+        expect(request_placeholder_markup).to include 'data-requestable="true"'
+        expect(request_placeholder_markup).to include 'data-aeon="false"'
+        expect(request_placeholder_markup).to include 'data-holding-id="lewis$resterm"'
+        expect(request_placeholder_markup).to include "Request"
+        expect(request_placeholder_markup).to include 'href="/requests/9960861053506421?mfhd=22753114530006421"'
+      end
+    end
   end
 
   describe '.show_request' do
@@ -328,7 +380,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       end
 
       before do
-        allow(adapter).to receive(:voyager_holding?).and_return(false)
+        allow(adapter).to receive(:alma_holding?).and_return(false)
       end
 
       it 'generates a "service-always-requestable" class' do
@@ -360,7 +412,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       end
 
       before do
-        allow(adapter).to receive(:voyager_holding?).and_return(false)
+        allow(adapter).to receive(:alma_holding?).and_return(false)
         allow(adapter).to receive(:pub_date).and_return(2010)
       end
 

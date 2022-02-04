@@ -207,7 +207,7 @@ class HoldingRequestsAdapter
 
   # Determine whether or not the holding is for a Voyager
   # @return [TrueClass, FalseClass]
-  def voyager_holding?(holding_id)
+  def alma_holding?(holding_id)
     return false if @document.fetch(:id, '').start_with?('SCSB')
     return false if %w[thesis numismatics visuals].include? holding_id
     true
