@@ -81,7 +81,7 @@ Metrics/LineLength:
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'app/helpers/advanced_helper.rb'
     - 'app/helpers/application_helper.rb'
-    - 'spec/features/searching_spec.rb'
+    - 'spec/system/searching_spec.rb'
     - 'spec/models/solr_document_spec.rb'
     - 'spec/controllers/bookmarks_controller_spec.rb'
     - 'spec/features/availability_spec.rb'

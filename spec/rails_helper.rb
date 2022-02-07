@@ -74,6 +74,16 @@ RSpec.configure do |config|
     Warden.test_reset!
   end
 
+  ## Start to migrate to system specs.
+  # See https://medium.com/table-xi/a-quick-guide-to-rails-system-tests-in-rspec-b6e9e8a8b5f6
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome_headless
+  end
+
   config.before(:suite) { Rails.cache.clear }
   config.after { Rails.cache.clear }
 end

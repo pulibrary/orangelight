@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'searching' do
+describe 'Searching', type: :system, js: false do
   before do
     stub_holding_locations
   end
