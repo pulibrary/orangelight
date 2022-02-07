@@ -20,13 +20,13 @@ RSpec.describe HoldingRequestsAdapter do
   context 'Restrictions display' do
     let(:holdings_hash) do
       {
-        '671799' => { 'location_code' => 'scsbnypl', 'items' => [{ 'holding_id' => '671799', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] },
-        '671798' => { 'location_code' => 'scsbnypl', 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] }
+        '671799' => { 'location_code' => 'scsbnypl', 'items' => [{ 'holding_id' => '671799', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgd' => 'Open', 'collection_code' => 'NA' }] },
+        '671798' => { 'location_code' => 'scsbnypl', 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgd' => 'Open', 'collection_code' => 'NA' }] }
       }
     end
     let(:holdings_hash_empty_use_statement) do
       {
-        '671799' => { 'location_code' => 'scsbnypl', 'items' => [{ 'holding_id' => '671799', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => '', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] }
+        '671799' => { 'location_code' => 'scsbnypl', 'items' => [{ 'holding_id' => '671799', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => '', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgd' => 'Open', 'collection_code' => 'NA' }] }
       }
     end
 
@@ -78,8 +78,8 @@ RSpec.describe HoldingRequestsAdapter do
     context 'When location codes are not available' do
       let(:holdings_hash) do
         {
-          '671799' => { 'items' => [{ 'holding_id' => '671799', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] },
-          '671798' => { 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] }
+          '671799' => { 'items' => [{ 'holding_id' => '671799', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgd' => 'Open', 'collection_code' => 'NA' }] },
+          '671798' => { 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgd' => 'Open', 'collection_code' => 'NA' }] }
         }
       end
       let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
@@ -94,8 +94,8 @@ RSpec.describe HoldingRequestsAdapter do
     context 'When location codes are not available' do
       let(:holdings_hash) do
         {
-          '671799' => { 'items' => [{ 'holding_id' => '671799', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] },
-          '671798' => { 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgc' => 'Open', 'collection_code' => 'NA' }] }
+          '671799' => { 'items' => [{ 'holding_id' => '671799', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgd' => 'Open', 'collection_code' => 'NA' }] },
+          '671798' => { 'items' => [{ 'holding_id' => '671798', 'enumeration' => 'Oct., 1977- Mar., 1978', 'id' => '1118538', 'use_statement' => 'In Library Use', 'status_at_load' => 'Available', 'barcode' => '33433004579631', 'copy_number' => '1', 'cgd' => 'Open', 'collection_code' => 'NA' }] }
         }
       end
       let(:document) { { 'holdings_1display' => holdings_hash.to_json } }
