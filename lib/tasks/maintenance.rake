@@ -7,4 +7,11 @@ namespace :orangelight do
       User.expire_guest_accounts
     end
   end
+
+  namespace :migration do
+    desc 'Downcase netids from CAS'
+    task netids: :environment do
+      DBMigrateUppercaseUsernames.run
+    end
+  end
 end
