@@ -20,4 +20,8 @@ RSpec.describe 'catalog/_sort_and_per_page' do
   it 'renders the bookmark all tool' do
     expect(view).to render_template 'catalog/_bookmark_all'
   end
+
+  it 'rss aria label' do
+    expect(rendered).to have_selector('.icon-rssfeed[aria-label="Subscribe to results feed"]')
+  end
 end
