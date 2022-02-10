@@ -7,6 +7,13 @@ RSpec.describe 'catalog/index' do
     stub_holding_locations
   end
 
+  describe 'landing page' do
+    it 'does not contain the same DOM ID twice' do
+      visit '/catalog'
+      expect(page).to have_selector('#bookmarks_nav', count: 1)
+    end
+  end
+
   describe 'index fields json only fields (show: false)' do
     it 'do not display in html view' do
       visit '/catalog?f%5Bformat%5D%5B%5D=Map'
