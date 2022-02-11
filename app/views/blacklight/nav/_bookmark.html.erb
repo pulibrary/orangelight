@@ -1,4 +1,5 @@
-<%= link_to main_app.bookmarks_path, id:'bookmarks_nav', class: 'nav-link' do %>
+<% link_id ||= 'bookmarks_nav' %>
+<%= link_to main_app.bookmarks_path, id: link_id, class: 'nav-link' do %>
   <%= t('blacklight.header_links.bookmarks') %>
   <span class="bookmarks-parens">
     (<span class="bookmarks-count" data-role='bookmark-counter'><%= current_or_guest_user.bookmarks.count %></span>)

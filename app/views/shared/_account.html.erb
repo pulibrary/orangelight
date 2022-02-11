@@ -11,7 +11,7 @@
           <% end %>
         </li>
         <li role="menuitem"><%= link_to "Digitization Requests", main_app.digitization_requests_path %></li>
-        <li role="menuitem"><%= render partial: 'blacklight/nav/bookmark' %></li>
+        <li role="menuitem"><%= render partial: 'blacklight/nav/bookmark', locals: {link_id: 'account_bookmarks_nav'} %></li>
         <li role="menuitem"><%= render partial: 'blacklight/nav/search_history' %></li>
         <li role="menuitem">
           <%= link_to t('blacklight.header_links.logout'), main_app.destroy_user_session_path, :method => :delete %>
@@ -30,7 +30,7 @@
           <% end %>
         </li>
         <li role="menuitem"><%= link_to "Digitization Requests", main_app.digitization_requests_path %></li>
-        <li role="menuitem"><%= render partial: 'blacklight/nav/bookmark' %></li>
+        <li role="menuitem"><%= render partial: 'blacklight/nav/bookmark', locals: {link_id: 'account_bookmarks_nav'} %></li>
         <li role="menuitem"><%= render partial: 'blacklight/nav/search_history' %></li>
       </ul>
     </li>
