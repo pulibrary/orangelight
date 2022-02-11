@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/requests.git
-  revision: dad6078a269f2508e1c06011131585e856b0b331
+  revision: 1f55aa8c334567de5ca9f6061beb77e35d1419bf
   branch: main
   specs:
     requests (0.0.2)
@@ -290,7 +290,7 @@ GEM
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.8.11)
+    i18n (1.9.1)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     jaro_winkler (1.5.4)
