@@ -45,7 +45,7 @@ RSpec.describe AccountController do
         sign_in(valid_user)
         get "/account/digitization_requests"
 
-        expect(response.body).to have_content "Outstanding Digitization Requests"
+        expect(response.body).to have_content "Outstanding Inter Library Loan and Digitization Requests"
         expect(response.body).to have_content "Pʹesy"
       end
     end

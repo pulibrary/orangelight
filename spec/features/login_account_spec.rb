@@ -14,7 +14,7 @@ describe 'Account login' do
         expect(link[:href]).to include login_and_redirect_to_alma_url
         expect(link[:target]).to eq("_blank")
         expect(has_css?('i.fa-external-link', count: 1)).to eq true
-        expect(page).to have_link("Digitization Requests", href: digitization_requests_path)
+        expect(page).not_to have_link("ILL & Digitization Requests", href: digitization_requests_path)
         expect(page).to have_link("Bookmarks", href: bookmarks_path)
         expect(page).to have_link("Search History", href: blacklight.search_history_path)
         expect(page).not_to have_link("Log Out")
@@ -30,7 +30,7 @@ describe 'Account login' do
         expect(link[:href]).to include login_and_redirect_to_alma_url
         expect(link[:target]).to eq("_blank")
         expect(has_css?('i.fa-external-link', count: 1)).to eq true
-        expect(page).to have_link("Digitization Requests", href: digitization_requests_path)
+        expect(page).to have_link("ILL & Digitization Requests", href: digitization_requests_path)
         expect(page).to have_link("Bookmarks", href: bookmarks_path)
         expect(page).to have_link("Search History", href: blacklight.search_history_path)
         expect(page).to have_link("Log Out")
