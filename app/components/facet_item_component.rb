@@ -1,0 +1,13 @@
+# frozen_string_literal: true
+class FacetItemComponent < Blacklight::FacetItemComponent
+  def render_selected_facet_value
+    tag.span(class: "facet-label") do
+      tag.span(@label, class: "selected") +
+        # remove link
+        link_to(@href, class: "remove", rel: "nofollow") do
+          tag.span(class: "fa fa-times", aria: { hidden: true }, data: { toggle: 'tooltip', original_title: 'Remove' }) +
+            tag.span(helpers.t(:'blacklight.search.facets.selected.remove'), class: 'sr-only visually-hidden')
+        end
+    end + render_facet_count(classes: ["selected"])
+  end
+end

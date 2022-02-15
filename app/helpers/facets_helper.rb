@@ -11,6 +11,12 @@ module FacetsHelper
     end
   end
 
+  def facet_item_component_class(facet_config)
+    return FacetItemPivotComponent if facet_config.pivot
+    default_component = FacetItemComponent
+    facet_config.fetch(:item_component, default_component)
+  end
+
   def facet_value_id(display_facet)
     display_facet.respond_to?('value') ? "id=#{display_facet.field.parameterize}-#{display_facet.value.parameterize}" : ''
   end
@@ -32,18 +38,6 @@ module FacetsHelper
 
     value = facet_value_for_facet_item(item)
     params[:f] && params[:f][field] && params[:f][field].include?(value)
-  end
-
-  ##
-  # Standard display of a SELECTED facet value (e.g. without a link and with a remove button)
-  # @params (see #render_facet_value)
-  def render_selected_facet_value(facet_field, item)
-    content_tag(:span, class: 'facet-label') do
-      content_tag(:span, facet_display_value(facet_field, item), class: 'selected') +
-        # remove link
-        link_to(content_tag(:i, '', :class => 'fa fa-times', 'aria-hidden' => 'true', 'data-toggle' => 'tooltip', 'data-original-title' => 'Remove') +
-                content_tag(:span, '[remove]', class: 'sr-only'), search_action_path(search_state.remove_facet_params(facet_field, item)), class: 'remove')
-    end + render_facet_count(item.hits, classes: ['selected'])
   end
 
   ##
