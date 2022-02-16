@@ -30,6 +30,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   # Only search for coin records when querying with the numismatics advanced search
   def numismatics_advanced(solr_parameters)
     return unless blacklight_params[:advanced_type] == 'numismatics'
+    solr_parameters[:fq] ||= []
     solr_parameters[:fq] << "format:Coin"
   end
 
