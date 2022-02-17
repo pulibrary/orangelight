@@ -52,6 +52,11 @@ class SearchBuilder < Blacklight::SearchBuilder
       cleaned_query(solr_parameters[:q]) == solr_parameters[:q]
   end
 
+  def facets_for_advanced_search_form(solr_p)
+    solr_p.except! :fq
+    super
+  end
+
   def only_home_facets(solr_parameters)
     return if search_parameters?
     solr_parameters['facet.field'] = blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
