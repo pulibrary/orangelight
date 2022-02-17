@@ -37,6 +37,7 @@ module BlacklightHelper
     return unless blacklight_params[:f_inclusive] && blacklight_params[:f_inclusive][:advanced_location_s] &&
                   blacklight_params[:f_inclusive][:advanced_location_s].include?('pul')
     solr_parameters[:fq].map! { |fq| fq.gsub '"pul"', '*' }
+                        .reject! { |fq| fq == '{!term f=advanced_location_s}pul' }
     solr_parameters[:fq] << '-id:SCSB*'
   end
 
