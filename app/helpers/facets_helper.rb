@@ -12,7 +12,7 @@ module FacetsHelper
   end
 
   def facet_item_component_class(facet_config)
-    return FacetItemPivotComponent if facet_config.pivot
+    return Blacklight::FacetItemPivotComponent if facet_config.pivot
     default_component = FacetItemComponent
     facet_config.fetch(:item_component, default_component)
   end

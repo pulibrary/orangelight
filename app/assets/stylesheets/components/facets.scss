@@ -173,3 +173,22 @@ a.more_facets_link {
     padding: $spacer ($spacer * 2);
   }
 }
+
+.facet-field-heading {
+  a {
+    &::after {
+      content: "❯";
+      float: right;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.facet-field-heading.collapsed {
+  a {
+    &::after {
+      transform: rotate(0deg);
+      transition: transform 0.1s ease;
+    }
+  }
+}
