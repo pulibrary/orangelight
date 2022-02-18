@@ -53,7 +53,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def facets_for_advanced_search_form(solr_p)
-    solr_p.except! :fq
+    solr_p[:fq]&.reject! { |facet| facet.include? 'inclusive' }
     super
   end
 
