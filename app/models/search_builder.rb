@@ -53,7 +53,13 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def facets_for_advanced_search_form(solr_p)
-    solr_p[:fq]&.reject! { |facet| facet.include? 'inclusive' }
+    # Reject any facets that are meant to display on the advanced
+    # search form, so that the form displays accurate counts for
+    # them in its dropdowns
+    advanced_search_facets = blacklight_config.advanced_search.form_solr_parameters['facet.field']
+    solr_p[:fq]&.reject! do |facet_from_query|
+      advanced_search_facets.any? { |facet_to_exclude| facet_from_query.include? facet_to_exclude }
+    end
     super
   end
 
