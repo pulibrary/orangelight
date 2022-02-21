@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require "rails_helper"
 
-describe "accessibility", type: :feature, js: true do
+describe "accessibility", js: true do
   before do
     stub_alma_holding_locations
   end

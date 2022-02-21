@@ -53,7 +53,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.include Capybara::DSL
   config.include Capybara::RSpecMatchers, type: :request
-  config.include Features::SessionHelpers, type: :feature
+  config.include Features::SessionHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :request
 
   config.before(:each, type: :feature) do
