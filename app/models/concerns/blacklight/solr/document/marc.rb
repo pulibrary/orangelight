@@ -104,6 +104,10 @@ module Blacklight
           end
         end
 
+        def numismatics_record?
+          self['id'].start_with? 'coin'
+        end
+
         # does we have any standard numbers that can be used by other services
         def standard_numbers?
           std_numbers.any? { |v| key? v }

@@ -556,7 +556,7 @@ describe 'blacklight tests' do
     it 'only returns coin records' do
       get '/catalog.json?advanced_type=numismatics&q=*'
       r = JSON.parse(response.body)
-      expect(r['data'].length).to eq 4
+      expect(r['data'].length).to eq 5
     end
   end
 
