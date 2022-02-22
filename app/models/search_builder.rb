@@ -30,6 +30,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   # Only search for coin records when querying with the numismatics advanced search
   def numismatics_advanced(solr_parameters)
     return unless blacklight_params[:advanced_type] == 'numismatics'
+    solr_parameters[:fq] ||= []
     solr_parameters[:fq] << "format:Coin"
   end
 
@@ -49,6 +50,17 @@ class SearchBuilder < Blacklight::SearchBuilder
     blacklight_params[:q].blank? ||
       !blacklight_params[:q].respond_to?(:to_str) ||
       cleaned_query(solr_parameters[:q]) == solr_parameters[:q]
+  end
+
+  def facets_for_advanced_search_form(solr_p)
+    # Reject any facets that are meant to display on the advanced
+    # search form, so that the form displays accurate counts for
+    # them in its dropdowns
+    advanced_search_facets = blacklight_config.advanced_search.form_solr_parameters['facet.field']
+    solr_p[:fq]&.reject! do |facet_from_query|
+      advanced_search_facets.any? { |facet_to_exclude| facet_from_query.include? facet_to_exclude }
+    end
+    super
   end
 
   def only_home_facets(solr_parameters)

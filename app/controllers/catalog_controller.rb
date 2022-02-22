@@ -134,7 +134,10 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true
     config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true
-    config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet]
+    config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet], collapsing: true, icons: {
+      hide: '<i class="icon toggle"></i>'.html_safe,
+      show: '<i class="icon toggle collapsed"></i>'.html_safe
+    }
     config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index'
 
     # The following facet configurations are purely for display purposes. They
