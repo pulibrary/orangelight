@@ -63,11 +63,11 @@ jobs:
             source /home/circleci/.nvm/nvm.sh
             echo 'The NVM has been installed'
       - run:
-          name: Install Node LTS/erbium
+          name: Install Node LTS/gallium
           command: |
             source ~/.nvm/nvm.sh
-            nvm install lts/erbium
-            nvm use lts/erbium
+            nvm install lts/gallium
+            nvm use lts/gallium
       - restore_cache:
           keys:
             - orangelight-v2.1-{{ checksum "yarn.lock" }}
