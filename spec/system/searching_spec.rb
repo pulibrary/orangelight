@@ -116,4 +116,9 @@ describe 'Searching', type: :system, js: false do
       expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request: Facet field author_s has a scalar value 汪精衛, 1883-1944/)
     end
   end
+
+  it 'filters using the subject_facet field' do
+    visit "/catalog?f[subject_facet][]=Japan%E2%80%94History"
+    expect(page).to have_content '1 entry found'
+  end
 end
