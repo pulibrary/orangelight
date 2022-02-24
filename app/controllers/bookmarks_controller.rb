@@ -51,17 +51,18 @@ class BookmarksController < CatalogController
 
     def bookmark_ids
       bookmarks = token_or_current_or_guest_user.bookmarks
-      bookmark_ids = bookmarks.collect { |b| b.document_id.to_s }
-      bookmark_ids + alma_ids(bookmark_ids)
+      bookmarks.collect { |b| convert_to_alma_id(b.document_id.to_s) }
     end
 
     def fetch_bookmarked_documents
       _, @documents = search_service.fetch(bookmark_ids, rows: bookmark_ids.length, fl: '*')
     end
 
-    def alma_ids(bookmark_ids)
-      bookmark_ids.map do |id|
+    def convert_to_alma_id(id)
+      if (id.length < 13) && (id =~ /^\d+$/)
         "99#{id}3506421"
+      else
+        id
       end
     end
 
