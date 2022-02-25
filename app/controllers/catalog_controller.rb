@@ -156,6 +156,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'advanced_location_s', label: 'Holding location', include_in_request: false,
                                                   helper_method: :render_location_code
     config.add_facet_field 'name_title_browse_s', label: 'Author-title heading', include_in_request: false
+    config.add_facet_field 'subject_facet', show: false
 
     # Numismatics facets
     config.add_facet_field 'numismatic_collection_s', label: 'Numismatic Collection', include_in_request: false
