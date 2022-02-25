@@ -18,11 +18,12 @@
     "jquery": "Keep version in sync with jquery-rails, obtained through bundler"
   },
   "devDependencies": {
+    "@webpack-cli/serve": "^1.6.1",
     "babel-jest": "26.6.3",
     "jest": "^26.6.3",
     "jquery": "3.5.1",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0",
+    "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.2.1"
   },
   "scripts": {
