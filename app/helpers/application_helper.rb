@@ -389,8 +389,12 @@ module ApplicationHelper
   end
 
   def render_location_code(value)
-    location = Bibdata.holding_locations[value.to_sym]
-    location.nil? ? value : "#{value}: #{location_full_display(location)}"
+    if value.is_a?(Array)
+      value.map { |v| render_location_code(v) }
+    else
+      location = Bibdata.holding_locations[value.to_sym]
+      location.nil? ? value : "#{value}: #{location_full_display(location)}"
+    end
   end
 
   def holding_location_label(holding)
