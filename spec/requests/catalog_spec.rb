@@ -9,6 +9,7 @@ describe 'search requests for the catalog' do
   end
 
   it 'parses for multiple format facets in the search parameters' do
+    stub_holding_locations
     get url
 
     expect(response.status).to eq(200)

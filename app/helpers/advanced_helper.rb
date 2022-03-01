@@ -214,56 +214,7 @@ module BlacklightAdvancedSearch
 end
 
 module BlacklightAdvancedSearch
-  module CatalogHelperOverride
-    def remove_guided_keyword_query(fields, my_params = params)
-      my_params = Blacklight::SearchState.new(my_params, blacklight_config).to_h
-      fields.each do |guided_field|
-        my_params.delete(guided_field)
-      end
-      my_params
-    end
-  end
-end
-
-module BlacklightAdvancedSearch
   module RenderConstraintsOverride
-    def guided_search(my_params = params)
-      constraints = []
-      if my_params[:q1].present? && my_params[:f1].present?
-        label = blacklight_config.search_fields[my_params[:f1]].try(:label)
-        if label
-          query = my_params[:q1]
-          constraints << render_constraint_element(
-            label, query,
-            remove: search_catalog_path(remove_guided_keyword_query(%i[f1 q1], my_params))
-          )
-        end
-      end
-      if my_params[:q2].present? && my_params[:f2].present?
-        label = blacklight_config.search_fields[my_params[:f2]].try(:label)
-        if label
-          query = my_params[:q2]
-          query = 'NOT ' + my_params[:q2] if my_params[:op2] == 'NOT'
-          constraints << render_constraint_element(
-            label, query,
-            remove: search_catalog_path(remove_guided_keyword_query(%i[f2 q2 op2], my_params))
-          )
-        end
-      end
-      if my_params[:q3].present? && my_params[:f3].present?
-        label = blacklight_config.search_fields[my_params[:f3]].try(:label)
-        if label
-          query = my_params[:q3]
-          query = 'NOT ' + my_params[:q3] if my_params[:op3] == 'NOT'
-          constraints << render_constraint_element(
-            label, query,
-            remove: search_catalog_path(remove_guided_keyword_query(%i[f3 q3 op3], my_params))
-          )
-        end
-      end
-      constraints
-    end
-
     # Over-ride of Blacklight method, provide advanced constraints if needed,
     # otherwise call super.
     def render_constraints_query(my_params = params)

@@ -1,14 +1,1 @@
-<% if query_has_constraints? %>
-
-    <div id="appliedParams" class="clearfix constraints-container col-12">
-      <div class="button--start-over">
-        <%= render_start_over_link(root_path) %>
-      </div>
-      <div class="button--edit-search">
-        <%=link_to t('blacklight.search.edit_search'), edit_search_link, :class => "catalog_editSearchLink btn btn-outline-secondary", :id=>"editSearchLink" %>
-      </div>
-      <span class="constraints-label sr-only"><%= t('blacklight.search.filters.title') %></span>
-      <%= render_constraints(params) %>
-    </div>
-
-<% end %>
+<%= render(ConstraintsComponent.new(search_state: search_state)) %>

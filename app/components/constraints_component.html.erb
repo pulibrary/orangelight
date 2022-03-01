@@ -1,0 +1,37 @@
+<%= content_tag @tag || :div, id: @id, class: @classes do %>
+    <% if @render_headers %>
+      <h2 class="sr-only visually-hidden"><%= t('blacklight.search.search_constraints_header') %></h2>
+    <% end %>
+
+    <div class="button--start-over">
+      <%= render_start_over_link(start_over_path) %>
+    </div>
+    <div class="button--edit-search">
+      <%=link_to t('blacklight.search.edit_search'),
+                 edit_search_link,
+                 class: "catalog_editSearchLink btn btn-outline-secondary",
+                 id: "editSearchLink" %>
+    </div>
+    <span class="constraints-label sr-only"><%= t('blacklight.search.filters.title') %></span>
+
+  <% if query_constraints_area.present? %>
+      <% query_constraints_area.each do |constraint| %>
+        <%= constraint %>
+      <% end %>
+    <% else %>
+      <%= query_constraints %>
+    <% end %>
+
+    <% if facet_constraints_area.present? %>
+      <% facet_constraints_area.each do |constraint| %>
+        <%= constraint %>
+      <% end %>
+    <% else %>
+      <%= facet_constraints %>
+    <% end %>
+
+    <% additional_constraints.each do |constraints| %>
+      <%= constraints %>
+    <% end %>
+    <%= render(GuidedSearchConstraintsComponent.new) { |c| c.constraints(guided_search_constraints) } %>
+  <% end %>
