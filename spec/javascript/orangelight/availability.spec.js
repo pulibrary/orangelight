@@ -109,7 +109,7 @@ describe('AvailabilityUpdater', function() {
 
     const apiResponse = {
       "9959958323506421": {
-        "fake_id_1": {
+        "lewis$resterm": {
           "on_reserve":"Y",
           "location":"lewis$resterm",
           "label":"Lewis Library - sciresp Lewis: Term Loan",
@@ -117,7 +117,7 @@ describe('AvailabilityUpdater', function() {
           "copy_number":null,
           "cdl":false,
           "temp_location":true,
-          "id":"fake_id_1"
+          "id":"lewis$resterm"
         }
       }
     }
@@ -256,7 +256,7 @@ describe('AvailabilityUpdater', function() {
   test('when record has temporary locations and incomplete data it makes an extra call to get the full data', () => {
     const holding_records = {
       "9959958323506421": {
-        "fake_id_1": {
+        "lewis$resterm": {
           "on_reserve": "N",
           "location": "lewis$resterm",
           "label": "sciresp: Lewis: Term Loan",
@@ -264,7 +264,7 @@ describe('AvailabilityUpdater', function() {
           "copy_number": "1",
           "cdl": false,
           "temp_location": true,
-          "id": "fake_id_1"
+          "id": "lewis$resterm"
         }
       }
     }
