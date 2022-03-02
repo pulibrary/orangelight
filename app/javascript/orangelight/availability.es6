@@ -133,7 +133,7 @@ export default class AvailabilityUpdater {
   // search results
   process_result(record_id, holding_records) {
     for (let holding_id in holding_records) {
-      if (holding_id.startsWith('fake_id_')) {
+      if (holding_id.match(/[a-zA-Z]\$[a-zA-Z]/) || holding_id.startsWith('fake_id_')) {
         // In this case we cannot correlate the holding data from the availability API
         // (holding_records) with the holding data already on the page (from Solr).
         // In this case we set all of them to "Check record" because we can get this
@@ -190,7 +190,7 @@ export default class AvailabilityUpdater {
     var dataComplete = true;
     for (let holding_id in holding_records[mms_id]) {
       const availability_info = holding_records[mms_id][holding_id];
-      if ((availability_info['temp_location'] === true) && holding_id.startsWith('fake_id_')) {
+      if ((availability_info['temp_location'] === true) && holding_id.match(/[a-zA-Z]\$[a-zA-Z]/) || holding_id.startsWith('fake_id_')) {
         dataComplete = false; // The data that we get from Alma for temporary locations is incomplete.
         break;
       }
