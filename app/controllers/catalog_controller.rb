@@ -250,7 +250,7 @@ class CatalogController < ApplicationController
     # Top fields in show page / prioritized information
     config.add_show_field 'author_display', label: 'Author/&#8203;Artist', helper_method: :browse_name, if: false
     config.add_show_field 'name_uniform_title_1display', label: 'Uniform title', helper_method: :name_title_hierarchy, if: false
-    config.add_show_field 'format', label: 'Format', helper_method: :format_render, if: false
+    config.add_show_field 'format', label: 'Format', helper_method: :format_render, if: false, coin_top_field: true
     config.add_show_field 'language_facet', label: 'Language', if: false
     config.add_show_field 'edition_display', label: 'Εdition', if: false
     config.add_show_field 'pub_created_display', label: 'Published/&#8203;Created', if: false
@@ -388,8 +388,8 @@ class CatalogController < ApplicationController
 
     # Numismatics fields
     ## Issue Description
-    config.add_show_field 'numismatic_collection_s', label: 'Numismatic Collection', helper_method: :link_to_search_value, if: false
-    config.add_show_field 'issue_number_s', label: 'Issue', helper_method: :link_to_search_value, if: false
+    config.add_show_field 'numismatic_collection_s', label: 'Numismatic Collection', helper_method: :link_to_search_value, if: false, coin_top_field: true
+    config.add_show_field 'issue_number_s', label: 'Issue', helper_method: :link_to_search_value, if: false, coin_top_field: true
     config.add_show_field 'issue_object_type_s', label: 'Object Type', helper_method: :link_to_search_value
     config.add_show_field 'issue_denomination_s', label: 'Denomination', helper_method: :link_to_search_value
     config.add_show_field 'issue_metal_s', label: 'Metal', helper_method: :link_to_search_value

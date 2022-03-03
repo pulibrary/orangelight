@@ -1,2 +1,1 @@
-<% doc_presenter = show_presenter(document) %>
-<%= render CoinDescriptionComponent.new fields: doc_presenter.field_presenters.select { |field| field.field_config&.coin_description }, show: true %>
+<%= render CoinDescriptionComponent.new show: true, doc_presenter: show_presenter(document) %>
