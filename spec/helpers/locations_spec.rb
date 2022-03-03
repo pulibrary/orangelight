@@ -48,6 +48,11 @@ RSpec.describe ApplicationHelper do
     it 'renders full location when value is a valid location code' do
       expect(render_location_code('firestone$clas')).to eq('firestone$clas: Firestone Library - Classics Collection')
     end
+
+    it 'can handle an array' do
+      expect(render_location_code(['firestone$clas'])).to eq('firestone$clas: Firestone Library - Classics Collection')
+      expect(render_location_code(['firestone$clas', 'blah'])).to eq(['firestone$clas: Firestone Library - Classics Collection', 'blah'])
+    end
   end
 
   describe '#holding_location_label' do

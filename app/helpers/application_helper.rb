@@ -389,12 +389,11 @@ module ApplicationHelper
   end
 
   def render_location_code(value)
-    if value.is_a?(Array)
-      value.map { |v| render_location_code(v) }
-    else
-      location = Bibdata.holding_locations[value.to_sym]
-      location.nil? ? value : "#{value}: #{location_full_display(location)}"
+    values = Array(value).map do |loc|
+      location = Bibdata.holding_locations[loc.to_sym]
+      location.nil? ? loc : "#{loc}: #{location_full_display(location)}"
     end
+    values.count == 1 ? values.first : values
   end
 
   def holding_location_label(holding)
