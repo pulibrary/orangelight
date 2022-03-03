@@ -182,7 +182,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   def self.requestable?(adapter, holding_id, location)
-    !adapter.voyager_holding?(holding_id) || aeon_location?(location) || scsb_location?(location)
+    !adapter.alma_holding?(holding_id) || aeon_location?(location) || scsb_location?(location)
   end
 
   def self.thesis?(adapter, holding_id)
@@ -280,6 +280,21 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     holding.dig("mms_id") || adapter.doc_id
   end
 
+  # Example of a temporary holding, in this case holding_id is : firestone$res3hr
+  # {\"firestone$res3hr\":{\"location_code\":\"firestone$res3hr\",
+  # \"current_location\":\"Circulation Desk (3 Hour Reserve)\",\"current_library\":\"Firestone Library\",
+  # \"call_number\":\"HT1077 .M87\",\"call_number_browse\":\"HT1077 .M87\",
+  # \"items\":[{\"holding_id\":\"22740601020006421\",\"id\":\"23740600990006421\",
+  # \"status_at_load\":\"1\",\"barcode\":\"32101005621469\",\"copy_number\":\"1\"}]}}
+  def self.temporary_holding_id?(holding_id)
+    /[a-zA-Z]\$[a-zA-Z]/.match?(holding_id)
+  end
+
+  # When it is a temporary location and is requestable, use the first holding_id of this temporary location items.
+  def self.temporary_location_holding_id_first(holding)
+    holding["items"][0]["holding_id"]
+  end
+
   # Generate the links for a given holding
   # TODO: Come back and remove class method calls
   def request_placeholder(adapter, holding_id, location_rules, holding)
@@ -300,12 +315,18 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                        class: 'request btn btn-xs btn-primary',
                        data: { toggle: 'tooltip' })
              end
-           elsif !adapter.voyager_holding?(holding_id)
+           elsif !adapter.alma_holding?(holding_id)
              link_to('Reading Room Request',
                      "/requests/#{doc_id}?mfhd=#{holding_id}",
                      title: 'Request to view in Reading Room',
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
+           elsif self.class.temporary_holding_id?(holding_id)
+             link_to(request_label(location_rules),
+                    "/requests/#{doc_id}?mfhd=#{self.class.temporary_location_holding_id_first(holding)}",
+                    title: self.class.request_tooltip(location_rules),
+                    class: 'request btn btn-xs btn-primary',
+                    data: { toggle: 'tooltip' })
            else
              link_to(request_label(location_rules),
                      "/requests/#{doc_id}?mfhd=#{holding_id}",
@@ -414,6 +435,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
 
       location_rules = @adapter.holding_location_rules(holding)
       cn_value = @adapter.call_number(holding)
+
       holding_loc = @adapter.holding_location_label(holding)
       if holding_loc.present?
         markup = holding_location(

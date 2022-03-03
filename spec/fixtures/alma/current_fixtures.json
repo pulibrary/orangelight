@@ -29048,5 +29048,239 @@
   "access_facet": [
     "In the Library"
   ]
+},
+{
+  "id": [
+    "99122643653506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_display": [
+    "Siegler, Robert S."
+  ],
+  "author_sort": [
+    "Siegler, Robert S."
+  ],
+  "author_citation_display": [
+    "Siegler, Robert S.",
+    "Gershoff, Elizabeth T.",
+    "Saffran, Jenny",
+    "Eisenberg, Nancy",
+    "Leaper, Campbell"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"Gershoff, Elizabeth T.\",\"Saffran, Jenny\",\"Eisenberg, Nancy\",\"Leaper, Campbell\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Siegler, Robert S.\"}"
+  ],
+  "author_s": [
+    "Siegler, Robert S.",
+    "Gershoff, Elizabeth T.",
+    "Saffran, Jenny",
+    "Eisenberg, Nancy",
+    "Leaper, Campbell, 1955-"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": [
+    "How children develop / Robert Siegler, Elizabeth T. Gershoff, Jenny R. Saffran, Nancy Eisenberg and Campbell Leaper."
+  ],
+  "title_a_index": [
+    "How children develop"
+  ],
+  "title_sort": [
+    "How children develop / Robert Siegler, Elizabeth T. Gershoff, Jenny R. Saffran, Nancy Eisenberg and Campbell Leaper."
+  ],
+  "title_no_h_index": [
+    "How children develop / Robert Siegler, Elizabeth T. Gershoff, Jenny R. Saffran, Nancy Eisenberg and Campbell Leaper."
+  ],
+  "title_t": [
+    "How children develop / Robert Siegler, Elizabeth T. Gershoff, Jenny R. Saffran, Nancy Eisenberg and Campbell Leaper."
+  ],
+  "title_citation_display": [
+    "How children develop"
+  ],
+  "compiled_created_t": [
+    "How children develop / Robert Siegler, Elizabeth T. Gershoff, Jenny R. Saffran, Nancy Eisenberg and Campbell Leaper."
+  ],
+  "edition_display": [
+    "Sixth edition"
+  ],
+  "pub_created_display": [
+    "New York, New York : Worth Publishers, Macmillan Learning, [2020]",
+    "©2020"
+  ],
+  "pub_created_s": [
+    "New York, New York : Worth Publishers, Macmillan Learning, [2020]",
+    "©2020"
+  ],
+  "pub_citation_display": [
+    "New York, New York: Worth Publishers, Macmillan Learning"
+  ],
+  "pub_date_display": [
+    "2020"
+  ],
+  "pub_date_start_sort": [
+    "2020"
+  ],
+  "pub_date_end_sort": [
+    "2020"
+  ],
+  "cataloged_tdt": [
+    "2021-07-12T22:11:28Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "xxx, 601, G-10, R-68, NI-26, SI-28 : illustrations (chiefly color) ; 29 cm"
+  ],
+  "description_t": [
+    "xxx, 601, G-10, R-68, NI-26, SI-28 : illustrations (chiefly color) ; 29 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "xxx, 601, G-10, R-68, NI-26, SI-28"
+  ],
+  "notes_index": [
+    "Glossary = page G-1 through page G-10. References = page R-1 through page R-68. Name Index = page NI-1 through page NI-26. Subject Index = page SI-1 through page SI-28.",
+    "Includes bibliographical references and indexes.",
+    "Preface -- Chapter 1. An introduction to child development -- Chapter 2. Prenatal development and the newborn period -- Chapter 3. Biology and behavior -- Chapter 4. Theories of cognitive development -- Chapter 5. Perception, action, and learning in infancy -- Chapter 6. Development of language and symbol use -- Chapter 7. Conceptual development -- Chapter 8. Intelligence and academic achievement -- Chapter 9. Theories of social development -- Chapter 10. Emotional development -- Chapter 11. Attachment to others and development of the self -- Chapter 12. The family -- Chapter 13. Peer relationships -- Chapter 14. Moral development -- Chapter 15. Gender development -- 16. Conclusions -- Glossary -- References -- Name index -- Subject index.",
+    "\"This hugely popular textbook has established itself as the topically organized textbook teachers and researchers trust for the most up-to-date perspectives on child and adolescent development. The authors, each a well-known scientist and educator, have earned that trust by introducing core concepts and impactful discoveries with an unparalleled integration of theory, cultural research, and applications. All this is delivered in a style that is authoritative yet immediately understandable and relevant.\" -- provided by publisher."
+  ],
+  "summary_note_display": [
+    "\"This hugely popular textbook has established itself as the topically organized textbook teachers and researchers trust for the most up-to-date perspectives on child and adolescent development. The authors, each a well-known scientist and educator, have earned that trust by introducing core concepts and impactful discoveries with an unparalleled integration of theory, cultural research, and applications. All this is delivered in a style that is authoritative yet immediately understandable and relevant.\" -- provided by publisher."
+  ],
+  "notes_display": [
+    "Glossary = page G-1 through page G-10. References = page R-1 through page R-68. Name Index = page NI-1 through page NI-26. Subject Index = page SI-1 through page SI-28."
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references and indexes."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "publication_place_facet": [
+    "New York (State)"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "contents_display": [
+    "Preface -- Chapter 1. An introduction to child development -- Chapter 2. Prenatal development and the newborn period -- Chapter 3. Biology and behavior -- Chapter 4. Theories of cognitive development -- Chapter 5. Perception, action, and learning in infancy -- Chapter 6. Development of language and symbol use -- Chapter 7. Conceptual development -- Chapter 8. Intelligence and academic achievement -- Chapter 9. Theories of social development -- Chapter 10. Emotional development -- Chapter 11. Attachment to others and development of the self -- Chapter 12. The family -- Chapter 13. Peer relationships -- Chapter 14. Moral development -- Chapter 15. Gender development -- 16. Conclusions -- Glossary -- References -- Name index -- Subject index."
+  ],
+  "lc_subject_display": [
+    "Child development"
+  ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "Child development"
+  ],
+  "subject_unstem_search": [
+    "Child development"
+  ],
+  "siku_subject_unstem_search": null,
+  "subject_facet": [
+    "Child development",
+    "Textbooks"
+  ],
+  "lcgft_s": [
+    "Textbooks"
+  ],
+  "subject_topic_facet": [
+    "Child development"
+  ],
+  "lc_1letter_facet": [
+    "H - Social Sciences"
+  ],
+  "lc_rest_facet": [
+    "HQ - The Family, Marriage, Woman"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "H - Social Sciences"
+  ],
+  "call_number_full_facet": [
+    "HQ - The Family, Marriage, Woman"
+  ],
+  "genre_facet": [
+    "Textbooks"
+  ],
+  "related_name_json_1display": [
+    "{\"Author\":[\"Gershoff, Elizabeth T.\",\"Saffran, Jenny\",\"Eisenberg, Nancy\",\"Leaper, Campbell, 1955-\"]}"
+  ],
+  "isbn_display": [
+    "9781319184568 ((hardback))",
+    "1319184561 ((hardback))",
+    "9781319324483 ((hardback))",
+    "1319324487 ((hardback))",
+    "9781319269005 ((loose leaf))"
+  ],
+  "lccn_display": [
+    "  2019948195"
+  ],
+  "lccn_s": [
+    "2019948195"
+  ],
+  "isbn_s": [
+    "9781319184568",
+    "9781319324483",
+    "9781319269005"
+  ],
+  "oclc_s": [
+    "1137233012"
+  ],
+  "standard_no_index": [
+    "on1137233012",
+    "1137233012",
+    "12264365-princetondb"
+  ],
+  "other_version_s": [
+    "on1137233012",
+    "on1201220117",
+    "9781319184568",
+    "9781319324483",
+    "9781319269005"
+  ],
+  "holdings_1display": [
+    "{\"lewis$res\":{\"location_code\":\"lewis$res\",\"current_location\":\"Course Reserve\",\"current_library\":\"Lewis Library\",\"call_number\":\"HQ767.9 .S534 2020\",\"call_number_browse\":\"HQ767.9 .S534 2020\",\"items\":[{\"holding_id\":\"22543249720006421\",\"id\":\"23543249710006421\",\"status_at_load\":\"0\",\"barcode\":\"32101112870454\",\"copy_number\":\"1\"},{\"holding_id\":\"22543249640006421\",\"id\":\"23543249630006421\",\"status_at_load\":\"0\",\"barcode\":\"32101092796398\",\"copy_number\":\"4\"},{\"holding_id\":\"22543249660006421\",\"id\":\"23543249650006421\",\"status_at_load\":\"0\",\"barcode\":\"32101092796380\",\"copy_number\":\"3\"},{\"holding_id\":\"22543249700006421\",\"id\":\"23543249690006421\",\"status_at_load\":\"0\",\"barcode\":\"32101102527726\",\"copy_number\":\"2\"}]},\"22543249620006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"HQ767.9 .S534 2020\",\"call_number_browse\":\"HQ767.9 .S534 2020\",\"items\":[{\"holding_id\":\"22543249620006421\",\"id\":\"23543249610006421\",\"status_at_load\":\"1\",\"barcode\":\"32101092796752\",\"copy_number\":\"6\"}]},\"22543249680006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"HQ767.9 .S534 2020\",\"call_number_browse\":\"HQ767.9 .S534 2020\",\"items\":[{\"holding_id\":\"22543249680006421\",\"id\":\"23543249670006421\",\"status_at_load\":\"0\",\"barcode\":\"32101112863095\",\"copy_number\":\"5\"}]}}"
+  ],
+  "location_code_s": [
+    "lewis$stacks"
+  ],
+  "location": [
+    "Lewis Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "lewis$stacks",
+    "Lewis Library"
+  ],
+  "name_title_browse_s": [
+    "Siegler, Robert S.. How children develop"
+  ],
+  "call_number_display": [
+    "HQ767.9 .S534 2020"
+  ],
+  "call_number_browse_s": [
+    "HQ767.9 .S534 2020"
+  ],
+  "call_number_locator_display": [
+    "HQ767.9 .S534 2020"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
 }
 ]
