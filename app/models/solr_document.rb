@@ -164,6 +164,10 @@ class SolrDocument
     false
   end
 
+  def numismatics_record?
+    solr_document_id&.start_with? 'coin'
+  end
+
   # host_id an Array of host id(s)
   # appends the host_id in each host_holding
   # merges host_holding in holdings
