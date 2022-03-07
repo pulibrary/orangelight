@@ -121,4 +121,9 @@ describe 'Searching', type: :system, js: false do
     visit "/catalog?f[subject_facet][]=Japan%E2%80%94History"
     expect(page).to have_content '1 entry found'
   end
+
+  it 'allows user to successfully edit facet-only searches' do
+    visit "/catalog?f[format][]=Book&f_inclusive[advanced_location_s][]=Firestone+Library&search_field=advanced"
+    expect(page).to have_content "1 - 20 of 60"
+  end
 end
