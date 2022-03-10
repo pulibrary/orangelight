@@ -117,4 +117,3 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'solargraph'
 end
-gem 'rack-mini-profiler'
