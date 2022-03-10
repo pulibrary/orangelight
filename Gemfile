@@ -16,7 +16,7 @@ gem 'blacklight_range_limit'
 # advanced search functionality
 gem 'blacklight_advanced_search', git: 'https://github.com/projectblacklight/blacklight_advanced_search', branch: 'master'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0'
 # Modernizr.js library
 gem 'modernizr-rails'
 
