@@ -67,15 +67,6 @@ GIT
   specs:
     stringex (2.5.2)
 
-GIT
-  remote: https://github.com/videmor/intro.js-rails.git
-  revision: 6638f10ec30d14e2155508e901afc1ba358fac7a
-  branch: update.introjs
-  specs:
-    introjs-rails (2.1.0)
-      sass-rails (>= 3.2)
-      thor (~> 0.14)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -645,7 +636,6 @@ DEPENDENCIES
   global
   high_voltage (~> 3.0.0)
   honeybadger
-  introjs-rails!
   jbuilder (~> 2.0)
   jquery-datatables
   jquery-rails

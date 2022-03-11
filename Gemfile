@@ -42,8 +42,6 @@ gem 'jbuilder', '~> 2.0'
 # jquery multiselect plugin for advanced search
 gem 'chosen-rails'
 
-gem 'introjs-rails', git: 'https://github.com/videmor/intro.js-rails.git', branch: 'update.introjs'
-
 gem 'blacklight-marc', git: 'https://github.com/projectblacklight/blacklight-marc.git', ref: 'c0ff1d9'
 # Capistrano
 gem 'capistrano', '~> 3.4.0'
