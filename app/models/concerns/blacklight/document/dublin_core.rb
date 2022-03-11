@@ -25,7 +25,6 @@ module Blacklight
 
       # dublin core elements are mapped against the #dublin_core_field_names whitelist.
       def export_as_oai_dc_xml
-        indexed_urls
         xml = Builder::XmlMarkup.new
         xml.tag!('oai_dc:dc',
                  'xmlns:oai_dc' => 'http://www.openarchives.org/OAI/2.0/oai_dc/',
@@ -42,7 +41,6 @@ module Blacklight
       end
 
       def export_as_rdf_dc
-        indexed_urls
         xml = Builder::XmlMarkup.new
         xml.tag!('rdf:RDF',
                  'xmlns:rdf' => 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
@@ -66,13 +64,6 @@ module Blacklight
 
         def dublin_core_field_name?(field)
           dublin_core_field_names.include? field.to_sym
-        end
-
-        def indexed_urls
-          unless self[:electronic_access_1display].nil?
-            url_values = JSON.parse(self[:electronic_access_1display]).keys
-            self[:electronic_access_1display] = url_values
-          end
         end
     end
   end
