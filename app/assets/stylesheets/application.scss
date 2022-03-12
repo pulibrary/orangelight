@@ -14,7 +14,6 @@
  *= require 'blacklight_advanced_search'
 *= require 'bootstrap-select'
  *= require chosen
- *= require introjs
  *= require_self
  */
 
@@ -46,7 +45,6 @@
 @import 'components/font-face';
 @import 'components/footer';
 @import 'components/front-page';
-@import 'components/intro';
 @import 'components/header';
 @import 'components/header--secondary';
 @import 'components/lists';

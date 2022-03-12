@@ -17,7 +17,6 @@
 //= require bootstrap
 //= require modernizr
 //= require chosen-jquery
-//= require intro
 //
 //= require bootstrap/alert
 //= require bootstrap/tab
