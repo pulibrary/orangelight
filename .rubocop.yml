@@ -84,7 +84,7 @@ Metrics/LineLength:
     - 'spec/system/searching_spec.rb'
     - 'spec/models/solr_document_spec.rb'
     - 'spec/controllers/bookmarks_controller_spec.rb'
-    - 'spec/features/availability_spec.rb'
+    - 'spec/system/availability_spec.rb'
     - 'spec/helpers/holding_block_spec.rb'
     - 'spec/helpers/blacklight_helper_spec.rb'
     - 'spec/services/online_holdings_markup_builder_spec.rb'
@@ -105,7 +105,7 @@ Metrics/MethodLength:
     - 'app/helpers/application_helper.rb'
     - 'app/services/online_holdings_markup_builder.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
-    - 'spec/features/course_reserves_spec.rb'
+    - 'spec/system/course_reserves_spec.rb'
     - 'spec/repositories/course_reserve_repository_spec.rb'
     - 'spec/requests/course_reserve_spec.rb'
     - 'lib/tasks/server.rake'
@@ -160,7 +160,7 @@ Rails/TimeZone:
 
 RSpec/DescribeClass:
   Exclude:
-    - 'spec/features/**/*'
+    - 'spec/system/**/*'
     - 'spec/views/**/*'
     - 'spec/requests/**/*'
 
