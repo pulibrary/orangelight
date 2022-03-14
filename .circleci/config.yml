@@ -93,8 +93,7 @@ jobs:
   test:
     executor: orangelight-executor
     steps:
-      - browser-tools/install-browser-tools:
-        geckodriver-version: latest
+      - browser-tools/install-browser-tools
       - checkout
       - run: |
           ruby --version

@@ -5,7 +5,8 @@ require 'webmock/rspec'
 
 # allow connections to localhost, umlaut and bibdata marc record service
 WebMock.disable_net_connect!(allow_localhost: true,
-                             allow: 'chromedriver.storage.googleapis.com')
+                             allow: ['chromedriver.storage.googleapis.com',
+                                     'github.com'])
 
 Coveralls.wear!('rails') do
   add_filter '/lib/orangelight/browse_lists.rb'

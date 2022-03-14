@@ -40,7 +40,8 @@ RSpec.describe BrowseLists::CallNumberCSV do
       # reset webmock according to spec_helper
       WebMock.disable_net_connect!(
         allow_localhost: true,
-        allow: 'chromedriver.storage.googleapis.com'
+        allow: ['chromedriver.storage.googleapis.com',
+                'github.com']
       )
       # delete the test csv from tmp
       FileUtils.remove_dir(output_root, true)
