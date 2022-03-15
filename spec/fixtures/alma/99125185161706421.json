@@ -1,0 +1,91 @@
+{
+    "id": "99125185161706421",
+    "numeric_id_b": true,
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "title_display": "The Book collector.",
+    "title_t": [
+      "The Book collector."
+    ],
+    "title_citation_display": [
+      "The Book collector"
+    ],
+    "compiled_created_t": [
+      "The Book collector."
+    ],
+    "pub_created_display": [
+      "[London], [The Collector Ltd., etc.]"
+    ],
+    "pub_created_s": [
+      "[London], [The Collector Ltd., etc.]"
+    ],
+    "pub_citation_display": [
+      "London: The Collector Ltd., etc."
+    ],
+    "pub_date_display": [
+      "1952"
+    ],
+    "pub_date_start_sort": 1952,
+    "pub_date_end_sort": 9999,
+    "cataloged_tdt": "2022-01-05T18:16:22Z",
+    "format": [
+      "Journal"
+    ],
+    "description_display": [
+      "volumes illustrations, plates 19-23 cm",
+      "v. 1- spring 1952-"
+    ],
+    "description_t": [
+      "volumes illustrations, plates 19-23 cm",
+      "v. 1- spring 1952-"
+    ],
+    "number_of_pages_citation_display": [
+      "volumes"
+    ],
+    "continues_display": [
+      "The Book Handbook"
+    ],
+    "frequency_display": [
+      "Quarterly"
+    ],
+    "supplement_notes_display": [
+      "Special numbers accompany some years."
+    ],
+    "language_facet": [
+      "English"
+    ],
+    "language_code_s": [
+      "eng"
+    ],
+    "language_iana_s": [
+      "en"
+    ],
+    "indexes_display": [
+      "Vols. 1-10, 1952-61. 1 v."
+    ],
+    "lc_subject_display": [
+      "Book collecting—Periodicals"
+    ],
+    "subject_facet": [
+      "Book collecting—Periodicals"
+    ],
+    "other_title_display": [
+      "The Book collector"
+    ],
+    "lccn_display": [
+      "   54027405 "
+    ],
+    "lccn_s": [
+      "54027405"
+    ],
+    "oclc_s": [
+      "1536744"
+    ],
+    "other_version_s": [
+      "ocm01536744",
+      "00067237"
+    ],
+    "electronic_portfolio_s": [
+      "{\"desc\":\" Available from 1952 volume: 1.\",\"title\":\"non-proxy ejournals\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53770876940006421&Force_direct=true\",\"start\":\"1952\",\"end\":\"latest\",\"notes\":[\"Ejournal has password\"]}",
+      "{\"desc\":\" Available from 1952.\",\"title\":\"Digital Editions from Exact Editions\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53911108570006421&Force_direct=true\",\"start\":\"1952\",\"end\":\"latest\",\"notes\":[]}"
+    ]
+  }
