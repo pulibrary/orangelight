@@ -176,9 +176,9 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
       end
 
       it 'displays the public note properly' do
-        expect(portfolio_markup).to eq '<li class="electronic-access">First note, Second note: '\
-                                       '<a target="_blank" rel="noopener" href="https://princeton.edu/great-resource">'\
-                                       '1980 - 2015: Title</a> Description</li>'
+        expect(portfolio_markup).to eq '<li class="electronic-access"><a target="_blank" rel="noopener" '\
+                                       'href="https://princeton.edu/great-resource">1980 - 2015: Title</a> '\
+                                       'Description (First note, Second note)</li>'
       end
     end
   end

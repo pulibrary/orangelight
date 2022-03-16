@@ -104,7 +104,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
       label = "#{date_range}#{portfolio['title']}"
       link = link_to(label, portfolio["url"], target: '_blank', rel: 'noopener')
       link += " #{portfolio['desc']}"
-      link = "#{portfolio['notes'].join(', ')}: #{link}" if portfolio['notes']&.any?
+      link = "#{link} (#{portfolio['notes'].join(', ')})" if portfolio['notes']&.any?
       markup << content_tag(:li, link.html_safe, class: 'electronic-access')
     end
 
