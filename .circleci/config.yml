@@ -66,12 +66,6 @@ jobs:
             source ~/.nvm/nvm.sh
             nvm install lts/erbium
             nvm use lts/erbium
-      - run:
-          name: Install Yarn
-          command: |
-            source ~/.nvm/nvm.sh
-            curl -o- -L https://yarnpkg.com/install.sh | bash
-      # Only necessary if app uses webpacker or yarn in some other way
       - restore_cache:
           keys:
             - orangelight-v2.1-{{ checksum "yarn.lock" }}
