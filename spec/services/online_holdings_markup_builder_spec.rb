@@ -154,4 +154,32 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
       end
     end
   end
+
+  describe 'electronic_portfolio_markup' do
+    let(:portfolio_markup) { described_class.electronic_portfolio_markup(adapter) }
+
+    context 'when a portfolio has a public note' do
+      let(:portfolios) do
+        [
+          { 'desc' => 'Description',
+            'title' => 'Title',
+            'url' => 'https://princeton.edu/great-resource',
+            'start' => '1980',
+            'end' => '2015',
+            'notes' => ['First note', 'Second note'] }
+        ]
+      end
+
+      before do
+        allow(adapter).to receive(:electronic_portfolios).and_return(portfolios)
+        allow(adapter).to receive(:sibling_electronic_portfolios).and_return([])
+      end
+
+      it 'displays the public note properly' do
+        expect(portfolio_markup).to eq '<li class="electronic-access"><a target="_blank" rel="noopener" '\
+                                       'href="https://princeton.edu/great-resource">1980 - 2015: Title</a> '\
+                                       'Description (First note, Second note)</li>'
+      end
+    end
+  end
 end
