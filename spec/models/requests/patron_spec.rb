@@ -18,8 +18,10 @@ describe Requests::Patron do
   end
   let(:uid) { 'foo' }
   let(:guest?) { false }
+  let(:provider) { nil }
+  let(:barcode_provider) { false }
   let(:user) do
-    instance_double(User, guest?: guest?, uid: uid)
+    instance_double(User, guest?: guest?, uid: uid, alma_provider?: false, provider: provider, barcode_provider?: barcode_provider)
   end
   let(:bibdata_uri) { Requests::Config[:bibdata_base] }
   let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
@@ -48,7 +50,7 @@ describe Requests::Patron do
           .to_return(status: 200, body: valid_patron_response, headers: {})
       end
       it 'Handles an authorized princeton net ID holder' do
-        patron = described_class.new(user: instance_double(User, guest?: false, uid: 'foo'),
+        patron = described_class.new(user: user,
                                      session: { email: 'foo@bar.com', user_name: 'foobar' }.with_indifferent_access)
         expect(patron).to be_truthy
         expect(patron.active_email).to eq('a@b.com')
@@ -64,13 +66,13 @@ describe Requests::Patron do
   end
   context 'A user with a valid barcode patron record' do
     describe '#current_patron' do
-      let(:user) { FactoryBot.create(:valid_barcode_patron) }
+      let(:provider) { 'cas' }
       before do
         stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/foo?ldap=true")
           .to_return(status: 200, body: valid_barcode_patron_response, headers: {})
       end
       it 'Handles an authorized princeton net ID holder' do
-        patron = described_class.new(user: instance_double(User, guest?: false, uid: 'foo', barcode_provider?: false), session: {})
+        patron = described_class.new(user: user, session: {})
         expect(patron).to be_truthy
         expect(patron.active_email).to eq('a@b.com')
         expect(patron.netid).to be_nil
@@ -87,7 +89,7 @@ describe Requests::Patron do
           .to_return(status: 404, body: invalid_patron_response, headers: {})
       end
       it 'Handles an authorized princeton net ID holder' do
-        patron = described_class.new(user: instance_double(User, guest?: false, uid: 'foo'), session: {})
+        patron = described_class.new(user: user, session: {})
         expect(patron.errors).to eq(["A problem occurred looking up your library account."])
       end
     end
@@ -99,7 +101,7 @@ describe Requests::Patron do
           .to_return(status: 403, body: invalid_patron_response, headers: {})
       end
       it 'Handles an authorized princeton net ID holder' do
-        patron = described_class.new(user: instance_double(User, guest?: false, uid: 'foo'), session: {})
+        patron = described_class.new(user: user, session: {})
         expect(patron.errors).to eq(["A problem occurred looking up your library account."])
       end
     end
@@ -111,7 +113,7 @@ describe Requests::Patron do
           .to_return(status: 500, body: invalid_patron_response, headers: {})
       end
       it 'cannot return a patron record' do
-        patron = described_class.new(user: instance_double(User, guest?: false, uid: 'foo'), session: {})
+        patron = described_class.new(user: user, session: {})
         expect(patron.errors).to eq(["A problem occurred looking up your library account."])
       end
     end

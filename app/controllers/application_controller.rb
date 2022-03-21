@@ -14,10 +14,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(_resource)
-    if params[:origin]
+    referrer = params[:url] || request.referer
+    origin = params[:origin]
+    if origin.blank? && referrer.present? && referrer.include?("origin")
+      referrer_params = Rack::Utils.parse_query URI.parse(referrer).query
+      origin = referrer_params["origin"]
+    end
+
+    if referrer.present? && !referrer.include?("sign_in")
+      referrer
+    elsif origin.present?
       request.flash.delete('alert')
       request.flash.keep('notice')
-      params[:origin].chomp('/email')
+      origin.chomp('/email')
     elsif !request.env['omniauth.origin'].nil? &&
           /request|borrow-direct|email|bookmarks|search_history|redirect-to-alma/.match(request.env['omniauth.origin'])
       request.env['omniauth.origin']
@@ -27,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    if resource == 'barcode'
+    if resource == 'barcode' || resource == "alma"
       root_url
     else
       Rails.configuration.x.after_sign_out_url

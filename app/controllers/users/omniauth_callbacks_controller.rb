@@ -32,6 +32,19 @@ module Users
       redirect_to user_barcode_omniauth_authorize_path(origin: omniauth_origin)
     end
 
+    def alma
+      if Alma::User.authenticate(user_id: alma_params[:username], password: alma_params[:password])
+        @user ||= User.from_alma(access_token_in_request_params)
+        @user.save
+        sign_in_and_redirect @user, event: :authentication # this will throw if @user not activated
+        set_flash_message(:notice, :success, kind: 'with alma account') if is_navigational_format?
+      else
+        set_flash_message(:error, :failure,
+          reason: 'username or password did not match an alma account')
+        redirect_to user_barcode_omniauth_authorize_path(origin: omniauth_origin)
+      end
+    end
+
     private
 
       def barcode_user
@@ -55,6 +68,7 @@ module Users
       end
 
       def netid_patron?(patron)
+        return false if patron['expire_date'].nil?
         !patron['netid'].nil? && Date.parse(patron['expire_date']) > Time.zone.today
       end
 
@@ -76,6 +90,10 @@ module Users
         access_token = access_token_in_request_params
         access_token.uid = access_token.uid.gsub(/\s/, '') unless access_token.nil? || access_token.uid.blank?
         access_token
+      end
+
+      def alma_params
+        params.permit(:username, :password)
       end
   end
 end

@@ -22,8 +22,15 @@
       <span class="error error-items">
       </span>
     </div>
-    <%= render partial: "requestable_list_form", locals: { requestable_list: @request.requestable, mfhd: @request.mfhd, holdings: @request.holdings, default_pick_ups: @request.default_pick_ups } %>
-    <% if !@request.all_items_online? && @request.any_will_submit_via_form? %>
-      <%= f.submit submit_message(@request.requestable), class: "btn btn-primary submit--request", disabled: submit_button_disabled(@request.requestable), data: { disable_with: "Submitting Request" } %>
+    <% if @request.alma_provider_on_shelf_item_available? %>
+     <h2><%=I18n.t('requests.alma_login.no_access')%> </h2>
+     <p><%=I18n.t('requests.alma_login.available_no_access', library: @request.location_label) %></p>
+    <% elsif @request.alma_provider_item_unavailable? %>
+     <h2><%=I18n.t('requests.alma_login.unavailable')%> </h2>
+    <% else %>
+      <%= render partial: "requestable_list_form", locals: { requestable_list: @request.requestable, mfhd: @request.mfhd, holdings: @request.holdings, default_pick_ups: @request.default_pick_ups } %>
+      <% if !@request.all_items_online? && @request.any_will_submit_via_form? %>
+        <%= f.submit submit_message(@request.requestable), class: "btn btn-primary submit--request", disabled: submit_button_disabled(@request.requestable), data: { disable_with: "Submitting Request" } %>
+      <% end %>
     <% end %>
   <% end %>

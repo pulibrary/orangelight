@@ -5,7 +5,7 @@ module Requests
   class Patron
     attr_reader :user, :session, :patron, :errors
 
-    delegate :guest?, :provider, :barcode_provider?, to: :user
+    delegate :guest?, :provider, :barcode_provider?, :cas_provider?, :alma_provider?, to: :user
 
     def initialize(user:, session: {}, patron: nil)
       @user = user
@@ -170,11 +170,11 @@ module Requests
       def current_patron(uid)
         return unless uid
 
-        api_response = api_request_patron(id: uid)
-        return if api_response.nil?
-
-        patron_resource = JSON.parse(api_response.body)
-        patron_resource.with_indifferent_access
+        if alma_provider?
+          build_alma_patron(uid: uid)
+        else
+          build_cas_patron(uid: uid)
+        end
       end
 
       def build_access_patron(email:, user_name:)
@@ -193,6 +193,27 @@ module Requests
 
       def access_patron?
         barcode == "ACCESS"
+      end
+
+      def build_alma_patron(uid:)
+        alma_user = Alma::User.find(uid)
+        barcodes = alma_user["user_identifier"].select { |id| id["id_type"]["value"] == "BARCODE" }
+        {
+          last_name: alma_user.preferred_last_name,
+          active_email: alma_user.preferred_email,
+          barcode: barcodes.first&.fetch("value") || "ALMA",
+          barcode_status: 1,
+          netid: "ALMA",
+          university_id: uid
+        }
+      end
+
+      def build_cas_patron(uid:)
+        api_response = api_request_patron(id: uid)
+        return if api_response.nil?
+
+        patron_resource = JSON.parse(api_response.body)
+        patron_resource.with_indifferent_access
       end
   end
 end

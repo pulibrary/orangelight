@@ -50,6 +50,7 @@ module Orangelight
     config.action_dispatch.default_headers['X-UA-Compatible'] = 'IE=edge,chrome=1'
     require Rails.root.join('lib', 'custom_public_exceptions')
     require Rails.root.join('lib', 'omniauth', 'strategies', 'barcode')
+    require Rails.root.join('lib', 'omniauth', 'strategies', 'alma')
     config.exceptions_app = CustomPublicExceptions.new(Rails.public_path)
 
     # Redirect to CAS logout after signing out of Orangelight

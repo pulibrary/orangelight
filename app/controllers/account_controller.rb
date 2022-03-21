@@ -18,7 +18,12 @@ class AccountController < ApplicationController
   end
 
   def borrow_direct_redirect
-    cas_user
+    # action is only valid if the user is logged in first
+    if current_user
+      borrow_direct_user_action
+    else
+      redirect_to user_cas_omniauth_authorize_path(origin: url_for(params.permit!))
+    end
   end
 
   def cancel_ill_requests
@@ -60,17 +65,17 @@ class AccountController < ApplicationController
       end
     end
 
-    def cas_user
-      if current_user
+    def borrow_direct_user_action
+      # only cas users are allowed to access borrow direct
+      if current_user.cas_provider?
         set_patron
-        if @patron && @patron[:barcode] && current_user.cas_provider?
-          redirect_to borrow_direct_url(@patron[:barcode])
-        else
-          flash[:error] = I18n.t('blacklight.account.borrow_direct_ineligible')
-          redirect_to root_url
-        end
+        redirect_to borrow_direct_url(@patron[:barcode]) if @patron && @patron[:barcode]
+
+      # other users (barcode and alma) just get an error
       else
-        redirect_to user_cas_omniauth_authorize_path(origin: url_for(params.permit!))
+        @illiad_transactions = []
+        flash[:error] = I18n.t('blacklight.account.borrow_direct_ineligible')
+        redirect_to root_url
       end
     end
 

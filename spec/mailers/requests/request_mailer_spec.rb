@@ -9,7 +9,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
 
   let(:user_info) do
     stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/foo?ldap=true").to_return(status: 200, body: valid_patron_response, headers: {})
-    user = instance_double(User, guest?: false, uid: 'foo')
+    user = instance_double(User, guest?: false, uid: 'foo', alma_provider?: false)
     Requests::Patron.new(user: user, session: {})
   end
 

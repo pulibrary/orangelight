@@ -275,6 +275,10 @@ en:
       cas_user_no_barcode_msg: 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
       cas_user_no_barcode_no_choice_msg: 'Only items available for digitization can be requested when you do not have a barcode registered with the Library'
       auth_user_lookup_fail: 'Failed to lookup your library account'
+    alma_login:
+      no_access: 'Request options for this item are only available to Faculty, Staff, and Students.'
+      available_no_access: Please proceed to %{library} to retrieve this item.
+      unavailable: 'This item is not available'
     library_hours:
       firestone: '11:00am - 5:00pm, Monday - Friday; 12:00pm - 3:00pm Saturdays and Sundays'
       architecture: '9:00am – 5:00pm, Monday - Friday'

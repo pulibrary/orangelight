@@ -26,15 +26,17 @@ module Requests
     end
 
     def digitize?
+      return false unless patron.cas_provider? # only allow digitization for cas users
       eligible_for_library_services? && (item_data? || !circulates?) && (on_shelf_edd? || recap_edd? || marquand_edd?) && !request_status?
     end
 
     def fill_in_digitize?
+      return false unless patron.cas_provider? # only allow fill in digitization for cas users
       !item_data? || digitize?
     end
 
     def pick_up?
-      return false if etas? || !eligible_to_pickup?
+      return false if etas? || !eligible_to_pickup? || (!patron.cas_provider? && !off_site?)
       item_data? && (on_shelf? || recap? || annex?) && circulates? && !holding_library_in_library_only? && !scsb_in_library_use? && !request_status?
     end
 
@@ -60,7 +62,8 @@ module Requests
     end
 
     def will_submit_via_form?
-      return false unless eligible_for_library_services?
+      return false if !eligible_for_library_services? || (!patron.cas_provider? && !off_site?)
+      return false if patron.alma_provider? && !available?
       digitize? || pick_up? || scsb_in_library_use? || (ill_eligible? && patron.covid_trained?) || on_order? || in_process? || traceable? || off_site? || help_me?
     end
 

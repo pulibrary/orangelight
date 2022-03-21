@@ -26,6 +26,12 @@ class User < ApplicationRecord
     provider == 'barcode'
   end
 
+  # Determines whether or not this is a user which is identifiable by alma
+  # @return [TrueClass, FalseClass]
+  def alma_provider?
+    provider == 'alma'
+  end
+
   # Determines whether or not this is a user which is identifiable by cas
   # @return [TrueClass, FalseClass]
   def cas_provider?
@@ -56,6 +62,18 @@ class User < ApplicationRecord
       user.username = access_token.info.last_name
       user.email = access_token.uid
       user.password = SecureRandom.urlsafe_base64
+      user.provider = access_token.provider
+    end
+  end
+
+  # Retrieves a user authenticated using an Alma account
+  # @param access_token [] access token containing the barcode accessed using #uid
+  # @return [User,nil]
+  def self.from_alma(access_token)
+    User.where(provider: access_token.provider, uid: access_token.uid).first_or_initialize do |user|
+      user.uid = access_token.uid
+      user.username = access_token.uid
+      user.guest = false
       user.provider = access_token.provider
     end
   end
