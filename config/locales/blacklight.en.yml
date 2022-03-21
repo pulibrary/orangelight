@@ -49,7 +49,6 @@ en:
       missing: 'There are no holdings available for this record. Please consult a library staff member at the nearest circulation desk.'
     search:
       edit_search: 'Edit search'
-      start_over: 'Start over'
       librarian_view:
         title: 'Staff view'
         retry: 'Could not retrieve MARC data, please reload this page to try again.'
