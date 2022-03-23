@@ -2,7 +2,7 @@
 <div class="col-12 header-row">
     <% doc_presenter = show_presenter(@document) %>
     <% if titlevalue = @document['title_vern_display'] %>
-      <h1 dir="<%= titlevalue.dir %>"> <%= titlevalue %> </h1>
+      <h1 dir="<%= titlevalue.dir %>" lang="<%= language_iana %>"> <%= titlevalue %> </h1>
     <% end %>
     <abbr class="unapi-id" title="<%= @document.id %>"></abbr>
     <%= render_document_heading(@document, :tag => :h1) %>
