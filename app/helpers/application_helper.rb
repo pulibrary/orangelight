@@ -446,4 +446,13 @@ module ApplicationHelper
     return false if (location_code || "").start_with?("plasma$", "marquand$")
     true
   end
+
+  # Testing this feature with Voice Over - reading the Web content
+  # If language defaults to english 'en' when no language_iana_primary_s exists then:
+  # for cyrilic: for example russian, voice over will read each character as: cyrilic <character1>, cyrilic <character2>
+  # for japanese it announces <character> ideograph
+  # If there is no lang attribute it announces the same as having lang='en'
+  def language_iana
+    @document[:language_iana_s].present? ? @document[:language_iana_s].first : 'en'
+  end
 end

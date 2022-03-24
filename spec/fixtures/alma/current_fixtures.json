@@ -29021,7 +29021,7 @@
     "Three speeches against continuing the army, &c., : as they were spoken in the House of Commons the last session of Parliament : to which are added the reasons given by the Lords, who protested against the bill for punishing mutiny and desertion"
   ],
   "holdings_1display": [
-    "{\"22576837650006421\":{\"location_code\":\"rare$xr\",\"location\":\"Remote Storage (ReCAP): Rare Books. Special Collections Use Only\",\"library\":\"Special Collections\",\"call_number\":\"1446.999 v.29\",\"call_number_browse\":\"1446.999 v.29\",\"items\":[{\"holding_id\":\"22576837650006421\",\"id\":\"23576837640006421\",\"status_at_load\":\"1\",\"enumeration\":\"v.29\",\"barcode\":\"32101037458120\",\"copy_number\":\"1\"}]}}"
+    "{\"22576837650006421\":{\"location_code\":\"rare$xr\",\"location\":\"Remote Storage (ReCAP): Rare Books. Special Collections Use Only\",\"library\":\"Special Collections\",\"call_number\":\"1446.999 v.29\",\"call_number_browse\":\"1446.999 v.29\",\"items\":[{\"holding_id\":\"22576837650006421\",\"enumeration\":\"v.29\",\"id\":\"23576837640006421\",\"status_at_load\":\"1\",\"barcode\":\"32101037458120\",\"copy_number\":\"1\"}]}}"
   ],
   "location_code_s": [
     "rare$xr"
@@ -29280,6 +29280,461 @@
     "HQ767.9 .S534 2020"
   ],
   "access_facet": [
+    "In the Library"
+  ]
+},
+{
+  "id": [
+    "99125428126306421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_display": [
+    "Proietti, Giorgia"
+  ],
+  "author_sort": [
+    "Proietti, Giorgia"
+  ],
+  "author_citation_display": [
+    "Proietti, Giorgia"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Proietti, Giorgia\"}"
+  ],
+  "author_s": [
+    "Proietti, Giorgia"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": [
+    "Prima di Erodoto : aspetti della memoria delle Guerre persiane / Giorgia Proietti."
+  ],
+  "title_a_index": [
+    "Prima di Erodoto"
+  ],
+  "title_sort": [
+    "Prima di Erodoto : aspetti della memoria delle Guerre persiane / Giorgia Proietti."
+  ],
+  "title_no_h_index": [
+    "Prima di Erodoto : aspetti della memoria delle Guerre persiane / Giorgia Proietti."
+  ],
+  "title_t": [
+    "Prima di Erodoto : aspetti della memoria delle Guerre persiane / Giorgia Proietti."
+  ],
+  "title_citation_display": [
+    "Prima di Erodoto : aspetti della memoria delle Guerre persiane"
+  ],
+  "series_statement_index": [
+    "Hermes. Einzelschriften, 0341-0064 ; Einzelschrift 120"
+  ],
+  "series_ae_index": [
+    "Hermes. Einzelschriften ; Heft 120."
+  ],
+  "compiled_created_t": [
+    "Prima di Erodoto : aspetti della memoria delle Guerre persiane / Giorgia Proietti."
+  ],
+  "pub_created_display": [
+    "Stuttgart : Franz Steiner Verlag, [2021]",
+    "Memmingen : Druck: Memminger MedienCentrum, [2021]",
+    "©2021"
+  ],
+  "pub_created_s": [
+    "Stuttgart : Franz Steiner Verlag, [2021]",
+    "Memmingen : Druck: Memminger MedienCentrum, [2021]",
+    "©2021"
+  ],
+  "pub_citation_display": [
+    "Stuttgart: Franz Steiner Verlag",
+    "Memmingen: Druck: Memminger MedienCentrum"
+  ],
+  "pub_date_display": [
+    "2021"
+  ],
+  "pub_date_start_sort": [
+    "2021"
+  ],
+  "pub_date_end_sort": [
+    "2021"
+  ],
+  "cataloged_tdt": [
+    "2021-12-16T18:26:50Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "xvii, 546 pages : illustrations ; 25 cm"
+  ],
+  "description_t": [
+    "xvii, 546 pages : illustrations ; 25 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "xvii, 546 pages"
+  ],
+  "geocode_display": [
+    "Greece"
+  ],
+  "series_display": [
+    "Hermes. Einzelschriften ; Heft 120.",
+    "Hermes. Einzelschriften, 0341-0064 ; Einzelschrift 120"
+  ],
+  "more_in_this_series_t": [
+    "Hermes. Einzelschriften"
+  ],
+  "notes_index": [
+    "Includes quotations in Greek, with Italian translation, and includes quotations in English.",
+    "Introduction (\"Before the 'Histories'\", pages ix-xi) and \"Summary of the book\" (pages 456-463) in English.",
+    "Includes bibliographical references (pages 465-536) and indexes.",
+    "Questo libro riguarda la memoria delle Guerre persiane ad Atene, in rapporto con lo scenario panellenico, dall'immediato dopo Maratona fino alla cosiddetta 'prima Guerra del Peloponneso' (461?446). Esso analizza tutte le forme di memoria pre-storiografiche (poesia, iscrizioni, monumenti, topografia, teatro, riti, culti, festival, discorso pubblico) attraverso le quali le Guerre persiane vennero ricordate e rappresentate prima che Erodoto le raccontasse in forma storiografica.0Andando a riempire una lacuna nella ricerca attuale, il libro prende le mosse dalla consapevolezza per cui le Guerre persiane così come sono raccontate nelle Storie di Erodoto non corrispondono esattamente alla storia fattuale, ma sono invece l'esito di un processo multiforme e stratificato di memorializzazione, che decennio dopo decennio ha riplasmato gli eventi alla luce delle esigenze presenti. Combinando un approccio filologico alla documentazione letteraria, epigrafica e archeologica con un panorama teorico e metodologico influenzato dall'antropologia culturale e dagli studi sulla memoria, esso ricostruisce le immagini e i significati associati a ciascuno strato di tale processo, offrendo così una sorta di 'stratigrafia della memoria' delle Guerre persiane prima di Erodoto."
+  ],
+  "summary_note_display": [
+    "Questo libro riguarda la memoria delle Guerre persiane ad Atene, in rapporto con lo scenario panellenico, dall'immediato dopo Maratona fino alla cosiddetta 'prima Guerra del Peloponneso' (461?446). Esso analizza tutte le forme di memoria pre-storiografiche (poesia, iscrizioni, monumenti, topografia, teatro, riti, culti, festival, discorso pubblico) attraverso le quali le Guerre persiane vennero ricordate e rappresentate prima che Erodoto le raccontasse in forma storiografica.0Andando a riempire una lacuna nella ricerca attuale, il libro prende le mosse dalla consapevolezza per cui le Guerre persiane così come sono raccontate nelle Storie di Erodoto non corrispondono esattamente alla storia fattuale, ma sono invece l'esito di un processo multiforme e stratificato di memorializzazione, che decennio dopo decennio ha riplasmato gli eventi alla luce delle esigenze presenti. Combinando un approccio filologico alla documentazione letteraria, epigrafica e archeologica con un panorama teorico e metodologico influenzato dall'antropologia culturale e dagli studi sulla memoria, esso ricostruisce le immagini e i significati associati a ciascuno strato di tale processo, offrendo così una sorta di 'stratigrafia della memoria' delle Guerre persiane prima di Erodoto."
+  ],
+  "notes_display": [
+    "Introduction (\"Before the 'Histories'\", pages ix-xi) and \"Summary of the book\" (pages 456-463) in English."
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references (pages 465-536) and indexes."
+  ],
+  "language_display": [
+    "Includes quotations in Greek, with Italian translation, and includes quotations in English."
+  ],
+  "language_facet": [
+    "Italian",
+    "Greek, Ancient (to 1453)",
+    "English"
+  ],
+  "publication_place_facet": [
+    "Germany"
+  ],
+  "language_code_s": [
+    "ita",
+    "grc",
+    "eng"
+  ],
+  "language_iana_s": [
+    "it"
+  ],
+  "lc_subject_display": [
+    "Herodotus—History",
+    "Greece—History—Persian Wars, 500-449 B.C."
+  ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "Herodotus—History",
+    "Greece—History—Persian Wars, 500-449 B.C."
+  ],
+  "subject_unstem_search": [
+    "Herodotus—History",
+    "Greece—History—Persian Wars, 500-449 B.C."
+  ],
+  "siku_subject_unstem_search": null,
+  "subject_facet": [
+    "Herodotus—History",
+    "Greece—History—Persian Wars, 500-449 B.C."
+  ],
+  "subject_topic_facet": [
+    "Herodotus. History",
+    "Greece",
+    "History"
+  ],
+  "lc_1letter_facet": [
+    "D - World History"
+  ],
+  "lc_rest_facet": [
+    "DF - Greece (History)"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "D - World History"
+  ],
+  "call_number_full_facet": [
+    "DF - Greece (History)"
+  ],
+  "isbn_display": [
+    "9783515128872 ((hardbound ; : acid-free paper))",
+    "3515128875 ((hardbound ; : acid-free paper))"
+  ],
+  "standard_no_024_index": [
+    "9783515128872"
+  ],
+  "standard_no_1display": [
+    "{\"International Article Number\":[\"9783515128872\"]}"
+  ],
+  "isbn_s": [
+    "9783515128872"
+  ],
+  "oclc_s": [
+    "1258953847"
+  ],
+  "standard_no_index": [
+    "1258953847",
+    "on1258953847"
+  ],
+  "other_version_s": [
+    "9783515128872",
+    "on1258953847",
+    "on1258696267"
+  ],
+  "subject_era_facet": [
+    "500-449 B.C",
+    "Greece: Persian Wars, 500-449 B.C"
+  ],
+  "holdings_1display": [
+    "{\"22910398870006421\":{\"location_code\":\"firestone$clas\",\"location\":\"Classics Collection\",\"library\":\"Firestone Library\",\"call_number\":\"DF225 .P75 2021\",\"call_number_browse\":\"DF225 .P75 2021\",\"items\":[{\"holding_id\":\"22910398870006421\",\"id\":\"23910398850006421\",\"status_at_load\":\"1\",\"barcode\":\"32101108133123\"}]}}"
+  ],
+  "location_code_s": [
+    "firestone$clas"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "location_display": [
+    "Classics Collection"
+  ],
+  "advanced_location_s": [
+    "firestone$clas",
+    "Firestone Library"
+  ],
+  "name_title_browse_s": [
+    "Proietti, Giorgia. Prima di Erodoto"
+  ],
+  "call_number_display": [
+    "DF225 .P75 2021"
+  ],
+  "call_number_browse_s": [
+    "DF225 .P75 2021"
+  ],
+  "call_number_locator_display": [
+    "DF225 .P75 2021"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
+},
+{
+  "id": [
+    "9947053073506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    "دواني، محمد بن اسعد [رسالة الزوراء] Incipit: بسم ... وبه الاستعان الحمد لذاته ... وبعد فهذه نبذة من الحقايق بل زبدة من الدقايق Explicit: خصوصا سيدنا سيد الكل في الكل وعلى آله وصحبه اجمعين"
+  ],
+  "cjk_notes": [
+    "Incipit: بسم ... وبه الاستعان الحمد لذاته ... وبعد فهذه نبذة من الحقايق بل زبدة من الدقايق Explicit: خصوصا سيدنا سيد الكل في الكل وعلى آله وصحبه اجمعين"
+  ],
+  "author_display": [
+    "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513",
+    "دواني، محمد بن اسعد"
+  ],
+  "author_sort": [
+    "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513"
+  ],
+  "author_citation_display": [
+    "Dawwānī, Muḥammad ibn Asʻad"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"دواني، محمد بن اسعد\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Dawwānī, Muḥammad ibn Asʻad\"}"
+  ],
+  "cjk_author": [
+    "دواني، محمد بن اسعد"
+  ],
+  "author_s": [
+    "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513",
+    "دواني، محمد بن اسعد"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": [
+    "[Risālat al-Zawrāʼ]."
+  ],
+  "title_a_index": [
+    "[Risālat al-Zawrāʼ].",
+    "رسالة الزوراء"
+  ],
+  "title_vern_display": [
+    "[رسالة الزوراء]"
+  ],
+  "title_sort": [
+    "[Risālat al-Zawrāʼ]."
+  ],
+  "title_vern_sort": [
+    "[رسالة الزوراء]"
+  ],
+  "title_no_h_index": [
+    "[Risālat al-Zawrāʼ].",
+    "[رسالة الزوراء]"
+  ],
+  "title_t": [
+    "[Risālat al-Zawrāʼ]."
+  ],
+  "title_citation_display": [
+    "[Risālat al-Zawrāʼ].",
+    "رسالة الزوراء"
+  ],
+  "linked_title_index": [
+    "Risālat al-Zawrāʼ ... [etc.],"
+  ],
+  "cjk_title": [
+    "[رسالة الزوراء]"
+  ],
+  "compiled_created_t": [
+    "[Risālat al-Zawrāʼ].",
+    "[رسالة الزوراء]"
+  ],
+  "pub_created_display": [
+    "[1501]"
+  ],
+  "pub_created_s": [
+    "[1501]"
+  ],
+  "pub_date_display": [
+    "1501"
+  ],
+  "pub_date_start_sort": [
+    "1501"
+  ],
+  "cataloged_tdt": [
+    "2021-07-21T00:27:43Z"
+  ],
+  "format": [
+    "Manuscript",
+    "Book"
+  ],
+  "geocode_display": [
+    "New Jersey"
+  ],
+  "geo_related_record_display": [
+    "Dawwānī, Muḥammad ibn Asʻad, 1426 or 7-1512 or 13 Risālat al-Zawrāʼ ... [etc.], fol. 1b-7a"
+  ],
+  "contained_in_s": [
+    "9947053043506421"
+  ],
+  "notes_index": [
+    "Ms. component part.",
+    "Treatise on theological and philosophical questions, composed in Jumādá al-Thānī 871 [1467].",
+    "Title supplied by cataloguer.",
+    "Copied in Ṣafar 907 by Aḥmad ibn ʻAlī (colophon of the Ḥāshiyat khuṭbat al-Zawrāʼ, fol. 26b).",
+    "Mach-Ormsby. Handlist (New Series), 1005",
+    "Brockelmann, C. GAL, II, 218/20"
+  ],
+  "summary_note_display": [
+    "Treatise on theological and philosophical questions, composed in Jumādá al-Thānī 871 [1467]."
+  ],
+  "notes_display": [
+    "Ms. component part.",
+    "Title supplied by cataloguer.",
+    "Copied in Ṣafar 907 by Aḥmad ibn ʻAlī (colophon of the Ḥāshiyat khuṭbat al-Zawrāʼ, fol. 26b).",
+    "Incipit: بسم ... وبه الاستعان الحمد لذاته ... وبعد فهذه نبذة من الحقايق بل زبدة من الدقايق",
+    "Explicit: خصوصا سيدنا سيد الكل في الكل وعلى آله وصحبه اجمعين"
+  ],
+  "language_facet": [
+    "Arabic"
+  ],
+  "publication_place_facet": [
+    "No place, unknown, or undetermined"
+  ],
+  "language_code_s": [
+    "ara"
+  ],
+  "language_iana_s": [
+    "ar"
+  ],
+  "references_display": [
+    "Mach-Ormsby. Handlist (New Series), 1005",
+    "Brockelmann, C. GAL, II, 218/20"
+  ],
+  "references_url_display": [
+    "Mach-Ormsby. Handlist (New Series), 1005",
+    "Brockelmann, C. GAL, II, 218/20"
+  ],
+  "lc_subject_display": [
+    "Islam—Doctrines—Early works to 1800",
+    "Manuscripts, Arabic—New Jersey—Princeton"
+  ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "Islam—Doctrines—Early works to 1800",
+    "Manuscripts, Arabic—New Jersey—Princeton"
+  ],
+  "subject_unstem_search": [
+    "Islam—Doctrines—Early works to 1800",
+    "Manuscripts, Arabic—New Jersey—Princeton"
+  ],
+  "siku_subject_unstem_search": null,
+  "subject_facet": [
+    "Islam—Doctrines—Early works to 1800",
+    "Manuscripts, Arabic—New Jersey—Princeton"
+  ],
+  "subject_topic_facet": [
+    "Islam",
+    "Doctrines",
+    "Manuscripts, Arabic",
+    "New Jersey",
+    "Princeton"
+  ],
+  "genre_facet": [
+    "Early works to 1800"
+  ],
+  "in_display": [
+    "Dawwānī, Muḥammad ibn Asʻad, 1426 or 7-1512 or 13 Risālat al-Zawrāʼ ... [etc.], fol. 1b-7a"
+  ],
+  "oclc_s": [
+    "67146578"
+  ],
+  "standard_no_index": [
+    "ocm67146578",
+    "4705307",
+    "4705307-princetondb"
+  ],
+  "other_version_s": [
+    "ocm67146578"
+  ],
+  "holdings_1display": [
+    "{\"22529744240006421\":{\"location_code\":\"rare$hsvm\",\"location\":\"Manuscripts\",\"library\":\"Special Collections\",\"call_number\":\"Islamic Manuscripts, New Series no. 1948\",\"call_number_browse\":\"Islamic Manuscripts, New Series no. 1948\"}}"
+  ],
+  "location_code_s": [
+    "rare$hsvm"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Manuscripts"
+  ],
+  "advanced_location_s": [
+    "rare$hsvm",
+    "Special Collections"
+  ],
+  "name_title_browse_s": [
+    "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513. [Risālat al-Zawrāʼ].",
+    "دواني، محمد بن اسعد. رسالة الزوراء"
+  ],
+  "call_number_display": [
+    "Islamic Manuscripts, New Series no. 1948"
+  ],
+  "call_number_browse_s": [
+    "Islamic Manuscripts, New Series no. 1948"
+  ],
+  "call_number_locator_display": [
+    "Islamic Manuscripts, New Series no. 1948"
+  ],
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53854567290006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ],
+  "access_facet": [
+    "Online",
     "In the Library"
   ]
 }
