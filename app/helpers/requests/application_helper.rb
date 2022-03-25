@@ -33,33 +33,18 @@ module Requests
       if requestable.on_shelf?
         display_on_shelf(requestable, mfhd_id)
       else
-        display_requestable_list(requestable.services)
+        display_requestable_list(requestable)
       end
     end
 
     def show_service_options(requestable, _mfhd_id)
-      if requestable.services.empty?
-        content_tag(:div, "#{requestable.title} #{enum_copy_display(requestable.item)} #{I18n.t('requests.no_services.brief_msg')}", class: 'sr-only') +
-          content_tag(:div, I18n.t("requests.no_services.brief_msg"), class: 'service-item', aria: { hidden: true })
+      if requestable.no_services?
+        content_tag(:div, "#{requestable.title} #{enum_copy_display(requestable.item)} #{ActionView::Helpers::SanitizeHelper.sanitize(I18n.t('requests.no_services.brief_msg'))}", class: 'sr-only') +
+          content_tag(:div, ActionView::Helpers::SanitizeHelper.sanitize(I18n.t("requests.no_services.brief_msg")), class: 'service-item', aria: { hidden: true })
       elsif requestable.charged? && !requestable.aeon? && !requestable.ask_me?
         render partial: 'checked_out_options', locals: { requestable: requestable }
       else
-        display_requestable_list(requestable.services)
-      end
-    end
-
-    def show_service_options_fill_in(requestable)
-      content_tag(:ul, class: "service-list") do
-        brief_msg = if requestable.annex?
-                      I18n.t("requests.annex.brief_msg")
-                    elsif requestable.preservation?
-                      I18n.t("requests.pres.brief_msg")
-                    elsif requestable.services.include? 'recap_no_items'
-                      I18n.t("requests.recap_no_items.brief_msg")
-                    else
-                      I18n.t("requests.paging.brief_msg")
-                    end
-        concat content_tag(:li, brief_msg, class: "service-item")
+        display_requestable_list(requestable)
       end
     end
 
@@ -211,17 +196,15 @@ module Requests
       hidden += hidden_field_tag "requestable[][call_number]", "", value: (requestable.holding.first[1]['call_number']).to_s, id: "requestable_call_number_#{requestable.holding.keys[0]}" unless requestable.holding.first[1]["call_number"].nil?
       hidden += hidden_field_tag "requestable[][location_code]", "", value: (requestable.holding.first[1]['location_code']).to_s, id: "requestable_location_code_#{requestable.holding.keys[0]}"
       hidden += hidden_field_tag "requestable[][location]", "", value: (requestable.holding.first[1]['location']).to_s, id: "requestable_location_#{requestable.holding.keys[0]}"
-      hidden
+      ActionView::Helpers::SanitizeHelper.sanitize(hidden, tags: input)
     end
 
-    # rubocop:disable Rails/OutputSafety
     def hidden_fields_borrow_direct(request)
       hidden_bd_tags = ''
       hidden_bd_tags += hidden_field_tag 'bd[auth_id]', '', value: ''
       hidden_bd_tags += hidden_field_tag 'bd[query_params]', '', value: request.isbn_numbers.first
-      hidden_bd_tags.html_safe
+      ActionView::Helpers::SanitizeHelper.sanitize(hidden_bd_tags, tags: input)
     end
-    # rubocop:enable Rails/OutputSafety
 
     def isbn_string(array_of_isbns)
       array_of_isbns.join(',')
@@ -353,28 +336,26 @@ module Requests
 
     private
 
-      def display_requestable_list(services)
-        return if services.blank? # || services.include?('recap_edd') # || services.include?(recap)
+      def display_requestable_list(requestable)
+        return if requestable.no_services?
         content_tag(:ul, class: "service-list") do
-          services_to_filter = ["on_shelf_edd", "recap_edd"]
-          if services.include?('bd') && services.include?('ill')
-            services_to_filter << 'bd' << 'ill'
-            concat content_tag(:li, I18n.t("requests.bd_and_ill.brief_msg"), class: "service-item")
-          end
-          filtered_services = services.reject { |val| services_to_filter.include?(val) }
-          filtered_services.each do |service|
-            brief_msg = I18n.t("requests.#{service}.brief_msg")
-            concat content_tag(:li, brief_msg, class: "service-item")
+          if requestable.borrow_direct? || requestable.ill_eligible?
+            concat content_tag(:li, ActionView::Helpers::SanitizeHelper.sanitize(I18n.t("requests.ill.brief_msg")), class: "service-item")
+          else
+            # there are no instances where more than one actual service is available to an item, so we are going to take the first service that is not edd
+            filtered_services = requestable.services.reject { |service_name| service_name.include?("edd") }
+            brief_msg = I18n.t("requests.#{filtered_services.first}.brief_msg")
+            concat content_tag(:li, ActionView::Helpers::SanitizeHelper.sanitize(brief_msg), class: "service-item")
           end
         end
       end
 
       def display_on_shelf(requestable, _mfhd_id)
         content_tag(:div) do
-          display_requestable_list(requestable.services)
+          display_requestable_list(requestable)
           # temporary changes issue 438
           # concat link_to 'Where to find it', requestable.map_url(mfhd_id)
-          # concat content_tag(:div, I18n.t("requests.trace.brief_msg").html_safe, class: 'service-item') if requestable.traceable?
+          # concat content_tag(:div, ActionView::Helpers::SanitizeHelper.sanitize(I18n.t("requests.trace.brief_msg")), class: 'service-item') if requestable.traceable?
         end
       end
 
