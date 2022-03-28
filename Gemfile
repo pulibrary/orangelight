@@ -108,6 +108,7 @@ group :test do
   gem 'timecop'
   gem 'webdrivers'
   gem 'webmock', require: false
+  gem 'cypress-on-rails', '~> 1.0'
 end
 
 group :development, :test do

@@ -214,6 +214,8 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
+    cypress-on-rails (1.12.1)
+      rack
     ddtrace (0.54.2)
       debase-ruby_core_source (<= 0.10.14)
       msgpack
@@ -626,6 +628,7 @@ DEPENDENCIES
   chosen-rails
   coffee-rails (~> 4.2.0)
   coveralls
+  cypress-on-rails (~> 1.0)
   ddtrace
   devise (>= 4.6.0)
   devise-guests (~> 0.5)
