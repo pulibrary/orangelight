@@ -1,0 +1,31 @@
+<tr class="email-header">
+  <td colspan="2" style="padding: 18px;">
+    <%= render 'request_header' %>
+  </td>
+</tr>
+
+<tr>
+  <td colspan="2" style="padding: 18px;">
+    <p class="body-content" style="margin-bottom: 0;"><%= I18n.t('requests.recap_no_items.email_msg') %></p>
+  </td>
+</tr>
+
+<tr class="bib-info">
+  <td colspan="2" style="padding: 18px;border-top:1px solid #ccc;">
+    <%= render 'bib_info' %>
+  </td>
+</tr>
+
+<tr>
+  <td colspan="2" style="padding: 18px;border-top:1px solid #ccc;">
+    <%= render partial: 'item_info', locals: { show_edd_fields: false } %>
+  </td>
+</tr>
+
+<% if (@submission.items.first["pick_up"].blank?) %>
+<tr>
+  <td colspan="2" style="padding: 18px;border-top:1px solid #ccc;">
+    <%= render 'item_info_digitize' %>
+  </td>
+</tr>
+<% end %>

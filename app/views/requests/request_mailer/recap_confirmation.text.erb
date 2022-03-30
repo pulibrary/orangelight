@@ -1,0 +1,13 @@
+<% if @submission.access_only? %>
+<%= I18n.t('requests.recap_guest.email_subject') %>
+
+<%= I18n.t('requests.recap_guest.email_conf_msg') %>
+<% else %>
+<%= I18n.t('requests.recap.email_subject') %>
+
+<%= I18n.t('requests.recap.email_conf_msg') %>
+<% end %>
+
+<%= render 'patron_info' %>
+<%= render 'bib_info' %>
+<%= render partial: 'item_info', locals: { show_edd_fields: false } %>

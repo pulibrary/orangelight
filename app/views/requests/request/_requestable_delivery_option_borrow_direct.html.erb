@@ -1,0 +1,7 @@
+      <div>
+        <%= hidden_service_options requestable, fill_in: fill_in %>
+        <%= hidden_field_tag "requestable[][fill_in]", requestable.fill_in_pick_up? %>
+        <%= radio_button_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}]", 'borrow_direct', selected, data: { target: "#fields-borrow_direct__#{requestable.preferred_request_id}" }, 'aria-controls' => "fields-borrow_direct__#{requestable.preferred_request_id}", class: 'control-label' %>
+        <%= label_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}_borrow_direct]", I18n.t("requests.#{requestable.services.join('_and_')}.delivery_label"), class: 'control-label', id: "requestable__type_borrow_direct_label_#{requestable.preferred_request_id}" %>
+        <%= pick_up_choices requestable, default_pick_ups, !selected %>
+      </div>

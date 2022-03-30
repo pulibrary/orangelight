@@ -1,0 +1,6 @@
+===============================================
+Bibliographic Information
+===============================================
+<% @submission.bib.each do |key, value| %>
+  <%= format_label(display_label[key]) %>: <%= value %>
+<% end %>

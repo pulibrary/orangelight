@@ -1,0 +1,18 @@
+  <% unless @patron.university_id.blank? %>
+    <div>
+    <%= radio_button_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}]", "edd", selected, data: { target: "#fields-eed__#{requestable.preferred_request_id}" }, 'aria-controls' => "fields-eed__#{requestable.preferred_request_id}", class: 'control-label' %>
+    <%= label_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}_edd]", "Electronic Delivery", class: 'control-label', id: "requestable__type_recap_edd_#{requestable.preferred_request_id}" %>
+    <%= render partial: "edd_fields", locals: { requestable: requestable, collapse_field: collapse } %>
+    <% illiad_params = requestable.illiad_request_parameters(request_context, note: 'Digitization Request') %>
+    <%= hidden_field_tag "requestable[][edd_genre]", illiad_params["genre"] %> 
+    <%= hidden_field_tag "requestable[][edd_location]", requestable.location_label %> 
+    <%= hidden_field_tag "requestable[][edd_isbn]", illiad_params["isbn"] %> 
+    <%= hidden_field_tag "requestable[][edd_date]", illiad_params["rft.date"] %> 
+    <%= hidden_field_tag "requestable[][edd_publisher]", illiad_params["rft.pub"] %> 
+    <%= hidden_field_tag "requestable[][edd_call_number]", requestable.call_number %> 
+    <%= hidden_field_tag "requestable[][edd_oclc_number]", illiad_params["rft.oclcnum"] %> 
+    <%= hidden_field_tag "requestable[][edd_title]", illiad_params["title"] %>     
+    <%= hidden_field_tag "requestable[][library_code]", requestable.off_site_location %>
+    <%= hidden_field_tag "requestable[][type]", type %>
+    </div>
+  <% end %>

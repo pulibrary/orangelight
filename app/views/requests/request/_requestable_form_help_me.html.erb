@@ -1,0 +1,13 @@
+<tr id='<%= "request_#{requestable.preferred_request_id}" %>'>
+  <%= render partial: 'requestable_checkbox', locals: { requestable: requestable, single_item_request: single_item_request } %>
+  <%= render partial: 'requestable_enum', locals: { requestable: requestable } %>
+  <%= render partial: 'requestable_status', locals: { requestable: requestable } %>
+  <td class='delivery--options' aria-live="polite">
+    <%= hidden_field_tag "requestable[][type]", "help_me" %>
+    <%= radio_button_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}]", 'help_me', true, data: { target: "#fields-help_me__#{requestable.preferred_request_id}" }, 'aria-controls' => "fields-help_me__#{requestable.preferred_request_id}", class: 'control-label' %>
+    <%= label_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}_help_me]", I18n.t("requests.help_me.delivery_label"), class: 'control-label', id: "requestable__type_help_me_label_#{requestable.preferred_request_id}" %>
+    <div class="card card-body bg-light">
+      <%= requestable.help_me_message %>
+    </div>
+  </td>
+</tr>

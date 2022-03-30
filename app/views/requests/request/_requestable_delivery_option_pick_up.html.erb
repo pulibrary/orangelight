@@ -1,0 +1,7 @@
+      <div>
+        <%= hidden_service_options requestable, fill_in: fill_in %>
+        <%= hidden_field_tag "requestable[][fill_in]", requestable.fill_in_pick_up? %>
+        <%= radio_button_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}]", 'print', selected, data: { target: "#fields-print__#{requestable.preferred_request_id}" }, 'aria-controls' => "fields-print__#{requestable.preferred_request_id}", class: 'control-label' %>
+        <%= label_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}_print]", I18n.t("requests.recap.delivery_label"), class: 'control-label', id: "requestable__type_recap_label_#{requestable.preferred_request_id}" %>
+        <%= pick_up_choices requestable, default_pick_ups, !selected %>
+      </div>

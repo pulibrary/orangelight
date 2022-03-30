@@ -1,0 +1,9 @@
+<tr id='<%= "request_#{requestable.preferred_request_id}" %>'>
+  <%= render partial: 'requestable_checkbox', locals: { requestable: requestable, single_item_request: single_item_request } %>
+  <%= render partial: 'requestable_enum', locals: { requestable: requestable } %>
+  <%= render partial: 'requestable_status', locals: { requestable: requestable } %>
+  <td class='delivery--options' aria-live="polite">
+    <%= request_input(requestable.services.first) %>
+    <%= link_to 'Request to View in Reading Room', requestable.aeon_url(request_context), class: 'btn btn-primary', aria: { labelledby: "title enum_#{requestable.preferred_request_id}" } %>
+  </td>
+</tr>

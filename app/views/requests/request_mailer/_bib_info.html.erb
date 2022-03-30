@@ -1,0 +1,9 @@
+<div style="padding-top: 9px;">
+  <div class="large-print" style="font-size: 20px; font-weight:bold;text-transform: uppercase; line-height:1.4;">(<%= @submission.items.first["location_code"] %>) <%= @submission.items.first["call_number"]%></div>
+
+  <div style="font-weight:normal;font-size:12px;margin-top:18px;">Title</div>
+  <div class="large-print" style="font-size:20px;line-height:1.4;"><%= @submission.bib["title"] %></div>
+
+  <div style="font-weight:normal;font-size:12px;margin-top:18px;">Author/Artist</div>
+  <div class="large-print" style="font-size:20px;line-height:1.4;"><%= @submission.bib["author"] %></div>
+</div>

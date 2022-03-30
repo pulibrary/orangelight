@@ -1,0 +1,30 @@
+<% [:success, :notice, :error, :alert].each do |type| %>
+  <%- alert_class = case type
+    when :success then "flash-success alert-success"
+    when :notice  then "flash-notice alert-info"
+    when :alert   then "flash-alert alert-warning"
+    when :error   then "flash-error alert-danger"
+    else "flash-#{type} alert-#{type}"
+    end
+  -%>
+  <% if flash[type] %>
+      <% if !@submission.nil? %>
+        <div class="alert <%= alert_class %>" aria-live="polite"><%= flash[type] %>
+          <% if !@submission.errors.empty? %>
+            <a class="close" data-dismiss="alert" href="#">&times;</a>
+            <ul>
+              <% @submission.errors.messages.each do |key, value| %>
+                <% if key == :items %>
+                  <li><em><%= error_key_format(key) %></em> <%= value.first.values[0]['text'].html_safe %></li>
+                <% else %>
+                  <li><em><%= error_key_format(key) %></em> <%= value.first.html_safe %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          <% else %>
+            <%= return_message @submission %>
+          <% end %>
+        </div>
+      <% end %>
+  <% end %>
+<% end %>

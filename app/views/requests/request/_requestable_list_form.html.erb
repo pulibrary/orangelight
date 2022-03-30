@@ -1,0 +1,35 @@
+<% return unless holdings[mfhd].present? %>
+<%= hidden_fields_mfhd holdings[mfhd] %>
+<div class="table-responsive">
+  <div id="holding<%= mfhd %>" class="table items table">
+    <h2><%= current_location_label(@request.location_label, requestable_list) %> </h2>
+
+      <% unless holdings[mfhd]["location_has"].nil? %>
+          <div>
+            <h3>Location has: </h3>
+          </div>
+          <p>
+            <% holdings[mfhd]["location_has"].each do |loc| %>
+              <%= loc %><br/>
+            <% end %>
+          </p>
+      <% end %>
+  </div>
+</div>
+<div class="table-responsive-sm">
+  <table class="table table-striped table-bordered request--available_items <%= show_tablesorter(requestable_list) %>" summary='<%= current_location_label(@request.location_label, requestable_list) %>'>
+    <thead class="visually-hidden-sm">
+      <th>Select</th>
+      <th class="w-25">Enumeration</th>
+      <th>Status</th>
+      <th id="delivery_options">Delivery Options</th>
+    </thead>
+    <tbody>
+      <% fill_in_eligible = @request.any_fill_in_eligible? %>
+      <% if fill_in_eligible %>
+        <%= render partial: "requestable_fill_in_field", locals: { requestable: requestable_list.last.create_fill_in_requestable, default_pick_ups: default_pick_ups, requestable_list: requestable_list } %>
+      <% end %>
+      <%= render partial: "requestable_form", collection: requestable_list, as: :requestable, locals: { mfhd: mfhd, holdings: @request.holdings, default_pick_ups: @request.default_pick_ups, fill_in_eligible: fill_in_eligible, requestable_list: requestable_list } %>
+    </tbody>
+  </table>
+</div>

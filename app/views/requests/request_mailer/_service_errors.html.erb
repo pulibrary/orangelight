@@ -1,0 +1,19 @@
+<% @services.each do |s| %>
+<div style="font-size:18px;font-weight:bold;margin-bottom:18px;"><%= s.class.name.titleize.gsub("/"," ") %> Errors</div>
+<table style="width:100%;" class="responsive-table">
+  <% s.errors.each do |error| %>
+      <% error.each do |key,value| %>
+        <tr>
+        <td class="responsive-column-container" width="150px" valign="top" style="font-weight:bold;text-align:right;padding-right:18px;padding-bottom:9px;"><%= key.to_s.humanize.titleize %></td>
+        <td class="responsive-column-container" valign="top" style="padding-bottom:9px;">
+          <% if value.is_a? Hash %>
+            <%= value.to_a.map{|k,v| "#{k}: #{v}"}.join(", ") %>
+          <% else %>
+            <%= value %>
+          <% end %>
+        </td>
+        </tr>
+      <% end %>
+  <% end %>
+</table>
+<% end %>

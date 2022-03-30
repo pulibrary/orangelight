@@ -1,0 +1,48 @@
+<div aria-live='polite' class='<%= collapse_field %>' id='fields-eed__<%= "#{requestable.preferred_request_id}" %>'>
+  <small id="requestable__type_recap_edd_caption_<%= requestable.preferred_request_id %>" class="form-text brief-msg"><%= I18n.t("requests.#{requestable.off_site_location}_edd.brief_msg", default: I18n.t("requests.default_edd.brief_msg")) %></small>
+  <div class="card card-body bg-light">
+    <fieldset class="form-group required">
+      <%= label_tag "requestable__edd_art_title_#{requestable.preferred_request_id}", 'Article/Chapter Title (Required)', class: 'control-label col-sm-12' %>
+      <div class="col-sm-6">
+        <%= text_field_tag 'requestable[][edd_art_title]', "", value: "", placeholder: "", maxlength: 60, size: 30, id: "requestable__edd_art_title_#{requestable.preferred_request_id}" %>
+      </div>
+    </fieldset>
+    <fieldset class="form-group">
+      <%= label_tag "requestable__edd_start_page_#{requestable.preferred_request_id}", 'Start Page', class: 'control-label col-sm-12' %>
+      <div class="col-sm-6">
+        <%= text_field_tag 'requestable[][edd_start_page]', "", value: "", placeholder: "1, xi, toc", maxlength: 20, size: 20, id: "requestable__edd_start_page_#{requestable.preferred_request_id}" %>
+      </div>
+    </fieldset>
+    <fieldset class="form-group">
+      <%= label_tag "requestable__edd_end_page_#{requestable.preferred_request_id}", 'End Page', class: 'control-label col-sm-12' %>
+      <div class="col-sm-6">
+        <%= text_field_tag 'requestable[][edd_end_page]', "", value: "", placeholder: "20, xi", maxlength: 20, size: 20, id: "requestable__edd_end_page_#{requestable.preferred_request_id}" %>
+      </div>
+    </fieldset>
+    <fieldset class="form-group">
+      <%= label_tag "requestable__edd_volume_number_#{requestable.preferred_request_id}", 'Volume Number', class: 'control-label col-sm-12' %>
+      <div class="col-sm-6">
+        <%= text_field_tag 'requestable[][edd_volume_number]', "", value: requestable.enum_value, placeholder: "Vol. 50", maxlength: 20, size: 20, id: "requestable__edd_volume_number_#{requestable.preferred_request_id}" %>
+      </div>
+    </fieldset>
+    <fieldset class="form-group">
+      <%= label_tag "requestable__edd_issue_#{requestable.preferred_request_id}", 'Issue', class: 'control-label col-sm-12' %>
+      <div class="col-sm-6">
+        <%= text_field_tag 'requestable[][edd_issue]', "", value: requestable.cron_value, placeholder: "3", maxlength: 20, size: 20, id: "requestable__edd_issue_#{requestable.preferred_request_id}" %>
+      </div>
+    </fieldset>
+    <fieldset class="form-group">
+      <%= label_tag "requestable__edd_author_#{requestable.preferred_request_id}", 'Author', class: 'control-label col-sm-12' %>
+      <div class="col-sm-6">
+        <%= text_field_tag 'requestable[][edd_author]', "", value: "", placeholder: "", maxlength: 60, size: 30, id: "requestable__edd_author_#{requestable.preferred_request_id}" %>
+      </div>
+    </fieldset>
+    <fieldset class="form-group">
+      <%= label_tag "requestable__edd_note_#{requestable.preferred_request_id}", 'Note', class: 'control-label col-sm-12' %>
+      <div class="col-sm-6">
+        <%= text_field_tag 'requestable[][edd_note]', "", value: "", placeholder: "", maxlength: 60, size: 30, id: "requestable__edd_note_#{requestable.preferred_request_id}" %>
+      </div>
+      <small class="col-sm-12"><%= I18n.t("requests.recap_edd.note_msg")%></small>
+    </fieldset>
+  </div>
+</div>

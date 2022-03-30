@@ -1,0 +1,44 @@
+<div class="row">
+  <div id="punetid-form" role="menu" aria-hidden="false" style="display: block; text-align:center; width: 50%; margin: 0 auto; ">
+      <%= current_user_status @user %>
+      <% if false %>
+      <hr>
+      <p class="or-divider">
+        or
+      </p>
+      <a id="no_netid" role="menuitem" class="btn btn-md btn-outline-secondary" href="#other_user_account_info" aria-expanded="false" aria-controls="other_user_account_info"><%= I18n.t('requests.account.other_user_login_msg') %></a>
+      <% end %>
+      <div style="text-align:left" class='collapse card' aria-live='polite' id='other_user_account_info'>
+        <div class="card-body">
+          <fieldset class="form-group required">
+            <label class="control-label col-sm-10" for="request_user_name">
+                Your Name
+            </label>
+            <div class="col-sm-10">
+              <%= l.text_field :user_name, size: 50, maxlength: 50, class: 'form-control', error: 'User Name' %>
+              <span class="error error-user_name"></span>
+            </div>
+          </fieldset>
+          <fieldset class="form-group required">
+            <label class="control-label col-sm-10" for="request_email">
+                Contact Email
+            </label>
+            <div class="col-sm-10">
+              <%= l.text_field :email, size: 50, maxlength: 50, class: 'form-control', error: 'Email' %>
+              <span class="error error-email"></span>
+            </div>
+          </fieldset>
+          <% unless @request.mfhd.nil? %>
+            <%= l.hidden_field :mfhd, value: @request.mfhd %>
+          <% end %>
+          <%= l.hidden_field :source, value: @request.source %>
+          <%= l.submit I18n.t("requests.account.other_user_login_btn"), class: "btn btn-primary submit--login" %>
+          <div id="go-back-link">
+            <a href="#punetid-form" id="go_back">
+              <span aria-hidden="true">‹ </span>Go back (show the login option)
+            </a>
+          </div>
+        </div>  
+      </div>
+  </div>
+</div>

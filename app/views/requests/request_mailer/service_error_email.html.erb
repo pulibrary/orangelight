@@ -1,0 +1,24 @@
+<tr class="email-header">
+  <td colspan="2" style="padding: 18px;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" class="responsive-table">
+      <tr>
+        <td valign="top" width="100%" class="responsive-column-container">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr><td>
+              <div style="font-size:25px;font-weight:bold;display:block;line-height:1.2;">Remote Service Request Error</div>
+            </td></tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+<%= render 'patron_info' %>
+</tr>
+<tr>
+  <td colspan="2" style="padding: 18px;border-top:1px solid #ccc;">
+    <p class="body-content"><%= I18n.t('requests.error.service_error_conf_msg') %></p>
+    <%= render 'service_errors' %>
+  </td>
+</tr>

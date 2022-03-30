@@ -1,0 +1,5 @@
+    <td class='request--select'>
+      <%= hidden_field_tag 'requestable[][selected]', false, id: "hidden_selected_#{requestable.preferred_request_id}" %>
+      <%= item_checkbox requestable, single_item_request %>
+      <%= hidden_fields_item requestable %>
+    </td>

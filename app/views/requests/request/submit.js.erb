@@ -1,0 +1,35 @@
+//$(".flash_messages").html("<%= escape_javascript(render :partial=>'flash_messages') %>");
+<% if @submission.errors.messages.empty? %>
+  $('.error').each(function( index ) {
+    $(this).hide();
+  });
+  $('.flash-error.alert-danger').hide();
+  //$('tbody .alert-danger').show();
+  $('tbody .alert-danger').removeClass('alert-danger');
+  $('.submit--request').replaceWith("<%= escape_javascript(render partial: 'flash_messages') %>");
+<% else %>
+  $('.error').each(function( index ) {
+    $(this).hide();
+  });
+  $('.flash-error.alert-danger').hide();
+  //$('tbody .alert-danger').show();
+  $('tbody .alert-danger').removeClass('alert-danger');
+  <% if guest_user_error?(@submission.errors.messages.keys) %>
+    $('#other_user_account_info').collapse('show');
+  <% end %>
+  <% @submission.errors.messages.each do |key, value| %>
+    <%  if key == :items %>
+      $(".error-<%= key %>").text("<%= value.first.values[0]['text'].html_safe %>");
+    <% else %>
+      $(".error-<%= key %>").text("<%= value.first.html_safe %>");
+    <% end %>
+    $(".error-<%= key %>").parent().addClass('has-error');
+    $(".error-<%= key %>").show();
+    <% if key == :items %>
+      <% value.each do |error| %>
+        $("#request_<%= error.keys[0]&.html_safe %> .delivery--<%= error.values[0]['type'] %>").addClass('alert alert-danger');
+      <% end %>
+    <% end %>
+  <% end %>
+  $('.submit--request').before("<%= escape_javascript(render partial: 'flash_messages') %>");
+<% end %>

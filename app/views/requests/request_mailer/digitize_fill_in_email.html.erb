@@ -1,0 +1,25 @@
+<tr class="email-header">
+  <td colspan="2" style="padding: 18px;">
+    <%= render 'request_header_fill_in' %>
+  </td>
+</tr>
+
+<tr class="email-header">
+  <td colspan="2" style="padding: 18px;">
+     <%= I18n.t('requests.digitize_fillin.email_msg')%>
+  </td>
+</tr>
+
+<tr class="bib-info">
+  <td colspan="2" style="padding: 18px;border-top:1px solid #ccc;">
+    <%= render 'bib_info' %>
+    <div style="font-weight:normal;font-size:12px;margin-top:18px;">User Supplied Enumeration</div>
+    <div class="large-print" style="font-size:20px;line-height:1.4;"><%= @submission.items.first["user_supplied_enum"] %></div>
+  </td>
+</tr>
+
+<tr>
+  <td colspan="2" style="padding: 18px;border-top:1px solid #ccc;">
+      <%= render 'item_info_digitize' %>
+  </td>
+</tr>

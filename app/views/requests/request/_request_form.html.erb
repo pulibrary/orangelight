@@ -1,0 +1,29 @@
+  <%= simple_form_for(:request, { url: '/requests/submit.js', method: :post, remote: true, data: {type: 'script'}} ) do |f| %>
+   <%= @request.hidden_fields %>
+    <% unless suppress_login(@request) %>
+      <%= f.hidden_field :user_name, value: "#{pul_patron_name @patron}" %>
+      <%= f.hidden_field :user_last_name, value: "#{@patron.last_name}" %>
+      <%= f.hidden_field :user_first_name, value: "#{@patron.first_name}" %>
+      <%= f.hidden_field :user_barcode, value: @patron.barcode %>
+      <%= f.hidden_field :patron_id, value: @patron.patron_id %>
+      <%= f.hidden_field :patron_group, value: @patron.patron_group %>
+      <%= f.hidden_field :email, value: format_email(@patron.active_email) %>
+      <%= f.hidden_field :netid, value: format_email(@patron.netid) %>
+    <% end %>
+
+    <% unless @request.source.nil? %>
+      <%= f.hidden_field :source, value: @request.source %>
+    <% end %>
+    <% if @mode == 'trace' %>
+      <%= render partial: 'trace_instructions' %>
+    <% end %>
+
+    <div>
+      <span class="error error-items">
+      </span>
+    </div>
+    <%= render partial: "requestable_list_form", locals: { requestable_list: @request.requestable, mfhd: @request.mfhd, holdings: @request.holdings, default_pick_ups: @request.default_pick_ups } %>
+    <% if !@request.all_items_online? && @request.any_will_submit_via_form? %>
+      <%= f.submit submit_message(@request.requestable), class: "btn btn-primary submit--request", disabled: submit_button_disabled(@request.requestable), data: { disable_with: "Submitting Request" } %>
+    <% end %>
+  <% end %>

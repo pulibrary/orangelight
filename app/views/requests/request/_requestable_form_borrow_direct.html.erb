@@ -1,0 +1,8 @@
+<tr id='<%= "request_#{requestable.preferred_request_id}" %>'>
+  <%= render partial: 'requestable_checkbox', locals: { requestable: requestable, single_item_request: single_item_request } %>
+  <%= render partial: 'requestable_enum', locals: { requestable: requestable } %>
+  <%= render partial: 'requestable_status', locals: { requestable: requestable } %>
+  <td class='delivery--options' aria-live="polite">
+    <%= render partial: 'requestable_delivery_option_borrow_direct', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: request_context, selected: true, fill_in: false } %>  
+  </td>
+</tr>

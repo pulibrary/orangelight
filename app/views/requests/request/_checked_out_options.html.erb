@@ -1,0 +1,14 @@
+<select aria-labelledby="delivery_options" name="requestable[][type]" class="request-options">
+  <option value=""><%= I18n.t("requests.default.request_method_placeholder") %></option>
+  <% if requestable.borrow_direct? %>
+    <option value="bd"><%= I18n.t("requests.bd.request_label") %></option>
+  <% end %>
+  <% if requestable.ill_eligible? %>
+    <option value="ill"><%= I18n.t("requests.ill.request_label") %></option>
+  <% end %>
+</select>
+<br/>
+
+<select aria-label="Select a delivery location" name="requestable[][pick_up]" id="requestable__pick_up" class="bd-pick-up" style="display:none;margin-top:10px;" aria-live="polite">
+ <option value=""><%= I18n.t("requests.default.pick_up_placeholder") %></option>
+</select>
