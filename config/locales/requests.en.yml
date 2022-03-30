@@ -1,6 +1,288 @@
 # requests.en.yml
 en:
   requests:
+    default:
+      email_destination: "fstcirc@princeton.edu"
+      email_from: "libcir@princeton.edu"
+      pick_up_placeholder: "Select a Delivery Location"
+      request_method_placeholder: "Select a Request Method"
+      form_title: "Library Material Request"
+    error:
+      service_error_email: "recapproblems@princeton.edu"
+      service_error_subject: "Request Service Error"
+      service_error_conf_msg: "The following errors were reported with a Library Request Service:"
+    submit:
+      success: "Request submitted. See confirmation email with details about when your item(s) will be available."
+      recap_success: "Request submitted to ReCAP, our offsite storage facility. See confirmation email with details about when your item(s) will be available."
+      digitize_success: "Request submitted to Illiad. You can view the status of your request on your account page.  See confirmation email with details about when your item(s) will be available."
+      recap_no_items_success: "Request submitted to ReCAP, our offsite storage facility. See confirmation email with details about when your item(s) will be available."
+      bd_success: "Request submitted to BorrowDirect. You can expect delivery within six business days or less. See confirmation email with details about when your item(s) will be available."
+      interlibrary_loan_success: "Your request was submitted. Our library staff will review the request and contact you with any questions or updates."
+      on_order_success: "Request submitted. See confirmation email with details about when your item(s) will be available."
+      pres_success: "We will notify you when the preservation work is complete and this item is available."
+      in_process_success: "Request submitted. See confirmation email with details about when your item(s) will be available."
+      annex_success: "Request submitted. See confirmation email with details about when your item(s) will be available."
+      annex_in_library_success: "Request submitted. See confirmation email with details about when your item(s) will be available to view."
+      ppl_success: ""
+      clancy_in_library_success: "Request submitted. See confirmation email with details about when your item(s) will be available to view."
+      clancy_edd_success: "Request submitted. See confirmation email with details about when your scan(s) will be available."
+      marquand_edd_success: "Request submitted. See confirmation email with details about when your scan(s) will be available."
+      marquand_in_library_success: "Request submitted. See confirmation email with details about when your item(s) will be available to view."
+      paging_success: "Item has been requested for pick-up"
+      # temporary changes issue 438
+      on_shelf_success: "Item has been requested for pick-up"
+      help_me_success: "Your request was submitted. Our library staff will review the request and contact you with any questions or updates."
+      trace_success: "Item is now being traced."
+      error: "We were unable to process your request. Correct the highlighted errors."
+      service_error: "There was a problem with this request which Library staff need to investigate. You'll be notified once it's resolved and requested for you."
+      duplicate: "You have sent a duplicate request to Alma for this item.  Your request for this item has been accepted by Alma and will be processed."
+    no_services:
+      brief_msg: "Item is not requestable."
+      access_msg: 'Some resources may only be requested by Princeton Users.'
+    online:
+      brief_msg: "This item is online. The material may be restricted to Princeton NetID Holders only."
+      access_msg: 'Access to many online resources is restricted to Princeton Users.'
+    annex:
+      email: "forranx@princeton.edu"
+      email_subject: "Annex Request"
+      brief_msg: "Item offsite at Forrestal Annex. Requests for pick-up typically take 1-2 business days to process."
+      # temporary changes issue 438
+      #email_conf_msg: "You will be notified via email when your item is ready for pick-up. Most items are ready in 1 to 2 business days."
+      email_conf_msg: "Your request to pick this item up has been received. We will process the requests as soon as possible, but given the demand and the current circumstances some delay may occur. You will receive an email when the book is available for pick-up."
+      in_library_use_msg_html: After notification of your item's arrival at %{location_label}, you should visit the Library to view it
+    annex_in_library:
+      email: "forranx@princeton.edu"
+      email_subject: "Annex In Library Use Request"
+      brief_msg: "Item offsite at Forrestal Annex. Requests for viewing in a library typically take 1-2 business days to process."
+      email_conf_msg: "Your request to pick this item up has been received. We will process the requests as soon as possible, but given the demand and the current circumstances some delay may occur. You will receive an email when the book is available for viewing."
+    anxadoc:
+      email: "docstor@princeton.edu"
+    digitize:
+      email_from: "ilsborr@princeton.edu"
+      email_subject: "Electronic Document Delivery Request Confirmation"
+      brief_msg: Request an article or book chapter. They will be delivered as a PDF file in 1-2 business days. Please use the title field to indicate the article or chapter you wish to obtain. Use the notes field for additional comments or instructions. The Library complies with all applicable copyright laws.
+      email_conf_msg: 'Electronic document delivery requests typically take 1-2 business days to process. You will receive an email including a link where you can download your scanned section in the that timeframe. If there is a problem fulfilling your request a member of our Library Staff will contact you. For more detailed information please login to your <a href="https://lib-illiad.princeton.edu/illiad/illiad.dll">Illiad Account</a>. (Note: Your username and password is the same as the CAS)'
+      access_msg: 'Access Users are not eligible for Electronic Delivery Services requests.'
+      invalid_patron:
+        email: "docdel@princeton.edu"
+        subject: "Uncleared User Requesting Transaction"
+    digitize_fillin:
+      email_conf_msg: 'Electronic document delivery requests typically take 1-2 business days to process. You will receive an email including a link where you can download your scanned section in the that timeframe. If there is a problem fulfilling your request a member of our Library Staff will contact you.'
+      email_msg: 'The user has requested Digitization of a resource that is not itemized.'
+    ppl:
+      email: "ppllib@princeton.edu"
+      email_subject: "Harold P. Furth Plasma Physics Library Request"
+      brief_msg: "Request for delivery in 1-2 business days."
+      # temporary changes issue 438
+      #email_conf_msg: "You will be notified via email when your item is ready for pick-up. Most items are ready in 1 to 2 business days."
+      email_conf_msg: "Your request to pick this item up has been received. We will process the requests as soon as possible, but given the demand and the current circumstances some delay may occur. You will receive an email telling you the item will be available for pick-up in PPL Library between the hours of 11am - 3pm, Monday - Friday."
+    pres:
+      email: "fstcirc@princeton.edu"
+      email_subject: "Preservation Office Request"
+      brief_msg: "Item in Preservation Office."
+      email_conf_msg: "The following Preservation item has been requested:"
+      patron_conf_msg: "You will be notified via email when your item is ready for pick-up from the Preservation Office."
+    on_shelf_edd:
+      request_label: "Digitization Request"
+      brief_msg: Request articles or book chapters. They will be delivered as a PDF file in 1-2 business days. Please use the notes field to indicate the article or chapter you wish to obtain. The Library complies with all applicable copyright laws.
+    on_shelf:
+      # temporary changes issue 438
+      # brief_msg: "Item on Shelf. Consult shelf location map."
+      email: "fstpage@princeton.edu"
+      email_subject: "On the Shelf Paging Request"
+      email_subject_patron: "Pick-up Request"
+      brief_msg: "Requests for pick-up typically take 2 business days to process."
+      email_conf_msg: "Your request to pick this item up has been received. We will process the requests as soon as possible, but given the demand and the current circumstances some delay may occur. You will receive an email when the book is available for pick-up."
+      access_msg: 'Access Users must obtain a pass to enter the Library.'
+      email_covid_msg: "When picking up and/or dropping off your books: 
+        <ul>
+          <li>please do so promptly</li>
+          <li>remain only in the designated pick-up area</li> 
+        </ul>
+        Please plan to limit your number of trips to the Library. We appreciate your help in our efforts to slow the spread of Covid-19."
+    on_order:
+      email: "fstcirc@princeton.edu"
+      email_subject: "On Order Request"
+      brief_msg: "On Order books have not yet been received. Place a request to be notified when this item has arrived and is ready for your pick-up."
+      email_conf_msg: "On Order books have not yet been received by the library. You have placed a request to be notified when this item has arrived."
+      patron_conf_msg: "On Order books have not yet been received by the library. You have placed a request to be notified when this item has arrived."
+      access_msg: 'Access Users are not eligible for On Order requests.'
+    paging:
+      email_subject: "Paging Request for %{pick_up_location}"
+      status: "Items requested (online, via email, or in person) anytime before 3:00pm (weekdays) will be available for you to pick up at Circulation no later than 5:00pm the same day (and often much sooner)."
+      message: "If you have not picked up a requested book by the end of the same day, you will receive an email reminder that your book is available for you at Circulation."
+      # brief_msg: "Paging Request, will be delivered to Firestone Circulation."
+      brief_msg: "Paging Request, will be delivered to:"
+      success: "Request submitted. Please visit Firsestone Circulation at the next scheduled paging delivery time."
+      # temporary changes issue 438
+      #email_conf_msg: "Items requested anytime before 3:00pm (weekdays) will be available for you to pick up at Circulation no later than 5:00pm the same day (and often much sooner)."
+      email_conf_msg: "Your request to pick this item up has been received. We will process the requests as soon as possible, but given the demand and the current circumstances some delay may occur. You will receive an email telling you when the item will be available for pick-up."
+    recap_guest:
+      email_subject: "Patron Initiated Catalog Request - ReCAP Access Only Request"
+      brief_msg: "Item off-site at ReCAP facility."
+      email_conf_msg: "You will be notified via email when your item is available."
+    recap_marquand:
+      email_destination: 'marquandoffsite@princeton.edu'
+      email_subject: "Patron Initiated Catalog Request - ReCAP"
+    recap:
+      email_subject: "Patron Initiated Catalog Request Confirmation"
+      delivery_label: "Physical Item Delivery"
+      brief_msg: "Item off-site at ReCAP facility. Request for delivery in 1-2 business days."
+      email_conf_msg: "You will be notified via email when your item is available."
+      guest_email_destination: "fstcirc@princeton.edu"
+      in_library_use_msg_html: After notification of your item's arrival at %{location_label}, you should visit the Library to view it
+    recap_edd:
+      email_subject: "Electronic Document Delivery Request Confirmation"
+      # brief_msg: "Item off-site at ReCAP facility. Request an article or book chapter be scanned for you and delivered as a PDF file in 1-2 business days. If you need more than an article or chapter, please request the physical item. The Library complies with all applicable copyright laws."
+      brief_msg: Request articles or book chapters. They will be delivered as a PDF file in 1-2 business days. Please use the title field to indicate the article or chapter you wish to obtain. Use the notes field for additional comments or instructions. The Library complies with all applicable copyright laws.
+      email_conf_msg: "Electronic document delivery requests typically take 1-2 business days to process. You will receive an email including a link where you can download your scanned section in the that timeframe. If there is a problem fulfilling your request a member of our Library Staff will contact you."
+      access_msg: 'Access Users are not eligible for Electronic Delivery Services requests.'
+      note_msg: 'All scans will be in black and white unless color is noted.'
+    recap_marquand_edd:
+      email_subject: "Electronic Document Delivery Request Confirmation"
+      # brief_msg: "Item off-site at ReCAP facility. Request an article or book chapter be scanned for you and delivered as a PDF file in 1-2 business days. If you need more than an article or chapter, please request the physical item. The Library complies with all applicable copyright laws."
+      brief_msg: Request articles or book chapters. They will be delivered as a PDF file in 1-2 business days. Please use the title field to indicate the article or chapter you wish to obtain. Use the notes field for additional comments or instructions. The Library complies with all applicable copyright laws.
+      email_conf_msg: "Electronic document delivery requests typically take 1-2 business days to process. You will receive an email including a link where you can download your scanned section in the that timeframe. If there is a problem fulfilling your request a member of our Library Staff will contact you."
+      access_msg: 'Access Users are not eligible for Electronic Delivery Services requests.'
+      note_msg: 'All scans will be in black and white unless color is noted.'
+    recap_marquand:
+      in_library_use_msg_html: To view your item, please follow the instructions in the email notifying you the item is available.
+    recap_no_items:
+      email: "recapproblems@princeton.edu"
+      email_subject: "ReCAP Non-Barcoded Request."
+      # brief_msg: "Please select the delivery location for this off-site ReCAP request."
+      brief_msg: "ReCAP Paging Request, will be delivered to:"
+      email_msg: "A request was made on a record that has no barcoded item data. This is likely a data issue that should be corrected."
+      email_conf_msg: "The following record has been requested:"
+    bd_and_ill:   
+      brief_msg: "See if this item can be obtained from one of our partner Libraries."   
+      delivery_label: "Request via Partner Library"
+    bd:
+      request_label: "Borrow Direct (6 business days or less)"
+      brief_msg: "See if this item can be obtained from one of our partner Libraries. Items requested are typically available for pick-up in 4-6 business days."
+      email_config_msg: "You will be notified via email when your item has arrived and can be picked up"
+    in_process:
+      email: "fstcirc@princeton.edu"
+      email_subject: "In Process Request"
+      brief_msg: "In Process materials are typically available in several business days."
+      email_conf_msg: "In Process materials can typically be picked up at the Circulation Desk of your choice in several business days. You will receive an email notification when the material is available."
+      patron_conf_msg: "In Process materials can typically be picked up at the Circulation Desk of your choice in several business days. You will receive an email notification when the material is available."
+      access_msg: 'Access Users are not eligible for In Process requests.'
+    aeon:
+      brief_msg: "Item available for Use in Reading Room Only. Request at least 24 hours in advance."
+      access_statement: "Reading Room Access Only"
+      access_msg: 'Non-Princeton users must register for a Research Account to view materials at this location.'
+    ill:
+      request_label: "Interlibrary Loan (1-2 weeks)"
+      brief_msg: "See if this item can be obtained from one of our partner Libraries."
+      access_msg: 'Access Users are not eligible for ILL services.'
+      delivery_label: "Request via Partner Library"
+    interlibrary_loan:
+      email_from: "ilsborr@princeton.edu"
+      email_subject: "Partner Request Confirmation"
+      email_conf_msg: 'Item sent to be requested from another Library. Requests typically are filled within two weeks when possible. If there is a problem fulfilling your request a member of our Library Staff will contact you. For more detailed information please login to your <a href="https://lib-illiad.princeton.edu/illiad/illiad.dll">Illiad Account</a>. (Note: Your username and password is the same as the CAS)'
+    help_me:
+      email_from: "ilsborr@princeton.edu"
+      delivery_label: "Help Me Get It"
+      request_label: "Help Me Get It"
+      email_subject: "Help Me Get It Confirmation"
+      brief_msg:
+        # full_access: "This item is not accessible to any patron.  Library staff will work to try to get you access to a copy of the desired material."
+        full_access: '<p>This item is temporarily not accessible as a result of our <a href="https://library.princeton.edu/news/general/2021-08-02/pul-launch-new-library-system-summer-2021-hathitrust-etas-update">current system migration</a>. Library staff will work to try to get you access to a copy of the desired material.</p>'
+        pickup_access: "This item is only available for use in the library. Library staff will work to try to get you access to a digital copy of the desired material."
+        digital_access: "This item is only available for pick-up or in library use. Library staff will work to try to get you access to a digital copy of the desired material."
+        cas_user_no_barcode_no_choice_msg: "Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material."
+      access_msg: "Princeton Faculty, Students, and Staff only."
+    ask_me:
+      request_label: "Help Me Get It"
+      brief_msg: "Library staff are working remotely to deliver materials digitally as long as electronic resources are available"
+      access_msg: "Princeton Faculty, Students, and Staff only."
+    trace:
+      form_title: "Trace Materials"
+      email: "fstpage@princeton.edu"
+      email_subject: "Trace Request"
+      brief_msg: "Trace a Missing Item. Library staff will search for this item and contact you with an outcome."
+      email_conf_msg: "Our Circulation Department will search for the material you cannot find. You will receive an email notification if the item is found or if the search is unsucessful. If possible please request the material in question via Borrow Direct or Interlibrary Loan."
+      access_msg: 'Access Users are not eligible for trace requests.'
+    appointment:
+      request_label: "make an appointment"
+    recap_in_library:
+      delivery_label: "Available for In Library Use"
+      brief_msg: "Item off-site at ReCAP facility. Request for delivery in 1-2 business days."
+      email_subject: "Patron Initiated Catalog Request In Library Confirmation"
+      email_conf_msg: "You will be notified via email when your item is available.  At that point, you can visit the Library and proceed to the circulation desk to retrieve the item and view it in the library."
+    recap_marquand_in_library:
+      delivery_label: "Available for In Library Use"
+      brief_msg: "Marquand Item off-site at ReCAP facility. Requests typically take 2-4 business days."
+      email_subject: "Patron Initiated Catalog Request Recap In Library Confirmation"
+      confirmation_subject: "Patron Initiated Catalog Request In Library Confirmation"
+      email_conf_msg: "You will be notified via email when your item is available.  Request for Marquand items typically take 2-4 business days.  Your request to view this item has been received. We will process the requests as soon as possible, but given the demand and the current circumstances some delay may occur. You will receive an email when the book is available for consultation in either the West Atrium Reading Room or Scribner Reading Room on C Floor in Firestone Library."
+    clancy:
+      in_library_use_msg_html: To view your item, please follow the instructions in the email notifying you the item is available.
+    clancy_unavailable_edd:
+      brief_msg: "Request articles or book chapters. They will typically be delivered as a PDF file in 4-8 business days. Please use the title field to indicate the article or chapter you wish to obtain. Use the notes field for additional comments or instructions. The Library complies with all applicable copyright laws."
+      email_subject: "Patron Initiated Catalog Request Scan - Unavailable at Clancy"
+      email_destination: 'marquandoffsite@princeton.edu'
+      email_conf_msg: "Electronic document delivery requests typically take 4-8 business days. You will receive an email including a link where you can download your scanned section in the that timeframe. If there is a problem fulfilling your request a member of our Library Staff will contact you."
+      confirmation_subject: "Patron Initiated Catalog Request EDD Confirmation"
+      note_msg: 'All scans will be in black and white unless color is noted.'
+    clancy_in_library:
+      delivery_label: "Available for In Library Use"
+      brief_msg: "Item off-site. Requests for delivery typically take 4-8 business days."
+      email_subject: "Patron Initiated Catalog Request Clancy In Library"
+      email_destination: 'marquandoffsite@princeton.edu'
+      confirmation_subject: "Patron Initiated Catalog Request In Library Confirmation"
+      email_conf_msg: "You will be notified via email when your item is available.  Your request to view this item has been received. We will process the requests as soon as possible, but given the demand and the current circumstances some delay may occur. You will receive an email when the book is available for consultation in either the West Atrium Reading Room or Scribner Reading Room on C Floor in Firestone Library."
+    clancy_edd:
+      brief_msg: "Request articles or book chapters. They will typically be delivered as a PDF file in 4-8 business days. Please use the title field to indicate the article or chapter you wish to obtain. Use the notes field for additional comments or instructions. The Library complies with all applicable copyright laws."
+      email_subject: "Patron Initiated Catalog Request Clancy Scan"
+      email_destination: 'marquandoffsite@princeton.edu'
+      email_conf_msg: "Electronic document delivery requests typically take 4-8 business days. You will receive an email including a link where you can download your scanned section in the that timeframe. If there is a problem fulfilling your request a member of our Library Staff will contact you."
+      confirmation_subject: "Patron Initiated Catalog Request EDD Confirmation"
+      note_msg: 'All scans will be in black and white unless color is noted.'
+    marquand_edd:
+      confirmation_subject: "Electronic Document Delivery Request Confirmation"
+      brief_msg: "Request articles or book chapters. They will be delivered as a PDF file in 4-8 business days. Please use the title field to indicate the article or chapter you wish to obtain. Use the notes field for additional comments or instructions. The Library complies with all applicable copyright laws."
+      email_subject: "Patron Initiated Catalog Request Scan"
+      email_conf_msg: "Electronic document delivery requests typically take 4-8 business days to process. You will receive an email including a link where you can download your scanned section in the that timeframe. If there is a problem fulfilling your request a member of our Library Staff will contact you."
+      email_destination: 'marquandoffsite@princeton.edu'
+      access_msg: 'Access Users are not eligible for Electronic Delivery Services requests.'
+      note_msg: 'All scans will be in black and white unless color is noted.'
+    marquand_in_library:
+      delivery_label: "Available for In Library Use"
+      brief_msg: "Item off-site. Requests for delivery typically take 4-8 business days."
+      email_subject: "Patron Initiated Catalog Request In Library"
+      email_destination: 'marquandoffsite@princeton.edu'
+      confirmation_subject: "Patron Initiated Catalog Request In Library Confirmation"
+      email_conf_msg: "You will be notified via email when your item is available.  Your request to view this item has been received. We will process the requests as soon as possible, but given the demand and the current circumstances some delay may occur. You will receive an email when the book is available for consultation in either the West Atrium Reading Room or Scribner Reading Room on C Floor in Firestone Library."
+    marquand:
+      in_library_use_msg_html: To view your item, please follow the instructions in the email notifying you the item is available.
+    marquand_in_process:
+      email_destination: 'marquandoffsite@princeton.edu'
+    annex_in_library:
+      delivery_label: "Available for In Library Use"
+      brief_msg: "Item off-site at Forrestal Annex facility. Request for delivery in 1-2 business days."
+      email_subject: "Patron Initiated Catalog Request In Library Confirmation"
+    default_edd:
+      brief_msg: "Request articles or book chapters. They will be delivered as a PDF file in 4-8 business days. Please use the title field to indicate the article or chapter you wish to obtain. Use the notes field for additional comments or instructions. The Library complies with all applicable copyright laws."
     account:
       pul_auth: "You are logged as %{current_user_name}"
       unauthenticated: "Please sign in to see all requests"
+      netid_login_msg: "Princeton faculty, staff, and students log in with NetID"
+      barcode_login_msg: "Log in with a barcode (affiliates, family members, guest borrowers, etc)"
+      unauthenticated: "Please sign in to see all requests"
+      logged_in: "Logged in as:"
+      other_user_login_msg: "I don’t have a barcode"
+      pul_user_service_msg: 'Princeton Faculty, Staff, and Students need to sign in to see Borrow Direct Services'
+      other_user_login_btn: "View Available Request Options"
+      cas_user_no_barcode_msg: 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+      cas_user_no_barcode_no_choice_msg: 'Only items available for digitization can be requested when you do not have a barcode registered with the Library'
+      auth_user_lookup_fail: 'Failed to lookup your library account'
+    library_hours:
+      firestone: '11:00am - 5:00pm, Monday - Friday; 12:00pm - 3:00pm Saturdays and Sundays'
+      architecture: '9:00am – 5:00pm, Monday - Friday'
+      eastasian: '8:00am – 4:30pm, Monday - Friday'
+      mendel: '	9:00am – 4:45pm, Monday - Friday'
+      stokes: '	8:30am – 4:45pm, Monday - Friday'
+      lewis: '8:30am – 8:45pm, Monday - Thursday; 8:30am – 4:45pm Friday'
+      marquand: '9:00am - 4:45pm, Monday - Friday'

@@ -8,7 +8,13 @@ Rails.application.routes.draw do
     get 'browse/name_titles', model: Orangelight::NameTitle, to: 'browsables#index'
     get 'browse/subjects', model: Orangelight::Subject, to: 'browsables#index'
   end
-  mount Requests::Engine, at: '/requests'
+  get "/requests", to: 'request#index'
+  post '/requests/borrow_direct', to: 'request#borrow_direct'
+  post '/requests/submit', to: 'request#submit'
+  # no longer in use
+  # get '/pageable', to: 'request#pageable'
+  get '/requests/:system_id', to: 'request#generate', constraints: { system_id: /(\d+|dsp\w+|SCSB-\d+|coin-\d+)/i }
+  post '/requests/:system_id', to: 'request#generate', constraints: { system_id: /(\d+|dsp\w+|SCSB-\d+|coin-\d+)/i }
 
   get 'catalog/:id/staff_view', to: 'catalog#librarian_view', as: 'staff_view_solr_document'
 
