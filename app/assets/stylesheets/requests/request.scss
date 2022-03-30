@@ -1,0 +1,268 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+@import 'keyframes';
+
+.badge-danger {
+  background-color: #D4403A;
+}
+
+.badge-success {
+  background-color: #3B863B;
+}
+
+.badge {
+  padding: 0.6em 0.6em;
+}
+
+.show_item {
+  margin-top: 10px;
+}
+
+.muted-text {
+  color: #707070;
+}
+
+.request--edd {
+  display: none;
+}
+
+.table-responsive  {
+  overflow-x: visible;
+  overflow-y: visible;
+}
+
+
+.bd-pick-up {
+  display: none;
+  margin-top: 10px;
+}
+
+#returnToRecordLink {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.btn-sub-text {
+  display: block;
+  font-size: 0.85em;
+}
+
+.or-divider {
+  background-color: #fff;
+  color: #737373;
+  font-size: 1.1em;
+  margin: -20px auto 8px;
+  text-align: center;
+  width: 10ch;
+}
+
+div#go-back-link {
+  margin-top: 10px;
+}
+
+.alert-danger .request--edd {
+  color: #333;
+}
+
+.alert-danger .request--edd .required {
+  color: #a94442;
+}
+
+.results-spinner-large {
+  animation: load5 1.1s infinite ease;
+  border-radius: 50%;
+  font-size: 12px;
+  height: 1em;
+  margin: 4em auto;
+  position: relative;
+  text-indent: -9999em;
+  transform: translateZ(0);
+  width: 1em;
+}
+
+#lookup {
+  display: none;
+  color: #333;
+  h1, p {
+    margin:auto;
+    text-align: center;
+    max-width: 30em;
+  }
+}
+
+div#punetid-form hr {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* updates card_body in the #other_user_account_info*/
+div#other_user_account_info div.card-body {
+  background-color: $other_user_account;
+}
+
+/* replaces btn-default */
+.btn-outline-secondary {
+  color: $dark;
+  border-color: #ccc;
+  &:hover {
+    background-color: #ddd;
+    color: $dark;
+  }
+}
+
+.control-label {
+  font-size: 1.2rem; 
+}
+
+.delivery-option {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+td.request--options .card {
+  margin-bottom: 1.6rem;
+  padding: 1rem;
+}
+
+.selected {
+  background-color: rgba(149, 189, 228, 0.1) !important;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+input[type="radio"] + label {
+  cursor: pointer;
+}
+
+.form-text.brief-msg {
+  margin-bottom: 1rem;
+}
+
+.card {
+  margin-bottom: 1rem;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+@media screen and (max-width: 650px) {
+  .visually-hidden-sm { 
+    position: absolute !important;
+    height: 1px; 
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap; /* added line */
+  }
+ 
+  .blacklight-request tbody td {
+    display: block;
+    border: 0;
+
+    &:empty {
+      padding: 0;
+    }
+
+    &.request--select {
+      padding: 22px;
+    }
+
+    &.request--select,
+    &.request--options {
+      display: inline-block;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    &.request--options {
+      width: calc(100% - 90px);
+      font-size: 18px;
+    }
+
+    &.request--availability {
+      display: flex;
+      flex: 1 auto;
+      padding: 0 0.75rem;
+  
+      .system-status {
+        order: 2;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    font-size: 1rem;
+    margin-top: 1rem;
+
+    span {
+      vertical-align: middle;
+    }
+  }
+
+  input[type="checkbox"] {
+    transform: scale(2.5);
+  } 
+
+  input[type="radio"] {
+    transform: scale(1.75);
+    margin: 1rem;
+    vertical-align: middle;
+  }
+
+  input[type="text"] {
+    height: 44px;
+    width: 100%;
+  }
+
+  .single-pick-up {
+    margin: 0;
+  }
+
+  .control-label.col-sm-6 {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .blacklight-request div.dataTables_wrapper .row:first-child .col-sm-12:last-child {
+    padding-left: 15px;
+  }
+
+  .blacklight-request div.dataTables_wrapper div.dataTables_filter label {
+    display: block;
+  }
+
+  .blacklight-request div.dataTables_wrapper div.dataTables_filter input {
+    display: block;
+    min-height: 44px;
+  }
+
+  .blacklight-request div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    justify-content: center;
+  }
+
+  .blacklight-request .table-responsive-sm {
+    overflow-x: unset;
+  }
+}
+
+.simple_form.request {
+  width: 100%;
+}

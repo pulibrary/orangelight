@@ -1,0 +1,41 @@
+$black: #2b2b2b;
+
+$black-opacity-2: rgba($black, 0.2);
+$black-opacity-5: rgba($black, 0.5);
+$black-opacity-7: rgba($black, 0.7);
+$other_user_account: #f5f5f5;
+
+@keyframes load5 {
+  0%,
+  100% {
+    box-shadow: 0 -2.6em 0 0 $black, 1.8em -1.8em 0 0 $black-opacity-2, 2.5em 0 0 0 $black-opacity-2, 1.75em 1.75em 0 0 $black-opacity-2, 0 2.5em 0 0 $black-opacity-2, -1.8em 1.8em 0 0 $black-opacity-2, -2.6em 0 0 0 $black-opacity-5, -1.8em -1.8em 0 0 $black-opacity-7;
+  }
+
+  12.5% {
+    box-shadow: 0 -2.6em 0 0 $black-opacity-7, 1.8em -1.8em 0 0 $black, 2.5em 0 0 0 $black-opacity-2, 1.75em 1.75em 0 0 $black-opacity-2, 0 2.5em 0 0 $black-opacity-2, -1.8em 1.8em 0 0 $black-opacity-2, -2.6em 0 0 0 $black-opacity-2, -1.8em -1.8em 0 0 $black-opacity-5;
+  }
+
+  25% {
+    box-shadow: 0 -2.6em 0 0 $black-opacity-5, 1.8em -1.8em 0 0 $black-opacity-7, 2.5em 0 0 0 $black, 1.75em 1.75em 0 0 $black-opacity-2, 0 2.5em 0 0 $black-opacity-2, -1.8em 1.8em 0 0 $black-opacity-2, -2.6em 0 0 0 $black-opacity-2, -1.8em -1.8em 0 0 $black-opacity-2;
+  }
+
+  37.5% {
+    box-shadow: 0 -2.6em 0 0 $black-opacity-2, 1.8em -1.8em 0 0 $black-opacity-5, 2.5em 0 0 0 $black-opacity-7, 1.75em 1.75em 0 0 $black-opacity-2, 0 2.5em 0 0 $black-opacity-2, -1.8em 1.8em 0 0 $black-opacity-2, -2.6em 0 0 0 $black-opacity-2, -1.8em -1.8em 0 0 $black-opacity-2;
+  }
+
+  50% {
+    box-shadow: 0 -2.6em 0 0 $black-opacity-2, 1.8em -1.8em 0 0 $black-opacity-2, 2.5em 0 0 0 $black-opacity-5, 1.75em 1.75em 0 0 $black-opacity-7, 0 2.5em 0 0 $black, -1.8em 1.8em 0 0 $black-opacity-2, -2.6em 0 0 0 $black-opacity-2, -1.8em -1.8em 0 0 $black-opacity-2;
+  }
+
+  62.5% {
+    box-shadow: 0 -2.6em 0 0 $black-opacity-2, 1.8em -1.8em 0 0 $black-opacity-2, 2.5em 0 0 0 $black-opacity-2, 1.75em 1.75em 0 0 $black-opacity-5, 0 2.5em 0 0 $black-opacity-7, -1.8em 1.8em 0 0 $black, -2.6em 0 0 0 $black-opacity-2, -1.8em -1.8em 0 0 $black-opacity-2;
+  }
+
+  75% {
+    box-shadow: 0 -2.6em 0 0 $black-opacity-2, 1.8em -1.8em 0 0 $black-opacity-2, 2.5em 0 0 0 $black-opacity-2, 1.75em 1.75em 0 0 $black-opacity-2, 0 2.5em 0 0 $black-opacity-5, -1.8em 1.8em 0 0 $black-opacity-7, -2.6em 0 0 0 $black, -1.8em -1.8em 0 0 $black-opacity-2;
+  }
+
+  87.5% {
+    box-shadow: 0 -2.6em 0 0 $black-opacity-2, 1.8em -1.8em 0 0 $black-opacity-2, 2.5em 0 0 0 $black-opacity-2, 1.75em 1.75em 0 0 $black-opacity-2, 0 2.5em 0 0 $black-opacity-2, -1.8em 1.8em 0 0 $black-opacity-5, -2.6em 0 0 0 $black-opacity-7, -1.8em -1.8em 0 0 $black;
+  }
+}
