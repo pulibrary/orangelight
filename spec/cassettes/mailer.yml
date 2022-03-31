@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/firestone$stacks.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.5.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.19.10
+      Date:
+      - Fri, 06 Aug 2021 12:07:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"afb16e2a8c2334ffba49f58adcb63280"
+      X-Runtime:
+      - '0.013982'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 9337621e-92da-4f62-9728-db826c3421fb
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.9
+    body:
+      encoding: UTF-8
+      string: '{"label":"Stacks","code":"firestone$stacks","aeon_location":false,"recap_electronic_delivery_location":false,"open":true,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","library":{"label":"Firestone
+        Library","code":"firestone","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[{"label":"Firestone
+        Library","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"PA","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}}]}'
+  recorded_at: Fri, 06 Aug 2021 12:07:04 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/eastasian$cjk.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.5.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.19.10
+      Date:
+      - Fri, 06 Aug 2021 12:07:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"7aab051fee521c825a23f204b3776a00"
+      X-Runtime:
+      - '0.007102'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 824f77f8-ef64-49b0-8c70-191b2414b16c
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.9
+    body:
+      encoding: UTF-8
+      string: '{"label":"","code":"eastasian$cjk","aeon_location":false,"recap_electronic_delivery_location":false,"open":true,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","library":{"label":"East
+        Asian Library","code":"eastasian","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[]}'
+  recorded_at: Fri, 06 Aug 2021 12:07:04 GMT
+recorded_with: VCR 6.0.0

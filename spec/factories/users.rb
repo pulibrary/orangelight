@@ -17,6 +17,17 @@ FactoryBot.define do
     factory :unauthorized_princeton_patron do
     end
 
+    factory :valid_barcode_patron do
+      provider { 'barcode' }
+      sequence(:uid) { srand.to_s[2..15] }
+      username { 'Barcode Patron' }
+    end
+
+    factory :unauthenticated_patron do
+      guest { true }
+      provider { nil }
+    end
+
     # for patrons without a net ID
     factory :guest_patron do
       provider { 'barcode' }

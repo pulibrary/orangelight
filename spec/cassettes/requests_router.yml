@@ -1,0 +1,203 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/scsbcul.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.5.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.19.10
+      Date:
+      - Fri, 06 Aug 2021 12:12:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"40e4e7cd658da7a6477d190d4383ab42"
+      X-Runtime:
+      - '0.009003'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 2e942e4b-a249-4e55-a79f-5247665e0bf3
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.9
+    body:
+      encoding: UTF-8
+      string: '{"label":"","code":"scsbcul","aeon_location":false,"recap_electronic_delivery_location":true,"open":false,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"recap_rmt","library":{"label":"ReCAP","code":"recap","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[{"label":"Firestone
+        Circulation Desk","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609
+        258-2345","contact_email":"fstcirc@princton.edu","gfa_pickup":"QX","staff_only":false,"pickup_location":false,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}}]}'
+  recorded_at: Fri, 06 Aug 2021 12:12:39 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-2635660/holdings/2613391/availability.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.5.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx/1.19.10
+      Date:
+      - Fri, 06 Aug 2021 12:12:40 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 400 Bad Request
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Runtime:
+      - '0.547295'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - c3df6140-800f-4285-a4a1-19f7eb306df6
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.9
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 06 Aug 2021 12:12:40 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/locations/delivery_locations.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.5.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.19.10
+      Date:
+      - Fri, 06 Aug 2021 12:12:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"dda4b4b83ac878a8b2017061bbf388d0"
+      X-Runtime:
+      - '0.036887'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 001767c8-acfc-482f-a3d5-7a40debbc043
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.9
+    body:
+      encoding: UTF-8
+      string: '[{"label":"Plasma Physics Library","address":"Forrestal Campus Princeton,
+        NJ 08544","phone_number":"609-243-3565","contact_email":"ppllib@princeton.edu","gfa_pickup":"PQ","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/1.json","library":{"label":"Harold
+        P. Furth Plasma Physics Library","code":"plasma","order":0}},{"label":"Technical
+        Services 693","address":"693 Alexander Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QT","staff_only":true,"pickup_location":true,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/2.json","library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Architecture Library","address":"School
+        of Architecture Building, Second Floor Princeton, NJ 08544","phone_number":"609-258-3256","contact_email":"ues@princeton.edu","gfa_pickup":"PW","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/3.json","library":{"label":"Architecture
+        Library","code":"arch","order":0}},{"label":"East Asian Library","address":"Frist
+        Campus Center, Room 317 Princeton, NJ 08544","phone_number":"609-258-3182","contact_email":"gestcirc@princeton.edu","gfa_pickup":"PL","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/4.json","library":{"label":"East
+        Asian Library","code":"eastasian","order":0}},{"label":"Engineering Library","address":"Friend
+        Center for Engineering Education Princeton, NJ 08544","phone_number":"609-258-3200","contact_email":"englib@princeton.edu","gfa_pickup":"PT","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/5.json","library":{"label":"Engineering
+        Library","code":"engineer","order":0}},{"label":"Firestone Library, Microforms","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-3252","contact_email":"microfms@princeton.edu","gfa_pickup":"PF","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/6.json","library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Marquand Library of Art
+        and Archaeology","address":"McCormick Hall Princeton, NJ 08544","phone_number":"609-258-5863","contact_email":"marquand@princeton.edu","gfa_pickup":"PJ","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/7.json","library":{"label":"Marquand
+        Library","code":"marquand","order":0}},{"label":"Mendel Music Library","address":"Woolworth
+        Center Princeton, NJ 08544","phone_number":"609-258-3230","contact_email":"muslib@princeton.edu","gfa_pickup":"PK","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/8.json","library":{"label":"Mendel
+        Music Library","code":"mendel","order":0}},{"label":"Mudd Manuscript Library","address":"65
+        Olden Street Princeton, NJ 08544","phone_number":"609-258-6345","contact_email":"mudd@princeton.edu","gfa_pickup":"PH","staff_only":false,"pickup_location":false,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/9.json","library":{"label":"Mudd
+        Manuscript Library","code":"mudd","order":0}},{"label":"Stokes Library","address":"Wallace
+        Hall, Lower Level Princeton, NJ 08544","phone_number":"609-258-5455","contact_email":"piaprlib@princeton.edu","gfa_pickup":"PM","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/10.json","library":{"label":"Stokes
+        Library","code":"stokes","order":0}},{"label":"Firestone Library, Resource
+        Sharing","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"QA","staff_only":true,"pickup_location":true,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/12.json","library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Special Collections","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"rbsc@princeton.edu","gfa_pickup":"PG","staff_only":false,"pickup_location":false,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/13.json","library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Lewis Library","address":"Washington
+        Road and Ivy Lane Princeton, NJ 08544","phone_number":"609-258-6004","contact_email":"lewislib@princeton.edu","gfa_pickup":"PN","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/14.json","library":{"label":"Lewis
+        Library","code":"lewis","order":0}},{"label":"Firestone Library","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"PA","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/15.json","library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"ReCAP ILL","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"IL","staff_only":true,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/16.json","library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Technical Services HMT","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QC","staff_only":true,"pickup_location":true,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/23.json","library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"East Asian Library. Microforms","address":"Frist
+        Campus Center, Room 317 Princeton, NJ 08544","phone_number":"609-258-3182","contact_email":"gestcirc@princeton.edu","gfa_pickup":"QL","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/24.json","library":{"label":"East
+        Asian Library","code":"eastasian","order":0}},{"label":"Lewis Library (Rare)","address":"Washington
+        Road and Ivy Lane Princeton, NJ 08544","phone_number":"609-258-6004","contact_email":"lewislib@princeton.edu","gfa_pickup":"PS","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/25.json","library":{"label":"Lewis
+        Library","code":"lewis","order":0}},{"label":"Marquand Library of Art and
+        Archaeology (Rare)","address":"McCormick Hall Princeton, NJ 08544","phone_number":"609-258-5863","contact_email":"marquand@princeton.edu","gfa_pickup":"PZ","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/26.json","library":{"label":"Marquand
+        Library","code":"marquand","order":0}},{"label":"Mendel Music Library. Sound/Video","address":"Woolworth
+        Center Princeton, NJ 08544","phone_number":"609-258-3230","contact_email":"muslib@princeton.edu","gfa_pickup":"QK","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/27.json","library":{"label":"Mendel
+        Music Library","code":"mendel","order":0}},{"label":"Firestone Library, Microforms
+        (Firestone Use Only)","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-3252","contact_email":"microfms@princeton.edu","gfa_pickup":"PB","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/28.json","library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Preservation","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"QP","staff_only":true,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/29.json","library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Firestone Circulation Desk","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609 258-2345","contact_email":"fstcirc@princton.edu","gfa_pickup":"QX","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/30.json","library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Engineering Library Off-Site
+        Storage","address":"Friend Center for Engineering Education, Princeton, NJ
+        08544","phone_number":" 609-258-3200","contact_email":" englib@princeton.edu","gfa_pickup":"PT","staff_only":false,"pickup_location":false,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/40.json","library":{"label":"Engineering
+        Library","code":"engineer","order":0}}]'
+  recorded_at: Fri, 06 Aug 2021 12:12:40 GMT
+recorded_with: VCR 6.0.0
