@@ -1,4 +1,3 @@
-require_dependency "requests/application_controller"
 require 'faraday'
 
 include Requests::ApplicationHelper

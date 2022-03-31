@@ -281,7 +281,6 @@ module Requests
         item_loc = item_current_location(item)
         current_location = get_current_location(item_loc: item_loc)
         item['status_label'] = barcodesort[item['barcode']][:status_label] unless barcodesort.empty?
-        byebug
         holding = holdings[holding_id]# || holdings[item_loc]
         params = build_requestable_params(
           item: item.with_indifferent_access,
