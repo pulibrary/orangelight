@@ -22014,128 +22014,273 @@
             "8.26"
         ]
     },
-    {
-"id": "coin-1167",
-"title_display": "Coin: 1167",
-"pub_created_display": "shekel, Tyre",
-"access_facet": [
-"Online",
-"In the Library"
-],
-"call_number_display": [
-"Coin 1167"
-],
-"call_number_browse_s": [
-"Coin 1167"
-],
-"location_code_s": [
-"num"
-],
-"location": [
-"Rare Books and Special Collections"
-],
-"location_display": [
-"Rare Books and Special Collections - Numismatics Collection"
-],
-"format": [
-"Coin"
-],
-"advanced_location_s": [
-"num"
-],
-"find_place_s": [
-null
-],
-"die_axis_s": [
-12
-],
-"size_s": [
-"29"
-],
-"weight_s": [
-"13.86"
-],
-"holdings_1display": "{\"numismatics\":{\"location\":\"Rare Books and Special Collections - Numismatics Collection\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"num\",\"call_number\":\"Coin 1167\",\"call_number_browse\":\"Coin 1167\"}}",
-"pub_date_start_sort": -79,
-"pub_date_end_sort": -78,
-"issue_object_type_s": [
-"coin"
-],
-"issue_denomination_s": [
-"shekel"
-],
-"issue_denomination_sort": "shekel",
-"issue_number_s": "616",
-"issue_metal_s": [
-"silver"
-],
-"issue_metal_sort": "silver",
-"issue_era_s": [
-"Phoenician Era of Alexander"
-],
-"issue_ruler_s": [
-null
-],
-"issue_master_s": [
-null
-],
-"issue_place_s": [
-"Tyre, Phoenicia, Syria"
-],
-"issue_place_sort": "Tyre, Phoenicia, Syria",
-"issue_city_s": [
-"Tyre"
-],
-"issue_state_s": [
-"Phoenicia"
-],
-"issue_region_s": [
-"Syria"
-],
-"issue_obverse_figure_s": [
-"Melqarth"
-],
-"issue_obverse_part_s": [
-"bust"
-],
-"issue_obverse_orientation_s": [
-"right"
-],
-"issue_obverse_figure_description_s": [
-"with side burns, laureate, wearing lion skin knotted around neck; border of dots."
-],
-"issue_reverse_figure_s": [
-"eagler"
-],
-"issue_reverse_part_s": [
-"standing"
-],
-"issue_reverse_orientation_s": [
-"left"
-],
-"issue_reverse_figure_description_s": [
-"with r. foot on beak of ship and palm branch over r. shoulder; l.  date and club, between legs Phoenician letter, r. monogram or letter; border of dots."
-],
-"issue_reverse_legend_s": [
-"ΤΥΡΟΥΙΕΡΑΣ ΚΑΙΑΣΥΛΟΥ"
-],
-"issue_reverse_attributes_s": [
-"a37, Phoenician Letter",
-"a1167, Archaic Monogram"
-],
-"issue_references_s": [
-"BMC.Phoen Tyre 140",
-"Sear  5191v"
-],
-"issue_artists_s": [
-"Augustin Dupre"
-],
-"issue_references_sort": "BMC.Phoen Tyre 140",
-"issue_monogram_title_s": [
-"Archaic Monogram",
-"Phoenician Letter"
-],
-"issue_monogram_1display": "[{\"title\":\"Archaic Monogram\",\"document_id\":\"989fab88-4b19-46c1-8e84-91ea058b2eb6\"},{\"title\":\"Phoenician Letter\",\"document_id\":\"c8a827ac-f7c4-4c77-864c-0a7ff4bb3033\"}]"
+{
+    "id": "coin-1167",
+    "title_display": "Coin: 1167",
+    "pub_created_display": [
+        "shekel, Tyre"
+    ],
+    "call_number_display": [
+        "Coin 1167"
+    ],
+    "call_number_browse_s": [
+        "Coin 1167"
+    ],
+    "location_code_s": [
+        "rare$num"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Special Collections - Numismatics Collection"
+    ],
+    "format": [
+        "Coin"
+    ],
+    "advanced_location_s": [
+        "rare$num"
+    ],
+    "die_axis_s": [
+        "12"
+    ],
+    "size_s": [
+        "29 in mm"
+    ],
+    "weight_s": [
+        "13.86 in grams"
+    ],
+    "holdings_1display": "{\"numismatics\":{\"location\":\"Special Collections - Numismatics Collection\",\"library\":\"Special Collections\",\"location_code\":\"rare$num\",\"call_number\":\"Coin 1167\",\"call_number_browse\":\"Coin 1167\"}}",
+    "numismatic_collection_s": [
+        "Firestone"
+    ],
+    "numismatic_accession_s": [
+        "Accession number: 6, 1965-01-01, Gift of: Frederick W. Brown"
+    ],
+    "pub_date_start_sort": -79,
+    "pub_date_end_sort": -78,
+    "issue_object_type_s": [
+        "coin"
+    ],
+    "issue_denomination_s": [
+        "shekel"
+    ],
+    "issue_number_s": [
+        "616"
+    ],
+    "issue_metal_s": [
+        "Silver"
+    ],
+    "issue_era_s": [
+        "Phoenician Era of Alexander"
+    ],
+    "issue_place_s": [
+        "Tyre, Phoenicia, Syria"
+    ],
+    "issue_city_s": [
+        "Tyre"
+    ],
+    "issue_state_s": [
+        "Phoenicia"
+    ],
+    "issue_region_s": [
+        "Syria"
+    ],
+    "issue_obverse_description_s": [
+        "Melqarth, bust, right, with side burns, laureate, wearing lion skin knotted around neck; border of dots."
+    ],
+    "issue_obverse_figure_s": [
+        "Melqarth"
+    ],
+    "issue_obverse_part_s": [
+        "bust"
+    ],
+    "issue_obverse_orientation_s": [
+        "right"
+    ],
+    "issue_obverse_figure_description_s": [
+        "with side burns, laureate, wearing lion skin knotted around neck; border of dots."
+    ],
+    "issue_reverse_description_s": [
+        "Eagler, standing, right, with side burns, laureate, wearing lion skin knotted around neck; border of dots."
+    ],
+    "issue_reverse_figure_s": [
+        "Eagler"
+    ],
+    "issue_reverse_part_s": [
+        "standing"
+    ],
+    "issue_reverse_orientation_s": [
+        "left"
+    ],
+    "issue_reverse_figure_description_s": [
+        "with r. foot on beak of ship and palm branch over r. shoulder; l.  date and club, between legs Phoenician letter, r. monogram or letter; border of dots."
+    ],
+    "issue_reverse_legend_s": [
+        "ΤΥΡΟΥΙΕΡΑΣ ΚΑΙΑΣΥΛΟΥ"
+    ],
+    "issue_reverse_attributes_s": [
+        "a37, Phoenician Letter",
+        "a1167, Archaic Monogram"
+    ],
+    "issue_references_s": [
+        "BMC.Phoen Tyre 140",
+        "Sear  5191v"
+    ],
+    "issue_artists_s": [
+        "Augustin Dupre"
+    ],
+    "issue_monogram_title_s": [
+        "Archaic Monogram",
+        "Phoenician Letter"
+    ],
+    "issue_monogram_1display": "[{\"title\":\"Archaic Monogram\",\"document_id\":\"398e7b30-1cac-4531-a3f6-95c2997324a4\"},{\"title\":\"Phoenician Letter\",\"document_id\":\"b5199e3f-9271-4e82-8779-64d3ef911189\"}]",
+    "issue_subjects_s": [
+        "Category, shield"
+    ],
+    "issue_date_s": [
+        "-79 to -78"
+    ]
+},
+{
+    "id": "coin-3750",
+    "title_display": "Coin: 3750",
+    "pub_created_display": [
+      "Unknown, follis, Constantinople"
+    ],
+    "call_number_display": [
+      "Coin 3750"
+    ],
+    "call_number_browse_s": [
+      "Coin 3750"
+    ],
+    "location_code_s": [
+      "rare$num"
+    ],
+    "location": [
+      "Special Collections"
+    ],
+    "location_display": [
+      "Special Collections - Numismatics Collection"
+    ],
+    "format": [
+      "Coin"
+    ],
+    "advanced_location_s": [
+      "rare$num"
+    ],
+    "notes_display": [
+      "Overstruck on Anon. Class A2, var. uncertain, oriented at 10 o'clock on obverse"
+    ],
+    "find_place_s": [
+      "Antioch, Syria"
+    ],
+    "find_date_s": [
+      "9/12/1934"
+    ],
+    "find_feature_s": [
+      "Street"
+    ],
+    "find_locus_s": [
+      "19-M"
+    ],
+    "find_number_s": [
+      "C3504"
+    ],
+    "die_axis_s": [
+      "6"
+    ],
+    "size_s": [
+      "32 in mm"
+    ],
+    "weight_s": [
+      "12.48 in grams"
+    ],
+    "holdings_1display": "{\"numismatics\":{\"location\":\"Special Collections - Numismatics Collection\",\"library\":\"Special Collections\",\"location_code\":\"rare$num\",\"call_number\":\"Coin 3750\",\"call_number_browse\":\"Coin 3750\"}}",
+    "numismatic_collection_s": [
+      "Antioch"
+    ],
+    "numismatic_accession_s": [
+      "Accession number: 179, 1939-01-01, Gift of: Antioch Excavation"
+    ],
+    "pub_date_start_sort": 1030,
+    "pub_date_end_sort": 1042,
+    "issue_object_type_s": [
+      "coin"
+    ],
+    "issue_denomination_s": [
+      "follis"
+    ],
+    "issue_number_s": [
+      "2024"
+    ],
+    "issue_metal_s": [
+      "Bronze"
+    ],
+    "issue_ruler_s": [
+      "Unknown"
+    ],
+    "issue_series_s": [
+      "Anonymous Folles, Class B"
+    ],
+    "issue_place_s": [
+      "Constantinople, Thrace, Byzantium"
+    ],
+    "issue_city_s": [
+      "Constantinople"
+    ],
+    "issue_state_s": [
+      "Thrace"
+    ],
+    "issue_region_s": [
+      "Byzantium"
+    ],
+    "issue_obverse_description_s": [
+      "Christ, bust, facing, with nimbus cross, right hand raised, left hand holding book"
+    ],
+    "issue_obverse_figure_s": [
+      "Christ"
+    ],
+    "issue_obverse_part_s": [
+      "bust"
+    ],
+    "issue_obverse_orientation_s": [
+      "facing"
+    ],
+    "issue_obverse_figure_description_s": [
+      "with nimbus cross, right hand raised, left hand holding book"
+    ],
+    "issue_obverse_legend_s": [
+      "+EMMA NOVHΛ"
+    ],
+    "issue_obverse_attributes_s": [
+      "inscription, IC XC",
+      "nimbus cross, in each arm, square with pellet at each corner",
+      "ornamentation on Gospel book, five dots :∙: on cover",
+      "nimbus cross, single pellet in each upper corner"
+    ],
+    "issue_reverse_description_s": [
+      "Legend, facing, with nimbus cross, right hand raised, left hand holding book"
+    ],
+    "issue_reverse_figure_s": [
+      "Legend"
+    ],
+    "issue_reverse_figure_description_s": [
+      "3 lines, cross on base and two steps, pellet at end of each arm of the cross"
+    ],
+    "issue_reverse_legend_s": [
+      "ISXS/BASILE/BASILE"
+    ],
+    "issue_references_s": [
+      "DOC 3.676 B",
+      "Sear 377 1823",
+      "BN 599 41/Cp/AE/67",
+      "BMC.Byz. 497 (Class II) 6"
+    ],
+    "issue_monogram_1display": "[]",
+    "issue_date_s": [
+      "1030 to 1042"
+    ]
 },
 {
 "id": [

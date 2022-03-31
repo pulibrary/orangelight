@@ -162,3 +162,8 @@ li[dir="rtl"] {
   text-indent: 0;
   padding-left: 0;
 }
+
+.dl-horizontal.dl-invert .col-md-3,
+.dl-horizontal.dl-invert .col-md-9 {
+  padding-left: 0;
+}

@@ -17,3 +17,5 @@
   -->
   <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_partial_name(@document)) %>"></span>
 <% end %>
+
+<%= render 'show_coin_description', document: @document if @document.numismatics_record? %>
