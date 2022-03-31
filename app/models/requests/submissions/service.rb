@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Requests::Submissions
   class Service
     attr_reader :service_type, :success_message, :submission, :errors, :sent

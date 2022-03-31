@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 def stub_delivery_locations
   stub_request(:get, "#{Requests::Config[:bibdata_base]}/locations/delivery_locations.json")
     .to_return(status: 200,

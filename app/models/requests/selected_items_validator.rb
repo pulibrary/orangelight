@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module Requests
   class SelectedItemsValidator < ActiveModel::Validator
@@ -6,7 +7,9 @@ module Requests
     end
 
     def validate(record)
-      record.errors[:items] << { "empty_set" => { 'text' => 'Please Select an Item to Request!', 'type' => 'options' } } unless record.items.size >= 1 && !record.items.any? { |item| defined? item.selected }
+      unless record.items.size >= 1 && !record.items.any? { |item| defined? item.selected }
+        record.errors[:items] << { "empty_set" => { 'text' => 'Please Select an Item to Request!', 'type' => 'options' } }
+      end
       record.items.each do |selected|
         record = validate_selected(record, selected)
       end
@@ -41,13 +44,13 @@ module Requests
       def validate_ill_on_shelf_or_bd(record, selected, pick_up_phrase: 'your selected item', action_phrase: 'Requested')
         return unless validate_item_id(record: record, selected: selected, action_phrase: action_phrase)
         item_id = selected['item_id']
-        return unless selected['pick_up'].blank?
+        return if selected['pick_up'].present?
 
         record.errors[:items] << { item_id => { 'text' => "Please select a pick-up location for #{pick_up_phrase}", 'type' => 'pick_up' } }
       end
 
       def validate_pick_up_location(record, selected, type)
-        return unless selected['pick_up'].blank?
+        return if selected['pick_up'].present?
         id = selected['item_id']
         id = selected['mfhd'] if id.blank?
 
@@ -71,7 +74,9 @@ module Requests
           record.errors[:items] << { item_id => { 'text' => 'Please select a delivery type for your selected recap item', 'type' => 'options' } }
         else
           delivery_type = selected["delivery_mode_#{item_id}"]
-          record.errors[:items] << { item_id => { 'text' => 'Please select a pick-up location for your selected recap item', 'type' => 'pick_up' } } if delivery_type == 'print' && selected['pick_up'].blank?
+          if delivery_type == 'print' && selected['pick_up'].blank?
+            record.errors[:items] << { item_id => { 'text' => 'Please select a pick-up location for your selected recap item', 'type' => 'pick_up' } }
+          end
           if delivery_type == 'edd'
             record.errors[:items] << { item_id => { 'text' => 'Please specify title for the selection you want digitized.', 'type' => 'options' } } if selected['edd_art_title'].empty?
           end

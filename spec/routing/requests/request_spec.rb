@@ -1,8 +1,8 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe Requests::RequestController, type: :routing do
   describe 'routing' do
-
     it 'routes to request #index' do
       expect(get: '/requests').to route_to('requests/request#index')
     end

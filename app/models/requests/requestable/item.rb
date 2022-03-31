@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Requests::Requestable
   class Item < SimpleDelegator
     def pick_up_location_id
@@ -60,7 +61,7 @@ class Requests::Requestable
     end
 
     def enumerated?
-      !enum_value.blank?
+      enum_value.present?
     end
 
     # item type on the item level

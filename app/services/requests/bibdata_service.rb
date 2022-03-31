@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Requests
   class BibdataService
     def self.connection

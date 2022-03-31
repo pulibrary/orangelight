@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Requests
   class Requestable
     attr_reader :bib

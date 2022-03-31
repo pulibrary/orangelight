@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Requests
   class RequestableDecorator
     delegate :system_id, :aeon_mapped_params, :services, :charged?, :annex?, :lewis?, :pageable_loc?, :traceable?, :on_reserve?,
@@ -21,11 +22,7 @@ module Requests
     ## If the item doesn't have any item level data use the holding mfhd ID as a unique key
     ## when one is needed. Primarily for non-barcoded Annex items.
     def preferred_request_id
-      if requestable.id.present?
-        requestable.id
-      else
-        holding.first[0]
-      end
+      requestable.id.presence || holding.first[0]
     end
 
     def digitize?

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'openurl'
 
 module Requests
@@ -54,7 +55,7 @@ module Requests
         metadata[:author] = solr_doc['author_citation_display'].first unless solr_doc['author_citation_display'].nil?
         metadata[:publisher_info] = solr_doc['pub_citation_display'].first unless solr_doc['pub_citation_display'].nil?
         metadata[:edition] = solr_doc['edition_display'].first unless solr_doc['edition_display'].nil?
-        metadata[:format] = Array.new(solr_doc['format']).first.downcase.strip unless solr_doc['format'].blank?
+        metadata[:format] = Array.new(solr_doc['format']).first.downcase.strip if solr_doc['format'].present?
         metadata[:format] ||= 'unknown'
         metadata[:isbn] = solr_doc['isbn_s'].first unless solr_doc['isbn_s'].nil?
         metadata[:issn] = solr_doc['issn_s'].first unless solr_doc['issn_s'].nil?

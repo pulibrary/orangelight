@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'faraday'
 
 module Requests::Submissions
@@ -13,7 +14,7 @@ module Requests::Submissions
       items = submission.filter_items_by_service(service_type)
       items.each do |item|
         item_status = handle_item(item: item)
-        @sent << item_status unless item_status.blank?
+        @sent << item_status if item_status.present?
       end
       return false if @errors.present?
     end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe 'request', vcr: { cassette_name: 'bd_request_features', record: :none }, type: :feature do

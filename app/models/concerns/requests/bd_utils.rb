@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'borrow_direct'
 
 module Requests

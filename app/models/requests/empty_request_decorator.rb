@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Requests
   class EmptyRequestDecorator
     attr_reader :system_id, :format_brief_record_display, :non_requestable_mesage

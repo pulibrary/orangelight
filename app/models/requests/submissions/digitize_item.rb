@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'faraday'
 
 module Requests::Submissions
@@ -17,7 +18,7 @@ module Requests::Submissions
         item_status = handle_item(item: item, **params)
         if item_status.present?
           item["transaction_number"] = item_status["TransactionNumber"].to_s
-          @sent << item_status unless item_status.blank?
+          @sent << item_status if item_status.present?
         end
       end
       return false if @errors.present?

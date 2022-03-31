@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe Requests::Illiad, vcr: { cassette_name: 'request_models', record: :none } do
   let(:params) do
     {
@@ -27,12 +28,12 @@ describe Requests::Illiad, vcr: { cassette_name: 'request_models', record: :none
   end
 
   it "provides an ILLiad URL" do
-    illiad = Requests::Illiad.new(enum: "Volume foo", chron: "Chronicle 1")
+    illiad = described_class.new(enum: "Volume foo", chron: "Chronicle 1")
     expect(illiad.illiad_request_url(ctx)).to start_with(Requests::Config[:ill_base])
   end
 
   it "provides illiad query parameters with enumeration" do
-    illiad = Requests::Illiad.new(enum: "Volume foo", chron: "Chronicle 1")
+    illiad = described_class.new(enum: "Volume foo", chron: "Chronicle 1")
     expect(illiad.illiad_request_url(ctx)).to include(CGI.escape("Volume foo"))
   end
 end

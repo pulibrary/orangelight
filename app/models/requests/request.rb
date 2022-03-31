@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'borrow_direct'
 require 'faraday'
 
@@ -52,7 +53,7 @@ module Requests
 
     # Is this a partner system id
     def partner_system_id?
-      return true if /^SCSB-\d+/ =~ system_id.to_s
+      return true if /^SCSB-\d+/.match?(system_id.to_s)
     end
 
     def requestable?
@@ -148,7 +149,9 @@ module Requests
     def build_pick_ups
       pick_up_locations = []
       Requests::BibdataService.delivery_locations.each_value do |pick_up|
-        pick_up_locations << { label: pick_up["label"], gfa_pickup: pick_up["gfa_pickup"], pick_up_location_code: pick_up["library"]["code"] || 'firestone', staff_only: pick_up["staff_only"] } if pick_up["pickup_location"] == true
+        if pick_up["pickup_location"] == true
+          pick_up_locations << { label: pick_up["label"], gfa_pickup: pick_up["gfa_pickup"], pick_up_location_code: pick_up["library"]["code"] || 'firestone', staff_only: pick_up["staff_only"] }
+        end
       end
       # pick_up_locations.sort_by! { |loc| loc[:label] }
       sort_pick_ups(pick_up_locations)
@@ -281,7 +284,7 @@ module Requests
         item_loc = item_current_location(item)
         current_location = get_current_location(item_loc: item_loc)
         item['status_label'] = barcodesort[item['barcode']][:status_label] unless barcodesort.empty?
-        holding = holdings[holding_id]# || holdings[item_loc]
+        holding = holdings[holding_id] # || holdings[item_loc]
         params = build_requestable_params(
           item: item.with_indifferent_access,
           holding: { holding_id.to_sym.to_s => holding },

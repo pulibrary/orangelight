@@ -1,9 +1,9 @@
+# frozen_string_literal: true
 require 'rails_helper'
 require './app/models/requests/request.rb'
 
 RSpec.describe Requests::ApplicationHelper, type: :helper,
                                             vcr: { cassette_name: 'request_models', record: :none } do
-
   let(:user) { FactoryBot.build(:user) }
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777",

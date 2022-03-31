@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'faraday'
 
 include Requests::ApplicationHelper
@@ -99,7 +100,7 @@ module Requests
         lparams = params.permit(bib: [:id, :title, :author, :isbn])
         lparams[:requestable] = params[:requestable].map do |requestable|
           json_pick_up = requestable[:pick_up]
-          requestable = requestable.merge(JSON.parse(json_pick_up)) unless json_pick_up.blank?
+          requestable = requestable.merge(JSON.parse(json_pick_up)) if json_pick_up.present?
           requestable.permit!
         end
         lparams

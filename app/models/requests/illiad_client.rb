@@ -52,7 +52,7 @@ module Requests
           req.url url
           req.headers['Accept'] = 'application/json'
           req.headers['ApiKey'] = @illiad_api_key
-          req.body = body.to_json unless body.blank?
+          req.body = body.to_json if body.present?
         end
         Rails.logger.debug("Illiad Get Response #{illiad_api_base}/#{url} #{resp.status} #{resp.body}")
         resp

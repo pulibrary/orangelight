@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :none } do
@@ -615,7 +616,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:user) }
     let(:item) { { status_label: "Available", location_code: "scsbnypl" }.with_indifferent_access }
     let(:location) { { "holding_library" => { "code" => "marquand" }, "library" => { "code" => "marquand" } } }
-    let(:requestable) { Requests::Requestable.new(bib: {}, holding: [{ 1 => { 'call_number_browse': 'blah' } }], location: location, patron: patron, item: item) }
+    let(:requestable) { described_class.new(bib: {}, holding: [{ 1 => { 'call_number_browse': 'blah' } }], location: location, patron: patron, item: item) }
 
     describe '#site' do
       it 'returns a Marquand site param' do
@@ -1170,7 +1171,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A requestable item from a RBSC holding creates an openurl with volume and call number info' do
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:request_aeon_holding_volume_note) }
-    let(:requestable) { request.requestable.select { |m| m.holding.first.first == '22563389780006421' }.first }
+    let(:requestable) { request.requestable.find { |m| m.holding.first.first == '22563389780006421' } }
     let(:aeon_ctx) { requestable.aeon_openurl(request.ctx) }
     describe '#aeon_openurl' do
       it 'includes the location_has note as the volume' do

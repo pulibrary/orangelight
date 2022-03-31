@@ -117,9 +117,9 @@ group :development, :test do
 end
 
 gem 'alma'
-gem 'friendly_id', '~> 5.1.0'
-gem 'yaml_db', '~> 0.7.0'
-gem 'simple_form'
-gem 'email_validator'
 gem 'cobravsmongoose', '~> 0.0.2'
+gem 'email_validator'
+gem 'friendly_id', '~> 5.1.0'
 gem 'net-ldap'
+gem 'simple_form'
+gem 'yaml_db', '~> 0.7.0'

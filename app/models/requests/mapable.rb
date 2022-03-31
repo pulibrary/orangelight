@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Requests
   class Mapable
     attr_reader :bib_id, :holdings, :location_code
