@@ -9,7 +9,6 @@ describe 'email form' do
   let(:voyager_account_response) { fixture('/generic_voyager_account_response.xml') }
   let(:valid_voyager_patron) { JSON.parse('{"patron_id": "77777"}').with_indifferent_access }
   before do
-    ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
     current_illiad_user_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Users/jstudent"
     stub_request(:get, current_illiad_user_uri).to_return(status: 404, body: '{"Message":"User jstudent was not found."}')
   end

@@ -22,7 +22,6 @@ RSpec.describe IlliadPatronClient do
 
     describe '#outstanding_ill_requests' do
       before do
-        ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
         stub_request(:get, current_ill_requests_uri)
           .with(
             headers: {
@@ -50,7 +49,6 @@ RSpec.describe IlliadPatronClient do
 
     describe '#cancel_ill_requests' do
       before do
-        ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
         cancel_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
         stub_request(:put, cancel_ill_requests_uri)
           .with(

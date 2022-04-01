@@ -5,7 +5,6 @@ require 'rails_helper'
 describe 'Feedback Form', type: :feature do
   before do
     stub_holding_locations
-    ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
     current_illiad_user_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Users/jstudent"
     stub_request(:get, current_illiad_user_uri).to_return(status: 404, body: '{"Message":"User jstudent was not found."}')
   end

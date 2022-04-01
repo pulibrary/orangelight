@@ -17,7 +17,6 @@ RSpec.describe IlliadAccount do
 
     describe '#verify user' do
       before do
-        ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
         stub_request(:get, verify_user_uri)
           .with(
             headers: {
