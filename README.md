@@ -86,6 +86,12 @@ RAILS_ENV=test bundle exec rake browse:all
 RAILS_ENV=test bundle exec rake browse:load_all
 ```
 
+#### Refreshing the fixtures
+```
+rake pulsearch:solr:deindex
+rake pulsearch:solr:index
+```
+
 ### Adding a record to the test/dev index
 
 Grab a record from marc liberation's `/bibliographic/:bib_id/solr` endpoint. Add
