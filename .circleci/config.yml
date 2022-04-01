@@ -86,6 +86,7 @@ jobs:
 
   test:
     executor: orangelight-executor
+    parallelism: 3
     steps:
       - browser-tools/install-browser-tools
       - checkout
@@ -124,10 +125,7 @@ jobs:
       - run:
           name: Index Test Data
           command: bundle exec rake pulsearch:solr:index
-      - run:
-          name: Run Rspec
-          command: bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
-          when: always
+      - ruby/rspec-test
       - run:
           name: Run JS unit tests
           command: bundle exec yarn test
