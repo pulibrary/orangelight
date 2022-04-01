@@ -1359,7 +1359,7 @@ describe Requests::RequestableDecorator do
         let(:stubbed_questions) { default_stubbed_questions.merge(patron: patron, open_libraries: ['def'], library_code: 'abc') }
 
         it "returns the correct message" do
-          expect(decorator.help_me_message).to eq(I18n.t("requests.help_me.brief_msg.full_access"))
+          expect(decorator.help_me_message).to eq(I18n.t("requests.help_me.brief_msg.full_access_html"))
         end
       end
 
@@ -1367,7 +1367,7 @@ describe Requests::RequestableDecorator do
         let(:stubbed_questions) { default_stubbed_questions.merge(patron: patron, open_libraries: ['abc'], library_code: 'abc', scsb_in_library_use?: true, etas?: true) }
 
         it "returns the correct message" do
-          expect(decorator.help_me_message).to eq(I18n.t("requests.help_me.brief_msg.full_access"))
+          expect(decorator.help_me_message).to eq(I18n.t("requests.help_me.brief_msg.full_access_html"))
         end
       end
     end
@@ -1382,7 +1382,7 @@ describe Requests::RequestableDecorator do
       end
 
       it "returns the correct message" do
-        expect(decorator.help_me_message).to eq(I18n.t("requests.help_me.brief_msg.full_access"))
+        expect(decorator.help_me_message).to eq(I18n.t("requests.help_me.brief_msg.full_access_html"))
       end
     end
 
@@ -1390,7 +1390,7 @@ describe Requests::RequestableDecorator do
       let(:stubbed_questions) { default_stubbed_questions.merge(patron: patron, open_libraries: ['def'], library_code: 'abc') }
 
       it "returns the correct message" do
-        expect(decorator.help_me_message).to eq(I18n.t("requests.help_me.brief_msg.full_access"))
+        expect(decorator.help_me_message).to eq(I18n.t("requests.help_me.brief_msg.full_access_html"))
       end
     end
 
@@ -1398,7 +1398,7 @@ describe Requests::RequestableDecorator do
       let(:stubbed_questions) { default_stubbed_questions.merge(patron: patron, open_libraries: ['abc'], library_code: 'abc', scsb_in_library_use?: true, etas?: true) }
 
       it "returns the correct message" do
-        expect(decorator.help_me_message).to eq(I18n.t("requests.help_me.brief_msg.full_access"))
+        expect(decorator.help_me_message).to eq(I18n.t("requests.help_me.brief_msg.full_access_html"))
       end
     end
   end
