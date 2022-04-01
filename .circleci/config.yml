@@ -13,6 +13,7 @@ executors:
           ORANGELIGHT_USER: postgres
           SOLR_URL: http://solr:SolrRocks@localhost:8983/solr/orangelight-core-test
           NVM_HOME: ~/.nvm
+          ILLIAD_API_BASE_URL: http://illiad.com
       - image: postgres:10
         environment:
           POSTGRES_USER: orangelight
