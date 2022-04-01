@@ -1422,7 +1422,7 @@ describe Requests::RequestableDecorator do
           aeon_mapped_params: { abc: 123 } }
       end
       it 'a link for reading room' do
-        expect(decorator.aeon_url(ctx)).to eq('https://library.princeton.edu/aeon/aeon.dll?abc=123')
+        expect(decorator.aeon_url(ctx)).to eq('https://https://lib-aeon.princeton.edu/aeon/aeon.dll?abc=123')
       end
     end
   end
