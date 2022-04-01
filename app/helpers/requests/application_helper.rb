@@ -39,8 +39,8 @@ module Requests
 
     def show_service_options(requestable, _mfhd_id)
       if requestable.services.empty?
-        content_tag(:div, "#{requestable.title} #{enum_copy_display(requestable.item)} #{I18n.t('requests.no_services.brief_msg').html_safe}", class: 'sr-only') +
-          content_tag(:div, I18n.t("requests.no_services.brief_msg").html_safe, class: 'service-item', aria: { hidden: true })
+        content_tag(:div, "#{requestable.title} #{enum_copy_display(requestable.item)} #{I18n.t('requests.no_services.brief_msg')}", class: 'sr-only') +
+          content_tag(:div, I18n.t("requests.no_services.brief_msg"), class: 'service-item', aria: { hidden: true })
       elsif requestable.charged? && !requestable.aeon? && !requestable.ask_me?
         render partial: 'checked_out_options', locals: { requestable: requestable }
       else
@@ -59,7 +59,7 @@ module Requests
                     else
                       I18n.t("requests.paging.brief_msg")
                     end
-        concat content_tag(:li, brief_msg.html_safe, class: "service-item")
+        concat content_tag(:li, brief_msg, class: "service-item")
       end
     end
 
@@ -180,6 +180,7 @@ module Requests
       # locs
     end
 
+    # rubocop:disable Rails/OutputSafety
     def hidden_fields_mfhd(mfhd)
       hidden = ""
       return hidden if mfhd.nil?
@@ -188,6 +189,7 @@ module Requests
       hidden += hidden_field_tag "mfhd[][library]", "", value: (mfhd['library']).to_s
       hidden.html_safe
     end
+    # rubocop:enable Rails/OutputSafety
 
     def hidden_fields_item(requestable)
       request_id = requestable.preferred_request_id
@@ -212,12 +214,14 @@ module Requests
       hidden
     end
 
+    # rubocop:disable Rails/OutputSafety
     def hidden_fields_borrow_direct(request)
       hidden_bd_tags = ''
       hidden_bd_tags += hidden_field_tag 'bd[auth_id]', '', value: ''
       hidden_bd_tags += hidden_field_tag 'bd[query_params]', '', value: request.isbn_numbers.first
       hidden_bd_tags.html_safe
     end
+    # rubocop:enable Rails/OutputSafety
 
     def isbn_string(array_of_isbns)
       array_of_isbns.join(',')
@@ -355,12 +359,12 @@ module Requests
           services_to_filter = ["on_shelf_edd", "recap_edd"]
           if services.include?('bd') && services.include?('ill')
             services_to_filter << 'bd' << 'ill'
-            concat content_tag(:li, I18n.t("requests.bd_and_ill.brief_msg").html_safe, class: "service-item")
+            concat content_tag(:li, I18n.t("requests.bd_and_ill.brief_msg"), class: "service-item")
           end
           filtered_services = services.reject { |val| services_to_filter.include?(val) }
           filtered_services.each do |service|
             brief_msg = I18n.t("requests.#{service}.brief_msg")
-            concat content_tag(:li, brief_msg.html_safe, class: "service-item")
+            concat content_tag(:li, brief_msg, class: "service-item")
           end
         end
       end

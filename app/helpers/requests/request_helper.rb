@@ -39,9 +39,9 @@ module Requests
 
     def request_title
       if @mode == 'trace'
-        I18n.t('requests.trace.form_title').html_safe
+        I18n.t('requests.trace.form_title')
       else
-        I18n.t('requests.default.form_title').html_safe
+        I18n.t('requests.default.form_title')
       end
     end
 
