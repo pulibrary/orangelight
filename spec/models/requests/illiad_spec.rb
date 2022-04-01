@@ -12,10 +12,6 @@ describe Requests::Illiad, vcr: { cassette_name: 'request_models', record: :none
   end
   let(:request_with_holding_item) { described_class.new(params) }
 
-  after(:all) do
-    Object.send(:remove_const, :SolrDocument)
-  end
-
   let(:ctx) do
     document = SolrDocument.new(id: '9988805493506421')
     Requests::SolrOpenUrlContext.new(solr_doc: document).ctx
