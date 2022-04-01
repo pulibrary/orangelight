@@ -2,6 +2,7 @@
 version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@1.1
+  ruby: circleci/ruby@1.6.0
 executors:
   orangelight-executor:
     docker:
@@ -12,6 +13,7 @@ executors:
           ORANGELIGHT_USER: postgres
           SOLR_URL: http://solr:SolrRocks@localhost:8983/solr/orangelight-core-test
           NVM_HOME: ~/.nvm
+          ILLIAD_API_BASE_URL: http://illiad.com
       - image: postgres:10
         environment:
           POSTGRES_USER: orangelight
@@ -86,6 +88,7 @@ jobs:
 
   test:
     executor: orangelight-executor
+    parallelism: 3
     steps:
       - browser-tools/install-browser-tools
       - checkout
@@ -124,10 +127,7 @@ jobs:
       - run:
           name: Index Test Data
           command: bundle exec rake pulsearch:solr:index
-      - run:
-          name: Run Rspec
-          command: bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
-          when: always
+      - ruby/rspec-test
       - run:
           name: Run JS unit tests
           command: bundle exec yarn test
