@@ -73,9 +73,7 @@ module Requests::Submissions
         @handled_by = "interlibrary_loan"
         client = Requests::IlliadTransactionClient.new(patron: @submission.patron, metadata_mapper: Requests::IlliadMetadata::Loan.new(patron: @submission.patron, bib: @submission.bib, item: item))
         transaction = client.create_request
-        if transaction.blank?
-          errors << { type: 'interlibrary_loan', bibid: @submission.bib, item: item, user_name: @submission.user_name, barcode: @submission.user_barcode, error: "Invalid Interlibrary Loan Request" }
-        end
+        errors << { type: 'interlibrary_loan', bibid: @submission.bib, item: item, user_name: @submission.user_name, barcode: @submission.user_barcode, error: "Invalid Interlibrary Loan Request" } if transaction.blank?
         transaction
       end
   end

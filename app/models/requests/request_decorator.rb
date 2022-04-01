@@ -107,9 +107,7 @@ module Requests
           I18n.t("requests.account.cas_user_no_barcode_msg")
         elsif !patron.guest? && !patron.campus_authorized
           msg = "You are not currently authorized for on-campus services at the Library. Please send an inquiry to <a href='mailto:refdesk@princeton.edu'>refdesk@princeton.edu</a> if you believe you should have access to these services."
-          if patron.training_eligable?
-            msg += "  If you would like to have access to pick-up books <a href='https://ehs.princeton.edu/COVIDTraining'>please complete the mandatory COVID-19 training</a>."
-          end
+          msg += "  If you would like to have access to pick-up books <a href='https://ehs.princeton.edu/COVIDTraining'>please complete the mandatory COVID-19 training</a>." if patron.training_eligable?
           msg
         end
       end
