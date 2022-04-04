@@ -1,0 +1,50 @@
+<tr class="email-header">
+  <td colspan="2" style="padding: 18px;">
+  <tr>
+    <td valign="top" width="50%" class="responsive-column-container">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr><td>
+          <div style="font-size:25px;font-weight:bold;display:block;line-height:1.2;"><%= @user_attributes["LastName"] %>, <%= @user_attributes["FirstName"] %></a></div>
+          <span style="font-size:12px;display:block;"><%= @user_attributes["EmailAddress"] %></span>
+        </td></tr>
+      </table>
+    </td>
+  </td>
+</tr>
+
+<tr class="user-info">
+  <td colspan="2" style="padding: 18px;border-top:1px solid #ccc;">
+  <div style="margin-bottom:18px;font-weight:normal;font-size:16px;">User information</div>
+  <table style="width:100%;">
+      <% @user_attributes.each do |key, value| %>
+        <% if !(key == "last_name" || key == "first_name" || key == "email") && value.present? %>
+        <tr>
+          <td valign="top" width="33%" class="responsive-column-container">
+            <div style="font-weight:normal;font-size:12px;"><%= format_label(key) %></div>
+          <td valign="top" class="responsive-column-container">
+              <span><%= value.to_s.html_safe %></span>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </td>
+</tr>
+<tr class="transaction-info">
+  <td colspan="2" style="padding: 18px;border-top:1px solid #ccc;">
+  <div style="margin-bottom:18px;font-weight:normal;font-size:16px;">Transaction information</div>
+  <table style="width:100%;">
+    <% @transaction_attributes.each do |key, value| %>
+      <% if value.present? %>
+        <tr>
+          <td valign="top" width="33%" class="responsive-column-container">
+            <div style="font-weight:normal;font-size:12px;"><%= format_label(key) %></div>
+          <td valign="top" class="responsive-column-container">
+              <span><%= value.to_s.html_safe %></span>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+    </table>
+  </td>
+</tr>

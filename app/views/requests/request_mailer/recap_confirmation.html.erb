@@ -1,0 +1,35 @@
+<tr class="email-header">
+  <td colspan="2" style="padding: 18px;border-top: 6px solid #e77500;">
+    <%= render 'request_header_patron' %>
+  </td>
+</tr>
+
+<tr>
+  <td colspan="2" style="padding: 18px;">
+    <p class="body-content" style="margin-bottom:0;">
+      <% if @submission.access_only? %>
+      <%= I18n.t('requests.recap_guest.email_conf_msg') %>
+      <% else %>
+      <%= I18n.t('requests.recap.email_conf_msg') %>
+      <% end %>
+    </p>
+  </td>
+</tr>
+
+<tr class="pikcup-info">
+  <td colspan="2" style="padding: 18px;">
+    <%= render 'pick_up_info' %>
+  </td>
+</tr>
+
+<tr class="bib-info">
+  <td colspan="2" style="padding: 18px;border-top:1px solid #ccc;">
+    <%= render 'bib_info_patron' %>
+  </td>
+</tr>
+
+<tr>
+  <td colspan="2" style="padding: 18px;border-top:1px solid #ccc;">
+    <%= render partial: 'item_info', locals: { show_edd_fields: false } %>
+  </td>
+</tr>

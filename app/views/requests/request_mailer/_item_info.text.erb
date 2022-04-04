@@ -1,0 +1,15 @@
+===============================================
+Items Requested
+===============================================
+<% @submission.items.each_with_index do |item, index| %>
+  ========================
+  Item <%= index+1 %>
+  ========================
+  <% unless item[:selected].empty? %>
+    <% item.each do |key, value| %>
+      <% unless key == "selected" || value.blank? %>
+        <%= format_label(key) %>: <% if key == "pick_up" %><%= Requests::BibdataService.delivery_locations[value]['label'].html_safe %>,<% end %><%= value.html_safe %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

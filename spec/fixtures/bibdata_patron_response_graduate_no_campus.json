@@ -1,0 +1,29 @@
+{
+    "netid": "jstudent",
+    "first_name": "Joe",
+    "last_name": "Student",
+    "barcode": "22101008199999",
+    "barcode_status": 1,
+    "barcode_status_date": "2015-01-06T23:00:02.000-05:00",
+    "university_id": "960594184",
+    "patron_group": "staff",
+    "purge_date": "2016-10-31T23:00:03.000-05:00",
+    "expire_date": "2022-10-31T23:00:03.000-05:00",
+    "patron_id": 77777,
+    "active_email": "a@b.com",
+    "campus_authorized": false,
+    "campus_authorized_category": "none",
+    "ldap": {
+        "netid": "jstudent",
+        "department": "First ",
+        "address": "Box 0000",
+        "telephone": "111-222-3333",
+        "givenname": "Joe",
+        "surname": "Student",
+        "email": "a@b.com",
+        "status": "student",        
+        "pustatus": "graduate",
+        "universityid": "960594184",
+        "title": null
+        }
+}

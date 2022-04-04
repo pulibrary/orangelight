@@ -1,0 +1,35 @@
+<div class="col-12">
+  <%# <div class="col-12"> %>
+    <%# <div class="button--start-over"> %>
+      <a class="btn btn-primary" id="returnToRecordLink"
+        href="<%= @request.catalog_url%>"">
+        <span class="icon-refresh"></span>
+        <span class="d-lg-inline">
+          Return to record
+        </span>
+      </a>
+    <%# </div> %>
+  <%# </div> %>
+    <div class="doc-<%= @request.system_id %>">
+        <h1>
+          <%= request_title %>
+        </h1>
+      </div>
+      <div class="col-12">
+        <div class="bibliographic">
+          <%= @request.format_brief_record_display %>
+        </div>
+      </div>
+      <%= render 'flash_messages' %>
+    </div>
+    <% if @request.requestable? %>
+      <div class="col-12">
+        <%= @request.patron_message %> </div>
+        <%= render "form" %>
+      </div>
+    <% else %>
+      <div class="message flash-alert">
+        <p><%= @request.non_requestable_mesage %></p>
+      </div>
+    <% end %>
+</div>

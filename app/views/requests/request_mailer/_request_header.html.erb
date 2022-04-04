@@ -1,0 +1,21 @@
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="responsive-table">
+  <tr>
+    <td valign="top" width="50%" class="responsive-column-container">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr><td>
+          <div style="font-size:25px;font-weight:bold;display:block;line-height:1.2;"><%= @submission.patron.last_name %>, <%= @submission.patron.first_name %></a></div>
+          <span style="font-size:12px;display:block;"><%= @submission.user_barcode %></span>
+        </td></tr>
+      </table>
+    </td>
+
+    <td valign="top" width="50%" class="responsive-column-container">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr><td class="right-aligned-desktop" style="text-align:right;">
+          <div style="font-size:25px;font-weight:bold;display:block;line-height:1.2;"><%= (DateTime.now + 7).strftime('%m/%d/%Y') %></div>
+          <span style="font-size:12px;display:block;">Hold Expiration Date</span>
+        </td></tr>
+      </table>
+    </td>
+  </tr>
+</table>

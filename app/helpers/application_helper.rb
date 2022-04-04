@@ -206,9 +206,7 @@ module ApplicationHelper
         if holding['dspace'] || holding['location_code'] == 'rare$num'
           check_availability = false
           info << content_tag(:span, 'On-site access', class: 'availability-icon badge badge-success', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
-          if aeon_location?(location)
-            info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe
-          end
+          info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe if aeon_location?(location)
         elsif /^scsb.+/.match? location[:code]
           check_availability = false
           unless holding['items'].nil?
@@ -222,9 +220,7 @@ module ApplicationHelper
           end
         elsif holding['dspace'].nil?
           info << content_tag(:span, 'Loading...', class: 'availability-icon badge badge-secondary').html_safe
-          if aeon_location?(location)
-            info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe
-          end
+          info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe if aeon_location?(location)
         else
           check_availability = false
           info << content_tag(:span, 'Unavailable', class: 'availability-icon badge badge-danger', title: 'Availability: Material under embargo', 'data-toggle' => 'tooltip')

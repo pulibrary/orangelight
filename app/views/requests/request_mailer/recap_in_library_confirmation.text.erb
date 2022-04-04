@@ -1,0 +1,5 @@
+<% if @submission.access_only? %>
+   <%= render partial: 'in_library_confirmation', locals: { type: 'recap_guest'} %>
+<% else %>
+   <%= render partial: 'in_library_confirmation', locals: { type: 'recap_in_library'} %>
+<% end %>

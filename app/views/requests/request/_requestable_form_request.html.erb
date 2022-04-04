@@ -1,0 +1,16 @@
+<tr id='<%= "request_#{requestable.preferred_request_id}" %>'>
+  <%= render partial: 'requestable_checkbox', locals: { requestable: requestable, single_item_request: single_item_request } %>
+  <%= render partial: 'requestable_enum', locals: { requestable: requestable } %>
+  <%= render partial: 'requestable_status', locals: { requestable: requestable } %>
+  <td class='delivery--options' aria-live="polite">
+    <% if requestable.ill_eligible? %>
+      <span class="ill-data" data-ill-url="<%= requestable.illiad_request_url(request_context) %>"></span>
+    <% end %>
+    <%= hidden_field_tag "requestable[][type]", "", value: requestable.services.first %>
+    <% if requestable.on_order? || requestable.in_process? %>
+      <%= pick_up_choices requestable, default_pick_ups %>
+    <% else %>
+      <%= show_service_options requestable, mfhd %>
+    <% end %>
+  </td>
+</tr>

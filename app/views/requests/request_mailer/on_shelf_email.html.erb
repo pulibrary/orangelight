@@ -1,0 +1,19 @@
+<% # temporary changes issue 438 %>
+
+<tr class="email-header">
+  <td colspan="2" style="padding: 18px;">
+    <%= render 'request_header' %>
+  </td>
+</tr>
+
+<tr class="bib-info">
+  <td colspan="2" style="padding: 18px;">
+    <%= render 'bib_info' %>
+  </td>
+</tr>
+
+<tr>
+  <td colspan="2" style="padding: 18px;border-top:1px solid #ccc;">
+    <%= render partial: 'item_info', locals: { show_edd_fields: false } %>
+  </td>
+</tr>

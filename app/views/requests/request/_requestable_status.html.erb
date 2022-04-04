@@ -1,0 +1,8 @@
+<td class="request--availability">
+  <%= requestable.status_badge  %>
+  <% if requestable.use_restriction? %>
+    <br/>
+    <%= requestable.item[:use_statement] %>
+  <% end %>
+  <%= hidden_field_tag "requestable[][holding_library]", "", value: requestable.holding_library %>
+</td>

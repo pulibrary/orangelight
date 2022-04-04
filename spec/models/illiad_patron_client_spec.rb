@@ -16,13 +16,12 @@ RSpec.describe IlliadPatronClient do
     let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
     let(:params_cancel_requests) { ['1093597'] }
     let(:current_ill_requests_uri) do
-      "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Transaction/UserRequests/#{sample_patron['netid']}?$filter=" \
+      "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Transaction/UserRequests/#{sample_patron['netid']}?$filter=" \
        "ProcessType%20eq%20'Borrowing'%20and%20TransactionStatus%20ne%20'Request%20Finished'%20and%20not%20startswith%28TransactionStatus,'Cancelled'%29"
     end
 
     describe '#outstanding_ill_requests' do
       before do
-        ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
         stub_request(:get, current_ill_requests_uri)
           .with(
             headers: {
@@ -50,8 +49,7 @@ RSpec.describe IlliadPatronClient do
 
     describe '#cancel_ill_requests' do
       before do
-        ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
-        cancel_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
+        cancel_ill_requests_uri = "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
         stub_request(:put, cancel_ill_requests_uri)
           .with(
             headers: {

@@ -1,0 +1,22 @@
+<% if requestable.aeon? %>
+  <%= render partial: 'requestable_form_aeon', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, single_item_request: @request.single_item_request? } %>
+<% elsif requestable.help_me? %>
+  <%= render partial: 'requestable_form_help_me', locals: { requestable: requestable, single_item_request: @request.single_item_request?, default_pick_ups: default_pick_ups } %>
+<% elsif requestable.digitize? && requestable.pick_up? %>
+  <%= render partial: 'requestable_form_digitize_and_pick_up', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, single_item_request: @request.single_item_request? } %>
+<% elsif requestable.pick_up? %>
+  <%= render partial: 'requestable_form_pick_up', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, single_item_request: @request.single_item_request? } %>
+<% elsif requestable.digitize? && requestable.in_library_use_required? %>
+  <%= render partial: 'requestable_form_digitize_and_in_library_use', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, single_item_request: @request.single_item_request? } %>
+<% elsif requestable.digitize? %>
+  <%= render partial: 'requestable_form_digitize', locals: { requestable: requestable, single_item_request: @request.single_item_request? } %>
+<% elsif requestable.borrow_direct? || requestable.ill_eligible? %>
+  <%= render partial: 'requestable_form_borrow_direct', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, single_item_request: @request.single_item_request? } %>
+<% elsif requestable.request? %>
+  <%= render partial: 'requestable_form_request', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, single_item_request: @request.single_item_request? } %>
+<% elsif requestable.in_library_use_required? %>
+  <%= render partial: 'requestable_form_in_library_use', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, single_item_request: @request.single_item_request? } %>
+<% end %>
+<% if requestable.online? && requestable.urls.present? %>
+  <%= render partial: "requestable_online_items", locals: { requestable: requestable, single_item_request: @request.single_item_request? } %>
+<% end %>

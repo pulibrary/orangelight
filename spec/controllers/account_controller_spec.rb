@@ -9,10 +9,9 @@ RSpec.describe AccountController do
   let(:campus_trained_patron) { File.open(fixture_path + '/bibdata_patron_trained_response.json') }
   let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
   let(:verify_user_response) { File.open(fixture_path + '/ill_verify_user_response.json') }
-  let(:current_illiad_user_uri) { "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Users/jstudent" }
+  let(:current_illiad_user_uri) { "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent" }
   before do
-    ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
-    current_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/Transaction/UserRequests/jstudent?$filter=" \
+    current_ill_requests_uri = "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Transaction/UserRequests/jstudent?$filter=" \
       "ProcessType%20eq%20'Borrowing'%20and%20TransactionStatus%20ne%20'Request%20Finished'%20and%20not%20startswith%28TransactionStatus,'Cancelled'%29"
     stub_request(:get, current_ill_requests_uri)
       .to_return(status: 200, body: outstanding_ill_requests_response, headers: {
@@ -44,7 +43,6 @@ RSpec.describe AccountController do
     let(:valid_voyager_response) { File.open(fixture_path + '/pul_voyager_account_response.xml').read }
 
     before do
-      ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
       sign_in(valid_user)
       valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
       stub_request(:get, valid_patron_record_uri)
@@ -86,10 +84,9 @@ RSpec.describe AccountController do
     let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
 
     before do
-      ENV['ILLIAD_API_BASE_URL'] = "http://illiad.com"
       sign_in(valid_user)
       valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
-      cancel_ill_requests_uri = "#{ENV['ILLIAD_API_BASE_URL']}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
+      cancel_ill_requests_uri = "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
       stub_request(:put, cancel_ill_requests_uri)

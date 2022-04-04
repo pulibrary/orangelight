@@ -1,0 +1,30 @@
+<tr class='user-supplied-input' id='request_user_supplied_<%= "#{requestable.holding.keys[0]}" %>'>
+  <td class='request--select'>
+    <%= hidden_field_tag 'requestable[][selected]', false, id: "hidden_selected" %>
+    <%= check_box_tag "requestable[][selected]", true, false, class: 'request--select', aria: { label: "Volume not listed"} %>
+    <%= hidden_fields_item requestable %>
+  </td>
+  <td class='request--options' <%= 'colspan="2"'.html_safe unless table_sorter_present?(requestable_list) %>>
+    <fieldset class="form-group">
+     <label class="control-label <%= 'col-sm-6'.html_safe unless table_sorter_present?(requestable_list) %>" for="user_supplied_enum">
+          If the specific volume does not appear in the list below, please enter it here:
+      </label>
+      <div class="col-sm-6">
+        <%= text_field_tag 'requestable[][user_supplied_enum]', "", value: "", placeholder: "Ex: Volume 2, 1987", id: "requestable_user_supplied_enum_#{requestable.holding.keys[0]}", maxlength: 60 %>
+      </div>
+    </fieldset>
+  </td>
+  <% if table_sorter_present?(requestable_list) %>
+     <td></td>
+  <% end %>
+  <td>
+    <% selected = !(requestable.fill_in_pick_up? && requestable.fill_in_digitize?) %>
+    <% collapse = selected ? "" : "collapse"%>
+    <% if requestable.fill_in_pick_up? %>
+      <%= render partial: 'requestable_delivery_option_pick_up', locals: { requestable: requestable, mfhd: @mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, selected: selected, fill_in: true } %>
+    <% end %>
+    <% if requestable.fill_in_digitize? %>
+      <%= render partial: 'requestable_delivery_option_digitize', locals: { requestable: requestable, request_context: @request.ctx, collapse: collapse, selected: selected, type: 'digitize_fill_in', fill_in: true } %>
+    <% end %>
+  </td>
+</tr>

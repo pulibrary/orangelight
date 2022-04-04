@@ -1,0 +1,10 @@
+==============================================
+Request Service Errors
+==============================================
+<% @services.each do |s| %>
+  <% s.errors.each do |error| %>
+      <% error.each do |k,v| %>
+        <%= "#{k}=#{v}" %>
+      <% end %>
+  <% end %>
+<% end %>

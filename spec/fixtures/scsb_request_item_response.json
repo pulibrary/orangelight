@@ -1,0 +1,13 @@
+{ 
+  "patronBarcode":"22101000009999",
+  "itemBarcodes":["32101057584334"],
+  "requestType":"EDD",
+  "deliveryLocation":"",
+  "requestingInstitution":"PUL",
+  "bibliographicId":null,
+  "expirationDate":null,
+  "screenMessage":"Message recevied, your request will be processed",
+  "success":true,
+  "emailAddress":"kr2@princeton.edu",
+  "titleIdentifier":"Israel."
+}

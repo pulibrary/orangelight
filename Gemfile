@@ -72,8 +72,6 @@ gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.
 gem 'mail_form'
 gem 'string_rtl'
 
-gem 'requests', git: 'https://github.com/pulibrary/requests.git', branch: 'main'
-
 gem 'borrow_direct', git: 'https://github.com/pulibrary/borrow_direct.git', branch: 'generate_query_encoding_fix'
 
 gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'master'
@@ -102,10 +100,12 @@ end
 group :test do
   gem "axe-core-rspec"
   gem 'factory_bot_rails', require: false
+  gem 'faker', '~> 1.9'
   gem 'launchy'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
   gem 'timecop'
+  gem 'vcr'
   gem 'webdrivers'
   gem 'webmock', require: false
 end
@@ -115,3 +115,11 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'solargraph'
 end
+
+gem 'alma'
+gem 'cobravsmongoose', '~> 0.0.2'
+gem 'email_validator'
+gem 'friendly_id', '~> 5.1.0'
+gem 'net-ldap'
+gem 'simple_form'
+gem 'yaml_db', '~> 0.7.0'
