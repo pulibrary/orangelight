@@ -21,45 +21,6 @@ You need to have a working version of Chromedriver http://chromedriver.chromium.
       A-->H[Email Print];
 ```
 
-
-## To Install for Development
-
-After you've cloned the repo:
-
-```
-$ bundle install
-$ bundle exec rake ci
-```
-
-With Code Coverage Report
-```
-$ COVERAGE=true bundle exec rake ci
-```
-
-## Working within Orangelight locally
-This engine is mouting within Orangelight. To test your local engine code interactively update the OL gemfile reference to the gemfile:
-
-Change:
-```
-gem 'requests', git: 'git@github.com:pulibrary/requests.git', branch: 'development'
-```
-
-to:
-```
-gem 'requests', path: '/mylocal/path/to/the/gem/requests'
-```
-
-and run ```bundle update requests``` to point your local copy of OL at your local requests gem.
-
-
-## Install in Production
-
-* Add ```gem 'requests', :git 'git@github.com:pulibrary/requests.git'```
-* ```bundle install```
-* ```rails generate requests:install```
-
-This project rocks and uses MIT-LICENSE.
-
 ## Basic Usage
 
 ### Routes
