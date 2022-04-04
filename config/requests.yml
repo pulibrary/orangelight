@@ -10,6 +10,7 @@ defaults: &defaults
   ill_base: https://lib-illiad.princeton.edu/illiad/illiad.dll/OpenURL
   scsb_base: https://scsb.recaplib.org:9093
   clancy_base: <%= ENV['CLANCY_BASE_URL'] || "https://example.caiasoft.com/api" %>
+  clancy_api_key: <%= ENV['CLANCY_API_KEY'] || "abc123" %>
   illiad_api_key: <%= ENV['ILLIAD_API_KEY'] %>
   illiad_api_base: <%= ENV['ILLIAD_API_BASE_URL'] %>
   recap_partner_locations:
