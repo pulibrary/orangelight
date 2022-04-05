@@ -234,14 +234,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     end
   end
 
-  def self.etas_restricted?(location_rules, adapter)
-    return false unless location_rules["code"] == "scsbcul"
-    return false unless adapter.document.key?('oclc_s')
-    bibids = adapter.document.fetch('oclc_s')
-    access_records = adapter.hathi_access(bibids.first)
-    access_records.select { |r| r["status"] == "DENY" }.present?
-  end
-
   # Generate a request tooltip based upon the holding location
   # @param location_rules [Hash] the location for the holding
   # @return [String] the label
