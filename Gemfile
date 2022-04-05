@@ -58,7 +58,6 @@ gem 'babel-transpiler'
 gem 'bootstrap', '~> 4.6'
 gem 'bootstrap-select-rails'
 gem 'capybara'
-gem 'coveralls', require: false
 gem 'ddtrace'
 gem 'font-awesome-rails'
 gem 'lcsort', '>= 0.9.1'
@@ -112,6 +111,7 @@ end
 
 group :development, :test do
   gem 'bixby'
+  gem 'coveralls_reborn'
   gem 'pry-byebug'
   gem 'solargraph'
 end
