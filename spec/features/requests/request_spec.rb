@@ -61,7 +61,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it 'displays the temporary holding location library label' do
           pending "Guest have no access during COVID-19 pandemic"
           visit "/requests/#{temp_item_id}?mfhd=#{temp_id_mfhd}"
-          fill_in 'request_email', with: 'name@email.com'
+          fill_in 'request_email', with: 'name@email.com', wait: 2
           fill_in 'request_user_name', with: 'foobar'
           click_button(I18n.t('requests.account.other_user_login_btn'))
           expect(page).to have_content('Engineering Library')
@@ -70,7 +70,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it 'displays the temporary holding location label' do
           pending "Guest have no access during COVID-19 pandemic"
           visit "/requests/#{temp_item_id}?mfhd=#{temp_id_mfhd}"
-          fill_in 'request_email', with: 'name@email.com'
+          fill_in 'request_email', with: 'name@email.com', wait: 2
           fill_in 'request_user_name', with: 'foobar'
           click_button(I18n.t('requests.account.other_user_login_btn'))
           expect(page).to have_content('Reserve')
@@ -84,7 +84,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
           visit '/requests/9999443553506421?mfhd=22743365320006421'
           pending "Guest have no access during COVID-19 pandemic"
-          click_link(I18n.t('requests.account.other_user_login_msg'))
+          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
           fill_in 'request_email', with: 'name@email.com'
           fill_in 'request_user_name', with: 'foobar'
           click_button(I18n.t('requests.account.other_user_login_btn'))
@@ -95,7 +95,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it 'allows guest patrons to see aeon requests' do
           visit '/requests/993365253506421?mfhd=22220245570006421'
           pending "Guest have no access during COVID-19 pandemic"
-          click_link(I18n.t('requests.account.other_user_login_msg'))
+          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
           fill_in 'request_email', with: 'name@email.com'
           fill_in 'request_user_name', with: 'foobar'
           click_button(I18n.t('requests.account.other_user_login_btn'))
@@ -108,7 +108,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           pending "Guest have no access during COVID-19 pandemic"
           stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
           visit '/requests/9999443553506421?mfhd=22743365320006421'
-          click_link(I18n.t('requests.account.other_user_login_msg'))
+          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
           fill_in 'request_email', with: 'name@email.com'
           fill_in 'request_user_name', with: 'foobar'
           click_button I18n.t('requests.account.other_user_login_btn')
@@ -123,7 +123,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it 'prohibits guest patrons from requesting In-Process items' do
           pending "Guest have no access during COVID-19 pandemic"
           visit "/requests/#{in_process_id}"
-          click_link(I18n.t('requests.account.other_user_login_msg'))
+          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
           fill_in 'request_email', with: 'name@email.com'
           fill_in 'request_user_name', with: 'foobar'
           click_button I18n.t('requests.account.other_user_login_btn')
@@ -133,7 +133,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it 'prohibits guest patrons from requesting On-Order items' do
           pending "Guest have no access during COVID-19 pandemic"
           visit "/requests/#{on_order_id}"
-          click_link(I18n.t('requests.account.other_user_login_msg'))
+          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
           fill_in 'request_email', with: 'name@email.com'
           fill_in 'request_user_name', with: 'foobar'
           click_button I18n.t('requests.account.other_user_login_btn')
@@ -143,7 +143,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it 'allows guest patrons to access Online items' do
           pending "Guest have no access during COVID-19 pandemic"
           visit '/requests/9994692?mfhd=9800910'
-          click_link(I18n.t('requests.account.other_user_login_msg'))
+          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
           fill_in 'request_email', with: 'name@email.com'
           fill_in 'request_user_name', with: 'foobar'
           click_button I18n.t('requests.account.other_user_login_btn')
@@ -153,7 +153,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it 'allows guest patrons to request Aeon items' do
           pending "Guest have no access during COVID-19 pandemic"
           visit '/requests/9921676693506421'
-          click_link(I18n.t('requests.account.other_user_login_msg'))
+          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
           fill_in 'request_email', with: 'name@email.com'
           fill_in 'request_user_name', with: 'foobar'
           click_button I18n.t('requests.account.other_user_login_btn')
@@ -163,7 +163,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it 'prohibits guest patrons from using Borrow Direct, ILL, and Recall on Missing items' do
           pending "Guest have no access during COVID-19 pandemic"
           visit '/requests/9917887963506421?mfhd=22503918400006421'
-          click_link(I18n.t('requests.account.other_user_login_msg'))
+          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
           fill_in 'request_email', with: 'name@email.com'
           fill_in 'request_user_name', with: 'foobar'
           click_button I18n.t('requests.account.other_user_login_btn')
@@ -174,7 +174,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it 'allows guests to request from Annex, but not from Firestone in mixed holding' do
           pending "Guest have no access during COVID-19 pandemic"
           visit '/requests/9922868943506421'
-          click_link(I18n.t('requests.account.other_user_login_msg'))
+          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
           fill_in 'request_email', with: 'name@email.com'
           fill_in 'request_user_name', with: 'foobar'
           click_button I18n.t('requests.account.other_user_login_btn')
