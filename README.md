@@ -3,14 +3,12 @@
 [![CircleCI](https://circleci.com/gh/pulibrary/orangelight.svg?style=svg)](https://circleci.com/gh/pulibrary/orangelight)
 [![Coverage
 Status](https://coveralls.io/repos/github/pulibrary/orangelight/badge.svg?branch=main)](https://coveralls.io/github/pulibrary/orangelight?branch=main)
-[![InchCI](https://inch-ci.org/github/pulibrary/orangelight.svg?branch=main)](https://inch-ci.org/github/pulibrary/orangelight)
-
 
 Versions:
 
-* Ruby: 2.6.6
-* Rails: 5.2.5
-* Blacklight: 7.0.1
+* Ruby: 2.7.5
+* Rails: 5.2.6.2
+* Blacklight: 7.23.0.1
 * blacklight_advanced_search: 7.0.0.alpha
 
 If you don't have `yarn` installed you can install it with
