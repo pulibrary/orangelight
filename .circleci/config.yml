@@ -13,6 +13,7 @@ executors:
           ORANGELIGHT_USER: postgres
           SOLR_URL: http://solr:SolrRocks@localhost:8983/solr/orangelight-core-test
           NVM_HOME: ~/.nvm
+          COVERALLS_PARALLEL: true
       - image: postgres:10
         environment:
           POSTGRES_USER: orangelight
@@ -140,6 +141,18 @@ jobs:
           at: '~/orangelight'
       - setup-bundler
       - run: bundle exec rubocop
+  
+  finish:
+    executor: basic-executor
+    steps:
+      - attach_workspace:
+          at: '~/orangelight'
+      - run:
+          name: workflow Index
+          command: echo $CIRCLE_WORKFLOW_ID
+      - run:
+          name: finish up coverage
+          command: curl -k https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN -d "payload[build_num]=$CIRCLE_WORKFLOW_ID&payload[status]=done"
 
 workflows:
   build_accept:
@@ -151,3 +164,7 @@ workflows:
       - test:
          requires:
           - build
+      - finish:
+         requires:
+           - test
+
