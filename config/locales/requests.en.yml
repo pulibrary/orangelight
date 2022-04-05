@@ -154,9 +154,6 @@ en:
       brief_msg: "ReCAP Paging Request, will be delivered to:"
       email_msg: "A request was made on a record that has no barcoded item data. This is likely a data issue that should be corrected."
       email_conf_msg: "The following record has been requested:"
-    bd_and_ill:   
-      brief_msg: "See if this item can be obtained from one of our partner Libraries."   
-      delivery_label: "Request via Partner Library"
     bd:
       request_label: "Borrow Direct (6 business days or less)"
       brief_msg: "See if this item can be obtained from one of our partner Libraries. Items requested are typically available for pick-up in 4-6 business days."

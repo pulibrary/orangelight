@@ -171,6 +171,10 @@ module Requests
       end
     end
 
+    def no_services?
+      !(digitize? || pick_up? || aeon? || borrow_direct? || ill_eligible? || in_library_use_required? || help_me? || request? || online? || on_shelf? || off_site?)
+    end
+
     private
 
       def first_delivery_location
