@@ -1,12 +1,7 @@
 # PUL Requests
 
-The engine requires a working copy of bibdata to be running. Defaults to https://bibdata-staging.princeton.edu. If you wish to override that value while doing development work and point a local working copy you can set your local environment variable of ```BIBDATA_BASE``` to the root of the marc_liberation application you want to work with.
-
-The gem also is dependent on Orangelight to service requests for non-alma IDs. By default it utilizes the production Orangelight system at https://catalog.princeton.edu/.
-
-### Chromedriver for Feature tests
-
-You need to have a working version of Chromedriver http://chromedriver.chromium.org/ on your path to successfully run the feature tests associated with this project. Homebrew is a good way to accomplish this. It is currently part of https://github.com/Homebrew/homebrew-cask. 
+Requests was once a separate gem housed at https://github.com/pulibrary/requests.  To review code history and issues visit that repository.
+The gem was integrated into orangelight in April of 2022 by moving the code from one repository to the other and making minimal changes.  Files in orangelight should be in the same folders in the Request repository.  As this code gets more fully integrated and changes there may not be a corresponding file in the old repository.
 
 ## External Interfaces
 
@@ -20,6 +15,30 @@ You need to have a working version of Chromedriver http://chromedriver.chromium.
       A-->G[Borrow Direct Print];
       A-->H[Email Print];
 ```
+
+* [Borrow Direct](https://catalog.princeton.edu/borrow-direct)
+  Can cancel requests by connecting to the URL above
+  * Used to request items from partners.  Only connects for unavailable items that include an ISBN number
+* Illiad
+  Can cancel request from [orangelight](https://catalog.princeton.edu/account/digitization_requests)
+  * Used to request unavailable items that are not borrow direct eligible.
+  * Used to request Digitizations
+* [Alma](https://princeton.alma.exlibrisgroup.com/discovery/account?vid=01PRI_INST:Services&lang=EN&section=overview)
+  can cancel request by connecting to the URL above
+  * Used to request pick-up of available items on the shelf
+  * Holds are created for ReCAP Items when physical delivery is requested
+  * Holds are requested for Marquand Offsite (clancy) items when physical or digital item is requested
+* Clancy (ciasoft)
+  All requests on qa and staging go to a test system, so they do not need to be canceled
+  * Used to request items from Marquand
+    1. Check if items are present in Clancy (all Marquand items not stored in ReCAP)
+    1. If present both digital and pick-up request require the physical item to be sent to Princeton campus
+* ReCAP
+   **Can Not cancel requests sent to ReCAP**
+  * Used to request physical pickup of off site materials
+    **A hold in Alma is also created for a physical request.  This can and should be canceled during testing.**
+  * Used to request a digital copy of off site materials
+    **Test should be put in as many fields as possible in a test request.  Usually they note the test and do not do the digitization**
 
 ## Basic Usage
 
