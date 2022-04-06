@@ -64,4 +64,3 @@ end
 
 Capybara.server = :webrick
 Capybara.javascript_driver = :selenium_headless
-Capybara.default_max_wait_time = 60
