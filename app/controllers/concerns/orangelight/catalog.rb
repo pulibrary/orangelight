@@ -62,7 +62,7 @@ module Orangelight
     end
 
     def user_email
-      return current_user.email if current_or_guest_user.provider == 'cas'
+      return current_user.email if current_or_guest_user.cas_provider?
     end
 
     def online_holding_note?(_field_config, document)

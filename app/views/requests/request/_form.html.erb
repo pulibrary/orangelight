@@ -7,7 +7,7 @@
 <!-- Temporary change to allow students not on campus digitization,  but not pick-up options -->
 <%# elsif !@user.guest && @patron['barcode'].blank? %>
   <%# = render partial: 'cas_user_no_barcode' %>
-<% elsif @user.provider == 'barcode' %>
+<% elsif @user.barcode_provider? %>
   <%= render partial: 'no_access' %>
 <% else %>
   <%= render partial: 'request_form' %>
