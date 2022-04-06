@@ -26,6 +26,12 @@ class User < ApplicationRecord
     provider == 'barcode'
   end
 
+  # Determines whether or not this is a user which is identifiable by cas
+  # @return [TrueClass, FalseClass]
+  def cas_provider?
+    provider == 'cas'
+  end
+
   # Retrieves a user authenticated using the CAS
   # @param access_token []
   # @return [User,nil]
