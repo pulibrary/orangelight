@@ -264,6 +264,8 @@ module Requests
         return if doc[:holdings_1display].nil?
         @mfhd ||= 'thesis' if thesis?
         @mfhd ||= 'numismatics' if numismatics?
+        return [] if holdings[@mfhd].blank?
+
         [build_requestable_from_holding(@mfhd, holdings[@mfhd].with_indifferent_access)]
       end
 
