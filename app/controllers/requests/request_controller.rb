@@ -150,5 +150,10 @@ module Requests
         end
         user
       end
+
+      def sanitize(str)
+        str.gsub(/[^A-Za-z0-9@\-_\.]/, '') if str.is_a? String
+        str
+      end
   end
 end

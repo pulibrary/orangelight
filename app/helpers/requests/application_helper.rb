@@ -2,11 +2,6 @@
 # rubocop:disable Metrics/ModuleLength
 module Requests
   module ApplicationHelper
-    def sanitize(str)
-      str.gsub(/[^A-Za-z0-9@\-_\.]/, '') if str.is_a? String
-      str
-    end
-
     def format_email(email)
       email&.downcase
     end
@@ -39,8 +34,8 @@ module Requests
 
     def show_service_options(requestable, _mfhd_id)
       if requestable.no_services?
-        content_tag(:div, "#{requestable.title} #{enum_copy_display(requestable.item)} #{ActionView::Helpers::SanitizeHelper.sanitize(I18n.t('requests.no_services.brief_msg'))}", class: 'sr-only') +
-          content_tag(:div, ActionView::Helpers::SanitizeHelper.sanitize(I18n.t("requests.no_services.brief_msg")), class: 'service-item', aria: { hidden: true })
+        content_tag(:div, "#{requestable.title} #{enum_copy_display(requestable.item)} #{sanitize(I18n.t('requests.no_services.brief_msg'))}", class: 'sr-only') +
+          content_tag(:div, sanitize(I18n.t("requests.no_services.brief_msg")), class: 'service-item', aria: { hidden: true })
       elsif requestable.charged? && !requestable.aeon? && !requestable.ask_me?
         render partial: 'checked_out_options', locals: { requestable: requestable }
       else
@@ -196,14 +191,14 @@ module Requests
       hidden += hidden_field_tag "requestable[][call_number]", "", value: (requestable.holding.first[1]['call_number']).to_s, id: "requestable_call_number_#{requestable.holding.keys[0]}" unless requestable.holding.first[1]["call_number"].nil?
       hidden += hidden_field_tag "requestable[][location_code]", "", value: (requestable.holding.first[1]['location_code']).to_s, id: "requestable_location_code_#{requestable.holding.keys[0]}"
       hidden += hidden_field_tag "requestable[][location]", "", value: (requestable.holding.first[1]['location']).to_s, id: "requestable_location_#{requestable.holding.keys[0]}"
-      ActionView::Helpers::SanitizeHelper.sanitize(hidden, tags: input)
+      sanitize(hidden, tags: input)
     end
 
     def hidden_fields_borrow_direct(request)
       hidden_bd_tags = ''
       hidden_bd_tags += hidden_field_tag 'bd[auth_id]', '', value: ''
       hidden_bd_tags += hidden_field_tag 'bd[query_params]', '', value: request.isbn_numbers.first
-      ActionView::Helpers::SanitizeHelper.sanitize(hidden_bd_tags, tags: input)
+      sanitize(hidden_bd_tags, tags: input)
     end
 
     def isbn_string(array_of_isbns)
@@ -340,12 +335,12 @@ module Requests
         return if requestable.no_services?
         content_tag(:ul, class: "service-list") do
           if requestable.borrow_direct? || requestable.ill_eligible?
-            concat content_tag(:li, ActionView::Helpers::SanitizeHelper.sanitize(I18n.t("requests.ill.brief_msg")), class: "service-item")
+            concat content_tag(:li, sanitize(I18n.t("requests.ill.brief_msg")), class: "service-item")
           else
             # there are no instances where more than one actual service is available to an item, so we are going to take the first service that is not edd
             filtered_services = requestable.services.reject { |service_name| service_name.include?("edd") }
             brief_msg = I18n.t("requests.#{filtered_services.first}.brief_msg")
-            concat content_tag(:li, ActionView::Helpers::SanitizeHelper.sanitize(brief_msg), class: "service-item")
+            concat content_tag(:li, sanitize(brief_msg), class: "service-item")
           end
         end
       end
@@ -355,7 +350,7 @@ module Requests
           display_requestable_list(requestable)
           # temporary changes issue 438
           # concat link_to 'Where to find it', requestable.map_url(mfhd_id)
-          # concat content_tag(:div, ActionView::Helpers::SanitizeHelper.sanitize(I18n.t("requests.trace.brief_msg")), class: 'service-item') if requestable.traceable?
+          # concat content_tag(:div, sanitize(I18n.t("requests.trace.brief_msg")), class: 'service-item') if requestable.traceable?
         end
       end
 
