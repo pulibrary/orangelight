@@ -1284,6 +1284,11 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
         end
       end
+
+      it 'Handles a bad mfhd without system error' do
+        visit 'requests/998574693506421?mfhd=abc123'
+        expect(page).to have_content "Science"
+      end
     end
 
     context 'A Princeton net ID user without a bibdata record' do
