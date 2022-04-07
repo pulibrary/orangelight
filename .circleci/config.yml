@@ -85,38 +85,33 @@ jobs:
       - persist_to_workspace:
           root: '~/orangelight'
           paths: '*'
+  build_for_test:
+    executor: orangelight-executor
+    steps:
+      - checkout
+      - setup-bundler
+      - run:
+          name: Set Timezone to EST
+          command: echo 'America/New_York' = /etc/timezone
+      - run: sudo apt install postgresql-client
+      - persist_to_workspace:
+          root: '~/orangelight'
+          paths: '*'
 
   test:
     executor: orangelight-executor
     parallelism: 3
     steps:
-      - browser-tools/install-browser-tools
-      - checkout
-      - run: |
-          ruby --version
-          node --version
-          java --version
-          google-chrome --version
       - attach_workspace:
           at: '~/orangelight'
-      - setup-bundler
+      - browser-tools/install-browser-tools
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: sudo apt install postgresql-client
       - run:
           name: Database setup
           command: bundle exec rake db:setup
       #set timezone to est
-      - run:
-          name: Set Timezone to EST
-          command: echo 'America/New_York' = /etc/timezone
-      - run:
-          name: Install Chrome
-          command: |
-            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo apt update -y
-            sudo apt -y install google-chrome-stable
       - run:
           name: Load config into solr
           command: |
@@ -128,9 +123,6 @@ jobs:
           name: Index Test Data
           command: bundle exec rake pulsearch:solr:index
       - ruby/rspec-test
-      - run:
-          name: Run JS unit tests
-          command: bundle exec yarn test
       - store_test_results:
           path: ~/rspec
 
@@ -148,6 +140,9 @@ jobs:
       - attach_workspace:
           at: '~/orangelight'
       - run:
+          name: Run JS unit tests
+          command: bundle exec yarn test
+      - run:
           name: workflow Index
           command: echo $CIRCLE_WORKFLOW_ID
       - run:
@@ -161,9 +156,12 @@ workflows:
       - rubocop:
          requires:
           - build
-      - test:
+      - build_for_test:
          requires:
           - build
+      - test:
+         requires:
+          - build_for_test
       - finish:
          requires:
            - test
