@@ -22,9 +22,15 @@
     <link rel="stylesheet" href="https://use.typekit.net/yhr7zwc.css">
     <%= stylesheet_link_tag "application", media: "screen" %>
     <%= stylesheet_link_tag "print", media: "print" %>
-    <%= javascript_include_tag "application" %>
+    <% unless controller.controller_name == "request" %>
+      <%= javascript_include_tag "application" %>
+    <% else  %>
+      <%= javascript_include_tag 'requests/application' %>
+    <% end %>
     <script>window.Global = {"graphql":<%= Global.graphql.to_json.html_safe %>,"figgy":<%= Global.figgy.to_json.html_safe %>}</script>
-    <%= javascript_pack_tag 'application' %>
+    <% unless controller.controller_name == "request" %>
+      <%= javascript_pack_tag 'application' %>
+    <% end %>
     <% unless controller.controller_name == "catalog" && controller.action_name == "show" && @document.alma_record? %>
     <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML", async: true %>
     <% end %>
