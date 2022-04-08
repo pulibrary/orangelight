@@ -87,13 +87,22 @@ module Requests
 
     def location_label
       return "" if holding.blank?
-      label = holding["library"]
-      label += " - #{holding['location']}" if holding["location"].present?
+      if any_items? && requestable.first.item["in_temp_library"]
+        label = holding["current_library"]
+        label += " - #{holding['current_location']}" if holding["current_location"].present?
+      else
+        label = holding["library"]
+        label += " - #{holding['location']}" if holding["location"].present?
+      end
       label
     end
 
     def holding
-      holdings[mfhd]
+      if any_items? && requestable.first.item["in_temp_library"]
+        holdings[requestable.first.item["temp_location_code"]]
+      else
+        holdings[mfhd]
+      end
     end
 
     private

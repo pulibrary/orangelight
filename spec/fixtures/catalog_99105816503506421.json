@@ -1,0 +1,140 @@
+{
+    "id": "99105816503506421",
+    "numeric_id_b": true,
+    "author_citation_display": [
+      "Elser, Oliver",
+      "Kurz, Philip",
+      "Cachola Schmal, Peter",
+      "Torkar, Felix",
+      "Liesner, Maximilian",
+      "Wüstenrot Stiftung Deutscher Eigenheimverein",
+      "Deutsches Architekturmuseum",
+      "Architektur Zentrum Wien"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Wüstenrot Stiftung Deutscher Eigenheimverein\",\"Deutsches Architekturmuseum\",\"Architektur Zentrum Wien\"],\"translators\":[],\"editors\":[\"Elser, Oliver\",\"Kurz, Philip\",\"Cachola Schmal, Peter\",\"Torkar, Felix\",\"Liesner, Maximilian\"],\"compilers\":[]}",
+    "author_s": [
+      "Elser, Oliver, 1972-",
+      "Kurz, Philip",
+      "Cachola Schmal, Peter, 1960-",
+      "Torkar, Felix",
+      "Liesner, Maximilian",
+      "Wüstenrot Stiftung Deutscher Eigenheimverein",
+      "Deutsches Architekturmuseum",
+      "Architektur Zentrum Wien"
+    ],
+    "uniform_title_s": [
+      "SOS Brutalismus (Park Books (Firm))"
+    ],
+    "title_display": "SOS brutalism : a global survey : a collaboration by the Deutsches Architekturmuseum and the Wüstenrot Foundation / edited by Oliver Elser, Philip Kurz, Peter Cachola Schmal ; scientific editing: Felix Torkar, Maximilian Liesner.",
+    "title_t": [
+      "SOS brutalism : a global survey : a collaboration by the Deutsches Architekturmuseum and the Wüstenrot Foundation / edited by Oliver Elser, Philip Kurz, Peter Cachola Schmal ; scientific editing: Felix Torkar, Maximilian Liesner."
+    ],
+    "title_citation_display": [
+      "SOS brutalism : a global survey : a collaboration by the Deutsches Architekturmuseum and the Wüstenrot Foundation"
+    ],
+    "compiled_created_t": [
+      "SOS brutalism : a global survey : a collaboration by the Deutsches Architekturmuseum and the Wüstenrot Foundation / edited by Oliver Elser, Philip Kurz, Peter Cachola Schmal ; scientific editing: Felix Torkar, Maximilian Liesner."
+    ],
+    "pub_created_display": [
+      "Zürich : Park Books, [2017]",
+      "©2017"
+    ],
+    "pub_created_s": [
+      "Zürich : Park Books, [2017]",
+      "©2017"
+    ],
+    "pub_citation_display": [
+      "Zürich: Park Books"
+    ],
+    "pub_date_display": [
+      "2017"
+    ],
+    "pub_date_start_sort": 2017,
+    "pub_date_end_sort": 2017,
+    "cataloged_tdt": "2021-07-12T19:32:22Z",
+    "format": [
+      "Book"
+    ],
+    "description_display": [
+      "2 volumes (535, 180 pages) : illustrations (some color) ; 28 cm"
+    ],
+    "description_t": [
+      "2 volumes (535, 180 pages) : illustrations (some color) ; 28 cm"
+    ],
+    "number_of_pages_citation_display": [
+      "2 volumes (535, 180 pages)"
+    ],
+    "notes_display": [
+      "Title for the 2-volume set from the container.",
+      "Published on the occasion of the exhibition \"SOS Brutalismus--Rettet die Betonmonster!\" held at the Deutsches Architekturmuseum, Frankfurt am Main, 8 November 2017, and at the Architekturzentrum Wien, Vienna, Austria, 3 May-6 August 2018; includes proceedings of a conference held in Berlin, Germany, in 2012."
+    ],
+    "bib_ref_notes_display": [
+      "Includes bibliographical references."
+    ],
+    "language_facet": [
+      "English"
+    ],
+    "language_code_s": [
+      "eng"
+    ],
+    "language_iana_s": [
+      "en"
+    ],
+    "lc_subject_display": [
+      "Brutalism (Architecture)—Exhibitions",
+      "Architecture, Modern—20th century—Exhibitions",
+      "Brutalism (Architecture)—Congresses",
+      "Architecture, Modern—20th century—Congresses"
+    ],
+    "subject_facet": [
+      "Brutalism (Architecture)—Exhibitions",
+      "Architecture, Modern—20th century—Exhibitions",
+      "Brutalism (Architecture)—Congresses",
+      "Architecture, Modern—20th century—Congresses"
+    ],
+    "related_name_json_1display": "{\"Editor\":[\"Elser, Oliver, 1972-\",\"Kurz, Philip\",\"Cachola Schmal, Peter, 1960-\",\"Torkar, Felix\",\"Liesner, Maximilian\"],\"Issuing body\":[\"Wüstenrot Stiftung Deutscher Eigenheimverein\"],\"Host institution\":[\"Deutsches Architekturmuseum\",\"Architektur Zentrum Wien\"]}",
+    "isbn_display": [
+      "9783038600756"
+    ],
+    "isbn_s": [
+      "9783038600756"
+    ],
+    "oclc_s": [
+      "1026162037"
+    ],
+    "other_version_s": [
+      "9783038600756",
+      "on1026162037"
+    ],
+    "subject_era_facet": [
+      "20th century"
+    ],
+    "holdings_1display": "{\"22514405180006421\":{\"location_code\":\"arch$stacks\",\"location\":\"Stacks\",\"library\":\"Architecture Library\",\"call_number\":\"NA682.B7 S673 2017b\",\"call_number_browse\":\"NA682.B7 S673 2017b\",\"items\":[{\"holding_id\":\"22514405180006421\",\"enumeration\":\"vol.2\",\"id\":\"23514405170006421\",\"status_at_load\":\"1\",\"barcode\":\"32101103846810\",\"copy_number\":\"0\"}],\"location_has\":[\"[1]-[2]\"],\"supplements\":[],\"indexes\":[]},\"arch$la\":{\"location_code\":\"arch$la\",\"current_location\":\"Librarian's Office\",\"current_library\":\"Architecture Library\",\"call_number\":\"NA682.B7 S673 2017b\",\"call_number_browse\":\"NA682.B7 S673 2017b\",\"items\":[{\"holding_id\":\"22514405160006421\",\"enumeration\":\"vol.1\",\"id\":\"23514405150006421\",\"status_at_load\":\"1\",\"barcode\":\"32101103663520\",\"copy_number\":\"0\"}]}}",
+    "location_code_s": [
+      "arch$stacks",
+      "arch$newbook"
+    ],
+    "location": [
+      "Architecture Library"
+    ],
+    "location_display": [
+      "Stacks",
+      "New Book Shelf"
+    ],
+    "advanced_location_s": [
+      "arch$stacks",
+      "arch$newbook",
+      "Architecture Library"
+    ],
+    "call_number_display": [
+      "NA682.B7 S673 2017b"
+    ],
+    "call_number_browse_s": [
+      "NA682.B7 S673 2017b"
+    ],
+    "call_number_locator_display": [
+      "NA682.B7 S673 2017b"
+    ],
+    "_version_": 1729485616939270144,
+    "timestamp": "2022-04-07T21:13:33.497Z"
+  }

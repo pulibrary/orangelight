@@ -6321,4 +6321,219 @@ http_interactions:
       encoding: UTF-8
       string: ''
   recorded_at: Wed, 06 Apr 2022 15:15:28 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/bibliographic/99105816503506421/holdings/22514405160006421/availability.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.21.5
+      Date:
+      - Tue, 12 Apr 2022 20:48:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"7f82c15028058084b699b4e689fc41de"
+      X-Runtime:
+      - '4.131940'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 3b4d3519-d300-4317-abc9-82820b929f56
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.10
+    body:
+      encoding: UTF-8
+      string: '[{"barcode":"32101103663520","id":"23514405150006421","holding_id":"22514405160006421","copy_number":"0","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"arch","pickup_location_code":"arch","location":"arch$la","label":"Architecture
+        Library - Librarian''s Office","description":"vol.1","enum_display":"vol.1","chron_display":"","in_temp_library":true,"temp_library_code":"arch","temp_library_label":"Architecture
+        Library - Librarian''s Office","temp_location_code":"arch$la","temp_location_label":"Architecture
+        Library - Librarian''s Office"}]'
+  recorded_at: Tue, 12 Apr 2022 20:48:23 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/arch$la.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.21.5
+      Date:
+      - Tue, 12 Apr 2022 20:48:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"e95c357e4d47fc1b9d492574a310a4ac"
+      X-Runtime:
+      - '0.025212'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - bce54c6f-9004-4217-9303-fd6a4edd081f
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.10
+    body:
+      encoding: UTF-8
+      string: '{"label":"Librarian''s Office","code":"arch$la","aeon_location":false,"recap_electronic_delivery_location":false,"open":false,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","fulfillment_unit":"Limited","library":{"label":"Architecture
+        Library","code":"arch","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[{"label":"Architecture
+        Library","address":"School of Architecture Building, Second Floor Princeton,
+        NJ 08544","phone_number":"609-258-3256","contact_email":"ues@princeton.edu","gfa_pickup":"PW","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Architecture
+        Library","code":"arch","order":0}}]}'
+  recorded_at: Tue, 12 Apr 2022 20:48:23 GMT
+- request:
+    method: post
+    uri: https://lib-illiad.princeton.edu/ILLiadWebPlatform/transaction
+    body:
+      encoding: UTF-8
+      string: '{"Username":"jstudent","TransactionStatus":"Awaiting Article Express
+        Processing","RequestType":"Article","ProcessType":"Borrowing","NotWantedAfter":"10/12/2022","WantedBy":"Yes,
+        until the semester''s","PhotoItemAuthor":"Elser, Oliver Kurz, Philip Cachola
+        Schmal, Peter Torkar, Felix Liesner, Maximilian Wüstenrot Sti...","PhotoArticleAuthor":"","PhotoJournalTitle":"SOS
+        brutalism : a global survey : a collaboration by the Deutsches Architekturmuseum
+        and the Wüstenrot Foundation","PhotoItemPublisher":"Zürich: Park Books","ISSN":"9783038600756","CallNumber":"NA682.B7
+        S673 2017b","PhotoJournalInclusivePages":"-","CitedIn":"https://catalog-staging.princeton.edu/catalog/99105816503506421","PhotoJournalYear":"2017","PhotoJournalVolume":"vol.1","PhotoJournalIssue":"","ItemInfo3":"vol.1","ItemInfo4":"","CitedPages":"COVID-19
+        Campus Closure","AcceptNonEnglish":true,"ESPNumber":"1026162037","DocumentType":"Book","Location":"Architecture
+        Library - Librarian''s Office","PhotoArticleTitle":"some text"}'
+    headers:
+      User-Agent:
+      - Faraday v0.17.4
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      Apikey:
+      - TESTME
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 401
+      message: The request could not be authorized.
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/10.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      Www-Authenticate:
+      - NTLM
+      - Negotiate
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 12 Apr 2022 20:48:32 GMT
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 12 Apr 2022 20:48:32 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/arch$la.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.21.5
+      Date:
+      - Tue, 12 Apr 2022 20:48:32 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"e95c357e4d47fc1b9d492574a310a4ac"
+      X-Runtime:
+      - '0.017533'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - ac983e71-9a86-49da-b6fd-6d3368ae13f2
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.10
+    body:
+      encoding: UTF-8
+      string: '{"label":"Librarian''s Office","code":"arch$la","aeon_location":false,"recap_electronic_delivery_location":false,"open":false,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","fulfillment_unit":"Limited","library":{"label":"Architecture
+        Library","code":"arch","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[{"label":"Architecture
+        Library","address":"School of Architecture Building, Second Floor Princeton,
+        NJ 08544","phone_number":"609-258-3256","contact_email":"ues@princeton.edu","gfa_pickup":"PW","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Architecture
+        Library","code":"arch","order":0}}]}'
+  recorded_at: Tue, 12 Apr 2022 20:48:32 GMT
 recorded_with: VCR 6.1.0

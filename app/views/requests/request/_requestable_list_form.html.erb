@@ -1,10 +1,10 @@
-<% return unless holdings[mfhd].present? %>
+<% return unless @request.holding.present? %>
 <%= hidden_fields_mfhd holdings[mfhd] %>
 <div class="table-responsive">
   <div id="holding<%= mfhd %>" class="table items table">
     <h2><%= current_location_label(@request.location_label, requestable_list) %> </h2>
 
-      <% unless holdings[mfhd]["location_has"].nil? %>
+      <% unless @request.holding["location_has"].nil? %>
           <div>
             <h3>Location has: </h3>
           </div>
