@@ -19,7 +19,7 @@ services:
     config:
       dir: "solr/conf"
   orangelight_database:
-    type: postgres:10
+    type: postgres:13
     portforward: true
 proxy:
   orangelight_test_solr:
