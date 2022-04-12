@@ -35,7 +35,7 @@ You need to have a working version of Chromedriver http://chromedriver.chromium.
 
 Under current campus access policies if you are interactively testing this gem you need to grant your net ID full campus access privileges. You can do by adding your net ID to the campus access list in the bibdata instance you are testing with. To do so:
 
-1. Connect to the server. ```ssh deploy@bibdata-alma-staging1.princeton```
+1. Connect to the server. ```ssh deploy@bibdata-alma-staging1```
 2. Change to the directory where the rails app is running. ```cd /opt/marc_liberation/current```
 2. Enter the rails console for environment you want to working with. ```RAILS_ENV=production bundle exec rails c```
 3. Add your net ID: ```CampusAccess.create(uid:'mynetid')```
