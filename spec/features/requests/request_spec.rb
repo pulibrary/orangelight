@@ -455,6 +455,17 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(a_request(:post, alma_url)).to have_been_made
         end
 
+        it 'allows patrons to request electronic delivery of a Forrestal item' do
+          stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/9956562643506421/raw")
+            .to_return(status: 200, body: fixture('/9956562643506421.json'), headers: {})
+          stub_request(:get, "#{Requests::Config[:bibdata_base]}/bibliographic/9956562643506421/holdings/22700125400006421/availability.json")
+            .to_return(status: 200, body: fixture('/availability_9956562643506421.json'), headers: {})
+          visit '/requests/9956562643506421?mfhd=22700125400006421'
+          choose('requestable__delivery_mode_23700125390006421_edd') # chooses 'electronic delivery' radio button
+          fill_in "Title", with: "my stuff"
+          expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        end
+
         it 'allows patrons to request a Lewis recap item digitally' do
           scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
           stub_scsb_availability(bib_id: "9970533073506421", institution_id: "PUL", barcode: '32101051217659')

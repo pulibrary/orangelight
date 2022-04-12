@@ -127,7 +127,7 @@ module Requests
           Requests::Submissions::Clancy.new(self)
         when 'clancy_edd'
           Requests::Submissions::ClancyEdd.new(self)
-        when 'digitize', 'marquand_edd', 'clancy_unavailable_edd'
+        when 'digitize', 'annex_edd', 'marquand_edd', 'clancy_unavailable_edd'
           Requests::Submissions::DigitizeItem.new(self, service_type: type)
         when 'help_me'
           Requests::Submissions::HelpMe.new(self)

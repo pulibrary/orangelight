@@ -19,7 +19,7 @@ module Requests
       def validate_selected(record, selected)
         return unless selected['selected'] == 'true'
         case selected["type"]
-        when 'digitize', 'digitize_fill_in', 'marquand_edd', 'clancy_edd', "clancy_unavailable_edd"
+        when 'digitize', 'digitize_fill_in', 'annex_edd', 'marquand_edd', 'clancy_edd', "clancy_unavailable_edd"
           validate_delivery_mode(record: record, selected: selected)
         when 'bd', 'ill'
           validate_ill_on_shelf_or_bd(record, selected, pick_up_phrase: 'delivery of your borrow direct item', action_phrase: 'requested via Borrow Direct')
