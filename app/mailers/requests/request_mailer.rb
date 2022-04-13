@@ -65,6 +65,12 @@ module Requests
       confirmation_email(submission: submission, subject_key: 'requests.annex_in_library.email_subject')
     end
 
+    def annex_edd_email(submission); end
+
+    def annex_edd_confirmation(submission)
+      confirmation_email(submission: submission, subject_key: 'requests.recap_edd.email_subject', partial: 'recap_edd_confirmation')
+    end
+
     def ppl_email(submission)
       request_email(submission: submission, subject_key: 'requests.ppl.email_subject', destination_key: 'requests.ppl.email')
     end
