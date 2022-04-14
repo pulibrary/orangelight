@@ -123,4 +123,24 @@ RSpec.describe 'catalog/show' do
       expect(header_title['lang']).to eq 'ru'
     end
   end
+
+  context 'when the indexes and supplements array are empty' do
+    it 'does not display indexes or supplements statements' do
+      visit 'catalog/997218033506421'
+      expect(page).not_to have_selector('.holding-supplements')
+      expect(page).not_to have_selector('.holding-indexes')
+    end
+  end
+  context 'when indexes is not included in the holdings JSON' do
+    it 'does not display indexes statements' do
+      visit 'catalog/9957223113506421'
+      expect(page).not_to have_selector('.holding-indexes')
+    end
+  end
+  context 'when indexes is included in the holdings JSON' do
+    it 'displays indexes statement' do
+      visit 'catalog/995597013506421'
+      expect(page).to have_selector('.holding-indexes')
+    end
+  end
 end
