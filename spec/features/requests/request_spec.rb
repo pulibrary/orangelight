@@ -1290,17 +1290,13 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
 
         describe 'Request a temp holding item' do
           before do
+            stub_illiad_patron
             stub_alma_hold_success('99105816503506421', '22514405160006421', '23514405150006421', '960594184')
             stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/99105816503506421/raw")
               .to_return(status: 200, body: fixture('/catalog_99105816503506421.json'), headers: {})
-            stub_request(:get, patron_url)
-              .to_return(status: 200, body: responses[:found], headers: {})
             stub_request(:post, transaction_url)
               .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Zhongguo xin li xue hui", "LoanTitle" => "Xin li ke xue = Journal of psychological science 心理科学 = Journal of psychological science", "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "BF8.C5 H76", "CitedIn" => "https://catalog.princeton.edu/catalog/9941150973506421", "ItemInfo3" => "no.217-218", "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
               .to_return(status: 200, body: responses[:transaction_created], headers: {})
-            # stub_request(:post, transaction_note_url)
-            #   .with(body: hash_including("Note" => "Loan Request"))
-            #   .to_return(status: 200, body: responses[:note_created], headers: {})
           end
           it 'with an electronic delivery' do
             visit 'requests/99105816503506421?mfhd=22514405160006421'
@@ -1316,7 +1312,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             fill_in 'requestable__edd_art_title_23514405150006421', with: 'some text'
             expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
             expect(a_request(:post, transaction_url)).to have_been_made
-            # expect(a_request(:post, transaction_note_url)).to have_been_made
           end
           it 'with a Physical delivery' do
             visit 'requests/99105816503506421?mfhd=22514405160006421'
