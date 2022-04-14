@@ -6,6 +6,7 @@ module Requests::Submissions
     def initialize(submission, service_type: 'digitize')
       super
       @service_types = { digitize: { cited_pages: 'COVID-19 Campus Closure', note: 'Digitization Request' },
+                         annex_edd: { cited_pages: 'Annex EDD', note: 'Digitization Request Forrestal Annex Item' },
                          marquand_edd: { cited_pages: 'Marquand EDD', note: 'Digitization Request Marquand Item' },
                          clancy_edd: { cited_pages: 'Marquand Clancy EDD', note: 'Digitization Request Marquand Item at Clancy' },
                          clancy_unavailable_edd: { cited_pages: 'Marquand Clancy UNAVAIL EDD', note: 'Digitization Request Marquand Item at Clancy (Unavailable)' } }
