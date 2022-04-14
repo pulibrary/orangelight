@@ -1340,7 +1340,7 @@ describe Requests::RequestableDecorator do
     let(:ldap) { { pustatus: "undergraduate" } }
 
     it "returns the unauthorized patron message" do
-      expect(decorator.help_me_message).to eq("<p>This item is temporarily not accessible as a result of our <a href=\"https://library.princeton.edu/news/general/2021-08-02/pul-launch-new-library-system-summer-2021-hathitrust-etas-update\">current system migration</a>. Library staff will work to try to get you access to a copy of the desired material.</p>")
+      expect(decorator.help_me_message).to eq("<p>This item is temporarily not accessible. Library staff will work to try to get you access to a copy of the desired material.</p>")
     end
 
     context "trained patron" do
@@ -1352,7 +1352,7 @@ describe Requests::RequestableDecorator do
       end
 
       it "returns the trained patron message" do
-        expect(decorator.help_me_message).to eq("<p>This item is temporarily not accessible as a result of our <a href=\"https://library.princeton.edu/news/general/2021-08-02/pul-launch-new-library-system-summer-2021-hathitrust-etas-update\">current system migration</a>. Library staff will work to try to get you access to a copy of the desired material.</p>")
+        expect(decorator.help_me_message).to eq("<p>This item is temporarily not accessible. Library staff will work to try to get you access to a copy of the desired material.</p>")
       end
 
       context "closed library" do
