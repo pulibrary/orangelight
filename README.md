@@ -7,9 +7,9 @@ Status](https://coveralls.io/repos/github/pulibrary/orangelight/badge.svg?branch
 Versions:
 
 * Ruby: 2.7.5
-* Rails: 5.2.6.2
+* Rails: 6.0.4.7
 * Blacklight: 7.23.0.1
-* blacklight_advanced_search: 7.0.0.alpha
+* blacklight_advanced_search: 7.0.0
 
 If you don't have `yarn` installed you can install it with
   ```

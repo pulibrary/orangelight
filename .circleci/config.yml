@@ -33,7 +33,7 @@ executors:
 commands:
   setup-bundler:
     steps:
-      - run: gem install bundler -v '2.2.14'
+      - run: gem install bundler -v '2.2.27'
       # Restore bundle cache
       - restore_cache:
           keys:

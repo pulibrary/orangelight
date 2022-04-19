@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4'
+gem 'rails', '~> 6.0', '>= 6.0.4.7'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Blacklight
@@ -62,7 +62,7 @@ gem 'ddtrace'
 gem 'font-awesome-rails'
 gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
-gem 'rspec-rails', '~> 3.4'
+gem 'rspec-rails'
 gem 'rubyzip', '>= 1.2.2'
 gem 'sneakers'
 gem 'sprockets-es6'
@@ -81,7 +81,7 @@ gem 'honeybadger'
 
 gem 'sitemap_generator', '~> 6.0'
 
-gem 'voight_kampff', '~> 1.1'
+gem 'voight_kampff'
 
 gem 'webpacker'
 
@@ -99,7 +99,7 @@ end
 group :test do
   gem "axe-core-rspec"
   gem 'factory_bot_rails', require: false
-  gem 'faker', '~> 1.9'
+  gem 'faker'
   gem 'launchy'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
