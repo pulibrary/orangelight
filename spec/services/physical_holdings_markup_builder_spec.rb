@@ -167,7 +167,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   describe '.indexes_list' do
     let(:indexes_list_markup) { described_class.indexes_list(holding.first[1]) }
 
-    it 'generates the markup for a supplement note' do
+    it 'generates the markup for a index note' do
       expect(indexes_list_markup).to include "<li>#{indexes[0]}</li>"
       expect(indexes_list_markup).to include "<li>#{indexes[1]}</li>"
       expect(indexes_list_markup).to include '<ul class="holding-indexes">'

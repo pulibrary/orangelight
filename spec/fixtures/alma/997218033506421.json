@@ -1,0 +1,130 @@
+{
+    "id": "997218033506421",
+    "numeric_id_b": true,
+    "author_citation_display": [
+      "Hoji, Hajime",
+      "Stanford Linguistics Association",
+      "Center for the Study of Language and Information (U.S.)",
+      "Japanese/Korean Linguistics Conference"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Hoji, Hajime\",\"Stanford Linguistics Association\",\"Center for the Study of Language and Information (U.S.)\",\"Japanese/Korean Linguistics Conference\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "author_s": [
+      "Hoji, Hajime",
+      "Stanford Linguistics Association",
+      "Center for the Study of Language and Information (U.S.)",
+      "Japanese/Korean Linguistics Conference"
+    ],
+    "title_display": "Japanese/Korean linguistics / edited by Hajime Hoji.",
+    "title_t": [
+      "Japanese/Korean linguistics / edited by Hajime Hoji."
+    ],
+    "title_citation_display": [
+      "Japanese/Korean linguistics"
+    ],
+    "compiled_created_t": [
+      "Japanese/Korean linguistics / edited by Hajime Hoji."
+    ],
+    "pub_created_display": [
+      "Stanford, Calif. : Published for the Stanford Linguistics Association by the Center for the Study of Language and Information, c1990-"
+    ],
+    "pub_created_s": [
+      "Stanford, Calif. : Published for the Stanford Linguistics Association by the Center for the Study of Language and Information, c1990-"
+    ],
+    "pub_citation_display": [
+      "Stanford, Calif: Published for the Stanford Linguistics Association by the Center for the Study of Language and Information"
+    ],
+    "pub_date_display": [
+      "1990"
+    ],
+    "pub_date_start_sort": 1990,
+    "pub_date_end_sort": 9999,
+    "cataloged_tdt": "2021-07-12T17:51:03Z",
+    "format": [
+      "Book"
+    ],
+    "description_display": [
+      "v. : ill. ; 24 cm."
+    ],
+    "description_t": [
+      "v. : ill. ; 24 cm."
+    ],
+    "number_of_pages_citation_display": [
+      "v."
+    ],
+    "notes_display": [
+      "Editors vary.",
+      "Vol. 1 contains: \"Papers presented at the Southern California Japanese/Korean Linguistics Conference, held August 4-6, 1989 at the University of California, Los Angeles\"; v. 2-<10>: papers presented at the annual Conferences, held each different times and places."
+    ],
+    "bib_ref_notes_display": [
+      "Includes bibliographical references and index."
+    ],
+    "language_facet": [
+      "English"
+    ],
+    "language_code_s": [
+      "eng"
+    ],
+    "language_iana_s": [
+      "en"
+    ],
+    "lc_subject_display": [
+      "Japanese language—Congresses",
+      "Korean language—Congresses",
+      "Japanese language—Grammar, Comparative—Korean—Congresses",
+      "Korean language—Grammar, Comparative—Japanese—Congresses",
+      "Linguistics—Congresses"
+    ],
+    "subject_facet": [
+      "Japanese language—Congresses",
+      "Korean language—Congresses",
+      "Japanese language—Grammar, Comparative—Korean—Congresses",
+      "Korean language—Grammar, Comparative—Japanese—Congresses",
+      "Linguistics—Congresses"
+    ],
+    "related_name_json_1display": "{\"Related name\":[\"Hoji, Hajime\",\"Stanford Linguistics Association\",\"Center for the Study of Language and Information (U.S.)\",\"Japanese/Korean Linguistics Conference\"]}",
+    "isbn_display": [
+      "0937073563 :",
+      "0937073571 (pbk.) :"
+    ],
+    "lccn_display": [
+      "   90002550  "
+    ],
+    "lccn_s": [
+      "90002550"
+    ],
+    "isbn_s": [
+      "9780937073568",
+      "9780937073575"
+    ],
+    "oclc_s": [
+      "38093735"
+    ],
+    "other_version_s": [
+      "9780937073568",
+      "9780937073575",
+      "ocm38093735"
+    ],
+    "location_code_s": [
+      "eastasian$gest"
+    ],
+    "location": [
+      "East Asian Library"
+    ],
+    "location_display": [
+      "Western Languages"
+    ],
+    "advanced_location_s": [
+      "eastasian$gest",
+      "East Asian Library"
+    ],
+    "call_number_display": [
+      "PL503 .J36 1990"
+    ],
+    "call_number_browse_s": [
+      "PL503 .J36 1990"
+    ],
+    "call_number_locator_display": [
+      "PL503 .J36 1990"
+    ],
+    "holdings_1display": "{\"22496031280006421\":{\"location_code\":\"eastasian$gest\",\"location\":\"Western Languages\",\"library\":\"East Asian Library\",\"call_number\":\"PL503 .J36 1990\",\"call_number_browse\":\"PL503 .J36 1990\",\"items\":[{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol. 13\",\"id\":\"23496031160006421\",\"status_at_load\":\"1\",\"barcode\":\"32101067769727\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.2\",\"id\":\"23496031240006421\",\"status_at_load\":\"1\",\"barcode\":\"32101024037762\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.9\",\"id\":\"23496031150006421\",\"status_at_load\":\"1\",\"barcode\":\"32101042800100\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.1\",\"id\":\"23496031250006421\",\"status_at_load\":\"1\",\"barcode\":\"32101021732316\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.10\",\"id\":\"23496031140006421\",\"status_at_load\":\"1\",\"barcode\":\"32101042825867\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.7\",\"id\":\"23496031260006421\",\"status_at_load\":\"1\",\"barcode\":\"32101034522175\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.25\",\"id\":\"23496031170006421\",\"status_at_load\":\"1\",\"barcode\":\"32101103530745\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol. 14\",\"id\":\"23496031180006421\",\"status_at_load\":\"1\",\"barcode\":\"32101061351308\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.6\",\"id\":\"23496031220006421\",\"status_at_load\":\"1\",\"barcode\":\"32101034526903\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.3\",\"id\":\"23496031230006421\",\"status_at_load\":\"1\",\"barcode\":\"32101026670545\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.12\",\"id\":\"23496031120006421\",\"status_at_load\":\"1\",\"barcode\":\"32101050781945\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.11\",\"id\":\"23496031190006421\",\"status_at_load\":\"1\",\"barcode\":\"32101048134579\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.4\",\"id\":\"23496031130006421\",\"status_at_load\":\"1\",\"barcode\":\"32101046155121\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol. 15\",\"id\":\"23496031110006421\",\"status_at_load\":\"1\",\"barcode\":\"32101063016479\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.24\",\"id\":\"23496031020006421\",\"status_at_load\":\"1\",\"barcode\":\"32101096342629\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.26\",\"id\":\"23496031010006421\",\"status_at_load\":\"1\",\"barcode\":\"32101108993963\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.23\",\"id\":\"23496031030006421\",\"status_at_load\":\"1\",\"barcode\":\"32101097681462\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol. 28\",\"id\":\"23919920760006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104140635\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.21\",\"id\":\"23496031040006421\",\"status_at_load\":\"1\",\"barcode\":\"32101095580138\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.22\",\"id\":\"23496031050006421\",\"status_at_load\":\"1\",\"barcode\":\"32101096373731\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.20\",\"id\":\"23496031060006421\",\"status_at_load\":\"1\",\"barcode\":\"32101087923288\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.19\",\"id\":\"23496031070006421\",\"status_at_load\":\"1\",\"barcode\":\"32101087049803\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.18\",\"id\":\"23496031080006421\",\"status_at_load\":\"1\",\"barcode\":\"32101075772275\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol. 17\",\"id\":\"23496031090006421\",\"status_at_load\":\"1\",\"barcode\":\"32101072379074\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol. 16\",\"id\":\"23496031100006421\",\"status_at_load\":\"1\",\"barcode\":\"32101075076966\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.27\",\"id\":\"23496030980006421\",\"status_at_load\":\"1\",\"barcode\":\"32101110782123\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.8\",\"id\":\"23496031200006421\",\"status_at_load\":\"1\",\"barcode\":\"32101032232736\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"vol.5\",\"id\":\"23496031210006421\",\"status_at_load\":\"1\",\"barcode\":\"32101032402206\",\"copy_number\":\"1\"},{\"holding_id\":\"22496031280006421\",\"enumeration\":\"28\",\"id\":\"23496031270006421\",\"status_at_load\":\"0\",\"barcode\":\"ISSitm23120.200-princetondb\"}],\"location_has\":[\"Vol. 1-v. 28 (published 2021)\"],\"supplements\":[],\"indexes\":[]}}"
+  }
