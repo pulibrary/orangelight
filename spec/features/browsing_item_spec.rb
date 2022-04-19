@@ -24,8 +24,10 @@ describe 'browsing a catalog item', js: true do
     end
 
     it 'updates the thumbnail and constructs an instance of the Universal Viewer' do
-      expect(page).to have_selector 'iframe'
-      expect(page).to have_selector '.document-thumbnail img[src$="default.jpg"]'
+      using_wait_time 5 do
+        expect(page).to have_selector 'iframe'
+        expect(page).to have_selector '.document-thumbnail img[src$="default.jpg"]'
+      end
     end
   end
 
@@ -35,12 +37,16 @@ describe 'browsing a catalog item', js: true do
     end
 
     it 'updates the thumbnail and constructs an instance of the Universal Viewer' do
-      expect(page).to have_selector 'iframe'
-      expect(page).to have_selector '.document-thumbnail img[src$="default.jpg"]'
+      using_wait_time 5 do
+        expect(page).to have_selector 'iframe'
+        expect(page).to have_selector '.document-thumbnail img[src$="default.jpg"]'
+      end
     end
 
     it 'updates the link to the ARK with a fragment identifier for the UV' do
-      expect(page).to have_selector '.availability--online a[href$="7044622#view"]', text: 'Table of contents'
+      using_wait_time 5 do
+        expect(page).to have_selector '.availability--online a[href$="7044622#view"]', text: 'Table of contents'
+      end
     end
   end
 end
