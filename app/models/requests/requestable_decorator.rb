@@ -139,7 +139,7 @@ module Requests
             else
               "digital_access"
             end
-      I18n.t("requests.help_me.brief_msg.#{key}_html")
+      I18n.t("requests.help_me.brief_msg.#{key}_html").html_safe # rubocop:disable Rails/OutputSafety
     end
 
     def aeon_url(request_ctx)
