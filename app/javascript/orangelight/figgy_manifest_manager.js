@@ -89,7 +89,6 @@ class FiggyViewer {
     this.element.appendChild(viewerElement)
   }
 }
-
 class FiggyViewerSet {
   constructor(element, query, variables, arks, jQuery) {
     this.element = element
@@ -184,7 +183,6 @@ class FiggyThumbnailSet {
       const bibId = this.constructor.buildBibId(orangelightId)
       this.thumbnails[bibId] = resource.thumbnail
     }
-
     return this.resources
   }
 
@@ -265,7 +263,7 @@ class FiggyManifestManager {
   static buildThumbnailSet($elements) {
     return new FiggyThumbnailSet($elements, loadResourcesByOrangelightIds, window.jQuery)
   }
-
+  // See: https://github.com/pulibrary/orangelight/issues/2967
   static buildMonogramThumbnails($monogramIds) {
     return new FiggyThumbnailSet($monogramIds, loadResourcesByFiggyIds, window.jQuery)
   }
@@ -275,7 +273,6 @@ class FiggyManifestManager {
     const $element = window.jQuery(element)
     const bibId = $element.data('bib-id')
     const arks = $element.data('arks') || []
-
     return new FiggyViewerSet(element, loadResourcesByOrangelightId, bibId.toString(), arks, window.jQuery)
   }
 }
