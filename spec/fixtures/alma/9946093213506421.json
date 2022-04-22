@@ -1,1 +1,139 @@
-{"id":"9946093213506421","numeric_id_b":true,"author_citation_display":["Gutenberg, Johann","Fogel, Johannes","Brinley, George","Ives, Brayton","Cole, Hamilton","Ellsworth, James W.","Predigerkirche (Erfurt, Germany)"],"author_roles_1display":"{\"secondary_authors\":[\"Gutenberg, Johann\",\"Fogel, Johannes\",\"Brinley, George\",\"Ives, Brayton\",\"Cole, Hamilton\",\"Ellsworth, James W.\",\"Predigerkirche (Erfurt, Germany)\"],\"translators\":[],\"editors\":[],\"compilers\":[]}","author_s":["Gutenberg, Johann, 1397?-1468","Fogel, Johannes, active 1455-1462","Brinley, George, 1817-1875","Ives, Brayton, 1840-1914","Cole, Hamilton","Ellsworth, James W. (James William), 1849-1925","Predigerkirche (Erfurt, Germany)"],"uniform_title_s":["Bible. Latin. Vulgate. 1456"],"title_display":"Bible, Latin.","title_t":["Bible, Latin."],"title_citation_display":["Bible, Latin"],"compiled_created_t":["Bible, Latin."],"pub_created_display":["[Mainz : Johann Gutenberg and Johann Fust, before August 1456]."],"pub_created_s":["[Mainz : Johann Gutenberg and Johann Fust, before August 1456]."],"pub_citation_display":["Mainz: Johann Gutenberg and Johann Fust"],"pub_date_display":["1456"],"pub_date_start_sort":1456,"cataloged_tdt":"2020-12-03T01:41:37Z","format":["Book"],"electronic_access_1display":"{\"https://catalog.princeton.edu/catalog/4609321#view\":[\"Digital content\"],\"https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs\":[\"drive.google.com\",\"Curatorial documentation\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/7d278t10z\":\"https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest\"}}","description_display":["2 v. (324; 319 leaves) ; 40.5 x 28.8 cm. (fol.)"],"description_t":["2 v. (324; 319 leaves) ; 40.5 x 28.8 cm. (fol.)"],"number_of_pages_citation_display":["2 v. (324; 319 leaves)"],"notes_display":["Commonly known in English as the Gutenberg Bible, also known as the Mazarine Bible.","WHS copy has 12 leaves supplied from other copies and 5 leaves supplied in facsimile; the 17 leaves are vol. I fo. 1 and vol. II fo. 1, 17, 25, 46, 70, 149, 155, 156, 191, 217, 235, 268, 270, 275, 279, and 305.","Princeton copy 2: A single imperfect paper leaf from the Gutenberg Bible, the first printed Bible. The leaf is vol. II fo. 122 (the 2nd leaf of quire 13), with text of the last verses of Ezekiel 33, all of Ezekiel 34, and beginning verses of Ezekiel 35. The leaf comes from an otherwise lost copy of the Gutenberg Bible. It is one of nineteen such leaves, all belonging to quires 13 and 14 of volume II, that were cut down to a smaller size and pasted together to create pasteboard for some unidentified bookbinding, probably in the sixteenth century. About a dozen copies of the Gutenberg Bible, most of which were printed on vellum, are known only from fragmentary preservation as bookbinding materials. These cut-down paper leaves came to light when the Vienna bookdealers Gilhofer \u0026 Ranschburg offered them leaf by leaf in an auction of 3 April 1911. Two other leaves from this group are at the Library of Congress, a third is at Dartmouth College Library, and a fourth is at the State Library of New South Wales in Sydney. The rubrication of the copy is simple, using only red ink."],"binding_note_display":["WHS copy is one of three copies bound in the workshop of Johannes Fogel of Erfurt."],"language_facet":["Latin"],"language_code_s":["lat"],"language_iana_s":["la"],"provenance_display":["WHS copy has provenance: Predigerkirche, Erfurt, Germany; George Brinley; Brayton Ives; Hamilton Cole; and James W. Ellsworth."],"references_display":["GW 4201.","Goff B-526."],"references_url_display":["GW 4201.","Goff B-526."],"other_format_display":["Also available in an electronic version."],"related_name_json_1display":"{\"Printer\":[\"Gutenberg, Johann, 1397?-1468\"],\"Binder\":[\"Fogel, Johannes, active 1455-1462\"],\"Former owner\":[\"Brinley, George, 1817-1875\",\"Ives, Brayton, 1840-1914\",\"Cole, Hamilton\",\"Ellsworth, James W. (James William), 1849-1925\",\"Predigerkirche (Erfurt, Germany)\"]}","other_title_display":["Gutenberg Bible","Mazarin Bible","Mazarine Bible"],"alt_title_246_display":["Gutenberg Bible","Mazarin Bible","Mazarine Bible"],"holdings_1display":"{\"22258298950006421\":{\"location_code\":\"rare$whs\",\"location\":\"Special Collections - William H. Scheide Library\",\"library\":\"Special Collections\",\"call_number\":\"48.1\",\"call_number_browse\":\"48.1\",\"location_has\":[\"vol.1-2\"],\"items\":[{\"holding_id\":\"22258298950006421\",\"id\":\"23258298940006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 1\",\"barcode\":\"32101040882431\",\"copy_number\":\"0\"},{\"holding_id\":\"22258298950006421\",\"id\":\"23258298930006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 2\",\"barcode\":\"32101040882449\",\"copy_number\":\"0\"}]},\"22258298920006421\":{\"location_code\":\"rare$whs\",\"location\":\"Special Collections - William H. Scheide Library\",\"library\":\"Special Collections\",\"call_number\":\"113.2\",\"call_number_browse\":\"113.2\",\"location_has\":[\"fragment (one leaf from Ezekiel 34)\",\"Princeton copy 2\"],\"items\":[{\"holding_id\":\"22258298920006421\",\"id\":\"23258298910006421\",\"status_at_load\":\"1\",\"barcode\":\"32101040883280\",\"copy_number\":\"0\"}]}}","recap_notes_display":[" - "],"location_code_s":["rare$whs"],"location":["Special Collections"],"location_display":["Special Collections - William H. Scheide Library"],"advanced_location_s":["rare$whs","Special Collections"],"call_number_display":["48.1 ","113.2 "],"call_number_browse_s":["48.1 ","113.2 "],"call_number_locator_display":["48.1","113.2"],"electronic_portfolio_s":["{\"desc\":null,\"title\":null,\"url\":\"https://na07.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\u0026portfolio_pid=53356055290006421\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\"}","{\"desc\":null,\"title\":null,\"url\":\"https://na07.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\u0026portfolio_pid=53356055310006421\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\"}"],"timestamp":"2021-04-14T13:28:36.105Z"}
+{
+    "id": "9946093213506421",
+    "numeric_id_b": true,
+    "author_citation_display": [
+        "Gutenberg, Johann",
+        "Fogel, Johannes",
+        "Brinley, George",
+        "Ives, Brayton",
+        "Cole, Hamilton",
+        "Ellsworth, James W.",
+        "Predigerkirche (Erfurt, Germany)"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Gutenberg, Johann\",\"Fogel, Johannes\",\"Brinley, George\",\"Ives, Brayton\",\"Cole, Hamilton\",\"Ellsworth, James W.\",\"Predigerkirche (Erfurt, Germany)\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+    "author_s": [
+        "Gutenberg, Johann, 1397?-1468",
+        "Fogel, Johannes, active 1455-1462",
+        "Brinley, George, 1817-1875",
+        "Ives, Brayton, 1840-1914",
+        "Cole, Hamilton",
+        "Ellsworth, James W. (James William), 1849-1925",
+        "Predigerkirche (Erfurt, Germany)"
+    ],
+    "uniform_title_s": [
+        "Bible. Latin. Vulgate. 1456"
+    ],
+    "title_display": "Bible, Latin.",
+    "title_t": [
+        "Bible, Latin."
+    ],
+    "title_citation_display": [
+        "Bible, Latin"
+    ],
+    "compiled_created_t": [
+        "Bible, Latin."
+    ],
+    "pub_created_display": [
+        "[Mainz : Johann Gutenberg and Johann Fust, before August 1456]."
+    ],
+    "pub_created_s": [
+        "[Mainz : Johann Gutenberg and Johann Fust, before August 1456]."
+    ],
+    "pub_citation_display": [
+        "Mainz: Johann Gutenberg and Johann Fust"
+    ],
+    "pub_date_display": [
+        "1456"
+    ],
+    "pub_date_start_sort": 1456,
+    "cataloged_tdt": "2020-12-03T01:41:37Z",
+    "format": [
+        "Book"
+    ],
+    "electronic_access_1display": "{\"https://catalog.princeton.edu/catalog/4609321#view\":[\"Digital content\"],\"https://drive.google.com/open?id=0B3HwfRG3YqiNVVR4bXNvRzNwaGs\":[\"drive.google.com\",\"Curatorial documentation\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/7d278t10z\":\"https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest\"}}",
+    "description_display": [
+        "2 v. (324; 319 leaves) ; 40.5 x 28.8 cm. (fol.)"
+    ],
+    "description_t": [
+        "2 v. (324; 319 leaves) ; 40.5 x 28.8 cm. (fol.)"
+    ],
+    "number_of_pages_citation_display": [
+        "2 v. (324; 319 leaves)"
+    ],
+    "notes_display": [
+        "Commonly known in English as the Gutenberg Bible, also known as the Mazarine Bible.",
+        "WHS copy has 12 leaves supplied from other copies and 5 leaves supplied in facsimile; the 17 leaves are vol. I fo. 1 and vol. II fo. 1, 17, 25, 46, 70, 149, 155, 156, 191, 217, 235, 268, 270, 275, 279, and 305.",
+        "Princeton copy 2: A single imperfect paper leaf from the Gutenberg Bible, the first printed Bible. The leaf is vol. II fo. 122 (the 2nd leaf of quire 13), with text of the last verses of Ezekiel 33, all of Ezekiel 34, and beginning verses of Ezekiel 35. The leaf comes from an otherwise lost copy of the Gutenberg Bible. It is one of nineteen such leaves, all belonging to quires 13 and 14 of volume II, that were cut down to a smaller size and pasted together to create pasteboard for some unidentified bookbinding, probably in the sixteenth century. About a dozen copies of the Gutenberg Bible, most of which were printed on vellum, are known only from fragmentary preservation as bookbinding materials. These cut-down paper leaves came to light when the Vienna bookdealers Gilhofer & Ranschburg offered them leaf by leaf in an auction of 3 April 1911. Two other leaves from this group are at the Library of Congress, a third is at Dartmouth College Library, and a fourth is at the State Library of New South Wales in Sydney. The rubrication of the copy is simple, using only red ink."
+    ],
+    "binding_note_display": [
+        "WHS copy is one of three copies bound in the workshop of Johannes Fogel of Erfurt."
+    ],
+    "language_facet": [
+        "Latin"
+    ],
+    "language_code_s": [
+        "lat"
+    ],
+    "language_iana_s": [
+        "la"
+    ],
+    "provenance_display": [
+        "WHS copy has provenance: Predigerkirche, Erfurt, Germany; George Brinley; Brayton Ives; Hamilton Cole; and James W. Ellsworth."
+    ],
+    "references_display": [
+        "GW 4201.",
+        "Goff B-526."
+    ],
+    "references_url_display": [
+        "GW 4201.",
+        "Goff B-526."
+    ],
+    "other_format_display": [
+        "Also available in an electronic version."
+    ],
+    "related_name_json_1display": "{\"Printer\":[\"Gutenberg, Johann, 1397?-1468\"],\"Binder\":[\"Fogel, Johannes, active 1455-1462\"],\"Former owner\":[\"Brinley, George, 1817-1875\",\"Ives, Brayton, 1840-1914\",\"Cole, Hamilton\",\"Ellsworth, James W. (James William), 1849-1925\",\"Predigerkirche (Erfurt, Germany)\"]}",
+    "other_title_display": [
+        "Gutenberg Bible",
+        "Mazarin Bible",
+        "Mazarine Bible"
+    ],
+    "alt_title_246_display": [
+        "Gutenberg Bible",
+        "Mazarin Bible",
+        "Mazarine Bible"
+    ],
+    "holdings_1display": "{\"22258298950006421\":{\"location_code\":\"rare$whs\",\"location\":\"Special Collections - William H. Scheide Library\",\"library\":\"Special Collections\",\"call_number\":\"48.1\",\"call_number_browse\":\"48.1\",\"location_has\":[\"vol.1-2\"],\"items\":[{\"holding_id\":\"22258298950006421\",\"id\":\"23258298940006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 1\",\"barcode\":\"32101040882431\",\"copy_number\":\"0\"},{\"holding_id\":\"22258298950006421\",\"id\":\"23258298930006421\",\"status_at_load\":\"1\",\"enumeration\":\"v. 2\",\"barcode\":\"32101040882449\",\"copy_number\":\"0\"}]},\"22258298920006421\":{\"location_code\":\"rare$whs\",\"location\":\"Special Collections - William H. Scheide Library\",\"library\":\"Special Collections\",\"call_number\":\"113.2\",\"call_number_browse\":\"113.2\",\"location_has\":[\"fragment (one leaf from Ezekiel 34)\",\"Princeton copy 2\"],\"items\":[{\"holding_id\":\"22258298920006421\",\"id\":\"23258298910006421\",\"status_at_load\":\"1\",\"barcode\":\"32101040883280\",\"copy_number\":\"0\"}]}}",
+    "recap_notes_display": [
+        " - "
+    ],
+    "location_code_s": [
+        "rare$whs"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Special Collections - William H. Scheide Library"
+    ],
+    "advanced_location_s": [
+        "rare$whs",
+        "Special Collections"
+    ],
+    "call_number_display": [
+        "48.1 ",
+        "113.2 "
+    ],
+    "call_number_browse_s": [
+        "48.1 ",
+        "113.2 "
+    ],
+    "call_number_locator_display": [
+        "48.1",
+        "113.2"
+    ],
+    "electronic_portfolio_s": [
+        "{\"desc\":null,\"title\":null,\"url\":\"https://na07.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53356055290006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}",
+        "{\"desc\":null,\"title\":null,\"url\":\"https://na07.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53356055310006421&Force_direct=true\",\"start\":null,\"end\":\"latest\"}"
+    ],
+    "timestamp": "2021-04-14T13:28:36.105Z"
+}

@@ -46,4 +46,5 @@ Rails.application.configure do
   config.middleware.use Orangelight::Middleware::InvalidParameterHandler
   
   config.assets.debug = true
+  config.hosts.clear
 end
