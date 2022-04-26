@@ -2,6 +2,8 @@ import loader from 'orangelight/orangelight_ui_loader'
 import FiggyManifestManager from 'orangelight/figgy_manifest_manager'
 
 describe('OrangelightUiLoader', function() {
+  afterEach(jest.clearAllMocks);
+  
   test('hooked up right', () => {
     expect(loader).not.toBe(undefined)
   })
@@ -28,7 +30,26 @@ describe('OrangelightUiLoader', function() {
     const spy2 = jest.spyOn(FiggyManifestManager, 'buildMonogramThumbnails')
     let l = new loader
     l.setup_viewers()
-    expect(spy).not.toHaveBeenCalled()
-    expect(spy2).not.toHaveBeenCalled()
+    expect(spy).toHaveBeenCalledTimes(0)
+    expect(spy2).toHaveBeenCalledTimes(0)
+  })
+
+  test("If there is an ID, It calls Figgy to build a thumbnailSet", async () => {
+    const element = "<div class='document-thumbnail has-viewer-link' data-bib-id='coin-11362'>"
+    const spy = jest.spyOn(FiggyManifestManager, 'buildThumbnailSet')
+    await FiggyManifestManager.buildThumbnailSet(element)
+    let l = new loader
+    l.setup_viewers()
+    expect(FiggyManifestManager.buildThumbnailSet).toHaveBeenCalledTimes(1)
+  })
+
+  test("if there is an ID, it calls figgy to build a viewer", async () => {
+    const element = "<div id='view' class='document-viewers' data-bib-id='9946093213506422'>"
+    jest.spyOn(FiggyManifestManager, 'buildViewers')
+    await FiggyManifestManager.buildViewers(element)
+    let l = new loader
+    l.setup_viewers()
+    // It calls Figgy once. 
+    expect(FiggyManifestManager.buildViewers).toHaveBeenCalledTimes(1)
   })
 })
