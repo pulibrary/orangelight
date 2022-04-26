@@ -1232,7 +1232,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           # expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
         end
 
-        it "shows a on order princton ReCap item as Acquisition" do
+        it "shows a on order princeton ReCap item as Acquisition" do
           stub_scsb_availability(bib_id: "99125378834306421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
           visit '/requests/99125378834306421?mfhd=22897184810006421'
           expect(page).to have_content 'On Order books have not yet been received. Place a request to be notified when this item has arrived and is ready for your pick-up.'
@@ -1286,6 +1286,47 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(confirm_email.cc).to be_blank
           expect(confirm_email.html_part.body.to_s).to have_content("Er ru ting Qun fang pu : [san shi juan]")
           expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+        end
+
+        describe 'Request a temp holding item' do
+          before do
+            stub_illiad_patron
+            stub_alma_hold_success('99105816503506421', '22514405160006421', '23514405150006421', '960594184')
+            stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/99105816503506421/raw")
+              .to_return(status: 200, body: fixture('/catalog_99105816503506421.json'), headers: {})
+            stub_request(:post, transaction_url)
+              .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Zhongguo xin li xue hui", "LoanTitle" => "Xin li ke xue = Journal of psychological science 心理科学 = Journal of psychological science", "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "BF8.C5 H76", "CitedIn" => "https://catalog.princeton.edu/catalog/9941150973506421", "ItemInfo3" => "no.217-218", "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
+              .to_return(status: 200, body: responses[:transaction_created], headers: {})
+          end
+          it 'with an electronic delivery' do
+            visit 'requests/99105816503506421?mfhd=22514405160006421'
+            expect(page).to have_content "SOS brutalism : a global survey"
+            expect(page).to have_content 'Elser, Oliver'
+            expect(page).to have_content 'Physical Item Delivery'
+            expect(page).to have_content 'Electronic Delivery'
+            expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
+            expect(page).to have_content 'Available - Item in place'
+            expect(page).to have_content 'vol.1'
+            check('requestable_selected_23514405150006421')
+            choose('requestable__delivery_mode_23514405150006421_edd')
+            fill_in 'requestable__edd_art_title_23514405150006421', with: 'some text'
+            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+            expect(a_request(:post, transaction_url)).to have_been_made
+          end
+          it 'with a Physical delivery' do
+            visit 'requests/99105816503506421?mfhd=22514405160006421'
+            expect(page).to have_content "SOS brutalism : a global survey"
+            expect(page).to have_content 'Elser, Oliver'
+            expect(page).to have_content 'Physical Item Delivery'
+            expect(page).to have_content 'Electronic Delivery'
+            expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
+            expect(page).to have_content 'Available - Item in place'
+            expect(page).to have_content 'vol.1'
+            check('requestable_selected_23514405150006421')
+            choose('requestable__delivery_mode_23514405150006421_print')
+            expect(page).to have_content 'Pick-up location: Architecture Library'
+            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+          end
         end
       end
 

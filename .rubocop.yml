@@ -63,6 +63,7 @@ Metrics/ClassLength:
     - 'lib/orangelight/voyager_patron_client.rb'
     - 'spec/mailers/previews/*'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
+    - 'app/models/requests/request.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:

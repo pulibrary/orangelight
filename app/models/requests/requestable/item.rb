@@ -45,7 +45,7 @@ class Requests::Requestable
     end
 
     def temp_loc?
-      self[:temp_loc].present?
+      self[:in_temp_library]
     end
 
     def on_reserve?
@@ -161,7 +161,7 @@ class Requests::Requestable
       end
 
       def temp_loc?
-        false
+        ""
       end
 
       def on_reserve?

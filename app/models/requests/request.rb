@@ -284,10 +284,14 @@ module Requests
         item_loc = item_current_location(item)
         current_location = get_current_location(item_loc: item_loc)
         item['status_label'] = barcodesort[item['barcode']][:status_label] unless barcodesort.empty?
-        holding = holdings[holding_id] # || holdings[item_loc]
+        calculate_holding = if item["in_temp_library"]
+                              { holding_id.to_sym.to_s => holdings[item_loc] }
+                            else
+                              { holding_id.to_sym.to_s => holdings[holding_id] }
+                            end
         params = build_requestable_params(
           item: item.with_indifferent_access,
-          holding: { holding_id.to_sym.to_s => holding },
+          holding: calculate_holding,
           location: current_location
         )
         # sometimes availability returns items without any status
