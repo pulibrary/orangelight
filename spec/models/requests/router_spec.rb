@@ -139,6 +139,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
       context "lewis" do
         before do
           stubbed_questions[:lewis?] = true
+          stubbed_questions[:recap_pf?] = false
         end
         it "retune on shelf & edd because lewis is a regular library" do
           stubbed_questions[:circulates?] = true
@@ -161,6 +162,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           stubbed_questions[:circulates?] = true
           stubbed_questions[:campus_authorized] = true
           stubbed_questions[:eligible_to_pickup?] = true
+          stubbed_questions[:recap_pf?] = false
         end
         it "returns recap_edd in the services" do
           expect(router.calculate_services).to contain_exactly('recap_edd', 'recap')
@@ -185,6 +187,15 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           end
           it "returns recap_no_items in the services" do
             expect(router.calculate_services).to eq(['recap_no_items'])
+          end
+        end
+
+        context "items in firestone$pf" do
+          before do
+            stubbed_questions[:recap_pf?] = true
+          end
+          it "returns recap_in_library in the services" do
+            expect(router.calculate_services).to eq(['recap_in_library'])
           end
         end
 
@@ -262,6 +273,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
       context "on_shelf" do
         before do
           stubbed_questions[:circulates?] = true
+          stubbed_questions[:recap_pf?] = false
         end
         it "returns on_shelf in the services" do
           expect(router.calculate_services).to eq(['on_shelf_edd', 'on_shelf'])

@@ -725,7 +725,7 @@ describe Requests::RequestableDecorator do
         end
 
         context "no item data" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, etas?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ask_me?: false) }
+          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, circulates?: true, holding_library_in_library_only?: false, recap_pf?: false, on_shelf?: false, recap_edd?: false, etas?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ask_me?: false) }
           it 'will not be submitted' do
             expect(decorator.will_submit_via_form?).to be_falsey
           end
@@ -767,6 +767,14 @@ describe Requests::RequestableDecorator do
           end
         end
 
+        context "Item is a microform in Firestone PF location and stored remotely at Recap" do
+          let(:service) { { services: ["recap"], recap?: true, recap_pf?: true, recap_edd?: false } }
+
+          it 'will be submitted' do
+            expect(decorator.will_submit_via_form?).to be_truthy
+          end
+        end
+
         context "item at recap and edd eligible" do
           let(:service) { { services: ["recap"], recap?: true, recap_edd?: true } }
           it 'will be submitted' do
@@ -775,7 +783,7 @@ describe Requests::RequestableDecorator do
         end
 
         context "no item data" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, etas?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ask_me?: false) }
+          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, circulates?: true, holding_library_in_library_only?: false, recap_pf?: false, on_shelf?: false, recap_edd?: false, etas?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ask_me?: false) }
           it 'will be submitted' do
             expect(decorator.will_submit_via_form?).to be_truthy
           end
@@ -971,7 +979,7 @@ describe Requests::RequestableDecorator do
     end
 
     context "no item data and does not circulate and etas" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, etas?: true, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, user_barcode: '111222', aeon?: false, borrow_direct?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc') }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, recap_pf?: false, etas?: true, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, user_barcode: '111222', aeon?: false, borrow_direct?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc') }
       it 'will not be submitted' do
         expect(decorator.will_submit_via_form?).to be_falsey
       end
@@ -1020,7 +1028,7 @@ describe Requests::RequestableDecorator do
     end
 
     context "patron can not pick up materials and no item data and does not circulate and not etas" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, etas?: false, eligible_to_pickup?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, user_barcode: '111222', aeon?: false, borrow_direct?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc') }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, recap_pf?: false, etas?: false, eligible_to_pickup?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, user_barcode: '111222', aeon?: false, borrow_direct?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc') }
       it 'will not be submitted' do
         expect(decorator.will_submit_via_form?).to be_falsey
       end
@@ -1125,7 +1133,7 @@ describe Requests::RequestableDecorator do
     end
 
     context "no item data and does not circulate and not etas and eligible_to_pickup?" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, etas?: false, eligible_to_pickup?: true, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, user_barcode: '111222', borrow_direct?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc', aeon?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, recap_pf?: false, etas?: false, eligible_to_pickup?: true, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, user_barcode: '111222', borrow_direct?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc', aeon?: false) }
       it 'will not be submitted' do
         expect(decorator.will_submit_via_form?).to be_falsey
       end
@@ -1314,7 +1322,7 @@ describe Requests::RequestableDecorator do
     end
 
     context "an item that is onsite" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false, circulates?: true, recap?: false, location: { library: { code: 'lewis' } }) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false, circulates?: true, recap?: false, recap_pf?: false, location: { library: { code: 'lewis' } }) }
       it "returns a firestone url by default" do
         expect(decorator.libcal_url).to eq('https://libcal.princeton.edu/seats?lid=3508')
       end
@@ -1428,7 +1436,7 @@ describe Requests::RequestableDecorator do
   end
 
   describe "#off_site?" do
-    let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false, item_data?: false, circulates?: true) }
+    let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false, item_data?: false, recap_pf?: false, circulates?: true) }
     it 'is not off site' do
       expect(decorator.off_site?).to be_falsey
     end
@@ -1440,15 +1448,22 @@ describe Requests::RequestableDecorator do
       end
     end
 
+    context "at recap - firestone$pf" do
+      let(:stubbed_questions) { default_stubbed_questions.merge(recap?: true, recap_pf?: true) }
+      it 'is off site' do
+        expect(decorator.off_site?).to be_truthy
+      end
+    end
+
     context "at annex" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(annex?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(annex?: true, recap_pf?: false) }
       it 'is off site' do
         expect(decorator.off_site?).to be_truthy
       end
     end
 
     context "at clancy" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(clancy?: true, item_at_clancy?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(clancy?: true, item_at_clancy?: true, recap_pf?: false) }
       it 'is off site' do
         expect(decorator.off_site?).to be_truthy
       end
@@ -1479,6 +1494,13 @@ describe Requests::RequestableDecorator do
       let(:stubbed_questions) { default_stubbed_questions.merge(recap?: true, library_code: 'abc', holding_library: 'marquand') }
       it 'is off site' do
         expect(decorator.off_site_location).to eq('recap_marquand')
+      end
+    end
+
+    context "at recap - firestone$pf" do
+      let(:stubbed_questions) { default_stubbed_questions.merge(recap?: true, recap_pf?: true, library_code: 'firestone$pf', holding_library: 'firestone') }
+      it 'is off site' do
+        expect(decorator.off_site_location).to eq('recap')
       end
     end
 
@@ -1516,16 +1538,23 @@ describe Requests::RequestableDecorator do
         expect(decorator.delivery_location_label).to eq('Marquand Library at Firestone')
       end
     end
+
+    context "at Firestone Library, Microforms" do
+      let(:stubbed_questions) { default_stubbed_questions.merge(hl_art?: false, cul_music?: false, recap?: true, recap_pf?: true, holding_library: 'recap', location: { delivery_locations: [{ gfa_pickup: 'PF', label: 'Firestone Library, Microforms' }] }) }
+      it 'shows Firestone Library, Microforms' do
+        expect(decorator.delivery_location_label).to eq('Firestone Library, Microforms')
+      end
+    end
   end
 
   describe "#delivery_location_code" do
-    let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_music?: false, hl_art?: false, location: {}) }
+    let(:stubbed_questions) { default_stubbed_questions.merge(recap_pf?: false, held_at_marquand_library?: false, cul_music?: false, hl_art?: false, location: {}) }
     it 'shows the default location code' do
       expect(decorator.delivery_location_code).to eq('PA')
     end
 
     context "has a delivery location" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: true, cul_music?: false, hl_art?: false, location: { delivery_locations: [{ gfa_pickup: 'PJ', label: 'abc' }] }) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(recap_pf?: false, held_at_marquand_library?: true, cul_music?: false, hl_art?: false, location: { delivery_locations: [{ gfa_pickup: 'PJ', label: 'abc' }] }) }
       it 'shows the location code' do
         expect(decorator.delivery_location_code).to eq('PJ')
       end
@@ -1549,6 +1578,13 @@ describe Requests::RequestableDecorator do
       let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: true, cul_music?: false) }
       it 'shows the location code' do
         expect(decorator.delivery_location_code).to eq('PJ')
+      end
+    end
+
+    context "is a PF item" do
+      let(:stubbed_questions) { default_stubbed_questions.merge(held_at_marquand_library?: false, cul_avery?: false, hl_art?: false, cul_music?: false, location: { delivery_locations: [{ gfa_pickup: 'PF', label: 'Firestone Library, Microforms' }] }) }
+      it 'shows the location code' do
+        expect(decorator.delivery_location_code).to eq('PF')
       end
     end
   end
