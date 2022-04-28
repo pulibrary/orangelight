@@ -34,5 +34,18 @@ FactoryBot.define do
       sequence(:uid) { srand.to_s[2..15] }
       sequence(:username) { "Student" }
     end
+
+    factory :alma_patron do
+      provider { 'alma' }
+      sequence(:uid) { srand.to_s[2..15] }
+      sequence(:username) { "Student" }
+      guest { false }
+    end
+
+    factory :valid_alma_patron do
+      provider { 'alma' }
+      sequence(:uid) { srand.to_s[2..15] }
+      username { 'Alma Patron' }
+    end
   end
 end

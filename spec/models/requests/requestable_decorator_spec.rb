@@ -14,7 +14,7 @@ describe Requests::RequestableDecorator do
   let(:patron) { Requests::Patron.new(user: user, session: {}, patron: valid_patron) }
 
   let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
-  let(:default_stubbed_questions) { { etas?: false, item_data?: true, circulates?: true, eligible_to_pickup?: true, on_shelf?: false, recap?: false, annex?: false, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, cul_avery?: false, resource_shared?: false, eligible_for_library_services?: true } }
+  let(:default_stubbed_questions) { { patron: patron, etas?: false, item_data?: true, circulates?: true, eligible_to_pickup?: true, on_shelf?: false, recap?: false, annex?: false, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, cul_avery?: false, resource_shared?: false, eligible_for_library_services?: true } }
   let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false) }
   let(:view_context) { ActionView::Base.new }
   let(:ldap) { {} }
@@ -387,7 +387,7 @@ describe Requests::RequestableDecorator do
 
   describe "#fill_in_digitize?" do
     let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false, item_data?: false, circulates?: true) }
-    it 'can not be fill_in_digitize?' do
+    it 'can be fill_in_digitize?' do
       expect(decorator.fill_in_digitize?).to be_truthy
     end
 
@@ -400,56 +400,56 @@ describe Requests::RequestableDecorator do
 
     context "no item data and does not circulate and is recap_edd and ill_eligible" do
       let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false, item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, ill_eligible?: true) }
-      it 'can not be fill_in_digitize?' do
+      it 'can be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and is recap_edd and borrow_direct" do
       let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false, item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: true) }
-      it 'can not be fill_in_digitize?' do
+      it 'can be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and is recap_edd and aeon" do
       let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false, item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: true) }
-      it 'can not be fill_in_digitize?' do
+      it 'can be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and is recap_edd and traceable" do
       let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false, item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: true) }
-      it 'can not be fill_in_digitize?' do
+      it 'can be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and is recap_edd and in process" do
       let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false, item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, scsb_in_library_use?: false, on_order?: false, in_process?: true) }
-      it 'can not be fill_in_digitize?' do
+      it 'can be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and is recap_edd and on order" do
       let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false, item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, scsb_in_library_use?: false, on_order?: true) }
-      it 'can not be fill_in_digitize?' do
+      it 'can be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and is recap_edd and is scsb_in_library" do
       let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false, item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, scsb_in_library_use?: true) }
-      it 'can not be not fill_in_digitize?' do
+      it 'can be not fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and is not recap_edd" do
       let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false, item_data?: false, circulates?: false, services: ['on_shelf'], recap_edd?: false) }
-      it 'can not be fill_in_digitize?' do
+      it 'can be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_truthy
       end
     end
@@ -696,13 +696,13 @@ describe Requests::RequestableDecorator do
   end
 
   describe "#will_submit_via_form?" do
-    let(:stubbed_questions) { item_flags.merge(user).merge(location).merge(service) }
+    let(:stubbed_questions) { item_flags.merge(user_flags).merge(location).merge(service) }
     let(:item_flags) { default_stubbed_questions.merge(item_data?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, etas?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ask_me?: false) }
     let(:service) { { services: ["on_shelf", "on_shelf_edd"], on_shelf?: true } }
     let(:an_open_library) { { open_libraries: ['abc'], library_code: 'abc' } }
     let(:a_closed_library) { { open_libraries: ['def'], library_code: 'abc' } }
     context "a pickup eligible user" do
-      let(:user) { { user_barcode: '111222333', eligible_to_pickup?: true } }
+      let(:user_flags) { { user_barcode: '111222333', eligible_to_pickup?: true } }
       context "at an open library" do
         let(:location) { an_open_library }
         it 'a book on the shelf will be submitted' do
@@ -804,7 +804,7 @@ describe Requests::RequestableDecorator do
       end
     end
     context "a non pickup eligible user" do
-      let(:user) { { eligible_for_library_services?: false, eligible_to_pickup?: false } }
+      let(:user_flags) { { eligible_for_library_services?: false, eligible_to_pickup?: false } }
       context "at an open library" do
         let(:location) { an_open_library }
 

@@ -21,5 +21,10 @@ RSpec.describe SessionsController do
       delete :destroy
       expect(response).to redirect_to(root_url)
     end
+    it 'alma user redirects to catalog home page' do
+      sign_in FactoryBot.create(:alma_patron)
+      delete :destroy
+      expect(response).to redirect_to(root_url)
+    end
   end
 end

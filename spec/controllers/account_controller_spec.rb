@@ -67,6 +67,15 @@ RSpec.describe AccountController do
       end
     end
 
+    context "alma user" do
+      let(:valid_user) { FactoryBot.create(:alma_patron) }
+
+      it 'Returns no Illiad Transactions' do
+        get :borrow_direct_redirect
+        expect(assigns(:illiad_transactions).size).to eq 0
+      end
+    end
+
     context "cas user with no illiad account" do
       it 'Returns no Illiad Transactions' do
         stub_request(:get, current_illiad_user_uri)
@@ -163,6 +172,7 @@ RSpec.describe AccountController do
   describe '#borrow_direct_redirect' do
     let(:guest_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_guest.json')).with_indifferent_access }
     let(:valid_barcode_user) { FactoryBot.create(:guest_patron) }
+    let(:valid_alma_user) { FactoryBot.create(:alma_patron) }
     let(:valid_cas_user) { FactoryBot.create(:valid_princeton_patron) }
 
     it 'Redirects to Borrow Direct for valid cas user authorized to be on campus' do
@@ -212,6 +222,11 @@ RSpec.describe AccountController do
       valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_barcode_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
+      get :borrow_direct_redirect
+      expect(response).to redirect_to(root_url)
+    end
+    it 'Redirects to Home page for ineligible alma user' do
+      sign_in(valid_alma_user)
       get :borrow_direct_redirect
       expect(response).to redirect_to(root_url)
     end

@@ -4,7 +4,7 @@ module Requests
     attr_accessor :requestable
     attr_reader :user, :any_loanable
 
-    delegate :cas_provider?, :barcode_provider?, to: :user
+    delegate :cas_provider?, :barcode_provider?, :alma_provider?, to: :user
 
     def initialize(requestable:, user:, any_loanable: false)
       @requestable = requestable
@@ -99,10 +99,11 @@ module Requests
       end
 
       def calculate_unavailable_services
+        return [] unless cas_provider?
         services = []
-        services << 'bd' if !requestable.enumerated? && cas_provider? && !any_loanable? && requestable.bib['isbn_s'].present?
+        services << 'bd' if !requestable.enumerated? && !any_loanable? && requestable.bib['isbn_s'].present?
         # for mongraphs - title level check OR for serials - copy level check
-        services << 'ill' if (cas_provider? && !any_loanable?) || (cas_provider? && requestable.enumerated?)
+        services << 'ill' if !any_loanable? || requestable.enumerated?
         services
       end
 
@@ -129,7 +130,7 @@ module Requests
       end
 
       def auth_user?
-        cas_provider? || barcode_provider?
+        cas_provider? || barcode_provider? || alma_provider?
       end
   end
 end

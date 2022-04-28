@@ -4,7 +4,7 @@ module Requests
     delegate :patron,
              :ctx, :system_id, :language, :mfhd, :source, :holdings, :default_pick_ups,
              :serial?, :borrow_direct_eligible?, :any_loanable_copies?, :requestable?, :all_items_online?,
-             :thesis?, :numismatics?, :single_aeon_requestable?, :eligible_for_library_services?,
+             :thesis?, :numismatics?, :single_aeon_requestable?, :eligible_for_library_services?, :off_site?,
              :user_name, :email, # passed to request as login options on the request form
              to: :request
     delegate :content_tag, :hidden_field_tag, :concat, to: :view_context
@@ -63,6 +63,7 @@ module Requests
 
     def any_fill_in_eligible?
       return false unless eligible_for_library_services?
+      return false if patron.alma_provider?
 
       fill_in = false
       unless (requestable.count == 1) && (requestable.first.services & ["on_order", "online"]).present?
@@ -103,6 +104,14 @@ module Requests
       else
         holdings[mfhd]
       end
+    end
+
+    def alma_provider_on_shelf_item_available?
+      patron.alma_provider?  && !off_site? && any_available?
+    end
+
+    def alma_provider_item_unavailable?
+      patron.alma_provider?  && !any_available?
     end
 
     private
@@ -154,6 +163,10 @@ module Requests
 
       def any_items?
         requestable.any?(&:item_data?)
+      end
+
+      def any_available?
+        requestable.any?(&:available?)
       end
   end
 end

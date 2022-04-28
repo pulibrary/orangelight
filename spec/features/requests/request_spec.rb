@@ -1442,7 +1442,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         login_as user
       end
 
-      describe 'When visiting a alma ID as a CAS User' do
+      describe 'When visiting an Alma ID as a CAS User' do
         it 'disallows access to request an available ReCAP item.' do
           stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
           visit "/requests/#{mms_id}"
@@ -1637,6 +1637,121 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(page).not_to have_content 'Physical Item Delivery'
           expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
           expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+        end
+      end
+    end
+
+    context 'An Alma user' do
+      let(:alma_login_response) { fixture('/alma_login_response.json') }
+      let(:user) { FactoryBot.create(:valid_alma_patron) }
+      before do
+        stub_request(:get, "#{Alma.configuration.region}/almaws/v1/users/#{user.uid}?expand=fees,requests,loans")
+          .to_return(status: 200, headers: { "Content-Type" => ["application/json", "charset=UTF-8"] },
+                     body: alma_login_response)
+        login_as user
+      end
+
+      it "does not allow physical pickup request On Order SCSB Recap Item" do
+        stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '33333059902417')
+        visit 'requests/SCSB-6710959'
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'This item is not available'
+      end
+
+      it "allows a physical pickup request of ReCAP Item" do
+        stub_scsb_availability(bib_id: "9941151723506421", institution_id: "PUL", barcode: '32101050751989')
+        visit 'requests/9941151723506421?mfhd=22492702000006421'
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).to have_content 'Physical Item Delivery'
+      end
+
+      it "allows only physical pickup to enumerated annex item" do
+        stub_alma_hold_success('9947220743506421', '22734584180006421', '23734584140006421', user.uid)
+
+        visit "requests/9947220743506421?mfhd=22734584180006421"
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).to have_content 'Physical Item Delivery'
+
+        expect(page).to have_content "Department of Homeland Security appropriations for 2007"
+        check('requestable_selected_23734584140006421')
+        select('Firestone Library', from: 'requestable__pick_up_23734584140006421')
+        page.find(".submit--request") # this is really strange, but if I find the button then I can click it in the next line...
+        expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(page).to have_content I18n.t("requests.submit.annex_success")
+        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("Annex Request")
+        expect(email.to).to eq(["docstor@princeton.edu"])
+        expect(email.cc).to be_blank
+        expect(email.html_part.body.to_s).to have_content("Department of Homeland Security appropriations for 2007")
+        expect(email.html_part.body.to_s).to have_content("pt.6")
+        expect(email.text_part.body.to_s).to have_content("pt.6")
+        expect(confirm_email.subject).to eq(I18n.t("requests.annex.email_subject"))
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["login@test.com"])
+        expect(confirm_email.cc).to be_blank
+        expect(confirm_email.html_part.body.to_s).to have_content("Department of Homeland Security appropriations for 2007")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+      end
+
+      it 'does not allow a ReCAP record that has no item data' do
+        visit "/requests/99113283293506421?mfhd=22750642660006421"
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'This item is not available'
+      end
+
+      it "does not allow access to items on the shelf when available" do
+        visit "requests/99125428126306421?mfhd=22910398870006421"
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'Request options for this item are only available to Faculty, Staff, and Students.'
+        expect(page).to have_content 'Please proceed to Firestone Library - Classics Collection to retrieve this item'
+      end
+
+      it "does not allow access to items on the shelf when not available" do
+        visit "requests/99125452799106421?mfhd=22917143470006421"
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'This item is not available'
+      end
+
+      it "does not allow access to items on the shelf when enumerated" do
+        visit "requests/998574693506421?mfhd=22579850750006421"
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'Request options for this item are only available to Faculty, Staff, and Students.'
+      end
+
+      it "does not allow access to in process items" do
+        visit "requests/99124417723506421?mfhd=22689758840006421"
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'This item is not available'
+      end
+
+      it "allow requesting of available items and does not allow requesting of unavailable items" do
+        availability_response = "[{\"itemBarcode\":\"32101108747674\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747666\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747658\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747682\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]"
+        stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+          .with(headers: { Accept: 'application/json', api_key: 'TESTME' }, body: { bibliographicId: "99125465081006421", institutionId: "PUL" })
+          .to_return(status: 200, body: availability_response)
+
+        visit "requests/99125465081006421?mfhd=22922148510006421"
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'vol. 9 (1983)'
+        expect(page).to have_content 'vol. 8 (1982)'
+        expect(page).to have_content 'vol. 7 (1981)'
+        expect(page).to have_content 'vol. 6 (1980)'
+        expect(page).to have_content 'vol. 5 (1979)'
+        expect(page).to have_content 'vol. 4 (1978)'
+        within("#request_23922640720006421") do
+          expect(page).to have_content 'Request options for this item are only available to Faculty, Staff, and Students.'
+        end
+        within("#request_23922148490006421") do
+          expect(page).to have_content 'Request options for this item are only available to Faculty, Staff, and Students.'
         end
       end
     end

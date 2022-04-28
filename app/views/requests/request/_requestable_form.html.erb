@@ -1,4 +1,6 @@
-<% if requestable.aeon? %>
+<% if !requestable.will_submit_via_form? && @patron.alma_provider? %>
+  <%= render partial: 'requestable_form_alma_login', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, single_item_request: @request.single_item_request? } %>
+<% elsif requestable.aeon? %>
   <%= render partial: 'requestable_form_aeon', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, single_item_request: @request.single_item_request? } %>
 <% elsif requestable.help_me? %>
   <%= render partial: 'requestable_form_help_me', locals: { requestable: requestable, single_item_request: @request.single_item_request?, default_pick_ups: default_pick_ups } %>

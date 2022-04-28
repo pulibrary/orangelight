@@ -253,14 +253,14 @@ RSpec.describe SolrDocument do
   end
 
   describe 'alma_record?' do
-    context 'A alma record' do
+    context 'an Alma record' do
       let(:properties) do
         {
           'id' => '1213313'
         }
       end
 
-      it 'returns true with a alma record' do
+      it 'returns true with an Alma record' do
         expect(solr_document.alma_record?).to be true
       end
     end

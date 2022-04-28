@@ -14,9 +14,10 @@ class IlliadPatronClient
   end
 
   def outstanding_ill_requests
-    # Use "ProcessType eq Borrowing" for digital requests
+    # Use "ProcessType eq Borrowing" for interlibrary loan and digital requests
     begin
       response = conn.get do |req|
+        # If we wanted to divide the results RequestType%20eq%20'Loan' is Inter Library Loan and RequestType%20eq%20'Article' is digitization
         req.url "/ILLiadWebPlatform/Transaction/UserRequests/#{@netid}?$filter=ProcessType%20eq%20'Borrowing'%20and%20" \
                 "TransactionStatus%20ne%20'Request%20Finished'%20and%20not%20startswith%28TransactionStatus,'Cancelled'%29"
         req.headers['Accept'] = 'application/json'

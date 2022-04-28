@@ -188,6 +188,12 @@ module Requests
       doc['location_code_s'].first
     end
 
+    def off_site?
+      return false if location['library'].nil? || location['library']['code'].nil?
+      library_code = location[:library][:code]
+      library_code == 'recap' || library_code == 'marquand' || library_code == 'annex'
+    end
+
     private
 
       ### builds a list of possible requestable items
