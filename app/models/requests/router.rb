@@ -61,7 +61,7 @@ module Requests
           ['on_order']
         elsif requestable.annex?
           ['annex', 'on_shelf_edd']
-        elsif requestable.recap?
+        elsif requestable.recap? || requestable.recap_pf?
           calculate_recap_services
         elsif requestable.held_at_marquand_library?
           calculate_marquand_services
@@ -86,7 +86,7 @@ module Requests
       def calculate_recap_services
         if !requestable.item_data?
           ['recap_no_items']
-        elsif (requestable.scsb_in_library_use? && requestable.item[:collection_code] != "MR" && requestable.campus_authorized) || (!requestable.circulates? && !requestable.recap_edd?)
+        elsif (requestable.scsb_in_library_use? && requestable.item[:collection_code] != "MR" && requestable.campus_authorized) || (!requestable.circulates? && !requestable.recap_edd?) || requestable.recap_pf?
           ['recap_in_library']
         elsif requestable.scsb_in_library_use? && (!requestable.eligible_to_pickup? || requestable.etas?)
           ['ask_me']

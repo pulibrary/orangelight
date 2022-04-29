@@ -78,8 +78,9 @@ Metrics/CyclomaticComplexity:
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
     - 'app/services/bibdata.rb'
+    - 'app/models/requests/router.rb'
 
-Metrics/LineLength:
+Layout/LineLength:
   Exclude:
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
     - 'app/helpers/advanced_helper.rb'
@@ -90,6 +91,7 @@ Metrics/LineLength:
     - 'spec/features/availability_spec.rb'
     - 'spec/helpers/holding_block_spec.rb'
     - 'spec/helpers/blacklight_helper_spec.rb'
+    - 'spec/helpers/requests/application_helper_spec.rb'
     - 'spec/services/online_holdings_markup_builder_spec.rb'
     - 'spec/services/holding_requests_adapter_spec.rb'
     - 'app/repositories/course_reserve_repository.rb'
@@ -134,6 +136,7 @@ Metrics/PerceivedComplexity:
     - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
+    - 'app/models/requests/router.rb'
 
 Naming/FileName:
   Exclude:

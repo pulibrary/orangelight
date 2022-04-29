@@ -68,6 +68,11 @@ module Requests
       location[:remote_storage] == "recap_rmt"
     end
 
+    def recap_pf?
+      return false unless recap?
+      location_code == "firestone$pf"
+    end
+
     def clancy?
       return false unless held_at_marquand_library?
       clancy_item.at_clancy? && clancy_item.available?
@@ -191,7 +196,7 @@ module Requests
 
     def holding_library_in_library_only?
       return false unless location["holding_library"]
-      ["marquand", "lewis"].include? holding_library
+      ["marquand", "lewis"].include?(holding_library) || recap_pf?
     end
 
     def holding_library
