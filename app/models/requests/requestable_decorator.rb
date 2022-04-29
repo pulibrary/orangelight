@@ -83,7 +83,7 @@ module Requests
     end
 
     def off_site?
-      recap? || recap_pf? || annex? || item_at_clancy? || held_at_marquand_library?
+      recap? || annex? || item_at_clancy? || held_at_marquand_library?
     end
 
     def off_site_location
