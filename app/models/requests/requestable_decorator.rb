@@ -62,8 +62,7 @@ module Requests
     end
 
     def will_submit_via_form?
-      return false if !eligible_for_library_services? || (!patron.cas_provider? && !off_site?)
-      return false if patron.alma_provider? && !available?
+      return false unless eligible_for_this_item?
       digitize? || pick_up? || scsb_in_library_use? || (ill_eligible? && patron.covid_trained?) || on_order? || in_process? || traceable? || off_site? || help_me?
     end
 
@@ -186,6 +185,12 @@ module Requests
         else
           requestable.location[:delivery_locations].first
         end
+      end
+
+      def eligible_for_this_item?
+        return false unless eligible_for_library_services?
+
+        patron.cas_provider? || (patron.alma_provider? && off_site? && (available? || in_process?))
       end
   end
 end

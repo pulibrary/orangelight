@@ -1725,11 +1725,27 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         expect(page).to have_content 'Request options for this item are only available to Faculty, Staff, and Students.'
       end
 
-      it "does not allow access to in process items" do
+      it "allows access to in process items" do
         visit "requests/99124417723506421?mfhd=22689758840006421"
         expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'This item is not available'
+        expect(page).to have_content 'In Process materials are typically available in several business days'
+        expect(page).not_to have_content 'This item is not available'
+        select('Firestone Library', from: 'requestable__pick_up_23922188050006421')
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(page).to have_content I18n.t("requests.submit.in_process_success")
+        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("In Process Request")
+        expect(email.to).to eq(["fstcirc@princeton.edu"])
+        expect(email.cc).to be_blank
+        expect(email.html_part.body.to_s).to have_content("100 let na zashchite gosudarstva")
+        expect(confirm_email.subject).to eq("In Process Request")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["login@test.com"])
+        expect(confirm_email.cc).to be_blank
+        expect(confirm_email.html_part.body.to_s).to have_content("100 let na zashchite gosudarstva")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
       end
 
       it "allow requesting of available items and does not allow requesting of unavailable items" do
@@ -1748,11 +1764,16 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         expect(page).to have_content 'vol. 5 (1979)'
         expect(page).to have_content 'vol. 4 (1978)'
         within("#request_23922640720006421") do
-          expect(page).to have_content 'Request options for this item are only available to Faculty, Staff, and Students.'
+          expect(page).to have_content 'In Process materials are typically available in several business days'
         end
         within("#request_23922148490006421") do
-          expect(page).to have_content 'Request options for this item are only available to Faculty, Staff, and Students.'
+          expect(page).to have_content 'In Process materials are typically available in several business days'
         end
+      end
+
+      it "does not allow reuesting of on order books" do
+        visit "requests/99125492003506421?mfhd=22927395910006421"
+        expect(page).to have_content 'This item is not available'
       end
     end
   end

@@ -8569,56 +8569,6 @@ http_interactions:
   recorded_at: Mon, 11 Apr 2022 19:49:59 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99124417723506421/holdings/22689758840006421/availability.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.17.4
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.21.5
-      Date:
-      - Mon, 11 Apr 2022 19:50:03 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"4f53cda18c2baa0c0354bb5f9a3ecbe5"
-      X-Runtime:
-      - '4.122246'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - 7f984e2c-4bc7-4b74-bdc4-23e9e82fc03a
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.10
-    body:
-      encoding: UTF-8
-      string: "[]"
-  recorded_at: Mon, 11 Apr 2022 19:50:03 GMT
-- request:
-    method: get
     uri: https://catalog.princeton.edu/catalog/99125465081006421/raw
     body:
       encoding: US-ASCII
@@ -8822,4 +8772,171 @@ http_interactions:
         Available","status_label":"Acquisitions and Cataloging","status_source":"work_order","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"recap","pickup_location_code":"recap","location":"recap$pa","label":"ReCAP
         - Remote Storage","description":"vol. 4 (1978)","enum_display":"vol. 4","chron_display":"1978","in_temp_library":false}]'
   recorded_at: Tue, 12 Apr 2022 19:36:16 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/bibliographic/99124417723506421/holdings/22689758840006421/availability.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.21.5
+      Date:
+      - Thu, 28 Apr 2022 19:04:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"696e5dc2a9cb6c360ec2f7ce7f88ba37"
+      X-Runtime:
+      - '2.961628'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - e1876336-a9b8-4349-b5f5-cb53ae33632a
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.9
+    body:
+      encoding: UTF-8
+      string: '[{"barcode":"32101108129568","id":"23922188050006421","holding_id":"22689758840006421","copy_number":"","status":"Not
+        Available","status_label":"Acquisitions and Cataloging","status_source":"work_order","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"recap","pickup_location_code":"recap","location":"recap$pa","label":"ReCAP
+        - Remote Storage","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
+  recorded_at: Thu, 28 Apr 2022 19:04:17 GMT
+- request:
+    method: get
+    uri: https://catalog.princeton.edu/catalog/99125492003506421/raw
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.21.5
+      Date:
+      - Thu, 28 Apr 2022 19:32:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 28b3a74d-a4b7-49b3-8834-675aa35e562b
+      X-Download-Options:
+      - noopen
+      X-Ua-Compatible:
+      - IE=edge,chrome=1
+      Etag:
+      - W/"25bf91b6c28293137e4d5a58658a65f3"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.038196'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.13
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Origin
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6Ijk5MTI1NDkyMDAzNTA2NDIxIiwibnVtZXJpY19pZF9iIjp0cnVlLCJhdXRob3JfZGlzcGxheSI6WyJHZW50aWxsaSwgUm9iZXJ0byJdLCJhdXRob3JfY2l0YXRpb25fZGlzcGxheSI6WyJHZW50aWxsaSwgUm9iZXJ0byJdLCJhdXRob3Jfcm9sZXNfMWRpc3BsYXkiOiJ7XCJzZWNvbmRhcnlfYXV0aG9yc1wiOltdLFwidHJhbnNsYXRvcnNcIjpbXSxcImVkaXRvcnNcIjpbXSxcImNvbXBpbGVyc1wiOltdLFwicHJpbWFyeV9hdXRob3JcIjpcIkdlbnRpbGxpLCBSb2JlcnRvXCJ9IiwiYXV0aG9yX3MiOlsiR2VudGlsbGksIFJvYmVydG8iXSwibWFyY19yZWxhdG9yX2Rpc3BsYXkiOlsiQXV0aG9yIl0sInRpdGxlX2Rpc3BsYXkiOiIxOTIzLTE5MjYgOiBsJ2F2aWF6aW9uZSBpdGFsaWFuYSBwcmltYSBkaSBCYWxibyAvIFJvYmVydG8gR2VudGlsbGkuIiwidGl0bGVfdCI6WyIxOTIzLTE5MjYgOiBsJ2F2aWF6aW9uZSBpdGFsaWFuYSBwcmltYSBkaSBCYWxibyAvIFJvYmVydG8gR2VudGlsbGkuIl0sInRpdGxlX2NpdGF0aW9uX2Rpc3BsYXkiOlsiMTkyMy0xOTI2IDogbCdhdmlhemlvbmUgaXRhbGlhbmEgcHJpbWEgZGkgQmFsYm8iXSwiY29tcGlsZWRfY3JlYXRlZF90IjpbIjE5MjMtMTkyNiA6IGwnYXZpYXppb25lIGl0YWxpYW5hIHByaW1hIGRpIEJhbGJvIC8gUm9iZXJ0byBHZW50aWxsaS4iXSwicHViX2NyZWF0ZWRfZGlzcGxheSI6WyJSb21hIChJdGFseSkgOiBJQk4gZWRpdG9yZSwgWzIwMjJdIl0sInB1Yl9jcmVhdGVkX3MiOlsiUm9tYSAoSXRhbHkpIDogSUJOIGVkaXRvcmUsIFsyMDIyXSJdLCJwdWJfY2l0YXRpb25fZGlzcGxheSI6WyJSb21hIChJdGFseSk6IElCTiBlZGl0b3JlIl0sInB1Yl9kYXRlX2Rpc3BsYXkiOlsiMjAyMiJdLCJwdWJfZGF0ZV9zdGFydF9zb3J0IjoyMDIyLCJjYXRhbG9nZWRfdGR0IjoiMjAyMi0wNC0yN1QxMjowNjowNVoiLCJmb3JtYXQiOlsiQm9vayJdLCJlbGVjdHJvbmljX2FjY2Vzc18xZGlzcGxheSI6IntcImh0dHA6Ly9pbGlicmkuY2FzYWxpbmkuaXQvdG9jLzUwOTg3MjNcIjpbXCJUT0NcIl19IiwiZGVzY3JpcHRpb25fZGlzcGxheSI6WyIyNTIgcGFnZXMsIDMgdW5udW1iZXJlZCBwYWdlcyA6IGlsbHVzdHJhdGlvbnMgOyAyNCBjbS4iXSwiZGVzY3JpcHRpb25fdCI6WyIyNTIgcGFnZXMsIDMgdW5udW1iZXJlZCBwYWdlcyA6IGlsbHVzdHJhdGlvbnMgOyAyNCBjbS4iXSwibnVtYmVyX29mX3BhZ2VzX2NpdGF0aW9uX2Rpc3BsYXkiOlsiMjUyIHBhZ2VzLCAzIHVubnVtYmVyZWQgcGFnZXMiXSwiZ2VvY29kZV9kaXNwbGF5IjpbIkl0YWx5Il0sInNlcmllc19kaXNwbGF5IjpbIkF2aW9saWJyaSBkb3NzaWVyIDsgNTguIiwiQXZpb2xpYnJpIGRvc3NpZXIgOyA1OCJdLCJtb3JlX2luX3RoaXNfc2VyaWVzX3QiOlsiQXZpb2xpYnJpIGRvc3NpZXIiXSwiYmliX3JlZl9ub3Rlc19kaXNwbGF5IjpbIkluY2x1ZGVzIGJpYmxpb2dyYXBoaWNhbCByZWZlcmVuY2VzIChwYWdlIDI1MykuIl0sImxhbmd1YWdlX2ZhY2V0IjpbIkl0YWxpYW4iXSwibGFuZ3VhZ2VfY29kZV9zIjpbIml0YSJdLCJsYW5ndWFnZV9pYW5hX3MiOlsiaXQiXSwibGNfc3ViamVjdF9kaXNwbGF5IjpbIkl0YWx5LiBBZXJvbmF1dGljYeKAlEhpc3RvcnnigJQyMHRoIGNlbnR1cnkiLCJBZXJvbmF1dGljcywgTWlsaXRhcnnigJRJdGFseeKAlEhpc3RvcnnigJQyMHRoIGNlbnR1cnkiXSwic3ViamVjdF9mYWNldCI6WyJJdGFseS4gQWVyb25hdXRpY2HigJRIaXN0b3J54oCUMjB0aCBjZW50dXJ5IiwiQWVyb25hdXRpY3MsIE1pbGl0YXJ54oCUSXRhbHnigJRIaXN0b3J54oCUMjB0aCBjZW50dXJ5Il0sImFsdF90aXRsZV8yNDZfZGlzcGxheSI6WyJBdmlhemlvbmUgaXRhbGlhbmEiXSwib3RoZXJfdGl0bGVfMWRpc3BsYXkiOiJ7XCJTdWJ0aXRsZSBvbiBjb3ZlclwiOltcIkF2aWF6aW9uZSBpdGFsaWFuYVwiXX0iLCJpc2JuX2Rpc3BsYXkiOlsiOTc4ODg3NTY1NTUwMSA6Il0sImlzYm5fcyI6WyI5Nzg4ODc1NjU1NTAxIl0sIm9jbGNfcyI6WyIxMzEwMjYxODM0Il0sIm90aGVyX3ZlcnNpb25fcyI6WyI5Nzg4ODc1NjU1NTAxIiwib24xMzEwMjYxODM0Il0sInN1YmplY3RfZXJhX2ZhY2V0IjpbIjIwdGggY2VudHVyeSJdLCJob2xkaW5nc18xZGlzcGxheSI6IntcIjIyOTI3Mzk1OTEwMDA2NDIxXCI6e1wibG9jYXRpb25fY29kZVwiOlwiZmlyZXN0b25lJHN0YWNrc1wiLFwibG9jYXRpb25cIjpcIlN0YWNrc1wiLFwibGlicmFyeVwiOlwiRmlyZXN0b25lIExpYnJhcnlcIixcImNhbGxfbnVtYmVyXCI6XCJVRzYzNS5JOCBHNDYgMjAyMlwiLFwiY2FsbF9udW1iZXJfYnJvd3NlXCI6XCJVRzYzNS5JOCBHNDYgMjAyMlwiLFwiaXRlbXNcIjpbe1wiaG9sZGluZ19pZFwiOlwiMjI5MjczOTU5MTAwMDY0MjFcIixcImlkXCI6XCIyMzkyNzM5NTkwMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjBcIixcImJhcmNvZGVcIjpcIjMyMTAxMTA0MDk0NjkxXCJ9XX19IiwibG9jYXRpb25fY29kZV9zIjpbImZpcmVzdG9uZSRzdGFja3MiXSwibG9jYXRpb24iOlsiRmlyZXN0b25lIExpYnJhcnkiXSwibG9jYXRpb25fZGlzcGxheSI6WyJTdGFja3MiXSwiYWR2YW5jZWRfbG9jYXRpb25fcyI6WyJmaXJlc3RvbmUkc3RhY2tzIiwiRmlyZXN0b25lIExpYnJhcnkiXSwibmFtZV90aXRsZV9icm93c2VfcyI6WyJHZW50aWxsaSwgUm9iZXJ0by4gMTkyMy0xOTI2Il0sImNhbGxfbnVtYmVyX2Rpc3BsYXkiOlsiVUc2MzUuSTggRzQ2IDIwMjIiXSwiY2FsbF9udW1iZXJfYnJvd3NlX3MiOlsiVUc2MzUuSTggRzQ2IDIwMjIiXSwiY2FsbF9udW1iZXJfbG9jYXRvcl9kaXNwbGF5IjpbIlVHNjM1Lkk4IEc0NiAyMDIyIl0sIl92ZXJzaW9uXyI6MTczMTM0MjY5MzQ1MDEyMTIxNiwidGltZXN0YW1wIjoiMjAyMi0wNC0yOFQwOToxMDo1OS4wMThaIn0=
+  recorded_at: Thu, 28 Apr 2022 19:32:58 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/bibliographic/99125492003506421/holdings/22927395910006421/availability.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx/1.21.5
+      Date:
+      - Thu, 28 Apr 2022 19:32:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 404 Not Found
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Runtime:
+      - '0.655524'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - dd917826-4bb0-4b43-bf23-d24f321c6a05
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.10
+    body:
+      encoding: UTF-8
+      string: 'null'
+  recorded_at: Thu, 28 Apr 2022 19:32:58 GMT
 recorded_with: VCR 6.1.0

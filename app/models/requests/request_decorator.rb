@@ -111,7 +111,7 @@ module Requests
     end
 
     def alma_provider_item_unavailable?
-      patron.alma_provider?  && !any_available?
+      patron.alma_provider?  && !(any_available? || any_in_process?)
     end
 
     private
@@ -167,6 +167,10 @@ module Requests
 
       def any_available?
         requestable.any?(&:available?)
+      end
+
+      def any_in_process?
+        requestable.any?(&:in_process?)
       end
   end
 end
