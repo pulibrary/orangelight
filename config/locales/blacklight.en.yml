@@ -79,7 +79,7 @@ en:
       barcode_netid: 'Please log in with netID.'
       barcode_header: ''
       barcode_subheader: ''
-      barcode_help: 'If you cannot log in, please stop at Firestone Circulation (609-258-3202) or email <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a>.'
+      barcode_help: 'If you cannot log in, please email <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a>.'
     email:
       form:
         title: 'Email the catalog record and (optional) message.'
