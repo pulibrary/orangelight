@@ -4,7 +4,7 @@
     <div class="input-group">
     <% if search_fields.length > 1 %>
       <span class="input-group-prepend">
-        <%= select_tag(:search_field, options_for_select(search_bar_select, search_bar_field), :title => t('blacklight.search.form.search_field.title'), id: "search_field", class: "custom-select search-field") %>
+        <%= select_tag(:search_field, options_for_select(search_bar_select, search_bar_field), :title => t('blacklight.search.form.search_field.title'), id: "search_field", class: "custom-select search-field", 'aria-label' => t('blacklight.search.form.search_field.title')) %>
       </span>
           <span class="sr-only"><%= t('blacklight.search.form.search_field.post_label') %></span>
         <% end %>
