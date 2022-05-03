@@ -3,6 +3,8 @@ import { promises as fs } from 'fs';
 import * as orangelight_online_link from '../../../app/javascript/orangelight/insert_online_link'
 
 describe('AvailabilityUpdater', function() {
+  afterEach(jest.clearAllMocks);
+
   test('hooked up right', () => {
     expect(updater).not.toBe(undefined)
   })
@@ -367,11 +369,21 @@ describe('AvailabilityUpdater', function() {
     // Notice the data-bound-with="true"
     document.body.innerHTML =
       '<table><tr>' +
-        '<td class="holding-status" data-availability-record="true" data-record-id="9929455793506421" data-holding-id="22269289940006421" data-aeon="false" data-bound-with="true">' +
+        '<td class="holding-status" data-availability-record="true" data-record-id="9929455793506421" data-holding-id="22488152160006421" data-aeon="false" data-bound-with="true">' +
           '<span class="availability-icon"></span>' +
         '</td>' +
       '</tr></table>';
-    const holding_records = {"9929455793506421":{}}
+    const holding_records = 
+    {"22488152160006421": {
+      "on_reserve": "N",
+      "location": "recap$pa",
+      "label": "ReCAP - Remote Storage",
+      "status_label": "Available",
+      "copy_number": null,
+      "cdl": false,
+      "temp_location": false,
+      "id": "22488152160006421"
+    }}
     const holding_badge = $("*[data-availability-record='true'][data-record-id='9929455793506421'][data-bound-with='true'] span.availability-icon")[0];
 
     let u = new updater
@@ -532,6 +544,36 @@ describe('AvailabilityUpdater', function() {
     expect(av_element[0].textContent).toContain('Ask Staff');
   })
 
+  test('location RES_SHARE$IN_RS_REQ has status Unavailable', () => {
+    document.body.innerHTML =
+    '<table><tr>' +
+    '<td class="holding-status" data-availability-record="true" data-record-id="99118399983506421" data-holding-id="RES_SHARE$IN_RS_REQ" data-aeon="false">' +
+    '  <span class="availability-icon" title="">Available</span>' +
+    '</td>'
+    '<tr><table>';
+    const res_share_response = {
+        "99118399983506421": {
+        "RES_SHARE$IN_RS_REQ": {
+        "on_reserve": "N",
+        "location": "RES_SHARE$IN_RS_REQ",
+        "label": "Resource Sharing Library - Lending Resource Sharing Requests",
+        "status_label": "Unavailable",
+        "copy_number": null,
+        "cdl": false,
+        "temp_location": true,
+        "id": "RES_SHARE$IN_RS_REQ"
+        }
+        }
+    }
+    let u = new updater;
+    u.id = '99118399983506421';
+    const element = $(`*[data-availability-record='true'][data-record-id='99118399983506421'][data-holding-id='RES_SHARE$IN_RS_REQ'] .availability-icon`);
+    const holding_data = res_share_response["99118399983506421"]["RES_SHARE$IN_RS_REQ"]
+    expect(element[0].textContent).not.toContain('Unavailable');
+    u.apply_availability_label(element, holding_data, false);
+    expect(element[0].textContent).toContain('Unavailable');
+  })
+
   // TODO: This method isn't covered by the feature tests
   test('scsb_barcodes() on a search results page', () => {
     // This is only used on search results page
@@ -607,76 +649,5 @@ describe('AvailabilityUpdater', function() {
 
     u.host_id = '9900126093506421'
     expect(u.availability_url_show()).toEqual('http://mock_url/bibliographic/availability.json?deep=true&bib_ids=9965126093506421,9900126093506421')
-  })
-
-  test('does not display Request button for items on reserves', () => {
-    document.body.innerHTML =
-      '<h3>Copies in the Library</h3>' +
-      '<table class="availability-table">' +
-      '    <tbody>' +
-      '        <tr class="holding-block">' +
-      '            <td class="library-location" data-holding-id="22614245530006421"><span class="location-text"' +
-      '                    data-location="true" data-holding-id="22614245530006421">Firestone Library - Stacks</span> <a' +
-      '                    title="Where to find it" class="find-it" data-map-location="firestone$stacks"' +
-      '                    data-blacklight-modal="trigger" data-call-number="HB172.5 .B38 2020"' +
-      '                    data-library="Firestone Library"' +
-      '                    href="/catalog/99115992283506421/stackmap?loc=firestone$stacks&amp;cn=HB172.5 .B38 2020"><span' +
-      '                        class="link-text">Where to find it</span> <span class="fa fa-map-marker"' +
-      '                        aria-hidden="true"></span></a></td>' +
-      '            <td class="holding-call-number">HB172.5 .B38 2020 <a class="browse-cn" title="Browse: HB172.5 .B38 2020"' +
-      '                    data-toggle="tooltip" data-original-title="Browse: HB172.5 .B38 2020"' +
-      '                    href="/browse/call_numbers?q=HB172.5+.B38+2020"><span class="link-text">Browse related items</span>' +
-      '                    <span class="icon-bookslibrary"></span></a></td>' +
-      '            <td class="holding-status" data-availability-record="true" data-record-id="99115992283506421"' +
-      '                data-holding-id="22614245530006421" data-aeon="false"><span class="availability-icon"></span></td>' +
-      '            <td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false"' +
-      '                data-holding-id="22614245530006421"><a title="View Options to Request copies from this Location"' +
-      '                    class="request btn btn-xs btn-primary" data-toggle="tooltip"' +
-      '                    href="/requests/99115992283506421?mfhd=22614245530006421">Request</a></td>' +
-      '            <td class="holding-details">' +
-      '                <ul class="item-status" data-record-id="99115992283506421" data-holding-id="22614245530006421"></ul>' +
-      '            </td>' +
-      '        </tr>' +
-      '        <tr class="holding-block">' +
-      '            <td class="library-location" data-holding-id="22614245510006421"><span class="location-text"' +
-      '                    data-location="true" data-holding-id="22614245510006421">Forrestal Annex - Reserve</span></td>' +
-      '            <td class="holding-call-number">HB172.5 .B38 2020 <a class="browse-cn" title="Browse: HB172.5 .B38 2020"' +
-      '                    data-toggle="tooltip" data-original-title="Browse: HB172.5 .B38 2020"' +
-      '                    href="/browse/call_numbers?q=HB172.5+.B38+2020"><span class="link-text">Browse related items</span>' +
-      '                    <span class="icon-bookslibrary"></span></a></td>' +
-      '            <td class="holding-status" data-availability-record="true" data-record-id="99115992283506421"' +
-      '                data-holding-id="22614245510006421" data-aeon="false"><span class="availability-icon"></span></td>' +
-      '            <td class="location-services service-conditional" data-open="false" data-requestable="true"' +
-      '                data-aeon="false" data-holding-id="22614245510006421"><a' +
-      '                    title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary"' +
-      '                    data-toggle="tooltip"' +
-      '                    href="/requests/99115992283506421?mfhd=22614245510006421">Request</a></td>' +
-      '            <td class="holding-details">' +
-      '                <ul class="item-status" data-record-id="99115992283506421" data-holding-id="22614245510006421"></ul>' +
-      '            </td>' +
-      '        </tr>' +
-      '    </tbody>' +
-      '</table>';
-
-    const holding_availability_info = {
-      "on_reserve": "Y",
-      "location": "annex$reserve",
-      "label": "Forrestal Annex - Reserve",
-      "status_label": "Available",
-      "copy_number": null,
-      "cdl": false,
-      "temp_location": false,
-      "id": "22614245510006421"
-    }
-
-    const request_button_selector = `.location-services[data-holding-id='22614245510006421'] a`
-
-    expect($(request_button_selector).length).toEqual(1)
-
-    let u = new updater
-    u.id = '9965126093506421'
-    u.update_request_button('22614245510006421', holding_availability_info)
-
-    expect($(request_button_selector).length).toEqual(0)
   })
 })

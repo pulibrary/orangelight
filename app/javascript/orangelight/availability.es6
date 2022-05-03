@@ -144,14 +144,15 @@ export default class AvailabilityUpdater {
       }
 
       // In Alma the label from the endpoint includes both the library name and the location.
-      const availability_info = holding_records[holding_id];
-      if (availability_info['label']) {
+      const availability_info = holding_records[holding_id]
+      const {label, temp_location} = availability_info
+      if (label) {
         const location = $(`*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .results_location`);
-        location.text(availability_info['label']);
+        location.text(label);
       }
       const availability_element = $(`*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .availability-icon`);
 
-      if (availability_info['temp_location']) {
+      if (temp_location) {
         const current_map_link = $(`*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .find-it`);
         $(availability_element).next('.icon-warning').hide();
         const temp_map_link = this.stackmap_link(record_id, availability_info, true);
@@ -190,19 +191,20 @@ export default class AvailabilityUpdater {
       let result = [];
       for (let holding_id in holding_records[id]) {
         let availability_info = holding_records[id][holding_id];
+        const { label, cdl, temp_location } = holding_records[id][holding_id];
         // case :constituent with host ids.
         // data-record-id has a different this.id when there are host ids.
         let availability_element = $(`*[data-availability-record='true'][data-record-id='${id}'][data-holding-id='${holding_id}'] .availability-icon`);
-        if (availability_info['label']) {
+        if (label) {
           let holding_location = $(`*[data-location='true'][data-holding-id='${holding_id}']`);
-          holding_location.text(availability_info['label']);
+          holding_location.text(label);
         }
         this.apply_availability_label(availability_element, availability_info, false);
-        if (availability_info["cdl"]) {
+        if (cdl) {
           insert_online_link();
         }
 
-        if (availability_info['temp_location']) {
+        if (temp_location) {
           let current_map_link = $(`*[data-holding-id='${holding_id}'] .find-it`);
           let temp_map_link = this.stackmap_link(id, availability_info);
           current_map_link.replaceWith(temp_map_link);
@@ -311,6 +313,7 @@ export default class AvailabilityUpdater {
 
   update_request_button(holding_id, availability_info) {
     let availability_label_text;
+    const { cdl } = availability_info
     const location_services_element = $(`.location-services[data-holding-id='${holding_id}'] a`);
     const availability_label = $(`.holding-status[data-holding-id='${holding_id}'] .availability-icon.badge`);
     if (availability_label.text()) {
@@ -321,15 +324,10 @@ export default class AvailabilityUpdater {
       display_request = 'true';
     }
     // if it's on CDL then it can't be requested
-    if (availability_label_text === "Reserved for digital lending") {
+    if (cdl) {
       location_services_element.remove();
     }
-    if (availability_info['on_reserve'] === 'Y') {
-      return location_services_element.remove();
-    }
-    if (availability_info['status_label'].toLowerCase() === 'unavailable') {
-      display_request = 'false';
-    }
+    // remove the next block see: https://github.com/pulibrary/orangelight/issues/2964
     if (display_request === 'true') {
       if (availability_info['temp_location']) {
         return location_services_element.hide();
@@ -355,16 +353,15 @@ export default class AvailabilityUpdater {
 
   apply_availability_label(availability_element, availability_info, addCdlBadge) {
     availability_element.addClass("badge");
-    let status_label = availability_info['status_label'];
-    let isCdl = availability_info['cdl'];
-    let badgeClass = "badge-danger";
-    // We can't display due date from Alma.
-    status_label = `${status_label}${this.due_date(availability_info["due_date"])}`;
+    const { status_label, cdl, location, id } = availability_info
+    const specialStatusLocations = ["marquand$stacks", "marquand$pj", "marquand$ref","marquand$ph", "marquand$fesrf", "RES_SHARE$IN_RS_REQ"];
+
+    let badgeClass = null;
     availability_element.text(status_label);
     availability_element.attr('title', '');
     if (status_label.toLowerCase() === 'unavailable') {
       // The physical copy is not available but we highlight that the online copy is.
-      if (isCdl) {
+      if (cdl) {
         if (addCdlBadge) {
           // Add an Online badge, next to Unavailable.
           // (used in the Search Results page)
@@ -381,14 +378,12 @@ export default class AvailabilityUpdater {
           availability_element.text('Online');
           availability_element.attr('title', 'Online copy available via Controlled Digital Lending');
           availability_element.addClass("badge-secondary");
-          const location_services_element = $(`.location-services[data-holding-id='${availability_info['id']}'] a`);
+          const location_services_element = $(`.location-services[data-holding-id='${id}'] a`);
           location_services_element.remove();
         }
-      } else if (this.on_site_use_marquand_location(availability_info["location"])) {
-        availability_element.text("Ask Staff");
-        availability_element.attr('title', 'Ask a member of our staff for access to this item.');
-        badgeClass = "badge-secondary"
-      }
+      } else if (specialStatusLocations.includes(location)) {
+          this.checkSpecialLocation(location, availability_element)
+      } 
       else {
         availability_element.addClass("badge-danger");
       }
@@ -410,7 +405,7 @@ export default class AvailabilityUpdater {
     if (temp_status) {
       location = availability_info['temp_loc'];
     } else {
-      location = availability_info['location'];
+      location = availability_info['location']; 
     }
 
     var link = '';
@@ -427,16 +422,22 @@ export default class AvailabilityUpdater {
 
     return link;
   };
-
-  due_date(date_string) {
-    if (date_string == null) { return ""; }
-    return ` - ${date_string}`;
-  };
-
-  on_site_use_marquand_location(location) {
-    let marquand_location = ["marquand$stacks", "marquand$pj", "marquand$ref","marquand$ph", "marquand$fesrf"]
-    return marquand_location.includes(location);
-  };
+  
+  // Set status for specific Marquand locations and location RES_SHARE$IN_RS_REQ
+  checkSpecialLocation(location, availability_element) {
+    const marquandLocations = ["marquand$stacks", "marquand$pj", "marquand$ref","marquand$ph", "marquand$fesrf"]
+    const resourceSharingLocation = "RES_SHARE$IN_RS_REQ"
+    let badgeClass = null;
+    if (marquandLocations.includes(location)){
+      availability_element.text("Ask Staff");
+      availability_element.attr('title', 'Ask a member of our staff for access to this item.');
+      badgeClass = "badge-secondary"
+    } else if (resourceSharingLocation) {
+      availability_element.text("Unavailable");
+      availability_element.attr('title', 'Unavailable');
+      badgeClass = "badge-danger";
+    }
+  }
 
   /* Currently this logic is duplicated in Ruby code in application_helper.rb (ApplicationHelper::find_it_location) */
   find_it_location(location) {
