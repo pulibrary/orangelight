@@ -13,7 +13,7 @@ module Requests
         end
       elsif current_user.guest?
         content_tag(:div) do
-          concat link_to I18n.t('requests.account.netid_login_msg'), '/users/auth/cas', role: 'menuitem', class: 'btn btn-primary', id: 'cas-login' # , current_user_name: current_user.uid)
+          concat link_to I18n.t('blacklight.login.netid_login_msg'), '/users/auth/cas', role: 'menuitem', class: 'btn btn-primary', id: 'cas-login' # , current_user_name: current_user.uid)
           # concat content_tag(:hr)
           # concat content_tag(:p, "or", class: "or-divider")
           # concat link_to I18n.t('requests.account.barcode_login_msg'), '/users/auth/barcode', role: 'menuitem', class: 'btn btn-outline-secondary', id: 'barcode-login'
