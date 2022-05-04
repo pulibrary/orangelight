@@ -21,7 +21,7 @@ RSpec.describe 'bookmarks' do
     it 'logging in brings user back to bookmarks page' do
       visit '/bookmarks'
       click_link "log in"
-      click_link "Princeton faculty, staff, and students log in with NetID"
+      click_link I18n.t('blacklight.login.netid_login_msg')
       expect(current_path).to eq bookmarks_path
     end
   end
