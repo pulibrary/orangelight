@@ -35,6 +35,15 @@
     <updateLog>
       <str name="dir">${solr.core0.data.dir:}</str>
     </updateLog>
+    <!-- Hard commit every 60 minutes -->
+    <autoCommit>
+      <maxTime>36000000</maxTime>
+      <openSearcher>false</openSearcher>
+    </autoCommit>
+    <!-- Soft commit every 5 minutes -->
+    <autoSoftCommit>
+      <maxTime>300000</maxTime>
+    </autoSoftCommit>
   </updateHandler>
 
   <codecFactory class="solr.SchemaCodecFactory"/>
@@ -53,9 +62,9 @@
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
 
   <requestHandler name="/update" class="solr.UpdateRequestHandler" >
-    <lst name="defaults">
-      <str name="update.chain">dedupe</str>
-    </lst>
+    <!-- <lst name="defaults"> -->
+    <!--   <str name="update.chain">dedupe</str> -->
+    <!-- </lst> -->
   </requestHandler>
 
   <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
@@ -67,17 +76,17 @@
     </lst>
   </requestHandler>
 
-  <updateRequestProcessorChain name="dedupe">
-    <processor class="solr.processor.SignatureUpdateProcessorFactory">
-      <bool name="enabled">true</bool>
-      <str name="signatureField">hashed_id_s</str>
-      <bool name="overwriteDupes">false</bool>
-      <str name="fields">id</str>
-      <str name="signatureClass">solr.processor.Lookup3Signature</str>
-    </processor>
-    <processor class="solr.LogUpdateProcessorFactory" />
-    <processor class="solr.RunUpdateProcessorFactory" />
-  </updateRequestProcessorChain>
+  <!-- <updateRequestProcessorChain name="dedupe"> -->
+  <!--   <processor class="solr.processor.SignatureUpdateProcessorFactory"> -->
+  <!--     <bool name="enabled">true</bool> -->
+  <!--     <str name="signatureField">hashed_id_s</str> -->
+  <!--     <bool name="overwriteDupes">false</bool> -->
+  <!--     <str name="fields">id</str> -->
+  <!--     <str name="signatureClass">solr.processor.Lookup3Signature</str> -->
+  <!--   </processor> -->
+  <!--   <processor class="solr.LogUpdateProcessorFactory" /> -->
+  <!--   <processor class="solr.RunUpdateProcessorFactory" /> -->
+  <!-- </updateRequestProcessorChain> -->
 
   <requestHandler name="/get" class="solr.RealTimeGetHandler">
     <lst name="defaults">
@@ -111,122 +120,122 @@
 
    <queryResultWindowSize>100</queryResultWindowSize>
    <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
-    <listener event="newSearcher" class="solr.QuerySenderListener">
-      <arr name="queries">
-        <lst><str name="q">*:*</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
-        <lst><str name="q">*:*</str><str name="sort">pub_date_start_sort desc, title_sort asc</str></lst>
-        <lst><str name="q">*:*</str><str name="sort">pub_date_start_sort asc, title_sort asc</str></lst>
-        <lst><str name="q">*:*</str><str name="sort">author_sort asc, title_sort asc</str></lst>
-        <lst><str name="q">*:*</str><str name="sort">title_sort asc, pub_date_start_sort desc</str></lst>
-        <lst><str name="q">nature</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
-        <lst><str name="q">time</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
-        <lst><str name="q">book</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
-        <lst><str name="q">science</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
-        <lst><str name="q">music</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst>
-
-        <lst><str name="fq">format:Audio</str></lst>
-        <lst><str name="fq">format:Book</str></lst>
-        <lst><str name="fq">format:Data File</str></lst>
-        <lst><str name="fq">format:Journal</str></lst>
-        <lst><str name="fq">format:Manuscript</str></lst>
-        <lst><str name="fq">format:Map</str></lst>
-        <lst><str name="fq">format:Mixed Material</str></lst>
-        <lst><str name="fq">format:Musical Score</str></lst>
-        <lst><str name="fq">format:Senior Thesis</str></lst>
-        <lst><str name="fq">format:Thesis</str></lst>
-        <lst><str name="fq">format:Video/Projected Medium</str></lst>
-        <lst><str name="fq">format:Visual Material</str></lst>
-
-        <lst><str name="fq">location:Architecture Library</str></lst>
-        <lst><str name="fq">location:East Asian Library</str></lst>
-        <lst><str name="fq">location:Engineering Library</str></lst>
-        <lst><str name="fq">location:Fine Annex</str></lst>
-        <lst><str name="fq">location:Firestone Library</str></lst>
-        <lst><str name="fq">location:Forrestal Annex</str></lst>
-        <lst><str name="fq">location:Harold P. Furth Plasma Physics Library</str></lst>
-        <lst><str name="fq">location:Lewis Library</str></lst>
-        <lst><str name="fq">location:Marquand Library</str></lst>
-        <lst><str name="fq">location:Mendel Music Library</str></lst>
-        <lst><str name="fq">location:Mudd Manuscript Library</str></lst>
-        <lst><str name="fq">location:Rare Books and Special Collections</str></lst>
-        <lst><str name="fq">location:ReCAP</str></lst>
-        <lst><str name="fq">location:Stokes Library</str></lst>
-        <lst><str name="fq">location:Video Library</str></lst>
-
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]</str></lst>
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]</str></lst>
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-21DAYS TO NOW/DAY+1DAY]</str></lst>
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-1MONTH TO NOW/DAY+1DAY]</str></lst>
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-2MONTHS TO NOW/DAY+1DAY]</str></lst>
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]</str></lst>
-        <lst><str name="fq">cataloged_tdt:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]</str></lst>
-
-        <lst><str name="fq">language_facet:English</str></lst>
-        <lst><str name="fq">language_facet:German</str></lst>
-        <lst><str name="fq">language_facet:French</str></lst>
-        <lst><str name="fq">language_facet:Spanish</str></lst>
-        <lst><str name="fq">language_facet:Chinese</str></lst>
-        <lst><str name="fq">language_facet:Italian</str></lst>
-        <lst><str name="fq">language_facet:Russian</str></lst>
-        <lst><str name="fq">language_facet:Arabic</str></lst>
-        <lst><str name="fq">language_facet:Japanese</str></lst>
-        <lst><str name="fq">language_facet:Latin</str></lst>
-
-        <lst><str name="fq">subject_era_facet:20th century</str></lst>
-        <lst><str name="fq">subject_era_facet:19th century</str></lst>
-        <lst><str name="fq">subject_era_facet:18th century</str></lst>
-        <lst><str name="fq">subject_era_facet:21st century</str></lst>
-        <lst><str name="fq">subject_era_facet:17th century</str></lst>
-
-        <lst><str name="fq">lc_1letter_facet:A - General Works</str></lst>
-        <lst><str name="fq">lc_1letter_facet:B - Philosophy, Psychology, Religion</str></lst>
-        <lst><str name="fq">lc_1letter_facet:C - Historical Sciences (Archaeology, Genealogy)</str></lst>
-        <lst><str name="fq">lc_1letter_facet:D - World History</str></lst>
-        <lst><str name="fq">lc_1letter_facet:E - History of the Americas (General)</str></lst>
-        <lst><str name="fq">lc_1letter_facet:F - History of the Americas (Local)</str></lst>
-        <lst><str name="fq">lc_1letter_facet:G - Geography, Anthropology, Recreation</str></lst>
-        <lst><str name="fq">lc_1letter_facet:H - Social Sciences</str></lst>
-        <lst><str name="fq">lc_1letter_facet:J - Political Science</str></lst>
-        <lst><str name="fq">lc_1letter_facet:K - Law</str></lst>
-        <lst><str name="fq">lc_1letter_facet:L - Education</str></lst>
-        <lst><str name="fq">lc_1letter_facet:M - Music</str></lst>
-        <lst><str name="fq">lc_1letter_facet:N - Fine Arts</str></lst>
-        <lst><str name="fq">lc_1letter_facet:P - Language &amp; Literature</str></lst>
-        <lst><str name="fq">lc_1letter_facet:Q - Science</str></lst>
-        <lst><str name="fq">lc_1letter_facet:R - Medicine</str></lst>
-        <lst><str name="fq">lc_1letter_facet:S - Agriculture</str></lst>
-        <lst><str name="fq">lc_1letter_facet:T - Technology</str></lst>
-        <lst><str name="fq">lc_1letter_facet:U - Military Science</str></lst>
-        <lst><str name="fq">lc_1letter_facet:Z - Bibliography, Library Science, Information Resources</str></lst>
-
-        <lst><str name="fq">subject_topic_facet:History</str></lst>
-        <lst><str name="fq">subject_topic_facet:United States</str></lst>
-        <lst><str name="fq">subject_topic_facet:Politics and government</str></lst>
-        <lst><str name="fq">subject_topic_facet:History and criticism</str></lst>
-        <lst><str name="fq">subject_topic_facet:Great Britain</str></lst>
-        <lst><str name="fq">subject_topic_facet:United States. Congress</str></lst>
-        <lst><str name="fq">subject_topic_facet:Claims</str></lst>
-        <lst><str name="fq">subject_topic_facet:Bills, Private</str></lst>
-        <lst><str name="fq">subject_topic_facet:China</str></lst>
-        <lst><str name="fq">subject_topic_facet:France</str></lst>
-
-        <lst><str name="fq">genre_facet:Biography</str></lst>
-        <lst><str name="fq">genre_facet:Congresses</str></lst>
-        <lst><str name="fq">genre_facet:Periodicals</str></lst>
-        <lst><str name="fq">genre_facet:Private bills</str></lst>
-        <lst><str name="fq">genre_facet:Exhibitions</str></lst>
-        <lst><str name="fq">genre_facet:Early works to 1800</str></lst>
-        <lst><str name="fq">genre_facet:Fiction</str></lst>
-        <lst><str name="fq">genre_facet:Maps</str></lst>
-        <lst><str name="fq">genre_facet:Bibliography</str></lst>
-        <lst><str name="fq">genre_facet:Catalogs</str></lst>
-
-        <lst><str name="fq">sudoc_facet:X/Y - Congress</str></lst>
-
-        <lst><str name="fq">acces_facet:Online</str></lst>
-        <lst><str name="fq">acces_facet:In the Library</str></lst>
-      </arr>
-    </listener>
+    <!-- <listener event="newSearcher" class="solr.QuerySenderListener"> -->
+    <!--   <arr name="queries"> -->
+    <!--     <lst><str name="q">*:*</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst> -->
+    <!--     <lst><str name="q">*:*</str><str name="sort">pub_date_start_sort desc, title_sort asc</str></lst> -->
+    <!--     <lst><str name="q">*:*</str><str name="sort">pub_date_start_sort asc, title_sort asc</str></lst> -->
+    <!--     <lst><str name="q">*:*</str><str name="sort">author_sort asc, title_sort asc</str></lst> -->
+    <!--     <lst><str name="q">*:*</str><str name="sort">title_sort asc, pub_date_start_sort desc</str></lst> -->
+    <!--     <lst><str name="q">nature</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst> -->
+    <!--     <lst><str name="q">time</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst> -->
+    <!--     <lst><str name="q">book</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst> -->
+    <!--     <lst><str name="q">science</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst> -->
+    <!--     <lst><str name="q">music</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst> -->
+    <!--  -->
+    <!--     <lst><str name="fq">format:Audio</str></lst> -->
+    <!--     <lst><str name="fq">format:Book</str></lst> -->
+    <!--     <lst><str name="fq">format:Data File</str></lst> -->
+    <!--     <lst><str name="fq">format:Journal</str></lst> -->
+    <!--     <lst><str name="fq">format:Manuscript</str></lst> -->
+    <!--     <lst><str name="fq">format:Map</str></lst> -->
+    <!--     <lst><str name="fq">format:Mixed Material</str></lst> -->
+    <!--     <lst><str name="fq">format:Musical Score</str></lst> -->
+    <!--     <lst><str name="fq">format:Senior Thesis</str></lst> -->
+    <!--     <lst><str name="fq">format:Thesis</str></lst> -->
+    <!--     <lst><str name="fq">format:Video/Projected Medium</str></lst> -->
+    <!--     <lst><str name="fq">format:Visual Material</str></lst> -->
+    <!--  -->
+    <!--     <lst><str name="fq">location:Architecture Library</str></lst> -->
+    <!--     <lst><str name="fq">location:East Asian Library</str></lst> -->
+    <!--     <lst><str name="fq">location:Engineering Library</str></lst> -->
+    <!--     <lst><str name="fq">location:Fine Annex</str></lst> -->
+    <!--     <lst><str name="fq">location:Firestone Library</str></lst> -->
+    <!--     <lst><str name="fq">location:Forrestal Annex</str></lst> -->
+    <!--     <lst><str name="fq">location:Harold P. Furth Plasma Physics Library</str></lst> -->
+    <!--     <lst><str name="fq">location:Lewis Library</str></lst> -->
+    <!--     <lst><str name="fq">location:Marquand Library</str></lst> -->
+    <!--     <lst><str name="fq">location:Mendel Music Library</str></lst> -->
+    <!--     <lst><str name="fq">location:Mudd Manuscript Library</str></lst> -->
+    <!--     <lst><str name="fq">location:Rare Books and Special Collections</str></lst> -->
+    <!--     <lst><str name="fq">location:ReCAP</str></lst> -->
+    <!--     <lst><str name="fq">location:Stokes Library</str></lst> -->
+    <!--     <lst><str name="fq">location:Video Library</str></lst> -->
+    <!--  -->
+    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;7DAYS TO NOW/DAY+1DAY]</str></lst> -->
+    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;14DAYS TO NOW/DAY+1DAY]</str></lst> -->
+    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;21DAYS TO NOW/DAY+1DAY]</str></lst> -->
+    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;1MONTH TO NOW/DAY+1DAY]</str></lst> -->
+    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;2MONTHS TO NOW/DAY+1DAY]</str></lst> -->
+    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;3MONTHS TO NOW/DAY+1DAY]</str></lst> -->
+    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;6MONTHS TO NOW/DAY+1DAY]</str></lst> -->
+    <!--  -->
+    <!--     <lst><str name="fq">language_facet:English</str></lst> -->
+    <!--     <lst><str name="fq">language_facet:German</str></lst> -->
+    <!--     <lst><str name="fq">language_facet:French</str></lst> -->
+    <!--     <lst><str name="fq">language_facet:Spanish</str></lst> -->
+    <!--     <lst><str name="fq">language_facet:Chinese</str></lst> -->
+    <!--     <lst><str name="fq">language_facet:Italian</str></lst> -->
+    <!--     <lst><str name="fq">language_facet:Russian</str></lst> -->
+    <!--     <lst><str name="fq">language_facet:Arabic</str></lst> -->
+    <!--     <lst><str name="fq">language_facet:Japanese</str></lst> -->
+    <!--     <lst><str name="fq">language_facet:Latin</str></lst> -->
+    <!--  -->
+    <!--     <lst><str name="fq">subject_era_facet:20th century</str></lst> -->
+    <!--     <lst><str name="fq">subject_era_facet:19th century</str></lst> -->
+    <!--     <lst><str name="fq">subject_era_facet:18th century</str></lst> -->
+    <!--     <lst><str name="fq">subject_era_facet:21st century</str></lst> -->
+    <!--     <lst><str name="fq">subject_era_facet:17th century</str></lst> -->
+    <!--  -->
+    <!--     <lst><str name="fq">lc_1letter_facet:A &#45; General Works</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:B &#45; Philosophy, Psychology, Religion</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:C &#45; Historical Sciences (Archaeology, Genealogy)</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:D &#45; World History</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:E &#45; History of the Americas (General)</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:F &#45; History of the Americas (Local)</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:G &#45; Geography, Anthropology, Recreation</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:H &#45; Social Sciences</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:J &#45; Political Science</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:K &#45; Law</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:L &#45; Education</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:M &#45; Music</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:N &#45; Fine Arts</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:P &#45; Language &#38;amp; Literature</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:Q &#45; Science</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:R &#45; Medicine</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:S &#45; Agriculture</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:T &#45; Technology</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:U &#45; Military Science</str></lst> -->
+    <!--     <lst><str name="fq">lc_1letter_facet:Z &#45; Bibliography, Library Science, Information Resources</str></lst> -->
+    <!--  -->
+    <!--     <lst><str name="fq">subject_topic_facet:History</str></lst> -->
+    <!--     <lst><str name="fq">subject_topic_facet:United States</str></lst> -->
+    <!--     <lst><str name="fq">subject_topic_facet:Politics and government</str></lst> -->
+    <!--     <lst><str name="fq">subject_topic_facet:History and criticism</str></lst> -->
+    <!--     <lst><str name="fq">subject_topic_facet:Great Britain</str></lst> -->
+    <!--     <lst><str name="fq">subject_topic_facet:United States. Congress</str></lst> -->
+    <!--     <lst><str name="fq">subject_topic_facet:Claims</str></lst> -->
+    <!--     <lst><str name="fq">subject_topic_facet:Bills, Private</str></lst> -->
+    <!--     <lst><str name="fq">subject_topic_facet:China</str></lst> -->
+    <!--     <lst><str name="fq">subject_topic_facet:France</str></lst> -->
+    <!--  -->
+    <!--     <lst><str name="fq">genre_facet:Biography</str></lst> -->
+    <!--     <lst><str name="fq">genre_facet:Congresses</str></lst> -->
+    <!--     <lst><str name="fq">genre_facet:Periodicals</str></lst> -->
+    <!--     <lst><str name="fq">genre_facet:Private bills</str></lst> -->
+    <!--     <lst><str name="fq">genre_facet:Exhibitions</str></lst> -->
+    <!--     <lst><str name="fq">genre_facet:Early works to 1800</str></lst> -->
+    <!--     <lst><str name="fq">genre_facet:Fiction</str></lst> -->
+    <!--     <lst><str name="fq">genre_facet:Maps</str></lst> -->
+    <!--     <lst><str name="fq">genre_facet:Bibliography</str></lst> -->
+    <!--     <lst><str name="fq">genre_facet:Catalogs</str></lst> -->
+    <!--  -->
+    <!--     <lst><str name="fq">sudoc_facet:X/Y &#45; Congress</str></lst> -->
+    <!--  -->
+    <!--     <lst><str name="fq">acces_facet:Online</str></lst> -->
+    <!--     <lst><str name="fq">acces_facet:In the Library</str></lst> -->
+    <!--   </arr> -->
+    <!-- </listener> -->
   </query>
 
   <!-- SearchHandler
@@ -269,7 +278,9 @@
         author_unstem_search^40
         subject_topic_unstem_search^18
         subject_unstem_search^15
+        siku_subject_unstem_search^15
         subject_topic_index^12
+        genre_unstem_search^10
         subject_t^10
         subject_addl_unstem_search^8
         subject_addl_t^4
@@ -279,6 +290,7 @@
         text
         description_t
         cjk_all
+        cjk_text
       </str>
       <str name="pf">
         title_245a_lr^16000
@@ -290,7 +302,9 @@
         author_unstem_search^400
         subject_topic_unstem_search^180
         subject_unstem_search^150
+        siku_subject_unstem_search^150
         subject_topic_index^120
+        genre_unstem_search^100
         subject_t^100
         subject_addl_unstem_search^80
         subject_addl_t^40
@@ -300,6 +314,7 @@
         text^10
         description_t^10
         cjk_all^10
+        cjk_text^10
       </str>
       <str name="author_qf">
         author_main_unstem_search^20
@@ -343,10 +358,12 @@
       <str name="notes_qf">
         notes_index
         cjk_notes
+        cjk_notes_copied
       </str>
       <str name="notes_pf">
         notes_index
         cjk_notes
+        cjk_notes_copied
       </str>
       <str name="series_title_qf">
         series_title_index^5
@@ -407,11 +424,15 @@
       <str name="subject_qf">
         subject_topic_unstem_search^25
         subject_unstem_search^20
+        genre_unstem_search^15
+        siku_subject_unstem_search
         cjk_subject
       </str>
       <str name="subject_pf">
         subject_topic_unstem_search^250
         subject_unstem_search^200
+        genre_unstem_search^150
+        siku_subject_unstem_search^10
         cjk_subject^10
       </str>
 
@@ -433,7 +454,8 @@
         holdings_1display,
         electronic_access_1display,
         electronic_portfolio_s,
-        cataloged_tdt
+        cataloged_tdt,
+        contained_in_s
       </str>
 
       <str name="facet">true</str>
