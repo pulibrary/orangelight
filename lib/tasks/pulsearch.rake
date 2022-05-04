@@ -52,6 +52,6 @@ namespace :pulsearch do
   private
 
     def url_for_file(file)
-      "https://raw.githubusercontent.com/pulibrary/pul_solr/main/solr_configs/catalog-production/#{file}"
+      "https://raw.githubusercontent.com/pulibrary/pul_solr/main/solr_configs/catalog-production-v2/#{file}"
     end
 end
