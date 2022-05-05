@@ -229,6 +229,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(page).to have_content 'Not Available'
           check "requestable_selected_23492663220006421"
           expect(page).to have_content 'Request via Partner Library'
+          expect(page).to have_content 'Pick-up location: Firestone Library'
           expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(1)
           expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
           expect(page).not_to have_content 'Request submitted to BorrowDirect'
@@ -683,6 +684,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(borrow_direct).to receive(:make_request).with("Firestone Library", isbn: '9780812929645').and_return('123456')
           visit '/requests/9917887963506421?mfhd=22503918400006421'
           expect(page).to have_content 'Request via Partner Library'
+          expect(page).to have_content 'Pick-up location: Firestone Library'
           check('requestable_selected_23503918390006421')
           expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(0)
           expect(page).to have_content 'Request submitted to BorrowDirect'
@@ -705,6 +707,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             .to_return(status: 200, body: responses[:note_created], headers: {})
           visit '/requests/9917887963506421?mfhd=22503918400006421'
           expect(page).to have_content 'Request via Partner Library'
+          expect(page).to have_content 'Pick-up location: Firestone Library'
           check('requestable_selected_23503918390006421')
           expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
           expect(a_request(:post, transaction_url)).to have_been_made
@@ -734,6 +737,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             .to_return(status: 200, body: responses[:note_created], headers: {})
           visit '/requests/9917887963506421?mfhd=22503918400006421'
           expect(page).to have_content 'Request via Partner Library'
+          expect(page).to have_content 'Pick-up location: Firestone Library'
           check('requestable_selected_23503918390006421')
           expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
           expect(a_request(:post, transaction_url)).to have_been_made
@@ -758,6 +762,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             .to_return(status: 200, body: responses[:note_created], headers: {})
           visit '/requests/9915057783506421?mfhd=22686942210006421'
           expect(page).to have_content 'Request via Partner Library'
+          expect(page).to have_content 'Pick-up location: Firestone Library'
           check('requestable_selected_23686942200006421')
           expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
           expect(a_request(:post, transaction_url)).to have_been_made
@@ -1333,6 +1338,13 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
       it 'Handles a bad mfhd without system error' do
         visit 'requests/998574693506421?mfhd=abc123'
         expect(page).to have_content "Science"
+      end
+
+      it 'has firestone as the resource sharing deliveryt location' do
+        visit 'http://localhost:3000/requests/99123713303506421?mfhd=22668310350006421'
+        expect(page).to have_content 'Reconstructions : architecture and Blackness in America'
+        expect(page).to have_content 'Request via Partner Library'
+        expect(page).to have_content 'Pick-up location: Firestone Library'
       end
     end
 
