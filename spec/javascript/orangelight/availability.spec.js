@@ -179,7 +179,7 @@ describe('AvailabilityUpdater', function() {
     expect(badge.classList.values()).toContain('badge-danger')
     expect(badge.textContent).toEqual('Unavailable')
   })
-
+  // Update this test. It has old location data
   test('record show page with an mixed availability holding displays the status label in gray', () => {
     document.body.innerHTML =
       '<table><tr>' +
@@ -507,7 +507,7 @@ describe('AvailabilityUpdater', function() {
       '    </td>' +
       '    <td class="holding-call-number"></td>' +
       '    <td class="holding-status" data-availability-record="true" data-record-id="99124187703506421" data-holding-id="22642015240006421" data-aeon="false">'  +
-      '      <span class="availability-icon badge badge-secondary" title=""></span>' +
+      '      <span class="availability-icon"></span>' +
       '    </td>' +
       '    <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="22642015240006421">' +
       '     <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/99124187703506421?mfhd=22642015240006421">Request</a>' +
@@ -538,10 +538,11 @@ describe('AvailabilityUpdater', function() {
 
     let u = new updater;
     u.id = '99124187703506421';
-
     expect(av_element[0].textContent).not.toContain('Ask Staff');
     u.apply_availability_label(av_element, holding_data, false);
     expect(av_element[0].textContent).toContain('Ask Staff');
+    expect(document.querySelector('.holding-status[data-holding-id="22642015240006421"] > .badge-secondary')).toBeTruthy()
+    expect(document.querySelector('.holding-status[data-holding-id="22642015240006421"] > .badge-danger')).toBeFalsy();
   })
 
   test('location RES_SHARE$IN_RS_REQ has status Unavailable', () => {

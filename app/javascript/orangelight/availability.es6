@@ -356,7 +356,6 @@ export default class AvailabilityUpdater {
     const { status_label, cdl, location, id } = availability_info
     const specialStatusLocations = ["marquand$stacks", "marquand$pj", "marquand$ref","marquand$ph", "marquand$fesrf", "RES_SHARE$IN_RS_REQ"];
 
-    let badgeClass = "badge-danger";
     availability_element.text(status_label);
     availability_element.attr('title', '');
     if (status_label.toLowerCase() === 'unavailable') {
@@ -388,11 +387,11 @@ export default class AvailabilityUpdater {
         availability_element.addClass("badge-danger");
       }
     } else if (status_label.toLowerCase() === 'available') {
-      badgeClass = "badge-success";
+      availability_element.addClass("badge-success");
     } else {
-      badgeClass = "badge-secondary";
+      availability_element.addClass("badge-secondary");
     }
-    availability_element.addClass(badgeClass);
+    return availability_element
   }
 
   title_case(str) {
@@ -425,18 +424,12 @@ export default class AvailabilityUpdater {
   
   // Set status for specific Marquand locations and location RES_SHARE$IN_RS_REQ
   checkSpecialLocation(location, availability_element) {
-    const marquandLocations = ["marquand$stacks", "marquand$pj", "marquand$ref","marquand$ph", "marquand$fesrf"]
-    const resourceSharingLocation = "RES_SHARE$IN_RS_REQ"
-    let badgeClass = null;
     if (location.startsWith("marquand$")){
-      availability_element.text("Ask Staff");
-      availability_element.attr('title', 'Ask a member of our staff for access to this item.');
-      badgeClass = "badge-secondary"
+      availability_element.text("Ask Staff").attr('title', 'Ask a member of our staff for access to this item.').addClass("badge-secondary");
     } else {
-      availability_element.text("Unavailable");
-      availability_element.attr('title', 'Unavailable');
-      badgeClass = "badge-danger";
+      availability_element.text("Unavailable").attr('title', 'Unavailable').addClass("badge-danger");
     }
+    return availability_element;
   }
 
   /* Currently this logic is duplicated in Ruby code in application_helper.rb (ApplicationHelper::find_it_location) */
