@@ -356,7 +356,7 @@ export default class AvailabilityUpdater {
     const { status_label, cdl, location, id } = availability_info
     const specialStatusLocations = ["marquand$stacks", "marquand$pj", "marquand$ref","marquand$ph", "marquand$fesrf", "RES_SHARE$IN_RS_REQ"];
 
-    let badgeClass = null;
+    let badgeClass = "badge-danger";
     availability_element.text(status_label);
     availability_element.attr('title', '');
     if (status_label.toLowerCase() === 'unavailable') {
@@ -428,11 +428,11 @@ export default class AvailabilityUpdater {
     const marquandLocations = ["marquand$stacks", "marquand$pj", "marquand$ref","marquand$ph", "marquand$fesrf"]
     const resourceSharingLocation = "RES_SHARE$IN_RS_REQ"
     let badgeClass = null;
-    if (marquandLocations.includes(location)){
+    if (location.startsWith("marquand$")){
       availability_element.text("Ask Staff");
       availability_element.attr('title', 'Ask a member of our staff for access to this item.');
       badgeClass = "badge-secondary"
-    } else if (resourceSharingLocation) {
+    } else {
       availability_element.text("Unavailable");
       availability_element.attr('title', 'Unavailable');
       badgeClass = "badge-danger";
