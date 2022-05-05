@@ -75,6 +75,7 @@ RSpec.describe Blacklight::Document::Email do
     describe 'bound-with record' do
       let(:properties) do
         {
+          id: '9947055653506421',
           contained_in_s: ['12345']
         }
       end
