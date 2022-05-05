@@ -15,7 +15,7 @@ RSpec.describe 'search history' do
       it 'logging in brings user back to search history page' do
         visit '/search_history'
         click_link "log in"
-        click_link "Princeton faculty, staff, and students log in with NetID"
+        click_link I18n.t('blacklight.login.netid_login_msg')
         expect(current_path).to eq blacklight.search_history_path
       end
     end
