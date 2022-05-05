@@ -183,6 +183,7 @@ class SolrDocument
 
       holdings.merge!(host_holdings_parse)
     end
+    holdings
   end
 
   # Returns the holdings_1display of the record plus the holdings_1display of the host record
@@ -197,7 +198,6 @@ class SolrDocument
     # Append the host_id in the host_holdings
     # merge the host_holdings in holdings
     holdings_with_host_id(holdings)
-    holdings
   end
 
   private

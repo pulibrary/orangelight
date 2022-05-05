@@ -72,5 +72,18 @@ RSpec.describe Blacklight::Document::Email do
         expect(document).to match('Format: Senior Thesis')
       end
     end
+    describe 'bound-with record' do
+      let(:properties) do
+        {
+          id: '9947055653506421',
+          contained_in_s: ['12345']
+        }
+      end
+      it 'includes holdings info from the host record' do
+        solr_doc = SolrDocument.new(properties)
+        allow(solr_doc).to receive(:doc_by_id) { { 'holdings_1display' => '{"1":{"library":"Firestone"}}' } }
+        expect(solr_doc.to_email_text).to match('Holdings:')
+      end
+    end
   end
 end

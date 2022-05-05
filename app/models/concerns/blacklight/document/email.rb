@@ -9,7 +9,7 @@ module Blacklight
       def to_email_text
         body = []
         add_bibliographic_text(body)
-        add_holdings_text(body, self[:holdings_1display])
+        add_holdings_text(body)
         add_online_text(body, self[:electronic_access_1display])
         body.join("\n") unless body.empty?
       end
@@ -40,12 +40,11 @@ module Blacklight
           add_multi_valued_field(body, 'blacklight.email.text.format', self[:format])
         end
 
-        def add_holdings_text(body, holdings_field)
-          if holdings_field.present?
+        def add_holdings_text(body)
+          if holdings_all_display.present?
             body << I18n.t('blacklight.email.text.holdings')
-            holdings = JSON.parse(self[:holdings_1display])
             first_holding = true
-            holdings.each_value do |holding|
+            holdings_all_display.each_value do |holding|
               body << '' unless first_holding # blank line to separate holdings
               add_holding_fields(body, holding)
               first_holding = false
