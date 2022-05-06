@@ -3,6 +3,8 @@ import { promises as fs } from 'fs';
 import * as orangelight_online_link from '../../../app/javascript/orangelight/insert_online_link'
 
 describe('AvailabilityUpdater', function() {
+  afterEach(jest.clearAllMocks);
+
   test('hooked up right', () => {
     expect(updater).not.toBe(undefined)
   })
@@ -177,7 +179,7 @@ describe('AvailabilityUpdater', function() {
     expect(badge.classList.values()).toContain('badge-danger')
     expect(badge.textContent).toEqual('Unavailable')
   })
-
+  // Update this test. It has old location data
   test('record show page with an mixed availability holding displays the status label in gray', () => {
     document.body.innerHTML =
       '<table><tr>' +
@@ -367,11 +369,21 @@ describe('AvailabilityUpdater', function() {
     // Notice the data-bound-with="true"
     document.body.innerHTML =
       '<table><tr>' +
-        '<td class="holding-status" data-availability-record="true" data-record-id="9929455793506421" data-holding-id="22269289940006421" data-aeon="false" data-bound-with="true">' +
+        '<td class="holding-status" data-availability-record="true" data-record-id="9929455793506421" data-holding-id="22488152160006421" data-aeon="false" data-bound-with="true">' +
           '<span class="availability-icon"></span>' +
         '</td>' +
       '</tr></table>';
-    const holding_records = {"9929455793506421":{}}
+    const holding_records = 
+    {"22488152160006421": {
+      "on_reserve": "N",
+      "location": "recap$pa",
+      "label": "ReCAP - Remote Storage",
+      "status_label": "Available",
+      "copy_number": null,
+      "cdl": false,
+      "temp_location": false,
+      "id": "22488152160006421"
+    }}
     const holding_badge = $("*[data-availability-record='true'][data-record-id='9929455793506421'][data-bound-with='true'] span.availability-icon")[0];
 
     let u = new updater
@@ -495,7 +507,7 @@ describe('AvailabilityUpdater', function() {
       '    </td>' +
       '    <td class="holding-call-number"></td>' +
       '    <td class="holding-status" data-availability-record="true" data-record-id="99124187703506421" data-holding-id="22642015240006421" data-aeon="false">'  +
-      '      <span class="availability-icon badge badge-secondary" title=""></span>' +
+      '      <span class="availability-icon"></span>' +
       '    </td>' +
       '    <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="22642015240006421">' +
       '     <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/99124187703506421?mfhd=22642015240006421">Request</a>' +
@@ -526,10 +538,44 @@ describe('AvailabilityUpdater', function() {
 
     let u = new updater;
     u.id = '99124187703506421';
-
     expect(av_element[0].textContent).not.toContain('Ask Staff');
     u.apply_availability_label(av_element, holding_data, false);
     expect(av_element[0].textContent).toContain('Ask Staff');
+    expect(document.querySelector('.holding-status[data-holding-id="22642015240006421"] > .badge-secondary')).toBeTruthy()
+    expect(document.querySelector('.holding-status[data-holding-id="22642015240006421"] > .badge-danger')).toBeFalsy();
+  })
+
+  test('location RES_SHARE$IN_RS_REQ has status Unavailable in red', () => {
+    document.body.innerHTML =
+    '<table><tr>' +
+    '<td class="holding-status" data-availability-record="true" data-record-id="99118399983506421" data-holding-id="RES_SHARE$IN_RS_REQ" data-aeon="false">' +
+    '  <span class="availability-icon" title="">Available</span>' +
+    '</td>'
+    '<tr><table>';
+    const res_share_response = {
+        "99118399983506421": {
+        "RES_SHARE$IN_RS_REQ": {
+        "on_reserve": "N",
+        "location": "RES_SHARE$IN_RS_REQ",
+        "label": "Resource Sharing Library - Lending Resource Sharing Requests",
+        "status_label": "Unavailable",
+        "copy_number": null,
+        "cdl": false,
+        "temp_location": true,
+        "id": "RES_SHARE$IN_RS_REQ"
+        }
+        }
+    }
+    let u = new updater;
+    u.id = '99118399983506421';
+    const element = $(`*[data-availability-record='true'][data-record-id='99118399983506421'][data-holding-id='RES_SHARE$IN_RS_REQ'] .availability-icon`);
+    const holding_data = res_share_response["99118399983506421"]["RES_SHARE$IN_RS_REQ"]
+    expect(element[0].textContent).not.toContain('Unavailable');
+    u.apply_availability_label(element, holding_data, false);
+    expect(element[0].textContent).toContain('Unavailable');
+    expect(document.querySelector('.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .badge-secondary')).toBeFalsy()
+    expect(document.querySelector('.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .badge-primary')).toBeFalsy();
+    expect(document.querySelector('.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .badge-danger')).toBeTruthy();
   })
 
   // TODO: This method isn't covered by the feature tests
@@ -608,75 +654,35 @@ describe('AvailabilityUpdater', function() {
     u.host_id = '9900126093506421'
     expect(u.availability_url_show()).toEqual('http://mock_url/bibliographic/availability.json?deep=true&bib_ids=9965126093506421,9900126093506421')
   })
-
-  test('does not display Request button for items on reserves', () => {
+  test('Temporary location - RES_SHARE$IN_RS_REQ - has a Request button', () => {
     document.body.innerHTML =
-      '<h3>Copies in the Library</h3>' +
-      '<table class="availability-table">' +
-      '    <tbody>' +
-      '        <tr class="holding-block">' +
-      '            <td class="library-location" data-holding-id="22614245530006421"><span class="location-text"' +
-      '                    data-location="true" data-holding-id="22614245530006421">Firestone Library - Stacks</span> <a' +
-      '                    title="Where to find it" class="find-it" data-map-location="firestone$stacks"' +
-      '                    data-blacklight-modal="trigger" data-call-number="HB172.5 .B38 2020"' +
-      '                    data-library="Firestone Library"' +
-      '                    href="/catalog/99115992283506421/stackmap?loc=firestone$stacks&amp;cn=HB172.5 .B38 2020"><span' +
-      '                        class="link-text">Where to find it</span> <span class="fa fa-map-marker"' +
-      '                        aria-hidden="true"></span></a></td>' +
-      '            <td class="holding-call-number">HB172.5 .B38 2020 <a class="browse-cn" title="Browse: HB172.5 .B38 2020"' +
-      '                    data-toggle="tooltip" data-original-title="Browse: HB172.5 .B38 2020"' +
-      '                    href="/browse/call_numbers?q=HB172.5+.B38+2020"><span class="link-text">Browse related items</span>' +
-      '                    <span class="icon-bookslibrary"></span></a></td>' +
-      '            <td class="holding-status" data-availability-record="true" data-record-id="99115992283506421"' +
-      '                data-holding-id="22614245530006421" data-aeon="false"><span class="availability-icon"></span></td>' +
-      '            <td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false"' +
-      '                data-holding-id="22614245530006421"><a title="View Options to Request copies from this Location"' +
-      '                    class="request btn btn-xs btn-primary" data-toggle="tooltip"' +
-      '                    href="/requests/99115992283506421?mfhd=22614245530006421">Request</a></td>' +
-      '            <td class="holding-details">' +
-      '                <ul class="item-status" data-record-id="99115992283506421" data-holding-id="22614245530006421"></ul>' +
-      '            </td>' +
-      '        </tr>' +
-      '        <tr class="holding-block">' +
-      '            <td class="library-location" data-holding-id="22614245510006421"><span class="location-text"' +
-      '                    data-location="true" data-holding-id="22614245510006421">Forrestal Annex - Reserve</span></td>' +
-      '            <td class="holding-call-number">HB172.5 .B38 2020 <a class="browse-cn" title="Browse: HB172.5 .B38 2020"' +
-      '                    data-toggle="tooltip" data-original-title="Browse: HB172.5 .B38 2020"' +
-      '                    href="/browse/call_numbers?q=HB172.5+.B38+2020"><span class="link-text">Browse related items</span>' +
-      '                    <span class="icon-bookslibrary"></span></a></td>' +
-      '            <td class="holding-status" data-availability-record="true" data-record-id="99115992283506421"' +
-      '                data-holding-id="22614245510006421" data-aeon="false"><span class="availability-icon"></span></td>' +
-      '            <td class="location-services service-conditional" data-open="false" data-requestable="true"' +
-      '                data-aeon="false" data-holding-id="22614245510006421"><a' +
-      '                    title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary"' +
-      '                    data-toggle="tooltip"' +
-      '                    href="/requests/99115992283506421?mfhd=22614245510006421">Request</a></td>' +
-      '            <td class="holding-details">' +
-      '                <ul class="item-status" data-record-id="99115992283506421" data-holding-id="22614245510006421"></ul>' +
-      '            </td>' +
-      '        </tr>' +
-      '    </tbody>' +
-      '</table>';
-
-    const holding_availability_info = {
-      "on_reserve": "Y",
-      "location": "annex$reserve",
-      "label": "Forrestal Annex - Reserve",
-      "status_label": "Available",
-      "copy_number": null,
-      "cdl": false,
-      "temp_location": false,
-      "id": "22614245510006421"
+    '<table><tr>' +
+    '<td class="holding-status" data-availability-record="true" data-record-id="99118399983506421" data-holding-id="RES_SHARE$IN_RS_REQ" data-aeon="false">' +
+    '  <span class="availability-icon" title="">Available</span>' +
+    '</td>' +
+    '<td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false" data-holding-id="RES_SHARE$IN_RS_REQ">' +
+    '<a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/99118399983506421?mfhd=22555936970006421">Request</a>' +
+    '</td>'
+    '<tr><table>';
+    const res_share_response = {
+        "99118399983506421": {
+        "RES_SHARE$IN_RS_REQ": {
+        "on_reserve": "N",
+        "location": "RES_SHARE$IN_RS_REQ",
+        "label": "Resource Sharing Library - Lending Resource Sharing Requests",
+        "status_label": "Unavailable",
+        "copy_number": null,
+        "cdl": false,
+        "temp_location": true,
+        "id": "RES_SHARE$IN_RS_REQ"
+        }
+        }
     }
-
-    const request_button_selector = `.location-services[data-holding-id='22614245510006421'] a`
-
-    expect($(request_button_selector).length).toEqual(1)
-
-    let u = new updater
-    u.id = '9965126093506421'
-    u.update_request_button('22614245510006421', holding_availability_info)
-
-    expect($(request_button_selector).length).toEqual(0)
+    let u = new updater;
+    u.id = '99118399983506421';
+    const element = $(`*[data-availability-record='true'][data-record-id='99118399983506421'][data-holding-id='RES_SHARE$IN_RS_REQ'] .availability-icon`);
+    const holding_data = res_share_response["99118399983506421"]["RES_SHARE$IN_RS_REQ"]
+    u.apply_availability_label(element, holding_data, false);
+    expect(document.querySelector('.location-services.service-conditional[data-holding-id="RES_SHARE$IN_RS_REQ"] > .btn.btn-xs.btn-primary').style.display).not.toBe('none');
   })
 })
