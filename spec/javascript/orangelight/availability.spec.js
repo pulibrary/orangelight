@@ -545,7 +545,7 @@ describe('AvailabilityUpdater', function() {
     expect(document.querySelector('.holding-status[data-holding-id="22642015240006421"] > .badge-danger')).toBeFalsy();
   })
 
-  test('location RES_SHARE$IN_RS_REQ has status Unavailable', () => {
+  test('location RES_SHARE$IN_RS_REQ has status Unavailable in red', () => {
     document.body.innerHTML =
     '<table><tr>' +
     '<td class="holding-status" data-availability-record="true" data-record-id="99118399983506421" data-holding-id="RES_SHARE$IN_RS_REQ" data-aeon="false">' +
@@ -573,6 +573,9 @@ describe('AvailabilityUpdater', function() {
     expect(element[0].textContent).not.toContain('Unavailable');
     u.apply_availability_label(element, holding_data, false);
     expect(element[0].textContent).toContain('Unavailable');
+    expect(document.querySelector('.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .badge-secondary')).toBeFalsy()
+    expect(document.querySelector('.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .badge-primary')).toBeFalsy();
+    expect(document.querySelector('.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .badge-danger')).toBeTruthy();
   })
 
   // TODO: This method isn't covered by the feature tests
@@ -650,5 +653,36 @@ describe('AvailabilityUpdater', function() {
 
     u.host_id = '9900126093506421'
     expect(u.availability_url_show()).toEqual('http://mock_url/bibliographic/availability.json?deep=true&bib_ids=9965126093506421,9900126093506421')
+  })
+  test('Temporary location - RES_SHARE$IN_RS_REQ - has a Request button', () => {
+    document.body.innerHTML =
+    '<table><tr>' +
+    '<td class="holding-status" data-availability-record="true" data-record-id="99118399983506421" data-holding-id="RES_SHARE$IN_RS_REQ" data-aeon="false">' +
+    '  <span class="availability-icon" title="">Available</span>' +
+    '</td>' +
+    '<td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false" data-holding-id="RES_SHARE$IN_RS_REQ">' +
+    '<a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/99118399983506421?mfhd=22555936970006421">Request</a>' +
+    '</td>'
+    '<tr><table>';
+    const res_share_response = {
+        "99118399983506421": {
+        "RES_SHARE$IN_RS_REQ": {
+        "on_reserve": "N",
+        "location": "RES_SHARE$IN_RS_REQ",
+        "label": "Resource Sharing Library - Lending Resource Sharing Requests",
+        "status_label": "Unavailable",
+        "copy_number": null,
+        "cdl": false,
+        "temp_location": true,
+        "id": "RES_SHARE$IN_RS_REQ"
+        }
+        }
+    }
+    let u = new updater;
+    u.id = '99118399983506421';
+    const element = $(`*[data-availability-record='true'][data-record-id='99118399983506421'][data-holding-id='RES_SHARE$IN_RS_REQ'] .availability-icon`);
+    const holding_data = res_share_response["99118399983506421"]["RES_SHARE$IN_RS_REQ"]
+    u.apply_availability_label(element, holding_data, false);
+    expect(document.querySelector('.location-services.service-conditional[data-holding-id="RES_SHARE$IN_RS_REQ"] > .btn.btn-xs.btn-primary').style.display).not.toBe('none');
   })
 })

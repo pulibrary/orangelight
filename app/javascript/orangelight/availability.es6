@@ -327,14 +327,6 @@ export default class AvailabilityUpdater {
     if (cdl) {
       location_services_element.remove();
     }
-    // remove the next block see: https://github.com/pulibrary/orangelight/issues/2964
-    if (display_request === 'true') {
-      if (availability_info['temp_location']) {
-        return location_services_element.hide();
-      } else {
-        return location_services_element.show();
-      }
-    }
   }
 
   apply_scsb_record(barcode, item_data) {
