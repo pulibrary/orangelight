@@ -1,0 +1,17 @@
+version: 2
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "npm"
+      - "dependencies"
+      - "maintenance"
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "ruby"
+      - "dependencies"
+      - "maintenance"
