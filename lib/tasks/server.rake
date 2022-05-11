@@ -13,6 +13,8 @@ namespace :servers do
     Rake::Task["db:migrate"].invoke
     Rake::Task["db:seed"].invoke
     Rake::Task["pulsearch:solr:index"].invoke
+    Rake::Task["browse:all"].invoke
+    Rake::Task["browse:load_all"].invoke
   end
 
   desc "Start the Apache Solr and PostgreSQL container services using Lando."
