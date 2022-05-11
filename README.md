@@ -75,10 +75,6 @@ Testing
    rake servers:start
    ```
    *Note: You can stop everything with `rake servers:stop`
-1. The first time you run the tests, and any time you rebuild the database, build the browselists
-```ruby
-RAILS_ENV=test bundle exec rake browse:all
-RAILS_ENV=test bundle exec rake browse:load_all
 ```
 1. Run the all the tests
     ```
@@ -86,7 +82,7 @@ RAILS_ENV=test bundle exec rake browse:load_all
     ```
 
 #### To run a specific test
-  1. Run steps one through three above
+  1. Run steps one and two above
   1. run the individual test
       ```bash
       rake spec SPEC=path/to/your_spec.rb:linenumber
