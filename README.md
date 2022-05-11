@@ -11,11 +11,19 @@ Versions:
 * Blacklight: 7.23.0.1
 * blacklight_advanced_search: 7.0.0
 
-If you don't have `yarn` installed you can install it with
-  ```
+### Development pre-requisites
+* In order to run locally, you must have Lando installed for your system - see https://docs.lando.dev/getting-started/installation.html.
+
+* If you don't have `yarn` installed you can install it with
+  ```bash
   npm install -g yarn
   ```
+* You may need to install the bundler referenced in the Gemfile.lock, e.g.
+```bash
+gem install bundler:2.2.27
+```
 
+### Installing the application
 To install run
   ```
   bundle install
@@ -27,7 +35,7 @@ On macOS: If the command `yarn install` gives error "No Xcode or CLT version det
 ### Run the development Environment locally
 **All commands are assumed to be run from your local orangelight directory**
 
-1. Start all the servers/set up database/seed index
+1. Start all the servers/set up database/seed index (this uses Lando to bring up the postgres database, and both the development and test Solr instances)
    ```
    rake servers:start
    ```
@@ -67,6 +75,7 @@ Testing
    rake servers:start
    ```
    *Note: You can stop everything with `rake servers:stop`
+```
 1. Run the all the tests
     ```
     rake spec
