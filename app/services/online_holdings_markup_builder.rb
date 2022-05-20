@@ -26,13 +26,15 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param url [String] the URL to the service endpoint
   # @param text [String] the label for the link
   def self.electronic_access_link(url, texts)
+    match = url.to_s.match(%r{(\/catalog\/(.+)?#view)})
     markup = if /Open access/.match? texts.first
                link_to(texts.first, url.to_s, target: '_blank', rel: 'noopener')
-             elsif %r{(\/catalog\/.+?#view)} =~ url.to_s
-               if texts.first == "arks.princeton.edu"
-                 link_to('Digital content', $&)
-               else
-                 link_to(texts.first, $&)
+             elsif match
+               id = match.try(:[], 2) # The id should be captured in the regex above
+               if texts.first == "arks.princeton.edu" && id
+                 link_to('Digital content', "/catalog/#{id}#viewer-container")
+               elsif id
+                 link_to(texts.first, "/catalog/#{id}#viewer-container")
                end
              else
                link_to(texts.first, "#{Requests.config['proxy_base']}#{url}", target: '_blank', rel: 'noopener')
