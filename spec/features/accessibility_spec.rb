@@ -13,7 +13,6 @@ describe "accessibility", type: :feature, js: true do
     it "complies with wcag" do
       expect(page).to be_axe_clean
         .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
-        .skipping("duplicate-id-active") # Issue https://github.com/pulibrary/orangelight/issues/2796
     end
   end
 
@@ -24,7 +23,6 @@ describe "accessibility", type: :feature, js: true do
     it "complies with wcag2aa wcag21a" do
       expect(page).to be_axe_clean
         .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
-        .skipping("duplicate-id-active") # Issue https://github.com/pulibrary/orangelight/issues/2796
         .skipping("link-name") # Issue https://github.com/pulibrary/orangelight/issues/2799
     end
   end
