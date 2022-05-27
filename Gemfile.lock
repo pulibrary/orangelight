@@ -656,7 +656,7 @@ DEPENDENCIES
   openurl (~> 1.0)
   pg
   pry-byebug
-  rails (~> 6.0, >= 6.0.4.7)
+  rails (~> 6.0)
   rails-controller-testing
   rsolr
   rspec-rails
