@@ -137,9 +137,10 @@ GEM
       rubocop-performance
       rubocop-rails
       rubocop-rspec
-    blacklight (7.23.0.1)
+    blacklight (7.25.3)
       deprecation
       globalid
+      hashdiff
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
@@ -359,7 +360,7 @@ GEM
       marc
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
-    ostruct (0.5.3)
+    ostruct (0.5.5)
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
@@ -564,7 +565,7 @@ GEM
     unf_ext (0.0.8.1)
     unicode-display_width (1.8.0)
     vcr (6.1.0)
-    view_component (2.49.1)
+    view_component (2.55.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     virtus (2.0.0)
@@ -612,7 +613,7 @@ DEPENDENCIES
   axe-core-rspec
   babel-transpiler
   bixby
-  blacklight (~> 7.0)
+  blacklight (~> 7.25)
   blacklight-marc!
   blacklight_advanced_search!
   blacklight_range_limit
