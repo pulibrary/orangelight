@@ -8,10 +8,14 @@ updates:
       - "npm"
       - "dependencies"
       - "maintenance"
+    # Only create PRs for security updates
+    open-pull-requests-limit: 0
   - package-ecosystem: "bundler"
     directory: "/"
     schedule:
       interval: "daily"
+    # Only create PRs for security updates
+    open-pull-requests-limit: 0
     labels:
       - "ruby"
       - "dependencies"
