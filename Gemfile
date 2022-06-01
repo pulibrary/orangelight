@@ -119,6 +119,6 @@ end
 gem 'alma'
 gem 'cobravsmongoose', '~> 0.0.2'
 gem 'email_validator'
-gem 'friendly_id', '~> 5.1.0'
+gem 'friendly_id', '~> 5.4.2'
 gem 'net-ldap'
 gem 'simple_form'

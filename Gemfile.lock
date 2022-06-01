@@ -252,7 +252,7 @@ GEM
       rake
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
-    friendly_id (5.1.0)
+    friendly_id (5.4.2)
       activerecord (>= 4.0.0)
     global (2.1.0)
       activesupport (>= 2.0)
@@ -637,7 +637,7 @@ DEPENDENCIES
   faraday (~> 0.17)
   faraday-cookie_jar
   font-awesome-rails
-  friendly_id (~> 5.1.0)
+  friendly_id (~> 5.4.2)
   global
   high_voltage (~> 3.0.0)
   honeybadger
