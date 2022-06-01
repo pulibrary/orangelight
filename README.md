@@ -148,6 +148,28 @@ RAILS_ENV=development bundle exec rake browse:load_all
 You will need a working local copy of [Bibdata](https://github.com/pulibrary/marc_liberation).
 Start the Bibdata server, and then set the ```bidata_base``` value in OrangeLight's `config/requests.yml` file to the local URL where Bibdata is running (e.g., `http://localhost:{port}`).
 
+## Local development against locally running Bibdata
+* In the bibdata directory
+  * Bring up the lando services (database, solr)
+```bash
+bundle exec rake servers:start
+```
+  * Bring up the rails server on a non-standard port, so it doesn't collide with the Oranglight port  
+```bash
+bundle exec rails s -p 3003
+```
+
+* In the orangelight directory
+  * Bring up the lando services, which include the database and solr, but we should only be using the database for this configuration
+  * Bring up the orangelight rails server, but point to the locally running bibdata application and bibdata solr (you can get this by running `lando info`)
+```bash
+BIBDATA_BASE=http://localhost:3003 SOLR_URL=http://localhost:55735/solr/marc-liberation-core-development bundle exec rails s
+```
+  * Index fixture data into solr using the bibdata solr
+```bash
+SOLR_URL=http://localhost:55735/solr/marc-liberation-core-development bundle exec rake pulsearch:solr:index
+```
+
 ## Running javascript unit tests
 
 `$ yarn install`
