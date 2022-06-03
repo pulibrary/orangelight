@@ -48,6 +48,10 @@ class Requests::Requestable
       self[:in_temp_library]
     end
 
+    def in_resource_sharing?
+      self[:temp_location_code] == "RES_SHARE$IN_RS_REQ"
+    end
+
     def on_reserve?
       self[:on_reserve] == 'Y'
     end
@@ -162,6 +166,10 @@ class Requests::Requestable
 
       def temp_loc?
         ""
+      end
+
+      def in_resource_sharing?
+        false
       end
 
       def on_reserve?

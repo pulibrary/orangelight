@@ -5,6 +5,6 @@
         <%= label_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}_borrow_direct]", I18n.t("requests.ill.delivery_label"), class: 'control-label', id: "requestable__type_borrow_direct_label_#{requestable.preferred_request_id}" %>
         <%= content_tag(:div, id: "fields-print__#{requestable.preferred_request_id}", class: 'card card-body bg-light') do %>
           <%= hidden_field_tag 'requestable[][pick_up]', "", value: { 'pick_up' => 'PA', 'pick_up_location_code' => 'firestone' }.to_json, class: 'single-pick-up-hidden', id: "requestable__pick_up_#{requestable.preferred_request_id}" %>
-          <%= label_tag "requestable__pick_up_#{requestable.preferred_request_id}", "Pick-up location: Pick-up location: Firestone Library", class: 'single-pick-up', style: 'margin-top:10px;' %>
+          <%= label_tag "requestable__pick_up_#{requestable.preferred_request_id}", "Pick-up location: Firestone Library", class: 'single-pick-up', style: 'margin-top:10px;' %>
         <% end %>
       </div>

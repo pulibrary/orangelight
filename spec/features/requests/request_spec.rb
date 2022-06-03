@@ -673,7 +673,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(confirm_email.html_part.body.to_s).to have_content("Chernobyl : a 5-part miniseries")
         end
 
-        it 'doe snot error for Online items' do
+        it 'does not error for Online items' do
           visit '/requests/9999946923506421?mfhd=9800910'
           expect(page).to have_content 'there are no requestable items for this record'
         end
@@ -1152,7 +1152,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(confirm_email.html_part.body.to_s).to have_content("955-1968 : gli artisti italiani alle Documenta di Kassel")
         end
 
-        it 'Shows marqaund recap item as an EDD or In Library Use' do
+        it 'Shows marquand recap item as an EDD or In Library Use' do
           stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
           scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
           stub_request(:post, scsb_url)
@@ -1331,6 +1331,30 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             choose('requestable__delivery_mode_23514405150006421_print')
             expect(page).to have_content 'Pick-up location: Architecture Library'
             expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+          end
+        end
+
+        describe 'Request a temp holding item from Resource Sharing - RES_SHARE$IN_RS_REQ' do
+          before do
+            borrow_direct = ::BorrowDirect::RequestItem.new("22101008199999")
+            expect(::BorrowDirect::RequestItem).to receive(:new).with("22101008199999").and_return(borrow_direct)
+            expect(borrow_direct).to receive(:make_request).with("Firestone Library", isbn: '9781472523242').and_return('123456')
+            stub_alma_hold('9991807103506421', '22696270550006421', '23696270540006421', '960594184', status: 200, fixture_name: "availability_response_9991807103506421.json")
+            stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/9991807103506421/raw")
+              .to_return(status: 200, body: fixture('/catalog_raw_9991807103506421.json'), headers: {})
+          end
+          it 'request via partner library' do
+            visit 'requests/9991807103506421?mfhd=22696270550006421'
+            expect(page).to have_content "Towards the critique of violence : Walter Benjamin and Giorgio Agamben"
+            expect(page).to have_content 'Moran, Brendan P.'
+            expect(page).to have_content 'Firestone Library - Stacks HM886 .T69 2015'
+            expect(page).to have_content 'Request via Partner Library'
+            expect(page).to have_content "Pick-up location: Firestone Library"
+            expect(page).to have_content "Not Available - Resource Sharing Request"
+            check('requestable_selected_23696270540006421')
+            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(0)
+            expect(page).to have_content 'Request submitted to BorrowDirect'
+            expect(page).to have_content 'Your request number is 123456'
           end
         end
       end

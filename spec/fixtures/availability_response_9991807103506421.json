@@ -1,0 +1,26 @@
+[
+  {
+      "barcode": "32101095817076",
+      "id": "23696270540006421",
+      "holding_id": "22696270550006421",
+      "copy_number": "1",
+      "status": "Not Available",
+      "status_label": "Resource Sharing Request",
+      "status_source": "process_type",
+      "process_type": "ILL",
+      "on_reserve": "N",
+      "item_type": "Gen",
+      "pickup_location_id": "RES_SHARE",
+      "pickup_location_code": "RES_SHARE",
+      "location": "RES_SHARE$IN_RS_REQ",
+      "label": "Resource Sharing Library - Lending Resource Sharing Requests",
+      "description": "",
+      "enum_display": "",
+      "chron_display": "",
+      "in_temp_library": true,
+      "temp_library_code": "RES_SHARE",
+      "temp_library_label": "Resource Sharing Library - Lending Resource Sharing Requests",
+      "temp_location_code": "RES_SHARE$IN_RS_REQ",
+      "temp_location_label": "Resource Sharing Library - Lending Resource Sharing Requests"
+  }
+]

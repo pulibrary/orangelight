@@ -290,7 +290,7 @@ module Requests
         item_loc = item_current_location(item)
         current_location = get_current_location(item_loc: item_loc)
         item['status_label'] = barcodesort[item['barcode']][:status_label] unless barcodesort.empty?
-        calculate_holding = if item["in_temp_library"]
+        calculate_holding = if item["in_temp_library"] && item["temp_location_code"] != "RES_SHARE$IN_RS_REQ"
                               { holding_id.to_sym.to_s => holdings[item_loc] }
                             else
                               { holding_id.to_sym.to_s => holdings[holding_id] }
