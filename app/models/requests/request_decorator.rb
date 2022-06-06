@@ -88,7 +88,7 @@ module Requests
 
     def location_label
       return "" if holding.blank?
-      if any_items? && requestable.first.item.temp_loc?
+      if any_items? && requestable.first.item.temp_loc? && !requestable.first.item.in_resource_sharing?
         label = holding["current_library"]
         label += " - #{holding['current_location']}" if holding["current_location"].present?
       else
@@ -99,7 +99,7 @@ module Requests
     end
 
     def holding
-      if any_items? && requestable.first.item.temp_loc?
+      if any_items? && requestable.first.item.temp_loc? && !requestable.first.item.in_resource_sharing?
         holdings[requestable.first.item["temp_location_code"]]
       else
         holdings[mfhd]

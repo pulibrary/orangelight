@@ -9112,4 +9112,162 @@ http_interactions:
         Available","status_label":"Loan","status_source":"process_type","process_type":"LOAN","on_reserve":"N","item_type":"Gen","pickup_location_id":"arch","pickup_location_code":"arch","location":"arch$ref","label":"Architecture
         Library - Reference","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
   recorded_at: Thu, 05 May 2022 19:10:49 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/firestone$stacks.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.21.5
+      Date:
+      - Fri, 03 Jun 2022 13:09:07 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"9ca1d7162bcf39fded8f72e3a0f154e1"
+      X-Runtime:
+      - '0.016913'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - b499a410-b6b3-499c-962a-53bc6f88e4d1
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.10
+    body:
+      encoding: UTF-8
+      string: '{"label":"Stacks","code":"firestone$stacks","aeon_location":false,"recap_electronic_delivery_location":false,"open":true,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","fulfillment_unit":"General","library":{"label":"Firestone
+        Library","code":"firestone","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[{"label":"Firestone
+        Library","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"PA","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}}]}'
+  recorded_at: Fri, 03 Jun 2022 13:09:07 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/bibliographic/9991807103506421/holdings/22696270550006421/availability.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.21.5
+      Date:
+      - Fri, 03 Jun 2022 13:09:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"73e2406325d867d1729f823ffa2bc314"
+      X-Runtime:
+      - '4.860701'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - c27d8384-1568-408e-b100-5ad5a4fac6ab
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.9
+    body:
+      encoding: UTF-8
+      string: '[{"barcode":"32101095817076","id":"23696270540006421","holding_id":"22696270550006421","copy_number":"1","status":"Not
+        Available","status_label":"Resource Sharing Request","status_source":"process_type","process_type":"ILL","on_reserve":"N","item_type":"Gen","pickup_location_id":"RES_SHARE","pickup_location_code":"RES_SHARE","location":"RES_SHARE$IN_RS_REQ","label":"Resource
+        Sharing Library - Lending Resource Sharing Requests","description":"","enum_display":"","chron_display":"","in_temp_library":true,"temp_library_code":"RES_SHARE","temp_library_label":"Resource
+        Sharing Library - Lending Resource Sharing Requests","temp_location_code":"RES_SHARE$IN_RS_REQ","temp_location_label":"Resource
+        Sharing Library - Lending Resource Sharing Requests"}]'
+  recorded_at: Fri, 03 Jun 2022 13:09:12 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/RES_SHARE$IN_RS_REQ.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.21.5
+      Date:
+      - Fri, 03 Jun 2022 13:09:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"8e64304ed9a72321686f76842a2e4989"
+      X-Runtime:
+      - '0.011887'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 23b7752c-f6de-4e23-97a0-4017cd648715
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.10
+    body:
+      encoding: UTF-8
+      string: '{"label":"Lending Resource Sharing Requests","code":"RES_SHARE$IN_RS_REQ","aeon_location":false,"recap_electronic_delivery_location":false,"open":true,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","fulfillment_unit":"RES_FU","library":{"label":"Resource
+        Sharing Library","code":"RES_SHARE","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[]}'
+  recorded_at: Fri, 03 Jun 2022 13:09:12 GMT
 recorded_with: VCR 6.1.0

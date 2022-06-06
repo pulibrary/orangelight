@@ -1,0 +1,127 @@
+{
+    "id": "9991807103506421",
+    "numeric_id_b": true,
+    "author_citation_display": [
+        "Moran, Brendan P.",
+        "Salzani, Carlo"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[\"Moran, Brendan P.\",\"Salzani, Carlo\"],\"compilers\":[]}",
+    "author_s": [
+        "Moran, Brendan P.",
+        "Salzani, Carlo, 1972-"
+    ],
+    "title_display": "Towards the critique of violence : Walter Benjamin and Giorgio Agamben / edited by Brendan Moran and Carlo Salzani.",
+    "title_t": [
+        "Towards the critique of violence : Walter Benjamin and Giorgio Agamben / edited by Brendan Moran and Carlo Salzani."
+    ],
+    "title_citation_display": [
+        "Towards the critique of violence : Walter Benjamin and Giorgio Agamben"
+    ],
+    "compiled_created_t": [
+        "Towards the critique of violence : Walter Benjamin and Giorgio Agamben / edited by Brendan Moran and Carlo Salzani."
+    ],
+    "pub_created_display": [
+        "London : Bloomsbury Academic, 2015.",
+        "©2015"
+    ],
+    "pub_created_s": [
+        "London : Bloomsbury Academic, 2015.",
+        "©2015"
+    ],
+    "pub_citation_display": [
+        "London: Bloomsbury Academic"
+    ],
+    "pub_date_display": [
+        "2015"
+    ],
+    "pub_date_start_sort": 2015,
+    "pub_date_end_sort": 2015,
+    "cataloged_tdt": "2015-10-19T10:59:00Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "xii, 251 pages ; 25 cm."
+    ],
+    "description_t": [
+        "xii, 251 pages ; 25 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "xii, 251 pages"
+    ],
+    "series_display": [
+        "Bloomsbury studies in continental philosophy"
+    ],
+    "more_in_this_series_t": [
+        "Bloomsbury studies in continental philosophy"
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references and index."
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_code_s": [
+        "eng"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Benjamin, Walter, 1892-1940—Criticism and interpretation",
+        "Agamben, Giorgio, 1942-—Criticism and interpretation",
+        "Benjamin, Walter, 1892-1940—Zur Kritik der Gewalt",
+        "Violence—Philosophy",
+        "Philosophy, Modern"
+    ],
+    "subject_facet": [
+        "Benjamin, Walter, 1892-1940—Criticism and interpretation",
+        "Agamben, Giorgio, 1942-—Criticism and interpretation",
+        "Benjamin, Walter, 1892-1940—Zur Kritik der Gewalt",
+        "Violence—Philosophy",
+        "Philosophy, Modern"
+    ],
+    "related_name_json_1display": "{\"Editor\":[\"Moran, Brendan P.\",\"Salzani, Carlo, 1972-\"]}",
+    "isbn_display": [
+        "9781472523242 (hbk.)",
+        "1472523245 (hbk.)"
+    ],
+    "isbn_s": [
+        "9781472523242"
+    ],
+    "oclc_s": [
+        "913793423"
+    ],
+    "other_version_s": [
+        "ocn913793423",
+        "ocn911171772",
+        "9781472523242",
+        "9781472529282",
+        "9781472533494"
+    ],
+    "holdings_1display": "{\"22696270550006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"HM886 .T69 2015\",\"call_number_browse\":\"HM886 .T69 2015\",\"items\":[{\"holding_id\":\"22696270550006421\",\"id\":\"23696270540006421\",\"status_at_load\":\"0\",\"barcode\":\"32101095817076\",\"copy_number\":\"1\"}]}}",
+    "location_code_s": [
+        "firestone$stacks"
+    ],
+    "location": [
+        "Firestone Library"
+    ],
+    "location_display": [
+        "Stacks"
+    ],
+    "advanced_location_s": [
+        "firestone$stacks",
+        "Firestone Library"
+    ],
+    "call_number_display": [
+        "HM886 .T69 2015"
+    ],
+    "call_number_browse_s": [
+        "HM886 .T69 2015"
+    ],
+    "call_number_locator_display": [
+        "HM886 .T69 2015"
+    ],
+    "_version_": 1734566130355273700,
+    "timestamp": "2022-06-02T23:06:08.665Z"
+}
