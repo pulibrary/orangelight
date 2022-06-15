@@ -17,5 +17,9 @@ module Orangelight
     def should_check_availability?(bib_id)
       !scsb_id?(bib_id) && valid_bib_id?(bib_id) && render_availability?
     end
+
+    def current_browse_per_page
+      params[:rpp].present? ? params[:rpp].to_i : 10
+    end
   end
 end

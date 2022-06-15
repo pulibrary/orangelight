@@ -6,7 +6,8 @@ RSpec.describe SearchBuilder do
   subject(:search_builder) { described_class.new([], scope) }
 
   let(:blacklight_config) { Blacklight::Configuration.new }
-  let(:scope) { instance_double Blacklight::SearchService, blacklight_config: blacklight_config }
+  let(:scope) { Blacklight::SearchService.new config: blacklight_config, search_state: state }
+  let(:state) { Blacklight::SearchState.new({}, blacklight_config) }
 
   describe '#excessive_paging' do
     let(:excessive) { 9999 }
