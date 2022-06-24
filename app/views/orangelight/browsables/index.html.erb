@@ -8,16 +8,18 @@
         <nav aria-label="top pager" class="nav">
           <%= render "orangelight/browsables/browse_pagination"%>
         </nav>
-
-      <div class="ml-auto">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%=t(:'blacklight.search.per_page.button_label', :count => @rpp).html_safe %></button>
-        <ul class="dropdown-menu" role="menu">
-          <%= link_to("10", url_for(search_state.params_for_search(:rpp => 10)), class: "dropdown-item")  %>
-          <%= link_to("25", url_for(search_state.params_for_search(:rpp => 25)), class: "dropdown-item") %>
-          <%= link_to("50", url_for(search_state.params_for_search(:rpp => 50)), class: "dropdown-item") %>
-          <%= link_to("100", url_for(search_state.params_for_search(:rpp => 100)), class: "dropdown-item") %>
-        </ul>
-      </div>
+        <%= render(Blacklight::System::DropdownComponent.new(
+          param: :per_page,
+          choices: per_page_options_for_select,
+          id: 'per_page-dropdown',
+          search_state: search_state,
+          selected: current_browse_per_page,
+          interpolation: :count)) do |component| %>
+          <% component.with_options(
+            [10, 25, 50, 100].map do |count|
+              {text: count, url: params.merge(rpp: count).permit(:rpp, :start, :model, :controller, :action) }
+            end) %>
+        <% end %>
     </div>
   </div>
 </div>

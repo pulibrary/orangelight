@@ -137,9 +137,10 @@ GEM
       rubocop-performance
       rubocop-rails
       rubocop-rspec
-    blacklight (7.23.0.1)
+    blacklight (7.25.3)
       deprecation
       globalid
+      hashdiff
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
@@ -335,7 +336,7 @@ GEM
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.15.0)
+    minitest (5.16.0)
     modernizr-rails (2.7.1)
     msgpack (1.5.1)
     multi_xml (0.6.0)
@@ -359,7 +360,7 @@ GEM
       marc
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
-    ostruct (0.5.3)
+    ostruct (0.5.5)
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
@@ -374,7 +375,7 @@ GEM
       pry (~> 0.13.0)
     public_suffix (4.0.7)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rack-proxy (0.7.2)
       rack
     rack-test (1.1.0)
@@ -401,7 +402,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.2)
+    rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
     railties (6.0.4.8)
       actionpack (= 6.0.4.8)
@@ -564,7 +565,7 @@ GEM
     unf_ext (0.0.8.1)
     unicode-display_width (1.8.0)
     vcr (6.1.0)
-    view_component (2.49.1)
+    view_component (2.57.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     virtus (2.0.0)
@@ -602,7 +603,7 @@ GEM
     yard (0.9.27)
       webrick (~> 1.7.0)
     yell (2.2.2)
-    zeitwerk (2.5.4)
+    zeitwerk (2.6.0)
 
 PLATFORMS
   ruby
