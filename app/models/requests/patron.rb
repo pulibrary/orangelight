@@ -195,13 +195,14 @@ module Requests
         barcode == "ACCESS"
       end
 
+      # This method uses the Alma gem API to build the patron from Alma, rather than via Bibdata
       def build_alma_patron(uid:)
         alma_user = Alma::User.find(uid)
-        barcodes = alma_user["user_identifier"].select { |id| id["id_type"]["value"] == "BARCODE" }
+        active_barcode = alma_user["user_identifier"].find { |id| id["id_type"]["value"] == "BARCODE" && id["status"] == "ACTIVE" }["value"]
         {
           last_name: alma_user.preferred_last_name,
           active_email: alma_user.preferred_email,
-          barcode: barcodes.first&.fetch("value") || "ALMA",
+          barcode: active_barcode || "ALMA",
           barcode_status: 1,
           netid: "ALMA",
           university_id: uid

@@ -1,0 +1,274 @@
+{
+  "record_type": {
+    "value": "PUBLIC",
+    "desc": "Public"
+  },
+  "primary_id": "BC123456789",
+  "first_name": "Amir",
+  "middle_name": "Muhammad",
+  "last_name": "Abadi",
+  "full_name": "Amir Muhammad Abadi",
+  "user_title": {
+    "value": "",
+    "desc": ""
+  },
+  "job_category": {
+    "value": "",
+    "desc": ""
+  },
+  "job_description": "",
+  "gender": {
+    "value": "",
+    "desc": ""
+  },
+  "user_group": {
+    "value": "GST",
+    "desc": "GST Guest Patron"
+  },
+  "campus_code": {
+    "value": null,
+    "desc": ""
+  },
+  "web_site_url": "",
+  "cataloger_level": {
+    "value": "00",
+    "desc": "[00] Default Level"
+  },
+  "preferred_language": {
+    "value": "en",
+    "desc": "English"
+  },
+  "expiry_date": "2022-06-30Z",
+  "purge_date": "2023-06-30Z",
+  "account_type": {
+    "value": "INTERNAL",
+    "desc": "Internal"
+  },
+  "external_id": "",
+  "password": "",
+  "force_password_change": "",
+  "status": {
+    "value": "ACTIVE",
+    "desc": "Active"
+  },
+  "status_date": "2021-07-25Z",
+  "last_patron_activity_date": "2022-06-16Z",
+  "requests": {
+    "value": 0,
+    "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/BC123456789/requests"
+  },
+  "loans": {
+    "value": 17,
+    "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/BC123456789/loans"
+  },
+  "fees": {
+    "value": 17,
+    "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/BC123456789/fees"
+  },
+  "contact_info": {
+    "address": [
+      {
+        "line1": "ONE WASHINGTON ROAD",
+        "line2": null,
+        "line3": null,
+        "line4": null,
+        "line5": null,
+        "city": "Princeton",
+        "state_province": "NJ",
+        "postal_code": "08544",
+        "country": {
+          "value": "",
+          "desc": ""
+        },
+        "address_note": "",
+        "start_date": "2021-07-23Z",
+        "end_date": "2022-07-23Z",
+        "preferred": true,
+        "segment_type": "Internal",
+        "address_type": [
+          {
+            "value": "home",
+            "desc": "Home"
+          },
+          {
+            "value": "work",
+            "desc": "Work"
+          },
+          {
+            "value": "school",
+            "desc": "School"
+          },
+          {
+            "value": "alternative",
+            "desc": "Alternative"
+          }
+        ]
+      }
+    ],
+    "email": [
+      {
+        "email_address": "Abadi@other_school.edu",
+        "description": null,
+        "preferred": true,
+        "segment_type": "Internal",
+        "email_type": [
+          {
+            "value": "personal",
+            "desc": "Personal"
+          },
+          {
+            "value": "school",
+            "desc": "School"
+          },
+          {
+            "value": "work",
+            "desc": "Work"
+          }
+        ]
+      }
+    ],
+    "phone": [
+      {
+        "phone_number": "(609) 555-5555",
+        "preferred": true,
+        "preferred_sms": false,
+        "segment_type": "Internal",
+        "phone_type": [
+          {
+            "value": "home",
+            "desc": "Home"
+          }
+        ]
+      }
+    ]
+  },
+  "pref_first_name": "",
+  "pref_middle_name": "",
+  "pref_last_name": "",
+  "pref_name_suffix": "",
+  "is_researcher": false,
+  "researcher": null,
+  "link": null,
+  "user_identifier": [
+    {
+      "value": "9999999",
+      "id_type": {
+        "value": "BARCODE",
+        "desc": "Barcode"
+      },
+      "note": "06 Jul 2012",
+      "status": "INACTIVE",
+      "segment_type": "Internal"
+    },
+    {
+      "value": "8888888",
+      "id_type": {
+        "value": "BARCODE",
+        "desc": "Barcode"
+      },
+      "note": "02 Sep 2015",
+      "status": "INACTIVE",
+      "segment_type": "Internal"
+    },
+    {
+      "value": "77777777",
+      "id_type": {
+        "value": "BARCODE",
+        "desc": "Barcode"
+      },
+      "note": "01 Mar 2016",
+      "status": "ACTIVE",
+      "segment_type": "Internal"
+    },
+    {
+      "value": "66666666",
+      "id_type": {
+        "value": "BARCODE",
+        "desc": "Barcode"
+      },
+      "note": "01 Apr 2013",
+      "status": "INACTIVE",
+      "segment_type": "Internal"
+    },
+    {
+      "value": "2490241",
+      "id_type": {
+        "value": "BARCODE",
+        "desc": "Barcode"
+      },
+      "note": "05 Jul 2013",
+      "status": "INACTIVE",
+      "segment_type": "Internal"
+    },
+    {
+      "value": "2361897",
+      "id_type": {
+        "value": "BARCODE",
+        "desc": "Barcode"
+      },
+      "note": "01 Oct 2013",
+      "status": "INACTIVE",
+      "segment_type": "Internal"
+    }
+  ],
+  "user_role": [
+    {
+      "status": {
+        "value": "ACTIVE",
+        "desc": "Active"
+      },
+      "scope": {
+        "value": "01PRI_INST",
+        "desc": "Princeton University Library"
+      },
+      "role_type": {
+        "value": "200",
+        "desc": "Patron"
+      },
+      "parameter": []
+    }
+  ],
+  "user_block": [],
+  "user_note": [
+    {
+      "note_type": {
+        "value": "CIRCULATION",
+        "desc": "Circulation"
+      },
+      "note_text": "A note about circulating books and dates",
+      "user_viewable": false,
+      "popup_note": false,
+      "created_by": "010003330",
+      "created_date": "2022-06-16T22:33:57.540Z",
+      "segment_type": "Internal"
+    },
+    {
+      "note_type": {
+        "value": "LIBRARY",
+        "desc": "Library"
+      },
+      "note_text": "DEPT(260);",
+      "user_viewable": false,
+      "popup_note": false,
+      "created_by": "System",
+      "segment_type": "Internal"
+    }
+  ],
+  "user_statistic": [
+    {
+      "statistic_category": {
+        "value": "ALM",
+        "desc": "ALM"
+      },
+      "segment_type": "Internal"
+    },
+    {
+      "statistic_category": {
+        "value": "G6",
+        "desc": "G6"
+      },
+      "segment_type": "Internal"
+    }
+  ],
+  "proxy_for_user": []
+}
