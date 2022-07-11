@@ -28,6 +28,23 @@ describe Requests::Patron do
   let(:valid_barcode_patron_response) { fixture('/bibdata_patron_response_barcode.json') }
   let(:invalid_patron_response) { fixture('/bibdata_not_found_patron_response.json') }
 
+  context 'when the user is provided from Alma' do
+    let(:uid) { 'BC123456789' }
+    let(:user) do
+      instance_double(User, guest?: guest?, uid: uid, alma_provider?: true, provider: provider, barcode_provider?: barcode_provider)
+    end
+    let(:patron_with_multiple_barcodes) { fixture('/BC123456789.json') }
+
+    before do
+      stub_request(:get, "https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/#{uid}?expand=fees,requests,loans")
+        .to_return(status: 200, body: patron_with_multiple_barcodes, headers: { "Content-Type" => "application/json" })
+    end
+
+    it 'creates an access patron with the active barcode' do
+      patron = described_class.new(user: user, session: session)
+      expect(patron.barcode).to eq('77777777')
+    end
+  end
   context 'When an access patron visits the site' do
     describe '#access_patron' do
       it 'creates an access patron with required access attributes' do
