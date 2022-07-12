@@ -20,8 +20,6 @@ gem 'sass-rails', '~> 6.0'
 # Modernizr.js library
 gem 'modernizr-rails'
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.2.0'
 
@@ -122,3 +120,5 @@ gem 'email_validator'
 gem 'friendly_id', '~> 5.4.2'
 gem 'net-ldap'
 gem 'simple_form'
+
+gem "terser", "~> 1.1"
