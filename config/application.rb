@@ -41,6 +41,9 @@ module Orangelight
     # config.time_zone = 'Central Time (US & Canada)'
     config.time_zone = 'Eastern Time (US & Canada)'
 
+    # See https://github.com/projectblacklight/blacklight/issues/2768
+    config.active_record.yaml_column_permitted_classes = [HashWithIndifferentAccess]
+
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
@@ -58,8 +61,5 @@ module Orangelight
 
     config.robots = OpenStruct.new(config_for(:robots))
     config.alma = config_for(:alma).with_indifferent_access
-
-    # See https://github.com/projectblacklight/blacklight/issues/2768
-    config.active_record.yaml_column_permitted_classes = [HashWithIndifferentAccess]
   end
 end
