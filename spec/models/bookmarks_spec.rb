@@ -7,8 +7,9 @@ describe Bookmark do
     expect { user.save! }.not_to raise_error(ActiveRecord::RecordInvalid)
     expect(user.bookmarks.count).to eq(5)
   end
-  it 'does not allow user to create more than 1000 bookmarks' do
-    user = user_with_many_bookmarks(1001)
+  it 'does not allow user to create more than the maximum configured bookmarks' do
+    expect(Orangelight.config['bookmarks']['maximum']).to eq(50)
+    user = user_with_many_bookmarks(51)
     expect { user.save! }.to raise_error(ActiveRecord::RecordInvalid)
   end
 

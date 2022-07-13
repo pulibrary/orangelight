@@ -1,4 +1,6 @@
 defaults: &defaults
+  bookmarks:
+    maximum: 1000
   events:
     server: 'amqp://localhost:5672'
     exchange: 'orangelight_events'
@@ -11,6 +13,8 @@ development:
 
 test:
   <<: *defaults
+  bookmarks:
+    maximum: 50
   feedback_form:
     to: 'test@princeton.edu'
     cc: 'test2w@princeton.edu, test3@princeton.edu'

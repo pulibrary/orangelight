@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 
-MAXIMUM_BOOKMARKS = 1000
-
 class User < ApplicationRecord
-  validates :username, presence: true, unless: :guest
+  validates :username, presence: true
   validates :uid, length: { is: 14 }, format: { with: /\A([\d]{14})\z/ },
                   if: :barcode_provider?
-  validates :bookmarks, length: {
-    maximum: MAXIMUM_BOOKMARKS - 1, # because of the timing of this check, users can save 1 more bookmark than the max listed here
-    too_long: "You have exceeded the maximum number of bookmarks! You can only save up to #{MAXIMUM_BOOKMARKS} bookmarks"
-  }
 
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
