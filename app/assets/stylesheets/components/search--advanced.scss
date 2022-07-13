@@ -108,7 +108,7 @@
   cursor: pointer;
 }
 
-.dropdown-toggle::after {
+#advanced_search_facets .dropdown-toggle::after {
   position: absolute;
   right: 12px;
 }
