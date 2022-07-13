@@ -99,10 +99,10 @@ rake pulsearch:solr:deindex
 rake pulsearch:solr:index
 ```
 
-### Adding a record to the test/dev index
+### Adding a fixture to the test/dev index
 
-Grab a record from marc liberation's `/bibliographic/:bib_id/solr` endpoint. Add
-it to the bottom of `spec/fixtures/current_fixtures.json`. Note that file
+Use an example.xml marc record. Start bibdata in the dev environment. Use the bibdata solr url from lando and run:
+`traject -c marc_to_solr/lib/traject_config.rb path-to-xml/example.xml -u http://localhost:<solr-port-number>/solr/name-of-local-solr-index -w Traject::JsonWriter` This will print a JSON. Copy the JSON and add it to the bottom of `spec/fixtures/current_fixtures.json`. Note that file
 contains a list so you have to make sure you add a comma to the end of the last
 record and keep the closing bracket at the end of the file. Then run `rake pulsearch:solr:index` for both the dev and the test environment, as specified above.
 
