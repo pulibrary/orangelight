@@ -2,7 +2,9 @@
 require 'rails_helper'
 
 describe Requests::RequestDecorator do
-  subject(:decorator) { described_class.new(request, view_context) }
+  include ActionView::TestCase::Behavior
+
+  subject(:decorator) { described_class.new(request, view) }
   let(:user) { FactoryBot.build(:user) }
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
@@ -20,7 +22,6 @@ describe Requests::RequestDecorator do
   let(:solr_context) { instance_double(Requests::SolrOpenUrlContext) }
   let(:stubbed_questions) { { etas?: false } }
   let(:ldap) { {} }
-  let(:view_context) { ActionView::Base.new }
 
   describe "#bib_id" do
     it 'is the system id' do
@@ -96,7 +97,7 @@ describe Requests::RequestDecorator do
 
   describe "#hidden_fields" do
     it "shows all display metdata" do
-      expect(decorator.hidden_fields).to eq('<input type="hidden" name="bib[id]" id="bib_id" value="123abc" /><input type="hidden" name="bib[title]" id="bib_title" value="title" /><input type="hidden" name="bib[author]" id="bib_author" value="author" /><input type="hidden" name="bib[isbn]" id="bib_isbn" value="isbn" />')
+      expect(decorator.hidden_fields).to eq('<input type="hidden" name="bib[id]" id="bib_id" value="123abc" autocomplete="off" /><input type="hidden" name="bib[title]" id="bib_title" value="title" autocomplete="off" /><input type="hidden" name="bib[author]" id="bib_author" value="author" autocomplete="off" /><input type="hidden" name="bib[isbn]" id="bib_isbn" value="isbn" autocomplete="off" />')
     end
   end
 
@@ -206,7 +207,7 @@ describe Requests::RequestDecorator do
       request2 = instance_double(Requests::RequestableDecorator, aeon?: true)
       request = instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [request1, request2], patron: patron, first_filtered_requestable: requestable,
                                                    display_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, language: 'en')
-      decorator = described_class.new(request, view_context)
+      decorator = described_class.new(request, view)
       expect(decorator.only_aeon?).to be_truthy
     end
 
@@ -215,7 +216,7 @@ describe Requests::RequestDecorator do
       request2 = instance_double(Requests::RequestableDecorator, aeon?: false)
       request = instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [request1, request2], patron: patron, first_filtered_requestable: requestable,
                                                    display_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, language: 'en')
-      decorator = described_class.new(request, view_context)
+      decorator = described_class.new(request, view)
       expect(decorator.only_aeon?).to be_falsey
     end
   end
@@ -224,21 +225,21 @@ describe Requests::RequestDecorator do
     it "shows the library name" do
       request = instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [], patron: patron, first_filtered_requestable: requestable,
                                                    display_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, language: 'en', holdings: { '112233' => { "library" => 'abc' } })
-      decorator = described_class.new(request, view_context)
+      decorator = described_class.new(request, view)
       expect(decorator.location_label).to eq('abc')
     end
 
     it "shows the library name and location" do
       request = instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [], patron: patron, first_filtered_requestable: requestable,
                                                    display_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, language: 'en', holdings: { '112233' => { "library" => 'abc', "location" => "123" } })
-      decorator = described_class.new(request, view_context)
+      decorator = described_class.new(request, view)
       expect(decorator.location_label).to eq('abc - 123')
     end
 
     it "shows the nothing if the holding is empty" do
       request = instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [], patron: patron, first_filtered_requestable: requestable,
                                                    display_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, language: 'en', holdings: {})
-      decorator = described_class.new(request, view_context)
+      decorator = described_class.new(request, view)
       expect(decorator.location_label).to eq('')
     end
   end
