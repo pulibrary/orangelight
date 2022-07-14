@@ -60,6 +60,6 @@ module Orangelight
     config.alma = config_for(:alma).with_indifferent_access
 
     # See https://github.com/projectblacklight/blacklight/issues/2768
-    config.active_record.yaml_column_permitted_classes = [HashWithIndifferentAccess]
+    config.active_record.yaml_column_permitted_classes = [Symbol, Date, Time, Hash, HashWithIndifferentAccess]
   end
 end
