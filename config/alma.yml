@@ -11,5 +11,8 @@ test:
 alma_qa:
   <<: *default
 
+staging:
+  <<: *default
+
 production:
   <<: *default
