@@ -3,7 +3,9 @@ require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
 describe Requests::RequestableDecorator do
-  subject(:decorator) { described_class.new(requestable, view_context) }
+  include ActionView::TestCase::Behavior
+
+  subject(:decorator) { described_class.new(requestable, view) }
   let(:user) { FactoryBot.build(:user) }
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
@@ -16,7 +18,6 @@ describe Requests::RequestableDecorator do
   let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
   let(:default_stubbed_questions) { { patron: patron, etas?: false, item_data?: true, circulates?: true, eligible_to_pickup?: true, on_shelf?: false, recap?: false, annex?: false, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, cul_avery?: false, resource_shared?: false, eligible_for_library_services?: true } }
   let(:stubbed_questions) { default_stubbed_questions.merge(etas?: false) }
-  let(:view_context) { ActionView::Base.new }
   let(:ldap) { {} }
 
   describe "#digitize?" do
