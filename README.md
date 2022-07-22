@@ -8,7 +8,7 @@ Versions:
 
 * Ruby: 2.7.5
 * Rails: 6.0.4.7
-* Blacklight: 7.23.0.1
+* Blacklight: 7.25.3
 * blacklight_advanced_search: 7.0.0
 
 ### Development pre-requisites
