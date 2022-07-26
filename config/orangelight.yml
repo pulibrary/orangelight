@@ -5,6 +5,9 @@ defaults: &defaults
   feedback_form:
     to: <%= ENV['OL_FEEDBACK_TO'] %>
     cc: <%= ENV['OL_FEEDBACK_CC'] %>
+  show_page:
+    linked_documents:
+      maximum: 3
 
 development:
   <<: *defaults

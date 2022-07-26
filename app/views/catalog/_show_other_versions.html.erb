@@ -1,5 +1,5 @@
 <% online, physical = holding_request_block(document) %>
-<% document_linked_records = document.linked_records(field: 'other_version_s', query_field: 'other_version_s') %>
+<% document_linked_records = document.linked_records(field: 'other_version_s', query_field: 'other_version_s').decorated %>
 <% unless document_linked_records.empty? %>
   <div class="location--panel location--linked availability--other-versions">
     <div class="section-heading"><h3><%= t('blacklight.holdings.linked') %></h3></div>

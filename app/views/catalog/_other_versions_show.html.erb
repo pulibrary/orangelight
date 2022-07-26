@@ -1,14 +1,16 @@
-<% unless linked_records.empty? %>
-  <dt class="blacklight-<%= field.parameterize %>"><%= render_document_show_field_label(document, field: field.field) %></dt>
-  <dd class="blacklight-<%= field.parameterize %>">
-    <% if linked_records.count == 1 %>
-      <%= link_to linked_records.first.title, solr_document_url(linked_records.first.id) %>
+<% decorated = linked_records.decorated %>
+<% unless decorated.empty? %>
+  <dt class="blacklight-<%= field.field.parameterize %>"><%= render_document_show_field_label(document, field: field.field) %></dt>
+  <dd class="blacklight-<%= field.field.parameterize %>">
+    <% if decorated.count == 1 %>
+      <%= link_to decorated.first.title, solr_document_url(decorated.first.id) %>
     <% else %>
-      <ul>
-        <% linked_records.each do |linked_record| %>
+      <ul id="linked-records-<%= field.field.parameterize %>">
+        <% decorated.each do |linked_record| %>
       	  <li><%= link_to linked_record.title, solr_document_url(linked_record.id) %></li>
         <% end %>
       </ul>
+      <%= render 'other_versions_show_more', linked_record_count: linked_records.total_count_of_linked_documents_in_index, field: field, doc_id: document.id %>
     <% end %>
   </dd>
 <% end %>

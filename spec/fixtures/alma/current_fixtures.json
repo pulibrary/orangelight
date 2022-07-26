@@ -29737,5 +29737,1113 @@
     "Online",
     "In the Library"
   ]
+},
+{
+  "id": "9926212973506421",
+  "numeric_id_b": true,
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "title_display": "The Grand accuser, the greatest of all criminals. Part I.",
+  "title_t": [
+    "The Grand accuser, the greatest of all criminals. Part I."
+  ],
+  "title_citation_display": [
+    "The Grand accuser, the greatest of all criminals"
+  ],
+  "compiled_created_t": [
+    "The Grand accuser, the greatest of all criminals. Part I."
+  ],
+  "pub_created_display": [
+    "London : Printed for J. Roberts at the Oxford Arms in Warwick-Lane, 1735."
+  ],
+  "pub_created_s": [
+    "London : Printed for J. Roberts at the Oxford Arms in Warwick-Lane, 1735."
+  ],
+  "pub_citation_display": [
+    "London: Printed for J. Roberts at the Oxford Arms in Warwick-Lane"
+  ],
+  "pub_date_display": [
+    "1735"
+  ],
+  "pub_date_start_sort": 1735,
+  "cataloged_tdt": "2021-07-13T01:52:07Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "80 p. ; 20 cm. (8vo)"
+  ],
+  "description_t": [
+    "80 p. ; 20 cm. (8vo)"
+  ],
+  "number_of_pages_citation_display": [
+    "80 p."
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99124945733506421"
+  ],
+  "notes_display": [
+    "No more published.",
+    "\"A defence of the Duke of Marlborough and others against certain statements of the Examiner.\"--British museum catalogue, under Accuser.",
+    "No. 8 of a volume of pamphlets."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Great Britain—History—Anne, 1702-1714",
+    "Marlborough, John Churchill, Duke of, 1650-1722",
+    "Harley, Robert, Earl of Oxford, 1661-1724",
+    "Godolphin, Sidney Godolphin, Earl of, 1645-1712",
+    "Examiner (London, England)",
+    "Craftsman (London, England : 1729)",
+    "Journalism—Political aspects—Great Britain"
+  ],
+  "subject_facet": [
+    "Great Britain—History—Anne, 1702-1714",
+    "Marlborough, John Churchill, Duke of, 1650-1722",
+    "Harley, Robert, Earl of Oxford, 1661-1724",
+    "Godolphin, Sidney Godolphin, Earl of, 1645-1712",
+    "Examiner (London, England)",
+    "Craftsman (London, England : 1729)",
+    "Journalism—Political aspects—Great Britain"
+  ],
+  "in_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "oclc_s": [
+    "7669172"
+  ],
+  "other_version_s": [
+    "ocm07669172"
+  ],
+  "subject_era_facet": [
+    "Great Britain: Anne, 1702-1714"
+  ]
+},
+{
+  "id": "9926272693506421",
+  "numeric_id_b": true,
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "title_display": "Reflections upon the Corporation and Test-acts, as they relate to the Protestant dissenters.",
+  "title_t": [
+    "Reflections upon the Corporation and Test-acts, as they relate to the Protestant dissenters."
+  ],
+  "title_citation_display": [
+    "Reflections upon the Corporation and Test-acts, as they relate to the Protestant dissenters"
+  ],
+  "compiled_created_t": [
+    "Reflections upon the Corporation and Test-acts, as they relate to the Protestant dissenters."
+  ],
+  "pub_created_display": [
+    "London, Printed for J. Roberts, 1732."
+  ],
+  "pub_created_s": [
+    "London, Printed for J. Roberts, 1732."
+  ],
+  "pub_citation_display": [
+    "London: Printed for J. Roberts"
+  ],
+  "pub_date_display": [
+    "1732"
+  ],
+  "pub_date_start_sort": 1732,
+  "cataloged_tdt": "2021-07-12T20:56:25Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "27 p. 20 cm."
+  ],
+  "description_t": [
+    "27 p. 20 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "27 p."
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99124945733506421"
+  ],
+  "notes_display": [
+    "No. 6 of a volume of pamphlets."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Corporation act, 1661",
+    "Test act (1673)",
+    "Dissenters—England"
+  ],
+  "subject_facet": [
+    "Corporation act, 1661",
+    "Test act (1673)",
+    "Dissenters—England"
+  ],
+  "in_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "oclc_s": [
+    "14050137"
+  ],
+  "other_version_s": [
+    "ocm14050137"
+  ]
+},
+{
+  "id": "9926343413506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+    "George",
+    "Frederick Louis",
+    "Caroline"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"George\",\"Frederick Louis\",\"Caroline\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "George II, King of Great Britain, 1683-1760",
+    "Frederick Louis, Prince of Wales, 1701-1751",
+    "Caroline, consort of George II, King of Great Britain, 1683-1737"
+  ],
+  "title_display": "Letters, in the original, with translations, and messages, that passed between the King, Queen, Prince, and Princess of Wales; on occasion of the birth of the young Princess.",
+  "title_t": [
+    "Letters, in the original, with translations, and messages, that passed between the King, Queen, Prince, and Princess of Wales; on occasion of the birth of the young Princess."
+  ],
+  "title_citation_display": [
+    "Letters, in the original, with translations, and messages, that passed between the King, Queen, Prince, and Princess of Wales; on occasion of the birth of the young Princess"
+  ],
+  "compiled_created_t": [
+    "Letters, in the original, with translations, and messages, that passed between the King, Queen, Prince, and Princess of Wales; on occasion of the birth of the young Princess."
+  ],
+  "pub_created_display": [
+    "London : Printed, and sold by J. Roberts ... , 1737."
+  ],
+  "pub_created_s": [
+    "London : Printed, and sold by J. Roberts ... , 1737."
+  ],
+  "pub_citation_display": [
+    "London: Printed, and sold by J. Roberts ..."
+  ],
+  "pub_date_display": [
+    "1737"
+  ],
+  "pub_date_start_sort": 1737,
+  "cataloged_tdt": "2021-07-13T01:28:24Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "30, [2] p. ; 22 cm. (8vo)"
+  ],
+  "description_t": [
+    "30, [2] p. ; 22 cm. (8vo)"
+  ],
+  "number_of_pages_citation_display": [
+    "30, [2] p."
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99124945733506421"
+  ],
+  "notes_display": [
+    "Signatues: A-D⁴.",
+    "Cover title.",
+    "Most of the letters are given in English and French, and center on the dispute between the King and the Prince of Wales.",
+    "Columns on p. 3 headed \"The Translation\" and \"The Original.\"",
+    "No. 11 of a volume of pamphlets."
+  ],
+  "language_facet": [
+    "English",
+    "French"
+  ],
+  "language_code_s": [
+    "eng",
+    "fre"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "references_display": [
+    "ESTC T004140 (variant?)"
+  ],
+  "references_url_display": [
+    "ESTC T004140 (variant?)"
+  ],
+  "lc_subject_display": [
+    "Augusta, Princess, granddaughter of George II, King of England, 1737-1813",
+    "Great Britain—History—George II, 1727-1760"
+  ],
+  "subject_facet": [
+    "Augusta, Princess, granddaughter of George II, King of England, 1737-1813",
+    "Great Britain—History—George II, 1727-1760"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"George II, King of Great Britain, 1683-1760\",\"Frederick Louis, Prince of Wales, 1701-1751\",\"Caroline, consort of George II, King of Great Britain, 1683-1737\"]}",
+  "in_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "oclc_s": [
+    "30207775"
+  ],
+  "other_version_s": [
+    "ocm30207775"
+  ],
+  "subject_era_facet": [
+    "Great Britain: George II, 1727-1760"
+  ]
+},
+{
+  "id": "9926272943506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Fiddes, Richard, 1671-1725"
+  ],
+  "author_citation_display": [
+    "Fiddes, Richard"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Fiddes, Richard\"}",
+  "author_s": [
+    "Fiddes, Richard, 1671-1725"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Remarks on the state anatomy of Great Britain in a letter to a Member of Parliament : which may serve to obviate the ill designs, and expose the false reasonings of that pamphlet.",
+  "title_t": [
+    "Remarks on the state anatomy of Great Britain in a letter to a Member of Parliament : which may serve to obviate the ill designs, and expose the false reasonings of that pamphlet."
+  ],
+  "title_citation_display": [
+    "Remarks on the state anatomy of Great Britain in a letter to a Member of Parliament : which may serve to obviate the ill designs, and expose the false reasonings of that pamphlet"
+  ],
+  "compiled_created_t": [
+    "Remarks on the state anatomy of Great Britain in a letter to a Member of Parliament : which may serve to obviate the ill designs, and expose the false reasonings of that pamphlet."
+  ],
+  "pub_created_display": [
+    "London : Printed for J. Morphew ..., 1717."
+  ],
+  "pub_created_s": [
+    "London : Printed for J. Morphew ..., 1717."
+  ],
+  "pub_citation_display": [
+    "London: Printed for J. Morphew ..."
+  ],
+  "pub_date_display": [
+    "1717"
+  ],
+  "pub_date_start_sort": 1717,
+  "cataloged_tdt": "2021-07-12T20:56:20Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "71, [1] p. ; 19 cm. (8vo)"
+  ],
+  "description_t": [
+    "71, [1] p. ; 19 cm. (8vo)"
+  ],
+  "number_of_pages_citation_display": [
+    "71, [1] p."
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99124945733506421"
+  ],
+  "notes_display": [
+    "Signatures: A-I⁴.",
+    "Half title: Remarks on the State anatomy of Great Britain, &c.",
+    "Price 1 s.",
+    "Published anonymously. Attributed to Richard Fiddes by ESTC.",
+    "A reply to the work by John Toland.",
+    "No. 2 of a volume of pamphlets."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "references_display": [
+    "ESTC T046848"
+  ],
+  "references_url_display": [
+    "ESTC T046848"
+  ],
+  "lc_subject_display": [
+    "Toland, John, 1670-1722—The state anatomy of Great Britain",
+    "Great Britain—History—George I, 1714-1727—Pamphlets",
+    "Great Britain—Politics and government—1714-1727—Pamphlets"
+  ],
+  "subject_facet": [
+    "Toland, John, 1670-1722—The state anatomy of Great Britain",
+    "Great Britain—History—George I, 1714-1727—Pamphlets",
+    "Great Britain—Politics and government—1714-1727—Pamphlets"
+  ],
+  "in_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "oclc_s": [
+    "14077238"
+  ],
+  "other_version_s": [
+    "ocm14077238"
+  ],
+  "subject_era_facet": [
+    "Great Britain: George I, 1714-1727",
+    "1714-1727"
+  ],
+  "name_title_browse_s": [
+    "Fiddes, Richard, 1671-1725. Remarks on the state anatomy of Great Britain in a letter to a Member of Parliament"
+  ]
+},
+{
+  "id": "9926335583506421",
+  "numeric_id_b": true,
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "title_display": "Observations on the conduct of Great-Britain with regard to the negociations and other transactions abroad.",
+  "title_t": [
+    "Observations on the conduct of Great-Britain with regard to the negociations and other transactions abroad."
+  ],
+  "title_citation_display": [
+    "Observations on the conduct of Great-Britain with regard to the negociations and other transactions abroad"
+  ],
+  "compiled_created_t": [
+    "Observations on the conduct of Great-Britain with regard to the negociations and other transactions abroad."
+  ],
+  "pub_created_display": [
+    "[Dublin] : London printed and re-printed in Dublin for R. Gunneand A. Rhames ... , 1729."
+  ],
+  "pub_created_s": [
+    "[Dublin] : London printed and re-printed in Dublin for R. Gunneand A. Rhames ... , 1729."
+  ],
+  "pub_citation_display": [
+    "Dublin: London printed and re-printed in Dublin for R. Gunneand A. Rhames ..."
+  ],
+  "pub_date_display": [
+    "1729"
+  ],
+  "pub_date_start_sort": 1729,
+  "cataloged_tdt": "2021-07-13T08:47:46Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "42 p. ; 22 cm.(8vo)"
+  ],
+  "description_t": [
+    "42 p. ; 22 cm.(8vo)"
+  ],
+  "number_of_pages_citation_display": [
+    "42 p."
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99124945733506421"
+  ],
+  "notes_display": [
+    "No. 4 of a volume of pamphlets."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "references_display": [
+    "ESTC T185706"
+  ],
+  "references_url_display": [
+    "ESTC T185706"
+  ],
+  "lc_subject_display": [
+    "Great Britain—Foreign relations—1727-1760"
+  ],
+  "subject_facet": [
+    "Great Britain—Foreign relations—1727-1760"
+  ],
+  "in_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "oclc_s": [
+    "28108058"
+  ],
+  "other_version_s": [
+    "ocm28108058"
+  ],
+  "subject_era_facet": [
+    "1727-1760"
+  ]
+},
+{
+  "id": "9926273983506421",
+  "numeric_id_b": true,
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "title_display": "A Hue and cry after part of a pack of hounds, which broke out of their kennel in Westminster. To which is added Modern characters, by another hand.",
+  "title_t": [
+    "A Hue and cry after part of a pack of hounds, which broke out of their kennel in Westminster. To which is added Modern characters, by another hand."
+  ],
+  "title_citation_display": [
+    "A Hue and cry after part of a pack of hounds, which broke out of their kennel in Westminster. To which is added Modern characters, by another hand"
+  ],
+  "compiled_created_t": [
+    "A Hue and cry after part of a pack of hounds, which broke out of their kennel in Westminster. To which is added Modern characters, by another hand."
+  ],
+  "pub_created_display": [
+    "London, Printed for F. Style, 1739."
+  ],
+  "pub_created_s": [
+    "London, Printed for F. Style, 1739."
+  ],
+  "pub_citation_display": [
+    "London: Printed for F. Style"
+  ],
+  "pub_date_display": [
+    "1739"
+  ],
+  "pub_date_start_sort": 1739,
+  "cataloged_tdt": "2021-07-12T20:56:27Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "1 p. l., 28 p. 20 cm."
+  ],
+  "description_t": [
+    "1 p. l., 28 p. 20 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "1 p. l., 28 p."
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99124945733506421"
+  ],
+  "notes_display": [
+    "Political satires.",
+    "No. 12 of a volume of pamphlets."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Great Britain—History—George II, 1727-1760—Pamphlets"
+  ],
+  "subject_facet": [
+    "Great Britain—History—George II, 1727-1760—Pamphlets"
+  ],
+  "other_title_display": [
+    "Modern characters.",
+    "Westminster."
+  ],
+  "in_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "oclc_s": [
+    "14219392"
+  ],
+  "other_version_s": [
+    "ocm14219392"
+  ],
+  "subject_era_facet": [
+    "Great Britain: George II, 1727-1760"
+  ]
+},
+{
+  "id": "9926126193506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Yonge, William, Sir, -1755"
+  ],
+  "author_citation_display": [
+    "Yonge, William"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Yonge, William\"}",
+  "author_s": [
+    "Yonge, William, Sir, -1755"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Sedition and defamation display'd: in a letter to the author of the Craftsman.",
+  "title_t": [
+    "Sedition and defamation display'd: in a letter to the author of the Craftsman."
+  ],
+  "title_citation_display": [
+    "Sedition and defamation display'd: in a letter to the author of the Craftsman"
+  ],
+  "compiled_created_t": [
+    "Sedition and defamation display'd: in a letter to the author of the Craftsman."
+  ],
+  "pub_created_display": [
+    "London: Printed for J. Roberts, 1731."
+  ],
+  "pub_created_s": [
+    "London: Printed for J. Roberts, 1731."
+  ],
+  "pub_citation_display": [
+    "London: Printed for J. Roberts"
+  ],
+  "pub_date_display": [
+    "1731"
+  ],
+  "pub_date_start_sort": 1731,
+  "cataloged_tdt": "2021-07-12T13:48:10Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "viii, 48 p. 20 cm."
+  ],
+  "description_t": [
+    "viii, 48 p. 20 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "viii, 48 p."
+  ],
+  "geocode_display": [
+    "Great Britain"
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99124945733506421"
+  ],
+  "notes_display": [
+    "No. 5 of a volume of pamphlets."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Great Britain—Politics and government—1727-1760—Pamphlets",
+    "The Craftsman"
+  ],
+  "subject_facet": [
+    "Great Britain—Politics and government—1727-1760—Pamphlets",
+    "The Craftsman"
+  ],
+  "in_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "oclc_s": [
+    "3348892"
+  ],
+  "other_version_s": [
+    "ocm03348892"
+  ],
+  "subject_era_facet": [
+    "1727-1760"
+  ],
+  "name_title_browse_s": [
+    "Yonge, William, Sir, -1755. Sedition and defamation display'd"
+  ]
+},
+{
+  "id": "9926327173506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Speke, Hugh, 1656-1724?"
+  ],
+  "author_citation_display": [
+    "Speke, Hugh"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Speke, Hugh\"}",
+  "author_s": [
+    "Speke, Hugh, 1656-1724?"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "The case of Hugh Speke ... and family ...",
+  "title_t": [
+    "The case of Hugh Speke ... and family ..."
+  ],
+  "title_citation_display": [
+    "The case of Hugh Speke ... and family ..."
+  ],
+  "compiled_created_t": [
+    "The case of Hugh Speke ... and family ..."
+  ],
+  "pub_created_display": [
+    "[London? 1716]"
+  ],
+  "pub_created_s": [
+    "[London? 1716]"
+  ],
+  "pub_citation_display": [
+    "London?"
+  ],
+  "pub_date_display": [
+    "1716"
+  ],
+  "pub_date_start_sort": 1716,
+  "cataloged_tdt": "2021-07-13T04:37:34Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "8 p. 18 cm."
+  ],
+  "description_t": [
+    "8 p. 18 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "8 p."
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99124945733506421"
+  ],
+  "summary_note_display": [
+    "A petition for restitution of fines imposed by the Crown, 1684-88."
+  ],
+  "notes_display": [
+    "Caption title.",
+    "No. 1 of a volume of pamphlets."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "in_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "oclc_s": [
+    "24538365"
+  ],
+  "other_version_s": [
+    "ocm24538365"
+  ],
+  "name_title_browse_s": [
+    "Speke, Hugh, 1656-1724?. The case of Hugh Speke ... and family ..."
+  ]
+},
+{
+  "id": "9926276813506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Spain. Sovereign (1700-1746 : Philip V)"
+  ],
+  "author_citation_display": [
+    "Spain",
+    "Philip"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Philip\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Spain\"}",
+  "author_s": [
+    "Spain. Sovereign (1700-1746 : Philip V)",
+    "Philip V, King of Spain, 1683-1746"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "The King of Spain's declaration of war against Great Britain : done at Buen Retiro, on the 28th of November / signed by His Catholic Majesty and lower, by Don Casimiro de Uztariz ; in Spanish and English.",
+  "title_t": [
+    "The King of Spain's declaration of war against Great Britain : done at Buen Retiro, on the 28th of November / signed by His Catholic Majesty and lower, by Don Casimiro de Uztariz ; in Spanish and English."
+  ],
+  "title_citation_display": [
+    "The King of Spain's declaration of war against Great Britain : done at Buen Retiro, on the 28th of November"
+  ],
+  "compiled_created_t": [
+    "The King of Spain's declaration of war against Great Britain : done at Buen Retiro, on the 28th of November / signed by His Catholic Majesty and lower, by Don Casimiro de Uztariz ; in Spanish and English."
+  ],
+  "pub_created_display": [
+    "London : Printed for R. Amey ..., [1739]"
+  ],
+  "pub_created_s": [
+    "London : Printed for R. Amey ..., [1739]"
+  ],
+  "pub_citation_display": [
+    "London: Printed for R. Amey ..."
+  ],
+  "pub_date_display": [
+    "1739"
+  ],
+  "pub_date_start_sort": 1739,
+  "cataloged_tdt": "2021-07-12T20:56:28Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "31, [1] p. ; 20 cm. (8vo)"
+  ],
+  "description_t": [
+    "31, [1] p. ; 20 cm. (8vo)"
+  ],
+  "number_of_pages_citation_display": [
+    "31, [1] p."
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99124945733506421"
+  ],
+  "notes_display": [
+    "Spanish and English on opposite pages.",
+    "Added t.p.: The Spanish declaration of war against Great-Britain.",
+    "Publication date from NUC.",
+    "Signatures: [A]-D⁴.",
+    "Head- and tailpieces.",
+    "Imperfect: p. 4 misnumbered 2.",
+    "No. 13 of a volume of pamphlets."
+  ],
+  "language_facet": [
+    "English",
+    "Spanish"
+  ],
+  "language_code_s": [
+    "eng",
+    "spa"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "references_display": [
+    "Sabin 37863"
+  ],
+  "references_url_display": [
+    "Sabin 37863"
+  ],
+  "lc_subject_display": [
+    "Anglo-Spanish War, 1739-1748",
+    "Spain—History—Philip V, 1700-1746",
+    "Spain—Foreign relations—Great Britain",
+    "Great Britain—Foreign relations—Spain"
+  ],
+  "subject_facet": [
+    "Anglo-Spanish War, 1739-1748",
+    "Spain—History—Philip V, 1700-1746",
+    "Spain—Foreign relations—Great Britain",
+    "Great Britain—Foreign relations—Spain"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Philip V, King of Spain, 1683-1746\"]}",
+  "in_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "oclc_s": [
+    "14870620"
+  ],
+  "other_version_s": [
+    "ocm14870620",
+    "ocm07104336",
+    "ocm36382128"
+  ],
+  "subject_era_facet": [
+    "Spain: Philip V, 1700-1746"
+  ],
+  "name_title_browse_s": [
+    "Spain. Sovereign (1700-1746 : Philip V). The King of Spain's declaration of war against Great Britain"
+  ]
+},
+{
+  "id": "9926326703506421",
+  "numeric_id_b": true,
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "title_display": "A serious address to the electors of Great Britain. In which the conduct ... both of the Court and Country parties are ... represented ... [Anon.]",
+  "title_t": [
+    "A serious address to the electors of Great Britain. In which the conduct ... both of the Court and Country parties are ... represented ... [Anon.]"
+  ],
+  "title_citation_display": [
+    "A serious address to the electors of Great Britain. In which the conduct ... both of the Court and Country parties are ... represented ..."
+  ],
+  "compiled_created_t": [
+    "A serious address to the electors of Great Britain. In which the conduct ... both of the Court and Country parties are ... represented ... [Anon.]"
+  ],
+  "pub_created_display": [
+    "London, Printed and sold by Mrs. Nutt [1738?]"
+  ],
+  "pub_created_s": [
+    "London, Printed and sold by Mrs. Nutt [1738?]"
+  ],
+  "pub_citation_display": [
+    "London: Printed and sold by Mrs. Nutt"
+  ],
+  "pub_date_display": [
+    "1738"
+  ],
+  "pub_date_start_sort": 1738,
+  "cataloged_tdt": "2021-07-13T04:37:16Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "62 p. 20 cm."
+  ],
+  "description_t": [
+    "62 p. 20 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "62 p."
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99124945733506421"
+  ],
+  "notes_display": [
+    "No. 10 of a volume of pamphlets."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "in_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "oclc_s": [
+    "24344149"
+  ],
+  "other_version_s": [
+    "ocm24344149"
+  ]
+},
+{
+  "id": "9926223093506421",
+  "numeric_id_b": true,
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "title_display": "Remarks upon the present crisis : humbly address'd to the knights, citizens and burgesses, to serve in the present parliament.",
+  "title_t": [
+    "Remarks upon the present crisis : humbly address'd to the knights, citizens and burgesses, to serve in the present parliament."
+  ],
+  "title_citation_display": [
+    "Remarks upon the present crisis : humbly address'd to the knights, citizens and burgesses, to serve in the present parliament"
+  ],
+  "compiled_created_t": [
+    "Remarks upon the present crisis : humbly address'd to the knights, citizens and burgesses, to serve in the present parliament."
+  ],
+  "pub_created_display": [
+    "London : Printed and sold by J. Purser in White-Fryars : A. Dodd at the Peacock without Temple-Bar and by booksellers of London and Westminster, 1736"
+  ],
+  "pub_created_s": [
+    "London : Printed and sold by J. Purser in White-Fryars : A. Dodd at the Peacock without Temple-Bar and by booksellers of London and Westminster, 1736"
+  ],
+  "pub_citation_display": [
+    "London: Printed and sold by J. Purser in White-Fryars : A. Dodd at the Peacock without Temple-Bar and by booksellers of London and Westminster"
+  ],
+  "pub_date_display": [
+    "1736"
+  ],
+  "pub_date_start_sort": 1736,
+  "cataloged_tdt": "2021-07-13T04:30:08Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "43 p. ; 20 cm."
+  ],
+  "description_t": [
+    "43 p. ; 20 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "43 p."
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99124945733506421"
+  ],
+  "notes_display": [
+    "No. 9 of a volume of pamphlets."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Walpole, Robert, Earl of Orford, 1676-1745",
+    "Great Britain—Politics and government—1727-1760"
+  ],
+  "subject_facet": [
+    "Walpole, Robert, Earl of Orford, 1676-1745",
+    "Great Britain—Politics and government—1727-1760"
+  ],
+  "in_display": [
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "oclc_s": [
+    "8760241"
+  ],
+  "other_version_s": [
+    "ocm08760241"
+  ],
+  "subject_era_facet": [
+    "1727-1760"
+  ]
+},
+{
+  "id": "9926256233506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+    "Shippen, William",
+    "Jeffreys, Edward",
+    "Hanmer, Thomas",
+    "Great Britain"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Shippen, William\",\"Jeffreys, Edward\",\"Hanmer, Thomas\",\"Great Britain\",\"Great Britain\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Shippen, William, 1673-1743",
+    "Jeffreys, Edward",
+    "Hanmer, Thomas, Sir, 1677-1746",
+    "Great Britain. Parliament. House of Commons",
+    "Great Britain. Parliament. House of Lords"
+  ],
+  "title_display": "Three speeches against continuing the army, &c., : as they were spoken in the House of Commons the last session of Parliament : to which are added the reasons given by the Lords, who protested against the bill for punishing mutiny and desertion.",
+  "title_t": [
+    "Three speeches against continuing the army, &c., : as they were spoken in the House of Commons the last session of Parliament : to which are added the reasons given by the Lords, who protested against the bill for punishing mutiny and desertion."
+  ],
+  "title_citation_display": [
+    "Three speeches against continuing the army, &c., : as they were spoken in the House of Commons the last session of Parliament : to which are added the reasons given by the Lords, who protested against the bill for punishing mutiny and desertion"
+  ],
+  "compiled_created_t": [
+    "Three speeches against continuing the army, &c., : as they were spoken in the House of Commons the last session of Parliament : to which are added the reasons given by the Lords, who protested against the bill for punishing mutiny and desertion."
+  ],
+  "pub_created_display": [
+    "London : Printed for John Morphew, 1718."
+  ],
+  "pub_created_s": [
+    "London : Printed for John Morphew, 1718."
+  ],
+  "pub_citation_display": [
+    "London: Printed for John Morphew"
+  ],
+  "pub_date_display": [
+    "1718"
+  ],
+  "pub_date_start_sort": 1718,
+  "cataloged_tdt": "2021-07-12T15:48:16Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "46 p. ; 19 cm. (8vo)"
+  ],
+  "description_t": [
+    "46 p. ; 19 cm. (8vo)"
+  ],
+  "number_of_pages_citation_display": [
+    "46 p."
+  ],
+  "geocode_display": [
+    "Great Britain"
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including The answer of Henry Sacheverell, D.D. to the articles of impeachment exhibited against him by the honourable House of Commons, &c. : for preaching two sermons, I. At the assizes held at Darby, August 15. II. At the Cathedral Church of St. Paul, Nov. 5. 1709 : to which are prefix'd, the articles of impeachment, translated from the Leiden Gazette, of the 11th of February, N. S and 20 other(s).",
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99124980713506421",
+    "99124945733506421"
+  ],
+  "notes_display": [
+    "Speeches by William Shippen, Edward Jeffreys, and Sir Thomas Hanmer.",
+    "Signatures: [A]⁴ B-F⁴",
+    "Rcppg copy: No. 3 of a volume of pamphlets."
+  ],
+  "with_notes_display": [
+    "No. 20 of a volume of 21 pamphlets mainly concerning the impeachment of Henry Sacheverell."
+  ],
+  "binding_note_display": [
+    "Ex copy: In contemporary paneled sheep; speckled edges."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "provenance_display": [
+    "Ex copy: Bookplate of W. M. Owen Esq., Woodhouse."
+  ],
+  "references_display": [
+    "BLC"
+  ],
+  "references_url_display": [
+    "BLC"
+  ],
+  "lc_subject_display": [
+    "Great Britain. Army",
+    "Mutiny—Law and legislation—England"
+  ],
+  "subject_facet": [
+    "Great Britain. Army",
+    "Mutiny—Law and legislation—England"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Shippen, William, 1673-1743\",\"Jeffreys, Edward\",\"Hanmer, Thomas, Sir, 1677-1746\",\"Great Britain. Parliament. House of Commons\",\"Great Britain. Parliament. House of Lords\"]}",
+  "place_name_display": [
+    "United Kingdom England London."
+  ],
+  "in_display": [
+    "Multi-title collection including The answer of Henry Sacheverell, D.D. to the articles of impeachment exhibited against him by the honourable House of Commons, &c. : for preaching two sermons, I. At the assizes held at Darby, August 15. II. At the Cathedral Church of St. Paul, Nov. 5. 1709 : to which are prefix'd, the articles of impeachment, translated from the Leiden Gazette, of the 11th of February, N. S and 20 other(s).",
+    "Multi-title collection including The Grand accuser, the greatest of all criminals and 12 other(s)."
+  ],
+  "oclc_s": [
+    "12430913"
+  ],
+  "other_version_s": [
+    "ocm12430913"
+  ]
 }
 ]

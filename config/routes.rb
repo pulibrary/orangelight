@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     post '/requests/:system_id', to: 'request#generate', constraints: { system_id: /(\d+|dsp\w+|SCSB-\d+|coin-\d+)/i }
   end
   get 'catalog/:id/staff_view', to: 'catalog#librarian_view', as: 'staff_view_solr_document'
+  post '/catalog/:id/linked_records/:field', to: 'catalog#linked_records'
 
   concern :marc_viewable, Blacklight::Marc::Routes::MarcViewable.new
   root to: 'catalog#index'
