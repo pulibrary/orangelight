@@ -46,6 +46,9 @@ class SolrDocument
   ## Adds RIS
   use_extension(Blacklight::Document::Ris)
 
+  ## Adds JSON-LD
+  use_extension(Blacklight::Document::JsonLd)
+
   def identifier_data
     values = identifiers.each_with_object({}) do |identifier, hsh|
       hsh[identifier.data_key.to_sym] ||= []

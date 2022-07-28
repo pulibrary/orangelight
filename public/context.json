@@ -1,0 +1,8 @@
+{
+  "@context": {
+    "id" : "@id",
+    "title": {"@id": "dcterms:title"},
+    "language": {"@id": "dc:language"},
+    "creator": {"@id": "dc:creator"}
+  }
+}
