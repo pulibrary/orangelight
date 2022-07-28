@@ -24,7 +24,7 @@ describe 'email form' do
     valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{valid_voyager_patron[:patron_id]}&patronHomeUbId=1@DB"
     stub_request(:get, valid_patron_record_uri)
       .to_return(status: 200, body: voyager_account_response, headers: {})
-    login_as user
+    sign_in user
     visit "/catalog/#{bibid}/email"
     expect(page).to have_button('Send')
   end

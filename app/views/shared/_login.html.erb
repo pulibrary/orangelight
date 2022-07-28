@@ -1,7 +1,7 @@
  <% do_not_show_barcode ||= false %>
  <div class='card border-0'>
     <div class='card-body text-center'>
-      <%= link_to t('blacklight.login.netid_login_msg'), main_app.user_cas_omniauth_authorize_path, method: :post, :class => 'btn btn-primary' %>
+      <%= link_to t('blacklight.login.netid_login_msg'), main_app.user_cas_omniauth_authorize_path, :class => 'btn btn-primary' %>
       <hr>
       <p class="or-divider">
       or

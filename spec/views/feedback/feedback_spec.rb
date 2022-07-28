@@ -48,7 +48,7 @@ describe 'Feedback Form', type: :feature do
     it 'Populates Email Field' do
       stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")
         .to_return(status: 200, body: valid_patron_response, headers: {})
-      login_as user
+      sign_in user
       visit('/catalog/4747577')
       click_link('Feedback')
       expect(page).to have_field('feedback_form_email', with: "#{user.uid}@princeton.edu")
