@@ -25,5 +25,18 @@ module Features
       fill_in 'Password confirmation', with: password
       click_button 'Sign up'
     end
+
+    # Poltergeist-friendly sign-in
+    # Use this in feature tests
+    def sign_in(who = :user)
+      user = if who.instance_of?(User)
+               who.username
+             else
+               FactoryBot.create(:valid_princeton_patron).username
+             end
+      OmniAuth.config.test_mode = true
+      OmniAuth.config.add_mock(:cas, uid: user)
+      visit user_cas_omniauth_authorize_path
+    end
   end
 end
