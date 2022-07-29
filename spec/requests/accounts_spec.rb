@@ -23,9 +23,32 @@ RSpec.describe AccountController do
     stub_request(:get, valid_patron_record_uri)
       .to_return(status: 200, body: valid_patron_response, headers: {})
   end
+
+  describe "#redirect_to_alma" do
+    context "as an unauthenticated user" do
+      it "sends the user to the login page" do
+        get "/users/sign_in?origin=%2Fredirect-to-alma"
+        expect(response).to be_successful
+      end
+    end
+    context "as an authenticated user" do
+      before do
+        login_as(valid_user)
+      end
+
+      it "sends the user to the redirect to alma page" do
+        get "/users/sign_in?origin=%2Fredirect-to-alma"
+        expect(response).to redirect_to("/redirect-to-alma")
+
+        follow_redirect!
+
+        expect(response).to render_template(:redirect_to_alma)
+      end
+    end
+  end
   describe "#index" do
     it "redirects to digitization_requests" do
-      sign_in(valid_user)
+      login_as(valid_user)
       get "/account"
 
       expect(response).to redirect_to "/account/digitization_requests"
@@ -41,7 +64,7 @@ RSpec.describe AccountController do
     end
     context "when logged in" do
       it "renders digitization requests" do
-        sign_in(valid_user)
+        login_as(valid_user)
         get "/account/digitization_requests"
 
         expect(response.body).to have_content "Outstanding Inter Library Loan and Digitization Requests"
