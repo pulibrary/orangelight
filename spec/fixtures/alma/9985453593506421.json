@@ -1,0 +1,139 @@
+{
+  "id": "9985453593506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Scrofani, Saverio, 1756-1835"
+  ],
+  "author_citation_display": [
+    "Scrofani, Saverio",
+    "Fondo Cicognara (Biblioteca apostolica vaticana)",
+    "Leopoldo Cicognara Program (University of Illinois at Urbana-Champaign)"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Fondo Cicognara (Biblioteca apostolica vaticana)\",\"Leopoldo Cicognara Program (University of Illinois at Urbana-Champaign)\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Scrofani, Saverio\"}",
+  "author_s": [
+    "Scrofani, Saverio, 1756-1835",
+    "Fondo Cicognara (Biblioteca apostolica vaticana)",
+    "Leopoldo Cicognara Program (University of Illinois at Urbana-Champaign)"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Al Signor Cavaliere Ennio Quirino Visconti ... lettere [microform] / di Saverio Scrofani ... sopra alcuni quadri della Galleria Giustiniani ed una statua del Cavaliere Antonio Canova, esposta nel Museo Napolione l'anno 1808.",
+  "title_t": [
+    "Al Signor Cavaliere Ennio Quirino Visconti ... lettere [microform] / di Saverio Scrofani ... sopra alcuni quadri della Galleria Giustiniani ed una statua del Cavaliere Antonio Canova, esposta nel Museo Napolione l'anno 1808."
+  ],
+  "title_citation_display": [
+    "Al Signor Cavaliere Ennio Quirino Visconti ... lettere"
+  ],
+  "compiled_created_t": [
+    "Al Signor Cavaliere Ennio Quirino Visconti ... lettere [microform] / di Saverio Scrofani ... sopra alcuni quadri della Galleria Giustiniani ed una statua del Cavaliere Antonio Canova, esposta nel Museo Napolione l'anno 1808."
+  ],
+  "pub_created_display": [
+    "In Parigi : Dai torchi di Dondey-Dupre, 1809."
+  ],
+  "pub_created_s": [
+    "In Parigi : Dai torchi di Dondey-Dupre, 1809."
+  ],
+  "pub_citation_display": [
+    "In Parigi: Dai torchi di Dondey-Dupre"
+  ],
+  "pub_date_display": [
+    "1809"
+  ],
+  "pub_date_start_sort": 1809,
+  "cataloged_tdt": "2021-07-21T01:54:53Z",
+  "format": [
+    "Book"
+  ],
+  "electronic_access_1display": "{\"https://catalog.princeton.edu/catalog/8545359#view\":[\"Digital content\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/t722hd09j\":\"https://figgy.princeton.edu/concern/scanned_resources/c2e1f051-73c6-43ba-a8cb-651a89fdd8f1/manifest\"}}",
+  "description_display": [
+    "51 p."
+  ],
+  "description_t": [
+    "51 p."
+  ],
+  "number_of_pages_citation_display": [
+    "51 p."
+  ],
+  "series_display": [
+    "Cicognara library."
+  ],
+  "more_in_this_series_t": [
+    "Cicognara library"
+  ],
+  "notes_display": [
+    "BAV no. IV M 100 (1)"
+  ],
+  "reproduction_notes_display": [
+    "Microfiche. Cambridge, England : Chadwyck-Healey, 1989 1 microfiche : positive. (Cicognara library)"
+  ],
+  "language_facet": [
+    "Italian"
+  ],
+  "language_code_s": [
+    "ita"
+  ],
+  "language_iana_s": [
+    "it"
+  ],
+  "references_display": [
+    "Cicognara, 3555"
+  ],
+  "references_url_display": [
+    "Cicognara, 3555"
+  ],
+  "other_format_display": [
+    "Also available in an electronic version."
+  ],
+  "lc_subject_display": [
+    "Canova, Antonio, 1757-1822",
+    "Painting, Italian—16th century",
+    "Sculpture, Italian—19th century"
+  ],
+  "subject_facet": [
+    "Canova, Antonio, 1757-1822",
+    "Painting, Italian—16th century",
+    "Sculpture, Italian—19th century"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Fondo Cicognara (Biblioteca apostolica vaticana)\",\"Leopoldo Cicognara Program (University of Illinois at Urbana-Champaign)\"]}",
+  "other_title_display": [
+    "Lettere di Saverio Scrofani"
+  ],
+  "alt_title_246_display": [
+    "Lettere di Saverio Scrofani"
+  ],
+  "standard_no_1display": "{\"Cico\":[\"3555\"],\"Dclib\":[\"dcl:6kf\"]}",
+  "subject_era_facet": [
+    "16th century",
+    "19th century"
+  ],
+  "holdings_1display": "{\"22634372130006421\":{\"location_code\":\"marquand$mic\",\"location\":\"Microforms Remote Storage: Marquand Use Only\",\"library\":\"Marquand Library\",\"call_number\":\"MICROFICHE 5\",\"call_number_browse\":\"MICROFICHE 5\"}}",
+  "location_code_s": [
+    "marquand$mic"
+  ],
+  "location": [
+    "Marquand Library"
+  ],
+  "location_display": [
+    "Microforms Remote Storage: Marquand Use Only"
+  ],
+  "advanced_location_s": [
+    "marquand$mic",
+    "Marquand Library"
+  ],
+  "name_title_browse_s": [
+    "Scrofani, Saverio, 1756-1835. Al Signor Cavaliere Ennio Quirino Visconti ... lettere"
+  ],
+  "call_number_display": [
+    "MICROFICHE 5"
+  ],
+  "call_number_browse_s": [
+    "MICROFICHE 5"
+  ],
+  "call_number_locator_display": [
+    "MICROFICHE 5"
+  ],
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53869778160006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ]
+}

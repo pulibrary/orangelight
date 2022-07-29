@@ -330,6 +330,14 @@ describe 'blacklight tests' do
     end
   end
 
+  describe 'jsonld view' do
+    it 'creates a jsonld view from solr' do
+      id = '6574987'
+      get "/catalog/#{id}.jsonld"
+      expect(response.status).to eq 200
+    end
+  end
+
   describe 'identifier metadata' do
     before { stub_holding_locations }
 
