@@ -31,7 +31,7 @@ module Blacklight::Document::JsonLd
     metadata['date'] = date if date
     metadata['abstract'] = abstract if abstract
     metadata['identifier'] = identifier if identifier
-    # local_identifier?
+    metadata['local_identifier'] = local_identifier if local_identifier
     metadata['location'] = location if location
     metadata['electronic_locations'] = electronic_links if electronic_links.present?
 
@@ -136,15 +136,24 @@ module Blacklight::Document::JsonLd
     (self['summary_note_display'] || []).first
   end
 
-  # I'm not as confident about this one - the version in bibdata uses a bunch of local methods to build this field
-  # but it appears to only display ark links, which appear to only be iiif manifest links? Or at least that's what it looks like
-  # from the tests?
+  # Numbers from the Digital Cicognara Library (DCL)
+  def local_identifier
+    return unless self['standard_no_1display']
+
+    json = JSON.parse(self['standard_no_1display'])
+    json['Dclib']
+  end
+
+  # Arks from the electronic_access_1display
   def identifier
     return unless electronic_locations
 
-    return unless electronic_locations['iiif_manifest_paths']
+    electronic_locations.each do |_key, val|
+      foo = val.select { |x| x.to_s.include?('ark') }
+      next if foo.blank?
 
-    electronic_locations['iiif_manifest_paths'].keys.first
+      return foo.keys.first
+    end
   end
 
   def electronic_locations

@@ -100,5 +100,17 @@ RSpec.describe Blacklight::Document::JsonLd do
                                                    }])
       end
     end
+    context 'with a work connected to the Fondo Cicognara' do
+      let(:id) { '9985453593506421' }
+
+      it 'has a local_identifier' do
+        expect(doc['identifier']).to eq("http://arks.princeton.edu/ark:/88435/t722hd09j")
+        expect(doc['local_identifier']).to eq(['dcl:6kf'])
+        expect(doc['electronic_locations']).to eq([{ "@id" => "https://catalog.princeton.edu/catalog/8545359#view",
+                                                     "label" => ["Digital content"] },
+                                                   { "@id" => "iiif_manifest_paths",
+                                                     "label" => { "http://arks.princeton.edu/ark:/88435/t722hd09j" => "https://figgy.princeton.edu/concern/scanned_resources/c2e1f051-73c6-43ba-a8cb-651a89fdd8f1/manifest" } }])
+      end
+    end
   end
 end
