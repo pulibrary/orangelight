@@ -331,12 +331,6 @@ describe 'blacklight tests' do
   end
 
   describe 'jsonld view' do
-    it 'creates an xml view from solr' do
-      id = '6574987'
-      get "/catalog/#{id}.xml"
-      expect(response.status).to eq 200
-    end
-
     it 'creates a jsonld view from solr' do
       id = '6574987'
       get "/catalog/#{id}.jsonld"
