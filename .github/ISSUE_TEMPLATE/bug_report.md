@@ -17,3 +17,8 @@ Include screenshots, or links and browser version if relevant
 
 **Impact of this bug**
 E.g. "I can't work until this is fixed" or "I have a workaround"
+
+**Honeybadger link and code snippet, if applicable**
+
+```
+```
