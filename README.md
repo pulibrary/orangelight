@@ -62,7 +62,11 @@ cap staging deploy # deploys main branch to staging
 ## Staging Mail Catcher
   To see mail that has been sent on the staging server you must ssh tunnel into the server
   ```
-  ssh -L 1082:localhost:1080 pulsys@lib-orange-staging1
+  ssh -L 1082:localhost:1080 pulsys@catalog-staging1
+  ```
+  To see mail that has been sent on the qa server you must ssh tunnel into the server
+  ```
+  ssh -L 1082:localhost:1080 pulsys@catalog-qa1
   ```
   Once the tunnel is open [you can see the mail that has been sent on staging here]( http://localhost:1082/)
 
