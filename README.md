@@ -7,7 +7,7 @@ Status](https://coveralls.io/repos/github/pulibrary/orangelight/badge.svg?branch
 Versions:
 
 * Ruby: 2.7.5
-* Rails: 6.0.4.7
+* Rails: 6.0.5.1
 * Blacklight: 7.25.3
 * blacklight_advanced_search: 7.0.0
 
