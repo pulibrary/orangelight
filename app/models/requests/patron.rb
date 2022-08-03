@@ -147,21 +147,20 @@ module Requests
         case response.status
         when 500
           Rails.logger.error('Error Patron Data Service.')
-          nil
         when 429
           error_message = "The maximum number of HTTP requests per second for the Alma API has been exceeded."
           Rails.logger.error(error_message)
           errors << error_message
-          nil
         when 404
           Rails.logger.error("404 Patron #{id} cannot be found in the Patron Data Service.")
-          nil
         when 403
           Rails.logger.error("403 Not Authorized to Connect to Patron Data Service at #{request_uri} for patron ID #{id}")
-          nil
         else
-          response
+          return response unless response.body.empty?
+
+          Rails.logger.error("#{bibdata_uri} returned an empty patron response")
         end
+        nil
       rescue Faraday::Error::ConnectionFailed
         Rails.logger.error("Unable to connect to #{bibdata_uri}")
         nil
