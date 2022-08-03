@@ -14,14 +14,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(_resource)
-    referrer = params[:url] || request.referer
-    origin = params[:origin]
-    if origin.blank? && referrer.present? && referrer.include?("origin")
-      referrer_params = Rack::Utils.parse_query URI.parse(referrer).query
-      origin = referrer_params["origin"]
-    end
-
-    if referrer.present? && !referrer.include?("sign_in")
+    if referrer.present? && (!referrer.include?("sign_in") && !origin&.include?("redirect-to-alma"))
       referrer
     elsif origin.present?
       request.flash.delete('alert')
@@ -32,6 +25,21 @@ class ApplicationController < ActionController::Base
       request.env['omniauth.origin']
     else
       account_path
+    end
+  end
+
+  def referrer
+    @referrer ||= params[:url] || request.referer
+  end
+
+  def origin
+    @origin ||= begin
+      return params[:origin] if params[:origin].present?
+
+      if referrer.present? && referrer.include?("origin")
+        referrer_params = Rack::Utils.parse_query URI.parse(referrer).query
+        return referrer_params["origin"]
+      end
     end
   end
 
