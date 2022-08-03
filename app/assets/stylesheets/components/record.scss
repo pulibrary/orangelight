@@ -207,6 +207,42 @@
   }
 }
 
+#sidebar > div > .default {
+  cursor: pointer;
+  position: relative;
+
+  &:hover img  {
+    opacity: 0.75;
+  }
+
+  &:after {
+    content: "\f065";
+    position: absolute;
+    z-index: 2;
+    width: 3rem;
+    background-color: $black;
+    height: 3rem;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    color: #ffffff;
+    bottom: -25px;
+    right: -5px;
+    transform: translate(-50%, -50%);
+    font-family: FontAwesome;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    font-size: 1.25rem;
+    line-height: 2;
+  }
+
+  &:hover:before {
+    background-color: $gray;
+  }
+}
+
 @media (max-width: $bp-medium) {
   #main-content {
     .availability-table td {
