@@ -103,6 +103,22 @@ RSpec.describe 'catalog/show' do
     end
   end
 
+  context 'when a document has Chinese traditional subjects' do
+    it "displays them" do
+      visit 'catalog/9970446223506421'
+      expect(page).to have_content('Chinese traditional subject(s)')
+      expect(page).to have_content('Zi bu')
+    end
+  end
+
+  context 'when a document has Homosaurus subjects' do
+    it 'displays them' do
+      visit 'catalog/99125412083106421'
+      expect(page).to have_content('Homosaurus term(s)')
+      expect(page).to have_content('LGBTQ chosen families')
+    end
+  end
+
   context 'when a document has no language_iana_s' do
     it 'defaults to lang attribute "en"' do
       visit 'catalog/99124945733506421'
