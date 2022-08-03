@@ -2,11 +2,13 @@
 
 <% if linked_record_count > Orangelight.config['show_page']['linked_documents']['maximum'] %>
   <button class="show-more-linked-records btn btn-sm btn-link"
+    aria-controls="linked-records-<%= field.field.parameterize %>"
+    aria-expanded="false"
     data-initial-linked-records="<%= Orangelight.config['show_page']['linked_documents']['maximum'] %>"
     data-additional-linked-records="<%= additional_linked_records %>"
     data-linked-records-field="<%= field.field.parameterize %>"
-    data-linked-records-record-id="<%= doc_id %>"
-    data-linked-records-container="linked-records-<%= field.field.parameterize %>">Show
-  <%= additional_linked_records %>
+    data-record-id="<%= doc_id %>">
+  <span class="pe-none toggle collapsed"></span>
+  Show <%= additional_linked_records %>
   more related records</button>
 <% end %>

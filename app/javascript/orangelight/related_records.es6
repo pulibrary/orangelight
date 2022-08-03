@@ -19,20 +19,22 @@ export default class RelatedRecordsDisplayer {
         this.popListItems(listElement);
 
         // Add the new <li>s
-        for (let i=0; i < this.relatedRecords.length; i++) {
+        for (let i in this.relatedRecords) {
             const listItem = document.createElement("li");
             listItem.innerHTML = '<a href="/catalog/' + this.relatedRecords[i].document.id + '">' + this.relatedRecords[i].document.title_display + '</a>';
             listElement.appendChild(listItem);
         }
         listElement.setAttribute('tabindex', '-1');
-        event.target.textContent = 'Show fewer related records'
+        event.target.innerHTML = '<i class="pe-none toggle"></i> Show fewer related records'
+        event.target.setAttribute('aria-expanded', 'true');
         setTimeout(() => listElement.focus(), 500);
     }
 
     displayFewer(event) {
         const listElement = this.listElement(event.target);
         this.popListItems(listElement, event.target.getAttribute('data-initial-linked-records'));
-        event.target.textContent = 'Show ' + event.target.getAttribute('data-additional-linked-records') + ' more related records';
+        event.target.innerHTML = '<i class="pe-none toggle collapsed"></i> Show ' + event.target.getAttribute('data-additional-linked-records') + ' more related records';
+        event.target.setAttribute('aria-expanded', 'false');
         setTimeout(() => listElement.focus(), 500);
     }
 
@@ -44,7 +46,7 @@ export default class RelatedRecordsDisplayer {
     }
 
     listElement(buttonElement) {
-        return document.getElementById(buttonElement.getAttribute('data-linked-records-container'));
+        return document.getElementById(buttonElement.getAttribute('aria-controls'));
     }
 
     popListItems(listElement, numberToLeave=0) {

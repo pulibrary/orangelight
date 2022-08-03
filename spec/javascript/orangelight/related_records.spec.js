@@ -7,7 +7,7 @@ describe('RelatedRecords', function() {
     test('on button press', async() => {
         document.body.innerHTML = 
         '<ul id="list"></ul>' +
-        '<button data-linked-records-container="list" id="btn">' +
+        '<button aria-expanded="false" aria-controls="list" id="btn">' +
         'Show 10 more linked records</button>';
         const json_response = await fs.readFile("spec/fixtures/files/linked_records.json", 'utf8');
         const displayer = new RelatedRecordsDisplayer(JSON.parse(json_response));
@@ -21,6 +21,7 @@ describe('RelatedRecords', function() {
 
         expect(list.children.length).toBe(13);
         expect(list.getAttribute('tabindex')).toBe('-1');
-        expect(button.textContent).toBe('Show fewer related records');
+        expect(button.innerHTML).toBe('<i class="pe-none toggle"></i> Show fewer related records');
+        expect(button.getAttribute('aria-expanded')).toBe('true');
     });
 });

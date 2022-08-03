@@ -27,14 +27,16 @@ export default class OrangelightUiLoader {
   }
 
   setup_linked_records() {
-    const buttons = document.getElementsByClassName('show-more-linked-records');
-    for (let i=0; i < buttons.length; i++) {
-      const fetchData = RelatedRecordsDisplayer.fetchData(
-        buttons[i].getAttribute('data-linked-records-field'),
-        buttons[i].getAttribute('data-linked-records-record-id'));
-      buttons[i].addEventListener('click', (event) => {
-        fetchData.then(displayer => displayer.toggle(event))
-      });
+    const buttons = document.querySelectorAll('.show-more-linked-records');
+    if (buttons.length > 0) {
+      for (let button of buttons) {
+        const fetchData = RelatedRecordsDisplayer.fetchData(
+          button.getAttribute('data-linked-records-field'),
+          button.getAttribute('data-record-id'));
+        button.addEventListener('click', (event) => {
+          fetchData.then(displayer => displayer.toggle(event))
+        });
+      };
     }
   }
 
