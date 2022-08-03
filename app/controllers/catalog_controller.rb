@@ -266,6 +266,7 @@ class CatalogController < ApplicationController
     # Linked fields pushed to top of supplemental info
     config.add_show_field 'lc_subject_display', label: 'Subject(s)', helper_method: :subjectify
     config.add_show_field 'siku_subject_display', label: 'Chinese traditional subject(s)', helper_method: :subjectify
+    config.add_show_field 'homoit_subject_display', label: 'Homosaurus term(s)', helper_method: :subjectify
     config.add_show_field 'related_name_json_1display', hash: true
     config.add_show_field 'lcgft_s', label: 'Library of Congress genre', helper_method: :subjectify
     config.add_show_field 'rbgenr_s', label: 'Rare books genre', helper_method: :subjectify
