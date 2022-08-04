@@ -50,9 +50,10 @@ RSpec.describe ApplicationController, type: :request do
       end
 
       context "with omniauth origin" do
-        before do
-          OmniAuth.config.test_mode = true
+        around do |example|
           Rails.application.env_config["omniauth.origin"] = '/bookmarks'
+          example.run
+          Rails.application.env_config.except!("omniauth.origin")
         end
 
         it "sends the user back to the omniauth origin" do
