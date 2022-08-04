@@ -279,6 +279,8 @@
         subject_topic_unstem_search^18
         subject_unstem_search^15
         siku_subject_unstem_search^15
+        local_subject_unstem_search^15
+        homoit_subject_unstem_search^15
         subject_topic_index^12
         genre_unstem_search^10
         subject_t^10
@@ -303,6 +305,8 @@
         subject_topic_unstem_search^180
         subject_unstem_search^150
         siku_subject_unstem_search^150
+        local_subject_unstem_search^150
+        homoit_subject_unstem_search^150
         subject_topic_index^120
         genre_unstem_search^100
         subject_t^100
@@ -426,6 +430,8 @@
         subject_unstem_search^20
         genre_unstem_search^15
         siku_subject_unstem_search
+        local_subject_unstem_search
+        homoit_subject_unstem_search
         cjk_subject
       </str>
       <str name="subject_pf">
@@ -433,6 +439,8 @@
         subject_unstem_search^200
         genre_unstem_search^150
         siku_subject_unstem_search^10
+        local_subject_unstem_search^10
+        homoit_subject_unstem_search^10
         cjk_subject^10
       </str>
 
