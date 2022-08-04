@@ -53,6 +53,10 @@ RSpec.describe ApplicationHelper do
       expect(render_location_code(['firestone$clas'])).to eq('firestone$clas: Firestone Library - Classics Collection')
       expect(render_location_code(['firestone$clas', 'blah'])).to eq(['firestone$clas: Firestone Library - Classics Collection', 'blah'])
     end
+
+    it 'can handle a hash' do
+      expect(render_location_code({ "0" => "Mendel Music Library", "1" => "Online" })).to match_array(["Mendel Music Library", "Online"])
+    end
   end
 
   describe '#holding_location_label' do
