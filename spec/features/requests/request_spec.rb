@@ -1350,7 +1350,8 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             expect(page).to have_content 'Firestone Library - Stacks HM886 .T69 2015'
             expect(page).to have_content 'Request via Partner Library'
             expect(page).to have_content "Pick-up location: Firestone Library"
-            expect(page).to have_content "Not Available - Resource Sharing Request"
+            expect(page).to have_content "Not Available"
+            expect(page).not_to have_content "Resource Sharing Request"
             check('requestable_selected_23696270540006421')
             expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(0)
             expect(page).to have_content 'Request submitted to BorrowDirect'

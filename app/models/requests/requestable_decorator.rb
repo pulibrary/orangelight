@@ -123,12 +123,16 @@ module Requests
                   else
                     "badge-danger"
                   end
-      status = if requestable.status_label.nil? || requestable.status == requestable.status_label
-                 requestable.status
-               else
-                 requestable.status + ' - ' + requestable.status_label
-               end
+      status = status_for_badge
       content_tag(:span, status, class: "availability--label badge #{css_class}")
+    end
+
+    def status_for_badge
+      if requestable.status_label.nil? || requestable.status == requestable.status_label || requestable.status_label == "Resource Sharing Request"
+        requestable.status
+      else
+        requestable.status + ' - ' + requestable.status_label
+      end
     end
 
     def help_me_message
