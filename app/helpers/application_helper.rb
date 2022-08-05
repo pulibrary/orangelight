@@ -395,11 +395,12 @@ module ApplicationHelper
   # Depending on the url, we sometimes get strings, arrays, or hashes
   # Returns Array of locations
   def normalize_location_code(value)
-    if value.class == String
+    case value
+    when String
       Array(value)
-    elsif value.class == Array
+    when Array
       value
-    elsif value.class == Hash
+    when Hash, ActiveSupport::HashWithIndifferentAccess
       value.values
     else
       value
