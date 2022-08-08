@@ -9,10 +9,11 @@ class LinkedDocumentResolver
     # @param root [String] the identifier for the record
     # @param siblings [Array<String>] the identifiers for the related records
     # @param solr_field [String] the Solr field containing the sibling values
-    def initialize(root:, siblings:, solr_field:)
+    def initialize(root:, siblings:, solr_field:, maximum_records: Orangelight.config['show_page']['linked_documents']['maximum'])
       @root = root
       @siblings = siblings
       @field = solr_field
+      @maximum_records = maximum_records
     end
 
     # Retrieves the Solr documents for each adjacent node
@@ -29,12 +30,16 @@ class LinkedDocumentResolver
     # @param title_field [String] field used to access the value of the title for the catalog record
     # @param display_fields [Array<String>] the set of fields exposed for the catalog record
     # @return [Array<SolrDocumentDecorator>] sibling document
-    def decorated(title_field: 'title_display', display_fields: [])
+    def decorated(title_field: 'title_display', display_fields: %w[id])
       siblings.map do |sibling|
         DecoratorService::SolrDocumentDecorator.new(document: sibling,
                                                     title_field: title_field,
                                                     display_fields: display_fields)
       end
+    end
+
+    def total_count_of_linked_documents_in_index
+      response['response']['numFound']
     end
 
     private
@@ -73,7 +78,7 @@ class LinkedDocumentResolver
       # Retrieve an instance of the FacetedQueryService
       # @return [FacetedQueryService] an instance of the service object
       def faceted_query_service
-        @faceted_query_service ||= FacetedQueryService.new(Blacklight)
+        @faceted_query_service ||= FacetedQueryService.new(Blacklight, @maximum_records)
       end
 
       # The response from Solr from the facet query for all linked documents

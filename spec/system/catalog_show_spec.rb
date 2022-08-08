@@ -41,4 +41,13 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       expect(node["data-bib-id"]).to eq document_id
     end
   end
+
+  context 'related records field' do
+    it 'only displays three related records, even when more are in the index' do
+      visit 'catalog/99124945733506421'
+      expect(page).to have_selector('dd.blacklight-related_record_s ul li', count: 3)
+      node = page.find('dd.blacklight-related_record_s button')
+      expect(node.text).to eq 'Show 10 more related records'
+    end
+  end
 end

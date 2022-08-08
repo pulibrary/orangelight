@@ -135,13 +135,13 @@ class SolrDocument
   # @param field [String] the field for this Object which contains the foreign document keys
   # @param query_field [String] the field in the linked documents to use as a key
   # @return [LinkedDocumentResolver::LinkedDocuments]
-  def linked_records(field:, query_field: 'id')
+  def linked_records(field:, query_field: 'id', maximum_records: Orangelight.config['show_page']['linked_documents']['maximum'])
     sibling_ids = clean_ids(Array.wrap(fetch(field, [])))
     root_id = fetch(:id)
-    linked_documents = LinkedDocumentResolver::LinkedDocuments.new(siblings: sibling_ids,
-                                                                   root: root_id,
-                                                                   solr_field: query_field)
-    linked_documents.decorated(display_fields: %w[id])
+    LinkedDocumentResolver::LinkedDocuments.new(siblings: sibling_ids,
+                                                root: root_id,
+                                                solr_field: query_field,
+                                                maximum_records: maximum_records)
   end
 
   def full_arks
