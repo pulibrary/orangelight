@@ -1002,7 +1002,7 @@ describe Requests::Submission do
   context 'Marquand multiple Items' do
     let(:requestable) do
       [
-        {"selected" => "false"},
+        { "selected" => "false" },
         {
           "selected" => "true",
           "bibid" => "9971086883506421",
@@ -1035,7 +1035,7 @@ describe Requests::Submission do
           "fill_in" => "false",
           "pick_up" => "{\"pick_up\":\"PJ\",\"pick_up_location_code\":\"marquand\"}"
         }.with_indifferent_access,
-        {"selected" => "false"},
+        { "selected" => "false" },
         {
           "selected" => "true",
           "bibid" => "9971086883506421",
@@ -1084,8 +1084,6 @@ describe Requests::Submission do
 
     it 'Request without delivery mode fails' do
       stub_delivery_locations
-      alma_url = stub_alma_hold_success('32101090038579', '22604435380006421', '22604435380006421', '9999999')
-      clancy_url = stub_clancy_post(barcode: "32101091900280")
       expect { selected_items_validator.validate_selected }.to raise_error
     end
   end
