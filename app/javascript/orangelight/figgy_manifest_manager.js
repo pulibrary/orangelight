@@ -11,45 +11,8 @@ class FiggyViewer {
     this.arks = arks
   }
 
-  getAvailabilityElement() {
-    let elements = document.querySelectorAll('#availability > div.location--panel.location--online > div > div.panel-body > div')
-    if (elements.length < 1) {
-      elements = document.querySelectorAll('#availability > div.location--panel.location--online > div > div.panel-body > div > ul > div.electronic-access')
-    }
-    // This assumes that the first element is the link
-    const element = elements[0]
-    return element
-  }
-
-  getArkLinkElement() {
-    // If there is only one electronic access link, it's structure using a <div> rather than <ul>
-    const availabilityElement = this.getAvailabilityElement()
-
-    if (!availabilityElement) {
-      return null
-    }
-
-    let elements = availabilityElement.querySelectorAll('div > a')
-    if (elements.length < 1) {
-      elements = availabilityElement.querySelectorAll('li > a')
-    }
-
-    // This assumes that there is a one-to-one mapping between the ARK electronic resource links in the DOM and the UniversalViewer instances
-    return elements[this.idx]
-  }
-
   buildViewerId() {
     return this.idx == 0 ? 'viewer-container' : `viewer-container_${this.idx}`
-  }
-
-  updateArkLinkElement() {
-    const arkLinkElement = this.getArkLinkElement()
-    if (!arkLinkElement) {
-      return
-    }
-
-    arkLinkElement.href = '#' + this.buildViewerId()
-    arkLinkElement.removeAttribute("target")
   }
 
   constructIFrame() {
@@ -80,10 +43,6 @@ class FiggyViewer {
     const viewerElement = this.constructViewerElement()
     if (!viewerElement) {
       return null
-    }
-
-    if (this.arks.length > 0) {
-      this.updateArkLinkElement()
     }
 
     this.element.appendChild(viewerElement)
