@@ -145,14 +145,6 @@ class FiggyViewerSet {
 
 // Queries for resources using multiple bib. IDs
 class FiggyThumbnailSet {
-  static bibIdPrefix = '99'
-  static bibIdSuffix = '3506421'
-
-  static buildBibId(orangelightId) {
-    const built = `${this.bibIdPrefix}${orangelightId}${this.bibIdSuffix}`
-
-    return built
-  }
 
   constructor(elements, query, jQuery) {
     this.elements = elements
@@ -178,10 +170,6 @@ class FiggyThumbnailSet {
     for (let resource of this.resources) {
       const orangelightId = resource.orangelightId
       this.thumbnails[orangelightId] = resource.thumbnail
-
-      // Voyager/Alma bib. IDs are constructed using a prefix and suffix
-      const bibId = this.constructor.buildBibId(orangelightId)
-      this.thumbnails[bibId] = resource.thumbnail
     }
     return this.resources
   }

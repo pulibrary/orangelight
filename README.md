@@ -7,8 +7,8 @@ Status](https://coveralls.io/repos/github/pulibrary/orangelight/badge.svg?branch
 Versions:
 
 * Ruby: 2.7.5
-* Rails: 6.0.4.7
-* Blacklight: 7.23.0.1
+* Rails: 6.0.5.1
+* Blacklight: 7.25.3
 * blacklight_advanced_search: 7.0.0
 
 ### Development pre-requisites
@@ -62,7 +62,11 @@ cap staging deploy # deploys main branch to staging
 ## Staging Mail Catcher
   To see mail that has been sent on the staging server you must ssh tunnel into the server
   ```
-  ssh -L 1082:localhost:1080 pulsys@lib-orange-staging1
+  ssh -L 1082:localhost:1080 pulsys@catalog-staging1
+  ```
+  To see mail that has been sent on the qa server you must ssh tunnel into the server
+  ```
+  ssh -L 1082:localhost:1080 pulsys@catalog-qa1
   ```
   Once the tunnel is open [you can see the mail that has been sent on staging here]( http://localhost:1082/)
 
@@ -99,10 +103,10 @@ rake pulsearch:solr:deindex
 rake pulsearch:solr:index
 ```
 
-### Adding a record to the test/dev index
+### Adding a fixture to the test/dev index
 
-Grab a record from marc liberation's `/bibliographic/:bib_id/solr` endpoint. Add
-it to the bottom of `spec/fixtures/current_fixtures.json`. Note that file
+Use an example.xml marc record. Start bibdata in the dev environment. Use the bibdata solr url from lando and run:
+`traject -c marc_to_solr/lib/traject_config.rb path-to-xml/example.xml -u http://localhost:<solr-port-number>/solr/name-of-local-solr-index -w Traject::JsonWriter` This will print a JSON. Copy the JSON and add it to the bottom of `spec/fixtures/current_fixtures.json`. Note that file
 contains a list so you have to make sure you add a comma to the end of the last
 record and keep the closing bracket at the end of the file. Then run `rake pulsearch:solr:index` for both the dev and the test environment, as specified above.
 

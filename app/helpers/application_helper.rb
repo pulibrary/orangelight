@@ -385,11 +385,26 @@ module ApplicationHelper
   end
 
   def render_location_code(value)
-    values = Array(value).map do |loc|
+    values = normalize_location_code(value).map do |loc|
       location = Bibdata.holding_locations[loc.to_sym]
       location.nil? ? loc : "#{loc}: #{location_full_display(location)}"
     end
     values.count == 1 ? values.first : values
+  end
+
+  # Depending on the url, we sometimes get strings, arrays, or hashes
+  # Returns Array of locations
+  def normalize_location_code(value)
+    case value
+    when String
+      Array(value)
+    when Array
+      value
+    when Hash, ActiveSupport::HashWithIndifferentAccess
+      value.values
+    else
+      value
+    end
   end
 
   def holding_location_label(holding)

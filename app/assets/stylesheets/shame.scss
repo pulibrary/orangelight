@@ -161,3 +161,8 @@
     margin-top: 0;
   }
 }
+
+// Bootstrap 5 will include the .pe-none class
+.pe-none {
+  pointer-events: none;
+}

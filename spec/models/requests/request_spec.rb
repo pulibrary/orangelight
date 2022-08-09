@@ -1480,7 +1480,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         "patron_id" => "99999", "active_email" => "foo@princeton.edu",
         campus_authorized: true, campus_authorized_category: "full" }.with_indifferent_access
     end
-    let(:marquand) { fixture('/9956200533506421_raw.json') }
+    let(:marquand) { fixture('alma/9956200533506421.json') }
     let(:mfhd_availability) { fixture('/availability_2219823460006421.json') }
     let(:location_code) { 'scsbnypl' }
     let(:params) do

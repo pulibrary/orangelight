@@ -153,6 +153,35 @@ describe Requests::Patron do
       end
     end
   end
+  context 'when unable to connect to bibdata' do
+    before do
+      allow(Faraday).to receive(:get).with("#{bibdata_uri}/patron/foo?ldap=true")
+                                     .and_raise(Faraday::Error::ConnectionFailed, 'execution expired')
+    end
+
+    it 'logs the error' do
+      allow(Rails.logger).to receive(:error)
+      described_class.new(user: user, session: {})
+      expect(Rails.logger).to have_received(:error).with("Unable to connect to #{bibdata_uri}")
+    end
+  end
+  context 'when bibdata passes on an empty response' do
+    before do
+      stub_request(
+        :get,
+        "#{bibdata_uri}/patron/#{uid}?ldap=true"
+      ).to_return(
+        status: 200,
+        body: '',
+        headers: { "Content-Type" => "application/json" }
+      )
+    end
+    it 'logs the error' do
+      allow(Rails.logger).to receive(:error)
+      described_class.new(user: user, session: {})
+      expect(Rails.logger).to have_received(:error).with("#{bibdata_uri} returned an empty patron response")
+    end
+  end
   context 'Passing in patron information instead of loading it from bibdata' do
     it "does not call to bibdata" do
       patron = described_class.new(user: instance_double(User, guest?: false, uid: 'foo'), session: {}, patron: { barcode: "1234567890" })

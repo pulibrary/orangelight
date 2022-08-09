@@ -1,0 +1,175 @@
+{
+  "id": "99125412083106421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Marnell, John"
+  ],
+  "author_citation_display": [
+    "Marnell, John"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Marnell, John\"}",
+  "author_s": [
+    "Marnell, John"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Seeking sanctuary : stories of sexuality, faith and migration / written and compiled by John Marnell.",
+  "title_t": [
+    "Seeking sanctuary : stories of sexuality, faith and migration / written and compiled by John Marnell."
+  ],
+  "title_citation_display": [
+    "Seeking sanctuary : stories of sexuality, faith and migration"
+  ],
+  "compiled_created_t": [
+    "Seeking sanctuary : stories of sexuality, faith and migration / written and compiled by John Marnell."
+  ],
+  "pub_created_display": [
+    "Johannesburg : Wits University Press, 2021",
+    "©2021"
+  ],
+  "pub_created_s": [
+    "Johannesburg : Wits University Press, 2021",
+    "©2021"
+  ],
+  "pub_citation_display": [
+    "Johannesburg: Wits University Press"
+  ],
+  "pub_date_display": [
+    "2021"
+  ],
+  "pub_date_start_sort": 2021,
+  "pub_date_end_sort": 2021,
+  "cataloged_tdt": "2021-11-06T04:00:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "xiv, 269 pages : illustrations ; 24 cm"
+  ],
+  "description_t": [
+    "xiv, 269 pages : illustrations ; 24 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "xiv, 269 pages"
+  ],
+  "geocode_display": [
+    "South Africa"
+  ],
+  "related_record_info_display": [
+    "ebook version :"
+  ],
+  "summary_note_display": [
+    "\"Seeking Sanctuary brings together poignant life stories from fourteen lesbian, gay, bisexual and transgender (LGBT) migrants, refugees and asylum seekers living in Johannesburg, South Africa. The stories, diverse in scope, chronicle each narrator’s arduous journey to South Africa, and their corresponding movement towards self-love and self-acceptance. The narrators reveal their personal battles to reconcile their faith with their sexuality and gender identity, often in the face of violent persecution, and how they have carved out spaces of hope and belonging in their new home country. In these intimate testimonies, the narrators’ resilience in the midst of uncertain futures reveal the myriad ways in which LGBT Africans push back against unjust and unequal systems. Seeking Sanctuary makes a critical intervention by showing the complex interplay between homophobia and xenophobia in South Africa, and of the state of sexual orientation and gender identity (SOGI) rights in Africa. By shedding light on the fraught connections between sexuality, faith and migration, this ground-breaking project also provides a model for religious communities who are working towards justice, diversity and inclusion.\"-- Provided by publisher"
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliograhical references (247-259) and index."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "contents_display": [
+    "Introduction: Reframing sexuality, faith and migration -- 1. Background and methodology: On making and sharing stories -- 2. The politicisation of faith: Religious responses to sexual and gender diversity -- 3. A life on hold: LGBT migration and the (false) promise of freedom -- 4. Preaching love: A history of the LGBT Ministry -- 5. The stories. 1. We must preach love, not hate / narrated by Dumisani (Zimbabwe) -- 2. We deserve freedom / narrated by Mr D (Cameroon) -- 3. Only love can bring unity / narrated by D.C. (Zimbabwe) -- 4. Still searching for safety / narrated by Eeyban (Ethiopia) -- 5. A caged animal set free / narrated by Thomars (Zimbabwe) -- 6. Sexuality is a beautiful gift from God / narrated by Dancio (Zambia) -- 7. This is where God wants me to be / narrated by Mike (Zimbabwe) -- 8. God knows the depth of my faith / narrated by Zee (South Africa) -- 9. can serve God, no matter who I love / Narrated by Sylvester (Nigeria) -- 10. Don't let the hate get you down / narrated by Tino (Zimbabwe) -- 11. I am not willing to live a lie / narrated by Angel (Uganda) -- 12. Love is about hearts, not parts / narrated by Toya (Zimbabwe) -- 13. Stop calling us sinners / narrated by Nkady (Lesotho) -- 14. I pray for strength and guidance / narrated by Tinashe (Zimbabwe) -- Conclusion. Looking ahead: The case for affirming religious spaces."
+  ],
+  "lc_subject_display": [
+    "Immigrants—South Africa",
+    "Immigrants—Housing—South Africa",
+    "Immigrants—Services for—South Africa",
+    "Christian sexual minorities—Africa",
+    "Homophobia—Africa",
+    "Transgender people—Africa",
+    "Transgender men—Africa",
+    "Lesbians—Africa",
+    "Bisexuals—Africa",
+    "Gays—Africa"
+  ],
+  "homoit_subject_display": [
+    "Biographies (LGBTQ)",
+    "Discrimination (LGBTQ)",
+    "Communities (LGBTQ)",
+    "LGBTQ chosen families",
+    "Gender identity",
+    "Gender expression",
+    "Civil rights (LGBTQ)",
+    "LGBTQ immigration rights",
+    "LGBTQ parenthood",
+    "Christians (LGBTQ)",
+    "Queer christians"
+  ],
+  "subject_facet": [
+    "Immigrants—South Africa",
+    "Immigrants—Housing—South Africa",
+    "Immigrants—Services for—South Africa",
+    "Christian sexual minorities—Africa",
+    "Homophobia—Africa",
+    "Transgender people—Africa",
+    "Transgender men—Africa",
+    "Lesbians—Africa",
+    "Bisexuals—Africa",
+    "Gays—Africa",
+    "Biographies (LGBTQ)",
+    "Discrimination (LGBTQ)",
+    "Communities (LGBTQ)",
+    "LGBTQ chosen families",
+    "Gender identity",
+    "Gender expression",
+    "Civil rights (LGBTQ)",
+    "LGBTQ immigration rights",
+    "LGBTQ parenthood",
+    "Christians (LGBTQ)",
+    "Queer christians"
+  ],
+  "isbn_display": [
+    "9781776147113",
+    "1776147111",
+    "1776147103 ((paperback))",
+    "9781776147106 ((paperback))"
+  ],
+  "isbn_s": [
+    "9781776147113",
+    "9781776147106"
+  ],
+  "oclc_s": [
+    "1277045264"
+  ],
+  "other_version_s": [
+    "9781776147113",
+    "9781776147106",
+    "9781776147137",
+    "9781776147120",
+    "on1277045264",
+    "on1227270472"
+  ],
+  "holdings_1display": "{\"22906396720006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"HQ73.3 .S68 M37 2021\",\"call_number_browse\":\"HQ73.3 .S68 M37 2021\",\"items\":[{\"holding_id\":\"22906396720006421\",\"id\":\"23906396700006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104354335\"}]}}",
+  "location_code_s": [
+    "firestone$stacks"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "firestone$stacks",
+    "Firestone Library"
+  ],
+  "name_title_browse_s": [
+    "Marnell, John. Seeking sanctuary"
+  ],
+  "call_number_display": [
+    "HQ73.3 .S68 M37 2021"
+  ],
+  "call_number_browse_s": [
+    "HQ73.3 .S68 M37 2021"
+  ],
+  "call_number_locator_display": [
+    "HQ73.3 .S68 M37 2021"
+  ]
+}

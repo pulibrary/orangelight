@@ -69,5 +69,17 @@ module Orangelight
       location_notes = JSON.parse(document[:holdings_1display] || '{}').collect { |_k, v| v['location_has'] }
       document[:electronic_access_1display].present? && location_notes.any? && document[:location].blank?
     end
+
+    def linked_records
+      return head(:bad_request) unless params[:id] && params[:field]
+
+      begin
+        _response, document = search_service.fetch(params[:id])
+      rescue Blacklight::Exceptions::RecordNotFound
+        return head(:bad_request)
+      end
+
+      render json: document.linked_records(field: params[:field], maximum_records: 500).decorated
+    end
   end
 end

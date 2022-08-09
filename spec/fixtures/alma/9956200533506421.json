@@ -1,0 +1,123 @@
+{
+  "id": "9956200533506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Dagen, Philippe"
+  ],
+  "author_citation_display": [
+    "Dagen, Philippe",
+    "Picasso, Pablo"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Picasso, Pablo\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Dagen, Philippe\"}",
+  "author_s": [
+    "Dagen, Philippe",
+    "Picasso, Pablo, 1881-1973"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Picasso / Philippe Dagen.",
+  "title_t": [
+    "Picasso / Philippe Dagen."
+  ],
+  "title_citation_display": [
+    "Picasso"
+  ],
+  "compiled_created_t": [
+    "Picasso / Philippe Dagen."
+  ],
+  "pub_created_display": [
+    "Paris : Hazan, c2008."
+  ],
+  "pub_created_s": [
+    "Paris : Hazan, c2008."
+  ],
+  "pub_citation_display": [
+    "Paris: Hazan"
+  ],
+  "pub_date_display": [
+    "2008"
+  ],
+  "pub_date_start_sort": 2008,
+  "cataloged_tdt": "2020-12-02T07:51:16Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "511 p. : ill. ; 35 cm."
+  ],
+  "description_t": [
+    "511 p. : ill. ; 35 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "511 p."
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references and indexes."
+  ],
+  "language_facet": [
+    "French"
+  ],
+  "language_code_s": [
+    "fre"
+  ],
+  "language_iana_s": [
+    "fr"
+  ],
+  "lc_subject_display": [
+    "Picasso, Pablo, 1881-1973—Criticism and interpretation"
+  ],
+  "subject_facet": [
+    "Picasso, Pablo, 1881-1973—Criticism and interpretation"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Picasso, Pablo, 1881-1973\"]}",
+  "isbn_display": [
+    "9782754101578",
+    "2754101578"
+  ],
+  "lccn_display": [
+    "  2008390947"
+  ],
+  "lccn_s": [
+    "2008390947"
+  ],
+  "isbn_s": [
+    "9782754101578"
+  ],
+  "oclc_s": [
+    "263300578"
+  ],
+  "other_version_s": [
+    "ocn263300578",
+    "9782754101578"
+  ],
+  "holdings_1display": "{\"2219823460006421\":{\"location_code\":\"marquand$stacks\",\"location\":\"Marquand Library\",\"library\":\"Marquand Library\",\"call_number\":\"ND553.P6 D24 2008q Oversize\",\"call_number_browse\":\"ND553.P6 D24 2008q Oversize\",\"items\":[{\"holding_id\":\"2219823460006421\",\"id\":\"2319823440006421\",\"status_at_load\":\"1\",\"barcode\":\"32101068477817\",\"copy_number\":\"1\"}]}}",
+  "recap_notes_display": [
+    " - "
+  ],
+  "location_code_s": [
+    "marquand$stacks"
+  ],
+  "location": [
+    "Marquand Library"
+  ],
+  "location_display": [
+    "Marquand Library"
+  ],
+  "advanced_location_s": [
+    "marquand$stacks",
+    "Marquand Library"
+  ],
+  "name_title_browse_s": [
+    "Dagen, Philippe. Picasso"
+  ],
+  "call_number_display": [
+    "ND553.P6 D24 2008q Oversize"
+  ],
+  "call_number_browse_s": [
+    "ND553.P6 D24 2008q Oversize"
+  ],
+  "call_number_locator_display": [
+    "ND553.P6 D24 2008q"
+  ]
+}

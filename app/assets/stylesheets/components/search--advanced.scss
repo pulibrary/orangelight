@@ -107,3 +107,12 @@
 .chosen-container .chosen-results li.group-result {
   cursor: pointer;
 }
+
+#advanced_search_facets .dropdown-toggle::after {
+  position: absolute;
+  right: 12px;
+}
+
+.dropdown-item {
+  white-space: normal;
+}
