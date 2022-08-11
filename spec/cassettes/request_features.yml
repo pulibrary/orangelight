@@ -9270,4 +9270,88 @@ http_interactions:
       string: '{"label":"Lending Resource Sharing Requests","code":"RES_SHARE$IN_RS_REQ","aeon_location":false,"recap_electronic_delivery_location":false,"open":true,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","fulfillment_unit":"RES_FU","library":{"label":"Resource
         Sharing Library","code":"RES_SHARE","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[]}'
   recorded_at: Fri, 03 Jun 2022 13:09:12 GMT
+- request:
+    method: get
+    uri: https://catalog.princeton.edu/catalog/9922868943506421/raw
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.21.6
+      Date:
+      - Tue, 09 Aug 2022 11:53:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 181c25df-c795-497f-b24d-99f4a1181318
+      X-Download-Options:
+      - noopen
+      X-Ua-Compatible:
+      - IE=edge,chrome=1
+      Etag:
+      - W/"b78e7c861a369f2fd2b3df37d1bc93bf"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.034640'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.8
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Origin
+    body:
+      encoding: UTF-8
+      string: '{"id":"9922868943506421","numeric_id_b":true,"author_roles_1display":"{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}","title_display":"Birth
+        control news.","title_t":["Birth control news."],"title_citation_display":["Birth
+        control news"],"compiled_created_t":["Birth control news."],"pub_created_display":["London."],"pub_created_s":["London."],"pub_citation_display":["London"],"pub_date_display":["1000"],"pub_date_start_sort":1000,"pub_date_end_sort":1999,"cataloged_tdt":"2021-07-13T11:56:35Z","format":["Journal"],"notes_display":["Caption
+        title."],"language_facet":["English"],"language_code_s":["eng"],"language_iana_s":["en"],"oclc_s":["53175640"],"other_version_s":["ocm53175640","ocm01536494"],"holdings_1display":"{\"22692156940006421\":{\"location_code\":\"annex$locked\",\"location\":\"Locked\",\"library\":\"Forrestal
+        Annex\",\"call_number\":\"HQ766 .B53f Oversize\",\"call_number_browse\":\"HQ766
+        .B53f Oversize\",\"location_has\":[\"v.[1]-7\"],\"supplements\":[],\"indexes\":[]},\"22692156930006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone
+        Library\",\"call_number\":\"HQ766 .B53\",\"call_number_browse\":\"HQ766 .B53\",\"items\":[{\"holding_id\":\"22692156930006421\",\"enumeration\":\"v.
+        19-23\",\"id\":\"23692156850006421\",\"status_at_load\":\"1\",\"barcode\":\"32101100259603\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"enumeration\":\"v.
+        17-18\",\"id\":\"23692156860006421\",\"status_at_load\":\"1\",\"barcode\":\"32101100259595\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"enumeration\":\"v.
+        10\",\"id\":\"23692156880006421\",\"status_at_load\":\"1\",\"barcode\":\"32101100259579\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"enumeration\":\"v.
+        13-14\",\"id\":\"23692156870006421\",\"status_at_load\":\"1\",\"barcode\":\"32101100259546\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"enumeration\":\"v.
+        9\",\"id\":\"23692156890006421\",\"status_at_load\":\"1\",\"barcode\":\"32101100259587\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"enumeration\":\"v.
+        8\",\"id\":\"23692156910006421\",\"status_at_load\":\"1\",\"barcode\":\"32101100259561\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"enumeration\":\"v.
+        15-16\",\"id\":\"23692156900006421\",\"status_at_load\":\"1\",\"barcode\":\"32101100259538\",\"copy_number\":\"1\"},{\"holding_id\":\"22692156930006421\",\"enumeration\":\"v.
+        11-12\",\"id\":\"23692156920006421\",\"status_at_load\":\"1\",\"barcode\":\"32101100259553\",\"copy_number\":\"1\"}],\"location_has\":[\"v.8-23\"],\"supplements\":[],\"indexes\":[]}}","location_code_s":["annex$locked","firestone$stacks"],"location":["Forrestal
+        Annex","Firestone Library"],"location_display":["Locked","Stacks"],"advanced_location_s":["annex$locked","firestone$stacks","Forrestal
+        Annex","Firestone Library"],"call_number_display":["Oversize HQ766 .B53f","HQ766
+        .B53"],"call_number_browse_s":["HQ766 .B53f Oversize","HQ766 .B53"],"call_number_locator_display":["HQ766
+        .B53f","HQ766 .B53"],"_version_":1740087426403008512,"timestamp":"2022-08-02T21:44:46.736Z"}'
+  recorded_at: Tue, 09 Aug 2022 11:53:52 GMT
 recorded_with: VCR 6.1.0
