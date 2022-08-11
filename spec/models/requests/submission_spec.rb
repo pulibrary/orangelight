@@ -999,6 +999,95 @@ describe Requests::Submission do
     end
   end
 
+  context 'Marquand multiple Items' do
+    let(:requestable) do
+      [
+        { "selected" => "false" },
+        {
+          "selected" => "true",
+          "bibid" => "9971086883506421",
+          "mfhd" => "22604435380006421",
+          "call_number" => "ND497.H1686 A3 2011",
+          "location_code" => "marquand$stacks",
+          "item_id" => "23604435360006421",
+          "barcode" => "32101091900280",
+          "enum" => "vol.2",
+          "copy_number" => "1",
+          "status" => "Available",
+          "holding_library" => "marquand",
+          "edd_art_title" => "",
+          "edd_start_page" => "",
+          "edd_end_page" => "",
+          "edd_volume_number" => "vol.2",
+          "edd_issue" => "",
+          "edd_author" => "",
+          "edd_note" => "",
+          "edd_genre" => "book",
+          "edd_location" => "Marquand Library - Remote Storage: Marquand Use Only",
+          "edd_isbn" => "9781905375899",
+          "edd_date" => "2011",
+          "edd_publisher" => "London: Harvey Miller",
+          "edd_call_number" => "ND497.H1686 A3 2011",
+          "edd_oclc_number" => "785831434",
+          "edd_title" => "The life & letters of Gavin Hamilton (1723-1798) : artist & art dealer in eighteenth-century Rome",
+          "library_code" => "clancy",
+          "type" => "digitize",
+          "fill_in" => "false",
+          "pick_up" => "{\"pick_up\":\"PJ\",\"pick_up_location_code\":\"marquand\"}"
+        }.with_indifferent_access,
+        { "selected" => "false" },
+        {
+          "selected" => "true",
+          "bibid" => "9971086883506421",
+          "mfhd" => "22604435380006421",
+          "call_number" => "ND497.H1686 A3 2011",
+          "location_code" => "marquand$stacks",
+          "item_id" => "23604435370006421",
+          "barcode" => "32101090038579",
+          "enum" => "vol.1",
+          "copy_number" => "1",
+          "status" => "Available",
+          "holding_library" => "marquand",
+          "edd_art_title" => "",
+          "edd_start_page" => "",
+          "edd_end_page" => "",
+          "edd_volume_number" => "vol.1",
+          "edd_issue" => "",
+          "edd_author" => "",
+          "edd_note" => "",
+          "edd_genre" => "book",
+          "edd_location" => "Marquand Library - Remote Storage: Marquand Use Only",
+          "edd_isbn" => "9781905375899",
+          "edd_date" => "2011",
+          "edd_publisher" => "London: Harvey Miller",
+          "edd_call_number" => "ND497.H1686 A3 2011",
+          "edd_oclc_number" => "785831434",
+          "edd_title" => "The life & letters of Gavin Hamilton (1723-1798) : artist & art dealer in eighteenth-century Rome",
+          "library_code" => "clancy",
+          "type" => "digitize",
+          "fill_in" => "false",
+          "pick_up" => "{\"pick_up\":\"PJ\",\"pick_up_location_code\":\"marquand\"}"
+        }.with_indifferent_access
+      ]
+    end
+    let(:bib) { { "id" => "9971086883506421", "title" => "The life & letters of Gavin Hamilton (1723-1798) : artist & art dealer in eighteenth-century Rome", "author" => "", "isbn" => "9781905375899" } }
+    let(:params) do
+      {
+        request: user_info,
+        requestable: requestable,
+        bib: bib
+      }
+    end
+    let(:submission) do
+      described_class.new(params, user_info)
+    end
+
+    it 'Request without delivery mode fails' do
+      stub_delivery_locations
+      expect { selected_items_validator.validate_selected }.to raise_error
+    end
+  end
+
   context 'Clancy EDD Item' do
     let(:requestable) do
       [

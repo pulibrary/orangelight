@@ -785,7 +785,9 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             check('requestable__selected', exact: true)
             fill_in 'requestable_user_supplied_enum_22692156940006421', with: 'test'
           end
-          select('Firestone Library', from: 'requestable__pick_up_22692156940006421')
+          expect(page).to have_content 'Physical Item Delivery'
+          choose 'requestable__delivery_mode_22692156940006421_print'
+          select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_22692156940006421')
           expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
           expect(page).to have_content I18n.t('requests.submit.annex_success')
           email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
