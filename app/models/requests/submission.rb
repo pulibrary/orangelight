@@ -145,6 +145,7 @@ module Requests
         elsif print?(item) && library_code == 'annex'
           item["type"] = "annex"
         elsif off_site?(library_code)
+          raise Exception, "#{self.class}: Item does not have a delivery mode" unless delivery_mode(item)
           item["type"] = library_code
           item["type"] += "_edd" if edd?(item)
           item["type"] += "_in_library" if in_library?(item)
