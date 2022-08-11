@@ -627,7 +627,6 @@ DEPENDENCIES
   capybara
   chosen-rails
   cobravsmongoose (~> 0.0.2)
-  coffee-rails (~> 4.2.0)
   coveralls_reborn
   ddtrace
   devise (>= 4.6.0)
