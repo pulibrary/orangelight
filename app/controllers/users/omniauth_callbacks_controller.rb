@@ -33,7 +33,7 @@ module Users
     end
 
     def alma
-      if Alma::User.authenticate(user_id: alma_params[:username], password: alma_params[:password])
+      if Alma::User.authenticate(user_id: ERB::Util.url_encode(alma_params[:username]), password: alma_params[:password])
         @user ||= User.from_alma(access_token_in_request_params)
         @user.save
         sign_in_and_redirect @user, event: :authentication # this will throw if @user not activated
