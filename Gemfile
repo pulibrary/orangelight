@@ -20,9 +20,6 @@ gem 'sass-rails', '~> 6.0'
 # Modernizr.js library
 gem 'modernizr-rails'
 
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.2.0'
-
 # Use jquery as the JavaScript library
 # jest tests use yarn to get jquery; if upgrading here keep that version in sync
 gem 'jquery-datatables' # used by requests (please do not remove)

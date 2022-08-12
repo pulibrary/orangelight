@@ -1,4 +1,6 @@
 import AvailabilityUpdater from '../orangelight/availability'
+import BookCoverManager from '../orangelight/book_covers'
+import BookmarkAllManager from '../orangelight/bookmark_all'
 import FiggyManifestManager from '../orangelight/figgy_manifest_manager'
 import GoogleBooksSnippets from '../orangelight/google_books_snippets'
 import RelatedRecordsDisplayer from '../orangelight/related_records'
@@ -10,6 +12,8 @@ export default class OrangelightUiLoader {
     this.setup_linked_records()
     this.setup_modal_focus()
     this.setup_viewers()
+    this.setup_book_covers()
+    this.setup_bookmark_all()
     handleBtnKeyDown()
   }
 
@@ -59,5 +63,13 @@ export default class OrangelightUiLoader {
       if(google_books_snippets.has_figgy_viewer === false)
         google_books_snippets.insert_snippet()
     })
+  }
+
+  setup_book_covers() {
+    new BookCoverManager
+  }
+
+  setup_bookmark_all() {
+    new BookmarkAllManager
   }
 }
