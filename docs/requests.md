@@ -59,5 +59,21 @@ Under current campus access policies if you are interactively testing this gem y
 2. Enter the rails console for environment you want to working with. ```RAILS_ENV=production bundle exec rails c```
 3. Add your net ID: ```CampusAccess.create(uid:'mynetid')```
 
+## Getting a Count of Requested Clancy Items
 
+1. Start the Rails console in one of the catalog web servers
+```
+rails c
+```
 
+2. Example Commands
+```
+item = Requests::ClancyItem.new()
+item.send(:get_clancy, url: "retrievedlist/v1/20220101/20220401/MQ")
+```
+3. Canceling a Request
+```
+body = { "requests": [{ "request_type": "CANCEL", "barcode": "12345678901234", "stop": 'MQ', request_id: "32101103768097-22101008595068-1649085248
+"}]}
+response = item.send(:post_clancy, url: "circrequests/v1", body: body.to_json)
+```
