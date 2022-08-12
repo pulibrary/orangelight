@@ -71,3 +71,9 @@ rails c
 item = Requests::ClancyItem.new()
 item.send(:get_clancy, url: "retrievedlist/v1/20220101/20220401/MQ")
 ```
+3. Canceling a Request
+```
+body = { "requests": [{ "request_type": "CANCEL", "barcode": "12345678901234", "stop": 'MQ', request_id: "32101103768097-22101008595068-1649085248
+"}]}
+response = item.send(:post_clancy, url: "circrequests/v1", body: body.to_json)
+```
