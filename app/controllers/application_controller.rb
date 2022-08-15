@@ -54,4 +54,14 @@ class ApplicationController < ActionController::Base
   def default_url_options
     Rails.env.production? || Rails.env.staging? ? { protocol: 'https' } : {}
   end
+
+  private
+
+    def verify_admin!
+      authenticate_user!
+      return if current_user.admin?
+
+      request.flash.alert = "You must be an admin to view requested page"
+      redirect_to root_url
+    end
 end
