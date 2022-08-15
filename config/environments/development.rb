@@ -3,6 +3,14 @@
 require Rails.root.join('lib', 'orangelight', 'middleware', 'invalid_parameter_handler')
 
 Rails.application.configure do
+  # Before filter for Flipflop dashboard. Replace with a lambda or method name
+  # defined in ApplicationController to implement access control.
+  config.flipflop.dashboard_access_filter = nil
+
+  # By default, when set to `nil`, strategy loading errors are suppressed in test
+  # mode. Set to `true` to always raise errors, or `false` to always warn.
+  config.flipflop.raise_strategy_errors = false
+
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = true
 

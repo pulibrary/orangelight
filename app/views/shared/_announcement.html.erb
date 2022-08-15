@@ -1,5 +1,11 @@
 <%# to remove messages altogether, set this to empty string %>
-<% message = '' %>
+<% 
+    if Flipflop.test_header?
+      message = 'Flipflop test_header feature is on!'
+    else
+      message = ''
+    end
+%>
 <% if Orangelight.read_only_mode %>
   <div class="col-12 alert alert-warning announcement">
     <div class="container">

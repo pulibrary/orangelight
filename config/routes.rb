@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount Flipflop::Engine => "/features"
   scope module: 'orangelight' do
     get 'browse', to: 'browsables#browse'
     get 'browse/call_numbers', model: Orangelight::CallNumber, to: 'browsables#index'

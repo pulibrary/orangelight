@@ -84,6 +84,7 @@ gem 'lograge'
 
 gem 'logstash-event'
 
+gem 'flipflop'
 gem 'whenever', '~> 0.11'
 gem 'yard'
 
