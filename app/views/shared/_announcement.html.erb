@@ -1,6 +1,6 @@
 <%# to remove messages altogether, set this to empty string %>
 <% 
-    if Flipflop.test_header?
+    if Flipflop.test_header? && !Rails.env.production?
       message = 'Flipflop test_header feature is on!'
     else
       message = ''
