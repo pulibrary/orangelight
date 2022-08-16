@@ -54,4 +54,11 @@ class ApplicationController < ActionController::Base
   def default_url_options
     Rails.env.production? || Rails.env.staging? ? { protocol: 'https' } : {}
   end
+
+  private
+
+    def verify_admin!
+      authenticate_user!
+      head :forbidden unless current_user.admin?
+    end
 end

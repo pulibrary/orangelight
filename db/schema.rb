@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_02_203055) do
+ActiveRecord::Schema.define(version: 2022_08_15_122519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,13 @@ ActiveRecord::Schema.define(version: 2021_08_02_203055) do
     t.datetime "updated_at"
     t.string "document_type"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "flipflop_features", force: :cascade do |t|
+    t.string "key", null: false
+    t.boolean "enabled", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "searches", id: :serial, force: :cascade do |t|

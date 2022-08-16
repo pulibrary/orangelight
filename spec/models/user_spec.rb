@@ -36,4 +36,33 @@ RSpec.describe User do
       expect(described_class.last.username).to eq("testuser123")
     end
   end
+  describe "admin users" do
+    context "a regular user" do
+      let(:user) { FactoryBot.create(:user) }
+      it "recognizes that it is not an admin" do
+        expect(user.guest?).to eq(false)
+        expect(user.admin?).to eq(false)
+      end
+    end
+    context "an unauthenticated user" do
+      let(:user) { FactoryBot.create(:unauthenticated_patron) }
+      it "recognizes that it is not an admin" do
+        expect(user.guest?).to eq(true)
+        expect(user.admin?).to eq(false)
+      end
+    end
+    context "an admin user" do
+      let(:user) { FactoryBot.create(:user) }
+      around do |example|
+        cached_admin_netids = ENV['ORANGELIGHT_ADMIN_NETIDS'] || ''
+        ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids + " #{user.uid}"
+        example.run
+        ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids
+      end
+      it "recognizes that it is an admin" do
+        expect(user.guest?).to eq(false)
+        expect(user.admin?).to eq(true)
+      end
+    end
+  end
 end
