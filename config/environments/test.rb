@@ -5,7 +5,7 @@ require Rails.root.join('lib', 'orangelight', 'middleware', 'invalid_parameter_h
 Rails.application.configure do
   # Before filter for Flipflop dashboard. Replace with a lambda or method name
   # defined in ApplicationController to implement access control.
-  config.flipflop.dashboard_access_filter = nil
+  # config.flipflop.dashboard_access_filter = :verify_admin!
 
   # By default, when set to `nil`, strategy loading errors are suppressed in test
   # mode. Set to `true` to always raise errors, or `false` to always warn.

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  mount Flipflop::Engine => "/features"
   scope module: 'orangelight' do
     get 'browse', to: 'browsables#browse'
     get 'browse/call_numbers', model: Orangelight::CallNumber, to: 'browsables#index'
@@ -25,6 +24,7 @@ Rails.application.routes.draw do
   root to: 'catalog#index'
 
   mount Blacklight::Engine => '/'
+  mount Flipflop::Engine => '/features'
 
   concern :searchable, Blacklight::Routes::Searchable.new
   concern :exportable, Blacklight::Routes::Exportable.new
@@ -82,7 +82,6 @@ Rails.application.routes.draw do
   post '/account/cancel_ill_requests', to: 'account#cancel_ill_requests'
   get '/borrow-direct', to: 'account#borrow_direct_redirect'
   get '/account/user-id', to: 'account#user_id'
-  get '/account/admin', to: 'account#admin'
   get '/redirect-to-alma', to: 'account#redirect_to_alma'
 
   ### For feedback Form

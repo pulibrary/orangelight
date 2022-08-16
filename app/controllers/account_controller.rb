@@ -8,7 +8,6 @@ class AccountController < ApplicationController
   before_action :read_only_redirect, except: [:redirect_to_alma, :user_id]
   before_action :require_user_authentication_provider, except: [:redirect_to_alma, :user_id]
   before_action :verify_user, except: [:borrow_direct_redirect, :redirect_to_alma, :user_id]
-  before_action :verify_admin!, only: [:admin]
 
   def index
     redirect_to digitization_requests_path
@@ -49,8 +48,6 @@ class AccountController < ApplicationController
   def user_id
     render json: { user_id: current_user&.uid }
   end
-
-  def admin; end
 
   protected
 

@@ -72,41 +72,4 @@ RSpec.describe AccountController do
       end
     end
   end
-  describe "admin page" do
-    context "when logged in as an admin" do
-      let(:user) { FactoryBot.create(:admin) }
-      before do
-        login_as(user)
-      end
-      it "allows the user to see the admin page" do
-        get "/account/admin"
-        expect(response).to be_successful
-        expect(response.body).to have_content("If you can see this page, you are an admin")
-        expect(flash[:alert]).to be nil
-      end
-    end
-    context "when logged in as a regular user" do
-      let(:user) { FactoryBot.create(:user) }
-      before do
-        login_as(user)
-      end
-
-      it "allows the user to see the admin page" do
-        get "/account/admin"
-        expect(response).to redirect_to(root_url)
-        expect(response.body).not_to have_content("If you can see this page, you are an admin")
-        follow_redirect!
-        expect(flash[:alert]).to eq("You must be an admin to view requested page")
-      end
-    end
-    context "when not logged in" do
-      let(:user) { FactoryBot.create(:unauthenticated_patron) }
-
-      it "redirects to the login page" do
-        get "/account/admin"
-        expect(response).to redirect_to("/users/sign_in?referer=%2Faccount%2Fadmin")
-        expect(flash[:alert]).to be nil
-      end
-    end
-  end
 end

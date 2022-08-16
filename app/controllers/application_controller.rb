@@ -59,9 +59,6 @@ class ApplicationController < ActionController::Base
 
     def verify_admin!
       authenticate_user!
-      return if current_user.admin?
-
-      request.flash.alert = "You must be an admin to view requested page"
-      redirect_to root_url
+      head :forbidden unless current_user.admin?
     end
 end
