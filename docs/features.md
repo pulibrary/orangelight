@@ -5,12 +5,7 @@ The dashboard for flipflop is at `/features`, and only administrators for the ap
 
 Unless the feature impacts a controller or initializer (probably better not to use Flipflop for changes in these areas), it is not necessary to restart the server or deploy in order for these changes to take effect.
 
-In order to update the application administrators, update the `ORANGELIGHT_ADMIN_NETIDS` value in princeton_ansible, run the Orangelight playbook, then ssh onto the server as the deploy user, and run the rake task:
-
-```bash
-cd /opt/orangelight/current
-bundle exec rake admins:update
-```
+In order to update the application administrators, update the `ORANGELIGHT_ADMIN_NETIDS` value in princeton_ansible, run the Orangelight playbook and restart the application server.
 
 ### Ansible-managed
 Currently, `read_only_mode` is managed via Ansible. In order to set this value, change the value of `OL_READ_ONLY_MODE` in princeton_ansible and run the Orangelight playbook on the relevant environment. Because this value is set in an initializer, the application server must be restarted before this will take effect (deploying the application will do this as well).

@@ -52,7 +52,13 @@ RSpec.describe User do
       end
     end
     context "an admin user" do
-      let(:user) { FactoryBot.create(:admin) }
+      let(:user) { FactoryBot.create(:user) }
+      around do |example|
+        cached_admin_netids = ENV['ORANGELIGHT_ADMIN_NETIDS'] || ''
+        ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids + " #{user.uid}"
+        example.run
+        ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids
+      end
       it "recognizes that it is an admin" do
         expect(user.guest?).to eq(false)
         expect(user.admin?).to eq(true)
