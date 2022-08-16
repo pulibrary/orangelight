@@ -86,4 +86,14 @@ class User < ApplicationRecord
       .where("guest = ? and updated_at < ?", true, Time.now.utc - 7.days)
       .find_each(batch_size: 25_000, &:destroy)
   end
+
+  def admin?
+    netids.include? uid
+  end
+
+  private
+
+    def netids
+      @netids ||= ENV['ORANGELIGHT_ADMIN_NETIDS']&.split(" ") || ""
+    end
 end

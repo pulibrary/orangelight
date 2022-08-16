@@ -6,7 +6,13 @@ describe "Flipflop features" do
     login_as(user)
   end
   context "as an admin user" do
-    let(:user) { FactoryBot.create(:admin) }
+    let(:user) { FactoryBot.create(:user) }
+    around do |example|
+      cached_admin_netids = ENV['ORANGELIGHT_ADMIN_NETIDS'] || ''
+      ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids + " #{user.uid}"
+      example.run
+      ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids
+    end
 
     it "has a dashboard" do
       visit 'features'

@@ -5,9 +5,15 @@ require 'rails_helper'
 RSpec.describe "FeaturesController" do
   describe "features page" do
     context "when logged in as an admin" do
-      let(:user) { FactoryBot.create(:admin) }
+      let(:user) { FactoryBot.create(:user) }
       before do
         login_as(user)
+      end
+      around do |example|
+        cached_admin_netids = ENV['ORANGELIGHT_ADMIN_NETIDS'] || ''
+        ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids + " #{user.uid}"
+        example.run
+        ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids
       end
       it "allows the user to see the admin page" do
         get "/features"

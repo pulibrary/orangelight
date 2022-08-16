@@ -17,10 +17,6 @@ FactoryBot.define do
     factory :unauthorized_princeton_patron do
     end
 
-    factory :admin do
-      admin { true }
-    end
-
     factory :valid_barcode_patron do
       provider { 'barcode' }
       sequence(:uid) { srand.to_s[2..15] }
