@@ -1,6 +1,6 @@
 <%= form_tag('/account/cancel_ill_requests', remote: true, id: "ill-request-cancel", class: "table--overflow") do %>
 
-  <h3 class="section-heading" id="outstanding-requests">Outstanding Inter Library Loan and Digitization Requests</h3>
+  <h2 class="section-heading" id="outstanding-requests">Outstanding Inter Library Loan and Digitization Requests</h2>
   <% if (!@illiad_transactions.blank?) %>
     <table class="table table-striped table-bordered account--requests">
       <thead>
