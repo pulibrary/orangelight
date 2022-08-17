@@ -1,6 +1,6 @@
 <h2><%= t 'blacklight.search.zero_results.title' %></h2>
 <div id="documents" class="noresults">
-  <h3><%= link_to(t('blacklight.search.zero_results.try_borrow_direct'), borrow_direct_path(q: params[:q])) %></h3>
+  <h3><%= link_to(t('blacklight.search.zero_results.try_borrow_direct'), zero_results_link(params[:q], params[:search_field])) %></h3>
   <p>To learn more about this service, consult the Library <%= link_to('Borrow Direct', 'https://library.princeton.edu/services/borrowdirect') %> information page.</p>
   <ul>
 

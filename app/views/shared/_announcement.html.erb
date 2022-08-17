@@ -1,11 +1,5 @@
 <%# to remove messages altogether, set this to empty string %>
-<% 
-    if Flipflop.test_header? && !Rails.env.production?
-      message = 'Flipflop test_header feature is on!'
-    else
-      message = ''
-    end
-%>
+<% message = '' %>
 <% if Orangelight.read_only_mode %>
   <div class="col-12 alert alert-warning announcement">
     <div class="container">

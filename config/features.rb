@@ -19,7 +19,11 @@ Flipflop.configure do
 
   # Declare your features, e.g:
   #
-  feature :test_header,
+  # feature :test_header,
+  #   default: false,
+  #   description: "Display a test header to show if flipflop is working."
+
+  feature :reshare_for_borrow_direct,
     default: false,
-    description: "Display a test header to show if flipflop is working."
+    description: "When on / true, uses the new ReShare provider for BorrowDirect. When off / false, uses the older Relais provider for BorrowDirect."
 end
