@@ -55,6 +55,7 @@ class FiggyViewer {
   constructIFrame() {
     const iframeElement = document.createElement("iframe")
     iframeElement.setAttribute("allowFullScreen", "true")
+    iframeElement.setAttribute("title", "Digital content viewer")
     iframeElement.id = `iframe-${this.idx + 1}`
 
     // This needs to be retrieved using Global
@@ -265,4 +266,8 @@ class FiggyManifestManager {
   }
 }
 
-export default FiggyManifestManager
+export default FiggyManifestManager;
+
+export const exportedForTesting = {
+  FiggyViewer
+};
