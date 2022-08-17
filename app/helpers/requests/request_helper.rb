@@ -83,5 +83,36 @@ module Requests
         "/catalog/#{id}"
       end
     end
+
+    def zero_results_link(query_params, search_field)
+      if Flipflop.reshare_for_borrow_direct?
+        reshare_link(query_params, search_field)
+      else
+        borrow_direct_path(q: query_params)
+      end
+    end
+
+    def reshare_link(query_params, search_field)
+      if query_params
+        "https://borrowdirect.reshare.indexdata.com/Search/Results?lookfor=#{query_params}&type=#{reshare_type(search_field)}"
+      else
+        "https://borrowdirect.reshare.indexdata.com/Search/Results"
+      end
+    end
+
+    def reshare_type(search_field)
+      case search_field
+      when 'all_fields'
+        'AllFields'
+      when 'author'
+        'Author'
+      when 'subject'
+        'Subject'
+      when 'title'
+        'Title'
+      else
+        'AllFields'
+      end
+    end
   end
 end

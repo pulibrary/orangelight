@@ -88,10 +88,29 @@ describe 'Searching', type: :system, js: false do
     end
   end
   context 'with an invalid field list parameter in the advanced search' do
-    it 'will return results without an error' do
-      visit '/catalog?q1=NSF%20Series&search_field=advanced&f1=in_series2121121121212.1'
-      expect { page }.not_to raise_error
-      expect(page).to have_content 'No results found for your search'
+    let(:test_strategy) { Flipflop::FeatureSet.current.test! }
+
+    context 'with old borrow direct provider' do
+      before do
+        test_strategy.switch!(:reshare_for_borrow_direct, false)
+      end
+      it 'will return results without an error' do
+        visit '/catalog?q1=NSF%20Series&search_field=advanced&f1=in_series2121121121212.1'
+        expect { page }.not_to raise_error
+        expect(page).to have_content 'No results found for your search'
+        expect(page).to have_link('Try Borrow Direct', href: '/borrow-direct')
+      end
+    end
+    context 'with new borrow direct provider' do
+      before do
+        test_strategy.switch!(:reshare_for_borrow_direct, true)
+      end
+      it 'will return results without an error' do
+        visit '/catalog?q1=NSF%20Series&search_field=advanced&f1=in_series2121121121212.1'
+        expect { page }.not_to raise_error
+        expect(page).to have_content 'No results found for your search'
+        expect(page).to have_link('Try Borrow Direct', href: 'https://borrowdirect.reshare.indexdata.com/Search/Results')
+      end
     end
   end
   context 'when searching with an invalid facet parameter' do
