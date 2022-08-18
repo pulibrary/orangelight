@@ -27,6 +27,16 @@ RSpec.describe 'catalog/index' do
     end
   end
 
+  describe 'search results' do
+    it '<ul> elements contain only <li>, <script>, or <template>' do
+      visit '/catalog?q=korea'
+      lists = page.all('ul')
+      child_tags = lists.map { |list| list.find_all(:xpath, './*').map(&:tag_name) }.flatten.uniq
+      invalid_child_tags = child_tags.delete_if { |tag| %(li script template).include? tag }
+      expect(invalid_child_tags).to be_empty
+    end
+  end
+
   describe 'advanced search' do
     it 'inclusive facets display when applied' do
       visit '/catalog?f_inclusive%5Bformat%5D%5B%5D=Audio&search_field=advanced'
