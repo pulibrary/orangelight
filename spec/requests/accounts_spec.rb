@@ -72,4 +72,30 @@ RSpec.describe AccountController do
       end
     end
   end
+
+  context 'with old borrow direct provider' do
+    context 'when logged in' do
+      before do
+        login_as(valid_user)
+        test_strategy = Flipflop::FeatureSet.current.test!
+        test_strategy.switch!(:reshare_for_borrow_direct, false)
+      end
+      it 'Links to borrow direct route to #borrow_direct_redirect' do
+        get '/borrow-direct'
+        expect(request.parameters).to eq({ "controller" => "account", "action" => "borrow_direct_redirect" })
+        expect(response.location).to match(RELAIS_BASE)
+      end
+    end
+  end
+  context 'with new borrow direct provider' do
+    before do
+      test_strategy = Flipflop::FeatureSet.current.test!
+      test_strategy.switch!(:reshare_for_borrow_direct, true)
+    end
+
+    it 'Links directly to the new borrow direct provider' do
+      get '/borrow-direct'
+      expect(response).to redirect_to('https://borrowdirect.reshare.indexdata.com/')
+    end
+  end
 end
