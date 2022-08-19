@@ -7,6 +7,9 @@ assignees: ''
 
 ---
 
-**User story**
+### User story
 
-**Concrete example**
+### Concrete example
+
+### Implementation notes, if any
+

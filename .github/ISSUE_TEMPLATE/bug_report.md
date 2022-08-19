@@ -7,18 +7,21 @@ assignees: ''
 
 ---
 
-**Expected behavior**
+### Expected behavior
 A clear and concise description of what you expected to happen.
 
-**Actual behavior**
+### Actual behavior
 Include screenshots, or links and browser version if relevant
 
-**Steps to replicate**
+### Steps to replicate
 
-**Impact of this bug**
+### Impact of this bug
 E.g. "I can't work until this is fixed" or "I have a workaround"
 
-**Honeybadger link and code snippet, if applicable**
+### Honeybadger link and code snippet, if applicable
 
 ```
 ```
+
+### Implementation notes, if any
+
