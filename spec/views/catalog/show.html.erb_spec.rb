@@ -164,4 +164,12 @@ RSpec.describe 'catalog/show' do
       expect(page).to have_selector('.holding-indexes')
     end
   end
+  context 'when using keyboard' do
+    it 'user can activate bookmark button', js: true do
+      visit 'catalog/995597013506421'
+      expect(page).to have_content('Bookmark')
+      expect { press_element('.bookmark-button') }.not_to raise_exception(Selenium::WebDriver::Error::ElementNotInteractableError)
+      expect(page).to have_content('Remove bookmark')
+    end
+  end
 end

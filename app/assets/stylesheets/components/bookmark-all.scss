@@ -31,24 +31,13 @@
   }
 }
 
-.search-widgets label.toggle-bookmark {
-  min-width: initial;
-}
-
-@media (max-width: $bp-medium) {
-  .search-widgets .checkbox.toggle-bookmark {
-    padding: 0;
-  }
-}
-
 .checkbox.bookmark_all {
   margin-left: 3px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.checkbox.bookmark_all,
-.search-widgets .checkbox.toggle-bookmark {
+.checkbox.bookmark_all {
   float: right;
 
   label {
@@ -60,9 +49,4 @@
   input {
     display: none;
   }
-}
-
-.search-widgets input[type=checkbox]:checked + span {
-  background: $blue;
-  color: $white;
 }
