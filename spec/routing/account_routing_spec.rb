@@ -16,8 +16,13 @@ RSpec.describe AccountController, type: :routing do
       expect(get: '/account/cancel').not_to be_routable
     end
 
-    it 'Links to borrow direct route to #borrow_direct_redirect' do
-      expect(get: '/borrow-direct').to route_to('account#borrow_direct_redirect')
+    context 'with old borrow direct provider' do
+      before do
+        allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(false)
+      end
+      it 'Links to borrow direct route to #borrow_direct_redirect' do
+        expect(get: '/borrow-direct').to route_to('account#borrow_direct_redirect')
+      end
     end
   end
 end

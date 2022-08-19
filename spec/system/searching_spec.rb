@@ -88,11 +88,9 @@ describe 'Searching', type: :system, js: false do
     end
   end
   context 'with an invalid field list parameter in the advanced search' do
-    let(:test_strategy) { Flipflop::FeatureSet.current.test! }
-
     context 'with old borrow direct provider' do
       before do
-        test_strategy.switch!(:reshare_for_borrow_direct, false)
+        allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(false)
       end
       it 'will return results without an error' do
         visit '/catalog?q1=NSF%20Series&search_field=advanced&f1=in_series2121121121212.1'
@@ -103,7 +101,7 @@ describe 'Searching', type: :system, js: false do
     end
     context 'with new borrow direct provider' do
       before do
-        test_strategy.switch!(:reshare_for_borrow_direct, true)
+        allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(true)
       end
       it 'will return results without an error' do
         visit '/catalog?q1=NSF%20Series&search_field=advanced&f1=in_series2121121121212.1'
