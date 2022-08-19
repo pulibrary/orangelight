@@ -14,13 +14,12 @@ RSpec.describe Requests::RequestHelper, type: :helper do
   end
 
   describe '#zero_results_link' do
-    let(:test_strategy) { Flipflop::FeatureSet.current.test! }
     let(:query_params) { 'asdf' }
     let(:zero_results_link) { helper.zero_results_link(query_params, search_field) }
 
     context 'with old borrow direct provider' do
       before do
-        test_strategy.switch!(:reshare_for_borrow_direct, false)
+        allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(false)
       end
       context 'with a standard keyword query' do
         let(:search_field) { 'all_fields' }
@@ -39,7 +38,7 @@ RSpec.describe Requests::RequestHelper, type: :helper do
     end
     context 'with new borrow direct provider' do
       before do
-        test_strategy.switch!(:reshare_for_borrow_direct, true)
+        allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(true)
       end
       context 'with a standard keyword query' do
         let(:expected_url) { 'https://borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=AllFields' }

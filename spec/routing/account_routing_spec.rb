@@ -18,8 +18,7 @@ RSpec.describe AccountController, type: :routing do
 
     context 'with old borrow direct provider' do
       before do
-        test_strategy = Flipflop::FeatureSet.current.test!
-        test_strategy.switch!(:reshare_for_borrow_direct, false)
+        allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(false)
       end
       it 'Links to borrow direct route to #borrow_direct_redirect' do
         expect(get: '/borrow-direct').to route_to('account#borrow_direct_redirect')
