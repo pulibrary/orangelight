@@ -23,10 +23,6 @@
   text-transform: capitalize;
 }
 
-.search-widgets .clear-bookmarks {
-  display: none;
-}
-
 a.clear-bookmarks, a.clear-search-history {
   margin: 0 0 0 3px;
 }
@@ -82,7 +78,6 @@ a.clear-bookmarks, a.clear-search-history {
 .pagination-search-widgets .previous,
 .pagination-search-widgets .next,
 .checkbox.bookmark_all span,
-.search-widgets .checkbox.toggle-bookmark span,
 .bookmarksTools.nav #emailLink,
 .bookmarksTools.nav #citationLink,
 .bookmarksTools.nav > li > a,
@@ -120,15 +115,10 @@ a.clear-bookmarks, a.clear-search-history {
   }
 }
 
-.checkbox.bookmark_all span,
-.search-widgets .checkbox.toggle-bookmark span {
+.checkbox.bookmark_all span {
   display: inline-block;
   padding-bottom: 7px;
   margin-right: 0;
-}
-
-.pagination-search-widgets .checkbox.toggle-bookmark {
-  margin-bottom: 0;
 }
 
 .pagination-search-widgets .previous,

@@ -132,7 +132,11 @@ module Requests
         when 'help_me'
           Requests::Submissions::HelpMe.new(self)
         when *inter_library_services
-          Requests::Submissions::BorrowDirect.new(self, service_type: type)
+          if Flipflop.reshare_for_borrow_direct?
+            Requests::Submissions::Illiad.new(self, service_type: type)
+          else
+            Requests::Submissions::BorrowDirect.new(self, service_type: type)
+          end
         else
           Requests::Submissions::Generic.new(self, service_type: type)
         end

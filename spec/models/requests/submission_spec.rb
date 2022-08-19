@@ -274,21 +274,82 @@ describe Requests::Submission do
     end
 
     describe 'A valid Borrow Direct Direct Request' do
-      it 'has a borrow direct eligible item selected' do
-        expect(submission.items.first).to be_truthy
-        expect(submission.items.first['type']).to eq('bd')
-      end
+      context 'with old borrow direct provider' do
+        before do
+          allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(false)
+        end
+        it 'has a borrow direct eligible item selected' do
+          expect(submission.items.first).to be_truthy
+          expect(submission.items.first['type']).to eq('bd')
+        end
 
-      it 'has an auth_id' do
-        expect(submission.bd['auth_id']).to eq(bd['auth_id'])
-      end
+        it 'has an auth_id' do
+          expect(submission.bd['auth_id']).to eq(bd['auth_id'])
+        end
 
-      it 'has a pick-up location' do
-        expect(submission.items.first['pick_up']).to eq(requestable.first['pick_up'])
-      end
+        it 'has a pick-up location' do
+          expect(submission.items.first['pick_up']).to eq(requestable.first['pick_up'])
+        end
 
-      it 'has query parameters' do
-        expect(submission.bd['query_params']).to eq(bd['query_params'])
+        it 'has query parameters' do
+          expect(submission.bd['query_params']).to eq(bd['query_params'])
+        end
+      end
+      context 'with new borrow direct provider' do
+        let(:requestable) do
+          [
+            {
+              "selected" => "true",
+              "mfhd" => "22113812720006421",
+              "call_number" => "HA202 .U581",
+              "location_code" => "recap$pa",
+              "item_id" => "23113812570006421",
+              "delivery_mode_3059236" => "print",
+              "barcode" => "32101044283008",
+              "enum_display" => "2000 (13th ed.)",
+              "copy_number" => "1",
+              "status" => "Not Charged",
+              "type" => "ill",
+              "edd_start_page" => "",
+              "edd_end_page" => "",
+              "edd_volume_number" => "",
+              "edd_issue" => "",
+              "edd_author" => "",
+              "edd_art_title" => "",
+              "edd_note" => "",
+              "pick_up" => "Firestone Library"
+            },
+            {
+              "selected" => "false"
+            },
+            {
+              "type" => 'ill'
+            }
+          ]
+        end
+        let(:params) do
+          {
+            request: user_info,
+            requestable: requestable,
+            bib: bib
+          }
+        end
+        before do
+          allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(true)
+        end
+
+        it 'has Illiad eligible item selected' do
+          expect(submission.items.first).to be_truthy
+          expect(submission.items.first['type']).to eq('ill')
+        end
+
+        it 'does not have a bd attribute' do
+          expect(submission.bd).to be_nil
+        end
+
+        it 'has a pick-up location' do
+          expect(submission.items.first['pick_up']).to eq(requestable.first['pick_up'])
+        end
       end
     end
   end

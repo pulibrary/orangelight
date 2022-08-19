@@ -101,7 +101,9 @@ module Requests
       def calculate_unavailable_services
         return [] unless cas_provider?
         services = []
-        services << 'bd' if !requestable.enumerated? && !any_loanable? && requestable.bib['isbn_s'].present?
+        unless Flipflop.reshare_for_borrow_direct?
+          services << 'bd' if !requestable.enumerated? && !any_loanable? && requestable.bib['isbn_s'].present?
+        end
         # for mongraphs - title level check OR for serials - copy level check
         services << 'ill' if !any_loanable? || requestable.enumerated?
         services

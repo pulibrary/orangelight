@@ -1,0 +1,12 @@
+<%= form_tag(bookmark_path,
+             method:  bookmarked? ? :delete : :put,
+             data: {
+               'doc-id' => @document.id,
+               present: t('blacklight.search.bookmarks.present'),
+               absent: t('blacklight.search.bookmarks.absent'),
+               inprogress: t('blacklight.search.bookmarks.inprogress')
+            }) do %>
+  <%= button_tag(t(bookmarked? ? 'remove.button' : 'add.button', scope: 'blacklight.bookmarks'),
+                 id: "bookmark_toggle_#{@document.id.to_s.parameterize}",
+                 class: "btn btn-#{bookmarked? ? 'primary' : 'btn-outline-secondary'} bookmark-button") %>
+<% end %>

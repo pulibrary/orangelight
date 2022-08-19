@@ -66,7 +66,11 @@ module Requests
         return {} unless response
         data = JSON.parse(response.body)
         if response.status != 200
-          Rails.logger.warn("Illiad Error Message: #{data[:message]}")
+          if data
+            Rails.logger.warn("Illiad Error Message: #{data[:message]}")
+          else
+            Rails.logger.warn("Illiad Error Message: #{response.reason_phrase}")
+          end
           {}
         else
           data.with_indifferent_access

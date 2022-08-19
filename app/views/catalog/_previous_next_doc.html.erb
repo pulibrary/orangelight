@@ -49,7 +49,7 @@
           </ul>
         </li>
         <li>
-          <%= render(:partial => 'catalog/bookmark_control', :locals => {:document=> @document}) %>
+          <%= render BookmarkButtonComponent.new(document: @document) if current_or_guest_user %>
         </li>
       </ul>
     </div>
