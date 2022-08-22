@@ -30845,5 +30845,224 @@
   "other_version_s": [
     "ocm12430913"
   ]
+},
+{
+  "id": [
+    "99125527882306421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+  ],
+  "title_display": [
+    "RenoOut."
+  ],
+  "title_a_index": [
+    "RenoOut"
+  ],
+  "title_sort": [
+    "RenoOut."
+  ],
+  "title_no_h_index": [
+    "RenoOut."
+  ],
+  "title_t": [
+    "RenoOut."
+  ],
+  "title_citation_display": [
+    "RenoOut"
+  ],
+  "compiled_created_t": [
+    "RenoOut."
+  ],
+  "pub_created_display": [
+    "Reno : Reno Gay Press and Promotions, 2007-"
+  ],
+  "pub_created_s": [
+    "Reno : Reno Gay Press and Promotions, 2007-"
+  ],
+  "pub_citation_display": [
+    "Reno: Reno Gay Press and Promotions"
+  ],
+  "pub_date_display": [
+    "2007"
+  ],
+  "pub_date_start_sort": [
+    "2007"
+  ],
+  "pub_date_end_sort": [
+    "9999"
+  ],
+  "cataloged_tdt": [
+    "2022-06-30T04:00:00Z"
+  ],
+  "format": [
+    "Journal"
+  ],
+  "description_display": [
+    "volumes : illustrations ; 26 cm",
+    "Began in 2007."
+  ],
+  "description_t": [
+    "volumes : illustrations ; 26 cm",
+    "Began in 2007."
+  ],
+  "number_of_pages_citation_display": [
+    "volumes"
+  ],
+  "geocode_display": [
+    "Nevada",
+    "California"
+  ],
+  "frequency_display": [
+    "Monthly"
+  ],
+  "notes_index": [
+    "The two \"O\"s in the title are represented by joined male and female symbols, each \"O\" a circle with both an arrow pointing up and a small cross beneath.",
+    "\"The Northern Nevada LGBT Community Voice.\"",
+    "Editor and publisher: Laura Grotz.",
+    "Description based on: June 2007 (second issue); title from cover.",
+    "Latest issue consulted: November 2008."
+  ],
+  "notes_display": [
+    "The two \"O\"s in the title are represented by joined male and female symbols, each \"O\" a circle with both an arrow pointing up and a small cross beneath.",
+    "\"The Northern Nevada LGBT Community Voice.\"",
+    "Editor and publisher: Laura Grotz."
+  ],
+  "source_desc_notes_display": [
+    "Description based on: June 2007 (second issue); title from cover.",
+    "Latest issue consulted: November 2008."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "publication_place_facet": [
+    "Nevada"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Gays—Nevada—Reno—Periodicals",
+    "Lesbians—Nevada—Reno—Periodicals",
+    "Sexual minorities—Nevada—Reno—Periodicals"
+  ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "Gays—Nevada—Reno—Periodicals",
+    "Lesbians—Nevada—Reno—Periodicals",
+    "Sexual minorities—Nevada—Reno—Periodicals"
+  ],
+  "homoit_subject_display": [
+    "LGBTQ+ people—Nevada—Reno—Periodicals"
+  ],
+  "subject_unstem_search": [
+    "Gays—Nevada—Reno—Periodicals",
+    "Lesbians—Nevada—Reno—Periodicals",
+    "Sexual minorities—Nevada—Reno—Periodicals"
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": [
+    "LGBTQ+ people—Nevada—Reno—Periodicals"
+  ],
+  "subject_facet": [
+    "Gays—Nevada—Reno—Periodicals",
+    "Lesbians—Nevada—Reno—Periodicals",
+    "Sexual minorities—Nevada—Reno—Periodicals",
+    "LGBTQ+ people—Nevada—Reno—Periodicals",
+    "Periodicals",
+    "LGBTQ+ periodicals"
+  ],
+  "homoit_genre_s": [
+    "LGBTQ+ periodicals"
+  ],
+  "lcgft_s": [
+    "Periodicals"
+  ],
+  "subject_topic_facet": [
+    "Gays",
+    "Nevada",
+    "Reno",
+    "Lesbians",
+    "Sexual minorities",
+    "LGBTQ+ people"
+  ],
+  "lc_1letter_facet": [
+    "H - Social Sciences"
+  ],
+  "lc_rest_facet": [
+    "HQ - The Family, Marriage, Woman"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "H - Social Sciences"
+  ],
+  "call_number_full_facet": [
+    "HQ - The Family, Marriage, Woman"
+  ],
+  "genre_facet": [
+    "Periodicals",
+    "LGBTQ+ periodicals"
+  ],
+  "other_title_index": [
+    "Reno out"
+  ],
+  "other_title_display": [
+    "Reno out"
+  ],
+  "alt_title_246_display": [
+    "Reno out"
+  ],
+  "oclc_s": [
+    "179901451"
+  ],
+  "standard_no_index": [
+    "179901451",
+    "ocn179901451"
+  ],
+  "other_version_s": [
+    "ocn179901451"
+  ],
+  "holdings_1display": [
+    "{\"22935316380006421\":{\"location_code\":\"rare$wa\",\"location\":\"Western Americana Collection\",\"library\":\"Special Collections\",\"call_number\":\"Alma-27344q\",\"call_number_browse\":\"Alma-27344q\",\"items\":[{\"holding_id\":\"22935316380006421\",\"enumeration\":\"(Sept. 2007, Aug.-Nov. 2008)\",\"id\":\"23935316370006421\",\"status_at_load\":\"0\",\"barcode\":\"32101088379837\"}],\"location_has\":[\"September 2007, August 2008, September 2008, October 2008, November 2008\"],\"supplements\":[null],\"indexes\":[null]}}"
+  ],
+  "location_code_s": [
+    "rare$wa"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Western Americana Collection"
+  ],
+  "advanced_location_s": [
+    "rare$wa",
+    "Special Collections"
+  ],
+  "call_number_display": [
+    "Alma-27344q"
+  ],
+  "call_number_browse_s": [
+    "Alma-27344q"
+  ],
+  "call_number_locator_display": [
+    "Alma-27344q"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
 }
 ]

@@ -112,10 +112,18 @@ RSpec.describe 'catalog/show' do
   end
 
   context 'when a document has Homosaurus subjects' do
-    it 'displays them' do
+    it 'displays the subjects' do
       visit 'catalog/99125412083106421'
       expect(page).to have_content('Homosaurus term(s)')
       expect(page).to have_content('LGBTQ chosen families')
+    end
+  end
+
+  context 'when a document has Homosaurus genres' do
+    it 'displays the genres' do
+      visit 'catalog/99125527882306421'
+      expect(page).to have_content('Homosaurus genre(s)')
+      expect(page).to have_content('LGBTQ+ periodicals')
     end
   end
 
