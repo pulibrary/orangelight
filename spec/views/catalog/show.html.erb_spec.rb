@@ -172,4 +172,16 @@ RSpec.describe 'catalog/show' do
       expect(page).to have_content('Remove bookmark')
     end
   end
+  describe 'menus' do
+    it 'only has menu elements that contain menuitems' do
+      visit 'catalog/995597013506421'
+      expect(page).to have_content('Send to')
+      all_menus = page.all(:css, '[role=menu]')
+      all_menus.each do |menu|
+        menu.assert_any_of_selectors(:css, "[role=menuitem]", "[role=menuitemcheckbox]", "[role=menuitemradio]")
+      end
+      send_to_menu = page.find(:xpath, '//*[@id="main-container"]/div/div[2]/div[1]/div/div[2]/ul/li[2]/ul')
+      expect(send_to_menu['role']).to be_nil
+    end
+  end
 end
