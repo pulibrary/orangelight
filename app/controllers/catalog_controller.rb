@@ -268,7 +268,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'siku_subject_display', label: 'Chinese traditional subject(s)', helper_method: :subjectify
     config.add_show_field 'homoit_subject_display', label: 'Homosaurus term(s)', helper_method: :subjectify
     config.add_show_field 'related_name_json_1display', hash: true
-    config.add_show_field 'lcgft_s', label: 'Library of Congress genre', helper_method: :subjectify
+    config.add_show_field 'lcgft_s', label: 'Library of Congress genre(s)', helper_method: :subjectify
+    config.add_show_field 'homoit_genre_s', label: 'Homosaurus genre(s)', helper_method: :subjectify
     config.add_show_field 'rbgenr_s', label: 'Rare books genre', helper_method: :subjectify
     config.add_show_field 'aat_s', label: 'Getty AAT genre', helper_method: :subjectify
     config.add_show_field 'related_works_1display', label: 'Related work(s)', helper_method: :name_title_hierarchy
