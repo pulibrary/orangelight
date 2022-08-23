@@ -1,0 +1,10 @@
+      <div>
+        <%= hidden_service_options requestable, fill_in: fill_in %>
+        <%= hidden_field_tag "requestable[][fill_in]", requestable.fill_in_pick_up? %>
+        <%= radio_button_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}]", 'illiad', selected, data: { target: "#fields-illiad__#{requestable.preferred_request_id}" }, 'aria-controls' => "fields-illiad__#{requestable.preferred_request_id}", class: 'control-label' %>
+        <%= label_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}_illiad]", I18n.t("requests.ill.delivery_label"), class: 'control-label', id: "requestable__type_illiad_label_#{requestable.preferred_request_id}" %>
+        <%= content_tag(:div, id: "fields-print__#{requestable.preferred_request_id}", class: 'card card-body bg-light') do %>
+          <%= hidden_field_tag 'requestable[][pick_up]', "", value: { 'pick_up' => 'PA', 'pick_up_location_code' => 'firestone' }.to_json, class: 'single-pick-up-hidden', id: "requestable__pick_up_#{requestable.preferred_request_id}" %>
+          <%= label_tag "requestable__pick_up_#{requestable.preferred_request_id}", "Pick-up location: Firestone Library", class: 'single-pick-up', style: 'margin-top:10px;' %>
+        <% end %>
+      </div>

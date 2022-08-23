@@ -677,104 +677,170 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           visit '/requests/9999946923506421?mfhd=9800910'
           expect(page).to have_content 'there are no requestable items for this record'
         end
+        context 'with old borrow direct provider' do
+          before do
+            allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(false)
+          end
 
-        it 'Borrow Direct successful on Missing items' do
-          borrow_direct = ::BorrowDirect::RequestItem.new("22101008199999")
-          expect(::BorrowDirect::RequestItem).to receive(:new).with("22101008199999").and_return(borrow_direct)
-          expect(borrow_direct).to receive(:make_request).with("Firestone Library", isbn: '9780812929645').and_return('123456')
-          visit '/requests/9917887963506421?mfhd=22503918400006421'
-          expect(page).to have_content 'Request via Partner Library'
-          expect(page).to have_content 'Pick-up location: Firestone Library'
-          check('requestable_selected_23503918390006421')
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(0)
-          expect(page).to have_content 'Request submitted to BorrowDirect'
-          expect(page).to have_content 'Your request number is 123456'
-          expect(page).not_to have_content 'Your request was submittied. Our library staff will review the request and contact you with aviable options.'
+          it 'Borrow Direct successful on Missing items' do
+            borrow_direct = ::BorrowDirect::RequestItem.new("22101008199999")
+            expect(::BorrowDirect::RequestItem).to receive(:new).with("22101008199999").and_return(borrow_direct)
+            expect(borrow_direct).to receive(:make_request).with("Firestone Library", isbn: '9780812929645').and_return('123456')
+            visit '/requests/9917887963506421?mfhd=22503918400006421'
+            expect(page).to have_content 'Request via Partner Library'
+            expect(page).to have_content 'Pick-up location: Firestone Library'
+            check('requestable_selected_23503918390006421')
+            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(0)
+            expect(page).to have_content 'Request submitted to BorrowDirect'
+            expect(page).to have_content 'Your request number is 123456'
+            expect(page).not_to have_content 'Your request was submittied. Our library staff will review the request and contact you with aviable options.'
+          end
+
+          it 'Borrow direct unsuccessful, but no exception thrown sent on to illiad' do
+            borrow_direct = ::BorrowDirect::RequestItem.new("22101008199999")
+            expect(::BorrowDirect::RequestItem).to receive(:new).with("22101008199999").and_return(borrow_direct)
+            expect(borrow_direct).to receive(:make_request).with("Firestone Library", isbn: '9780812929645').and_return(nil)
+            stub_illiad_patron
+            stub_request(:post, transaction_url)
+              .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing",
+                                         "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Trump, Donald Bohner, Kate", "LoanTitle" => "Trump : the art of the comeback",
+                                         "LoanPublisher" => nil, "ISSN" => "9780812929645", "CallNumber" => "HC102.5.T78 A3 1997", "CitedIn" => "https://catalog.princeton.edu/catalog/9917887963506421", "ItemInfo3" => "",
+                                         "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
+              .to_return(status: 200, body: responses[:transaction_created], headers: {})
+            stub_request(:post, transaction_note_url)
+              .to_return(status: 200, body: responses[:note_created], headers: {})
+            visit '/requests/9917887963506421?mfhd=22503918400006421'
+            expect(page).to have_content 'Request via Partner Library'
+            expect(page).to have_content 'Pick-up location: Firestone Library'
+            check('requestable_selected_23503918390006421')
+            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+            expect(a_request(:post, transaction_url)).to have_been_made
+            expect(a_request(:post, transaction_note_url)).to have_been_made
+            expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
+            expect(page).not_to have_content 'Request submitted to BorrowDirect'
+            confirm_email = ActionMailer::Base.deliveries.last
+            expect(confirm_email.subject).to eq("Partner Request Confirmation")
+            expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+            expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+            expect(confirm_email.html_part.body.to_s).to have_content("Requests typically are filled within two weeks when possible")
+            expect(confirm_email.html_part.body.to_s).to have_content("Trump : the art of the comeback")
+          end
+
+          it 'Borrow Direct unsuccessful on missing item sent to illiad' do
+            borrow_direct = ::BorrowDirect::RequestItem.new("22101008199999")
+            expect(::BorrowDirect::RequestItem).to receive(:new).with("22101008199999").and_return(borrow_direct)
+            expect(borrow_direct).to receive(:make_request).with("Firestone Library", isbn: '9780812929645').and_raise(::BorrowDirect::Error, "Error with borrow direct")
+            stub_illiad_patron
+            stub_request(:post, transaction_url)
+              .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing",
+                                         "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Trump, Donald Bohner, Kate", "LoanTitle" => "Trump : the art of the comeback",
+                                         "LoanPublisher" => nil, "ISSN" => "9780812929645", "CallNumber" => "HC102.5.T78 A3 1997", "CitedIn" => "https://catalog.princeton.edu/catalog/9917887963506421", "ItemInfo3" => "",
+                                         "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
+              .to_return(status: 200, body: responses[:transaction_created], headers: {})
+            stub_request(:post, transaction_note_url)
+              .to_return(status: 200, body: responses[:note_created], headers: {})
+            visit '/requests/9917887963506421?mfhd=22503918400006421'
+            expect(page).to have_content 'Request via Partner Library'
+            expect(page).to have_content 'Pick-up location: Firestone Library'
+            check('requestable_selected_23503918390006421')
+            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+            expect(a_request(:post, transaction_url)).to have_been_made
+            expect(a_request(:post, transaction_note_url)).to have_been_made
+            expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
+            expect(page).not_to have_content 'Request submitted to BorrowDirect'
+            confirm_email = ActionMailer::Base.deliveries.last
+            expect(confirm_email.subject).to eq("Partner Request Confirmation")
+            expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+            expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+            expect(confirm_email.html_part.body.to_s).to have_content("Requests typically are filled within two weeks when possible")
+            expect(confirm_email.html_part.body.to_s).to have_content("Trump : the art of the comeback")
+          end
+
+          it 'allow interlibrary loan to be requested' do
+            stub_illiad_patron
+            stub_request(:post, transaction_url)
+              .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "U.S. census office", "LoanTitle" => "7th census of U.S.1850",
+                                         "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "HA202.1850.A5q Oversize", "CitedIn" => "https://catalog.princeton.edu/catalog/9915057783506421", "ItemInfo3" => "", "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
+              .to_return(status: 200, body: responses[:transaction_created], headers: {})
+            stub_request(:post, transaction_note_url)
+              .to_return(status: 200, body: responses[:note_created], headers: {})
+            visit '/requests/9915057783506421?mfhd=22686942210006421'
+            expect(page).to have_content 'Request via Partner Library'
+            expect(page).to have_content 'Pick-up location: Firestone Library'
+            check('requestable_selected_23686942200006421')
+            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+            expect(a_request(:post, transaction_url)).to have_been_made
+            expect(a_request(:post, transaction_note_url)).to have_been_made
+            expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
+            expect(page).not_to have_content 'Request submitted to BorrowDirect'
+            confirm_email = ActionMailer::Base.deliveries.last
+            expect(confirm_email.subject).to eq("Partner Request Confirmation")
+            expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+            expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+            expect(confirm_email.html_part.body.to_s).to have_content("Requests typically are filled within two weeks when possible")
+            expect(confirm_email.html_part.body.to_s).to have_content("7th census of U.S.1850")
+          end
         end
+        context 'with new borrow direct provider' do
+          before do
+            allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(true)
+          end
 
-        it 'Borrow direct unsuccessful, but no exception thrown sent on to illiad' do
-          borrow_direct = ::BorrowDirect::RequestItem.new("22101008199999")
-          expect(::BorrowDirect::RequestItem).to receive(:new).with("22101008199999").and_return(borrow_direct)
-          expect(borrow_direct).to receive(:make_request).with("Firestone Library", isbn: '9780812929645').and_return(nil)
-          stub_illiad_patron
-          stub_request(:post, transaction_url)
-            .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing",
-                                       "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Trump, Donald Bohner, Kate", "LoanTitle" => "Trump : the art of the comeback",
-                                       "LoanPublisher" => nil, "ISSN" => "9780812929645", "CallNumber" => "HC102.5.T78 A3 1997", "CitedIn" => "https://catalog.princeton.edu/catalog/9917887963506421", "ItemInfo3" => "",
-                                       "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
-            .to_return(status: 200, body: responses[:transaction_created], headers: {})
-          stub_request(:post, transaction_note_url)
-            .to_return(status: 200, body: responses[:note_created], headers: {})
-          visit '/requests/9917887963506421?mfhd=22503918400006421'
-          expect(page).to have_content 'Request via Partner Library'
-          expect(page).to have_content 'Pick-up location: Firestone Library'
-          check('requestable_selected_23503918390006421')
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, transaction_url)).to have_been_made
-          expect(a_request(:post, transaction_note_url)).to have_been_made
-          expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
-          expect(page).not_to have_content 'Request submitted to BorrowDirect'
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Partner Request Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("Requests typically are filled within two weeks when possible")
-          expect(confirm_email.html_part.body.to_s).to have_content("Trump : the art of the comeback")
-        end
+          it 'sends requests directly to illiad' do
+            expect(::BorrowDirect::RequestItem).not_to receive(:new)
+            stub_illiad_patron
+            stub_request(:post, transaction_url)
+              .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing",
+                                         "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Trump, Donald Bohner, Kate", "LoanTitle" => "Trump : the art of the comeback",
+                                         "LoanPublisher" => nil, "ISSN" => "9780812929645", "CallNumber" => "HC102.5.T78 A3 1997", "CitedIn" => "https://catalog.princeton.edu/catalog/9917887963506421", "ItemInfo3" => "",
+                                         "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
+              .to_return(status: 200, body: responses[:transaction_created], headers: {})
+            stub_request(:post, transaction_note_url)
+              .to_return(status: 200, body: responses[:note_created], headers: {})
+            visit '/requests/9917887963506421?mfhd=22503918400006421'
+            expect(page).to have_content 'Request via Partner Library'
+            expect(page).to have_content 'Pick-up location: Firestone Library'
+            check('requestable_selected_23503918390006421')
+            expect(page.find_field('requestable[][type]', type: :hidden).value).to eq('ill')
+            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+            expect(a_request(:post, transaction_url)).to have_been_made
+            expect(a_request(:post, transaction_note_url)).to have_been_made
+            expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
+            expect(page).not_to have_content 'Request submitted to BorrowDirect'
+            confirm_email = ActionMailer::Base.deliveries.last
+            expect(confirm_email.subject).to eq("Partner Request Confirmation")
+            expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+            expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+            expect(confirm_email.html_part.body.to_s).to have_content("Requests typically are filled within two weeks when possible")
+            expect(confirm_email.html_part.body.to_s).to have_content("Trump : the art of the comeback")
+          end
 
-        it 'Borrow Direct unsuccessful on missing item sent to illiad' do
-          borrow_direct = ::BorrowDirect::RequestItem.new("22101008199999")
-          expect(::BorrowDirect::RequestItem).to receive(:new).with("22101008199999").and_return(borrow_direct)
-          expect(borrow_direct).to receive(:make_request).with("Firestone Library", isbn: '9780812929645').and_raise(::BorrowDirect::Error, "Error with borrow direct")
-          stub_illiad_patron
-          stub_request(:post, transaction_url)
-            .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing",
-                                       "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Trump, Donald Bohner, Kate", "LoanTitle" => "Trump : the art of the comeback",
-                                       "LoanPublisher" => nil, "ISSN" => "9780812929645", "CallNumber" => "HC102.5.T78 A3 1997", "CitedIn" => "https://catalog.princeton.edu/catalog/9917887963506421", "ItemInfo3" => "",
-                                       "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
-            .to_return(status: 200, body: responses[:transaction_created], headers: {})
-          stub_request(:post, transaction_note_url)
-            .to_return(status: 200, body: responses[:note_created], headers: {})
-          visit '/requests/9917887963506421?mfhd=22503918400006421'
-          expect(page).to have_content 'Request via Partner Library'
-          expect(page).to have_content 'Pick-up location: Firestone Library'
-          check('requestable_selected_23503918390006421')
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, transaction_url)).to have_been_made
-          expect(a_request(:post, transaction_note_url)).to have_been_made
-          expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
-          expect(page).not_to have_content 'Request submitted to BorrowDirect'
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Partner Request Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("Requests typically are filled within two weeks when possible")
-          expect(confirm_email.html_part.body.to_s).to have_content("Trump : the art of the comeback")
-        end
-
-        it 'allow interlibrary loan to be requested' do
-          stub_illiad_patron
-          stub_request(:post, transaction_url)
-            .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "U.S. census office", "LoanTitle" => "7th census of U.S.1850",
-                                       "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "HA202.1850.A5q Oversize", "CitedIn" => "https://catalog.princeton.edu/catalog/9915057783506421", "ItemInfo3" => "", "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
-            .to_return(status: 200, body: responses[:transaction_created], headers: {})
-          stub_request(:post, transaction_note_url)
-            .to_return(status: 200, body: responses[:note_created], headers: {})
-          visit '/requests/9915057783506421?mfhd=22686942210006421'
-          expect(page).to have_content 'Request via Partner Library'
-          expect(page).to have_content 'Pick-up location: Firestone Library'
-          check('requestable_selected_23686942200006421')
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, transaction_url)).to have_been_made
-          expect(a_request(:post, transaction_note_url)).to have_been_made
-          expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
-          expect(page).not_to have_content 'Request submitted to BorrowDirect'
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Partner Request Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("Requests typically are filled within two weeks when possible")
-          expect(confirm_email.html_part.body.to_s).to have_content("7th census of U.S.1850")
+          it 'allow interlibrary loan to be requested' do
+            expect(::BorrowDirect::RequestItem).not_to receive(:new)
+            stub_illiad_patron
+            stub_request(:post, transaction_url)
+              .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "U.S. census office", "LoanTitle" => "7th census of U.S.1850",
+                                         "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "HA202.1850.A5q Oversize", "CitedIn" => "https://catalog.princeton.edu/catalog/9915057783506421", "ItemInfo3" => "", "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
+              .to_return(status: 200, body: responses[:transaction_created], headers: {})
+            stub_request(:post, transaction_note_url)
+              .to_return(status: 200, body: responses[:note_created], headers: {})
+            visit '/requests/9915057783506421?mfhd=22686942210006421'
+            expect(page).to have_content 'Request via Partner Library'
+            expect(page).to have_content 'Pick-up location: Firestone Library'
+            check('requestable_selected_23686942200006421')
+            expect(page.find_field('requestable[][type]', type: :hidden).value).to eq('ill')
+            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+            expect(a_request(:post, transaction_url)).to have_been_made
+            expect(a_request(:post, transaction_note_url)).to have_been_made
+            expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
+            expect(page).not_to have_content 'Request submitted to BorrowDirect'
+            confirm_email = ActionMailer::Base.deliveries.last
+            expect(confirm_email.subject).to eq("Partner Request Confirmation")
+            expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+            expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+            expect(confirm_email.html_part.body.to_s).to have_content("Requests typically are filled within two weeks when possible")
+            expect(confirm_email.html_part.body.to_s).to have_content("7th census of U.S.1850")
+          end
         end
 
         it 'an annex item with user supplied information creates annex emails' do

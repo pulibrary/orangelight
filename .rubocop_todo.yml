@@ -59,7 +59,7 @@ RSpec/MessageSpies:
     - 'spec/features/requests/request_spec.rb'
     - 'spec/helpers/requests/application_helper_spec.rb'
     - 'spec/models/requests/borrow_direct_lookup_spec.rb'
-    - 'spec/models/requests/borrow_direct_spec.rb'
+    - 'spec/models/requests/submissions/borrow_direct_spec.rb'
 
 # Offense count: 10
 Rails/OutputSafety:
