@@ -31064,8 +31064,6 @@
   "access_facet": [
     "In the Library"
   ]
-<<<<<<< HEAD
-=======
 },
 {
   "id": [
@@ -31523,6 +31521,5 @@
   "access_facet": [
     "In the Library"
   ]
->>>>>>> 047cc048 (Added temp location code to availability data)
 }
 ]
