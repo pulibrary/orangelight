@@ -228,13 +228,11 @@ module ApplicationHelper
         info << content_tag(:div, search_location_display(holding, document), class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
       end
 
-      temp_location_code = holding['temp_location_code']
-
-      unless temp_location_code.nil?
-        block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id, temp_location_code: temp_location_code, aeon: aeon_location?(location), bound_with: document.bound_with? })
-      else
-        block << content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id, aeon: aeon_location?(location), bound_with: document.bound_with? })
-      end
+      block << if holding['temp_location_code'].present?
+                 content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id, temp_location_code: holding['temp_location_code'], aeon: aeon_location?(location), bound_with: document.bound_with? })
+               else
+                 content_tag(:li, info.html_safe, data: { availability_record: check_availability, record_id: document['id'], holding_id: id, aeon: aeon_location?(location), bound_with: document.bound_with? })
+               end
 
       cdl_placeholder = content_tag(:span, '', class: 'badge badge-primary', 'data-availability-cdl' => true)
       block << content_tag(:li, cdl_placeholder.html_safe)

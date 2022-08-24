@@ -125,7 +125,7 @@ class HoldingRequestsAdapter
   end
 
   def temp_location_code(holding)
-    temp_location_code = holding['temp_location_code']
+    holding['temp_location_code']
   end
 
   # Alma location display on record page using the location info from bibdata.

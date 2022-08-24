@@ -68,15 +68,12 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       aeon: self.class.aeon_location?(location_rules)
     }
 
-    unless temp_location_code.nil?
-      data['temp_location_code'] = temp_location_code
-    end
+    data['temp_location_code'] = temp_location_code unless temp_location_code.nil?
 
     content_tag(:td,
-                children.html_safe,
-                class: 'holding-status',
-                data: data
-              )
+                 children.html_safe,
+                 class: 'holding-status',
+                 data: data)
   end
 
   # For when a holding record has a value for the "dspace" key, but it is set to false
