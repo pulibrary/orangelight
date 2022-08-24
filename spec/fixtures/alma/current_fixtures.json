@@ -31064,5 +31064,465 @@
   "access_facet": [
     "In the Library"
   ]
+<<<<<<< HEAD
+=======
+},
+{
+  "id": [
+    "99125535710106421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_display": [
+    "Malabou, Catherine"
+  ],
+  "author_sort": [
+    "Malabou, Catherine"
+  ],
+  "author_citation_display": [
+    "Malabou, Catherine",
+    "Williams, Tyler",
+    "James, Ian"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"James, Ian\"],\"translators\":[],\"editors\":[\"Williams, Tyler\"],\"compilers\":[],\"primary_author\":\"Malabou, Catherine\"}"
+  ],
+  "author_s": [
+    "Malabou, Catherine",
+    "Williams, Tyler",
+    "James, Ian"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "uniform_title_s": [
+    "Works. Selections"
+  ],
+  "title_display": [
+    "Plasticity : the promise of explosion / Catherine Malabou ; edited by Tyler M. Williams ; [introduction by Ian James]."
+  ],
+  "title_a_index": [
+    "Plasticity"
+  ],
+  "title_sort": [
+    "Plasticity : the promise of explosion / Catherine Malabou ; edited by Tyler M. Williams ; [introduction by Ian James]."
+  ],
+  "title_no_h_index": [
+    "Plasticity : the promise of explosion / Catherine Malabou ; edited by Tyler M. Williams ; [introduction by Ian James]."
+  ],
+  "title_t": [
+    "Plasticity : the promise of explosion / Catherine Malabou ; edited by Tyler M. Williams ; [introduction by Ian James]."
+  ],
+  "title_citation_display": [
+    "Plasticity : the promise of explosion"
+  ],
+  "compiled_created_t": [
+    "Plasticity : the promise of explosion / Catherine Malabou ; edited by Tyler M. Williams ; [introduction by Ian James]."
+  ],
+  "pub_created_display": [
+    "Edinburgh : Edinburgh University Press, [2022]",
+    "©2022"
+  ],
+  "pub_created_s": [
+    "Edinburgh : Edinburgh University Press, [2022]",
+    "©2022"
+  ],
+  "pub_citation_display": [
+    "Edinburgh: Edinburgh University Press"
+  ],
+  "pub_date_display": [
+    "2022"
+  ],
+  "pub_date_start_sort": [
+    "2022"
+  ],
+  "pub_date_end_sort": [
+    "2022"
+  ],
+  "cataloged_tdt": [
+    "2022-07-16T05:00:00Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "viii, 336 pages ; 24 cm"
+  ],
+  "description_t": [
+    "viii, 336 pages ; 24 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "viii, 336 pages"
+  ],
+  "related_record_info_display": [
+    "ebook version :"
+  ],
+  "notes_index": [
+    "Includes bibliographical references and index."
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references and index."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "publication_place_facet": [
+    "Scotland"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Philosophy, French—21st century",
+    "Plasticity"
+  ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "Philosophy, French—21st century",
+    "Plasticity"
+  ],
+  "subject_unstem_search": [
+    "Philosophy, French—21st century",
+    "Plasticity"
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": null,
+  "subject_facet": [
+    "Philosophy, French—21st century",
+    "Plasticity"
+  ],
+  "subject_topic_facet": [
+    "Philosophy, French",
+    "Plasticity"
+  ],
+  "lc_1letter_facet": [
+    "B - Philosophy, Psychology, Religion"
+  ],
+  "lc_rest_facet": [
+    "B - Philosophy, Psychology, Religion"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "B - Philosophy, Psychology, Religion"
+  ],
+  "call_number_full_facet": [
+    "B - Philosophy, Psychology, Religion"
+  ],
+  "related_name_json_1display": [
+    "{\"Editor\":[\"Williams, Tyler\"],\"Writer of introduction\":[\"James, Ian\"]}"
+  ],
+  "isbn_display": [
+    "9781474462112 ((hardcover))",
+    "1474462111 ((hardcover))",
+    "9781474462129 (paperback)",
+    "147446212X (paperback)"
+  ],
+  "isbn_s": [
+    "9781474462112",
+    "9781474462129"
+  ],
+  "oclc_s": [
+    "1308475274"
+  ],
+  "standard_no_index": [
+    "1308475274"
+  ],
+  "other_version_s": [
+    "9781474462112",
+    "9781474462129",
+    "9781474462136",
+    "9781474462143",
+    "on1308475274"
+  ],
+  "subject_era_facet": [
+    "21st century",
+    "2000-2099"
+  ],
+  "holdings_1display": [
+    "{\"22936525030006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"B2433.M351 W55 2022\",\"call_number_browse\":\"B2433.M351 W55 2022\",\"temp_location_code\":\"RES_SHARE$IN_RS_REQ\",\"items\":[{\"holding_id\":\"22936525030006421\",\"id\":\"23936525020006421\",\"status_at_load\":\"0\",\"barcode\":\"32101118769130\"}]}}"
+  ],
+  "location_code_s": [
+    "firestone$stacks"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "firestone$stacks",
+    "Firestone Library"
+  ],
+  "name_uniform_title_1display": [
+    "[[\"Malabou, Catherine.\",\"Works.\",\"Selections\"]]"
+  ],
+  "name_title_browse_s": [
+    "Malabou, Catherine. Works",
+    "Malabou, Catherine. Works. Selections"
+  ],
+  "call_number_display": [
+    "B2433.M351 W55 2022"
+  ],
+  "call_number_browse_s": [
+    "B2433.M351 W55 2022"
+  ],
+  "call_number_locator_display": [
+    "B2433.M351 W55 2022"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
+},
+{
+  "id": [
+    "99101035463506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_display": [
+    "Sun, Zhixin, 1951-"
+  ],
+  "author_sort": [
+    "Sun, Zhixin, 1951-"
+  ],
+  "author_citation_display": [
+    "Sun, Zhixin",
+    "Metropolitan Museum of Art (New York, N.Y.)"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"Metropolitan Museum of Art (New York, N.Y.)\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Sun, Zhixin\"}"
+  ],
+  "author_s": [
+    "Sun, Zhixin, 1951-",
+    "Metropolitan Museum of Art (New York, N.Y.)"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": [
+    "Age of empires : art of the Qin and Han dynasties / Zhixin Jason Sun ; with contributions by I-tien Hsing, Cary Y. Liu, Pengliang Lu, Lillian Lan-ying Tseng, Yang Hong, Robin D. S. Yates, Zhonglin Yukina Zhang."
+  ],
+  "title_a_index": [
+    "Age of empires"
+  ],
+  "title_sort": [
+    "Age of empires : art of the Qin and Han dynasties / Zhixin Jason Sun ; with contributions by I-tien Hsing, Cary Y. Liu, Pengliang Lu, Lillian Lan-ying Tseng, Yang Hong, Robin D. S. Yates, Zhonglin Yukina Zhang."
+  ],
+  "title_no_h_index": [
+    "Age of empires : art of the Qin and Han dynasties / Zhixin Jason Sun ; with contributions by I-tien Hsing, Cary Y. Liu, Pengliang Lu, Lillian Lan-ying Tseng, Yang Hong, Robin D. S. Yates, Zhonglin Yukina Zhang."
+  ],
+  "title_t": [
+    "Age of empires : art of the Qin and Han dynasties / Zhixin Jason Sun ; with contributions by I-tien Hsing, Cary Y. Liu, Pengliang Lu, Lillian Lan-ying Tseng, Yang Hong, Robin D. S. Yates, Zhonglin Yukina Zhang."
+  ],
+  "title_citation_display": [
+    "Age of empires : art of the Qin and Han dynasties"
+  ],
+  "compiled_created_t": [
+    "Age of empires : art of the Qin and Han dynasties / Zhixin Jason Sun ; with contributions by I-tien Hsing, Cary Y. Liu, Pengliang Lu, Lillian Lan-ying Tseng, Yang Hong, Robin D. S. Yates, Zhonglin Yukina Zhang."
+  ],
+  "pub_created_display": [
+    "New York, New York : The Metropolitan Museum of Art, [2017]",
+    "©2017"
+  ],
+  "pub_created_s": [
+    "New York, New York : The Metropolitan Museum of Art, [2017]",
+    "©2017"
+  ],
+  "pub_citation_display": [
+    "New York, New York: The Metropolitan Museum of Art"
+  ],
+  "pub_date_display": [
+    "2017"
+  ],
+  "pub_date_start_sort": [
+    "2017"
+  ],
+  "pub_date_end_sort": [
+    "2017"
+  ],
+  "cataloged_tdt": [
+    "2017-04-04T11:59:00Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "xv, 252 pages : illustrations (shiefly color) ; 32 cm"
+  ],
+  "description_t": [
+    "xv, 252 pages : illustrations (shiefly color) ; 32 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "xv, 252 pages"
+  ],
+  "geocode_display": [
+    "China"
+  ],
+  "notes_index": [
+    "Catalog of an exhibition held April 3 to July 16, 2017 at the Metropolitan Museum of Art.",
+    "Includes bibliographical references (pages 231-245) and index.",
+    "\"The first in-depth exploration of the artistic and cultural achievements of China's \"classical\" era Age of Empires presents the art and culture of China during one of the most critical periods of its history - the four centuries from 221 B.C. to A.D. 200-- when, for the first time, people of diverse backgrounds were brought together under centralized imperial rule that fostered a new and unified identity. The Qin and Han empires represent the \"classical\" era of Chinese civilization, coinciding in both importance and timing with the Greco-Roman period in the West. Under the short-lived Qin and centuries-long Han, warring principalities were united under a common emperor, creating not only political and intellectual institutions but also the foundation for a Chinese art, culture, and national identity that lasted over two millennia. Over 150 works from across the full breadth of Chinese artistic and decorative media-- including ceramics, metalwork, textiles, armor, sculpture, and jewelry - are featured in this book and attest to the unprecedented role of art in ancient Chinese culture. These stunning objects, among them soldiers from the renowned terracotta army of Qin Shihuang, China's first emperor, are drawn from institutions and collections in China and appear here together for the first time. Essays by leading scholars, accompanied by dazzling new photography of the objects, address the sweeping societal changes underway, and trace a progression from the early, formative years through unprecedented sophistication and technical accomplishment--embodied in an artistic legacy that reverberates in China's national identity to this day\"-- Provided by publisher.",
+    "\"Age of Empires presents the art and culture of China during one of the most critical periods of its history - the four centuries from 221 B.C. to A.D. 200-- when, for the first time, people of diverse backgrounds were brought together under centralized imperial rule that fostered a new and unified identity. The Qin and Han empires represent the \"classical\" era of Chinese civilization, coinciding in both importance and timing with the Greco-Roman period in the West. Under the short-lived Qin and centuries-long Han, warring principalities were united under a common emperor, creating not only political and intellectual institutions but also the foundation for a Chinese art, culture, and national identity that lasted over two millennia. Over 150 works from across the full breadth of Chinese artistic and decorative media-- including ceramics, metalwork, textiles, armor, sculpture, and jewelry - are featured in this book and attest to the unprecedented role of art in ancient Chinese culture. These stunning objects, among them soldiers from the renowned terracotta army of Qin Shihuang, China's first emperor, are drawn from institutions and collections in China and appear here together for the first time\"-- Provided by publisher.",
+    "The Making of China: The Establishment of a Lasting Political Paradigm and Cultural Identity During the Qin and Han Dynasties / Zhixin Jason Sun -- Qin and Han Political Institutions and Administration / Robin D. S. Yates -- Military Armaments of the Qin and Han / Yang Hong -- The Qin and Han Imperial City: Modeling and Visualizing Architecture / Cary Y. Liu -- The Ingenuity of Qin-Han Craftsmanship / Pengliang Lu -- Popular Beliefs in the Qin and Han Dynasties / Lillian Lan-ying Tseng -- Qin-Han China and the Outside World / I-tien Hsing -- Catalogue. The Qin Dynasty: Birth of a Unified China -- The Han Dynasty: The Consolidation of Empire -- The Han Dynasty: One Nation, Many Cultures."
+  ],
+  "summary_note_display": [
+    "\"The first in-depth exploration of the artistic and cultural achievements of China's \"classical\" era Age of Empires presents the art and culture of China during one of the most critical periods of its history - the four centuries from 221 B.C. to A.D. 200-- when, for the first time, people of diverse backgrounds were brought together under centralized imperial rule that fostered a new and unified identity. The Qin and Han empires represent the \"classical\" era of Chinese civilization, coinciding in both importance and timing with the Greco-Roman period in the West. Under the short-lived Qin and centuries-long Han, warring principalities were united under a common emperor, creating not only political and intellectual institutions but also the foundation for a Chinese art, culture, and national identity that lasted over two millennia. Over 150 works from across the full breadth of Chinese artistic and decorative media-- including ceramics, metalwork, textiles, armor, sculpture, and jewelry - are featured in this book and attest to the unprecedented role of art in ancient Chinese culture. These stunning objects, among them soldiers from the renowned terracotta army of Qin Shihuang, China's first emperor, are drawn from institutions and collections in China and appear here together for the first time. Essays by leading scholars, accompanied by dazzling new photography of the objects, address the sweeping societal changes underway, and trace a progression from the early, formative years through unprecedented sophistication and technical accomplishment--embodied in an artistic legacy that reverberates in China's national identity to this day\"-- Provided by publisher.",
+    "\"Age of Empires presents the art and culture of China during one of the most critical periods of its history - the four centuries from 221 B.C. to A.D. 200-- when, for the first time, people of diverse backgrounds were brought together under centralized imperial rule that fostered a new and unified identity. The Qin and Han empires represent the \"classical\" era of Chinese civilization, coinciding in both importance and timing with the Greco-Roman period in the West. Under the short-lived Qin and centuries-long Han, warring principalities were united under a common emperor, creating not only political and intellectual institutions but also the foundation for a Chinese art, culture, and national identity that lasted over two millennia. Over 150 works from across the full breadth of Chinese artistic and decorative media-- including ceramics, metalwork, textiles, armor, sculpture, and jewelry - are featured in this book and attest to the unprecedented role of art in ancient Chinese culture. These stunning objects, among them soldiers from the renowned terracotta army of Qin Shihuang, China's first emperor, are drawn from institutions and collections in China and appear here together for the first time\"-- Provided by publisher."
+  ],
+  "notes_display": [
+    "Catalog of an exhibition held April 3 to July 16, 2017 at the Metropolitan Museum of Art."
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references (pages 231-245) and index."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "publication_place_facet": [
+    "New York (State)"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "contents_display": [
+    "The Making of China: The Establishment of a Lasting Political Paradigm and Cultural Identity During the Qin and Han Dynasties / Zhixin Jason Sun -- Qin and Han Political Institutions and Administration / Robin D. S. Yates -- Military Armaments of the Qin and Han / Yang Hong -- The Qin and Han Imperial City: Modeling and Visualizing Architecture / Cary Y. Liu -- The Ingenuity of Qin-Han Craftsmanship / Pengliang Lu -- Popular Beliefs in the Qin and Han Dynasties / Lillian Lan-ying Tseng -- Qin-Han China and the Outside World / I-tien Hsing -- Catalogue. The Qin Dynasty: Birth of a Unified China -- The Han Dynasty: The Consolidation of Empire -- The Han Dynasty: One Nation, Many Cultures."
+  ],
+  "lc_subject_display": [
+    "Art, Chinese—Qin-Han dynasties, 221 B.C.-220 A.D.—Exhibitions"
+  ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "Art, Chinese—Qin-Han dynasties, 221 B.C.-220 A.D.—Exhibitions"
+  ],
+  "subject_unstem_search": [
+    "Art, Chinese—Qin-Han dynasties, 221 B.C.-220 A.D.—Exhibitions"
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": null,
+  "subject_facet": [
+    "Art, Chinese—Qin-Han dynasties, 221 B.C.-220 A.D.—Exhibitions"
+  ],
+  "subject_topic_facet": [
+    "Art, Chinese"
+  ],
+  "lc_1letter_facet": [
+    "N - Fine Arts"
+  ],
+  "lc_rest_facet": [
+    "N - Fine Arts"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "N - Fine Arts"
+  ],
+  "call_number_full_facet": [
+    "N - Fine Arts"
+  ],
+  "genre_facet": [
+    "Exhibitions"
+  ],
+  "related_name_json_1display": [
+    "{\"Host institution\":[\"Metropolitan Museum of Art (New York, N.Y.)\"]}"
+  ],
+  "other_title_index": [
+    "Art of the Qin and Han dynasties"
+  ],
+  "other_title_display": [
+    "Art of the Qin and Han dynasties"
+  ],
+  "alt_title_246_display": [
+    "Art of the Qin and Han dynasties"
+  ],
+  "isbn_display": [
+    "9781588396174 (hardback)",
+    "1588396177 (hardback)"
+  ],
+  "lccn_display": [
+    "  2016058985"
+  ],
+  "lccn_s": [
+    "2016058985"
+  ],
+  "isbn_s": [
+    "9781588396174"
+  ],
+  "oclc_s": [
+    "959593024"
+  ],
+  "standard_no_index": [
+    "ocn959593024",
+    "959593024",
+    "10103546",
+    "10103546-princetondb"
+  ],
+  "other_version_s": [
+    "9781588396174",
+    "ocn959593024"
+  ],
+  "subject_era_facet": [
+    "Qin-Han dynasties, 221 B.C.-220 A.D"
+  ],
+  "holdings_1display": [
+    "{\"22673914610006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"N7343.23 .S86 2017q Oversize\",\"call_number_browse\":\"N7343.23 .S86 2017q Oversize\",\"temp_location_code\":\"RES_SHARE$IN_RS_REQ\",\"items\":[{\"holding_id\":\"22673914610006421\",\"id\":\"23673914600006421\",\"status_at_load\":\"0\",\"barcode\":\"32101101066643\",\"copy_number\":\"0\"}]},\"22673914630006421\":{\"location_code\":\"marquand$stacks\",\"location\":\"Remote Storage: Marquand Use Only\",\"library\":\"Marquand Library\",\"call_number\":\"N7343.23 .S86 2017q Oversize\",\"call_number_browse\":\"N7343.23 .S86 2017q Oversize\",\"items\":[{\"holding_id\":\"22673914630006421\",\"id\":\"23673914620006421\",\"status_at_load\":\"1\",\"barcode\":\"32101095508972\",\"copy_number\":\"0\"}]}}"
+  ],
+  "location_code_s": [
+    "firestone$stacks",
+    "marquand$stacks"
+  ],
+  "location": [
+    "Firestone Library",
+    "Marquand Library"
+  ],
+  "location_display": [
+    "Stacks",
+    "Remote Storage: Marquand Use Only"
+  ],
+  "advanced_location_s": [
+    "firestone$stacks",
+    "marquand$stacks",
+    "Firestone Library",
+    "Marquand Library"
+  ],
+  "name_title_browse_s": [
+    "Sun, Zhixin, 1951-. Age of empires"
+  ],
+  "call_number_display": [
+    "Oversize N7343.23 .S86 2017q"
+  ],
+  "call_number_browse_s": [
+    "N7343.23 .S86 2017q Oversize"
+  ],
+  "call_number_locator_display": [
+    "N7343.23 .S86 2017q"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
+>>>>>>> 047cc048 (Added temp location code to availability data)
 }
 ]

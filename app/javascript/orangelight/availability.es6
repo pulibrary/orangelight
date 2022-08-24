@@ -135,7 +135,7 @@ export default class AvailabilityUpdater {
     for (let holding_id in holding_records) {
       if (holding_id === 'RES_SHARE$IN_RS_REQ') {
         // This holding location should always show as unavailable
-        const badges = $(`*[data-availability-record='true'][data-record-id='${record_id}'] span.availability-icon`);
+        const badges = $(`*[data-availability-record='true'][data-record-id='${record_id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] span.availability-icon`);
         badges.addClass("badge-danger");
         badges.text("Unavailable")
         return true;
@@ -203,9 +203,9 @@ export default class AvailabilityUpdater {
         // data-record-id has a different this.id when there are host ids.
         let availability_element;
 
-        // If we are not getting holding info select the availavility element by record id only.
-        if (holding_id.match(/[a-zA-Z]\$[a-zA-Z]/)) {
-          availability_element = $(`*[data-availability-record='true'][data-record-id='${id}'] .availability-icon`);
+        // If we are not getting holding info select the availability element by record id only.
+        if (holding_id == 'RES_SHARE$IN_RS_REQ') {
+          availability_element = $(`*[data-availability-record='true'][data-record-id='${id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] .availability-icon`);
         } else {
           availability_element = $(`*[data-availability-record='true'][data-record-id='${id}'][data-holding-id='${holding_id}'] .availability-icon`);
         }

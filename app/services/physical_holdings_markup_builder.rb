@@ -58,17 +58,25 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                 })
   end
 
-  def holding_location_default(doc_id, holding_id, location_rules)
+  def holding_location_default(doc_id, holding_id, location_rules, temp_location_code)
     children = content_tag(:span, '', class: 'availability-icon')
+
+    data = {
+      'availability_record' => true,
+      'record_id' => doc_id,
+      'holding_id' => holding_id,
+      aeon: self.class.aeon_location?(location_rules)
+    }
+
+    unless temp_location_code.nil?
+      data['temp_location_code'] = temp_location_code
+    end
+
     content_tag(:td,
                 children.html_safe,
                 class: 'holding-status',
-                data: {
-                  'availability_record' => true,
-                  'record_id' => doc_id,
-                  'holding_id' => holding_id,
-                  aeon: self.class.aeon_location?(location_rules)
-                })
+                data: data
+              )
   end
 
   # For when a holding record has a value for the "dspace" key, but it is set to false
@@ -424,6 +432,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     def process_physical_holding(holding, holding_id)
       markup = ''
       doc_id = doc_id(holding)
+      temp_location_code = @adapter.temp_location_code(holding)
 
       location_rules = @adapter.holding_location_rules(holding)
       cn_value = @adapter.call_number(holding)
@@ -448,7 +457,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                 else
                   holding_location_default(doc_id,
                                            holding_id,
-                                           location_rules)
+                                           location_rules,
+                                           temp_location_code)
                 end
 
       request_placeholder_markup = request_placeholder(@adapter, holding_id, location_rules, holding)
