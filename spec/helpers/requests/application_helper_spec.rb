@@ -112,9 +112,15 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     let(:lewis_request_with_multiple_requestable) { Requests::RequestDecorator.new(Requests::Request.new(params), self) }
     let(:requestable_list) { lewis_request_with_multiple_requestable.requestable }
     let(:submit_button_disabled) { helper.submit_button_disabled(requestable_list) }
+    let(:availability_response) { File.read("spec/fixtures/scsb_availability_994264203506421.json") }
     it 'lewis is a submitable request' do
+      stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+        .with(body: "{\"bibliographicId\":\"994264203506421\",\"institutionId\":\"PUL\"}")
+        .and_return(status: 200, body: availability_response)
+
       choices = helper.pick_up_choices(lewis_request_with_multiple_requestable.requestable.last, default_pick_ups)
-      expect(choices).to eq("<div id=\"fields-print__23697857990006421\" class=\"collapse request--print show\"><ul class=\"service-list\"><li class=\"service-item\">In Process materials are typically available in several business days.</li></ul><div id=\"fields-print__23697857990006421_card\" class=\"card card-body bg-light\"><input type=\"hidden\" name=\"requestable[][pick_up]\" id=\"requestable__pick_up_23697857990006421\" value=\"{&quot;pick_up&quot;:&quot;PN&quot;,&quot;pick_up_location_code&quot;:&quot;lewis&quot;}\" class=\"single-pick-up-hidden\" /><label class=\"single-pick-up\" style=\"\" for=\"requestable__pick_up_23697857990006421\">Pick-up location: Lewis Library</label></div></div>")
+      expected_choices = "<div id=\"fields-print__23697857990006421\" class=\"collapse request--print\"><ul class=\"service-list\"><li class=\"service-item\">Request articles or book chapters. They will be delivered as a PDF file in 1-2 business days. Please use the title field to indicate the article or chapter you wish to obtain. Use the notes field for additional comments or instructions. The Library complies with all applicable copyright laws.</li></ul><div id=\"fields-print__23697857990006421_card\" class=\"card card-body bg-light\"><input type=\"hidden\" name=\"requestable[][pick_up]\" id=\"requestable__pick_up_23697857990006421\" value=\"{&quot;pick_up&quot;:&quot;PN&quot;,&quot;pick_up_location_code&quot;:&quot;lewis&quot;}\" class=\"single-pick-up-hidden\" /><label class=\"single-pick-up\" style=\"\" for=\"requestable__pick_up_23697857990006421\">Pick-up location: Lewis Library</label></div></div>"
+      expect(choices).to eq(expected_choices)
     end
   end
 

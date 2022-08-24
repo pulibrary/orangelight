@@ -40,6 +40,8 @@ module Requests::Submissions
             handle_hold_for_item(item)
           end
         end
+      rescue JSON::ParserError
+        @errors << { type: 'recap', bibid: params[:bibId], item: params[:itemBarcodes], user_name: submission.user_name, barcode: submission.user_barcode, error: "Invalid response from the SCSB server: #{response.body}" }
       end
 
       def handle_hold_for_item(item)

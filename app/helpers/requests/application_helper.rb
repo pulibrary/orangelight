@@ -338,7 +338,11 @@ module Requests
             concat content_tag(:li, sanitize(I18n.t("requests.ill.brief_msg")), class: "service-item")
           else
             # there are no instances where more than one actual service is available to an item, so we are going to take the first service that is not edd
-            filtered_services = requestable.services.reject { |service_name| service_name.include?("edd") }
+            filtered_services = if requestable.services.size == 1 && requestable.services.first.include?("edd")
+                                  requestable.services
+                                else
+                                  requestable.services.reject { |service_name| service_name.include?("edd") }
+                                end
             brief_msg = I18n.t("requests.#{filtered_services.first}.brief_msg")
             concat content_tag(:li, sanitize(brief_msg), class: "service-item")
           end

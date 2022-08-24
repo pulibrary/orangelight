@@ -77,7 +77,9 @@ module Requests
 
     # Does this request object have any available copies?
     def any_loanable_copies?
-      requestable_unrouted.any? { |requestable| !(requestable.charged? || (requestable.aeon? || !requestable.circulates? || requestable.partner_holding? || requestable.on_reserve?)) }
+      requestable_unrouted.any? do |requestable|
+        !(requestable.charged? || (requestable.aeon? || !requestable.circulates? || requestable.partner_holding? || requestable.on_reserve?))
+      end
     end
 
     def any_enumerated?
@@ -209,6 +211,12 @@ module Requests
         end
       end
 
+      def availability_data(id)
+        @availability_data ||= begin
+          items_by_id(id, scsb_owning_institution(scsb_location))
+        end
+      end
+
       def build_scsb_requestable
         requestable_items = []
         ## scsb processing
@@ -218,9 +226,8 @@ module Requests
         ## overlay availability to the 'status' field
         ## make sure other fields map to the current data model for item in requestable
         ## adjust router to understand SCSB status
-        availability_data = items_by_id(other_id, scsb_owning_institution(scsb_location))
         holdings.each do |id, values|
-          requestable_items = build_holding_scsb_items(id: id, values: values, availability_data: availability_data, requestable_items: requestable_items)
+          requestable_items = build_holding_scsb_items(id: id, values: values, availability_data: availability_data(other_id), requestable_items: requestable_items)
         end
         requestable_items
       end
@@ -240,7 +247,7 @@ module Requests
       def build_barcode_sort(items:, availability_data:)
         barcodesort = {}
         items.each do |item|
-          item[:status_label] = "In Process" if item["status_source"] != "work_order" && availability_data.empty?
+          item[:status_label] = "Not Available" if item["status_source"] != "work_order" && availability_data.empty?
           barcodesort[item['barcode']] = item
         end
         availability_data.each do |item|
@@ -255,10 +262,7 @@ module Requests
       def build_requestable_with_items
         requestable_items = []
         barcodesort = {}
-        if recap?
-          availability_data = items_by_id(system_id, scsb_owning_institution(scsb_location))
-          barcodesort = build_barcode_sort(items: items[mfhd], availability_data: availability_data)
-        end
+        barcodesort = build_barcode_sort(items: items[mfhd], availability_data: availability_data(system_id)) if recap?
         items.each do |holding_id, mfhd_items|
           next if mfhd != holding_id
           requestable_items = build_requestable_from_mfhd_items(requestable_items: requestable_items, holding_id: holding_id, mfhd_items: mfhd_items, barcodesort: barcodesort)

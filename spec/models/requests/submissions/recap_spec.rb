@@ -183,7 +183,6 @@ describe Requests::Submissions::Recap do
         it 'logs an error' do
           stub_request(:post, scsb_url).to_return(status: 200, body: '{invalid', headers: {})
           allow(Rails.logger).to receive(:error)
-
           expect { recap.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
           expect(recap.submitted.size).to eq(0)
           expect(recap.errors.size).to eq(1)

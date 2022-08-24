@@ -607,7 +607,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     describe "#pageable?" do
       it "is be false" do
         expect(request_at_paging_f.requestable[0].location_code).to eq('recap$pa')
-        expect(request_at_paging_f.requestable[0].pageable?).to be_nil
+        expect(request_at_paging_f.requestable[0].pageable?).to be false
       end
     end
   end
@@ -1174,6 +1174,35 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       }
     end
     let(:request) { described_class.new(params) }
+    before do
+      stub_request(:post, "https://scsb.recaplib.org:9093/sharedCollection/bibAvailabilityStatus")
+        .and_return(status: 200, body: '[
+        {
+          "itemBarcode": "32101092034501",
+          "itemAvailabilityStatus": "Available",
+          "errorMessage": null,
+          "collectionGroupDesignation": "Shared"
+        },
+        {
+          "itemBarcode": "32101053324081",
+          "itemAvailabilityStatus": "Available",
+          "errorMessage": null,
+          "collectionGroupDesignation": "Shared"
+        },
+        {
+          "itemBarcode": "32101087922140",
+          "itemAvailabilityStatus": "Available",
+          "errorMessage": null,
+          "collectionGroupDesignation": "Shared"
+        },
+        {
+          "itemBarcode": "32101091639979",
+          "itemAvailabilityStatus": "Available",
+          "errorMessage": null,
+          "collectionGroupDesignation": "Shared"
+        }
+      ]')
+    end
     describe '#any_loanable_copies?' do
       it "has available copy" do
         expect(request.any_loanable_copies?).to be true
