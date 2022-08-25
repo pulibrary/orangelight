@@ -26,12 +26,9 @@ describe Requests::Scsb do
   let(:second_item) { request_scsb.holdings["8076325"]["items"][1] }
 
   context 'with a good scsb key', vcr: { cassette_name: 'good_ol_good_bibdata_scsb_key', record: :none } do
-    before do
-      stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
-        .with(body: "{\"bibliographicId\":\".b106574619\",\"institutionId\":\"NYPL\"}")
-        .and_return(status: 200, body: '[{"itemBarcode":"33433088591924","itemAvailabilityStatus":"Available","errorMessage":null,"collectionGroupDesignation":"Shared"},{"itemBarcode":"33433088591932","itemAvailabilityStatus":"Available","errorMessage":null,"collectionGroupDesignation":"Shared"}]')
-    end
     it 'is available' do
+      stub_scsb_availability(bib_id: ".b106574619", institution_id: "NYPL", barcode: "33433088591924")
+
       expect(first_item["barcode"]).to eq('33433088591924')
       expect(first_item["status_at_load"]).to eq("Available")
       expect(first_item[:status_label]).to be_nil
