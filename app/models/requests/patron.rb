@@ -214,6 +214,9 @@ module Requests
 
         patron_resource = JSON.parse(api_response.body)
         patron_resource.with_indifferent_access
+      rescue JSON::ParserError
+        Rails.logger.error("#{api_response.env.url} returned an invalid patron response: #{api_response.body}")
+        false
       end
   end
 end
