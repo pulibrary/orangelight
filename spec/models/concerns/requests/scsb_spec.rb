@@ -25,7 +25,7 @@ describe Requests::Scsb do
   let(:first_item) { request_scsb.holdings["8076325"]["items"][0] }
   let(:second_item) { request_scsb.holdings["8076325"]["items"][1] }
 
-  context 'with a good scsb key', vcr: { cassette_name: 'good_ol_good_bibdata_scsb_key', record: :none } do
+  context 'with an authorized scsb key', vcr: { cassette_name: 'authorized_ol_authorized_bibdata_scsb_key', record: :none } do
     it 'is available' do
       stub_scsb_availability(bib_id: ".b106574619", institution_id: "NYPL", barcode: "33433088591924")
 
@@ -38,7 +38,7 @@ describe Requests::Scsb do
       expect(second_item["barcode"]).to eq("33433088591932")
     end
   end
-  context 'with a bad scsb key', vcr: { cassette_name: 'bad_ol_good_bibdata_scsb_key', record: :none } do
+  context 'with an unauthorized scsb key', vcr: { cassette_name: 'unauthorized_ol_authorized_bibdata_scsb_key', record: :none } do
     before do
       stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .with(body: "{\"bibliographicId\":\".b106574619\",\"institutionId\":\"NYPL\"}")
