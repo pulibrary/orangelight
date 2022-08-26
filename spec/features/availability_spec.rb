@@ -35,7 +35,7 @@ describe 'Availability' do
     it 'code exists and item unavailable' do
       stub_holding_locations
       visit 'catalog/99125535710106421'
-      sleep 10.seconds
+      sleep 20.seconds
       element = page.find(:css, '.holding-status')
       expect(element['data-temp-location-code']).to eq 'RES_SHARE$IN_RS_REQ'
       expect(element.text).to eq 'Unavailable'
