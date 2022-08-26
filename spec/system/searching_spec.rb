@@ -37,6 +37,21 @@ describe 'Searching', type: :system, js: false do
     end
   end
 
+  context 'Holding with temp location', js: true do
+    before do
+      stub_request(:get, "#{Requests::Config[:bibdata_base]}/bibliographic/availability.json?deep=true&bib_ids=99125535710106421")
+        .to_return(status: 200, body: '{"99125535710106421":{"RES_SHARE$IN_RS_REQ":{"on_reserve":"N","location":"RES_SHARE$IN_RS_REQ","label":"Resource Sharing Library - Lending Resource Sharing Requests","status_label":"Unavailable","copy_number":null,"cdl":false,"temp_location":true,"id":"RES_SHARE$IN_RS_REQ"}}}')
+    end
+    it 'has the code and is unavailable' do
+      visit '/catalog?search_field=all_fields&q=id%3A99125535710106421'
+      sleep 2.seconds
+      element = page.find(:css, '.holding-status')
+      expect(element['data-temp-location-code']).to eq 'RES_SHARE$IN_RS_REQ'
+      icon = page.find(:css, '.availability-icon')
+      expect(icon.text).to eq 'Unavailable'
+    end
+  end
+
   context 'chosen selected values' do
     it 'removes a chosen selected value' do
       visit '/catalog?utf8=%E2%9C%93&f1=all_fields&q3=&f_inclusive%5Bformat%5D%5B%5D=Journal&search_field=advanced&commit=Search'
