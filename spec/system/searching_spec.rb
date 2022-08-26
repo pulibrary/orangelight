@@ -44,7 +44,7 @@ describe 'Searching', type: :system, js: false do
     end
     it 'has the code and is unavailable' do
       visit '/catalog?search_field=all_fields&q=id%3A99125535710106421'
-      sleep 5.seconds
+      sleep 10.seconds
       element = page.find(:css, '.holding-status')
       expect(element['data-temp-location-code']).to eq 'RES_SHARE$IN_RS_REQ'
       icon = page.find(:css, '.availability-icon')
