@@ -35,7 +35,7 @@ staging:
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
 alma_qa:
   <<: *defaults
-  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-qa.princeton.edu" %>
   # scsb_base: https://uat-recap.htcinc.com:9093
   scsb_base: https://scsb.recaplib.org:9093
   pulsearch_base: https://catalog-qa.princeton.edu
