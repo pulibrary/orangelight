@@ -27,21 +27,6 @@ describe 'Availability' do
     end
   end
 
-  describe 'Holdings for items with temp location', js: true do
-    before do
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/bibliographic/availability.json?deep=true&bib_ids=99125535710106421")
-        .to_return(status: 200, body: '{"99125535710106421":{"RES_SHARE$IN_RS_REQ":{"on_reserve":"N","location":"RES_SHARE$IN_RS_REQ","label":"Resource Sharing Library - Lending Resource Sharing Requests","status_label":"Unavailable","copy_number":null,"cdl":false,"temp_location":true,"id":"RES_SHARE$IN_RS_REQ"}}}')
-    end
-    it 'code exists and item unavailable' do
-      stub_holding_locations
-      visit 'catalog/99125535710106421'
-      sleep 20.seconds
-      element = page.find(:css, '.holding-status')
-      expect(element['data-temp-location-code']).to eq 'RES_SHARE$IN_RS_REQ'
-      expect(element.text).to eq 'Unavailable'
-    end
-  end
-
   # There are issues with correctly setting the user agent with chromedriver
   context 'when visited by an indexing bot', driver: :iphone do
     before do
