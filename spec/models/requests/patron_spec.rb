@@ -165,6 +165,24 @@ describe Requests::Patron do
       expect(Rails.logger).to have_received(:error).with("Unable to connect to #{bibdata_uri}")
     end
   end
+  context 'when bibdata passes on an html response' do
+    let(:patron_url) { "#{bibdata_uri}/patron/#{uid}?ldap=true" }
+    before do
+      stub_request(
+        :get,
+        patron_url
+      ).to_return(
+        status: 200,
+        body: '<html><head<title>Request Rejected</title></head><html>',
+        headers: { "Content-Type" => "application/json" }
+      )
+    end
+    it 'logs the error' do
+      allow(Rails.logger).to receive(:error)
+      described_class.new(user: user, session: {})
+      expect(Rails.logger).to have_received(:error).with("#{patron_url} returned an invalid patron response: <html><head<title>Request Rejected</title></head><html>")
+    end
+  end
   context 'when bibdata passes on an empty response' do
     before do
       stub_request(
