@@ -7,7 +7,7 @@
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
-import { insert_online_link } from 'orangelight/insert_online_link'
+import { insert_online_link } from './insert_online_link.es6'
 
 export default class AvailabilityUpdater {
 

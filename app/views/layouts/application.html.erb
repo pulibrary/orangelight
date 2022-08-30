@@ -29,7 +29,7 @@
     <% end %>
     <script>window.Global = {"graphql":<%= Global.graphql.to_json.html_safe %>,"figgy":<%= Global.figgy.to_json.html_safe %>}</script>
     <% unless controller.controller_name == "request" %>
-      <%= javascript_pack_tag 'application' %>
+      <%= vite_javascript_tag 'application' %>
     <% end %>
     <% unless controller.controller_name == "catalog" && controller.action_name == "show" && @document.alma_record? %>
     <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML", async: true %>

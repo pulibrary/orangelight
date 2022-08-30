@@ -46,10 +46,7 @@ On macOS: If the command `yarn install` gives error "No Xcode or CLT version det
    rails s
    ```
    *This will continue running until you Ctrl C, you will need a new tab or window for the next step*
-1. Run webpack to serve assets
-   ```
-   bin/webpack-dev-server
-   ```
+
 
 Deploying with Capistrano
 ------------------

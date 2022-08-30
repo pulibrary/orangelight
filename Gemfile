@@ -120,3 +120,4 @@ gem 'net-ldap'
 gem 'simple_form'
 
 gem "terser", "~> 1.1"
+gem 'vite_rails'
