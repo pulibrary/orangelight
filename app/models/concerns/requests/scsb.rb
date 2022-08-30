@@ -51,11 +51,15 @@ module Requests
     # end
 
     def parse_scsb_response(response)
-      parsed = response.status == 200 ? JSON.parse(response.body) : {}
+      if response.status != 200
+        Rails.logger.error("The request to the SCSB server failed: #{response.body}")
+        return {}
+      end
+      parsed = JSON.parse(response.body)
       parsed.class == Hash ? parsed.with_indifferent_access : parsed
-    rescue StandardError => error
-      Rails.logger.error("Invalid response from the SCSB server: #{error}")
-      { success: false, screenMessage: 'A server error arose, please contact your local administrator for assistance.' }
+    rescue JSON::ParserError
+      Rails.logger.error("Invalid response from the SCSB server: #{response.body}")
+      raise
     end
 
     # Not being used at the moment

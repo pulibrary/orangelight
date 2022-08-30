@@ -291,8 +291,10 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         end
 
         it 'makes sure In-Process ReCAP items with no holding library can be delivered anywhere' do
+          stub_scsb_availability(bib_id: "99114026863506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
           visit "/requests/#{recap_in_process_id}"
           expect(page).to have_content 'In Process'
+          expect(page.find(:css, ".request--availability").text).to eq("Not Available - Acquisitions and Cataloging")
           select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23753408600006421')
           select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23753408600006421')
           select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23753408600006421')
@@ -1024,10 +1026,11 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             .to_return(status: 200, body: '[{"id":null,"oclc_number":"502557695","bibid":"9938633913506421","status":"ALLOW","origin":"CUL"}]')
           stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-4634001/raw")
             .to_return(status: 200, body: fixture('/SCSB-4634001.json'), headers: {})
-          scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          stub_request(:post, scsb_url)
+          scsb_item_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+          stub_request(:post, scsb_item_url)
             .with(body: hash_including(author: "", bibId: "SCSB-4634001", callNumber: "4596 2907.88 1901", chapterTitle: "", deliveryLocation: "QX", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["CU51481294"], itemOwningInstitution: "CUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Chong wen men shang shui ya men xian xing shui ze. 崇文門 商稅 衙門 現行 稅則.", username: "jstudent", volume: ""))
             .to_return(status: 200, body: good_response, headers: {})
+          stub_scsb_availability(bib_id: "3863391", institution_id: "CUL", barcode: 'CU51481294')
           visit '/requests/SCSB-4634001'
           expect(page).to have_content 'Physical Item Delivery'
           expect(page).to have_content 'Electronic Delivery'
@@ -1035,7 +1038,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(page).to have_content('Pick-up location: Firestone Circulation Desk')
           expect(page).to have_content 'ReCAP 4596 2907.88 1901'
           expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, scsb_url)).to have_been_made
+          expect(a_request(:post, scsb_item_url)).to have_been_made
           expect(page).to have_content "Request submitted to ReCAP, our offsite storage facility"
           confirm_email = ActionMailer::Base.deliveries.last
           expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
@@ -1049,12 +1052,13 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it "allows a columbia item that is ETAS to only be digitized" do
           stub_request(:get, "#{Requests::Config[:bibdata_base]}/hathi/access?oclc=19774500")
             .to_return(status: 200, body: '[{"id":null,"oclc_number":"19774500","bibid":"99310000663506421","status":"DENY","origin":"CUL"}]')
-          scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
           stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-2879206/raw")
             .to_return(status: 200, body: fixture('/SCSB-2879206.json'), headers: {})
-          stub_request(:post, scsb_url)
+          scsb_item_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+          stub_request(:post, scsb_item_url)
             .with(body: hash_including(author: "", bibId: "SCSB-2879206", callNumber: "ML3477 .G74 1989g", chapterTitle: "ABC", deliveryLocation: "", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["CU61436348"], itemOwningInstitution: "CUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "EDD", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Let's face the music : the golden age of popular song", username: "jstudent", volume: ""))
             .to_return(status: 200, body: good_response, headers: {})
+          stub_scsb_availability(bib_id: "1000066", institution_id: "CUL", barcode: 'CU61436348')
           visit '/requests/SCSB-2879206'
           expect(page).not_to have_content 'Physical Item Delivery'
           expect(page).to have_content 'Electronic Delivery'
@@ -1062,7 +1066,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           fill_in "Article/Chapter Title", with: "ABC"
           expect(page).to have_content 'ReCAP ML3477 .G74 1989g'
           expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, scsb_url)).to have_been_made
+          expect(a_request(:post, scsb_item_url)).to have_been_made
           expect(page).to have_content "Request submitted. See confirmation email with details about when your item(s) will be available"
           confirm_email = ActionMailer::Base.deliveries.last
           expect(confirm_email.subject).to eq("Electronic Document Delivery Request Confirmation")
@@ -1246,19 +1250,20 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(confirm_email.html_part.body.to_s).to have_content("Alesso Baldovinetti und die Florentiner Malerei der Frührenaissance")
         end
 
-        it 'Shows recap item that has not made it to recap yet as in process' do
+        it 'Shows recap item that has not made it to recap yet as On Order' do
+          stub_scsb_availability(bib_id: "99123340993506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
           visit '/requests/99123340993506421?mfhd=22569931350006421'
-          expect(page).to have_content 'In Process'
+          expect(page).to have_content 'Not Available - Acquisition'
           select('Firestone Library', from: 'requestable__pick_up_23896622240006421')
           expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
           expect(page).to have_content I18n.t("requests.submit.in_process_success")
           email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
           confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("In Process Request")
+          expect(email.subject).to eq("On Order Request")
           expect(email.to).to eq(["fstcirc@princeton.edu"])
           expect(email.cc).to be_blank
           expect(email.html_part.body.to_s).to have_content("Ḍaḥāyā al-zawāj")
-          expect(confirm_email.subject).to eq("In Process Request")
+          expect(confirm_email.subject).to eq("On Order Request")
           expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
           expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
           expect(confirm_email.to).to eq(["a@b.com"])
@@ -1879,6 +1884,46 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
       it "does not allow reuesting of on order books" do
         visit "requests/99125492003506421?mfhd=22927395910006421"
         expect(page).to have_content 'This item is not available'
+      end
+    end
+    context 'when a Princeton item has not made it into SCSB yet' do
+      let(:user) { FactoryBot.create(:user) }
+      let(:bibdata_availability_url) { 'https://bibdata-staging.princeton.edu/bibliographic/99122304923506421/holdings/22511126440006421/availability.json' }
+      let(:bibdata_availability_response) do
+        '[{"barcode":"32101112612526","id":"23511126430006421","holding_id":"22511126440006421","copy_number":"0","status":"Available","status_label":"Item in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"recap","pickup_location_code":"recap","location":"recap$pa","label":"ReCAP - Remote Storage","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
+      end
+      let(:params) do
+        {
+          system_id: '99122304923506421',
+          source: 'pulsearch',
+          mfhd: nil,
+          patron: patron
+        }
+      end
+      let(:holding_location_info) { File.open('spec/fixtures/bibdata/recap_pa_holding_locations.json') }
+      let(:first_item) { request_scsb.items['22511126440006421'].first }
+
+      before do
+        stub_scsb_availability(bib_id: "99122304923506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
+        stub_request(:get, bibdata_availability_url)
+          .to_return(status: 200, body: bibdata_availability_response)
+        stub_request(:get, 'https://catalog.princeton.edu/catalog/99122304923506421/raw')
+          .to_return(status: 200, body: File.read('spec/fixtures/raw_99122304923506421.json'))
+        stub_request(:get, 'https://bibdata-staging.princeton.edu/locations/holding_locations/recap$pa.json')
+          .to_return(status: 200, body: holding_location_info)
+        stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+          .to_return(status: 200, body: valid_patron_response, headers: {})
+        login_as user
+      end
+
+      it 'is available and in process' do
+        visit "requests/99122304923506421?mfhd=22511126440006421"
+        expect(page.find(:css, ".request--availability").text).to eq("Available - In Process")
+        expect(page).to have_content 'In Process materials are typically available in several business days'
+        select('Firestone Library', from: 'requestable__pick_up_23511126430006421')
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("In Process Request")
       end
     end
   end
