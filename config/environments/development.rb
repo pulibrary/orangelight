@@ -11,9 +11,6 @@ Rails.application.configure do
   # mode. Set to `true` to always raise errors, or `false` to always warn.
   config.flipflop.raise_strategy_errors = false
 
-  # Verifies that versions and hashed value of the package contents in the project's package.json
-  config.webpacker.check_yarn_integrity = true
-
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

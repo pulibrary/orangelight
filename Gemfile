@@ -78,8 +78,6 @@ gem 'sitemap_generator', '~> 6.2'
 
 gem 'voight_kampff'
 
-gem 'webpacker'
-
 gem 'lograge'
 
 gem 'logstash-event'
