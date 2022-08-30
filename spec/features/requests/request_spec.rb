@@ -944,59 +944,8 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           end
         end
 
-        # it 'allows an etas item to be digitized' do
-        #   # TODO: - Do we need to worry about ETAS? No, PUL ETAS is being deprecated at alma go live
-        #   stub_illiad_patron
-        #   stub_request(:post, transaction_url)
-        #     .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "PhotoItemAuthor" => "Edwards, Ruth Dudley", "PhotoArticleAuthor" => "", "PhotoJournalTitle" => "James Connolly", "PhotoItemPublisher" => "Dublin: Gill and Macmillan", "ISSN" => "9780717111121 9780717111114", "CallNumber" => "DA965.C7 E36 1981", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/991626323506421", "PhotoJournalYear" => "1981", "PhotoJournalVolume" => "", "PhotoJournalIssue" => "", "ItemInfo3" => "", "ItemInfo4" => "", "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => "8391816", "DocumentType" => "Book", "Location" => "Online - HathiTrust Emergency Temporary Access", "PhotoArticleTitle" => "ABC"))
-        #     .to_return(status: 200, body: responses[:transaction_created], headers: {})
-        #   stub_request(:post, transaction_note_url)
-        #     .to_return(status: 200, body: responses[:note_created], headers: {})
-        #   visit '/requests/991626323506421?mfhd=2239424020006421'
-        #   expect(page).to have_content 'Electronic Delivery'
-        #   expect(page).to have_content 'Online- HathiTrust Emergency Temporary Access DA965.C7 E36 1981'
-        #   expect(page).to have_content I18n.t("requests.recap_edd.note_msg")
-        #   expect(page).not_to have_content('make an appointment')
-        #   fill_in "Article/Chapter Title", with: "ABC"
-        #   expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-        #   expect(page).to have_content 'Request submitted'
-        #   confirm_email = ActionMailer::Base.deliveries.last
-        #   expect(confirm_email.subject).to eq("Electronic Document Delivery Request Confirmation")
-        #   expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        #   expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        #   expect(confirm_email.to).to eq(["a@b.com"])
-        #   expect(confirm_email.cc).to be_blank
-        #   expect(confirm_email.html_part.body.to_s).to have_content("James Connolly")
-        # end
-
-        # it "allows an Recap etas item to be digitized" do
-        #   # TODO: - Do we need to worry about ETAS?
-        #   scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-        #   stub_request(:post, scsb_url)
-        #     .with(body: hash_including(author: "", bibId: "7599", callNumber: "PJ3002 .S4", chapterTitle: "ABC", deliveryLocation: "", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["32101073604215"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "EDD", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Semitistik", username: "jstudent", volume: ""))
-        #     .to_return(status: 200, body: good_response, headers: {})
-        #   visit '/requests/9975993506421?mfhd=22153200840006421'
-        #   expect(page).to have_content 'Electronic Delivery'
-        #   expect(page).to have_content 'ReCAP- HathiTrust Emergency Temporary Access ReCAP PJ3002 .S4'
-        #   expect(page).to have_content I18n.t("requests.recap_edd.note_msg")
-        #   expect(page).not_to have_content 'If the specific volume does not appear in the list below, please enter it here:'
-        #   fill_in "Article/Chapter Title", with: "ABC"
-        #   expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-        #   expect(a_request(:post, scsb_url)).to have_been_made
-        #   confirm_email = ActionMailer::Base.deliveries.last
-        #   expect(confirm_email.subject).to eq("Electronic Document Delivery Request Confirmation")
-        #   expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        #   expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        #   expect(confirm_email.html_part.body.to_s).to have_content("Electronic document delivery requests typically take 1-2 business days to process")
-        #   expect(confirm_email.html_part.body.to_s).to have_content("Semitistik")
-        #   expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        # end
-
-        # need to check on CUL etas
-        it "allows a columbia item that is not in hathi etas to be picked up or digitized" do
+        it "allows a columbia item to be picked up or digitized" do
           stub_scsb_availability(bib_id: "1000060", institution_id: "CUL", barcode: 'CU01805363')
-          stub_request(:get, "#{Requests::Config[:bibdata_base]}/hathi/access?oclc=21154437")
-            .to_return(status: 200, body: '[]')
           stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-2879197/raw")
             .to_return(status: 200, body: fixture('/SCSB-2879197.json'), headers: {})
           scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
@@ -1022,8 +971,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         end
 
         it "allows a columbia item that is open access to be picked up or digitized" do
-          stub_request(:get, "#{Requests::Config[:bibdata_base]}/hathi/access?oclc=502557695")
-            .to_return(status: 200, body: '[{"id":null,"oclc_number":"502557695","bibid":"9938633913506421","status":"ALLOW","origin":"CUL"}]')
           stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-4634001/raw")
             .to_return(status: 200, body: fixture('/SCSB-4634001.json'), headers: {})
           scsb_item_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
@@ -1046,35 +993,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
           expect(confirm_email.html_part.body.to_s).to have_content(" Your request to pick this item up has been received. We will process the requests as soon as possible")
           expect(confirm_email.html_part.body.to_s).to have_content("Chong wen men shang shui ya men xian xing shui ze")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        it "allows a columbia item that is ETAS to only be digitized" do
-          stub_request(:get, "#{Requests::Config[:bibdata_base]}/hathi/access?oclc=19774500")
-            .to_return(status: 200, body: '[{"id":null,"oclc_number":"19774500","bibid":"99310000663506421","status":"DENY","origin":"CUL"}]')
-          stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-2879206/raw")
-            .to_return(status: 200, body: fixture('/SCSB-2879206.json'), headers: {})
-          scsb_item_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          stub_request(:post, scsb_item_url)
-            .with(body: hash_including(author: "", bibId: "SCSB-2879206", callNumber: "ML3477 .G74 1989g", chapterTitle: "ABC", deliveryLocation: "", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["CU61436348"], itemOwningInstitution: "CUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "EDD", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Let's face the music : the golden age of popular song", username: "jstudent", volume: ""))
-            .to_return(status: 200, body: good_response, headers: {})
-          stub_scsb_availability(bib_id: "1000066", institution_id: "CUL", barcode: 'CU61436348')
-          visit '/requests/SCSB-2879206'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'Electronic Delivery'
-          choose('requestable__delivery_mode_4497920_edd') # chooses 'edd' radio button
-          fill_in "Article/Chapter Title", with: "ABC"
-          expect(page).to have_content 'ReCAP ML3477 .G74 1989g'
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, scsb_item_url)).to have_been_made
-          expect(page).to have_content "Request submitted. See confirmation email with details about when your item(s) will be available"
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Electronic Document Delivery Request Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("Electronic document delivery requests typically take 1-2 business days to process")
-          expect(confirm_email.html_part.body.to_s).to have_content("Let's face the music : the golden age of popular song")
-          expect(confirm_email.html_part.body.to_s).to have_content("ABC")
           expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
         end
 

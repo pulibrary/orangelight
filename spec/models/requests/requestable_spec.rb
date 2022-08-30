@@ -1203,21 +1203,10 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       it 'has a single pick-up location' do
         stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-5235419/raw")
           .to_return(status: 200, body: fixture('/SCSB-5235419.json'), headers: {})
-        stub_request(:get, "#{Requests::Config[:bibdata_base]}/hathi/access?oclc=53360890")
-          .to_return(status: 200, body: '[]')
         expect(requestable.pick_up_locations.size).to eq(1)
         expect(requestable.pick_up_locations.first[:gfa_pickup]).to eq('QX')
       end
     end
-
-    # ETAS Status not relevant for Alma
-    # describe '#etas_limited_access' do
-    #   it 'is not restricted' do
-    #     stub_request(:get, "#{Requests::Config[:bibdata_base]}/hathi/access?oclc=53360890")
-    #       .to_return(status: 200, body: '[]')
-    #     expect(requestable.etas_limited_access). to be_falsey
-    #   end
-    # end
   end
 
   context 'A SCSB Item with no oclc number' do
@@ -1228,12 +1217,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     before do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-5396104/raw")
         .to_return(status: 200, body: fixture('/SCSB-5396104.json'), headers: {})
-    end
-
-    describe '#etas_limited_access' do
-      it 'is not restricted' do
-        expect(requestable.etas_limited_access). to be_falsey
-      end
     end
 
     describe "#held_at_marquand_library?" do
@@ -1257,8 +1240,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     before do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-2650865/raw")
         .to_return(status: 200, body: fixture('/SCSB-2650865.json'), headers: {})
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/hathi/access?oclc=29065769")
-        .to_return(status: 200, body: '[]')
       stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"AR65651294\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
     end
@@ -1292,8 +1273,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     before do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-2901229/raw")
         .to_return(status: 200, body: fixture('/SCSB-2901229.json'), headers: {})
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/hathi/access?oclc=17322905")
-        .to_return(status: 200, body: '[{"id":null,"oclc_number":"17322905","bibid":"1029088","status":"ALLOW","origin":"CUL"}, {"id":null,"oclc_number":"17322905","bibid":"1029088","status":"DENY","origin":"CUL"}]')
       stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"MR72802120\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
     end
@@ -1377,8 +1356,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       it 'has a single pick-up location' do
         stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-10966202/raw")
           .to_return(status: 200, body: fixture('/SCSB-10966202.json'), headers: {})
-        stub_request(:get, "#{Requests::Config[:bibdata_base]}/hathi/access?oclc=40820403")
-          .to_return(status: 200, body: '[]')
         stub_scsb_availability(bib_id: "990081790140203941", institution_id: "HL", barcode: 'HXSS9U')
         expect(requestable.pick_up_locations.size).to eq(1)
         expect(requestable.pick_up_locations.first[:gfa_pickup]).to eq('QX')

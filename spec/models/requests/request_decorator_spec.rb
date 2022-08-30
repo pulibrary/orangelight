@@ -20,7 +20,7 @@ describe Requests::RequestDecorator do
                                        display_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, language: 'en', eligible_for_library_services?: true)
   end
   let(:solr_context) { instance_double(Requests::SolrOpenUrlContext) }
-  let(:stubbed_questions) { { etas?: false } }
+  let(:stubbed_questions) { {} }
   let(:ldap) { {} }
 
   describe "#bib_id" do
@@ -80,19 +80,6 @@ describe Requests::RequestDecorator do
         expect(decorator.patron_message).to eq ""
       end
     end
-    context "an etas record" do
-      let(:stubbed_questions) { { etas?: true, etas_limited_access: false } }
-      it 'shows the message for the etas items' do
-        expect(decorator.patron_message).to eq "<div class='alert alert-warning'>We currently cannot lend this item, but you may view an online copy via the <a href='/catalog/123abc'>link in the record page</a></div>"
-      end
-    end
-
-    context "an etas recap record" do
-      let(:stubbed_questions) { { etas?: true, etas_limited_access: true } }
-      it 'shows the message for the etas items' do
-        expect(decorator.patron_message).to eq "<div class='alert alert-warning'>We currently cannot lend this item from our ReCAP partner collection because of changes in copyright restrictions.</div>"
-      end
-    end
   end
 
   describe "#hidden_fields" do
@@ -109,42 +96,42 @@ describe Requests::RequestDecorator do
 
   describe "#fill_in_eligible" do
     context "recap services" do
-      let(:stubbed_questions) { { etas?: false, services: ['recap', 'recap_edd'] } }
+      let(:stubbed_questions) { { services: ['recap', 'recap_edd'] } }
       it "identifies any mfhds that require fill in option" do
         expect(decorator.any_fill_in_eligible?).to be_falsey
       end
     end
 
     context "on_shelf services with no item data and circulates" do
-      let(:stubbed_questions) { { etas?: false, services: ['on_shelf'], item_data?: false, circulates?: true } }
+      let(:stubbed_questions) { { services: ['on_shelf'], item_data?: false, circulates?: true } }
       it "identifies any mfhds that require fill in option" do
         expect(decorator.any_fill_in_eligible?).to be_truthy
       end
     end
 
     context "on_shelf services with no item data and does not circulates" do
-      let(:stubbed_questions) { { etas?: false, services: ['on_shelf'], item_data?: false, circulates?: false } }
+      let(:stubbed_questions) { { services: ['on_shelf'], item_data?: false, circulates?: false } }
       it "identifies any mfhds that require fill in option" do
         expect(decorator.any_fill_in_eligible?).to be_falsey
       end
     end
 
     context "on_shelf services with item data that is not enumerated" do
-      let(:stubbed_questions) { { etas?: false, services: ['on_shelf'], item_data?: true, circulates?: false, enumerated?: false } }
+      let(:stubbed_questions) { { services: ['on_shelf'], item_data?: true, circulates?: false, enumerated?: false } }
       it "identifies any mfhds that require fill in option" do
         expect(decorator.any_fill_in_eligible?).to be_falsey
       end
     end
 
     context "on_shelf services with item data that is enumerated" do
-      let(:stubbed_questions) { { etas?: false, services: ['on_shelf'], item_data?: true, circulates?: false, enumerated?: true } }
+      let(:stubbed_questions) { { services: ['on_shelf'], item_data?: true, circulates?: false, enumerated?: true } }
       it "identifies any mfhds that require fill in option" do
         expect(decorator.any_fill_in_eligible?).to be_truthy
       end
     end
 
     context "on_order services" do
-      let(:stubbed_questions) { { etas?: false, services: ['on_order'] } }
+      let(:stubbed_questions) { { services: ['on_order'] } }
       it "identifies any mfhds that require fill in option" do
         expect(decorator.any_fill_in_eligible?).to be_falsey
       end
@@ -153,21 +140,21 @@ describe Requests::RequestDecorator do
 
   describe "#any_will_submit_via_form?" do
     context "recap services" do
-      let(:stubbed_questions) { { etas?: false, services: ['recap', 'recap_edd'], patron: patron, will_submit_via_form?: true, item_data?: true, recap_edd?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, eligible_for_library_services?: true } }
+      let(:stubbed_questions) { { services: ['recap', 'recap_edd'], patron: patron, will_submit_via_form?: true, item_data?: true, recap_edd?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, eligible_for_library_services?: true } }
       it "identifies any mfhds that require fill in option" do
         expect(decorator.any_will_submit_via_form?).to be_truthy
       end
     end
 
     context "on_shelf services with no item data and circulates" do
-      let(:stubbed_questions) { { etas?: false, services: ['on_shelf'], patron: patron, item_data?: false, circulates?: true, eligible_to_pickup?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, user_barcode: '111222', ask_me?: false, recap?: false, annex?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, open_libraries: ['abc'], library_code: 'abc', eligible_for_library_services?: true } }
+      let(:stubbed_questions) { { services: ['on_shelf'], patron: patron, item_data?: false, circulates?: true, eligible_to_pickup?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, user_barcode: '111222', ask_me?: false, recap?: false, annex?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, open_libraries: ['abc'], library_code: 'abc', eligible_for_library_services?: true } }
       it "submits via form" do
         expect(decorator.any_will_submit_via_form?).to be_truthy
       end
     end
 
     context "on_shelf services with no item data and circulates" do
-      let(:stubbed_questions) { { etas?: false, services: ['on_shelf'], patron: patron, item_data?: false, circulates?: false, recap_edd?: false, eligible_to_pickup?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, user_barcode: '111222', ask_me?: false, recap?: false, annex?: false, clancy?: false, item_at_clancy?: false, held_at_marquand_library?: false, open_libraries: ['abc'], library_code: 'abc', eligible_for_library_services?: true } }
+      let(:stubbed_questions) { { services: ['on_shelf'], patron: patron, item_data?: false, circulates?: false, recap_edd?: false, eligible_to_pickup?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, user_barcode: '111222', ask_me?: false, recap?: false, annex?: false, clancy?: false, item_at_clancy?: false, held_at_marquand_library?: false, open_libraries: ['abc'], library_code: 'abc', eligible_for_library_services?: true } }
       it "does not submit via form" do
         expect(decorator.any_will_submit_via_form?).to be_falsey
       end
@@ -187,14 +174,14 @@ describe Requests::RequestDecorator do
 
   describe "#single_item_request?" do
     context "recap services" do
-      let(:stubbed_questions) { { etas?: false, services: ['recap', 'recap_edd'] } }
+      let(:stubbed_questions) { { services: ['recap', 'recap_edd'] } }
       it "is a single item" do
         expect(decorator.single_item_request?).to be_truthy
       end
     end
 
     context "on_shelf services with no item data and circulates" do
-      let(:stubbed_questions) { { etas?: false, services: ['on_shelf'], item_data?: false, circulates?: true } }
+      let(:stubbed_questions) { { services: ['on_shelf'], item_data?: false, circulates?: true } }
       it "is not a single item" do
         expect(decorator.single_item_request?).to be_falsey
       end

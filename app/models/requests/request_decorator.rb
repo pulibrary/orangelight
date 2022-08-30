@@ -30,7 +30,7 @@ module Requests
 
     # rubocop:disable Rails/OutputSafety
     def patron_message
-      return "" if (patron.campus_authorized && !first_filtered_requestable.etas?) || patron.guest?
+      return "" if patron.campus_authorized || patron.guest?
       "<div class='alert alert-warning'>#{patron_message_internal}</div>".html_safe
     end
 
@@ -117,9 +117,7 @@ module Requests
     private
 
       def patron_message_internal
-        if first_filtered_requestable.etas?
-          etas_message
-        elsif patron.pick_up_only?
+        if patron.pick_up_only?
           "You are only currently authorized to utilize our book <a href='https://library.princeton.edu/services/book-pick-up'>pick-up service</a>. Please consult with <a href='mailto:refdesk@princeton.edu'>refdesk@princeton.edu</a> if you would like to book time to spend in our libraries using our <a href='https://library.princeton.edu/services/study-browse'>study-browse service</a>."
         elsif !eligible_for_library_services?
           I18n.t("requests.account.cas_user_no_barcode_msg")
@@ -128,15 +126,6 @@ module Requests
           msg += "  If you would like to have access to pick-up books <a href='https://ehs.princeton.edu/COVIDTraining'>please complete the mandatory COVID-19 training</a>." if patron.training_eligable?
           msg
         end
-      end
-
-      def etas_message
-        "We currently cannot lend this item" +
-          if first_filtered_requestable.etas_limited_access
-            " from our ReCAP partner collection because of changes in copyright restrictions."
-          else
-            ", but you may view an online copy via the <a href='#{catalog_url}'>link in the record page</a>"
-          end
       end
 
       def display_label
