@@ -294,6 +294,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           stub_scsb_availability(bib_id: "99114026863506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
           visit "/requests/#{recap_in_process_id}"
           expect(page).to have_content 'In Process'
+          expect(page.find(:css, ".request--availability").text).to eq("Not Available - Acquisitions and Cataloging")
           select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23753408600006421')
           select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23753408600006421')
           select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23753408600006421')
@@ -1883,6 +1884,46 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
       it "does not allow reuesting of on order books" do
         visit "requests/99125492003506421?mfhd=22927395910006421"
         expect(page).to have_content 'This item is not available'
+      end
+    end
+    context 'when a Princeton item has not made it into SCSB yet' do
+      let(:user) { FactoryBot.create(:user) }
+      let(:bibdata_availability_url) { 'https://bibdata-staging.princeton.edu/bibliographic/99122304923506421/holdings/22511126440006421/availability.json' }
+      let(:bibdata_availability_response) do
+        '[{"barcode":"32101112612526","id":"23511126430006421","holding_id":"22511126440006421","copy_number":"0","status":"Available","status_label":"Item in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"recap","pickup_location_code":"recap","location":"recap$pa","label":"ReCAP - Remote Storage","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
+      end
+      let(:params) do
+        {
+          system_id: '99122304923506421',
+          source: 'pulsearch',
+          mfhd: nil,
+          patron: patron
+        }
+      end
+      let(:holding_location_info) { File.open('spec/fixtures/bibdata/recap_pa_holding_locations.json') }
+      let(:first_item) { request_scsb.items['22511126440006421'].first }
+
+      before do
+        stub_scsb_availability(bib_id: "99122304923506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
+        stub_request(:get, bibdata_availability_url)
+          .to_return(status: 200, body: bibdata_availability_response)
+        stub_request(:get, 'https://catalog.princeton.edu/catalog/99122304923506421/raw')
+          .to_return(status: 200, body: File.read('spec/fixtures/raw_99122304923506421.json'))
+        stub_request(:get, 'https://bibdata-staging.princeton.edu/locations/holding_locations/recap$pa.json')
+          .to_return(status: 200, body: holding_location_info)
+        stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+          .to_return(status: 200, body: valid_patron_response, headers: {})
+        login_as user
+      end
+
+      it 'is available and in process' do
+        visit "requests/99122304923506421?mfhd=22511126440006421"
+        expect(page.find(:css, ".request--availability").text).to eq("Available - In Process")
+        expect(page).to have_content 'In Process materials are typically available in several business days'
+        select('Firestone Library', from: 'requestable__pick_up_23511126430006421')
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("In Process Request")
       end
     end
   end

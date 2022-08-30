@@ -1,0 +1,215 @@
+{
+  "label": "Remote Storage",
+  "code": "recap$pa",
+  "aeon_location": false,
+  "recap_electronic_delivery_location": true,
+  "open": false,
+  "requestable": true,
+  "always_requestable": false,
+  "circulates": true,
+  "remote_storage": "recap_rmt",
+  "fulfillment_unit": "Closed",
+  "library": {
+    "label": "ReCAP",
+    "code": "recap",
+    "order": 0
+  },
+  "holding_library": null,
+  "delivery_locations": [
+    {
+      "label": "Plasma Physics Library",
+      "address": "Forrestal Campus Princeton, NJ 08544",
+      "phone_number": "609-243-3565",
+      "contact_email": "ppllib@princeton.edu",
+      "gfa_pickup": "PQ",
+      "staff_only": false,
+      "pickup_location": true,
+      "digital_location": true,
+      "library": {
+        "label": "Harold P. Furth Plasma Physics Library",
+        "code": "plasma",
+        "order": 0
+      }
+    },
+    {
+      "label": "Technical Services 693",
+      "address": "693 Alexander Rd. Princeton, NJ 08544",
+      "phone_number": "609-258-1470",
+      "contact_email": "catalogn@princeton.edu",
+      "gfa_pickup": "QT",
+      "staff_only": true,
+      "pickup_location": true,
+      "digital_location": false,
+      "library": {
+        "label": "Firestone Library",
+        "code": "firestone",
+        "order": 0
+      }
+    },
+    {
+      "label": "Architecture Library",
+      "address": "School of Architecture Building, Second Floor Princeton, NJ 08544",
+      "phone_number": "609-258-3256",
+      "contact_email": "ues@princeton.edu",
+      "gfa_pickup": "PW",
+      "staff_only": false,
+      "pickup_location": true,
+      "digital_location": true,
+      "library": {
+        "label": "Architecture Library",
+        "code": "arch",
+        "order": 0
+      }
+    },
+    {
+      "label": "East Asian Library",
+      "address": "Frist Campus Center, Room 317 Princeton, NJ 08544",
+      "phone_number": "609-258-3182",
+      "contact_email": "gestcirc@princeton.edu",
+      "gfa_pickup": "PL",
+      "staff_only": false,
+      "pickup_location": true,
+      "digital_location": true,
+      "library": {
+        "label": "East Asian Library",
+        "code": "eastasian",
+        "order": 0
+      }
+    },
+    {
+      "label": "Engineering Library",
+      "address": "Friend Center for Engineering Education Princeton, NJ 08544",
+      "phone_number": "609-258-3200",
+      "contact_email": "englib@princeton.edu",
+      "gfa_pickup": "PT",
+      "staff_only": false,
+      "pickup_location": true,
+      "digital_location": true,
+      "library": {
+        "label": "Engineering Library",
+        "code": "engineer",
+        "order": 0
+      }
+    },
+    {
+      "label": "Mendel Music Library",
+      "address": "Woolworth Center Princeton, NJ 08544",
+      "phone_number": "609-258-3230",
+      "contact_email": "muslib@princeton.edu",
+      "gfa_pickup": "PK",
+      "staff_only": false,
+      "pickup_location": true,
+      "digital_location": true,
+      "library": {
+        "label": "Mendel Music Library",
+        "code": "mendel",
+        "order": 0
+      }
+    },
+    {
+      "label": "Stokes Library",
+      "address": "Wallace Hall, Lower Level Princeton, NJ 08544",
+      "phone_number": "609-258-5455",
+      "contact_email": "piaprlib@princeton.edu",
+      "gfa_pickup": "PM",
+      "staff_only": false,
+      "pickup_location": true,
+      "digital_location": true,
+      "library": {
+        "label": "Stokes Library",
+        "code": "stokes",
+        "order": 0
+      }
+    },
+    {
+      "label": "Firestone Library, Resource Sharing",
+      "address": "One Washington Rd. Princeton, NJ 08544",
+      "phone_number": "609-258-1470",
+      "contact_email": "fstcirc@princeton.edu",
+      "gfa_pickup": "QA",
+      "staff_only": true,
+      "pickup_location": true,
+      "digital_location": false,
+      "library": {
+        "label": "Firestone Library",
+        "code": "firestone",
+        "order": 0
+      }
+    },
+    {
+      "label": "Lewis Library",
+      "address": "Washington Road and Ivy Lane Princeton, NJ 08544",
+      "phone_number": "609-258-6004",
+      "contact_email": "lewislib@princeton.edu",
+      "gfa_pickup": "PN",
+      "staff_only": false,
+      "pickup_location": true,
+      "digital_location": true,
+      "library": {
+        "label": "Lewis Library",
+        "code": "lewis",
+        "order": 0
+      }
+    },
+    {
+      "label": "Firestone Library",
+      "address": "One Washington Rd. Princeton, NJ 08544",
+      "phone_number": "609-258-1470",
+      "contact_email": "fstcirc@princeton.edu",
+      "gfa_pickup": "PA",
+      "staff_only": false,
+      "pickup_location": true,
+      "digital_location": true,
+      "library": {
+        "label": "Firestone Library",
+        "code": "firestone",
+        "order": 0
+      }
+    },
+    {
+      "label": "ReCAP ILL",
+      "address": "One Washington Rd. Princeton, NJ 08544",
+      "phone_number": "609-258-1470",
+      "contact_email": "fstcirc@princeton.edu",
+      "gfa_pickup": "IL",
+      "staff_only": true,
+      "pickup_location": false,
+      "digital_location": false,
+      "library": {
+        "label": "Firestone Library",
+        "code": "firestone",
+        "order": 0
+      }
+    },
+    {
+      "label": "Technical Services HMT",
+      "address": "One Washington Rd. Princeton, NJ 08544",
+      "phone_number": "609-258-1470",
+      "contact_email": "catalogn@princeton.edu",
+      "gfa_pickup": "QC",
+      "staff_only": true,
+      "pickup_location": true,
+      "digital_location": false,
+      "library": {
+        "label": "Firestone Library",
+        "code": "firestone",
+        "order": 0
+      }
+    },
+    {
+      "label": "Preservation",
+      "address": "One Washington Rd. Princeton, NJ 08544",
+      "phone_number": "609-258-1470",
+      "contact_email": "fstcirc@princeton.edu",
+      "gfa_pickup": "QP",
+      "staff_only": true,
+      "pickup_location": false,
+      "digital_location": false,
+      "library": {
+        "label": "Firestone Library",
+        "code": "firestone",
+        "order": 0
+      }
+    }
+  ]
+}

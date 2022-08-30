@@ -247,7 +247,7 @@ module Requests
       def build_barcode_sort(items:, availability_data:)
         barcodesort = {}
         items.each do |item|
-          item[:status_label] = "Not Available" if item["status_source"] != "work_order" && availability_data.empty?
+          item[:status_label] = status_label(item: item, availability_data: availability_data)
           barcodesort[item['barcode']] = item
         end
         availability_data.each do |item|
@@ -257,6 +257,16 @@ module Requests
           barcode_item['status'] = nil
         end
         barcodesort
+      end
+
+      def status_label(item:, availability_data:)
+        if item["status_source"] != "work_order" && availability_data.empty?
+          "Not Available"
+        elsif item["status_source"] != "work_order" && item[:status_label] == 'Item in place' && availability_data.size == 1 && availability_data.first['errorMessage'] == "Bib Id doesn't exist in SCSB database."
+          "In Process"
+        else
+          item[:status_label]
+        end
       end
 
       def build_requestable_with_items

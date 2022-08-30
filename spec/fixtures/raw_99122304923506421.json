@@ -1,0 +1,133 @@
+{
+  "id": "99122304923506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Ahmet Kutsi Tecer Sempozyumu (2018 : Sivas, Turkey)"
+  ],
+  "author_citation_display": [
+    "Ahmet Kutsi Tecer Sempozyumu",
+    "Karaca, Teoman"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[\"Karaca, Teoman\"],\"compilers\":[],\"primary_author\":\"Ahmet Kutsi Tecer Sempozyumu\"}",
+  "author_s": [
+    "Ahmet Kutsi Tecer Sempozyumu (2018 : Sivas, Turkey)",
+    "Karaca, Teoman"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Ahmet Kutsi Tecer sempozyum bildirileri : Sıvas 24 - 27 Nisan 2018 / editör Teoman Karaca.",
+  "title_t": [
+    "Ahmet Kutsi Tecer sempozyum bildirileri : Sıvas 24 - 27 Nisan 2018 / editör Teoman Karaca."
+  ],
+  "title_citation_display": [
+    "Ahmet Kutsi Tecer sempozyum bildirileri : Sıvas 24 - 27 Nisan 2018"
+  ],
+  "compiled_created_t": [
+    "Ahmet Kutsi Tecer sempozyum bildirileri : Sıvas 24 - 27 Nisan 2018 / editör Teoman Karaca."
+  ],
+  "pub_created_display": [
+    "Sıvas : Sıvas İl Kültür Turizm Müdürlüğü, [2019]"
+  ],
+  "pub_created_s": [
+    "Sıvas : Sıvas İl Kültür Turizm Müdürlüğü, [2019]"
+  ],
+  "pub_citation_display": [
+    "Sıvas: Sıvas İl Kültür Turizm Müdürlüğü"
+  ],
+  "pub_date_display": [
+    "9999"
+  ],
+  "pub_date_start_sort": 9999,
+  "cataloged_tdt": "2021-07-12T19:14:49Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "406 pages : illustrations ; 24 cm."
+  ],
+  "description_t": [
+    "406 pages : illustrations ; 24 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "406 pages"
+  ],
+  "geocode_display": [
+    "Turkey"
+  ],
+  "series_display": [
+    "Sivas 1000 temel eser ; no: 34"
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references."
+  ],
+  "language_facet": [
+    "Turkish"
+  ],
+  "language_code_s": [
+    "tur"
+  ],
+  "language_iana_s": [
+    "tr"
+  ],
+  "lc_subject_display": [
+    "Tecer, Ahmet Kutsi—Criticism and interpretation—Congresses",
+    "Poets, Turkish—20th century—Criticism and interpretation—Congresses",
+    "Turkish poetry—20th century—History and criticism—Congresses"
+  ],
+  "subject_facet": [
+    "Tecer, Ahmet Kutsi—Criticism and interpretation—Congresses",
+    "Poets, Turkish—20th century—Criticism and interpretation—Congresses",
+    "Turkish poetry—20th century—History and criticism—Congresses"
+  ],
+  "related_name_json_1display": "{\"Editor\":[\"Karaca, Teoman\"]}",
+  "other_title_display": [
+    "Türk kültürünün büyük emektarı Ahmet Kutsi Tecer sempozyum bildirileri"
+  ],
+  "alt_title_246_display": [
+    "Türk kültürünün büyük emektarı Ahmet Kutsi Tecer sempozyum bildirileri"
+  ],
+  "isbn_display": [
+    "9789751743565",
+    "9751743567"
+  ],
+  "isbn_s": [
+    "9789751743565"
+  ],
+  "oclc_s": [
+    "1235443255"
+  ],
+  "other_version_s": [
+    "9789751743565",
+    "on1235443255"
+  ],
+  "subject_era_facet": [
+    "20th century"
+  ],
+  "holdings_1display": "{\"22511126440006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"PL248.T34 Z75 2018\",\"call_number_browse\":\"PL248.T34 Z75 2018\",\"items\":[{\"holding_id\":\"22511126440006421\",\"id\":\"23511126430006421\",\"status_at_load\":\"1\",\"barcode\":\"32101112612526\",\"copy_number\":\"0\"}]}}",
+  "location_code_s": [
+    "recap$pa"
+  ],
+  "location": [
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage"
+  ],
+  "advanced_location_s": [
+    "recap$pa",
+    "ReCAP"
+  ],
+  "name_title_browse_s": [
+    "Ahmet Kutsi Tecer Sempozyumu (2018 : Sivas, Turkey). Ahmet Kutsi Tecer sempozyum bildirileri"
+  ],
+  "call_number_display": [
+    "PL248.T34 Z75 2018"
+  ],
+  "call_number_browse_s": [
+    "PL248.T34 Z75 2018"
+  ],
+  "call_number_locator_display": [
+    "PL248.T34 Z75 2018"
+  ]
+}
