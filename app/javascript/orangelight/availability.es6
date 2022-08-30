@@ -133,6 +133,13 @@ export default class AvailabilityUpdater {
   // search results
   process_result(record_id, holding_records) {
     for (let holding_id in holding_records) {
+      if (holding_id === 'RES_SHARE$IN_RS_REQ') {
+        // This holding location should always show as unavailable
+        const badges = $(`*[data-availability-record='true'][data-record-id='${record_id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] span.availability-icon`);
+        badges.addClass("badge-danger");
+        badges.text("Unavailable")
+        return true;
+      }
       if (holding_id.match(/[a-zA-Z]\$[a-zA-Z]/)) {
         // In this case we cannot correlate the holding data from the availability API
         // (holding_records) with the holding data already on the page (from Solr).
@@ -194,7 +201,14 @@ export default class AvailabilityUpdater {
         const { label, cdl, temp_location } = holding_records[id][holding_id];
         // case :constituent with host ids.
         // data-record-id has a different this.id when there are host ids.
-        let availability_element = $(`*[data-availability-record='true'][data-record-id='${id}'][data-holding-id='${holding_id}'] .availability-icon`);
+        let availability_element;
+
+        // If we are not getting holding info select the availability element by record id only.
+        if (holding_id == 'RES_SHARE$IN_RS_REQ') {
+          availability_element = $(`*[data-availability-record='true'][data-record-id='${id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] .availability-icon`);
+        } else {
+          availability_element = $(`*[data-availability-record='true'][data-record-id='${id}'][data-holding-id='${holding_id}'] .availability-icon`);
+        }
         if (label) {
           let holding_location = $(`*[data-location='true'][data-holding-id='${holding_id}']`);
           holding_location.text(label);
@@ -347,7 +361,6 @@ export default class AvailabilityUpdater {
     availability_element.addClass("badge");
     const { status_label, cdl, location, id } = availability_info
     const specialStatusLocations = ["marquand$stacks", "marquand$pj", "marquand$ref","marquand$ph", "marquand$fesrf", "RES_SHARE$IN_RS_REQ"];
-
     availability_element.text(status_label);
     availability_element.attr('title', '');
     if (status_label.toLowerCase() === 'unavailable') {
@@ -373,7 +386,7 @@ export default class AvailabilityUpdater {
           location_services_element.remove();
         }
       } else if (specialStatusLocations.includes(location)) {
-          this.checkSpecialLocation(location, availability_element)
+        this.checkSpecialLocation(location, availability_element)
       } 
       else {
         availability_element.addClass("badge-danger");

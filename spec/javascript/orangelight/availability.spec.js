@@ -657,10 +657,10 @@ describe('AvailabilityUpdater', function() {
   test('Temporary location - RES_SHARE$IN_RS_REQ - has a Request button', () => {
     document.body.innerHTML =
     '<table><tr>' +
-    '<td class="holding-status" data-availability-record="true" data-record-id="99118399983506421" data-holding-id="RES_SHARE$IN_RS_REQ" data-aeon="false">' +
+    '<td class="holding-status" data-availability-record="true" data-record-id="99118399983506421" data-holding-id="22936525030006421" data-temp-location-code="RES_SHARE$IN_RS_REQ" data-aeon="false">' +
     '  <span class="availability-icon" title="">Available</span>' +
     '</td>' +
-    '<td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false" data-holding-id="RES_SHARE$IN_RS_REQ">' +
+    '<td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false" data-holding-id="22936525030006421">' +
     '<a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/99118399983506421?mfhd=22555936970006421">Request</a>' +
     '</td>'
     '<tr><table>';
@@ -680,9 +680,55 @@ describe('AvailabilityUpdater', function() {
     }
     let u = new updater;
     u.id = '99118399983506421';
-    const element = $(`*[data-availability-record='true'][data-record-id='99118399983506421'][data-holding-id='RES_SHARE$IN_RS_REQ'] .availability-icon`);
-    const holding_data = res_share_response["99118399983506421"]["RES_SHARE$IN_RS_REQ"]
+    const element = $(`*[data-availability-record='true'][data-record-id='99118399983506421'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] .availability-icon`);
+    const holding_data = res_share_response["99118399983506421"]["RES_SHARE$IN_RS_REQ"];
     u.apply_availability_label(element, holding_data, false);
-    expect(document.querySelector('.location-services.service-conditional[data-holding-id="RES_SHARE$IN_RS_REQ"] > .btn.btn-xs.btn-primary').style.display).not.toBe('none');
+    u.update_single(res_share_response, u.id);
+    expect(document.querySelector('.location-services.service-conditional[data-holding-id="22936525030006421"] > .btn.btn-xs.btn-primary').style.display).not.toBe('none');
+    expect(document.querySelector('.holding-status[data-temp-location-code="RES_SHARE$IN_RS_REQ"]').getAttribute('data-temp-location-code')).toBe("RES_SHARE$IN_RS_REQ");
+    expect(document.querySelector('.holding-status[data-temp-location-code="RES_SHARE$IN_RS_REQ"] span').textContent).toBe("Unavailable")
+  })
+
+  test('Reshare holdings availability badge loads correctly', () => {
+    document.body.innerHTML =
+    '<ul class="document-metadata dl-horizontal dl-invert">' +
+    '  <li class="blacklight-format" dir="ltr"><span class="icon icon-book" aria-hidden="true"></span> Book</li>' +
+    '  <li class="blacklight-holdings">' +
+    '    <ul>' +
+    '      <li class="holding-status" data-availability-record="true" data-record-id="99125535710106421" data-holding-id="22936525030006421" data-temp-location-code="RES_SHARE$IN_RS_REQ" data-aeon="false" data-bound-with="false">' +
+    '        <span class="availability-icon badge badge-secondary">Loading...</span>' +
+    '        <div class="library-location" data-location="true" data-record-id="99125535710106421" data-holding-id="22936525030006421">' +
+    '          <span class="results_location">Firestone Library - Stacks</span> &raquo; <span class="call-number">B2433.M351 W55 2022 ' +
+    '            <a title="Where to find it" class="find-it" data-map-location="firestone$stacks" data-blacklight-modal="trigger" aria-label="Where to find it" href="/catalog/99125535710106421/stackmap?loc=firestone$stacks&amp;cn=B2433.M351 W55 2022">' +
+    '              <span class="fa fa-map-marker" aria-hidden="true"></span>' +
+    '            </a>' +
+    '          </span>' +
+    '        </div>' +
+    '      </li>' +
+    '    </ul>' +
+    '  </li>' +
+    '</ul>';
+    const res_share_response = {
+      "99125535710106421":{
+        "RES_SHARE$IN_RS_REQ":{
+          "on_reserve":"N",
+          "location":"RES_SHARE$IN_RS_REQ",
+          "label":"Resource Sharing Library - Lending Resource Sharing Requests",
+          "status_label":"Unavailable"
+          ,"copy_number":null,
+          "cdl":false,
+          "temp_location":true,
+          "id":"RES_SHARE$IN_RS_REQ"
+        }
+      }
+    };
+    let u = new updater;
+    u.id = '99125535710106421';
+    const element = $(`*[data-availability-record='true'][data-record-id='99125535710106421'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] .availability-icon`);
+    const holding_data = res_share_response["99125535710106421"]["RES_SHARE$IN_RS_REQ"];
+    u.apply_availability_label(element, holding_data, false);
+    u.process_result(u.id, res_share_response['99125535710106421']);
+    expect(document.querySelector('.holding-status[data-temp-location-code="RES_SHARE$IN_RS_REQ"]').getAttribute('data-temp-location-code')).toBe('RES_SHARE$IN_RS_REQ');
+    expect(document.querySelector('.holding-status[data-temp-location-code="RES_SHARE$IN_RS_REQ"] span').textContent).toBe('Unavailable');
   })
 })

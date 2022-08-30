@@ -124,6 +124,10 @@ class HoldingRequestsAdapter
     location.nil? ? alma_location_label_display_holding(holding) : alma_location_label_display_bibdata_location(location)
   end
 
+  def temp_location_code(holding)
+    holding['temp_location_code']
+  end
+
   # Alma location display on record page using the location info from bibdata.
   # This is a location fall back if Javascript does not work.
   def alma_location_label_display_bibdata_location(location)
