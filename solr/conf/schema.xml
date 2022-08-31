@@ -665,6 +665,7 @@
         Longer patterns will be matched first.  if equal size patterns
         both match, the first appearing in the schema will be used.  -->
    <dynamicField name="*_s"  type="string"  indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_ssi" type="string" stored="true" indexed="true" multiValued="false"/>
    <dynamicField name="*_t"  type="text"    indexed="true"  stored="true" multiValued="true"/>
    <dynamicField name="*_txt" type="text_general"    indexed="true"  stored="true" multiValued="true"/>
    <dynamicField name="*_b"  type="boolean" indexed="true"  stored="true"/>
@@ -729,6 +730,7 @@
    <copyField source="lcgft_s" dest="genre_unstem_search"/>
    <copyField source="aat_s" dest="genre_unstem_search"/>
    <copyField source="rbgenr_s" dest="genre_unstem_search"/>
+   <copyField source="homoit_genre_s" dest="genre_unstem_search"/>
    <copyField source="subject_topic_facet" dest="subject_topic_unstem_search"/>
 
 
