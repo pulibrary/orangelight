@@ -8,7 +8,6 @@ module Requests
     attr_reader :call_number
     attr_reader :title
     attr_reader :user_barcode
-    attr_reader :etas_limited_access
     attr_reader :patron
     attr_accessor :services
 
@@ -33,7 +32,6 @@ module Requests
       @patron = patron
       @user_barcode = patron.barcode
       @call_number = holding.first[1]&.dig 'call_number_browse'
-      @etas_limited_access = holding.first[1]&.dig "etas_limited_access"
       @title = bib[:title_citation_display]&.first
       @pageable = Pageable.new(call_number: call_number, location_code: location_code)
       @mappable = Requests::Mapable.new(bib_id: bib[:id], holdings: holding, location_code: location_code)
@@ -157,7 +155,7 @@ module Requests
     end
 
     def online?
-      location_valid? && location[:library][:code] == 'online' && !etas?
+      location_valid? && location[:library][:code] == 'online'
     end
 
     def urls
@@ -209,9 +207,7 @@ module Requests
     end
 
     def open_libraries
-      open = ['firestone', 'annex', 'marquand', 'mendel', 'stokes', 'eastasian', 'arch', 'lewis', 'engineer', 'recap']
-      open << "online" if etas?
-      open
+      ['firestone', 'annex', 'marquand', 'mendel', 'stokes', 'eastasian', 'arch', 'lewis', 'engineer', 'recap']
     end
 
     def location_code
@@ -237,10 +233,6 @@ module Requests
     def library_code
       return nil if location['library'].blank?
       location['library']['code']
-    end
-
-    def etas?
-      etas_limited_access || location[:code] == 'etas' || location[:code] == 'etasrcp'
     end
 
     def held_at_marquand_library?

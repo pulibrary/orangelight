@@ -59,15 +59,6 @@ RSpec.configure do |config|
   config.before(:each, type: :feature) do
     Warden.test_mode!
     OmniAuth.config.test_mode = true
-    stub_hathi
-  end
-
-  config.before(:each, type: :request) do
-    stub_hathi
-  end
-
-  config.before(:each, type: :view) do
-    stub_hathi
   end
 
   config.after(:each, type: :feature) do

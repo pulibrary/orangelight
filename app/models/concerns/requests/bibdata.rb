@@ -25,11 +25,6 @@ module Requests
       parse_response(response)
     end
 
-    def hathi_etas_status(oclc_id)
-      response = bibdata_conn.get "/hathi/access?oclc=#{oclc_id}"
-      parse_response(response)
-    end
-
     def bibdata_conn
       conn = Faraday.new(url: Requests::Config[:bibdata_base]) do |faraday|
         faraday.request  :url_encoded # form-encode POST params

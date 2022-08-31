@@ -5286,54 +5286,6 @@ http_interactions:
   recorded_at: Fri, 20 Aug 2021 16:33:07 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/hathi/access?oclc=1119736581
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 20 Aug 2021 16:33:07 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 404 Not Found
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - no-cache
-      Access-Control-Allow-Origin:
-      - "*"
-      X-Runtime:
-      - '0.008417'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - ec2a74ea-39c9-4dd7-88b1-f39dccc8ae2c
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: "[]"
-  recorded_at: Fri, 20 Aug 2021 16:33:07 GMT
-- request:
-    method: get
     uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-9726156/holdings/10366966/availability.json
     body:
       encoding: US-ASCII
@@ -5446,54 +5398,6 @@ http_interactions:
       encoding: ASCII-8BIT
       string: !binary |-
         eyJpZCI6IlNDU0ItNTU5NTM1MCIsIm51bWVyaWNfaWRfYiI6ZmFsc2UsIm90aGVyX2lkX3MiOlsiOTAwODg2NSJdLCJhdXRob3JfY2l0YXRpb25fZGlzcGxheSI6WyJSb3Vzc2VhdSwgSGVucmkiLCJZb21pdXJpIFNoaW5idW5zaGEiXSwiYXV0aG9yX3JvbGVzXzFkaXNwbGF5Ijoie1wic2Vjb25kYXJ5X2F1dGhvcnNcIjpbXCJSb3Vzc2VhdSwgSGVucmlcIixcIllvbWl1cmkgU2hpbmJ1bnNoYVwiLFwi6Kqt5aOy5paw6IGe56S+LlwiXSxcInRyYW5zbGF0b3JzXCI6W10sXCJlZGl0b3JzXCI6W10sXCJjb21waWxlcnNcIjpbXX0iLCJhdXRob3JfcyI6WyJSb3Vzc2VhdSwgSGVucmksIDE4NDQtMTkxMCIsIllvbWl1cmkgU2hpbmJ1bnNoYSIsIuiqreWjsuaWsOiBnuekvi4iXSwidGl0bGVfZGlzcGxheSI6IlwiIEFucmkgUnVzb8yEIG5vIHlha2FpXCIgdGVuIDogMTkwOC1uZW4gLS0gUGlrYXNvIG5vIGF0b3JpZSBkZSA9IExlIGJhbnF1ZXQgZHUgRG91YW5pZXIgUm91c3NlYXUgLyBbaGVuc2h1zIQgWW9taXVyaSBTaGluYnVuc2hhXS4iLCJ0aXRsZV92ZXJuX2Rpc3BsYXkiOiLjgIzjgqLjg7Pjg6rjg7vjg6vjgr3jg7zjga7lpJzkvJrjgI3lsZUgOiAxOTA4IOW5tCAtLSDjg5Tjgqvjgr3jga7jgqLjg4jjg6rjgqjjgacgPSBMZSBiYW5xdWV0IGR1IERvdWFuaWVyIFJvdXNzZWF1IC8gW+e3qOmbhuiqreWjsuaWsOiBnuekvl0uIiwidGl0bGVfdCI6WyJcIiBBbnJpIFJ1c2/MhCBubyB5YWthaVwiIHRlbiA6IDE5MDgtbmVuIC0tIFBpa2FzbyBubyBhdG9yaWUgZGUgPSBMZSBiYW5xdWV0IGR1IERvdWFuaWVyIFJvdXNzZWF1IC8gW2hlbnNodcyEIFlvbWl1cmkgU2hpbmJ1bnNoYV0uIl0sInRpdGxlX2NpdGF0aW9uX2Rpc3BsYXkiOlsiXCIgQW5yaSBSdXNvzIQgbm8geWFrYWlcIiB0ZW4gOiAxOTA4LW5lbiAtLSBQaWthc28gbm8gYXRvcmllIGRlID0gTGUgYmFucXVldCBkdSBEb3VhbmllciBSb3Vzc2VhdSIsIuOAjOOCouODs+ODquODu+ODq+OCveODvOOBruWknOS8muOAjeWxlSA6IDE5MDgg5bm0IC0tIOODlOOCq+OCveOBruOCouODiOODquOCqOOBpyA9IExlIGJhbnF1ZXQgZHUgRG91YW5pZXIgUm91c3NlYXUiXSwiY29tcGlsZWRfY3JlYXRlZF90IjpbIlwiIEFucmkgUnVzb8yEIG5vIHlha2FpXCIgdGVuIDogMTkwOC1uZW4gLS0gUGlrYXNvIG5vIGF0b3JpZSBkZSA9IExlIGJhbnF1ZXQgZHUgRG91YW5pZXIgUm91c3NlYXUgLyBbaGVuc2h1zIQgWW9taXVyaSBTaGluYnVuc2hhXS4iLCLjgIzjgqLjg7Pjg6rjg7vjg6vjgr3jg7zjga7lpJzkvJrjgI3lsZUgOiAxOTA4IOW5tCAtLSDjg5Tjgqvjgr3jga7jgqLjg4jjg6rjgqjjgacgPSBMZSBiYW5xdWV0IGR1IERvdWFuaWVyIFJvdXNzZWF1IC8gW+e3qOmbhuiqreWjsuaWsOiBnuekvl0uIl0sInB1Yl9jcmVhdGVkX3Zlcm5fZGlzcGxheSI6WyJbVG9reW9dIDog6Kqt5aOy5paw6IGe56S+LCBjMTk4NS4iXSwicHViX2NyZWF0ZWRfZGlzcGxheSI6WyJbVG9reW9dIDogWW9taXVyaSBTaGluYnVuc2hhLCBjMTk4NS4iLCJbVG9reW9dIDog6Kqt5aOy5paw6IGe56S+LCBjMTk4NS4iXSwicHViX2NyZWF0ZWRfcyI6WyJbVG9reW9dIDogWW9taXVyaSBTaGluYnVuc2hhLCBjMTk4NS4iLCJbVG9reW9dIDog6Kqt5aOy5paw6IGe56S+LCBjMTk4NS4iXSwicHViX2NpdGF0aW9uX2Rpc3BsYXkiOlsiVG9reW86IFlvbWl1cmkgU2hpbmJ1bnNoYSIsIlRva3lvOiDoqq3lo7LmlrDogZ7npL4iXSwicHViX2RhdGVfZGlzcGxheSI6WyIxOTg1Il0sInB1Yl9kYXRlX3N0YXJ0X3NvcnQiOjE5ODUsImZvcm1hdCI6WyJCb29rIl0sImRlc2NyaXB0aW9uX2Rpc3BsYXkiOlsiMTYxIHAuIDogaWxsLiAoc29tZSBjb2wuKSwgcG9ydHMuIDsgMjcgY20uIl0sImRlc2NyaXB0aW9uX3QiOlsiMTYxIHAuIDogaWxsLiAoc29tZSBjb2wuKSwgcG9ydHMuIDsgMjcgY20uIl0sIm51bWJlcl9vZl9wYWdlc19jaXRhdGlvbl9kaXNwbGF5IjpbIjE2MSBwLiJdLCJub3Rlc19kaXNwbGF5IjpbIk5DQyBKQUNXUCB0aXRsZTsgbWF5IGJlIGxvYW5lZCB0aHJvdWdoIElMTC4iXSwibGFuZ3VhZ2VfZGlzcGxheSI6WyJJbiBKYXBhbmVzZSB3aXRoIHNvbWUgRnJlbmNoLiJdLCJsYW5ndWFnZV9mYWNldCI6WyJKYXBhbmVzZSIsIkZyZW5jaCJdLCJsYW5ndWFnZV9jb2RlX3MiOlsianBuIiwiZnJlIl0sImxhbmd1YWdlX2lhbmFfcyI6WyJqYSIsImZyIl0sImxjX3N1YmplY3RfZGlzcGxheSI6WyJSb3Vzc2VhdSwgSGVucmksIDE4NDQtMTkxMOKAlEluZmx1ZW5jZeKAlEV4aGliaXRpb25zIiwiUHJpbWl0aXZpc20gaW4gYXJ04oCURnJhbmNl4oCURXhoaWJpdGlvbnMiLCJQYWludGluZywgRnJlbmNo4oCUMjB0aCBjZW50dXJ54oCURXhoaWJpdGlvbnMiLCJQYWludGluZywgRnJlbmNo4oCUMTl0aCBjZW50dXJ54oCURXhoaWJpdGlvbnMiXSwic3ViamVjdF9mYWNldCI6WyJSb3Vzc2VhdSwgSGVucmksIDE4NDQtMTkxMOKAlEluZmx1ZW5jZeKAlEV4aGliaXRpb25zIiwiUHJpbWl0aXZpc20gaW4gYXJ04oCURnJhbmNl4oCURXhoaWJpdGlvbnMiLCJQYWludGluZywgRnJlbmNo4oCUMjB0aCBjZW50dXJ54oCURXhoaWJpdGlvbnMiLCJQYWludGluZywgRnJlbmNo4oCUMTl0aCBjZW50dXJ54oCURXhoaWJpdGlvbnMiXSwicmVsYXRlZF9uYW1lX2pzb25fMWRpc3BsYXkiOiJ7XCJSZWxhdGVkIG5hbWVcIjpbXCJSb3Vzc2VhdSwgSGVucmksIDE4NDQtMTkxMFwiLFwiWW9taXVyaSBTaGluYnVuc2hhXCIsXCLoqq3lo7LmlrDogZ7npL4uXCJdfSIsIm90aGVyX3RpdGxlX2Rpc3BsYXkiOlsiQmFucXVldCBkdSBEb3VhbmllciBSb3Vzc2VhdSJdLCJhbHRfdGl0bGVfMjQ2X2Rpc3BsYXkiOlsiQmFucXVldCBkdSBEb3VhbmllciBSb3Vzc2VhdSJdLCJvY2xjX3MiOlsiODI5MTE1OTAiXSwib3RoZXJfdmVyc2lvbl9zIjpbIm9jbTgyOTExNTkwIl0sInN1YmplY3RfZXJhX2ZhY2V0IjpbIjIwdGggY2VudHVyeSIsIjE5dGggY2VudHVyeSJdLCJob2xkaW5nc18xZGlzcGxheSI6IntcIjU1ODk3ODRcIjp7XCJjYWxsX251bWJlclwiOlwiTkQ1NTMuUjY3IEE0IDE5ODVnXCIsXCJjYWxsX251bWJlcl9icm93c2VcIjpcIk5ENTUzLlI2NyBBNCAxOTg1Z1wiLFwibG9jYXRpb25fY29kZVwiOlwic2NzYmN1bFwiLFwibG9jYXRpb25cIjpcIlJlQ0FQXCIsXCJsaWJyYXJ5XCI6XCJSZUNBUFwiLFwiaXRlbXNcIjpbe1wiaG9sZGluZ19pZFwiOlwiNTU4OTc4NFwiLFwiaWRcIjpcIjgyNjQ4NDRcIixcInVzZV9zdGF0ZW1lbnRcIjpcIkluIExpYnJhcnkgVXNlXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiQXZhaWxhYmxlXCIsXCJiYXJjb2RlXCI6XCJBUjAxMjIwNTUxXCIsXCJjb3B5X251bWJlclwiOlwiMVwiLFwiY2djXCI6XCJPcGVuXCIsXCJjb2xsZWN0aW9uX2NvZGVcIjpcIkFSXCJ9XX19IiwicmVjYXBfbm90ZXNfZGlzcGxheSI6WyJDIC0gTyJdLCJsb2NhdGlvbl9jb2RlX3MiOlsic2NzYmN1bCJdLCJsb2NhdGlvbiI6WyJSZUNBUCJdLCJsb2NhdGlvbl9kaXNwbGF5IjpbIlJlQ0FQIl0sImFkdmFuY2VkX2xvY2F0aW9uX3MiOlsic2NzYmN1bCIsIlJlQ0FQIl0sIl92ZXJzaW9uXyI6MTcwNjAyNjMwMDIwOTEwMjg0OCwidGltZXN0YW1wIjoiMjAyMS0wNy0yMlQyMjozNzo0NS41MzJaIn0=
-  recorded_at: Fri, 20 Aug 2021 16:33:19 GMT
-- request:
-    method: get
-    uri: https://bibdata-staging.princeton.edu/hathi/access?oclc=82911590
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 20 Aug 2021 16:33:19 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 404 Not Found
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - no-cache
-      Access-Control-Allow-Origin:
-      - "*"
-      X-Runtime:
-      - '0.006088'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - b346148e-b795-49d2-bf93-bfa9684aecf3
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: "[]"
   recorded_at: Fri, 20 Aug 2021 16:33:19 GMT
 - request:
     method: get

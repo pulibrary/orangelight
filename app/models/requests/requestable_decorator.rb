@@ -2,7 +2,7 @@
 module Requests
   class RequestableDecorator
     delegate :system_id, :aeon_mapped_params, :services, :charged?, :annex?, :lewis?, :pageable_loc?, :traceable?, :on_reserve?,
-             :ask_me?, :etas?, :etas_limited_access, :aeon_request_url, :location, :temp_loc?, :in_resource_sharing?, :call_number, :eligible_to_pickup?, :eligible_for_library_services?,
+             :ask_me?, :aeon_request_url, :location, :temp_loc?, :in_resource_sharing?, :call_number, :eligible_to_pickup?, :eligible_for_library_services?,
              :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :open_libraries, :item_data?, :recap_edd?, :user_barcode, :clancy?,
              :holding, :item_location_code, :item?, :item, :partner_holding?, :status, :status_label, :use_restriction?, :library_code, :enum_value, :item_at_clancy?,
              :cron_value, :illiad_request_parameters, :location_label, :online?, :aeon?, :borrow_direct?, :patron, :held_at_marquand_library?,
@@ -36,7 +36,7 @@ module Requests
     end
 
     def pick_up?
-      return false if etas? || !eligible_to_pickup? || (!patron.cas_provider? && !off_site?)
+      return false if !eligible_to_pickup? || (!patron.cas_provider? && !off_site?)
       item_data? && (on_shelf? || recap? || annex?) && circulates? && !holding_library_in_library_only? && !scsb_in_library_use? && !request_status?
     end
 
@@ -79,7 +79,7 @@ module Requests
     end
 
     def in_library_use_required?
-      !etas? && available? && (!held_at_marquand_library? || !item_at_clancy? || clancy?) && ((off_site? && !circulates?) || holding_library_in_library_only? || scsb_in_library_use?) && campus_authorized
+      available? && (!held_at_marquand_library? || !item_at_clancy? || clancy?) && ((off_site? && !circulates?) || holding_library_in_library_only? || scsb_in_library_use?) && campus_authorized
     end
 
     def off_site?
@@ -138,7 +138,7 @@ module Requests
     end
 
     def help_me_message
-      key = if patron.campus_authorized || !located_in_an_open_library? || (requestable.scsb_in_library_use? && requestable.etas?)
+      key = if patron.campus_authorized || !located_in_an_open_library? || requestable.scsb_in_library_use?
               "full_access"
             elsif !eligible_for_library_services?
               "cas_user_no_barcode_no_choice_msg"

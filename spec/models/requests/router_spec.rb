@@ -37,8 +37,6 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
           .with(headers: { Accept: 'application/json', api_key: 'TESTME' }, body: scsb_availability_params)
           .to_return(status: 200, body: scsb_availability_response)
-        stub_request(:get, "#{Requests::Config[:bibdata_base]}/hathi/access?oclc=18321158")
-          .to_return(status: 200, body: '[{"id":null,"oclc_number":"18321158","bibid":"667075","status":"DENY","origin":"CUL"}]')
       end
 
       it "has Borrow Direct, ILL, but not Recall as a request service option" do
@@ -238,24 +236,9 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
             stubbed_questions[:scsb_in_library_use?] = true
             stubbed_questions[:recap_edd?] = false
             stubbed_questions[:campus_authorized] = true
-            stubbed_questions[:etas?] = false
           end
           it "returns recap in the services" do
             expect(router.calculate_services).to eq(["recap"])
-          end
-        end
-
-        context "scsb_in_library etas campus authorized" do
-          let(:item) { { collection_code: 'MR' } }
-          before do
-            stubbed_questions[:scsb_in_library_use?] = true
-            stubbed_questions[:recap_edd?] = false
-            stubbed_questions[:campus_authorized] = true
-            stubbed_questions[:etas?] = true
-            stubbed_questions[:etas?] = true
-          end
-          it "returns recap_in_library in the services" do
-            expect(router.calculate_services).to eq(["ask_me"])
           end
         end
       end

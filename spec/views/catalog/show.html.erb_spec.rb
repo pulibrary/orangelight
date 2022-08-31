@@ -96,13 +96,6 @@ RSpec.describe 'catalog/show' do
     end
   end
 
-  describe 'the hathi url' do
-    it 'has a link to the hathi url' do
-      visit 'catalog/998574693506421'
-      expect(page).not_to have_link('Temporary Digital Access from Hathi Trust', href: 'https://babel.hathitrust.org/Shibboleth.sso/Login?entityID=https://idp.princeton.edu/idp/shibboleth&target=https%3A%2F%2Fbabel.hathitrust.org%2Fcgi%2Fpt%3Fid%3Dmdp.39015015749305')
-    end
-  end
-
   context 'when a document has Chinese traditional subjects' do
     it "displays them" do
       visit 'catalog/9970446223506421'

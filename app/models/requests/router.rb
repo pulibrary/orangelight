@@ -88,7 +88,7 @@ module Requests
           ['recap_no_items']
         elsif (requestable.scsb_in_library_use? && requestable.item[:collection_code] != "MR" && requestable.campus_authorized) || (!requestable.circulates? && !requestable.recap_edd?) || requestable.recap_pf?
           ['recap_in_library']
-        elsif requestable.scsb_in_library_use? && (!requestable.eligible_to_pickup? || requestable.etas?)
+        elsif requestable.scsb_in_library_use? && !requestable.eligible_to_pickup?
           ['ask_me']
         elsif auth_user?
           services = []

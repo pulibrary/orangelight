@@ -33,13 +33,6 @@ class Bibdata
       nil
     end
 
-    def hathi_access(oclc_number)
-      response = Faraday.get("#{Requests.config['bibdata_base']}/hathi/access?oclc=#{oclc_number}")
-      return {} unless response.status == 200
-
-      JSON.parse(response.body)
-    end
-
     def holding_locations
       # check cache; return unless nil
       locations = Rails.cache.fetch('holding_locations', expires_in: 24.hours)

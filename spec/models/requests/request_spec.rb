@@ -1406,8 +1406,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/#{params[:system_id]}/raw")
         .to_return(status: 200, body: scsb_single_holding_item, headers: {})
       stub_scsb_availability(bib_id: "5992543", institution_id: "CUL", barcode: 'CU11388110')
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/hathi/access?oclc=65339789")
-        .to_return(status: 200, body: '[]')
     end
     describe '#requestable' do
       it 'has one requestable item' do
@@ -1452,8 +1450,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/#{params[:system_id]}/raw")
         .to_return(status: 200, body: scsb_edd_item, headers: {})
       stub_scsb_availability(bib_id: "9488888", institution_id: "CUL", barcode: 'MR00429228')
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/hathi/access?oclc=748826840")
-        .to_return(status: 200, body: '[]')
     end
     describe '#requestable' do
       it 'has one requestable item' do
