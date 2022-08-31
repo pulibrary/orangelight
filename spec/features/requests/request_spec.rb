@@ -47,7 +47,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
           visit '/requests/9999443553506421?mfhd=22743365320006421'
           expect(page).to have_content(I18n.t('blacklight.login.netid_login_msg'))
-          expect(page).not_to have_content(I18n.t('requests.account.barcode_login_msg'))
           expect(page).not_to have_content(I18n.t('requests.account.other_user_login_msg'))
         end
       end

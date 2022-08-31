@@ -75,7 +75,6 @@ en:
       netid_button: 'Log in with netID'
       redirect_text: 'You will be redirected to the secure Princeton University Central Authentication Service (CAS) login.'
       alma_login_msg: 'Log in with Alma Account (affiliates)'
-      barcode_login_msg: 'Log in with a barcode (retirees, family members, guest borrowers, etc)'
       barcode_netid: 'Please log in with netID.'
       barcode_header: ''
       barcode_subheader: ''
