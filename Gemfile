@@ -74,8 +74,6 @@ gem 'openurl', '~> 1.0'
 
 gem 'honeybadger'
 
-gem 'sitemap_generator', '~> 6.2'
-
 gem 'voight_kampff'
 
 gem 'lograge'

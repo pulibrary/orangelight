@@ -497,8 +497,6 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    sitemap_generator (6.2.1)
-      builder (~> 3.0)
     slop (4.9.1)
     sneakers (2.12.0)
       bunny (~> 2.14)
@@ -672,7 +670,6 @@ DEPENDENCIES
   rubyzip (>= 1.2.2)
   sass-rails (~> 6.0)
   simple_form
-  sitemap_generator (~> 6.2)
   sneakers
   solargraph
   sprockets-es6

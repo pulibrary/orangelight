@@ -14,7 +14,7 @@ set :branch, ENV['BRANCH'] || 'main'
 # used to set extended properties on the server.
 
 server 'catalog1', user: 'deploy', roles: %i[web app db worker]
-server 'catalog2', user: 'deploy', roles: %i[web app db sitemap worker]
+server 'catalog2', user: 'deploy', roles: %i[web app db worker]
 server 'catalog3', user: 'deploy', roles: %i[web app db worker]
 server 'catalog-indexer1', user: 'deploy', roles: %i[cron_prod1 cron_db worker]
 server 'catalog-indexer2', user: 'deploy', roles: %i[cron_prod2 worker]
