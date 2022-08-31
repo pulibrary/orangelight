@@ -1,6 +1,6 @@
 User-agent: *
 Crawl-delay: 10
-Sitemap: https://catalog.princeton.edu/sitemap.xml.gz
+Sitemap: https://catalog.princeton.edu/sitemap
 Disallow: /?q=*
 Disallow: /?f*
 Disallow: /*?q=*

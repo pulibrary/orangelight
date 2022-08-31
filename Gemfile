@@ -117,3 +117,5 @@ gem 'simple_form'
 
 gem "terser", "~> 1.1"
 gem 'vite_rails'
+
+gem "blacklight_dynamic_sitemap", "~> 0.6.0"
