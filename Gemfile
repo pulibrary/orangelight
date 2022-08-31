@@ -78,8 +78,6 @@ gem 'sitemap_generator', '~> 6.2'
 
 gem 'voight_kampff'
 
-gem 'webpacker'
-
 gem 'lograge'
 
 gem 'logstash-event'
@@ -120,3 +118,4 @@ gem 'net-ldap'
 gem 'simple_form'
 
 gem "terser", "~> 1.1"
+gem 'vite_rails'

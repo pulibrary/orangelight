@@ -226,6 +226,7 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dot-properties (0.1.3)
+    dry-cli (0.7.0)
     dumb_delegator (1.0.0)
     e2mmap (0.1.0)
     email_validator (2.2.3)
@@ -483,7 +484,6 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
-    semantic_range (3.0.0)
     serverengine (2.1.1)
       sigdump (~> 0.2.2)
     set (1.0.2)
@@ -577,6 +577,13 @@ GEM
       axiom-types (~> 0.1)
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
+    vite_rails (3.0.12)
+      railties (>= 5.1, < 8)
+      vite_ruby (~> 3.0, >= 3.2.2)
+    vite_ruby (3.2.3)
+      dry-cli (~> 0.7.0)
+      rack-proxy (~> 0.6, >= 0.6.1)
+      zeitwerk (~> 2.2)
     voight_kampff (1.1.4)
       rack (>= 1.4, < 3.0)
     warden (1.2.9)
@@ -589,11 +596,6 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    webpacker (5.4.3)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     webrick (1.7.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -679,10 +681,10 @@ DEPENDENCIES
   terser (~> 1.1)
   timecop
   vcr
+  vite_rails
   voight_kampff
   webdrivers
   webmock
-  webpacker
   whenever (~> 0.11)
   yajl-ruby (>= 1.3.1)
   yard

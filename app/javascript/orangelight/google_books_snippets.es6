@@ -1,4 +1,4 @@
-import { insert_online_link } from 'orangelight/insert_online_link'
+import { insert_online_link } from './insert_online_link.es6'
 
 export default class GoogleBooksSnippets {
   get has_figgy_viewer() {
