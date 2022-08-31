@@ -71,15 +71,7 @@ namespace :deploy do
     end
   end
 
-  task :robots_txt do
-    on roles(:app) do
-      within release_path do
-        execute :rake, 'pulsearch:robots_txt'
-      end
-    end
-  end
   after :publishing, :restart
-  after :publishing, :robots_txt
 
   after :finishing, 'deploy:cleanup'
 

@@ -2,7 +2,6 @@
 
 require 'rsolr'
 require 'json'
-require Rails.root.join('app', 'services', 'robots_generator_service').to_s
 
 namespace :pulsearch do
   namespace :solr do
@@ -36,17 +35,6 @@ namespace :pulsearch do
       solr.update data: '<delete><query>*:*</query></delete>', headers: { 'Content-Type' => 'text/xml' }
       solr.update data: '<commit/>', headers: { 'Content-Type' => 'text/xml' }
     end
-  end
-
-  desc 'Generate a robots.txt file'
-  task :robots_txt do |_t, args|
-    file_path = args[:file_path] || Rails.root.join('public', 'robots.txt')
-    robots = RobotsGeneratorService.new(path: file_path, disallowed_paths: Rails.configuration.robots.disallowed_paths)
-    robots.insert_group(user_agent: '*')
-    robots.insert_crawl_delay(10)
-    robots.insert_sitemap(Rails.configuration.robots.sitemap_url)
-    robots.generate
-    robots.write
   end
 
   private
