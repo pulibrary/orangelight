@@ -40,17 +40,12 @@ RSpec.describe AccountController do
   describe '#illiad_patron_client' do
     subject(:account_controller) { described_class.new }
     let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
-    let(:valid_voyager_response) { File.open(fixture_path + '/pul_voyager_account_response.xml').read }
 
     before do
       sign_in(valid_user)
       valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
-      patron = account_controller.send(:current_patron, valid_user)
-      valid_patron_record_uri = "#{ENV['voyager_api_base']}/vxws/MyAccountService?patronId=#{patron['patron_id']}&patronHomeUbId=1@DB"
-      stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: valid_voyager_response, headers: {})
     end
 
     it 'Returns Non-canceled Illiad Transactions' do
