@@ -74,8 +74,6 @@ gem 'openurl', '~> 1.0'
 
 gem 'honeybadger'
 
-gem 'sitemap_generator', '~> 6.2'
-
 gem 'voight_kampff'
 
 gem 'lograge'
@@ -119,3 +117,5 @@ gem 'simple_form'
 
 gem "terser", "~> 1.1"
 gem 'vite_rails'
+
+gem "blacklight_dynamic_sitemap", "~> 0.6.0"

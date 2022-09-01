@@ -36,7 +36,7 @@ shared_path = "#{:deploy_to}/shared"
 # set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{log tmp/pids tmp/sockets}
 
-set :whenever_roles, ->{ [:cron_prod1, :cron_prod2, :cron_prod3, :sitemap, :cron_db] }
+set :whenever_roles, ->{ [:cron_prod1, :cron_prod2, :cron_prod3, :cron_db] }
 
 
 # Default value for :linked_files is []
@@ -71,15 +71,7 @@ namespace :deploy do
     end
   end
 
-  task :robots_txt do
-    on roles(:app) do
-      within release_path do
-        execute :rake, 'pulsearch:robots_txt'
-      end
-    end
-  end
   after :publishing, :restart
-  after :publishing, :robots_txt
 
   after :finishing, 'deploy:cleanup'
 
