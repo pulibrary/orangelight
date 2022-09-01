@@ -433,10 +433,6 @@ module ApplicationHelper
     args[:document][args[:field]].each_with_index { |v, i| args[:document][args[:field]][i] = v.html_safe }
   end
 
-  def voyager_url(bibid)
-    "https://catalog.princeton.edu/cgi-bin/Pwebrecon.cgi?BBID=#{bibid}"
-  end
-
   def current_year
     DateTime.now.year
   end

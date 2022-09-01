@@ -60,7 +60,6 @@ Metrics/ClassLength:
     - 'app/services/online_holdings_markup_builder.rb'
     - 'app/services/holding_requests_adapter.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
-    - 'lib/orangelight/voyager_patron_client.rb'
     - 'spec/mailers/previews/*'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
     - 'app/models/requests/request.rb'
@@ -145,10 +144,6 @@ Naming/FileName:
     - 'Gemfile'
     - 'config/deploy/alma-production.rb'
     - 'config/deploy/alma-qa.rb'
-
-Naming/PredicateName:
-  Exclude:
-    - 'lib/orangelight/voyager_account.rb'
 
 # TODO: Fix
 Rails/OutputSafety:

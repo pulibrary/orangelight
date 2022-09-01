@@ -3,7 +3,6 @@
 defaults: &defaults
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
   proxy_base: https://library.princeton.edu/resolve/lookup?url=
-  voyager_api_base: https://webvoyage.princeton.edu:7014
   pulsearch_base: https://catalog.princeton.edu
   aeon_base: https://lib-aeon.princeton.edu/aeon/aeon.dll
   gfa_base: http://libweb5.princeton.edu/ReCAPNoUI/Default.aspx
@@ -19,11 +18,9 @@ defaults: &defaults
     scsbhl: "HL"
 development:
   <<: *defaults
-  voyager_ub_id: 1@DB
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
 test:
   <<: *defaults
-  voyager_ub_id: 1@DB
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
   illiad_api_key: 'TESTME'
   illiad_api_base: <%= ENV['ILLIAD_API_BASE_URL'] || "https://lib-illiad.princeton.edu" %>
