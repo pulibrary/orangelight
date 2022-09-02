@@ -38,11 +38,6 @@
   font-weight: 500;
 }
 
-.availability--panel_umlaut {
-  display: none;
-}
-
-.availability--panel_umlaut,
 .location--panel .panel,
 .location--linked .panel {
   background: white;
@@ -56,9 +51,7 @@
     background: none;
   }
 
-  .umlaut_section_content,
-  .panel-body,
-  .umlaut .section_prompt {
+  .panel-body {
     padding: 0;
   }
 
@@ -103,14 +96,6 @@
   .electronic-access {
     margin: .25em 0;
   }
-
-  .umlaut-section a {
-    padding: 0;
-  }
-
-  .umlaut-section li {
-    margin-bottom: 1.5em;
-  }
 }
 
 .location--linked .panel .panel-body {
@@ -140,7 +125,7 @@
   padding: 0px 15px 10px 0;
 }
 
-.panel-group .panel, .umlaut-section {
+.panel-group .panel {
   border-radius: 0;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
   -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
