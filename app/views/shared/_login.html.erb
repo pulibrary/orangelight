@@ -11,43 +11,6 @@
     </div>
   </div>
 
-  <div class='card card-barcode collapse' id="collapseBarcode">
-    <div class='card-body'>
-      <%= simple_form_for(@user, url:  main_app.user_barcode_omniauth_callback_path, class: 'form-horizontal', data: { toggle: 'validator' })  do |f| %>
-        <div class='field form-group col-md-12 row'>
-          <%= f.label 'Last name', class: 'control-label col-md-2 col-form-label' %>
-          <div class='col-md-5 <%= 'has-error' if flash[:last_name] %>'>
-            <%= text_field_tag 'last_name', '', class: 'form-control', autocomplete: 'off' %>
-            <% if flash[:last_name] %>
-              <span id="inputError2Status" class="sr-only">(error)</span>
-              <span class="error">Last name can't be blank</span>
-            <% end %>
-          </div>
-        </div>
-
-        <div class='field form-group col-md-12 row'>
-          <%= f.label 'Barcode', class: 'control-label col-md-2 col-form-label' %>
-          <div class='col-md-5 <%= 'has-error' if flash[:barcode] %>'>
-            <%= text_field_tag 'barcode', '22101', class: 'form-control', autocomplete: 'off' %>
-            <% if flash[:barcode] %>
-              <span id="inputError2Status" class="sr-only">(error)</span>
-              <span class="error">Barcode must be a 14-digit number</span>
-            <% end %>
-          </div>
-        </div>
-
-        <div class='login_actions form-group row'>
-          <div class='offset-md-2 col-md-10'>
-            <%= f.submit 'Log in', class: 'btn btn-outline-dark' %>
-          </div>
-        </div>
-      <% end %>
-      <div class='offset-md-2 col-md-8'>
-        <p><%=t('blacklight.login.barcode_help').html_safe%></p>
-      </div>
-    </div>
-  </div>
-
   <div class='card card-alma collapse' id="collapseAlma">
     <div class='card-body'>
       <%= simple_form_for(@user, url:  main_app.user_alma_omniauth_callback_path, class: 'form-horizontal', data: { toggle: 'validator' }, :method => :post)  do |f| %>
