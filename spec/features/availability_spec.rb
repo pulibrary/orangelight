@@ -123,12 +123,6 @@ describe 'Availability' do
       expect(page).not_to have_text ': PressReader'
     end
 
-    it 'does not display umlaut links for marcit record within the online section', js: true do
-      visit '/catalog/99122306151806421'
-      expect(page).not_to have_selector '.availability--online .umlaut .fulltext'
-      expect(page).not_to have_selector '.availability--online .umlaut .fulltext .response_item'
-    end
-
     context 'with a sibling record that does not have electronic portfolio values' do
       it 'within the online section, it displays the links of its sibling record' do
         stub_holding_locations

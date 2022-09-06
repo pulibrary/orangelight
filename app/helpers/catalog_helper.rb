@@ -57,6 +57,11 @@ module CatalogHelper
       field_name != 'holdings_1display' && (!document.numismatics_record? || coin_top_field?(field_name))
   end
 
+  def ejournals_path
+    params = search_state.params_for_search({ f: { access_facet: %w[Online], format: %w[Journal] } }).except(:model)
+    Rails.application.routes.url_helpers.url_for controller: 'catalog', params: params, only_path: true
+  end
+
   private
 
     def document_types(document)

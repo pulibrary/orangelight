@@ -69,18 +69,6 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
       link = electronic_access_link(url, texts)
       link = "#{texts[1]}: " + link if texts[1]
       link = "<li>#{link}</li>" if electronic_access.count > 1
-
-      # This should be restructured into #electronic_access_link
-      if /getit\.princeton\.edu/.match? url
-        # strip to get only the query_string
-        marcit_ctx = url.gsub('http://getit.princeton.edu/resolve?', '')
-        markup << content_tag(:li, '',
-                              id: 'full_text',
-                              class: ['availability--panel', 'availability_full-text'],
-                              'data-umlaut-full-text' => true,
-                              'data-url-marcit' => marcit_ctx)
-      end
-
       markup << content_tag(:li, link.html_safe, class: 'electronic-access')
     end
 

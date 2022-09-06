@@ -50,12 +50,6 @@ class HoldingRequestsAdapter
   delegate :electronic_portfolios, to: :@document
   delegate :sibling_electronic_portfolios, to: :@document
 
-  # Determine whether or not the electronic resources are accessible using getit
-  # @return [TrueClass, FalseClass]
-  def getit_accessible?
-    doc_electronic_access.keys.any? { |link| /getit\.princeton\.edu/.match(link) }
-  end
-
   # Retrieve only the ELF holding records
   # @return [Hash] ELF holding information
   def doc_holdings_elf
