@@ -46,7 +46,7 @@ module Blacklight::Document::JsonLd
       description_display: 'extent',
       edition_display: 'edition',
       format: 'format',
-      genre_facet: 'type',
+      lcgft_s: 'type',
       notes_display: 'description',
       pub_created_display: 'publisher',
       subject_facet: 'subject',
