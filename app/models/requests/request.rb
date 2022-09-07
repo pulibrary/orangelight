@@ -263,6 +263,8 @@ module Requests
           "Not Available"
         elsif item["status_source"] != "work_order" && item[:status_label] == 'Item in place' && availability_data.size == 1 && availability_data.first['errorMessage'] == "Bib Id doesn't exist in SCSB database."
           "In Process"
+        elsif item["status_source"] == "work_order" && item["status"] == "Not Available" && item[:status_label] != "Acquisitions and Cataloging"
+          "Not Available"
         else
           item[:status_label]
         end

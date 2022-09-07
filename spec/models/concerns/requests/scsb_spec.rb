@@ -71,6 +71,21 @@ describe Requests::Scsb do
         expect(first_item["status"]).to eq('Available')
         expect(request_scsb.requestable[0].status).to eq("Available")
       end
+
+      context 'with a holdings management work order' do
+        let(:bibdata_availability_response) do
+          '[{"barcode":"32101112612526","id":"23511126430006421","holding_id":"22511126440006421","copy_number":"1","status":"Not Available","status_label":"Holdings Management","status_source":"work_order","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"recap","pickup_location_code":"recap","location":"recap$pa","label":"ReCAP - Remote Storage","description":"vol.1","enum_display":"vol.1","chron_display":"","in_temp_library":false}]'
+        end
+
+        it 'is not available' do
+          request_scsb
+          expect(first_item["status"]).to eq('Not Available')
+          expect(request_scsb.requestable[0].status).to eq("Not Available")
+          expect(first_item["barcode"]).to eq('32101112612526')
+          expect(first_item[:status_label]).to eq('Not Available')
+          expect(first_item["status_label"]).to eq('Not Available')
+        end
+      end
     end
   end
   context 'with an unauthorized scsb key', vcr: { cassette_name: 'unauthorized_ol_authorized_bibdata_scsb_key', record: :none } do
