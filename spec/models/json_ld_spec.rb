@@ -51,6 +51,7 @@ RSpec.describe Blacklight::Document::JsonLd do
         expect(doc['contributor']).to eq(["New York Botanical Garden", "Mycological Society of America"])
         expect(doc['created']).to eq("1909-01-01T00:00:00Z/9999-12-31T23:59:59Z")
         expect(doc['date']).to eq('1909-9999')
+        expect(doc['type']).to eq('Periodicals')
       end
     end
     context 'with an artwork' do
