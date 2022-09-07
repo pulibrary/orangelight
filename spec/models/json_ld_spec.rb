@@ -99,6 +99,13 @@ RSpec.describe Blacklight::Document::JsonLd do
                                                      "label" => { "http://arks.princeton.edu/ark:/88435/7d278t10z" => "https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest" }
                                                    }])
       end
+      context 'with an ark' do
+        let(:id) { '99125378001906421' }
+
+        it 'parses the json correctly' do
+          expect(doc['identifier']).to eq('http://arks.princeton.edu/ark:/88435/2801pr857')
+        end
+      end
     end
     context 'with a work connected to the Fondo Cicognara' do
       let(:id) { '9985453593506421' }

@@ -148,10 +148,14 @@ module Blacklight::Document::JsonLd
   def identifier
     return unless electronic_locations
 
-    electronic_locations.each do |_key, val|
-      foo = val.select { |x| x.to_s.include?('ark') }
+    electronic_locations.each do |key, val|
+      foo = val.select do |x|
+        x.to_s.include?('ark')
+      end
+
       next if foo.blank?
 
+      return key if foo.class == Array
       return foo.keys.first
     end
   end
