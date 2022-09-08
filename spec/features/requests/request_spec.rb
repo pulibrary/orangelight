@@ -47,7 +47,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
           visit '/requests/9999443553506421?mfhd=22743365320006421'
           expect(page).to have_content(I18n.t('blacklight.login.netid_login_msg'))
-          expect(page).not_to have_content(I18n.t('requests.account.barcode_login_msg'))
           expect(page).not_to have_content(I18n.t('requests.account.other_user_login_msg'))
         end
       end
@@ -1378,21 +1377,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(a_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")).to have_been_made
           expect(page).to have_content(I18n.t("requests.account.auth_user_lookup_fail"))
         end
-      end
-    end
-
-    context 'A barcode holding user' do
-      let(:user) { FactoryBot.create(:valid_barcode_patron) }
-      # change this back #438
-      it 'displays a request form for a ReCAP item.' do
-        stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
-        stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
-          .to_return(status: 200, body: valid_barcode_patron_response, headers: {})
-        login_as user
-        visit "/requests/#{mms_id}"
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_selector '#request_user_barcode', visible: false
-        expect(page).to have_content('You are not currently authorized for on-campus services at the Library. Please send an inquiry to refdesk@princeton.edu if you believe you should have access to these services.')
       end
     end
 

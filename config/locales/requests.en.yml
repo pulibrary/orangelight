@@ -265,7 +265,6 @@ en:
     account:
       pul_auth: "You are logged as %{current_user_name}"
       unauthenticated: "Please sign in to see all requests"
-      barcode_login_msg: "Log in with a barcode (affiliates, family members, guest borrowers, etc)"
       unauthenticated: "Please sign in to see all requests"
       logged_in: "Logged in as:"
       other_user_login_msg: "I don’t have a barcode"

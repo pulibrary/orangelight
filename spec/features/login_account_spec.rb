@@ -48,7 +48,6 @@ describe 'Account login' do
         new_window = window_opened_by { click_link 'Library Account' }
         within_window new_window do
           expect(page).to have_link("Log in with netID")
-          expect(page).to have_link("Log in with a barcode (retirees, family members, guest borrowers, etc)")
           expect(page).to have_link("Log in with Alma Account (affiliates)")
           cas_login_link = find_link('Log in with netID')
           expect(cas_login_link[:href]).to include("/users/auth/cas")
