@@ -19,7 +19,7 @@ module Blacklight::Document::JsonLd
     metadata["@context"] = "#{default_host}/context.json"
     metadata["@id"] = Rails.application.routes.url_helpers.solr_document_url(id: self['id'], host: default_host)
     metadata["title"] = title
-    metadata["language"] = title_language
+    metadata["language"] = title_language if title_language
     metadata_map.each do |solr_key, metadata_key|
       values = self[solr_key.to_s] || []
       values = values.first if values.size == 1
@@ -78,23 +78,24 @@ module Blacklight::Document::JsonLd
     vtitle = self['title_vern_display']
     return unless vtitle
 
-    {
-      '@value' => vtitle,
-      '@language' => title_language
-    }
+    title_hash(vtitle, title_language)
   end
 
   def roman_title
     lang = title_language
     lang = "#{lang}-Latn" if lang && vernacular_title.present?
-    {
-      '@value' => self['title_display'],
-      '@language' => lang
-    }
+
+    title_hash(self['title_display'], lang)
+  end
+
+  def title_hash(title, language)
+    title_hash = { '@value' => title }
+    title_hash['@language'] = language if language.present?
+    title_hash
   end
 
   def title_language
-    self['language_code_s'].first.presence
+    self['language_iana_s']&.first.presence
   end
 
   def contributors
