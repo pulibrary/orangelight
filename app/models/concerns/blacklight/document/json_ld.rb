@@ -94,7 +94,7 @@ module Blacklight::Document::JsonLd
   end
 
   def title_language
-    self['language_code_s'].first
+    self['language_code_s'].first.presence
   end
 
   def contributors

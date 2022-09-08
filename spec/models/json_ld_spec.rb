@@ -54,6 +54,13 @@ RSpec.describe Blacklight::Document::JsonLd do
         expect(doc['type']).to eq('Periodicals')
       end
     end
+    context 'with blanks saved to language_code_s' do
+      let(:id) { '9996490803506421' }
+
+      it 'does not have a language' do
+        expect(doc['language']).to be nil
+      end
+    end
     context 'with an artwork' do
       let(:id) { '99106471643506421' }
 
