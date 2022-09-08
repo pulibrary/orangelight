@@ -374,7 +374,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'other_title_display', label: 'Other title(s)'
     config.add_show_field 'other_title_1display', hash: true
     config.add_show_field 'in_display', label: 'In'
-    config.add_show_field 'constituent_part_display', label: 'Constituent part(s)'
     config.add_show_field 'other_editions_display', label: 'Other editions'
     config.add_show_field 'isbn_display', label: 'ISBN'
     config.add_show_field 'issn_display', label: 'ISSN'
