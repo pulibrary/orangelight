@@ -3,7 +3,7 @@ require 'coveralls'
 require 'factory_bot'
 require 'webmock/rspec'
 
-# allow connections to localhost, umlaut and bibdata marc record service
+# allow connections to localhost and bibdata marc record service
 WebMock.disable_net_connect!(allow_localhost: true,
                              allow: 'chromedriver.storage.googleapis.com')
 

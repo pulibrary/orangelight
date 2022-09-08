@@ -12,6 +12,11 @@ RSpec.describe 'catalog/index' do
       visit '/catalog'
       expect(page).to have_selector('#bookmarks_nav', count: 1)
     end
+    it 'contains a valid link to the e-journals' do
+      visit '/'
+      link = find_link('E-journal titles')
+      expect(link[:href]).to eq('/?f%5Baccess_facet%5D%5B%5D=Online&f%5Bformat%5D%5B%5D=Journal')
+    end
   end
 
   describe 'index fields json only fields (show: false)' do

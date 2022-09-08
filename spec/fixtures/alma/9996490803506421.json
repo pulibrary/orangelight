@@ -1,0 +1,79 @@
+{
+  "id": "9996490803506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "East View Geospatial, Inc"
+  ],
+  "author_citation_display": [
+    "East View Geospatial, Inc"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"East View Geospatial, Inc\"}",
+  "author_s": [
+    "East View Geospatial, Inc"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Syria 100K Vector Dataset",
+  "title_t": [
+    "Syria 100K Vector Dataset"
+  ],
+  "title_citation_display": [
+    "Syria 100K Vector Dataset"
+  ],
+  "compiled_created_t": [
+    "Syria 100K Vector Dataset"
+  ],
+  "edition_display": [
+    "Bilingual edition"
+  ],
+  "pub_created_display": [
+    "Minnetonka, MN : East View Geospatial, Inc., 2016."
+  ],
+  "pub_created_s": [
+    "Minnetonka, MN : East View Geospatial, Inc., 2016."
+  ],
+  "pub_citation_display": [
+    "Minnetonka, MN: East View Geospatial, Inc"
+  ],
+  "pub_date_display": [
+    "2016"
+  ],
+  "pub_date_start_sort": 2016,
+  "cataloged_tdt": "2021-07-13T07:15:41Z",
+  "format": [
+    "Map"
+  ],
+  "description_display": [
+    "External Hard Drive"
+  ],
+  "description_t": [
+    "External Hard Drive"
+  ],
+  "number_of_pages_citation_display": [
+    "External Hard Drive"
+  ],
+  "notes_display": [
+    "Scale"
+  ],
+  "language_code_s": [
+    "   "
+  ],
+  "holdings_1display": "{\"22684828030006421\":{\"location_code\":\"lewis$gis\",\"location\":\"GIS and Digital Map Center\",\"library\":\"Lewis Library\"}}",
+  "location_code_s": [
+    "lewis$gis"
+  ],
+  "location": [
+    "Lewis Library"
+  ],
+  "location_display": [
+    "GIS and Digital Map Center"
+  ],
+  "advanced_location_s": [
+    "lewis$gis",
+    "Lewis Library"
+  ],
+  "name_title_browse_s": [
+    "East View Geospatial, Inc. Syria 100K Vector Dataset"
+  ]
+}

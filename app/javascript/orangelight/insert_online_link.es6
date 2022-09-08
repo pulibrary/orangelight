@@ -1,5 +1,5 @@
 export const insert_online_header = () => {
-  const online_div = $("div[class^='availability--online']:not(.availability--panel_umlaut)");
+  const online_div = $("div[class^='availability--online']");
   if (online_div.length < 1) {
     const physical_div = $(".availability--physical");
     const online_div = '<div class="availability--online"><h3>Available Online</h3><ul></ul></div>';
@@ -19,7 +19,7 @@ export const insert_online_link = (link = "#viewer-container", id = "cdl_link", 
   let target = "_blank"
   if (link.charAt(0) === "#")
     target = "_self"
-  const online_list = $("div[class^='availability--online']:not(.availability--panel_umlaut) ul");
+  const online_list = $("div[class^='availability--online'] ul");
   const online_link = `<li id='${id}'>${content(link, target)}</li></div>`;
   return $(online_list).append(online_link);
 }

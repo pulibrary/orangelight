@@ -8,7 +8,6 @@ en:
     welcome: 'Welcome!'
     voyager: 'Main Catalog'
     orangelight: 'Catalog'
-    umlaut: 'Findit @ Princeton'
     scsb:
       in_library_use: 'Materials must be used within Firestone Library.'
       supervised_use: 'Materials must be used within the Firestone Library Reading Room by scheduled appointment.'

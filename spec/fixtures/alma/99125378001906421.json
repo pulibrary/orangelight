@@ -1,0 +1,113 @@
+{
+  "id": "99125378001906421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+    "rainection",
+    "Xianggang yan yu zhi liao shi zong gong hui"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"rainection\",\"熱奶茶\",\"Xianggang yan yu zhi liao shi zong gong hui\",\"香港言語治療師總工會\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "rainection",
+    "熱奶茶",
+    "Xianggang yan yu zhi liao shi zong gong hui",
+    "香港言語治療師總工會"
+  ],
+  "title_display": "Yang cun qing dao fu / wen Xianggang yan yu zhi liao shi zong gong hui ; tu Renaicha.",
+  "title_vern_display": "羊村清道夫 / 文 香港言語治療師總工會 ; 圖 熱奶茶.",
+  "title_t": [
+    "Yang cun qing dao fu / wen Xianggang yan yu zhi liao shi zong gong hui ; tu Renaicha."
+  ],
+  "title_citation_display": [
+    "Yang cun qing dao fu",
+    "羊村清道夫"
+  ],
+  "compiled_created_t": [
+    "Yang cun qing dao fu / wen Xianggang yan yu zhi liao shi zong gong hui ; tu Renaicha.",
+    "羊村清道夫 / 文 香港言語治療師總工會 ; 圖 熱奶茶."
+  ],
+  "pub_created_vern_display": [
+    "[香港] : [香港言語治療師總工會], [2021]"
+  ],
+  "pub_created_display": [
+    "[Xianggang] : [Xianggang yan yu zhi liao shi zong gong hui], [2021]",
+    "[香港] : [香港言語治療師總工會], [2021]",
+    "©2021"
+  ],
+  "pub_created_s": [
+    "[Xianggang] : [Xianggang yan yu zhi liao shi zong gong hui], [2021]",
+    "[香港] : [香港言語治療師總工會], [2021]",
+    "©2021"
+  ],
+  "pub_citation_display": [
+    "Xianggang: Xianggang yan yu zhi liao shi zong gong hui",
+    "香港: 香港言語治療師總工會"
+  ],
+  "pub_date_display": [
+    "2021"
+  ],
+  "pub_date_start_sort": 2021,
+  "pub_date_end_sort": 2021,
+  "cataloged_tdt": "2021-08-13T19:00:41Z",
+  "format": [
+    "Book"
+  ],
+  "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/2801pr857\":[\"arks.princeton.edu\",\"Access restricted to PUL patrons\"]}",
+  "description_display": [
+    "1 online resource (28 pages) : color illustrations"
+  ],
+  "description_t": [
+    "1 online resource (28 pages) : color illustrations"
+  ],
+  "number_of_pages_citation_display": [
+    "1 online resource (28 pages)"
+  ],
+  "restrictions_note_display": [
+    "Restricted to Princeton University Library patrons only."
+  ],
+  "notes_display": [
+    "Cover title.",
+    "A picture book inspired by a brief strike by Hong Kong hospital workers calling for the border with mainland China to be completely sealed at the beginning of the coronavirus pandemic in February 2020. Page 2 lists the impact of the COVID-19 upon Hong Kong, based on statistics collected until March 8, 2021."
+  ],
+  "target_aud_notes_display": [
+    "Age 4 and up"
+  ],
+  "language_display": [
+    "Text in Cantonese.",
+    "粵語."
+  ],
+  "language_facet": [
+    "Chinese"
+  ],
+  "language_code_s": [
+    "chi"
+  ],
+  "language_iana_s": [
+    "zh"
+  ],
+  "lc_subject_display": [
+    "Sheep—Juvenile fiction",
+    "Wolves—Juvenile fiction",
+    "Sanitation workers—Juvenile fiction",
+    "Strikes and lockouts—China—Hong Kong—Juvenile fiction"
+  ],
+  "subject_facet": [
+    "Sheep—Juvenile fiction",
+    "Wolves—Juvenile fiction",
+    "Sanitation workers—Juvenile fiction",
+    "Strikes and lockouts—China—Hong Kong—Juvenile fiction",
+    "Picture books"
+  ],
+  "lcgft_s": [
+    "Picture books"
+  ],
+  "related_name_json_1display": "{\"Illustrator\":[\"rainection\",\"熱奶茶\"],\"Author\":[\"Xianggang yan yu zhi liao shi zong gong hui\",\"香港言語治療師總工會\"],\"Issuing body\":[\"Xianggang yan yu zhi liao shi zong gong hui\",\"香港言語治療師總工會\"]}",
+  "oclc_s": [
+    "1263694603"
+  ],
+  "other_version_s": [
+    "on1263694603"
+  ],
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53896967270006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ]
+}

@@ -51,6 +51,14 @@ RSpec.describe Blacklight::Document::JsonLd do
         expect(doc['contributor']).to eq(["New York Botanical Garden", "Mycological Society of America"])
         expect(doc['created']).to eq("1909-01-01T00:00:00Z/9999-12-31T23:59:59Z")
         expect(doc['date']).to eq('1909-9999')
+        expect(doc['type']).to eq('Periodicals')
+      end
+    end
+    context 'with blanks saved to language_code_s' do
+      let(:id) { '9996490803506421' }
+
+      it 'does not have a language' do
+        expect(doc['language']).to be nil
       end
     end
     context 'with an artwork' do
@@ -98,6 +106,13 @@ RSpec.describe Blacklight::Document::JsonLd do
                                                      "@id" => "iiif_manifest_paths",
                                                      "label" => { "http://arks.princeton.edu/ark:/88435/7d278t10z" => "https://figgy.princeton.edu/concern/scanned_resources/d446107a-bdfd-4a5d-803c-f315b7905bf4/manifest" }
                                                    }])
+      end
+      context 'with an ark' do
+        let(:id) { '99125378001906421' }
+
+        it 'parses the json correctly' do
+          expect(doc['identifier']).to eq('http://arks.princeton.edu/ark:/88435/2801pr857')
+        end
       end
     end
     context 'with a work connected to the Fondo Cicognara' do

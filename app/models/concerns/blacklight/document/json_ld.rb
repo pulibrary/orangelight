@@ -46,7 +46,7 @@ module Blacklight::Document::JsonLd
       description_display: 'extent',
       edition_display: 'edition',
       format: 'format',
-      genre_facet: 'type',
+      lcgft_s: 'type',
       notes_display: 'description',
       pub_created_display: 'publisher',
       subject_facet: 'subject',
@@ -94,7 +94,7 @@ module Blacklight::Document::JsonLd
   end
 
   def title_language
-    self['language_code_s'].first
+    self['language_code_s'].first.presence
   end
 
   def contributors
@@ -148,10 +148,14 @@ module Blacklight::Document::JsonLd
   def identifier
     return unless electronic_locations
 
-    electronic_locations.each do |_key, val|
-      foo = val.select { |x| x.to_s.include?('ark') }
+    electronic_locations.each do |key, val|
+      foo = val.select do |x|
+        x.to_s.include?('ark')
+      end
+
       next if foo.blank?
 
+      return key if foo.class == Array
       return foo.keys.first
     end
   end

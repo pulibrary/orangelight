@@ -1,6 +1,6 @@
 User-agent: *
 Crawl-delay: 10
-Sitemap: https://catalog.princeton.edu/sitemap.xml.gz
+Sitemap: https://catalog.princeton.edu/sitemap
 Disallow: /?q=*
 Disallow: /?f*
 Disallow: /*?q=*
@@ -11,6 +11,8 @@ Disallow: /browse/call_numbers
 Disallow: /browse/names
 Disallow: /browse/name_titles
 Disallow: /browse/subjects
+Disallow: /catalog.atom
+Disallow: /catalog.rss
 Disallow: /catalog/*/
 Disallow: /catalog/endnote
 Disallow: /catalog/opensearch
