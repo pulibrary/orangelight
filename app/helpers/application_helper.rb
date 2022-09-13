@@ -330,6 +330,31 @@ module ApplicationHelper
     end
   end
 
+  def title_hierarchy(args)
+    titles = JSON.parse(args[:document][args[:field]])
+    all_links = []
+    dirtags = []
+
+    titles.each do |title|
+      title_links = []
+      title.each_with_index do |part, index|
+        link_accum = StringFunctions.trim_punctuation(title[0..index].join(' '))
+        title_links << link_to(part, "/?search_field=left_anchor&q=#{CGI.escape link_accum}", class: 'search-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")
+      end
+      full_title = title.join(' ')
+      dirtags << StringFunctions.trim_punctuation(full_title.dir.to_s)
+      all_links << title_links.join('<span> </span>').html_safe
+    end
+
+    if all_links.length == 1
+      all_links = content_tag(:div, all_links[0], dir: dirtags[0])
+    else
+      all_links = all_links.map.with_index { |l, i| content_tag(:li, l, dir: dirtags[i]) }
+      all_links = content_tag(:ul, all_links.join.html_safe)
+    end
+    all_links
+  end
+
   def name_title_hierarchy(args)
     name_titles = JSON.parse(args[:document][args[:field]])
     all_links = []

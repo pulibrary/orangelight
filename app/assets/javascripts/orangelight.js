@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
     //link highlighting of hierarchy
-    $(".search-subject, .search-name-title").hover(
+    $(".search-subject, .search-name-title, .search-title").hover(
         function() {
             $(this).prevAll().addClass("field-hierarchy");
         },
