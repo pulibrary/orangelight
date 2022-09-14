@@ -1,0 +1,35 @@
+{
+  "label": "Stacks",
+  "code": "engineer$stacks",
+  "aeon_location": false,
+  "recap_electronic_delivery_location": false,
+  "open": true,
+  "requestable": true,
+  "always_requestable": false,
+  "circulates": true,
+  "remote_storage": "",
+  "fulfillment_unit": "General",
+  "library": {
+    "label": "Engineering Library",
+    "code": "engineer",
+    "order": 0
+  },
+  "holding_library": null,
+  "delivery_locations": [
+    {
+      "label": "Engineering Library",
+      "address": "Friend Center for Engineering Education Princeton, NJ 08544",
+      "phone_number": "609-258-3200",
+      "contact_email": "englib@princeton.edu",
+      "gfa_pickup": "PT",
+      "staff_only": false,
+      "pickup_location": true,
+      "digital_location": true,
+      "library": {
+        "label": "Engineering Library",
+        "code": "engineer",
+        "order": 0
+      }
+    }
+  ]
+}

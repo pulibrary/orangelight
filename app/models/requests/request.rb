@@ -300,6 +300,8 @@ module Requests
       end
 
       def build_requestable_mfhd_item(_requestable_items, holding_id, item, barcodesort)
+        return if item['on_reserve'] == 'Y'
+
         item_loc = item_current_location(item)
         current_location = get_current_location(item_loc: item_loc)
         item['status_label'] = barcodesort[item['barcode']][:status_label] unless barcodesort.empty?
@@ -313,9 +315,7 @@ module Requests
           holding: calculate_holding,
           location: current_location
         )
-        # sometimes availability returns items without any status
-        # see https://github.com/pulibrary/marc_liberation/issues/174
-        Requests::Requestable.new(params) # unless item["status"].nil?
+        Requests::Requestable.new(params)
       end
 
       def get_current_location(item_loc:)
