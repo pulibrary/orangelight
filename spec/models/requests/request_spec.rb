@@ -29,6 +29,39 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
   end
 
+  context "a holding with multiple items, some of which are on reserve" do
+    let(:user) { FactoryBot.create(:user) }
+    let(:bibdata_availability_url) { 'https://bibdata-staging.princeton.edu/bibliographic/9960102253506421/holdings/22548491940006421/availability.json' }
+    let(:bibdata_availability_response) { File.open('spec/fixtures/bibdata/9960102253506421_availability.json') }
+    let(:stacks_holding_location_info) { File.open('spec/fixtures/bibdata/engineer_stacks_holding_locations.json') }
+    let(:res_holding_location_info) { File.open('spec/fixtures/bibdata/engineer_res_holding_locations.json') }
+
+    before do
+      stub_request(:get, 'https://bibdata-staging.princeton.edu/locations/holding_locations/engineer$stacks.json')
+        .to_return(status: 200, body: stacks_holding_location_info)
+      stub_request(:get, 'https://bibdata-staging.princeton.edu/locations/holding_locations/engineer$res.json')
+        .to_return(status: 200, body: res_holding_location_info)
+      stub_request(:get, bibdata_availability_url)
+        .to_return(status: 200, body: bibdata_availability_response)
+      stub_request(:get, 'https://catalog.princeton.edu/catalog/9960102253506421/raw')
+        .to_return(status: 200, body: File.read('spec/fixtures/9960102253506421.json'))
+    end
+    let(:params) do
+      {
+        system_id: '9960102253506421',
+        source: 'pulsearch',
+        mfhd: '22548491940006421',
+        patron: patron
+      }
+    end
+    let(:request_with_reserve_items) { described_class.new(params) }
+
+    it 'returns one requestable item' do
+      expect(request_with_reserve_items.items['22548491940006421'].size).to eq(4)
+      expect(request_with_reserve_items.requestable.size).to eq(1)
+    end
+  end
+
   context "with a system_id and a mfhd that has a holding record with an attached item record" do
     let(:bad_system_id) { 'foo' }
     let(:params) do
@@ -281,7 +314,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
   end
 
-  context "A system id that has a holding with items in a temporary location" do
+  context "A system id that has a holding with reserve items in a temporary location" do
     let(:params) do
       {
         system_id: '9931805453506421',
@@ -292,14 +325,9 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     let(:request_with_items_at_temp_locations) { described_class.new(params) }
 
     describe "#requestable" do
-      it "has a list of requestable objects" do
+      it "has an empty list of requestable objects" do
         expect(request_with_items_at_temp_locations.requestable).to be_truthy
-        expect(request_with_items_at_temp_locations.requestable.size).to eq(1)
-        expect(request_with_items_at_temp_locations.requestable[0]).to be_instance_of(Requests::Requestable)
-      end
-
-      it "has location data that reflects an item's temporary location" do
-        expect(request_with_items_at_temp_locations.requestable.first.location_code).to eq('eastasian$reserve')
+        expect(request_with_items_at_temp_locations.requestable.size).to eq(0)
       end
     end
   end

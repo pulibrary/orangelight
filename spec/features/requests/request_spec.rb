@@ -1788,6 +1788,43 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         expect(page).to have_content 'This item is not available'
       end
     end
+    context 'when a holding has items on and off reserve' do
+      let(:user) { FactoryBot.create(:user) }
+      let(:bibdata_availability_url) { 'https://bibdata-staging.princeton.edu/bibliographic/9960102253506421/holdings/22548491940006421/availability.json' }
+      let(:bibdata_availability_response) { File.open('spec/fixtures/bibdata/9960102253506421_availability.json') }
+      let(:params) do
+        {
+          system_id: '9960102253506421',
+          source: 'pulsearch',
+          mfhd: nil,
+          patron: patron
+        }
+      end
+      let(:stacks_holding_location_info) { File.open('spec/fixtures/bibdata/engineer_stacks_holding_locations.json') }
+      let(:res_holding_location_info) { File.open('spec/fixtures/bibdata/engineer_res_holding_locations.json') }
+
+      before do
+        stub_request(:get, 'https://bibdata-staging.princeton.edu/locations/holding_locations/engineer$stacks.json')
+          .to_return(status: 200, body: stacks_holding_location_info)
+        stub_request(:get, 'https://bibdata-staging.princeton.edu/locations/holding_locations/engineer$res.json')
+          .to_return(status: 200, body: res_holding_location_info)
+        stub_request(:get, bibdata_availability_url)
+          .to_return(status: 200, body: bibdata_availability_response)
+        stub_request(:get, 'https://catalog.princeton.edu/catalog/9960102253506421/raw')
+          .to_return(status: 200, body: File.read('spec/fixtures/9960102253506421.json'))
+        stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+          .to_return(status: 200, body: valid_patron_response, headers: {})
+        login_as user
+      end
+      it 'does not display reserve items' do
+        visit "requests/9960102253506421?mfhd=22548491940006421"
+        expect(page.find(:css, '#enum_23939450340006421').text).to eq('Copy 4')
+        expect(page).to have_content('Not Available')
+        expect(page).to have_content('In Process materials are typically available in several business days.')
+        expect(page).to have_selector(:css, '#request_23939450340006421')
+        expect(page).to have_none_of_selectors(:css, '#request_23939450330006421', '#request_23939450300006421', '#request_23548491930006421')
+      end
+    end
     context 'when a Princeton item has not made it into SCSB yet' do
       let(:user) { FactoryBot.create(:user) }
       let(:bibdata_availability_url) { 'https://bibdata-staging.princeton.edu/bibliographic/99122304923506421/holdings/22511126440006421/availability.json' }

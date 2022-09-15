@@ -1,0 +1,121 @@
+{
+  "id": "9960102253506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Vahid, Frank"
+  ],
+  "author_citation_display": [
+    "Vahid, Frank"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Vahid, Frank\"}",
+  "author_s": [
+    "Vahid, Frank"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Digital design / Frank Vahid.",
+  "title_t": [
+    "Digital design / Frank Vahid."
+  ],
+  "title_citation_display": [
+    "Digital design"
+  ],
+  "compiled_created_t": [
+    "Digital design / Frank Vahid."
+  ],
+  "pub_created_display": [
+    "Hoboken, N.J. : J. Wiley & Sons, c2007."
+  ],
+  "pub_created_s": [
+    "Hoboken, N.J. : J. Wiley & Sons, c2007."
+  ],
+  "pub_citation_display": [
+    "Hoboken, N.J.: J. Wiley & Sons"
+  ],
+  "pub_date_display": [
+    "2007"
+  ],
+  "pub_date_start_sort": 2007,
+  "cataloged_tdt": "2009-12-22T10:59:00Z",
+  "format": [
+    "Book"
+  ],
+  "electronic_access_1display": "{\"http://www.loc.gov/catdir/enhancements/fy0902/2006298966-b.html\":[\"Contributor biographical information\"],\"http://www.loc.gov/catdir/enhancements/fy0902/2006298966-d.html\":[\"Publisher description\"],\"http://www.loc.gov/catdir/enhancements/fy0902/2006298966-t.html\":[\"Table of contents only\"]}",
+  "description_display": [
+    "xii, 540 p. : ill. ; 25 cm."
+  ],
+  "description_t": [
+    "xii, 540 p. : ill. ; 25 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "xii, 540 p."
+  ],
+  "notes_display": [
+    "Includes index."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Electronic digital computers—Design and construction",
+    "Computer architecture"
+  ],
+  "subject_facet": [
+    "Electronic digital computers—Design and construction",
+    "Computer architecture"
+  ],
+  "isbn_display": [
+    "0470044373",
+    "9780470044377"
+  ],
+  "lccn_display": [
+    "  2006298966"
+  ],
+  "lccn_s": [
+    "2006298966"
+  ],
+  "isbn_s": [
+    "9780470044377"
+  ],
+  "oclc_s": [
+    "71333752"
+  ],
+  "other_version_s": [
+    "9780470044377",
+    "ocm71333752"
+  ],
+  "holdings_1display": "{\"22548491940006421\":{\"location_code\":\"engineer$stacks\",\"location\":\"Stacks\",\"library\":\"Engineering Library\",\"call_number\":\"TK7888.3 .V273 2007\",\"call_number_browse\":\"TK7888.3 .V273 2007\",\"items\":[{\"holding_id\":\"22548491940006421\",\"id\":\"23939450340006421\",\"status_at_load\":\"0\",\"barcode\":\"32101108938414\",\"copy_number\":\"4\"}]},\"engineer$res\":{\"location_code\":\"engineer$res\",\"current_location\":\"Reserve\",\"current_library\":\"Engineering Library\",\"call_number\":\"TK7888.3 .V273 2007\",\"call_number_browse\":\"TK7888.3 .V273 2007\",\"temp_location_code\":\"engineer$res\",\"items\":[{\"holding_id\":\"22548491940006421\",\"id\":\"23548491930006421\",\"status_at_load\":\"1\",\"barcode\":\"32101076768041\",\"copy_number\":\"1\"},{\"holding_id\":\"22548491940006421\",\"id\":\"23939450330006421\",\"status_at_load\":\"1\",\"barcode\":\"32101108937978\",\"copy_number\":\"3\"},{\"holding_id\":\"22548491940006421\",\"id\":\"23939450300006421\",\"status_at_load\":\"1\",\"barcode\":\"32101108937960\",\"copy_number\":\"2\"}]}}",
+  "location_code_s": [
+    "engineer$stacks"
+  ],
+  "location": [
+    "Engineering Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "engineer$stacks",
+    "Engineering Library"
+  ],
+  "name_title_browse_s": [
+    "Vahid, Frank. Digital design"
+  ],
+  "call_number_display": [
+    "TK7888.3 .V273 2007"
+  ],
+  "call_number_browse_s": [
+    "TK7888.3 .V273 2007"
+  ],
+  "call_number_locator_display": [
+    "TK7888.3 .V273 2007"
+  ],
+  "hashed_id_ssi": "7fb50e49f9c2f7c1"
+}
