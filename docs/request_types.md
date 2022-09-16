@@ -35,6 +35,7 @@
     * Requests are placed in ILLiad
 * Resource Sharing Services (Request an item from another library via Borrow Direct or InterLibrary Loan (Illiad)
     * Any item that has a process type that is not Acquisition or In Process and has an Alma Base Status of "Item Not In Place". For items that are in the "In Process" type any items in a work order type that is NOT "Acquisitions and Cataloging". 
+    * If a match is found requests are placed in Borrow Direct's Relais system; otherwise requests are placed in ILLiad. 
 * Reading Room Request (request supervised use materials for viewing in a Special Collections Reading Room)
     * Reading Room Requests are placed in Aeon
     * Any item in special collections location (aeon = true in the bibdata holding_location table)
