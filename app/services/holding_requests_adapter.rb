@@ -193,13 +193,13 @@ class HoldingRequestsAdapter
   # Determine whether or not the holding features a supplements note
   # @return [TrueClass, FalseClass]
   def supplements?(holding)
-    holding['supplements'].present?
+    holding['supplements']&.compact.present?
   end
 
   # Determine whether or not the holding features an index note
   # @return [TrueClass, FalseClass]
   def indexes?(holding)
-    holding['indexes'].present?
+    holding['indexes']&.compact.present?
   end
 
   # Determine whether or not the holding is for a Voyager
