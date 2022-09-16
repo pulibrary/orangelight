@@ -153,6 +153,13 @@ RSpec.describe 'catalog/show' do
       expect(page).not_to have_selector('.holding-indexes')
     end
   end
+  context 'when the indexes and supplements array have null' do
+    it 'does not display indexes or supplements statements' do
+      visit 'catalog/9930960283506421'
+      expect(page).not_to have_selector('.holding-supplements')
+      expect(page).not_to have_selector('.holding-indexes')
+    end
+  end
   context 'when indexes is not included in the holdings JSON' do
     it 'does not display indexes statements' do
       visit 'catalog/9957223113506421'

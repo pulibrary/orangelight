@@ -31521,5 +31521,261 @@
   "access_facet": [
     "In the Library"
   ]
+},
+{
+  "id": [
+    "9930960283506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    "王陽明, 1472-1529. 王文成公全書 : 三十八卷 / 徐愛傳習 ; 薛侃葺錄 ; 錢德洪編次 ; 王畿增葺 ; 唐堯臣校閱. [浙江省] : 郭朝賓 ... [et al., 明萬曆乙未 i.e. 23年, 1595] 集部 别集類 明. sk 徐愛, 1487-1517, 傳習. 薛侃, d. 1545, 葺錄. 錢德洪, 1497-1574, 編次. 王畿, 1498-1583, 增葺. 唐堯臣, 校閱. 郭朝賓, 1513-1585, 刻. [萬曆]乙未\"刻文錄叙說\". \"刻王文成公全書姓氏總目\"列浙江巡撫郭朝賓等三十幾人. 框19.7 x 14.2公分, 9行19字, 各卷首葉8行20字, 白口, 四周雙邊間左右雙邊, 單白魚尾間單黑魚尾. 版心上鐫\"全書\"及卷次."
+  ],
+  "cjk_notes": [
+    "[萬曆]乙未\"刻文錄叙說\". \"刻王文成公全書姓氏總目\"列浙江巡撫郭朝賓等三十幾人. 框19.7 x 14.2公分, 9行19字, 各卷首葉8行20字, 白口, 四周雙邊間左右雙邊, 單白魚尾間單黑魚尾. 版心上鐫\"全書\"及卷次."
+  ],
+  "author_display": [
+    "Wang, Yangming, 1472-1529",
+    "王陽明, 1472-1529"
+  ],
+  "author_sort": [
+    "Wang, Yangming, 1472-1529"
+  ],
+  "author_citation_display": [
+    "Wang, Yangming",
+    "Xu, Ai",
+    "Xue, Kan",
+    "Qian, Dehong",
+    "Wang, Ji",
+    "Tang, Yaochen",
+    "Guo, Chaobin",
+    "Chinese Rare Books Project"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"王陽明\",\"Xu, Ai\",\"徐愛\",\"Xue, Kan\",\"薛侃\",\"Qian, Dehong\",\"錢德洪\",\"Wang, Ji\",\"王畿\",\"Tang, Yaochen\",\"唐堯臣\",\"Guo, Chaobin\",\"郭朝賓\",\"Chinese Rare Books Project\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Wang, Yangming\"}"
+  ],
+  "cjk_author": [
+    "王陽明, 1472-1529",
+    "徐愛, 1487-1517",
+    "薛侃, d. 1545",
+    "錢德洪, 1497-1574",
+    "王畿, 1498-1583",
+    "唐堯臣",
+    "郭朝賓, 1513-1585"
+  ],
+  "author_s": [
+    "Wang, Yangming, 1472-1529",
+    "王陽明, 1472-1529",
+    "Xu, Ai, 1487-1517",
+    "徐愛, 1487-1517",
+    "Xue, Kan, -1545",
+    "薛侃, d. 1545",
+    "Qian, Dehong, 1497-1574",
+    "錢德洪, 1497-1574",
+    "Wang, Ji, 1498-1583",
+    "王畿, 1498-1583",
+    "Tang, Yaochen",
+    "唐堯臣",
+    "Guo, Chaobin, 1513-1585",
+    "郭朝賓, 1513-1585",
+    "Chinese Rare Books Project"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": [
+    "Wang Wencheng gong quan shu : san shi ba juan / Xu Ai chuan xi ; Xue Kan qi lu ; Qian Dehong bian ci ; Wang Ji zeng qi ; Tang Yaochen jiao yue."
+  ],
+  "title_a_index": [
+    "Wang Wencheng gong quan shu : san shi ba juan",
+    "王文成公全書"
+  ],
+  "title_vern_display": [
+    "王文成公全書 : 三十八卷 / 徐愛傳習 ; 薛侃葺錄 ; 錢德洪編次 ; 王畿增葺 ; 唐堯臣校閱."
+  ],
+  "title_sort": [
+    "Wang Wencheng gong quan shu : san shi ba juan / Xu Ai chuan xi ; Xue Kan qi lu ; Qian Dehong bian ci ; Wang Ji zeng qi ; Tang Yaochen jiao yue."
+  ],
+  "title_vern_sort": [
+    "王文成公全書 : 三十八卷 / 徐愛傳習 ; 薛侃葺錄 ; 錢德洪編次 ; 王畿增葺 ; 唐堯臣校閱."
+  ],
+  "title_no_h_index": [
+    "Wang Wencheng gong quan shu : san shi ba juan / Xu Ai chuan xi ; Xue Kan qi lu ; Qian Dehong bian ci ; Wang Ji zeng qi ; Tang Yaochen jiao yue.",
+    "王文成公全書 : 三十八卷 / 徐愛傳習 ; 薛侃葺錄 ; 錢德洪編次 ; 王畿增葺 ; 唐堯臣校閱."
+  ],
+  "title_t": [
+    "Wang Wencheng gong quan shu : san shi ba juan / Xu Ai chuan xi ; Xue Kan qi lu ; Qian Dehong bian ci ; Wang Ji zeng qi ; Tang Yaochen jiao yue."
+  ],
+  "title_citation_display": [
+    "Wang Wencheng gong quan shu : san shi ba juan",
+    "王文成公全書 : 三十八卷"
+  ],
+  "cjk_title": [
+    "王文成公全書 : 三十八卷 / 徐愛傳習 ; 薛侃葺錄 ; 錢德洪編次 ; 王畿增葺 ; 唐堯臣校閱."
+  ],
+  "compiled_created_t": [
+    "Wang Wencheng gong quan shu : san shi ba juan / Xu Ai chuan xi ; Xue Kan qi lu ; Qian Dehong bian ci ; Wang Ji zeng qi ; Tang Yaochen jiao yue.",
+    "王文成公全書 : 三十八卷 / 徐愛傳習 ; 薛侃葺錄 ; 錢德洪編次 ; 王畿增葺 ; 唐堯臣校閱."
+  ],
+  "pub_created_vern_display": [
+    "[浙江省] : 郭朝賓 ... [et al., 明萬曆乙未 i.e. 23年, 1595]"
+  ],
+  "pub_created_display": [
+    "[Zhejiang Sheng] : Guo Chaobin ... [et al., Ming Wanli yi wei i.e. 23 nian, 1595]",
+    "[浙江省] : 郭朝賓 ... [et al., 明萬曆乙未 i.e. 23年, 1595]"
+  ],
+  "pub_created_s": [
+    "[Zhejiang Sheng] : Guo Chaobin ... [et al., Ming Wanli yi wei i.e. 23 nian, 1595]",
+    "[浙江省] : 郭朝賓 ... [et al., 明萬曆乙未 i.e. 23年, 1595]"
+  ],
+  "pub_citation_display": [
+    "Zhejiang Sheng: Guo Chaobin ... [et al.",
+    "浙江省: 郭朝賓 ... [et al."
+  ],
+  "pub_date_display": [
+    "1595"
+  ],
+  "pub_date_start_sort": [
+    "1595"
+  ],
+  "cataloged_tdt": [
+    "2003-02-19T10:59:00Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "electronic_access_1display": [
+    "{\"https://libimages1.princeton.edu/loris/CHRBPageImages/NJPX89B581.jp2/full/full/0/default.jpg\":[\"First page of main text\"],\"http://arks.princeton.edu/ark:/88435/bk128m37t\":[\"arks.princeton.edu\"]}"
+  ],
+  "electronic_access_index": [
+    "First page of main text https://libimages1.princeton.edu/loris/CHRBPageImages/NJPX89B581.jp2/full/full/0/default.jpg",
+    "http://arks.princeton.edu/ark:/88435/bk128m37t"
+  ],
+  "description_display": [
+    "24 v. ; 29 cm."
+  ],
+  "description_t": [
+    "24 v. ; 29 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "24 v."
+  ],
+  "notes_index": [
+    "In 4 cases. NjP-G"
+  ],
+  "notes_display": [
+    "In 4 cases.",
+    "[萬曆]乙未\"刻文錄叙說\".",
+    "\"刻王文成公全書姓氏總目\"列浙江巡撫郭朝賓等三十幾人.",
+    "框19.7 x 14.2公分, 9行19字, 各卷首葉8行20字, 白口, 四周雙邊間左右雙邊, 單白魚尾間單黑魚尾. 版心上鐫\"全書\"及卷次."
+  ],
+  "language_facet": [
+    "Chinese"
+  ],
+  "publication_place_facet": [
+    "China"
+  ],
+  "language_code_s": [
+    "chi"
+  ],
+  "language_iana_s": [
+    "zh"
+  ],
+  "siku_subject_display": [
+    "Ji bu—Bie ji lei—Ming",
+    "集部—别集類—明."
+  ],
+  "subject_unstem_search": null,
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": [
+    "Ji bu—Bie ji lei—Ming",
+    "集部—别集類—明."
+  ],
+  "homoit_subject_unstem_search": null,
+  "subject_facet": [
+    "Ji bu—Bie ji lei—Ming",
+    "集部—别集類—明."
+  ],
+  "cjk_subject": [
+    "集部 别集類 明."
+  ],
+  "subject_topic_facet": [
+    "Ji bu",
+    "Bie ji lei",
+    "集部",
+    "别集類"
+  ],
+  "lc_1letter_facet": [
+    "A - General Works"
+  ],
+  "lc_rest_facet": [
+    "AC - Collections Works"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "A - General Works"
+  ],
+  "call_number_full_facet": [
+    "AC - Collections Works"
+  ],
+  "related_name_json_1display": [
+    "{\"Chuan xi\":[\"Xu, Ai, 1487-1517\"],\"傳習\":[\"徐愛, 1487-1517\"],\"Qi lu\":[\"Xue, Kan, -1545\"],\"葺錄\":[\"薛侃, d. 1545\"],\"Bian ci\":[\"Qian, Dehong, 1497-1574\"],\"編次\":[\"錢德洪, 1497-1574\"],\"Zeng qi,\":[\"Wang, Ji, 1498-1583\"],\"增葺\":[\"王畿, 1498-1583\"],\"Jiao yue\":[\"Tang, Yaochen\"],\"校閱\":[\"唐堯臣\"],\"Ke\":[\"Guo, Chaobin, 1513-1585\"],\"刻\":[\"郭朝賓, 1513-1585\"],\"Related name\":[\"Chinese Rare Books Project\"]}"
+  ],
+  "oclc_s": [
+    "51791351"
+  ],
+  "standard_no_index": [
+    "3096028",
+    "NJPX89-B581",
+    "ocm51791351",
+    "3096028-princetondb"
+  ],
+  "other_version_s": [
+    "ocm51791351"
+  ],
+  "subject_era_facet": [
+    "Ming",
+    "明"
+  ],
+  "holdings_1display": [
+    "{\"22632199160006421\":{\"location_code\":\"rare$hycrare\",\"location\":\"East Asian Library Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"TD33/405xQ Oversize\",\"call_number_browse\":\"TD33/405xQ Oversize\",\"items\":[{\"holding_id\":\"22632199160006421\",\"enumeration\":\"vol.7-11\",\"id\":\"23632199140006421\",\"status_at_load\":\"1\",\"copy_number\":\"1\"},{\"holding_id\":\"22632199160006421\",\"enumeration\":\"vol.12-19\",\"id\":\"23632199130006421\",\"status_at_load\":\"1\",\"copy_number\":\"1\"},{\"holding_id\":\"22632199160006421\",\"enumeration\":\"vol.1-6\",\"id\":\"23632199150006421\",\"status_at_load\":\"1\",\"copy_number\":\"1\"},{\"holding_id\":\"22632199160006421\",\"enumeration\":\"vol.20-24\",\"id\":\"23632199120006421\",\"status_at_load\":\"1\",\"copy_number\":\"1\"}],\"location_has\":[\"Vol.1-v.24\"],\"supplements\":[null],\"indexes\":[null]}}"
+  ],
+  "location_code_s": [
+    "rare$hycrare"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "East Asian Library Rare Books"
+  ],
+  "advanced_location_s": [
+    "rare$hycrare",
+    "Special Collections"
+  ],
+  "name_title_browse_s": [
+    "Wang, Yangming, 1472-1529. Wang Wencheng gong quan shu : san shi ba juan",
+    "王陽明, 1472-1529. 王文成公全書"
+  ],
+  "call_number_display": [
+    "Oversize TD33/405xQ"
+  ],
+  "call_number_browse_s": [
+    "TD33/405xQ Oversize"
+  ],
+  "call_number_locator_display": [
+    "TD33/405xQ"
+  ],
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53816995370006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}",
+    "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53816995390006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ],
+  "access_facet": [
+    "Online",
+    "In the Library"
+  ]
 }
 ]
