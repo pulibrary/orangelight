@@ -51,29 +51,8 @@ module Requests
       patron[:source]
     end
 
-    def campus_authorized
-      # Folks with a netids are allowed to be on campus, but guests are not yet
-      patron[:campus_authorized] || (!guest? && !barcode_provider? && barcode.present?)
-    end
-
-    def eligible_to_pickup?
-      barcode.present? && (campus_authorized || covid_trained?)
-    end
-
     def eligible_for_library_services?
       barcode.present?
-    end
-
-    def pick_up_only?
-      !campus_authorized && patron[:campus_authorized_category] == "trained"
-    end
-
-    def covid_trained?
-      campus_authorized || patron[:campus_authorized_category] == "trained"
-    end
-
-    def training_eligable?
-      ["staff", "faculty", "student"].include?(status)
     end
 
     def undergraduate?
