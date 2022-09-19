@@ -94,12 +94,6 @@ en:
       brief_msg: "Requests for pick-up typically take 2 business days to process."
       email_conf_msg: "Your request to pick this item up has been received. We will process the requests as soon as possible, but given the demand and the current circumstances some delay may occur. You will receive an email when the book is available for pick-up."
       access_msg: 'Access Users must obtain a pass to enter the Library.'
-      email_covid_msg: "When picking up and/or dropping off your books: 
-        <ul>
-          <li>please do so promptly</li>
-          <li>remain only in the designated pick-up area</li> 
-        </ul>
-        Please plan to limit your number of trips to the Library. We appreciate your help in our efforts to slow the spread of Covid-19."
     on_order:
       email: "fstcirc@princeton.edu"
       email_subject: "On Order Request"
@@ -184,8 +178,7 @@ en:
       request_label: "Help Me Get It"
       email_subject: "Help Me Get It Confirmation"
       brief_msg:
-        # full_access: "This item is not accessible to any patron.  Library staff will work to try to get you access to a copy of the desired material."
-        full_access_html: '<p>This item is temporarily not accessible. Library staff will work to try to get you access to a copy of the desired material.</p>'
+        library_closed_html: '<p>This item is temporarily not accessible. Library staff will work to try to get you access to a copy of the desired material.</p>'
         pickup_access_html: "This item is only available for use in the library. Library staff will work to try to get you access to a digital copy of the desired material."
         digital_access_html: "This item is only available for pick-up or in library use. Library staff will work to try to get you access to a digital copy of the desired material."
         cas_user_no_barcode_no_choice_msg_html: "Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material."

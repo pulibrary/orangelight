@@ -18,7 +18,7 @@ describe Requests::RequestController, type: :controller, vcr: { cassette_name: '
   end
 
   describe 'GET #generate' do
-    context "An campus authorized user" do
+    context "An valid user" do
       before do
         sign_in(user)
         stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")

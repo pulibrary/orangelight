@@ -4,9 +4,6 @@ require 'rails_helper'
 
 RSpec.describe AccountController do
   let(:valid_patron_response) { File.open(fixture_path + '/bibdata_patron_response.json') }
-  let(:campus_authorized_patron) { File.open(fixture_path + '/bibdata_patron_auth_response.json') }
-  let(:campus_unauthorized_patron) { File.open(fixture_path + '/bibdata_patron_unauth_response.json') }
-  let(:campus_trained_patron) { File.open(fixture_path + '/bibdata_patron_trained_response.json') }
   let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
   let(:verify_user_response) { File.open(fixture_path + '/ill_verify_user_response.json') }
   let(:current_illiad_user_uri) { "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent" }
@@ -169,19 +166,11 @@ RSpec.describe AccountController do
     let(:valid_alma_user) { FactoryBot.create(:alma_patron) }
     let(:valid_cas_user) { FactoryBot.create(:valid_princeton_patron) }
 
-    it 'Redirects to Borrow Direct for valid cas user authorized to be on campus' do
+    it 'Redirects to Borrow Direct for valid cas user' do
       sign_in(valid_cas_user)
       valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: campus_authorized_patron, headers: {})
-      get :borrow_direct_redirect
-      expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
-    end
-    it 'Redirects to Borrow Direct for valid cas user who has taken training to be on campus' do
-      sign_in(valid_cas_user)
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
-      stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: campus_trained_patron, headers: {})
+        .to_return(status: 200, body: valid_patron_response, headers: {})
       get :borrow_direct_redirect
       expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
     end
@@ -190,7 +179,7 @@ RSpec.describe AccountController do
       sign_in(valid_cas_user)
       valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: campus_authorized_patron, headers: {})
+        .to_return(status: 200, body: valid_patron_response, headers: {})
       query = 'a book title'
       get :borrow_direct_redirect, params: { q: query }
       expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
@@ -201,7 +190,7 @@ RSpec.describe AccountController do
       sign_in(valid_cas_user)
       valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
       stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: campus_authorized_patron, headers: {})
+        .to_return(status: 200, body: valid_patron_response, headers: {})
       query = 'a book title'
       get :borrow_direct_redirect, params: { query: query }
       expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
