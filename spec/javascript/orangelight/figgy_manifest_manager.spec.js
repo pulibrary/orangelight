@@ -1,5 +1,4 @@
-import { exportedForTesting } from 'orangelight/figgy_manifest_manager';
-const { FiggyViewer } = exportedForTesting;
+import { FiggyViewer } from 'orangelight/figgy_manifest_manager';
 
 describe('RelatedRecords', function() {
     afterEach(jest.clearAllMocks);
