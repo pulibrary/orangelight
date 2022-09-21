@@ -266,8 +266,4 @@ class FiggyManifestManager {
   }
 }
 
-export default FiggyManifestManager;
-
-export const exportedForTesting = {
-  FiggyViewer
-};
+export {FiggyManifestManager, FiggyViewer};
