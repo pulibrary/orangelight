@@ -132,7 +132,7 @@ module Requests
       end
 
       def auth_user?
-        cas_provider? || barcode_provider? || alma_provider?
+        cas_provider? || alma_provider?
       end
   end
 end

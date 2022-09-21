@@ -6,7 +6,6 @@ RSpec.describe SessionsController do
   let(:valid_netid_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response.json')).with_indifferent_access }
   let(:expired_netid_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_expired.json')).with_indifferent_access }
   let(:guest_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_guest.json')).with_indifferent_access }
-  let(:valid_barcode_user) { FactoryBot.create(:guest_patron, username: 'Student') }
 
   before { request.env['devise.mapping'] = Devise.mappings[:user] }
 
@@ -15,11 +14,6 @@ RSpec.describe SessionsController do
       sign_in FactoryBot.create(:valid_princeton_patron)
       delete :destroy
       expect(response).to redirect_to(Rails.configuration.x.after_sign_out_url)
-    end
-    it 'barcode user redirects to catalog home page' do
-      sign_in FactoryBot.create(:guest_patron)
-      delete :destroy
-      expect(response).to redirect_to(root_url)
     end
     it 'alma user redirects to catalog home page' do
       sign_in FactoryBot.create(:alma_patron)

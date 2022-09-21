@@ -166,7 +166,6 @@ RSpec.describe AccountController do
 
   describe '#borrow_direct_redirect' do
     let(:guest_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_guest.json')).with_indifferent_access }
-    let(:valid_barcode_user) { FactoryBot.create(:guest_patron) }
     let(:valid_alma_user) { FactoryBot.create(:alma_patron) }
     let(:valid_cas_user) { FactoryBot.create(:valid_princeton_patron) }
 
@@ -211,14 +210,6 @@ RSpec.describe AccountController do
     it 'Redirects to CAS login page for non-logged in user' do
       get :borrow_direct_redirect
       expect(response.location).to match(user_cas_omniauth_authorize_path)
-    end
-    it 'Redirects to Home page for ineligible barcode only user' do
-      sign_in(valid_barcode_user)
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_barcode_user.uid}"
-      stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: valid_patron_response, headers: {})
-      get :borrow_direct_redirect
-      expect(response).to redirect_to(root_url)
     end
     it 'Redirects to Home page for ineligible alma user' do
       sign_in(valid_alma_user)
