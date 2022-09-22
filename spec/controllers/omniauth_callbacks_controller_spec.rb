@@ -60,7 +60,7 @@ RSpec.describe Users::OmniauthCallbacksController do
       before do
         stub_request(:post, expected_url)
           .to_return(status: 400)
-        controller.request.env['omniauth.auth'] =  {
+        controller.request.env['omniauth.auth'] = {
           "description": "Bad Request\n\n"
         }
       end
