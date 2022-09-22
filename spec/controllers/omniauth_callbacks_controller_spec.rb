@@ -54,5 +54,22 @@ RSpec.describe Users::OmniauthCallbacksController do
         end
       end
     end
+    context "Invalid Alma User" do
+      let(:expected_url) { 'https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/Student?op=auth&password=' }
+      let(:user) { FactoryBot.create(:alma_patron) }
+      before do
+        stub_request(:post, expected_url)
+          .to_return(status: 400)
+        controller.request.env['omniauth.auth'] =  {
+          "description": "Bad Request\n\n"
+        }
+      end
+      it 'invalid patron redirects to login page' do
+        allow(Bibdata).to receive(:get_patron) { {} }
+        get :alma, params: { username: user.username, password: '' }
+
+        expect(response).to redirect_to(user_alma_omniauth_authorize_path)
+      end
+    end
   end
 end
