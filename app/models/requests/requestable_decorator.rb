@@ -2,12 +2,12 @@
 module Requests
   class RequestableDecorator
     delegate :system_id, :aeon_mapped_params, :services, :charged?, :annex?, :lewis?, :pageable_loc?, :traceable?, :on_reserve?,
-             :ask_me?, :aeon_request_url, :location, :temp_loc?, :in_resource_sharing?, :call_number, :eligible_to_pickup?, :eligible_for_library_services?,
+             :ask_me?, :aeon_request_url, :location, :temp_loc?, :in_resource_sharing?, :call_number, :eligible_for_library_services?,
              :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :open_libraries, :item_data?, :recap_edd?, :user_barcode, :clancy?,
              :holding, :item_location_code, :item?, :item, :partner_holding?, :status, :status_label, :use_restriction?, :library_code, :enum_value, :item_at_clancy?,
              :cron_value, :illiad_request_parameters, :location_label, :online?, :aeon?, :borrow_direct?, :patron, :held_at_marquand_library?,
              :ill_eligible?, :scsb_in_library_use?, :pick_up_locations, :on_shelf?, :pending?, :recap?, :recap_pf?, :illiad_request_url, :available?,
-             :campus_authorized, :on_order?, :urls, :in_process?, :alma_managed?, :covid_trained?, :title, :map_url, :cul_avery?, :cul_music?,
+             :on_order?, :urls, :in_process?, :alma_managed?, :title, :map_url, :cul_avery?, :cul_music?,
              :pick_up_location_code, :resource_shared?, :enumerated?, to: :requestable
     delegate :content_tag, :hidden_field_tag, :concat, to: :view_context
 
@@ -36,17 +36,17 @@ module Requests
     end
 
     def pick_up?
-      return false if !eligible_to_pickup? || (!patron.cas_provider? && !off_site?)
+      return false if !eligible_for_library_services? || (!patron.cas_provider? && !off_site?)
       item_data? && (on_shelf? || recap? || annex?) && circulates? && !holding_library_in_library_only? && !scsb_in_library_use? && !request_status?
     end
 
     def fill_in_pick_up?
-      return false unless eligible_to_pickup?
+      return false unless eligible_for_library_services?
       !item_data? || pick_up?
     end
 
     def request?
-      return false unless eligible_to_pickup?
+      return false unless eligible_for_library_services?
       request_status?
     end
 
@@ -56,14 +56,13 @@ module Requests
 
     def help_me?
       return false unless eligible_for_library_services?
-      (request_status? && !eligible_to_pickup?) || # a requestable item that the user can not pick up
-        ask_me? || # recap scsb in library only items
+      ask_me? || # recap scsb in library only items
         (!located_in_an_open_library? && !aeon? && !resource_shared?) # item in a closed library that is not aeon managed or resource shared
     end
 
     def will_submit_via_form?
       return false unless eligible_for_this_item?
-      digitize? || pick_up? || scsb_in_library_use? || (ill_eligible? && patron.covid_trained?) || on_order? || in_process? || traceable? || off_site? || help_me?
+      digitize? || pick_up? || scsb_in_library_use? || ill_eligible? || on_order? || in_process? || traceable? || off_site? || help_me?
     end
 
     def located_in_an_open_library?
@@ -79,7 +78,7 @@ module Requests
     end
 
     def in_library_use_required?
-      available? && (!held_at_marquand_library? || !item_at_clancy? || clancy?) && ((off_site? && !circulates?) || holding_library_in_library_only? || scsb_in_library_use?) && campus_authorized
+      available? && (!held_at_marquand_library? || !item_at_clancy? || clancy?) && ((off_site? && !circulates?) || holding_library_in_library_only? || scsb_in_library_use?)
     end
 
     def off_site?
@@ -138,12 +137,12 @@ module Requests
     end
 
     def help_me_message
-      key = if patron.campus_authorized || !located_in_an_open_library? || requestable.scsb_in_library_use?
-              "full_access"
+      key = if !located_in_an_open_library? || requestable.scsb_in_library_use?
+              "library_closed"
+            elsif eligible_for_library_services?
+              "pickup_access"
             elsif !eligible_for_library_services?
               "cas_user_no_barcode_no_choice_msg"
-            elsif eligible_to_pickup?
-              "pickup_access"
             else
               "digital_access"
             end
