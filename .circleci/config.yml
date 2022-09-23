@@ -14,7 +14,7 @@ executors:
           SOLR_URL: http://solr:SolrRocks@localhost:8983/solr/orangelight-core-test
           NVM_HOME: ~/.nvm
           COVERALLS_PARALLEL: true
-      - image: postgres:10
+      - image: postgres:13
         environment:
           POSTGRES_USER: orangelight
           POSTGRES_DB: orangelight_test

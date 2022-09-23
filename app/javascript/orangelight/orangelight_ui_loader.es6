@@ -1,7 +1,7 @@
 import AvailabilityUpdater from '../orangelight/availability.es6'
 import BookCoverManager from '../orangelight/book_covers.es6'
 import BookmarkAllManager from '../orangelight/bookmark_all.es6'
-import FiggyManifestManager from '../orangelight/figgy_manifest_manager'
+import {FiggyManifestManager} from '../orangelight/figgy_manifest_manager'
 import GoogleBooksSnippets from '../orangelight/google_books_snippets.es6'
 import RelatedRecordsDisplayer from '../orangelight/related_records.es6'
 import { handleBtnKeyDown } from './accessible_facets'

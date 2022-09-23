@@ -1,5 +1,5 @@
 import loader from 'orangelight/orangelight_ui_loader'
-import FiggyManifestManager from 'orangelight/figgy_manifest_manager'
+import {FiggyManifestManager} from 'orangelight/figgy_manifest_manager'
 
 describe('OrangelightUiLoader', function() {
   afterEach(jest.clearAllMocks);

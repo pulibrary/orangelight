@@ -8,11 +8,13 @@
 }
 
 .search-subject:hover,
+.search-title:hover,
 .search-name-title:hover {
   color: darken($orange, 10%);
 }
 
 .search-subject:active,
+.search-title:active,
 .search-name-title:active {
   text-decoration: none;
 }
