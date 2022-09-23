@@ -51,7 +51,9 @@ RSpec.describe Bibdata do
         requests_total: 0,
         loans_total: 0,
         fees_total: 0.0,
-        active_email: "bbird@SCRUBBED_princeton.edu"
+        active_email: "bbird@SCRUBBED_princeton.edu",
+        campus_authorized: false,
+        campus_authorized_category: "none"
       }
     end
     let(:headers) do

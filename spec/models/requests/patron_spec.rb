@@ -54,7 +54,9 @@ describe Requests::Patron do
         expect(patron.active_email).to eq('foo@bar.com')
         expect(patron.last_name).to eq('foobar')
         expect(patron.barcode).to eq('ACCESS')
-        expect(patron.eligible_for_library_services?).to be_truthy
+        expect(patron.campus_authorized).to be_falsey
+        expect(patron.training_eligable?).to be_falsey
+        expect(patron.eligible_to_pickup?).to be_falsey
       end
     end
   end
@@ -70,10 +72,12 @@ describe Requests::Patron do
         expect(patron).to be_truthy
         expect(patron.active_email).to eq('a@b.com')
         expect(patron.netid).to eq('jstudent')
+        expect(patron.campus_authorized).to be_truthy
         expect(patron.telephone).to eq('111-222-3333')
         expect(patron.status).to eq('student')
         expect(patron.pustatus).to eq('undergraduate')
-        expect(patron.eligible_for_library_services?).to be_truthy
+        expect(patron.training_eligable?).to be_truthy
+        expect(patron.eligible_to_pickup?).to be_truthy
       end
     end
   end
@@ -89,7 +93,9 @@ describe Requests::Patron do
         expect(patron).to be_truthy
         expect(patron.active_email).to eq('a@b.com')
         expect(patron.netid).to be_nil
-        expect(patron.eligible_for_library_services?).to be_truthy
+        expect(patron.campus_authorized).to be_truthy
+        expect(patron.training_eligable?).to be_falsey
+        expect(patron.eligible_to_pickup?).to be_truthy
       end
     end
   end

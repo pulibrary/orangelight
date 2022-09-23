@@ -86,13 +86,13 @@ module Requests
       def calculate_recap_services
         if !requestable.item_data?
           ['recap_no_items']
-        elsif (requestable.scsb_in_library_use? && requestable.item[:collection_code] != "MR") || (!requestable.circulates? && !requestable.recap_edd?) || requestable.recap_pf?
+        elsif (requestable.scsb_in_library_use? && requestable.item[:collection_code] != "MR" && requestable.campus_authorized) || (!requestable.circulates? && !requestable.recap_edd?) || requestable.recap_pf?
           ['recap_in_library']
-        elsif requestable.scsb_in_library_use? && !requestable.eligible_for_library_services?
+        elsif requestable.scsb_in_library_use? && !requestable.eligible_to_pickup?
           ['ask_me']
         elsif auth_user?
           services = []
-          services << 'recap' if !requestable.holding_library_in_library_only? && requestable.circulates? && requestable.eligible_for_library_services?
+          services << 'recap' if !requestable.holding_library_in_library_only? && requestable.circulates? && requestable.eligible_to_pickup?
           services << 'recap_edd' if requestable.recap_edd?
           services
         end

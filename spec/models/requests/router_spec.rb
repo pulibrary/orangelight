@@ -71,7 +71,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           preservation?: false, annex?: false,
           plasma?: false, lewis?: false, recap?: false, held_at_marquand_library?: false,
           item_data?: false, recap_edd?: false, pageable?: false, scsb_in_library_use?: false, item: item,
-          library_code: 'ABC', eligible_for_library_services?: true }
+          library_code: 'ABC' }
       end
       let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
 
@@ -158,10 +158,19 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           stubbed_questions[:holding_library_in_library_only?] = false
           stubbed_questions[:ask_me?] = true
           stubbed_questions[:circulates?] = true
+          stubbed_questions[:campus_authorized] = true
+          stubbed_questions[:eligible_to_pickup?] = true
           stubbed_questions[:recap_pf?] = false
         end
         it "returns recap_edd in the services" do
           expect(router.calculate_services).to contain_exactly('recap_edd', 'recap')
+        end
+        context "user not authorized for campus" do
+          it "returns nothing in the services" do
+            stubbed_questions[:campus_authorized] = false
+            stubbed_questions[:eligible_to_pickup?] = false
+            expect(router.calculate_services).to contain_exactly('recap_edd')
+          end
         end
         context "unauthorized user" do
           let(:user) { FactoryBot.build(:unauthenticated_patron) }
@@ -213,7 +222,8 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           before do
             stubbed_questions[:scsb_in_library_use?] = true
             stubbed_questions[:recap_edd?] = false
-            stubbed_questions[:eligible_for_library_services?] = false
+            stubbed_questions[:campus_authorized] = false
+            stubbed_questions[:eligible_to_pickup?] = false
           end
           it "returns ask_me in the services" do
             expect(router.calculate_services).to eq(["ask_me"])
@@ -225,6 +235,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           before do
             stubbed_questions[:scsb_in_library_use?] = true
             stubbed_questions[:recap_edd?] = false
+            stubbed_questions[:campus_authorized] = true
           end
           it "returns recap in the services" do
             expect(router.calculate_services).to eq(["recap"])
