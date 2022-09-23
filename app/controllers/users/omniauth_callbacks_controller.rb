@@ -27,26 +27,8 @@ module Users
 
     private
 
-      def patron_valid?
-        !patron.nil? && last_name_match?(@user.username, patron['last_name']) && @user.valid?
-      end
-
       def omniauth_origin
         request.env['omniauth.origin']
-      end
-
-      def last_name_match?(username, last_name)
-        !last_name.nil? && username.casecmp(last_name).zero?
-      end
-
-      def netid_patron?(patron)
-        return false if patron['expire_date'].nil?
-        !patron['netid'].nil? && Date.parse(patron['expire_date']) > Time.zone.today
-      end
-
-      def flash_validation
-        flash[:barcode] = @user.errors[:uid] unless @user.errors[:uid].empty?
-        flash[:last_name] = @user.errors[:username] unless @user.errors[:username].empty?
       end
 
       # Accesses the access token passed within the request headers

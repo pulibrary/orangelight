@@ -6,13 +6,14 @@ describe Requests::RequestDecorator do
 
   subject(:decorator) { described_class.new(request, view) }
   let(:user) { FactoryBot.build(:user) }
-  let(:valid_patron) do
+  let(:test_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
       "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
       "patron_id" => "99999", "active_email" => "foo@princeton.edu",
       ldap: ldap }.with_indifferent_access
   end
-  let(:patron) { Requests::Patron.new(user: user, session: {}, patron: valid_patron) }
+  let(:campus_unauthorized_patron) { File.open(fixture_path + '/bibdata_patron_unauth_response.json') }
+  let(:patron) { Requests::Patron.new(user: user, session: {}, patron: test_patron) }
 
   let(:requestable) { instance_double(Requests::RequestableDecorator, stubbed_questions) }
   let(:request) do
@@ -40,6 +41,13 @@ describe Requests::RequestDecorator do
       expect(decorator.patron_message).to eq ""
     end
 
+    context "Guest user" do
+      let(:test_patron) { FactoryBot.create(:unauthorized_princeton_patron) }
+      it 'shows the message for the campus unauthorized patron' do
+        expect(decorator.patron_message).to eq "<div class='alert alert-warning'>You are not currently authorized for on-campus services at the Library. Please send an inquiry to <a href='mailto:refdesk@princeton.edu'>refdesk@princeton.edu</a> if you believe you should have access to these services.</div>"
+      end
+    end
+
     context "student ldap status" do
       let(:ldap) { { status: 'student', pustatus: "undergraduate" } }
       it 'does not show the message for the campus unauthorized patron' do
@@ -62,7 +70,7 @@ describe Requests::RequestDecorator do
     end
 
     context "staff with access to campus" do
-      let(:valid_patron) do
+      let(:test_patron) do
         { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
           "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
           "patron_id" => "99999", "active_email" => "foo@princeton.edu",
