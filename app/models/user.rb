@@ -52,20 +52,6 @@ class User < ApplicationRecord
     end
   end
 
-  # Retrieves a user authenticated using a barcode
-  # @param access_token [] access token containing the barcode accessed using #uid
-  # @return [User,nil]
-  def self.from_barcode(access_token)
-    User.where(provider: access_token.provider, uid: access_token.uid,
-               username: access_token.info.last_name).first_or_initialize do |user|
-      user.uid = access_token.uid
-      user.username = access_token.info.last_name
-      user.email = access_token.uid
-      user.password = SecureRandom.urlsafe_base64
-      user.provider = access_token.provider
-    end
-  end
-
   # Retrieves a user authenticated using an Alma account
   # @param access_token [] access token containing the barcode accessed using #uid
   # @return [User,nil]

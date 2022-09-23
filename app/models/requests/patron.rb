@@ -53,7 +53,7 @@ module Requests
 
     def campus_authorized
       # Folks with a netids are allowed to be on campus, but guests are not yet
-      patron[:campus_authorized] || (!guest? && !barcode_provider? && barcode.present?)
+      patron[:campus_authorized] || (!guest? && barcode.present?)
     end
 
     def eligible_to_pickup?
