@@ -1530,7 +1530,8 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     let(:valid_patron) do
       { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
         "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
-        "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
+        "patron_id" => "99999", "active_email" => "foo@princeton.edu",
+        campus_authorized: true, campus_authorized_category: "full" }.with_indifferent_access
     end
     let(:marquand) { fixture('alma/9956200533506421.json') }
     let(:mfhd_availability) { fixture('/availability_2219823460006421.json') }

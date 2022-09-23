@@ -132,7 +132,11 @@ module Requests
 
       def authorize_patron(user)
         patron = Patron.new(user: user, session: session)
-        flash.now[:error] = patron.errors.join(", ") if patron.errors.present?
+        if patron.errors.present?
+          flash.now[:error] = patron.errors.join(", ")
+          # elsif !patron.guest? && !patron.campus_authorized
+          #   flash[:alert] = "You are not currently eligible for on-campus services at the Library. Please consult with your Department if you believe you should have access to these services."
+        end
         patron
       end
 

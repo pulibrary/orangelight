@@ -8,7 +8,8 @@ describe Requests::Submissions::HelpMe do
       "netid" => "jstudent",
       "barcode" => "22101007797777",
       "email" => "foo@princeton.edu",
-      "source" => "pulsearch"
+      "source" => "pulsearch",
+      "campus_authorized" => true
     }.with_indifferent_access
   end
   let(:patron) { Requests::Patron.new(user: {}, patron: user_info) }
@@ -92,6 +93,30 @@ describe Requests::Submissions::HelpMe do
       .to_return(status: 200, body: responses[:note_created], headers: {})
     expect { help_me.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
     expect(help_me.errors.count).to eq(0)
+  end
+
+  context "User does not have access to pickup" do
+    let(:user_info) do
+      {
+        "netid" => "jstudent",
+        "barcode" => nil,
+        "email" => "foo@princeton.edu",
+        "source" => "pulsearch"
+      }.with_indifferent_access
+    end
+
+    it 'Help Me successful with different note' do
+      stub_request(:get, patron_url)
+        .to_return(status: 200, body: responses[:found], headers: {})
+      stub_request(:post, transaction_url)
+        .with(body: hash_including("Username" => "jstudent", "LoanTitle" => "County and city data book.", "ISSN" => "9780544343757"))
+        .to_return(status: 200, body: responses[:transaction_created], headers: {})
+      stub_request(:post, transaction_note_url)
+        .with(body: hash_including("Note" => "Help Me Get It Request: User does not have access to physical item pickup"))
+        .to_return(status: 200, body: responses[:note_created], headers: {})
+      expect { help_me.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
+      expect(help_me.errors.count).to eq(0)
+    end
   end
 
   it 'when illiad errors it returns an error' do
