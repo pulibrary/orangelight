@@ -1,0 +1,87 @@
+{
+  "id": "SCSB-7935196",
+  "numeric_id_b": false,
+  "other_id_s": [
+    ".b106574619"
+  ],
+  "author_citation_display": [
+    "Freemasons"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Freemasons\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Freemasons. Santo Domingo. Logia Cuna de América, no. 2."
+  ],
+  "title_display": "Analectas; periódico ecléctico de difusión cultural.",
+  "title_t": [
+    "Analectas; periódico ecléctico de difusión cultural."
+  ],
+  "title_citation_display": [
+    "Analectas; periódico ecléctico de difusión cultural"
+  ],
+  "compiled_created_t": [
+    "Analectas; periódico ecléctico de difusión cultural."
+  ],
+  "pub_created_display": [
+    "Santo Domingo."
+  ],
+  "pub_created_s": [
+    "Santo Domingo."
+  ],
+  "pub_citation_display": [
+    "Santo Domingo"
+  ],
+  "description_display": [
+    "7 v. 36 cm."
+  ],
+  "description_t": [
+    "7 v. 36 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "7 v."
+  ],
+  "notes_display": [
+    "Microfilm.",
+    "Weekly.",
+    "Issued by the Club masónico Cuna de América.",
+    "No more published?"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Freemasons. Santo Domingo. Logia Cuna de América, no. 2.\"]}",
+  "lccn_display": [
+    "44017511"
+  ],
+  "lccn_s": [
+    "44017511"
+  ],
+  "holdings_1display": "{\"8076325\":{\"location_code\":\"scsbnypl\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"*DS+ (Analectas)\",\"call_number_browse\":\"*DS+ (Analectas)\",\"items\":[{\"holding_id\":\"8076325\",\"enumeration\":\"v. 1-4 (July 1933-June 1934)\",\"id\":\"13278989\",\"status_at_load\":\"Available\",\"barcode\":\"33433088591924\",\"copy_number\":\"1\",\"use_statement\":\"In Library Use\",\"storage_location\":\"RECAP\",\"cgd\":\"Shared\",\"collection_code\":\"NA\"},{\"holding_id\":\"8076325\",\"enumeration\":\"v. 5 (July-Sept. 1934)\",\"id\":\"13278990\",\"status_at_load\":\"Available\",\"barcode\":\"33433088591932\",\"copy_number\":\"1\",\"use_statement\":\"In Library Use\",\"storage_location\":\"RECAP\",\"cgd\":\"Shared\",\"collection_code\":\"NA\"}],\"location_has\":[\"v. 1-4 (July 1933-June 1934), v. 5 (July-Sept. 1934)\"],\"supplements\":[null],\"indexes\":[null]}}",
+  "recap_notes_display": [
+    "N - S"
+  ],
+  "location_code_s": [
+    "scsbnypl"
+  ],
+  "location": [
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage"
+  ],
+  "advanced_location_s": [
+    "scsbnypl",
+    "ReCAP"
+  ],
+  "call_number_display": [
+    "*DS+ (Analectas)"
+  ],
+  "call_number_browse_s": [
+    "*DS+ (Analectas)"
+  ]
+}

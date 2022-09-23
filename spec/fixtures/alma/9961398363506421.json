@@ -1,0 +1,118 @@
+{
+  "id": "9961398363506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+    "Spada Pintarelli, Silvia"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Spada Pintarelli, Silvia\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Spada Pintarelli, Silvia"
+  ],
+  "title_display": "Die Familie Menz und die Stadt Bozen = La famiglia Menz e la città di Bolzano / [Kuratorin/ a cura di: Silvia Spada Pintarelli].",
+  "title_t": [
+    "Die Familie Menz und die Stadt Bozen = La famiglia Menz e la città di Bolzano / [Kuratorin/ a cura di: Silvia Spada Pintarelli]."
+  ],
+  "title_citation_display": [
+    "Die Familie Menz und die Stadt Bozen = La famiglia Menz e la città di Bolzano"
+  ],
+  "compiled_created_t": [
+    "Die Familie Menz und die Stadt Bozen = La famiglia Menz e la città di Bolzano / [Kuratorin/ a cura di: Silvia Spada Pintarelli]."
+  ],
+  "pub_created_display": [
+    "Bozen : Handels-, Industrie-, Handwerks- und Landwirtschaftskammer, 2009."
+  ],
+  "pub_created_s": [
+    "Bozen : Handels-, Industrie-, Handwerks- und Landwirtschaftskammer, 2009."
+  ],
+  "pub_citation_display": [
+    "Bozen: Handels-, Industrie-, Handwerks- und Landwirtschaftskammer"
+  ],
+  "pub_date_display": [
+    "2009"
+  ],
+  "pub_date_start_sort": 2009,
+  "cataloged_tdt": "2010-06-14T10:59:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "59 p. : ill. (chiefly col.) ; 27 cm."
+  ],
+  "description_t": [
+    "59 p. : ill. (chiefly col.) ; 27 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "59 p."
+  ],
+  "geocode_display": [
+    "Italy"
+  ],
+  "series_display": [
+    "Heft = Quaderno / Merkantilmuseum Bozen ; 1.",
+    "Heft = Quaderno / Merkantilmuseum Bozen ; 1"
+  ],
+  "more_in_this_series_t": [
+    "Heft = Quaderno / Merkantilmuseum Bozen"
+  ],
+  "notes_display": [
+    "Published on the occasion of the permanent exhibition held in Bolzano, Italy, Merkantilmuseum.",
+    "Title and number of series appear on cover."
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references (p. 56)."
+  ],
+  "language_display": [
+    "Text in German and Italian."
+  ],
+  "language_facet": [
+    "German",
+    "Italian"
+  ],
+  "language_code_s": [
+    "ger",
+    "ita"
+  ],
+  "language_iana_s": [
+    "de"
+  ],
+  "lc_subject_display": [
+    "Menz family—Art patronage—Exhibitions",
+    "Art patrons—Italy—Bolzano (Trentino-Alto Adige)—Exhibitions",
+    "Art—Italy—Bolzano (Trentino-Alto Adige)—Exhibitions"
+  ],
+  "subject_facet": [
+    "Menz family—Art patronage—Exhibitions",
+    "Art patrons—Italy—Bolzano (Trentino-Alto Adige)—Exhibitions",
+    "Art—Italy—Bolzano (Trentino-Alto Adige)—Exhibitions"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Spada Pintarelli, Silvia\"]}",
+  "oclc_s": [
+    "650437639"
+  ],
+  "other_version_s": [
+    "ocn650437639"
+  ],
+  "holdings_1display": "{\"22669331360006421\":{\"location_code\":\"marquand$pj\",\"location\":\"Remote Storage (ReCAP): Marquand Library Use Only\",\"library\":\"Marquand Library\",\"call_number\":\"N5273.2.M47 F36 2009\",\"call_number_browse\":\"N5273.2.M47 F36 2009\",\"items\":[{\"holding_id\":\"22669331360006421\",\"id\":\"23669331350006421\",\"status_at_load\":\"1\",\"barcode\":\"32101080252115\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "marquand$pj"
+  ],
+  "location": [
+    "Marquand Library"
+  ],
+  "location_display": [
+    "Remote Storage (ReCAP): Marquand Library Use Only"
+  ],
+  "advanced_location_s": [
+    "marquand$pj",
+    "Marquand Library"
+  ],
+  "call_number_display": [
+    "N5273.2.M47 F36 2009"
+  ],
+  "call_number_browse_s": [
+    "N5273.2.M47 F36 2009"
+  ],
+  "call_number_locator_display": [
+    "N5273.2.M47 F36 2009"
+  ]
+}

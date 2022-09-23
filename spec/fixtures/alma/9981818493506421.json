@@ -1,0 +1,165 @@
+{
+  "id": "9981818493506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Jizang, 549-623",
+    "吉藏, 549-623"
+  ],
+  "author_citation_display": [
+    "Jizang",
+    "Ishizuka, Harumichi",
+    "Akao, Eikei",
+    "Kyōto Kokuritsu Hakubutsukan"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"吉藏\",\"Ishizuka, Harumichi\",\"石塚晴通\",\"Akao, Eikei\",\"赤尾栄慶\"],\"translators\":[],\"editors\":[\"Kyōto Kokuritsu Hakubutsukan\",\"京都国立博物館\"],\"compilers\":[],\"primary_author\":\"Jizang\"}",
+  "author_s": [
+    "Jizang, 549-623",
+    "吉藏, 549-623",
+    "Ishizuka, Harumichi, 1942-",
+    "石塚晴通, 1942-",
+    "Akao, Eikei, 1954-",
+    "赤尾栄慶, 1954-",
+    "Kyōto Kokuritsu Hakubutsukan",
+    "京都国立博物館"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "uniform_title_s": [
+    "Jing ming xuan lun",
+    "浄名玄論"
+  ],
+  "title_display": "Jōmyō genron / Kyōto Kokuritsu Hakubutsukan hen ; kaisetsu Ishihara Harumichi (Hokkaidō Daigaku Meiyo Kyōju), Akao Eikei (Kyōto Kokuritsu Hakubutsukan Gakugeibu Jōseki Kenkyūin).",
+  "title_vern_display": "浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授), 赤尾栄慶 (京都国立博物館学芸部上席研究員).",
+  "title_t": [
+    "Jōmyō genron / Kyōto Kokuritsu Hakubutsukan hen ; kaisetsu Ishihara Harumichi (Hokkaidō Daigaku Meiyo Kyōju), Akao Eikei (Kyōto Kokuritsu Hakubutsukan Gakugeibu Jōseki Kenkyūin)."
+  ],
+  "title_citation_display": [
+    "Jōmyō genron",
+    "浄名玄論"
+  ],
+  "compiled_created_t": [
+    "Jōmyō genron / Kyōto Kokuritsu Hakubutsukan hen ; kaisetsu Ishihara Harumichi (Hokkaidō Daigaku Meiyo Kyōju), Akao Eikei (Kyōto Kokuritsu Hakubutsukan Gakugeibu Jōseki Kenkyūin).",
+    "浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授), 赤尾栄慶 (京都国立博物館学芸部上席研究員)."
+  ],
+  "edition_display": [
+    "Shohan.",
+    "初版."
+  ],
+  "pub_created_vern_display": [
+    "東京 : 勉誠出版, 2014."
+  ],
+  "pub_created_display": [
+    "Tōkyō : Bensei Shuppan, 2014.",
+    "東京 : 勉誠出版, 2014.",
+    "©2014"
+  ],
+  "pub_created_s": [
+    "Tōkyō : Bensei Shuppan, 2014.",
+    "東京 : 勉誠出版, 2014.",
+    "©2014"
+  ],
+  "pub_citation_display": [
+    "Tōkyō: Bensei Shuppan",
+    "東京: 勉誠出版"
+  ],
+  "pub_date_display": [
+    "2014"
+  ],
+  "pub_date_start_sort": 2014,
+  "pub_date_end_sort": 706,
+  "cataloged_tdt": "2017-04-27T10:59:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "2 volumes : illustrations ; 31 cm"
+  ],
+  "description_t": [
+    "2 volumes : illustrations ; 31 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "2 volumes"
+  ],
+  "notes_display": [
+    "Facsimile reproduction of a manuscript collection of scrolls dated between 706 and Kamakura period held at Kyōto Kokuritsu Hakubutsukan.",
+    "Latter statement of responsibility from volume 1, colophon."
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references."
+  ],
+  "language_facet": [
+    "Japanese",
+    "Chinese"
+  ],
+  "language_code_s": [
+    "jpn",
+    "chi"
+  ],
+  "language_iana_s": [
+    "ja"
+  ],
+  "lc_subject_display": [
+    "Tripiṭaka. Sūtrapiṭaka. Vimalakīrtinirdeśa—Outlines, syllabi, etc",
+    "Tripiṭaka. Sūtrapiṭaka. Vimalakīrtinirdeśa—Outlines, syllabi, etc—Early works to 1800"
+  ],
+  "subject_facet": [
+    "Tripiṭaka. Sūtrapiṭaka. Vimalakīrtinirdeśa—Outlines, syllabi, etc",
+    "Tripiṭaka. Sūtrapiṭaka. Vimalakīrtinirdeśa—Outlines, syllabi, etc—Early works to 1800"
+  ],
+  "related_name_json_1display": "{\"Writer of supplementary textual content\":[\"Ishizuka, Harumichi, 1942-\",\"石塚晴通, 1942-\",\"Akao, Eikei, 1954-\",\"赤尾栄慶, 1954-\"],\"Editor\":[\"Kyōto Kokuritsu Hakubutsukan\",\"京都国立博物館\"]}",
+  "other_title_display": [
+    "Kokuhō Jōmyō genron",
+    "国宝浄名玄論",
+    "Kyōto Kokuritsu Hakubutsukan shozō kokuhō Jōmyō genron",
+    "京都国立博物館所蔵国宝浄名玄論"
+  ],
+  "alt_title_246_display": [
+    "Kokuhō Jōmyō genron",
+    "国宝浄名玄論",
+    "Kyōto Kokuritsu Hakubutsukan shozō kokuhō Jōmyō genron",
+    "京都国立博物館所蔵国宝浄名玄論"
+  ],
+  "isbn_display": [
+    "9784585220732 ((set))",
+    "4585220739 ((set))"
+  ],
+  "isbn_s": [
+    "9784585220732"
+  ],
+  "oclc_s": [
+    "1340688658"
+  ],
+  "other_version_s": [
+    "9784585220732",
+    "on1340688658"
+  ],
+  "holdings_1display": "{\"22669291080006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"BQ2215 .J59 2014\",\"call_number_browse\":\"BQ2215 .J59 2014\",\"items\":[{\"holding_id\":\"22669291080006421\",\"enumeration\":\"vol.2\",\"id\":\"23669291060006421\",\"status_at_load\":\"1\",\"barcode\":\"32101100039328\",\"copy_number\":\"0\"},{\"holding_id\":\"22669291080006421\",\"enumeration\":\"vol.1\",\"id\":\"23669291070006421\",\"status_at_load\":\"1\",\"barcode\":\"32101100036720\",\"copy_number\":\"0\"}]}}",
+  "location_code_s": [
+    "recap$pa"
+  ],
+  "location": [
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage"
+  ],
+  "advanced_location_s": [
+    "recap$pa",
+    "ReCAP"
+  ],
+  "name_uniform_title_1display": "[[\"Jizang, 549-623.\",\"Jing ming xuan lun\"],[\"吉藏, 549-623.\",\"浄名玄論\"]]",
+  "name_title_browse_s": [
+    "Jizang, 549-623. Jing ming xuan lun",
+    "吉藏, 549-623. 浄名玄論"
+  ],
+  "call_number_display": [
+    "BQ2215 .J59 2014"
+  ],
+  "call_number_browse_s": [
+    "BQ2215 .J59 2014"
+  ],
+  "call_number_locator_display": [
+    "BQ2215 .J59 2014"
+  ]
+}

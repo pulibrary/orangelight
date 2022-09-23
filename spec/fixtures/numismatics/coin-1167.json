@@ -1,0 +1,125 @@
+{
+  "id": "coin-1167",
+  "title_display": "Coin: 1167",
+  "pub_created_display": [
+    "shekel, Tyre"
+  ],
+  "call_number_display": [
+    "Coin 1167"
+  ],
+  "call_number_browse_s": [
+    "Coin 1167"
+  ],
+  "location_code_s": [
+    "rare$num"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Special Collections - Numismatics Collection"
+  ],
+  "format": [
+    "Coin"
+  ],
+  "advanced_location_s": [
+    "rare$num"
+  ],
+  "die_axis_s": [
+    "12"
+  ],
+  "size_s": [
+    "29 in mm"
+  ],
+  "weight_s": [
+    "13.86 in grams"
+  ],
+  "holdings_1display": "{\"numismatics\":{\"location\":\"Special Collections - Numismatics Collection\",\"library\":\"Special Collections\",\"location_code\":\"rare$num\",\"call_number\":\"Coin 1167\",\"call_number_browse\":\"Coin 1167\"}}",
+  "numismatic_collection_s": [
+    "Firestone"
+  ],
+  "numismatic_accession_s": [
+    "Accession number: 6, 1965-01-01, Gift of: Frederick W. Brown"
+  ],
+  "pub_date_start_sort": -79,
+  "pub_date_end_sort": -78,
+  "issue_object_type_s": [
+    "coin"
+  ],
+  "issue_denomination_s": [
+    "shekel"
+  ],
+  "issue_number_s": [
+    "616"
+  ],
+  "issue_metal_s": [
+    "Silver"
+  ],
+  "issue_era_s": [
+    "Phoenician Era of Alexander"
+  ],
+  "issue_place_s": [
+    "Tyre, Phoenicia, Syria"
+  ],
+  "issue_city_s": [
+    "Tyre"
+  ],
+  "issue_state_s": [
+    "Phoenicia"
+  ],
+  "issue_region_s": [
+    "Syria"
+  ],
+  "issue_obverse_description_s": [
+    "Melqarth, bust, right, with side burns, laureate, wearing lion skin knotted around neck; border of dots."
+  ],
+  "issue_obverse_figure_s": [
+    "Melqarth"
+  ],
+  "issue_obverse_part_s": [
+    "bust"
+  ],
+  "issue_obverse_orientation_s": [
+    "right"
+  ],
+  "issue_obverse_figure_description_s": [
+    "with side burns, laureate, wearing lion skin knotted around neck; border of dots."
+  ],
+  "issue_reverse_description_s": [
+    "Eagler, standing, left, with r. foot on beak of ship and palm branch over r. shoulder; l.  date and club, between legs Phoenician letter, r. monogram or letter; border of dots."
+  ],
+  "issue_reverse_figure_s": [
+    "Eagler"
+  ],
+  "issue_reverse_part_s": [
+    "standing"
+  ],
+  "issue_reverse_orientation_s": [
+    "left"
+  ],
+  "issue_reverse_figure_description_s": [
+    "with r. foot on beak of ship and palm branch over r. shoulder; l.  date and club, between legs Phoenician letter, r. monogram or letter; border of dots."
+  ],
+  "issue_reverse_legend_s": [
+    "ΤΥΡΟΥΙΕΡΑΣ ΚΑΙΑΣΥΛΟΥ"
+  ],
+  "issue_reverse_attributes_s": [
+    "a37, Phoenician Letter",
+    "a1167, Archaic Monogram"
+  ],
+  "issue_references_s": [
+    "BMC.Phoen Tyre 140",
+    "Sear  5191v"
+  ],
+  "issue_monogram_title_s": [
+    "Archaic Monogram",
+    "Phoenician Letter"
+  ],
+  "issue_monogram_1display": "[{\"title\":\"Archaic Monogram\",\"document_id\":\"398e7b30-1cac-4531-a3f6-95c2997324a4\"},{\"title\":\"Phoenician Letter\",\"document_id\":\"b5199e3f-9271-4e82-8779-64d3ef911189\"}]",
+  "issue_subjects_s": [
+    "Category, shield"
+  ],
+  "issue_date_s": [
+    "-79 to -78"
+  ]
+}

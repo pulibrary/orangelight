@@ -1,0 +1,92 @@
+{
+  "id": "9965749873506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Vélez, Carlos"
+  ],
+  "author_citation_display": [
+    "Vélez, Carlos"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Vélez, Carlos\"}",
+  "author_s": [
+    "Vélez, Carlos"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Searching for a modern aesthetic : from furniture to design / Carlos Velez.",
+  "title_t": [
+    "Searching for a modern aesthetic : from furniture to design / Carlos Velez."
+  ],
+  "title_citation_display": [
+    "Searching for a modern aesthetic : from furniture to design"
+  ],
+  "compiled_created_t": [
+    "Searching for a modern aesthetic : from furniture to design / Carlos Velez."
+  ],
+  "pub_created_display": [
+    "2011"
+  ],
+  "pub_created_s": [
+    "2011"
+  ],
+  "pub_date_display": [
+    "2011"
+  ],
+  "pub_date_start_sort": 2011,
+  "cataloged_tdt": "2021-07-13T03:37:28Z",
+  "format": [
+    "Book",
+    "Senior thesis"
+  ],
+  "description_display": [
+    "139 p. : ill. ; 29 x 23 cm."
+  ],
+  "description_t": [
+    "139 p. : ill. ; 29 x 23 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "139 p."
+  ],
+  "notes_display": [
+    "Advisor(s): Spyridon Papapetros, Lucia Allais"
+  ],
+  "dissertation_notes_display": [
+    "Thesis (Senior)--Princeton University, 2011."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "holdings_1display": "{\"22602041430006421\":{\"location_code\":\"arch$pw\",\"location\":\"Remote Storage (ReCAP): Architecture Library Use Only\",\"library\":\"Architecture Library\",\"call_number\":\"Sen. Th. 2011 Vel\",\"call_number_browse\":\"Sen. Th. 2011 Vel\",\"items\":[{\"holding_id\":\"22602041430006421\",\"id\":\"23602041420006421\",\"status_at_load\":\"1\",\"barcode\":\"32101066304690\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "arch$pw"
+  ],
+  "location": [
+    "Architecture Library"
+  ],
+  "location_display": [
+    "Remote Storage (ReCAP): Architecture Library Use Only"
+  ],
+  "advanced_location_s": [
+    "arch$pw",
+    "Architecture Library"
+  ],
+  "name_title_browse_s": [
+    "Vélez, Carlos. Searching for a modern aesthetic"
+  ],
+  "call_number_display": [
+    "Sen. Th. 2011 Vel"
+  ],
+  "call_number_browse_s": [
+    "Sen. Th. 2011 Vel"
+  ],
+  "call_number_locator_display": [
+    "Sen. Th. 2011 Vel"
+  ]
+}

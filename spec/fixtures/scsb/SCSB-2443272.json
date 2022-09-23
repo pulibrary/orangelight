@@ -1,0 +1,121 @@
+{
+  "id": "SCSB-2443272",
+  "numeric_id_b": false,
+  "other_id_s": [
+    "403828"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "title_display": "19th century music.",
+  "title_t": [
+    "19th century music."
+  ],
+  "title_citation_display": [
+    "19th century music"
+  ],
+  "compiled_created_t": [
+    "19th century music."
+  ],
+  "pub_created_display": [
+    "[Berkeley, Calif.] : [University of California Press]"
+  ],
+  "pub_created_s": [
+    "[Berkeley, Calif.] : [University of California Press]"
+  ],
+  "pub_citation_display": [
+    "Berkeley, Calif.: University of California Press"
+  ],
+  "pub_date_display": [
+    "1977"
+  ],
+  "pub_date_start_sort": 1977,
+  "pub_date_end_sort": 9999,
+  "format": [
+    "Journal"
+  ],
+  "description_display": [
+    "volumes : illustrations ; 26 cm",
+    "v. 1- July 1977-"
+  ],
+  "description_t": [
+    "volumes : illustrations ; 26 cm",
+    "v. 1- July 1977-"
+  ],
+  "number_of_pages_citation_display": [
+    "volumes"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "indexed_in_display": [
+    "Music index",
+    "RILM abstracts",
+    "Index to book reviews in the humanities",
+    "Humanities index"
+  ],
+  "lc_subject_display": [
+    "Music—Periodicals",
+    "Music—19th century"
+  ],
+  "subject_facet": [
+    "Music—Periodicals",
+    "Music—19th century"
+  ],
+  "other_title_display": [
+    "19th century music",
+    "Nineteenth century music"
+  ],
+  "alt_title_246_display": [
+    "Nineteenth century music"
+  ],
+  "issn_display": [
+    "0148-2076"
+  ],
+  "lccn_display": [
+    "   77644140 "
+  ],
+  "lccn_s": [
+    "77644140"
+  ],
+  "issn_s": [
+    "01482076"
+  ],
+  "oclc_s": [
+    "3280195"
+  ],
+  "other_version_s": [
+    "01482076",
+    "ocm03280195"
+  ],
+  "subject_era_facet": [
+    "19th century"
+  ],
+  "recap_notes_display": [
+    "C - O"
+  ],
+  "location_code_s": [
+    "scsbcul"
+  ],
+  "location": [
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage"
+  ],
+  "advanced_location_s": [
+    "scsbcul",
+    "ReCAP"
+  ],
+  "call_number_display": [
+    "ML1 .N77"
+  ],
+  "call_number_browse_s": [
+    "ML1 .N77"
+  ],
+  "holdings_1display": "{\"2417089\":{\"location_code\":\"scsbcul\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"ML1 .N77\",\"call_number_browse\":\"ML1 .N77\",\"items\":[{\"holding_id\":\"2417089\",\"enumeration\":\"v.1 (1977-1978)\",\"id\":\"3756152\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160120\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.2 (1978-1979)\",\"id\":\"3756153\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160139\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.3 (1979-1980)\",\"id\":\"3756154\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160147\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.4 (1980-1981)\",\"id\":\"3756155\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160155\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.5 (1981-1982)\",\"id\":\"3756156\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160163\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.6 (1982-1983)\",\"id\":\"3756157\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160171\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.7 (1983-1984)\",\"id\":\"3756158\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160180\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.8 (1984-1985)\",\"id\":\"3756159\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160198\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.9 (1985-1986)\",\"id\":\"3756160\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160201\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.10 (1986-1987)\",\"id\":\"3756161\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160210\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.11 (1987-1988)\",\"id\":\"3756162\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160228\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.12 (1988-1989)\",\"id\":\"3756163\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160236\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.13 (1989-1990)\",\"id\":\"3756164\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160244\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.14 (1990-1991)\",\"id\":\"3756165\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160252\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.15 (1991-1992)\",\"id\":\"3756166\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160260\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.16 (1992-1993)\",\"id\":\"3756167\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160279\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.17 (1993-1994)\",\"id\":\"3756168\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160287\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.18 (1994-1995)\",\"id\":\"3756169\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160295\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.19 (1995-1996)\",\"id\":\"3756170\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160309\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.20 (1996-1997)\",\"id\":\"3756171\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160317\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.21 (1997-1998)\",\"id\":\"3756172\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160325\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.22 (1998-1999)\",\"id\":\"3756173\",\"status_at_load\":\"Available\",\"barcode\":\"CU08160333\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.23 (1999-2000)\",\"id\":\"3756174\",\"status_at_load\":\"Available\",\"barcode\":\"CU10671935\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.24 (2000-2001)\",\"id\":\"3756175\",\"status_at_load\":\"Available\",\"barcode\":\"CU10671773\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.25 (2001-2002)\",\"id\":\"3756176\",\"status_at_load\":\"Available\",\"barcode\":\"CU10671897\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.26 (2002-2003)\",\"id\":\"3756177\",\"status_at_load\":\"Available\",\"barcode\":\"CU10671900\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.27 (2003-2004)\",\"id\":\"3756178\",\"status_at_load\":\"Available\",\"barcode\":\"CU14176750\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.28 (2004-2005)\",\"id\":\"3756179\",\"status_at_load\":\"Available\",\"barcode\":\"CU14176769\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.29 (2005-2006)\",\"id\":\"3756180\",\"status_at_load\":\"Available\",\"barcode\":\"CU14176777\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.30 (2006-2007)\",\"id\":\"3756181\",\"status_at_load\":\"Available\",\"barcode\":\"CU14176785\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.31 (2007-2008)\",\"id\":\"3756182\",\"status_at_load\":\"Available\",\"barcode\":\"CU14176793\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.32 (2008-2009)\",\"id\":\"3756183\",\"status_at_load\":\"Available\",\"barcode\":\"CU15880320\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.33 (2009/2010)\",\"id\":\"3756184\",\"status_at_load\":\"Available\",\"barcode\":\"CU15889688\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.34 (2010/2011)\",\"id\":\"3756185\",\"status_at_load\":\"Available\",\"barcode\":\"CU90353080\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.35:no.1 (2011:Summer)\",\"id\":\"3756186\",\"status_at_load\":\"Available\",\"barcode\":\"CU18289983\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"},{\"holding_id\":\"2417089\",\"enumeration\":\"v.35:no.2 (2011:Fall)\",\"id\":\"3756187\",\"status_at_load\":\"Available\",\"barcode\":\"CU18289967\",\"copy_number\":\"1\",\"storage_location\":\"RECAP\",\"cgd\":\"Open\",\"collection_code\":\"CU\"}],\"location_has\":[\"v.1(1977)-v.35:no.2(2011:Fall)\"],\"supplements\":[null],\"indexes\":[null]}}"
+}

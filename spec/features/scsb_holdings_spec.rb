@@ -39,7 +39,7 @@ describe 'SCSB Shared Collection Records' do
     end
     it 'displays RCP Collection Codes for the partner library' do
       expect(page).to have_content 'RCP'
-      expect(page).to have_content 'C - S'
+      expect(page).to have_content 'C - O'
     end
   end
 

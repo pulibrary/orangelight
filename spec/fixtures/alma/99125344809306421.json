@@ -1,0 +1,125 @@
+{
+  "id": "99125344809306421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Eisgruber, Christopher L."
+  ],
+  "author_citation_display": [
+    "Eisgruber, Christopher L."
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Eisgruber, Christopher L.\"}",
+  "author_s": [
+    "Eisgruber, Christopher L."
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "The next justice [electronic resource] : repairing the Supreme Court appointments process / Christopher L. Eisgruber.",
+  "title_t": [
+    "The next justice [electronic resource] : repairing the Supreme Court appointments process / Christopher L. Eisgruber."
+  ],
+  "title_citation_display": [
+    "The next justice repairing the Supreme Court appointments process"
+  ],
+  "compiled_created_t": [
+    "The next justice [electronic resource] : repairing the Supreme Court appointments process / Christopher L. Eisgruber."
+  ],
+  "edition_display": [
+    "Course Book"
+  ],
+  "pub_created_display": [
+    "Princeton : Princeton University Press, c2007."
+  ],
+  "pub_created_s": [
+    "Princeton : Princeton University Press, c2007."
+  ],
+  "pub_citation_display": [
+    "Princeton: Princeton University Press"
+  ],
+  "pub_date_display": [
+    "2007"
+  ],
+  "pub_date_start_sort": 2007,
+  "cataloged_tdt": "2021-07-25T05:30:20Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "1 online resource (254 p.)"
+  ],
+  "description_t": [
+    "1 online resource (254 p.)"
+  ],
+  "number_of_pages_citation_display": [
+    "1 online resource (254 p.)"
+  ],
+  "geocode_display": [
+    "United States"
+  ],
+  "summary_note_display": [
+    "The Supreme Court appointments process is broken, and the timing couldn't be worse--for liberals or conservatives. The Court is just one more solid conservative justice away from an ideological sea change--a hard-right turn on an array of issues that affect every American, from abortion to environmental protection. But neither those who look at this prospect with pleasure nor those who view it with horror will be able to make informed judgments about the next nominee to the Court--unless the appointments process is fixed now. In The Next Justice, Christopher Eisgruber boldly proposes a way to do just that. He describes a new and better manner of deliberating about who should serve on the Court--an approach that puts the burden on nominees to show that their judicial philosophies and politics are acceptable to senators and citizens alike. And he makes a new case for the virtue of judicial moderates. Long on partisan rancor and short on serious discussion, today's appointments process reveals little about what kind of judge a nominee might make. Eisgruber argues that the solution is to investigate how nominees would answer a basic question about the Court's role: When and why is it beneficial for judges to trump the decisions of elected officials? Through an examination of the politics and history of the Court, Eisgruber demonstrates that pursuing this question would reveal far more about nominees than do other tactics, such as investigating their views of specific precedents or the framers' intentions. Written with great clarity and energy, The Next Justice provides a welcome exit from the uninformative political theater of the current appointments process."
+  ],
+  "notes_display": [
+    "Description based upon print version of record."
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references and index."
+  ],
+  "language_display": [
+    "English"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "contents_display": [
+    "A broken process in partisan times -- Why judges cannot avoid political controversy -- The incoherence of judicial restraint -- Politics at the court -- Why judges sometimes agree when politicians cannot -- Judicial philosophies and why they matter -- How presidents have raised the stakes -- Should the Senate defer to the president? -- How to change the hearings -- What kinds of justices should we want? -- The path forward."
+  ],
+  "lc_subject_display": [
+    "Judges—Selection and appointment—United States",
+    "Political questions and judicial power—United States",
+    "United States. Supreme Court—Officials and employees—Selection and appointment"
+  ],
+  "subject_facet": [
+    "Judges—Selection and appointment—United States",
+    "Political questions and judicial power—United States",
+    "United States. Supreme Court—Officials and employees—Selection and appointment"
+  ],
+  "isbn_display": [
+    "1-4008-2782-5",
+    "9786612569289",
+    "1-282-56928-7"
+  ],
+  "standard_no_1display": "{\"Doi\":[\"10.1515/9781400827824\"]}",
+  "isbn_s": [
+    "9781400827824",
+    "9786612569289",
+    "9781282569287"
+  ],
+  "oclc_s": [
+    "638859401",
+    "642206027",
+    "979592496"
+  ],
+  "other_version_s": [
+    "9781400827824",
+    "9786612569289",
+    "9781282569287",
+    "ocn638859401",
+    "ocn642206027",
+    "ocn979592496",
+    "9780691134970",
+    "9780691143521"
+  ],
+  "name_title_browse_s": [
+    "Eisgruber, Christopher L.. The next justice"
+  ],
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"Ebook Central Perpetual, DDA and Subscription Titles\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53890917920006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ]
+}

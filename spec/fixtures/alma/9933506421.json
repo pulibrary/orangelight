@@ -1,0 +1,128 @@
+{
+  "id": "9933506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Messina, Claudio M."
+  ],
+  "author_citation_display": [
+    "Messina, Claudio M."
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Messina, Claudio M.\"}",
+  "author_s": [
+    "Messina, Claudio M."
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco.",
+  "title_t": [
+    "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco."
+  ],
+  "title_citation_display": [
+    "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989"
+  ],
+  "compiled_created_t": [
+    "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco."
+  ],
+  "edition_display": [
+    "2. ed."
+  ],
+  "pub_created_display": [
+    "Roma : Biblioteca del Vascello, Stampa Alternativa, 1988."
+  ],
+  "pub_created_s": [
+    "Roma : Biblioteca del Vascello, Stampa Alternativa, 1988."
+  ],
+  "pub_citation_display": [
+    "Roma: Biblioteca del Vascello, Stampa Alternativa"
+  ],
+  "pub_date_display": [
+    "1988"
+  ],
+  "pub_date_start_sort": 1988,
+  "cataloged_tdt": "2000-06-13T10:59:00Z",
+  "format": [
+    "Book"
+  ],
+  "electronic_access_1display": "{\"http://d-nb.info/991834119/04\":[\"Inhaltsverzeichnis\"]}",
+  "description_display": [
+    "220 p. ; 17 cm."
+  ],
+  "description_t": [
+    "220 p. ; 17 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "220 p."
+  ],
+  "geocode_display": [
+    "Italy"
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including Alpaslanʾdan Atatürkʾe kadar Türk zaferlerleri ansiklopedisi and 12 other(s)."
+  ],
+  "contained_in_s": [
+    "99125040713506421"
+  ],
+  "notes_display": [
+    "Includes index."
+  ],
+  "language_facet": [
+    "Italian"
+  ],
+  "language_code_s": [
+    "ita"
+  ],
+  "language_iana_s": [
+    "it"
+  ],
+  "lc_subject_display": [
+    "Booksellers and bookselling—Italy—Directories"
+  ],
+  "subject_facet": [
+    "Booksellers and bookselling—Italy—Directories",
+    "Directories"
+  ],
+  "lcgft_s": [
+    "Directories"
+  ],
+  "in_display": [
+    "Multi-title collection including Alpaslanʾdan Atatürkʾe kadar Türk zaferlerleri ansiklopedisi and 12 other(s)."
+  ],
+  "oclc_s": [
+    "19590730"
+  ],
+  "other_version_s": [
+    "ocm19590730"
+  ],
+  "holdings_1display": "{\"22740186070006421\":{\"location_code\":\"rare$xc\",\"location\":\"Remote Storage (ReCAP): Cotsen Children's Library. Special Collections Use Only\",\"library\":\"Special Collections\",\"call_number\":\"Z342 .M48 1988\",\"call_number_browse\":\"Z342 .M48 1988\",\"items\":[{\"holding_id\":\"22740186070006421\",\"id\":\"23740186060006421\",\"status_at_load\":\"1\",\"barcode\":\"32101070543648\",\"copy_number\":\"1\"}]},\"22740186090006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"Z342 .M48 1988\",\"call_number_browse\":\"Z342 .M48 1988\",\"items\":[{\"holding_id\":\"22740186090006421\",\"id\":\"23740186080006421\",\"status_at_load\":\"1\",\"barcode\":\"32101085875258\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "rare$xc",
+    "recap$pa"
+  ],
+  "location": [
+    "Special Collections",
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage (ReCAP): Cotsen Children's Library. Special Collections Use Only",
+    "Remote Storage"
+  ],
+  "advanced_location_s": [
+    "rare$xc",
+    "recap$pa",
+    "Special Collections",
+    "ReCAP"
+  ],
+  "name_title_browse_s": [
+    "Messina, Claudio M.. Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989"
+  ],
+  "call_number_display": [
+    "Z342 .M48 1988"
+  ],
+  "call_number_browse_s": [
+    "Z342 .M48 1988"
+  ],
+  "call_number_locator_display": [
+    "Z342 .M48 1988"
+  ]
+}

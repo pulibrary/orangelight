@@ -1,0 +1,55 @@
+{
+  "id": "dsp01ft848s955",
+  "title_t": [
+    "Reconstructing the Vitruvian Scorpio: An Engineering Analysis of Roman Field Artillery"
+  ],
+  "title_citation_display": [
+    "Reconstructing the Vitruvian Scorpio: An Engineering Analysis of Roman Field Artillery"
+  ],
+  "title_display": "Reconstructing the Vitruvian Scorpio: An Engineering Analysis of Roman Field Artillery",
+  "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/dsp01ft848s955\":[\"DataSpace\",\"Full text\"]}",
+  "call_number_display": [
+    "AC102"
+  ],
+  "call_number_browse_s": [
+    "AC102"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "author_display": [
+    "Brooker, Daniel Andrew",
+    "Lovdahl, Beau Randall",
+    "Ohlwiler, Caden Scotsen"
+  ],
+  "author_s": [
+    "Brooker, Daniel Andrew",
+    "Lovdahl, Beau Randall",
+    "Ohlwiler, Caden Scotsen",
+    "Littman, Michael G.",
+    "Princeton University. Department of Mechanical and Aerospace Engineering"
+  ],
+  "advisor_display": [
+    "Littman, Michael G."
+  ],
+  "department_display": [
+    "Princeton University. Department of Mechanical and Aerospace Engineering"
+  ],
+  "description_display": [
+    "53 pages"
+  ],
+  "summary_note_display": [
+    "A Roman scorpio, a small bolt throwing catapult, was constructed and ﬁeld tested. The design was based on a reconstruction of a scorpio done by Bucknell University which based its design on the text of the Roman architect, Vitruvius. Once constructed, the scorpio was determined to have a linear relationship between its draw distance and its draw force with a slope of 1389 N/m and the theoretical muzzle velocity was determined to be 55.0 m/s. The average experimental velocity was determined from accelerometer data to be 24 m/s. The eﬃciency of the scorpio was determined to be 19.1%. The maximum range given the launch angle and the experimental velocity was calculated to be 57.9 meters. The actual distance that the bolt traveled was determined to be 54.7 meters. The scorpio was determined to be an eﬀective weapon, able to engage enemy forces over 50 meters away."
+  ],
+  "electronic_portfolio_s": [
+    "{\"thesis\":{\"call_number\":\"AC102\",\"call_number_browse\":\"AC102\",\"dspace\":true}}"
+  ],
+  "class_year_s": [
+    "2015"
+  ],
+  "pub_date_start_sort": 2015,
+  "pub_date_end_sort": 2015,
+  "format": [
+    "Senior thesis"
+  ]
+}

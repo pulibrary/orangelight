@@ -1,0 +1,133 @@
+{
+  "id": "9964125563506421",
+  "numeric_id_b": true,
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "title_display": "1Q84 sutadīzu.",
+  "title_vern_display": "1Q84スタディーズ.",
+  "title_t": [
+    "1Q84 sutadīzu."
+  ],
+  "title_citation_display": [
+    "1Q84 sutadīzu",
+    "1Q84スタディーズ"
+  ],
+  "compiled_created_t": [
+    "1Q84 sutadīzu.",
+    "1Q84スタディーズ."
+  ],
+  "pub_created_vern_display": [
+    "東京 : 若草書房, 2009-2010."
+  ],
+  "pub_created_display": [
+    "Tōkyō : Wakakusa Shobō, 2009-2010.",
+    "東京 : 若草書房, 2009-2010."
+  ],
+  "pub_created_s": [
+    "Tōkyō : Wakakusa Shobō, 2009-2010.",
+    "東京 : 若草書房, 2009-2010."
+  ],
+  "pub_citation_display": [
+    "Tōkyō: Wakakusa Shobō",
+    "東京: 若草書房"
+  ],
+  "pub_date_display": [
+    "2009"
+  ],
+  "pub_date_start_sort": 2009,
+  "pub_date_end_sort": 2010,
+  "cataloged_tdt": "2011-02-11T10:59:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "2 v. ; 20 cm."
+  ],
+  "description_t": [
+    "2 v. ; 20 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "2 v."
+  ],
+  "geocode_display": [
+    "Japan"
+  ],
+  "series_display": [
+    "Murakami Haruki study books ; 13-14.",
+    "Murakami Haruki study books ; 13-14"
+  ],
+  "more_in_this_series_t": [
+    "Murakami Haruki study books"
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references."
+  ],
+  "language_display": [
+    "Japanese and English."
+  ],
+  "language_facet": [
+    "Japanese",
+    "English"
+  ],
+  "language_code_s": [
+    "jpn",
+    "eng"
+  ],
+  "language_iana_s": [
+    "ja"
+  ],
+  "lc_subject_display": [
+    "Murakami, Haruki, 1949-—1Q84",
+    "Murakami, Haruki, 1949-—Criticism and interpretation"
+  ],
+  "subject_facet": [
+    "Murakami, Haruki, 1949-—1Q84",
+    "Murakami, Haruki, 1949-—Criticism and interpretation"
+  ],
+  "other_title_display": [
+    "1Q84 studies"
+  ],
+  "alt_title_246_display": [
+    "1Q84 studies"
+  ],
+  "isbn_display": [
+    "9784904271049 (v. 1)",
+    "4904271041 (v. 1)",
+    "9784904271056 (v. 2)",
+    "490427105X (v. 2)"
+  ],
+  "isbn_s": [
+    "9784904271049",
+    "9784904271056"
+  ],
+  "oclc_s": [
+    "502011365"
+  ],
+  "other_version_s": [
+    "9784904271049",
+    "9784904271056",
+    "ocn502011365"
+  ],
+  "holdings_1display": "{\"22727295980006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"PL856.U673 A61535 2009\",\"call_number_browse\":\"PL856.U673 A61535 2009\",\"items\":[{\"holding_id\":\"22727295980006421\",\"enumeration\":\"vol.2\",\"id\":\"23727295960006421\",\"status_at_load\":\"1\",\"barcode\":\"32101078794482\",\"copy_number\":\"1\"},{\"holding_id\":\"22727295980006421\",\"enumeration\":\"vol.1\",\"id\":\"23727295970006421\",\"status_at_load\":\"1\",\"barcode\":\"32101078794490\",\"copy_number\":\"1\"}],\"location_has\":[\"Vol.1-v.2\"],\"supplements\":[null],\"indexes\":[null]}}",
+  "location_code_s": [
+    "recap$pa"
+  ],
+  "location": [
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage"
+  ],
+  "advanced_location_s": [
+    "recap$pa",
+    "ReCAP"
+  ],
+  "call_number_display": [
+    "PL856.U673 A61535 2009"
+  ],
+  "call_number_browse_s": [
+    "PL856.U673 A61535 2009"
+  ],
+  "call_number_locator_display": [
+    "PL856.U673 A61535 2009"
+  ]
+}

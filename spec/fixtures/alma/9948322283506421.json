@@ -1,0 +1,129 @@
+{
+  "id": "9948322283506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Chen, Shiyuan, jin shi 1544",
+    "陳士元, jin shi 1544"
+  ],
+  "author_citation_display": [
+    "Chen, Shiyuan"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"陳士元\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Chen, Shiyuan\"}",
+  "author_s": [
+    "Chen, Shiyuan, jin shi 1544",
+    "陳士元, jin shi 1544"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Mengzi za ji / Chen Shiyuan zhu.",
+  "title_vern_display": "孟子雜記 / 陳士元著.",
+  "title_t": [
+    "Mengzi za ji / Chen Shiyuan zhu."
+  ],
+  "title_citation_display": [
+    "Mengzi za ji",
+    "孟子雜記"
+  ],
+  "compiled_created_t": [
+    "Mengzi za ji / Chen Shiyuan zhu.",
+    "孟子雜記 / 陳士元著."
+  ],
+  "edition_display": [
+    "Chu ban.",
+    "初版."
+  ],
+  "pub_created_vern_display": [
+    "上海 : 商務印書館, 民國26 [1937]"
+  ],
+  "pub_created_display": [
+    "Shanghai : Shang wu yin shu guan, Minguo 26 [1937]",
+    "上海 : 商務印書館, 民國26 [1937]"
+  ],
+  "pub_created_s": [
+    "Shanghai : Shang wu yin shu guan, Minguo 26 [1937]",
+    "上海 : 商務印書館, 民國26 [1937]"
+  ],
+  "pub_citation_display": [
+    "Shanghai: Shang wu yin shu guan",
+    "上海: 商務印書館"
+  ],
+  "pub_date_display": [
+    "1937"
+  ],
+  "pub_date_start_sort": 1937,
+  "cataloged_tdt": "2021-07-12T22:03:04Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "2, 2, 80 p. ; 18 cm."
+  ],
+  "description_t": [
+    "2, 2, 80 p. ; 18 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "2, 2, 80 p."
+  ],
+  "series_display": [
+    "Cong shu ji cheng chu bian ; 0500",
+    "叢書集成初編 ; 0500"
+  ],
+  "more_in_this_series_t": [
+    "Cong shu ji cheng chu bian",
+    "叢書集成初編"
+  ],
+  "notes_display": [
+    "NOT TO CIRCULATE."
+  ],
+  "language_facet": [
+    "Chinese"
+  ],
+  "language_code_s": [
+    "chi"
+  ],
+  "language_iana_s": [
+    "zh"
+  ],
+  "lc_subject_display": [
+    "Mencius—Mengzi",
+    "Mencius—孟子."
+  ],
+  "subject_facet": [
+    "Mencius—Mengzi",
+    "Mencius—孟子."
+  ],
+  "oclc_s": [
+    "35316510"
+  ],
+  "other_version_s": [
+    "ocm35316510"
+  ],
+  "holdings_1display": "{\"22585216480006421\":{\"location_code\":\"eastasian$hy\",\"location\":\"\",\"library\":\"East Asian Library\",\"call_number\":\"C338/4352 vol.500\",\"call_number_browse\":\"C338/4352 vol.500\",\"location_note\":[\"NOT TO CIRCULATE\"]}}",
+  "location_code_s": [
+    "eastasian$hy"
+  ],
+  "location": [
+    "East Asian Library"
+  ],
+  "location_display": [
+    ""
+  ],
+  "advanced_location_s": [
+    "eastasian$hy",
+    "East Asian Library"
+  ],
+  "name_title_browse_s": [
+    "Chen, Shiyuan, jin shi 1544. Mengzi za ji",
+    "陳士元, jin shi 1544. 孟子雜記"
+  ],
+  "call_number_display": [
+    "C338/4352 vol.500"
+  ],
+  "call_number_browse_s": [
+    "C338/4352 vol.500"
+  ],
+  "call_number_locator_display": [
+    "C338/4352 vol.500"
+  ]
+}

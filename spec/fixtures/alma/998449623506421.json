@@ -1,0 +1,126 @@
+{
+  "id": "998449623506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Princeton University. Library. Special Collections"
+  ],
+  "author_citation_display": [
+    "Princeton University"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Princeton University\"}",
+  "author_s": [
+    "Princeton University. Library. Special Collections"
+  ],
+  "marc_relator_display": [
+    "Collector"
+  ],
+  "title_display": "Chile Photographic File, 1984-1990",
+  "title_t": [
+    "Chile Photographic File,"
+  ],
+  "title_citation_display": [
+    "Chile Photographic File"
+  ],
+  "compiled_created_display": [
+    "1984-1990"
+  ],
+  "compiled_created_t": [
+    "Chile Photographic File,"
+  ],
+  "pub_date_display": [
+    "1984"
+  ],
+  "pub_date_start_sort": 1984,
+  "pub_date_end_sort": 1990,
+  "cataloged_tdt": "2004-08-03T10:59:00Z",
+  "format": [
+    "Manuscript"
+  ],
+  "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/pz50gw142\":[\"arks.princeton.edu\",\"Finding aid online:\"]}",
+  "description_display": [
+    "1 box",
+    "0.4 linear feet"
+  ],
+  "description_t": [
+    "1 box",
+    "0.4 linear feet"
+  ],
+  "number_of_pages_citation_display": [
+    "1",
+    "0.4"
+  ],
+  "restrictions_note_display": [
+    "The collection is open for research."
+  ],
+  "summary_note_display": [
+    "Consists of 223 slides and 77 photographs taken during the last years of the Augusto Pinochet regime in Chile."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "finding_aid_display": [
+    "All photographs have captions on the back. A folder listing and an index to the slides are available."
+  ],
+  "lc_subject_display": [
+    "Demonstrations—20th century—Chile",
+    "Elections—20th century—Chile",
+    "Graffiti—Chile",
+    "Human rights—Chile",
+    "Human rights workers—Chile",
+    "Plebiscite—Chile",
+    "Political campaigns—Chile",
+    "Chile—1973- .—Politics and government"
+  ],
+  "subject_facet": [
+    "Demonstrations—20th century—Chile",
+    "Elections—20th century—Chile",
+    "Graffiti—Chile",
+    "Human rights—Chile",
+    "Human rights workers—Chile",
+    "Plebiscite—Chile",
+    "Political campaigns—Chile",
+    "Chile—1973- .—Politics and government",
+    "Photoprints—20th century",
+    "Slides—20th century"
+  ],
+  "aat_s": [
+    "Photoprints—20th century",
+    "Slides—20th century"
+  ],
+  "subject_era_facet": [
+    "20th century",
+    "1973- "
+  ],
+  "holdings_1display": "{\"22669177030006421\":{\"location_code\":\"rare$mss\",\"location\":\"Manuscripts Collection\",\"library\":\"Special Collections\",\"call_number\":\"C0683\",\"call_number_browse\":\"C0683\",\"items\":[{\"holding_id\":\"22669177030006421\",\"enumeration\":\"Box 1\",\"id\":\"23669177020006421\",\"status_at_load\":\"1\",\"barcode\":\"32101036913463\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "rare$mss"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Manuscripts Collection"
+  ],
+  "advanced_location_s": [
+    "rare$mss",
+    "Special Collections"
+  ],
+  "name_title_browse_s": [
+    "Princeton University. Library. Special Collections. Chile Photographic File"
+  ],
+  "call_number_display": [
+    "C0683"
+  ],
+  "call_number_browse_s": [
+    "C0683"
+  ],
+  "call_number_locator_display": [
+    "C0683"
+  ]
+}

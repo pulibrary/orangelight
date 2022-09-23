@@ -1,0 +1,90 @@
+{
+  "id": "9990889283506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+    "Institute for Empirical Research in Political Economy",
+    "Bratton, Michael",
+    "Gyimah-Boadi, Emmanuel",
+    "Logan, Carolyn",
+    "Inter-university Consortium for Political and Social Research"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Institute for Empirical Research in Political Economy\",\"Bratton, Michael\",\"Gyimah-Boadi, Emmanuel\",\"Logan, Carolyn\",\"Inter-university Consortium for Political and Social Research\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Institute for Empirical Research in Political Economy",
+    "Bratton, Michael",
+    "Gyimah-Boadi, Emmanuel",
+    "Logan, Carolyn",
+    "Inter-university Consortium for Political and Social Research"
+  ],
+  "title_display": "Afrobarometer Round 5 [electronic resource] : The Quality of Democracy and Governance in Benin, 2011 Institute for Empirical Research in Political Economy, Michael Bratton, E. Gyimah-Boadi, Carolyn Logan",
+  "title_t": [
+    "Afrobarometer Round 5 [electronic resource] : The Quality of Democracy and Governance in Benin, 2011 Institute for Empirical Research in Political Economy, Michael Bratton, E. Gyimah-Boadi, Carolyn Logan"
+  ],
+  "title_citation_display": [
+    "Afrobarometer Round 5 The Quality of Democracy and Governance in Benin, 2011"
+  ],
+  "compiled_created_t": [
+    "Afrobarometer Round 5 [electronic resource] : The Quality of Democracy and Governance in Benin, 2011 Institute for Empirical Research in Political Economy, Michael Bratton, E. Gyimah-Boadi, Carolyn Logan"
+  ],
+  "edition_display": [
+    "2015-03-19"
+  ],
+  "pub_created_display": [
+    "Ann Arbor, Mich. : Inter-university Consortium for Political and Social Research [distributor], 2015"
+  ],
+  "pub_created_s": [
+    "Ann Arbor, Mich. : Inter-university Consortium for Political and Social Research [distributor], 2015"
+  ],
+  "pub_citation_display": [
+    "Ann Arbor, Mich: Inter-university Consortium for Political and Social Research [distributor]"
+  ],
+  "pub_date_display": [
+    "2015"
+  ],
+  "pub_date_start_sort": 2015,
+  "cataloged_tdt": "2021-07-21T01:27:44Z",
+  "format": [
+    "Data file"
+  ],
+  "electronic_access_1display": "{\"http://doi.org/10.3886/ICPSR35465\":[\"doi.org\"]}",
+  "description_display": [
+    "Numeric"
+  ],
+  "description_t": [
+    "Numeric"
+  ],
+  "series_display": [
+    "ICPSR ; 35465"
+  ],
+  "more_in_this_series_t": [
+    "ICPSR"
+  ],
+  "restrictions_note_display": [
+    "AVAILABLE. This study is freely available to ICPSR member institutions."
+  ],
+  "summary_note_display": [
+    "The Afrobarometer project was designed to collect and disseminate information regarding Africans' views on democracy, governance, economic reform, civil society, and quality of life. This particular survey was concerned with the attitudes and opinions of the citizens of Benin. Respondents in a face-to-face interview were asked to rate their president and the president's administration in overall performance, to state the most important issues facing their nation, and to evaluate the effectiveness of certain continental and international institutions. Opinions were gathered on the role of the government in improving the economy, whether corruption existed in local and national government, whether government officials were responsive to problems of the general population, and whether local government officials, the police, the courts, the overall criminal justice system, the National Electoral Commission, and the government broadcasting service could be trusted. Respondents were polled on their knowledge of the government, including the identification of government officials, their level of personal involvement in political, governmental, and community affairs, their participation in national elections, and the inclusiveness of the government. Economic questions addressed the past, present, and future of the country's and the respondents' economic conditions, and respondents' living conditions. Round 5 surveys included special modules on taxation; gender issues; crime, conflict and insecurity; globalization; and social service delivery. Background variables include age, gender, ethnicity, education, religious affiliation and participation, political party affiliation, language spoken most at home, whether the respondent was the head of household, current and past employment status, whether a close friend or relative had died from AIDS, and language used in interview. In addition, the interviewer's gender, race, and education level is provided. Cf.: http://doi.org/10.3886/ICPSR35465"
+  ],
+  "notes_display": [
+    "Title from ICPSR DDI metadata of 2015-03-23."
+  ],
+  "type_comp_data_notes_display": [
+    "Numeric"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "other_format_display": [
+    "Also available as downloadable files."
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Institute for Empirical Research in Political Economy\",\"Bratton, Michael\",\"Gyimah-Boadi, Emmanuel\",\"Logan, Carolyn\",\"Inter-university Consortium for Political and Social Research\"]}",
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"ICPSR (Inter-university Consortium for Political and Social Research)\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53865029450006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ]
+}

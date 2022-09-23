@@ -1,0 +1,117 @@
+{
+  "id": "SCSB-7846265",
+  "numeric_id_b": false,
+  "other_id_s": [
+    ".b154550760"
+  ],
+  "author_display": [
+    "Fire Insurance Patrol of the City of Philadelphia"
+  ],
+  "author_citation_display": [
+    "Fire Insurance Patrol of the City of Philadelphia"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Fire Insurance Patrol of the City of Philadelphia\"}",
+  "author_s": [
+    "Fire Insurance Patrol of the City of Philadelphia"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "... Annual report of the Fire Insurance Patrol of the City of Philadelphia.",
+  "title_t": [
+    "... Annual report of the Fire Insurance Patrol of the City of Philadelphia."
+  ],
+  "title_citation_display": [
+    "... Annual report of the Fire Insurance Patrol of the City of Philadelphia"
+  ],
+  "compiled_created_t": [
+    "... Annual report of the Fire Insurance Patrol of the City of Philadelphia."
+  ],
+  "pub_created_display": [
+    "Philadelphia : The Patrol,"
+  ],
+  "pub_created_s": [
+    "Philadelphia : The Patrol,"
+  ],
+  "pub_citation_display": [
+    "Philadelphia: The Patrol"
+  ],
+  "pub_date_display": [
+    "1800"
+  ],
+  "pub_date_start_sort": 1800,
+  "pub_date_end_sort": 1999,
+  "format": [
+    "Journal"
+  ],
+  "description_display": [
+    "v. ; 23 cm."
+  ],
+  "description_t": [
+    "v. ; 23 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "v."
+  ],
+  "frequency_display": [
+    "Annual."
+  ],
+  "notes_display": [
+    "Description based on 10th annual report (Jan. 1, 1880)."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Fire Insurance Patrol of the City of Philadelphia—Periodicals",
+    "Fire insurance—Pennsylvania—Philadelphia—Periodicals"
+  ],
+  "subject_facet": [
+    "Fire Insurance Patrol of the City of Philadelphia—Periodicals",
+    "Fire insurance—Pennsylvania—Philadelphia—Periodicals"
+  ],
+  "other_title_display": [
+    "Fire Insurance Patrol of the City of Philadelphia report -1931."
+  ],
+  "alt_title_246_display": [
+    "Fire Insurance Patrol of the City of Philadelphia report -1931."
+  ],
+  "oclc_s": [
+    "49390223"
+  ],
+  "other_version_s": [
+    "ocm49390223"
+  ],
+  "holdings_1display": "{\"7985322\":{\"location_code\":\"scsbnypl\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"SIKA (Fire Insurance Patrol of the city of Philadelphia. Report)\",\"call_number_browse\":\"SIKA (Fire Insurance Patrol of the city of Philadelphia. Report)\",\"items\":[{\"holding_id\":\"7985322\",\"enumeration\":\"no. 38-39 (1907-08)\",\"id\":\"13121066\",\"status_at_load\":\"Available\",\"barcode\":\"33433091627434\",\"copy_number\":\"1\",\"use_statement\":\"Supervised Use\",\"storage_location\":\"RECAP\",\"cgd\":\"Shared\",\"collection_code\":\"NA\"},{\"holding_id\":\"7985322\",\"enumeration\":\"1906\",\"id\":\"13121067\",\"status_at_load\":\"Available\",\"barcode\":\"33433098463957\",\"copy_number\":\"1\",\"use_statement\":\"In Library Use\",\"storage_location\":\"RECAP\",\"cgd\":\"Shared\",\"collection_code\":\"NA\"}],\"location_has\":[\"no. 38-39 (1907-08), 1906\"],\"supplements\":[null],\"indexes\":[null]}}",
+  "recap_notes_display": [
+    "N - S"
+  ],
+  "location_code_s": [
+    "scsbnypl"
+  ],
+  "location": [
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage"
+  ],
+  "advanced_location_s": [
+    "scsbnypl",
+    "ReCAP"
+  ],
+  "name_title_browse_s": [
+    "Fire Insurance Patrol of the City of Philadelphia. ... Annual report of the Fire Insurance Patrol of the City of Philadelphia"
+  ],
+  "call_number_display": [
+    "SIKA (Fire Insurance Patrol of the city of Philadelphia. Report)"
+  ],
+  "call_number_browse_s": [
+    "SIKA (Fire Insurance Patrol of the city of Philadelphia. Report)"
+  ]
+}

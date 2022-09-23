@@ -1,0 +1,112 @@
+{
+  "id": "994304723506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+    "Royal Academy for Islamic Civilization Research"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Royal Academy for Islamic Civilization Research\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "Royal Academy for Islamic Civilization Research"
+  ],
+  "title_display": "al-Fihris al-shāmil lil-turāth al-ʻArabī al-Islāmī al-makhṭūṭ. ʻUlūm al-Qurʼān. Makhṭūṭāt al-tafsīr / Muʼassasat Āl al-Bayt, al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah.",
+  "title_t": [
+    "al-Fihris al-shāmil lil-turāth al-ʻArabī al-Islāmī al-makhṭūṭ. ʻUlūm al-Qurʼān. Makhṭūṭāt al-tafsīr / Muʼassasat Āl al-Bayt, al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah."
+  ],
+  "title_citation_display": [
+    "al-Fihris al-shāmil lil-turāth al-ʻArabī al-Islāmī al-makhṭūṭ"
+  ],
+  "compiled_created_t": [
+    "al-Fihris al-shāmil lil-turāth al-ʻArabī al-Islāmī al-makhṭūṭ. ʻUlūm al-Qurʼān. Makhṭūṭāt al-tafsīr / Muʼassasat Āl al-Bayt, al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah."
+  ],
+  "pub_created_display": [
+    "ʻAmmān : al-Muʼassasah, 1987-"
+  ],
+  "pub_created_s": [
+    "ʻAmmān : al-Muʼassasah, 1987-"
+  ],
+  "pub_citation_display": [
+    "ʻAmmān: al-Muʼassasah"
+  ],
+  "pub_date_display": [
+    "1987"
+  ],
+  "pub_date_start_sort": 1987,
+  "pub_date_end_sort": 9999,
+  "cataloged_tdt": "2000-06-13T10:59:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "v. ; 24 cm."
+  ],
+  "description_t": [
+    "v. ; 24 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "v."
+  ],
+  "series_display": [
+    "Manshūrāt al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah ; raqm 83, etc.",
+    "Manshūrāt al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah ; raqm 83-"
+  ],
+  "more_in_this_series_t": [
+    "Manshūrāt al-Majmaʻ al-Malakī li-Buḥūth al-Ḥaḍārah al-Islāmīyah"
+  ],
+  "notes_display": [
+    "Vol. [13]: Index."
+  ],
+  "language_facet": [
+    "Arabic"
+  ],
+  "language_code_s": [
+    "ara"
+  ],
+  "language_iana_s": [
+    "ar"
+  ],
+  "lc_subject_display": [
+    "Qurʼan—Criticism, interpretation, etc—Manuscripts—Catalogs",
+    "Manuscripts, Arabic—Catalogs"
+  ],
+  "subject_facet": [
+    "Qurʼan—Criticism, interpretation, etc—Manuscripts—Catalogs",
+    "Manuscripts, Arabic—Catalogs",
+    "Catalogs"
+  ],
+  "lcgft_s": [
+    "Catalogs"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Royal Academy for Islamic Civilization Research\"]}",
+  "oclc_s": [
+    "31214190"
+  ],
+  "other_version_s": [
+    "ocm31214190"
+  ],
+  "holdings_1display": "{\"22667547790006421\":{\"location_code\":\"firestone$nec\",\"location\":\"Near East Collections\",\"library\":\"Firestone Library\",\"call_number\":\"Z6611.T3F545 1987\",\"call_number_browse\":\"Z6611.T3F545 1987\",\"items\":[{\"holding_id\":\"22667547790006421\",\"id\":\"23667547680006421\",\"status_at_load\":\"1\",\"barcode\":\"32101014940090\",\"copy_number\":\"1\"},{\"holding_id\":\"22667547790006421\",\"id\":\"23667547670006421\",\"status_at_load\":\"1\",\"barcode\":\"32101014940108\",\"copy_number\":\"1\"},{\"holding_id\":\"22667547790006421\",\"id\":\"23667547690006421\",\"status_at_load\":\"1\",\"barcode\":\"32101014940082\",\"copy_number\":\"1\"},{\"holding_id\":\"22667547790006421\",\"id\":\"23667547710006421\",\"status_at_load\":\"1\",\"barcode\":\"32101014940066\",\"copy_number\":\"1\"},{\"holding_id\":\"22667547790006421\",\"id\":\"23667547720006421\",\"status_at_load\":\"1\",\"barcode\":\"32101014940058\",\"copy_number\":\"1\"},{\"holding_id\":\"22667547790006421\",\"id\":\"23667547700006421\",\"status_at_load\":\"1\",\"barcode\":\"32101014940074\",\"copy_number\":\"1\"},{\"holding_id\":\"22667547790006421\",\"id\":\"23667547750006421\",\"status_at_load\":\"1\",\"barcode\":\"32101014940025\",\"copy_number\":\"1\"},{\"holding_id\":\"22667547790006421\",\"id\":\"23667547740006421\",\"status_at_load\":\"1\",\"barcode\":\"32101014940033\",\"copy_number\":\"1\"},{\"holding_id\":\"22667547790006421\",\"id\":\"23667547760006421\",\"status_at_load\":\"1\",\"barcode\":\"32101014940017\",\"copy_number\":\"1\"},{\"holding_id\":\"22667547790006421\",\"id\":\"23667547730006421\",\"status_at_load\":\"1\",\"barcode\":\"32101014940041\",\"copy_number\":\"1\"},{\"holding_id\":\"22667547790006421\",\"id\":\"23667547650006421\",\"status_at_load\":\"1\",\"barcode\":\"32101014940124\",\"copy_number\":\"1\"},{\"holding_id\":\"22667547790006421\",\"id\":\"23667547660006421\",\"status_at_load\":\"1\",\"barcode\":\"32101014940116\",\"copy_number\":\"1\"}],\"location_has\":[\"juzʼ 1-6, 8-13\"],\"supplements\":[null],\"indexes\":[null]},\"22667547640006421\":{\"location_code\":\"firestone$sne\",\"location\":\"Near East Graduate Study Room\",\"library\":\"Firestone Library\",\"call_number\":\"Z6611.T3F545 1987\",\"call_number_browse\":\"Z6611.T3F545 1987\"}}",
+  "location_code_s": [
+    "firestone$nec",
+    "firestone$sne"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "location_display": [
+    "Near East Collections",
+    "Near East Graduate Study Room"
+  ],
+  "advanced_location_s": [
+    "firestone$nec",
+    "firestone$sne",
+    "Firestone Library"
+  ],
+  "call_number_display": [
+    "Z6611.T3F545 1987"
+  ],
+  "call_number_browse_s": [
+    "Z6611.T3F545 1987"
+  ],
+  "call_number_locator_display": [
+    "Z6611.T3F545 1987"
+  ]
+}

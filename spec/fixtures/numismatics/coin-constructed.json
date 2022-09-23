@@ -1,0 +1,182 @@
+{
+  "access_facet": [
+      "Online",
+      "In the Library"
+  ],
+  "advanced_location_s": [
+      "num"
+  ],
+  "analysis_s": [
+      "holed at 12 o'clock, 16.73 grams"
+  ],
+  "counter_stamp_s": [
+      "two small counter-stamps visible as small circles on reverse, without known parallel"
+  ],
+  "die_axis_s": [
+      "6"
+  ],
+  "find_date_s": [
+      "5/27/1939?"
+  ],
+  "find_description_s": [
+      "at join of carcares and w. cavea surface"
+  ],
+  "find_feature_s": [
+      "Hill A?"
+  ],
+  "find_locus_s": [
+      "8-N 40"
+  ],
+  "find_number_s": [
+      "2237"
+  ],
+  "find_place_s": [
+      "Antioch, Syria"
+  ],
+  "format": [
+      "Coin"
+  ],
+  "id": "coin-constructed",
+  "numismatic_collection_s": [ 
+      "Firestone" 
+  ],
+  "issue_date_s" : [
+      "-91 to -41"
+  ],
+  "issue_artists_s": [
+      "name1 name2, artist signature"
+  ],
+  "issue_subject_s": [
+      "Other Person, Athena"
+  ],
+  "numismatic_accession_s" : [
+      "1: 2001-01-01 name1 name2"
+  ],
+  "numismatic_provenance_s": [
+      "name1 name2; 12/04/1999; note"
+  ],
+  "issue_color_s": [
+      "green"
+  ],
+  "issue_denomination_s": [
+      "1/2 Penny"
+  ],
+  "issue_denomination_sort": "1/2 Penny",
+  "issue_edge_s": [
+      "GOTT MIT UNS"
+  ],
+  "issue_era_s": [
+      "uncertain"
+  ],
+  "issue_master_s": [
+      "William Wood"
+  ],
+  "issue_metal_s": [
+      "copper"
+  ],
+  "issue_metal_sort": "copper",
+  "issue_number_s": "1",
+  "issue_object_type_s": [
+      "coin"
+  ],
+  "issue_obverse_attributes_s": [
+      "to left and right",
+      "around edge"
+  ],
+  "issue_obverse_figure_description_s": [
+      "Harp at left side, 5 strings."
+  ],
+  "issue_obverse_figure_relationship_s": [
+      "Victory behind"
+  ],
+  "issue_obverse_figure_s": [
+      "bust"
+  ],
+  "issue_obverse_legend_s": [
+      "GEORGIUS\u2022DEI\u2022GRATIA\u2022REX\u2022"
+  ],
+  "issue_obverse_orientation_s": [
+      "right"
+  ],
+  "issue_obverse_part_s": [
+      "standing"
+  ],
+  "issue_obverse_symbol_s": [
+      "cornucopia"
+  ],
+  "issue_place_s": [
+      "Great Britain"
+  ],
+  "issue_place_sort": "Great Britain",
+  "issue_references_s": [
+      "short-title citation part citation number"
+  ],
+  "issue_references_sort": "short-title citation part citation number",
+  "issue_reverse_attributes_s": [
+      "above",
+      "2 within \u0404"
+  ],
+  "issue_reverse_figure_description_s": [
+      "Harp at right side, 11 strings. Right arm holding up a palm-branch"
+  ],
+  "issue_reverse_figure_relationship_s": [
+      "corn-ear behind head"
+  ],
+  "issue_reverse_figure_s": [
+      "Hibernia"
+  ],
+  "issue_reverse_legend_s": [
+      "\u2022HIBERNIA\u20221723\u2022"
+  ],
+  "issue_reverse_orientation_s": [
+      "left"
+  ],
+  "issue_reverse_part_s": [
+      "seated"
+  ],
+  "issue_reverse_symbol_s": [
+      "goat head"
+  ],
+  "issue_ruler_s": [
+      "George I"
+  ],
+  "issue_ruler_sort": "George I",
+  "issue_series_s": [
+      "Hibernia"
+  ],
+  "issue_shape_s": [
+      "round"
+  ],
+  "issue_workshop_s": [
+      "Bristol"
+  ],
+  "call_number_display": "Coin 1",
+  "call_number_browse_s": "Coin 1",
+  "location_code_s": [
+  "num"
+  ],
+  "location": [
+  "Rare Books and Special Collections"
+  ],
+  "location_display": [
+  "Rare Books and Special Collections - Numismatics Collection"
+  ],
+  "holdings_1display": "{\"numismatics\":{\"location\":\"Rare Books and Special Collections - Numismatics Collection\",\"library\":\"Rare Books and Special Collections\",\"location_code\":\"num\",\"call_number\":\"Coin 1\",\"call_number_browse\":\"Coin 1\"}}",
+  "notes_display": [
+      "Abraham Usher| John Field| Charles Meredith.",
+      "Black and red ink.",
+      "Visible flecks of mica."
+  ],
+  "pub_date_end_sort": -41,
+  "pub_date_start_sort": -91,
+  "size_s": [
+      "27"
+  ],
+  "technique_s": [
+      "Cast"
+  ],
+  "title_display": "Coin: 1",
+  "weight_s": [
+      "8.26"
+  ]
+}

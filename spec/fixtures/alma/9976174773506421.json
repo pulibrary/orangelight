@@ -1,0 +1,160 @@
+{
+  "id": "9976174773506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Murakami, Haruki, 1949-"
+  ],
+  "author_citation_display": [
+    "Murakami, Haruki",
+    "Rubin, Jay",
+    "Gabriel, Philip"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Rubin, Jay\",\"Gabriel, Philip\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Murakami, Haruki\"}",
+  "author_s": [
+    "Murakami, Haruki, 1949-",
+    "Rubin, Jay, 1941-",
+    "Gabriel, Philip, 1953-"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "uniform_title_s": [
+    "1Q84. English"
+  ],
+  "title_display": "1Q84 [electronic resource] / Haruki Murakami ; translated from the Japanese by Jay Rubin and Philip Gabriel.",
+  "title_t": [
+    "1Q84 [electronic resource] / Haruki Murakami ; translated from the Japanese by Jay Rubin and Philip Gabriel."
+  ],
+  "title_citation_display": [
+    "1Q84"
+  ],
+  "compiled_created_t": [
+    "1Q84 [electronic resource] / Haruki Murakami ; translated from the Japanese by Jay Rubin and Philip Gabriel."
+  ],
+  "edition_display": [
+    "Kindle ed."
+  ],
+  "pub_created_display": [
+    "New York : Alfred A. Knopf, 2011."
+  ],
+  "pub_created_s": [
+    "New York : Alfred A. Knopf, 2011."
+  ],
+  "pub_citation_display": [
+    "New York: Alfred A. Knopf"
+  ],
+  "pub_date_display": [
+    "2011"
+  ],
+  "pub_date_start_sort": 2011,
+  "cataloged_tdt": "2021-07-21T03:33:46Z",
+  "format": [
+    "Book"
+  ],
+  "electronic_access_1display": "{\"http://libguides.princeton.edu/content.php?pid=295717&sid=2427989\":[\"libguides.princeton.edu\",\"Available only on a library iPad. Click here for information about iPad lending at Princeton University Library\"],\"http://amzn.to/tyIMJF\":[\"Amazon.com description of book\"]}",
+  "description_display": [
+    "1 electronic book (946 p.)"
+  ],
+  "description_t": [
+    "1 electronic book (946 p.)"
+  ],
+  "number_of_pages_citation_display": [
+    "1 electronic book (946 p.)"
+  ],
+  "geocode_display": [
+    "Japan"
+  ],
+  "related_record_info_display": [
+    "Print version:"
+  ],
+  "summary_note_display": [
+    "\"The year is 1984 and the city is Tokyo. A young woman named Aomame follows a taxi driver's enigmatic suggestion and begins to notice puzzling discrepancies in the world around her. She has entered, she realizes, a parallel existence, which she calls 1Q84 --“Q is for 'question mark.' A world that bears a question.\" Meanwhile, an aspiring writer named Tengo takes on a suspect ghostwriting project. He becomes so wrapped up with the work and its unusual author that, soon, his previously placid life begins to come unraveled. As Aomame's and Tengo's narratives converge over the course of this single year, we learn of the profound and tangled connections that bind them ever closer: a beautiful, dyslexic teenage girl with a unique vision; a mysterious religious cult that instigated a shoot-out with the metropolitan police; a reclusive, wealthy dowager who runs a shelter for abused women; a hideously ugly private investigator; a mild-mannered yet ruthlessly efficient bodyguard; and a peculiarly insistent television-fee collector. A love story, a mystery, a fantasy, a novel of self-discovery, a dystopia to rival George Orwell's--1Q84 is Haruki Murakami's most ambitious undertaking yet: an instant best seller in his native Japan, and a tremendous feat of imagination from one of our most revered contemporary writers. This eBook edition includes a Reading Group Guide.\""
+  ],
+  "notes_display": [
+    "Sold by: Random House Digital, Inc."
+  ],
+  "source_desc_notes_display": [
+    "Description based on print version record."
+  ],
+  "language_display": [
+    "In English; translated from the Japanese."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "contents_display": [
+    "Book 1. April-June -- Book 2. July-September -- Book 3. October-December."
+  ],
+  "lc_subject_display": [
+    "Man-woman relationships—Fiction",
+    "Japan—Fiction"
+  ],
+  "subject_facet": [
+    "Man-woman relationships—Fiction",
+    "Japan—Fiction",
+    "Fiction"
+  ],
+  "lcgft_s": [
+    "Fiction"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Rubin, Jay, 1941-\",\"Gabriel, Philip, 1953-\"]}",
+  "other_version_s": [
+    "ocn763332926",
+    "9780307593313",
+    "9781846556692",
+    "ocn701017688"
+  ],
+  "holdings_1display": "{\"22483295490006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"Firestone Library iPads\",\"call_number_browse\":\"Firestone Library iPads\",\"location_note\":[\"To borrow this ebook, please request an iPad from the circulation desk at Firestone Library\"]},\"22483295480006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"Lewis Library iPads\",\"call_number_browse\":\"Lewis Library iPads\",\"location_note\":[\"To borrow this ebook, please request an iPad from the circulation desk at Lewis Library\"]},\"22483295470006421\":{\"location_code\":\"engineer$stacks\",\"location\":\"Stacks\",\"library\":\"Engineering Library\",\"call_number\":\"Engineering Library iPads\",\"call_number_browse\":\"Engineering Library iPads\",\"location_note\":[\"To borrow this ebook, please request an iPad from the circulation desk at the Engineering Library\"]}}",
+  "location_code_s": [
+    "firestone$stacks",
+    "lewis$stacks",
+    "engineer$stacks"
+  ],
+  "location": [
+    "Firestone Library",
+    "Lewis Library",
+    "Engineering Library"
+  ],
+  "location_display": [
+    "Stacks",
+    "Stacks",
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "firestone$stacks",
+    "lewis$stacks",
+    "engineer$stacks",
+    "Firestone Library",
+    "Lewis Library",
+    "Engineering Library"
+  ],
+  "name_uniform_title_1display": "[[\"Murakami, Haruki, 1949-.\",\"1Q84.\",\"English\"]]",
+  "name_title_browse_s": [
+    "Murakami, Haruki, 1949-. 1Q84",
+    "Murakami, Haruki, 1949-. 1Q84. English"
+  ],
+  "call_number_display": [
+    "Firestone Library iPads",
+    "Lewis Library iPads",
+    "Engineering Library iPads"
+  ],
+  "call_number_browse_s": [
+    "Firestone Library iPads",
+    "Lewis Library iPads",
+    "Engineering Library iPads"
+  ],
+  "call_number_locator_display": [
+    "Firestone Library iPads",
+    "Lewis Library iPads",
+    "Engineering Library iPads"
+  ],
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53887401550006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[\"Available only on a library iPad. Click here for information about iPad lending at Princeton University Library\"]}"
+  ]
+}

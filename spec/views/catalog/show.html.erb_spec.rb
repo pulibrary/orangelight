@@ -84,8 +84,8 @@ RSpec.describe 'catalog/show' do
 
   describe 'the issue number' do
     it 'has a link to the issue' do
-      visit 'catalog/coin-1'
-      expect(page).to have_link('1', href: '/?f[issue_number_s][]=1')
+      visit 'catalog/coin-1167'
+      expect(page).to have_link('1', href: '/?f[issue_number_s][]=616')
     end
   end
 

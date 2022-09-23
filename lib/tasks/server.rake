@@ -29,6 +29,13 @@ namespace :servers do
   task stop: :environment do
     system("lando stop")
   end
+
+  desc "Index new fixtures and setup browse lists"
+  task index_fixtures: :environment do
+    Rake::Task["pulsearch:solr:index"].invoke
+    Rake::Task["browse:all"].invoke
+    Rake::Task["browse:load_all"].invoke
+  end
 end
 
 namespace :server do
