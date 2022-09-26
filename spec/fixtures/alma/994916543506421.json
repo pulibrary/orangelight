@@ -1,0 +1,153 @@
+{
+  "id": "994916543506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+    "United States"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"United States\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "United States. Bureau of the Census"
+  ],
+  "title_display": "County and city data book.",
+  "title_t": [
+    "County and city data book."
+  ],
+  "title_citation_display": [
+    "County and city data book"
+  ],
+  "compiled_created_t": [
+    "County and city data book."
+  ],
+  "pub_created_display": [
+    "[Washington, D.C.] : U.S. Dept. of Commerce, Bureau of the Census : [For sale by the Supt. of Docs., U.S. G.P.O.], 1952-2007"
+  ],
+  "pub_created_s": [
+    "[Washington, D.C.] : U.S. Dept. of Commerce, Bureau of the Census : [For sale by the Supt. of Docs., U.S. G.P.O.], 1952-"
+  ],
+  "pub_citation_display": [
+    "Washington, D.C.: For sale by the Supt. of Docs., U.S. G.P.O."
+  ],
+  "pub_date_display": [
+    "1949"
+  ],
+  "pub_date_start_sort": 1949,
+  "pub_date_end_sort": 2007,
+  "cataloged_tdt": "2002-04-22T10:59:00Z",
+  "format": [
+    "Journal"
+  ],
+  "electronic_access_1display": "{\"http://purl.access.gpo.gov/GPO/LPS29932\":[\"purl.access.gpo.gov\"]}",
+  "description_display": [
+    "v. : ill. ; 29 cm.",
+    "[1st ed.] (1949)-14th ed. (2007)."
+  ],
+  "description_t": [
+    "v. : ill. ; 29 cm.",
+    "[1st ed.] (1949)-14th ed. (2007)."
+  ],
+  "number_of_pages_citation_display": [
+    "v."
+  ],
+  "geocode_display": [
+    "United States"
+  ],
+  "frequency_display": [
+    "Irregular"
+  ],
+  "linking_notes_display": [
+    "Continues in part: Cities supplement, and also continues in part: County databook."
+  ],
+  "notes_display": [
+    "\"A statistical abstract supplement.\""
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "other_format_display": [
+    "Also issued on CD-ROM with title: County & city data book.",
+    "Also available via Internet from the Census Bureau web site. Address as of 6/13/03: http://www.census.gov /statab/www/ccdb.html; current access is available via PURL."
+  ],
+  "lc_subject_display": [
+    "Cities and towns—United States—Statistics—Periodicals",
+    "United States—Statistics—Periodicals"
+  ],
+  "subject_facet": [
+    "Cities and towns—United States—Statistics—Periodicals",
+    "United States—Statistics—Periodicals",
+    "Periodicals",
+    "Statistics"
+  ],
+  "lcgft_s": [
+    "Periodicals",
+    "Statistics"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"United States. Bureau of the Census\"]}",
+  "other_title_display": [
+    "Cty. city data book",
+    "County and city data book",
+    "Statistical abstract of the United States."
+  ],
+  "issn_display": [
+    "0082-9455"
+  ],
+  "sudoc_no_display": [
+    "C 56.243/2:C 83/",
+    "C 3.134/2:C 83/2/"
+  ],
+  "lccn_display": [
+    "   52004576 //r84 "
+  ],
+  "lccn_s": [
+    "52004576"
+  ],
+  "issn_s": [
+    "00829455"
+  ],
+  "oclc_s": [
+    "1184940"
+  ],
+  "other_version_s": [
+    "00829455",
+    "ocm01184940"
+  ],
+  "holdings_1display": "{\"22724991090006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"HA202 .U581\",\"call_number_browse\":\"HA202 .U581\",\"items\":[{\"holding_id\":\"22724991090006421\",\"enumeration\":\"1956\",\"id\":\"23724991000006421\",\"status_at_load\":\"1\",\"barcode\":\"32101082413400\",\"copy_number\":\"1\"},{\"holding_id\":\"22724991090006421\",\"enumeration\":\"1967\",\"id\":\"23724990960006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094934328\",\"copy_number\":\"1\"},{\"holding_id\":\"22724991090006421\",\"enumeration\":\"1994\",\"id\":\"23724991060006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094934252\",\"copy_number\":\"1\"},{\"holding_id\":\"22724991090006421\",\"enumeration\":\"2000 13th ed.\",\"id\":\"23724991070006421\",\"status_at_load\":\"1\",\"barcode\":\"32101044283008\",\"copy_number\":\"1\"},{\"holding_id\":\"22724991090006421\",\"enumeration\":\"1947\",\"id\":\"23724991080006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094934260\",\"copy_number\":\"1\"},{\"holding_id\":\"22724991090006421\",\"enumeration\":\"2007 14th ed.\",\"id\":\"23724991010006421\",\"status_at_load\":\"1\",\"barcode\":\"32101065305326\",\"copy_number\":\"1\"},{\"holding_id\":\"22724991090006421\",\"enumeration\":\"1983\",\"id\":\"23724991030006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094934245\",\"copy_number\":\"1\"},{\"holding_id\":\"22724991090006421\",\"enumeration\":\"1972\",\"id\":\"23724990990006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094934310\",\"copy_number\":\"1\"},{\"holding_id\":\"22724991090006421\",\"enumeration\":\"1988\",\"id\":\"23724991020006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094934237\",\"copy_number\":\"1\"},{\"holding_id\":\"22724991090006421\",\"enumeration\":\"1962\",\"id\":\"23724990970006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094934336\",\"copy_number\":\"1\"},{\"holding_id\":\"22724991090006421\",\"enumeration\":\"1977\",\"id\":\"23724990980006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094934302\",\"copy_number\":\"1\"}],\"location_has\":[\"1947, 1949, 1952, 1956, 1962, 1967, 1972, 1977, 1983, 1988, 1994, 2000, 2007\",\"CURRENT VOLUME IN: Trustee Reading Room Reference (DR) Ready Reference. Firestone\"],\"supplements\":[null,null],\"indexes\":[null,null]},\"22724990930006421\":{\"location_code\":\"lewis$stacks\",\"location\":\"Stacks\",\"library\":\"Lewis Library\",\"call_number\":\"HA202 .A36\",\"call_number_browse\":\"HA202 .A36\",\"items\":[{\"holding_id\":\"22724990930006421\",\"enumeration\":\"1967\",\"id\":\"23724990920006421\",\"status_at_load\":\"1\",\"barcode\":\"32101016113563\",\"copy_number\":\"1\"}],\"location_has\":[\"1967\"],\"supplements\":[null],\"indexes\":[null]}}",
+  "location_code_s": [
+    "recap$pa",
+    "lewis$stacks"
+  ],
+  "location": [
+    "ReCAP",
+    "Lewis Library"
+  ],
+  "location_display": [
+    "Remote Storage",
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "recap$pa",
+    "lewis$stacks",
+    "ReCAP",
+    "Lewis Library"
+  ],
+  "call_number_display": [
+    "HA202 .U581",
+    "HA202 .A36"
+  ],
+  "call_number_browse_s": [
+    "HA202 .U581",
+    "HA202 .A36"
+  ],
+  "call_number_locator_display": [
+    "HA202 .U581",
+    "HA202 .A36"
+  ],
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53841408340006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ]
+}

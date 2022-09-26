@@ -416,7 +416,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'issue_master_s', label: 'Master', helper_method: :link_to_search_value
     config.add_show_field 'issue_workshop_s', label: 'Workshop', helper_method: :link_to_search_value
     config.add_show_field 'issue_series_s', label: 'Series', helper_method: :link_to_search_value
-    config.add_show_field 'issue_artist_s', label: 'Artist', helper_method: :link_to_search_value
+    config.add_show_field 'issue_artists_s', label: 'Artist', helper_method: :link_to_search_value
     config.add_show_field 'issue_subject_s', label: 'Subject', helper_method: :link_to_search_value
     config.add_show_field 'issue_references_s', label: 'References', helper_method: :link_to_search_value
 

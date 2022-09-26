@@ -134,7 +134,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
     before do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/coin-1167/raw")
-        .to_return(status: 200, body: fixture('/coin-1167.json'), headers: {})
+        .to_return(status: 200, body: fixture('/numismatics/coin-1167.json'), headers: {})
     end
 
     describe "#numismatics?" do

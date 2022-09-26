@@ -1,0 +1,139 @@
+{
+  "id": "9968900573506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Murakami, Haruki, 1949-"
+  ],
+  "author_citation_display": [
+    "Murakami, Haruki",
+    "Rubin, Jay",
+    "Gabriel, Philip"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Rubin, Jay\",\"Gabriel, Philip\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Murakami, Haruki\"}",
+  "author_s": [
+    "Murakami, Haruki, 1949-",
+    "Rubin, Jay, 1941-",
+    "Gabriel, Philip, 1953-"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "uniform_title_s": [
+    "1Q84. English"
+  ],
+  "title_display": "1Q84 / Haruki Murakami ; translated from the Japanese by Jay Rubin and Philip Gabriel.",
+  "title_t": [
+    "1Q84 / Haruki Murakami ; translated from the Japanese by Jay Rubin and Philip Gabriel."
+  ],
+  "title_citation_display": [
+    "1Q84"
+  ],
+  "compiled_created_t": [
+    "1Q84 / Haruki Murakami ; translated from the Japanese by Jay Rubin and Philip Gabriel."
+  ],
+  "edition_display": [
+    "1st ed."
+  ],
+  "pub_created_display": [
+    "New York : Alfred A. Knopf, 2011."
+  ],
+  "pub_created_s": [
+    "New York : Alfred A. Knopf, 2011."
+  ],
+  "pub_citation_display": [
+    "New York: Alfred A. Knopf"
+  ],
+  "pub_date_display": [
+    "2011"
+  ],
+  "pub_date_start_sort": 2011,
+  "cataloged_tdt": "2011-11-22T10:59:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "925 p.; 24 cm."
+  ],
+  "description_t": [
+    "925 p.; 24 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "925 p."
+  ],
+  "geocode_display": [
+    "Japan"
+  ],
+  "summary_note_display": [
+    "An ode to George Orwell's \"1984\" told in alternating male and female voices relates the stories of Aomame, an assassin for a secret organization who discovers that she has been transported to an alternate reality, and Tengo, a mathematics lecturer and novice writer."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Man-woman relationships—Fiction",
+    "Japan—Fiction"
+  ],
+  "subject_facet": [
+    "Man-woman relationships—Fiction",
+    "Japan—Fiction",
+    "Fiction"
+  ],
+  "lcgft_s": [
+    "Fiction"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Rubin, Jay, 1941-\",\"Gabriel, Philip, 1953-\"]}",
+  "isbn_display": [
+    "9780307593313 (hardcover)",
+    "0307593312 (hardcover)"
+  ],
+  "lccn_display": [
+    "  2011014274"
+  ],
+  "lccn_s": [
+    "2011014274"
+  ],
+  "isbn_s": [
+    "9780307593313"
+  ],
+  "oclc_s": [
+    "701017688"
+  ],
+  "other_version_s": [
+    "ocn701017688",
+    "9780307593313"
+  ],
+  "holdings_1display": "{\"22580392270006421\":{\"location_code\":\"eastasian$gest\",\"location\":\"Western Languages\",\"library\":\"East Asian Library\",\"call_number\":\"PL856.U673 A61213 2011\",\"call_number_browse\":\"PL856.U673 A61213 2011\",\"items\":[{\"holding_id\":\"22580392270006421\",\"id\":\"23580392260006421\",\"status_at_load\":\"0\",\"barcode\":\"32101083017226\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "eastasian$gest"
+  ],
+  "location": [
+    "East Asian Library"
+  ],
+  "location_display": [
+    "Western Languages"
+  ],
+  "advanced_location_s": [
+    "eastasian$gest",
+    "East Asian Library"
+  ],
+  "name_uniform_title_1display": "[[\"Murakami, Haruki, 1949-.\",\"1Q84.\",\"English\"]]",
+  "name_title_browse_s": [
+    "Murakami, Haruki, 1949-. 1Q84",
+    "Murakami, Haruki, 1949-. 1Q84. English"
+  ],
+  "call_number_display": [
+    "PL856.U673 A61213 2011"
+  ],
+  "call_number_browse_s": [
+    "PL856.U673 A61213 2011"
+  ],
+  "call_number_locator_display": [
+    "PL856.U673 A61213 2011"
+  ]
+}

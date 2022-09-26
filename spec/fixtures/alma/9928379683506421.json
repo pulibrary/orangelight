@@ -1,0 +1,89 @@
+{
+  "id": "9928379683506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+    "JSTOR (Organization)"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"JSTOR (Organization)\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "JSTOR (Organization)"
+  ],
+  "title_display": "JSTOR [electronic resource] : the scholarly journal archive.",
+  "title_t": [
+    "JSTOR [electronic resource] : the scholarly journal archive."
+  ],
+  "title_citation_display": [
+    "JSTOR the scholarly journal archive"
+  ],
+  "compiled_created_t": [
+    "JSTOR [electronic resource] : the scholarly journal archive."
+  ],
+  "pub_created_display": [
+    "[New York] : JSTOR, [1995?]-"
+  ],
+  "pub_created_s": [
+    "[New York] : JSTOR, [1995?]-"
+  ],
+  "pub_citation_display": [
+    "New York: JSTOR"
+  ],
+  "pub_date_display": [
+    "1995"
+  ],
+  "pub_date_start_sort": 1995,
+  "pub_date_end_sort": 9999,
+  "cataloged_tdt": "2021-07-13T08:08:37Z",
+  "format": [
+    "Book"
+  ],
+  "electronic_access_1display": "{\"http://www.jstor.org/action/showAdvancedSearch\":[\"www.jstor.org\"]}",
+  "summary_note_display": [
+    "Provides page images of back issues of the core scholarly journals in the humanities and social sciences from the earliest issues to within a few years of current publication. Users may browse by journal title or discipline, or may search the full-text or citations/abstracts. New issues of existing titles and new titles are added on an ongoing basis."
+  ],
+  "notes_display": [
+    "Title from home page viewed on Mar. 26, 2001."
+  ],
+  "system_details_notes_display": [
+    "Mode of access: World Wide Web."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Humanities—Periodicals",
+    "Social sciences—Periodicals"
+  ],
+  "subject_facet": [
+    "Humanities—Periodicals",
+    "Social sciences—Periodicals",
+    "Periodicals"
+  ],
+  "lcgft_s": [
+    "Periodicals"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"JSTOR (Organization)\"]}",
+  "other_title_display": [
+    "Journal storage"
+  ],
+  "alt_title_246_display": [
+    "Journal storage"
+  ],
+  "lccn_display": [
+    "  2001522653"
+  ],
+  "lccn_s": [
+    "2001522653"
+  ],
+  "oclc_s": [
+    "46609535"
+  ],
+  "other_version_s": [
+    "ocm46609535"
+  ]
+}

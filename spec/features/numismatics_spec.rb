@@ -7,7 +7,7 @@ describe 'Numismatics Records' do
 
   context 'with a full coin record' do
     it 'displays numismatics fields' do
-      visit '/catalog/coin-1'
+      visit '/catalog/coin-constructed'
 
       expect(page).to have_content 'References'
       expect(page).to have_content 'Die Axis'

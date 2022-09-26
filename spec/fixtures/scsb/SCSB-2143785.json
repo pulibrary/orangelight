@@ -1,0 +1,132 @@
+{
+  "id": "SCSB-2143785",
+  "numeric_id_b": false,
+  "other_id_s": [
+    "285"
+  ],
+  "author_display": [
+    "Sadurska, Anna"
+  ],
+  "author_citation_display": [
+    "Sadurska, Anna"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Sadurska, Anna\"}",
+  "author_s": [
+    "Sadurska, Anna"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Le tombeau de famille de ʻAlainê / Anna Sadurska.",
+  "title_t": [
+    "Le tombeau de famille de ʻAlainê / Anna Sadurska."
+  ],
+  "title_citation_display": [
+    "Le tombeau de famille de ʻAlainê"
+  ],
+  "compiled_created_t": [
+    "Le tombeau de famille de ʻAlainê / Anna Sadurska."
+  ],
+  "pub_created_display": [
+    "Varsovie : PWN-Éditions scientifiques de Pologne, 1977."
+  ],
+  "pub_created_s": [
+    "Varsovie : PWN-Éditions scientifiques de Pologne, 1977."
+  ],
+  "pub_citation_display": [
+    "Varsovie: PWN-Éditions scientifiques de Pologne"
+  ],
+  "pub_date_display": [
+    "1977"
+  ],
+  "pub_date_start_sort": 1977,
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "228 pages : illustrations ; 30 cm."
+  ],
+  "description_t": [
+    "228 pages : illustrations ; 30 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "228 pages"
+  ],
+  "geocode_display": [
+    "Syria"
+  ],
+  "series_display": [
+    "Palmyre ; 7.",
+    "Palmyre ; 7"
+  ],
+  "more_in_this_series_t": [
+    "Palmyre"
+  ],
+  "notes_display": [
+    "Added t.p.: Grobowiec rodziny ʻAlainê.",
+    "Part of illustrative matter in pocket."
+  ],
+  "bib_ref_notes_display": [
+    "Bibliography: p. [7]-9."
+  ],
+  "language_facet": [
+    "French"
+  ],
+  "language_code_s": [
+    "fre"
+  ],
+  "language_iana_s": [
+    "fr"
+  ],
+  "lc_subject_display": [
+    "Sculpture—Syria—Tadmur",
+    "Lamps",
+    "Tombs—Syria—Tadmur"
+  ],
+  "subject_facet": [
+    "Sculpture—Syria—Tadmur",
+    "Lamps",
+    "Tombs—Syria—Tadmur"
+  ],
+  "other_title_display": [
+    "Grobowiec rodziny ʻAlainê."
+  ],
+  "lccn_display": [
+    "   77567102 "
+  ],
+  "lccn_s": [
+    "77567102"
+  ],
+  "oclc_s": [
+    "3605150"
+  ],
+  "other_version_s": [
+    "ocm03605150"
+  ],
+  "holdings_1display": "{\"2110046\":{\"location_code\":\"scsbcul\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"AA347 M58 v.7\",\"call_number_browse\":\"AA347 M58 v.7\",\"items\":[{\"holding_id\":\"2110046\",\"id\":\"3270290\",\"status_at_load\":\"Available\",\"barcode\":\"AR00234770\",\"copy_number\":\"1\",\"use_statement\":\"In Library Use\",\"storage_location\":\"RECAP\",\"cgd\":\"Shared\",\"collection_code\":\"AR\"}]}}",
+  "recap_notes_display": [
+    "C - S"
+  ],
+  "location_code_s": [
+    "scsbcul"
+  ],
+  "location": [
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage"
+  ],
+  "advanced_location_s": [
+    "scsbcul",
+    "ReCAP"
+  ],
+  "name_title_browse_s": [
+    "Sadurska, Anna. Le tombeau de famille de ʻAlainê"
+  ],
+  "call_number_display": [
+    "AA347 M58 v.7"
+  ],
+  "call_number_browse_s": [
+    "AA347 M58 v.7"
+  ]
+}

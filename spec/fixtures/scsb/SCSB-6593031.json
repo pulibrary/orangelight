@@ -1,0 +1,110 @@
+{
+  "id": "SCSB-6593031",
+  "numeric_id_b": false,
+  "other_id_s": [
+    ".b133676110"
+  ],
+  "author_display": [
+    "Viola, Orazio, 1868-"
+  ],
+  "author_citation_display": [
+    "Viola, Orazio"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Viola, Orazio\"}",
+  "author_s": [
+    "Viola, Orazio, 1868-"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "... Bibliografia italiana della pena di morte.",
+  "title_t": [
+    "... Bibliografia italiana della pena di morte."
+  ],
+  "title_citation_display": [
+    "... Bibliografia italiana della pena di morte"
+  ],
+  "compiled_created_t": [
+    "... Bibliografia italiana della pena di morte."
+  ],
+  "pub_created_display": [
+    "[Catania] Preminto stabilimento cronio-tipografico industriale, 1904."
+  ],
+  "pub_created_s": [
+    "[Catania] Preminto stabilimento cronio-tipografico industriale, 1904."
+  ],
+  "pub_citation_display": [
+    "Catania: Preminto stabilimento cronio-tipografico industriale"
+  ],
+  "pub_date_display": [
+    "1904"
+  ],
+  "pub_date_start_sort": 1904,
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "71 p. 24 cm."
+  ],
+  "description_t": [
+    "71 p. 24 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "71 p."
+  ],
+  "language_facet": [
+    "Italian"
+  ],
+  "language_code_s": [
+    "ita"
+  ],
+  "language_iana_s": [
+    "it"
+  ],
+  "lc_subject_display": [
+    "Capital punishment—Bibliography",
+    "Criminal law—Italy—Bibliography"
+  ],
+  "subject_facet": [
+    "Capital punishment—Bibliography",
+    "Criminal law—Italy—Bibliography"
+  ],
+  "lccn_display": [
+    "05027231 /revised"
+  ],
+  "lccn_s": [
+    "05027231"
+  ],
+  "oclc_s": [
+    "1862920"
+  ],
+  "other_version_s": [
+    "ocm01862920"
+  ],
+  "holdings_1display": "{\"6670178\":{\"location_code\":\"scsbnypl\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"SLP (Viola, O. Bibliografia italiana della pena di morte)\",\"call_number_browse\":\"SLP (Viola, O. Bibliografia italiana della pena di morte)\",\"items\":[{\"holding_id\":\"6670178\",\"id\":\"10842783\",\"status_at_load\":\"Available\",\"barcode\":\"33433115858387\",\"copy_number\":\"1\",\"use_statement\":\"Supervised Use\",\"storage_location\":\"RECAP\",\"cgd\":\"Shared\",\"collection_code\":\"NA\"}]}}",
+  "recap_notes_display": [
+    "N - S"
+  ],
+  "location_code_s": [
+    "scsbnypl"
+  ],
+  "location": [
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage"
+  ],
+  "advanced_location_s": [
+    "scsbnypl",
+    "ReCAP"
+  ],
+  "name_title_browse_s": [
+    "Viola, Orazio, 1868-. ... Bibliografia italiana della pena di morte"
+  ],
+  "call_number_display": [
+    "SLP (Viola, O. Bibliografia italiana della pena di morte)"
+  ],
+  "call_number_browse_s": [
+    "SLP (Viola, O. Bibliografia italiana della pena di morte)"
+  ]
+}

@@ -12,7 +12,7 @@ RSpec.describe SolrDocument do
   end
 
   describe '#to_marc' do
-    let(:bibid) { '6574987' }
+    let(:bibid) { '9965749873506421' }
     let(:properties) do
       {
         'id' => bibid
@@ -46,7 +46,7 @@ RSpec.describe SolrDocument do
   end
 
   describe '#export_as_marcxml' do
-    let(:bibid) { '6574987' }
+    let(:bibid) { '9965749873506421' }
     let(:properties) do
       {
         'id' => bibid
@@ -79,7 +79,7 @@ RSpec.describe SolrDocument do
   end
 
   describe '#export_as_refworks_marc_txt' do
-    let(:bibid) { '6574987' }
+    let(:bibid) { '9965749873506421' }
     let(:properties) do
       {
         'id' => bibid

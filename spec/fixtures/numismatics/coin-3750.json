@@ -1,0 +1,140 @@
+{
+  "id": "coin-3750",
+  "title_display": "Coin: 3750",
+  "pub_created_display": [
+    "Unknown, follis, Constantinople"
+  ],
+  "call_number_display": [
+    "Coin 3750"
+  ],
+  "call_number_browse_s": [
+    "Coin 3750"
+  ],
+  "location_code_s": [
+    "rare$num"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Special Collections - Numismatics Collection"
+  ],
+  "format": [
+    "Coin"
+  ],
+  "advanced_location_s": [
+    "rare$num"
+  ],
+  "notes_display": [
+    "Overstruck on Anon. Class A2, var. uncertain, oriented at 10 o'clock on obverse"
+  ],
+  "find_place_s": [
+    "Antioch, Syria"
+  ],
+  "find_date_s": [
+    "9/12/1934"
+  ],
+  "find_feature_s": [
+    "Street"
+  ],
+  "find_locus_s": [
+    "19-M"
+  ],
+  "find_number_s": [
+    "C3504"
+  ],
+  "die_axis_s": [
+    "6"
+  ],
+  "size_s": [
+    "32 in mm"
+  ],
+  "weight_s": [
+    "12.48 in grams"
+  ],
+  "holdings_1display": "{\"numismatics\":{\"location\":\"Special Collections - Numismatics Collection\",\"library\":\"Special Collections\",\"location_code\":\"rare$num\",\"call_number\":\"Coin 3750\",\"call_number_browse\":\"Coin 3750\"}}",
+  "numismatic_collection_s": [
+    "Antioch"
+  ],
+  "numismatic_accession_s": [
+    "Accession number: 179, 1939-01-01, Gift of: Antioch Excavation"
+  ],
+  "pub_date_start_sort": 1030,
+  "pub_date_end_sort": 1042,
+  "issue_object_type_s": [
+    "coin"
+  ],
+  "issue_denomination_s": [
+    "follis"
+  ],
+  "issue_number_s": [
+    "2024"
+  ],
+  "issue_metal_s": [
+    "Bronze"
+  ],
+  "issue_ruler_s": [
+    "Unknown"
+  ],
+  "issue_series_s": [
+    "Anonymous Folles, Class B"
+  ],
+  "issue_place_s": [
+    "Constantinople, Thrace, Byzantium"
+  ],
+  "issue_city_s": [
+    "Constantinople"
+  ],
+  "issue_state_s": [
+    "Thrace"
+  ],
+  "issue_region_s": [
+    "Byzantium"
+  ],
+  "issue_obverse_description_s": [
+    "Christ, bust, facing, with nimbus cross, right hand raised, left hand holding book"
+  ],
+  "issue_obverse_figure_s": [
+    "Christ"
+  ],
+  "issue_obverse_part_s": [
+    "bust"
+  ],
+  "issue_obverse_orientation_s": [
+    "facing"
+  ],
+  "issue_obverse_figure_description_s": [
+    "with nimbus cross, right hand raised, left hand holding book"
+  ],
+  "issue_obverse_legend_s": [
+    "+EMMA NOVHΛ"
+  ],
+  "issue_obverse_attributes_s": [
+    "inscription, IC XC",
+    "nimbus cross, in each arm, square with pellet at each corner",
+    "ornamentation on Gospel book, five dots :∙: on cover",
+    "nimbus cross, single pellet in each upper corner"
+  ],
+  "issue_reverse_description_s": [
+    "Legend, 3 lines, cross on base and two steps, pellet at end of each arm of the cross"
+  ],
+  "issue_reverse_figure_s": [
+    "Legend"
+  ],
+  "issue_reverse_figure_description_s": [
+    "3 lines, cross on base and two steps, pellet at end of each arm of the cross"
+  ],
+  "issue_reverse_legend_s": [
+    "ISXS/BASILE/BASILE"
+  ],
+  "issue_references_s": [
+    "DOC 3.676 B",
+    "Sear 377 1823",
+    "BN 599 41/Cp/AE/67",
+    "BMC.Byz. 497 (Class II) 6"
+  ],
+  "issue_monogram_1display": "[]",
+  "issue_date_s": [
+    "1030 to 1042"
+  ]
+}

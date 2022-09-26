@@ -54,7 +54,6 @@ describe 'advanced searching' do
       expect(page).to have_selector('label', exact_text: 'Ruler')
       expect(page).to have_selector('label', exact_text: 'Artist')
       expect(page).to have_selector('label', exact_text: 'Find Place')
-      expect(page).to have_selector('label', exact_text: 'Donor')
       expect(page).to have_selector('label', exact_text: 'Year')
       expect(page).to have_selector('label', exact_text: 'Keyword')
     end

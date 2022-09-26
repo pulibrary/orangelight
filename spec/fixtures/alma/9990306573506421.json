@@ -1,0 +1,128 @@
+{
+  "id": "9990306573506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Madec, Mary"
+  ],
+  "author_citation_display": [
+    "Madec, Mary"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Madec, Mary\"}",
+  "author_s": [
+    "Madec, Mary"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "uniform_title_s": [
+    "Poems. Selections"
+  ],
+  "title_display": "Demeter does not remember / Mary Madec.",
+  "title_t": [
+    "Demeter does not remember / Mary Madec."
+  ],
+  "title_citation_display": [
+    "Demeter does not remember"
+  ],
+  "compiled_created_t": [
+    "Demeter does not remember / Mary Madec."
+  ],
+  "pub_created_display": [
+    "Cliffs of Moher, County Clare, Ireland : Salmon Poetry, 2014."
+  ],
+  "pub_created_s": [
+    "Cliffs of Moher, County Clare, Ireland : Salmon Poetry, 2014."
+  ],
+  "pub_citation_display": [
+    "Cliffs of Moher, County Clare, Ireland: Salmon Poetry"
+  ],
+  "pub_date_display": [
+    "2014"
+  ],
+  "pub_date_start_sort": 2014,
+  "cataloged_tdt": "2015-05-15T10:59:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "69 pages ; 22 cm"
+  ],
+  "description_t": [
+    "69 pages ; 22 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "69 pages"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Demeter (Greek deity)—Poetry",
+    "Persephone (Greek deity)—Poetry",
+    "Women—Psychology—Poetry"
+  ],
+  "subject_facet": [
+    "Demeter (Greek deity)—Poetry",
+    "Persephone (Greek deity)—Poetry",
+    "Women—Psychology—Poetry",
+    "Poetry"
+  ],
+  "lcgft_s": [
+    "Poetry"
+  ],
+  "isbn_display": [
+    "9781908836311 (pbk.)",
+    "1908836318 (pbk.)"
+  ],
+  "lccn_display": [
+    "  2014472108"
+  ],
+  "lccn_s": [
+    "2014472108"
+  ],
+  "isbn_s": [
+    "9781908836311"
+  ],
+  "oclc_s": [
+    "887941255"
+  ],
+  "other_version_s": [
+    "9781908836311",
+    "ocn880500423",
+    "ocn887941255"
+  ],
+  "holdings_1display": "{\"22619331660006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"PR6113.A327 A6 2014\",\"call_number_browse\":\"PR6113.A327 A6 2014\",\"items\":[{\"holding_id\":\"22619331660006421\",\"id\":\"23619331650006421\",\"status_at_load\":\"1\",\"barcode\":\"32101091624187\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "firestone$stacks"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "firestone$stacks",
+    "Firestone Library"
+  ],
+  "name_uniform_title_1display": "[[\"Madec, Mary.\",\"Poems.\",\"Selections\"]]",
+  "name_title_browse_s": [
+    "Madec, Mary. Poems",
+    "Madec, Mary. Poems. Selections"
+  ],
+  "call_number_display": [
+    "PR6113.A327 A6 2014"
+  ],
+  "call_number_browse_s": [
+    "PR6113.A327 A6 2014"
+  ],
+  "call_number_locator_display": [
+    "PR6113.A327 A6 2014"
+  ]
+}

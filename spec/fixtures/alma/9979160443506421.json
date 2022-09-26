@@ -1,0 +1,118 @@
+{
+  "id": "9979160443506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Visnjic, Catherine"
+  ],
+  "author_citation_display": [
+    "Visnjic, Catherine",
+    "Princeton University"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Princeton University\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Visnjic, Catherine\"}",
+  "author_s": [
+    "Visnjic, Catherine",
+    "Princeton University. Department of Physics"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Data characteristics and preliminary results from the atacama b-mode search (ABS).",
+  "title_t": [
+    "Data characteristics and preliminary results from the atacama b-mode search (ABS)."
+  ],
+  "title_citation_display": [
+    "Data characteristics and preliminary results from the atacama b-mode search (ABS)."
+  ],
+  "compiled_created_t": [
+    "Data characteristics and preliminary results from the atacama b-mode search (ABS)."
+  ],
+  "pub_date_display": [
+    "2013"
+  ],
+  "pub_date_start_sort": 2013,
+  "cataloged_tdt": "2021-07-12T17:02:19Z",
+  "format": [
+    "Book"
+  ],
+  "electronic_access_1display": "{\"http://gateway.proquest.com/openurl?url_ver=Z39.88-2004&rft_val_fmt=info:ofi/fmt:kev:mtx:dissertation&res_dat=xri:pqm&rft_dat=xri:pqdiss:3597575\":[\"gateway.proquest.com\"],\"http://arks.princeton.edu/ark:/88435/dsp018w32r5735\":[\"arks.princeton.edu\"]}",
+  "description_display": [
+    "113 p."
+  ],
+  "description_t": [
+    "113 p."
+  ],
+  "number_of_pages_citation_display": [
+    "113 p."
+  ],
+  "geo_related_record_display": [
+    "Dissertation Abstracts International 75-02B(E)."
+  ],
+  "summary_note_display": [
+    "The Atacama B-Mode Search (ABS) is a 145 GHz polarimeter located at a high altitude site on Cerro Toco, in the Andes of northern Chile. Having deployed in early 2012, it is currently in its second year of operation, observing the polarization of the Cosmic Microwave Background (CMB). It seeks to probe the as yet undetected odd-parity B-modes of the polarization, which would have been created by the primordial gravitational wave background (GWB) predicted by theories of inflation. The magnitude of the B-mode signal is characterized by the tensor-to-scalar ratio, r. ABS features 60 cm cryogenic reflectors in the crossed-Dragone configuration, and a warm, continuously rotating sapphire half-wave plate to modulate the polarization of incoming radiation. The focal plane consists of 480 antenna-coupled transition edge sensor bolometers, arranged in orthogonal pairs for polarization sensitivity, and coupled to feedhorns in a hexagonal array. In this thesis we describe the ABS instrument in the state in which it is now operating, outline the first season of observations, and characterize the data obtained. Focusing on observations of the primary CMB field during a one month reference period, we detail the algorithms currently used to select the data suitable for making maps. This is the first pass at data cuts and provides a conservative estimate for the sensitivity of ABS to the polarization modes in the sky. We project that with one year total observation time of the primary CMB field, ABS should be able to detect the B-mode signal at roughly the level of r = 0.03."
+  ],
+  "notes_display": [
+    "Source: Dissertation Abstracts International, Volume: 75-02(E), Section: B.",
+    "Page, Lyman A., advisor",
+    "Bialek, William, committee member",
+    "Jones, William, committee member"
+  ],
+  "dissertation_notes_display": [
+    "Ph.D. Princeton University 2013"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Princeton University. Department of Physics\"]}",
+  "in_display": [
+    "Dissertation Abstracts International 75-02B(E)."
+  ],
+  "isbn_display": [
+    "9781303457036"
+  ],
+  "isbn_s": [
+    "9781303457036"
+  ],
+  "oclc_s": [
+    "869427278"
+  ],
+  "other_version_s": [
+    "9781303457036",
+    "ocn869427278"
+  ],
+  "holdings_1display": "{\"22487110470006421\":{\"location_code\":\"mudd$ph\",\"location\":\"Remote Storage (ReCAP): Mudd Library Use Only\",\"library\":\"Mudd Manuscript Library\",\"call_number\":\"PRIN 685 2013\",\"call_number_browse\":\"PRIN 685 2013\",\"items\":[{\"holding_id\":\"22487110470006421\",\"id\":\"23487110460006421\",\"status_at_load\":\"1\",\"barcode\":\"32101069542494\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "mudd$ph"
+  ],
+  "location": [
+    "Mudd Manuscript Library"
+  ],
+  "location_display": [
+    "Remote Storage (ReCAP): Mudd Library Use Only"
+  ],
+  "advanced_location_s": [
+    "mudd$ph",
+    "Mudd Manuscript Library"
+  ],
+  "name_title_browse_s": [
+    "Visnjic, Catherine. Data characteristics and preliminary results from the atacama b-mode search (ABS)."
+  ],
+  "call_number_display": [
+    "PRIN 685 2013"
+  ],
+  "call_number_browse_s": [
+    "PRIN 685 2013"
+  ],
+  "call_number_locator_display": [
+    "PRIN 685 2013"
+  ],
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53876369280006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}",
+    "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53876369300006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "9947053043506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513",
+    "دواني، محمد بن اسعد"
+  ],
+  "author_citation_display": [
+    "Dawwānī, Muḥammad ibn Asʻad"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"دواني، محمد بن اسعد\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Dawwānī, Muḥammad ibn Asʻad\"}",
+  "author_s": [
+    "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513",
+    "دواني، محمد بن اسعد"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Risālat al-Zawrāʼ. Ḥāshiyah ʻalá al-Zawrāʼ ... [etc.].",
+  "title_vern_display": "رسالة الزوراء. حاشية على الزوراء",
+  "title_t": [
+    "Risālat al-Zawrāʼ. Ḥāshiyah ʻalá al-Zawrāʼ ... [etc.]."
+  ],
+  "title_citation_display": [
+    "Risālat al-Zawrāʼ. Ḥāshiyah ʻalá al-Zawrāʼ ... [etc.].",
+    "رسالة الزوراء. حاشية على الزوراء"
+  ],
+  "compiled_created_t": [
+    "Risālat al-Zawrāʼ. Ḥāshiyah ʻalá al-Zawrāʼ ... [etc.].",
+    "رسالة الزوراء. حاشية على الزوراء"
+  ],
+  "pub_created_display": [
+    "[1501]"
+  ],
+  "pub_created_s": [
+    "[1501]"
+  ],
+  "pub_date_display": [
+    "1501"
+  ],
+  "pub_date_start_sort": 1501,
+  "cataloged_tdt": "2006-04-19T10:59:00Z",
+  "format": [
+    "Manuscript",
+    "Book"
+  ],
+  "electronic_access_1display": "{\"https://catalog.princeton.edu/catalog/4705304#view\":[\"Digital content\"],\"iiif_manifest_paths\":{\"http://arks.princeton.edu/ark:/88435/9k41zd556\":\"https://figgy.princeton.edu/concern/scanned_resources/723dfe7d-bf8c-4946-8f5a-7a5eb9189f27/manifest\"}}",
+  "description_display": [
+    "i, 150 leaves, i : paper, ill. ; 170 x 101 (125 x 55) mm. bound to 175 x 111 mm."
+  ],
+  "description_t": [
+    "i, 150 leaves, i : paper, ill. ; 170 x 101 (125 x 55) mm. bound to 175 x 111 mm."
+  ],
+  "number_of_pages_citation_display": [
+    "i, 150 leaves, i"
+  ],
+  "geocode_display": [
+    "New Jersey"
+  ],
+  "related_record_s": [
+    "9947053073506421",
+    "9947053403506421",
+    "9947053593506421",
+    "9947053653506421",
+    "9947053693506421",
+    "9947053773506421",
+    "9947053743506421",
+    "9947053833506421",
+    "9947053863506421"
+  ],
+  "summary_note_display": [
+    "Illuminated copy of nine texts and commentaries on kalām and logic."
+  ],
+  "notes_display": [
+    "Title supplied by cataloger.",
+    "Ms. codex.",
+    "19 lines per page. Written in a small naskh using black ink, with some red for important words, to write \"qawluh\" or to underline the commented text. Illuminated headpiece on fol. 1b. From text 2, the beginning of each text is decorated by an illuminated panel with the same floral motifs (fol. 7b, 21b, 27b, 32b, 44b, 56b, 98b, 133b). The text is written within a gilt and red and blue border, with a red outerframe on the edge of the page. The occasional marginalia are from the author. Contains some collation notes. Table of contents by a later hand on fol. 1a (prev. 2a). Modern foliation in pencil using Western numerals (includes the first free endpaper ; fol. between fol. 7 and 8 blank).",
+    "Decoration: Contains six miniatures, representing learned men (fol. 27a, 54b, 103a, 132b, 133a, 140b). On fol 27a : Outdoor scene representing a sitting man wearing a brown and green garnment and a white and red turban. On fol. 54b : Outdoor scene with two men facing each other, the one on the left reading a text on a roll and the one of the right pointing to the sky with the index of his right hand, and to the ground with the index of his left hand. On fol. 103a : Indoor scene with two sitting men. The one on the left, dressed in green and red, reads a book to the one one the right, dressed in yellow. On fol. 132b : A standing man dressed in blue and yellow meditating. On fol. 133a : A standing man dressed in green and purple with a cane in his right hand meditating. On fol. 140b : Indoor scene representing two men sitting and discussing on the fore ground with a book laying between them; third man in the background coming in, a leaf with text in his hand.",
+    "Copied from Ṣafar to Rabīʻ al-Thānī 907 by Aḥmad ibn ʻAlī ibn Abī Bakr (colophons)."
+  ],
+  "binding_note_display": [
+    "Upper and lower covers made of dark-brown leather over paper pasteboards with deeply impressed gold and black corner pieces and central mandorla with two pendants on the vertical axis. Repaired and re-backed."
+  ],
+  "language_facet": [
+    "Arabic"
+  ],
+  "language_code_s": [
+    "ara"
+  ],
+  "language_iana_s": [
+    "ar"
+  ],
+  "contents_display": [
+    "1. fol. 1b-7a : [Risalat al-Zawrāʼ] / Muḥammad ibn Asʻad Dawwānī.",
+    "2. fol. 7b-21a : al-Ḥāshiyah ʻalá al-Zawrāʼ / Muḥammad ibn Asʻad Dawwānī.",
+    "3. fol. 21b-26b : al-Ḥāshiyah ʻalá khuṭbat al-Zawrāʼ / Muḥammad ibn Asʻad Dawwānī.",
+    "4. fol. 27b-32a : al-Risālah fī khalq al-aʻmāl / Muḥammad ibn Asʻad Dawwānī.",
+    "5. fol. 32b-43b : Risālah fī taʻrīf ʻilm al-kalām / Muḥammad ibn Asʻad Dawwānī.",
+    "6. fol. 44b-56a : Sharḥ khuṭbat al-Ṭawāliʻ / Muḥammad ibn Asʻad Dawwānī.",
+    "7. fol. 56b-97b : Ḥāshiyat al-Tahdhīb / Muḥammad ibn Asʻad Dawwānī.",
+    "8. fol. 98b-132a : [Ḥawāshī ʻalá Maṭāliʻ al-anwār] / Muḥammad ibn Asʻad Dawwānī.",
+    "9. fol. 133b-150b : Ḥāshiyat al-Risālah al-shamsīyah / Muḥammad ibn Asʻad Dawwānī."
+  ],
+  "lc_subject_display": [
+    "Islam—Doctrines—Early works to 1800",
+    "Manuscripts, Arabic—New Jersey—Princeton"
+  ],
+  "subject_facet": [
+    "Islam—Doctrines—Early works to 1800",
+    "Manuscripts, Arabic—New Jersey—Princeton",
+    "Illuminated manuscripts—Islamic Empire—16th century",
+    "Headpieces (layout features)—Islamic Empire—16th century"
+  ],
+  "aat_s": [
+    "Illuminated manuscripts—Islamic Empire—16th century",
+    "Headpieces (layout features)—Islamic Empire—16th century"
+  ],
+  "oclc_s": [
+    "67146416"
+  ],
+  "other_version_s": [
+    "ocm67146416"
+  ],
+  "holdings_1display": "{\"22529761760006421\":{\"location_code\":\"rare$hsvm\",\"location\":\"Manuscripts\",\"library\":\"Special Collections\",\"call_number\":\"Islamic Manuscripts, New Series no. 1948\",\"call_number_browse\":\"Islamic Manuscripts, New Series no. 1948\",\"items\":[{\"holding_id\":\"22529761760006421\",\"id\":\"23529761750006421\",\"status_at_load\":\"1\",\"barcode\":\"32101054081581\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "rare$hsvm"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Manuscripts"
+  ],
+  "advanced_location_s": [
+    "rare$hsvm",
+    "Special Collections"
+  ],
+  "name_title_browse_s": [
+    "Dawwānī, Muḥammad ibn Asʻad, 1426 or 1427-1512 or 1513. Risālat al-Zawrāʼ",
+    "دواني، محمد بن اسعد. رسالة الزوراء"
+  ],
+  "call_number_display": [
+    "Islamic Manuscripts, New Series no. 1948"
+  ],
+  "call_number_browse_s": [
+    "Islamic Manuscripts, New Series no. 1948"
+  ],
+  "call_number_locator_display": [
+    "Islamic Manuscripts, New Series no. 1948"
+  ],
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53854579440006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ]
+}
