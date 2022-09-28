@@ -5,6 +5,8 @@ include Requests::ApplicationHelper
 
 module Requests
   class RequestController < ApplicationController
+    before_action :authenticate_user!, except: [:index]
+
     def index
       redirect_to('/')
     end

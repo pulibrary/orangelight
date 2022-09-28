@@ -9,6 +9,9 @@ describe Requests::RequestController, type: :controller, vcr: { cassette_name: '
   let(:user) { FactoryBot.create(:user) }
 
   describe 'POST #generate' do
+    before do
+      sign_in(user)
+    end
     it 'handles access patron params when the user form is posted' do
       post :generate, params: { request: { username: 'foobar', email: 'foo@bar.com' },
                                 source: 'pulsearch',
