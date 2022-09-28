@@ -18,7 +18,7 @@ describe Requests::RequestDecorator do
   let(:requestable) { instance_double(Requests::RequestableDecorator, stubbed_questions) }
   let(:request) do
     instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [requestable], patron: patron, first_filtered_requestable: requestable,
-                                       display_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, language: 'en', eligible_for_library_services?: true)
+                                       display_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, language: 'en', eligible_for_library_services?: patron.eligible_for_library_services?)
   end
   let(:solr_context) { instance_double(Requests::SolrOpenUrlContext) }
   let(:stubbed_questions) { {} }
@@ -37,47 +37,31 @@ describe Requests::RequestDecorator do
   end
 
   describe "#patron_message" do
-    it 'does not show the message for the campus unauthorized patron' do
-      expect(decorator.patron_message).to eq ""
-    end
-
-    context "Guest user" do
-      let(:test_patron) { FactoryBot.create(:unauthorized_princeton_patron) }
-      it 'shows the message for the campus unauthorized patron' do
-        expect(decorator.patron_message).to eq "<div class='alert alert-warning'>You are not currently authorized for on-campus services at the Library. Please send an inquiry to <a href='mailto:refdesk@princeton.edu'>refdesk@princeton.edu</a> if you believe you should have access to these services.</div>"
-      end
-    end
-
     context "student ldap status" do
       let(:ldap) { { status: 'student', pustatus: "undergraduate" } }
-      it 'does not show the message for the campus unauthorized patron' do
+      it 'does not show a message' do
         expect(decorator.patron_message).to be_blank
       end
     end
 
     context "staff ldap status" do
       let(:ldap) { { status: 'staff' } }
-      it 'does not show the message for the campus unauthorized patron' do
+      it 'does not show a message' do
         expect(decorator.patron_message).to eq ""
       end
     end
 
     context "faculty ldap status" do
       let(:ldap) { { status: 'faculty' } }
-      it 'does not show the message for the campus unauthorized patron' do
+      it 'does not show a message' do
         expect(decorator.patron_message).to eq ""
       end
     end
 
-    context "staff with access to campus" do
-      let(:test_patron) do
-        { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
-          "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
-          "patron_id" => "99999", "active_email" => "foo@princeton.edu",
-          ldap: ldap, campus_authorized: true }.with_indifferent_access
-      end
-
-      it 'does not show the message for the campus unauthorized patron' do
+    context 'user not yet logged in' do
+      let(:user) { FactoryBot.build(:user, guest: true, uid: nil) }
+      let(:patron) { Requests::Patron.new(user: user, session: {}, patron: HashWithIndifferentAccess.new) }
+      it 'does not show a message' do
         expect(decorator.patron_message).to eq ""
       end
     end
@@ -148,14 +132,14 @@ describe Requests::RequestDecorator do
     end
 
     context "on_shelf services with no item data and circulates" do
-      let(:stubbed_questions) { { services: ['on_shelf'], patron: patron, item_data?: false, circulates?: true, eligible_to_pickup?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, user_barcode: '111222', ask_me?: false, recap?: false, annex?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, open_libraries: ['abc'], library_code: 'abc', eligible_for_library_services?: true } }
+      let(:stubbed_questions) { { services: ['on_shelf'], patron: patron, item_data?: false, circulates?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, user_barcode: '111222', ask_me?: false, recap?: false, annex?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, open_libraries: ['abc'], library_code: 'abc', eligible_for_library_services?: true } }
       it "submits via form" do
         expect(decorator.any_will_submit_via_form?).to be_truthy
       end
     end
 
     context "on_shelf services with no item data and circulates" do
-      let(:stubbed_questions) { { services: ['on_shelf'], patron: patron, item_data?: false, circulates?: false, recap_edd?: false, eligible_to_pickup?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, user_barcode: '111222', ask_me?: false, recap?: false, annex?: false, clancy?: false, item_at_clancy?: false, held_at_marquand_library?: false, open_libraries: ['abc'], library_code: 'abc', eligible_for_library_services?: true } }
+      let(:stubbed_questions) { { services: ['on_shelf'], patron: patron, item_data?: false, circulates?: false, recap_edd?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, user_barcode: '111222', ask_me?: false, recap?: false, annex?: false, clancy?: false, item_at_clancy?: false, held_at_marquand_library?: false, open_libraries: ['abc'], library_code: 'abc', eligible_for_library_services?: true } }
       it "does not submit via form" do
         expect(decorator.any_will_submit_via_form?).to be_falsey
       end

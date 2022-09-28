@@ -14,7 +14,7 @@ module Requests
     delegate :pageable_loc?, to: :@pageable
     delegate :map_url, to: :@mappable
     delegate :illiad_request_url, :illiad_request_parameters, to: :@illiad
-    delegate :campus_authorized, :covid_trained?, :eligible_to_pickup?, :eligible_for_library_services?, to: :@patron
+    delegate :eligible_for_library_services?, to: :@patron
 
     include Requests::Aeon
 
