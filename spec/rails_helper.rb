@@ -56,6 +56,8 @@ RSpec.configure do |config|
   config.include Features::SessionHelpers, type: :feature
   config.include Devise::Test::IntegrationHelpers, type: :request
 
+  config.include ViewComponent::TestHelpers, type: :component
+
   config.before(:each, type: :feature) do
     Warden.test_mode!
     OmniAuth.config.test_mode = true
