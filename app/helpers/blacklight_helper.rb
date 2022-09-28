@@ -126,7 +126,7 @@ module BlacklightHelper
     document = args.first
     tag = options.fetch(:tag, :h4)
     document ||= @document
-    content_tag(tag, presenter(document).heading, itemprop: "name", lang: language_iana)
+    content_tag(tag, document_presenter(document).heading, itemprop: "name", lang: language_iana)
   end
 
   ##
@@ -231,7 +231,7 @@ module BlacklightHelper
                   else
                     index_presenter(doc).label(field_or_string, opts)
                   end
-    label = label_value.truncate(length).html_safe
+    label = label_value.truncate(length, separator: /\s/).html_safe
     link_to label, url_for_document(doc), document_link_params(doc, opts)
   end
 

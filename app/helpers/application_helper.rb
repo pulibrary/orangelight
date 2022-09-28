@@ -95,20 +95,6 @@ module ApplicationHelper
     end
   end
 
-  # Blacklight show field helper for the facet "series_display"
-  # @param args [Hash]
-  def series_with_links(args)
-    series_titles = args[:document]['more_in_this_series_t'] || []
-    args[:document][args[:field]].each_with_index do |title, i|
-      newtitle = title
-      unless (series_name = series_titles.find { |t| title.start_with?(t) }).nil?
-        newtitle << %(  #{more_in_this_series_link(series_name)})
-        series_titles.delete(series_name)
-      end
-      args[:document][args[:field]][i] = newtitle.html_safe
-    end
-  end
-
   # Blacklight index field helper for the facet "series_display"
   # @param args [Hash]
   def series_results(args)
@@ -127,28 +113,6 @@ module ApplicationHelper
   # @param [Array<String>] similarly named series
   def same_series_result(series, series_display)
     series_display.select { |t| t.start_with?(series) }
-  end
-
-  # Generate a query link for all items within a given series using a title
-  # @param title [String] the title of the series
-  # @return [String] the link markup
-  def more_in_this_series_link(title)
-    no_parens = title.gsub(/[()]/, '')
-    link_to('[More in this series]', "/catalog?q1=#{CGI.escape no_parens}&f1=in_series&search_field=advanced",
-            class: 'more-in-series', 'data-toggle' => 'tooltip',
-            'data-original-title' => "More in series: #{title}", title: "More in series: #{title}",
-            dir: title.dir.to_s)
-  end
-
-  # For reference notes that end with a url convert the note into link
-  # @param args [Hash]
-  def references_url(args)
-    args[:document][args[:field]].each_with_index do |reference, i|
-      if (url = reference[/ (http.*)$/])
-        reference = reference.chomp(url)
-        args[:document][args[:field]][i] = link_to(reference, url.gsub(/\s/, ''), target: '_blank', rel: 'noopener')
-      end
-    end
   end
 
   # Determines whether or not this is an aeon location (for an item holding)
@@ -288,7 +252,7 @@ module ApplicationHelper
       end
       all_subjects[i] = subject.split(QUERYSEP)
     end
-    args[:document][args[:field]].each_with_index do |_subject, i|
+    subject_list = args[:document][args[:field]].each_with_index do |_subject, i|
       lnk = ''
       lnk_accum = ''
       full_sub = ''
@@ -302,31 +266,8 @@ module ApplicationHelper
       lnk += link_to('[Browse]', "/browse/subjects?q=#{CGI.escape full_sub}", class: 'browse-subject', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{full_sub}", title: "Browse: #{full_sub}", dir: full_sub.dir.to_s)
       args[:document][args[:field]][i] = lnk.html_safe
     end
-  end
-
-  def browse_name(args)
-    args[:document][args[:field]].each_with_index do |name, i|
-      newname = link_to(name, "/?f[author_s][]=#{CGI.escape name}", class: 'search-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name}", title: "Search: #{name}") + '  ' +
-                link_to('[Browse]', "/browse/names?q=#{CGI.escape name}", class: 'browse-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{name}", title: "Browse: #{name}", dir: name.dir.to_s)
-      args[:document][args[:field]][i] = newname.html_safe
-    end
-  end
-
-  def name_title(args)
-    args[:document][args[:field]].each_with_index do |name_t, i|
-      next unless args[:document]['name_title_browse_s']&.include?(name_t)
-      newname_t = link_to(name_t, "/?f[name_title_browse_s][]=#{CGI.escape name_t}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{name_t}", title: "Search: #{name_t}") + '  ' +
-                  link_to('[Browse]', "/browse/name_titles?q=#{CGI.escape name_t}", class: 'browse-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{name_t}", title: "Browse: #{name_t}", dir: name_t.dir.to_s)
-      args[:document][args[:field]][i] = newname_t.html_safe
-    end
-  end
-
-  def link_to_search_value(args)
-    if args[:document][args[:field]].present?
-      args[:document][args[:field]].each_with_index do |field, i|
-        field_link = link_to(field, "/?f[#{args[:field]}][]=#{CGI.escape field}", class: 'search-name', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{field}", title: "Search: #{field}")
-        args[:document][args[:field]][i] = field_link
-      end
+    content_tag :ul do
+      subject_list.each { |subject| concat(content_tag(:li, subject, dir: subject.dir)) }
     end
   end
 
@@ -388,7 +329,9 @@ module ApplicationHelper
   def format_icon(args)
     icon = render_icon(args[:document][args[:field]][0]).to_s
     formats = format_render(args)
-    "#{icon} #{formats}".html_safe
+    content_tag :ul do
+      content_tag :li, " #{icon} #{formats} ".html_safe, class: 'blacklight-format', dir: 'ltr'
+    end
   end
 
   def format_render(args)
@@ -461,11 +404,6 @@ module ApplicationHelper
   def current_year
     DateTime.now.year
   end
-
-  def scsb_note(args)
-    args[:document][args[:field]].uniq
-  end
-  alias recap_note scsb_note
 
   # Construct an adapter for Solr Documents and the bib. data service
   # @return [HoldingRequestsAdapter]

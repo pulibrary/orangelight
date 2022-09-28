@@ -125,12 +125,12 @@ describe 'blacklight tests' do
       fullsubject.each_with_index do |subject, i|
         sub_component[i].each do |component|
           c = Regexp.escape(component)
-          expect(response.body.include?('class="search-subject" data-toggle="'\
+          expect(response.body).to include('class="search-subject" data-toggle="'\
                                         'tooltip" data-original-title="Search: '\
                                         "#{subject[/.*#{c}/]}\" title=\"Search: "\
                                         "#{subject[/.*#{c}/]}\" href=\"/?f[subject_facet][]="\
                                         "#{CGI.escape subject[/.*#{c}/]}\">"\
-                                        "#{component}</a>")).to eq true
+                                        "#{component}</a>")
         end
       end
     end
@@ -147,16 +147,16 @@ describe 'blacklight tests' do
       author_vern = r['author_display'][1]
       doc_id = r['id']
       get '/catalog?&search_field=all_fields&q=9947053043506421'
-      expect(response.body.include?('dir="rtl" style="float: right;" href="'\
-                                    "/catalog/#{doc_id}\">#{title_vern}</a>")).to eq true
-      expect(response.body.include?('<li dir="ltr"> <a class="search-name" data-toggle="'\
+      expect(response.body).to include('dir="rtl" style="float: right;" href="'\
+                                    "/catalog/#{doc_id}\">#{title_vern}</a>")
+      expect(response.body).to include('<li class="blacklight-author_display" dir="ltr"><a class="search-name" data-toggle="'\
                                     "tooltip\" data-original-title=\"Search: #{author}\" title"\
-                                    "=\"Search: #{author}\" href=\"/?f[author_s][]=#{CGI.escape author}\">"\
-                                    "#{author}</a>")).to eq true
-      expect(response.body.include?('<li dir="rtl"> <a class="search-name" data-toggle="'\
+                                    "=\"\" href=\"/?f[author_s][]=#{CGI.escape author}\">"\
+                                    "#{author}</a>")
+      expect(response.body).to include('<li class="blacklight-author_display" dir="rtl"><a class="search-name" data-toggle="'\
                                     "tooltip\" data-original-title=\"Search: #{author_vern}\" "\
-                                    "title=\"Search: #{author_vern}\" href=\"/?f[author_s][]="\
-                                    "#{CGI.escape author_vern}\">#{author_vern}</a>")).to eq true
+                                    "title=\"\" href=\"/?f[author_s][]="\
+                                    "#{CGI.escape author_vern}\">#{author_vern}</a>")
     end
     it 'adds ltr rtl dir for title and other fields in document view' do
       get '/catalog/9947053073506421/raw'
@@ -165,9 +165,9 @@ describe 'blacklight tests' do
       note = r['notes_display'][0]
       note_vern = r['notes_display'].last
       get '/catalog/9947053073506421'
-      expect(response.body.include?("<h1 dir=\"rtl\" lang=\"ar\"> #{title_vern} </h1>")).to eq true
-      expect(response.body.include?("<li dir=\"ltr\"> #{note} </li>")).to eq true
-      expect(response.body.include?("<li dir=\"rtl\"> #{note_vern} </li>")).to eq true
+      expect(response.body).to include("<h1 dir=\"rtl\" lang=\"ar\"> #{title_vern} </h1>")
+      expect(response.body).to include("<li class=\"blacklight-notes_display\" dir=\"ltr\">#{note}</li>")
+      expect(response.body).to include("<li class=\"blacklight-notes_display\" dir=\"rtl\">#{note_vern}</li>")
     end
   end
 
