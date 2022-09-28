@@ -61,6 +61,30 @@ RSpec.describe ApplicationController, type: :request do
           expect(response).to redirect_to('/bookmarks')
         end
       end
+      # rubocop:disable RSpec/AnyInstance
+      context 'only with devise stored_location_for' do
+        before do
+          allow_any_instance_of(Devise::Controllers::StoreLocation).to receive(:stored_location_for)
+            .and_return('/requests/SCSB-2143785')
+        end
+        context 'with a CAS user' do
+          let(:user) { FactoryBot.create(:valid_princeton_patron) }
+
+          it 'redirects the user to the stored resource' do
+            get '/users/sign_in'
+            expect(response).to redirect_to('/requests/SCSB-2143785')
+          end
+        end
+        context 'with an Alma user' do
+          let(:user) { FactoryBot.create(:valid_alma_patron) }
+
+          it 'redirects the user to the stored resource' do
+            get '/users/sign_in'
+            expect(response).to redirect_to('/requests/SCSB-2143785')
+          end
+        end
+      end
+      # rubocop:enable RSpec/AnyInstance
     end
 
     context "as an unauthenticated user" do

@@ -71,4 +71,37 @@ describe 'Account login' do
       end
     end
   end
+  describe 'Alma account login from requests page' do
+    let(:alma_user) { FactoryBot.create(:valid_alma_patron) }
+    let(:valid_patron_response) { File.open(fixture_path + '/bibdata_patron_response.json') }
+    let(:valid_patron_record_uri) { "#{Requests.config['bibdata_base']}/patron/#{alma_user.uid}" }
+    let(:expected_login_url) { 'https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/Alma%20Patron?op=auth&password=foobarfoo' }
+    before do
+      stub_holding_locations
+      stub_delivery_locations
+      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-2143785/raw")
+        .to_return(status: 200, body: fixture('/scsb/SCSB-2143785.json'), headers: {})
+      stub_request(:get, "#{Requests::Config[:bibdata_base]}/locations/holding_locations/scsbcul.json")
+        .to_return(status: 200, body: fixture('/bibdata/scsbcul_holding_locations.json'))
+      stub_request(:get, "#{Requests::Config[:bibdata_base]}/bibliographic/SCSB-2143785/holdings/2110046/availability.json")
+        .to_return(status: 400)
+      stub_request(:post, expected_login_url)
+        .to_return(status: 204)
+      stub_request(:get, valid_patron_record_uri)
+        .to_return(status: 200, body: valid_patron_response, headers: {})
+    end
+
+    it 'logs the user in', js: true do
+      visit "/catalog/SCSB-2143785"
+      click_link('Request')
+      expect(page.body).to include('Log in with Alma Account (affiliates)')
+      click_link('Log in with Alma Account (affiliates)')
+      fill_in(id: 'username', with: alma_user.username)
+      fill_in(id: 'password', with: alma_user.password)
+      click_button('Log in')
+      expect(WebMock).to have_requested(:post, expected_login_url)
+      expect(page.body).to include('Successfully authenticated with alma account. Please log out to protect your privacy when using a shared computer')
+      expect(page.body).to include('Library Material Request')
+    end
+  end
 end

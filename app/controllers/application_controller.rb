@@ -13,7 +13,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def after_sign_in_path_for(_resource)
+  def after_sign_in_path_for(resource)
+    stored_location = stored_location_for(resource)
+
     if referrer.present? && (!referrer.include?("sign_in") && !origin&.include?("redirect-to-alma"))
       referrer
     elsif origin.present?
@@ -23,6 +25,8 @@ class ApplicationController < ActionController::Base
     elsif !request.env['omniauth.origin'].nil? &&
           /request|borrow-direct|email|bookmarks|search_history|redirect-to-alma/.match(request.env['omniauth.origin'])
       request.env['omniauth.origin']
+    elsif stored_location.present?
+      stored_location
     else
       account_path
     end
