@@ -72,6 +72,17 @@ dd.rtl {
   text-align: right;
 }
 
+td.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+td.rtl::before {
+  direction: ltr;
+  text-align: left;
+  float: left;
+}
+
 rtl {
   display: inline;
   float: right;
