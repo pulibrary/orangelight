@@ -19,9 +19,9 @@ We have two groupings of patron types.
 ### Core request servies
 
 * Recap Physical Delivery Request (Offsite Materials)
-* Recap Electronic Delivery Request (scan a selction shelved at ReCAP on demand)
-* Annex Phyiscal Delivery Request (Offsite Materials)
-* Annex Electronic Delivery Request (scan a selction shelved at Annex on demand)
+* Recap Electronic Delivery Request (scan a selection shelved at ReCAP on demand)
+* Annex Physical Delivery Request (Offsite Materials)
+* Annex Electronic Delivery Request (scan a selection shelved at Annex on demand)
 * On Order Requests (Items in the Alma "Acquisition" Process Type. These are items ordered for our shelves but have not yet arrived.)
 * In Process Requests (Items in the Alma "In Process" Process Type and the Alma Work Order Type "Acquisitions and Cataloging". Items that are here on campus but are not yet prepared for final shelving."
 * Pick-up Service (request an item for pick-up that is shelved at a campus library)
@@ -41,5 +41,5 @@ We have two groupings of patron types.
 
 * Recap Physical Delivery Request (Offsite Materials)
 * Recap Electronic Delivery Request (scan a selection shelved at ReCAP on demand)
-* Annex Phyiscal Delivery Request (Offsite Materials)
+* Annex Physical Delivery Request (Offsite Materials)
 * Clancy Physical Delivery Request (page an offsite Marquand Library Item)
