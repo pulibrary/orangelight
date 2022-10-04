@@ -9,7 +9,7 @@ module Orangelight
       return next_step(values) if values.blank?
       return next_step(values.first) if values.length == 1
 
-      joined = content_tag :ul do
+      joined = content_tag :ul, id: "#{config.key}-list" do
         values.each_with_index do |value, index|
           list_item = content_tag(:li, value, class: css_class(index), dir: direction(value))
           concat list_item

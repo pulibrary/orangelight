@@ -94,6 +94,9 @@ en:
     search_history:
       clear:
         action_title: 'Clear search history'
+    show_page:
+      display_more: "Show %{count} more %{field} items"
+      display_less: "Show fewer %{field} items"
     tools:
       librarian_view: 'Staff view'
     pagination_compact:

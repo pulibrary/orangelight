@@ -26,12 +26,15 @@ export default class DisplayMoreFieldComponent {
     toggle(event) {
         event.preventDefault();
         const listElement = this.listElement(event.target);
-
         const expanded = listElement.querySelector('.d-none') == null;
+        console.log(listElement);
+        console.log(expanded);
         expanded ? this.displayFewer(event) : this.displayMore(event);
     }
 
     listElement(buttonElement) {
+        console.log(buttonElement.getAttribute('aria-controls'));
+
         return document.getElementById(buttonElement.getAttribute('aria-controls'));
     }
 }
