@@ -1,0 +1,120 @@
+{
+  "id": "99496133506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Ogilby, John, 1600-1676"
+  ],
+  "author_citation_display": [
+    "Ogilby, John",
+    "Morgan, William"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Morgan, William\",\"Ogilby, John\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Ogilby, John\"}",
+  "author_s": [
+    "Ogilby, John, 1600-1676",
+    "Morgan, William, -1690"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "London survey'd, or, An explanation of the large map of London : giving a particular account of the streets and lanes in the city and liberties ... / by John Ogilby & William Morgan ; [modern place name and symbol indexes compiled by J. Fisher].",
+  "title_t": [
+    "London survey'd, or, An explanation of the large map of London : giving a particular account of the streets and lanes in the city and liberties ... / by John Ogilby & William Morgan ; [modern place name and symbol indexes compiled by J. Fisher]."
+  ],
+  "title_citation_display": [
+    "London survey'd, or, An explanation of the large map of London : giving a particular account of the streets and lanes in the city and liberties ..."
+  ],
+  "compiled_created_t": [
+    "London survey'd, or, An explanation of the large map of London : giving a particular account of the streets and lanes in the city and liberties ... / by John Ogilby & William Morgan ; [modern place name and symbol indexes compiled by J. Fisher]."
+  ],
+  "pub_created_display": [
+    "Lympne Castle, Kent : H. Margary in association with Guildhall Library, 1976."
+  ],
+  "pub_created_s": [
+    "Lympne Castle, Kent : H. Margary in association with Guildhall Library, 1976."
+  ],
+  "pub_citation_display": [
+    "Lympne Castle, Kent: H. Margary in association with Guildhall Library"
+  ],
+  "pub_date_display": [
+    "1976"
+  ],
+  "pub_date_start_sort": 1976,
+  "pub_date_end_sort": 1677,
+  "cataloged_tdt": "2014-12-17T10:59:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "48, xxiv p. : map ; 28 x 11 cm."
+  ],
+  "description_t": [
+    "48, xxiv p. : map ; 28 x 11 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "48, xxiv p."
+  ],
+  "geocode_display": [
+    "England"
+  ],
+  "original_version_notes_display": [
+    "Reprint, with new indexes. Originally published: London : Ogilby, 1677."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Streets—England—London",
+    "London (England)—Description and travel"
+  ],
+  "subject_facet": [
+    "Streets—England—London",
+    "London (England)—Description and travel"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Morgan, William, -1690\"]}",
+  "related_works_1display": "[[\"Ogilby, John, 1600-1676.\",\"Large and accurate map of the City of London.\"]]",
+  "oclc_s": [
+    "1340515676"
+  ],
+  "other_version_s": [
+    "on1340515676"
+  ],
+  "holdings_1display": "{\"22745123310006421\":{\"location_code\":\"rare$xp\",\"location\":\"Remote Storage (ReCAP): Historic Maps. Special Collections Use Only\",\"library\":\"Special Collections\",\"call_number\":\"RECAP-94760855\",\"call_number_browse\":\"RECAP-94760855\",\"items\":[{\"holding_id\":\"22745123310006421\",\"id\":\"23745123300006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094760855\",\"copy_number\":\"1\"}]},\"22745123330006421\":{\"location_code\":\"rare$map\",\"location\":\"Rare Books Historic Map Collection\",\"library\":\"Special Collections\",\"call_number\":\"2014-0901Q\",\"call_number_browse\":\"2014-0901Q\",\"items\":[{\"holding_id\":\"22745123330006421\",\"id\":\"23745123320006421\",\"status_at_load\":\"1\",\"barcode\":\"32101070796881\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "rare$xp",
+    "rare$map"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Remote Storage (ReCAP): Historic Maps. Special Collections Use Only",
+    "Rare Books Historic Map Collection"
+  ],
+  "advanced_location_s": [
+    "rare$xp",
+    "rare$map",
+    "Special Collections"
+  ],
+  "name_title_browse_s": [
+    "Ogilby, John, 1600-1676. Large and accurate map of the City of London",
+    "Ogilby, John, 1600-1676. London survey'd, or, An explanation of the large map of London"
+  ],
+  "call_number_display": [
+    "RECAP-94760855",
+    "2014-0901Q"
+  ],
+  "call_number_browse_s": [
+    "RECAP-94760855",
+    "2014-0901Q"
+  ],
+  "call_number_locator_display": [
+    "RECAP-94760855",
+    "2014-0901Q"
+  ]
+}

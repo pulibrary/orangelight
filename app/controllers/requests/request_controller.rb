@@ -5,7 +5,7 @@ include Requests::ApplicationHelper
 
 module Requests
   class RequestController < ApplicationController
-    before_action :authenticate_user!, except: [:index]
+    before_action :authenticate_user!, except: [:index], unless: -> { aeon? }
 
     def index
       redirect_to('/')
@@ -29,6 +29,12 @@ module Requests
       redirect_single_aeon_thesis_numistatics
     rescue ActionController::ParameterMissing
       @request = EmptyRequestDecorator.new(system_id: system_id)
+    end
+
+    def aeon?
+      return true if params["aeon"] == 'true'
+
+      false
     end
 
     def redirect_single_aeon_thesis_numistatics

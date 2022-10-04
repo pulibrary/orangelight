@@ -202,7 +202,7 @@ class HoldingRequestsAdapter
     holding['indexes']&.compact.present?
   end
 
-  # Determine whether or not the holding is for a Voyager
+  # Determine whether or not the holding is for an Alma holding
   # @return [TrueClass, FalseClass]
   def alma_holding?(holding_id)
     return false if @document.fetch(:id, '').start_with?('SCSB')

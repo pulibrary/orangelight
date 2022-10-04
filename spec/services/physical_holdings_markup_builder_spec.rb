@@ -88,6 +88,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
       it 'generates a reading room request label' do
         expect(request_label).to eq 'Reading Room Request'
+        expect(builder.request_url(doc_id: '123456', aeon: true)).to eq('/requests/123456?aeon=true')
       end
     end
 
@@ -219,7 +220,185 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(request_placeholder_markup).to include 'data-aeon="false"'
       expect(request_placeholder_markup).to include 'data-holding-id="3668455"'
       expect(request_placeholder_markup).to include '<a title="View Options to Request copies from this Location"'
-      expect(request_placeholder_markup).to include 'href="/requests/123456?mfhd=3668455"'
+      expect(request_placeholder_markup).to include 'href="/requests/123456?aeon=false&amp;mfhd=3668455"'
+    end
+
+    context "a numismatics item" do
+      let(:holding_id) { "numismatics" }
+      let(:location_rules) do
+        {
+          "label" => "Numismatics Collection",
+          "code" => "rare$num",
+          "aeon_location" => true,
+          "recap_electronic_delivery_location" => false,
+          "open" => false,
+          "requestable" => true,
+          "always_requestable" => true,
+          "circulates" => false,
+          "remote_storage" => "",
+          "fulfillment_unit" => "Closed",
+          "url" => "https://bibdata.princeton.edu/locations/holding_locations/rare$num.json",
+          "library" => {
+            "label" => "Special Collections",
+            "code" => "rare",
+            "order" => 0
+          },
+          "holding_library" => nil
+        }.with_indifferent_access
+      end
+      let(:holding) do
+        {
+          "location" => "Special Collections - Numismatics Collection",
+          "library" => "Special Collections",
+          "location_code" => "rare$num",
+          "call_number" => "Coin 3750",
+          "call_number_browse" => "Coin 3750",
+          "mms_id" => "coin-3750"
+        }.with_indifferent_access
+      end
+
+      before do
+        allow(adapter).to receive(:alma_holding?).and_return(false)
+        allow(adapter).to receive(:document).and_return(document)
+        allow(adapter).to receive(:host_id).and_return(["coin-3750"])
+        allow(holding).to receive(:dig).and_return("coin-3750")
+      end
+      # this should be hitting the third condition, but does not seem to be
+      it 'generates the request link for the host record' do
+        expect(request_placeholder_markup).to include '<td class="location-services service-always-requestable"'
+        expect(request_placeholder_markup).to include 'data-open="false"'
+        expect(request_placeholder_markup).to include 'data-requestable="true"'
+        expect(request_placeholder_markup).to include 'data-aeon="true"'
+        expect(request_placeholder_markup).to include 'data-holding-id="numismatics"'
+        expect(request_placeholder_markup).to include '<a title="Request to view in Reading Room"'
+        expect(request_placeholder_markup).to include 'href="/requests/coin-3750?aeon=true&amp;mfhd=numismatics"'
+      end
+    end
+
+    context "a supervised scsb item" do
+      let(:holding_id) { '6670178' }
+      let(:location_rules) do
+        {
+          "label": "Remote Storage",
+          "code": "scsbnypl",
+          "aeon_location": false,
+          "recap_electronic_delivery_location": true,
+          "open": false,
+          "requestable": true,
+          "always_requestable": false,
+          "circulates": true,
+          "remote_storage": "recap_rmt",
+          "fulfillment_unit": nil,
+          "url": "https://bibdata.princeton.edu/locations/holding_locations/scsbnypl.json",
+          "library": {
+            "label": "ReCAP",
+            "code": "recap",
+            "order": 0
+          },
+          "holding_library" => nil
+        }.with_indifferent_access
+      end
+      let(:holding) do
+        {
+          "location_code" => "scsbnypl",
+          "location" => "Remote Storage",
+          "library" => "ReCAP",
+          "call_number" => "SLP (Viola, O. Bibliografia italiana della pena di morte)",
+          "call_number_browse" => "SLP (Viola, O. Bibliografia italiana della pena di morte)",
+          "items" => [
+            {
+              "holding_id" => "6670178",
+              "id" => "10842783",
+              "status_at_load" => "Available",
+              "barcode" => "33433115858387",
+              "copy_number" => "1",
+              "use_statement" => "Supervised Use",
+              "storage_location" => "RECAP",
+              "cgd" => "Shared",
+              "collection_code" => "NA"
+            }
+          ],
+          "mms_id" => "SCSB-6593031"
+        }.with_indifferent_access
+      end
+
+      before do
+        allow(adapter).to receive(:document).and_return(document)
+        allow(adapter).to receive(:host_id).and_return(["SCSB-6593031"])
+        allow(holding).to receive(:dig).and_return("SCSB-6593031")
+      end
+
+      it 'generates the request link for the host record' do
+        expect(request_placeholder_markup).to include '<td class="location-services service-always-requestable"'
+        expect(request_placeholder_markup).to include 'data-open="false"'
+        expect(request_placeholder_markup).to include 'data-requestable="true"'
+        expect(request_placeholder_markup).to include 'data-aeon="false"'
+        expect(request_placeholder_markup).to include 'data-holding-id="6670178"'
+        expect(request_placeholder_markup).to include '<a title="Request to view in Reading Room"'
+        expect(request_placeholder_markup).to include 'href="/requests/SCSB-6593031?aeon=false"'
+      end
+    end
+
+    context "a scsb item" do
+      let(:holding_id) { '11198370' }
+      let(:location_rules) do
+        {
+          "label": "Remote Storage",
+          "code": "scsbhl",
+          "aeon_location": false,
+          "recap_electronic_delivery_location": true,
+          "open": false,
+          "requestable": true,
+          "always_requestable": false,
+          "circulates": true,
+          "remote_storage": "recap_rmt",
+          "fulfillment_unit": nil,
+          "url": "https://bibdata.princeton.edu/locations/holding_locations/scsbhl.json",
+          "library": {
+            "label" => "ReCAP",
+            "code" => "recap",
+            "order" => 0
+          },
+          "holding_library": nil
+        }.with_indifferent_access
+      end
+      let(:holding) do
+        {
+          "location_code" => "scsbhl",
+          "location" => "Remote Storage",
+          "library" => "ReCAP",
+          "call_number" => "KF8742 .E357 2007",
+          "call_number_browse" => "KF8742 .E357 2007",
+          "items" => [
+            {
+              "holding_id" => "11198370",
+              "id" => "16923563",
+              "status_at_load" => "Available",
+              "barcode" => "32044070003017",
+              "storage_location" => "HD",
+              "cgd" => "Shared",
+              "collection_code" => "HK"
+            }
+          ],
+          "mms_id" => "SCSB-10422725"
+        }.with_indifferent_access
+      end
+
+      before do
+        allow(adapter).to receive(:document).and_return(document)
+        allow(adapter).to receive(:host_id).and_return(["SCSB-10422725"])
+        allow(holding).to receive(:dig).and_return("SCSB-10422725")
+      end
+
+      it 'generates the request link for the host record' do
+        expect(request_placeholder_markup).to include '<td class="location-services service-always-requestable"'
+        expect(request_placeholder_markup).to include 'data-open="false"'
+        expect(request_placeholder_markup).to include 'data-requestable="true"'
+        expect(request_placeholder_markup).to include 'data-aeon="false"'
+        expect(request_placeholder_markup).to include 'data-holding-id="11198370"'
+        expect(request_placeholder_markup).to include '<a title="View Options to Request copies from this Location"'
+        expect(request_placeholder_markup).to include 'href="/requests/SCSB-10422725?aeon=false"'
+      end
     end
 
     context "when there is a host" do
@@ -272,7 +451,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-aeon="true"'
         expect(request_placeholder_markup).to include 'data-holding-id="22692760320006421"'
         expect(request_placeholder_markup).to include '<a title="Request to view in Reading Room"'
-        expect(request_placeholder_markup).to include 'href="/requests/99125038613506421?mfhd=22692760320006421"'
+        expect(request_placeholder_markup).to include 'href="/requests/99125038613506421?aeon=true&amp;mfhd=22692760320006421"'
       end
     end
     context "when there is temporary location with a request button" do
@@ -324,7 +503,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-aeon="false"'
         expect(request_placeholder_markup).to include 'data-holding-id="lewis$resterm"'
         expect(request_placeholder_markup).to include "Request"
-        expect(request_placeholder_markup).to include 'href="/requests/9960861053506421?mfhd=22753114530006421"'
+        expect(request_placeholder_markup).to include 'href="/requests/9960861053506421?aeon=false&amp;mfhd=22753114530006421"'
       end
     end
   end

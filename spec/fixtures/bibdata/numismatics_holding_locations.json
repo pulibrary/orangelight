@@ -1,0 +1,19 @@
+{
+  "label": "Numismatics Collection",
+  "code": "rare$num",
+  "aeon_location": true,
+  "recap_electronic_delivery_location": false,
+  "open": false,
+  "requestable": true,
+  "always_requestable": true,
+  "circulates": false,
+  "remote_storage": "",
+  "fulfillment_unit": "Closed",
+  "library": {
+    "label": "Special Collections",
+    "code": "rare",
+    "order": 0
+  },
+  "holding_library": null,
+  "delivery_locations": []
+}

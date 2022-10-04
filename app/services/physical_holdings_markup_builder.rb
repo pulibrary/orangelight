@@ -301,38 +301,49 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     link = if !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)
                link_to('Reading Room Request',
-                       "/requests/#{doc_id}",
+                       request_url(doc_id: doc_id, aeon: location_rules[:aeon_location]),
                        title: 'Request to view in Reading Room',
                        class: 'request btn btn-xs btn-primary',
                        data: { toggle: 'tooltip' })
              else
                link_to(request_label(location_rules),
-                       "/requests/#{doc_id}",
+                       request_url(doc_id: doc_id, aeon: location_rules[:aeon_location]),
                        title: self.class.request_tooltip(location_rules),
                        class: 'request btn btn-xs btn-primary',
                        data: { toggle: 'tooltip' })
              end
            elsif !adapter.alma_holding?(holding_id)
              link_to('Reading Room Request',
-                     "/requests/#{doc_id}?mfhd=#{holding_id}",
+                     request_url(doc_id: doc_id, aeon: location_rules[:aeon_location], holding_id: holding_id),
                      title: 'Request to view in Reading Room',
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
            elsif self.class.temporary_holding_id?(holding_id)
+             holding_identifier = self.class.temporary_location_holding_id_first(holding)
              link_to(request_label(location_rules),
-                    "/requests/#{doc_id}?mfhd=#{self.class.temporary_location_holding_id_first(holding)}",
+                    request_url(doc_id: doc_id, aeon: location_rules[:aeon_location], holding_id: holding_identifier),
+                    # "/requests/#{doc_id}?mfhd=#{self.class.temporary_location_holding_id_first(holding)}",
                     title: self.class.request_tooltip(location_rules),
                     class: 'request btn btn-xs btn-primary',
                     data: { toggle: 'tooltip' })
            else
              link_to(request_label(location_rules),
-                     "/requests/#{doc_id}?mfhd=#{holding_id}",
+                     request_url(doc_id: doc_id, aeon: location_rules[:aeon_location], holding_id: holding_id),
                      title: self.class.request_tooltip(location_rules),
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
            end
     markup = self.class.location_services_block(adapter, holding_id, location_rules, link, holding)
     markup
+  end
+
+  def request_url(doc_id:, aeon:, holding_id: nil)
+    query = if holding_id
+              { mfhd: holding_id, aeon: aeon.to_s }.to_query
+            else
+              { aeon: aeon.to_s }.to_query
+            end
+    URI::HTTP.build(path: "/requests/#{doc_id}", query: query).request_uri
   end
 
   attr_reader :adapter
