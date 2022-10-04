@@ -1,0 +1,35 @@
+{
+  "label": "Stacks",
+  "code": "mudd$stacks",
+  "aeon_location": true,
+  "recap_electronic_delivery_location": false,
+  "open": false,
+  "requestable": true,
+  "always_requestable": true,
+  "circulates": false,
+  "remote_storage": "",
+  "fulfillment_unit": "Closed",
+  "library": {
+    "label": "Mudd Manuscript Library",
+    "code": "mudd",
+    "order": 0
+  },
+  "holding_library": null,
+  "delivery_locations": [
+    {
+      "label": "Mudd Manuscript Library",
+      "address": "65 Olden Street Princeton, NJ 08544",
+      "phone_number": "609-258-6345",
+      "contact_email": "mudd@princeton.edu",
+      "gfa_pickup": "PH",
+      "staff_only": false,
+      "pickup_location": false,
+      "digital_location": true,
+      "library": {
+        "label": "Mudd Manuscript Library",
+        "code": "mudd",
+        "order": 0
+      }
+    }
+  ]
+}
