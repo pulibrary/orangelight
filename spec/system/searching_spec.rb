@@ -140,7 +140,13 @@ describe 'Searching', type: :system, js: false do
   end
 
   it 'allows user to successfully edit facet-only searches' do
-    visit "/catalog?f[format][]=Book&f_inclusive[advanced_location_s][]=Firestone+Library&search_field=advanced"
-    expect(page).to have_content "1 - 20 of 48"
+    visit "/catalog?f_inclusive[advanced_location_s][]=Firestone+Library&search_field=advanced"
+    original_results_count = search_results_count
+    click_link "Book"
+    expect(search_results_count).to be < original_results_count
   end
+end
+
+def search_results_count
+  page.find(".page_entries strong:nth-child(3)").text.to_i
 end
