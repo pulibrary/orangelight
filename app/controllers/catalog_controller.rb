@@ -360,7 +360,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'participant_performer_display', label: "Participant(s)/\u200BPerformer(s)"
     config.add_show_field 'language_display', label: 'Language note'
     config.add_show_field 'script_display', label: 'Script'
-    config.add_show_field 'contents_display', label: 'Contents', component: DisplayMoreFieldComponent
+    config.add_show_field 'contents_display', label: 'Contents', component: DisplayMoreFieldComponent, maxInitialDisplay: 3
     config.add_show_field 'incomplete_contents_display', label: 'Incomplete contents'
     config.add_show_field 'partial_contents_display', label: 'Partial contents'
     config.add_show_field 'provenance_display', label: 'Provenance'

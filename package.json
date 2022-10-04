@@ -50,7 +50,8 @@
     ],
     "moduleDirectories": [
       "node_modules",
-      "app/javascript"
+      "app/javascript",
+      "app/components"
     ],
     "testEnvironment": "jsdom",
     "globals": {

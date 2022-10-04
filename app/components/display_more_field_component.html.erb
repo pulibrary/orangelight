@@ -4,5 +4,11 @@
   <% end %>
   <% component.value do %>
     <%= @field.render %>
+    <button class="show-more-linked-records btn btn-sm btn-link"
+      data-show-more-text="Show more <%= @field.label %> items"
+      data-show-less-text="Show fewer <%= @field.label %> items">
+      <i class="pe-none toggle collapsed"></i>
+      Show more <%= @field.label %> items
+    </button>
   <% end %>
 <% end %>

@@ -36,4 +36,12 @@ RSpec.describe Orangelight::JoinProcessor do
       expect(processor.render).to eq('<ul><li class="blacklight-field" dir="rtl"><span dir="rtl">תל אביב</span> <a dir="ltr">[Browse]</a></li><li class="blacklight-field" dir="ltr"><span dir="ltr">Tel Aviv</span></li></ul>')
     end
   end
+
+  context 'field is configured to have a maximum initial display' do
+    let(:config) { Blacklight::Configuration::Field.new(key: 'field', maxInitialDisplay: 1) }
+
+    it 'hides values after it hits the configured maximum' do
+      expect(processor.render).to eq('<ul><li class="blacklight-field" dir="ltr">Chapter 1</li><li class="blacklight-field d-none" dir="ltr">Chapter 2</li></ul>')
+    end
+  end
 end
