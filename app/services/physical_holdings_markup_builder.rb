@@ -298,37 +298,38 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     # check if it is a boundwith and read the id for each holding
     # so that it will be "/request/#{doc_id}", where doc_id can be either the record page mms_id or the host id(s) if they exist.
     doc_id = doc_id(holding)
+    aeon = location_rules.try(:[], :aeon_location)
     link = if !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)
                link_to('Reading Room Request',
-                       request_url(doc_id: doc_id, aeon: location_rules[:aeon_location]),
+                       request_url(doc_id: doc_id, aeon: aeon),
                        title: 'Request to view in Reading Room',
                        class: 'request btn btn-xs btn-primary',
                        data: { toggle: 'tooltip' })
              else
                link_to(request_label(location_rules),
-                       request_url(doc_id: doc_id, aeon: location_rules[:aeon_location]),
+                       request_url(doc_id: doc_id, aeon: aeon),
                        title: self.class.request_tooltip(location_rules),
                        class: 'request btn btn-xs btn-primary',
                        data: { toggle: 'tooltip' })
              end
            elsif !adapter.alma_holding?(holding_id)
              link_to('Reading Room Request',
-                     request_url(doc_id: doc_id, aeon: location_rules[:aeon_location], holding_id: holding_id),
+                     request_url(doc_id: doc_id, aeon: aeon, holding_id: holding_id),
                      title: 'Request to view in Reading Room',
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
            elsif self.class.temporary_holding_id?(holding_id)
              holding_identifier = self.class.temporary_location_holding_id_first(holding)
              link_to(request_label(location_rules),
-                    request_url(doc_id: doc_id, aeon: location_rules[:aeon_location], holding_id: holding_identifier),
+                    request_url(doc_id: doc_id, aeon: aeon, holding_id: holding_identifier),
                     # "/requests/#{doc_id}?mfhd=#{self.class.temporary_location_holding_id_first(holding)}",
                     title: self.class.request_tooltip(location_rules),
                     class: 'request btn btn-xs btn-primary',
                     data: { toggle: 'tooltip' })
            else
              link_to(request_label(location_rules),
-                     request_url(doc_id: doc_id, aeon: location_rules[:aeon_location], holding_id: holding_id),
+                     request_url(doc_id: doc_id, aeon: aeon, holding_id: holding_id),
                      title: self.class.request_tooltip(location_rules),
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
