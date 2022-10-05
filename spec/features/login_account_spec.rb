@@ -75,6 +75,7 @@ describe 'Account login' do
     before do
       stub_request(:post, 'https://scsb.recaplib.org:9093/sharedCollection/bibAvailabilityStatus')
         .to_return(status: 200, body: [{ itemBarcode: 'CU71562478', itemAvailabilityStatus: "Available" }].to_json)
+      # I'm not sure why the patron number being requested is `1234`, but this is what's needed to get the correct response
       stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/1234?ldap=true")
         .to_return(status: 200, body: patron_response, headers: {})
       stub_holding_locations
