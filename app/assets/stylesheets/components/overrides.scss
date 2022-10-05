@@ -77,7 +77,7 @@ td.rtl {
   text-align: right;
 }
 
-td.rtl::before {
+td[dir="rtl"]::before {
   text-align: left;
 }
 
