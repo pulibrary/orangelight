@@ -84,9 +84,9 @@
             <% end %>
           </td>
 
-          <td class="<%=orangelight_name.dir%>"><%= orangelight_name.title %></td>
-          <td><%= orangelight_name.author %></td>
-          <td><%= orangelight_name.date %></td>
+          <td dir="<%=orangelight_name.title.dir%>"><%= orangelight_name.title %></td>
+          <td dir="<%=orangelight_name&.author&.dir%>"><%= orangelight_name.author %></td>
+          <td dir="<%=orangelight_name&.date&.dir%>"><%= orangelight_name.date %></td>
         <% if orangelight_name.id == @match && @exact_match %>
             </strong>
           </tr>

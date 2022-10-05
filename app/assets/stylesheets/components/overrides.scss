@@ -72,9 +72,13 @@ dd.rtl {
   text-align: right;
 }
 
-rtl {
-  display: inline;
-  float: right;
+td.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+td[dir="rtl"]::before {
+  text-align: left;
 }
 
 // .dl-horizontal dt {
@@ -151,9 +155,6 @@ address {
 
 [dir="rtl"] {
   font-family: verdana, arial;
-}
-
-li[dir="rtl"] {
   text-align: right;
 }
 
