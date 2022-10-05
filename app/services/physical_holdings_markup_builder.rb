@@ -298,9 +298,11 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     # check if it is a boundwith and read the id for each holding
     # so that it will be "/request/#{doc_id}", where doc_id can be either the record page mms_id or the host id(s) if they exist.
     doc_id = doc_id(holding)
-    aeon = location_rules.try(:[], :aeon_location)
+    aeon = aeon_location?(location_rules)
     link = if !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)
+               # All SCSB supervised items go through Aeon
+               aeon = 'true'
                link_to('Reading Room Request',
                        request_url(doc_id: doc_id, aeon: aeon),
                        title: 'Request to view in Reading Room',
