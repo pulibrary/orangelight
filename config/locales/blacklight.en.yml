@@ -97,6 +97,10 @@ en:
     show_page:
       display_more: "Show %{count} more %{field} items"
       display_less: "Show fewer %{field} items"
+      related_records:
+        display_more: "Show %{count} more related records"
+        display_less: "Show fewer related records"
+
     tools:
       librarian_view: 'Staff view'
     pagination_compact:
