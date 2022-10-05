@@ -323,7 +323,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
              holding_identifier = self.class.temporary_location_holding_id_first(holding)
              link_to(request_label(location_rules),
                     request_url(doc_id: doc_id, aeon: aeon, holding_id: holding_identifier),
-                    # "/requests/#{doc_id}?mfhd=#{self.class.temporary_location_holding_id_first(holding)}",
                     title: self.class.request_tooltip(location_rules),
                     class: 'request btn btn-xs btn-primary',
                     data: { toggle: 'tooltip' })
