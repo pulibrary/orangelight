@@ -332,10 +332,12 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include '<td class="location-services service-always-requestable"'
         expect(request_placeholder_markup).to include 'data-open="false"'
         expect(request_placeholder_markup).to include 'data-requestable="true"'
-        expect(request_placeholder_markup).to include 'data-aeon="false"'
         expect(request_placeholder_markup).to include 'data-holding-id="6670178"'
         expect(request_placeholder_markup).to include '<a title="Request to view in Reading Room"'
-        expect(request_placeholder_markup).to include 'href="/requests/SCSB-6593031?aeon=false"'
+        # The general scsbnypl location is *not* an aeon location, but if the holding use_statement is "Supervised Use",
+        # it goes through aeon.
+        expect(request_placeholder_markup).to include 'data-aeon="false"'
+        expect(request_placeholder_markup).to include 'href="/requests/SCSB-6593031?aeon=true"'
       end
     end
 
