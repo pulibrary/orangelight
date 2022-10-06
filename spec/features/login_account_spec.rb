@@ -55,6 +55,21 @@ describe 'Account login' do
           expect(page.current_url).to include("https://princeton.alma.exlibrisgroup.com/discovery/")
         end
       end
+
+      it 'has accessible labels for Alma login inputs' do
+        visit '/users/sign_in'
+        click_link("Log in with Alma Account (affiliates)")
+        # Username
+        expect(page).to have_selector('#username')
+        username_label_element = page.find('label', text: 'Alma user name')
+        expect(username_label_element['for']).to eq("username")
+        expect(username_label_element.text).to eq('Alma user name')
+        # Password
+        expect(page).to have_selector('#password')
+        password_label_element = page.find('label', text: 'Password')
+        expect(password_label_element['for']).to eq('password')
+        expect(password_label_element.text).to eq('Password')
+      end
     end
     context "as an authenticated user" do
       before do
