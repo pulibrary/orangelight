@@ -78,7 +78,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         expect(requestable.thesis?).to be_truthy
       end
 
-      it "reports as a non Voyager aeon resource" do
+      it "reports as a non Alma aeon resource" do
         expect(requestable.aeon?).to be_truthy
       end
 
@@ -142,7 +142,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         expect(requestable.numismatics?).to be_truthy
       end
 
-      it "reports as a non Voyager aeon resource" do
+      it "reports as a non Alma aeon resource" do
         expect(requestable.aeon?).to be_truthy
       end
 

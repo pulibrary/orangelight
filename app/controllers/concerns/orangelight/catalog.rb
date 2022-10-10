@@ -20,7 +20,7 @@ module Orangelight
       redirect_to lccn_resolve(params[:id])
     end
 
-    def voyager
+    def alma
       bib_id = params[:BBID] || params[:bbid]
       redirect_to "/catalog/#{bib_id}"
     end

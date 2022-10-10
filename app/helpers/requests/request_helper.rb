@@ -60,7 +60,7 @@ module Requests
     # end
 
     def return_message(submission)
-      link_to "Return to Record", return_url(submission.source, submission.id), class: 'btn btn-secondary icon-moveback', title: 'Return to Record' unless submission.source.nil?
+      link_to "Return to Record", return_url(submission.id), class: 'btn btn-secondary icon-moveback', title: 'Return to Record' unless submission.source.nil?
     end
 
     def login_url(request)
@@ -73,12 +73,8 @@ module Requests
       url
     end
 
-    def return_url(source, id)
-      if source == 'catalog'
-        "http://catalog.princeton.edu/cgi-bin/Pwebrecon.cgi?BBID=#{id}"
-      else
-        "/catalog/#{id}"
-      end
+    def return_url(id)
+      "/catalog/#{id}"
     end
 
     def zero_results_link(query_params, search_field)

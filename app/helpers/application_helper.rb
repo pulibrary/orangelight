@@ -172,19 +172,9 @@ module ApplicationHelper
   def holding_block_search(document)
     block = ''
     portfolio_links = electronic_portfolio_links(document)
-    # Create stub holdings for Alma's electronic profiles so the below logic will work.
-    # Alma does not have an 'Online' library for holdings, so we fake it to keep
-    # the old logic around. When Voyager is gone we will no longer have 'Online'
-    # libraries, so we can extract the portfolio logic out of the below in such
-    # a way that a holding is not required for display.
-    # @TODO: Remove when Voyager is gone.
-    portfolio_holdings = Hash[
-      portfolio_links.map do |_portfolio|
-        [SecureRandom.uuid, { 'library' => 'Online' }]
-      end
-    ]
+
     links = search_links(document['electronic_access_1display']) + portfolio_links
-    holdings_hash = document.holdings_all_display.merge(portfolio_holdings)
+    holdings_hash = document.holdings_all_display
     scsb_multiple = false
     holdings_hash.first(2).each do |id, holding|
       location = holding_location(holding)

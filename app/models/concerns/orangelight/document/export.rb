@@ -6,7 +6,7 @@ module Orangelight
       include ActiveSupport::Concern
 
       # Override will_export_as method in Blacklight::Document::Export.
-      # Exclude certain export formats for records not in Voyager.
+      # Exclude certain export formats for records not in Alma.
       def will_export_as(short_name, content_type = nil)
         return if formats_to_exclude.include? short_name
         super
@@ -19,7 +19,7 @@ module Orangelight
         end
 
         def formats_to_exclude
-          return [] if voyager?
+          return [] if alma?
           formats
         end
 
@@ -30,7 +30,7 @@ module Orangelight
           end
         end
 
-        def voyager?
+        def alma?
           return false if fetch(:id, '').start_with?('SCSB')
           return false if %w[thesis numismatics visuals].include? holding_id
           true
