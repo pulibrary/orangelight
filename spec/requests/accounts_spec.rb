@@ -85,6 +85,22 @@ RSpec.describe AccountController do
         expect(response.location).to match(RELAIS_BASE)
       end
     end
+    context 'when not logged in' do
+      before do
+        allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(false)
+      end
+      it 'Links to borrow direct route to #borrow_direct_redirect' do
+        get '/borrow-direct'
+        expect(request).to redirect_to('/users/auth/cas?origin=http%3A%2F%2Fwww.example.com%2Fborrow-direct')
+      end
+
+      it 'does not allow the app to redirect to the login path' do
+        pending('Implementing CSRF protection')
+        get '/users/auth/cas?origin=http%3A%2F%2Fwww.example.com%2Fborrow-direct'
+        expect(response.status).to eq(404)
+        expect(response.body).to eq('Not found. Authentication passthru.')
+      end
+    end
   end
   context 'with new borrow direct provider' do
     before do
