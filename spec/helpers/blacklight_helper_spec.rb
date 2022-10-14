@@ -100,7 +100,7 @@ describe BlacklightHelper do
     end
 
     let(:truncated) do
-      '<a data-context-href="/catalog/1/track?counter=1&amp;search_id=5" href="/catalog/1">Catalogue of a collection of angling books : consisting of 788 volumes on the sport : a set (18 vols.) of the works of Charles Cotton : an ichtyological library (109 vols.) : and a &quot;Waltonian ...</a>'
+      '<a data-context-href="/catalog/1/track?counter=1&amp;search_id=5" href="/catalog/1">Catalogue of a collection of angling books : consisting of 788 volumes on the sport : a set (18 vols.) of the works of Charles Cotton : an ichtyological library (109 vols.) : and a "Waltonian...</a>'
     end
 
     before do

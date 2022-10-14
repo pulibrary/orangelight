@@ -4,38 +4,13 @@
 <dl class="dl-horizontal  dl-invert top-fields">
   <% doc_presenter.configuration.show_fields_for(document).each do |field_name, field| -%>
     <% if render_top_field? document, field_name %>
+      <% field_presenter = Blacklight::FieldPresenter.new(doc_presenter.view_context, document, field) %>
       <% if field_name == 'author_display' && document['marc_relator_display'] %>
         <dt class="blacklight-<%= field_name.parameterize %>"><%= document['marc_relator_display'].first %></dt>
+        <dd class="blacklight-<%= field_name.parameterize %>"><%= field_presenter.render %></dd>
       <%# author is default if no marc relator, default for other fields -%>
       <% else %>
-        <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label(document, field: field_name).html_safe %></dt>
-      <% end %>
-      <% if document[field_name].length == 1 || !document[field_name].is_a?(Array) %>
-          <% valdir = Array(document[field_name]).first.dir %>
-          <% if doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
-            <% value = doc_presenter.field_value(field) %>
-          <% else %>
-            <% value = document[field_name] %>
-          <% end %>
-          <dd class="blacklight-<%= field_name.parameterize %>" dir="<%= valdir %>"><%= safe_join(Array.wrap(value)) %></li>
-        <% else %>
-          <% valdirs = [] %>
-          <% document[field_name].each do |value| %>
-              <% valdirs << value.dir %>
-          <% end %>
-
-          <dd class="blacklight-<%= field_name.parameterize %>">
-            <ul>
-            <% if doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
-              <% values = Array.wrap(doc_presenter.field_value(field)) %>
-            <% else %>
-              <% values = document[field_name] %>
-            <% end %>
-            <% values.each do |value| %>
-              <li dir="<%= valdirs[values.index(value)] %>"> <%= safe_join(Array.wrap(value)) %> </li>
-            <% end %>
-            </ul>
-          </dd>
+        <%= render(AlwaysShowMetadataFieldComponent.new(field: field_presenter, show: true)) %>
       <% end %>
     <% end %>
   <% end %>

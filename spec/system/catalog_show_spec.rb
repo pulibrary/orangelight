@@ -75,4 +75,13 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       expect(page).to have_link('Bible. Latin', href: '/?search_field=left_anchor&q=Bible.+Latin')
     end
   end
+
+  context 'multi-valued isbn field' do
+    let(:document_id) { '99125535710106421' }
+
+    it 'displays as a list' do
+      visit "catalog/#{document_id}"
+      expect(page).to have_selector('dd.blacklight-isbn_display ul li', count: 4)
+    end
+  end
 end

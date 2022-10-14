@@ -223,7 +223,7 @@ class CatalogController < ApplicationController
     #   output for bento search. If you need to add a field to JSON display
     #   (catalog.json), add it here!
     config.add_index_field 'series_display', label: 'Series', helper_method: :series_results
-    config.add_index_field 'author_display', label: 'Author/Artist', helper_method: :browse_name
+    config.add_index_field 'author_display', label: 'Author/Artist', browse_link: :name
     config.add_index_field 'pub_created_display', label: 'Published/Created'
     config.add_index_field 'format', label: 'Format', helper_method: :format_icon
     config.add_index_field 'holdings_1display', show: false
@@ -248,7 +248,7 @@ class CatalogController < ApplicationController
     # config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
 
     # Top fields in show page / prioritized information
-    config.add_show_field 'author_display', label: 'Author/&#8203;Artist', helper_method: :browse_name, if: false
+    config.add_show_field 'author_display', label: "Author/\u200BArtist", browse_link: :name, if: false
     # For uniform titles from 240 field - when there is both an author and uniform title
     config.add_show_field 'name_uniform_title_1display', label: 'Uniform title', helper_method: :name_title_hierarchy, if: false
     # For uniform titles from 130 field - when there is only a uniform title, and no author
@@ -256,16 +256,16 @@ class CatalogController < ApplicationController
     config.add_show_field 'format', label: 'Format', helper_method: :format_render, if: false, coin_top_field: true
     config.add_show_field 'language_facet', label: 'Language', if: false
     config.add_show_field 'edition_display', label: 'Εdition', if: false
-    config.add_show_field 'pub_created_display', label: 'Published/&#8203;Created', if: false
+    config.add_show_field 'pub_created_display', label: "Published/\u200BCreated", if: false
     config.add_show_field 'description_display', label: 'Description', if: false
 
     # Senior Thesis linked fields
-    config.add_show_field 'advisor_display', label: 'Advisor(s)', helper_method: :browse_name
-    config.add_show_field 'contributor_display', label: 'Contributor(s)', helper_method: :browse_name
-    config.add_show_field 'department_display', label: 'Department', helper_method: :browse_name
-    config.add_show_field 'certificate_display', label: 'Certificate', helper_method: :browse_name
+    config.add_show_field 'advisor_display', label: 'Advisor(s)', browse_link: :name
+    config.add_show_field 'contributor_display', label: 'Contributor(s)', browse_link: :name
+    config.add_show_field 'department_display', label: 'Department', browse_link: :name
+    config.add_show_field 'certificate_display', label: 'Certificate', browse_link: :name
 
-    config.add_show_field 'class_year_s', label: 'Class year', helper_method: :link_to_search_value
+    config.add_show_field 'class_year_s', label: 'Class year', link_to_search_value: true
     # Linked fields pushed to top of supplemental info
     config.add_show_field 'lc_subject_display', label: 'Subject(s)', helper_method: :subjectify
     config.add_show_field 'siku_subject_display', label: 'Chinese traditional subject(s)', helper_method: :subjectify
@@ -276,45 +276,45 @@ class CatalogController < ApplicationController
     config.add_show_field 'rbgenr_s', label: 'Rare books genre', helper_method: :subjectify
     config.add_show_field 'aat_s', label: 'Getty AAT genre', helper_method: :subjectify
     config.add_show_field 'related_works_1display', label: 'Related work(s)', helper_method: :name_title_hierarchy
-    config.add_show_field 'series_display', label: 'Series', helper_method: :series_with_links
+    config.add_show_field 'series_display', label: 'Series', series_link: true
     config.add_show_field 'contains_1display', label: 'Contains', helper_method: :name_title_hierarchy
-    config.add_show_field 'data_source_display', label: 'Data source', helper_method: :name_title
+    config.add_show_field 'data_source_display', label: 'Data source', browse_link: :name_title
     config.add_show_field 'contained_in_s', label: 'Contained in', link_field: 'id'
     config.add_show_field 'related_record_s', label: 'Related record(s)', link_field: 'id'
     config.add_show_field 'other_editions_s', label: 'Other available editions', link_field: 'id'
-    config.add_show_field 'translation_of_display', label: 'Translation of', helper_method: :name_title
-    config.add_show_field 'translated_as_display', label: 'Translated as', helper_method: :name_title
-    config.add_show_field 'issued_with_display', label: 'Issued with', helper_method: :name_title
-    config.add_show_field 'continues_display', label: 'Continues', helper_method: :name_title
-    config.add_show_field 'continues_in_part_display', label: 'Continues in part', helper_method: :name_title
-    config.add_show_field 'formed_from_display', label: 'Formed from', helper_method: :name_title
-    config.add_show_field 'absorbed_display', label: 'Absorbed', helper_method: :name_title
-    config.add_show_field 'absorbed_in_part_display', label: 'Absorbed in part', helper_method: :name_title
-    config.add_show_field 'separated_from_display', label: 'Separated from', helper_method: :name_title
-    config.add_show_field 'continued_by_display', label: 'Continued by', helper_method: :name_title
-    config.add_show_field 'continued_in_part_by_display', label: 'Continued in part by', helper_method: :name_title
-    config.add_show_field 'absorbed_by_display', label: 'Absorbed by', helper_method: :name_title
-    config.add_show_field 'absorbed_in_part_by_display', label: 'Absorbed in part by', helper_method: :name_title
-    config.add_show_field 'split_into_display', label: 'Split into', helper_method: :name_title
-    config.add_show_field 'merged_to_form_display', label: 'Merged to form', helper_method: :name_title
-    config.add_show_field 'changed_back_to_display', label: 'Changed back to', helper_method: :name_title
-    config.add_show_field 'subseries_of_display', label: 'Subseries of', helper_method: :name_title
-    config.add_show_field 'has_subseries_display', label: 'Has subseries', helper_method: :name_title
-    config.add_show_field 'has_supplement_display', label: 'Has supplement', helper_method: :name_title
-    config.add_show_field 'supplement_to_display', label: 'Supplement to', helper_method: :name_title
+    config.add_show_field 'translation_of_display', label: 'Translation of', browse_link: :name_title
+    config.add_show_field 'translated_as_display', label: 'Translated as', browse_link: :name_title
+    config.add_show_field 'issued_with_display', label: 'Issued with', browse_link: :name_title
+    config.add_show_field 'continues_display', label: 'Continues', browse_link: :name_title
+    config.add_show_field 'continues_in_part_display', label: 'Continues in part', browse_link: :name_title
+    config.add_show_field 'formed_from_display', label: 'Formed from', browse_link: :name_title
+    config.add_show_field 'absorbed_display', label: 'Absorbed', browse_link: :name_title
+    config.add_show_field 'absorbed_in_part_display', label: 'Absorbed in part', browse_link: :name_title
+    config.add_show_field 'separated_from_display', label: 'Separated from', browse_link: :name_title
+    config.add_show_field 'continued_by_display', label: 'Continued by', browse_link: :name_title
+    config.add_show_field 'continued_in_part_by_display', label: 'Continued in part by', browse_link: :name_title
+    config.add_show_field 'absorbed_by_display', label: 'Absorbed by', browse_link: :name_title
+    config.add_show_field 'absorbed_in_part_by_display', label: 'Absorbed in part by', browse_link: :name_title
+    config.add_show_field 'split_into_display', label: 'Split into', browse_link: :name_title
+    config.add_show_field 'merged_to_form_display', label: 'Merged to form', browse_link: :name_title
+    config.add_show_field 'changed_back_to_display', label: 'Changed back to', browse_link: :name_title
+    config.add_show_field 'subseries_of_display', label: 'Subseries of', browse_link: :name_title
+    config.add_show_field 'has_subseries_display', label: 'Has subseries', browse_link: :name_title
+    config.add_show_field 'has_supplement_display', label: 'Has supplement', browse_link: :name_title
+    config.add_show_field 'supplement_to_display', label: 'Supplement to', browse_link: :name_title
 
     # Fields that are not links
     config.add_show_field 'url_fulltext_display', label: 'URL'
     config.add_show_field 'url_suppl_display', label: 'More information'
-    config.add_show_field 'compiled_created_display', label: 'Compiled/&#8203;Created'
-    config.add_show_field 'medium_support_display', label: 'Medium/&#8203;Support'
+    config.add_show_field 'compiled_created_display', label: "Compiled/\u200BCreated"
+    config.add_show_field 'medium_support_display', label: "Medium/\u200BSupport"
     config.add_show_field 'numbering_pec_notes_display', label: 'Numbering peculiarities'
     config.add_show_field 'arrangement_display', label: 'Arrangement'
     config.add_show_field 'frequency_display', label: 'Frequency'
     config.add_show_field 'former_frequency_display', label: 'Former frequency'
     config.add_show_field 'linking_notes_display', label: 'Linking notes'
-    config.add_show_field 'restrictions_note_display', label: 'Restrictions note', helper_method: :html_safe
-    config.add_show_field 'biographical_historical_note_display', label: 'Biographical/&#8203;Historical note'
+    config.add_show_field 'restrictions_note_display', label: 'Restrictions note', mark_as_safe: true
+    config.add_show_field 'biographical_historical_note_display', label: "Biographical/\u200BHistorical note"
     config.add_show_field 'summary_note_display', label: 'Summary note'
     config.add_show_field 'notes_display', label: 'Notes'
     config.add_show_field 'holdings_1display', label: 'Location has', if: :online_holding_note?, helper_method: :location_has
@@ -323,7 +323,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'dissertation_notes_display', label: 'Dissertation note'
     config.add_show_field 'bib_ref_notes_display', label: 'Bibliographic references'
     config.add_show_field 'scale_notes_display', label: 'Scale'
-    config.add_show_field 'credits_notes_display', label: 'Creation/&#8203;Production credits'
+    config.add_show_field 'credits_notes_display', label: "Creation/\u200BProduction credits"
     config.add_show_field 'type_period_notes_display', label: 'Type of report and period covered'
     config.add_show_field 'data_quality_notes_display', label: 'Data quality'
     config.add_show_field 'type_comp_data_notes_display', label: 'Type of data'
@@ -355,9 +355,9 @@ class CatalogController < ApplicationController
     config.add_show_field 'source_desc_notes_display', label: 'Source of description'
     config.add_show_field 'binding_note_display', label: 'Binding note'
     config.add_show_field 'local_notes_display', label: 'Local notes'
-    config.add_show_field 'rights_reproductions_note_display', label: 'Rights and reproductions note', helper_method: :html_safe
+    config.add_show_field 'rights_reproductions_note_display', label: 'Rights and reproductions note', mark_as_safe: true
     config.add_show_field 'exhibitions_note_display', label: 'Exhibitions note'
-    config.add_show_field 'participant_performer_display', label: 'Participant(s)/&#8203;Performer(s)'
+    config.add_show_field 'participant_performer_display', label: "Participant(s)/\u200BPerformer(s)"
     config.add_show_field 'language_display', label: 'Language note'
     config.add_show_field 'script_display', label: 'Script'
     config.add_show_field 'contents_display', label: 'Contents'
@@ -367,12 +367,12 @@ class CatalogController < ApplicationController
     config.add_show_field 'source_acquisition_display', label: 'Source acquisition'
     config.add_show_field 'publications_about_display', label: 'Publications about'
     config.add_show_field 'indexed_in_display', label: 'Indexed in'
-    config.add_show_field 'references_url_display', label: 'References', helper_method: :references_url
+    config.add_show_field 'references_url_display', label: 'References', references_url: true
     config.add_show_field 'cite_as_display', label: 'Cite as'
     config.add_show_field 'other_format_display', label: 'Other format(s)'
     config.add_show_field 'indexes_display', label: 'Indexes'
     config.add_show_field 'finding_aid_display', label: 'Finding aid'
-    config.add_show_field 'cumulative_index_finding_aid_display', label: 'Cumulative index/&#8203;Finding aid'
+    config.add_show_field 'cumulative_index_finding_aid_display', label: "Cumulative index/\u200BFinding aid"
     config.add_show_field 'place_name_display', label: 'Place name(s)'
     config.add_show_field 'other_title_display', label: 'Other title(s)'
     config.add_show_field 'other_title_1display', hash: true
@@ -388,37 +388,37 @@ class CatalogController < ApplicationController
     config.add_show_field 'coden_display', label: 'Coden designation'
     config.add_show_field 'standard_no_1display', hash: true
     config.add_show_field 'original_language_display', label: 'Original language'
-    config.add_show_field 'recap_notes_display', label: 'RCP', helper_method: :recap_note
+    config.add_show_field 'recap_notes_display', label: 'RCP'
 
     # Numismatics fields
     ## Issue Description
-    config.add_show_field 'numismatic_collection_s', label: 'Numismatic Collection', helper_method: :link_to_search_value, if: false, coin_top_field: true
-    config.add_show_field 'issue_number_s', label: 'Issue', helper_method: :link_to_search_value, if: false, coin_top_field: true
-    config.add_show_field 'issue_object_type_s', label: 'Object Type', helper_method: :link_to_search_value
-    config.add_show_field 'issue_denomination_s', label: 'Denomination', helper_method: :link_to_search_value
-    config.add_show_field 'issue_metal_s', label: 'Metal', helper_method: :link_to_search_value
-    config.add_show_field 'issue_region_s', label: 'Region', helper_method: :link_to_search_value
-    config.add_show_field 'issue_state_s', label: 'State', helper_method: :link_to_search_value
-    config.add_show_field 'issue_city_s', label: 'City', helper_method: :link_to_search_value
-    config.add_show_field 'issue_ruler_s', label: 'Ruler', helper_method: :link_to_search_value
-    config.add_show_field 'issue_date_s', label: 'Date', helper_method: :link_to_search_value
-    config.add_show_field 'issue_obverse_description_s', label: 'Obverse Figure Description', helper_method: :link_to_search_value
-    config.add_show_field 'issue_obverse_legend_s', label: 'Obverse Legend', helper_method: :link_to_search_value
-    config.add_show_field 'issue_obverse_attributes_s', label: 'Obverse Attributes', helper_method: :link_to_search_value
-    config.add_show_field 'issue_obverse_figure_relationship_s', label: 'Obverse Figure Relationship', helper_method: :link_to_search_value
-    config.add_show_field 'issue_obverse_symbol_s', label: 'Obverse Symbol', helper_method: :link_to_search_value
-    config.add_show_field 'issue_reverse_description_s', label: 'Reverse Figure Description', helper_method: :link_to_search_value
-    config.add_show_field 'issue_reverse_legend_s', label: 'Reverse Legend', helper_method: :link_to_search_value
-    config.add_show_field 'issue_reverse_attributes_s', label: 'Reverse Attributes', helper_method: :link_to_search_value
-    config.add_show_field 'issue_reverse_figure_relationship_s', label: 'Reverse Figure Relationship', helper_method: :link_to_search_value
-    config.add_show_field 'issue_reverse_symbol_s', label: 'Reverse Symbol', helper_method: :link_to_search_value
-    config.add_show_field 'issue_era_s', label: 'Era', helper_method: :link_to_search_value
-    config.add_show_field 'issue_master_s', label: 'Master', helper_method: :link_to_search_value
-    config.add_show_field 'issue_workshop_s', label: 'Workshop', helper_method: :link_to_search_value
-    config.add_show_field 'issue_series_s', label: 'Series', helper_method: :link_to_search_value
-    config.add_show_field 'issue_artists_s', label: 'Artist', helper_method: :link_to_search_value
-    config.add_show_field 'issue_subject_s', label: 'Subject', helper_method: :link_to_search_value
-    config.add_show_field 'issue_references_s', label: 'References', helper_method: :link_to_search_value
+    config.add_show_field 'numismatic_collection_s', label: 'Numismatic Collection', link_to_search_value: true, if: false, coin_top_field: true
+    config.add_show_field 'issue_number_s', label: 'Issue', link_to_search_value: true, if: false, coin_top_field: true
+    config.add_show_field 'issue_object_type_s', label: 'Object Type', link_to_search_value: true
+    config.add_show_field 'issue_denomination_s', label: 'Denomination', link_to_search_value: true
+    config.add_show_field 'issue_metal_s', label: 'Metal', link_to_search_value: true
+    config.add_show_field 'issue_region_s', label: 'Region', link_to_search_value: true
+    config.add_show_field 'issue_state_s', label: 'State', link_to_search_value: true
+    config.add_show_field 'issue_city_s', label: 'City', link_to_search_value: true
+    config.add_show_field 'issue_ruler_s', label: 'Ruler', link_to_search_value: true
+    config.add_show_field 'issue_date_s', label: 'Date', link_to_search_value: true
+    config.add_show_field 'issue_obverse_description_s', label: 'Obverse Figure Description', link_to_search_value: true
+    config.add_show_field 'issue_obverse_legend_s', label: 'Obverse Legend', link_to_search_value: true
+    config.add_show_field 'issue_obverse_attributes_s', label: 'Obverse Attributes', link_to_search_value: true
+    config.add_show_field 'issue_obverse_figure_relationship_s', label: 'Obverse Figure Relationship', link_to_search_value: true
+    config.add_show_field 'issue_obverse_symbol_s', label: 'Obverse Symbol', link_to_search_value: true
+    config.add_show_field 'issue_reverse_description_s', label: 'Reverse Figure Description', link_to_search_value: true
+    config.add_show_field 'issue_reverse_legend_s', label: 'Reverse Legend', link_to_search_value: true
+    config.add_show_field 'issue_reverse_attributes_s', label: 'Reverse Attributes', link_to_search_value: true
+    config.add_show_field 'issue_reverse_figure_relationship_s', label: 'Reverse Figure Relationship', link_to_search_value: true
+    config.add_show_field 'issue_reverse_symbol_s', label: 'Reverse Symbol', link_to_search_value: true
+    config.add_show_field 'issue_era_s', label: 'Era', link_to_search_value: true
+    config.add_show_field 'issue_master_s', label: 'Master', link_to_search_value: true
+    config.add_show_field 'issue_workshop_s', label: 'Workshop', link_to_search_value: true
+    config.add_show_field 'issue_series_s', label: 'Series', link_to_search_value: true
+    config.add_show_field 'issue_artists_s', label: 'Artist', link_to_search_value: true
+    config.add_show_field 'issue_subject_s', label: 'Subject', link_to_search_value: true
+    config.add_show_field 'issue_references_s', label: 'References', link_to_search_value: true
 
     ## Coin Description
     config.add_show_field 'size_s', label: 'Size', link_to_facet: true, coin_description: true
