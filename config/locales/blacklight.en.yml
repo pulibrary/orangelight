@@ -6,7 +6,6 @@ en:
   blacklight:
     application_name: 'Princeton University Library Catalog'
     welcome: 'Welcome!'
-    voyager: 'Main Catalog'
     orangelight: 'Catalog'
     scsb:
       in_library_use: 'Materials must be used within Firestone Library.'

@@ -73,7 +73,7 @@ Rails.application.routes.draw do
   get '/catalog/issn/:id', to: 'catalog#issn'
   get '/cgi-bin/Pwebrecon.cgi', to: redirect('/account'),
                                 constraints: ->(r) { r.params[:PAGE] == 'pbLogon' }
-  get '/cgi-bin/Pwebrecon.cgi', to: 'catalog#voyager'
+  get '/cgi-bin/Pwebrecon.cgi', to: 'catalog#alma'
 
   get '/notes' => 'high_voltage/pages#show', id: 'notes'
   get '/help' => 'high_voltage/pages#show', id: 'help'
