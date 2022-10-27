@@ -146,6 +146,11 @@ class HoldingRequestsAdapter
     holding['dspace'] || holding['location_code'] == 'rare$num'
   end
 
+  def sc_location_with_suppressed_button?(holding)
+    additional_locations = ["rare$xmr", "mudd$scamudd"]
+    holding['location_code'].start_with?('rare$sca') || additional_locations.include?(holding['location_code'])
+  end
+
   # Determine whether or not the holding is for a SCSB items with ReCAP
   # @return [TrueClass, FalseClass]
   def scsb_holding?(holding)
