@@ -1,13 +1,10 @@
 {
   "dependencies": {
-    "apollo-boost": "^0.4.9",
-    "apollo-client": "^2.4.1",
-    "apollo-link-http": "^1.5.4",
+    "@apollo/client": "^3.7.1",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.6",
     "babel-preset-stage-3": "^6.24.1",
-    "graphql": "^0.13.2",
-    "graphql-tag": "^2.9.2",
+    "graphql": "^16.6.0",
     "is-svg": "^4.3.1",
     "jest-environment-jsdom": "^28.1.2",
     "serialize-javascript": "^5.0.1",
