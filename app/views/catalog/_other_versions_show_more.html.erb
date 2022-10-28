@@ -4,9 +4,11 @@
   <button class="show-more-linked-records btn btn-sm btn-link"
     aria-controls="linked-records-<%= field.field.parameterize %>"
     aria-expanded="false"
-    data-initial-linked-records="<%= Orangelight.config['show_page']['linked_documents']['maximum'] %>"
+    data-maximum-default-values="<%= Orangelight.config['show_page']['linked_documents']['maximum'] %>"
     data-additional-linked-records="<%= additional_linked_records %>"
     data-linked-records-field="<%= field.field.parameterize %>"
+    data-show-more-text="<%= t 'blacklight.show_page.related_records.display_more', count: additional_linked_records %>"
+    data-show-less-text="<%= t 'blacklight.show_page.related_records.display_less' %>"
     data-record-id="<%= doc_id %>">
   <span class="pe-none toggle collapsed"></span>
   Show <%= additional_linked_records %>

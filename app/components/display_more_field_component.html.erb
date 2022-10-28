@@ -1,0 +1,18 @@
+<%= render(@layout.new(field: @field)) do |component| %>
+  <% component.label do %>
+    <%= label %>
+  <% end %>
+  <% component.value do %>
+    <%= @field.render %>
+    <% if show_button? %>
+      <button class="show-more btn btn-sm btn-link"
+        aria-expanded="false" aria-controls="<%= @field.key %>-list"
+        data-maximum-default-values="<%= @field.field_config.maxInitialDisplay %>"
+        data-show-more-text="<%= show_more_text %>"
+        data-show-less-text="<%= t('blacklight.show_page.display_less', field: @field.label) %>">
+        <i class="pe-none toggle collapsed"></i>
+        <%= show_more_text %>
+      </button>
+    <% end %>
+  <% end %>
+<% end %>

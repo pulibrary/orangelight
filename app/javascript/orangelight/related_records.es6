@@ -1,7 +1,9 @@
-export default class RelatedRecordsDisplayer {
+import DisplayMoreLessList from "./display_more_less_list.es6";
+
+export default class RelatedRecordsDisplayer extends DisplayMoreLessList {
     constructor(json) {
+        super();
         this.relatedRecords = json;
-        this.expanded = false;
     }
 
     static fetchData(fieldName, recordId) {
@@ -13,8 +15,8 @@ export default class RelatedRecordsDisplayer {
         .then(data => new RelatedRecordsDisplayer(data));
     }
 
-    displayMore(event) {
-        const listElement = this.listElement(event.target);
+    addItemsToDisplay(button) {
+        const listElement = this.listElement(button);
         // Remove duplicate <li>s
         this.popListItems(listElement);
 
@@ -24,29 +26,16 @@ export default class RelatedRecordsDisplayer {
             listItem.innerHTML = '<a href="/catalog/' + this.relatedRecords[i].document.id + '">' + this.relatedRecords[i].document.title_display + '</a>';
             listElement.appendChild(listItem);
         }
-        listElement.setAttribute('tabindex', '-1');
-        event.target.innerHTML = '<i class="pe-none toggle"></i> Show fewer related records'
-        event.target.setAttribute('aria-expanded', 'true');
-        setTimeout(() => listElement.focus(), 500);
     }
 
-    displayFewer(event) {
+    removeItemsFromDisplay(button) {
+        const listElement = this.listElement(button);
+        this.popListItems(listElement, this.initialMaximumValuesCount(button));
+    }
+
+    isExpanded(event) {
         const listElement = this.listElement(event.target);
-        this.popListItems(listElement, event.target.getAttribute('data-initial-linked-records'));
-        event.target.innerHTML = '<i class="pe-none toggle collapsed"></i> Show ' + event.target.getAttribute('data-additional-linked-records') + ' more related records';
-        event.target.setAttribute('aria-expanded', 'false');
-        setTimeout(() => listElement.focus(), 500);
-    }
-
-    toggle(event) {
-        event.preventDefault();
-        const listElement = this.listElement(event.target);
-        const expanded = listElement.children.length > event.target.getAttribute('data-initial-linked-records');
-        expanded ? this.displayFewer(event) : this.displayMore(event);
-    }
-
-    listElement(buttonElement) {
-        return document.getElementById(buttonElement.getAttribute('aria-controls'));
+        return listElement.children.length > this.initialMaximumValuesCount(event.target);
     }
 
     popListItems(listElement, numberToLeave=0) {
@@ -55,3 +44,4 @@ export default class RelatedRecordsDisplayer {
         }
     }
 }
+

@@ -11,7 +11,8 @@
         <%= render 'other_versions_show', document: document, field: field, linked_records: document.linked_records(field: field.field) %>
       <% else %>
         <% field_presenter = doc_presenter.field_presenters.find {|presenter| presenter.key == field.key } %>
-        <%= render(Blacklight::MetadataFieldComponent.new(field: field_presenter, show: true)) %>
+        <% componentClass = field.component || Blacklight::MetadataFieldComponent %>
+        <%= render(componentClass.new(field: field_presenter, show: true)) %>
     <% end %>
   <% end %>
   <%= render 'statement_on_language_in_description' unless document.numismatics_record? %>

@@ -4,12 +4,14 @@ import BookmarkAllManager from '../orangelight/bookmark_all.es6'
 import {FiggyManifestManager} from '../orangelight/figgy_manifest_manager'
 import GoogleBooksSnippets from '../orangelight/google_books_snippets.es6'
 import RelatedRecordsDisplayer from '../orangelight/related_records.es6'
+import DisplayMoreFieldComponent from '../../components/display_more_field_component.es6'
 import { handleBtnKeyDown } from './accessible_facets'
 
 export default class OrangelightUiLoader {
   run() {
     this.setup_availability()
     this.setup_linked_records()
+    this.setup_show_more_fields()
     this.setup_modal_focus()
     this.setup_viewers()
     this.setup_book_covers()
@@ -41,6 +43,16 @@ export default class OrangelightUiLoader {
           fetchData.then(displayer => displayer.toggle(event))
         });
       };
+    }
+  }
+
+  setup_show_more_fields() {
+    const buttons = document.querySelectorAll('.btn.show-more');
+    if (buttons.length > 0) {
+      for (let button of buttons) {
+        const displayer = new DisplayMoreFieldComponent();
+        button.addEventListener('click', (event) => { displayer.toggle(event) });
+      }
     }
   }
 

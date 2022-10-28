@@ -9,9 +9,9 @@ module Orangelight
       return next_step(values) if values.blank?
       return next_step(values.first) if values.length == 1
 
-      joined = content_tag :ul do
-        values.each do |value|
-          list_item = content_tag(:li, value, class: "blacklight-#{config.key}", dir: direction(value))
+      joined = content_tag :ul, id: "#{config.key}-list" do
+        values.each_with_index do |value, index|
+          list_item = content_tag(:li, value, class: css_class(index), dir: direction(value))
           concat list_item
         end
       end
@@ -23,6 +23,12 @@ module Orangelight
       def direction(value)
         return 'rtl' if value.dir == 'rtl' || value.include?('dir="rtl"')
         'ltr'
+      end
+
+      def css_class(index)
+        class_string = "blacklight-#{config.key}"
+        class_string = "#{class_string} d-none" if config.maxInitialDisplay && index >= config.maxInitialDisplay
+        class_string
       end
   end
 end
