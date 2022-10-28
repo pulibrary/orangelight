@@ -76,7 +76,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                  data: data)
   end
 
-  # For when a holding record has a value for the "dspace" key, but it is set to false
+  # Holding record with "dspace": false
   def holding_location_unavailable
     children = content_tag(:span,
                            'Unavailable',
@@ -165,6 +165,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   def self.requestable_location?(location, adapter, holding)
+    return false if adapter.sc_location_with_suppressed_button?(holding)
     if location.nil?
       false
     elsif adapter.unavailable_holding?(holding)
@@ -461,7 +462,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                   holding_location_repository
                 elsif @adapter.scsb_holding?(holding) && !@adapter.empty_holding?(holding)
                   holding_location_scsb(holding, doc_id, holding_id)
-                # dspace: false
                 elsif @adapter.unavailable_holding?(holding)
                   holding_location_unavailable
                 else

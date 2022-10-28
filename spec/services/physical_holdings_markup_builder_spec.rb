@@ -56,6 +56,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     allow(adapter).to receive(:doc_electronic_access).and_return('http://arks.princeton.edu/ark:/88435/dsp0141687h654': ['DataSpace', 'Citation only'])
     allow(adapter).to receive(:unavailable_holding?).and_return(false)
     allow(adapter).to receive(:host_id).and_return([])
+    allow(adapter).to receive(:sc_location_with_suppressed_button?).with(holding).and_return(false)
   end
 
   describe '.request_label' do
@@ -727,6 +728,69 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(holding_location_markup).to include 'Mendel Music Library: Reserve'
       expect(holding_location_markup).to include 'data-holding-id="22270490550006421"'
       expect(holding_location_markup).to include "href=\"/catalog/99112325153506421/stackmap?loc=mendel$res&amp;cn=#{call_number}\""
+    end
+  end
+
+  describe 'Special collections location with suppressed button' do
+    before do
+      stub_holding_locations
+      allow(document).to receive(:to_s).and_return('99125501031906421')
+      allow(adapter).to receive(:document).and_return(document)
+      allow(adapter).to receive(:doc_id).and_return('99125501031906421')
+      allow(adapter).to receive(:unavailable_holding?).and_return(false)
+      allow(adapter).to receive(:sc_location_with_suppressed_button?).with(holding).and_return(true)
+    end
+    let(:location_rules) do
+      {
+        "label": "Remote Storage (ReCAP): Manuscripts. Special Collections Use Only",
+        "code": "rare$xmr",
+        "aeon_location": false,
+        "recap_electronic_delivery_location": false,
+        "open": true,
+        "requestable": false,
+        "always_requestable": false,
+        "circulates": true,
+        "remote_storage": "recap_rmt",
+        "fulfillment_unit": "Closed",
+        "library": {
+          "label": "Special Collections",
+          "code": "rare",
+          "order": 0
+        },
+        "holding_library": nil,
+        "delivery_locations": []
+      }.with_indifferent_access
+    end
+
+    let(:adapter) { instance_double(HoldingRequestsAdapter) }
+    let(:builder) { described_class.new(adapter) }
+    let(:holding_id) { '22939015790006421' }
+    let(:location) { 'Remote Storage (ReCAP): Manuscripts. Special Collections Use Only' }
+    let(:call_number) { '' }
+    let(:holding) do
+      {
+        holding_id => {
+          location: location,
+          library: 'Special Collections',
+          location_code: 'rare$xmr',
+          call_number: call_number
+        }.with_indifferent_access
+      }
+    end
+    let(:document) { instance_double(SolrDocument) }
+    let(:holding_location_markup) { builder.holding_location(holding.first[1], location, holding_id, call_number) }
+    let(:css_class) { described_class.show_request(adapter, location_rules, holding_id) }
+
+    it 'generates the markup for the holding locations' do
+      expect(holding_location_markup).to include '<td class="library-location"'
+      expect(holding_location_markup).to include '<span class="location-text"'
+      expect(holding_location_markup).to include 'Remote Storage (ReCAP): Manuscripts. Special Collections Use Only'
+      expect(holding_location_markup).to include 'data-holding-id="22939015790006421"'
+      expect(holding_location_markup).to include "href=\"/catalog/99125501031906421/stackmap?loc=rare$xmr&amp;cn=#{call_number}\""
+    end
+
+    it 'generates a "service-conditional" class' do
+      expect(css_class).to eq 'service-conditional'
     end
   end
 end
