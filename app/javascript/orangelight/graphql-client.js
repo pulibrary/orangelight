@@ -1,14 +1,14 @@
 import 'unfetch/polyfill'
-import { ApolloClient } from 'apollo-client'
-import { createHttpLink } from 'apollo-link-http'
-import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory'
+import { ApolloClient } from '@apollo/client/core'
+import { HttpLink } from '@apollo/client/core'
+import { InMemoryCache } from '@apollo/client/cache'
 
 const uri = window.Global.graphql.uri
-const httpLink = createHttpLink({
+const httpLink = new HttpLink({
   uri: uri
 })
 
-const fragmentMatcher = new IntrospectionFragmentMatcher({
+const fragmentMatcher = new InMemoryCache({
   introspectionQueryResultData: {
     __schema: {
       types: [
