@@ -59,7 +59,8 @@ describe('RelatedRecords', function() {
                                       "type": "",
                                       "content": "",
                                       "status": "unauthorized"
-                                    }
+                                    },
+                                    "notice": null
                                   }]
                               };
 

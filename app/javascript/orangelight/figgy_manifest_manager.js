@@ -134,9 +134,13 @@ class FiggyViewerSet {
   }
 
   isUnauthorizedSeniorThesis(resource) {
-    if(resource.notice === undefined) return false;
-    const isSeniorThesis = resource.notice.heading.search("Senior Thesis");
-    return resource.embed.status == 'unauthorized' && isSeniorThesis
+    if(resource.notice !== undefined) {
+      if(resource.notice){
+        const isSeniorThesis = resource.notice.heading.search("Senior Thesis");
+        return resource.embed.status == 'unauthorized' && isSeniorThesis
+      }
+    }
+    return false;
   }
 
   // function for adding thesis request link
