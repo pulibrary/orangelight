@@ -1,6 +1,7 @@
 import loadResourcesByFiggyIds from './load-resources-by-figgy-ids'
 import loadResourcesByOrangelightId from './load-resources-by-orangelight-id'
 import loadResourcesByOrangelightIds from './load-resources-by-orangelight-ids'
+import { insert_online_link } from './insert_online_link.es6'
 
 class FiggyViewer {
   // There may be more than one ARK minted which resolves to the same manifested resource
@@ -104,13 +105,11 @@ class FiggyViewerSet {
     if (!data) {
       return null;
     }
-
     const resources = data.resourcesByOrangelightId
     return resources
   }
 
-  async getManifestUrls() {
-    const resources = await this.fetchResources()
+  getManifestUrls(resources) {
     if (!resources) {
       return []
     }
@@ -134,9 +133,39 @@ class FiggyViewerSet {
     })
   }
 
-  async render() {
-    const manifestUrls = await this.getManifestUrls()
+  isUnauthorizedSeniorThesis(resource) {
+    if(resource.notice !== undefined) {
+      if(resource.notice){
+        const isSeniorThesis = resource.notice.heading.search("Senior Thesis");
+        return resource.embed.status == 'unauthorized' && isSeniorThesis
+      }
+    }
+    return false;
+  }
 
+  // function for adding thesis request link
+  addThesisRequestLinks(resources) {
+    let iteration = 0;
+    const link = 'https://library.princeton.edu/special-collections/senior-thesis-order-form';
+    const target = '_blank';
+    resources.forEach((resource) => {
+      if(this.isUnauthorizedSeniorThesis(resource)) {
+        const content = (link, target) => {
+          return `<a href="${link}" target="${target}">Request a copy of ${resource.label}</a><p>Princeton community has access to this thesis on campus or VPN.</p>`
+        }
+        insert_online_link(link, `thesis_request_link_${iteration}`, content);
+        iteration++;
+      }
+    })
+  }
+
+  async render() {
+    let resources = await this.fetchResources()
+    this.addThesisRequestLinks(resources)
+    const filteredResources = resources.filter((resource) => {
+      return !this.isUnauthorizedSeniorThesis(resource)
+    })
+    const manifestUrls = await this.getManifestUrls(filteredResources)
     manifestUrls.forEach((manifestUrl, idx) => {
       const viewer = new FiggyViewer(idx, this.element, manifestUrl, this.arks)
       viewer.render()
@@ -266,4 +295,4 @@ class FiggyManifestManager {
   }
 }
 
-export {FiggyManifestManager, FiggyViewer};
+export {FiggyManifestManager, FiggyViewer, FiggyViewerSet};

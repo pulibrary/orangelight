@@ -11,9 +11,20 @@ async function loadResourcesByOrangelightId(id) {
            iiifServiceUrl,
            thumbnailUrl
          },
+         label,
          url,
          members {
            id
+         },
+         embed {
+           type,
+           content,
+           status
+         },
+         notice {
+           heading,
+           acceptLabel,
+           textHtml
          },
          ... on ScannedResource {
            manifestUrl
@@ -33,10 +44,11 @@ async function loadResourcesByOrangelightId(id) {
 
   try {
     const response = await apollo.query({
-      query, variables
+      query,
+      variables
     })
     return response.data
-  } catch(err) {
+  } catch (err) {
     console.error(err)
     return null
   }
