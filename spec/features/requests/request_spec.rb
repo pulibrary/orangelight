@@ -1263,6 +1263,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(page).to have_content "Er ru ting Qun fang pu : [san shi juan]"
           check('requestable_selected_23560381360006421')
           choose('requestable__delivery_mode_23560381360006421_in_library')
+          select 'Firestone Library', from: 'requestable__pick_up_23560381360006421'
           expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
           expect(page).to have_content I18n.t("requests.submit.annex_in_library_success")
           email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
