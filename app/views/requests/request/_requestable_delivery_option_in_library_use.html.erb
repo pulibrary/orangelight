@@ -2,14 +2,18 @@
         <%= hidden_field_tag "requestable[][fill_in]", requestable.fill_in_pick_up? %>
         <%= radio_button_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}]", 'in_library', selected, data: { target: "#fields-print__#{requestable.preferred_request_id}" }, 'aria-controls' => "fields-print__#{requestable.preferred_request_id}", class: 'control-label' %>
         <%= label_tag "requestable[][delivery_mode_#{requestable.preferred_request_id}_in_library]", I18n.t("requests.#{requestable.off_site_location}_in_library.delivery_label"), class: 'control-label', id: "requestable__type_#{requestable.off_site_location}_label_#{requestable.preferred_request_id}" %>
-        <div id="fields-print__<%=requestable.preferred_request_id%>" class="<%= pick_up_classlist(requestable, !selected) %>" >
-          <ul class="service-list">
-            <li><%= I18n.t("requests.#{requestable.off_site_location}_in_library.brief_msg") %> </li>
-          </ul>
-          <div id="fields-print__<%=requestable.preferred_request_id%>_card" class="card card-body bg-light">
-            <%= hidden_field_tag "requestable[][pick_up]", "", value: { pick_up: requestable.delivery_location_code, pick_up_location_code: requestable.pick_up_location_code}.to_json, class: 'single-pick-up-hidden' %>
-            <%= label_tag "requestable[][pick_up]", "Pick-up location: #{requestable.delivery_location_label}", class: 'single-pick-up' %>
-            <p> <%= t("requests.#{requestable.off_site_location}.in_library_use_msg_html", location_label: requestable.delivery_location_label, libcal_url: requestable.libcal_url) %> </p>
+        <% if requestable.annex? %>
+          <%= pick_up_choices requestable, default_pick_ups, !selected %>
+        <% else %>
+            <div id="fields-print__<%=requestable.preferred_request_id%>" class="<%= pick_up_classlist(requestable, !selected) %>" >
+            <ul class="service-list">
+              <li><%= I18n.t("requests.#{requestable.off_site_location}_in_library.brief_msg") %> </li>
+            </ul>
+            <div id="fields-print__<%=requestable.preferred_request_id%>_card" class="card card-body bg-light">
+              <%= hidden_field_tag "requestable[][pick_up]", "", value: { pick_up: requestable.delivery_location_code, pick_up_location_code: requestable.pick_up_location_code}.to_json, class: 'single-pick-up-hidden' %>
+              <%= label_tag "requestable[][pick_up]", "Pick-up location: #{requestable.delivery_location_label}", class: 'single-pick-up' %>
+              <p> <%= t("requests.#{requestable.off_site_location}.in_library_use_msg_html", location_label: requestable.delivery_location_label, libcal_url: requestable.libcal_url) %> </p>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>

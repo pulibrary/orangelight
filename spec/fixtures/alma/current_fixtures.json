@@ -31777,5 +31777,457 @@
     "Online",
     "In the Library"
   ]
+},
+{
+  "id": [
+      "9963837673506421"
+  ],
+  "numeric_id_b": [
+      true
+  ],
+  "cjk_all": [
+      ""
+  ],
+  "cjk_notes": [
+      ""
+  ],
+  "author_display": [
+      "Pringle, Michael"
+  ],
+  "author_sort": [
+      "Pringle, Michael"
+  ],
+  "author_citation_display": [
+      "Pringle, Michael",
+      "Gonzales, John"
+  ],
+  "author_roles_1display": [
+      "{\"secondary_authors\":[\"Gonzales, John\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Pringle, Michael\"}"
+  ],
+  "author_s": [
+      "Pringle, Michael",
+      "Gonzales, John"
+  ],
+  "marc_relator_display": [
+      "Author"
+  ],
+  "title_display": [
+      "The APA style of documentation : a pocket guide / Michael Pringle, John Gonzales."
+  ],
+  "title_a_index": [
+      "The APA style of documentation"
+  ],
+  "title_sort": [
+      "APA style of documentation : a pocket guide / Michael Pringle, John Gonzales."
+  ],
+  "title_no_h_index": [
+      "The APA style of documentation : a pocket guide / Michael Pringle, John Gonzales.",
+      "APA style of documentation : a pocket guide / Michael Pringle, John Gonzales."
+  ],
+  "title_t": [
+      "The APA style of documentation : a pocket guide / Michael Pringle, John Gonzales."
+  ],
+  "title_citation_display": [
+      "The APA style of documentation : a pocket guide"
+  ],
+  "compiled_created_t": [
+      "The APA style of documentation : a pocket guide / Michael Pringle, John Gonzales."
+  ],
+  "pub_created_display": [
+      "Boston : Prentice Hall, c2010."
+  ],
+  "pub_created_s": [
+      "Boston : Prentice Hall, c2010."
+  ],
+  "pub_citation_display": [
+      "Boston: Prentice Hall"
+  ],
+  "pub_date_display": [
+      "2010"
+  ],
+  "pub_date_start_sort": [
+      "2010"
+  ],
+  "cataloged_tdt": [
+      "2011-02-23T01:00:00Z"
+  ],
+  "format": [
+      "Book"
+  ],
+  "description_display": [
+      "vii, 63 p. : ill. ; 22 cm."
+  ],
+  "description_t": [
+      "vii, 63 p. : ill. ; 22 cm."
+  ],
+  "number_of_pages_citation_display": [
+      "vii, 63 p."
+  ],
+  "notes_index": [
+      "Includes bibliographical references and index."
+  ],
+  "bib_ref_notes_display": [
+      "Includes bibliographical references and index."
+  ],
+  "language_facet": [
+      "English"
+  ],
+  "publication_place_facet": [
+      "Massachusetts"
+  ],
+  "language_code_s": [
+      "eng"
+  ],
+  "language_iana_s": [
+      "en"
+  ],
+  "lc_subject_display": [
+      "Psychology—Authorship—Style manuals",
+      "Psychological literature—Publishing—Handbooks, manuals, etc",
+      "Academic writing—Authorship—Handbooks, manuals, etc"
+  ],
+  "lc_subject_include_archaic_search_terms_index": [
+      "Psychology—Authorship—Style manuals",
+      "Psychological literature—Publishing—Handbooks, manuals, etc",
+      "Academic writing—Authorship—Handbooks, manuals, etc"
+  ],
+  "subject_unstem_search": [
+      "Psychology—Authorship—Style manuals",
+      "Psychological literature—Publishing—Handbooks, manuals, etc",
+      "Academic writing—Authorship—Handbooks, manuals, etc"
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": null,
+  "subject_facet": [
+      "Psychology—Authorship—Style manuals",
+      "Psychological literature—Publishing—Handbooks, manuals, etc",
+      "Academic writing—Authorship—Handbooks, manuals, etc",
+      "Style manuals"
+  ],
+  "lcgft_s": [
+      "Style manuals"
+  ],
+  "subject_topic_facet": [
+      "Psychology",
+      "Authorship",
+      "Psychological literature",
+      "Publishing",
+      "Academic writing"
+  ],
+  "lc_1letter_facet": [
+      "B - Philosophy, Psychology, Religion"
+  ],
+  "lc_rest_facet": [
+      "BF - Psychology"
+  ],
+  "call_number_scheme_facet": [
+      "Library of Congress"
+  ],
+  "call_number_group_facet": [
+      "B - Philosophy, Psychology, Religion"
+  ],
+  "call_number_full_facet": [
+      "BF - Psychology"
+  ],
+  "genre_facet": [
+      "Style manuals",
+      "Handbooks, manuals, etc"
+  ],
+  "related_name_json_1display": [
+      "{\"Related name\":[\"Gonzales, John\"]}"
+  ],
+  "isbn_display": [
+      "9780136049708",
+      "0136049702"
+  ],
+  "lccn_display": [
+      "  2009028531"
+  ],
+  "lccn_s": [
+      "2009028531"
+  ],
+  "isbn_s": [
+      "9780136049708"
+  ],
+  "oclc_s": [
+      "426147342"
+  ],
+  "standard_no_index": [
+      "6383767",
+      "6383767-princetondb",
+      "ocn426147342"
+  ],
+  "other_version_s": [
+      "9780136049708",
+      "ocn660139064",
+      "ocn426147342"
+  ],
+  "holdings_1display": [
+      "{\"22641108520006421\":{\"location_code\":\"annex$noncirc\",\"location\":\"Non-Circulating\",\"library\":\"Forrestal Annex\",\"call_number\":\"BF76.8 .P75 2010\",\"call_number_browse\":\"BF76.8 .P75 2010\",\"items\":[{\"holding_id\":\"22641108520006421\",\"id\":\"23641108500006421\",\"status_at_load\":\"1\",\"barcode\":\"32101077586558\",\"copy_number\":\"1\"}]}}"
+  ],
+  "location_code_s": [
+      "annex$noncirc"
+  ],
+  "location": [
+      "Forrestal Annex"
+  ],
+  "location_display": [
+      "Non-Circulating"
+  ],
+  "advanced_location_s": [
+      "annex$noncirc",
+      "Forrestal Annex"
+  ],
+  "name_title_browse_s": [
+      "Pringle, Michael. The APA style of documentation"
+  ],
+  "call_number_display": [
+      "BF76.8 .P75 2010"
+  ],
+  "call_number_browse_s": [
+      "BF76.8 .P75 2010"
+  ],
+  "call_number_locator_display": [
+      "BF76.8 .P75 2010"
+  ],
+  "access_facet": [
+      "In the Library"
+  ]
+},
+{
+  "id": [
+      "9951680203506421"
+  ],
+  "numeric_id_b": [
+      true
+  ],
+  "cjk_all": [
+      ""
+  ],
+  "cjk_notes": [
+      ""
+  ],
+  "author_citation_display": [
+      "Basbaum, A. I."
+  ],
+  "author_roles_1display": [
+      "{\"secondary_authors\":[\"Basbaum, A. I.\"],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+  ],
+  "author_s": [
+      "Basbaum, A. I."
+  ],
+  "title_display": [
+      "The senses : a comprehensive reference."
+  ],
+  "title_a_index": [
+      "The senses"
+  ],
+  "title_sort": [
+      "senses : a comprehensive reference."
+  ],
+  "title_no_h_index": [
+      "The senses : a comprehensive reference.",
+      "senses : a comprehensive reference."
+  ],
+  "title_t": [
+      "The senses : a comprehensive reference."
+  ],
+  "title_citation_display": [
+      "The senses : a comprehensive reference"
+  ],
+  "compiled_created_t": [
+      "The senses : a comprehensive reference."
+  ],
+  "edition_display": [
+      "1st ed."
+  ],
+  "pub_created_display": [
+      "Amsterdam ; New York : Elsevier, 2008."
+  ],
+  "pub_created_s": [
+      "Amsterdam ; New York : Elsevier, 2008."
+  ],
+  "pub_citation_display": [
+      "New York: Elsevier"
+  ],
+  "pub_date_display": [
+      "2008"
+  ],
+  "pub_date_start_sort": [
+      "2008"
+  ],
+  "cataloged_tdt": [
+      "2008-01-09T01:00:00Z"
+  ],
+  "format": [
+      "Book"
+  ],
+  "electronic_access_1display": [
+      "{\"http://www.sciencedirect.com/science/referenceworks/9780123708809\":[\"www.sciencedirect.com\"]}"
+  ],
+  "electronic_access_index": [
+      "http://www.sciencedirect.com/science/referenceworks/9780123708809"
+  ],
+  "description_display": [
+      "6 v. : ill. (some col.) ; 27 cm."
+  ],
+  "description_t": [
+      "6 v. : ill. (some col.) ; 27 cm."
+  ],
+  "number_of_pages_citation_display": [
+      "6 v."
+  ],
+  "notes_index": [
+      "\"Advisory board, Allan I. Basbaum ... [et al.].\"",
+      "Includes bibliographical references and indexes.",
+      "v. 1-2. Vision / vol. editors, Richard H. Masland, Tom Albright -- v. 3. Audition / vol. editors, Peter Dallos, Donata Oertel -- v. 4. Olfaction and taste / vol. editors, Stuart Firestein, Gary K. Beauchamp -- v. 5. Pain / vol. editors, M. Catherine Bushnell, Allan I. Basbaum -- v. 6. Somatosensation / vol. editors, Esther Gardner, Jon H. Kaas.",
+      "Also available online."
+  ],
+  "notes_display": [
+      "\"Advisory board, Allan I. Basbaum ... [et al.].\""
+  ],
+  "bib_ref_notes_display": [
+      "Includes bibliographical references and indexes."
+  ],
+  "language_facet": [
+      "English"
+  ],
+  "publication_place_facet": [
+      "Netherlands"
+  ],
+  "language_code_s": [
+      "eng"
+  ],
+  "language_iana_s": [
+      "en"
+  ],
+  "contents_display": [
+      "v. 1-2. Vision / vol. editors, Richard H. Masland, Tom Albright",
+      "v. 3. Audition / vol. editors, Peter Dallos, Donata Oertel",
+      "v. 4. Olfaction and taste / vol. editors, Stuart Firestein, Gary K. Beauchamp",
+      "v. 5. Pain / vol. editors, M. Catherine Bushnell, Allan I. Basbaum",
+      "v. 6. Somatosensation / vol. editors, Esther Gardner, Jon H. Kaas."
+  ],
+  "other_format_display": [
+      "Also available online."
+  ],
+  "lc_subject_display": [
+      "Senses and sensation"
+  ],
+  "lc_subject_include_archaic_search_terms_index": [
+      "Senses and sensation"
+  ],
+  "subject_unstem_search": [
+      "Senses and sensation"
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": null,
+  "subject_facet": [
+      "Senses and sensation"
+  ],
+  "subject_topic_facet": [
+      "Senses and sensation"
+  ],
+  "lc_1letter_facet": [
+      "Q - Science"
+  ],
+  "lc_rest_facet": [
+      "QP - Physiology"
+  ],
+  "call_number_scheme_facet": [
+      "Library of Congress"
+  ],
+  "call_number_group_facet": [
+      "Q - Science"
+  ],
+  "call_number_full_facet": [
+      "QP - Physiology"
+  ],
+  "related_name_json_1display": [
+      "{\"Related name\":[\"Basbaum, A. I.\"]}"
+  ],
+  "isbn_display": [
+      "9780126394825 (set : hd.bd.)",
+      "0126394822 (set : hd.bd.)",
+      "9780120885367 (v. 1 : hd.bd.)",
+      "0120885360 (v. 1 : hd.bd.)",
+      "9780120885374 (v. 2 : hd.bd.)",
+      "0120885379 (v. 2 : hd.bd.)",
+      "9780120885381 (v. 3 : hd.bd.)",
+      "0120885387 (v. 3 : hd.bd.)",
+      "9780120885398 (v. 4 : hd.bd.)",
+      "0120885395 (v. 4 : hd.bd.)",
+      "9780120885404 (v. 5 : hd.bd.)",
+      "0120885409 (v. 5 : hd.bd.)",
+      "9780120885411 (v. 6 : hd.bd.)",
+      "0120885417 (v. 6 : hd.bd.)"
+  ],
+  "lccn_display": [
+      "  2007939855"
+  ],
+  "lccn_s": [
+      "2007939855"
+  ],
+  "isbn_s": [
+      "9780126394825",
+      "9780120885367",
+      "9780120885374",
+      "9780120885381",
+      "9780120885398",
+      "9780120885404",
+      "9780120885411"
+  ],
+  "oclc_s": [
+      "84611998"
+  ],
+  "standard_no_index": [
+      "5168020",
+      "5168020-princetondb",
+      "ocm84611998"
+  ],
+  "other_version_s": [
+      "9780126394825",
+      "9780120885367",
+      "9780120885374",
+      "9780120885381",
+      "9780120885398",
+      "9780120885404",
+      "9780120885411",
+      "ocm84611998"
+  ],
+  "holdings_1display": [
+      "{\"22480938160006421\":{\"location_code\":\"annex$noncirc\",\"location\":\"Non-Circulating\",\"library\":\"Forrestal Annex\",\"call_number\":\"QP431 .S4425 2008\",\"call_number_browse\":\"QP431 .S4425 2008\",\"items\":[{\"holding_id\":\"22480938160006421\",\"enumeration\":\"vol.1\",\"id\":\"23480938130006421\",\"status_at_load\":\"1\",\"barcode\":\"32101060781513\",\"copy_number\":\"1\"},{\"holding_id\":\"22480938160006421\",\"enumeration\":\"vol.6\",\"id\":\"23480938080006421\",\"status_at_load\":\"1\",\"barcode\":\"32101061062418\",\"copy_number\":\"1\"},{\"holding_id\":\"22480938160006421\",\"enumeration\":\"vol.5\",\"id\":\"23480938090006421\",\"status_at_load\":\"1\",\"barcode\":\"32101061062459\",\"copy_number\":\"1\"},{\"holding_id\":\"22480938160006421\",\"enumeration\":\"vol.2\",\"id\":\"23480938120006421\",\"status_at_load\":\"1\",\"barcode\":\"32101061062392\",\"copy_number\":\"1\"},{\"holding_id\":\"22480938160006421\",\"enumeration\":\"vol.4\",\"id\":\"23480938100006421\",\"status_at_load\":\"1\",\"barcode\":\"32101061062400\",\"copy_number\":\"1\"},{\"holding_id\":\"22480938160006421\",\"enumeration\":\"vol.3\",\"id\":\"23480938110006421\",\"status_at_load\":\"1\",\"barcode\":\"32101061062467\",\"copy_number\":\"1\"}],\"location_has\":[\"Vol. 1-v. 6\"],\"supplements\":[null],\"indexes\":[null]}}"
+  ],
+  "location_code_s": [
+      "annex$noncirc"
+  ],
+  "location": [
+      "Forrestal Annex"
+  ],
+  "location_display": [
+      "Non-Circulating"
+  ],
+  "advanced_location_s": [
+      "annex$noncirc",
+      "Forrestal Annex"
+  ],
+  "call_number_display": [
+      "QP431 .S4425 2008"
+  ],
+  "call_number_browse_s": [
+      "QP431 .S4425 2008"
+  ],
+  "call_number_locator_display": [
+      "QP431 .S4425 2008"
+  ],
+  "electronic_portfolio_s": [
+      "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53822803240006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ],
+  "access_facet": [
+      "Online",
+      "In the Library"
+  ]
 }
 ]
