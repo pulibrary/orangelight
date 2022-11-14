@@ -17,10 +17,6 @@ export default class AvailabilityUpdater {
         this.id = '';
         this.host_id = '';
 
-        this.available_non_requestable_labels = ['Available', 'Returned', 'Requestable',
-            'On shelf', 'All items available', 'On-site access',
-            'On-site - in-transit discharged', 'Reserved for digital lending'];
-
         this.process_results_list = this.process_results_list.bind(this);
         this.process_barcodes = this.process_barcodes.bind(this);
         this.process_single = this.process_single.bind(this);
@@ -326,17 +322,8 @@ export default class AvailabilityUpdater {
     }
 
     update_request_button(holding_id, availability_info) {
-        let availability_label_text;
         const { cdl } = availability_info;
         const location_services_element = $(`.location-services[data-holding-id='${holding_id}'] a`);
-        const availability_label = $(`.holding-status[data-holding-id='${holding_id}'] .availability-icon.badge`);
-        if (availability_label.text()) {
-            availability_label_text = this.title_case(availability_label.text());
-        }
-        let display_request = location_services_element.attr('data-requestable');
-        if (!Array.from(this.available_non_requestable_labels).includes(availability_label_text)) {
-            display_request = 'true';
-        }
         // if it's on CDL then it can't be requested
         if (cdl) {
             location_services_element.remove();
@@ -387,7 +374,7 @@ export default class AvailabilityUpdater {
                 }
             } else if (specialStatusLocations.includes(location)) {
                 this.checkSpecialLocation(location, availability_element);
-            } 
+            }
             else {
                 availability_element.addClass("badge-danger");
             }
@@ -409,7 +396,7 @@ export default class AvailabilityUpdater {
         if (temp_status) {
             location = availability_info['temp_loc'];
         } else {
-            location = availability_info['location']; 
+            location = availability_info['location'];
         }
 
         let link = '';
