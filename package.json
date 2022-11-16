@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "@apollo/client": "^3.7.1",
-    "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.6",
     "babel-preset-stage-3": "^6.24.1",
     "graphql": "^16.6.0",
@@ -14,10 +13,13 @@
     "jquery": "Keep version in sync with jquery-rails, obtained through bundler"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/eslint-plugin": "^7.19.1",
     "@babel/plugin-transform-runtime": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
     "babel-jest": "^28.1.2",
     "babel-plugin-macros": "^3.1.0",
+    "eslint": "8.27.0",
     "jest": "^28.1.2",
     "jquery": "3.5.1",
     "vite": "^3.0.0",
@@ -25,7 +27,8 @@
   },
   "scripts": {
     "test": "jest",
-    "test:debug": "node --inspect node_modules/.bin/jest --runInBand"
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
+    "eslint": "eslint"
   },
   "jest": {
     "verbose": true,
