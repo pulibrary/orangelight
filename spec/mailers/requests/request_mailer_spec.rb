@@ -1058,5 +1058,66 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
     # rubocop:enable RSpec/ExampleLength
   end
+
+  context "Invalid Clancy Item" do
+    let(:requestable) do
+      [
+        { "selected" => "true",
+          "mfhd" => "9956200533506421",
+          "call_number" => "ND553.P6 D24 2008q Oversize",
+          "location_code" => "$marquand$stacks",
+          "item_id" => "22590116430006421",
+          "barcode" => "32101068477817",
+          "copy_number" => "1",
+          "status" => "Available",
+          "type" => "clancy_in_library",
+          "pick_up" => "PJ" }.with_indifferent_access,
+        {
+          "selected" => "false"
+        }.with_indifferent_access
+      ]
+    end
+    let(:bib) do
+      {
+        "id" => "9956200533506421",
+        "title" => "Picasso / Philippe Dagen.",
+        "author" => "Dagen, Philippe"
+      }.with_indifferent_access
+    end
+    let(:params) do
+      {
+        request: user_info,
+        requestable: requestable,
+        bib: bib
+      }
+    end
+    let(:submission_for_clancy_error) do
+      Requests::Submission.new(params, user_info)
+    end
+    let(:services) do
+      [
+        Requests::Submissions::Clancy.new(submission_for_clancy_error)
+      ]
+    end
+
+    before do
+      services[0].errors << {
+        type: 'clancy',
+        error: 'Item is In Process on a PYR Job and cannot be Retrieved',
+        bibid: '9956200533506421',
+        barcode: '32101068477817'
+      }
+    end
+
+    it "sends the error email and renders the headers and body with id and barcode" do
+      mail = described_class.send("service_error_email", services, submission_for_clancy_error).deliver_now
+      expect(mail.subject).to eq(I18n.t('requests.error.service_error_subject'))
+      expect(mail.to).to eq([I18n.t('requests.error.service_error_email')])
+      expect(mail.from).to eq([I18n.t('requests.default.email_from')])
+      expect(mail.html_part.body.to_s).to have_content 'Item is In Process on a PYR Job and cannot be Retrieved'
+      expect(mail.text_part.body.to_s).to have_content '9956200533506421'
+      expect(mail.text_part.body.to_s).to have_content '32101068477817'
+    end
+  end
 end
 # rubocop:enable RSpec/MultipleExpectations
