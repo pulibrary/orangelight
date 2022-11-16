@@ -68,5 +68,7 @@ module Orangelight
 
     # See https://github.com/projectblacklight/blacklight/issues/2768
     config.active_record.yaml_column_permitted_classes = [Symbol, Date, Time, Hash, HashWithIndifferentAccess]
+
+    BlacklightDynamicSitemap::Engine.config.minimum_average_chunk = 500
   end
 end
