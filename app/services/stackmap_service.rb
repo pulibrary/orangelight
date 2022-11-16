@@ -74,7 +74,11 @@ class StackmapService
       end
 
       def stackmap_libs
-        %w[arch eastasian engineer lewis mendel plasma stokes]
+        if Flipflop.firestone_locator?
+          %w[arch eastasian engineer lewis mendel plasma stokes]
+        else
+          %w[arch eastasian engineer lewis mendel plasma stokes firestone]
+        end
       end
 
       def missing_stackmap_reserves
