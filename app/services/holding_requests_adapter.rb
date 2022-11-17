@@ -147,7 +147,7 @@ class HoldingRequestsAdapter
   end
 
   def sc_location_with_suppressed_button?(holding)
-    additional_locations = ["rare$xmr", "mudd$scamudd"]
+    additional_locations = ["rare$xmr", "mudd$scamudd", "rare$xrr", "rare$xgr", "rare$xcr", "mudd$phr"]
     holding['location_code'].start_with?('rare$sca') || additional_locations.include?(holding['location_code'])
   end
 
