@@ -35,7 +35,7 @@ en:
       success: 'Your comments have been submitted'
       error: 'Please fill in the required form values.'
       return: 'Back to the previous page.'
-      confirmation: 'Thank you for your comments. They are helpful as we work to improve this new Library service.'
+      confirmation: 'Thank you for your comments. They are helpful as we work to improve this Library service.'
     holdings:
       paging_request: 'Paging request only'
       linked: 'Other versions'
