@@ -318,31 +318,59 @@ RSpec.describe ApplicationHelper do
       end
     end
 
-    context '#holding_block record show - special collections locations' do
-      before { stub_holding_locations }
-      let(:show_result_sp_rare_xmr) { helper.holding_request_block(SolrDocument.new(document_sc_location_on_site_access)) }
-      let(:document_sc_location_on_site_access) do
-        {
-          id: '99125501031906421',
-          format: ['Manuscript'],
-          holdings_1display: {
-            "22943439080006421" => {
-              location_code: "rare$xmr",
-              location: "Remote Storage (ReCAP): Manuscripts. Special Collections Use Only",
-              library: "Special Collections",
-              call_number: "C1695",
-              call_number_browse: "C1695"
-            }
-          }.to_json.to_s
-        }.with_indifferent_access
-      end
+    context '#holding_block record show - special collections non-requestable locations' do
+      before { stub_alma_holding_locations }
+      describe 'special collection location rare$xmr' do
+        let(:show_result_sp_rare_xmr) { helper.holding_request_block(SolrDocument.new(document_sc_location_on_site_access)) }
+        let(:document_sc_location_on_site_access) do
+          {
+            id: '99125501031906421',
+            format: ['Manuscript'],
+            holdings_1display: {
+              "22943439080006421" => {
+                location_code: "rare$xmr",
+                location: "Remote Storage (ReCAP): Manuscripts. Special Collections Use Only",
+                library: "Special Collections",
+                call_number: "C1695",
+                call_number_browse: "C1695"
+              }
+            }.to_json.to_s
+          }.with_indifferent_access
+        end
 
-      it 'does not display a request button for special collections in specific locations' do
-        expect(show_result_sp_rare_xmr.last).not_to have_selector '.service-always-requestable'
-        expect(show_result_sp_rare_xmr.last).to have_selector '.service-conditional'
+        it 'does not display a request button' do
+          expect(show_result_sp_rare_xmr.last).not_to have_selector '.service-always-requestable'
+          expect(show_result_sp_rare_xmr.last).to have_selector '.service-conditional'
+        end
+        it 'does not display a Reading Room Request button' do
+          expect(show_result_sp_rare_xmr.last).to include 'data-requestable="false"'
+        end
       end
-      it 'does not display a Reading Room Request button' do
-        expect(show_result_sp_rare_xmr.last).to include 'data-requestable="false"'
+      describe 'special collection location rare$scahsvc' do
+        let(:show_result_sp_rare_scahsvc) { helper.holding_request_block(SolrDocument.new(document_sc_location_on_site_access_rare_scahsvc)) }
+        let(:document_sc_location_on_site_access_rare_scahsvc) do
+          {
+            id: '99125501031906421',
+            format: ['Manuscript'],
+            holdings_1display: {
+              "22943439180006421" => {
+                location_code: "rare$scahsvc",
+                location: "Cotsen Children's Library Archival. Special Collections Use Only",
+                library: "Special Collections",
+                call_number: "C1694",
+                call_number_browse: "C1694"
+              }
+            }.to_json.to_s
+          }.with_indifferent_access
+        end
+
+        it 'does not display a request button' do
+          expect(show_result_sp_rare_scahsvc.last).not_to have_selector '.service-always-requestable'
+          expect(show_result_sp_rare_scahsvc.last).to have_selector '.service-conditional'
+        end
+        it 'does not display a Reading Room Request button' do
+          expect(show_result_sp_rare_scahsvc.last).to include 'data-requestable="false"'
+        end
       end
     end
 
