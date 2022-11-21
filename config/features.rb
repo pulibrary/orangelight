@@ -26,4 +26,8 @@ Flipflop.configure do
   feature :reshare_for_borrow_direct,
     default: false,
     description: "When on / true, uses the new ReShare provider for BorrowDirect. When off / false, uses the older Relais provider for BorrowDirect."
+
+  feature :firestone_locator,
+    default: true,
+    description: "When on / true, uses the old locator service for Firestone. When off / false uses the new Stackmap service for Firestone."
 end
