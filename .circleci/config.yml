@@ -142,6 +142,15 @@ jobs:
       - setup-bundler
       - run: bundle exec rubocop
   
+  eslint:
+    executor: basic-executor
+    steps:
+      - attach_workspace:
+          at: '~/orangelight'
+      - run: 
+          name: Run eslint
+          command: yarn run eslint app/javascript/orangelight/availability.es6
+  
   finish:
     executor: basic-executor
     steps:
