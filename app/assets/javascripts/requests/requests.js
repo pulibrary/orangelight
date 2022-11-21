@@ -61,7 +61,12 @@ $(document).ready(function() {
         var target = $(this).attr('data-target');
         $(target).collapse('show');
 
+        $("#request-submit-button").prop('disabled', false);
     });
+
+    if ($('input[type=radio][name^="requestable[][delivery_mode"]').length > 1) {
+      $("#request-submit-button").prop('disabled', true);
+    }
 
     jQuery(function() {
       return $(".tablesorter").DataTable({
