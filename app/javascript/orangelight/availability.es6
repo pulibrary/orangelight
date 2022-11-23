@@ -27,7 +27,6 @@ export default class AvailabilityUpdater {
     }
 
     request_availability(allowRetry) {
-        let url;
         // a search results page or a call number browse page
         if ($(".documents-list").length > 0) {
             const bib_ids = this.record_ids();
@@ -42,11 +41,17 @@ export default class AvailabilityUpdater {
             for(let i= 0; i < batches.length; i++) {
                 const batch_url = `${this.bibdata_base_url}/bibliographic/availability.json?bib_ids=${batches[i].join()}`;
                 console.log(`batch: ${i}, url: ${batch_url}`);
-                $.getJSON(batch_url, this.process_results_list)
-                    .fail((jqXHR, _textStatus, errorThrown) => {
-                        // Log that there were problems fetching a batch. Unfortunately we don't know exactly
-                        // which batch so we cannot include that information.
-                        console.error(`Failed to retrieve availability data for batch. HTTP status: ${jqXHR.status}: ${errorThrown}`);
+                fetch(batch_url)
+                    .then(function(response) {
+                        if (!response.ok) {
+                            throw Error(response.statusText);
+                        }
+                        return response; })
+                    .then((response) => response.json())
+                    .then((data) => this.process_results_list(data))
+                    .catch(error => {
+                        // handle the error
+                        console.log(`Failed to retrieve availability data for batch. Error: ${error}`);
                     });
             }
 
@@ -55,10 +60,17 @@ export default class AvailabilityUpdater {
             this.id = window.location.pathname.split('/').pop();
             this.host_id = $("#main-content").data("host-id") || "";
             if (this.id.match(/^SCSB-\d+/)) {
-                url = `${this.availability_url}?scsb_id=${this.id.replace(/^SCSB-/, '')}`;
-                return $.getJSON(url, this.process_scsb_single)
-                    .fail((jqXHR, textStatus, errorThrown) => {
-                        return console.error(`Failed to retrieve availability data for the SCSB record ${this.id}: ${errorThrown}`);
+                const url = `${this.availability_url}?scsb_id=${this.id.replace(/^SCSB-/, '')}`;
+                return fetch(url)
+                    .then(function(response) {
+                        if (!response.ok) {
+                            throw Error(response.statusText);
+                        }
+                        return response; })
+                    .then((response) => response.json())
+                    .then((data) => this.process_scsb_single(data))
+                    .catch(error => {
+                        console.log(`Failed to retrieve availability data for the SCSB record ${this.id}: Error: ${error}`);
                     });
 
             } else {
@@ -82,6 +94,14 @@ export default class AvailabilityUpdater {
             }
         }
     }
+    
+    // handleErrors(response) {
+    //     if (!response.ok) {
+    //         throw Error(response.statusText);
+    //     }
+    //     return response;
+    // };
+
     /* example with three host ids: https://bibdata.princeton.edu/bibliographic/availability.json?deep=true&bib_ids=9923427953506421,99125038613506421,99125026373506421,99124945733506421 */
     // the record id is 9923427953506421
     availability_url_show() {
