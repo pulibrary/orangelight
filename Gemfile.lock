@@ -1,17 +1,4 @@
 GIT
-  remote: https://github.com/projectblacklight/blacklight-marc.git
-  revision: c0ff1d9cb5d3c12449310deeb25bd657072c9681
-  ref: c0ff1d9
-  specs:
-    blacklight-marc (7.0.0.rc1)
-      blacklight (~> 7.0)
-      library_stdnums
-      marc (>= 0.4.3, < 1.1)
-      marc-fastxmlwriter
-      rails
-      traject (~> 3.0)
-
-GIT
   remote: https://github.com/projectblacklight/blacklight_advanced_search
   revision: 9c04e3770c137d1958f43aa260bc302ab5cfb63b
   branch: master
@@ -102,8 +89,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    addressable (2.8.0)
-      public_suffix (>= 2.0.2, < 5.0)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     alma (0.3.3)
       activesupport
       ezwadl
@@ -137,7 +124,7 @@ GEM
       rubocop-performance
       rubocop-rails
       rubocop-rspec
-    blacklight (7.25.3)
+    blacklight (7.32.0)
       deprecation
       globalid
       hashdiff
@@ -146,7 +133,14 @@ GEM
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
       rails (>= 5.1, < 7.1)
-      view_component (~> 2.43)
+      view_component (~> 2.66)
+    blacklight-marc (7.1.1)
+      blacklight (~> 7.0)
+      library_stdnums
+      marc (>= 0.4.3, < 2.0)
+      marc-fastxmlwriter
+      rails
+      traject (~> 3.0)
     blacklight_dynamic_sitemap (0.6.0)
       blacklight (> 6.0)
       rails
@@ -234,7 +228,7 @@ GEM
     e2mmap (0.1.0)
     email_validator (2.2.3)
       activemodel
-    erubi (1.10.0)
+    erubi (1.11.0)
     execjs (2.8.1)
     ezwadl (0.1.0)
       httparty (~> 0.14)
@@ -267,7 +261,7 @@ GEM
     globalid (1.0.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
-    hashie (4.1.0)
+    hashie (5.0.0)
     high_voltage (3.0.0)
     honeybadger (4.12.1)
     http (4.4.1)
@@ -275,7 +269,7 @@ GEM
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
       http-parser (~> 1.2.0)
-    http-cookie (1.0.4)
+    http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     http-parser (1.2.3)
@@ -284,7 +278,7 @@ GEM
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.11.0)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     jaro_winkler (1.5.4)
@@ -322,7 +316,7 @@ GEM
       railties (>= 4)
       request_store (~> 1.0)
     logstash-event (1.2.02)
-    loofah (2.18.0)
+    loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -330,10 +324,11 @@ GEM
     mail_form (1.9.0)
       actionmailer (>= 5.2)
       activemodel (>= 5.2)
-    marc (1.0.4)
+    marc (1.2.0)
+      rexml
       scrub_rb (>= 1.0.1, < 2)
       unf
-    marc-fastxmlwriter (1.0.0)
+    marc-fastxmlwriter (1.1.0)
       marc (~> 1.0)
     marcel (1.0.2)
     matrix (0.4.2)
@@ -343,7 +338,7 @@ GEM
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.16.2)
+    minitest (5.16.3)
     modernizr-rails (2.7.1)
     msgpack (1.5.1)
     multi_xml (0.6.0)
@@ -380,7 +375,7 @@ GEM
     pry-byebug (3.9.0)
       byebug (~> 11.0)
       pry (~> 0.13.0)
-    public_suffix (4.0.7)
+    public_suffix (5.0.0)
     racc (1.6.0)
     rack (2.2.4)
     rack-proxy (0.7.2)
@@ -500,7 +495,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    slop (4.9.1)
+    slop (4.9.3)
     sneakers (2.12.0)
       bunny (~> 2.14)
       concurrent-ruby (~> 1.0)
@@ -553,10 +548,10 @@ GEM
     timecop (0.9.5)
     tins (1.31.0)
       sync
-    traject (3.6.0)
+    traject (3.7.0)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
-      hashie (>= 3.1, < 5)
+      hashie (>= 3.1, < 6)
       http (>= 3.0, < 6)
       httpclient (~> 2.5)
       marc (~> 1.0)
@@ -568,11 +563,12 @@ GEM
       thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.8.1)
+    unf_ext (0.0.8.2)
     unicode-display_width (1.8.0)
     vcr (6.1.0)
-    view_component (2.57.0)
+    view_component (2.78.0)
       activesupport (>= 5.0.0, < 8.0)
+      concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
     virtus (2.0.0)
       axiom-types (~> 0.1)
@@ -611,7 +607,7 @@ GEM
     yard (0.9.27)
       webrick (~> 1.7.0)
     yell (2.2.2)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   ruby
@@ -622,7 +618,7 @@ DEPENDENCIES
   babel-transpiler
   bixby
   blacklight (~> 7.0)
-  blacklight-marc!
+  blacklight-marc (~> 7.1.0)
   blacklight_advanced_search!
   blacklight_dynamic_sitemap (~> 0.6.0)
   blacklight_range_limit
