@@ -69,7 +69,7 @@ describe Requests::RequestDecorator do
 
   describe "#hidden_fields" do
     it "shows all display metdata" do
-      expect(decorator.hidden_fields).to eq('<input type="hidden" name="bib[id]" id="bib_id" value="123abc" /><input type="hidden" name="bib[title]" id="bib_title" value="title" /><input type="hidden" name="bib[author]" id="bib_author" value="author" /><input type="hidden" name="bib[isbn]" id="bib_isbn" value="isbn" />')
+      expect(decorator.hidden_fields).to eq('<input type="hidden" name="bib[id]" id="bib_id" value="123abc" autocomplete="off" /><input type="hidden" name="bib[title]" id="bib_title" value="title" autocomplete="off" /><input type="hidden" name="bib[author]" id="bib_author" value="author" autocomplete="off" /><input type="hidden" name="bib[isbn]" id="bib_isbn" value="isbn" autocomplete="off" />')
     end
   end
 
