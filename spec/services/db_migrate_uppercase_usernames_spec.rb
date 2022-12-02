@@ -22,13 +22,13 @@ RSpec.describe DBMigrateUppercaseUsernames do
       end
 
       it "merges searches into existing user" do
-        uppercase_user.searches.create([{ query_params: 'history' }])
+        uppercase_user.searches.create([{ query_params: { q: 'history' } }])
         expect { described_class.run }.to change(lowercase_user.searches, :count).by(1)
       end
 
       it "doesn't merge search into existing user if they already have it" do
-        uppercase_user.searches.create([{ query_params: 'history' }])
-        lowercase_user.searches.create([{ query_params: 'history' }])
+        uppercase_user.searches.create([{ query_params: { q: 'history' } }])
+        lowercase_user.searches.create([{ query_params: { q: 'history' } }])
         expect { described_class.run }.to change(lowercase_user.searches, :count).by(0)
       end
     end
@@ -45,7 +45,7 @@ RSpec.describe DBMigrateUppercaseUsernames do
       end
 
       it "merges searches into new user" do
-        uppercase_user.searches.create([{ query_params: 'history' }])
+        uppercase_user.searches.create([{ query_params: { q: 'history' } }])
         described_class.run
         expect(User.last.searches.count).to eq(1)
       end
