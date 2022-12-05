@@ -45,7 +45,8 @@ class StackmapService
     private
 
       def locator_url
-        "https://locator-prod.princeton.edu/index.php?loc=#{@loc}&id=#{bibid}&embed=true"
+        base_url = Orangelight.config['firestone_locator_base_url'] || 'https://locator-prod.princeton.edu'
+        "#{base_url}/index.php?loc=#{@loc}&id=#{bibid}&embed=true"
       end
 
       def stackmap_url

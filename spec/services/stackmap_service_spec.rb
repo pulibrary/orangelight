@@ -31,6 +31,16 @@ RSpec.describe StackmapService::Url do
         it 'resolves to embeded firestone locator with loc and bibid' do
           expect(url).to eq("https://locator-prod.princeton.edu/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
         end
+
+        context 'when firestone_locator_base_url points to the staging locator' do
+          before do
+            allow(Orangelight.config).to receive(:[]).with('firestone_locator_base_url')
+                                                     .and_return('https://locator-staging.princeton.edu')
+          end
+          it 'resolves to embeded staging firestone locator with loc and bibid' do
+            expect(url).to eq("https://locator-staging.princeton.edu/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
+          end
+        end
       end
       context 'with firestone_locator off' do
         before do
