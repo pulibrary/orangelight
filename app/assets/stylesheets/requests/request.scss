@@ -266,3 +266,7 @@ input[type="radio"] + label {
 .simple_form.request {
   width: 100%;
 }
+
+#request-submit-wrapper .btn[disabled] {
+  pointer-events: none;
+}

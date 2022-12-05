@@ -1324,6 +1324,57 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           end
         end
 
+        describe 'Request button disables and enables', vcr: { cassette_name: 'request_features', record: :none }, js: true do
+          before do
+            stub_illiad_patron
+            stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/99105816503506421/raw")
+              .to_return(status: 200, body: fixture('/catalog_99105816503506421.json'), headers: {})
+            stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/9991807103506421/raw")
+              .to_return(status: 200, body: fixture('/catalog_raw_9991807103506421.json'), headers: {})
+          end
+          it 'with an electronic delivery' do
+            visit 'requests/99105816503506421?mfhd=22514405160006421'
+            expect(page).to have_content "SOS brutalism : a global survey"
+            expect(page).to have_content 'Elser, Oliver'
+            expect(page).to have_content 'Physical Item Delivery'
+            expect(page).to have_content 'Electronic Delivery'
+            expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
+            expect(page).to have_content 'Available - Item in place'
+            expect(page).to have_content 'vol.1'
+            check('requestable_selected_23514405150006421')
+            expect(page).to have_button('Request this Item', disabled: true)
+            choose('requestable__delivery_mode_23514405150006421_edd')
+            expect(page).to have_button('Request this Item', disabled: false)
+          end
+          it 'with a Physical delivery' do
+            visit 'requests/99105816503506421?mfhd=22514405160006421'
+            expect(page).to have_content "SOS brutalism : a global survey"
+            expect(page).to have_content 'Elser, Oliver'
+            expect(page).to have_content 'Physical Item Delivery'
+            expect(page).to have_content 'Electronic Delivery'
+            expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
+            expect(page).to have_content 'Available - Item in place'
+            expect(page).to have_content 'vol.1'
+            check('requestable_selected_23514405150006421')
+            expect(page).to have_button('Request this Item', disabled: true)
+            choose('requestable__delivery_mode_23514405150006421_print')
+            expect(page).to have_button('Request this Item', disabled: false)
+            expect(page).to have_content 'Pick-up location: Architecture Library'
+          end
+          it 'always enabled with a ReCap item' do
+            visit 'requests/9991807103506421?mfhd=22696270550006421'
+            expect(page).to have_content "Towards the critique of violence : Walter Benjamin and Giorgio Agamben"
+            expect(page).to have_content 'Moran, Brendan P.'
+            expect(page).to have_content 'Firestone Library - Stacks HM886 .T69 2015'
+            expect(page).to have_content 'Request via Partner Library'
+            expect(page).to have_content "Pick-up location: Firestone Library"
+            expect(page).to have_content "Not Available"
+            expect(page).not_to have_content "Resource Sharing Request"
+            check('requestable_selected_23696270540006421')
+            expect(page).to have_button('Request this Item', disabled: false)
+          end
+        end
+
         describe 'Request a temp holding item from Resource Sharing - RES_SHARE$IN_RS_REQ' do
           before do
             borrow_direct = ::BorrowDirect::RequestItem.new("22101008199999")
