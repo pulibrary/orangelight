@@ -5,6 +5,7 @@ defaults: &defaults
   feedback_form:
     to: <%= ENV['OL_FEEDBACK_TO'] %>
     cc: <%= ENV['OL_FEEDBACK_CC'] %>
+  firestone_locator_base_url: https://locator-prod.princeton.edu
   show_page:
     linked_documents:
       maximum: 3
@@ -29,6 +30,7 @@ staging:
   events:
     server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
     exchange: 'orangelight_events'
+  firestone_locator_base_url: https://locator-staging.princeton.edu
 
 alma_qa:
   <<: *defaults
