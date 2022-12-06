@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       get 'print'
     end
   end
+  post 'bookmarks/create', to: 'bookmarks#create'
 
   mount BlacklightAdvancedSearch::Engine => '/'
 

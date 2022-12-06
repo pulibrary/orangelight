@@ -29,8 +29,32 @@ export default class BookmarkAllManager {
     });
   }
 
-  bookmark_all() {
-    $("input.toggle-bookmark:not(:checked)").trigger('click');
+  async bookmark_all() {
+    let bookmarks = [];
+    document.querySelectorAll('form.bookmark-toggle')
+            .forEach((form) => {
+              bookmarks.push('bookmarks[][document_id]=' + form.getAttribute("data-doc-id"));
+            });
+    if (bookmarks.length) {
+      let param_string = '?' + bookmarks.join('&');
+      let url = '/bookmarks/create';
+      const response = await fetch(url, {
+        headers: {
+          'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),
+          'X-Requested-With': 'XMLHttpRequest',
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
+        body: param_string,
+        method: 'POST'});
+      if (response.ok) {
+        const checkboxes = document.querySelectorAll("input.toggle-bookmark:not(:checked)");
+        checkboxes.forEach((checkbox) => { checkbox.click() });
+      } else {
+        const data = await response.json();
+        if (data && data.length && data[0]) {
+          alert(data[0]);
+        }
+      }
+    }
   }
 
   unbookmark_all() {

@@ -36,6 +36,36 @@ class BookmarksController < CatalogController
     end
   end
 
+  def create
+    @bookmarks = if params[:bookmarks]
+                   permit_bookmarks[:bookmarks]
+                 else
+                   [{ document_id: params[:id], document_type: blacklight_config.document_model.to_s }]
+                 end
+
+    current_or_guest_user.save! unless current_or_guest_user.persisted?
+
+    bookmarks_to_add = @bookmarks.reject { |bookmark| current_or_guest_user.bookmarks.where(bookmark).exists? }
+    errors = []
+    ActiveRecord::Base.transaction do
+      bookmarks_to_add.each do |bookmark|
+        errors.concat current_or_guest_user.bookmarks.create(bookmark)&.errors&.full_messages
+      end
+    end
+
+    if request.xhr?
+      errors.empty? ? render(json: { bookmarks: { count: current_or_guest_user.bookmarks.count } }) : render(json: errors, status: "500")
+    else
+      if @bookmarks.any? && errors.empty?
+        flash[:notice] = I18n.t('blacklight.bookmarks.add.success', count: @bookmarks.length)
+      elsif @bookmarks.any?
+        flash[:error] = I18n.t('blacklight.bookmarks.add.failure', count: @bookmarks.length)
+      end
+
+      redirect_back fallback_location: bookmarks_path
+    end
+  end
+
   def print
     fetch_bookmarked_documents
     @url_gen_params = {}

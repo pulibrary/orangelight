@@ -41,5 +41,19 @@ FactoryBot.define do
       sequence(:uid) { srand.to_s[2..15] }
       username { 'Alma Patron' }
     end
+
+    factory :user_with_many_bookmarks do
+      transient do
+        bookmarks { 50 }
+      end
+      after(:create) do |user, evaluator|
+        (1..evaluator.bookmarks).each do |document_id|
+          bookmark = Bookmark.new
+          bookmark.user_id = user.id
+          bookmark.document_id = document_id
+          user.bookmarks << bookmark
+        end
+      end
+    end
   end
 end

@@ -43,4 +43,32 @@ RSpec.describe BookmarksController do
       expect(body).not_to include(bad_value)
     end
   end
+
+  describe "create" do
+    let(:user) { FactoryBot.create(:user_with_many_bookmarks, bookmarks: 3) }
+    let(:controller) { described_class.new }
+    before do
+      user.save
+      allow(controller).to receive(:current_or_guest_user).and_return(user)
+      allow(controller).to receive(:params).and_return(
+        ActionController::Parameters.new({
+                                           bookmarks: [{ document_id: "12345", document_type: "SolrDocument" }],
+                                           format: :js
+                                         })
+      )
+      allow(controller).to receive(:redirect_back)
+      allow(controller.request).to receive(:xhr?).and_return(true)
+      allow(controller).to receive(:render)
+    end
+    it 'creates a bookmark' do
+      expect { controller.create }.to change { Bookmark.count }.by(1)
+    end
+    context 'when user already has the maximum number of bookmarks' do
+      let(:user) { FactoryBot.create(:user_with_many_bookmarks, bookmarks: 50) }
+      it 'does not create the bookmark' do
+        expect(Orangelight.config['bookmarks']['maximum']).to eq(50)
+        expect { controller.create }.not_to change { Bookmark.count }
+      end
+    end
+  end
 end

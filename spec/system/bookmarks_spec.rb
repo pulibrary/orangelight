@@ -55,5 +55,17 @@ RSpec.describe 'bookmarks' do
 
       expect(page).to have_content "History."
     end
+
+    context 'when user has more than the maximum number of bookmarks' do
+      let(:user) { FactoryBot.create(:user_with_many_bookmarks, bookmarks: 51) }
+      before do
+        stub_holding_locations
+      end
+      it 'still allows them to view the bookmarks page' do
+        login_as user
+        visit "/bookmarks"
+        expect(page).to have_xpath '//h1[text() = "Bookmarks"]'
+      end
+    end
   end
 end
