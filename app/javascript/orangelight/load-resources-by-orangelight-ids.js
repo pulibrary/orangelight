@@ -13,9 +13,6 @@ async function loadResourcesByOrangelightIds(ids) {
            thumbnailUrl
          },
          url,
-         members {
-           id
-         },
          ... on ScannedResource {
            manifestUrl,
            orangelightId

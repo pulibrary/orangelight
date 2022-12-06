@@ -114,21 +114,7 @@ class FiggyViewerSet {
       return []
     }
 
-    // Filter only for resources with child resources (i. e. non-FileSets) as members
-    // This is not performant, and should require a separate GraphQL query
-    const filteredResources = resources.filter((resource) => {
-      if (!resource['members'])
-        return true
-      return resource.members.filter((member) => {
-        return member.__typename != "FileSet"
-      }).length > 0
-    })
-    if (resources.length > 0 && filteredResources.length < 1)
-      return resources.map((resource) => {
-        return resource.manifestUrl
-      })
-
-    return filteredResources.map((resource) => {
+    return resources.map((resource) => {
       return resource.manifestUrl
     })
   }
