@@ -107,7 +107,7 @@ describe 'Searching', type: :system, js: false do
         visit '/catalog?q1=NSF%20Series&search_field=advanced&f1=in_series2121121121212.1'
         expect { page }.not_to raise_error
         expect(page).to have_content 'No results found for your search'
-        expect(page).to have_link('Try Borrow Direct', href: 'https://borrowdirect.reshare.indexdata.com/Search/Results')
+        expect(page).to have_link('Try Borrow Direct', href: 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results')
       end
     end
   end

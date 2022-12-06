@@ -87,9 +87,9 @@ module Requests
 
     def reshare_link(query_params, search_field)
       if query_params
-        "https://borrowdirect.reshare.indexdata.com/Search/Results?lookfor=#{query_params}&type=#{reshare_type(search_field)}"
+        "https://princeton-borrowdirect.reshare.indexdata.com/Search/Results?lookfor=#{query_params}&type=#{reshare_type(search_field)}"
       else
-        "https://borrowdirect.reshare.indexdata.com/Search/Results"
+        "https://princeton-borrowdirect.reshare.indexdata.com/Search/Results"
       end
     end
 
