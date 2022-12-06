@@ -41,7 +41,7 @@ RSpec.describe Requests::RequestHelper, type: :helper do
         allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(true)
       end
       context 'with a standard keyword query' do
-        let(:expected_url) { 'https://borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=AllFields' }
+        let(:expected_url) { 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=AllFields' }
         let(:search_field) { 'all_fields' }
 
         it 'returns the link to borrow direct' do
@@ -49,7 +49,7 @@ RSpec.describe Requests::RequestHelper, type: :helper do
         end
       end
       context 'with a title keyword query' do
-        let(:expected_url) { 'https://borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=Title' }
+        let(:expected_url) { 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=Title' }
         let(:search_field) { 'title' }
 
         it 'returns the link to borrow direct' do
@@ -57,7 +57,7 @@ RSpec.describe Requests::RequestHelper, type: :helper do
         end
       end
       context 'with a subject keyword query' do
-        let(:expected_url) { 'https://borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=Subject' }
+        let(:expected_url) { 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=Subject' }
         let(:search_field) { 'subject' }
 
         it 'returns the link to borrow direct' do
@@ -65,7 +65,7 @@ RSpec.describe Requests::RequestHelper, type: :helper do
         end
       end
       context 'with an author keyword query' do
-        let(:expected_url) { 'https://borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=Author' }
+        let(:expected_url) { 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=Author' }
         let(:search_field) { 'author' }
 
         it 'returns the link to borrow direct' do
