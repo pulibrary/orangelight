@@ -207,7 +207,7 @@ module Requests
     end
 
     def open_libraries
-      ['firestone', 'annex', 'marquand', 'mendel', 'stokes', 'eastasian', 'arch', 'lewis', 'engineer', 'recap']
+      ['plasma', 'firestone', 'annex', 'marquand', 'mendel', 'stokes', 'eastasian', 'arch', 'lewis', 'engineer', 'recap']
     end
 
     def location_code
