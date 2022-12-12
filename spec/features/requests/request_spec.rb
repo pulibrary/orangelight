@@ -1373,6 +1373,17 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             check('requestable_selected_23696270540006421')
             expect(page).to have_button('Request this Item', disabled: false)
           end
+          it 'enables and disables for an record with multiple items with one delivery option' do
+            visit 'requests/995597013506421?mfhd=22641621120006421'
+            expect(page).to have_content 'Mycologia'
+            expect(page).to have_content 'New York Botanical Garden'
+            expect(page).to have_content 'Lewis Library - Lewis Library - Serials (Off-Site) 8763.668'
+            expect(page).to have_content 'Electronic Delivery'
+            expect(page).to have_content 'Available - Item in place'
+            expect(page).to have_button('Request Selected Items', disabled: true)
+            check('requestable_selected_23641620980006421')
+            expect(page).to have_button('Request Selected Items', disabled: false)
+          end
         end
 
         describe 'Request a temp holding item from Resource Sharing - RES_SHARE$IN_RS_REQ' do
