@@ -51,7 +51,7 @@ $(document).ready(function() {
     });
 
     // Enhance the Bootstrap collapse utility to toggle hide/show for other options
-    $('input[type=radio][name^="requestable[][delivery_mode"]').change(function() {
+    $('input[type=radio][name^="requestable[][delivery_mode"]').on('change', function() {
         // collapse others
         $("input[name='" + this.name + "']").each(function( index ) {
           var target = $(this).attr('data-target');
@@ -61,12 +61,40 @@ $(document).ready(function() {
         var target = $(this).attr('data-target');
         $(target).collapse('show');
 
-        $("#request-submit-button").prop('disabled', false);
+        checkAllRequestable();
     });
 
-    if ($('input[type=radio][name^="requestable[][delivery_mode"]').length > 1) {
-      $("#request-submit-button").prop('disabled', true);
-    }
+    $('input[type=checkbox][id^="requestable_selected"').on('change', function() {
+      checkAllRequestable();
+    });
+
+    function requestable(changed) {
+      var parent = $(changed).closest('[id^="request_"]');
+      var selected = parent.find('input[type=checkbox][id^="requestable_selected"').is(':checked');
+      var delivery_mode = false;
+      var radios = parent.find('input[type=radio][name^="requestable[][delivery_mode"]')
+      if (radios.length === 0) {
+        delivery_mode = true;
+      } else {
+        radios.each(function() {
+          if ($(this).is(':checked')) {
+            delivery_mode = true;
+          }
+        });
+      }
+      if (selected && delivery_mode) {
+        $('#request-submit-button').prop('disabled', false);
+      }
+    };
+
+    function checkAllRequestable() {
+      $('#request-submit-button').prop('disabled', true);
+      $(".delivery--options").each(function() {
+        requestable(this);
+      });
+    };
+
+    checkAllRequestable();
 
     jQuery(function() {
       return $(".tablesorter").DataTable({
@@ -79,6 +107,7 @@ $(document).ready(function() {
 
     $('.table input[type=checkbox]').on('change', function() {
       $(this).closest('tr').toggleClass('selected', $(this).is(':checked'));
+      requestable(this);
     });
   
 

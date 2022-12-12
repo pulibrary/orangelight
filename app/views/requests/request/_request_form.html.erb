@@ -30,7 +30,7 @@
     <% else %>
       <%= render partial: "requestable_list_form", locals: { requestable_list: @request.requestable, mfhd: @request.mfhd, holdings: @request.holdings, default_pick_ups: @request.default_pick_ups } %>
       <% if !@request.all_items_online? && @request.any_will_submit_via_form? %>
-        <div id="request-submit-wrapper" title="You must select a delivery option to submit a request">
+        <div id="request-submit-wrapper" title="You must select an item and delivery option to submit a request">
           <%= f.submit submit_message(@request.requestable), class: "btn btn-primary submit--request", id: "request-submit-button", disabled: submit_button_disabled(@request.requestable), data: { disable_with: "Submitting Request" }, title: "" %>
         </div>
       <% end %>

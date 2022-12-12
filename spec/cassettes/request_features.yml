@@ -9258,4 +9258,250 @@ http_interactions:
         .B53"],"call_number_browse_s":["HQ766 .B53f Oversize","HQ766 .B53"],"call_number_locator_display":["HQ766
         .B53f","HQ766 .B53"],"_version_":1740087426403008512,"timestamp":"2022-08-02T21:44:46.736Z"}'
   recorded_at: Tue, 09 Aug 2022 11:53:52 GMT
+- request:
+    method: get
+    uri: https://catalog.princeton.edu/catalog/995597013506421/raw
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.23.2
+      Date:
+      - Mon, 12 Dec 2022 19:24:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - ab2d2144-b443-421f-beb9-93c252a950c2
+      X-Download-Options:
+      - noopen
+      X-Ua-Compatible:
+      - IE=edge,chrome=1
+      Etag:
+      - W/"17a14a2d3c2239846518cdf6f8b56643"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.068756'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.15
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Origin
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6Ijk5NTU5NzAxMzUwNjQyMSIsIm51bWVyaWNfaWRfYiI6dHJ1ZSwiYXV0aG9yX2NpdGF0aW9uX2Rpc3BsYXkiOlsiTmV3IFlvcmsgQm90YW5pY2FsIEdhcmRlbiIsIk15Y29sb2dpY2FsIFNvY2lldHkgb2YgQW1lcmljYSJdLCJhdXRob3Jfcm9sZXNfMWRpc3BsYXkiOiJ7XCJzZWNvbmRhcnlfYXV0aG9yc1wiOltcIk5ldyBZb3JrIEJvdGFuaWNhbCBHYXJkZW5cIixcIk15Y29sb2dpY2FsIFNvY2lldHkgb2YgQW1lcmljYVwiXSxcInRyYW5zbGF0b3JzXCI6W10sXCJlZGl0b3JzXCI6W10sXCJjb21waWxlcnNcIjpbXX0iLCJhdXRob3JfcyI6WyJOZXcgWW9yayBCb3RhbmljYWwgR2FyZGVuIiwiTXljb2xvZ2ljYWwgU29jaWV0eSBvZiBBbWVyaWNhIl0sInRpdGxlX2Rpc3BsYXkiOiJNeWNvbG9naWEuIiwidGl0bGVfdCI6WyJNeWNvbG9naWEuIl0sInRpdGxlX2NpdGF0aW9uX2Rpc3BsYXkiOlsiTXljb2xvZ2lhIl0sImNvbXBpbGVkX2NyZWF0ZWRfdCI6WyJNeWNvbG9naWEuIl0sInB1Yl9jcmVhdGVkX2Rpc3BsYXkiOlsiW0Jyb254XSA6IE5ldyBZb3JrIEJvdGFuaWNhbCBHYXJkZW4sIDE5MDktIl0sInB1Yl9jcmVhdGVkX3MiOlsiW0Jyb254XSA6IE5ldyBZb3JrIEJvdGFuaWNhbCBHYXJkZW4sIDE5MDktIl0sInB1Yl9jaXRhdGlvbl9kaXNwbGF5IjpbIkJyb254OiBOZXcgWW9yayBCb3RhbmljYWwgR2FyZGVuIl0sInB1Yl9kYXRlX2Rpc3BsYXkiOlsiMTkwOSJdLCJwdWJfZGF0ZV9zdGFydF9zb3J0IjoxOTA5LCJwdWJfZGF0ZV9lbmRfc29ydCI6OTk5OSwiY2F0YWxvZ2VkX3RkdCI6IjIwMDAtMDYtMTNUMTA6NTk6MDBaIiwiZm9ybWF0IjpbIkpvdXJuYWwiXSwiZGVzY3JpcHRpb25fZGlzcGxheSI6WyJ2LiA6IGlsbC4gOyAyNC0yOCBjbS4iLCJWb2wuIDEsIG5vLiAxIChKYW4uIDE5MDkpLSJdLCJkZXNjcmlwdGlvbl90IjpbInYuIDogaWxsLiA7IDI0LTI4IGNtLiIsIlZvbC4gMSwgbm8uIDEgKEphbi4gMTkwOSktIl0sIm51bWJlcl9vZl9wYWdlc19jaXRhdGlvbl9kaXNwbGF5IjpbInYuIl0sImZvcm1lZF9mcm9tX2Rpc3BsYXkiOlsiTXljb2xvZ2ljYWwgYnVsbGV0aW4iLCJKb3VybmFsIG9mIG15Y29sb2d5Il0sImZyZXF1ZW5jeV9kaXNwbGF5IjpbIkJpbW9udGhseSwgPDE5OTAtMjAxNj4iXSwibm90ZXNfZGlzcGxheSI6WyJQdWJsaXNoZWQgPDE5OTktMjAxNj46IExhd3JlbmNlLCBLUyA6IE15Y29sb2dpY2FsIFNvY2lldHkgb2YgQW1lcmljYS4iXSwiaXNzdWluZ19ib2R5X25vdGVzX2Rpc3BsYXkiOlsiT2ZmaWNpYWwgb3JnYW4gb2YgdGhlIE15Y29sb2dpY2FsIFNvY2lldHkgb2YgQW1lcmljYSwgMTkzMy08MjAxNj4uIl0sInNvdXJjZV9kZXNjX25vdGVzX2Rpc3BsYXkiOlsiTGF0ZXN0IGlzc3VlIGNvbnN1bHRlZDogVm9sLiAxMDcsIG5vLiA2IChOb3YuL0RlYy4gMjAxNSkuIl0sImxhbmd1YWdlX2ZhY2V0IjpbIkVuZ2xpc2giXSwibGFuZ3VhZ2VfY29kZV9zIjpbImVuZyJdLCJsYW5ndWFnZV9pYW5hX3MiOlsiZW4iXSwiaW5kZXhlc19kaXNwbGF5IjpbIlZvbHMuIDEgKDE5MDkpLTI0ICgxOTMyKS4gMSB2Ljsgdi4gMjUgKDE5MzMpLTU4ICgxOTY2KS4gMSB2LiJdLCJsY19zdWJqZWN0X2Rpc3BsYXkiOlsiTXljb2xvZ3nigJRQZXJpb2RpY2FscyJdLCJzdWJqZWN0X2ZhY2V0IjpbIk15Y29sb2d54oCUUGVyaW9kaWNhbHMiLCJQZXJpb2RpY2FscyJdLCJsY2dmdF9zIjpbIlBlcmlvZGljYWxzIl0sInJlbGF0ZWRfbmFtZV9qc29uXzFkaXNwbGF5Ijoie1wiUmVsYXRlZCBuYW1lXCI6W1wiTmV3IFlvcmsgQm90YW5pY2FsIEdhcmRlblwiLFwiTXljb2xvZ2ljYWwgU29jaWV0eSBvZiBBbWVyaWNhXCJdfSIsIm90aGVyX3RpdGxlX2Rpc3BsYXkiOlsiTXljb2xvZ2lhIl0sImlzc25fZGlzcGxheSI6WyIwMDI3LTU1MTQiXSwibGNjbl9kaXNwbGF5IjpbIiAgIDU3MDUxNzMwIC9MICJdLCJsY2NuX3MiOlsiNTcwNTE3MzAiXSwiaXNzbl9zIjpbIjAwMjc1NTE0Il0sIm9jbGNfcyI6WyIxNjQwNzMzIl0sIm90aGVyX3ZlcnNpb25fcyI6WyIwMDI3NTUxNCIsIm9jbTAxNjQwNzMzIl0sImxvY2F0aW9uX2NvZGVfcyI6WyJyZWNhcCRwYSIsImxld2lzJHNlcmlhbCIsImFubmV4JHN0YWNrcyIsImxld2lzJHBuIl0sImxvY2F0aW9uIjpbIlJlQ0FQIiwiTGV3aXMgTGlicmFyeSIsIkZvcnJlc3RhbCBBbm5leCJdLCJsb2NhdGlvbl9kaXNwbGF5IjpbIlJlbW90ZSBTdG9yYWdlIiwiTGV3aXMgTGlicmFyeSAtIFNlcmlhbHMgKE9mZi1TaXRlKSIsIlN0YWNrcyIsIlJlbW90ZSBTdG9yYWdlIChSZUNBUCk6IExld2lzIExpYnJhcnkgVXNlIE9ubHkiXSwiYWR2YW5jZWRfbG9jYXRpb25fcyI6WyJyZWNhcCRwYSIsImxld2lzJHNlcmlhbCIsImFubmV4JHN0YWNrcyIsImxld2lzJHBuIiwiUmVDQVAiLCJMZXdpcyBMaWJyYXJ5IiwiRm9ycmVzdGFsIEFubmV4Il0sImNhbGxfbnVtYmVyX2Rpc3BsYXkiOlsiODc2My42NjgiXSwiY2FsbF9udW1iZXJfYnJvd3NlX3MiOlsiODc2My42NjgiXSwiY2FsbF9udW1iZXJfbG9jYXRvcl9kaXNwbGF5IjpbIjg3NjMuNjY4Il0sImhhc2hlZF9pZF9zc2kiOiIzYzdlMDk0MzA4ZTlkY2Q0IiwiX3ZlcnNpb25fIjoxNzQ4MjY3MDYzMTU5MjkxOTA0LCJ0aW1lc3RhbXAiOiIyMDIyLTExLTAxVDA0OjM2OjM2LjI3NloiLCJob2xkaW5nc18xZGlzcGxheSI6IntcIjIyNjQxNjIwODMwMDA2NDIxXCI6e1wibG9jYXRpb25fY29kZVwiOlwicmVjYXAkcGFcIixcImxvY2F0aW9uXCI6XCJSZW1vdGUgU3RvcmFnZVwiLFwibGlicmFyeVwiOlwiUmVDQVBcIixcImNhbGxfbnVtYmVyXCI6XCI4NzYzLjY2OFwiLFwiY2FsbF9udW1iZXJfYnJvd3NlXCI6XCI4NzYzLjY2OFwiLFwiaXRlbXNcIjpbe1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDg0LCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA2NDAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzQ4NFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDg4LCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA4MTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzU5MVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDg0LCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA2MzAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzQ5MlwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDg4LCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA4MDAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzYxN1wiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDg3LCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA4MjAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzU2N1wiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDgzLCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA2NTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzU1OVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDg1LCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA2MjAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzUwMFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDk2LCBuby4gNS02XCIsXCJpZFwiOlwiMjM2NDE2MjA2ODAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA1NDczMzAxN1wiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDg2LCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA2MDAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzU3NVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDg1LCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA2MTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzUxOFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDk3LCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA2NzAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA1NzY0Mzg3NFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDk2LCBuby4gMy00XCIsXCJpZFwiOlwiMjM2NDE2MjA2OTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA1NDg4NjY2NlwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDkzLCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA1NjAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzcwOFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDk0LCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA1NTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA1MDAxNzAwMVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDk0LCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA1NDAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA1MDAxNjk5NVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDg3LCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA1ODAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzYwOVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDkyLCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA1NzAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzY5MFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDk3LCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA1MjAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA1NzY0MjgzNVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDg2LCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA1OTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzU4M1wiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDk1LCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA1MzAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA1MDAxNzE5MVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDgyLCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA1MTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzUyNlwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDgyLCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA1MDAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzUzNFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDg5LCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA3ODAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzYzM1wiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDkwLCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA3NzAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzY0MVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDk2LCBuby4gMS0yXCIsXCJpZFwiOlwiMjM2NDE2MjA3MDAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA1NDg4NzEwMlwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDg5LCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA3OTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzYyNVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDkzLCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA3MjAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA0NDE3NjQ0MlwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDk1LCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA3MTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA1MTUzMTQ1NVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDkyLCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA3MzAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzY4MlwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDkxLCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA3NDAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzY3NFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDkwLCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA3NjAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzY1OFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA4MzAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDkxLCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA3NTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2NzgxNzY2NlwiLFwiY29weV9udW1iZXJcIjpcIjFcIn1dLFwibG9jYXRpb25faGFzXCI6W1wiVm9sLiA4Miwgbm8uIDEgKEphbi4gMTk5MCktdi4gOTcsIG5vLiA2IChEZWMuIDIwMDUpXCJdLFwic3VwcGxlbWVudHNcIjpbbnVsbF0sXCJpbmRleGVzXCI6W251bGxdfSxcIlJFU19TSEFSRSRPVVRfUlNfUkVRXCI6e1wibG9jYXRpb25fY29kZVwiOlwiUkVTX1NIQVJFJE9VVF9SU19SRVFcIixcImN1cnJlbnRfbG9jYXRpb25cIjpcIkJvcnJvd2luZyBSZXNvdXJjZSBTaGFyaW5nIFJlcXVlc3RzXCIsXCJjdXJyZW50X2xpYnJhcnlcIjpcIlJlc291cmNlIFNoYXJpbmcgTGlicmFyeVwiLFwiY2FsbF9udW1iZXJcIjpcIjg3NjMuNjY4XCIsXCJjYWxsX251bWJlcl9icm93c2VcIjpcIjg3NjMuNjY4XCIsXCJ0ZW1wX2xvY2F0aW9uX2NvZGVcIjpcIlJFU19TSEFSRSRPVVRfUlNfUkVRXCIsXCJpdGVtc1wiOlt7XCJob2xkaW5nX2lkXCI6XCIyMjY0MTYyMDgzMDAwNjQyMVwiLFwiZW51bWVyYXRpb25cIjpcInZvbC4gODMsIG5vLiAxLTNcIixcImlkXCI6XCIyMzY0MTYyMDY2MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjBcIixcImJhcmNvZGVcIjpcIjMyMTAxMDY3ODE3NTQyXCIsXCJjb3B5X251bWJlclwiOlwiMVwifV19LFwiMjI2NDE2MjExMjAwMDY0MjFcIjp7XCJsb2NhdGlvbl9jb2RlXCI6XCJsZXdpcyRzZXJpYWxcIixcImxvY2F0aW9uXCI6XCJMZXdpcyBMaWJyYXJ5IC0gU2VyaWFscyAoT2ZmLVNpdGUpXCIsXCJsaWJyYXJ5XCI6XCJMZXdpcyBMaWJyYXJ5XCIsXCJjYWxsX251bWJlclwiOlwiODc2My42NjhcIixcImNhbGxfbnVtYmVyX2Jyb3dzZVwiOlwiODc2My42NjhcIixcIml0ZW1zXCI6W3tcImhvbGRpbmdfaWRcIjpcIjIyNjQxNjIxMTIwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwidm9sLiAxMDQsIG5vLiAxLTNcIixcImlkXCI6XCIyMzY0MTYyMDg4MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDgzNzU2MTYxXCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY0MTYyMTEyMDAwNjQyMVwiLFwiZW51bWVyYXRpb25cIjpcInZvbC4gMTA2LCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjEwMjAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA4NTgxNDkwMVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjExMjAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDEwMSwgbm8uIDQtNlwiLFwiaWRcIjpcIjIzNjQxNjIwODkwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNjgyMzY0MTFcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjQxNjIxMTIwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwidm9sLiAxMDYsIG5vLiA0LTZcIixcImlkXCI6XCIyMzY0MTYyMTAxMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDg1ODA1MDczXCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY0MTYyMTEyMDAwNjQyMVwiLFwiZW51bWVyYXRpb25cIjpcInZvbC4gMTA1LCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA4NjAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA4Mzc2NDA3NFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjExMjAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDEwNCwgbm8uIDQtNlwiLFwiaWRcIjpcIjIzNjQxNjIwODcwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwODM3NTYyMDNcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjQxNjIxMTIwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwidm9sLiAxMDMsIG5vLiAxLTNcIixcImlkXCI6XCIyMzY0MTYyMTA1MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDYzNjI3NjE0XCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY0MTYyMTEyMDAwNjQyMVwiLFwiZW51bWVyYXRpb25cIjpcInZvbC4gMTA3LCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjA4NDAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA4NjE4Mjg5NFwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjExMjAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDk4LCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA4NTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2MDkzODcxN1wiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjExMjAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDEwMywgbm8uIDQtNlwiLFwiaWRcIjpcIjIzNjQxNjIxMDQwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNjM2MjA3MThcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjQxNjIxMTIwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwidm9sLiAxMDIsIG5vLiA0LTZcIixcImlkXCI6XCIyMzY0MTYyMTA2MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDc5MDYxNzI1XCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY0MTYyMTEyMDAwNjQyMVwiLFwiZW51bWVyYXRpb25cIjpcInZvbC4gMTAyLCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjEwNzAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2ODI0NzUzM1wiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjExMjAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDEwNSwgbm8uIDQtNlwiLFwiaWRcIjpcIjIzNjQxNjIxMDMwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwODQ3Mzk2OTVcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjQxNjIxMTIwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwidm9sLiAxMDcsIG5vLiA0LTZcIixcImlkXCI6XCIyMzY0MTYyMTAwMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDg0NzQ3MzQyXCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY0MTYyMTEyMDAwNjQyMVwiLFwiZW51bWVyYXRpb25cIjpcInZvbC4gMTAwLCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjEwOTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2ODk1MzYyN1wiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjExMjAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDEwOCwgbm8uIDEtM1wiLFwiaWRcIjpcIjIzNjQxNjIwOTkwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwODYyMzg4NjBcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjQxNjIxMTIwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwidm9sLiA5OCwgbm8uIDEtM1wiLFwiaWRcIjpcIjIzNjQxNjIwOTMwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNTk4NTkzMTJcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjQxNjIxMTIwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwidm9sLiAxMDAsIG5vLiA0LTZcIixcImlkXCI6XCIyMzY0MTYyMDkyMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDYzNTk4OTg5XCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY0MTYyMTEyMDAwNjQyMVwiLFwiZW51bWVyYXRpb25cIjpcInZvbC4gOTksIG5vLiA0LTZcIixcImlkXCI6XCIyMzY0MTYyMTEwMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDYyNjY0MDE0XCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY0MTYyMTEyMDAwNjQyMVwiLFwiZW51bWVyYXRpb25cIjpcInZvbC4gMTA4LCBuby4gNC02XCIsXCJpZFwiOlwiMjM2NDE2MjA5ODAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA4NjE4MjgxMVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjExMjAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDk5LCBuby4gMS0zXCIsXCJpZFwiOlwiMjM2NDE2MjExMTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA2MjY2NDAwNlwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjExMjAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuIDEwMSwgbm8uIDEtM1wiLFwiaWRcIjpcIjIzNjQxNjIxMDgwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNjU3OTE3NDlcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9XSxcImxvY2F0aW9uX2hhc1wiOltcIlZvbC4gOTgsIG5vLiAxIChKYW4uL0ZlYi4gMjAwNiktdi4gMTA4LCBuby4gNiAoTm92Li9EZWMuIDIwMTYpXCIsXCJFbGVjdHJvbmljIGZvcm1hdCBhdmFpbGFibGU7IHByaW50IHN1YnNjcmlwdGlvbiBjYW5jZWxsZWQgd2l0aCB0aGUgbGFzdCBpc3N1ZSBvZiAyMDE2XCJdLFwic3VwcGxlbWVudHNcIjpbbnVsbCxudWxsXSxcImluZGV4ZXNcIjpbbnVsbCxudWxsXX0sXCIyMjY0MTYyMTE0MDAwNjQyMVwiOntcImxvY2F0aW9uX2NvZGVcIjpcImFubmV4JHN0YWNrc1wiLFwibG9jYXRpb25cIjpcIlN0YWNrc1wiLFwibGlicmFyeVwiOlwiRm9ycmVzdGFsIEFubmV4XCIsXCJjYWxsX251bWJlclwiOlwiODc2My42NjhcIixcImNhbGxfbnVtYmVyX2Jyb3dzZVwiOlwiODc2My42NjhcIixcIml0ZW1zXCI6W3tcImhvbGRpbmdfaWRcIjpcIjIyNjQxNjIxMTQwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwidm9sLiA1MFwiLFwiaWRcIjpcIjIzNjQxNjIxMTMwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNDgwNzI1MjJcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9XSxcImxvY2F0aW9uX2hhc1wiOltcIlZvbC4gMTYsIG5vLiAxIChKYW4uIDE5MjQpLXYuIDgxLCBuby4gNiAoTm92Li9EZWMuIDE5ODkpXCIsbnVsbF0sXCJzdXBwbGVtZW50c1wiOltudWxsLG51bGxdLFwiaW5kZXhlc1wiOltudWxsLFwiSW5kZXhlczogdi4gMS8yNDsgdi4gMjUvNThcIl19LFwiMjI2NDE2MjA0OTAwMDY0MjFcIjp7XCJsb2NhdGlvbl9jb2RlXCI6XCJsZXdpcyRwblwiLFwibG9jYXRpb25cIjpcIlJlbW90ZSBTdG9yYWdlIChSZUNBUCk6IExld2lzIExpYnJhcnkgVXNlIE9ubHlcIixcImxpYnJhcnlcIjpcIkxld2lzIExpYnJhcnlcIixcImNhbGxfbnVtYmVyXCI6XCI4NzYzLjY2OFwiLFwiY2FsbF9udW1iZXJfYnJvd3NlXCI6XCI4NzYzLjY2OFwiLFwiaXRlbXNcIjpbe1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA0OTAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuN1wiLFwiaWRcIjpcIjIzNjQxNjIwNDIwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNzk2NzM0NzlcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjQxNjIwNDkwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwidm9sLjhcIixcImlkXCI6XCIyMzY0MTYyMDQxMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDc5NjczNDg3XCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY0MTYyMDQ5MDAwNjQyMVwiLFwiZW51bWVyYXRpb25cIjpcInZvbC41XCIsXCJpZFwiOlwiMjM2NDE2MjA0ODAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA3OTY3MzQ1M1wiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA0OTAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuM1wiLFwiaWRcIjpcIjIzNjQxNjIwNDUwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNzk2NzM0MzhcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjQxNjIwNDkwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwidm9sLjZcIixcImlkXCI6XCIyMzY0MTYyMDQzMDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDc5NjczNDYxXCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY0MTYyMDQ5MDAwNjQyMVwiLFwiZW51bWVyYXRpb25cIjpcInZvbC40XCIsXCJpZFwiOlwiMjM2NDE2MjA0NDAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA3OTY3MzQ0NlwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA0OTAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuMlwiLFwiaWRcIjpcIjIzNjQxNjIwNDYwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNzk2NzM0MjBcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjQxNjIwNDkwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwidm9sLjFcIixcImlkXCI6XCIyMzY0MTYyMDQ3MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDc5NjczNDEyXCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY0MTYyMDQ5MDAwNjQyMVwiLFwiZW51bWVyYXRpb25cIjpcInZvbC4xNVwiLFwiaWRcIjpcIjIzNjQxNjIwMzQwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNzk2NzM1NTJcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjQxNjIwNDkwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwidm9sLjEwXCIsXCJpZFwiOlwiMjM2NDE2MjAzOTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA3OTY3MzUwM1wiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA0OTAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuMTFcIixcImlkXCI6XCIyMzY0MTYyMDM4MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDc5NjczNTExXCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY0MTYyMDQ5MDAwNjQyMVwiLFwiZW51bWVyYXRpb25cIjpcInZvbC4xMlwiLFwiaWRcIjpcIjIzNjQxNjIwMzcwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNzk2NzM1MjlcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNjQxNjIwNDkwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwidm9sLjE0XCIsXCJpZFwiOlwiMjM2NDE2MjAzNTAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA3OTY3MzU0NVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn0se1wiaG9sZGluZ19pZFwiOlwiMjI2NDE2MjA0OTAwMDY0MjFcIixcImVudW1lcmF0aW9uXCI6XCJ2b2wuMTNcIixcImlkXCI6XCIyMzY0MTYyMDM2MDAwNjQyMVwiLFwic3RhdHVzX2F0X2xvYWRcIjpcIjFcIixcImJhcmNvZGVcIjpcIjMyMTAxMDc5NjczNTM3XCIsXCJjb3B5X251bWJlclwiOlwiMVwifSx7XCJob2xkaW5nX2lkXCI6XCIyMjY0MTYyMDQ5MDAwNjQyMVwiLFwiZW51bWVyYXRpb25cIjpcInZvbC45XCIsXCJpZFwiOlwiMjM2NDE2MjA0MDAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTA3OTY3MzQ5NVwiLFwiY29weV9udW1iZXJcIjpcIjFcIn1dLFwibG9jYXRpb25faGFzXCI6W1wiVm9sLiAxLCBuby4gMSAoSmFuLiAxOTA5KS12LiAxNSwgbm8uIDYgKE5vdi4gMTkyMylcIl0sXCJzdXBwbGVtZW50c1wiOltudWxsXSxcImluZGV4ZXNcIjpbbnVsbF19fSJ9
+  recorded_at: Mon, 12 Dec 2022 19:24:12 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/lewis$serial.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"f2b263e329021257056218b0009de3a3"
+      X-Runtime:
+      - '0.037948'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 0ff09022-2db7-43e5-a722-54d853a4ec2c
+    body:
+      encoding: UTF-8
+      string: '{"label":"Lewis Library - Serials (Off-Site)","code":"lewis$serial","aeon_location":false,"recap_electronic_delivery_location":false,"open":false,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","fulfillment_unit":"Closed","library":{"label":"Lewis
+        Library","code":"lewis","order":0},"holding_library":null,"delivery_locations":[{"label":"Lewis
+        Library","address":"Washington Road and Ivy Lane Princeton, NJ 08544","phone_number":"609-258-6004","contact_email":"lewislib@princeton.edu","gfa_pickup":"PN","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Lewis
+        Library","code":"lewis","order":0}}]}'
+  recorded_at: Mon, 12 Dec 2022 19:24:13 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/bibliographic/995597013506421/holdings/22641621120006421/availability.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"11c1a58d37d48b3875c25043d0ad2380"
+      X-Runtime:
+      - '4.366587'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 42714296-caea-4948-bc40-6448f3474b7f
+    body:
+      encoding: UTF-8
+      string: '[{"barcode":"32101086182811","id":"23641620980006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 108, no.
+        4-6 July/Aug.-Nov./Dec. 2016","enum_display":"vol. 108, no. 4-6","chron_display":"July/Aug.-Nov./Dec.
+        2016","in_temp_library":false},{"barcode":"32101086238860","id":"23641620990006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 108, no.
+        1-3 Jan./Feb.-May/June 2016","enum_display":"vol. 108, no. 1-3","chron_display":"Jan./Feb.-May/June
+        2016","in_temp_library":false},{"barcode":"32101084747342","id":"23641621000006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 107, no.
+        4-6 July/Aug.-Nov./Dec. 2015","enum_display":"vol. 107, no. 4-6","chron_display":"July/Aug.-Nov./Dec.
+        2015","in_temp_library":false},{"barcode":"32101086182894","id":"23641620840006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 107, no.
+        1-3 Jan./Feb.-May/June 2015","enum_display":"vol. 107, no. 1-3","chron_display":"Jan./Feb.-May/June
+        2015","in_temp_library":false},{"barcode":"32101085805073","id":"23641621010006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 106, no.
+        4-6 July/Aug.-Nov./Dec. 2014","enum_display":"vol. 106, no. 4-6","chron_display":"July/Aug.-Nov./Dec.
+        2014","in_temp_library":false},{"barcode":"32101085814901","id":"23641621020006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 106, no.
+        1-3 Jan./Feb.-May/June 2014","enum_display":"vol. 106, no. 1-3","chron_display":"Jan./Feb.-May/June
+        2014","in_temp_library":false},{"barcode":"32101084739695","id":"23641621030006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 105, no.
+        4-6 July/Aug.-Nov./Dec. 2013","enum_display":"vol. 105, no. 4-6","chron_display":"July/Aug.-Nov./Dec.
+        2013","in_temp_library":false},{"barcode":"32101083764074","id":"23641620860006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 105, no.
+        1-3 Jan./Feb.-May/June 2013","enum_display":"vol. 105, no. 1-3","chron_display":"Jan./Feb.-May/June
+        2013","in_temp_library":false},{"barcode":"32101083756203","id":"23641620870006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 104, no.
+        4-6 July/Aug.-Nov./Dec. 2012","enum_display":"vol. 104, no. 4-6","chron_display":"July/Aug.-Nov./Dec.
+        2012","in_temp_library":false},{"barcode":"32101083756161","id":"23641620880006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 104, no.
+        1-3 Jan./Feb.-May/June 2012","enum_display":"vol. 104, no. 1-3","chron_display":"Jan./Feb.-May/June
+        2012","in_temp_library":false},{"barcode":"32101063620718","id":"23641621040006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 103, no.
+        4-6 July/Aug.-Nov./Dec. 2011","enum_display":"vol. 103, no. 4-6","chron_display":"July/Aug.-Nov./Dec.
+        2011","in_temp_library":false},{"barcode":"32101063627614","id":"23641621050006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 103, no.
+        1-3 Jan.-Feb./May-June 2011","enum_display":"vol. 103, no. 1-3","chron_display":"Jan.-Feb./May-June
+        2011","in_temp_library":false},{"barcode":"32101079061725","id":"23641621060006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 102, no.
+        4-6 July/Aug.-Nov./Dec. 2010","enum_display":"vol. 102, no. 4-6","chron_display":"July/Aug.-Nov./Dec.
+        2010","in_temp_library":false},{"barcode":"32101068247533","id":"23641621070006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 102, no.
+        1-3 Jan./Feb.-May/June 2010","enum_display":"vol. 102, no. 1-3","chron_display":"Jan./Feb.-May/June
+        2010","in_temp_library":false},{"barcode":"32101068236411","id":"23641620890006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 101, no.
+        4-6 July/Aug.-Nov./Dec. 2009","enum_display":"vol. 101, no. 4-6","chron_display":"July/Aug.-Nov./Dec.
+        2009","in_temp_library":false},{"barcode":"32101065791749","id":"23641621080006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 101, no.
+        1-3 Jan./Feb.-May/June 2009","enum_display":"vol. 101, no. 1-3","chron_display":"Jan./Feb.-May/June
+        2009","in_temp_library":false},{"barcode":"32101063598989","id":"23641620920006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 100, no.
+        4-6 July/Aug.-Nov./Dec. 2008","enum_display":"vol. 100, no. 4-6","chron_display":"July/Aug.-Nov./Dec.
+        2008","in_temp_library":false},{"barcode":"32101068953627","id":"23641621090006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 100, no.
+        1-3 Jan./Feb.-May/June 2008","enum_display":"vol. 100, no. 1-3","chron_display":"Jan./Feb.-May/June
+        2008","in_temp_library":false},{"barcode":"32101062664014","id":"23641621100006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 99, no.
+        4-6 July/Aug.-Nov./Dec. 2007","enum_display":"vol. 99, no. 4-6","chron_display":"July/Aug.-Nov./Dec.
+        2007","in_temp_library":false},{"barcode":"32101062664006","id":"23641621110006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 99, no.
+        1-3 Jan./Feb.-May/June 2007","enum_display":"vol. 99, no. 1-3","chron_display":"Jan./Feb.-May/June
+        2007","in_temp_library":false},{"barcode":"32101060938717","id":"23641620850006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 98, no.
+        4-6 July/Aug.-Nov./Dec. 2006","enum_display":"vol. 98, no. 4-6","chron_display":"July/Aug.-Nov./Dec.
+        2006","in_temp_library":false},{"barcode":"32101059859312","id":"23641620930006421","holding_id":"22641621120006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"NoCirc","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$serial","label":"Lewis
+        Library - Lewis Library - Serials (Off-Site)","description":"vol. 98, no.
+        1-3 Jan./Feb.-May/June 2006","enum_display":"vol. 98, no. 1-3","chron_display":"Jan./Feb.-May/June
+        2006","in_temp_library":false}]'
+  recorded_at: Mon, 12 Dec 2022 19:24:18 GMT
 recorded_with: VCR 6.1.0
