@@ -6,7 +6,7 @@ orbs:
 executors:
   orangelight-executor:
     docker:
-      - image: cimg/ruby:2.7.5-browsers
+      - image: cimg/ruby:3.1-browsers
         environment:
           RAILS_ENV: test
           ORANGELIGHT_HOST: localhost
@@ -24,7 +24,7 @@ executors:
     working_directory: ~/orangelight
   basic-executor:
     docker:
-      - image: cimg/ruby:2.7.5-browsers
+      - image: cimg/ruby:3.1-browsers
         environment:
           RAILS_ENV: test
           NVM_HOME: ~/.nvm
@@ -33,18 +33,18 @@ executors:
 commands:
   setup-bundler:
     steps:
-      - run: gem install bundler -v '2.2.27'
+      - run: gem install bundler -v '2.3.26'
       # Restore bundle cache
       - restore_cache:
           keys:
-          - orangelight-v2.1-{{ checksum "Gemfile.lock" }}
-          - orangelight-v2.1-
+          - orangelight-v2.2-{{ checksum "Gemfile.lock" }}
+          - orangelight-v2.2-
       # Bundle install dependencies
       - run:
           name: Install dependencies
           command: bundle config set --local path 'vendor/bundle'; bundle check  || bundle install --jobs 4 --retry 3
       - save_cache:
-          key: orangelight-v2.1-{{ checksum "Gemfile.lock" }}
+          key: orangelight-v2.2-{{ checksum "Gemfile.lock" }}
           paths:
             - ./vendor/bundle
 jobs:
@@ -70,8 +70,8 @@ jobs:
             nvm use lts/gallium
       - restore_cache:
           keys:
-            - orangelight-v2.1-{{ checksum "yarn.lock" }}
-            - orangelight-v2.1-
+            - orangelight-v2.2-{{ checksum "yarn.lock" }}
+            - orangelight-v2.2-
       - run:
           name: Yarn Install
           command: |
@@ -79,7 +79,7 @@ jobs:
             yarn install --cache-folder ~/.cache/yarn
       # Store yarn / webpacker cache
       - save_cache:
-          key: orangelight-v2.1-{{ checksum "yarn.lock" }}
+          key: orangelight-v2.2-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
       - persist_to_workspace:

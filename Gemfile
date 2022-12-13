@@ -12,9 +12,9 @@ gem 'blacklight', '~> 7.0'
 gem 'rsolr'
 
 # slider limit support
-gem 'blacklight_range_limit'
+gem 'blacklight_range_limit', '~> 8.1.0'
 # advanced search functionality
-gem 'blacklight_advanced_search', git: 'https://github.com/projectblacklight/blacklight_advanced_search', branch: 'master'
+gem 'blacklight_advanced_search', '~> 7.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 # Modernizr.js library
@@ -53,13 +53,15 @@ gem 'babel-transpiler'
 gem 'bootstrap', '~> 4.6'
 gem 'bootstrap-select-rails'
 gem 'capybara'
-gem 'ddtrace'
+gem 'ddtrace', '~> 0.54.2'
 gem 'font-awesome-rails'
+gem 'http', '~> 5.1'
 gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
+gem 'rake'
 gem 'rspec-rails'
 gem 'rubyzip', '>= 1.2.2'
-gem 'sneakers'
+gem 'sneakers', '~> 2.11'
 gem 'sprockets-es6'
 gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.5.2.2'
 
@@ -68,7 +70,7 @@ gem 'string_rtl'
 
 gem 'borrow_direct', git: 'https://github.com/pulibrary/borrow_direct.git', branch: 'generate_query_encoding_fix'
 
-gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'master'
+gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'main'
 
 gem 'openurl', '~> 1.0'
 
@@ -89,12 +91,14 @@ group :development do
 end
 
 group :test do
-  gem "axe-core-rspec"
+  gem "axe-core-api", "4.0.0"
+  gem "axe-core-rspec", "4.0.0"
   gem 'factory_bot_rails', require: false
   gem 'faker'
   gem 'launchy'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
+  gem 'selenium-webdriver', '~> 4.1.0'
   gem 'timecop'
   gem 'vcr'
   gem 'webdrivers'
@@ -102,7 +106,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'bixby'
+  gem 'bixby', '~> 5.0'
   gem 'coveralls_reborn'
   gem 'pry-byebug'
   gem 'solargraph'
@@ -112,10 +116,13 @@ gem 'alma'
 gem 'cobravsmongoose', '~> 0.0.2'
 gem 'email_validator'
 gem 'friendly_id', '~> 5.4.2'
+gem 'net-imap', require: false
 gem 'net-ldap'
+gem 'net-pop', require: false
+gem 'net-smtp', require: false
 gem 'simple_form'
 
 gem "terser", "~> 1.1"
-gem 'vite_rails'
+gem 'vite_rails', '3.0.12'
 
 gem "blacklight_dynamic_sitemap", "~> 0.6.0"

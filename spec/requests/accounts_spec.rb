@@ -4,9 +4,9 @@ require 'rails_helper'
 
 RSpec.describe AccountController do
   let(:current_illiad_user_uri) { "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent" }
-  let(:valid_patron_response) { File.open(fixture_path + '/bibdata_patron_response.json') }
-  let(:verify_user_response) { File.open(fixture_path + '/ill_verify_user_response.json') }
-  let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
+  let(:valid_patron_response) { File.open('spec/fixtures/bibdata_patron_response.json') }
+  let(:verify_user_response) { File.open('spec/fixtures/ill_verify_user_response.json') }
+  let(:outstanding_ill_requests_response) { File.open('spec/fixtures/outstanding_ill_requests_response.json') }
   let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
   before do
     current_ill_requests_uri = "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Transaction/UserRequests/jstudent?$filter=" \

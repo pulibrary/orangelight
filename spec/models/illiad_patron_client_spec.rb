@@ -12,8 +12,8 @@ RSpec.describe IlliadPatronClient do
                       'patron_id' => '777777',
                       'netid' => 'jstudent' }
     subject(:client) { described_class.new(sample_patron) }
-    let(:cancel_ill_requests_response) { File.open(fixture_path + '/cancel_ill_requests_response.json') }
-    let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
+    let(:cancel_ill_requests_response) { File.open('spec/fixtures/cancel_ill_requests_response.json') }
+    let(:outstanding_ill_requests_response) { File.open('spec/fixtures/outstanding_ill_requests_response.json') }
     let(:params_cancel_requests) { ['1093597'] }
     let(:current_ill_requests_uri) do
       "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Transaction/UserRequests/#{sample_patron['netid']}?$filter=" \

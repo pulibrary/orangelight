@@ -23,7 +23,7 @@ module Requests
           {
             "Username" => patron.netid, "TransactionStatus" => illiad_transaction_status,
             "RequestType" => "Loan", "ProcessType" => "Borrowing", "NotWantedAfter" => (DateTime.current + 6.months).strftime("%m/%d/%Y"),
-            "WantedBy" => "Yes, until the semester's", # note creation fails if we use any other text value
+            "WantedBy" => "Yes, until the semester's", # NOTE: creation fails if we use any other text value
             "LoanAuthor" => bib["author"]&.truncate(100), "LoanTitle" => bib["title"]&.truncate(255),
             "LoanPublisher" => item["edd_publisher"]&.truncate(40), "ISSN" => bib["isbn"], "CallNumber" => call_number(item),
             "CitedIn" => "#{Requests::Config[:pulsearch_base]}/catalog/#{bib['id']}",

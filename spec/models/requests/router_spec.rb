@@ -26,7 +26,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
       }
     end
     let(:scsb_availability_response) { '[{"itemBarcode":"CU53020880","itemAvailabilityStatus":"Not Available","errorMessage":null}]' }
-    let(:request_scsb) { Requests::Request.new(params) }
+    let(:request_scsb) { Requests::Request.new(**params) }
     let(:requestable) { request_scsb.requestable.first }
     let(:router) { described_class.new(requestable: requestable, user: user) }
 

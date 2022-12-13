@@ -21,7 +21,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:bad_request) { described_class.new(params) }
+    let(:bad_request) { described_class.new(**params) }
     describe '#solr_doc' do
       it 'returns an empty document response without a valid system id' do
         expect(bad_request.solr_doc(bad_system_id).empty?).to be true
@@ -54,7 +54,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_reserve_items) { described_class.new(params) }
+    let(:request_with_reserve_items) { described_class.new(**params) }
 
     it 'returns one requestable item' do
       expect(request_with_reserve_items.items['22548491940006421'].size).to eq(4)
@@ -71,7 +71,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_holding_item) { described_class.new(params) }
+    let(:request_with_holding_item) { described_class.new(**params) }
 
     describe "#doc" do
       it "returns a solr document" do
@@ -190,7 +190,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_only_holding) { described_class.new(params) }
+    let(:request_with_only_holding) { described_class.new(**params) }
 
     describe "#requestable" do
       it "has a list of request objects" do
@@ -219,7 +219,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       }
     end
 
-    let(:request_system_id_only_with_holdings_items) { described_class.new(params) }
+    let(:request_system_id_only_with_holdings_items) { described_class.new(**params) }
 
     describe "#requestable" do
       it "has a list of request objects" do
@@ -247,7 +247,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_system_id_only_with_holdings) { described_class.new(params) }
+    let(:request_system_id_only_with_holdings) { described_class.new(**params) }
 
     describe "#requestable" do
       it "has a list of request objects" do
@@ -274,7 +274,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_system_id_only_with_holdings_with_some_items) { described_class.new(params) }
+    let(:request_system_id_only_with_holdings_with_some_items) { described_class.new(**params) }
 
     describe "#requestable" do
       it "has a list of request objects" do
@@ -304,7 +304,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_items_on_reserve) { described_class.new(params) }
+    let(:request_with_items_on_reserve) { described_class.new(**params) }
 
     describe "#requestable" do
       it "is on reserve" do
@@ -322,7 +322,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_items_at_temp_locations) { described_class.new(params) }
+    let(:request_with_items_at_temp_locations) { described_class.new(**params) }
 
     describe "#requestable" do
       it "has an empty list of requestable objects" do
@@ -340,7 +340,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_items_at_temp_locations) { described_class.new(params) }
+    let(:request_with_items_at_temp_locations) { described_class.new(**params) }
 
     describe "#requestable" do
       it "has a list of requestable objects" do
@@ -360,7 +360,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_only_system_id) { described_class.new(params) }
+    let(:request_with_only_system_id) { described_class.new(**params) }
 
     describe "#requestable" do
       it "does not have a list of request objects" do
@@ -377,7 +377,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_only_system_id) { described_class.new(params) }
+    let(:request_with_only_system_id) { described_class.new(**params) }
 
     describe "#requestable" do
       it "has a list of request objects" do
@@ -402,7 +402,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_only_system_id) { described_class.new(params) }
+    let(:request_with_only_system_id) { described_class.new(**params) }
 
     before do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/dsp01rr1720547/raw")
@@ -462,7 +462,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_only_system_id) { described_class.new(params) }
+    let(:request_with_only_system_id) { described_class.new(**params) }
 
     before do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/coin-1167/raw")
@@ -521,7 +521,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_only_system_id) { described_class.new(params) }
+    let(:request_with_only_system_id) { described_class.new(**params) }
 
     before do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/coin-1167/raw")
@@ -574,7 +574,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_at_paging_outside) { described_class.new(params) }
+    let(:request_at_paging_outside) { described_class.new(**params) }
 
     describe "#requestable" do
       it "is unavailable" do
@@ -630,7 +630,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_at_paging_f) { described_class.new(params) }
+    let(:request_at_paging_f) { described_class.new(**params) }
 
     describe "#pageable?" do
       it "is be false" do
@@ -669,7 +669,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_at_paging_f) { described_class.new(params) }
+    let(:request_at_paging_f) { described_class.new(**params) }
 
     describe "#requestable" do
       it "is unavailable" do
@@ -708,7 +708,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_on_order) { described_class.new(params) }
+    let(:request_with_on_order) { described_class.new(**params) }
     let(:firestone_circ) do
       { label: "Firestone Library", gfa_pickup: "PA", pick_up_location_code: "firestone", staff_only: false }
     end
@@ -787,7 +787,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_no_callnum) { described_class.new(params) }
+    let(:request_no_callnum) { described_class.new(**params) }
 
     describe "#requestable" do
       it "has an requestable items" do
@@ -819,7 +819,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_missing) { described_class.new(params) }
+    let(:request_with_missing) { described_class.new(**params) }
 
     before do
       stub_request(:get, "#{Requests::Config[:clancy_base]}/itemstatus/v1/32101026169985")
@@ -856,7 +856,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
 
     describe "#requestable" do
       it "has an requestable items" do
@@ -883,7 +883,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
 
     describe "#requestable" do
       it "has a requestable items" do
@@ -914,7 +914,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         mfhd: '22563389780006421'
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
 
     describe "#requestable" do
       it "has a requestable items" do
@@ -945,7 +945,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
 
     describe "#requestable" do
       before do
@@ -981,7 +981,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
 
     describe "#requestable" do
       it "has an requestable items" do
@@ -1036,7 +1036,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
 
     describe "#borrow_direct_eligible?" do
       it "is Borrow Direct Eligible" do
@@ -1091,7 +1091,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
     describe '#requestable' do
       it "has an requestable items" do
         expect(request.requestable.size).to be >= 1
@@ -1123,7 +1123,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
     describe '#requestable' do
       it "has an requestable items" do
         expect(request.requestable.size).to be >= 1
@@ -1140,7 +1140,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
     describe '#requestable' do
       it "is all online" do
         expect(request.all_items_online?).to be false
@@ -1157,7 +1157,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
     describe '#any_loanable_copies?' do
       it "has available copy" do
         expect(request.any_loanable_copies?).to be true
@@ -1179,7 +1179,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
     describe '#any_loanable_copies?' do
       it "has available copy" do
         expect(request.any_loanable_copies?).to be true
@@ -1201,7 +1201,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
     before do
       stub_request(:post, "https://scsb.recaplib.org:9093/sharedCollection/bibAvailabilityStatus")
         .and_return(status: 200, body: '[
@@ -1259,7 +1259,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
     describe '#any_loanable_copies?' do
       it "has available copy" do
         expect(request.any_loanable_copies?).to be true
@@ -1308,7 +1308,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
     describe '#borrow_direct_eligible?' do
       it 'is not borrow_direct_eligible?' do
         expect(request.borrow_direct_eligible?).to be false
@@ -1331,7 +1331,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
     describe '#borrow_direct_eligible?' do
       it 'is borrow_direct_eligible?' do
         expect(request.borrow_direct_eligible?).to be true
@@ -1353,7 +1353,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
     describe '#requestable' do
       it "has an requestable items" do
         expect(request.requestable.size).to be >= 1
@@ -1370,7 +1370,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_optional_params) { described_class.new(params) }
+    let(:request_with_optional_params) { described_class.new(**params) }
 
     describe "#request" do
       it "has accessible mfhd param" do
@@ -1391,7 +1391,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_for_preservation) { described_class.new(params) }
+    let(:request_for_preservation) { described_class.new(**params) }
     describe "#requestable" do
       it "has a preservation location code" do
         expect(request_for_preservation.requestable[0].location_code).to eq('firestone$pres')
@@ -1407,7 +1407,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_with_single_aeon_holding) { described_class.new(params) }
+    let(:request_with_single_aeon_holding) { described_class.new(**params) }
 
     describe "#requestable" do
       describe "#single_aeon_requestable?" do
@@ -1429,7 +1429,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_scsb) { described_class.new(params) }
+    let(:request_scsb) { described_class.new(**params) }
     before do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/#{params[:system_id]}/raw")
         .to_return(status: 200, body: scsb_single_holding_item, headers: {})
@@ -1473,7 +1473,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_scsb) { described_class.new(params) }
+    let(:request_scsb) { described_class.new(**params) }
     before do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/#{params[:system_id]}/raw")
         .to_return(status: 200, body: scsb_edd_item, headers: {})
@@ -1507,7 +1507,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request_scsb) { described_class.new(params) }
+    let(:request_scsb) { described_class.new(**params) }
     before do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/#{params[:system_id]}/raw")
         .to_return(status: 200, body: scsb_no_format, headers: {})
@@ -1543,7 +1543,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         patron: patron
       }
     end
-    let(:request) { described_class.new(params) }
+    let(:request) { described_class.new(**params) }
     before do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/#{params[:system_id]}/raw")
         .to_return(status: 200, body: marquand, headers: {})

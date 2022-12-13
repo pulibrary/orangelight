@@ -857,7 +857,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         patron: patron
       }
     end
-    let(:request) { Requests::Request.new(params) }
+    let(:request) { Requests::Request.new(**params) }
     let(:requestable) { request.requestable.first }
 
     describe '# offsite requestable' do
@@ -968,7 +968,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         patron: patron
       }
     end
-    let(:request) { Requests::Request.new(params) }
+    let(:request) { Requests::Request.new(**params) }
     let(:requestable) { request.requestable.first }
 
     describe '#requestable' do
@@ -1043,7 +1043,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         patron: patron
       }
     end
-    let(:request) { Requests::Request.new(params) }
+    let(:request) { Requests::Request.new(**params) }
     let(:requestable) { request.requestable.first }
 
     describe '#recap requestable' do

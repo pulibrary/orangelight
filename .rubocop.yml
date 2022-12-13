@@ -5,7 +5,7 @@ inherit_gem:
   bixby: bixby_default.yml
 AllCops:
   DisplayCopNames: true
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.1
   Exclude:
     - 'db/**/*'
     - 'script/**/*'
@@ -31,6 +31,9 @@ Metrics/AbcSize:
     - 'app/helpers/application_helper.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
+    - 'app/models/requests/illiad_metadata/article_express.rb'
+    - 'app/models/concerns/blacklight/document/json_ld.rb'
+    - 'app/models/requests/solr_open_url_context.rb'
 
 Metrics/BlockLength:
   Exclude:
@@ -97,6 +100,9 @@ Layout/LineLength:
     - 'spec/mailers/previews/*'
     - 'spec/lib/orangelight/browse_lists/call_number_csv_spec.rb'
 
+Lint/MissingSuper:
+  Enabled: false
+
 Metrics/MethodLength:
   Exclude:
     - 'app/models/concerns/blacklight/document/ris.rb'
@@ -144,6 +150,9 @@ Naming/FileName:
     - 'Gemfile'
     - 'config/deploy/alma-production.rb'
     - 'config/deploy/alma-qa.rb'
+
+Performance/RegexpMatch:
+  Enabled: false
 
 # TODO: Fix
 Rails/OutputSafety:
@@ -195,6 +204,9 @@ Style/GuardClause:
     - 'app/models/concerns/blacklight/document/dublin_core.rb'
     - 'app/models/concerns/blacklight/document/email.rb'
     - 'app/models/concerns/blacklight/document/ris.rb'
+
+Style/HashSyntax: 
+  Enabled: false
 
 Rails/RakeEnvironment:
   Enabled: false

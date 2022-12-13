@@ -21,7 +21,7 @@ describe Requests::Scsb do
       patron: patron
     }
   end
-  let(:request_scsb) { Requests::Request.new(params) }
+  let(:request_scsb) { Requests::Request.new(**params) }
   let(:first_item) { request_scsb.holdings["8076325"]["items"][0] }
   let(:second_item) { request_scsb.holdings["8076325"]["items"][1] }
 

@@ -105,7 +105,7 @@ describe 'Account login' do
 
     context 'with a CAS account' do
       let(:user) { FactoryBot.create(:user) }
-      let(:patron_response) { File.open(fixture_path + '/bibdata_patron_response_barcode.json') }
+      let(:patron_response) { File.open('spec/fixtures/bibdata_patron_response_barcode.json') }
 
       it 'logs the user in', js: true do
         visit "/catalog/SCSB-2143785"
@@ -128,7 +128,7 @@ describe 'Account login' do
     end
     context 'with an Alma account' do
       let(:user) { FactoryBot.create(:valid_alma_patron) }
-      let(:patron_response) { File.open(fixture_path + '/alma_login_response.json') }
+      let(:patron_response) { File.open('spec/fixtures/alma_login_response.json') }
       let(:expected_login_url) { 'https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/Alma%20Patron?op=auth&password=foobarfoo' }
 
       before do

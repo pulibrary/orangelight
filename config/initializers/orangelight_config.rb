@@ -9,7 +9,7 @@ module Orangelight
 
     def config_yaml
       path = Rails.root.join('config', 'orangelight.yml')
-      YAML.safe_load(ERB.new(File.read(path)).result, [], [], true)[Rails.env]
+      YAML.safe_load(ERB.new(File.read(path)).result, aliases: true)[Rails.env]
     end
 
     module_function :config, :config_yaml
