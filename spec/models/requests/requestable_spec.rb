@@ -58,7 +58,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
     describe "#open_libraries" do
       it "has all the open libraries" do
-        expect(requestable.open_libraries).to eq(["firestone", "annex", "marquand", "mendel", "stokes", "eastasian", "arch", "lewis", "engineer", "recap"])
+        expect(requestable.open_libraries).to eq(["plasma", "firestone", "annex", "marquand", "mendel", "stokes", "eastasian", "arch", "lewis", "engineer", "recap"])
       end
     end
   end
