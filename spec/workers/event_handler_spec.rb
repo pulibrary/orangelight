@@ -14,7 +14,7 @@ RSpec.describe EventHandler do
   end
 
   describe '#work' do
-    let(:processor) { instance_double(EventProcessor, process: process) }
+    let(:processor) { instance_double(EventProcessor, process:) }
     let(:process) {}
     let(:msg) do
       {

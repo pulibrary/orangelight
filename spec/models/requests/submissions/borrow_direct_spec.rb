@@ -52,8 +52,8 @@ describe Requests::Submissions::BorrowDirect do
   let(:params) do
     {
       request: user_info,
-      requestable: requestable,
-      bib: bib
+      requestable:,
+      bib:
     }
   end
 

@@ -141,7 +141,7 @@ class SolrDocument
     LinkedDocumentResolver::LinkedDocuments.new(siblings: sibling_ids,
                                                 root: root_id,
                                                 solr_field: query_field,
-                                                maximum_records: maximum_records)
+                                                maximum_records:)
   end
 
   def full_arks
@@ -248,7 +248,7 @@ class SolrDocument
 
     def doc_by_id(id)
       params = { q: "id:#{RSolr.solr_escape(id)}" }
-      solr_response = Blacklight.default_index.connection.get('select', params: params)
+      solr_response = Blacklight.default_index.connection.get('select', params:)
       solr_response["response"]["docs"].first
     end
 end

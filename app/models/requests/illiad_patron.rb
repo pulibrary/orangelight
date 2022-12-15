@@ -51,7 +51,7 @@ module Requests
         return nil if ldap_pustatus.blank? || ldap_pustatus[0] == 'x'
 
         if ldap_status == "staff"
-          illiad_staff_status(ldap_department: ldap_department, ldap_title: ldap_title)
+          illiad_staff_status(ldap_department:, ldap_title:)
         elsif ldap_status == "student"
           student_mappings = { "gradetdc" => "GS - Graduate Student", "undergraduate" => "U - Undergraduate", "graduate" => "GS - Graduate Student" }
           student_mappings[ldap_pustatus]
@@ -68,7 +68,7 @@ module Requests
         if ldap_department.present? && ldap_department.include?("Library")
           "GS - Library Staff"
         elsif ldap_title.present?
-          illiad_staff_title_status(ldap_title: ldap_title)
+          illiad_staff_title_status(ldap_title:)
         else
           "GS - University Staff"
         end

@@ -34,13 +34,13 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   let(:holding) do
     {
       holding_id => {
-        location: location,
+        location:,
         library: 'Firestone Library',
         location_code: 'f',
-        call_number: call_number,
-        shelving_title: shelving_title,
-        supplements: supplements,
-        indexes: indexes
+        call_number:,
+        shelving_title:,
+        supplements:,
+        indexes:
       }.with_indifferent_access
     }
   end
@@ -434,10 +434,10 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
             location: "Orlando F. Weber Collection of Economic History",
             library: 'Firestone Library',
             location_code: 'rare$exw',
-            call_number: call_number,
-            shelving_title: shelving_title,
-            supplements: supplements,
-            indexes: indexes,
+            call_number:,
+            shelving_title:,
+            supplements:,
+            indexes:,
             mms_id: "99125038613506421"
           }.with_indifferent_access
         }
@@ -712,10 +712,10 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     let(:holding) do
       {
         holding_id => {
-          location: location,
+          location:,
           library: 'Mendel Music Library',
           location_code: 'mendel$res',
-          call_number: call_number
+          call_number:
         }.with_indifferent_access
       }
     end
@@ -770,10 +770,10 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     let(:holding) do
       {
         holding_id => {
-          location: location,
+          location:,
           library: 'Special Collections',
           location_code: 'rare$xmr',
-          call_number: call_number
+          call_number:
         }.with_indifferent_access
       }
     end

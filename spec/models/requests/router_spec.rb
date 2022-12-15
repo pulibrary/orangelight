@@ -6,7 +6,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
     let(:user) { FactoryBot.create(:user) }
     let(:valid_patron) { { "netid" => "foo" }.with_indifferent_access }
     let(:patron) do
-      Requests::Patron.new(user: user, session: {}, patron: valid_patron)
+      Requests::Patron.new(user:, session: {}, patron: valid_patron)
     end
 
     let(:scsb_single_holding_item) { fixture('/SCSB-2635660.json') }
@@ -16,7 +16,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         system_id: 'SCSB-2635660',
         mfhd: nil,
         source: 'CUL',
-        patron: patron
+        patron:
       }
     end
     let(:scsb_availability_params) do
@@ -28,7 +28,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
     let(:scsb_availability_response) { '[{"itemBarcode":"CU53020880","itemAvailabilityStatus":"Not Available","errorMessage":null}]' }
     let(:request_scsb) { Requests::Request.new(**params) }
     let(:requestable) { request_scsb.requestable.first }
-    let(:router) { described_class.new(requestable: requestable, user: user) }
+    let(:router) { described_class.new(requestable:, user:) }
 
     describe "SCSB item that is charged" do
       before do
@@ -55,7 +55,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
     end
 
     describe "Print Holding in RBSC without items" do
-      let(:params) { { system_id: 4, holding_id: 5, item_id: 6, patron: patron } }
+      let(:params) { { system_id: 4, holding_id: 5, item_id: 6, patron: } }
       let(:requestable) { Requests::Requestable.new(params) }
       let(:router) { described_class.new(requestable, user) }
       xit "Returns an Aeon Reading Room Link" do
@@ -70,7 +70,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           charged?: false, on_order?: false, aeon?: false,
           preservation?: false, annex?: false,
           plasma?: false, lewis?: false, recap?: false, held_at_marquand_library?: false,
-          item_data?: false, recap_edd?: false, pageable?: false, scsb_in_library_use?: false, item: item,
+          item_data?: false, recap_edd?: false, pageable?: false, scsb_in_library_use?: false, item:,
           library_code: 'ABC', eligible_for_library_services?: true }
       end
       let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }

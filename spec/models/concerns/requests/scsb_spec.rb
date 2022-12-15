@@ -9,7 +9,7 @@ describe Requests::Scsb do
       "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
   end
   let(:patron) do
-    Requests::Patron.new(user: user, session: {}, patron: valid_patron)
+    Requests::Patron.new(user:, session: {}, patron: valid_patron)
   end
   let(:scsb_no_format) { fixture('/SCSB-7935196.json') }
   let(:location_code) { 'scsbnypl' }
@@ -18,7 +18,7 @@ describe Requests::Scsb do
       system_id: 'SCSB-7935196',
       source: 'pulsearch',
       mfhd: nil,
-      patron: patron
+      patron:
     }
   end
   let(:request_scsb) { Requests::Request.new(**params) }
@@ -47,7 +47,7 @@ describe Requests::Scsb do
           system_id: '99122304923506421',
           source: 'pulsearch',
           mfhd: nil,
-          patron: patron
+          patron:
         }
       end
       let(:holding_location_info) { File.open('spec/fixtures/bibdata/recap_pa_holding_locations.json') }

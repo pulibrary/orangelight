@@ -21,10 +21,10 @@ RSpec.describe ApplicationHelper do
     let(:holding_block_json) do
       {
         holding_id => {
-          location: location,
-          library: library,
+          location:,
+          library:,
           location_code: 'exb',
-          call_number: call_number,
+          call_number:,
           call_number_browse: call_number
         },
         '3595800' => {
@@ -148,7 +148,7 @@ RSpec.describe ApplicationHelper do
     let(:field_config) do
       {
         field: :holdings_1display,
-        document: document
+        document:
       }.with_indifferent_access
     end
 
@@ -205,9 +205,9 @@ RSpec.describe ApplicationHelper do
       let(:holding_block_json) do
         {
           holding_id => {
-            location: location,
-            library: library,
-            call_number: call_number,
+            location:,
+            library:,
+            call_number:,
             call_number_browse: call_number
           }
         }.to_json.to_s
@@ -396,14 +396,14 @@ RSpec.describe ApplicationHelper do
         {
           '22270490550006421' => {
             location: 'Mendel Music Library: Reserve',
-            library: library,
+            library:,
             location_code: 'mendel$res',
-            call_number: call_number,
+            call_number:,
             call_number_browse: call_number
           },
           '22270490570006421' => {
             location: 'Remote Storage (ReCAP)',
-            library: library,
+            library:,
             location_code: 'mendel$pk',
             call_number: 'CD- 2018-11-11 MASTER',
             call_number_browse: 'CD- 2018-11-11 MASTER'

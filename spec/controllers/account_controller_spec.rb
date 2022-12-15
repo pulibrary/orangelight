@@ -192,7 +192,7 @@ RSpec.describe AccountController do
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
       query = 'a book title'
-      get :borrow_direct_redirect, params: { query: query }
+      get :borrow_direct_redirect, params: { query: }
       expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
       expect(response.location).to include('a%20book%20title')
     end

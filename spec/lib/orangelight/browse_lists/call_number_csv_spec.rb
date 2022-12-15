@@ -48,7 +48,7 @@ RSpec.describe BrowseLists::CallNumberCSV do
 
     it "generates a csv" do
       _sql_command, facet_request, conn = BrowseLists.connection
-      described_class.new(facet_request, conn, output_root: output_root, rows: 500).write
+      described_class.new(facet_request, conn, output_root:, rows: 500).write
 
       csv_file = output_root.join("call_number_browse_s.csv")
       expect(File.exist?(csv_file)).to be true
@@ -72,7 +72,7 @@ RSpec.describe BrowseLists::CallNumberCSV do
       it "logs the failure and retries twice before erroring" do
         _sql_command, facet_request, conn = BrowseLists.connection
         expect do
-          described_class.new(facet_request, conn, output_root: output_root, rows: 500).write
+          described_class.new(facet_request, conn, output_root:, rows: 500).write
         end.to raise_error(BrowseLists::SolrResponseError)
         expect(Rails.logger).to have_received(:error).exactly(3).times
       end

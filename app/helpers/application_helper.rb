@@ -46,7 +46,7 @@ module ApplicationHelper
   # @return [StackmapService::Url] the stack map location
   def locate_url(location, document, call_number, library = nil)
     locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
-    ::StackmapService::Url.new(document: document, loc: location, cn: call_number).url unless locator.exclude?(call_number: call_number, library: library)
+    ::StackmapService::Url.new(document:, loc: location, cn: call_number).url unless locator.exclude?(call_number:, library:)
   end
 
   # Generate the link markup (styled with a glyphicon image) for a given item holding within a library
@@ -76,7 +76,7 @@ module ApplicationHelper
   # @return [String] physical - physical holding info html
   def holding_request_block(document)
     adapter = HoldingRequestsAdapter.new(document, Bibdata)
-    markup_builder = HoldingRequestsBuilder.new(adapter: adapter,
+    markup_builder = HoldingRequestsBuilder.new(adapter:,
                                                 online_markup_builder: OnlineHoldingsMarkupBuilder,
                                                 physical_markup_builder: PhysicalHoldingsMarkupBuilder)
     online_markup, physical_markup = markup_builder.build

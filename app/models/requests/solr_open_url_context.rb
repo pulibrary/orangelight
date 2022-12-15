@@ -36,13 +36,13 @@ module Requests
     private
 
       def build_ctx
-        metadata = build_metadata(solr_doc: solr_doc)
+        metadata = build_metadata(solr_doc:)
         ctx = if metadata[:format] == 'book'
-                copy_metadata(format: :book, metadata: metadata)
+                copy_metadata(format: :book, metadata:)
               elsif /journal/i.match?(metadata[:format]) # checking using include because institutions may use formats like Journal or Journal/Magazine
-                copy_metadata(format: :journal, metadata: metadata)
+                copy_metadata(format: :journal, metadata:)
               else
-                copy_metadata(format: :unknown, metadata: metadata)
+                copy_metadata(format: :unknown, metadata:)
               end
         ctx
       end
@@ -67,10 +67,10 @@ module Requests
       def copy_metadata(format:, metadata:)
         ctx = ContextObject.new
         ctx.referent.set_format(format.to_s)
-        copy_generic_metadata(ctx: ctx, metadata: metadata, format: format)
+        copy_generic_metadata(ctx:, metadata:, format:)
         # canonical identifier for the citation?
         ctx.referent.add_identifier("https://bibdata.princeton.edu/bibliographic/#{metadata[:id]}")
-        copy_referrer_info(ctx: ctx, metadata: metadata)
+        copy_referrer_info(ctx:, metadata:)
         TYPE_MAPPING[format].each { |identifier, metadata_key| ctx.referent.set_metadata(identifier.to_s, metadata[metadata_key]) }
         ctx
       end

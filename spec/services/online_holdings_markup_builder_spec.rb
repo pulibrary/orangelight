@@ -30,10 +30,10 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
   let(:holding) do
     {
       holding_id => {
-        location: location,
+        location:,
         library: 'Firestone Library',
         location_code: 'f',
-        call_number: call_number
+        call_number:
       }
     }
   end

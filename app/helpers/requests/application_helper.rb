@@ -37,7 +37,7 @@ module Requests
         content_tag(:div, "#{requestable.title} #{enum_copy_display(requestable.item)} #{sanitize(I18n.t('requests.no_services.brief_msg'))}", class: 'sr-only') +
           content_tag(:div, sanitize(I18n.t("requests.no_services.brief_msg")), class: 'service-item', aria: { hidden: true })
       elsif requestable.charged? && !requestable.aeon? && !requestable.ask_me?
-        render partial: 'checked_out_options', locals: { requestable: requestable }
+        render partial: 'checked_out_options', locals: { requestable: }
       else
         display_requestable_list(requestable)
       end
@@ -211,7 +211,7 @@ module Requests
 
     def item_checkbox(requestable, single_item_form)
       disabled = !requestable.will_submit_via_form?
-      check_box_tag "requestable[][selected]", true, check_box_selected(requestable, disabled, single_item_form), class: 'request--select', disabled: disabled, aria: { labelledby: "title enum_#{requestable.preferred_request_id}" }, id: "requestable_selected_#{requestable.preferred_request_id}"
+      check_box_tag "requestable[][selected]", true, check_box_selected(requestable, disabled, single_item_form), class: 'request--select', disabled:, aria: { labelledby: "title enum_#{requestable.preferred_request_id}" }, id: "requestable_selected_#{requestable.preferred_request_id}"
     end
 
     ## If any requestable items have a temp location assume everything at the holding is in a temp loc?

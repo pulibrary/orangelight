@@ -6,7 +6,7 @@ describe CatalogHelper do
   let(:blacklight_config) { Blacklight::Configuration.new }
 
   before do
-    allow(helper).to receive_messages(blacklight_config: blacklight_config)
+    allow(helper).to receive_messages(blacklight_config:)
   end
 
   describe '#render_search_to_page_title_filter' do
@@ -60,7 +60,7 @@ describe CatalogHelper do
     let(:field_name) { 'top_field' }
     let(:other_field_name) { 'other_field' }
     let(:holding_field) { 'holdings_1display' }
-    let(:view_context) { double(blacklight_config: blacklight_config, document_index_view_type: 'show') }
+    let(:view_context) { double(blacklight_config:, document_index_view_type: 'show') }
     let(:presenter) { Blacklight::ShowPresenter.new(document, view_context) }
     let(:field) { blacklight_config.show_fields.first[1] }
     let(:document) { SolrDocument.new(properties) }

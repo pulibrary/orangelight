@@ -49,7 +49,7 @@ RSpec.describe 'bookmarks' do
     end
 
     it "displays bookmarks for old voyager IDs" do
-      Bookmark.create(user: user, document_id: "10647164", document_type: "SolrDocument")
+      Bookmark.create(user:, document_id: "10647164", document_type: "SolrDocument")
       login_as user
       visit "/bookmarks"
 

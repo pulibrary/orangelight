@@ -33,8 +33,8 @@ module Requests
       @user_barcode = patron.barcode
       @call_number = holding.first[1]&.dig 'call_number_browse'
       @title = bib[:title_citation_display]&.first
-      @pageable = Pageable.new(call_number: call_number, location_code: location_code)
-      @mappable = Requests::Mapable.new(bib_id: bib[:id], holdings: holding, location_code: location_code)
+      @pageable = Pageable.new(call_number:, location_code:)
+      @mappable = Requests::Mapable.new(bib_id: bib[:id], holdings: holding, location_code:)
       @illiad = Requests::Illiad.new(enum: item&.fetch(:enum, nil), chron: item&.fetch(:chron, nil), call_number: holding.first[1]&.dig('call_number_browse'))
     end
 
@@ -240,7 +240,7 @@ module Requests
     end
 
     def clancy_item
-      @clancy_item ||= Requests::ClancyItem.new(barcode: barcode)
+      @clancy_item ||= Requests::ClancyItem.new(barcode:)
     end
 
     def item_at_clancy?

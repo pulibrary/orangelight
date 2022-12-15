@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe DBMigrateUppercaseUsernames do
   let(:username) { "testUSER123" }
-  let!(:uppercase_user) { FactoryBot.create(:user, username: username) }
+  let!(:uppercase_user) { FactoryBot.create(:user, username:) }
 
   describe "self.run" do
     context "when there is an equivalent lowercase user" do

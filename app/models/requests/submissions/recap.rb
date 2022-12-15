@@ -48,7 +48,7 @@ module Requests::Submissions
         return if submission.partner_item?(item) || submission.edd?(item)
 
         hold = Requests::Submissions::HoldItem.new(@submission, service_type: "recap")
-        hold.handle_item(item: item)
+        hold.handle_item(item:)
         return if hold.errors.empty?
         hold.errors.map! do |error|
           reply_text = error["reply_text"]

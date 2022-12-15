@@ -9,7 +9,7 @@ class SolrDocument
     end
 
     def to_html
-      helper.tag :meta, property: property, itemprop: itemprop, content: value
+      helper.tag :meta, property:, itemprop:, content: value
     end
 
     # @return [String] RDF property either absolute or relative to

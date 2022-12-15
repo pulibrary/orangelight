@@ -6,7 +6,7 @@ describe Requests::IlliadTransactionClient, type: :controller do
   let(:valid_patron) { { "netid" => "abc234", ldap: { status: "faculty", pustatus: "fac" } }.with_indifferent_access }
   let(:user_info) do
     user = instance_double(User, guest?: false, uid: 'foo')
-    Requests::Patron.new(user: user, session: {}, patron: valid_patron)
+    Requests::Patron.new(user:, session: {}, patron: valid_patron)
   end
   let(:requestable) do
     [{ "selected" => "true", "bibid" => "10921934", "mfhd" => "22241110470006421", "call_number" => "HF1131 .B485",
@@ -27,8 +27,8 @@ describe Requests::IlliadTransactionClient, type: :controller do
   let(:params) do
     {
       request: user_info,
-      requestable: requestable,
-      bib: bib
+      requestable:,
+      bib:
     }
   end
 
@@ -38,7 +38,7 @@ describe Requests::IlliadTransactionClient, type: :controller do
 
   let(:metadata_mapper) { Requests::IlliadMetadata::ArticleExpress.new(patron: submission.patron, bib: submission.bib, item: submission.items.first) }
 
-  let(:illiad_transaction) { described_class.new(patron: submission.patron, metadata_mapper: metadata_mapper) }
+  let(:illiad_transaction) { described_class.new(patron: submission.patron, metadata_mapper:) }
 
   let(:responses) do
     {

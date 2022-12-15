@@ -25,10 +25,10 @@ module Requests
       @title = "Request ID: #{system_id}"
 
       # needed to see if we can suppress login for this item
-      @request = RequestDecorator.new(Requests::Request.new(system_id: system_id, mfhd: mfhd, source: source, patron: @patron), view_context)
+      @request = RequestDecorator.new(Requests::Request.new(system_id:, mfhd:, source:, patron: @patron), view_context)
       redirect_single_aeon_thesis_numistatics
     rescue ActionController::ParameterMissing
-      @request = EmptyRequestDecorator.new(system_id: system_id)
+      @request = EmptyRequestDecorator.new(system_id:)
     end
 
     def aeon?
@@ -49,7 +49,7 @@ module Requests
     # will post and a JSON document of selected "requestable" objects with selection parameters and
     # user information for further processing and distribution to various request endpoints.
     def submit
-      @submission = Requests::Submission.new(sanitize_submission(params), Patron.new(user: current_or_guest_user, session: session))
+      @submission = Requests::Submission.new(sanitize_submission(params), Patron.new(user: current_or_guest_user, session:))
       respond_to do |format|
         format.js do
           valid = @submission.valid?
@@ -139,7 +139,7 @@ module Requests
       end
 
       def authorize_patron(user)
-        patron = Patron.new(user: user, session: session)
+        patron = Patron.new(user:, session:)
         flash.now[:error] = patron.errors.join(", ") if patron.errors.present?
         patron
       end

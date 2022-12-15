@@ -19,7 +19,7 @@ module Requests
     # accepts a @solr_open_url_context object and formats it appropriately for ILL
     def illiad_request_url(solr_open_url_context, note: nil)
       query_params = illiad_query_parameters(referrer: solr_open_url_context.referrer, referent: solr_open_url_context.referent,
-                                             metadata: solr_open_url_context.referent.metadata, note: note)
+                                             metadata: solr_open_url_context.referent.metadata, note:)
       "#{Requests::Config[:ill_base]}?#{query_params}"
     end
 
@@ -37,7 +37,7 @@ module Requests
       # takes an existing openURL and illiad-izes it.
       # also attempts to handle the question of enumeration.
       def illiad_query_parameters(referrer:, referent:, metadata:, note:)
-        qp = map_metdata(referrer: referrer, referent: referent, metadata: metadata)
+        qp = map_metdata(referrer:, referent:, metadata:)
         qp['notes'] = note
 
         # trim empty ones please
@@ -52,7 +52,7 @@ module Requests
 
         ## Possible enumeration values
         # qp['month']     = get_month(referent)
-        qp = au_params(metadata: metadata, qp: qp)
+        qp = au_params(metadata:, qp:)
         # ILLiad always wants 'title', not the various title keys that exist in OpenURL
         # For some reason these go to ILLiad prefixed with rft.
         qp['title'] = [metadata['jtitle'], metadata['btitle'], metadata['title']].find(&:present?)
@@ -62,7 +62,7 @@ module Requests
         qp['rft_id'] = get_oclcnum(referent)
         qp['rft.callnum'] = call_number
         qp['rft.oclcnum'] = get_oclcnum(referent)
-        qp['genre'] = genere(format: referent.format, qp: qp)
+        qp['genre'] = genere(format: referent.format, qp:)
         qp['CitedIn'] = catalog_url(referent)
         qp
       end
@@ -92,7 +92,7 @@ module Requests
 
       def get_identifier(type, sub_scheme, referent, options = {})
         options[:multiple] ||= false
-        identifiers = identifiers_for_type(type: type, sub_scheme: sub_scheme, referent: referent)
+        identifiers = identifiers_for_type(type:, sub_scheme:, referent:)
         if identifiers.blank? && ['lccn', 'oclcnum', 'isbn', 'issn', 'doi', 'pmid'].include?(sub_scheme)
           # try the referent metadata
           from_rft = referent.metadata[sub_scheme]

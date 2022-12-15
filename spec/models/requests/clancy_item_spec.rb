@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe Requests::ClancyItem do
   let(:connection) { Faraday.new("http://example.com") }
-  let(:clancy_item) { described_class.new(barcode: "1234565", connection: connection) }
+  let(:clancy_item) { described_class.new(barcode: "1234565", connection:) }
   before do
     allow(connection).to receive(:get).and_return(response)
   end
@@ -38,7 +38,7 @@ describe Requests::ClancyItem do
           "university_id" => "9999999", "patron_group" => "staff", "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
       end
       let(:patron) do
-        Requests::Patron.new(user: user, session: {}, patron: valid_patron)
+        Requests::Patron.new(user:, session: {}, patron: valid_patron)
       end
 
       before do
@@ -46,13 +46,13 @@ describe Requests::ClancyItem do
       end
 
       it "responds with success" do
-        expect(clancy_item.request(patron: patron, hold_id: 'hold_id')).to be_truthy
+        expect(clancy_item.request(patron:, hold_id: 'hold_id')).to be_truthy
       end
 
       context "request denied" do
         let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"request_count\":\"1\",\"results\":[{\"item\":\"32101068477817\",\"deny\":\"Y\",\"istatus\":\"Item Restricted from this API Key\"}]}" }
         it "responds with error" do
-          expect(clancy_item.request(patron: patron, hold_id: 'hold_id')).to be_falsey
+          expect(clancy_item.request(patron:, hold_id: 'hold_id')).to be_falsey
         end
       end
     end
@@ -135,7 +135,7 @@ describe Requests::ClancyItem do
           "university_id" => "9999999", "patron_group" => "staff", "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
       end
       let(:patron) do
-        Requests::Patron.new(user: user, session: {}, patron: valid_patron)
+        Requests::Patron.new(user:, session: {}, patron: valid_patron)
       end
 
       before do
@@ -143,7 +143,7 @@ describe Requests::ClancyItem do
       end
 
       it "responds with failure" do
-        expect(clancy_item.request(patron: patron, hold_id: 'hold_id')).to be_falsey
+        expect(clancy_item.request(patron:, hold_id: 'hold_id')).to be_falsey
         expect(clancy_item.errors).to eq(["Error connecting with Clancy: 403"])
       end
     end
@@ -151,7 +151,7 @@ describe Requests::ClancyItem do
 
   context 'blank barcode' do
     let(:response) { "" }
-    let(:clancy_item) { described_class.new(barcode: "", connection: connection) }
+    let(:clancy_item) { described_class.new(barcode: "", connection:) }
 
     describe '#status' do
       it "is has the status json" do

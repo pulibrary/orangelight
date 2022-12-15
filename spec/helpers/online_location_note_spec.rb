@@ -19,7 +19,7 @@ RSpec.describe ApplicationHelper do
   let(:field_config) do
     {
       field: :format,
-      document: document
+      document:
     }.with_indifferent_access
   end
 

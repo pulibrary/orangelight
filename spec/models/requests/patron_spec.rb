@@ -4,7 +4,7 @@ require 'rails_helper'
 # rubocop:disable RSpec/MultipleExpectations
 describe Requests::Patron do
   subject(:patron) do
-    described_class.new(user: user, session: session, patron: patron_values)
+    described_class.new(user:, session:, patron: patron_values)
   end
 
   let(:session) do
@@ -13,7 +13,7 @@ describe Requests::Patron do
   let(:first_name) { "Test" }
   let(:patron_values) do
     {
-      first_name: first_name
+      first_name:
     }
   end
   let(:uid) { 'foo' }
@@ -21,7 +21,7 @@ describe Requests::Patron do
   let(:provider) { nil }
   let(:barcode_provider) { false }
   let(:user) do
-    instance_double(User, guest?: guest?, uid: uid, alma_provider?: false, provider: provider, barcode_provider?: barcode_provider)
+    instance_double(User, guest?: guest?, uid:, alma_provider?: false, provider:, barcode_provider?: barcode_provider)
   end
   let(:bibdata_uri) { Requests::Config[:bibdata_base] }
   let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
@@ -31,7 +31,7 @@ describe Requests::Patron do
   context 'when the user is provided from Alma' do
     let(:uid) { 'BC123456789' }
     let(:user) do
-      instance_double(User, guest?: guest?, uid: uid, alma_provider?: true, provider: provider, barcode_provider?: barcode_provider)
+      instance_double(User, guest?: guest?, uid:, alma_provider?: true, provider:, barcode_provider?: barcode_provider)
     end
     let(:patron_with_multiple_barcodes) { fixture('/BC123456789.json') }
 
@@ -41,7 +41,7 @@ describe Requests::Patron do
     end
 
     it 'creates an access patron with the active barcode' do
-      patron = described_class.new(user: user, session: session)
+      patron = described_class.new(user:, session:)
       expect(patron.barcode).to eq('77777777')
     end
   end
@@ -65,7 +65,7 @@ describe Requests::Patron do
           .to_return(status: 200, body: valid_patron_response, headers: {})
       end
       it 'Handles an authorized princeton net ID holder' do
-        patron = described_class.new(user: user,
+        patron = described_class.new(user:,
                                      session: { email: 'foo@bar.com', user_name: 'foobar' }.with_indifferent_access)
         expect(patron).to be_truthy
         expect(patron.active_email).to eq('a@b.com')
@@ -85,7 +85,7 @@ describe Requests::Patron do
           .to_return(status: 200, body: valid_barcode_patron_response, headers: {})
       end
       it 'Handles an authorized princeton net ID holder' do
-        patron = described_class.new(user: user, session: {})
+        patron = described_class.new(user:, session: {})
         expect(patron).to be_truthy
         expect(patron.active_email).to eq('a@b.com')
         expect(patron.netid).to be_nil
@@ -100,7 +100,7 @@ describe Requests::Patron do
           .to_return(status: 404, body: invalid_patron_response, headers: {})
       end
       it 'Handles an authorized princeton net ID holder' do
-        patron = described_class.new(user: user, session: {})
+        patron = described_class.new(user:, session: {})
         expect(patron.errors).to eq(["A problem occurred looking up your library account."])
       end
     end
@@ -112,7 +112,7 @@ describe Requests::Patron do
           .to_return(status: 403, body: invalid_patron_response, headers: {})
       end
       it 'Handles an authorized princeton net ID holder' do
-        patron = described_class.new(user: user, session: {})
+        patron = described_class.new(user:, session: {})
         expect(patron.errors).to eq(["A problem occurred looking up your library account."])
       end
     end
@@ -124,7 +124,7 @@ describe Requests::Patron do
           .to_return(status: 500, body: invalid_patron_response, headers: {})
       end
       it 'cannot return a patron record' do
-        patron = described_class.new(user: user, session: {})
+        patron = described_class.new(user:, session: {})
         expect(patron.errors).to eq(["A problem occurred looking up your library account."])
       end
     end
@@ -155,7 +155,7 @@ describe Requests::Patron do
 
     it 'logs the error' do
       allow(Rails.logger).to receive(:error)
-      described_class.new(user: user, session: {})
+      described_class.new(user:, session: {})
       expect(Rails.logger).to have_received(:error).with("Unable to connect to #{bibdata_uri}")
     end
   end
@@ -173,7 +173,7 @@ describe Requests::Patron do
     end
     it 'logs the error' do
       allow(Rails.logger).to receive(:error)
-      described_class.new(user: user, session: {})
+      described_class.new(user:, session: {})
       expect(Rails.logger).to have_received(:error).with("#{patron_url} returned an invalid patron response: <html><head<title>Request Rejected</title></head><html>")
     end
   end
@@ -190,7 +190,7 @@ describe Requests::Patron do
     end
     it 'logs the error' do
       allow(Rails.logger).to receive(:error)
-      described_class.new(user: user, session: {})
+      described_class.new(user:, session: {})
       expect(Rails.logger).to have_received(:error).with("#{bibdata_uri} returned an empty patron response")
     end
   end
@@ -210,12 +210,12 @@ describe Requests::Patron do
       let(:givenname) { 'LDAP' }
       let(:ldap) do
         {
-          givenname: givenname
+          givenname:
         }
       end
       let(:patron_values) do
         {
-          ldap: ldap
+          ldap:
         }
       end
 

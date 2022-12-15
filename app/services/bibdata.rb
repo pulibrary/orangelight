@@ -15,7 +15,7 @@ class Bibdata
 
       api_response = api_request_patron(id: user.uid)
 
-      build_api_patron(api_response: api_response, user: user)
+      build_api_patron(api_response:, user:)
     rescue ServerError
       Rails.logger.error('An error was encountered with the Patron Data Service.')
       nil

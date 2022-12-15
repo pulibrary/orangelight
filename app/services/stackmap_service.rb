@@ -52,7 +52,7 @@ class StackmapService
       def stackmap_url
         stackmap_url = 'https://princeton.stackmap.com/view/'
         stackmap_params = {
-          callno: callno,
+          callno:,
           location: @loc,
           library: holding_location[:library][:label]
         }

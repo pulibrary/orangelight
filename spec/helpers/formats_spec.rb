@@ -9,14 +9,14 @@ RSpec.describe ApplicationHelper do
   let(:document) do
     {
       id: '1',
-      format: format
+      format:
     }.with_indifferent_access
   end
 
   let(:field_config) do
     {
       field: :format,
-      document: document
+      document:
     }.with_indifferent_access
   end
 

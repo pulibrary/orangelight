@@ -205,9 +205,6 @@ Style/GuardClause:
     - 'app/models/concerns/blacklight/document/email.rb'
     - 'app/models/concerns/blacklight/document/ris.rb'
 
-Style/HashSyntax: 
-  Enabled: false
-
 Rails/RakeEnvironment:
   Enabled: false
 

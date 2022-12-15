@@ -6,7 +6,7 @@ RSpec.describe Bibdata do
   describe '#holding_locations' do
     subject(:locations) { described_class.holding_locations }
 
-    let(:response) { instance_double(Faraday::Response, status: status, body: body) }
+    let(:response) { instance_double(Faraday::Response, status:, body:) }
     let(:status) { 200 }
     let(:body) { '[{"label":"African American Studies Reading Room","code":"aas","library":{"label":"Firestone Library","code":"firestone","order":1}}]' }
 
@@ -59,7 +59,7 @@ RSpec.describe Bibdata do
         'Content-Type': 'application/json'
       }
     end
-    let(:response) { instance_double(Faraday::Response, headers: headers, status: status, body: JSON.generate(body)) }
+    let(:response) { instance_double(Faraday::Response, headers:, status:, body: JSON.generate(body)) }
 
     before { allow(Faraday).to receive(:get).and_return(response) }
 

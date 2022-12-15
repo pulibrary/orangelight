@@ -55,8 +55,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.on_shelf_email(Requests::Submission.new(params))
   end
@@ -97,8 +97,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.on_shelf_confirmation(Requests::Submission.new(params))
   end
@@ -139,8 +139,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.annexa_email(Requests::Submission.new(params))
   end
@@ -181,8 +181,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.annexb_email(Requests::Submission.new(params))
   end
@@ -223,8 +223,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.in_process_confirmation(Requests::Submission.new(params))
   end
@@ -265,8 +265,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.in_process_email(Requests::Submission.new(params))
   end
@@ -307,8 +307,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.lewis_confirmation(Requests::Submission.new(params))
   end
@@ -349,8 +349,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.lewis_email(Requests::Submission.new(params))
   end
@@ -391,8 +391,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.on_order_confirmation(Requests::Submission.new(params))
   end
@@ -433,8 +433,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.on_order_email(Requests::Submission.new(params))
   end
@@ -475,8 +475,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.paging_email(Requests::Submission.new(params))
   end
@@ -517,8 +517,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.paging_confirmation(Requests::Submission.new(params))
   end
@@ -559,8 +559,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.ppl_confirmation(Requests::Submission.new(params))
   end
@@ -601,8 +601,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.ppl_email(Requests::Submission.new(params))
   end
@@ -643,8 +643,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.pres_confirmation(Requests::Submission.new(params))
   end
@@ -685,8 +685,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.pres_email(Requests::Submission.new(params))
   end
@@ -727,8 +727,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.recall_confirmation(Requests::Submission.new(params))
   end
@@ -769,8 +769,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.recall_email(Requests::Submission.new(params))
   end
@@ -811,8 +811,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.recap_email(Requests::Submission.new(params))
   end
@@ -861,8 +861,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.recap_confirmation(Requests::Submission.new(params))
   end
@@ -903,8 +903,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.recap_no_items_confirmation(Requests::Submission.new(params))
   end
@@ -945,8 +945,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.recap_no_items_email(Requests::Submission.new(params))
   end
@@ -987,8 +987,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.scsb_recall_email(Requests::Submission.new(params))
   end
@@ -1029,8 +1029,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     submission = Requests::Generic.new(params)
     submission.errors << { :reply_text => "Can not create hold", :create_hold => { note: "Hold can not be created" }, "id" => "10574699", "title" => "Mefisto : rivista di medicina, filosofia, storia", "author" => "", "user_name" => "Foo Request", "user_last_name" => "Request", "user_barcode" => "0000000000", "patron_id" => "00000", "patron_group" => "staff", "email" => "foo@princeton.edu", "source" => "pulsearch" }
@@ -1073,8 +1073,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.trace_email(Requests::Submission.new(params))
   end
@@ -1115,8 +1115,8 @@ class RequestMailerPreview < ActionMailer::Preview
     params =
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     Requests::RequestMailer.recap_edd_confirmation(Requests::Submission.new(params))
   end

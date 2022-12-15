@@ -11,7 +11,7 @@ describe Requests::IlliadPatron, type: :controller do
   let(:ldap_data) { { uid: 'foo', department: 'Library - Information Technology', address: 'Firestone Library$Library Information Technology', telephone: '123-456-7890', surname: 'Doe', givenname: 'Joe', email: 'joe@abc.com', pustatus: 'fac', status: 'faculty' }.with_indifferent_access }
   let(:user_info) do
     user = instance_double(User, guest?: false, uid: 'foo')
-    Requests::Patron.new(user: user, session: {}, patron: valid_patron)
+    Requests::Patron.new(user:, session: {}, patron: valid_patron)
   end
 
   let(:illiad_patron) { described_class.new(user_info) }

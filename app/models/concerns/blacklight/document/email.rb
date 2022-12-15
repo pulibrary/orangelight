@@ -17,7 +17,7 @@ module Blacklight
       private
 
         def add_single_valued_field(body, i18_label, value)
-          body << I18n.t(i18_label, value: value) if value.present?
+          body << I18n.t(i18_label, value:) if value.present?
         end
 
         def add_multi_valued_field(body, i18_label, value)
