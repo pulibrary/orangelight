@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController do
-  let(:valid_netid_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response.json')).with_indifferent_access }
-  let(:expired_netid_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_expired.json')).with_indifferent_access }
-  let(:guest_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_guest.json')).with_indifferent_access }
+  let(:valid_netid_response) { JSON.parse(File.read('spec/fixtures/bibdata_patron_response.json')).with_indifferent_access }
+  let(:expired_netid_response) { JSON.parse(File.read('spec/fixtures/bibdata_patron_response_expired.json')).with_indifferent_access }
+  let(:guest_response) { JSON.parse(File.read('spec/fixtures/bibdata_patron_response_guest.json')).with_indifferent_access }
 
   before { request.env['devise.mapping'] = Devise.mappings[:user] }
 

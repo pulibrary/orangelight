@@ -12,7 +12,7 @@ RSpec.describe IlliadAccount do
                       'patron_id' => '777777',
                       'netid' => 'jstudent' }
     subject(:client) { described_class.new(sample_patron) }
-    let(:verify_user_response) { File.open(fixture_path + '/ill_verify_user_response.json') }
+    let(:verify_user_response) { File.open('spec/fixtures/ill_verify_user_response.json') }
     let(:verify_user_uri) { "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Users/#{sample_patron['netid']}" }
 
     describe '#verify user' do

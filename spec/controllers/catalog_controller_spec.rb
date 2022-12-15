@@ -85,7 +85,7 @@ RSpec.describe CatalogController do
   end
 
   describe 'home page' do
-    let(:solr_empty_query) { File.open(fixture_path + '/solr_empty_query.json').read }
+    let(:solr_empty_query) { File.open('spec/fixtures/solr_empty_query.json').read }
 
     before do
       allow(Rails.cache).to receive(:fetch).and_return solr_empty_query

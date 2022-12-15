@@ -12,7 +12,7 @@ describe Requests::RequestDecorator do
       "patron_id" => "99999", "active_email" => "foo@princeton.edu",
       ldap: ldap }.with_indifferent_access
   end
-  let(:campus_unauthorized_patron) { File.open(fixture_path + '/bibdata_patron_unauth_response.json') }
+  let(:campus_unauthorized_patron) { File.open('spec/fixtures/bibdata_patron_unauth_response.json') }
   let(:patron) { Requests::Patron.new(user: user, session: {}, patron: test_patron) }
 
   let(:requestable) { instance_double(Requests::RequestableDecorator, stubbed_questions) }

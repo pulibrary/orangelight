@@ -30,9 +30,9 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
                link_to(texts.first, url.to_s, target: '_blank', rel: 'noopener')
              elsif %r{(\/catalog\/.+?#view)} =~ url.to_s
                if texts.first == "arks.princeton.edu"
-                 link_to('Digital content', $&)
+                 link_to('Digital content', ::Regexp.last_match(0))
                else
-                 link_to(texts.first, $&)
+                 link_to(texts.first, ::Regexp.last_match(0))
                end
              else
                link_to(texts.first, "#{Requests.config['proxy_base']}#{url}", target: '_blank', rel: 'noopener')

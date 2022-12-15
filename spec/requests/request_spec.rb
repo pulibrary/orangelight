@@ -518,7 +518,7 @@ describe 'blacklight tests' do
     it 'is fetched when doing a more in this series search' do
       get '/catalog.json?q1=Always+learning.&f1=in_series&search_field=advanced'
       r = JSON.parse(response.body)
-      expect(r['data'].select { |d| d['id'] == '9979171923506421' }[0]['attributes']['series_display']).not_to be_nil
+      expect(r['data'].find { |d| d['id'] == '9979171923506421' }['attributes']['series_display']).not_to be_nil
     end
     it 'is displayed when doing a series title search' do
       stub_holding_locations
@@ -531,7 +531,7 @@ describe 'blacklight tests' do
     it 'is not included in other search contexts' do
       get '/catalog.json?q=9979171923506421&search_field=all_fields'
       r = JSON.parse(response.body)
-      expect(r['data'].select { |d| d['id'] == '9979171923506421' }[0]['attributes']['series_display']).to be_nil
+      expect(r['data'].find { |d| d['id'] == '9979171923506421' }['attributes']['series_display']).to be_nil
     end
   end
 

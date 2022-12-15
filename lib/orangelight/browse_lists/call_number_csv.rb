@@ -2,6 +2,7 @@
 
 module BrowseLists
   class SolrResponseError < StandardError; end
+
   class CallNumberCSV
     attr_reader :output_root, :facet_request, :conn, :rows
     attr_accessor :multi_cn_lookup

@@ -35,7 +35,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
         patron: patron
       }
     end
-    let(:request_with_items_on_reserve) { Requests::Request.new(params) }
+    let(:request_with_items_on_reserve) { Requests::Request.new(**params) }
     let(:requestable_list) { request_with_items_on_reserve.requestable }
     let(:submit_button_disabled) { helper.submit_button_disabled(requestable_list) }
 
@@ -89,7 +89,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     let(:default_pick_ups) do
       [{ label: "Firestone Library", gfa_pickup: "PA", staff_only: false }, { label: "Architecture Library", gfa_pickup: "PW", staff_only: false }, { label: "East Asian Library", gfa_pickup: "PL", staff_only: false }, { label: "Lewis Library", gfa_pickup: "PN", staff_only: false }, { label: "Marquand Library of Art and Archaeology", gfa_pickup: "PJ", staff_only: false }, { label: "Mendel Music Library", gfa_pickup: "PK", staff_only: false }, { label: "Plasma Physics Library", gfa_pickup: "PQ", staff_only: false }, { label: "Stokes Library", gfa_pickup: "PM", staff_only: false }]
     end
-    let(:lewis_request_with_multiple_requestable) { Requests::RequestDecorator.new(Requests::Request.new(params), self) }
+    let(:lewis_request_with_multiple_requestable) { Requests::RequestDecorator.new(Requests::Request.new(**params), self) }
     let(:requestable_list) { lewis_request_with_multiple_requestable.requestable }
     let(:submit_button_disabled) { helper.submit_button_disabled(requestable_list) }
     it 'lewis is a submitable request' do
@@ -109,7 +109,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     let(:default_pick_ups) do
       [{ label: "Firestone Library", gfa_pickup: "PA", staff_only: false }, { label: "Architecture Library", gfa_pickup: "PW", staff_only: false }, { label: "East Asian Library", gfa_pickup: "PL", staff_only: false }, { label: "Lewis Library", gfa_pickup: "PN", staff_only: false }, { label: "Marquand Library of Art and Archaeology", gfa_pickup: "PJ", staff_only: false }, { label: "Mendel Music Library", gfa_pickup: "PK", staff_only: false }, { label: "Plasma Physics Library", gfa_pickup: "PQ", staff_only: false }, { label: "Stokes Library", gfa_pickup: "PM", staff_only: false }]
     end
-    let(:lewis_request_with_multiple_requestable) { Requests::RequestDecorator.new(Requests::Request.new(params), self) }
+    let(:lewis_request_with_multiple_requestable) { Requests::RequestDecorator.new(Requests::Request.new(**params), self) }
     let(:requestable_list) { lewis_request_with_multiple_requestable.requestable }
     let(:submit_button_disabled) { helper.submit_button_disabled(requestable_list) }
     let(:availability_response) { File.read("spec/fixtures/scsb_availability_994264203506421.json") }
@@ -134,7 +134,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
         patron: patron
       }
     end
-    let(:aeon_only_request) { Requests::RequestDecorator.new(Requests::Request.new(params), nil) }
+    let(:aeon_only_request) { Requests::RequestDecorator.new(Requests::Request.new(**params), nil) }
     let(:login_suppressed) { helper.suppress_login(aeon_only_request) }
 
     it 'returns a boolean to disable/enable submit' do

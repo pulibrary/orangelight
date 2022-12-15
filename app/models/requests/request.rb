@@ -211,9 +211,7 @@ module Requests
       end
 
       def availability_data(id)
-        @availability_data ||= begin
-          items_by_id(id, scsb_owning_institution(scsb_location))
-        end
+        @availability_data ||= items_by_id(id, scsb_owning_institution(scsb_location))
       end
 
       def build_scsb_requestable
@@ -238,7 +236,7 @@ module Requests
           item['location_code'] = location_code
           params = build_requestable_params(item: item.with_indifferent_access, holding: { id.to_sym.to_s => holdings[id] },
                                             location: location)
-          requestable_items << Requests::Requestable.new(params)
+          requestable_items << Requests::Requestable.new(**params)
         end
         requestable_items
       end
@@ -315,7 +313,7 @@ module Requests
           holding: calculate_holding,
           location: current_location
         )
-        Requests::Requestable.new(params)
+        Requests::Requestable.new(**params)
       end
 
       def get_current_location(item_loc:)
@@ -331,7 +329,7 @@ module Requests
       def build_requestable_from_holding(holding_id, holding)
         return if holding.blank?
         params = build_requestable_params(holding: { holding_id.to_sym.to_s => holding }, location: location)
-        Requests::Requestable.new(params)
+        Requests::Requestable.new(**params)
       end
 
       def load_location

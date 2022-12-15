@@ -247,9 +247,7 @@ module Blacklight
           end
 
           def _marc_helper
-            @_marc_helper ||= begin
-                                Blacklight::Marc::Document.new fetch(_marc_source_field), _marc_format_type
-                              end
+            @_marc_helper ||= Blacklight::Marc::Document.new fetch(_marc_source_field), _marc_format_type
           end
 
           def _marc_source_field

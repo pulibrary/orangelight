@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe AccountController do
-  let(:valid_patron_response) { File.open(fixture_path + '/bibdata_patron_response.json') }
-  let(:outstanding_ill_requests_response) { File.open(fixture_path + '/outstanding_ill_requests_response.json') }
-  let(:verify_user_response) { File.open(fixture_path + '/ill_verify_user_response.json') }
+  let(:valid_patron_response) { File.open('spec/fixtures/bibdata_patron_response.json') }
+  let(:outstanding_ill_requests_response) { File.open('spec/fixtures/outstanding_ill_requests_response.json') }
+  let(:verify_user_response) { File.open('spec/fixtures/ill_verify_user_response.json') }
   let(:current_illiad_user_uri) { "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent" }
   before do
     current_ill_requests_uri = "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Transaction/UserRequests/jstudent?$filter=" \
@@ -80,7 +80,7 @@ RSpec.describe AccountController do
 
   describe 'cancel_ill_requests' do
     subject(:account_controller) { described_class.new }
-    let(:cancel_ill_requests_response) { File.open(fixture_path + '/cancel_ill_requests_response.json') }
+    let(:cancel_ill_requests_response) { File.open('spec/fixtures/cancel_ill_requests_response.json') }
     let(:params_cancel_requests) { ['1093597'] }
     let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
 
@@ -113,7 +113,7 @@ RSpec.describe AccountController do
     end
 
     context 'the response contains an error' do
-      let(:cancel_ill_requests_response) { File.open(fixture_path + '/cancel_ill_requests_failed_response.json') }
+      let(:cancel_ill_requests_response) { File.open('spec/fixtures/cancel_ill_requests_failed_response.json') }
       it 'flashes an error message' do
         post :cancel_ill_requests, params: { cancel_requests: params_cancel_requests }, format: :js
         expect(flash.now[:error]).to eq I18n.t('blacklight.account.cancel_fail')
@@ -162,7 +162,7 @@ RSpec.describe AccountController do
   end
 
   describe '#borrow_direct_redirect' do
-    let(:guest_response) { JSON.parse(File.read(fixture_path + '/bibdata_patron_response_guest.json')).with_indifferent_access }
+    let(:guest_response) { JSON.parse(File.read('spec/fixtures/bibdata_patron_response_guest.json')).with_indifferent_access }
     let(:valid_alma_user) { FactoryBot.create(:alma_patron) }
     let(:valid_cas_user) { FactoryBot.create(:valid_princeton_patron) }
 
