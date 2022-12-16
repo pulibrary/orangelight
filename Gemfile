@@ -52,7 +52,6 @@ gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
 gem 'babel-transpiler'
 gem 'bootstrap', '~> 4.6'
 gem 'bootstrap-select-rails'
-gem 'capybara'
 gem 'ddtrace', '~> 0.54.2'
 gem 'font-awesome-rails'
 gem 'http', '~> 5.1'
@@ -93,15 +92,15 @@ end
 group :test do
   gem "axe-core-api", "4.0.0"
   gem "axe-core-rspec", "4.0.0"
+  gem 'capybara'
   gem 'factory_bot_rails', require: false
   gem 'faker'
   gem 'launchy'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
-  gem 'selenium-webdriver', '~> 4.1.0'
   gem 'timecop'
   gem 'vcr'
-  gem 'webdrivers'
+  gem 'webdrivers', '~> 5.0.0'
   gem 'webmock', require: false
 end
 
