@@ -10,7 +10,7 @@ describe Requests::Submission do
   end
   let(:user_info) do
     user = instance_double(User, guest?: false, uid: 'foo')
-    Requests::Patron.new(user: user, session: {}, patron: valid_patron)
+    Requests::Patron.new(user:, session: {}, patron: valid_patron)
   end
 
   context 'A valid submission' do
@@ -53,8 +53,8 @@ describe Requests::Submission do
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -116,7 +116,7 @@ describe Requests::Submission do
       {
         request: user_info,
         requestable: [{ "selected" => "true" }],
-        bib: bib
+        bib:
       }
     end
 
@@ -191,8 +191,8 @@ describe Requests::Submission do
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
     let(:submission) do
@@ -263,9 +263,9 @@ describe Requests::Submission do
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib,
-        bd: bd
+        requestable:,
+        bib:,
+        bd:
       }
     end
 
@@ -330,8 +330,8 @@ describe Requests::Submission do
         let(:params) do
           {
             request: user_info,
-            requestable: requestable,
-            bib: bib
+            requestable:,
+            bib:
           }
         end
         before do
@@ -376,8 +376,8 @@ describe Requests::Submission do
       let(:params) do
         {
           request: user_info,
-          requestable: requestable,
-          bib: bib
+          requestable:,
+          bib:
         }
       end
       let(:submission) do
@@ -426,8 +426,8 @@ describe Requests::Submission do
       let(:params) do
         {
           request: user_info,
-          requestable: requestable,
-          bib: bib
+          requestable:,
+          bib:
         }
       end
 
@@ -482,8 +482,8 @@ describe Requests::Submission do
       let(:params) do
         {
           request: user_info,
-          requestable: requestable,
-          bib: bib
+          requestable:,
+          bib:
         }
       end
 
@@ -541,8 +541,8 @@ describe Requests::Submission do
       let(:params) do
         {
           request: user_info,
-          requestable: requestable,
-          bib: bib
+          requestable:,
+          bib:
         }
       end
 
@@ -596,8 +596,8 @@ describe Requests::Submission do
       let(:params) do
         {
           request: user_info,
-          requestable: requestable,
-          bib: bib
+          requestable:,
+          bib:
         }
       end
 
@@ -651,8 +651,8 @@ describe Requests::Submission do
       let(:params) do
         {
           request: user_info,
-          requestable: requestable,
-          bib: bib
+          requestable:,
+          bib:
         }
       end
 
@@ -706,8 +706,8 @@ describe Requests::Submission do
       let(:params) do
         {
           request: user_info,
-          requestable: requestable,
-          bib: bib
+          requestable:,
+          bib:
         }
       end
 
@@ -762,8 +762,8 @@ describe Requests::Submission do
       let(:params) do
         {
           request: user_info,
-          requestable: requestable,
-          bib: bib
+          requestable:,
+          bib:
         }
       end
 
@@ -818,8 +818,8 @@ describe Requests::Submission do
       let(:params) do
         {
           request: user_info,
-          requestable: requestable,
-          bib: bib
+          requestable:,
+          bib:
         }
       end
 
@@ -874,8 +874,8 @@ describe Requests::Submission do
       let(:params) do
         {
           request: user_info,
-          requestable: requestable,
-          bib: bib
+          requestable:,
+          bib:
         }
       end
 
@@ -921,7 +921,7 @@ describe Requests::Submission do
     let(:params) do
       {
         request: user_info,
-        requestable: requestable
+        requestable:
       }
     end
     let(:submission) do
@@ -988,8 +988,8 @@ describe Requests::Submission do
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -1020,8 +1020,8 @@ describe Requests::Submission do
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
     let(:submission) do
@@ -1137,8 +1137,8 @@ describe Requests::Submission do
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
     let(:submission) do
@@ -1168,8 +1168,8 @@ describe Requests::Submission do
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
     let(:submission) do
@@ -1257,8 +1257,8 @@ describe Requests::Submission do
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
     let(:submission) do
@@ -1300,8 +1300,8 @@ describe Requests::Submission do
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
     let(:submission) do

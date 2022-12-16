@@ -16,7 +16,7 @@ module Requests::Submissions
       params = @service_types[service_type.to_sym]
       items = @submission.filter_items_by_service(service_type)
       items.each do |item|
-        item_status = handle_item(item: item, **params)
+        item_status = handle_item(item:, **params)
         if item_status.present?
           item["transaction_number"] = item_status["TransactionNumber"].to_s
           @sent << item_status if item_status.present?
@@ -32,11 +32,11 @@ module Requests::Submissions
     private
 
       def handle_item(item:, note:, cited_pages:)
-        client = Requests::IlliadTransactionClient.new(patron: @submission.patron, metadata_mapper: Requests::IlliadMetadata::ArticleExpress.new(patron: @submission.patron, bib: @submission.bib, item: item, note: note, cited_pages: cited_pages))
+        client = Requests::IlliadTransactionClient.new(patron: @submission.patron, metadata_mapper: Requests::IlliadMetadata::ArticleExpress.new(patron: @submission.patron, bib: @submission.bib, item:, note:, cited_pages:))
         transaction = client.create_request
-        errors << { type: 'digitize', bibid: @submission.bib, item: item, user_name: @submission.user_name, barcode: @submission.user_barcode, error: "Invalid Illiad Patron" } if transaction.blank?
+        errors << { type: 'digitize', bibid: @submission.bib, item:, user_name: @submission.user_name, barcode: @submission.user_barcode, error: "Invalid Illiad Patron" } if transaction.blank?
         if transaction == "DISAVOWED"
-          errors << { type: 'digitize', bibid: @submission.bib, item: item, user_name: @submission.user_name, barcode: @submission.user_barcode, error: "You no longer have an active account and may not make digitization requests." }
+          errors << { type: 'digitize', bibid: @submission.bib, item:, user_name: @submission.user_name, barcode: @submission.user_barcode, error: "You no longer have an active account and may not make digitization requests." }
           transaction = nil
         end
         transaction

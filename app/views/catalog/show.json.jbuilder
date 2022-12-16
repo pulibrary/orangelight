@@ -14,10 +14,10 @@ json.data do
     # override Blacklight to render all fields instead of only those that display in HTML
     document_show_fields(@document).each do |field_name, field|
       next unless doc_presenter.document[field_name]
-      json.partial! 'field', field: field,
-                             field_name: field_name,
-                             document_url: document_url,
-                             doc_presenter: doc_presenter
+      json.partial! 'field', field:,
+                             field_name:,
+                             document_url:,
+                             doc_presenter:
     end
   end
 end

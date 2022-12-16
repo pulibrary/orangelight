@@ -10,7 +10,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       "university_id" => "9999999", "patron_group" => "staff", "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
   end
   let(:patron) do
-    Requests::Patron.new(user: user, session: {}, patron: valid_patron)
+    Requests::Patron.new(user:, session: {}, patron: valid_patron)
   end
 
   describe '#isbn_string' do
@@ -32,7 +32,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       {
         system_id: '9981794023506421',
         mfhd: '22591269990006421',
-        patron: patron
+        patron:
       }
     end
     let(:request_with_items_on_reserve) { Requests::Request.new(**params) }
@@ -49,7 +49,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
         {
           system_id: '9992220243506421',
           mfhd: '22558467250006421',
-          patron: patron
+          patron:
         }
       end
       it 'returns a boolean to enable submit for logged in user' do
@@ -68,7 +68,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
         {
           system_id: '9938488723506421',
           mfhd: '22522147400006421',
-          patron: patron
+          patron:
         }
       end
       it 'lewis is a submitable request' do
@@ -83,7 +83,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       {
         system_id: '994916543506421',
         mfhd: '22724990930006421',
-        patron: patron
+        patron:
       }
     end
     let(:default_pick_ups) do
@@ -103,7 +103,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       {
         system_id: '994264203506421',
         mfhd: '22697858020006421',
-        patron: patron
+        patron:
       }
     end
     let(:default_pick_ups) do
@@ -131,7 +131,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       {
         system_id: '9973529363506421',
         mfhd: '22667098870006421',
-        patron: patron
+        patron:
       }
     end
     let(:aeon_only_request) { Requests::RequestDecorator.new(Requests::Request.new(**params), nil) }
@@ -189,7 +189,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     context "lewis library charged" do
       let(:stubbed_questions) { { charged?: true, aeon?: false, on_shelf?: false, ask_me?: false, no_services?: false } }
       it 'a message for lewis charged' do
-        expect(helper).to receive(:render).with(partial: 'checked_out_options', locals: { requestable: requestable }).and_return('partial rendered')
+        expect(helper).to receive(:render).with(partial: 'checked_out_options', locals: { requestable: }).and_return('partial rendered')
         expect(helper.show_service_options(requestable, 'acb')).to eq "partial rendered"
       end
     end
@@ -383,7 +383,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
 
     context "with holding call number" do
       let(:holding) { { "1594697" => { "location" => "Firestone Library", "library" => "Firestone Library", "location_code" => "f", "copy_number" => "0", "call_number" => "6251.9765", "call_number_browse" => "6251.9765" } } }
-      let(:stubbed_questions) { { bib: { id: 'abc123' }, item: Requests::Requestable::Item.new({ 'id' => "aaabbb" }.with_indifferent_access), holding: holding, location: { code: 'location_code' }, partner_holding?: false, preferred_request_id: 'aaabbb', item?: true, item_location_code: '' } }
+      let(:stubbed_questions) { { bib: { id: 'abc123' }, item: Requests::Requestable::Item.new({ 'id' => "aaabbb" }.with_indifferent_access), holding:, location: { code: 'location_code' }, partner_holding?: false, preferred_request_id: 'aaabbb', item?: true, item_location_code: '' } }
       it 'shows hidden fields' do
         expect(helper.hidden_fields_item(requestable)).to include '<input type="hidden" name="requestable[][call_number]" id="requestable_call_number_aaabbb" value="6251.9765" autocomplete="off" />'
       end

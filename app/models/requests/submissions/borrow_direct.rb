@@ -18,13 +18,13 @@ module Requests::Submissions
 
       # handle any borrow direct items
       bd_items.each do |bd_item|
-        handle_with_borrow_direct(bd_item: bd_item)
+        handle_with_borrow_direct(bd_item:)
       end
 
       # then handle any interlibrary loan only items
       ill_items = @submission.filter_items_by_service('ill') - bd_items
       ill_items.each do |item|
-        handle_with_interlibrary_loan(item: item)
+        handle_with_interlibrary_loan(item:)
       end
     end
 
@@ -47,14 +47,14 @@ module Requests::Submissions
         request_item = ::BorrowDirect::RequestItem.new(@submission.user_barcode)
         # Allow 2 minutes since these requests seem to be taking a really long time
         request_item.timeout = 200
-        request_number = request_item.make_request(@pickup_location, isbn: isbn)
+        request_number = request_item.make_request(@pickup_location, isbn:)
         if request_number.present?
-          @sent << { request_number: request_number }
+          @sent << { request_number: }
         else
           handle_with_interlibrary_loan(item: bd_item)
         end
       rescue *::BorrowDirect::Error => error
-        handle_borrow_direct_error(error: error, bd_item: bd_item)
+        handle_borrow_direct_error(error:, bd_item:)
       end
 
       def handle_borrow_direct_error(error:, bd_item:)
@@ -71,9 +71,9 @@ module Requests::Submissions
 
       def handle_with_interlibrary_loan(item:)
         @handled_by = "interlibrary_loan"
-        client = Requests::IlliadTransactionClient.new(patron: @submission.patron, metadata_mapper: Requests::IlliadMetadata::Loan.new(patron: @submission.patron, bib: @submission.bib, item: item))
+        client = Requests::IlliadTransactionClient.new(patron: @submission.patron, metadata_mapper: Requests::IlliadMetadata::Loan.new(patron: @submission.patron, bib: @submission.bib, item:))
         transaction = client.create_request
-        errors << { type: 'interlibrary_loan', bibid: @submission.bib, item: item, user_name: @submission.user_name, barcode: @submission.user_barcode, error: "Invalid Interlibrary Loan Request" } if transaction.blank?
+        errors << { type: 'interlibrary_loan', bibid: @submission.bib, item:, user_name: @submission.user_name, barcode: @submission.user_barcode, error: "Invalid Interlibrary Loan Request" } if transaction.blank?
         transaction
       end
   end

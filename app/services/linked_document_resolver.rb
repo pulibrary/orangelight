@@ -33,8 +33,8 @@ class LinkedDocumentResolver
     def decorated(title_field: 'title_display', display_fields: %w[id])
       siblings.map do |sibling|
         DecoratorService::SolrDocumentDecorator.new(document: sibling,
-                                                    title_field: title_field,
-                                                    display_fields: display_fields)
+                                                    title_field:,
+                                                    display_fields:)
       end
     end
 

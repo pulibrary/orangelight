@@ -7,7 +7,7 @@ describe Requests::Submissions::Recap do
     let(:valid_patron) { { "netid" => "foo", "university_id" => "99999999", "active_email" => 'foo1@princeton.edu', barcode: '111222333' }.with_indifferent_access }
     let(:user_info) do
       user = instance_double(User, guest?: false, uid: 'foo')
-      Requests::Patron.new(user: user, session: {}, patron: valid_patron)
+      Requests::Patron.new(user:, session: {}, patron: valid_patron)
     end
     let(:scsb_url) { "#{Requests::Config[:scsb_base]}/requestItem/requestItem" }
     let(:alma_url) { "#{Alma.configuration.region}/almaws/v1/bibs/#{bib['id']}/holdings/#{requestable[0]['mfhd']}/items/#{requestable[0]['item_id']}/requests?user_id=99999999" }
@@ -70,8 +70,8 @@ describe Requests::Submissions::Recap do
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -198,7 +198,7 @@ describe Requests::Submissions::Recap do
     let(:valid_patron) { { "netid" => "foo", "university_id" => "99999999" }.with_indifferent_access }
     let(:user_info) do
       user = instance_double(User, guest?: false, uid: 'foo')
-      Requests::Patron.new(user: user, session: {}, patron: valid_patron)
+      Requests::Patron.new(user:, session: {}, patron: valid_patron)
     end
     let(:scsb_url) { "#{Requests::Config[:scsb_base]}/requestItem/requestItem" }
     let(:alma_url) { "#{Alma.configuration.region}/almaws/v1/bibs/#{bib['id']}/holdings/#{requestable[0]['mfhd']}/items/#{requestable[0]['item_id']}/requests?user_id=99999999" }
@@ -261,8 +261,8 @@ describe Requests::Submissions::Recap do
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 

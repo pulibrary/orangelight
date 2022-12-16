@@ -12,7 +12,7 @@ module Requests
       @session = session
       @errors = []
       # load the patron from bibdata unless we are passing it in
-      @patron = patron || load_patron(user: user)
+      @patron = patron || load_patron(user:)
     end
 
     def barcode
@@ -149,9 +149,9 @@ module Requests
         return unless uid
 
         if alma_provider?
-          build_alma_patron(uid: uid)
+          build_alma_patron(uid:)
         else
-          build_cas_patron(uid: uid)
+          build_cas_patron(uid:)
         end
       end
 
@@ -165,7 +165,7 @@ module Requests
       end
 
       def access_patron(email, user_name)
-        built = build_access_patron(email: email, user_name: user_name)
+        built = build_access_patron(email:, user_name:)
         built.with_indifferent_access
       end
 

@@ -11,12 +11,12 @@ describe Requests::RequestableDecorator do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
       "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
       "patron_id" => "99999", "active_email" => "foo@princeton.edu",
-      ldap: ldap }.with_indifferent_access
+      ldap: }.with_indifferent_access
   end
-  let(:patron) { Requests::Patron.new(user: user, session: {}, patron: valid_patron) }
+  let(:patron) { Requests::Patron.new(user:, session: {}, patron: valid_patron) }
 
   let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
-  let(:default_stubbed_questions) { { patron: patron, item_data?: true, circulates?: true, on_shelf?: false, recap?: false, annex?: false, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, cul_avery?: false, resource_shared?: false, eligible_for_library_services?: true } }
+  let(:default_stubbed_questions) { { patron:, item_data?: true, circulates?: true, on_shelf?: false, recap?: false, annex?: false, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, borrow_direct?: false, ill_eligible?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, cul_avery?: false, resource_shared?: false, eligible_for_library_services?: true } }
   let(:ldap) { {} }
 
   describe "#digitize?" do
@@ -1021,42 +1021,42 @@ describe Requests::RequestableDecorator do
     end
 
     context "no item data and does not circulate and ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron: patron, on_order?: false, in_process?: false, traceable?: false, user_barcode: '111222', aeon?: false, borrow_direct?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc') }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, traceable?: false, user_barcode: '111222', aeon?: false, borrow_direct?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc') }
       it 'will be submitted' do
         expect(decorator.will_submit_via_form?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and ill_eligible and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron: patron, on_order?: false, in_process?: false, traceable?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, traceable?: true) }
       it 'will be submitted' do
         expect(decorator.will_submit_via_form?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and ill_eligible and traceable and no user barcode" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron: patron, on_order?: false, in_process?: false, traceable?: true, eligible_for_library_services?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, traceable?: true, eligible_for_library_services?: false) }
       it 'will be submitted' do
         expect(decorator.will_submit_via_form?).to be_falsey
       end
     end
 
     context "no item data and does not circulate and ill_eligible and in_process" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron: patron, on_order?: false, in_process?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: true) }
       it 'will be submitted' do
         expect(decorator.will_submit_via_form?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and ill_eligible and in_process and no user barcode" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron: patron, on_order?: false, in_process?: true, eligible_for_library_services?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: true, eligible_for_library_services?: false) }
       it 'will not be submitted' do
         expect(decorator.will_submit_via_form?).to be_falsey
       end
     end
 
     context "no item data and does not circulate and ill_eligible and on_order" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron: patron, on_order?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: true) }
       it 'will be submitted' do
         expect(decorator.will_submit_via_form?).to be_truthy
       end
@@ -1133,26 +1133,26 @@ describe Requests::RequestableDecorator do
     end
 
     context "no item data and does not circulate and eligible_for_library_services? and ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron: patron, on_order?: false, in_process?: false, traceable?: false, user_barcode: '111222', borrow_direct?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc', aeon?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, traceable?: false, user_barcode: '111222', borrow_direct?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc', aeon?: false) }
       it 'will be submitted' do
         expect(decorator.will_submit_via_form?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and eligible_for_library_services? and ill_eligible and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron: patron, on_order?: false, in_process?: false, traceable?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, traceable?: true) }
       it 'will not be submitted' do
         expect(decorator.will_submit_via_form?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and eligible_for_library_services? and ill_eligible and traceable and no user barcode" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron: patron, on_order?: false, in_process?: false, traceable?: true, eligible_for_library_services?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc', aeon?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, traceable?: true, eligible_for_library_services?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc', aeon?: false) }
       let(:valid_patron) do
         { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
           "university_id" => "9999999", "patron_group" => "staff",
           "patron_id" => "99999", "active_email" => "foo@princeton.edu",
-          ldap: ldap }.with_indifferent_access
+          ldap: }.with_indifferent_access
       end
 
       it 'will not be submitted' do
@@ -1161,19 +1161,19 @@ describe Requests::RequestableDecorator do
     end
 
     context "no item data and does not circulate and eligible_for_library_services? and ill_eligible and in_process" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron: patron, on_order?: false, in_process?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: true) }
       it 'will be submitted' do
         expect(decorator.will_submit_via_form?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and eligible_for_library_services? and ill_eligible and in_process and no user barcode" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron: patron, on_order?: false, in_process?: true, eligible_for_library_services?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc', aeon?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: true, eligible_for_library_services?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc', aeon?: false) }
       let(:valid_patron) do
         { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
           "university_id" => "9999999", "patron_group" => "staff",
           "patron_id" => "99999", "active_email" => "foo@princeton.edu",
-          ldap: ldap }.with_indifferent_access
+          ldap: }.with_indifferent_access
       end
       it 'will not be submitted' do
         expect(decorator.will_submit_via_form?).to be_falsey
@@ -1181,19 +1181,19 @@ describe Requests::RequestableDecorator do
     end
 
     context "no item data and does not circulate and eligible_for_library_services? and ill_eligible and on_order" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron: patron, on_order?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: true) }
       it 'will be submitted' do
         expect(decorator.will_submit_via_form?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and ill_eligible and on_order and no user barcode" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron: patron, on_order?: true, eligible_for_library_services?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc', aeon?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: true, eligible_for_library_services?: false, ask_me?: false, open_libraries: ['abc'], library_code: 'abc', aeon?: false) }
       let(:valid_patron) do
         { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
           "university_id" => "9999999", "patron_group" => "staff",
           "patron_id" => "99999", "active_email" => "foo@princeton.edu",
-          ldap: ldap }.with_indifferent_access
+          ldap: }.with_indifferent_access
       end
       it 'will not be submitted' do
         expect(decorator.will_submit_via_form?).to be_falsey
@@ -1295,7 +1295,7 @@ describe Requests::RequestableDecorator do
   end
 
   describe "#help_me_message" do
-    let(:stubbed_questions) { default_stubbed_questions.merge(patron: patron, open_libraries: ['abc'], library_code: 'abc', scsb_in_library_use?: false) }
+    let(:stubbed_questions) { default_stubbed_questions.merge(patron:, open_libraries: ['abc'], library_code: 'abc', scsb_in_library_use?: false) }
     let(:ldap) { { pustatus: "undergraduate" } }
 
     context "staff patron" do
@@ -1303,7 +1303,7 @@ describe Requests::RequestableDecorator do
         { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
           "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
           "patron_id" => "99999", "active_email" => "foo@princeton.edu",
-          ldap: ldap }.with_indifferent_access
+          ldap: }.with_indifferent_access
       end
 
       it "returns the correct message" do
@@ -1312,7 +1312,7 @@ describe Requests::RequestableDecorator do
     end
 
     context "closed library" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(patron: patron, open_libraries: ['def'], library_code: 'abc') }
+      let(:stubbed_questions) { default_stubbed_questions.merge(patron:, open_libraries: ['def'], library_code: 'abc') }
 
       it "returns the correct message" do
         expect(decorator.help_me_message).to eq(I18n.t("requests.help_me.brief_msg.library_closed_html"))

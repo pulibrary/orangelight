@@ -1814,7 +1814,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           system_id: '9960102253506421',
           source: 'pulsearch',
           mfhd: nil,
-          patron: patron
+          patron:
         }
       end
       let(:stacks_holding_location_info) { File.open('spec/fixtures/bibdata/engineer_stacks_holding_locations.json') }
@@ -1853,7 +1853,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           system_id: '99122304923506421',
           source: 'pulsearch',
           mfhd: nil,
-          patron: patron
+          patron:
         }
       end
       let(:holding_location_info) { File.open('spec/fixtures/bibdata/recap_pa_holding_locations.json') }

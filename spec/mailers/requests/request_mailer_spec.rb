@@ -10,12 +10,12 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
   let(:user_info) do
     stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/foo?ldap=true").to_return(status: 200, body: valid_patron_response, headers: {})
     user = instance_double(User, guest?: false, uid: 'foo', alma_provider?: false)
-    Requests::Patron.new(user: user, session: {})
+    Requests::Patron.new(user:, session: {})
   end
 
   let(:guest_user_info) do
     user = instance_double(User, guest?: true, uid: 'foo')
-    Requests::Patron.new(user: user, session: { "email" => "guest@foo.edu", 'user_name' => 'Guest Request' })
+    Requests::Patron.new(user:, session: { "email" => "guest@foo.edu", 'user_name' => 'Guest Request' })
   end
 
   before { stub_delivery_locations }
@@ -50,8 +50,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -104,8 +104,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -155,8 +155,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -215,8 +215,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -278,8 +278,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -340,8 +340,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -391,8 +391,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -445,8 +445,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -498,8 +498,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -551,8 +551,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -604,8 +604,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -667,8 +667,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -737,8 +737,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -802,8 +802,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: guest_user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -868,8 +868,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -922,8 +922,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -976,8 +976,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -1031,8 +1031,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
 
@@ -1087,8 +1087,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:params) do
       {
         request: user_info,
-        requestable: requestable,
-        bib: bib
+        requestable:,
+        bib:
       }
     end
     let(:submission_for_clancy_error) do

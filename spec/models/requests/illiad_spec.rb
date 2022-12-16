@@ -7,7 +7,7 @@ describe Requests::Illiad, vcr: { cassette_name: 'request_models', record: :none
     {
       system_id: '9988805493506421',
       mfhd: '22705318390006421',
-      user: user
+      user:
     }
   end
   let(:request_with_holding_item) { described_class.new(params) }

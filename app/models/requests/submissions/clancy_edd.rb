@@ -18,7 +18,7 @@ module Requests::Submissions
 
       def handle_item(item)
         # place the item on hold
-        digitize = Requests::Submissions::DigitizeItem.new(@submission, service_type: service_type)
+        digitize = Requests::Submissions::DigitizeItem.new(@submission, service_type:)
         digitize.handle
         if digitize.errors.empty?
           # request it from the clancy facility

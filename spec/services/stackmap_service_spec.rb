@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe StackmapService::Url do
   subject(:url) { url_service.url }
 
-  let(:url_service) { described_class.new(document: document, loc: location, cn: call_number) }
+  let(:url_service) { described_class.new(document:, loc: location, cn: call_number) }
   let(:document) { SolrDocument.new(properties) }
   let(:doc_cn) { ['doc call number'] }
   let(:call_number) { nil }

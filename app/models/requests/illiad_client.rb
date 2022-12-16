@@ -16,7 +16,7 @@ module Requests
     private
 
       def post_json_response(url:, body:)
-        response = post_response(url: url, body: body)
+        response = post_response(url:, body:)
         if response.blank? || response.status != 200
           if response.present? && response.body.present?
             Rails.logger.warn "Illiad Error Message: #{response.body}"
@@ -62,7 +62,7 @@ module Requests
       end
 
       def get_json_response(url)
-        response = get_response(url: url, body: nil)
+        response = get_response(url:, body: nil)
         return {} unless response
         data = JSON.parse(response.body)
         if response.status != 200

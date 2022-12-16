@@ -16,7 +16,7 @@ module Requests
 
     def paging_email(submission)
       @submission = submission
-      pick_ups = paging_pick_ups(submission: submission)
+      pick_ups = paging_pick_ups(submission:)
       subject = I18n.t('requests.paging.email_subject', pick_up_location: pick_ups.join(", "))
       destination_email = "fstpage@princeton.edu"
       mail(to: destination_email,
@@ -26,7 +26,7 @@ module Requests
 
     def paging_confirmation(submission)
       @submission = submission
-      pick_ups = paging_pick_ups(submission: submission)
+      pick_ups = paging_pick_ups(submission:)
       subject = I18n.t('requests.paging.email_subject', pick_up_location: pick_ups.join(", "))
       destination_email = @submission.email
       mail(to: destination_email,
@@ -35,11 +35,11 @@ module Requests
     end
 
     def pres_email(submission)
-      request_email(submission: submission, subject_key: 'requests.pres.email_subject', destination_key: 'requests.pres.email')
+      request_email(submission:, subject_key: 'requests.pres.email_subject', destination_key: 'requests.pres.email')
     end
 
     def pres_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.pres.email_subject')
+      confirmation_email(submission:, subject_key: 'requests.pres.email_subject')
     end
 
     def annex_email(submission)
@@ -51,7 +51,7 @@ module Requests
     end
 
     def annex_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.annex.email_subject')
+      confirmation_email(submission:, subject_key: 'requests.annex.email_subject')
     end
 
     def annex_in_library_email(submission)
@@ -62,17 +62,17 @@ module Requests
     end
 
     def annex_in_library_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.annex_in_library.email_subject')
+      confirmation_email(submission:, subject_key: 'requests.annex_in_library.email_subject')
     end
 
     def annex_edd_email(submission); end
 
     def annex_edd_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.recap_edd.email_subject', partial: 'recap_edd_confirmation')
+      confirmation_email(submission:, subject_key: 'requests.recap_edd.email_subject', partial: 'recap_edd_confirmation')
     end
 
     def ppl_email(submission)
-      request_email(submission: submission, subject_key: 'requests.ppl.email_subject', destination_key: 'requests.ppl.email')
+      request_email(submission:, subject_key: 'requests.ppl.email_subject', destination_key: 'requests.ppl.email')
     end
 
     def ppl_confirmation(submission)
@@ -93,7 +93,7 @@ module Requests
       mail(to: location_email,
            # cc: destination_email,
            from: I18n.t('requests.default.email_from'),
-           subject: subject)
+           subject:)
     end
 
     # temporary changes issue 438
@@ -112,11 +112,11 @@ module Requests
                         else
                           'requests.default.email_destination'
                         end
-      request_email(submission: submission, subject_key: 'requests.on_order.email_subject', destination_key: destination_key)
+      request_email(submission:, subject_key: 'requests.on_order.email_subject', destination_key:)
     end
 
     def on_order_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.on_order.email_subject')
+      confirmation_email(submission:, subject_key: 'requests.on_order.email_subject')
     end
 
     def in_process_email(submission)
@@ -125,23 +125,23 @@ module Requests
                         else
                           'requests.default.email_destination'
                         end
-      request_email(submission: submission, subject_key: 'requests.in_process.email_subject', destination_key: destination_key)
+      request_email(submission:, subject_key: 'requests.in_process.email_subject', destination_key:)
     end
 
     def in_process_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.in_process.email_subject')
+      confirmation_email(submission:, subject_key: 'requests.in_process.email_subject')
     end
 
     def trace_email(submission)
-      request_email(submission: submission, subject_key: 'requests.trace.email_subject')
+      request_email(submission:, subject_key: 'requests.trace.email_subject')
     end
 
     def trace_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.trace.email_subject')
+      confirmation_email(submission:, subject_key: 'requests.trace.email_subject')
     end
 
     def recap_no_items_email(submission)
-      request_email(submission: submission, subject_key: 'requests.recap_no_items.email_subject', destination_key: 'requests.recap_no_items.email')
+      request_email(submission:, subject_key: 'requests.recap_no_items.email_subject', destination_key: 'requests.recap_no_items.email')
     end
 
     def recap_no_items_confirmation(submission)
@@ -155,7 +155,7 @@ module Requests
       mail(to: destination_email,
            cc: cc_email,
            from: I18n.t('requests.default.email_from'),
-           subject: subject)
+           subject:)
     end
 
     def digitize_email(submission)
@@ -163,44 +163,44 @@ module Requests
     end
 
     def digitize_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.digitize.email_subject', from_key: 'requests.digitize.email_from')
+      confirmation_email(submission:, subject_key: 'requests.digitize.email_subject', from_key: 'requests.digitize.email_from')
     end
 
     def interlibrary_loan_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.interlibrary_loan.email_subject', from_key: 'requests.interlibrary_loan.email_from')
+      confirmation_email(submission:, subject_key: 'requests.interlibrary_loan.email_subject', from_key: 'requests.interlibrary_loan.email_from')
     end
 
     def recap_email(submission)
       # only send an email to the libraries if this is a barcode user request
       return unless submission.access_only?
-      request_email(submission: submission, subject_key: 'requests.recap_guest.email_subject', destination_key: 'requests.recap.guest_email_destination')
+      request_email(submission:, subject_key: 'requests.recap_guest.email_subject', destination_key: 'requests.recap.guest_email_destination')
     end
 
     def recap_confirmation(submission)
       subject_key = 'requests.recap.email_subject'
       subject_key = 'requests.recap_guest.email_subject' if submission.access_only?
 
-      confirmation_email(submission: submission, subject_key: subject_key)
+      confirmation_email(submission:, subject_key:)
     end
 
     def recap_marquand_edd_email(submission); end
 
     def recap_marquand_edd_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.recap_edd.email_subject', partial: 'recap_edd_confirmation')
+      confirmation_email(submission:, subject_key: 'requests.recap_edd.email_subject', partial: 'recap_edd_confirmation')
     end
 
     def recap_marquand_in_library_email(submission); end
 
     def recap_marquand_in_library_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.recap_in_library.email_subject')
+      confirmation_email(submission:, subject_key: 'requests.recap_in_library.email_subject')
     end
 
     def recap_in_library_email(submission)
       # only send an email to the libraries if this is a barcode user request or marquand
       if submission.access_only?
-        request_email(submission: submission, subject_key: 'requests.recap_guest.email_subject', destination_key: 'requests.recap.guest_email_destination')
+        request_email(submission:, subject_key: 'requests.recap_guest.email_subject', destination_key: 'requests.recap.guest_email_destination')
       elsif submission.marquand?
-        request_email(submission: submission, subject_key: 'requests.recap_marquand.email_subject', destination_key: 'requests.recap_marquand.email_destination')
+        request_email(submission:, subject_key: 'requests.recap_marquand.email_subject', destination_key: 'requests.recap_marquand.email_destination')
       end
     end
 
@@ -208,51 +208,51 @@ module Requests
       subject_key = 'requests.recap_in_library.email_subject'
       subject_key = 'requests.recap_guest.email_subject' if submission.access_only?
 
-      confirmation_email(submission: submission, subject_key: subject_key)
+      confirmation_email(submission:, subject_key:)
     end
 
     def recap_edd_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.recap_edd.email_subject')
+      confirmation_email(submission:, subject_key: 'requests.recap_edd.email_subject')
     end
 
     def clancy_in_library_email(submission)
-      request_email(submission: submission, subject_key: 'requests.clancy_in_library.email_subject', destination_key: 'requests.clancy_in_library.email_destination')
+      request_email(submission:, subject_key: 'requests.clancy_in_library.email_subject', destination_key: 'requests.clancy_in_library.email_destination')
     end
 
     def clancy_in_library_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.clancy_in_library.confirmation_subject')
+      confirmation_email(submission:, subject_key: 'requests.clancy_in_library.confirmation_subject')
     end
 
     def clancy_unavailable_edd_email(submission)
-      request_email(submission: submission, subject_key: 'requests.clancy_unavailable_edd.email_subject', destination_key: 'requests.clancy_unavailable_edd.email_destination')
+      request_email(submission:, subject_key: 'requests.clancy_unavailable_edd.email_subject', destination_key: 'requests.clancy_unavailable_edd.email_destination')
     end
 
     def clancy_unavailable_edd_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.clancy_unavailable_edd.confirmation_subject')
+      confirmation_email(submission:, subject_key: 'requests.clancy_unavailable_edd.confirmation_subject')
     end
 
     def clancy_edd_email(submission)
-      request_email(submission: submission, subject_key: 'requests.clancy_edd.email_subject', destination_key: 'requests.clancy_edd.email_destination')
+      request_email(submission:, subject_key: 'requests.clancy_edd.email_subject', destination_key: 'requests.clancy_edd.email_destination')
     end
 
     def clancy_edd_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.clancy_edd.confirmation_subject')
+      confirmation_email(submission:, subject_key: 'requests.clancy_edd.confirmation_subject')
     end
 
     def marquand_edd_email(submission)
-      request_email(submission: submission, subject_key: 'requests.marquand_edd.email_subject', destination_key: 'requests.marquand_edd.email_destination')
+      request_email(submission:, subject_key: 'requests.marquand_edd.email_subject', destination_key: 'requests.marquand_edd.email_destination')
     end
 
     def marquand_edd_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.marquand_edd.confirmation_subject')
+      confirmation_email(submission:, subject_key: 'requests.marquand_edd.confirmation_subject')
     end
 
     def marquand_in_library_email(submission)
-      request_email(submission: submission, subject_key: 'requests.marquand_in_library.email_subject', destination_key: 'requests.marquand_in_library.email_destination')
+      request_email(submission:, subject_key: 'requests.marquand_in_library.email_subject', destination_key: 'requests.marquand_in_library.email_destination')
     end
 
     def marquand_in_library_confirmation(submission)
-      confirmation_email(submission: submission, subject_key: 'requests.marquand_in_library.confirmation_subject')
+      confirmation_email(submission:, subject_key: 'requests.marquand_in_library.confirmation_subject')
     end
 
     def service_error_email(services, submission)
@@ -290,7 +290,7 @@ module Requests
       subject = I18n.t('requests.help_me_guest.email_subject') if @submission.access_only?
       mail(to: destination_email,
            from: I18n.t('requests.default.email_from'),
-           subject: subject)
+           subject:)
     end
 
     private
@@ -301,7 +301,7 @@ module Requests
         subject = I18n.t(subject_key)
         mail(to: destination_email,
              from: I18n.t(from_key),
-             subject: subject,
+             subject:,
              template_name: partial)
       end
 
@@ -323,7 +323,7 @@ module Requests
       end
 
       def annex_email_destinations(submission:)
-        annex_items(submission: submission).map do |item|
+        annex_items(submission:).map do |item|
           if item["location_code"] == 'annex$doc'
             I18n.t('requests.anxadoc.email')
           else

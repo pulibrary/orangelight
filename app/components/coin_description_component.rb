@@ -5,7 +5,7 @@
 # of the show page
 class CoinDescriptionComponent < Blacklight::DocumentMetadataComponent
   def initialize(fields: [], show: false, doc_presenter: nil)
-    super(fields: fields, show: show)
+    super(fields:, show:)
     @doc_presenter = doc_presenter
   end
 

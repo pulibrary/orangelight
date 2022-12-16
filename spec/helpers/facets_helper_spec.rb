@@ -6,7 +6,7 @@ describe FacetsHelper do
   let(:blacklight_config) { Blacklight::Configuration.new }
 
   before do
-    allow(helper).to receive_messages(blacklight_config: blacklight_config)
+    allow(helper).to receive_messages(blacklight_config:)
   end
 
   describe '#render_facet_partials' do

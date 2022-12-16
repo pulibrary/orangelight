@@ -9,8 +9,8 @@ RSpec.describe Orangelight::CallNumber do
   let(:sort) { StringFunctions.cn_normalize(label) }
   let(:attributes) do
     {
-      label: label,
-      sort: sort
+      label:,
+      sort:
     }
   end
 

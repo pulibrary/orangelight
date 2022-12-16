@@ -90,7 +90,7 @@ module Requests
       return [] if requestable_items.blank?
       any_loanable = any_loanable_copies?
       requestable_items.each do |requestable|
-        router = Requests::Router.new(requestable: requestable, user: patron.user, any_loanable: any_loanable)
+        router = Requests::Router.new(requestable:, user: patron.user, any_loanable:)
         routed_requests << router.routed_request
       end
       routed_requests
@@ -224,18 +224,18 @@ module Requests
         ## make sure other fields map to the current data model for item in requestable
         ## adjust router to understand SCSB status
         holdings.each do |id, values|
-          requestable_items = build_holding_scsb_items(id: id, values: values, availability_data: availability_data(other_id), requestable_items: requestable_items)
+          requestable_items = build_holding_scsb_items(id:, values:, availability_data: availability_data(other_id), requestable_items:)
         end
         requestable_items
       end
 
       def build_holding_scsb_items(id:, values:, availability_data:, requestable_items:)
         return requestable_items if values['items'].nil?
-        barcodesort = build_barcode_sort(items: values['items'], availability_data: availability_data)
+        barcodesort = build_barcode_sort(items: values['items'], availability_data:)
         barcodesort.each_value do |item|
           item['location_code'] = location_code
           params = build_requestable_params(item: item.with_indifferent_access, holding: { id.to_sym.to_s => holdings[id] },
-                                            location: location)
+                                            location:)
           requestable_items << Requests::Requestable.new(**params)
         end
         requestable_items
@@ -244,7 +244,7 @@ module Requests
       def build_barcode_sort(items:, availability_data:)
         barcodesort = {}
         items.each do |item|
-          item[:status_label] = status_label(item: item, availability_data: availability_data)
+          item[:status_label] = status_label(item:, availability_data:)
           barcodesort[item['barcode']] = item
         end
         availability_data.each do |item|
@@ -272,7 +272,7 @@ module Requests
         barcodesort = build_barcode_sort(items: items[mfhd], availability_data: availability_data(system_id)) if recap?
         items.each do |holding_id, mfhd_items|
           next if mfhd != holding_id
-          requestable_items = build_requestable_from_mfhd_items(requestable_items: requestable_items, holding_id: holding_id, mfhd_items: mfhd_items, barcodesort: barcodesort)
+          requestable_items = build_requestable_from_mfhd_items(requestable_items:, holding_id:, mfhd_items:, barcodesort:)
         end
         requestable_items.compact
       end
@@ -301,7 +301,7 @@ module Requests
         return if item['on_reserve'] == 'Y'
 
         item_loc = item_current_location(item)
-        current_location = get_current_location(item_loc: item_loc)
+        current_location = get_current_location(item_loc:)
         item['status_label'] = barcodesort[item['barcode']][:status_label] unless barcodesort.empty?
         calculate_holding = if item["in_temp_library"] && item["temp_location_code"] != "RES_SHARE$IN_RS_REQ"
                               { holding_id.to_sym.to_s => holdings[item_loc] }
@@ -328,7 +328,7 @@ module Requests
 
       def build_requestable_from_holding(holding_id, holding)
         return if holding.blank?
-        params = build_requestable_params(holding: { holding_id.to_sym.to_s => holding }, location: location)
+        params = build_requestable_params(holding: { holding_id.to_sym.to_s => holding }, location:)
         Requests::Requestable.new(**params)
       end
 
@@ -345,7 +345,7 @@ module Requests
           holding: params[:holding],
           item: params[:item],
           location: build_requestable_location(params),
-          patron: patron
+          patron:
         }
       end
 

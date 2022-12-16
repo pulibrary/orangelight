@@ -18,7 +18,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
                 data: {
                   availability_record: true,
                   record_id: bib_id,
-                  holding_id: holding_id
+                  holding_id:
                 })
   end
 

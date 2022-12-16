@@ -73,7 +73,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     content_tag(:td,
                  children.html_safe,
                  class: 'holding-status',
-                 data: data)
+                 data:)
   end
 
   # Holding record with "dspace": false
@@ -127,7 +127,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   def self.journal_issues_list(holding_id)
     content_tag(:ul, '',
                 class: 'journal-current-issues',
-                data: { journal: true, holding_id: holding_id })
+                data: { journal: true, holding_id: })
   end
 
   def self.scsb_use_label(restriction)
@@ -225,7 +225,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                   open: open_location?(location_rules),
                   requestable: requestable_location?(location_rules, adapter, holding),
                   aeon: aeon_location?(location_rules),
-                  holding_id: holding_id
+                  holding_id:
                 })
   end
 
@@ -305,33 +305,33 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                # All SCSB supervised items go through Aeon
                aeon = 'true'
                link_to('Reading Room Request',
-                       request_url(doc_id: doc_id, aeon: aeon),
+                       request_url(doc_id:, aeon:),
                        title: 'Request to view in Reading Room',
                        class: 'request btn btn-xs btn-primary',
                        data: { toggle: 'tooltip' })
              else
                link_to(request_label(location_rules),
-                       request_url(doc_id: doc_id, aeon: aeon),
+                       request_url(doc_id:, aeon:),
                        title: self.class.request_tooltip(location_rules),
                        class: 'request btn btn-xs btn-primary',
                        data: { toggle: 'tooltip' })
              end
            elsif !adapter.alma_holding?(holding_id)
              link_to('Reading Room Request',
-                     request_url(doc_id: doc_id, aeon: aeon, holding_id: holding_id),
+                     request_url(doc_id:, aeon:, holding_id:),
                      title: 'Request to view in Reading Room',
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
            elsif self.class.temporary_holding_id?(holding_id)
              holding_identifier = self.class.temporary_location_holding_id_first(holding)
              link_to(request_label(location_rules),
-                    request_url(doc_id: doc_id, aeon: aeon, holding_id: holding_identifier),
+                    request_url(doc_id:, aeon:, holding_id: holding_identifier),
                     title: self.class.request_tooltip(location_rules),
                     class: 'request btn btn-xs btn-primary',
                     data: { toggle: 'tooltip' })
            else
              link_to(request_label(location_rules),
-                     request_url(doc_id: doc_id, aeon: aeon, holding_id: holding_id),
+                     request_url(doc_id:, aeon:, holding_id:),
                      title: self.class.request_tooltip(location_rules),
                      class: 'request btn btn-xs btn-primary',
                      data: { toggle: 'tooltip' })
@@ -346,7 +346,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
             else
               { aeon: aeon.to_s }.to_query
             end
-    URI::HTTP.build(path: "/requests/#{doc_id}", query: query).request_uri
+    URI::HTTP.build(path: "/requests/#{doc_id}", query:).request_uri
   end
 
   attr_reader :adapter
@@ -371,7 +371,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   def holding_location_span(location, holding_id)
     content_tag(:span, location,
                 class: 'location-text',
-                data: { location: true, holding_id: holding_id })
+                data: { location: true, holding_id: })
   end
 
   # Generate the link for a specific holding
@@ -384,7 +384,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   def locate_link(location, call_number, library, holding)
     doc_id = doc_id(holding)
     locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
-    return '' if locator.exclude?(call_number: call_number, library: library)
+    return '' if locator.exclude?(call_number:, library:)
 
     stackmap_url = "/catalog/#{doc_id}/stackmap?loc=#{location}"
     stackmap_url << "&cn=#{call_number}" if call_number
@@ -430,7 +430,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     markup = ''
     markup << content_tag(:td, location.html_safe,
                           class: 'library-location',
-                          data: { holding_id: holding_id })
+                          data: { holding_id: })
     markup
   end
 

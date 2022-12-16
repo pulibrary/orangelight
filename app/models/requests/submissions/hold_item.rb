@@ -13,7 +13,7 @@ module Requests::Submissions
     def handle
       items = submission.filter_items_by_service(service_type)
       items.each do |item|
-        item_status = handle_item(item: item)
+        item_status = handle_item(item:)
         @sent << item_status if item_status.present?
       end
       return false if @errors.present?

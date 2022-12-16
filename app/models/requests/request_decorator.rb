@@ -39,7 +39,7 @@ module Requests
       hidden_request_tags = ''
       hidden_request_tags += hidden_field_tag "bib[id]", "", value: bib_id
       request.display_metadata.each do |key, value|
-        hidden_request_tags += hidden_field_tag "bib[#{key}]", "", value: value
+        hidden_request_tags += hidden_field_tag "bib[#{key}]", "", value:
       end
       hidden_request_tags.html_safe
     end

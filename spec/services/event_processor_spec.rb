@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe EventProcessor do
   subject(:processor) { described_class.new(event) }
 
-  let(:resource) { Blacklight.default_index.connection.get('select', params: params) }
+  let(:resource) { Blacklight.default_index.connection.get('select', params:) }
   let(:params) { { q: "id:#{RSolr.solr_escape(id)}" } }
   let(:id) { 'objectid' }
   let(:bulk) { 'false' }
@@ -48,7 +48,7 @@ RSpec.describe EventProcessor do
     it 'adds the blacklight document' do
       expect(processor.process).to eq true
       params = { q: "id:#{RSolr.solr_escape(id)}" }
-      resource = Blacklight.default_index.connection.get('select', params: params)
+      resource = Blacklight.default_index.connection.get('select', params:)
       expect(resource['response']['docs'].first['id']).to eq(id)
     end
   end

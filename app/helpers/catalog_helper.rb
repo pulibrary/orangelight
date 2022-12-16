@@ -59,7 +59,7 @@ module CatalogHelper
 
   def ejournals_path
     params = search_state.params_for_search({ f: { access_facet: %w[Online], format: %w[Journal] } }).except(:model)
-    Rails.application.routes.url_helpers.url_for controller: 'catalog', params: params, only_path: true
+    Rails.application.routes.url_helpers.url_for controller: 'catalog', params:, only_path: true
   end
 
   private

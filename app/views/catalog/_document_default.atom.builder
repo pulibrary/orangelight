@@ -17,7 +17,7 @@ xml.entry do
 
   with_format('html') do
     xml.summary 'type' => 'html' do
-      xml.text! render partial: 'atom_index', locals: { document: document }
+      xml.text! render partial: 'atom_index', locals: { document: }
     end
   end
 

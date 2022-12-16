@@ -9,7 +9,7 @@ module Requests::Submissions
     def handle
       items = @submission.filter_items_by_service(service_type)
       items.each do |item|
-        handle_with_illiad(item: item)
+        handle_with_illiad(item:)
       end
     end
 
@@ -17,9 +17,9 @@ module Requests::Submissions
 
       def handle_with_illiad(item:)
         patron = @submission.patron
-        client = Requests::IlliadTransactionClient.new(patron: patron, metadata_mapper: Requests::IlliadMetadata::Loan.new(patron: patron, bib: @submission.bib, item: item, note: patron_note))
+        client = Requests::IlliadTransactionClient.new(patron:, metadata_mapper: Requests::IlliadMetadata::Loan.new(patron:, bib: @submission.bib, item:, note: patron_note))
         transaction = client.create_request
-        errors << { type: 'help_me', bibid: @submission.bib, item: item, user_name: @submission.user_name, barcode: @submission.user_barcode, error: "Invalid Help Me Request" } if transaction.blank?
+        errors << { type: 'help_me', bibid: @submission.bib, item:, user_name: @submission.user_name, barcode: @submission.user_barcode, error: "Invalid Help Me Request" } if transaction.blank?
         transaction
       end
 

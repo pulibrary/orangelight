@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe DisplayMoreFieldComponent, type: :component do
   let(:rendered) do
-    Capybara::Node::Simple.new(render_inline(described_class.new(field: field)))
+    Capybara::Node::Simple.new(render_inline(described_class.new(field:)))
   end
   let(:document) { SolrDocument.new('field' => (1..10).map { |i| "Chapter #{i}" }) }
   let(:field_config) { Blacklight::Configuration::Field.new(key: 'field', field: 'field', label: 'Field label', maxInitialDisplay: 3) }

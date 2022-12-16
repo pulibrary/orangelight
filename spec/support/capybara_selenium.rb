@@ -23,7 +23,7 @@ Capybara.register_driver(:selenium) do |app|
   Capybara::Selenium::Driver.new(app,
                                  browser: :chrome,
                                  desired_capabilities: capabilities,
-                                 http_client: http_client,
+                                 http_client:,
                                  options: browser_options)
 end
 
@@ -44,7 +44,7 @@ Capybara.register_driver(:selenium_headless) do |app|
   Capybara::Selenium::Driver.new(app,
                                  browser: :chrome,
                                  desired_capabilities: capabilities,
-                                 http_client: http_client,
+                                 http_client:,
                                  options: browser_options)
 end
 
@@ -59,7 +59,7 @@ Capybara.register_driver :iphone do |app|
   Capybara::Selenium::Driver.new(app,
                                  browser: :chrome,
                                  desired_capabilities: capabilities,
-                                 http_client: http_client)
+                                 http_client:)
 end
 
 Capybara.server = :webrick

@@ -20,7 +20,7 @@ module Requests
         return unless selected['selected'] == 'true'
         case selected["type"]
         when 'digitize', 'digitize_fill_in', 'annex_edd', 'marquand_edd', 'clancy_edd', "clancy_unavailable_edd"
-          validate_delivery_mode(record: record, selected: selected)
+          validate_delivery_mode(record:, selected:)
         when 'bd', 'ill'
           validate_ill_on_shelf_or_bd(record, selected, pick_up_phrase: 'delivery of your borrow direct item', action_phrase: 'requested via Borrow Direct')
         when 'recap_no_items'
@@ -40,7 +40,7 @@ module Requests
       # rubocop:enable Metrics/MethodLength
 
       def validate_ill_on_shelf_or_bd(record, selected, pick_up_phrase: 'your selected item', action_phrase: 'Requested')
-        return unless validate_item_id(record: record, selected: selected, action_phrase: action_phrase)
+        return unless validate_item_id(record:, selected:, action_phrase:)
         item_id = selected['item_id']
         return if selected['pick_up'].present?
 
@@ -62,8 +62,8 @@ module Requests
       end
 
       def validate_offsite(record, selected)
-        return unless validate_item_id(record: record, selected: selected, action_phrase: 'Requested from Off-site Facility')
-        validate_delivery_mode(record: record, selected: selected)
+        return unless validate_item_id(record:, selected:, action_phrase: 'Requested from Off-site Facility')
+        validate_delivery_mode(record:, selected:)
       end
 
       def validate_delivery_mode(record:, selected:)

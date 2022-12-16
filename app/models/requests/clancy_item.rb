@@ -31,7 +31,7 @@ module Requests
     end
 
     def request(hold_id:, patron:, location: 'MQ')
-      response = request_item(hold_id: hold_id, patron: patron, location: location)
+      response = request_item(hold_id:, patron:, location:)
       return false unless response["success"]
 
       request_response = response["results"].first
