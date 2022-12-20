@@ -61,7 +61,7 @@ gem 'library_stdnums'
 gem 'rake'
 gem 'rspec-rails'
 gem 'rubyzip', '>= 1.2.2'
-gem 'sneakers', '~> 2.11'
+gem 'sneakers'
 gem 'sprockets-es6'
 gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.5.2.2'
 
@@ -116,6 +116,7 @@ gem 'alma'
 gem 'cobravsmongoose', '~> 0.0.2'
 gem 'email_validator'
 gem 'friendly_id', '~> 5.4.2'
+gem 'matrix'
 gem 'net-imap', require: false
 gem 'net-ldap'
 gem 'net-pop', require: false
