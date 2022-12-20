@@ -1,11 +1,10 @@
 <%# to remove messages altogether, set this to empty string %>
-<% message = 'New BorrowDirect platform to launch 12/13/2022' %>
+<% message = '' %>
 <% if Orangelight.read_only_mode %>
   <div class="col-12 alert alert-warning announcement">
     <div class="container">
       <p>
-      <%= message %>
-      <%= Orangelight.read_only_message %>
+      <%= message %> <%= Orangelight.read_only_message %>
       </p>
     </div>
   </div>
@@ -13,7 +12,7 @@
   <div class="col-12 alert alert-warning announcement">
     <div class="container">
       <p>
-      <%= link_to message, "https://library.princeton.edu/news/general/2022-12-02/borrowdirect-new-platform-launch-december-13-2022" %>
+      <%= message %>
       </p>
     </div>
   </div>
