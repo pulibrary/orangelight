@@ -127,6 +127,9 @@ jobs:
       - run:
           name: Index Test Data
           command: bundle exec rake pulsearch:solr:index
+      - run:
+          name: Precompile assets
+          command: bundle exec rake assets:precompile
       - ruby/rspec-test
       - run:
           name: Run JS unit tests
