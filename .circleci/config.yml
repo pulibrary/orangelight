@@ -1,8 +1,9 @@
 ---
 version: 2.1
 orbs:
-  browser-tools: circleci/browser-tools@1.1
-  ruby: circleci/ruby@1.6.0
+  browser-tools: circleci/browser-tools@1.4.0
+  ruby: circleci/ruby@2.0.0
+  node: circleci/node@5.0.2
 executors:
   orangelight-executor:
     docker:
@@ -37,14 +38,14 @@ commands:
       # Restore bundle cache
       - restore_cache:
           keys:
-          - orangelight-v2.2-{{ checksum "Gemfile.lock" }}
-          - orangelight-v2.2-
+          - orangelight-v2.3-{{ checksum "Gemfile.lock" }}
+          - orangelight-v2.3-
       # Bundle install dependencies
       - run:
           name: Install dependencies
           command: bundle config set --local path 'vendor/bundle'; bundle check  || bundle install --jobs 4 --retry 3
       - save_cache:
-          key: orangelight-v2.2-{{ checksum "Gemfile.lock" }}
+          key: orangelight-v2.3-{{ checksum "Gemfile.lock" }}
           paths:
             - ./vendor/bundle
 jobs:
@@ -55,23 +56,13 @@ jobs:
           at: '~/orangelight'
       - checkout
       - setup-bundler
-      - run:
-          name: Install the NVM
-          command: |
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
-            [ -s "/home/circleci/.nvm/nvm.sh" ]
-            source /home/circleci/.nvm/nvm.sh
-            echo 'The NVM has been installed'
-      - run:
-          name: Install Node LTS/gallium
-          command: |
-            source ~/.nvm/nvm.sh
-            nvm install lts/gallium
-            nvm use lts/gallium
+      - node/install:
+          install-yarn: true
+          node-version: '16.14.2'
       - restore_cache:
           keys:
-            - orangelight-v2.2-{{ checksum "yarn.lock" }}
-            - orangelight-v2.2-
+            - orangelight-v2.3-{{ checksum "yarn.lock" }}
+            - orangelight-v2.3-
       - run:
           name: Yarn Install
           command: |
@@ -79,7 +70,7 @@ jobs:
             yarn install --cache-folder ~/.cache/yarn
       # Store yarn / webpacker cache
       - save_cache:
-          key: orangelight-v2.2-{{ checksum "yarn.lock" }}
+          key: orangelight-v2.3-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
       - persist_to_workspace:
@@ -90,13 +81,15 @@ jobs:
     executor: orangelight-executor
     parallelism: 3
     steps:
-      - browser-tools/install-browser-tools
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - checkout
       - run: |
           ruby --version
           node --version
           java --version
           google-chrome --version
+          chromedriver --version
       - attach_workspace:
           at: '~/orangelight'
       - setup-bundler
@@ -111,12 +104,6 @@ jobs:
       - run:
           name: Set Timezone to EST
           command: echo 'America/New_York' = /etc/timezone
-      - run:
-          name: Install Chrome
-          command: |
-            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo apt update -y
-            sudo apt -y install google-chrome-stable
       - run:
           name: Load config into solr
           command: |
