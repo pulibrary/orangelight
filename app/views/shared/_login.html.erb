@@ -15,12 +15,12 @@
     <div class='card-body'>
       <%= simple_form_for(@user, url:  main_app.user_alma_omniauth_callback_path, class: 'form-horizontal', data: { toggle: 'validator' }, :method => :post)  do |f| %>
         <div class='field form-group col-md-12 row'>
-          <%= label_tag 'username', 'Alma user name', class: 'control-label col-md-2 col-form-label' %>
+          <%= label_tag 'username', 'Alma User ID', class: 'control-label col-md-2 col-form-label' %>
           <div class='col-md-5 <%= 'has-error' if flash[:username] %>'>
             <%= text_field_tag 'username', '', class: 'form-control', autocomplete: 'off' %>
             <% if flash[:username] %>
               <span id="inputError2Status" class="sr-only">(error)</span>
-              <span class="error">Alma user name can't be blank</span>
+              <span class="error">Alma User ID can't be blank</span>
             <% end %>
           </div>
         </div>

@@ -61,9 +61,9 @@ describe 'Account login' do
         click_link("Log in with Alma Account (affiliates)")
         # Username
         expect(page).to have_selector('#username')
-        username_label_element = page.find('label', text: 'Alma user name')
+        username_label_element = page.find('label', text: 'Alma User ID')
         expect(username_label_element['for']).to eq("username")
-        expect(username_label_element.text).to eq('Alma user name')
+        expect(username_label_element.text).to eq('Alma User ID')
         # Password
         expect(page).to have_selector('#password')
         password_label_element = page.find('label', text: 'Password')
