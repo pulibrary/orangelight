@@ -13,7 +13,6 @@ executors:
           ORANGELIGHT_HOST: localhost
           ORANGELIGHT_USER: postgres
           SOLR_URL: http://solr:SolrRocks@localhost:8983/solr/orangelight-core-test
-          NVM_HOME: ~/.nvm
           COVERALLS_PARALLEL: true
       - image: postgres:13
         environment:
@@ -28,26 +27,33 @@ executors:
       - image: cimg/ruby:3.1-browsers
         environment:
           RAILS_ENV: test
-          NVM_HOME: ~/.nvm
     working_directory: ~/orangelight
 
 commands:
-  setup-bundler:
+  setup-bundler-and-node:
     steps:
-      - run: gem install bundler -v '2.3.26'
+      - node/install:
+          install-yarn: true
+          node-version: '16.14.2'
+      - run:
+          name: Check current version of node
+          command: node -v
+      - run: 
+          name: Install bundler
+          command: gem install bundler -v '2.3.26'
       # Restore bundle cache
       - restore_cache:
           keys:
-          - orangelight-v2.3-{{ checksum "Gemfile.lock" }}
-          - orangelight-v2.3-
+          - orangelight-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
       # Bundle install dependencies
       - run:
           name: Install dependencies
-          command: bundle config set --local path 'vendor/bundle'; bundle check  || bundle install --jobs 4 --retry 3
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
       - save_cache:
-          key: orangelight-v2.3-{{ checksum "Gemfile.lock" }}
+          key: orangelight-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
           paths:
             - ./vendor/bundle
+      
 jobs:
   build:
     executor: basic-executor
@@ -55,22 +61,20 @@ jobs:
       - attach_workspace:
           at: '~/orangelight'
       - checkout
-      - setup-bundler
-      - node/install:
-          install-yarn: true
-          node-version: '16.14.2'
+      - setup-bundler-and-node
+      - run:
+          name: Set Timezone to EST
+          command: echo 'America/New_York' = /etc/timezone
       - restore_cache:
+          name: Restore cached dependencies
           keys:
-            - orangelight-v2.3-{{ checksum "yarn.lock" }}
-            - orangelight-v2.3-
+            - orangelight-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
       - run:
           name: Yarn Install
-          command: |
-            source ~/.nvm/nvm.sh
-            yarn install --cache-folder ~/.cache/yarn
-      # Store yarn / webpacker cache
+          command: yarn install --frozen-lockfile
       - save_cache:
-          key: orangelight-v2.3-{{ checksum "yarn.lock" }}
+          name: Save Yarn cache
+          key: orangelight-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
       - persist_to_workspace:
@@ -81,8 +85,10 @@ jobs:
     executor: orangelight-executor
     parallelism: 3
     steps:
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
+      - attach_workspace:
+          at: '~/orangelight'
+      - setup-bundler-and-node
+      - browser-tools/install-browser-tools
       - checkout
       - run: |
           ruby --version
@@ -90,9 +96,6 @@ jobs:
           java --version
           google-chrome --version
           chromedriver --version
-      - attach_workspace:
-          at: '~/orangelight'
-      - setup-bundler
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
@@ -100,10 +103,6 @@ jobs:
       - run:
           name: Database setup
           command: bundle exec rake db:setup
-      #set timezone to est
-      - run:
-          name: Set Timezone to EST
-          command: echo 'America/New_York' = /etc/timezone
       - run:
           name: Load config into solr
           command: |
@@ -114,9 +113,6 @@ jobs:
       - run:
           name: Index Test Data
           command: bundle exec rake pulsearch:solr:index
-      - run:
-          name: Precompile assets
-          command: bundle exec rake assets:precompile
       - ruby/rspec-test
       - run:
           name: Run JS unit tests
@@ -129,7 +125,7 @@ jobs:
     steps:
       - attach_workspace:
           at: '~/orangelight'
-      - setup-bundler
+      - setup-bundler-and-node
       - run: bundle exec rubocop
   
   finish:
