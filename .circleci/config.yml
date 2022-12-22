@@ -14,7 +14,7 @@ executors:
           ORANGELIGHT_USER: postgres
           SOLR_URL: http://solr:SolrRocks@localhost:8983/solr/orangelight-core-test
           COVERALLS_PARALLEL: true
-      - image: postgres:13
+      - image: cimg/postgres:13.6
         environment:
           POSTGRES_USER: orangelight
           POSTGRES_PASSWORD: orangelight_password
@@ -69,7 +69,7 @@ jobs:
       - restore_cache:
           name: Restore cached dependencies
           keys:
-            - orangelight-v1{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+            - orangelight-v1-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
       - run:
           name: Yarn Install
           command: yarn install --frozen-lockfile
