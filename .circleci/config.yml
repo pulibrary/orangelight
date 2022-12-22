@@ -17,6 +17,7 @@ executors:
       - image: postgres:13
         environment:
           POSTGRES_USER: orangelight
+          POSTGRES_PASSWORD: orangelight_password
           POSTGRES_DB: orangelight_test
           POSTGRES_HOST_AUTH_METHOD: trust
       - image: pulibrary/ci-solr:8.4-v1.0.0
