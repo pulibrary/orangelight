@@ -13,6 +13,8 @@ describe "accessibility", type: :feature, js: true do
     it "complies with wcag" do
       expect(page).to be_axe_clean
         .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
+        .excluding('a[title="Opens in a new tab"][target="_blank"]')
+        .excluding('p > a[href$="dataset"]')
     end
   end
 
@@ -23,7 +25,9 @@ describe "accessibility", type: :feature, js: true do
     it "complies with wcag2aa wcag21a" do
       expect(page).to be_axe_clean
         .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
-        .skipping("link-name") # Issue https://github.com/pulibrary/orangelight/issues/2799
+        .excluding('#startOverLink')
+        .excluding('a[title="Opens in a new tab"]')
+        .excluding('.blacklight-series_display[dir="ltr"]:nth-child(1) > .more-in-series[title=""][data-toggle="tooltip"]')
     end
   end
 end

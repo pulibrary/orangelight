@@ -52,7 +52,6 @@ gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
 gem 'babel-transpiler'
 gem 'bootstrap', '~> 4.6'
 gem 'bootstrap-select-rails'
-gem 'capybara', '~> 3.36.0'
 gem 'ddtrace', '~> 0.54.2'
 gem 'font-awesome-rails'
 gem 'lcsort', '>= 0.9.1'
@@ -90,14 +89,13 @@ group :development do
 end
 
 group :test do
-  gem "axe-core-api", "4.0.0"
-  gem "axe-core-rspec", "4.0.0"
+  gem "axe-core-api"
+  gem "axe-core-rspec"
   gem 'factory_bot_rails', require: false
   gem 'faker'
   gem 'launchy'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
-  gem 'selenium-webdriver', '~> 4.1.0'
   gem 'timecop'
   gem 'vcr'
   gem 'webdrivers'
@@ -106,6 +104,7 @@ end
 
 group :development, :test do
   gem 'bixby', '~> 5.0'
+  gem 'capybara'
   gem 'coveralls_reborn'
   gem 'pry-byebug'
   gem 'solargraph'

@@ -22,7 +22,7 @@ Capybara.register_driver(:selenium) do |app|
 
   Capybara::Selenium::Driver.new(app,
                                  browser: :chrome,
-                                 desired_capabilities: capabilities,
+                                 capabilities:,
                                  http_client:,
                                  options: browser_options)
 end
@@ -43,7 +43,7 @@ Capybara.register_driver(:selenium_headless) do |app|
 
   Capybara::Selenium::Driver.new(app,
                                  browser: :chrome,
-                                 desired_capabilities: capabilities,
+                                 capabilities:,
                                  http_client:,
                                  options: browser_options)
 end
@@ -58,7 +58,7 @@ Capybara.register_driver :iphone do |app|
   http_client.open_timeout = 120
   Capybara::Selenium::Driver.new(app,
                                  browser: :chrome,
-                                 desired_capabilities: capabilities,
+                                 capabilities:,
                                  http_client:)
 end
 
