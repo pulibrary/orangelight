@@ -22,7 +22,7 @@ RSpec.describe BlacklightHelper do
   describe '#advanced_key_value' do
     it 'returns label based on field configuration' do
       allow(config).to receive(:blacklight_config).and_return(blacklight_config)
-      expect(config.search_field_list[0].label).to eq config.advanced_key_value[0][0]
+      expect(blacklight_config.search_fields['author'].label).to eq config.advanced_key_value[0][0]
     end
   end
 end

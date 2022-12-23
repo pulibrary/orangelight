@@ -58,7 +58,7 @@ module BlacklightHelper
   end
 
   # Returns suitable argument to options_for_select method, to create
-  # an html select based on #search_field_list with labels for search
+  # an html select based on #search_fields with labels for search
   # bar only. Skips search_fields marked :include_in_simple_select => false
   def search_bar_select
     blacklight_config.search_fields.collect do |_key, field_def|
