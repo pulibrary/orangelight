@@ -129,6 +129,7 @@ module Blacklight
         protected
 
           def build_ctx(format = nil)
+            format ||= first('format')&.downcase
             ctx = ContextObject.new
             id = self['id']
             # title = self['title_citation_display'].first unless self['title_citation_display'].nil?
