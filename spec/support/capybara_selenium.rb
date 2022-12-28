@@ -4,10 +4,6 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require "selenium-webdriver"
 
-# Capybara.register_driver :chrome do |app|
-#   Capybara::Selenium::Driver.new(app, browser: :chrome)
-# end
-
 Capybara.register_driver(:selenium) do |app|
   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
     'goog:chromeOptions': { args: %w[headless disable-gpu disable-setuid-sandbox window-size=7680,4320] }
@@ -42,6 +38,5 @@ Capybara.register_driver :iphone do |app|
                                  http_client:)
 end
 
-Capybara.server = :webrick
 Capybara.javascript_driver = :selenium
 Capybara.default_max_wait_time = 15
