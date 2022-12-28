@@ -21,12 +21,14 @@ executors:
           POSTGRES_DB: orangelight_test
       - image: pulibrary/ci-solr:8.4-v1.0.0
         command: server/scripts/ci-start.sh
+    resource_class: large
     working_directory: ~/orangelight
   basic-executor:
     docker:
       - image: cimg/ruby:3.1.0-browsers
         environment:
           RAILS_ENV: test
+    resource_class: large
     working_directory: ~/orangelight
 
 commands:
