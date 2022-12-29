@@ -202,7 +202,7 @@ module BlacklightHelper
     label_value = if field_or_string.class == String
                     field_or_string
                   else
-                    document_presenter(doc).label(field_or_string, opts)
+                    document_presenter(doc).heading
                   end
     label = label_value.truncate(length, separator: /\s/).html_safe
     link_to label, url_for_document(doc), document_link_params(doc, opts)
