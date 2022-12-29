@@ -1,9 +1,8 @@
 <li class="linked-block">
   <%= link_to(linked_record.title || "Unknown", solr_document_url(linked_record.id)) %>
-
   <% if linked_record.fields.count == 1 %>
     <div class="linked-block-id"><span>
-      <%= render_document_show_field_label(linked_record.document, :field => linked_record.fields.keys.last).html_safe %>
+      <%= t(:'blacklight.search.show.label', label: linked_record.fields.keys.last) %>
     </span>
     <% linked_record.fields.values.last.each do |field_value| %>
       <span><%= field_value %></span></div>
@@ -11,7 +10,7 @@
   <% else %>
     <ul>
       <% linked_record.fields.each do |field_name, field_values| %>
-        <div><%= render_document_show_field_label(linked_record.document, :field => field_name).html_safe %></div>
+        <div><%= t(:'blacklight.search.show.label', label: linked_record.fields.keys.last) %></div>
         <li>
           <% field_values.each do |field_value| %>
             <span><%= field_value %></span>
