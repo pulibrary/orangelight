@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 6.1.7'
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'puma', '~> 6.0'
 # Blacklight
 gem 'blacklight', '~> 7.0'
 
