@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 xml.entry do
-  xml.title document[document_show_link_field(document)]
+  xml.title document[:title_display]
 
   # updated is required, for now we'll just set it to now, sorry
   xml.updated document['cataloged_tdt']
