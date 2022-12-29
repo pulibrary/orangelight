@@ -1,5 +1,5 @@
 <h2>Details</h2>
-<% doc_presenter = show_presenter(document) %>
+<% doc_presenter = document_presenter(document) %>
 <%# default partial to display solr document fields in catalog show view -%>
 <dl class="dl-horizontal  dl-invert document-details">
   <% doc_presenter.fields_to_render.each do |field_name, field| -%>
