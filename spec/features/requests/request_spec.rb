@@ -257,7 +257,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           visit "/requests/#{mms_id}"
           expect(page).to have_content 'Electronic Delivery'
           # some weird issue with this and capybara examining the page source shows it is there.
-          expect(page).to have_selector '#request_user_barcode', visible: false
+          expect(page).to have_selector '#request_user_barcode', visible: :hidden
           choose('requestable__delivery_mode_23558528910006421_print') # chooses 'print' radio button
           select('Firestone Library', from: 'requestable__pick_up_23558528910006421')
           expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
