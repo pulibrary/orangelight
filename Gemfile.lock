@@ -142,8 +142,8 @@ GEM
     blacklight_dynamic_sitemap (0.6.0)
       blacklight (> 6.0)
       rails
-    blacklight_range_limit (8.1.0)
-      blacklight (~> 7.0)
+    blacklight_range_limit (8.2.3)
+      blacklight (>= 7.25.2, < 9)
     bootstrap (4.6.2)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.16.1, < 2)
@@ -227,7 +227,7 @@ GEM
     e2mmap (0.1.0)
     email_validator (2.2.4)
       activemodel
-    erubi (1.11.0)
+    erubi (1.12.0)
     execjs (2.8.1)
     ezwadl (0.1.0)
       httparty (~> 0.14)
@@ -337,13 +337,13 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
-    minitest (5.16.3)
+    mini_portile2 (2.8.1)
+    minitest (5.17.0)
     modernizr-rails (2.7.1)
     msgpack (1.6.0)
     multi_xml (0.6.0)
     multipart-post (2.2.3)
-    net-imap (0.3.3)
+    net-imap (0.3.4)
       date
       net-protocol
     net-ldap (0.17.1)
@@ -394,8 +394,8 @@ GEM
     public_suffix (5.0.1)
     puma (6.0.1)
       nio4r (~> 2.0)
-    racc (1.6.1)
-    rack (2.2.4)
+    racc (1.6.2)
+    rack (2.2.5)
     rack-proxy (0.7.4)
       rack
     rack-test (2.0.2)
@@ -586,8 +586,8 @@ GEM
     unf_ext (0.0.8.2)
     unicode-display_width (2.3.0)
     vcr (6.1.0)
-    view_component (2.79.0)
-      activesupport (>= 5.0.0, < 8.0)
+    view_component (2.80.0)
+      activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
     virtus (2.0.0)
@@ -645,7 +645,7 @@ DEPENDENCIES
   blacklight-marc (~> 7.1.0)
   blacklight_advanced_search (~> 7.0)
   blacklight_dynamic_sitemap (~> 0.6.0)
-  blacklight_range_limit (~> 8.1.0)
+  blacklight_range_limit (~> 8.2)
   blacklight_unapi!
   bootstrap (~> 4.6)
   bootstrap-select-rails

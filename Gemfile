@@ -13,7 +13,7 @@ gem 'blacklight', '~> 7.0'
 gem 'rsolr'
 
 # slider limit support
-gem 'blacklight_range_limit', '~> 8.1.0'
+gem 'blacklight_range_limit', '~> 8.2'
 # advanced search functionality
 gem 'blacklight_advanced_search', '~> 7.0'
 # Use SCSS for stylesheets
