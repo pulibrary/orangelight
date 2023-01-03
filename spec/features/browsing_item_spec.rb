@@ -9,12 +9,12 @@ describe 'browsing a catalog item', js: true do
 
   it 'renders an accessible icon for citing the item' do
     visit 'catalog/9934788983506421'
-    expect(page).to have_selector '.icon-cite[aria-hidden="true"]', visible: false
+    expect(page).to have_selector '.icon-cite[aria-hidden="true"]'
   end
 
   it 'renders an accessible icon for sending items to a printer' do
     visit 'catalog/9934788983506421'
-    expect(page).to have_selector '.icon-share[aria-hidden="true"]', visible: false
+    expect(page).to have_selector '.icon-share[aria-hidden="true"]'
     expect(page).to have_selector '.icon-print[aria-hidden="true"]', visible: false
   end
 
