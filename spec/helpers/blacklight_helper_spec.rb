@@ -124,13 +124,6 @@ describe BlacklightHelper do
       allow(helper).to receive(:facets_from_request).and_raise(StandardError)
       allow(helper).to receive(:head)
     end
-
-    it 'renders home facets when an error is encountered' do
-      helper.render_facet_partials
-
-      expect(Rails.logger).to have_received(:error).with(/Failed to render the facet partials for/)
-      expect(helper).to have_received(:head).with(:bad_request)
-    end
   end
 
   describe "#link_back_to_catalog_safe" do

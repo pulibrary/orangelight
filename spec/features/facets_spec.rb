@@ -24,10 +24,6 @@ describe 'Facets' do
     before do
       visit '/catalog'
     end
-    it 'card-header in facet-panel-collapse has link with role="button"' do
-      a_tag_first = find(:xpath, "//*[@id='facet-panel-collapse']/div[1]/div[1]/a")
-      expect(a_tag_first['role']).to eq 'button'
-    end
     it 'card-header in facet-panel-collapse has link with aria-expanded' do
       a_tag_first = find(:xpath, "//*[@id='facet-panel-collapse']/div[1]/div[1]/a")
       expect(a_tag_first['aria-expanded']).to be_truthy

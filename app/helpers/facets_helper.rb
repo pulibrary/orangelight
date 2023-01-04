@@ -59,19 +59,4 @@ module FacetsHelper
     pivot.each { |field| in_params = true if params[:f] && params[:f][field] }
     in_params
   end
-
-  def render_home_facets
-    render_facet_partials home_facets
-  end
-
-  def home_facets
-    blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
-  end
-
-  def render_facet_partials(fields = facet_field_names, options = {})
-    super
-  rescue StandardError => error
-    Rails.logger.error("#{self.class}: Failed to render the facet partials for #{fields.join(',')}: #{error}")
-    head :bad_request if respond_to?(:head)
-  end
 end
