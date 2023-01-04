@@ -20,7 +20,7 @@ describe 'email form' do
   it 'shows send button for authenticated users' do
     stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")
       .to_return(status: 200, body: valid_patron_response, headers: {})
-    sign_in user
+    login_as user
     visit "/catalog/#{bibid}/email"
     expect(page).to have_button('Send')
   end
