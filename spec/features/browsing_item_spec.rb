@@ -4,18 +4,20 @@ require 'rails_helper'
 
 describe 'browsing a catalog item', js: true do
   before do
-    stub_holding_locations
+    stub_alma_holding_locations
   end
 
-  it 'renders an accessible icon for citing the item' do
-    visit 'catalog/9934788983506421'
-    expect(page).to have_selector('.icon-cite[aria-hidden="true"]')
-  end
-
-  it 'renders an accessible icon for sending items to a printer' do
-    visit 'catalog/9934788983506421'
-    expect(page).to have_selector('.icon-share[aria-hidden="true"]')
-    expect(page).to have_selector('.icon-print[aria-hidden="true"]', visible: :hidden)
+  context 'accessible icons' do
+    before do
+      visit 'catalog/99125535710106421'
+    end
+    it 'renders an accessible icon for citing the item' do
+      expect(page).to have_selector('span.icon-cite[aria-hidden="true"]')
+    end
+    it 'renders an accessible icon for sending items to a printer' do
+      expect(page).to have_selector('span.icon-share[aria-hidden="true"]')
+      expect(page).to have_selector('span.icon-print[aria-hidden="true"]', visible: :hidden)
+    end
   end
 
   context 'when an entry has a bib. ID for a resource published in Figgy', skip: true do
