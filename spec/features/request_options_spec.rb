@@ -23,7 +23,7 @@ describe 'Request Options' do
       before do
         allow_any_instance_of(Devise::Controllers::StoreLocation).to receive(:stored_location_for)
           .and_return('/catalog/99113436223506421')
-        sign_in(user)
+        login_as(user)
       end
       it 'clicking the request button loads the request page' do
         using_wait_time 5 do
