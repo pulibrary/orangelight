@@ -32,7 +32,7 @@ module Requests::Submissions
 
       def hold_id(item_barcode:, patron_barcode:)
         id = "#{item_barcode}-#{patron_barcode}-#{Time.zone.now.to_i}"
-        Rails.logger.debug("Requesting clancy item with id: #{id}")
+        Rails.logger.debug { "Requesting clancy item with id: #{id}" }
         id
       end
   end

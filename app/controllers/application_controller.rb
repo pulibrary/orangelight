@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     stored_location = stored_location_for(resource)
 
-    if referrer.present? && (!referrer.include?("sign_in") && !origin&.include?("redirect-to-alma"))
+    if referrer.present? && (referrer.exclude?("sign_in") && !origin&.include?("redirect-to-alma"))
       referrer
     elsif origin.present?
       request.flash.delete('alert')

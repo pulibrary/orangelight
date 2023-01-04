@@ -31,7 +31,7 @@ module Requests
       end
 
       def post_response(url:, body:)
-        Rails.logger.debug("Illiad Posting #{illiad_api_base}/#{url} #{body}")
+        Rails.logger.debug { "Illiad Posting #{illiad_api_base}/#{url} #{body}" }
         resp = conn.post do |req|
           req.url url
           req.headers['Content-Type'] = 'application/json'
@@ -39,7 +39,7 @@ module Requests
           req.headers['ApiKey'] = illiad_api_key
           req.body = body
         end
-        Rails.logger.debug("Illiad Post Response #{illiad_api_base}/#{url} #{resp.status} #{resp.body}")
+        Rails.logger.debug { "Illiad Post Response #{illiad_api_base}/#{url} #{resp.status} #{resp.body}" }
         resp
       rescue Faraday::ConnectionFailed
         Rails.logger.warn("Unable to Connect to #{@illiad_api_base}")
@@ -47,14 +47,14 @@ module Requests
       end
 
       def get_response(url:, body:)
-        Rails.logger.debug("Illiad Get #{illiad_api_base}/#{url} #{body}")
+        Rails.logger.debug { "Illiad Get #{illiad_api_base}/#{url} #{body}" }
         resp = conn.get do |req|
           req.url url
           req.headers['Accept'] = 'application/json'
           req.headers['ApiKey'] = @illiad_api_key
           req.body = body.to_json if body.present?
         end
-        Rails.logger.debug("Illiad Get Response #{illiad_api_base}/#{url} #{resp.status} #{resp.body}")
+        Rails.logger.debug { "Illiad Get Response #{illiad_api_base}/#{url} #{resp.status} #{resp.body}" }
         resp
       rescue Faraday::ConnectionFailed
         Rails.logger.warn("Unable to Connect to #{@illiad_api_base}")

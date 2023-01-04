@@ -7,7 +7,7 @@ module Requests
     end
 
     def validate(record)
-      record.errors[:items] << { "empty_set" => { 'text' => 'Please Select an Item to Request!', 'type' => 'options' } } unless record.items.size >= 1 && !record.items.any? { |item| defined? item.selected }
+      record.errors.add(:items, { "empty_set" => { 'text' => 'Please Select an Item to Request!', 'type' => 'options' } }) unless record.items.size >= 1 && !record.items.any? { |item| defined? item.selected }
       record.items.each do |selected|
         validate_selected(record, selected)
       end
@@ -34,7 +34,7 @@ module Requests
         when *mail_services
           validate_pick_up_location(record, selected, selected["type"])
         else
-          record.errors[:items] << { selected['mfhd'] => { 'text' => 'Please choose a Request Method for your selected item.', 'type' => 'pick_up' } }
+          record.errors.add(:items, { selected['mfhd'] => { 'text' => 'Please choose a Request Method for your selected item.', 'type' => 'pick_up' } })
         end
       end
       # rubocop:enable Metrics/MethodLength
@@ -44,7 +44,7 @@ module Requests
         item_id = selected['item_id']
         return if selected['pick_up'].present?
 
-        record.errors[:items] << { item_id => { 'text' => "Please select a pick-up location for #{pick_up_phrase}", 'type' => 'pick_up' } }
+        record.errors.add(:items, { item_id => { 'text' => "Please select a pick-up location for #{pick_up_phrase}", 'type' => 'pick_up' } })
       end
 
       def validate_pick_up_location(record, selected, type)
@@ -52,13 +52,13 @@ module Requests
         id = selected['item_id']
         id = selected['mfhd'] if id.blank?
 
-        record.errors[:items] << { id => { 'text' => "Please select a pick-up location for your selected #{type} item", 'type' => 'pick_up' } }
+        record.errors.add(:items, { id => { 'text' => "Please select a pick-up location for your selected #{type} item", 'type' => 'pick_up' } })
       end
 
       def validate_recap_no_items(record, selected)
         return if selected['pick_up'].present? || selected['edd_art_title'].present?
 
-        record.errors[:items] << { selected['mfhd'] => { 'text' => 'Please select a pick-up location for your selected ReCAP item', 'type' => 'pick_up' } }
+        record.errors.add(:items, { selected['mfhd'] => { 'text' => 'Please select a pick-up location for your selected ReCAP item', 'type' => 'pick_up' } })
       end
 
       def validate_offsite(record, selected)
@@ -69,12 +69,12 @@ module Requests
       def validate_delivery_mode(record:, selected:)
         item_id = selected['item_id']
         if selected["delivery_mode_#{item_id}"].nil?
-          record.errors[:items] << { item_id => { 'text' => 'Please select a delivery type for your selected recap item', 'type' => 'options' } }
+          record.errors.add(:items, { item_id => { 'text' => 'Please select a delivery type for your selected recap item', 'type' => 'options' } })
         else
           delivery_type = selected["delivery_mode_#{item_id}"]
-          record.errors[:items] << { item_id => { 'text' => 'Please select a pick-up location for your selected recap item', 'type' => 'pick_up' } } if delivery_type == 'print' && selected['pick_up'].blank?
+          record.errors.add(:items, { item_id => { 'text' => 'Please select a pick-up location for your selected recap item', 'type' => 'pick_up' } }) if delivery_type == 'print' && selected['pick_up'].blank?
           if delivery_type == 'edd'
-            record.errors[:items] << { item_id => { 'text' => 'Please specify title for the selection you want digitized.', 'type' => 'options' } } if selected['edd_art_title'].empty?
+            record.errors.add(:items, { item_id => { 'text' => 'Please specify title for the selection you want digitized.', 'type' => 'options' } }) if selected['edd_art_title'].empty?
           end
         end
       end
@@ -82,7 +82,7 @@ module Requests
       def validate_item_id(record:, selected:, action_phrase:)
         return true if selected['item_id'].present?
 
-        record.errors[:items] << { selected['mfhd'] => { 'text' => "Item Cannot be #{action_phrase}, see circulation desk.", 'type' => 'options' } }
+        record.errors.add(:items, { selected['mfhd'] => { 'text' => "Item Cannot be #{action_phrase}, see circulation desk.", 'type' => 'options' } })
         false
       end
   end
