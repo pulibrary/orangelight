@@ -12,7 +12,7 @@ module Requests
 
     def pageable_loc?
       return nil if call_number.blank? ||
-                    !paging_locations.include?(location_code)
+                    paging_locations.exclude?(location_code)
       call_num = holding['call_number_browse']
       return nil unless lc_number?(call_num)
       in_call_num_range(call_num, pageable.paging_ranges[location_code])

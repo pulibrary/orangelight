@@ -259,7 +259,7 @@ module Requests
       @services = services
       @submission = submission
       errors = services.map(&:errors).flatten
-      error_types = errors.map { |error| error[:type] }.uniq
+      error_types = errors.pluck(:type).uniq
       destination_email = if error_types.include?("digitize")
                             I18n.t('requests.digitize.invalid_patron.email')
                           else

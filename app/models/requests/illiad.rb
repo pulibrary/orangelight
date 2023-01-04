@@ -41,7 +41,7 @@ module Requests
         qp['notes'] = note
 
         # trim empty ones please
-        qp.delete_if { |_k, v| v.blank? }
+        qp.compact_blank!
         qp.to_query
       end
 

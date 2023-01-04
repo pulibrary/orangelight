@@ -123,7 +123,7 @@ module Requests
 
       def respond_to_service_error(services)
         errors = services.map(&:errors).flatten
-        error_types = errors.map { |error| error[:type] }.uniq
+        error_types = errors.pluck(:type).uniq
         flash.now[:error] = if error_types.include?("digitize")
                               errors[error_types.index("digitize")][:error]
                             else

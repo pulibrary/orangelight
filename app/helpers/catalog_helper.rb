@@ -53,7 +53,7 @@ module CatalogHelper
   end
 
   def render_top_field?(document, field_name)
-    !presenter(document).fields_to_render.map { |item| item }.include?(field_name) && document[field_name].present? &&
+    presenter(document).fields_to_render.map { |item| item }.exclude?(field_name) && document[field_name].present? &&
       field_name != 'holdings_1display' && (!document.numismatics_record? || coin_top_field?(field_name))
   end
 

@@ -58,7 +58,7 @@ module Requests
     end
 
     def any_will_submit_via_form?
-      return false if requestable.reject(&:blank?).blank? || !eligible_for_library_services?
+      return false if requestable.compact_blank.blank? || !eligible_for_library_services?
       requestable.map(&:will_submit_via_form?).any? || any_fill_in_eligible?
     end
 

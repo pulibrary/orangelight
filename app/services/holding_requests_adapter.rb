@@ -168,7 +168,7 @@ class HoldingRequestsAdapter
   # @param holding [Hash]
   def restrictions_for_holding(holding)
     return [] unless holding.key? 'items'
-    holding['items'].map { |values| values['use_statement'] }.reject(&:blank?)
+    holding['items'].map { |values| values['use_statement'] }.compact_blank
   end
 
   # Determine whether or not the holding is explicitly marked as "Unavailable"

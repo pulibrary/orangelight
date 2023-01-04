@@ -133,7 +133,7 @@ module Requests
     end
 
     def available_pick_ups(requestable, default_pick_ups)
-      idx = (default_pick_ups.map { |loc| loc[:label] }).index(requestable.location["library"]["label"]) # || 0
+      idx = (default_pick_ups.pluck(:label)).index(requestable.location["library"]["label"]) # || 0
       if idx.present?
         [default_pick_ups[idx]]
       elsif requestable.recap? || requestable.annex?
