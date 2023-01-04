@@ -6,7 +6,7 @@ class AccountController < ApplicationController
   include ApplicationHelper
 
   before_action :read_only_redirect, except: [:redirect_to_alma, :user_id]
-  before_action :require_user_authentication_provider, except: [:redirect_to_alma, :user_id]
+  before_action :check_for_authentication_provider, except: [:redirect_to_alma, :user_id]
   before_action :verify_user, except: [:borrow_direct_redirect, :redirect_to_alma, :user_id]
 
   def index
@@ -56,6 +56,10 @@ class AccountController < ApplicationController
         flash[:notice] = 'Account login unavailable during maintenace.'
         redirect_to(root_url) && return
       end
+    end
+
+    def check_for_authentication_provider
+      raise ActionController::RoutingError, 'Not Found' unless has_user_authentication_provider?
     end
 
     def verify_user

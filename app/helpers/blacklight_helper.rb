@@ -57,33 +57,6 @@ module BlacklightHelper
     solr_parameters[:facet] = false
   end
 
-  # Returns suitable argument to options_for_select method, to create
-  # an html select based on #search_field_list with labels for search
-  # bar only. Skips search_fields marked :include_in_simple_select => false
-  def search_bar_select
-    blacklight_config.search_fields.collect do |_key, field_def|
-      [field_def.dropdown_label || field_def.label, field_def.key, { 'data-placeholder' => placeholder_text(field_def) }] if should_render_field?(field_def)
-    end.compact
-  end
-
-  def placeholder_text(field_def)
-    field_def.respond_to?(:placeholder_text) ? field_def.placeholder_text : t('blacklight.search.form.search.placeholder')
-  end
-
-  def search_bar_field
-    if params[:model] == Orangelight::CallNumber
-      'browse_cn'
-    elsif params[:model] == Orangelight::Name
-      'browse_name'
-    elsif params[:model] == Orangelight::NameTitle
-      'name_title'
-    elsif params[:model] == Orangelight::Subject
-      'browse_subject'
-    else
-      params[:search_field]
-    end
-  end
-
   # Adapted from http://discovery-grindstone.blogspot.com/2014/01/cjk-with-solr-for-libraries-part-12.html
   def cjk_mm(solr_parameters)
     if blacklight_params && blacklight_params[:q].present?
@@ -229,7 +202,7 @@ module BlacklightHelper
     label_value = if field_or_string.class == String
                     field_or_string
                   else
-                    index_presenter(doc).label(field_or_string, opts)
+                    document_presenter(doc).heading
                   end
     label = label_value.truncate(length, separator: /\s/).html_safe
     link_to label, url_for_document(doc), document_link_params(doc, opts)

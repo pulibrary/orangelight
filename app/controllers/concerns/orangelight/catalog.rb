@@ -54,7 +54,7 @@ module Orangelight
         flash[:error] = 'You must be logged in to send an email.'
       elsif params[:to].blank?
         flash[:error] = I18n.t('blacklight.email.errors.to.blank')
-      elsif !params[:to].match(Blacklight::Engine.config.email_regexp)
+      elsif !params[:to].match(Blacklight::Engine.config.blacklight.email_regexp)
         flash[:error] = I18n.t('blacklight.email.errors.to.invalid', to: params[:to])
       end
 

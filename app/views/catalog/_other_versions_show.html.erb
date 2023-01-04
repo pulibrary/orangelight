@@ -1,6 +1,6 @@
 <% decorated = linked_records.decorated %>
 <% unless decorated.empty? %>
-  <dt class="blacklight-<%= field.field.parameterize %>"><%= render_document_show_field_label(document, field: field.field) %></dt>
+  <dt class="blacklight-<%= field.field.parameterize %>"><%= t(:'blacklight.search.show.label', label: field.label) %></dt>
   <dd class="blacklight-<%= field.field.parameterize %>">
     <% if decorated.count == 1 %>
       <%= link_to decorated.first.title, solr_document_url(decorated.first.id) %>

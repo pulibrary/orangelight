@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 context 'clicking facet limits with values in the search bar' do
+  before do
+    stub_holding_locations
+  end
+
   it 'includes search input in result, url is escaped', js: true do
     visit '/catalog'
     select('Title starts with', from: 'search_field')

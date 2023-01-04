@@ -15,7 +15,7 @@
        // If we add non-MARC doc types to the project they need to respond to this
        // method with a valid ctx (context) object.
   -->
-  <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_partial_name(@document)) %>"></span>
+  <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev %>"></span>
 <% end %>
 
 <%= render 'show_coin_description', document: @document if @document.numismatics_record? %>

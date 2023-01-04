@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 xml.entry do
-  xml.title document[document_show_link_field(document)]
+  xml.title document[:title_display]
 
   # updated is required, for now we'll just set it to now, sorry
   xml.updated document['cataloged_tdt']
@@ -9,7 +9,7 @@ xml.entry do
   xml.link    'rel' => 'alternate', 'type' => 'text/html', 'href' => polymorphic_url(url_for_document(document))
   # add other doc-specific formats, atom only lets us have one per
   # content type, so the first one in the list wins.
-  xml << show_presenter(document).link_rel_alternates(unique: true)
+  xml << document_presenter(document).link_rel_alternates(unique: true)
 
   xml.id polymorphic_url(url_for_document(document))
 

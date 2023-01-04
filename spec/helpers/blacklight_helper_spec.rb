@@ -110,7 +110,7 @@ describe BlacklightHelper do
     end
 
     it 'truncates the content of a field before linking it' do
-      expect(helper.truncated_link(document, helper.document_show_link_field(document))).to eq truncated
+      expect(helper.truncated_link(document, :title_display)).to eq truncated
     end
   end
 

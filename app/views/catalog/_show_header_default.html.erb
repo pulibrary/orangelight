@@ -1,6 +1,6 @@
 
 <div class="col-12 header-row">
-    <% doc_presenter = show_presenter(@document) %>
+    <% doc_presenter = document_presenter(@document) %>
     <% if titlevalue = @document['title_vern_display'] %>
       <h1 dir="<%= titlevalue.dir %>" lang="<%= language_iana %>"> <%= titlevalue %> </h1>
     <% end %>
