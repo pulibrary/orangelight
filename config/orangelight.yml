@@ -5,6 +5,12 @@ defaults: &defaults
   feedback_form:
     to: <%= ENV['OL_FEEDBACK_TO'] %>
     cc: <%= ENV['OL_FEEDBACK_CC'] %>
+  ask_a_question_form:
+    to: <%= ENV['OL_REFERENCE_TO'] %>
+  suggest_a_correction_form:
+    to: <%= ENV['OL_CATALOGING_TO'] %>
+  report_harmful_content_form:
+    to: <%= ENV['OL_HARMFUL_CONTENT_TO'] %>
   firestone_locator_base_url: https://locator-prod.princeton.edu
   show_page:
     linked_documents:
@@ -12,12 +18,20 @@ defaults: &defaults
 
 development:
   <<: *defaults
+  ask_a_question_form:
+    to: 'mk8066@princeton.edu'
 
 test:
   <<: *defaults
   feedback_form:
     to: 'test@princeton.edu'
     cc: 'test2w@princeton.edu, test3@princeton.edu'
+  ask_a_question_form:
+    to: 'test-question@princeton.edu'
+  suggest_a_correction_form:
+    to: 'test-correction@princeton.edu'
+  report_harmful_content_form:
+    to: 'test-harmful-content@princeton.edu'
 
 production:
   <<: *defaults

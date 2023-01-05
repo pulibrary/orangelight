@@ -93,6 +93,9 @@ Rails.application.routes.draw do
   get 'feedback', to: 'feedback#new'
   post 'feedback', to: 'feedback#create'
 
+  get "/ask_a_question/:id", to: "feedback#ask_a_question"
+  post "/contact/question", to: "contact#question"
+
   get '/thumbnail/:id', to: 'thumbnail#show'
 
   # error pages

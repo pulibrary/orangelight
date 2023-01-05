@@ -1,0 +1,8 @@
+<%= simple_form_for form, url: contact_question_path, remote: true do |f| %>
+  <%= f.input :name %>
+  <%= f.input :email, as: :email %>
+  <%= f.input :message, as: :text %>
+  <%= f.input :context, as: :hidden %>
+  <%= f.input :title, as: :hidden %>
+  <%= f.submit "Send", class: "btn btn-primary" %>
+<% end %>

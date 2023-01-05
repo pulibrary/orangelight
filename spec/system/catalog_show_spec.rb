@@ -94,5 +94,15 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       expect(page).to have_selector('.harmful-content-feedback')
       expect(page).to have_content('Report Harmful Language')
     end
+
+    it 'opens a modal for Ask a Question' do
+      visit "catalog/#{document_id}"
+      click_on('Ask a Question')
+      expect(page).to have_field('Name')
+      context_field = page.find_field("ask_a_question_form[context]", type: :hidden)
+      expect(context_field.value).to include("/catalog/#{document_id}")
+      title_field = page.find_field("ask_a_question_form[title]", type: :hidden)
+      expect(title_field.value).to eq("test title not done yet")
+    end
   end
 end
