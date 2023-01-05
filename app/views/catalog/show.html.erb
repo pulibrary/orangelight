@@ -12,7 +12,7 @@
         <%= render partial: 'show_availability', locals: { document: @document } %>
       </div>
     <% end %>
-    <%= render_document_main_content_partial %>
+    <%= render 'show_main_content' %>
     <% if @document.alma_record? %>
       <dl class="dl-horizontal dl-invert">
         <dt class="other-views">Other views</dt>
