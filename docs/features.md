@@ -7,5 +7,11 @@ Unless the feature impacts a controller or initializer (probably better not to u
 
 In order to update the application administrators, update the `ORANGELIGHT_ADMIN_NETIDS` value in princeton_ansible, run the Orangelight playbook and restart the application server.
 
+#### In development
+In order to use the dashboard in development, run the rails server with the `ORANGELIGHT_ADMIN_NETIDS` environment variable set, e.g.
+```zsh
+ORANGELIGHT_ADMIN_NETIDS="mk8066" bundle exec rails s
+```
+
 ### Ansible-managed
 Currently, `read_only_mode` is managed via Ansible. In order to set this value, change the value of `OL_READ_ONLY_MODE` in princeton_ansible and run the Orangelight playbook on the relevant environment. Because this value is set in an initializer, the application server must be restarted before this will take effect (deploying the application will do this as well).
