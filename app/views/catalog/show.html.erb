@@ -21,6 +21,9 @@
         </dd>
       </dl>
     <% end %>
+    <% if Flipflop.harmful_content_feedback? %>
+      <%= render partial: 'show_harmful_content_feedback' %>
+    <% end %>
   </div>
   <div id="aside" class="<%= render_document_class %>">
     <h2 class="sr-only">Supplementary Information</h2>

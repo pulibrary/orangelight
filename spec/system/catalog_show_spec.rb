@@ -84,4 +84,15 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       expect(page).to have_selector('dd.blacklight-isbn_display ul li', count: 4)
     end
   end
+
+  describe 'giving feedback' do
+    let(:document_id) { '9946093213506421' }
+    before { allow(Flipflop).to receive(:harmful_content_feedback?).and_return(true) }
+
+    it 'shows a feedback bar' do
+      visit "catalog/#{document_id}"
+      expect(page).to have_selector('.harmful-content-feedback')
+      expect(page).to have_content('Report Harmful Language')
+    end
+  end
 end
