@@ -660,6 +660,12 @@ class CatalogController < ApplicationController
     config.unapi = {
       'ris' => { content_type: 'application/x-research-info-systems' }
     }
+    config.filter_search_state_fields = true
+    config.search_state_fields = config.search_state_fields + [
+      :advanced_type, :f1, :f2, :f3,
+      :op1, :op2, :op3,
+      :q1, :q2, :q3
+    ]
   end
 
   def render_search_results_as_json

@@ -197,3 +197,9 @@ a.more_facets_link {
   min-height: auto;
   margin-left: -12px;
 }
+
+/* Make the component-based facets look the same as partial-based facets */
+h3.facet-field-heading {
+  margin-top: 0px;
+  padding: .3rem .9rem !important;
+}
