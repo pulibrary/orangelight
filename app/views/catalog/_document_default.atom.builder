@@ -11,7 +11,7 @@ xml.entry do
   # content type, so the first one in the list wins.
   xml << document_presenter(document).link_rel_alternates(unique: true)
 
-  xml.id polymorphic_url(url_for_document(document))
+  xml.id polymorphic_url(search_state.url_for_document(document))
 
   xml.author { xml.name(document.to_semantic_values[:author].first) } if document.to_semantic_values.key? :author
 

@@ -205,7 +205,7 @@ module BlacklightHelper
                     document_presenter(doc).heading
                   end
     label = label_value.truncate(length, separator: /\s/).html_safe
-    link_to label, url_for_document(doc), document_link_params(doc, opts)
+    link_to label, search_state.url_for_document(doc), document_link_params(doc, opts)
   end
 
   # Links to correct advanced search page based on advanced_type parameter value
