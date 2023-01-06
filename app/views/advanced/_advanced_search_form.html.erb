@@ -1,7 +1,7 @@
 <%= form_tag search_catalog_path, :class => 'advanced form-horizontal', :method => :get do  %>
   <div class="advanced row">
     <div class="col-md-7">
-      <% unless (search_context_str = render_search_to_s(advanced_search_context)).blank? %>
+      <% unless (search_context_str = render(Blacklight::ConstraintsComponent.for_search_history(search_state:))).blank? %>
         <div class="constraints well search_history">
           <h4 class="advanced-search-context"><%= t 'blacklight_advanced_search.form.search_context' %></h4>
           <%= search_context_str %>
