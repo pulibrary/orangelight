@@ -12,6 +12,7 @@ Capybara.register_driver(:selenium) do |app|
   browser_options = ::Selenium::WebDriver::Chrome::Options.new
   browser_options.args << "--headless"
   browser_options.args << "--disable-gpu"
+  browser_options.args << "--window-size=1920,1200"
 
   http_client = Selenium::WebDriver::Remote::Http::Default.new
   http_client.read_timeout = 120
