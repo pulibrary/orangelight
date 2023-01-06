@@ -7,7 +7,7 @@
           <%= search_context_str %>
         </div>
       <% end %>
-      <%= render_hash_as_hidden_fields(search_state.params_for_search(advanced_search_context.except(:model, :rpp, :start)).except(:f_inclusive)) %>
+      <%= render Blacklight::HiddenSearchStateComponent.new(params: search_state.params_for_search(advanced_search_context.except(:model, :rpp, :start)).except(:f_inclusive)) %>
 
       <div class="input-criteria">
         <div id="guided_search">
