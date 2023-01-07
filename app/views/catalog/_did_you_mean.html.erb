@@ -1,5 +1,0 @@
-<% if should_show_spellcheck_suggestions? @response and  !@response.spelling.collation.nil? %>
-  <div id="spell">
-    <h4 class="suggest"><em><%= t('blacklight.did_you_mean', :options => link_to_query(@response.spelling.collation)).html_safe %></em></h4>
-  </div>
-<% end %>

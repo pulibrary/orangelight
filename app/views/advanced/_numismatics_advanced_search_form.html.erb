@@ -1,15 +1,15 @@
 <%= form_tag search_catalog_path, :class => 'advanced form-horizontal', :method => :get do  %>
   <div class="advanced row">
-    <% unless (search_context_str = render_search_to_s(advanced_search_context)).blank? %>
+    <% unless (search_context_str = render(Blacklight::ConstraintsComponent.for_search_history(search_state:))).blank? %>
       <div class="constraints well search_history">
         <h4 class="advanced-search-context"><%= t 'blacklight_advanced_search.form.search_context' %></h4>
         <%= search_context_str %>
       </div>
     <% end %>
     <div class="col-md-5">
-        <%= render_hash_as_hidden_fields(search_state.params_for_search(advanced_search_context.except(:model, :rpp, :start)).except(:f_inclusive)) %>
+        <%= render Blacklight::HiddenSearchStateComponent.new(params: search_state.params_for_search(advanced_search_context.except(:model, :rpp, :start)).except(:f_inclusive)) %>
         <%# Indicate that this a numismatics advanced search %>
-        <%= render_hash_as_hidden_fields({'advanced_type' => 'numismatics'}) %>
+        <%= render Blacklight::HiddenSearchStateComponent.new(params: {'advanced_type' => 'numismatics'}) %>
         <div>
           <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_object_type_s' } %>
           <%= render partial: 'facet_as_select', locals: { facet_field_name: 'issue_denomination_s' } %>

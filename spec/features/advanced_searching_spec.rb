@@ -42,6 +42,14 @@ describe 'advanced searching' do
     expect(page).not_to have_content("Огонек : роман")
   end
 
+  it 'allows searching by publication date', js: true do
+    visit '/advanced'
+    find('#range_pub_date_start_sort_begin').fill_in(with: '1990')
+    find('#range_pub_date_start_sort_end').fill_in(with: '1995')
+    click_button('advanced-search-submit')
+    expect(page).to have_content('Aomen')
+  end
+
   context 'with a numismatics advanced search type' do
     it 'provides labels to numismatics form elements' do
       visit '/numismatics'
