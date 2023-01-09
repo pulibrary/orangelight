@@ -1,5 +1,5 @@
-<% facets_from_request([facet_field_name]).each do |display_facet| %>
-    <% if display_facet.items.present? %>
+<% display_facet = facet_by_field_name(facet_field_name, @response) %>
+    <% if display_facet&.items.present? %>
       <% if display_facet.name == 'advanced_location_s' %>
         <%= render 'location_code_facet', display_facet: display_facet %>
       <% else %>
@@ -24,4 +24,3 @@
         </div>
       <% end %>
     <% end %>
-<% end %>
