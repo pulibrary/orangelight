@@ -1,7 +1,10 @@
-<%= simple_form_for form, url: contact_question_path, remote: true do |f| %>
-  <%= f.input :name %>
-  <%= f.input :email, as: :email %>
-  <%= f.input :message, as: :text %>
+<%= simple_form_for form, url: contact_question_path, html: { novalidate: false }, remote: true do |f| %>
+  <%= f.label :name %><br>
+  <%= f.input_field :name %><br>
+  <%= f.label :email %><br>
+  <%= f.input_field :email %><br>
+  <%= f.label :message %><br>
+  <%= f.input_field :message, as: :text %><br>
   <%= f.input :context, as: :hidden %>
   <%= f.input :title, as: :hidden %>
   <%= f.submit "Send", class: "btn btn-primary" %>

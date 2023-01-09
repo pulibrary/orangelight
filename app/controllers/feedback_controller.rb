@@ -45,7 +45,7 @@ class FeedbackController < ApplicationController
     def build_ask_a_question_form
       @question_form = AskAQuestionForm.new(
         context: page_url(question_form_params),
-        title: params['ask_a_question_form']['title']
+        title: question_form_params['title']
       )
     end
 
