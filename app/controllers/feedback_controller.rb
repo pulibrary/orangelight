@@ -43,8 +43,18 @@ class FeedbackController < ApplicationController
     end
 
     def build_ask_a_question_form
-      page_url = solr_document_url(id: params['id'])
-      @question_form = AskAQuestionForm.new(context: page_url, title: "test title not done yet")
+      @question_form = AskAQuestionForm.new(
+        context: page_url(question_form_params),
+        title: params['ask_a_question_form']['title']
+      )
+    end
+
+    def question_form_params
+      params.require(:ask_a_question_form).permit(:id, :title)
+    end
+
+    def page_url(params)
+      solr_document_url(id: params['id'])
     end
 
     def current_user_email

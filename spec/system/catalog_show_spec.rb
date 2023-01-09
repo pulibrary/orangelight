@@ -102,7 +102,7 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       context_field = page.find_field("ask_a_question_form[context]", type: :hidden)
       expect(context_field.value).to include("/catalog/#{document_id}")
       title_field = page.find_field("ask_a_question_form[title]", type: :hidden)
-      expect(title_field.value).to eq("test title not done yet")
+      expect(title_field.value).to eq("Bible, Latin.")
     end
   end
 end

@@ -4,7 +4,10 @@
     {
       controller: "feedback",
       action: "ask_a_question",
-      id: @document,
+      ask_a_question_form: { 
+        id: @document,
+        title: @document['title_display']
+       }
     },
     title: "Ask a Question",
     class: "ask-a-question",
