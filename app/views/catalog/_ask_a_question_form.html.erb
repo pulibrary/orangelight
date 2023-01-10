@@ -4,8 +4,9 @@
   <%= f.label :email %><br>
   <%= f.input_field :email %><br>
   <%= f.label :message %><br>
-  <%= f.input_field :message, as: :text %><br>
+  <%= f.input_field :message, as: :text, style: "width: 100%" %><br>
   <%= f.input :context, as: :hidden %>
   <%= f.input :title, as: :hidden %>
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
   <%= f.submit "Send", class: "btn btn-primary" %>
 <% end %>
