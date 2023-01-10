@@ -13,6 +13,7 @@ export default class OrangelightUiLoader {
     this.setup_linked_records()
     this.setup_show_more_fields()
     this.setup_modal_focus()
+    this.setup_modal_close_on_submit()
     this.setup_viewers()
     this.setup_book_covers()
     this.setup_bookmark_all()
@@ -23,6 +24,14 @@ export default class OrangelightUiLoader {
     $("body").on("shown.bs.modal", (event) => {
       $(event.target).find('input[type!="hidden"]').first().focus();
     })
+  }
+
+  setup_modal_close_on_submit() {
+    $('body').on('loaded.blacklight.blacklight-modal', () => {
+      document.getElementById('submit-question').addEventListener('click', () => { 
+        $('#blacklight-modal').modal('toggle') 
+      })
+    });
   }
 
   setup_availability() {
