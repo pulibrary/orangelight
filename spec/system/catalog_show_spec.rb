@@ -110,7 +110,6 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       expect(title_field.value).to eq("Bible, Latin.")
       # page.find_button('Send').click
       # expect(ActionMailer::Base.deliveries.length).to eq 1
-      # expect(page.find_button('Send')).to be_disabled
     end
   end
 end

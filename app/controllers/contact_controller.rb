@@ -3,6 +3,7 @@ class ContactController < ApplicationController
   def question
     @form = AskAQuestionForm.new(question_params)
     if @form.valid? && @form.submit
+      flash[:notice] = 'Your question has been submitted'
       render partial: "catalog/ask_a_question_form", locals: { form: @form }
     else
       render partial: "catalog/ask_a_question_form", locals: { form: @form }, status: :unprocessable_entity
