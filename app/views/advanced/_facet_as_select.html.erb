@@ -16,7 +16,7 @@
                 :data   => { "live-search": "true" }) do %>
                 <% display_facet.items.each do |facet_item| %>
                   <%= content_tag :option, :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) do %>
-                    <%= facet_display_value(display_facet.name, facet_item.label) %>&nbsp;&nbsp;(<%= number_with_delimiter facet_item.hits %>)
+                    <%= facet_item.label %>&nbsp;&nbsp;(<%= number_with_delimiter facet_item.hits %>)
                     <% end %>
                   <% end %>
                 <% end %>
