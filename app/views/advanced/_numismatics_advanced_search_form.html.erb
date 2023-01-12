@@ -35,9 +35,9 @@
           <% end %>
           <div class="col-sm-8 range_limit">
             <label for="range_pub_date_start_sort_begin" class="sr-only">date range (starting year)</label>
-            <%= render_range_input(pub_date.field, :begin) %> –
+            <%= range_form_component(pub_date.field).render_range_input(:begin) %> –
             <label for="range_pub_date_start_sort_end" class="sr-only">date range (ending year)</label>
-            <%= render_range_input(pub_date.field, :end) %>
+            <%= range_form_component(pub_date.field).render_range_input(:end) %>
           </div>
         </div>
         <div class="form-group advanced-search-facet row">
