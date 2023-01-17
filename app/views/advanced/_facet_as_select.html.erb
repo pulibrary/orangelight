@@ -1,5 +1,5 @@
-<% facets_from_request([facet_field_name]).each do |display_facet| %>
-    <% if display_facet.items.present? %>
+<% display_facet = @response.aggregations[facet_field_name] %>
+    <% if display_facet&.items.present? %>
       <% if display_facet.name == 'advanced_location_s' %>
         <%= render 'location_code_facet', display_facet: display_facet %>
       <% else %>
@@ -16,7 +16,7 @@
                 :data   => { "live-search": "true" }) do %>
                 <% display_facet.items.each do |facet_item| %>
                   <%= content_tag :option, :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) do %>
-                    <%= facet_display_value(display_facet.name, facet_item.label) %>&nbsp;&nbsp;(<%= number_with_delimiter facet_item.hits %>)
+                    <%= facet_item.label %>&nbsp;&nbsp;(<%= number_with_delimiter facet_item.hits %>)
                     <% end %>
                   <% end %>
                 <% end %>
@@ -24,4 +24,3 @@
         </div>
       <% end %>
     <% end %>
-<% end %>

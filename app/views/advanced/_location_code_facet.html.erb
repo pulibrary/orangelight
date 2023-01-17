@@ -15,11 +15,13 @@
                 <%= content_tag :option, library_display, class: 'group-result', value: library,
                 :selected => facet_value_checked?(display_facet.name, library) %>
                 <% items['recap_codes'].each do |facet_item| %>
-                  <%= content_tag :option, "#{facet_display_value(display_facet.name, facet_item.label)} (#{number_with_delimiter(facet_item.hits)})",
+                  <% item_label = facet_item_presenter(facet_configuration_for_field(display_facet.name), facet_item.value, display_facet.name).label %>
+                  <%= content_tag :option, "#{item_label} (#{number_with_delimiter(facet_item.hits)})",
                   class: 'group-option', :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) %>
                 <% end %>
                 <% items['codes'].each do |facet_item| %>
-                  <%= content_tag :option, "#{facet_display_value(display_facet.name, facet_item.label)} (#{number_with_delimiter(facet_item.hits)})",
+                  <% item_label = facet_item_presenter(facet_configuration_for_field(display_facet.name), facet_item.value, display_facet.name).label %>
+                  <%= content_tag :option, "#{item_label} (#{number_with_delimiter(facet_item.hits)})",
                   class: 'group-option', :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) %>
                 <% end %>
               <% end %>
