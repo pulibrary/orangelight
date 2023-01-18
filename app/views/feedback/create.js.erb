@@ -1,4 +1,4 @@
-$(".flash_messages").html("<%= escape_javascript(render :partial=>'/flash_msg', layout: 'shared/flash_messages') %>");
+$(".flash_messages").html("<%= escape_javascript(render :partial=>'shared/flash_msg', layout: 'shared/flash_messages') %>");
 
 setTimeout(function() {
   $(".flash_messages .alert-info, .flash_messages .alert-success").fadeOut('slow', function(){
