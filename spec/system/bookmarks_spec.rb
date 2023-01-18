@@ -68,4 +68,19 @@ RSpec.describe 'bookmarks' do
       end
     end
   end
+
+  describe 'bookmark all feature' do
+    context 'when only 10 results per page selected' do
+      before do
+        stub_holding_locations
+        visit "/?f[format][]=Book&per_page=10"
+      end
+
+      it 'changes the number of bookmarks by 10' do
+        expect(page.find('#bookmarks_nav span.bookmarks-count').text).to eq('0')
+        click_button 'Bookmark all'
+        expect(page.find('#bookmarks_nav span.bookmarks-count').text).to eq('10')
+      end
+    end
+  end
 end

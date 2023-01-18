@@ -7,8 +7,11 @@ export default class BookmarkAllManager {
   }
 
   prepopulate_value() {
+    console.log(this);
+    console.log(this.element);
     if ($("input.toggle-bookmark:checked").length == $("input.toggle-bookmark").length) {
-      this.element.prop('checked', true);
+      this.element.addClass('active');
+      this.element.prop('aria-pressed', true);
     }
   }
 
@@ -20,11 +23,11 @@ export default class BookmarkAllManager {
         this.prepopulate_value();
       }
     });
-    this.element.on('change', (c) => {
-      if (c.target.checked) {
-        this.bookmark_all();
-      } else {
+    this.element.on('click', (c) => {
+      if ($(c.target).hasClass('active')) {
         this.unbookmark_all();
+      } else {
+        this.bookmark_all();
       }
     });
   }
