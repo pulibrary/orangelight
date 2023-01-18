@@ -252,25 +252,13 @@ describe 'blacklight tests' do
       stub_holding_locations
       get '/catalog?&search_field=advanced&f1=left_anchor&q1=searching+for1&op2=AND&f2='\
           'left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for'
-      expect(response.body.include?('<a class="btn btn-outline-secondary remove" '\
-                                    'href="/catalog?action=index&amp;controller=catalog&amp;'\
-                                    'f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3='\
-                                    'AND&amp;q2=searching+for&amp;q3=searching+for&amp;'\
-                                    'search_field=advanced"><i class="fa '\
-                                    'fa-times" aria-hidden="true"></i><span class="sr-only">Remove '\
-                                    'constraint Title starts with: searching for1</span></a>')).to eq true
+      expect(response.body).to include 'Remove constraint Title starts with: searching for1'
       get '/catalog.json?&search_field=advanced&f1=left_anchor&q1=searching+for1&op2=AND&f2='\
           'left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for'
       r = JSON.parse(response.body)
       expect(r['data'].any? { |d| d['id'] == '9965749873506421' }).to eq false
       get '/catalog?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=advanced'
-      expect(response.body.include?('<a class="btn btn-outline-secondary remove" '\
-                                    'href="/catalog?action=index&amp;controller=catalog&amp;'\
-                                    'f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3='\
-                                    'AND&amp;q2=searching+for&amp;q3=searching+for&amp;'\
-                                    'search_field=advanced"><i class="fa '\
-                                    'fa-times" aria-hidden="true"></i><span class="sr-only">'\
-                                    'Remove constraint Starts with: searching for1</span></a>')).to eq false
+      expect(response.body).not_to include 'Remove constraint Title starts with: searching for1'
       get '/catalog.json?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=advanced'
       r = JSON.parse(response.body)
       expect(r['data'].any? { |d| d['id'] == '9965749873506421' }).to eq true

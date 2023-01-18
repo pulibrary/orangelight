@@ -666,6 +666,8 @@ class CatalogController < ApplicationController
       :op1, :op2, :op3,
       :q1, :q2, :q3
     ]
+
+    config.index.constraints_component = Orangelight::ConstraintsComponent
   end
 
   def render_search_results_as_json
