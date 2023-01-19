@@ -63,6 +63,8 @@ en:
         try_borrow_direct: 'Try Borrow Direct'
       show:
         label: '%{label}'
+    skip_links:
+      first_result: 'Skip to result %{start} of %{total}'
     header_links:
       login: 'Login'
       course_reserves: 'Course Reserves'

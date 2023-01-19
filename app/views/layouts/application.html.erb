@@ -47,11 +47,16 @@
 
   <body class="<%= render_body_class %>"
         data-bibdata-base-url="<%= Requests.config['bibdata_base'] %>" >
+  <nav id="skip-link" role="navigation" aria-label="<%= t('blacklight.skip_links.label') %>">
+    <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
+    <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
+    <%= content_for(:skip_links) %>
+  </nav>
   <%= render :partial => 'shared/header_navbar' %>
 
   <%= render partial: 'shared/modal' %> <!-- only render if page is using modal -->
 
-  <main id="main-container">
+  <main id="main-container" tabindex="-1">
     <div class="container">
 
       <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
