@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Numismatics show page', type: :system, js: false do
+describe 'Numismatics show page', type: :system do
   before do
     stub_holding_locations
     visit '/catalog/coin-3750'

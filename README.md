@@ -75,7 +75,7 @@ Testing
    rake servers:start
    ```
    *Note: You can stop everything with `rake servers:stop`
-```
+
 1. Run the all the tests
     ```
     rake spec
@@ -87,6 +87,15 @@ Testing
       ```bash
       rake spec SPEC=path/to/your_spec.rb:linenumber
       ```
+
+#### Running system specs in the browser
+
+   ```bash
+   RUN_IN_BROWSER=true bundle exec rspec spec/system
+   ```
+
+The browser will only display for system specs with `js: true`.
+
 #### Building the browselists
 ```ruby
 RAILS_ENV=test bundle exec rake browse:all
