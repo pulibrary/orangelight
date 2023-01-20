@@ -94,5 +94,20 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       expect(page).to have_selector('.harmful-content-feedback')
       expect(page).to have_content('Report Harmful Language')
     end
+
+    it 'opens a modal for Ask a Question' do
+      visit "catalog/#{document_id}"
+      click_on('Ask a Question')
+      expect(page).to have_field('Name')
+      fill_in('Name', with: 'Test User')
+      expect(page).to have_field('Email')
+      fill_in('Email', with: 'testuser@test-domain.org')
+      expect(page).to have_field('Message')
+      fill_in('Message', with: 'Why is the thumbnail wrong?')
+      context_field = page.find_field("ask_a_question_form[context]", type: :hidden)
+      expect(context_field.value).to include("/catalog/#{document_id}")
+      title_field = page.find_field("ask_a_question_form[title]", type: :hidden)
+      expect(title_field.value).to eq("Bible, Latin.")
+    end
   end
 end

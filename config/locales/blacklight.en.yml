@@ -79,6 +79,9 @@ en:
       barcode_header: ''
       barcode_subheader: ''
       barcode_help: 'If you cannot log in, please email <a href="mailto:fstcirc@princeton.edu">fstcirc@princeton.edu</a>.'
+    ask_a_question:
+      form:
+        title: 'Ask a Question'
     email:
       form:
         title: 'Email the catalog record and (optional) message.'
