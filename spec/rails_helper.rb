@@ -54,6 +54,7 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Capybara::RSpecMatchers, type: :request
   config.include Features::SessionHelpers, type: :feature
+  config.include Features::SessionHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :request
 
   config.include ViewComponent::TestHelpers, type: :component
@@ -74,7 +75,13 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :system, js: true) do
+    Warden.test_mode!
+    OmniAuth.config.test_mode = true
     driven_by :selenium_chrome_headless
+  end
+
+  config.after(:each, type: :system, js: true) do
+    Warden.test_reset!
   end
 
   config.before(:suite) { Rails.cache.clear }
