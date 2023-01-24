@@ -5,6 +5,7 @@ class FeedbackController < ApplicationController
 
   before_action :current_user_email
   before_action :build_feedback_form, only: [:create]
+  before_action :build_ask_a_question_form, only: [:ask_a_question]
 
   def new
     @feedback_form = FeedbackForm.new if @feedback_form.nil?
@@ -22,6 +23,8 @@ class FeedbackController < ApplicationController
     end
   end
 
+  def ask_a_question; end
+
   protected
 
     def build_feedback_form
@@ -32,6 +35,21 @@ class FeedbackController < ApplicationController
 
     def feedback_form_params
       params.require(:feedback_form).permit(:name, :email, :message, :current_url, :feedback_desc)
+    end
+
+    def build_ask_a_question_form
+      @question_form = AskAQuestionForm.new(
+        context: page_url(question_form_params),
+        title: question_form_params['title']
+      )
+    end
+
+    def question_form_params
+      params.require(:ask_a_question_form).permit(:id, :title)
+    end
+
+    def page_url(params)
+      solr_document_url(id: params['id'])
     end
 
     def current_user_email
