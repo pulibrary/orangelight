@@ -23,12 +23,7 @@ class FeedbackController < ApplicationController
     end
   end
 
-  def ask_a_question
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
+  def ask_a_question; end
 
   protected
 

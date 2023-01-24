@@ -5,8 +5,6 @@ class ContactController < ApplicationController
     if @form.valid? && @form.submit
       flash[:success] = 'Your question has been submitted'
 
-      return render "question_success" if request.xhr?
-
       render "question_success"
     else
       render partial: "catalog/ask_a_question_form", locals: { form: @form }, status: :unprocessable_entity
