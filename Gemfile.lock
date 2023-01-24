@@ -190,7 +190,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.10)
+    concurrent-ruby (1.2.0)
     coveralls_reborn (0.25.0)
       simplecov (>= 0.18.1, < 0.22.0)
       term-ansicolor (~> 1.6)
@@ -257,7 +257,7 @@ GEM
       activerecord (>= 4.0.0)
     global (2.1.0)
       activesupport (>= 2.0)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
     hashie (5.0.0)
