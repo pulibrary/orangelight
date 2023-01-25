@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "@apollo/client": "^3.7.1",
-    "babel-loader": "^8.0.6",
     "babel-preset-stage-3": "^6.24.1",
     "graphql": "^16.6.0",
     "is-svg": "^4.3.1",
