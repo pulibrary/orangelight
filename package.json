@@ -6,6 +6,7 @@
     "graphql": "^16.6.0",
     "is-svg": "^4.3.1",
     "jest-environment-jsdom": "^29.4.0",
+    "json5": "^2.2.3",
     "serialize-javascript": "^5.0.1",
     "unfetch": "^3.1.1"
   },
