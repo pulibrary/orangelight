@@ -18,7 +18,6 @@
 //= require modernizr
 //= require chosen-jquery
 //
-//= require bootstrap/alert
 //= require bootstrap/tab
 //= require 'blacklight_advanced_search'
 //

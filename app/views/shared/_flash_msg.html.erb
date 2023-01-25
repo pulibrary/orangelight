@@ -1,0 +1,8 @@
+<%# from Blacklight 7.33.0 app/views/shared/flash_msg.html.erb %>
+<div class="flash_messages">
+  <div class="container">
+    <% [:success, :notice, :error, :alert].each do |type| %>
+      <%= render(Blacklight::System::FlashMessageComponent.with_collection(Array.wrap(flash[type]), type: type)) if flash[type] %>
+    <% end %>
+  </div>
+</div>
