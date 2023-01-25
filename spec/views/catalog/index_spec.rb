@@ -17,6 +17,11 @@ RSpec.describe 'catalog/index' do
       link = find_link('E-journal titles')
       expect(link[:href]).to eq('/?f%5Baccess_facet%5D%5B%5D=Online&f%5Bformat%5D%5B%5D=Journal')
     end
+
+    it 'includes #main-flashes' do
+      visit '/'
+      expect(page).to have_selector('#main-flashes', count: 1)
+    end
   end
 
   describe 'index fields json only fields (show: false)' do
