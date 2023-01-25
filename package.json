@@ -5,7 +5,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "graphql": "^16.6.0",
     "is-svg": "^4.3.1",
-    "jest-environment-jsdom": "^28.1.2",
+    "jest-environment-jsdom": "^29.4.0",
     "serialize-javascript": "^5.0.1",
     "unfetch": "^3.1.1"
   },
@@ -17,10 +17,10 @@
     "@babel/eslint-plugin": "^7.19.1",
     "@babel/plugin-transform-runtime": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
-    "babel-jest": "^28.1.2",
+    "babel-jest": "^29.4.0",
     "babel-plugin-macros": "^3.1.0",
     "eslint": "8.27.0",
-    "jest": "^28.1.2",
+    "jest": "^29.4.0",
     "jquery": "3.5.1",
     "vite": "^4.0.0",
     "vite-plugin-ruby": "^3.1.2"
