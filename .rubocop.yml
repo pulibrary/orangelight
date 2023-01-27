@@ -131,6 +131,7 @@ Metrics/ModuleLength:
     - 'app/helpers/blacklight_helper.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/models/concerns/blacklight/document/json_ld.rb'
+    - 'lib/orangelight/browse_lists.rb'
 
 Metrics/PerceivedComplexity:
   Exclude:

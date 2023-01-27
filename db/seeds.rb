@@ -16,6 +16,6 @@ system(%Q(#{sql_command} "TRUNCATE TABLE #{BrowseLists.table_prefix}_subjects RE
 system(%Q(#{sql_command} "TRUNCATE TABLE #{BrowseLists.table_prefix}_call_numbers RESTART IDENTITY;"))
 system(%Q(#{sql_command} "\\copy #{BrowseLists.table_prefix}_names(sort,count,label,dir) from 'spec/fixtures/authors.sorted' CSV;"))
 system(%Q(#{sql_command} "\\copy #{BrowseLists.table_prefix}_name_titles(sort,count,label,dir) from 'spec/fixtures/name_titles.sorted' CSV;"))
-system(%Q(#{sql_command} "\\copy #{BrowseLists.table_prefix}_subjects(sort,count,label,dir) from 'spec/fixtures/subjects.sorted' CSV;"))
+system(%Q(#{sql_command} "\\copy #{BrowseLists.table_prefix}_subjects(sort,count,label,dir,vocabulary) from 'spec/fixtures/subjects.sorted' CSV;"))
 system(%Q(#{sql_command} "\\copy #{BrowseLists.table_prefix}_call_numbers(sort,label,dir,scheme,title,author,date,bibid,holding_id,location) from 'spec/fixtures/call_numbers.sorted' CSV;"))
 

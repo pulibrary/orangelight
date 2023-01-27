@@ -21,8 +21,7 @@ namespace :browse do
   desc 'Pull data for subjects browse'
   task :subjects do
     sql_command, facet_request, conn = BrowseLists.connection
-    BrowseLists.browse_facet(sql_command, facet_request, conn,
-                             'subject_facet', "#{BrowseLists.table_prefix}_subjects")
+    BrowseLists.browse_subject(sql_command, facet_request, conn)
   end
 
   desc 'Pull data for call numbers browse'
@@ -48,13 +47,8 @@ namespace :browse do
   desc 'Sort and load data for subjects browse'
   task :load_subjects do
     sql_command, facet_request, conn = BrowseLists.connection
-<<<<<<< HEAD
-    BrowseLists.load_facet(sql_command, facet_request, conn,
-                           'subject_facet', "#{BrowseLists.table_prefix}_subjects")
-=======
     BrowseLists.load_subject(sql_command, facet_request, conn,
-                             'subject_facet', 'orangelight_subjects')
->>>>>>> facba253 (adds vocabulary column to subject table)
+                           'subject_facet', 'alma_orangelight_subjects')
   end
 
   desc 'Sort and load call numbers'
