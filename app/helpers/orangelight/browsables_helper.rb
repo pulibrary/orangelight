@@ -21,5 +21,15 @@ module Orangelight
     def current_browse_per_page
       params[:rpp].present? ? params[:rpp].to_i : 10
     end
+
+    def vocab_type(vocab)
+      if vocab == 'Library of Congress genre/form term'
+        'lcgft_s'
+      elsif vocab == 'Rare books genre term'
+        'rbgenr_s'
+      else
+        'subject_facet'
+      end
+    end
   end
 end
