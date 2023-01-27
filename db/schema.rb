@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_25_171021) do
     t.integer "count"
     t.text "sort"
     t.string "dir"
+    t.string "vocabulary"
     t.index ["sort"], name: "index_alma_orangelight_subjects_on_sort"
   end
 
