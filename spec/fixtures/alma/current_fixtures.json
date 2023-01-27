@@ -32229,5 +32229,244 @@
       "Online",
       "In the Library"
   ]
+},
+{
+  "id": [
+    "9940910343506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_display": [
+    "Charles Scribner's Sons"
+  ],
+  "author_sort": [
+    "Charles Scribner's Sons"
+  ],
+  "author_citation_display": [
+    "Charles Scribner's Sons",
+    "Scribner, Armstrong, and Company",
+    "Charles Scribner and Company"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"Scribner, Armstrong, and Company\",\"Charles Scribner and Company\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Charles Scribner's Sons\"}"
+  ],
+  "author_s": [
+    "Charles Scribner's Sons",
+    "Scribner, Armstrong, and Company",
+    "Charles Scribner and Company"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": [
+    "[Seasonal announcements.]"
+  ],
+  "title_a_index": [
+    "Seasonal announcements."
+  ],
+  "title_sort": [
+    "[Seasonal announcements.]"
+  ],
+  "title_no_h_index": [
+    "[Seasonal announcements.]"
+  ],
+  "title_t": [
+    "[Seasonal announcements.]"
+  ],
+  "title_citation_display": [
+    "Seasonal announcements."
+  ],
+  "compiled_created_t": [
+    "[Seasonal announcements.]"
+  ],
+  "pub_created_display": [
+    "[New York, 1856-1984]"
+  ],
+  "pub_created_s": [
+    "[New York, 1856-1984]"
+  ],
+  "pub_citation_display": [
+    "New York"
+  ],
+  "pub_date_display": [
+    "1856"
+  ],
+  "pub_date_start_sort": [
+    "1856"
+  ],
+  "pub_date_end_sort": [
+    "1984"
+  ],
+  "cataloged_tdt": [
+    "2004-01-12T00:00:00Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "23 v. ; 24 cm."
+  ],
+  "description_t": [
+    "23 v. ; 24 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "23 v."
+  ],
+  "notes_index": [
+    "Title varies.",
+    "Binder's title: Seasonal announcements, [dates] NjP",
+    "Originally part of the Archives of Charles Scribner's Sons."
+  ],
+  "notes_display": [
+    "Title varies.",
+    "Binder's title: Seasonal announcements, [dates]",
+    "Originally part of the Archives of Charles Scribner's Sons."
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "publication_place_facet": [
+    "New York (State)"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Charles Scribner's Sons—Catalogs",
+    "Publishers' catalogs—United States",
+    "Booksellers' catalogs—United States"
+  ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "Charles Scribner's Sons—Catalogs",
+    "Publishers' catalogs—United States",
+    "Booksellers' catalogs—United States"
+  ],
+  "subject_unstem_search": [
+    "Charles Scribner's Sons—Catalogs",
+    "Publishers' catalogs—United States",
+    "Booksellers' catalogs—United States"
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": null,
+  "subject_facet": [
+    "Charles Scribner's Sons—Catalogs",
+    "Publishers' catalogs—United States",
+    "Booksellers' catalogs—United States",
+    "Publishers' catalogs—New York (State)—New York",
+    "Catalogs"
+  ],
+  "lcgft_s": [
+    "Catalogs"
+  ],
+  "rbgenr_s": [
+    "Publishers' catalogs—New York (State)—New York"
+  ],
+  "subject_topic_facet": [
+    "Charles Scribner's Sons",
+    "Publishers' catalogs",
+    "United States",
+    "Booksellers' catalogs"
+  ],
+  "genre_facet": [
+    "Publishers' catalogs",
+    "Catalogs"
+  ],
+  "related_name_json_1display": [
+    "{\"Related name\":[\"Scribner, Armstrong, and Company\",\"Charles Scribner and Company\"]}"
+  ],
+  "other_title_index": [
+    "Catalogue of Charles Scribner's Sons' publications and importations",
+    "Fall announcements",
+    "Fall publications",
+    "List of fall publications",
+    "Spring publications",
+    "List of spring publications",
+    "Spring books",
+    "Spring list",
+    "Summer book list",
+    "Summer list",
+    "Descriptive catalogue of original American works",
+    "Descriptive catalogue of the publications of Charles Scribner & Co.",
+    "Descriptive catalogue of the publications of Scribner, Armstrong & Co."
+  ],
+  "other_title_display": [
+    "Catalogue of Charles Scribner's Sons' publications and importations",
+    "Fall announcements",
+    "Fall publications",
+    "List of fall publications",
+    "Spring publications",
+    "List of spring publications",
+    "Spring books",
+    "Spring list",
+    "Summer book list",
+    "Summer list",
+    "Descriptive catalogue of original American works",
+    "Descriptive catalogue of the publications of Charles Scribner & Co.",
+    "Descriptive catalogue of the publications of Scribner, Armstrong & Co."
+  ],
+  "alt_title_246_display": [
+    "Catalogue of Charles Scribner's Sons' publications and importations",
+    "Fall announcements",
+    "Fall publications",
+    "List of fall publications",
+    "Spring publications",
+    "List of spring publications",
+    "Spring books",
+    "Spring list",
+    "Summer book list",
+    "Summer list",
+    "Descriptive catalogue of original American works",
+    "Descriptive catalogue of the publications of Charles Scribner & Co.",
+    "Descriptive catalogue of the publications of Scribner, Armstrong & Co."
+  ],
+  "standard_no_index": [
+    "4091034",
+    "4091034-princetondb"
+  ],
+  "holdings_1display": [
+    "{\"22601598580006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"2004-0115N\",\"call_number_browse\":\"2004-0115N\",\"items\":[{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1970-1973\",\"id\":\"23601598390006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010219614\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1901-1910\",\"id\":\"23601598560006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010220208\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1973-1975\",\"id\":\"23601598380006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010219606\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1911-1919\",\"id\":\"23601598550006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010206678\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1856-7, 1868, 1871\",\"id\":\"23601598570006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010222022\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1950-1952\",\"id\":\"23601598450006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010235875\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1947-1949\",\"id\":\"23601598460006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010235891\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1944-1946\",\"id\":\"23601598470006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010237954\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1940-1943\",\"id\":\"23601598480006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010237962\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1936-1939\",\"id\":\"23601598490006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010237970\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1953-1956\",\"id\":\"23601598440006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010219663\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1980-1982\",\"id\":\"23601598360006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010219598\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1979-1984\",\"id\":\"23601598370006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010206025\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1968-1970\",\"id\":\"23601598400006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010219622\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1962-1965\",\"id\":\"23601598420006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010219648\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1966-1967\",\"id\":\"23601598410006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010219630\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1957-1961\",\"id\":\"23601598430006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010219655\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1930-1935\",\"id\":\"23601598520006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010237988\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1926-1929\",\"id\":\"23601598530006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010217709\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598580006421\",\"enumeration\":\"1920-1925\",\"id\":\"23601598540006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010206686\",\"copy_number\":\"1\"}],\"location_has\":[\"1856-7 - 1980-1982\"],\"supplements\":[null],\"indexes\":[null]},\"22601598350006421\":{\"location_code\":\"rare$ex\",\"location\":\"Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"2004-0116N\",\"call_number_browse\":\"2004-0116N\",\"items\":[{\"holding_id\":\"22601598350006421\",\"enumeration\":\"1947-1949\",\"id\":\"23601598330006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010235883\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598350006421\",\"enumeration\":\"1927-1931\",\"id\":\"23601598340006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010237996\",\"copy_number\":\"1\"},{\"holding_id\":\"22601598350006421\",\"enumeration\":\"1950-1953\",\"id\":\"23601598320006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010219671\",\"copy_number\":\"1\"}],\"location_has\":[\"1927-1931, 1947-1949, 1950-1953\"],\"supplements\":[null],\"indexes\":[null]}}"
+  ],
+  "location_code_s": [
+    "rare$ex"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Rare Books"
+  ],
+  "advanced_location_s": [
+    "rare$ex",
+    "Special Collections"
+  ],
+  "name_title_browse_s": [
+    "Charles Scribner's Sons. Seasonal announcements."
+  ],
+  "call_number_display": [
+    "2004-0115N",
+    "2004-0116N"
+  ],
+  "call_number_browse_s": [
+    "2004-0115N",
+    "2004-0116N"
+  ],
+  "call_number_locator_display": [
+    "2004-0115N",
+    "2004-0116N"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
 }
 ]
