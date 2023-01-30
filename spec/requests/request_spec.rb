@@ -373,9 +373,10 @@ describe 'blacklight tests' do
     it 'are configured with a tooltip for removing the book format facet parameter' do
       stub_holding_locations
       get '/?f%5Bformat%5D%5B%5D=Book&q=&search_field=all_fields'
-      expect(response.body.include?('<i class="fa fa-times" aria-hidden="true" data-toggle="tooltip" data-original-title="Remove"></i>')).to eq true
+      close_button_with_tooltip = '<i class="fa fa-times" aria-hidden="true" data-toggle="tooltip" data-original-title="Remove"></i>'
+      expect(response.body).to include close_button_with_tooltip
       get '/?q=&search_field=all_fields'
-      expect(response.body.include?('<i class="fa fa-times" aria-hidden="true" data-toggle="tooltip" data-original-title="Remove"></i>')).to eq false
+      expect(response.body).not_to include close_button_with_tooltip
     end
   end
 
