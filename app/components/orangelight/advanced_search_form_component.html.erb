@@ -17,9 +17,9 @@
       </div>
     </div>
 
-    <% if search_filter_controls? %>
-      <div class="limit-criteria mb-4">
-        <h2 class="limit-criteria-heading h3"><%= t('blacklight.advanced_search.form.limit_criteria_heading_html')%></h2>
+    <div class="col-md-5">
+      <div class="limit-criteria">
+        <h2 class="limit-criteria-heading"><%= t('blacklight_advanced_search.form.limit_criteria_heading_html')%></h2>
 
         <div id="advanced_search_facets" class="limit_input row">
           <div class="advanced-facet-limits panel-group col-md-9 offset-md-3">
@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-    <% end %>
+    </div>
   </div>
 
   <% if sort_fields_select %>

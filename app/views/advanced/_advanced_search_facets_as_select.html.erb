@@ -1,5 +1,5 @@
 <% facet_field_names.each do |facet_field_name| %>
-  <%= render partial: 'facet_as_select', locals: { facet_field_name: facet_field_name } %>
+  <%= render partial: 'advanced/facet_as_select', locals: { facet_field_name: facet_field_name } %>
 <% end %> 
 <%# Publication Date is a range input %>
 <% pub_date = facet_configuration_for_field('pub_date_start_sort') %>
