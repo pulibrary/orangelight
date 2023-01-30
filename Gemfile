@@ -14,7 +14,7 @@ gem 'rsolr'
 # slider limit support
 gem 'blacklight_range_limit', '~> 8.2'
 # advanced search functionality
-gem 'blacklight_advanced_search', '~> 7.0'
+gem 'blacklight_advanced_search', '~> 8.0.0.alpha1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 # Modernizr.js library
