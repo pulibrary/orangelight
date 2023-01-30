@@ -3,12 +3,11 @@
 require "rails_helper"
 
 RSpec.describe Orangelight::AdvancedSearchFormComponent, type: :component do
-
   subject(:render) do
     component.render_in(view_context)
   end
 
-  let(:component) { described_class.new(url: '/whatever', response: response, params: params) }
+  let(:component) { described_class.new(url: '/whatever', response:, params:) }
   let(:response) { Blacklight::Solr::Response.new({ facet_counts: { facet_fields: { format: { 'Book' => 10, 'CD' => 5 } } } }.with_indifferent_access, {}) }
   let(:params) { {} }
 
