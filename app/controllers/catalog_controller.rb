@@ -12,6 +12,7 @@ class CatalogController < ApplicationController
   include BlacklightHelper
 
   before_action :redirect_browse
+  before_action BlacklightAdvancedSearch::RedirectLegacyParamsFilter, only: :index
 
   rescue_from Blacklight::Exceptions::RecordNotFound do
     alma_id = "99#{params[:id]}3506421"
@@ -693,9 +694,13 @@ class CatalogController < ApplicationController
   end
 
   def numismatics
-    @response = get_advanced_search_facets unless request.method == :post
+    unless request.method == :post
+      @response = search_service.search_results do |search_builder|
+        search_builder.except(:add_advanced_search_to_solr).append(:facets_for_advanced_search_form)
+      end
+    end
     respond_to do |format|
-      format.html { render :numismatics }
+      format.html { render "advanced/numismatics" }
       format.json { render plain: "Format not supported", status: :bad_request }
     end
   end
