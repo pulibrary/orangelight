@@ -32,7 +32,6 @@ class CatalogController < ApplicationController
 
   configure_blacklight do |config|
     config.raw_endpoint.enabled = true
-    config.advanced_search_component = Orangelight::FacetFieldCheckboxesComponent
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     config.advanced_search[:url_key] ||= 'advanced'
