@@ -1,5 +1,5 @@
 default: &default
-  read_write_apikey: <%= ENV['ALMA_BIB_READ_WRITE'] %>
+  read_write_apikey: <%= ENV['ALMA_READ_WRITE'] || ENV['ALMA_BIB_READ_WRITE'] %>
 
 development:
   <<: *default
