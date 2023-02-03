@@ -1,4 +1,3 @@
-<%= render 'shared/start_over_row' %>
 <% if constraints? %>
   <div class="constraints well search_history">
     <h4><%= t 'blacklight.advanced_search.form.search_context' %></h4>
@@ -10,10 +9,12 @@
 
 <%= form_tag @url, method: @method, class: @classes.join(' '), role: 'search', 'aria-label' => t('blacklight.search.form.submit') do %>
   <%= render_hash_as_hidden_fields(@params) %>
-
-    <div class="input-criteria">
-      <div id="guided_search">
-        <%= render 'advanced/guided_search_fields' %>
+  <div class="advanced row">
+    <div class="col-md-7">
+      <div class="input-criteria">
+        <div id="guided_search">
+          <%= render 'advanced/guided_search_fields' %>
+        </div>
       </div>
     </div>
 
@@ -32,18 +33,15 @@
     </div>
   </div>
 
-  <% if sort_fields_select %>
-    <div class="form-group row mb-4">
-      <%= content_tag :h2, t('blacklight.advanced_search.form.sort_label'), class: 'col-md-3 col-form-label text-md-right' %>
-      <div class="col">
-        <%= sort_fields_select %>
-      </div>
+  <div class="search-submit-buttons clearfix col-sm-7">
+    <div class="sort-buttons pull-left">
+      <%= label_tag(:sort, t('blacklight.advanced_search.form.sort_label'), :class => "control-label") %>
+      <%= sort_fields_select %>
     </div>
-  <% end %>
-
-  <div class="form-group row">
-    <div class="submit-buttons col-md-9 offset-md-3">
-      <%= submit_tag t('blacklight.advanced_search.form.search_btn_html'), class: 'btn btn-primary advanced-search-submit', id: "advanced-search-submit" %>
+    <div class="submit-buttons pull-right">
+      <div class="submit-buttons col-md-9 offset-md-3">
+        <%= submit_tag t('blacklight.advanced_search.form.search_btn_html'), class: 'btn btn-primary advanced-search-submit', id: "advanced-search-submit" %>
+      </div>
     </div>
   </div>
 <% end %>
