@@ -6,7 +6,11 @@ class FeedbackController < ApplicationController
   before_action :current_user_email
   before_action :build_feedback_form, only: [:create]
   before_action :build_ask_a_question_form, only: [:ask_a_question]
+<<<<<<< HEAD
   before_action :build_report_harmful_language_form, only: [:report_harmful_language]
+=======
+  before_action :build_suggest_correction_form, only: [:suggest_correction]
+>>>>>>> bcb8fd08 (Resolved merge conflicits)
 
   def new
     @feedback_form = FeedbackForm.new if @feedback_form.nil?
@@ -25,6 +29,8 @@ class FeedbackController < ApplicationController
   end
 
   def ask_a_question; end
+
+  def suggest_correction; end
 
   def report_harmful_language; end
 
@@ -51,6 +57,7 @@ class FeedbackController < ApplicationController
       params.require(:ask_a_question_form).permit(:id, :title)
     end
 
+<<<<<<< HEAD
     def build_report_harmful_language_form
       @harmful_language_form = ReportHarmfulLanguageForm.new(
         context: page_url(harmful_language_params),
@@ -62,6 +69,19 @@ class FeedbackController < ApplicationController
       params.require(:report_harmful_language_form).permit(:id, :title)
     end
 
+=======
+    def build_suggest_correction_form
+      @suggest_correction_form = SuggestCorrectionForm.new(
+        context: page_url(suggest_correction_form_params),
+        title: suggest_correction_form_params['title']
+      )
+    end
+  
+    def suggest_correction_form_params
+      params.require(:suggest_correction_form).permit(:id, :title)
+    end
+  
+>>>>>>> bcb8fd08 (Resolved merge conflicits)
     def page_url(params)
       solr_document_url(id: params['id'])
     end

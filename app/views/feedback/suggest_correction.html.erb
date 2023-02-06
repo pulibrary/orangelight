@@ -1,0 +1,17 @@
+<div data-blacklight-modal="container">
+  <div class="modal-header">
+    <h3 class="modal-title">Suggest a Correction</h3>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div id="generalFeedback" class="form-wrapper col">
+        <div class="form-wrapper">
+          <%= render partial: "catalog/suggest_correction_form",
+              locals: { form: @suggest_correction_form }
+          %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
