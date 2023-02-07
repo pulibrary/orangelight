@@ -10,12 +10,9 @@ describe 'stackmap', type: :system, js: true do
 
   it 'has a link to the stackmap' do
     visit '/catalog/99125428126306421'
-    expect(page).to have_link('Where to find it')
-    click_link('Where to find it')
-    expect(page).to have_selector('.stackmap-src')
-    within_frame(page.find('.stackmap-src')) do
-      expect(page).to have_selector('#map')
-      expect(page).to have_button('Zoom Out')
-    end
+    expect(page).to have_button('Map it', wait: 5)
+    click_button 'Map it'
+    expect(page).to have_button('zoom in')
+    expect(page).to have_no_link('Where to find it')
   end
 end
