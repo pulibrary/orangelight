@@ -97,6 +97,10 @@ Rails.application.routes.draw do
   get "/ask_a_question", to: "feedback#ask_a_question"
   post "/contact/question", to: "contact#question"
 
+  # For "Report Harmful Language" form
+  get "/report_harmful_language", to: "feedback#report_harmful_language"
+  post "/contact/report_harmful_language", to: "contact#report_harmful_language"
+
   get '/thumbnail/:id', to: 'thumbnail#show'
 
   # error pages

@@ -1,0 +1,28 @@
+<div class="modal-body">
+  <%= render :partial=>'shared/flash_msg' %>
+  <div>
+    <p>Princeton University Library aims to describe materials in a manner that is respectful to all individuals and communities. However, for a variety of reasons, users may encounter offensive or harmful language—for example, language that is racist, sexist, or homophobic–in our catalog.</p>
+
+    <p>Staff are currently implementing practices to address offensive or harmful language, particularly in subject headings. We recognize that terminology evolves over time and that efforts to create respectful and inclusive descriptions and subject headings must be ongoing. You can help us address this issue by reporting any <a href="https://library.princeton.edu/about/languagestatement">harmful or offensive language</a> you encounter on this site by using the form below. If you would prefer to report anonymously, you may leave the name and email fields blank.</p>
+  </div>
+  <%= simple_form_for(
+        form, 
+        url: contact_report_harmful_language_path, 
+        data:  { blacklight_modal: 'trigger' }, 
+        html: {class: "modal_form"}
+      ) do |f| 
+  %>
+    <%= f.label :name %><br>
+    <%= f.input_field :name %><br>
+    <%= f.label :email %><br>
+    <%= f.input_field :email %><br>
+    <%= f.label :message %><br>
+    <%= f.input_field :message, as: :text, style: "width: 100%" %><br>
+    <%= f.input :context, as: :hidden %>
+    <%= f.input :title, as: :hidden %>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      <%= f.submit "Send", class: "btn btn-primary", id: 'submit-question' %>
+    </div>
+  <% end %>
+</div>

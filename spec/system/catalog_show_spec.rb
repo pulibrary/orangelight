@@ -109,5 +109,21 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       title_field = page.find_field("ask_a_question_form[title]", type: :hidden)
       expect(title_field.value).to eq("Bible, Latin.")
     end
+
+    it 'opens a modal for Report Harmful Language' do
+      visit "catalog/#{document_id}"
+      click_on('Report Harmful Language')
+      expect(page).to have_content('users may encounter offensive or harmful language')
+      expect(page).to have_field('Name')
+      fill_in('Name', with: 'Test User')
+      expect(page).to have_field('Email')
+      fill_in('Email', with: 'testuser@test-domain.org')
+      expect(page).to have_field('Message')
+      fill_in('Message', with: 'I am concerned about this subject heading')
+      context_field = page.find_field("report_harmful_language_form[context]", type: :hidden)
+      expect(context_field.value).to include("/catalog/#{document_id}")
+      title_field = page.find_field("report_harmful_language_form[title]", type: :hidden)
+      expect(title_field.value).to eq("Bible, Latin.")
+    end
   end
 end
