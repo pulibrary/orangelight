@@ -9,17 +9,20 @@
         form, 
         url: contact_report_harmful_language_path, 
         data:  { blacklight_modal: 'trigger' }, 
-        html: {class: "modal_form"}
+        html: { class: "modal_form" }
       ) do |f| 
   %>
-    <%= f.label :name %><br>
-    <%= f.input_field :name %><br>
+    <%= f.label :name, style: "width: 100%" %><br>
+    <%= f.input_field :name, style: "width: 100%" %><br>
     <%= f.label :email %><br>
-    <%= f.input_field :email %><br>
+    <%= f.input_field :email, style: "width: 100%" %><br>
     <%= f.label :message %><br>
     <%= f.input_field :message, as: :text, style: "width: 100%" %><br>
-    <%= f.input :context, as: :hidden %>
-    <%= f.input :title, as: :hidden %>
+    <h4>You are reporting the use of harmful language in this catalog record:</h4>
+    <%= f.label :title %><br>
+    <%= f.input_field :title, as: :text, readonly: true, style: "width: 100%" %><br>
+    <%= f.label :context %><br>
+    <%= f.input_field :context, readonly: true, style: "width: 100%" %><br>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       <%= f.submit "Send", class: "btn btn-primary", id: 'submit-question' %>
