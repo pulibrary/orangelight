@@ -57,12 +57,10 @@ module ApplicationHelper
   # @return [String] the markup
   def locate_link_with_glyph(location, document, call_number, library)
     link = locate_url(location, document, call_number, library)
-    stackmap_url = "/catalog/#{document['id']}/stackmap?loc=#{location}"
-    stackmap_url << "&cn=#{call_number}" if call_number
     if link.nil? || (find_it_location?(location) == false)
       ''
     else
-      ' ' + link_to('<span class="fa fa-map-marker" aria-hidden="true"></span>'.html_safe, stackmap_url, title: t('blacklight.holdings.stackmap'), class: 'find-it', 'data-map-location' => location.to_s, 'data-blacklight-modal' => 'trigger', 'aria-label' => 'Where to find it')
+      ' ' + content_tag(:span, '', data: { 'map-location': location.to_s })
     end
   end
 

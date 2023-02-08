@@ -390,19 +390,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     stackmap_url << "&cn=#{call_number}" if call_number
 
     markup = ''
-    if find_it_location?(location)
-      child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
-        <span class="fa fa-map-marker" aria-hidden="true"></span>)
-      markup = link_to(child.html_safe, stackmap_url,
-                       title: I18n.t('blacklight.holdings.stackmap'),
-                       class: 'find-it',
-                       data: {
-                         'map-location' => location.to_s,
-                         'blacklight-modal' => 'trigger',
-                         'call-number' => call_number,
-                         'library' => library
-                       })
-    end
+    markup = content_tag(:span, '', data: { 'map-location': location.to_s }) if find_it_location?(location)
     ' ' + markup
   end
 
