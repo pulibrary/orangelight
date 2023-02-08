@@ -13,7 +13,6 @@ export default class OrangelightUiLoader {
     this.setup_linked_records()
     this.setup_show_more_fields()
     this.setup_modal_focus()
-    this.setup_modal_close_on_submit()
     this.setup_viewers()
     this.setup_book_covers()
     this.setup_bookmark_all()
@@ -24,27 +23,6 @@ export default class OrangelightUiLoader {
     $("body").on("shown.bs.modal", (event) => {
       $(event.target).find('input[type!="hidden"]').first().focus();
     })
-  }
-
-  setup_modal_close_on_submit() {
-    $('body').on('loaded.blacklight.blacklight-modal', () => {
-      document.getElementById('submit-suggestion').addEventListener('click', () => { 
-
-
-        $('#blacklight-modal').modal('toggle')
-        // Blacklight.modal.hide(event.target);
-        // event.preventDefault();
-
-        // var modalFlashes = $(this).find('.flash_messages');
-        const node = document.createElement("div");
-        const textnode = document.createTextNode("Water");
-        node.appendChild(textnode);
-        node.classList.add('alert')
-        node.classList.add('alert-info')
-        var mainFlashes = $('.flash_messages .container');
-        mainFlashes.append(node);
-      })
-    });
   }
 
   setup_availability() {

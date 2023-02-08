@@ -2,7 +2,7 @@
 
 class SuggestCorrectionForm
   include ActiveModel::Model
-  attr_accessor :name, :email, :box_container_number, :message, :context, :title
+  attr_accessor :name, :email, :message, :context, :title
 
   validates :name, :email, :message, :context, presence: true
   validates :email, email: true
