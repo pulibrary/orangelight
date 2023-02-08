@@ -12,9 +12,12 @@ describe 'Searching', type: :system, js: false do
     expect(page).to have_selector '.fa-search[aria-hidden="true"]'
   end
 
-  it 'renders an accessible link to the stack map' do
+  it 'renders an accessible link to the stack map', js: true do
     visit '/catalog?q=&search_field=all_fields'
-    expect(page).to have_selector '.fa-map-marker[aria-hidden="true"]'
+    # Right now the fa-map-marker selector is not aria-hidden
+    # So this is a legitimate failure
+    expect(page).to have_selector('.fa-map-marker', wait: 5)
+    expect(page).to have_selector('.fa-map-marker[aria-hidden="true"]', wait: 5)
   end
 
   it 'renders an accessible icon for item icons' do

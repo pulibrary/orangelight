@@ -256,15 +256,17 @@ RSpec.describe ApplicationHelper do
       before { stub_holding_locations }
 
       # For most locations a map icon is displayed to help patrons if they want to fetch the item.
+      # The icon is displayed based on the presence of data-map-location
       it 'includes the find it icon' do
         search_result = helper.holding_block_search(SolrDocument.new(document_with_find_it_link))
-        expect(search_result).to include "fa-map-marker"
+        expect(search_result).to include "data-map-location"
       end
 
       # For certain locations a map icon is not displayed if the location is not accessible by patrons.
+      # The icon is displayed based on the presence of data-map-location
       it 'does not include the find it icon' do
         search_result = helper.holding_block_search(SolrDocument.new(document_without_find_it_link))
-        expect(search_result).not_to include "fa-map-marker"
+        expect(search_result).not_to include "data-map-location"
       end
     end
 

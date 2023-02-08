@@ -195,7 +195,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(holding_location_markup).to include '<span class="location-text"'
       expect(holding_location_markup).to include 'Firestone Library'
       expect(holding_location_markup).to include 'data-holding-id="3668455"'
-      expect(holding_location_markup).to include "href=\"/catalog/123456/stackmap?loc=f&amp;cn=#{call_number}\""
+      expect(holding_location_markup).to include "data-map-location=\"#{holding.first[1]["location_code"]}"
     end
   end
 
@@ -727,7 +727,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(holding_location_markup).to include '<span class="location-text"'
       expect(holding_location_markup).to include 'Mendel Music Library: Reserve'
       expect(holding_location_markup).to include 'data-holding-id="22270490550006421"'
-      expect(holding_location_markup).to include "href=\"/catalog/99112325153506421/stackmap?loc=mendel$res&amp;cn=#{call_number}\""
+      expect(holding_location_markup).to include "data-map-location=\"#{holding.first[1]["location_code"]}"
     end
   end
 
@@ -786,7 +786,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(holding_location_markup).to include '<span class="location-text"'
       expect(holding_location_markup).to include 'Remote Storage (ReCAP): Manuscripts. Special Collections Use Only'
       expect(holding_location_markup).to include 'data-holding-id="22939015790006421"'
-      expect(holding_location_markup).to include "href=\"/catalog/99125501031906421/stackmap?loc=rare$xmr&amp;cn=#{call_number}\""
+      expect(holding_location_markup).to include "data-map-location=\"#{holding.first[1]["location_code"]}"
     end
 
     it 'generates a "service-conditional" class' do
