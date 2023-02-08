@@ -60,7 +60,7 @@ class FeedbackController < ApplicationController
         title: suggest_correction_form_params['title']
       )
     end
-  
+
     def suggest_correction_form_params
       params.require(:suggest_correction_form).permit(:id, :title)
     end
