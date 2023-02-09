@@ -1,0 +1,9 @@
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+  <% component.title { t('blacklight.report_harmful_language.form.title') } %>
+
+  <%= render partial: '/shared/flash_msg' %>
+  <p>Dear Researcher,</p>
+  <p>Thank you for reporting problematic language in the Princeton University Library catalog. Staff will review the language and assess options related to your suggestion. If you have submitted your email address, we may reach out to you if we have questions. We appreciate your feedback.</p>
+  <p>Sincerely,</p>
+  <p>Inclusive and Reparative Metadata Working Group, Princeton University Library</p>
+<% end %>

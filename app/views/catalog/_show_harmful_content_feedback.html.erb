@@ -14,5 +14,18 @@
       data: { blacklight_modal: 'trigger' }
     ) %>
   <a class="navbar-brand" href="#">Suggest a Correction</a>
-  <a class="navbar-brand" href="#">Report Harmful Language</a>
+  <%= link_to(
+    'Report Harmful Language',
+    {
+      controller: "feedback",
+      action: "report_harmful_language",
+      report_harmful_language_form: { 
+        id: @document,
+        title: @document['title_display']
+      }
+    },
+    title: "Report Harmful Language",
+    class: "report-harmful-language",
+    data: { blacklight_modal: 'trigger' }
+  ) %>
 </nav>

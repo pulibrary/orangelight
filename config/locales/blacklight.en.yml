@@ -82,6 +82,9 @@ en:
     ask_a_question:
       form:
         title: 'Ask a Question'
+    report_harmful_language:
+      form:
+        title: 'Report Harmful Language'
     email:
       form:
         title: 'Email the catalog record and (optional) message.'

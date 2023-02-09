@@ -9,4 +9,12 @@ RSpec.describe FeedbackController, type: :controller do
       expect(response).to be_successful
     end
   end
+
+  describe "#report_harmful_language" do
+    it "routes to the Report Harmful Language form" do
+      get :report_harmful_language, params: { report_harmful_language_form: { id: '123', title: 'My cool title' } }
+
+      expect(response).to be_successful
+    end
+  end
 end
