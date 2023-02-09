@@ -77,9 +77,8 @@ RSpec.describe ReportHarmfulLanguageForm do
       mail = ActionMailer::Base.deliveries.first
       expect(mail.subject).to eq "[Possible Harmful Language] Example Record"
       expect(mail.from).to eq ["test-harmful-content@princeton.edu"]
-      # The behavior for empty Name and Email are TBD at the moment
-      # expect(mail.body).to include "Name: Test"
-      # expect(mail.body).to include "Email: test@test.org"
+      expect(mail.body).to include "Name: "
+      expect(mail.body).to include "Email: "
       expect(mail.body).to include "[Possible Harmful Language] Example Record"
       expect(mail.body).to include "Comments: I am concerned about this subject heading"
       expect(mail.body).to include "Context: http://example.com/catalog/1"

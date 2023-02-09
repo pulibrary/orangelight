@@ -87,9 +87,8 @@ describe ContactMailer, type: :mailer do
       end
 
       it "renders the body" do
-        # The behavior for empty Name and Email are TBD at the moment
-        # expect(mail.body.encoded).to have_content('Name: Test')
-        # expect(mail.body.encoded).to have_content('Email: test@test.org')
+        expect(mail.body.encoded).to have_content('Name: ')
+        expect(mail.body.encoded).to have_content('Email: ')
         expect(mail.body.encoded).to have_content('Subject: [Possible Harmful Language] Example Record')
         expect(mail.body.encoded).to have_content('Comments: I am concerned about this subject heading')
         expect(mail.body.encoded).to have_content('Context: http://example.com/catalog/1')
