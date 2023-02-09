@@ -110,6 +110,21 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       expect(title_field.value).to eq("Bible, Latin.")
     end
 
+    it 'opens a modal for Suggest a Correction' do
+      visit "catalog/#{document_id}"
+      click_on('Suggest a Correction')
+      expect(page).to have_field('Name')
+      fill_in('Name', with: 'Test User')
+      expect(page).to have_field('Email')
+      fill_in('Email', with: 'testuser@test-domain.org')
+      expect(page).to have_field('Message')
+      fill_in('Message', with: 'Replace with correct thumbnail.')
+      context_field = page.find_field("suggest_correction_form[context]", type: :hidden)
+      expect(context_field.value).to include("/catalog/#{document_id}")
+      title_field = page.find_field("suggest_correction_form[title]", type: :hidden)
+      expect(title_field.value).to eq("Bible, Latin.")
+    end
+
     it 'opens a modal for Report Harmful Language' do
       visit "catalog/#{document_id}"
       click_on('Report Harmful Language')
