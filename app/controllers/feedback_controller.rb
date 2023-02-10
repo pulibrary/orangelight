@@ -75,7 +75,7 @@ class FeedbackController < ApplicationController
     def harmful_language_params
       params.require(:report_harmful_language_form).permit(:id, :title)
     end
-  
+
     def page_url(params)
       solr_document_url(id: params['id'])
     end
