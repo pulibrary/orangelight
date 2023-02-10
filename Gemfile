@@ -39,7 +39,7 @@ gem 'chosen-rails'
 
 gem 'blacklight-marc', '~> 7.1.0'
 # Capistrano
-gem 'capistrano', '~> 3.4.0'
+gem 'capistrano', '~> 3.4'
 gem 'capistrano-passenger'
 gem 'devise', '>= 4.6.0'
 gem 'devise-guests', '~> 0.5'
