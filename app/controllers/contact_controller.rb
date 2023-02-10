@@ -43,4 +43,5 @@ class ContactController < ApplicationController
 
     def report_harmful_language_params
       params[:report_harmful_language_form].permit!
+    end
 end
