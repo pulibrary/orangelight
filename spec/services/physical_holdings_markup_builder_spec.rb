@@ -787,6 +787,8 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(holding_location_markup).to include 'Remote Storage (ReCAP): Manuscripts. Special Collections Use Only'
       expect(holding_location_markup).to include 'data-holding-id="22939015790006421"'
       expect(holding_location_markup).to include "data-map-location=\"#{holding.first[1]['location_code']}"
+      expect(holding_location_markup).to include "data-location-library=\"#{holding.first[1]['library']}"
+      expect(holding_location_markup).to include "data-location-name=\"#{location}"
     end
 
     it 'generates a "service-conditional" class' do

@@ -55,12 +55,12 @@ module ApplicationHelper
   # @param call_number [String] the call number for the holding
   # @param library [String] the library in which the item is held
   # @return [String] the markup
-  def locate_link_with_glyph(location, document, call_number, library)
+  def locate_link_with_glyph(location, document, call_number, library, location_name)
     link = locate_url(location, document, call_number, library)
     if link.nil? || (find_it_location?(location) == false)
       ''
     else
-      ' ' + content_tag(:span, '', data: { 'map-location': location.to_s })
+      ' ' + content_tag(:span, '', data: { 'map-location': location.to_s, 'location-library': library, 'location-name': location_name })
     end
   end
 
@@ -218,7 +218,7 @@ module ApplicationHelper
     render_arrow = (location.present? && holding['call_number'].present?)
     arrow = render_arrow ? ' &raquo; ' : ''
     cn_value = holding['call_number_browse'] || holding['call_number']
-    locate_link = locate_link_with_glyph(holding['location_code'], document, cn_value, holding['library'])
+    locate_link = locate_link_with_glyph(holding['location_code'], document, cn_value, holding['library'], holding['location'])
     location_display = content_tag(:span, location, class: 'results_location') + arrow.html_safe +
                        content_tag(:span, %(#{holding['call_number']}#{locate_link}).html_safe, class: 'call-number')
     location_display.html_safe

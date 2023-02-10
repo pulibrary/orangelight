@@ -390,7 +390,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     stackmap_url << "&cn=#{call_number}" if call_number
 
     markup = ''
-    markup = content_tag(:span, '', data: { 'map-location': location.to_s }) if find_it_location?(location)
+    markup = content_tag(:span, '', data: { 'map-location': location.to_s, 'location-library': library, 'location-name': holding["location"] }) if find_it_location?(location)
     ' ' + markup
   end
 
