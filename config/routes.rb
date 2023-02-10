@@ -97,6 +97,10 @@ Rails.application.routes.draw do
   get "/ask_a_question", to: "feedback#ask_a_question"
   post "/contact/question", to: "contact#question"
 
+  # For "Suggest A Correction form"
+  get '/suggest_correction', to: 'feedback#suggest_correction'
+  post '/contact/suggestion', to: 'contact#suggestion'
+
   # For "Report Harmful Language" form
   get "/report_harmful_language", to: "feedback#report_harmful_language"
   post "/contact/report_harmful_language", to: "contact#report_harmful_language"

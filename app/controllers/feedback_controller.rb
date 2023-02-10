@@ -6,6 +6,7 @@ class FeedbackController < ApplicationController
   before_action :current_user_email
   before_action :build_feedback_form, only: [:create]
   before_action :build_ask_a_question_form, only: [:ask_a_question]
+  before_action :build_suggest_correction_form, only: [:suggest_correction]
   before_action :build_report_harmful_language_form, only: [:report_harmful_language]
 
   def new
@@ -25,6 +26,8 @@ class FeedbackController < ApplicationController
   end
 
   def ask_a_question; end
+
+  def suggest_correction; end
 
   def report_harmful_language; end
 
@@ -49,6 +52,17 @@ class FeedbackController < ApplicationController
 
     def question_form_params
       params.require(:ask_a_question_form).permit(:id, :title)
+    end
+
+    def build_suggest_correction_form
+      @suggest_correction_form = SuggestCorrectionForm.new(
+        context: page_url(suggest_correction_form_params),
+        title: suggest_correction_form_params['title']
+      )
+    end
+
+    def suggest_correction_form_params
+      params.require(:suggest_correction_form).permit(:id, :title)
     end
 
     def build_report_harmful_language_form

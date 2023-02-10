@@ -11,6 +11,17 @@ class ContactController < ApplicationController
     end
   end
 
+  def suggestion
+    @form = SuggestCorrectionForm.new(suggestion_params)
+    if @form.valid? && @form.submit
+      flash[:success] = 'Your suggestion has been submitted'
+
+      render "suggestion_success"
+    else
+      render partial: "catalog/suggest_correction_form", locals: { form: @form }, status: :unprocessable_entity
+    end
+  end
+
   def report_harmful_language
     @form = ReportHarmfulLanguageForm.new(report_harmful_language_params)
     if @form.valid? && @form.submit
@@ -26,6 +37,10 @@ class ContactController < ApplicationController
 
     def question_params
       params[:ask_a_question_form].permit!
+    end
+
+    def suggestion_params
+      params[:suggest_correction_form].permit!
     end
 
     def report_harmful_language_params

@@ -1,19 +1,32 @@
 <nav class="navbar navbar-expand-lg harmful-content-feedback" aria-label="feedback">
-    <%= link_to(
-      'Ask a Question',
-      {
-        controller: "feedback",
-        action: "ask_a_question",
-        ask_a_question_form: { 
-          id: @document,
-          title: @document['title_display']
-        }
-      },
-      title: "Ask a Question",
-      class: "ask-a-question",
-      data: { blacklight_modal: 'trigger' }
+  <%= link_to(
+    'Ask a Question',
+    {
+      controller: "feedback",
+      action: "ask_a_question",
+      ask_a_question_form: { 
+        id: @document,
+        title: @document['title_display']
+      }
+    },
+    title: "Ask a Question",
+    class: "ask-a-question",
+    data: { blacklight_modal: 'trigger' }
     ) %>
-  <a class="navbar-brand" href="#">Suggest a Correction</a>
+  <%= link_to(
+    'Suggest a Correction',
+    {
+      controller: "feedback",
+      action: "suggest_correction",
+      suggest_correction_form: { 
+        id: @document,
+        title: @document['title_display']
+       }
+    },
+    title: "Suggest a Correction",
+    class: "suggest-correction",
+    data: { blacklight_modal: 'trigger' }
+    ) %>
   <%= link_to(
     'Report Harmful Language',
     {
