@@ -13,4 +13,5 @@ class ContactMailer < ApplicationMailer
   def harmful_language
     @form = params[:form]
     mail(to: @form.routed_mail_to, from: @form.from_email, subject: @form.email_subject)
+  end
 end
