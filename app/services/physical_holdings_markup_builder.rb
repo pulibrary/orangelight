@@ -398,6 +398,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                        class: 'find-it',
                        data: {
                          'map-location' => location.to_s,
+                         'location-library' => library,
+                         'location-name' => holding['location'],
                          'blacklight-modal' => 'trigger',
                          'call-number' => call_number,
                          'library' => library
