@@ -26,4 +26,18 @@ describe 'search requests for the catalog' do
       expect(response.body).to match(/start over/)
     end
   end
+
+  describe 'atom feed' do
+    let(:url) do
+      "/catalog?format=atom&search_field=all_fields&q="
+    end
+
+    before { stub_holding_locations }
+
+    it 'renders the page' do
+      get url
+      expect(response).to be_successful
+      expect(response.content_type).to eq("application/atom+xml; charset=utf-8")
+    end
+  end
 end
