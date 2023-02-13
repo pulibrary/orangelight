@@ -15,7 +15,7 @@ xml.entry do
 
   xml.author { xml.name(document.to_semantic_values[:author].first) } if document.to_semantic_values.key? :author
 
-  with_format('html') do
+  with_format(:html) do
     xml.summary 'type' => 'html' do
       xml.text! render partial: 'atom_index', locals: { document: }
     end
