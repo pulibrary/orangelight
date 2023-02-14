@@ -117,11 +117,28 @@ jobs:
           name: Index Test Data
           command: bundle exec rake pulsearch:solr:index
       - ruby/rspec-test
-      - run:
-          name: Run JS unit tests
-          command: bundle exec yarn test
       - store_test_results:
           path: ~/rspec
+
+  eslint:
+      executor: basic-executor
+      steps:
+        - attach_workspace:
+            at: '~/orangelight'
+        - run: 
+            name: Run eslint
+            command: yarn run eslint app/javascript/orangelight/availability.es6
+  
+  js_tests:
+      executor: basic-executor
+      steps:
+        - attach_workspace:
+            at: '~/orangelight'
+        - run: 
+            name: Run JS unit tests
+            command: bundle exec yarn test
+        - store_test_results:
+            path: ~/rspec
 
   rubocop:
     executor: basic-executor
@@ -148,6 +165,12 @@ workflows:
     jobs:
       - build
       - rubocop:
+         requires:
+          - build
+      - eslint:
+         requires:
+          - build
+      - js_tests:
          requires:
           - build
       - test:

@@ -1,0 +1,8 @@
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+  <% component.title { t('blacklight.report_harmful_language.form.title') } %>
+  <% component.body do %>
+    <%= render partial: "catalog/report_harmful_language_form",
+        locals: { form: @harmful_language_form }
+    %>  
+  <% end %>
+<% end %>
