@@ -259,6 +259,9 @@ RSpec.describe ApplicationHelper do
       it 'includes the find it icon' do
         search_result = helper.holding_block_search(SolrDocument.new(document_with_find_it_link))
         expect(search_result).to include "fa-map-marker"
+        expect(search_result).to include "data-map-location"
+        expect(search_result).to include "data-location-name"
+        expect(search_result).to include "data-location-library"
       end
 
       # For certain locations a map icon is not displayed if the location is not accessible by patrons.
