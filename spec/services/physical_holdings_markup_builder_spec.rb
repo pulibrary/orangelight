@@ -190,12 +190,32 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   describe '.holding_location' do
     let(:holding_location_markup) { builder.holding_location(holding.first[1], location, holding_id, call_number) }
 
-    it 'generates the markup for the holding locations' do
-      expect(holding_location_markup).to include '<td class="library-location"'
-      expect(holding_location_markup).to include '<span class="location-text"'
-      expect(holding_location_markup).to include 'Firestone Library'
-      expect(holding_location_markup).to include 'data-holding-id="3668455"'
-      expect(holding_location_markup).to include "data-map-location=\"#{holding.first[1]['location_code']}"
+    context 'with firestone_locator on' do
+      before do
+        allow(Flipflop).to receive(:firestone_locator?).and_return(true)
+      end
+
+      it 'includes a link with mapping details' do
+        expect(holding_location_markup).to include '<td class="library-location"'
+        expect(holding_location_markup).to include "href=\"/catalog/123456/stackmap?loc=f&amp;cn=#{call_number}\""
+        expect(holding_location_markup).to include 'Firestone Library'
+        expect(holding_location_markup).to include 'data-holding-id="3668455"'
+        expect(holding_location_markup).to include "data-map-location=\"#{holding.first[1]['location_code']}"
+      end
+    end
+
+    context 'with firestone_locator off' do
+      before do
+        allow(Flipflop).to receive(:firestone_locator?).and_return(false)
+      end
+
+      it 'includes a span with mapping details' do
+        expect(holding_location_markup).to include '<td class="library-location"'
+        expect(holding_location_markup).to include '<span class="location-text"'
+        expect(holding_location_markup).to include 'Firestone Library'
+        expect(holding_location_markup).to include 'data-holding-id="3668455"'
+        expect(holding_location_markup).to include "data-map-location=\"#{holding.first[1]['location_code']}"
+      end
     end
   end
 

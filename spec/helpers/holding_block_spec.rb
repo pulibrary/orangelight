@@ -255,14 +255,32 @@ RSpec.describe ApplicationHelper do
 
       before { stub_holding_locations }
 
-      # For most locations a map icon is displayed to help patrons if they want to fetch the item.
-      # The icon is displayed based on the presence of data-map-location
-      it 'includes the find it icon' do
-        search_result = helper.holding_block_search(SolrDocument.new(document_with_find_it_link))
-        expect(search_result).to include "fa-map-marker"
-        expect(search_result).to include "data-map-location"
-        expect(search_result).to include "data-location-name"
-        expect(search_result).to include "data-location-library"
+      context 'with Firestone Locator off' do
+        before do
+          allow(Flipflop).to receive(:firestone_locator?).and_return(false)
+        end
+        # For most locations a map icon is displayed to help patrons if they want to fetch the item.
+        it 'includes the find it icon' do
+          search_result = helper.holding_block_search(SolrDocument.new(document_with_find_it_link))
+          # The icon is displayed based on the presence of data-map-location
+          expect(search_result).to include "data-map-location"
+          expect(search_result).to include "data-location-name"
+          expect(search_result).to include "data-location-library"
+        end
+      end
+
+      context 'with Firestone Locator on' do
+        before do
+          allow(Flipflop).to receive(:firestone_locator?).and_return(true)
+        end
+
+        it 'includes the find it icon' do
+          search_result = helper.holding_block_search(SolrDocument.new(document_with_find_it_link))
+          expect(search_result).to include "fa-map-marker"
+          expect(search_result).to include "data-map-location"
+          expect(search_result).to include "data-location-name"
+          expect(search_result).to include "data-location-library"
+        end
       end
 
       # For certain locations a map icon is not displayed if the location is not accessible by patrons.

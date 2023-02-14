@@ -59,9 +59,29 @@ module ApplicationHelper
     link = locate_url(location, document, call_number, library)
     if link.nil? || (find_it_location?(location) == false)
       ''
+    elsif Flipflop.firestone_locator?
+      stackmap_url_markup(location, library, location_name, document['id'], call_number)
     else
-      ' ' + content_tag(:span, '', data: { 'map-location': location.to_s, 'location-library': library, 'location-name': location_name })
+      stackmap_span_markup(location, library, location_name)
     end
+  end
+
+  def stackmap_url_markup(location, library, location_name, doc_id, call_number)
+    stackmap_url = "/catalog/#{doc_id}/stackmap?loc=#{location}"
+    stackmap_url << "&cn=#{call_number}" if call_number
+
+    link_to('<span class="fa fa-map-marker" aria-hidden="true"></span>'.html_safe, stackmap_url, title: t('blacklight.holdings.stackmap'), class: 'find-it', data: { 'map-location': location.to_s, 'blacklight-modal': 'trigger', 'location-library': library, 'location-name': location_name }, 'aria-label' => 'Where to find it')
+  end
+
+  def stackmap_span_markup(location, library, location_name)
+    ' ' + content_tag(
+      :span, '',
+      data: {
+        'map-location': location.to_s,
+        'location-library': library,
+        'location-name': location_name
+      }
+    )
   end
 
   # Generate the markup for the block containing links for requests to item holdings
