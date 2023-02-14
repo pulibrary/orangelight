@@ -230,7 +230,6 @@ module ApplicationHelper
     all_subjects = []
     sub_array = []
     args[:document][args[:field]].each_with_index do |subject, i|
-    
       spl_sub = subject.split(QUERYSEP)
       sub_array << []
       subjectaccum = ''
