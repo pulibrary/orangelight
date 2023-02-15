@@ -70,7 +70,7 @@ module ApplicationHelper
     stackmap_url = "/catalog/#{doc_id}/stackmap?loc=#{location}"
     stackmap_url << "&cn=#{call_number}" if call_number
 
-    link_to('<span class="fa fa-map-marker" aria-hidden="true"></span>'.html_safe, stackmap_url, title: t('blacklight.holdings.stackmap'), class: 'find-it', data: { 'map-location': location.to_s, 'blacklight-modal': 'trigger', 'location-library': library, 'location-name': location_name }, 'aria-label' => 'Where to find it')
+    ' ' + link_to('<span class="fa fa-map-marker" aria-hidden="true"></span>'.html_safe, stackmap_url, title: t('blacklight.holdings.stackmap'), class: 'find-it', data: { 'map-location': location.to_s, 'blacklight-modal': 'trigger', 'location-library': library, 'location-name': location_name }, 'aria-label' => 'Where to find it')
   end
 
   def stackmap_span_markup(location, library, location_name)
