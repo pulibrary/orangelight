@@ -1384,6 +1384,18 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             check('requestable_selected_23641620980006421')
             expect(page).to have_button('Request Selected Items', disabled: false)
           end
+          it 'enables and disables for a record with user supplied volume data' do
+            visit 'requests/9931433603506421?mfhd=22542676190006421'
+            expect(page).to have_content 'Aomen'
+            expect(page).to have_content 'East Asian Library DS796.M2 A623'
+            expect(page).to have_content 'If the specific volume does not appear in the list below, please enter it here'
+            expect(page).to have_button('Request Selected Items', disabled: true)
+            check('requestable_selected')
+            choose('requestable__delivery_mode_22542676190006421_print')
+            expect(page).to have_button('Request Selected Items', disabled: true)
+            fill_in(id: 'requestable_user_supplied_enum_22542676190006421', with: 'Volume 1')
+            expect(page).to have_button('Request Selected Items', disabled: false)
+          end
         end
 
         describe 'Request a temp holding item from Resource Sharing - RES_SHARE$IN_RS_REQ' do
