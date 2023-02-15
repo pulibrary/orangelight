@@ -173,10 +173,10 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           fill_in 'request_email', with: 'name@email.com'
           fill_in 'request_user_name', with: 'foobar'
           click_button I18n.t('requests.account.other_user_login_btn')
-          expect(page).to have_field 'requestable__selected', disabled: false
+          expect(page).to have_field 'requestable_selected', disabled: false
           expect(page).to have_field 'requestable_selected_7484608', disabled: true
           expect(page).to have_field 'requestable_user_supplied_enum_2576882'
-          check('requestable__selected', exact: true)
+          check('requestable_selected', exact: true)
           fill_in 'requestable_user_supplied_enum_2576882', with: 'test'
           select('Firestone Library', from: 'requestable__pick_up_2576882')
           click_button 'Request Selected Items'
@@ -342,7 +342,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
 
         it 'allows CAS patrons to request a ReCAP record that has no item data' do
           visit "/requests/99113283293506421?mfhd=22750642660006421"
-          check('requestable__selected', exact: true)
+          check('requestable_selected', exact: true)
           fill_in 'requestable[][user_supplied_enum]', with: 'Some Volume'
           expect(page).to have_button('Request this Item', disabled: false)
         end
@@ -560,7 +560,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(page).to have_content 't. 2, no 2 (2018 )' # include enumeration and chron
           expect(page).to have_content 't. 3, no 2 (2019 )' # include enumeration and chron
           within(".user-supplied-input") do
-            check('requestable__selected')
+            check('requestable_selected')
           end
           fill_in "requestable_user_supplied_enum_22547424510006421", with: "ABC ZZZ"
           choose('requestable__delivery_mode_22547424510006421_print') # choose the print radio button
@@ -591,7 +591,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(page).to have_content 'Pick-up location: Firestone Library'
           expect(page).to have_content 'If the specific volume does not appear in the list below, please enter it here:'
           within(".user-supplied-input") do
-            check('requestable__selected')
+            check('requestable_selected')
           end
           fill_in "requestable_user_supplied_enum_22547424510006421", with: "ABC ZZZ"
           choose('requestable__delivery_mode_22547424510006421_edd') # choose the print radio button
@@ -845,10 +845,10 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
 
         it 'an annex item with user supplied information creates annex emails' do
           visit '/requests/9922868943506421?mfhd=22692156940006421'
-          expect(page).to have_field 'requestable__selected', disabled: false
+          expect(page).to have_field 'requestable_selected', disabled: false
           expect(page).to have_field 'requestable_user_supplied_enum_22692156940006421'
           within('#request_user_supplied_22692156940006421') do
-            check('requestable__selected', exact: true)
+            check('requestable_selected', exact: true)
             fill_in 'requestable_user_supplied_enum_22692156940006421', with: 'test'
           end
           expect(page).to have_content 'Physical Item Delivery'
