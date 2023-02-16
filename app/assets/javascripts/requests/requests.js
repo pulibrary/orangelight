@@ -68,11 +68,15 @@ $(document).ready(function() {
       checkAllRequestable();
     });
 
+    $('input[type=text][id^="requestable_user_supplied_enum_"').on('input', function() {
+      checkAllRequestable();
+    });
+
     function requestable(changed) {
       var parent = $(changed).closest('[id^="request_"]');
       var selected = parent.find('input[type=checkbox][id^="requestable_selected"').is(':checked');
       var delivery_mode = false;
-      var radios = parent.find('input[type=radio][name^="requestable[][delivery_mode"]')
+      var radios = parent.find('input[type=radio][name^="requestable[][delivery_mode"]');
       if (radios.length === 0) {
         delivery_mode = true;
       } else {
@@ -82,7 +86,12 @@ $(document).ready(function() {
           }
         });
       }
-      if (selected && delivery_mode) {
+      var volume_text = parent.find('input[type=text][id^="requestable_user_supplied_enum_"');
+      var user_supplied = true;
+      if (volume_text.length > 0 && volume_text.val().length === 0) {
+        user_supplied = false;
+      }
+      if (selected && delivery_mode && user_supplied) {
         $('#request-submit-button').prop('disabled', false);
       }
     };

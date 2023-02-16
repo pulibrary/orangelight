@@ -1,7 +1,7 @@
 <tr class='user-supplied-input' id='request_user_supplied_<%= "#{requestable.holding.keys[0]}" %>'>
   <td class='request--select'>
     <%= hidden_field_tag 'requestable[][selected]', false, id: "hidden_selected" %>
-    <%= check_box_tag "requestable[][selected]", true, false, class: 'request--select', aria: { label: "Volume not listed"} %>
+    <%= check_box_tag "requestable[][selected]", true, false, class: 'request--select', aria: { label: "Volume not listed"}, id: "requestable_selected" %>
     <%= hidden_fields_item requestable %>
   </td>
   <td class='request--options' <%= 'colspan="2"'.html_safe unless table_sorter_present?(requestable_list) %>>
@@ -17,7 +17,7 @@
   <% if table_sorter_present?(requestable_list) %>
      <td></td>
   <% end %>
-  <td>
+  <td class="delivery--options">
     <% selected = !(requestable.fill_in_pick_up? && requestable.fill_in_digitize?) %>
     <% collapse = selected ? "" : "collapse"%>
     <% if requestable.fill_in_pick_up? %>
