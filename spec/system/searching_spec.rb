@@ -12,9 +12,30 @@ describe 'Searching', type: :system, js: false do
     expect(page).to have_selector '.fa-search[aria-hidden="true"]'
   end
 
-  it 'renders an accessible link to the stack map' do
-    visit '/catalog?q=&search_field=all_fields'
-    expect(page).to have_selector '.fa-map-marker[aria-hidden="true"]'
+  context 'with firestone_locator on' do
+    before do
+      allow(Flipflop).to receive(:firestone_locator?).and_return(true)
+    end
+
+    it 'renders an accessible link to the stack map' do
+      visit '/catalog?q=&search_field=all_fields'
+      expect(page).to have_selector('.fa-map-marker')
+      expect(page).to have_selector('.fa-map-marker[aria-hidden="true"]')
+    end
+  end
+
+  context 'with firestone_locator off' do
+    before do
+      allow(Flipflop).to receive(:firestone_locator?).and_return(false)
+    end
+
+    it 'renders an accessible link to the stack map', js: true do
+      visit '/catalog?q=&search_field=all_fields'
+      # Right now the fa-map-marker selector from the vendor is not aria-hidden
+      pending('Vendor fixing aria-hidden attribute')
+      expect(page).to have_selector('.fa-map-marker', wait: 5)
+      expect(page).to have_selector('.fa-map-marker[aria-hidden="true"]', wait: 5)
+    end
   end
 
   it 'renders an accessible icon for item icons' do

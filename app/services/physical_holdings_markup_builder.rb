@@ -382,30 +382,50 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param library [String] the library in which the holding resides
   # @param [String] the markup
   def locate_link(location, call_number, library, holding)
-    doc_id = doc_id(holding)
     locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
     return '' if locator.exclude?(call_number:, library:)
+
+    markup = ''
+    markup = stackmap_markup(location, library, holding, call_number) if find_it_location?(location)
+    ' ' + markup
+  end
+
+  def stackmap_markup(location, library, holding, call_number)
+    if Flipflop.firestone_locator?
+      stackmap_url_markup(location, library, holding, call_number)
+    else
+      stackmap_span_markup(location, library, holding)
+    end
+  end
+
+  def stackmap_url_markup(location, library, holding, call_number)
+    doc_id = doc_id(holding)
 
     stackmap_url = "/catalog/#{doc_id}/stackmap?loc=#{location}"
     stackmap_url << "&cn=#{call_number}" if call_number
 
-    markup = ''
-    if find_it_location?(location)
-      child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
-        <span class="fa fa-map-marker" aria-hidden="true"></span>)
-      markup = link_to(child.html_safe, stackmap_url,
-                       title: I18n.t('blacklight.holdings.stackmap'),
-                       class: 'find-it',
-                       data: {
-                         'map-location' => location.to_s,
-                         'location-library' => library,
-                         'location-name' => holding['location'],
-                         'blacklight-modal' => 'trigger',
-                         'call-number' => call_number,
-                         'library' => library
-                       })
-    end
-    ' ' + markup
+    child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
+    <span class="fa fa-map-marker" aria-hidden="true"></span>)
+    link_to(child.html_safe, stackmap_url,
+              title: I18n.t('blacklight.holdings.stackmap'),
+              class: 'find-it',
+              data: {
+                'map-location' => location.to_s,
+                'location-library' => library,
+                'location-name' => holding['location'],
+                'blacklight-modal' => 'trigger',
+                'call-number' => call_number,
+                'library' => library
+              })
+  end
+
+  def stackmap_span_markup(location, library, holding)
+    content_tag(:span, '',
+                data: {
+                  'map-location': location.to_s,
+                  'location-library': library,
+                  'location-name': holding['location']
+                })
   end
 
   # Generate the links for a specific holding

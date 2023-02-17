@@ -98,10 +98,9 @@ describe 'blacklight tests' do
       stub_holding_locations
       get '/catalog/994304723506421/raw'
       r = JSON.parse(response.body)
-      bib = r['id']
       get '/catalog/994304723506421'
       r['location_code_s'].each do |location|
-        expect(response.body).to include("href=\"/catalog/#{bib}/stackmap?loc=#{location}")
+        expect(response.body).to include("data-map-location=\"#{location}")
       end
     end
     it 'does not provide a find it link for online holdings' do

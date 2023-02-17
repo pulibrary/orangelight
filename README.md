@@ -81,6 +81,16 @@ Testing
     rake spec
     ```
 
+1. To run just the rspec tests
+   ```
+   bundle exec rspec spec
+   ```
+
+1. To run just the javascript tests
+   ```
+   yarn test
+   ```
+
 #### To run a specific test
   1. Run steps one and two above
   1. run the individual test
