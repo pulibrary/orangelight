@@ -16,7 +16,6 @@ en:
       recap_success: "Request submitted to ReCAP, our offsite storage facility. See confirmation email with details about when your item(s) will be available."
       digitize_success: "Request submitted to Illiad. You can view the status of your request on your account page.  See confirmation email with details about when your item(s) will be available."
       recap_no_items_success: "Request submitted to ReCAP, our offsite storage facility. See confirmation email with details about when your item(s) will be available."
-      bd_success: "Request submitted to BorrowDirect. You can expect delivery within six business days or less. See confirmation email with details about when your item(s) will be available."
       interlibrary_loan_success: "Your request was submitted. Our library staff will review the request and contact you with any questions or updates."
       on_order_success: "Request submitted. See confirmation email with details about when your item(s) will be available."
       pres_success: "We will notify you when the preservation work is complete and this item is available."

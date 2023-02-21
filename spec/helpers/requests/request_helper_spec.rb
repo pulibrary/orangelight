@@ -17,60 +17,36 @@ RSpec.describe Requests::RequestHelper, type: :helper do
     let(:query_params) { 'asdf' }
     let(:zero_results_link) { helper.zero_results_link(query_params, search_field) }
 
-    context 'with old borrow direct provider' do
-      before do
-        allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(false)
-      end
-      context 'with a standard keyword query' do
-        let(:search_field) { 'all_fields' }
+    context 'with a standard keyword query' do
+      let(:expected_url) { 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=AllFields' }
+      let(:search_field) { 'all_fields' }
 
-        it 'returns the link to borrow direct' do
-          expect(zero_results_link).to eq('/borrow-direct?q=asdf')
-        end
-      end
-      context 'with a title keyword query' do
-        let(:search_field) { 'title' }
-
-        it 'returns the link to borrow direct' do
-          expect(zero_results_link).to eq('/borrow-direct?q=asdf')
-        end
+      it 'returns the link to borrow direct' do
+        expect(zero_results_link).to eq(expected_url)
       end
     end
-    context 'with new borrow direct provider' do
-      before do
-        allow(Flipflop).to receive(:reshare_for_borrow_direct?).and_return(true)
-      end
-      context 'with a standard keyword query' do
-        let(:expected_url) { 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=AllFields' }
-        let(:search_field) { 'all_fields' }
+    context 'with a title keyword query' do
+      let(:expected_url) { 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=Title' }
+      let(:search_field) { 'title' }
 
-        it 'returns the link to borrow direct' do
-          expect(zero_results_link).to eq(expected_url)
-        end
+      it 'returns the link to borrow direct' do
+        expect(zero_results_link).to eq(expected_url)
       end
-      context 'with a title keyword query' do
-        let(:expected_url) { 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=Title' }
-        let(:search_field) { 'title' }
+    end
+    context 'with a subject keyword query' do
+      let(:expected_url) { 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=Subject' }
+      let(:search_field) { 'subject' }
 
-        it 'returns the link to borrow direct' do
-          expect(zero_results_link).to eq(expected_url)
-        end
+      it 'returns the link to borrow direct' do
+        expect(zero_results_link).to eq(expected_url)
       end
-      context 'with a subject keyword query' do
-        let(:expected_url) { 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=Subject' }
-        let(:search_field) { 'subject' }
+    end
+    context 'with an author keyword query' do
+      let(:expected_url) { 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=Author' }
+      let(:search_field) { 'author' }
 
-        it 'returns the link to borrow direct' do
-          expect(zero_results_link).to eq(expected_url)
-        end
-      end
-      context 'with an author keyword query' do
-        let(:expected_url) { 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results?lookfor=asdf&type=Author' }
-        let(:search_field) { 'author' }
-
-        it 'returns the link to borrow direct' do
-          expect(zero_results_link).to eq(expected_url)
-        end
+      it 'returns the link to borrow direct' do
+        expect(zero_results_link).to eq(expected_url)
       end
     end
   end

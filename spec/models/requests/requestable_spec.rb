@@ -200,10 +200,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         expect(requestable.first.services).to be_truthy
       end
 
-      it 'is available via borrow direct' do
-        expect(requestable.first.services.include?('bd')).to be_truthy
-      end
-
       it 'is available via ILL' do
         expect(requestable.first.services.include?('ill')).to be_truthy
       end
@@ -270,48 +266,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe "#available?" do
       it "is not available" do
         expect(requestable_on_hold).not_to be_available
-      end
-    end
-  end
-
-  context 'A requestable item eligible for borrow direct' do
-    let(:request) { FactoryBot.build(:missing_item, patron:) }
-    let(:requestable) { request.requestable }
-    describe '#services' do
-      it 'is missing' do
-        expect(requestable.first.missing?).to be true
-      end
-
-      it 'is eligible for borrow direct' do
-        expect(requestable.first.borrow_direct?).to be true
-      end
-
-      it 'is eligible for ill' do
-        expect(requestable.first.ill_eligible?).to be true
-      end
-
-      describe '#location_label' do
-        it 'has a location label' do
-          expect(requestable.first.location_label).to eq('Lewis Library - Stacks')
-        end
-      end
-    end
-
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.first.pick_up_locations).to eq([{ "label" => "Lewis Library", "address" => "Washington Road and Ivy Lane Princeton, NJ 08544", "phone_number" => "609-258-6004", "contact_email" => "lewislib@princeton.edu", "gfa_pickup" => "PN", "staff_only" => false, "pickup_location" => true, "digital_location" => true, "library" => { "code" => "lewis", "label" => "Lewis Library", "order" => 0 }, "pick_up_location_code" => "lewis" }])
-      end
-    end
-
-    describe "#held_at_marquand_library?" do
-      it "is not marquand" do
-        expect(requestable.first).not_to be_held_at_marquand_library
-      end
-    end
-
-    describe "#available?" do
-      it "is not available" do
-        expect(requestable.first).not_to be_available
       end
     end
   end
@@ -889,16 +843,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
     describe '# checked-out requestable' do
       # TODO: Remove when campus has re-opened
-      it "does not have borrow direct request service available" do
-        expect(requestable_charged.services.include?('bd')).to be false
-      end
-
-      # TODO: Activate test when campus has re-opened
-      xit "should have borrow direct request service available" do
-        expect(requestable_charged.services.include?('bd')).to be true
-      end
-
-      # TODO: Remove when campus has re-opened
       it "does not have ILL request service available" do
         expect(requestable_charged.services.include?('ill')).to be false
       end
@@ -912,16 +856,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '# missing requestable' do
       let(:request_missing) { FactoryBot.build(:request_missing_item) }
       let(:requestable_missing) { request_missing.requestable.first }
-
-      # TODO: Remove when campus has re-opened
-      it "does not have borrow direct request service available" do
-        expect(requestable_missing.services.include?('bd')).to be false
-      end
-
-      # TODO: Activate test when campus has re-opened
-      xit "should have borrow direct request service available" do
-        expect(requestable_missing.services.include?('bd')).to be true
-      end
 
       # TODO: Remove when campus has re-opened
       it "does not have ILL request service available" do
@@ -1010,10 +944,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#checked-out requestable' do
       # Barcode users should NOT have the following privileges ...
 
-      it "does not have Borrow Direct request service available" do
-        expect(requestable_charged.services.include?('bd')).to be false
-      end
-
       it "does not have ILL request service available" do
         expect(requestable_charged.services.include?('ill')).to be false
       end
@@ -1084,10 +1014,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable_charged) { request_charged.requestable.first }
 
     describe '#checked-out requestable' do
-      it "does not have Borrow Direct request service available" do
-        expect(requestable_charged.services.include?('bd')).to be false
-      end
-
       it "does not have ILL request service available" do
         expect(requestable_charged.services.include?('ill')).to be false
       end

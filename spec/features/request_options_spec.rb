@@ -77,21 +77,6 @@ describe 'Request Options' do
       end
     end
   end
-  # This should address borrow direct. eventually
-  # If monograph - direct user to borrow direct fallback ILL, Recall
-  # If serial - direct user to ILL, fallback Recall
-  # describe 'Unavailable status requestable location', js: true do
-  #   before(:each) do
-  #     visit '/catalog/'
-  #   end
-
-  #   it 'does display a request button', unless: in_ci? do
-  #     sleep 5.seconds
-  #     expect(page.all('.holding-block').length).to eq 1
-  #     expect(page.all('.location-services.service-conditional a.btn-primary'.length)).to eq(1)
-  #     expect(page.find_link('Request Options').visible?).to be_truthy
-  #   end
-  # end
 
   describe 'Aeon location', js: true do
     before do

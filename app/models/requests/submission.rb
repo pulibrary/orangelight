@@ -15,7 +15,6 @@ module Requests
       @patron = patron
       @items = selected_items(params[:requestable])
       @bib = params[:bib]
-      @bd = params[:bd] # TODO: can we remove this?
       @services = []
       @success_messages = []
     end
@@ -35,8 +34,6 @@ module Requests
     end
 
     attr_reader :items
-
-    attr_reader :bd
 
     def filter_items_by_service(service)
       @items.select { |item| item["type"] == service }
@@ -132,11 +129,7 @@ module Requests
         when 'help_me'
           Requests::Submissions::HelpMe.new(self)
         when *inter_library_services
-          if Flipflop.reshare_for_borrow_direct?
-            Requests::Submissions::Illiad.new(self, service_type: type)
-          else
-            Requests::Submissions::BorrowDirect.new(self, service_type: type)
-          end
+          Requests::Submissions::Illiad.new(self, service_type: type)
         else
           Requests::Submissions::Generic.new(self, service_type: type)
         end
@@ -188,7 +181,7 @@ module Requests
       end
 
       def inter_library_services
-        ['bd', 'ill']
+        ['ill']
       end
 
       def generate_success_messages(success_messages)

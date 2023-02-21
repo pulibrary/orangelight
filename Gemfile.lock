@@ -8,14 +8,6 @@ GIT
       rails
 
 GIT
-  remote: https://github.com/pulibrary/borrow_direct.git
-  revision: bef881cf56a6e15052345e9f088730f8ac28b20c
-  branch: generate_query_encoding_fix
-  specs:
-    borrow_direct (1.2.0)
-      httpclient (~> 2.4)
-
-GIT
   remote: https://github.com/pulibrary/stringex.git
   revision: 357f70511532a35b11a240e5ae06d02725cb8d0a
   tag: vpton.2.5.2.2
@@ -652,7 +644,6 @@ DEPENDENCIES
   blacklight_unapi!
   bootstrap (~> 4.6)
   bootstrap-select-rails
-  borrow_direct!
   capistrano (~> 3.4)
   capistrano-passenger
   capistrano-rails

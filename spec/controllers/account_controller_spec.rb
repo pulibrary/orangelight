@@ -46,7 +46,7 @@ RSpec.describe AccountController do
     end
 
     it 'Returns Non-canceled Illiad Transactions' do
-      get :borrow_direct_redirect
+      get :digitization_requests
       expect(assigns(:illiad_transactions).size).to eq 2
     end
 
@@ -54,7 +54,7 @@ RSpec.describe AccountController do
       let(:valid_user) { FactoryBot.create(:guest_patron) }
 
       it 'Returns no Illiad Transactions' do
-        get :borrow_direct_redirect
+        get :digitization_requests
         expect(assigns(:illiad_transactions).size).to eq 0
       end
     end
@@ -63,7 +63,7 @@ RSpec.describe AccountController do
       let(:valid_user) { FactoryBot.create(:alma_patron) }
 
       it 'Returns no Illiad Transactions' do
-        get :borrow_direct_redirect
+        get :digitization_requests
         expect(assigns(:illiad_transactions).size).to eq 0
       end
     end
@@ -72,7 +72,7 @@ RSpec.describe AccountController do
       it 'Returns no Illiad Transactions' do
         stub_request(:get, current_illiad_user_uri)
           .to_return(status: 404, body: '{"Message":"User jstudent was not found."}')
-        get :borrow_direct_redirect
+        get :digitization_requests
         expect(assigns(:illiad_transactions).size).to eq 0
       end
     end
@@ -158,52 +158,6 @@ RSpec.describe AccountController do
         .to_return(status: 500, body: 'Error', headers: {})
       patron = account_controller.send(:current_patron, valid_user)
       expect(patron).to be nil
-    end
-  end
-
-  describe '#borrow_direct_redirect' do
-    let(:guest_response) { JSON.parse(File.read('spec/fixtures/bibdata_patron_response_guest.json')).with_indifferent_access }
-    let(:valid_alma_user) { FactoryBot.create(:alma_patron) }
-    let(:valid_cas_user) { FactoryBot.create(:valid_princeton_patron) }
-
-    it 'Redirects to Borrow Direct for valid cas user' do
-      sign_in(valid_cas_user)
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
-      stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: valid_patron_response, headers: {})
-      get :borrow_direct_redirect
-      expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
-    end
-
-    it 'Redirect url includes query when param q is present' do
-      sign_in(valid_cas_user)
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
-      stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: valid_patron_response, headers: {})
-      query = 'a book title'
-      get :borrow_direct_redirect, params: { q: query }
-      expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
-      expect(response.location).to include('a%20book%20title')
-    end
-    # For interoperability with umlaut
-    it 'Redirect url includes query when param query is present' do
-      sign_in(valid_cas_user)
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_cas_user.uid}"
-      stub_request(:get, valid_patron_record_uri)
-        .to_return(status: 200, body: valid_patron_response, headers: {})
-      query = 'a book title'
-      get :borrow_direct_redirect, params: { query: }
-      expect(response.location).to match(%r{https:\/\/bd.relaisd2d.com\/})
-      expect(response.location).to include('a%20book%20title')
-    end
-    it 'Redirects to CAS login page for non-logged in user' do
-      get :borrow_direct_redirect
-      expect(response.location).to match(user_cas_omniauth_authorize_path)
-    end
-    it 'Redirects to Home page for ineligible alma user' do
-      sign_in(valid_alma_user)
-      get :borrow_direct_redirect
-      expect(response).to redirect_to(root_url)
     end
   end
 end

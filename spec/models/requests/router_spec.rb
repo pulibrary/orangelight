@@ -39,8 +39,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           .to_return(status: 200, body: scsb_availability_response)
       end
 
-      it "has Borrow Direct, ILL, but not Recall as a request service option" do
-        expect(router.calculate_services.include?('bd')).to be_truthy
+      it "has ILL but not Recall as a request service option" do
         expect(router.calculate_services.include?('ill')).to be_truthy
       end
     end

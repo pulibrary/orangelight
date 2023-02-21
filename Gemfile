@@ -67,8 +67,6 @@ gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.
 gem 'mail_form'
 gem 'string_rtl'
 
-gem 'borrow_direct', git: 'https://github.com/pulibrary/borrow_direct.git', branch: 'generate_query_encoding_fix'
-
 gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'main'
 
 gem 'openurl', '~> 1.0'
