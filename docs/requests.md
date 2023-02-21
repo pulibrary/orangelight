@@ -77,3 +77,35 @@ body = { "requests": [{ "request_type": "CANCEL", "barcode": "12345678901234", "
 "}]}
 response = item.send(:post_clancy, url: "circrequests/v1", body: body.to_json)
 ```
+
+## Architecture
+
+### Rendering the request form
+
+```mermaid
+sequenceDiagram
+    title Rendering the request form
+    actor patron as Patron
+    patron->>RequestController: Go to form
+    RequestController->>Request: Create new Request object
+    Request->>Requestable: Create new Requestable objects
+    RequestController->>RequestDecorator: Create new RequestDecorator based on the Request
+    RequestDecorator->>RequestableDecorator: Create new RequestableDecorators based on the list of Requestable objects in the Request
+    RequestController->>patron: Render the form for the user
+```
+
+### Placing the request
+
+
+```mermaid
+sequenceDiagram
+    title Placing the request
+    actor patron as Patron
+    patron->>RequestController: Select options and press submit
+    RequestController->>Submission: Create a new Submission
+    Submission->>SelectedItemsValidator: Validate using a SelectedItemsValidator object
+    Submission->>Service: Create an instance of a Service subclass (e.g. Requests::Submissions::DigitizeItem)
+    Service->>RequestMailer: Send emails on success
+    RequestController->>RequestMailer: Send emails on failure
+    RequestController->>patron: Inform patron how the request went
+```
