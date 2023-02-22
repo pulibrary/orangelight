@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'borrow_direct'
 require 'faraday'
 
 module Requests
@@ -154,15 +153,6 @@ module Requests
       end
       # pick_up_locations.sort_by! { |loc| loc[:label] }
       sort_pick_ups(pick_up_locations)
-    end
-
-    # if a Record is a serial/multivolume no Borrow Direct
-    def borrow_direct_eligible?
-      if (any_loanable_copies? && any_enumerated?) || patron.guest?
-        false
-      else
-        requestable.any? { |r| r.services.include? 'bd' }
-      end
     end
 
     def ill_eligible?

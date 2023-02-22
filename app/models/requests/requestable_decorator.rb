@@ -5,7 +5,7 @@ module Requests
              :ask_me?, :aeon_request_url, :location, :temp_loc?, :in_resource_sharing?, :call_number, :eligible_for_library_services?,
              :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :open_libraries, :item_data?, :recap_edd?, :user_barcode, :clancy?,
              :holding, :item_location_code, :item?, :item, :partner_holding?, :status, :status_label, :use_restriction?, :library_code, :enum_value, :item_at_clancy?,
-             :cron_value, :illiad_request_parameters, :location_label, :online?, :aeon?, :borrow_direct?, :patron, :held_at_marquand_library?,
+             :cron_value, :illiad_request_parameters, :location_label, :online?, :aeon?, :patron, :held_at_marquand_library?,
              :ill_eligible?, :scsb_in_library_use?, :pick_up_locations, :on_shelf?, :pending?, :recap?, :recap_pf?, :illiad_request_url, :available?,
              :on_order?, :urls, :in_process?, :alma_managed?, :title, :map_url, :cul_avery?, :cul_music?,
              :pick_up_location_code, :resource_shared?, :enumerated?, to: :requestable
@@ -51,7 +51,7 @@ module Requests
     end
 
     def request_status?
-      on_order? || in_process? || traceable? || borrow_direct? || ill_eligible? || services.empty?
+      on_order? || in_process? || traceable? || ill_eligible? || services.empty?
     end
 
     def help_me?
@@ -181,7 +181,7 @@ module Requests
     end
 
     def no_services?
-      !(digitize? || pick_up? || aeon? || borrow_direct? || ill_eligible? || in_library_use_required? || help_me? || request? || online? || on_shelf? || off_site?)
+      !(digitize? || pick_up? || aeon? || ill_eligible? || in_library_use_required? || help_me? || request? || online? || on_shelf? || off_site?)
     end
 
     private

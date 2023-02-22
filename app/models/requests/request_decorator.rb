@@ -3,7 +3,7 @@ module Requests
   class RequestDecorator
     delegate :patron,
              :ctx, :system_id, :language, :mfhd, :source, :holdings, :default_pick_ups,
-             :serial?, :borrow_direct_eligible?, :any_loanable_copies?, :requestable?, :all_items_online?,
+             :serial?, :any_loanable_copies?, :requestable?, :all_items_online?,
              :thesis?, :numismatics?, :single_aeon_requestable?, :eligible_for_library_services?, :off_site?,
              :user_name, :email, # passed to request as login options on the request form
              to: :request

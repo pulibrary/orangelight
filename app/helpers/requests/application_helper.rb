@@ -57,7 +57,7 @@ module Requests
 
     def output_request_input(requestable)
       output = ""
-      ['annex', 'bd', 'pres', 'ppl', 'lewis', 'paging', 'on_order', 'trace', 'on_shelf'].each do |type|
+      ['annex', 'pres', 'ppl', 'lewis', 'paging', 'on_order', 'trace', 'on_shelf'].each do |type|
         next unless requestable.services.include?(type)
         output = request_input(type)
         break
@@ -194,13 +194,6 @@ module Requests
       sanitize(hidden, tags: input)
     end
 
-    def hidden_fields_borrow_direct(request)
-      hidden_bd_tags = ''
-      hidden_bd_tags += hidden_field_tag 'bd[auth_id]', '', value: ''
-      hidden_bd_tags += hidden_field_tag 'bd[query_params]', '', value: request.isbn_numbers.first
-      sanitize(hidden_bd_tags, tags: input)
-    end
-
     def isbn_string(array_of_isbns)
       array_of_isbns.join(',')
     end
@@ -251,7 +244,7 @@ module Requests
     end
 
     def submitable_services
-      ['on_shelf', 'in_process', 'on_order', 'annex', 'recap', 'recap_edd', 'paging', 'bd', 'recap_no_items', 'ppl', 'lewis']
+      ['on_shelf', 'in_process', 'on_order', 'annex', 'recap', 'recap_edd', 'paging', 'recap_no_items', 'ppl', 'lewis']
     end
 
     def submit_message(requestable_list)
@@ -334,7 +327,7 @@ module Requests
       def display_requestable_list(requestable)
         return if requestable.no_services?
         content_tag(:ul, class: "service-list") do
-          if requestable.borrow_direct? || requestable.ill_eligible?
+          if requestable.ill_eligible?
             concat content_tag(:li, sanitize(I18n.t("requests.ill.brief_msg")), class: "service-item")
           else
             # there are no instances where more than one actual service is available to an item, so we are going to take the first service that is not edd
@@ -359,7 +352,7 @@ module Requests
       end
 
       def pick_up_locations(requestable, default_pick_ups)
-        return [default_pick_ups[0]] if requestable.borrow_direct? || requestable.ill_eligible?
+        return [default_pick_ups[0]] if requestable.ill_eligible?
         return available_pick_ups(requestable, default_pick_ups) unless requestable.pending?
         if requestable.delivery_location_label.present?
           [{ label: requestable.delivery_location_label, gfa_pickup: requestable.delivery_location_code, pick_up_location_code: requestable.pick_up_location_code, staff_only: false }]

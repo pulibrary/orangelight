@@ -145,10 +145,6 @@ module Requests
       services.include?('on_shelf')
     end
 
-    def borrow_direct?
-      services.include?('bd')
-    end
-
     # assume numeric ids come from alma
     def alma_managed?
       bib[:id].to_i.positive?

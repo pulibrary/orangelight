@@ -13,9 +13,7 @@
 <% elsif requestable.digitize? %>
   <%= render partial: 'requestable_form_digitize', locals: { requestable: requestable, single_item_request: @request.single_item_request? } %>
 
-<% elsif (requestable.borrow_direct? || requestable.ill_eligible?) && !Flipflop.reshare_for_borrow_direct? %>
-  <%= render partial: 'requestable_form_borrow_direct', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, single_item_request: @request.single_item_request? } %>
-<% elsif requestable.ill_eligible? && Flipflop.reshare_for_borrow_direct? %>
+<% elsif requestable.ill_eligible? %>
   <%= render partial: 'requestable_form_illiad', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, single_item_request: @request.single_item_request? } %>
 <% elsif requestable.request? %>
   <%= render partial: 'requestable_form_request', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, single_item_request: @request.single_item_request? } %>

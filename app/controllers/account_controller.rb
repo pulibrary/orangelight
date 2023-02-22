@@ -7,7 +7,7 @@ class AccountController < ApplicationController
 
   before_action :read_only_redirect, except: [:redirect_to_alma, :user_id]
   before_action :check_for_authentication_provider, except: [:redirect_to_alma, :user_id]
-  before_action :verify_user, except: [:borrow_direct_redirect, :redirect_to_alma, :user_id]
+  before_action :verify_user, except: [:redirect_to_alma, :user_id]
 
   def index
     redirect_to digitization_requests_path
@@ -15,15 +15,6 @@ class AccountController < ApplicationController
 
   def digitization_requests
     set_patron
-  end
-
-  def borrow_direct_redirect
-    # action is only valid if the user is logged in first
-    if current_user
-      borrow_direct_user_action
-    else
-      redirect_to user_cas_omniauth_authorize_path(origin: url_for(params.permit!))
-    end
   end
 
   def cancel_ill_requests
@@ -69,20 +60,6 @@ class AccountController < ApplicationController
       end
     end
 
-    def borrow_direct_user_action
-      # only cas users are allowed to access borrow direct
-      if current_user.cas_provider?
-        set_patron
-        redirect_to borrow_direct_url(@patron[:barcode]) if @patron && @patron[:barcode]
-
-      # other users (barcode and alma) just get an error
-      else
-        @illiad_transactions = []
-        flash[:error] = I18n.t('blacklight.account.borrow_direct_ineligible')
-        redirect_to root_url
-      end
-    end
-
     ## For local dev purposes hardcode a net id string in place of current_user.uid
     ## in this method. Hacky, but convienent to see what "real" data looks like for
     ## edge case patrons.
@@ -111,16 +88,5 @@ class AccountController < ApplicationController
 
     def current_patron(user)
       Bibdata.get_patron(user)
-    end
-
-    def borrow_direct_url(barcode)
-      url = if params[:q]
-              BorrowDirect::GenerateQuery.new(RELAIS_BASE).query_url_with(keyword: params[:q])
-            elsif params[:query] # code in umlaut borrow direct gem requires 'query' as a param
-              BorrowDirect::GenerateQuery.new(RELAIS_BASE).query_url_with(params[:query])
-            else
-              RELAIS_BASE
-            end
-      %(#{url}&LS=#{BorrowDirect::Defaults.library_symbol}&PI=#{barcode})
     end
 end

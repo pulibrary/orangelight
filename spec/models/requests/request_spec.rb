@@ -1010,79 +1010,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
   end
 
-  # Now that we don't consider multiple holdings I think this is invalid
-  # context "When passed an unavailable item where other local copies are on reserve." do
-  #   let(:params) do
-  #     {
-  #       system_id: '9991688293506421',
-  #       mfhd: '22209242250006421',
-  #       patron: patron
-  #     }
-  #   end
-  #   let(:request) { described_class.new(params) }
-
-  #   describe "#borrow_direct_eligible?" do
-  #     it "is Borrow Direct Eligible" do
-  #       expect(request.borrow_direct_eligible?).to be true
-  #     end
-  #   end
-  # end
-
-  context "When passed a Loaned Item that is eligible for Borrow Direct" do
-    let(:params) do
-      {
-        system_id: '9991001053506421',
-        mfhd: '22691592660006421',
-        patron:
-      }
-    end
-    let(:request) { described_class.new(**params) }
-
-    describe "#borrow_direct_eligible?" do
-      it "is Borrow Direct Eligible" do
-        expect(request.borrow_direct_eligible?).to be true
-      end
-    end
-
-    describe "#ill_eligible?" do
-      it 'is ILL Eligible' do
-        expect(request.ill_eligible?).to be true
-      end
-    end
-
-    describe "#isbn_numbers?" do
-      it 'returns true if a request has an isbn' do
-        expect(request.isbn_numbers?).to be true
-      end
-    end
-
-    describe "#isbn_numbers" do
-      it 'returns an array of all attached isbn numbers' do
-        expect(request.isbn_numbers.is_a?(Array)).to be true
-        expect(request.isbn_numbers.size).to eq(2)
-      end
-    end
-
-    describe "#requestable" do
-      it "has an requestable items" do
-        expect(request.requestable.size).to be >= 1
-      end
-
-      it "is eligible for recap services" do
-        expect(request.requestable.first.services.size).to eq(2)
-      end
-
-      it "is eligible for ill services" do
-        expect(request.requestable.first.services.include?('ill')).to be_truthy
-        expect(request.requestable.first.ill_eligible?).to be_truthy
-      end
-
-      it "is eligible for borrow direct services" do
-        expect(request.requestable.first.services.include?('bd')).to be_truthy
-      end
-    end
-  end
-
   context 'When passed an item that is traceable and mappable' do
     let(:params) do
       {
@@ -1163,12 +1090,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         expect(request.any_loanable_copies?).to be true
       end
     end
-
-    describe '#borrow_direct_eligible?' do
-      it 'is not borrow_direct_eligible' do
-        expect(request.borrow_direct_eligible?).to be false
-      end
-    end
   end
 
   context 'Enumerated record with charged items' do
@@ -1183,12 +1104,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     describe '#any_loanable_copies?' do
       it "has available copy" do
         expect(request.any_loanable_copies?).to be true
-      end
-    end
-
-    describe '#borrow_direct_eligible?' do
-      it 'is not borrow_direct_eligible' do
-        expect(request.borrow_direct_eligible?).to be false
       end
     end
   end
@@ -1242,12 +1157,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         expect(request.any_enumerated?).to be true
       end
     end
-
-    describe '#borrow_direct_eligible?' do
-      it 'is not borrow_direct_eligible' do
-        expect(request.borrow_direct_eligible?).to be false
-      end
-    end
   end
 
   context 'Multi-holding record with charged items and items available at non-restricted locations' do
@@ -1263,12 +1172,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     describe '#any_loanable_copies?' do
       it "has available copy" do
         expect(request.any_loanable_copies?).to be true
-      end
-    end
-
-    describe '#borrow_direct_eligible?' do
-      it 'is not borrow_direct_eligible' do
-        expect(request.borrow_direct_eligible?).to be false
       end
     end
   end
@@ -1290,12 +1193,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
   #       expect(request.any_loanable_copies?).to be false
   #     end
   #   end
-
-  #   describe '#borrow_direct_eligible?' do
-  #     it 'is not borrow_direct_eligible' do
-  #       expect(request.borrow_direct_eligible?).to be true
-  #     end
-  #   end
   # end
 
   ### Review this test
@@ -1309,11 +1206,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       }
     end
     let(:request) { described_class.new(**params) }
-    describe '#borrow_direct_eligible?' do
-      it 'is not borrow_direct_eligible?' do
-        expect(request.borrow_direct_eligible?).to be false
-      end
-    end
 
     describe '#isbn_numbers?' do
       it 'returns false when there are no isbns present' do
@@ -1332,12 +1224,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       }
     end
     let(:request) { described_class.new(**params) }
-    describe '#borrow_direct_eligible?' do
-      it 'is borrow_direct_eligible?' do
-        expect(request.borrow_direct_eligible?).to be true
-      end
-    end
-
     describe '#isbn_numbers?' do
       it 'returns true when there are isbns present' do
         expect(request.isbn_numbers?).to be true

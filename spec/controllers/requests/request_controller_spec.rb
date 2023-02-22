@@ -147,24 +147,6 @@ describe Requests::RequestController, type: :controller, vcr: { cassette_name: '
       end
     end
 
-    context "borrow direct requestable" do
-      let(:borrow_direct) do
-        instance_double(Requests::Submissions::BorrowDirect, errors: [], handle: true, sent: [{ request_number: '123' }],
-                                                             handled_by: "borrow_direct", service_type: 'bd', success_message: 'success!')
-      end
-      it 'contacts borrow direct and sends no emails ' do
-        requestable.first["type"] = "bd"
-        requestable.first["pick_up"] = { pick_up: "PA", pick_up_location_code: "firestone" }.to_json
-        requestable.first["bd"] = { query_params: "abc" }
-        expect(Requests::RequestMailer).not_to receive(:send)
-        expect(Requests::Submissions::BorrowDirect).to receive(:new).and_return(borrow_direct)
-        expect(borrow_direct).to receive(:send_mail)
-        post :submit, params: { "request" => user_info,
-                                "requestable" => requestable,
-                                "bib" => bib, "format" => "js" }
-      end
-    end
-
     context "recap_no_items requestable" do
       let(:generic) { instance_double(Requests::Submissions::Generic, errors: [], handle: {}, service_type: 'recap_no_items', success_message: 'success!') }
       it 'sends email and confirmation email' do

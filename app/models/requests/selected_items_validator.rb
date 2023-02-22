@@ -21,14 +21,14 @@ module Requests
         case selected["type"]
         when 'digitize', 'digitize_fill_in', 'annex_edd', 'marquand_edd', 'clancy_edd', "clancy_unavailable_edd"
           validate_delivery_mode(record:, selected:)
-        when 'bd', 'ill'
-          validate_ill_on_shelf_or_bd(record, selected, pick_up_phrase: 'delivery of your borrow direct item', action_phrase: 'requested via Borrow Direct')
+        when 'ill'
+          validate_ill_on_shelf(record, selected, pick_up_phrase: 'delivery of your borrow direct item', action_phrase: 'requested via Borrow Direct')
         when 'recap_no_items'
           validate_recap_no_items(record, selected)
         when 'recap', 'recap_edd', 'recap_in_library', 'clancy_in_library', 'marquand_in_library', 'recap_marquand_edd', 'recap_marquand_in_library'
           validate_offsite(record, selected)
         when 'on_shelf'
-          validate_ill_on_shelf_or_bd(record, selected)
+          validate_ill_on_shelf(record, selected)
         when "help_me"
           true # nothing to validate
         when *mail_services
@@ -39,7 +39,7 @@ module Requests
       end
       # rubocop:enable Metrics/MethodLength
 
-      def validate_ill_on_shelf_or_bd(record, selected, pick_up_phrase: 'your selected item', action_phrase: 'Requested')
+      def validate_ill_on_shelf(record, selected, pick_up_phrase: 'your selected item', action_phrase: 'Requested')
         return unless validate_item_id(record:, selected:, action_phrase:)
         item_id = selected['item_id']
         return if selected['pick_up'].present?
