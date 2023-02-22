@@ -12,6 +12,7 @@ describe 'stackmap', type: :system, js: true do
     end
 
     it 'has a link to the stackmap on the record page' do
+      pending('Vendor fixing Stackmap javascript')
       visit '/catalog/99125428126306421'
       expect(page).to have_button('Map it', wait: 5)
       click_button 'Map it'
@@ -20,6 +21,7 @@ describe 'stackmap', type: :system, js: true do
     end
 
     it 'has a link to the stackmap on the search results page' do
+      pending('Vendor fixing Stackmap javascript')
       visit '/catalog?search_field=all_fields&q='
       expect(page).to have_button('Map it', wait: 5)
       expect(page).to have_no_link('Where to find it')
