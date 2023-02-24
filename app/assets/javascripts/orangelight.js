@@ -11,14 +11,6 @@ $(document).ready(function() {
         }
     );
 
-    //tooltip for facet remove button
-    $(".facet-values").tooltip({
-        selector: "[data-toggle='tooltip']",
-        placement: "right",
-        container: "body",
-        trigger: "hover"
-    });
-
     $('.chosen-select').chosen({
         allow_single_deselect: true,
         no_results_text: 'No results matched'
