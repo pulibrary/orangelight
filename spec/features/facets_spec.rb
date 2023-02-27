@@ -24,24 +24,24 @@ describe 'Facets' do
     before do
       visit '/catalog'
     end
-    it 'card-header in facet-panel-collapse has link with aria-expanded' do
-      a_tag_first = find(:xpath, "//*[@id='facet-panel-collapse']/div[1]/div[1]/a")
+    it 'card-header in facet-panel-collapse has button with aria-expanded' do
+      a_tag_first = find(:xpath, "//*[@id='facet-panel-collapse']/div[1]/h3/button")
       expect(a_tag_first['aria-expanded']).to be_truthy
     end
-    it 'when keydown Enter on <a> tag it toggles the aria-expanded value', js: true do
-      a_tag_first = find(:xpath, "//*[@id='facet-panel-collapse']/div[1]/div[1]/a")
+    it 'when keydown Enter on <button> tag it toggles the aria-expanded value', js: true do
+      a_tag_first = find(:xpath, "//*[@id='facet-panel-collapse']/div[1]/h3/button")
       expect(a_tag_first['aria-expanded']).to eq "true"
       a_tag_first.native.send_keys(:enter)
       expect(a_tag_first['aria-expanded']).to eq "false"
     end
-    it 'when keydown Space on a tag it toggles the aria-expanded value', js: true do
-      a_tag_first = find(:xpath, "//*[@id='facet-panel-collapse']/div[1]/div[1]/a")
+    it 'when keydown Space on <button> tag it toggles the aria-expanded value', js: true do
+      a_tag_first = find(:xpath, "//*[@id='facet-panel-collapse']/div[1]/h3/button")
       expect(a_tag_first['aria-expanded']).to eq "true"
       a_tag_first.native.send_keys(:space)
       expect(a_tag_first['aria-expanded']).to eq "false"
     end
-    it 'when keydown Return on a tag it toggles the aria-expanded value', js: true do
-      a_tag_first = find(:xpath, "//*[@id='facet-panel-collapse']/div[1]/div[1]/a")
+    it 'when keydown Return <button> tag it toggles the aria-expanded value', js: true do
+      a_tag_first = find(:xpath, "//*[@id='facet-panel-collapse']/div[1]/h3/button")
       expect(a_tag_first['aria-expanded']).to eq "true"
       a_tag_first.native.send_keys(:return)
       expect(a_tag_first['aria-expanded']).to eq "false"

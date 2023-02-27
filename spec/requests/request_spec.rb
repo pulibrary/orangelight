@@ -369,16 +369,6 @@ describe 'blacklight tests' do
     end
   end
 
-  describe 'facets in search results' do
-    it 'are configured with a tooltip for removing the book format facet parameter' do
-      stub_holding_locations
-      get '/?f%5Bformat%5D%5B%5D=Book&q=&search_field=all_fields'
-      expect(response.body.include?('<i class="fa fa-times" aria-hidden="true" data-toggle="tooltip" data-original-title="Remove"></i>')).to eq true
-      get '/?q=&search_field=all_fields'
-      expect(response.body.include?('<i class="fa fa-times" aria-hidden="true" data-toggle="tooltip" data-original-title="Remove"></i>')).to eq false
-    end
-  end
-
   describe 'other versions' do
     it 'provides links to other versions of record when they are found' do
       get '/catalog/9952918833506421'
