@@ -135,9 +135,9 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       fill_in('Email', with: 'testuser@test-domain.org')
       expect(page).to have_field('Message')
       fill_in('Message', with: 'I am concerned about this subject heading')
-      context_field = page.find_field("report_harmful_language_form[context]", readonly: true)
+      context_field = page.find_field("report_harmful_language_form[context]", visible: :hidden)
       expect(context_field.value).to include("/catalog/#{document_id}")
-      title_field = page.find_field("report_harmful_language_form[title]", readonly: true)
+      title_field = page.find_field("report_harmful_language_form[title]", visible: :hidden)
       expect(title_field.value).to eq("Bible, Latin.")
     end
   end
