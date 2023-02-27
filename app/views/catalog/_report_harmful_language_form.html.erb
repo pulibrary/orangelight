@@ -25,10 +25,11 @@
         <dd class="col-md-9"><%= f&.object&.title %></dd>
         <dt class="col-md-3">Context</dt>
         <dd class="col-md-9"><%= f&.object&.context %></dd>
-      </div>
+      </dl>
     </div>
     <%= f.input_field :title, hidden: true %><br>
     <%= f.input_field :context, hidden: true %><br>
+    <%= f.input :feedback_desc, as: :hidden %>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       <%= f.submit "Send", class: "btn btn-primary", id: 'submit-question' %>

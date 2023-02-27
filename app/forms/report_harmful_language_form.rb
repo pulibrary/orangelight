@@ -1,16 +1,17 @@
 # frozen_string_literal: true
-class ReportHarmfulLanguageForm
+class ReportHarmfulLanguageForm < MailForm::Base
   include ActiveModel::Model
   attr_accessor :name, :email, :message, :context, :title
 
   validates :message, presence: true
+  attribute :feedback_desc, captcha: true
 
   def email_subject
     "[Possible Harmful Language] #{title}"
   end
 
   def submit
-    ContactMailer.with(form: self).harmful_language.deliver
+    ContactMailer.with(form: self).harmful_language.deliver unless spam?
     @submitted = true
     @name = ""
     @email = ""
