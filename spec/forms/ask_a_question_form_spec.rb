@@ -75,5 +75,9 @@ RSpec.describe AskAQuestionForm do
       form = described_class.new(valid_attributes.merge("message" => ""))
       expect(form).not_to be_valid
     end
+    it "is valid when the honeypot is filled in, so that the robots are fooled" do
+      form = described_class.new(valid_attributes.merge("feedback_desc" => "12345"))
+      expect(form).to be_valid
+    end
   end
 end
