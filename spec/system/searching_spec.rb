@@ -31,8 +31,6 @@ describe 'Searching', type: :system, js: false do
 
     it 'renders an accessible link to the stack map', js: true do
       visit '/catalog?q=&search_field=all_fields'
-      # Right now the fa-map-marker selector from the vendor is not aria-hidden
-      pending('Vendor fixing aria-hidden attribute')
       expect(page).to have_selector('.fa-map-marker', wait: 5)
       expect(page).to have_selector('.fa-map-marker[aria-hidden="true"]', wait: 5)
     end
