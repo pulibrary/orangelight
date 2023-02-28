@@ -21,7 +21,7 @@ export default class OrangelightUiLoader {
 
   setup_modal_focus() {
     $("body").on("shown.bs.modal", (event) => {
-      $(event.target).find('input[type!="hidden"]').first().focus();
+      $(event.target).find('input[type!="hidden"],textarea:enabled').first().focus();
     })
   }
 

@@ -24,6 +24,22 @@ describe('OrangelightUiLoader', function() {
     expect(document.activeElement.id).toEqual('two')
   })
 
+  test('Focus on first textarea', () => {
+    document.body.innerHTML =
+      '<div id="blacklight-modal">'+
+      '<input type="hidden" id="one">'+
+      '<textarea id="two-but-textarea"></textarea>'+
+      '<input type="text" id="three"></div>'
+    let l = new loader
+    l.setup_modal_focus()
+    expect(document.activeElement.id).toEqual('')
+
+    // trigger event
+    $("#blacklight-modal").trigger("shown.bs.modal")
+    // check for focus
+    expect(document.activeElement.id).toEqual('two-but-textarea')
+  })
+
   test("Doesn't call Figgy if there's no IDs to call", () => {
     document.body.innerHTML = ''
     const spy = jest.spyOn(FiggyManifestManager, 'buildThumbnailSet')
