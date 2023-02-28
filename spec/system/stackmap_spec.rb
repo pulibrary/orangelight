@@ -13,7 +13,6 @@ describe 'stackmap', type: :system, js: true do
 
     it 'has a link to the stackmap on the record page' do
       visit '/catalog/99125428126306421'
-      expect(page).to have_button('Where to find it', wait: 5)
       click_button 'Where to find it'
       expect(page).to have_button('zoom in')
     end
