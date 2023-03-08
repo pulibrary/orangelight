@@ -20,23 +20,6 @@ AllCops:
     - 'spec/views/catalog/_show_availability_sidebar.html.erb_spec.rb'
     - 'node_modules/**/*'
 
-Metrics/AbcSize:
-  Exclude:
-    - 'app/models/concerns/blacklight/solr/document/marc.rb'
-    - 'app/controllers/account_controller.rb'
-    - 'app/controllers/orangelight/browsables_controller.rb'
-    - 'app/controllers/users/omniauth_callbacks_controller.rb'
-    - 'app/controllers/account_controller.rb:'
-    - 'app/controllers/concerns/orangelight/catalog.rb'
-    - 'app/helpers/advanced_helper.rb'
-    - 'app/helpers/blacklight_helper.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/services/physical_holdings_markup_builder.rb'
-    - 'lib/orangelight/browse_lists/call_number_csv.rb'
-    - 'app/models/requests/illiad_metadata/article_express.rb'
-    - 'app/models/concerns/blacklight/document/json_ld.rb'
-    - 'app/models/requests/solr_open_url_context.rb'
-
 Metrics/BlockLength:
   Exclude:
     - 'app/controllers/catalog_controller.rb'

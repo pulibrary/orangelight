@@ -17,6 +17,7 @@ module Requests
 
       private
 
+        # rubocop:disable Metrics/AbcSize
         def map_metdata
           {
             "Username" => patron.netid, "TransactionStatus" => illiad_transaction_status,
@@ -32,6 +33,7 @@ module Requests
             "PhotoArticleTitle" => item["edd_art_title"]&.truncate(250)
           }
         end
+        # rubocop:enable Metrics/AbcSize
 
         def pages
           "#{item['edd_start_page']}-#{item['edd_end_page']}"

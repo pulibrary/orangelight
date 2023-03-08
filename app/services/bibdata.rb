@@ -90,6 +90,5 @@ class Bibdata
         sorted.to_h.with_indifferent_access
       end
     # rubocop:enable Metrics/MethodLength
-    # rubocop:enable Metrics/AbcSize
   end
 end

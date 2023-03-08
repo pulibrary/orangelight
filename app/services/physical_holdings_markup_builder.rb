@@ -462,6 +462,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     # @param holding [Hash] holding information from a Solr Document
     # @param holding_id [String] the ID for the holding record
     # @return [String] the markup
+    # rubocop:disable Metrics/AbcSize
     def process_physical_holding(holding, holding_id)
       markup = ''
       doc_id = doc_id(holding)
@@ -513,6 +514,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       markup = self.class.holding_block(markup) unless markup.empty?
       markup
     end
+    # rubocop:enable Metrics/AbcSize
 
     # Generate the markup for physical holdings
     # @return [String] the markup

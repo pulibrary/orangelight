@@ -3,6 +3,7 @@
 class Orangelight::BrowsablesController < ApplicationController
   # GET /orangelight/names
   # GET /orangelight/names.json
+  # rubocop:disable Metrics/AbcSize
   def index
     # if rpp isn't specified default is 50
     # if rpp has values other than 10, 25, 50, 100 then set it to 50
@@ -80,6 +81,7 @@ class Orangelight::BrowsablesController < ApplicationController
       format.json { render json: @orangelight_browsables }
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
 

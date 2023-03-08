@@ -110,6 +110,7 @@ module BlacklightAdvancedSearch
       @keyword_op
     end
 
+    # rubocop:disable Metrics/AbcSize
     def keyword_queries
       unless @keyword_queries
         @keyword_queries = {}
@@ -146,6 +147,7 @@ module BlacklightAdvancedSearch
       end
       @keyword_queries
     end
+    # rubocop:enable Metrics/AbcSize
 
     private
 

@@ -128,6 +128,7 @@ module Blacklight
 
         protected
 
+          # rubocop:disable Metrics/AbcSize
           def build_ctx(format = nil)
             format ||= first('format')&.downcase
             ctx = ContextObject.new
@@ -186,6 +187,7 @@ module Blacklight
             ctx.referent.add_identifier("info:lccn/#{self['lccn_s'].first}") unless self['lccn_s'].nil?
             ctx
           end
+          # rubocop:enable Metrics/AbcSize
 
           # Retrieves the bib. ID from the Solr Document
           # @return [String]

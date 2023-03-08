@@ -47,6 +47,7 @@ module Requests
         ctx
       end
 
+      # rubocop:disable Metrics/AbcSize
       def build_metadata(solr_doc:)
         metadata = {}
         metadata[:id] = solr_doc['id']
@@ -63,6 +64,7 @@ module Requests
         metadata[:lccn] = solr_doc['lccn_s'].first unless solr_doc['lccn_s'].nil?
         metadata
       end
+      # rubocop:enable Metrics/AbcSize
 
       def copy_metadata(format:, metadata:)
         ctx = ContextObject.new

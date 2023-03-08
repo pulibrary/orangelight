@@ -14,6 +14,7 @@ module Blacklight::Document::JsonLd
     data.to_json
   end
 
+  # rubocop:disable Metrics/AbcSize
   def data
     metadata = {}
     metadata["@context"] = "#{default_host}/context.json"
@@ -37,6 +38,7 @@ module Blacklight::Document::JsonLd
 
     metadata
   end
+  # rubocop:enable Metrics/AbcSize
 
   # rubocop:disable Metrics/MethodLength
   def metadata_map

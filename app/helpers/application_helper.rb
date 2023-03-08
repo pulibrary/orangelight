@@ -151,6 +151,7 @@ module ApplicationHelper
   # Generate the markup block for individual search result items containing holding information
   # @param document [SolrDocument] the Solr Document retrieved in the search result set
   # @return [String] the markup
+  # rubocop:disable Metrics/AbcSize
   def holding_block_search(document)
     block = ''
     portfolio_links = electronic_portfolio_links(document)
@@ -231,6 +232,7 @@ module ApplicationHelper
       content_tag(:ul, block.html_safe)
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   # Location display in the search results page
   def search_location_display(holding, document)
@@ -246,6 +248,7 @@ module ApplicationHelper
 
   SEPARATOR = '—'.freeze
   QUERYSEP = '—'.freeze
+  # rubocop:disable Metrics/AbcSize
   def subjectify(args)
     all_subjects = []
     sub_array = []
@@ -278,6 +281,7 @@ module ApplicationHelper
       subject_list.each { |subject| concat(content_tag(:li, subject, dir: subject.dir)) }
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def title_hierarchy(args)
     titles = JSON.parse(args[:document][args[:field]])
