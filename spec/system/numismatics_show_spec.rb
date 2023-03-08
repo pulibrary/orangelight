@@ -21,7 +21,7 @@ describe 'Numismatics show page', type: :system do
                                  "Obverse Figure Description", "Obverse Legend",
                                  "Obverse Attributes",
                                  "Reverse Figure Description", "Reverse Legend",
-                                 "Series", "References"]
+                                 "Series", "Citations", "References"]
       expect(rendered_details_fields).to eq(expected_details_fields)
     end
   end

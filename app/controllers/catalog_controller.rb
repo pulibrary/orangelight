@@ -167,6 +167,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'numismatic_provenance_s', label: 'Provenance', include_in_request: false
     config.add_facet_field 'issue_number_s', label: 'Issue', include_in_request: false
     config.add_facet_field 'issue_monogram_title_s', label: 'Monogram', include_in_request: false
+    config.add_facet_field 'issue_citations_s', label: 'Citations', include_in_request: false
     config.add_facet_field 'issue_references_s', label: 'References', include_in_request: false
     config.add_facet_field 'donor_s', label: 'Donor', include_in_request: false
     config.add_facet_field 'analysis_s', label: 'Analysis', include_in_request: false
@@ -418,6 +419,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'issue_series_s', label: 'Series', link_to_search_value: true
     config.add_show_field 'issue_artists_s', label: 'Artist', link_to_search_value: true
     config.add_show_field 'issue_subject_s', label: 'Subject', link_to_search_value: true
+    config.add_show_field 'issue_citations_s', label: 'Citations', link_to_search_value: true
     config.add_show_field 'issue_references_s', label: 'References', link_to_search_value: true
 
     ## Coin Description
@@ -437,6 +439,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'issue_color_s', label: 'Color', link_to_facet: true, coin_description: true
     config.add_show_field 'counter_stamp_s', label: 'Counter Stamp', link_to_facet: true, coin_description: true
     config.add_show_field 'analysis_s', label: 'Analysis', link_to_facet: true, coin_description: true
+    config.add_show_field 'coin_citations_s', label: 'Citations', link_to_facet: true, coin_description: true
     config.add_show_field 'coin_references_s', label: 'References', link_to_facet: true, coin_description: true
 
     ## Provenance

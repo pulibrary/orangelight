@@ -108,6 +108,10 @@
       "Great Britain"
   ],
   "issue_place_sort": "Great Britain",
+  "issue_citations_s": [
+      "short-title"
+  ],
+  "issue_citations_sort": "short-title",
   "issue_references_s": [
       "short-title citation part citation number"
   ],

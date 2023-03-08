@@ -127,6 +127,12 @@
   "issue_reverse_legend_s": [
     "ISXS/BASILE/BASILE"
   ],
+  "issue_citations_s": [
+    "DOC",
+    "Sear",
+    "BN",
+    "BMC.Byz"
+  ],
   "issue_references_s": [
     "DOC 3.676 B",
     "Sear 377 1823",

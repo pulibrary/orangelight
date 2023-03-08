@@ -9,6 +9,7 @@ describe 'Numismatics Records' do
     it 'displays numismatics fields' do
       visit '/catalog/coin-constructed'
 
+      expect(page).to have_content 'Citations'
       expect(page).to have_content 'References'
       expect(page).to have_content 'Die Axis'
       expect(page).to have_content 'Obverse Attributes'
