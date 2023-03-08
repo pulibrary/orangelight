@@ -10,6 +10,7 @@ RSpec.describe ApplicationHelper do
     let(:call_number) { 'PS3539.A74Z93 2000' }
     let(:search_result) { helper.holding_block_search(SolrDocument.new(document)) }
     let(:search_result_thesis) { helper.holding_block_search(SolrDocument.new(document_thesis)) }
+    let(:search_result_thesis_embargoed) { helper.holding_block_search(SolrDocument.new(document_thesis_embargoed)) }
     let(:empty_search_result) { helper.holding_block_search(SolrDocument.new(document_no_holdings)) }
 
     let(:show_result) { helper.holding_request_block(SolrDocument.new(document)) }
@@ -201,6 +202,29 @@ RSpec.describe ApplicationHelper do
         expect(empty_search_result).to include t('blacklight.holdings.search_missing')
       end
     end
+    context '#holding_block_search with both links and holdings' do
+      let(:document) do
+        {
+          id: '1',
+          format: ['Book'],
+          holdings_1display: holding_block_json,
+          electronic_access_1display: '{"https://library.princeton.edu/resource/28076":["library.princeton.edu"]}'
+        }.with_indifferent_access
+      end
+
+      before { stub_holding_locations }
+
+      it 'returns a good string' do
+        expect(search_result).to include call_number
+        expect(search_result).to include library
+      end
+
+      it 'includes the online badge and link since there is an electronic access link' do
+        expect(search_result).to include ">Online</span"
+        expect(search_result).to include 'title="Electronic access"'
+        expect(search_result).to include "library.princeton.edu"
+      end
+    end
     context '#holding_block_search with a missing location code' do
       let(:holding_block_json) do
         {
@@ -306,6 +330,14 @@ RSpec.describe ApplicationHelper do
         holdings_block = helper.holding_block_search(SolrDocument.new(document))
         expect(holdings_block).to include ">Online</span"
         expect(holdings_block).to include "library.princeton.edu"
+      end
+    end
+
+    context '#holding_block_search with embargoed thesis' do
+      before { stub_holding_locations }
+
+      it 'says that the material is under embargo' do
+        expect(search_result_thesis_embargoed).to include('title="Availability: Material under embargo"')
       end
     end
 
