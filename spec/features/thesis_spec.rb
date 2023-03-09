@@ -36,7 +36,7 @@ describe 'Viewing on-site thesis record' do
     end
     it 'has an available online section with an ark identifier lookup ' do
       link = page.find('.electronic-access > a')
-      expect(link[:href]).to include('https://library.princeton.edu/resolve/lookup?url=http://arks.princeton.edu/ark:')
+      expect(link[:href]).to include('http://arks.princeton.edu/ark:')
     end
   end
 end

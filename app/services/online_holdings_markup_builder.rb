@@ -35,7 +35,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
                  link_to(texts.first, ::Regexp.last_match(0))
                end
              else
-               link_to(texts.first, "#{Requests.config['proxy_base']}#{url}", target: '_blank', rel: 'noopener')
+               link_to(texts.first, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener')
              end
     markup
   end

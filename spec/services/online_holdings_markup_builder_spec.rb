@@ -53,7 +53,7 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
 
     it 'generates electronic access links for a catalog record' do
       expect(link_markup).to include '<a target="_blank"'
-      expect(link_markup).to include 'href="https://library.princeton.edu/resolve/lookup?url=http://arks.princeton.edu/ark:/88435/dsp01ft848s955"'
+      expect(link_markup).to include 'href="http://arks.princeton.edu/ark:/88435/dsp01ft848s955"'
       expect(link_markup).to include 'Full text'
     end
 
@@ -88,9 +88,9 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
     let(:urlified_markup) { described_class.urlify(adapter) }
 
     it 'generates electronic access links for a catalog record' do
-      expect(urlified_markup).to include 'href="https://library.princeton.edu/resolve/lookup?url=http://gateway.proquest.com/url">gateway.proquest.com</a>'
+      expect(urlified_markup).to include 'href="https://login.ezproxy.princeton.edu/login?url=http://gateway.proquest.com/url">gateway.proquest.com</a>'
       expect(urlified_markup).to include 'Citation only: <a target="_blank"'
-      expect(urlified_markup).to include 'href="https://library.princeton.edu/resolve/lookup?url=http://arks.princeton.edu/ark:/88435/dsp0141687h654"'
+      expect(urlified_markup).to include 'href="http://arks.princeton.edu/ark:/88435/dsp0141687h654"'
       expect(urlified_markup).to include 'DataSpace</a>'
     end
 
