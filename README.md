@@ -193,3 +193,18 @@ Start the Bibdata server, and then set the ```bidata_base``` value in OrangeLigh
      ```
 
      [you can see the mail that has been sent here]( http://localhost:1080/)
+
+## Update config/hosts.dat from private repo
+
+1. Go to https://github.com/PrincetonUniversityLibrary/ezproxy_conf/blob/main/shim/hosts.dat
+  - If you don't have access to this private repo, speak to others on the team about getting access
+1. Click "Raw". This should give you a url that looks something like `https://raw.githubusercontent.com/PrincetonUniversityLibrary/ezproxy_conf/main/shim/hosts.dat?token=MY_LONG_TOKEN`
+1. Copy the url, and set it to a variable on the command line
+```bash
+MY_URL=the url you copied above
+```
+1. Copy the latest version of the remote file to the local file
+```bash
+curl $MY_URL -o config/hosts.dat
+```
+1. Optionally, alphabetize the file using your local editor

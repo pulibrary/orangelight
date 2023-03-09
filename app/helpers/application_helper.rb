@@ -18,7 +18,7 @@ module ApplicationHelper
     unless electronic_access.nil?
       links_hash = JSON.parse(electronic_access)
       links_hash.first(2).each do |url, text|
-        link = link_to(text.first, "#{Requests.config['proxy_base']}#{url}", target: '_blank', rel: 'noopener')
+        link = link_to(text.first, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener')
         link = "#{text[1]}: ".html_safe + link if text[1]
         urls << content_tag(:div, link, class: 'library-location')
       end
@@ -148,90 +148,6 @@ module ApplicationHelper
     resolved_location ? resolved_location : {}
   end
 
-  # Generate the markup block for individual search result items containing holding information
-  # @param document [SolrDocument] the Solr Document retrieved in the search result set
-  # @return [String] the markup
-  def holding_block_search(document)
-    block = ''
-    portfolio_links = electronic_portfolio_links(document)
-
-    links = search_links(document['electronic_access_1display']) + portfolio_links
-    holdings_hash = document.holdings_all_display
-    scsb_multiple = false
-    holdings_hash.first(2).each do |id, holding|
-      location = holding_location(holding)
-      check_availability = render_availability?
-      info = ''
-      if holding['library'] == 'Online'
-        check_availability = false
-        if links.empty?
-          check_availability = render_availability?
-          info << content_tag(:span, 'Link Missing',
-                              class: 'availability-icon badge badge-secondary', title: 'Availability: Online',
-                              'data-toggle' => 'tooltip')
-          info << content_tag(:div, 'Online access is not currently available.', class: 'library-location')
-        else
-          info << content_tag(:span, 'Online', class: 'availability-icon badge badge-primary', title: 'Electronic access', 'data-toggle' => 'tooltip')
-          info << links.shift.html_safe
-        end
-      else
-        if holding['dspace'] || holding['location_code'] == 'rare$num'
-          check_availability = false
-          info << content_tag(:span, 'On-site access', class: 'availability-icon badge badge-success', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
-          info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe if aeon_location?(location)
-        elsif /^scsb.+/.match? location[:code]
-          check_availability = false
-          unless holding['items'].nil?
-            scsb_multiple = true unless holding['items'].count == 1
-            if scsb_supervised_items?(holding)
-              info << content_tag(:span, 'On-site access', class: 'availability-icon badge badge-success', title: 'Availability: On-site by request', 'data-toggle' => 'tooltip')
-              info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe
-            else
-              info << content_tag(:span, '', class: 'availability-icon badge', title: '', 'data-scsb-availability' => 'true', 'data-toggle' => 'tooltip', 'data-scsb-barcode' => holding['items'].first['barcode'].to_s).html_safe
-            end
-          end
-        elsif holding['dspace'].nil?
-          info << content_tag(:span, 'Loading...', class: 'availability-icon badge badge-secondary').html_safe
-          info << content_tag(:span, '', class: 'icon-warning icon-request-reading-room', title: 'Items at this location must be requested', 'data-toggle' => 'tooltip', 'aria-hidden' => 'true').html_safe if aeon_location?(location)
-        else
-          check_availability = false
-          info << content_tag(:span, 'Unavailable', class: 'availability-icon badge badge-danger', title: 'Availability: Material under embargo', 'data-toggle' => 'tooltip')
-        end
-        info << content_tag(:div, search_location_display(holding, document), class: 'library-location', data: { location: true, record_id: document['id'], holding_id: id })
-      end
-
-      block << content_tag(:li, info.html_safe, class: 'holding-status', data: { availability_record: check_availability, record_id: document['id'], holding_id: id, temp_location_code: holding['temp_location_code'], aeon: aeon_location?(location), bound_with: document.bound_with? }.compact)
-
-      cdl_placeholder = content_tag(:span, '', class: 'badge badge-primary', 'data-availability-cdl' => true)
-      block << content_tag(:li, cdl_placeholder.html_safe)
-    end
-
-    if scsb_multiple == true
-      block << content_tag(:li, link_to('View Record for Full Availability', solr_document_path(document['id']), class: 'availability-icon badge badge-secondary more-info', title: 'Click on the record for full availability info', 'data-toggle' => 'tooltip').html_safe)
-    elsif holdings_hash.length > 2
-      block << content_tag(:span, "View record for information on additional holdings", "style" => "font-size: small; font-style: italic;")
-    elsif !holdings_hash.empty?
-      block << content_tag(:li, link_to('', solr_document_path(document['id']),
-                                        class: 'availability-icon more-info', title: 'Click on the record for full availability info',
-                                        'data-toggle' => 'tooltip').html_safe, class: 'empty', data: { record_id: document['id'] })
-    end
-
-    if block.empty? && links.present?
-      # All other options came up empty but since we have electronic access let's show the
-      # Online badge with the electronic access link (rather than a misleading "No holdings")
-      info = ''
-      info << content_tag(:span, 'Online', class: 'availability-icon badge badge-primary', title: 'Electronic access', 'data-toggle' => 'tooltip')
-      info << links.shift.html_safe
-      block << content_tag(:li, info.html_safe)
-    end
-
-    if block.empty?
-      content_tag(:div, t('blacklight.holdings.search_missing'))
-    else
-      content_tag(:ul, block.html_safe)
-    end
-  end
-
   # Location display in the search results page
   def search_location_display(holding, document)
     location = holding_location_label(holding)
@@ -246,6 +162,7 @@ module ApplicationHelper
 
   SEPARATOR = '—'.freeze
   QUERYSEP = '—'.freeze
+  # rubocop:disable Metrics/AbcSize
   def subjectify(args)
     all_subjects = []
     sub_array = []
@@ -278,6 +195,7 @@ module ApplicationHelper
       subject_list.each { |subject| concat(content_tag(:li, subject, dir: subject.dir)) }
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def title_hierarchy(args)
     titles = JSON.parse(args[:document][args[:field]])

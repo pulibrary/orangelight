@@ -69,13 +69,13 @@ describe 'blacklight tests' do
 
     it 'links to an electronic resource with the appropriate display text' do
       get '/catalog/9933506421'
-      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"#{Requests.config['proxy_base']}http://d-nb.info/991834119/04\">Inhaltsverzeichnis</a>")
+      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"http://d-nb.info/991834119/04\">Inhaltsverzeichnis</a>")
     end
 
     it 'includes $z as an additional label for the link' do
       get '/catalog/998449623506421'
       expect(response.body).to(
-        include('Finding aid online:: <a target="_blank" rel="noopener" href="https://library.princeton.edu/resolve/lookup?url=http://arks.princeton.edu/ark:/88435/pz50gw142">arks.princeton.edu</a>')
+        include('Finding aid online:: <a target="_blank" rel="noopener" href="http://arks.princeton.edu/ark:/88435/pz50gw142">arks.princeton.edu</a>')
       )
     end
 
