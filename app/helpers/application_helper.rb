@@ -18,7 +18,7 @@ module ApplicationHelper
     unless electronic_access.nil?
       links_hash = JSON.parse(electronic_access)
       links_hash.first(2).each do |url, text|
-        link = link_to(text.first, "#{Requests.config['proxy_base']}#{url}", target: '_blank', rel: 'noopener')
+        link = link_to(text.first, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener')
         link = "#{text[1]}: ".html_safe + link if text[1]
         urls << content_tag(:div, link, class: 'library-location')
       end
