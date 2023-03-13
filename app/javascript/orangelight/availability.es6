@@ -50,7 +50,7 @@ export default class AvailabilityUpdater {
                     });
             }
 
-            // a show page
+        // a show page
         } else if ($("*[data-availability-record='true']").length > 0) {
             this.id = window.location.pathname.split('/').pop();
             this.host_id = $("#main-content").data("host-id") || "";
@@ -148,19 +148,12 @@ export default class AvailabilityUpdater {
 
             // In Alma the label from the endpoint includes both the library name and the location.
             const availability_info = holding_records[holding_id];
-            const {label, temp_location} = availability_info;
+            const {label} = availability_info;
             if (label) {
                 const location = $(`*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .results_location`);
                 location.text(label);
             }
             const availability_element = $(`*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .availability-icon`);
-
-            if (temp_location) {
-                const current_map_link = $(`*[data-location='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .find-it`);
-                $(availability_element).next('.icon-warning').hide();
-                const temp_map_link = this.stackmap_link(record_id, availability_info, true);
-                current_map_link.replaceWith(temp_map_link);
-            }
             this.apply_availability_label(availability_element, availability_info, true);
         }
 
@@ -194,7 +187,7 @@ export default class AvailabilityUpdater {
             const result = [];
             for (const holding_id in holding_records[id]) {
                 const availability_info = holding_records[id][holding_id];
-                const { label, cdl, temp_location } = holding_records[id][holding_id];
+                const { label, cdl } = holding_records[id][holding_id];
                 // case :constituent with host ids.
                 // data-record-id has a different this.id when there are host ids.
                 let availability_element;
@@ -212,12 +205,6 @@ export default class AvailabilityUpdater {
                 this.apply_availability_label(availability_element, availability_info, false);
                 if (cdl) {
                     insert_online_link();
-                }
-
-                if (temp_location) {
-                    const current_map_link = $(`*[data-holding-id='${holding_id}'] .find-it`);
-                    const temp_map_link = this.stackmap_link(id, availability_info);
-                    current_map_link.replaceWith(temp_map_link);
                 }
                 result.push(this.update_request_button(holding_id, availability_info));
             }
@@ -390,30 +377,6 @@ export default class AvailabilityUpdater {
         return str[0].toUpperCase() + str.slice(1, +(str.length - 1) + 1 || undefined).toLowerCase();
     }
 
-    stackmap_link(record_id, availability_info, marker_only) {
-        let location;
-        const temp_status = availability_info['temp_loc'];
-        if (temp_status) {
-            location = availability_info['temp_loc'];
-        } else {
-            location = availability_info['location'];
-        }
-
-        let link = '';
-        if (this.find_it_location(location)) {
-            const map_url = `/catalog/${record_id}/stackmap?loc=${location}`;
-            const marker_span = "<span class='fa fa-map-marker'></span>";
-            link = `<a title='Where to find it' class='find-it' data-location-map='${location}' data-blacklight-modal='trigger' href='${map_url}'>`;
-            if (marker_only) {
-                link = `${link}${marker_span}</a>`;
-            } else {
-                link = `${link}<span class='link-text'>Where to find it</span>${marker_span}</a>`;
-            }
-        }
-
-        return link;
-    }
-  
     // Set status for specific Marquand locations and location RES_SHARE$IN_RS_REQ
     checkSpecialLocation(location, availability_element) {
         if (location.startsWith("marquand$")){
