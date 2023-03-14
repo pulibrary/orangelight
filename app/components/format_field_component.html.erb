@@ -1,0 +1,6 @@
+<!-- FORMAT FIELD -->
+<%= render(@layout.new(field: @field, value_tag: :li, value_class: '')) do |component| %>
+  <% component.with_value do %>
+    <%= format_icon %>
+  <% end %>
+<% end %>

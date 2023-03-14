@@ -334,18 +334,6 @@ module ApplicationHelper
     all_links
   end
 
-  def format_icon(args)
-    icon = render_icon(args[:document][args[:field]][0]).to_s
-    formats = format_render(args)
-    content_tag :ul do
-      content_tag :li, " #{icon} #{formats} ".html_safe, class: 'blacklight-format', dir: 'ltr'
-    end
-  end
-
-  def format_render(args)
-    args[:document][args[:field]].join(', ')
-  end
-
   def location_has(args)
     location_notes = JSON.parse(args[:document][:holdings_1display]).collect { |_k, v| v['location_has'] }.flatten
     if location_notes.length > 1

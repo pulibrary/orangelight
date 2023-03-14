@@ -225,8 +225,8 @@ class CatalogController < ApplicationController
     #   (catalog.json), add it here!
     config.add_index_field 'series_display', label: 'Series', helper_method: :series_results
     config.add_index_field 'author_display', label: 'Author/Artist', browse_link: :name
-    config.add_index_field 'pub_created_display', label: 'Published/Created'
-    config.add_index_field 'format', label: 'Format', helper_method: :format_icon
+    config.add_index_field 'pub_created_display', label: 'Published/Created', first: true
+    config.add_index_field 'format', label: 'Format', component: FormatFieldComponent
     config.add_index_field 'holdings_1display', show: false
     config.add_index_field 'contained_in_s', show: false
     config.add_index_field 'isbn_t', show: false
@@ -254,7 +254,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'name_uniform_title_1display', label: 'Uniform title', helper_method: :name_title_hierarchy, if: false
     # For uniform titles from 130 field - when there is only a uniform title, and no author
     config.add_show_field 'uniform_title_1display', label: 'Uniform title', helper_method: :title_hierarchy, if: false
-    config.add_show_field 'format', label: 'Format', helper_method: :format_render, if: false, coin_top_field: true
+    config.add_show_field 'format', label: 'Format', if: false, coin_top_field: true
     config.add_show_field 'language_facet', label: 'Language', if: false
     config.add_show_field 'edition_display', label: 'Εdition', if: false
     config.add_show_field 'pub_created_display', label: "Published/\u200BCreated", if: false

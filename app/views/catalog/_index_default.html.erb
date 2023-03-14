@@ -2,9 +2,9 @@
 <%# default partial to display solr document fields in catalog index view -%>
 <abbr class="unapi-id" title="<%= document.id %>"></abbr>
 <ul class="document-metadata dl-horizontal dl-invert">
-  <% doc_presenter.fields_to_render.reject { |_,field| field.show == false }.each do |field_name, field| -%>
-    <% field_presenter = doc_presenter.field_presenters.find {|presenter| presenter.key == field.key } %>
-    <li><%= field_presenter.render %></li>
+  <% doc_presenter.field_presenters.reject { |field| field.field_config.show == false }.each do |field_presenter| -%>
+    <% component = field_presenter.component || Blacklight::MetadataFieldComponent %>
+    <li><%= render component.new field: field_presenter, layout: IndexMetadataFieldLayoutComponent %></li>
   <% end -%>
   <li class="blacklight-holdings"><%= holding_block_search(document) %></li>
 </ul>
