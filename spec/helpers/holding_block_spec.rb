@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ApplicationHelper do
+RSpec.describe HoldingsHelper do
   describe '#holding_block helpers' do
     let(:holding_id) { '3580281' }
     let(:library) { 'Rare Books and Special Collections' }
@@ -175,7 +175,12 @@ RSpec.describe ApplicationHelper do
     end
     context '#holding_block_search' do
       before { stub_holding_locations }
-
+      let(:expected_result) do
+        "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\" title=\"Availability: Online\" data-toggle=\"tooltip\">Link Missing</span><div class=\"library-location\">Online access is not currently available.</div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
+      end
+      it 'matches the expected result' do
+        expect(search_result).to eq(expected_result)
+      end
       it 'returns a good string' do
         expect(search_result).to include call_number
         expect(search_result).to include library
@@ -202,6 +207,79 @@ RSpec.describe ApplicationHelper do
         expect(empty_search_result).to include t('blacklight.holdings.search_missing')
       end
     end
+    context '#holding_block_search from scsb' do
+      before { stub_holding_locations }
+      let(:holding_block_json) do
+        { holding_id =>
+          {
+            'location' => 'ReCAP',
+            'library' => 'ReCAP',
+            'location_code' => 'scsbnypl',
+            'items' => items
+          } }.to_json.to_s
+      end
+
+      context 'supervised' do
+        let(:items) do
+          [
+            { 'holding_id' => '7985322',
+              'use_statement' => 'Supervised Use',
+              'barcode' => '33433098463957',
+              'copy_number' => '1',
+              'cgd' => 'Shared',
+              'collection_code' => 'NA' }
+          ]
+        end
+
+        it 'includes on-site requirement' do
+          expect(search_result).to include('On-site by request')
+        end
+      end
+
+      context 'unsupervised' do
+        let(:items) do
+          [
+            { 'holding_id' => '7985322',
+              'use_statement' => '',
+              'barcode' => '33433098463957',
+              'copy_number' => '1',
+              'cgd' => 'Shared',
+              'collection_code' => 'NA' }
+          ]
+        end
+        let(:expected_result) do
+          "<ul><li class=\"holding-status\" data-availability-record=\"false\" data-record-id=\"1\" data-holding-id=\"3580281\" data-aeon=\"false\" data-bound-with=\"false\"><span class=\"availability-icon badge\" title=\"\" data-scsb-availability=\"true\" data-toggle=\"tooltip\" data-scsb-barcode=\"33433098463957\"></span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">ReCAP - Remote Storage</span><span class=\"call-number\"></span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"empty\" data-record-id=\"1\"><a class=\"availability-icon more-info\" title=\"Click on the record for full availability info\" data-toggle=\"tooltip\" href=\"/catalog/1\"></a></li></ul>"
+        end
+        it 'matches the expected result' do
+          expect(search_result).to eq(expected_result)
+        end
+        it 'includes the scsb barcode' do
+          expect(search_result).to include('data-scsb-barcode')
+        end
+      end
+
+      context 'multiple scsb items' do
+        let(:items) do
+          [
+            { 'holding_id' => '7985322',
+              'use_statement' => 'In Library Use',
+              'barcode' => '33433098463957',
+              'copy_number' => '1',
+              'cgd' => 'Shared',
+              'collection_code' => 'NA' },
+            { 'holding_id' => '7985322',
+              'use_statement' => 'Supervised Use',
+              'barcode' => '33433091627434',
+              'copy_number' => '1',
+              'cgd' => 'Shared',
+              'collection_code' => 'NA' }
+          ]
+        end
+        it 'sends the user to the item for details' do
+          expect(search_result).to include('View Record for Full Availability')
+        end
+      end
+    end
     context '#holding_block_search with both links and holdings' do
       let(:document) do
         {
@@ -213,10 +291,20 @@ RSpec.describe ApplicationHelper do
       end
 
       before { stub_holding_locations }
-
+      let(:expected_result) do
+        "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"false\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-primary\" title=\"Electronic access\" data-toggle=\"tooltip\">Online</span><div class=\"library-location\"><a target=\"_blank\" rel=\"noopener\" href=\"https://library.princeton.edu/resource/28076\">library.princeton.edu</a></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
+      end
+      it 'matches the expected result' do
+        expect(search_result).to eq(expected_result)
+      end
       it 'returns a good string' do
         expect(search_result).to include call_number
         expect(search_result).to include library
+      end
+
+      it 'includes both availability-record true and false' do
+        expect(search_result).to include("data-availability-record=\"true\"")
+        expect(search_result).to include("data-availability-record=\"false\"")
       end
 
       it 'includes the online badge and link since there is an electronic access link' do
@@ -238,7 +326,12 @@ RSpec.describe ApplicationHelper do
       end
 
       before { stub_holding_locations }
-
+      let(:expected_result) do
+        "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"empty\" data-record-id=\"1\"><a class=\"availability-icon more-info\" title=\"Click on the record for full availability info\" data-toggle=\"tooltip\" href=\"/catalog/1\"></a></li></ul>"
+      end
+      it 'matches the expected result' do
+        expect(search_result).to eq(expected_result)
+      end
       it 'includes the item in the result without an error' do
         expect(search_result).to include call_number
       end
@@ -283,6 +376,12 @@ RSpec.describe ApplicationHelper do
         before do
           allow(Flipflop).to receive(:firestone_locator?).and_return(false)
         end
+        let(:expected_result) do
+          "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\" title=\"Availability: Online\" data-toggle=\"tooltip\">Link Missing</span><div class=\"library-location\">Online access is not currently available.</div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
+        end
+        it 'matches the expected result' do
+          expect(search_result).to eq(expected_result)
+        end
         # For most locations a map icon is displayed to help patrons if they want to fetch the item.
         it 'includes the find it icon' do
           search_result = helper.holding_block_search(SolrDocument.new(document_with_find_it_link))
@@ -325,17 +424,43 @@ RSpec.describe ApplicationHelper do
       end
 
       before { stub_holding_locations }
-
+      let(:expected_result) do
+        "<ul><li><span class=\"availability-icon badge badge-primary\" title=\"Electronic access\" data-toggle=\"tooltip\">Online</span><div class=\"library-location\"><a target=\"_blank\" rel=\"noopener\" href=\"https://library.princeton.edu/resource/28076\">library.princeton.edu</a></div></li></ul>"
+      end
+      it 'matches the expected result' do
+        expect(search_result).to eq(expected_result)
+      end
       it 'includes the online badge and link since there is an electronic access link' do
         holdings_block = helper.holding_block_search(SolrDocument.new(document))
         expect(holdings_block).to include ">Online</span"
         expect(holdings_block).to include "library.princeton.edu"
       end
+
+      context 'with multiple links in electronic_access_1display and portfolio' do
+        let(:document) do
+          {
+            id: '1',
+            format: ['Book'],
+            electronic_access_1display: '{"http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_01_0554":["The bombardment of Canton"],"http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_02_0555":["Fifty years\' work amongst young men in all lands"],"http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_03_0556":["Church work among white settlers beyond the sea"],"http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_04_0557":["The opium question, as between nation and nation"],"http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_05_0558":["Our opium trade with China"],"http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_06_0559":["The fifth report of the Committee of the London East India and China Association"],"http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_07_0560":["Notes on the law of storms, as applying to the tempests of the Indian and Chinese seas"],"http://www.chinacultureandsociety.amdigital.co.uk/Documents/Details/Z165_08_0561":["The centenary volume of the Baptist Missionary Society 1792-1892"]}',
+            electronic_portfolio_s: ["{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53876988120006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}", "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53876988180006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}", "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53876988100006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}", "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53876988140006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}", "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53876988160006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}", "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53876988240006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}", "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53876988200006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}", "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53876988220006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"]
+          }.with_indifferent_access
+        end
+
+        it 'includes only the first link' do
+          expect(search_result).to include('The bombardment of Canton')
+          expect(search_result).not_to include("Fifty years' work amongst young men in all lands")
+        end
+      end
     end
 
     context '#holding_block_search with embargoed thesis' do
       before { stub_holding_locations }
-
+      let(:expected_result) do
+        "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\" title=\"Availability: Online\" data-toggle=\"tooltip\">Link Missing</span><div class=\"library-location\">Online access is not currently available.</div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
+      end
+      it 'matches the expected result' do
+        expect(search_result).to eq(expected_result)
+      end
       it 'says that the material is under embargo' do
         expect(search_result_thesis_embargoed).to include('title="Availability: Material under embargo"')
       end
