@@ -17,5 +17,16 @@
     "prefer-const": "error",
     "no-use-before-define": "error",
     "no-trailing-spaces": ["error", { "skipBlankLines": true, "ignoreComments": true }]
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.spec.js",
+        "**/*.spec.jsx"
+      ],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
 }
