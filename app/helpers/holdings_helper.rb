@@ -43,34 +43,34 @@ module HoldingsHelper
   def first_two_holdings_block(document, id, holding, links)
     location = holding_location(holding)
     check_availability = render_availability?
-    data = ''.html_safe
+    accumulator = ''.html_safe
     if holding['library'] == 'Online'
       check_availability = false
       if links.empty?
         check_availability = render_availability?
-        data << empty_link_online_holding_block
+        accumulator << empty_link_online_holding_block
       else
-        data << online_holding_block(links)
+        accumulator << online_holding_block(links)
       end
     else
       if holding['dspace'] || holding['location_code'] == 'rare$num'
         check_availability = false
-        data << dspace_or_numismatics_holding_block(location)
+        accumulator << dspace_or_numismatics_holding_block(location)
       elsif /^scsb.+/.match? location[:code]
         check_availability = false
         unless holding['items'].nil?
           @scsb_multiple = true unless holding['items'].count == 1
-          data << scsb_item_block(holding)
+          accumulator << scsb_item_block(holding)
         end
       elsif holding['dspace'].nil?
-        data << dspace_not_defined_block(location)
+        accumulator << dspace_not_defined_block(location)
       else
         check_availability = false
-        data << under_embargo_block
+        accumulator << under_embargo_block
       end
-      data << library_location_div(holding, document, id)
+      accumulator << library_location_div(holding, document, id)
     end
-    holding_status_li(data, document, check_availability, id, holding)
+    holding_status_li(accumulator, document, check_availability, id, holding)
   end
   # rubocop:enable Metrics/MethodLength
 
@@ -188,11 +188,11 @@ module HoldingsHelper
     )
   end
 
-  def holding_status_li(data, document, check_availability, id, holding)
+  def holding_status_li(accumulator, document, check_availability, id, holding)
     location = holding_location(holding)
     content_tag(
       :li,
-      data,
+      accumulator,
       class: 'holding-status',
       data: {
         availability_record: check_availability,
