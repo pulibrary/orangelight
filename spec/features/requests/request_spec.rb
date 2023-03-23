@@ -700,7 +700,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             expect(confirm_email.subject).to eq("Partner Request Confirmation")
             expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
             expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-            expect(confirm_email.html_part.body.to_s).to have_content("Requests typically are filled within two weeks when possible")
+            expect(confirm_email.html_part.body.to_s).to have_content("Most requests will arrive within two weeks")
             expect(confirm_email.html_part.body.to_s).to have_content("Trump : the art of the comeback")
           end
 
@@ -725,7 +725,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             expect(confirm_email.subject).to eq("Partner Request Confirmation")
             expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
             expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-            expect(confirm_email.html_part.body.to_s).to have_content("Requests typically are filled within two weeks when possible")
+            expect(confirm_email.html_part.body.to_s).to have_content("Most requests will arrive within two weeks")
             expect(confirm_email.html_part.body.to_s).to have_content("7th census of U.S.1850")
           end
         end
