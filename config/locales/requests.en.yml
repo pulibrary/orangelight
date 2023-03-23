@@ -170,7 +170,7 @@ en:
     interlibrary_loan:
       email_from: "ilsborr@princeton.edu"
       email_subject: "Partner Request Confirmation"
-      email_conf_msg: 'Item sent to be requested from another Library. Requests typically are filled within two weeks when possible. If there is a problem fulfilling your request a member of our Library Staff will contact you. For more detailed information please login to your <a href="https://lib-illiad.princeton.edu/illiad/illiad.dll">Illiad Account</a>. (Note: Your username and password is the same as the CAS)'
+      email_conf_msg: 'This item will be requested from another Library. Most requests will arrive within two weeks. If there is a problem fulfilling your request a member of our Library staff will contact you. For more detailed information, please <a href=https://library.princeton.edu/services/interlibrary-services>login to your ILLiad account with your University credentials</a>.'
     help_me:
       email_from: "ilsborr@princeton.edu"
       delivery_label: "Help Me Get It"
