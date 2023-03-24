@@ -17,8 +17,8 @@ class StackmapService
     # @return [String] stackmap url
     def url
       if valid?
-        if missing_stackmap_reserves.include? @loc
-          missing_stackmap_reserves[@loc]
+        if StackmapService::Url.missing_stackmap_reserves.include? @loc
+          StackmapService::Url.missing_stackmap_reserves[@loc]
         elsif stackmap_libs.include? lib
           stackmap_url
         else
@@ -40,6 +40,15 @@ class StackmapService
     def location_label
       return nil if holding_location.nil?
       holding_location[:label].presence || holding_location[:library][:label]
+    end
+
+    def self.missing_stackmap_reserves
+      {
+        'arch$res3hr' => 'https://library.princeton.edu/architecture',
+        'stokes$respiapr' => 'https://library.princeton.edu/stokes',
+        'plasma$res' => 'https://library.princeton.edu/plasma-physics',
+        'lewis$gr' => 'https://library.princeton.edu/lewis'
+      }
     end
 
     private
@@ -80,15 +89,6 @@ class StackmapService
         else
           %w[arch eastasian engineer lewis mendel plasma stokes firestone]
         end
-      end
-
-      def missing_stackmap_reserves
-        {
-          'arch$res3hr' => 'https://library.princeton.edu/architecture',
-          'stokes$respiapr' => 'https://library.princeton.edu/stokes',
-          'plasma$res' => 'https://library.princeton.edu/plasma-physics',
-          'lewis$gr' => 'https://library.princeton.edu/lewis'
-        }
       end
 
       def by_title_locations
