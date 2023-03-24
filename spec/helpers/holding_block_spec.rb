@@ -370,6 +370,23 @@ RSpec.describe HoldingsHelper do
         }.with_indifferent_access
       end
 
+      let(:document_in_temp_reserve_location) do
+        {
+          id: '1',
+          format: ['Book'],
+          holdings_1display: {
+            "arch$res3hr": {
+              location_code: "arch$res3hr",
+              current_location: "Reserve 3-Hour",
+              current_library: "Architecture Library",
+              call_number: "HT166.I3",
+              call_number_browse: "HT166.I3",
+              temp_location_code: "arch$res3hr"
+            }
+          }.to_json.to_s
+        }.with_indifferent_access
+      end
+
       before { stub_holding_locations }
 
       context 'with Firestone Locator off' do
@@ -411,6 +428,13 @@ RSpec.describe HoldingsHelper do
       it 'does not include the find it icon' do
         search_result = helper.holding_block_search(SolrDocument.new(document_without_find_it_link))
         expect(search_result).not_to include "data-map-location"
+      end
+
+      context 'with a reserve item in a temporary location' do
+        it 'does not include the find it icon' do
+          search_result = helper.holding_block_search(SolrDocument.new(document_in_temp_reserve_location))
+          expect(search_result).not_to include "data-map-location"
+        end
       end
     end
 
