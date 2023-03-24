@@ -213,11 +213,11 @@ class Requests::Requestable
       end
 
       def status_label
-        'Not Available'
+        ''
       end
 
       def status
-        ''
+        'Not Available'
       end
 
       def available?
