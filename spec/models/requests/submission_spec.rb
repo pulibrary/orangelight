@@ -978,6 +978,8 @@ describe Requests::Submission do
         expect(a_request(:post, transaction_url)).to have_been_made
         expect(a_request(:post, clancy_url)).to have_been_made
         expect(submission.service_errors.first[:type]).to eq('clancy')
+        expect(submission.service_errors.first[:bibid]).to eq('9956364873506421')
+        expect(submission.service_errors.first[:barcode]).to eq('32101072349515')
       end
     end
   end
