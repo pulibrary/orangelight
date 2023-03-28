@@ -39,10 +39,12 @@ gem 'chosen-rails'
 
 gem 'blacklight-marc', '~> 7.1.0'
 # Capistrano
+gem 'bcrypt_pbkdf'
 gem 'capistrano', '~> 3.4'
 gem 'capistrano-passenger'
 gem 'devise', '>= 4.6.0'
 gem 'devise-guests', '~> 0.5'
+gem 'ed25519'
 gem 'faraday', '~> 0.17'
 gem 'faraday-cookie_jar'
 gem 'global'
