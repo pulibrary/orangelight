@@ -106,6 +106,7 @@ GEM
       execjs (~> 2.0)
     backport (1.2.0)
     bcrypt (3.1.18)
+    bcrypt_pbkdf (1.1.0)
     benchmark (0.2.1)
     bixby (5.0.2)
       rubocop (= 1.28.2)
@@ -220,6 +221,7 @@ GEM
     dry-cli (0.7.0)
     dumb_delegator (1.0.0)
     e2mmap (0.1.0)
+    ed25519 (1.3.0)
     email_validator (2.2.4)
       activemodel
     erubi (1.12.0)
@@ -635,6 +637,7 @@ DEPENDENCIES
   axe-core-api
   axe-core-rspec
   babel-transpiler
+  bcrypt_pbkdf
   bixby (~> 5.0)
   blacklight (~> 7.0)
   blacklight-marc (~> 7.1.0)
@@ -654,6 +657,7 @@ DEPENDENCIES
   ddtrace (~> 0.54.2)
   devise (>= 4.6.0)
   devise-guests (~> 0.5)
+  ed25519
   email_validator
   factory_bot_rails
   faker
