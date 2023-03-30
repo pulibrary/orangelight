@@ -72,6 +72,10 @@ $(document).ready(function() {
       checkAllRequestable();
     });
 
+    $('select[name^="requestable[][pick_up"]').on('change', function() {
+      checkAllRequestable();
+    });
+
     function requestable(changed) {
       var parent = $(changed).closest('[id^="request_"]');
       var selected = parent.find('input[type=checkbox][id^="requestable_selected"').is(':checked');
@@ -91,7 +95,18 @@ $(document).ready(function() {
       if (volume_text.length > 0 && volume_text.val().length === 0) {
         user_supplied = false;
       }
-      if (selected && delivery_mode && user_supplied) {
+      var requestable_pickups = parent.find('select[name^="requestable[][pick_up"] option');
+      var delivery_location = false;
+      if (requestable_pickups.length === 0) {
+        delivery_location = true;
+      } else {
+        requestable_pickups.each(function() {
+          if ($(this).is(':selected') && $(this).val() !== '') {
+            delivery_location = true;
+          }
+        });
+      }
+      if (selected && delivery_mode && user_supplied && delivery_location) {
         $('#request-submit-button').prop('disabled', false);
       }
     };

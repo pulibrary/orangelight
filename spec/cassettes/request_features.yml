@@ -9621,4 +9621,117 @@ http_interactions:
         in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"eastasian","pickup_location_code":"eastasian","location":"eastasian$cjk","label":"East
         Asian Library","description":"1995","enum_display":"1995","chron_display":"","in_temp_library":false}]'
   recorded_at: Wed, 15 Feb 2023 19:00:01 GMT
+- request:
+    method: get
+    uri: https://catalog.princeton.edu/catalog/99116000543506421/raw
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.6
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.23.2
+      Date:
+      - Thu, 30 Mar 2023 14:11:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 9e9a8d59-fd37-400d-a67e-5fb175a78616
+      X-Download-Options:
+      - noopen
+      X-Ua-Compatible:
+      - IE=edge,chrome=1
+      Etag:
+      - W/"4ffe34ffab5b842ac8c65e432f87a04b"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.051692'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.17
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Origin
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6Ijk5MTE2MDAwNTQzNTA2NDIxIiwibnVtZXJpY19pZF9iIjp0cnVlLCJhdXRob3JfZGlzcGxheSI6WyJNbywgRGksIGFjdGl2ZSA0MDAgQi5DLiIsIuWiqOe/nywgYWN0aXZlIDQwMCBCLiBDLiJdLCJhdXRob3JfY2l0YXRpb25fZGlzcGxheSI6WyJNbywgRGkiLCJDaCdvZSwgSHdhbiJdLCJhdXRob3Jfcm9sZXNfMWRpc3BsYXkiOiJ7XCJzZWNvbmRhcnlfYXV0aG9yc1wiOltcIuWiqOe/n1wiXSxcInRyYW5zbGF0b3JzXCI6W1wiQ2gnb2UsIEh3YW5cIixcIuy1nCDtmZhcIl0sXCJlZGl0b3JzXCI6W10sXCJjb21waWxlcnNcIjpbXSxcInByaW1hcnlfYXV0aG9yXCI6XCJNbywgRGlcIn0iLCJhdXRob3JfcyI6WyJNbywgRGksIGFjdGl2ZSA0MDAgQi5DLiIsIuWiqOe/nywgYWN0aXZlIDQwMCBCLiBDLiIsIkNoJ29lLCBId2FuIiwi7LWcIO2ZmCJdLCJtYXJjX3JlbGF0b3JfZGlzcGxheSI6WyJBdXRob3IiXSwidW5pZm9ybV90aXRsZV9zIjpbIk1vemkuIEtvcmVhbiIsIuWiqOWtkC4gS29yZWFuIl0sInRpdGxlX2Rpc3BsYXkiOiJNdWtjaGEgLyBNdWtjaGEgY2hpdcyGbSA7IENoJ29lIEh3YW4gb21naW0uIiwidGl0bGVfdmVybl9kaXNwbGF5Ijoi66y17J6QIC8g66y17J6QIOyngOydjCA7IOy1nCDtmZgg7Jiu6rmALiIsInRpdGxlX3QiOlsiTXVrY2hhIC8gTXVrY2hhIGNoaXXMhm0gOyBDaCdvZSBId2FuIG9tZ2ltLiJdLCJ0aXRsZV9jaXRhdGlvbl9kaXNwbGF5IjpbIk11a2NoYSIsIuusteyekCJdLCJjb21waWxlZF9jcmVhdGVkX3QiOlsiTXVrY2hhIC8gTXVrY2hhIGNoaXXMhm0gOyBDaCdvZSBId2FuIG9tZ2ltLiIsIuusteyekCAvIOusteyekCDsp4DsnYwgOyDstZwg7ZmYIOyYruq5gC4iXSwiZWRpdGlvbl9kaXNwbGF5IjpbIkNoJ29wJ2FuLiIsIuy0iO2MkC4iXSwicHViX2NyZWF0ZWRfdmVybl9kaXNwbGF5IjpbIuyEnOyauOyLnCA6IOydhOycoCDrrLjtmZTsgqwsIDIwMTkuIl0sInB1Yl9jcmVhdGVkX2Rpc3BsYXkiOlsiU2/MhnVsLXNpIDogVcyGcnl1IE11bmh3YXNhLCAyMDE5LiIsIuyEnOyauOyLnCA6IOydhOycoCDrrLjtmZTsgqwsIDIwMTkuIl0sInB1Yl9jcmVhdGVkX3MiOlsiU2/MhnVsLXNpIDogVcyGcnl1IE11bmh3YXNhLCAyMDE5LiIsIuyEnOyauOyLnCA6IOydhOycoCDrrLjtmZTsgqwsIDIwMTkuIl0sInB1Yl9jaXRhdGlvbl9kaXNwbGF5IjpbIlNvzIZ1bC1zaTogVcyGcnl1IE11bmh3YXNhIiwi7ISc7Jq47IucOiDsnYTsnKAg66y47ZmU7IKsIl0sInB1Yl9kYXRlX2Rpc3BsYXkiOlsiMjAxOSJdLCJwdWJfZGF0ZV9zdGFydF9zb3J0IjoyMDE5LCJjYXRhbG9nZWRfdGR0IjoiMjAyMC0wMS0yOVQwMDowMDowMFoiLCJmb3JtYXQiOlsiQm9vayJdLCJkZXNjcmlwdGlvbl9kaXNwbGF5IjpbIjEyNDMgcGFnZXMgOyAyMCBjbS4iXSwiZGVzY3JpcHRpb25fdCI6WyIxMjQzIHBhZ2VzIDsgMjAgY20uIl0sIm51bWJlcl9vZl9wYWdlc19jaXRhdGlvbl9kaXNwbGF5IjpbIjEyNDMgcGFnZXMiXSwiZ2VvY29kZV9kaXNwbGF5IjpbIkNoaW5hIl0sInNlcmllc19kaXNwbGF5IjpbIlXMhnJ5dSBzYXNhbmcga29qb8yGbi4iLCLsnYTsnKAg7IKs7IOBIOqzoOyghC4iLCLsnYTsnKAg7IKs7IOBIOqzoOyghCJdLCJtb3JlX2luX3RoaXNfc2VyaWVzX3QiOlsiVcyGcnl1IHNhc2FuZyBrb2pvzIZuIiwi7J2E7JygIOyCrOyDgSDqs6DsoIQuIl0sImJpYl9yZWZfbm90ZXNfZGlzcGxheSI6WyJJbmNsdWRlcyBiaWJsaW9ncmFwaGljYWwgcmVmZXJlbmNlcyAocGFnZXMgMTIzNS0xMjM2KSBhbmQgaW5kZXguIl0sImxhbmd1YWdlX2Rpc3BsYXkiOlsiSW4gS29yZWFuIl0sImxhbmd1YWdlX25hbWVfZGlzcGxheSI6WyJLb3JlYW4iXSwibGFuZ3VhZ2VfZmFjZXQiOlsiS29yZWFuIl0sInNjcmlwdF9kaXNwbGF5IjpbIihIYW5tdW4pIGFuZCBLb3JlYW4uIl0sImxhbmd1YWdlX2NvZGVfcyI6WyJrb3IiXSwibGFuZ3VhZ2VfaWFuYV9zIjpbImtvIl0sImxjX3N1YmplY3RfZGlzcGxheSI6WyJNb2lzbSIsIlBoaWxvc29waHksIENoaW5lc2XigJRUbyAyMjEgQi5DLiJdLCJzdWJqZWN0X2ZhY2V0IjpbIk1vaXNtIiwiUGhpbG9zb3BoeSwgQ2hpbmVzZeKAlFRvIDIyMSBCLkMuIl0sInJlbGF0ZWRfbmFtZV9qc29uXzFkaXNwbGF5Ijoie1wiVHJhbnNsYXRvclwiOltcIkNoJ29lLCBId2FuXCIsXCLstZwg7ZmYXCJdfSIsImlzYm5fZGlzcGxheSI6WyI5Nzg4OTMyNDQwMDQwIiwiODkzMjQ0MDA0MiIsIjk3ODg5MzI0NDAwMDIgKChzZXQpKSIsIjg5MzI0NDAwMFggKChzZXQpKSJdLCJpc2JuX3MiOlsiOTc4ODkzMjQ0MDA0MCIsIjk3ODg5MzI0NDAwMDIiXSwib2NsY19zIjpbIjExMzc3OTM5NzMiXSwib3RoZXJfdmVyc2lvbl9zIjpbIjk3ODg5MzI0NDAwNDAiLCI5Nzg4OTMyNDQwMDAyIiwib24xMTM3NzkzOTczIl0sInN1YmplY3RfZXJhX2ZhY2V0IjpbIlRvIDIyMSBCLkMiXSwiaG9sZGluZ3NfMWRpc3BsYXkiOiJ7XCIyMjYzNTMyNTc3MDAwNjQyMVwiOntcImxvY2F0aW9uX2NvZGVcIjpcInJlY2FwJHBhXCIsXCJsb2NhdGlvblwiOlwiUmVtb3RlIFN0b3JhZ2VcIixcImxpYnJhcnlcIjpcIlJlQ0FQXCIsXCJjYWxsX251bWJlclwiOlwiQjEyOC5NNzcgSzYgMjAxOVwiLFwiY2FsbF9udW1iZXJfYnJvd3NlXCI6XCJCMTI4Lk03NyBLNiAyMDE5XCIsXCJpdGVtc1wiOlt7XCJob2xkaW5nX2lkXCI6XCIyMjYzNTMyNTc3MDAwNjQyMVwiLFwiaWRcIjpcIjIzNjM1MzI1NzYwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMFwiLFwiYmFyY29kZVwiOlwiMzIxMDExMDU2NjYwNzVcIixcImNvcHlfbnVtYmVyXCI6XCIwXCJ9XX19IiwibG9jYXRpb25fY29kZV9zIjpbInJlY2FwJHBhIl0sImxvY2F0aW9uIjpbIlJlQ0FQIl0sImxvY2F0aW9uX2Rpc3BsYXkiOlsiUmVtb3RlIFN0b3JhZ2UiXSwiYWR2YW5jZWRfbG9jYXRpb25fcyI6WyJyZWNhcCRwYSIsIlJlQ0FQIl0sIm5hbWVfdW5pZm9ybV90aXRsZV8xZGlzcGxheSI6IltbXCJNbywgRGksIGFjdGl2ZSA0MDAgQi5DLi5cIixcIk1vemkuXCIsXCJLb3JlYW5cIl0sW1wi5aKo57+fLCBhY3RpdmUgNDAwIEIuIEMuLlwiLFwi5aKo5a2QLlwiLFwiS29yZWFuXCJdXSIsIm5hbWVfdGl0bGVfYnJvd3NlX3MiOlsiTW8sIERpLCBhY3RpdmUgNDAwIEIuQy4uIE1vemkiLCJNbywgRGksIGFjdGl2ZSA0MDAgQi5DLi4gTW96aS4gS29yZWFuIiwi5aKo57+fLCBhY3RpdmUgNDAwIEIuIEMuLiDloqjlrZAuIiwi5aKo57+fLCBhY3RpdmUgNDAwIEIuIEMuLiDloqjlrZAuIEtvcmVhbiJdLCJjYWxsX251bWJlcl9kaXNwbGF5IjpbIkIxMjguTTc3IEs2IDIwMTkiXSwiY2FsbF9udW1iZXJfYnJvd3NlX3MiOlsiQjEyOC5NNzcgSzYgMjAxOSJdLCJjYWxsX251bWJlcl9sb2NhdG9yX2Rpc3BsYXkiOlsiQjEyOC5NNzcgSzYgMjAxOSJdLCJoYXNoZWRfaWRfc3NpIjoiMmUyNTY4YjUyYzQ5OTExMSIsIl92ZXJzaW9uXyI6MTc2MTEwMjE2MDU1OTM0MTU2OCwidGltZXN0YW1wIjoiMjAyMy0wMy0yMlQyMDo0NDo1OS4wODRaIn0=
+  recorded_at: Thu, 30 Mar 2023 14:11:24 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/bibliographic/99116000543506421/holdings/22635325770006421/availability.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.6
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"885fff444d7233729788ae8643211ef7"
+      X-Runtime:
+      - '4.556804'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 0cdb2539-95ef-47b5-9bf2-39f5fe057459
+    body:
+      encoding: UTF-8
+      string: '[{"barcode":"32101105666075","id":"23635325760006421","holding_id":"22635325770006421","copy_number":"0","status":"Not
+        Available","status_label":"Acquisitions and Cataloging","status_source":"work_order","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"recap","pickup_location_code":"recap","location":"recap$pa","label":"ReCAP
+        - Remote Storage","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
+  recorded_at: Thu, 30 Mar 2023 14:11:29 GMT
 recorded_with: VCR 6.1.0
