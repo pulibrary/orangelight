@@ -212,6 +212,8 @@ class CatalogController < ApplicationController
     config.add_facet_field 'size_s', label: 'Size', include_in_request: false
     config.add_facet_field 'technique_s', label: 'Technique', include_in_request: false
     config.add_facet_field 'weight_s', label: 'Weight', include_in_request: false
+    config.add_facet_field 'coin_citations_s', label: 'Citations', include_in_request: false
+    config.add_facet_field 'coin_references_s', label: 'References', include_in_request: false
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
