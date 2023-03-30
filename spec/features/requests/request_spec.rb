@@ -291,7 +291,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           stub_scsb_availability(bib_id: "99114026863506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
           visit "/requests/#{recap_in_process_id}"
           expect(page).to have_content 'In Process'
-          expect(page.find(:css, ".request--availability").text).to eq("Not Available - Acquisitions and Cataloging")
+          expect(page.find(:css, ".request--availability").text).to eq("Not Available")
           select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23753408600006421')
           select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23753408600006421')
           select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23753408600006421')
@@ -1056,7 +1056,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it 'Shows recap item that has not made it to recap yet as On Order' do
           stub_scsb_availability(bib_id: "99123340993506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
           visit '/requests/99123340993506421?mfhd=22569931350006421'
-          expect(page).to have_content 'Not Available - Acquisition'
+          expect(page).to have_content 'Not Available'
           select('Firestone Library', from: 'requestable__pick_up_23896622240006421')
           expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
           expect(page).to have_content I18n.t("requests.submit.in_process_success")
@@ -1187,7 +1187,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             expect(page).to have_content 'Physical Item Delivery'
             expect(page).to have_content 'Electronic Delivery'
             expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
-            expect(page).to have_content 'Available - Item in place'
+            expect(page).to have_content 'Available'
             expect(page).to have_content 'vol.1'
             check('requestable_selected_23514405150006421')
             choose('requestable__delivery_mode_23514405150006421_edd')
@@ -1202,7 +1202,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             expect(page).to have_content 'Physical Item Delivery'
             expect(page).to have_content 'Electronic Delivery'
             expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
-            expect(page).to have_content 'Available - Item in place'
+            expect(page).to have_content 'Available'
             expect(page).to have_content 'vol.1'
             check('requestable_selected_23514405150006421')
             choose('requestable__delivery_mode_23514405150006421_print')
@@ -1226,7 +1226,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             expect(page).to have_content 'Physical Item Delivery'
             expect(page).to have_content 'Electronic Delivery'
             expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
-            expect(page).to have_content 'Available - Item in place'
+            expect(page).to have_content 'Available'
             expect(page).to have_content 'vol.1'
             check('requestable_selected_23514405150006421')
             expect(page).to have_button('Request this Item', disabled: true)
@@ -1240,7 +1240,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             expect(page).to have_content 'Physical Item Delivery'
             expect(page).to have_content 'Electronic Delivery'
             expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
-            expect(page).to have_content 'Available - Item in place'
+            expect(page).to have_content 'Available'
             expect(page).to have_content 'vol.1'
             check('requestable_selected_23514405150006421')
             expect(page).to have_button('Request this Item', disabled: true)
@@ -1266,7 +1266,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             expect(page).to have_content 'New York Botanical Garden'
             expect(page).to have_content 'Lewis Library - Lewis Library - Serials (Off-Site) 8763.668'
             expect(page).to have_content 'Electronic Delivery'
-            expect(page).to have_content 'Available - Item in place'
+            expect(page).to have_content 'Available'
             expect(page).to have_button('Request Selected Items', disabled: true)
             check('requestable_selected_23641620980006421')
             expect(page).to have_button('Request Selected Items', disabled: false)
@@ -1783,7 +1783,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
 
       it 'is available and in process' do
         visit "requests/99122304923506421?mfhd=22511126440006421"
-        expect(page.find(:css, ".request--availability").text).to eq("Available - In Process")
+        expect(page.find(:css, ".request--availability").text).to eq("Available")
         expect(page).to have_content 'In Process materials are typically available in several business days'
         select('Firestone Library', from: 'requestable__pick_up_23511126430006421')
         expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
