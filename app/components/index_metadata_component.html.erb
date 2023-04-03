@@ -1,0 +1,9 @@
+<% @presenter.field_presenters.reject { |field| field.field_config.show == false }.each do |field_presenter| -%>
+  <li>
+    <% if field_presenter.component %>
+      <%= render field_presenter.component.new field: field_presenter, layout: IndexMetadataFieldLayoutComponent %>
+    <% else %>
+      <%= field_presenter.render %>
+    <% end %>
+  </li>
+<% end -%>
