@@ -1283,6 +1283,15 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             fill_in(id: 'requestable_user_supplied_enum_22542676190006421', with: 'Volume 1')
             expect(page).to have_button('Request Selected Items', disabled: false)
           end
+          it 'enables and disables for a record with delivery location options' do
+            visit 'requests/99116000543506421?mfhd=22635325770006421'
+            expect(page).to have_content 'Mukcha'
+            expect(page).to have_content 'ReCAP - Remote Storage B128.M77 K6 2019'
+            expect(page).to have_content 'Not Available'
+            expect(page).to have_button('Request this Item', disabled: true)
+            select('Firestone Library')
+            expect(page).to have_button('Request this Item', disabled: false)
+          end
         end
 
         describe 'Request a temp holding item from Resource Sharing - RES_SHARE$IN_RS_REQ' do
