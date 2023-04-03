@@ -257,7 +257,7 @@ class CatalogController < ApplicationController
     # For uniform titles from 130 field - when there is only a uniform title, and no author
     config.add_show_field 'uniform_title_1display', label: 'Uniform title', helper_method: :title_hierarchy, if: false
     config.add_show_field 'format', label: 'Format', helper_method: :format_render, if: false, coin_top_field: true
-    config.add_show_field 'language_facet', label: 'Language', if: false
+    config.add_show_field 'language_name_display', label: 'Language', if: false
     config.add_show_field 'edition_display', label: 'Εdition', if: false
     config.add_show_field 'pub_created_display', label: "Published/\u200BCreated", if: false
     config.add_show_field 'description_display', label: 'Description', if: false
