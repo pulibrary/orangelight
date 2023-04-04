@@ -21,7 +21,7 @@ RSpec.describe Orangelight::AdvancedSearchFormComponent, type: :component do
     allow(view_context).to receive(:facet_limit_for).and_return(nil)
   end
 
-  it "renders something useful" do
-    expect(rendered).to have_field 'clause_0_field', with: 'all_fields', type: :hidden
+  it "renders advanced search fields" do
+    expect(rendered).to have_select 'clause_0_field'
   end
 end
