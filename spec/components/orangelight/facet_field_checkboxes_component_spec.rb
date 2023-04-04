@@ -21,7 +21,7 @@ RSpec.describe Orangelight::FacetFieldCheckboxesComponent, type: :component do
       active?: false,
       collapsed?: false,
       modal_path: nil,
-      search_state: search_state
+      search_state:
     )
   end
   it 'renders a visible facet label' do
