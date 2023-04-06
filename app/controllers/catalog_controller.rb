@@ -251,16 +251,18 @@ class CatalogController < ApplicationController
     # config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
 
     # Top fields in show page / prioritized information
-    config.add_show_field 'author_display', label: "Author/\u200BArtist", browse_link: :name, if: false
+    # Top fields must include `if: false`, or they will be duplicated in the Details section
+    # They should be designated with either `default_top_field: true`, `coin_top_field: true` or both
+    config.add_show_field 'author_display', label: "Author/\u200BArtist", browse_link: :name, if: false, default_top_field: true
     # For uniform titles from 240 field - when there is both an author and uniform title
-    config.add_show_field 'name_uniform_title_1display', label: 'Uniform title', helper_method: :name_title_hierarchy, if: false
+    config.add_show_field 'name_uniform_title_1display', label: 'Uniform title', helper_method: :name_title_hierarchy, if: false, default_top_field: true
     # For uniform titles from 130 field - when there is only a uniform title, and no author
-    config.add_show_field 'uniform_title_1display', label: 'Uniform title', helper_method: :title_hierarchy, if: false
-    config.add_show_field 'format', label: 'Format', helper_method: :format_render, if: false, coin_top_field: true
-    config.add_show_field 'language_name_display', label: 'Language', if: false
-    config.add_show_field 'edition_display', label: 'Εdition', if: false
-    config.add_show_field 'pub_created_display', label: "Published/\u200BCreated", if: false
-    config.add_show_field 'description_display', label: 'Description', if: false
+    config.add_show_field 'uniform_title_1display', label: 'Uniform title', helper_method: :title_hierarchy, if: false, default_top_field: true
+    config.add_show_field 'format', label: 'Format', helper_method: :format_render, if: false, coin_top_field: true, default_top_field: true
+    config.add_show_field 'language_name_display', label: 'Language', if: false, default_top_field: true
+    config.add_show_field 'edition_display', label: 'Εdition', if: false, default_top_field: true
+    config.add_show_field 'pub_created_display', label: "Published/\u200BCreated", if: false, default_top_field: true
+    config.add_show_field 'description_display', label: 'Description', if: false, default_top_field: true
 
     # Senior Thesis linked fields
     config.add_show_field 'advisor_display', label: 'Advisor(s)', browse_link: :name

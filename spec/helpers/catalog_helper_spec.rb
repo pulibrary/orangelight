@@ -77,11 +77,11 @@ describe CatalogHelper do
 
     it 'returns true when catalog controller if option is set to false' do
       allow(view_context).to receive(:should_render_field?).and_return(false)
-      blacklight_config.add_show_field field_name, if: false
+      blacklight_config.add_show_field field_name, if: false, default_top_field: true
       expect(helper.render_top_field?(document, field_name)).to eq true
     end
 
-    it 'returns false when field name is not configured with if option' do
+    it 'returns false when field name is not configured with a top_field option' do
       allow(view_context).to receive(:should_render_field?).and_return(true)
       blacklight_config.add_show_field field_name
       expect(helper.render_top_field?(document, field_name)).to eq false
@@ -89,7 +89,7 @@ describe CatalogHelper do
 
     it 'returns false when field name is configured but field not present in document' do
       allow(view_context).to receive(:should_render_field?).and_return(false)
-      blacklight_config.add_show_field other_field_name, if: false
+      blacklight_config.add_show_field other_field_name, if: false, default_top_field: true
       expect(helper.render_top_field?(document, other_field_name)).to eq false
     end
 
@@ -97,6 +97,13 @@ describe CatalogHelper do
       allow(view_context).to receive(:should_render_field?).and_return(false)
       blacklight_config.add_show_field holding_field, if: false
       expect(helper.render_top_field?(document, holding_field)).to eq false
+    end
+
+    it 'returns true for coin_top_fields' do
+      allow(view_context).to receive(:should_render_field?).and_return(false)
+      allow(document).to receive(:numismatics_record?).and_return(true)
+      blacklight_config.add_show_field field_name, if: false, coin_top_field: true
+      expect(helper.render_top_field?(document, field_name)).to eq true
     end
   end
 end

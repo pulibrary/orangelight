@@ -141,4 +141,34 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       expect(title_field.value).to eq("Bible, Latin.")
     end
   end
+
+  describe 'showing top fields' do
+    let(:document_id) { '9946093213506421' }
+    let(:top_fields) { ['uniform_title_1display', 'format', 'pub_created_display', 'description_display'] }
+    let(:details_fields) do
+      ['printer', 'binder', 'former-owner', 'notes_display', 'binding_note_display',
+       'provenance_display', 'references_url_display', 'other_format_display',
+       'other_title_display', 'recap_notes_display']
+    end
+
+    it 'shows top fields in their own section' do
+      visit "catalog/#{document_id}"
+      within('dl.top-fields') do
+        top_fields.each do |field|
+          expect(page).to have_selector("dt.blacklight-#{field}")
+        end
+        details_fields.each do |field|
+          expect(page).not_to have_selector("dt.blacklight-#{field}")
+        end
+      end
+      within('dl.document-details') do
+        top_fields.each do |field|
+          expect(page).not_to have_selector("dt.blacklight-#{field}")
+        end
+        details_fields.each do |field|
+          expect(page).to have_selector("dt.blacklight-#{field}")
+        end
+      end
+    end
+  end
 end

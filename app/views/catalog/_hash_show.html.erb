@@ -1,6 +1,6 @@
 
 <% JSON.parse(document[field]).each do |label, hash_vals| %>
-<dt><%= label %></dt>
+<dt class="blacklight-<%= label.parameterize %>"><%= label %></dt>
 <dd><ul>
   <% hash_vals.each do |json_val| %>
     <% if field == 'related_name_json_1display' %>
