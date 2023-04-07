@@ -222,6 +222,26 @@ module ApplicationHelper
     all_links
   end
 
+  def action_notes_display(args)
+    action_notes = JSON.parse(args[:document][args[:field]])
+    lines = []
+    action_notes.each do |note|
+      lines << if note["uri"].present?
+                 link_to(note["description"], note["uri"])
+               else
+                 note["description"]
+               end
+    end
+
+    if lines.length == 1
+      lines = content_tag(:div, lines[0])
+    else
+      lines = lines.map.with_index { |l| content_tag(:li, l) }
+      lines = content_tag(:ul, lines.join.html_safe)
+    end
+    lines
+  end
+
   def name_title_hierarchy(args)
     name_titles = JSON.parse(args[:document][args[:field]])
     all_links = []

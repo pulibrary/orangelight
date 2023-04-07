@@ -171,4 +171,45 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       end
     end
   end
+
+  describe 'action note display' do
+    context 'with the new display' do
+      before do
+        allow(Flipflop).to receive(:new_action_note_display?).and_return(true)
+      end
+      context 'when the record does not have a link in the action note' do
+        let(:document_id) { '99125628841606421' }
+
+        it 'shows the action note' do
+          visit("catalog/#{document_id}")
+          expect(page).to have_content("Item processed and described by Kelly Bolding in August 2022, incorporating some description provided by the dealer.").once
+          expect(page).not_to have_link("Item processed and described by Kelly Bolding in August 2022, incorporating some description provided by the dealer.")
+        end
+      end
+
+      context 'when the record has a link in the action note' do
+        let(:document_id) { '99126831126106421' }
+
+        it 'shows a linked action note' do
+          visit("catalog/#{document_id}")
+          expect(page).to have_link('Vol. 1: Committed to retain in perpetuity — ReCAP Italian Language Imprints Collaborative Collection (NjP)')
+        end
+      end
+    end
+
+    context 'with the old display' do
+      before do
+        allow(Flipflop).to receive(:new_action_note_display?).and_return(false)
+      end
+
+      context 'when the record only has a new style action note' do
+        let(:document_id) { '99126831126106421' }
+
+        it 'does not show the field' do
+          visit("catalog/#{document_id}")
+          expect(page).not_to have_content('Action note')
+        end
+      end
+    end
+  end
 end

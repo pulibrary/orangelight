@@ -30,4 +30,8 @@ Flipflop.configure do
   feature :harmful_content_feedback,
     default: false,
     description: "When on / true, displays the Harmful Content Feedback bar."
+
+  feature :new_action_note_display,
+    default: false,
+    description: "When on / true, displays the new JSON-formatted action notes, including links. When off, only displays PULFA action notes as plain text."
 end

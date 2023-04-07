@@ -32229,5 +32229,388 @@
       "Online",
       "In the Library"
   ]
+},
+{
+  "id": [
+    "99126831126106421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_citation_display": [
+    "Gooptu, Suparna",
+    "University of Calcutta"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"University of Calcutta\"],\"translators\":[],\"editors\":[\"Gooptu, Suparna\"],\"compilers\":[]}"
+  ],
+  "author_s": [
+    "Gooptu, Suparna",
+    "University of Calcutta. Department of History. Centre for Advanced Studies"
+  ],
+  "title_display": [
+    "Themes and individuals in history / edited by Suparna Gooptu."
+  ],
+  "title_a_index": [
+    "Themes and individuals in history"
+  ],
+  "title_sort": [
+    "Themes and individuals in history / edited by Suparna Gooptu."
+  ],
+  "title_no_h_index": [
+    "Themes and individuals in history / edited by Suparna Gooptu."
+  ],
+  "title_t": [
+    "Themes and individuals in history / edited by Suparna Gooptu."
+  ],
+  "title_citation_display": [
+    "Themes and individuals in history"
+  ],
+  "compiled_created_t": [
+    "Themes and individuals in history / edited by Suparna Gooptu."
+  ],
+  "pub_created_display": [
+    "Kolkata : KP Bagchi & Company, 2019."
+  ],
+  "pub_created_s": [
+    "Kolkata : KP Bagchi & Company, 2019."
+  ],
+  "pub_citation_display": [
+    "Kolkata: KP Bagchi & Company"
+  ],
+  "pub_date_display": [
+    "2019"
+  ],
+  "pub_date_start_sort": [
+    "2019"
+  ],
+  "cataloged_tdt": [
+    "2023-02-01T16:02:06Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "xx, 383 pages ; 23 cm"
+  ],
+  "description_t": [
+    "xx, 383 pages ; 23 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "xx, 383 pages"
+  ],
+  "geocode_display": [
+    "India"
+  ],
+  "notes_index": [
+    "Includes bibliographical references and index.",
+    "Contributed articles.",
+    "Copyright: Centre for Advanced Studies, Department of History, University\n        of Calcutta.",
+    "Vol. 1 committed to retain in perpetuity ReCAP Italian Language Imprints Collaborative Collection http://arks.princeton.edu/ark:/88435/dcxg94j1575 NjP 22961480120006421"
+  ],
+  "notes_display": [
+    "Contributed articles.",
+    "Copyright: Centre for Advanced Studies, Department of History, University\n        of Calcutta."
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references and index."
+  ],
+  "action_notes_1display": [
+    "[{\"description\":\"Vol. 1: Committed to retain in perpetuity — ReCAP Italian Language Imprints Collaborative Collection (NjP)\",\"uri\":\"http://arks.princeton.edu/ark:/88435/dcxg94j1575\"},{\"description\":\"Item processed and described by Kelly Bolding in August 2022, incorporating some description provided by the dealer.\",\"uri\":\"\"}]"
+  ],
+  "lc_subject_display": [
+    "India—Historiography",
+    "India—Biography"
+  ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "India—Historiography",
+    "India—Biography"
+  ],
+  "subject_unstem_search": [
+    "India—Historiography",
+    "India—Biography"
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": null,
+  "subject_facet": [
+    "India—Historiography",
+    "India—Biography"
+  ],
+  "subject_topic_facet": [
+    "India",
+    "Historiography"
+  ],
+  "lc_1letter_facet": [
+    "D - World History"
+  ],
+  "lc_rest_facet": [
+    "DS - Asia (History)"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "D - World History"
+  ],
+  "call_number_full_facet": [
+    "DS - Asia (History)"
+  ],
+  "genre_facet": [
+    "Biography"
+  ],
+  "related_name_json_1display": [
+    "{\"Editor\":[\"Gooptu, Suparna\"],\"Related name\":[\"University of Calcutta. Department of History. Centre for Advanced Studies\"]}"
+  ],
+  "isbn_display": [
+    "9788170744085 ((hardback))",
+    "8170744083"
+  ],
+  "lccn_display": [
+    " 2020329229"
+  ],
+  "lccn_s": [
+    "2020329229"
+  ],
+  "isbn_s": [
+    "9788170744085"
+  ],
+  "oclc_s": [
+    "1145057686"
+  ],
+  "standard_no_index": [
+    "on1145057686"
+  ],
+  "other_version_s": [
+    "9788170744085",
+    "on1145057686"
+  ],
+  "holdings_1display": [
+    "{\"22961480120006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"DS435 .T49 2019\",\"call_number_browse\":\"DS435 .T49 2019\",\"items\":[{\"holding_id\":\"22961480120006421\",\"id\":\"23961480110006421\",\"status_at_load\":\"1\",\"barcode\":\"32101119327524\"}]}}"
+  ],
+  "location_code_s": [
+    "recap$pa"
+  ],
+  "location": [
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage"
+  ],
+  "advanced_location_s": [
+    "recap$pa",
+    "ReCAP"
+  ],
+  "call_number_display": [
+    "DS435 .T49 2019"
+  ],
+  "call_number_browse_s": [
+    "DS435 .T49 2019"
+  ],
+  "call_number_locator_display": [
+    "DS435 .T49 2019"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
+},
+{
+  "id": [
+    "99125628841606421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_display": [
+    "Douglass, Frederick"
+  ],
+  "author_sort": [
+    "Douglass, Frederick"
+  ],
+  "author_citation_display": [
+    "Douglass, Frederick"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"Douglass, Frederick\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Douglass, Frederick\"}"
+  ],
+  "author_s": [
+    "Douglass, Frederick"
+  ],
+  "marc_relator_display": [
+    "Creator"
+  ],
+  "title_display": [
+    "Frederick Douglass Letter to William Henry Johnson 1879"
+  ],
+  "title_a_index": [
+    "Frederick Douglass Letter to William Henry Johnson"
+  ],
+  "title_sort": [
+    "Frederick Douglass Letter to William Henry Johnson 1879"
+  ],
+  "title_no_h_index": [
+    "Frederick Douglass Letter to William Henry Johnson 1879"
+  ],
+  "title_t": [
+    "Frederick Douglass Letter to William Henry Johnson"
+  ],
+  "title_citation_display": [
+    "Frederick Douglass Letter to William Henry Johnson"
+  ],
+  "compiled_created_display": [
+    "1879"
+  ],
+  "compiled_created_t": [
+    "Frederick Douglass Letter to William Henry Johnson"
+  ],
+  "pub_date_display": [
+    "1879"
+  ],
+  "pub_date_start_sort": [
+    "1879"
+  ],
+  "pub_date_end_sort": [
+    "1879"
+  ],
+  "cataloged_tdt": [
+    "2022-08-31T17:42:53Z"
+  ],
+  "format": [
+    "Manuscript",
+    "Book"
+  ],
+  "electronic_access_1display": [
+    "{\"https://findingaids.princeton.edu/catalog/C0140_c03779-18847\":[\"findingaids.princeton.edu\",\"Finding aid online: \"]}"
+  ],
+  "electronic_access_index": [
+    "Finding aid online:  https://findingaids.princeton.edu/catalog/C0140_c03779-18847"
+  ],
+  "description_display": [
+    "1 folder"
+  ],
+  "description_t": [
+    "1 folder"
+  ],
+  "number_of_pages_citation_display": [
+    "1"
+  ],
+  "notes_index": [
+    "Collection is open for research use.",
+    "Consists of a one-page autograph letter sent from American abolitionist Frederick Douglass (1818-1895) to fellow abolitionist William Henry Johnson (1833-1918) two years after the close of the Reconstruction era. In the letter, Douglass refers to a speech he was preparing regarding his views on the Exodus movement of 1879, or the first generational migration of African Americans along the Mississippi River towards Kansas following the American Civil War. The speech, entitled \"The Negro Exodus from the Gulf States,\" was given at a meeting of the American Association for the Promotion of Social Sciences held in Saratoga, New York, on September 9, 1879.",
+    "Purchased from Raptis Rare Books in 2022 (AM 2023-015).",
+    "Item processed and described by Kelly Bolding in August 2022, incorporating some description provided by the dealer."
+  ],
+  "restrictions_note_display": [
+    "Collection is open for research use."
+  ],
+  "summary_note_display": [
+    "Consists of a one-page autograph letter sent from American abolitionist Frederick Douglass (1818-1895) to fellow abolitionist William Henry Johnson (1833-1918) two years after the close of the Reconstruction era. In the letter, Douglass refers to a speech he was preparing regarding his views on the Exodus movement of 1879, or the first generational migration of African Americans along the Mississippi River towards Kansas following the American Civil War. The speech, entitled \"The Negro Exodus from the Gulf States,\" was given at a meeting of the American Association for the Promotion of Social Sciences held in Saratoga, New York, on September 9, 1879."
+  ],
+  "language_name_display": [
+    "English"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "publication_place_facet": [
+    "No place, unknown, or undetermined"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "source_acquisition_display": [
+    "Purchased from Raptis Rare Books in 2022 (AM 2023-015)."
+  ],
+  "action_notes_display": [
+    "Item processed and described by Kelly Bolding in August 2022, incorporating some description provided by the dealer."
+  ],
+  "action_notes_1display": [
+    "[{\"description\":\"Item processed and described by Kelly Bolding in August 2022, incorporating some description provided by the dealer.\",\"uri\":\"\"}]"
+  ],
+  "lc_subject_display": [
+    "Abolitionists—United States—History—19th century—Correspondence",
+    "African American abolitionists—Correspondence",
+    "African Americans—Migrations—History—19th century",
+    "Johnson, William Henry"
+  ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "Abolitionists—United States—History—19th century—Correspondence",
+    "African American abolitionists—Correspondence",
+    "African Americans—Migrations—History—19th century",
+    "Johnson, William Henry"
+  ],
+  "subject_unstem_search": [
+    "Abolitionists—United States—History—19th century—Correspondence",
+    "African American abolitionists—Correspondence",
+    "African Americans—Migrations—History—19th century",
+    "Johnson, William Henry"
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": null,
+  "subject_facet": [
+    "Abolitionists—United States—History—19th century—Correspondence",
+    "African American abolitionists—Correspondence",
+    "African Americans—Migrations—History—19th century",
+    "Johnson, William Henry"
+  ],
+  "subject_topic_facet": [
+    "Abolitionists",
+    "United States",
+    "History",
+    "African American abolitionists",
+    "African Americans",
+    "Migrations",
+    "Johnson, William Henry"
+  ],
+  "genre_facet": [
+    "Correspondence"
+  ],
+  "related_name_json_1display": [
+    "{\"Creator\":[\"Douglass, Frederick\"]}"
+  ],
+  "standard_no_index": [
+    "C0140_c03779-18847"
+  ],
+  "subject_era_facet": [
+    "19th century"
+  ],
+  "holdings_1display": [
+    "{\"22943320940006421\":{\"location_code\":\"rare$mss\",\"location\":\"Manuscripts Collection\",\"library\":\"Special Collections\"}}"
+  ],
+  "location_code_s": [
+    "rare$mss"
+  ],
+  "location": [
+    "Special Collections"
+  ],
+  "location_display": [
+    "Manuscripts Collection"
+  ],
+  "advanced_location_s": [
+    "rare$mss",
+    "Special Collections"
+  ],
+  "name_title_browse_s": [
+    "Douglass, Frederick. Frederick Douglass Letter to William Henry Johnson"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
 }
 ]
