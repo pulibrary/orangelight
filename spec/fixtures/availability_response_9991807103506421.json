@@ -4,7 +4,7 @@
       "id": "23696270540006421",
       "holding_id": "22696270550006421",
       "copy_number": "1",
-      "status": "Not Available",
+      "status": "Unavailable",
       "status_label": "Resource Sharing Request",
       "status_source": "process_type",
       "process_type": "ILL",

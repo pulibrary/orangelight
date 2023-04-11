@@ -98,7 +98,7 @@ class Requests::Requestable
       if available?
         "Available"
       else
-        "Not Available"
+        "Unavailable"
       end
     end
 
@@ -217,7 +217,7 @@ class Requests::Requestable
       end
 
       def status
-        'Not Available'
+        'Unavailable'
       end
 
       def available?

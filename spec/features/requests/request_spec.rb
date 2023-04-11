@@ -222,9 +222,9 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           stub_request(:post, transaction_note_url)
             .with(body: hash_including("Note" => "Loan Request"))
             .to_return(status: 200, body: responses[:note_created], headers: {})
-          stub_scsb_availability(bib_id: "9941150973506421", institution_id: "PUL", barcode: '32101099680850', item_availability_status: 'Not Available')
+          stub_scsb_availability(bib_id: "9941150973506421", institution_id: "PUL", barcode: '32101099680850', item_availability_status: 'Unavailable')
           visit 'requests/9941150973506421?mfhd=22492663380006421&source=pulsearch'
-          expect(page).to have_content 'Not Available'
+          expect(page).to have_content 'Unavailable'
           check "requestable_selected_23492663220006421"
           expect(page).to have_content 'Request via Partner Library'
           expect(page).to have_content 'Pick-up location: Firestone Library'
@@ -291,7 +291,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           stub_scsb_availability(bib_id: "99114026863506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
           visit "/requests/#{recap_in_process_id}"
           expect(page).to have_content 'In Process'
-          expect(page.find(:css, ".request--availability").text).to eq("Not Available")
+          expect(page.find(:css, ".request--availability").text).to eq("Unavailable")
           select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23753408600006421')
           select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23753408600006421')
           select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23753408600006421')
@@ -773,7 +773,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           choose('requestable__delivery_mode_22690999210006421_edd') # chooses 'edd' radio button
           expect(page).to have_content I18n.t('requests.marquand_edd.brief_msg')
           expect(page).to have_content 'Electronic Delivery'
-          expect(page).to have_content 'Not Available'
+          expect(page).to have_content 'Unavailable'
           expect(page).not_to have_content 'Available for In Library Use'
           fill_in "Article/Chapter Title", with: "ABC"
           fill_in "Author", with: "I Aman Author"
@@ -1056,7 +1056,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it 'Shows recap item that has not made it to recap yet as On Order' do
           stub_scsb_availability(bib_id: "99123340993506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
           visit '/requests/99123340993506421?mfhd=22569931350006421'
-          expect(page).to have_content 'Not Available'
+          expect(page).to have_content 'Unavailable'
           select('Firestone Library', from: 'requestable__pick_up_23896622240006421')
           expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
           expect(page).to have_content I18n.t("requests.submit.in_process_success")
@@ -1255,7 +1255,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             expect(page).to have_content 'Firestone Library - Stacks HM886 .T69 2015'
             expect(page).to have_content 'Request via Partner Library'
             expect(page).to have_content "Pick-up location: Firestone Library"
-            expect(page).to have_content "Not Available"
+            expect(page).to have_content "Unavailable"
             expect(page).not_to have_content "Resource Sharing Request"
             check('requestable_selected_23696270540006421')
             expect(page).to have_button('Request this Item', disabled: false)
@@ -1287,7 +1287,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             visit 'requests/99116000543506421?mfhd=22635325770006421'
             expect(page).to have_content 'Mukcha'
             expect(page).to have_content 'ReCAP - Remote Storage B128.M77 K6 2019'
-            expect(page).to have_content 'Not Available'
+            expect(page).to have_content 'Unavailable'
             expect(page).to have_button('Request this Item', disabled: true)
             select('Firestone Library')
             expect(page).to have_button('Request this Item', disabled: false)
@@ -1312,7 +1312,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             expect(page).to have_content 'Firestone Library - Stacks HM886 .T69 2015'
             expect(page).to have_content 'Request via Partner Library'
             expect(page).to have_content "Pick-up location: Firestone Library"
-            expect(page).to have_content "Not Available"
+            expect(page).to have_content "Unavailable"
             expect(page).not_to have_content "Resource Sharing Request"
             check('requestable_selected_23696270540006421')
             expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
@@ -1745,7 +1745,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
       it 'does not display reserve items' do
         visit "requests/9960102253506421?mfhd=22548491940006421"
         expect(page.find(:css, '#enum_23939450340006421').text).to eq('Copy 4')
-        expect(page).to have_content('Not Available')
+        expect(page).to have_content('Unavailable')
         expect(page).to have_content('In Process materials are typically available in several business days.')
         expect(page).to have_selector(:css, '#request_23939450340006421')
         expect(page).to have_none_of_selectors(:css, '#request_23939450330006421', '#request_23939450300006421', '#request_23548491930006421')

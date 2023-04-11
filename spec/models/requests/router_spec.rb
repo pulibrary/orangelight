@@ -25,6 +25,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         institutionId: "CUL"
       }
     end
+    # SCSB still uses "Not Available" phrase, rather than "Unavailable"
     let(:scsb_availability_response) { '[{"itemBarcode":"CU53020880","itemAvailabilityStatus":"Not Available","errorMessage":null}]' }
     let(:request_scsb) { Requests::Request.new(**params) }
     let(:requestable) { request_scsb.requestable.first }

@@ -248,7 +248,7 @@ module Requests
 
       def status_label(item:, availability_data:)
         if item["status_source"] != "work_order" && availability_data.empty?
-          "Not Available"
+          "Unavailable"
         elsif item["status_source"] != "work_order" && item[:status_label] == 'Item in place' && availability_data.size == 1 && availability_data.first['errorMessage'] == "Bib Id doesn't exist in SCSB database."
           "In Process"
         else
