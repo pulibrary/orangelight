@@ -1474,16 +1474,16 @@ describe Requests::RequestableDecorator do
     end
 
     context 'Charged item' do
-      let(:stubbed_questions) { default_stubbed_questions.merge(charged?: true, status_label: 'Technical - Migration', status: 'Not Available') }
+      let(:stubbed_questions) { default_stubbed_questions.merge(charged?: true, status_label: 'Technical - Migration', status: 'Unavailable') }
       it 'shows the status' do
-        expect(decorator.status_badge).to eq('<span class="availability--label badge badge-danger">Not Available</span>')
+        expect(decorator.status_badge).to eq('<span class="availability--label badge badge-danger">Unavailable</span>')
       end
     end
 
     context 'Status and label match' do
-      let(:stubbed_questions) { default_stubbed_questions.merge(charged?: true, status_label: 'Not Available', status: 'Not Available') }
+      let(:stubbed_questions) { default_stubbed_questions.merge(charged?: true, status_label: 'Unavailable', status: 'Unavailable') }
       it 'shows the status' do
-        expect(decorator.status_badge).to eq('<span class="availability--label badge badge-danger">Not Available</span>')
+        expect(decorator.status_badge).to eq('<span class="availability--label badge badge-danger">Unavailable</span>')
       end
     end
 

@@ -635,6 +635,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     describe "#pageable?" do
       it "is be false" do
         expect(request_at_paging_f.requestable[0].location_code).to eq('recap$pa')
+        expect(request_at_paging_f.requestable[0].charged?).to be true
         expect(request_at_paging_f.requestable[0].pageable?).to be false
       end
     end
