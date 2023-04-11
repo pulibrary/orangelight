@@ -94,11 +94,12 @@ class Requests::Requestable
     end
 
     def status
-      return self[:status] if self[:status].present?
+      # SCSB still returns a status of "Not Available", which we should change to "Unavailable"
+      return self[:status] if self[:status].present? && self[:status] != "Not Available"
       if available?
         "Available"
       else
-        "Not Available"
+        "Unavailable"
       end
     end
 
@@ -217,7 +218,7 @@ class Requests::Requestable
       end
 
       def status
-        'Not Available'
+        'Unavailable'
       end
 
       def available?
@@ -247,7 +248,7 @@ class Requests::Requestable
 
       def unavailable_statuses
         scsb = ['Not Available', "Item Barcode doesn't exist in SCSB database."]
-        alma = ['Claimed Returned', 'Lost', 'Hold Shelf', 'Transit', 'Missing', 'Resource Sharing Request',
+        alma = ['Unavailable', 'Claimed Returned', 'Lost', 'Hold Shelf', 'Transit', 'Missing', 'Resource Sharing Request',
                 'Lost Resource Sharing Item', 'Requested', 'In Transit to Remote Storage', 'Lost and paid',
                 'Loan', 'Controlled Digital Lending', 'At Preservation', 'Technical - Migration', 'Preservation and Conservation']
         scsb + alma

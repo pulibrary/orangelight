@@ -83,9 +83,9 @@ describe Requests::Scsb do
       allow(Rails.logger).to receive(:error)
       expect(first_item["barcode"]).to eq('33433088591924')
       expect(first_item["status_at_load"]).to eq("Available")
-      expect(first_item[:status_label]).to eq("Not Available")
+      expect(first_item[:status_label]).to eq("Unavailable")
       expect(first_item["status_label"]).to be_nil
-      expect(request_scsb.requestable[0].status).to eq("Not Available")
+      expect(request_scsb.requestable[0].status).to eq("Unavailable")
 
       expect(second_item["barcode"]).to eq("33433088591932")
       expect(Rails.logger).to have_received(:error).with("The request to the SCSB server failed: Authentication Failed")
