@@ -50,75 +50,93 @@ $(document).ready(function() {
         $("#other_user_account_info").hide();
     });
 
-    // Enhance the Bootstrap collapse utility to toggle hide/show for other options
-    $('input[type=radio][name^="requestable[][delivery_mode"]').on('change', function() {
-        // collapse others
-        $("input[name='" + this.name + "']").each(function(index) {
-            const target = $(this).attr('data-target');
-            $(target).collapse('hide');
-        });
-        // open target
-        const target = $(this).attr('data-target');
-        $(target).collapse('show');
+    function activateRequestButton () {
+        $('#request-submit-button').prop('disabled', false);
+    }
 
-        checkAllRequestable();
-    });
+    activateRequestButton();
 
-    $('input[type=checkbox][id^="requestable_selected"').on('change', function() {
-        checkAllRequestable();
-    });
+    function deactivateRequestButton () {
+        $('#request-submit-button').prop('disabled', true);
+    }
 
-    $('input[type=text][id^="requestable_user_supplied_enum_"').on('input', function() {
-        checkAllRequestable();
-    });
-
-    $('select[name^="requestable[][pick_up"]').on('change', function() {
-        checkAllRequestable();
-    });
-
+    deactivateRequestButton();
+    
     function requestable(changed) {
         const parent = $(changed).closest('[id^="request_"]');
         const selected = parent.find('input[type=checkbox][id^="requestable_selected"').is(':checked');
-        let delivery_mode = false;
         const radios = parent.find('input[type=radio][name^="requestable[][delivery_mode"]');
+        let delivery_mode = false;
+        let delivery_location = false;
+
         if (radios.length === 0) {
             delivery_mode = true;
         } else {
             radios.each(function() {
                 if ($(this).is(':checked')) {
-                    delivery_mode = true;
+                    if (this.dataset['target'].startsWith('#fields-eed')) {
+                        delivery_mode = true;
+                        delivery_location = true;
+                    } else {
+                        delivery_mode = true;
+                    }
                 }
             });
         }
-        const volume_text = parent.find('input[type=text][id^="requestable_user_supplied_enum_"');
-        let user_supplied = true;
-        if (volume_text.length > 0 && volume_text.val().length === 0) {
-            user_supplied = false;
-        }
+
         const requestable_pickups = parent.find('select[name^="requestable[][pick_up"] option');
-        let delivery_location = false;
+        
+        // If there is only one pickup delivery location the length is 0
         if (requestable_pickups.length === 0) {
             delivery_location = true;
         } else {
+        // When there are more than one pickup delivery locations
             requestable_pickups.each(function() {
                 if ($(this).is(':selected') && $(this).val() !== '') {
                     delivery_location = true;
                 }
             });
         }
-        if (selected && delivery_mode && user_supplied && delivery_location) {
-            $('#request-submit-button').prop('disabled', false);
+
+        if (selected && delivery_mode && delivery_location) {
+            activateRequestButton();
+        } else {
+            deactivateRequestButton();
         }
     }
 
-    function checkAllRequestable() {
-        $('#request-submit-button').prop('disabled', true);
-        $(".delivery--options").each(function() {
-            requestable(this);
+    // Enhance the Bootstrap collapse utility to toggle hide/show for other options
+    $('input[type=radio][name^="requestable[][delivery_mode"]').on('change', function() {
+        // collapse others
+        $("input[name='" + this.name + "']").each(function() {
+            const target = $(this).attr('data-target');
+            $(target).collapse('hide');
         });
-    }
+        // open target
+        const target = $(this).attr('data-target');
+        $(target).collapse('show');
+        requestable(this);
+    });
 
-    checkAllRequestable();
+    $('input[type=checkbox][id^="requestable_selected"').on('change', function() {
+        if ($(this).val()) {
+            activateRequestButton();
+        } else {
+            deactivateRequestButton();
+        }
+    });
+
+    $('input[type=text][id^="requestable__edd_art_title_"').on('input', function() {
+        if ($(this).val() === "") {
+            $('#request-submit-button').prop('disabled', true);
+        } else {
+            requestable(this);
+        }
+    });
+
+    $('select[name^="requestable[][pick_up"]').on('change', function() {
+        requestable(this);
+    });
 
     jQuery(function() {
         return $(".tablesorter").DataTable({
@@ -133,6 +151,5 @@ $(document).ready(function() {
         $(this).closest('tr').toggleClass('selected', $(this).is(':checked'));
         requestable(this);
     });
-  
 
 });
