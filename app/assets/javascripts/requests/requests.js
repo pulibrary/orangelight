@@ -54,8 +54,6 @@ $(document).ready(function() {
         $('#request-submit-button').prop('disabled', false);
     }
 
-    activateRequestButton();
-
     function deactivateRequestButton () {
         $('#request-submit-button').prop('disabled', true);
     }
