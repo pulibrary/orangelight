@@ -22,6 +22,30 @@ RSpec.describe 'catalog/index' do
       visit '/'
       expect(page).to have_selector('#main-flashes', count: 1)
     end
+
+    it 'has links to the statement on language in description' do
+      visit '/'
+      language_link = find_link('Statement on language in description')
+      read_more_language_link = find_link('Read more...', href: 'https://library.princeton.edu/about/languagestatement')
+      links = [language_link, read_more_language_link]
+      links.each do |link|
+        expect(link[:target]).to be nil
+        expect(link[:title]).to be nil
+        expect(link[:'aria-label']).to eq('Read more about Statement on language in description')
+      end
+    end
+
+    it 'has links to the PUL open dataset description' do
+      visit '/'
+      open_dataset_link = find_link('PUL Open Dataset')
+      read_more_dataset_link = find_link('Read more...', href: '/dataset')
+      links = [open_dataset_link, read_more_dataset_link]
+      links.each do |link|
+        expect(link[:target]).to be nil
+        expect(link[:title]).to be nil
+        expect(link[:'aria-label']).to eq('Read more about PUL Open Dataset')
+      end
+    end
   end
 
   describe 'index fields json only fields (show: false)' do
