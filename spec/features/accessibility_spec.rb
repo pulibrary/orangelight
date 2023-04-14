@@ -13,8 +13,6 @@ describe "accessibility", type: :feature, js: true do
     it "complies with wcag" do
       expect(page).to be_axe_clean
         .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
-        .excluding('a[title="Opens in a new tab"][target="_blank"]')
-        .excluding('p > a[href$="dataset"]')
     end
   end
 
