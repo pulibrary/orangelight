@@ -137,8 +137,9 @@ GEM
     blacklight_dynamic_sitemap (0.6.0)
       blacklight (> 6.0)
       rails
-    blacklight_range_limit (8.2.3)
+    blacklight_range_limit (8.3.0)
       blacklight (>= 7.25.2, < 9)
+      deprecation
     bootstrap (4.6.2)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.16.1, < 2)
