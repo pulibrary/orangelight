@@ -95,24 +95,6 @@ module Blacklight
           @_ctx || build_ctx(format)
         end
 
-        # returns true if doc originated from alma
-        def alma_record?
-          if /^[0-9]+/.match?(self['id'])
-            true
-          else
-            false
-          end
-        end
-
-        # does we have any standard numbers that can be used by other services
-        def standard_numbers?
-          std_numbers.any? { |v| key? v }
-        end
-
-        def std_numbers
-          %w[lccn_s isbn_s issn_s oclc_s]
-        end
-
         def format_to_openurl_genre(format)
           return 'book' if format == 'book'
           return 'bookitem' if format == 'book'

@@ -3,6 +3,8 @@
 class SolrDocument
   include Blacklight::Solr::Document
   include Orangelight::Document::Export
+  include SolrDocument::Alma
+  include SolrDocument::StandardNumbers
 
   # Explicitly required for sneakers
   include Blacklight::Document::Extensions
