@@ -2,7 +2,7 @@
 <% doc_presenter = document_presenter(document) %>
 <%# default partial to display solr document fields in catalog show view -%>
 <dl class="dl-horizontal  dl-invert top-fields">
-  <% doc_presenter.configuration.show_fields_for(document['format']).each do |field_name, field| -%>
+  <% doc_presenter.configuration.show_fields_for(document['format'] || ['Unknown']).each do |field_name, field| -%>
     <% if render_top_field? document, field_name %>
       <% field_presenter = Blacklight::FieldPresenter.new(doc_presenter.view_context, document, field) %>
       <% if field_name == 'author_display' && document['marc_relator_display'] %>
