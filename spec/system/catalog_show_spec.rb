@@ -170,6 +170,17 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
         end
       end
     end
+    context 'with a record without a format' do
+      let(:document_id) { 'SCSB-7935196' }
+      it 'does not raise a deprecation warning' do
+        allow(Deprecation).to receive(:default_deprecation_behavior).and_return(:raise)
+        visit "catalog/#{document_id}"
+        within('dl.top-fields') do
+          expect(page).to have_selector("dt.blacklight-pub_created_display")
+          expect(page).to have_selector("dt.blacklight-description_display")
+        end
+      end
+    end
   end
 
   describe 'action note display' do
