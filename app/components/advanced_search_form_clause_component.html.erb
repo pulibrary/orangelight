@@ -1,11 +1,11 @@
+<% if @index > 0 %>
+  <div class="search-operators" role="radiogroup" aria-label="Search operators">
+      <label><%= radio_button_tag("clause[#{@index}][op]", "AND") %> AND</label>
+      <label><%= radio_button_tag("clause[#{@index}][op]", "OR") %> OR</label>
+      <label><%= radio_button_tag("clause[#{@index}][op]", "NOT") %> NOT</label>
+  </div>
+<% end %>
 <div class="search-field">
-  <% if @index > 0 %>
-    <div class="search-operators" role="radiogroup" aria-label="Search operators">
-        <label><%= radio_button_tag("clause[#{@index}][op]", "AND") %> AND</label>
-        <label><%= radio_button_tag("clause[#{@index}][op]", "OR") %> OR</label>
-        <label><%= radio_button_tag("clause[#{@index}][op]", "NOT") %> NOT</label>
-    </div>
-  <% end %>
     <label for="clause_<%= @index %>_field" class="sr-only">Options for advanced search</label>
     <%= select_tag("clause[#{@index}][field]", options_for_select(@search_fields, default_field), class: "search_field", id: "clause_#{@index}_field") %>
     <div name="row<%= @index %>">
