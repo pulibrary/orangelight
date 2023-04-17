@@ -1,5 +1,7 @@
-<% index_fields(document).each do |solr_fname, field| -%>
-  <% if (should_render_index_field?(document, field)) %>
+<% doc_presenter = document_presenter(document) %>
+<% doc_presenter.fields_to_render.each do |solr_fname, field| -%>
+  <% field_presenter = Blacklight::FieldPresenter.new(doc_presenter.view_context, document, field) %>
+  <% if (field_presenter.render_field?) %>
     <% if !document[solr_fname].is_a?(Array) %>
       <%= document[solr_fname]%><br>
     <% else %>
