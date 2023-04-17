@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Blacklight::Solr::Document::MarcExportOverride do
+RSpec.describe Blacklight::MARC::Document::MarcExportOverride do
   describe "#clean_end_punctuation" do
     # See https://mixandgo.com/learn/how-to-test-ruby-modules-with-rspec for information on
     # testing methods defined in modules.
     let(:sample_class) do
       Class.new do
-        include Blacklight::Solr::Document::MarcExportOverride
+        include Blacklight::MARC::Document::MarcExportOverride
       end
     end
 

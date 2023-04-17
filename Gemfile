@@ -37,7 +37,7 @@ gem 'jbuilder', '~> 2.0'
 # jquery multiselect plugin for advanced search
 gem 'chosen-rails'
 
-gem 'blacklight-marc', '~> 7.1.0'
+gem 'blacklight-marc', '~> 7.2.0'
 # Capistrano
 gem 'bcrypt_pbkdf'
 gem 'capistrano', '~> 3.4'

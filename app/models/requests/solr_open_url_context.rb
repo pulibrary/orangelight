@@ -24,15 +24,6 @@ module Requests
       ctx.kev
     end
 
-    ## double check what are valid openURL formsts in the catatlog
-    ## look at our choices and map
-    # def format_to_openurl_genre(format)
-    #   return 'book' if format == 'book'
-    #   return 'journal' if format == 'serial'
-    #   return 'journal' if format == 'journal'
-    #   'unknown'
-    # end
-
     private
 
       def build_ctx
