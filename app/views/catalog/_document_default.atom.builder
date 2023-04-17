@@ -6,7 +6,7 @@ xml.entry do
   # updated is required, for now we'll just set it to now, sorry
   xml.updated document['cataloged_tdt']
 
-  xml.link    'rel' => 'alternate', 'type' => 'text/html', 'href' => polymorphic_url(url_for_document(document))
+  xml.link    'rel' => 'alternate', 'type' => 'text/html', 'href' => polymorphic_url(search_state.url_for_document(document))
   # add other doc-specific formats, atom only lets us have one per
   # content type, so the first one in the list wins.
   xml << document_presenter(document).link_rel_alternates(unique: true)
