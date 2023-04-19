@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Blacklight::MARC::Document::MarcExportOverride
+module Blacklight::Marc::Document::MarcExportOverride
   # Override Blacklight's version to add nil check
   # See https://github.com/projectblacklight/blacklight-marc/issues/95
   def clean_end_punctuation(text)

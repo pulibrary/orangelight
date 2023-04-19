@@ -12,7 +12,7 @@ module Blacklight
 
       # Prepend our overloaded method to bypass bug in Blacklight
       # See https://stackoverflow.com/questions/5944278/overriding-method-by-another-defined-in-module
-      prepend Blacklight::MARC::Document::MarcExportOverride
+      prepend Blacklight::Marc::Document::MarcExportOverride
 
       class UnsupportedMarcFormatType < RuntimeError; end
 
