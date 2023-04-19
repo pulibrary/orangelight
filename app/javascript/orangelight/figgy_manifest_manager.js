@@ -5,11 +5,10 @@ import { insert_online_link } from './insert_online_link.es6'
 
 class FiggyViewer {
   // There may be more than one ARK minted which resolves to the same manifested resource
-  constructor(idx, element, manifestUrl, arks) {
+  constructor(idx, element, manifestUrl) {
     this.idx = idx
     this.element = element
     this.manifestUrl = manifestUrl
-    this.arks = arks
   }
 
   getAvailabilityElement() {
@@ -22,35 +21,8 @@ class FiggyViewer {
     return element
   }
 
-  getArkLinkElement() {
-    // If there is only one electronic access link, it's structure using a <div> rather than <ul>
-    const availabilityElement = this.getAvailabilityElement()
-
-    if (!availabilityElement) {
-      return null
-    }
-
-    let elements = availabilityElement.querySelectorAll('div > a')
-    if (elements.length < 1) {
-      elements = availabilityElement.querySelectorAll('li > a')
-    }
-
-    // This assumes that there is a one-to-one mapping between the ARK electronic resource links in the DOM and the UniversalViewer instances
-    return elements[this.idx]
-  }
-
   buildViewerId() {
     return this.idx == 0 ? 'viewer-container' : `viewer-container_${this.idx}`
-  }
-
-  updateArkLinkElement() {
-    const arkLinkElement = this.getArkLinkElement()
-    if (!arkLinkElement) {
-      return
-    }
-
-    arkLinkElement.href = '#' + this.buildViewerId()
-    arkLinkElement.removeAttribute("target")
   }
 
   constructIFrame() {
@@ -84,19 +56,14 @@ class FiggyViewer {
       return null
     }
 
-    if (this.arks.length > 0) {
-      this.updateArkLinkElement()
-    }
-
     this.element.appendChild(viewerElement)
   }
 }
 class FiggyViewerSet {
-  constructor(element, query, variables, arks, jQuery) {
+  constructor(element, query, variables, jQuery) {
     this.element = element
     this.query = query
     this.variables = variables
-    this.arks = arks
     this.jQuery = jQuery
   }
 
@@ -153,7 +120,7 @@ class FiggyViewerSet {
     })
     const manifestUrls = await this.getManifestUrls(filteredResources)
     manifestUrls.forEach((manifestUrl, idx) => {
-      const viewer = new FiggyViewer(idx, this.element, manifestUrl, this.arks)
+      const viewer = new FiggyViewer(idx, this.element, manifestUrl)
       viewer.render()
     })
   }
@@ -276,8 +243,7 @@ class FiggyManifestManager {
   static buildViewers(element) {
     const $element = window.jQuery(element)
     const bibId = $element.data('bib-id')
-    const arks = $element.data('arks') || []
-    return new FiggyViewerSet(element, loadResourcesByOrangelightId, bibId.toString(), arks, window.jQuery)
+    return new FiggyViewerSet(element, loadResourcesByOrangelightId, bibId.toString(), window.jQuery)
   }
 }
 

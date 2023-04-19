@@ -7,7 +7,7 @@ describe('RelatedRecords', function() {
     test('viewer iframe has a title', async() => {
         document.body.innerHTML = '<div id="container"></div>';
         const element = document.getElementById('container');
-        const viewer = new FiggyViewer(0, element, 'https://example.com', []);
+        const viewer = new FiggyViewer(0, element, 'https://example.com');
         viewer.render().then(() => {
             const element = document.getElementById('iframe-1');
             expect(element.getAttribute('title')).toBe('Digital content viewer');
@@ -41,7 +41,7 @@ describe('RelatedRecords', function() {
 
       const availableOnlineElement = document.getElementsByClassName('availability--online');
       const viewerWrapperElement = document.getElementById('view');
-      const viewerSet = new FiggyViewerSet(viewerWrapperElement, queryFunction, 'dsp01wd3760321', [], null)
+      const viewerSet = new FiggyViewerSet(viewerWrapperElement, queryFunction, 'dsp01wd3760321', null)
       await viewerSet.render()
       expect(queryFunction).toHaveBeenCalledTimes(1);
       expect(availableOnlineElement[0].getElementsByTagName('li')).toHaveLength(2);
@@ -72,7 +72,7 @@ describe('RelatedRecords', function() {
 
       const availableOnlineElement = document.getElementsByClassName('availability--online');
       const viewerWrapperElement = document.getElementById('view');
-      const viewerSet = new FiggyViewerSet(viewerWrapperElement, queryFunction2, 'dsp01wd3760321', [], null)
+      const viewerSet = new FiggyViewerSet(viewerWrapperElement, queryFunction2, 'dsp01wd3760321', null)
       await viewerSet.render()
       expect(queryFunction2).toHaveBeenCalledTimes(1);
       expect(availableOnlineElement[0].getElementsByTagName('li')).toHaveLength(1);
