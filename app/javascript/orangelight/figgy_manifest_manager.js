@@ -76,12 +76,41 @@ class FiggyViewerSet {
     return resources
   }
 
+  getMemberIds(resources) {
+    const ids = resources.map((resource) => {
+      return resource.members.map((member) => {
+        return member.id
+      })
+    })
+
+    return ids.flat()
+  }
+
   getManifestUrls(resources) {
     if (!resources) {
       return []
     }
 
-    return resources.map((resource) => {
+    // If there is a resource whose ID is included as a member_id of another resource,
+    // filter it out
+    const filterDuplicatedResources = resources.filter((resource) => {
+      if (!resource['members'])
+        return true
+      const member_ids = this.getMemberIds(resources)
+      const resource_is_unique =  member_ids.map((member_id) => {
+        if (member_ids.includes(resource.id))
+          return false
+      })
+
+      return !resource_is_unique.includes(false)
+    })
+
+    if (resources.length > 0 && filterDuplicatedResources.length < 1)
+      return resources.map((resource) => {
+        return resource.manifestUrl
+      })
+
+    return filterDuplicatedResources.map((resource) => {
       return resource.manifestUrl
     })
   }
