@@ -2,25 +2,48 @@
 require 'rails_helper'
 
 RSpec.describe User do
-  context "when there are guest users older than 7 days" do
+  describe '#expire_guest_accounts' do
     before do
       # There's an initial user that we don't want
       described_class.all.find_each(&:destroy)
-      Timecop.freeze(Time.now.utc - 10.days) do
-        100.times do
-          FactoryBot.create(:guest_patron, guest: true)
+    end
+    context "when there are guest users older than 7 days" do
+      before do
+        Timecop.freeze(Time.now.utc - 10.days) do
+          100.times do
+            FactoryBot.create(:guest_patron, guest: true)
+          end
+          10.times do
+            FactoryBot.create(:valid_princeton_patron)
+          end
         end
         10.times do
-          FactoryBot.create(:valid_princeton_patron)
+          FactoryBot.create(:guest_patron)
         end
       end
-      10.times do
-        FactoryBot.create(:guest_patron)
+
+      it "expires them" do
+        expect { described_class.expire_guest_accounts }.to change { described_class.count }.by(-100)
       end
     end
 
-    it "expires them" do
-      expect { described_class.expire_guest_accounts }.to change { described_class.count }.by(-100)
+    context 'when a guest user older than 7 days has bookmarks' do
+      let(:guest) { FactoryBot.create(:guest_patron, guest: true) }
+      before do
+        Timecop.freeze(Time.now.utc - 10.days) do
+          (1..5).each do |document_id|
+            bookmark = Bookmark.new
+            bookmark.user = guest
+            bookmark.document_id = document_id
+            guest.bookmarks << bookmark
+          end
+          guest
+        end
+      end
+      it 'deletes the bookmarks' do
+        expect(guest.bookmarks.count).to eq(5)
+        expect { described_class.expire_guest_accounts }.to change { Bookmark.count }.by(-5)
+      end
     end
   end
 
