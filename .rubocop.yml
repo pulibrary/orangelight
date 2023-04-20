@@ -22,16 +22,6 @@ AllCops:
 
 Metrics/AbcSize:
   Exclude:
-    - 'app/models/concerns/blacklight/solr/document/marc.rb'
-    - 'app/controllers/account_controller.rb'
-    - 'app/controllers/orangelight/browsables_controller.rb'
-    - 'app/controllers/users/omniauth_callbacks_controller.rb'
-    - 'app/controllers/account_controller.rb:'
-    - 'app/controllers/concerns/orangelight/catalog.rb'
-    - 'app/helpers/advanced_helper.rb'
-    - 'app/helpers/blacklight_helper.rb'
-    - 'app/services/physical_holdings_markup_builder.rb'
-    - 'lib/orangelight/browse_lists/call_number_csv.rb'
     - 'app/models/requests/illiad_metadata/article_express.rb'
     - 'app/models/concerns/blacklight/document/json_ld.rb'
     - 'app/models/requests/solr_open_url_context.rb'
@@ -105,6 +95,7 @@ Metrics/MethodLength:
     - 'app/models/concerns/blacklight/document/ris.rb'
     - 'app/models/concerns/blacklight/document/dublin_core.rb'
     - 'app/models/concerns/blacklight/solr/document/marc.rb'
+    - 'app/models/requests/illiad_metadata/metadata.rb'
     - 'app/controllers/orangelight/browsables_controller.rb'
     - 'app/controllers/users/omniauth_callbacks_controller.rb'
     - 'app/controllers/account_controller.rb'
@@ -119,6 +110,10 @@ Metrics/MethodLength:
     - 'lib/orangelight/browse_lists.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
     - 'spec/mailers/previews/*'
+
+Metrics/ParameterLists:
+  Exclude:
+    - 'app/models/requests/illiad_metadata/metadata.rb'
 
 Metrics/ModuleLength:
   Exclude:
