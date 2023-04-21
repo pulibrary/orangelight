@@ -78,11 +78,8 @@ class FiggyViewerSet {
 
     getMemberIds(resources) {
         const ids = resources.map((resource) => {
-            return resource.members.map((member) => {
-                return member.id;
-            });
+            return resource.memberIds;
         });
-
         return ids.flat();
     }
 
@@ -94,7 +91,7 @@ class FiggyViewerSet {
         // If there is a resource whose ID is included as a member_id of another resource,
         // filter it out
         const filterDuplicatedResources = resources.filter((resource) => {
-            if (!resource['members'])
+            if (!resource['memberIds'])
                 return true;
             const member_ids = this.getMemberIds(resources);
             const resource_is_unique = member_ids.map(() => {

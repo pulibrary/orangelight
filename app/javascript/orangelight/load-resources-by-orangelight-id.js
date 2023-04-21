@@ -13,9 +13,7 @@ async function loadResourcesByOrangelightId(id) {
          },
          label,
          url,
-         members {
-           id
-         },
+         memberIds,
          embed {
            type,
            content,

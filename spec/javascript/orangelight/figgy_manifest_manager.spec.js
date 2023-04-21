@@ -26,11 +26,8 @@ describe('RelatedRecords', function() {
                                     },
                                     "label": "Pennsylvania: Troy Quadrangle.",
                                     "url": "https://figgy.princeton.edu/catalog/26b01ff3-eb40-40b0-821c-42fade1cf349",
-                                    "members": [
-                                      {
-                                        "id": "85773d63-8a3a-4cea-b1c3-d9d0196bac3f",
-                                        "__typename": "FileSet"
-                                      }
+                                    "memberIds": [
+                                      "85773d63-8a3a-4cea-b1c3-d9d0196bac3f"
                                     ],
                                     "embed": {
                                       "type": "html",
@@ -51,15 +48,9 @@ describe('RelatedRecords', function() {
                                     },
                                     "label": "Pennsylvania: (Lycoming) Trout Run Quadrangle",
                                     "url": "https://figgy.princeton.edu/catalog/a65bd135-5356-4613-8089-d90fc445cfda",
-                                    "members": [
-                                      {
-                                        "id": "595ee476-d247-4339-83e2-bddb90a7d069",
-                                        "__typename": "ScannedMap"
-                                      },
-                                      {
-                                        "id": "26b01ff3-eb40-40b0-821c-42fade1cf349",
-                                        "__typename": "ScannedMap"
-                                      }
+                                    "memberIds": [
+                                      "595ee476-d247-4339-83e2-bddb90a7d069",
+                                      "26b01ff3-eb40-40b0-821c-42fade1cf349"
                                     ],
                                     "embed": {
                                       "type": "html",
@@ -80,11 +71,8 @@ describe('RelatedRecords', function() {
                                     },
                                     "label": "Pennsylvania: (Lycoming) Trout Run Quadrangle (Lycoming)",
                                     "url": "https://figgy.princeton.edu/catalog/595ee476-d247-4339-83e2-bddb90a7d069",
-                                    "members": [
-                                      {
-                                        "id": "8fa8bc9b-b0e9-456c-a1ee-a913b2499054",
-                                        "__typename": "FileSet"
-                                      }
+                                    "memberIds": [
+                                      "8fa8bc9b-b0e9-456c-a1ee-a913b2499054"
                                     ],
                                     "embed": {
                                       "type": "html",
@@ -124,15 +112,9 @@ describe('RelatedRecords', function() {
                                     },
                                     "label": "At a Council held at Boston March 8. 1679,80. : The governour and Council, upon mature consideration of the many loud calls of Providence ... Do therefore appoint and order, that the fifteenth day of April next, be set apart for a day of humiliation and prayer ...",
                                     "url": "https://figgy.princeton.edu/catalog/bbc6f6c4-3b92-4ae9-8461-1a14c113af8c",
-                                    "members": [
-                                      {
-                                        "id": "8ecd795b-cd1b-4efc-9f1b-1411574d948c",
-                                        "__typename": "FileSet"
-                                      },
-                                      {
-                                        "id": "2e6c63af-7e2d-4191-a1b6-b4113394ce33",
-                                        "__typename": "FileSet"
-                                      }
+                                    "memberIds": [
+                                      "8ecd795b-cd1b-4efc-9f1b-1411574d948c",
+                                      "2e6c63af-7e2d-4191-a1b6-b4113394ce33"
                                     ],
                                     "embed": {
                                       "type": "html",
@@ -153,15 +135,9 @@ describe('RelatedRecords', function() {
                                     },
                                     "label": "At a Council held at Boston March 8. 1679,80. : The governour and Council, upon mature consideration of the many loud calls of Providence ... Do therefore appoint and order, that the fifteenth day of April next, be set apart for a day of humiliation and prayer ...",
                                     "url": "https://figgy.princeton.edu/catalog/54b399c7-f28c-46f6-a7b4-c835a60516c4",
-                                    "members": [
-                                      {
-                                        "id": "b9ce8d56-2ab7-48e0-8e97-d510b904f920",
-                                        "__typename": "ScannedResource"
-                                      },
-                                      {
-                                        "id": "e3e5ba6b-e7c6-4016-8c62-fe6656c020ca",
-                                        "__typename": "ScannedResource"
-                                      }
+                                    "memberIds": [
+                                      "b9ce8d56-2ab7-48e0-8e97-d510b904f920",
+                                      "e3e5ba6b-e7c6-4016-8c62-fe6656c020ca"
                                     ],
                                     "embed": {
                                       "type": "html",
@@ -181,7 +157,7 @@ describe('RelatedRecords', function() {
   
       const queryFunction = jest.fn((_bibIds) => { return graphqlResponse })
       const viewerWrapperElement = document.getElementById('view');
-      const viewerSet = new FiggyViewerSet(viewerWrapperElement, queryFunction, '9968683243506421', null)
+      const viewerSet = new FiggyViewerSet(viewerWrapperElement, queryFunction, '9950403683506421', null)
       await viewerSet.render()
       expect(viewerWrapperElement.getElementsByTagName('iframe')).toHaveLength(2);
     });
