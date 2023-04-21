@@ -2,6 +2,7 @@
 
 Datadog.configure do |c|
   c.tracer(enabled: false) unless Rails.env.production?
+  c.env = 'production'
   # Rails
   c.use :rails
 
