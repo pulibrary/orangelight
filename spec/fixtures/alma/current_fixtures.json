@@ -32612,5 +32612,145 @@
   "access_facet": [
     "In the Library"
   ]
+},
+{
+  "id": "9950403683506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Massachusetts. Council"
+  ],
+  "author_citation_display": [
+    "Massachusetts",
+    "Foster, John",
+    "Rawson, Edward",
+    "Green, Samuel",
+    "Stan. V. Henkels (Firm)"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Foster, John\",\"Rawson, Edward\",\"Green, Samuel\",\"Massachusetts\",\"Stan. V. Henkels (Firm)\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Massachusetts\"}",
+  "author_s": [
+    "Massachusetts. Council",
+    "Foster, John, 1648-1681",
+    "Rawson, Edward, 1615-1693",
+    "Green, Samuel, 1615-1702",
+    "Massachusetts. Governor (1679-1686 : Bradstreet)",
+    "Stan. V. Henkels (Firm)"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "At a Council held at Boston March 8. 1679,80. : The governour and Council, upon mature consideration of the many loud calls of Providence ... Do therefore appoint and order, that the fifteenth day of April next, be set apart for a day of humiliation and prayer ...",
+  "title_t": [
+    "At a Council held at Boston March 8. 1679,80. : The governour and Council, upon mature consideration of the many loud calls of Providence ... Do therefore appoint and order, that the fifteenth day of April next, be set apart for a day of humiliation and prayer ..."
+  ],
+  "title_citation_display": [
+    "At a Council held at Boston March 8. 1679,80. : The governour and Council, upon mature consideration of the many loud calls of Providence ... Do therefore appoint and order, that the fifteenth day of April next, be set apart for a day of humiliation and prayer ..."
+  ],
+  "compiled_created_t": [
+    "At a Council held at Boston March 8. 1679,80. : The governour and Council, upon mature consideration of the many loud calls of Providence ... Do therefore appoint and order, that the fifteenth day of April next, be set apart for a day of humiliation and prayer ..."
+  ],
+  "pub_created_display": [
+    "[Boston : Printed by John Foster, 1680]"
+  ],
+  "pub_created_s": [
+    "[Boston : Printed by John Foster, 1680]"
+  ],
+  "pub_citation_display": [
+    "Boston: Printed by John Foster"
+  ],
+  "pub_date_display": [
+    "1680"
+  ],
+  "pub_date_start_sort": 1680,
+  "cataloged_tdt": "2021-07-20T23:53:10Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "1 sheet ([1] p.) : ill. (relief cut) ; 32 x 22 cm."
+  ],
+  "description_t": [
+    "1 sheet ([1] p.) : ill. (relief cut) ; 32 x 22 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "1 sheet ([1] p.)"
+  ],
+  "series_display": [
+    "Early American imprints. First series ; no. 287.",
+    "Early American imprints. First series ; no. 39214."
+  ],
+  "more_in_this_series_t": [
+    "Early American imprints. First series"
+  ],
+  "geo_related_record_display": [
+    "Multi-title collection including The Monitor, or, British freeholder ... number CCCLVII, Saturday, May the 22nd, 1762 and 37 other(s)."
+  ],
+  "contained_in_s": [
+    "99125086303506421"
+  ],
+  "notes_display": [
+    "This catalogue record is derived in large part from a record for an electronic reproduction.",
+    "Signed: Edward Rawson secr.",
+    "Imprint determined from colony seal used. Cf. Jones, Matt B. The early Massachusetts-Bay Colony seals, Proceedings of the American Antiquarian Society, new series, v. 44, 1934, p. 13-44.",
+    "WHS shelf-list has imprint: [Cambridge, Samuel Green, 1679/80].",
+    "WHS shelf-list has note: Unidentified ms. notes, probably for a sermon on the occasion, written on the margins and at the bottom of a proclamation of the Governor and Council of Massachusetts Bay proclaiming 15 April 1679-80 as a day of humiliation and prayer."
+  ],
+  "language_name_display": [
+    "English"
+  ],
+  "language_facet": [
+    "English"
+  ],
+  "language_code_s": [
+    "eng"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "provenance_display": [
+    "WHS copy acquired 11/18/24 from Henkels; inv. 517."
+  ],
+  "references_display": [
+    "Evans 287",
+    "Bristol B53",
+    "Shipton & Mooney 39214",
+    "Wing (2nd ed.) M966AB",
+    "Wing (2nd ed.) M1011",
+    "Ford, W.C. Broadsides, 76",
+    "Cushing, J.D. Mass. laws, 80"
+  ],
+  "references_url_display": [
+    "Evans 287",
+    "Bristol B53",
+    "Shipton & Mooney 39214",
+    "Wing (2nd ed.) M966AB",
+    "Wing (2nd ed.) M1011",
+    "Ford, W.C. Broadsides, 76",
+    "Cushing, J.D. Mass. laws, 80"
+  ],
+  "subject_facet": [
+    "Fast day proclamations—1680 Apr. 15.",
+    "Broadsides"
+  ],
+  "rbgenr_s": [
+    "Fast day proclamations—1680 Apr. 15.",
+    "Broadsides"
+  ],
+  "related_name_json_1display": "{\"Printer\":[\"Foster, John, 1648-1681\",\"Green, Samuel, 1615-1702\"],\"Related name\":[\"Rawson, Edward, 1615-1693\",\"Massachusetts. Governor (1679-1686 : Bradstreet)\"],\"Bookseller\":[\"Stan. V. Henkels (Firm)\"]}",
+  "in_display": [
+    "Multi-title collection including The Monitor, or, British freeholder ... number CCCLVII, Saturday, May the 22nd, 1762 and 37 other(s)."
+  ],
+  "oclc_s": [
+    "85773401"
+  ],
+  "other_version_s": [
+    "ocm85773401"
+  ],
+  "name_title_browse_s": [
+    "Massachusetts. Council. At a Council held at Boston March 8. 1679,80."
+  ],
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"Newsbank America's Historical Imprints\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53848371460006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}",
+    "{\"desc\":null,\"title\":\"Newsbank America's Historical Imprints\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53848371480006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ]
 }
 ]
