@@ -121,28 +121,10 @@ module BlacklightAdvancedSearch
         q2 = @params[:f2] == 'left_anchor' ? prep_left_anchor_search(@params[:q2]) : odd_quotes(@params[:q2])
         q3 = @params[:f3] == 'left_anchor' ? prep_left_anchor_search(@params[:q3]) : odd_quotes(@params[:q3])
 
-        been_combined = false
+        @been_combined = false
         @keyword_queries[@params[:f1]] = q1 if @params[:q1].present?
-        if @params[:q2].present?
-          if @keyword_queries.key?(@params[:f2])
-            @keyword_queries[@params[:f2]] = "(#{@keyword_queries[@params[:f2]]}) " + @params[:op2] + " (#{q2})"
-            been_combined = true
-          elsif @params[:op2] == 'NOT'
-            @keyword_queries[@params[:f2]] = 'NOT ' + q2
-          else
-            @keyword_queries[@params[:f2]] = q2
-          end
-        end
-        if @params[:q3].present?
-          if @keyword_queries.key?(@params[:f3])
-            @keyword_queries[@params[:f3]] = "(#{@keyword_queries[@params[:f3]]})" unless been_combined
-            @keyword_queries[@params[:f3]] = "#{@keyword_queries[@params[:f3]]} " + @params[:op3] + " (#{q3})"
-          elsif @params[:op3] == 'NOT'
-            @keyword_queries[@params[:f3]] = 'NOT ' + q3
-          else
-            @keyword_queries[@params[:f3]] = q3
-          end
-        end
+        @keyword_queries[@params[:f2]] = prepare_q2(q2) if @params[:q2].present?
+        @keyword_queries[@params[:f3]] = prepare_q3(q3) if @params[:q3].present?
       end
       @keyword_queries
     end
@@ -174,6 +156,29 @@ module BlacklightAdvancedSearch
           else
             cleaned_query + '*'
           end
+        end
+      end
+
+      def prepare_q2(q2)
+        if @keyword_queries.key?(@params[:f2])
+          @been_combined = true
+          "(#{@keyword_queries[@params[:f2]]}) " + @params[:op2] + " (#{q2})"
+        elsif @params[:op2] == 'NOT'
+          'NOT ' + q2
+        else
+          q2
+        end
+      end
+
+      def prepare_q3(q3)
+        if @keyword_queries.key?(@params[:f3])
+          kq3 = @keyword_queries[@params[:f3]]
+          kq3 = "(#{kq3})" unless @been_combined
+          "#{kq3} " + @params[:op3] + " (#{q3})"
+        elsif @params[:op3] == 'NOT'
+          'NOT ' + q3
+        else
+          q3
         end
       end
   end

@@ -9,70 +9,17 @@ class Orangelight::BrowsablesController < ApplicationController
     # previous/next page links need to pass
     # manually set rpp
 
-    @model = model_table_name
-    if rpp_param.nil?
-      @rpp = 50
-      @page_link = '?'
-    else
-      rpp_range = [10, 25, 50, 100]
-      @rpp = if rpp_range.include? requested_rpp
-               requested_rpp
-             else
-               50
-             end
-      @page_link = "?rpp=#{@rpp}&"
-    end
+    assign_values
 
-    # @start gets the id of the first entry to display on page
-    # specific ids are given based on search results
-    @start = first_model_id
-
-    unless query_param.nil?
-      search_result = model_param.where('sort <= ?', search_term).order('sort').last
-
-      unless search_result.nil?
-        @search_result = search_result.label
-        @search_term = search_term
-        @exact_match = search_term == search_result.sort
-        @match = search_result.id
-        @start = search_result.id - 1
-        @start -= 1 if @exact_match
-        @start = 1 if @start < 1
-        @query = query_param
-      end
-    end
-
-    # gets last page of table's results
-    @last_id = last_model_id
-
-    # makes sure no next page link is shown for last page
-    @is_last = (@last_id - @rpp + 1) <= @start
     # makes sure valid page is displayed
     if !(@last_id - @rpp + 1..@last_id).cover?(@start) && @is_last
       @start = @last_id - @rpp + 1
       @start = 1 if @start < 1 # catch for start ids higher than last id
     end
 
-    @is_first = @start == 1
+    assign_pagenation_values
 
-    @page_last = if (@start + @rpp - 1) > @last_id
-                   @last_id
-                 else
-                   @start + @rpp - 1
-                 end
-
-    @prev = @start - @rpp
-    @prev = 1 if @prev < 1
-    @next = @start + @rpp
-    @orangelight_browsables = model_param.where(id: @start..@page_last)
-
-    if browsing_names?
-      @facet = 'author_s'
-    elsif browsing_subjects?
-      @facet = 'subject_facet'
-    elsif browsing_titles?
-      @facet = 'name_title_browse_s'
-    end
+    @facet = facet
     @list_name = list_name
 
     respond_to do |format|
@@ -82,6 +29,97 @@ class Orangelight::BrowsablesController < ApplicationController
   end
 
   private
+
+    def assign_values
+      @model = model_table_name
+      @rpp = rpp
+      @page_link = page_link
+
+      # @start gets the id of the first entry to display on page
+      # specific ids are given based on search results
+      @start = first_model_id
+
+      populate_search_results
+
+      # gets last page of table's results
+      @last_id = last_model_id
+
+      # makes sure no next page link is shown for last page
+      @is_last = (@last_id - @rpp + 1) <= @start
+    end
+
+    def rpp
+      if rpp_param.nil?
+        50
+      else
+        validate_rpp(requested_rpp)
+      end
+    end
+
+    def page_link
+      if rpp_param.nil?
+        '?'
+      else
+        size = validate_rpp(requested_rpp)
+        "?rpp=#{size}&"
+      end
+    end
+
+    def validate_rpp(size)
+      rpp_range = [10, 25, 50, 100]
+      if rpp_range.include? size
+        size
+      else
+        50
+      end
+    end
+
+    def populate_search_results
+      return if query_param.nil?
+
+      search_result = model_param.where('sort <= ?', search_term).order('sort').last
+
+      return if search_result.nil?
+
+      populate_search_params(search_result)
+    end
+
+    def populate_search_params(search_result)
+      @search_result = search_result.label
+      @search_term = search_term
+      @exact_match = search_term == search_result.sort
+      @match = search_result.id
+      @start = search_result.id - 1
+      @start -= 1 if @exact_match
+      @start = 1 if @start < 1
+      @query = query_param
+    end
+
+    def assign_pagenation_values
+      @is_first = @start == 1
+
+      @page_last = if (@start + @rpp - 1) > @last_id
+                     @last_id
+                   else
+                     @start + @rpp - 1
+                   end
+
+      @prev = @start - @rpp
+      @prev = 1 if @prev < 1
+      @next = @start + @rpp
+
+      @orangelight_browsables = model_param.where(id: @start..@page_last)
+    end
+
+    def facet
+      if browsing_names?
+        'author_s'
+      elsif browsing_subjects?
+        'subject_facet'
+      elsif browsing_titles?
+        'name_title_browse_s'
+      end
+    end
 
     # Retrieve the Model mapped to the request parameter
     # @return [Class]

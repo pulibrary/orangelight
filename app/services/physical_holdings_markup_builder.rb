@@ -496,22 +496,24 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       request_placeholder_markup = request_placeholder(@adapter, holding_id, location_rules, holding)
       markup << request_placeholder_markup.html_safe
 
+      markup << build_holding_notes(holding, holding_id)
+
+      markup = self.class.holding_block(markup) unless markup.empty?
+      markup
+    end
+
+    def build_holding_notes(holding, holding_id)
       holding_notes = ''
 
       holding_notes << self.class.shelving_titles_list(holding) if @adapter.shelving_title?(holding)
       holding_notes << self.class.location_notes_list(holding) if @adapter.location_note?(holding)
       holding_notes << self.class.location_has_list(holding) if @adapter.location_has?(holding)
-      holding_notes << self.class.multi_item_availability(doc_id, holding_id)
+      holding_notes << self.class.multi_item_availability(doc_id(holding), holding_id)
       holding_notes << self.class.supplements_list(holding) if @adapter.supplements?(holding)
       holding_notes << self.class.indexes_list(holding) if @adapter.indexes?(holding)
       holding_notes << self.class.journal_issues_list(holding_id) if @adapter.journal?
 
-      holding_notes = self.class.holding_details(holding_notes) unless holding_notes.empty?
-
-      markup << holding_notes
-
-      markup = self.class.holding_block(markup) unless markup.empty?
-      markup
+      self.class.holding_details(holding_notes) unless holding_notes.empty?
     end
 
     # Generate the markup for physical holdings

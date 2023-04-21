@@ -36,5 +36,37 @@ describe BlacklightAdvancedSearch::QueryParser do
       expect(query_parser.keyword_queries).to be_a Hash
       expect(query_parser.keyword_queries).to include('title' => '(Yu pu za shuo) AND ("")')
     end
+
+    describe '#keyword query with NOT' do
+      let(:params) do
+        {
+          'utf8' => '✓',
+          'f1' => 'title',
+          'q1' => 'Yu pu za shuo',
+          'op2' => 'NOT',
+          'f2' => 'title',
+          'q2' => '""',
+          'op3' => 'NOT',
+          'f3' => 'title',
+          'q3' => '',
+          'range' => {
+            'pub_date_start_sort' => {
+              'begin' => '',
+              'end' => ''
+            }
+          },
+          'sort' => 'score desc, pub_date_start_sort desc, title_sort asc',
+          'search_field' => 'advanced',
+          'commit' => 'Search',
+          'controller' => 'errors',
+          'action' => 'error'
+        }
+      end
+
+      it 'generates the keyword query with NOTs' do
+        expect(query_parser.keyword_queries).to be_a Hash
+        expect(query_parser.keyword_queries).to include('title' => '(Yu pu za shuo) NOT ("")')
+      end
+    end
   end
 end

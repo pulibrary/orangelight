@@ -18,19 +18,23 @@ module Requests
       private
 
         def map_metdata
-          {
-            "Username" => patron.netid, "TransactionStatus" => illiad_transaction_status,
-            "RequestType" => "Article", "ProcessType" => "Borrowing", "NotWantedAfter" => (DateTime.current + 6.months).strftime("%m/%d/%Y"),
-            "WantedBy" => "Yes, until the semester's", # NOTE: creation fails if we use any other text value
-            "PhotoItemAuthor" => bib["author"]&.truncate(100), "PhotoArticleAuthor" => item["edd_author"]&.truncate(100), "PhotoJournalTitle" => bib["title"]&.truncate(255),
-            "PhotoItemPublisher" => item["edd_publisher"]&.truncate(40), "ISSN" => bib["isbn"], "CallNumber" => item["edd_call_number"]&.truncate(255),
-            "PhotoJournalInclusivePages" => pages&.truncate(30), "CitedIn" => "#{Requests::Config[:pulsearch_base]}/catalog/#{bib['id']}", "PhotoJournalYear" => item["edd_date"],
-            "PhotoJournalVolume" => volume_number(item), "PhotoJournalIssue" => item["edd_issue"]&.truncate(30),
-            "ItemInfo3" => item["edd_volume_number"]&.truncate(255), "ItemInfo4" => item["edd_issue"]&.truncate(255),
-            "CitedPages" => cited_pages, "AcceptNonEnglish" => true, "ESPNumber" => item["edd_oclc_number"]&.truncate(32),
-            "DocumentType" => genre, "Location" => item["edd_location"],
-            "PhotoArticleTitle" => item["edd_art_title"]&.truncate(250)
-          }
+          Metadata.new(
+            patron.netid, illiad_transaction_status, "Article", "Borrowing",
+            (DateTime.current + 6.months).strftime("%m/%d/%Y"),
+            "Yes, until the semester's", # NOTE: creation fails if we use any other text value
+            bib["author"]&.truncate(100), item["edd_author"]&.truncate(100),
+            bib["title"]&.truncate(255), item["edd_publisher"]&.truncate(40),
+            bib["isbn"], item["edd_call_number"]&.truncate(255),
+            pages&.truncate(30),
+            "#{Requests::Config[:pulsearch_base]}/catalog/#{bib['id']}",
+            item["edd_date"], volume_number(item),
+            item["edd_issue"]&.truncate(30),
+            item["edd_volume_number"]&.truncate(255),
+            item["edd_issue"]&.truncate(255), cited_pages,
+            true, item["edd_oclc_number"]&.truncate(32),
+            genre, item["edd_location"],
+            item["edd_art_title"]&.truncate(250)
+          ).to_metadata_hash
         end
 
         def pages
