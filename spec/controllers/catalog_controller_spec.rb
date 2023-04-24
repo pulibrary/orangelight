@@ -103,4 +103,18 @@ RSpec.describe CatalogController do
       expect(Rails.cache).not_to have_received(:fetch)
     end
   end
+  describe "#numismatics" do
+    context "when requesting HTML for numismatics" do
+      it "returns OK" do
+        get :numismatics, params: { format: "html" }
+        expect(response.status).to eq 200
+      end
+    end
+    context "when requesting JSON for numismatics" do
+      it "returns an error" do
+        get :numismatics, params: { format: "json" }
+        expect(response.status).to eq 400
+      end
+    end
+  end
 end
