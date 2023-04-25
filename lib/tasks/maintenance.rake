@@ -6,6 +6,14 @@ namespace :orangelight do
     task guest_users: :environment do
       User.expire_guest_accounts
     end
+    namespace :bookmarks do
+      # TODO: remove the following task, since as of
+      # migration 20230419231330, the database layer
+      # will not allow bookmarks without a valid user
+      task without_users: :environment do
+        Bookmark.without_valid_user.destroy_all
+      end
+    end
   end
 
   namespace :migration do
