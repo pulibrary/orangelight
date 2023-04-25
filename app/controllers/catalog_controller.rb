@@ -692,6 +692,18 @@ class CatalogController < ApplicationController
     render file: Rails.public_path.join('x400.html'), layout: true, status: :bad_request
   end
 
+  def numismatics
+    unless request.method == :post
+      @response = search_service.search_results do |search_builder|
+        search_builder.except(:add_advanced_search_to_solr).append(:facets_for_advanced_search_form)
+      end.first
+    end
+    respond_to do |format|
+      format.html { render "advanced/numismatics" }
+      format.json { render plain: "Format not supported", status: :bad_request }
+    end
+  end
+
   private
 
     def render_empty_search
