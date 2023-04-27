@@ -15,6 +15,7 @@ namespace :orangelight do
       end
       # orangelight:clean:bookmarks:without_solr_documents
       task without_solr_documents: :environment do
+        Bookmark.update_to_alma_ids
         Bookmark.destroy_without_solr_documents
       end
     end

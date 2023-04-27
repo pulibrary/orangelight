@@ -14,7 +14,8 @@ class Bookmark < ApplicationRecord
   end
 
   def self.destroy_without_solr_documents
-    Bookmark.find_in_batches do |bookmarks|
+    Bookmark.find_in_batches.with_index do |bookmarks, batch|
+      Rails.logger.info { "Processing destroy_without_solr_documents group ##{batch}" }
       bookmark_doc_ids = bookmark_doc_ids(bookmarks)
       doc_ids_without_solr_doc = bookmark_doc_ids - doc_ids_in_solr(bookmark_doc_ids)
 
@@ -26,9 +27,18 @@ class Bookmark < ApplicationRecord
     end
   end
 
+  def self.update_to_alma_ids
+    Bookmark.where("LENGTH(document_id) <= 7").find_in_batches.with_index do |bookmarks, batch|
+      Rails.logger.info { "Processing update_to_alma_ids group ##{batch}" }
+      bookmarks.each do |bookmark|
+        bookmark.document_id = bookmark.voyager_to_alma_id
+        bookmark.save if bookmark.changed?
+      end
+    end
+  end
+
   def self.bookmark_doc_ids(bookmarks)
-    ids = bookmarks.map(&:document_id).to_set
-    ids.map { |id| ensure_voyager_to_alma_id(id) }.to_set
+    bookmarks.map(&:document_id).to_set
   end
 
   def self.doc_ids_in_solr(bookmark_doc_ids)
@@ -39,8 +49,8 @@ class Bookmark < ApplicationRecord
 
   # This method duplicates logic in the SolrDocument, but it did not seem well-suited for
   # re-use directly here (needing to instantiate a SolrDocument for each ID before being able to call it)
-  def self.ensure_voyager_to_alma_id(id)
-    return id if id.length > 7 && id.start_with?("99")
-    "99#{id}3506421"
+  def voyager_to_alma_id
+    return document_id if document_id.length > 7 && document_id.start_with?("99")
+    "99#{document_id}3506421"
   end
 end
