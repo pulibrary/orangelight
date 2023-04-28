@@ -13,6 +13,7 @@ namespace :bookmarks do
     end
     # Create fake bookmarks for existing users
     User.all.each.with_index do |user, index|
+      break if index > 800
       Bookmark.create(user:, document_id: valid_ids[index])
       Bookmark.create(user:, document_id: invalid_ids[index])
     end
