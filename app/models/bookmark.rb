@@ -14,7 +14,7 @@ class Bookmark < ApplicationRecord
   end
 
   def self.destroy_without_solr_documents
-    Bookmark.find_in_batches.with_index do |bookmarks, batch|
+    Bookmark.find_in_batches(batch_size: 200).with_index do |bookmarks, batch|
       Rails.logger.info { "Processing destroy_without_solr_documents group ##{batch}" }
       bookmark_doc_ids = bookmark_doc_ids(bookmarks)
       doc_ids_without_solr_doc = bookmark_doc_ids - doc_ids_in_solr(bookmark_doc_ids)

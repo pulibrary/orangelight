@@ -65,7 +65,7 @@ RSpec.describe Bookmark do
     it 'updates bookmarks with a voyager document_id' do
       expect do
         Bookmark.update_to_alma_ids
-      end.to change { bookmark_one.reload.document_id }
+      end.to change { bookmark_one.reload.document_id }.from(voyager_id_one).to(converted_voyager_id)
     end
   end
 end
