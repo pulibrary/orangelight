@@ -14,7 +14,8 @@ class Bookmark < ApplicationRecord
   end
 
   def self.destroy_without_solr_documents
-    Bookmark.find_in_batches(batch_size: 200).with_index do |bookmarks, batch|
+    batch_size = Orangelight.config["bookmarks"]["batch_size"]
+    Bookmark.find_in_batches(batch_size:).with_index do |bookmarks, batch|
       Rails.logger.info { "Processing destroy_without_solr_documents group ##{batch}" }
       bookmark_doc_ids = bookmark_doc_ids(bookmarks)
       doc_ids_without_solr_doc = bookmark_doc_ids - doc_ids_in_solr(bookmark_doc_ids)
@@ -43,7 +44,8 @@ class Bookmark < ApplicationRecord
 
   def self.doc_ids_in_solr(bookmark_doc_ids)
     solr = Blacklight.default_index.connection
-    response = solr.get 'select', params: { fq: "{!terms f=id}#{bookmark_doc_ids.join(',')}", fl: 'id' }
+    rows = Orangelight.config["bookmarks"]["batch_size"]
+    response = solr.get 'select', params: { fq: "{!terms f=id}#{bookmark_doc_ids.join(',')}", fl: 'id', rows: }
     response["response"]["docs"].map { |doc| doc["id"] }
   end
 
