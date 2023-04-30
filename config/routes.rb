@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   end
   scope module: 'requests' do
     get "/requests", to: 'request#index'
-    post '/requests/borrow_direct', to: 'request#borrow_direct'
     post '/requests/submit', to: 'request#submit'
     # no longer in use
     # get '/pageable', to: 'request#pageable'

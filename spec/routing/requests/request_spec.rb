@@ -18,13 +18,5 @@ describe Requests::RequestController, type: :routing do
     it 'submits via post to #submit' do
       expect(post: '/requests/submit').to route_to('requests/request#submit')
     end
-
-    # it 'handles a #pageable arguement' do
-    #   expect(get: '/requests/pageable?system_id=foo123').to route_to('requests/request#pageable', system_id: 'foo123')
-    # end
-
-    it 'routes to borrow direct' do
-      expect(post: '/requests/borrow_direct').to route_to('requests/request#borrow_direct')
-    end
   end
 end
