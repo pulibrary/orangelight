@@ -113,6 +113,9 @@ module Requests
     # if no mfhd returns items sorted by mfhd
     def load_items
       return nil if thesis? || numismatics?
+
+      return nil if too_many_items?
+
       mfhd_items = if @mfhd && serial?
                      load_serial_items
                    else
@@ -376,6 +379,16 @@ module Requests
         #  mfhd_items[item_info['id']] = load_item_for_holding(holding_id: @mfhd, item_info: item_info)
         # end
         mfhd_items
+      end
+
+      def too_many_items?
+        holding = holdings[@mfhd]
+        items = holding.try(:[], "items")
+        return false if items.nil?
+
+        return true if items.count > 500
+
+        false
       end
 
       # def load_items_by_bib_id
