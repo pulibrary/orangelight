@@ -50,7 +50,7 @@ The gem was integrated into orangelight in April of 2022 by moving the code from
     1. ```source``` https://catalog.princeton.edu/requests/9702169?mfhd=9525518&source=pulsearch - Facilitates redirection to the source system that generated the request. Currently responds to ```pulsearch``` or ```catalog```, other values will be ignored.
 2. ```/requests/{thesis_id}``` Example: https://catalog.princeton.edu/requests/dsp01vx021h212. This will result in a redirect to the AEON system.
 
-## Testing User Roles
+## ~~Testing User Roles~~ Deprecated
 
 Under current campus access policies if you are interactively testing this gem you need to grant your net ID full campus access privileges. You can do by adding your net ID to the campus access list in the bibdata instance you are testing with. To do so:
 
