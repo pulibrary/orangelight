@@ -49,10 +49,21 @@ class Bookmark < ApplicationRecord
     response["response"]["docs"].map { |doc| doc["id"] }
   end
 
-  # This method duplicates logic in the SolrDocument, but it did not seem well-suited for
-  # re-use directly here (needing to instantiate a SolrDocument for each ID before being able to call it)
   def voyager_to_alma_id
-    return document_id if document_id.length > 7 && document_id.start_with?("99")
+    return document_id if alma_id?(document_id) || special_system_id?(document_id)
+
     "99#{document_id}3506421"
   end
+
+  private
+
+    def alma_id?(document_id)
+      document_id.length > 7 && document_id.start_with?("99")
+    end
+
+    # If the document_id includes letters, it is not a Voyager or Alma ID
+    # It may be a coin, SCSB, or DSpace ID
+    def special_system_id?(document_id)
+      document_id.match?(/[a-zA-Z]/)
+    end
 end

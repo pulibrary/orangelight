@@ -67,5 +67,27 @@ RSpec.describe Bookmark do
         Bookmark.update_to_alma_ids
       end.to change { bookmark_one.reload.document_id }.from(voyager_id_one).to(converted_voyager_id)
     end
+
+    context 'non-voyager, non-alma ids' do
+      let(:document_ids) { ['coin-2', 'SCSB-9919951', 'dsp01tq57ns24j'] }
+
+      it 'does not change bookmarks with a coin id' do
+        expect do
+          Bookmark.update_to_alma_ids
+        end.not_to change { bookmark_one.reload.document_id }
+      end
+
+      it 'does not change bookmarks with a SCSB id' do
+        expect do
+          Bookmark.update_to_alma_ids
+        end.not_to change { bookmark_two.reload.document_id }
+      end
+
+      it 'does not change bookmarks with a DSpace id' do
+        expect do
+          Bookmark.update_to_alma_ids
+        end.not_to change { bookmark_three.reload.document_id }
+      end
+    end
   end
 end
