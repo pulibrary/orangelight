@@ -33,14 +33,10 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     let(:user) { FactoryBot.create(:user) }
     let(:bibdata_availability_url) { 'https://bibdata-staging.princeton.edu/bibliographic/9960102253506421/holdings/22548491940006421/availability.json' }
     let(:bibdata_availability_response) { File.open('spec/fixtures/bibdata/9960102253506421_availability.json') }
-    let(:stacks_holding_location_info) { File.open('spec/fixtures/bibdata/engineer_stacks_holding_locations.json') }
-    let(:res_holding_location_info) { File.open('spec/fixtures/bibdata/engineer_res_holding_locations.json') }
 
     before do
-      stub_request(:get, 'https://bibdata-staging.princeton.edu/locations/holding_locations/engineer$stacks.json')
-        .to_return(status: 200, body: stacks_holding_location_info)
-      stub_request(:get, 'https://bibdata-staging.princeton.edu/locations/holding_locations/engineer$res.json')
-        .to_return(status: 200, body: res_holding_location_info)
+      stub_single_holding_location('engineer$stacks')
+      stub_single_holding_location('engineer$res')
       stub_request(:get, bibdata_availability_url)
         .to_return(status: 200, body: bibdata_availability_response)
       stub_request(:get, 'https://catalog.princeton.edu/catalog/9960102253506421/raw')
@@ -554,7 +550,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         expect(request_with_only_system_id.requestable[0].aeon_mapped_params[:Form]).to eq('21')
       end
 
-      it 'shouuld have an Aeon Action Param' do
+      it 'should have an Aeon Action Param' do
         expect(request_with_only_system_id.requestable[0].aeon_mapped_params.key?(:Action)).to be true
         expect(request_with_only_system_id.requestable[0].aeon_mapped_params[:Action]).to eq('10')
       end

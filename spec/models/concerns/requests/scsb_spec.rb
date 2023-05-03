@@ -50,17 +50,15 @@ describe Requests::Scsb do
           patron:
         }
       end
-      let(:holding_location_info) { File.open('spec/fixtures/bibdata/recap_pa_holding_locations.json') }
       let(:first_item) { request_scsb.items['22511126440006421'].first }
 
       before do
+        stub_single_holding_location('recap$pa')
         stub_scsb_availability(bib_id: "99122304923506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
         stub_request(:get, bibdata_availability_url)
           .to_return(status: 200, body: bibdata_availability_response)
         stub_request(:get, 'https://catalog.princeton.edu/catalog/99122304923506421/raw')
           .to_return(status: 200, body: File.read('spec/fixtures/raw_99122304923506421.json'))
-        stub_request(:get, 'https://bibdata-staging.princeton.edu/locations/holding_locations/recap$pa.json')
-          .to_return(status: 200, body: holding_location_info)
       end
 
       it 'is in process' do

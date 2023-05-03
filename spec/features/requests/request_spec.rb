@@ -1727,14 +1727,10 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           patron:
         }
       end
-      let(:stacks_holding_location_info) { File.open('spec/fixtures/bibdata/engineer_stacks_holding_locations.json') }
-      let(:res_holding_location_info) { File.open('spec/fixtures/bibdata/engineer_res_holding_locations.json') }
 
       before do
-        stub_request(:get, 'https://bibdata-staging.princeton.edu/locations/holding_locations/engineer$stacks.json')
-          .to_return(status: 200, body: stacks_holding_location_info)
-        stub_request(:get, 'https://bibdata-staging.princeton.edu/locations/holding_locations/engineer$res.json')
-          .to_return(status: 200, body: res_holding_location_info)
+        stub_single_holding_location('engineer$stacks')
+        stub_single_holding_location('engineer$res')
         stub_request(:get, bibdata_availability_url)
           .to_return(status: 200, body: bibdata_availability_response)
         stub_request(:get, 'https://catalog.princeton.edu/catalog/9960102253506421/raw')
@@ -1766,7 +1762,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           patron:
         }
       end
-      let(:holding_location_info) { File.open('spec/fixtures/bibdata/recap_pa_holding_locations.json') }
       let(:first_item) { request_scsb.items['22511126440006421'].first }
 
       before do
@@ -1775,8 +1770,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           .to_return(status: 200, body: bibdata_availability_response)
         stub_request(:get, 'https://catalog.princeton.edu/catalog/99122304923506421/raw')
           .to_return(status: 200, body: File.read('spec/fixtures/raw_99122304923506421.json'))
-        stub_request(:get, 'https://bibdata-staging.princeton.edu/locations/holding_locations/recap$pa.json')
-          .to_return(status: 200, body: holding_location_info)
+        stub_single_holding_location('recap$pa')
         stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
           .to_return(status: 200, body: valid_patron_response, headers: {})
         login_as user
