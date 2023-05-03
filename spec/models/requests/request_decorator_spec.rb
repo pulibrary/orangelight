@@ -24,6 +24,10 @@ describe Requests::RequestDecorator do
   let(:stubbed_questions) { {} }
   let(:ldap) { {} }
 
+  before do
+    allow(request).to receive(:too_many_items?).and_return(false)
+  end
+
   describe "#bib_id" do
     it 'is the system id' do
       expect(decorator.bib_id).to eq('123abc')
@@ -110,6 +114,16 @@ describe Requests::RequestDecorator do
 
     context "on_shelf services with item data that is enumerated" do
       let(:stubbed_questions) { { services: ['on_shelf'], item_data?: true, circulates?: false, enumerated?: true } }
+      it "identifies any mfhds that require fill in option" do
+        expect(decorator.any_fill_in_eligible?).to be_truthy
+      end
+    end
+
+    context 'has too many items to get from bibdata without timing out' do
+      let(:stubbed_questions) { { services: ['recap_no_items'], item_data?: false, circulates?: false, enumerated?: false } }
+      before do
+        allow(request).to receive(:too_many_items?).and_return(true)
+      end
       it "identifies any mfhds that require fill in option" do
         expect(decorator.any_fill_in_eligible?).to be_truthy
       end

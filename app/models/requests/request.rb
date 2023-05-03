@@ -188,6 +188,16 @@ module Requests
       library_code == 'recap' || library_code == 'marquand' || library_code == 'annex'
     end
 
+    def too_many_items?
+      holding = holdings[@mfhd]
+      items = holding.try(:[], "items")
+      return false if items.nil?
+
+      return true if items.count > 500
+
+      false
+    end
+
     private
 
       ### builds a list of possible requestable items
@@ -379,16 +389,6 @@ module Requests
         #  mfhd_items[item_info['id']] = load_item_for_holding(holding_id: @mfhd, item_info: item_info)
         # end
         mfhd_items
-      end
-
-      def too_many_items?
-        holding = holdings[@mfhd]
-        items = holding.try(:[], "items")
-        return false if items.nil?
-
-        return true if items.count > 500
-
-        false
       end
 
       # def load_items_by_bib_id

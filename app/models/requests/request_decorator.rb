@@ -71,6 +71,8 @@ module Requests
         if requestable.any? { |r| !(r.services & fill_in_services).empty? }
           if any_items?
             fill_in = true if any_enumerated?
+          elsif request.too_many_items?
+            fill_in = true
           else
             fill_in = any_circulate?
           end
