@@ -20,7 +20,7 @@ namespace :pulsearch do
     desc 'Posts fixtures to Solr'
     task :index do
       solr = RSolr.connect url: Blacklight.connection_config[:url]
-      ['spec/fixtures/alma', 'spec/fixtures/numismatics', 'spec/fixtures/scsb', 'spec/fixtures/theses_and_dissertations'].each do |dir|
+      ['spec/fixtures/alma', 'spec/fixtures/raw'].each do |dir|
         Dir["#{dir}/**/*.json"].each do |file_path|
           doc = JSON.parse(File.read(file_path))
           solr.add doc

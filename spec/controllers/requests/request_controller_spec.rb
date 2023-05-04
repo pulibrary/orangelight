@@ -49,12 +49,12 @@ describe Requests::RequestController, type: :controller, vcr: { cassette_name: '
         expect(assigns(:mode)).to eq('standard')
       end
       it 'redirects you when a thesis record is requested' do
-        stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/dsp01rr1720547/raw")
-          .to_return(status: 200, body: fixture('/dsp01rr1720547.json'), headers: {})
+        bib_id = 'dsp01rr1720547'
+        stub_catalog_raw(bib_id:, type: 'theses_and_dissertations')
 
         get :generate, params: {
           source: 'pulsearch',
-          system_id: 'dsp01rr1720547',
+          system_id: bib_id,
           mfhd: 'thesis'
         }
         expect(response.status).to eq(302)

@@ -75,6 +75,7 @@ RSpec.describe Blacklight::Document::JsonLd do
 
     context 'with a monograph with an author' do
       let(:id) { '9956200533506421' }
+      let(:fixture_path) { "spec/fixtures/raw/#{id}.json" }
 
       it 'creates a jsonld document' do
         expect(doc['creator']).to eq("Dagen, Philippe")

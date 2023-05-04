@@ -32,8 +32,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
 
     describe "SCSB item that is charged" do
       before do
-        stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/#{params[:system_id]}/raw")
-          .to_return(status: 200, body: scsb_single_holding_item, headers: {})
+        stub_catalog_raw(bib_id: params[:system_id], type: 'scsb')
         stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
           .with(headers: { Accept: 'application/json', api_key: 'TESTME' }, body: scsb_availability_params)
           .to_return(status: 200, body: scsb_availability_response)

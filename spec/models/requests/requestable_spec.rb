@@ -69,8 +69,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:holding_id) { "thesis" }
 
     before do
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/dsp019c67wp402/raw")
-        .to_return(status: 200, body: fixture('/dsp019c67wp402.json'), headers: {})
+      stub_catalog_raw(bib_id: 'dsp019c67wp402', type: 'theses_and_dissertations')
     end
 
     describe "#thesis?" do
@@ -133,8 +132,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:holding_id) { "numismatics" }
 
     before do
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/coin-1167/raw")
-        .to_return(status: 200, body: fixture('/numismatics/coin-1167.json'), headers: {})
+      stub_catalog_raw(bib_id: 'coin-1167', type: 'numismatics')
     end
 
     describe "#numismatics?" do
@@ -1070,8 +1068,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable) { request.requestable.first }
     describe '#pick_up_locations' do
       it 'has a single pick-up location' do
-        stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-5235419/raw")
-          .to_return(status: 200, body: fixture('/SCSB-5235419.json'), headers: {})
+        stub_catalog_raw(bib_id: 'SCSB-5235419', type: 'scsb')
         expect(requestable.pick_up_locations.size).to eq(1)
         expect(requestable.pick_up_locations.first[:gfa_pickup]).to eq('QX')
       end
@@ -1084,8 +1081,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable) { request.requestable.first }
 
     before do
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-5396104/raw")
-        .to_return(status: 200, body: fixture('/SCSB-5396104.json'), headers: {})
+      stub_catalog_raw(bib_id: 'SCSB-5396104', type: 'scsb')
     end
 
     describe "#held_at_marquand_library?" do
@@ -1107,8 +1103,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable) { request.requestable.first }
 
     before do
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-2650865/raw")
-        .to_return(status: 200, body: fixture('/SCSB-2650865.json'), headers: {})
+      stub_catalog_raw(bib_id: 'SCSB-2650865', type: 'scsb')
       stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"AR65651294\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
     end
@@ -1140,8 +1135,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable) { request.requestable.first }
 
     before do
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-2901229/raw")
-        .to_return(status: 200, body: fixture('/SCSB-2901229.json'), headers: {})
+      stub_catalog_raw(bib_id: 'SCSB-2901229', type: 'scsb')
       stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"MR72802120\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
     end
@@ -1178,8 +1172,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable) { request.requestable.first }
 
     before do
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/9977664533506421/raw")
-        .to_return(status: 200, body: fixture('/9977664533506421.json'), headers: {})
+      stub_catalog_raw(bib_id: '9977664533506421')
       stub_availability_by_holding_id(bib_id: '9977664533506421', holding_id: '22109013720006421')
       stub_single_holding_location('RES_SHARE$OUT_RS_REQ')
       stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
@@ -1217,8 +1210,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable) { request.requestable.first }
     describe '#pick_up_locations' do
       it 'has a single pick-up location' do
-        stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-10966202/raw")
-          .to_return(status: 200, body: fixture('/SCSB-10966202.json'), headers: {})
+        stub_catalog_raw(bib_id: 'SCSB-10966202', type: 'scsb')
         stub_scsb_availability(bib_id: "990081790140203941", institution_id: "HL", barcode: 'HXSS9U')
         expect(requestable.pick_up_locations.size).to eq(1)
         expect(requestable.pick_up_locations.first[:gfa_pickup]).to eq('QX')
