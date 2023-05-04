@@ -38,27 +38,24 @@ describe Requests::Scsb do
     end
 
     context 'when a Princeton item has not made it into SCSB yet' do
-      let(:bibdata_availability_url) { 'https://bibdata-staging.princeton.edu/bibliographic/99122304923506421/holdings/22511126440006421/availability.json' }
-      let(:bibdata_availability_response) do
-        '[{"barcode":"32101112612526","id":"23511126430006421","holding_id":"22511126440006421","copy_number":"0","status":"Available","status_label":"Item in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"recap","pickup_location_code":"recap","location":"recap$pa","label":"ReCAP - Remote Storage","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
-      end
+      let(:bib_id) { '99122304923506421' }
+      let(:holding_id) { '22511126440006421' }
       let(:params) do
         {
-          system_id: '99122304923506421',
+          system_id: bib_id,
           source: 'pulsearch',
           mfhd: nil,
           patron:
         }
       end
-      let(:first_item) { request_scsb.items['22511126440006421'].first }
+      let(:first_item) { request_scsb.items[holding_id].first }
 
       before do
         stub_single_holding_location('recap$pa')
-        stub_scsb_availability(bib_id: "99122304923506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
-        stub_request(:get, bibdata_availability_url)
-          .to_return(status: 200, body: bibdata_availability_response)
-        stub_request(:get, 'https://catalog.princeton.edu/catalog/99122304923506421/raw')
-          .to_return(status: 200, body: File.read('spec/fixtures/raw_99122304923506421.json'))
+        stub_scsb_availability(bib_id:, institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
+        stub_availability_by_holding_id(bib_id:, holding_id:)
+        stub_request(:get, "https://catalog.princeton.edu/catalog/#{bib_id}/raw")
+          .to_return(status: 200, body: File.read("spec/fixtures/raw_#{bib_id}.json"))
       end
 
       it 'is in process' do

@@ -22,3 +22,15 @@ def stub_test_document
   stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/test-id")
     .to_return(status: 200, body: '')
 end
+
+def stub_availability_by_holding_id(bib_id:, holding_id:, body: true)
+  url = "#{Requests.config['bibdata_base']}/bibliographic/#{bib_id}/holdings/#{holding_id}/availability.json"
+  if body == false
+    stub_request(:get, url)
+      .to_return(status: 200)
+  else
+    file_path = File.join(fixture_path, 'availability', 'by_holding_id', "#{bib_id}_#{holding_id}.json")
+    stub_request(:get, url)
+      .to_return(status: 200, body: File.read(file_path))
+  end
+end
