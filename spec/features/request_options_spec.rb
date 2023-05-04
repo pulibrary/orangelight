@@ -7,8 +7,7 @@ describe 'Request Options' do
 
   describe 'the request page', js: true do
     before do
-      stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/99113436223506421/holdings/22553672700006421/availability.json")
-        .to_return(status: 200, body: {}.to_json, headers: {})
+      stub_availability_by_holding_id(bib_id: '99113436223506421', holding_id: '22553672700006421', body: false)
       stub_request(:get, "https://catalog.princeton.edu/catalog/99113436223506421/raw")
         .to_return(status: 200, body: {}.to_json, headers: {})
       stub_request(:get, "#{Requests.config['bibdata_base']}/availability?id=99113436223506421")

@@ -31,14 +31,11 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
 
   context "a holding with multiple items, some of which are on reserve" do
     let(:user) { FactoryBot.create(:user) }
-    let(:bibdata_availability_url) { 'https://bibdata-staging.princeton.edu/bibliographic/9960102253506421/holdings/22548491940006421/availability.json' }
-    let(:bibdata_availability_response) { File.open('spec/fixtures/bibdata/9960102253506421_availability.json') }
 
     before do
       stub_single_holding_location('engineer$stacks')
       stub_single_holding_location('engineer$res')
-      stub_request(:get, bibdata_availability_url)
-        .to_return(status: 200, body: bibdata_availability_response)
+      stub_availability_by_holding_id(bib_id: '9960102253506421', holding_id: '22548491940006421')
       stub_request(:get, 'https://catalog.princeton.edu/catalog/9960102253506421/raw')
         .to_return(status: 200, body: File.read('spec/fixtures/9960102253506421.json'))
     end
@@ -1416,7 +1413,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
     end
     let(:marquand) { fixture('alma/9956200533506421.json') }
-    let(:mfhd_availability) { fixture('/availability_2219823460006421.json') }
     let(:location_code) { 'scsbnypl' }
     let(:params) do
       {
@@ -1430,8 +1426,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     before do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/#{params[:system_id]}/raw")
         .to_return(status: 200, body: marquand, headers: {})
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/bibliographic/#{params[:system_id]}/holdings/#{params[:mfhd]}/availability.json")
-        .to_return(status: 200, body: mfhd_availability, headers: {})
+      stub_availability_by_holding_id(bib_id: params[:system_id], holding_id: params[:mfhd])
       stub_request(:get, "#{Requests::Config[:clancy_base]}/itemstatus/v1/32101068477817")
         .to_return(status: 200, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"32101068477817\",\"status\":\"Item In at Rest\"}", headers: {})
     end

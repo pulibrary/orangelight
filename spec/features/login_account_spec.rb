@@ -98,8 +98,7 @@ describe 'Account login' do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-2143785/raw")
         .to_return(status: 200, body: fixture('/scsb/SCSB-2143785.json'), headers: {})
       stub_single_holding_location('scsbcul')
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/bibliographic/SCSB-2143785/holdings/2110046/availability.json")
-        .to_return(status: 200)
+      stub_availability_by_holding_id(bib_id: 'SCSB-2143785', holding_id: '2110046', body: false)
     end
 
     context 'with a CAS account' do
@@ -176,15 +175,11 @@ describe 'Account login' do
           end
         end
         describe 'requesting a special collections holding with a single item' do
-          let(:availability) do
-            '[{"barcode":"32101070796881","id":"23745123320006421","holding_id":"22745123330006421","copy_number":"1","status":"Available","status_label":"Item in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Closed","pickup_location_id":"rare","pickup_location_code":"rare","location":"rare$map","label":"Special Collections - Rare Books Historic Map Collection","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
-          end
           before do
             stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/99496133506421/raw")
               .to_return(status: 200, body: fixture('/alma/99496133506421.json'), headers: {})
             stub_single_holding_location('rare$map')
-            stub_request(:get, "#{Requests::Config[:bibdata_base]}/bibliographic/99496133506421/holdings/22745123330006421/availability.json")
-              .to_return(status: 200, body: availability)
+            stub_availability_by_holding_id(bib_id: '99496133506421', holding_id: '22745123330006421')
           end
           it 'does not require authentication', js: true do
             visit "/catalog/99496133506421"

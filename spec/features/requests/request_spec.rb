@@ -454,8 +454,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it 'allows patrons to request electronic delivery of a Forrestal item' do
           stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/9956562643506421/raw")
             .to_return(status: 200, body: fixture('/9956562643506421.json'), headers: {})
-          stub_request(:get, "#{Requests::Config[:bibdata_base]}/bibliographic/9956562643506421/holdings/22700125400006421/availability.json")
-            .to_return(status: 200, body: fixture('/availability_9956562643506421.json'), headers: {})
+          stub_availability_by_holding_id(bib_id: '9956562643506421', holding_id: '22700125400006421')
           stub_illiad_patron
           stub_request(:post, transaction_url)
             .to_return(status: 200, body: responses[:transaction_created], headers: {})
@@ -1717,8 +1716,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
     end
     context 'when a holding has items on and off reserve' do
       let(:user) { FactoryBot.create(:user) }
-      let(:bibdata_availability_url) { 'https://bibdata-staging.princeton.edu/bibliographic/9960102253506421/holdings/22548491940006421/availability.json' }
-      let(:bibdata_availability_response) { File.open('spec/fixtures/bibdata/9960102253506421_availability.json') }
       let(:params) do
         {
           system_id: '9960102253506421',
@@ -1731,8 +1728,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
       before do
         stub_single_holding_location('engineer$stacks')
         stub_single_holding_location('engineer$res')
-        stub_request(:get, bibdata_availability_url)
-          .to_return(status: 200, body: bibdata_availability_response)
+        stub_availability_by_holding_id(bib_id: '9960102253506421', holding_id: '22548491940006421')
         stub_request(:get, 'https://catalog.princeton.edu/catalog/9960102253506421/raw')
           .to_return(status: 200, body: File.read('spec/fixtures/9960102253506421.json'))
         stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
@@ -1750,10 +1746,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
     end
     context 'when a Princeton item has not made it into SCSB yet' do
       let(:user) { FactoryBot.create(:user) }
-      let(:bibdata_availability_url) { 'https://bibdata-staging.princeton.edu/bibliographic/99122304923506421/holdings/22511126440006421/availability.json' }
-      let(:bibdata_availability_response) do
-        '[{"barcode":"32101112612526","id":"23511126430006421","holding_id":"22511126440006421","copy_number":"0","status":"Available","status_label":"Item in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"recap","pickup_location_code":"recap","location":"recap$pa","label":"ReCAP - Remote Storage","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
-      end
       let(:params) do
         {
           system_id: '99122304923506421',
@@ -1766,8 +1758,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
 
       before do
         stub_scsb_availability(bib_id: "99122304923506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
-        stub_request(:get, bibdata_availability_url)
-          .to_return(status: 200, body: bibdata_availability_response)
+        stub_availability_by_holding_id(bib_id: '99122304923506421', holding_id: '22511126440006421')
         stub_request(:get, 'https://catalog.princeton.edu/catalog/99122304923506421/raw')
           .to_return(status: 200, body: File.read('spec/fixtures/raw_99122304923506421.json'))
         stub_single_holding_location('recap$pa')

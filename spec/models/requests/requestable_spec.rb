@@ -1180,11 +1180,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     before do
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/9977664533506421/raw")
         .to_return(status: 200, body: fixture('/9977664533506421.json'), headers: {})
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/bibliographic/9977664533506421/holdings/22109013720006421/availability.json")
-        .to_return(status: 200, body: '[{"barcode":"32101092097763","id":"23109013710006421","holding_id":"22109013720006421","copy_number":"1",'\
-                                      '"status":"Unavailable","status_label":"Resource Sharing Request","status_source":"process_type","process_type":"ILL","on_reserve":"N","item_type":"Gen","pickup_location_id":"RES_SHARE",'\
-                                      '"pickup_location_code":"RES_SHARE","location":"RES_SHARE$OUT_RS_REQ","label":"ReCAP","description":"","enum_display":"","chron_display":"","in_temp_library":true,"temp_library_code":"RES_SHARE",'\
-                                      '"temp_library_label":"Resource Sharing Library","temp_location_code":"RES_SHARE$OUT_RS_REQ","temp_location_label":"Resource Sharing Library"}]')
+      stub_availability_by_holding_id(bib_id: '9977664533506421', holding_id: '22109013720006421')
       stub_single_holding_location('RES_SHARE$OUT_RS_REQ')
       stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"MR72802120\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
