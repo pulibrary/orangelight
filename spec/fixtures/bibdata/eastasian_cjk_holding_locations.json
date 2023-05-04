@@ -1,0 +1,19 @@
+{
+  "label": "",
+  "code": "eastasian$cjk",
+  "aeon_location": false,
+  "recap_electronic_delivery_location": false,
+  "open": true,
+  "requestable": true,
+  "always_requestable": false,
+  "circulates": true,
+  "remote_storage": "",
+  "fulfillment_unit": "General",
+  "library": {
+    "label": "East Asian Library",
+    "code": "eastasian",
+    "order": 0
+  },
+  "holding_library": null,
+  "delivery_locations": []
+}

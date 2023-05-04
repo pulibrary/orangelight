@@ -113,6 +113,9 @@ module Requests
     # if no mfhd returns items sorted by mfhd
     def load_items
       return nil if thesis? || numismatics?
+
+      return nil if too_many_items?
+
       mfhd_items = if @mfhd && serial?
                      load_serial_items
                    else
@@ -183,6 +186,16 @@ module Requests
       return false if location['library'].nil? || location['library']['code'].nil?
       library_code = location[:library][:code]
       library_code == 'recap' || library_code == 'marquand' || library_code == 'annex'
+    end
+
+    def too_many_items?
+      holding = holdings[@mfhd]
+      items = holding.try(:[], "items")
+      return false if items.nil?
+
+      return true if items.count > 500
+
+      false
     end
 
     private
