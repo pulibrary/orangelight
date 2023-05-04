@@ -97,8 +97,7 @@ describe 'Account login' do
       stub_delivery_locations
       stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-2143785/raw")
         .to_return(status: 200, body: fixture('/scsb/SCSB-2143785.json'), headers: {})
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/locations/holding_locations/scsbcul.json")
-        .to_return(status: 200, body: fixture('/bibdata/scsbcul_holding_locations.json'))
+      stub_single_holding_location('scsbcul')
       stub_request(:get, "#{Requests::Config[:bibdata_base]}/bibliographic/SCSB-2143785/holdings/2110046/availability.json")
         .to_return(status: 200)
     end
@@ -153,8 +152,7 @@ describe 'Account login' do
           before do
             stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/coin-1167/raw")
               .to_return(status: 200, body: fixture('/numismatics/coin-1167.json'), headers: {})
-            stub_request(:get, "#{Requests::Config[:bibdata_base]}/locations/holding_locations/rare$num.json")
-              .to_return(status: 200, body: fixture('/bibdata/numismatics_holding_locations.json'))
+            stub_single_holding_location('rare$num')
           end
 
           it 'does not require authentication', js: true do
@@ -168,8 +166,7 @@ describe 'Account login' do
           before do
             stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/dsp01tq57ns24j/raw")
               .to_return(status: 200, body: fixture('/theses_and_dissertations/dsp01tq57ns24j.json'), headers: {})
-            stub_request(:get, "#{Requests::Config[:bibdata_base]}/locations/holding_locations/mudd$stacks.json")
-              .to_return(status: 200, body: fixture('/bibdata/mudd_stacks_holding_locations.json'))
+            stub_single_holding_location('mudd$stacks')
           end
           it 'does not require authentication', js: true do
             visit "/catalog/dsp01tq57ns24j"
@@ -185,8 +182,7 @@ describe 'Account login' do
           before do
             stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/99496133506421/raw")
               .to_return(status: 200, body: fixture('/alma/99496133506421.json'), headers: {})
-            stub_request(:get, "#{Requests::Config[:bibdata_base]}/locations/holding_locations/rare$map.json")
-              .to_return(status: 200, body: fixture('/bibdata/rare_map_holding_locations.json'))
+            stub_single_holding_location('rare$map')
             stub_request(:get, "#{Requests::Config[:bibdata_base]}/bibliographic/99496133506421/holdings/22745123330006421/availability.json")
               .to_return(status: 200, body: availability)
           end
