@@ -54,8 +54,7 @@ describe Requests::Scsb do
         stub_single_holding_location('recap$pa')
         stub_scsb_availability(bib_id:, institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
         stub_availability_by_holding_id(bib_id:, holding_id:)
-        stub_request(:get, "https://catalog.princeton.edu/catalog/#{bib_id}/raw")
-          .to_return(status: 200, body: File.read("spec/fixtures/raw_#{bib_id}.json"))
+        stub_catalog_raw(bib_id:)
       end
 
       it 'is in process' do

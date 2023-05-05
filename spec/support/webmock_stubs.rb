@@ -34,3 +34,15 @@ def stub_availability_by_holding_id(bib_id:, holding_id:, body: true)
       .to_return(status: 200, body: File.read(file_path))
   end
 end
+
+def stub_catalog_raw(bib_id:, type: nil, body: true)
+  url = "#{Requests::Config[:pulsearch_base]}/catalog/#{bib_id}/raw"
+  return stub_request(:get, url).to_return(status: 200, body: {}.to_json) if body == false
+  file_path = if type
+                File.join(fixture_path, 'raw', type, "#{bib_id}.json")
+              else
+                File.join(fixture_path, 'raw', "#{bib_id}.json")
+              end
+  stub_request(:get, url)
+    .to_return(status: 200, body: File.read(file_path))
+end

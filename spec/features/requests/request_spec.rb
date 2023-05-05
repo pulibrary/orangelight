@@ -452,8 +452,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         end
 
         it 'allows patrons to request electronic delivery of a Forrestal item' do
-          stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/9956562643506421/raw")
-            .to_return(status: 200, body: fixture('/9956562643506421.json'), headers: {})
+          stub_catalog_raw(bib_id: '9956562643506421')
           stub_availability_by_holding_id(bib_id: '9956562643506421', holding_id: '22700125400006421')
           stub_illiad_patron
           stub_request(:post, transaction_url)
@@ -830,8 +829,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
 
         it "allows a columbia item to be picked up or digitized" do
           stub_scsb_availability(bib_id: "1000060", institution_id: "CUL", barcode: 'CU01805363')
-          stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-2879197/raw")
-            .to_return(status: 200, body: fixture('/SCSB-2879197.json'), headers: {})
+          stub_catalog_raw(bib_id: 'SCSB-2879197', type: 'scsb')
           scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
           stub_request(:post, scsb_url)
             .with(body: hash_including(author: "", bibId: "SCSB-2879197", callNumber: "PG3479.3.I84 Z778 1987g", chapterTitle: "", deliveryLocation: "QX", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["CU01805363"], itemOwningInstitution: "CUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Mir, uvidennyĭ s gor : ocherk tvorchestva Shukurbeka Beĭshenalieva", username: "jstudent", volume: ""))
@@ -855,8 +853,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         end
 
         it "allows a columbia item that is open access to be picked up or digitized" do
-          stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-4634001/raw")
-            .to_return(status: 200, body: fixture('/SCSB-4634001.json'), headers: {})
+          stub_catalog_raw(bib_id: 'SCSB-4634001', type: 'scsb')
           scsb_item_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
           stub_request(:post, scsb_item_url)
             .with(body: hash_including(author: "", bibId: "SCSB-4634001", callNumber: "4596 2907.88 1901", chapterTitle: "", deliveryLocation: "QX", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["CU51481294"], itemOwningInstitution: "CUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Chong wen men shang shui ya men xian xing shui ze. 崇文門 商稅 衙門 現行 稅則.", username: "jstudent", volume: ""))
@@ -1010,8 +1007,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             .with(body: hash_including(author: nil, bibId: "SCSB-8953469", callNumber: "ReCAP 18-69309", chapterTitle: nil, deliveryLocation: "QX", emailAddress: "a@b.com", endPage: nil, issue: nil, itemBarcodes: ["33433121206696"], itemOwningInstitution: "NYPL", patronBarcode: "22101008199999", requestNotes: nil, requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: nil, titleIdentifier: "1955-1968 : gli artisti italiani alle Documenta di Kassel", username: "jstudent", volume: nil))
             .to_return(status: 200, body: good_response, headers: {})
           stub_scsb_availability(bib_id: ".b215204128", institution_id: "NYPL", barcode: '33433121206696')
-          stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-8953469/raw")
-            .to_return(status: 200, body: fixture('/SCSB-8953469.json'), headers: {})
+          stub_catalog_raw(bib_id: 'SCSB-8953469', type: 'scsb')
           visit 'requests/SCSB-8953469'
           expect(page).not_to have_content 'Help Me Get It'
           expect(page).to have_content 'Available for In Library'
@@ -1173,8 +1169,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           before do
             stub_illiad_patron
             stub_alma_hold_success('99105816503506421', '22514405160006421', '23514405150006421', '960594184')
-            stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/99105816503506421/raw")
-              .to_return(status: 200, body: fixture('/catalog_99105816503506421.json'), headers: {})
+            stub_catalog_raw(bib_id: '99105816503506421')
             stub_request(:post, transaction_url)
               .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Zhongguo xin li xue hui", "LoanTitle" => "Xin li ke xue = Journal of psychological science 心理科学 = Journal of psychological science", "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "BF8.C5 H76", "CitedIn" => "https://catalog.princeton.edu/catalog/9941150973506421", "ItemInfo3" => "no.217-218", "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
               .to_return(status: 200, body: responses[:transaction_created], headers: {})
@@ -1213,10 +1208,8 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         describe 'Request button disables and enables', vcr: { cassette_name: 'request_features', record: :none }, js: true do
           before do
             stub_illiad_patron
-            stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/99105816503506421/raw")
-              .to_return(status: 200, body: fixture('/catalog_99105816503506421.json'), headers: {})
-            stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/9991807103506421/raw")
-              .to_return(status: 200, body: fixture('/catalog_raw_9991807103506421.json'), headers: {})
+            stub_catalog_raw(bib_id: '99105816503506421')
+            stub_catalog_raw(bib_id: '9991807103506421')
           end
           it 'with an electronic delivery' do
             visit 'requests/99105816503506421?mfhd=22514405160006421'
@@ -1302,8 +1295,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
             stub_request(:post, transaction_note_url)
               .to_return(status: 200, body: responses[:note_created], headers: {})
             stub_alma_hold('9991807103506421', '22696270550006421', '23696270540006421', '960594184', status: 200, fixture_name: "availability_response_9991807103506421.json")
-            stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/9991807103506421/raw")
-              .to_return(status: 200, body: fixture('/catalog_raw_9991807103506421.json'), headers: {})
+            stub_catalog_raw(bib_id: '9991807103506421')
           end
           it 'request via partner library' do
             visit 'requests/9991807103506421?mfhd=22696270550006421'
@@ -1729,8 +1721,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         stub_single_holding_location('engineer$stacks')
         stub_single_holding_location('engineer$res')
         stub_availability_by_holding_id(bib_id: '9960102253506421', holding_id: '22548491940006421')
-        stub_request(:get, 'https://catalog.princeton.edu/catalog/9960102253506421/raw')
-          .to_return(status: 200, body: File.read('spec/fixtures/9960102253506421.json'))
+        stub_catalog_raw(bib_id: '9960102253506421')
         stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
           .to_return(status: 200, body: valid_patron_response, headers: {})
         login_as user
@@ -1759,8 +1750,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
       before do
         stub_scsb_availability(bib_id: "99122304923506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
         stub_availability_by_holding_id(bib_id: '99122304923506421', holding_id: '22511126440006421')
-        stub_request(:get, 'https://catalog.princeton.edu/catalog/99122304923506421/raw')
-          .to_return(status: 200, body: File.read('spec/fixtures/raw_99122304923506421.json'))
+        stub_catalog_raw(bib_id: '99122304923506421')
         stub_single_holding_location('recap$pa')
         stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
           .to_return(status: 200, body: valid_patron_response, headers: {})

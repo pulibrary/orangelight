@@ -36,8 +36,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       stub_single_holding_location('engineer$stacks')
       stub_single_holding_location('engineer$res')
       stub_availability_by_holding_id(bib_id: '9960102253506421', holding_id: '22548491940006421')
-      stub_request(:get, 'https://catalog.princeton.edu/catalog/9960102253506421/raw')
-        .to_return(status: 200, body: File.read('spec/fixtures/9960102253506421.json'))
+      stub_catalog_raw(bib_id: '9960102253506421')
     end
     let(:params) do
       {
@@ -398,8 +397,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     let(:request_with_only_system_id) { described_class.new(**params) }
 
     before do
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/dsp01rr1720547/raw")
-        .to_return(status: 200, body: fixture('/dsp01rr1720547.json'), headers: {})
+      stub_catalog_raw(bib_id: 'dsp01rr1720547', type: 'theses_and_dissertations')
     end
 
     describe "#requestable" do
@@ -458,8 +456,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     let(:request_with_only_system_id) { described_class.new(**params) }
 
     before do
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/coin-1167/raw")
-        .to_return(status: 200, body: fixture('numismatics/coin-1167.json'), headers: {})
+      stub_catalog_raw(bib_id: 'coin-1167', type: 'numismatics')
     end
 
     describe "#requestable" do
@@ -517,8 +514,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     let(:request_with_only_system_id) { described_class.new(**params) }
 
     before do
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/coin-1167/raw")
-        .to_return(status: 200, body: fixture('numismatics/coin-1167.json'), headers: {})
+      stub_catalog_raw(bib_id: 'coin-1167', type: 'numismatics')
     end
 
     describe "#requestable" do
@@ -1299,7 +1295,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
   end
 
   context "A SCSB id with a single holding" do
-    let(:scsb_single_holding_item) { fixture('/SCSB-5290772.json') }
     let(:location_code) { 'scsbcul' }
     let(:params) do
       {
@@ -1311,8 +1306,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
     let(:request_scsb) { described_class.new(**params) }
     before do
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/#{params[:system_id]}/raw")
-        .to_return(status: 200, body: scsb_single_holding_item, headers: {})
+      stub_catalog_raw(bib_id: params[:system_id], type: 'scsb')
       stub_scsb_availability(bib_id: "5992543", institution_id: "CUL", barcode: 'CU11388110')
     end
     describe '#requestable' do
@@ -1343,7 +1337,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
   end
 
   context "A SCSB id that does not allow edd" do
-    let(:scsb_edd_item) { fixture('/SCSB-5640725.json') }
     let(:location_code) { 'scsbcul' }
     let(:params) do
       {
@@ -1355,8 +1348,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
     let(:request_scsb) { described_class.new(**params) }
     before do
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/#{params[:system_id]}/raw")
-        .to_return(status: 200, body: scsb_edd_item, headers: {})
+      stub_catalog_raw(bib_id: 'SCSB-5640725', type: 'scsb')
       stub_scsb_availability(bib_id: "9488888", institution_id: "CUL", barcode: 'MR00429228')
     end
     describe '#requestable' do
@@ -1377,7 +1369,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
   end
 
   context "A SCSB with an unknown format" do
-    let(:scsb_no_format) { fixture('/SCSB-7935196.json') }
     let(:location_code) { 'scsbnypl' }
     let(:params) do
       {
@@ -1389,8 +1380,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
     let(:request_scsb) { described_class.new(**params) }
     before do
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/#{params[:system_id]}/raw")
-        .to_return(status: 200, body: scsb_no_format, headers: {})
+      stub_catalog_raw(bib_id: params[:system_id], type: 'scsb')
       stub_scsb_availability(bib_id: ".b106574619", institution_id: "NYPL", barcode: '33433088591924')
     end
     describe '#requestable' do
@@ -1412,7 +1402,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
         "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
     end
-    let(:marquand) { fixture('alma/9956200533506421.json') }
     let(:location_code) { 'scsbnypl' }
     let(:params) do
       {
@@ -1424,8 +1413,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
     let(:request) { described_class.new(**params) }
     before do
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/#{params[:system_id]}/raw")
-        .to_return(status: 200, body: marquand, headers: {})
+      stub_catalog_raw(bib_id: '9956200533506421')
       stub_availability_by_holding_id(bib_id: params[:system_id], holding_id: params[:mfhd])
       stub_request(:get, "#{Requests::Config[:clancy_base]}/itemstatus/v1/32101068477817")
         .to_return(status: 200, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"32101068477817\",\"status\":\"Item In at Rest\"}", headers: {})

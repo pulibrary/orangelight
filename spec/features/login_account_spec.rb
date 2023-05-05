@@ -87,6 +87,7 @@ describe 'Account login' do
     end
   end
   describe 'Account login from requests page' do
+    let(:bib_id) { 'SCSB-2143785' }
     before do
       stub_request(:post, 'https://scsb.recaplib.org:9093/sharedCollection/bibAvailabilityStatus')
         .to_return(status: 200, body: [{ itemBarcode: 'CU71562478', itemAvailabilityStatus: "Available" }].to_json)
@@ -95,10 +96,9 @@ describe 'Account login' do
         .to_return(status: 200, body: patron_response, headers: {})
       stub_holding_locations
       stub_delivery_locations
-      stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/SCSB-2143785/raw")
-        .to_return(status: 200, body: fixture('/scsb/SCSB-2143785.json'), headers: {})
+      stub_catalog_raw(bib_id: 'SCSB-2143785', type: 'scsb')
       stub_single_holding_location('scsbcul')
-      stub_availability_by_holding_id(bib_id: 'SCSB-2143785', holding_id: '2110046', body: false)
+      stub_availability_by_holding_id(bib_id:, holding_id: '2110046', body: false)
     end
 
     context 'with a CAS account' do
@@ -106,7 +106,7 @@ describe 'Account login' do
       let(:patron_response) { File.open('spec/fixtures/bibdata_patron_response_barcode.json') }
 
       it 'logs the user in', js: true do
-        visit "/catalog/SCSB-2143785"
+        visit "/catalog/#{bib_id}"
         click_link('Request')
         expect(page).to have_link('Log in with netID')
         click_link('Log in with netID')
@@ -149,8 +149,7 @@ describe 'Account login' do
       context 'an aeon item' do
         describe 'requesting a coin' do
           before do
-            stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/coin-1167/raw")
-              .to_return(status: 200, body: fixture('/numismatics/coin-1167.json'), headers: {})
+            stub_catalog_raw(bib_id: 'coin-1167', type: 'numismatics')
             stub_single_holding_location('rare$num')
           end
 
@@ -163,8 +162,7 @@ describe 'Account login' do
         end
         describe 'requesting a thesis' do
           before do
-            stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/dsp01tq57ns24j/raw")
-              .to_return(status: 200, body: fixture('/theses_and_dissertations/dsp01tq57ns24j.json'), headers: {})
+            stub_catalog_raw(bib_id: 'dsp01tq57ns24j', type: 'theses_and_dissertations')
             stub_single_holding_location('mudd$stacks')
           end
           it 'does not require authentication', js: true do
@@ -175,16 +173,17 @@ describe 'Account login' do
           end
         end
         describe 'requesting a special collections holding with a single item' do
+          let(:bib_id) { '99496133506421' }
+
           before do
-            stub_request(:get, "#{Requests::Config[:pulsearch_base]}/catalog/99496133506421/raw")
-              .to_return(status: 200, body: fixture('/alma/99496133506421.json'), headers: {})
+            stub_catalog_raw(bib_id: '99496133506421')
             stub_single_holding_location('rare$map')
-            stub_availability_by_holding_id(bib_id: '99496133506421', holding_id: '22745123330006421')
+            stub_availability_by_holding_id(bib_id:, holding_id: '22745123330006421')
           end
           it 'does not require authentication', js: true do
-            visit "/catalog/99496133506421"
-            expect(page).to have_link('Reading Room Request', href: '/requests/99496133506421?aeon=true&mfhd=22745123330006421')
-            click_link('Reading Room Request', href: '/requests/99496133506421?aeon=true&mfhd=22745123330006421')
+            visit "/catalog/#{bib_id}"
+            expect(page).to have_link('Reading Room Request', href: "/requests/#{bib_id}?aeon=true&mfhd=22745123330006421")
+            click_link('Reading Room Request', href: "/requests/#{bib_id}?aeon=true&mfhd=22745123330006421")
             expect(page.current_url).to include(Requests::Config[:aeon_base])
           end
         end
