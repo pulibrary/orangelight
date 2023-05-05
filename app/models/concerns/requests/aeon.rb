@@ -23,15 +23,14 @@ module Requests
 
     ## params shared by both alma and non-alma aeon requests
     def aeon_basic_params
-      params = {
+      {
         ReferenceNumber: bib[:id],
         CallNumber: call_number,
         Site: site,
         Location: shelf_location_code,
         SubLocation: sub_location,
         ItemInfo1: I18n.t("requests.aeon.access_statement")
-      }
-      params.reject { |_k, v| v.nil? }
+      }.compact
     end
 
     # accepts the base Openurl Context Object and formats it appropriately for Aeon
