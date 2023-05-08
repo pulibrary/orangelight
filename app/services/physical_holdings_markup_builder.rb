@@ -281,17 +281,17 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     link = if !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)
                # All SCSB supervised items go through Aeon
-               RequestButtonComponent.new(doc_id:, location: location_rules, force_aeon: true).render_in(view_base)
+               RequestButtonComponent.new(doc_id:, location: location_rules, force_aeon: true, request_metadata:).render_in(view_base)
              else
-               RequestButtonComponent.new(doc_id:, location: location_rules).render_in(view_base)
+               RequestButtonComponent.new(doc_id:, location: location_rules, request_metadata:).render_in(view_base)
              end
            elsif !adapter.alma_holding?(holding_id)
-             RequestButtonComponent.new(doc_id:, location: location_rules, holding_id:, force_aeon: true).render_in(view_base)
+             RequestButtonComponent.new(doc_id:, location: location_rules, holding_id:, force_aeon: true, request_metadata:).render_in(view_base)
            elsif self.class.temporary_holding_id?(holding_id)
              holding_identifier = self.class.temporary_location_holding_id_first(holding)
-             RequestButtonComponent.new(doc_id:, holding_id: holding_identifier, location: location_rules).render_in(view_base)
+             RequestButtonComponent.new(doc_id:, holding_id: holding_identifier, location: location_rules, request_metadata:).render_in(view_base)
            else
-             RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules).render_in(view_base)
+             RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules, request_metadata:).render_in(view_base)
            end
     markup = self.class.location_services_block(adapter, holding_id, location_rules, link, holding)
     markup
@@ -411,6 +411,12 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                           class: 'library-location',
                           data: { holding_id: })
     markup
+  end
+
+  # A hash of metadata, specifically what aeon will need to know
+  def request_metadata
+    @adapter.document.to_semantic_values
+            .transform_values(&:first)
   end
 
   private

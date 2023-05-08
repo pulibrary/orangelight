@@ -39,4 +39,16 @@ RSpec.describe RequestButtonComponent, type: :component do
       expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=false')
     end
   end
+  context 'when request_metadata is passed' do
+    subject { render_inline(described_class.new(location:, doc_id: '123', request_metadata: { title: 'Star Wars: Jedi Survivor' })) }
+    it 'includes the metadata in the URL' do
+      expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=false&title=Star+Wars%3A+Jedi+Survivor')
+    end
+  end
+  context 'when invalid request_metadata is passed' do
+    subject { render_inline(described_class.new(location:, doc_id: '123', request_metadata: { not_a_real_field: 'Bad data that should not go to the request' })) }
+    it 'includes the metadata in the URL' do
+      expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=false')
+    end
+  end
 end

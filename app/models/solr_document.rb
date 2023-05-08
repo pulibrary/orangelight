@@ -27,7 +27,8 @@ class SolrDocument
     publisher: 'pub_created_display',
     subject: 'subject_facet',
     type: 'format',
-    identifier: 'isbn_s'
+    identifier: %w[isbn_s issn_s],
+    edition: 'edition_display'
   )
 
   # self.unique_key = 'id'

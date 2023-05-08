@@ -153,6 +153,9 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
   describe '.request_placeholder' do
     let(:request_placeholder_markup) { builder.request_placeholder(adapter, holding_id, location_rules, holding) }
+    before do
+      allow(document).to receive(:to_semantic_values).and_return({})
+    end
 
     it 'generates the markup for request links' do
       expect(request_placeholder_markup).to include '<td class="location-services service-conditional"'
@@ -201,6 +204,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
       before do
         allow(adapter).to receive(:alma_holding?).and_return(false)
+        allow(document).to receive(:to_semantic_values).and_return({})
         allow(adapter).to receive(:document).and_return(document)
         allow(holding).to receive(:dig).and_return("coin-3750")
       end
@@ -265,6 +269,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       end
 
       before do
+        allow(document).to receive(:to_semantic_values).and_return({})
         allow(adapter).to receive(:document).and_return(document)
         allow(holding).to receive(:dig).and_return("SCSB-6593031")
       end
@@ -329,6 +334,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       end
 
       before do
+        allow(document).to receive(:to_semantic_values).and_return({})
         allow(adapter).to receive(:document).and_return(document)
         allow(holding).to receive(:dig).and_return("SCSB-10422725")
       end
@@ -384,6 +390,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         }
       end
       before do
+        allow(document).to receive(:to_semantic_values).and_return({})
         allow(adapter).to receive(:document).and_return(document)
         allow(holding).to receive(:dig).and_return("99125038613506421")
       end
@@ -438,6 +445,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       end
       before do
         allow(adapter).to receive(:doc_id).and_return('9960861053506421')
+        allow(document).to receive(:to_semantic_values).and_return({})
         allow(adapter).to receive(:document).and_return(document)
       end
       it 'generates the request link with mfhd the first items holding_id' do
@@ -734,6 +742,27 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
     it 'generates a "service-conditional" class' do
       expect(css_class).to eq 'service-conditional'
+    end
+  end
+  describe '#request_metadata' do
+    let(:document) do
+      SolrDocument.new(
+      title_citation_display: 'Light in the dark = Luz en lo oscuro : rewriting identity, spirituality, reality',
+      author_citation_display: ['Anzaldúa, Gloria', 'Keating, AnaLouise'],
+      pub_date_start_sort: 2015,
+      edition_display: 'First edition',
+      isbn_s: %w[9780822359777 9780822360094],
+      id: '123456'
+    )
+    end
+    it 'provides a hash of metadata from the solr document' do
+      expect(builder.request_metadata).to eq({
+                                               title: 'Light in the dark = Luz en lo oscuro : rewriting identity, spirituality, reality',
+                                               creator: 'Anzaldúa, Gloria',
+                                               date: 2015,
+                                               edition: 'First edition',
+                                               identifier: '9780822359777'
+                                             })
     end
   end
 end

@@ -2,11 +2,12 @@
 
 # ViewComponent that displays a request button on the show page
 class RequestButtonComponent < ViewComponent::Base
-  def initialize(location:, doc_id:, holding_id: nil, force_aeon: false)
+  def initialize(location:, doc_id:, holding_id: nil, force_aeon: false, request_metadata: {})
     @location = location
     @doc_id = doc_id
     @holding_id = holding_id
     @force_aeon = force_aeon
+    @request_metadata = request_metadata
   end
 
   def label
@@ -20,7 +21,10 @@ class RequestButtonComponent < ViewComponent::Base
   end
 
   def url
-    query = { mfhd: @holding_id, aeon: aeon?.to_s }.compact.to_query
+    query = { mfhd: @holding_id, aeon: aeon?.to_s }.merge(@request_metadata)
+                                                   .compact
+                                                   .slice(*query_param_allow_list)
+                                                   .to_query
     URI::HTTP.build(path: "/requests/#{@doc_id}", query:).request_uri
   end
 
@@ -28,5 +32,9 @@ class RequestButtonComponent < ViewComponent::Base
 
     def aeon?
       @aeon ||= @force_aeon || @location&.dig(:aeon_location)
+    end
+
+    def query_param_allow_list
+      %i[creator title date edition isxn doc_id mfhd aeon]
     end
 end

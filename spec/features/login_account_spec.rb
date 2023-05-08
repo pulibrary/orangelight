@@ -155,7 +155,7 @@ describe 'Account login' do
 
           it 'does not require authentication', js: true do
             visit "/catalog/coin-1167"
-            expect(page).to have_link('Reading Room Request', href: '/requests/coin-1167?aeon=true&mfhd=numismatics')
+            expect(page).to have_link('Reading Room Request', href: '/requests/coin-1167?aeon=true&date=-79&mfhd=numismatics')
             click_link('Reading Room Request')
             expect(page.current_url).to include(Requests::Config[:aeon_base])
           end
@@ -167,7 +167,7 @@ describe 'Account login' do
           end
           it 'does not require authentication', js: true do
             visit "/catalog/dsp01tq57ns24j"
-            expect(page).to have_link('Reading Room Request', href: '/requests/dsp01tq57ns24j?aeon=true&mfhd=thesis')
+            expect(page).to have_link('Reading Room Request', href: '/requests/dsp01tq57ns24j?aeon=true&date=1990&mfhd=thesis&title=The+1950+Election+Defeat+of+Senator+Millard+E.+Tydings%3A+Trouble+in+Maryland+on+Many+Fronts')
             click_link('Reading Room Request')
             expect(page.current_url).to include(Requests::Config[:aeon_base])
           end
@@ -182,8 +182,8 @@ describe 'Account login' do
           end
           it 'does not require authentication', js: true do
             visit "/catalog/#{bib_id}"
-            expect(page).to have_link('Reading Room Request', href: "/requests/#{bib_id}?aeon=true&mfhd=22745123330006421")
-            click_link('Reading Room Request', href: "/requests/#{bib_id}?aeon=true&mfhd=22745123330006421")
+            expect(page).to have_link('Reading Room Request', href: "/requests/#{bib_id}?aeon=true&creator=Ogilby%2C+John&date=1976&mfhd=22745123330006421&title=London+survey%27d%2C+or%2C+An+explanation+of+the+large+map+of+London+%3A+giving+a+particular+account+of+the+streets+and+lanes+in+the+city+and+liberties+...")
+            click_link('Reading Room Request', href: "/requests/#{bib_id}?aeon=true&creator=Ogilby%2C+John&date=1976&mfhd=22745123330006421&title=London+survey%27d%2C+or%2C+An+explanation+of+the+large+map+of+London+%3A+giving+a+particular+account+of+the+streets+and+lanes+in+the+city+and+liberties+...")
             expect(page.current_url).to include(Requests::Config[:aeon_base])
           end
         end
