@@ -59,85 +59,6 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     allow(adapter).to receive(:sc_location_with_suppressed_button?).with(holding).and_return(false)
   end
 
-  describe '.request_label' do
-    let(:request_label) { builder.request_label(location_rules) }
-
-    context 'for holdings within aeon locations' do
-      let(:location_rules) do
-        {
-          'label': 'Sylvia Beach Collection',
-          'code': 'beac',
-          'aeon_location': true,
-          'recap_electronic_delivery_location': false,
-          'open': false,
-          'requestable': false,
-          'always_requestable': true,
-          'circulates': false,
-          'url': 'https://bibdata.princeton.edu/locations/holding_locations/beac.json',
-          'library': {
-            'label': 'Rare Books and Special Collections',
-            'code': 'rare',
-            'order': 2
-          },
-          'holding_library': nil,
-          'hours_location': {
-            'label': 'Firestone Library - Rare Books and Special Collections',
-            'code': 'rbsc'
-          }
-        }.with_indifferent_access
-      end
-
-      it 'generates a reading room request label' do
-        expect(request_label).to eq 'Reading Room Request'
-        expect(builder.request_url(doc_id: '123456', aeon: true)).to eq('/requests/123456?aeon=true')
-      end
-    end
-
-    context 'for circulating locations' do
-      it 'generates a generic request label' do
-        expect(request_label).to eq 'Request'
-      end
-    end
-  end
-
-  describe '.request_tooltip' do
-    let(:request_tooltip) { described_class.request_tooltip(location_rules) }
-
-    context 'for holdings within aeon locations' do
-      let(:location_rules) do
-        {
-          'label': 'Sylvia Beach Collection',
-          'code': 'beac',
-          'aeon_location': true,
-          'recap_electronic_delivery_location': false,
-          'open': false,
-          'requestable': false,
-          'always_requestable': true,
-          'circulates': false,
-          'url': 'https://bibdata.princeton.edu/locations/holding_locations/beac.json',
-          'library': {
-            'label': 'Rare Books and Special Collections',
-            'code': 'rare',
-            'order': 2
-          },
-          'holding_library': nil,
-          'hours_location': {
-            'label': 'Firestone Library - Rare Books and Special Collections',
-            'code': 'rbsc'
-          }
-        }
-      end
-
-      it 'generates a tooltip for requesting a view within the reading room' do
-        expect(request_tooltip).to eq 'Request to view in Reading Room'
-      end
-    end
-
-    it 'generates a tooltip for viewing options for requests' do
-      expect(request_tooltip).to eq 'View Options to Request copies from this Location'
-    end
-  end
-
   describe '.holding_location_span' do
     let(:holding_location_span_markup) { builder.holding_location_span('test-location', 'test-holding-id') }
 
@@ -240,7 +161,8 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(request_placeholder_markup).to include 'data-requestable="true"'
       expect(request_placeholder_markup).to include 'data-aeon="false"'
       expect(request_placeholder_markup).to include 'data-holding-id="3668455"'
-      expect(request_placeholder_markup).to include '<a title="View Options to Request copies from this Location"'
+      expect(request_placeholder_markup).to include '<a '
+      expect(request_placeholder_markup).to include 'title="View Options to Request copies from this Location"'
       expect(request_placeholder_markup).to include 'href="/requests/123456?aeon=false&amp;mfhd=3668455"'
     end
 
@@ -291,7 +213,8 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-requestable="true"'
         expect(request_placeholder_markup).to include 'data-aeon="true"'
         expect(request_placeholder_markup).to include 'data-holding-id="numismatics"'
-        expect(request_placeholder_markup).to include '<a title="Request to view in Reading Room"'
+        expect(request_placeholder_markup).to include '<a '
+        expect(request_placeholder_markup).to include 'title="Request to view in Reading Room"'
         expect(request_placeholder_markup).to include 'href="/requests/coin-3750?aeon=true&amp;mfhd=numismatics"'
       end
     end
@@ -354,7 +277,8 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-open="false"'
         expect(request_placeholder_markup).to include 'data-requestable="true"'
         expect(request_placeholder_markup).to include 'data-holding-id="6670178"'
-        expect(request_placeholder_markup).to include '<a title="Request to view in Reading Room"'
+        expect(request_placeholder_markup).to include '<a '
+        expect(request_placeholder_markup).to include 'title="Request to view in Reading Room"'
         # The general scsbnypl location is *not* an aeon location, but if the holding use_statement is "Supervised Use",
         # it goes through aeon.
         expect(request_placeholder_markup).to include 'data-aeon="false"'
@@ -419,7 +343,8 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-requestable="true"'
         expect(request_placeholder_markup).to include 'data-aeon="false"'
         expect(request_placeholder_markup).to include 'data-holding-id="11198370"'
-        expect(request_placeholder_markup).to include '<a title="View Options to Request copies from this Location"'
+        expect(request_placeholder_markup).to include '<a '
+        expect(request_placeholder_markup).to include 'title="View Options to Request copies from this Location"'
         expect(request_placeholder_markup).to include 'href="/requests/SCSB-10422725?aeon=false"'
       end
     end
@@ -473,7 +398,8 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-requestable="true"'
         expect(request_placeholder_markup).to include 'data-aeon="true"'
         expect(request_placeholder_markup).to include 'data-holding-id="22692760320006421"'
-        expect(request_placeholder_markup).to include '<a title="Request to view in Reading Room"'
+        expect(request_placeholder_markup).to include '<a '
+        expect(request_placeholder_markup).to include 'title="Request to view in Reading Room"'
         expect(request_placeholder_markup).to include 'href="/requests/99125038613506421?aeon=true&amp;mfhd=22692760320006421"'
       end
     end

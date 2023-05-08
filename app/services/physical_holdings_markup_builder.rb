@@ -229,28 +229,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                 })
   end
 
-  # Generate a request label based upon the holding location
-  # @param location_rules [Hash] the location for the holding
-  # @return [String] the label
-  def request_label(location_rules)
-    if aeon_location?(location_rules)
-      'Reading Room Request'
-    else
-      'Request'
-    end
-  end
-
-  # Generate a request tooltip based upon the holding location
-  # @param location_rules [Hash] the location for the holding
-  # @return [String] the label
-  def self.request_tooltip(location_rules)
-    if aeon_location?(location_rules)
-      'Request to view in Reading Room'
-    else
-      'View Options to Request copies from this Location'
-    end
-  end
-
   def self.scsb_supervised_items?(holding)
     if holding.key? 'items'
       restricted_items = holding['items'].select do |item|
@@ -299,42 +277,21 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     # check if it is a boundwith and read the id for each holding
     # so that it will be "/request/#{doc_id}", where doc_id can be either the record page mms_id or the host id(s) if they exist.
     doc_id = doc_id(holding)
-    aeon = aeon_location?(location_rules)
+    view_base = ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil)
     link = if !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)
                # All SCSB supervised items go through Aeon
-               aeon = 'true'
-               link_to('Reading Room Request',
-                       request_url(doc_id:, aeon:),
-                       title: 'Request to view in Reading Room',
-                       class: 'request btn btn-xs btn-primary',
-                       data: { toggle: 'tooltip' })
+               RequestButtonComponent.new(doc_id:, location: location_rules, force_aeon: true).render_in(view_base)
              else
-               link_to(request_label(location_rules),
-                       request_url(doc_id:, aeon:),
-                       title: self.class.request_tooltip(location_rules),
-                       class: 'request btn btn-xs btn-primary',
-                       data: { toggle: 'tooltip' })
+               RequestButtonComponent.new(doc_id:, location: location_rules).render_in(view_base)
              end
            elsif !adapter.alma_holding?(holding_id)
-             link_to('Reading Room Request',
-                     request_url(doc_id:, aeon:, holding_id:),
-                     title: 'Request to view in Reading Room',
-                     class: 'request btn btn-xs btn-primary',
-                     data: { toggle: 'tooltip' })
+             RequestButtonComponent.new(doc_id:, location: location_rules, holding_id:, force_aeon: true).render_in(view_base)
            elsif self.class.temporary_holding_id?(holding_id)
              holding_identifier = self.class.temporary_location_holding_id_first(holding)
-             link_to(request_label(location_rules),
-                    request_url(doc_id:, aeon:, holding_id: holding_identifier),
-                    title: self.class.request_tooltip(location_rules),
-                    class: 'request btn btn-xs btn-primary',
-                    data: { toggle: 'tooltip' })
+             RequestButtonComponent.new(doc_id:, holding_id: holding_identifier, location: location_rules).render_in(view_base)
            else
-             link_to(request_label(location_rules),
-                     request_url(doc_id:, aeon:, holding_id:),
-                     title: self.class.request_tooltip(location_rules),
-                     class: 'request btn btn-xs btn-primary',
-                     data: { toggle: 'tooltip' })
+             RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules).render_in(view_base)
            end
     markup = self.class.location_services_block(adapter, holding_id, location_rules, link, holding)
     markup
