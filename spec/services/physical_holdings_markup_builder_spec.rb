@@ -55,7 +55,6 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
     allow(adapter).to receive(:alma_holding?).and_return(true)
     allow(adapter).to receive(:doc_electronic_access).and_return('http://arks.princeton.edu/ark:/88435/dsp0141687h654': ['DataSpace', 'Citation only'])
     allow(adapter).to receive(:unavailable_holding?).and_return(false)
-    allow(adapter).to receive(:host_id).and_return([])
     allow(adapter).to receive(:sc_location_with_suppressed_button?).with(holding).and_return(false)
   end
 
@@ -203,7 +202,6 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       before do
         allow(adapter).to receive(:alma_holding?).and_return(false)
         allow(adapter).to receive(:document).and_return(document)
-        allow(adapter).to receive(:host_id).and_return(["coin-3750"])
         allow(holding).to receive(:dig).and_return("coin-3750")
       end
       # this should be hitting the third condition, but does not seem to be
@@ -268,7 +266,6 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
       before do
         allow(adapter).to receive(:document).and_return(document)
-        allow(adapter).to receive(:host_id).and_return(["SCSB-6593031"])
         allow(holding).to receive(:dig).and_return("SCSB-6593031")
       end
 
@@ -333,7 +330,6 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
       before do
         allow(adapter).to receive(:document).and_return(document)
-        allow(adapter).to receive(:host_id).and_return(["SCSB-10422725"])
         allow(holding).to receive(:dig).and_return("SCSB-10422725")
       end
 
@@ -389,7 +385,6 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       end
       before do
         allow(adapter).to receive(:document).and_return(document)
-        allow(adapter).to receive(:host_id).and_return(["99125038613506421"])
         allow(holding).to receive(:dig).and_return("99125038613506421")
       end
       it 'generates the request link for the host record' do
