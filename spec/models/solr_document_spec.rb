@@ -185,10 +185,6 @@ RSpec.describe SolrDocument do
       it 'returns a ctx with a format book' do
         expect(solr_document.to_ctx(solr_document['format']).to_hash['rft.genre']).to eq('book')
       end
-
-      it 'Does not have a rft.title param' do
-        expect(solr_document.to_ctx(solr_document['format']).to_hash.key?('rft.title')).to be false
-      end
     end
 
     context 'A Journal' do

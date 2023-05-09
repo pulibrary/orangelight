@@ -91,7 +91,7 @@ module Blacklight
       end
 
       # return openurl ctx object
-      def to_ctx(format)
+      def to_ctx(format = nil)
         @_ctx || build_ctx(format)
       end
 

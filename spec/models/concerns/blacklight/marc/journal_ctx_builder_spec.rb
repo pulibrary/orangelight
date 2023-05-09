@@ -14,5 +14,11 @@ RSpec.describe Blacklight::Marc::JournalCtxBuilder do
         expect(builder.build.referent.get_metadata('aucorp')).to eq 'Nature Editors'
       end
     end
+    context 'when title_citation_display available in solr' do
+      let(:document) { SolrDocument.new(title_citation_display: ['Science']) }
+      it 'uses it as the atitle' do
+        expect(builder.build.referent.get_metadata('atitle')).to eq 'Science'
+      end
+    end
   end
 end

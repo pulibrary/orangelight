@@ -105,6 +105,15 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     describe "#ctx" do
       it "produces an ILLiad flavored openurl" do
         expect(request_with_holding_item.ctx).to be_an_instance_of(OpenURL::ContextObject)
+        expect(request_with_holding_item.ctx.to_hash).to include(
+          "rft.au" => "McNeur, Catherine",
+          "rft.btitle" => "Taming Manhattan : environmental battles in the antebellum city",
+          "rft.date" => "2014",
+          "rft.genre" => "book",
+          "rft.isbn" => "9780674725096",
+          "rft.pub" => "Cambridge, Massachusetts: Harvard University Press",
+          "rft.title" => "Taming Manhattan : environmental battles in the antebellum city"
+        )
       end
     end
 

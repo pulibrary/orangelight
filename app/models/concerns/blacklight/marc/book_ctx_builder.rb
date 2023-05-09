@@ -21,7 +21,11 @@ module Blacklight
             pub: publisher,
             edition:,
             isbn:,
-            date:
+            date:,
+            title:,
+            btitle: title,
+            oclc:,
+            lccn:
           }
         end
 
