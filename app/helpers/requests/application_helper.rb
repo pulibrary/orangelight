@@ -204,7 +204,7 @@ module Requests
 
     def item_checkbox(requestable, single_item_form)
       disabled = !requestable.will_submit_via_form?
-      check_box_tag "requestable[][selected]", true, check_box_selected(requestable, disabled, single_item_form), class: 'request--select', disabled:, aria: { labelledby: "title enum_#{requestable.preferred_request_id}" }, id: "requestable_selected_#{requestable.preferred_request_id}"
+      check_box_tag "requestable[][selected]", true, check_box_selected(disabled, single_item_form), class: 'request--select', disabled:, aria: { labelledby: "title enum_#{requestable.preferred_request_id}" }, id: "requestable_selected_#{requestable.preferred_request_id}"
     end
 
     ## If any requestable items have a temp location assume everything at the holding is in a temp loc?
@@ -218,13 +218,9 @@ module Requests
       "#{label} #{requestable_list.first.call_number}"
     end
 
-    def check_box_selected(requestable, disabled, single_item_form)
+    def check_box_selected(disabled, single_item_form)
       if single_item_form
-        if requestable.charged? || requestable.services.empty?
-          false
-        else
-          !disabled
-        end
+        !disabled
       else
         false
       end
