@@ -74,22 +74,6 @@ $(function() {
         return mode;
     }
 
-    function deliveryMode () {
-        const radios = document.querySelectorAll('input[type=radio][name^="requestable[][delivery_mode"]');
-
-        function radioButtons () {
-            let mode;
-
-            if (radios.length === 0) {
-                mode = deMode();
-            } else {
-                mode = radioOfRadioBtns(radios);
-            }
-            return mode;
-        }
-        return radioButtons;
-    }
-
     function deliveryLocation () {
         const requestable_pickups_options = document.querySelectorAll('select[name^="requestable[][pick_up"] option');
 
@@ -111,28 +95,47 @@ $(function() {
         return requestablePickups;
     }
 
-    function requestable(changed) {
-        let selected;
-        const parent = $(changed).closest('[id^="request_"]');
-        const checkboxes = document.querySelectorAll('input[type=checkbox][id^="requestable_selected"]:checked');
-        const radio_checked = document.querySelectorAll('input[type=radio][name^="requestable[][delivery_mode"]:checked');
-        // const checkboxes = document.querySelector('input[type=checkbox][id^="requestable_selected"]:checked');
-        // const parent_of_selected_checkbox = checkboxes.parentNode.closest('[id^="request_"]')
-        // parent_of_selected_checkbox.children
+    function deliveryMode () {
+        const radios = document.querySelectorAll('input[type=radio][name^="requestable[][delivery_mode"]');
 
-        if (checkboxes.length > 0) {
+        function radioButtons () {
+            let mode;
+
+            if (radios.length === 0) {
+                const deLocation = deliveryLocation();
+                mode = deLocation();
+            } else {
+                mode = radioOfRadioBtns(radios);
+            }
+            return mode;
+        }
+        return radioButtons;
+    }
+
+    const deLocation_ref = deliveryLocation();
+    const deMode_ref = deliveryMode();
+
+    function requestable(el) {
+        const parent = $(el).closest('[id^="request_"]');
+        let selected = parent.find('input[type=checkbox][id^="requestable_selected"').is(':checked');
+        let deLocation = deLocation_ref();
+        let deMode = deMode_ref();
+
+        const radio_checked = parent.find('input[type=radio][name^="requestable[][delivery_mode"]:checked');
+        const radio = parent.find('input[type=radio][name^="requestable[][delivery_mode"]');
+        const requestable_pickups_options = parent.find('select[name^="requestable[][pick_up"] option');
+        if (selected) {
             selected = true;
         } else {
             selected = false;
         }
-        const deLocation_ref = deliveryLocation();
-        const deMode_ref = deliveryMode();
-        let deLocation = deLocation_ref();
-        let deMode = deMode_ref();
 
         // Special case for edd form. Needs to set delivery location so that the request button is active.
         if (radio_checked.length === 1 && radio_checked[0].dataset['target'].startsWith('#fields-eed')) {
             deLocation = true;
+        }
+        if (selected && requestable_pickups_options.length === 0 && radio.length === 0) {
+            deMode = true;
         }
         if (selected && deMode && deLocation) {
             activateRequestButton();
@@ -143,12 +146,25 @@ $(function() {
 
     (function () {
         const checkbox_nodelist = document.querySelectorAll('[id^="requestable_selected"]');
-        
-        // Decision made: If there is only one item then the checkbox is selected
+        let selected;
+
         if (checkbox_nodelist.length === 1) {
-            checkbox_nodelist[0].checked = true;
-            requestable();
+            const radio_checked = document.querySelectorAll('input[type=radio][name^="requestable[][delivery_mode"]:checked');
+            selected = true;
+            let deLocation = deLocation_ref();
+            const deMode = deMode_ref();
+
+            // Special case for edd form. Needs to set delivery location so that the request button is active.
+            if (radio_checked.length === 1 && radio_checked[0].dataset['target'].startsWith('#fields-eed')) {
+                deLocation = true;
+            }
+            if (selected && deMode && deLocation) {
+                activateRequestButton();
+            } else {
+                deactivateRequestButton();
+            }
         } else {
+            deactivateRequestButton();
             requestable();
         }
     })();
