@@ -44,7 +44,7 @@ module Requests
       @pick_ups = build_pick_ups
       @requestable_unrouted = build_requestable
       @requestable = route_requests(@requestable_unrouted)
-      @ctx_obj = Requests::SolrOpenUrlContext.new(solr_doc: @doc)
+      @ctx_obj = Requests::SolrOpenUrlContext.new(solr_doc: SolrDocument.new(@doc))
     end
 
     delegate :user, to: :patron

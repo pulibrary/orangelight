@@ -40,6 +40,7 @@ module Blacklight
         def mapping
           {
             genre:,
+            title:,
             creator: author,
             aucorp: publisher,
             pub: publisher,
@@ -70,8 +71,20 @@ module Blacklight
           @document['issn_s']&.first
         end
 
+        def oclc
+          @document['oclc_s']&.first
+        end
+
+        def lccn
+          @document['lccn_s']&.first
+        end
+
         def publisher
           @document['pub_citation_display']&.first
+        end
+
+        def title
+          @document['title_citation_display']&.first
         end
     end
   end

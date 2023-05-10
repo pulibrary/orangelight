@@ -15,6 +15,7 @@ module Blacklight
 
         def mapping
           {
+            atitle: title,
             genre: 'serial',
             aucorp: author,
             issn:
