@@ -30,7 +30,7 @@ module Requests
     # @option opts [String] :source represents system that directed user to request form. i.e.
     def initialize(system_id:, mfhd:, patron: nil, source: nil)
       @system_id = system_id
-      @doc = solr_doc(system_id)
+      @doc = SolrDocument.new(solr_doc(system_id))
       @holdings = JSON.parse(doc[:holdings_1display] || '{}')
       # scsb items are the only ones that come in without a MFHD parameter from the catalog now
       # set it for them, because they only ever have one location
@@ -44,7 +44,7 @@ module Requests
       @pick_ups = build_pick_ups
       @requestable_unrouted = build_requestable
       @requestable = route_requests(@requestable_unrouted)
-      @ctx_obj = Requests::SolrOpenUrlContext.new(solr_doc: SolrDocument.new(@doc))
+      @ctx_obj = Requests::SolrOpenUrlContext.new(solr_doc: doc)
     end
 
     delegate :user, to: :patron
@@ -203,7 +203,7 @@ module Requests
       ### builds a list of possible requestable items
       # returns a collection of requestable objects or nil
       def build_requestable
-        return [] if doc.blank?
+        return [] if doc._source.blank?
         if partner_system_id?
           build_scsb_requestable
         elsif !items.nil?
@@ -344,7 +344,7 @@ module Requests
 
       def build_requestable_params(params)
         {
-          bib: doc.with_indifferent_access,
+          bib: doc,
           holding: params[:holding],
           item: params[:item],
           location: build_requestable_location(params),
@@ -374,10 +374,6 @@ module Requests
           items_with_symbols = items_to_symbols(items_as_json)
           mfhd_items[@mfhd] = items_with_symbols
         end
-        # else
-        #   empty_mfhd = items_by_bib(@system_id)
-        #   mfhd_items[@mfhd] = [empty_mfhd[@mfhd]]
-        # end
         mfhd_items
       end
 
@@ -385,38 +381,8 @@ module Requests
       def load_items_by_mfhd
         mfhd_items = {}
         mfhd_items[@mfhd] = items_by_mfhd(@system_id, @mfhd)
-        # items_by_mfhd(@system_id, @mfhd).each do |item_info|
-        #  mfhd_items[item_info['id']] = load_item_for_holding(holding_id: @mfhd, item_info: item_info)
-        # end
         mfhd_items
       end
-
-      # def load_items_by_bib_id
-      #   mfhd_items = {}
-      #   items_by_bib(@system_id).each do |holding_id, item_info|
-      #     next if @mfhd != holding_id
-      #     mfhd_items[holding_id] = load_item_for_holding(holding_id: holding_id, item_info: item_info)
-      #   end
-      #   mfhd_items
-      # end
-
-      # def load_item_for_holding(holding_id:, item_info:)
-      #   # new check needed here
-      #   if item_info[:more_items] == false
-      #     if item_info[:status].starts_with?('On-Order') || item_info[:status].starts_with?('Pending Order')
-      #       [item_info]
-      #     elsif item_info[:status].starts_with?('Online')
-      #       [item_info]
-      #     else
-      #       ## we don't need to call this again
-      #       items_to_symbols(items_by_mfhd(@system_id, holding_id))
-      #     end
-      #   else
-      #     ## we don't need to call this again
-      #     # items_to_symbols(items_by_mfhd(@system_id, holding_id))
-      #     items_to_symbols([item_info])
-      #   end
-      # end
 
       def items_to_symbols(items = [])
         items_with_symbols = []

@@ -18,7 +18,7 @@ module Requests
 
     include Requests::Aeon
 
-    # @param bib [Hash] Solr Document of the Top level Request
+    # @param bib [SolrDocument] Solr Document of the Top level Request
     # @param holding [Hash] Bib Data information on where the item is held (Marc liberation) parsed solr_document[holdings_1display] json
     # @param item [Hash] Item level data from bib data (https://bibdata.princeton.edu/availability?id= or mfhd=)
     # @param location [Hash] The has for a bib data holding (https://bibdata.princeton.edu/locations/holding_locations)

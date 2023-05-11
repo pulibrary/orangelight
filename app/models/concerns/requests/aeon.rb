@@ -51,7 +51,7 @@ module Requests
         end
       end
       aeon_params = aeon_basic_params
-      aeon_params[:ItemNumber] = barcode if barcode?
+      aeon_params[:ItemNumber] = bib&.holdings_all_display&.values&.first&.dig('barcode')
       ## returned mashed together in an encoded string
       "#{ctx.kev}&#{aeon_params.to_query}"
     end
