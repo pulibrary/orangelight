@@ -1,0 +1,12 @@
+<div class="table-responsive-sm">
+  <table class="table table-striped table-bordered request--available_items <%= show_tablesorter(requestable_list) %>" summary='<%= current_location_label(@request.location_label, requestable_list) %>'>
+    <thead class="visually-hidden-sm">
+      <th class="w-25">Enumeration</th>
+      <th>Status</th>
+      <th id="delivery_options">Delivery Options</th>
+    </thead>
+    <tbody>
+      <%= render partial: "requestable_form_aeon", collection: requestable_list, as: :requestable, locals: { mfhd: mfhd, holdings: @request.holdings, default_pick_ups: @request.default_pick_ups, request_context: @request.ctx, requestable_list: requestable_list } %>
+    </tbody>
+  </table>
+</div>

@@ -1538,6 +1538,8 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         it 'allows aeon requests for all users' do
           visit '/requests/9973529363506421?mfhd=22667098990006421'
           expect(page).to have_content 'Request to View in Reading Room'
+          expect(page).not_to have_content 'Request this Item'
+          expect(page).not_to have_selector('request--select')
         end
 
         it 'allows guest patrons to see there are no items for Online only' do
