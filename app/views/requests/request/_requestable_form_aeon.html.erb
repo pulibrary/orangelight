@@ -1,5 +1,4 @@
 <tr id='<%= "request_#{requestable.preferred_request_id}" %>'>
-  <%= render partial: 'requestable_checkbox', locals: { requestable: requestable, single_item_request: single_item_request } %>
   <%= render partial: 'requestable_enum', locals: { requestable: requestable } %>
   <%= render partial: 'requestable_status', locals: { requestable: requestable } %>
   <td class='delivery--options' aria-live="polite">
