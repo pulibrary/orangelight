@@ -51,13 +51,13 @@ module Requests
         end
       end
       aeon_params = aeon_basic_params
-      aeon_params[:ItemNumber] = bib&.holdings_all_display&.values&.first&.dig('barcode')
+      aeon_params[:ItemNumber] = host_or_constituent_holding&.fetch('items', nil)&.first&.fetch('barcode', nil)
       ## returned mashed together in an encoded string
-      "#{ctx.kev}&#{aeon_params.to_query}"
+      "#{ctx.kev}&#{aeon_params.compact.to_query}"
     end
 
     def site
-      if holding.key? 'thesis'
+      if host_or_constituent_holding.key? 'thesis'
         'MUDD'
       elsif location[:holding_library].present?
         holding_location_to_site(location['holding_library']['code'])
@@ -91,7 +91,11 @@ module Requests
       end
 
       def call_number
-        holding.first.last['call_number']
+        host_or_constituent_holding&.fetch('call_number', nil)
+      end
+
+      def host_or_constituent_holding
+        @host_or_constituent_holding ||= bib&.holdings_all_display&.values&.first
       end
 
       def pub_date
@@ -99,7 +103,7 @@ module Requests
       end
 
       def shelf_location_code
-        holding.first.last['location_code']
+        host_or_constituent_holding['location_code']
       end
 
       ## These two params were from Primo think they both go to
@@ -109,7 +113,7 @@ module Requests
       end
 
       def sub_location
-        holding.first.last[:location_note]&.first
+        host_or_constituent_holding[:location_note]&.first
       end
       ### end special params
 

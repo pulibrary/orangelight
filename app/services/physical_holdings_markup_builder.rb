@@ -281,12 +281,12 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     link = if !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)
                # All SCSB supervised items go through Aeon
-               RequestButtonComponent.new(doc_id:, location: location_rules, force_aeon: true).render_in(view_base)
+               AeonRequestButtonComponent.new(document: adapter.document, location: location_rules).render_in(view_base)
              else
                RequestButtonComponent.new(doc_id:, location: location_rules).render_in(view_base)
              end
            elsif !adapter.alma_holding?(holding_id)
-             RequestButtonComponent.new(doc_id:, location: location_rules, holding_id:, force_aeon: true).render_in(view_base)
+            AeonRequestButtonComponent.new(document: adapter.document, location: location_rules).render_in(view_base)
            elsif self.class.temporary_holding_id?(holding_id)
              holding_identifier = self.class.temporary_location_holding_id_first(holding)
              RequestButtonComponent.new(doc_id:, holding_id: holding_identifier, location: location_rules).render_in(view_base)

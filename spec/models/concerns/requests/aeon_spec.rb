@@ -6,22 +6,26 @@ class ObjectWithAeon
   include Requests::Aeon
   attr_accessor :bib
   delegate :enumerated?, to: :item
-  def initialize(bib)
+  def initialize(bib:)
     @bib = bib
   end
 
   def holding
-    { "22740186070006421" => { "items" => [{ "holding_id" => "22740186070006421", "id" => "23740186060006421" }] } }
+    holdings_1display = @bib.first('holdings_1display')
+    holdings_1display ? JSON.parse(holdings_1display) : holdings_1display
   end
 
   def item
-    @item ||= Requests::Requestable::Item.new({ 'id' => "13579", 'barcode' => '24680' }.with_indifferent_access)
+    @item ||= Requests::Requestable::Item.new(holding&.dig('items')&.first)
   end
 end
 
 describe Requests::Aeon do
-  let(:bib) { SolrDocument.new({ id: '1234', holdings_1display: '{"123": {"barcode": "24680"}}' }) }
-  subject { ObjectWithAeon.new(bib) }
+  let(:holding) do
+    { "22740186070006421" => { "items" => [{ "holding_id" => "22740186070006421", "id" => "23740186060006421", "barcode" => "24680" }] } }
+  end
+  let(:bib) { SolrDocument.new({ id: '1234', holdings_1display: holding.to_json.to_s }) }
+  subject { ObjectWithAeon.new(bib:) }
   let(:location) do
     { "code" => "rare$xc", "aeon_location" => true, "library" => { "code" => "rare" }, "holding_library" => { "code" => "rare" } }
   end
@@ -42,7 +46,7 @@ describe Requests::Aeon do
     context 'when bib record is a constituent' do
       let(:bib) { SolrDocument.new({ id: '1234', contained_in_s: ['9999'] }) }
       it 'takes its ItemNumber from the host record barcode' do
-        allow(bib).to receive(:doc_by_id) { { 'holdings_1display' => '{"1":{"barcode":"33_host_barcode"}}' } }
+        allow(bib).to receive(:doc_by_id) { { 'holdings_1display' => '{"1":{"items":[{"barcode":"33_host_barcode"}]}}' } }
         expect(subject.aeon_openurl(OpenURL::ContextObject.new)).to include('ItemNumber=33_host_barcode')
       end
     end

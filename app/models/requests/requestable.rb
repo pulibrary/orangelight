@@ -30,12 +30,12 @@ module Requests
       @location = location
       @services = []
       @patron = patron
-      @user_barcode = patron.barcode
-      @call_number = holding.first[1]&.dig 'call_number_browse'
+      @user_barcode = patron&.barcode
+      @call_number = holding&.first&.last&.dig 'call_number_browse'
       @title = bib[:title_citation_display]&.first
       @pageable = Pageable.new(call_number:, location_code:)
       @mappable = Requests::Mapable.new(bib_id: bib[:id], holdings: holding, location_code:)
-      @illiad = Requests::Illiad.new(enum: item&.fetch(:enum, nil), chron: item&.fetch(:chron, nil), call_number: holding.first[1]&.dig('call_number_browse'))
+      @illiad = Requests::Illiad.new(enum: item&.fetch(:enum, nil), chron: item&.fetch(:chron, nil), call_number: holding&.first&.second&.dig('call_number_browse'))
     end
 
     delegate :pick_up_location_id, :pick_up_location_code, :item_type, :enum_value, :cron_value, :item_data?,
