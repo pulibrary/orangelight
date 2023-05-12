@@ -7,7 +7,7 @@ RSpec.describe AeonRequestButtonComponent, type: :component do
     { "22740186070006421" => { "items" => [{ "holding_id" => "22740186070006421", "id" => "23740186060006421", "barcode" => "24680" }] } }
   end
   let(:location) do
-    { aeon_location: false, 'library' => {'code' => 'eastasian'} }
+    { aeon_location: false, 'library' => { 'code' => 'eastasian' } }
   end
   let(:document) do
     SolrDocument.new({ id: '1234', holdings_1display: holding.to_json.to_s })

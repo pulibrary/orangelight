@@ -286,7 +286,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
                RequestButtonComponent.new(doc_id:, location: location_rules).render_in(view_base)
              end
            elsif !adapter.alma_holding?(holding_id)
-            AeonRequestButtonComponent.new(document: adapter.document, location: location_rules).render_in(view_base)
+             AeonRequestButtonComponent.new(document: adapter.document, location: location_rules).render_in(view_base)
            elsif self.class.temporary_holding_id?(holding_id)
              holding_identifier = self.class.temporary_location_holding_id_first(holding)
              RequestButtonComponent.new(doc_id:, holding_id: holding_identifier, location: location_rules).render_in(view_base)

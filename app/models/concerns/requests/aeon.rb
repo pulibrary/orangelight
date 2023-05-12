@@ -59,7 +59,7 @@ module Requests
     def site
       if host_or_constituent_holding.key? 'thesis'
         'MUDD'
-      elsif location[:holding_library].present?
+      elsif location&.key?(:holding_library)
         holding_location_to_site(location['holding_library']['code'])
       elsif location['library']['code'] == 'eastasian' && aeon_location?
         'EAL'
@@ -88,6 +88,10 @@ module Requests
 
       def aeon_location?
         location['aeon_location'] == true
+      end
+
+      def host_or_constituent_location
+        host_or_constituent_holding&.fetch('call_number', nil)
       end
 
       def call_number

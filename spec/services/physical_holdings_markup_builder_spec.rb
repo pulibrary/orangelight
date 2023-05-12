@@ -204,7 +204,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         allow_any_instance_of(SolrDocument).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
         allow(document).to receive(:[]).and_return('data')
         allow(document).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
-        allow(document).to receive(:holdings_all_display).and_return({'my_id' => holding})
+        allow(document).to receive(:holdings_all_display).and_return({ 'my_id' => holding })
         allow(adapter).to receive(:document).and_return(document)
         allow(holding).to receive(:dig).and_return("coin-3750")
       end
@@ -272,7 +272,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         allow_any_instance_of(SolrDocument).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
         allow(document).to receive(:[]).and_return('data')
         allow(document).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
-        allow(document).to receive(:holdings_all_display).and_return({'my_id' => holding})
+        allow(document).to receive(:holdings_all_display).and_return({ 'my_id' => holding })
         allow(adapter).to receive(:document).and_return(document)
         allow(holding).to receive(:dig).and_return("SCSB-6593031")
       end
