@@ -201,8 +201,11 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
       before do
         allow(adapter).to receive(:alma_holding?).and_return(false)
+        allow_any_instance_of(SolrDocument).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
+        allow(document).to receive(:[]).and_return('data')
+        allow(document).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
+        allow(document).to receive(:holdings_all_display).and_return({ 'my_id' => holding })
         allow(adapter).to receive(:document).and_return(document)
-        allow(holding).to receive(:dig).and_return("coin-3750")
       end
       # this should be hitting the third condition, but does not seem to be
       it 'generates the request link for the host record' do
@@ -213,7 +216,8 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-holding-id="numismatics"'
         expect(request_placeholder_markup).to include '<a '
         expect(request_placeholder_markup).to include 'title="Request to view in Reading Room"'
-        expect(request_placeholder_markup).to include 'href="/requests/coin-3750?aeon=true&amp;mfhd=numismatics"'
+        expect(request_placeholder_markup).to include 'href="https://lib-aeon.princeton.edu/aeon/aeon.dll/OpenURL'
+        expect(request_placeholder_markup).to include 'Coin+3750'
       end
     end
 
@@ -265,6 +269,10 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       end
 
       before do
+        allow_any_instance_of(SolrDocument).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
+        allow(document).to receive(:[]).and_return('data')
+        allow(document).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
+        allow(document).to receive(:holdings_all_display).and_return({ 'my_id' => holding })
         allow(adapter).to receive(:document).and_return(document)
         allow(holding).to receive(:dig).and_return("SCSB-6593031")
       end
@@ -278,8 +286,8 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'title="Request to view in Reading Room"'
         # The general scsbnypl location is *not* an aeon location, but if the holding use_statement is "Supervised Use",
         # it goes through aeon.
-        expect(request_placeholder_markup).to include 'data-aeon="false"'
-        expect(request_placeholder_markup).to include 'href="/requests/SCSB-6593031?aeon=true"'
+        expect(request_placeholder_markup).to include 'href="https://lib-aeon.princeton.edu/aeon/aeon.dll/OpenURL'
+        expect(request_placeholder_markup).to include 'ItemNumber=33433115858387'
       end
     end
 
