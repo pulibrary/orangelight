@@ -60,6 +60,7 @@ describe Requests::RequestController, type: :controller, vcr: { cassette_name: '
         expect(response.status).to eq(302)
       end
       it 'redirects you when a single aeon record is requested' do
+        stub_holding_locations
         get :generate, params: {
           source: 'pulsearch',
           system_id: '9995768803506421',

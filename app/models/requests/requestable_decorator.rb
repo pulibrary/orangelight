@@ -141,9 +141,9 @@ module Requests
       I18n.t("requests.help_me.brief_msg.#{key}_html").html_safe # rubocop:disable Rails/OutputSafety
     end
 
-    def aeon_url(request_ctx)
+    def aeon_url(_request_ctx)
       if requestable.alma_managed?
-        requestable.aeon_request_url(request_ctx)
+        requestable.aeon_request_url
       else
         "#{Requests::Config[:aeon_base]}?#{requestable.aeon_mapped_params.to_query}"
       end

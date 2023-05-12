@@ -42,7 +42,7 @@ module Requests
       if @request.thesis? || @request.numismatics?
         redirect_to "#{Requests::Config[:aeon_base]}?#{@request.requestable.first.aeon_mapped_params.to_query}"
       elsif @request.single_aeon_requestable?
-        redirect_to @request.first_filtered_requestable.aeon_request_url(@request.ctx)
+        redirect_to @request.first_filtered_requestable.aeon_request_url
       end
     end
 

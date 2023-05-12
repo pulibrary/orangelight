@@ -33,9 +33,8 @@ module Requests
       }.compact
     end
 
-    # accepts the base Openurl Context Object and formats it appropriately for Aeon
-    def aeon_request_url(ctx = nil)
-      "#{Requests::Config[:aeon_base]}/OpenURL?#{aeon_openurl(ctx)}"
+    def aeon_request_url
+      AeonUrl.new(document: bib).to_s
     end
 
     # returns encoded OpenURL string for alma derived records

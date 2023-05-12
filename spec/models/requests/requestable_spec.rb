@@ -684,7 +684,8 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
     describe '#aeon_request_url' do
       it 'beings with Aeon GFA base' do
-        expect(requestable.aeon_request_url(request.ctx)).to match(/^#{Requests::Config[:aeon_base]}/)
+        stub_holding_locations
+        expect(requestable.aeon_request_url).to match(/^#{Requests::Config[:aeon_base]}/)
       end
     end
 
