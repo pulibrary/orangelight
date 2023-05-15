@@ -279,7 +279,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     doc_id = doc_id(holding)
     view_base = ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil)
     link = if display_direct_aeon_link?(location_rules, holding_id)
-             AeonRequestButtonComponent.new(document: adapter.document, location: location_rules).render_in(view_base)
+             AeonRequestButtonComponent.new(document: adapter.document, holding: { doc_id: holding }).render_in(view_base)
            elsif self.class.scsb_location?(location_rules)
              RequestButtonComponent.new(doc_id:, location: location_rules, holding:).render_in(view_base)
            elsif self.class.temporary_holding_id?(holding_id)

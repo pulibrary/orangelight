@@ -182,8 +182,8 @@ describe 'Account login' do
           end
           it 'does not require authentication', js: true do
             visit "/catalog/#{bib_id}"
-            expect(page).to have_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/aeon/aeon\.dll/OpenURL.*dsp01tq57ns24j'))
-            click_link('Reading Room Request', href: "/requests/#{bib_id}?aeon=true&mfhd=22745123330006421")
+            expect(page).to have_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/aeon/aeon\.dll/OpenURL.*CallNumber\=RECAP-94760855'))
+            click_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/aeon/aeon\.dll/OpenURL.*CallNumber\=RECAP-94760855'))
             expect(page.current_url).to include(Requests::Config[:aeon_base])
           end
         end

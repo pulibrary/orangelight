@@ -2,9 +2,9 @@
 
 # ViewComponent that displays an aeon request button on the show page
 class AeonRequestButtonComponent < RequestButtonComponent
-  def initialize(document:, location:)
+  def initialize(document:, holding: nil)
     @document = document
-    @location = location
+    @holding = holding
   end
 
   def label
@@ -16,6 +16,6 @@ class AeonRequestButtonComponent < RequestButtonComponent
   end
 
   def url
-    Requests::AeonUrl.new(document: @document).to_s
+    Requests::AeonUrl.new(document: @document, holding: @holding).to_s
   end
 end
