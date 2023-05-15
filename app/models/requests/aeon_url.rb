@@ -2,8 +2,13 @@
 module Requests
   # Create a URL that creates an aeon request
   class AeonUrl
-    def initialize(document:)
+    # @param document [SolrDocument]
+    # @param holding [Hash]
+    # @param item [Requests::Requestable::Item]
+    def initialize(document:, holding: nil, item: nil)
       @document = document
+      @holding = holding.values.first if holding
+      @item = item if item
     end
 
     def to_s

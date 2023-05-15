@@ -344,7 +344,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    describe '#aeon_open_url' do
+    describe '#aeon_openurl' do
       it 'returns an openurl with a Call Number param' do
         expect(requestable.aeon_openurl(request.ctx)).to be_a(String)
       end

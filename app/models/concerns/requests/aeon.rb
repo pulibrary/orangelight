@@ -34,7 +34,7 @@ module Requests
     end
 
     def aeon_request_url
-      AeonUrl.new(document: bib).to_s
+      AeonUrl.new(document: bib, holding:, item:).to_s
     end
 
     # returns encoded OpenURL string for alma derived records
