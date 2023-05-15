@@ -278,7 +278,9 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     # so that it will be "/request/#{doc_id}", where doc_id can be either the record page mms_id or the host id(s) if they exist.
     doc_id = doc_id(holding)
     view_base = ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil)
-    link = if !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
+    link = if aeon_location?(location_rules)
+             AeonRequestButtonComponent.new(document: adapter.document, location: location_rules).render_in(view_base)
+           elsif !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
              if scsb_supervised_items?(holding)
                # All SCSB supervised items go through Aeon
                AeonRequestButtonComponent.new(document: adapter.document, location: location_rules).render_in(view_base)
