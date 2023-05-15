@@ -19,6 +19,7 @@ RSpec.describe RequestButtonComponent, type: :component do
   it 'includes aeon=false in the link url' do
     expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=false&mfhd=456')
   end
+
   context 'when at an aeon location' do
     let(:location) do
       { aeon_location: true }
@@ -33,10 +34,21 @@ RSpec.describe RequestButtonComponent, type: :component do
       expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=true&mfhd=456')
     end
   end
+
   context 'when no holding_id' do
     subject { render_inline(described_class.new(location:, doc_id: '123')) }
     it 'does not include mfhd param in the link url' do
       expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=false')
+    end
+  end
+
+  context 'scsb supervised use' do
+    let(:holding) do
+      { 'items' => [{ 'use_statement' => 'Supervised Use' }] }
+    end
+    subject { render_inline(described_class.new(location:, doc_id: '123', holding_id: '456', holding:)) }
+    it 'includes aeon=true in the link url' do
+      expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=true&mfhd=456')
     end
   end
 end

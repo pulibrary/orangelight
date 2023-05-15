@@ -2,9 +2,10 @@
 
 # ViewComponent that displays a request button on the show page
 class RequestButtonComponent < ViewComponent::Base
-  def initialize(location:, doc_id:, holding_id: nil)
+  def initialize(location:, doc_id:, holding: nil, holding_id: nil)
     @location = location
     @doc_id = doc_id
+    @holding = holding
     @holding_id = holding_id
   end
 
@@ -26,6 +27,12 @@ class RequestButtonComponent < ViewComponent::Base
   private
 
     def aeon?
-      @aeon ||= @location&.dig(:aeon_location)
+      @aeon ||= (@location&.dig(:aeon_location) || scsb_supervised_items?)
+    end
+
+    def scsb_supervised_items?
+      return false unless @holding
+      return false unless @holding['items']
+      @holding['items'].all? { |item| item['use_statement'] == 'Supervised Use' }
     end
 end

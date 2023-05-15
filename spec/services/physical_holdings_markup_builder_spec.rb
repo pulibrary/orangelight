@@ -272,7 +272,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         allow(holding).to receive(:dig).and_return("SCSB-6593031")
       end
 
-      it 'generates an aeon link including data from the host and constituent record' do
+      it 'generates the request link for the host record' do
         expect(request_placeholder_markup).to include '<td class="location-services service-always-requestable"'
         expect(request_placeholder_markup).to include 'data-open="false"'
         expect(request_placeholder_markup).to include 'data-requestable="true"'
@@ -281,8 +281,8 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'title="Request to view in Reading Room"'
         # The general scsbnypl location is *not* an aeon location, but if the holding use_statement is "Supervised Use",
         # it goes through aeon.
-        expect(request_placeholder_markup).to include 'href="https://lib-aeon.princeton.edu/aeon/aeon.dll/OpenURL'
-        expect(request_placeholder_markup).to include 'ItemNumber=host123'
+        expect(request_placeholder_markup).to include 'data-aeon="false"'
+        expect(request_placeholder_markup).to include 'href="/requests/SCSB-6593031?aeon=true"'
       end
     end
 
