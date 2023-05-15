@@ -223,4 +223,13 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       end
     end
   end
+
+  describe 'Request button' do
+    context 'aeon constituent record' do
+      it 'links directly to aeon with data about the host and constituent' do
+        visit("catalog/9923427953506421")
+        expect(page).to have_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/aeon/aeon\.dll/OpenURL.*rft\.title=The\+reply\+of\+a\+member\+of\+Parliament.*CallNumber=HJ5118\+\.H4\+1733'))
+      end
+    end
+  end
 end
