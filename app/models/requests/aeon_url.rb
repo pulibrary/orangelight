@@ -57,7 +57,15 @@ module Requests
       end
 
       def item
-        @item ||= holding&.fetch('items', nil)&.first
+        @item ||= barcode_from_holding || barcode_from_document
+      end
+
+      def barcode_from_holding
+        holding&.fetch('items', nil)&.first
+      end
+
+      def barcode_from_document
+        @document.holdings_all_display.values.first&.fetch('items', nil)&.first
       end
 
       def at_mudd?
