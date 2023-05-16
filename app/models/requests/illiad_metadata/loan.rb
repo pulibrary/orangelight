@@ -28,7 +28,7 @@ module Requests
             "LoanPublisher" => item["edd_publisher"]&.truncate(40), "ISSN" => bib["isbn"], "CallNumber" => call_number(item),
             "CitedIn" => "#{Requests::Config[:pulsearch_base]}/catalog/#{bib['id']}",
             "ItemInfo3" => volume_number(item)&.truncate(255), "ItemInfo4" => item["edd_issue"]&.truncate(255),
-            "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => item["edd_oclc_number"]&.truncate(32),
+            "AcceptNonEnglish" => true, "ESPNumber" => item["edd_oclc_number"]&.truncate(32),
             "DocumentType" => genre, "LoanPlace" => item["edd_location"]
           }
         end
