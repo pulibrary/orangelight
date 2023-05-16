@@ -344,7 +344,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    describe '#aeon_open_url' do
+    describe '#aeon_openurl' do
       it 'returns an openurl with a Call Number param' do
         expect(requestable.aeon_openurl(request.ctx)).to be_a(String)
       end
@@ -684,7 +684,8 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
     describe '#aeon_request_url' do
       it 'beings with Aeon GFA base' do
-        expect(requestable.aeon_request_url(request.ctx)).to match(/^#{Requests::Config[:aeon_base]}/)
+        stub_holding_locations
+        expect(requestable.aeon_request_url).to match(/^#{Requests::Config[:aeon_base]}/)
       end
     end
 

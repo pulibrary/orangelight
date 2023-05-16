@@ -201,11 +201,11 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
       before do
         allow(adapter).to receive(:alma_holding?).and_return(false)
+        mock_solr_document
         allow(adapter).to receive(:document).and_return(document)
-        allow(holding).to receive(:dig).and_return("coin-3750")
       end
       # this should be hitting the third condition, but does not seem to be
-      it 'generates the request link for the host record' do
+      it 'generates an aeon link including data from the host and constituent record' do
         expect(request_placeholder_markup).to include '<td class="location-services service-always-requestable"'
         expect(request_placeholder_markup).to include 'data-open="false"'
         expect(request_placeholder_markup).to include 'data-requestable="true"'
@@ -213,7 +213,8 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-holding-id="numismatics"'
         expect(request_placeholder_markup).to include '<a '
         expect(request_placeholder_markup).to include 'title="Request to view in Reading Room"'
-        expect(request_placeholder_markup).to include 'href="/requests/coin-3750?aeon=true&amp;mfhd=numismatics"'
+        expect(request_placeholder_markup).to include 'href="https://lib-aeon.princeton.edu/aeon/aeon.dll/OpenURL'
+        expect(request_placeholder_markup).to include 'ItemNumber=host123'
       end
     end
 
@@ -265,6 +266,8 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       end
 
       before do
+        allow_any_instance_of(SolrDocument).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
+        mock_solr_document
         allow(adapter).to receive(:document).and_return(document)
         allow(holding).to receive(:dig).and_return("SCSB-6593031")
       end
@@ -384,10 +387,11 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         }
       end
       before do
+        mock_solr_document
         allow(adapter).to receive(:document).and_return(document)
         allow(holding).to receive(:dig).and_return("99125038613506421")
       end
-      it 'generates the request link for the host record' do
+      it 'generates an aeon link including data from the host and constituent record' do
         expect(request_placeholder_markup).to include '<td class="location-services service-always-requestable"'
         expect(request_placeholder_markup).to include 'data-open="false"'
         expect(request_placeholder_markup).to include 'data-requestable="true"'
@@ -395,7 +399,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-holding-id="22692760320006421"'
         expect(request_placeholder_markup).to include '<a '
         expect(request_placeholder_markup).to include 'title="Request to view in Reading Room"'
-        expect(request_placeholder_markup).to include 'href="/requests/99125038613506421?aeon=true&amp;mfhd=22692760320006421"'
+        expect(request_placeholder_markup).to include 'ItemNumber=host123'
       end
     end
     context "when there is temporary location with a request button" do
@@ -736,4 +740,11 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(css_class).to eq 'service-conditional'
     end
   end
+end
+
+def mock_solr_document
+  allow_any_instance_of(SolrDocument).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
+  allow(document).to receive(:[]).and_return('data')
+  allow(document).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
+  allow(document).to receive(:holdings_all_display).and_return({ 'host_id' => { 'items' => [{ 'barcode' => 'host123' }] } })
 end

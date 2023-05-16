@@ -278,15 +278,10 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     # so that it will be "/request/#{doc_id}", where doc_id can be either the record page mms_id or the host id(s) if they exist.
     doc_id = doc_id(holding)
     view_base = ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil)
-    link = if !location_rules.nil? && /^scsb.+/ =~ location_rules['code']
-             if scsb_supervised_items?(holding)
-               # All SCSB supervised items go through Aeon
-               RequestButtonComponent.new(doc_id:, location: location_rules, force_aeon: true).render_in(view_base)
-             else
-               RequestButtonComponent.new(doc_id:, location: location_rules).render_in(view_base)
-             end
-           elsif !adapter.alma_holding?(holding_id)
-             RequestButtonComponent.new(doc_id:, location: location_rules, holding_id:, force_aeon: true).render_in(view_base)
+    link = if display_direct_aeon_link?(location_rules, holding_id)
+             AeonRequestButtonComponent.new(document: adapter.document, holding: { doc_id: holding }).render_in(view_base)
+           elsif self.class.scsb_location?(location_rules)
+             RequestButtonComponent.new(doc_id:, location: location_rules, holding:).render_in(view_base)
            elsif self.class.temporary_holding_id?(holding_id)
              holding_identifier = self.class.temporary_location_holding_id_first(holding)
              RequestButtonComponent.new(doc_id:, holding_id: holding_identifier, location: location_rules).render_in(view_base)
@@ -295,6 +290,15 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
            end
     markup = self.class.location_services_block(adapter, holding_id, location_rules, link, holding)
     markup
+  end
+
+  def display_direct_aeon_link?(location_rules, holding_id)
+    return true if aeon_location?(location_rules)
+
+    # If it is not from SCSB or alma, it must be aeon
+    return true unless self.class.scsb_location?(location_rules) || adapter.alma_holding?(holding_id)
+
+    false
   end
 
   def request_url(doc_id:, aeon:, holding_id: nil)

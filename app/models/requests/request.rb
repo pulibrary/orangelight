@@ -30,7 +30,7 @@ module Requests
     # @option opts [String] :source represents system that directed user to request form. i.e.
     def initialize(system_id:, mfhd:, patron: nil, source: nil)
       @system_id = system_id
-      @doc = solr_doc(system_id)
+      @doc = SolrDocument.new(solr_doc(system_id))
       @holdings = JSON.parse(doc[:holdings_1display] || '{}')
       # scsb items are the only ones that come in without a MFHD parameter from the catalog now
       # set it for them, because they only ever have one location
@@ -44,7 +44,7 @@ module Requests
       @pick_ups = build_pick_ups
       @requestable_unrouted = build_requestable
       @requestable = route_requests(@requestable_unrouted)
-      @ctx_obj = Requests::SolrOpenUrlContext.new(solr_doc: SolrDocument.new(@doc))
+      @ctx_obj = Requests::SolrOpenUrlContext.new(solr_doc: doc)
     end
 
     delegate :user, to: :patron
@@ -203,7 +203,7 @@ module Requests
       ### builds a list of possible requestable items
       # returns a collection of requestable objects or nil
       def build_requestable
-        return [] if doc.blank?
+        return [] if doc._source.blank?
         if partner_system_id?
           build_scsb_requestable
         elsif !items.nil?
@@ -344,7 +344,7 @@ module Requests
 
       def build_requestable_params(params)
         {
-          bib: doc.with_indifferent_access,
+          bib: doc,
           holding: params[:holding],
           item: params[:item],
           location: build_requestable_location(params),
