@@ -4,7 +4,7 @@ module Requests
     class ArticleExpress
       attr_reader :patron, :bib, :item, :note, :cited_pages, :illiad_transaction_status, :attributes
 
-      def initialize(patron:, bib:, item:, note: "Digitization Request", cited_pages: "COVID-19 Campus Closure")
+      def initialize(patron:, bib:, item:, note: "Digitization Request", cited_pages: '')
         @patron = patron
         @bib = bib
         @item = item

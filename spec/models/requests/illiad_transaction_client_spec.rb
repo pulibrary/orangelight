@@ -65,7 +65,7 @@ describe Requests::IlliadTransactionClient, type: :controller do
         .to_return(status: 200, body: responses[:found], headers: {})
       stub_request(:post, transaction_url)
         .with(body: hash_including("Username" => "abc234", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "PhotoArticleAuthor" => "That One", "PhotoItemAuthor" => "Davis, Paul K.", "PhotoJournalTitle" => "100 decisive battles : from ancient times to the present", "PhotoItemPublisher" => "Santa Barbara, Calif: ABC-CLIO", "ISSN" => "9781576070758", "CallNumber" => "HF1131 .B485", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/9935102073506421", "PhotoJournalVolume" => "",
-                                   "PhotoJournalIssue" => nil, "ItemInfo3" => nil, "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => "1033410889", "DocumentType" => "Book", "PhotoArticleTitle" => nil))
+                                   "PhotoJournalIssue" => nil, "ItemInfo3" => nil, "ItemInfo4" => nil, "AcceptNonEnglish" => true, "ESPNumber" => "1033410889", "DocumentType" => "Book", "PhotoArticleTitle" => nil))
         .to_return(status: 200, body: responses[:transaction_created], headers: {})
       stub_request(:post, transaction_note_url)
         .with(body: hash_including("Note" => "Digitization Request: Customer note"))
@@ -89,7 +89,7 @@ describe Requests::IlliadTransactionClient, type: :controller do
     it "posts a transaction and also sends an email when the patron is not cleared" do
       stub_request(:post, transaction_url)
         .with(body: hash_including("Username" => "abc234", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "PhotoArticleAuthor" => "That One", "PhotoItemAuthor" => "Davis, Paul K.", "PhotoJournalTitle" => "100 decisive battles : from ancient times to the present", "PhotoItemPublisher" => "Santa Barbara, Calif: ABC-CLIO", "ISSN" => "9781576070758", "CallNumber" => "HF1131 .B485", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/9935102073506421", "PhotoJournalVolume" => "",
-                                   "PhotoJournalIssue" => nil, "ItemInfo3" => nil, "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => "1033410889", "DocumentType" => "Book", "PhotoArticleTitle" => nil))
+                                   "PhotoJournalIssue" => nil, "ItemInfo3" => nil, "ItemInfo4" => nil, "AcceptNonEnglish" => true, "ESPNumber" => "1033410889", "DocumentType" => "Book", "PhotoArticleTitle" => nil))
         .to_return(status: 200, body: responses[:transaction_created], headers: {})
       stub_request(:post, transaction_note_url)
         .with(body: hash_including("Note" => "Digitization Request: Customer note"))
@@ -124,7 +124,7 @@ describe Requests::IlliadTransactionClient, type: :controller do
         stub_request(:get, patron_url)
           .to_return(status: 200, body: responses[:found], headers: {})
         stub_request(:post, transaction_url)
-          .with(body: hash_including("Username" => "abc234", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Davis, Paul K.", "LoanTitle" => "100 decisive battles : from ancient times to the present", "LoanPublisher" => "Santa Barbara, Calif: ABC-CLIO", "ISSN" => "9781576070758", "CallNumber" => "HF1131 .B485", "CitedIn" => "https://catalog.princeton.edu/catalog/9935102073506421", "ItemInfo3" => "2019", "ItemInfo4" => nil, "CitedPages" => "COVID-19 Campus Closure", "AcceptNonEnglish" => true, "ESPNumber" => "1033410889", "DocumentType" => "Book", "LoanPlace" => nil))
+          .with(body: hash_including("Username" => "abc234", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Davis, Paul K.", "LoanTitle" => "100 decisive battles : from ancient times to the present", "LoanPublisher" => "Santa Barbara, Calif: ABC-CLIO", "ISSN" => "9781576070758", "CallNumber" => "HF1131 .B485", "CitedIn" => "https://catalog.princeton.edu/catalog/9935102073506421", "ItemInfo3" => "2019", "ItemInfo4" => nil, "AcceptNonEnglish" => true, "ESPNumber" => "1033410889", "DocumentType" => "Book", "LoanPlace" => nil))
           .to_return(status: 200, body: responses[:transaction_created], headers: {})
         stub_request(:post, transaction_note_url)
           .with(body: hash_including("Note" => "Loan Request"))
