@@ -841,30 +841,14 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable_charged) { requestable_holding.first }
 
     describe '# checked-out requestable' do
-      # TODO: Remove when campus has re-opened
       it "does not have ILL request service available" do
         expect(requestable_charged.services.include?('ill')).to be false
-      end
-
-      # TODO: Activate test when campus has re-opened
-      xit "should have ILL request service available" do
-        expect(requestable_charged.services.include?('ill')).to be true
       end
     end
 
     describe '# missing requestable' do
       let(:request_missing) { FactoryBot.build(:request_missing_item) }
       let(:requestable_missing) { request_missing.requestable.first }
-
-      # TODO: Remove when campus has re-opened
-      it "does not have ILL request service available" do
-        expect(requestable_missing.services.include?('ill')).to be false
-      end
-
-      # TODO: Activate test when campus has re-opened
-      xit "should have ILL request service available" do
-        expect(requestable_missing.services.include?('ill')).to be true
-      end
     end
 
     let(:request_aeon_mudd) { FactoryBot.build(:aeon_mudd) }
@@ -875,15 +859,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         expect(requestable_aeon_mudd.services.include?('aeon')).to be true
       end
     end
-
-    # let(:request_paging) { FactoryBot.build(:request_paging_available) }
-    # let(:requestable_paging) { request_paging.requestable.first }
-
-    # describe '# paging requestable' do
-    #   it "should have the Paging request service available" do
-    #     expect(requestable_paging.services.include?('paging')).to be true
-    #   end
-    # end
   end
 
   context 'When a barcode only user visits the site' do
@@ -976,28 +951,10 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable) { request.requestable.first }
 
     describe '#recap requestable' do
-      # TODO: Remove when campus has re-opened
-      it "does not have recap request service available during campus closure" do
-        expect(requestable.services.include?('recap')).to be false
-      end
-      # TODO: Activate test when campus has re-opened
-      xit "should have recap request service available" do
-        expect(requestable.services.include?('recap')).to be true
-      end
-
       it "does not have recap edd request service available" do
         expect(requestable.services.include?('recap_edd')).to be false
       end
     end
-
-    # describe '#paging-requestable' do
-    #   let(:request_paging) { FactoryBot.build(:request_paging_available_unauthenticated_patron) }
-    #   let(:requestable_paging) { request_paging.requestable.first }
-
-    #   it "should have the Paging request service available" do
-    #     expect(requestable_paging.services.include?('paging')).to be true
-    #   end
-    # end
 
     let(:request_aeon_mudd) { FactoryBot.build(:aeon_mudd_unauthenticated_patron) }
     let(:requestable_aeon_mudd) { request_aeon_mudd.requestable.first }

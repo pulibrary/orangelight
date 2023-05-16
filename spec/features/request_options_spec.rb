@@ -65,14 +65,6 @@ describe 'Request Options' do
     before do
       visit '/catalog/9960454643506421'
     end
-
-    # This no longer tests for the request button, as CORS headers must be enabled for the bibdata installation to avoid JavaScript/AJAX errors in Chrome
-    xit 'does display a request button', unless: in_ci? do
-      using_wait_time 5 do
-        expect(page.all('.holding-block').length).to eq 1
-        expect(page.find_link('Request')).to be_visible
-      end
-    end
   end
 
   describe 'Aeon location', js: true do

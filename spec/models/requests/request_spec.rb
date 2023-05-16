@@ -294,27 +294,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
   end
 
-  # on reserve flag = N in the availability response, should be Y
-  # https://bibdata-alma-staging.princeton.edu/bibliographic/9931973043506421/holdings/22185253590006421/availability.json
-  # https://github.com/pulibrary/bibdata/issues/1363
-  context "A system id that has a holding with item on reserve" do
-    let(:params) do
-      {
-        system_id: '9931973043506421',
-        mfhd: '22185253590006421',
-        patron:
-      }
-    end
-    let(:request_with_items_on_reserve) { described_class.new(**params) }
-
-    describe "#requestable" do
-      it "is on reserve" do
-        pending "https://github.com/pulibrary/bibdata/issues/1363"
-        expect(request_with_items_on_reserve.requestable.first.on_reserve?).to be_truthy
-      end
-    end
-  end
-
   context "A system id that has a holding with reserve items in a temporary location" do
     let(:params) do
       {
@@ -987,16 +966,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         expect(request.requestable.size).to be >= 1
       end
 
-      # TODO: Remove when campus has re-opened
-      it "is not eligible for recap services during campus closure" do
-        expect(request.requestable.last.services.include?('recap')).to be_falsy
-      end
-
-      # TODO: Activate test when campus has re-opened
-      xit "should be eligible for recap services" do
-        expect(request.requestable.last.services.include?('recap')).to be_truthy
-      end
-
       it "is eligible for recap_edd services" do
         expect(request.requestable.last.services.include?('recap_edd')).to be_falsy
       end
@@ -1027,16 +996,8 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         expect(request.requestable.first.services.include?('on_shelf')).to be_truthy
       end
 
-      # these tests are temporarily pending until trace feature is resolved
-      # see https://github.com/pulibrary/requests/issues/164 for info
-
       it "is eligible for multiple services" do
         expect(request.requestable.first.services.size).to eq(2)
-      end
-
-      xit "should be eligible for trace services" do
-        expect(request.requestable.first.services.include?('trace')).to be_truthy
-        expect(request.requestable.first.traceable?).to be true
       end
     end
   end
