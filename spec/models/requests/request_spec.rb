@@ -85,6 +85,10 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       it "returns a author display" do
         expect(request_with_holding_item.display_metadata[:author]).to be_truthy
       end
+
+      it "returns a date display" do
+        expect(request_with_holding_item.display_metadata[:date]).to be_truthy
+      end
     end
 
     describe "#language" do

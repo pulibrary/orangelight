@@ -16,9 +16,12 @@ describe Requests::RequestDecorator do
   let(:patron) { Requests::Patron.new(user:, session: {}, patron: test_patron) }
 
   let(:requestable) { instance_double(Requests::RequestableDecorator, stubbed_questions) }
+  let(:display_metadata) do
+    { title: 'title', author: 'author', isbn: 'isbn' }
+  end
   let(:request) do
     instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [requestable], patron:, first_filtered_requestable: requestable,
-                                       display_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, language: 'en', eligible_for_library_services?: patron.eligible_for_library_services?)
+                                       display_metadata:, language: 'en', eligible_for_library_services?: patron.eligible_for_library_services?)
   end
   let(:solr_context) { instance_double(Requests::SolrOpenUrlContext) }
   let(:stubbed_questions) { {} }
@@ -72,8 +75,11 @@ describe Requests::RequestDecorator do
   end
 
   describe "#hidden_fields" do
+    let(:display_metadata) do
+      { title: 'title', author: 'author', isbn: 'isbn', date: '1Q84' }
+    end
     it "shows all display metdata" do
-      expect(decorator.hidden_fields).to eq('<input type="hidden" name="bib[id]" id="bib_id" value="123abc" autocomplete="off" /><input type="hidden" name="bib[title]" id="bib_title" value="title" autocomplete="off" /><input type="hidden" name="bib[author]" id="bib_author" value="author" autocomplete="off" /><input type="hidden" name="bib[isbn]" id="bib_isbn" value="isbn" autocomplete="off" />')
+      expect(decorator.hidden_fields).to eq('<input type="hidden" name="bib[id]" id="bib_id" value="123abc" autocomplete="off" /><input type="hidden" name="bib[title]" id="bib_title" value="title" autocomplete="off" /><input type="hidden" name="bib[author]" id="bib_author" value="author" autocomplete="off" /><input type="hidden" name="bib[isbn]" id="bib_isbn" value="isbn" autocomplete="off" /><input type="hidden" name="bib[date]" id="bib_date" value="1Q84" autocomplete="off" />')
     end
   end
 
