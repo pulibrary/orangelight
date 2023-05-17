@@ -853,6 +853,22 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
   end
 
+  context "Holding with item in preservation and conservation" do
+    let(:params) do
+      {
+        system_id: '9942430233506421',
+        mfhd: '22600149340006421',
+        patron:
+      }
+    end
+    let(:request_preservation) { described_class.new(**params) }
+    describe "#requestable" do
+      it "shows items as eligible for illiad" do
+        expect(request_preservation.requestable[1].services.include?('ill')).to be_truthy
+      end
+    end
+  end
+
   context "Aeon item with holdings without items" do
     let(:params) do
       {

@@ -64,6 +64,10 @@ class Requests::Requestable
       status_label == 'Hold Shelf'
     end
 
+    def preservation_conservation?
+      status_label == "Preservation and Conservation"
+    end
+
     def enumerated?
       enum_value.present?
     end
