@@ -15,9 +15,7 @@ module Requests
 
       private
 
-        # TODO: where do I find
-        # LoanDate
-        # LoanEdition
+        # TODO: where do I find LoanEdition?
 
         def map_metdata
           {
@@ -25,7 +23,8 @@ module Requests
             "RequestType" => "Loan", "ProcessType" => "Borrowing", "NotWantedAfter" => (DateTime.current + 6.months).strftime("%m/%d/%Y"),
             "WantedBy" => "Yes, until the semester's", # NOTE: creation fails if we use any other text value
             "LoanAuthor" => bib["author"]&.truncate(100), "LoanTitle" => bib["title"]&.truncate(255),
-            "LoanPublisher" => item["edd_publisher"]&.truncate(40), "ISSN" => bib["isbn"], "CallNumber" => call_number(item),
+            "LoanPublisher" => item["edd_publisher"]&.truncate(40), "LoanDate" => bib["date"],
+            "ISSN" => bib["isbn"], "CallNumber" => call_number(item),
             "CitedIn" => "#{Requests::Config[:pulsearch_base]}/catalog/#{bib['id']}",
             "ItemInfo3" => volume_number(item)&.truncate(255), "ItemInfo4" => item["edd_issue"]&.truncate(255),
             "AcceptNonEnglish" => true, "ESPNumber" => item["edd_oclc_number"]&.truncate(32),

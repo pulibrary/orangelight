@@ -184,6 +184,48 @@ describe Requests::RequestController, type: :controller, vcr: { cassette_name: '
         expect(flash[:error]).to eq("There was a problem with this request which Library staff need to investigate. You'll be notified once it's resolved and requested for you.")
       end
     end
+    describe 'allowed params' do
+      context 'valid params' do
+        let(:bib) do
+          {
+            "id" => "9995904203506421",
+            "date" => "2025"
+          }.with_indifferent_access
+        end
+        it 'passes all valid bib params to Requests::Submission' do
+          expected_bib = { 'id' => '9995904203506421', 'date' => '2025' }
+          expect(Requests::Submission).to receive(:new) do |args|
+            expect(args.to_h['bib']).to eq(expected_bib)
+          end.and_call_original
+          post :submit, params: {
+            "request" => user_info,
+            "bib" => bib,
+            "requestable" => requestable,
+            "format" => "js"
+          }
+        end
+      end
+      context 'invalid params' do
+        let(:bib) do
+          {
+            "id" => "9995904203506421",
+            "not_metadata" => "some+random+content"
+          }.with_indifferent_access
+        end
+        it 'does not pass the invalid params to Requests::Submission' do
+          expected_bib = { 'id' => '9995904203506421' }
+          expect(Requests::Submission).to receive(:new) do |args|
+            expect(args.to_h['bib']).to eq(expected_bib)
+          end.and_call_original
+          post :submit, params: {
+            "request" => user_info,
+            "bib" => bib,
+            "requestable" => requestable,
+            "format" => "js"
+          }
+        end
+      end
+    end
   end
 
   describe 'GET #index' do
