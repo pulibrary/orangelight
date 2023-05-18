@@ -40,7 +40,7 @@ module Requests
 
     delegate :pick_up_location_id, :pick_up_location_code, :item_type, :enum_value, :cron_value, :item_data?,
              :temp_loc?, :in_resource_sharing?, :on_reserve?, :inaccessible?, :hold_request?, :enumerated?, :item_type_non_circulate?, :partner_holding?,
-             :id, :use_statement, :collection_code, :missing?, :charged?, :status, :status_label, :barcode?, :barcode, to: :item
+             :id, :use_statement, :collection_code, :missing?, :charged?, :status, :status_label, :barcode?, :barcode, :preservation_conservation?, to: :item
 
     # non alma options
     def thesis?

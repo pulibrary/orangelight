@@ -100,8 +100,8 @@ module Requests
       def calculate_unavailable_services
         return [] unless cas_provider?
         services = []
-        # for mongraphs - title level check OR for serials - copy level check
-        services << 'ill' if !any_loanable? || requestable.enumerated?
+        # for monographs - title level check OR for serials - copy level check
+        services << 'ill' if !any_loanable? || requestable.enumerated? || requestable.preservation_conservation?
         services
       end
 
