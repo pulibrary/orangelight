@@ -51,140 +51,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
       end
     end
 
-    context 'Temporary Shelf Locations' do
-      describe 'Holding headings', js: true do
-        it 'displays the temporary holding location library label' do
-          pending "Guest have no access during COVID-19 pandemic"
-          visit "/requests/#{temp_item_id}?mfhd=#{temp_id_mfhd}"
-          fill_in 'request_email', with: 'name@email.com', wait: 2
-          fill_in 'request_user_name', with: 'foobar'
-          click_button(I18n.t('requests.account.other_user_login_btn'))
-          expect(page).to have_content('Engineering Library')
-        end
-
-        it 'displays the temporary holding location label' do
-          pending "Guest have no access during COVID-19 pandemic"
-          visit "/requests/#{temp_item_id}?mfhd=#{temp_id_mfhd}"
-          fill_in 'request_email', with: 'name@email.com', wait: 2
-          fill_in 'request_user_name', with: 'foobar'
-          click_button(I18n.t('requests.account.other_user_login_btn'))
-          expect(page).to have_content('Reserve')
-        end
-      end
-    end
-
-    context 'unauthenticated patron' do
-      describe 'When visiting a request item without logging in', js: true do
-        it 'allows guest patrons to identify themselves and view the form' do
-          stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
-          visit '/requests/9999443553506421?mfhd=22743365320006421'
-          pending "Guest have no access during COVID-19 pandemic"
-          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
-          fill_in 'request_email', with: 'name@email.com'
-          fill_in 'request_user_name', with: 'foobar'
-          click_button(I18n.t('requests.account.other_user_login_btn'))
-          wait_for_ajax
-          expect(page).to have_content 'ReCAP Oversize DT549 .E274q'
-        end
-
-        it 'allows guest patrons to see aeon requests' do
-          visit '/requests/993365253506421?mfhd=22220245570006421'
-          pending "Guest have no access during COVID-19 pandemic"
-          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
-          fill_in 'request_email', with: 'name@email.com'
-          fill_in 'request_user_name', with: 'foobar'
-          click_button(I18n.t('requests.account.other_user_login_btn'))
-          wait_for_ajax
-          expect(page).to have_content 'Request to View in Reading Room'
-        end
-
-        # TODO: Activate test when campus has re-opened
-        it 'allows guest patrons to request a physical recap item' do
-          pending "Guest have no access during COVID-19 pandemic"
-          stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
-          visit '/requests/9999443553506421?mfhd=22743365320006421'
-          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
-          fill_in 'request_email', with: 'name@email.com'
-          fill_in 'request_user_name', with: 'foobar'
-          click_button I18n.t('requests.account.other_user_login_btn')
-          expect(page).to have_no_content 'Electronic Delivery'
-          # temporary change issue 438
-          # select('Firestone Library', from: 'requestable__pick_up')
-          click_button 'Request this Item'
-          # wait_for_ajax
-          expect(page).to have_content 'Request submitted'
-        end
-
-        it 'prohibits guest patrons from requesting In-Process items' do
-          pending "Guest have no access during COVID-19 pandemic"
-          visit "/requests/#{in_process_id}"
-          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
-          fill_in 'request_email', with: 'name@email.com'
-          fill_in 'request_user_name', with: 'foobar'
-          click_button I18n.t('requests.account.other_user_login_btn')
-          expect(page).to have_content 'Item is not requestable.'
-        end
-
-        it 'prohibits guest patrons from requesting On-Order items' do
-          pending "Guest have no access during COVID-19 pandemic"
-          visit "/requests/#{on_order_id}"
-          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
-          fill_in 'request_email', with: 'name@email.com'
-          fill_in 'request_user_name', with: 'foobar'
-          click_button I18n.t('requests.account.other_user_login_btn')
-          expect(page).not_to have_selector('.btn--primary')
-        end
-
-        it 'allows guest patrons to access Online items' do
-          pending "Guest have no access during COVID-19 pandemic"
-          visit '/requests/9994692?mfhd=9800910'
-          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
-          fill_in 'request_email', with: 'name@email.com'
-          fill_in 'request_user_name', with: 'foobar'
-          click_button I18n.t('requests.account.other_user_login_btn')
-          expect(page).to have_content 'www.jstor.org'
-        end
-
-        it 'allows guest patrons to request Aeon items' do
-          pending "Guest have no access during COVID-19 pandemic"
-          visit '/requests/9921676693506421'
-          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
-          fill_in 'request_email', with: 'name@email.com'
-          fill_in 'request_user_name', with: 'foobar'
-          click_button I18n.t('requests.account.other_user_login_btn')
-          expect(page).to have_link('Request to View in Reading Room')
-        end
-
-        it 'prohibits guest patrons from using ILL and Recall on Missing items' do
-          pending "Guest have no access during COVID-19 pandemic"
-          visit '/requests/9917887963506421?mfhd=22503918400006421'
-          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
-          fill_in 'request_email', with: 'name@email.com'
-          fill_in 'request_user_name', with: 'foobar'
-          click_button I18n.t('requests.account.other_user_login_btn')
-          expect(page).to have_content 'Item is not requestable.'
-        end
-
-        # TODO: Activate test when campus has re-opened
-        it 'allows guests to request from Annex, but not from Firestone in mixed holding' do
-          pending "Guest have no access during COVID-19 pandemic"
-          visit '/requests/9922868943506421'
-          click_link(I18n.t('requests.account.other_user_login_msg'), wait: 2)
-          fill_in 'request_email', with: 'name@email.com'
-          fill_in 'request_user_name', with: 'foobar'
-          click_button I18n.t('requests.account.other_user_login_btn')
-          expect(page).to have_field 'requestable_selected', disabled: false
-          expect(page).to have_field 'requestable_selected_7484608', disabled: true
-          expect(page).to have_field 'requestable_user_supplied_enum_2576882'
-          check('requestable_selected', exact: true)
-          fill_in 'requestable_user_supplied_enum_2576882', with: 'test'
-          select('Firestone Library', from: 'requestable__pick_up_2576882')
-          click_button 'Request Selected Items'
-          expect(page).to have_content I18n.t('requests.submit.annex_success')
-        end
-      end
-    end
-
     context 'a princeton net ID user' do
       let(:user) { FactoryBot.create(:user) }
 
@@ -272,12 +138,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
         end
 
-        # it 'allow CAS patrons to request an available ReCAP item with Help Me' do
-        #   visit "/requests/#{mms_id}"
-        #   expect(page).to have_content "Requests for ReCAP materials will be unavailable during a planned system update"
-        #   expect(page).to have_content 'Help Me Get It'
-        # end
-
         it 'allows CAS patrons to request In-Process items and can only be delivered to their holding library' do
           visit "/requests/#{in_process_id}"
           expect(page).to have_content 'In Process'
@@ -311,12 +171,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(confirm_email.html_part.body.to_s).to have_content("Konteneryzacja w PRL")
           expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
         end
-
-        # it 'makes sure In-Process ReCAP items get Help Me' do
-        #   visit "/requests/#{recap_in_process_id}"
-        #   expect(page).to have_content "Requests for ReCAP materials will be unavailable during a planned system update"
-        #   expect(page).to have_content 'Help Me Get It'
-        # end
 
         it 'allows CAS patrons to request On-Order items' do
           visit "/requests/#{on_order_id}"
@@ -415,12 +269,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(confirm_email.cc).to be_blank
           expect(confirm_email.html_part.body.to_s).to have_content("L'écrivain, magazine litteraire trimestriel")
         end
-
-        # it 'allows patrons to request a physical recap item get Help Me' do
-        #   visit "/requests/9944355?mfhd=9757511"
-        #   expect(page).to have_content "Requests for ReCAP materials will be unavailable during a planned system update"
-        #   expect(page).to have_content 'Help Me Get It'
-        # end
 
         it 'allows patrons to request a Forrestal annex' do
           alma_url = stub_alma_hold_success('999455503506421', '22642306790006421', '23642306760006421', '960594184')
@@ -528,19 +376,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
           expect(page).to have_content 'Electronic Delivery'
           expect(page).not_to have_content 'Pick-up location: Lewis Library'
           expect(page).to have_css '.submit--request'
-        end
-
-        it 'allows patrons to request a PPL Item' do
-          pending "PPL library closed"
-          scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          stub_request(:post, scsb_url)
-            .to_return(status: 200, body: good_response, headers: {})
-          visit '/requests/995788303506421'
-          expect(page).to have_content 'Pick-up location: Firestone Library'
-          # temporary change issue 438
-          # select('Firestone Library', from: 'requestable__pick_up')
-          click_button 'Request this Item'
-          expect(page).to have_content 'Request submitted'
         end
 
         it 'allows filtering items by mfhd' do
