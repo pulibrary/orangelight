@@ -79,15 +79,20 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
 
     describe "#display_metadata" do
       it "returns a display title" do
-        expect(request_with_holding_item.display_metadata[:title]).to be_truthy
+        expect(request_with_holding_item.display_metadata[:title]).to eq(["Taming Manhattan : environmental battles in the antebellum city"])
       end
 
       it "returns a author display" do
-        expect(request_with_holding_item.display_metadata[:author]).to be_truthy
+        expect(request_with_holding_item.display_metadata[:author]).to eq(["McNeur, Catherine"])
       end
 
       it "returns a date display" do
-        expect(request_with_holding_item.display_metadata[:date]).to be_truthy
+        expect(request_with_holding_item.display_metadata[:date]).to eq(["2014"])
+      end
+
+      it "returns a single ISBN" do
+        allow(request_with_holding_item).to receive(:doc).and_return({ "isbn_s" => ["123", "456"] })
+        expect(request_with_holding_item.display_metadata[:isbn]).to eq(["123"])
       end
     end
 

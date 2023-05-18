@@ -140,7 +140,7 @@ module Requests
       {
         title: doc["title_citation_display"],
         author: doc["author_citation_display"],
-        isbn: doc["isbn_s"],
+        isbn: doc["isbn_s"]&.values_at(0),
         date: doc["pub_date_display"]
       }
     end
