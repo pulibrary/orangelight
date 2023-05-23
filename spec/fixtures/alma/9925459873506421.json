@@ -1,0 +1,118 @@
+{
+  "id": "9925459873506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Leliebre Camué, Roberto"
+  ],
+  "author_citation_display": [
+    "Leliebre Camué, Roberto"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Leliebre Camué, Roberto\"}",
+  "author_s": [
+    "Leliebre Camué, Roberto"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Juegos prohibidos / Roberto Leliebre Camué ; ilustraciones, Luis Taset Céspedes.",
+  "title_t": [
+    "Juegos prohibidos / Roberto Leliebre Camué ; ilustraciones, Luis Taset Céspedes."
+  ],
+  "title_citation_display": [
+    "Juegos prohibidos"
+  ],
+  "compiled_created_t": [
+    "Juegos prohibidos / Roberto Leliebre Camué ; ilustraciones, Luis Taset Céspedes."
+  ],
+  "pub_created_display": [
+    "Santiago de Cuba : Editorial Oriente, c1994 (Buenos Aires, Argentina : A.B.R.N. Producciones Gráficas)"
+  ],
+  "pub_created_s": [
+    "Santiago de Cuba : Editorial Oriente, c1994 (Buenos Aires, Argentina : A.B.R.N. Producciones Gráficas)"
+  ],
+  "pub_citation_display": [
+    "Santiago de Cuba: Editorial Oriente"
+  ],
+  "pub_date_display": [
+    "1994"
+  ],
+  "pub_date_start_sort": 1994,
+  "cataloged_tdt": "2000-06-13T00:00:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "77 p. : ill. ; 18 cm."
+  ],
+  "description_t": [
+    "77 p. : ill. ; 18 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "77 p."
+  ],
+  "geocode_display": [
+    "Cuba"
+  ],
+  "series_display": [
+    "Pinos nuevos. Cuento."
+  ],
+  "more_in_this_series_t": [
+    "Pinos nuevos. Cuento"
+  ],
+  "lc_subject_display": [
+    "Cuban fiction—20th century"
+  ],
+  "uncontrolled_keyword_s": [
+    "Cuentos cubanos",
+    "Siglo XX."
+  ],
+  "subject_facet": [
+    "Cuban fiction—20th century",
+    "Fiction"
+  ],
+  "lcgft_s": [
+    "Fiction"
+  ],
+  "isbn_display": [
+    "9591100728 (pbk.)"
+  ],
+  "isbn_s": [
+    "9789591100726"
+  ],
+  "oclc_s": [
+    "31092842"
+  ],
+  "other_version_s": [
+    "9789591100726",
+    "ocm31092842"
+  ],
+  "subject_era_facet": [
+    "20th century"
+  ],
+  "holdings_1display": "{\"22751515390006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"PQ7390.L40 J83 1994\",\"call_number_browse\":\"PQ7390.L40 J83 1994\",\"items\":[{\"holding_id\":\"22751515390006421\",\"id\":\"23751515370006421\",\"status_at_load\":\"1\",\"barcode\":\"32101096830854\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "recap$pa"
+  ],
+  "location": [
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage"
+  ],
+  "advanced_location_s": [
+    "recap$pa",
+    "ReCAP"
+  ],
+  "name_title_browse_s": [
+    "Leliebre Camué, Roberto. Juegos prohibidos"
+  ],
+  "call_number_display": [
+    "PQ7390.L40 J83 1994"
+  ],
+  "call_number_browse_s": [
+    "PQ7390.L40 J83 1994"
+  ],
+  "call_number_locator_display": [
+    "PQ7390.L40 J83 1994"
+  ]
+}

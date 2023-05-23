@@ -303,6 +303,7 @@
         isbn_t^3
         issn_s^3
         lccn_s^3
+        uncontrolled_keyword_unstem_search^3
         text
         description_t
         cjk_all
@@ -329,6 +330,7 @@
         isbn_t^30
         issn_s^30
         lccn_s^30
+        uncontrolled_keyword_unstem_search^10
         text^10
         description_t^10
         cjk_all^10

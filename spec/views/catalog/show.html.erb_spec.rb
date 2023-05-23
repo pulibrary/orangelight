@@ -192,4 +192,8 @@ RSpec.describe 'catalog/show' do
       expect(send_to_menu['role']).to be_nil
     end
   end
+
+  describe 'Keyword(s)' do
+    it 'displays keywords when '
+  end
 end
