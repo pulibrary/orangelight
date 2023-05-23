@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   root to: 'catalog#index'
 
   mount Blacklight::Engine => '/'
-  mount BlacklightDynamicSitemap::Engine => '/'
+  # mount BlacklightDynamicSitemap::Engine => '/'
 
   mount Flipflop::Engine => '/features'
 
