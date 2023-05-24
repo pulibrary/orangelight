@@ -52,6 +52,9 @@ gem 'lograge'
 gem 'logstash-event'
 gem 'mail_form'
 gem 'matrix'
+# For memory profiling
+# See https://github.com/MiniProfiler/rack-mini-profiler#memory-profiling for usage
+gem 'memory_profiler'
 # Modernizr.js library
 gem 'modernizr-rails'
 gem 'net-imap', require: false
@@ -65,7 +68,11 @@ gem 'openurl', '~> 1.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'puma', '~> 6.0'
+# For profiling
+gem 'rack-mini-profiler'
 gem 'rake'
+# Needed for rack-mini-profiler storage
+gem 'redis'
 # Interact with Solr
 gem 'rsolr'
 # Should this be in the test, development group?
@@ -76,6 +83,8 @@ gem 'sass-rails', '~> 6.0'
 gem 'simple_form'
 gem 'sneakers'
 gem 'sprockets-es6'
+# For call-stack profiling flamegraphs
+gem 'stackprof'
 gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.5.2.2'
 gem 'string_rtl'
 gem 'terser', '~> 1.1'

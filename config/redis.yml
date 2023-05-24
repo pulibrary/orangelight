@@ -1,0 +1,34 @@
+defaults: &defaults
+  host: 'localhost'
+  port: '6379'
+  db: 'orangelight_default'
+development:
+  <<: *defaults
+  host: <%= ENV['lando_orangelight_redis_conn_host'] %>
+  port: <%= ENV['lando_orangelight_redis_conn_port'] %>
+  db: 'orangelight_dev'
+test:
+  <<: *defaults
+  host: <%= ENV['lando_orangelight_redis_conn_host'] %>
+  port: <%= ENV['lando_orangelight_redis_conn_port'] %>
+  db: 'orangelight_test'
+production:
+  <<: *defaults
+  host: <%= ENV['OL_REDIS_HOST'] %>
+  port: <%= ENV['OL_REDIS_PORT'] || '6379' %>
+  db: 'orangelight_prod'
+staging:
+  <<: *defaults
+  host: <%= ENV['OL_REDIS_HOST'] %>
+  port: <%= ENV['OL_REDIS_PORT'] || '6379' %>
+  db: 'orangelight_staging'
+alma_qa:
+  <<: *defaults
+  host: <%= ENV['OL_REDIS_HOST'] %>
+  port: <%= ENV['OL_REDIS_PORT'] || '6379' %>
+  db: 'orangelight_qa'
+qa:
+  <<: *defaults
+  host: <%= ENV['OL_REDIS_HOST'] %>
+  port: <%= ENV['OL_REDIS_PORT'] || '6379' %>
+  db: 'orangelight_qa'

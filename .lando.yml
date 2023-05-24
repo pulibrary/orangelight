@@ -21,6 +21,9 @@ services:
   orangelight_database:
     type: postgres:13
     portforward: true
+  orangelight_redis:
+    type: redis:6.0.16
+    portforward: true
 proxy:
   orangelight_test_solr:
     - orangelight.test.solr.lndo.site:8983
