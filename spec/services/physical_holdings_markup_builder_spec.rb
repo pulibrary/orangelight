@@ -744,7 +744,8 @@ end
 
 def mock_solr_document
   allow_any_instance_of(SolrDocument).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
-  allow(document).to receive(:[]).and_return('data')
+  allow(document).to receive(:[]).and_return(['data'])
   allow(document).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
   allow(document).to receive(:holdings_all_display).and_return({ 'host_id' => { 'items' => [{ 'barcode' => 'host123' }] } })
+  allow(document).to receive(:first)
 end
