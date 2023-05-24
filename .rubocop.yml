@@ -138,7 +138,6 @@ Metrics/PerceivedComplexity:
 Naming/FileName:
   Exclude:
     - 'Capfile'
-    - 'Gemfile'
     - 'config/deploy/alma-production.rb'
     - 'config/deploy/alma-qa.rb'
 
