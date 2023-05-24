@@ -194,6 +194,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     coveralls_reborn (0.25.0)
       simplecov (>= 0.18.1, < 0.22.0)
       term-ansicolor (~> 1.6)
@@ -339,6 +340,7 @@ GEM
       marc (~> 1.0)
     marcel (1.0.2)
     matrix (0.4.2)
+    memory_profiler (1.0.1)
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.1)
@@ -400,6 +402,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.4)
+    rack-mini-profiler (3.1.0)
+      rack (>= 1.2.0)
     rack-proxy (0.7.4)
       rack
     rack-test (2.1.0)
@@ -437,6 +441,10 @@ GEM
     rainbow (3.1.1)
     rake (13.0.6)
     rbtree (0.4.6)
+    redis (5.0.6)
+      redis-client (>= 0.9.0)
+    redis-client (0.14.1)
+      connection_pool
     regexp_parser (2.6.1)
     request_store (1.5.1)
       rack (>= 1.4)
@@ -557,6 +565,7 @@ GEM
     sshkit (1.21.3)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    stackprof (0.2.25)
     string_rtl (0.1.0)
     sync (0.5.0)
     term-ansicolor (1.7.1)
@@ -686,6 +695,7 @@ DEPENDENCIES
   logstash-event
   mail_form
   matrix
+  memory_profiler
   modernizr-rails
   net-imap
   net-ldap
@@ -697,9 +707,11 @@ DEPENDENCIES
   pg
   pry-byebug
   puma (~> 6.0)
+  rack-mini-profiler
   rails (~> 6.1, >= 6.1.7.1)
   rails-controller-testing
   rake
+  redis
   rsolr
   rspec-rails
   rspec_junit_formatter
@@ -709,6 +721,7 @@ DEPENDENCIES
   sneakers
   solargraph
   sprockets-es6
+  stackprof
   string_rtl
   stringex!
   terser (~> 1.1)

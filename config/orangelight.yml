@@ -12,6 +12,10 @@ defaults: &defaults
   report_harmful_language_form:
     to: <%= ENV['OL_HARMFUL_CONTENT_TO'] %>
   firestone_locator_base_url: https://locator-prod.princeton.edu
+  redis:
+    host: 'localhost'
+    port: '6379'
+    db: 'orangelight_default'
   show_page:
     linked_documents:
       maximum: 3
@@ -22,6 +26,10 @@ development:
   <<: *defaults
   ask_a_question_form:
     to: 'test-question@princeton.edu'
+  redis:
+    host: <%= ENV['lando_orangelight_redis_conn_host'] %>
+    port: <%= ENV['lando_orangelight_redis_conn_port'] %>
+    db: 'orangelight_dev'
   suggest_correction_form:
     to: 'test-correction@princeton.edu'
   report_harmful_language_form:
@@ -33,6 +41,10 @@ test:
     cc: 'test2w@princeton.edu, test3@princeton.edu'
   ask_a_question_form:
     to: 'test-question@princeton.edu'
+  redis:
+    host: <%= ENV['lando_orangelight_redis_conn_host'] %>
+    port: <%= ENV['lando_orangelight_redis_conn_port'] %>
+    db: 'orangelight_test'
   suggest_correction_form:
     to: 'test-correction@princeton.edu'
   report_harmful_language_form:
@@ -40,12 +52,20 @@ test:
 
 production:
   <<: *defaults
+  redis:
+    host: <%= ENV['OL_REDIS_HOST'] %>
+    port: <%= ENV['OL_REDIS_PORT'] || '6379' %>
+    db: 'orangelight_prod'
   events:
     server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
     exchange: 'orangelight_events'
 
 staging:
   <<: *defaults
+  redis:
+    host: <%= ENV['OL_REDIS_HOST'] %>
+    port: <%= ENV['OL_REDIS_PORT'] || '6379' %>
+    db: 'orangelight_staging'
   events:
     server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
     exchange: 'orangelight_events'
@@ -53,11 +73,19 @@ staging:
 
 alma_qa:
   <<: *defaults
+  redis:
+    host: <%= ENV['OL_REDIS_HOST'] %>
+    port: <%= ENV['OL_REDIS_PORT'] || '6379' %>
+    db: 'orangelight_qa'
   events:
     server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
     exchange: 'orangelight_events'
 qa:
   <<: *defaults
+  redis:
+    host: <%= ENV['OL_REDIS_HOST'] %>
+    port: <%= ENV['OL_REDIS_PORT'] || '6379' %>
+    db: 'orangelight_qa'
   events:
     server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
     exchange: 'orangelight_events'

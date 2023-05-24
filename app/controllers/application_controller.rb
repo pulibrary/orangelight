@@ -65,4 +65,8 @@ class ApplicationController < ActionController::Base
       authenticate_user!
       head :forbidden unless current_user.admin?
     end
+
+    before_action do
+      Rack::MiniProfiler.authorize_request if current_user&.admin?
+    end
 end

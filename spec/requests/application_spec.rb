@@ -94,4 +94,34 @@ RSpec.describe ApplicationController, type: :request do
       end
     end
   end
+
+  describe 'profiling authentication' do
+    let(:user) { FactoryBot.create(:user) }
+    before do
+      login_as(user)
+      allow(ApplicationController).to receive(:current_user).and_return(user)
+    end
+
+    context 'as a non-admin user' do
+      it 'does not authorize the user' do
+        allow(Rack::MiniProfiler).to receive(:authorize_request)
+        get '/'
+        expect(Rack::MiniProfiler).not_to have_received(:authorize_request)
+      end
+    end
+    context 'as an admin user' do
+      around do |example|
+        cached_admin_netids = ENV['ORANGELIGHT_ADMIN_NETIDS'] || ''
+        ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids + " #{user.uid}"
+        example.run
+        ENV['ORANGELIGHT_ADMIN_NETIDS'] = cached_admin_netids
+      end
+
+      it 'authorizes the user' do
+        allow(Rack::MiniProfiler).to receive(:authorize_request)
+        get '/'
+        expect(Rack::MiniProfiler).to have_received(:authorize_request)
+      end
+    end
+  end
 end

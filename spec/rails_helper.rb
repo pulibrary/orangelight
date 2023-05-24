@@ -54,6 +54,7 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Capybara::RSpecMatchers, type: :request
   config.include Features::SessionHelpers, type: :feature
+  config.include Features::SessionHelpers, type: :system
   config.include Devise::Test::IntegrationHelpers, type: :request
 
   config.include ViewComponent::TestHelpers, type: :component
