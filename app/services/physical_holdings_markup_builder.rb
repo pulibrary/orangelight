@@ -274,40 +274,26 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   # Generate the links for a given holding
   # TODO: Come back and remove class method calls
   def request_placeholder(adapter, holding_id, location_rules, holding)
-    # check if it is a boundwith and read the id for each holding
-    # so that it will be "/request/#{doc_id}", where doc_id can be either the record page mms_id or the host id(s) if they exist.
     doc_id = doc_id(holding)
     view_base = ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil)
-    link = if display_direct_aeon_link?(location_rules, holding_id)
-             AeonRequestButtonComponent.new(document: adapter.document, holding: { doc_id: holding }).render_in(view_base)
-           elsif self.class.scsb_location?(location_rules)
-             RequestButtonComponent.new(doc_id:, location: location_rules, holding:).render_in(view_base)
-           elsif self.class.temporary_holding_id?(holding_id)
-             holding_identifier = self.class.temporary_location_holding_id_first(holding)
-             RequestButtonComponent.new(doc_id:, holding_id: holding_identifier, location: location_rules).render_in(view_base)
-           else
-             RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules).render_in(view_base)
-           end
+    link = request_link_component(adapter:, holding_id:, doc_id:, holding:, location_rules:).render_in(view_base)
     markup = self.class.location_services_block(adapter, holding_id, location_rules, link, holding)
     markup
   end
 
-  def display_direct_aeon_link?(location_rules, holding_id)
-    return true if aeon_location?(location_rules)
-
-    # If it is not from SCSB or alma, it must be aeon
-    return true unless self.class.scsb_location?(location_rules) || adapter.alma_holding?(holding_id)
-
-    false
-  end
-
-  def request_url(doc_id:, aeon:, holding_id: nil)
-    query = if holding_id
-              { mfhd: holding_id, aeon: aeon.to_s }.to_query
-            else
-              { aeon: aeon.to_s }.to_query
-            end
-    URI::HTTP.build(path: "/requests/#{doc_id}", query:).request_uri
+  def request_link_component(adapter:, holding_id:, doc_id:, holding:, location_rules:)
+    if holding_id == 'thesis' || self.class.numismatics?(holding_id)
+      AeonRequestButtonComponent.new(document: adapter.document, holding: { doc_id: holding }, url_class: Requests::NonAlmaAeonUrl)
+    elsif aeon_location?(location_rules)
+      AeonRequestButtonComponent.new(document: adapter.document, holding: { doc_id: holding })
+    elsif self.class.scsb_location?(location_rules)
+      RequestButtonComponent.new(doc_id:, location: location_rules, holding:)
+    elsif self.class.temporary_holding_id?(holding_id)
+      holding_identifier = self.class.temporary_location_holding_id_first(holding)
+      RequestButtonComponent.new(doc_id:, holding_id: holding_identifier, location: location_rules)
+    else
+      RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules)
+    end
   end
 
   attr_reader :adapter
