@@ -6,13 +6,13 @@ module Requests
 
       def aeon_basic_params
         super.merge({
-                      Action: 10,
-                      Form: 21,
+                      Action: 10, # Action 10 is "transaction" per https://support.atlas-sys.com/hc/en-us/articles/360011920133-Aeon-Web-Action-Form-and-Type-Numbers
+                      Form: 21, # Form 21 is "RequestDefault" per https://support.atlas-sys.com/hc/en-us/articles/360011920133-Aeon-Web-Action-Form-and-Type-Numbers
                       ItemTitle: aeon_title.truncate(247),
                       ItemAuthor: author,
                       ItemDate: @document[:pub_date_start_sort],
                       ItemVolume: @holding[:location],
-                      genre:
+                      genre: aeon_genre
                     }).compact
       end
 
@@ -25,7 +25,7 @@ module Requests
         " [ #{@document.first(:form_genre_display)} ]" unless @document[:form_genre_display].nil?
       end
 
-      def genre
+      def aeon_genre
         return 'numismatics' if holding[:call_number]&.downcase&.start_with?('coin')
         'thesis'
       end
