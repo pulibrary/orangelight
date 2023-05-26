@@ -51,6 +51,18 @@ RSpec.describe Requests::AeonUrl do
       expect(subject).to include('Site=MUDD')
     end
   end
+  context 'when the location is at a Marquand location' do
+    let(:holdings) do
+      { "12345" => {
+        "location_code" => "marquand$pz",
+        "call_number" => "Coin 3750",
+        "items" => [{ "holding_id" => "22740186070006421", "id" => "23740186060006421" }]
+      } }
+    end
+    it 'uses MARQ as the site' do
+      expect(subject).to include('Site=MARQ')
+    end
+  end
   context 'when a thesis holding' do
     let(:holdings) do
       { "thesis": { "call_number": "AC102", "call_number_browse": "AC102", "dspace": true } }

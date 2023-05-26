@@ -68,9 +68,16 @@ module Requests
         @document.holdings_all_display.values.first&.fetch('items', nil)&.first
       end
 
+      def at_marquand?
+        holding_location&.fetch('library', nil)&.fetch('code', nil) == 'marquand'
+      end
+
       def at_mudd?
-        location = ::Bibdata.holding_locations.fetch(shelf_location_code, nil)
-        location&.fetch('library', nil)&.fetch('code', nil) == 'mudd' || thesis?
+        holding_location&.fetch('library', nil)&.fetch('code', nil) == 'mudd' || thesis?
+      end
+
+      def holding_location
+        ::Bibdata.holding_locations.fetch(shelf_location_code, nil)
       end
 
       def shelf_location_code
@@ -87,6 +94,7 @@ module Requests
 
       def site
         return 'MUDD' if at_mudd?
+        return 'MARQ' if at_marquand?
         'RBSC'
       end
   end
