@@ -1539,7 +1539,7 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         end
       end
 
-      it "does not allow reuesting of on order books" do
+      it "does not allow requesting of on order books" do
         visit "requests/99125492003506421?mfhd=22927395910006421"
         expect(page).to have_content 'This item is not available'
       end
@@ -1604,6 +1604,14 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         confirm_email = ActionMailer::Base.deliveries.last
         expect(confirm_email.subject).to eq("In Process Request")
       end
+    end
+    context 'when multiple checkboxes selected' do
+      # if delivery mode in one checkbox parent is selected
+      # the request button is active
+      # deselecting another checkbox will not deactivate the request button
+      # visit 'requests/99125465081006421?mfhd=22922148510006421'
+      ## better to work also ticket https://github.com/pulibrary/orangelight/issues/3595
+
     end
   end
   # rubocop:enable RSpec/MultipleExpectations

@@ -140,7 +140,9 @@ $(function() {
         if (selected && deMode && deLocation) {
             activateRequestButton();
         } else {
-            deactivateRequestButton();
+            if ($('input:checkbox').filter(':checked').length < 1){
+                deactivateRequestButton();
+            }
         }
     }
 
