@@ -231,5 +231,11 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
         expect(page).to have_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/aeon/aeon\.dll/OpenURL.*rft\.title=The\+reply\+of\+a\+member\+of\+Parliament.*CallNumber=HJ5118\+\.H4\+1733'))
       end
     end
+    context 'aeon holding with multiple items' do
+      it 'links to the requests form so user can select the item they want' do
+        visit("catalog/9930960283506421")
+        expect(page).to have_link('Reading Room Request', href: '/requests/9930960283506421?aeon=true&mfhd=22632199160006421')
+      end
+    end
   end
 end

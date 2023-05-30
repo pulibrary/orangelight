@@ -165,6 +165,27 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(request_placeholder_markup).to include 'href="/requests/123456?aeon=false&amp;mfhd=3668455"'
     end
 
+    context 'an aeon record with multiple items' do
+      let(:location_rules) do
+        {
+          "aeon_location": true
+        }
+      end
+      let(:holding) do
+        {
+          "items" => [
+            { "barcode" => "123" },
+            { "barcode" => "456" }
+          ]
+        }.with_indifferent_access
+      end
+      it 'links to the requests form' do
+        allow_any_instance_of(SolrDocument).to receive(:to_ctx).and_return(OpenURL::ContextObject.new)
+        mock_solr_document
+        expect(request_placeholder_markup).to include 'href="/requests/123456?aeon=true&amp;mfhd=3668455"'
+      end
+    end
+
     context "a numismatics item" do
       let(:holding_id) { "numismatics" }
       let(:location_rules) do
