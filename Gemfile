@@ -70,6 +70,7 @@ gem 'pg'
 gem 'puma', '~> 6.0'
 # For profiling
 gem 'rack-mini-profiler'
+gem 'rack-attack'
 gem 'rake'
 # Needed for rack-mini-profiler storage
 gem 'redis'
