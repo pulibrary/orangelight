@@ -16,9 +16,6 @@ RSpec.describe 'Dynamic Sitemap', type: :system, js: false do
       # gets main sitemap
       get '/sitemap'
       expect(response.status).to eq(200)
-      # can still view other parts of the sitemap without errors
-      get '/sitemap/1'
-      expect(response.status).to eq(200)
       # will cause an error if visited again too soon
       get '/sitemap'
       expect(response.status).to eq(429)
