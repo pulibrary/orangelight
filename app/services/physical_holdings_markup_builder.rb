@@ -284,6 +284,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   def request_link_component(adapter:, holding_id:, doc_id:, holding:, location_rules:)
     if holding_id == 'thesis' || self.class.numismatics?(holding_id)
       AeonRequestButtonComponent.new(document: adapter.document, holding: { doc_id: holding }, url_class: Requests::NonAlmaAeonUrl)
+    elsif holding['items'] && holding['items'].length > 1
+      RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules)
     elsif aeon_location?(location_rules)
       AeonRequestButtonComponent.new(document: adapter.document, holding: { doc_id: holding })
     elsif self.class.scsb_location?(location_rules)
