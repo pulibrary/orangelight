@@ -35,5 +35,20 @@ RSpec.describe Blacklight::Marc::CtxBuilder do
         expect(builder.build.referent.get_metadata('pub')).to eq('Penguin')
       end
     end
+    context 'when title exists in solr' do
+      context 'with a short title' do
+        let(:document) { SolrDocument.new('title_citation_display': ['Potato handbook']) }
+        it 'uses the full title for the title fields' do
+          expect(builder.build.referent.get_metadata('title')).to eq('Potato handbook')
+        end
+      end
+      context 'with a very long title' do
+        let(:document) { SolrDocument.new('title_citation_display': ["Essai sur l'éducation des aveugles, ou, Exposé de différens moyens, vérifiés par l'expérience, pour les mettre en état de lire, à l'aide du tact, d'imprimer des livres dans lesquels ils puissent prendre des connoissances de langues, d'histoire, de géographie, de musique, &c., d'exécuter différens travaux relatifs aux métiers, &c. : dédié au Roi"]) }
+        it 'uses a truncated title for the title fields' do
+          expect(builder.build.referent.get_metadata('title')).to eq("Essai sur l'éducation des aveugles, ou, Exposé de différens moyens, vérifiés par l'expérience, pour les mettre en état de lire, à l'aide du tact, d'imprimer des livres dans lesquels ils puissent prendre des connoissances de langues, d'hist...")
+          expect(builder.build.referent.get_metadata('title').length).to eq(250)
+        end
+      end
+    end
   end
 end

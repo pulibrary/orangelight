@@ -83,8 +83,9 @@ module Blacklight
           @document['pub_citation_display']&.first
         end
 
+        # Truncate titles to avoid overly long OpenURLs
         def title
-          @document['title_citation_display']&.first
+          @document['title_citation_display']&.first&.truncate(250)
         end
     end
   end
