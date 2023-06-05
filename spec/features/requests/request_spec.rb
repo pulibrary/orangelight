@@ -1611,7 +1611,6 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
       # deselecting another checkbox will not deactivate the request button
       # visit 'requests/99125465081006421?mfhd=22922148510006421'
       ## better to work also ticket https://github.com/pulibrary/orangelight/issues/3595
-
     end
   end
   # rubocop:enable RSpec/MultipleExpectations
