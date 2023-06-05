@@ -68,6 +68,8 @@ gem 'openurl', '~> 1.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'puma', '~> 6.0'
+# For limiting request rates
+gem 'rack-attack'
 # For profiling
 gem 'rack-mini-profiler'
 gem 'rake'
