@@ -6,7 +6,7 @@ $(function() {
         return regex.test(email);
     }
 
-    $("form#logins").submit(function(event) {
+    $("form#logins").on("submit", function(event) {
         if (!isEmail($("#request_email").val())) {
             event.preventDefault();
             $("#request_email").css("background-color","#f2dede");
@@ -28,13 +28,13 @@ $(function() {
         }
     });
 
-    $("#no_netid").click(function(event) {
+    $("#no_netid").on("click", function(event) {
         event.preventDefault();
         $("#no_netid").hide();
         $("#other_user_account_info").show();
     });
 
-    $('#no_netid').keydown(function (e) {
+    $('#no_netid').on("keydown", function (e) {
         const keyCode = e.keyCode || e.which;
 
         if (keyCode == 13) {
@@ -43,7 +43,7 @@ $(function() {
         }
     });
 
-    $("#go_back").click(function(event) {
+    $("#go_back").on("click", function(event) {
         event.preventDefault();
         $("#no_netid").show();
         $("#other_user_account_info").hide();
@@ -116,8 +116,10 @@ $(function() {
     const deMode_ref = deliveryMode();
 
     function requestable(el) {
+        console.log(el);
         const parent = $(el).closest('[id^="request_"]');
         let selected = parent.find('input[type=checkbox][id^="requestable_selected"').is(':checked');
+        console.log(parent);
         let deLocation = deLocation_ref();
         let deMode = deMode_ref();
 
@@ -161,7 +163,7 @@ $(function() {
             if (selected && deMode && deLocation) {
                 activateRequestButton();
             } else {
-                deactivateRequestButton();
+                requestable(); //deactivateRequestButton();
             }
         } else {
             deactivateRequestButton();
