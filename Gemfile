@@ -12,7 +12,7 @@ gem 'blacklight', '~> 7.0'
 # advanced search functionality
 gem 'blacklight_advanced_search', '~> 7.0'
 gem 'blacklight_dynamic_sitemap', '~> 0.6.0'
-gem 'blacklight-marc', github: 'projectblacklight/blacklight-marc', ref: 'a463221'
+gem 'blacklight-marc', '~>8.1'
 # slider limit support
 gem 'blacklight_range_limit', '~> 8.2'
 gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'main'
