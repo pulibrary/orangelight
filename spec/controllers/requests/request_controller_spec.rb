@@ -21,7 +21,7 @@ describe Requests::RequestController, type: :controller, vcr: { cassette_name: '
   end
 
   describe 'GET #generate' do
-    context "An valid user" do
+    context "A valid user" do
       before do
         sign_in(user)
         stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
@@ -65,6 +65,17 @@ describe Requests::RequestController, type: :controller, vcr: { cassette_name: '
           source: 'pulsearch',
           system_id: '9995768803506421',
           mfhd: '22497016220006421'
+        }
+        expect(response.status).to eq(302)
+      end
+      xit 'redirects you when an aeon record with over 500 items is requested' do
+        stub_holding_locations
+        stub_single_holding_location('rare$hsve')
+        stub_catalog_raw(bib_id: '9930682063506421')
+        get :generate, params: {
+          source: 'pulsearch',
+          system_id: '9930682063506421',
+          mfhd: '22707844130006421'
         }
         expect(response.status).to eq(302)
       end
