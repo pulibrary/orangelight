@@ -26,7 +26,9 @@ module Requests
     def initialize(bib:, holding: nil, item: nil, location: nil, patron:)
       @bib = bib
       @holding = holding
-      @item = item.present? ? Item.new(item) : Item::NullItem.new
+      # Item inherits from SimpleDelegator which requires at least one argument
+      # The argument is the Object that SimpleDelegator will delegate to.
+      @item = item.present? ? Item.new(item) : NullItem.new({})
       @location = location
       @services = []
       @patron = patron

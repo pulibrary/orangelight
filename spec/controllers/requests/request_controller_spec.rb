@@ -68,7 +68,7 @@ describe Requests::RequestController, type: :controller, vcr: { cassette_name: '
         }
         expect(response.status).to eq(302)
       end
-      xit 'redirects you when an aeon record with over 500 items is requested' do
+      it 'redirects you when an aeon record with over 500 items is requested' do
         stub_holding_locations
         stub_single_holding_location('rare$hsve')
         stub_catalog_raw(bib_id: '9930682063506421')

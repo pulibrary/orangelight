@@ -203,13 +203,16 @@ module Requests
 
       ### builds a list of possible requestable items
       # returns a collection of requestable objects or nil
+      # @return [Array<Requests::Requestable>] array containing Requests::Requestables
       def build_requestable
         return [] if doc._source.blank?
         if partner_system_id?
           build_scsb_requestable
         elsif !items.nil?
+          # for single aeon item, ends up in this statement
           build_requestable_with_items
         else
+          # for too many aeon items, ends up in this statement
           build_requestable_from_data
         end
       end
@@ -218,6 +221,7 @@ module Requests
         @availability_data ||= items_by_id(id, scsb_owning_institution(scsb_location))
       end
 
+      # @return [Array<Requests::Requestable>] array containing Requests::Requestables
       def build_scsb_requestable
         requestable_items = []
         ## scsb processing
@@ -233,6 +237,7 @@ module Requests
         requestable_items
       end
 
+      # @return [Array<Requests::Requestable>] array containing Requests::Requestables
       def build_holding_scsb_items(id:, values:, availability_data:, requestable_items:)
         return requestable_items if values['items'].nil?
         barcodesort = build_barcode_sort(items: values['items'], availability_data:)
@@ -270,6 +275,7 @@ module Requests
         end
       end
 
+      # @return [Array<Requests::Requestable>] array containing Requests::Requestables
       def build_requestable_with_items
         requestable_items = []
         barcodesort = {}
@@ -281,6 +287,7 @@ module Requests
         requestable_items.compact
       end
 
+      # @return [Array<Requests::Requestable>] array containing Requests::Requestables or empty array
       def build_requestable_from_data
         return if doc[:holdings_1display].nil?
         @mfhd ||= 'thesis' if thesis?
@@ -330,6 +337,7 @@ module Requests
         end
       end
 
+      # This method will always return a Requestable object where .item is a NullItem, because we don't pass an item in
       def build_requestable_from_holding(holding_id, holding)
         return if holding.blank?
         params = build_requestable_params(holding: { holding_id.to_sym.to_s => holding }, location:)
