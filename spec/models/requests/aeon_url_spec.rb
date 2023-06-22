@@ -8,6 +8,7 @@ RSpec.describe Requests::AeonUrl do
       "library" => "Special Collections",
       "location_code" => "rare$num",
       "call_number" => "Coin 3750",
+      "sub_location" => ["Euro 20Q"],
       "items" => [{ "holding_id" => "22740186070006421", "id" => "23740186060006421", "barcode" => "24680" }]
     } }
   end
@@ -29,6 +30,9 @@ RSpec.describe Requests::AeonUrl do
   end
   it 'takes the CallNumber from holdings_1display' do
     expect(subject).to include('CallNumber=Coin+3750')
+  end
+  it 'takes the SubLocation from the holdings_1display' do
+    expect(subject).to include('SubLocation=Euro+20Q')
   end
   it 'typically uses RBSC as the Site' do
     expect(subject).to include('Site=RBSC')

@@ -8,7 +8,7 @@ class ObjectWithAeon
   end
 
   def holding
-    { "22740186070006421" => { "items" => [{ "holding_id" => "22740186070006421", "id" => "23740186060006421" }] } }
+    { "22740186070006421" => { "sub_location" => ["Euro 20Q"], "items" => [{ "holding_id" => "22740186070006421", "id" => "23740186060006421" }] } }
   end
 end
 
@@ -23,6 +23,10 @@ describe Requests::Aeon do
   describe '#aeon_basic_params' do
     it 'takes its ReferenceNumber from the bib MMS ID' do
       expect(subject.aeon_basic_params[:ReferenceNumber]).to eq(1234)
+    end
+
+    it 'takes its SubLocation from the holdings_1display' do
+      expect(subject.aeon_basic_params[:SubLocation]).to eq('Euro 20Q')
     end
   end
 end
