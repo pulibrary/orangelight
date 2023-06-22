@@ -42,7 +42,7 @@ module Requests
           CallNumber: holding['call_number'],
           Site: site,
           Location: shelf_location_code,
-          SubLocation: location_note,
+          SubLocation: sub_location,
           ItemInfo1: I18n.t("requests.aeon.access_statement"),
           ItemNumber: item&.fetch('barcode', nil)
         }.compact
@@ -84,8 +84,8 @@ module Requests
         holding&.fetch('location_code', nil)
       end
 
-      def location_note
-        holding[:location_note]&.first
+      def sub_location
+        holding&.fetch('sub_location', nil)&.first
       end
 
       def thesis?
