@@ -17,11 +17,10 @@ The gem was integrated into orangelight in April of 2022 by moving the code from
 ```
 
 * [Borrow Direct](https://catalog.princeton.edu/borrow-direct)
-  Can cancel requests by connecting to the URL above
-  * Used to request items from partners.  Only connects for unavailable items that include an ISBN number
+  * Used to find items from partners. Has switched to the [ReShare platform](https://projectreshare.org/), and requests are made via Illiad (see below)
 * Illiad
   Can cancel request from [orangelight](https://catalog.princeton.edu/account/digitization_requests)
-  * Used to request unavailable items that are not borrow direct eligible.
+  * Used to request unavailable items that are deemed eligible for a resource sharing request
   * Used to request Digitizations
 * [Alma](https://princeton.alma.exlibrisgroup.com/discovery/account?vid=01PRI_INST:Services&lang=EN&section=overview)
   can cancel request by connecting to the URL above
