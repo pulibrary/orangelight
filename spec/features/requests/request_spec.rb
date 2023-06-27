@@ -2,1503 +2,158 @@
 require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
-describe 'request', vcr: { cassette_name: 'request_features', record: :none }, type: :feature do
+describe 'request form', vcr: { cassette_name: 'request_features', record: :none }, type: :feature do
   # rubocop:disable RSpec/MultipleExpectations
-  describe "request form" do
-    let(:mms_id) { '9994933183506421?mfhd=22558528920006421' }
-    let(:thesis_id) { 'dsp01rr1720547' }
-    let(:in_process_id) { '99117665883506421?mfhd=22707341710006421' }
-    # going to need to review this with Mark to see if this example is good
-    let(:recap_in_process_id) { '99114026863506421?mfhd=22753408610006421' }
-    let(:on_order_id) { '99103251433506421?mfhd=22480270140006421' }
-    let(:no_items_id) { '9941274093506421?mfhd=22690999210006421' }
-    let(:on_shelf_no_items_id) { '993083506421?mfhd=22740191170006421' }
-    let(:temp_item_id) { '4815239' }
-    let(:temp_id_mfhd) { '5018096' }
-    let(:mutiple_items) { '9979171923506421' }
+  let(:mms_id) { '9994933183506421?mfhd=22558528920006421' }
+  let(:thesis_id) { 'dsp01rr1720547' }
+  let(:in_process_id) { '99117665883506421?mfhd=22707341710006421' }
+  # going to need to review this with Mark to see if this example is good
+  let(:recap_in_process_id) { '99114026863506421?mfhd=22753408610006421' }
+  let(:on_order_id) { '99103251433506421?mfhd=22480270140006421' }
+  let(:no_items_id) { '9941274093506421?mfhd=22690999210006421' }
+  let(:on_shelf_no_items_id) { '993083506421?mfhd=22740191170006421' }
+  let(:temp_item_id) { '4815239' }
+  let(:temp_id_mfhd) { '5018096' }
+  let(:mutiple_items) { '9979171923506421' }
 
-    let(:transaction_url) { "https://lib-illiad.princeton.edu/ILLiadWebPlatform/transaction" }
-    let(:transaction_note_url) { "https://lib-illiad.princeton.edu/ILLiadWebPlatform/transaction/1093806/notes" }
+  let(:transaction_url) { "https://lib-illiad.princeton.edu/ILLiadWebPlatform/transaction" }
+  let(:transaction_note_url) { "https://lib-illiad.princeton.edu/ILLiadWebPlatform/transaction/1093806/notes" }
 
-    let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
-    let(:valid_patron_no_barcode_response) { fixture('/bibdata_patron_no_barcode_response.json') }
-    let(:valid_barcode_patron_response) { fixture('/bibdata_patron_response_barcode.json') }
-    let(:valid_patron_no_campus_response) { fixture('/bibdata_patron_response_no_campus.json') }
-    let(:valid_graduate_student_no_campus_response) { fixture('/bibdata_patron_response_graduate_no_campus.json') }
-    let(:invalid_patron_response) { fixture('/bibdata_not_found_patron_response.json') }
+  let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
+  let(:valid_patron_no_barcode_response) { fixture('/bibdata_patron_no_barcode_response.json') }
+  let(:valid_barcode_patron_response) { fixture('/bibdata_patron_response_barcode.json') }
+  let(:valid_patron_no_campus_response) { fixture('/bibdata_patron_response_no_campus.json') }
+  let(:valid_graduate_student_no_campus_response) { fixture('/bibdata_patron_response_graduate_no_campus.json') }
+  let(:invalid_patron_response) { fixture('/bibdata_not_found_patron_response.json') }
 
-    let(:responses) do
+  let(:responses) do
+    {
+      transaction_created: '{"TransactionNumber":1093806,"Username":"abc123","RequestType":"Article","PhotoArticleAuthor":null,"PhotoJournalTitle":null,"PhotoItemPublisher":null,"LoanPlace":null,"LoanEdition":null,"PhotoJournalTitle":"Test Title","PhotoJournalVolume":"21","PhotoJournalIssue":"4","PhotoJournalMonth":null,"PhotoJournalYear":"2011","PhotoJournalInclusivePages":"165-183","PhotoArticleAuthor":"Williams, Joseph; Woolwine, David","PhotoArticleTitle":"Test Article","CitedIn":null,"CitedTitle":null,"CitedDate":null,"CitedVolume":null,"CitedPages":null,"NotWantedAfter":null,"AcceptNonEnglish":false,"AcceptAlternateEdition":true,"ArticleExchangeUrl":null,"ArticleExchangePassword":null,"TransactionStatus":"Awaiting Request Processing","TransactionDate":"2020-06-15T18:34:44.98","ISSN":"XXXXX","ILLNumber":null,"ESPNumber":null,"LendingString":null,"BaseFee":null,"PerPage":null,"Pages":null,"DueDate":null,"RenewalsAllowed":false,"SpecIns":null,"Pieces":null,"LibraryUseOnly":null,"AllowPhotocopies":false,' \
+                          '"LendingLibrary":null,"ReasonForCancellation":null,"CallNumber":null,"Location":null,"Maxcost":null,"ProcessType":"Borrowing","ItemNumber":null,"LenderAddressNumber":null,"Ariel":false,"Patron":null,"PhotoItemAuthor":null,"PhotoItemPlace":null,"PhotoItemPublisher":null,"PhotoItemEdition":null,"DocumentType":null,"InternalAcctNo":null,"PriorityShipping":null,"Rush":"Regular","CopyrightAlreadyPaid":"Yes","WantedBy":null,"SystemID":"OCLC","ReplacementPages":null,"IFMCost":null,"CopyrightPaymentMethod":null,"ShippingOptions":null,"CCCNumber":null,"IntlShippingOptions":null,"ShippingAcctNo":null,"ReferenceNumber":null,"CopyrightComp":null,"TAddress":null,"TAddress2":null,"TCity":null,"TState":null,"TZip":null,"TCountry":null,"TFax":null,"TEMailAddress":null,"TNumber":null,"HandleWithCare":false,"CopyWithCare":false,"RestrictedUse":false,"ReceivedVia":null,"CancellationCode":null,"BillingCategory":null,"CCSelected":null,"OriginalTN":null,"OriginalNVTGC":null,"InProcessDate":null,' \
+                          '"InvoiceNumber":null,"BorrowerTN":null,"WebRequestForm":null,"TName":null,"TAddress3":null,"IFMPaid":null,"BillingAmount":null,"ConnectorErrorStatus":null,"BorrowerNVTGC":null,"CCCOrder":null,"ShippingDetail":null,"ISOStatus":null,"OdysseyErrorStatus":null,"WorldCatLCNumber":null,"Locations":null,"FlagType":null,"FlagNote":null,"CreationDate":"2020-06-15T18:34:44.957","ItemInfo1":null,"ItemInfo2":null,"ItemInfo3":null,"ItemInfo4":null,"SpecIns":null,"SpecialService":"Digitization Request: ","DeliveryMethod":null,"Web":null,"PMID":null,"DOI":null,"LastOverdueNoticeSent":null,"ExternalRequest":null}',
+      note_created: '{"Message":"An error occurred adding note to transaction 1093946"}'
+    }
+  end
+
+  before do
+    stub_delivery_locations
+  end
+
+  context 'all patrons' do
+    describe 'When unauthenticated patron visits a request item', js: true do
+      it "displays three authentication options" do
+        stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
+        visit '/requests/9999443553506421?mfhd=22743365320006421'
+        expect(page).to have_content(I18n.t('blacklight.login.netid_login_msg'))
+        expect(page).not_to have_content(I18n.t('requests.account.other_user_login_msg'))
+      end
+    end
+  end
+
+  context 'a princeton net ID user' do
+    let(:user) { FactoryBot.create(:user) }
+
+    let(:recap_params) do
       {
-        transaction_created: '{"TransactionNumber":1093806,"Username":"abc123","RequestType":"Article","PhotoArticleAuthor":null,"PhotoJournalTitle":null,"PhotoItemPublisher":null,"LoanPlace":null,"LoanEdition":null,"PhotoJournalTitle":"Test Title","PhotoJournalVolume":"21","PhotoJournalIssue":"4","PhotoJournalMonth":null,"PhotoJournalYear":"2011","PhotoJournalInclusivePages":"165-183","PhotoArticleAuthor":"Williams, Joseph; Woolwine, David","PhotoArticleTitle":"Test Article","CitedIn":null,"CitedTitle":null,"CitedDate":null,"CitedVolume":null,"CitedPages":null,"NotWantedAfter":null,"AcceptNonEnglish":false,"AcceptAlternateEdition":true,"ArticleExchangeUrl":null,"ArticleExchangePassword":null,"TransactionStatus":"Awaiting Request Processing","TransactionDate":"2020-06-15T18:34:44.98","ISSN":"XXXXX","ILLNumber":null,"ESPNumber":null,"LendingString":null,"BaseFee":null,"PerPage":null,"Pages":null,"DueDate":null,"RenewalsAllowed":false,"SpecIns":null,"Pieces":null,"LibraryUseOnly":null,"AllowPhotocopies":false,' \
-                            '"LendingLibrary":null,"ReasonForCancellation":null,"CallNumber":null,"Location":null,"Maxcost":null,"ProcessType":"Borrowing","ItemNumber":null,"LenderAddressNumber":null,"Ariel":false,"Patron":null,"PhotoItemAuthor":null,"PhotoItemPlace":null,"PhotoItemPublisher":null,"PhotoItemEdition":null,"DocumentType":null,"InternalAcctNo":null,"PriorityShipping":null,"Rush":"Regular","CopyrightAlreadyPaid":"Yes","WantedBy":null,"SystemID":"OCLC","ReplacementPages":null,"IFMCost":null,"CopyrightPaymentMethod":null,"ShippingOptions":null,"CCCNumber":null,"IntlShippingOptions":null,"ShippingAcctNo":null,"ReferenceNumber":null,"CopyrightComp":null,"TAddress":null,"TAddress2":null,"TCity":null,"TState":null,"TZip":null,"TCountry":null,"TFax":null,"TEMailAddress":null,"TNumber":null,"HandleWithCare":false,"CopyWithCare":false,"RestrictedUse":false,"ReceivedVia":null,"CancellationCode":null,"BillingCategory":null,"CCSelected":null,"OriginalTN":null,"OriginalNVTGC":null,"InProcessDate":null,' \
-                            '"InvoiceNumber":null,"BorrowerTN":null,"WebRequestForm":null,"TName":null,"TAddress3":null,"IFMPaid":null,"BillingAmount":null,"ConnectorErrorStatus":null,"BorrowerNVTGC":null,"CCCOrder":null,"ShippingDetail":null,"ISOStatus":null,"OdysseyErrorStatus":null,"WorldCatLCNumber":null,"Locations":null,"FlagType":null,"FlagNote":null,"CreationDate":"2020-06-15T18:34:44.957","ItemInfo1":null,"ItemInfo2":null,"ItemInfo3":null,"ItemInfo4":null,"SpecIns":null,"SpecialService":"Digitization Request: ","DeliveryMethod":null,"Web":null,"PMID":null,"DOI":null,"LastOverdueNoticeSent":null,"ExternalRequest":null}',
-        note_created: '{"Message":"An error occurred adding note to transaction 1093946"}'
+        Bbid: "9994933183506421",
+        barcode: "23131438400006421",
+        item: "7303228",
+        lname: "Student",
+        delivery: "p",
+        pickup: "PN",
+        startpage: "",
+        endpage: "",
+        email: "a@b.com",
+        volnum: "",
+        issue: "",
+        aauthor: "",
+        atitle: "",
+        note: ""
       }
     end
 
     before do
-      stub_delivery_locations
+      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+        .to_return(status: 200, body: valid_patron_response, headers: {})
+      login_as user
     end
 
-    context 'all patrons' do
-      describe 'When unauthenticated patron visits a request item', js: true do
-        it "displays three authentication options" do
-          stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
-          visit '/requests/9999443553506421?mfhd=22743365320006421'
-          expect(page).to have_content(I18n.t('blacklight.login.netid_login_msg'))
-          expect(page).not_to have_content(I18n.t('requests.account.other_user_login_msg'))
-        end
-      end
-    end
-
-    context 'a princeton net ID user' do
-      let(:user) { FactoryBot.create(:user) }
-
-      let(:recap_params) do
-        {
-          Bbid: "9994933183506421",
-          barcode: "23131438400006421",
-          item: "7303228",
-          lname: "Student",
-          delivery: "p",
-          pickup: "PN",
-          startpage: "",
-          endpage: "",
-          email: "a@b.com",
-          volnum: "",
-          issue: "",
-          aauthor: "",
-          atitle: "",
-          note: ""
-        }
-      end
-
-      before do
-        stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
-          .to_return(status: 200, body: valid_patron_response, headers: {})
-        login_as user
-      end
-
-      describe 'When visiting an alma ID as a CAS User' do
-        it 'Shows a ReCAP item that is at preservation and conservation as a partner request' do
-          stub_illiad_patron
-          stub_request(:post, transaction_url)
-            .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Zhongguo xin li xue hui", "LoanTitle" => "Xin li ke xue = Journal of psychological science 心理科学 = Journal of psychological science", "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "BF8.C5 H76", "CitedIn" => "https://catalog.princeton.edu/catalog/9941150973506421", "ItemInfo3" => "no.217-218", "ItemInfo4" => nil, "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
-            .to_return(status: 200, body: responses[:transaction_created], headers: {})
-          stub_request(:post, transaction_note_url)
-            .with(body: hash_including("Note" => "Loan Request"))
-            .to_return(status: 200, body: responses[:note_created], headers: {})
-          stub_scsb_availability(bib_id: "9941150973506421", institution_id: "PUL", barcode: '32101099680850', item_availability_status: 'Not Available')
-          visit 'requests/9941150973506421?mfhd=22492663380006421&source=pulsearch'
-          expect(page).to have_content 'Unavailable'
-          check "requestable_selected_23492663220006421"
-          expect(page).to have_content 'Request via Partner Library'
-          expect(page).to have_content 'Pick-up location: Firestone Library'
-          expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Partner Request Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("Xin li ke xue = Journal of psychological science 心理科学 = Journal of psychological science")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        it 'allow CAS patrons to request an available ReCAP item.' do
-          stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
-          scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          stub_request(:post, scsb_url)
-            .with(body: hash_including(author: "", bibId: "9994933183506421", callNumber: "PJ7962.A5495 A95 2016", chapterTitle: "", deliveryLocation: "PA", emailAddress: 'a@b.com', endPage: "", issue: "", itemBarcodes: ["32101095798938"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999",
-                                       requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "ʻAwāṭif madfūnah عواطف مدفونة", username: "jstudent", volume: ""))
-            .to_return(status: 200, body: good_response, headers: {})
-          stub_request(:post, Requests::Config[:scsb_base])
-            .with(headers: { 'Accept' => '*/*' })
-            .to_return(status: 200, body: "<document count='1' sent='true'></document>", headers: {})
-          stub_request(:post, "#{Alma.configuration.region}/almaws/v1/bibs/9994933183506421/holdings/22558528920006421/items/23558528910006421/requests?user_id=960594184")
-            .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
-            .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
-          visit "/requests/#{mms_id}"
-          expect(page).to have_content 'Electronic Delivery'
-          # some weird issue with this and capybara examining the page source shows it is there.
-          expect(page).to have_selector '#request_user_barcode', visible: :hidden
-          choose('requestable__delivery_mode_23558528910006421_print') # chooses 'print' radio button
-          select('Firestone Library', from: 'requestable__pick_up_23558528910006421')
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, scsb_url)).to have_been_made
-          expect(page).to have_content I18n.t("requests.submit.recap_success")
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("ʻAwāṭif madfūnah")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        it 'allows CAS patrons to request In-Process items and can only be delivered to their holding library' do
-          visit "/requests/#{in_process_id}"
-          expect(page).to have_content 'In Process'
-          expect(page).to have_content 'Pick-up location: East Asian Library'
-          expect(page).to have_button('Request this Item', disabled: false)
-          click_button 'Request this Item'
-          expect(page).to have_content I18n.t("requests.submit.in_process_success")
-        end
-
-        it 'makes sure In-Process ReCAP items with no holding library can be delivered anywhere' do
-          stub_scsb_availability(bib_id: "99114026863506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
-          visit "/requests/#{recap_in_process_id}"
-          expect(page).to have_content 'In Process'
-          expect(page.find(:css, ".request--availability").text).to eq("Unavailable")
-          select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23753408600006421')
-          select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23753408600006421')
-          select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23753408600006421')
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          expect(page).to have_content I18n.t("requests.submit.in_process_success")
-          email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("In Process Request")
-          expect(email.to).to eq(["fstcirc@princeton.edu"])
-          expect(email.cc).to be_blank
-          expect(email.html_part.body.to_s).to have_content("Konteneryzacja w PRL")
-          expect(confirm_email.subject).to eq("In Process Request")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("Konteneryzacja w PRL")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        it 'allows CAS patrons to request On-Order items' do
-          visit "/requests/#{on_order_id}"
-          expect(page).to have_button('Request Selected Items', disabled: false)
-          check 'requestable_selected_23480270130006421'
-          expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          expect(page).to have_content I18n.t("requests.submit.on_order_success")
-          email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("On Order Request")
-          expect(email.to).to eq(["fstcirc@princeton.edu"])
-          expect(email.cc).to be_blank
-          expect(email.html_part.body.to_s).to have_content("Jahrbuch Praktische Philosophie in globaler Perspektive = Yearbook practical philosophy in a global perspective")
-          expect(confirm_email.subject).to eq("On Order Request")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("Jahrbuch Praktische Philosophie in globaler Perspektive = Yearbook practical philosophy in a global perspective")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        it 'allows CAS patrons to request a ReCAP record that has no item data' do
-          visit "/requests/99113283293506421?mfhd=22750642660006421"
-          check('requestable_selected', exact: true)
-          fill_in 'requestable[][user_supplied_enum]', with: 'Some Volume'
-          expect(page).to have_button('Request this Item', disabled: false)
-        end
-
-        it 'allows CAS patrons to locate an ReCAP record that has no item data' do
-          visit "/requests/#{on_shelf_no_items_id}"
-          choose('requestable__delivery_mode_22740191170006421_print') # chooses 'print' radio button
-          expect(page).to have_content "Pick-up location: Firestone Library"
-          expect(page).to have_content "Requests for pick-up typically take 2 business days to process."
-        end
-
-        it 'allows CAS patrons to locate an on_shelf record' do
-          stub_alma_hold_success('9912636153506421', '22557213410006421', '23557213400006421', '960594184')
-
-          visit "requests/9912636153506421?mfhd=22557213410006421"
-          expect(page).to have_content 'Pick-up location: Firestone Library'
-          choose('requestable__delivery_mode_23557213400006421_print') # chooses 'print' radio button
-          expect(page).to have_content 'Pick-up location: Firestone Library'
-          expect(page).to have_content 'Electronic Delivery'
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("On the Shelf Paging Request (FIRESTONE$STACKS) PR3187 .L443 1951")
-          expect(email.to).to eq(["fstpage@princeton.edu"])
-          expect(email.cc).to be_blank
-          expect(email.html_part.body.to_s).to have_content("John Webster; a critical study")
-          expect(email.html_part.body.to_s).not_to have_content("9912636153506421") # does not show detailed metadata
-          expect(confirm_email.subject).to eq("Firestone Library Pick-up Request")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("John Webster; a critical study")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        it 'allows CAS patrons to request an item twice and see a message about the duplication' do
-          stub_alma_hold('9912636153506421', '22557213410006421', '23557213400006421', '960594184', status: 200, fixture_name: "alma_hold_error_response.json")
-
-          visit "requests/9912636153506421?mfhd=22557213410006421"
-          expect(page).to have_content 'Pick-up location: Firestone Library'
-          choose('requestable__delivery_mode_23557213400006421_print') # chooses 'print' radio button
-          expect(page).to have_content 'Pick-up location: Firestone Library'
-          expect(page).to have_content 'Electronic Delivery'
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(0)
-          expect(page).to have_content 'You have sent a duplicate request to Alma for this item'
-        end
-
-        let(:good_response) { fixture('/scsb_request_item_response.json') }
-        it 'allows patrons to request a physical recap item' do
-          scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          stub_request(:post, scsb_url)
-            .with(body: hash_including(author: "", bibId: "9999443553506421", callNumber: "DT549 .E274q Oversize", chapterTitle: "ABC", deliveryLocation: "PA", emailAddress: "a@b.com", endPage: "", issue: "",
-                                       itemBarcodes: ["32101098722844"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "EDD", requestingInstitution: "PUL", startPage: "", titleIdentifier: "L'écrivain, magazine litteraire trimestriel", username: "jstudent", volume: "2016"))
-            .to_return(status: 200, body: good_response, headers: {})
-          stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
-          visit '/requests/9999443553506421?mfhd=22743365320006421'
-          expect(page).to have_content 'Electronic Delivery'
-          select('Firestone Library', from: 'requestable__pick_up_23743365310006421')
-          choose('requestable__delivery_mode_23743365310006421_edd') # chooses 'edd' radio button
-          expect(page).to have_content I18n.t("requests.recap_edd.note_msg")
-          fill_in "Article/Chapter Title", with: "ABC"
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, scsb_url)).to have_been_made
-          expect(page).to have_content 'Request submitted'
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Electronic Document Delivery Request Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("L'écrivain, magazine litteraire trimestriel")
-        end
-
-        it 'allows patrons to request a Forrestal annex' do
-          alma_url = stub_alma_hold_success('999455503506421', '22642306790006421', '23642306760006421', '960594184')
-          visit '/requests/999455503506421?mfhd=22642306790006421'
-          choose('requestable__delivery_mode_23642306760006421_print') # chooses 'print' radio button
-          # todo: should we still have the text?
-          # expect(page).to have_content 'Item offsite at Forrestal Annex. Requests for pick-up'
-          expect(page).to have_content 'Electronic Delivery'
-          select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23642306760006421')
-          select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23642306760006421')
-          select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23642306760006421')
-          select('Firestone Library', from: 'requestable__pick_up_23642306760006421')
-          expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          expect(page).to have_content 'Request submitted'
-          email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("Annex Request")
-          expect(email.to).to eq(["forranx@princeton.edu"])
-          expect(email.cc).to be_blank
-          expect(email.html_part.body.to_s).to have_content("A tale of cats and mice of Obeyd of Záákán")
-          expect(confirm_email.subject).to eq("Annex Request")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("A tale of cats and mice of Obeyd of Záákán")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-          expect(a_request(:post, alma_url)).to have_been_made
-        end
-
-        it 'allows patrons to request electronic delivery of a Forrestal item' do
-          stub_catalog_raw(bib_id: '9956562643506421')
-          stub_availability_by_holding_id(bib_id: '9956562643506421', holding_id: '22700125400006421')
-          stub_illiad_patron
-          stub_request(:post, transaction_url)
-            .to_return(status: 200, body: responses[:transaction_created], headers: {})
-          stub_request(:post, transaction_note_url)
-            .to_return(status: 200, body: responses[:note_created], headers: {})
-          visit '/requests/9956562643506421?mfhd=22700125400006421'
-          choose('requestable__delivery_mode_23700125390006421_edd') # chooses 'electronic delivery' radio button
-          fill_in "Title", with: "my stuff"
-          expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, transaction_url)).to have_been_made
-        end
-
-        it 'allows patrons to request a Lewis recap item digitally' do
-          scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          stub_scsb_availability(bib_id: "9970533073506421", institution_id: "PUL", barcode: '32101051217659')
-          stub_request(:post, scsb_url)
-            .to_return(status: 200, body: good_response, headers: {})
-          visit '/requests/9970533073506421?mfhd=22667391160006421'
-          choose('requestable__delivery_mode_23667391150006421_edd') # chooses 'edd' radio button
-          expect(page).to have_content 'Pick-up location: Lewis Library'
-          fill_in "Title", with: "my stuff"
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, scsb_url)).to have_been_made
-          expect(page).to have_content 'Request submitted'
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Electronic Document Delivery Request Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("The decomposition of global conformal invariants")
-        end
-
-        it 'allows patrons to request a Lewis' do
-          stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
-          stub_alma_hold_success('9970533073506421', '22667391180006421', '23667391170006421', '960594184')
-          visit '/requests/9970533073506421?mfhd=22667391180006421'
-          choose 'requestable__delivery_mode_23667391170006421_print'
-          expect(page).to have_content 'Pick-up location: Lewis Library'
-          check 'requestable_selected_23667391170006421'
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          expect(page).to have_content 'Item has been requested for pick-up'
-          email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("On the Shelf Paging Request (LEWIS$STACKS) QA646 .A44 2012")
-          expect(email.to).to eq(["lewislib@princeton.edu"])
-          expect(email.cc).to be_nil
-          expect(email.html_part.body.to_s).to have_content("The decomposition of global conformal invariants")
-          expect(confirm_email.subject).to eq("Lewis Library Pick-up Request")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_nil
-          expect(confirm_email.html_part.body.to_s).to have_content("The decomposition of global conformal invariants")
-        end
-
-        it 'allows patrons to request a on-order' do
-          scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          ## having trouble finding a firestone item in BL.
-          visit '/requests/99103251433506421?mfhd=22480270140006421'
-          expect(page).to have_content 'Pick-up location: Firestone Library'
-          # temporary change issue 438
-          # select('Firestone Library', from: 'requestable__pick_up')
-          check 'requestable_selected_23480270130006421'
-          click_button 'Request Selected Items'
-          expect(a_request(:post, scsb_url)).not_to have_been_made
-          expect(page).to have_content 'Request submitted'
-        end
-
-        it 'allows patrons to ask for digitizing on non circulating items' do
-          visit '/requests/9995948403506421?mfhd=22500774400006421'
-          expect(page).to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Pick-up location: Lewis Library'
-          expect(page).to have_css '.submit--request'
-        end
-
-        it 'allows filtering items by mfhd' do
-          visit '/requests/9979171923506421?mfhd=22637778670006421'
-          expect(page).to have_content 'Pick-up location: Lewis Library'
-          expect(page).not_to have_content 'Copy 2'
-          expect(page).not_to have_content 'Copy 3'
-        end
-
-        it 'show a fill in form if the item is an enumeration (Journal ect.) and choose a print copy' do
-          visit 'requests/99105746993506421?mfhd=22547424510006421'
-          expect(page).to have_content 'Pick-up location: Firestone Library'
-          expect(page).to have_content 'If the specific volume does not appear in the list below, please enter it here:'
-          expect(page).to have_content 't. 2, no 2 (2018 )' # include enumeration and chron
-          expect(page).to have_content 't. 3, no 2 (2019 )' # include enumeration and chron
-          within(".user-supplied-input") do
-            check('requestable_selected')
-          end
-          fill_in "requestable_user_supplied_enum_22547424510006421", with: "ABC ZZZ"
-          choose('requestable__delivery_mode_22547424510006421_print') # choose the print radio button
-          expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("Paging Request for Firestone Library")
-          expect(email.to).to eq(["fstpage@princeton.edu"])
-          expect(email.cc).to be_nil
-          expect(email.html_part.body.to_s).to have_content("ABC ZZZ")
-          expect(confirm_email.subject).to eq("Paging Request for Firestone Library")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_nil
-          expect(confirm_email.html_part.body.to_s).to have_content("ABC ZZZ")
-        end
-
-        it 'show a fill in form if the item is an enumeration (Journal etc.) and choose a electronic copy' do
-          stub_illiad_patron
-          stub_request(:post, transaction_url)
-            .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "PhotoItemAuthor" => "", "PhotoArticleAuthor" => "", "PhotoJournalTitle" => "Mefisto : rivista di medicina, filosofia, storia", "PhotoItemPublisher" => "", "ISSN" => "", "CallNumber" => "R131.A1 M38", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/99105746993506421", "PhotoJournalYear" => "2017", "PhotoJournalVolume" => "ABC ZZZ",
-                                       "PhotoJournalIssue" => "", "ItemInfo3" => "", "ItemInfo4" => "", "AcceptNonEnglish" => true, "ESPNumber" => "1028553183", "DocumentType" => "Article", "Location" => "Firestone Library - Stacks", "PhotoArticleTitle" => "ELECTRONIC CHAPTER"))
-            .to_return(status: 200, body: responses[:transaction_created], headers: {})
-          stub_request(:post, transaction_note_url)
-            .to_return(status: 200, body: responses[:note_created], headers: {})
-          visit 'requests/99105746993506421?mfhd=22547424510006421'
-          expect(page).to have_content 'Pick-up location: Firestone Library'
-          expect(page).to have_content 'If the specific volume does not appear in the list below, please enter it here:'
-          within(".user-supplied-input") do
-            check('requestable_selected')
-          end
-          fill_in "requestable_user_supplied_enum_22547424510006421", with: "ABC ZZZ"
-          choose('requestable__delivery_mode_22547424510006421_edd') # choose the print radio button
-          within("#fields-eed__22547424510006421") do
-            fill_in "Article/Chapter Title", with: "ELECTRONIC CHAPTER"
-          end
-          expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, transaction_url)).to have_been_made
-          expect(a_request(:post, transaction_note_url)).to have_been_made
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Electronic Document Delivery Request Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_nil
-          expect(confirm_email.html_part.body.to_s).to have_content("ABC ZZZ")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        it 'Shows Marqaund Recap Item as an EDD option or In Library Use, no delivery' do
-          scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          stub_request(:post, scsb_url).to_return(status: 200, body: good_response, headers: {})
-          stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
-          visit '/requests/99117809653506421?mfhd=22613352460006421'
-          choose('requestable__delivery_mode_23613352450006421_edd') # chooses 'edd' radio button
-          expect(page).to have_content I18n.t('requests.recap_edd.brief_msg')
-          expect(page).to have_content 'Electronic Delivery'
-          expect(page).to have_content 'Available for In Library Use'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'Article/Chapter Title (Required)'
-          fill_in "Title", with: "my stuff"
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, scsb_url)).to have_been_made
-          email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("Electronic Document Delivery Request Confirmation")
-          expect(email.html_part.body.to_s).to have_content("You will receive an email including a link where you can download your scanned section")
-        end
-
-        it "shows items in the Architecture Library as available" do
-          stub_alma_hold_success('99117876713506421', '22561348800006421', '23561348790006421', '960594184')
-          visit '/requests/99117876713506421?mfhd=22561348800006421'
-          # choose('requestable__delivery_mode_8298341_edd') # chooses 'edd' radio button
-          expect(page).to have_content 'Electronic Delivery'
-          expect(page).to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'Pick-up location: Architecture Library'
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("On the Shelf Paging Request (ARCH$STACKS) NA1585.A23 S7 2020")
-          expect(email.html_part.body.to_s).to have_content("Abdelhalim Ibrahim Abdelhalim : an architecture of collective memory")
-          expect(confirm_email.subject).to eq("Architecture Library Pick-up Request")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("Your request to pick this item up has been received")
-          expect(confirm_email.html_part.body.to_s).to have_content("Abdelhalim Ibrahim Abdelhalim : an architecture of collective memory")
-        end
-
-        it "allows requests of recap pick-up only items" do
-          scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          stub_scsb_availability(bib_id: "99115783193506421", institution_id: "PUL", barcode: '32101108035435')
-          stub_request(:post, scsb_url)
-            .with(body: hash_including(author: nil, bibId: "99115783193506421", callNumber: "DVD", chapterTitle: nil, deliveryLocation: "PA", emailAddress: "a@b.com", endPage: nil, issue: nil, itemBarcodes: ["32101108035435"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999", requestNotes: nil, requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: nil, titleIdentifier: "Chernobyl : a 5-part miniseries", username: "jstudent", volume: nil))
-            .to_return(status: 200, body: good_response, headers: {})
-          stub_request(:post, "#{Alma.configuration.region}/almaws/v1/bibs/99115783193506421/holdings/22534122440006421/items/23534122430006421/requests?user_id=960594184")
-            .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
-            .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
-          visit '/requests/99115783193506421?mfhd=22534122440006421'
-          expect(page).not_to have_content 'Item is not requestable.'
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).to have_content 'Item off-site at ReCAP facility. Request for delivery in 1-2 business days.'
-          select('Firestone Library', from: 'requestable__pick_up_23534122430006421')
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, scsb_url)).to have_been_made
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("Your request to pick this item up has been received")
-          expect(confirm_email.html_part.body.to_s).to have_content("Chernobyl : a 5-part miniseries")
-        end
-
-        it 'does not error for Online items' do
-          visit '/requests/9999946923506421?mfhd=9800910'
-          expect(page).to have_content 'there are no requestable items for this record'
-        end
-        context 'Borrow direct via illiad' do
-          it 'sends requests directly to illiad' do
-            stub_illiad_patron
-            stub_request(:post, transaction_url)
-              .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing",
-                                         "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Trump, Donald Bohner, Kate", "LoanTitle" => "Trump : the art of the comeback",
-                                         "LoanPublisher" => nil, "ISSN" => "9780812929645", "CallNumber" => "HC102.5.T78 A3 1997", "CitedIn" => "https://catalog.princeton.edu/catalog/9917887963506421", "ItemInfo3" => "",
-                                         "ItemInfo4" => nil, "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
-              .to_return(status: 200, body: responses[:transaction_created], headers: {})
-            stub_request(:post, transaction_note_url)
-              .to_return(status: 200, body: responses[:note_created], headers: {})
-            visit '/requests/9917887963506421?mfhd=22503918400006421'
-            expect(page).to have_content 'Request via Partner Library'
-            expect(page).to have_content 'Pick-up location: Firestone Library'
-            check('requestable_selected_23503918390006421')
-            expect(page.find_field('requestable[][type]', type: :hidden).value).to eq('ill')
-            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-            expect(a_request(:post, transaction_url)).to have_been_made
-            expect(a_request(:post, transaction_note_url)).to have_been_made
-            expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
-            confirm_email = ActionMailer::Base.deliveries.last
-            expect(confirm_email.subject).to eq("Partner Request Confirmation")
-            expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-            expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-            expect(confirm_email.html_part.body.to_s).to have_content("Most requests will arrive within two weeks")
-            expect(confirm_email.html_part.body.to_s).to have_content("Trump : the art of the comeback")
-          end
-
-          it 'allow interlibrary loan to be requested' do
-            stub_illiad_patron
-            stub_request(:post, transaction_url)
-              .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "U.S. census office", "LoanTitle" => "7th census of U.S.1850",
-                                         "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "HA202.1850.A5q Oversize", "CitedIn" => "https://catalog.princeton.edu/catalog/9915057783506421", "ItemInfo3" => "", "ItemInfo4" => nil, "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
-              .to_return(status: 200, body: responses[:transaction_created], headers: {})
-            stub_request(:post, transaction_note_url)
-              .to_return(status: 200, body: responses[:note_created], headers: {})
-            visit '/requests/9915057783506421?mfhd=22686942210006421'
-            expect(page).to have_content 'Request via Partner Library'
-            expect(page).to have_content 'Pick-up location: Firestone Library'
-            check('requestable_selected_23686942200006421')
-            expect(page.find_field('requestable[][type]', type: :hidden).value).to eq('ill')
-            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-            expect(a_request(:post, transaction_url)).to have_been_made
-            expect(a_request(:post, transaction_note_url)).to have_been_made
-            expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
-            confirm_email = ActionMailer::Base.deliveries.last
-            expect(confirm_email.subject).to eq("Partner Request Confirmation")
-            expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-            expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-            expect(confirm_email.html_part.body.to_s).to have_content("Most requests will arrive within two weeks")
-            expect(confirm_email.html_part.body.to_s).to have_content("7th census of U.S.1850")
-          end
-        end
-
-        it 'an annex item with user supplied information creates annex emails' do
-          visit '/requests/9922868943506421?mfhd=22692156940006421'
-          expect(page).to have_field 'requestable_selected', disabled: false
-          expect(page).to have_field 'requestable_user_supplied_enum_22692156940006421'
-          within('#request_user_supplied_22692156940006421') do
-            check('requestable_selected', exact: true)
-            fill_in 'requestable_user_supplied_enum_22692156940006421', with: 'test'
-          end
-          expect(page).to have_content 'Physical Item Delivery'
-          choose 'requestable__delivery_mode_22692156940006421_print'
-          select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_22692156940006421')
-          expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          expect(page).to have_content I18n.t('requests.submit.annex_success')
-          email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("Annex Request")
-          expect(email.to).to eq(["forranx@princeton.edu"])
-          expect(email.cc).to be_blank
-          expect(email.html_part.body.to_s).to have_content("Birth control news")
-          expect(email.html_part.body.to_s).to have_content("test")
-          expect(email.text_part.body.to_s).to have_content("test")
-          expect(confirm_email.subject).to eq("Annex Request")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("Birth control news")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        it 'allows a non circulating item with no item data to be digitized' do
-          stub_illiad_patron
-          stub_request(:post, transaction_url)
-            .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "PhotoArticleAuthor" => "I Aman Author", "PhotoItemAuthor" => "Herzog, Hans-Michael Daros Collection (Art)", "PhotoJournalTitle" => "La mirada : looking at photography in Latin America today", "PhotoItemPublisher" => "Zürich: Edition Oehrli", "PhotoJournalIssue" => "",
-                                       "Location" => "Marquand Library - Stacks", "ISSN" => "9783905597363", "CallNumber" => "", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/9941274093506421", "PhotoJournalVolume" => "", "ItemInfo3" => "", "ItemInfo4" => "", "CitedPages" => "Marquand EDD", "AcceptNonEnglish" => true, "ESPNumber" => "", "DocumentType" => "Book", "PhotoArticleTitle" => "ABC", "PhotoJournalYear" => "2002"))
-            .to_return(status: 200, body: responses[:transaction_created], headers: {})
-          stub_request(:post, transaction_note_url)
-            .to_return(status: 200, body: responses[:note_created], headers: {})
-          stub_clancy_status(barcode: "32101072349515")
-          visit '/requests/9941274093506421?mfhd=22690999210006421'
-          choose('requestable__delivery_mode_22690999210006421_edd') # chooses 'edd' radio button
-          expect(page).to have_content I18n.t('requests.marquand_edd.brief_msg')
-          expect(page).to have_content 'Electronic Delivery'
-          expect(page).to have_content 'Unavailable'
-          expect(page).not_to have_content 'Available for In Library Use'
-          fill_in "Article/Chapter Title", with: "ABC"
-          fill_in "Author", with: "I Aman Author"
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          expect(a_request(:post, transaction_url)).to have_been_made
-          expect(a_request(:post, transaction_note_url)).to have_been_made
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Electronic Document Delivery Request Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content(I18n.t('requests.marquand_edd.email_conf_msg'))
-          expect(confirm_email.html_part.body.to_s).to have_content("La mirada : looking at photography in Latin America today")
-          marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          expect(marquand_email.subject).to eq("Patron Initiated Catalog Request Scan")
-          expect(marquand_email.html_part.body.to_s).to have_content("La mirada : looking at photography in Latin America today")
-          expect(marquand_email.html_part.body.to_s).to have_content("ABC")
-          expect(marquand_email.html_part.body.to_s).to have_content("I Aman Author")
-          expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
-          expect(marquand_email.cc).to be_blank
-        end
-
-        it 'allows an in process item to be requested' do
-          visit "/requests/#{in_process_id}"
-          expect(page).to have_content 'In Process materials are typically available in several business days'
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("In Process Request")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("In Process materials can typically be picked up at the Circulation Desk of your choice in several business days")
-          expect(confirm_email.html_part.body.to_s).to have_content("Gai zao jiao yu xue")
-          in_process_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          expect(in_process_email.subject).to eq("In Process Request")
-          expect(in_process_email.html_part.body.to_s).to have_content("Gai zao jiao yu xue")
-          expect(in_process_email.to).to eq(["fstcirc@princeton.edu"])
-          expect(in_process_email.cc).to be_blank
-        end
-
-        context 'disavowed user' do
-          it 'allows a non circulating item with not item data to be digitized to be requested, but then errors' do
-            stub_illiad_patron(disavowed: true)
-            stub_clancy_status(barcode: "32101072349515")
-            visit '/requests/9941274093506421?mfhd=22690999210006421'
-            expect(page).to have_content 'Electronic Delivery'
-            choose('requestable__delivery_mode_22690999210006421_edd') # chooses 'edd' radio button
-            fill_in "Article/Chapter Title", with: "ABC"
-            fill_in "Author", with: "I Aman Author"
-            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-            expect(page).to have_content "You no longer have an active account and may not make digitization requests."
-            error_email = ActionMailer::Base.deliveries.last
-            expect(error_email.subject).to eq("Request Service Error")
-            expect(error_email.to).to eq(["docdel@princeton.edu"])
-          end
-        end
-
-        it "allows a columbia item to be picked up or digitized" do
-          stub_scsb_availability(bib_id: "1000060", institution_id: "CUL", barcode: 'CU01805363')
-          stub_catalog_raw(bib_id: 'SCSB-2879197', type: 'scsb')
-          scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          stub_request(:post, scsb_url)
-            .with(body: hash_including(author: "", bibId: "SCSB-2879197", callNumber: "PG3479.3.I84 Z778 1987g", chapterTitle: "", deliveryLocation: "QX", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["CU01805363"], itemOwningInstitution: "CUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Mir, uvidennyĭ s gor : ocherk tvorchestva Shukurbeka Beĭshenalieva", username: "jstudent", volume: ""))
-            .to_return(status: 200, body: good_response, headers: {})
-          visit '/requests/SCSB-2879197'
-          expect(page).to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'Electronic Delivery'
-          choose('requestable__delivery_mode_4497908_print') # chooses 'print' radio button
-          expect(page).to have_content('Pick-up location: Firestone Circulation Desk')
-          expect(page).to have_content 'ReCAP PG3479.3.I84 Z778 1987g'
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, scsb_url)).to have_been_made
-          expect(page).to have_content "Request submitted to ReCAP, our offsite storage facility"
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("Your request to pick this item up has been received. We will process the requests as soon as possible")
-          expect(confirm_email.html_part.body.to_s).to have_content("Mir, uvidennyĭ s gor : ocherk tvorchestva Shukurbeka Beĭshenalieva")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        it "allows a columbia item that is open access to be picked up or digitized" do
-          stub_catalog_raw(bib_id: 'SCSB-4634001', type: 'scsb')
-          scsb_item_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          stub_request(:post, scsb_item_url)
-            .with(body: hash_including(author: "", bibId: "SCSB-4634001", callNumber: "4596 2907.88 1901", chapterTitle: "", deliveryLocation: "QX", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["CU51481294"], itemOwningInstitution: "CUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Chong wen men shang shui ya men xian xing shui ze. 崇文門 商稅 衙門 現行 稅則.", username: "jstudent", volume: ""))
-            .to_return(status: 200, body: good_response, headers: {})
-          stub_scsb_availability(bib_id: "3863391", institution_id: "CUL", barcode: 'CU51481294')
-          visit '/requests/SCSB-4634001'
-          expect(page).to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'Electronic Delivery'
-          choose('requestable__delivery_mode_6826565_print') # chooses 'print' radio button
-          expect(page).to have_content('Pick-up location: Firestone Circulation Desk')
-          expect(page).to have_content 'ReCAP 4596 2907.88 1901'
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, scsb_item_url)).to have_been_made
-          expect(page).to have_content "Request submitted to ReCAP, our offsite storage facility"
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content(" Your request to pick this item up has been received. We will process the requests as soon as possible")
-          expect(confirm_email.html_part.body.to_s).to have_content("Chong wen men shang shui ya men xian xing shui ze")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        it "places a hold and sends emails for a marquand in library use item" do
-          stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '960594184')
-          stub_clancy_status(barcode: "32101072349515")
-          visit '/requests/9956364873506421?mfhd=22587331490006421'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'Available for In Library Use'
-          expect(page).to have_content 'Electronic Delivery'
-          expect(page).not_to have_link('make an appointment', href: "https://libcal.princeton.edu/seats?lid=10656")
-          choose('requestable__delivery_mode_23587331480006421_in_library') # chooses 'in library' radio button
-          expect(page).to have_content('Marquand Library at Firestone')
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("You will be notified via email when your item is available.")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Pick-up By")
-          expect(confirm_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-          marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          expect(marquand_email.subject).to eq("Patron Initiated Catalog Request In Library")
-          expect(marquand_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-          expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
-          expect(marquand_email.cc).to be_blank
-        end
-
-        it "places a hold and a clancy request for a marquand in library use item at Clancy" do
-          stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '960594184')
-          stub_clancy_status(barcode: "32101072349515", status: "Item In at Rest")
-          stub_clancy_post(barcode: "32101072349515")
-          visit '/requests/9956364873506421?mfhd=22587331490006421'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'Electronic Delivery'
-          expect(page).to have_content 'Available for In Library Use'
-          expect(page).to have_content I18n.t("requests.clancy_in_library.brief_msg")
-          expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
-          choose('requestable__delivery_mode_23587331480006421_in_library') # chooses 'in_library' radio button
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-          marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          expect(marquand_email.subject).to eq("Patron Initiated Catalog Request Clancy In Library")
-          expect(marquand_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-          expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
-          expect(marquand_email.cc).to be_blank
-        end
-
-        it "only has edd for a marquand in library use item at Clancy that is unavailable" do
-          stub_illiad_patron
-          stub_request(:post, transaction_url)
-            .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "NotWantedAfter" => (DateTime.current + 6.months).strftime("%m/%d/%Y"), "WantedBy" => "Yes, until the semester's", "PhotoItemAuthor" => "Johns, Catherine", "PhotoArticleAuthor" => "", "PhotoJournalTitle" => "Dogs : history, myth, art", "PhotoItemPublisher" => "Cambridge, Mass: Harvard University P...", "ISSN" => "9780674030930", "CallNumber" => "N7668.D6 J64 2008", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/9956364873506421",
-                                       "PhotoJournalYear" => "2008", "PhotoJournalVolume" => "", "PhotoJournalIssue" => "", "ItemInfo3" => "", "ItemInfo4" => "", "CitedPages" => "Marquand Clancy UNAVAIL EDD", "AcceptNonEnglish" => true, "ESPNumber" => "213495319", "DocumentType" => "Book", "Location" => "Marquand Library - Stacks", "PhotoArticleTitle" => "ABC"))
-            .to_return(status: 200, body: responses[:transaction_created], headers: {})
-          stub_request(:post, transaction_note_url)
-            .with(body: hash_including("Note" => "Digitization Request Marquand Item at Clancy (Unavailable)"))
-            .to_return(status: 200, body: responses[:note_created], headers: {})
-          stub_clancy_status(barcode: "32101072349515", status: "Item In Accession Process")
-          visit '/requests/9956364873506421?mfhd=22587331490006421'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).not_to have_content 'Available for In Library Use'
-          expect(page).to have_content 'Electronic Delivery'
-          choose('requestable__delivery_mode_23587331480006421_edd') # chooses 'edd' radio button
-          expect(page).to have_content I18n.t('requests.clancy_unavailable_edd.brief_msg')
-          expect(page).to have_content I18n.t("requests.clancy_unavailable_edd.note_msg")
-          fill_in "Article/Chapter Title", with: "ABC"
-          expect(page).not_to have_content("translation missing")
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          expect(a_request(:post, transaction_url)).to have_been_made
-          expect(a_request(:post, transaction_note_url)).to have_been_made
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Patron Initiated Catalog Request EDD Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-          expect(confirm_email.html_part.body.to_s).to have_content(I18n.t("requests.clancy_unavailable_edd.email_conf_msg"))
-          expect(confirm_email.html_part.body.to_s).to have_content("ABC")
-          marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          expect(marquand_email.subject).to eq("Patron Initiated Catalog Request Scan - Unavailable at Clancy")
-          expect(marquand_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-          expect(marquand_email.html_part.body.to_s).to have_content("ABC")
-          expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
-          expect(marquand_email.cc).to be_blank
-        end
-
-        it "sends an email and places an illiad request for a marquand edd item at Clancy" do
-          stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '960594184')
-          stub_clancy_status(barcode: "32101072349515", status: "Item In at Rest")
-          stub_clancy_post(barcode: "32101072349515")
-          stub_illiad_patron
-          stub_request(:post, transaction_url)
-            .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "NotWantedAfter" => (DateTime.current + 6.months).strftime("%m/%d/%Y"), "WantedBy" => "Yes, until the semester's", "PhotoItemAuthor" => "Johns, Catherine", "PhotoArticleAuthor" => "", "PhotoJournalTitle" => "Dogs : history, myth, art", "PhotoItemPublisher" => "Cambridge, Mass: Harvard University P...", "ISSN" => "9780674030930", "CallNumber" => "N7668.D6 J64 2008", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/9956364873506421",
-                                       "PhotoJournalYear" => "2008", "PhotoJournalVolume" => "", "PhotoJournalIssue" => "", "ItemInfo3" => "", "ItemInfo4" => "", "CitedPages" => "Marquand Clancy EDD", "AcceptNonEnglish" => true, "ESPNumber" => "213495319", "DocumentType" => "Book", "Location" => "Marquand Library - Stacks", "PhotoArticleTitle" => "ABC"))
-            .to_return(status: 200, body: responses[:transaction_created], headers: {})
-          stub_request(:post, transaction_note_url)
-            .with(body: hash_including("Note" => "Digitization Request Marquand Item at Clancy"))
-            .to_return(status: 200, body: responses[:note_created], headers: {})
-          visit '/requests/9956364873506421?mfhd=22587331490006421'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'Electronic Delivery'
-          expect(page).to have_content 'Available for In Library Use'
-          expect(page).to have_content I18n.t("requests.clancy_in_library.brief_msg")
-          expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
-          choose('requestable__delivery_mode_23587331480006421_edd') # chooses 'edd' radio button
-          expect(page).to have_content I18n.t('requests.clancy_edd.brief_msg')
-          expect(page).to have_content I18n.t("requests.clancy_edd.note_msg")
-          fill_in "Article/Chapter Title", with: "ABC"
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          expect(a_request(:post, transaction_url)).to have_been_made
-          expect(a_request(:post, transaction_note_url)).to have_been_made
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Patron Initiated Catalog Request EDD Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-          expect(confirm_email.html_part.body.to_s).to have_content("Electronic document delivery requests typically take 4-8 business days")
-          marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          expect(marquand_email.subject).to eq("Patron Initiated Catalog Request Clancy Scan")
-          expect(marquand_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-          expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
-          expect(marquand_email.cc).to be_blank
-        end
-
-        it "shows in library use option for SCSB ReCAP items in Firestone" do
-          scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          stub_request(:post, scsb_url)
-            .with(body: hash_including(author: nil, bibId: "SCSB-8953469", callNumber: "ReCAP 18-69309", chapterTitle: nil, deliveryLocation: "QX", emailAddress: "a@b.com", endPage: nil, issue: nil, itemBarcodes: ["33433121206696"], itemOwningInstitution: "NYPL", patronBarcode: "22101008199999", requestNotes: nil, requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: nil, titleIdentifier: "1955-1968 : gli artisti italiani alle Documenta di Kassel", username: "jstudent", volume: nil))
-            .to_return(status: 200, body: good_response, headers: {})
-          stub_scsb_availability(bib_id: ".b215204128", institution_id: "NYPL", barcode: '33433121206696')
-          stub_catalog_raw(bib_id: 'SCSB-8953469', type: 'scsb')
-          visit 'requests/SCSB-8953469'
-          expect(page).not_to have_content 'Help Me Get It'
-          expect(page).to have_content 'Available for In Library'
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, scsb_url)).to have_been_made
-          expect(page).to have_content "Request submitted. See confirmation email with details about when your item(s) will be available"
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("955-1968 : gli artisti italiani alle Documenta di Kassel")
-        end
-
-        it 'Shows marquand recap item as an EDD or In Library Use' do
-          stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
-          scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          stub_request(:post, scsb_url)
-            .with(body: hash_including(author: "", bibId: "99117809653506421", callNumber: "N6923.B257 H84 2020", chapterTitle: "", deliveryLocation: "PJ", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["32101106347378"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Alesso Baldovinetti und die Florentiner Malerei der Frührenaissance", username: "jstudent", volume: ""))
-            .to_return(status: 200, body: good_response, headers: {})
-          visit '/requests/99117809653506421?mfhd=22613352460006421'
-          stub_request(:post, "#{Alma.configuration.region}/almaws/v1/bibs/99117809653506421/holdings/22613352460006421/items/23613352450006421/requests?user_id=960594184")
-            .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "marquand"))
-            .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
-          choose('requestable__delivery_mode_23613352450006421_in_library') # chooses 'in_library' radio button
-          expect(page).to have_content 'Electronic Delivery'
-          expect(page).to have_content 'Available for In Library'
-          expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          expect(a_request(:post, scsb_url)).to have_been_made
-          expect(a_request(:post, scsb_url)).to have_been_made
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.html_part.body.to_s).to have_content("2-4 business days")
-          expect(confirm_email.html_part.body.to_s).to have_content("Alesso Baldovinetti und die Florentiner Malerei der Frührenaissance")
-        end
-
-        it 'Shows recap item that has not made it to recap yet as On Order' do
-          stub_scsb_availability(bib_id: "99123340993506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
-          visit '/requests/99123340993506421?mfhd=22569931350006421'
-          expect(page).to have_content 'Unavailable'
-          select('Firestone Library', from: 'requestable__pick_up_23896622240006421')
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          expect(page).to have_content I18n.t("requests.submit.in_process_success")
-          email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("On Order Request")
-          expect(email.to).to eq(["fstcirc@princeton.edu"])
-          expect(email.cc).to be_blank
-          expect(email.html_part.body.to_s).to have_content("Ḍaḥāyā al-zawāj")
-          expect(confirm_email.subject).to eq("On Order Request")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("Ḍaḥāyā al-zawāj")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        it "Delivers scsb in library use art items only to marquand" do
-          stub_scsb_availability(bib_id: "9008865", institution_id: "CUL", barcode: 'AR01220551')
-          visit '/requests/SCSB-5595350'
-          expect(page).to have_content 'Available for In Library Use'
-          expect(page).to have_content 'Pick-up location: Marquand Library at Firestone'
-        end
-
-        it "Delivers scsb in library use music items only to mendel" do
-          stub_scsb_availability(bib_id: "14577462", institution_id: "CUL", barcode: 'MR00393223')
-          visit '/requests/SCSB-9726156'
-          expect(page).to have_content 'Available for In Library Use'
-          expect(page).to have_content 'Pick-up location: Mendel Music Library'
-        end
-
-        it "allows a harvard item that is in library use for Marquand to be viewwed" do
-          scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
-          stub_scsb_availability(bib_id: "990143653400203941", institution_id: "HL", barcode: '32044136602687')
-          stub_request(:post, scsb_url)
-            .with(body: hash_including(author: "", bibId: "SCSB-9919951", callNumber: "N5230.M62 R39 2014", chapterTitle: "", deliveryLocation: "PJ", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["32044136602687"], itemOwningInstitution: "HL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Razón de ser : obras emblemáticas de la Colección Carrillo Gil : Orozco, Rivera, Siqueiros, Paalen, Gerzso", username: "jstudent", volume: ""))
-            .to_return(status: 200, body: good_response, headers: {})
-          visit '/requests/SCSB-9919951'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).to have_content 'Available for In Library Use'
-          expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
-          expect(page).to have_content 'ReCAP N5230.M62 R39 2014'
-          # expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-          # expect(a_request(:post, scsb_url)).to have_been_made
-          # expect(page).to have_content "Request submitted to ReCAP, our offsite storage facility"
-          # confirm_email = ActionMailer::Base.deliveries.last
-          # expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
-          # expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          # expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          # expect(confirm_email.html_part.body.to_s).to have_content(" Your request to pick this item up has been received. We will process the requests as soon as possible")
-          # expect(confirm_email.html_part.body.to_s).to have_content("Chong wen men shang shui ya men xian xing shui ze")
-          # expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        it "shows a on order princeton ReCap item as Acquisition" do
-          stub_scsb_availability(bib_id: "99125378834306421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
-          visit '/requests/99125378834306421?mfhd=22897184810006421'
-          expect(page).to have_content 'On Order books have not yet been received. Place a request to be notified when this item has arrived and is ready for your pick-up.'
-        end
-
-        it 'Request an enumerated book correctly' do
-          stub_alma_hold_success('9973397793506421', '22541187250006421', '23541187200006421', '960594184')
-          visit '/requests/9973397793506421?mfhd=22541187250006421'
-          expect(page).to have_content "Han'guk hyŏndaesa sanch'aek. No Mu-hyŏn sidae ŭi myŏngam"
-          check('requestable_selected_23541187200006421')
-          choose('requestable__delivery_mode_23541187200006421_print')
-          expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          expect(page).to have_content I18n.t("requests.submit.on_shelf_success")
-          email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("On the Shelf Paging Request (EASTASIAN$CJK) DS923.25 .K363 2011")
-          expect(email.to).to eq(["gestcirc@princeton.edu"])
-          expect(email.cc).to be_blank
-          expect(email.html_part.body.to_s).to have_content("Han'guk hyŏndaesa sanch'aek. No Mu-hyŏn sidae ŭi myŏngam")
-          expect(email.html_part.body.to_s).to have_content("vol.5")
-          expect(email.text_part.body.to_s).to have_content("vol.5")
-          expect(confirm_email.subject).to eq("East Asian Library Pick-up Request")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("Han'guk hyŏndaesa sanch'aek. No Mu-hyŏn sidae ŭi myŏngam")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        it 'Request an annex in library book correctly' do
-          stub_alma_hold_success('9941347943506421', '22560381400006421', '23560381360006421', '960594184')
-          visit 'requests/9941347943506421?mfhd=22560381400006421'
-          expect(page).to have_content "Er ru ting Qun fang pu : [san shi juan]"
-          check('requestable_selected_23560381360006421')
-          choose('requestable__delivery_mode_23560381360006421_in_library')
-          select 'Firestone Library', from: 'requestable__pick_up_23560381360006421'
-          expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          expect(page).to have_content I18n.t("requests.submit.annex_in_library_success")
-          email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-          confirm_email = ActionMailer::Base.deliveries.last
-          expect(email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
-          expect(email.to).to eq(["forranx@princeton.edu"])
-          expect(email.cc).to be_blank
-          expect(email.html_part.body.to_s).to have_content("Er ru ting Qun fang pu : [san shi juan]")
-          expect(email.html_part.body.to_s).to have_content("vol.9-16")
-          expect(email.text_part.body.to_s).to have_content("vol.9-16")
-          expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-          expect(confirm_email.to).to eq(["a@b.com"])
-          expect(confirm_email.cc).to be_blank
-          expect(confirm_email.html_part.body.to_s).to have_content("Er ru ting Qun fang pu : [san shi juan]")
-          expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        end
-
-        describe 'Request a temp holding item' do
-          before do
-            stub_illiad_patron
-            stub_alma_hold_success('99105816503506421', '22514405160006421', '23514405150006421', '960594184')
-            stub_catalog_raw(bib_id: '99105816503506421')
-            stub_request(:post, transaction_url)
-              .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Zhongguo xin li xue hui", "LoanTitle" => "Xin li ke xue = Journal of psychological science 心理科学 = Journal of psychological science", "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "BF8.C5 H76", "CitedIn" => "https://catalog.princeton.edu/catalog/9941150973506421", "ItemInfo3" => "no.217-218", "ItemInfo4" => nil, "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
-              .to_return(status: 200, body: responses[:transaction_created], headers: {})
-          end
-          it 'with an electronic delivery' do
-            visit 'requests/99105816503506421?mfhd=22514405160006421'
-            expect(page).to have_content "SOS brutalism : a global survey"
-            expect(page).to have_content 'Elser, Oliver'
-            expect(page).to have_content 'Physical Item Delivery'
-            expect(page).to have_content 'Electronic Delivery'
-            expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
-            expect(page).to have_content 'Available'
-            expect(page).to have_content 'vol.1'
-            check('requestable_selected_23514405150006421')
-            choose('requestable__delivery_mode_23514405150006421_edd')
-            fill_in 'requestable__edd_art_title_23514405150006421', with: 'some text'
-            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-            expect(a_request(:post, transaction_url)).to have_been_made
-          end
-          it 'with a Physical delivery' do
-            visit 'requests/99105816503506421?mfhd=22514405160006421'
-            expect(page).to have_content "SOS brutalism : a global survey"
-            expect(page).to have_content 'Elser, Oliver'
-            expect(page).to have_content 'Physical Item Delivery'
-            expect(page).to have_content 'Electronic Delivery'
-            expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
-            expect(page).to have_content 'Available'
-            expect(page).to have_content 'vol.1'
-            check('requestable_selected_23514405150006421')
-            choose('requestable__delivery_mode_23514405150006421_print')
-            expect(page).to have_content 'Pick-up location: Architecture Library'
-            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-          end
-        end
-
-        describe 'Request button disables and enables', vcr: { cassette_name: 'request_features', record: :none }, js: true do
-          before do
-            stub_illiad_patron
-            stub_catalog_raw(bib_id: '99105816503506421')
-            stub_catalog_raw(bib_id: '9991807103506421')
-          end
-          it 'with an electronic delivery' do
-            visit 'requests/99105816503506421?mfhd=22514405160006421'
-            expect(page).to have_content "SOS brutalism : a global survey"
-            expect(page).to have_content 'Elser, Oliver'
-            expect(page).to have_content 'Physical Item Delivery'
-            expect(page).to have_content 'Electronic Delivery'
-            expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
-            expect(page).to have_content 'Available'
-            expect(page).to have_content 'vol.1'
-            check('requestable_selected_23514405150006421')
-            expect(page).to have_button('Request this Item', disabled: true)
-            choose('requestable__delivery_mode_23514405150006421_edd')
-            expect(page).to have_button('Request this Item', disabled: false)
-          end
-          it 'with a Physical delivery' do
-            visit 'requests/99105816503506421?mfhd=22514405160006421'
-            expect(page).to have_content "SOS brutalism : a global survey"
-            expect(page).to have_content 'Elser, Oliver'
-            expect(page).to have_content 'Physical Item Delivery'
-            expect(page).to have_content 'Electronic Delivery'
-            expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
-            expect(page).to have_content 'Available'
-            expect(page).to have_content 'vol.1'
-            check('requestable_selected_23514405150006421')
-            expect(page).to have_button('Request this Item', disabled: true)
-            choose('requestable__delivery_mode_23514405150006421_print')
-            expect(page).to have_button('Request this Item', disabled: false)
-            expect(page).to have_content 'Pick-up location: Architecture Library'
-          end
-          it 'always enabled with a ReCap item' do
-            visit 'requests/9991807103506421?mfhd=22696270550006421'
-            expect(page).to have_content "Towards the critique of violence : Walter Benjamin and Giorgio Agamben"
-            expect(page).to have_content 'Moran, Brendan P.'
-            expect(page).to have_content 'Firestone Library - Stacks HM886 .T69 2015'
-            expect(page).to have_content 'Request via Partner Library'
-            expect(page).to have_content "Pick-up location: Firestone Library"
-            expect(page).to have_content "Unavailable"
-            expect(page).not_to have_content "Resource Sharing Request"
-            check('requestable_selected_23696270540006421')
-            expect(page).to have_button('Request this Item', disabled: false)
-          end
-          it 'enables and disables for an record with multiple items with one delivery option' do
-            visit 'requests/995597013506421?mfhd=22641621120006421'
-            expect(page).to have_content 'Mycologia'
-            expect(page).to have_content 'New York Botanical Garden'
-            expect(page).to have_content 'Lewis Library - Lewis Library - Serials (Off-Site) 8763.668'
-            expect(page).to have_content 'Electronic Delivery'
-            expect(page).to have_content 'Available'
-            expect(page).to have_button('Request Selected Items', disabled: true)
-            check('requestable_selected_23641620980006421')
-            expect(page).to have_button('Request Selected Items', disabled: false)
-          end
-          it 'button state does not change when user supplies volume data or not' do
-            visit 'requests/9931433603506421?mfhd=22542676190006421'
-            expect(page).to have_content 'Aomen'
-            expect(page).to have_content 'East Asian Library DS796.M2 A623'
-            expect(page).to have_content 'If the specific volume does not appear in the list below, please enter it here'
-            expect(page).to have_button('Request Selected Items', disabled: true)
-            check('requestable_selected')
-            choose('requestable__delivery_mode_22542676190006421_print')
-            fill_in(id: 'requestable_user_supplied_enum_22542676190006421', with: 'Volume 1')
-            expect(page).to have_button('Request Selected Items', disabled: false)
-            fill_in(id: 'requestable_user_supplied_enum_22542676190006421', with: 'Volume 1', fill_options: { clear: :backspace })
-            expect(page).to have_button('Request Selected Items', disabled: false)
-          end
-          it 'enables and disables for a record with delivery location options' do
-            visit 'requests/99116000543506421?mfhd=22635325770006421'
-            expect(page).to have_content 'Mukcha'
-            expect(page).to have_content 'ReCAP - Remote Storage B128.M77 K6 2019'
-            expect(page).to have_content 'Unavailable'
-            expect(page).to have_button('Request this Item', disabled: true)
-            select('Firestone Library')
-            expect(page).to have_button('Request this Item', disabled: false)
-          end
-        end
-
-        describe 'Request a temp holding item from Resource Sharing - RES_SHARE$IN_RS_REQ' do
-          before do
-            stub_illiad_patron
-            stub_request(:post, transaction_url)
-              .to_return(status: 200, body: responses[:transaction_created], headers: {})
-            stub_request(:post, transaction_note_url)
-              .to_return(status: 200, body: responses[:note_created], headers: {})
-            stub_alma_hold('9991807103506421', '22696270550006421', '23696270540006421', '960594184', status: 200, fixture_name: "availability_response_9991807103506421.json")
-            stub_catalog_raw(bib_id: '9991807103506421')
-          end
-          it 'request via partner library' do
-            visit 'requests/9991807103506421?mfhd=22696270550006421'
-            expect(page).to have_content "Towards the critique of violence : Walter Benjamin and Giorgio Agamben"
-            expect(page).to have_content 'Moran, Brendan P.'
-            expect(page).to have_content 'Firestone Library - Stacks HM886 .T69 2015'
-            expect(page).to have_content 'Request via Partner Library'
-            expect(page).to have_content "Pick-up location: Firestone Library"
-            expect(page).to have_content "Unavailable"
-            expect(page).not_to have_content "Resource Sharing Request"
-            check('requestable_selected_23696270540006421')
-            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-            expect(page).to have_content 'Your request was submitted'
-          end
-        end
-      end
-
-      it 'Handles a bad mfhd without system error' do
-        visit 'requests/998574693506421?mfhd=abc123'
-        expect(page).to have_content "Science"
-      end
-
-      it 'has firestone as the resource sharing deliveryt location' do
-        visit 'http://localhost:3000/requests/99123713303506421?mfhd=22668310350006421'
-        expect(page).to have_content 'Reconstructions : architecture and Blackness in America'
+    describe 'When visiting an alma ID as a CAS User' do
+      it 'Shows a ReCAP item that is at preservation and conservation as a partner request' do
+        stub_illiad_patron
+        stub_request(:post, transaction_url)
+          .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Zhongguo xin li xue hui", "LoanTitle" => "Xin li ke xue = Journal of psychological science 心理科学 = Journal of psychological science", "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "BF8.C5 H76", "CitedIn" => "https://catalog.princeton.edu/catalog/9941150973506421", "ItemInfo3" => "no.217-218", "ItemInfo4" => nil, "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
+          .to_return(status: 200, body: responses[:transaction_created], headers: {})
+        stub_request(:post, transaction_note_url)
+          .with(body: hash_including("Note" => "Loan Request"))
+          .to_return(status: 200, body: responses[:note_created], headers: {})
+        stub_scsb_availability(bib_id: "9941150973506421", institution_id: "PUL", barcode: '32101099680850', item_availability_status: 'Not Available')
+        visit 'requests/9941150973506421?mfhd=22492663380006421&source=pulsearch'
+        expect(page).to have_content 'Unavailable'
+        check "requestable_selected_23492663220006421"
         expect(page).to have_content 'Request via Partner Library'
         expect(page).to have_content 'Pick-up location: Firestone Library'
-      end
-    end
-
-    context 'A Princeton net ID user without a bibdata record' do
-      let(:user) { FactoryBot.create(:user) }
-      before do
-        stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
-          .to_return(status: 404, body: invalid_patron_response, headers: {})
-        login_as user
-      end
-
-      describe 'Visits a request page', js: true do
-        it 'Tells the user their patron record is not available' do
-          visit "/requests/99117809653506421?mfhd=22613352460006421"
-          expect(a_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")).to have_been_made
-          expect(page).to have_content(I18n.t("requests.account.auth_user_lookup_fail"))
-        end
-      end
-    end
-
-    context 'a princeton net ID user without a barcode' do
-      let(:user) { FactoryBot.create(:user) }
-      let(:in_process_id) { '99124449473506421?mfhd=22664801380006421' }
-      let(:recap_in_process_id) { '99114026863506421?mfhd=22753408610006421' }
-
-      let(:recap_params) do
-        {
-          Bbid: "9994933183506421",
-          item: "23131438400006421",
-          lname: "Student",
-          delivery: "p",
-          pickup: "PN",
-          startpage: "",
-          endpage: "",
-          email: "a@b.com",
-          volnum: "",
-          issue: "",
-          aauthor: "",
-          atitle: "",
-          note: ""
-        }
-      end
-
-      before do
-        stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
-          .to_return(status: 200, body: valid_patron_no_barcode_response, headers: {})
-        login_as user
-      end
-
-      describe 'When visiting an Alma ID as a CAS User' do
-        it 'disallows access to request an available ReCAP item.' do
-          stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
-          visit "/requests/#{mms_id}"
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'disallows access to in process items' do
-          visit "/requests/#{in_process_id}"
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'disallows access for in process recap items' do
-          visit "/requests/#{recap_in_process_id}"
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'disallows access for On-Order recap items' do
-          visit "/requests/#{on_order_id}"
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'disallows access to a record that has no item data' do
-          visit "/requests/#{no_items_id}"
-          expect(page).not_to have_button('Request this Item')
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'disallows access to a ReCAP record that has no item data to be digitized' do
-          visit "/requests/993083506421?mfhd=22740191180006421"
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'disallows access of on on_shelf record' do
-          stub_illiad_patron
-          visit "/requests/9997708113506421?mfhd=22729045760006421"
-          expect(page).not_to have_button('Request this Item')
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        let(:good_response) { fixture('/scsb_request_item_response.json') }
-        it 'disallows access to request a physical recap item' do
-          stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
-          visit '/requests/9999443553506421?mfhd=22743365320006421'
-          expect(page).not_to have_button('Request this Item')
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'disallows access to request a Forrestal annex' do
-          visit '/requests/999455503506421?mfhd=22642306790006421'
-          expect(page).not_to have_button('Request this Item')
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'disallows access to request a Lewis recap item digitally' do
-          stub_scsb_availability(bib_id: "9970533073506421", institution_id: "PUL", barcode: '32101051217659')
-          visit '/requests/9970533073506421?mfhd=22667391160006421'
-          expect(page).not_to have_button('Request this Item')
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'disallows access to request a digital copy from Lewis' do
-          visit '/requests/9970533073506421?mfhd=22667391180006421'
-          expect(page).not_to have_button('Request this Item')
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'disallows access to ask for digitizing on non circulating items' do
-          visit '/requests/9995948403506421?mfhd=22500774400006421'
-          expect(page).not_to have_button('Request this Item')
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'allows filtering items by mfhd' do
-          visit '/requests/9979171923506421?mfhd=22637778670006421'
-          expect(page).not_to have_content 'Copy 2'
-          expect(page).not_to have_content 'Copy 3'
-          expect(page).not_to have_button('Request this Item')
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'shows an error if MFHD is not present' do
-          visit '/requests/9979171923506421'
-          expect(page).not_to have_content 'Please Select a location on the main record page.'
-        end
-
-        it 'disallows access to fillin forms in digital only' do
-          visit 'requests/99105746993506421?mfhd=22547424510006421'
-          expect(page).not_to have_button('Request this Item')
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'disallows access ReCAP marqaund as an EDD option only' do
-          stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
-          visit '/requests/99117809653506421?mfhd=22613352460006421'
-          expect(page).not_to have_button('Request this Item')
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it "disallows access to items in the Architecture Library as available" do
-          visit '/requests/99117876713506421?mfhd=22561348800006421'
-          expect(page).not_to have_button('Request this Item')
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it "disallows requests of recap pick-up only items" do
-          stub_scsb_availability(bib_id: "99115783193506421", institution_id: "PUL", barcode: '32101108035435')
-          visit '/requests/99115783193506421?mfhd=22534122440006421'
-          expect(page).not_to have_button('Request this Item')
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'allows aeon requests for all users' do
-          stub_holding_locations
-          visit '/requests/9973529363506421?mfhd=22667098990006421'
-          expect(page).to have_content 'Request to View in Reading Room'
-          expect(page).not_to have_content 'Request this Item'
-          expect(page).not_to have_selector('request--select')
-        end
-
-        it 'allows guest patrons to see there are no items for Online only' do
-          visit '/requests/9999946923506421?mfhd=22558528920006421'
-          expect(page).to have_content 'there are no requestable items for this record'
-        end
-
-        it 'disallows access on Missing items' do
-          visit '/requests/9917887963506421?mfhd=22503918400006421'
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'disallows access generic fill in requests enums from Annex or Firestone in mixed holding' do
-          visit '/requests/9922868943506421?mfhd=22692156940006421'
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-
-        it 'disallows access a non circulating item with not item data to be digitized' do
-          visit '/requests/9941274093506421?mfhd=22690999210006421'
-          expect(page).not_to have_content 'Electronic Delivery'
-          expect(page).not_to have_content 'Physical Item Delivery'
-          expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
-          expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
-        end
-      end
-    end
-
-    context 'An Alma user' do
-      let(:alma_login_response) { fixture('/alma_login_response.json') }
-      let(:user) { FactoryBot.create(:valid_alma_patron) }
-      before do
-        stub_request(:get, "#{Alma.configuration.region}/almaws/v1/users/#{user.uid}?expand=fees,requests,loans")
-          .to_return(status: 200, headers: { "Content-Type" => ["application/json", "charset=UTF-8"] },
-                     body: alma_login_response)
-        login_as user
-      end
-
-      it "does not allow physical pickup request On Order SCSB Recap Item" do
-        stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '33333059902417')
-        visit 'requests/SCSB-6710959'
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'This item is not available'
-      end
-
-      it "allows a physical pickup request of ReCAP Item" do
-        stub_scsb_availability(bib_id: "9941151723506421", institution_id: "PUL", barcode: '32101050751989')
-        visit 'requests/9941151723506421?mfhd=22492702000006421'
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).to have_content 'Physical Item Delivery'
-      end
-
-      it "allows only physical pickup to enumerated annex item" do
-        stub_alma_hold_success('9947220743506421', '22734584180006421', '23734584140006421', user.uid)
-
-        visit "requests/9947220743506421?mfhd=22734584180006421"
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).to have_content 'Physical Item Delivery'
-
-        expect(page).to have_content "Department of Homeland Security appropriations for 2007"
-        check('requestable_selected_23734584140006421')
-        select('Firestone Library', from: 'requestable__pick_up_23734584140006421')
-        page.find(".submit--request") # this is really strange, but if I find the button then I can click it in the next line...
-        expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-        expect(page).to have_content I18n.t("requests.submit.annex_success")
-        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
         confirm_email = ActionMailer::Base.deliveries.last
-        expect(email.subject).to eq("Annex Request")
-        expect(email.to).to eq(["docstor@princeton.edu"])
-        expect(email.cc).to be_blank
-        expect(email.html_part.body.to_s).to have_content("Department of Homeland Security appropriations for 2007")
-        expect(email.html_part.body.to_s).to have_content("pt.6")
-        expect(email.text_part.body.to_s).to have_content("pt.6")
-        expect(confirm_email.subject).to eq(I18n.t("requests.annex.email_subject"))
+        expect(confirm_email.subject).to eq("Partner Request Confirmation")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.to).to eq(["login@test.com"])
+        expect(confirm_email.to).to eq(["a@b.com"])
         expect(confirm_email.cc).to be_blank
-        expect(confirm_email.html_part.body.to_s).to have_content("Department of Homeland Security appropriations for 2007")
+        expect(confirm_email.html_part.body.to_s).to have_content("Xin li ke xue = Journal of psychological science 心理科学 = Journal of psychological science")
         expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
       end
 
-      it 'does not allow a ReCAP record that has no item data' do
-        visit "/requests/99113283293506421?mfhd=22750642660006421"
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'This item is not available'
+      it 'allow CAS patrons to request an available ReCAP item.' do
+        stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
+        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        stub_request(:post, scsb_url)
+          .with(body: hash_including(author: "", bibId: "9994933183506421", callNumber: "PJ7962.A5495 A95 2016", chapterTitle: "", deliveryLocation: "PA", emailAddress: 'a@b.com', endPage: "", issue: "", itemBarcodes: ["32101095798938"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999",
+                                     requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "ʻAwāṭif madfūnah عواطف مدفونة", username: "jstudent", volume: ""))
+          .to_return(status: 200, body: good_response, headers: {})
+        stub_request(:post, Requests::Config[:scsb_base])
+          .with(headers: { 'Accept' => '*/*' })
+          .to_return(status: 200, body: "<document count='1' sent='true'></document>", headers: {})
+        stub_request(:post, "#{Alma.configuration.region}/almaws/v1/bibs/9994933183506421/holdings/22558528920006421/items/23558528910006421/requests?user_id=960594184")
+          .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
+          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
+        visit "/requests/#{mms_id}"
+        expect(page).to have_content 'Electronic Delivery'
+        # some weird issue with this and capybara examining the page source shows it is there.
+        expect(page).to have_selector '#request_user_barcode', visible: :hidden
+        choose('requestable__delivery_mode_23558528910006421_print') # chooses 'print' radio button
+        select('Firestone Library', from: 'requestable__pick_up_23558528910006421')
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(a_request(:post, scsb_url)).to have_been_made
+        expect(page).to have_content I18n.t("requests.submit.recap_success")
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["a@b.com"])
+        expect(confirm_email.cc).to be_blank
+        expect(confirm_email.html_part.body.to_s).to have_content("ʻAwāṭif madfūnah")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
       end
 
-      it "does not allow access to items on the shelf when available" do
-        visit "requests/99125428126306421?mfhd=22910398870006421"
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'Request options for this item are only available to Faculty, Staff, and Students.'
-        expect(page).to have_content 'Please proceed to Firestone Library - Classics Collection to retrieve this item'
+      it 'allows CAS patrons to request In-Process items and can only be delivered to their holding library' do
+        visit "/requests/#{in_process_id}"
+        expect(page).to have_content 'In Process'
+        expect(page).to have_content 'Pick-up location: East Asian Library'
+        expect(page).to have_button('Request this Item', disabled: false)
+        click_button 'Request this Item'
+        expect(page).to have_content I18n.t("requests.submit.in_process_success")
       end
 
-      it "does not allow access to items on the shelf when not available" do
-        visit "requests/99125452799106421?mfhd=22917143470006421"
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'This item is not available'
-      end
-
-      it "does not allow access to items on the shelf when enumerated" do
-        visit "requests/998574693506421?mfhd=22579850750006421"
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'Request options for this item are only available to Faculty, Staff, and Students.'
-      end
-
-      it "allows access to in process items" do
-        visit "requests/99124417723506421?mfhd=22689758840006421"
-        expect(page).not_to have_content 'Electronic Delivery'
-        expect(page).to have_content 'In Process materials are typically available in several business days'
-        expect(page).not_to have_content 'This item is not available'
-        select('Firestone Library', from: 'requestable__pick_up_23922188050006421')
+      it 'makes sure In-Process ReCAP items with no holding library can be delivered anywhere' do
+        stub_scsb_availability(bib_id: "99114026863506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
+        visit "/requests/#{recap_in_process_id}"
+        expect(page).to have_content 'In Process'
+        expect(page.find(:css, ".request--availability").text).to eq("Unavailable")
+        select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23753408600006421')
+        select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23753408600006421')
+        select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23753408600006421')
         expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
         expect(page).to have_content I18n.t("requests.submit.in_process_success")
         email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
@@ -1506,104 +161,1447 @@ describe 'request', vcr: { cassette_name: 'request_features', record: :none }, t
         expect(email.subject).to eq("In Process Request")
         expect(email.to).to eq(["fstcirc@princeton.edu"])
         expect(email.cc).to be_blank
-        expect(email.html_part.body.to_s).to have_content("100 let na zashchite gosudarstva")
+        expect(email.html_part.body.to_s).to have_content("Konteneryzacja w PRL")
         expect(confirm_email.subject).to eq("In Process Request")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.to).to eq(["login@test.com"])
+        expect(confirm_email.to).to eq(["a@b.com"])
         expect(confirm_email.cc).to be_blank
-        expect(confirm_email.html_part.body.to_s).to have_content("100 let na zashchite gosudarstva")
+        expect(confirm_email.html_part.body.to_s).to have_content("Konteneryzacja w PRL")
         expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
       end
 
-      it "allow requesting of available items and does not allow requesting of unavailable items" do
-        availability_response = "[{\"itemBarcode\":\"32101108747674\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747666\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747658\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747682\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]"
-        stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
-          .with(headers: { Accept: 'application/json', api_key: 'TESTME' }, body: { bibliographicId: "99125465081006421", institutionId: "PUL" })
-          .to_return(status: 200, body: availability_response)
+      it 'allows CAS patrons to request On-Order items' do
+        visit "/requests/#{on_order_id}"
+        expect(page).to have_button('Request Selected Items', disabled: false)
+        check 'requestable_selected_23480270130006421'
+        expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(page).to have_content I18n.t("requests.submit.on_order_success")
+        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("On Order Request")
+        expect(email.to).to eq(["fstcirc@princeton.edu"])
+        expect(email.cc).to be_blank
+        expect(email.html_part.body.to_s).to have_content("Jahrbuch Praktische Philosophie in globaler Perspektive = Yearbook practical philosophy in a global perspective")
+        expect(confirm_email.subject).to eq("On Order Request")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["a@b.com"])
+        expect(confirm_email.cc).to be_blank
+        expect(confirm_email.html_part.body.to_s).to have_content("Jahrbuch Praktische Philosophie in globaler Perspektive = Yearbook practical philosophy in a global perspective")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+      end
 
-        visit "requests/99125465081006421?mfhd=22922148510006421"
-        expect(page).not_to have_content 'Electronic Delivery'
+      it 'allows CAS patrons to request a ReCAP record that has no item data' do
+        visit "/requests/99113283293506421?mfhd=22750642660006421"
+        check('requestable_selected', exact: true)
+        fill_in 'requestable[][user_supplied_enum]', with: 'Some Volume'
+        expect(page).to have_button('Request this Item', disabled: false)
+      end
+
+      it 'allows CAS patrons to locate an ReCAP record that has no item data' do
+        visit "/requests/#{on_shelf_no_items_id}"
+        choose('requestable__delivery_mode_22740191170006421_print') # chooses 'print' radio button
+        expect(page).to have_content "Pick-up location: Firestone Library"
+        expect(page).to have_content "Requests for pick-up typically take 2 business days to process."
+      end
+
+      it 'allows CAS patrons to locate an on_shelf record' do
+        stub_alma_hold_success('9912636153506421', '22557213410006421', '23557213400006421', '960594184')
+
+        visit "requests/9912636153506421?mfhd=22557213410006421"
+        expect(page).to have_content 'Pick-up location: Firestone Library'
+        choose('requestable__delivery_mode_23557213400006421_print') # chooses 'print' radio button
+        expect(page).to have_content 'Pick-up location: Firestone Library'
+        expect(page).to have_content 'Electronic Delivery'
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("On the Shelf Paging Request (FIRESTONE$STACKS) PR3187 .L443 1951")
+        expect(email.to).to eq(["fstpage@princeton.edu"])
+        expect(email.cc).to be_blank
+        expect(email.html_part.body.to_s).to have_content("John Webster; a critical study")
+        expect(email.html_part.body.to_s).not_to have_content("9912636153506421") # does not show detailed metadata
+        expect(confirm_email.subject).to eq("Firestone Library Pick-up Request")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["a@b.com"])
+        expect(confirm_email.cc).to be_blank
+        expect(confirm_email.html_part.body.to_s).to have_content("John Webster; a critical study")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+      end
+
+      it 'allows CAS patrons to request an item twice and see a message about the duplication' do
+        stub_alma_hold('9912636153506421', '22557213410006421', '23557213400006421', '960594184', status: 200, fixture_name: "alma_hold_error_response.json")
+
+        visit "requests/9912636153506421?mfhd=22557213410006421"
+        expect(page).to have_content 'Pick-up location: Firestone Library'
+        choose('requestable__delivery_mode_23557213400006421_print') # chooses 'print' radio button
+        expect(page).to have_content 'Pick-up location: Firestone Library'
+        expect(page).to have_content 'Electronic Delivery'
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(0)
+        expect(page).to have_content 'You have sent a duplicate request to Alma for this item'
+      end
+
+      let(:good_response) { fixture('/scsb_request_item_response.json') }
+      it 'allows patrons to request a physical recap item' do
+        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        stub_request(:post, scsb_url)
+          .with(body: hash_including(author: "", bibId: "9999443553506421", callNumber: "DT549 .E274q Oversize", chapterTitle: "ABC", deliveryLocation: "PA", emailAddress: "a@b.com", endPage: "", issue: "",
+                                     itemBarcodes: ["32101098722844"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "EDD", requestingInstitution: "PUL", startPage: "", titleIdentifier: "L'écrivain, magazine litteraire trimestriel", username: "jstudent", volume: "2016"))
+          .to_return(status: 200, body: good_response, headers: {})
+        stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
+        visit '/requests/9999443553506421?mfhd=22743365320006421'
+        expect(page).to have_content 'Electronic Delivery'
+        select('Firestone Library', from: 'requestable__pick_up_23743365310006421')
+        choose('requestable__delivery_mode_23743365310006421_edd') # chooses 'edd' radio button
+        expect(page).to have_content I18n.t("requests.recap_edd.note_msg")
+        fill_in "Article/Chapter Title", with: "ABC"
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(a_request(:post, scsb_url)).to have_been_made
+        expect(page).to have_content 'Request submitted'
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Electronic Document Delivery Request Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["a@b.com"])
+        expect(confirm_email.cc).to be_blank
+        expect(confirm_email.html_part.body.to_s).to have_content("L'écrivain, magazine litteraire trimestriel")
+      end
+
+      it 'allows patrons to request a Forrestal annex' do
+        alma_url = stub_alma_hold_success('999455503506421', '22642306790006421', '23642306760006421', '960594184')
+        visit '/requests/999455503506421?mfhd=22642306790006421'
+        choose('requestable__delivery_mode_23642306760006421_print') # chooses 'print' radio button
+        # todo: should we still have the text?
+        # expect(page).to have_content 'Item offsite at Forrestal Annex. Requests for pick-up'
+        expect(page).to have_content 'Electronic Delivery'
+        select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23642306760006421')
+        select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23642306760006421')
+        select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23642306760006421')
+        select('Firestone Library', from: 'requestable__pick_up_23642306760006421')
+        expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(page).to have_content 'Request submitted'
+        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("Annex Request")
+        expect(email.to).to eq(["forranx@princeton.edu"])
+        expect(email.cc).to be_blank
+        expect(email.html_part.body.to_s).to have_content("A tale of cats and mice of Obeyd of Záákán")
+        expect(confirm_email.subject).to eq("Annex Request")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["a@b.com"])
+        expect(confirm_email.cc).to be_blank
+        expect(confirm_email.html_part.body.to_s).to have_content("A tale of cats and mice of Obeyd of Záákán")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+        expect(a_request(:post, alma_url)).to have_been_made
+      end
+
+      it 'allows patrons to request electronic delivery of a Forrestal item' do
+        stub_catalog_raw(bib_id: '9956562643506421')
+        stub_availability_by_holding_id(bib_id: '9956562643506421', holding_id: '22700125400006421')
+        stub_illiad_patron
+        stub_request(:post, transaction_url)
+          .to_return(status: 200, body: responses[:transaction_created], headers: {})
+        stub_request(:post, transaction_note_url)
+          .to_return(status: 200, body: responses[:note_created], headers: {})
+        visit '/requests/9956562643506421?mfhd=22700125400006421'
+        choose('requestable__delivery_mode_23700125390006421_edd') # chooses 'electronic delivery' radio button
+        fill_in "Title", with: "my stuff"
+        expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(a_request(:post, transaction_url)).to have_been_made
+      end
+
+      it 'allows patrons to request a Lewis recap item digitally' do
+        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        stub_scsb_availability(bib_id: "9970533073506421", institution_id: "PUL", barcode: '32101051217659')
+        stub_request(:post, scsb_url)
+          .to_return(status: 200, body: good_response, headers: {})
+        visit '/requests/9970533073506421?mfhd=22667391160006421'
+        choose('requestable__delivery_mode_23667391150006421_edd') # chooses 'edd' radio button
+        expect(page).to have_content 'Pick-up location: Lewis Library'
+        fill_in "Title", with: "my stuff"
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(a_request(:post, scsb_url)).to have_been_made
+        expect(page).to have_content 'Request submitted'
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Electronic Document Delivery Request Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["a@b.com"])
+        expect(confirm_email.cc).to be_blank
+        expect(confirm_email.html_part.body.to_s).to have_content("The decomposition of global conformal invariants")
+      end
+
+      it 'allows patrons to request a Lewis' do
+        stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
+        stub_alma_hold_success('9970533073506421', '22667391180006421', '23667391170006421', '960594184')
+        visit '/requests/9970533073506421?mfhd=22667391180006421'
+        choose 'requestable__delivery_mode_23667391170006421_print'
+        expect(page).to have_content 'Pick-up location: Lewis Library'
+        check 'requestable_selected_23667391170006421'
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(page).to have_content 'Item has been requested for pick-up'
+        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("On the Shelf Paging Request (LEWIS$STACKS) QA646 .A44 2012")
+        expect(email.to).to eq(["lewislib@princeton.edu"])
+        expect(email.cc).to be_nil
+        expect(email.html_part.body.to_s).to have_content("The decomposition of global conformal invariants")
+        expect(confirm_email.subject).to eq("Lewis Library Pick-up Request")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["a@b.com"])
+        expect(confirm_email.cc).to be_nil
+        expect(confirm_email.html_part.body.to_s).to have_content("The decomposition of global conformal invariants")
+      end
+
+      it 'allows patrons to request a on-order' do
+        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        ## having trouble finding a firestone item in BL.
+        visit '/requests/99103251433506421?mfhd=22480270140006421'
+        expect(page).to have_content 'Pick-up location: Firestone Library'
+        # temporary change issue 438
+        # select('Firestone Library', from: 'requestable__pick_up')
+        check 'requestable_selected_23480270130006421'
+        click_button 'Request Selected Items'
+        expect(a_request(:post, scsb_url)).not_to have_been_made
+        expect(page).to have_content 'Request submitted'
+      end
+
+      it 'allows patrons to ask for digitizing on non circulating items' do
+        visit '/requests/9995948403506421?mfhd=22500774400006421'
+        expect(page).to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Pick-up location: Lewis Library'
+        expect(page).to have_css '.submit--request'
+      end
+
+      it 'allows filtering items by mfhd' do
+        visit '/requests/9979171923506421?mfhd=22637778670006421'
+        expect(page).to have_content 'Pick-up location: Lewis Library'
+        expect(page).not_to have_content 'Copy 2'
+        expect(page).not_to have_content 'Copy 3'
+      end
+
+      it 'show a fill in form if the item is an enumeration (Journal ect.) and choose a print copy' do
+        visit 'requests/99105746993506421?mfhd=22547424510006421'
+        expect(page).to have_content 'Pick-up location: Firestone Library'
+        expect(page).to have_content 'If the specific volume does not appear in the list below, please enter it here:'
+        expect(page).to have_content 't. 2, no 2 (2018 )' # include enumeration and chron
+        expect(page).to have_content 't. 3, no 2 (2019 )' # include enumeration and chron
+        within(".user-supplied-input") do
+          check('requestable_selected')
+        end
+        fill_in "requestable_user_supplied_enum_22547424510006421", with: "ABC ZZZ"
+        choose('requestable__delivery_mode_22547424510006421_print') # choose the print radio button
+        expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("Paging Request for Firestone Library")
+        expect(email.to).to eq(["fstpage@princeton.edu"])
+        expect(email.cc).to be_nil
+        expect(email.html_part.body.to_s).to have_content("ABC ZZZ")
+        expect(confirm_email.subject).to eq("Paging Request for Firestone Library")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["a@b.com"])
+        expect(confirm_email.cc).to be_nil
+        expect(confirm_email.html_part.body.to_s).to have_content("ABC ZZZ")
+      end
+
+      it 'show a fill in form if the item is an enumeration (Journal etc.) and choose a electronic copy' do
+        stub_illiad_patron
+        stub_request(:post, transaction_url)
+          .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "PhotoItemAuthor" => "", "PhotoArticleAuthor" => "", "PhotoJournalTitle" => "Mefisto : rivista di medicina, filosofia, storia", "PhotoItemPublisher" => "", "ISSN" => "", "CallNumber" => "R131.A1 M38", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/99105746993506421", "PhotoJournalYear" => "2017", "PhotoJournalVolume" => "ABC ZZZ",
+                                     "PhotoJournalIssue" => "", "ItemInfo3" => "", "ItemInfo4" => "", "AcceptNonEnglish" => true, "ESPNumber" => "1028553183", "DocumentType" => "Article", "Location" => "Firestone Library - Stacks", "PhotoArticleTitle" => "ELECTRONIC CHAPTER"))
+          .to_return(status: 200, body: responses[:transaction_created], headers: {})
+        stub_request(:post, transaction_note_url)
+          .to_return(status: 200, body: responses[:note_created], headers: {})
+        visit 'requests/99105746993506421?mfhd=22547424510006421'
+        expect(page).to have_content 'Pick-up location: Firestone Library'
+        expect(page).to have_content 'If the specific volume does not appear in the list below, please enter it here:'
+        within(".user-supplied-input") do
+          check('requestable_selected')
+        end
+        fill_in "requestable_user_supplied_enum_22547424510006421", with: "ABC ZZZ"
+        choose('requestable__delivery_mode_22547424510006421_edd') # choose the print radio button
+        within("#fields-eed__22547424510006421") do
+          fill_in "Article/Chapter Title", with: "ELECTRONIC CHAPTER"
+        end
+        expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(a_request(:post, transaction_url)).to have_been_made
+        expect(a_request(:post, transaction_note_url)).to have_been_made
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Electronic Document Delivery Request Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["a@b.com"])
+        expect(confirm_email.cc).to be_nil
+        expect(confirm_email.html_part.body.to_s).to have_content("ABC ZZZ")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+      end
+
+      it 'Shows Marqaund Recap Item as an EDD option or In Library Use, no delivery' do
+        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        stub_request(:post, scsb_url).to_return(status: 200, body: good_response, headers: {})
+        stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
+        visit '/requests/99117809653506421?mfhd=22613352460006421'
+        choose('requestable__delivery_mode_23613352450006421_edd') # chooses 'edd' radio button
+        expect(page).to have_content I18n.t('requests.recap_edd.brief_msg')
+        expect(page).to have_content 'Electronic Delivery'
+        expect(page).to have_content 'Available for In Library Use'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'Article/Chapter Title (Required)'
+        fill_in "Title", with: "my stuff"
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(a_request(:post, scsb_url)).to have_been_made
+        email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("Electronic Document Delivery Request Confirmation")
+        expect(email.html_part.body.to_s).to have_content("You will receive an email including a link where you can download your scanned section")
+      end
+
+      it "shows items in the Architecture Library as available" do
+        stub_alma_hold_success('99117876713506421', '22561348800006421', '23561348790006421', '960594184')
+        visit '/requests/99117876713506421?mfhd=22561348800006421'
+        # choose('requestable__delivery_mode_8298341_edd') # chooses 'edd' radio button
+        expect(page).to have_content 'Electronic Delivery'
         expect(page).to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'vol. 9 (1983)'
-        expect(page).to have_content 'vol. 8 (1982)'
-        expect(page).to have_content 'vol. 7 (1981)'
-        expect(page).to have_content 'vol. 6 (1980)'
-        expect(page).to have_content 'vol. 5 (1979)'
-        expect(page).to have_content 'vol. 4 (1978)'
-        within("#request_23922640720006421") do
-          expect(page).to have_content 'In Process materials are typically available in several business days'
+        expect(page).to have_content 'Pick-up location: Architecture Library'
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("On the Shelf Paging Request (ARCH$STACKS) NA1585.A23 S7 2020")
+        expect(email.html_part.body.to_s).to have_content("Abdelhalim Ibrahim Abdelhalim : an architecture of collective memory")
+        expect(confirm_email.subject).to eq("Architecture Library Pick-up Request")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.html_part.body.to_s).to have_content("Your request to pick this item up has been received")
+        expect(confirm_email.html_part.body.to_s).to have_content("Abdelhalim Ibrahim Abdelhalim : an architecture of collective memory")
+      end
+
+      it "allows requests of recap pick-up only items" do
+        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        stub_scsb_availability(bib_id: "99115783193506421", institution_id: "PUL", barcode: '32101108035435')
+        stub_request(:post, scsb_url)
+          .with(body: hash_including(author: nil, bibId: "99115783193506421", callNumber: "DVD", chapterTitle: nil, deliveryLocation: "PA", emailAddress: "a@b.com", endPage: nil, issue: nil, itemBarcodes: ["32101108035435"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999", requestNotes: nil, requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: nil, titleIdentifier: "Chernobyl : a 5-part miniseries", username: "jstudent", volume: nil))
+          .to_return(status: 200, body: good_response, headers: {})
+        stub_request(:post, "#{Alma.configuration.region}/almaws/v1/bibs/99115783193506421/holdings/22534122440006421/items/23534122430006421/requests?user_id=960594184")
+          .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
+          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
+        visit '/requests/99115783193506421?mfhd=22534122440006421'
+        expect(page).not_to have_content 'Item is not requestable.'
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).to have_content 'Item off-site at ReCAP facility. Request for delivery in 1-2 business days.'
+        select('Firestone Library', from: 'requestable__pick_up_23534122430006421')
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(a_request(:post, scsb_url)).to have_been_made
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.html_part.body.to_s).to have_content("Your request to pick this item up has been received")
+        expect(confirm_email.html_part.body.to_s).to have_content("Chernobyl : a 5-part miniseries")
+      end
+
+      it 'does not error for Online items' do
+        visit '/requests/9999946923506421?mfhd=9800910'
+        expect(page).to have_content 'there are no requestable items for this record'
+      end
+      context 'Borrow direct via illiad' do
+        it 'sends requests directly to illiad' do
+          stub_illiad_patron
+          stub_request(:post, transaction_url)
+            .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing",
+                                       "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Trump, Donald Bohner, Kate", "LoanTitle" => "Trump : the art of the comeback",
+                                       "LoanPublisher" => nil, "ISSN" => "9780812929645", "CallNumber" => "HC102.5.T78 A3 1997", "CitedIn" => "https://catalog.princeton.edu/catalog/9917887963506421", "ItemInfo3" => "",
+                                       "ItemInfo4" => nil, "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
+            .to_return(status: 200, body: responses[:transaction_created], headers: {})
+          stub_request(:post, transaction_note_url)
+            .to_return(status: 200, body: responses[:note_created], headers: {})
+          visit '/requests/9917887963506421?mfhd=22503918400006421'
+          expect(page).to have_content 'Request via Partner Library'
+          expect(page).to have_content 'Pick-up location: Firestone Library'
+          check('requestable_selected_23503918390006421')
+          expect(page.find_field('requestable[][type]', type: :hidden).value).to eq('ill')
+          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+          expect(a_request(:post, transaction_url)).to have_been_made
+          expect(a_request(:post, transaction_note_url)).to have_been_made
+          expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
+          confirm_email = ActionMailer::Base.deliveries.last
+          expect(confirm_email.subject).to eq("Partner Request Confirmation")
+          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+          expect(confirm_email.html_part.body.to_s).to have_content("Most requests will arrive within two weeks")
+          expect(confirm_email.html_part.body.to_s).to have_content("Trump : the art of the comeback")
         end
-        within("#request_23922148490006421") do
-          expect(page).to have_content 'In Process materials are typically available in several business days'
+
+        it 'allow interlibrary loan to be requested' do
+          stub_illiad_patron
+          stub_request(:post, transaction_url)
+            .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "U.S. census office", "LoanTitle" => "7th census of U.S.1850",
+                                       "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "HA202.1850.A5q Oversize", "CitedIn" => "https://catalog.princeton.edu/catalog/9915057783506421", "ItemInfo3" => "", "ItemInfo4" => nil, "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
+            .to_return(status: 200, body: responses[:transaction_created], headers: {})
+          stub_request(:post, transaction_note_url)
+            .to_return(status: 200, body: responses[:note_created], headers: {})
+          visit '/requests/9915057783506421?mfhd=22686942210006421'
+          expect(page).to have_content 'Request via Partner Library'
+          expect(page).to have_content 'Pick-up location: Firestone Library'
+          check('requestable_selected_23686942200006421')
+          expect(page.find_field('requestable[][type]', type: :hidden).value).to eq('ill')
+          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+          expect(a_request(:post, transaction_url)).to have_been_made
+          expect(a_request(:post, transaction_note_url)).to have_been_made
+          expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
+          confirm_email = ActionMailer::Base.deliveries.last
+          expect(confirm_email.subject).to eq("Partner Request Confirmation")
+          expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+          expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+          expect(confirm_email.html_part.body.to_s).to have_content("Most requests will arrive within two weeks")
+          expect(confirm_email.html_part.body.to_s).to have_content("7th census of U.S.1850")
         end
       end
 
-      it "does not allow reuesting of on order books" do
-        visit "requests/99125492003506421?mfhd=22927395910006421"
-        expect(page).to have_content 'This item is not available'
-      end
-    end
-    context 'when a holding has items on and off reserve' do
-      let(:user) { FactoryBot.create(:user) }
-      let(:params) do
-        {
-          system_id: '9960102253506421',
-          source: 'pulsearch',
-          mfhd: nil,
-          patron:
-        }
-      end
-
-      before do
-        stub_single_holding_location('engineer$stacks')
-        stub_single_holding_location('engineer$res')
-        stub_availability_by_holding_id(bib_id: '9960102253506421', holding_id: '22548491940006421')
-        stub_catalog_raw(bib_id: '9960102253506421')
-        stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
-          .to_return(status: 200, body: valid_patron_response, headers: {})
-        login_as user
-      end
-      it 'does not display reserve items' do
-        visit "requests/9960102253506421?mfhd=22548491940006421"
-        expect(page.find(:css, '#enum_23939450340006421').text).to eq('Copy 4')
-        expect(page).to have_content('Unavailable')
-        expect(page).to have_content('In Process materials are typically available in several business days.')
-        expect(page).to have_selector(:css, '#request_23939450340006421')
-        expect(page).to have_none_of_selectors(:css, '#request_23939450330006421', '#request_23939450300006421', '#request_23548491930006421')
-      end
-    end
-    context 'when a Princeton item has not made it into SCSB yet' do
-      let(:user) { FactoryBot.create(:user) }
-      let(:params) do
-        {
-          system_id: '99122304923506421',
-          source: 'pulsearch',
-          mfhd: nil,
-          patron:
-        }
-      end
-      let(:first_item) { request_scsb.items['22511126440006421'].first }
-
-      before do
-        stub_scsb_availability(bib_id: "99122304923506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
-        stub_availability_by_holding_id(bib_id: '99122304923506421', holding_id: '22511126440006421')
-        stub_catalog_raw(bib_id: '99122304923506421')
-        stub_single_holding_location('recap$pa')
-        stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
-          .to_return(status: 200, body: valid_patron_response, headers: {})
-        login_as user
+      it 'an annex item with user supplied information creates annex emails' do
+        visit '/requests/9922868943506421?mfhd=22692156940006421'
+        expect(page).to have_field 'requestable_selected', disabled: false
+        expect(page).to have_field 'requestable_user_supplied_enum_22692156940006421'
+        within('#request_user_supplied_22692156940006421') do
+          check('requestable_selected', exact: true)
+          fill_in 'requestable_user_supplied_enum_22692156940006421', with: 'test'
+        end
+        expect(page).to have_content 'Physical Item Delivery'
+        choose 'requestable__delivery_mode_22692156940006421_print'
+        select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_22692156940006421')
+        expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(page).to have_content I18n.t('requests.submit.annex_success')
+        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("Annex Request")
+        expect(email.to).to eq(["forranx@princeton.edu"])
+        expect(email.cc).to be_blank
+        expect(email.html_part.body.to_s).to have_content("Birth control news")
+        expect(email.html_part.body.to_s).to have_content("test")
+        expect(email.text_part.body.to_s).to have_content("test")
+        expect(confirm_email.subject).to eq("Annex Request")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["a@b.com"])
+        expect(confirm_email.cc).to be_blank
+        expect(confirm_email.html_part.body.to_s).to have_content("Birth control news")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
       end
 
-      it 'is available and in process' do
-        visit "requests/99122304923506421?mfhd=22511126440006421"
-        expect(page.find(:css, ".request--availability").text).to eq("Available")
+      it 'allows a non circulating item with no item data to be digitized' do
+        stub_illiad_patron
+        stub_request(:post, transaction_url)
+          .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "PhotoArticleAuthor" => "I Aman Author", "PhotoItemAuthor" => "Herzog, Hans-Michael Daros Collection (Art)", "PhotoJournalTitle" => "La mirada : looking at photography in Latin America today", "PhotoItemPublisher" => "Zürich: Edition Oehrli", "PhotoJournalIssue" => "",
+                                     "Location" => "Marquand Library - Stacks", "ISSN" => "9783905597363", "CallNumber" => "", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/9941274093506421", "PhotoJournalVolume" => "", "ItemInfo3" => "", "ItemInfo4" => "", "CitedPages" => "Marquand EDD", "AcceptNonEnglish" => true, "ESPNumber" => "", "DocumentType" => "Book", "PhotoArticleTitle" => "ABC", "PhotoJournalYear" => "2002"))
+          .to_return(status: 200, body: responses[:transaction_created], headers: {})
+        stub_request(:post, transaction_note_url)
+          .to_return(status: 200, body: responses[:note_created], headers: {})
+        stub_clancy_status(barcode: "32101072349515")
+        visit '/requests/9941274093506421?mfhd=22690999210006421'
+        choose('requestable__delivery_mode_22690999210006421_edd') # chooses 'edd' radio button
+        expect(page).to have_content I18n.t('requests.marquand_edd.brief_msg')
+        expect(page).to have_content 'Electronic Delivery'
+        expect(page).to have_content 'Unavailable'
+        expect(page).not_to have_content 'Available for In Library Use'
+        fill_in "Article/Chapter Title", with: "ABC"
+        fill_in "Author", with: "I Aman Author"
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(a_request(:post, transaction_url)).to have_been_made
+        expect(a_request(:post, transaction_note_url)).to have_been_made
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Electronic Document Delivery Request Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.html_part.body.to_s).to have_content(I18n.t('requests.marquand_edd.email_conf_msg'))
+        expect(confirm_email.html_part.body.to_s).to have_content("La mirada : looking at photography in Latin America today")
+        marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        expect(marquand_email.subject).to eq("Patron Initiated Catalog Request Scan")
+        expect(marquand_email.html_part.body.to_s).to have_content("La mirada : looking at photography in Latin America today")
+        expect(marquand_email.html_part.body.to_s).to have_content("ABC")
+        expect(marquand_email.html_part.body.to_s).to have_content("I Aman Author")
+        expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
+        expect(marquand_email.cc).to be_blank
+      end
+
+      it 'allows an in process item to be requested' do
+        visit "/requests/#{in_process_id}"
         expect(page).to have_content 'In Process materials are typically available in several business days'
-        select('Firestone Library', from: 'requestable__pick_up_23511126430006421')
         expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
         confirm_email = ActionMailer::Base.deliveries.last
         expect(confirm_email.subject).to eq("In Process Request")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.html_part.body.to_s).to have_content("In Process materials can typically be picked up at the Circulation Desk of your choice in several business days")
+        expect(confirm_email.html_part.body.to_s).to have_content("Gai zao jiao yu xue")
+        in_process_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        expect(in_process_email.subject).to eq("In Process Request")
+        expect(in_process_email.html_part.body.to_s).to have_content("Gai zao jiao yu xue")
+        expect(in_process_email.to).to eq(["fstcirc@princeton.edu"])
+        expect(in_process_email.cc).to be_blank
       end
+
+      context 'disavowed user' do
+        it 'allows a non circulating item with not item data to be digitized to be requested, but then errors' do
+          stub_illiad_patron(disavowed: true)
+          stub_clancy_status(barcode: "32101072349515")
+          visit '/requests/9941274093506421?mfhd=22690999210006421'
+          expect(page).to have_content 'Electronic Delivery'
+          choose('requestable__delivery_mode_22690999210006421_edd') # chooses 'edd' radio button
+          fill_in "Article/Chapter Title", with: "ABC"
+          fill_in "Author", with: "I Aman Author"
+          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+          expect(page).to have_content "You no longer have an active account and may not make digitization requests."
+          error_email = ActionMailer::Base.deliveries.last
+          expect(error_email.subject).to eq("Request Service Error")
+          expect(error_email.to).to eq(["docdel@princeton.edu"])
+        end
+      end
+
+      it "allows a columbia item to be picked up or digitized" do
+        stub_scsb_availability(bib_id: "1000060", institution_id: "CUL", barcode: 'CU01805363')
+        stub_catalog_raw(bib_id: 'SCSB-2879197', type: 'scsb')
+        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        stub_request(:post, scsb_url)
+          .with(body: hash_including(author: "", bibId: "SCSB-2879197", callNumber: "PG3479.3.I84 Z778 1987g", chapterTitle: "", deliveryLocation: "QX", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["CU01805363"], itemOwningInstitution: "CUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Mir, uvidennyĭ s gor : ocherk tvorchestva Shukurbeka Beĭshenalieva", username: "jstudent", volume: ""))
+          .to_return(status: 200, body: good_response, headers: {})
+        visit '/requests/SCSB-2879197'
+        expect(page).to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'Electronic Delivery'
+        choose('requestable__delivery_mode_4497908_print') # chooses 'print' radio button
+        expect(page).to have_content('Pick-up location: Firestone Circulation Desk')
+        expect(page).to have_content 'ReCAP PG3479.3.I84 Z778 1987g'
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(a_request(:post, scsb_url)).to have_been_made
+        expect(page).to have_content "Request submitted to ReCAP, our offsite storage facility"
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.html_part.body.to_s).to have_content("Your request to pick this item up has been received. We will process the requests as soon as possible")
+        expect(confirm_email.html_part.body.to_s).to have_content("Mir, uvidennyĭ s gor : ocherk tvorchestva Shukurbeka Beĭshenalieva")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+      end
+
+      it "allows a columbia item that is open access to be picked up or digitized" do
+        stub_catalog_raw(bib_id: 'SCSB-4634001', type: 'scsb')
+        scsb_item_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        stub_request(:post, scsb_item_url)
+          .with(body: hash_including(author: "", bibId: "SCSB-4634001", callNumber: "4596 2907.88 1901", chapterTitle: "", deliveryLocation: "QX", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["CU51481294"], itemOwningInstitution: "CUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Chong wen men shang shui ya men xian xing shui ze. 崇文門 商稅 衙門 現行 稅則.", username: "jstudent", volume: ""))
+          .to_return(status: 200, body: good_response, headers: {})
+        stub_scsb_availability(bib_id: "3863391", institution_id: "CUL", barcode: 'CU51481294')
+        visit '/requests/SCSB-4634001'
+        expect(page).to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'Electronic Delivery'
+        choose('requestable__delivery_mode_6826565_print') # chooses 'print' radio button
+        expect(page).to have_content('Pick-up location: Firestone Circulation Desk')
+        expect(page).to have_content 'ReCAP 4596 2907.88 1901'
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(a_request(:post, scsb_item_url)).to have_been_made
+        expect(page).to have_content "Request submitted to ReCAP, our offsite storage facility"
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.html_part.body.to_s).to have_content(" Your request to pick this item up has been received. We will process the requests as soon as possible")
+        expect(confirm_email.html_part.body.to_s).to have_content("Chong wen men shang shui ya men xian xing shui ze")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+      end
+
+      it "places a hold and sends emails for a marquand in library use item" do
+        stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '960594184')
+        stub_clancy_status(barcode: "32101072349515")
+        visit '/requests/9956364873506421?mfhd=22587331490006421'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'Available for In Library Use'
+        expect(page).to have_content 'Electronic Delivery'
+        expect(page).not_to have_link('make an appointment', href: "https://libcal.princeton.edu/seats?lid=10656")
+        choose('requestable__delivery_mode_23587331480006421_in_library') # chooses 'in library' radio button
+        expect(page).to have_content('Marquand Library at Firestone')
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.html_part.body.to_s).to have_content("You will be notified via email when your item is available.")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Pick-up By")
+        expect(confirm_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
+        marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        expect(marquand_email.subject).to eq("Patron Initiated Catalog Request In Library")
+        expect(marquand_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
+        expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
+        expect(marquand_email.cc).to be_blank
+      end
+
+      it "places a hold and a clancy request for a marquand in library use item at Clancy" do
+        stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '960594184')
+        stub_clancy_status(barcode: "32101072349515", status: "Item In at Rest")
+        stub_clancy_post(barcode: "32101072349515")
+        visit '/requests/9956364873506421?mfhd=22587331490006421'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'Electronic Delivery'
+        expect(page).to have_content 'Available for In Library Use'
+        expect(page).to have_content I18n.t("requests.clancy_in_library.brief_msg")
+        expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
+        choose('requestable__delivery_mode_23587331480006421_in_library') # chooses 'in_library' radio button
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
+        marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        expect(marquand_email.subject).to eq("Patron Initiated Catalog Request Clancy In Library")
+        expect(marquand_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
+        expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
+        expect(marquand_email.cc).to be_blank
+      end
+
+      it "only has edd for a marquand in library use item at Clancy that is unavailable" do
+        stub_illiad_patron
+        stub_request(:post, transaction_url)
+          .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "NotWantedAfter" => (DateTime.current + 6.months).strftime("%m/%d/%Y"), "WantedBy" => "Yes, until the semester's", "PhotoItemAuthor" => "Johns, Catherine", "PhotoArticleAuthor" => "", "PhotoJournalTitle" => "Dogs : history, myth, art", "PhotoItemPublisher" => "Cambridge, Mass: Harvard University P...", "ISSN" => "9780674030930", "CallNumber" => "N7668.D6 J64 2008", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/9956364873506421",
+                                     "PhotoJournalYear" => "2008", "PhotoJournalVolume" => "", "PhotoJournalIssue" => "", "ItemInfo3" => "", "ItemInfo4" => "", "CitedPages" => "Marquand Clancy UNAVAIL EDD", "AcceptNonEnglish" => true, "ESPNumber" => "213495319", "DocumentType" => "Book", "Location" => "Marquand Library - Stacks", "PhotoArticleTitle" => "ABC"))
+          .to_return(status: 200, body: responses[:transaction_created], headers: {})
+        stub_request(:post, transaction_note_url)
+          .with(body: hash_including("Note" => "Digitization Request Marquand Item at Clancy (Unavailable)"))
+          .to_return(status: 200, body: responses[:note_created], headers: {})
+        stub_clancy_status(barcode: "32101072349515", status: "Item In Accession Process")
+        visit '/requests/9956364873506421?mfhd=22587331490006421'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).not_to have_content 'Available for In Library Use'
+        expect(page).to have_content 'Electronic Delivery'
+        choose('requestable__delivery_mode_23587331480006421_edd') # chooses 'edd' radio button
+        expect(page).to have_content I18n.t('requests.clancy_unavailable_edd.brief_msg')
+        expect(page).to have_content I18n.t("requests.clancy_unavailable_edd.note_msg")
+        fill_in "Article/Chapter Title", with: "ABC"
+        expect(page).not_to have_content("translation missing")
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(a_request(:post, transaction_url)).to have_been_made
+        expect(a_request(:post, transaction_note_url)).to have_been_made
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request EDD Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
+        expect(confirm_email.html_part.body.to_s).to have_content(I18n.t("requests.clancy_unavailable_edd.email_conf_msg"))
+        expect(confirm_email.html_part.body.to_s).to have_content("ABC")
+        marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        expect(marquand_email.subject).to eq("Patron Initiated Catalog Request Scan - Unavailable at Clancy")
+        expect(marquand_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
+        expect(marquand_email.html_part.body.to_s).to have_content("ABC")
+        expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
+        expect(marquand_email.cc).to be_blank
+      end
+
+      it "sends an email and places an illiad request for a marquand edd item at Clancy" do
+        stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '960594184')
+        stub_clancy_status(barcode: "32101072349515", status: "Item In at Rest")
+        stub_clancy_post(barcode: "32101072349515")
+        stub_illiad_patron
+        stub_request(:post, transaction_url)
+          .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "NotWantedAfter" => (DateTime.current + 6.months).strftime("%m/%d/%Y"), "WantedBy" => "Yes, until the semester's", "PhotoItemAuthor" => "Johns, Catherine", "PhotoArticleAuthor" => "", "PhotoJournalTitle" => "Dogs : history, myth, art", "PhotoItemPublisher" => "Cambridge, Mass: Harvard University P...", "ISSN" => "9780674030930", "CallNumber" => "N7668.D6 J64 2008", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/9956364873506421",
+                                     "PhotoJournalYear" => "2008", "PhotoJournalVolume" => "", "PhotoJournalIssue" => "", "ItemInfo3" => "", "ItemInfo4" => "", "CitedPages" => "Marquand Clancy EDD", "AcceptNonEnglish" => true, "ESPNumber" => "213495319", "DocumentType" => "Book", "Location" => "Marquand Library - Stacks", "PhotoArticleTitle" => "ABC"))
+          .to_return(status: 200, body: responses[:transaction_created], headers: {})
+        stub_request(:post, transaction_note_url)
+          .with(body: hash_including("Note" => "Digitization Request Marquand Item at Clancy"))
+          .to_return(status: 200, body: responses[:note_created], headers: {})
+        visit '/requests/9956364873506421?mfhd=22587331490006421'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'Electronic Delivery'
+        expect(page).to have_content 'Available for In Library Use'
+        expect(page).to have_content I18n.t("requests.clancy_in_library.brief_msg")
+        expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
+        choose('requestable__delivery_mode_23587331480006421_edd') # chooses 'edd' radio button
+        expect(page).to have_content I18n.t('requests.clancy_edd.brief_msg')
+        expect(page).to have_content I18n.t("requests.clancy_edd.note_msg")
+        fill_in "Article/Chapter Title", with: "ABC"
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(a_request(:post, transaction_url)).to have_been_made
+        expect(a_request(:post, transaction_note_url)).to have_been_made
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request EDD Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
+        expect(confirm_email.html_part.body.to_s).to have_content("Electronic document delivery requests typically take 4-8 business days")
+        marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        expect(marquand_email.subject).to eq("Patron Initiated Catalog Request Clancy Scan")
+        expect(marquand_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
+        expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
+        expect(marquand_email.cc).to be_blank
+      end
+
+      it "shows in library use option for SCSB ReCAP items in Firestone" do
+        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        stub_request(:post, scsb_url)
+          .with(body: hash_including(author: nil, bibId: "SCSB-8953469", callNumber: "ReCAP 18-69309", chapterTitle: nil, deliveryLocation: "QX", emailAddress: "a@b.com", endPage: nil, issue: nil, itemBarcodes: ["33433121206696"], itemOwningInstitution: "NYPL", patronBarcode: "22101008199999", requestNotes: nil, requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: nil, titleIdentifier: "1955-1968 : gli artisti italiani alle Documenta di Kassel", username: "jstudent", volume: nil))
+          .to_return(status: 200, body: good_response, headers: {})
+        stub_scsb_availability(bib_id: ".b215204128", institution_id: "NYPL", barcode: '33433121206696')
+        stub_catalog_raw(bib_id: 'SCSB-8953469', type: 'scsb')
+        visit 'requests/SCSB-8953469'
+        expect(page).not_to have_content 'Help Me Get It'
+        expect(page).to have_content 'Available for In Library'
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(a_request(:post, scsb_url)).to have_been_made
+        expect(page).to have_content "Request submitted. See confirmation email with details about when your item(s) will be available"
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.html_part.body.to_s).to have_content("955-1968 : gli artisti italiani alle Documenta di Kassel")
+      end
+
+      it 'Shows marquand recap item as an EDD or In Library Use' do
+        stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
+        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        stub_request(:post, scsb_url)
+          .with(body: hash_including(author: "", bibId: "99117809653506421", callNumber: "N6923.B257 H84 2020", chapterTitle: "", deliveryLocation: "PJ", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["32101106347378"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Alesso Baldovinetti und die Florentiner Malerei der Frührenaissance", username: "jstudent", volume: ""))
+          .to_return(status: 200, body: good_response, headers: {})
+        visit '/requests/99117809653506421?mfhd=22613352460006421'
+        stub_request(:post, "#{Alma.configuration.region}/almaws/v1/bibs/99117809653506421/holdings/22613352460006421/items/23613352450006421/requests?user_id=960594184")
+          .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "marquand"))
+          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
+        choose('requestable__delivery_mode_23613352450006421_in_library') # chooses 'in_library' radio button
+        expect(page).to have_content 'Electronic Delivery'
+        expect(page).to have_content 'Available for In Library'
+        expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(a_request(:post, scsb_url)).to have_been_made
+        expect(a_request(:post, scsb_url)).to have_been_made
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.html_part.body.to_s).to have_content("2-4 business days")
+        expect(confirm_email.html_part.body.to_s).to have_content("Alesso Baldovinetti und die Florentiner Malerei der Frührenaissance")
+      end
+
+      it 'Shows recap item that has not made it to recap yet as On Order' do
+        stub_scsb_availability(bib_id: "99123340993506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
+        visit '/requests/99123340993506421?mfhd=22569931350006421'
+        expect(page).to have_content 'Unavailable'
+        select('Firestone Library', from: 'requestable__pick_up_23896622240006421')
+        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(page).to have_content I18n.t("requests.submit.in_process_success")
+        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("On Order Request")
+        expect(email.to).to eq(["fstcirc@princeton.edu"])
+        expect(email.cc).to be_blank
+        expect(email.html_part.body.to_s).to have_content("Ḍaḥāyā al-zawāj")
+        expect(confirm_email.subject).to eq("On Order Request")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["a@b.com"])
+        expect(confirm_email.cc).to be_blank
+        expect(confirm_email.html_part.body.to_s).to have_content("Ḍaḥāyā al-zawāj")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+      end
+
+      it "Delivers scsb in library use art items only to marquand" do
+        stub_scsb_availability(bib_id: "9008865", institution_id: "CUL", barcode: 'AR01220551')
+        visit '/requests/SCSB-5595350'
+        expect(page).to have_content 'Available for In Library Use'
+        expect(page).to have_content 'Pick-up location: Marquand Library at Firestone'
+      end
+
+      it "Delivers scsb in library use music items only to mendel" do
+        stub_scsb_availability(bib_id: "14577462", institution_id: "CUL", barcode: 'MR00393223')
+        visit '/requests/SCSB-9726156'
+        expect(page).to have_content 'Available for In Library Use'
+        expect(page).to have_content 'Pick-up location: Mendel Music Library'
+      end
+
+      it "allows a harvard item that is in library use for Marquand to be viewwed" do
+        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        stub_scsb_availability(bib_id: "990143653400203941", institution_id: "HL", barcode: '32044136602687')
+        stub_request(:post, scsb_url)
+          .with(body: hash_including(author: "", bibId: "SCSB-9919951", callNumber: "N5230.M62 R39 2014", chapterTitle: "", deliveryLocation: "PJ", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["32044136602687"], itemOwningInstitution: "HL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Razón de ser : obras emblemáticas de la Colección Carrillo Gil : Orozco, Rivera, Siqueiros, Paalen, Gerzso", username: "jstudent", volume: ""))
+          .to_return(status: 200, body: good_response, headers: {})
+        visit '/requests/SCSB-9919951'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).to have_content 'Available for In Library Use'
+        expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
+        expect(page).to have_content 'ReCAP N5230.M62 R39 2014'
+        # expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        # expect(a_request(:post, scsb_url)).to have_been_made
+        # expect(page).to have_content "Request submitted to ReCAP, our offsite storage facility"
+        # confirm_email = ActionMailer::Base.deliveries.last
+        # expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
+        # expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        # expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        # expect(confirm_email.html_part.body.to_s).to have_content(" Your request to pick this item up has been received. We will process the requests as soon as possible")
+        # expect(confirm_email.html_part.body.to_s).to have_content("Chong wen men shang shui ya men xian xing shui ze")
+        # expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+      end
+
+      it "shows a on order princeton ReCap item as Acquisition" do
+        stub_scsb_availability(bib_id: "99125378834306421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
+        visit '/requests/99125378834306421?mfhd=22897184810006421'
+        expect(page).to have_content 'On Order books have not yet been received. Place a request to be notified when this item has arrived and is ready for your pick-up.'
+      end
+
+      it 'Request an enumerated book correctly' do
+        stub_alma_hold_success('9973397793506421', '22541187250006421', '23541187200006421', '960594184')
+        visit '/requests/9973397793506421?mfhd=22541187250006421'
+        expect(page).to have_content "Han'guk hyŏndaesa sanch'aek. No Mu-hyŏn sidae ŭi myŏngam"
+        check('requestable_selected_23541187200006421')
+        choose('requestable__delivery_mode_23541187200006421_print')
+        expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(page).to have_content I18n.t("requests.submit.on_shelf_success")
+        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("On the Shelf Paging Request (EASTASIAN$CJK) DS923.25 .K363 2011")
+        expect(email.to).to eq(["gestcirc@princeton.edu"])
+        expect(email.cc).to be_blank
+        expect(email.html_part.body.to_s).to have_content("Han'guk hyŏndaesa sanch'aek. No Mu-hyŏn sidae ŭi myŏngam")
+        expect(email.html_part.body.to_s).to have_content("vol.5")
+        expect(email.text_part.body.to_s).to have_content("vol.5")
+        expect(confirm_email.subject).to eq("East Asian Library Pick-up Request")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["a@b.com"])
+        expect(confirm_email.cc).to be_blank
+        expect(confirm_email.html_part.body.to_s).to have_content("Han'guk hyŏndaesa sanch'aek. No Mu-hyŏn sidae ŭi myŏngam")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+      end
+
+      it 'Request an annex in library book correctly' do
+        stub_alma_hold_success('9941347943506421', '22560381400006421', '23560381360006421', '960594184')
+        visit 'requests/9941347943506421?mfhd=22560381400006421'
+        expect(page).to have_content "Er ru ting Qun fang pu : [san shi juan]"
+        check('requestable_selected_23560381360006421')
+        choose('requestable__delivery_mode_23560381360006421_in_library')
+        select 'Firestone Library', from: 'requestable__pick_up_23560381360006421'
+        expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(page).to have_content I18n.t("requests.submit.annex_in_library_success")
+        email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+        confirm_email = ActionMailer::Base.deliveries.last
+        expect(email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
+        expect(email.to).to eq(["forranx@princeton.edu"])
+        expect(email.cc).to be_blank
+        expect(email.html_part.body.to_s).to have_content("Er ru ting Qun fang pu : [san shi juan]")
+        expect(email.html_part.body.to_s).to have_content("vol.9-16")
+        expect(email.text_part.body.to_s).to have_content("vol.9-16")
+        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+        expect(confirm_email.to).to eq(["a@b.com"])
+        expect(confirm_email.cc).to be_blank
+        expect(confirm_email.html_part.body.to_s).to have_content("Er ru ting Qun fang pu : [san shi juan]")
+        expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+      end
+
+      describe 'Request a temp holding item' do
+        before do
+          stub_illiad_patron
+          stub_alma_hold_success('99105816503506421', '22514405160006421', '23514405150006421', '960594184')
+          stub_catalog_raw(bib_id: '99105816503506421')
+          stub_request(:post, transaction_url)
+            .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Request Processing", "RequestType" => "Loan", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "LoanAuthor" => "Zhongguo xin li xue hui", "LoanTitle" => "Xin li ke xue = Journal of psychological science 心理科学 = Journal of psychological science", "LoanPublisher" => nil, "ISSN" => "", "CallNumber" => "BF8.C5 H76", "CitedIn" => "https://catalog.princeton.edu/catalog/9941150973506421", "ItemInfo3" => "no.217-218", "ItemInfo4" => nil, "AcceptNonEnglish" => true, "ESPNumber" => nil, "DocumentType" => "Book", "LoanPlace" => nil))
+            .to_return(status: 200, body: responses[:transaction_created], headers: {})
+        end
+        it 'with an electronic delivery' do
+          visit 'requests/99105816503506421?mfhd=22514405160006421'
+          expect(page).to have_content "SOS brutalism : a global survey"
+          expect(page).to have_content 'Elser, Oliver'
+          expect(page).to have_content 'Physical Item Delivery'
+          expect(page).to have_content 'Electronic Delivery'
+          expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
+          expect(page).to have_content 'Available'
+          expect(page).to have_content 'vol.1'
+          check('requestable_selected_23514405150006421')
+          choose('requestable__delivery_mode_23514405150006421_edd')
+          fill_in 'requestable__edd_art_title_23514405150006421', with: 'some text'
+          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+          expect(a_request(:post, transaction_url)).to have_been_made
+        end
+        it 'with a Physical delivery' do
+          visit 'requests/99105816503506421?mfhd=22514405160006421'
+          expect(page).to have_content "SOS brutalism : a global survey"
+          expect(page).to have_content 'Elser, Oliver'
+          expect(page).to have_content 'Physical Item Delivery'
+          expect(page).to have_content 'Electronic Delivery'
+          expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
+          expect(page).to have_content 'Available'
+          expect(page).to have_content 'vol.1'
+          check('requestable_selected_23514405150006421')
+          choose('requestable__delivery_mode_23514405150006421_print')
+          expect(page).to have_content 'Pick-up location: Architecture Library'
+          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        end
+      end
+
+      describe 'Request button disables and enables', vcr: { cassette_name: 'request_features', record: :none }, js: true do
+        before do
+          stub_illiad_patron
+          stub_catalog_raw(bib_id: '99105816503506421')
+          stub_catalog_raw(bib_id: '9991807103506421')
+        end
+        it 'with an electronic delivery' do
+          visit 'requests/99105816503506421?mfhd=22514405160006421'
+          expect(page).to have_content "SOS brutalism : a global survey"
+          expect(page).to have_content 'Elser, Oliver'
+          expect(page).to have_content 'Physical Item Delivery'
+          expect(page).to have_content 'Electronic Delivery'
+          expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
+          expect(page).to have_content 'Available'
+          expect(page).to have_content 'vol.1'
+          check('requestable_selected_23514405150006421')
+          expect(page).to have_button('Request this Item', disabled: true)
+          choose('requestable__delivery_mode_23514405150006421_edd')
+          expect(page).to have_button('Request this Item', disabled: false)
+        end
+        it 'with a Physical delivery' do
+          visit 'requests/99105816503506421?mfhd=22514405160006421'
+          expect(page).to have_content "SOS brutalism : a global survey"
+          expect(page).to have_content 'Elser, Oliver'
+          expect(page).to have_content 'Physical Item Delivery'
+          expect(page).to have_content 'Electronic Delivery'
+          expect(page).to have_content "Architecture Library- Librarian's Office NA682.B7 S673 2017b"
+          expect(page).to have_content 'Available'
+          expect(page).to have_content 'vol.1'
+          check('requestable_selected_23514405150006421')
+          expect(page).to have_button('Request this Item', disabled: true)
+          choose('requestable__delivery_mode_23514405150006421_print')
+          expect(page).to have_button('Request this Item', disabled: false)
+          expect(page).to have_content 'Pick-up location: Architecture Library'
+        end
+        it 'always enabled with a ReCap item' do
+          visit 'requests/9991807103506421?mfhd=22696270550006421'
+          expect(page).to have_content "Towards the critique of violence : Walter Benjamin and Giorgio Agamben"
+          expect(page).to have_content 'Moran, Brendan P.'
+          expect(page).to have_content 'Firestone Library - Stacks HM886 .T69 2015'
+          expect(page).to have_content 'Request via Partner Library'
+          expect(page).to have_content "Pick-up location: Firestone Library"
+          expect(page).to have_content "Unavailable"
+          expect(page).not_to have_content "Resource Sharing Request"
+          check('requestable_selected_23696270540006421')
+          expect(page).to have_button('Request this Item', disabled: false)
+        end
+        it 'enables and disables for an record with multiple items with one delivery option' do
+          visit 'requests/995597013506421?mfhd=22641621120006421'
+          expect(page).to have_content 'Mycologia'
+          expect(page).to have_content 'New York Botanical Garden'
+          expect(page).to have_content 'Lewis Library - Lewis Library - Serials (Off-Site) 8763.668'
+          expect(page).to have_content 'Electronic Delivery'
+          expect(page).to have_content 'Available'
+          expect(page).to have_button('Request Selected Items', disabled: true)
+          check('requestable_selected_23641620980006421')
+          expect(page).to have_button('Request Selected Items', disabled: false)
+        end
+        it 'button state does not change when user supplies volume data or not' do
+          visit 'requests/9931433603506421?mfhd=22542676190006421'
+          expect(page).to have_content 'Aomen'
+          expect(page).to have_content 'East Asian Library DS796.M2 A623'
+          expect(page).to have_content 'If the specific volume does not appear in the list below, please enter it here'
+          expect(page).to have_button('Request Selected Items', disabled: true)
+          check('requestable_selected')
+          choose('requestable__delivery_mode_22542676190006421_print')
+          fill_in(id: 'requestable_user_supplied_enum_22542676190006421', with: 'Volume 1')
+          expect(page).to have_button('Request Selected Items', disabled: false)
+          fill_in(id: 'requestable_user_supplied_enum_22542676190006421', with: 'Volume 1', fill_options: { clear: :backspace })
+          expect(page).to have_button('Request Selected Items', disabled: false)
+        end
+        it 'enables and disables for a record with delivery location options' do
+          visit 'requests/99116000543506421?mfhd=22635325770006421'
+          expect(page).to have_content 'Mukcha'
+          expect(page).to have_content 'ReCAP - Remote Storage B128.M77 K6 2019'
+          expect(page).to have_content 'Unavailable'
+          expect(page).to have_button('Request this Item', disabled: true)
+          select('Firestone Library')
+          expect(page).to have_button('Request this Item', disabled: false)
+        end
+      end
+
+      describe 'Request a temp holding item from Resource Sharing - RES_SHARE$IN_RS_REQ' do
+        before do
+          stub_illiad_patron
+          stub_request(:post, transaction_url)
+            .to_return(status: 200, body: responses[:transaction_created], headers: {})
+          stub_request(:post, transaction_note_url)
+            .to_return(status: 200, body: responses[:note_created], headers: {})
+          stub_alma_hold('9991807103506421', '22696270550006421', '23696270540006421', '960594184', status: 200, fixture_name: "availability_response_9991807103506421.json")
+          stub_catalog_raw(bib_id: '9991807103506421')
+        end
+        it 'request via partner library' do
+          visit 'requests/9991807103506421?mfhd=22696270550006421'
+          expect(page).to have_content "Towards the critique of violence : Walter Benjamin and Giorgio Agamben"
+          expect(page).to have_content 'Moran, Brendan P.'
+          expect(page).to have_content 'Firestone Library - Stacks HM886 .T69 2015'
+          expect(page).to have_content 'Request via Partner Library'
+          expect(page).to have_content "Pick-up location: Firestone Library"
+          expect(page).to have_content "Unavailable"
+          expect(page).not_to have_content "Resource Sharing Request"
+          check('requestable_selected_23696270540006421')
+          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+          expect(page).to have_content 'Your request was submitted'
+        end
+      end
+    end
+
+    it 'Handles a bad mfhd without system error' do
+      visit 'requests/998574693506421?mfhd=abc123'
+      expect(page).to have_content "Science"
+    end
+
+    it 'has firestone as the resource sharing deliveryt location' do
+      visit 'http://localhost:3000/requests/99123713303506421?mfhd=22668310350006421'
+      expect(page).to have_content 'Reconstructions : architecture and Blackness in America'
+      expect(page).to have_content 'Request via Partner Library'
+      expect(page).to have_content 'Pick-up location: Firestone Library'
+    end
+  end
+
+  context 'A Princeton net ID user without a bibdata record' do
+    let(:user) { FactoryBot.create(:user) }
+    before do
+      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+        .to_return(status: 404, body: invalid_patron_response, headers: {})
+      login_as user
+    end
+
+    describe 'Visits a request page', js: true do
+      it 'Tells the user their patron record is not available' do
+        visit "/requests/99117809653506421?mfhd=22613352460006421"
+        expect(a_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")).to have_been_made
+        expect(page).to have_content(I18n.t("requests.account.auth_user_lookup_fail"))
+      end
+    end
+  end
+
+  context 'a princeton net ID user without a barcode' do
+    let(:user) { FactoryBot.create(:user) }
+    let(:in_process_id) { '99124449473506421?mfhd=22664801380006421' }
+    let(:recap_in_process_id) { '99114026863506421?mfhd=22753408610006421' }
+
+    let(:recap_params) do
+      {
+        Bbid: "9994933183506421",
+        item: "23131438400006421",
+        lname: "Student",
+        delivery: "p",
+        pickup: "PN",
+        startpage: "",
+        endpage: "",
+        email: "a@b.com",
+        volnum: "",
+        issue: "",
+        aauthor: "",
+        atitle: "",
+        note: ""
+      }
+    end
+
+    before do
+      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+        .to_return(status: 200, body: valid_patron_no_barcode_response, headers: {})
+      login_as user
+    end
+
+    describe 'When visiting an Alma ID as a CAS User' do
+      it 'disallows access to request an available ReCAP item.' do
+        stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
+        visit "/requests/#{mms_id}"
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'disallows access to in process items' do
+        visit "/requests/#{in_process_id}"
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'disallows access for in process recap items' do
+        visit "/requests/#{recap_in_process_id}"
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'disallows access for On-Order recap items' do
+        visit "/requests/#{on_order_id}"
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'disallows access to a record that has no item data' do
+        visit "/requests/#{no_items_id}"
+        expect(page).not_to have_button('Request this Item')
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'disallows access to a ReCAP record that has no item data to be digitized' do
+        visit "/requests/993083506421?mfhd=22740191180006421"
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'disallows access of on on_shelf record' do
+        stub_illiad_patron
+        visit "/requests/9997708113506421?mfhd=22729045760006421"
+        expect(page).not_to have_button('Request this Item')
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      let(:good_response) { fixture('/scsb_request_item_response.json') }
+      it 'disallows access to request a physical recap item' do
+        stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
+        visit '/requests/9999443553506421?mfhd=22743365320006421'
+        expect(page).not_to have_button('Request this Item')
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'disallows access to request a Forrestal annex' do
+        visit '/requests/999455503506421?mfhd=22642306790006421'
+        expect(page).not_to have_button('Request this Item')
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'disallows access to request a Lewis recap item digitally' do
+        stub_scsb_availability(bib_id: "9970533073506421", institution_id: "PUL", barcode: '32101051217659')
+        visit '/requests/9970533073506421?mfhd=22667391160006421'
+        expect(page).not_to have_button('Request this Item')
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'disallows access to request a digital copy from Lewis' do
+        visit '/requests/9970533073506421?mfhd=22667391180006421'
+        expect(page).not_to have_button('Request this Item')
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'disallows access to ask for digitizing on non circulating items' do
+        visit '/requests/9995948403506421?mfhd=22500774400006421'
+        expect(page).not_to have_button('Request this Item')
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'allows filtering items by mfhd' do
+        visit '/requests/9979171923506421?mfhd=22637778670006421'
+        expect(page).not_to have_content 'Copy 2'
+        expect(page).not_to have_content 'Copy 3'
+        expect(page).not_to have_button('Request this Item')
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'shows an error if MFHD is not present' do
+        visit '/requests/9979171923506421'
+        expect(page).not_to have_content 'Please Select a location on the main record page.'
+      end
+
+      it 'disallows access to fillin forms in digital only' do
+        visit 'requests/99105746993506421?mfhd=22547424510006421'
+        expect(page).not_to have_button('Request this Item')
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'disallows access ReCAP marqaund as an EDD option only' do
+        stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
+        visit '/requests/99117809653506421?mfhd=22613352460006421'
+        expect(page).not_to have_button('Request this Item')
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it "disallows access to items in the Architecture Library as available" do
+        visit '/requests/99117876713506421?mfhd=22561348800006421'
+        expect(page).not_to have_button('Request this Item')
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it "disallows requests of recap pick-up only items" do
+        stub_scsb_availability(bib_id: "99115783193506421", institution_id: "PUL", barcode: '32101108035435')
+        visit '/requests/99115783193506421?mfhd=22534122440006421'
+        expect(page).not_to have_button('Request this Item')
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'allows aeon requests for all users' do
+        stub_holding_locations
+        visit '/requests/9973529363506421?mfhd=22667098990006421'
+        expect(page).to have_content 'Request to View in Reading Room'
+        expect(page).not_to have_content 'Request this Item'
+        expect(page).not_to have_selector('request--select')
+      end
+
+      it 'allows guest patrons to see there are no items for Online only' do
+        visit '/requests/9999946923506421?mfhd=22558528920006421'
+        expect(page).to have_content 'there are no requestable items for this record'
+      end
+
+      it 'disallows access on Missing items' do
+        visit '/requests/9917887963506421?mfhd=22503918400006421'
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'disallows access generic fill in requests enums from Annex or Firestone in mixed holding' do
+        visit '/requests/9922868943506421?mfhd=22692156940006421'
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+
+      it 'disallows access a non circulating item with not item data to be digitized' do
+        visit '/requests/9941274093506421?mfhd=22690999210006421'
+        expect(page).not_to have_content 'Electronic Delivery'
+        expect(page).not_to have_content 'Physical Item Delivery'
+        expect(page).to have_content 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
+        expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
+      end
+    end
+  end
+
+  context 'An Alma user' do
+    let(:alma_login_response) { fixture('/alma_login_response.json') }
+    let(:user) { FactoryBot.create(:valid_alma_patron) }
+    before do
+      stub_request(:get, "#{Alma.configuration.region}/almaws/v1/users/#{user.uid}?expand=fees,requests,loans")
+        .to_return(status: 200, headers: { "Content-Type" => ["application/json", "charset=UTF-8"] },
+                   body: alma_login_response)
+      login_as user
+    end
+
+    it "does not allow physical pickup request On Order SCSB Recap Item" do
+      stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '33333059902417')
+      visit 'requests/SCSB-6710959'
+      expect(page).not_to have_content 'Electronic Delivery'
+      expect(page).not_to have_content 'Physical Item Delivery'
+      expect(page).to have_content 'This item is not available'
+    end
+
+    it "allows a physical pickup request of ReCAP Item" do
+      stub_scsb_availability(bib_id: "9941151723506421", institution_id: "PUL", barcode: '32101050751989')
+      visit 'requests/9941151723506421?mfhd=22492702000006421'
+      expect(page).not_to have_content 'Electronic Delivery'
+      expect(page).to have_content 'Physical Item Delivery'
+    end
+
+    it "allows only physical pickup to enumerated annex item" do
+      stub_alma_hold_success('9947220743506421', '22734584180006421', '23734584140006421', user.uid)
+
+      visit "requests/9947220743506421?mfhd=22734584180006421"
+      expect(page).not_to have_content 'Electronic Delivery'
+      expect(page).to have_content 'Physical Item Delivery'
+
+      expect(page).to have_content "Department of Homeland Security appropriations for 2007"
+      check('requestable_selected_23734584140006421')
+      select('Firestone Library', from: 'requestable__pick_up_23734584140006421')
+      page.find(".submit--request") # this is really strange, but if I find the button then I can click it in the next line...
+      expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+      expect(page).to have_content I18n.t("requests.submit.annex_success")
+      email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+      confirm_email = ActionMailer::Base.deliveries.last
+      expect(email.subject).to eq("Annex Request")
+      expect(email.to).to eq(["docstor@princeton.edu"])
+      expect(email.cc).to be_blank
+      expect(email.html_part.body.to_s).to have_content("Department of Homeland Security appropriations for 2007")
+      expect(email.html_part.body.to_s).to have_content("pt.6")
+      expect(email.text_part.body.to_s).to have_content("pt.6")
+      expect(confirm_email.subject).to eq(I18n.t("requests.annex.email_subject"))
+      expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+      expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+      expect(confirm_email.to).to eq(["login@test.com"])
+      expect(confirm_email.cc).to be_blank
+      expect(confirm_email.html_part.body.to_s).to have_content("Department of Homeland Security appropriations for 2007")
+      expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+    end
+
+    it 'does not allow a ReCAP record that has no item data' do
+      visit "/requests/99113283293506421?mfhd=22750642660006421"
+      expect(page).not_to have_content 'Electronic Delivery'
+      expect(page).not_to have_content 'Physical Item Delivery'
+      expect(page).to have_content 'This item is not available'
+    end
+
+    it "does not allow access to items on the shelf when available" do
+      visit "requests/99125428126306421?mfhd=22910398870006421"
+      expect(page).not_to have_content 'Electronic Delivery'
+      expect(page).not_to have_content 'Physical Item Delivery'
+      expect(page).to have_content 'Request options for this item are only available to Faculty, Staff, and Students.'
+      expect(page).to have_content 'Please proceed to Firestone Library - Classics Collection to retrieve this item'
+    end
+
+    it "does not allow access to items on the shelf when not available" do
+      visit "requests/99125452799106421?mfhd=22917143470006421"
+      expect(page).not_to have_content 'Electronic Delivery'
+      expect(page).not_to have_content 'Physical Item Delivery'
+      expect(page).to have_content 'This item is not available'
+    end
+
+    it "does not allow access to items on the shelf when enumerated" do
+      visit "requests/998574693506421?mfhd=22579850750006421"
+      expect(page).not_to have_content 'Electronic Delivery'
+      expect(page).not_to have_content 'Physical Item Delivery'
+      expect(page).to have_content 'Request options for this item are only available to Faculty, Staff, and Students.'
+    end
+
+    it "allows access to in process items" do
+      visit "requests/99124417723506421?mfhd=22689758840006421"
+      expect(page).not_to have_content 'Electronic Delivery'
+      expect(page).to have_content 'In Process materials are typically available in several business days'
+      expect(page).not_to have_content 'This item is not available'
+      select('Firestone Library', from: 'requestable__pick_up_23922188050006421')
+      expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+      expect(page).to have_content I18n.t("requests.submit.in_process_success")
+      email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
+      confirm_email = ActionMailer::Base.deliveries.last
+      expect(email.subject).to eq("In Process Request")
+      expect(email.to).to eq(["fstcirc@princeton.edu"])
+      expect(email.cc).to be_blank
+      expect(email.html_part.body.to_s).to have_content("100 let na zashchite gosudarstva")
+      expect(confirm_email.subject).to eq("In Process Request")
+      expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
+      expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
+      expect(confirm_email.to).to eq(["login@test.com"])
+      expect(confirm_email.cc).to be_blank
+      expect(confirm_email.html_part.body.to_s).to have_content("100 let na zashchite gosudarstva")
+      expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
+    end
+
+    it "allow requesting of available items and does not allow requesting of unavailable items" do
+      availability_response = "[{\"itemBarcode\":\"32101108747674\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747666\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747658\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747682\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]"
+      stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+        .with(headers: { Accept: 'application/json', api_key: 'TESTME' }, body: { bibliographicId: "99125465081006421", institutionId: "PUL" })
+        .to_return(status: 200, body: availability_response)
+
+      visit "requests/99125465081006421?mfhd=22922148510006421"
+      expect(page).not_to have_content 'Electronic Delivery'
+      expect(page).to have_content 'Physical Item Delivery'
+      expect(page).to have_content 'vol. 9 (1983)'
+      expect(page).to have_content 'vol. 8 (1982)'
+      expect(page).to have_content 'vol. 7 (1981)'
+      expect(page).to have_content 'vol. 6 (1980)'
+      expect(page).to have_content 'vol. 5 (1979)'
+      expect(page).to have_content 'vol. 4 (1978)'
+      within("#request_23922640720006421") do
+        expect(page).to have_content 'In Process materials are typically available in several business days'
+      end
+      within("#request_23922148490006421") do
+        expect(page).to have_content 'In Process materials are typically available in several business days'
+      end
+    end
+
+    it "does not allow reuesting of on order books" do
+      visit "requests/99125492003506421?mfhd=22927395910006421"
+      expect(page).to have_content 'This item is not available'
+    end
+  end
+  context 'when a holding has items on and off reserve' do
+    let(:user) { FactoryBot.create(:user) }
+    let(:params) do
+      {
+        system_id: '9960102253506421',
+        source: 'pulsearch',
+        mfhd: nil,
+        patron:
+      }
+    end
+
+    before do
+      stub_single_holding_location('engineer$stacks')
+      stub_single_holding_location('engineer$res')
+      stub_availability_by_holding_id(bib_id: '9960102253506421', holding_id: '22548491940006421')
+      stub_catalog_raw(bib_id: '9960102253506421')
+      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+        .to_return(status: 200, body: valid_patron_response, headers: {})
+      login_as user
+    end
+    it 'does not display reserve items' do
+      visit "requests/9960102253506421?mfhd=22548491940006421"
+      expect(page.find(:css, '#enum_23939450340006421').text).to eq('Copy 4')
+      expect(page).to have_content('Unavailable')
+      expect(page).to have_content('In Process materials are typically available in several business days.')
+      expect(page).to have_selector(:css, '#request_23939450340006421')
+      expect(page).to have_none_of_selectors(:css, '#request_23939450330006421', '#request_23939450300006421', '#request_23548491930006421')
+    end
+  end
+  context 'when a Princeton item has not made it into SCSB yet' do
+    let(:user) { FactoryBot.create(:user) }
+    let(:params) do
+      {
+        system_id: '99122304923506421',
+        source: 'pulsearch',
+        mfhd: nil,
+        patron:
+      }
+    end
+    let(:first_item) { request_scsb.items['22511126440006421'].first }
+
+    before do
+      stub_scsb_availability(bib_id: "99122304923506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
+      stub_availability_by_holding_id(bib_id: '99122304923506421', holding_id: '22511126440006421')
+      stub_catalog_raw(bib_id: '99122304923506421')
+      stub_single_holding_location('recap$pa')
+      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+        .to_return(status: 200, body: valid_patron_response, headers: {})
+      login_as user
+    end
+
+    it 'is available and in process' do
+      visit "requests/99122304923506421?mfhd=22511126440006421"
+      expect(page.find(:css, ".request--availability").text).to eq("Available")
+      expect(page).to have_content 'In Process materials are typically available in several business days'
+      select('Firestone Library', from: 'requestable__pick_up_23511126430006421')
+      expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+      confirm_email = ActionMailer::Base.deliveries.last
+      expect(confirm_email.subject).to eq("In Process Request")
     end
   end
   # rubocop:enable RSpec/MultipleExpectations
