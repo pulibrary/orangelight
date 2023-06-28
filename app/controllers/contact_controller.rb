@@ -29,7 +29,7 @@ class ContactController < ApplicationController
 
       render "report_harmful_language_success"
     else
-      render partial: "catalog/ask_a_question_form", locals: { form: @form }, status: :unprocessable_entity
+      render partial: "catalog/report_harmful_language_form", locals: { form: @form }, status: :unprocessable_entity
     end
   end
 
