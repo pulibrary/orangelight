@@ -378,6 +378,7 @@ module Requests
                 else
                   ''
                 end
+        # if we remove the `.json` it fixes our feature test, but breaks our other tests
         hidden = hidden_field_tag name.to_s, "", value: { 'pick_up' => location[:gfa_pickup], 'pick_up_location_code' => location[:pick_up_location_code] }.to_json, class: 'single-pick-up-hidden', id: id
         label = label_tag id, "Pick-up location: #{location[:label]}", class: 'single-pick-up', style: style.to_s
         hidden + label
