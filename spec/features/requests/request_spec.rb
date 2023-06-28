@@ -78,6 +78,13 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
       login_as user
     end
 
+    describe 'a mystery html item' do
+      xit 'does not display html as a string' do
+        stub_catalog_raw(bib_id: '993569343506421')
+        visit('requests/993569343506421?aeon=false&mfhd=22693661550006421')
+      end
+    end
+
     describe 'When visiting an alma ID as a CAS User' do
       it 'Shows a ReCAP item that is at preservation and conservation as a partner request' do
         stub_illiad_patron

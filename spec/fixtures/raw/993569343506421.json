@@ -1,0 +1,150 @@
+{
+  "id": "993569343506421",
+  "numeric_id_b": true,
+  "author_citation_display": [
+    "United Nations"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"United Nations\",\"United Nations\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_s": [
+    "United Nations. Statistical Office",
+    "United Nations. Statistical Division"
+  ],
+  "title_display": "Energy statistics yearbook / Department of International Economic and Social Affairs, Statistical Office = Annuaire des statistiques de l'énergie / Département des affaires économiques et sociales internationales, Bureau de statistique.",
+  "title_t": [
+    "Energy statistics yearbook / Department of International Economic and Social Affairs, Statistical Office = Annuaire des statistiques de l'énergie / Département des affaires économiques et sociales internationales, Bureau de statistique."
+  ],
+  "title_citation_display": [
+    "Energy statistics yearbook"
+  ],
+  "compiled_created_t": [
+    "Energy statistics yearbook / Department of International Economic and Social Affairs, Statistical Office = Annuaire des statistiques de l'énergie / Département des affaires économiques et sociales internationales, Bureau de statistique."
+  ],
+  "pub_created_display": [
+    "New York : United Nations, 1984-"
+  ],
+  "pub_created_s": [
+    "New York : United Nations, 1984-"
+  ],
+  "pub_citation_display": [
+    "New York: United Nations"
+  ],
+  "pub_date_display": [
+    "1982"
+  ],
+  "pub_date_start_sort": 1982,
+  "pub_date_end_sort": 9999,
+  "cataloged_tdt": "2000-06-13T00:00:00Z",
+  "format": [
+    "Journal"
+  ],
+  "description_display": [
+    "v. ; 29 cm.",
+    "1982-"
+  ],
+  "description_t": [
+    "v. ; 29 cm.",
+    "1982-"
+  ],
+  "number_of_pages_citation_display": [
+    "v."
+  ],
+  "continues_display": [
+    "Yearbook of world energy statistics"
+  ],
+  "frequency_display": [
+    "Annual"
+  ],
+  "notes_display": [
+    "\"ST/ESA/STAT/SER.J.\"",
+    "Description based on: 1983."
+  ],
+  "issuing_body_notes_display": [
+    "Vols. for <1992-1995> issued by: Dept. for Economic and Social Information and Policy Analysis, Statistical Division (called also its Statistics Division), <1997- >, Dept. of Economic and Social Affairs, Statistics Division."
+  ],
+  "language_display": [
+    "English and French."
+  ],
+  "language_facet": [
+    "English",
+    "French"
+  ],
+  "language_code_s": [
+    "eng",
+    "fre"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "lc_subject_display": [
+    "Power resources—Statistics—Periodicals",
+    "Energy industries—Statistics—Periodicals"
+  ],
+  "subject_facet": [
+    "Power resources—Statistics—Periodicals",
+    "Energy industries—Statistics—Periodicals",
+    "Periodicals",
+    "Statistics"
+  ],
+  "lcgft_s": [
+    "Periodicals",
+    "Statistics"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"United Nations. Statistical Office\",\"United Nations. Statistical Division\"]}",
+  "other_title_display": [
+    "Energy statistics year book",
+    "Annuaire des statistiques de l'énergie"
+  ],
+  "alt_title_246_display": [
+    "Energy statistics year book",
+    "Annuaire des statistiques de l'énergie"
+  ],
+  "lccn_display": [
+    "   85647150  "
+  ],
+  "lccn_s": [
+    "85647150"
+  ],
+  "oclc_s": [
+    "10977518"
+  ],
+  "other_version_s": [
+    "ocm10977518"
+  ],
+  "location_code_s": [
+    "plasma$nb",
+    "firestone$noncirc",
+    "plasma$stacks",
+    "plasma$rr"
+  ],
+  "location": [
+    "Harold P. Furth Plasma Physics Library",
+    "Firestone Library"
+  ],
+  "location_display": [
+    "New Book Shelf",
+    "Non-Circulating",
+    "Stacks",
+    "Ready Reference"
+  ],
+  "advanced_location_s": [
+    "plasma$nb",
+    "firestone$noncirc",
+    "plasma$stacks",
+    "plasma$rr",
+    "Harold P. Furth Plasma Physics Library",
+    "Firestone Library"
+  ],
+  "call_number_display": [
+    "HA13 .U5",
+    "HD9502.A1 Y42"
+  ],
+  "call_number_browse_s": [
+    "HA13 .U5",
+    "HD9502.A1 Y42"
+  ],
+  "call_number_locator_display": [
+    "HA13 .U5",
+    "HD9502.A1 Y42"
+  ],
+  "holdings_1display": "{\"22693661550006421\":{\"location_code\":\"plasma$nb\",\"location\":\"New Book Shelf\",\"library\":\"Harold P. Furth Plasma Physics Library\",\"call_number\":\"HA13 .U5\",\"call_number_browse\":\"HA13 .U5\",\"items\":[{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1994\",\"id\":\"23693661480006421\",\"status_at_load\":\"1\",\"barcode\":\"32101023910753\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1993\",\"id\":\"23693661490006421\",\"status_at_load\":\"1\",\"barcode\":\"32101029193818\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2010\",\"id\":\"23693661210006421\",\"status_at_load\":\"1\",\"barcode\":\"32101088664873\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1992\",\"id\":\"23693661500006421\",\"status_at_load\":\"1\",\"barcode\":\"32101023321142\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1998\",\"id\":\"23693661270006421\",\"status_at_load\":\"1\",\"barcode\":\"32101032035352\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2007\",\"id\":\"23693661360006421\",\"status_at_load\":\"1\",\"barcode\":\"32101077299566\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2019\",\"id\":\"23693661540006421\",\"status_at_load\":\"0\",\"barcode\":\"ISSitm30101.210-princetondb\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1989\",\"id\":\"23693661520006421\",\"status_at_load\":\"1\",\"barcode\":\"32101020196877\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2018\",\"id\":\"23693661180006421\",\"status_at_load\":\"1\",\"barcode\":\"32101105526352\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1982\",\"id\":\"23693661410006421\",\"status_at_load\":\"1\",\"barcode\":\"32101013437536\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1990\",\"id\":\"23693661430006421\",\"status_at_load\":\"1\",\"barcode\":\"32101020198709\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1996\",\"id\":\"23693661450006421\",\"status_at_load\":\"1\",\"barcode\":\"32101035334083\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1995\",\"id\":\"23693661470006421\",\"status_at_load\":\"1\",\"barcode\":\"32101033895614\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2002\",\"id\":\"23693661320006421\",\"status_at_load\":\"1\",\"barcode\":\"32101055982894\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2008\",\"id\":\"23693661250006421\",\"status_at_load\":\"1\",\"barcode\":\"32101082856871\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2005\",\"id\":\"23693661300006421\",\"status_at_load\":\"1\",\"barcode\":\"32101065448704\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2006\",\"id\":\"23693661290006421\",\"status_at_load\":\"1\",\"barcode\":\"32101074512227\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2001\",\"id\":\"23693661380006421\",\"status_at_load\":\"1\",\"barcode\":\"32101057157958\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1997\",\"id\":\"23693661340006421\",\"status_at_load\":\"1\",\"barcode\":\"32101035173366\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2012\",\"id\":\"23693661200006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094334537\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1988\",\"id\":\"23693661440006421\",\"status_at_load\":\"1\",\"barcode\":\"32101019460672\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2011\",\"id\":\"23693661350006421\",\"status_at_load\":\"1\",\"barcode\":\"32101088326432\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2015\",\"id\":\"23693661280006421\",\"status_at_load\":\"1\",\"barcode\":\"32101095258842\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2000\",\"id\":\"23693661260006421\",\"status_at_load\":\"1\",\"barcode\":\"32101047805211\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1991\",\"id\":\"23693661510006421\",\"status_at_load\":\"1\",\"barcode\":\"32101023329368\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1987\",\"id\":\"23693661530006421\",\"status_at_load\":\"1\",\"barcode\":\"32101018081057\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1986\",\"id\":\"23693661460006421\",\"status_at_load\":\"1\",\"barcode\":\"32101015851718\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1983\",\"id\":\"23693661420006421\",\"status_at_load\":\"1\",\"barcode\":\"32101010817342\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2014\",\"id\":\"23693661190006421\",\"status_at_load\":\"1\",\"barcode\":\"32101095252209\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1985\",\"id\":\"23693661400006421\",\"status_at_load\":\"1\",\"barcode\":\"32101014017634\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1984\",\"id\":\"23693661390006421\",\"status_at_load\":\"1\",\"barcode\":\"32101012473706\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2009\",\"id\":\"23693661220006421\",\"status_at_load\":\"1\",\"barcode\":\"32101089577165\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2003\",\"id\":\"23693661370006421\",\"status_at_load\":\"1\",\"barcode\":\"32101058683671\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"2004\",\"id\":\"23693661310006421\",\"status_at_load\":\"1\",\"barcode\":\"32101060389234\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661550006421\",\"enumeration\":\"1999\",\"id\":\"23693661330006421\",\"status_at_load\":\"1\",\"barcode\":\"32101046862544\",\"copy_number\":\"1\"}],\"location_has\":[\"1982-2018\"],\"supplements\":[null],\"indexes\":[null]},\"22693661110006421\":{\"location_code\":\"firestone$noncirc\",\"location\":\"Non-Circulating\",\"library\":\"Firestone Library\",\"call_number\":\"HD9502.A1 Y42\",\"call_number_browse\":\"HD9502.A1 Y42\",\"items\":[{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1994\",\"id\":\"23693661030006421\",\"status_at_load\":\"1\",\"barcode\":\"32101050311461\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"2004\",\"id\":\"23693660990006421\",\"status_at_load\":\"1\",\"barcode\":\"32101060390877\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1983\",\"id\":\"23693660880006421\",\"status_at_load\":\"1\",\"barcode\":\"32101083173185\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1982\",\"id\":\"23693660970006421\",\"status_at_load\":\"1\",\"barcode\":\"32101083173375\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"2000\",\"id\":\"23693661100006421\",\"status_at_load\":\"1\",\"barcode\":\"32101050311495\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"2008\",\"id\":\"23693660860006421\",\"status_at_load\":\"1\",\"barcode\":\"32101083160380\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1998\",\"id\":\"23693661070006421\",\"status_at_load\":\"1\",\"barcode\":\"32101047806045\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"2002\",\"id\":\"23693661050006421\",\"status_at_load\":\"1\",\"barcode\":\"32101057176289\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"2001\",\"id\":\"23693661010006421\",\"status_at_load\":\"1\",\"barcode\":\"32101057165704\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1996\",\"id\":\"23693661090006421\",\"status_at_load\":\"1\",\"barcode\":\"32101050311487\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1990\",\"id\":\"23693660910006421\",\"status_at_load\":\"1\",\"barcode\":\"32101083173318\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"2007\",\"id\":\"23693660840006421\",\"status_at_load\":\"1\",\"barcode\":\"32101077431730\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1988\",\"id\":\"23693660930006421\",\"status_at_load\":\"1\",\"barcode\":\"32101083173334\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1986\",\"id\":\"23693660950006421\",\"status_at_load\":\"1\",\"barcode\":\"32101083173359\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"2005\",\"id\":\"23693660980006421\",\"status_at_load\":\"1\",\"barcode\":\"32101065448472\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1992\",\"id\":\"23693660890006421\",\"status_at_load\":\"1\",\"barcode\":\"32101083173284\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1985\",\"id\":\"23693660960006421\",\"status_at_load\":\"1\",\"barcode\":\"32101083173367\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1999\",\"id\":\"23693661060006421\",\"status_at_load\":\"1\",\"barcode\":\"32101047806037\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"2006\",\"id\":\"23693660850006421\",\"status_at_load\":\"1\",\"barcode\":\"32101077371613\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1984\",\"id\":\"23693660870006421\",\"status_at_load\":\"1\",\"barcode\":\"32101088645989\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1997\",\"id\":\"23693661080006421\",\"status_at_load\":\"1\",\"barcode\":\"32101047806029\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"2003\",\"id\":\"23693661000006421\",\"status_at_load\":\"1\",\"barcode\":\"32101059425569\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1993\",\"id\":\"23693661020006421\",\"status_at_load\":\"1\",\"barcode\":\"32101050311453\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1995\",\"id\":\"23693661040006421\",\"status_at_load\":\"1\",\"barcode\":\"32101050311479\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1991\",\"id\":\"23693660900006421\",\"status_at_load\":\"1\",\"barcode\":\"32101083173292\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1989\",\"id\":\"23693660920006421\",\"status_at_load\":\"1\",\"barcode\":\"32101083173326\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661110006421\",\"enumeration\":\"1987\",\"id\":\"23693660940006421\",\"status_at_load\":\"1\",\"barcode\":\"32101083173342\",\"copy_number\":\"1\"}],\"location_has\":[\"1982-2008\"],\"supplements\":[null],\"indexes\":[null]},\"22693661140006421\":{\"location_code\":\"plasma$stacks\",\"location\":\"Stacks\",\"library\":\"Harold P. Furth Plasma Physics Library\",\"call_number\":\"HA13 .U5\",\"call_number_browse\":\"HA13 .U5\",\"items\":[{\"holding_id\":\"22693661140006421\",\"enumeration\":\"2013\",\"id\":\"23693661130006421\",\"status_at_load\":\"1\",\"barcode\":\"32101094506308\",\"copy_number\":\"1\"}],\"location_has\":[\"1982-2018\"],\"supplements\":[null],\"indexes\":[null]},\"22693661170006421\":{\"location_code\":\"plasma$rr\",\"location\":\"Ready Reference\",\"library\":\"Harold P. Furth Plasma Physics Library\",\"call_number\":\"HA13 .U5\",\"call_number_browse\":\"HA13 .U5\",\"items\":[{\"holding_id\":\"22693661170006421\",\"enumeration\":\"2017\",\"id\":\"23693661160006421\",\"status_at_load\":\"1\",\"barcode\":\"32101105524548\",\"copy_number\":\"1\"},{\"holding_id\":\"22693661170006421\",\"enumeration\":\"2016\",\"id\":\"23693661150006421\",\"status_at_load\":\"1\",\"barcode\":\"32101105521445\",\"copy_number\":\"1\"}],\"location_has\":[\"1982-2018\"],\"supplements\":[null],\"indexes\":[null]}}"
+}
