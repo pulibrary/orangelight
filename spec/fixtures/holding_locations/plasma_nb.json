@@ -1,0 +1,35 @@
+{
+  "label": "New Book Shelf",
+  "code": "plasma$nb",
+  "aeon_location": false,
+  "recap_electronic_delivery_location": false,
+  "open": true,
+  "requestable": true,
+  "always_requestable": false,
+  "circulates": true,
+  "remote_storage": "",
+  "fulfillment_unit": "Limited",
+  "library": {
+    "label": "Harold P. Furth Plasma Physics Library",
+    "code": "plasma",
+    "order": 0
+  },
+  "holding_library": null,
+  "delivery_locations": [
+    {
+      "label": "Lewis Library",
+      "address": "Washington Road and Ivy Lane Princeton, NJ 08544",
+      "phone_number": "609-258-6004",
+      "contact_email": "lewislib@princeton.edu",
+      "gfa_pickup": "PN",
+      "staff_only": false,
+      "pickup_location": true,
+      "digital_location": true,
+      "library": {
+        "label": "Lewis Library",
+        "code": "lewis",
+        "order": 0
+      }
+    }
+  ]
+}

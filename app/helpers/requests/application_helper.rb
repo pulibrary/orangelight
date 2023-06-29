@@ -118,7 +118,7 @@ module Requests
     end
 
     def preferred_request_content_tag(requestable, default_pick_ups)
-      (show_pick_up_service_options(requestable, nil) || "") +
+      (show_pick_up_service_options(requestable, nil) || "".html_safe) +
         content_tag(:div, id: "fields-print__#{requestable.preferred_request_id}_card", class: "card card-body bg-light") do
           locs = pick_up_locations(requestable, default_pick_ups)
           # temporary changes issue 438
