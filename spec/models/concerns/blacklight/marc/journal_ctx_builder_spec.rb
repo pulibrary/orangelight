@@ -20,5 +20,11 @@ RSpec.describe Blacklight::Marc::JournalCtxBuilder do
         expect(builder.build.referent.get_metadata('atitle')).to eq 'Science'
       end
     end
+    context 'when oclc number is available in solr' do
+      let(:document) { SolrDocument.new(oclc_s: ['10708673']) }
+      it 'uses it as the OCLC number' do
+        expect(builder.build.referent.identifiers).to include('info:oclcnum/10708673')
+      end
+    end
   end
 end

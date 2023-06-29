@@ -17,6 +17,14 @@ RSpec.describe Blacklight::Marc::CtxBuilder do
         expect(builder.build.referent.get_metadata('genre')).to eq('conference')
       end
     end
+    context 'when format is journal' do
+      let(:format) { 'journal' }
+      it 'is a journal' do
+        expect(builder.build.referent.get_metadata('format')).to eq('journal')
+        # It is not clear if or why this this desired behavior, but it is the current behavior
+        expect(builder.build.referent.get_metadata('genre')).to eq('unknown')
+      end
+    end
     context 'when no author' do
       it 'creator metadata is nil' do
         expect(builder.build.referent.get_metadata('creator')).to be_nil
