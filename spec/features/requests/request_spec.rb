@@ -78,8 +78,8 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
       login_as user
     end
 
-    describe 'a mystery html item' do
-      xit 'does not display html as a string' do
+    describe 'an item with no #show_pick_up_service_options' do
+      it 'does not display html as a string' do
         stub_catalog_raw(bib_id: '993569343506421')
         stub_single_holding_location('plasma$nb')
         stub_availability_by_holding_id(bib_id: '993569343506421', holding_id: '22693661550006421')
@@ -88,7 +88,7 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
           page.find("#requestable__delivery_mode_22693661550006421_print").click
           expect(page).to have_selector('#fields-print__22693661550006421')
           # This element should be rendered as html, not plain text
-          expect(page.body).not_to include('fields-print__22693661550006421_card')
+          expect(page).not_to have_text('fields-print__22693661550006421_card')
           expect(page).to have_selector('#fields-print__22693661550006421_card')
         end
       end
