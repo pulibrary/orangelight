@@ -118,7 +118,7 @@ module Requests
     end
 
     def preferred_request_content_tag(requestable, default_pick_ups)
-      (show_pick_up_service_options(requestable, nil) || "") +
+      (show_pick_up_service_options(requestable, nil) || "".html_safe) +
         content_tag(:div, id: "fields-print__#{requestable.preferred_request_id}_card", class: "card card-body bg-light") do
           locs = pick_up_locations(requestable, default_pick_ups)
           # temporary changes issue 438
@@ -378,7 +378,6 @@ module Requests
                 else
                   ''
                 end
-        # if we remove the `.json` it fixes our feature test, but breaks our other tests
         hidden = hidden_field_tag name.to_s, "", value: { 'pick_up' => location[:gfa_pickup], 'pick_up_location_code' => location[:pick_up_location_code] }.to_json, class: 'single-pick-up-hidden', id: id
         label = label_tag id, "Pick-up location: #{location[:label]}", class: 'single-pick-up', style: style.to_s
         hidden + label
