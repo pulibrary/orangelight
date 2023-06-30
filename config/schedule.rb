@@ -90,6 +90,10 @@ end
 
 job_type :logging_rake, 'cd :path && :environment_variable=:environment bundle exec rake :task :output'
 
-every 1.day, at: '11pm', roles: [:cron_db] do
+every 1.day, at: '11:00pm', roles: [:cron_db] do
+  logging_rake 'blacklight:delete_old_searches', output: { error: '/tmp/guest_searches.log', standard: '/tmp/guest_searches.log' }
+end
+
+every 1.day, at: '11:30pm', roles: [:cron_db] do
   logging_rake 'orangelight:clean:guest_users', output: { error: '/tmp/clean_guest_users.log', standard: '/tmp/clean_guest_users.log' }
 end
