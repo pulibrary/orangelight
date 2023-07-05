@@ -1,0 +1,117 @@
+{
+  "id": "SCSB-7874204",
+  "numeric_id_b": false,
+  "other_id_s": [
+    ".b195933230"
+  ],
+  "author_display": [
+    "Ewald, Wilhelm Ernst, 1704-1741"
+  ],
+  "author_citation_display": [
+    "Ewald, Wilhelm Ernst"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Ewald, Wilhelm Ernst\"}",
+  "author_s": [
+    "Ewald, Wilhelm Ernst, 1704-1741"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "... Emblemata sacra : miscellanea in II. libros digesta, in quibus praeter XXIV emblemata selecta, plurima Veteris ac Novi Testamenti loca, ex antiquitatibus sacris et profanis, vario doctrinae, linguarum et numismatum apparatu; illustrantur atque explicantur.",
+  "title_t": [
+    "... Emblemata sacra : miscellanea in II. libros digesta, in quibus praeter XXIV emblemata selecta, plurima Veteris ac Novi Testamenti loca, ex antiquitatibus sacris et profanis, vario doctrinae, linguarum et numismatum apparatu; illustrantur atque explicantur."
+  ],
+  "title_citation_display": [
+    "... Emblemata sacra : miscellanea in II. libros digesta, in quibus praeter XXIV emblemata selecta, plurima Veteris ac Novi Testamenti loca, ex antiquitatibus sacris et profanis, vario doctrinae, linguarum et numismatum apparatu; illustrantur atque explicantur"
+  ],
+  "compiled_created_t": [
+    "... Emblemata sacra : miscellanea in II. libros digesta, in quibus praeter XXIV emblemata selecta, plurima Veteris ac Novi Testamenti loca, ex antiquitatibus sacris et profanis, vario doctrinae, linguarum et numismatum apparatu; illustrantur atque explicantur."
+  ],
+  "pub_created_display": [
+    "Lipsiae et Altonaviae : Jonam Korte, 1732-33."
+  ],
+  "pub_created_s": [
+    "Lipsiae et Altonaviae : Jonam Korte, 1732-33."
+  ],
+  "pub_citation_display": [
+    "Lipsiae et Altonaviae: Jonam Korte"
+  ],
+  "pub_date_display": [
+    "1732"
+  ],
+  "pub_date_start_sort": 1732,
+  "pub_date_end_sort": 1737,
+  "format": [
+    "Manuscript",
+    "Book"
+  ],
+  "description_display": [
+    "3 v. : ill. ; 24 cm."
+  ],
+  "description_t": [
+    "3 v. : ill. ; 24 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "3 v."
+  ],
+  "notes_display": [
+    "Title in red and black; head and tail pieces.",
+    "At head of title: Wilh. Ern. Ewaldi ...",
+    "Second volume has separate t.p.: ...Emblematum sacrorum Veteris et Novi Testamenti libri III. et IV. ... Antonaviae : Jonam Korte, 1733."
+  ],
+  "language_facet": [
+    "Latin",
+    "Hebrew",
+    "Greek, Modern (1453-)"
+  ],
+  "language_code_s": [
+    "lat",
+    "heb",
+    "gre"
+  ],
+  "language_iana_s": [
+    "la"
+  ],
+  "lc_subject_display": [
+    "Christian art and symbolism",
+    "Symbolism in the Bible"
+  ],
+  "subject_facet": [
+    "Christian art and symbolism",
+    "Symbolism in the Bible"
+  ],
+  "oclc_s": [
+    "13276194"
+  ],
+  "other_version_s": [
+    "ocm13276194"
+  ],
+  "holdings_1display": "{\"8014468\":{\"location_code\":\"scsbnypl\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"ZAZB (Ewald. Wilh. ERN. Ewaldi Emblemata Sacra)\",\"call_number_browse\":\"ZAZB (Ewald. Wilh. ERN. Ewaldi Emblemata Sacra)\",\"items\":[{\"holding_id\":\"8014468\",\"enumeration\":\"v. 2\",\"id\":\"13198473\",\"status_at_load\":\"Available\",\"barcode\":\"33433088494863\",\"copy_number\":\"1\",\"use_statement\":\"Supervised Use\",\"storage_location\":\"RECAP\",\"cgd\":\"Shared\",\"collection_code\":\"NA\"},{\"holding_id\":\"8014468\",\"enumeration\":\"v. 3\",\"id\":\"13198474\",\"status_at_load\":\"Available\",\"barcode\":\"33433088494871\",\"copy_number\":\"1\",\"use_statement\":\"Supervised Use\",\"storage_location\":\"RECAP\",\"cgd\":\"Shared\",\"collection_code\":\"NA\"}],\"location_has\":[\"v. 2, v. 3\"],\"supplements\":[null],\"indexes\":[null]}}",
+  "recap_notes_display": [
+    "N - S"
+  ],
+  "location_code_s": [
+    "scsbnypl"
+  ],
+  "location": [
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage"
+  ],
+  "advanced_location_s": [
+    "scsbnypl",
+    "ReCAP"
+  ],
+  "name_title_browse_s": [
+    "Ewald, Wilhelm Ernst, 1704-1741. ... Emblemata sacra"
+  ],
+  "call_number_display": [
+    "ZAZB (Ewald. Wilh. ERN. Ewaldi Emblemata Sacra)"
+  ],
+  "call_number_browse_s": [
+    "ZAZB (Ewald. Wilh. ERN. Ewaldi Emblemata Sacra)"
+  ],
+  "_version_": 1741326165415559168,
+  "timestamp": "2022-08-16T13:54:00.375Z"
+}
