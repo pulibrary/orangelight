@@ -1,0 +1,35 @@
+{
+  "label": "Remote Storage",
+  "code": "scsbnypl",
+  "aeon_location": false,
+  "recap_electronic_delivery_location": true,
+  "open": false,
+  "requestable": true,
+  "always_requestable": false,
+  "circulates": true,
+  "remote_storage": "recap_rmt",
+  "fulfillment_unit": null,
+  "library": {
+    "label": "ReCAP",
+    "code": "recap",
+    "order": 0
+  },
+  "holding_library": null,
+  "delivery_locations": [
+    {
+      "label": "Firestone Circulation Desk",
+      "address": "One Washington Rd. Princeton, NJ 08544",
+      "phone_number": "609 258-2345",
+      "contact_email": "fstcirc@princton.edu",
+      "gfa_pickup": "QX",
+      "staff_only": false,
+      "pickup_location": false,
+      "digital_location": false,
+      "library": {
+        "label": "Firestone Library",
+        "code": "firestone",
+        "order": 0
+      }
+    }
+  ]
+}

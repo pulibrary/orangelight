@@ -240,4 +240,12 @@ FactoryBot.define do
     patron { Requests::Patron.new(user: FactoryBot.build(:unauthenticated_patron)) }
     initialize_with { new(system_id:, mfhd:, patron:, source:) }
   end
+
+  factory :scsb_manuscript_multi_volume, class: 'Requests::Request' do
+    system_id { 'SCSB-7874204' }
+    mfhd { nil }
+    source { 'pulsearch' }
+    patron { Requests::Patron.new(user: FactoryBot.build(:unauthenticated_patron)) }
+    initialize_with { new(system_id:, mfhd:, patron:, source:) }
+  end
 end
