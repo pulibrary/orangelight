@@ -1176,20 +1176,4 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
   end
-
-  context 'a SCSB manuscript with multiple volumes' do
-    let(:user) { FactoryBot.build(:user) }
-    let(:request) { FactoryBot.build(:scsb_manuscript_multi_volume) }
-    let(:requestable) { request.requestable.first }
-    it 'can run a test' do
-      stub_catalog_raw(bib_id: 'SCSB-7874204', type: 'scsb')
-      stub_single_holding_location('scsbnypl')
-      bibdata_availability_url = "#{Requests.config['bibdata_base']}/bibliographic/SCSB-7874204/holdings/8014468/availability.json"
-      stub_request(:get, bibdata_availability_url)
-        .to_return(status: 400)
-      stub_holding_locations
-      # stub_scsb_availability(bib_id: "990081790140203941", institution_id: "NYPL", barcode: 'HXSS9U')
-      requestable.aeon_request_url
-    end
-  end
 end

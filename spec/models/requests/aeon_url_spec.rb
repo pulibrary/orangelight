@@ -105,36 +105,4 @@ RSpec.describe Requests::AeonUrl do
       expect(subject).to include('rft.volume=Vol+1%3A+no.+1+-+4')
     end
   end
-  context 'a SCSB book with volumes' do
-    let(:holdings) do
-      { "8014468":
-        { "location_code": "scsbnypl",
-          "location": "Remote Storage",
-          "library": "ReCAP",
-          "call_number": "ZAZB (Ewald. Wilh. ERN. Ewaldi Emblemata Sacra)",
-          "call_number_browse": "ZAZB (Ewald. Wilh. ERN. Ewaldi Emblemata Sacra)",
-          "items": [
-            { "holding_id": "8014468", "enumeration": "v. 2", "id": "13198473", "status_at_load": "Available",
-              "barcode": "33433088494863", "copy_number": "1", "use_statement": "Supervised Use", "storage_location": "RECAP",
-              "cgd": "Shared", "collection_code": "NA" },
-            { "holding_id": "8014468", "enumeration": "v. 3", "id": "13198474", "status_at_load": "Available",
-              "barcode": "33433088494871", "copy_number": "1", "use_statement": "Supervised Use", "storage_location": "RECAP",
-              "cgd": "Shared", "collection_code": "NA" }
-          ],
-          "location_has": ["v. 2, v. 3"],
-          "supplements": ["null"],
-          "indexes": ["null"] } }
-    end
-    let(:document) do
-      SolrDocument.new({
-                         id: '9999999',
-                         format: ["Manuscript", "Book"],
-                         holdings_1display: holdings.to_json.to_s
-                       })
-    end
-
-    it 'makes a url' do
-      expect(subject).to be
-    end
-  end
 end

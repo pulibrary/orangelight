@@ -12,7 +12,7 @@ module Requests
         ItemTitle: aeon_title.truncate(247),
         ItemAuthor: author,
         ItemDate: pub_date,
-        ItemVolume: sub_title
+        ItemVolume: item_volume
       }
       params[:ItemNumber] = item[:barcode] if barcode?
       params[:genre] = 'thesis' if thesis?
@@ -101,13 +101,9 @@ module Requests
         holding.first.last['location_code']
       end
 
-      ## These two params were from Primo think they both go to
-      ## location and location_note in our holdings statement
-      ## Note: moved sub_location out of this block 2023-06-22
-      def sub_title
-        holding.first.last[:location]
+      def item_volume
+        item["enumeration"] if item.present? && enumerated?
       end
-      ### end special params
 
       def sub_location
         holding.first.last['sub_location']&.first
