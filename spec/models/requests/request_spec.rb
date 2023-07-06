@@ -1421,4 +1421,18 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       end
     end
   end
+
+  context "SCSB manuscript with multiple volumes" do
+    describe "#aeon_mapped_params" do
+      let(:request_scsb_multi_volume_manuscript) { FactoryBot.build(:scsb_manuscript_multi_volume) }
+      it "includes ItemVolume" do
+        stub_catalog_raw(bib_id: 'SCSB-7874204', type: 'scsb')
+        bibdata_availability_url = "#{Requests.config['bibdata_base']}/bibliographic/SCSB-7874204/holdings/8014468/availability.json"
+        stub_request(:get, bibdata_availability_url)
+          .to_return(status: 400)
+        expect(request_scsb_multi_volume_manuscript.requestable[0].aeon_mapped_params.key?(:ItemVolume)).to be true
+        expect(request_scsb_multi_volume_manuscript.requestable[0].aeon_mapped_params[:ItemVolume]).to eq('v. 2')
+      end
+    end
+  end
 end
