@@ -354,8 +354,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'case_file_notes_display', label: 'Case file characteristics'
     config.add_show_field 'methodology_notes_display', label: 'Methodology note'
     config.add_show_field 'editor_notes_display', label: 'Editor note'
-    config.add_show_field 'action_notes_1display', label: 'Action note', helper_method: :action_notes_display, if: ->(_context, _field_config, _document) { Flipflop.new_action_note_display? }
-    config.add_show_field 'action_notes_display', label: 'Action note', if: ->(_context, _field_config, _document) { !Flipflop.new_action_note_display? }
+    config.add_show_field 'action_notes_1display', label: 'Action note', helper_method: :action_notes_display
     config.add_show_field 'accumulation_notes_display', label: 'Accumulation and frequency of use'
     config.add_show_field 'awards_notes_display', label: 'Awards'
     config.add_show_field 'source_desc_notes_display', label: 'Source of description'
