@@ -87,7 +87,6 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
 
   describe 'giving feedback' do
     let(:document_id) { '9946093213506421' }
-    before { allow(Flipflop).to receive(:harmful_content_feedback?).and_return(true) }
 
     it 'shows a feedback bar' do
       visit "catalog/#{document_id}"
