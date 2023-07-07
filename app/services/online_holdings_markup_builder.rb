@@ -27,15 +27,15 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param text [String] the label for the link
   def self.electronic_access_link(url, texts)
     markup = if /Open access/.match? texts.first
-               link_to(texts.first, url.to_s, target: '_blank', rel: 'noopener')
+               link_to(texts.first, url.to_s, target: '_blank', rel: 'noopener', aria: { label: "open in new tab" })
              elsif %r{(\/catalog\/.+?#view)} =~ url.to_s
                if texts.first == "arks.princeton.edu"
-                 link_to('Digital content', ::Regexp.last_match(0))
+                 link_to('Digital content', ::Regexp.last_match(0), aria: { label: "open in new tab" })
                else
-                 link_to(texts.first, ::Regexp.last_match(0))
+                 link_to(texts.first, ::Regexp.last_match(0), aria: { label: "open in new tab" })
                end
              else
-               link_to(texts.first, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener')
+               link_to(texts.first, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener', aria: { label: "open in new tab" })
              end
     markup
   end
