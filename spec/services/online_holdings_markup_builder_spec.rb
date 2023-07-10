@@ -88,10 +88,10 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
     let(:urlified_markup) { described_class.urlify(adapter) }
 
     it 'generates electronic access links for a catalog record' do
-      expect(urlified_markup).to include 'href="https://login.ezproxy.princeton.edu/login?url=http://gateway.proquest.com/url">gateway.proquest.com</a>'
+      expect(urlified_markup).to include 'href="https://login.ezproxy.princeton.edu/login?url=http://gateway.proquest.com/url">gateway.proquest.com<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>'
       expect(urlified_markup).to include 'Citation only: <a target="_blank"'
       expect(urlified_markup).to include 'href="http://arks.princeton.edu/ark:/88435/dsp0141687h654"'
-      expect(urlified_markup).to include 'DataSpace</a>'
+      expect(urlified_markup).to include 'DataSpace<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>'
     end
 
     context '#urlify an Open access title' do
@@ -165,7 +165,7 @@ RSpec.describe OnlineHoldingsMarkupBuilder do
 
       it 'displays the public note properly' do
         expect(portfolio_markup).to eq '<li class="electronic-access"><a target="_blank" rel="noopener" '\
-                                       'href="https://princeton.edu/great-resource">1980 - 2015: Title</a> '\
+                                       'href="https://princeton.edu/great-resource">1980 - 2015: Title<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a> '\
                                        'Description (First note, Second note)</li>'
       end
     end
