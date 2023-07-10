@@ -35,7 +35,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
                  link_to(texts.first, ::Regexp.last_match(0))
                end
              else
-               link_text = self.new_tab_icon(texts.first)
+               link_text = new_tab_icon(texts.first)
                link_to(link_text, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener')
              end
     markup
@@ -90,7 +90,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
       start_date = portfolio['start']
       end_date = portfolio['end']
       date_range = "#{start_date} - #{end_date}: " if start_date && end_date
-      label = self.new_tab_icon("#{date_range}#{portfolio['title']}")
+      label = new_tab_icon("#{date_range}#{portfolio['title']}")
       link = link_to(label, portfolio["url"], target: '_blank', rel: 'noopener')
       link += " #{portfolio['desc']}"
       link = "#{link} (#{portfolio['notes'].join(', ')})" if portfolio['notes']&.any?
@@ -102,7 +102,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
 
   def self.new_tab_icon(text)
     text = text.html_safe
-    text += content_tag(:i, "", class: "fa fa-external-link new-tab-icon-padding", "aria-label": "opens in new tab", role: "img")
+    text + content_tag(:i, "", class: "fa fa-external-link new-tab-icon-padding", "aria-label": "opens in new tab", role: "img")
   end
 
   # Constructor
