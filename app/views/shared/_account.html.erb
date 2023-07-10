@@ -7,7 +7,7 @@
       <ul class="dropdown-menu dropdown-menu-right" role="menu">
         <li role="menuitem">
           <%= link_to(main_app.new_user_session_path(origin: "/redirect-to-alma"), target: "_blank") do %>
-            Library Account<i class="fa fa-external-link" aria-hidden="true" role="img"></i>
+            Library Account<i class="fa fa-external-link new-tab-icon-padding" aria-hidden="true" role="img"></i>
           <% end %>
         </li>
         <li role="menuitem"><%= link_to "ILL & Digitization Requests", main_app.digitization_requests_path %></li>
@@ -26,7 +26,7 @@
       <ul class="dropdown-menu dropdown-menu-right" role="menu">
         <li role="menuitem">
           <%= link_to(main_app.new_user_session_path(origin: "/redirect-to-alma"), target: "_blank", id: "unauthenticated-library-account-link") do %>
-            Library Account <i class="fa fa-external-link" aria-label="opens in new tab"></i>
+            Library Account<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i>
           <% end %>
         </li>
         <li role="menuitem"><%= render partial: 'blacklight/nav/bookmark', locals: {link_id: 'account_bookmarks_nav'} %></li>

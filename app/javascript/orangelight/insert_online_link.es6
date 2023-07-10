@@ -8,7 +8,7 @@ export const insert_online_header = () => {
 }
 
 export const online_link_content = (link, target) => {
-  return `Princeton users: <a href="${link}" target="${target}">View digital content</a>`;
+  return `Princeton users: <a href="${link}" target="${target}">View digital content<i class="fa fa-external-link new-tab-icon-padding" aria-hidden="true" role="img"></i></a>`;
 }
 
 export const insert_online_link = (link = "#viewer-container", id = "cdl_link", content = online_link_content) => {
