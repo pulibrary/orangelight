@@ -27,15 +27,16 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   # @param text [String] the label for the link
   def self.electronic_access_link(url, texts)
     markup = if /Open access/.match? texts.first
-               link_to(texts.first, url.to_s, target: '_blank', rel: 'noopener', aria: { label: "open in new tab" })
+               link_to(texts.first, url.to_s, target: '_blank', rel: 'noopener')
              elsif %r{(\/catalog\/.+?#view)} =~ url.to_s
                if texts.first == "arks.princeton.edu"
-                 link_to('Digital content', ::Regexp.last_match(0), aria: { label: "open in new tab" })
+                 link_to('Digital content', ::Regexp.last_match(0))
                else
-                 link_to(texts.first, ::Regexp.last_match(0), aria: { label: "open in new tab" })
+                 link_to(texts.first, ::Regexp.last_match(0))
                end
              else
-               link_to(texts.first, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener', aria: { label: "open in new tab" })
+               link_text = self.new_tab_icon(texts.first)
+               link_to(link_text, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener')
              end
     markup
   end
@@ -89,7 +90,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
       start_date = portfolio['start']
       end_date = portfolio['end']
       date_range = "#{start_date} - #{end_date}: " if start_date && end_date
-      label = "#{date_range}#{portfolio['title']}"
+      label = self.new_tab_icon("#{date_range}#{portfolio['title']}")
       link = link_to(label, portfolio["url"], target: '_blank', rel: 'noopener')
       link += " #{portfolio['desc']}"
       link = "#{link} (#{portfolio['notes'].join(', ')})" if portfolio['notes']&.any?
@@ -97,6 +98,11 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
     end
 
     markup
+  end
+
+  def self.new_tab_icon(text)
+    text = text.html_safe
+    text += content_tag(:i, "", class: "fa fa-external-link new-tab-icon-padding", "aria-label": "opens in new tab")
   end
 
   # Constructor
