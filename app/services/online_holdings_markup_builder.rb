@@ -102,7 +102,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
 
   def self.new_tab_icon(text)
     text = text.html_safe
-    text += content_tag(:i, "", class: "fa fa-external-link new-tab-icon-padding", "aria-label": "opens in new tab")
+    text += content_tag(:i, "", class: "fa fa-external-link new-tab-icon-padding", "aria-label": "opens in new tab", role: "img")
   end
 
   # Constructor

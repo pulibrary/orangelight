@@ -130,7 +130,7 @@ class FiggyViewerSet {
         resources.forEach((resource) => {
             if(this.isUnauthorizedSeniorThesis(resource)) {
                 const content = (link, target) => {
-                    return `<a href="${link}" target="${target}">Request a copy of ${resource.label}</a><p>Princeton community has access to this thesis on campus or VPN.</p>`;
+                    return `<a href="${link}" target="${target}">Request a copy of ${resource.label}<i class="fa fa-external-link new-tab-icon-padding" aria-hidden="true" role="img"></i></a><p>Princeton community has access to this thesis on campus or VPN.</p>`;
                 };
                 insert_online_link(link, `thesis_request_link_${iteration}`, content);
                 iteration++;
