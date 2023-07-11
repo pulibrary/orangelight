@@ -26,8 +26,4 @@ Flipflop.configure do
   feature :firestone_locator,
     default: true,
     description: "When on / true, uses the old locator service for Firestone. When off / false uses the new Stackmap service for Firestone."
-
-  feature :harmful_content_feedback,
-    default: false,
-    description: "When on / true, displays the Harmful Content Feedback bar."
 end
