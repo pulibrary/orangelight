@@ -116,3 +116,7 @@
 .dropdown-item {
   white-space: normal;
 }
+
+.row .range_limit input.range_begin, .row .range_limit input.range_end {
+  width: 5em;
+}
