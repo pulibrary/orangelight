@@ -127,8 +127,8 @@
                       autowarmCount="32"/>
 
     <documentCache class="solr.LRUCache"
-                   size="32768"
-                   initialSize="32768"/>
+                   size="4096"
+                   initialSize="4096"/>
 
     <enableLazyFieldLoading>true</enableLazyFieldLoading>
 
