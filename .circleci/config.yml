@@ -91,8 +91,8 @@ jobs:
       - attach_workspace:
           at: '~/orangelight'
       - setup-bundler-and-node
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
+      - browser-tools/install-browser-tools:
+          chrome-version: 114.0.5735.90
       - checkout
       - run: |
           ruby --version

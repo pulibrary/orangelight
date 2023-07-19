@@ -68,10 +68,6 @@ RSpec.configure do |config|
     Warden.test_reset!
   end
 
-  config.before(:each, type: ->(t) { [:system, :feature].include?(t) }, js: true) do
-    Webdrivers::Chromedriver.required_version = "114.0.5735.90"
-  end
-
   config.before(:suite) { Rails.cache.clear }
   config.after { Rails.cache.clear }
 end
