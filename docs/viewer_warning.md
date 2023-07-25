@@ -1,6 +1,7 @@
 ## Viewer warnings
 
-The [Catalog web application](https://catalog.princeton.edu/) loads the viewer from [the web application Figgy](https://figgy.princeton.edu/). We currently use the [Universal viewer](https://github.com/UniversalViewer/universalviewer).  
+The [Catalog web application](https://catalog.princeton.edu/) loads the viewer from [the web application Figgy](https://figgy.princeton.edu/). We currently use the [Universal viewer](https://github.com/UniversalViewer/universalviewer).
+
 Using [the web application Figgy](https://figgy.princeton.edu/) a selector can update or create a new resource and set a value in the 'Notice type'. If a 'Notice type' value is set one of the following values, Harmful Content, Explicit content or Senior Thesis, a message will display instead of the viewer content.
 In order to view the content a user would have to press the button 'View Content' or 'Accept'.  
 
