@@ -424,16 +424,6 @@
       </analyzer>
     </fieldtype>
 
-    <!-- charFilter + WhitespaceTokenizer  -->
-    <!--
-    <fieldType name="text_char_norm" class="solr.TextField" positionIncrementGap="100" >
-      <analyzer>
-        <charFilter class="solr.MappingCharFilterFactory" mapping="mapping-ISOLatin1Accent.txt"/>
-        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
-      </analyzer>
-    </fieldType>
-    -->
-
     <fieldType name="lccn" class="solr.TextField">
       <analyzer type="index">
         <tokenizer class="solr.KeywordTokenizerFactory"/>
@@ -767,13 +757,6 @@
    <!-- advanced search fields cjk config -->
    <copyField source="pub_created_vern_display" dest="cjk_publisher"/>
 
-   <!-- Above, multiple source fields are copied to the [text] field.
-    Another way to map multiple source fields to the same
-    destination field is to use the dynamic field syntax.
-    copyField also supports a maxChars to copy setting.  -->
-
-  <!--    <copyField source="*_t" dest="text" maxChars="3000"/> -->
-
   <!-- default, catch all search field -->
    <copyField source="id" dest="text"/>
    <copyField source="timestamp" dest="text"/>
@@ -848,24 +831,4 @@
    <!-- copy notes_index to cjk_notes_copied -->
    <copyField source="notes_index" dest="cjk_notes_copied"/>
    <copyField source="notes_index" dest="cjk_text"/>
-
-   <!-- copy name to alphaNameSort, a field designed for sorting by name -->
-   <!-- <copyField source="name" dest="alphaNameSort"/> -->
-
-
- <!-- Similarity is the scoring routine for each document vs. a query.
-      A custom similarity may be specified here, but the default is fine
-      for most applications.  -->
- <!-- <similarity class="org.apache.lucene.search.DefaultSimilarity"/> -->
- <!-- ... OR ...
-      Specify a SimilarityFactory class name implementation
-      allowing parameters to be used.
- -->
- <!--
- <similarity class="com.example.solr.CustomSimilarityFactory">
-   <str name="paramkey">param value</str>
- </similarity>
- -->
-
-
 </schema>
