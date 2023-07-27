@@ -16,10 +16,6 @@
  limitations under the License.
 -->
 
-<!--
- This is a stripped down config file used for a simple example...
- It is *not* a good example to work from.
--->
 <config>
   <luceneMatchVersion>8.4.1</luceneMatchVersion>
 
@@ -76,9 +72,6 @@
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
 
   <requestHandler name="/update" class="solr.UpdateRequestHandler" >
-    <!-- <lst name="defaults"> -->
-    <!--   <str name="update.chain">dedupe</str> -->
-    <!-- </lst> -->
   </requestHandler>
 
   <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
@@ -89,18 +82,6 @@
       <str name="echoParams">all</str>
     </lst>
   </requestHandler>
-
-  <!-- <updateRequestProcessorChain name="dedupe"> -->
-  <!--   <processor class="solr.processor.SignatureUpdateProcessorFactory"> -->
-  <!--     <bool name="enabled">true</bool> -->
-  <!--     <str name="signatureField">hashed_id_s</str> -->
-  <!--     <bool name="overwriteDupes">false</bool> -->
-  <!--     <str name="fields">id</str> -->
-  <!--     <str name="signatureClass">solr.processor.Lookup3Signature</str> -->
-  <!--   </processor> -->
-  <!--   <processor class="solr.LogUpdateProcessorFactory" /> -->
-  <!--   <processor class="solr.RunUpdateProcessorFactory" /> -->
-  <!-- </updateRequestProcessorChain> -->
 
   <requestHandler name="/get" class="solr.RealTimeGetHandler">
     <lst name="defaults">
@@ -134,122 +115,6 @@
 
    <queryResultWindowSize>100</queryResultWindowSize>
    <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
-    <!-- <listener event="newSearcher" class="solr.QuerySenderListener"> -->
-    <!--   <arr name="queries"> -->
-    <!--     <lst><str name="q">*:*</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst> -->
-    <!--     <lst><str name="q">*:*</str><str name="sort">pub_date_start_sort desc, title_sort asc</str></lst> -->
-    <!--     <lst><str name="q">*:*</str><str name="sort">pub_date_start_sort asc, title_sort asc</str></lst> -->
-    <!--     <lst><str name="q">*:*</str><str name="sort">author_sort asc, title_sort asc</str></lst> -->
-    <!--     <lst><str name="q">*:*</str><str name="sort">title_sort asc, pub_date_start_sort desc</str></lst> -->
-    <!--     <lst><str name="q">nature</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst> -->
-    <!--     <lst><str name="q">time</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst> -->
-    <!--     <lst><str name="q">book</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst> -->
-    <!--     <lst><str name="q">science</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst> -->
-    <!--     <lst><str name="q">music</str><str name="sort">score desc, pub_date_start_sort desc, title_sort asc</str></lst> -->
-    <!--  -->
-    <!--     <lst><str name="fq">format:Audio</str></lst> -->
-    <!--     <lst><str name="fq">format:Book</str></lst> -->
-    <!--     <lst><str name="fq">format:Data File</str></lst> -->
-    <!--     <lst><str name="fq">format:Journal</str></lst> -->
-    <!--     <lst><str name="fq">format:Manuscript</str></lst> -->
-    <!--     <lst><str name="fq">format:Map</str></lst> -->
-    <!--     <lst><str name="fq">format:Mixed Material</str></lst> -->
-    <!--     <lst><str name="fq">format:Musical Score</str></lst> -->
-    <!--     <lst><str name="fq">format:Senior Thesis</str></lst> -->
-    <!--     <lst><str name="fq">format:Thesis</str></lst> -->
-    <!--     <lst><str name="fq">format:Video/Projected Medium</str></lst> -->
-    <!--     <lst><str name="fq">format:Visual Material</str></lst> -->
-    <!--  -->
-    <!--     <lst><str name="fq">location:Architecture Library</str></lst> -->
-    <!--     <lst><str name="fq">location:East Asian Library</str></lst> -->
-    <!--     <lst><str name="fq">location:Engineering Library</str></lst> -->
-    <!--     <lst><str name="fq">location:Fine Annex</str></lst> -->
-    <!--     <lst><str name="fq">location:Firestone Library</str></lst> -->
-    <!--     <lst><str name="fq">location:Forrestal Annex</str></lst> -->
-    <!--     <lst><str name="fq">location:Harold P. Furth Plasma Physics Library</str></lst> -->
-    <!--     <lst><str name="fq">location:Lewis Library</str></lst> -->
-    <!--     <lst><str name="fq">location:Marquand Library</str></lst> -->
-    <!--     <lst><str name="fq">location:Mendel Music Library</str></lst> -->
-    <!--     <lst><str name="fq">location:Mudd Manuscript Library</str></lst> -->
-    <!--     <lst><str name="fq">location:Rare Books and Special Collections</str></lst> -->
-    <!--     <lst><str name="fq">location:ReCAP</str></lst> -->
-    <!--     <lst><str name="fq">location:Stokes Library</str></lst> -->
-    <!--     <lst><str name="fq">location:Video Library</str></lst> -->
-    <!--  -->
-    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;7DAYS TO NOW/DAY+1DAY]</str></lst> -->
-    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;14DAYS TO NOW/DAY+1DAY]</str></lst> -->
-    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;21DAYS TO NOW/DAY+1DAY]</str></lst> -->
-    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;1MONTH TO NOW/DAY+1DAY]</str></lst> -->
-    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;2MONTHS TO NOW/DAY+1DAY]</str></lst> -->
-    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;3MONTHS TO NOW/DAY+1DAY]</str></lst> -->
-    <!--     <lst><str name="fq">cataloged_tdt:[NOW/DAY&#45;6MONTHS TO NOW/DAY+1DAY]</str></lst> -->
-    <!--  -->
-    <!--     <lst><str name="fq">language_facet:English</str></lst> -->
-    <!--     <lst><str name="fq">language_facet:German</str></lst> -->
-    <!--     <lst><str name="fq">language_facet:French</str></lst> -->
-    <!--     <lst><str name="fq">language_facet:Spanish</str></lst> -->
-    <!--     <lst><str name="fq">language_facet:Chinese</str></lst> -->
-    <!--     <lst><str name="fq">language_facet:Italian</str></lst> -->
-    <!--     <lst><str name="fq">language_facet:Russian</str></lst> -->
-    <!--     <lst><str name="fq">language_facet:Arabic</str></lst> -->
-    <!--     <lst><str name="fq">language_facet:Japanese</str></lst> -->
-    <!--     <lst><str name="fq">language_facet:Latin</str></lst> -->
-    <!--  -->
-    <!--     <lst><str name="fq">subject_era_facet:20th century</str></lst> -->
-    <!--     <lst><str name="fq">subject_era_facet:19th century</str></lst> -->
-    <!--     <lst><str name="fq">subject_era_facet:18th century</str></lst> -->
-    <!--     <lst><str name="fq">subject_era_facet:21st century</str></lst> -->
-    <!--     <lst><str name="fq">subject_era_facet:17th century</str></lst> -->
-    <!--  -->
-    <!--     <lst><str name="fq">lc_1letter_facet:A &#45; General Works</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:B &#45; Philosophy, Psychology, Religion</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:C &#45; Historical Sciences (Archaeology, Genealogy)</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:D &#45; World History</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:E &#45; History of the Americas (General)</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:F &#45; History of the Americas (Local)</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:G &#45; Geography, Anthropology, Recreation</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:H &#45; Social Sciences</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:J &#45; Political Science</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:K &#45; Law</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:L &#45; Education</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:M &#45; Music</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:N &#45; Fine Arts</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:P &#45; Language &#38;amp; Literature</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:Q &#45; Science</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:R &#45; Medicine</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:S &#45; Agriculture</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:T &#45; Technology</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:U &#45; Military Science</str></lst> -->
-    <!--     <lst><str name="fq">lc_1letter_facet:Z &#45; Bibliography, Library Science, Information Resources</str></lst> -->
-    <!--  -->
-    <!--     <lst><str name="fq">subject_topic_facet:History</str></lst> -->
-    <!--     <lst><str name="fq">subject_topic_facet:United States</str></lst> -->
-    <!--     <lst><str name="fq">subject_topic_facet:Politics and government</str></lst> -->
-    <!--     <lst><str name="fq">subject_topic_facet:History and criticism</str></lst> -->
-    <!--     <lst><str name="fq">subject_topic_facet:Great Britain</str></lst> -->
-    <!--     <lst><str name="fq">subject_topic_facet:United States. Congress</str></lst> -->
-    <!--     <lst><str name="fq">subject_topic_facet:Claims</str></lst> -->
-    <!--     <lst><str name="fq">subject_topic_facet:Bills, Private</str></lst> -->
-    <!--     <lst><str name="fq">subject_topic_facet:China</str></lst> -->
-    <!--     <lst><str name="fq">subject_topic_facet:France</str></lst> -->
-    <!--  -->
-    <!--     <lst><str name="fq">genre_facet:Biography</str></lst> -->
-    <!--     <lst><str name="fq">genre_facet:Congresses</str></lst> -->
-    <!--     <lst><str name="fq">genre_facet:Periodicals</str></lst> -->
-    <!--     <lst><str name="fq">genre_facet:Private bills</str></lst> -->
-    <!--     <lst><str name="fq">genre_facet:Exhibitions</str></lst> -->
-    <!--     <lst><str name="fq">genre_facet:Early works to 1800</str></lst> -->
-    <!--     <lst><str name="fq">genre_facet:Fiction</str></lst> -->
-    <!--     <lst><str name="fq">genre_facet:Maps</str></lst> -->
-    <!--     <lst><str name="fq">genre_facet:Bibliography</str></lst> -->
-    <!--     <lst><str name="fq">genre_facet:Catalogs</str></lst> -->
-    <!--  -->
-    <!--     <lst><str name="fq">sudoc_facet:X/Y &#45; Congress</str></lst> -->
-    <!--  -->
-    <!--     <lst><str name="fq">acces_facet:Online</str></lst> -->
-    <!--     <lst><str name="fq">acces_facet:In the Library</str></lst> -->
-    <!--   </arr> -->
-    <!-- </listener> -->
   </query>
 
   <!-- SearchHandler
@@ -493,66 +358,7 @@
       <str name="f.advanced_location_s.facet.sort">index</str>
       <str name="f.language_facet.facet.limit">1000</str>
       <str name="f.advanced_location_s.facet.limit">500</str>
-
-      <!--
-      <str name="facet.method">enum</str>
-      <str name="facet.enum.cache.minDf">25000</str>
-        -->
-
     </lst>
-    <!-- In addition to defaults, "appends" params can be specified
-         to identify values which should be appended to the list of
-         multi-val params from the query (or the existing "defaults").
-      -->
-    <!-- In this example, the param "fq=instock:true" would be appended to
-         any query time fq params the user may specify, as a mechanism for
-         partitioning the index, independent of any user selected filtering
-         that may also be desired (perhaps as a result of faceted searching).
-
-         NOTE: there is *absolutely* nothing a client can do to prevent these
-         "appends" values from being used, so don't use this mechanism
-         unless you are sure you always want it.
-      -->
-    <!--
-       <lst name="appends">
-         <str name="fq">inStock:true</str>
-       </lst>
-      -->
-    <!-- "invariants" are a way of letting the Solr maintainer lock down
-         the options available to Solr clients.  Any params values
-         specified here are used regardless of what values may be specified
-         in either the query, the "defaults", or the "appends" params.
-
-         In this example, the facet.field and facet.query params would
-         be fixed, limiting the facets clients can use.  Faceting is
-         not turned on by default - but if the client does specify
-         facet=true in the request, these are the only facets they
-         will be able to see counts for; regardless of what other
-         facet.field or facet.query params they may specify.
-
-         NOTE: there is *absolutely* nothing a client can do to prevent these
-         "invariants" values from being used, so don't use this mechanism
-         unless you are sure you always want it.
-      -->
-    <!--
-       <lst name="invariants">
-         <str name="facet.field">cat</str>
-         <str name="facet.field">manu_exact</str>
-         <str name="facet.query">price:[* TO 500]</str>
-         <str name="facet.query">price:[500 TO *]</str>
-       </lst>
-      -->
-    <!-- If the default list of SearchComponents is not desired, that
-         list can either be overridden completely, or components can be
-         prepended or appended to the default list.  (see below)
-      -->
-    <!--
-       <arr name="components">
-         <str>nameOfCustomComponent1</str>
-         <str>nameOfCustomComponent2</str>
-       </arr>
-      -->
-
   </requestHandler>
 
   <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
