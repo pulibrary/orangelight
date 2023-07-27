@@ -44,7 +44,9 @@ module StringFunctions
         norm = norm.gsub(/(CD|DVD|LP|LS)-/, '\1') # should file together regardless of dash
 
         # normalize number to 7-digits, ignore oversize q
-        norm.gsub(/(\d+)(Q?)$/) { format('%07d', Regexp.last_match[1].to_i) }
+        norm.gsub(/(\d+)(Q|Q OVERSIZE)?$/) do
+          format('%07d', Regexp.last_match[1].to_i)
+        end
       end
   end
 end

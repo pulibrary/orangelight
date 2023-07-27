@@ -1,0 +1,148 @@
+{
+  "id": "9961023373506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Peterson, Oscar, 1925-2007"
+  ],
+  "author_citation_display": [
+    "Peterson, Oscar"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Peterson, Oscar\"}",
+  "author_s": [
+    "Peterson, Oscar, 1925-2007"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Paris jazz concert [sound recording] / Oscar Peterson.",
+  "title_t": [
+    "Paris jazz concert [sound recording] / Oscar Peterson."
+  ],
+  "title_citation_display": [
+    "Paris jazz concert"
+  ],
+  "compiled_created_t": [
+    "Paris jazz concert [sound recording] / Oscar Peterson."
+  ],
+  "pub_created_display": [
+    "[France] : Europe 1, p1993."
+  ],
+  "pub_created_s": [
+    "[France] : Europe 1, p1993."
+  ],
+  "pub_citation_display": [
+    "France: Europe 1"
+  ],
+  "pub_date_display": [
+    "1993"
+  ],
+  "pub_date_start_sort": 1993,
+  "pub_date_end_sort": 1957,
+  "cataloged_tdt": "2010-04-19T00:00:00Z",
+  "format": [
+    "Audio"
+  ],
+  "description_display": [
+    "6 sound discs : digital ; 4³/₄ in."
+  ],
+  "description_t": [
+    "6 sound discs : digital ; 4³/₄ in."
+  ],
+  "number_of_pages_citation_display": [
+    "6 sound discs"
+  ],
+  "notes_display": [
+    "Europe 1: 710443--710448.",
+    "Title on container label: Oscar Peterson in concert with Europe 1 : Pour ceux qui aiment le jazz.",
+    "\"Jazz concerts ... organized in Paris and broadcast as part of [the Europe 1] radio program For those who love jazz\"--program notes (p. [2]).",
+    "Compact discs.",
+    "Program notes (51 p. : ill., ports) inserted."
+  ],
+  "date_place_event_notes_display": [
+    "Recorded in Paris between 1957 and 1969."
+  ],
+  "participant_performer_display": [
+    "Oscar Peterson, piano ; with various performers."
+  ],
+  "language_name_display": [
+    "No linguistic content"
+  ],
+  "language_iana_s": [
+    "en"
+  ],
+  "contents_display": [
+    "CD1. Man I love (3:54) ; Schooldays (4:36) ; Bugle call rag (2:49) ; Daahoud (7:20) ; Stockholm sweetenin' (5:47) ; Soft winds (6:26) ; After hours (7:57) ; On Green Dolphin Street (7:34) ; Band call (7:15) ; I remember Clifford (8:11) ; Where do I go from here (3:48) ; Satin doll (6:43) --",
+    "CD2. Six and four (7:58) ; But notfFor me (3:23) ; Mainstemg(4:28) ; I've got a crush on you, Little girl blue (5:35) ; Bonzo blues (4:58) ; Reunion blues (5:21) ; Wheatland (7:49) ; Nightingale (3:35) ; Hymn to freedom (6:07) ; Yours is my heart alone, Blues for big Scottia (9:46) --",
+    "CD3. I could write a book (4:04) ; Jordu (5:13) ; Bye bye blackbird (6:43) ; Jeru (5 52) ; llwind (6:06) ; Soon (3:43) ; Hallelujah trail (7:05) ; Yesterdays (4:52) ; Keyboard blues (5:20) ; Lill Darlin' (6:43) ; Tangerine (4:53) ; My foolish heart (7:44).",
+    "CD4. Mack the Knife (6:43) ; Blues for Smedley (5:32) ; Misty (5:50) ; Mumble (1:52) ; Blues etude (concert opening) (5:43) ; You look good to me (7:30) ; Stella by starlight (4:46) ; Moanin' (6:24) ; Shelley's world (9:03) ; Autumn leaves (6:35)",
+    "CD5. Hogtown blues (7:38) ; Waltz for Debby (8:41) ; Between the devil & the deep blue sea (8:23) ; My one and only love (7:58) ; In a mellotone (5:35) ; Lamp is low (7:16) ; On a clear day (4:40) ; Triste (6:19) ; Down here on the ground (8:46) --",
+    "CD6. Tristeza (4:13) ; By the time I get to Phoenix, I concentrate on you (9:55) ; Let's fall in love (3:36) ; Someday my Prince will come (4:26) ; Lined with a groove (4:48) ; Billie's bounce (5:04) ; Fly me to the moon (4:19) ; Squeaky's blues (5:04) ; The days of wine & roses (7:22) ; Waltzing is hip (7:42) ; Blues etude (concert closing) (4:56)."
+  ],
+  "source_acquisition_display": [
+    "Bob Rickles Jazz Collection donated by Doris Rickles"
+  ],
+  "lc_subject_display": [
+    "Piano music (Jazz)",
+    "Jazz—1951-1960",
+    "Jazz—1961-1970"
+  ],
+  "subject_facet": [
+    "Piano music (Jazz)",
+    "Jazz—1951-1960",
+    "Jazz—1961-1970",
+    "Jazz"
+  ],
+  "lcgft_s": [
+    "Jazz"
+  ],
+  "other_title_display": [
+    "Oscar Peterson in concert with Europe 1"
+  ],
+  "alt_title_246_display": [
+    "Oscar Peterson in concert with Europe 1"
+  ],
+  "publisher_no_display": [
+    "710443",
+    "710444",
+    "710445",
+    "710446",
+    "710447",
+    "710448"
+  ],
+  "oclc_s": [
+    "82001924"
+  ],
+  "other_version_s": [
+    "ocm82001924"
+  ],
+  "subject_era_facet": [
+    "1951-1960",
+    "1961-1970"
+  ],
+  "holdings_1display": "{\"22515372400006421\":{\"location_code\":\"mendel$stacks\",\"location\":\"Stacks\",\"library\":\"Mendel Music Library\",\"call_number\":\"CD- 40056q Oversize\",\"call_number_browse\":\"CD- 40056q Oversize\",\"sub_location\":[\"Oversize\"],\"items\":[{\"holding_id\":\"22515372400006421\",\"enumeration\":\"Disc 3\",\"id\":\"23515372370006421\",\"status_at_load\":\"1\",\"barcode\":\"32101052361548\",\"copy_number\":\"1\"},{\"holding_id\":\"22515372400006421\",\"enumeration\":\"Disc 2\",\"id\":\"23515372380006421\",\"status_at_load\":\"1\",\"barcode\":\"32101052361530\",\"copy_number\":\"1\"},{\"holding_id\":\"22515372400006421\",\"enumeration\":\"Disc 1\",\"id\":\"23515372390006421\",\"status_at_load\":\"1\",\"barcode\":\"32101052361522\",\"copy_number\":\"1\"},{\"holding_id\":\"22515372400006421\",\"enumeration\":\"Disc 5\",\"id\":\"23515372350006421\",\"status_at_load\":\"1\",\"barcode\":\"32101052361563\",\"copy_number\":\"1\"},{\"holding_id\":\"22515372400006421\",\"enumeration\":\"Disc 6\",\"id\":\"23515372340006421\",\"status_at_load\":\"1\",\"barcode\":\"32101052361571\",\"copy_number\":\"1\"},{\"holding_id\":\"22515372400006421\",\"enumeration\":\"Disc 4\",\"id\":\"23515372360006421\",\"status_at_load\":\"1\",\"barcode\":\"32101052361555\",\"copy_number\":\"1\"},{\"holding_id\":\"22515372400006421\",\"enumeration\":\"booklet\",\"id\":\"23515372330006421\",\"status_at_load\":\"1\",\"barcode\":\"32101070835291\",\"copy_number\":\"1\"}],\"location_has\":[\"Disc 1-disc 6; booklet\"],\"supplements\":[null],\"indexes\":[null]}}",
+  "location_code_s": [
+    "mendel$stacks"
+  ],
+  "location": [
+    "Mendel Music Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "mendel$stacks",
+    "Mendel Music Library"
+  ],
+  "name_title_browse_s": [
+    "Peterson, Oscar, 1925-2007. Paris jazz concert"
+  ],
+  "call_number_display": [
+    "Oversize CD- 40056q"
+  ],
+  "call_number_browse_s": [
+    "CD- 40056q Oversize"
+  ],
+  "call_number_locator_display": [
+    "CD- 40056q"
+  ]
+}

@@ -17,7 +17,7 @@ class Orangelight::BrowsablesController < ApplicationController
       @start = 1 if @start < 1 # catch for start ids higher than last id
     end
 
-    assign_pagenation_values
+    assign_pagination_values
 
     @facet = facet
     @list_name = list_name
@@ -95,7 +95,7 @@ class Orangelight::BrowsablesController < ApplicationController
       @query = query_param
     end
 
-    def assign_pagenation_values
+    def assign_pagination_values
       @is_first = @start == 1
 
       @page_last = if (@start + @rpp - 1) > @last_id
