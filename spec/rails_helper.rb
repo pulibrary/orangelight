@@ -60,6 +60,7 @@ RSpec.configure do |config|
   config.include ViewComponent::TestHelpers, type: :component
 
   config.before(:each, type: :feature) do
+    Webdrivers::Chromedriver.required_version = "114.0.5735.90"
     Warden.test_mode!
     OmniAuth.config.test_mode = true
   end
