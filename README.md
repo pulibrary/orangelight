@@ -106,6 +106,19 @@ Testing
 
 The browser will only display for system specs with `js: true`.
 
+#### Running CodeQL locally
+
+If you get a CodeQL warning on your branch, you may wish to run
+CodeQL locally to learn more about the issue.
+
+```
+brew install codeql
+codeql database create orangelight-codeql --language=ruby # creates a gitignored folder for codeql to do its work
+codeql database analyze orangelight-codeql --format=csv --output=codeql_results.csv --download codeql/ruby-queries
+```
+
+Your results will then be available in the file codeql_results.csv.
+
 #### Building the browselists
 ```ruby
 RAILS_ENV=test bundle exec rake browse:all
