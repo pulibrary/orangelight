@@ -108,9 +108,9 @@ group :test do
   gem 'launchy'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
+  gem 'selenium-webdriver'
   gem 'timecop'
   gem 'vcr'
-  gem 'webdrivers'
   gem 'webmock', require: false
 end
 
