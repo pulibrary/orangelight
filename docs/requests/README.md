@@ -7,13 +7,15 @@ The gem was integrated into orangelight in April of 2022 by moving the code from
 
 ```mermaid
   graph TD;
+  accTitle: External interfaces used to make requests in orangelight.
+  accDescr: These interfaces are Alma EDD and Print, Recap/SCSB EDD and Print, Ciasoft Print, Illiad EDD and Print, AEON Print, Borrow Direct Print, Email Print.
       A[Requests]-->B[Alma EDD and Print];
-      A-->C[Recap/SCSB EDD and Print];
-      A-->D[Ciasoft Print];
-      A-->E[Illiad EDD and Print];
-      A-->F[AEON Print];
-      A-->G[Borrow Direct Print];
-      A-->H[Email Print];
+      A[Requests]-->C[Recap/SCSB EDD and Print];
+      A[Requests]-->D[Ciasoft Print];
+      A[Requests]-->E[Illiad EDD and Print];
+      A[Requests]-->F[AEON Print];
+      A[Requests]-->G[Borrow Direct Print];
+      A[Requests]-->H[Email Print];
 ```
 
 * [Borrow Direct](https://catalog.princeton.edu/borrow-direct)
