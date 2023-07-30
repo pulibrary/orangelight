@@ -1,5 +1,17 @@
 ```mermaid
 sequenceDiagram
+accTitle: Alma Orangelight Login Process
+accDescr {
+  An unauthenticated user clicks "Your Account - Library Account" on Orangelight, which takes the user to the login page.
+  If this user selects Log in with netID, The user clicks "Log in with netID" on Orangelight.
+  Orangelight sends Authentication info to CAS with return location set as Orangelight. CAS sends successful info back to Orangelight.
+  Orangelight redirects the user to Alma. Alma sends the user to the Alma login page, where the user clicks login.
+  Alma sends the user info to CAS, and CAS sees that user is already successfully authenticated, and sends the user back to Alma.
+  If the user selects log in with barcode, the user clicks "Log in with a barcode" on orangelight. Orangelight opens the barcode login form, and sends the user to Alma.
+  If the user selects "Log in with Alma Account", the user clicks "Log in with Alma Account" on orangelight. Orangelight opens the alma account login form, and sends the user to Alma.
+
+  If the user is authenticated, they click "their-netID - Library Account" on Orangelight. Orangelight takes them to the login page, recognizes the user is already logged in and redirects them to Alma.
+}
 actor U as User
 participant O as Orangelight
 participant A as Alma
