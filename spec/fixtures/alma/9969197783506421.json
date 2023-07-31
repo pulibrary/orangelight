@@ -1,0 +1,145 @@
+{
+  "id": "9969197783506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Puccini, Giacomo, 1858-1924"
+  ],
+  "author_citation_display": [
+    "Puccini, Giacomo",
+    "Illica, Luigi",
+    "Giacosa, Giuseppe",
+    "Freni, Mirella",
+    "Talarico, Rita",
+    "Pavarotti, Luciano",
+    "Bruscantini, Sesto",
+    "Maffeo, Gianni",
+    "Gi︠u︡zelev, Nikola",
+    "Schippers, Thomas",
+    "Murger, Henri",
+    "Radiotelevisione italiana"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Illica, Luigi\",\"Giacosa, Giuseppe\",\"Freni, Mirella\",\"Talarico, Rita\",\"Pavarotti, Luciano\",\"Bruscantini, Sesto\",\"Maffeo, Gianni\",\"Gi︠u︡zelev, Nikola\",\"Schippers, Thomas\",\"Murger, Henri\",\"Radiotelevisione italiana\",\"Radiotelevisione italiana\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Puccini, Giacomo\"}",
+  "author_s": [
+    "Puccini, Giacomo, 1858-1924",
+    "Illica, Luigi, 1857-1919",
+    "Giacosa, Giuseppe, 1847-1906",
+    "Freni, Mirella, 1935-",
+    "Talarico, Rita",
+    "Pavarotti, Luciano",
+    "Bruscantini, Sesto",
+    "Maffeo, Gianni",
+    "Gi︠u︡zelev, Nikola, 1936-2014",
+    "Schippers, Thomas",
+    "Murger, Henri, 1822-1861",
+    "Radiotelevisione italiana. Orchestra sinfonica di Roma",
+    "Radiotelevisione italiana. Coro di Roma"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "La Bohem̀e [sound recording] / Puccini.",
+  "title_t": [
+    "La Bohem̀e [sound recording] / Puccini."
+  ],
+  "title_citation_display": [
+    "La Bohem̀e"
+  ],
+  "compiled_created_t": [
+    "La Bohem̀e [sound recording] / Puccini."
+  ],
+  "pub_created_display": [
+    "[Milan, Italy?] : Frequenz, p1991."
+  ],
+  "pub_created_s": [
+    "[Milan, Italy?] : Frequenz, p1991."
+  ],
+  "pub_citation_display": [
+    "Milan, Italy?: Frequenz"
+  ],
+  "pub_date_display": [
+    "1991"
+  ],
+  "pub_date_start_sort": 1991,
+  "cataloged_tdt": "2011-12-09T00:00:00Z",
+  "format": [
+    "Audio"
+  ],
+  "description_display": [
+    "2 sound discs : digital, stereo. ; 4 3/4 in."
+  ],
+  "description_t": [
+    "2 sound discs : digital, stereo. ; 4 3/4 in."
+  ],
+  "number_of_pages_citation_display": [
+    "2 sound discs"
+  ],
+  "notes_display": [
+    "Opera in 4 acts ; libretto by Luigi Illica and Giuseppe Giacosa after Murger's Scènes de la vie de Bohème.",
+    "Compact discs."
+  ],
+  "participant_performer_display": [
+    "Mirella Freni, Rita Talarico, Luciano Pavarotti, Sesto Bruscantini, Gianni Maffeo, Nicola Ghiusalev; supporting soloists; Orchestra Sinfonica e Coro di Roma della Radiotelevisione Italiana ; Thomas Schippers, conductor."
+  ],
+  "language_display": [
+    "Sung in Italian."
+  ],
+  "language_name_display": [
+    "Italian"
+  ],
+  "language_facet": [
+    "Italian"
+  ],
+  "language_iana_s": [
+    "it"
+  ],
+  "source_acquisition_display": [
+    "Gift of Princeton music professor emeritus Kenneth Levy."
+  ],
+  "lc_subject_display": [
+    "Operas"
+  ],
+  "subject_facet": [
+    "Operas"
+  ],
+  "lcgft_s": [
+    "Operas"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Illica, Luigi, 1857-1919\",\"Giacosa, Giuseppe, 1847-1906\",\"Freni, Mirella, 1935-\",\"Talarico, Rita\",\"Pavarotti, Luciano\",\"Bruscantini, Sesto\",\"Maffeo, Gianni\",\"Gi︠u︡zelev, Nikola, 1936-2014\",\"Schippers, Thomas\",\"Radiotelevisione italiana. Orchestra sinfonica di Roma\",\"Radiotelevisione italiana. Coro di Roma\"]}",
+  "related_works_1display": "[[\"Murger, Henri, 1822-1861.\",\"Scènes de la vie de Bohème.\"]]",
+  "publisher_no_display": [
+    "043-501"
+  ],
+  "oclc_s": [
+    "51891395"
+  ],
+  "other_version_s": [
+    "ocm51891395"
+  ],
+  "holdings_1display": "{\"22546107570006421\":{\"location_code\":\"mendel$stacks\",\"location\":\"Stacks\",\"library\":\"Mendel Music Library\",\"call_number\":\"CD- 40057\",\"call_number_browse\":\"CD- 40057\",\"items\":[{\"holding_id\":\"22546107570006421\",\"id\":\"23546107560006421\",\"status_at_load\":\"1\",\"barcode\":\"32101053025373\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "mendel$stacks"
+  ],
+  "location": [
+    "Mendel Music Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "mendel$stacks",
+    "Mendel Music Library"
+  ],
+  "name_title_browse_s": [
+    "Murger, Henri, 1822-1861. Scènes de la vie de Bohème",
+    "Puccini, Giacomo, 1858-1924. La Bohem̀e"
+  ],
+  "call_number_display": [
+    "CD- 40057"
+  ],
+  "call_number_browse_s": [
+    "CD- 40057"
+  ],
+  "call_number_locator_display": [
+    "CD- 40057"
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "id": "9969113523506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Paisiello, Giovanni, 1740-1816"
+  ],
+  "author_citation_display": [
+    "Paisiello, Giovanni",
+    "Petrosellini, Giuseppe",
+    "Ivanova, Marina",
+    "Saudelli, Patrizio",
+    "Ruggeri, Gianpiero",
+    "Tisi, Ezio Maria",
+    "Tosi, Gian Carlo",
+    "Keitel, Wilhelm",
+    "Beaumarchais, Pierre Augustin Caron de",
+    "Putbus Festival Chorus",
+    "Putbus Festival Orchestra"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[\"Petrosellini, Giuseppe\",\"Ivanova, Marina\",\"Saudelli, Patrizio\",\"Ruggeri, Gianpiero\",\"Tisi, Ezio Maria\",\"Tosi, Gian Carlo\",\"Keitel, Wilhelm\",\"Beaumarchais, Pierre Augustin Caron de\",\"Putbus Festival Chorus\",\"Putbus Festival Orchestra\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Paisiello, Giovanni\"}",
+  "author_s": [
+    "Paisiello, Giovanni, 1740-1816",
+    "Petrosellini, Giuseppe",
+    "Ivanova, Marina, 1964-",
+    "Saudelli, Patrizio",
+    "Ruggeri, Gianpiero",
+    "Tisi, Ezio Maria",
+    "Tosi, Gian Carlo",
+    "Keitel, Wilhelm",
+    "Beaumarchais, Pierre Augustin Caron de, 1732-1799",
+    "Putbus Festival Chorus",
+    "Putbus Festival Orchestra"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Il barbiere di Siviglia [sound recording] / Giovanni Paisiello.",
+  "title_t": [
+    "Il barbiere di Siviglia [sound recording] / Giovanni Paisiello."
+  ],
+  "title_citation_display": [
+    "Il barbiere di Siviglia"
+  ],
+  "compiled_created_t": [
+    "Il barbiere di Siviglia [sound recording] / Giovanni Paisiello."
+  ],
+  "pub_created_display": [
+    "[Germany] : Arte Nova Classics : Distributed by the Local BMG Co., p1997."
+  ],
+  "pub_created_s": [
+    "[Germany] : Arte Nova Classics : Distributed by the Local BMG Co., p1997."
+  ],
+  "pub_citation_display": [
+    "Germany: Distributed by the Local BMG Co."
+  ],
+  "pub_date_display": [
+    "1997"
+  ],
+  "pub_date_start_sort": 1997,
+  "cataloged_tdt": "2011-12-02T00:00:00Z",
+  "format": [
+    "Audio"
+  ],
+  "description_display": [
+    "2 sound discs (104 min.) : digital ; 4 3/4 in."
+  ],
+  "description_t": [
+    "2 sound discs (104 min.) : digital ; 4 3/4 in."
+  ],
+  "number_of_pages_citation_display": [
+    "2 sound discs (104 min.)"
+  ],
+  "series_display": [
+    "Putbus Edition"
+  ],
+  "notes_display": [
+    "Comic opera in 2 acts.",
+    "Libretto by Giuseppe Petrosellini, based on: Barbier de Séville / Pierre Augustin Caron de Beaumarchais.",
+    "Compact discs.",
+    "Program notes by Daniel Brandenburg, synopsis, and notes on the performers in English, French, and German, and Italian libretto inserted in container (47 p.)."
+  ],
+  "date_place_event_notes_display": [
+    "Recorded May 17, 21, 28, 1997 in Marstall zu Putbus, Rügen."
+  ],
+  "participant_performer_display": [
+    "Marina Ivanova, soprano ; Patrizio Saudelli, tenor ; Gianpiero Ruggeri, baritone ; Ezio Maria Tisi, Giancarlo Tosi, basses ; supporting soloists ; Putbus Festival Orchestra ; Putbus Festival Chorus ; Wilhelm Keitel, conductor."
+  ],
+  "language_display": [
+    "Sung in Italian."
+  ],
+  "language_name_display": [
+    "Italian"
+  ],
+  "language_facet": [
+    "Italian"
+  ],
+  "language_iana_s": [
+    "it"
+  ],
+  "source_acquisition_display": [
+    "Gift of Princeton music professor emeritus Kenneth Levy."
+  ],
+  "lc_subject_display": [
+    "Operas"
+  ],
+  "subject_facet": [
+    "Operas"
+  ],
+  "lcgft_s": [
+    "Operas"
+  ],
+  "related_name_json_1display": "{\"Related name\":[\"Petrosellini, Giuseppe\",\"Ivanova, Marina, 1964-\",\"Saudelli, Patrizio\",\"Ruggeri, Gianpiero\",\"Tisi, Ezio Maria\",\"Tosi, Gian Carlo\",\"Keitel, Wilhelm\",\"Putbus Festival Chorus\",\"Putbus Festival Orchestra\"]}",
+  "related_works_1display": "[[\"Beaumarchais, Pierre Augustin Caron de, 1732-1799.\",\"Barbier de Séville.\"]]",
+  "publisher_no_display": [
+    "74321 49702 2"
+  ],
+  "standard_no_1display": "{\"Universal Product Code\":[\"4321497022\"]}",
+  "oclc_s": [
+    "40810988"
+  ],
+  "other_version_s": [
+    "ocm40810988"
+  ],
+  "holdings_1display": "{\"22714856460006421\":{\"location_code\":\"mendel$stacks\",\"location\":\"Stacks\",\"library\":\"Mendel Music Library\",\"call_number\":\"CD- 40055\",\"call_number_browse\":\"CD- 40055\",\"items\":[{\"holding_id\":\"22714856460006421\",\"id\":\"23714856450006421\",\"status_at_load\":\"1\",\"barcode\":\"32101053024632\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "mendel$stacks"
+  ],
+  "location": [
+    "Mendel Music Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "mendel$stacks",
+    "Mendel Music Library"
+  ],
+  "name_title_browse_s": [
+    "Beaumarchais, Pierre Augustin Caron de, 1732-1799. Barbier de Séville",
+    "Paisiello, Giovanni, 1740-1816. Il barbiere di Siviglia"
+  ],
+  "call_number_display": [
+    "CD- 40055"
+  ],
+  "call_number_browse_s": [
+    "CD- 40055"
+  ],
+  "call_number_locator_display": [
+    "CD- 40055"
+  ]
+}
