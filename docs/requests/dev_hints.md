@@ -1,4 +1,4 @@
-### Development hints for Requests
+# Development hints for Requests
 ## Start up Bibdata for Orangelight development
 - Make sure you have the Alma keys for Bibdata set up - see [info in the Bibdata readme](https://github.com/pulibrary/bibdata#configure-alma-keys-for-development)
 - Start the Bibdata support application servers `bundle exec rails servers:start`
