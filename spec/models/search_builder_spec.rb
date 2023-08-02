@@ -54,4 +54,51 @@ RSpec.describe SearchBuilder do
       expect(search_builder.blacklight_params[:q].end_with?("()")).to be false
     end
   end
+
+  describe '#cleanup_boolean_operators' do
+    let(:solr_parameters) do
+      { q: 'Douglas fir' }
+    end
+    let(:blacklight_config) do
+      Blacklight::Configuration.new do |config|
+        config.add_search_field('all_fields')
+      end
+    end
+    before do
+      allow(subject).to receive(:blacklight_params).and_return(solr_parameters)
+      allow(subject).to receive(:field_def).and_return([])
+    end
+    context 'when using edismax via a q param' do
+      context 'when q does not contain boolean operators' do
+        it 'does not change the q parameter' do
+          subject.cleanup_boolean_operators(solr_parameters)
+          expect(solr_parameters[:q]).to eq('Douglas fir')
+        end
+      end
+      context 'when q contains a boolean operator' do
+        let(:solr_parameters) do
+          { q: 'solr AND blacklight' }
+        end
+        it 'parses the query' do
+          subject.cleanup_boolean_operators(solr_parameters)
+          expect(solr_parameters[:q]).to eq('+solr +blacklight')
+        end
+      end
+    end
+    context 'when using the JSON query DSL' do
+      let(:solr_parameters) do
+        { "json" =>
+          { "query" =>
+            { "bool" =>
+              { "must" =>
+                [{ edismax: { query: "solr AND blacklight" } }] } } } }
+      end
+      it 'does not change the solr_parameters json query' do
+        allow(subject).to receive(:blacklight_params).and_return({ q: 'solr AND blacklight' })
+        expect do
+          subject.cleanup_boolean_operators(solr_parameters)
+        end.not_to change { solr_parameters['json'] }
+      end
+    end
+  end
 end
