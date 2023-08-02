@@ -1,0 +1,40 @@
+<% if constraints? %>
+  <div class="constraints well search_history">
+    <h4><%= t 'blacklight.advanced_search.form.search_context' %></h4>
+    <% constraints.each do |constraint| %>
+      <%= constraint %>
+    <% end %>
+  </div>
+<% end %>
+<%= form_tag @url, method: @method, class: @classes.join(' '), role: 'search', 'aria-label' => t('blacklight.search.form.submit') do %>
+  <%= render_hash_as_hidden_fields(@params) %>
+  <%= render Blacklight::HiddenSearchStateComponent.new(params: {'advanced_type' => 'numismatics'}) %>
+  <div style="columns: 2">
+      <% search_filter_controls.each do |control| %>
+        <%= control %>
+      <% end %>
+      <div class="form-group advanced-search-facet row">
+        <%= label_tag pub_date_field.parameterize, :class => "col-sm-4 control-label advanced-facet-label" do %>Year<% end %>
+        <div class="col-sm-8 range_limit">
+          <label for="range_pub_date_start_sort_begin" class="sr-only">date range (starting year)</label>
+          <%= BlacklightRangeLimit::RangeFormComponent.new(facet_field: pub_date_presenter).render_range_input(:begin) %> –
+          <label for="range_pub_date_start_sort_end" class="sr-only">date range (ending year)</label>
+          <%= BlacklightRangeLimit::RangeFormComponent.new(facet_field: pub_date_presenter).render_range_input(:end) %>
+        </div>
+      </div>
+      <div class="form-group advanced-search-facet row">
+        <%= hidden_field_tag('clause[1][field]', 'all_fields') %>
+        <label for="clause_1_query" class="col-sm-4 control-label advanced-facet-label">Keyword</label>
+      <div class="col-sm-8">
+        <%= text_field_tag "clause[1][query]", '', # TODO: if there is an existing keyword search, set it as the default
+          id: 'clause_1_field',
+          class: 'form-control',
+          autocorrect: "off",
+          autocapitalize: "off",
+          autocomplete: "off",
+          spellcheck: "false" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
