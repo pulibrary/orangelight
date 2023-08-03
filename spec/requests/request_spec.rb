@@ -335,7 +335,7 @@ describe 'blacklight tests' do
       expect(response.body).to include 'data-isbn="['
     end
     it 'is accessible from search results' do
-      get '/catalog?search_field=all_fields'
+      get '/catalog?search_field=all_fields&q='
       expect(response.body).to include '<meta property="isbn"'
       expect(response.body).to include 'data-isbn="['
     end
