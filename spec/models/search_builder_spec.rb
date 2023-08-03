@@ -84,6 +84,15 @@ RSpec.describe SearchBuilder do
           expect(solr_parameters[:q]).to eq('+solr +blacklight')
         end
       end
+      context 'when q contains an all-caps phrase that happens to contain a boolean operator' do
+        let(:solr_parameters) do
+          { q: 'I AM NOT YOUR PRINCESS' }
+        end
+        it 'knows that the user did not mean NOT in the boolean sense' do
+          subject.cleanup_boolean_operators(solr_parameters)
+          expect(solr_parameters[:q]).to eq('I AM not YOUR PRINCESS')
+        end
+      end
     end
     context 'when using the JSON query DSL' do
       let(:solr_parameters) do
@@ -98,6 +107,20 @@ RSpec.describe SearchBuilder do
         expect do
           subject.cleanup_boolean_operators(solr_parameters)
         end.not_to change { solr_parameters['json'] }
+      end
+      context 'when user query contains an all-caps phrase that happens to contain a boolean operator' do
+        let(:solr_parameters) do
+          { "json" =>
+            { "query" =>
+              { "bool" =>
+                { "must" =>
+                  [{ edismax: { query: "I AM NOT YOUR PRINCESS" } }] } } } }
+        end
+        it 'knows that the user did not mean NOT in the boolean sense' do
+          allow(subject).to receive(:blacklight_params).and_return({ q: 'I AM NOT YOUR PRINCESS' })
+          subject.cleanup_boolean_operators(solr_parameters)
+          expect(solr_parameters.dig('json', 'query', 'bool', 'must', 0, :edismax, :query)).to eq('I AM not YOUR PRINCESS')
+        end
       end
     end
   end

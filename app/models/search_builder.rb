@@ -12,9 +12,17 @@ class SearchBuilder < Blacklight::SearchBuilder
                                      series_title_results pul_holdings html_facets
                                      numismatics_facets numismatics_advanced]
 
+  # mutate the solr_parameters to remove words that are
+  # boolean operators, but not intended as such.
   def cleanup_boolean_operators(solr_parameters)
     return add_advanced_parse_q_to_solr(solr_parameters) if run_advanced_parse?(solr_parameters)
     solr_parameters[:q] = cleaned_query(solr_parameters[:q])
+    return solr_parameters unless using_json_query_dsl(solr_parameters)
+
+    solr_parameters.dig('json', 'query', 'bool', 'must').map! do |search_element|
+      search_element[:edismax][:query] = cleaned_query(search_element[:edismax][:query])
+      search_element
+    end
   end
 
   # Blacklight uses Parslet https://rubygems.org/gems/parslet/versions/2.0.0 to parse the user query
@@ -50,7 +58,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   def run_advanced_parse?(solr_parameters)
     blacklight_params[:q].blank? ||
       !blacklight_params[:q].respond_to?(:to_str) ||
-      cleaned_query(solr_parameters[:q]) == solr_parameters[:q]
+      q_param_needs_boolean_cleanup(solr_parameters)
   end
 
   def facets_for_advanced_search_form(solr_p)
@@ -93,4 +101,15 @@ class SearchBuilder < Blacklight::SearchBuilder
     !blacklight_params[:q].nil? || blacklight_params[:f].present? ||
       blacklight_params[:search_field] == 'advanced'
   end
+
+  private
+
+    def q_param_needs_boolean_cleanup(solr_parameters)
+      solr_parameters[:q].present? &&
+        cleaned_query(solr_parameters[:q]) == solr_parameters[:q]
+    end
+
+    def using_json_query_dsl(solr_parameters)
+      solr_parameters.fetch('json', nil)&.fetch('query', nil)&.fetch('bool', nil)&.fetch('must', nil)&.present?
+    end
 end
