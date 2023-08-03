@@ -26,4 +26,7 @@ Flipflop.configure do
   feature :firestone_locator,
     default: true,
     description: "When on / true, uses the old locator service for Firestone. When off / false uses the new Stackmap service for Firestone."
+
+  feature :json_query_dsl,
+    description: "When on / true, use the JSON query DSL for search fields in the advanced search.  When off / false, use query params"
 end
