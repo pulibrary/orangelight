@@ -41,6 +41,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def cleaned_query(query)
+    return query if query.nil?
     query.gsub(/([A-Z]) (NOT|OR|AND) ([A-Z])/) do
       "#{Regexp.last_match(1)} #{Regexp.last_match(2).downcase} #{Regexp.last_match(3)}"
     end
