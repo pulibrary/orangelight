@@ -12,7 +12,7 @@ module Requests
     end
 
     def to_s
-      @compiled_string ||= "#{Requests::Config[:aeon_base]}/OpenURL?#{query_string}"
+      @compiled_string ||= "#{Requests::Config[:aeon_base]}?Action=10&Form=30&#{query_string}"
     end
 
     private

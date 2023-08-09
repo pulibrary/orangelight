@@ -29,6 +29,7 @@ production:
 staging:
   <<: *defaults
   pulsearch_base: https://catalog-staging.princeton.edu
+  aeon_base: https://lib-aeon.princeton.edu/aeon/aeon.dll
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
 qa:
   <<: *defaults
