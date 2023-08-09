@@ -14,7 +14,7 @@ An ILLiad request goes through the following steps, as illustrated by the diagra
 1. If transaction is not created successfully:
     1. ILLiad API returns a blank transaction
     1. Catalog reports "Invalid Interlibrary Loan Request" error to patron
-
+### ILLiad Request Mermaid
 ```mermaid
 sequenceDiagram
     title Placing an ILLiad request
