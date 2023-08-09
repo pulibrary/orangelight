@@ -21,7 +21,7 @@ An Aeon request goes through the following steps, as illustrated by the diagram 
             1. Catalog generates an OpenURL for each item
             1. Catalog renders a Reading Room Request button that links directly to aeon for each item
             1. Patron presses button to go to aeon
-
+### Aeon requests mermaid
 ```mermaid
 sequenceDiagram
     title Placing an aeon request
