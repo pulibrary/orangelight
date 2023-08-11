@@ -27,6 +27,11 @@ Flipflop.configure do
     default: true,
     description: "When on / true, uses the old locator service for Firestone. When off / false uses the new Stackmap service for Firestone."
 
-  feature :json_query_dsl,
+  group :blacklight_8 do
+    feature :json_query_dsl,
     description: "When on / true, use the JSON query DSL for search fields in the advanced search.  When off / false, use query params"
+
+    feature :view_components_numismatics,
+    description: "When on / true, use the built-in advanced search form for numismatics.  When off / false, use the traditional one"
+  end
 end
