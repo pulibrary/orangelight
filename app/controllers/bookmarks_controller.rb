@@ -39,7 +39,7 @@ class BookmarksController < CatalogController
   def print
     fetch_bookmarked_documents
     @url_gen_params = {}
-    render 'record_mailer/email_record.text.erb', template: false, content_type: 'text/plain'
+    render('record_mailer/email_record', formats: [:text])
   end
 
   def csv
