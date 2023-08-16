@@ -9,7 +9,7 @@
 <%= form_tag @url, method: @method, class: @classes.join(' '), role: 'search', 'aria-label' => t('blacklight.search.form.submit') do %>
   <%= render_hash_as_hidden_fields(@params) %>
   <%= render Blacklight::HiddenSearchStateComponent.new(params: {'advanced_type' => 'numismatics'}) %>
-  <div style="columns: 2">
+  <div class="two-columns-md">
       <% search_filter_controls.each do |control| %>
         <%= control %>
       <% end %>
@@ -37,4 +37,16 @@
     </div>
   </div>
 
+  <div class="search-submit-buttons clearfix col-sm-7">
+    <% if sort_fields_select %>
+      <div class="form-group sort-buttons pull-left">
+        <%= content_tag :label, t('blacklight.advanced_search.form.sort_label'), id: 'advanced-search-sort-label', for: 'sort', class: 'control-label' %>
+        <%= sort_fields_select %>
+      </div>
+    <% end %>
+    <div class="submit-buttons pull-right form-group">
+      <%= submit_tag t('blacklight.advanced_search.form.search_btn_html'), class: 'btn btn-primary advanced-search-submit', id: "advanced-search-submit" %>
+    </div>
+
+  </div>
 <% end %>

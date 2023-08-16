@@ -23,4 +23,11 @@ class NumismaticsSearchFormComponent < Blacklight::AdvancedSearchFormComponent
   def pub_date_presenter
     view_context.facet_field_presenter(pub_date_field, {})
   end
+
+  def sort_fields_select
+    options = sort_fields.values.map { |field_config| [helpers.sort_field_label(field_config.key), field_config.key] }
+    return unless options.any?
+
+    select_tag(:sort, options_for_select(options, params[:sort]), class: "sort-select", aria: { labelledby: 'advanced-search-sort-label' })
+  end
 end
