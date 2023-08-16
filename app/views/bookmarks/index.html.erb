@@ -7,7 +7,7 @@
 
   <h2 class='section-heading'><%= t('blacklight.bookmarks.need_login') %></h2>
 
-<%- elsif @document_list.blank? -%>
+<%- elsif @response.documents.blank? -%>
 
   <h3 class='section-heading'><%= t('blacklight.bookmarks.no_bookmarks') %></h3>
 <% else %>

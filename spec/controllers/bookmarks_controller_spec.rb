@@ -11,7 +11,7 @@ RSpec.describe BookmarksController do
       user.bookmarks.create!([{ document_id: '9997412163506421', document_type: 'SolrDocument' }])
       get :print
       expect(assigns(:documents).length).to eq 1
-      expect(response).to render_template 'record_mailer/email_record.text.erb'
+      expect(response).to render_template 'record_mailer/email_record'
     end
   end
 
