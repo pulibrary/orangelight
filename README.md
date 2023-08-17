@@ -221,3 +221,15 @@ MY_URL=the url you copied above
 curl $MY_URL -o config/hosts.dat
 ```
 1. Optionally, alphabetize the file using your local editor
+
+## Announcement messages
+
+1. To see the current announcement message and feature status, run 
+```bash
+bundle exec rake announcement:show
+```
+1. To set a new announcement message, run
+```bash
+bundle exec rake announcement:set\["My message in a string. Must escape quotes."\]
+```
+1. To toggle announcements on and off, sign in and go to /features and toggle message display.

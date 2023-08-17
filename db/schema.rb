@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_19_231330) do
+ActiveRecord::Schema.define(version: 2023_08_17_164417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,12 @@ ActiveRecord::Schema.define(version: 2023_04_19_231330) do
     t.text "sort"
     t.string "dir"
     t.index ["sort"], name: "index_alma_orangelight_subjects_on_sort"
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.string "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "bookmarks", id: :serial, force: :cascade do |t|

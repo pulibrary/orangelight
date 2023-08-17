@@ -27,6 +27,10 @@ Flipflop.configure do
     default: true,
     description: "When on / true, uses the old locator service for Firestone. When off / false uses the new Stackmap service for Firestone."
 
+  feature :message_display,
+    default: false,
+    description: "When on / true, displays the message set by the announcement rake task."
+
   group :blacklight_8 do
     feature :json_query_dsl,
     description: "When on / true, use the JSON query DSL for search fields in the advanced search.  When off / false, use query params"
