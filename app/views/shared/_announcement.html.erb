@@ -1,5 +1,7 @@
-<%# to remove messages altogether, set this to empty string %>
-<% message = '' %>
+<%# To remove messages altogether, go to /features and turn off Message display %>
+<%# To set a new message, run the rake task `bundle exec rake announcement:set\["This is my new text."\]` %>
+<%# To see the current message, run `bundle exec rake announcement:show` %>
+<% message = Announcement&.first&.text %>
 <% if Orangelight.read_only_mode %>
   <div class="col-12 alert alert-warning announcement">
     <div class="container">
@@ -8,7 +10,7 @@
       </p>
     </div>
   </div>
-<% elsif message.present? %>
+<% elsif Flipflop.message_display? %>
   <div class="col-12 alert alert-warning announcement">
     <div class="container">
       <p>
