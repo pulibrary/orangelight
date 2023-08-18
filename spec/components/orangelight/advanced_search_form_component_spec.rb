@@ -6,7 +6,7 @@ RSpec.describe Orangelight::AdvancedSearchFormComponent, type: :component do
   subject(:render) do
     component.render_in(view_context)
   end
-  let(:component) { described_class.new(url: '/whatever', response: , params:) }
+  let(:component) { described_class.new(url: '/whatever', response:, params:) }
 
   let(:response) do
     Blacklight::Solr::Response.new({}.with_indifferent_access, {})
@@ -35,11 +35,12 @@ RSpec.describe Orangelight::AdvancedSearchFormComponent, type: :component do
     allow(view_context).to receive(:facet_limit_for).and_return(nil)
   end
 
-  it "renders fields in the correct order" do
-    expected_order = [
-      "Keyword", "Title", "Author/Creator", "Subject", "Title starts with", 
+  it "has a dropdown with the expected options" do
+    expected_options = [
+      "Keyword", "Title", "Author/Creator", "Subject", "Title starts with",
       "Publisher", "Notes", "Series title", "ISBN", "ISSN"
     ]
-    expect(rendered.all('label').map(&:text)).to match_array(expected_order)
+    options = rendered.all('select')[1].all('option').map(&:text)
+    expect(options).to eq(expected_options)
   end
 end

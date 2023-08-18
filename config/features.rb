@@ -44,6 +44,5 @@ Flipflop.configure do
 
     feature :view_components_advanced_search,
     description: "When on / true, use the built-in advanced search form.  When off / false, use the traditional one"
-
   end
 end
