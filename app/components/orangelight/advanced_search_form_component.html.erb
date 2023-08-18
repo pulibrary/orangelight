@@ -1,0 +1,65 @@
+<% if constraints? %>
+  <div class="constraints well search_history">
+    <h4><%= t 'blacklight.advanced_search.form.search_context' %></h4>
+    <% constraints.each do |constraint| %>
+      <%= constraint %>
+    <% end %>
+  </div>
+<% end %>
+<%= form_tag search_catalog_path, method: @method, class: @classes.join(' '), role: 'search', 'aria-label' => t('blacklight.search.form.submit') do %>
+  <%= render Blacklight::HiddenSearchStateComponent.new(params: @params) %>
+
+  <div class="advanced row">
+      <%# Column 1 %>
+      <div class="col-md-7">
+        <div class="input-criteria">
+
+          <div id="guided_search">
+            <% search_field_controls.each do |control| %>
+              <%= control %>
+            <% end %>
+          </div>
+        </div>
+      <%# End Column 1 %>
+      </div>
+      <%# Column 2 %>
+      <div class="col-md-5">
+        <% if search_filter_controls? %>
+          <div class="limit-criteria">
+            <h2 class="limit-criteria-heading"><%= t('blacklight.advanced_search.form.limit_criteria_heading_html')%></h2>
+
+            <div id="advanced_search_facets" class="limit_input">
+              <div class="advanced-facet-limits panel-group">
+                <% search_filter_controls.each do |control| %>
+                  <%= control %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="form-group advanced-search-facet row">
+          <%= label_tag pub_date_field.parameterize, :class => "col-sm-4 control-label advanced-facet-label" do %>Publication Year<% end %>
+          <div class="col-sm-8 range_limit">
+            <label for="range_pub_date_start_sort_begin" class="sr-only">date range (starting year)</label>
+            <%= BlacklightRangeLimit::RangeFormComponent.new(facet_field: pub_date_presenter).render_range_input(:begin) %> –
+            <label for="range_pub_date_start_sort_end" class="sr-only">date range (ending year)</label>
+            <%= BlacklightRangeLimit::RangeFormComponent.new(facet_field: pub_date_presenter).render_range_input(:end) %>
+          </div>
+        </div>
+      </div>
+      <%# End Column 2 %>
+  </div>
+
+  <div class="search-submit-buttons clearfix col-sm-7">
+    <% if sort_fields_select %>
+      <div class="form-group sort-buttons pull-left">
+        <%= content_tag :label, t('blacklight.advanced_search.form.sort_label'), id: 'advanced-search-sort-label', for: 'sort', class: 'control-label' %>
+        <%= sort_fields_select %>
+      </div>
+    <% end %>
+    <div class="submit-buttons pull-right form-group">
+      <%= submit_tag t('blacklight.advanced_search.form.search_btn_html'), class: 'btn btn-primary advanced-search-submit', id: "advanced-search-submit" %>
+    </div>
+
+  </div>
+<% end %>

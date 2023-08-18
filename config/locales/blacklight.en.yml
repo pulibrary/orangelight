@@ -4,6 +4,9 @@ en:
       previous: '&laquo; <span class="d-none d-lg-inline"> Previous</span>'
       next: '<span class="d-none d-lg-inline">Next</span> &raquo;'
   blacklight:
+    advanced_search:
+      form:
+        limit_criteria_heading_html: 'Limit results by'
     application_name: 'Princeton University Library Catalog'
     welcome: 'Welcome!'
     orangelight: 'Catalog'

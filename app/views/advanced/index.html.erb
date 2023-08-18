@@ -8,4 +8,13 @@
     <%= link_to t('blacklight_advanced_search.form.start_over'), blacklight_advanced_search_engine.advanced_search_path, :class =>"btn pull-right clear-form" %>
   </h1>
 </div>
-<%= render 'advanced_search_form' %>
+<% if Flipflop.view_components_advanced_search? %>
+  <%= render(Orangelight::AdvancedSearchFormComponent.new(
+        url: search_action_url,
+        classes: ['advanced', 'form-horizontal'],
+        params: search_state.params_for_search.except(:qt),
+        response: @response
+      )) %>
+<% else %>
+  <%= render 'advanced_search_form' %>
+<% end %>
