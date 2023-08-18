@@ -50,6 +50,28 @@ describe 'advanced searching' do
     expect(page).to have_content('Aomen')
   end
 
+  context 'with the built-in advanced search form' do
+    before do
+      allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
+      visit '/advanced'
+    end
+
+    it 'renders an accessible button for starting over the search' do
+      expect(page).to have_selector '.icon-refresh[aria-hidden="true"]'
+    end
+
+    it 'has the correct limit text' do
+      expect(page).to have_content('Limit results by')
+    end
+
+    xit 'has drop-downs for search fields' do
+      search_fields = page.find_all('.search-field')
+      expect(search_fields.size).to eq(4)
+      # expect(page).to have_selector('.search-field')
+    end
+
+  end
+
   context 'with a numismatics advanced search type' do
     it 'provides labels to numismatics form elements' do
       visit '/numismatics'
