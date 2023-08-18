@@ -15,9 +15,10 @@
         <div class="input-criteria">
 
           <div id="guided_search">
-            <% search_field_controls.each do |control| %>
-              <%= control %>
-            <% end %>
+            <%= render 'advanced/guided_search_fields' %>
+            <%# search_field_controls.each do |control| %>
+              <%# control %>
+            <%# end %>
           </div>
         </div>
       <%# End Column 1 %>

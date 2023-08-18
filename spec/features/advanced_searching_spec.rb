@@ -64,12 +64,11 @@ describe 'advanced searching' do
       expect(page).to have_content('Limit results by')
     end
 
-    xit 'has drop-downs for search fields' do
+    it 'has drop-downs for search fields' do
       search_fields = page.find_all('.search-field')
       expect(search_fields.size).to eq(4)
       # expect(page).to have_selector('.search-field')
     end
-
   end
 
   context 'with a numismatics advanced search type' do

@@ -25,18 +25,23 @@ class Orangelight::AdvancedSearchFormComponent < Blacklight::AdvancedSearchFormC
   def pub_date_presenter
     view_context.facet_field_presenter(pub_date_field, {})
   end
+
   def initialize_search_field_controls
-    search_fields.values.each.with_index do |field, i|
+    search_fields.values.each.with_index do |field, index|
       with_search_field_control do
-        fields_for('clause[]', i, include_id: false) do |f|
-          content_tag(:div, class: 'form-group advanced-search-field row mb-3') do
-            f.label(:query, field.display_label('search'), class: "col-sm-3 col-form-label text-md-right") +
-              content_tag(:div, class: 'col-sm-9') do
-                f.hidden_field(:field, value: field.key) +
-                  f.text_field(:query, value: query_for_search_clause(field.key), class: 'form-control')
-              end
+        fields_for_etc(index:, field:)
+      end
+    end
+  end
+
+  def fields_for_etc(index:, field:)
+    fields_for('clause[]', index, include_id: false) do |foo|
+      content_tag(:div, class: 'form-group advanced-search-field row mb-3') do
+        foo.label(:query, field.display_label('search'), class: "col-sm-3 col-form-label text-md-right") +
+          content_tag(:div, class: 'col-sm-9') do
+            foo.hidden_field(:field, value: field.key) +
+              foo.text_field(:query, value: query_for_search_clause(field.key), class: 'form-control')
           end
-        end
       end
     end
   end
