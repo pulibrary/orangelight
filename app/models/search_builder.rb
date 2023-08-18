@@ -66,6 +66,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     # search form, so that the form displays accurate counts for
     # them in its dropdowns
     advanced_search_facets = blacklight_config.advanced_search.form_solr_parameters['facet.field']
+    solr_p[:fq]&.compact!
     solr_p[:fq]&.reject! do |facet_from_query|
       advanced_search_facets.any? { |facet_to_exclude| facet_from_query.include? facet_to_exclude }
     end

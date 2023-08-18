@@ -33,13 +33,31 @@ RSpec.describe NumismaticsSearchFormComponent, type: :component do
     allow(view_context).to receive(:facet_limit_for).and_return(nil)
   end
 
-  it "renders fields in the correct order" do
-    expected_order = [
+  it "renders all expected fields" do
+    expected_fields = [
       'Object Type', 'Denomination', 'Metal', 'City', 'State',
       'Region', 'Ruler', 'Artist', 'Find Place', 'Year',
-      'date range (ending year)', 'date range (starting year)',
-      'Keyword'
+      'date range (starting year)', 'date range (ending year)',
+      'Keyword', 'Sort results by'
     ]
-    expect(rendered.all('label').map(&:text)).to match_array(expected_order)
+    expect(rendered.all('label').map(&:text)).to match_array(expected_fields)
+  end
+
+  context 'when URL includes facet params from the user' do
+    let(:params) do
+      { "f_inclusive" => { "issue_ruler_s" => ["Alexios III Angelos"] } }.with_indifferent_access
+    end
+    let(:filter) do
+      facet_config = CatalogController.blacklight_config.facet_fields['issue_ruler_s']
+      search_state = Blacklight::SearchState.new(params, CatalogController.blacklight_config)
+      [Blacklight::SearchState::FilterField.new(facet_config, search_state)]
+    end
+    before do
+      allow_any_instance_of(Blacklight::SearchState).to receive(:filters).and_return(filter)
+    end
+    it "displays the constraints area" do
+      constraints_area = rendered.find('.constraints')
+      expect(constraints_area).to have_text('Ruler:Alexios III Angelos')
+    end
   end
 end
