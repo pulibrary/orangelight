@@ -8,7 +8,7 @@ gem 'alma'
 gem 'babel-transpiler'
 gem 'bcrypt_pbkdf'
 # Blacklight
-gem 'blacklight', '~> 7.0'
+gem 'blacklight', github: 'pulibrary/blacklight', branch: 'release-7.x-with-json-dsl-request-handler'
 # advanced search functionality
 gem 'blacklight_advanced_search', '~> 7.0'
 gem 'blacklight_dynamic_sitemap', '~> 0.6.0'
