@@ -124,4 +124,17 @@ RSpec.describe SearchBuilder do
       end
     end
   end
+
+  describe '#facets_for_advanced_search_form' do
+    before do
+      blacklight_config.advanced_search.form_solr_parameters = { 'facet.field' => ["issue_denomination_s"] }
+    end
+    context 'when encountering a nil facet' do
+      it 'removes nil and facets that need to be displayed on the form' do
+        solr_p = { fq: ["{!lucene}{!query v=$f_inclusive.issue_denomination_s.0} OR {!query v=$f_inclusive.issue_denomination_s.1}", nil, "format:Coin"] }
+        search_builder.facets_for_advanced_search_form(solr_p)
+        expect(solr_p[:fq]).to eq(['format:Coin'])
+      end
+    end
+  end
 end

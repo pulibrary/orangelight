@@ -18,10 +18,6 @@ staging:
   <<: *defaults
   host: <%= ENV['OL_REDIS_HOST'] %>
   port: <%= ENV['OL_REDIS_PORT'] || '6379' %>
-alma_qa:
-  <<: *defaults
-  host: <%= ENV['OL_REDIS_HOST'] %>
-  port: <%= ENV['OL_REDIS_PORT'] || '6379' %>
 qa:
   <<: *defaults
   host: <%= ENV['OL_REDIS_HOST'] %>

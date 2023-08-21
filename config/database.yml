@@ -64,7 +64,5 @@ production:
 
 staging:
   <<: *default
-alma_qa:
-  <<: *default
 qa:
   <<: *default
