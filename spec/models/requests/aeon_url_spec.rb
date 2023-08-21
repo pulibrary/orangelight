@@ -22,9 +22,6 @@ RSpec.describe Requests::AeonUrl do
     stub_holding_locations
   end
   subject { described_class.new(document:).to_s }
-  it 'begins with the aeon prefix' do
-    expect(subject).to match(/^#{Requests::Config[:aeon_base]}/)
-  end
   it 'uses the document id as the ReferenceNumber' do
     expect(subject).to include('ReferenceNumber=9999999')
   end
@@ -42,6 +39,22 @@ RSpec.describe Requests::AeonUrl do
   end
   it 'takes the ItemNumber from the barcode' do
     expect(subject).to include('ItemNumber=24680')
+  end
+  context 'when using the deprecated aeon base url' do
+    before do
+      allow(Flipflop).to receive(:deprecated_aeon_base?).and_return(true)
+    end
+    it 'begins with the aeon prefix' do
+      expect(subject).to match(/^#{Requests::Config[:aeon_base_deprecated]}/)
+    end
+  end
+  context 'when using the new aeon base url' do
+    before do
+      allow(Flipflop).to receive(:deprecated_aeon_base?).and_return(false)
+    end
+    it 'begins with the aeon prefix' do
+      expect(subject).to match(/^#{Requests::Config[:aeon_base]}/)
+    end
   end
   context 'when the location is at a Mudd location' do
     let(:holdings) do

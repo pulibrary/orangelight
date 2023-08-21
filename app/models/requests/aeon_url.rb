@@ -12,7 +12,9 @@ module Requests
     end
 
     def to_s
-      @compiled_string ||= "#{Requests::Config[:aeon_base]}/OpenURL?#{query_string}"
+      aeon_url = Flipflop.deprecated_aeon_base? ? Requests::Config[:aeon_base_deprecated] : Requests::Config[:aeon_base]
+      aeon_connector = Flipflop.deprecated_aeon_base? ? "/OpenURL?" : "?Action=10&Form=30&"
+      @compiled_string ||= "#{aeon_url}#{aeon_connector}#{query_string}"
     end
 
     private
