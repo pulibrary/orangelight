@@ -15,10 +15,7 @@
         <div class="input-criteria">
 
           <div id="guided_search">
-            <%= render 'advanced/guided_search_fields' %>
-            <%# search_field_controls.each do |control| %>
-              <%# control %>
-            <%# end %>
+            <%= render 'advanced/guided_search_fields_bl_8' %>
           </div>
         </div>
       <%# End Column 1 %>
@@ -41,9 +38,9 @@
         <div class="form-group advanced-search-facet row">
           <%= label_tag pub_date_field.parameterize, :class => "col-sm-4 control-label advanced-facet-label" do %>Publication Year<% end %>
           <div class="col-sm-8 range_limit">
-            <label for="range_pub_date_start_sort_begin" class="sr-only">date range (starting year)</label>
+            <label for="range_pub_date_start_sort_begin" class="sr-only">Publication date range (starting year)</label>
             <%= BlacklightRangeLimit::RangeFormComponent.new(facet_field: pub_date_presenter).render_range_input(:begin) %> –
-            <label for="range_pub_date_start_sort_end" class="sr-only">date range (ending year)</label>
+            <label for="range_pub_date_start_sort_end" class="sr-only">Publication date range (ending year)</label>
             <%= BlacklightRangeLimit::RangeFormComponent.new(facet_field: pub_date_presenter).render_range_input(:end) %>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'advanced searching' do
+describe 'advanced searching', advanced_search: true do
   before do
     stub_holding_locations
   end
