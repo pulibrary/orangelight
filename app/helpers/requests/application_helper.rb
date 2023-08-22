@@ -382,6 +382,10 @@ module Requests
         label = label_tag id, "Pick-up location: #{location[:label]}", class: 'single-pick-up', style: style.to_s
         hidden + label
       end
+
+      def get_aeon_base
+        Flipflop.deprecated_aeon_base? ? Requests::Config[:aeon_base_deprecated] : Requests::Config[:aeon_base]
+      end
   end
 end
 # rubocop:enable Metrics/ModuleLength
