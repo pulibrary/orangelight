@@ -50,9 +50,23 @@ describe 'advanced searching', advanced_search: true do
     expect(page).to have_content('Aomen')
   end
 
+  it 'can exclude terms from the search' do
+    visit '/advanced'
+    # defaults to keyword
+    fill_in(id: 'q1', with: 'gay')
+    choose(id: 'op3_NOT')
+    # defaults to title
+    fill_in(id: 'q3', with: 'RenoOut')
+    click_button('advanced-search-submit')
+    expect(page).to have_content('Seeking sanctuary')
+    expect(page).to have_content('Title NOT RenoOut')
+    expect(page).not_to have_content('Reno Gay Press and Promotions')
+  end
+
   context 'with the built-in advanced search form' do
     before do
       allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
+      allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
       visit '/advanced'
     end
 
@@ -67,7 +81,30 @@ describe 'advanced searching', advanced_search: true do
     it 'has drop-downs for search fields' do
       search_fields = page.find_all('.search-field')
       expect(search_fields.size).to eq(4)
-      # expect(page).to have_selector('.search-field')
+    end
+
+    it 'can run a search' do
+      visit '/advanced'
+      # defaults to keyword
+      fill_in(id: 'clause_0_query', with: 'gay')
+      click_button('advanced-search-submit')
+      expect(page).to have_content('Seeking sanctuary')
+      expect(page).to have_content('RenoOut')
+    end
+
+    it 'can exclude terms from the search', js: false do
+      # This passes locally with an older Solr LuceneMatchVersion
+      pending('JSON query DSL fix')
+      visit '/advanced'
+      # defaults to keyword
+      fill_in(id: 'clause_0_query', with: 'gay')
+      choose(id: 'clause_2_op_must_not')
+      # defaults to title
+      fill_in(id: 'clause_2_query', with: 'RenoOut')
+      click_button('advanced-search-submit')
+      expect(page).to have_content('Seeking sanctuary')
+      expect(page).not_to have_content('Reno Gay Press and Promotions')
+      # expect(page).to have_content('Title NOT RenoOut')
     end
   end
 
