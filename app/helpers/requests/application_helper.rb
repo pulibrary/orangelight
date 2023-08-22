@@ -383,7 +383,7 @@ module Requests
         hidden + label
       end
 
-      def get_aeon_base
+      def aeon_base
         Flipflop.deprecated_aeon_base? ? Requests::Config[:aeon_base_deprecated] : Requests::Config[:aeon_base]
       end
   end
