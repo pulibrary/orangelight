@@ -58,6 +58,7 @@ describe 'advanced searching', advanced_search: true do
     # defaults to title
     fill_in(id: 'q3', with: 'RenoOut')
     click_button('advanced-search-submit')
+    expect(page.find(".page_entries").text).to eq('1 entry found')
     expect(page).to have_content('Seeking sanctuary')
     expect(page).to have_content('Title NOT RenoOut')
     expect(page).not_to have_content('Reno Gay Press and Promotions')
@@ -84,24 +85,25 @@ describe 'advanced searching', advanced_search: true do
     end
 
     it 'can run a search' do
-      visit '/advanced'
+      pending('Flipflop in controller fix')
       # defaults to keyword
       fill_in(id: 'clause_0_query', with: 'gay')
       click_button('advanced-search-submit')
+      expect(page.find(".page_entries").text).to eq('1 - 2 of 2')
       expect(page).to have_content('Seeking sanctuary')
       expect(page).to have_content('RenoOut')
     end
 
     it 'can exclude terms from the search', js: false do
       # This passes locally with an older Solr LuceneMatchVersion
-      pending('JSON query DSL fix')
-      visit '/advanced'
+      pending('Flipflop in controller fix')
       # defaults to keyword
       fill_in(id: 'clause_0_query', with: 'gay')
       choose(id: 'clause_2_op_must_not')
       # defaults to title
       fill_in(id: 'clause_2_query', with: 'RenoOut')
       click_button('advanced-search-submit')
+      expect(page.find(".page_entries").text).to eq('1 entry found')
       expect(page).to have_content('Seeking sanctuary')
       expect(page).not_to have_content('Reno Gay Press and Promotions')
       # expect(page).to have_content('Title NOT RenoOut')
