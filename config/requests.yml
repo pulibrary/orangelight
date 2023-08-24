@@ -4,7 +4,8 @@ defaults: &defaults
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
   proxy_base: https://login.ezproxy.princeton.edu/login?url=
   pulsearch_base: https://catalog.princeton.edu
-  aeon_base: https://lib-aeon.princeton.edu/aeon/aeon.dll
+  aeon_base_deprecated: https://lib-aeon.princeton.edu/aeon/aeon.dll
+  aeon_base: https://lib-aeon.princeton.edu/logon
   gfa_base: http://libweb5.princeton.edu/ReCAPNoUI/Default.aspx
   ill_base: https://lib-illiad.princeton.edu/illiad/illiad.dll/OpenURL
   scsb_base: https://scsb.recaplib.org:9093
@@ -28,10 +29,12 @@ production:
   <<: *defaults
 staging:
   <<: *defaults
+  aeon_base: https://princeton.aeon.atlas-sys.com/logon
   pulsearch_base: https://catalog-staging.princeton.edu
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
 qa:
   <<: *defaults
+  aeon_base: https://princeton.aeon.atlas-sys.com/logon
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-qa.princeton.edu" %>
   # scsb_base: https://uat-recap.htcinc.com:9093
   scsb_base: https://scsb.recaplib.org:9093

@@ -8,7 +8,7 @@ test:
   <<: *default
   read_write_apikey: 'TESTME'
 
-alma_qa:
+qa:
   <<: *default
 
 staging:

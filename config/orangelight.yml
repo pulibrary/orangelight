@@ -71,15 +71,6 @@ staging:
     exchange: 'orangelight_events'
   firestone_locator_base_url: https://locator-staging.princeton.edu
 
-alma_qa:
-  <<: *defaults
-  redis:
-    host: <%= ENV['OL_REDIS_HOST'] %>
-    port: <%= ENV['OL_REDIS_PORT'] || '6379' %>
-    db: 'orangelight_qa'
-  events:
-    server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
-    exchange: 'orangelight_events'
 qa:
   <<: *defaults
   redis:

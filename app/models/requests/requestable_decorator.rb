@@ -145,7 +145,8 @@ module Requests
       if requestable.alma_managed?
         requestable.aeon_request_url
       else
-        "#{Requests::Config[:aeon_base]}?#{requestable.aeon_mapped_params.to_query}"
+        aeon_url = Flipflop.deprecated_aeon_base? ? Requests::Config[:aeon_base_deprecated] : Requests::Config[:aeon_base]
+        "#{aeon_url}?#{requestable.aeon_mapped_params.to_query}"
       end
     end
 

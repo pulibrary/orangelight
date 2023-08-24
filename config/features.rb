@@ -31,6 +31,10 @@ Flipflop.configure do
     default: false,
     description: "When on / true, displays the message set by the announcement rake task."
 
+  feature :deprecated_aeon_base,
+    default: true,
+    description: "When on / true use the old Aeon base URL instead of the new ones. Uses the Atlas-hosted url in staging and QA."
+
   group :blacklight_8 do
     feature :json_query_dsl,
     description: "When on / true, use the JSON query DSL for search fields in the advanced search.  When off / false, use query params"
