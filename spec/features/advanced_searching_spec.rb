@@ -85,9 +85,7 @@ describe 'advanced searching', advanced_search: true do
     end
 
     it 'can run a search' do
-      # This passes locally with an older Solr LuceneMatchVersion
-      # And when run only within context.
-      pending('Flipflop in controller fix')
+      pending('A blacklight version with blacklight pr #3066')
       # defaults to keyword
       fill_in(id: 'clause_0_query', with: 'gay')
       click_button('advanced-search-submit')
@@ -97,9 +95,7 @@ describe 'advanced searching', advanced_search: true do
     end
 
     it 'can exclude terms from the search', js: false do
-      # This passes locally with an older Solr LuceneMatchVersion
-      # And when run only within context.
-      pending('Flipflop in controller fix')
+      pending('A blacklight version with blacklight pr #3066')
       # defaults to keyword
       fill_in(id: 'clause_0_query', with: 'gay')
       choose(id: 'clause_2_op_must_not')
