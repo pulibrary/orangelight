@@ -29,7 +29,7 @@ class Orangelight::AdvancedSearchFormComponent < Blacklight::AdvancedSearchFormC
   def initialize_search_field_controls
     search_fields.values.each.with_index do |field, index|
       with_search_field_control do
-        fields_for_etc(index:, field:)
+        generate_fields(index:, field:)
       end
     end
   end
