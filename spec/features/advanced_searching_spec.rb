@@ -85,6 +85,8 @@ describe 'advanced searching', advanced_search: true do
     end
 
     it 'can run a search' do
+      # This passes locally with an older Solr LuceneMatchVersion
+      # And when run only within context.
       pending('Flipflop in controller fix')
       # defaults to keyword
       fill_in(id: 'clause_0_query', with: 'gay')
@@ -96,6 +98,7 @@ describe 'advanced searching', advanced_search: true do
 
     it 'can exclude terms from the search', js: false do
       # This passes locally with an older Solr LuceneMatchVersion
+      # And when run only within context.
       pending('Flipflop in controller fix')
       # defaults to keyword
       fill_in(id: 'clause_0_query', with: 'gay')
@@ -106,7 +109,17 @@ describe 'advanced searching', advanced_search: true do
       expect(page.find(".page_entries").text).to eq('1 entry found')
       expect(page).to have_content('Seeking sanctuary')
       expect(page).not_to have_content('Reno Gay Press and Promotions')
-      # expect(page).to have_content('Title NOT RenoOut')
+    end
+
+    it 'shows constraint-value on search results page' do
+      pending('Display constraint-value on search result page from built-in advanced search')
+      # defaults to keyword
+      fill_in(id: 'clause_0_query', with: 'gay')
+      choose(id: 'clause_2_op_must_not')
+      # defaults to title
+      fill_in(id: 'clause_2_query', with: 'RenoOut')
+      click_button('advanced-search-submit')
+      expect(page).to have_content('Title NOT RenoOut')
     end
   end
 
