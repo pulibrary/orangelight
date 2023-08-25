@@ -6,6 +6,8 @@ class SearchBuilder < Blacklight::SearchBuilder
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include BlacklightHelper
 
+  default_processor_chain.unshift(:conditionally_configure_json_query_dsl)
+
   self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators add_advanced_search_to_solr
                                      cjk_mm wildcard_char_strip excessive_paging_error
                                      only_home_facets left_anchor_escape_whitespace
@@ -101,6 +103,25 @@ class SearchBuilder < Blacklight::SearchBuilder
   def search_parameters?
     !blacklight_params[:q].nil? || blacklight_params[:f].present? ||
       blacklight_params[:search_field] == 'advanced'
+  end
+
+  def conditionally_configure_json_query_dsl(_solr_parameters)
+    advanced_fields = %w[title author subject left_anchor publisher in_series notes series_title isbn issn]
+    if Flipflop.json_query_dsl?
+      blacklight_config.search_fields['all_fields']['clause_params'] = {
+        edismax: {}
+      }
+      advanced_fields.each do |field|
+        blacklight_config.search_fields[field]['clause_params'] = {
+          edismax: blacklight_config.search_fields[field]['solr_parameters'].dup
+        }
+      end
+    else
+      blacklight_config.search_fields['all_fields'].delete('clause_params')
+      advanced_fields.each do |field|
+        blacklight_config.search_fields[field].delete('clause_params')
+      end
+    end
   end
 
   private

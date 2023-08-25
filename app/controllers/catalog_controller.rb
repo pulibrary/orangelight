@@ -477,9 +477,7 @@ class CatalogController < ApplicationController
     #   :include_in_advanced_search => true
     #   field.include_in_simple_select = false
 
-    config.add_search_field 'all_fields', label: 'Keyword' do |field|
-      field.clause_params = { edismax: {} } if Flipflop.json_query_dsl?
-    end
+    config.add_search_field 'all_fields', label: 'Keyword'
 
     # Now we see how to over-ride Solr request handler defaults, in this
     # case for a BL "search field", which is really a dismax aggregate
@@ -497,7 +495,6 @@ class CatalogController < ApplicationController
         qf: '$title_qf',
         pf: '$title_pf'
       }
-      field.clause_params = { edismax: field.solr_parameters.dup } if Flipflop.json_query_dsl?
     end
 
     config.add_search_field('author') do |field|
@@ -512,7 +509,6 @@ class CatalogController < ApplicationController
         qf: '$author_qf',
         pf: '$author_pf'
       }
-      field.clause_params = { edismax: field.solr_parameters.dup } if Flipflop.json_query_dsl?
     end
 
     # Specifying a :qt only to show it's possible, and so our internal automated
@@ -530,7 +526,6 @@ class CatalogController < ApplicationController
         qf: '$subject_qf',
         pf: '$subject_pf'
       }
-      field.clause_params = { edismax: field.solr_parameters.dup } if Flipflop.json_query_dsl?
     end
 
     config.add_search_field('left_anchor') do |field|
@@ -543,7 +538,6 @@ class CatalogController < ApplicationController
         qf: '$left_anchor_qf',
         pf: '$left_anchor_pf'
       }
-      field.clause_params = { edismax: field.solr_parameters.dup } if Flipflop.json_query_dsl?
     end
 
     config.add_search_field('publisher') do |field|
@@ -553,7 +547,6 @@ class CatalogController < ApplicationController
         qf: '$publisher_qf',
         pf: '$publisher_pf'
       }
-      field.clause_params = { edismax: field.solr_parameters.dup } if Flipflop.json_query_dsl?
     end
 
     config.add_search_field('in_series') do |field|
@@ -564,7 +557,6 @@ class CatalogController < ApplicationController
         qf: '$in_series_qf',
         pf: '$in_series_pf'
       }
-      field.clause_params = { edismax: field.solr_parameters.dup } if Flipflop.json_query_dsl?
     end
 
     config.add_search_field('notes') do |field|
@@ -574,7 +566,6 @@ class CatalogController < ApplicationController
         qf: '$notes_qf',
         pf: '$notes_pf'
       }
-      field.clause_params = { edismax: field.solr_parameters.dup } if Flipflop.json_query_dsl?
     end
 
     config.add_search_field('series_title') do |field|
@@ -584,7 +575,6 @@ class CatalogController < ApplicationController
         qf: '$series_title_qf',
         pf: '$series_title_pf'
       }
-      field.clause_params = { edismax: field.solr_parameters.dup } if Flipflop.json_query_dsl?
     end
 
     config.add_search_field('isbn') do |field|
@@ -596,7 +586,6 @@ class CatalogController < ApplicationController
       field.solr_parameters = {
         qf: 'isbn_t'
       }
-      field.clause_params = { edismax: field.solr_parameters.dup } if Flipflop.json_query_dsl?
     end
 
     config.add_search_field('issn') do |field|
@@ -608,7 +597,6 @@ class CatalogController < ApplicationController
       field.solr_parameters = {
         qf: 'issn_s'
       }
-      field.clause_params = { edismax: field.solr_parameters.dup } if Flipflop.json_query_dsl?
     end
 
     config.add_search_field('lccn') do |field|
