@@ -169,7 +169,7 @@ describe 'Account login' do
             end
             it 'does not require authentication', js: true do
               visit "/catalog/coin-1167"
-              expect(page).to have_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/logon.*Coin.1167'))
+              expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*Coin.1167'))
               click_link('Reading Room Request')
               expect(page.current_url).to include(Requests::Config[:aeon_base])
             end
@@ -197,7 +197,7 @@ describe 'Account login' do
             end
             it 'does not require authentication', js: true do
               visit "/catalog/dsp01tq57ns24j"
-              expect(page).to have_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/logon.*dsp01tq57ns24j'))
+              expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*dsp01tq57ns24j'))
               click_link('Reading Room Request')
               expect(page.current_url).to include(Requests::Config[:aeon_base])
             end
@@ -228,8 +228,8 @@ describe 'Account login' do
             end
             it 'does not require authentication', js: true do
               visit "/catalog/#{bib_id}"
-              expect(page).to have_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/logon.*CallNumber\=RECAP-94760855'))
-              click_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/logon.*CallNumber\=RECAP-94760855'))
+              expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
+              click_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
               expect(page.current_url).to include(Requests::Config[:aeon_base])
             end
           end
