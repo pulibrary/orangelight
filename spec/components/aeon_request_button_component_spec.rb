@@ -23,6 +23,6 @@ RSpec.describe AeonRequestButtonComponent, type: :component do
     expect(subject.css('a').text).to eq('Reading Room Request')
   end
   it 'includes aeon=false in the link url' do
-    expect(subject.css('a').attribute('href').text).to include('https://lib-aeon.princeton.edu/aeon/aeon.dll/OpenURL?')
+    expect(subject.css('a').attribute('href').text).to include('https://princeton.aeon.atlas-sys.com/logon?Action=10&Form=30')
   end
 end

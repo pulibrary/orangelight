@@ -384,7 +384,7 @@ module Requests
       end
 
       def aeon_base
-        Flipflop.deprecated_aeon_base? ? Requests::Config[:aeon_base_deprecated] : Requests::Config[:aeon_base]
+        Requests::Config[:aeon_base]
       end
   end
 end

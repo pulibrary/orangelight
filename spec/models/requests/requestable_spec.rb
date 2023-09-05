@@ -682,24 +682,10 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    context 'with aeon base feature flipper' do
-      describe '#aeon_request_url with deprecated aeon base' do
-        before do
-          allow(Flipflop).to receive(:deprecated_aeon_base?).and_return(true)
-        end
-        it 'beings with Aeon GFA base' do
-          stub_holding_locations
-          expect(requestable.aeon_request_url).to match(/^#{Requests::Config[:aeon_base_deprecated]}/)
-        end
-      end
-      describe '#aeon_request_url with new aeon base' do
-        before do
-          allow(Flipflop).to receive(:deprecated_aeon_base?).and_return(false)
-        end
-        it 'beings with Aeon GFA base' do
-          stub_holding_locations
-          expect(requestable.aeon_request_url).to match(/^#{Requests::Config[:aeon_base]}/)
-        end
+    describe '#aeon_request_url with new aeon base' do
+      it 'beings with Aeon GFA base' do
+        stub_holding_locations
+        expect(requestable.aeon_request_url).to match(/^#{Requests::Config[:aeon_base]}/)
       end
     end
 
