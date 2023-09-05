@@ -1,0 +1,5 @@
+---
+EnableDefaultLinters: false
+inherit_gem:
+  erblint-github:
+    - config/accessibility.yml
