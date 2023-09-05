@@ -233,6 +233,22 @@ FactoryBot.define do
     initialize_with { new(system_id:, patron:, mfhd: mfhd_id, source:) }
   end
 
+  factory :request_col_dev_office, class: 'Requests::Request' do
+    system_id { '9911629773506421' }
+    mfhd_id { '22608294270006421' }
+    source { 'pulsearch' }
+    patron { Requests::Patron.new(user: FactoryBot.build(:unauthenticated_patron)) }
+    initialize_with { new(system_id:, patron:, mfhd: mfhd_id, source:) }
+  end
+
+  factory :request_holdings_management, class: 'Requests::Request' do
+    system_id { '9925798443506421' }
+    mfhd_id { '22733278430006421' }
+    source { 'pulsearch' }
+    patron { Requests::Patron.new(user: FactoryBot.build(:unauthenticated_patron)) }
+    initialize_with { new(system_id:, patron:, mfhd: mfhd_id, source:) }
+  end
+
   factory :request_scsb_hl, class: 'Requests::Request' do
     system_id { 'SCSB-10966202' }
     mfhd { nil }

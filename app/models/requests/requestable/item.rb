@@ -140,7 +140,8 @@ class Requests::Requestable
         scsb = ['Not Available', "Item Barcode doesn't exist in SCSB database."]
         alma = ['Unavailable', 'Claimed Returned', 'Lost', 'Hold Shelf', 'Transit', 'Missing', 'Resource Sharing Request',
                 'Lost Resource Sharing Item', 'Requested', 'In Transit to Remote Storage', 'Lost and paid',
-                'Loan', 'Controlled Digital Lending', 'At Preservation', 'Technical - Migration', 'Preservation and Conservation']
+                'Loan', 'Controlled Digital Lending', 'At Preservation', 'Technical - Migration', 'Preservation and Conservation',
+                'Collection Development Office', 'Holdings Management']
         scsb + alma
       end
   end
