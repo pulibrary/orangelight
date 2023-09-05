@@ -1190,4 +1190,42 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
   end
+
+  context 'A Record in the Collection Development Office process type' do
+    let(:request) { FactoryBot.build(:request_col_dev_office, patron:) }
+    let(:requestable) { request.requestable.first }
+    before do
+      stub_catalog_raw(bib_id: '9911629773506421', type: 'alma')
+      stub_availability_by_holding_id(bib_id: '9911629773506421', holding_id: '22608294270006421')
+    end
+    describe "#available?" do
+      it "is not available" do
+        expect(requestable).not_to be_available
+      end
+    end
+    describe "available for ill" do
+      it 'is available for ill' do
+        expect(requestable.services.include?('ill')).to be_truthy
+      end
+    end
+  end
+
+  context 'A Record in the Holdings Managment process type' do
+    let(:request) { FactoryBot.build(:request_holdings_management, patron:) }
+    let(:requestable) { request.requestable.first }
+    before do
+      stub_catalog_raw(bib_id: '9925798443506421', type: 'alma')
+      stub_availability_by_holding_id(bib_id: '9925798443506421', holding_id: '22733278430006421')
+    end
+    describe "#available?" do
+      it "is not available" do
+        expect(requestable).not_to be_available
+      end
+    end
+    describe "available for ill" do
+      it 'is available for ill' do
+        expect(requestable.services.include?('ill')).to be_truthy
+      end
+    end
+  end
 end

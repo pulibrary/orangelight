@@ -1,0 +1,104 @@
+{
+  "id": "9925798443506421",
+  "numeric_id_b": true,
+  "author_display": [
+    "Daryān, Yūsuf"
+  ],
+  "author_citation_display": [
+    "Daryān, Yūsuf"
+  ],
+  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Daryān, Yūsuf\"}",
+  "author_s": [
+    "Daryān, Yūsuf"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": "Nubdhah tārīkhīyah fi aṣl al-ṭaʾifah al-Mārūnīyah ...",
+  "title_t": [
+    "Nubdhah tārīkhīyah fi aṣl al-ṭaʾifah al-Mārūnīyah ..."
+  ],
+  "title_citation_display": [
+    "Nubdhah tārīkhīyah fi aṣl al-ṭaʾifah al-Mārūnīyah ..."
+  ],
+  "compiled_created_t": [
+    "Nubdhah tārīkhīyah fi aṣl al-ṭaʾifah al-Mārūnīyah ..."
+  ],
+  "pub_created_display": [
+    "Bayrūt, 1919."
+  ],
+  "pub_created_s": [
+    "Bayrūt, 1919."
+  ],
+  "pub_citation_display": [
+    "Bayrūt"
+  ],
+  "pub_date_display": [
+    "1919"
+  ],
+  "pub_date_start_sort": 1919,
+  "cataloged_tdt": "2008-01-24T00:00:00Z",
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "526 p. 22 cm."
+  ],
+  "description_t": [
+    "526 p. 22 cm."
+  ],
+  "number_of_pages_citation_display": [
+    "526 p."
+  ],
+  "notes_display": [
+    "3d printing, revised."
+  ],
+  "language_display": [
+    "Title-page and text in Arabic."
+  ],
+  "language_name_display": [
+    "Arabic"
+  ],
+  "language_facet": [
+    "Arabic"
+  ],
+  "language_iana_s": [
+    "ar"
+  ],
+  "oclc_s": [
+    "41972772"
+  ],
+  "other_version_s": [
+    "ocm41972772"
+  ],
+  "holdings_1display": "{\"22733278430006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"2269.3.366.11\",\"call_number_browse\":\"2269.3.366.11\",\"items\":[{\"holding_id\":\"22733278430006421\",\"id\":\"23733278400006421\",\"status_at_load\":\"0\",\"barcode\":\"32101063974255\",\"copy_number\":\"1\"}]}}",
+  "location_code_s": [
+    "recap$pa"
+  ],
+  "location": [
+    "ReCAP"
+  ],
+  "location_display": [
+    "Remote Storage"
+  ],
+  "advanced_location_s": [
+    "recap$pa",
+    "ReCAP"
+  ],
+  "name_title_browse_s": [
+    "Daryān, Yūsuf. Nubdhah tārīkhīyah fi aṣl al-ṭaʾifah al-Mārūnīyah ..."
+  ],
+  "call_number_display": [
+    "2269.3.366.11"
+  ],
+  "call_number_browse_s": [
+    "2269.3.366.11"
+  ],
+  "call_number_locator_display": [
+    "2269.3.366.11"
+  ],
+  "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53812982470006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ],
+  "timestamp": "2023-08-12T09:28:05.333Z"
+}
