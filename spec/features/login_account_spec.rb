@@ -160,7 +160,7 @@ describe 'Account login' do
               visit "/catalog/coin-1167"
               expect(page).to have_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/aeon/aeon\.dll/OpenURL.*Coin.1167'))
               click_link('Reading Room Request')
-              expect(page.current_url).to include(Requests::Config[:aeon_base_deprecated])
+              expect(page.current_url).to include(Requests::Config[:aeon_base])
             end
           end
           describe 'using the new aeon base' do
@@ -188,7 +188,7 @@ describe 'Account login' do
               visit "/catalog/dsp01tq57ns24j"
               expect(page).to have_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/aeon/aeon\.dll/OpenURL.*dsp01tq57ns24j'))
               click_link('Reading Room Request')
-              expect(page.current_url).to include(Requests::Config[:aeon_base_deprecated])
+              expect(page.current_url).to include(Requests::Config[:aeon_base])
             end
           end
           describe 'using the new aeon base' do
@@ -219,7 +219,7 @@ describe 'Account login' do
               visit "/catalog/#{bib_id}"
               expect(page).to have_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/aeon/aeon\.dll/OpenURL.*CallNumber\=RECAP-94760855'))
               click_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/aeon/aeon\.dll/OpenURL.*CallNumber\=RECAP-94760855'))
-              expect(page.current_url).to include(Requests::Config[:aeon_base_deprecated])
+              expect(page.current_url).to include(Requests::Config[:aeon_base])
             end
           end
           describe 'using the new aeon base' do
