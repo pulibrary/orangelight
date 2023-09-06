@@ -6,7 +6,10 @@ en:
   blacklight:
     advanced_search:
       form:
+        title: Advanced Search
+        numismatics_title: Numismatics Search
         limit_criteria_heading_html: 'Limit results by'
+        start_over: "Clear search"
     application_name: 'Princeton University Library Catalog'
     welcome: 'Welcome!'
     orangelight: 'Catalog'
