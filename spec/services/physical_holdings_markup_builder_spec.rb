@@ -234,7 +234,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-holding-id="numismatics"'
         expect(request_placeholder_markup).to include '<a '
         expect(request_placeholder_markup).to include 'title="Request to view in Reading Room"'
-        expect(request_placeholder_markup).to include 'href="https://lib-aeon.princeton.edu/aeon/aeon.dll/OpenURL'
+        expect(request_placeholder_markup).to include 'href="https://princeton.aeon.atlas-sys.com/logon?Action=10'
         expect(request_placeholder_markup).to include 'ItemNumber=host123'
       end
     end

@@ -152,27 +152,11 @@ describe 'Account login' do
             stub_catalog_raw(bib_id: 'coin-1167', type: 'numismatics')
             stub_single_holding_location('rare$num')
           end
-          describe 'using the deprecated aeon base' do
-            before do
-              allow(Flipflop).to receive(:deprecated_aeon_base?).and_return(true)
-            end
-            it 'does not require authentication', js: true do
-              visit "/catalog/coin-1167"
-              expect(page).to have_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/aeon/aeon\.dll/OpenURL.*Coin.1167'))
-              click_link('Reading Room Request')
-              expect(page.current_url).to include(Requests::Config[:aeon_base])
-            end
-          end
-          describe 'using the new aeon base' do
-            before do
-              allow(Flipflop).to receive(:deprecated_aeon_base?).and_return(false)
-            end
-            it 'does not require authentication', js: true do
-              visit "/catalog/coin-1167"
-              expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*Coin.1167'))
-              click_link('Reading Room Request')
-              expect(page.current_url).to include(Requests::Config[:aeon_base])
-            end
+          it 'does not require authentication', js: true do
+            visit "/catalog/coin-1167"
+            expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*Coin.1167'))
+            click_link('Reading Room Request')
+            expect(page.current_url).to include(Requests::Config[:aeon_base])
           end
         end
         describe 'requesting a thesis' do
@@ -180,27 +164,11 @@ describe 'Account login' do
             stub_catalog_raw(bib_id: 'dsp01tq57ns24j', type: 'theses_and_dissertations')
             stub_single_holding_location('mudd$stacks')
           end
-          describe 'using the deprecated aeon base' do
-            before do
-              allow(Flipflop).to receive(:deprecated_aeon_base?).and_return(true)
-            end
-            it 'does not require authentication', js: true do
-              visit "/catalog/dsp01tq57ns24j"
-              expect(page).to have_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/aeon/aeon\.dll/OpenURL.*dsp01tq57ns24j'))
-              click_link('Reading Room Request')
-              expect(page.current_url).to include(Requests::Config[:aeon_base])
-            end
-          end
-          describe 'using the new aeon base' do
-            before do
-              allow(Flipflop).to receive(:deprecated_aeon_base?).and_return(false)
-            end
-            it 'does not require authentication', js: true do
-              visit "/catalog/dsp01tq57ns24j"
-              expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*dsp01tq57ns24j'))
-              click_link('Reading Room Request')
-              expect(page.current_url).to include(Requests::Config[:aeon_base])
-            end
+          it 'does not require authentication', js: true do
+            visit "/catalog/dsp01tq57ns24j"
+            expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*dsp01tq57ns24j'))
+            click_link('Reading Room Request')
+            expect(page.current_url).to include(Requests::Config[:aeon_base])
           end
         end
         describe 'requesting a special collections holding with a single item' do
@@ -211,27 +179,12 @@ describe 'Account login' do
             stub_single_holding_location('rare$map')
             stub_availability_by_holding_id(bib_id:, holding_id: '22745123330006421')
           end
-          describe 'using the deprecated aeon base' do
-            before do
-              allow(Flipflop).to receive(:deprecated_aeon_base?).and_return(true)
-            end
-            it 'does not require authentication', js: true do
-              visit "/catalog/#{bib_id}"
-              expect(page).to have_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/aeon/aeon\.dll/OpenURL.*CallNumber\=RECAP-94760855'))
-              click_link('Reading Room Request', href: Regexp.new('https://lib-aeon\.princeton\.edu/aeon/aeon\.dll/OpenURL.*CallNumber\=RECAP-94760855'))
-              expect(page.current_url).to include(Requests::Config[:aeon_base])
-            end
-          end
-          describe 'using the new aeon base' do
-            before do
-              allow(Flipflop).to receive(:deprecated_aeon_base?).and_return(false)
-            end
-            it 'does not require authentication', js: true do
-              visit "/catalog/#{bib_id}"
-              expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
-              click_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
-              expect(page.current_url).to include(Requests::Config[:aeon_base])
-            end
+
+          it 'does not require authentication', js: true do
+            visit "/catalog/#{bib_id}"
+            expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
+            click_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
+            expect(page.current_url).to include(Requests::Config[:aeon_base])
           end
         end
       end
