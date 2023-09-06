@@ -704,19 +704,6 @@ class CatalogController < ApplicationController
     end
   end
 
-  # def advanced_search
-  #   if Flipflop.view_components_advanced_search?
-  #     super
-  #   else
-  #     redirect_to 'advanced#index'
-  #   end
-
-  # end
-
-  # def advanced_search
-  #   (@response, _deprecated_document_list) = blacklight_advanced_search_form_search_service.search_results
-  # end
-
   private
 
     def render_empty_search
