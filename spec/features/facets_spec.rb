@@ -52,7 +52,7 @@ describe 'Facets' do
     it 'will render when clicked from the record' do
       visit  '/catalog/3'
       click_link 'Advanced Search'
-      click_link I18n.t('blacklight_advanced_search.form.start_over')
+      click_link I18n.t('blacklight.advanced_search.form.start_over')
     end
   end
 
