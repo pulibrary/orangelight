@@ -53,8 +53,10 @@ Rails.application.routes.draw do
     end
   end
 
-  mount BlacklightAdvancedSearch::Engine => '/'
+  mount BlacklightAdvancedSearch::Engine => '/', constraints: DeprecatedAdvancedSearchConstraint.new
+  get '/advanced', to: 'catalog#advanced_search', constraints: AdvancedSearchConstraint.new
 
+  get '/numismatics', to: 'catalog#numismatics'
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'sessions' },
              skip: %i[passwords registration]
@@ -63,8 +65,6 @@ Rails.application.routes.draw do
     get '/users/signup' => 'devise/registrations#new', :as => :new_user_registration
     post '/users' => 'devise/registrations#create', :as => :user_registration
   end
-
-  get '/numismatics', to: 'catalog#numismatics'
 
   get '/catalog/oclc/:id', to: 'catalog#oclc'
   get '/catalog/isbn/:id', to: 'catalog#isbn'

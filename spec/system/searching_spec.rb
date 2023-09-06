@@ -159,6 +159,19 @@ describe 'Searching', type: :system, js: false do
       expect(current_url).to eq('http://www.example.com/catalog?utf8=%E2%9C%93&search_field=title&q=dogs')
     end
   end
+
+  context 'with the built-in advanced search form', advanced_search: true do
+    before do
+      allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
+      allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
+    end
+
+    it 'can edit an existing search' do
+      visit '/catalog?search_field=all_fields&q=cats'
+      click_on('Edit search')
+      expect(page).to have_content('Advanced Search')
+    end
+  end
 end
 
 def search_results_count
