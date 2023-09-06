@@ -3,6 +3,9 @@
 require 'rails_helper'
 
 describe 'citation' do
+  before do
+    allow_any_instance_of(CatalogController).to receive(:agent_is_crawler?).and_return(false)
+  end
   it 'will render successfully even if there is not a subfield a' do
     stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/9979948663506421")
       .with(
