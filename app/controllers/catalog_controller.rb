@@ -32,6 +32,8 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     config.raw_endpoint.enabled = true
 
+    config.json_solr_path = 'advanced'
+
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     config.advanced_search[:url_key] ||= 'advanced'
@@ -701,6 +703,19 @@ class CatalogController < ApplicationController
       format.json { render plain: "Format not supported", status: :bad_request }
     end
   end
+
+  # def advanced_search
+  #   if Flipflop.view_components_advanced_search?
+  #     super
+  #   else
+  #     redirect_to 'advanced#index'
+  #   end
+
+  # end
+
+  # def advanced_search
+  #   (@response, _deprecated_document_list) = blacklight_advanced_search_form_search_service.search_results
+  # end
 
   private
 
