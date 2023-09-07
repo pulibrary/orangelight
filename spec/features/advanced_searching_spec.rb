@@ -106,7 +106,6 @@ describe 'advanced searching', advanced_search: true do
     end
 
     it 'shows constraint-value on search results page' do
-      pending('Display constraint-value on search result page from built-in advanced search')
       # defaults to keyword
       fill_in(id: 'clause_0_query', with: 'gay')
       choose(id: 'clause_2_op_must_not')
