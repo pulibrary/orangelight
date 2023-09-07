@@ -375,4 +375,8 @@ module ApplicationHelper
   def language_iana
     @document[:language_iana_s].present? ? @document[:language_iana_s].first : 'en'
   end
+
+  def should_show_viewer?
+    request.human? && controller.action_name != "librarian_view"
+  end
 end

@@ -76,7 +76,7 @@
 
     </div>
   </main>
-  <% if @document %>
+  <% if @document && should_show_viewer? %>
     <%= render partial: 'show_digital_content', locals: { document: @document } %>
   <% end %>
   <%= render :partial => 'shared/footer' %>

@@ -5,7 +5,7 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
   include BlacklightUnapi::ControllerExtension
 
-  # include Blacklight::Marc::Catalog
+  include Blacklight::Marc::Catalog
   include BlacklightRangeLimit::ControllerOverride
   include Orangelight::Catalog
   include Orangelight::Stackmap
@@ -676,6 +676,11 @@ class CatalogController < ApplicationController
     ]
 
     config.index.constraints_component = Orangelight::ConstraintsComponent
+
+    config.crawler_detector = lambda { |request|
+      return true if request.env['HTTP_USER_AGENT'].blank?
+      request.bot?
+    }
   end
 
   def render_search_results_as_json
@@ -701,6 +706,40 @@ class CatalogController < ApplicationController
     respond_to do |format|
       format.html { render "advanced/numismatics" }
       format.json { render plain: "Format not supported", status: :bad_request }
+    end
+  end
+
+  def librarian_view
+    if agent_is_crawler?
+      basic_response
+    else
+      # rubocop:disable Lint/SuppressedException
+      # This exception is handled in the view layer
+      begin
+        super
+      rescue Blacklight::Exceptions::RecordNotFound
+      end
+      # rubocop:enable Lint/SuppressedException
+    end
+  end
+
+  def show
+    if agent_is_crawler? && request.format.endnote?
+      basic_response
+    else
+      super
+    end
+  end
+
+  def citation
+    if agent_is_crawler?
+      basic_response
+    else
+      # Taken from Blacklight::ActionBuilder#build, which would
+      # otherwise generate the citation method dynamically
+      #
+      # See https://github.com/projectblacklight/blacklight/blob/f6bdb20248c0eee91dbd480b20d1b60f93783b3e/app/builders/blacklight/action_builder.rb#L29-L53
+      @response, @documents = action_documents
     end
   end
 
@@ -742,5 +781,10 @@ class CatalogController < ApplicationController
         (response, _deprecated_document_list) = search_service.search_results
         response.to_json
       end
+    end
+
+    def basic_response
+      render plain: 'OK'
+      nil
     end
 end
