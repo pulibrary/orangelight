@@ -639,7 +639,7 @@ GEM
     yard (0.9.28)
       webrick (~> 1.7.0)
     yell (2.2.2)
-    zeitwerk (2.6.7)
+    zeitwerk (2.6.11)
 
 PLATFORMS
   aarch64-linux
