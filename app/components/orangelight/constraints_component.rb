@@ -24,7 +24,7 @@ class Orangelight::ConstraintsComponent < Blacklight::ConstraintsComponent
   end
 
   def render?
-    super || @search_state.to_h.keys.any? { |param| param.match?(/[f|q|op][1-3]/) }
+    @search_state.has_constraints? || @search_state.to_h.keys.any? { |param| param.match?(/[f|q|op][1-3]/) }
   end
 
   private
@@ -58,5 +58,14 @@ class Orangelight::ConstraintsComponent < Blacklight::ConstraintsComponent
     def guided_search_label(index)
       search_field = @search_state.params[:"f#{index}"]
       helpers.label_for_search_field(search_field) unless helpers.default_search_field?(search_field)
+    end
+
+    def clause_presenters
+      return to_enum(:clause_presenters) unless block_given?
+
+      @search_state.clause_params.each do |key, clause|
+        field_config = helpers.blacklight_config.search_fields[clause[:field]]
+        yield Orangelight::ClausePresenter.new(key, clause, field_config, helpers)
+      end
     end
 end

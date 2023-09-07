@@ -13,6 +13,7 @@ RSpec.describe Orangelight::ConstraintsComponent, type: :component do
   end
   let(:search_state) { Blacklight::SearchState.new(params, Blacklight::Configuration.new) }
   let(:component) { described_class.new(search_state:) }
+  let(:rendered) { Capybara::Node::Simple.new(render_inline(component).to_s) }
 
   describe '#remove_guided_query_path' do
     it 'generates a valid path for removing guided search queries' do
@@ -23,10 +24,30 @@ RSpec.describe Orangelight::ConstraintsComponent, type: :component do
     end
   end
   describe 'advanced search query constraints' do
-    let(:rendered) { Capybara::Node::Simple.new(render_inline(component).to_s) }
     it 'includes constraints for non-empty search params' do
       expect(rendered).to have_selector('.applied-filter.constraint', text: 'Title: dogs')
       expect(rendered).to have_selector('.applied-filter.constraint', text: 'Title: NOT cats')
+      expect(rendered).to have_selector('.applied-filter.constraint', count: 2)
+    end
+  end
+
+  describe 'json query constraints' do
+    let(:params) do
+      {
+        action: 'index', controller: 'catalog',
+        'clause' => {
+          '0' => {
+            field: 'all_fields', query: 'cats'
+          },
+          '1' => {
+            field: 'title', query: 'dogs', op: 'must_not'
+          }
+        }
+      }
+    end
+    it 'includes constraints for non-empty search params' do
+      expect(rendered).to have_selector('.applied-filter.constraint', text: 'cats')
+      expect(rendered).to have_selector('.applied-filter.constraint', text: 'Title: NOT dogs')
       expect(rendered).to have_selector('.applied-filter.constraint', count: 2)
     end
   end
