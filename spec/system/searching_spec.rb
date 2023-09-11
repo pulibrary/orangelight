@@ -173,6 +173,7 @@ describe 'Searching', type: :system, js: false do
     end
 
     it 'can remove a search constraint' do
+      pending('Merging Blacklight backport for nil json param https://github.com/projectblacklight/blacklight/pull/3074')
       visit '/catalog?search_field=all_fields&q=cats'
       constraint_close_button = page.find('.constraint.query a')
       constraint_close_button.click
