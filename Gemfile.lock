@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/projectblacklight/blacklight.git
-  revision: f6bdb20248c0eee91dbd480b20d1b60f93783b3e
-  ref: f6bdb20
+  remote: https://github.com/maxkadel/blacklight.git
+  revision: 228623962ce246505ba6549c7bee20265d9985e8
+  ref: 2286239
   specs:
     blacklight (7.33.1)
       deprecation
