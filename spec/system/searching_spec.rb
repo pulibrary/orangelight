@@ -172,6 +172,13 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_content('Advanced Search')
     end
   end
+
+  it 'can remove a search constraint' do
+    visit '/catalog?search_field=all_fields&q=cats'
+    constraint_close_button = page.find('.constraint.query a')
+    constraint_close_button.click
+    expect(page).to have_content('Limit your search')
+  end
 end
 
 def search_results_count
