@@ -8,7 +8,7 @@ gem 'alma'
 gem 'babel-transpiler'
 gem 'bcrypt_pbkdf'
 # Blacklight
-gem 'blacklight', git: 'https://github.com/projectblacklight/blacklight.git', ref: 'f6bdb20'
+gem 'blacklight', git: 'https://github.com/projectblacklight/blacklight.git', ref: '9a4da40'
 # advanced search functionality
 gem 'blacklight_advanced_search', '~> 7.0'
 gem 'blacklight_dynamic_sitemap'
