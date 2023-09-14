@@ -37,7 +37,7 @@ commands:
     steps:
       - node/install:
           install-yarn: true
-          node-version: '16.14.2'
+          node-version: '18.17.0'
       - run:
           name: Check current version of node
           command: node -v
