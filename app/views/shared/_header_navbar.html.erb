@@ -21,7 +21,7 @@
   </div>
   <% unless params[:action] == 'generate' %>
     <div class="header__secondary">
-      <nav class="container">
+      <nav class="container" aria-label='Search'>
         <div class="row">
           <div id="search-navbar" class="search-navbar navbar" role="search">
             <%= render Orangelight::SearchBarComponent.new(

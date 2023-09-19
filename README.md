@@ -10,7 +10,7 @@ Versions:
 * Rails: 6.1.7
 * Blacklight: 7.33.0
 
-### Development pre-requisites
+## Development pre-requisites
 * In order to run locally, you must have Lando installed for your system - see https://docs.lando.dev/getting-started/installation.html.
 
 * If you don't have `yarn` installed you can install it with
@@ -22,7 +22,7 @@ Versions:
 gem install bundler:2.2.27
 ```
 
-### Installing the application
+## Installing the application
 To install run
   ```
   bundle install
@@ -31,7 +31,7 @@ To install run
 
 On macOS: If the command `yarn install` gives error "No Xcode or CLT version detected" try [re-installing xCode tools](https://medium.com/@mrjohnkilonzi/how-to-resolve-no-xcode-or-clt-version-detected-d0cf2b10a750).
 
-### Run the development Environment locally
+## Run the development Environment locally
 **All commands are assumed to be run from your local orangelight directory**
 
 1. Start all the servers/set up database/seed index (this uses Lando to bring up the postgres database, and both the development and test Solr instances)
@@ -66,8 +66,8 @@ cap staging deploy # deploys main branch to staging
   ```
   Once the tunnel is open [you can see the mail that has been sent on staging here]( http://localhost:1082/)
 
-Testing
-------------------
+## Testing
+
 ### Run Tests
 
 1. Start all the servers/set up database/seed index
@@ -106,6 +106,23 @@ Testing
 
 The browser will only display for system specs with `js: true`.
 
+#### Running javascript unit tests
+
+`$ yarn install`
+`$ yarn test`
+
+##### Debugging jest tests
+
+1. Place a `debugger;` line in your javascript
+1. Open up Chrome and type in the address bar: chrome://inspect
+1. Click on "Open dedicated DevTools for Node"
+1. Back in terminal run `yarn test:debug [path_to_test]` (This has been added to
+   package.json)
+
+#### Run erblint
+* [erblint](https://github.com/Shopify/erb-lint)
+* `bundle exec erblint --lint-all`
+
 #### Running CodeQL locally
 
 If you get a CodeQL warning on your branch, you may wish to run
@@ -119,7 +136,7 @@ codeql database analyze orangelight-codeql --format=csv --output=codeql_results.
 
 Your results will then be available in the file codeql_results.csv.
 
-#### Building the browselists
+#### Building the browse lists
 ```ruby
 RAILS_ENV=test bundle exec rake browse:all
 RAILS_ENV=test bundle exec rake browse:load_all
@@ -159,7 +176,7 @@ This will ensure that Orangelight will search for linked resources in the produc
 GRAPHQL_API_URL=https://figgy-staging.princeton.edu/graphql FIGGY_URL=https://figgy-staging.princeton.edu bundle exec rails s
 ```
 
-## Local development with browse tables
+## Local development with browse lists
 
 To start up a copy of the project with a solr index of fixture data
 ```bash
@@ -179,19 +196,6 @@ RAILS_ENV=development bundle exec rake browse:load_all
 
 You will need a working local copy of [Bibdata](https://github.com/pulibrary/marc_liberation).
 Start the Bibdata server, and then set the ```bidata_base``` value in OrangeLight's `config/requests.yml` file to the local URL where Bibdata is running (e.g., `http://localhost:{port}`).
-
-## Running javascript unit tests
-
-`$ yarn install`
-`$ yarn test`
-
-### Debugging jest tests
-
-1. Place a `debugger;` line in your javascript
-1. Open up Chrome and type in the address bar: chrome://inspect
-1. Click on "Open dedicated DevTools for Node"
-1. Back in terminal run `yarn test:debug [path_to_test]` (This has been added to
-   package.json)
 
 ## Development Mailcatcher
 
