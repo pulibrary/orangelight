@@ -3,3 +3,9 @@ EnableDefaultLinters: false
 inherit_gem:
   erblint-github:
     - config/accessibility.yml
+linters:
+  GitHub::Accessibility::NoTitleAttribute:
+    exclude:
+      - 'app/views/catalog/_index_default.html.erb'
+      - 'app/views/catalog/_show_header_default.html.erb'
+      - 'app/views/catalog/_show_main_content.html.erb'
