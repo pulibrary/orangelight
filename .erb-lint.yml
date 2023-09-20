@@ -9,3 +9,5 @@ linters:
       - 'app/views/catalog/_index_default.html.erb'
       - 'app/views/catalog/_show_header_default.html.erb'
       - 'app/views/catalog/_show_main_content.html.erb'
+      - 'app/views/catalog/stackmap.html.erb'
+      - 'app/views/shared/_account.html.erb'
