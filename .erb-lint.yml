@@ -11,3 +11,8 @@ linters:
       - 'app/views/catalog/_show_main_content.html.erb'
       - 'app/views/catalog/stackmap.html.erb'
       - 'app/views/shared/_account.html.erb'
+
+  GitHub::Accessibility::NoAriaLabelMisuse:
+    exclude:
+      - 'app/views/shared/_account.html.erb'
+      - 'app/views/catalog/stackmap.html.erb'
