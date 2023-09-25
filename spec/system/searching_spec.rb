@@ -170,6 +170,23 @@ describe 'Searching', type: :system, js: false do
       visit '/catalog?search_field=all_fields&q=cats'
       click_on('Edit search')
       expect(page).to have_content('Advanced Search')
+      expect(page).to have_field('clause_0_query', with: 'cats')
+    end
+
+    it 'can edit an existing advanced search' do
+      visit '/catalog?clause[0][field]=title&clause[0][query]=plasticity'
+      click_on('Edit search')
+      expect(page).to have_content('Advanced Search')
+      expect(page).to have_select('clause_0_field', selected: 'Title')
+      expect(page).to have_field('clause_0_query', with: 'plasticity')
+    end
+
+    it 'can edit an existing title search' do
+      visit '/catalog?search_field=title&q=potato'
+      click_on('Edit search')
+      expect(page).to have_content('Advanced Search')
+      expect(page).to have_select('clause_0_field', selected: 'Title')
+      expect(page).to have_field('clause_0_query', with: 'potato')
     end
   end
 
