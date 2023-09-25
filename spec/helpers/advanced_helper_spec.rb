@@ -35,4 +35,29 @@ RSpec.describe AdvancedHelper do
       end
     end
   end
+
+  describe '#label_tag_default_for' do
+    context 'when key is :q1' do
+      it 'takes search term from q param' do
+        params['q'] = 'cats'
+        params['search_field'] = 'all_fields'
+        blacklight_config = Blacklight::Configuration.new do |config|
+          config.add_search_field 'all_fields'
+        end
+        allow_any_instance_of(described_class).to receive(:blacklight_config).and_return(blacklight_config)
+        expect(label_tag_default_for(:q1)).to eq('cats')
+      end
+    end
+    context 'when key is :clause_0_query' do
+      it 'takes search term from q param' do
+        params['q'] = 'cats'
+        params['search_field'] = 'all_fields'
+        blacklight_config = Blacklight::Configuration.new do |config|
+          config.add_search_field 'all_fields'
+        end
+        allow_any_instance_of(described_class).to receive(:blacklight_config).and_return(blacklight_config)
+        expect(label_tag_default_for(:clause_0_query)).to eq('cats')
+      end
+    end
+  end
 end

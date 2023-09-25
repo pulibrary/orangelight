@@ -170,6 +170,7 @@ describe 'Searching', type: :system, js: false do
       visit '/catalog?search_field=all_fields&q=cats'
       click_on('Edit search')
       expect(page).to have_content('Advanced Search')
+      expect(page).to have_field('clause_0_query', with: 'cats')
     end
   end
 
