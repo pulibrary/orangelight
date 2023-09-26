@@ -16,7 +16,7 @@
       Call number <span class="stackmap-cn"><%= @call_number %></span> is located in <span class="stackmap-library"><%= @location_label || '(cannot be determined)' %></span>.
     </p>
     <div class="stackmap-wrapper">
-      <iframe class="stackmap-src" src=<%= @url %>></iframe>
+      <iframe class="stackmap-src" title="Map" src=<%= @url %>></iframe>
     </div>
   </div>
   <div class="modal-footer justify-content-center">
@@ -24,7 +24,7 @@
       <li>
         <a href="https://library.princeton.edu/ask-us" target="_blank">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px"
-height="16px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+height="16px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" aria-hidden='true'>
 <g id="Outline_Icons_1_">
 <g id="Outline_Icons">
 <g>
@@ -42,7 +42,7 @@ height="16px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="p
 <g id="Invisible_Shape">
 <rect fill="none" width="24" height="24"/>
 </g>
-</svg>Ask a reference question<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>
+</svg>Ask a reference question<i class="fa fa-external-link new-tab-icon-padding" aria-label="Opens in new tab" role="img"></i></a>
       </li>
     </ul>
   </div>

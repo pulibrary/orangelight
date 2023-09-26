@@ -148,7 +148,14 @@ jobs:
           at: '~/orangelight'
       - setup-bundler-and-node
       - run: bundle exec rubocop
-  
+  erblint:
+    executor: basic-executor
+    steps:
+      - attach_workspace:
+          at: '~/orangelight'
+      - setup-bundler-and-node
+      - run: bundle exec erblint --lint-all
+
   finish:
     executor: basic-executor
     steps:
@@ -166,6 +173,9 @@ workflows:
     jobs:
       - build
       - rubocop:
+         requires:
+          - build
+      - erblint:
          requires:
           - build
       - eslint:

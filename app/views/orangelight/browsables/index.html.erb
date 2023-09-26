@@ -5,7 +5,7 @@
     <h1 class="page-heading"> Browse by <%="#{@list_name.downcase}" %></h1>
     <div class="d-flex prev_next_links btn-group float-md-right flex-wrap" role="group" aria-label="Previous Next Links">
       
-        <nav aria-label="top pager" class="nav">
+        <nav aria-label="Top pager" class="nav">
           <%= render "orangelight/browsables/browse_pagination"%>
         </nav>
         <%= render(Blacklight::System::DropdownComponent.new(
@@ -80,7 +80,7 @@
             <%= content_tag(:span, '', class: 'more-info empty', data: { record_id: orangelight_name.bibid }) unless orangelight_name.location == 'Multiple locations' %>
             <% if scsb_id?(orangelight_name.bibid) %>
               </br>
-              <span class="more-info badge badge-secondary" data-record-id="<%= orangelight_name.bibid %>" title="Click on the record for full availability info">View record for full availability</span>
+              <span class="more-info badge badge-secondary" data-record-id="<%= orangelight_name.bibid %>">View record for full availability</span>
             <% end %>
           </td>
 
@@ -106,7 +106,7 @@
 </div>
 <div class="col-12">
   <div class="prev_next_links" role="group" aria-label="Previous Next Links">
-    <nav aria-label="bottom pager" class="nav justify-content-center">
+    <nav aria-label="Bottom pager" class="nav justify-content-center">
       <%= render "orangelight/browsables/browse_pagination"%>
     </nav>
   </div>

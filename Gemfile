@@ -118,6 +118,8 @@ group :development, :test do
   gem 'bixby', '~> 5.0'
   gem 'capybara'
   gem 'coveralls_reborn'
+  gem "erb_lint", require: false
+  gem "erblint-github"
   gem 'pry-byebug'
   gem 'solargraph'
 end
