@@ -1,6 +1,9 @@
 ---
 EnableDefaultLinters: false
-inherit_gem:
+exclude:
+  - '**/vendor/**/*'
+  - '**/node_modules/**/*'
+inherit_gem:  
   erblint-github:
     - config/accessibility.yml
 linters:
