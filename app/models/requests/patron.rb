@@ -140,7 +140,7 @@ module Requests
           Rails.logger.error("#{bibdata_uri} returned an empty patron response")
         end
         nil
-      rescue Faraday::Error::ConnectionFailed
+      rescue Faraday::ConnectionFailed
         Rails.logger.error("Unable to connect to #{bibdata_uri}")
         nil
       end

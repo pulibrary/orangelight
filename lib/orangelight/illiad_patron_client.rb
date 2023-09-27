@@ -23,7 +23,7 @@ class IlliadPatronClient
         req.headers['Accept'] = 'application/json'
         req.headers['ApiKey'] = @illiad_api_key
       end
-    rescue Faraday::Error::ConnectionFailed
+    rescue Faraday::ConnectionFailed
       Rails.logger.info("Unable to Connect to #{@illiad_api_base}")
       return []
     end
@@ -36,7 +36,7 @@ class IlliadPatronClient
       transactions.each do |transaction|
         response << cancel_ill_request(transaction)
       end
-    rescue Faraday::Error::ConnectionFailed
+    rescue Faraday::ConnectionFailed
       Rails.logger.info("Unable to Connect to #{@illiad_api_base}")
       return false
     end

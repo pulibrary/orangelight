@@ -26,7 +26,6 @@ module BrowseLists
         faraday.request  :url_encoded             # form-encode POST params
         faraday.response :logger                  # log requests to STDOUT
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
-        faraday.basic_auth(solr_user, solr_password) if basic_auth? # enable Solr auth
       end
 
       [sql_command, facet_request, conn]
@@ -38,18 +37,6 @@ module BrowseLists
 
     def solr_connection
       Blacklight.default_index.connection.uri
-    end
-
-    def solr_user
-      solr_connection.user
-    end
-
-    def solr_password
-      solr_connection.password
-    end
-
-    def basic_auth?
-      solr_user && solr_password
     end
 
     def output_root

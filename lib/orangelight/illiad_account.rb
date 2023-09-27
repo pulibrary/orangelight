@@ -20,7 +20,7 @@ class IlliadAccount
         req.headers['Accept'] = 'application/json'
         req.headers['ApiKey'] = @illiad_api_key
       end
-    rescue Faraday::Error::ConnectionFailed
+    rescue Faraday::ConnectionFailed
       Rails.logger.info("Unable to Connect to #{@illiad_api_base}")
       return false
     end
