@@ -1,6 +1,6 @@
 <% doc_presenter = document_presenter(document) %>
 <%# default partial to display solr document fields in catalog index view -%>
-<abbr class="unapi-id" title="<%= document.id %>"></abbr>
+<abbr class="unapi-id" title="<%= document.id %>" aria-hidden="true"></abbr>
 <ul class="document-metadata dl-horizontal dl-invert">
   <%= render IndexMetadataComponent.new presenter: doc_presenter %>
   <li class="blacklight-holdings"><%= holding_block_search(document) %></li>
