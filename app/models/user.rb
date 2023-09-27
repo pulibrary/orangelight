@@ -69,7 +69,7 @@ class User < ApplicationRecord
   # https://github.com/cbeer/devise-guests/blob/7ab8c55d7a2b677ce61cc83486d6e3723d8795b2/lib/railties/devise_guests.rake
   def self.expire_guest_accounts
     User
-      .where("guest = ? and updated_at < ?", true, Time.now.utc - 7.days)
+      .where("guest = ? and updated_at < ?", true, Time.now.utc - 3.days)
       .find_each(batch_size: 25_000, &:destroy)
   end
 
