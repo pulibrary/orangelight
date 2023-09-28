@@ -28,7 +28,7 @@ class Bibdata
     rescue ForbiddenError
       Rails.logger.error("403 Not Authorized to Connect to Patron Data Service at #{api_base_uri}/patron/#{user.uid}")
       nil
-    rescue Faraday::Error::ConnectionFailed
+    rescue Faraday::ConnectionFailed
       Rails.logger.error("Unable to connect to #{api_base_uri}")
       nil
     end

@@ -150,7 +150,7 @@ describe Requests::Patron do
   context 'when unable to connect to bibdata' do
     before do
       allow(Faraday).to receive(:get).with("#{bibdata_uri}/patron/foo?ldap=true")
-                                     .and_raise(Faraday::Error::ConnectionFailed, 'execution expired')
+                                     .and_raise(Faraday::ConnectionFailed, 'execution expired')
     end
 
     it 'logs the error' do
