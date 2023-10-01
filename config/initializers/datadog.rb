@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 Datadog.configure do |c|
-  c.tracer(enabled: false) unless Rails.env.production?
+  c.tracing(enabled: false) unless Rails.env.production?
   c.env = 'production'
   # Rails
-  c.use :rails
+  c.tracing.instrument :rails
 
   # Net::HTTP
-  c.use :http
+  c.tracing.instrument :http
 
   # Faraday
-  c.use :faraday
+  c.tracing.instrument :faraday
 end
