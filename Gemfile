@@ -25,7 +25,7 @@ gem 'capistrano-passenger'
 # jquery multiselect plugin for advanced search
 gem 'chosen-rails'
 gem 'cobravsmongoose', '~> 0.0.2'
-gem 'ddtrace', '~> 0.54.2'
+gem 'ddtrace', '~> 1.14.0'
 # Authentication and authorization
 gem 'devise', '>= 4.6.0'
 gem 'devise-guests', '~> 0.5'
