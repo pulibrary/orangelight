@@ -1,0 +1,27 @@
+---
+name: Add a banner
+about: Use this template for requesting top informational banner in orangelight
+title: ''
+labels: ''
+assignees: ''
+
+---
+
+### Summary
+
+### Banner Text
+- Header: 
+- Text:
+
+### Impact
+_Please include hard deadlines and date range for banner implementation_
+- Go live date:
+- Takedown date:
+
+### Priority recommendation
+
+- [ ] asap
+- [ ] within the next 3 weeks
+
+### Sudden Priority Justification
+_Required if "asap" is checked._
