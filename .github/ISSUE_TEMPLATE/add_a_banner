@@ -10,7 +10,6 @@ assignees: ''
 ### Summary
 
 ### Banner Text
-- Header: 
 - Text:
 
 ### Impact
@@ -25,3 +24,6 @@ _Please include hard deadlines and date range for banner implementation_
 
 ### Sudden Priority Justification
 _Required if "asap" is checked._
+
+### Implementation notes
+https://github.com/pulibrary/orangelight#announcement-messages
