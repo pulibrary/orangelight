@@ -186,6 +186,20 @@ jobs:
           at: '~/orangelight'
       - setup-bundler-and-node
       - run: bundle exec erblint --lint-all
+  wapiti:
+    executor: basic-executor
+    steps:
+      - checkout
+      - python/install-packages
+      - attach_workspace:
+          at: '~/orangelight'
+      - setup-bundler-and-node
+      - run:
+          name: install wapiti
+          command: pip install wapiti3
+      # - run:
+      #     name: run scans
+      #     command: wapiti -v2 -u https://catalog-staging.princeton.edu/catalog/9947467143506421 
 
   reek:
     docker:
@@ -229,6 +243,9 @@ workflows:
       - reek
       - bearer
       - js_tests:
+         requires:
+          - build
+      - wapiti:
          requires:
           - build
       - test:
