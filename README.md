@@ -19,7 +19,7 @@ Versions:
   ```
 * You may need to install the bundler referenced in the Gemfile.lock, e.g.
 ```bash
-gem install bundler:2.2.27
+gem install bundler:2.3.26
 ```
 
 ## Installing the application
