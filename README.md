@@ -36,13 +36,13 @@ On macOS: If the command `yarn install` gives error "No Xcode or CLT version det
 
 1. Start all the servers/set up database/seed index (this uses Lando to bring up the postgres database, and both the development and test Solr instances)
    ```
-   rake servers:start
+   bundle exec rake servers:start
    ```
    *Note: You can stop everything with `rake servers:stop`
 
 1. Run a rails server
    ```
-   rails s
+   bundle exec rails s
    ```
    *This will continue running until you Ctrl C, you will need a new tab or window for the next step*
 
@@ -51,8 +51,8 @@ Deploying with Capistrano
 ------------------
 Default branch for deployment is `main`. You can specify a branch using the BRANCH environment variable.
 ```
-BRANCH=my_branch cap staging deploy # deploys my_branch to staging
-cap staging deploy # deploys main branch to staging
+BRANCH=my_branch bundle exec cap staging deploy # deploys my_branch to staging
+bundle exec cap staging deploy # deploys main branch to staging
 ```
 
 ## Staging Mail Catcher
@@ -72,13 +72,13 @@ cap staging deploy # deploys main branch to staging
 
 1. Start all the servers/set up database/seed index
    ```
-   rake servers:start
+   bundle exec rake servers:start
    ```
    *Note: You can stop everything with `rake servers:stop`
 
 1. Run the all the tests
     ```
-    rake spec
+    bundle exec rake spec
     ```
 
 1. To run just the rspec tests
@@ -95,7 +95,7 @@ cap staging deploy # deploys main branch to staging
   1. Run steps one and two above
   1. run the individual test
       ```bash
-      rake spec SPEC=path/to/your_spec.rb:linenumber
+      bundle exec rake spec SPEC=path/to/your_spec.rb:linenumber
       ```
 
 #### Running system specs in the browser
@@ -144,8 +144,8 @@ RAILS_ENV=test bundle exec rake browse:load_all
 
 #### Refreshing the fixtures
 ```
-rake pulsearch:solr:deindex
-rake pulsearch:solr:index
+bundle exec rake pulsearch:solr:deindex
+bundle exec rake pulsearch:solr:index
 ```
 
 ### Adding a fixture to the test/dev index
@@ -160,7 +160,7 @@ record and keep the closing bracket at the end of the file. Then run `rake pulse
 Run the following command to update pull in Solr configuration updates from the pul_solr repo:
 
 ```bash
-rake pulsearch:solr:update
+bundle exec rake pulsearch:solr:update
 ```
 
 ## Local development with Figgy
@@ -180,7 +180,7 @@ GRAPHQL_API_URL=https://figgy-staging.princeton.edu/graphql FIGGY_URL=https://fi
 
 To start up a copy of the project with a solr index of fixture data
 ```bash
-rake servers:start
+bundle exec rake servers:start
 ```
 Then, in another terminal window build browse index csv files in /tmp:
 ```bash
