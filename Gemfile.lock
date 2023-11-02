@@ -88,10 +88,10 @@ GEM
     ast (2.4.2)
     autoprefixer-rails (10.4.15.0)
       execjs (~> 2)
-    axe-core-api (4.7.0)
+    axe-core-api (4.8.0)
       dumb_delegator
       virtus
-    axe-core-rspec (4.7.0)
+    axe-core-rspec (4.8.0)
       axe-core-api
       dumb_delegator
       virtus
@@ -144,9 +144,10 @@ GEM
     blacklight_dynamic_sitemap (1.0.0)
       blacklight (> 7.0)
       rails
-    blacklight_range_limit (8.3.0)
+    blacklight_range_limit (8.4.0)
       blacklight (>= 7.25.2, < 9)
       deprecation
+      view_component (>= 2.54, < 4)
     bootstrap (4.6.2)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.16.1, < 2)
@@ -157,7 +158,7 @@ GEM
       amq-protocol (~> 2.3, >= 2.3.1)
       sorted_set (~> 1, >= 1.0.2)
     byebug (11.1.3)
-    capistrano (3.17.3)
+    capistrano (3.18.0)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -215,7 +216,7 @@ GEM
       activesupport
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
-    devise (4.9.2)
+    devise (4.9.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -242,7 +243,7 @@ GEM
       rainbow
       rubocop
       smart_properties
-    erblint-github (0.4.1)
+    erblint-github (0.5.1)
     erubi (1.12.0)
     execjs (2.9.1)
     factory_bot (6.2.1)
@@ -260,7 +261,7 @@ GEM
       faraday (>= 0.8.0)
       http-cookie (~> 1.0.0)
     faraday-net_http (3.0.2)
-    ffi (1.15.5)
+    ffi (1.16.3)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -278,7 +279,7 @@ GEM
     hashdiff (1.0.1)
     hashie (5.0.0)
     high_voltage (3.1.2)
-    honeybadger (5.2.1)
+    honeybadger (5.3.0)
     http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -333,13 +334,13 @@ GEM
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    lograge (0.13.0)
+    lograge (0.14.0)
       actionpack (>= 4)
       activesupport (>= 4)
       railties (>= 4)
       request_store (~> 1.0)
     logstash-event (1.2.02)
-    loofah (2.21.3)
+    loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -347,7 +348,7 @@ GEM
       net-imap
       net-pop
       net-smtp
-    mail_form (1.10.0)
+    mail_form (1.10.1)
       actionmailer (>= 5.2)
       activemodel (>= 5.2)
     marc (1.2.0)
@@ -361,12 +362,12 @@ GEM
     memory_profiler (1.0.1)
     method_source (1.0.0)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.4)
+    mini_portile2 (2.8.5)
     minitest (5.20.0)
     modernizr-rails (2.7.1)
     msgpack (1.7.2)
     multi_xml (0.6.0)
-    net-imap (0.3.7)
+    net-imap (0.4.3)
       date
       net-protocol
     net-ldap (0.18.0)
@@ -403,7 +404,7 @@ GEM
     orm_adapter (0.5.0)
     ostruct (0.5.5)
     parallel (1.23.0)
-    parser (3.2.2.3)
+    parser (3.2.2.4)
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
@@ -418,7 +419,7 @@ GEM
     public_suffix (5.0.3)
     puma (6.4.0)
       nio4r (~> 2.0)
-    racc (1.7.1)
+    racc (1.7.2)
     rack (2.2.8)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
@@ -461,16 +462,16 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
     rainbow (3.1.1)
-    rake (13.0.6)
+    rake (13.1.0)
     rbtree (0.4.6)
-    redis (5.0.7)
-      redis-client (>= 0.9.0)
-    redis-client (0.17.0)
+    redis (5.0.8)
+      redis-client (>= 0.17.0)
+    redis-client (0.18.0)
       connection_pool
-    regexp_parser (2.8.1)
+    regexp_parser (2.8.2)
     request_store (1.5.1)
       rack (>= 1.4)
-    responders (3.1.0)
+    responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
     reverse_markdown (2.1.1)
@@ -507,7 +508,7 @@ GEM
       rubocop-ast (>= 1.17.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.29.0)
+    rubocop-ast (1.30.0)
       parser (>= 3.2.1.0)
     rubocop-performance (1.19.1)
       rubocop (>= 1.7.0, < 2.0)
@@ -532,7 +533,7 @@ GEM
       sprockets-rails
       tilt
     scrub_rb (1.0.1)
-    selenium-webdriver (4.12.0)
+    selenium-webdriver (4.15.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -540,7 +541,7 @@ GEM
       sigdump (~> 0.2.2)
     set (1.0.3)
     sigdump (0.2.5)
-    simple_form (5.2.0)
+    simple_form (5.3.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
     simplecov (0.22.0)
@@ -596,9 +597,9 @@ GEM
       tins (~> 1.0)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
-    terser (1.1.18)
+    terser (1.1.19)
       execjs (>= 0.3.0, < 3)
-    thor (1.2.2)
+    thor (1.3.0)
     thread_safe (0.3.6)
     tilt (2.3.0)
     timecop (0.9.8)
@@ -621,7 +622,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    unicode-display_width (2.4.2)
+    unicode-display_width (2.5.0)
     vcr (6.2.0)
     view_component (2.82.0)
       activesupport (>= 5.2.0, < 8.0)
