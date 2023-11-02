@@ -76,6 +76,9 @@ bundle exec cap staging deploy # deploys main branch to staging
    ```
    *Note: You can stop everything with `rake servers:stop`
 
+1. initialiaze the browse lists
+  [see instructions](#building-the-browse-lists)
+
 1. Run the all the tests
     ```
     bundle exec rake spec
