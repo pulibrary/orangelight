@@ -29,7 +29,8 @@
   "scripts": {
     "test": "jest",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
-    "eslint": "eslint"
+    "eslint": "eslint",
+    "pa11y-check": "bundle exec rails s & && pa11y http://localhost:5100/catalog/99122643653506421 && kill $(cat tmp/pids/server.pid)"
   },
   "jest": {
     "verbose": true,

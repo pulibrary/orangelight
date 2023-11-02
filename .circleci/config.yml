@@ -155,16 +155,16 @@ jobs:
           at: '~/orangelight'
       - setup-bundler-and-node
       - run: bundle exec erblint --lint-all
-  pa11y:
-    executor: basic-executor
-    steps:
-      - attach_workspace:
-          at: '~/orangelight'
-      - run: 
-          name: Run pa11y to test accessibility
-          command: yarn exec pa11y https://catalog.princeton.edu/catalog/994264203506421
-      - store_test_results:
-          path: ~/rspec 
+  # pa11y:
+  #   executor: basic-executor
+  #   steps:
+  #     - attach_workspace:
+  #         at: '~/orangelight'
+  #     - run: 
+  #         name: Run pa11y to test accessibility
+  #         command: yarn exec pa11y https://catalog.princeton.edu/catalog/994264203506421
+  #     - store_test_results:
+  #         path: ~/rspec 
 
   finish:
     executor: basic-executor
@@ -194,9 +194,9 @@ workflows:
       - js_tests:
          requires:
           - build
-      - pa11y:
-         requires:
-           - build
+      # - pa11y:
+      #    requires:
+      #      - build
       - test:
          requires:
           - build
