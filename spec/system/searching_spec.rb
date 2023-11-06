@@ -12,6 +12,18 @@ describe 'Searching', type: :system, js: false do
     expect(page).to have_selector '.fa-search[aria-hidden="true"]'
   end
 
+  context 'with highlighting feature on' do
+    before do
+      allow(Flipflop).to receive(:highlighting?).and_return(true)
+    end
+
+    it 'renders a title with an em tag around the search term' do
+      visit '/catalog?q=black+teenagers'
+      expect(page).to have_selector('#documents > article.blacklight-book.document.document-position-1 > div > div.record-wrapper > div > h3 > a > em:nth-child(1)', text: 'black')
+      expect(page).to have_selector('#documents > article.blacklight-book.document.document-position-1 > div > div.record-wrapper > div > h3 > a > em:nth-child(2)', text: 'teenagers')
+    end
+  end
+
   context 'with firestone_locator on' do
     before do
       allow(Flipflop).to receive(:firestone_locator?).and_return(true)
