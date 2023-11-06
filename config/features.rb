@@ -46,5 +46,9 @@ Flipflop.configure do
     feature :multi_algorithm,
       default: false,
       description: "When on / true, the user will have the ability to choose between search algorithms.  When off / false, no choice is available"
+
+    feature :highlighting,
+      default: false,
+      description: "When on / true, use the highlighting SOLR component to highlight search terms.  When off / false, dont highlight search terms"
   end
 end
