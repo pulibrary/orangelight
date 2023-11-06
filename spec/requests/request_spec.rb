@@ -543,4 +543,28 @@ describe 'blacklight tests' do
       expect(json["data"][0]["attributes"]["electronic_portfolio_s"]).not_to be_blank
     end
   end
+
+  describe 'search algorithm selection' do
+    before do
+      allow(Flipflop).to receive(:multi_algorithm?).and_return(true)
+    end
+
+    context "when the search_algorithm parameter is not present" do
+      it "ranks using the default request handler" do
+        get "/catalog.json?q=roman"
+        json = JSON.parse(response.body)
+
+        expect(json["data"][0]["attributes"]["title"]).to eq "Ogonek : roman / ."
+      end
+    end
+
+    context "when the search_algorithm parameter is set to 'engineering'" do
+      it "ranks using the engineering request handler" do
+        get "/catalog.json?q=roman&search_algorithm=engineering"
+        json = JSON.parse(response.body)
+
+        expect(json["data"][0]["attributes"]["title"]).to eq "Reconstructing the Vitruvian Scorpio: An Engineering Analysis of Roman Field Artillery"
+      end
+    end
+  end
 end

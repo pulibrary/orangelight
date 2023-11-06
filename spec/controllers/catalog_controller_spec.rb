@@ -117,4 +117,75 @@ RSpec.describe CatalogController do
       end
     end
   end
+
+  describe "switching search algorithms" do
+    let(:repository) { CatalogController.blacklight_config.repository }
+
+    before do
+      allow(repository).to receive(:search).and_call_original
+      allow(controller.blacklight_config).to receive(:repository).and_return(repository)
+    end
+
+    context "when the multi-algorithm feature is on" do
+      before do
+        allow(Flipflop).to receive(:multi_algorithm?).and_return(true)
+      end
+
+      context "when the search_algorithm parameter is not present" do
+        it "uses the default search builder" do
+          get :index, params: { q: "coffee" }
+
+          expect(repository).to have_received(:search).with(instance_of(SearchBuilder))
+        end
+      end
+
+      context "when the search_algorithm parameter is set to 'engineering'" do
+        it "uses the alternate search builder" do
+          get :index, params: { q: "coffee", search_algorithm: "engineering" }
+
+          expect(repository).to have_received(:search).with(instance_of(EngineeringSearchBuilder))
+        end
+      end
+
+      context "when the search_algorithm parameter is set to 'not_a_real_class'" do
+        it "uses the default search builder" do
+          get :index, params: { q: "coffee", search_algorithm: "not_a_real_class" }
+
+          expect(repository).to have_received(:search).with(instance_of(SearchBuilder))
+        end
+      end
+
+      context "when the default is not search builder and the search_algorithm parameter is empty" do
+        it "uses the configured search builder" do
+          allow(controller.blacklight_config).to receive(:search_builder_class).and_return(EngineeringSearchBuilder)
+
+          get :index, params: { q: "coffee" }
+
+          expect(repository).to have_received(:search).with(instance_of(EngineeringSearchBuilder))
+        end
+      end
+    end
+
+    context "when the multi-algorithm feature is off" do
+      before do
+        allow(Flipflop).to receive(:multi_algorithm?).and_return(false)
+      end
+
+      context "when the search_algorithm parameter is not present" do
+        it "uses the default search builder" do
+          get :index, params: { q: "coffee" }
+
+          expect(repository).to have_received(:search).with(instance_of(SearchBuilder))
+        end
+      end
+
+      context "when the search_algorithm parameter is set to engineering" do
+        it "uses the alternate search builder" do
+          get :index, params: { q: "coffee", search_algorithm: "engineering" }
+
+          expect(repository).to have_received(:search).with(instance_of(SearchBuilder))
+        end
+      end
+    end
+  end
 end
