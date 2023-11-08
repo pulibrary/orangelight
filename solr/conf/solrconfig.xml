@@ -117,16 +117,7 @@
    <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
   </query>
 
-  <!-- SearchHandler
-
-       http://wiki.apache.org/solr/SearchHandler
-
-       For processing Search Queries, the primary Request Handler
-       provided with Solr is "SearchHandler" It delegates to a sequent
-       of SearchComponents (see below) and supports distributed
-       queries across multiple shards
-    -->
-   <requestHandler name="search" class="solr.SearchHandler" default="true">
+  <initParams name="searchParams" path="search,engineering_search">
     <!-- default values for query parameters can be specified, these
          will be overridden by parameters in the request
       -->
@@ -358,6 +349,24 @@
       <str name="f.advanced_location_s.facet.sort">index</str>
       <str name="f.language_facet.facet.limit">1000</str>
       <str name="f.advanced_location_s.facet.limit">500</str>
+    </lst>
+  </initParams>
+
+  <!-- SearchHandler
+
+       http://wiki.apache.org/solr/SearchHandler
+
+       For processing Search Queries, the primary Request Handler
+       provided with Solr is "SearchHandler" It delegates to a sequent
+       of SearchComponents (see below) and supports distributed
+       queries across multiple shards
+    -->
+   <requestHandler name="search" class="solr.SearchHandler" default="true"></requestHandler>
+
+  <requestHandler name="engineering_search" class="solr.SearchHandler">
+    <!-- Appends means we add this parameter always but the query sent by the client can also add more of them. -->
+    <lst name="appends">
+      <str name="boost">if(termfreq(text,'engineering'),100,0)</str>
     </lst>
   </requestHandler>
 
