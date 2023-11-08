@@ -361,6 +361,242 @@
     </lst>
   </requestHandler>
 
+  <requestHandler name="engineering_search" class="solr.SearchHandler">
+    <!-- default values for query parameters can be specified, these
+         will be overridden by parameters in the request
+      -->
+    <lst name="defaults">
+      <str name="defType">edismax</str>
+      <str name="echoParams">explicit</str>
+      <int name="rows">10</int>
+      <str name="sow">on</str>
+      <str name="q.alt">*:*</str>
+      <str name="mm">6&lt;90%</str>
+
+      <!-- boost local holdings (add 50 to the score) to reduce unnecessary requests -->
+      <str name="bf">if(field(numeric_id_b),50,0)</str>
+      <str name="boost">if(termfreq(text,'engineering'),100,0)</str>
+
+       <!-- this qf and pf are used by default, if not otherwise specified by
+            client. The default blacklight_config will use these for the
+            "keywords" search. See the author_qf/author_pf, title_qf, etc
+            below, which the default blacklight_config will specify for
+            those searches. You may also be interested in:
+            http://wiki.apache.org/solr/LocalParams
+       -->
+
+      <str name="qf">
+        title_a_index^1500
+        author_main_unstem_search^1000
+        title_unstem_search^40
+        title_display^40
+        author_unstem_search^40
+        subject_topic_unstem_search^18
+        subject_unstem_search^15
+        siku_subject_unstem_search^15
+        local_subject_unstem_search^15
+        homoit_subject_unstem_search^15
+        subject_topic_index^12
+        genre_unstem_search^10
+        subject_t^10
+        subject_addl_unstem_search^8
+        subject_addl_t^4
+        isbn_t^3
+        issn_s^3
+        lccn_s^3
+        uncontrolled_keyword_unstem_search^3
+        text
+        description_t
+        cjk_all
+        cjk_text
+      </str>
+      <str name="pf">
+        title_245a_lr^16000
+        title_245_lr^16000
+        title_a_index^12000
+        author_main_unstem_search^10000
+        title_unstem_search^400
+        title_display^400
+        author_unstem_search^400
+        subject_topic_unstem_search^180
+        subject_unstem_search^150
+        siku_subject_unstem_search^150
+        local_subject_unstem_search^150
+        homoit_subject_unstem_search^150
+        subject_topic_index^120
+        genre_unstem_search^100
+        subject_t^100
+        subject_addl_unstem_search^80
+        subject_addl_t^40
+        isbn_t^30
+        issn_s^30
+        lccn_s^30
+        uncontrolled_keyword_unstem_search^10
+        text^10
+        description_t^10
+        cjk_all^10
+        cjk_text^10
+      </str>
+      <str name="author_qf">
+        author_main_unstem_search^20
+        author_unstem_search^10
+        cjk_author
+      </str>
+      <str name="author_pf">
+        author_main_unstem_search^200
+        author_unstem_search^100
+        cjk_author^10
+      </str>
+      <str name="left_anchor_qf">
+        title_245a_la^50
+        title_245_la^10
+        title_la^2
+        title_addl_la
+      </str>
+      <str name="left_anchor_pf">
+        title_245a_lr^600
+        title_245_lr^600
+        title_245a_la^500
+        title_245_la^100
+        title_lr^100
+        title_la^20
+        title_addl_la^10
+      </str>
+      <str name="in_series_qf">
+        more_in_this_series_la
+      </str>
+      <str name="in_series_pf">
+        more_in_this_series_la
+      </str>
+      <str name="publisher_qf">
+        pub_created_unstem_search
+        cjk_publisher
+      </str>
+      <str name="publisher_pf">
+        pub_created_unstem_search
+        cjk_publisher
+      </str>
+      <str name="notes_qf">
+        notes_index
+        cjk_notes
+        cjk_notes_copied
+      </str>
+      <str name="notes_pf">
+        notes_index
+        cjk_notes
+        cjk_notes_copied
+      </str>
+      <str name="series_title_qf">
+        series_title_index^5
+        series_ae_index
+        series_statement_index
+        linked_series_title_index
+        linked_series_index
+        original_version_series_index
+        cjk_series_title
+      </str>
+      <str name="series_title_pf">
+        series_title_index^50
+        series_ae_index^10
+        series_statement_index^10
+        linked_series_title_index^10
+        linked_series_index^10
+        original_version_series_index^10
+        cjk_series_title^10
+      </str>
+      <str name="title_qf">
+        title_a_index^500
+        title_unstem_search^100
+        title_display^50
+        other_title_index^5
+        series_title_index^5
+        uniform_title_s^5
+        title_vern_display
+        content_title_index
+        contains_title_index
+        linked_title_index
+        series_ae_index
+        series_statement_index
+        linked_series_title_index
+        linked_series_index
+        original_version_series_index
+        cjk_title
+      </str>
+      <str name="title_pf">
+        title_245a_lr^5500
+        title_245_lr^5500
+        title_a_index^5000
+        title_unstem_search^1000
+        title_display^500
+        other_title_index^50
+        series_title_index^50
+        uniform_title_s^50
+        title_vern_display^10
+        content_title_index^10
+        contains_title_index^10
+        linked_title_index^10
+        series_ae_index^10
+        series_statement_index^10
+        linked_series_title_index^10
+        linked_series_index^10
+        original_version_series_index^10
+        cjk_title^10
+      </str>
+      <str name="subject_qf">
+        subject_topic_unstem_search^25
+        subject_unstem_search^20
+        genre_unstem_search^15
+        siku_subject_unstem_search
+        local_subject_unstem_search
+        homoit_subject_unstem_search
+        cjk_subject
+      </str>
+      <str name="subject_pf">
+        subject_topic_unstem_search^250
+        subject_unstem_search^200
+        genre_unstem_search^150
+        siku_subject_unstem_search^10
+        local_subject_unstem_search^10
+        homoit_subject_unstem_search^10
+        cjk_subject^10
+      </str>
+
+      <int name="ps">3</int>
+      <float name="tie">0.01</float>
+
+      <str name="fl">
+        id,
+        score,
+        author_display,
+        marc_relator_display,
+        format,
+        pub_created_display,
+        title_display,
+        title_vern_display,
+        isbn_s,
+        oclc_s,
+        lccn_s,
+        holdings_1display,
+        electronic_access_1display,
+        electronic_portfolio_s,
+        cataloged_tdt,
+        contained_in_s
+      </str>
+
+      <str name="facet">true</str>
+      <str name="facet.mincount">1</str>
+      <str name="facet.limit">10</str>
+      <str name="facet.field">format</str>
+      <str name="facet.field">language_facet</str>
+      <str name="facet.field">pub_date_start_sort</str>
+      <str name="facet.field">advanced_location_s</str>
+      <str name="f.format.facet.sort">index</str>
+      <str name="f.advanced_location_s.facet.sort">index</str>
+      <str name="f.language_facet.facet.limit">1000</str>
+      <str name="f.advanced_location_s.facet.limit">500</str>
+    </lst>
+  </requestHandler>
+
   <requestHandler name="/advanced" class="solr.SearchHandler">
     <!-- a lucene request handler for using the JSON Query DSL, for advanced search
          Using a separate request handler as a work around to
