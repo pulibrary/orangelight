@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get 'catalog/:id/staff_view', to: 'catalog#librarian_view', as: 'staff_view_solr_document'
   post '/catalog/:id/linked_records/:field', to: 'catalog#linked_records'
 
+  get 'catalog/biased-results', to: 'catalog#biased_results', as: 'catalog_biased_results'
+
   concern :marc_viewable, Blacklight::Marc::Routes::MarcViewable.new
   root to: 'catalog#index'
 
