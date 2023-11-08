@@ -26,6 +26,7 @@
 <h2 class="sr-only visually-hidden"><%= t('blacklight.search.search_results') %></h2>
 
 <!-- TODO: put this behind a feature flipper flag -->
+<!-- TODO: pass the search terms to the biased results page -->
 <p>Banner will go here <%= link_to "report biased results", :catalog_biased_results, target: "_blank" %></p>
 
 <%- if @response.empty? %>

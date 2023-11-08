@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post '/catalog/:id/linked_records/:field', to: 'catalog#linked_records'
 
   get 'catalog/biased-results', to: 'catalog#biased_results', as: 'catalog_biased_results'
+  post 'catalog/biased-results', to: 'catalog#biased_results_submit', as: 'catalog_biased_results_submit'
 
   concern :marc_viewable, Blacklight::Marc::Routes::MarcViewable.new
   root to: 'catalog#index'

@@ -746,6 +746,9 @@ class CatalogController < ApplicationController
   def biased_results
   end
 
+  def biased_results_submit
+  end
+
   private
 
     def render_empty_search
