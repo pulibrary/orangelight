@@ -743,11 +743,9 @@ class CatalogController < ApplicationController
     end
   end
 
-  def biased_results
-  end
+  def biased_results; end
 
-  def biased_results_submit
-  end
+  def biased_results_submit; end
 
   private
 
