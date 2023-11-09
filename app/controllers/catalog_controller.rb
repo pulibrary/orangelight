@@ -661,9 +661,6 @@ class CatalogController < ApplicationController
     # mean") suggestion is offered.
     config.spell_max = 0
 
-    # Add bookmark all widget
-    config.add_results_collection_tool(:bookmark_all)
-
     config.add_results_document_tool(:bookmark, partial: 'bookmark_control')
 
     config.unapi = {

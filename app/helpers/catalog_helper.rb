@@ -61,6 +61,14 @@ module CatalogHelper
     Rails.application.routes.url_helpers.url_for controller: 'catalog', params:, only_path: true
   end
 
+  def search_algorithm_value
+    if params[:search_algorithm] == "engineering"
+      "engineering"
+    else
+      "default"
+    end
+  end
+
   private
 
     def document_types(document)
