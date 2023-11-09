@@ -1,0 +1,6 @@
+* Create a feature
+* Write a failing test: the banner shows when the feature is on
+* Make the test pass (by adding a banner)
+* Make the banner look like the most recent mockup
+* Make sure the banner is accessible
+* Write a test to confirm that the banner doesn't show up when the feature is off
