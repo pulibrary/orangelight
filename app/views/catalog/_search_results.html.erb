@@ -21,6 +21,8 @@
   <%= render 'constraints' %>
 <% end %>
 
+<%= render 'search_results_banner' if Flipflop.search_result_form? %>
+
 <%= render 'search_header' %>
 
 <h2 class="sr-only visually-hidden"><%= t('blacklight.search.search_results') %></h2>
