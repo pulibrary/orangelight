@@ -1,4 +1,3 @@
-* Create a feature
 * Write a failing test: the banner shows when the feature is on
 * Make the test pass (by adding a banner)
 * Make the banner look like the most recent mockup

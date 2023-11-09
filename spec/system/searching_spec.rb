@@ -196,6 +196,16 @@ describe 'Searching', type: :system, js: false do
     constraint_close_button.click
     expect(page).to have_content('Limit your search')
   end
+
+  context 'When the search result form is on' do
+    before do
+      allow(Flipflop).to receive(:search_result_form?).and_return(true)
+    end
+    it 'displays a banner' do
+      visit '/catalog?search_field=all_fields&q=cats'
+      expect(page).to have_content('We are working to address bias')
+    end
+  end
 end
 
 def search_results_count
