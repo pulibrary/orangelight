@@ -6,9 +6,7 @@ require 'faraday'
 describe 'blacklight tests' do
   include ApplicationHelper
 
-  before do
-    stub_holding_locations
-  end
+  before { stub_holding_locations }
 
   describe 'ICU folding keyword search' do
     it 'finds an Arabic entry from a Romanized search term' do
@@ -136,7 +134,10 @@ describe 'blacklight tests' do
   end
 
   describe 'dir tag check' do
-    before { stub_holding_locations }
+    before do
+      stub_holding_locations
+      allow(Flipflop).to receive(:highlighting?).and_return(false)
+    end
 
     it 'adds rtl dir for title and author field in search results' do
       get '/catalog/9947053043506421/raw'
@@ -455,7 +456,10 @@ describe 'blacklight tests' do
   end
 
   describe 'escaping search/browse link urls' do
-    before { stub_holding_locations }
+    before do
+      stub_holding_locations
+      allow(Flipflop).to receive(:highlighting?).and_return(false)
+    end
 
     it 'search result name facet/browse urls' do
       get '/?f%5Blocation%5D%5B%5D=East+Asian+Library'

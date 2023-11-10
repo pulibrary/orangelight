@@ -1,0 +1,742 @@
+[
+    {
+        "id": [
+            "99127972072106421"
+        ],
+        "numeric_id_b": [
+            true
+        ],
+        "cjk_all": [
+            ""
+        ],
+        "cjk_notes": [
+            ""
+        ],
+        "author_display": [
+            "Malnig, Julie"
+        ],
+        "author_sort": [
+            "Malnig, Julie"
+        ],
+        "author_citation_display": [
+            "Malnig, Julie"
+        ],
+        "author_roles_1display": [
+            "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Malnig, Julie\"}"
+        ],
+        "author_s": [
+            "Malnig, Julie"
+        ],
+        "marc_relator_display": [
+            "Author"
+        ],
+        "title_display": [
+            "Dancing Black, dancing White : rock 'n' roll, race, and youth culture of the 1950s and early 1960s / Julie Malnig."
+        ],
+        "title_a_index": [
+            "Dancing Black, dancing White"
+        ],
+        "title_sort": [
+            "Dancing Black, dancing White : rock 'n' roll, race, and youth culture of the 1950s and early 1960s / Julie Malnig."
+        ],
+        "title_no_h_index": [
+            "Dancing Black, dancing White : rock 'n' roll, race, and youth culture of the 1950s and early 1960s / Julie Malnig."
+        ],
+        "title_t": [
+            "Dancing Black, dancing White : rock 'n' roll, race, and youth culture of the 1950s and early 1960s / Julie Malnig."
+        ],
+        "title_citation_display": [
+            "Dancing Black, dancing White : rock 'n' roll, race, and youth culture of the 1950s and early 1960s"
+        ],
+        "linked_title_index": [
+            "Dancing black, dancing white"
+        ],
+        "compiled_created_t": [
+            "Dancing Black, dancing White : rock 'n' roll, race, and youth culture of the 1950s and early 1960s / Julie Malnig."
+        ],
+        "pub_created_display": [
+            "New York, NY : Oxford University Press, [2023]"
+        ],
+        "pub_created_s": [
+            "New York, NY : Oxford University Press, [2023]"
+        ],
+        "pub_citation_display": [
+            "New York, NY: Oxford University Press"
+        ],
+        "pub_date_display": [
+            "2023"
+        ],
+        "pub_date_start_sort": [
+            "2023"
+        ],
+        "cataloged_tdt": [
+            "2023-07-12T08:17:31Z"
+        ],
+        "format": [
+            "Book"
+        ],
+        "description_display": [
+            "xviii, 220 pages : illustrations ; 24 cm"
+        ],
+        "description_t": [
+            "xviii, 220 pages : illustrations ; 24 cm"
+        ],
+        "number_of_pages_citation_display": [
+            "xviii, 220 pages"
+        ],
+        "geocode_display": [
+            "United States"
+        ],
+        "related_record_info_display": [
+            "Online version:"
+        ],
+        "notes_index": [
+            "Includes bibliographical references and index.",
+            "Rock and Roll Dance and the TV Experiment -- Transgressing Boundaries: Restraint and Rebellion in the Teen Dance Shows -- Movin' and Groovin'\": Black Teen Dance Shows of the 1950s and Early 1960s -- Rock and Roll Dances and the Africanist Aesthetic -- Girl Power: Youth Culture and Female Fandom -- Storming the Sixties: From Teen Dances to Shindig! -- Epilogue: Soul Train.",
+            "\"Dancing Black, Dancing White: Rock and Roll, Race, and Youth Culture of the 1950s and Early 1960s explores the phenomenon of rock and roll dance of the 1950s and early 1960s, a time of egregious racial prejudice and segregation in the U.S., through the lens of the popular televised teen dance program. Both dance history and social history, Dancing Black, Dancing White traces the experiences of Black and white teenagers as they traverse the enticing world of rock and roll music and dance. Several occurrences took shape during this time: the ascendancy of rock and roll music and recorded sound; the rise of the \"teenager\"; the beginnings of television, and the country's struggle with race. The shows were primarily segregated, and the book examines how white teenagers took Black dances and dance styles into their own bodies. At the same time, the book explores the few all-Black teen dance shows that existed-before Soul Train-and considers how both white and Black teenagers navigated the color line. While their experiences differed, in both cases the desire of the teenagers was to have a space of their own where they could be seen, heard, appreciated, and understood, and in many ways the teen dance shows fulfilled these aims\"-- Provided by publisher."
+        ],
+        "summary_note_display": [
+            "\"Dancing Black, Dancing White: Rock and Roll, Race, and Youth Culture of the 1950s and Early 1960s explores the phenomenon of rock and roll dance of the 1950s and early 1960s, a time of egregious racial prejudice and segregation in the U.S., through the lens of the popular televised teen dance program. Both dance history and social history, Dancing Black, Dancing White traces the experiences of Black and white teenagers as they traverse the enticing world of rock and roll music and dance. Several occurrences took shape during this time: the ascendancy of rock and roll music and recorded sound; the rise of the \"teenager\"; the beginnings of television, and the country's struggle with race. The shows were primarily segregated, and the book examines how white teenagers took Black dances and dance styles into their own bodies. At the same time, the book explores the few all-Black teen dance shows that existed-before Soul Train-and considers how both white and Black teenagers navigated the color line. While their experiences differed, in both cases the desire of the teenagers was to have a space of their own where they could be seen, heard, appreciated, and understood, and in many ways the teen dance shows fulfilled these aims\"-- Provided by publisher."
+        ],
+        "bib_ref_notes_display": [
+            "Includes bibliographical references and index."
+        ],
+        "language_name_display": [
+            "English"
+        ],
+        "language_facet": [
+            "English"
+        ],
+        "publication_place_facet": [
+            "New York (State)"
+        ],
+        "language_iana_s": [
+            "en"
+        ],
+        "contents_display": [
+            "Rock and Roll Dance and the TV Experiment",
+            "Transgressing Boundaries: Restraint and Rebellion in the Teen Dance Shows",
+            "Movin' and Groovin'\": Black Teen Dance Shows of the 1950s and Early 1960s",
+            "Rock and Roll Dances and the Africanist Aesthetic",
+            "Girl Power: Youth Culture and Female Fandom",
+            "Storming the Sixties: From Teen Dances to Shindig!",
+            "Epilogue: Soul Train."
+        ],
+        "lc_subject_display": [
+            "Television dance parties—United States—History—20th century",
+            "Rock and roll dancing—United States—History—20th century",
+            "Dance and race—United States—History—20th century",
+            "Music and race—United States—History—20th century",
+            "United States—Race relations—History—20th century"
+        ],
+        "lc_subject_include_archaic_search_terms_index": [
+            "Television dance parties—United States—History—20th century",
+            "Rock and roll dancing—United States—History—20th century",
+            "Dance and race—United States—History—20th century",
+            "Music and race—United States—History—20th century",
+            "United States—Race relations—History—20th century"
+        ],
+        "subject_unstem_search": [
+            "Television dance parties—United States—History—20th century",
+            "Rock and roll dancing—United States—History—20th century",
+            "Dance and race—United States—History—20th century",
+            "Music and race—United States—History—20th century",
+            "United States—Race relations—History—20th century"
+        ],
+        "local_subject_unstem_search": null,
+        "siku_subject_unstem_search": null,
+        "homoit_subject_unstem_search": null,
+        "subject_facet": [
+            "Television dance parties—United States—History—20th century",
+            "Rock and roll dancing—United States—History—20th century",
+            "Dance and race—United States—History—20th century",
+            "Music and race—United States—History—20th century",
+            "United States—Race relations—History—20th century"
+        ],
+        "subject_topic_facet": [
+            "Television dance parties",
+            "United States",
+            "History",
+            "Rock and roll dancing",
+            "Dance and race",
+            "Music and race",
+            "Race relations"
+        ],
+        "lc_1letter_facet": [
+            "P - Language & Literature"
+        ],
+        "lc_rest_facet": [
+            "PN - Literature (General)"
+        ],
+        "call_number_scheme_facet": [
+            "Library of Congress"
+        ],
+        "call_number_group_facet": [
+            "P - Language & Literature"
+        ],
+        "call_number_full_facet": [
+            "PN - Literature (General)"
+        ],
+        "isbn_display": [
+            "9780197536261 (paperback)",
+            "0197536263 (paperback)",
+            "9780197536254 (hardcover)",
+            "0197536255 (hardcover)"
+        ],
+        "lccn_display": [
+            "  2022054550"
+        ],
+        "lccn_s": [
+            "2022054550"
+        ],
+        "isbn_s": [
+            "9780197536261",
+            "9780197536254"
+        ],
+        "oclc_s": [
+            "1366103231"
+        ],
+        "standard_no_index": [
+            "on1366103231"
+        ],
+        "other_version_s": [
+            "9780197536261",
+            "9780197536254",
+            "9780197536285",
+            "on1366103231"
+        ],
+        "subject_era_facet": [
+            "20th century",
+            "1900-1999"
+        ],
+        "holdings_1display": [
+            "{\"22987971050006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"PN1992.8.D3 M35 2023\",\"call_number_browse\":\"PN1992.8.D3 M35 2023\",\"items\":[{\"holding_id\":\"22987971050006421\",\"id\":\"23987971040006421\",\"status_at_load\":\"1\",\"barcode\":\"32101119604427\"}]}}"
+        ],
+        "location_code_s": [
+            "firestone$stacks"
+        ],
+        "location": [
+            "Firestone Library"
+        ],
+        "location_display": [
+            "Stacks"
+        ],
+        "advanced_location_s": [
+            "firestone$stacks",
+            "Firestone Library"
+        ],
+        "name_title_browse_s": [
+            "Malnig, Julie. Dancing Black, dancing White"
+        ],
+        "call_number_display": [
+            "PN1992.8.D3 M35 2023"
+        ],
+        "call_number_browse_s": [
+            "PN1992.8.D3 M35 2023"
+        ],
+        "call_number_locator_display": [
+            "PN1992.8.D3 M35 2023"
+        ],
+        "access_facet": [
+            "In the Library"
+        ]
+    },
+    {
+        "id": [
+            "99125232166606421"
+        ],
+        "numeric_id_b": [
+            true
+        ],
+        "cjk_all": [
+            ""
+        ],
+        "cjk_notes": [
+            ""
+        ],
+        "author_roles_1display": [
+            "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+        ],
+        "title_display": [
+            "White House Conference on Teenagers: Raising Responsible and Resourceful Youth"
+        ],
+        "title_a_index": [
+            "White House Conference on Teenagers: Raising Responsible and Resourceful Youth"
+        ],
+        "title_sort": [
+            "White House Conference on Teenagers: Raising Responsible and Resourceful Youth"
+        ],
+        "title_no_h_index": [
+            "White House Conference on Teenagers: Raising Responsible and Resourceful Youth"
+        ],
+        "title_t": [
+            "White House Conference on Teenagers: Raising Responsible and Resourceful Youth"
+        ],
+        "title_citation_display": [
+            "White House Conference on Teenagers: Raising Responsible and Resourceful Youth"
+        ],
+        "compiled_created_t": [
+            "White House Conference on Teenagers: Raising Responsible and Resourceful Youth"
+        ],
+        "pub_date_display": [
+            "2000"
+        ],
+        "pub_date_start_sort": [
+            "2000"
+        ],
+        "cataloged_tdt": [
+            "2018-05-06T05:38:16Z"
+        ],
+        "format": [
+            "Book"
+        ],
+        "language_name_display": [
+            "English"
+        ],
+        "language_facet": [
+            "English"
+        ],
+        "language_iana_s": [
+            "en"
+        ],
+        "subject_unstem_search": null,
+        "local_subject_unstem_search": null,
+        "siku_subject_unstem_search": null,
+        "homoit_subject_unstem_search": null,
+        "other_title_index": [
+            "White House Conference on Teenagers"
+        ],
+        "other_title_display": [
+            "White House Conference on Teenagers"
+        ],
+        "alt_title_246_display": [
+            "White House Conference on Teenagers"
+        ],
+        "standard_no_index": [
+            "4330000000527250",
+            "994330000000527250"
+        ],
+        "electronic_portfolio_s": [
+            "{\"desc\":null,\"title\":\"HeinOnline Reports Of U.S. Presidential Commissions And Other Advisory Bodies\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53781163700006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+        ],
+        "access_facet": [
+            "Online"
+        ]
+    },
+    {
+        "id": [
+            "9964685963506421"
+        ],
+        "numeric_id_b": [
+            true
+        ],
+        "cjk_all": [
+            ""
+        ],
+        "cjk_notes": [
+            ""
+        ],
+        "author_display": [
+            "Bucholtz, Mary, 1966-"
+        ],
+        "author_sort": [
+            "Bucholtz, Mary, 1966-"
+        ],
+        "author_citation_display": [
+            "Bucholtz, Mary"
+        ],
+        "author_roles_1display": [
+            "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Bucholtz, Mary\"}"
+        ],
+        "author_s": [
+            "Bucholtz, Mary, 1966-"
+        ],
+        "marc_relator_display": [
+            "Author"
+        ],
+        "title_display": [
+            "White kids : language, race and styles of youth identity / Mary Bucholtz."
+        ],
+        "title_a_index": [
+            "White kids"
+        ],
+        "title_sort": [
+            "White kids : language, race and styles of youth identity / Mary Bucholtz."
+        ],
+        "title_no_h_index": [
+            "White kids : language, race and styles of youth identity / Mary Bucholtz."
+        ],
+        "title_t": [
+            "White kids : language, race and styles of youth identity / Mary Bucholtz."
+        ],
+        "title_citation_display": [
+            "White kids : language, race and styles of youth identity"
+        ],
+        "compiled_created_t": [
+            "White kids : language, race and styles of youth identity / Mary Bucholtz."
+        ],
+        "pub_created_display": [
+            "Cambridge : Cambridge University Press, 2011."
+        ],
+        "pub_created_s": [
+            "Cambridge : Cambridge University Press, 2011."
+        ],
+        "pub_citation_display": [
+            "Cambridge: Cambridge University Press"
+        ],
+        "pub_date_display": [
+            "2011"
+        ],
+        "pub_date_start_sort": [
+            "2011"
+        ],
+        "cataloged_tdt": [
+            "2011-03-31T00:00:00Z"
+        ],
+        "format": [
+            "Book"
+        ],
+        "description_display": [
+            "xvi, 277 p. : ill. ; 23 cm."
+        ],
+        "description_t": [
+            "xvi, 277 p. : ill. ; 23 cm."
+        ],
+        "number_of_pages_citation_display": [
+            "xvi, 277 p."
+        ],
+        "notes_index": [
+            "Includes bibliographical references (p. 255-270) and index."
+        ],
+        "bib_ref_notes_display": [
+            "Includes bibliographical references (p. 255-270) and index."
+        ],
+        "language_name_display": [
+            "English"
+        ],
+        "language_facet": [
+            "English"
+        ],
+        "publication_place_facet": [
+            "England"
+        ],
+        "language_iana_s": [
+            "en"
+        ],
+        "lc_subject_display": [
+            "Teenagers—Language",
+            "Youth, White",
+            "Language and culture"
+        ],
+        "lc_subject_include_archaic_search_terms_index": [
+            "Teenagers—Language",
+            "Youth, White",
+            "Language and culture"
+        ],
+        "subject_unstem_search": [
+            "Teenagers—Language",
+            "Youth, White",
+            "Language and culture"
+        ],
+        "local_subject_unstem_search": null,
+        "siku_subject_unstem_search": null,
+        "homoit_subject_unstem_search": null,
+        "subject_facet": [
+            "Teenagers—Language",
+            "Youth, White",
+            "Language and culture"
+        ],
+        "subject_topic_facet": [
+            "Teenagers",
+            "Language",
+            "Youth, White",
+            "Language and culture"
+        ],
+        "lc_1letter_facet": [
+            "P - Language & Literature"
+        ],
+        "lc_rest_facet": [
+            "P - Language & Literature"
+        ],
+        "call_number_scheme_facet": [
+            "Library of Congress"
+        ],
+        "call_number_group_facet": [
+            "P - Language & Literature"
+        ],
+        "call_number_full_facet": [
+            "P - Language & Literature"
+        ],
+        "other_title_index": [
+            "Language, race and styles of youth identity"
+        ],
+        "other_title_display": [
+            "Language, race and styles of youth identity"
+        ],
+        "alt_title_246_display": [
+            "Language, race and styles of youth identity"
+        ],
+        "isbn_display": [
+            "9780521871495 (hbk.)",
+            "0521871492 (hbk.)",
+            "9780521692045 (pbk.)",
+            "0521692040 (pbk.)"
+        ],
+        "isbn_s": [
+            "9780521871495",
+            "9780521692045"
+        ],
+        "oclc_s": [
+            "700394237"
+        ],
+        "standard_no_index": [
+            "6468596-princetondb",
+            "ocn700394237"
+        ],
+        "other_version_s": [
+            "9780521871495",
+            "9780521692045",
+            "ocn700394237"
+        ],
+        "holdings_1display": [
+            "{\"22735362040006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"P120.Y68 B83 2011\",\"call_number_browse\":\"P120.Y68 B83 2011\",\"items\":[{\"holding_id\":\"22735362040006421\",\"id\":\"23735362030006421\",\"status_at_load\":\"1\",\"barcode\":\"32101083471654\",\"copy_number\":\"1\"}]}}"
+        ],
+        "location_code_s": [
+            "firestone$stacks"
+        ],
+        "location": [
+            "Firestone Library"
+        ],
+        "location_display": [
+            "Stacks"
+        ],
+        "advanced_location_s": [
+            "firestone$stacks",
+            "Firestone Library"
+        ],
+        "name_title_browse_s": [
+            "Bucholtz, Mary, 1966-. White kids"
+        ],
+        "call_number_display": [
+            "P120.Y68 B83 2011"
+        ],
+        "call_number_browse_s": [
+            "P120.Y68 B83 2011"
+        ],
+        "call_number_locator_display": [
+            "P120.Y68 B83 2011"
+        ],
+        "access_facet": [
+            "In the Library"
+        ]
+    },
+    {
+        "id": [
+            "998037073506421"
+        ],
+        "numeric_id_b": [
+            true
+        ],
+        "cjk_all": [
+            ""
+        ],
+        "cjk_notes": [
+            ""
+        ],
+        "author_display": [
+            "White, Merry I., 1941-"
+        ],
+        "author_sort": [
+            "White, Merry I., 1941-"
+        ],
+        "author_citation_display": [
+            "White, Merry I."
+        ],
+        "author_roles_1display": [
+            "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"White, Merry I.\"}"
+        ],
+        "author_s": [
+            "White, Merry I., 1941-"
+        ],
+        "marc_relator_display": [
+            "Author"
+        ],
+        "title_display": [
+            "The material child : coming of age in Japan and America / Merry White."
+        ],
+        "title_a_index": [
+            "The material child"
+        ],
+        "title_sort": [
+            "material child : coming of age in Japan and America / Merry White."
+        ],
+        "title_no_h_index": [
+            "The material child : coming of age in Japan and America / Merry White.",
+            "material child : coming of age in Japan and America / Merry White."
+        ],
+        "title_t": [
+            "The material child : coming of age in Japan and America / Merry White."
+        ],
+        "title_citation_display": [
+            "The material child : coming of age in Japan and America"
+        ],
+        "compiled_created_t": [
+            "The material child : coming of age in Japan and America / Merry White."
+        ],
+        "pub_created_display": [
+            "New York : Free Press ; Toronto : Maxwell Macmillan Canada ; New York : Maxwell Macmillan International, c1993."
+        ],
+        "pub_created_s": [
+            "New York : Free Press ; Toronto : Maxwell Macmillan Canada ; New York : Maxwell Macmillan International, c1993."
+        ],
+        "pub_citation_display": [
+            "New York: Maxwell Macmillan International"
+        ],
+        "pub_date_display": [
+            "1993"
+        ],
+        "pub_date_start_sort": [
+            "1993"
+        ],
+        "cataloged_tdt": [
+            "2000-06-13T00:00:00Z"
+        ],
+        "format": [
+            "Book"
+        ],
+        "description_display": [
+            "v, 256 p. : ill., map ; 25 cm."
+        ],
+        "description_t": [
+            "v, 256 p. : ill., map ; 25 cm."
+        ],
+        "number_of_pages_citation_display": [
+            "v, 256 p."
+        ],
+        "geocode_display": [
+            "United States",
+            "Japan"
+        ],
+        "notes_index": [
+            "Includes bibliographical references (p. 237-242) and index."
+        ],
+        "bib_ref_notes_display": [
+            "Includes bibliographical references (p. 237-242) and index."
+        ],
+        "language_name_display": [
+            "English"
+        ],
+        "language_facet": [
+            "English"
+        ],
+        "publication_place_facet": [
+            "New York (State)"
+        ],
+        "language_iana_s": [
+            "en"
+        ],
+        "lc_subject_display": [
+            "Teenagers—United States—Social conditions",
+            "Teenagers—Japan—Social conditions",
+            "Adolescence"
+        ],
+        "lc_subject_include_archaic_search_terms_index": [
+            "Teenagers—United States—Social conditions",
+            "Teenagers—Japan—Social conditions",
+            "Adolescence"
+        ],
+        "subject_unstem_search": [
+            "Teenagers—United States—Social conditions",
+            "Teenagers—Japan—Social conditions",
+            "Adolescence"
+        ],
+        "local_subject_unstem_search": null,
+        "siku_subject_unstem_search": null,
+        "homoit_subject_unstem_search": null,
+        "subject_facet": [
+            "Teenagers—United States—Social conditions",
+            "Teenagers—Japan—Social conditions",
+            "Adolescence"
+        ],
+        "subject_topic_facet": [
+            "Teenagers",
+            "United States",
+            "Social conditions",
+            "Japan",
+            "Adolescence"
+        ],
+        "lc_1letter_facet": [
+            "H - Social Sciences"
+        ],
+        "lc_rest_facet": [
+            "HQ - The Family, Marriage, Woman"
+        ],
+        "call_number_scheme_facet": [
+            "Library of Congress"
+        ],
+        "call_number_group_facet": [
+            "H - Social Sciences"
+        ],
+        "call_number_full_facet": [
+            "HQ - The Family, Marriage, Woman"
+        ],
+        "isbn_display": [
+            "0029350352 :"
+        ],
+        "lccn_display": [
+            "   92034730  "
+        ],
+        "lccn_s": [
+            "92034730"
+        ],
+        "isbn_s": [
+            "9780029350355"
+        ],
+        "oclc_s": [
+            "26722058"
+        ],
+        "standard_no_index": [
+            "NJPG93-B23131",
+            "803707-princetondb",
+            "ocm26722058"
+        ],
+        "other_version_s": [
+            "9780029350355",
+            "ocm26722058"
+        ],
+        "holdings_1display": [
+            "{\"22664905270006421\":{\"location_code\":\"firestone$gss\",\"location\":\"Gender & Sexuality Studies Research Collection\",\"library\":\"Firestone Library\",\"call_number\":\"HQ799.U65 W45 1993\",\"call_number_browse\":\"HQ799.U65 W45 1993\",\"items\":[{\"holding_id\":\"22664905270006421\",\"id\":\"23664905260006421\",\"status_at_load\":\"1\",\"barcode\":\"32101102416995\",\"copy_number\":\"0\"}]},\"22664905290006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"HQ799.U65 W45 1993\",\"call_number_browse\":\"HQ799.U65 W45 1993\",\"items\":[{\"holding_id\":\"22664905290006421\",\"id\":\"23664905280006421\",\"status_at_load\":\"1\",\"barcode\":\"32101023091356\",\"copy_number\":\"1\"}]}}"
+        ],
+        "location_code_s": [
+            "firestone$gss",
+            "firestone$stacks"
+        ],
+        "location": [
+            "Firestone Library"
+        ],
+        "location_display": [
+            "Gender & Sexuality Studies Research Collection",
+            "Stacks"
+        ],
+        "advanced_location_s": [
+            "firestone$gss",
+            "firestone$stacks",
+            "Firestone Library"
+        ],
+        "name_title_browse_s": [
+            "White, Merry I., 1941-. The material child"
+        ],
+        "call_number_display": [
+            "HQ799.U65 W45 1993"
+        ],
+        "call_number_browse_s": [
+            "HQ799.U65 W45 1993"
+        ],
+        "call_number_locator_display": [
+            "HQ799.U65 W45 1993"
+        ],
+        "access_facet": [
+            "In the Library"
+        ]
+    }
+]

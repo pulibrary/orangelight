@@ -30,6 +30,7 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    # config.add_field_configuration_to_solr_request!
     config.raw_endpoint.enabled = true
 
     config.json_solr_path = 'advanced'
@@ -228,7 +229,7 @@ class CatalogController < ApplicationController
     #   output for bento search. If you need to add a field to JSON display
     #   (catalog.json), add it here!
     config.add_index_field 'series_display', label: 'Series', helper_method: :series_results
-    config.add_index_field 'author_display', label: 'Author/Artist', browse_link: :name
+    config.add_index_field 'author_display', label: 'Author/Artist', browse_link: :name, presenter: Orangelight::HighlightPresenter
     config.add_index_field 'pub_created_display', label: 'Published/Created'
     config.add_index_field 'format', label: 'Format', helper_method: :format_icon
     config.add_index_field 'holdings_1display', show: false
@@ -236,8 +237,8 @@ class CatalogController < ApplicationController
     config.add_index_field 'isbn_t', show: false
     config.add_index_field 'score', show: false
     config.add_index_field 'marc_relator_display', show: false
-    config.add_index_field 'title_display', show: false
-    config.add_index_field 'title_vern_display', show: false
+    config.add_index_field 'title_display', show: false, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'title_vern_display', show: false, presenter: Orangelight::HighlightPresenter
     config.add_index_field 'isbn_s', show: false
     config.add_index_field 'oclc_s', show: false
     config.add_index_field 'lccn_s', show: false
