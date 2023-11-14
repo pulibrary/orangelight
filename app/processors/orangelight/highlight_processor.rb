@@ -3,7 +3,8 @@
 module Orangelight
   class HighlightProcessor < Blacklight::Rendering::AbstractStep
     def render
-      next_step(values.map { |value| value.gsub('<em>', '<em class="highlight-query">').html_safe })
+      em_highlight = values.map { |value| value.gsub('<em>', '<span class="sr-only">Begin search term</span><em class="highlight-query">').gsub('</em>', '<span class="sr-only">End search term</span></em>').html_safe }
+      next_step(em_highlight)
     end
   end
 end

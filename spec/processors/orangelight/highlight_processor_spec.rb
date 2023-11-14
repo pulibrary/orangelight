@@ -15,6 +15,7 @@ RSpec.describe Orangelight::HighlightProcessor do
   it "adds the class to the em tag" do
     node = Capybara::Node::Simple.new(rendered[0])
     expect(node).to have_selector('.highlight-query')
-    expect(rendered).to include('The lives of <em class="highlight-query">Black</em> and Latino <em class="highlight-query">teenagers</em> in a low-income :')
+    expect(rendered.first).to include('The lives of <span class="sr-only">Begin search term</span><em class="highlight-query">')
+    expect(rendered.first).to include('="highlight-query">teenagers<span class="sr-only">End search term</span></em> in a low-income :')
   end
 end
