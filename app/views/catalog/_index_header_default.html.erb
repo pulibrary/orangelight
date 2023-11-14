@@ -17,13 +17,13 @@
         <% if titlealt = document['title_vern_display'] %>
           <% altdir = titlealt.dir %>
             <% if altdir == "rtl" %>
-              <%= truncated_link document, titlealt, :counter => counter, :dir => altdir, :style => "float: right;" %>
+              <%= link_to_document document, titlealt, :counter => counter, :dir => altdir, :style => "float: right;" %>
             <% else %>
-              <%= truncated_link document, titlealt, :counter => counter, :dir => altdir %>
+              <%= link_to_document document, titlealt, :counter => counter, :dir => altdir %>
             <% end %>
             </h3>
             <h3 class="index_title">
         <% end %>
-        <%= truncated_link document, :title_display, :counter => counter %>
+        <%= link_to_document document, :title_display, :counter => counter %>
         </h3>
       </div>

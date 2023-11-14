@@ -196,18 +196,6 @@ module BlacklightHelper
     end
   end
 
-  # pulls some logic from blacklight's `link_to_document` helper
-  # then adds truncation of link text
-  def truncated_link(doc, field_or_string, opts = { counter: nil }, length = 200)
-    label_value = if field_or_string.class == String
-                    field_or_string
-                  else
-                    document_presenter(doc).heading
-                  end
-    label = label_value.truncate(length, separator: /\s/).html_safe
-    link_to label, search_state.url_for_document(doc), document_link_params(doc, opts)
-  end
-
   # Links to correct advanced search page based on advanced_type parameter value
   def edit_search_link
     url = BlacklightAdvancedSearch::Engine.routes.url_helpers.advanced_search_path(params.permit!.except(:controller, :action).to_h)

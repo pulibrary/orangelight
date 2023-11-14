@@ -19,8 +19,8 @@ describe 'Searching', type: :system, js: false do
 
     it 'renders a title with an em tag around the search term' do
       visit '/catalog?q=black+teenagers'
-      expect(page).to have_selector('#documents > article.blacklight-book.document.document-position-1 > div > div.record-wrapper > div > h3 > a > em:nth-child(1)', text: 'black')
-      expect(page).to have_selector('#documents > article.blacklight-book.document.document-position-1 > div > div.record-wrapper > div > h3 > a > em:nth-child(2)', text: 'teenagers')
+      expect(page).to have_selector('#documents > article.blacklight-book.document.document-position-1 > div > div.record-wrapper > div > h3 > a > em:nth-child(2)', text: 'black')
+      expect(page).to have_selector('#documents > article.blacklight-book.document.document-position-1 > div > div.record-wrapper > div > h3 > a > em:nth-child(4)', text: 'teenagers')
     end
   end
 
