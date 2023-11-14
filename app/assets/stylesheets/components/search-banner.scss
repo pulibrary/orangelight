@@ -1,0 +1,17 @@
+#results-banner {
+    background-color: #BBCDE5;
+    border: #8DA8CB solid 3px;
+    border-radius: 10px;
+    padding: 25px 10px 15px;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    margin-bottom: 10px;
+}
+
+#results-banner-icon::before {
+   font-size: 2rem;
+}
+
+#results-banner-text h3 {
+    margin-top: 0px;
+}
