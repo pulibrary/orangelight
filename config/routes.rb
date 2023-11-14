@@ -19,9 +19,6 @@ Rails.application.routes.draw do
   get 'catalog/:id/staff_view', to: 'catalog#librarian_view', as: 'staff_view_solr_document'
   post '/catalog/:id/linked_records/:field', to: 'catalog#linked_records'
 
-  get 'catalog/biased-results', to: 'catalog#biased_results', as: 'catalog_biased_results'
-  post 'catalog/biased-results', to: 'catalog#biased_results_submit', as: 'catalog_biased_results_submit'
-
   concern :marc_viewable, Blacklight::Marc::Routes::MarcViewable.new
   root to: 'catalog#index'
 
@@ -105,6 +102,10 @@ Rails.application.routes.draw do
   # For "Report Harmful Language" form
   get "/report_harmful_language", to: "feedback#report_harmful_language"
   post "/contact/report_harmful_language", to: "contact#report_harmful_language"
+
+  # For "Reporting Biased Search Results" form
+  get '/feedback/biased-results', to: 'feedback#biased_results', as: 'feedback_biased_results'
+  post '/feedback/biased-results', to: 'feeback#biased_results_submit', as: 'feedback_biased_results_submit'
 
   get '/thumbnail/:id', to: 'thumbnail#show'
 

@@ -10,7 +10,7 @@
   <br/>
 </div>
 
-<%= form_tag("/catalog/biased-results", method: :post) do %>
+<%= form_tag("/biased-results", method: :post) do %>
   <div>
      <%= label_tag(:message, "Message:") %><span style="color:red">*</span><br/>
     <%= text_area_tag(:message, "", :size => "60x5", placeholder: "Please include any additional comments here") %>
@@ -43,5 +43,3 @@
     You are reporting bias in the following search results:
   </div>
 <% end %>
-
-
