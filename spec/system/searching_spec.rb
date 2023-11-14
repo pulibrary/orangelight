@@ -12,6 +12,18 @@ describe 'Searching', type: :system, js: false do
     expect(page).to have_selector '.fa-search[aria-hidden="true"]'
   end
 
+  context 'with highlighting feature on' do
+    before do
+      allow(Flipflop).to receive(:highlighting?).and_return(true)
+    end
+
+    it 'renders a title with an em tag around the search term' do
+      visit '/catalog?q=black+teenagers'
+      expect(page).to have_selector('#documents > article.blacklight-book.document.document-position-1 > div > div.record-wrapper > div > h3 > a > em:nth-child(1)', text: 'black')
+      expect(page).to have_selector('#documents > article.blacklight-book.document.document-position-1 > div > div.record-wrapper > div > h3 > a > em:nth-child(2)', text: 'teenagers')
+    end
+  end
+
   context 'with firestone_locator on' do
     before do
       allow(Flipflop).to receive(:firestone_locator?).and_return(true)
@@ -195,6 +207,26 @@ describe 'Searching', type: :system, js: false do
     constraint_close_button = page.find('.constraint.query a')
     constraint_close_button.click
     expect(page).to have_content('Limit your search')
+  end
+
+  context 'When the search result form is on' do
+    before do
+      allow(Flipflop).to receive(:search_result_form?).and_return(true)
+    end
+    it 'displays a banner' do
+      visit '/catalog?search_field=all_fields&q=cats'
+      expect(page).to have_content('We are working to address bias')
+    end
+  end
+
+  context 'When the search result form is off' do
+    before do
+      allow(Flipflop).to receive(:search_result_form?).and_return(false)
+    end
+    it 'does not display a banner' do
+      visit '/catalog?search_field=all_fields&q=cats'
+      expect(page).not_to have_content('We are working to address bias')
+    end
   end
 end
 

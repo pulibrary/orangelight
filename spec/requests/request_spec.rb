@@ -6,9 +6,7 @@ require 'faraday'
 describe 'blacklight tests' do
   include ApplicationHelper
 
-  before do
-    stub_holding_locations
-  end
+  before { stub_holding_locations }
 
   describe 'ICU folding keyword search' do
     it 'finds an Arabic entry from a Romanized search term' do
@@ -136,7 +134,10 @@ describe 'blacklight tests' do
   end
 
   describe 'dir tag check' do
-    before { stub_holding_locations }
+    before do
+      stub_holding_locations
+      allow(Flipflop).to receive(:highlighting?).and_return(false)
+    end
 
     it 'adds rtl dir for title and author field in search results' do
       get '/catalog/9947053043506421/raw'
@@ -455,7 +456,10 @@ describe 'blacklight tests' do
   end
 
   describe 'escaping search/browse link urls' do
-    before { stub_holding_locations }
+    before do
+      stub_holding_locations
+      allow(Flipflop).to receive(:highlighting?).and_return(false)
+    end
 
     it 'search result name facet/browse urls' do
       get '/?f%5Blocation%5D%5B%5D=East+Asian+Library'
@@ -541,6 +545,45 @@ describe 'blacklight tests' do
       json = JSON.parse(response.body)
 
       expect(json["data"][0]["attributes"]["electronic_portfolio_s"]).not_to be_blank
+    end
+  end
+
+  describe 'search algorithm selection' do
+    before do
+      allow(Flipflop).to receive(:multi_algorithm?).and_return(true)
+    end
+
+    context "when the search_algorithm parameter is not present" do
+      it "ranks using the default request handler" do
+        get "/catalog.json?q=roman"
+        json = JSON.parse(response.body)
+
+        expect(json["data"][0]["attributes"]["title"]).to eq "Ogonek : roman / ."
+      end
+    end
+
+    context "when the search_algorithm parameter is set to 'engineering'" do
+      it "ranks using the engineering request handler" do
+        get "/catalog.json?q=roman&search_algorithm=engineering"
+        json = JSON.parse(response.body)
+
+        expect(json["data"][0]["attributes"]["title"]).to eq "Reconstructing the Vitruvian Scorpio: An Engineering Analysis of Roman Field Artillery"
+      end
+    end
+
+    context "advanced search and jsonld are enabled" do
+      before do
+        allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
+        allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
+      end
+
+      # TODO: what should this really do?  Should the advanced search and jsonld get turned off when an algorithm is swapped
+      #       Should we see if we can combine the search handlers by adding a query parameter, or make a combined handler that has both?
+      it "retuns the jsonld result not the engineering result" do
+        get "/catalog.json?utf8=%E2%9C%93&clause%5B0%5D%5Bfield%5D=all_fields&clause%5B0%5D%5Bquery%5D=roman&clause%5B1%5D%5Bop%5D=must&clause%5B1%5D%5Bfield%5D=author&clause%5B1%5D%5Bquery%5D=&clause%5B2%5D%5Bop%5D=must&clause%5B2%5D%5Bfield%5D=title&clause%5B2%5D%5Bquery%5D=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&sort=score+desc%2C+pub_date_start_sort+desc%2C+title_sort+asc&commit=Search&search_algorithm=engineering"
+        json = JSON.parse(response.body)
+        expect(json["data"][0]["attributes"]["title"]).to eq "Ogonek : roman / ."
+      end
     end
   end
 end

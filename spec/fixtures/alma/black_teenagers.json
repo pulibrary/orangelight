@@ -1,0 +1,1667 @@
+[
+    {
+        "id": [
+            "99125315781206421"
+        ],
+        "numeric_id_b": [
+            true
+        ],
+        "cjk_all": [
+            ""
+        ],
+        "cjk_notes": [
+            ""
+        ],
+        "author_display": [
+            "Chay, Kenneth Y."
+        ],
+        "author_sort": [
+            "Chay, Kenneth Y."
+        ],
+        "author_citation_display": [
+            "Chay, Kenneth Y.",
+            "National Bureau of Economic Research",
+            "Guryan, Jonathan",
+            "Mazumder, Bhashkar"
+        ],
+        "author_roles_1display": [
+            "{\"secondary_authors\":[\"National Bureau of Economic Research\",\"Guryan, Jonathan\",\"Mazumder, Bhashkar\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Chay, Kenneth Y.\"}"
+        ],
+        "author_s": [
+            "Chay, Kenneth Y.",
+            "National Bureau of Economic Research",
+            "Guryan, Jonathan",
+            "Mazumder, Bhashkar"
+        ],
+        "marc_relator_display": [
+            "Author"
+        ],
+        "title_display": [
+            "Birth Cohort and the Black-White Achievement Gap: The Roles of Access and Health Soon After Birth / Kenneth Y. Chay, Jonathan Guryan, Bhashkar Mazumder."
+        ],
+        "title_a_index": [
+            "Birth Cohort and the Black-White Achievement Gap"
+        ],
+        "title_sort": [
+            "Birth Cohort and the Black-White Achievement Gap: The Roles of Access and Health Soon After Birth / Kenneth Y. Chay, Jonathan Guryan, Bhashkar Mazumder."
+        ],
+        "title_no_h_index": [
+            "Birth Cohort and the Black-White Achievement Gap: The Roles of Access and Health Soon After Birth / Kenneth Y. Chay, Jonathan Guryan, Bhashkar Mazumder."
+        ],
+        "title_t": [
+            "Birth Cohort and the Black-White Achievement Gap: The Roles of Access and Health Soon After Birth / Kenneth Y. Chay, Jonathan Guryan, Bhashkar Mazumder."
+        ],
+        "title_citation_display": [
+            "Birth Cohort and the Black-White Achievement Gap: The Roles of Access and Health Soon After Birth"
+        ],
+        "series_statement_index": [
+            "NBER working paper series no. w15078"
+        ],
+        "series_ae_index": [
+            "Working Paper Series (National Bureau of Economic Research) no. w15078."
+        ],
+        "compiled_created_t": [
+            "Birth Cohort and the Black-White Achievement Gap: The Roles of Access and Health Soon After Birth / Kenneth Y. Chay, Jonathan Guryan, Bhashkar Mazumder."
+        ],
+        "pub_created_display": [
+            "Cambridge, Mass. National Bureau of Economic Research 2009."
+        ],
+        "pub_created_s": [
+            "Cambridge, Mass. National Bureau of Economic Research 2009."
+        ],
+        "pub_citation_display": [
+            "Cambridge, Mass: National Bureau of Economic Research"
+        ],
+        "pub_date_display": [
+            "2009"
+        ],
+        "pub_date_start_sort": [
+            "2009"
+        ],
+        "cataloged_tdt": [
+            "2012-02-25T21:50:53Z"
+        ],
+        "format": [
+            "Book"
+        ],
+        "description_display": [
+            "1 online resource: illustrations (black and white);"
+        ],
+        "description_t": [
+            "1 online resource: illustrations (black and white);"
+        ],
+        "number_of_pages_citation_display": [
+            "1 online resource"
+        ],
+        "series_display": [
+            "Working Paper Series (National Bureau of Economic Research) no. w15078.",
+            "NBER working paper series no. w15078"
+        ],
+        "more_in_this_series_t": [
+            "Working Paper Series (National Bureau of Economic Research)"
+        ],
+        "notes_index": [
+            "Print version record",
+            "One literature documents a significant, black-white gap in average test scores, while another finds a substantial narrowing of the gap during the 1980's, and stagnation in convergence after.  We use two data sources -- the Long Term Trends NAEP and AFQT scores for the universe of applicants to the U.S. military between 1976 and 1991 -- to show: 1) the 1980's convergence is due to relative improvements across successive cohorts of blacks born between 1963 and the early 1970's and not a secular narrowing in the gap over time; and 2) the across-cohort gains were concentrated among blacks in the South.  We then demonstrate that the timing and variation across states in the AFQT convergence closely tracks racial convergence in measures of health and hospital access in the years immediately following birth.  We show that the AFQT convergence is highly correlated with post-neonatal mortality rates and not with neonatal mortality and low birth weight rates, and that this result cannot be explained by schooling desegregation and changes in family background.  We conclude that investments in health through increased access at very early ages have large, long-term effects on achievement, and that the integration of hospitals during the 1960's affected the test performance of black teenagers in the 1980's.",
+            "June 2009."
+        ],
+        "summary_note_display": [
+            "One literature documents a significant, black-white gap in average test scores, while another finds a substantial narrowing of the gap during the 1980's, and stagnation in convergence after.  We use two data sources -- the Long Term Trends NAEP and AFQT scores for the universe of applicants to the U.S. military between 1976 and 1991 -- to show: 1) the 1980's convergence is due to relative improvements across successive cohorts of blacks born between 1963 and the early 1970's and not a secular narrowing in the gap over time; and 2) the across-cohort gains were concentrated among blacks in the South.  We then demonstrate that the timing and variation across states in the AFQT convergence closely tracks racial convergence in measures of health and hospital access in the years immediately following birth.  We show that the AFQT convergence is highly correlated with post-neonatal mortality rates and not with neonatal mortality and low birth weight rates, and that this result cannot be explained by schooling desegregation and changes in family background.  We conclude that investments in health through increased access at very early ages have large, long-term effects on achievement, and that the integration of hospitals during the 1960's affected the test performance of black teenagers in the 1980's."
+        ],
+        "notes_display": [
+            "June 2009."
+        ],
+        "source_desc_notes_display": [
+            "Print version record"
+        ],
+        "language_name_display": [
+            "English"
+        ],
+        "language_facet": [
+            "English"
+        ],
+        "publication_place_facet": [
+            "Massachusetts"
+        ],
+        "language_iana_s": [
+            "en"
+        ],
+        "subject_unstem_search": null,
+        "local_subject_unstem_search": null,
+        "siku_subject_unstem_search": null,
+        "homoit_subject_unstem_search": null,
+        "related_name_json_1display": [
+            "{\"Related name\":[\"National Bureau of Economic Research\",\"Guryan, Jonathan\",\"Mazumder, Bhashkar\"]}"
+        ],
+        "other_title_index": [
+            "Birth Cohort and the Black-White Achievement Gap"
+        ],
+        "other_title_display": [
+            "Birth Cohort and the Black-White Achievement Gap"
+        ],
+        "alt_title_246_display": [
+            "Birth Cohort and the Black-White Achievement Gap"
+        ],
+        "standard_no_index": [
+            "w15078",
+            "3240000000012979",
+            "993240000000012979"
+        ],
+        "name_title_browse_s": [
+            "Chay, Kenneth Y.. Birth Cohort and the Black-White Achievement Gap"
+        ],
+        "electronic_portfolio_s": [
+            "{\"desc\":null,\"title\":\"NBER Working papers\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53799448390006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+        ],
+        "access_facet": [
+            "Online"
+        ]
+    },
+    {
+        "id": [
+            "99129071662406421"
+        ],
+        "numeric_id_b": [
+            true
+        ],
+        "cjk_all": [
+            ""
+        ],
+        "cjk_notes": [
+            ""
+        ],
+        "author_roles_1display": [
+            "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+        ],
+        "title_display": [
+            "Pregnancy among black teenagers : hearing before the Subcommittee on Public Assistance and Unemployment Compensation of the Committee on Ways and Means, House of Representatives, Ninety-ninth Congress, second session, February 18, 1986. [1986]"
+        ],
+        "title_a_index": [
+            "Pregnancy among black teenagers : hearing before the Subcommittee on Public Assistance and Unemployment Compensation of the Committee on Ways and Means, House of Representatives, Ninety-ninth Congress, second session, February 18, 1986. [1986]"
+        ],
+        "title_sort": [
+            "Pregnancy among black teenagers : hearing before the Subcommittee on Public Assistance and Unemployment Compensation of the Committee on Ways and Means, House of Representatives, Ninety-ninth Congress, second session, February 18, 1986. [1986]"
+        ],
+        "title_no_h_index": [
+            "Pregnancy among black teenagers : hearing before the Subcommittee on Public Assistance and Unemployment Compensation of the Committee on Ways and Means, House of Representatives, Ninety-ninth Congress, second session, February 18, 1986. [1986]"
+        ],
+        "title_t": [
+            "Pregnancy among black teenagers : hearing before the Subcommittee on Public Assistance and Unemployment Compensation of the Committee on Ways and Means, House of Representatives, Ninety-ninth Congress, second session, February 18, 1986. [1986]"
+        ],
+        "title_citation_display": [
+            "Pregnancy among black teenagers : hearing before the Subcommittee on Public Assistance and Unemployment Compensation of the Committee on Ways and Means, House of Representatives, Ninety-ninth Congress, second session, February 18, 1986. [1986]"
+        ],
+        "compiled_created_t": [
+            "Pregnancy among black teenagers : hearing before the Subcommittee on Public Assistance and Unemployment Compensation of the Committee on Ways and Means, House of Representatives, Ninety-ninth Congress, second session, February 18, 1986. [1986]"
+        ],
+        "pub_date_display": [
+            "1986"
+        ],
+        "pub_date_start_sort": [
+            "1986"
+        ],
+        "cataloged_tdt": [
+            "2023-10-25T01:57:35Z"
+        ],
+        "format": [
+            "Book"
+        ],
+        "language_name_display": [
+            "English"
+        ],
+        "language_facet": [
+            "English"
+        ],
+        "language_iana_s": [
+            "en"
+        ],
+        "subject_unstem_search": null,
+        "local_subject_unstem_search": null,
+        "siku_subject_unstem_search": null,
+        "homoit_subject_unstem_search": null,
+        "other_title_index": [
+            "Pregnancy among black teenagers "
+        ],
+        "other_title_display": [
+            "Pregnancy among black teenagers "
+        ],
+        "alt_title_246_display": [
+            "Pregnancy among black teenagers "
+        ],
+        "standard_no_index": [
+            "5470000003678329",
+            "995470000003678329"
+        ],
+        "electronic_portfolio_s": [
+            "{\"desc\":null,\"title\":\"HeinOnline U.S. Congressional Documents Library\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53995334580006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+        ],
+        "access_facet": [
+            "Online"
+        ]
+    },
+    {
+        "id": [
+            "99126857188706421"
+        ],
+        "numeric_id_b": [
+            true
+        ],
+        "cjk_all": [
+            ""
+        ],
+        "cjk_notes": [
+            ""
+        ],
+        "author_display": [
+            "Clemens, Randall F."
+        ],
+        "author_sort": [
+            "Clemens, Randall F."
+        ],
+        "author_citation_display": [
+            "Clemens, Randall F."
+        ],
+        "author_roles_1display": [
+            "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Clemens, Randall F.\"}"
+        ],
+        "author_s": [
+            "Clemens, Randall F."
+        ],
+        "marc_relator_display": [
+            "Author"
+        ],
+        "title_display": [
+            "The lives of Black and Latino teenagers in a low-income : examining methodological issues when conducting a neighborhood ethnography / Randall Clemens."
+        ],
+        "title_a_index": [
+            "The lives of Black and Latino teenagers in a low-income"
+        ],
+        "title_sort": [
+            "lives of Black and Latino teenagers in a low-income : examining methodological issues when conducting a neighborhood ethnography / Randall Clemens."
+        ],
+        "title_no_h_index": [
+            "The lives of Black and Latino teenagers in a low-income : examining methodological issues when conducting a neighborhood ethnography / Randall Clemens.",
+            "lives of Black and Latino teenagers in a low-income : examining methodological issues when conducting a neighborhood ethnography / Randall Clemens."
+        ],
+        "title_t": [
+            "The lives of Black and Latino teenagers in a low-income : examining methodological issues when conducting a neighborhood ethnography / Randall Clemens."
+        ],
+        "title_citation_display": [
+            "The lives of Black and Latino teenagers in a low-income : examining methodological issues when conducting a neighborhood ethnography"
+        ],
+        "series_statement_index": [
+            "SAGE research methods. Cases"
+        ],
+        "series_ae_index": [
+            "SAGE research methods. Cases."
+        ],
+        "compiled_created_t": [
+            "The lives of Black and Latino teenagers in a low-income : examining methodological issues when conducting a neighborhood ethnography / Randall Clemens."
+        ],
+        "pub_created_display": [
+            "London : SAGE Publications, 2014."
+        ],
+        "pub_created_s": [
+            "London : SAGE Publications, 2014."
+        ],
+        "pub_citation_display": [
+            "London: SAGE Publications"
+        ],
+        "pub_date_display": [
+            "2014"
+        ],
+        "pub_date_start_sort": [
+            "2014"
+        ],
+        "cataloged_tdt": [
+            "2023-03-09T12:21:02Z"
+        ],
+        "format": [
+            "Book"
+        ],
+        "description_display": [
+            "1 online resource."
+        ],
+        "description_t": [
+            "1 online resource."
+        ],
+        "number_of_pages_citation_display": [
+            "1 online resource"
+        ],
+        "series_display": [
+            "SAGE research methods. Cases."
+        ],
+        "more_in_this_series_t": [
+            "SAGE research methods. Cases"
+        ],
+        "notes_index": [
+            "Includes bibliographical references.",
+            "This case study examines the methodological challenges and opportunities that occurred while conducting research for my dissertation, a neighborhood study of Black and Latino male teenagers living in South Central Los Angeles. The purpose of the study was to understand, when adolescents are not in school, where, with whom, and for what purpose they spend their time, and how these learning experiences influence college access.",
+            "Specialized.",
+            "Description based on online resource; title from home page (viewed on November 18, 2015)."
+        ],
+        "summary_note_display": [
+            "This case study examines the methodological challenges and opportunities that occurred while conducting research for my dissertation, a neighborhood study of Black and Latino male teenagers living in South Central Los Angeles. The purpose of the study was to understand, when adolescents are not in school, where, with whom, and for what purpose they spend their time, and how these learning experiences influence college access."
+        ],
+        "bib_ref_notes_display": [
+            "Includes bibliographical references."
+        ],
+        "target_aud_notes_display": [
+            "Specialized."
+        ],
+        "source_desc_notes_display": [
+            "Description based on online resource; title from home page (viewed on November 18, 2015)."
+        ],
+        "language_name_display": [
+            "English"
+        ],
+        "language_facet": [
+            "English"
+        ],
+        "publication_place_facet": [
+            "England"
+        ],
+        "language_iana_s": [
+            "en"
+        ],
+        "lc_subject_display": [
+            "African American teenagers—California—Los Angeles—Research—Case studies",
+            "Hispanic American teenagers—California—Los Angeles—Research—Case studies",
+            "Ethnology—Case studies"
+        ],
+        "lc_subject_include_archaic_search_terms_index": [
+            "African American teenagers—California—Los Angeles—Research—Case studies",
+            "Hispanic American teenagers—California—Los Angeles—Research—Case studies",
+            "Ethnology—Case studies"
+        ],
+        "subject_unstem_search": [
+            "African American teenagers—California—Los Angeles—Research—Case studies",
+            "Hispanic American teenagers—California—Los Angeles—Research—Case studies",
+            "Ethnology—Case studies"
+        ],
+        "local_subject_unstem_search": null,
+        "siku_subject_unstem_search": null,
+        "homoit_subject_unstem_search": null,
+        "subject_facet": [
+            "African American teenagers—California—Los Angeles—Research—Case studies",
+            "Hispanic American teenagers—California—Los Angeles—Research—Case studies",
+            "Ethnology—Case studies"
+        ],
+        "subject_topic_facet": [
+            "African American teenagers",
+            "California",
+            "Los Angeles",
+            "Research",
+            "Hispanic American teenagers",
+            "Ethnology"
+        ],
+        "lc_1letter_facet": [
+            "E - History of the Americas (General)"
+        ],
+        "lc_rest_facet": [
+            "E - History of the Americas (General)"
+        ],
+        "call_number_scheme_facet": [
+            "Library of Congress"
+        ],
+        "call_number_group_facet": [
+            "E - History of the Americas (General)"
+        ],
+        "call_number_full_facet": [
+            "E - History of the Americas (General)"
+        ],
+        "genre_facet": [
+            "Case studies"
+        ],
+        "isbn_display": [
+            "9781473950511 (ebook) :"
+        ],
+        "isbn_s": [
+            "9781473950511"
+        ],
+        "oclc_s": [
+            "953360079"
+        ],
+        "standard_no_index": [
+            "953360079",
+            "EDZ0001280189",
+            "9914940516700041"
+        ],
+        "other_version_s": [
+            "9781473950511",
+            "ocn953360079"
+        ],
+        "name_title_browse_s": [
+            "Clemens, Randall F.. The lives of Black and Latino teenagers in a low-income"
+        ],
+        "electronic_portfolio_s": [
+            "{\"desc\":null,\"title\":\"SAGE Research Methods Cases Part I\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53965462350006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+        ],
+        "access_facet": [
+            "Online"
+        ]
+    },
+    {
+        "id": [
+            "99126846939806421"
+        ],
+        "numeric_id_b": [
+            true
+        ],
+        "cjk_all": [
+            ""
+        ],
+        "cjk_notes": [
+            ""
+        ],
+        "author_citation_display": [
+            "Coleman, Bonnie Watson",
+            "Congressional Black Caucus"
+        ],
+        "author_roles_1display": [
+            "{\"secondary_authors\":[\"Coleman, Bonnie Watson\",\"Congressional Black Caucus\"],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+        ],
+        "author_s": [
+            "Coleman, Bonnie Watson",
+            "Congressional Black Caucus. Emergency Taskforce on Black Youth Suicide and Mental Health"
+        ],
+        "title_display": [
+            "Ring the alarm : the crisis of Black youth suicide in America / a report to Congress from the Congressional Black Caucus Emergency Taskforce on Black Youth Suicide and Mental Health ; Representative Bonnie Watson Coleman, task force chair."
+        ],
+        "title_a_index": [
+            "Ring the alarm"
+        ],
+        "title_sort": [
+            "Ring the alarm : the crisis of Black youth suicide in America / a report to Congress from the Congressional Black Caucus Emergency Taskforce on Black Youth Suicide and Mental Health ; Representative Bonnie Watson Coleman, task force chair."
+        ],
+        "title_no_h_index": [
+            "Ring the alarm : the crisis of Black youth suicide in America / a report to Congress from the Congressional Black Caucus Emergency Taskforce on Black Youth Suicide and Mental Health ; Representative Bonnie Watson Coleman, task force chair."
+        ],
+        "title_t": [
+            "Ring the alarm : the crisis of Black youth suicide in America / a report to Congress from the Congressional Black Caucus Emergency Taskforce on Black Youth Suicide and Mental Health ; Representative Bonnie Watson Coleman, task force chair."
+        ],
+        "title_citation_display": [
+            "Ring the alarm : the crisis of Black youth suicide in America"
+        ],
+        "compiled_created_t": [
+            "Ring the alarm : the crisis of Black youth suicide in America / a report to Congress from the Congressional Black Caucus Emergency Taskforce on Black Youth Suicide and Mental Health ; Representative Bonnie Watson Coleman, task force chair."
+        ],
+        "pub_created_display": [
+            "[Washington, D.C.?] : [Congressional Black Caucus Emergency Taskforce on Black Youth Suicide and Mental Health], [2019]"
+        ],
+        "pub_created_s": [
+            "[Washington, D.C.?] : [Congressional Black Caucus Emergency Taskforce on Black Youth Suicide and Mental Health], [2019]"
+        ],
+        "pub_citation_display": [
+            "Washington, D.C.?: Congressional Black Caucus Emergency Taskforce on Black Youth Suicide and Mental Health"
+        ],
+        "pub_date_display": [
+            "2019"
+        ],
+        "pub_date_start_sort": [
+            "2019"
+        ],
+        "cataloged_tdt": [
+            "2023-02-23T20:43:01Z"
+        ],
+        "format": [
+            "Book"
+        ],
+        "description_display": [
+            "1 online resource (38 pages) : illustrations"
+        ],
+        "description_t": [
+            "1 online resource (38 pages) : illustrations"
+        ],
+        "number_of_pages_citation_display": [
+            "1 online resource (38 pages)"
+        ],
+        "geocode_display": [
+            "United States"
+        ],
+        "notes_index": [
+            "Includes bibliographical references (pages 32-38).",
+            "Executive summary. Introduction ; A growing crisis ; The challenge ahead ; The first steps toward action ; The path forward -- Recommendations. NIH/NIMH funding and attention ; Demonstration projects ; Promoting best and promising practices ; Community engagement and awareness ; National website and repository for data on suicidal behavior ; Engagement of state and local governments ; Ongoing work from the CBC -- Overview -- Research. Suicide and suicidal behavior among Black youth ; Risk & protective factors for suicide among Black youth ; Mental health utilization and engagement among Black youth ; Interventions ; Funding disparity ; Background ; Treatment considerations for Black youth ; Interventions for behavioral health disorders and suicide risk ; Looking toward the future -- Resources for families and professionals. Organizations for mental health and suicide prevention ; Finding mental health care ; Mental health provider associations with searchable databases ; Help for child and teen survivors of suicide loss ; Books ; Additional organizations and programs -- Glossary -- References.",
+            "\"Over the last several years, data has emerged indicating an alarming increase in the suicide rates for Black children and teenagers over the past generation. While research has also shown climbing rates for youth from other racial and ethnic groups, this trend in Black youth runs counter to historical data showing lower rates of suicide among Black Americans. It challenges the public perception that Black youth simply do not commit suicide. Additional research about suicidal behaviors has raised questions about whether the path from suicidal thoughts to attempts is well understood in Black youth, and whether we have the knowledge and tools to intervene before the worst happens\"--Race & Opportunity Lab website",
+            "Online resource, viewed September 25, 2020."
+        ],
+        "summary_note_display": [
+            "\"Over the last several years, data has emerged indicating an alarming increase in the suicide rates for Black children and teenagers over the past generation. While research has also shown climbing rates for youth from other racial and ethnic groups, this trend in Black youth runs counter to historical data showing lower rates of suicide among Black Americans. It challenges the public perception that Black youth simply do not commit suicide. Additional research about suicidal behaviors has raised questions about whether the path from suicidal thoughts to attempts is well understood in Black youth, and whether we have the knowledge and tools to intervene before the worst happens\"--Race & Opportunity Lab website"
+        ],
+        "bib_ref_notes_display": [
+            "Includes bibliographical references (pages 32-38)."
+        ],
+        "source_desc_notes_display": [
+            "Online resource, viewed September 25, 2020."
+        ],
+        "language_name_display": [
+            "English"
+        ],
+        "language_facet": [
+            "English"
+        ],
+        "publication_place_facet": [
+            "District of Columbia"
+        ],
+        "language_iana_s": [
+            "en"
+        ],
+        "contents_display": [
+            "Executive summary. Introduction ; A growing crisis ; The challenge ahead ; The first steps toward action ; The path forward",
+            "Recommendations. NIH/NIMH funding and attention ; Demonstration projects ; Promoting best and promising practices ; Community engagement and awareness ; National website and repository for data on suicidal behavior ; Engagement of state and local governments ; Ongoing work from the CBC",
+            "Overview",
+            "Research. Suicide and suicidal behavior among Black youth ; Risk & protective factors for suicide among Black youth ; Mental health utilization and engagement among Black youth ; Interventions ; Funding disparity ; Background ; Treatment considerations for Black youth ; Interventions for behavioral health disorders and suicide risk ; Looking toward the future",
+            "Resources for families and professionals. Organizations for mental health and suicide prevention ; Finding mental health care ; Mental health provider associations with searchable databases ; Help for child and teen survivors of suicide loss ; Books ; Additional organizations and programs",
+            "Glossary",
+            "References."
+        ],
+        "lc_subject_display": [
+            "African American youth—Suicidal behavior",
+            "African American youth—Suicidal behavior—Government policy",
+            "African American youth—Mental health services",
+            "Suicide—Prevention—Government policy—United States",
+            "Mental health policy—United States"
+        ],
+        "lc_subject_include_archaic_search_terms_index": [
+            "African American youth—Suicidal behavior",
+            "African American youth—Suicidal behavior—Government policy",
+            "African American youth—Mental health services",
+            "Suicide—Prevention—Government policy—United States",
+            "Mental health policy—United States"
+        ],
+        "subject_unstem_search": [
+            "African American youth—Suicidal behavior",
+            "African American youth—Suicidal behavior—Government policy",
+            "African American youth—Mental health services",
+            "Suicide—Prevention—Government policy—United States",
+            "Mental health policy—United States"
+        ],
+        "local_subject_unstem_search": null,
+        "siku_subject_unstem_search": null,
+        "homoit_subject_unstem_search": null,
+        "subject_facet": [
+            "African American youth—Suicidal behavior",
+            "African American youth—Suicidal behavior—Government policy",
+            "African American youth—Mental health services",
+            "Suicide—Prevention—Government policy—United States",
+            "Mental health policy—United States",
+            "official reports",
+            "Informational works"
+        ],
+        "lcgft_s": [
+            "Informational works"
+        ],
+        "aat_s": [
+            "official reports"
+        ],
+        "subject_topic_facet": [
+            "African American youth",
+            "Suicidal behavior",
+            "Government policy",
+            "Mental health services",
+            "Suicide",
+            "Prevention",
+            "United States",
+            "Mental health policy"
+        ],
+        "lc_1letter_facet": [
+            "E - History of the Americas (General)"
+        ],
+        "lc_rest_facet": [
+            "E - History of the Americas (General)"
+        ],
+        "call_number_scheme_facet": [
+            "Library of Congress"
+        ],
+        "call_number_group_facet": [
+            "E - History of the Americas (General)"
+        ],
+        "call_number_full_facet": [
+            "E - History of the Americas (General)"
+        ],
+        "genre_facet": [
+            "official reports",
+            "Informational works"
+        ],
+        "related_name_json_1display": [
+            "{\"Task force chair\":[\"Coleman, Bonnie Watson\"],\"Issuing body\":[\"Congressional Black Caucus. Emergency Taskforce on Black Youth Suicide and Mental Health\"]}"
+        ],
+        "oclc_s": [
+            "1197783646"
+        ],
+        "standard_no_index": [
+            "1197783646",
+            "on1197783646"
+        ],
+        "other_version_s": [
+            "on1197783646"
+        ],
+        "electronic_portfolio_s": [
+            "{\"desc\":null,\"title\":\"DataSpace (DSpace) at Princeton Publicly Accessible Monographs\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53963832280006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+        ],
+        "access_facet": [
+            "Online"
+        ]
+    },
+    {
+        "id": [
+            "99125476820706421"
+        ],
+        "numeric_id_b": [
+            true
+        ],
+        "cjk_all": [
+            ""
+        ],
+        "cjk_notes": [
+            ""
+        ],
+        "author_display": [
+            "Maja, Botshabelo"
+        ],
+        "author_sort": [
+            "Maja, Botshabelo"
+        ],
+        "author_citation_display": [
+            "Maja, Botshabelo"
+        ],
+        "author_roles_1display": [
+            "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Maja, Botshabelo\"}"
+        ],
+        "author_s": [
+            "Maja, Botshabelo"
+        ],
+        "marc_relator_display": [
+            "Author"
+        ],
+        "title_display": [
+            "Black youth aspirations : imagined futures and transitions into adulthood / by Botshabelo Maja (Independent Scholar, Republic of South Africa)."
+        ],
+        "title_a_index": [
+            "Black youth aspirations"
+        ],
+        "title_sort": [
+            "Black youth aspirations : imagined futures and transitions into adulthood / by Botshabelo Maja (Independent Scholar, Republic of South Africa)."
+        ],
+        "title_no_h_index": [
+            "Black youth aspirations : imagined futures and transitions into adulthood / by Botshabelo Maja (Independent Scholar, Republic of South Africa)."
+        ],
+        "title_t": [
+            "Black youth aspirations : imagined futures and transitions into adulthood / by Botshabelo Maja (Independent Scholar, Republic of South Africa)."
+        ],
+        "title_citation_display": [
+            "Black youth aspirations : imagined futures and transitions into adulthood"
+        ],
+        "compiled_created_t": [
+            "Black youth aspirations : imagined futures and transitions into adulthood / by Botshabelo Maja (Independent Scholar, Republic of South Africa)."
+        ],
+        "edition_display": [
+            "First edition."
+        ],
+        "pub_created_display": [
+            "United Kingdom : Emerald Publishing Limited, 2022.",
+            "©2022"
+        ],
+        "pub_created_s": [
+            "United Kingdom : Emerald Publishing Limited, 2022.",
+            "©2022"
+        ],
+        "pub_citation_display": [
+            "United Kingdom: Emerald Publishing Limited"
+        ],
+        "pub_date_display": [
+            "2022"
+        ],
+        "pub_date_start_sort": [
+            "2022"
+        ],
+        "pub_date_end_sort": [
+            "2022"
+        ],
+        "cataloged_tdt": [
+            "2022-04-06T14:21:04Z"
+        ],
+        "format": [
+            "Book"
+        ],
+        "description_display": [
+            "xi, 205 pages : illustrations ; 24 cm"
+        ],
+        "description_t": [
+            "xi, 205 pages : illustrations ; 24 cm"
+        ],
+        "number_of_pages_citation_display": [
+            "xi, 205 pages"
+        ],
+        "geocode_display": [
+            "South Africa"
+        ],
+        "notes_index": [
+            "Includes bibliographical references and index.",
+            "Chapter 1. Introduction -- Chapter 2. Narratives of black youth -- Chapter 3. OATS : A new conceptual framework -- Chapter 4. An OATS cross-case analysis -- Chapter 5. Conclusion.",
+            "This book is about how to trigger the capacity to aspire among black youth. Examining the transition out of adulthood and imagined futures of black youth, Maja helps us understand how black youth aspirations might be raised, and how a better future for young people can be achieved. Black Youth Aspirations tracks the journeys of nine black teenagers in South Africa, and how they navigate their way through the final two years of schooling. Maja explores and discovers the maps of the future that youths envision, and investigates how their immediate environments in and out of school serve as instruments that help them interpret, navigate, and manifest those aspirations. Presenting a new conceptual tool, OATS (Objects, Agency, Tools, and Spaces), seeks to provide practical meaning on how to best develop young people's capacity to aspire. Filling it gap in the scholarly literature, and digging deeper than the statistics ever could, this book is a dynamic interaction between research among youth and the application of concepts to make sense of their stories. As the first book that discusses the aspirational pathways of working class black youth in the context of the global south, the theoretical and research approaches on which the book is based make it an exciting and novel addition to the global literature in the area of youth studies."
+        ],
+        "summary_note_display": [
+            "This book is about how to trigger the capacity to aspire among black youth. Examining the transition out of adulthood and imagined futures of black youth, Maja helps us understand how black youth aspirations might be raised, and how a better future for young people can be achieved. Black Youth Aspirations tracks the journeys of nine black teenagers in South Africa, and how they navigate their way through the final two years of schooling. Maja explores and discovers the maps of the future that youths envision, and investigates how their immediate environments in and out of school serve as instruments that help them interpret, navigate, and manifest those aspirations. Presenting a new conceptual tool, OATS (Objects, Agency, Tools, and Spaces), seeks to provide practical meaning on how to best develop young people's capacity to aspire. Filling it gap in the scholarly literature, and digging deeper than the statistics ever could, this book is a dynamic interaction between research among youth and the application of concepts to make sense of their stories. As the first book that discusses the aspirational pathways of working class black youth in the context of the global south, the theoretical and research approaches on which the book is based make it an exciting and novel addition to the global literature in the area of youth studies."
+        ],
+        "bib_ref_notes_display": [
+            "Includes bibliographical references and index."
+        ],
+        "language_name_display": [
+            "English"
+        ],
+        "language_facet": [
+            "English"
+        ],
+        "publication_place_facet": [
+            "England"
+        ],
+        "language_iana_s": [
+            "en"
+        ],
+        "contents_display": [
+            "Chapter 1. Introduction",
+            "Chapter 2. Narratives of black youth",
+            "Chapter 3. OATS : A new conceptual framework",
+            "Chapter 4. An OATS cross-case analysis",
+            "Chapter 5. Conclusion."
+        ],
+        "lc_subject_display": [
+            "Youth, Black—South Africa",
+            "Youth, Black—Aspiration",
+            "Youth, Black—Performance",
+            "Teenagers, Black—Aspiration",
+            "Student aspirations—South Africa",
+            "Vocational interests",
+            "Occupations",
+            "Academic achievement",
+            "Success"
+        ],
+        "lc_subject_include_archaic_search_terms_index": [
+            "Youth, Black—South Africa",
+            "Youth, Black—Aspiration",
+            "Youth, Black—Performance",
+            "Teenagers, Black—Aspiration",
+            "Student aspirations—South Africa",
+            "Vocational interests",
+            "Occupations",
+            "Academic achievement",
+            "Success"
+        ],
+        "subject_unstem_search": [
+            "Youth, Black—South Africa",
+            "Youth, Black—Aspiration",
+            "Youth, Black—Performance",
+            "Teenagers, Black—Aspiration",
+            "Student aspirations—South Africa",
+            "Vocational interests",
+            "Occupations",
+            "Academic achievement",
+            "Success"
+        ],
+        "local_subject_unstem_search": null,
+        "siku_subject_unstem_search": null,
+        "homoit_subject_unstem_search": null,
+        "subject_facet": [
+            "Youth, Black—South Africa",
+            "Youth, Black—Aspiration",
+            "Youth, Black—Performance",
+            "Teenagers, Black—Aspiration",
+            "Student aspirations—South Africa",
+            "Vocational interests",
+            "Occupations",
+            "Academic achievement",
+            "Success"
+        ],
+        "subject_topic_facet": [
+            "Youth, Black",
+            "South Africa",
+            "Aspiration",
+            "Performance",
+            "Teenagers, Black",
+            "Student aspirations",
+            "Vocational interests",
+            "Occupations",
+            "Academic achievement",
+            "Success"
+        ],
+        "lc_1letter_facet": [
+            "H - Social Sciences"
+        ],
+        "lc_rest_facet": [
+            "HQ - The Family, Marriage, Woman"
+        ],
+        "call_number_scheme_facet": [
+            "Library of Congress"
+        ],
+        "call_number_group_facet": [
+            "H - Social Sciences"
+        ],
+        "call_number_full_facet": [
+            "HQ - The Family, Marriage, Woman"
+        ],
+        "isbn_display": [
+            "9781802620269 ((hardcover))",
+            "1802620265 ((hardcover))"
+        ],
+        "lccn_display": [
+            "  2022275630"
+        ],
+        "lccn_s": [
+            "2022275630"
+        ],
+        "isbn_s": [
+            "9781802620269"
+        ],
+        "oclc_s": [
+            "1255777438"
+        ],
+        "standard_no_index": [
+            "on1255777438"
+        ],
+        "other_version_s": [
+            "9781802620269",
+            "9781802620276",
+            "9781802620252",
+            "on1255777438"
+        ],
+        "holdings_1display": [
+            "{\"22923090730006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"HQ799.S6 M35 2022\",\"call_number_browse\":\"HQ799.S6 M35 2022\",\"items\":[{\"holding_id\":\"22923090730006421\",\"id\":\"23923090710006421\",\"status_at_load\":\"1\",\"barcode\":\"32101118984333\"}]}}"
+        ],
+        "location_code_s": [
+            "firestone$stacks"
+        ],
+        "location": [
+            "Firestone Library"
+        ],
+        "location_display": [
+            "Stacks"
+        ],
+        "advanced_location_s": [
+            "firestone$stacks",
+            "Firestone Library"
+        ],
+        "name_title_browse_s": [
+            "Maja, Botshabelo. Black youth aspirations"
+        ],
+        "call_number_display": [
+            "HQ799.S6 M35 2022"
+        ],
+        "call_number_browse_s": [
+            "HQ799.S6 M35 2022"
+        ],
+        "call_number_locator_display": [
+            "HQ799.S6 M35 2022"
+        ],
+        "access_facet": [
+            "In the Library"
+        ]
+    },
+    {
+        "id": [
+            "9942872243506421"
+        ],
+        "numeric_id_b": [
+            true
+        ],
+        "cjk_all": [
+            ""
+        ],
+        "cjk_notes": [
+            ""
+        ],
+        "author_display": [
+            "Beckford, Robert"
+        ],
+        "author_sort": [
+            "Beckford, Robert"
+        ],
+        "author_citation_display": [
+            "Beckford, Robert"
+        ],
+        "author_roles_1display": [
+            "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Beckford, Robert\"}"
+        ],
+        "author_s": [
+            "Beckford, Robert"
+        ],
+        "marc_relator_display": [
+            "Author"
+        ],
+        "title_display": [
+            "God and the gangs : an urban toolkit for those who won't be sold out, bought out or scared out / Robert Beckford."
+        ],
+        "title_a_index": [
+            "God and the gangs"
+        ],
+        "title_sort": [
+            "God and the gangs : an urban toolkit for those who won't be sold out, bought out or scared out / Robert Beckford."
+        ],
+        "title_no_h_index": [
+            "God and the gangs : an urban toolkit for those who won't be sold out, bought out or scared out / Robert Beckford."
+        ],
+        "title_t": [
+            "God and the gangs : an urban toolkit for those who won't be sold out, bought out or scared out / Robert Beckford."
+        ],
+        "title_citation_display": [
+            "God and the gangs : an urban toolkit for those who won't be sold out, bought out or scared out"
+        ],
+        "compiled_created_t": [
+            "God and the gangs : an urban toolkit for those who won't be sold out, bought out or scared out / Robert Beckford."
+        ],
+        "pub_created_display": [
+            "London : Darton Longman & Todd, 2004."
+        ],
+        "pub_created_s": [
+            "London : Darton Longman & Todd, 2004."
+        ],
+        "pub_citation_display": [
+            "London: Darton Longman & Todd"
+        ],
+        "pub_date_display": [
+            "2004"
+        ],
+        "pub_date_start_sort": [
+            "2004"
+        ],
+        "cataloged_tdt": [
+            "2005-02-11T00:00:00Z"
+        ],
+        "format": [
+            "Book"
+        ],
+        "description_display": [
+            "viii, 130 p. ; 22 cm."
+        ],
+        "description_t": [
+            "viii, 130 p. ; 22 cm."
+        ],
+        "number_of_pages_citation_display": [
+            "viii, 130 p."
+        ],
+        "notes_index": [
+            "Includes bibliographical references (p.[124]-130)."
+        ],
+        "bib_ref_notes_display": [
+            "Includes bibliographical references (p.[124]-130)."
+        ],
+        "language_name_display": [
+            "English"
+        ],
+        "language_facet": [
+            "English"
+        ],
+        "publication_place_facet": [
+            "England"
+        ],
+        "language_iana_s": [
+            "en"
+        ],
+        "lc_subject_display": [
+            "Gang members—Pastoral counseling of.",
+            "Teenagers, Black—Pastoral counseling of.",
+            "Church and social problems"
+        ],
+        "lc_subject_include_archaic_search_terms_index": [
+            "Gang members—Pastoral counseling of.",
+            "Teenagers, Black—Pastoral counseling of.",
+            "Church and social problems"
+        ],
+        "subject_unstem_search": [
+            "Gang members—Pastoral counseling of.",
+            "Teenagers, Black—Pastoral counseling of.",
+            "Church and social problems"
+        ],
+        "local_subject_unstem_search": null,
+        "siku_subject_unstem_search": null,
+        "homoit_subject_unstem_search": null,
+        "subject_facet": [
+            "Gang members—Pastoral counseling of.",
+            "Teenagers, Black—Pastoral counseling of.",
+            "Church and social problems"
+        ],
+        "subject_topic_facet": [
+            "Gang members",
+            "Pastoral counseling of.",
+            "Teenagers, Black",
+            "Church and social problems"
+        ],
+        "isbn_display": [
+            "0232525188"
+        ],
+        "isbn_s": [
+            "9780232525182"
+        ],
+        "oclc_s": [
+            "53156532"
+        ],
+        "standard_no_index": [
+            "L2674341",
+            "4287224-princetondb",
+            "ocm53156532"
+        ],
+        "other_version_s": [
+            "9780232525182",
+            "ocm53156532"
+        ],
+        "holdings_1display": [
+            "{\"22711113800006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"HV6437 .B43 2004\",\"call_number_browse\":\"HV6437 .B43 2004\",\"items\":[{\"holding_id\":\"22711113800006421\",\"id\":\"23711113790006421\",\"status_at_load\":\"1\",\"barcode\":\"32101055085391\",\"copy_number\":\"1\"}]}}"
+        ],
+        "location_code_s": [
+            "firestone$stacks"
+        ],
+        "location": [
+            "Firestone Library"
+        ],
+        "location_display": [
+            "Stacks"
+        ],
+        "advanced_location_s": [
+            "firestone$stacks",
+            "Firestone Library"
+        ],
+        "name_title_browse_s": [
+            "Beckford, Robert. God and the gangs"
+        ],
+        "call_number_display": [
+            "HV6437 .B43 2004"
+        ],
+        "call_number_browse_s": [
+            "HV6437 .B43 2004"
+        ],
+        "call_number_locator_display": [
+            "HV6437 .B43 2004"
+        ],
+        "access_facet": [
+            "In the Library"
+        ]
+    },
+    {
+        "id": [
+            "99120646253506421"
+        ],
+        "numeric_id_b": [
+            true
+        ],
+        "cjk_all": [
+            ""
+        ],
+        "cjk_notes": [
+            ""
+        ],
+        "author_display": [
+            "Santos, Erisvaldo Pereira dos"
+        ],
+        "author_sort": [
+            "Santos, Erisvaldo Pereira dos"
+        ],
+        "author_citation_display": [
+            "Santos, Erisvaldo Pereira dos"
+        ],
+        "author_roles_1display": [
+            "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Santos, Erisvaldo Pereira dos\"}"
+        ],
+        "author_s": [
+            "Santos, Erisvaldo Pereira dos"
+        ],
+        "marc_relator_display": [
+            "Author"
+        ],
+        "title_display": [
+            "Os efeitos de sentido dos saberes tradicionais entre adolescentes da comunidade negra dos Arturos-MG / Erisvaldo Pereira dos Santos."
+        ],
+        "title_a_index": [
+            "Os efeitos de sentido dos saberes tradicionais entre adolescentes da comunidade negra dos Arturos-MG"
+        ],
+        "title_sort": [
+            "efeitos de sentido dos saberes tradicionais entre adolescentes da comunidade negra dos Arturos-MG / Erisvaldo Pereira dos Santos."
+        ],
+        "title_no_h_index": [
+            "Os efeitos de sentido dos saberes tradicionais entre adolescentes da comunidade negra dos Arturos-MG / Erisvaldo Pereira dos Santos.",
+            "efeitos de sentido dos saberes tradicionais entre adolescentes da comunidade negra dos Arturos-MG / Erisvaldo Pereira dos Santos."
+        ],
+        "title_t": [
+            "Os efeitos de sentido dos saberes tradicionais entre adolescentes da comunidade negra dos Arturos-MG / Erisvaldo Pereira dos Santos."
+        ],
+        "title_citation_display": [
+            "Os efeitos de sentido dos saberes tradicionais entre adolescentes da comunidade negra dos Arturos-MG"
+        ],
+        "compiled_created_t": [
+            "Os efeitos de sentido dos saberes tradicionais entre adolescentes da comunidade negra dos Arturos-MG / Erisvaldo Pereira dos Santos."
+        ],
+        "pub_created_display": [
+            "Jundiaí, SP : Paco, 2019."
+        ],
+        "pub_created_s": [
+            "Jundiaí, SP : Paco, 2019."
+        ],
+        "pub_citation_display": [
+            "Jundiaí, SP: Paco"
+        ],
+        "pub_date_display": [
+            "2019"
+        ],
+        "pub_date_start_sort": [
+            "2019"
+        ],
+        "cataloged_tdt": [
+            "2020-09-29T00:00:00Z"
+        ],
+        "format": [
+            "Book"
+        ],
+        "description_display": [
+            "260 pages ; 21 cm"
+        ],
+        "description_t": [
+            "260 pages ; 21 cm"
+        ],
+        "number_of_pages_citation_display": [
+            "260 pages"
+        ],
+        "geocode_display": [
+            "Brazil"
+        ],
+        "language_name_display": [
+            "Portuguese"
+        ],
+        "language_facet": [
+            "Portuguese"
+        ],
+        "publication_place_facet": [
+            "Brazil"
+        ],
+        "language_iana_s": [
+            "pt"
+        ],
+        "lc_subject_display": [
+            "Teenagers, Black—Race identity—Brazil—Minas Gerais",
+            "Quilombos—Brazil—Minas Gerais",
+            "Ethnoscience—Brazil—Minas Gerais"
+        ],
+        "lc_subject_include_archaic_search_terms_index": [
+            "Teenagers, Black—Race identity—Brazil—Minas Gerais",
+            "Quilombos—Brazil—Minas Gerais",
+            "Ethnoscience—Brazil—Minas Gerais"
+        ],
+        "subject_unstem_search": [
+            "Teenagers, Black—Race identity—Brazil—Minas Gerais",
+            "Quilombos—Brazil—Minas Gerais",
+            "Ethnoscience—Brazil—Minas Gerais"
+        ],
+        "local_subject_unstem_search": null,
+        "siku_subject_unstem_search": null,
+        "homoit_subject_unstem_search": null,
+        "subject_facet": [
+            "Teenagers, Black—Race identity—Brazil—Minas Gerais",
+            "Quilombos—Brazil—Minas Gerais",
+            "Ethnoscience—Brazil—Minas Gerais"
+        ],
+        "subject_topic_facet": [
+            "Teenagers, Black",
+            "Race identity",
+            "Brazil",
+            "Minas Gerais",
+            "Quilombos",
+            "Ethnoscience"
+        ],
+        "lc_1letter_facet": [
+            "F - History of the Americas (Local)"
+        ],
+        "lc_rest_facet": [
+            "F - History of the Americas (Local)"
+        ],
+        "call_number_scheme_facet": [
+            "Library of Congress"
+        ],
+        "call_number_group_facet": [
+            "F - History of the Americas (Local)"
+        ],
+        "call_number_full_facet": [
+            "F - History of the Americas (Local)"
+        ],
+        "isbn_display": [
+            "9788546219391 ((pbk.))",
+            "8546219397"
+        ],
+        "isbn_s": [
+            "9788546219391"
+        ],
+        "oclc_s": [
+            "1132302734"
+        ],
+        "standard_no_index": [
+            "12064625-princetondb",
+            "on1132302734"
+        ],
+        "other_version_s": [
+            "9788546219391",
+            "on1132302734"
+        ],
+        "holdings_1display": [
+            "{\"22684114820006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"F2659.N4 S26 2019\",\"call_number_browse\":\"F2659.N4 S26 2019\",\"items\":[{\"holding_id\":\"22684114820006421\",\"id\":\"23684114810006421\",\"status_at_load\":\"1\",\"barcode\":\"32101108919497\",\"copy_number\":\"0\"}]}}"
+        ],
+        "location_code_s": [
+            "firestone$stacks"
+        ],
+        "location": [
+            "Firestone Library"
+        ],
+        "location_display": [
+            "Stacks"
+        ],
+        "advanced_location_s": [
+            "firestone$stacks",
+            "Firestone Library"
+        ],
+        "name_title_browse_s": [
+            "Santos, Erisvaldo Pereira dos. Os efeitos de sentido dos saberes tradicionais entre adolescentes da comunidade negra dos Arturos-MG"
+        ],
+        "call_number_display": [
+            "F2659.N4 S26 2019"
+        ],
+        "call_number_browse_s": [
+            "F2659.N4 S26 2019"
+        ],
+        "call_number_locator_display": [
+            "F2659.N4 S26 2019"
+        ],
+        "access_facet": [
+            "In the Library"
+        ]
+    },
+    {
+        "id": [
+            "9974894583506421"
+        ],
+        "numeric_id_b": [
+            true
+        ],
+        "cjk_all": [
+            ""
+        ],
+        "cjk_notes": [
+            ""
+        ],
+        "author_display": [
+            "United States. Congress. House. Committee on Ways and Means. Subcommittee on Public Assistance and Unemployment Compensation"
+        ],
+        "author_sort": [
+            "United States. Congress. House. Committee on Ways and Means. Subcommittee on Public Assistance and Unemployment Compensation"
+        ],
+        "author_citation_display": [
+            "United States"
+        ],
+        "author_roles_1display": [
+            "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"United States\"}"
+        ],
+        "author_s": [
+            "United States. Congress. House. Committee on Ways and Means. Subcommittee on Public Assistance and Unemployment Compensation"
+        ],
+        "marc_relator_display": [
+            "Author"
+        ],
+        "title_display": [
+            "Pregnancy among black teenagers [electronic resource] : hearing before the Subcommittee on Public Assistance and Unemployment Compensation of the Committee on Ways and Means, House of Representatives, Ninety-ninth Congress, second session, February 18, 1986."
+        ],
+        "title_a_index": [
+            "Pregnancy among black teenagers"
+        ],
+        "title_sort": [
+            "Pregnancy among black teenagers [electronic resource] : hearing before the Subcommittee on Public Assistance and Unemployment Compensation of the Committee on Ways and Means, House of Representatives, Ninety-ninth Congress, second session, February 18, 1986."
+        ],
+        "title_no_h_index": [
+            "Pregnancy among black teenagers hearing before the Subcommittee on Public Assistance and Unemployment Compensation of the Committee on Ways and Means, House of Representatives, Ninety-ninth Congress, second session, February 18, 1986."
+        ],
+        "title_t": [
+            "Pregnancy among black teenagers [electronic resource] : hearing before the Subcommittee on Public Assistance and Unemployment Compensation of the Committee on Ways and Means, House of Representatives, Ninety-ninth Congress, second session, February 18, 1986."
+        ],
+        "title_citation_display": [
+            "Pregnancy among black teenagers hearing before the Subcommittee on Public Assistance and Unemployment Compensation of the Committee on Ways and Means, House of Representatives, Ninety-ninth Congress, second session, February 18, 1986"
+        ],
+        "linked_title_index": [
+            "Pregnancy among black teenagers.",
+            "Pregnancy among black teenagers"
+        ],
+        "compiled_created_t": [
+            "Pregnancy among black teenagers [electronic resource] : hearing before the Subcommittee on Public Assistance and Unemployment Compensation of the Committee on Ways and Means, House of Representatives, Ninety-ninth Congress, second session, February 18, 1986."
+        ],
+        "pub_created_display": [
+            "Washington : U.S. G.P.O., 1986."
+        ],
+        "pub_created_s": [
+            "Washington : U.S. G.P.O., 1986."
+        ],
+        "pub_citation_display": [
+            "Washington: U.S. G.P.O."
+        ],
+        "pub_date_display": [
+            "1986"
+        ],
+        "pub_date_start_sort": [
+            "1986"
+        ],
+        "cataloged_tdt": [
+            "2021-07-21T02:39:26Z"
+        ],
+        "format": [
+            "Book"
+        ],
+        "description_display": [
+            "iii, 116 p. ; 24 cm."
+        ],
+        "description_t": [
+            "iii, 116 p. ; 24 cm."
+        ],
+        "number_of_pages_citation_display": [
+            "iii, 116 p."
+        ],
+        "geocode_display": [
+            "United States"
+        ],
+        "related_record_info_display": [
+            "Microfiche version:",
+            "Print version:"
+        ],
+        "notes_index": [
+            "Record is based on bibliographic data in ProQuest Congressional Hearings Digital Collection. Reuse except for individual research requires license from ProQuest, LLC.",
+            "Electronic reproduction. [Bethesda, Md.] : ProQuest, 2004. digital, PDF file. ProQuest U.S. Congressional Hearings Digital Collection. Mode of access: World Wide Web via ProQuest website.",
+            "System requirements: PDF reader software."
+        ],
+        "notes_display": [
+            "Record is based on bibliographic data in ProQuest Congressional Hearings Digital Collection. Reuse except for individual research requires license from ProQuest, LLC."
+        ],
+        "reproduction_notes_display": [
+            "Electronic reproduction. [Bethesda, Md.] : ProQuest, 2004. digital, PDF file. ProQuest U.S. Congressional Hearings Digital Collection. Mode of access: World Wide Web via ProQuest website."
+        ],
+        "system_details_notes_display": [
+            "System requirements: PDF reader software."
+        ],
+        "language_name_display": [
+            "English"
+        ],
+        "language_facet": [
+            "English"
+        ],
+        "publication_place_facet": [
+            "District of Columbia"
+        ],
+        "language_iana_s": [
+            "en"
+        ],
+        "lc_subject_display": [
+            "African American youth—United States",
+            "Pregnant teenagers—United States",
+            "Teenage mothers—United States"
+        ],
+        "lc_subject_include_archaic_search_terms_index": [
+            "African American youth—United States",
+            "Pregnant teenagers—United States",
+            "Teenage mothers—United States"
+        ],
+        "subject_unstem_search": [
+            "African American youth—United States",
+            "Pregnant teenagers—United States",
+            "Teenage mothers—United States"
+        ],
+        "local_subject_unstem_search": null,
+        "siku_subject_unstem_search": null,
+        "homoit_subject_unstem_search": null,
+        "subject_facet": [
+            "African American youth—United States",
+            "Pregnant teenagers—United States",
+            "Teenage mothers—United States"
+        ],
+        "subject_topic_facet": [
+            "African American youth",
+            "United States",
+            "Pregnant teenagers",
+            "Teenage mothers"
+        ],
+        "sudoc_facet": [
+            "X/Y - Congress"
+        ],
+        "call_number_scheme_facet": [
+            "Superintendent of Documents"
+        ],
+        "call_number_group_facet": [
+            "SuDocs: P-Z"
+        ],
+        "call_number_full_facet": [
+            "X/Y - Congress"
+        ],
+        "other_title_index": [
+            "ProQuest U.S. Congressional Hearings Digital Collection."
+        ],
+        "other_title_display": [
+            "ProQuest U.S. Congressional Hearings Digital Collection."
+        ],
+        "sudoc_no_display": [
+            "Y 4.W 36:99-60"
+        ],
+        "tech_report_no_display": [
+            "Serial 99-60 (United States. Congress. House. Committee on Ways and Means)"
+        ],
+        "standard_no_index": [
+            "7489458-princetondb"
+        ],
+        "other_version_s": [
+            "BIB998651473506421",
+            "ocm13709577",
+            "BIB86016497"
+        ],
+        "name_title_browse_s": [
+            "United States. Congress. House. Committee on Ways and Means. Subcommittee on Public Assistance and Unemployment Compensation. Pregnancy among black teenagers"
+        ],
+        "electronic_portfolio_s": [
+            "{\"desc\":null,\"title\":\"Proquest Congressional\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53877665970006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+        ],
+        "access_facet": [
+            "Online"
+        ]
+    },
+    {
+        "id": [
+            "99109623506421"
+        ],
+        "numeric_id_b": [
+            true
+        ],
+        "cjk_all": [
+            ""
+        ],
+        "cjk_notes": [
+            ""
+        ],
+        "author_display": [
+            "Folb, Edith A."
+        ],
+        "author_sort": [
+            "Folb, Edith A."
+        ],
+        "author_citation_display": [
+            "Folb, Edith A."
+        ],
+        "author_roles_1display": [
+            "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Folb, Edith A.\"}"
+        ],
+        "author_s": [
+            "Folb, Edith A."
+        ],
+        "marc_relator_display": [
+            "Author"
+        ],
+        "title_display": [
+            "Runnin' down some lines : the language and culture of Black teenagers / Edith A. Folb."
+        ],
+        "title_a_index": [
+            "Runnin' down some lines"
+        ],
+        "title_sort": [
+            "Runnin' down some lines : the language and culture of Black teenagers / Edith A. Folb."
+        ],
+        "title_no_h_index": [
+            "Runnin' down some lines : the language and culture of Black teenagers / Edith A. Folb."
+        ],
+        "title_t": [
+            "Runnin' down some lines : the language and culture of Black teenagers / Edith A. Folb."
+        ],
+        "title_citation_display": [
+            "Runnin' down some lines : the language and culture of Black teenagers"
+        ],
+        "compiled_created_t": [
+            "Runnin' down some lines : the language and culture of Black teenagers / Edith A. Folb."
+        ],
+        "pub_created_display": [
+            "Cambridge, Mass. : Harvard University Press, 1980."
+        ],
+        "pub_created_s": [
+            "Cambridge, Mass. : Harvard University Press, 1980."
+        ],
+        "pub_citation_display": [
+            "Cambridge, Mass: Harvard University Press"
+        ],
+        "pub_date_display": [
+            "1980"
+        ],
+        "pub_date_start_sort": [
+            "1980"
+        ],
+        "cataloged_tdt": [
+            "2000-06-13T00:00:00Z"
+        ],
+        "format": [
+            "Book"
+        ],
+        "description_display": [
+            "xxii, 260 p. ; 25 cm."
+        ],
+        "description_t": [
+            "xxii, 260 p. ; 25 cm."
+        ],
+        "number_of_pages_citation_display": [
+            "xxii, 260 p."
+        ],
+        "geocode_display": [
+            "California"
+        ],
+        "notes_index": [
+            "Bibliography: p. 219-221."
+        ],
+        "bib_ref_notes_display": [
+            "Bibliography: p. 219-221."
+        ],
+        "language_name_display": [
+            "English"
+        ],
+        "language_facet": [
+            "English"
+        ],
+        "publication_place_facet": [
+            "Massachusetts"
+        ],
+        "language_iana_s": [
+            "en"
+        ],
+        "lc_subject_display": [
+            "Black English",
+            "African American youth—California—Los Angeles",
+            "Sociolinguistics"
+        ],
+        "lc_subject_include_archaic_search_terms_index": [
+            "Black English",
+            "African American youth—California—Los Angeles",
+            "Sociolinguistics"
+        ],
+        "subject_unstem_search": [
+            "Black English",
+            "African American youth—California—Los Angeles",
+            "Sociolinguistics"
+        ],
+        "local_subject_unstem_search": null,
+        "siku_subject_unstem_search": null,
+        "homoit_subject_unstem_search": null,
+        "subject_facet": [
+            "Black English",
+            "African American youth—California—Los Angeles",
+            "Sociolinguistics"
+        ],
+        "subject_topic_facet": [
+            "Black English",
+            "African American youth",
+            "California",
+            "Los Angeles",
+            "Sociolinguistics"
+        ],
+        "lc_1letter_facet": [
+            "P - Language & Literature"
+        ],
+        "lc_rest_facet": [
+            "PE - English Languages"
+        ],
+        "call_number_scheme_facet": [
+            "Library of Congress"
+        ],
+        "call_number_group_facet": [
+            "P - Language & Literature"
+        ],
+        "call_number_full_facet": [
+            "PE - English Languages"
+        ],
+        "isbn_display": [
+            "0674780396"
+        ],
+        "lccn_display": [
+            "   79026708 "
+        ],
+        "lccn_s": [
+            "79026708"
+        ],
+        "isbn_s": [
+            "9780674780392"
+        ],
+        "oclc_s": [
+            "5846555"
+        ],
+        "standard_no_index": [
+            "NJPG15956024-B",
+            "10962-princetondb",
+            "ocm05846555"
+        ],
+        "other_version_s": [
+            "9780674780392",
+            "ocm05846555"
+        ],
+        "holdings_1display": [
+            "{\"22507763750006421\":{\"location_code\":\"annex$fst\",\"location\":\"A\",\"library\":\"Forrestal Annex\",\"call_number\":\"PE3102.N42 F6\",\"call_number_browse\":\"PE3102.N42 F6\",\"items\":[{\"holding_id\":\"22507763750006421\",\"id\":\"23507763740006421\",\"status_at_load\":\"1\",\"barcode\":\"32101003277306\",\"copy_number\":\"1\"}]}}"
+        ],
+        "location_code_s": [
+            "annex$fst"
+        ],
+        "location": [
+            "Forrestal Annex"
+        ],
+        "location_display": [
+            "A"
+        ],
+        "advanced_location_s": [
+            "annex$fst",
+            "Forrestal Annex"
+        ],
+        "name_title_browse_s": [
+            "Folb, Edith A.. Runnin' down some lines"
+        ],
+        "call_number_display": [
+            "PE3102.N42 F6"
+        ],
+        "call_number_browse_s": [
+            "PE3102.N42 F6"
+        ],
+        "call_number_locator_display": [
+            "PE3102.N42 F6"
+        ],
+        "access_facet": [
+            "In the Library"
+        ]
+    }
+]

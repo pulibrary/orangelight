@@ -30,6 +30,7 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    # config.add_field_configuration_to_solr_request!
     config.raw_endpoint.enabled = true
 
     config.json_solr_path = 'advanced'
@@ -228,7 +229,7 @@ class CatalogController < ApplicationController
     #   output for bento search. If you need to add a field to JSON display
     #   (catalog.json), add it here!
     config.add_index_field 'series_display', label: 'Series', helper_method: :series_results
-    config.add_index_field 'author_display', label: 'Author/Artist', browse_link: :name
+    config.add_index_field 'author_display', label: 'Author/Artist', browse_link: :name, presenter: Orangelight::HighlightPresenter
     config.add_index_field 'pub_created_display', label: 'Published/Created'
     config.add_index_field 'format', label: 'Format', helper_method: :format_icon
     config.add_index_field 'holdings_1display', show: false
@@ -236,8 +237,8 @@ class CatalogController < ApplicationController
     config.add_index_field 'isbn_t', show: false
     config.add_index_field 'score', show: false
     config.add_index_field 'marc_relator_display', show: false
-    config.add_index_field 'title_display', show: false
-    config.add_index_field 'title_vern_display', show: false
+    config.add_index_field 'title_display', show: false, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'title_vern_display', show: false, presenter: Orangelight::HighlightPresenter
     config.add_index_field 'isbn_s', show: false
     config.add_index_field 'oclc_s', show: false
     config.add_index_field 'lccn_s', show: false
@@ -660,9 +661,6 @@ class CatalogController < ApplicationController
     # mean") suggestion is offered.
     config.spell_max = 0
 
-    # Add bookmark all widget
-    config.add_results_collection_tool(:bookmark_all)
-
     config.add_results_document_tool(:bookmark, partial: 'bookmark_control')
 
     config.unapi = {
@@ -790,5 +788,28 @@ class CatalogController < ApplicationController
     def basic_response
       render plain: 'OK'
       nil
+    end
+
+    def search_service_context
+      return {} unless Flipflop.multi_algorithm?
+      return {} unless alternate_search_builder_class # use default if none specified
+      { search_builder_class: alternate_search_builder_class }
+    end
+
+    def alternate_search_builder_class
+      return unless search_algorithm_param && allowed_search_algorithms.include?(search_algorithm_param)
+
+      "#{search_algorithm_param}_search_builder".camelize.constantize
+    end
+
+    # When adding a new Ranking Algorithm the name will need to be added to this list before it can be utilized
+    # For example if you added a cats ranking algorithm, with a CatsSearchBuilder you would add "cats" to this list ["engineering","cats"]
+    # This is to make sure the user can not just execute any SearchBuilder in the system
+    def allowed_search_algorithms
+      ["engineering"]
+    end
+
+    def search_algorithm_param
+      params[:search_algorithm]
     end
 end

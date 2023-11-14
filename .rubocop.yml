@@ -38,6 +38,7 @@ Metrics/BlockLength:
     - 'lib/tasks/pulsearch.rake'
     - 'spec/**/*'
     - 'lib/tasks/server.rake'
+    - 'config/features.rb'
 
 Metrics/BlockNesting:
   Exclude:
@@ -154,6 +155,7 @@ Rails/OutputSafety:
     - 'app/services/holding_requests_builder.rb'
     - 'app/services/online_holdings_markup_builder.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
+    - 'app/processors/orangelight/highlight_processor.rb'
 
 Rails/TimeZone:
   Exclude:

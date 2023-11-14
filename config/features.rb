@@ -50,5 +50,9 @@ Flipflop.configure do
     feature :highlighting,
       default: false,
       description: "When on / true, use the highlighting SOLR component to highlight search terms.  When off / false, dont highlight search terms"
+
+    feature :search_result_form,
+      default: false,
+      description: "When on / true, a banner will be present to take the user to the search result form"
   end
 end

@@ -68,6 +68,8 @@ en:
         try_borrow_direct: 'Try Borrow Direct'
       show:
         label: '%{label}'
+      search_algorithm:
+        label_html: 'Rank by %{algorithm}'
     skip_links:
       first_result: 'Skip to result %{start} of %{total}'
     header_links:
@@ -78,7 +80,7 @@ en:
     login:
       netid_login_msg: 'Log in with netID'
       netid_button: 'Log in with netID'
-      redirect_text: 'You will be redirected to the secure Princeton University Central Authentication Service (CAS) login.'
+      redirect_text: 'You will be redirected to the secure Princeton University Central Authentication Service () login.'
       alma_login_msg: 'Log in with Alma Account (affiliates)'
       barcode_netid: 'Please log in with netID.'
       barcode_header: ''
