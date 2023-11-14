@@ -12,6 +12,9 @@
       <%= render partial: 'tools', locals: { document_list: @document_list } %>
     <% end %>
     <%= render partial: 'sort_widget' %>
+    <%# Normally you would add this widget to the catalog controller, like:
+      config.add_results_collection_tool(:algorithm_select) %>
+    <%= render partial: 'algorithm_select' %>
     <%= render partial: 'per_page_widget' %>
     <% unless bookmarks? %>
       <%= render partial: 'bookmark_all' %>

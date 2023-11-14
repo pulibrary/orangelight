@@ -1,0 +1,14 @@
+<% if Flipflop.multi_algorithm? %>
+  <%= render(Orangelight::DropdownHelpTextComponent.new(
+    param: :search_algorithm,
+    choices: [
+      { label: "default", value: "default", helptext: "documents with highest term frequency are first"},
+      { label: "engineering", value: "engineering", helptext: "move documents about engineering to the top" }
+    ],
+    id: 'search-algorithm-dropdown',
+    search_state: search_state,
+    default: 'default',
+    interpolation: :algorithm,
+    selected: search_algorithm_value))
+  %>
+<% end %>
