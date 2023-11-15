@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 class ReportBiasedResultsForm < MailForm::Base
   include ActiveModel::Model
-  attr_accessor :name, :email, :message, :context, :title
+  attr_accessor :name, :email, :message, :context, :q
 
   validates :message, presence: true
   attribute :feedback_desc, captcha: true
 
   def email_subject
-    "[Possible Bias in Search Results]"
+    "[Possible Biased Results]"
   end
 
   def submit

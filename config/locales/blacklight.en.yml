@@ -95,6 +95,9 @@ en:
     report_harmful_language:
       form:
         title: 'Report Harmful Language'
+    report_biased_results:
+      form:
+        title: 'Report Biased Results'    
     email:
       form:
         title: 'Email the catalog record and (optional) message.'

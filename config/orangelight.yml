@@ -11,6 +11,8 @@ defaults: &defaults
     to: <%= ENV['OL_CATALOGING_TO'] %>
   report_harmful_language_form:
     to: <%= ENV['OL_HARMFUL_CONTENT_TO'] %>
+  report_biased_results_form:
+    to: <%= ENV['OL_BIASED_RESULTS_TO'] %>
   firestone_locator_base_url: https://locator-prod.princeton.edu
   redis:
     host: 'localhost'
@@ -34,6 +36,8 @@ development:
     to: 'test-correction@princeton.edu'
   report_harmful_language_form:
     to: 'test-harmful-content@princeton.edu'
+  report_biased_results_form:
+    to: 'test-biased-results@princeton.edu'
 test:
   <<: *defaults
   feedback_form:
@@ -49,6 +53,8 @@ test:
     to: 'test-correction@princeton.edu'
   report_harmful_language_form:
     to: 'test-harmful-content@princeton.edu'
+  report_biased_results_form:
+    to: 'test-biased-results@princeton.edu'
 
 production:
   <<: *defaults
