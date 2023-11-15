@@ -27,4 +27,15 @@ describe "accessibility", type: :feature, js: true do
         .excluding('.blacklight-series_display[dir="ltr"]:nth-child(1) > .more-in-series[title=""][data-toggle="tooltip"]')
     end
   end
+  context "search results page" do
+    before do
+      allow(Flipflop).to receive(:highlighting?).and_return(true)
+    end
+
+    it 'complies with wcag2aa wcag21a' do
+      visit '/catalog?q=black+teenagers'
+      expect(page).to be_axe_clean
+        .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
+    end
+  end
 end
