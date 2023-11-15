@@ -81,8 +81,7 @@ class FeedbackController < ApplicationController
 
     def build_report_biased_results_form
       @biased_results_form = ReportBiasedResultsForm.new(
-        context: "Hello",
-        q: "Hello"
+        biased_results_params 
       )
     end
 
