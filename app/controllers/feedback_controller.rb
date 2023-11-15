@@ -32,9 +32,7 @@ class FeedbackController < ApplicationController
 
   def report_harmful_language; end
 
-  def biased_results; end
-
-  def biased_results_submit; end
+  def report_biased_results; end
 
   protected
 
@@ -83,13 +81,13 @@ class FeedbackController < ApplicationController
 
     def build_report_biased_results_form
       @biased_results_form = ReportBiasedResultsForm.new(
-        context: page_url(biased_results_params),
-        title: biased_results_params['title']
+        context: "Hello",
+        title: "Hello"
       )
     end
 
     def biased_results_params
-      params.require(:report_biased_results_form).permit(:id, :title)
+      params.require(:report_biased_results_form).permit(:q)
     end
 
     def page_url(params)

@@ -28,7 +28,7 @@
 <h2 class="sr-only visually-hidden"><%= t('blacklight.search.search_results') %></h2>
 
 <!-- TODO: put this behind a feature flipper flag -->
-<p>Banner will go here <%= link_to "report biased results", catalog_biased_results_url + "?#{request.query_string}", target: "_blank" %></p>
+<%# <p>Banner will go here <%= link_to "report biased results", _biased_results + "?#{request.query_string}", target: "_blank" %></p> %>
 
 <%- if @response.empty? %>
   <%= render "zero_results" %>

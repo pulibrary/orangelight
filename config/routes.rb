@@ -104,8 +104,8 @@ Rails.application.routes.draw do
   post "/contact/report_harmful_language", to: "contact#report_harmful_language"
 
   # For "Reporting Biased Search Results" form
-  get '/feedback/biased-results', to: 'feedback#biased_results', as: 'feedback_biased_results'
-  post '/feedback/biased-results', to: 'feeback#biased_results_submit', as: 'feedback_biased_results_submit'
+  get '/feedback/biased_results', to: 'feedback#report_biased_results', as: 'feedback_biased_results'
+  post '/feedback/biased_results', to: 'feedback#report_biased_results_submit', as: 'feedback_biased_results_submit'
 
   get '/thumbnail/:id', to: 'thumbnail#show'
 

@@ -4,17 +4,6 @@
         <h3>Do these search results seem biased?</h3>
         We are working to address bias in the library's search results. If these results
         appear biased,
-        <%= link_to(
-          'please let us know',
-          {
-            controller: "feedback",
-            action: feedback_biased_results_url,
-            report_biased_results_form: {
-              id: @document
-            }
-          },
-          title: "Report Biased Search Results",
-          data: { blacklight_modal: 'trigger' }
-        ) %>!
+        <%= link_to('please let us know', feedback_biased_results_path) %>!
     </div>
 </div>
