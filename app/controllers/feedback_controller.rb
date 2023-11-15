@@ -90,10 +90,10 @@ class FeedbackController < ApplicationController
       params.require(:report_biased_results_form).permit(:q)
     end
 
-    def search_results_url(params)
+    def search_results_url(_params)
       search_catalog_url(q: biased_results_params['q'])
     end
-    
+
     def page_url(params)
       solr_document_url(id: params['id'])
     end
