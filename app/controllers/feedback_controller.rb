@@ -81,7 +81,8 @@ class FeedbackController < ApplicationController
 
     def build_report_biased_results_form
       @biased_results_form = ReportBiasedResultsForm.new(
-        biased_results_params 
+        context: search_results_url(biased_results_params),
+        q: biased_results_params['q']
       )
     end
 
@@ -89,6 +90,10 @@ class FeedbackController < ApplicationController
       params.require(:report_biased_results_form).permit(:q)
     end
 
+    def search_results_url(params)
+      search_catalog_url(q: biased_results_params['q'])
+    end
+    
     def page_url(params)
       solr_document_url(id: params['id'])
     end

@@ -16,5 +16,6 @@ describe 'submitting biased results', js: true do
   # end
   it 'shows the search query' do
     expect(page).to have_content('It looks like you were searching for the term(s) cats')
+    expect(page).to have_link('search results', href: "http://#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}/catalog?q=cats")
   end
 end
