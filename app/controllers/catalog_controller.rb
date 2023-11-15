@@ -245,6 +245,14 @@ class CatalogController < ApplicationController
     config.add_index_field 'electronic_access_1display', show: false
     config.add_index_field 'cataloged_tdt', show: false
     config.add_index_field 'electronic_portfolio_s', show: false
+    config.add_index_field 'lc_subject_display', if: false, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'siku_subject_display', if: false, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'homoit_subject_display', if: false, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'lcgft_s', if: false, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'homoit_genre_s', if: false, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'rbgenr_s', if: false, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'aat_s', if: false, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'notes_display', if: false, presenter: Orangelight::HighlightPresenter
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
