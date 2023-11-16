@@ -106,7 +106,7 @@ Rails.application.routes.draw do
   # For "Reporting Biased Search Results" form
   # TODO: change get route to '/report_biased_results'
   get '/feedback/biased_results', to: 'feedback#report_biased_results', as: 'feedback_biased_results'
-  post '/contact/report_biased_results', to: 'contact#report_biased_results', as: 'feedback_biased_results_submit'
+  post '/contact/report_biased_results', to: 'contact#report_biased_results'
 
   get '/thumbnail/:id', to: 'thumbnail#show'
 
