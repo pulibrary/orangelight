@@ -14,7 +14,7 @@ describe 'submitting biased results', js: true do
     click_on('search')
     click_on('Manuscript')
     click_link('please let us know')
-    expect(page).to have_link('search results', href: "/?f%5Bformat%5D%5B%5D=Manuscript&q=roman&search_field=all_fields")
+    expect(page).to have_link('search results', href: "http://#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}/?f%5Bformat%5D%5B%5D=Manuscript&q=roman&search_field=all_fields")
     fill_in('Name (optional)', with: 'John Smith')
     fill_in('Email (optional)', with: 'jsmith@localhost.localdomain')
     fill_in('Message', with: 'Lorem ipsum dolor sit amet, consectetur...')
