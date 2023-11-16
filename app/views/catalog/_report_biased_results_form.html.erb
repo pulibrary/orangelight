@@ -1,4 +1,5 @@
 <div class="modal-body">
+  <%= render :partial=>'shared/flash_msg' %>
   <div>
     Library holdings and catalog search results can reflect discriminatory attitudes and assumptions.
     <br/>
@@ -6,39 +7,37 @@
     You can help us address this issue by reporting any biased or harmful results you encounter on Library search tools by using the form below. If you would prefer to report this anonomously, you may leave the name end email fields blank.
     <br/>
     <br/>
+    You are reporting bias in the following <%= link_to 'search results', form.context %>
+    <br/>
+    <br/>
   </div>
 
-  <%= form_tag("/biased-results", method: :post) do %>
+  <%= simple_form_for(
+        form, 
+        url: contact_report_biased_results_path, 
+        data:  { blacklight_modal: 'trigger' }, 
+        html: { class: "modal_form" }
+      ) do |f| 
+  %>
     <div>
-       <%= label_tag(:message, "Message:") %><span style="color:red">*</span><br/>
-      <%= text_area_tag(:message, "", :size => "60x5", placeholder: "Please include any additional comments here") %>
+      <%= f.label :message %><br>
+      <%= f.input_field :message, as: :text, style: "width: 100%" %><br>
     </div>
 
     <div>
-      <%= label_tag(:name, "Name (optional):") %><br/>
-      <%= text_field_tag(:name) %>
+      <%= f.label :name, style: "width: 100%", label: 'Name (optional)' %><br>
+      <%= f.input_field :name, style: "width: 100%" %><br>
     </div>
 
     <div>
-      <%= label_tag(:email, "Email (optional):") %><br/>
-      <%= text_field_tag(:email) %>
+      <%= f.label :email, label: 'Email (optional)' %><br>
+      <%= f.input_field :email, style: "width: 100%" %><br>
     </div>
 
-    <div class="submit-buttons pull-right form-group">
-      <%= submit_tag "Submit", class: 'btn btn-primary', id: "form-submit" %>
-      <%= button_tag "Cancel", class: 'btn btn-secondary', id: "form-cancel" %>
-    </div>
-
-    <div>
-      <br/>
-      <br/>
-      It looks like you were searching for the term(s) <b><%= form.q %></b>
-      <br/>
-      <br/>
-    </div>
-
-    <div>
-      You are reporting bias in the following search results: 
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      <%= f.submit "Send", class: "btn btn-primary", id: 'submit-question' %>
     </div>
   <% end %>
+
 </div>

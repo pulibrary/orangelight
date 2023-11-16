@@ -10,7 +10,7 @@
             controller: "feedback",
             action: "report_biased_results",
             report_biased_results_form: {
-              q: 'cats'
+              context: request.query_string
             }
           },
           title: "Report Biased Results",

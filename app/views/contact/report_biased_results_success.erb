@@ -1,0 +1,10 @@
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+  <% component.title { t('blacklight.report_harmful_language.form.title') } %>
+
+  <%= render partial: '/shared/flash_msg' %>
+  <p>Thank you for helping us identify an instance of bias in our Catalog Search Results.
+     Staff will review your report and assess options to address this based on your feedback.
+     If you have submitted your email address, we may reach out to you if we have questions.
+     We appreciate your feedback.</p>
+
+<% end %>
