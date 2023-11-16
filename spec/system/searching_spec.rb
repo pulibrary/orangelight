@@ -23,6 +23,18 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_selector('#documents > article.blacklight-book.document.document-position-1 > div > div.record-wrapper > div > h3 > a > em:nth-child(4)', text: 'teenagers')
     end
   end
+  context 'When highlighting is on and field displays in the index page' do
+    before do
+      allow(Flipflop).to receive(:highlighting?).and_return(true)
+      allow_any_instance_of(Blacklight::Configuration::Field).to receive(:if).and_return(true)
+    end
+    let(:config) { Blacklight::Configuration.new }
+    it 'renders lc_subject_display with an em tag around the search term' do
+      visit '/catalog?q=African+American'
+      expect(page).to have_selector('article.blacklight-book:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ul:nth-child(4) > li:nth-child(3) > em:nth-child(2)', text: 'African')
+      expect(page).to have_selector('article.blacklight-book:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ul:nth-child(4) > li:nth-child(3) > em:nth-child(4)', text: 'American')
+    end
+  end
 
   context 'with firestone_locator on' do
     before do
