@@ -7,8 +7,7 @@ RSpec.describe ReportBiasedResultsForm do
       "name" => "Test",
       "email" => "test@test.org",
       "message" => "I am concerned about this subject heading",
-      "context" => "http://example.com/catalog/1",
-      "q" => "cats"
+      "context" => "http://example.com/catalog/1"
     }
   end
 
@@ -17,8 +16,7 @@ RSpec.describe ReportBiasedResultsForm do
       "name" => "",
       "email" => "",
       "message" => "I am concerned about this subject heading",
-      "context" => "http://example.com/catalog/1",
-      "q" => "cats"
+      "context" => "http://example.com/catalog/1"
     }
   end
 
@@ -30,7 +28,6 @@ RSpec.describe ReportBiasedResultsForm do
       expect(form.email).to eq "test@test.org"
       expect(form.message).to eq "I am concerned about this subject heading"
       expect(form.context).to eq "http://example.com/catalog/1"
-      expect(form.q).to eq "cats"
 
       expect(form).to be_valid
     end
@@ -54,7 +51,6 @@ RSpec.describe ReportBiasedResultsForm do
       expect(form.email).to eq ""
       expect(form.message).to eq ""
       expect(form.context).to eq "http://example.com/catalog/1"
-      expect(form.q).to eq "cats"
       expect(form).to be_submitted
 
       mail = ActionMailer::Base.deliveries.first
