@@ -33,7 +33,6 @@ class ReportBiasedResultsForm < MailForm::Base
 
   def search_params
     params_array = CGI.unescape(context).split('&')
-    params_hash = params_array.map { |pair| pair.split('=') }
-    params_hash.to_h
+    params_array.map { |pair| pair.split('=') }.to_h
   end
 end
