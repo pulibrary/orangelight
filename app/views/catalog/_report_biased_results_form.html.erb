@@ -1,42 +1,44 @@
-<div>
-  Library holdings and catalog search results can reflect discriminatory attitudes and assumptions.
-  <br/>
-  <br/>
-  You can help us address this issue by reporting any biased or harmful results you encounter on Library search tools by using the form below. If you would prefer to report this anonomously, you may leave the name end email fields blank.
-  <br/>
-  <br/>
+<div class="modal-body">
+  <div>
+    Library holdings and catalog search results can reflect discriminatory attitudes and assumptions.
+    <br/>
+    <br/>
+    You can help us address this issue by reporting any biased or harmful results you encounter on Library search tools by using the form below. If you would prefer to report this anonomously, you may leave the name end email fields blank.
+    <br/>
+    <br/>
+  </div>
+
+  <%= form_tag("/biased-results", method: :post) do %>
+    <div>
+       <%= label_tag(:message, "Message:") %><span style="color:red">*</span><br/>
+      <%= text_area_tag(:message, "", :size => "60x5", placeholder: "Please include any additional comments here") %>
+    </div>
+
+    <div>
+      <%= label_tag(:name, "Name (optional):") %><br/>
+      <%= text_field_tag(:name) %>
+    </div>
+
+    <div>
+      <%= label_tag(:email, "Email (optional):") %><br/>
+      <%= text_field_tag(:email) %>
+    </div>
+
+    <div class="submit-buttons pull-right form-group">
+      <%= submit_tag "Submit", class: 'btn btn-primary', id: "form-submit" %>
+      <%= button_tag "Cancel", class: 'btn btn-secondary', id: "form-cancel" %>
+    </div>
+
+    <div>
+      <br/>
+      <br/>
+      It looks like you were searching for the term(s) <b><%= form.q %></b>
+      <br/>
+      <br/>
+    </div>
+
+    <div>
+      You are reporting bias in the following search results: 
+    </div>
+  <% end %>
 </div>
-
-<%= form_tag("/biased-results", method: :post) do %>
-  <div>
-     <%= label_tag(:message, "Message:") %><span style="color:red">*</span><br/>
-    <%= text_area_tag(:message, "", :size => "60x5", placeholder: "Please include any additional comments here") %>
-  </div>
-
-  <div>
-    <%= label_tag(:name, "Name (optional):") %><br/>
-    <%= text_field_tag(:name) %>
-  </div>
-
-  <div>
-    <%= label_tag(:email, "Email (optional):") %><br/>
-    <%= text_field_tag(:email) %>
-  </div>
-
-  <div class="submit-buttons pull-right form-group">
-    <%= submit_tag "Submit", class: 'btn btn-primary', id: "form-submit" %>
-    <%= button_tag "Cancel", class: 'btn btn-secondary', id: "form-cancel" %>
-  </div>
-
-  <div>
-    <br/>
-    <br/>
-    It looks like you were searching for the term(s) <b><%= form.q %></b>
-    <br/>
-    <br/>
-  </div>
-
-  <div>
-    You are reporting bias in the following search results: 
-  </div>
-<% end %>
