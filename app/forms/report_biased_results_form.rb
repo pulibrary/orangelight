@@ -30,4 +30,10 @@ class ReportBiasedResultsForm < MailForm::Base
   def from_email
     @from_email ||= @email.presence || routed_mail_to
   end
+
+  def search_params
+    params_array = CGI.unescape(context).split('&')
+    params_hash = params_array.map { |pair| pair.split('=') }
+    params_hash.to_h
+  end
 end
