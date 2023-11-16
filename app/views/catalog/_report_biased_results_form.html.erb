@@ -7,7 +7,7 @@
   <br/>
 </div>
 
-<%= form_tag("/biased-results", method: :post) do %>
+<%= form_tag("/contact/report_biased_results", method: :post) do %>
   <div>
      <%= label_tag(:message, "Message:") %><span style="color:red">*</span><br/>
     <%= text_area_tag(:message, "", :size => "60x5", placeholder: "Please include any additional comments here") %>
@@ -24,7 +24,7 @@
   </div>
 
   <div class="submit-buttons pull-right form-group">
-    <%= submit_tag "Submit", class: 'btn btn-primary', id: "form-submit" %>
+    <%= submit_tag "Send", class: 'btn btn-primary', id: "form-submit" %>
     <%= button_tag "Cancel", class: 'btn btn-secondary', id: "form-cancel" %>
   </div>
 
