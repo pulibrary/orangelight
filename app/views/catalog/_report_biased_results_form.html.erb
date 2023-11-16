@@ -7,6 +7,9 @@
     You can help us address this issue by reporting any biased or harmful results you encounter on Library search tools by using the form below. If you would prefer to report this anonomously, you may leave the name end email fields blank.
     <br/>
     <br/>
+    You are reporting bias in the following <%= link_to 'search results', form.context %>
+    <br/>
+    <br/>
   </div>
 
   <%= simple_form_for(
@@ -34,18 +37,6 @@
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       <%= f.submit "Send", class: "btn btn-primary", id: 'submit-question' %>
-    </div>
-
-    <div>
-      <br/>
-      <br/>
-      It looks like you were searching for the term(s) <b><%= form.q %></b>
-      <br/>
-      <br/>
-    </div>
-
-    <div>
-      You are reporting bias in the following <%= link_to 'search results', form.context %>
     </div>
   <% end %>
 

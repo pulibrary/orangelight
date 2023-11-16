@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class ReportBiasedResultsForm < MailForm::Base
   include ActiveModel::Model
-  attr_accessor :name, :email, :message, :context, :q
+  attr_accessor :name, :email, :message, :context
 
   validates :message, presence: true
   attribute :feedback_desc, captcha: true

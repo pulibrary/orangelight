@@ -4,10 +4,21 @@ require 'rails_helper'
 
 describe 'submitting biased results', js: true do
   before do
-    visit '/feedback/biased_results?report_biased_results_form[q]=cats'
+    allow(Flipflop).to receive(:search_result_form?).and_return(true)
+  end
+
+  it 'shows the search query with facets' do
+    stub_holding_locations
+    visit '/catalog'
+    fill_in('q', with: 'roman')
+    click_on('search')
+    click_on('Manuscript')
+    click_link('please let us know')
+    expect(page).to have_link('search results', href: "/?f[format][]=Manuscript&q=roman&search_field=all_fields")
   end
 
   it 'submits the message' do
+    visit '/feedback/biased_results?report_biased_results_form[q]=cats'
     fill_in('Name (optional)', with: 'John Smith')
     fill_in('Email (optional)', with: 'jsmith@localhost.localdomain')
     fill_in('Message', with: 'Lorem ipsum dolor sit amet, consectetur...')
@@ -19,8 +30,4 @@ describe 'submitting biased results', js: true do
   # it 'renders an accessible icon for returning' do
   #   expect(page).to have_selector '.icon-moveback[aria-hidden="true"]'
   # end
-  it 'shows the search query' do
-    expect(page).to have_content('It looks like you were searching for the term(s) cats')
-    expect(page).to have_link('search results', href: "http://#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}/catalog?q=cats")
-  end
 end
