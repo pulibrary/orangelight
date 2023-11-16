@@ -8,9 +8,9 @@ describe 'submitting biased results', js: true do
   end
 
   it 'submits the message' do
-    fill_in(id: 'name', with: 'John Smith')
-    fill_in(id: 'email', with: 'jsmith@localhost.localdomain')
-    fill_in(id: 'message', with: 'Lorem ipsum dolor sit amet, consectetur...')
+    fill_in('Name (optional):', with: 'John Smith')
+    fill_in('Email (optional):', with: 'jsmith@localhost.localdomain')
+    fill_in('Message:', with: 'Lorem ipsum dolor sit amet, consectetur...')
     click_on('Send')
   end
 

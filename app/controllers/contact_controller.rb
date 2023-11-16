@@ -59,7 +59,6 @@ class ContactController < ApplicationController
     end
 
     def report_biased_results_params
-      binding.pry
       params[:report_biased_results_form].permit!
     end
 end

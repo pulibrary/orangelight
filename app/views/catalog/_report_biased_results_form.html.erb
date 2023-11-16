@@ -9,18 +9,18 @@
 
 <%= form_tag("/contact/report_biased_results", method: :post) do %>
   <div>
-     <%= label_tag(:message, "Message:") %><span style="color:red">*</span><br/>
-    <%= text_area_tag(:message, "", :size => "60x5", placeholder: "Please include any additional comments here") %>
+     <%= label_tag(:report_biased_results_form_message, "Message:") %><span style="color:red">*</span><br/>
+    <%= text_area_tag('report_biased_results_form[message]', "", :size => "60x5", placeholder: "Please include any additional comments here") %>
   </div>
 
   <div>
-    <%= label_tag(:name, "Name (optional):") %><br/>
-    <%= text_field_tag(:name) %>
+    <%= label_tag(:report_biased_results_form_name, "Name (optional):") %><br/>
+    <%= text_field_tag('report_biased_results_form[name]') %>
   </div>
 
   <div>
-    <%= label_tag(:email, "Email (optional):") %><br/>
-    <%= text_field_tag(:email) %>
+    <%= label_tag(:report_biased_results_form_email, "Email (optional):") %><br/>
+    <%= text_field_tag('report_biased_results_form[email]') %>
   </div>
 
   <div class="submit-buttons pull-right form-group">
