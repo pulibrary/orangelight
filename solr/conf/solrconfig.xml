@@ -133,6 +133,7 @@
       <str name="hl">true</str>
       <str name="hl.method">unified</str>
       <str name="hl.fl">author_display title_display title_vern_display subject_display lc_subject_display siku_subject_display homoit_subject_display lcgft_s homoit_genre_s rbgenr_s aat_s notes_display</str>
+      <str name="hl.usePhraseHighlighter">false</str>
 
       <!-- boost local holdings (add 50 to the score) to reduce unnecessary requests -->
       <str name="bf">if(field(numeric_id_b),50,0)</str>
