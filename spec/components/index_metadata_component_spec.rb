@@ -24,6 +24,7 @@ RSpec.describe IndexMetadataComponent, type: :component do
                                 })
     view_context = double(document_index_view_type: 'index')
     allow(view_context).to receive(:should_render_field?).and_return true
+    allow(view_context).to receive(:action_name).and_return('index')
     presenter = Blacklight::IndexPresenter.new(document, view_context, blacklight_config)
     described_class.new presenter:
   end
