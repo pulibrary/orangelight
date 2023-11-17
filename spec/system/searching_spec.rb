@@ -31,8 +31,8 @@ describe 'Searching', type: :system, js: false do
     let(:config) { Blacklight::Configuration.new }
     it 'renders lc_subject_display with an em tag around the search term' do
       visit '/catalog?q=African+American'
-      expect(page).to have_selector('article.blacklight-book:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ul:nth-child(4) > li:nth-child(3) > em:nth-child(2)', text: 'African')
-      expect(page).to have_selector('article.blacklight-book:nth-child(1) > div:nth-child(1) > div:nth-child(1) > ul:nth-child(4) > li:nth-child(3) > em:nth-child(4)', text: 'American')
+      expect(page).to have_selector('#documents > article.blacklight-book.document.document-position-1 > div > div.record-wrapper > ul > li:nth-child(3) > a.search-name > em:nth-child(2)', text: 'African')
+      expect(page).to have_selector('#documents > article.blacklight-book.document.document-position-1 > div > div.record-wrapper > ul > li:nth-child(3) > a.search-name > em:nth-child(4)', text: 'American')
     end
   end
 

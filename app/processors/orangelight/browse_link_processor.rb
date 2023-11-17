@@ -3,6 +3,7 @@
 module Orangelight
   class BrowseLinkProcessor < Blacklight::Rendering::AbstractStep
     include ActionView::Helpers::UrlHelper
+    include ActionView::Helpers::SanitizeHelper
 
     def render
       return next_step(values) unless config.browse_link
@@ -35,8 +36,8 @@ module Orangelight
 
       def add_links_to(value)
         return value unless should_render_links?(value)
-        link_to(value, "/?f[#{facet_field}][]=#{CGI.escape value}", class: search_class, 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{value}", title: "") + ' ' +
-          link_to('[Browse]', "/browse/#{browse_path}?q=#{CGI.escape value}", class: browse_class, 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{value}", title: "", dir: value.dir.to_s)
+        link_to(value, "/?f[#{facet_field}][]=#{strip_tags(CGI.escape(strip_tags(value)))}", class: search_class, 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{strip_tags(value)}", title: "") + ' ' +
+          link_to('[Browse]', "/browse/#{browse_path}?q=#{CGI.escape(strip_tags(value))}", class: browse_class, 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{strip_tags(value)}", title: "", dir: value.dir.to_s)
       end
 
       def should_render_links?(value)
