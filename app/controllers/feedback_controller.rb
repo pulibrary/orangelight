@@ -8,6 +8,7 @@ class FeedbackController < ApplicationController
   before_action :build_ask_a_question_form, only: [:ask_a_question]
   before_action :build_suggest_correction_form, only: [:suggest_correction]
   before_action :build_report_harmful_language_form, only: [:report_harmful_language]
+  before_action :build_report_biased_results_form, only: [:report_biased_results]
 
   def new
     @feedback_form = FeedbackForm.new if @feedback_form.nil?
@@ -30,6 +31,8 @@ class FeedbackController < ApplicationController
   def suggest_correction; end
 
   def report_harmful_language; end
+
+  def report_biased_results; end
 
   protected
 
@@ -74,6 +77,20 @@ class FeedbackController < ApplicationController
 
     def harmful_language_params
       params.require(:report_harmful_language_form).permit(:id, :title)
+    end
+
+    def build_report_biased_results_form
+      @biased_results_form = ReportBiasedResultsForm.new(
+        biased_results_params
+      )
+    end
+
+    def biased_results_params
+      params.require(:report_biased_results_form).permit(:context)
+    end
+
+    def search_results_url(_params)
+      search_catalog_url(q: biased_results_params['q'])
     end
 
     def page_url(params)
