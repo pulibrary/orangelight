@@ -9734,4 +9734,185 @@ http_interactions:
         Available","status_label":"Acquisitions and Cataloging","status_source":"work_order","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"recap","pickup_location_code":"recap","location":"recap$pa","label":"ReCAP
         - Remote Storage","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
   recorded_at: Thu, 30 Mar 2023 14:11:29 GMT
-recorded_with: VCR 6.1.0
+- request:
+    method: get
+    uri: https://catalog.princeton.edu/catalog/99127133356906421/raw
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.25.1
+      Date:
+      - Wed, 22 Nov 2023 15:06:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - b8594820-190e-4f1e-b191-2b2e0fef0092
+      X-Download-Options:
+      - noopen
+      X-Ua-Compatible:
+      - IE=edge,chrome=1
+      Etag:
+      - W/"c2f5bc8f8759b6edb6e8c67cb953ad6a"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.030914'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.18
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Origin
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6Ijk5MTI3MTMzMzU2OTA2NDIxIiwibnVtZXJpY19pZF9iIjp0cnVlLCJhdXRob3JfZGlzcGxheSI6WyJSb21hbmksIEZlbGljZSwgMTc4OC0xODY1Il0sImF1dGhvcl9jaXRhdGlvbl9kaXNwbGF5IjpbIlJvbWFuaSwgRmVsaWNlIiwiSHVnbywgVmljdG9yIiwiRG9uaXpldHRpLCBHYWV0YW5vIl0sImF1dGhvcl9yb2xlc18xZGlzcGxheSI6IntcInNlY29uZGFyeV9hdXRob3JzXCI6W1wiSHVnbywgVmljdG9yXCIsXCJEb25pemV0dGksIEdhZXRhbm9cIl0sXCJ0cmFuc2xhdG9yc1wiOltdLFwiZWRpdG9yc1wiOltdLFwiY29tcGlsZXJzXCI6W10sXCJwcmltYXJ5X2F1dGhvclwiOlwiUm9tYW5pLCBGZWxpY2VcIn0iLCJhdXRob3JfcyI6WyJSb21hbmksIEZlbGljZSwgMTc4OC0xODY1IiwiSHVnbywgVmljdG9yLCAxODAyLTE4ODUiLCJEb25pemV0dGksIEdhZXRhbm8sIDE3OTctMTg0OCJdLCJtYXJjX3JlbGF0b3JfZGlzcGxheSI6WyJMaWJyZXR0aXN0Il0sInRpdGxlX2Rpc3BsYXkiOiJMdWNyZXppYSBCb3JnaWEgOiBtZWxvZHJhbW1hIGluIHRyZSBhdHRpIC8gZGkgRmVsaWNlIFJvbWFuaSA7IG11c2ljYSBkZWwgbWFlc3RybyBzaWdub3IgY2F2YWxpZXJlIEdhZXRhbm8gRG9uaXpldHRpLiIsInRpdGxlX3QiOlsiTHVjcmV6aWEgQm9yZ2lhIDogbWVsb2RyYW1tYSBpbiB0cmUgYXR0aSAvIGRpIEZlbGljZSBSb21hbmkgOyBtdXNpY2EgZGVsIG1hZXN0cm8gc2lnbm9yIGNhdmFsaWVyZSBHYWV0YW5vIERvbml6ZXR0aS4iXSwidGl0bGVfY2l0YXRpb25fZGlzcGxheSI6WyJMdWNyZXppYSBCb3JnaWEgOiBtZWxvZHJhbW1hIGluIHRyZSBhdHRpIl0sImNvbXBpbGVkX2NyZWF0ZWRfdCI6WyJMdWNyZXppYSBCb3JnaWEgOiBtZWxvZHJhbW1hIGluIHRyZSBhdHRpIC8gZGkgRmVsaWNlIFJvbWFuaSA7IG11c2ljYSBkZWwgbWFlc3RybyBzaWdub3IgY2F2YWxpZXJlIEdhZXRhbm8gRG9uaXpldHRpLiJdLCJwdWJfY3JlYXRlZF9kaXNwbGF5IjpbIkZpcmVuemUgOiBUaXAuIFBvcG9sYXJlIGRpIEVkdWFyZG8gRHVjY2ksIFtiZXR3ZWVuIDE4NDAgYW5kIDE4NDldIl0sInB1Yl9jcmVhdGVkX3MiOlsiRmlyZW56ZSA6IFRpcC4gUG9wb2xhcmUgZGkgRWR1YXJkbyBEdWNjaSwgW2JldHdlZW4gMTg0MCBhbmQgMTg0OV0iXSwicHViX2NpdGF0aW9uX2Rpc3BsYXkiOlsiRmlyZW56ZTogVGlwLiBQb3BvbGFyZSBkaSBFZHVhcmRvIER1Y2NpIl0sInB1Yl9kYXRlX2Rpc3BsYXkiOlsiMTg0MCJdLCJwdWJfZGF0ZV9zdGFydF9zb3J0IjoxODQwLCJwdWJfZGF0ZV9lbmRfc29ydCI6MTg0OSwiY2F0YWxvZ2VkX3RkdCI6IjIwMjMtMDUtMDlUMTY6NTA6MDdaIiwiZm9ybWF0IjpbIkJvb2siXSwiZGVzY3JpcHRpb25fZGlzcGxheSI6WyIyNiBwYWdlcyA7IDE4IGNtIl0sImRlc2NyaXB0aW9uX3QiOlsiMjYgcGFnZXMgOyAxOCBjbSJdLCJudW1iZXJfb2ZfcGFnZXNfY2l0YXRpb25fZGlzcGxheSI6WyIyNiBwYWdlcyJdLCJzZXJpZXNfZGlzcGxheSI6WyJFbGVuY28gZGVpIGxpYnJldHRpIGQnb3BlcmUgaW4gbXVzaWNhIDsgMS4iLCJFbGVuY28gZGVpIGxpYnJldHRpIGQnb3BlcmUgaW4gbXVzaWNhIDsgMSJdLCJtb3JlX2luX3RoaXNfc2VyaWVzX3QiOlsiRWxlbmNvIGRlaSBsaWJyZXR0aSBkJ29wZXJlIGluIG11c2ljYSJdLCJub3Rlc19kaXNwbGF5IjpbIkJhc2VkIG9uIFZpY3RvciBIdWdvJ3MgcGxheSBvZiB0aGUgc2FtZSBuYW1lLiJdLCJsYW5ndWFnZV9uYW1lX2Rpc3BsYXkiOlsiSXRhbGlhbiJdLCJsYW5ndWFnZV9mYWNldCI6WyJJdGFsaWFuIl0sImxhbmd1YWdlX2lhbmFfcyI6WyJpdCJdLCJsY19zdWJqZWN0X2Rpc3BsYXkiOlsiQm9yZ2lhLCBMdWNyZXppYSAxNDgwLTE1MTnigJREcmFtYSIsIk9wZXJhc+KAlExpYnJldHRvcyJdLCJzdWJqZWN0X2ZhY2V0IjpbIkJvcmdpYSwgTHVjcmV6aWEgMTQ4MC0xNTE54oCURHJhbWEiLCJPcGVyYXPigJRMaWJyZXR0b3MiXSwicmVsYXRlZF93b3Jrc18xZGlzcGxheSI6IltbXCJIdWdvLCBWaWN0b3IsIDE4MDItMTg4NS5cIixcIkx1Y3JlzIBjZSBCb3JnaWEuXCJdLFtcIkRvbml6ZXR0aSwgR2FldGFubywgMTc5Ny0xODQ4LlwiLFwiTHVjcmV6aWEgQm9yZ2lhLlwiXV0iLCJvY2xjX3MiOlsiMTM3ODY0Mzg3OSJdLCJvdGhlcl92ZXJzaW9uX3MiOlsib24xMzc4NjQzODc5Il0sImhvbGRpbmdzXzFkaXNwbGF5Ijoie1wiMjI5NzE1Mzk5MjAwMDY0MjFcIjp7XCJsb2NhdGlvbl9jb2RlXCI6XCJtZW5kZWwkcGtcIixcImxvY2F0aW9uXCI6XCJSZW1vdGUgU3RvcmFnZSAoUmVDQVApXCIsXCJsaWJyYXJ5XCI6XCJNZW5kZWwgTXVzaWMgTGlicmFyeVwiLFwiY2FsbF9udW1iZXJcIjpcIk1MNTAuRDY4MyBMOSAxODQwelwiLFwiY2FsbF9udW1iZXJfYnJvd3NlXCI6XCJNTDUwLkQ2ODMgTDkgMTg0MHpcIixcIml0ZW1zXCI6W3tcImhvbGRpbmdfaWRcIjpcIjIyOTcxNTM5OTIwMDA2NDIxXCIsXCJpZFwiOlwiMjM5NzE1Mzk5MDAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIxXCIsXCJiYXJjb2RlXCI6XCIzMjEwMTExMTc0NzA4M1wifV19fSIsImxvY2F0aW9uX2NvZGVfcyI6WyJtZW5kZWwkcGsiXSwibG9jYXRpb24iOlsiTWVuZGVsIE11c2ljIExpYnJhcnkiXSwibG9jYXRpb25fZGlzcGxheSI6WyJSZW1vdGUgU3RvcmFnZSAoUmVDQVApIl0sImFkdmFuY2VkX2xvY2F0aW9uX3MiOlsibWVuZGVsJHBrIiwiTWVuZGVsIE11c2ljIExpYnJhcnkiXSwibmFtZV90aXRsZV9icm93c2VfcyI6WyJIdWdvLCBWaWN0b3IsIDE4MDItMTg4NS4gTHVjcmXMgGNlIEJvcmdpYSIsIkRvbml6ZXR0aSwgR2FldGFubywgMTc5Ny0xODQ4LiBMdWNyZXppYSBCb3JnaWEiLCJSb21hbmksIEZlbGljZSwgMTc4OC0xODY1LiBMdWNyZXppYSBCb3JnaWEiXSwiY2FsbF9udW1iZXJfZGlzcGxheSI6WyJNTDUwLkQ2ODMgTDkgMTg0MHoiXSwiY2FsbF9udW1iZXJfYnJvd3NlX3MiOlsiTUw1MC5ENjgzIEw5IDE4NDB6Il0sImNhbGxfbnVtYmVyX2xvY2F0b3JfZGlzcGxheSI6WyJNTDUwLkQ2ODMgTDkgMTg0MHoiXSwiaGFzaGVkX2lkX3NzaSI6IjAwNDhkOTk3ZjUzNzNlZjMiLCJfdmVyc2lvbl8iOjE3Nzc0NjMxNDU2NTQxMjQ1NDQsInRpbWVzdGFtcCI6IjIwMjMtMDktMTlUMTA6NTU6NTAuMjM4WiJ9
+  recorded_at: Wed, 22 Nov 2023 15:06:54 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/mendel$pk.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.25.1
+      Date:
+      - Wed, 22 Nov 2023 15:06:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"4bf8e9d8c93ea6d263bcd65fc04491f1"
+      X-Runtime:
+      - '0.019123'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 575ffb22-4807-4d73-aa1f-e6a430c701e3
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.19
+    body:
+      encoding: UTF-8
+      string: '{"label":"Remote Storage (ReCAP)","code":"mendel$pk","aeon_location":false,"recap_electronic_delivery_location":true,"open":false,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"recap_rmt","fulfillment_unit":"Closed","library":{"label":"Mendel
+        Music Library","code":"mendel","order":0},"holding_library":{"label":"Mendel
+        Music Library","code":"mendel","order":0},"delivery_locations":[{"label":"Technical
+        Services 693","address":"693 Alexander Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QT","staff_only":true,"pickup_location":true,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Mendel Music Library","address":"Woolworth
+        Center Princeton, NJ 08544","phone_number":"609-258-3230","contact_email":"muslib@princeton.edu","gfa_pickup":"PK","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Mendel
+        Music Library","code":"mendel","order":0}},{"label":"Firestone Library, Resource
+        Sharing","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"QA","staff_only":true,"pickup_location":true,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Technical Services HMT","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QC","staff_only":true,"pickup_location":true,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Preservation","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"QP","staff_only":true,"pickup_location":false,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}}]}'
+  recorded_at: Wed, 22 Nov 2023 15:06:54 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/bibliographic/99127133356906421/holdings/22971539920006421/availability.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.25.1
+      Date:
+      - Wed, 22 Nov 2023 15:07:01 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"cc2e797fc48ba3fe8073af44458ee2d2"
+      X-Runtime:
+      - '7.092285'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 4a641547-468d-48ef-843e-6f6a14754c52
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.19
+    body:
+      encoding: UTF-8
+      string: '[{"barcode":"32101111747083","id":"23971539900006421","holding_id":"22971539920006421","copy_number":"","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Closed","pickup_location_id":"mendel","pickup_location_code":"mendel","location":"mendel$pk","label":"Mendel
+        Music Library - Remote Storage (ReCAP)","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
+  recorded_at: Wed, 22 Nov 2023 15:07:01 GMT
+recorded_with: VCR 6.2.0

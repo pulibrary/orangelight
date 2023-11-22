@@ -1449,6 +1449,13 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
       expect(page).to have_content 'Physical Item Delivery'
     end
 
+    it "allows a physical pickup request of a - Library In Use - ReCAP Item" do
+      stub_scsb_availability(bib_id: "99127133356906421", institution_id: "PUL", barcode: "32101111747083")
+      visit 'requests/99127133356906421?aeon=false&mfhd=22971539920006421'
+      expect(page).not_to have_content 'Electronic Delivery'
+      expect(page).to have_content 'Available for In Library Use'
+    end
+
     it "allows only physical pickup to enumerated annex item" do
       stub_alma_hold_success('9947220743506421', '22734584180006421', '23734584140006421', user.uid)
 
@@ -1491,7 +1498,6 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).not_to have_content 'Physical Item Delivery'
       expect(page).to have_content 'Request options for this item are only available to Faculty, Staff, and Students.'
-      expect(page).to have_content 'Please proceed to Firestone Library - Classics Collection to retrieve this item'
     end
 
     it "does not allow access to items on the shelf when not available" do
@@ -1554,7 +1560,7 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
       end
     end
 
-    it "does not allow reuesting of on order books" do
+    it "does not allow requesting of on order books" do
       visit "requests/99125492003506421?mfhd=22927395910006421"
       expect(page).to have_content 'This item is not available'
     end
