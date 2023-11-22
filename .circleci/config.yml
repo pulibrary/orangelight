@@ -121,15 +121,6 @@ jobs:
       - store_test_results:
           path: ~/rspec
 
-  eslint:
-      executor: basic-executor
-      steps:
-        - attach_workspace:
-            at: '~/orangelight'
-        - run: 
-            name: Run eslint
-            command: yarn run eslint app/javascript/orangelight/availability.es6
-  
   js_tests:
       executor: basic-executor
       steps:
@@ -176,9 +167,6 @@ workflows:
          requires:
           - build
       - erblint:
-         requires:
-          - build
-      - eslint:
          requires:
           - build
       - js_tests:
