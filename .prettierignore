@@ -1,0 +1,9 @@
+node_modules
+.gitignore
+spec
+tmp
+vendor
+public
+docs
+solr
+config
