@@ -19,9 +19,8 @@ describe Requests::Patron do
   let(:uid) { 'foo' }
   let(:guest?) { false }
   let(:provider) { nil }
-  let(:barcode_provider) { false }
   let(:user) do
-    instance_double(User, guest?: guest?, uid:, alma_provider?: false, provider:, barcode_provider?: barcode_provider)
+    instance_double(User, guest?: guest?, uid:, alma_provider?: false, provider:)
   end
   let(:bibdata_uri) { Requests::Config[:bibdata_base] }
   let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
@@ -31,7 +30,7 @@ describe Requests::Patron do
   context 'when the user is provided from Alma' do
     let(:uid) { 'BC123456789' }
     let(:user) do
-      instance_double(User, guest?: guest?, uid:, alma_provider?: true, provider:, barcode_provider?: barcode_provider)
+      instance_double(User, guest?: guest?, uid:, alma_provider?: true, provider:)
     end
     let(:patron_with_multiple_barcodes) { fixture('/BC123456789.json') }
 
