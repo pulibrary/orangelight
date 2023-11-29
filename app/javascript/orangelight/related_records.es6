@@ -7,7 +7,7 @@ export default class RelatedRecordsDisplayer extends DisplayMoreLessList {
     }
 
     static fetchData(fieldName, recordId) {
-        let url = '/catalog/' + recordId + '/linked_records/' + fieldName;
+        const url = '/catalog/' + recordId + '/linked_records/' + fieldName;
         return fetch(url, {
             headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
             method: 'POST'})
@@ -21,7 +21,7 @@ export default class RelatedRecordsDisplayer extends DisplayMoreLessList {
         this.popListItems(listElement);
 
         // Add the new <li>s
-        for (let i in this.relatedRecords) {
+        for (const i in this.relatedRecords) {
             const listItem = document.createElement("li");
             listItem.innerHTML = '<a href="/catalog/' + this.relatedRecords[i].document.id + '">' + this.relatedRecords[i].document.title_display + '</a>';
             listElement.appendChild(listItem);

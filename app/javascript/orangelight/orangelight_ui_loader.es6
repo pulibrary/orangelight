@@ -26,8 +26,7 @@ export default class OrangelightUiLoader {
   }
 
   setup_availability() {
-    let au2
-    au2 = new AvailabilityUpdater
+    const au2 = new AvailabilityUpdater
     au2.request_availability(true);
     au2.scsb_search_availability();
   }
@@ -35,7 +34,7 @@ export default class OrangelightUiLoader {
   setup_linked_records() {
     const buttons = document.querySelectorAll('.show-more-linked-records');
     if (buttons.length > 0) {
-      for (let button of buttons) {
+      for (const button of buttons) {
         const fetchData = RelatedRecordsDisplayer.fetchData(
           button.getAttribute('data-linked-records-field'),
           button.getAttribute('data-record-id'));
@@ -49,7 +48,7 @@ export default class OrangelightUiLoader {
   setup_show_more_fields() {
     const buttons = document.querySelectorAll('.btn.show-more');
     if (buttons.length > 0) {
-      for (let button of buttons) {
+      for (const button of buttons) {
         const displayer = new DisplayMoreFieldComponent();
         button.addEventListener('click', (event) => { displayer.toggle(event) });
       }
