@@ -4,7 +4,7 @@ module Requests
     attr_accessor :requestable
     attr_reader :user, :any_loanable
 
-    delegate :cas_provider?, :barcode_provider?, :alma_provider?, to: :user
+    delegate :cas_provider?, :alma_provider?, to: :user
 
     def initialize(requestable:, user:, any_loanable: false)
       @requestable = requestable

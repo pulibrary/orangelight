@@ -7,7 +7,7 @@ module Requests
 
     def current_user_status(current_user)
       ## Expect that the host app can provide you a devise current_user object
-      if current_user.cas_provider? # || current_user.barcode_provider?
+      if current_user.cas_provider?
         content_tag(:div, class: "flash_messages-user") do
           content_tag(:div, I18n.t('requests.account.pul_auth', current_user_name: current_user.uid), class: "flash-alert")
         end
@@ -19,15 +19,6 @@ module Requests
         I18n.t('requests.account.unauthenticated')
       end
     end
-
-    # No longer used
-    # def active_user current_user
-    #   if current_user.cas_provider? || current_user.barcode_provider?
-    #     link_to "#{I18n.t('requests.account.logged_in')}#{current_user.uid}", '/users/sign_out'
-    #   else
-    #     link_to "PUL Users Sign In to Request", '/users/auth/cas'
-    #   end
-    # end
 
     def pul_patron_name(patron)
       return "" if patron.last_name.blank? && patron.first_name.blank?

@@ -2,8 +2,6 @@
 
 class User < ApplicationRecord
   validates :username, presence: true
-  validates :uid, length: { is: 14 }, format: { with: /\A([\d]{14})\z/ },
-                  if: :barcode_provider?
 
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
@@ -18,12 +16,6 @@ class User < ApplicationRecord
   # @return [String] the user name
   def to_s
     username || 'User'
-  end
-
-  # Determines whether or not this is a user which has an identifiable barcode
-  # @return [TrueClass, FalseClass]
-  def barcode_provider?
-    provider == 'barcode'
   end
 
   # Determines whether or not this is a user which is identifiable by alma
