@@ -36,7 +36,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       holding_id => {
         location:,
         library: 'Firestone Library',
-        location_code: 'f',
+        location_code: 'firestone$stacks',
         call_number:,
         shelving_title:,
         supplements:,
@@ -117,7 +117,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
       it 'includes a link with mapping details' do
         expect(holding_location_markup).to include '<td class="library-location"'
-        expect(holding_location_markup).to include "href=\"/catalog/123456/stackmap?loc=f&amp;cn=#{call_number}\""
+        expect(holding_location_markup).to include "href=\"/catalog/123456/stackmap?loc=firestone$stacks&amp;cn=#{call_number}\""
         expect(holding_location_markup).to include 'Firestone Library'
         expect(holding_location_markup).to include 'data-holding-id="3668455"'
         expect(holding_location_markup).to include "data-map-location=\"#{holding.first[1]['location_code']}"
@@ -699,7 +699,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
   describe 'Special collections location with suppressed button' do
     before do
-      stub_holding_locations
+      stub_alma_holding_locations
       allow(document).to receive(:to_s).and_return('99125501031906421')
       allow(adapter).to receive(:document).and_return(document)
       allow(adapter).to receive(:doc_id).and_return('99125501031906421')
@@ -752,9 +752,15 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(holding_location_markup).to include '<span class="location-text"'
       expect(holding_location_markup).to include 'Remote Storage (ReCAP): Manuscripts. Special Collections Use Only'
       expect(holding_location_markup).to include 'data-holding-id="22939015790006421"'
-      expect(holding_location_markup).to include "data-map-location=\"#{holding.first[1]['location_code']}"
-      expect(holding_location_markup).to include "data-location-library=\"#{holding.first[1]['library']}"
-      expect(holding_location_markup).to include "data-location-name=\"#{location}"
+    end
+
+    context 'Is a remote storage location rare$xmr' do
+      it 'does not have a -where to find- it element' do
+        expect(holding_location_markup).not_to include "title"
+        expect(holding_location_markup).not_to include "data-map-location"
+        expect(holding_location_markup).not_to include "data-location-library"
+        expect(holding_location_markup).not_to include "data-location-name"
+      end
     end
 
     it 'generates a "service-conditional" class' do
