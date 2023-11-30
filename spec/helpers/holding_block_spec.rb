@@ -42,13 +42,13 @@ RSpec.describe HoldingsHelper do
         '3668455' => {
           location: 'Firestone Library',
           library: 'Firestone Library',
-          location_code: 'f',
+          location_code: 'firestone$se',
           call_number: 'PS3539.A74Z93 2000'
         },
         '4362737' => {
           location: 'Firestone Library',
           library: 'Firestone Library',
-          location_code: 'f',
+          location_code: 'firestone$se',
           call_number: 'PS3539.A74Z93 2000'
         }
       }.to_json.to_s
@@ -579,8 +579,8 @@ RSpec.describe HoldingsHelper do
     end
 
     context '#holding_block record show - online holdings' do
+      before { stub_alma_holding_locations }
       it 'link missing label appears when 856s is missing from elf location' do
-        stub_holding_locations
         expect(show_result.first).to include 'Link Missing'
       end
     end
@@ -615,14 +615,14 @@ RSpec.describe HoldingsHelper do
           '22270490580006421' => {
             location: '',
             library: 'Very Special Library',
-            location_code: 'xspecial&nil',
+            location_code: 'mendel$stacks',
             call_number: 'special',
             call_number_browse: 'special'
           }
         }.to_json.to_s
       end
 
-      before { stub_holding_locations }
+      before { stub_alma_holding_locations }
 
       it 'returns a string with call number and location display values' do
         expect(show_result.last).to include call_number

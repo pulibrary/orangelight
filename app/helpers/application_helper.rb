@@ -357,9 +357,16 @@ module ApplicationHelper
     HoldingRequestsAdapter.new(@document, Bibdata)
   end
 
+  # Returns true for locations with remote storage.
+  # Remote storage locations have a value of 'recap_rmt' in Alma.
+  def remote_storage?(location_code)
+    Bibdata.holding_locations[location_code]["remote_storage"] == 'recap_rmt'
+  end
+
   # Returns true for locations where the user can walk and fetch an item.
   # Currently this logic is duplicated in Javascript code in availability.es6
   def find_it_location?(location_code)
+    return false if remote_storage?(location_code)
     return false if (location_code || "").start_with?("plasma$", "marquand$")
 
     return false if StackmapService::Url.missing_stackmap_reserves.include?(location_code)
