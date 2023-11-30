@@ -69,7 +69,7 @@ en:
       email_conf_msg: 'Electronic document delivery requests typically take 1-2 business days to process. You will receive an email including a link where you can download your scanned section in the that timeframe. If there is a problem fulfilling your request a member of our Library Staff will contact you.'
       email_msg: 'The user has requested Digitization of a resource that is not itemized.'
     ppl:
-      email: "ppllib@princeton.edu"
+      email: "lewislib@princeton.edu"
       email_subject: "Harold P. Furth Plasma Physics Library Request"
       brief_msg: "Request for delivery in 1-2 business days."
       # temporary changes issue 438

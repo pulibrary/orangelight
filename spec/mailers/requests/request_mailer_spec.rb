@@ -883,7 +883,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
 
     it "renders the headers" do
       expect(mail.subject).to eq(I18n.t('requests.ppl.email_subject'))
-      expect(mail.to).to eq(["ppllib@princeton.edu"])
+      expect(mail.to).to eq(["lewislib@princeton.edu"])
       expect(mail.from).to eq([I18n.t('requests.default.email_from')])
     end
 
