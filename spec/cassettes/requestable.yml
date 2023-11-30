@@ -223,7 +223,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '[{"label":"Plasma Physics Library","address":"Forrestal Campus Princeton,
-        NJ 08544","phone_number":"609-243-3565","contact_email":"ppllib@princeton.edu","gfa_pickup":"PQ","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/1.json","library":{"label":"Harold
+        NJ 08544","phone_number":"609-243-3565","contact_email":"lewislib@princeton.edu","gfa_pickup":"PQ","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/1.json","library":{"label":"Harold
         P. Furth Plasma Physics Library","code":"plasma","order":0}},{"label":"Technical
         Services 693","address":"693 Alexander Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QT","staff_only":true,"pickup_location":true,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/2.json","library":{"label":"Firestone
         Library","code":"firestone","order":0}},{"label":"Architecture Library","address":"School
@@ -2729,7 +2729,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"label":"Remote Storage","code":"recap$pa","aeon_location":false,"recap_electronic_delivery_location":true,"open":false,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"recap_rmt","library":{"label":"ReCAP","code":"recap","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[{"label":"Plasma
-        Physics Library","address":"Forrestal Campus Princeton, NJ 08544","phone_number":"609-243-3565","contact_email":"ppllib@princeton.edu","gfa_pickup":"PQ","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Harold
+        Physics Library","address":"Forrestal Campus Princeton, NJ 08544","phone_number":"609-243-3565","contact_email":"lewislib@princeton.edu","gfa_pickup":"PQ","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Harold
         P. Furth Plasma Physics Library","code":"plasma","order":0}},{"label":"Technical
         Services 693","address":"693 Alexander Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QT","staff_only":true,"pickup_location":true,"digital_location":false,"library":{"label":"Firestone
         Library","code":"firestone","order":0}},{"label":"Architecture Library","address":"School
