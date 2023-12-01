@@ -505,18 +505,6 @@
    <field name="title_display" type="text" indexed="true" stored="true" multiValued="false"/>
    <field name="title_vern_display" type="text" indexed="true" stored="true" multiValued="false"/>
 
-   <!-- this field is required to be explicitly defined for search highlighing -->
-   <field name="author_display" type="text" indexed="true" stored="true" multiValued="true"/>
-   <field name="subject_display" type="text" indexed="true" stored="true" multiValued="true"/>
-   <field name="lc_subject_display" type="text" indexed="true" stored="true" multiValued="true"/>
-   <field name="siku_subject_display" type="text" indexed="true" stored="true" multiValued="true"/>
-   <field name="homoit_subject_display" type="text" indexed="true" stored="true" multiValued="true"/>
-   <field name="lcgft_s" type="text" indexed="true" stored="true" multiValued="true"/>
-   <field name="homoit_genre_s" type="text" indexed="true" stored="true" multiValued="true"/>
-   <field name="rbgenr_s" type="text" indexed="true" stored="true" multiValued="true"/>
-   <field name="aat_s" type="text" indexed="true" stored="true" multiValued="true"/>
-   <field name="notes_display" type="text" indexed="true" stored="true" multiValued="true"/>
-
    <!-- these fields are also used for display, so they must be stored -->
    <field name="isbn_t" type="isbn" indexed="true" stored="true" multiValued="true"/>
    <field name="lccn_s" type="lccn" indexed="true" stored="true" multiValued="true"/>
