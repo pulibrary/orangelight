@@ -1,13 +1,6 @@
 # frozen_string_literal: true
 
 class NumismaticsSearchFormComponent < Blacklight::AdvancedSearchFormComponent
-  def sort_fields_select
-    options = sort_fields.values.map { |field_config| [helpers.sort_field_label(field_config.key), field_config.key] }
-    return unless options.any?
-
-    select_tag(:sort, options_for_select(options, params[:sort]), class: "sort-select", aria: { labelledby: 'advanced-search-sort-label' })
-  end
-
   private
 
     def initialize_search_filter_controls

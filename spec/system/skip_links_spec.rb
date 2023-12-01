@@ -21,5 +21,12 @@ describe 'skip links', type: :system do
         expect(page).to have_selector('#skip-link a', text: 'Skip to result 1 of 9', visible: false)
       end
     end
+
+    context 'when no basic search bar' do
+      it 'only has one skip link' do
+        visit '/numismatics'
+        expect(page).to have_selector('#skip-link a', count: 1, visible: false)
+      end
+    end
   end
 end

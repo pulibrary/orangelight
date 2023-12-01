@@ -55,7 +55,11 @@
   <body class="<%= render_body_class %>"
         data-bibdata-base-url="<%= Requests.config['bibdata_base'] %>" >
   <nav id="skip-link" role="navigation" aria-label="<%= t('blacklight.skip_links.label') %>">
-    <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
+    <% unless %w[generate numismatics].include? params[:action] %>
+      <%# Certain screens do not display the basic search form. Don't show this link on such pages,
+        # because it will be broken. %>
+      <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
+    <% end %>
     <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
     <%= content_for(:skip_links) %>
   </nav>
