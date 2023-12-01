@@ -2,14 +2,12 @@
 @import "variables/colors";
 @import "variables/typography";
 
-$search-box-form-height: calc(1.75em + 0.75rem + 2px);
-
-header .navbar-form .input-group .custom-select {
+header .search-navbar .input-group .custom-select {
   width: auto;
 }
 
-@media (max-width: 575px) {
-  header .navbar-form .input-group .custom-select {
+@media (max-width: $bp-small) {
+  header .search-navbar .input-group .custom-select {
     width: 100%;
     clear: both;
     display: block;
@@ -20,14 +18,14 @@ header .navbar-form .input-group .custom-select {
     }
   }
 
-  header .navbar-form .input-group .input-group .search_q {
+  header .search-navbar .search-query-form .input-group .search-input .search_q {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     -webkit-appearance: none;
   }
 }
 
-header .navbar-form .input-group .input-group-btn {
+header .search-navbar .input-group .input-group-append .search-btn {
   width: 40px;
 }
 
@@ -66,7 +64,7 @@ header .navbar-form .input-group .input-group-btn {
   height: 42px;
   border-right: 0;
 
-  @media (max-width: 530px) {
+  @media (max-width: $bp-small) {
     border-radius: 3px;
     border: 1px solid #ccc;
   }
@@ -98,13 +96,13 @@ header .navbar-form .input-group .input-group-btn {
 }
 
 @media (min-width: $bp-large) {
-  .navbar-form .input-group > .search_q.form-control {
+  .search-navbar .search-query-form .input-group .form-control {
     width: 250px;
   }
 }
 
 @media (min-width: $bp-xlarge) {
-  .navbar-form .input-group > .search_q.form-control {
+  .search-navbar .search-query-form .input-group .form-control {
     width: 375px;
   }
 }
@@ -138,7 +136,7 @@ header .navbar-form .input-group .input-group-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
-    @media (min-width: 575px) {
+    @media (min-width: $bp-small) {
       border-radius: 0;
     }
   }
@@ -165,14 +163,7 @@ select::-ms-expand {
   display: none;
 }
 
-.search_q.form-control,
-.search-btn {
-  height: $search-box-form-height;
-}
-
 #search_field.custom-select {
-  height: $search-box-form-height;
-  
   @media (min-width: 575px) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
