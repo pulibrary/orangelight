@@ -217,11 +217,11 @@ input[type="radio"] + label {
     }
   }
 
-  input[type="checkbox"] {
+  .request--select input[type="checkbox"] {
     transform: scale(2.5);
   } 
 
-  input[type="radio"] {
+  .delivery--options input[type="radio"] {
     transform: scale(1.75);
     margin: 1rem;
     vertical-align: middle;
