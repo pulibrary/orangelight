@@ -124,6 +124,6 @@ en:
     tools:
       librarian_view: 'Staff view'
     pagination_compact:
-      previous: '&laquo; <span class="d-none d-lg-inline"> Previous</span>'
-      next: '<span class="d-none d-lg-inline">Next</span> &raquo;'
+      previous: '<span class="d-none d-lg-inline">&laquo; </span><span>Previous</span>'
+      next: '<span>Next</span><span class="d-none d-lg-inline"> &raquo;<span>'
     back_to_search: '<span class="icon-moveback"></span> <span class="d-none d-lg-inline">Back to search</span>'
