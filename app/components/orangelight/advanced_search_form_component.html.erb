@@ -49,12 +49,6 @@
   </div>
 
   <div class="search-submit-buttons clearfix col-sm-7">
-    <% if sort_fields_select %>
-      <div class="form-group sort-buttons pull-left">
-        <%= content_tag :label, t('blacklight.advanced_search.form.sort_label'), id: 'advanced-search-sort-label', for: 'sort', class: 'control-label' %>
-        <%= sort_fields_select %>
-      </div>
-    <% end %>
     <div class="submit-buttons pull-right form-group">
       <%= submit_tag t('blacklight.advanced_search.form.search_btn_html'), class: 'btn btn-primary advanced-search-submit', id: "advanced-search-submit" %>
     </div>
