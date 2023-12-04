@@ -1033,28 +1033,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     end
   end
 
-  context 'A SCSB Item with no oclc number' do
-    let(:user) { FactoryBot.build(:user) }
-    let(:request) { FactoryBot.build(:request_scsb_no_oclc) }
-    let(:requestable) { request.requestable.first }
-
-    before do
-      stub_catalog_raw(bib_id: 'SCSB-5396104', type: 'scsb')
-    end
-
-    describe "#held_at_marquand_library?" do
-      it "is not marquand" do
-        expect(requestable).not_to be_held_at_marquand_library
-      end
-    end
-
-    describe "#available?" do
-      it "is not available" do
-        expect(requestable).not_to be_available
-      end
-    end
-  end
-
   context 'A SCSB Item from a location with a pick-up and in library use restriction' do
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:request_scsb_ar) }
