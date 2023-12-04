@@ -608,24 +608,26 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
   #   end
   # end
 
-  context "When passed an ID for a paging location in f outside of call number range" do
-    let(:params) do
-      {
-        system_id: '9943404133506421',
-        mfhd: '22514049930006421',
-        patron:
-      }
-    end
-    let(:request_at_paging_f) { described_class.new(**params) }
+  # Future refactoring: we are not using call numbers as a filter for paging requests
+  # https://github.com/pulibrary/orangelight/issues/3872
+  # context "When passed an ID for a paging location in f outside of call number range" do
+  #   let(:params) do
+  #     {
+  #       system_id: '9943404133506421',
+  #       mfhd: '22514049930006421',
+  #       patron:
+  #     }
+  #   end
+  #   let(:request_at_paging_f) { described_class.new(**params) }
 
-    describe "#pageable?" do
-      it "is be false" do
-        expect(request_at_paging_f.requestable[0].location_code).to eq('recap$pa')
-        expect(request_at_paging_f.requestable[0].charged?).to be true
-        expect(request_at_paging_f.requestable[0].pageable?).to be false
-      end
-    end
-  end
+  #   describe "#pageable?" do
+  #     it "is be false" do
+  #       expect(request_at_paging_f.requestable[0].location_code).to eq('recap$pa')
+  #       expect(request_at_paging_f.requestable[0].charged?).to be true
+  #       expect(request_at_paging_f.requestable[0].pageable?).to be false
+  #     end
+  #   end
+  # end
   # 6009363 returned
   # context "When passed an ID for a paging location f within a call in a range" do
   #   let(:user) { FactoryBot.build(:user) }

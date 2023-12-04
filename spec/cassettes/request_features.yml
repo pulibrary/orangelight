@@ -9915,4 +9915,208 @@ http_interactions:
         in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Closed","pickup_location_id":"mendel","pickup_location_code":"mendel","location":"mendel$pk","label":"Mendel
         Music Library - Remote Storage (ReCAP)","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
   recorded_at: Wed, 22 Nov 2023 15:07:01 GMT
+- request:
+    method: get
+    uri: https://catalog.princeton.edu/catalog/99129134216906421/raw
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.25.1
+      Date:
+      - Mon, 04 Dec 2023 19:24:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - e92f5f00-2e4e-447c-86da-610f8fc9dc78
+      X-Download-Options:
+      - noopen
+      X-Ua-Compatible:
+      - IE=edge,chrome=1
+      Etag:
+      - W/"15b353a1ac68b84f032d15a1564aed3b"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.046709'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.18
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Origin
+    body:
+      encoding: UTF-8
+      string: '{"id":"99129134216906421","numeric_id_b":true,"author_display":["Maltbia
+        , C. B."],"author_citation_display":["Maltbia , C. B."],"author_roles_1display":"{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Maltbia
+        , C. B.\"}","author_s":["Maltbia , C. B."],"marc_relator_display":["Author"],"title_display":"Harvesting
+        black gold : /","title_t":["Harvesting black gold : /"],"title_citation_display":["Harvesting
+        black gold :"],"compiled_created_t":["Harvesting black gold : /"],"pub_created_display":["[S.l]
+        : [s.n.], 2018"],"pub_created_s":["[S.l] : [s.n.], 2018"],"pub_citation_display":["S.l:
+        s.n."],"cataloged_tdt":"2023-12-01T15:42:15Z","format":["Book"],"description_display":["426
+        pages : ;"],"description_t":["426 pages : ;"],"number_of_pages_citation_display":["426
+        pages"],"language_name_display":["English"],"language_facet":["English"],"language_iana_s":["en"],"holdings_1display":"{\"221002424820006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote
+        Storage\",\"library\":\"ReCAP\",\"items\":[{\"holding_id\":\"221002424820006421\",\"id\":\"231002424810006421\",\"status_at_load\":\"0\"}]}}","location_code_s":["recap$pa"],"location":["ReCAP"],"location_display":["Remote
+        Storage"],"advanced_location_s":["recap$pa","ReCAP"],"name_title_browse_s":["Maltbia
+        , C. B.. Harvesting black gold"],"hashed_id_ssi":"de08c1240f3131eb","_version_":1784096895036030976,"timestamp":"2023-12-01T16:16:26.669Z"}'
+  recorded_at: Mon, 04 Dec 2023 19:24:42 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/recap$pa.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.25.1
+      Date:
+      - Mon, 04 Dec 2023 19:24:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"a0a00dcf20999ce5b99a85175ea11b9d"
+      X-Runtime:
+      - '0.022952'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 7be4b5b1-aa75-4fac-b336-d961cfff7577
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.19
+    body:
+      encoding: UTF-8
+      string: '{"label":"Remote Storage","code":"recap$pa","aeon_location":false,"recap_electronic_delivery_location":true,"open":false,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"recap_rmt","fulfillment_unit":"Closed","library":{"label":"ReCAP","code":"recap","order":0},"holding_library":null,"delivery_locations":[{"label":"Plasma
+        Physics Library","address":"Forrestal Campus Princeton, NJ 08544","phone_number":"609-243-3565","contact_email":"lewislib@princeton.edu","gfa_pickup":"PQ","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Harold
+        P. Furth Plasma Physics Library","code":"plasma","order":0}},{"label":"Technical
+        Services 693","address":"693 Alexander Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QT","staff_only":true,"pickup_location":true,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Architecture Library","address":"School
+        of Architecture Building, Second Floor Princeton, NJ 08544","phone_number":"609-258-3256","contact_email":"ues@princeton.edu","gfa_pickup":"PW","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Architecture
+        Library","code":"arch","order":0}},{"label":"East Asian Library","address":"Frist
+        Campus Center, Room 317 Princeton, NJ 08544","phone_number":"609-258-3182","contact_email":"gestcirc@princeton.edu","gfa_pickup":"PL","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"East
+        Asian Library","code":"eastasian","order":0}},{"label":"Engineering Library","address":"Friend
+        Center for Engineering Education Princeton, NJ 08544","phone_number":"609-258-3200","contact_email":"englib@princeton.edu","gfa_pickup":"PT","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Engineering
+        Library","code":"engineer","order":0}},{"label":"Mendel Music Library","address":"Woolworth
+        Center Princeton, NJ 08544","phone_number":"609-258-3230","contact_email":"muslib@princeton.edu","gfa_pickup":"PK","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Mendel
+        Music Library","code":"mendel","order":0}},{"label":"Stokes Library","address":"Wallace
+        Hall, Lower Level Princeton, NJ 08544","phone_number":"609-258-5455","contact_email":"piaprlib@princeton.edu","gfa_pickup":"PM","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Stokes
+        Library","code":"stokes","order":0}},{"label":"Firestone Library, Resource
+        Sharing","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"QA","staff_only":true,"pickup_location":true,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Lewis Library","address":"Washington
+        Road and Ivy Lane Princeton, NJ 08544","phone_number":"609-258-6004","contact_email":"lewislib@princeton.edu","gfa_pickup":"PN","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Lewis
+        Library","code":"lewis","order":0}},{"label":"Firestone Library","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"PA","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"ReCAP ILL","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"IL","staff_only":true,"pickup_location":false,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Technical Services HMT","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QC","staff_only":true,"pickup_location":true,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Preservation","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"QP","staff_only":true,"pickup_location":false,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}}]}'
+  recorded_at: Mon, 04 Dec 2023 19:24:42 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/bibliographic/99129134216906421/holdings/221002424820006421/availability.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.25.1
+      Date:
+      - Mon, 04 Dec 2023 19:24:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"f6c1f1ed8c902f18246cb9c75676c2f5"
+      X-Runtime:
+      - '2.717808'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 4c10beb4-5f62-4edb-95f9-8e452d587bd0
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.19
+    body:
+      encoding: UTF-8
+      string: '[{"barcode":"","id":"231002424810006421","holding_id":"221002424820006421","copy_number":"","status":"Unavailable","status_label":"Acquisition","status_source":"process_type","process_type":"ACQ","on_reserve":"N","item_type":"Gen","pickup_location_id":"recap","pickup_location_code":"recap","location":"recap$pa","label":"ReCAP
+        - Remote Storage","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
+  recorded_at: Mon, 04 Dec 2023 19:24:45 GMT
 recorded_with: VCR 6.2.0

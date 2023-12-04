@@ -1434,23 +1434,20 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
       login_as user
     end
 
-    it "does not allow physical pickup request On Order SCSB Recap Item" do
-      stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '33333059902417')
-      visit 'requests/SCSB-6710959'
+    it "does not allow physical pickup request On Order PUL Recap Item" do
+      visit '/requests/99129134216906421?aeon=false&mfhd=221002424820006421'
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).not_to have_content 'Physical Item Delivery'
       expect(page).to have_content 'This item is not available'
     end
 
     it "allows a physical pickup request of ReCAP Item" do
-      stub_scsb_availability(bib_id: "9941151723506421", institution_id: "PUL", barcode: '32101050751989')
       visit 'requests/9941151723506421?mfhd=22492702000006421'
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).to have_content 'Physical Item Delivery'
     end
 
     it "allows a physical pickup request of a - Library In Use - ReCAP Item" do
-      stub_scsb_availability(bib_id: "99127133356906421", institution_id: "PUL", barcode: "32101111747083")
       visit 'requests/99127133356906421?aeon=false&mfhd=22971539920006421'
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).to have_content 'Available for In Library Use'
