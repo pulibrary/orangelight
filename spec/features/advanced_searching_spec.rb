@@ -7,6 +7,11 @@ describe 'advanced searching', advanced_search: true do
     stub_holding_locations
   end
 
+  it 'does not have a basic search bar' do
+    visit '/advanced'
+    expect(page).not_to have_selector('.search-query-form')
+  end
+
   it 'renders an accessible button for starting over the search' do
     visit '/advanced'
     expect(page).to have_selector '.icon-refresh[aria-hidden="true"]'

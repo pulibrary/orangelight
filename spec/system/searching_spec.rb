@@ -174,17 +174,6 @@ describe 'Searching', type: :system, js: false do
     expect(search_results_count).to be < original_results_count
   end
 
-  context 'when user is on advanced search page' do
-    it 'they can use the search bar to get search results' do
-      visit '/advanced'
-      select 'Title (keyword)', from: 'search_field'
-      query_input = find('#q')
-      query_input.fill_in(with: 'dogs')
-      click_on 'search'
-      expect(current_url).to eq('http://www.example.com/catalog?utf8=%E2%9C%93&search_field=title&q=dogs')
-    end
-  end
-
   context 'with the built-in advanced search form', advanced_search: true do
     before do
       allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
