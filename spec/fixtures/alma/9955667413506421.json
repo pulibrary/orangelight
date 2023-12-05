@@ -1,0 +1,163 @@
+{
+    "id": [
+        "9955667413506421"
+    ],
+    "numeric_id_b": [
+        true
+    ],
+    "cjk_all": [
+        ""
+    ],
+    "cjk_notes": [
+        ""
+    ],
+    "author_display": [
+        "Black, Dan A."
+    ],
+    "author_sort": [
+        "Black, Dan A."
+    ],
+    "author_citation_display": [
+        "Black, Dan A.",
+        "Mather, Mark",
+        "Sanders, Seth",
+        "Appalachian Regional Commission"
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[\"Mather, Mark\",\"Sanders, Seth\",\"Appalachian Regional Commission\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Black, Dan A.\"}"
+    ],
+    "author_s": [
+        "Black, Dan A.",
+        "Mather, Mark",
+        "Sanders, Seth, 1962-",
+        "Appalachian Regional Commission"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": [
+        "Upskilling of Appalachia : earnings and the improvement of skill levels, 1960-2000 : supplementary tables / by Dan A. Black, Mark Mather, Seth G. Sanders."
+    ],
+    "title_a_index": [
+        "Upskilling of Appalachia"
+    ],
+    "title_sort": [
+        "Upskilling of Appalachia : earnings and the improvement of skill levels, 1960-2000 : supplementary tables / by Dan A. Black, Mark Mather, Seth G. Sanders."
+    ],
+    "title_no_h_index": [
+        "Upskilling of Appalachia : earnings and the improvement of skill levels, 1960-2000 : supplementary tables / by Dan A. Black, Mark Mather, Seth G. Sanders."
+    ],
+    "title_t": [
+        "Upskilling of Appalachia : earnings and the improvement of skill levels, 1960-2000 : supplementary tables / by Dan A. Black, Mark Mather, Seth G. Sanders."
+    ],
+    "title_citation_display": [
+        "Upskilling of Appalachia : earnings and the improvement of skill levels, 1960-2000 : supplementary tables"
+    ],
+    "compiled_created_t": [
+        "Upskilling of Appalachia : earnings and the improvement of skill levels, 1960-2000 : supplementary tables / by Dan A. Black, Mark Mather, Seth G. Sanders."
+    ],
+    "pub_created_display": [
+        "Washington, D.C. : Appalachian Regional Commission, [2007]"
+    ],
+    "pub_created_s": [
+        "Washington, D.C. : Appalachian Regional Commission, [2007]"
+    ],
+    "pub_citation_display": [
+        "Washington, D.C.: Appalachian Regional Commission"
+    ],
+    "pub_date_display": [
+        "2007"
+    ],
+    "pub_date_start_sort": [
+        "2007"
+    ],
+    "cataloged_tdt": [
+        "2021-07-21T01:14:36Z"
+    ],
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "62 pages : digital, PDF file"
+    ],
+    "description_t": [
+        "62 pages : digital, PDF file"
+    ],
+    "number_of_pages_citation_display": [
+        "62 pages"
+    ],
+    "notes_index": [
+        "Mode of acccess: Internet from the ARC web site. Address as of 8/19/08: http://www.arc.gov/images/reports/2007/upskilling/Upskilling%5FAppalachia%5FSupplementary%5FTables.pdf; current access via PURL.",
+        "Title from title screen (viewed on Aug. 19, 2008).",
+        "\"September 2007.\""
+    ],
+    "notes_display": [
+        "Title from title screen (viewed on Aug. 19, 2008).",
+        "\"September 2007.\""
+    ],
+    "system_details_notes_display": [
+        "Mode of acccess: Internet from the ARC web site. Address as of 8/19/08: http://www.arc.gov/images/reports/2007/upskilling/Upskilling%5FAppalachia%5FSupplementary%5FTables.pdf; current access via PURL."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "publication_place_facet": [
+        "District of Columbia"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Vocational qualifications—Appalachian Region"
+    ],
+    "lc_subject_include_archaic_search_terms_index": [
+        "Vocational qualifications—Appalachian Region"
+    ],
+    "subject_unstem_search": [
+        "Vocational qualifications—Appalachian Region"
+    ],
+    "local_subject_unstem_search": null,
+    "siku_subject_unstem_search": null,
+    "homoit_subject_unstem_search": null,
+    "subject_facet": [
+        "Vocational qualifications—Appalachian Region"
+    ],
+    "subject_topic_facet": [
+        "Vocational qualifications",
+        "Appalachian Region"
+    ],
+    "sudoc_facet": [
+        "X/Y - Congress"
+    ],
+    "call_number_scheme_facet": [
+        "Superintendent of Documents"
+    ],
+    "call_number_group_facet": [
+        "SuDocs: P-Z"
+    ],
+    "call_number_full_facet": [
+        "X/Y - Congress"
+    ],
+    "related_name_json_1display": [
+        "{\"Related name\":[\"Mather, Mark\",\"Sanders, Seth, 1962-\",\"Appalachian Regional Commission\"]}"
+    ],
+    "sudoc_no_display": [
+        "Y 3.AP 4/2:2/UP 7/SUPPL."
+    ],
+    "standard_no_index": [
+        "ocn244103156",
+        "5566741-princetondb"
+    ],
+    "name_title_browse_s": [
+        "Black, Dan A.. Upskilling of Appalachia"
+    ],
+    "electronic_portfolio_s": [
+        "{\"desc\":null,\"title\":\"Marcive GPO Government Documents\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53862831900006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+    ],
+    "access_facet": [
+        "Online"
+    ]
+}
