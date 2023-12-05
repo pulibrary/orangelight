@@ -91,7 +91,7 @@ gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.
 gem 'string_rtl'
 gem 'terser'
 gem 'view_component', '< 3.0.0'
-gem 'vite_rails', '3.0.12'
+gem 'vite_rails'
 gem 'voight_kampff', require: 'voight_kampff/rails'
 gem 'whenever'
 gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
