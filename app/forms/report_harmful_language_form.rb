@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class ReportHarmfulLanguageForm < MailForm::Base
   include ActiveModel::Model
-  attr_accessor :name, :email, :message, :context, :title
+  attr_accessor :name, :email, :message, :context, :title, :error
 
   validates :message, presence: true
   attribute :feedback_desc, captcha: true
@@ -11,11 +11,17 @@ class ReportHarmfulLanguageForm < MailForm::Base
   end
 
   def submit
-    ContactMailer.with(form: self).harmful_language.deliver unless spam?
-    @submitted = true
-    @name = ""
-    @email = ""
-    @message = ""
+    if /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i === self.email || self.email.empty?
+      ContactMailer.with(form: self).harmful_language.deliver unless spam?
+      @submitted = true
+      @name = ""
+      @email = ""
+      @message = ""
+    else
+      @submitted = false
+      @errors.add(:email, :invalid, message: "is not a valid email address")
+      false
+    end
   end
 
   def submitted?
