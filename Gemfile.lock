@@ -184,7 +184,6 @@ GEM
       railties (>= 3.0)
       sassc-rails (>= 2.1.2)
     chronic (0.10.2)
-    cobravsmongoose (0.0.2)
     coderay (1.1.3)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -687,7 +686,6 @@ DEPENDENCIES
   capistrano-rails
   capybara
   chosen-rails
-  cobravsmongoose (~> 0.0.2)
   coveralls_reborn
   ddtrace (~> 1.14.0)
   devise (>= 4.6.0)
