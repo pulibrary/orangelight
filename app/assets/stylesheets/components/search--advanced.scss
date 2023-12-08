@@ -49,21 +49,6 @@
   margin-bottom: 0;
 }
 
-.chosen-container-multi .chosen-choices {
-  min-height: 34px;
-  border-radius: 4px;
-  background-image: none;
-  padding: 0 5px 3.25px;
-}
-
-.chosen-container-multi .chosen-choices li.search-field {
-  margin-top: 3px;
-}
-
-.chosen-container-multi .chosen-choices li.search-choice {
-  margin: 6.5px 5px -1px 0;
-}
-
 #guided_search {
   padding-bottom: 1.25em;
 }
@@ -104,9 +89,6 @@
   margin-bottom: 5px;
 }
 
-.chosen-container .chosen-results li.group-result {
-  cursor: pointer;
-}
 
 #advanced_search_facets .dropdown-toggle::after {
   position: absolute;
