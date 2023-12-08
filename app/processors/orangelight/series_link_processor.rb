@@ -22,8 +22,8 @@ module Orangelight
       def more_in_this_series_link(title)
         no_parens = authorized_form_of_title(title).gsub(/[()]/, '')
         link_to('[More in this series]', "/catalog?q1=#{CGI.escape no_parens}&f1=in_series&search_field=advanced",
-                class: 'more-in-series', 'data-toggle' => 'tooltip',
-                'data-original-title' => "More in series: #{title}", title: "",
+                class: 'more-in-series',
+                'data-original-title' => "More in series: #{title}",
                 dir: title.dir.to_s)
       end
 

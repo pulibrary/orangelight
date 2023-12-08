@@ -16,9 +16,6 @@ RSpec.describe AeonRequestButtonComponent, type: :component do
   it "renders a link with the appropriate classes" do
     expect(subject.css('a').attribute('class').to_s).to eq('request btn btn-xs btn-primary')
   end
-  it 'renders the typical title tooltip' do
-    expect(subject.css('a').attribute('title').text).to eq('Request to view in Reading Room')
-  end
   it 'renders the typical request text' do
     expect(subject.css('a').text).to eq('Reading Room Request')
   end

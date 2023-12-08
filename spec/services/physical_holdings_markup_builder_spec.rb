@@ -161,7 +161,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
       expect(request_placeholder_markup).to include 'data-aeon="false"'
       expect(request_placeholder_markup).to include 'data-holding-id="3668455"'
       expect(request_placeholder_markup).to include '<a '
-      expect(request_placeholder_markup).to include 'title="View Options to Request copies from this Location"'
+      expect(request_placeholder_markup).not_to include 'title="View Options to Request copies from this Location"'
       expect(request_placeholder_markup).to include 'href="/requests/123456?aeon=false&amp;mfhd=3668455"'
     end
 
@@ -233,7 +233,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-aeon="true"'
         expect(request_placeholder_markup).to include 'data-holding-id="numismatics"'
         expect(request_placeholder_markup).to include '<a '
-        expect(request_placeholder_markup).to include 'title="Request to view in Reading Room"'
+        expect(request_placeholder_markup).not_to include 'title="Request to view in Reading Room"'
         expect(request_placeholder_markup).to include 'href="https://princeton.aeon.atlas-sys.com/logon?Action=10'
         expect(request_placeholder_markup).to include 'ItemNumber=host123'
       end
@@ -299,7 +299,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-requestable="true"'
         expect(request_placeholder_markup).to include 'data-holding-id="6670178"'
         expect(request_placeholder_markup).to include '<a '
-        expect(request_placeholder_markup).to include 'title="Request to view in Reading Room"'
+        expect(request_placeholder_markup).not_to include 'title="Request to view in Reading Room"'
         # The general scsbnypl location is *not* an aeon location, but if the holding use_statement is "Supervised Use",
         # it goes through aeon.
         expect(request_placeholder_markup).to include 'data-aeon="false"'
@@ -364,7 +364,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-aeon="false"'
         expect(request_placeholder_markup).to include 'data-holding-id="11198370"'
         expect(request_placeholder_markup).to include '<a '
-        expect(request_placeholder_markup).to include 'title="View Options to Request copies from this Location"'
+        expect(request_placeholder_markup).not_to include 'title="View Options to Request copies from this Location"'
         expect(request_placeholder_markup).to include 'href="/requests/SCSB-10422725?aeon=false"'
       end
     end
@@ -419,7 +419,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
         expect(request_placeholder_markup).to include 'data-aeon="true"'
         expect(request_placeholder_markup).to include 'data-holding-id="22692760320006421"'
         expect(request_placeholder_markup).to include '<a '
-        expect(request_placeholder_markup).to include 'title="Request to view in Reading Room"'
+        expect(request_placeholder_markup).not_to include 'title="Request to view in Reading Room"'
         expect(request_placeholder_markup).to include 'ItemNumber=host123'
       end
     end

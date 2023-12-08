@@ -176,7 +176,7 @@ RSpec.describe HoldingsHelper do
     context '#holding_block_search' do
       before { stub_holding_locations }
       let(:expected_result) do
-        "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\" title=\"Availability: Online\" data-toggle=\"tooltip\">Link Missing</span><div class=\"library-location\">Online access is not currently available.</div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
+        "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Link Missing</span><div class=\"library-location\">Online access is not currently available.</div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
       end
       it 'matches the expected result' do
         expect(search_result).to eq(expected_result)
@@ -232,7 +232,7 @@ RSpec.describe HoldingsHelper do
         end
 
         it 'includes on-site requirement' do
-          expect(search_result).to include('On-site by request')
+          expect(search_result).not_to include('On-site by request')
         end
       end
 
@@ -248,7 +248,7 @@ RSpec.describe HoldingsHelper do
           ]
         end
         let(:expected_result) do
-          "<ul><li class=\"holding-status\" data-availability-record=\"false\" data-record-id=\"1\" data-holding-id=\"3580281\" data-aeon=\"false\" data-bound-with=\"false\"><span class=\"availability-icon badge\" title=\"\" data-scsb-availability=\"true\" data-toggle=\"tooltip\" data-scsb-barcode=\"33433098463957\"></span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">ReCAP - Remote Storage</span><span class=\"call-number\"></span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"empty\" data-record-id=\"1\"><a class=\"availability-icon more-info\" title=\"Click on the record for full availability info\" data-toggle=\"tooltip\" href=\"/catalog/1\"></a></li></ul>"
+          "<ul><li class=\"holding-status\" data-availability-record=\"false\" data-record-id=\"1\" data-holding-id=\"3580281\" data-aeon=\"false\" data-bound-with=\"false\"><span class=\"availability-icon badge\" data-scsb-availability=\"true\" data-scsb-barcode=\"33433098463957\"></span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">ReCAP - Remote Storage</span><span class=\"call-number\"></span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"empty\" data-record-id=\"1\"><a class=\"availability-icon more-info\" href=\"/catalog/1\"></a></li></ul>"
         end
         it 'matches the expected result' do
           expect(search_result).to eq(expected_result)
@@ -292,7 +292,7 @@ RSpec.describe HoldingsHelper do
 
       before { stub_holding_locations }
       let(:expected_result) do
-        "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"false\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-primary\" title=\"Electronic access\" data-toggle=\"tooltip\">Online</span><div class=\"library-location\"><a target=\"_blank\" rel=\"noopener\" href=\"https://library.princeton.edu/resource/28076\">library.princeton.edu</a></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
+        "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"false\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-primary\">Online</span><div class=\"library-location\"><a target=\"_blank\" rel=\"noopener\" href=\"https://library.princeton.edu/resource/28076\">library.princeton.edu</a></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
       end
       it 'matches the expected result' do
         expect(search_result).to eq(expected_result)
@@ -309,7 +309,7 @@ RSpec.describe HoldingsHelper do
 
       it 'includes the online badge and link since there is an electronic access link' do
         expect(search_result).to include ">Online</span"
-        expect(search_result).to include 'title="Electronic access"'
+        expect(search_result).not_to include 'title="Electronic access"'
         expect(search_result).to include "library.princeton.edu"
       end
     end
@@ -327,7 +327,7 @@ RSpec.describe HoldingsHelper do
 
       before { stub_holding_locations }
       let(:expected_result) do
-        "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"empty\" data-record-id=\"1\"><a class=\"availability-icon more-info\" title=\"Click on the record for full availability info\" data-toggle=\"tooltip\" href=\"/catalog/1\"></a></li></ul>"
+        "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"empty\" data-record-id=\"1\"><a class=\"availability-icon more-info\" href=\"/catalog/1\"></a></li></ul>"
       end
       it 'matches the expected result' do
         expect(search_result).to eq(expected_result)
@@ -394,7 +394,7 @@ RSpec.describe HoldingsHelper do
           allow(Flipflop).to receive(:firestone_locator?).and_return(false)
         end
         let(:expected_result) do
-          "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\" title=\"Availability: Online\" data-toggle=\"tooltip\">Link Missing</span><div class=\"library-location\">Online access is not currently available.</div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
+          "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Link Missing</span><div class=\"library-location\">Online access is not currently available.</div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
         end
         it 'matches the expected result' do
           expect(search_result).to eq(expected_result)
@@ -449,7 +449,7 @@ RSpec.describe HoldingsHelper do
 
       before { stub_holding_locations }
       let(:expected_result) do
-        "<ul><li><span class=\"availability-icon badge badge-primary\" title=\"Electronic access\" data-toggle=\"tooltip\">Online</span><div class=\"library-location\"><a target=\"_blank\" rel=\"noopener\" href=\"https://library.princeton.edu/resource/28076\">library.princeton.edu</a></div></li></ul>"
+        "<ul><li><span class=\"availability-icon badge badge-primary\">Online</span><div class=\"library-location\"><a target=\"_blank\" rel=\"noopener\" href=\"https://library.princeton.edu/resource/28076\">library.princeton.edu</a></div></li></ul>"
       end
       it 'matches the expected result' do
         expect(search_result).to eq(expected_result)
@@ -480,13 +480,13 @@ RSpec.describe HoldingsHelper do
     context '#holding_block_search with embargoed thesis' do
       before { stub_holding_locations }
       let(:expected_result) do
-        "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\" title=\"Availability: Online\" data-toggle=\"tooltip\">Link Missing</span><div class=\"library-location\">Online access is not currently available.</div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
+        "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Link Missing</span><div class=\"library-location\">Online access is not currently available.</div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
       end
       it 'matches the expected result' do
         expect(search_result).to eq(expected_result)
       end
       it 'says that the material is under embargo' do
-        expect(search_result_thesis_embargoed).to include('title="Availability: Material under embargo"')
+        expect(search_result_thesis_embargoed).not_to include('title="Availability: Material under embargo"')
       end
     end
 
@@ -497,7 +497,7 @@ RSpec.describe HoldingsHelper do
         expect(show_result_thesis.last).to include 'Reading Room Request'
       end
       it 'displays a Reading Room Request Tooltip' do
-        expect(show_result_thesis.last).to have_selector "*[title='Request to view in Reading Room']"
+        expect(show_result_thesis.last).not_to have_selector "*[title='Request to view in Reading Room']"
       end
       it 'displays a reading room request as Always requestable' do
         expect(show_result_thesis.last).to have_selector '.service-always-requestable'
@@ -635,7 +635,7 @@ RSpec.describe HoldingsHelper do
         expect(show_result.last).to have_link(t('blacklight.holdings.browse'), href: "/browse/call_numbers?q=#{CGI.escape call_number}")
       end
       it 'tooltip for the call number browse' do
-        expect(show_result.last).to have_selector "*[title='Browse: #{call_number}']"
+        expect(show_result.last).not_to have_selector "*[title='Browse: #{call_number}']"
       end
       it 'tags the holding record id' do
         expect(show_result.last).to have_selector "*[data-holding-id='22270490550006421']"

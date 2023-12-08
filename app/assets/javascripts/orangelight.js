@@ -11,14 +11,6 @@ $(function () {
     }
   )
 
-  //tooltip for everything else
-  $('#main-container').tooltip({
-    selector: "[data-toggle='tooltip']",
-    placement: 'bottom',
-    container: 'body',
-    trigger: 'hover',
-  })
-
   // availability toggle journal current issues
   $('#availability').on('click', '.trigger', function (event) {
     event.preventDefault()
