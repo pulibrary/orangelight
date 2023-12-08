@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_17_164417) do
+ActiveRecord::Schema.define(version: 2023_12_07_175034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "alma_orangelight_call_numbers", id: :serial, force: :cascade do |t|
     t.text "label"

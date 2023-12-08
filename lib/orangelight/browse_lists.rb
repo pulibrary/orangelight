@@ -17,7 +17,7 @@ module BrowseLists
       dbuser = config['username']
       dbname = config['database']
       password = config['password']
-      port = config['port']
+      port = config['port'] || 5432
       sql_command = "PGPASSWORD=#{password} psql -U #{dbuser} -h #{dbhost} -p #{port} #{dbname} -c"
 
       conn = Faraday.new(url: solr_connection.to_s) do |faraday|
@@ -66,7 +66,7 @@ module BrowseLists
       system(%(cp /tmp/#{table_name}.sorted /tmp/#{table_name}.sorted.backup))
       system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
       system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '/tmp/#{table_name}.csv' CSV;"))
-      system(%(#{sql_command} \"\\copy (Select sort,count,label,dir from #{table_name} order by sort) To '/tmp/#{table_name}.sorted' With CSV;"))
+      system(%(#{sql_command} \"\\copy (Select sort,count,label,dir from #{table_name} order by unaccent(sort)) To '/tmp/#{table_name}.sorted' With CSV;"))
       load_facet_file(sql_command, "/tmp/#{table_name}.sorted", table_name)
     end
 
