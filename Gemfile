@@ -22,9 +22,6 @@ gem 'bootstrap-select-rails'
 # In the Capistrano documentation, it has these limited to the development group, and `require: false``
 gem 'capistrano', '~> 3.4'
 gem 'capistrano-passenger'
-# jquery multiselect plugin for advanced search
-gem 'chosen-rails'
-gem 'cobravsmongoose', '~> 0.0.2'
 gem 'ddtrace', '~> 1.14.0'
 # Authentication and authorization
 gem 'devise', '>= 4.6.0'

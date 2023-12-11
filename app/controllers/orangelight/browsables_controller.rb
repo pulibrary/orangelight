@@ -224,7 +224,7 @@ class Orangelight::BrowsablesController < ApplicationController
       @orangelight_browsable = model_param.find(id_param) if model_param
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet; run the params we receive through an allowlist
     def orangelight_browsable_params
       params.require(:orangelight_browsable).permit(:model, :id)
     end
