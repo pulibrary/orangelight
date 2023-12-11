@@ -35,7 +35,9 @@ RSpec.describe "feedback emails", type: :request do
         controller: "ContactController",
         action: "report_harmful_language",
         report_harmful_language_form: {
-          message: "Why?"
+          name: "",
+          message: "Why?",
+          email: ""
         }
       }
     end
@@ -54,6 +56,7 @@ RSpec.describe "feedback emails", type: :request do
         allow(mock_form).to receive(:to_key)
         allow(mock_form).to receive(:name)
         allow(mock_form).to receive(:email)
+        allow(mock_form).to receive(:errors).and_return(ActiveModel::Errors.new(mock_form))
         allow(mock_form).to receive(:message)
         allow(mock_form).to receive(:context)
         allow(mock_form).to receive(:title)

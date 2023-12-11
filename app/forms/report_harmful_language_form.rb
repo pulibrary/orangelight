@@ -11,7 +11,7 @@ class ReportHarmfulLanguageForm < MailForm::Base
   end
 
   def submit
-    if /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i === self.email || self.email.empty?
+    if /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i.match?(email) || email&.empty?
       ContactMailer.with(form: self).harmful_language.deliver unless spam?
       @submitted = true
       @name = ""
