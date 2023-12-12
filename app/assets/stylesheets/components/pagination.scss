@@ -88,3 +88,7 @@ ul.pagination {
     }
   }
 }
+
+.page-item.active{
+  pointer-events: none;
+}
