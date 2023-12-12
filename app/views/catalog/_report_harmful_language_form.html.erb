@@ -17,7 +17,10 @@
     <%= f.label :name, style: "width: 100%", label: 'Name (optional)' %><br>
     <%= f.input_field :name, style: "width: 100%" %><br>
     <%= f.label :email, label: 'Email (optional)' %><br>
-    <%= f.input_field :email, style: "width: 100%" %><br>
+    <%= f.input_field :email, as: :text, style: "width: 100%" %>
+    <% if form.errors&.include?(:email) %>
+      <span class="validation-error"><%= form.errors.full_messages_for(:email)[0] %></span>
+    <% end %><br>
     <h4>You are reporting the use of harmful language in this catalog record:</h4>
     <div class="card">
       <dl class="card-body dl-horizontal  dl-invert document-details">
