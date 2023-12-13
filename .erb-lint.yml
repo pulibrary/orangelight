@@ -21,3 +21,4 @@ linters:
       - 'app/views/shared/_account.html.erb'
       - 'app/views/catalog/stackmap.html.erb'
       - 'app/views/shared/_footer.html.erb'
+      - 'app/views/kaminari/blacklight/_page.html.erb'
