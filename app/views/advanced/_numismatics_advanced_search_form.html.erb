@@ -43,14 +43,14 @@
         <div class="form-group advanced-search-facet row">
             <%= select_tag('f1', options_for_select(advanced_key_value, guided_field(:f1, 'all_fields')), style: "display: none;", class: "search_field") %>
             <label for="q1" class="col-sm-4 control-label advanced-facet-label">Keyword</label>
-            <label for='q1' class='sr-only'>Keyword search</label>
           <div class="col-sm-8">
             <%= text_field_tag "q1", label_tag_default_for(:q1),
               class: 'form-control',
               autocorrect: "off",
               autocapitalize: "off",
               autocomplete: "off",
-              spellcheck: "false" %>
+              spellcheck: "false",
+              "aria-label": "Keyword Search" %>
           </div>
         </div>
     </div>
