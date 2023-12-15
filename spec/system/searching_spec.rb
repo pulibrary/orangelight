@@ -66,14 +66,6 @@ describe 'Searching', type: :system, js: false do
     expect(page).to have_selector '.blacklight-format .icon[aria-hidden="true"]'
   end
 
-  # We don't have the on-site icon at the moment. It appears as available. We might add it back in the future.
-  context 'with items which are from aeon locations' do
-    it 'renders an accessible warning icon for requesting an item in a reading room' do
-      visit '/catalog?f%5Blocation%5D%5B%5D=Mudd+Manuscript+Library'
-      expect(page).to have_selector 'span.icon-warning.icon-request-reading-room[aria-hidden="true"]'
-    end
-  end
-
   context 'Availability: On-site by request' do
     it 'On-site label is green' do
       visit '/?f%5Baccess_facet%5D%5B%5D=In+the+Library&q=id%3Adsp*&search_field=all_fields'

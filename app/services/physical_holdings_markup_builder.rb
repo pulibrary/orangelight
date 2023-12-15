@@ -21,8 +21,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
       cn_browse_link = link_to(children.html_safe,
                                "/browse/call_numbers?q=#{CGI.escape(cn_value)}",
                                class: 'browse-cn',
-                               title: "Browse: #{cn_value}",
-                               'data-toggle' => 'tooltip',
                                'data-original-title' => "Browse: #{cn_value}")
       cn = "#{holding['call_number']} #{cn_browse_link}"
     end
@@ -32,17 +30,13 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   def holding_location_repository
     children = content_tag(:span,
                            'On-site access',
-                           class: 'availability-icon badge badge-success',
-                           title: 'Availability: On-site by request',
-                           'data-toggle' => 'tooltip')
+                           class: 'availability-icon badge badge-success')
     content_tag(:td, children.html_safe)
   end
 
   def holding_location_scsb_span
     markup = content_tag(:span, '',
-                         title: '',
-                         class: 'availability-icon badge',
-                         data: { toggle: 'tooltip' })
+                         class: 'availability-icon badge')
     markup
   end
 
@@ -80,9 +74,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   def holding_location_unavailable
     children = content_tag(:span,
                            'Unavailable',
-                           class: 'availability-icon badge badge-danger',
-                           title: 'Availability: Embargoed',
-                           'data-toggle' => 'tooltip')
+                           class: 'availability-icon badge badge-danger')
     content_tag(:td, children.html_safe, class: 'holding-status')
   end
 
@@ -134,23 +126,12 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     "#{restriction} Only"
   end
 
-  def self.scsb_use_toolip(restriction)
-    if restriction == 'In Library Use'
-      I18n.t('blacklight.scsb.in_library_use')
-    else
-      I18n.t('blacklight.scsb.supervised_use')
-    end
-  end
-
   # Generate the markup for record restrictions
   # @param holding [Hash] the restrictions for all holdings
   # @return [String] the markup
   def self.restrictions_markup(restrictions)
     restricted_items = restrictions.map do |value|
-      content_tag(:td, scsb_use_label(value),
-                  class: 'icon-warning icon-request-reading-room',
-                  title: scsb_use_toolip(value),
-                  'data-toggle' => 'tooltip')
+      content_tag(:td, scsb_use_label(value))
     end
     if restricted_items.length > 1
       list = restricted_items.map { |value| content_tag(:li, value) }
@@ -356,7 +337,6 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
     <span class="fa fa-map-marker" aria-hidden="true"></span>)
     link_to(child.html_safe, stackmap_url,
-              title: I18n.t('blacklight.holdings.stackmap'),
               class: 'find-it',
               data: {
                 'map-location' => location.to_s,

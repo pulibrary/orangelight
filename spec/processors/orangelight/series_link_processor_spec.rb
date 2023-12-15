@@ -15,9 +15,9 @@ RSpec.describe Orangelight::SeriesLinkProcessor do
 
   it 'adds links if they also appear in the more_in_this_series_t field' do
     expect(rendered.first).to eq('Offenbach, Jacques, 1819-1880. Operas. Selections (Bourg) '\
-                                 '<a class="more-in-series" data-toggle="tooltip" '\
+                                 '<a class="more-in-series" '\
                                  'data-original-title="More in series: Offenbach, Jacques, 1819-1880. Operas. Selections (Bourg)" '\
-                                 'title="" dir="ltr" href="/catalog?q1=Offenbach%2C+Jacques%2C+1819-1880.+Operas.+Selections+Bourg&amp;f1=in_series&amp;search_field=advanced">'\
+                                 'dir="ltr" href="/catalog?q1=Offenbach%2C+Jacques%2C+1819-1880.+Operas.+Selections+Bourg&amp;f1=in_series&amp;search_field=advanced">'\
                                  '[More in this series]</a>')
   end
 
@@ -36,9 +36,9 @@ RSpec.describe Orangelight::SeriesLinkProcessor do
     let(:document) { SolrDocument.new({ 'more_in_this_series_t': ['Offenbach, Jacques, 1819-1880. Operas'] }) }
     it 'adds the link' do
       expect(rendered.first).to eq('Offenbach, Jacques, 1819-1880. Operas. Selections (Bourg) '\
-      '<a class="more-in-series" data-toggle="tooltip" '\
+      '<a class="more-in-series" '\
       'data-original-title="More in series: Offenbach, Jacques, 1819-1880. Operas. Selections (Bourg)" '\
-      'title="" dir="ltr" href="/catalog?q1=Offenbach%2C+Jacques%2C+1819-1880.+Operas&amp;f1=in_series&amp;search_field=advanced">'\
+      'dir="ltr" href="/catalog?q1=Offenbach%2C+Jacques%2C+1819-1880.+Operas&amp;f1=in_series&amp;search_field=advanced">'\
       '[More in this series]</a>')
     end
   end

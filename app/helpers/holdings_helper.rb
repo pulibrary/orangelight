@@ -84,9 +84,7 @@ module HoldingsHelper
     data = content_tag(
       :span,
       'Link Missing',
-      class: 'availability-icon badge badge-secondary',
-      title: 'Availability: Online',
-      data: { 'toggle': 'tooltip' }
+      class: 'availability-icon badge badge-secondary'
     )
     data << content_tag(
       :div,
@@ -99,9 +97,7 @@ module HoldingsHelper
     data = content_tag(
       :span,
       'Online',
-      class: 'availability-icon badge badge-primary',
-      title: 'Electronic access',
-      data: { 'toggle': 'tooltip' }
+      class: 'availability-icon badge badge-primary'
     )
     data << links.shift
   end
@@ -110,27 +106,12 @@ module HoldingsHelper
     content_tag(
       :span,
       'On-site access',
-      class: 'availability-icon badge badge-success',
-      title: 'Availability: On-site by request',
-      data: { 'toggle': 'tooltip' }
+      class: 'availability-icon badge badge-success'
     )
   end
 
-  def request_only_span
-    content_tag(
-      :span,
-      '',
-      class: 'icon-warning icon-request-reading-room',
-      title: 'Items at this location must be requested',
-      data: { 'toggle': 'tooltip' },
-      'aria-hidden': 'true'
-    )
-  end
-
-  def dspace_or_numismatics_holding_block(location)
-    data = onsite_access_span
-    data << request_only_span if aeon_location?(location)
-    data
+  def dspace_or_numismatics_holding_block(_location)
+    onsite_access_span
   end
 
   def scsb_item_block(holding)
@@ -138,7 +119,7 @@ module HoldingsHelper
   end
 
   def scsb_supervised_item
-    onsite_access_span + request_only_span
+    onsite_access_span
   end
 
   def scsb_unsupervised_item(holding)
@@ -146,32 +127,26 @@ module HoldingsHelper
       :span,
       '',
       class: 'availability-icon badge',
-      title: '',
       data: {
         'scsb-availability': 'true',
-        'toggle': 'tooltip',
         'scsb-barcode': holding['items'].first['barcode'].to_s
       }
     )
   end
 
-  def dspace_not_defined_block(location)
-    data = content_tag(
+  def dspace_not_defined_block(_location)
+    content_tag(
       :span,
       'Loading...',
       class: 'availability-icon badge badge-secondary'
     )
-    data << request_only_span if aeon_location?(location)
-    data
   end
 
   def under_embargo_block
     content_tag(
       :span,
       'Unavailable',
-      class: 'availability-icon badge badge-danger',
-      title: 'Availability: Material under embargo',
-      data: { 'toggle': 'tooltip' }
+      class: 'availability-icon badge badge-danger'
     )
   end
 
@@ -220,9 +195,7 @@ module HoldingsHelper
       link_to(
         'View Record for Full Availability',
         solr_document_path(document['id']),
-        class: 'availability-icon badge badge-secondary more-info',
-        title: 'Click on the record for full availability info',
-        data: { 'toggle': 'tooltip' }
+        class: 'availability-icon badge badge-secondary more-info'
       )
     )
   end
@@ -233,9 +206,7 @@ module HoldingsHelper
       link_to(
         '',
         solr_document_path(document['id']),
-        class: 'availability-icon more-info',
-        title: 'Click on the record for full availability info',
-        data: { 'toggle': 'tooltip' }
+        class: 'availability-icon more-info'
       ),
       class: 'empty',
       data: { record_id: document['id'] }

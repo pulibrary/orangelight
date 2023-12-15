@@ -15,8 +15,8 @@ RSpec.describe Orangelight::BrowseLinkProcessor do
 
   it 'adds search and browse links' do
     expect(rendered).to eq [
-      '<a class="search-name" data-toggle="tooltip" data-original-title="Search: 1" title="" href="/?f[author_s][]=1">1</a> '\
-      '<a class="browse-name" data-toggle="tooltip" data-original-title="Browse: 1" title="" dir="ltr" href="/browse/names?q=1">[Browse]</a>'
+      '<a class="search-name" data-original-title="Search: 1" href="/?f[author_s][]=1">1</a> '\
+      '<a class="browse-name" data-original-title="Browse: 1" dir="ltr" href="/browse/names?q=1">[Browse]</a>'
     ]
   end
   context 'name-title field' do
@@ -36,8 +36,8 @@ RSpec.describe Orangelight::BrowseLinkProcessor do
       let(:document) { SolrDocument.new({ name_title_browse_s: ['1'] }) }
       it 'adds name-title search and browse links' do
         expect(rendered).to eq [
-          '<a class="search-name-title" data-toggle="tooltip" data-original-title="Search: 1" title="" href="/?f[name_title_browse_s][]=1">1</a> '\
-            '<a class="browse-name-title" data-toggle="tooltip" data-original-title="Browse: 1" title="" dir="ltr" href="/browse/name_titles?q=1">[Browse]</a>'
+          '<a class="search-name-title" data-original-title="Search: 1" href="/?f[name_title_browse_s][]=1">1</a> '\
+            '<a class="browse-name-title" data-original-title="Browse: 1" dir="ltr" href="/browse/name_titles?q=1">[Browse]</a>'
         ]
       end
     end

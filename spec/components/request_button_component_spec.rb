@@ -10,8 +10,8 @@ RSpec.describe RequestButtonComponent, type: :component do
   it "renders a link with the appropriate classes" do
     expect(subject.css('a').attribute('class').to_s).to eq('request btn btn-xs btn-primary')
   end
-  it 'renders the typical title tooltip' do
-    expect(subject.css('a').attribute('title').text).to eq('View Options to Request copies from this Location')
+  it 'does not render a tooltip' do
+    expect(subject.css('a').attribute('title')).to be_falsey
   end
   it 'renders the typical request text' do
     expect(subject.css('a').text).to eq('Request')
@@ -27,8 +27,8 @@ RSpec.describe RequestButtonComponent, type: :component do
     it 'renders the aeon request text' do
       expect(subject.css('a').text).to eq('Reading Room Request')
     end
-    it 'renders the aeon title tooltip' do
-      expect(subject.css('a').attribute('title').text).to eq('Request to view in Reading Room')
+    it 'does not render a tooltip' do
+      expect(subject.css('a').attribute('title')).to be_falsey
     end
     it 'includes aeon=true in the link url' do
       expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=true&mfhd=456')

@@ -7,7 +7,7 @@
         <li>
             <span class="selected"><%= h(value) %></span>
             <%= link_to(remove_advanced_facet_param(facet_field.key, value, params), :class => "remove") do %>
-                <i class="fa fa-times" aria-hidden="true" data-toggle="tooltip" data-original-title="Remove"></i><span class="sr-only">[remove]</span>
+                <i class="fa fa-times" aria-hidden="true" data-original-title="Remove"></i><span class="sr-only">[remove]</span>
             <% end %>
         </li>
     <% end %>

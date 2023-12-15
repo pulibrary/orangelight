@@ -98,7 +98,7 @@ describe('AvailabilityUpdater', function() {
     '      </div>'+
     '    </li>'+
     '    <li class="empty" data-record-id="9972879153506421">'+
-    '      <a class="availability-icon more-info" title="Click on the record for full availability info" data-toggle="tooltip" href="/catalog/9972879153506421"></a>'+
+    '      <a class="availability-icon more-info" title="Click on the record for full availability info" href="/catalog/9972879153506421"></a>'+
     '    </li>'+
     '  </ul>'+
     '</li>';
@@ -245,14 +245,14 @@ describe('AvailabilityUpdater', function() {
     'href="/catalog/9972879153506421/stackmap?loc=engineer$stacks&amp;cn=QP355.2%20.P76%202013"><span class="link-text">Where to find it</span> </a>'+
     '      </td>'+
     '      <td class="holding-call-number">'+
-    '        QP355.2 .P76 2013 <a class="browse-cn" title="Browse: QP355.2 .P76 2013" data-toggle="tooltip" data-original-title="Browse: QP355.2 .P76 2013"'+
+    '        QP355.2 .P76 2013 <a class="browse-cn" title="Browse: QP355.2 .P76 2013" data-original-title="Browse: QP355.2 .P76 2013"'+
     'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Browse related items</span> </a>'+
     '      </td>'+
     '      <td class="holding-status" data-availability-record="true" data-record-id="9972879153506421" data-holding-id="22732100160006421" data-aeon="false">'+
     '        <span class="availability-icon" title=""></span>'+
     '      </td>'+
     '      <td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false" data-holding-id="22732100160006421">'+
-    '        <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip"'+ 'href="/requests/9972879153506421?mfhd=22732100160006421">Request</a>'+
+    '        <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary"'+ 'href="/requests/9972879153506421?mfhd=22732100160006421">Request</a>'+
     '      </td>'+
     '      <td class="holding-details">'+
     '        <ul class="item-status" data-record-id="9972879153506421" data-holding-id="22732100160006421"></ul>'+
@@ -264,14 +264,14 @@ describe('AvailabilityUpdater', function() {
     'data-location-map="lewis$resterm" data-blacklight-modal="trigger" href="/catalog/9972879153506421/stackmap?loc=lewis$resterm"><span class="link-text">Where to find it</span></a>'+
     '      </td>'+
     '      <td class="holding-call-number">'+
-    '        QP355.2 .P76 2013 <a class="browse-cn" title="Browse: QP355.2 .P76 2013" data-toggle="tooltip" data-original-title="Browse: QP355.2 .P76 2013"'+
+    '        QP355.2 .P76 2013 <a class="browse-cn" title="Browse: QP355.2 .P76 2013" data-original-title="Browse: QP355.2 .P76 2013"'+
     'href="/browse/call_numbers?q=QP355.2+.P76+2013"><span class="link-text">Browse related items</span> </a>'+
     '      </td>'+
     '      <td class="holding-status" data-availability-record="true" data-record-id="9972879153506421" data-holding-id="lewis$resterm" data-aeon="false">'+
     '        <span class="availability-icon" title=""></span>'+
     '      </td>'+
     '      <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="lewis$resterm">'+
-    '        <a title="" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/9972879153506421?mfhd=22732100140006421" data-original-title="View Options to Request copies'+
+    '        <a title="" class="request btn btn-xs btn-primary" href="/requests/9972879153506421?mfhd=22732100140006421" data-original-title="View Options to Request copies'+
     'from this Location">Request</a>'+
     '      </td>'+
     '      <td class="holding-details">'+
@@ -410,7 +410,7 @@ describe('AvailabilityUpdater', function() {
       '    <span class="badge badge-primary" data-availability-cdl="true"></span>' +
       '  </li>' +
       '  <li class="empty" data-record-id="9965126093506421">' +
-      '    <a class="availability-icon more-info" title="Click on the record for full availability info" data-toggle="tooltip" href="/catalog/9965126093506421"></a>' +
+      '    <a class="availability-icon more-info" title="Click on the record for full availability info" href="/catalog/9965126093506421"></a>' +
       '  </li>' +
       '</ul>';
 
@@ -454,7 +454,7 @@ describe('AvailabilityUpdater', function() {
     '    </a>' +
     '  </td>' +
     '  <td class="holding-call-number">HB172 .G664 2016' +
-    '    <a class="browse-cn" title="Browse: HB172 .G664 2016" data-toggle="tooltip"' +
+    '    <a class="browse-cn" title="Browse: HB172 .G664 2016"' +
     '      data-original-title="Browse: HB172 .G664 2016" href="/browse/call_numbers?q=HB172+.G664+2016">' +
     '      <span class="link-text">Browse related items</span>' +
     '      <span class="icon-bookslibrary"></span>' +
@@ -510,7 +510,7 @@ describe('AvailabilityUpdater', function() {
       '      <span class="availability-icon"></span>' +
       '    </td>' +
       '    <td class="location-services service-conditional" data-open="false" data-requestable="true" data-aeon="false" data-holding-id="22642015240006421">' +
-      '     <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/99124187703506421?mfhd=22642015240006421">Request</a>' +
+      '     <a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" href="/requests/99124187703506421?mfhd=22642015240006421">Request</a>' +
       '    </td>' +
       '    <td class="holding-details">' +
       '      <ul class="item-status" data-record-id="99124187703506421" data-holding-id="22642015240006421"></ul>' +
@@ -588,7 +588,7 @@ describe('AvailabilityUpdater', function() {
       '  <div class="row">' +
       '    <div class="record-wrapper">' +
       '      <ul class="document-metadata dl-horizontal dl-invert">' +
-      '        <li class="blacklight-holdings"><ul><li data-availability-record="false" data-record-id="SCSB-8562843" data-holding-id="8720897" data-aeon="false"><span class="availability-icon badge" title data-scsb-availability="true" data-toggle="tooltip" data-scsb-barcode="33433038233809"></span></li>' +
+      '        <li class="blacklight-holdings"><ul><li data-availability-record="false" data-record-id="SCSB-8562843" data-holding-id="8720897" data-aeon="false"><span class="availability-icon badge" title data-scsb-availability="true" data-scsb-barcode="33433038233809"></span></li>' +
       '      </ul>' +
       '    </div>' +
       '  </div>' +
@@ -661,7 +661,7 @@ describe('AvailabilityUpdater', function() {
     '  <span class="availability-icon" title="">Available</span>' +
     '</td>' +
     '<td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false" data-holding-id="22936525030006421">' +
-    '<a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" data-toggle="tooltip" href="/requests/99118399983506421?mfhd=22555936970006421">Request</a>' +
+    '<a title="View Options to Request copies from this Location" class="request btn btn-xs btn-primary" href="/requests/99118399983506421?mfhd=22555936970006421">Request</a>' +
     '</td>';
         '<tr><table>';
         const res_share_response = {
