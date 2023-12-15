@@ -183,12 +183,12 @@ module ApplicationHelper
       full_sub = ''
       all_subjects[i].each_with_index do |subsubject, j|
         lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[subject_facet][]=#{CGI.escape sub_array[i][j]}", class: 'search-subject', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{sub_array[i][j]}", title: "Search: #{sub_array[i][j]}")
+                                  "/?f[subject_facet][]=#{CGI.escape sub_array[i][j]}", class: 'search-subject', 'data-original-title' => "Search: #{sub_array[i][j]}")
         lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
         full_sub = sub_array[i][j]
       end
       lnk += '  '
-      lnk += link_to('[Browse]', "/browse/subjects?q=#{CGI.escape full_sub}", class: 'browse-subject', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{full_sub}", title: "Browse: #{full_sub}", dir: full_sub.dir.to_s)
+      lnk += link_to('[Browse]', "/browse/subjects?q=#{CGI.escape full_sub}", class: 'browse-subject', 'data-original-title' => "Browse: #{full_sub}", 'aria-label' => "Browse: #{full_sub}", dir: full_sub.dir.to_s)
       args[:document][args[:field]][i] = lnk.html_safe
     end
     content_tag :ul do
@@ -206,7 +206,7 @@ module ApplicationHelper
       title_links = []
       title.each_with_index do |part, index|
         link_accum = StringFunctions.trim_punctuation(title[0..index].join(' '))
-        title_links << link_to(part, "/?search_field=left_anchor&q=#{CGI.escape link_accum}", class: 'search-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")
+        title_links << link_to(part, "/?search_field=left_anchor&q=#{CGI.escape link_accum}", class: 'search-title', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")
       end
       full_title = title.join(' ')
       dirtags << StringFunctions.trim_punctuation(full_title.dir.to_s)
@@ -252,14 +252,14 @@ module ApplicationHelper
         link_accum = StringFunctions.trim_punctuation(name_t[0..i].join(' '))
         if i.zero?
           next if args[:field] == 'name_uniform_title_1display'
-          name_title_links << link_to(part, "/?f[author_s][]=#{CGI.escape link_accum}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")
+          name_title_links << link_to(part, "/?f[author_s][]=#{CGI.escape link_accum}", class: 'search-name-title', 'data-original-title' => "Search: #{link_accum}")
         else
-          name_title_links << link_to(part, "/?f[name_title_browse_s][]=#{CGI.escape link_accum}", class: 'search-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Search: #{link_accum}", title: "Search: #{link_accum}")
+          name_title_links << link_to(part, "/?f[name_title_browse_s][]=#{CGI.escape link_accum}", class: 'search-name-title', 'data-original-title' => "Search: #{link_accum}")
         end
       end
       full_name_title = name_t.join(' ')
       dirtags << StringFunctions.trim_punctuation(full_name_title.dir.to_s)
-      name_title_links << link_to('[Browse]', "/browse/name_titles?q=#{CGI.escape full_name_title}", class: 'browse-name-title', 'data-toggle' => 'tooltip', 'data-original-title' => "Browse: #{full_name_title}", title: "Browse: #{full_name_title}", dir: full_name_title.dir.to_s)
+      name_title_links << link_to('[Browse]', "/browse/name_titles?q=#{CGI.escape full_name_title}", class: 'browse-name-title', 'data-original-title' => "Browse: #{full_name_title}", dir: full_name_title.dir.to_s)
       all_links << name_title_links.join('<span> </span>').html_safe
     end
 

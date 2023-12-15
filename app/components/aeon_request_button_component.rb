@@ -12,10 +12,6 @@ class AeonRequestButtonComponent < RequestButtonComponent
     'Reading Room Request'
   end
 
-  def tooltip
-    'Request to view in Reading Room'
-  end
-
   def url
     @url_class.new(document: @document, holding: @holding).to_s
   end
