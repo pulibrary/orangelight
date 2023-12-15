@@ -5,6 +5,7 @@ import {FiggyManifestManager} from '../orangelight/figgy_manifest_manager'
 import GoogleBooksSnippets from '../orangelight/google_books_snippets.es6'
 import RelatedRecordsDisplayer from '../orangelight/related_records.es6'
 import DisplayMoreFieldComponent from '../../components/display_more_field_component.es6'
+import FacetFieldCheckboxesComponent from '../../components/orangelight/facet_field_checkboxes_component.es6'
 import { handleBtnKeyDown } from './accessible_facets'
 
 export default class OrangelightUiLoader {
@@ -16,6 +17,7 @@ export default class OrangelightUiLoader {
     this.setup_viewers()
     this.setup_book_covers()
     this.setup_bookmark_all()
+    this.setup_combobox()
     handleBtnKeyDown()
   }
 
@@ -82,5 +84,9 @@ export default class OrangelightUiLoader {
 
   setup_bookmark_all() {
     new BookmarkAllManager
+  }
+
+  setup_combobox() {
+    new FacetFieldCheckboxesComponent
   }
 }

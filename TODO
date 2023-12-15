@@ -1,0 +1,16 @@
+Don't make all of them look selected on down arrow
+When it has focus and you press down arrow, it says how many are in the list
+When it has focus and you type a character, it opens the box and sets focus in the field and selects the first item, and says how many are in the list
+When it is open and you press Enter, it selects the option in the select and adds checkmark
+You can arrow up and down
+You can click on an option
+It sends the data to the <select multiple>
+The style looks like the original
+It has a button like the original
+
+
+https://www.24a11y.com/2019/select-your-poison-part-2/ / https://codepen.io/smhigley/pen/GRgjRVN
+https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
+https://dequelabs.github.io/combobo/demo/
+
+

@@ -37,6 +37,9 @@
     "*.js": [
       "prettier --write",
       "eslint"
+    ], "*.es6": [
+      "prettier --write",
+      "eslint"
     ]
   },
   "scripts": {
@@ -67,7 +70,8 @@
     "moduleDirectories": [
       "node_modules",
       "app/javascript",
-      "app/components"
+      "app/components",
+      "app/components/orangelight"
     ],
     "testEnvironment": "jsdom",
     "globals": {
