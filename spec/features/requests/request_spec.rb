@@ -406,6 +406,8 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
         expect(page).to have_content 'If the specific volume does not appear in the list below, please enter it here:'
         expect(page).to have_content 't. 2, no 2 (2018 )' # include enumeration and chron
         expect(page).to have_content 't. 3, no 2 (2019 )' # include enumeration and chron
+        expect(page).to have_field('requestable_user_supplied_enum_22547424510006421')
+        expect(page).to have_selector('label[for=requestable_user_supplied_enum_22547424510006421]')
         within(".user-supplied-input") do
           check('requestable_selected')
         end
