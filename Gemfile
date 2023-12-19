@@ -32,7 +32,6 @@ gem 'faraday'
 gem 'faraday-cookie_jar'
 gem 'flipflop'
 gem 'font-awesome-rails'
-gem 'friendly_id', '~> 5.4.2'
 gem 'global'
 # Static pages
 gem 'high_voltage'
