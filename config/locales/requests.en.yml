@@ -259,7 +259,6 @@ en:
       unauthenticated: "Please sign in to see all requests"
       unauthenticated: "Please sign in to see all requests"
       logged_in: "Logged in as:"
-      other_user_login_msg: "I don’t have a barcode"
       pul_user_service_msg: 'Princeton Faculty, Staff, and Students need to sign in to see Borrow Direct Services'
       other_user_login_btn: "View Available Request Options"
       cas_user_no_barcode_msg: 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'
