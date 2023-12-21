@@ -100,7 +100,7 @@ module Requests
     end
 
     def circulates?
-      item_type_non_circulate? == false && location[:circulates] == true && open_libraries.include?(location[:library][:code])
+      item_type_non_circulate? == false && location[:circulates] == true
     end
 
     def can_be_delivered?
@@ -202,10 +202,6 @@ module Requests
 
     def ask_me?
       services.include?('ask_me')
-    end
-
-    def open_libraries
-      ['plasma', 'firestone', 'annex', 'marquand', 'mendel', 'stokes', 'eastasian', 'arch', 'lewis', 'engineer', 'recap']
     end
 
     def location_code
