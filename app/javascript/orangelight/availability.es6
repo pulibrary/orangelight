@@ -216,7 +216,6 @@ export default class AvailabilityUpdater {
     update_availability_retrying() {
         const avBadges = $(`*[data-availability-record='true'] span.availability-icon`);
         $(avBadges).text("Loading...");
-        $(avBadges).attr("title", "Fetching real-time availability");
         $(avBadges).addClass("badge badge-secondary");
     }
 
@@ -224,7 +223,6 @@ export default class AvailabilityUpdater {
     update_availability_undetermined() {
         const avBadges = $(`*[data-availability-record='true'] span.availability-icon`);
         $(avBadges).text("Undetermined");
-        $(avBadges).attr("title", "Cannot determine real-time availability for item at this time.");
         $(avBadges).addClass("badge badge-secondary");
     }
 
@@ -249,26 +247,26 @@ export default class AvailabilityUpdater {
                 if (aeon === 'true') {
                     availability_element.addClass("badge-success");
                     availability_element.text("On-Site Access");
-                    result.push(availability_element.attr("title", "Availability: On-site access by request"));
+                    result.push(availability_element);
                 } else if (multi_items) {
                     if (status_message) {
                         availability_element.addClass("badge-secondary");
                         availability_element.text(status_message);
-                        result.push(availability_element.attr("title", "Availability: Some items not available"));
+                        result.push(availability_element);
                     } else {
                         availability_element.addClass("badge-success");
                         availability_element.text('All Items Available');
-                        result.push(availability_element.attr("title", "Availability: All items available"));
+                        result.push(availability_element);
                     }
                 } else {
                     if (availability_info['itemAvailabilityStatus'] === 'Available') {
                         availability_element.addClass("badge-success");
                         availability_element.text(availability_info['itemAvailabilityStatus']);
-                        result.push(availability_element.attr("title", "Availability: On shelf"));
+                        result.push(availability_element);
                     } else {
                         availability_element.addClass("badge-danger");
                         availability_element.text(availability_info['itemAvailabilityStatus']);
-                        result.push(availability_element.attr("title", "Availability: Checked out"));
+                        result.push(availability_element);
                     }
                 }
             }
@@ -322,11 +320,11 @@ export default class AvailabilityUpdater {
         if (item_data['itemAvailabilityStatus'] === 'Available') {
             availability_element.addClass("badge-success");
             availability_element.text(item_data['itemAvailabilityStatus']);
-            availability_element.attr("title", "Availability: On Shelf");
+            availability_element;
         } else {
             availability_element.addClass("badge-danger");
             availability_element.text('Checked Out');
-            availability_element.attr("title", "Availability: Checked Out");
+            availability_element;
         }
         return true;
     }
@@ -336,7 +334,6 @@ export default class AvailabilityUpdater {
         const { status_label, cdl, location, id } = availability_info;
         const specialStatusLocations = ["marquand$stacks", "marquand$pj", "marquand$ref","marquand$ph", "marquand$fesrf", "RES_SHARE$IN_RS_REQ"];
         availability_element.text(status_label);
-        availability_element.attr('title', '');
         if (status_label.toLowerCase() === 'unavailable') {
             // The physical copy is not available but we highlight that the online copy is.
             if (cdl) {
@@ -344,17 +341,14 @@ export default class AvailabilityUpdater {
                     // Add an Online badge, next to Unavailable.
                     // (used in the Search Results page)
                     availability_element.addClass("badge-danger");
-                    availability_element.attr('title', 'Physical copy is not available.');
 
                     const cdlPlaceholder = availability_element.parent().next().find("*[data-availability-cdl='true']");
                     cdlPlaceholder.text('Online');
-                    cdlPlaceholder.attr('title', 'Online copy available via Controlled Digital Lending');
                     cdlPlaceholder.addClass('badge badge-primary');
                 } else {
                     // Display Online, instead of Unavailable, and remove the request button.
                     // (used in the Show page)
                     availability_element.text('Online');
-                    availability_element.attr('title', 'Online copy available via Controlled Digital Lending');
                     availability_element.addClass("badge-secondary");
                     const location_services_element = $(`.location-services[data-holding-id='${id}'] a`);
                     location_services_element.remove();
@@ -380,9 +374,9 @@ export default class AvailabilityUpdater {
     // Set status for specific Marquand locations and location RES_SHARE$IN_RS_REQ
     checkSpecialLocation(location, availability_element) {
         if (location.startsWith("marquand$")){
-            availability_element.text("Ask Staff").attr('title', 'Ask a member of our staff for access to this item.').addClass("badge-secondary");
+            availability_element.text("Ask Staff").addClass("badge-secondary");
         } else {
-            availability_element.text("Unavailable").attr('title', 'Unavailable').addClass("badge-danger");
+            availability_element.text("Unavailable").addClass("badge-danger");
         }
         return availability_element;
     }
