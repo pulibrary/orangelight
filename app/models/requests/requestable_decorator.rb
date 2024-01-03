@@ -54,16 +54,9 @@ module Requests
       on_order? || in_process? || traceable? || ill_eligible? || services.empty?
     end
 
-    def help_me?
-      return false unless eligible_for_library_services?
-      # ask_me? -> recap scsb in library only items
-      # !aeon? && !resource_shared? -> item in a library that is not aeon managed or resource shared
-      ask_me? || !aeon? && !resource_shared?
-    end
-
     def will_submit_via_form?
       return false unless eligible_for_this_item?
-      digitize? || pick_up? || scsb_in_library_use? || ill_eligible? || on_order? || in_process? || traceable? || off_site? || help_me?
+      digitize? || pick_up? || scsb_in_library_use? || ill_eligible? || on_order? || in_process? || traceable? || off_site?
     end
 
     def on_shelf_edd?
@@ -171,7 +164,7 @@ module Requests
     end
 
     def no_services?
-      !(digitize? || pick_up? || aeon? || ill_eligible? || in_library_use_required? || help_me? || request? || online? || on_shelf? || off_site?)
+      !(digitize? || pick_up? || aeon? || ill_eligible? || in_library_use_required? || request? || online? || on_shelf? || off_site?)
     end
 
     private
