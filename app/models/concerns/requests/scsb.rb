@@ -38,18 +38,6 @@ module Requests
       response
     end
 
-    # not being used
-    # def scsb_item_information(request_params)
-    #   response = scsb_conn.post do |req|
-    #     req.url '/requestItem/validateItemRequestInformation'
-    #     req.headers['Content-Type'] = 'application/json'
-    #     req.headers['Accept'] = 'application/json'
-    #     req.headers['api_key'] = scsb_auth_key
-    #     req.body = request_params.to_json
-    #   end
-    #   parse_scsb_response(response)
-    # end
-
     def parse_scsb_response(response)
       if response.status != 200
         Rails.logger.error("The request to the SCSB server failed: #{response.body}")
