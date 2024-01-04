@@ -118,19 +118,6 @@ module Requests
       end
     end
 
-    def help_me_message
-      key = if requestable.scsb_in_library_use?
-              "library_closed"
-            elsif eligible_for_library_services?
-              "pickup_access"
-            elsif !eligible_for_library_services?
-              "cas_user_no_barcode_no_choice_msg"
-            else
-              "digital_access"
-            end
-      I18n.t("requests.help_me.brief_msg.#{key}_html").html_safe # rubocop:disable Rails/OutputSafety
-    end
-
     def aeon_url(_request_ctx)
       if requestable.alma_managed?
         requestable.aeon_request_url

@@ -30,7 +30,6 @@ en:
       paging_success: "Item has been requested for pick-up"
       # temporary changes issue 438
       on_shelf_success: "Item has been requested for pick-up"
-      help_me_success: "Your request was submitted. Our library staff will review the request and contact you with any questions or updates."
       trace_success: "Item is now being traced."
       error: "We were unable to process your request. Correct the highlighted errors."
       service_error: "There was a problem with this request which Library staff need to investigate. You'll be notified once it's resolved and requested for you."
