@@ -30,7 +30,6 @@ en:
       paging_success: "Item has been requested for pick-up"
       # temporary changes issue 438
       on_shelf_success: "Item has been requested for pick-up"
-      help_me_success: "Your request was submitted. Our library staff will review the request and contact you with any questions or updates."
       trace_success: "Item is now being traced."
       error: "We were unable to process your request. Correct the highlighted errors."
       service_error: "There was a problem with this request which Library staff need to investigate. You'll be notified once it's resolved and requested for you."
@@ -171,17 +170,6 @@ en:
       email_from: "ilsborr@princeton.edu"
       email_subject: "Partner Request Confirmation"
       email_conf_msg: 'This item will be requested from another Library. Most requests will arrive within two weeks. If there is a problem fulfilling your request a member of our Library staff will contact you. For more detailed information, please <a href="https://library.princeton.edu/services/interlibrary-services">login to your ILLiad account with your University credentials</a>.'
-    help_me:
-      email_from: "ilsborr@princeton.edu"
-      delivery_label: "Help Me Get It"
-      request_label: "Help Me Get It"
-      email_subject: "Help Me Get It Confirmation"
-      brief_msg:
-        library_closed_html: '<p>This item is temporarily not accessible. Library staff will work to try to get you access to a copy of the desired material.</p>'
-        pickup_access_html: "This item is only available for use in the library. Library staff will work to try to get you access to a digital copy of the desired material."
-        digital_access_html: "This item is only available for pick-up or in library use. Library staff will work to try to get you access to a digital copy of the desired material."
-        cas_user_no_barcode_no_choice_msg_html: "Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material."
-      access_msg: "Princeton Faculty, Students, and Staff only."
     ask_me:
       request_label: "Help Me Get It"
       brief_msg: "Library staff are working remotely to deliver materials digitally as long as electronic resources are available"
@@ -259,7 +247,6 @@ en:
       unauthenticated: "Please sign in to see all requests"
       unauthenticated: "Please sign in to see all requests"
       logged_in: "Logged in as:"
-      other_user_login_msg: "I don’t have a barcode"
       pul_user_service_msg: 'Princeton Faculty, Staff, and Students need to sign in to see Borrow Direct Services'
       other_user_login_btn: "View Available Request Options"
       cas_user_no_barcode_msg: 'You must register with the Library before you can request materials. Please go to Firestone Circulation for assistance. Thank you.'

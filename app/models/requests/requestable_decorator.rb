@@ -3,7 +3,7 @@ module Requests
   class RequestableDecorator
     delegate :system_id, :aeon_mapped_params, :services, :charged?, :annex?, :lewis?, :pageable_loc?, :traceable?, :on_reserve?,
              :ask_me?, :aeon_request_url, :location, :temp_loc?, :in_resource_sharing?, :call_number, :eligible_for_library_services?,
-             :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :open_libraries, :item_data?, :recap_edd?, :user_barcode, :clancy?,
+             :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :item_data?, :recap_edd?, :user_barcode, :clancy?,
              :holding, :item_location_code, :item?, :item, :partner_holding?, :status, :status_label, :use_restriction?, :library_code, :enum_value, :item_at_clancy?,
              :cron_value, :illiad_request_parameters, :location_label, :online?, :aeon?, :patron, :held_at_marquand_library?,
              :ill_eligible?, :scsb_in_library_use?, :pick_up_locations, :on_shelf?, :pending?, :recap?, :recap_pf?, :illiad_request_url, :available?,
@@ -54,19 +54,9 @@ module Requests
       on_order? || in_process? || traceable? || ill_eligible? || services.empty?
     end
 
-    def help_me?
-      return false unless eligible_for_library_services?
-      ask_me? || # recap scsb in library only items
-        (!located_in_an_open_library? && !aeon? && !resource_shared?) # item in a closed library that is not aeon managed or resource shared
-    end
-
     def will_submit_via_form?
       return false unless eligible_for_this_item?
-      digitize? || pick_up? || scsb_in_library_use? || ill_eligible? || on_order? || in_process? || traceable? || off_site? || help_me?
-    end
-
-    def located_in_an_open_library?
-      open_libraries.include?(library_code)
+      digitize? || pick_up? || scsb_in_library_use? || ill_eligible? || on_order? || in_process? || traceable? || off_site?
     end
 
     def on_shelf_edd?
@@ -128,19 +118,6 @@ module Requests
       end
     end
 
-    def help_me_message
-      key = if !located_in_an_open_library? || requestable.scsb_in_library_use?
-              "library_closed"
-            elsif eligible_for_library_services?
-              "pickup_access"
-            elsif !eligible_for_library_services?
-              "cas_user_no_barcode_no_choice_msg"
-            else
-              "digital_access"
-            end
-      I18n.t("requests.help_me.brief_msg.#{key}_html").html_safe # rubocop:disable Rails/OutputSafety
-    end
-
     def aeon_url(_request_ctx)
       if requestable.alma_managed?
         requestable.aeon_request_url
@@ -174,7 +151,7 @@ module Requests
     end
 
     def no_services?
-      !(digitize? || pick_up? || aeon? || ill_eligible? || in_library_use_required? || help_me? || request? || online? || on_shelf? || off_site?)
+      !(digitize? || pick_up? || aeon? || ill_eligible? || in_library_use_required? || request? || online? || on_shelf? || off_site?)
     end
 
     private

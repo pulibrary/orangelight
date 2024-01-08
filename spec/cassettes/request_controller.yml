@@ -614,7 +614,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"author":"","bibId":"9995904203506421","callNumber":"PN1995.9.A76
-        P7613 2015","chapterTitle":"test","deliveryLocation":"","emailAddress":"a@b.com","endPage":"1","issue":"1","itemBarcodes":["32101098797010"],"itemOwningInstitution":"PUL","patronBarcode":"22101008199999","requestNotes":"","requestType":"EDD","requestingInstitution":"PUL","startPage":"1","titleIdentifier":null,"username":"jstudent","volume":"1"}'
+        P7613 2015","chapterTitle":"test","deliveryLocation":"","emailAddress":"a@b.com","endPage":"1","issue":"1","itemBarcodes":["ItemBarcodeValue"],"itemOwningInstitution":"PUL","patronBarcode":"22101008199999","requestNotes":"","requestType":"EDD","requestingInstitution":"PUL","startPage":"1","titleIdentifier":null,"username":"jstudent","volume":"1"}'
     headers:
       User-Agent:
       - Faraday v1.5.0

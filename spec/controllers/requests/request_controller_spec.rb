@@ -111,7 +111,7 @@ describe Requests::RequestController, type: :controller, vcr: { cassette_name: '
           "call_number" => "PN1995.9.A76 P7613 2015",
           "location_code" => "rcppj",
           "item_id" => "7391704",
-          "barcode" => "32101098797010",
+          "barcode" => "ItemBarcodeValue",
           "copy_number" => "0",
           "status" => "Not Charged",
           "pick_up" => "",

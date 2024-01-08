@@ -10119,4 +10119,184 @@ http_interactions:
       string: '[{"barcode":"","id":"231002424810006421","holding_id":"221002424820006421","copy_number":"","status":"Unavailable","status_label":"Acquisition","status_source":"process_type","process_type":"ACQ","on_reserve":"N","item_type":"Gen","pickup_location_id":"recap","pickup_location_code":"recap","location":"recap$pa","label":"ReCAP
         - Remote Storage","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
   recorded_at: Mon, 04 Dec 2023 19:24:45 GMT
+- request:
+    method: get
+    uri: https://catalog.princeton.edu/catalog/99129147026006421/raw
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.25.3
+      Date:
+      - Wed, 03 Jan 2024 21:00:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - b990b281-2d4b-4c6a-9661-466705283443
+      X-Download-Options:
+      - noopen
+      X-Ua-Compatible:
+      - IE=edge,chrome=1
+      Etag:
+      - W/"6e3a5f2e599a0b54d2ad8384d2968ace"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.043649'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.19
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Origin
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6Ijk5MTI5MTQ3MDI2MDA2NDIxIiwibnVtZXJpY19pZF9iIjp0cnVlLCJhdXRob3JfZGlzcGxheSI6WyJLb3JuZWljaHVrLCBMaXNhIl0sImF1dGhvcl9jaXRhdGlvbl9kaXNwbGF5IjpbIktvcm5laWNodWssIExpc2EiLCJQbGF0b25vdmEsIEFuYXN0YXNpaWEiLCJTYWJsaWssIE1pY2hhbGluYSIsIlRzaXNhciwgQXNpYSJdLCJhdXRob3Jfcm9sZXNfMWRpc3BsYXkiOiJ7XCJzZWNvbmRhcnlfYXV0aG9yc1wiOltcIlBsYXRvbm92YSwgQW5hc3Rhc2lpYVwiLFwiU2FibGlrLCBNaWNoYWxpbmFcIixcIlRzaXNhciwgQXNpYVwiXSxcInRyYW5zbGF0b3JzXCI6W10sXCJlZGl0b3JzXCI6W10sXCJjb21waWxlcnNcIjpbXSxcInByaW1hcnlfYXV0aG9yXCI6XCJLb3JuZWljaHVrLCBMaXNhXCJ9IiwiYXV0aG9yX3MiOlsiS29ybmVpY2h1aywgTGlzYSIsIlBsYXRvbm92YSwgQW5hc3Rhc2lpYSIsIlNhYmxpaywgTWljaGFsaW5hIiwiVHNpc2FyLCBBc2lhIl0sIm1hcmNfcmVsYXRvcl9kaXNwbGF5IjpbIkF1dGhvciJdLCJ0aXRsZV9kaXNwbGF5IjoiMTAuIHRyaWVubmFsZSBtxYJvZHljaCA6IHV0cndhbGFuaWUgPSBYIHRyaWnvuKBl77ihbmFsZSBtb2xvZG9obyBteXN0ZXTvuKBz77ihdHZhIDogdXRyeXZhbGVubmnvuKBh77ihID0gMTB0aCB5b3VuZyB0cmllbm5hbGUgOiBjb25zb2xpZGF0aW9uIC8gTGlzYSBLb3JuZWljaHVrLCBBbmFzdGFzaWlhIFBsYXRvbm92YSwgTWljaGFsaW5hIFNhYmxpaywgQXNpYSBUc2lzYXIuIiwidGl0bGVfdCI6WyIxMC4gdHJpZW5uYWxlIG3Fgm9keWNoIDogdXRyd2FsYW5pZSA9IFggdHJpae+4oGXvuKFuYWxlIG1vbG9kb2hvIG15c3RldO+4oHPvuKF0dmEgOiB1dHJ5dmFsZW5uae+4oGHvuKEgPSAxMHRoIHlvdW5nIHRyaWVubmFsZSA6IGNvbnNvbGlkYXRpb24gLyBMaXNhIEtvcm5laWNodWssIEFuYXN0YXNpaWEgUGxhdG9ub3ZhLCBNaWNoYWxpbmEgU2FibGlrLCBBc2lhIFRzaXNhci4iXSwidGl0bGVfY2l0YXRpb25fZGlzcGxheSI6WyIxMC4gdHJpZW5uYWxlIG3Fgm9keWNoIDogdXRyd2FsYW5pZSA9IFggdHJpae+4oGXvuKFuYWxlIG1vbG9kb2hvIG15c3RldO+4oHPvuKF0dmEgOiB1dHJ5dmFsZW5uae+4oGHvuKEgPSAxMHRoIHlvdW5nIHRyaWVubmFsZSA6IGNvbnNvbGlkYXRpb24iXSwiY29tcGlsZWRfY3JlYXRlZF90IjpbIjEwLiB0cmllbm5hbGUgbcWCb2R5Y2ggOiB1dHJ3YWxhbmllID0gWCB0cmlp77igZe+4oW5hbGUgbW9sb2RvaG8gbXlzdGV077igc++4oXR2YSA6IHV0cnl2YWxlbm5p77igYe+4oSA9IDEwdGggeW91bmcgdHJpZW5uYWxlIDogY29uc29saWRhdGlvbiAvIExpc2EgS29ybmVpY2h1aywgQW5hc3Rhc2lpYSBQbGF0b25vdmEsIE1pY2hhbGluYSBTYWJsaWssIEFzaWEgVHNpc2FyLiJdLCJwdWJfY3JlYXRlZF9kaXNwbGF5IjpbIk9yb27MgXNrbyA6IENlbnRydW0gUnplesyBYnkgUG9sc2tpZWosIDIwMjMuIl0sInB1Yl9jcmVhdGVkX3MiOlsiT3JvbsyBc2tvIDogQ2VudHJ1bSBSemV6zIFieSBQb2xza2llaiwgMjAyMy4iXSwicHViX2NpdGF0aW9uX2Rpc3BsYXkiOlsiT3JvbsyBc2tvOiBDZW50cnVtIFJ6ZXrMgWJ5IFBvbHNraWVqIl0sInB1Yl9kYXRlX2Rpc3BsYXkiOlsiMjAyMyJdLCJwdWJfZGF0ZV9zdGFydF9zb3J0IjoyMDIzLCJjYXRhbG9nZWRfdGR0IjoiMjAyMy0xMi0yMFQwNzowMjo1N1oiLCJmb3JtYXQiOlsiQm9vayJdLCJkZXNjcmlwdGlvbl9kaXNwbGF5IjpbIjIzMSBwYWdlcyA6IGlsbHVzdHJhdGlvbnMgOyAyNSBjbSJdLCJkZXNjcmlwdGlvbl90IjpbIjIzMSBwYWdlcyA6IGlsbHVzdHJhdGlvbnMgOyAyNSBjbSJdLCJudW1iZXJfb2ZfcGFnZXNfY2l0YXRpb25fZGlzcGxheSI6WyIyMzEgcGFnZXMiXSwiZ2VvY29kZV9kaXNwbGF5IjpbIlBvbGFuZCJdLCJsYW5ndWFnZV9kaXNwbGF5IjpbIkluIFBvbGlzaCwgVWtyYWluaWFuIGFuZCBFbmdsaXNoLiJdLCJsYW5ndWFnZV9uYW1lX2Rpc3BsYXkiOlsiUG9saXNoIiwiVWtyYWluaWFuIiwiRW5nbGlzaCJdLCJsYW5ndWFnZV9mYWNldCI6WyJQb2xpc2giLCJVa3JhaW5pYW4iLCJFbmdsaXNoIl0sImxhbmd1YWdlX2lhbmFfcyI6WyJwbCJdLCJyZWxhdGVkX25hbWVfanNvbl8xZGlzcGxheSI6IntcIkF1dGhvclwiOltcIlBsYXRvbm92YSwgQW5hc3Rhc2lpYVwiLFwiU2FibGlrLCBNaWNoYWxpbmFcIixcIlRzaXNhciwgQXNpYVwiXX0iLCJvdGhlcl90aXRsZV9kaXNwbGF5IjpbIlggdHJpae+4oGXvuKFuYWxlIG1vbG9kb2hvIG15c3RldO+4oHPvuKF0dmEgOiB1dHJ5dmFsZW5uae+4oGHvuKEiLCIxMHRoIHlvdW5nIHRyaWVubmFsZSA6IGNvbnNvbGlkYXRpb24iXSwiYWx0X3RpdGxlXzI0Nl9kaXNwbGF5IjpbIlggdHJpae+4oGXvuKFuYWxlIG1vbG9kb2hvIG15c3RldO+4oHPvuKF0dmEgOiB1dHJ5dmFsZW5uae+4oGHvuKEiLCIxMHRoIHlvdW5nIHRyaWVubmFsZSA6IGNvbnNvbGlkYXRpb24iXSwiaXNibl9kaXNwbGF5IjpbIjk3ODgzNjQ2NTMzOTE6Il0sImlzYm5fcyI6WyI5Nzg4MzY0NjUzMzkxIl0sIm90aGVyX3ZlcnNpb25fcyI6WyI5Nzg4MzY0NjUzMzkxIl0sImhvbGRpbmdzXzFkaXNwbGF5Ijoie1wiMjIxMDAzNjYyMDkwMDA2NDIxXCI6e1wibG9jYXRpb25fY29kZVwiOlwibWFycXVhbmQkcGpcIixcImxvY2F0aW9uXCI6XCJSZW1vdGUgU3RvcmFnZSAoUmVDQVApOiBNYXJxdWFuZCBMaWJyYXJ5IFVzZSBPbmx5XCIsXCJsaWJyYXJ5XCI6XCJNYXJxdWFuZCBMaWJyYXJ5XCIsXCJpdGVtc1wiOlt7XCJob2xkaW5nX2lkXCI6XCIyMjEwMDM2NjIwOTAwMDY0MjFcIixcImlkXCI6XCIyMzEwMDM2NjIwODAwMDY0MjFcIixcInN0YXR1c19hdF9sb2FkXCI6XCIwXCJ9XX19IiwibG9jYXRpb25fY29kZV9zIjpbIm1hcnF1YW5kJHBqIl0sImxvY2F0aW9uIjpbIk1hcnF1YW5kIExpYnJhcnkiXSwibG9jYXRpb25fZGlzcGxheSI6WyJSZW1vdGUgU3RvcmFnZSAoUmVDQVApOiBNYXJxdWFuZCBMaWJyYXJ5IFVzZSBPbmx5Il0sImFkdmFuY2VkX2xvY2F0aW9uX3MiOlsibWFycXVhbmQkcGoiLCJNYXJxdWFuZCBMaWJyYXJ5Il0sIm5hbWVfdGl0bGVfYnJvd3NlX3MiOlsiS29ybmVpY2h1aywgTGlzYS4gMTAuIHRyaWVubmFsZSBtxYJvZHljaCJdLCJoYXNoZWRfaWRfc3NpIjoiNDA5ZTBiMTU1MzI1Mjk5MyIsIl92ZXJzaW9uXyI6MTc4NTc5NzEwNzE3NDYwNDgwMCwidGltZXN0YW1wIjoiMjAyMy0xMi0yMFQxMDo0MDozNS4xNjNaIn0=
+  recorded_at: Wed, 03 Jan 2024 21:00:52 GMT
+- request:
+    method: get
+    uri: https://bibdata.princeton.edu/locations/holding_locations/marquand$pj.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.25.3
+      Date:
+      - Wed, 03 Jan 2024 21:00:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"b5c76b9b0c5a28d1950e81c04bdfcaa5"
+      X-Runtime:
+      - '0.014241'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - d6b12d6a-a3f3-4c4c-9c68-8bf6942cdf92
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.19
+    body:
+      encoding: UTF-8
+      string: '{"label":"Remote Storage (ReCAP): Marquand Library Use Only","code":"marquand$pj","aeon_location":false,"recap_electronic_delivery_location":true,"open":false,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"recap_rmt","fulfillment_unit":"Closed","library":{"label":"Marquand
+        Library","code":"marquand","order":0},"holding_library":{"label":"Marquand
+        Library","code":"marquand","order":0},"delivery_locations":[{"label":"Technical
+        Services 693","address":"693 Alexander Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QT","staff_only":true,"pickup_location":true,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Marquand Library of Art
+        and Archaeology","address":"McCormick Hall Princeton, NJ 08544","phone_number":"609-258-5863","contact_email":"marquand@princeton.edu","gfa_pickup":"PJ","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Marquand
+        Library","code":"marquand","order":0}},{"label":"Firestone Library, Resource
+        Sharing","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"QA","staff_only":true,"pickup_location":true,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Technical Services HMT","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QC","staff_only":true,"pickup_location":true,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}},{"label":"Preservation","address":"One
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"QP","staff_only":true,"pickup_location":false,"digital_location":false,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}}]}'
+  recorded_at: Wed, 03 Jan 2024 21:00:52 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/bibliographic/99129147026006421/holdings/221003662090006421/availability.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.11
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.25.3
+      Date:
+      - Wed, 03 Jan 2024 21:00:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"34bf7a78b7c156ae4f9c87f83dd81a08"
+      X-Runtime:
+      - '0.934808'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - 8e39e56a-6500-46a8-87ca-7ba61f3b2b42
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.19
+    body:
+      encoding: UTF-8
+      string: '[{"barcode":"","id":"231003662080006421","holding_id":"221003662090006421","copy_number":"","status":"Unavailable","status_label":"Acquisition","status_source":"process_type","process_type":"ACQ","on_reserve":"N","item_type":"Gen","pickup_location_id":"marquand","pickup_location_code":"marquand","location":"marquand$pj","label":"Marquand
+        Library - Remote Storage (ReCAP): Marquand Library Use Only","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
+  recorded_at: Wed, 03 Jan 2024 21:00:53 GMT
 recorded_with: VCR 6.2.0

@@ -126,8 +126,6 @@ module Requests
           Requests::Submissions::ClancyEdd.new(self)
         when 'digitize', 'annex_edd', 'marquand_edd', 'clancy_unavailable_edd'
           Requests::Submissions::DigitizeItem.new(self, service_type: type)
-        when 'help_me'
-          Requests::Submissions::HelpMe.new(self)
         when *inter_library_services
           Requests::Submissions::Illiad.new(self, service_type: type)
         else
