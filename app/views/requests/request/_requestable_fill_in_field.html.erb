@@ -6,7 +6,7 @@
   </td>
   <td class='request--options' <%= 'colspan="2"'.html_safe unless table_sorter_present?(requestable_list) %>>
     <fieldset class="form-group">
-     <label class="control-label <%= 'col-sm-6'.html_safe unless table_sorter_present?(requestable_list) %>" for="user_supplied_enum">
+     <label class="control-label <%= 'col-sm-6'.html_safe unless table_sorter_present?(requestable_list) %>" for="requestable_user_supplied_enum_<%= "#{requestable.holding.keys[0]}" %>">
           If the specific volume does not appear in the list below, please enter it here:
       </label>
       <div class="col-sm-6">
