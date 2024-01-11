@@ -612,7 +612,7 @@ GEM
     unf_ext (0.0.8.2)
     unicode-display_width (2.5.0)
     vcr (6.2.0)
-    view_component (2.82.0)
+    view_component (2.83.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
