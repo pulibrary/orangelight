@@ -381,6 +381,7 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
       end
 
       it 'allows CAS patrons to request an on-order item' do
+        stub_scsb_availability(bib_id: "99129147026006421", institution_id: "PUL", barcode: '33333059902417')
         visit '/requests/99129147026006421?mfhd=221003662090006421'
         expect(page).to have_content 'Pick-up location: Marquand Library at Firestone'
         expect(page).to have_content 'On Order books have not yet been received. Place a request to be notified when this item has arrived and is ready for your pick-up.'
@@ -1447,12 +1448,14 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
     end
 
     it "allows a physical pickup request of ReCAP Item" do
+      stub_scsb_availability(bib_id: "9941151723506421", institution_id: "PUL", barcode: '33333059902417')
       visit 'requests/9941151723506421?mfhd=22492702000006421'
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).to have_content 'Physical Item Delivery'
     end
 
     it "allows a physical pickup request of a - Library In Use - ReCAP Item" do
+      stub_scsb_availability(bib_id: "99127133356906421", institution_id: "PUL", barcode: '33333059902417')
       visit 'requests/99127133356906421?aeon=false&mfhd=22971539920006421'
       expect(page).not_to have_content 'Electronic Delivery'
       expect(page).to have_content 'Available for In Library Use'
