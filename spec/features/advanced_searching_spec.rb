@@ -32,12 +32,12 @@ describe 'advanced searching', advanced_search: true do
   it 'allows searching by format', js: true do
     visit '/advanced'
     expect(page).to have_selector('label', exact_text: 'Format')
-    format_button = find_button('Type or select formats')
-    format_button.click
-    drop_down = format_button.sibling(".dropdown-menu")
+    format_input = find_field('format')
+    format_input.click
+    drop_down = format_input.sibling(".dropdown-menu")
     expect(drop_down).to have_content("Musical score")
     expect(drop_down).to have_content("Senior thesis")
-    drop_down.find("input").fill_in(with: "co")
+    format_input.fill_in(with: "co")
     expect(drop_down).to have_content("Musical score")
     expect(drop_down).to have_content("Coin")
     expect(drop_down).not_to have_content("Senior thesis")

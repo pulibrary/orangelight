@@ -6,6 +6,7 @@ import GoogleBooksSnippets from '../orangelight/google_books_snippets.es6'
 import RelatedRecordsDisplayer from '../orangelight/related_records.es6'
 import DisplayMoreFieldComponent from '../../components/display_more_field_component.es6'
 import { handleBtnKeyDown } from './accessible_facets'
+import MultiselectCombobox from './multiselect_combobox.es6'
 
 export default class OrangelightUiLoader {
   run() {
@@ -16,6 +17,7 @@ export default class OrangelightUiLoader {
     this.setup_viewers()
     this.setup_book_covers()
     this.setup_bookmark_all()
+    this.setup_multiselect_comboboxes()
     handleBtnKeyDown()
   }
 
@@ -82,5 +84,11 @@ export default class OrangelightUiLoader {
 
   setup_bookmark_all() {
     new BookmarkAllManager
+  }
+
+  setup_multiselect_comboboxes() {
+    document.querySelectorAll('.combobox-multiselect').forEach(input => {
+      new MultiselectCombobox(input)
+    })
   }
 }

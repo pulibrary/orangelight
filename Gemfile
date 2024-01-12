@@ -17,7 +17,6 @@ gem 'blacklight-marc', '~>8.1'
 gem 'blacklight_range_limit', '~> 8.2'
 gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'main'
 gem 'bootstrap', '~> 4.6'
-gem 'bootstrap-select-rails'
 # Capistrano
 # In the Capistrano documentation, it has these limited to the development group, and `require: false``
 gem 'capistrano', '~> 3.4'

@@ -1,33 +1,47 @@
 <% if display_facet.items.present? %>
-    <div class="form-group advanced-search-facet row">
+    <div class="form-group advanced-search-facet row dropdown">
         <%= label_tag display_facet.name.parameterize, :class => "col-sm-4 control-label advanced-facet-label", for: display_facet.name.parameterize do %>
             <%= facet_field_label(display_facet.name) %>
         <% end %>
-        <div class="col-sm-8">
-          <%= content_tag(:select, :multiple => true, "aria-hidden" => "true",
-            :name   => "f_inclusive[#{display_facet.name}][]",
-            :id     => display_facet.name.parameterize,
-            :class  => "form-control custom-select selectpicker",
-            :title  => "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}",
-            :data   => { "live-search": "true" }) do %>
-              <% location_codes_by_lib(display_facet.items).each do |library, items| %>
-                <% library_display = items['item'].nil? ? library : "#{library} (#{number_with_delimiter(items['item'].hits)})" %>
-                <%= content_tag :option, library_display, class: 'group-result', value: library,
-                :selected => facet_value_checked?(display_facet.name, library) %>
-                <% items['recap_codes'].each do |facet_item| %>
-                  <% item_label = facet_item_presenter(facet_configuration_for_field(display_facet.name), facet_item.value, display_facet.name).label %>
-                  <%= content_tag :option, "#{item_label} (#{number_with_delimiter(facet_item.hits)})",
-                  class: 'group-option', :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) %>
-                <% end %>
-                <% items['codes'].each do |facet_item| %>
-                  <% item_label = facet_item_presenter(facet_configuration_for_field(display_facet.name), facet_item.value, display_facet.name).label %>
-                  <%= content_tag :option, "#{item_label} (#{number_with_delimiter(facet_item.hits)})",
-                  class: 'group-option', :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) %>
-                <% end %>
-              <% end %>
-              <%= content_tag :option, 'pul',
-              class: 'group-result', :value => 'pul', :selected => facet_value_checked?(display_facet.name, 'pul') %>
+        <input id="<%= display_facet.name.parameterize %>" data-toggle="dropdown" autocomplete="off" class="combobox-multiselect col-sm-8" role="combobox" aria-expanded="false" aria-controls="<%= display_facet.name.parameterize %>-list">
+        <span class="fa fa-caret-down" aria-hidden="true"></span>
+        <ul class="dropdown-menu" role="listbox" aria-label="Options" id="<%= display_facet.name.parameterize %>-list">
+
+          <% location_codes_by_lib(display_facet.items).each do |library, items| %>
+            <% library_display = items['item'].nil? ? library : "#{library} (#{number_with_delimiter(items['item'].hits)})" %>
+            <%= content_tag :li, library_display, class: 'dropdown-item', tabindex: -1, role: 'option' %>
+            <% items['recap_codes'].each do |facet_item| %>
+              <% item_label = facet_item_presenter(facet_configuration_for_field(display_facet.name), facet_item.value, display_facet.name).label %>
+              <%= content_tag :li, "#{item_label} (#{number_with_delimiter(facet_item.hits)})", class: 'dropdown-item', tabindex: -1, role: 'option' %>
             <% end %>
-        </div>
+            <% items['codes'].each do |facet_item| %>
+              <% item_label = facet_item_presenter(facet_configuration_for_field(display_facet.name), facet_item.value, display_facet.name).label %>
+              <%= content_tag :li, "#{item_label} (#{number_with_delimiter(facet_item.hits)})", class: 'dropdown-item', tabindex: -1, role: 'option' %>
+            <% end %>
+          <% end %>
+          <li class="dropdown-item" tabindex="-1" role="option">pul</li>
+        </ul>
+        <%= content_tag(:select, :multiple => true, "aria-hidden" => "true",
+          :hidden => true,
+          :name   => "f_inclusive[#{display_facet.name}][]",
+          :id     => "#{display_facet.name.parameterize}-select") do %>
+            <% location_codes_by_lib(display_facet.items).each do |library, items| %>
+              <% library_display = items['item'].nil? ? library : "#{library} (#{number_with_delimiter(items['item'].hits)})" %>
+              <%= content_tag :option, library_display, class: 'group-result', value: library,
+              :selected => facet_value_checked?(display_facet.name, library) %>
+              <% items['recap_codes'].each do |facet_item| %>
+                <% item_label = facet_item_presenter(facet_configuration_for_field(display_facet.name), facet_item.value, display_facet.name).label %>
+                <%= content_tag :option, "#{item_label} (#{number_with_delimiter(facet_item.hits)})",
+                class: 'group-option', :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) %>
+              <% end %>
+              <% items['codes'].each do |facet_item| %>
+                <% item_label = facet_item_presenter(facet_configuration_for_field(display_facet.name), facet_item.value, display_facet.name).label %>
+                <%= content_tag :option, "#{item_label} (#{number_with_delimiter(facet_item.hits)})",
+                class: 'group-option', :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) %>
+              <% end %>
+            <% end %>
+            <%= content_tag :option, 'pul',
+            class: 'group-result', :value => 'pul', :selected => facet_value_checked?(display_facet.name, 'pul') %>
+        <% end %>
     </div>
 <% end %>
