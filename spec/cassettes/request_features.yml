@@ -2679,58 +2679,6 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:47 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9979171923506421/holdings/22637778670006421/availability.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 06 Aug 2021 12:04:53 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Etag:
-      - W/"deae030aa01bf2c15067dc16606e0354"
-      X-Runtime:
-      - '5.522554'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - 45421545-ab8a-4a2a-8fb9-0e9f650a5f7f
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: '[{"barcode":"32101092126620","id":"23637778640006421","holding_id":"22637778670006421","copy_number":"1","status":"Available","status_label":"Item
-        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"lewis","pickup_location_code":"lewis","location":"lewis$stacks","label":"Lewis
-        Library - Stacks","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
-  recorded_at: Fri, 06 Aug 2021 12:04:53 GMT
-- request:
-    method: get
     uri: https://catalog.princeton.edu/catalog/99105746993506421/raw
     body:
       encoding: US-ASCII
@@ -4187,54 +4135,6 @@ http_interactions:
       encoding: UTF-8
       string: ''
   recorded_at: Fri, 06 Aug 2021 12:05:37 GMT
-- request:
-    method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-4634001/holdings/4641780/availability.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.5.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 400
-      message: Bad Request
-    headers:
-      Server:
-      - nginx/1.19.10
-      Date:
-      - Fri, 06 Aug 2021 12:05:38 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Status:
-      - 400 Bad Request
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Cache-Control:
-      - no-cache
-      Access-Control-Allow-Origin:
-      - "*"
-      X-Runtime:
-      - '0.549335'
-      Access-Control-Request-Method:
-      - GET
-      X-Request-Id:
-      - a3ea79c9-826f-412c-801c-f2ab81c01d6d
-      X-Powered-By:
-      - Phusion Passenger(R) 6.0.9
-    body:
-      encoding: UTF-8
-      string: ''
-  recorded_at: Fri, 06 Aug 2021 12:05:38 GMT
 - request:
     method: get
     uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-2879206/holdings/2856817/availability.json
