@@ -4,8 +4,9 @@ set :rvm_ruby_string, :local # use the same ruby as used locally for deployment
 set :rails_env, 'qa'
 set :branch, ENV['BRANCH'] || 'main'
 
-# server 'catalog-qa1.princeton.edu', user: 'deploy', roles: %i[web app db worker mailcatcher cron_db]
+server 'catalog-qa1.princeton.edu', user: 'deploy', roles: %i[web app db worker mailcatcher cron_db]
 server 'catalog-qa2.princeton.edu', user: 'deploy', roles: %i[web app db worker mailcatcher cron_db]
+server 'catalog-indexer-qa1', user: 'deploy', roles: %i[cron_db worker]
 server 'catalog-indexer-qa2', user: 'deploy', roles: %i[cron_db worker]
 
 namespace :env do
