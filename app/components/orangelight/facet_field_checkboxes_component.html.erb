@@ -1,23 +1,5 @@
-<div class="form-group advanced-search-facet row dropdown">
-  <label class="col-sm-4 control-label advanced-facet-label" for="<%= @facet_field.key.parameterize %>"><%= @facet_field.label %></label>
-  <input id="<%= @facet_field.key.parameterize %>" data-toggle="dropdown" autocomplete="off" class="col-sm-8 combobox-multiselect" role="combobox" aria-expanded="false" aria-controls="<%= @facet_field.key.parameterize %>-list">
-  <span class="fa fa-caret-down" aria-hidden="true"></span>
-  <ul class="dropdown-menu" role="listbox" aria-label="Options" id="<%= @facet_field.key.parameterize %>-list">
-    <% presenters.each do |presenter, index| %>
-      <%= content_tag :li, class: 'dropdown-item', tabindex: -1, role: 'option' do %>
-        <%= presenter.label %>&nbsp;&nbsp;(<%= number_with_delimiter presenter.hits %>)
-      <% end %>
-    <% end %>
-  </ul>
-  <%= content_tag(:select, multiple: true, "aria-hidden" => "true",
-    hidden: true,
-    name: "f_inclusive[#{@facet_field.key}][]",
-    id: "#{@facet_field.key.parameterize}-select") do %>
-    <% presenters.each do |presenter| %>
-      <%= content_tag :option, value: presenter.value,
-                      selected: presenter.search_state.filter(presenter.facet_config).include?([presenter.value]) do %>
-        <%= presenter.label %>&nbsp;&nbsp;(<%= number_with_delimiter presenter.hits %>)
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
+<%= render MultiselectComboboxComponent.new(
+  label: @facet_field.label,
+  dom_id: @facet_field.key.parameterize,
+  field_name: @facet_field,
+  values:) %>

@@ -1,31 +1,18 @@
 <% display_facet = @response.aggregations[facet_field_name] %>
     <% if display_facet&.items.present? %>
       <% if display_facet.name == 'advanced_location_s' %>
-        <%= render 'location_code_facet', display_facet: display_facet %>
+        <%= render 'location_code_facet', display_facet: %>
       <% else %>
-        <div class="form-group advanced-search-facet row dropdown">
-          <%= label_tag display_facet.name.parameterize, :class => "col-sm-4 control-label advanced-facet-label", :for => display_facet.name.parameterize do %>
-              <%= facet_field_label(display_facet.name) %>
-          <% end %>
-          <input id="<%= display_facet.name.parameterize %>" data-toggle="dropdown" autocomplete="off" class="combobox-multiselect col-sm-8" role="combobox" aria-expanded="false" aria-controls="<%= display_facet.name.parameterize %>-list">
-          <span class="fa fa-caret-down" aria-hidden="true"></span>
-          <ul class="dropdown-menu" role="listbox" aria-label="Options" id="<%= display_facet.name.parameterize %>-list">
-            <% display_facet.items.each_with_index do |facet_item, index| %>
-              <%= content_tag :li, class: 'dropdown-item', tabindex: -1, role: 'option' do %>
-                <%= facet_item.label %>&nbsp;&nbsp;(<%= number_with_delimiter facet_item.hits %>)
-              <% end %>
-            <% end %>
-          </ul>
-          <%= content_tag(:select, :multiple => true, "aria-hidden" => "true",
-            hidden: true,
-            name: "f_inclusive[#{display_facet.name}][]",
-            id: "#{display_facet.name.parameterize}-select") do %>
-            <% display_facet.items.each do |facet_item| %>
-              <%= content_tag :option, value: facet_item.value, selected: facet_value_checked?(display_facet.name, facet_item.value) do %>
-                <%= facet_item.label %>&nbsp;&nbsp;(<%= number_with_delimiter facet_item.hits %>)
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
+      <%= render MultiselectComboboxComponent.new(
+            label: facet_field_label(display_facet.name),
+            dom_id: display_facet.name.parameterize,
+            field_name: display_facet.name,
+            values: display_facet.items.map do |facet_item|
+              {
+                value: facet_item.value,
+                label: "#{facet_item.value}  (#{number_with_delimiter facet_item.hits})",
+                selected: facet_value_checked?(display_facet.name, facet_item.value)
+              }
+            end) %>
       <% end %>
     <% end %>
