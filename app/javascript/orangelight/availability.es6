@@ -1,12 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * DS205: Consider reworking code to avoid use of IIFEs
- * DS206: Consider reworking classes to avoid initClass
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
 import { insert_online_link } from './insert_online_link.es6';
 
 export default class AvailabilityUpdater {
@@ -38,18 +29,25 @@ export default class AvailabilityUpdater {
             const batch_size = 10;
             const batches = this.ids_to_batches(bib_ids, batch_size);
             console.log(`Requested at ${new Date().toISOString()}, batch size: ${batch_size}, batches: ${batches.length}, ids: ${bib_ids.length}`);
-
+            let promises = [];
             for(let i= 0; i < batches.length; i++) {
                 const batch_url = `${this.bibdata_base_url}/bibliographic/availability.json?bib_ids=${batches[i].join()}`;
                 console.log(`batch: ${i}, url: ${batch_url}`);
-                $.getJSON(batch_url, this.process_results_list)
-                    .fail((jqXHR, _textStatus, errorThrown) => {
-                        // Log that there were problems fetching a batch. Unfortunately we don't know exactly
-                        // which batch so we cannot include that information.
-                        console.error(`Failed to retrieve availability data for batch. HTTP status: ${jqXHR.status}: ${errorThrown}`);
-                    });
-            }
-
+                promises.push(fetch(batch_url));
+                
+            };
+            Promise.all(promises).then((values) => {
+                values.forEach(response => {
+                    if (!response.ok) {
+                        throw Error(`HTTP status + ${response.status}`);    
+                    }
+                    return response.json()
+                    .then((data) => this.process_results_list(data))  
+                    .catch(error => {
+                        console.error(`Failed to retrieve availability data for batch. ${error}`);
+                    }) 
+                })
+            });
         // a show page
         } else if ($("*[data-availability-record='true']").length > 0) {
             this.id = window.location.pathname.split('/').pop();
