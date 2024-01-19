@@ -36,4 +36,14 @@ RSpec.describe MultiselectComboboxComponent, type: :component do
       expect(listbox.css('li')[1].text).to eq('Map (8)')
     end
   end
+
+  describe 'aria-live region' do
+    let(:aria_live_region) { subject.css('.number-of-results[aria-live="polite"]') }
+    it "includes the number of results" do
+      expect(aria_live_region.text).to include('2 options.')
+    end
+    it "includes instructions for the user" do
+      expect(aria_live_region.text).to include('Press down arrow for options.')
+    end
+  end
 end

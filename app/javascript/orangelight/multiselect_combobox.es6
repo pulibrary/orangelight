@@ -10,6 +10,7 @@ export default class MultiselectCombobox {
         this.inputElement = inputElement;
         this.hiddenSelect = inputElement.closest('.dropdown').querySelector('select')
         this.listElement = inputElement.closest('.dropdown').querySelector('ul')
+        this.numberOfResultsElement = inputElement.closest('.dropdown').querySelector('.number-of-results')
         this.#addEventListeners();
         this.#applySelections();
     }
@@ -22,6 +23,7 @@ export default class MultiselectCombobox {
     }
 
     updateOptionVisibility() {
+        let numberOfResults = 0;
         const queries = this.inputElement.value.split(';');
         this.listElement.querySelectorAll('li').forEach(item => {
             if(queries.some(query => {
@@ -29,10 +31,12 @@ export default class MultiselectCombobox {
                 return item.textContent.toLowerCase().includes(normalizedQuery);
             })) {
                 item.classList.remove('d-none')
+                numberOfResults++;
             } else {
                 item.classList.add('d-none')
             }
         })
+        this.numberOfResultsElement.textContent = (numberOfResults === 1) ? '1 option. Press down arrow for options.' : `${numberOfResults} options.  Press down arrow for options.`
     }
 
     #addEventListeners() {

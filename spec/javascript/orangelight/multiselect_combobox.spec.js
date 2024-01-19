@@ -14,6 +14,7 @@ describe('MultiselectCombobox', () => {
                 <option value="Firestone">Firestone</option>
                 <option value="Lewis">Lewis</option>
             </select>
+            <span class="number-of-results">10 options</span>
         </div>`;
         combobox = new MultiselectCombobox(document.querySelector('input'));
     })
@@ -72,6 +73,11 @@ describe('MultiselectCombobox', () => {
             combobox.updateOptionVisibility()
             expect(document.querySelectorAll('li')[0].classList.contains('d-none')).toBe(false)
             expect(document.querySelectorAll('li')[1].classList.contains('d-none')).toBe(true)
+        })
+        it("updates the number of items", () => {
+            document.querySelector('input').value = 'fir'
+            combobox.updateOptionVisibility()
+            expect(document.querySelector('.number-of-results').textContent).toEqual('1 option. Press down arrow for options.')
         })
         it("allows multiple queries separated by semicolon", () => {
             document.querySelector('input').value = 'fir; lew'

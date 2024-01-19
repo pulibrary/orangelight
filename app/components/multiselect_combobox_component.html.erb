@@ -24,4 +24,7 @@
             selected: value[:selected] %>
         <% end %>
     <% end %>
+    <div class="sr-only visually-hidden number-of-results" aria-live="polite" aria-atomic="false">
+      <%= pluralize(@values.length, 'option') %>. Press down arrow for options.
+    </div>
 </div>
