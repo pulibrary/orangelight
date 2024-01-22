@@ -14,6 +14,12 @@ describe 'search requests for the catalog' do
     expect(response.status).to eq(200)
   end
 
+  it 'can handle parentheses in the left_anchor field' do
+    get '/?search_field=left_anchor&q=Washington+post+(Washington%2C+D.C.+%3A+1877)'
+
+    expect(response.status).to eq(200)
+  end
+
   context "BadRequest when clicking back to search" do
     # This url produces ActionController::BadRequest
     let(:url) do

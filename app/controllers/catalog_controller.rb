@@ -549,6 +549,7 @@ class CatalogController < ApplicationController
         qf: '$left_anchor_qf',
         pf: '$left_anchor_pf'
       }
+      field.advanced_parse = false
     end
 
     config.add_search_field('publisher') do |field|
