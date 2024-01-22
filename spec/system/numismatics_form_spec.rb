@@ -12,9 +12,10 @@ RSpec.describe 'Numismatics search form' do
     visit '/numismatics'
     expect(page).not_to have_selector('.search-query-form')
   end
-  it 'can run a search' do
+  it 'can run a search', js: true do
     visit '/numismatics'
-    select('shekel', from: 'f_inclusive[issue_denomination_s][]')
+    fill_in 'issue_denomination_s', with: 'she'
+    find('li', text: /shekel/).click
     click_button('advanced-search-submit')
     expect(page.find(".page_entries").text).to eq('1 entry found')
     expect(page).to have_content('Coin: 1167')
@@ -27,9 +28,10 @@ RSpec.describe 'Numismatics search form' do
     visit '/numismatics'
     expect(page).not_to have_selector('.search-query-form')
   end
-  it 'can run a search' do
+  it 'can run a search', js: true do
     visit '/numismatics'
-    select('shekel', from: 'f_inclusive[issue_denomination_s][]')
+    fill_in 'issue_denomination_s', with: 'she'
+    find('li', text: /shekel/).click
     click_button('advanced-search-submit')
     expect(page.find(".page_entries").text).to eq('1 entry found')
     expect(page).to have_content('Coin: 1167')

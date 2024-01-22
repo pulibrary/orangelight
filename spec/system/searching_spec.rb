@@ -79,7 +79,8 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_link 'Edit search'
       page.find(:xpath, '//*[@id="editSearchLink"]').click
       expect(current_url).to include 'f_inclusive%5Bformat%5D%5B%5D=Journal'
-      page.find(:xpath, '//select[@id="format"]/option[4]').unselect_option
+      page.find(:xpath, '//input[@id="format"]').click
+      page.find(:xpath, '//li[contains(text(), "Journal")]').click
       page.find(:xpath, '//*[@id="advanced-search-submit"]').click
       expect(current_url).not_to include 'f_inclusive%5Bformat%5D%5B%5D=Journal'
     end
@@ -92,7 +93,8 @@ describe 'Searching', type: :system, js: false do
       page.find(:xpath, '//*[@id="editSearchLink"]').click
       expect(current_url).to include 'numismatics?'
       expect(current_url).to include 'f_inclusive%5Bissue_city_s%5D%5B%5D=Tyre'
-      page.find(:xpath, '//select[@id="issue_city_s"]/option[1]').unselect_option
+      page.find(:xpath, '//input[@id="issue_city_s"]').click
+      page.find(:xpath, '//li[contains(text(), "Tyre")]').click
       page.find(:xpath, '//*[@id="advanced-search-submit"]').click
       expect(current_url).not_to include 'f_inclusive%5Bissue_city_s%5D%5B%5D=Tyre'
     end

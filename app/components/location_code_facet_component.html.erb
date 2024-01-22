@@ -1,0 +1,5 @@
+<%= render MultiselectComboboxComponent.new(
+  label:,
+  dom_id: display_facet.name.parameterize,
+  field_name: display_facet.name,
+  values: libraries_and_locations) if display_facet.items.present? %>

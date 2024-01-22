@@ -112,3 +112,25 @@
 .two-columns-md > * {
   margin: 5px 5px 1rem;
 }
+
+.dropdown .fa-caret-down {
+  display: none;
+}
+
+@media (min-width: $bp-small) {
+  .dropdown .fa-caret-down {
+    display: inline;
+    position: absolute;
+    right: 5px;
+    top: .8em;
+  }
+}
+
+.dropdown-menu[role=listbox] {         
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
+input.combobox-multiselect {
+  height: 2.5rem;
+}
