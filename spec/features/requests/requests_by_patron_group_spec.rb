@@ -4,10 +4,18 @@ require 'rails_helper'
 RSpec.shared_examples "can request", vcr: { cassette_name: 'request_features', record: :none } do
     let(:mms_id) { '9994933183506421?mfhd=22558528920006421' }
     let(:user) { FactoryBot.create(:user) }
+    let(:username) { "netid123" }
 
     before do
         login_as user
+        stub_alma_holding_locations
+        stub_single_holding_location("recap$pa")
+        stub_availability_by_holding_id(bib_id:"9994933183506421", holding_id:"22558528920006421", body: true)
+        stub_delivery_locations
     end
+
+    #failure message: Failure/Error: expect(page).to have_content 'Electronic Delivery'
+    #Failed to lookup your library account
 
     it "PUL ReCAP print item" do
         stub_catalog_raw(bib_id: '9994933183506421')
@@ -15,7 +23,7 @@ RSpec.shared_examples "can request", vcr: { cassette_name: 'request_features', r
         scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
         stub_request(:post, scsb_url)
           .with(body: hash_including(author: "", bibId: "9994933183506421", callNumber: "PJ7962.A5495 A95 2016", chapterTitle: "", deliveryLocation: "PA", emailAddress: 'a@b.com', endPage: "", issue: "", itemBarcodes: ["32101095798938"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999",
-                                     requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "ʻAwāṭif madfūnah عواطف مدفونة", username: "jstudent", volume: ""))
+                                     requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "ʻAwāṭif madfūnah عواطف مدفونة", username: username, volume: ""))
           .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, Requests::Config[:scsb_base])
           .with(headers: { 'Accept' => '*/*' })
