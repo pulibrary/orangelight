@@ -6,18 +6,23 @@ RSpec.shared_examples "can request", vcr: { cassette_name: 'request_features', r
     let(:user) { FactoryBot.create(:user) }
     let(:username) { "netid123" }
 
+    # Make a decision (for this file) to use either stubs or VCR, not both
+    # Currently failing:
+    # @submission.service_errors
+    # [{:type=>"recap", :bibid=>"9994933183506421", :item=>["32101095798938"], :user_name=>"netid123", :barcode=>"22101000009999", :error=>"Request failed because Authentication Failed\n"}]
+
     before do
         login_as user
         stub_alma_holding_locations
         stub_single_holding_location("recap$pa")
         stub_availability_by_holding_id(bib_id:"9994933183506421", holding_id:"22558528920006421", body: true)
         stub_delivery_locations
+        patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{user.uid}?ldap=true"
+        stub_request(:get, patron_record_uri)
+          .to_return(status: 200, body: patron_response, headers: {})
     end
 
-    #failure message: Failure/Error: expect(page).to have_content 'Electronic Delivery'
-    #Failed to lookup your library account
-
-    it "PUL ReCAP print item" do
+    it "PUL ReCAP print item", js: true do
         stub_catalog_raw(bib_id: '9994933183506421')
         stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
         scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
@@ -33,7 +38,6 @@ RSpec.shared_examples "can request", vcr: { cassette_name: 'request_features', r
           .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
         visit "/requests/#{mms_id}"
         expect(page).to have_content 'Electronic Delivery'
-        # some weird issue with this and capybara examining the page source shows it is there.
         expect(page).to have_selector '#request_user_barcode', visible: :hidden
         choose('requestable__delivery_mode_23558528910006421_print') # chooses 'print' radio button
         select('Firestone Library', from: 'requestable__pick_up_23558528910006421')
