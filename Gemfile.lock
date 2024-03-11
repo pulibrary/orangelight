@@ -512,6 +512,7 @@ GEM
       rubocop (>= 1.7.0, < 2.0)
     rubocop-rspec (2.11.1)
       rubocop (~> 1.19)
+    ruby-prof (1.7.0)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
@@ -728,6 +729,7 @@ DEPENDENCIES
   rsolr
   rspec-rails
   rspec_junit_formatter
+  ruby-prof
   rubyzip (>= 1.2.2)
   sass-rails (~> 6.0)
   selenium-webdriver
