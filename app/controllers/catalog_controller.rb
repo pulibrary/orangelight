@@ -1,4 +1,5 @@
 # frozen_string_literal: false
+require 'ruby-prof'
 
 class CatalogController < ApplicationController
   include Blacklight::Catalog
@@ -719,13 +720,18 @@ class CatalogController < ApplicationController
     if no_search_yet?
       render_empty_search
     else
+      RubyProf.start
       super
+      result = RubyProf.stop
+      printer = RubyProf::FlatPrinter.new(result)
+      printer.print(File.open('./search-results-profile', 'w'))
     end
   rescue ActionController::BadRequest
     render file: Rails.public_path.join('x400.html'), layout: true, status: :bad_request
   end
 
   def numismatics
+    RubyProf.start
     unless request.method == :post
       @response = search_service_compatibility_wrapper.search_results do |search_builder|
         search_builder.except(:add_advanced_search_to_solr).append(:facets_for_advanced_search_form)
@@ -735,6 +741,9 @@ class CatalogController < ApplicationController
       format.html { render "advanced/numismatics" }
       format.json { render plain: "Format not supported", status: :bad_request }
     end
+    result = RubyProf.stop
+    printer = RubyProf::FlatPrinter.new(result)
+    printer.print(File.open('./numismatics-profile', 'w'))
   end
 
   def librarian_view
