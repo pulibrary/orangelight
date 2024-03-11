@@ -95,6 +95,7 @@ gem 'yard'
 
 group :development do
   gem 'capistrano-rails'
+  gem 'ruby-prof'
 end
 
 group :test do
