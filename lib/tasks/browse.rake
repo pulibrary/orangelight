@@ -6,9 +6,13 @@ require './lib/orangelight/browse_lists/call_number_csv'
 namespace :browse do
   desc 'Pull data for names browse'
   task :names do
+    RubyProf.start
     sql_command, facet_request, conn = BrowseLists.connection
     BrowseLists.browse_facet(sql_command, facet_request, conn,
                              'author_s', "#{BrowseLists.table_prefix}_names")
+    result = RubyProf.stop
+    printer = RubyProf::FlatPrinter.new(result)
+    printer.print(File.open('./pull-data-names-browse', 'w'))
   end
 
   desc 'Pull data for names browse'
