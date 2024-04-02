@@ -44,6 +44,10 @@
     <%= javascript_include_tag "https://www.google.com/books/jsapi.js" %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
+    <%# enable Atkinson Hyperlegible font %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
     <link rel="unapi-server" type="application/xml" title="unAPI" href="/unapi"/>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
