@@ -116,7 +116,7 @@ module Requests
     end
 
     def in_process_email(submission)
-      destination_key = 'requests.default.email_destination'               
+      destination_key = 'requests.default.email_destination'
       request_email(submission:, subject_key: 'requests.in_process.email_subject', destination_key:)
     end
 
