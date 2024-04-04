@@ -197,7 +197,7 @@ RAILS_ENV=development bundle exec rake browse:load_all
 
 ## Local development with account/request features
 
-You will need a working local copy of [Bibdata](https://github.com/pulibrary/marc_liberation).
+You will need a working local copy of [Bibdata](https://github.com/pulibrary/bibdata).
 Start the Bibdata server, and then set the ```bidata_base``` value in OrangeLight's `config/requests.yml` file to the local URL where Bibdata is running (e.g., `http://localhost:{port}`).
 
 ## Development Mailcatcher
