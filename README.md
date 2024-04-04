@@ -197,8 +197,10 @@ RAILS_ENV=development bundle exec rake browse:load_all
 
 ## Local development with account/request features
 
+For more information, see [requests dev hints](docs/requests/dev_hints.md).
+
 You will need a working local copy of [Bibdata](https://github.com/pulibrary/bibdata).
-Start the Bibdata server, and then set the ```bidata_base``` value in OrangeLight's `config/requests.yml` file to the local URL where Bibdata is running (e.g., `http://localhost:{port}`).
+Start the Bibdata server, and then set the ```bidata_base``` value in OrangeLight's `config/requests.yml` file to the local URL where Bibdata is running (e.g., `http://localhost:{port}`) or use the `BIBDATA_BASE` environment variable.
 
 ## Development Mailcatcher
 
