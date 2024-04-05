@@ -13,7 +13,6 @@ defaults: &defaults
     to: <%= ENV['OL_HARMFUL_CONTENT_TO'] %>
   report_biased_results_form:
     to: <%= ENV['OL_BIASED_RESULTS_TO'] %>
-  firestone_locator_base_url: https://locator-prod.princeton.edu
   redis:
     host: 'localhost'
     port: '6379'
@@ -75,7 +74,6 @@ staging:
   events:
     server: <%= ENV['OL_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
     exchange: 'orangelight_events'
-  firestone_locator_base_url: https://locator-staging.princeton.edu
 
 qa:
   <<: *defaults

@@ -7,7 +7,12 @@ RSpec.describe ApplicationHelper do
     let(:stackmap_location) { 'mendel$stacks' }
     let(:locator_location) { 'firestone$stacks' }
     let(:stackmap_ineligible_location) { 'annex$noncirc' }
-    let(:bib) { { id: '123456' } }
+    let(:bib) { SolrDocument.new(properties) }
+    let(:properties) do
+      {
+        id: '1234567'
+      }
+    end
     let(:call_number) { 'RCPXR-6136516' }
     let(:locator_library) { 'Firestone Library' }
     let(:stackmap_library) { 'Mendel Music Library' }
@@ -18,7 +23,7 @@ RSpec.describe ApplicationHelper do
     it 'Returns a Stackmap Link for a Mapping Location' do
       stackmap_link = locate_url(locator_location, bib, call_number, locator_library)
       expect(stackmap_link).to be_truthy
-      expect(stackmap_link).to include("?loc=#{locator_location}&id=#{bib[:id]}")
+      expect(stackmap_link).to include("&location=#{CGI.escape(locator_location)}")
     end
 
     it 'Does not return a stackmap link for an inaccessible location' do
@@ -31,9 +36,9 @@ RSpec.describe ApplicationHelper do
       expect(stackmap_link).to be_nil
     end
 
-    it 'Returns a locator link when there is no call number for Firestone' do
+    it 'Returns the fallback details page when there is no call number for Firestone' do
       locator_link = locate_url(locator_location, bib, nil, locator_library)
-      expect(locator_link).to include("?loc=#{locator_location}&id=#{bib[:id]}")
+      expect(locator_link).to include("catalog/#{bib[:id]}")
     end
   end
 

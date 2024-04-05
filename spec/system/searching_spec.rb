@@ -37,23 +37,7 @@ describe 'Searching', type: :system, js: false do
     end
   end
 
-  context 'with firestone_locator on' do
-    before do
-      allow(Flipflop).to receive(:firestone_locator?).and_return(true)
-    end
-
-    it 'renders an accessible link to the stack map' do
-      visit '/catalog?q=&search_field=all_fields'
-      expect(page).to have_selector('.fa-map-marker')
-      expect(page).to have_selector('.fa-map-marker[aria-hidden="true"]')
-    end
-  end
-
-  context 'with firestone_locator off' do
-    before do
-      allow(Flipflop).to receive(:firestone_locator?).and_return(false)
-    end
-
+  context 'using the stackmap' do
     it 'renders an accessible link to the stack map', js: true do
       visit '/catalog?q=&search_field=all_fields'
       expect(page).to have_selector('.fa-map-marker', wait: 5)

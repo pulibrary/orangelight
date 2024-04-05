@@ -24,28 +24,7 @@ RSpec.describe StackmapService::Url do
       let(:location) { 'firestone$stacks' }
       let(:call_number) { 'Q43.2' }
 
-      context 'with firestone_locator on' do
-        before do
-          allow(Flipflop).to receive(:firestone_locator?).and_return(true)
-        end
-        it 'resolves to embeded firestone locator with loc and bibid' do
-          expect(url).to eq("https://locator-prod.princeton.edu/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
-        end
-
-        context 'when firestone_locator_base_url points to the staging locator' do
-          before do
-            allow(Orangelight.config).to receive(:[]).with('firestone_locator_base_url')
-                                                     .and_return('https://locator-staging.princeton.edu')
-          end
-          it 'resolves to embeded staging firestone locator with loc and bibid' do
-            expect(url).to eq("https://locator-staging.princeton.edu/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
-          end
-        end
-      end
-      context 'with firestone_locator off' do
-        before do
-          allow(Flipflop).to receive(:firestone_locator?).and_return(false)
-        end
+      context 'using the stackmap' do
         it 'resolves to external stackmap service' do
           expect(url).to eq("https://princeton.stackmap.com/view/?callno=Q43.2&library=Firestone+Library&location=firestone%24stacks")
         end
@@ -54,8 +33,8 @@ RSpec.describe StackmapService::Url do
     describe 'firestone, no call number provided' do
       let(:location) { 'firestone$stacks' }
 
-      it 'resolves to embeded firestone locator with loc and bibid' do
-        expect(url).to eq("https://locator-prod.princeton.edu/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
+      it 'resolves to catalog details page as a fallback' do
+        expect(url).to eq("https://princeton.stackmap.com/view/?callno=#{CGI.escape(doc_cn[0])}&library=Firestone+Library&location=#{CGI.escape(location)}")
       end
     end
 
@@ -63,8 +42,8 @@ RSpec.describe StackmapService::Url do
       let(:location) { 'firestone$stacks' }
       let(:doc_cn) { nil }
 
-      it 'resolves to embeded firestone locator with loc and bibid' do
-        expect(url).to eq("https://locator-prod.princeton.edu/index.php?loc=#{location}&id=#{properties[:id]}&embed=true")
+      it 'resolves to catalog details page as a fallback' do
+        expect(url).to eq("/catalog/#{properties[:id]}")
       end
 
       it 'preferred_callno returns nil' do
