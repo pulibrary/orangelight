@@ -12,3 +12,4 @@
 ```BASH
 BIBDATA_BASE=http://localhost:3001 bundle exec rails s
 ```
+- Start mailcatcher if you want to review the emails sent: `mailcatcher`
