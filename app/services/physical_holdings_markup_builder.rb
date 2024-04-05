@@ -316,36 +316,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     return '' if locator.exclude?(call_number:, library:)
 
     markup = ''
-    markup = stackmap_markup(location, library, holding, call_number) if find_it_location?(location)
+    markup = stackmap_span_markup(location, library, holding) if find_it_location?(location)
     ' ' + markup
-  end
-
-  def stackmap_markup(location, library, holding, call_number)
-    if Flipflop.firestone_locator?
-      stackmap_url_markup(location, library, holding, call_number)
-    else
-      stackmap_span_markup(location, library, holding)
-    end
-  end
-
-  def stackmap_url_markup(location, library, holding, call_number)
-    doc_id = doc_id(holding)
-
-    stackmap_url = "/catalog/#{doc_id}/stackmap?loc=#{location}"
-    stackmap_url << "&cn=#{call_number}" if call_number
-
-    child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
-    <span class="fa fa-map-marker" aria-hidden="true"></span>)
-    link_to(child.html_safe, stackmap_url,
-              class: 'find-it',
-              data: {
-                'map-location' => location.to_s,
-                'location-library' => library,
-                'location-name' => holding['location'],
-                'blacklight-modal' => 'trigger',
-                'call-number' => call_number,
-                'library' => library
-              })
   end
 
   def stackmap_span_markup(location, library, holding)

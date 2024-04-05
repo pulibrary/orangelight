@@ -389,10 +389,7 @@ RSpec.describe HoldingsHelper do
 
       before { stub_holding_locations }
 
-      context 'with Firestone Locator off' do
-        before do
-          allow(Flipflop).to receive(:firestone_locator?).and_return(false)
-        end
+      context 'using the stackmap' do
         let(:expected_result) do
           "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Link Missing</span><div class=\"library-location\">Online access is not currently available.</div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
         end
@@ -403,20 +400,6 @@ RSpec.describe HoldingsHelper do
         it 'includes the find it icon' do
           search_result = helper.holding_block_search(SolrDocument.new(document_with_find_it_link))
           # The icon is displayed based on the presence of data-map-location
-          expect(search_result).to include "data-map-location"
-          expect(search_result).to include "data-location-name"
-          expect(search_result).to include "data-location-library"
-        end
-      end
-
-      context 'with Firestone Locator on' do
-        before do
-          allow(Flipflop).to receive(:firestone_locator?).and_return(true)
-        end
-
-        it 'includes the find it icon' do
-          search_result = helper.holding_block_search(SolrDocument.new(document_with_find_it_link))
-          expect(search_result).to include "fa-map-marker"
           expect(search_result).to include "data-map-location"
           expect(search_result).to include "data-location-name"
           expect(search_result).to include "data-location-library"

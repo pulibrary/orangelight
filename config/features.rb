@@ -23,10 +23,6 @@ Flipflop.configure do
   #   default: false,
   #   description: "Display a test header to show if flipflop is working."
 
-  feature :firestone_locator,
-    default: true,
-    description: "When on / true, uses the old locator service for Firestone. When off / false uses the new Stackmap service for Firestone."
-
   feature :message_display,
     default: false,
     description: "When on / true, displays the message set by the announcement rake task."
