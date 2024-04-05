@@ -493,7 +493,7 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
         expect(confirm_email.subject).to eq("Architecture Library Pick-up Request")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("Your request to pick this item up has been received")
+        expect(confirm_email.html_part.body.to_s).to have_content("Your request for this item has been received")
         expect(confirm_email.html_part.body.to_s).to have_content("Abdelhalim Ibrahim Abdelhalim : an architecture of collective memory")
       end
 
@@ -517,7 +517,7 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
         expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("Your request to pick this item up has been received")
+        expect(confirm_email.html_part.body.to_s).to have_content("Your request for this item has been received")
         expect(confirm_email.html_part.body.to_s).to have_content("Chernobyl : a 5-part miniseries")
       end
 
@@ -669,7 +669,7 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
         expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("Your request to pick this item up has been received. We will process the requests as soon as possible")
+        expect(confirm_email.html_part.body.to_s).to have_content("Your request for this item has been received")
         expect(confirm_email.html_part.body.to_s).to have_content("Mir, uvidennyĭ s gor : ocherk tvorchestva Shukurbeka Beĭshenalieva")
         expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
       end
