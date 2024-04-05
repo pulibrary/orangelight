@@ -7,6 +7,7 @@
 
 ## Start up Orangelight
 - Start the Orangelight support servers `bundle exec rake servers:start`
+- If you will be making a hold request in Alma, you will need a read/write alma key.  To get the sandbox read/write key from the staging catalog server if you are on the VPN, you can run `export $(ssh deploy@catalog-staging2 "env | grep ALMA_READ_WRITE")`
 - Start up the Orangelight server, pointing to the local Bibdata instance 
 ```BASH
 BIBDATA_BASE=http://localhost:3001 bundle exec rails s
