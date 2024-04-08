@@ -69,6 +69,19 @@ describe 'advanced searching', advanced_search: true do
     expect(page).not_to have_content('Reno Gay Press and Promotions')
   end
 
+  context 'when editing the search', js: true do
+    it 'shows the selected value in the combobox' do
+      visit '/advanced'
+      format_input = find_field('format')
+      format_input.click
+      page.find('li', text: 'Audio').click
+      click_button("advanced-search-submit")
+      click_link('Edit search')
+
+      expect(page).to have_field('Format', with: /Audio/)
+    end
+  end
+
   context 'with the built-in advanced search form' do
     before do
       allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
@@ -135,6 +148,19 @@ describe 'advanced searching', advanced_search: true do
       expect(page).to have_selector('label', exact_text: 'Find Place')
       expect(page).to have_selector('label', exact_text: 'Year')
       expect(page).to have_selector('label', exact_text: 'Keyword')
+    end
+  end
+
+  context 'when editing the search', js: true do
+    it 'shows the selected value in the combobox' do
+      visit '/advanced'
+      format_input = find_field('format')
+      format_input.click
+      page.find('li', text: 'Audio').click
+      click_button("advanced-search-submit")
+      click_link('Edit search')
+
+      expect(page).to have_field('Format', with: /Audio/)
     end
   end
 end
