@@ -76,7 +76,36 @@ describe('AvailabilityUpdater', function() {
         expect(mixed_result.hasClass('badge-secondary')).toBe(true);
         expect(mixed_result.text()).toEqual("Some items not available");
     });
-
+    test('search results - SCSB availability - Unavailable', () => {
+      document.body.innerHTML =
+      '<li class="blacklight-holdings">'+
+        '<ul>'+
+          '<li class="holding-status sm-checked" data-availability-record="false" data-record-id="SCSB-5467030" data-holding-id="5459517" data-aeon="false" data-bound-with="false">'+
+            '<span class="availability-icon badge badge-danger" data-scsb-availability="true" data-scsb-barcode="CU15957330">Not Available</span>'+
+            '<div class="library-location" data-location="true" data-record-id="SCSB-5467030" data-holding-id="5459517">'+
+              '<span class="results_location">ReCAP - Remote Storage</span> » <span class="call-number">PL5132 .B68 2007g</span>'+
+            '</div>'+
+          '</li>'+
+          '<li class="empty" data-record-id="SCSB-5467030">'+
+            '<a class="availability-icon more-info" href="/catalog/SCSB-5467030"></a>'+
+          '</li>'+
+        '</ul>'+
+      '</li>';
+      const item_data = {
+          "itemBarcode": "CU15957330",
+          "itemAvailabilityStatus": "Not Available",
+          "errorMessage": null,
+          "collectionGroupDesignation": "Shared"
+      }
+      const barcode_id = item_data["itemBarcode"]
+      const availabilityBadgeBefore = document.getElementsByClassName('availability-icon');
+      expect(availabilityBadgeBefore[0].textContent).toEqual('Not Available');
+      const u = new updater;
+      u.apply_scsb_record(barcode_id,item_data)
+      u.scsb_search_availability;
+      const availabilityBadgeAfter = document.getElementsByClassName('availability-icon');
+      expect(availabilityBadgeAfter[0].textContent).toEqual('Unavailable');
+    })
     test('search results availability for records in temporary locations says View record for Full Availability', () => {
         document.body.innerHTML =
     '<li class="blacklight-holdings">'+

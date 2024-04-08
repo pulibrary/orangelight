@@ -323,7 +323,7 @@ export default class AvailabilityUpdater {
             availability_element;
         } else {
             availability_element.addClass("badge-danger");
-            availability_element.text('Checked Out');
+            availability_element.text('Unavailable');
             availability_element;
         }
         return true;
