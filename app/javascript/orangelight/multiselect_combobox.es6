@@ -67,7 +67,7 @@ export default class MultiselectCombobox {
 
     #applySelections() {
         this.hiddenSelect.querySelectorAll('option:checked').forEach(selectedOption => {
-            this.toggleItem(this.#getListItemByText(selectedOption.text))
+            this.toggleItem(this.#getListItemByText(selectedOption.textContent))
         })
     }
 
