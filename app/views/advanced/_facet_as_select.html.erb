@@ -3,6 +3,7 @@
       <% if display_facet.name == 'advanced_location_s' %>
         <%= render 'location_code_facet', display_facet: %>
       <% else %>
+      <% query_parser = BlacklightAdvancedSearch::QueryParser.new(params, blacklight_config) %>
       <%= render MultiselectComboboxComponent.new(
             label: facet_field_label(display_facet.name),
             dom_id: display_facet.name.parameterize,
@@ -11,7 +12,7 @@
               {
                 value: facet_item.value,
                 label: "#{facet_item.value}  (#{number_with_delimiter facet_item.hits})",
-                selected: facet_value_checked?(display_facet.name, facet_item.value)
+                selected: query_parser.filters_include_value?(display_facet.name, facet_item.value)
               }
             end) %>
       <% end %>
