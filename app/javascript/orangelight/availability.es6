@@ -323,7 +323,7 @@ export default class AvailabilityUpdater {
             availability_element;
         } else {
             availability_element.addClass("badge-danger");
-            availability_element.text('Unavailable');
+            availability_element.text(item_data['itemAvailabilityStatus']);
             availability_element;
         }
         return true;
