@@ -693,12 +693,24 @@ class CatalogController < ApplicationController
   def render_search_results_as_json
     { response: { docs: @document_list, facets: search_facets_as_json, pages: pagination_info(@response) } }
   end
-
+  require 'rdoc/rdoc'
   def index
     if home_page?
       render_empty_search
     else
+      GC::Profiler.enable
+      gc_profiler_log = Logger.new('log/gc_profiler.log')
+
+      gc_profiler_log.info("--- before calling super ---")
+      GC::Profiler.report
+      gc_profiler_log.info(GC::Profiler.raw_data)
+      gc_profiler_log.info("--- before calling super ---")
       super
+      gc_profiler_log.info("--- after calling super ---")
+      GC::Profiler.report
+      gc_profiler_log.info(GC::Profiler.raw_data)
+      gc_profiler_log.info("--- after calling super ---")
+      # GC::Profiler.disable
     end
   rescue ActionController::BadRequest
     render file: Rails.public_path.join('x400.html'), layout: true, status: :bad_request
