@@ -83,7 +83,7 @@ Fix:
 - Count the lines: `wc -l /tmp/call_number_browse_s.sorted`.
 - Create a tmux session and run the `call_numbers` rake task:
 - `cd /opt/orangelight/current`
-- `RAILS_ENV=production SOLR_URL=http://lib-solr-prod4.princeton.edu:8983/solr/catalog-production bundle exec rake browse:call_numbers --silent >> /tmp/cron_log_call_numbers.log 2>&1`
+- `RAILS_ENV=production SOLR_URL=http://lib-solr-prod7.princeton.edu:8983/solr/catalog-production bundle exec rake browse:call_numbers --silent >> /tmp/cron_log_call_numbers.log 2>&1`
 
 - It takes around 3 hours to complete. When it finishes successfully the output will be on `/tmp/call_number_browse_s.sorted`. Count the lines in the file `wc -l /tmp/call_number_browse_s.sorted` to ensure that there is not a big difference with the backup file which is located in `/home/deploy/call_number_browse_s.sorted` or the most recent file which is located `/tmp/call_number_browse_s.sorted`.
 - Then run the `load_call_numbers` rake task to ingest the data. This task expects the input file to be on `/tmp/call_number_browse_s.sorted`:
