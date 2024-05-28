@@ -80,7 +80,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address: "#{ENV['SMTP_HOST'] || 'lib-ponyexpr.princeton.edu' }",
+    address: "#{ENV['SMTP_HOST'] || 'lib-ponyexpr-prod.princeton.edu' }",
     port: (ENV['SMTP_PORT'] || 25).to_i,
     open_timeout: 10,
     read_timeout: 10
