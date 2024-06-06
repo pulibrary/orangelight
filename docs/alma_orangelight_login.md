@@ -43,3 +43,5 @@ else an authenticated user
   O->>A: Recognizes that user is already logged in, sends to Alma
 end 
 ```
+
+Note: you can find an example Alma username and password in Lastpass, under the secret "Alma Internal Account Test User".
