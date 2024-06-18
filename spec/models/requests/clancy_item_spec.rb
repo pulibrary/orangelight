@@ -108,7 +108,7 @@ describe Requests::ClancyItem do
 
   context 'item has been deaccessioned' do
     let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Item has been Deaccessioned on 02-20-2024\"}" }
-  
+
     it 'has the status json' do
       expect(clancy_item.status["success"]).to be_truthy
       expect(clancy_item.status["status"]).to eq("Item has been Deaccessioned on 02-20-2024")
@@ -122,7 +122,6 @@ describe Requests::ClancyItem do
     it "is not available" do
       expect(clancy_item.available?).to be_falsey
     end
-
   end
 
   context 'Error accessing clancy api' do
