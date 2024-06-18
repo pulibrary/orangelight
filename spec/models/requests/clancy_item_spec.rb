@@ -106,6 +106,24 @@ describe Requests::ClancyItem do
     end
   end
 
+  context 'item has been deaccessioned' do
+    let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Item has been Deaccessioned on 02-20-2024\"}" }
+
+    it 'has the status json' do
+      expect(clancy_item.status["success"]).to be_truthy
+      expect(clancy_item.status["status"]).to eq("Item has been Deaccessioned on 02-20-2024")
+      expect(clancy_item.errors).to be_empty
+    end
+
+    it 'is not_at_clancy' do
+      expect(clancy_item.not_at_clancy?).to be_truthy
+    end
+
+    it "is not available" do
+      expect(clancy_item.available?).to be_falsey
+    end
+  end
+
   context 'Error accessing clancy api' do
     let(:response) { instance_double "Faraday::Response", "success?": false, status: 403, body: "{\"success\":false,\"error\":\"Invalid API Key\"}" }
 

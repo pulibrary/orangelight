@@ -18,7 +18,7 @@ module Requests
 
     def not_at_clancy?
       return true unless status["success"]
-      "Item not Found" == status["status"]
+      "Item not Found" == status["status"] || status["status"].include?("Deaccessioned")
     end
 
     def at_clancy?
