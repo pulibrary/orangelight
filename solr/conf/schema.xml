@@ -64,7 +64,7 @@
       * https://lucene.apache.org/solr/guide/8_0/other-schema-elements.html#similarity
       * https://github.com/pulibrary/orangelight/issues/1958
   -->
-  <similarity class="solr.LegacyBM25SimilarityFactory"/>
+  <similarity class="solr.BM25SimilarityFactory"/>
 
   <types>
     <!-- field type definitions. The "name" attribute is
