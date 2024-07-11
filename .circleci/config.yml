@@ -228,6 +228,7 @@ workflows:
          requires:
           - build
       - vale/lint
+          config: docs/.vale.ini
       - finish:
          requires:
            - test
