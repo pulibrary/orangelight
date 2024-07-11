@@ -1,0 +1,12 @@
+Ctrl
+figgy
+Figgy
+iiif
+Marquand
+Mudd
+orangelight
+Orangelight
+postgres
+solr
+Solr
+tmux
