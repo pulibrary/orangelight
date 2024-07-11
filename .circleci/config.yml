@@ -4,6 +4,7 @@ orbs:
   browser-tools: circleci/browser-tools@1.4.6
   ruby: circleci/ruby@2.0.0
   node: circleci/node@5.0.2
+  vale: circleci/vale@1.0.0
 executors:
   orangelight-executor:
     docker:
@@ -175,6 +176,7 @@ workflows:
       - test:
          requires:
           - build
+      - vale/lint
       - finish:
          requires:
            - test

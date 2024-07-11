@@ -126,6 +126,16 @@ The browser will only display for system specs with `js: true`.
 * [erblint](https://github.com/Shopify/erb-lint)
 * `bundle exec erblint --lint-all`
 
+#### Documentation linting with vale
+
+To run locally:
+```
+brew install vale
+cd docs
+vale sync
+vale .
+```
+
 #### Running CodeQL locally
 
 If you get a CodeQL warning on your branch, you may wish to run
