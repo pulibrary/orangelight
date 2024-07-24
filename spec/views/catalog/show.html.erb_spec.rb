@@ -120,6 +120,14 @@ RSpec.describe 'catalog/show' do
     end
   end
 
+  context 'when a document has FaST subject headings' do
+    it 'displays the subject headings' do
+      visit 'catalog/99125527882306421'
+      expect(page).to have_content('FaST Subject(s)')
+      expect(page).to have_content('Criticism, interpretation, etc.')
+    end
+  end
+
   context 'when a document has no language_iana_s' do
     it 'defaults to lang attribute "en"' do
       visit 'catalog/99124945733506421'

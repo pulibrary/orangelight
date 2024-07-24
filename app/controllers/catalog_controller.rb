@@ -291,6 +291,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'homoit_genre_s', label: 'Homosaurus genre(s)', helper_method: :subjectify
     config.add_show_field 'rbgenr_s', label: 'Rare books genre', helper_method: :subjectify
     config.add_show_field 'aat_s', label: 'Getty AAT genre', helper_method: :subjectify
+    config.add_show_field 'fast_subject_display', label: 'FaST Subject(s)'
     config.add_show_field 'related_works_1display', label: 'Related work(s)', helper_method: :name_title_hierarchy
     config.add_show_field 'series_display', label: 'Series', series_link: true
     config.add_show_field 'contains_1display', label: 'Contains', helper_method: :name_title_hierarchy
