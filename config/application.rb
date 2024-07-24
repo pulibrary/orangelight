@@ -71,5 +71,7 @@ module Orangelight
 
     BlacklightDynamicSitemap::Engine.config.minimum_average_chunk = 500
     config.autoloader = :zeitwerk
+
+    config.session_store :disabled
   end
 end

@@ -6,8 +6,8 @@ RSpec.describe Blacklight::Document::JsonLd do
   subject(:document) { solr_doc.export_as_jsonld }
   let(:doc) { JSON.parse(document) }
 
-  let(:fixture_path) { "spec/fixtures/alma/#{id}.json" }
-  let(:fixture_file) { File.read(fixture_path) }
+  let(:fixture_paths) { "spec/fixtures/alma/#{id}.json" }
+  let(:fixture_file) { File.read(fixture_paths) }
   let(:properties) { JSON.parse(fixture_file) }
   let(:solr_doc) { SolrDocument.new(properties) }
 
@@ -75,7 +75,7 @@ RSpec.describe Blacklight::Document::JsonLd do
 
     context 'with a monograph with an author' do
       let(:id) { '9956200533506421' }
-      let(:fixture_path) { "spec/fixtures/raw/#{id}.json" }
+      let(:fixture_paths) { "spec/fixtures/raw/#{id}.json" }
 
       it 'creates a jsonld document' do
         expect(doc['creator']).to eq("Dagen, Philippe")
