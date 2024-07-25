@@ -1,11 +1,11 @@
 # frozen_string_literal: true
-class AskAQuestionForm < MailForm::Base
+class AskAQuestionForm
   include ActiveModel::Model
+  include Honeypot
   attr_accessor :name, :email, :message, :context, :title
 
   validates :name, :email, :message, presence: true
   validates :email, email: true
-  attribute :feedback_desc, captcha: true
 
   def email_subject
     "[Catalog] #{title}"

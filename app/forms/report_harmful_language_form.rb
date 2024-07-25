@@ -1,10 +1,10 @@
 # frozen_string_literal: true
-class ReportHarmfulLanguageForm < MailForm::Base
+class ReportHarmfulLanguageForm
   include ActiveModel::Model
+  include Honeypot
   attr_accessor :name, :email, :message, :context, :title, :error
 
   validates :message, presence: true
-  attribute :feedback_desc, captcha: true
 
   def email_subject
     "[Possible Harmful Language] #{title}"
