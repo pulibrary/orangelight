@@ -33,6 +33,7 @@ gem 'flipflop'
 gem 'font-awesome-rails'
 gem 'friendly_id', '~> 5.4.2'
 gem 'global'
+gem 'health-monitor-rails', git: 'https://github.com/pulibrary/health-monitor-rails.git', branch: 'add_solr_monitor'
 # Static pages
 gem 'high_voltage'
 gem 'honeybadger'
