@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-class SuggestCorrectionForm < MailForm::Base
+class SuggestCorrectionForm
   include ActiveModel::Model
+  include Honeypot
+
   attr_accessor :name, :email, :message, :context, :title
 
   validates :name, :email, :message, :context, presence: true
   validates :email, email: true
-  attribute :feedback_desc, captcha: true
 
   def email_subject
     "[Catalog] #{title}"
