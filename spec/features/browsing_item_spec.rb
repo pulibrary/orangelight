@@ -66,6 +66,8 @@ describe 'browsing a catalog item', js: true do
       SCRIPT
 
       expect(page).to have_content('Analectas')
+      # The square symbol is the unicode symbol for \ue60b which correlates
+      # to the unicode identifer for the book icon
       expect(content).to eq('""')
     end
   end
