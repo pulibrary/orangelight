@@ -22,6 +22,9 @@ defaults: &defaults
       maximum: 3
   bookmarks:
     batch_size: 200
+  libanswers:
+    client_id: <%= ENV['LIBANSWERS_CLIENT_ID'] || 'ABC' %>
+    client_secret: <%= ENV['LIBANSWERS_CLIENT_SECRET'] || '12345' %>
 
 development:
   <<: *defaults
@@ -54,6 +57,9 @@ test:
     to: 'test-harmful-content@princeton.edu'
   report_biased_results_form:
     to: 'test-biased-results@princeton.edu'
+  libanswers:
+    client_id: ABC
+    client_secret: '12345'
 
 production:
   <<: *defaults
