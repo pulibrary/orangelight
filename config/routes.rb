@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   mount Flipflop::Engine => '/features'
 
+  mount HealthMonitor::Engine => '/'
+
   concern :searchable, Blacklight::Routes::Searchable.new
   concern :exportable, Blacklight::Routes::Exportable.new
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new

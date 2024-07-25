@@ -8,6 +8,14 @@ GIT
       rails
 
 GIT
+  remote: https://github.com/pulibrary/health-monitor-rails.git
+  revision: fe794a6a6846d6f10b158963e0b0dea4e4dd172c
+  branch: add_solr_monitor
+  specs:
+    health-monitor-rails (12.1.0)
+      railties (>= 6.1)
+
+GIT
   remote: https://github.com/pulibrary/stringex.git
   revision: 357f70511532a35b11a240e5ae06d02725cb8d0a
   tag: vpton.2.5.2.2
@@ -698,6 +706,7 @@ DEPENDENCIES
   font-awesome-rails
   friendly_id (~> 5.4.2)
   global
+  health-monitor-rails!
   high_voltage
   honeybadger
   jbuilder (~> 2.0)
