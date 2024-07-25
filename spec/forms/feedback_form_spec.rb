@@ -56,4 +56,36 @@ RSpec.describe FeedbackForm do
       expect(form.error_message).to eq(I18n.t('blacklight.feedback.error'))
     end
   end
+
+  describe "deliver" do
+    it "sends an email" do
+      form = described_class.new({
+                                   email: 'test@test.org',
+                                   name: 'A Nice Tester',
+                                   message: 'Good job on the catalog!'
+                                 })
+
+      expect { form.deliver }.to change { ActionMailer::Base.deliveries.length }.by 1
+      mail = ActionMailer::Base.deliveries.first
+      expect(mail.subject).to eq "Princeton University Library Catalog Feedback Form"
+      expect(mail.from).to eq ["test@test.org"]
+      expect(mail.body).to include "Good job on the catalog!"
+    end
+  end
+
+  describe 'remote_ip' do
+    it 'gets the IP from the request, if available' do
+      form.request = instance_double(ActionDispatch::Request)
+      allow(form.request).to receive(:remote_ip).and_return('10.11.12.13')
+      expect(form.remote_ip).to eq('10.11.12.13')
+    end
+  end
+
+  describe 'user_agent' do
+    it 'gets the User agent from the request, if available' do
+      form.request = instance_double(ActionDispatch::Request)
+      allow(form.request).to receive(:user_agent).and_return('Firefox')
+      expect(form.user_agent).to eq('Firefox')
+    end
+  end
 end
