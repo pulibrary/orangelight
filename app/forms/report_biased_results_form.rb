@@ -1,10 +1,10 @@
 # frozen_string_literal: true
-class ReportBiasedResultsForm < MailForm::Base
+class ReportBiasedResultsForm
   include ActiveModel::Model
+  include Honeypot
   attr_accessor :name, :email, :message, :context
 
   validates :message, presence: true
-  attribute :feedback_desc, captcha: true
 
   def email_subject
     "[Possible Biased Results]"

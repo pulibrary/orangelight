@@ -47,7 +47,6 @@ gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
 gem 'lograge'
 gem 'logstash-event'
-gem 'mail_form'
 gem 'matrix'
 # For memory profiling
 # See https://github.com/MiniProfiler/rack-mini-profiler#memory-profiling for usage

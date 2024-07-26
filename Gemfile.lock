@@ -344,9 +344,6 @@ GEM
       net-imap
       net-pop
       net-smtp
-    mail_form (1.10.1)
-      actionmailer (>= 5.2)
-      activemodel (>= 5.2)
     marc (1.2.0)
       rexml
       scrub_rb (>= 1.0.1, < 2)
@@ -716,7 +713,6 @@ DEPENDENCIES
   library_stdnums
   lograge
   logstash-event
-  mail_form
   matrix
   memory_profiler
   modernizr-rails
