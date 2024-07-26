@@ -5,6 +5,7 @@ defaults: &defaults
   feedback_form:
     to: <%= ENV['OL_FEEDBACK_TO'] %>
     cc: <%= ENV['OL_FEEDBACK_CC'] %>
+    queue_id: <%= ENV['CATALOG_FEEDBACK_QUEUE_ID'] %>
   ask_a_question_form:
     to: <%= ENV['OL_REFERENCE_TO'] %>
   suggest_correction_form:
@@ -45,6 +46,7 @@ test:
   feedback_form:
     to: 'test@princeton.edu'
     cc: 'test2w@princeton.edu, test3@princeton.edu'
+    queue_id: 1234
   ask_a_question_form:
     to: 'test-question@princeton.edu'
   redis:

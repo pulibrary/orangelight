@@ -4,6 +4,7 @@ require 'rails_helper'
 
 describe 'submitting feedback', js: true do
   before do
+    stub_libanswers_api
     visit 'feedback'
     fill_in(id: 'feedback_form_name', with: 'John Smith')
     fill_in(id: 'feedback_form_email', with: 'jsmith@localhost.localdomain')
