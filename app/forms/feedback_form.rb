@@ -2,13 +2,17 @@
 
 require 'mail_form'
 
-class FeedbackForm < MailForm::Base
-  attribute :name, validate: true
-  attribute :email, validate: /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
-  attribute :message, validate: true
-  attribute :current_url
-  attribute :feedback_desc, captcha: true
-  append :remote_ip, :user_agent
+class FeedbackForm
+  include ActiveModel::Model
+  include Honeypot
+
+  attr_accessor :name, :email, :message, :current_url, :request
+  validates :name, :email, :message, presence: true
+  validates :email, email: true
+
+  def deliver
+    ContactMailer.with(form: self).feedback.deliver if valid? && !spam?
+  end
 
   def headers
     {
@@ -21,5 +25,13 @@ class FeedbackForm < MailForm::Base
 
   def error_message
     I18n.t(:'blacklight.feedback.error').to_s
+  end
+
+  def remote_ip
+    request&.remote_ip
+  end
+
+  def user_agent
+    request&.user_agent
   end
 end

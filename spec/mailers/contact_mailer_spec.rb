@@ -95,4 +95,33 @@ describe ContactMailer, type: :mailer do
       end
     end
   end
+
+  context 'with a feedback form' do
+    let(:valid_attributes) do
+      {
+        "name" => "Test",
+        "email" => "test@test.org",
+        "message" => "I think your site is great!"
+      }
+    end
+    let(:form) do
+      FeedbackForm.new(valid_attributes)
+    end
+    let(:mail) do
+      described_class.with(form:).feedback.deliver_now
+    end
+
+    it "renders the headers" do
+      mail
+      expect(mail.subject).to eq("Princeton University Library Catalog Feedback Form")
+      expect(mail.to).to eq(["test@princeton.edu"])
+      expect(mail.from).to eq(["test@test.org"])
+    end
+
+    it "renders the body" do
+      expect(mail.body.encoded).to have_content('Name: Test')
+      expect(mail.body.encoded).to have_content('Email: test@test.org')
+      expect(mail.body.encoded).to have_content('Comments: I think your site is great!')
+    end
+  end
 end

@@ -19,4 +19,9 @@ class ContactMailer < ApplicationMailer
     @form = params[:form]
     mail(to: @form.routed_mail_to, from: @form.from_email, subject: @form.email_subject)
   end
+
+  def feedback
+    @form = params[:form]
+    mail(to: @form.headers[:to], from: @form.headers[:from], subject: @form.headers[:subject])
+  end
 end
