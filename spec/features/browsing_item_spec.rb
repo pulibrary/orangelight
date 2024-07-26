@@ -51,4 +51,24 @@ describe 'browsing a catalog item', js: true do
       end
     end
   end
+
+  context 'when an item does not have a format value' do
+    before do
+      visit 'catalog/SCSB-7935196'
+    end
+
+    it 'has a default icon even if there is no fomat value' do
+      content = page.evaluate_script <<-SCRIPT
+        (function() {
+          var element = document.getElementsByClassName('default')[0];
+          return window.getComputedStyle(element, ':before').getPropertyValue('content')
+        })()
+      SCRIPT
+
+      expect(page).to have_content('Analectas')
+      # The square symbol is the unicode symbol for \ue60b which correlates
+      # to the unicode identifer for the book icon
+      expect(content).to eq('""')
+    end
+  end
 end

@@ -32,6 +32,12 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.document-thumbnail .default {
+    &:before {
+        content: $icon-book;
+    }
+}
+
 .icon-bell {
     &:before {
         content: $icon-bell;
