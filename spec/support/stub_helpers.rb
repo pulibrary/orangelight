@@ -52,3 +52,10 @@ def stub_scsb_availability(bib_id:, institution_id:, barcode:, item_availability
     .with(headers: { Accept: 'application/json', api_key: 'TESTME' }, body: scsb_availability_params)
     .to_return(status: 200, body: scsb_response.to_json)
 end
+
+def stub_libanswers_api
+  stub_request(:post, 'https://faq.library.princeton.edu/api/1.1/oauth/token')
+    .with(body: 'client_id=ABC&client_secret=12345&grant_type=client_credentials')
+    .to_return(status: 200, body: file_fixture('libanswers/oauth_token.json'))
+  stub_request(:post, 'https://faq.library.princeton.edu/api/1.1/ticket/create')
+end

@@ -2,9 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.describe "feedback emails", type: :request do
+RSpec.describe "feedback forms", type: :request do
   context 'main feedback form' do
     it 'adds a flash message on success' do
+      stub_libanswers_api
       post '/feedback.js', params: {
         controller: "FeedbackController",
         action: "create",

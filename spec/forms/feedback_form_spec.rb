@@ -58,18 +58,25 @@ RSpec.describe FeedbackForm do
   end
 
   describe "deliver" do
-    it "sends an email" do
+    it "sends an api request to libanswers" do
+      stub_libanswers_api
+
       form = described_class.new({
                                    email: 'test@test.org',
                                    name: 'A Nice Tester',
                                    message: 'Good job on the catalog!'
                                  })
 
-      expect { form.deliver }.to change { ActionMailer::Base.deliveries.length }.by 1
-      mail = ActionMailer::Base.deliveries.first
-      expect(mail.subject).to eq "Princeton University Library Catalog Feedback Form"
-      expect(mail.from).to eq ["test@test.org"]
-      expect(mail.body).to include "Good job on the catalog!"
+      form.deliver
+      expect(WebMock).to have_requested(
+        :post,
+        'https://faq.library.princeton.edu/api/1.1/ticket/create'
+      ).with(body: 'quid=1234&'\
+      'pquestion=Princeton University Library Catalog Feedback Form&'\
+      "pdetails=Good job on the catalog!\n\nSent via LibAnswers API&"\
+      'pname=A Nice Tester&'\
+      'pemail=test@test.org',
+             headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
     end
   end
 

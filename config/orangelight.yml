@@ -5,6 +5,7 @@ defaults: &defaults
   feedback_form:
     to: <%= ENV['OL_FEEDBACK_TO'] %>
     cc: <%= ENV['OL_FEEDBACK_CC'] %>
+    queue_id: <%= ENV['CATALOG_FEEDBACK_QUEUE_ID'] %>
   ask_a_question_form:
     to: <%= ENV['OL_REFERENCE_TO'] %>
   suggest_correction_form:
@@ -22,6 +23,9 @@ defaults: &defaults
       maximum: 3
   bookmarks:
     batch_size: 200
+  libanswers:
+    client_id: <%= ENV['LIBANSWERS_CLIENT_ID'] || 'ABC' %>
+    client_secret: <%= ENV['LIBANSWERS_CLIENT_SECRET'] || '12345' %>
 
 development:
   <<: *defaults
@@ -42,6 +46,7 @@ test:
   feedback_form:
     to: 'test@princeton.edu'
     cc: 'test2w@princeton.edu, test3@princeton.edu'
+    queue_id: 1234
   ask_a_question_form:
     to: 'test-question@princeton.edu'
   redis:
@@ -54,6 +59,9 @@ test:
     to: 'test-harmful-content@princeton.edu'
   report_biased_results_form:
     to: 'test-biased-results@princeton.edu'
+  libanswers:
+    client_id: ABC
+    client_secret: '12345'
 
 production:
   <<: *defaults

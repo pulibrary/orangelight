@@ -59,6 +59,8 @@ RSpec.configure do |config|
 
   config.include ViewComponent::TestHelpers, type: :component
 
+  config.include ActiveSupport::Testing::TimeHelpers
+
   config.before(:each, type: :feature) do
     Warden.test_mode!
     OmniAuth.config.test_mode = true

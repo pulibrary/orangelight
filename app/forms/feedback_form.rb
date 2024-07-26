@@ -9,7 +9,12 @@ class FeedbackForm
   validates :email, email: true
 
   def deliver
-    ContactMailer.with(form: self).feedback.deliver if valid? && !spam?
+    return if spam?
+    return unless valid?
+
+    FeedbackFormSubmission.new(
+      message:, patron_name: name, patron_email: email, user_agent:, current_url:
+    ).send_to_libanswers
   end
 
   def headers
