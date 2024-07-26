@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "name": "Database",
+      "message": "unable to connect to: primary",
+      "status": "ERROR"
+    },
+    {
+      "name": "Cache",
+      "message": "",
+      "status": "OK"
+    },
+    {
+      "name": "Solr",
+      "message": "",
+      "status": "OK"
+    }
+  ],
+  "status": "service_unavailable",
+  "timestamp": "2024-07-26 15:11:41 -0400"
+}

@@ -7,6 +7,8 @@ Rails.application.config.after_initialize do
       c.url = Blacklight.default_index.connection.uri.to_s
     end
 
+    config.add_custom_provider(BibdataStatus)
+
     # Make this health check available at /health
     config.path = :health
 
