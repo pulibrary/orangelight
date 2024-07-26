@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/lbeder/health-monitor-rails.git
+  revision: 7678b8673a0c8b75c25a73da8f66c9218f0fd441
+  branch: master
+  specs:
+    health-monitor-rails (12.1.0)
+      railties (>= 6.1)
+
+GIT
   remote: https://github.com/pulibrary/blacklight_unapi.git
   revision: 79ac4bf1914f2b48ff7eae9fb79842e2c9cfff06
   branch: main
@@ -6,14 +14,6 @@ GIT
     blacklight_unapi (0.1.0)
       blacklight (~> 7.0)
       rails
-
-GIT
-  remote: https://github.com/pulibrary/health-monitor-rails.git
-  revision: 44fb3d6e84935fe6094f5d7f3b731b7e38ff3f89
-  branch: add_solr_monitor
-  specs:
-    health-monitor-rails (12.1.0)
-      railties (>= 6.1)
 
 GIT
   remote: https://github.com/pulibrary/stringex.git
