@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pulibrary/health-monitor-rails.git
-  revision: 44fb3d6e84935fe6094f5d7f3b731b7e38ff3f89
+  revision: 16b633969fd1c0b78bd126f4873ff1b0bae870eb
   branch: add_solr_monitor
   specs:
     health-monitor-rails (12.1.0)
