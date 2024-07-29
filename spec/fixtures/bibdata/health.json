@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "name": "Database",
+      "message": "",
+      "status": "OK"
+    },
+    {
+      "name": "Cache",
+      "message": "",
+      "status": "OK"
+    },
+    {
+      "name": "SolrStatus",
+      "message": "",
+      "status": "OK"
+    }
+  ],
+  "status": "ok",
+  "timestamp": "2024-07-26 14:35:46 -0400"
+}
