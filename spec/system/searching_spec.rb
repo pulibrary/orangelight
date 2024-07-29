@@ -180,6 +180,18 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_select('clause_0_field', selected: 'Title')
       expect(page).to have_field('clause_0_query', with: 'potato')
     end
+
+    it 'can add a facet to an existing search', js: true do
+      visit '/advanced?q=black&search_field=all_fields'
+      expect(page).to have_field('clause_0_query', with: 'black')
+      access_facet = page.find('#access_facet')
+      access_facet.click
+      in_the_library = page.first('.dropdown-item')
+      in_the_library.click
+      click_on('advanced-search-submit')
+      page.first('.navbar-toggler').click
+      expect(page).to have_content("Any of:\nIn the Library")
+    end
   end
 
   it 'can remove a search constraint' do
