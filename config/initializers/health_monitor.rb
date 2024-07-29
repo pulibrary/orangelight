@@ -7,7 +7,11 @@ Rails.application.config.after_initialize do
       c.url = Blacklight.default_index.connection.uri.to_s
     end
 
+    config.add_custom_provider(AeonStatus)
     config.add_custom_provider(BibdataStatus)
+    config.add_custom_provider(IlliadStatus)
+    config.add_custom_provider(ScsbStatus)
+    config.add_custom_provider(StackmapStatus)
 
     # Make this health check available at /health
     config.path = :health
