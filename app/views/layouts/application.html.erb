@@ -23,7 +23,7 @@
     <%= stylesheet_link_tag "application", media: "screen" %>
     <%= stylesheet_link_tag "print", media: "print" %>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-    <script src="https://www.stackmapintegration.com/princeton-blacklight/StackMap.min.js" type="text/javascript"></script>
+    <script defer src="https://www.stackmapintegration.com/princeton-blacklight/StackMap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" media="all" type="text/css" href="https://www.stackmapintegration.com/princeton-blacklight/StackMap.min.css" />
     <% unless controller.controller_name == "request" %>
       <%= javascript_include_tag "application" %>
@@ -37,7 +37,7 @@
     <% unless controller.controller_name == "catalog" && controller.action_name == "show" && @document.alma_record? %>
     <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML", async: true %>
     <% end %>
-    <%= javascript_include_tag "https://www.google.com/books/jsapi.js" %>
+    <%= javascript_include_tag "https://www.google.com/books/jsapi.js", defer: true %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
     <link rel="unapi-server" type="application/xml" title="unAPI" href="/unapi"/>
