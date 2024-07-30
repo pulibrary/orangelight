@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 class ScsbStatus < HealthMonitor::Providers::Base
+  attr_accessor :critical
+  def initialize
+    super
+    @critical = false
+  end
+
   def check!
     # the endpoint /actuator/health isn't working
     # but would be an more ideal place to check

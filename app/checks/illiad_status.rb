@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 class IlliadStatus < HealthMonitor::Providers::Base
+  attr_accessor :critical
+  def initialize
+    super
+    @critical = false
+  end
+
   def check!
     status_uri = URI("#{Requests::Config[:illiad_api_base]}/IlliadWebPlatform/SystemInfo/PlatformVersion")
     req = Net::HTTP::Get.new(status_uri)

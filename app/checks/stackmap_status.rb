@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 class StackmapStatus < HealthMonitor::Providers::Base
+  attr_accessor :critical
+  def initialize
+    super
+    @critical = false
+  end
+
   def check!
     status_uri = URI("https://www.stackmapintegration.com/princeton-blacklight/StackMap.min.js")
     req = Net::HTTP::Head.new(status_uri)

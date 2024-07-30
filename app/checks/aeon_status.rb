@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 class AeonStatus < HealthMonitor::Providers::Base
+  attr_accessor :critical
+  def initialize
+    super
+    @critical = false
+  end
+
   def check!
     base_uri = Requests::Config[:aeon_base]
     status_host = base_uri[0, base_uri.rindex("/")]

@@ -84,11 +84,11 @@ RSpec.describe "Health Check", type: :request do
       end
       before { illiad_stub }
 
-      it 'errors when illiad is down' do
+      it 'has error but does not show as down when illiad is down' do
         get "/health.json"
         expect(illiad_stub).to have_been_requested
-        expect(response).not_to be_successful
-        expect(response.status).to eq 503
+        expect(response).to be_successful
+        expect(response.status).to eq 200
         illiad_response = JSON.parse(response.body)["results"].find { |x| x["name"] == "IlliadStatus" }
         expect(illiad_response["message"]).to start_with "Illiad has an invalid status"
       end
@@ -100,11 +100,11 @@ RSpec.describe "Health Check", type: :request do
       end
       before { aeon_stub }
 
-      it 'errors when aeon is down' do
+      it 'has error but does not show as down when aeon is down' do
         get "/health.json"
         expect(aeon_stub).to have_been_requested
-        expect(response).not_to be_successful
-        expect(response.status).to eq 503
+        expect(response).to be_successful
+        expect(response.status).to eq 200
         aeon_response = JSON.parse(response.body)["results"].find { |x| x["name"] == "AeonStatus" }
         expect(aeon_response["message"]).to start_with "Aeon has an invalid status"
       end
@@ -116,11 +116,11 @@ RSpec.describe "Health Check", type: :request do
       end
       before { stackmap_stub }
 
-      it 'errors when stackmap is down' do
+      it 'has error but does not show as down when stackmap is down' do
         get "/health.json"
         expect(stackmap_stub).to have_been_requested
-        expect(response).not_to be_successful
-        expect(response.status).to eq 503
+        expect(response).to be_successful
+        expect(response.status).to eq 200
         stackmap_response = JSON.parse(response.body)["results"].find { |x| x["name"] == "StackmapStatus" }
         expect(stackmap_response["message"]).to start_with "Stackmap has an invalid status"
       end
@@ -132,11 +132,11 @@ RSpec.describe "Health Check", type: :request do
       end
       before { scsb_stub }
 
-      it 'errors when scsb is down' do
+      it 'has error but does not show as down when scsb is down' do
         get "/health.json"
         expect(scsb_stub).to have_been_requested
-        expect(response).not_to be_successful
-        expect(response.status).to eq 503
+        expect(response).to be_successful
+        expect(response.status).to eq 200
         scsb_response = JSON.parse(response.body)["results"].find { |x| x["name"] == "ScsbStatus" }
         expect(scsb_response["message"]).to start_with "SCSB has an invalid status"
       end
