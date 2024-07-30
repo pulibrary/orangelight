@@ -33,24 +33,6 @@ RSpec.describe FeedbackForm do
     end
   end
 
-  describe '#headers' do
-    it 'returns mail headers' do
-      expect(form.headers).to be_truthy
-    end
-
-    it 'pulls TO header from configuration' do
-      expect(form.headers[:to]).to eq 'test@princeton.edu'
-    end
-
-    it 'pulls CC header from configuration' do
-      expect(form.headers[:cc]).to eq 'test2w@princeton.edu, test3@princeton.edu'
-    end
-
-    it "Contains the submitter's email address" do
-      expect(form.headers[:from]).to eq('"Bob Smith" <bsmith@university.edu>')
-    end
-  end
-
   describe 'error_message' do
     it 'returns the configured error string' do
       expect(form.error_message).to eq(I18n.t('blacklight.feedback.error'))
@@ -77,14 +59,6 @@ RSpec.describe FeedbackForm do
       'pname=A Nice Tester&'\
       'pemail=test@test.org',
              headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
-    end
-  end
-
-  describe 'remote_ip' do
-    it 'gets the IP from the request, if available' do
-      form.request = instance_double(ActionDispatch::Request)
-      allow(form.request).to receive(:remote_ip).and_return('10.11.12.13')
-      expect(form.remote_ip).to eq('10.11.12.13')
     end
   end
 
