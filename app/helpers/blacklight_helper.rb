@@ -47,7 +47,7 @@ module BlacklightHelper
                   blacklight_params[:f3] == 'series_title'
     solr_parameters[:fl] = 'id,score,author_display,marc_relator_display,format,pub_created_display,'\
                            'title_display,title_vern_display,isbn_s,oclc_s,lccn_s,holdings_1display,'\
-                           'electronic_access_1display,cataloged_tdt,series_display'
+                           'electronic_access_1display,electronic_portfolio_s,cataloged_tdt,series_display'
   end
 
   # only fetch facets when an html page is requested
