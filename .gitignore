@@ -54,3 +54,5 @@ solr/conf/lucene-umich-solr-filters-6.0.0-SNAPSHOT.jar
 
 orangelight-codeql
 codeql_results.csv
+
+.lighthouseci
