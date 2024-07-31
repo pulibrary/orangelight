@@ -352,7 +352,6 @@ GEM
     mini_portile2 (2.8.7)
     minitest (5.24.1)
     mize (0.5.0)
-    modernizr-rails (2.7.1)
     msgpack (1.7.2)
     multi_xml (0.6.0)
     net-imap (0.4.4)
@@ -709,7 +708,6 @@ DEPENDENCIES
   logstash-event
   matrix
   memory_profiler
-  modernizr-rails
   net-imap
   net-ldap
   net-pop
