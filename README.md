@@ -126,6 +126,17 @@ The browser will only display for system specs with `js: true`.
 * [erblint](https://github.com/Shopify/erb-lint)
 * `bundle exec erblint --lint-all`
 
+#### Run lighthouse from the command line
+
+```
+npm install -g @lhci/cli@0.14.x
+lhci autorun
+```
+
+It will tell you if you've passed the assertion(s) specified
+in `lighthouserc.js`.  It will also give you a URL where you
+can see the complete lighthouse results.
+
 #### Running CodeQL locally
 
 If you get a CodeQL warning on your branch, you may wish to run
