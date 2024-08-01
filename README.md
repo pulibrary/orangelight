@@ -127,6 +127,7 @@ The browser will only display for system specs with `js: true`.
 * `bundle exec erblint --lint-all`
 
 #### Run lighthouse from the command line
+This command runs a rails server, so you will need to stop any rails server that is already running locally before running the commands below.
 
 ```
 bundle exec rake servers:start # if you have not yet started the servers
