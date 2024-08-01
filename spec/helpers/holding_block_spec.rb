@@ -458,6 +458,22 @@ RSpec.describe HoldingsHelper do
           expect(search_result).not_to include("Fifty years' work amongst young men in all lands")
         end
       end
+      context 'with the only holding an electronic portfolio' do
+        let(:document) do
+          {
+            id: '1',
+            format: ['Book'],
+            electronic_portfolio_s: ["{\"desc\":null,\"title\":\"Ebook Central Perpetual, DDA and Subscription Titles\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=531021696700006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"]
+          }.with_indifferent_access
+        end
+
+        it 'does not show search missing text' do
+          expect(search_result).not_to include('No holdings available for this record')
+        end
+        it 'shows the online badge' do
+          expect(search_result).to include('Online')
+        end
+      end
     end
 
     context '#holding_block_search with embargoed thesis' do

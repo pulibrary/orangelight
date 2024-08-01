@@ -102,6 +102,18 @@ describe 'Searching', type: :system, js: false do
     end
   end
 
+  context 'searching for series title from advanced search' do
+    it 'displays the online availability' do
+      visit 'advanced'
+      select('Series title', from: 'f1')
+      fill_in('q1', with: 'SAGE research methods')
+      click_on('advanced-search-submit')
+      expect(page).to have_content('The lives of Black and Latino teenagers')
+      expect(page).not_to have_content('No holdings available for this record')
+      expect(page).to have_content('SAGE Research Methods Cases Part I')
+      expect(page).to have_content('SAGE research methods. Cases.')
+    end
+  end
   context 'when a request parameter contains a space' do
     it 'displays an error message' do
       visit '/catalog/range_limit?%20%20%20%20range_end=1990&%20%20%20%20range_field=pub_date_start_sort&%20%20%20%20range_start=1981'
@@ -191,6 +203,17 @@ describe 'Searching', type: :system, js: false do
       click_on('advanced-search-submit')
       page.first('.navbar-toggler').click
       expect(page).to have_content("Any of:\nIn the Library")
+    end
+
+    it 'displays the online availability for a series title' do
+      visit 'advanced'
+      select('Series title', from: 'clause_0_field')
+      fill_in('clause_0_query', with: 'SAGE research methods')
+      click_on('advanced-search-submit')
+      expect(page).to have_content('The lives of Black and Latino teenagers')
+      expect(page).not_to have_content('No holdings available for this record')
+      expect(page).to have_content('SAGE Research Methods Cases Part I')
+      expect(page).to have_content('SAGE research methods. Cases.')
     end
   end
 

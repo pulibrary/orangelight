@@ -42,12 +42,20 @@ module BlacklightHelper
   end
 
   def series_title_results(solr_parameters)
-    return unless %w[series_title in_series].include?(blacklight_params[:f1]) ||
-                  blacklight_params[:f2] == 'series_title' ||
-                  blacklight_params[:f3] == 'series_title'
+    return unless includes_series_search?
     solr_parameters[:fl] = 'id,score,author_display,marc_relator_display,format,pub_created_display,'\
                            'title_display,title_vern_display,isbn_s,oclc_s,lccn_s,holdings_1display,'\
-                           'electronic_access_1display,cataloged_tdt,series_display'
+                           'electronic_access_1display,electronic_portfolio_s,cataloged_tdt,series_display'
+  end
+
+  def includes_series_search?
+    if Flipflop.json_query_dsl? && blacklight_params['clause'].present?
+      blacklight_params['clause'].map { |clause| clause[1]["field"] }.include?('series_title' || 'in_series')
+    else
+      %w[series_title in_series].include?(blacklight_params[:f1]) ||
+        blacklight_params[:f2] == 'series_title' ||
+        blacklight_params[:f3] == 'series_title'
+    end
   end
 
   # only fetch facets when an html page is requested
