@@ -106,16 +106,9 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def conditionally_configure_json_query_dsl(_solr_parameters)
-    advanced_fields = %w[title author subject left_anchor publisher in_series notes series_title isbn issn]
+    advanced_fields = %w[all_fields title author subject left_anchor publisher in_series notes series_title isbn issn]
     if Flipflop.json_query_dsl?
-      blacklight_config.search_fields['all_fields']['clause_params'] = {
-        edismax: {}
-      }
-      advanced_fields.each do |field|
-        blacklight_config.search_fields[field]['clause_params'] = {
-          edismax: blacklight_config.search_fields[field]['solr_parameters'].dup
-        }
-      end
+      add_edismax(advanced_fields:)
     else
       blacklight_config.search_fields['all_fields'].delete('clause_params')
       advanced_fields.each do |field|
@@ -133,5 +126,13 @@ class SearchBuilder < Blacklight::SearchBuilder
 
     def using_json_query_dsl(solr_parameters)
       solr_parameters.fetch('json', nil)&.fetch('query', nil)&.fetch('bool', nil)&.fetch('must', nil)&.present?
+    end
+
+    def add_edismax(advanced_fields:)
+      advanced_fields.each do |field|
+        solr_params = blacklight_config.search_fields[field]['solr_parameters']
+        edismax = solr_params.present? ? solr_params.dup : {}
+        blacklight_config.search_fields[field]['clause_params'] = { edismax: }
+      end
     end
 end

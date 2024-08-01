@@ -204,6 +204,17 @@ describe 'Searching', type: :system, js: false do
       page.first('.navbar-toggler').click
       expect(page).to have_content("Any of:\nIn the Library")
     end
+
+    it 'displays the online availability for a series title' do
+      visit 'advanced'
+      select('Series title', from: 'clause_0_field')
+      fill_in('clause_0_query', with: 'SAGE research methods')
+      click_on('advanced-search-submit')
+      expect(page).to have_content('The lives of Black and Latino teenagers')
+      expect(page).not_to have_content('No holdings available for this record')
+      expect(page).to have_content('SAGE Research Methods Cases Part I')
+      expect(page).to have_content('SAGE research methods. Cases.')
+    end
   end
 
   it 'can remove a search constraint' do
