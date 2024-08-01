@@ -23,4 +23,5 @@
 //= require requests/requests
 //= require babel/polyfill
 //
-//= require_tree .
+//= require ./custom_range_limit.js
+//= require ./orangelight.js
