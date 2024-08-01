@@ -15,7 +15,6 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap
-//= require modernizr
 //
 //= require bootstrap/tab
 //

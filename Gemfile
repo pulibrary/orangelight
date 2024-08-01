@@ -51,8 +51,6 @@ gem 'matrix'
 # For memory profiling
 # See https://github.com/MiniProfiler/rack-mini-profiler#memory-profiling for usage
 gem 'memory_profiler'
-# Modernizr.js library
-gem 'modernizr-rails'
 gem 'net-imap', require: false
 gem 'net-ldap'
 gem 'net-pop', require: false
