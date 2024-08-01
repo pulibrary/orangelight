@@ -110,3 +110,8 @@
 .pe-none {
   pointer-events: none;
 }
+
+// bootstrap 4 sets vertical-align to middle, which makes the "X" icon in the footer look wrong
+svg {
+  vertical-align: unset;
+}
