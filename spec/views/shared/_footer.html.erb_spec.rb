@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe 'shared/_footer' do
   it 'renders a footer' do
     render
-    expect(rendered).to match(//)
+    # Lux does not render in the context of this test, so just checking for element
+    expect(rendered).to include('lux-library-footer')
   end
 end
