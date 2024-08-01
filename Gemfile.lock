@@ -256,8 +256,6 @@ GEM
     flipflop (2.7.1)
       activesupport (>= 4.0)
       terminal-table (>= 1.8)
-    font-awesome-rails (4.7.0.8)
-      railties (>= 3.2, < 8.0)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
     global (2.1.0)
@@ -693,7 +691,6 @@ DEPENDENCIES
   faraday
   faraday-cookie_jar
   flipflop
-  font-awesome-rails
   friendly_id (~> 5.4.2)
   global
   health-monitor-rails (~> 12.2)
