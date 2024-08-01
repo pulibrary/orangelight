@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery3
-//= require jquery
 //= require jquery_ujs
 //= require popper
 //= require bootstrap
@@ -24,4 +23,5 @@
 //= require requests/requests
 //= require babel/polyfill
 //
-//= require_tree .
+//= require ./custom_range_limit.js
+//= require ./orangelight.js

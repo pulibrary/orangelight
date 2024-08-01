@@ -1,5 +1,3 @@
-//= require 'jquery'
-
 $(function () {
   //link highlighting of hierarchy
   $('.search-subject, .search-name-title, .search-title').hover(
