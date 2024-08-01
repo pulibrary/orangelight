@@ -32,6 +32,8 @@
     <% end %>
     <script>window.Global = {"graphql":<%= Global.graphql.to_json.html_safe %>,"figgy":<%= Global.figgy.to_json.html_safe %>}</script>
     <% unless controller.controller_name == "request" %>
+      <%= csrf_meta_tags %>
+      <%= vite_client_tag %>
       <%= vite_javascript_tag 'application' %>
     <% end %>
     <% unless controller.controller_name == "catalog" && controller.action_name == "show" && @document.alma_record? %>
