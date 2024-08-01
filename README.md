@@ -126,6 +126,21 @@ The browser will only display for system specs with `js: true`.
 * [erblint](https://github.com/Shopify/erb-lint)
 * `bundle exec erblint --lint-all`
 
+#### Run lighthouse from the command line
+
+```
+bundle exec rake servers:start # if you have not yet started the servers
+npm install -g @lhci/cli@0.14.x
+lhci autorun
+```
+
+You can safely ignore the message "GitHub token is not set" --
+this is for an integration that we don't currently use. 
+
+It will tell you if you've passed the assertion(s) specified
+in `lighthouserc.js`.  It will also give you a URL where you
+can see the complete lighthouse results.
+
 #### Running CodeQL locally
 
 If you get a CodeQL warning on your branch, you may wish to run
