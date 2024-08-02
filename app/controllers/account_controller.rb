@@ -19,7 +19,7 @@ class AccountController < ApplicationController
 
   def cancel_ill_requests
     set_patron
-    response = IlliadPatronClient.new(@patron).cancel_ill_requests(params[:cancel_requests]) unless params[:cancel_requests].nil?
+    response = Orangelight::IlliadPatronClient.new(@patron).cancel_ill_requests(params[:cancel_requests]) unless params[:cancel_requests].nil?
     illiad_patron_client(@patron)
     respond_to do |format|
       if params[:cancel_requests].nil?
@@ -73,10 +73,10 @@ class AccountController < ApplicationController
       @illiad_transactions = []
       return unless patron && current_user.cas_provider?
 
-      @illiad_account = IlliadAccount.new(patron)
+      @illiad_account = Orangelight::IlliadAccount.new(patron)
       return unless @illiad_account.verify_user
 
-      @illiad_transactions = IlliadPatronClient.new(patron).outstanding_ill_requests
+      @illiad_transactions = Orangelight::IlliadPatronClient.new(patron).outstanding_ill_requests
     end
 
     def cancel_ill_success(response)
