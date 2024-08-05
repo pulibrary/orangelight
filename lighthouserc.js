@@ -2,7 +2,7 @@ module.exports = {
   ci: {
     assert: {
       assertions: {
-        'largest-contentful-paint': ['error', { maxNumericValue: 20800 }],
+        'largest-contentful-paint': ['error', { maxNumericValue: 19000 }],
         'errors-in-console': ['error', { maxLength: 10 }],
       },
     },
