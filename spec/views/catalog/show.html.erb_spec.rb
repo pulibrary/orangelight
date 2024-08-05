@@ -200,4 +200,13 @@ RSpec.describe 'catalog/show' do
       expect(send_to_menu['role']).to be_nil
     end
   end
+  describe 'summary and content advice notes' do
+    it 'includes both summary notes and content advice when present' do
+      visit 'catalog/99126846939806421'
+      expect(page).to have_selector('.blacklight-summary_note_display')
+      expect(page).to have_content('Over the last several years, data has emerged indicating an alarming increase')
+      expect(page).to have_selector('.blacklight-content_advice_display')
+      expect(page).to have_content('Includes discussion of suicide')
+    end
+  end
 end
