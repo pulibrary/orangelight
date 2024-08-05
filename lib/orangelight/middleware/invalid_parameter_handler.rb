@@ -21,7 +21,7 @@ module Orangelight
 
         def bad_request_body(env)
           return 'Bad Request' unless request_content_type(env) == default_content_type
-          render_error_page
+          render_error_page(env)
         end
 
         def bad_request_headers(env)
@@ -111,9 +111,10 @@ module Orangelight
         end
 
         # Renders the standard Orangelight error page
-        def render_error_page
+        def render_error_page(env)
           # Create Warden proxy for devise integration
-          proxy = Warden::Proxy.new({}, Warden::Manager.new({}))
+          byebug
+          proxy = env['warden']
           renderer = ApplicationController.renderer.new('warden' => proxy)
           renderer.render('errors/error')
         end

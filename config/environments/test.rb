@@ -51,7 +51,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.middleware.use Orangelight::Middleware::InvalidParameterHandler
+  config.middleware.insert_before(Warden::Manager, Orangelight::Middleware::InvalidParameterHandler)
   
   config.assets.debug = true
 end
