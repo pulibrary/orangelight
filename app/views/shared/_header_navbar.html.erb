@@ -1,24 +1,13 @@
 <%= render partial: "shared/announcement" %>
-<header>
-  <div class="l-branding__pul">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="logo__pul col-12 col-sm-auto">
-          <a href="https://library.princeton.edu">
-             <%= image_tag("pul-logo-new.svg", alt: "Link to Princeton University Library home page") %>
-          </a>
-          <%=link_to t('blacklight.orangelight').html_safe, main_app.root_path, :class => "site-title" %>
-        </div>
-        <div class="pull-right menu--level-1 col-12 col-sm-auto ml-auto">
-          <ul>
-            <li><%= link_to 'Help', main_app.page_path('help') %></li>
-            <li><a href="/feedback">Feedback</a></li>
-            <%= render :partial=>'shared/account' %>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+<header class="lux">
+  <% if current_user.present? %>
+    <orangelight-header bookmarks="<%= current_or_guest_user.bookmarks.count %>"
+                        :logged-in="true"
+                        net-id="<%= current_user.to_s %>">
+    </orangelight-header>
+  <% else %>
+    <orangelight-header bookmarks="<%= current_or_guest_user.bookmarks.count %>" :logged-in="false"></orangelight-header>
+  <% end %>
 
   <%# Display the basic search bar on most (but not all) interfaces.
     # Note: if you remove the search bar from a particular

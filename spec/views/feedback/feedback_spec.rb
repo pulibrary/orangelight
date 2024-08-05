@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Feedback Form', type: :feature do
+describe 'Feedback Form', type: :feature, js: true do
   before do
     stub_libanswers_api
     stub_holding_locations
