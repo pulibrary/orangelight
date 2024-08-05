@@ -1,4 +1,3 @@
-<% online, physical = holding_request_block(document) %>
 <% unless holding_requests_adapter.restrictions.empty? %>
   <div class="restrictions--panel alert alert-warning">
     <%= PhysicalHoldingsMarkupBuilder.restrictions_markup(holding_requests_adapter.restrictions) %>
