@@ -13,9 +13,13 @@
 //= require jquery3
 //= require jquery_ujs
 //= require popper
-//= require bootstrap
 //
-//= require bootstrap/tab
+//= require bootstrap/util
+//= require bootstrap/alert
+//= require bootstrap/button
+//= require bootstrap/collapse
+//= require bootstrap/dropdown
+//= require bootstrap/modal
 //
 // Required by Blacklight
 //= require blacklight/blacklight
