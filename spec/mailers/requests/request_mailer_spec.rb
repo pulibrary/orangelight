@@ -20,6 +20,69 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
 
   before { stub_delivery_locations }
 
+  context "send interlibrary email request" do
+    let(:requestable) do
+      [
+        {
+          "selected" => "true",
+          "mfhd" => "22202822560006421",
+          "call_number" => "Oversize DT549 .E274q",
+          "location_code" => "recap$pa",
+          "item_id" => "23202822550006421",
+          "barcode" => "32101098722844",
+          "enum_display" => "2016",
+          "copy_number" => "1",
+          "status" => "Not Charged",
+          "type" => "recap",
+          "delivery_mode_7467161" => "print",
+          "pick_up" => "PA",
+          "edd_start_page" => "",
+          "edd_end_page" => "",
+          "edd_volume_number" => "",
+          "edd_issue" => "",
+          "edd_author" => "",
+          "edd_art_title" => "",
+          "edd_note" => ""
+        }.with_indifferent_access,
+        {
+          "selected" => "false"
+        }.with_indifferent_access
+      ]
+    end
+    let(:bib) do
+      {
+        "id" => "9999443553506421",
+        "title" => "L'écrivain, magazine litteraire trimestriel.",
+        "author" => "Association des écrivains du Sénégal"
+      }.with_indifferent_access
+    end
+    let(:params) do
+      {
+        request: user_info,
+        requestable:,
+        bib:
+      }
+    end
+
+    let(:submission_for_ill) do
+      Requests::Submission.new(params, user_info)
+    end
+
+    let(:mail) do
+      described_class.send("interlibrary_loan_confirmation", submission_for_ill).deliver_now
+    end
+
+    it "renders the headers" do
+      expect(mail.subject).to eq(I18n.t('requests.interlibrary_loan.email_subject'))
+      expect(mail.to).to eq([I18n.t('requests.interlibrary_loan.email')])
+      expect(mail.from).to eq([I18n.t('requests.interlibrary_loan.email_from')])
+    end
+
+    it "renders the body with html" do
+      expect(mail.body.encoded).to have_content 'please login'
+    end
+  end
+
   context "send preservation email request" do
     let(:requestable) do
       [
