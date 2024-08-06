@@ -5,7 +5,7 @@
     "@vitejs/plugin-vue": "^5.1.2",
     "graphql": "^16.8.1",
     "jest-environment-jsdom": "^29.4.0",
-    "lux-design-system": "^5.3.1",
+    "lux-design-system": "^5.3.2",
     "serialize-javascript": "^5.0.1",
     "unfetch": "^3.1.1",
     "vue": "^3.4.21"
