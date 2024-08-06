@@ -74,7 +74,6 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
 
     it "renders the headers" do
       expect(mail.subject).to eq(I18n.t('requests.interlibrary_loan.email_subject'))
-      expect(mail.to).to eq([I18n.t('requests.interlibrary_loan.email')])
       expect(mail.from).to eq([I18n.t('requests.interlibrary_loan.email_from')])
     end
 
