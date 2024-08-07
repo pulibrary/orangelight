@@ -258,3 +258,21 @@ bundle exec rake announcement:show
 bundle exec rake announcement:set\["My message in a string. Must escape quotes."\]
 ```
 1. To toggle announcements on and off, sign in and go to /features and toggle message display.
+
+## Git Hook
+
+Changes need to be made in 'simple-git-hooks':
+
+1. Make the change in [package.json](https://github.com/pulibrary/allsearch_frontend/blob/main/package.json)
+```
+"simple-git-hooks": {
+    "pre-commit": "yarn lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint"
+    ]
+  }
+  ```
+2. Run `yarn simple-git-hooks` to reconfigure the settings.
