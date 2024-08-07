@@ -56,3 +56,7 @@ orangelight-codeql
 codeql_results.csv
 
 .lighthouseci
+
+# Yalc
+.yalc/*
+yalc.lock
