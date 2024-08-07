@@ -5,7 +5,7 @@ require 'rails_helper'
 require './lib/orangelight/illiad_patron_client.rb'
 require './lib/orangelight/illiad_account.rb'
 
-RSpec.describe IlliadAccount do
+RSpec.describe Orangelight::IlliadAccount do
   context 'A valid Princeton User' do
     sample_patron = { 'barcode' => '2232323232323',
                       'last_name' => 'smith',
