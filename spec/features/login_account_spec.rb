@@ -9,15 +9,13 @@ describe 'Account login' do
     it "lists correct options when not logged in" do
       visit "/"
       click_button("Your Account")
-      within('li.show') do
+      within('ul.lux-show') do
         link = find_link("Library Account")
         expect(link[:href]).to include login_and_redirect_to_alma_url
         expect(link[:target]).to eq("_blank")
-        expect(link[:id]).to eq('unauthenticated-library-account-link')
-        expect(has_css?('i.fa-external-link', count: 1)).to eq true
         expect(page).not_to have_link("ILL & Digitization Requests", href: digitization_requests_path)
-        expect(page).to have_link("Bookmarks", href: bookmarks_path)
-        expect(page).to have_link("Search History", href: blacklight.search_history_path)
+        expect(page).to have_link("Bookmarks (0)", href: '/bookmarks/')
+        expect(page).to have_link("Search History", href: '/search_history/')
         expect(page).not_to have_link("Log Out")
       end
     end
@@ -26,15 +24,13 @@ describe 'Account login' do
       login_as user
       visit "/"
       click_button(user.username)
-      within('li.show') do
+      within('ul.lux-show') do
         link = find_link("Library Account")
         expect(link[:href]).to include login_and_redirect_to_alma_url
         expect(link[:target]).to eq("_blank")
-        expect(link[:id]).to be_empty
-        expect(has_css?('i.fa-external-link', count: 1)).to eq true
-        expect(page).to have_link("ILL & Digitization Requests", href: digitization_requests_path)
-        expect(page).to have_link("Bookmarks", href: bookmarks_path)
-        expect(page).to have_link("Search History", href: blacklight.search_history_path)
+        expect(page).to have_link("ILL & Digitization Requests", href: '/digitization_requests/')
+        expect(page).to have_link("Bookmarks (0)", href: '/bookmarks/')
+        expect(page).to have_link("Search History", href: '/search_history/')
         expect(page).to have_link("Log Out")
       end
     end
