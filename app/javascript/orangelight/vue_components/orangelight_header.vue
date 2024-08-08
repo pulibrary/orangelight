@@ -61,3 +61,9 @@ function handleMenuItemClicked(event) {
   }
 }
 </script>
+<style>
+.lux-wrapper {
+  width: 1200px;
+}
+
+</style>
