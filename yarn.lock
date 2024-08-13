@@ -3848,10 +3848,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-lux-design-system@^5.6.1:
-  version "5.6.1"
-  resolved "https://registry.yarnpkg.com/lux-design-system/-/lux-design-system-5.6.1.tgz#d02ef8e9062a90db4d77342146115282ff47d2ec"
-  integrity sha512-XdvGk8PurP0hLZ8hqj6e+DSUX7yRX/mjy7ekoCAsOniYtrFxpBg5USvAGPEw+jvaPlpmkkrJ4Mnq1aKI15HxuQ==
+lux-design-system@^5.6.2:
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/lux-design-system/-/lux-design-system-5.6.2.tgz#7eae53ecb65b36fca6389eb639143310ad2e191f"
+  integrity sha512-jLV/TgiD0mkXympC0SW81okZ/GuSqyFbsO6PofRRKhJyIjEvykZz8z5pX3pHaAJQcf8/MiRW3h5bcCKXODqvQg==
   dependencies:
     core-js "^3.8.3"
     register-service-worker "^1.7.2"
