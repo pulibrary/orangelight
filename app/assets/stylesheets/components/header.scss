@@ -1,0 +1,8 @@
+/* The container that the lux header will be in.
+   It is the same background color and height as
+   the lux header, so that when the lux header loads,
+   there is no layout shift or sudden color change. */
+.pul_header {
+    background-color: var(--color-gray-100);
+    height: calc(2rem + 54px);
+}

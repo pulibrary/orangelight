@@ -1,10 +1,8 @@
 <template>
-  <div class="pul_header">
-    <div class="container">
-      <lux-library-header app-name="Catalog" abbr-name="Catalog" app-url="/" theme="dark">
-        <lux-menu-bar type="main-menu" :menu-items="menuItems" @menu-item-clicked="handleMenuItemClicked"></lux-menu-bar>
-      </lux-library-header>
-    </div>
+  <div class="container">
+    <lux-library-header app-name="Catalog" abbr-name="Catalog" app-url="/" theme="dark">
+      <lux-menu-bar type="main-menu" :menu-items="menuItems" @menu-item-clicked="handleMenuItemClicked"></lux-menu-bar>
+    </lux-library-header>
   </div>
 </template>
 
@@ -65,8 +63,3 @@ function handleMenuItemClicked(event) {
   }
 }
 </script>
-<style>
-  .pul_header {
-    background-color: var(--color-gray-100);
-  }
-</style>
