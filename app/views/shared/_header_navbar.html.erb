@@ -1,13 +1,15 @@
 <%= render partial: "shared/announcement" %>
 <header class="lux">
-  <% if current_user.present? %>
-    <orangelight-header bookmarks="<%= current_or_guest_user.bookmarks.count %>"
-                        :logged-in="true"
-                        net-id="<%= current_user.to_s %>">
-    </orangelight-header>
-  <% else %>
-    <orangelight-header bookmarks="<%= current_or_guest_user.bookmarks.count %>" :logged-in="false"></orangelight-header>
-  <% end %>
+  <div class="pul_header">
+    <% if current_user.present? %>
+      <orangelight-header bookmarks="<%= current_or_guest_user.bookmarks.count %>"
+                          :logged-in="true"
+                          net-id="<%= current_user.to_s %>">
+      </orangelight-header>
+    <% else %>
+      <orangelight-header bookmarks="<%= current_or_guest_user.bookmarks.count %>" :logged-in="false"></orangelight-header>
+    <% end %>
+  </div>
 
   <%# Display the basic search bar on most (but not all) interfaces.
     # Note: if you remove the search bar from a particular
