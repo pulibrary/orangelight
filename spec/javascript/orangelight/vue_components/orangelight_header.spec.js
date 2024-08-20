@@ -85,7 +85,9 @@ describe('OrangelightHeader', () => {
       );
       expect(accountLink.text()).toEqual('Library Account');
 
-      const digitizationLink = wrapper.get('a[href="/digitization_requests/"]');
+      const digitizationLink = wrapper.get(
+        'a[href="/account/digitization_requests/"]'
+      );
       expect(digitizationLink.text()).toEqual('ILL & Digitization Requests');
 
       const bookmarksLink = wrapper.get('a[href="/bookmarks/"]');
