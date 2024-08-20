@@ -27,7 +27,7 @@ const accountChildren = computed(() => {
     return [
             {name: 'Library Account', component: 'Alma', href: '/users/sign_in?origin=%2Fredirect-to-alma', target: '_blank'},
             {name: 'Bookmarks', unsafe_name: bookmarksHtml.value, component: 'Bookmarks', href: '/bookmarks/'},
-            {name: "ILL & Digitization Requests", component: 'ILL', href: '/digitization_requests/'},
+            {name: "ILL & Digitization Requests", component: 'ILL', href: '/account/digitization_requests/'},
             {name: 'Search History', component: 'History', href: '/search_history/'},
             {name: 'Log Out', component: 'LogOut', href: '/sign_out/'},
           ];
