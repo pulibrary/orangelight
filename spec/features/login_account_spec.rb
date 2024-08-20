@@ -28,7 +28,7 @@ describe 'Account login' do
         link = find_link("Library Account")
         expect(link[:href]).to include login_and_redirect_to_alma_url
         expect(link[:target]).to eq("_blank")
-        expect(page).to have_link("ILL & Digitization Requests", href: '/digitization_requests/')
+        expect(page).to have_link("ILL & Digitization Requests", href: '/account/digitization_requests/')
         expect(page).to have_link("Bookmarks (0)", href: '/bookmarks/')
         expect(page).to have_link("Search History", href: '/search_history/')
         expect(page).to have_link("Log Out")
