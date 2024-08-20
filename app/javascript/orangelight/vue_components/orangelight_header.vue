@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container header-container">
     <lux-library-header app-name="Catalog" abbr-name="Catalog" app-url="/" theme="dark">
       <lux-menu-bar type="main-menu" :menu-items="menuItems" @menu-item-clicked="handleMenuItemClicked"></lux-menu-bar>
     </lux-library-header>
@@ -63,3 +63,13 @@ function handleMenuItemClicked(event) {
   }
 }
 </script>
+<style>
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.header-container {
+  animation: fadeIn 0.3s;
+}
+</style>
