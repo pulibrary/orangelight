@@ -186,6 +186,13 @@ jobs:
       - run:
           name: finish up coverage
           command: curl -k https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN -d "payload[build_num]=$CIRCLE_WORKFLOW_ID&payload[status]=done"
+  
+  deploy:
+    executor: basic-executor
+    steps:
+      - run:
+          name: Deploy to Staging
+          command: "curl -k \"https://ansible-tower.princeton.edu/api/v2/job_templates/13/launch/\" --header \"Content-Type: application/json\" --header \"Authorization: Bearer $TOWER_TOKEN\" -d '{\"credential_passwords\":{},\"extra_vars\":{\"repo_name\":\"orangelight\",\"branch_name\":\"main\",\"runtime_env\":\"staging\",\"slack_alerts_channel\":\"ansible-alerts\"}}'"
 
 workflows:
   build_accept:
@@ -209,3 +216,11 @@ workflows:
       - finish:
          requires:
            - test
+      - deploy:
+         requires:
+           - finish
+         filters:
+           branches:
+             only:
+               - main
+
