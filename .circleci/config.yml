@@ -2,8 +2,8 @@
 version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@1.4.8
-  ruby: circleci/ruby@2.0.0
-  node: circleci/node@5.0.2
+  ruby: circleci/ruby@2.1.4
+  node: circleci/node@5.3.0
 executors:
   orangelight-executor:
     docker:
@@ -14,7 +14,7 @@ executors:
           ORANGELIGHT_USER: postgres
           SOLR_URL: http://solr:SolrRocks@localhost:8983/solr/orangelight-core-test
           COVERALLS_PARALLEL: true
-      - image: cimg/postgres:13.6
+      - image: cimg/postgres:15.8
         environment:
           POSTGRES_USER: orangelight
           POSTGRES_PASSWORD: orangelight_password
@@ -82,7 +82,8 @@ jobs:
             - ~/.cache/yarn
       - persist_to_workspace:
           root: '~/orangelight'
-          paths: '*'
+          paths: 
+            - '*'
 
   test:
     executor: orangelight-executor
@@ -91,7 +92,8 @@ jobs:
       - attach_workspace:
           at: '~/orangelight'
       - setup-bundler-and-node
-      - browser-tools/install-browser-tools
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - checkout
       - run: |
           ruby --version
@@ -207,4 +209,3 @@ workflows:
       - finish:
          requires:
            - test
-

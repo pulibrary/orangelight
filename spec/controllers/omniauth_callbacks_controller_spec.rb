@@ -14,6 +14,7 @@ RSpec.describe Users::OmniauthCallbacksController do
       allow(User).to receive(:from_cas) { FactoryBot.create(:valid_princeton_patron) }
       get :cas
       expect(response).to redirect_to(account_path)
+      expect(flash[:notice]).to eq('Successfully authenticated from Princeton Central Authentication Service. Please log out to protect your privacy when using a shared computer.')
     end
     context 'valid alma user' do
       let(:user) { FactoryBot.create(:alma_patron) }
@@ -29,6 +30,7 @@ RSpec.describe Users::OmniauthCallbacksController do
         get :alma, params: { username: user.username, password: 'whatever' }
 
         expect(WebMock).to have_requested(:post, expected_url)
+        expect(flash[:notice]).to eq("Successfully authenticated with alma account. Please log out to protect your privacy when using a shared computer.")
         expect(response).to redirect_to(account_path)
       end
       context "with added spaces in the middle of the username from form" do
