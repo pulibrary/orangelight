@@ -17,6 +17,11 @@ describe 'advanced searching', advanced_search: true do
     expect(page).to have_selector '.icon-refresh[aria-hidden="true"]'
   end
 
+  it 'has the expected facets' do
+    visit '/advanced'
+    expect(page.find_all('.advanced-facet-label').map(&:text)).to match_array(["Access", "Format", "Language", "Holding location", "Publication year"])
+  end
+
   it 'provides labels to form elements' do
     visit '/advanced'
     expect(page).to have_selector('label', exact_text: 'Options for advanced search')
@@ -87,6 +92,12 @@ describe 'advanced searching', advanced_search: true do
       allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
       allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
       visit '/advanced'
+    end
+
+    it 'has the expected facets' do
+      visit '/advanced'
+      expect(page.find_all('.advanced-facet-label').map(&:text)).to include('Language')
+      expect(page.find_all('.advanced-facet-label').map(&:text)).to match_array(["Access", "Format", "Language", "Holding location", "Publication year"])
     end
 
     it 'renders an accessible button for starting over the search' do
