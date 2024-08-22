@@ -102,7 +102,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   # @return [Boolean]
   def search_parameters?
     !blacklight_params[:q].nil? || blacklight_params[:f].present? ||
-      blacklight_params[:search_field] == 'advanced'
+      blacklight_params[:search_field] == 'advanced' || search_state.controller.params[:action] == 'advanced_search'
   end
 
   def conditionally_configure_json_query_dsl(_solr_parameters)
