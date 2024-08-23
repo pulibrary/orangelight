@@ -493,7 +493,7 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
         expect(confirm_email.subject).to eq("Architecture Library Pick-up Request")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("Your request to pick this item up has been received")
+        expect(confirm_email.html_part.body.to_s).to have_content("Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up. Please note that if you need this item quickly, you can retrieve the book from the stacks and bring it to circulation to check out.")
         expect(confirm_email.html_part.body.to_s).to have_content("Abdelhalim Ibrahim Abdelhalim : an architecture of collective memory")
       end
 
@@ -517,7 +517,7 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
         expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("Your request to pick this item up has been received")
+        expect(confirm_email.html_part.body.to_s).to have_content("Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up.")
         expect(confirm_email.html_part.body.to_s).to have_content("Chernobyl : a 5-part miniseries")
       end
 
@@ -669,7 +669,7 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
         expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("Your request to pick this item up has been received. We will process the requests as soon as possible")
+        expect(confirm_email.html_part.body.to_s).to have_content("Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up.")
         expect(confirm_email.html_part.body.to_s).to have_content("Mir, uvidennyĭ s gor : ocherk tvorchestva Shukurbeka Beĭshenalieva")
         expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
       end
@@ -689,7 +689,7 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
         expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("You will be notified via email when your item is available.")
+        expect(confirm_email.html_part.body.to_s).to have_content("you will receive an email when the book is available for consultation")
         expect(confirm_email.html_part.body.to_s).not_to have_content("Pick-up By")
         expect(confirm_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
         marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
@@ -840,7 +840,7 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
         expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("2-4 business days")
+        expect(confirm_email.html_part.body.to_s).to have_content("Once we complete our processing, you'll receive an email")
         expect(confirm_email.html_part.body.to_s).to have_content("Alesso Baldovinetti und die Florentiner Malerei der Frührenaissance")
       end
 
