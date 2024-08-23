@@ -90,7 +90,7 @@ en:
       email_subject: "On the Shelf Paging Request"
       email_subject_patron: "Pick-up Request"
       brief_msg: "Requests for pick-up typically take 2 business days to process."
-      email_conf_msg: "Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up.\n\nPlease note that if you need this item quickly, you can retrieve the book from the stacks and bring it to circulation to check out."
+      email_conf_msg: "Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up. Please note that if you need this item quickly, you can retrieve the book from the stacks and bring it to circulation to check out."
       access_msg: 'Access Users must obtain a pass to enter the Library.'
     on_order:
       email: "fstcirc@princeton.edu"
@@ -108,7 +108,7 @@ en:
       success: "Request submitted. Please visit Firsestone Circulation at the next scheduled paging delivery time."
       # temporary changes issue 438
       #email_conf_msg: "Items requested anytime before 3:00pm (weekdays) will be available for you to pick up at Circulation no later than 5:00pm the same day (and often much sooner)."
-      email_conf_msg: "Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up.\n\nPlease note that if you need this item quickly, you can retrieve the book from the stacks and bring it to circulation to check out."
+      email_conf_msg: "Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up. Please note that if you need this item quickly, you can retrieve the book from the stacks and bring it to circulation to check out."
     recap_guest:
       email_subject: "Patron Initiated Catalog Request - ReCAP Access Only Request"
       brief_msg: "Item off-site at ReCAP facility."
