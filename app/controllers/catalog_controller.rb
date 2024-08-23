@@ -36,6 +36,7 @@ class CatalogController < ApplicationController
     config.json_solr_path = 'advanced'
 
     # default advanced config values
+    # TODO: remove for advanced search gem deprecation
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
@@ -46,6 +47,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]['facet.pivot'] ||= ''
     config.advanced_search[:form_solr_parameters]['f.language_facet.facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['f.language_facet.facet.sort'] ||= 'index'
+    # end remove for advanced search gem deprecation
 
     config.numismatics_search ||= Blacklight::OpenStructWithHashAccess.new
     config.numismatics_search[:facet_fields] ||= %w[issue_metal_s issue_city_s issue_state_s issue_region_s issue_denomination_s
@@ -109,11 +111,11 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'access_facet', label: 'Access', sort: 'index', collapse: false, home: true
+    config.add_facet_field 'access_facet', label: 'Access', sort: 'index', collapse: false, home: true, include_in_advanced_search: true
     config.add_facet_field 'location', label: 'Library', limit: 20, sort: 'index',
-                                       home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }
+                                       home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }, include_in_advanced_search: false
     config.add_facet_field 'format', label: 'Format', partial: 'facet_format', sort: 'index', limit: 15,
-                                     collapse: false, home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }
+                                     collapse: false, home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }, include_in_advanced_search: true
 
     # num_segments and segments set to defaults here, included to show customizable features
     config.add_facet_field 'pub_date_start_sort', label: 'Publication year', single: true, range: {
@@ -121,10 +123,10 @@ class CatalogController < ApplicationController
       assumed_boundaries: [1100, Time.now.year + 1],
       segments: true
     }
-    config.add_facet_field 'language_facet', label: 'Language', limit: true
-    config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true
-    config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true
-    config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true
+    config.add_facet_field 'language_facet', label: 'Language', limit: true, include_in_advanced_search: true
+    config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true, include_in_advanced_search: false
+    config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true, include_in_advanced_search: false
+    config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true, include_in_advanced_search: false
     config.add_facet_field 'recently_added_facet', label: 'Recently added', home: true, query: {
       weeks_1: { label: 'Within 1 week', fq: 'cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]' },
       weeks_2: { label: 'Within 2 weeks', fq: 'cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]' },
@@ -133,15 +135,15 @@ class CatalogController < ApplicationController
       months_2: { label: 'Within 2 months', fq: 'cataloged_tdt:[NOW/DAY-2MONTHS TO NOW/DAY+1DAY]' },
       months_3: { label: 'Within 3 months', fq: 'cataloged_tdt:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]' },
       months_6: { label: 'Within 6 months', fq: 'cataloged_tdt:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]' }
-    }
+    }, include_in_advanced_search: false
 
-    config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true
-    config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true
+    config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true, include_in_advanced_search: false
+    config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true, include_in_advanced_search: false
     config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet], collapsing: true, icons: {
       hide: '<i class="icon toggle"></i>'.html_safe,
       show: '<i class="icon toggle collapsed"></i>'.html_safe
-    }
-    config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index'
+    }, include_in_advanced_search: false
+    config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index', include_in_advanced_search: false
 
     # The following facet configurations are purely for display purposes. They
     # will not show up in the facet bar, but without them the labels and other
@@ -156,10 +158,10 @@ class CatalogController < ApplicationController
     config.add_facet_field 'call_number_scheme_facet', label: 'Call number scheme', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'call_number_group_facet', label: 'Call number group', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'call_number_full_facet', label: 'Full call number', limit: 25, include_in_request: false, sort: 'index'
-    config.add_facet_field 'advanced_location_s', label: 'Holding location', include_in_request: false,
-                                                  helper_method: :render_location_code
+    config.add_facet_field 'advanced_location_s', label: 'Holding location', include_in_request: true, show: false,
+                                                  helper_method: :render_location_code, include_in_advanced_search: true, sort: 'alpha'
     config.add_facet_field 'name_title_browse_s', label: 'Author-title heading', include_in_request: false
-    config.add_facet_field 'subject_facet', show: false
+    config.add_facet_field 'subject_facet', show: false, include_in_advanced_search: false
 
     # Numismatics facets
     config.add_facet_field 'numismatic_collection_s', label: 'Numismatic Collection', include_in_request: false

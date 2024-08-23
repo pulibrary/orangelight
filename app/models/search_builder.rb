@@ -76,7 +76,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def only_home_facets(solr_parameters)
-    return if search_parameters?
+    return if search_parameters? || advanced_search?
     solr_parameters['facet.field'] = blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
     solr_parameters['facet.pivot'] = []
   end
@@ -93,16 +93,22 @@ class SearchBuilder < Blacklight::SearchBuilder
   def excessive_paging?
     page = blacklight_params[:page].to_i || 0
     return false if page <= 1
-    return false if search_parameters? && page < 1000
+    return false if (search_parameters? || advanced_search?) && page < 1000
     true
+  end
+
+  ##
+  # Check if we are on an advanced search page
+  # @return [Boolean]
+  def advanced_search?
+    blacklight_params[:search_field] == 'advanced' || search_state.controller.try(:params).try(:[], :action) == 'advanced_search' || blacklight_params[:action] == 'numismatics'
   end
 
   ##
   # Check if any search parameters have been set
   # @return [Boolean]
   def search_parameters?
-    !blacklight_params[:q].nil? || blacklight_params[:f].present? ||
-      blacklight_params[:search_field] == 'advanced'
+    !blacklight_params[:q].nil? || blacklight_params[:f].present?
   end
 
   def conditionally_configure_json_query_dsl(_solr_parameters)
