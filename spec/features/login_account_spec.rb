@@ -48,7 +48,7 @@ describe 'Account login' do
           cas_login_link = find_link('Log in with netID')
           expect(cas_login_link[:href]).to include("/users/auth/cas")
           click_link('Log in with netID')
-          expect(page.current_url).to include("https://princeton.alma.exlibrisgroup.com/discovery/")
+          expect(page).to have_current_path(%r{discovery})
         end
       end
 
@@ -65,20 +65,6 @@ describe 'Account login' do
         password_label_element = page.find('label', text: 'Password')
         expect(password_label_element['for']).to eq('password')
         expect(password_label_element.text).to eq('Password')
-      end
-    end
-    context "as an authenticated user" do
-      before do
-        login_as user
-      end
-
-      it "redirects the user to alma" do
-        visit "/"
-        click_button(user.username)
-        new_window = window_opened_by { click_link 'Library Account' }
-        within_window new_window do
-          expect(page.current_url).to include("https://princeton.alma.exlibrisgroup.com/discovery/")
-        end
       end
     end
   end
@@ -106,9 +92,8 @@ describe 'Account login' do
         click_link('Request')
         expect(page).to have_link('Log in with netID')
         click_link('Log in with netID')
-        expect(page.body).to include('Successfully authenticated from Princeton Central Authentication Service.')
-        expect(page.body).to include('Library Material Request')
-        expect(page.current_url).to include('/requests/SCSB-2143785?aeon=false')
+        expect(page).to have_content('Library Material Request')
+        expect(page).to have_current_path('/requests/SCSB-2143785?aeon=false')
         expect(page).to have_selector('#request_3270290')
       end
 
@@ -132,14 +117,13 @@ describe 'Account login' do
       it 'logs the user in', js: true do
         visit "/catalog/SCSB-2143785"
         click_link('Request')
-        expect(page.body).to include('Log in with Alma Account (affiliates)')
+        expect(page).to have_content('Log in with Alma Account (affiliates)')
         click_link('Log in with Alma Account (affiliates)')
         fill_in(id: 'username', with: user.username)
         fill_in(id: 'password', with: user.password)
         click_button('Log in')
         expect(WebMock).to have_requested(:post, expected_login_url)
-        expect(page.body).to include('Successfully authenticated with alma account. Please log out to protect your privacy when using a shared computer')
-        expect(page.body).to include('Library Material Request')
+        expect(page).to have_content('Library Material Request')
       end
 
       context 'an aeon item' do

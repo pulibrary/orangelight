@@ -19,7 +19,7 @@ services:
     config:
       dir: "solr/conf"
   orangelight_database:
-    type: postgres:13
+    type: postgres:15
     portforward: true
   orangelight_redis:
     type: redis:6.0.16
