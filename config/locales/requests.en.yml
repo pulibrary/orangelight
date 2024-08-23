@@ -90,7 +90,7 @@ en:
       email_subject: "On the Shelf Paging Request"
       email_subject_patron: "Pick-up Request"
       brief_msg: "Requests for pick-up typically take 2 business days to process."
-      email_conf_msg: "Your request to pick this item up has been received. We will process the requests as soon as possible, but given the demand and the current circumstances some delay may occur. You will receive an email when the book is available for pick-up."
+      email_conf_msg: "Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up.\n\nPlease note that if you need this item quickly, you can retrieve the book from the stacks and bring it to circulation to check out."
       access_msg: 'Access Users must obtain a pass to enter the Library.'
     on_order:
       email: "fstcirc@princeton.edu"
@@ -231,7 +231,7 @@ en:
       email_subject: "Patron Initiated Catalog Request In Library"
       email_destination: 'marquandoffsite@princeton.edu'
       confirmation_subject: "Patron Initiated Catalog Request In Library Confirmation"
-      email_conf_msg: "Your request for this item has been received. Once we complete our processing. You will receive an email when the book is available for consultation in either the West Atrium Reading Room or Scribner Reading Room on C Floor in Firestone Library."
+      email_conf_msg: "Your request for this item has been received. Once we complete our processing, you will receive an email when the book is available for consultation in either the West Atrium Reading Room or Scribner Reading Room on C Floor in Firestone Library."
     marquand:
       in_library_use_msg_html: To view your item, please follow the instructions in the email notifying you the item is available.
     marquand_in_process:
