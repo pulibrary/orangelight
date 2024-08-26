@@ -7,13 +7,6 @@ GIT
       blacklight (~> 7.0)
       rails
 
-GIT
-  remote: https://github.com/pulibrary/stringex.git
-  revision: 357f70511532a35b11a240e5ae06d02725cb8d0a
-  tag: vpton.2.5.2.2
-  specs:
-    stringex (2.5.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -733,7 +726,6 @@ DEPENDENCIES
   sprockets-es6
   stackprof
   string_rtl
-  stringex!
   terser
   timecop
   vcr
