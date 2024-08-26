@@ -465,7 +465,7 @@ GEM
       railties (>= 5.2)
     reverse_markdown (2.1.1)
       nokogiri
-    rexml (3.3.3)
+    rexml (3.3.6)
       strscan
     rsolr (2.5.0)
       builder (>= 2.1.2)
