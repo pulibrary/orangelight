@@ -16,7 +16,7 @@
     # screen, also remove the "Skip to Search" link from the
     # skip navigation links, so that there aren't broken
     # skip navigation links. %>
-  <% unless (%w[generate numismatics].include? params[:action]) || (%w[advanced].include? params[:controller]) then %>
+  <% unless (%w[generate numismatics advanced_search].include? params[:action]) || (%w[advanced].include? params[:controller]) then %>
     <div class="header__secondary">
       <nav class="container" aria-label='Search'>
         <div class="row">
