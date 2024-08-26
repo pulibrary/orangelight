@@ -108,6 +108,7 @@ GEM
     bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.0)
     benchmark (0.2.1)
+    benchmark-ips (2.13.0)
     better_html (2.0.2)
       actionview (>= 6.0)
       activesupport (>= 6.0)
@@ -199,9 +200,22 @@ GEM
       libdatadog (~> 3.0.0.1.0)
       libddwaf (~> 1.9.0.0.0)
       msgpack
+    dead_end (4.0.0)
     debase-ruby_core_source (3.2.1)
     deprecation (1.1.0)
       activesupport
+    derailed_benchmarks (2.1.2)
+      benchmark-ips (~> 2)
+      dead_end
+      get_process_mem (~> 0)
+      heapy (~> 0)
+      memory_profiler (>= 0, < 2)
+      mini_histogram (>= 0.3.0)
+      rack (>= 1)
+      rack-test
+      rake (> 10, < 14)
+      ruby-statistics (>= 2.1)
+      thor (>= 0.19, < 2)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.9.4)
@@ -258,6 +272,8 @@ GEM
       terminal-table (>= 1.8)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
+    get_process_mem (0.2.7)
+      ffi (~> 1.0)
     global (2.1.0)
       activesupport (>= 2.0)
     globalid (1.2.1)
@@ -266,6 +282,8 @@ GEM
     hashie (5.0.0)
     health-monitor-rails (12.2.0)
       railties (>= 6.1)
+    heapy (0.2.0)
+      thor
     high_voltage (3.1.2)
     honeybadger (5.3.0)
     http (5.1.1)
@@ -346,6 +364,7 @@ GEM
     matrix (0.4.2)
     memory_profiler (1.0.1)
     method_source (1.1.0)
+    mini_histogram (0.3.1)
     mini_mime (1.1.5)
     mini_portile2 (2.8.7)
     minitest (5.25.1)
@@ -510,6 +529,7 @@ GEM
     rubocop-rspec (2.11.1)
       rubocop (~> 1.19)
     ruby-progressbar (1.13.0)
+    ruby-statistics (4.0.1)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
@@ -680,6 +700,7 @@ DEPENDENCIES
   capybara
   coveralls_reborn
   ddtrace (~> 1.14.0)
+  derailed_benchmarks
   devise (>= 4.6.0)
   devise-guests (~> 0.5)
   ed25519

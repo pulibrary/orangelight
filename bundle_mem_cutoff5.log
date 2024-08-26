@@ -1,0 +1,13 @@
+TOP: 123.6211 MiB
+  rails/all: 62.3203 MiB
+    action_mailbox/engine: 34.0977 MiB
+      action_mailbox: 34.0586 MiB
+        action_mailbox/mail_ext: 34.0508 MiB
+          action_mailbox/mail_ext/address_equality.rb: 30.0977 MiB
+            mail/elements/address: 30.0977 MiB
+              mail/parsers/address_lists_parser: 30.0391 MiB
+    rails: 14.7109 MiB (Also required by: active_record/railtie, active_model/railtie, and 17 others)
+      rails/application: 7.5234 MiB
+  ddtrace: 13.5117 MiB
+    /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib: 8.6094 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/ci)
+  blacklight: 5.6289 MiB (Also required by: blacklight_advanced_search/engine, blacklight_dynamic_sitemap, and 3 others)

@@ -1,0 +1,262 @@
+TOP: 118.1484 MiB
+  rails/all: 60.2969 MiB
+    action_mailbox/engine: 32.9102 MiB
+      action_mailbox: 32.8867 MiB
+        action_mailbox/mail_ext: 32.8789 MiB
+          action_mailbox/mail_ext/address_equality.rb: 28.4258 MiB
+            mail/elements/address: 28.418 MiB
+              mail/parsers/address_lists_parser: 28.3555 MiB
+          action_mailbox/mail_with_error_handling: 4.4375 MiB
+            mail: 4.4258 MiB
+              mail/field: 1.832 MiB
+                mail/fields/date_field: 0.7773 MiB
+                  mail/fields/common_date_field: 0.7617 MiB (Also required by: mail/fields/resent_date_field)
+                    mail/elements/date_time_element: 0.7305 MiB
+                      mail/parsers/date_time_parser: 0.7227 MiB
+              net/smtp: 0.457 MiB
+              mail/message: 0.4141 MiB
+              mail/multibyte: 0.3242 MiB
+    rails: 14.7344 MiB (Also required by: active_record/railtie, active_model/railtie, and 17 others)
+      rails/application: 7.7148 MiB
+        active_support/key_generator: 4.332 MiB (Also required by: action_dispatch/middleware/cookies)
+          openssl: 4.3203 MiB (Also required by: active_support/message_encryptor, net/smtp, and 11 others)
+            /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/3.1.0/openssl/ssl: 2.1328 MiB
+              ipaddr: 0.7148 MiB (Also required by: active_support/core_ext/object/json, rails/application/configuration, and 4 others)
+                socket: 0.4961 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/3.1.0/openssl/ssl, net/protocol, and 14 others)
+            openssl.so: 1.5938 MiB
+        yaml: 1.5039 MiB (Also required by: active_support/encrypted_configuration, rails/secrets, and 9 others)
+          psych: 1.4766 MiB
+            /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/3.1.0/psych/visitors: 0.5898 MiB
+              /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/3.1.0/psych/visitors/yaml_tree: 0.3086 MiB
+            /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/3.1.0/psych/nodes: 0.3516 MiB
+        active_support/encrypted_configuration: 0.6289 MiB
+          active_support/encrypted_file: 0.6016 MiB
+            tempfile: 0.5508 MiB (Also required by: rails/secrets, rack/utils, and 2 others)
+              tmpdir: 0.4805 MiB (Also required by: execjs/external_runtime)
+                fileutils: 0.4336 MiB (Also required by: rack/utils, /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/rack-test-2.1.0/lib/rack/test/uploaded_file, and 9 others)
+        active_support/hash_with_indifferent_access: 0.4648 MiB (Also required by: active_support/core_ext/hash/indifferent_access)
+          active_support/core_ext/hash/reverse_merge: 0.3789 MiB (Also required by: active_support/core_ext/hash/conversions, /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/activesupport-6.1.7.8/lib/active_support/core_ext/hash.rb)
+        rails/engine: 0.4297 MiB
+      active_support: 3.7891 MiB (Also required by: active_support/railtie, active_support/i18n_railtie, and 16 others)
+        active_support/logger: 3.0391 MiB
+          active_support/logger_silence: 3.0117 MiB
+            active_support/logger_thread_safe_level: 3.0039 MiB (Also required by: active_support/logger)
+              concurrent: 2.9609 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/tzinfo-2.0.6/lib/tzinfo/string_deduper, /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/tzinfo-2.0.6/lib/tzinfo/data_source)
+                concurrent/promises: 0.6836 MiB
+                concurrent/configuration: 0.5117 MiB (Also required by: concurrent/scheduled_task, concurrent/options, and 3 others)
+                  concurrent/delay: 0.3242 MiB (Also required by: concurrent/utility/processor_counter, concurrent)
+        active_support/dependencies/autoload: 0.6367 MiB (Also required by: view_component)
+          active_support/inflector/methods: 0.6328 MiB (Also required by: active_support/inflector, active_support/core_ext/string/inflections, and 4 others)
+            active_support/inflections: 0.6016 MiB (Also required by: active_support/inflector)
+              active_support/inflector/inflections: 0.5273 MiB (Also required by: active_support/inflector)
+                active_support/i18n: 0.4414 MiB (Also required by: active_support/inflector/transliterate, abstract_controller)
+                  i18n: 0.3281 MiB (Also required by: view_component/translatable)
+      active_support/railtie: 2.457 MiB
+        active_support/i18n_railtie: 2.4141 MiB
+          rails/railtie/configuration: 2.375 MiB (Also required by: rails/engine/configuration)
+            rails/configuration: 2.3555 MiB
+              active_support/core_ext/object: 2.2773 MiB
+                active_support/core_ext/object/conversions: 1.3477 MiB
+                  active_support/core_ext/array/conversions: 1.3086 MiB (Also required by: active_model/errors, active_support/duration, and 2 others)
+                    active_support/xml_mini: 1.293 MiB (Also required by: active_support/core_ext/hash/conversions)
+                active_support/core_ext/object/json: 0.9063 MiB (Also required by: active_support/json/encoding)
+                  active_support/core_ext/time/conversions: 0.4336 MiB (Also required by: active_support/core_ext/date_time/conversions, active_support/core_ext/time/calculations)
+                    active_support/values/time_zone: 0.4297 MiB (Also required by: active_support/core_ext/date_time/conversions, active_support/time_with_zone)
+                      tzinfo: 0.3789 MiB
+      action_dispatch/railtie: 0.4023 MiB (Also required by: action_controller/railtie)
+        action_dispatch: 0.375 MiB (Also required by: action_controller, active_storage/service)
+    active_storage/engine: 5.2227 MiB (Also required by: action_mailbox/engine, action_text/engine)
+      action_dispatch/routing/route_set: 2.8438 MiB
+        action_dispatch/journey: 1.332 MiB
+          action_dispatch/journey/router: 1.1758 MiB
+            action_dispatch/journey/routes: 0.4375 MiB
+            action_dispatch/journey/parser: 0.3516 MiB
+        action_dispatch/http/request: 1.1406 MiB (Also required by: action_dispatch/routing/redirection)
+          action_dispatch/http/mime_negotiation: 0.3047 MiB
+      active_storage: 1.5352 MiB
+        marcel: 1.4883 MiB
+          marcel/magic: 1.4609 MiB
+            marcel/tables: 1.4141 MiB
+      active_storage/reflection: 0.3281 MiB
+        active_record/reflection: 0.3125 MiB
+    sprockets/railtie: 2.9531 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/autoprefixer-rails-10.4.15.0/lib/autoprefixer-rails/railtie, /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/sassc-rails-2.1.2/lib/sassc/rails/railtie)
+      sprockets: 1.6992 MiB (Also required by: sprockets/rails/context, sprockets/rails/helper, and 2 others)
+        sprockets/environment: 0.7305 MiB
+          sprockets/base: 0.6836 MiB (Also required by: sprockets/cached_environment)
+            sprockets/configuration: 0.4219 MiB (Also required by: sprockets)
+      sprockets/rails/context: 1.082 MiB
+        action_view/helpers: 1.0781 MiB (Also required by: action_view/base)
+          action_view/helpers/form_helper: 0.6602 MiB (Also required by: action_view/helpers/form_options_helper)
+            action_view/helpers/form_tag_helper: 0.4883 MiB
+              action_view/helpers/text_helper: 0.4414 MiB
+                action_view/helpers/sanitize_helper: 0.3828 MiB
+                  rails-html-sanitizer: 0.375 MiB
+    active_record/railtie: 2.4141 MiB (Also required by: active_storage/engine, action_mailbox/engine)
+      active_record: 1.5117 MiB (Also required by: active_storage, orm_adapter/adapters/active_record)
+        arel: 1.2305 MiB
+          arel/nodes: 0.6016 MiB
+          arel/visitors: 0.332 MiB
+      action_controller/railtie: 0.8203 MiB (Also required by: active_storage/engine, rails/all, and 3 others)
+        action_controller: 0.6836 MiB (Also required by: responders, omniauth/rails_csrf_protection/token_verifier)
+          action_controller/metal/strong_parameters: 0.6719 MiB
+            rack/test: 0.5117 MiB
+    action_text/engine: 1.4414 MiB
+      action_text: 1.4219 MiB
+        nokogiri: 1.4102 MiB (Also required by: loofah)
+          /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/nokogiri-1.16.7/lib/nokogiri/xml: 0.418 MiB
+          /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/nokogiri-1.16.7/lib/nokogiri/extension: 0.3164 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/nokogiri-1.16.7/lib/nokogiri/version/info)
+    rails/test_unit/railtie: 0.3477 MiB
+      rails/test_unit/line_filtering: 0.3438 MiB
+        rails/test_unit/runner: 0.3438 MiB
+  ddtrace: 12.8594 MiB
+    /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib: 8.0039 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/ci)
+      /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/opensearch/integration: 1.6797 MiB
+        /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/opensearch/configuration/settings: 1.668 MiB
+          /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/opensearch/ext: 1.6445 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/opensearch/patcher)
+      /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/action_pack/integration: 0.7617 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/rails/framework)
+        /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/action_pack/patcher: 0.6836 MiB
+          /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/action_pack/action_controller/patcher: 0.6602 MiB
+            /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/action_pack/action_controller/instrumentation: 0.6328 MiB
+              /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/rack/middlewares: 0.582 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/rails/patcher, /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/sinatra/patcher, and 2 others)
+                /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/propagation/http: 0.3359 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/httpclient/instrumentation, /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/httprb/instrumentation)
+                  /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/http/distributed/propagation: 0.3203 MiB
+      /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/active_record/integration: 0.4922 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/rails/framework)
+      /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/action_view/integration: 0.3438 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/rails/framework)
+      /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/action_cable/integration: 0.3359 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/rails/framework)
+      /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/active_support/integration: 0.332 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/rails/framework)
+      /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/aws/integration: 0.3203 MiB
+      /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/active_job/integration: 0.3125 MiB
+    /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing: 3.168 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib, /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/action_pack/action_controller/instrumentation, and 4 others)
+      /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core: 3.1406 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/action_pack/configuration/settings, /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/action_view/patcher, and 4 others)
+        /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/extensions: 3.1406 MiB
+          /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/configuration: 3.125 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/client_ip)
+            /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/configuration/components: 3.0859 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/ci/extensions)
+              /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/configuration/agent_settings_resolver: 1.3711 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/telemetry/collector, /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/transport/http/builder)
+                /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/configuration/settings: 1.1758 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/telemetry/http/transport, /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/configuration, and 2 others)
+                  /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/configuration/base: 0.5039 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/contrib/configuration/settings)
+                    /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/configuration/options: 0.4258 MiB
+              /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/component: 0.5508 MiB
+                /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/tracer: 0.4727 MiB
+              /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/diagnostics/health: 0.3867 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/tracing/buffer, /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/ddtrace/transport/statistics)
+                /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/metrics/client: 0.3008 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/core/runtime/metrics)
+    /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/appsec: 0.9492 MiB
+      /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/appsec/contrib/rack/integration: 0.5117 MiB
+        /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/appsec/contrib/rack/patcher: 0.3867 MiB
+    /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/ci: 0.6523 MiB
+      /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/ci/contrib/cucumber/integration: 0.3867 MiB
+        /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/ci/contrib/cucumber/patcher: 0.3516 MiB
+          /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/ci/contrib/cucumber/instrumentation: 0.3438 MiB
+            /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/ddtrace-1.14.0/lib/datadog/ci/contrib/cucumber/formatter: 0.3359 MiB
+  blacklight: 5.5 MiB (Also required by: blacklight_advanced_search/engine, blacklight_dynamic_sitemap, and 3 others)
+    blacklight/engine: 3.3164 MiB
+      view_component: 3.1445 MiB (Also required by: TOP)
+        view_component/engine: 3.0977 MiB
+          view_component/base: 2.9883 MiB
+            action_view/base: 1.5039 MiB
+              action_view/template: 0.5664 MiB (Also required by: action_view/template/resolver)
+                action_view/template/handlers/erb: 0.3164 MiB
+              action_view/lookup_context: 0.4063 MiB
+            view_component/translatable: 0.375 MiB
+              i18n/backend/simple: 0.3086 MiB
+    jbuilder: 1.1523 MiB (Also required by: TOP)
+      jbuilder/railtie: 0.875 MiB
+        jbuilder/jbuilder_template: 0.8203 MiB
+          jbuilder/collection_renderer: 0.6992 MiB
+            action_view/renderer/collection_renderer: 0.6406 MiB (Also required by: view_component/collection)
+              action_view/renderer/partial_renderer: 0.5234 MiB
+    kaminari: 0.4766 MiB
+      kaminari/core: 0.3828 MiB (Also required by: active_record/base)
+  stringex: 5.4805 MiB
+    active_record/base: 4.9141 MiB
+      kaminari/activerecord/active_record_extension: 0.7578 MiB
+        kaminari/activerecord/active_record_model_extension: 0.7461 MiB
+          kaminari/activerecord/active_record_relation_methods: 0.7383 MiB
+            active_record/relation: 0.7148 MiB
+              active_record/relation/query_methods: 0.3555 MiB
+      active_record/enum: 0.6641 MiB
+        active_record/type: 0.582 MiB
+          active_model/type: 0.3945 MiB
+      active_record/validations: 0.5 MiB
+        active_model/validations: 0.3438 MiB
+  bootstrap: 4.6914 MiB
+    bootstrap/engine: 4.5469 MiB
+      sassc-rails: 4.3164 MiB
+        /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/sassc-rails-2.1.2/lib/sassc/rails: 4.2891 MiB
+          sassc: 3.4023 MiB
+            /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/sassc-2.4.0/lib/sassc/native: 2.1367 MiB
+          /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/sassc-rails-2.1.2/lib/sassc/rails/importer: 0.5469 MiB
+            tilt: 0.4297 MiB
+              /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/tilt-2.3.0/lib/tilt/mapping: 0.3164 MiB
+  alma: 3.9219 MiB
+    alma/availability_response: 1.7344 MiB
+      xmlsimple: 1.7188 MiB
+        rexml/document: 1.5938 MiB (Also required by: openurl, /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/marc-1.2.0/lib/marc/xmlwriter)
+          /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/rexml-3.3.6/lib/rexml/element: 0.9258 MiB
+            /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/rexml-3.3.6/lib/rexml/xpath: 0.4336 MiB
+              /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/rexml-3.3.6/lib/rexml/xpath_parser: 0.3867 MiB
+          /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/rexml-3.3.6/lib/rexml/parsers/baseparser: 0.4727 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/rexml-3.3.6/lib/rexml/parsers/streamparser)
+    alma/electronic: 1.5391 MiB
+      httparty: 0.8945 MiB (Also required by: alma)
+        csv: 0.3359 MiB
+      active_support/core_ext: 0.4609 MiB
+  redis: 3.0391 MiB
+    redis/commands: 1.5391 MiB
+      redis/commands/lists: 0.4492 MiB
+    redis/client: 1.2852 MiB
+      redis-client: 1.2188 MiB
+        redis_client: 1.1797 MiB
+  omniauth-cas: 2.4258 MiB
+    omniauth/cas: 2.4258 MiB
+      omniauth/strategies/cas: 2.3906 MiB
+        addressable/uri: 1.4141 MiB
+          addressable/idna: 0.6836 MiB
+            addressable/idna/pure: 0.6094 MiB
+        omniauth/strategy: 0.5039 MiB
+          omniauth/key_store: 0.3633 MiB (Also required by: omniauth/auth_hash)
+            hashie/mash: 0.332 MiB
+  rack-mini-profiler: 1.9258 MiB
+    mini_profiler: 1.4844 MiB
+      mini_profiler/storage: 0.4375 MiB
+  pg: 1.8555 MiB
+    pg_ext: 1.4336 MiB
+  openurl: 1.8359 MiB
+    openurl/metadata_formats/marc: 0.9219 MiB
+      marc: 0.8438 MiB
+  sneakers: 1.7422 MiB
+    bunny: 1.2578 MiB
+      amq/protocol/client: 0.6406 MiB (Also required by: bunny/heartbeat_sender, bunny/session, and 2 others)
+      bunny/session: 0.332 MiB
+    serverengine: 0.3086 MiB
+  rake: 1.7383 MiB
+    rake/rake_module: 0.6719 MiB
+      rake/application: 0.6289 MiB (Also required by: rake)
+  net-ldap: 1.3281 MiB
+    /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/net-ldap-0.18.0/lib/net/ldap: 1.3125 MiB
+  devise: 1.0625 MiB (Also required by: devise-guests, devise-guests/engine)
+  memory_profiler: 1.0391 MiB
+    memory_profiler/cli: 0.6602 MiB
+      optparse: 0.6055 MiB (Also required by: rake, rake/application, and 2 others)
+  omniauth/rails_csrf_protection: 0.7734 MiB
+    omniauth/rails_csrf_protection/railtie: 0.7344 MiB
+      omniauth/rails_csrf_protection/token_verifier: 0.668 MiB
+        action_controller/metal/request_forgery_protection: 0.5 MiB
+  babel-transpiler: 0.7461 MiB
+    babel/transpiler: 0.7305 MiB (Also required by: sprockets/es6)
+      execjs: 0.6758 MiB (Also required by: /Users/cc62/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/autoprefixer-rails-10.4.15.0/lib/autoprefixer-rails/processor, terser)
+        execjs/runtimes: 0.5 MiB
+  faraday: 0.6211 MiB (Also required by: faraday/cookie_jar)
+  rack/attack: 0.582 MiB
+  faraday-cookie_jar: 0.5273 MiB
+    faraday/cookie_jar: 0.5273 MiB
+      http/cookie_jar: 0.5273 MiB
+        http/cookie: 0.5 MiB
+          domain_name: 0.4414 MiB
+            domain_name/etld_data: 0.4063 MiB
+  matrix: 0.4961 MiB
+  honeybadger: 0.4102 MiB
+    honeybadger/init/rails: 0.4102 MiB
+      honeybadger/ruby: 0.4063 MiB
+        honeybadger/singleton: 0.4023 MiB
+  simple_form: 0.3594 MiB
+  blacklight_range_limit: 0.3555 MiB (Also required by: blacklight_range_limit/engine)
+  puma: 0.3047 MiB

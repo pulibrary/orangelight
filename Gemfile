@@ -92,6 +92,9 @@ gem 'yard'
 
 group :development do
   gem 'capistrano-rails'
+  gem 'derailed_benchmarks'
+  gem 'stackprof'
+  
 end
 
 group :test do
