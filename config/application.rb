@@ -32,6 +32,7 @@ end
 
 module Orangelight
   class Application < Rails::Application
+    config.load_defaults 7.0
     # Before filter for Flipflop dashboard. Replace with a lambda or method name
     # defined in ApplicationController to implement access control.
     config.flipflop.dashboard_access_filter = :verify_admin!
@@ -71,6 +72,6 @@ module Orangelight
 
     BlacklightDynamicSitemap::Engine.config.minimum_average_chunk = 500
 
-    config.eager_load_paths << "#{Rails.root}/spec/mailers/previews"
+    config.eager_load_paths << Rails.root.join('spec', 'mailers', 'previews')
   end
 end
