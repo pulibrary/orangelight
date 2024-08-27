@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 7.0.0'
 
 gem 'alma'
 gem 'babel-transpiler'
@@ -78,6 +78,7 @@ gem 'sass-rails', '~> 6.0'
 gem 'simple_form'
 gem 'sneakers'
 gem 'sprockets-es6'
+gem 'sprockets-rails'
 # For call-stack profiling flamegraphs
 gem 'stackprof'
 gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.5.2.2'

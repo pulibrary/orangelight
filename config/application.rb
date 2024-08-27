@@ -70,6 +70,7 @@ module Orangelight
     config.active_record.yaml_column_permitted_classes = [Symbol, Date, Time, Hash, HashWithIndifferentAccess]
 
     BlacklightDynamicSitemap::Engine.config.minimum_average_chunk = 500
-    config.autoloader = :zeitwerk
+
+    config.eager_load_paths << "#{Rails.root}/spec/mailers/previews"
   end
 end
