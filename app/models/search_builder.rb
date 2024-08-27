@@ -10,7 +10,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators add_advanced_search_to_solr
                                      cjk_mm wildcard_char_strip excessive_paging_error
-                                     only_home_facets left_anchor_escape_whitespace
+                                     only_home_facets prepare_left_anchor_search
                                      series_title_results pul_holdings html_facets
                                      numismatics_facets numismatics_advanced]
 

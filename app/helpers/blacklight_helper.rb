@@ -19,18 +19,51 @@ module BlacklightHelper
     solr_parameters[:q] = solr_parameters[:q].delete('?')
   end
 
+  def prepare_left_anchor_search(solr_parameters)
+    return unless left_anchor_search?(solr_parameters)
+    left_anchor_escape_whitespace(solr_parameters)
+    left_anchor_add_wildcard(solr_parameters)
+  end
+
+  def left_anchor_query(solr_parameters)
+    if Flipflop.json_query_dsl?
+      solr_parameters.dig('json', 'query', 'bool', 'must', 0, :edismax, :query)
+    else
+      solr_parameters[:q]
+    end
+  end
+
+  def left_anchor_search?(solr_parameters)
+    query = left_anchor_query(solr_parameters)
+    return false unless (solr_parameters[:qf] == '${left_anchor_qf}' && query) || (solr_parameters.dig('json', 'query', 'bool', 'must', 0, :edismax, :qf) == '${left_anchor_qf}' && query)
+    true
+  end
+
   # Escape all whitespace characters within Solr queries specifying left anchor query facets
-  # Ends all left-anchor searches with wildcards for matches that begin with search string
   # @param solr_parameters [Blacklight::Solr::Request] the parameters for the Solr query
   def left_anchor_escape_whitespace(solr_parameters)
-    return unless solr_parameters[:qf] == '${left_anchor_qf}' && solr_parameters[:q]
-    query = solr_parameters[:q].dup
+    query = left_anchor_query(solr_parameters).dup
     # Escape any remaining whitespace and solr operator characters
     query.gsub!(/(\s)/, '\\\\\1')
     query.gsub!(/(["\{\}\[\]\^\~])/, '\\\\\1')
     query.gsub!(/[\(\)]/, '')
-    solr_parameters[:q] = query
-    solr_parameters[:q] += '*' unless query.end_with?('*')
+    if Flipflop.json_query_dsl?
+      solr_parameters['json']['query']['bool']['must'][0][:edismax][:query] = query
+    else
+      solr_parameters[:q] = query
+    end
+  end
+
+  # Ends all left-anchor searches with wildcards for matches that begin with search string
+  # @param solr_parameters [Blacklight::Solr::Request] the parameters for the Solr query
+  def left_anchor_add_wildcard(solr_parameters)
+    query = left_anchor_query(solr_parameters).dup
+    return if query.end_with?('*')
+    if Flipflop.json_query_dsl?
+      solr_parameters['json']['query']['bool']['must'][0][:edismax][:query] += '*'
+    else
+      solr_parameters[:q] += '*'
+    end
   end
 
   def pul_holdings(solr_parameters)

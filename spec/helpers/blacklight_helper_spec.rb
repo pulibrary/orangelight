@@ -12,17 +12,114 @@ describe BlacklightHelper do
       search_catalog_url(*args)
     end
   end
+  describe 'left anchor search' do
+    context 'with new json query dsl' do
+      before do
+        allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
+      end
+      describe '#left_anchor_search?' do
+        it 'returns true if it is a left anchor search' do
+          solr_params = Blacklight::Solr::Request.new({
+                                                        "json": { "query": { "bool": { "must": [
+                                                          { edismax: {
+                                                            qf: "${left_anchor_qf}",
+                                                            pf: "${left_anchor_pf}",
+                                                            query: "searching for a test value"
+                                                          } }
+                                                        ] } } }
+                                                      })
+          expect(left_anchor_search?(solr_params)).to be true
+        end
 
-  describe '#left_anchor_escape_whitespace' do
-    it 'escapes white spaces before sending :q to solr along with wildcard character' do
-      query = { qf: '${left_anchor_qf}', pf: '${left_anchor_pf}', q: 'searching for a test value' }
-      left_anchor_escape_whitespace(query)
-      expect(query[:q]).to eq 'searching\ for\ a\ test\ value*'
+        it 'returns false if it is not a left anchor search' do
+          solr_params = Blacklight::Solr::Request.new({
+                                                        "json": { "query": { "bool": { "must": [
+                                                          { edismax: {
+                                                            qf: "${anything}",
+                                                            pf: "${anything}",
+                                                            query: "searching for a test value"
+                                                          } }
+                                                        ] } } }
+                                                      })
+          expect(left_anchor_search?(solr_params)).to be false
+        end
+      end
+      describe '#left_anchor_escape_whitespace' do
+        it 'escapes white spaces before sending :query to solr along with wildcard character' do
+          query = Blacklight::Solr::Request.new({
+                                                  "json": { "query": { "bool": { "must": [
+                                                    { edismax: {
+                                                      qf: "${left_anchor_qf}",
+                                                      pf: "${left_anchor_pf}",
+                                                      query: "searching for a test value"
+                                                    } }
+                                                  ] } } }
+                                                })
+          left_anchor_escape_whitespace(query)
+          query_phrase = query.with_indifferent_access.dig('json', 'query', 'bool', 'must', 0, :edismax, :query)
+          expect(query_phrase).to eq 'searching\ for\ a\ test\ value'
+        end
+      end
+      describe '#left_anchor_add_wildcard' do
+        it 'adds a wildcard before sending :q to solr' do
+          query = Blacklight::Solr::Request.new({
+                                                  "json": { "query": { "bool": { "must": [
+                                                    { edismax: {
+                                                      qf: "${left_anchor_qf}",
+                                                      pf: "${left_anchor_pf}",
+                                                      query: "searching for a test value"
+                                                    } }
+                                                  ] } } }
+                                                })
+          left_anchor_add_wildcard(query)
+          query_phrase = query.with_indifferent_access.dig('json', 'query', 'bool', 'must', 0, :edismax, :query)
+          expect(query_phrase).to eq 'searching for a test value*'
+        end
+        it 'only a single wildcard character is included when user supplies the wildcard in query' do
+          query = Blacklight::Solr::Request.new({
+                                                  "json": { "query": { "bool": { "must": [
+                                                    { edismax: {
+                                                      qf: "${left_anchor_qf}",
+                                                      pf: "${left_anchor_pf}",
+                                                      query: "searching for a test value*"
+                                                    } }
+                                                  ] } } }
+                                                })
+          left_anchor_add_wildcard(query)
+          query_phrase = query.with_indifferent_access.dig('json', 'query', 'bool', 'must', 0, :edismax, :query)
+          expect(query_phrase).to eq 'searching for a test value*'
+        end
+      end
     end
-    it 'only a single wildcard character is included when user supplies the wildcard in query' do
-      query = { qf: '${left_anchor_qf}', pf: '${left_anchor_pf}', q: 'searching for a test value*' }
-      left_anchor_escape_whitespace(query)
-      expect(query[:q]).to eq 'searching\ for\ a\ test\ value*'
+    context 'with the old query dsl' do
+      before do
+        allow(Flipflop).to receive(:json_query_dsl?).and_return(false)
+      end
+      describe '#left_anchor_search?' do
+        it 'returns true if it is a left anchor search' do
+          solr_params = { qf: '${left_anchor_qf}', pf: '${left_anchor_pf}', q: 'searching for a test value' }
+          expect(left_anchor_search?(solr_params)).to be true
+        end
+      end
+      describe '#left_anchor_escape_whitespace' do
+        it 'escapes white spaces before sending :q to solr' do
+          query = { qf: '${left_anchor_qf}', pf: '${left_anchor_pf}', q: 'searching for a test value' }
+          left_anchor_escape_whitespace(query)
+          expect(query[:q]).to eq 'searching\ for\ a\ test\ value'
+        end
+      end
+      describe '#left_anchor_add_wildcard' do
+        it 'adds a wildcard before sending :q to solr' do
+          query = { qf: '${left_anchor_qf}', pf: '${left_anchor_pf}', q: 'searching\ for\ a\ test\ value' }
+          left_anchor_add_wildcard(query)
+          expect(query[:q]).to eq 'searching\ for\ a\ test\ value*'
+        end
+        it 'only a single wildcard character is included when user supplies the wildcard in query' do
+          query = { qf: '${left_anchor_qf}', pf: '${left_anchor_pf}', q: 'searching\ for\ a\ test\ value*' }
+          left_anchor_add_wildcard(query)
+          expect(query[:q]).to eq 'searching\ for\ a\ test\ value*'
+        end
+      end
     end
   end
 
