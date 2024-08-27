@@ -26,10 +26,10 @@ describe 'search requests for the catalog' do
       '/catalog?utf8=%E2%9C&f1=all_fields'
     end
 
-    it 'redirects the user to start over' do
+    it 'redirects the user to Bad Request' do
       get url
       expect(response.status).to eq(400)
-      expect(response.body).to match(/start over/)
+      expect(response.body).to match('Bad Request')
     end
   end
 
