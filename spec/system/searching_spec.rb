@@ -215,6 +215,18 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_content('SAGE Research Methods Cases Part I')
       expect(page).to have_content('SAGE research methods. Cases.')
     end
+
+    it 'shows facets on the advanced search results page' do
+      visit '/advanced'
+      fill_in 'clause_0_query', with: 'robots'
+      click_button 'Search'
+      expect(page).to have_button('Access')
+      expect(page).to have_button('Library')
+      expect(page).to have_button('Format')
+      byebug
+      expect(page).to have_button('Publication year')
+      expect(page).to have_button('Language')
+    end
   end
 
   it 'can remove a search constraint' do
