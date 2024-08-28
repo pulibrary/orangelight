@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# If the user enters a url that has invalid parameters
+# this middleware will return a 400 status
+# and the load balancer will display its own error page
+
 module Orangelight
   module Middleware
     class InvalidParameterHandler
@@ -19,15 +23,14 @@ module Orangelight
 
       private
 
-        def bad_request_body(env)
-          return 'Bad Request' unless request_content_type(env) == default_content_type
-          render_error_page
+        def bad_request_body
+          'Bad Request'
         end
 
         def bad_request_headers(env)
           {
             'Content-Type' => "#{request_content_type(env)}; charset=#{default_charset}",
-            'Content-Length' => bad_request_body(env).bytesize.to_s
+            'Content-Length' => bad_request_body.bytesize.to_s
           }
         end
 
@@ -35,7 +38,7 @@ module Orangelight
           [
             bad_request_status,
             bad_request_headers(env),
-            [bad_request_body(env)]
+            [bad_request_body]
           ]
         end
 
@@ -89,7 +92,6 @@ module Orangelight
         end
 
         def request_for(env)
-          # calling env.dup here prevents bad things from happening
           ActionDispatch::Request.new(env.dup)
         end
 
@@ -108,14 +110,6 @@ module Orangelight
           params = request_for(env).params
           check_for_white_spaces(params)
           facet_fields_values(params)
-        end
-
-        # Renders the standard Orangelight error page
-        def render_error_page
-          # Create Warden proxy for devise integration
-          proxy = Warden::Proxy.new({}, Warden::Manager.new({}))
-          renderer = ApplicationController.renderer.new('warden' => proxy)
-          renderer.render('errors/error')
         end
     end
   end
