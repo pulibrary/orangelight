@@ -48,7 +48,7 @@ describe 'Account login' do
           cas_login_link = find_link('Log in with netID')
           expect(cas_login_link[:href]).to include("/users/auth/cas")
           click_link('Log in with netID')
-          expect(page).to have_current_path(%r{redirect-to-alma})
+          expect(page).to have_current_path(%r{discovery})
         end
       end
 
