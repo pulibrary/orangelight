@@ -12,7 +12,6 @@ RSpec.describe Bookmark do
     let(:in_solr_alma_id_one) { '994956003506421' }
     let(:in_solr_alma_id_two) { '99118600973506421' }
     let(:not_in_solr_alma_id) { '991234567806421' }
-    byebug
     let!(:bookmark_one) { FactoryBot.create(:bookmark, document_id: document_ids[0]) }
     let!(:bookmark_two) { FactoryBot.create(:bookmark, document_id: document_ids[1]) }
 
