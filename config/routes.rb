@@ -66,7 +66,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/signup' => 'devise/registrations#new', :as => :new_user_registration
     post '/users' => 'devise/registrations#create', :as => :user_registration
-    get "sign_out", to: "devise/sessions#destroy"
+    get "sign_out", to: "sessions#destroy"
   end
 
   get '/catalog/oclc/:id', to: 'catalog#oclc'

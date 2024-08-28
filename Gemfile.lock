@@ -694,8 +694,8 @@ DEPENDENCIES
   capybara
   coveralls_reborn
   ddtrace (~> 1.14.0)
-  devise (>= 4.6.0)
-  devise-guests (~> 0.5)
+  devise
+  devise-guests
   ed25519
   email_validator
   erb_lint
