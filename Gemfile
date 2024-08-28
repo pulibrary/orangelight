@@ -2,13 +2,13 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 7.0.0'
+gem 'rails', '~> 7.1.0'
 
 gem 'alma'
 gem 'babel-transpiler'
 gem 'bcrypt_pbkdf'
 # Blacklight
-gem 'blacklight', '~> 7.37'
+gem 'blacklight', '~> 7.37.0'
 # advanced search functionality
 gem 'blacklight_advanced_search', '~> 7.0'
 gem 'blacklight_dynamic_sitemap'

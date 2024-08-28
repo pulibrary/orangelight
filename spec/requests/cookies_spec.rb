@@ -3,6 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Cookies' do
   it 'sets HttpOnly' do
     get '/'
-    expect(response.headers['Set-Cookie']).to include('HttpOnly')
+    expect(response.headers['set-cookie'].first).to include('httponly')
   end
 end
