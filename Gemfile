@@ -81,7 +81,6 @@ gem 'sprockets-es6'
 gem 'sprockets-rails'
 # For call-stack profiling flamegraphs
 gem 'stackprof'
-gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.5.2.2'
 gem 'string_rtl'
 gem 'terser'
 gem 'view_component', '< 3.0.0'
