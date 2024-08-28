@@ -223,7 +223,6 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_button('Access')
       expect(page).to have_button('Library')
       expect(page).to have_button('Format')
-      byebug
       expect(page).to have_button('Publication year')
       expect(page).to have_button('Language')
     end

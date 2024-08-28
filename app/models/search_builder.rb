@@ -108,7 +108,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   # Check if any search parameters have been set
   # @return [Boolean]
   def search_parameters?
-    !blacklight_params[:q].nil? || blacklight_params[:f].present?
+    !blacklight_params[:q].nil? || blacklight_params[:f].present? || blacklight_params.dig('clause')&.values&.any? { |thing| thing.dig('query')&.present? }
   end
 
   def conditionally_configure_json_query_dsl(_solr_parameters)
