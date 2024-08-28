@@ -157,4 +157,46 @@ RSpec.describe SearchBuilder do
       end
     end
   end
+
+  describe '#only_home_facets' do
+    let(:blacklight_params) do
+      { q: 'Douglas fir' }
+    end
+    before do
+      allow(subject).to receive(:blacklight_params).and_return(blacklight_params)
+      allow(subject).to receive(:blacklight_config).and_return(
+        Blacklight::Configuration.new do |config|
+          config.add_facet_field('access_facet', label: 'Access', home: true)
+          config.add_facet_field('language_facet', label: 'Format')
+        end
+      )
+    end
+    context 'when there is no query' do
+      let(:blacklight_params) do
+        {}
+      end
+      it 'removes non-home facets from solr_parameters' do
+        solr_parameters = { 'facet.field' => ['access_facet', 'language_facet'] }
+        expect { search_builder.only_home_facets(solr_parameters) }.to change { solr_parameters }
+        expect(solr_parameters['facet.field']).to eq(['access_facet'])
+      end
+    end
+    context 'when there is a query in the q param' do
+      it 'does not make any changes to the facets' do
+        solr_parameters = { 'facet.field' => ['access_facet', 'language_facet'] }
+        expect { search_builder.only_home_facets(solr_parameters) }.not_to change { solr_parameters }
+      end
+    end
+    context 'when there is a query using the JSON query DSL' do
+      let(:blacklight_params) do
+        { 'clause' =>
+          { '0' =>
+            { 'query' => 'robots' } } }
+      end
+      it 'does not make any changes to the facets' do
+        solr_parameters = { 'facet.field' => ['access_facet', 'language_facet'] }
+        expect { search_builder.only_home_facets(solr_parameters) }.not_to change { solr_parameters }
+      end
+    end
+  end
 end
