@@ -27,7 +27,10 @@ module BlacklightHelper
 
   def left_anchor_query(solr_parameters)
     if Flipflop.json_query_dsl?
-      solr_parameters.dig('json', 'query', 'bool', 'must', 0, :edismax, :query)
+      solr_parameters.dig('json', 'query', 'bool', 'must')&.each do |search_element|
+        next unless search_element.dig(:edismax, :qf) == '${left_anchor_qf}'
+        return search_element.dig(:edismax, :query)
+      end
     else
       solr_parameters[:q]
     end
@@ -35,7 +38,13 @@ module BlacklightHelper
 
   def left_anchor_search?(solr_parameters)
     query = left_anchor_query(solr_parameters)
-    return false unless (solr_parameters[:qf] == '${left_anchor_qf}' && query) || (solr_parameters.dig('json', 'query', 'bool', 'must', 0, :edismax, :qf) == '${left_anchor_qf}' && query)
+    if Flipflop.json_query_dsl?
+      return false if solr_parameters.dig('json', 'query', 'bool', 'must')&.select do |element|
+        element.dig(:edismax, :qf) == '${left_anchor_qf}'
+      end.blank?
+    else
+      return false unless solr_parameters[:qf] == '${left_anchor_qf}' && query
+    end
     true
   end
 

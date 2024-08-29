@@ -43,6 +43,79 @@ describe BlacklightHelper do
                                                       })
           expect(left_anchor_search?(solr_params)).to be false
         end
+        context 'using the second search box' do
+          it 'returns true if it is a left anchor search' do
+            solr_params = Blacklight::Solr::Request.new({
+                                                          "json": { "query": { "bool": { "must": [
+                                                            { edismax:
+                                                              { query: "something" } },
+                                                            { edismax:
+                                                              { qf: "${left_anchor_qf}",
+                                                                pf: "${left_anchor_pf}",
+                                                                query: "searching for a test value" } }
+                                                          ] } } }
+                                                        })
+            expect(left_anchor_search?(solr_params)).to be true
+          end
+        end
+      end
+      describe '#left_anchor_query' do
+        context 'from the advanced search' do
+          context 'using the first search box' do
+            it 'identifies the left anchor search term' do
+              solr_params = Blacklight::Solr::Request.new({
+                                                            "json": { "query": { "bool": { "must": [
+                                                              { edismax: {
+                                                                qf: "${left_anchor_qf}",
+                                                                pf: "${left_anchor_pf}",
+                                                                query: "searching for a test value"
+                                                              } }
+                                                            ] } } }
+                                                          })
+              expect(left_anchor_query(solr_params)).to eq('searching for a test value')
+            end
+          end
+          context 'using the second search box' do
+            it 'identifies the left anchor search term' do
+              solr_params = Blacklight::Solr::Request.new({
+                                                            "json": { "query": { "bool": { "must": [
+                                                              { edismax:
+                                                                { query: "something" } },
+                                                              { edismax:
+                                                                { qf: "${left_anchor_qf}",
+                                                                  pf: "${left_anchor_pf}",
+                                                                  query: "searching for a test value" } }
+                                                            ] } } }
+                                                          })
+              expect(left_anchor_query(solr_params)).to eq('searching for a test value')
+            end
+          end
+          context 'two left anchor searches with OR' do
+            it 'identifies the left anchor search terms' do
+              solr_params = Blacklight::Solr::Request.new({
+                                                            "json" => { "query" => { "bool" => {
+                                                              "must" => [
+                                                                { edismax: {
+                                                                  qf: "${left_anchor_qf}",
+                                                                  pf: "${left_anchor_pf}",
+                                                                  query: "the"
+                                                                } }
+                                                              ],
+                                                              "should" => [
+                                                                {
+                                                                  edismax: {
+                                                                    qf: "${left_anchor_qf}",
+                                                                    pf: "${left_anchor_pf}",
+                                                                    query: "dance"
+                                                                  }
+                                                                }
+                                                              ]
+                                                            } } }
+                                                          })
+              expect(left_anchor_query(solr_params)).to eq(['the', 'dance'])
+            end
+          end
+        end
       end
       describe '#left_anchor_escape_whitespace' do
         it 'escapes white spaces before sending :query to solr along with wildcard character' do
