@@ -2,13 +2,13 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 7.0.0'
 
 gem 'alma'
 gem 'babel-transpiler'
 gem 'bcrypt_pbkdf'
 # Blacklight
-gem 'blacklight', '~> 7.37.0'
+gem 'blacklight', '~> 7.37'
 # advanced search functionality
 gem 'blacklight_advanced_search', '~> 7.0'
 gem 'blacklight_dynamic_sitemap'
@@ -23,8 +23,8 @@ gem 'capistrano', '~> 3.4'
 gem 'capistrano-passenger'
 gem 'ddtrace', '~> 1.14.0'
 # Authentication and authorization
-gem 'devise', '>= 4.6.0'
-gem 'devise-guests', '~> 0.5'
+gem 'devise'
+gem 'devise-guests'
 gem 'ed25519'
 gem 'email_validator'
 gem 'faraday'
@@ -78,6 +78,7 @@ gem 'sass-rails', '~> 6.0'
 gem 'simple_form'
 gem 'sneakers'
 gem 'sprockets-es6'
+gem 'sprockets-rails'
 # For call-stack profiling flamegraphs
 gem 'stackprof'
 gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.5.2.2'

@@ -94,6 +94,11 @@ describe 'advanced searching', advanced_search: true do
       visit '/advanced'
     end
 
+    it 'does not have a basic search bar' do
+      visit '/advanced'
+      expect(page).not_to have_selector('.search-query-form')
+    end
+
     it 'has the expected facets' do
       visit '/advanced'
       expect(page.find_all('.advanced-facet-label').map(&:text)).to include('Language')
@@ -110,7 +115,7 @@ describe 'advanced searching', advanced_search: true do
 
     it 'has drop-downs for search fields' do
       search_fields = page.find_all('.search-field')
-      expect(search_fields.size).to eq(4)
+      expect(search_fields.size).to eq(3)
     end
 
     it 'can run a search' do

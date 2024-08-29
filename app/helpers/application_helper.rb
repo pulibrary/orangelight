@@ -26,6 +26,10 @@ module ApplicationHelper
     urls
   end
 
+  def show_regular_search?
+    !((%w[generate numismatics advanced_search].include? params[:action]) || (%w[advanced].include? params[:controller]))
+  end
+
   # Returns electronic portfolio links for Alma records.
   # @param document [SolrDocument]
   # @return [Array<String>] array containing the links

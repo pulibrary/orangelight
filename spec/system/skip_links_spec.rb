@@ -31,6 +31,16 @@ describe 'skip links', type: :system do
         visit '/advanced'
         expect(page).to have_selector('#skip-link a', count: 1, visible: false)
       end
+      context 'with the new advanced search' do
+        before do
+          allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
+          allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
+        end
+        it 'advanced search page has only one skip link' do
+          visit '/advanced'
+          expect(page).to have_selector('#skip-link a', count: 1, visible: false)
+        end
+      end
     end
   end
 end

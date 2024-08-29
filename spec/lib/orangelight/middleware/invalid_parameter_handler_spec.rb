@@ -68,7 +68,7 @@ describe Orangelight::Middleware::InvalidParameterHandler do
       it 'returns a 400 response, displays an error message, and logs the error' do
         status, headers, body = invalid_parameter_handler.call(env)
 
-        expect(body.join).to include('For help, please email', 'start over')
+        expect(body.join).to include('Bad Request')
         expect(status).to eq(400)
         expect(headers['Content-Type']).to eq('text/html; charset=UTF-8')
         expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request\: Invalid query parameters\: invalid %\-encoding \(%2B%2B%2\) within the environment/)
@@ -87,7 +87,7 @@ describe Orangelight::Middleware::InvalidParameterHandler do
       it 'returns a 400 response, displays an error message, and logs the error' do
         status, headers, body = invalid_parameter_handler.call(env)
 
-        expect(body.join).to include('For help, please email', 'start over')
+        expect(body.join).to include('Bad Request')
         expect(status).to eq(400)
         expect(headers['Content-Type']).to eq('text/html; charset=UTF-8')
         expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request\: Facet field \[format\]\[ has a nil value within the environment nil/)
@@ -106,7 +106,7 @@ describe Orangelight::Middleware::InvalidParameterHandler do
       it 'returns a 400 response, displays an error message, and logs the error' do
         status, headers, body = invalid_parameter_handler.call(env)
 
-        expect(body.join).to include('For help, please email', 'start over')
+        expect(body.join).to include('Bad Request')
         expect(status).to eq(400)
         expect(headers['Content-Type']).to eq('text/html; charset=UTF-8')
         expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request\: Invalid query parameters\: invalid %\-encoding \(%2B%2B%2\) within the environment/)
@@ -125,7 +125,7 @@ describe Orangelight::Middleware::InvalidParameterHandler do
       it 'returns a 400 response, displays an error message, and logs the error' do
         status, headers, body = invalid_parameter_handler.call(env)
 
-        expect(body.join).to include('For help, please email', 'start over')
+        expect(body.join).to include('Bad Request')
         expect(status).to eq(400)
         expect(headers['Content-Type']).to eq('text/html; charset=UTF-8')
         expect(Rails.logger).to have_received(:error).with(/Invalid encoding/)
