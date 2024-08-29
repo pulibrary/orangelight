@@ -126,7 +126,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   private
 
     def search_query_present?
-      blacklight_params[:q].present? || json_query_dsl_clauses&.any? { |clause| clause.dig('query')&.present? }
+      !blacklight_params[:q].nil? || json_query_dsl_clauses&.any? { |clause| clause.dig('query')&.present? }
     end
 
     def facet_query_present?
