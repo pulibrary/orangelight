@@ -26,7 +26,6 @@ Disallow: /cgi-bin
 Disallow: /account
 Disallow: /borrow-direct
 Disallow: /thumbnail
-Disallow: /unapi
 Disallow: /404
 Disallow: /422
 Disallow: /500

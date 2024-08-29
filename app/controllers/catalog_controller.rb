@@ -3,7 +3,6 @@
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog
-  include BlacklightUnapi::ControllerExtension
 
   include Blacklight::Marc::Catalog
   include BlacklightRangeLimit::ControllerOverride
@@ -676,9 +675,6 @@ class CatalogController < ApplicationController
 
     config.add_results_document_tool(:bookmark, partial: 'bookmark_control')
 
-    config.unapi = {
-      'ris' => { content_type: 'application/x-research-info-systems' }
-    }
     config.filter_search_state_fields = true
     config.search_state_fields = config.search_state_fields + [
       :advanced_type, :f1, :f2, :f3,
