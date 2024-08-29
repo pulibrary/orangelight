@@ -17,6 +17,11 @@ describe 'Zotero Support via Context Objects' do
     expect(page.all('.Z3988').length).to eq 1
   end
 
+  it 'is available on an individual SCSB record page' do
+    visit '/catalog/SCSB-2143785'
+    expect(page.all('.Z3988').length).to eq 1
+  end
+
   it 'Has a context object referencing the bib ID' do
     visit '/catalog/9990315453506421'
     expect(page.find('span.Z3988')[:title]).to have_text('9990315453506421')
