@@ -20,6 +20,7 @@ export default class MultiselectCombobox {
         this.selectedOptions.toggle(item.firstChild.nodeValue)
         this.inputElement.value = this.selectedOptions.toString();
         this.#updateHiddenSelect();
+        this.#orderList();
     }
 
     updateOptionVisibility() {
@@ -107,6 +108,26 @@ export default class MultiselectCombobox {
     #openDropdownIfClosed() {
         if (!this.listElement.classList.contains('show')) {
             $(`#${this.inputElement.id}`).dropdown('toggle')
+        }
+    }
+
+    #orderList() {
+        [].slice.call(this.listElement.children)
+            .sort(this.#compare)
+            .forEach(function(val, i) {
+                this.listElement.appendChild(val);
+            }, this);
+    }
+
+    #compare(a, b) {
+        function toBoolean(value) {
+            return value === 'true' ? true : false;
+        }
+
+        if (toBoolean(a.getAttribute('aria-selected')) !== toBoolean(b.getAttribute('aria-selected'))) {
+            return toBoolean(a.getAttribute('aria-selected')) ? -1 : 1;
+        } else {
+            return a.textContent.localeCompare(b.textContent);
         }
     }
 }
