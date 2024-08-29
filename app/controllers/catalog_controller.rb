@@ -747,6 +747,14 @@ class CatalogController < ApplicationController
     end
   end
 
+  def advanced_search
+    RubyProf.start
+    super
+    result = RubyProf.stop
+    printer = RubyProf::FlatPrinter.new(result)
+    printer.print(File.open('./advanced-profile', 'w'))
+  end
+
   def citation
     if agent_is_crawler?
       basic_response
