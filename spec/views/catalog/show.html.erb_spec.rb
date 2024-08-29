@@ -149,7 +149,7 @@ RSpec.describe 'catalog/show' do
       vernacular_title = find(:xpath, "//*[@id='content']/div[1]/h1[1]")
       expect(vernacular_title['lang']).to eq 'ru'
 
-      header_title = find(:css, "#content > div.col-12.header-row > h1:nth-child(3)")
+      header_title = find(:css, "#content > div.col-12.header-row > h1:nth-child(2)")
       expect(header_title['lang']).to eq 'ru'
     end
   end

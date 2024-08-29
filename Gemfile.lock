@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/pulibrary/blacklight_unapi.git
-  revision: 79ac4bf1914f2b48ff7eae9fb79842e2c9cfff06
-  branch: main
-  specs:
-    blacklight_unapi (0.1.0)
-      blacklight (~> 7.0)
-      rails
-
-GIT
   remote: https://github.com/pulibrary/stringex.git
   revision: 357f70511532a35b11a240e5ae06d02725cb8d0a
   tag: vpton.2.5.2.2
@@ -686,7 +677,6 @@ DEPENDENCIES
   blacklight_advanced_search (~> 7.0)
   blacklight_dynamic_sitemap
   blacklight_range_limit (~> 8.2)
-  blacklight_unapi!
   bootstrap (~> 4.6)
   capistrano (~> 3.4)
   capistrano-passenger

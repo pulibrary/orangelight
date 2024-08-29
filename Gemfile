@@ -15,7 +15,6 @@ gem 'blacklight_dynamic_sitemap'
 gem 'blacklight-marc', '~>8.1'
 # slider limit support
 gem 'blacklight_range_limit', '~> 8.2'
-gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'main'
 gem 'bootstrap', '~> 4.6'
 # Capistrano
 # In the Capistrano documentation, it has these limited to the development group, and `require: false``
