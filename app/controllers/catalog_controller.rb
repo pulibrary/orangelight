@@ -113,7 +113,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'access_facet', label: 'Access', sort: 'index', collapse: false, home: true, include_in_advanced_search: true
     config.add_facet_field 'location', label: 'Library', limit: 20, sort: 'index',
                                        home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }, include_in_advanced_search: false
-    config.add_facet_field 'format', label: 'Format', partial: 'facet_format', sort: 'index', limit: 15,
+    config.add_facet_field 'format', label: 'Format', item_component: FormatFacetItemComponent, sort: 'index', limit: 15,
                                      collapse: false, home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }, include_in_advanced_search: true
 
     # num_segments and segments set to defaults here, included to show customizable features
