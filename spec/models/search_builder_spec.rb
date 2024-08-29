@@ -25,6 +25,12 @@ RSpec.describe SearchBuilder do
       expect(search_builder.excessive_paging?).to be false
     end
 
+    it 'returns false if the search is empty' do
+      search_builder.blacklight_params[:page] = reasonable
+      search_builder.blacklight_params[:q] = ''
+      expect(search_builder.excessive_paging?).to be false
+    end
+
     it 'does not allow paging without a search or facet' do
       search_builder.blacklight_params[:page] = reasonable
       expect(search_builder.excessive_paging?).to be true
