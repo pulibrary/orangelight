@@ -128,7 +128,7 @@ GEM
       rubocop-performance
       rubocop-rails
       rubocop-rspec
-    blacklight (7.37.0)
+    blacklight (7.38.0)
       deprecation
       globalid
       hashdiff
@@ -136,7 +136,7 @@ GEM
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
-      rails (>= 5.1, < 7.2)
+      rails (>= 5.1, < 7.3)
       view_component (>= 2.66, < 4)
     blacklight-marc (8.1.4)
       blacklight (>= 7.11, < 9)
@@ -701,7 +701,7 @@ DEPENDENCIES
   babel-transpiler
   bcrypt_pbkdf
   bixby (~> 5.0)
-  blacklight (~> 7.37.0)
+  blacklight (~> 7.38.0)
   blacklight-marc (~> 8.1)
   blacklight_advanced_search (~> 7.0)
   blacklight_dynamic_sitemap
