@@ -250,18 +250,16 @@ describe 'blacklight tests' do
   describe 'advanced search tests' do
     it 'supports advanced render constraints' do
       stub_holding_locations
-      get '/catalog?&search_field=advanced&f1=left_anchor&q1=searching+for1&op2=AND&f2='\
-          'left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for'
-      expect(response.body).to include 'Remove constraint Title starts with: searching for1'
-      get '/catalog.json?&search_field=advanced&f1=left_anchor&q1=searching+for1&op2=AND&f2='\
-          'left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for'
+      get '/catalog?f1=left_anchor&q1=plasticity&op2=AND&f2=author&q2=&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&search_field=advanced&commit=Search'
+      expect(response.body).to include 'Remove constraint Title starts with: plasticity'
+      get '/catalog.json?f1=left_anchor&q1=plasticity&op2=AND&f2=author&q2=&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&search_field=advanced&commit=Search'
       r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9965749873506421' }).to eq false
-      get '/catalog?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=advanced'
-      expect(response.body).not_to include 'Remove constraint Title starts with: searching for1'
-      get '/catalog.json?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=advanced'
+      expect(r['data'].any? { |d| d['id'] == '99125535710106421' }).to eq true
+      get '/catalog?search_field=advanced&f1=left_anchor&f2=author&f3=title&op2=NOT&op3=AND&q1=plasticity&q2=&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&f1=all_fields&q1=&op2=NOT&f2=left_anchor&q2=plasticity&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&search_field=advanced&commit=Search'
+      expect(response.body).not_to include 'Remove constraint Title starts with: plasticity'
+      get '/catalog.json?search_field=advanced&f1=left_anchor&f2=author&f3=title&op2=NOT&op3=AND&q1=plasticity&q2=&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&f1=all_fields&q1=&op2=NOT&f2=left_anchor&q2=plasticity&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&search_field=advanced&commit=Search'
       r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9965749873506421' }).to eq true
+      expect(r['data'].any? { |d| d['id'] == '99125535710106421' }).to eq false
     end
     it 'does not error when only the 3rd query field has a value' do
       get '/catalog?f1=all_fields&q1=&op2=AND&f2=author&q2=&op3=AND&f3=title&q3='\
