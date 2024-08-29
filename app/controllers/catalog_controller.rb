@@ -787,11 +787,17 @@ class CatalogController < ApplicationController
   def biased_results_submit; end
 
   def advanced_search
+    profile = RubyProf::Profile.new
+    profile.start
     if no_search_yet?
       @response = empty_solr_response(empty_advanced_search_raw_response)
     else
       super
     end
+    result = profile.stop
+    printer = RubyProf::FlatPrinter.new(result)
+    printer.print(File.open('./advanced-profile', 'w'))
+
   end
 
   private
