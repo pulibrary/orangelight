@@ -128,15 +128,13 @@ GEM
       rubocop-performance
       rubocop-rails
       rubocop-rspec
-    blacklight (7.38.0)
-      deprecation
+    blacklight (8.3.0)
       globalid
-      hashdiff
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
-      rails (>= 5.1, < 7.3)
+      rails (>= 6.1, < 8)
       view_component (>= 2.66, < 4)
     blacklight-marc (8.1.4)
       blacklight (>= 7.11, < 9)
@@ -145,8 +143,8 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
-    blacklight_advanced_search (7.0.0)
-      blacklight (~> 7.0)
+    blacklight_advanced_search (8.0.0.alpha2)
+      blacklight (>= 7.15, < 9)
       parslet
     blacklight_dynamic_sitemap (1.0.0)
       blacklight (> 7.0)
@@ -704,9 +702,9 @@ DEPENDENCIES
   babel-transpiler
   bcrypt_pbkdf
   bixby (~> 5.0)
-  blacklight (~> 7.38.0)
+  blacklight (~> 8.3.0)
   blacklight-marc (~> 8.1)
-  blacklight_advanced_search (~> 7.0)
+  blacklight_advanced_search
   blacklight_dynamic_sitemap
   blacklight_range_limit (~> 8.2)
   bootstrap (~> 4.6)

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class LocationCodeFacetComponent < ViewComponent::Base
-  include BlacklightAdvancedSearch::AdvancedHelperBehavior
+  # include BlacklightAdvancedSearch::AdvancedHelperBehavior
   include Blacklight::FacetsHelperBehavior
   include ApplicationHelper
 
