@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-context 'clicking facet limits with values in the search bar' do
+context 'clicking facet limits with values in the search bar', left_anchor: true do
   before do
     stub_holding_locations
   end

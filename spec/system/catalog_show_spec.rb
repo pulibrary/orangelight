@@ -64,7 +64,7 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       solr.commit
     end
 
-    it 'shows the Uniform title' do
+    it 'shows the Uniform title', left_anchor: true do
       visit "catalog/#{document_id}"
       # Regular display title
       expect(page).to have_content('Bible, Latin.')

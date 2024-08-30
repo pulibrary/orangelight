@@ -14,7 +14,7 @@ describe 'search requests for the catalog' do
     expect(response.status).to eq(200)
   end
 
-  it 'can handle parentheses in the left_anchor field' do
+  it 'can handle parentheses in the left_anchor field', left_anchor: true do
     get '/?search_field=left_anchor&q=Washington+post+(Washington%2C+D.C.+%3A+1877)'
 
     expect(response.status).to eq(200)

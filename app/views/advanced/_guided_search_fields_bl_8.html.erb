@@ -21,9 +21,9 @@
     </div>
   </div>
   <div class="search-operators" role="radiogroup" aria-label="Search operators">
-    <label><%= radio_button_tag("clause[1][op]", "must", guided_radio(:clause_1_op, "AND")) %> AND</label>
-    <label><%= radio_button_tag("clause[1][op]", "should", guided_radio(:clause_1_op, "OR")) %> OR</label>
-    <label><%= radio_button_tag("clause[1][op]", "must_not", guided_radio(:clause_1_op, "NOT")) %> NOT</label>
+    <label><%= radio_button_tag("clause[1][op]", "must", guided_radio(:clause_1_op, "AND"), class: 'first-and') %> AND</label>
+    <label><%= radio_button_tag("clause[1][op]", "should", guided_radio(:clause_1_op, "OR"), class: 'first-or') %> OR</label>
+    <label><%= radio_button_tag("clause[1][op]", "must_not", guided_radio(:clause_1_op, "NOT"), class: 'first-not') %> NOT</label>
   </div>
   <div class="search-field">
     <label for="clause_1_field" class="sr-only">Options for advanced search - second parameter</label>
