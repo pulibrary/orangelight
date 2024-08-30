@@ -1,4 +1,3 @@
-<% doc_presenter = document_presenter(document) %>
 <%# default partial to display solr document fields in catalog index view -%>
 <span class="Z3988" aria-hidden='true' title="<%= document.export_as_openurl_ctx_kev %>"></span>
 <ul class="document-metadata dl-horizontal dl-invert">
@@ -9,11 +8,13 @@
 
   <div class="thumbnail-wrapper">
 
-  <% # bookmark functions for items/docs -%>
-    <%= render_index_doc_actions document, :wrapping_class => "index-document-functions" %>
+  <% if using_blacklight7 %>
+    <%= render Blacklight::Document::BookmarkComponent.new document: %>
+  <% else %>
+    <%= render Blacklight::Document::BookmarkComponent.new document:, action: %>
+  <% end %>
 
   <%= content_tag(:div, class: "document-thumbnail", data: document.identifier_data) do %>
     <div class="default"></div>
   <% end %>
   </div>
-</div>

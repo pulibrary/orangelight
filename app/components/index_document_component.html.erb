@@ -1,0 +1,17 @@
+<%= content_tag @component,
+  id: @id,
+  data: {
+    'document-id': @document.id.to_s.parameterize,
+    'document-counter': @counter,
+  },
+  itemscope: true,
+  itemtype: @document.itemtype,
+  class: classes.flatten.join(' ') do %>
+    <div class="row">
+      <div class="record-wrapper">
+        <%= title %>
+        <%= render partial: 'catalog/show_identifiers_default', locals: { document: @document } %>
+        <%= render partial: 'catalog/thumbnail_default', locals: { document: @document } %>
+        <%= render partial: 'catalog/index_default', locals: { document: @document, doc_presenter: presenter, using_blacklight7:, action: } %>
+    </div>
+<% end %>
