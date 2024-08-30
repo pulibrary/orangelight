@@ -55,6 +55,21 @@ describe BlacklightHelper do
         expect(query.dig('json', 'query', 'bool', 'must', 1, :edismax, :query)).to eq("searching\\ for*")
         expect(query.dig('json', 'query', 'bool', 'must', 2, :edismax, :query)).to eq("searching\\ for*")
       end
+      it 'escapes all left_anchor terms' do
+        query = { "qt" => nil, "json" => { "query" => { "bool" => { "must" => [
+          { edismax:
+            {
+              query: "lord of the rings"
+            } },
+          { edismax:
+            {
+              qf: "${left_anchor_qf}",
+              pf: "${left_anchor_pf}",
+              query: "lord"
+            } }
+        ] } } } }
+        expect(left_anchor_search?(query)).to be true
+      end
     end
   end
 

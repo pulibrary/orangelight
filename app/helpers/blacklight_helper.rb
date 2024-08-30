@@ -25,12 +25,11 @@ module BlacklightHelper
   def prepare_left_anchor_search(solr_parameters)
     return unless left_anchor_search?(solr_parameters)
     if Flipflop.json_query_dsl?
-      solr_parameters.dig('json', 'query', 'bool').each do |key, value|
-        value.each_with_index do |block, index|
-          next unless block.dig(:edismax, :qf) == "${left_anchor_qf}"
-          query = escape_left_anchor_query(block.dig(:edismax, :query).dup)
+      solr_parameters.dig('json', 'query', 'bool').each_value do |value|
+        value.select { |foo| foo.dig(:edismax, :qf) == "${left_anchor_qf}" }.map! do |clause|
+          query = escape_left_anchor_query(clause.dig(:edismax, :query).dup)
           query = add_wildcard(query)
-          solr_parameters.dig('json', 'query', 'bool', key, index, :edismax)[:query] = query
+          clause.dig(:edismax)[:query] = query
         end
       end
     else
@@ -43,7 +42,10 @@ module BlacklightHelper
   def left_anchor_search?(solr_parameters)
     if Flipflop.json_query_dsl?
       return false unless solr_parameters.dig('json', 'query', 'bool')
-      return false if solr_parameters.dig('json', 'query', 'bool').select { |_key, val| val.dig(0, :edismax, :qf) == "${left_anchor_qf}" }.blank?
+      has_left_anchor = solr_parameters.dig('json', 'query', 'bool')
+                                       .values
+                                       .any? { |value| value.select { |clause| clause.dig(:edismax, :qf) == "${left_anchor_qf}" } }
+      return false unless has_left_anchor
     else
       return false unless solr_parameters[:qf] == '${left_anchor_qf}' && solr_parameters[:q]
     end
