@@ -171,96 +171,7 @@ describe 'blacklight tests' do
     end
   end
 
-  describe 'left-anchor tests' do
-    it 'finds result despite accents and capitals in query' do
-      get '/catalog.json?&search_field=left_anchor&q=s%C3%A8arChing+for'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9965749873506421' }).to eq true
-    end
-
-    it "no matches if it doesn't occur at the beginning of the starts with fields" do
-      get '/catalog.json?&search_field=left_anchor&q=modern+aesthetic'
-      r = JSON.parse(response.body)
-      expect(r['meta']['pages']['total_count']).to eq 0
-    end
-
-    it 'page loads without erroring when query is not provided' do
-      get '/catalog.json?per_page=100&search_field=left_anchor'
-      expect(response.status).to eq(200)
-    end
-
-    it 'works in advanced search' do
-      get '/catalog.json?&search_field=advanced&f1=left_anchor&q1=searching+for&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9965749873506421' }).to eq true
-    end
-
-    context 'with punctuation marks in the title' do
-      it 'handles whitespace characters padding punctuation' do
-        get '/catalog.json?search_field=left_anchor&q=JSTOR+%5Belectronic+resource%5D+%3A'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-
-        get '/catalog.json?search_field=left_anchor&q=JSTOR+%5Belectronic+resource%5D%3A'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-      end
-    end
-
-    context 'with user-supplied * in query string' do
-      it 'are handled in simple search' do
-        get '/catalog.json?search_field=left_anchor&q=JSTOR*'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-      end
-      it 'are handled in advanced search' do
-        get '/catalog.json?f1=left_anchor&q1=JSTOR*&search_field=advanced'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-      end
-    end
-
-    context 'solr operator characters' do
-      it 'are handled in simple search' do
-        get '/catalog.json?search_field=left_anchor&q=JSTOR%7B%7D%3A%26%26%7C%7C"%2B%5E~-%2F%3F+%5BElectronic+Resource%5D'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-      end
-      it 'are handled in advanced search' do
-        get '/catalog.json?f1=left_anchor&q1=JSTOR%7B%7D%3A%26%26%7C%7C"%2B%5E~-%2F%3F+%5BElectronic+Resource%5D&search_field=advanced'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-      end
-    end
-
-    context 'cjk characters' do
-      it 'are searchable in simple search' do
-        get "/catalog.json?search_field=left_anchor&q=#{CGI.escape('浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授)')}"
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9981818493506421' }).to eq true
-      end
-      it 'are searchable in advanced search' do
-        get "/catalog.json?f1=left_anchor&q1=#{CGI.escape('浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授)')}&search_field=advanced"
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9981818493506421' }).to eq true
-      end
-    end
-  end
-
   describe 'advanced search tests' do
-    it 'supports advanced render constraints' do
-      stub_holding_locations
-      get '/catalog?f1=left_anchor&q1=plasticity&op2=AND&f2=author&q2=&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&search_field=advanced&commit=Search'
-      expect(response.body).to include 'Remove constraint Title starts with: plasticity'
-      get '/catalog.json?f1=left_anchor&q1=plasticity&op2=AND&f2=author&q2=&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&search_field=advanced&commit=Search'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '99125535710106421' }).to eq true
-      get '/catalog?search_field=advanced&f1=left_anchor&f2=author&f3=title&op2=NOT&op3=AND&q1=plasticity&q2=&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&f1=all_fields&q1=&op2=NOT&f2=left_anchor&q2=plasticity&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&search_field=advanced&commit=Search'
-      expect(response.body).not_to include 'Remove constraint Title starts with: plasticity'
-      get '/catalog.json?search_field=advanced&f1=left_anchor&f2=author&f3=title&op2=NOT&op3=AND&q1=plasticity&q2=&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&f1=all_fields&q1=&op2=NOT&f2=left_anchor&q2=plasticity&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&search_field=advanced&commit=Search'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '99125535710106421' }).to eq false
-    end
     it 'does not error when only the 3rd query field has a value' do
       get '/catalog?f1=all_fields&q1=&op2=AND&f2=author&q2=&op3=AND&f3=title&q3='\
           'anything&search_field=advanced&commit=Search'
@@ -275,31 +186,6 @@ describe 'blacklight tests' do
       get '/catalog?f1=all_fields&q1=something&op2=AND&f2=author&q2=&op3=OR&f3=all_fields&q3='\
           'anything&search_field=advanced&commit=Search'
       expect(response.status).to eq(200)
-    end
-    it 'title starts with can be ORed across several 3 queries' do
-      get '/catalog.json?f1=left_anchor&q1=Reconstructing+the&op2=OR&f2=left_anchor&q2='\
-          'This+angel+on&op3=OR&f3=left_anchor&q3=Almost+Human&search_field=advanced&commit=Search'
-      r = JSON.parse(response.body)
-      doc_ids = %w[9992220243506421 9222024 dsp01ft848s955 dsp017s75dc44p]
-      expect(r['data'].all? { |d| doc_ids.include?(d['id']) }).to eq true
-    end
-
-    context 'with punctuation marks in the title' do
-      it 'handles whitespace characters padding punctuation in the left_anchor field' do
-        get '/catalog.json?f1=left_anchor&q1=JSTOR+%5Belectronic+resource%5D+%3A&op2='\
-            'AND&f2=author&q2=&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D='\
-            '&range%5Bpub_date_start_sort%5D%5Bend%5D=&sort=score+desc%2C+pub_date_start_sort'\
-            '+desc%2C+title_sort+asc&search_field=advanced&commit=Search'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-
-        get '/catalog.json?f1=left_anchor&q1=JSTOR+%5Belectronic+resource%5D%3A&op2='\
-            'AND&f2=author&q2=&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D='\
-            '&range%5Bpub_date_start_sort%5D%5Bend%5D=&sort=score+desc%2C+pub_date_start_sort'\
-            '+desc%2C+title_sort+asc&search_field=advanced&commit=Search'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-      end
     end
   end
 

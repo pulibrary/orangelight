@@ -22,15 +22,47 @@ module BlacklightHelper
   # Escape all whitespace characters within Solr queries specifying left anchor query facets
   # Ends all left-anchor searches with wildcards for matches that begin with search string
   # @param solr_parameters [Blacklight::Solr::Request] the parameters for the Solr query
-  def left_anchor_escape_whitespace(solr_parameters)
-    return unless solr_parameters[:qf] == '${left_anchor_qf}' && solr_parameters[:q]
-    query = solr_parameters[:q].dup
-    # Escape any remaining whitespace and solr operator characters
+  def prepare_left_anchor_search(solr_parameters)
+    return unless left_anchor_search?(solr_parameters)
+    if Flipflop.json_query_dsl?
+      solr_parameters.dig('json', 'query', 'bool').each_value do |value|
+        value.select { |foo| foo.dig(:edismax, :qf) == "${left_anchor_qf}" }.map! do |clause|
+          query = escape_left_anchor_query(clause.dig(:edismax, :query).dup)
+          query = add_wildcard(query)
+          clause.dig(:edismax)[:query] = query
+        end
+      end
+    else
+      query = escape_left_anchor_query(solr_parameters[:q].dup)
+      query = add_wildcard(query)
+      solr_parameters[:q] = query
+    end
+  end
+
+  def left_anchor_search?(solr_parameters)
+    if Flipflop.json_query_dsl?
+      return false unless solr_parameters.dig('json', 'query', 'bool')
+      has_left_anchor = solr_parameters.dig('json', 'query', 'bool')
+                                       .values
+                                       .any? { |value| value.select { |clause| clause.dig(:edismax, :qf) == "${left_anchor_qf}" } }
+      return false unless has_left_anchor
+    else
+      return false unless solr_parameters[:qf] == '${left_anchor_qf}' && solr_parameters[:q]
+    end
+    true
+  end
+
+  # Escape all whitespace characters within Solr queries specifying left anchor query facets
+  def escape_left_anchor_query(query)
     query.gsub!(/(\s)/, '\\\\\1')
     query.gsub!(/(["\{\}\[\]\^\~])/, '\\\\\1')
     query.gsub!(/[\(\)]/, '')
-    solr_parameters[:q] = query
-    solr_parameters[:q] += '*' unless query.end_with?('*')
+    query
+  end
+
+  # Ends all left-anchor searches with wildcards for matches that begin with search string
+  def add_wildcard(query)
+    query.end_with?('*') ? query : query + '*'
   end
 
   def pul_holdings(solr_parameters)

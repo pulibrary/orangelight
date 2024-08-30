@@ -24,7 +24,7 @@ RSpec.describe Orangelight::AdvancedSearchFormComponent, type: :component, advan
     allow(view_context).to receive(:facet_limit_for).and_return(nil)
   end
 
-  it "has a dropdown with the expected options" do
+  it "has a dropdown with the expected options", left_anchor: true do
     expected_options = [
       "Keyword", "Title", "Author/Creator", "Subject", "Title starts with",
       "Publisher", "Notes", "Series title", "ISBN", "ISSN"
