@@ -13,14 +13,12 @@ RSpec.describe IndexMetadataComponent, type: :component do
     Blacklight::Configuration.new.configure do |config|
       config.add_index_field 'my_first_field'
       config.add_index_field 'my_second_field', show: true
-      config.add_index_field 'do_not_show_this_field', show: false
     end
   end
   let(:component) do
     document = SolrDocument.new({
                                   'my_first_field': 'Hello',
-                                  'my_second_field': ['Goodbye', 'Auf Wiedersehen'],
-                                  'do_not_show_this_field': 'Behind the scenes'
+                                  'my_second_field': ['Goodbye', 'Auf Wiedersehen']
                                 })
     view_context = double(document_index_view_type: 'index')
     allow(view_context).to receive(:should_render_field?).and_return true

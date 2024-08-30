@@ -233,19 +233,19 @@ class CatalogController < ApplicationController
     config.add_index_field 'author_display', label: 'Author/Artist', browse_link: :name, presenter: Orangelight::HighlightPresenter
     config.add_index_field 'pub_created_display', label: 'Published/Created'
     config.add_index_field 'format', label: 'Format', helper_method: :format_icon
-    config.add_index_field 'holdings_1display', show: false
-    config.add_index_field 'contained_in_s', show: false
-    config.add_index_field 'isbn_t', show: false
-    config.add_index_field 'score', show: false
-    config.add_index_field 'marc_relator_display', show: false
-    config.add_index_field 'title_display', show: false, presenter: Orangelight::HighlightPresenter
-    config.add_index_field 'title_vern_display', show: false, presenter: Orangelight::HighlightPresenter
-    config.add_index_field 'isbn_s', show: false
-    config.add_index_field 'oclc_s', show: false
-    config.add_index_field 'lccn_s', show: false
-    config.add_index_field 'electronic_access_1display', show: false
-    config.add_index_field 'cataloged_tdt', show: false
-    config.add_index_field 'electronic_portfolio_s', show: false
+    config.add_index_field 'holdings_1display', if: :json_request?
+    config.add_index_field 'contained_in_s', if: :json_request?
+    config.add_index_field 'isbn_t', if: :json_request?
+    config.add_index_field 'score', if: :json_request?
+    config.add_index_field 'marc_relator_display', if: :json_request?
+    config.add_index_field 'title_display', if: :json_request?, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'title_vern_display', if: :json_request?, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'isbn_s', if: :json_request?
+    config.add_index_field 'oclc_s', if: :json_request?
+    config.add_index_field 'lccn_s', if: :json_request?
+    config.add_index_field 'electronic_access_1display', if: :json_request?
+    config.add_index_field 'cataloged_tdt', if: :json_request?
+    config.add_index_field 'electronic_portfolio_s', if: :json_request?
     config.add_index_field 'lc_subject_display', label: 'Subjects', browse_link: :name, presenter: Orangelight::HighlightPresenter
     config.add_index_field 'siku_subject_display', if: false, presenter: Orangelight::HighlightPresenter
     config.add_index_field 'homoit_subject_display', if: false, presenter: Orangelight::HighlightPresenter
@@ -755,6 +755,10 @@ class CatalogController < ApplicationController
   def biased_results_submit; end
 
   private
+
+    def json_request?
+      request.format.json?
+    end
 
     def render_empty_search
       # This code is a copy of Blacklight::Catalog.index() method but adapted to use
