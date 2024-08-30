@@ -2,7 +2,7 @@
 def stub_delivery_locations
   stub_request(:get, "#{Requests::Config[:bibdata_base]}/locations/delivery_locations.json")
     .to_return(status: 200,
-               body: File.read(File.join(fixture_path, 'bibdata', 'delivery_locations.json')),
+               body: File.read(File.join(fixture_paths.first, 'bibdata', 'delivery_locations.json')),
                headers: {})
 end
 

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'Viewing Catalog Documents', type: :system, js: true do
-  let(:availability_fixture_path) { File.join(fixture_path, 'bibdata', 'availability.json') }
+  let(:availability_fixture_path) { File.join(fixture_paths.first, 'bibdata', 'availability.json') }
   let(:availability_fixture) { File.read(availability_fixture_path) }
 
   before do

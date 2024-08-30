@@ -308,7 +308,7 @@ describe 'blacklight tests' do
       id = '9965749873506421'
       stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{id}")
         .to_return(status: 200,
-                   body: File.read(File.join(fixture_path, 'bibdata', "#{id}.xml")))
+                   body: File.read(File.join(fixture_paths.first, 'bibdata', "#{id}.xml")))
       get "/catalog/#{id}.marcxml"
       staff_view = response.body
       bibdata = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}").body
