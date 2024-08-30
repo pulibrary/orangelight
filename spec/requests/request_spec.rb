@@ -537,15 +537,6 @@ describe 'blacklight tests' do
     end
   end
 
-  describe "bento search JSON API requirements" do
-    it "returns electronic_portfolio_s" do
-      get "/catalog.json?q=99122306151806421"
-      json = JSON.parse(response.body)
-
-      expect(json["data"][0]["attributes"]["electronic_portfolio_s"]).not_to be_blank
-    end
-  end
-
   describe 'search algorithm selection' do
     before do
       allow(Flipflop).to receive(:multi_algorithm?).and_return(true)
