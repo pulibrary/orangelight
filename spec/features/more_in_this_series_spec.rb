@@ -26,7 +26,7 @@ context 'viewing record with series title' do
 
   context 'without the BlacklightAdvancedSearch gem' do
     let(:search_builder_without_gem) do
-      SearchBuilder.default_processor_chain -= [:add_advanced_search_to_solr]
+      SearchBuilder.default_processor_chain - [:add_advanced_search_to_solr]
     end
     before do
       search_builder_without_gem
