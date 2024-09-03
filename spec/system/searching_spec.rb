@@ -202,7 +202,7 @@ describe 'Searching', type: :system, js: false do
       in_the_library.click
       click_on('advanced-search-submit')
       # page.first('.navbar-toggler').click
-      expect(page).to have_content("Any of:\nIn the Library")
+      expect(page).to have_content(/Any of:\nIn the Library/)
     end
 
     it 'displays the online availability for a series title' do
