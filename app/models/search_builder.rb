@@ -3,12 +3,11 @@
 class SearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
   include BlacklightRangeLimit::RangeLimitBuilder
-  include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include BlacklightHelper
 
   default_processor_chain.unshift(:conditionally_configure_json_query_dsl)
 
-  self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators add_advanced_search_to_solr
+  self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators
                                      cjk_mm wildcard_char_strip excessive_paging_error
                                      only_home_facets prepare_left_anchor_search
                                      series_title_results pul_holdings html_facets
@@ -18,7 +17,6 @@ class SearchBuilder < Blacklight::SearchBuilder
   # mutate the solr_parameters to remove words that are
   # boolean operators, but not intended as such.
   def cleanup_boolean_operators(solr_parameters)
-    return add_advanced_parse_q_to_solr(solr_parameters) if run_advanced_parse?(solr_parameters)
     solr_parameters[:q] = cleaned_query(solr_parameters[:q])
     return solr_parameters unless using_json_query_dsl(solr_parameters)
 

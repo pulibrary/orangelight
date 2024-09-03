@@ -33,7 +33,6 @@ describe 'skip links', type: :system do
       end
       context 'with the new advanced search' do
         before do
-          allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
           allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
         end
         it 'advanced search page has only one skip link' do
