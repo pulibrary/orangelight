@@ -9,8 +9,6 @@ gem 'babel-transpiler'
 gem 'bcrypt_pbkdf'
 # Blacklight
 gem 'blacklight', '~> 7.38.0'
-# advanced search functionality
-gem 'blacklight_advanced_search', '~> 7.0'
 gem 'blacklight_dynamic_sitemap'
 gem 'blacklight-marc', '~>8.1'
 # slider limit support

@@ -474,11 +474,9 @@ describe 'blacklight tests' do
       end
     end
 
-    context "advanced search and jsonld are enabled" do
+    context "with the built-in advanced search and jsonld is enabled" do
       before do
         allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
-        allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
-      end
 
       # TODO: what should this really do?  Should the advanced search and jsonld get turned off when an algorithm is swapped
       #       Should we see if we can combine the search handlers by adding a query parameter, or make a combined handler that has both?
