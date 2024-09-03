@@ -121,6 +121,9 @@ jobs:
       - ruby/rspec-test
       - store_test_results:
           path: ~/rspec
+      # Store capybara screenshots if there are failing system tests
+      - store_artifacts:
+          path:  ~/orangelight/tmp/capybara/
 
   js_tests:
       executor: basic-executor
