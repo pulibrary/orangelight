@@ -166,7 +166,6 @@ describe 'Searching', type: :system, js: false do
 
   context 'with the built-in advanced search form', advanced_search: true do
     before do
-      allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
       allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
     end
 

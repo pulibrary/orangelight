@@ -1,7 +1,6 @@
 # frozen_string_literal: false
 
 class CatalogController < ApplicationController
-  include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog
 
   include Blacklight::Marc::Catalog
@@ -705,7 +704,7 @@ class CatalogController < ApplicationController
   def numismatics
     unless request.method == :post
       @response = search_service.search_results do |search_builder|
-        search_builder.except(:add_advanced_search_to_solr).append(:facets_for_advanced_search_form)
+        search_builder
       end.first
     end
     respond_to do |format|

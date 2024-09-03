@@ -30,12 +30,6 @@ Flipflop.configure do
   group :blacklight_8 do
     feature :json_query_dsl,
     description: "When on / true, use the JSON query DSL for search fields in the advanced search.  When off / false, use query params"
-
-    feature :view_components_numismatics,
-    description: "When on / true, use the built-in advanced search form for numismatics.  When off / false, use the traditional one"
-
-    feature :view_components_advanced_search,
-    description: "When on / true, use the built-in advanced search form.  When off / false, use the traditional one"
   end
 
   group :search_and_race do

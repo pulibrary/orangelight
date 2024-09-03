@@ -138,7 +138,6 @@ RSpec.describe SearchBuilder do
 
     context 'with the built-in advanced search form', advanced_search: true do
       before do
-        allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
         allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
       end
 
@@ -146,20 +145,6 @@ RSpec.describe SearchBuilder do
         solr_p = { fq: ["{!lucene}{!query v=$f_inclusive.issue_denomination_s.0} OR {!query v=$f_inclusive.issue_denomination_s.1}", nil, "format:Coin"] }
         search_builder.facets_for_advanced_search_form(solr_p)
         expect(solr_p[:fq]).to eq(['format:Coin'])
-      end
-    end
-    context 'with the gem advanced search form' do
-      before do
-        allow(Flipflop).to receive(:view_components_advanced_search?).and_return(false)
-        allow(Flipflop).to receive(:json_query_dsl?).and_return(false)
-      end
-
-      context 'when encountering a nil facet' do
-        it 'removes nil and facets that need to be displayed on the form' do
-          solr_p = { fq: ["{!lucene}{!query v=$f_inclusive.issue_denomination_s.0} OR {!query v=$f_inclusive.issue_denomination_s.1}", nil, "format:Coin"] }
-          search_builder.facets_for_advanced_search_form(solr_p)
-          expect(solr_p[:fq]).to eq(['format:Coin'])
-        end
       end
     end
   end
