@@ -139,9 +139,6 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
-    blacklight_advanced_search (7.0.0)
-      blacklight (~> 7.0)
-      parslet
     blacklight_dynamic_sitemap (1.0.0)
       blacklight (> 7.0)
       rails
@@ -448,7 +445,6 @@ GEM
     parser (3.3.4.2)
       ast (~> 2.4.1)
       racc
-    parslet (2.0.0)
     pg (1.5.7)
     popper_js (1.16.1)
     pry (0.14.2)
@@ -749,7 +745,6 @@ DEPENDENCIES
   bcrypt_pbkdf
   blacklight (~> 7.38.0)
   blacklight-marc (~> 8.1)
-  blacklight_advanced_search (~> 7.0)
   blacklight_dynamic_sitemap
   blacklight_range_limit (~> 8.2)
   bootstrap (~> 4.6)
