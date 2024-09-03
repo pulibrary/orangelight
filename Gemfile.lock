@@ -200,13 +200,16 @@ GEM
       rexml
     crass (1.0.6)
     csv (3.3.0)
-    date (3.3.4)
-    ddtrace (1.14.0)
-      debase-ruby_core_source (= 3.2.1)
-      libdatadog (~> 3.0.0.1.0)
-      libddwaf (~> 1.9.0.0.0)
+    datadog-ci (0.8.3)
       msgpack
-    debase-ruby_core_source (3.2.1)
+    date (3.3.4)
+    ddtrace (1.23.3)
+      datadog-ci (~> 0.8.1)
+      debase-ruby_core_source (= 3.3.1)
+      libdatadog (~> 7.0.0.1.0)
+      libddwaf (~> 1.14.0.0.0)
+      msgpack
+    debase-ruby_core_source (3.3.1)
     deprecation (1.1.0)
       activesupport
     descendants_tracker (0.0.4)
@@ -322,14 +325,14 @@ GEM
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     lcsort (0.9.1)
-    libdatadog (3.0.0.1.0)
-    libdatadog (3.0.0.1.0-aarch64-linux)
-    libdatadog (3.0.0.1.0-x86_64-linux)
-    libddwaf (1.9.0.0.1)
+    libdatadog (7.0.0.1.0)
+    libdatadog (7.0.0.1.0-aarch64-linux)
+    libdatadog (7.0.0.1.0-x86_64-linux)
+    libddwaf (1.14.0.0.0)
       ffi (~> 1.0)
-    libddwaf (1.9.0.0.1-aarch64-linux)
+    libddwaf (1.14.0.0.0-aarch64-linux)
       ffi (~> 1.0)
-    libddwaf (1.9.0.0.1-x86_64-linux)
+    libddwaf (1.14.0.0.0-x86_64-linux)
       ffi (~> 1.0)
     library_stdnums (1.6.0)
     llhttp-ffi (0.5.0)
@@ -712,7 +715,7 @@ DEPENDENCIES
   capistrano-rails
   capybara
   coveralls_reborn
-  ddtrace (~> 1.14.0)
+  ddtrace
   devise
   devise-guests
   ed25519
