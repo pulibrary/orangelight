@@ -147,7 +147,7 @@ describe 'blacklight tests' do
       author_vern = r['author_display'][1]
       doc_id = r['id']
       get '/catalog?&search_field=all_fields&q=9947053043506421'
-      expect(response.body).to include('dir="rtl" style="float: right;" href="'\
+      expect(response.body).to include('style="float: right;" dir="rtl" href="'\
                                     "/catalog/#{doc_id}\">#{title_vern}</a>")
       expect(response.body).to include('<li class="blacklight-author_display" dir="ltr"><a class="search-name" '\
                                     "data-original-title=\"Search: #{author}\" "\
