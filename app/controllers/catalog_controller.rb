@@ -464,9 +464,6 @@ class CatalogController < ApplicationController
     ## Provenance
     config.add_show_field 'numismatic_provenance_s', label: 'Provenance'
 
-    #     "fielded" search configuration. Used by pulldown among other places.
-    #     For supported keys in hash, see rdoc for Blacklight::SearchFields
-
     #     Search fields will inherit the :qt solr request handler from
     #     config[:default_solr_parameters], OR can specify a different one
     #     with a :qt key/value. Below examples inherit, except for subject
