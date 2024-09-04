@@ -207,12 +207,12 @@ module Requests
     end
 
     ## If any requestable items have a temp location assume everything at the holding is in a temp loc?
-    def current_location_label(mfhd_label, requestable_list)
+    def current_location_label(request_location_label, requestable_list)
       location_label = requestable_list.first.location['label'].blank? ? "" : "- #{requestable_list.first.location['label']}"
-      label = if requestable_list.first.temp_loc?.present? && !requestable_list.first.in_resource_sharing?
+      label = if requestable_list.first.temp_loc_other_than_resource_sharing?
                 "#{requestable_list.first.location['library']['label']}#{location_label}"
               else
-                mfhd_label
+                request_location_label
               end
       "#{label} #{requestable_list.first.call_number}"
     end
