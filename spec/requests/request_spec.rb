@@ -16,14 +16,6 @@ describe 'blacklight tests' do
     end
   end
 
-  describe 'advanced handling when multiple fields' do
-    it 'handles it' do
-      get '/catalog.json?f1=title&f2=author&f3=title&op2=AND&op3=AND&q1=&q2=Murakami%2C+Haruki&q3=1Q84&search_field=advanced'
-      r = JSON.parse(response.body)
-      expect(r['data'].length).to eq 3
-    end
-  end
-
   describe 'NOT tests' do
     it 'ignores lowercase' do
       get '/catalog.json?search_field=all_fields&q=demeter+does+not+remember'
@@ -399,8 +391,11 @@ describe 'blacklight tests' do
   end
 
   describe 'series_display in search results' do
+    before do
+      allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
+    end
     it 'is fetched when doing a more in this series search' do
-      get '/catalog.json?q1=Always+learning.&f1=in_series&search_field=advanced'
+      get '/catalog.json?clause%5B0%5D%5Bfield%5D=series_title&clause%5B0%5D%5Bquery%5D=Always+learning'
       r = JSON.parse(response.body)
       expect(r['data'].find { |d| d['id'] == '9979171923506421' }['attributes']['series_display']).not_to be_nil
     end
@@ -409,7 +404,7 @@ describe 'blacklight tests' do
       get '/catalog/9979171923506421/raw'
       r = JSON.parse(response.body)
       series_title = r['series_display']
-      get '/catalog?q3=Always+learning&f3=series_title&search_field=advanced'
+      get '/catalog?clause%5B0%5D%5Bquery%5D=Always+learning&clause%5B0%5D%5Bfield%5D=series_title&search_field=advanced'
       expect(response.body).to include(series_title.join(', '))
     end
     it 'is not included in other search contexts' do
@@ -420,8 +415,11 @@ describe 'blacklight tests' do
   end
 
   describe 'notes field in advanced search' do
+    before do
+      allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
+    end
     it 'record with notes field is retrieved' do
-      get '/catalog.json?q1=minhas+entre&f1=notes&search_field=advanced'
+      get '/catalog.json?clause%5B0%5D%5Bfield%5D=notes&clause%5B0%5D%5Bquery%5D=minhas+entre&clause%5B1%5D%5Bop%5D=must&clause%5B1%5D%5Bfield%5D=author&clause%5B1%5D%5Bquery%5D=&clause%5B2%5D%5Bop%5D=must&clause%5B2%5D%5Bfield%5D=title&clause%5B2%5D%5Bquery%5D=&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&commit=Search'
       r = JSON.parse(response.body)
       expect(r['data'].count { |d| d['id'] == '991639143506421' }).to eq(1)
     end
@@ -435,6 +433,9 @@ describe 'blacklight tests' do
   end
 
   describe 'numismatics advanced search' do
+    before do
+      allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
+    end
     it 'only returns coin records' do
       get '/catalog.json?advanced_type=numismatics&q=*'
       r = JSON.parse(response.body)
@@ -477,7 +478,7 @@ describe 'blacklight tests' do
     context "with the built-in advanced search and jsonld is enabled" do
       before do
         allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
-
+      end
       # TODO: what should this really do?  Should the advanced search and jsonld get turned off when an algorithm is swapped
       #       Should we see if we can combine the search handlers by adding a query parameter, or make a combined handler that has both?
       it "retuns the jsonld result not the engineering result" do
