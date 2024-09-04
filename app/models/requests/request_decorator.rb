@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 module Requests
+  # This class is responsible for generating the visual aspects of the Request object for the form
   class RequestDecorator
     delegate :patron,
              :ctx, :system_id, :language, :mfhd, :source, :holdings, :default_pick_ups,
@@ -49,9 +50,10 @@ module Requests
       params = request.display_metadata
       content_tag(:dl, class: "dl-horizontal") do
         params.each do |key, value|
-          if value.present? && display_label[key].present?
-            concat content_tag(:dt, display_label[key].to_s)
-            concat content_tag(:dd, value.first.to_s, lang: request.language.to_s, id: display_label[key].gsub(/[^0-9a-z ]/i, '').downcase.to_s)
+          display_label = Requests.config["short_record_display"][key]
+          if value.present? && display_label.present?
+            concat content_tag(:dt, display_label.to_s)
+            concat content_tag(:dd, value.first.to_s, lang: request.language.to_s, id: display_label.gsub(/[^0-9a-z ]/i, '').downcase.to_s)
           end
         end
       end
@@ -68,7 +70,9 @@ module Requests
 
       fill_in = false
       unless (requestable.count == 1) && (requestable.first.services & ["on_order", "online"]).present?
-        if requestable.any? { |r| !(r.services & fill_in_services).empty? }
+        if requestable.any? do |requestable_decorator|
+          !(requestable_decorator.services & fill_in_services).empty?
+        end
           if any_items?
             fill_in = true if any_enumerated?
           elsif request.too_many_items?
@@ -91,43 +95,42 @@ module Requests
 
     def location_label
       return "" if holding.blank?
-      if any_items? && requestable.first.item.temp_loc? && !requestable.first.item.in_resource_sharing?
-        label = holding["current_library"]
-        label += " - #{holding['current_location']}" if holding["current_location"].present?
+      first_requestable_item = requestable.first.item if any_items?
+      if any_items? && first_requestable_item.temp_loc? && !first_requestable_item.in_resource_sharing?
+        current_location_label
       else
-        label = holding["library"]
-        label += " - #{holding['location']}" if holding["location"].present?
+        permanent_location_label
       end
+    end
+
+    def current_location_label
+      label = holding["current_library"]
+      current_holding_location = holding['current_location']
+      label += " - #{current_holding_location}" if current_holding_location.present?
+      label
+    end
+
+    def permanent_location_label
+      label = holding["library"]
+      holding_location = holding['location']
+      label += " - #{holding_location}" if holding_location.present?
       label
     end
 
     def holding
-      if any_items? && requestable.first.item.temp_loc? && !requestable.first.item.in_resource_sharing?
-        holdings[requestable.first.item["temp_location_code"]]
+      first_requestable_item = requestable.first.item if any_items?
+      if any_items? && first_requestable_item.temp_loc? && !first_requestable_item.in_resource_sharing?
+        holdings[first_requestable_item["temp_location_code"]]
       else
         holdings[mfhd]
       end
     end
 
-    def alma_provider_on_shelf_item_available?
-      patron.alma_provider?  && !off_site? && any_available?
-    end
-
     def alma_provider_item_unavailable?
-      patron.alma_provider?  && !(any_available? || any_in_process?)
+      patron.alma_provider? && !(any_available? || any_in_process?)
     end
 
     private
-
-      def display_label
-        {
-          author: "Author/Artist",
-          title: "Title",
-          date: "Published/Created",
-          id: "Bibliographic ID",
-          mfhd: "Holding ID (mfhd)"
-        }.with_indifferent_access
-      end
 
       def fill_in_services
         ["annex", "recap_no_items", "on_shelf"]

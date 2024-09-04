@@ -16,6 +16,12 @@ defaults: &defaults
     scsbcul: "CUL"
     scsbnypl: "NYPL"
     scsbhl: "HL"
+  short_record_display:
+    author: "Author/Artist"
+    title: "Title"
+    date: "Published/Created"
+    id: "Bibliographic ID"
+    mfhd: "Holding ID (mfhd)"
 development:
   <<: *defaults
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
