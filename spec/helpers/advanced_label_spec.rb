@@ -4,7 +4,6 @@ require 'rails_helper'
 
 RSpec.describe BlacklightHelper do
   class MockConfig
-    include Blacklight::SearchFields
     include AdvancedHelper
   end
 
