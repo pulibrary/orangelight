@@ -119,8 +119,6 @@ jobs:
           name: Index Test Data
           command: bundle exec rake pulsearch:solr:index
       - ruby/rspec-test
-      - store_test_results:
-          path: ~/rspec
       # Store capybara screenshots if there are failing system tests
       - store_artifacts:
           path:  ~/orangelight/tmp/capybara/
