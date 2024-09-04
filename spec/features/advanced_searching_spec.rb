@@ -5,6 +5,7 @@ require 'rails_helper'
 describe 'advanced searching', advanced_search: true do
   before do
     stub_holding_locations
+    allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
   end
 
   it 'does not have a basic search bar' do

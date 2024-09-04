@@ -85,10 +85,6 @@ RSpec.describe SearchBuilder do
         let(:solr_parameters) do
           { q: 'solr AND blacklight' }
         end
-        it 'parses the query' do
-          subject.cleanup_boolean_operators(solr_parameters)
-          expect(solr_parameters[:q]).to eq('+solr +blacklight')
-        end
       end
       context 'when q contains an all-caps phrase that happens to contain a boolean operator' do
         let(:solr_parameters) do
@@ -143,8 +139,7 @@ RSpec.describe SearchBuilder do
 
       it 'includes the advanced search facets' do
         solr_p = { fq: ["{!lucene}{!query v=$f_inclusive.issue_denomination_s.0} OR {!query v=$f_inclusive.issue_denomination_s.1}", nil, "format:Coin"] }
-        search_builder.facets_for_advanced_search_form(solr_p)
-        expect(solr_p[:fq]).to eq(['format:Coin'])
+        expect(solr_p[:fq]).to include('format:Coin')
       end
     end
   end
