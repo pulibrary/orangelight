@@ -77,7 +77,6 @@ module Requests
     end
 
     def recap_print_only_input(requestable)
-      # id = requestable.item? ? requestable.item['id'] : requestable.holding['id']
       content_tag(:fieldset, class: 'recap--print', id: "recap_group_#{requestable.preferred_request_id}") do
         concat hidden_field_tag "requestable[][type]", "", value: 'recap'
       end
