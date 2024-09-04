@@ -2,7 +2,6 @@
 module Requests
   class Requestable
     attr_reader :bib
-    attr_reader :holding
     attr_reader :item
     attr_reader :location
     attr_reader :call_number
@@ -25,7 +24,7 @@ module Requests
     # @param patron [Patron] the patron information about the current user
     def initialize(bib:, holding: nil, item: nil, location: nil, patron:)
       @bib = bib
-      @holding = holding
+      @holding = Holding.new holding
       # Item inherits from SimpleDelegator which requires at least one argument
       # The argument is the Object that SimpleDelegator will delegate to.
       @item = item.present? ? Item.new(item) : NullItem.new({})
@@ -33,24 +32,27 @@ module Requests
       @services = []
       @patron = patron
       @user_barcode = patron.barcode
-      @call_number = holding.first[1]&.dig 'call_number_browse'
+      @call_number = @holding.first_mfhd['call_number_browse']
       @title = bib[:title_citation_display]&.first
       @pageable = Pageable.new(call_number:, location_code:)
       @mappable = Requests::Mapable.new(bib_id: bib[:id], holdings: holding, location_code:)
-      @illiad = Requests::Illiad.new(enum: item&.fetch(:enum, nil), chron: item&.fetch(:chron, nil), call_number: holding.first[1]&.dig('call_number_browse'))
+      @illiad = Requests::Illiad.new(enum: item&.fetch(:enum, nil), chron: item&.fetch(:chron, nil), call_number:)
     end
 
     delegate :pick_up_location_id, :pick_up_location_code, :item_type, :enum_value, :cron_value, :item_data?,
              :temp_loc?, :in_resource_sharing?, :on_reserve?, :inaccessible?, :hold_request?, :enumerated?, :item_type_non_circulate?, :partner_holding?,
              :id, :use_statement, :collection_code, :missing?, :charged?, :status, :status_label, :barcode?, :barcode, :preservation_conservation?, to: :item
 
-    # non alma options
+    def holding
+      @holding.to_h
+    end
+
     def thesis?
-      holding.key?("thesis") && holding["thesis"][:location_code] == 'mudd$stacks'
+      @holding.thesis?
     end
 
     def numismatics?
-      holding.key?("numismatics") && holding["numismatics"][:location_code] == 'rare$num'
+      @holding.numismatics?
     end
 
     # Reading Room Request

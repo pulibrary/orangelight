@@ -562,7 +562,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:user) }
     let(:item) { { status_label: "Available", location_code: "scsbnypl" }.with_indifferent_access }
     let(:location) { { "holding_library" => { "code" => "marquand" }, "library" => { "code" => "marquand" } } }
-    let(:requestable) { described_class.new(bib: {}, holding: [{ 1 => { 'call_number_browse': 'blah' } }], location:, patron:, item:) }
+    let(:requestable) { described_class.new(bib: {}, holding: { 1 => { 'call_number_browse': 'blah' } }, location:, patron:, item:) }
 
     describe '#site' do
       it 'returns a Marquand site param' do
