@@ -360,7 +360,8 @@ module Requests
 
       def build_delivery_locations(delivery_locations)
         delivery_locations.map do |loc|
-          pick_up_code = loc["library"]["code"] if loc["library"].present?
+          library = loc["library"]
+          pick_up_code = library.present? && library["code"]
           pick_up_code ||= 'firestone'
           loc.merge("pick_up_location_code" => pick_up_code) { |_key, v1, _v2| v1 }
         end
