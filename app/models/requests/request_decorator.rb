@@ -11,13 +11,13 @@ module Requests
 
     alias bib_id system_id
 
-    attr_reader :request, :view_context, :first_filtered_requestable, :non_requestable_mesage
+    attr_reader :request, :view_context, :first_filtered_requestable, :non_requestable_message
     def initialize(request, view_context)
       @request = request
       @view_context = view_context
       @requestable_list = request.requestable.map { |req| RequestableDecorator.new(req, view_context) }
       @first_filtered_requestable = RequestableDecorator.new(request.first_filtered_requestable, view_context)
-      @non_requestable_mesage = "See Circulation Desk, there are no requestable items for this record"
+      @non_requestable_message = "See Circulation Desk, there are no requestable items for this record"
     end
 
     def requestable
