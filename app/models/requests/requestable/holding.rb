@@ -21,7 +21,7 @@ module Requests
         to_h.key?("numismatics") && to_h["numismatics"][:location_code] == 'rare$num'
       end
 
-      def first_mfhd
+      def holding_data
         to_h.values&.first || {}
       end
     end
