@@ -16,7 +16,7 @@ describe Requests::RequestableDecorator do
   let(:patron) { Requests::Patron.new(user:, session: {}, patron: valid_patron) }
 
   let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
-  let(:default_stubbed_questions) { { patron:, item_data?: true, circulates?: true, on_shelf?: false, recap?: false, annex?: false, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, cul_avery?: false, resource_shared?: false, eligible_for_library_services?: true } }
+  let(:default_stubbed_questions) { { patron:, item_data?: true, circulates?: true, on_shelf?: false, recap?: false, annex?: false, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, cul_avery?: false, resource_shared?: false, eligible_for_library_services?: true } }
   let(:ldap) { {} }
 
   describe "#digitize?" do
@@ -34,13 +34,6 @@ describe Requests::RequestableDecorator do
 
     context "no item data and does not circulate and is recap_edd and ill_eligible" do
       let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, ill_eligible?: true) }
-      it 'can not be digitized' do
-        expect(decorator.digitize?).to be_falsey
-      end
-    end
-
-    context "no item data and does not circulate and is recap_edd and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, traceable?: true) }
       it 'can not be digitized' do
         expect(decorator.digitize?).to be_falsey
       end
@@ -81,22 +74,8 @@ describe Requests::RequestableDecorator do
       end
     end
 
-    context "with item data and does not circulate and is not recap_edd but is on_shelf edd and not on_order and not in process and not traceable and not aeon and not ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(circulates?: false, services: ['on_shelf_edd'], recap_edd?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: false) }
-      it 'can be digitized' do
-        expect(decorator.digitize?).to be_truthy
-      end
-    end
-
     context "with item data and does not circulate but is on_shelf edd and ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(circulates?: false, services: ['on_shelf_edd'], recap_edd?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: true) }
-      it 'can not be digitized' do
-        expect(decorator.digitize?).to be_falsey
-      end
-    end
-
-    context "with item data and does not circulate and is but is on_shelf edd and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(circulates?: false, services: ['on_shelf_edd'], recap_edd?: false, on_order?: false, in_process?: false, traceable?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(circulates?: false, services: ['on_shelf_edd'], recap_edd?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: true) }
       it 'can not be digitized' do
         expect(decorator.digitize?).to be_falsey
       end
@@ -116,22 +95,15 @@ describe Requests::RequestableDecorator do
       end
     end
 
-    context "with item data and does circulate and not on order and not in process and not traceable and not aeon and not ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(services: ['on_shelf_edd'], on_order?: false, in_process?: false, traceable?: false, aeon?: true, ill_eligible?: false) }
+    context "with item data and does circulate and not on order and not in process and not aeon and not ill_eligible" do
+      let(:stubbed_questions) { default_stubbed_questions.merge(services: ['on_shelf_edd'], on_order?: false, in_process?: false, aeon?: true, ill_eligible?: false) }
       it 'can not be digitized' do
         expect(decorator.digitize?).to be_truthy
       end
     end
 
     context "with item data and does circulate and ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(services: ['on_shelf_edd'], on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: true) }
-      it 'can not be digitized' do
-        expect(decorator.digitize?).to be_falsey
-      end
-    end
-
-    context "with item data and does circulate and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(services: ['on_shelf_edd'], on_order?: false, in_process?: false, traceable?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(services: ['on_shelf_edd'], on_order?: false, in_process?: false, aeon?: false, ill_eligible?: true) }
       it 'can not be digitized' do
         expect(decorator.digitize?).to be_falsey
       end
@@ -187,13 +159,6 @@ describe Requests::RequestableDecorator do
         end
       end
 
-      context "traceable" do
-        let(:stubbed_questions) { default_stubbed_questions.merge(on_shelf?: true, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: true) }
-        it 'can not be picked up' do
-          expect(decorator.pick_up?).to be_falsey
-        end
-      end
-
       context "ill_eligible?" do
         let(:stubbed_questions) { default_stubbed_questions.merge(circulates?: true, on_shelf?: true, holding_library_in_library_only?: false, ill_eligible?: true) }
         it 'can not be picked up' do
@@ -202,7 +167,7 @@ describe Requests::RequestableDecorator do
       end
 
       context "on_shelf" do
-        let(:stubbed_questions) { default_stubbed_questions.merge(on_shelf?: true, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: true, ill_eligible?: false, services: ['on_shelf']) }
+        let(:stubbed_questions) { default_stubbed_questions.merge(on_shelf?: true, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: true, ill_eligible?: false, services: ['on_shelf']) }
         it 'can be picked up' do
           expect(decorator.pick_up?).to be_truthy
         end
@@ -238,13 +203,6 @@ describe Requests::RequestableDecorator do
 
       context "has item data and circulates and in_process" do
         let(:stubbed_questions) { default_stubbed_questions.merge(on_shelf?: false, recap?: true, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: true) }
-        it 'can not be picked up' do
-          expect(decorator.pick_up?).to be_falsey
-        end
-      end
-
-      context "has item data and circulates and traceable?" do
-        let(:stubbed_questions) { default_stubbed_questions.merge(on_shelf?: false, recap?: true, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: true) }
         it 'can not be picked up' do
           expect(decorator.pick_up?).to be_falsey
         end
@@ -287,13 +245,6 @@ describe Requests::RequestableDecorator do
 
       context "has item data and circulates and annex? and in_process" do
         let(:stubbed_questions) { default_stubbed_questions.merge(on_shelf?: false, recap?: false, annex?: true, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: true) }
-        it 'can not be picked up' do
-          expect(decorator.pick_up?).to be_falsey
-        end
-      end
-
-      context "has item data and circulates and annex? and traceable" do
-        let(:stubbed_questions) { default_stubbed_questions.merge(on_shelf?: false, recap?: false, annex?: true, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: true) }
         it 'can not be picked up' do
           expect(decorator.pick_up?).to be_falsey
         end
@@ -343,21 +294,21 @@ describe Requests::RequestableDecorator do
     end
 
     context "no item data and does not circulate and is recap_edd" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: false) }
       it 'can be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and is recap_edd and aeon" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: true) }
       it 'can be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and is recap_edd and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ['recap_edd'], recap_edd?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false) }
       it 'can be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_truthy
       end
@@ -399,21 +350,14 @@ describe Requests::RequestableDecorator do
     end
 
     context "with item data and does not circulate and is not recap_edd but is on_shelf edd and not on_order and not in process and not traceable and not aeon and not ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: true, circulates?: false, services: ['on_shelf_edd'], recap_edd?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: true, circulates?: false, services: ['on_shelf_edd'], recap_edd?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false) }
       it 'can be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_truthy
       end
     end
 
     context "with item data and does not circulate but is on_shelf edd and ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: true, circulates?: false, services: ['on_shelf_edd'], recap_edd?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: true) }
-      it 'can not be fill_in_digitize?' do
-        expect(decorator.fill_in_digitize?).to be_falsey
-      end
-    end
-
-    context "with item data and does not circulate and is but is on_shelf edd and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: true, circulates?: false, services: ['on_shelf_edd'], recap_edd?: false, on_order?: false, in_process?: false, traceable?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: true, circulates?: false, services: ['on_shelf_edd'], recap_edd?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: true) }
       it 'can not be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_falsey
       end
@@ -434,21 +378,14 @@ describe Requests::RequestableDecorator do
     end
 
     context "with item data and does circulate and not on order and not in process and not traceable and not aeon and not ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: true, circulates?: true, services: ['on_shelf_edd'], on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: true, circulates?: true, services: ['on_shelf_edd'], on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false) }
       it 'can be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_truthy
       end
     end
 
     context "with item data and does circulate and ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: true, circulates?: true, services: ['on_shelf_edd'], on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: true) }
-      it 'can not be fill_in_digitize?' do
-        expect(decorator.fill_in_digitize?).to be_falsey
-      end
-    end
-
-    context "with item data and does circulate and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: true, circulates?: true, services: ['on_shelf_edd'], on_order?: false, in_process?: false, traceable?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: true, circulates?: true, services: ['on_shelf_edd'], on_order?: false, in_process?: false, aeon?: false, ill_eligible?: true) }
       it 'can not be fill_in_digitize?' do
         expect(decorator.fill_in_digitize?).to be_falsey
       end
@@ -484,13 +421,6 @@ describe Requests::RequestableDecorator do
 
     context "eligible to pick up and item_data and on_shelf? and circulates and ill_eligible" do
       let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: true, on_shelf?: true, circulates?: true, holding_library_in_library_only?: false, ill_eligible?: true) }
-      it 'can not be fill_in_pick_up?' do
-        expect(decorator.fill_in_pick_up?).to be_falsey
-      end
-    end
-
-    context "eligible to pick up and item_data and on_shelf? and circulates and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: true, on_shelf?: true, circulates?: true, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, traceable?: true) }
       it 'can not be fill_in_pick_up?' do
         expect(decorator.fill_in_pick_up?).to be_falsey
       end
@@ -555,28 +485,21 @@ describe Requests::RequestableDecorator do
     end
 
     context "eligible to pick up and any service" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: false, services: ['on_shelf']) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, services: ['on_shelf']) }
       it 'can not be requested' do
         expect(decorator.request?).to be_falsey
       end
     end
 
     context "eligible to pick up and no services" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: false, services: []) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, services: []) }
       it 'can be requested' do
         expect(decorator.request?).to be_truthy
       end
     end
 
     context "eligible to pick up and ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: true) }
-      it 'can be requested' do
-        expect(decorator.request?).to be_truthy
-      end
-    end
-
-    context "eligible to pick up and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, traceable?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, aeon?: false, ill_eligible?: true) }
       it 'can be requested' do
         expect(decorator.request?).to be_truthy
       end
@@ -599,7 +522,7 @@ describe Requests::RequestableDecorator do
 
   describe "#will_submit_via_form?" do
     let(:stubbed_questions) { item_flags.merge(user_flags).merge(location).merge(service) }
-    let(:item_flags) { default_stubbed_questions.merge(item_data?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, ask_me?: false) }
+    let(:item_flags) { default_stubbed_questions.merge(item_data?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, aeon?: false, ask_me?: false) }
     let(:service) { { services: ["on_shelf", "on_shelf_edd"], on_shelf?: true } }
     context "a pickup eligible user" do
       let(:user_flags) { { user_barcode: '111222333', eligible_for_library_services?: true } }
@@ -625,28 +548,21 @@ describe Requests::RequestableDecorator do
         end
 
         context "no item data" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, ask_me?: false) }
+          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, aeon?: false, ask_me?: false) }
           it 'will not be submitted' do
             expect(decorator.will_submit_via_form?).to be_falsey
           end
         end
 
-        context "no item data and traceable" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, traceable?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, aeon?: false, ask_me?: false) }
-          it 'will be submitted' do
-            expect(decorator.will_submit_via_form?).to be_truthy
-          end
-        end
-
         context "no item data and in_process" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, in_process?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, traceable?: false, aeon?: false, ask_me?: false) }
+          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, in_process?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, aeon?: false, ask_me?: false) }
           it 'will be submitted' do
             expect(decorator.will_submit_via_form?).to be_truthy
           end
         end
 
         context "no item data and on_order" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, on_order?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, in_process?: false, traceable?: false, aeon?: false, ask_me?: false) }
+          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, on_order?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, in_process?: false, aeon?: false, ask_me?: false) }
           it 'will be submitted' do
             expect(decorator.will_submit_via_form?).to be_truthy
           end
@@ -678,28 +594,28 @@ describe Requests::RequestableDecorator do
         end
 
         context "no item data" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, ask_me?: false) }
+          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, aeon?: false, ask_me?: false) }
           it 'will not be submitted' do
             expect(decorator.will_submit_via_form?).to be_falsey
           end
         end
 
         context "no item data and traceable" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, traceable?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, aeon?: false, ask_me?: false) }
+          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, aeon?: false, ask_me?: false) }
           it 'will be submitted' do
             expect(decorator.will_submit_via_form?).to be_falsey
           end
         end
 
         context "no item data and in_process" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, in_process?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, traceable?: false, aeon?: false, ask_me?: false) }
+          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, in_process?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, aeon?: false, ask_me?: false) }
           it 'will be submitted' do
             expect(decorator.will_submit_via_form?).to be_falsey
           end
         end
 
         context "no item data and on_order" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, on_order?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, in_process?: false, traceable?: false, aeon?: false, ask_me?: false) }
+          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, on_order?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, in_process?: false, aeon?: false, ask_me?: false) }
           it 'will be submitted' do
             expect(decorator.will_submit_via_form?).to be_falsey
           end
@@ -732,28 +648,28 @@ describe Requests::RequestableDecorator do
         end
 
         context "no item data" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, aeon?: false, ask_me?: false) }
+          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, aeon?: false, ask_me?: false) }
           it 'will not be submitted' do
             expect(decorator.will_submit_via_form?).to be_falsey
           end
         end
 
         context "no item data and traceable" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, traceable?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, aeon?: false, ask_me?: false) }
+          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, aeon?: false, ask_me?: false) }
           it 'will be submitted' do
             expect(decorator.will_submit_via_form?).to be_falsey
           end
         end
 
         context "no item data and in_process" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, in_process?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, traceable?: false, aeon?: false, ask_me?: false) }
+          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, in_process?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, aeon?: false, ask_me?: false) }
           it 'will be submitted' do
             expect(decorator.will_submit_via_form?).to be_falsey
           end
         end
 
         context "no item data and on_order" do
-          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, on_order?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, in_process?: false, traceable?: false, aeon?: false, ask_me?: false) }
+          let(:item_flags) { default_stubbed_questions.merge(item_data?: false, on_order?: true, circulates?: true, holding_library_in_library_only?: false, on_shelf?: false, recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, in_process?: false, aeon?: false, ask_me?: false) }
           it 'will be submitted' do
             expect(decorator.will_submit_via_form?).to be_falsey
           end
@@ -769,21 +685,21 @@ describe Requests::RequestableDecorator do
     end
 
     context "no item data and does not circulate and ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, traceable?: false, user_barcode: '111222', aeon?: false, ask_me?: false, library_code: 'abc') }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, user_barcode: '111222', aeon?: false, ask_me?: false, library_code: 'abc') }
       it 'will be submitted' do
         expect(decorator.will_submit_via_form?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and ill_eligible and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, traceable?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false) }
       it 'will be submitted' do
         expect(decorator.will_submit_via_form?).to be_truthy
       end
     end
 
     context "no item data and does not circulate and ill_eligible and traceable and no user barcode" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, traceable?: true, eligible_for_library_services?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, eligible_for_library_services?: false) }
       it 'will be submitted' do
         expect(decorator.will_submit_via_form?).to be_falsey
       end
@@ -810,13 +726,6 @@ describe Requests::RequestableDecorator do
       end
     end
 
-    context "no item data and does not circulate and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: true) }
-      it 'will be submitted' do
-        expect(decorator.will_submit_via_form?).to be_truthy
-      end
-    end
-
     context "no item data and does not circulate and in_process" do
       let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: true) }
       it 'will be submitted' do
@@ -832,21 +741,7 @@ describe Requests::RequestableDecorator do
     end
 
     context "no item data and does not circulate and eligible_for_library_services?" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: false, user_barcode: '111222', ask_me?: false, library_code: 'abc', aeon?: false) }
-      it 'will not be submitted' do
-        expect(decorator.will_submit_via_form?).to be_falsey
-      end
-    end
-
-    context "no item data and does not circulate and eligible_for_library_services? and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: true, user_barcode: '11122233') }
-      it 'will be submitted' do
-        expect(decorator.will_submit_via_form?).to be_truthy
-      end
-    end
-
-    context "no item data and does not circulate and eligible_for_library_services? and traceable and no user barcode " do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, traceable?: true, eligible_for_library_services?: false, ask_me?: false, library_code: 'abc', aeon?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: false, on_order?: false, in_process?: false, user_barcode: '111222', ask_me?: false, library_code: 'abc', aeon?: false) }
       it 'will not be submitted' do
         expect(decorator.will_submit_via_form?).to be_falsey
       end
@@ -881,21 +776,14 @@ describe Requests::RequestableDecorator do
     end
 
     context "no item data and does not circulate and eligible_for_library_services? and ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, traceable?: false, user_barcode: '111222', ask_me?: false, library_code: 'abc', aeon?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, user_barcode: '111222', ask_me?: false, library_code: 'abc', aeon?: false) }
       it 'will be submitted' do
         expect(decorator.will_submit_via_form?).to be_truthy
       end
     end
 
-    context "no item data and does not circulate and eligible_for_library_services? and ill_eligible and traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, traceable?: true) }
-      it 'will not be submitted' do
-        expect(decorator.will_submit_via_form?).to be_truthy
-      end
-    end
-
     context "no item data and does not circulate and eligible_for_library_services? and ill_eligible and traceable and no user barcode" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, traceable?: true, eligible_for_library_services?: false, ask_me?: false, library_code: 'abc', aeon?: false) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, eligible_for_library_services?: false, ask_me?: false, library_code: 'abc', aeon?: false) }
       let(:valid_patron) do
         { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
           "university_id" => "9999999", "patron_group" => "staff",
@@ -958,37 +846,30 @@ describe Requests::RequestableDecorator do
 
   describe "#request_status?" do
     context "any service" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: false, services: ['on_shelf']) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, services: ['on_shelf']) }
       it 'can not be requested' do
         expect(decorator.request_status?).to be_falsey
       end
     end
 
     context "no services" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: false, services: []) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, services: []) }
       it 'can be requested' do
         expect(decorator.request_status?).to be_truthy
       end
     end
 
     context "ill_eligible" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, traceable?: false, aeon?: false, ill_eligible?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, aeon?: false, ill_eligible?: true) }
       it 'can be requested' do
         expect(decorator.request_status?).to be_truthy
       end
     end
 
     context "aeon?" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, traceable?: false, aeon?: true, ill_eligible?: false, services: ['any']) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, aeon?: true, ill_eligible?: false, services: ['any']) }
       it 'can be requested' do
         expect(decorator.request_status?).to be_falsey
-      end
-    end
-
-    context "traceable" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(on_order?: false, in_process?: false, traceable?: true) }
-      it 'can be requested' do
-        expect(decorator.request_status?).to be_truthy
       end
     end
 
