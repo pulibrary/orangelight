@@ -260,11 +260,8 @@ module Requests
     def submit_message_for_requestable_items(requestable_list)
       single_item = "Request this Item"
       multi_item = "Request Selected Items"
-      trace = "Trace this item"
       if requestable_list.first.annex? || requestable_list.first.pageable_loc?
         multi_item
-      elsif requestable_list.first.traceable?
-        trace
       else
         single_item
       end
@@ -342,7 +339,6 @@ module Requests
           display_requestable_list(requestable)
           # temporary changes issue 438
           # concat link_to 'Where to find it', requestable.map_url(mfhd_id)
-          # concat content_tag(:div, sanitize(I18n.t("requests.trace.brief_msg")), class: 'service-item') if requestable.traceable?
         end
       end
 

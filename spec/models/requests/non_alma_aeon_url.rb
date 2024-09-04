@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Requests::NonAlmaAeonUrl do
+RSpec.describe Requests::NonAlmaAeonUrl, requests: true do
   let(:holdings) do
     { "thesis" => {} }
   end

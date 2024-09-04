@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
-describe Requests::Submission do
+describe Requests::Submission, requests: true do
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
       "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",

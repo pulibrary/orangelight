@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :none } do
+describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :none }, requests: true do
   let(:user) { FactoryBot.build(:user) }
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
@@ -562,7 +562,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:user) }
     let(:item) { { status_label: "Available", location_code: "scsbnypl" }.with_indifferent_access }
     let(:location) { { "holding_library" => { "code" => "marquand" }, "library" => { "code" => "marquand" } } }
-    let(:requestable) { described_class.new(bib: {}, holding: [{ 1 => { 'call_number_browse': 'blah' } }], location:, patron:, item:) }
+    let(:requestable) { described_class.new(bib: {}, holding: { 1 => { 'call_number_browse': 'blah' } }, location:, patron:, item:) }
 
     describe '#site' do
       it 'returns a Marquand site param' do

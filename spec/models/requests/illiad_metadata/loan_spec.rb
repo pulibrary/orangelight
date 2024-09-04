@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe(Requests::IlliadMetadata::Loan) do
+RSpec.describe(Requests::IlliadMetadata::Loan, requests: true) do
   describe 'attributes' do
     it 'gets the LoanAuthor from the bib author' do
       loan = described_class.new(bib: { 'author' => 'Albert Einstein' }, patron: Requests::Patron.new(user: FactoryBot.build(:unauthenticated_patron)), item: {})

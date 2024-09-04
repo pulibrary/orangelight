@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Requests::AeonUrl do
+RSpec.describe Requests::AeonUrl, requests: true do
   let(:holdings) do
     { "12345" => {
       "location" => "Special Collections - Numismatics Collection",

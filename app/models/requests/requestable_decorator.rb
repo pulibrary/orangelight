@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 module Requests
   class RequestableDecorator
-    delegate :system_id, :aeon_mapped_params, :services, :charged?, :annex?, :lewis?, :pageable_loc?, :traceable?, :on_reserve?,
+    delegate :system_id, :aeon_mapped_params, :services, :charged?, :annex?, :lewis?, :pageable_loc?, :on_reserve?,
              :ask_me?, :aeon_request_url, :location, :temp_loc_other_than_resource_sharing?, :call_number, :eligible_for_library_services?,
              :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :item_data?, :recap_edd?, :user_barcode, :clancy?,
              :holding, :item_location_code, :item?, :item, :partner_holding?, :status, :status_label, :use_restriction?, :library_code, :enum_value, :item_at_clancy?,
@@ -51,12 +51,12 @@ module Requests
     end
 
     def request_status?
-      on_order? || in_process? || traceable? || ill_eligible? || services.empty?
+      on_order? || in_process? || ill_eligible? || services.empty?
     end
 
     def will_submit_via_form?
       return false unless eligible_for_this_item?
-      digitize? || pick_up? || scsb_in_library_use? || ill_eligible? || on_order? || in_process? || traceable? || off_site?
+      digitize? || pick_up? || scsb_in_library_use? || ill_eligible? || on_order? || in_process? || off_site?
     end
 
     def on_shelf_edd?

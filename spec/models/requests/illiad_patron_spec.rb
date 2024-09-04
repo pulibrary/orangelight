@@ -2,7 +2,7 @@
 require 'rails_helper'
 require 'net/ldap'
 
-describe Requests::IlliadPatron, type: :controller do
+describe Requests::IlliadPatron, type: :controller, requests: true do
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
       "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
