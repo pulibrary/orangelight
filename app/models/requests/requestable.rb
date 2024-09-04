@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 module Requests
+  # This class describes a resource that a
+  # library patron might wish to request
   class Requestable
     attr_reader :bib
     attr_reader :item
