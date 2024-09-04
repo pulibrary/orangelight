@@ -2,7 +2,7 @@
 require 'rails_helper'
 require 'net/ldap'
 
-describe Requests::IlliadTransactionClient, type: :controller do
+describe Requests::IlliadTransactionClient, type: :controller, requests: true do
   let(:valid_patron) { { "netid" => "abc234", ldap: { status: "faculty", pustatus: "fac" } }.with_indifferent_access }
   let(:user_info) do
     user = instance_double(User, guest?: false, uid: 'foo')

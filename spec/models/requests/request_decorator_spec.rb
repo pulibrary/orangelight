@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe Requests::RequestDecorator do
+describe Requests::RequestDecorator, requests: true do
   include ActionView::TestCase::Behavior
 
   subject(:decorator) { described_class.new(request, view) }
