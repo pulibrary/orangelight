@@ -84,7 +84,7 @@ module Requests
 
     def recap_edd?
       return location[:recap_electronic_delivery_location] == true unless partner_holding?
-      scsb_edd_collection_codes.include?(collection_code) && !scsb_in_library_use?
+      in_scsb_edd_collection? && !scsb_in_library_use?
     end
 
     def lewis?
@@ -267,9 +267,11 @@ module Requests
 
     private
 
-      def scsb_edd_collection_codes
-        %w[AR BR CA CH CJ CP CR CU EN EV GC GE GS HS JC JD LD LE ML SW UT NA NH NL NP NQ NS NW GN JN JO PA PB PN GP JP] +
+      def in_scsb_edd_collection?
+        scsb_edd_collection_codes =
+          %w[AR BR CA CH CJ CP CR CU EN EV GC GE GS HS JC JD LD LE ML SW UT NA NH NL NP NQ NS NW GN JN JO PA PB PN GP JP] +
           %w[AH DL FL GUT HB HC HJ HK HL HS HW HY MCZ ML TZ WL] # Harvard collections available to digitize
+        scsb_edd_collection_codes.include?(collection_code)
       end
 
       def location_valid?
