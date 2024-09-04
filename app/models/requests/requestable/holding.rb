@@ -22,7 +22,7 @@ module Requests
       end
 
       def first_mfhd
-        to_h.values.first
+        to_h.values&.first || {}
       end
     end
   end
