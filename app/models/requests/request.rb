@@ -146,7 +146,6 @@ module Requests
       Requests::BibdataService.delivery_locations.each_value do |pick_up|
         pick_up_locations << { label: pick_up["label"], gfa_pickup: pick_up["gfa_pickup"], pick_up_location_code: pick_up["library"]["code"] || 'firestone', staff_only: pick_up["staff_only"] } if pick_up["pickup_location"] == true
       end
-      # pick_up_locations.sort_by! { |loc| loc[:label] }
       sort_pick_ups(pick_up_locations)
     end
 
@@ -374,10 +373,6 @@ module Requests
           items_with_symbols = items_to_symbols(items_as_json)
           mfhd_items[@mfhd] = items_with_symbols
         end
-        # else
-        #   empty_mfhd = items_by_bib(@system_id)
-        #   mfhd_items[@mfhd] = [empty_mfhd[@mfhd]]
-        # end
         mfhd_items
       end
 
@@ -385,38 +380,8 @@ module Requests
       def load_items_by_mfhd
         mfhd_items = {}
         mfhd_items[@mfhd] = items_by_mfhd(@system_id, @mfhd)
-        # items_by_mfhd(@system_id, @mfhd).each do |item_info|
-        #  mfhd_items[item_info['id']] = load_item_for_holding(holding_id: @mfhd, item_info: item_info)
-        # end
         mfhd_items
       end
-
-      # def load_items_by_bib_id
-      #   mfhd_items = {}
-      #   items_by_bib(@system_id).each do |holding_id, item_info|
-      #     next if @mfhd != holding_id
-      #     mfhd_items[holding_id] = load_item_for_holding(holding_id: holding_id, item_info: item_info)
-      #   end
-      #   mfhd_items
-      # end
-
-      # def load_item_for_holding(holding_id:, item_info:)
-      #   # new check needed here
-      #   if item_info[:more_items] == false
-      #     if item_info[:status].starts_with?('On-Order') || item_info[:status].starts_with?('Pending Order')
-      #       [item_info]
-      #     elsif item_info[:status].starts_with?('Online')
-      #       [item_info]
-      #     else
-      #       ## we don't need to call this again
-      #       items_to_symbols(items_by_mfhd(@system_id, holding_id))
-      #     end
-      #   else
-      #     ## we don't need to call this again
-      #     # items_to_symbols(items_by_mfhd(@system_id, holding_id))
-      #     items_to_symbols([item_info])
-      #   end
-      # end
 
       def items_to_symbols(items = [])
         items_with_symbols = []
