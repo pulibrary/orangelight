@@ -248,18 +248,15 @@ module Requests
     end
 
     def cul_avery?
-      return false unless item?
-      item[:collection_code].present? && item[:collection_code] == 'AR'
+      item&.collection_code == 'AR'
     end
 
     def cul_music?
-      return false unless item?
-      item[:collection_code].present? && item[:collection_code] == 'MR'
+      item&.collection_code == 'MR'
     end
 
     def hl_art?
-      return false unless item?
-      item[:collection_code].present? && item[:collection_code] == 'FL'
+      item&.collection_code == 'FL'
     end
 
     def resource_shared?
