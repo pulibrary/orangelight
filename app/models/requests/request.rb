@@ -174,7 +174,7 @@ module Requests
     end
 
     def off_site?
-      return false if location['library'].nil? || location['library']['code'].nil?
+      return false if location['library'].blank? || location['library']['code'].blank?
       library_code = location[:library][:code]
       library_code == 'recap' || library_code == 'marquand' || library_code == 'annex'
     end
@@ -182,7 +182,7 @@ module Requests
     def too_many_items?
       holding = holdings[@mfhd]
       items = holding.try(:[], "items")
-      return false if items.nil?
+      return false if items.blank?
 
       return true if items.count > 500
 
@@ -198,7 +198,7 @@ module Requests
         return [] if doc._source.blank?
         if partner_system_id?
           build_scsb_requestable
-        elsif !items.nil?
+        elsif items.present?
           # for single aeon item, ends up in this statement
           build_requestable_with_items
         else
@@ -229,8 +229,9 @@ module Requests
 
       # @return [Array<Requests::Requestable>] array containing Requests::Requestables
       def build_holding_scsb_items(id:, values:, availability_data:, requestable_items:)
-        return requestable_items if values['items'].nil?
-        barcodesort = build_barcode_sort(items: values['items'], availability_data:)
+        values_items = values['items']
+        return requestable_items if values_items.blank?
+        barcodesort = build_barcode_sort(items: values_items, availability_data:)
         barcodesort.each_value do |item|
           item['location_code'] = location_code
           params = build_requestable_params(item: item.with_indifferent_access, holding: { id.to_sym.to_s => holdings[id] },
@@ -248,7 +249,7 @@ module Requests
         end
         availability_data.each do |item|
           barcode_item = barcodesort[item['itemBarcode']]
-          next if barcode_item.nil? || barcode_item["status_source"] == "work_order" || item['errorMessage'].present?
+          next if barcode_item.blank? || barcode_item["status_source"] == "work_order" || item['errorMessage'].present?
           barcode_item['status_label'] = item['itemAvailabilityStatus']
           barcode_item['status'] = nil
         end
@@ -279,7 +280,7 @@ module Requests
 
       # @return [Array<Requests::Requestable>] array containing Requests::Requestables or empty array
       def build_requestable_from_data
-        return if doc[:holdings_1display].nil?
+        return if doc[:holdings_1display].blank?
         @mfhd ||= 'thesis' if thesis?
         @mfhd ||= 'numismatics' if numismatics?
         return [] if holdings[@mfhd].blank?
@@ -335,7 +336,7 @@ module Requests
       end
 
       def load_location
-        return if location_code.nil?
+        return if location_code.blank?
         location = get_location_data(location_code)
         location[:delivery_locations] = sort_pick_ups(location[:delivery_locations]) if location[:delivery_locations]&.present?
         location
