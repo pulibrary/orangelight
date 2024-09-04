@@ -49,6 +49,10 @@ class Requests::Requestable
       false
     end
 
+    def temp_loc_other_than_resource_sharing?
+      false
+    end
+
     def on_reserve?
       false
     end
