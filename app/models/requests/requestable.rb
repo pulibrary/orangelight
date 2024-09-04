@@ -10,7 +10,7 @@ module Requests
     attr_reader :title
     attr_reader :user_barcode
     attr_reader :patron
-    attr_accessor :services
+    attr_reader :services
 
     delegate :pageable_loc?, to: :@pageable
     delegate :map_url, to: :@mappable
@@ -259,6 +259,10 @@ module Requests
 
     def resource_shared?
       library_code == "RES_SHARE"
+    end
+
+    def replace_existing_services(new_services)
+      @services = new_services
     end
 
     private
