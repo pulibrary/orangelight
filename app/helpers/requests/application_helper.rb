@@ -144,19 +144,6 @@ module Requests
       else
         [default_pick_ups[0]]
       end
-      # return
-      # temporary only deliver to holding library or firestone
-      # locs = []
-      # if requestable.services.include? 'trace'
-      #   locs = default_pick_ups
-      # elsif requestable.pick_up_locations.nil?
-      #   locs = default_pick_ups
-      # else
-      #   requestable.pick_up_locations.each do |location|
-      #     locs << { label: location[:label], gfa_pickup: location[:gfa_pickup], staff_only: location[:staff_only] }
-      #   end
-      # end
-      # locs
     end
 
     # rubocop:disable Rails/OutputSafety
