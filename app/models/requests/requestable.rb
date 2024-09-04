@@ -34,7 +34,7 @@ module Requests
       @services = []
       @patron = patron
       @user_barcode = patron.barcode
-      @call_number = @holding.first_mfhd['call_number_browse']
+      @call_number = @holding.holding_data['call_number_browse']
       @title = bib[:title_citation_display]&.first
       @pageable = Pageable.new(call_number:, location_code:)
       @mappable = Requests::Mapable.new(bib_id: bib[:id], holdings: holding, location_code:)
