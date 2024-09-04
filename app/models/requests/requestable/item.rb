@@ -132,6 +132,11 @@ class Requests::Requestable
       Requests::Config[:recap_partner_locations].keys.include? self["location_code"]
     end
 
+    # The location code (e.g. firestone$pf)
+    def location
+      self[:location]
+    end
+
     private
 
       def available_statuses
