@@ -243,8 +243,6 @@ module Requests
 
     def available?
       (always_requestable? && !held_at_marquand_library?) || item.available?
-      # This dealt with no item records be "available" but broke a bunch of other tests
-      # ((always_requestable? && !held_at_marquand_library?) || (!has_item_data? || item.available?))
     end
 
     def cul_avery?
