@@ -2,7 +2,6 @@
 
 # Helper methods for the advanced search form
 module AdvancedHelper
-
   # Fill in default from existing search, if present
   # -- if you are using same search fields for basic
   # search and advanced, will even fill in properly if existing
