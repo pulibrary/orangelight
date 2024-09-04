@@ -105,9 +105,9 @@ describe 'Searching', type: :system, js: false do
   context 'searching for series title from advanced search' do
     it 'displays the online availability' do
       visit 'advanced'
-      select('Series title', from: 'f1')
-      fill_in('q1', with: 'SAGE research methods')
-      click_on('advanced-search-submit')
+      select('Series title', from: 'Options for advanced search')
+      fill_in('Advanced search terms', with: 'SAGE research methods')
+      click_on('Search')
       expect(page).to have_content('The lives of Black and Latino teenagers')
       expect(page).not_to have_content('No holdings available for this record')
       expect(page).to have_content('SAGE Research Methods Cases Part I')
@@ -202,7 +202,7 @@ describe 'Searching', type: :system, js: false do
       in_the_library.click
       click_on('advanced-search-submit')
       page.first('.navbar-toggler').click
-      expect(page).to have_content("Any of:\nIn the Library")
+      expect(page).to have_content(/Any of:\nIn the Library/)
     end
 
     it 'displays the online availability for a series title' do

@@ -10,6 +10,7 @@ describe 'Selecting search algorithms for results', type: :system, js: false do
   context 'with the search algorithms feature enabled' do
     before do
       allow(Flipflop).to receive(:multi_algorithm?).and_return(true)
+      allow(Flipflop).to receive(:json_query_dsl?).and_return(false)
     end
 
     it 'renders a select widget used to select the ordering algorithm' do
@@ -23,6 +24,26 @@ describe 'Selecting search algorithms for results', type: :system, js: false do
       click_link('engineering')
       expect(page).to have_button('Rank by engineering')
       expect(page).to have_text('1. Reconstructing the Vitruvian Scorpio: An Engineering Analysis')
+    end
+    context 'with the new json query dsl' do
+      before do
+        allow(Flipflop).to receive(:multi_algorithm?).and_return(true)
+        allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
+      end
+
+      it 'renders a select widget used to select the ordering algorithm' do
+        pending("Allowing user to choose ranking algorithm while using the json query dsl.")
+        visit '/catalog?search_field=all_fields&q=roman'
+        expect(page).to have_text('1. Огонек : роман')
+
+        click_button('Rank by default')
+        within('#engineering.dropdown-help-text') do
+          expect(page).to have_text("move documents about engineering to the top")
+        end
+        click_link('engineering')
+        expect(page).to have_button('Rank by engineering')
+        expect(page).to have_text('1. Reconstructing the Vitruvian Scorpio: An Engineering Analysis')
+      end
     end
   end
 
