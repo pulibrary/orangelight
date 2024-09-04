@@ -129,10 +129,6 @@ module Requests
       item.present?
     end
 
-    def traceable?
-      services.include?('trace')
-    end
-
     def pending?
       return false unless location_valid?
       return false unless on_order? || in_process? || preservation?
