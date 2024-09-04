@@ -116,5 +116,9 @@ class Requests::Requestable
     def partner_holding?
       false
     end
+
+    def location
+      nil
+    end
   end
 end

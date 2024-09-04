@@ -217,11 +217,7 @@ module Requests
     end
 
     def item_location_code
-      if item? && item["location"].present?
-        item['location'].to_s
-      else
-        location_code
-      end
+      item&.location || location_code
     end
 
     def library_code
