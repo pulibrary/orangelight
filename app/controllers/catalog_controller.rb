@@ -678,11 +678,7 @@ class CatalogController < ApplicationController
     config.add_results_document_tool(:bookmark, partial: 'bookmark_control')
 
     config.filter_search_state_fields = true
-    config.search_state_fields = config.search_state_fields + [
-      :advanced_type, :f1, :f2, :f3,
-      :op1, :op2, :op3,
-      :q1, :q2, :q3, :clause
-    ]
+    config.search_state_fields = config.search_state_fields + [:advanced_type, :clause]
 
     config.index.constraints_component = Orangelight::ConstraintsComponent
 
