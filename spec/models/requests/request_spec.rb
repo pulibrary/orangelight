@@ -235,7 +235,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       it "has a list of request objects" do
         expect(request_system_id_only_with_holdings_items.requestable).to be_truthy
         expect(request_system_id_only_with_holdings_items.requestable.size).to eq(84)
-        expect(request_system_id_only_with_holdings_items.any_pageable?).to be(false)
         expect(request_system_id_only_with_holdings_items.requestable[0]).to be_instance_of(Requests::Requestable)
       end
 
@@ -565,89 +564,10 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     describe "#requestable" do
       it "is unavailable" do
         expect(request_at_paging_outside.requestable[0].location_code).to eq('firestone$nec')
-        expect(request_at_paging_outside.any_pageable?).to be(false)
         expect(request_at_paging_outside.requestable[0].pageable?).to be_nil
       end
     end
   end
-
-  # context "When passed an ID for a paging location in nec  within a paging call number range" do
-  #   let(:params) {
-  #     {
-  #       system_id: '2942771',
-  #       patron: patron,
-  #     }
-  #   }
-  #   let(:request_at_paging_nec_multiple) { described_class.new(params) }
-  #
-
-  #   describe "#requestable" do
-  #     it "should be unavailable" do
-  #       expect(request_at_paging_nec_multiple.requestable[0].location_code).to eq('nec')
-  #       expect(request_at_paging_nec_multiple.requestable[0].pageable?).to eq(true)
-  #     end
-  #   end
-
-  #   describe "#any_pageable?" do
-  #     it "should return true when all requestable items are pageable?" do
-  #       expect(request_at_paging_nec_multiple.any_pageable?).to be_truthy
-  #     end
-
-  #     it "should return true when only some of the requestable items are pageable?" do
-  #       request_at_paging_nec_multiple.requestable.first.item["status"] = 'Charged'
-  #       expect(request_at_paging_nec_multiple.any_pageable?).to be_truthy
-  #     end
-
-  #     it "should return false when all requestable items are not pageable?" do
-  #       request_at_paging_nec_multiple.requestable.each do |requestable|
-  #         requestable.item["status"] = 'Charged'
-  #         requestable.services = []
-  #       end
-  #       expect(request_at_paging_nec_multiple.any_pageable?).to be_falsy
-  #     end
-  #   end
-  # end
-
-  # Future refactoring: we are not using call numbers as a filter for paging requests
-  # https://github.com/pulibrary/orangelight/issues/3872
-  # context "When passed an ID for a paging location in f outside of call number range" do
-  #   let(:params) do
-  #     {
-  #       system_id: '9943404133506421',
-  #       mfhd: '22514049930006421',
-  #       patron:
-  #     }
-  #   end
-  #   let(:request_at_paging_f) { described_class.new(**params) }
-
-  #   describe "#pageable?" do
-  #     it "is be false" do
-  #       expect(request_at_paging_f.requestable[0].location_code).to eq('recap$pa')
-  #       expect(request_at_paging_f.requestable[0].charged?).to be true
-  #       expect(request_at_paging_f.requestable[0].pageable?).to be false
-  #     end
-  #   end
-  # end
-  # 6009363 returned
-  # context "When passed an ID for a paging location f within a call in a range" do
-  #   let(:user) { FactoryBot.build(:user) }
-  #   let(:params) {
-  #     {
-  #       system_id: '6009363',
-  #       user: user
-  #     }
-  #   }
-  #   let(:request_at_paging_f) { described_class.new(params) }
-  #
-  #   describe "#requestable" do
-  #     it "should be unavailable" do
-  #       expect(request_at_paging_f.any_pageable?).to be(true)
-  #       expect(request_at_paging_f.requestable[0].location_code).to eq('f')
-  #       expect(request_at_paging_f.requestable[0].pageable?).to eq(true)
-  #       expect(request_at_paging_f.requestable[0].pick_up_locations.size).to eq(1)
-  #     end
-  #   end
-  # end
 
   # from the A range in "f"
   context "When passed an ID for a paging location f outside of call number range" do
@@ -664,30 +584,10 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       it "is unavailable" do
         expect(request_at_paging_f.requestable[0].location_code).to eq('firestone$stacks')
         expect(request_at_paging_f.requestable[0].pageable?).to eq(nil)
-        expect(request_at_paging_f.any_pageable?).to be(false)
         expect(request_at_paging_f.requestable[0].alma_managed?).to eq(true)
       end
     end
   end
-
-  # context "When passed an ID for an xl paging location" do
-  #   let(:params) {
-  #     {
-  #       system_id: '9596359',
-  #       patron: patron,
-  #     }
-  #   }
-  #   let(:request_at_paging_f) { described_class.new(params) }
-  #
-  #   describe "#requestable" do
-  #     it "should be unavailable" do
-  #       expect(request_at_paging_f.requestable[0].location_code).to eq('xl')
-  #       expect(request_at_paging_f.requestable[0].pageable?).to eq(true)
-  #       expect(request_at_paging_f.any_pageable?).to be(true)
-  #       expect(request_at_paging_f.requestable[0].alma_managed?).to eq(true)
-  #     end
-  #   end
-  # end
 
   context "When passed an ID for an On Order Title" do
     let(:params) do
@@ -736,37 +636,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
   end
 
-  # Oversize ID pageable
-  # context "When passed an ID for an Item with that is Oversize" do
-  #   let(:params) {
-  #     {
-  #       system_id: '3785401',
-  #       patron: patron,
-  #     }
-  #   }
-  #   let(:request_oversize) { described_class.new(params) }
-  #
-
-  #   describe "#requestable" do
-  #     it "should have an requestable items" do
-  #       expect(request_oversize.requestable.size).to be >= 1
-  #     end
-
-  #     it "should be in a location that contains some pageable items" do
-  #       expect(request_oversize.requestable[0].location_code).to eq('f')
-  #       expect(request_oversize.requestable[0].alma_managed?).to eq(true)
-  #     end
-
-  #     it "should be have pageable items" do
-  #       expect(request_oversize.any_pageable?).to be(true)
-  #     end
-
-  #     it "should have a pageable item" do
-  #       expect(request_oversize.requestable[0].pageable?).to eq(true)
-  #     end
-  #   end
-  # end
-
   # Item with no call number 9602545
   context "When passed an ID for an Item in a pageable location that has no call number" do
     let(:params) do
@@ -786,10 +655,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       it "is in a pageable location" do
         expect(request_no_callnum.requestable[0].location_code).to eq('firestone$stacks')
         expect(request_no_callnum.requestable[0].alma_managed?).to eq(true)
-      end
-
-      it "does not have any pageable items" do
-        expect(request_no_callnum.any_pageable?).to be(false)
       end
 
       it "has a pageable item" do
