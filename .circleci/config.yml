@@ -176,6 +176,16 @@ jobs:
       - setup-bundler-and-node
       - run: bundle exec erblint --lint-all
 
+  reek:
+    docker:
+      - image: cimg/ruby:3.1
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run:
+          name: Check code smells with Reek
+          command: bundle exec reek app
+
   finish:
     executor: basic-executor
     steps:
@@ -205,6 +215,7 @@ workflows:
       - erblint:
          requires:
           - build
+      - reek
       - js_tests:
          requires:
           - build
