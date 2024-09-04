@@ -66,30 +66,6 @@ module Requests
       end
     end
 
-    # shim for pageable locations
-    ## This feature no longer in use
-    # def pageable
-    #   request_params[:system_id] = sanitize(params[:system_id])
-    #   @user = current_or_guest_user
-    #   request_params[:user] = @user.uid
-    #   unless params[:mfhd].nil?
-    #     request_params[:mfhd] = sanitize(params[:mfhd])
-    #   end
-    #   @request = Requests::Request.new(request_params)
-    #   if @request.any_pageable?
-    #     respond_to do | format |
-    #       format.json { render json: { pageable: true } }
-    #       format.html { redirect_to "/requests/#{@request.system_id}" }
-    #     end
-    #   ## This clause should go away when this systems is in production for all request types
-    #   else
-    #     respond_to do | format |
-    #       format.json { render json: { pageable: false } }
-    #       format.html { redirect_to "https://library.princeton.edu/requests/#{@request.system_id}" }
-    #     end
-    #   end
-    # end
-
     private
 
       def mode

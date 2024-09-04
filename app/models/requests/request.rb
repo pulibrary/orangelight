@@ -66,13 +66,6 @@ module Requests
       requestable&.first
     end
 
-    # Does this request object have any pageable items?
-    def any_pageable?
-      services = requestable.map(&:services).flatten
-      services.uniq!
-      services.include? 'paging'
-    end
-
     # Does this request object have any available copies?
     def any_loanable_copies?
       requestable_unrouted.any? do |requestable|
