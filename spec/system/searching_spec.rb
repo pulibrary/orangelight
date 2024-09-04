@@ -103,6 +103,9 @@ describe 'Searching', type: :system, js: false do
   end
 
   context 'searching for series title from advanced search' do
+    before do
+      allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
+    end
     it 'displays the online availability' do
       visit 'advanced'
       select('Series title', from: 'Options for advanced search')
@@ -122,8 +125,11 @@ describe 'Searching', type: :system, js: false do
     end
   end
   context 'with an invalid field list parameter in the advanced search' do
+    before do
+      allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
+    end
     it 'will return results without an error' do
-      visit '/catalog?q1=NSF%20Series&search_field=advanced&f1=in_series2121121121212.1'
+      visit '/catalog?clause%5B0%5D%5Bfield%5D=series_title&clause%5B0%5D%5Bquery%5D=in_series2121121121212.1'
       expect { page }.not_to raise_error
       expect(page).to have_content 'No results found for your search'
       expect(page).to have_link('Try Borrow Direct', href: 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results')
@@ -224,7 +230,7 @@ describe 'Searching', type: :system, js: false do
 
     it 'shows facets on the advanced search results page' do
       visit '/advanced'
-      fill_in 'clause_0_query', with: 'robots'
+      fill_in 'clause_0_query', with: 'cats'
       click_button 'Search'
       expect(page).to have_button('Access')
       expect(page).to have_button('Library')

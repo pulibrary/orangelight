@@ -58,25 +58,6 @@ RSpec.describe "left anchor search", left_anchor: true do
     end
   end
 
-  context 'solr operator characters' do
-    # These tests are only relevant for the standard query parser
-    # # TODO: remove for standard dsl deprecation
-    before do
-      allow(Flipflop).to receive(:json_query_dsl?).and_return(false)
-      allow(Flipflop).to receive(:view_components_advanced_search?).and_return(false)
-    end
-    it 'are handled in simple search' do
-      get '/catalog.json?search_field=left_anchor&q=JSTOR%7B%7D%3A%26%26%7C%7C"%2B%5E~-%2F%3F+%5BElectronic+Resource%5D'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-    end
-    it 'are handled in advanced search' do
-      get '/catalog.json?f1=left_anchor&q1=JSTOR%7B%7D%3A%26%26%7C%7C"%2B%5E~-%2F%3F+%5BElectronic+Resource%5D&search_field=advanced'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-    end
-  end
-
   context 'cjk characters' do
     it 'are searchable in simple search' do
       get "/catalog.json?search_field=left_anchor&q=#{CGI.escape('浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授)')}"
