@@ -26,6 +26,16 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
+    describe '#replace_existing_services' do
+      it 'provides an option for other classes to modify the list of services' do
+        expect(requestable.services).to contain_exactly("on_shelf", "on_shelf_edd")
+
+        requestable.replace_existing_services(['online'])
+
+        expect(requestable.services).to contain_exactly("online")
+      end
+    end
+
     describe '#location_label' do
       it 'has a location label' do
         expect(requestable.location_label).to eq('Firestone Library - Stacks')
