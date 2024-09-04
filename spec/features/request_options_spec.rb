@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Request Options' do
+describe 'Request Options', requests: true do
   before { stub_alma_holding_locations }
 
   describe 'the request page', js: true do

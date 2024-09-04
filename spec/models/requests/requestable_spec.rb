@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :none } do
+describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :none }, requests: true do
   let(:user) { FactoryBot.build(:user) }
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",

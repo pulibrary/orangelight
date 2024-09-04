@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Requests::Illiad do
+describe Requests::Illiad, requests: true do
   let(:document) { SolrDocument.new(id: '9988805493506421', oclc_s: ['871228508']) }
   let(:ctx) { Requests::SolrOpenUrlContext.new(solr_doc: document).ctx }
   let(:illiad) { described_class.new(enum: "Volume foo", chron: "Chronicle 1") }

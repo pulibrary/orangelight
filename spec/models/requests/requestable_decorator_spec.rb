@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
-describe Requests::RequestableDecorator do
+describe Requests::RequestableDecorator, requests: true do
   include ActionView::TestCase::Behavior
 
   subject(:decorator) { described_class.new(requestable, view) }

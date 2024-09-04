@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe Requests::ClancyItem do
+describe Requests::ClancyItem, requests: true do
   let(:connection) { Faraday.new("http://example.com") }
   let(:clancy_item) { described_class.new(barcode: "1234565", connection:) }
   before do

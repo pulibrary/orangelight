@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 # rubocop:disable RSpec/MultipleExpectations
-describe Requests::Patron do
+describe Requests::Patron, requests: true do
   subject(:patron) do
     described_class.new(user:, session:, patron: patron_values)
   end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe Requests::Submissions::HoldItem, type: :controller do
+describe Requests::Submissions::HoldItem, type: :controller, requests: true do
   context 'Hold Item Request' do
     let(:valid_patron) { { "netid" => "foo", university_id: "99999999" }.with_indifferent_access }
     let(:user_info) do

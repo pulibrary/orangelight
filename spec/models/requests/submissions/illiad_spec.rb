@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Requests::Submissions::Illiad do
+RSpec.describe Requests::Submissions::Illiad, requests: true do
   let(:user_info) do
     {
       "netid" => "jstudent",
