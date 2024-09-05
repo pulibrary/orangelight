@@ -238,7 +238,7 @@ module Requests
       if requestable_list.first.services.empty?
         no_item
       elsif requestable_list.first.charged?
-        return multi_item if requestable_list.first.annex? || requestable_list.first.pageable_loc?
+        return multi_item if requestable_list.first.annex?
         single_item # no_item
       else
         submit_message_for_requestable_items(requestable_list)
@@ -248,7 +248,7 @@ module Requests
     def submit_message_for_requestable_items(requestable_list)
       single_item = "Request this Item"
       multi_item = "Request Selected Items"
-      if requestable_list.first.annex? || requestable_list.first.pageable_loc?
+      if requestable_list.first.annex?
         multi_item
       else
         single_item
