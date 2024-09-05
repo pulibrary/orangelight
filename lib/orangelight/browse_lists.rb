@@ -4,6 +4,7 @@ require 'csv'
 require 'faraday'
 require 'yajl/json_gem'
 require './lib/orangelight/string_functions'
+require 'stringex_lite'
 
 module BrowseLists
   class << self
