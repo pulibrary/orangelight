@@ -25,7 +25,7 @@ module Requests
       @title = "Request ID: #{system_id}"
 
       # needed to see if we can suppress login for this item
-      @request = RequestDecorator.new(Requests::Request.new(system_id:, mfhd:, source:, patron: @patron), view_context)
+      @request = RequestDecorator.new(Requests::Request.new(system_id:, holding: ,mfhd:, source:, patron: @patron), view_context)
       redirect_single_aeon_thesis_numistatics
     rescue ActionController::ParameterMissing
       @request = EmptyRequestDecorator.new(system_id:)
@@ -75,7 +75,7 @@ module Requests
 
       # trusted params
       def request_params
-        params.permit(:id, :system_id, :source, :mfhd, :user_name, :email, :loc_code, :user, :requestable, :request, :barcode, :isbns).permit!
+        params.permit(:id, :system_id, :holding, :source, :mfhd, :user_name, :email, :loc_code, :user, :requestable, :request, :barcode, :isbns).permit!
       end
 
       def sanitize_submission(params)

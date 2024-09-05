@@ -10,6 +10,7 @@ module Requests
     attr_reader :doc
     attr_reader :requestable
     attr_reader :requestable_unrouted
+    attr_reader :holding
     attr_reader :holdings
     attr_reader :location
     attr_reader :location_code
@@ -26,10 +27,11 @@ module Requests
     # @option opts [Fixnum] :mfhd alma holding id
     # @option opts [Patron] :patron current Patron object
     # @option opts [String] :source represents system that directed user to request form. i.e.
-    def initialize(system_id:, mfhd:, patron: nil, source: nil)
+    def initialize(system_id:, holding:, mfhd:, patron: nil, source: nil)
+      @holding = Requestable::Holding.new holding
       @system_id = system_id
       @doc = SolrDocument.new(solr_doc(system_id))
-      @holdings = JSON.parse(doc[:holdings_1display] || '{}')
+      @holdings = @holding.holding_data #JSON.parse(doc[:holdings_1display] || '{}')
       # scsb items are the only ones that come in without a MFHD parameter from the catalog now
       # set it for them, because they only ever have one location
       @mfhd = mfhd || @holdings.keys.first
@@ -117,11 +119,11 @@ module Requests
     end
 
     def thesis?
-      doc[:holdings_1display].present? && parse_json(doc[:holdings_1display]).key?('thesis')
+      @holding.thesis?
     end
 
     def numismatics?
-      doc[:holdings_1display].present? && parse_json(doc[:holdings_1display]).key?('numismatics')
+      @holding.numismatics?
     end
 
     # returns basic metadata for display on the request from via solr_doc values
