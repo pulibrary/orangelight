@@ -77,9 +77,10 @@ module Requests
       # rubocop:enable Metrics/MethodLength
 
       def calculate_on_shelf_services
-        services = ['on_shelf_edd']
-        services << 'on_shelf' if requestable.circulates?
-        services
+        [
+          ServiceEligibility::OnShelfEdd.new(requestable:, user:),
+          ServiceEligibility::OnShelf.new(requestable:, user:)
+        ].select(&:eligible?).map(&:to_s)
       end
 
       def calculate_recap_services

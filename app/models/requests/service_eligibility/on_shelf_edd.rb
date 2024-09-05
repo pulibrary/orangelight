@@ -2,16 +2,16 @@
 module Requests
   module ServiceEligibility
     # This class is responsible for determining if a specific
-    # user can request a specific resource via ILL
-    class ILL
-      def initialize(requestable:, user:, any_loanable:)
+    # user can request digitization services for a resource
+    # that is on the shelf
+    class OnShelfEdd
+      def initialize(requestable:, user:)
         @requestable = requestable
         @user = user
-        @any_loanable = any_loanable
       end
 
       def to_s
-        'ill'
+        'on_shelf_edd'
       end
 
       def eligible?
@@ -22,15 +22,18 @@ module Requests
 
           def requestable_is_eligible?
             (requestable.alma_managed? || requestable.partner_holding?) &&
-              !requestable.aeon? && !requestable.online? && requestable.charged? &&
-              (!any_loanable || requestable.enumerated? || requestable.preservation_conservation?)
+              !requestable.online? && !requestable.aeon? &&
+              !requestable.charged? && !requestable.in_process? &&
+              !requestable.on_order? && !requestable.annex? &&
+              !(requestable.recap? || requestable.recap_pf?) &&
+              !requestable.held_at_marquand_library?
           end
 
           def user_is_eligible?
             user.cas_provider? || user.alma_provider?
           end
 
-          attr_reader :requestable, :user, :any_loanable
+          attr_reader :requestable, :user
     end
   end
 end
