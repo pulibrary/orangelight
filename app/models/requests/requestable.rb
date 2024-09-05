@@ -36,8 +36,8 @@ module Requests
       @user_barcode = patron.barcode
       @call_number = @holding.holding_data['call_number_browse']
       @title = bib[:title_citation_display]&.first
-      @pageable = Pageable.new(call_number:, location_code:)
-      @mappable = Requests::Mapable.new(bib_id: bib[:id], holdings: holding, location_code:)
+      @pageable = Pageable.new(call_number:, location_code: location_object.code)
+      @mappable = Requests::Mapable.new(bib_id: bib[:id], holdings: holding, location_code: location_object.code)
       @illiad = Requests::Illiad.new(enum: item&.fetch(:enum, nil), chron: item&.fetch(:chron, nil), call_number:)
     end
 
@@ -45,7 +45,7 @@ module Requests
              :temp_loc_other_than_resource_sharing?, :on_reserve?, :inaccessible?, :hold_request?, :enumerated?, :item_type_non_circulate?, :partner_holding?,
              :id, :use_statement, :collection_code, :missing?, :charged?, :status, :status_label, :barcode?, :barcode, :preservation_conservation?, to: :item
 
-    delegate :location_label, to: :location_object
+    delegate :annex?, :location_label, to: :location_object
 
     def holding
       @holding.to_h
@@ -61,7 +61,7 @@ module Requests
 
     # Reading Room Request
     def aeon?
-      location[:aeon_location] == true || (use_statement == 'Supervised Use')
+      location_object.aeon? || (use_statement == 'Supervised Use')
     end
 
     # at an open location users may go to
@@ -76,7 +76,7 @@ module Requests
 
     def recap_pf?
       return false unless recap?
-      location_code == "firestone$pf"
+      location_object.code == "firestone$pf"
     end
 
     def clancy?
@@ -90,23 +90,23 @@ module Requests
     end
 
     def lewis?
-      ['sci', 'scith', 'sciref', 'sciefa', 'sciss'].include?(location_code)
+      ['sci', 'scith', 'sciref', 'sciefa', 'sciss'].include?(location_object.code)
     end
 
     def plasma?
-      location_code == 'ppl'
+      location_object.code == 'ppl'
     end
 
     def preservation?
-      location_code == 'pres'
-    end
-
-    def annex?
-      location_valid? && location[:library][:code] == 'annex'
+      location_object.code == 'pres'
     end
 
     def circulates?
       item_type_non_circulate? == false && location[:circulates] == true
+    end
+
+    def location_code
+      location_object.code
     end
 
     def can_be_delivered?
@@ -205,13 +205,8 @@ module Requests
       services.include?('ask_me')
     end
 
-    def location_code
-      return nil if location.blank?
-      location['code']
-    end
-
     def item_location_code
-      item&.location || location_code
+      item&.location || location_object.code
     end
 
     def held_at_marquand_library?
@@ -270,7 +265,7 @@ module Requests
       end
 
       def location_valid?
-        location.key?(:library) && location[:library].key?(:code)
+        location_object.valid?
       end
 
       def in_process_statuses

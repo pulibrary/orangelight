@@ -8,4 +8,10 @@ RSpec.describe Requests::Location, requests: true do
       expect(location.library_label).to eq('Forrestal Annex')
     end
   end
+  describe '#annex?' do
+    it 'returns true if the library code is annex' do
+      location = described_class.new(JSON.parse('{"label":"English Theses","code":"annex$set","aeon_location":false,"recap_electronic_delivery_location":false,"open":false,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","fulfillment_unit":"Closed","library":{"label":"Forrestal Annex","code":"annex","order":0},"holding_library":null,"delivery_locations":[]}'))
+      expect(location.annex?).to be(true)
+    end
+  end
 end
