@@ -98,11 +98,12 @@ module Requests
       end
 
       def calculate_unavailable_services
-        return [] unless cas_provider?
-        services = []
-        # for monographs - title level check OR for serials - copy level check
-        services << 'ill' if !any_loanable? || requestable.enumerated? || requestable.preservation_conservation?
-        services
+        ill_eligibility = ServiceEligibility::ILL.new(requestable:, user:, any_loanable:)
+        if ill_eligibility.eligible?
+          [ill_eligibility.to_s]
+        else
+          []
+        end
       end
 
       def calculate_marquand_services
