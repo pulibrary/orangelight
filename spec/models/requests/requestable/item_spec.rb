@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Requests::Requestable::Item do
+RSpec.describe Requests::Requestable::Item, requests: true do
   describe '#location' do
     it 'returns the item location as a string' do
       item = described_class.new(
