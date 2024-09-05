@@ -140,7 +140,7 @@ module Requests
       doc["language_iana_s"]&.first
     end
 
-    # should probably happen in the initializer
+    # Calls Requests::BibdataService to get the delivery_locations
     def build_pick_ups
       pick_up_locations = []
       Requests::BibdataService.delivery_locations.each_value do |pick_up|
@@ -179,6 +179,9 @@ module Requests
       library_code == 'recap' || library_code == 'marquand' || library_code == 'annex'
     end
 
+    # holdings: The holdings1_display from the SolrDocument
+    # holding: The holding of the holding_id(mfhd) from the SolrDocument
+    # happens on 'click' the 'Request' button
     def too_many_items?
       holding = holdings[@mfhd]
       items = holding.try(:[], "items")
@@ -271,6 +274,7 @@ module Requests
         requestable_items = []
         barcodesort = {}
         barcodesort = build_barcode_sort(items: items[mfhd], availability_data: availability_data(system_id)) if recap?
+        # items from the availability lookup using the Bibdata Service
         items.each do |holding_id, mfhd_items|
           next if mfhd != holding_id
           requestable_items = build_requestable_from_mfhd_items(requestable_items:, holding_id:, mfhd_items:, barcodesort:)
@@ -299,6 +303,7 @@ module Requests
         requestable_items.compact
       end
 
+      # Item we get from the 'load_items' live call to bibdata
       def build_requestable_mfhd_item(_requestable_items, holding_id, item, barcodesort)
         return if item['on_reserve'] == 'Y'
 
@@ -378,7 +383,10 @@ module Requests
         mfhd_items
       end
 
-      ## this method should be the only place we load item availability
+      ## Loads item availability through the Request Bibdata service using the items_by_mfhd method
+      # items_by_mfhd makes the availabiliy call:
+      # bibdata_conn.get "/bibliographic/#{system_id}/holdings/#{mfhd_id}/availability.json"
+      # rename to: load_items_by_holding_id
       def load_items_by_mfhd
         mfhd_items = {}
         mfhd_items[@mfhd] = items_by_mfhd(@system_id, @mfhd)

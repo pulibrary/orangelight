@@ -15,7 +15,6 @@ module Requests
     end
 
     def items_by_mfhd(system_id, mfhd_id)
-      # response = bibdata_conn.get "/availability?mfhd=#{mfhd_id}"
       response = bibdata_conn.get "/bibliographic/#{system_id}/holdings/#{mfhd_id}/availability.json"
       parse_response(response)
     end
