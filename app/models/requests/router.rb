@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 module Requests
+  # This class assigns "services" a given requestable object is available through
   class Router
     attr_accessor :requestable
     attr_reader :user, :any_loanable
@@ -12,23 +13,25 @@ module Requests
       @any_loanable = any_loanable
     end
 
-    # Possible Services
-    # :online
-    # :annex
-    # :on_shelf
-    # :on_order
-    # :in_process
-    # :annex
-    # :recap
-    # :recap_edd
-    # :ill
-    # :paging
-    # :trace
-
-    # user levels
-    # guest - Access patron - shouldn't show recap_edd
-    # barcode - no ill, no bd
-    # cas - all services
+    # Current Service Types Assigned
+    # :online - material is available online at a URL
+    # :aeon - material is stored in a location where it can be requested via Aeon
+    # :annex - material is stored in an Annex location
+    # :on_shelf - material is stored in a campus library location
+    # :on_shelf_edd - material is in a campus library location that is eligible for digitization
+    # :on_order - material has a status in Alma that indicates it is ordered but has not yet arrived on campus
+    # :in_process - material has a status in Alma that indicates it has arrived on campus but has not been processed and shelved
+    # :recap - material is stored at recap; can be paged to campus and circulates
+    # :recap_in_library - material is stored at recap; can be paged to campus, but does not circulate
+    # :recap_edd - material is stored in a recap location that permits digitization
+    # :recap_no_items - material in a recap location with item record data
+    # :ill - material has a status in Alma making it unavailable for circulation and is in a location that is eligible for resource sharing
+    # :clancy_unavailable - item is at clancy but clancy system says it is not available; but it's alma status is available
+    # :clancy_in_library - item in the clancy warehouse and can be paged to marquand
+    # :clancy_edd - item in the clancy warehouse in a location that permits digitization
+    # :marquand_in_library - non clancy marquand item in a location that can be paged to marquand
+    # :marquand_edd - non clancy marquand item in a location that is permitted to be scanned
+    # :ask_me - catchall service if the item isn't eligible for anything else.
 
     def routed_request
       requestable.replace_existing_services calculate_services
@@ -66,12 +69,6 @@ module Requests
           calculate_marquand_services
         else
           calculate_on_shelf_services
-          # goes to stack mapping
-          # suppressing Trace service for the moment, but leaving this code
-          # see https://github.com/pulibrary/requests/issues/164 for info
-          # if (requestable.open? && auth_user?)
-          #   services << 'trace' # all open stacks items are traceable
-          # end
         end
       end
       # rubocop:enable Metrics/MethodLength
@@ -117,14 +114,6 @@ module Requests
 
       def any_loanable?
         @any_loanable
-      end
-
-      def access_user?
-        if @user.guest == true
-          true
-        else
-          false
-        end
       end
 
       def auth_user?
