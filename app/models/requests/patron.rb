@@ -55,10 +55,6 @@ module Requests
       barcode.present?
     end
 
-    def undergraduate?
-      pustatus == "undergraduate"
-    end
-
     def telephone
       ldap[:telephone]
     end
