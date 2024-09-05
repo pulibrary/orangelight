@@ -1,15 +1,12 @@
+<% document = @request.try(:request)&.doc %>
 <div class="col-12">
-  <%# <div class="col-12"> %>
-    <%# <div class="button--start-over"> %>
       <a class="btn btn-primary" id="returnToRecordLink"
-        href="<%= @request.catalog_url%>"">
+        href="<%= @request.catalog_url%>">
         <span class="icon-refresh"></span>
         <span class="d-lg-inline">
           Return to record
         </span>
       </a>
-    <%# </div> %>
-  <%# </div> %>
     <div class="doc-<%= @request.system_id %>">
         <h1>
           <%= request_title %>
@@ -17,7 +14,9 @@
       </div>
       <div class="col-12">
         <div class="bibliographic">
-          <%= @request.format_brief_record_display %>
+          <% if document %>
+            <%= render partial: 'show_basic_metadata', locals: { document: document } %>
+          <% end %>
         </div>
       </div>
       <%= render 'flash_messages' %>

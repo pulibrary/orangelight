@@ -39,25 +39,12 @@ module Requests
     def hidden_fields
       hidden_request_tags = ''
       hidden_request_tags += hidden_field_tag "bib[id]", "", value: bib_id
-      request.display_metadata.each do |key, value|
+      request.hidden_field_metadata.each do |key, value|
         hidden_request_tags += hidden_field_tag "bib[#{key}]", "", value:
       end
       hidden_request_tags.html_safe
     end
     # rubocop:enable Rails/OutputSafety
-
-    def format_brief_record_display
-      params = request.display_metadata
-      content_tag(:dl, class: "dl-horizontal") do
-        params.each do |key, value|
-          display_label = Requests.config["short_record_display"][key]
-          if value.present? && display_label.present?
-            concat content_tag(:dt, display_label.to_s)
-            concat content_tag(:dd, value.first.to_s, lang: request.language.to_s, id: display_label.gsub(/[^0-9a-z ]/i, '').downcase.to_s)
-          end
-        end
-      end
-    end
 
     def any_will_submit_via_form?
       return false if requestable.compact_blank.blank? || !eligible_for_library_services?

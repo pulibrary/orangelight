@@ -918,7 +918,7 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
       it 'Request an enumerated on campus item correctly' do
         stub_alma_hold_success('9973397793506421', '22541187250006421', '23541187200006421', '960594184')
         visit '/requests/9973397793506421?mfhd=22541187250006421'
-        expect(page).to have_content "Han'guk hyŏndaesa sanch'aek. No Mu-hyŏn sidae ŭi myŏngam"
+        expect(page).to have_content "Han'guk hyŏndaesa sanch'aek"
         check('requestable_selected_23541187200006421')
         choose('requestable__delivery_mode_23541187200006421_print')
         expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(2)

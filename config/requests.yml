@@ -17,11 +17,9 @@ defaults: &defaults
     scsbnypl: "NYPL"
     scsbhl: "HL"
   short_record_display:
-    author: "Author/Artist"
-    title: "Title"
-    date: "Published/Created"
-    id: "Bibliographic ID"
-    mfhd: "Holding ID (mfhd)"
+    title_citation_display: "Title"
+    author_citation_display: "Author/Artist"
+    pub_date_display: "Published/Created"
 development:
   <<: *defaults
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
