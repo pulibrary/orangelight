@@ -132,7 +132,7 @@ module Requests
     end
 
     def available_pick_ups(requestable, default_pick_ups)
-      idx = (default_pick_ups.pluck(:label)).index(Requests::Requestable::Location.new(requestable.location).library_label)
+      idx = (default_pick_ups.pluck(:label)).index(Requests::Location.new(requestable.location).library_label)
       if idx.present?
         [default_pick_ups[idx]]
       elsif requestable.recap? || requestable.annex?
@@ -195,7 +195,7 @@ module Requests
 
     ## If any requestable items have a temp location assume everything at the holding is in a temp loc?
     def current_location_label(holding_location_label, requestable_list)
-      first_location = Requests::Requestable::Location.new(requestable_list.first.location)
+      first_location = Requests::Location.new(requestable_list.first.location)
       location_label = first_location.short_label.blank? ? "" : "- #{first_location.short_label}"
       label = if requestable_list.first.temp_loc_other_than_resource_sharing?
                 "#{first_location.library_label}#{location_label}"
@@ -337,7 +337,7 @@ module Requests
           [{ label: requestable.delivery_location_label, gfa_pickup: requestable.delivery_location_code, pick_up_location_code: requestable.pick_up_location_code, staff_only: false }]
         else
           # TODO: Why is this option here
-          location_object = Requests::Requestable::Location.new requestable.location
+          location_object = Requests::Location.new requestable.location
           [{ label: location_object.library_label, gfa_pickup: gfa_lookup(location_object.library_code), staff_only: false }]
         end
       end
