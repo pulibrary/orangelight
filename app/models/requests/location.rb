@@ -5,7 +5,7 @@ module Requests
   class Location
     # @param bibdata_location [Hash] The hash for a bibdata holding (https://bibdata.princeton.edu/locations/holding_locations)
     def initialize(bibdata_location)
-      @bibdata_location = bibdata_location.to_h
+      @bibdata_location = bibdata_location.to_h.with_indifferent_access
     end
 
     def code
