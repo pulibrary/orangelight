@@ -124,10 +124,10 @@ module Requests
       doc[:holdings_1display].present? && parse_json(doc[:holdings_1display]).key?('numismatics')
     end
 
-    # returns basic metadata for display on the request from via solr_doc values
+    # returns basic metadata for hidden fields on the request form via solr_doc values
     # Fields to return all keys are arrays
     ## Add more fields here as needed
-    def display_metadata
+    def hidden_field_metadata
       {
         title: doc["title_citation_display"],
         author: doc["author_citation_display"],

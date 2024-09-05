@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 module Requests
   class EmptyRequestDecorator
-    attr_reader :system_id, :format_brief_record_display, :non_requestable_message
+    attr_reader :system_id, :non_requestable_message
 
     def initialize(system_id:)
       @system_id = system_id
       @requestable_list = []
-      @format_brief_record_display = ""
       @non_requestable_message = "Please choose a specific location on the Record Page!"
     end
 

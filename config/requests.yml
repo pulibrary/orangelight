@@ -20,8 +20,6 @@ defaults: &defaults
     title_citation_display: "Title"
     author_citation_display: "Author/Artist"
     pub_date_display: "Published/Created"
-    # id: "Bibliographic ID"
-    # mfhd: "Holding ID (mfhd)"
 development:
   <<: *defaults
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
