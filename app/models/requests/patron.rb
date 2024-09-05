@@ -165,10 +165,6 @@ module Requests
         built.with_indifferent_access
       end
 
-      def access_patron?
-        barcode == "ACCESS"
-      end
-
       # This method uses the Alma gem API to build the patron from Alma, rather than via Bibdata
       def build_alma_patron(uid:)
         alma_user = Alma::User.find(uid)
