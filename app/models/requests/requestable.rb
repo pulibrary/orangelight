@@ -22,7 +22,7 @@ module Requests
     # @param bib [Hash] Solr Document of the Top level Request
     # @param holding [Hash] Bib Data information on where the item is held (Marc liberation) parsed solr_document[holdings_1display] json
     # @param item [Hash] Item level data from bib data (https://bibdata.princeton.edu/availability?id= or mfhd=)
-    # @param location [Hash] The has for a bib data holding (https://bibdata.princeton.edu/locations/holding_locations)
+    # @param location [Hash] The hash for a bib data holding (https://bibdata.princeton.edu/locations/holding_locations)
     # @param patron [Patron] the patron information about the current user
     def initialize(bib:, holding: nil, item: nil, location: nil, patron:)
       @bib = bib
@@ -44,6 +44,8 @@ module Requests
     delegate :pick_up_location_id, :pick_up_location_code, :item_type, :enum_value, :cron_value, :item_data?,
              :temp_loc_other_than_resource_sharing?, :on_reserve?, :inaccessible?, :hold_request?, :enumerated?, :item_type_non_circulate?, :partner_holding?,
              :id, :use_statement, :collection_code, :missing?, :charged?, :status, :status_label, :barcode?, :barcode, :preservation_conservation?, to: :item
+
+    delegate :location_label, to: :location_object
 
     def holding
       @holding.to_h
@@ -196,8 +198,7 @@ module Requests
     end
 
     def holding_library
-      return library_code if location.blank? || location[:holding_library].blank? || location[:holding_library][:code].blank?
-      location[:holding_library][:code]
+      location_object.holding_library&.dig(:code) || library_code
     end
 
     def ask_me?
@@ -209,20 +210,8 @@ module Requests
       location['code']
     end
 
-    def location_label
-      return nil if location.blank? || location["library"].blank?
-      label = location["library"]["label"]
-      label += " - #{location['label']}" if location["label"].present?
-      label
-    end
-
     def item_location_code
       item&.location || location_code
-    end
-
-    def library_code
-      return nil if location['library'].blank?
-      location['library']['code']
     end
 
     def held_at_marquand_library?
@@ -262,6 +251,16 @@ module Requests
     end
 
     private
+
+      # Location data presented as an object, rather than a hash.
+      # The goal is to gradually replace all uses of the hash with
+      # this object, so that other classes don't need to know the
+      # exact hash keys to use in order to get the needed data.
+      def location_object
+        @location_object ||= Location.new location
+      end
+
+      delegate :library_code, to: :location_object
 
       def in_scsb_edd_collection?
         scsb_edd_collection_codes =
