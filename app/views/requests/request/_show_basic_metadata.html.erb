@@ -1,0 +1,10 @@
+
+<% doc_presenter = document_presenter(document) %>
+<dl class="dl-horizontal  dl-invert top-fields">
+  <% Requests.config["short_record_display"].each do |field_key, field_label| %>
+    <%# field_presenter = Blacklight::FieldPresenter.new(doc_presenter.view_context, document, doc_presenter.configuration.show_fields[field_key]) %>
+    <%# https://github.com/projectblacklight/blacklight/blob/main/lib/blacklight/configuration/field.rb %>
+    <% field_presenter = Blacklight::FieldPresenter.new(doc_presenter.view_context, document, Blacklight::Configuration::Field.new(field: field_key).normalize!) %>
+    <%= render(AlwaysShowMetadataFieldComponent.new(field: field_presenter, show: true)) %>
+  <% end %>
+</dl>

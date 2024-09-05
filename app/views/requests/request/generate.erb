@@ -1,8 +1,9 @@
+<% document = @request.try(:request)&.doc %>
 <div class="col-12">
   <%# <div class="col-12"> %>
     <%# <div class="button--start-over"> %>
       <a class="btn btn-primary" id="returnToRecordLink"
-        href="<%= @request.catalog_url%>"">
+        href="<%= @request.catalog_url%>">
         <span class="icon-refresh"></span>
         <span class="d-lg-inline">
           Return to record
@@ -17,7 +18,13 @@
       </div>
       <div class="col-12">
         <div class="bibliographic">
-          <%= @request.format_brief_record_display %>
+          <%# @document = @request.request.doc %>
+          <% if document %>
+            <%= render partial: 'show_basic_metadata', locals: { document: document } %>
+          <% end %>
+          <%# setting document to nil so that we don't try to show the viewer %>
+          <%# @document = nil %>
+          <%# @request.format_brief_record_display %>
         </div>
       </div>
       <%= render 'flash_messages' %>

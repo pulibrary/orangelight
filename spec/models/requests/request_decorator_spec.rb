@@ -83,12 +83,6 @@ describe Requests::RequestDecorator, requests: true do
     end
   end
 
-  describe "#format_brief_record_display" do
-    it "shows all display metadata" do
-      expect(decorator.format_brief_record_display).to eq('<dl class="dl-horizontal"><dt>Title</dt><dd lang="en" id="title">t</dd><dt>Author/Artist</dt><dd lang="en" id="authorartist">a</dd></dl>')
-    end
-  end
-
   describe "#fill_in_eligible" do
     context "recap services" do
       let(:stubbed_questions) { { services: ['recap', 'recap_edd'] } }

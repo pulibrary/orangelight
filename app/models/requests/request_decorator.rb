@@ -46,19 +46,6 @@ module Requests
     end
     # rubocop:enable Rails/OutputSafety
 
-    def format_brief_record_display
-      params = request.display_metadata
-      content_tag(:dl, class: "dl-horizontal") do
-        params.each do |key, value|
-          display_label = Requests.config["short_record_display"][key]
-          if value.present? && display_label.present?
-            concat content_tag(:dt, display_label.to_s)
-            concat content_tag(:dd, value.first.to_s, lang: request.language.to_s, id: display_label.gsub(/[^0-9a-z ]/i, '').downcase.to_s)
-          end
-        end
-      end
-    end
-
     def any_will_submit_via_form?
       return false if requestable.compact_blank.blank? || !eligible_for_library_services?
       requestable.map(&:will_submit_via_form?).any? || any_fill_in_eligible?
