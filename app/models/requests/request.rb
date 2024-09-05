@@ -118,13 +118,15 @@ module Requests
       mfhd_items.empty? ? nil : mfhd_items.with_indifferent_access
     end
 
-    def thesis?
-      @holding.thesis?
-    end
+    # def thesis?
+    #   byebug
+    #   @holding.thesis?
+    # end
 
-    def numismatics?
-      @holding.numismatics?
-    end
+    # def numismatics?
+    #   byebug
+    #   @holding.numismatics?
+    # end
 
     # returns basic metadata for display on the request from via solr_doc values
     # Fields to return all keys are arrays
