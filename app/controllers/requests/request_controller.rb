@@ -26,7 +26,7 @@ module Requests
 
       # needed to see if we can suppress login for this item
       @request = RequestDecorator.new(Requests::Request.new(system_id:, mfhd:, source:, patron: @patron), view_context)
-      redirect_single_aeon_thesis_numistatics
+      redirect_single_aeon_thesis_numismatics
     rescue ActionController::ParameterMissing
       @request = EmptyRequestDecorator.new(system_id:)
     end
@@ -37,7 +37,7 @@ module Requests
       false
     end
 
-    def redirect_single_aeon_thesis_numistatics
+    def redirect_single_aeon_thesis_numismatics
       ### redirect to Aeon for thesis or coin items or single Aeon requestable
       ### or over 500 Aeon requestable
       if @request.thesis? || @request.numismatics?
