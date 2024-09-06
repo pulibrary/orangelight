@@ -35,7 +35,6 @@ module Requests
       @mfhd = mfhd || @holdings.keys.first
       @patron = patron
       @source = source
-      ### These should be re-factored
       @location_code = @holdings[@mfhd]["location_code"] if @holdings[@mfhd].present?
       @location = load_location
       @items = load_items
@@ -110,7 +109,6 @@ module Requests
       mfhd_items = if @mfhd && serial?
                      load_serial_items
                    else
-                     # load_items_by_bib_id
                      load_items_by_mfhd
                    end
       mfhd_items.empty? ? nil : mfhd_items.with_indifferent_access
