@@ -1022,61 +1022,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
   end
 
-  # Since we don't load multiple holdings any longer I'm not sure this is a valid test scenario
-  #
-  # context 'Multi-holding record with charged items and items available at restricted locations' do
-  #   let(:user) { FactoryBot.build(:user) }
-  #   let(:params) do
-  #     {
-  #       system_id: '9996968113506421',
-  #       mfhd: '22117193570006421',
-  #       patron: patron
-  #     }
-  #   end
-  #   let(:request) { described_class.new(params) }
-  #   describe '#any_loanable_copies?' do
-  #     it "has available copy" do
-  #       expect(request.any_loanable_copies?).to be false
-  #     end
-  #   end
-  # end
-
-  ### Review this test
-  context 'RBSC single Item with no isbn' do
-    let(:user) { FactoryBot.build(:user) }
-    let(:params) do
-      {
-        system_id: '9926312653506421',
-        mfhd: '22692741390006421',
-        patron:
-      }
-    end
-    let(:request) { described_class.new(**params) }
-
-    describe '#isbn_numbers?' do
-      it 'returns false when there are no isbns present' do
-        expect(request.isbn_numbers?).to be false
-      end
-    end
-  end
-
-  context 'single missing item with isbn' do
-    let(:user) { FactoryBot.build(:user) }
-    let(:params) do
-      {
-        system_id: '9917887963506421',
-        mfhd: '22503918400006421',
-        patron:
-      }
-    end
-    let(:request) { described_class.new(**params) }
-    describe '#isbn_numbers?' do
-      it 'returns true when there are isbns present' do
-        expect(request.isbn_numbers?).to be true
-      end
-    end
-  end
-
   context 'When a barcode only user visits the site' do
     let(:params) do
       {

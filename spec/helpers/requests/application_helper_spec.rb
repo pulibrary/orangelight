@@ -177,7 +177,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     context "lewis library" do
       let(:stubbed_questions) do
         { services: ['on_shelf'], no_services?: false, charged?: false, aeon?: false,
-          on_shelf?: true, lewis?: true, ill_eligible?: false,
+          on_shelf?: true, ill_eligible?: false,
           location: { library: { label: "Lewis Library" } } }
       end
       it 'a message for lewis' do

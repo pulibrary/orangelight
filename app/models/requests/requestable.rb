@@ -89,10 +89,6 @@ module Requests
       in_scsb_edd_collection? && !scsb_in_library_use?
     end
 
-    def lewis?
-      ['sci', 'scith', 'sciref', 'sciefa', 'sciss'].include?(location_object.code)
-    end
-
     def plasma?
       location_object.code == 'ppl'
     end

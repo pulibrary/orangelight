@@ -153,18 +153,6 @@ module Requests
       requestable.any? { |r| r.services.include? 'ill' }
     end
 
-    def isbn_numbers?
-      if doc.key? 'isbn_s'
-        true
-      else
-        false
-      end
-    end
-
-    def isbn_numbers
-      doc['isbn_s']
-    end
-
     def other_id
       doc['other_id_s'].first
     end

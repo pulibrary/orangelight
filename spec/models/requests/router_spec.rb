@@ -49,7 +49,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         { alma_managed?: true, online?: false, in_process?: false,
           charged?: false, on_order?: false, aeon?: false,
           preservation?: false, annex?: false,
-          plasma?: false, lewis?: false, recap?: false, held_at_marquand_library?: false,
+          plasma?: false, recap?: false, held_at_marquand_library?: false,
           item_data?: false, recap_edd?: false, pageable?: false, scsb_in_library_use?: false, item:,
           library_code: 'ABC', eligible_for_library_services?: true }
       end
@@ -116,7 +116,6 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
 
       context "lewis" do
         before do
-          stubbed_questions[:lewis?] = true
           stubbed_questions[:recap_pf?] = false
         end
         it "retune on shelf & edd because lewis is a regular library" do

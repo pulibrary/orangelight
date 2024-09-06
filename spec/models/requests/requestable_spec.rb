@@ -538,7 +538,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#site' do
       it 'returns a Marquand site param' do
         expect(requestable.site).to eq('MARQ')
-        expect(requestable.can_be_delivered?).to be_falsey
       end
     end
 
