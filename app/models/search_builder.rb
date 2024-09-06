@@ -102,11 +102,11 @@ class SearchBuilder < Blacklight::SearchBuilder
   # @return [Boolean]
   def advanced_search?
     blacklight_params[:advanced_type] == 'advanced' ||
-    search_state.controller.try(:params).try(:[], :action) == 'advanced_search' ||
-    blacklight_params[:advanced_type] == 'numismatics' ||
-    # The next two are required for the advanced search gem
-    blacklight_params[:search_field] == 'advanced' ||
-    blacklight_params[:action] == 'numismatics'
+      search_state.controller.try(:params).try(:[], :action) == 'advanced_search' ||
+      blacklight_params[:advanced_type] == 'numismatics' ||
+      # The next two are required for the advanced search gem
+      blacklight_params[:search_field] == 'advanced' ||
+      blacklight_params[:action] == 'numismatics'
   end
 
   ##
