@@ -74,9 +74,10 @@ module Requests
       # rubocop:enable Metrics/MethodLength
 
       def calculate_on_shelf_services
-        services = ['on_shelf_edd']
-        services << 'on_shelf' if requestable.circulates?
-        services
+        [
+          ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
+          ServiceEligibility::OnShelfPickup.new(requestable:, user:)
+        ].select(&:eligible?).map(&:to_s)
       end
 
       def calculate_recap_services
@@ -95,11 +96,12 @@ module Requests
       end
 
       def calculate_unavailable_services
-        return [] unless cas_provider?
-        services = []
-        # for monographs - title level check OR for serials - copy level check
-        services << 'ill' if !any_loanable? || requestable.enumerated? || requestable.preservation_conservation?
-        services
+        ill_eligibility = ServiceEligibility::ILL.new(requestable:, user:, any_loanable:)
+        if ill_eligibility.eligible?
+          [ill_eligibility.to_s]
+        else
+          []
+        end
       end
 
       def calculate_marquand_services
