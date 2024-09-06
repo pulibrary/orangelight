@@ -102,7 +102,14 @@
 .icon-data-file,
 .blacklight-data-file .document-thumbnail .default {
     &:before {
-        content: $icon-data-file;
+        content: $icon-databases;
+    }
+}
+
+.icon-databases,
+.blacklight-databases .document-thumbnail .default {
+    &:before {
+        content: $icon-databases;
     }
 }
 
