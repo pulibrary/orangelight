@@ -16,7 +16,7 @@ describe Requests::RequestableDecorator, requests: true do
   let(:patron) { Requests::Patron.new(user:, session: {}, patron: valid_patron) }
 
   let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
-  let(:default_stubbed_questions) { { patron:, item_data?: true, circulates?: true, on_shelf?: false, recap?: false, annex?: false, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, cul_avery?: false, resource_shared?: false, eligible_for_library_services?: true } }
+  let(:default_stubbed_questions) { { patron:, item_data?: true, circulates?: true, on_shelf?: false, recap?: false, annex?: false, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, cul_avery?: false, eligible_for_library_services?: true } }
   let(:ldap) { {} }
 
   describe "#digitize?" do

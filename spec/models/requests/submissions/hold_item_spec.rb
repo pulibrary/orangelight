@@ -20,7 +20,6 @@ describe Requests::Submissions::HoldItem, type: :controller, requests: true do
          "status" => "Not Charged",
          "item_type" => "Gen",
          "pick_up_location_code" => "fcirc",
-         "pick_up_location_id" => "489",
          "type" => "on_shelf" }]
     end
 

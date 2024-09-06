@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 class Requests::Requestable
   class Item < SimpleDelegator
-    def pick_up_location_id
-      self['pickup_location_id'] || ""
-    end
-
     # pick_up_location_code on the item level
     def pick_up_location_code
       self['pickup_location_code'] || ""
@@ -60,14 +56,6 @@ class Requests::Requestable
       self[:on_reserve] == 'Y'
     end
 
-    def inaccessible?
-      status == 'Inaccessible'
-    end
-
-    def hold_request?
-      status_label == 'Hold Shelf'
-    end
-
     def preservation_conservation?
       status_label == "Preservation and Conservation"
     end
@@ -91,10 +79,6 @@ class Requests::Requestable
 
     def collection_code
       self[:collection_code]
-    end
-
-    def missing?
-      status_label == 'Missing'
     end
 
     def charged?

@@ -134,10 +134,6 @@ module Requests
       }
     end
 
-    def language
-      doc["language_iana_s"]&.first
-    end
-
     # Calls Requests::BibdataService to get the delivery_locations
     def build_pick_ups
       pick_up_locations = []
@@ -149,18 +145,6 @@ module Requests
 
     def ill_eligible?
       requestable.any? { |r| r.services.include? 'ill' }
-    end
-
-    def isbn_numbers?
-      if doc.key? 'isbn_s'
-        true
-      else
-        false
-      end
-    end
-
-    def isbn_numbers
-      doc['isbn_s']
     end
 
     def other_id
