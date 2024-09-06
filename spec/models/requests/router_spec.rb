@@ -49,8 +49,8 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         { alma_managed?: true, online?: false, in_process?: false,
           charged?: false, on_order?: false, aeon?: false,
           preservation?: false, annex?: false,
-          plasma?: false, recap?: false, held_at_marquand_library?: false,
-          item_data?: false, recap_edd?: false, pageable?: false, scsb_in_library_use?: false, item:,
+          recap?: false, held_at_marquand_library?: false,
+          item_data?: false, recap_edd?: false, scsb_in_library_use?: false, item:,
           library_code: 'ABC', eligible_for_library_services?: true }
       end
       let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }

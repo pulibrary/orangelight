@@ -40,10 +40,6 @@ module Requests
       bibdata_location[:aeon_location] == true
     end
 
-    def recap_electronic_delivery_location?
-      bibdata_location[:recap_electronic_delivery_location] == true
-    end
-
     def annex?
       valid? && library_code == 'annex'
     end

@@ -17,10 +17,6 @@ class Requests::Requestable
       false
     end
 
-    def pick_up_location_id
-      ""
-    end
-
     def pick_up_location_code
       ""
     end
@@ -57,14 +53,6 @@ class Requests::Requestable
       false
     end
 
-    def inaccessible?
-      false
-    end
-
-    def hold_request?
-      false
-    end
-
     def enumerated?
       false
     end
@@ -83,10 +71,6 @@ class Requests::Requestable
 
     def collection_code
       ''
-    end
-
-    def missing?
-      false
     end
 
     def charged?

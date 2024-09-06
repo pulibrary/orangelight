@@ -235,11 +235,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A requestable item with hold_request status' do
     let(:request) { FactoryBot.build(:request_serial_with_item_on_hold, patron:) }
     let(:requestable_on_hold) { request.requestable[0] }
-    describe '#hold_request?' do
-      it 'with a Hold Request status it should be on the hold shelf' do
-        expect(requestable_on_hold.hold_request?).to be true
-      end
-    end
 
     describe '#services' do
       it 'is available for resource sharing' do
@@ -278,7 +273,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     # let(:item) { barcode :"32101024595744", id: 282_632, location: "f", copy_number: 1, item_sequence_number: 14, status: "Not Charged", on_reserve: "N", item_type: "NoCirc", pickup_location_id: 299, pickup_location_code: "fcirc", enum: "vol.22", "chron": "1996", enum_display: "vol.22 (1996)", label: "Firestone Library" }
     let(:no_circ_item_id) { requestable.item['id'] }
     let(:no_circ_item_type) { requestable.item['item_type'] }
-    let(:no_circ_pick_up_location_id) { requestable.item['pickup_location_id'] }
     let(:no_circ_pick_up_location_code) { requestable.item['pickup_location_code'] }
 
     # rubocop:disable RSpec/MultipleExpectations
@@ -286,7 +280,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       it 'gets values' do
         expect(requestable.item_data?).to be true
         expect(requestable.item_type_non_circulate?).to be true
-        expect(requestable.pick_up_location_id).to eq 'firestone'
         expect(requestable.pick_up_location_code).to eq 'firestone'
         expect(requestable.enum_value).to eq 'vol.22'
         expect(requestable.cron_value).to eq '1996'
@@ -302,13 +295,11 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     # let(:item) {"barcode":"32101022548893","id":282628,"location":"f","copy_number":1,"item_sequence_number":10,"status":"Not Charged","on_reserve":"N","item_type":"Gen","pickup_location_id":299,"pickup_location_code":"fcirc","enum_display":"vol.18","chron":"1992","enum_display":"vol.18 (1992)","label":"Firestone Library"}
     let(:no_circ_item_id) { requestable.item['id'] }
     let(:no_circ_item_type) { requestable.item['item_type'] }
-    let(:no_circ_pick_up_location_id) { requestable.item['pickup_location_id'] }
     let(:no_circ_pick_up_location_code) { requestable.item['pickup_location_code'] }
 
     describe '#item_type_circulate' do
       it 'returns the item type from alma' do
         expect(requestable.item_type_non_circulate?).to be false
-        expect(requestable.pick_up_location_id).to eq 'firestone'
         expect(requestable.pick_up_location_code).to eq 'firestone'
       end
     end
@@ -725,7 +716,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe 'requestable with no items ' do
       it 'does not have item data' do
         expect(requestable.item_data?).to be false
-        expect(requestable.pick_up_location_id).to eq ""
         expect(requestable.pick_up_location_code).to eq ""
         expect(requestable.item_type).to eq ""
         expect(requestable.enum_value).to eq ""
@@ -989,12 +979,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         expect(requestable_charged).not_to be_available
       end
     end
-
-    describe "#resource_shared?" do
-      it 'is not resource shared' do
-        expect(requestable).not_to be_resource_shared
-      end
-    end
   end
   context 'A requestable item from a RBSC holding creates an openurl with volume and call number info' do
     let(:user) { FactoryBot.build(:user) }
@@ -1098,12 +1082,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         expect(requestable.cul_music?).to be_truthy
       end
     end
-
-    describe "#resource_shared?" do
-      it 'is not resource shared' do
-        expect(requestable).not_to be_resource_shared
-      end
-    end
   end
 
   context 'An Item being shared with another institution' do
@@ -1133,12 +1111,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe "#cul_music?" do
       it 'is not an Music Library Item' do
         expect(requestable).not_to be_cul_music
-      end
-    end
-
-    describe "#resource_shared?" do
-      it 'is resource shared' do
-        expect(requestable).to be_resource_shared
       end
     end
   end

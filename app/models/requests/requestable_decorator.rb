@@ -8,7 +8,7 @@ module Requests
              :cron_value, :illiad_request_parameters, :location_label, :online?, :aeon?, :patron, :held_at_marquand_library?,
              :ill_eligible?, :scsb_in_library_use?, :pick_up_locations, :on_shelf?, :pending?, :recap?, :recap_pf?, :illiad_request_url, :available?,
              :on_order?, :urls, :in_process?, :alma_managed?, :title, :map_url, :cul_avery?, :cul_music?,
-             :pick_up_location_code, :resource_shared?, :enumerated?, to: :requestable
+             :pick_up_location_code, :enumerated?, to: :requestable
     delegate :content_tag, :hidden_field_tag, :concat, to: :view_context
 
     alias bib_id system_id

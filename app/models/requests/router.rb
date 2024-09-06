@@ -66,12 +66,6 @@ module Requests
           calculate_marquand_services
         else
           calculate_on_shelf_services
-          # goes to stack mapping
-          # suppressing Trace service for the moment, but leaving this code
-          # see https://github.com/pulibrary/requests/issues/164 for info
-          # if (requestable.open? && auth_user?)
-          #   services << 'trace' # all open stacks items are traceable
-          # end
         end
       end
       # rubocop:enable Metrics/MethodLength

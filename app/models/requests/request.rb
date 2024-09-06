@@ -136,10 +136,6 @@ module Requests
       }
     end
 
-    def language
-      doc["language_iana_s"]&.first
-    end
-
     # Calls Requests::BibdataService to get the delivery_locations
     def build_pick_ups
       pick_up_locations = []

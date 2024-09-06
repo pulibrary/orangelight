@@ -96,21 +96,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       end
     end
 
-    describe "#language" do
-      it "returns a language_code" do
-        expect(request_with_holding_item.language).to be_truthy
-      end
-
-      it "returns a language IANA code" do
-        expect(request_with_holding_item.language).to eq 'en'
-      end
-
-      # Doesn't do this yet
-      # it "returns two-character ISO 639-1 language code" do
-      #   expect(request_with_holding_item.hidden_field_metadata[:author]).to be_truthy
-      # end
-    end
-
     describe "#ctx" do
       it "produces an ILLiad flavored openurl" do
         expect(request_with_holding_item.ctx).to be_an_instance_of(OpenURL::ContextObject)
@@ -564,7 +549,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     describe "#requestable" do
       it "is unavailable" do
         expect(request_at_paging_outside.requestable[0].location_code).to eq('firestone$nec')
-        expect(request_at_paging_outside.requestable[0].pageable?).to be_nil
       end
     end
   end
@@ -583,7 +567,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     describe "#requestable" do
       it "is unavailable" do
         expect(request_at_paging_f.requestable[0].location_code).to eq('firestone$stacks')
-        expect(request_at_paging_f.requestable[0].pageable?).to eq(nil)
         expect(request_at_paging_f.requestable[0].alma_managed?).to eq(true)
       end
     end
@@ -655,10 +638,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       it "is in a pageable location" do
         expect(request_no_callnum.requestable[0].location_code).to eq('firestone$stacks')
         expect(request_no_callnum.requestable[0].alma_managed?).to eq(true)
-      end
-
-      it "has a pageable item" do
-        expect(request_no_callnum.requestable[0].pageable?).to be_nil
       end
     end
   end

@@ -17,3 +17,13 @@ patron_message
 single_item_request?
 ask_me?
 item_location_code
+pending?
+pick_up_locations
+urls
+use_restriction?
+barcode?
+copy_number
+copy_value
+cron_value
+description
+pick_up_location_code
