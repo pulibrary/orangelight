@@ -15,13 +15,5 @@ module Requests
     def to_h
       { mfhd_id: holding_data }
     end
-
-    def thesis?
-      mfhd_id == "thesis" && holding_data[:location_code] == 'mudd$stacks'
-    end
-
-    def numismatics?
-      mfhd_id == "numismatics" && holding_data[:location_code] == 'rare$num'
-    end
   end
 end

@@ -33,12 +33,4 @@ RSpec.describe Requests::NonAlmaAeonUrl, requests: true do
   it 'defaults to the thesis genre' do
     expect(subject).to include('genre=thesis')
   end
-  context 'when the holdings has a coin call number' do
-    let(:holdings) do
-      { "numismatics" => { "call_number": "Coin 11362" } }
-    end
-    it 'includes the numismatics genre' do
-      expect(subject).to include('genre=numismatics')
-    end
-  end
 end
