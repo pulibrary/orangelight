@@ -78,8 +78,8 @@ module Requests
 
       def calculate_on_shelf_services
         [
-          ServiceEligibility::OnShelfEdd.new(requestable:, user:),
-          ServiceEligibility::OnShelf.new(requestable:, user:)
+          ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
+          ServiceEligibility::OnShelfPickup.new(requestable:, user:)
         ].select(&:eligible?).map(&:to_s)
       end
 

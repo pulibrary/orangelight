@@ -15,17 +15,17 @@ module Requests
       end
 
       def eligible?
-        requestable_is_eligible? && user_is_eligible?
+        requestable_eligible? && user_eligible?
       end
 
         private
 
-          def requestable_is_eligible?
-              !requestable.aeon? && requestable.charged? &&
+          def requestable_eligible?
+            !requestable.aeon? && requestable.charged? &&
               (!any_loanable || requestable.enumerated? || requestable.preservation_conservation?)
           end
 
-          def user_is_eligible?
+          def user_eligible?
             user.cas_provider? || user.alma_provider?
           end
 
