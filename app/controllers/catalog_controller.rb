@@ -677,7 +677,7 @@ class CatalogController < ApplicationController
     config.search_state_fields = config.search_state_fields + [
       :advanced_type, :f1, :f2, :f3,
       :op1, :op2, :op3,
-      :q1, :q2, :q3
+      :q1, :q2, :q3, :clause
     ]
 
     config.index.constraints_component = Orangelight::ConstraintsComponent
