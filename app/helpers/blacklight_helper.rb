@@ -238,7 +238,7 @@ module BlacklightHelper
 
   # Links to correct advanced search page based on advanced_type parameter value
   def edit_search_link
-    url = BlacklightAdvancedSearch::Engine.routes.url_helpers.advanced_search_path(params.permit!.except(:controller, :action).to_h)
+    url = advanced_path(params.permit!.except(:controller, :action).to_h)
     if params[:advanced_type] == 'numismatics'
       url.gsub('/advanced', '/numismatics')
     else
