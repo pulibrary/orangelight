@@ -3,7 +3,8 @@ require 'rails_helper'
 require './app/models/requests/request.rb'
 
 RSpec.describe Requests::ApplicationHelper, type: :helper,
-                                            vcr: { cassette_name: 'request_models', record: :none } do
+                                            vcr: { cassette_name: 'request_models', record: :none },
+                                            requests: true do
   let(:user) { FactoryBot.build(:user) }
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777",
@@ -255,14 +256,14 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
                                                       "order" => 0 }, "pick_up_location_code" => "lewis" }]
       end
       let(:location) do
-        { "label" => "New Book Shelf", "code" => "plasma$nb", "aeon_location" => false,
-          "recap_electronic_delivery_location" => false, "open" => true, "requestable" => true,
-          "always_requestable" => false, "circulates" => true, "remote_storage" => "",
-          "fulfillment_unit" => "Limited",
-          "library" => { "label" => "Harold P. Furth Plasma Physics Library",
-                         "code" => "plasma", "order" => 0 },
-          "holding_library" => nil,
-          "delivery_locations" => locations }
+        Requests::Location.new({ "label" => "New Book Shelf", "code" => "plasma$nb", "aeon_location" => false,
+                                 "recap_electronic_delivery_location" => false, "open" => true, "requestable" => true,
+                                 "always_requestable" => false, "circulates" => true, "remote_storage" => "",
+                                 "fulfillment_unit" => "Limited",
+                                 "library" => { "label" => "Harold P. Furth Plasma Physics Library",
+                                                "code" => "plasma", "order" => 0 },
+                                 "holding_library" => nil,
+                                 "delivery_locations" => locations })
       end
       let(:stubbed_questions) do
         { no_services?: true, preferred_request_id: '22693661550006421',
@@ -275,7 +276,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       end
     end
     context "no services" do
-      let(:stubbed_questions) { { no_services?: true, preferred_request_id: 'abc123', pending?: false, recap?: false, recap_pf?: false, annex?: false, pick_up_locations: nil, charged?: false, on_shelf?: false, location: { "library" => default_pick_ups[0] }, ill_eligible?: false } }
+      let(:stubbed_questions) { { no_services?: true, preferred_request_id: 'abc123', pending?: false, recap?: false, recap_pf?: false, annex?: false, pick_up_locations: nil, charged?: false, on_shelf?: false, location: Requests::Location.new({ "library" => default_pick_ups[0] }), ill_eligible?: false } }
       it 'shows default pick-up location' do
         expect(helper.preferred_request_content_tag(requestable, default_pick_ups)).to eq \
           card_div + '<input type="hidden" name="requestable[][pick_up]" id="requestable__pick_up_abc123" value="{&quot;pick_up&quot;:&quot;xx&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}" class="single-pick-up-hidden" autocomplete="off" /><label class="single-pick-up" style="" for="requestable__pick_up_abc123">Pick-up location: place</label></div>'
@@ -284,7 +285,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
 
     context "no services multiple defaults" do
       let(:default_pick_ups) { [{ label: 'place', gfa_pickup: 'xx', staff_only: false, pick_up_location_code: 'firestone' }, { label: 'place two', gfa_pickup: 'xz', staff_only: false }] }
-      let(:stubbed_questions) { { no_services?: true, preferred_request_id: 'abc123', pending?: false, recap?: false, recap_pf?: false, annex?: false, pick_up_locations: nil, charged?: false, on_shelf?: false, location: { "library" => default_pick_ups[0] }, ill_eligible?: false } }
+      let(:stubbed_questions) { { no_services?: true, preferred_request_id: 'abc123', pending?: false, recap?: false, recap_pf?: false, annex?: false, pick_up_locations: nil, charged?: false, on_shelf?: false, location: Requests::Location.new({ "library" => default_pick_ups[0] }), ill_eligible?: false } }
       it 'shows default pick-up location' do
         expect(helper.preferred_request_content_tag(requestable, default_pick_ups)).to eq \
           card_div + '<input type="hidden" name="requestable[][pick_up]" id="requestable__pick_up_abc123" value="{&quot;pick_up&quot;:&quot;xx&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}" class="single-pick-up-hidden" autocomplete="off" /><label class="single-pick-up" style="" for="requestable__pick_up_abc123">Pick-up location: place</label></div>'
@@ -294,7 +295,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     end
 
     context "no services and charged" do
-      let(:stubbed_questions) { { no_services?: true, preferred_request_id: 'abc123', pending?: false, recap?: false, recap_pf?: false, annex?: false, pick_up_locations: nil, charged?: true, on_shelf?: false, location: { "library" => default_pick_ups[0] }, ill_eligible?: false } }
+      let(:stubbed_questions) { { no_services?: true, preferred_request_id: 'abc123', pending?: false, recap?: false, recap_pf?: false, annex?: false, pick_up_locations: nil, charged?: true, on_shelf?: false, location: Requests::Location.new({ "library" => default_pick_ups[0] }), ill_eligible?: false } }
       it 'shows default pick-up location hidden' do
         expect(helper.preferred_request_content_tag(requestable, default_pick_ups)).to eq \
           card_div + '<input type="hidden" name="requestable[][pick_up]" id="requestable__pick_up_abc123" value="{&quot;pick_up&quot;:&quot;xx&quot;,&quot;pick_up_location_code&quot;:&quot;firestone&quot;}" class="single-pick-up-hidden" autocomplete="off" /><label class="single-pick-up" style="margin-top:10px;" for="requestable__pick_up_abc123">Pick-up location: place</label></div>'

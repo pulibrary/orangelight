@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Requests::RequestHelper, type: :helper do
+RSpec.describe Requests::RequestHelper, type: :helper, requests: true do
   describe '#request_title' do
     it 'returns a trace form title when mode is set' do
       assign(:mode, "trace") # instance variable

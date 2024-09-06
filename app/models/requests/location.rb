@@ -60,6 +60,10 @@ module Requests
       bibdata_location[:delivery_locations] || []
     end
 
+    def to_h
+      bibdata_location
+    end
+
       private
 
         def library_data_present?
