@@ -1,7 +1,6 @@
 # frozen_string_literal: false
 
 module ApplicationHelper
-  include Requests::Aeon
   require './lib/orangelight/string_functions'
 
   # Check the Rails Environment. Currently used for Matomo to support production.
