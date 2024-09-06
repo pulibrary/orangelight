@@ -157,10 +157,11 @@ module Requests
     private
 
       def first_delivery_location
-        if requestable.location[:delivery_locations].blank? || requestable.location[:delivery_locations].empty?
+        delivery_locations = Location.new(requestable.location).delivery_locations
+        if delivery_locations.blank?
           {}
         else
-          requestable.location[:delivery_locations].first
+          delivery_locations.first
         end
       end
 
