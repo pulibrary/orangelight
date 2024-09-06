@@ -21,8 +21,7 @@ module Requests
         private
 
           def requestable_is_eligible?
-            (requestable.alma_managed? || requestable.partner_holding?) &&
-              !requestable.aeon? && !requestable.online? && requestable.charged? &&
+              !requestable.aeon? && requestable.charged? &&
               (!any_loanable || requestable.enumerated? || requestable.preservation_conservation?)
           end
 

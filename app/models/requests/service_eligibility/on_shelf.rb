@@ -21,9 +21,8 @@ module Requests
         private
 
           def requestable_is_eligible?
-            (requestable.alma_managed? || requestable.partner_holding?) &&
-              !requestable.online? && !requestable.aeon? &&
-              !requestable.charged? && !requestable.in_process? &&
+              !requestable.aeon? && !requestable.charged? &&
+              !requestable.in_process? &&
               !requestable.on_order? && !requestable.annex? &&
               !(requestable.recap? || requestable.recap_pf?) &&
               !requestable.held_at_marquand_library? &&
