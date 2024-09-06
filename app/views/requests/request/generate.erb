@@ -1,12 +1,6 @@
 <% document = @request.try(:request)&.doc %>
 <div class="col-12">
-      <a class="btn btn-primary" id="returnToRecordLink"
-        href="<%= @request.catalog_url%>">
-        <span class="icon-refresh"></span>
-        <span class="d-lg-inline">
-          Return to record
-        </span>
-      </a>
+    <%= render partial: 'return_to_record_link', locals: {record_url: @request.catalog_url} %>
     <div class="doc-<%= @request.system_id %>">
         <h1>
           <%= request_title %>

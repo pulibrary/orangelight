@@ -28,7 +28,8 @@ module Requests
       @request = RequestDecorator.new(Requests::Request.new(system_id:, mfhd:, source:, patron: @patron), view_context)
       redirect_single_aeon_thesis_numismatics
     rescue ActionController::ParameterMissing
-      @request = EmptyRequestDecorator.new(system_id:)
+      @system_id = system_id
+      render 'requests/request/no_location_specified'
     end
 
     def aeon?
