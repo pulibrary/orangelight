@@ -237,18 +237,11 @@ module Requests
       return multi_item unless requestable_list.size == 1
       if requestable_list.first.services.empty?
         no_item
-      elsif requestable_list.first.charged?
-        return multi_item if requestable_list.first.annex?
-        single_item # no_item
-      else
-        submit_message_for_requestable_items(requestable_list)
-      end
-    end
-
-    def submit_message_for_requestable_items(requestable_list)
-      single_item = "Request this Item"
-      multi_item = "Request Selected Items"
-      if requestable_list.first.annex?
+      elsif requestable_list.first.annex?
+        # Annex items have the potential to display the
+        # use the fill-in form, where a user could potentially
+        # request multiple volumes.  For that reason, we show
+        # the plural form "Request Selected Items" in this case
         multi_item
       else
         single_item
