@@ -41,9 +41,9 @@ module Requests
       @illiad = Requests::Illiad.new(enum: item&.fetch(:enum, nil), chron: item&.fetch(:chron, nil), call_number:)
     end
 
-    delegate :pick_up_location_id, :pick_up_location_code, :item_type, :enum_value, :cron_value, :item_data?,
-             :temp_loc_other_than_resource_sharing?, :on_reserve?, :inaccessible?, :hold_request?, :enumerated?, :item_type_non_circulate?, :partner_holding?,
-             :id, :use_statement, :collection_code, :missing?, :charged?, :status, :status_label, :barcode?, :barcode, :preservation_conservation?, to: :item
+    delegate :pick_up_location_code, :item_type, :enum_value, :cron_value, :item_data?,
+             :temp_loc_other_than_resource_sharing?, :on_reserve?, :enumerated?, :item_type_non_circulate?, :partner_holding?,
+             :id, :use_statement, :collection_code, :charged?, :status, :status_label, :barcode?, :barcode, :preservation_conservation?, to: :item
 
     delegate :annex?, :location_label, to: :location_object
 
@@ -62,11 +62,6 @@ module Requests
     # Reading Room Request
     def aeon?
       location_object.aeon? || (use_statement == 'Supervised Use')
-    end
-
-    # at an open location users may go to
-    def open?
-      location[:open] == true
     end
 
     def recap?
@@ -89,14 +84,6 @@ module Requests
       in_scsb_edd_collection? && !scsb_in_library_use?
     end
 
-    def lewis?
-      ['sci', 'scith', 'sciref', 'sciefa', 'sciss'].include?(location_object.code)
-    end
-
-    def plasma?
-      location_object.code == 'ppl'
-    end
-
     def preservation?
       location_object.code == 'pres'
     end
@@ -107,10 +94,6 @@ module Requests
 
     def location_code
       location_object.code
-    end
-
-    def can_be_delivered?
-      circulates? && !scsb_in_library_use? && !holding_library_in_library_only?
     end
 
     def always_requestable?
@@ -161,10 +144,6 @@ module Requests
     def urls
       return {} unless online? && bib['electronic_access_1display']
       JSON.parse(bib['electronic_access_1display'])
-    end
-
-    def pageable?
-      !charged? && pageable_loc?
     end
 
     def pick_up_locations
@@ -235,10 +214,6 @@ module Requests
 
     def hl_art?
       item&.collection_code == 'FL'
-    end
-
-    def resource_shared?
-      library_code == "RES_SHARE"
     end
 
     def replace_existing_services(new_services)

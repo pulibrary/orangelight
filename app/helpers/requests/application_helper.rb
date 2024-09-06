@@ -276,12 +276,6 @@ module Requests
       }.with_indifferent_access
     end
 
-    # def display_language
-    #   {
-    #     language: "Language:"
-    #   }.with_indifferent_access
-    # end
-
     def display_status(requestable)
       content_tag(:span, requestable.item['status']) unless requestable.item.nil?
     end

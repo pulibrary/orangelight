@@ -96,21 +96,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       end
     end
 
-    describe "#language" do
-      it "returns a language_code" do
-        expect(request_with_holding_item.language).to be_truthy
-      end
-
-      it "returns a language IANA code" do
-        expect(request_with_holding_item.language).to eq 'en'
-      end
-
-      # Doesn't do this yet
-      # it "returns two-character ISO 639-1 language code" do
-      #   expect(request_with_holding_item.hidden_field_metadata[:author]).to be_truthy
-      # end
-    end
-
     describe "#ctx" do
       it "produces an ILLiad flavored openurl" do
         expect(request_with_holding_item.ctx).to be_an_instance_of(OpenURL::ContextObject)
@@ -564,7 +549,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     describe "#requestable" do
       it "is unavailable" do
         expect(request_at_paging_outside.requestable[0].location_code).to eq('firestone$nec')
-        expect(request_at_paging_outside.requestable[0].pageable?).to be_nil
       end
     end
   end
@@ -583,7 +567,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     describe "#requestable" do
       it "is unavailable" do
         expect(request_at_paging_f.requestable[0].location_code).to eq('firestone$stacks')
-        expect(request_at_paging_f.requestable[0].pageable?).to eq(nil)
         expect(request_at_paging_f.requestable[0].alma_managed?).to eq(true)
       end
     end
@@ -655,10 +638,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       it "is in a pageable location" do
         expect(request_no_callnum.requestable[0].location_code).to eq('firestone$stacks')
         expect(request_no_callnum.requestable[0].alma_managed?).to eq(true)
-      end
-
-      it "has a pageable item" do
-        expect(request_no_callnum.requestable[0].pageable?).to be_nil
       end
     end
   end
@@ -1018,61 +997,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     describe '#any_loanable_copies?' do
       it "has available copy" do
         expect(request.any_loanable_copies?).to be true
-      end
-    end
-  end
-
-  # Since we don't load multiple holdings any longer I'm not sure this is a valid test scenario
-  #
-  # context 'Multi-holding record with charged items and items available at restricted locations' do
-  #   let(:user) { FactoryBot.build(:user) }
-  #   let(:params) do
-  #     {
-  #       system_id: '9996968113506421',
-  #       mfhd: '22117193570006421',
-  #       patron: patron
-  #     }
-  #   end
-  #   let(:request) { described_class.new(params) }
-  #   describe '#any_loanable_copies?' do
-  #     it "has available copy" do
-  #       expect(request.any_loanable_copies?).to be false
-  #     end
-  #   end
-  # end
-
-  ### Review this test
-  context 'RBSC single Item with no isbn' do
-    let(:user) { FactoryBot.build(:user) }
-    let(:params) do
-      {
-        system_id: '9926312653506421',
-        mfhd: '22692741390006421',
-        patron:
-      }
-    end
-    let(:request) { described_class.new(**params) }
-
-    describe '#isbn_numbers?' do
-      it 'returns false when there are no isbns present' do
-        expect(request.isbn_numbers?).to be false
-      end
-    end
-  end
-
-  context 'single missing item with isbn' do
-    let(:user) { FactoryBot.build(:user) }
-    let(:params) do
-      {
-        system_id: '9917887963506421',
-        mfhd: '22503918400006421',
-        patron:
-      }
-    end
-    let(:request) { described_class.new(**params) }
-    describe '#isbn_numbers?' do
-      it 'returns true when there are isbns present' do
-        expect(request.isbn_numbers?).to be true
       end
     end
   end
