@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Requests::ServiceEligibility::OnShelfDigitize do
+RSpec.describe Requests::ServiceEligibility::OnShelfDigitize, requests: true do
   describe '#eligible?' do
     it 'returns true if all criteria are met' do
       requestable = instance_double(Requests::Requestable)
