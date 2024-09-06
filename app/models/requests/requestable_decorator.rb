@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 module Requests
   class RequestableDecorator
-    delegate :system_id, :aeon_mapped_params, :services, :charged?, :annex?, :pageable_loc?, :on_reserve?,
+    delegate :system_id, :aeon_mapped_params, :services, :charged?, :annex?, :on_reserve?,
              :ask_me?, :aeon_request_url, :location, :temp_loc_other_than_resource_sharing?, :call_number, :eligible_for_library_services?,
              :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :item_data?, :recap_edd?, :user_barcode, :clancy?,
              :holding, :item_location_code, :item?, :item, :partner_holding?, :status, :status_label, :use_restriction?, :library_code, :enum_value, :item_at_clancy?,

@@ -12,7 +12,6 @@ module Requests
     attr_reader :patron
     attr_reader :services
 
-    delegate :pageable_loc?, to: :@pageable
     delegate :map_url, to: :@mappable
     delegate :illiad_request_url, :illiad_request_parameters, to: :@illiad
     delegate :eligible_for_library_services?, to: :@patron

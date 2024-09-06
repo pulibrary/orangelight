@@ -536,42 +536,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
   end
 
-  context "When passed an ID for a paging location in nec outside of call number range" do
-    let(:params) do
-      {
-        system_id: '9929370033506421',
-        mfhd: '22539090210006421',
-        patron:
-      }
-    end
-    let(:request_at_paging_outside) { described_class.new(**params) }
-
-    describe "#requestable" do
-      it "is unavailable" do
-        expect(request_at_paging_outside.requestable[0].location_code).to eq('firestone$nec')
-      end
-    end
-  end
-
-  # from the A range in "f"
-  context "When passed an ID for a paging location f outside of call number range" do
-    let(:params) do
-      {
-        system_id: '9995457263506421',
-        mfhd: '22560953240006421',
-        patron:
-      }
-    end
-    let(:request_at_paging_f) { described_class.new(**params) }
-
-    describe "#requestable" do
-      it "is unavailable" do
-        expect(request_at_paging_f.requestable[0].location_code).to eq('firestone$stacks')
-        expect(request_at_paging_f.requestable[0].alma_managed?).to eq(true)
-      end
-    end
-  end
-
   context "When passed an ID for an On Order Title" do
     let(:params) do
       {
@@ -619,28 +583,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
   end
 
-  # Item with no call number 9602545
-  context "When passed an ID for an Item in a pageable location that has no call number" do
-    let(:params) do
-      {
-        system_id: '9996025453506421',
-        mfhd: '22565008360006421',
-        patron:
-      }
-    end
-    let(:request_no_callnum) { described_class.new(**params) }
-
-    describe "#requestable" do
-      it "has an requestable items" do
-        expect(request_no_callnum.requestable.size).to be >= 1
-      end
-
-      it "is in a pageable location" do
-        expect(request_no_callnum.requestable[0].location_code).to eq('firestone$stacks')
-        expect(request_no_callnum.requestable[0].alma_managed?).to eq(true)
-      end
-    end
-  end
   ## Add context for Visuals when available
   ## Add context for EAD when available
   # http://localhost:4000/requests/2002206?mfhd=2281830
