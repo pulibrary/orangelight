@@ -65,7 +65,7 @@ module Requests
 
     def recap?
       return false unless location_valid?
-      location[:remote_storage] == "recap_rmt"
+      location_object.recap?
     end
 
     def recap_pf?
