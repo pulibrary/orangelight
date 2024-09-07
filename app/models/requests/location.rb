@@ -64,6 +64,10 @@ module Requests
       bibdata_location
     end
 
+    def recap?
+      bibdata_location[:remote_storage] == "recap_rmt"
+    end
+
       private
 
         def library_data_present?
