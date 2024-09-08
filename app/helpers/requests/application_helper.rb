@@ -160,8 +160,8 @@ module Requests
     def hidden_fields_item(requestable)
       request_id = requestable.preferred_request_id
       hidden = hidden_field_tag "requestable[][bibid]", "", value: requestable.bib[:id].to_s, id: "requestable_bibid_#{request_id}"
-      hidden += hidden_field_tag "requestable[][mfhd]", "", value: requestable.holding.keys[0].to_s, id: "requestable_mfhd_#{request_id}"
-      hidden += hidden_field_tag "requestable[][call_number]", "", value: (requestable.holding.first[1]['call_number']).to_s, id: "requestable_call_number_#{request_id}" unless requestable.holding.first[1]["call_number"].nil?
+      hidden += hidden_field_tag "requestable[][mfhd]", "", value: requestable.holding.mfhd_id, id: "requestable_mfhd_#{request_id}"
+      hidden += hidden_field_tag "requestable[][call_number]", "", value: requestable.holding.holding_data['call_number'].to_s, id: "requestable_call_number_#{request_id}" unless requestable.holding.holding_data["call_number"].nil?
       hidden += hidden_field_tag "requestable[][location_code]", "", value: requestable.item_location_code.to_s, id: "requestable_location_#{request_id}"
       hidden += if requestable.item?
                   hidden_fields_for_item(item: requestable.item, preferred_request_id: requestable.preferred_request_id)
@@ -173,10 +173,10 @@ module Requests
     end
 
     def hidden_fields_holding(requestable)
-      hidden = hidden_field_tag "requestable[][mfhd]", "", value: requestable.holding.keys[0].to_s, id: "requestable_mfhd_#{requestable.holding.keys[0]}"
-      hidden += hidden_field_tag "requestable[][call_number]", "", value: (requestable.holding.first[1]['call_number']).to_s, id: "requestable_call_number_#{requestable.holding.keys[0]}" unless requestable.holding.first[1]["call_number"].nil?
-      hidden += hidden_field_tag "requestable[][location_code]", "", value: (requestable.holding.first[1]['location_code']).to_s, id: "requestable_location_code_#{requestable.holding.keys[0]}"
-      hidden += hidden_field_tag "requestable[][location]", "", value: (requestable.holding.first[1]['location']).to_s, id: "requestable_location_#{requestable.holding.keys[0]}"
+      hidden = hidden_field_tag "requestable[][mfhd]", "", value: requestable.holding.mfhd_id.to_s, id: "requestable_mfhd_#{requestable.holding.mfhd_id}"
+      hidden += hidden_field_tag "requestable[][call_number]", "", value: requestable.holding.holding_data['call_number'].to_s, id: "requestable_call_number_#{requestable.holding.mfhd_id}" unless requestable.holding.holding_data["call_number"].nil?
+      hidden += hidden_field_tag "requestable[][location_code]", "", value: requestable.holding.holding_data['location_code'].to_s, id: "requestable_location_code_#{requestable.holding.mfhd_id}"
+      hidden += hidden_field_tag "requestable[][location]", "", value: requestable.holding.holding_data['location'].to_s, id: "requestable_location_#{requestable.holding.mfhd_id}"
       sanitize(hidden, tags: input)
     end
 

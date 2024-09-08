@@ -15,9 +15,9 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context "Is a bibliographic record on the shelf" do
     let(:request) { FactoryBot.build(:request_on_shelf, patron:) }
     let(:requestable) { request.requestable.last }
-    let(:mfhd_id) { requestable.holding.first[0] }
-    let(:call_number) { CGI.escape(requestable.holding[mfhd_id]['call_number']) }
-    let(:location_code) { CGI.escape(requestable.holding[mfhd_id]['location_code']) }
+    let(:mfhd_id) { requestable.holding.mfhd_id }
+    let(:call_number) { CGI.escape(requestable.holding.holding_data['call_number']) }
+    let(:location_code) { CGI.escape(requestable.holding.holding_data['location_code']) }
     let(:stackmap_url) { requestable.map_url(mfhd_id) }
 
     describe '#services' do
@@ -378,7 +378,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
   context 'A requestable serial item that has volume and item data in its openurl' do
     let(:request) { FactoryBot.build(:aeon_rbsc_enumerated, patron:) }
-    let(:requestable_holding) { request.requestable.select { |r| r.holding['22677203260006421'] } }
+    let(:requestable_holding) { request.requestable.select { |r| r.holding.mfhd_id == '22677203260006421' } }
     let(:requestable) { requestable_holding.first } # assume only one requestable
     describe '#aeon_open_url' do
       it 'returns an openurl with volume data' do
@@ -417,7 +417,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
   context 'A requestable item from an Aeon EAL Holding with a nil barcode' do
     let(:request) { FactoryBot.build(:aeon_rbsc_alma_enumerated, patron:) }
-    let(:requestable_holding) { request.requestable.select { |r| r.holding['22563389780006421'] } }
+    let(:requestable_holding) { request.requestable.select { |r| r.holding.mfhd_id == '22563389780006421' } }
     let(:holding_id) { '22256352610006421' }
     let(:requestable) { requestable_holding.first } # assume only one requestable
     let(:enumeration) { 'v.7' }
@@ -562,7 +562,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:user) }
     let(:item) { { status_label: "Available", location_code: "scsbnypl" }.with_indifferent_access }
     let(:location) { { "holding_library" => { "code" => "marquand" }, "library" => { "code" => "marquand" } } }
-    let(:requestable) { described_class.new(bib: {}, holding: { 1 => { 'call_number_browse': 'blah' } }, location:, patron:, item:) }
+    let(:requestable) { described_class.new(bib: {}, holding: Requests::Holding.new(mfhd_id: 1, holding_data: { 'call_number_browse': 'blah' }), location:, patron:, item:) }
 
     describe '#site' do
       it 'returns a Marquand site param' do
@@ -672,7 +672,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
       it 'has Location Param' do
         expect(requestable.aeon_basic_params.key?(:Location)).to be true
-        expect(requestable.aeon_basic_params[:Location]).to eq(requestable.holding.first.last['location_code'])
+        expect(requestable.aeon_basic_params[:Location]).to eq(requestable.holding.holding_data['location_code'])
       end
     end
 
@@ -830,7 +830,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     end
 
     let(:request_charged) { FactoryBot.build(:request_with_items_charged) }
-    let(:requestable_holding) { request_charged.requestable.select { |r| r.holding['22739043950006421'] } }
+    let(:requestable_holding) { request_charged.requestable.select { |r| r.holding.mfhd_id == '22739043950006421' } }
     let(:requestable_charged) { requestable_holding.first }
 
     describe '# checked-out requestable' do
@@ -905,7 +905,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     # end
 
     let(:request_charged) { FactoryBot.build(:request_with_items_charged_barcode_patron) }
-    let(:requestable_holding) { request_charged.requestable.select { |r| r.holding['22739043950006421'] } }
+    let(:requestable_holding) { request_charged.requestable.select { |r| r.holding.mfhd_id == '22739043950006421' } }
     let(:requestable_charged) { requestable_holding.first }
 
     describe '#checked-out requestable' do
@@ -983,7 +983,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A requestable item from a RBSC holding creates an openurl with volume and call number info' do
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:request_aeon_holding_volume_note) }
-    let(:requestable) { request.requestable.find { |m| m.holding.first.first == '22563389780006421' } }
+    let(:requestable) { request.requestable.find { |m| m.holding.mfhd_id == '22563389780006421' } }
     let(:aeon_ctx) { requestable.aeon_openurl(request.ctx) }
     describe '#aeon_openurl' do
       it 'includes the location_has note as the volume' do

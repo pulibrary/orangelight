@@ -1,4 +1,4 @@
-<tr class='user-supplied-input' id='request_user_supplied_<%= "#{requestable.holding.keys[0]}" %>'>
+<tr class='user-supplied-input' id='request_user_supplied_<%= "#{requestable.holding.mfhd_id}" %>'>
   <td class='request--select'>
     <%= hidden_field_tag 'requestable[][selected]', false, id: "hidden_selected" %>
     <%= check_box_tag "requestable[][selected]", true, false, class: 'request--select', aria: { label: "Volume not listed"}, id: "requestable_selected" %>
@@ -6,11 +6,11 @@
   </td>
   <td class='request--options' <%= 'colspan="2"'.html_safe unless table_sorter_present?(requestable_list) %>>
     <fieldset class="form-group">
-     <label class="control-label <%= 'col-sm-6'.html_safe unless table_sorter_present?(requestable_list) %>" for="requestable_user_supplied_enum_<%= "#{requestable.holding.keys[0]}" %>">
+     <label class="control-label <%= 'col-sm-6'.html_safe unless table_sorter_present?(requestable_list) %>" for="requestable_user_supplied_enum_<%= "#{requestable.holding.mfhd_id}" %>">
           If the specific volume does not appear in the list below, please enter it here:
       </label>
       <div class="col-sm-6">
-        <%= text_field_tag 'requestable[][user_supplied_enum]', "", value: "", placeholder: "Ex: Volume 2, 1987", id: "requestable_user_supplied_enum_#{requestable.holding.keys[0]}", maxlength: 60 %>
+        <%= text_field_tag 'requestable[][user_supplied_enum]', "", value: "", placeholder: "Ex: Volume 2, 1987", id: "requestable_user_supplied_enum_#{requestable.holding.mfhd_id}", maxlength: 60 %>
       </div>
     </fieldset>
   </td>
