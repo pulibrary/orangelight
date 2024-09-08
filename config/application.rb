@@ -4,7 +4,6 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 require_relative "lando_env"
-require_relative "../lib/orangelight/browse_lists"
 
 # For reasons we don't fully understand, yell is messing up the Rails6 zeitwerk
 # auto-loader in some cases, in our consuming app that uses kithe.

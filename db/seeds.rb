@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require_relative "../lib/orangelight/browse_lists"
 
 config = Orangelight::Application.config.database_configuration[::Rails.env]
 dbhost, dbuser, dbname, password, port = config['host'], config['username'], config['database'], config['password'], config['port'] || 5432

@@ -2,6 +2,6 @@
 
 module Orangelight
   def self.table_name_prefix
-    "#{BrowseLists.table_prefix}_"
+    "alma_orangelight_"
   end
 end

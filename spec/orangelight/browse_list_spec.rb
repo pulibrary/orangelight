@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'rails_helper'
+require_relative "../../lib/orangelight/browse_lists"
 
 RSpec.describe BrowseLists do
   describe ".table_prefix" do
