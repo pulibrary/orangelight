@@ -3,7 +3,7 @@ module Requests
   class RequestableDecorator
     delegate :system_id, :services, :charged?, :annex?, :on_reserve?,
              :ask_me?, :aeon_request_url, :temp_loc_other_than_resource_sharing?, :call_number, :eligible_for_library_services?,
-             :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :item_data?, :recap_edd?, :user_barcode, :clancy?,
+             :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :item_data?, :recap_edd?, :user_barcode, :clancy_available?,
              :holding, :item_location_code, :item?, :item, :partner_holding?, :status, :status_label, :use_restriction?, :library_code, :enum_value, :item_at_clancy?,
              :cron_value, :illiad_request_parameters, :location_label, :online?, :aeon?, :patron, :held_at_marquand_library?,
              :ill_eligible?, :scsb_in_library_use?, :pick_up_locations, :on_shelf?, :pending?, :recap?, :recap_pf?, :illiad_request_url, :available?,
@@ -68,7 +68,7 @@ module Requests
     end
 
     def in_library_use_required?
-      available? && (!held_at_marquand_library? || !item_at_clancy? || clancy?) && ((off_site? && !circulates?) || holding_library_in_library_only? || scsb_in_library_use?)
+      available? && (!held_at_marquand_library? || !item_at_clancy? || clancy_available?) && ((off_site? && !circulates?) || holding_library_in_library_only? || scsb_in_library_use?)
     end
 
     def off_site?
@@ -76,7 +76,7 @@ module Requests
     end
 
     def off_site_location
-      if clancy?
+      if clancy_available?
         "clancy" # at clancy and available
       elsif item_at_clancy?
         "clancy_unavailable" # at clancy but not available
