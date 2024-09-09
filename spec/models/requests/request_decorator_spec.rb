@@ -146,14 +146,14 @@ describe Requests::RequestDecorator, requests: true do
     end
 
     context "on_shelf services with no item data and circulates" do
-      let(:stubbed_questions) { { services: ['on_shelf'], patron:, item_data?: false, circulates?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, user_barcode: '111222', ask_me?: false, recap?: false, annex?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, library_code: 'abc', eligible_for_library_services?: true } }
+      let(:stubbed_questions) { { services: ['on_shelf'], patron:, item_data?: false, circulates?: true, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, user_barcode: '111222', ask_me?: false, recap?: false, annex?: false, clancy_available?: false, held_at_marquand_library?: false, item_at_clancy?: false, library_code: 'abc', eligible_for_library_services?: true } }
       it "submits via form" do
         expect(decorator.any_will_submit_via_form?).to be_truthy
       end
     end
 
     context "on_shelf services with no item data and circulates" do
-      let(:stubbed_questions) { { services: ['on_shelf'], patron:, item_data?: false, circulates?: false, recap_edd?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, user_barcode: '111222', ask_me?: false, recap?: false, annex?: false, clancy?: false, item_at_clancy?: false, held_at_marquand_library?: false, eligible_for_library_services?: true } }
+      let(:stubbed_questions) { { services: ['on_shelf'], patron:, item_data?: false, circulates?: false, recap_edd?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, user_barcode: '111222', ask_me?: false, recap?: false, annex?: false, clancy_available?: false, item_at_clancy?: false, held_at_marquand_library?: false, eligible_for_library_services?: true } }
       it "does not submit via form" do
         expect(decorator.any_will_submit_via_form?).to be_falsey
       end

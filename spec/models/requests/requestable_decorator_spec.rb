@@ -16,7 +16,7 @@ describe Requests::RequestableDecorator, requests: true do
   let(:patron) { Requests::Patron.new(user:, session: {}, patron: valid_patron) }
 
   let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
-  let(:default_stubbed_questions) { { patron:, item_data?: true, circulates?: true, on_shelf?: false, recap?: false, annex?: false, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, clancy?: false, held_at_marquand_library?: false, item_at_clancy?: false, cul_avery?: false, eligible_for_library_services?: true } }
+  let(:default_stubbed_questions) { { patron:, item_data?: true, circulates?: true, on_shelf?: false, recap?: false, annex?: false, holding_library_in_library_only?: false, scsb_in_library_use?: false, on_order?: false, in_process?: false, aeon?: false, ill_eligible?: false, clancy_available?: false, held_at_marquand_library?: false, item_at_clancy?: false, cul_avery?: false, eligible_for_library_services?: true } }
   let(:ldap) { {} }
 
   describe "#digitize?" do
@@ -968,14 +968,14 @@ describe Requests::RequestableDecorator, requests: true do
     end
 
     context "at clancy" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(clancy?: true, item_at_clancy?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(clancy_available?: true, item_at_clancy?: true) }
       it 'is off site' do
         expect(decorator.off_site?).to be_truthy
       end
     end
 
     context "at annex and recap and clancy" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(clancy?: true, annex?: true, recap?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(clancy_available?: true, annex?: true, recap?: true) }
       it 'is off site' do
         expect(decorator.off_site?).to be_truthy
       end
@@ -1024,7 +1024,7 @@ describe Requests::RequestableDecorator, requests: true do
     end
 
     context "at annex" do
-      let(:stubbed_questions) { default_stubbed_questions.merge(clancy?: true, library_code: 'abc', item_at_clancy?: true) }
+      let(:stubbed_questions) { default_stubbed_questions.merge(clancy_available?: true, library_code: 'abc', item_at_clancy?: true) }
       it 'is off site' do
         expect(decorator.off_site_location).to eq('clancy')
       end

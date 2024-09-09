@@ -104,9 +104,9 @@ module Requests
       end
 
       def calculate_marquand_services
-        if requestable.item_at_clancy? && !requestable.clancy?
+        if requestable.item_at_clancy? && !requestable.clancy_available?
           ['clancy_unavailable']
-        elsif requestable.clancy?
+        elsif requestable.clancy_available?
           ['clancy_in_library', 'clancy_edd']
         else
           ['marquand_in_library', 'marquand_edd']

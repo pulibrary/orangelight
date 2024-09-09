@@ -68,9 +68,8 @@ module Requests
       location_object.code == "firestone$pf"
     end
 
-    def clancy?
-      return false unless held_at_marquand_library?
-      clancy_item.at_clancy? && clancy_item.available?
+    def clancy_available?
+      item_at_clancy? && clancy_item.available?
     end
 
     def recap_edd?
