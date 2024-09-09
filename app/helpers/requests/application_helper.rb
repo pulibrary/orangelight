@@ -312,8 +312,6 @@ module Requests
       def display_on_shelf(requestable, _mfhd_id)
         content_tag(:div) do
           display_requestable_list(requestable)
-          # temporary changes issue 438
-          # concat link_to 'Where to find it', requestable.map_url(mfhd_id)
         end
       end
 

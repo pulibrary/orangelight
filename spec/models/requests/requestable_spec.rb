@@ -18,7 +18,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:mfhd_id) { requestable.holding.mfhd_id }
     let(:call_number) { CGI.escape(requestable.holding.holding_data['call_number']) }
     let(:location_code) { CGI.escape(requestable.holding.holding_data['location_code']) }
-    let(:stackmap_url) { requestable.map_url(mfhd_id) }
 
     describe '#services' do
       it 'has on shelf and digitization services' do
@@ -45,12 +44,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#pick_up_locations' do
       it 'has pickup locations' do
         expect(requestable.pick_up_locations).to eq([{ "label" => "Firestone Library", "address" => "One Washington Rd. Princeton, NJ 08544", "phone_number" => "609-258-1470", "contact_email" => "fstcirc@princeton.edu", "gfa_pickup" => "PA", "staff_only" => false, "pickup_location" => true, "digital_location" => true, "library" => { "label" => "Firestone Library", "code" => "firestone", "order" => 0 }, "pick_up_location_code" => "firestone" }])
-      end
-    end
-
-    describe '#map_url' do
-      it 'returns a stackmap url' do
-        expect(stackmap_url).to include("#{requestable.bib[:id]}/stackmap?cn=#{call_number}&loc=#{location_code}")
       end
     end
 

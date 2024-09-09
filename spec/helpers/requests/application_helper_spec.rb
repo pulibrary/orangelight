@@ -199,7 +199,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       let(:stubbed_questions) do
         { services: ['on_shelf'], no_services?: false, charged?: false, aeon?: false,
           alma_managed?: false, ask_me?: false, on_shelf?: true, ill_eligible?: false,
-          map_url: 'map_abc', location: { library: { label: 'abc' } } }
+          location: { library: { label: 'abc' } } }
       end
       it 'a link to a map' do
         assign(:request, request)
@@ -213,7 +213,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       let(:stubbed_questions) do
         { services: ['on_shelf'], no_services?: false, charged?: false, aeon?: false,
           alma_managed?: false, ask_me?: false, on_shelf?: true, ill_eligible?: false,
-          map_url: 'map_abc', location: { library: { label: 'abc' } } }
+          location: { library: { label: 'abc' } } }
       end
       it 'a link to a map' do
         assign(:request, request)
