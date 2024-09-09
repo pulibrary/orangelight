@@ -13,7 +13,6 @@ module Requests
     attr_reader :patron
     attr_reader :services
 
-    delegate :map_url, to: :@mappable
     delegate :illiad_request_url, :illiad_request_parameters, to: :@illiad
     delegate :eligible_for_library_services?, to: :@patron
 
@@ -37,7 +36,6 @@ module Requests
       @call_number = @holding.holding_data['call_number_browse']
       @title = bib[:title_citation_display]&.first
       @pageable = Pageable.new(call_number:, location_code: location_object.code)
-      @mappable = Requests::Mapable.new(bib_id: bib[:id], holdings: holding, location_code: location_object.code)
       @illiad = Requests::Illiad.new(enum: item&.fetch(:enum, nil), chron: item&.fetch(:chron, nil), call_number:)
     end
 
