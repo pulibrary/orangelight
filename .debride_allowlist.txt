@@ -27,3 +27,31 @@ copy_value
 cron_value
 description
 pick_up_location_code
+aeon_url
+create_fill_in_requestable
+delivery_location_code
+delivery_location_label
+fill_in_digitize?
+fill_in_pick_up?
+no_services?
+preferred_request_id
+status_badge
+any_loanable
+libcal_url
+off_site_location
+submitted
+type
+email
+marquand?
+pick_up_location
+process_submission
+service_errors
+success_messages
+duplicate=
+sent
+
+# have tickets to address these methods
+# additional_validation!
+# recap_partner_location_codes
+# pageable_loc?
+# openurl_ctx_kev
