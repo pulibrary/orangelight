@@ -111,15 +111,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       end
     end
 
-    describe '#openurl_ctx_kev' do
-      it 'returns an encoded query string' do
-        expect(request_with_holding_item.openurl_ctx_kev).to be_a(String)
-        request_with_holding_item.ctx.referent.identifiers.each do |identifier|
-          expect(request_with_holding_item.openurl_ctx_kev).to include(CGI.escape(identifier))
-        end
-      end
-    end
-
     describe "#requestable" do
       it "has a list of requestable objects" do
         expect(request_with_holding_item.requestable).to be_truthy
