@@ -2,8 +2,7 @@
 module Requests
   # This class assigns "services" a given requestable object is available through
   class Router
-    attr_accessor :requestable
-    attr_reader :user, :any_loanable
+    attr_reader :user, :any_loanable, :requestable
 
     delegate :cas_provider?, :alma_provider?, to: :user
 
@@ -112,10 +111,6 @@ module Requests
         else
           ['marquand_in_library', 'marquand_edd']
         end
-      end
-
-      def any_loanable?
-        @any_loanable
       end
 
       def auth_user?

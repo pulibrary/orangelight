@@ -67,11 +67,6 @@ module Requests
       @types
     end
 
-    def service_locations
-      @locations ||= @items.map { |item| item['location'] }.uniq
-      @locations
-    end
-
     def process_submission
       @services = service_types.map do |type|
         if access_only?
