@@ -18,6 +18,3 @@
 <% elsif requestable.in_library_use_required? %>
   <%= render partial: 'requestable_form_in_library_use', locals: { requestable: requestable, mfhd: mfhd, default_pick_ups: default_pick_ups, request_context: @request.ctx, single_item_request: @request.single_item_request? } %>
 <% end %>
-<% if requestable.online? && requestable.urls.present? %>
-  <%= render partial: "requestable_online_items", locals: { requestable: requestable, single_item_request: @request.single_item_request? } %>
-<% end %>

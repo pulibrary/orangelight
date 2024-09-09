@@ -40,9 +40,7 @@ module Requests
     # top level call, returns a hash of symbols with service objects as values
     # services[:service_name] = Requests::Service::GenericService
     def calculate_services
-      if (requestable.alma_managed? || requestable.partner_holding?) && requestable.online?
-        ['online']
-      elsif (requestable.alma_managed? || requestable.partner_holding?) && !requestable.aeon?
+      if (requestable.alma_managed? || requestable.partner_holding?) && !requestable.aeon?
         calculate_alma_or_scsb_services
       else # Default Service is Aeon
         ['aeon']

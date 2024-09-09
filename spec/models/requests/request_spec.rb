@@ -629,23 +629,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
   end
 
-  # 9746776
-  context 'When passed a holdings with mixed physical and online items' do
-    let(:params) do
-      {
-        system_id: '9997467763506421',
-        mfhd: '22597992220006421',
-        patron:
-      }
-    end
-    let(:request) { described_class.new(**params) }
-    describe '#requestable' do
-      it "is all online" do
-        expect(request.all_items_online?).to be false
-      end
-    end
-  end
-
   # 4815239
   context 'When passed a non-enumerated holdings with at least one loanable item' do
     let(:params) do
