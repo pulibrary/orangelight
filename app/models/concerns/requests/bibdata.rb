@@ -46,7 +46,7 @@ module Requests
     ## Accepts an array of location hashes and sorts them according to our quirks
     def sort_pick_ups(locs)
       # staff only locations go at the bottom of the list and Firestone to the top
-
+byebug
       public_locs = locs.select { |loc| loc[:staff_only] == false }
       public_locs.sort_by! { |loc| loc[:label] }
 

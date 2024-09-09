@@ -31,6 +31,8 @@ module Requests
     def initialize(system_id:, mfhd:, patron: nil, source: nil)
       @system_id = system_id
       @doc = SolrDocument.new(solr_doc(system_id))
+      # create the the holding object fromt the doc info
+      # create the location object from the doc info 
       @holdings = JSON.parse(doc[:holdings_1display] || '{}')
       # scsb items are the only ones that come in without a MFHD parameter from the catalog now
       # set it for them, because they only ever have one location
@@ -38,7 +40,7 @@ module Requests
       @patron = patron
       @source = source
       @location_code = @holdings[@mfhd]["location_code"] if @holdings[@mfhd].present?
-      @location = load_location
+      @location = Location.new build_location
       @items = load_items
       @pick_ups = build_pick_ups
       @requestable_unrouted = build_requestable
@@ -88,8 +90,7 @@ module Requests
     end
 
     def recap?
-      return false if location.blank?
-      location[:remote_storage] == "recap_rmt"
+      @location.recap?
     end
 
     # returns nil if there are no attached items
@@ -159,6 +160,12 @@ module Requests
     end
 
     private
+      def location_object
+        @location_object ||= Location.new load_bibdata_location
+      end
+      def holding_object
+        @holding_object ||= Holding.new(mfhd_id: , holding_data: holdings)
+      end
 
       ### builds a list of possible requestable items
       # returns a collection of requestable objects or nil
@@ -304,11 +311,23 @@ module Requests
         Requests::Requestable.new(**params)
       end
 
-      def load_location
+      def load_bibdata_location
         return if location_code.blank?
-        location = get_location_data(location_code)
-        location[:delivery_locations] = sort_pick_ups(location[:delivery_locations]) if location[:delivery_locations]&.present?
-        location
+        get_location_data(location_code)
+      end
+
+      def sort_delivery_locations
+        if load_bibdata_location.present?
+          sort_pick_ups(location_object.delivery_locations)
+        end
+      end
+
+      def build_location #(load_location)
+        byebug
+        load_bibdata_location
+        # use the location_object to create delivery locations and build the location
+        sort_delivery_locations
+        location_object
       end
 
       def build_requestable_params(params)
@@ -322,6 +341,7 @@ module Requests
       end
 
       def build_requestable_location(params)
+        byebug
         location = params[:location]
         location["delivery_locations"] = build_delivery_locations(location["delivery_locations"]) if location["delivery_locations"].present?
         location
