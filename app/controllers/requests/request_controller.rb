@@ -26,7 +26,6 @@ module Requests
 
       # needed to see if we can suppress login for this item
       @request = RequestDecorator.new(Requests::Request.new(system_id:, mfhd:, source:, patron: @patron), view_context)
-      redirect_single_aeon_thesis_numismatics
     rescue ActionController::ParameterMissing
       @system_id = system_id
       render 'requests/request/no_location_specified'
@@ -36,16 +35,6 @@ module Requests
       return true if params["aeon"] == 'true'
 
       false
-    end
-
-    def redirect_single_aeon_thesis_numismatics
-      ### redirect to Aeon for thesis or coin items or single Aeon requestable
-      ### or over 500 Aeon requestable
-      if @request.thesis? || @request.numismatics?
-        redirect_to "#{aeon_base}?#{@request.requestable.first.aeon_mapped_params.to_query}", allow_other_host: true
-      elsif @request.single_aeon_requestable?
-        redirect_to @request.first_filtered_requestable.aeon_request_url, allow_other_host: true
-      end
     end
 
     # will post and a JSON document of selected "requestable" objects with selection parameters and

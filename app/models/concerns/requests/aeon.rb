@@ -4,7 +4,6 @@ module Requests
     # for Aeon Related Bibliographic Helpers
     extend ActiveSupport::Concern
 
-    # for use with only non-alma thesis records
     def aeon_mapped_params
       params = {
         Action: '10',
@@ -15,8 +14,6 @@ module Requests
         ItemVolume: item_volume
       }
       params[:ItemNumber] = item[:barcode] if barcode?
-      params[:genre] = 'thesis' if thesis?
-      params[:genre] = 'numismatics' if numismatics?
       params.merge! aeon_basic_params
       params.reject { |_k, v| v.nil? }
     end
@@ -56,9 +53,7 @@ module Requests
     end
 
     def site
-      if holding.mfhd_id == 'thesis'
-        'MUDD'
-      elsif location[:holding_library].present?
+      if location[:holding_library].present?
         holding_location_to_site(location['holding_library']['code'])
       elsif location['library']['code'] == 'eastasian' && aeon_location?
         'EAL'

@@ -48,37 +48,6 @@ describe Requests::RequestController, type: :controller, vcr: { cassette_name: '
         expect(flash.now[:notice]).to be_blank
         expect(assigns(:mode)).to eq('standard')
       end
-      it 'redirects you when a thesis record is requested' do
-        bib_id = 'dsp01rr1720547'
-        stub_catalog_raw(bib_id:, type: 'theses_and_dissertations')
-
-        get :generate, params: {
-          source: 'pulsearch',
-          system_id: bib_id,
-          mfhd: 'thesis'
-        }
-        expect(response.status).to eq(302)
-      end
-      it 'redirects you when a single aeon record is requested' do
-        stub_holding_locations
-        get :generate, params: {
-          source: 'pulsearch',
-          system_id: '9995768803506421',
-          mfhd: '22497016220006421'
-        }
-        expect(response.status).to eq(302)
-      end
-      it 'redirects you when an aeon record with over 500 items is requested' do
-        stub_holding_locations
-        stub_single_holding_location('rare$hsve')
-        stub_catalog_raw(bib_id: '9930682063506421')
-        get :generate, params: {
-          source: 'pulsearch',
-          system_id: '9930682063506421',
-          mfhd: '22707844130006421'
-        }
-        expect(response.status).to eq(302)
-      end
 
       it 'does not redirect you when multiple aeon records are requested' do
         get :generate, params: {
