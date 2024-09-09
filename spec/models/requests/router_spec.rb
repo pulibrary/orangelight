@@ -46,7 +46,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
     describe "calculate_services" do
       let(:item) { {} }
       let(:stubbed_questions) do
-        { alma_managed?: true, online?: false, in_process?: false,
+        { alma_managed?: true, in_process?: false,
           charged?: false, on_order?: false, aeon?: false,
           preservation?: false, annex?: false,
           recap?: false, held_at_marquand_library?: false,
@@ -54,15 +54,6 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           library_code: 'ABC', eligible_for_library_services?: true }
       end
       let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
-
-      context "online holding" do
-        before do
-          stubbed_questions[:online?] = true
-        end
-        it "returns online in the services" do
-          expect(router.calculate_services).to eq(['online'])
-        end
-      end
 
       context "in process" do
         before do

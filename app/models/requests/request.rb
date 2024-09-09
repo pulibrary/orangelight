@@ -94,10 +94,6 @@ module Requests
       location[:remote_storage] == "recap_rmt"
     end
 
-    def all_items_online?
-      requestable.map(&:online?).reduce(:&)
-    end
-
     # returns nil if there are no attached items
     # if mfhd set returns only items associated with that mfhd
     # if no mfhd returns items sorted by mfhd

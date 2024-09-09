@@ -8,7 +8,6 @@ RSpec.describe Requests::ServiceEligibility::ILL, requests: true do
       allow(requestable).to receive_messages(
           alma_managed?: true,
           aeon?: false,
-          online?: false,
           charged?: true
         )
       eligibility = described_class.new(requestable:, user: FactoryBot.create(:user), any_loanable: false)
@@ -21,7 +20,6 @@ RSpec.describe Requests::ServiceEligibility::ILL, requests: true do
       allow(requestable).to receive_messages(
           aeon?: true,
           alma_managed?: true,
-          online?: false,
           charged?: true
         )
       eligibility = described_class.new(requestable:, user: FactoryBot.create(:user), any_loanable: false)

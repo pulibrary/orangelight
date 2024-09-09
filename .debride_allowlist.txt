@@ -4,7 +4,6 @@ requestable?
 illiad_request_parameters
 illiad_request_url
 patron_group
-all_items_online?
 default_pick_ups
 single_aeon_requestable?
 alma_provider_item_unavailable?

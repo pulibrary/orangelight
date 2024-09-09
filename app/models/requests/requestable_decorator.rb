@@ -5,9 +5,9 @@ module Requests
              :ask_me?, :aeon_request_url, :temp_loc_other_than_resource_sharing?, :call_number, :eligible_for_library_services?,
              :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :item_data?, :recap_edd?, :user_barcode, :clancy_available?,
              :holding, :item_location_code, :item?, :item, :partner_holding?, :status, :status_label, :use_restriction?, :library_code, :enum_value, :item_at_clancy?,
-             :cron_value, :illiad_request_parameters, :location_label, :online?, :aeon?, :patron, :held_at_marquand_library?,
+             :cron_value, :illiad_request_parameters, :location_label, :aeon?, :patron, :held_at_marquand_library?,
              :ill_eligible?, :scsb_in_library_use?, :pick_up_locations, :on_shelf?, :pending?, :recap?, :recap_pf?, :illiad_request_url, :available?,
-             :on_order?, :urls, :in_process?, :alma_managed?, :title, :cul_avery?, :cul_music?,
+             :on_order?, :in_process?, :alma_managed?, :title, :cul_avery?, :cul_music?,
              :pick_up_location_code, :enumerated?, to: :requestable
     delegate :content_tag, :hidden_field_tag, :concat, to: :view_context
 
@@ -151,7 +151,7 @@ module Requests
     end
 
     def no_services?
-      !(digitize? || pick_up? || aeon? || ill_eligible? || in_library_use_required? || request? || online? || on_shelf? || off_site?)
+      !(digitize? || pick_up? || aeon? || ill_eligible? || in_library_use_required? || request? || on_shelf? || off_site?)
     end
 
     def location

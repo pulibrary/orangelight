@@ -130,15 +130,6 @@ module Requests
       bib[:id].to_i.positive?
     end
 
-    def online?
-      location_valid? && location[:library][:code] == 'online'
-    end
-
-    def urls
-      return {} unless online? && bib['electronic_access_1display']
-      JSON.parse(bib['electronic_access_1display'])
-    end
-
     def pick_up_locations
       return nil if location[:delivery_locations].empty?
       if partner_holding?
