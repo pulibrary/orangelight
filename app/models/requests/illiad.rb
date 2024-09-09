@@ -86,10 +86,6 @@ module Requests
         "#{Requests::Config[:pulsearch_base]}/catalog/#{bibid}"
       end
 
-      def get_lccn(rft)
-        get_identifier(:info, "lccn", rft)
-      end
-
       def get_identifier(type, sub_scheme, referent, options = {})
         options[:multiple] ||= false
         identifiers = identifiers_for_type(type:, sub_scheme:, referent:)
