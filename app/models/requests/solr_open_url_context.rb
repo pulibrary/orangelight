@@ -12,9 +12,5 @@ module Requests
       # essential for ILLiad requests
       @ctx.referent.set_metadata('date', solr_doc['pub_date_display'].first) if @ctx.referent.format == 'journal' && solr_doc['pub_date_display'].present?
     end
-
-    def openurl_ctx_kev
-      ctx.kev
-    end
   end
 end
