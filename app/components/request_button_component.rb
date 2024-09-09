@@ -28,6 +28,6 @@ class RequestButtonComponent < ViewComponent::Base
     def scsb_supervised_items?
       return false unless @holding
       return false unless @holding['items']
-      @holding['items'].all? { |item| item['use_statement'] == 'Supervised Use' }
+      @holding['items'].all? { |item| item['use_statement']&.casecmp('supervised use')&.zero? }
     end
 end
