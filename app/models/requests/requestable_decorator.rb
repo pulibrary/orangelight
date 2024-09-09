@@ -22,7 +22,7 @@ module Requests
     ## If the item doesn't have any item level data use the holding mfhd ID as a unique key
     ## when one is needed. Primarily for non-barcoded Annex items.
     def preferred_request_id
-      requestable.id.presence || holding.first[0]
+      requestable.id.presence || holding.mfhd_id
     end
 
     def digitize?

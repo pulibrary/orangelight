@@ -4,6 +4,7 @@ module Requests
   # library patron might wish to request
   class Requestable
     attr_reader :bib
+    attr_reader :holding
     attr_reader :item
     attr_reader :location
     attr_reader :call_number
@@ -19,13 +20,13 @@ module Requests
     include Requests::Aeon
 
     # @param bib [Hash] Solr Document of the Top level Request
-    # @param holding [Hash] Bib Data information on where the item is held (Marc liberation) parsed solr_document[holdings_1display] json
+    # @param holding [Requests::Holding] Bibdata information on where the item is held, created with data from the parsed solr_document[holdings_1display] json
     # @param item [Hash] Item level data from bib data (https://bibdata.princeton.edu/availability?id= or mfhd=)
     # @param location [Hash] The hash for a bib data holding (https://bibdata.princeton.edu/locations/holding_locations)
     # @param patron [Patron] the patron information about the current user
     def initialize(bib:, holding: nil, item: nil, location: nil, patron:)
       @bib = bib
-      @holding = Holding.new holding
+      @holding = holding
       # Item inherits from SimpleDelegator which requires at least one argument
       # The argument is the Object that SimpleDelegator will delegate to.
       @item = item.present? ? Item.new(item) : NullItem.new({})
@@ -45,10 +46,6 @@ module Requests
              :id, :use_statement, :collection_code, :charged?, :status, :status_label, :barcode?, :barcode, :preservation_conservation?, to: :item
 
     delegate :annex?, :location_label, to: :location_object
-
-    def holding
-      @holding.to_h
-    end
 
     def thesis?
       @holding.thesis?

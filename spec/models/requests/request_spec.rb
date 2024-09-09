@@ -136,8 +136,8 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       end
 
       it "has a mfhd" do
-        expect(request_with_holding_item.requestable[0].holding).to be_truthy
-        expect(request_with_holding_item.requestable[0].holding.key?(params[:mfhd])).to be_truthy
+        expect(request_with_holding_item.requestable[0].holding.mfhd_id).to eq params[:mfhd]
+        expect(request_with_holding_item.requestable[0].holding.holding_data).to be_truthy
       end
 
       it "has location data" do
@@ -195,8 +195,8 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       end
 
       it "has a mfhd" do
-        expect(request_with_only_holding.requestable[0].holding).to be_truthy
-        expect(request_with_only_holding.requestable[0].holding.key?(params[:mfhd])).to be_truthy
+        expect(request_with_only_holding.requestable[0].holding.mfhd_id).to eq params[:mfhd]
+        expect(request_with_only_holding.requestable[0].holding.holding_data).to be_truthy
       end
 
       it "has location data" do
@@ -390,7 +390,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
 
       it "has a thesis holding location" do
         # todo- mudd location code does not exists in bibdata, but is being passed back by the index
-        expect(request_with_only_system_id.requestable[0].holding.key?('thesis')).to be_truthy
+        expect(request_with_only_system_id.requestable[0].holding.mfhd_id).to eq 'thesis'
         expect(request_with_only_system_id.requestable[0].location.key?('code')).to be_truthy
         expect(request_with_only_system_id.requestable[0].location_code).to eq 'mudd$stacks'
         expect(request_with_only_system_id.requestable[0].alma_managed?).to be_falsey
@@ -448,7 +448,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       end
 
       it "has a numismatics holding location" do
-        expect(request_with_only_system_id.requestable[0].holding.key?('numismatics')).to be_truthy
+        expect(request_with_only_system_id.requestable[0].holding.mfhd_id).to eq 'numismatics'
         expect(request_with_only_system_id.requestable[0].location.key?('code')).to be_truthy
         expect(request_with_only_system_id.requestable[0].location_code).to eq 'rare$num'
         expect(request_with_only_system_id.requestable[0].alma_managed?).to be_falsey
@@ -506,7 +506,7 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       end
 
       it "has a numismatics holding location" do
-        expect(request_with_only_system_id.requestable[0].holding.key?('numismatics')).to be_truthy
+        expect(request_with_only_system_id.requestable[0].holding.mfhd_id).to eq 'numismatics'
         expect(request_with_only_system_id.requestable[0].location.key?('code')).to be_truthy
         expect(request_with_only_system_id.requestable[0].location_code).to eq 'rare$num'
         expect(request_with_only_system_id.requestable[0].alma_managed?).to be_falsey

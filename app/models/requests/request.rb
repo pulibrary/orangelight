@@ -219,7 +219,7 @@ module Requests
         barcodesort = build_barcode_sort(items: values_items, availability_data:)
         barcodesort.each_value do |item|
           item['location_code'] = location_code
-          params = build_requestable_params(item: item.with_indifferent_access, holding: { id.to_sym.to_s => holdings[id] },
+          params = build_requestable_params(item: item.with_indifferent_access, holding: Holding.new(mfhd_id: id.to_sym.to_s, holding_data: holdings[id]),
                                             location:)
           requestable_items << Requests::Requestable.new(**params)
         end
@@ -293,9 +293,9 @@ module Requests
         current_location = get_current_location(item_loc:)
         item['status_label'] = barcodesort[item['barcode']][:status_label] unless barcodesort.empty?
         calculate_holding = if item["in_temp_library"] && item["temp_location_code"] != "RES_SHARE$IN_RS_REQ"
-                              { holding_id.to_sym.to_s => holdings[item_loc] }
+                              Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holdings[item_loc])
                             else
-                              { holding_id.to_sym.to_s => holdings[holding_id] }
+                              Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holdings[holding_id])
                             end
         params = build_requestable_params(
           item: item.with_indifferent_access,
@@ -318,7 +318,7 @@ module Requests
       # This method will always return a Requestable object where .item is a NullItem, because we don't pass an item in
       def build_requestable_from_holding(holding_id, holding)
         return if holding.blank?
-        params = build_requestable_params(holding: { holding_id.to_sym.to_s => holding }, location:)
+        params = build_requestable_params(holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding), location:)
         Requests::Requestable.new(**params)
       end
 

@@ -34,7 +34,7 @@ module Requests
     end
 
     def aeon_request_url
-      AeonUrl.new(document: bib, holding:, item:).to_s
+      AeonUrl.new(document: bib, holding: holding.to_h, item:).to_s
     end
 
     # returns encoded OpenURL string for alma derived records
@@ -45,7 +45,7 @@ module Requests
           ctx.referent.set_metadata('volume', item.enum_value)
           ctx.referent.set_metadata('issue', item[:chron_display]) if item[:chron_display].present?
         else
-          ctx.referent.set_metadata('volume', holding.first.last['location_has']&.first)
+          ctx.referent.set_metadata('volume', holding.holding_data['location_has']&.first)
           ctx.referent.set_metadata('issue', nil)
         end
       end
@@ -56,7 +56,7 @@ module Requests
     end
 
     def site
-      if holding.key? 'thesis'
+      if holding.mfhd_id == 'thesis'
         'MUDD'
       elsif location[:holding_library].present?
         holding_location_to_site(location['holding_library']['code'])
@@ -90,7 +90,7 @@ module Requests
       end
 
       def call_number
-        holding.first.last['call_number']
+        holding.holding_data['call_number']
       end
 
       def pub_date
@@ -98,7 +98,7 @@ module Requests
       end
 
       def shelf_location_code
-        holding.first.last['location_code']
+        holding.holding_data['location_code']
       end
 
       def item_volume
@@ -106,7 +106,7 @@ module Requests
       end
 
       def sub_location
-        holding.first.last['sub_location']&.first
+        holding.holding_data['sub_location']&.first
       end
 
       def aeon_title

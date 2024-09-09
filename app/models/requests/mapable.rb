@@ -15,9 +15,9 @@ module Requests
 
     private
 
-      def map_params(mfhd_id)
+      def map_params(_mfhd_id)
         {
-          cn: holdings[mfhd_id]['call_number'],
+          cn: holdings.holding_data['call_number'],
           loc: location_code
         }
       end

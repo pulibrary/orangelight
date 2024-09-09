@@ -2,26 +2,26 @@
 module Requests
   # This class is responsible for answering questions about a
   # particular holding, based on data from a hash (which is
-  # a parsed holdings_1display solr document field)
+  # typically taken from a parsed holdings_1display solr
+  # document field)
   class Holding
-    def initialize(hash)
-      @hash = hash.with_indifferent_access
+    def initialize(mfhd_id:, holding_data:)
+      @mfhd_id = mfhd_id
+      @holding_data = holding_data&.with_indifferent_access || {}
     end
 
+    attr_reader :holding_data, :mfhd_id
+
     def to_h
-      @hash
+      { mfhd_id: holding_data }
     end
 
     def thesis?
-      to_h.key?("thesis") && to_h["thesis"][:location_code] == 'mudd$stacks'
+      mfhd_id == "thesis" && holding_data[:location_code] == 'mudd$stacks'
     end
 
     def numismatics?
-      to_h.key?("numismatics") && to_h["numismatics"][:location_code] == 'rare$num'
-    end
-
-    def holding_data
-      to_h.values&.first || {}
+      mfhd_id == "numismatics" && holding_data[:location_code] == 'rare$num'
     end
   end
 end
