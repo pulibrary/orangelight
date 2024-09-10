@@ -119,13 +119,6 @@ module Requests
     end
 
     # Calls Requests::BibdataService to get the delivery_locations
-    def build_pick_ups
-      pick_up_locations = []
-      Requests::BibdataService.delivery_locations.each_value do |pick_up|
-        pick_up_locations << { label: pick_up["label"], gfa_pickup: pick_up["gfa_pickup"], pick_up_location_code: pick_up["library"]["code"] || 'firestone', staff_only: pick_up["staff_only"] } if pick_up["pickup_location"] == true
-      end
-      sort_pick_ups(pick_up_locations)
-    end
 
     def ill_eligible?
       requestable.any? { |r| r.services.include? 'ill' }
