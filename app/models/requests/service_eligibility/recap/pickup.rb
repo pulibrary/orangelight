@@ -3,12 +3,7 @@ module Requests
   module ServiceEligibility
     module Recap
       # recap - material is stored at recap; can be paged to campus and circulates
-      class Pickup
-        def initialize(requestable:, user:)
-          @requestable = requestable
-          @user = user
-        end
-
+      class Pickup < AbstractRecap
         def eligible?
           requestable_eligible? && user_eligible? && patron_eligible?
         end
@@ -28,15 +23,9 @@ module Requests
               !(requestable.scsb_in_library_use? && requestable.item[:collection_code] != "MR")
           end
 
-          def user_eligible?
-            user.cas_provider? || user.alma_provider?
-          end
-
           def patron_eligible?
             requestable.eligible_for_library_services?
           end
-
-          attr_reader :requestable, :user
       end
     end
   end
