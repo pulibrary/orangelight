@@ -6,6 +6,7 @@ defaults: &defaults
     queue_id: <%= ENV['CATALOG_FEEDBACK_QUEUE_ID'] %>
   ask_a_question_form:
     to: <%= ENV['OL_REFERENCE_TO'] %>
+    queue_id: <%= ENV['ASK_A_QUESTION_QUEUE_ID'] %>
   suggest_correction_form:
     to: <%= ENV['OL_CATALOGING_TO'] %>
   report_harmful_language_form:
@@ -45,6 +46,7 @@ test:
     queue_id: 1234
   ask_a_question_form:
     to: 'test-question@princeton.edu'
+    queue_id: 5678
   redis:
     host: <%= ENV['lando_orangelight_redis_conn_host'] %>
     port: <%= ENV['lando_orangelight_redis_conn_port'] %>
