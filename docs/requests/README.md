@@ -78,8 +78,8 @@ sequenceDiagram
     patron->>RequestController: Go to form
     RequestController->>Request: Create new Request object
     Request->>Requestable: Create new Requestable objects
-    RequestController->>RequestDecorator: Create new RequestDecorator based on the Request
-    RequestDecorator->>RequestableDecorator: Create new RequestableDecorators based on the list of Requestable objects in the Request
+    RequestController->>FormDecorator: Create new FormDecorator based on the Request
+    FormDecorator->>RequestableDecorator: Create new RequestableDecorators based on the list of Requestable objects in the Request
     RequestController->>patron: Render the form for the user
 ```
 

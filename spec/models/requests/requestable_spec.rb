@@ -670,7 +670,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         patron:
       }
     end
-    let(:request) { Requests::Request.new(**params) }
+    let(:request) { Requests::Form.new(**params) }
     let(:requestable) { request.requestable.first }
 
     describe '# offsite requestable' do
@@ -736,7 +736,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         patron:
       }
     end
-    let(:request) { Requests::Request.new(**params) }
+    let(:request) { Requests::Form.new(**params) }
     let(:requestable) { request.requestable.first }
 
     describe '#requestable' do
@@ -807,7 +807,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         patron:
       }
     end
-    let(:request) { Requests::Request.new(**params) }
+    let(:request) { Requests::Form.new(**params) }
     let(:requestable) { request.requestable.first }
 
     describe '#recap requestable' do
@@ -952,7 +952,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   end
 
   context 'An Item being shared with another institution' do
-    let(:request) { Requests::Request.new(system_id: '9977664533506421', mfhd: '22109013720006421', patron:) }
+    let(:request) { Requests::Form.new(system_id: '9977664533506421', mfhd: '22109013720006421', patron:) }
     let(:requestable) { request.requestable.first }
 
     before do

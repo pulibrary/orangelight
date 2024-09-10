@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 module Requests
   # This class is responsible for generating the visual aspects of the Request object for the form
-  class RequestDecorator
+  class FormDecorator
     delegate :patron,
              :ctx, :system_id, :mfhd, :holdings, :default_pick_ups,
              :serial?, :any_loanable_copies?, :requestable?, :thesis?, :numismatics?, :eligible_for_library_services?, :off_site?,
