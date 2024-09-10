@@ -52,11 +52,8 @@ module Requests
       # rubocop:disable Metrics/MethodLength
       def calculate_alma_or_scsb_services
         return [] unless auth_user?
-        in_process_eligibility = ServiceEligibility::InProcess.new(requestable:, user:)
         if requestable.charged?
           calculate_unavailable_services
-        elsif in_process_eligibility.eligible?
-          [in_process_eligibility.to_s]
         elsif requestable.on_order?
           ['on_order']
         else
@@ -67,6 +64,7 @@ module Requests
             ServiceEligibility::ClancyUnavailable.new(user:, requestable:),
             ServiceEligibility::ClancyInLibrary.new(user:, requestable:),
             ServiceEligibility::ClancyEdd.new(user:, requestable:),
+            ServiceEligibility::InProcess.new(requestable:, user:),
             ServiceEligibility::MarquandInLibrary.new(user:, requestable:),
             ServiceEligibility::MarquandEdd.new(user:, requestable:),
             ServiceEligibility::Recap::NoItems.new(requestable:, user:),
