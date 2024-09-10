@@ -58,10 +58,9 @@ module Requests
           ['in_process']
         elsif requestable.on_order?
           ['on_order']
-        elsif requestable.annex?
-          ['annex', 'on_shelf_edd']
         else
           [
+            ServiceEligibility::Annex.new(requestable:, user:),
             ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
             ServiceEligibility::OnShelfPickup.new(requestable:, user:),
             ServiceEligibility::ClancyUnavailable.new(user:, requestable:),
