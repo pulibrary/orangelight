@@ -58,7 +58,7 @@ module Requests::Submissions
       def place_hold(item)
         status = {}
         options = payload(item)
-        response = Requests::AlmaHoldRequest.submit(options)
+        response = Alma::ItemRequest.submit(options)
         if response.success?
           status = item.merge(payload: options, response: response.raw_response.parsed_response)
         else
