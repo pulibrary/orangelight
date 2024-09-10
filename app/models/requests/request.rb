@@ -35,7 +35,7 @@ module Requests
       @mfhd = mfhd || @holdings.keys.first
       @patron = patron
       @location_code = @holdings[@mfhd]["location_code"] if @holdings[@mfhd].present?
-      @location = load_location
+      @location = load_bibdata_location
       @items = load_items
       @pick_ups = build_pick_ups
       @requestable_unrouted = build_requestable
@@ -294,10 +294,11 @@ module Requests
         Requests::Requestable.new(**params)
       end
 
-      def load_location
+      def load_bibdata_location
         return if location_code.blank?
         location = get_location_data(location_code)
-        location[:delivery_locations] = sort_pick_ups(location[:delivery_locations]) if location[:delivery_locations]&.present?
+        location_object = Location.new location
+        location[:delivery_locations] = location_object.sort_pick_ups if location_object.delivery_locations.present?
         location
       end
 
