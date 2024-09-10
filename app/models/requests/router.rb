@@ -54,17 +54,17 @@ module Requests
         return [] unless auth_user?
         if requestable.charged?
           calculate_unavailable_services
-        elsif requestable.annex?
-          ['annex', 'on_shelf_edd']
         else
           [
             ServiceEligibility::InProcess.new(requestable:, user:),
             ServiceEligibility::OnOrder.new(requestable:, user:),
+            ServiceEligibility::Annex.new(requestable:, user:),
             ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
             ServiceEligibility::OnShelfPickup.new(requestable:, user:),
             ServiceEligibility::ClancyUnavailable.new(user:, requestable:),
             ServiceEligibility::ClancyInLibrary.new(user:, requestable:),
             ServiceEligibility::ClancyEdd.new(user:, requestable:),
+            ServiceEligibility::InProcess.new(requestable:, user:),
             ServiceEligibility::MarquandInLibrary.new(user:, requestable:),
             ServiceEligibility::MarquandEdd.new(user:, requestable:),
             ServiceEligibility::Recap::NoItems.new(requestable:, user:),
