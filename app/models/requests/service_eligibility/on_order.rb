@@ -19,7 +19,7 @@ module Requests
       private
 
         def requestable_eligible?
-          requestable.on_order?
+          requestable.on_order? && !requestable.charged? && !requestable.in_process?
         end
 
         def user_eligible?

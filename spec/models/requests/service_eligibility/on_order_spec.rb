@@ -6,7 +6,11 @@ RSpec.describe Requests::ServiceEligibility::OnOrder, requests: true do
   describe '#eligible?' do
     it 'returns true if all criteria are met' do
       requestable = instance_double(Requests::Requestable)
-      allow(requestable).to receive_messages(on_order?: true)
+      allow(requestable).to receive_messages(
+        on_order?: true,
+        charged?: false,
+        in_process?: false
+      )
 
       eligibility = described_class.new(requestable:, user:)
 
