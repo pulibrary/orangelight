@@ -56,12 +56,11 @@ module Requests
           calculate_unavailable_services
         elsif requestable.in_process?
           ['in_process']
-        elsif requestable.on_order?
-          ['on_order']
         elsif requestable.annex?
           ['annex', 'on_shelf_edd']
         else
           [
+            ServiceEligibility::OnOrder.new(requestable:, user:),
             ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
             ServiceEligibility::OnShelfPickup.new(requestable:, user:),
             ServiceEligibility::ClancyUnavailable.new(user:, requestable:),
