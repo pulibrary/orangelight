@@ -102,11 +102,13 @@ module Requests
       end
 
       def calculate_marquand_services
-        clancy_unavailable = ServiceEligibility::ClancyUnavailable.new(user:, requestable:)
-        if clancy_unavailable.eligible?
-          [clancy_unavailable.to_s]
-        elsif requestable.clancy_available?
-          ['clancy_in_library', 'clancy_edd']
+        clancy_services = [
+          ServiceEligibility::ClancyUnavailable.new(user:, requestable:),
+          ServiceEligibility::ClancyInLibrary.new(user:, requestable:),
+          ServiceEligibility::ClancyEdd.new(user:, requestable:)
+        ].select(&:eligible?).map(&:to_s)
+        if clancy_services.any?
+          clancy_services
         else
           ['marquand_in_library', 'marquand_edd']
         end
