@@ -13,7 +13,7 @@ RSpec.describe Orangelight::IlliadAccount do
                       'netid' => 'jstudent' }
     subject(:client) { described_class.new(sample_patron) }
     let(:verify_user_response) { File.open('spec/fixtures/ill_verify_user_response.json') }
-    let(:verify_user_uri) { "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Users/#{sample_patron['netid']}" }
+    let(:verify_user_uri) { "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/Users/#{sample_patron['netid']}" }
 
     describe '#verify user' do
       before do

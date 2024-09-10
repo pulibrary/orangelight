@@ -32,7 +32,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
     describe "SCSB item that is charged" do
       before do
         stub_catalog_raw(bib_id: params[:system_id], type: 'scsb')
-        stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+        stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
           .with(headers: { Accept: 'application/json', api_key: 'TESTME' }, body: scsb_availability_params)
           .to_return(status: 200, body: scsb_availability_response)
       end

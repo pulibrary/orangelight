@@ -113,7 +113,7 @@ class Requests::Requestable
 
     # Is the ReCAP Item from a partner location
     def partner_holding?
-      Requests::Config[:recap_partner_locations].keys.include? self["location_code"]
+      Requests.config[:recap_partner_locations].keys.include? self["location_code"]
     end
 
     # The location code (e.g. firestone$pf)

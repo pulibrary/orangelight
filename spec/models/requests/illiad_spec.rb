@@ -8,7 +8,7 @@ describe Requests::Illiad, requests: true do
   let(:illiad) { described_class.new(enum: "Volume foo", chron: "Chronicle 1") }
 
   it "provides an ILLiad URL" do
-    expect(illiad.illiad_request_url(ctx)).to start_with(Requests::Config[:ill_base])
+    expect(illiad.illiad_request_url(ctx)).to start_with(Requests.config[:ill_base])
   end
 
   it 'includes the oclc number' do

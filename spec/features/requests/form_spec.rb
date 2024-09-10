@@ -73,7 +73,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     before do
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 200, body: valid_patron_response, headers: {})
       login_as user
     end
@@ -126,12 +126,12 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
       it 'allow CAS patrons to request an available ReCAP PUL item.' do
         stub_scsb_availability(bib_id: "9994933183506421", institution_id: "PUL", barcode: '32101095798938')
-        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_request(:post, scsb_url)
           .with(body: hash_including(author: "", bibId: "9994933183506421", callNumber: "PJ7962.A5495 A95 2016", chapterTitle: "", deliveryLocation: "PA", emailAddress: 'a@b.com', endPage: "", issue: "", itemBarcodes: ["32101095798938"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999",
                                      requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "ʻAwāṭif madfūnah عواطف مدفونة", username: "jstudent", volume: ""))
           .to_return(status: 200, body: good_response, headers: {})
-        stub_request(:post, Requests::Config[:scsb_base])
+        stub_request(:post, Requests.config[:scsb_base])
           .with(headers: { 'Accept' => '*/*' })
           .to_return(status: 200, body: "<document count='1' sent='true'></document>", headers: {})
         stub_request(:post, "#{Alma.configuration.region}/almaws/v1/bibs/9994933183506421/holdings/22558528920006421/items/23558528910006421/requests?user_id=960594184")
@@ -262,7 +262,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(page).to have_content 'You have sent a duplicate request to Alma for this item'
       end
       it 'allows CAS patrons to request a PUL electronic document delivery (EDD) ReCAP item' do
-        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_request(:post, scsb_url)
           .with(body: hash_including(author: "", bibId: "9999443553506421", callNumber: "DT549 .E274q Oversize", chapterTitle: "ABC", deliveryLocation: "PA", emailAddress: "a@b.com", endPage: "", issue: "",
                                      itemBarcodes: ["32101098722844"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "EDD", requestingInstitution: "PUL", startPage: "", titleIdentifier: "L'écrivain, magazine litteraire trimestriel", username: "jstudent", volume: "2016"))
@@ -333,7 +333,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allows CAS patrons to make an electronic document delivery request for a Lewis ReCAP item' do
-        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_scsb_availability(bib_id: "9970533073506421", institution_id: "PUL", barcode: '32101051217659')
         stub_request(:post, scsb_url)
           .to_return(status: 200, body: good_response, headers: {})
@@ -388,7 +388,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         check 'requestable_selected_231003662080006421'
         click_button 'Request this Item'
         expect(page).to have_content 'Request submitted'
-        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         expect(a_request(:post, scsb_url)).not_to have_been_made
       end
 
@@ -460,7 +460,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'Marquand ReCAP Item is available for an EDD request or In Library Use(no physical delivery) and can be requested' do
-        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_request(:post, scsb_url).to_return(status: 200, body: good_response, headers: {})
         stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
         visit '/requests/99117809653506421?mfhd=22613352460006421'
@@ -498,7 +498,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it "allows requests of ReCAP pick-up only items" do
-        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_scsb_availability(bib_id: "99115783193506421", institution_id: "PUL", barcode: '32101108035435')
         stub_request(:post, scsb_url)
           .with(body: hash_including(author: nil, bibId: "99115783193506421", callNumber: "DVD", chapterTitle: nil, deliveryLocation: "PA", emailAddress: "a@b.com", endPage: nil, issue: nil, itemBarcodes: ["32101108035435"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999", requestNotes: nil, requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: nil, titleIdentifier: "Chernobyl : a 5-part miniseries", username: "jstudent", volume: nil))
@@ -652,7 +652,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       it "allows a Columbia item to be picked up or digitized" do
         stub_scsb_availability(bib_id: "1000060", institution_id: "CUL", barcode: 'CU01805363')
         stub_catalog_raw(bib_id: 'SCSB-2879197', type: 'scsb')
-        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_request(:post, scsb_url)
           .with(body: hash_including(author: "", bibId: "SCSB-2879197", callNumber: "PG3479.3.I84 Z778 1987g", chapterTitle: "", deliveryLocation: "QX", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["CU01805363"], itemOwningInstitution: "CUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Mir, uvidennyĭ s gor : ocherk tvorchestva Shukurbeka Beĭshenalieva", username: "jstudent", volume: ""))
           .to_return(status: 200, body: good_response, headers: {})
@@ -799,7 +799,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it "Display only the 'In Library Use' option for an in library use only ReCAP Partner item" do
-        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_request(:post, scsb_url)
           .with(body: hash_including(author: nil, bibId: "SCSB-8953469", callNumber: "ReCAP 18-69309", chapterTitle: nil, deliveryLocation: "QX", emailAddress: "a@b.com", endPage: nil, issue: nil, itemBarcodes: ["33433121206696"], itemOwningInstitution: "NYPL", patronBarcode: "22101008199999", requestNotes: nil, requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: nil, titleIdentifier: "1955-1968 : gli artisti italiani alle Documenta di Kassel", username: "jstudent", volume: nil))
           .to_return(status: 200, body: good_response, headers: {})
@@ -820,7 +820,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
       it 'Shows Marquand ReCAP item as available for EDD or In Library Use' do
         stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
-        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_request(:post, scsb_url)
           .with(body: hash_including(author: "", bibId: "99117809653506421", callNumber: "N6923.B257 H84 2020", chapterTitle: "", deliveryLocation: "PJ", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["32101106347378"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Alesso Baldovinetti und die Florentiner Malerei der Frührenaissance", username: "jstudent", volume: ""))
           .to_return(status: 200, body: good_response, headers: {})
@@ -883,7 +883,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it "a ReCAP Partner item from Harvard that is restricted to in library use at Marquand" do
-        scsb_url = "#{Requests::Config[:scsb_base]}/requestItem/requestItem"
+        scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         # Why does stub use the wrong bib_id?
         stub_scsb_availability(bib_id: "990143653400203941", institution_id: "HL", barcode: '32044136602687')
         stub_request(:post, scsb_url)
@@ -1132,7 +1132,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
   context 'A Princeton net ID user without an Alma record' do
     let(:user) { FactoryBot.create(:user) }
     before do
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 404, body: invalid_patron_response, headers: {})
       login_as user
     end
@@ -1140,7 +1140,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     describe 'Visits a request page', js: true do
       it 'Tells the user their patron record is not available' do
         visit "/requests/99117809653506421?mfhd=22613352460006421"
-        expect(a_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")).to have_been_made
+        expect(a_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")).to have_been_made
         expect(page).to have_content(I18n.t("requests.account.auth_user_lookup_fail"))
       end
     end
@@ -1171,7 +1171,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     before do
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 200, body: valid_patron_no_barcode_response, headers: {})
       login_as user
     end
@@ -1473,7 +1473,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
 
     it "allow requesting of available ReCAP items and does not allow requesting of unavailable ReCAP items" do
       availability_response = "[{\"itemBarcode\":\"32101108747674\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747666\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747658\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"},{\"itemBarcode\":\"32101108747682\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]"
-      stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+      stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .with(headers: { Accept: 'application/json', api_key: 'TESTME' }, body: { bibliographicId: "99125465081006421", institutionId: "PUL" })
         .to_return(status: 200, body: availability_response)
 
@@ -1515,7 +1515,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       stub_single_holding_location('engineer$res')
       stub_availability_by_holding_id(bib_id: '9960102253506421', holding_id: '22548491940006421')
       stub_catalog_raw(bib_id: '9960102253506421')
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 200, body: valid_patron_response, headers: {})
       login_as user
     end
@@ -1544,7 +1544,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       stub_availability_by_holding_id(bib_id: '99122304923506421', holding_id: '22511126440006421')
       stub_catalog_raw(bib_id: '99122304923506421')
       stub_single_holding_location('recap$pa')
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 200, body: valid_patron_response, headers: {})
       login_as user
     end

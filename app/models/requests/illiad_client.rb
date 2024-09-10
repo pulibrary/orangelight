@@ -8,8 +8,8 @@ module Requests
     attr_reader :illiad_api_base, :illiad_api_key, :error
 
     def initialize
-      @illiad_api_key = Requests::Config[:illiad_api_key].to_s
-      @illiad_api_base = Requests::Config[:illiad_api_base]
+      @illiad_api_key = Requests.config[:illiad_api_key].to_s
+      @illiad_api_base = Requests.config[:illiad_api_base]
       @error = nil
     end
 

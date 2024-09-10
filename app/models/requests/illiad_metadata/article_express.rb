@@ -26,7 +26,7 @@ module Requests
             bib["title"]&.truncate(255), item["edd_publisher"]&.truncate(40),
             bib["isbn"], item["edd_call_number"]&.truncate(255),
             pages&.truncate(30),
-            "#{Requests::Config[:pulsearch_base]}/catalog/#{bib['id']}",
+            "#{Requests.config[:pulsearch_base]}/catalog/#{bib['id']}",
             item["edd_date"], volume_number(item),
             item["edd_issue"]&.truncate(30),
             item["edd_volume_number"]&.truncate(255),

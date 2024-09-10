@@ -74,7 +74,7 @@ describe 'Account login' do
       stub_request(:post, 'https://scsb.recaplib.org:9093/sharedCollection/bibAvailabilityStatus')
         .to_return(status: 200, body: [{ itemBarcode: 'CU71562478', itemAvailabilityStatus: "Available" }].to_json)
       # I'm not sure why the patron number being requested is `1234`, but this is what's needed to get the correct response
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/1234?ldap=true")
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/1234?ldap=true")
         .to_return(status: 200, body: patron_response, headers: {})
       stub_holding_locations
       stub_delivery_locations
@@ -136,7 +136,7 @@ describe 'Account login' do
             visit "/catalog/coin-1167"
             expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*Coin.1167'))
             click_link('Reading Room Request')
-            expect(page.current_url).to include(Requests::Config[:aeon_base])
+            expect(page.current_url).to include(Requests.config[:aeon_base])
           end
         end
         describe 'requesting a thesis' do
@@ -148,7 +148,7 @@ describe 'Account login' do
             visit "/catalog/dsp01tq57ns24j"
             expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*dsp01tq57ns24j'))
             click_link('Reading Room Request')
-            expect(page.current_url).to include(Requests::Config[:aeon_base])
+            expect(page.current_url).to include(Requests.config[:aeon_base])
           end
         end
         describe 'requesting a special collections holding with a single item' do
@@ -164,7 +164,7 @@ describe 'Account login' do
             visit "/catalog/#{bib_id}"
             expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
             click_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
-            expect(page.current_url).to include(Requests::Config[:aeon_base])
+            expect(page.current_url).to include(Requests.config[:aeon_base])
           end
         end
       end

@@ -12,7 +12,7 @@ module Requests
     end
 
     def to_s
-      aeon_url = Requests::Config[:aeon_base]
+      aeon_url = Requests.config[:aeon_base]
       aeon_connector = "?Action=10&Form=30&"
       @compiled_string ||= "#{aeon_url}#{aeon_connector}#{query_string}"
     end

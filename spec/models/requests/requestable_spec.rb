@@ -546,7 +546,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#aeon_request_url with new aeon base' do
       it 'beings with Aeon GFA base' do
         stub_holding_locations
-        expect(requestable.aeon_request_url).to match(/^#{Requests::Config[:aeon_base]}/)
+        expect(requestable.aeon_request_url).to match(/^#{Requests.config[:aeon_base]}/)
       end
     end
 
@@ -797,7 +797,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:unauthenticated_patron) }
     let(:valid_patron_response) { '{"netid":"foo","first_name":"Foo","last_name":"Request","barcode":"22101007797777","university_id":"9999999","patron_group":"staff","patron_id":"99999","active_email":"foo@princeton.edu"}' }
     let(:patron) do
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/foo?ldap=true").to_return(status: 200, body: valid_patron_response, headers: {})
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/foo?ldap=true").to_return(status: 200, body: valid_patron_response, headers: {})
       Requests::Patron.new(user:, session: {})
     end
     let(:params) do
@@ -894,7 +894,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
     before do
       stub_catalog_raw(bib_id: 'SCSB-2650865', type: 'scsb')
-      stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+      stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"AR65651294\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
     end
 
@@ -926,7 +926,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
     before do
       stub_catalog_raw(bib_id: 'SCSB-2901229', type: 'scsb')
-      stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+      stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"MR72802120\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
     end
 
@@ -959,7 +959,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       stub_catalog_raw(bib_id: '9977664533506421')
       stub_availability_by_holding_id(bib_id: '9977664533506421', holding_id: '22109013720006421')
       stub_single_holding_location('RES_SHARE$OUT_RS_REQ')
-      stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+      stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"MR72802120\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
     end
 

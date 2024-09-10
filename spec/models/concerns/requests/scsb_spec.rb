@@ -67,7 +67,7 @@ describe Requests::Scsb, requests: true do
   end
   context 'with an unauthorized scsb key', vcr: { cassette_name: 'unauthorized_ol_authorized_bibdata_scsb_key', record: :none } do
     before do
-      stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+      stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .with(body: "{\"bibliographicId\":\".b106574619\",\"institutionId\":\"NYPL\"}")
         .and_return(status: 401, body: 'Authentication Failed')
     end

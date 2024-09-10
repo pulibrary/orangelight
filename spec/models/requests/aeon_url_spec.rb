@@ -41,7 +41,7 @@ RSpec.describe Requests::AeonUrl, requests: true do
     expect(subject).to include('ItemNumber=24680')
   end
   it 'begins with the aeon prefix' do
-    expect(subject).to match(/^#{Requests::Config[:aeon_base]}/)
+    expect(subject).to match(/^#{Requests.config[:aeon_base]}/)
   end
   context 'when the location is at a Mudd location' do
     let(:holdings) do
