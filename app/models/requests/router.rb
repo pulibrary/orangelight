@@ -63,20 +63,19 @@ module Requests
           ['annex', 'on_shelf_edd']
         elsif requestable.recap? || requestable.recap_pf?
           calculate_recap_services
-        elsif requestable.held_at_marquand_library?
-          calculate_marquand_services
         else
-          calculate_on_shelf_services
+          [
+            ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
+            ServiceEligibility::OnShelfPickup.new(requestable:, user:),
+            ServiceEligibility::ClancyUnavailable.new(user:, requestable:),
+            ServiceEligibility::ClancyInLibrary.new(user:, requestable:),
+            ServiceEligibility::ClancyEdd.new(user:, requestable:),
+            ServiceEligibility::MarquandInLibrary.new(user:, requestable:),
+            ServiceEligibility::MarquandEdd.new(user:, requestable:)
+          ].select(&:eligible?).map(&:to_s)
         end
       end
       # rubocop:enable Metrics/MethodLength
-
-      def calculate_on_shelf_services
-        [
-          ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
-          ServiceEligibility::OnShelfPickup.new(requestable:, user:)
-        ].select(&:eligible?).map(&:to_s)
-      end
 
       def calculate_recap_services
         if !requestable.item_data?
@@ -100,16 +99,6 @@ module Requests
         else
           []
         end
-      end
-
-      def calculate_marquand_services
-        [
-          ServiceEligibility::ClancyUnavailable.new(user:, requestable:),
-          ServiceEligibility::ClancyInLibrary.new(user:, requestable:),
-          ServiceEligibility::ClancyEdd.new(user:, requestable:),
-          ServiceEligibility::MarquandInLibrary.new(user:, requestable:),
-          ServiceEligibility::MarquandEdd.new(user:, requestable:)
-        ].select(&:eligible?).map(&:to_s)
       end
 
       def auth_user?

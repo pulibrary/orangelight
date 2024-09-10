@@ -51,7 +51,8 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           preservation?: false, annex?: false,
           recap?: false, held_at_marquand_library?: false,
           item_data?: false, recap_edd?: false, scsb_in_library_use?: false, item:,
-          library_code: 'ABC', eligible_for_library_services?: true }
+          library_code: 'ABC', eligible_for_library_services?: true,
+          item_at_clancy?: false }
       end
       let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
 
