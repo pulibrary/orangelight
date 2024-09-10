@@ -152,6 +152,9 @@ module Requests
     end
 
     private
+      def location_object
+        @location_object ||= Location.new location
+      end
 
       ### builds a list of possible requestable items
       # returns a collection of requestable objects or nil
@@ -309,19 +312,20 @@ module Requests
           bib: doc,
           holding: params[:holding],
           item: params[:item],
-          location: build_requestable_location(params),
+          location: build_requestable_location(params), # location with built-in pick_up_location_code in the delivery locations
           patron:
         }
       end
 
       def build_requestable_location(params)
-        location = params[:location]
+byebug
+        #location = params[:location]
         location["delivery_locations"] = build_delivery_locations(location["delivery_locations"]) if location["delivery_locations"].present?
         location
       end
 
       def build_delivery_locations(delivery_locations)
-        delivery_locations.map do |loc|
+        location_object.delivery_locations.map do |loc|
           library = loc["library"]
           pick_up_code = library.present? && library["code"]
           pick_up_code ||= 'firestone'
