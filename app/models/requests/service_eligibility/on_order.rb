@@ -19,7 +19,11 @@ module Requests
       private
 
         def requestable_eligible?
-          requestable.on_order? && !requestable.charged? && !requestable.in_process?
+          (requestable.alma_managed? || requestable.partner_holding?) &&
+            !requestable.aeon? &&
+            !requestable.charged? &&
+            !requestable.in_process? &&
+            requestable.on_order?
         end
 
         def user_eligible?

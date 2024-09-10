@@ -9,7 +9,9 @@ RSpec.describe Requests::ServiceEligibility::OnOrder, requests: true do
       allow(requestable).to receive_messages(
         on_order?: true,
         charged?: false,
-        in_process?: false
+        in_process?: false,
+        alma_managed?: true,
+        aeon?: false
       )
 
       eligibility = described_class.new(requestable:, user:)
@@ -18,7 +20,13 @@ RSpec.describe Requests::ServiceEligibility::OnOrder, requests: true do
     end
     it 'returns false if the item is not on order' do
       requestable = instance_double(Requests::Requestable)
-      allow(requestable).to receive_messages(on_order?: false)
+      allow(requestable).to receive_messages(
+        on_order?: false,
+        alma_managed?: true,
+        aeon?: false,
+        charged?: false,
+        in_process?: false
+      )
 
       eligibility = described_class.new(requestable:, user:)
 
