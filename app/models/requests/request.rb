@@ -6,7 +6,6 @@ module Requests
   # using items and location of the holding
   class Request
     attr_reader :system_id
-    attr_reader :source
     attr_reader :mfhd
     attr_reader :patron
     attr_reader :doc
@@ -27,8 +26,7 @@ module Requests
     # @option opts [String] :system_id A bib record id or a special collection ID value
     # @option opts [Fixnum] :mfhd alma holding id
     # @option opts [Patron] :patron current Patron object
-    # @option opts [String] :source represents system that directed user to request form. i.e.
-    def initialize(system_id:, mfhd:, patron: nil, source: nil)
+    def initialize(system_id:, mfhd:, patron: nil)
       @system_id = system_id
       @doc = SolrDocument.new(solr_doc(system_id))
       @holdings = JSON.parse(doc[:holdings_1display] || '{}')
@@ -36,7 +34,6 @@ module Requests
       # set it for them, because they only ever have one location
       @mfhd = mfhd || @holdings.keys.first
       @patron = patron
-      @source = source
       @location_code = @holdings[@mfhd]["location_code"] if @holdings[@mfhd].present?
       @location = load_location
       @items = load_items

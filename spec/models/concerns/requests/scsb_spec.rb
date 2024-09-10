@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe Requests::Scsb do
+describe Requests::Scsb, requests: true do
   let(:user) { FactoryBot.build(:user) }
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
@@ -16,7 +16,6 @@ describe Requests::Scsb do
   let(:params) do
     {
       system_id: 'SCSB-7935196',
-      source: 'pulsearch',
       mfhd: nil,
       patron:
     }
@@ -43,7 +42,6 @@ describe Requests::Scsb do
       let(:params) do
         {
           system_id: bib_id,
-          source: 'pulsearch',
           mfhd: nil,
           patron:
         }

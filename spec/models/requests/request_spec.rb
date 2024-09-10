@@ -41,7 +41,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     let(:params) do
       {
         system_id: '9960102253506421',
-        source: 'pulsearch',
         mfhd: '22548491940006421',
         patron:
       }
@@ -728,12 +727,11 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     end
   end
 
-  context "When passed mfhd and source params" do
+  context "When passed mfhd param" do
     let(:params) do
       {
         system_id: '9919698813506421',
         mfhd: '22589919750006421',
-        source: 'pulsearch',
         patron:
       }
     end
@@ -742,10 +740,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     describe "#request" do
       it "has accessible mfhd param" do
         expect(request_with_optional_params.mfhd).to eq('22589919750006421')
-      end
-
-      it "has accessible source param" do
-        expect(request_with_optional_params.source).to eq('pulsearch')
       end
     end
   end
@@ -782,7 +776,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     let(:params) do
       {
         system_id: 'SCSB-5290772',
-        source: 'pulsearch',
         mfhd: nil,
         patron:
       }
@@ -824,7 +817,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     let(:params) do
       {
         system_id: 'SCSB-5640725',
-        source: 'pulsearch',
         mfhd: nil,
         patron:
       }
@@ -856,7 +848,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     let(:params) do
       {
         system_id: 'SCSB-7935196',
-        source: 'pulsearch',
         mfhd: nil,
         patron:
       }
@@ -889,7 +880,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
     let(:params) do
       {
         system_id: '9956200533506421',
-        source: 'pulsearch',
         mfhd: '2219823460006421',
         patron:
       }
