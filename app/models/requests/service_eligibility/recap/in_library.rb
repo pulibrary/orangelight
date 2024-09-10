@@ -3,13 +3,9 @@ module Requests
   module ServiceEligibility
     module Recap
       # recap_in_library - material is stored at recap; can be paged to campus, but does not circulate
-      class InLibrary
-        def initialize(requestable:)
-          @requestable = requestable
-        end
-
+      class InLibrary < AbstractRecap
         def eligible?
-          requestable_eligible?
+          requestable_eligible? && user_eligible?
         end
 
         def to_s
@@ -25,8 +21,6 @@ module Requests
               (!requestable.circulates? && !requestable.recap_edd?) ||
               requestable.recap_pf?
           end
-
-          attr_reader :requestable
       end
     end
   end

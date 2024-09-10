@@ -3,13 +3,9 @@ module Requests
   module ServiceEligibility
     module Recap
       # recap_no_items - material in a recap location with no item record data
-      class NoItems
-        def initialize(requestable:)
-          @requestable = requestable
-        end
-
+      class NoItems < AbstractRecap
         def eligible?
-          requestable_eligible?
+          requestable_eligible? && user_eligible?
         end
 
         def to_s
@@ -23,8 +19,6 @@ module Requests
 
             !requestable.item_data?
           end
-
-          attr_reader :requestable
       end
     end
   end

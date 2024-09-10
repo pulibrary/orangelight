@@ -2,9 +2,9 @@
 require 'rails_helper'
 
 RSpec.describe Requests::ServiceEligibility::Recap::Pickup, requests: true do
+  let(:user) { FactoryBot.create(:user) }
   describe '#eligible?' do
     it 'returns true if all criteria are met' do
-      user = FactoryBot.build(:valid_princeton_patron)
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
         recap?: true,
@@ -21,8 +21,6 @@ RSpec.describe Requests::ServiceEligibility::Recap::Pickup, requests: true do
     end
 
     it 'returns false if criteria are not met' do
-      user = FactoryBot.build(:valid_princeton_patron)
-
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
         recap?: true,

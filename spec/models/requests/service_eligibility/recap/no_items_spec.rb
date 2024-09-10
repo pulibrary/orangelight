@@ -2,6 +2,7 @@
 require 'rails_helper'
 
 RSpec.describe Requests::ServiceEligibility::Recap::NoItems, requests: true do
+  let(:user) { FactoryBot.create(:user) }
   describe '#eligible?' do
     it 'returns true if all criteria are met' do
       requestable = instance_double(Requests::Requestable)
@@ -10,7 +11,7 @@ RSpec.describe Requests::ServiceEligibility::Recap::NoItems, requests: true do
         recap?: true,
         recap_pf?: false
       )
-      eligibility = described_class.new(requestable:)
+      eligibility = described_class.new(requestable:, user:)
 
       expect(eligibility.eligible?).to be(true)
     end
@@ -22,7 +23,7 @@ RSpec.describe Requests::ServiceEligibility::Recap::NoItems, requests: true do
         recap?: true,
         recap_pf?: false
       )
-      eligibility = described_class.new(requestable:)
+      eligibility = described_class.new(requestable:, user:)
 
       expect(eligibility.eligible?).to be(false)
     end

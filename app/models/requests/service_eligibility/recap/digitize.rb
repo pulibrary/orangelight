@@ -3,12 +3,7 @@ module Requests
   module ServiceEligibility
     module Recap
       # recap_edd - material is stored in a recap location that permits digitization
-      class Digitize
-        def initialize(requestable:, user:)
-          @requestable = requestable
-          @user = user
-        end
-
+      class Digitize < AbstractRecap
         def eligible?
           requestable_eligible? && user_eligible?
         end
@@ -27,12 +22,6 @@ module Requests
               requestable.item_data? &&
               !requestable.scsb_in_library_use?
           end
-
-          def user_eligible?
-            user.cas_provider? || user.alma_provider?
-          end
-
-          attr_reader :requestable, :user
       end
     end
   end

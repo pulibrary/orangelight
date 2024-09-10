@@ -3,13 +3,9 @@ module Requests
   module ServiceEligibility
     module Recap
       # ask_me - catchall service if the item isn't eligible for anything else.
-      class AskMe
-        def initialize(requestable:)
-          @requestable = requestable
-        end
-
+      class AskMe < AbstractRecap
         def eligible?
-          requestable_eligible? && patron_eligible?
+          requestable_eligible? && user_eligible? && patron_eligible?
         end
 
         def to_s
@@ -29,8 +25,6 @@ module Requests
           def patron_eligible?
             !requestable.eligible_for_library_services?
           end
-
-          attr_reader :requestable
       end
     end
   end

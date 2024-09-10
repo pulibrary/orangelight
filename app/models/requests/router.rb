@@ -78,9 +78,9 @@ module Requests
 
       def calculate_recap_services
         [
-          ServiceEligibility::Recap::NoItems.new(requestable:),
-          ServiceEligibility::Recap::InLibrary.new(requestable:),
-          ServiceEligibility::Recap::AskMe.new(requestable:),
+          ServiceEligibility::Recap::NoItems.new(requestable:, user:),
+          ServiceEligibility::Recap::InLibrary.new(requestable:, user:),
+          ServiceEligibility::Recap::AskMe.new(requestable:, user:),
           ServiceEligibility::Recap::Digitize.new(requestable:, user:),
           ServiceEligibility::Recap::Pickup.new(requestable:, user:)
         ].select(&:eligible?).map(&:to_s)
