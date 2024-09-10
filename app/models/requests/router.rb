@@ -23,7 +23,7 @@ module Requests
     # :recap - material is stored at recap; can be paged to campus and circulates
     # :recap_in_library - material is stored at recap; can be paged to campus, but does not circulate
     # :recap_edd - material is stored in a recap location that permits digitization
-    # :recap_no_items - material in a recap location with item record data
+    # :recap_no_items - material in a recap location with no item record data
     # :ill - material has a status in Alma making it unavailable for circulation and is in a location that is eligible for resource sharing
     # :clancy_unavailable - item is at clancy but clancy system says it is not available; but it's alma status is available
     # :clancy_in_library - item in the clancy warehouse and can be paged to marquand
@@ -60,7 +60,7 @@ module Requests
           ['on_order']
         elsif requestable.annex?
           ['annex', 'on_shelf_edd']
-        elsif requestable.recap? || requestable.recap_pf?
+        elsif requestable.recap?
           calculate_recap_services
         else
           [
@@ -77,18 +77,13 @@ module Requests
       # rubocop:enable Metrics/MethodLength
 
       def calculate_recap_services
-        if !requestable.item_data?
-          ['recap_no_items']
-        elsif (requestable.scsb_in_library_use? && requestable.item[:collection_code] != "MR") || (!requestable.circulates? && !requestable.recap_edd?) || requestable.recap_pf?
-          ['recap_in_library']
-        elsif requestable.scsb_in_library_use? && !requestable.eligible_for_library_services?
-          ['ask_me']
-        elsif auth_user?
-          services = []
-          services << 'recap' if !requestable.holding_library_in_library_only? && requestable.circulates? && requestable.eligible_for_library_services?
-          services << 'recap_edd' if requestable.recap_edd?
-          services
-        end
+        [
+          ServiceEligibility::Recap::NoItems.new(requestable:),
+          ServiceEligibility::Recap::InLibrary.new(requestable:),
+          ServiceEligibility::Recap::AskMe.new(requestable:),
+          ServiceEligibility::Recap::Digitize.new(requestable:, user:),
+          ServiceEligibility::Recap::Pickup.new(requestable:, user:)
+        ].select(&:eligible?).map(&:to_s)
       end
 
       def calculate_unavailable_services
