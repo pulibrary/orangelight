@@ -9,7 +9,6 @@ module Requests
     attr_reader :location
     attr_reader :call_number
     attr_reader :title
-    attr_reader :user_barcode
     attr_reader :patron
     attr_reader :services
 
@@ -32,7 +31,6 @@ module Requests
       @location = location
       @services = []
       @patron = patron
-      @user_barcode = patron.barcode
       @call_number = @holding.holding_data['call_number_browse']
       @title = bib[:title_citation_display]&.first
       @pageable = Pageable.new(call_number:, location_code: location_object.code)
