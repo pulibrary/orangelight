@@ -60,8 +60,6 @@ module Requests
           ['on_order']
         elsif requestable.annex?
           ['annex', 'on_shelf_edd']
-        elsif requestable.recap?
-          calculate_recap_services
         else
           [
             ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
@@ -70,21 +68,16 @@ module Requests
             ServiceEligibility::ClancyInLibrary.new(user:, requestable:),
             ServiceEligibility::ClancyEdd.new(user:, requestable:),
             ServiceEligibility::MarquandInLibrary.new(user:, requestable:),
-            ServiceEligibility::MarquandEdd.new(user:, requestable:)
+            ServiceEligibility::MarquandEdd.new(user:, requestable:),
+            ServiceEligibility::Recap::NoItems.new(requestable:, user:),
+            ServiceEligibility::Recap::InLibrary.new(requestable:, user:),
+            ServiceEligibility::Recap::AskMe.new(requestable:, user:),
+            ServiceEligibility::Recap::Digitize.new(requestable:, user:),
+            ServiceEligibility::Recap::Pickup.new(requestable:, user:)
           ].select(&:eligible?).map(&:to_s)
         end
       end
       # rubocop:enable Metrics/MethodLength
-
-      def calculate_recap_services
-        [
-          ServiceEligibility::Recap::NoItems.new(requestable:, user:),
-          ServiceEligibility::Recap::InLibrary.new(requestable:, user:),
-          ServiceEligibility::Recap::AskMe.new(requestable:, user:),
-          ServiceEligibility::Recap::Digitize.new(requestable:, user:),
-          ServiceEligibility::Recap::Pickup.new(requestable:, user:)
-        ].select(&:eligible?).map(&:to_s)
-      end
 
       def calculate_unavailable_services
         ill_eligibility = ServiceEligibility::ILL.new(requestable:, user:, any_loanable:)
