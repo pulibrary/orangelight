@@ -87,7 +87,7 @@ Layout/LineLength:
     - 'app/repositories/course_reserve_repository.rb'
     - 'spec/mailers/previews/*'
     - 'spec/lib/orangelight/browse_lists/call_number_csv_spec.rb'
-
+    - 'spec/models/requests/location_spec.rb'
 Lint/MissingSuper:
   Enabled: false
 

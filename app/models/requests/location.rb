@@ -86,6 +86,16 @@ module Requests
       end
       public_delivery_locations + staff_delivery_locations
     end
+
+    def build_delivery_locations
+      delivery_locations.map do |loc|
+        library = loc["library"]
+        pick_up_code = library.present? && library["code"]
+        pick_up_code ||= 'firestone'
+        loc.merge("pick_up_location_code" => pick_up_code) { |_key, v1, _v2| v1 }
+      end
+    end
+
       private
 
         def library_data_present?
