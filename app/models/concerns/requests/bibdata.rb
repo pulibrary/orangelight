@@ -43,6 +43,14 @@ module Requests
       JSON.parse(data)
     end
 
+    def build_pick_ups
+      pick_up_locations = []
+      Requests::BibdataService.delivery_locations.each_value do |pick_up|
+        pick_up_locations << { label: pick_up["label"], gfa_pickup: pick_up["gfa_pickup"], pick_up_location_code: pick_up["library"]["code"] || 'firestone', staff_only: pick_up["staff_only"] } if pick_up["pickup_location"] == true
+      end
+      sort_pick_ups(pick_up_locations)
+    end
+
     ## Accepts an array of location hashes and sorts them according to our quirks
     def sort_pick_ups(locs)
       # staff only locations go at the bottom of the list and Firestone to the top
