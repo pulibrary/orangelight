@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Requests::ServiceEligibility::ClancyUnavailable, requests: true do
+RSpec.describe Requests::ServiceEligibility::ClancyInLibrary, requests: true do
   describe '#eligible?' do
     it 'returns true if all criteria are met' do
       requestable = instance_double(Requests::Requestable)
@@ -9,7 +9,7 @@ RSpec.describe Requests::ServiceEligibility::ClancyUnavailable, requests: true d
           alma_managed?: true,
           held_at_marquand_library?: true,
           item_at_clancy?: true,
-          clancy_available?: false,
+          clancy_available?: true,
           aeon?: false,
           charged?: false,
           in_process?: false,
@@ -22,10 +22,10 @@ RSpec.describe Requests::ServiceEligibility::ClancyUnavailable, requests: true d
 
       expect(eligibility.eligible?).to be(true)
     end
-    it 'returns false if the clancy item is available' do
+    it 'returns false if the clancy item is not available' do
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
-          clancy_available?: true,
+          clancy_available?: false,
           alma_managed?: true,
           held_at_marquand_library?: true,
           item_at_clancy?: true,
