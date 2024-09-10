@@ -446,12 +446,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         expect(request.requestable.first.services.include?('aeon')).to be_truthy
       end
     end
-
-    describe "#single_aeon_requestable?" do
-      it "identifies itself as a single aeon requestable" do
-        expect(request.single_aeon_requestable?).to be_truthy
-      end
-    end
   end
 
   context "Holding with item in preservation and conservation" do
@@ -493,12 +487,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
         expect(request.requestable.first.services.include?('aeon')).to be_truthy
       end
     end
-
-    describe "#single_aeon_requestable?" do
-      it "identifies itself as a single aeon requestable" do
-        expect(request.single_aeon_requestable?).to be_truthy
-      end
-    end
   end
 
   context "Aeon item with holdings without items with mfhd" do
@@ -522,12 +510,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
 
       it "is eligible for aeon services" do
         expect(request.requestable.first.services.include?('aeon')).to be_truthy
-      end
-    end
-
-    describe "#single_aeon_requestable?" do
-      it "identifies itself as a single aeon requestable" do
-        expect(request.single_aeon_requestable?).to be_falsey
       end
     end
   end
@@ -793,14 +775,6 @@ describe Requests::Request, vcr: { cassette_name: 'request_models', record: :non
       }
     end
     let(:request_with_single_aeon_holding) { described_class.new(**params) }
-
-    describe "#requestable" do
-      describe "#single_aeon_requestable?" do
-        it "identifies itself as a single aeon requestable" do
-          expect(request_with_single_aeon_holding.single_aeon_requestable?).to be_truthy
-        end
-      end
-    end
   end
 
   context "A SCSB id with a single holding" do

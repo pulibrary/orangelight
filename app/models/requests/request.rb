@@ -55,10 +55,6 @@ module Requests
       requestable.size.positive?
     end
 
-    def single_aeon_requestable?
-      requestable.size == 1 && first_filtered_requestable&.services&.include?('aeon')
-    end
-
     def first_filtered_requestable
       requestable&.first
     end

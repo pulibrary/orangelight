@@ -5,7 +5,6 @@ illiad_request_parameters
 illiad_request_url
 patron_group
 default_pick_ups
-single_aeon_requestable?
 alma_provider_item_unavailable?
 any_will_submit_via_form?
 hidden_fields
