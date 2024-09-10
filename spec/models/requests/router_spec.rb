@@ -49,7 +49,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         { alma_managed?: true, in_process?: false,
           charged?: false, on_order?: false, aeon?: false,
           preservation?: false, annex?: false,
-          recap?: false, held_at_marquand_library?: false,
+          recap?: false, recap_pf?: false, held_at_marquand_library?: false,
           item_data?: false, recap_edd?: false, scsb_in_library_use?: false, item:,
           library_code: 'ABC', eligible_for_library_services?: true,
           item_at_clancy?: false }
@@ -101,7 +101,12 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         before do
           stubbed_questions[:annex?] = true
         end
-        it "returns annex in the services" do
+        it "returns annex in the services if the item circulate" do
+          stubbed_questions[:circulates?] = true
+          expect(router.calculate_services).to eq(['annex', 'on_shelf_edd'])
+        end
+        it "returns annex in the services if the item does not circulate" do
+          stubbed_questions[:circulates?] = false
           expect(router.calculate_services).to eq(['annex', 'on_shelf_edd'])
         end
       end

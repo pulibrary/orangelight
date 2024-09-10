@@ -2,17 +2,16 @@
 module Requests
   module ServiceEligibility
     # This class is responsible for determining if a specific
-    # user can request a specific physical resource that is
-    # on the shelf
-    class OnShelfPickup < AbstractOnShelf
+    # user can request an item from the annex
+    class Annex < AbstractOnShelf
       def to_s
-        'on_shelf'
+        'annex'
       end
 
         private
 
           def requestable_eligible?
-            on_shelf_eligible? && requestable.circulates? && !requestable.annex?
+            on_shelf_eligible? && requestable.annex?
           end
     end
   end
