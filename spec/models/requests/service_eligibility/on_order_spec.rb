@@ -12,7 +12,7 @@ RSpec.describe Requests::ServiceEligibility::OnOrder, requests: true do
 
       expect(eligibility.eligible?).to be(true)
     end
-    it 'returns false if the item is at clancy' do
+    it 'returns false if the item is not on order' do
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(on_order?: false)
 
