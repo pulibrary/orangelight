@@ -3,7 +3,7 @@
 module Requests
   class SelectedItemsValidator < ActiveModel::Validator
     def mail_services
-      ["paging", "pres", "annex", "trace", "on_order", "in_process", "ppl", "lewis", "on_shelf", "annex_in_library"]
+      ["paging", "pres", "annex", "on_order", "in_process", "ppl", "lewis", "on_shelf", "annex_in_library"]
     end
 
     def validate(record)

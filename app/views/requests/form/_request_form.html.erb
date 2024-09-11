@@ -11,10 +11,6 @@
       <%= f.hidden_field :netid, value: format_email(@patron.netid) %>
     <% end %>
 
-    <% if @mode == 'trace' %>
-      <%= render partial: 'trace_instructions' %>
-    <% end %>
-
     <div>
       <span class="error error-items">
       </span>

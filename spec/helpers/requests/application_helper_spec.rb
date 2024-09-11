@@ -195,7 +195,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       end
     end
 
-    context "on shelf not traceable" do
+    context "on shelf" do
       let(:stubbed_questions) do
         { services: ['on_shelf'], no_services?: false, charged?: false, aeon?: false,
           alma_managed?: false, ask_me?: false, on_shelf?: true, ill_eligible?: false,
@@ -205,20 +205,6 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
         assign(:request, request)
         # temporary change no maps everything is pageable
         # expect(helper.show_pick_up_service_options(requestable, 'acb')).to eq "<div><a href=\"map_abc\">Where to find it</a></div>"
-        expect(helper.show_pick_up_service_options(requestable, 'acb')).to eq "<div><ul class=\"service-list\"><li class=\"service-item\">Requests for pick-up typically take 2 business days to process.</li></ul></div>"
-      end
-    end
-
-    context "on shelf traceable" do
-      let(:stubbed_questions) do
-        { services: ['on_shelf'], no_services?: false, charged?: false, aeon?: false,
-          alma_managed?: false, ask_me?: false, on_shelf?: true, ill_eligible?: false,
-          location: { library: { label: 'abc' } } }
-      end
-      it 'a link to a map' do
-        assign(:request, request)
-        # temporary change no maps everything is pageable
-        # expect(helper.show_pick_up_service_options(requestable, 'acb')).to eq "<div><a href=\"map_abc\">Where to find it</a><div class=\"service-item\">Trace a Missing Item. Library staff will search for this item and contact you with an outcome.</div></div>"
         expect(helper.show_pick_up_service_options(requestable, 'acb')).to eq "<div><ul class=\"service-list\"><li class=\"service-item\">Requests for pick-up typically take 2 business days to process.</li></ul></div>"
       end
     end

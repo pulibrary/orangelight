@@ -112,14 +112,6 @@ module Requests
       confirmation_email(submission:, subject_key: 'requests.in_process.email_subject')
     end
 
-    def trace_email(submission)
-      request_email(submission:, subject_key: 'requests.trace.email_subject')
-    end
-
-    def trace_confirmation(submission)
-      confirmation_email(submission:, subject_key: 'requests.trace.email_subject')
-    end
-
     def recap_no_items_email(submission)
       request_email(submission:, subject_key: 'requests.recap_no_items.email_subject', destination_key: 'requests.recap_no_items.email')
     end
