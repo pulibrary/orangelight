@@ -73,6 +73,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
 
       context "on order" do
         before do
+          stubbed_questions[:recap_pf?] = false
           stubbed_questions[:on_order?] = true
         end
         it "returns on_order in the services" do

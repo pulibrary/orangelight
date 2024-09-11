@@ -54,10 +54,9 @@ module Requests
         return [] unless auth_user?
         if requestable.charged?
           calculate_unavailable_services
-        elsif requestable.on_order?
-          ['on_order']
         else
           [
+            ServiceEligibility::OnOrder.new(requestable:, user:),
             ServiceEligibility::Annex.new(requestable:, user:),
             ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
             ServiceEligibility::OnShelfPickup.new(requestable:, user:),
