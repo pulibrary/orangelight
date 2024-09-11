@@ -45,11 +45,6 @@ module Requests
 
     delegate :user, to: :patron
 
-    # Is this a partner system id
-    def partner_system_id?
-      return true if /^SCSB-\d+/.match?(system_id.to_s)
-    end
-
     def requestable?
       requestable.size.positive?
     end
@@ -155,7 +150,7 @@ module Requests
       # @return [Array<Requests::Requestable>] array containing Requests::Requestables
       def build_requestable
         return [] if doc._source.blank?
-        if partner_system_id?
+        if doc.scsb_record?
           build_scsb_requestable
         elsif items.present?
           # for single aeon item, ends up in this statement
