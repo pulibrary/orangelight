@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe OAuthToken do
+RSpec.describe OAuthToken, libanswers: true do
   describe '#token' do
     context 'when an unexpired token is already in the database' do
       before do

@@ -30,6 +30,7 @@ development:
   <<: *defaults
   ask_a_question_form:
     to: 'test-question@princeton.edu'
+    queue_id: <%= ENV['ASK_A_QUESTION_QUEUE_ID'] %>
   redis:
     host: <%= ENV['lando_orangelight_redis_conn_host'] %>
     port: <%= ENV['lando_orangelight_redis_conn_port'] %>

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe AskAQuestionFormSubmission do
+RSpec.describe AskAQuestionFormSubmission, libanswers: true do
   it 'sends the feedback via Libanswers API' do
     stub_libanswers_api
 
@@ -9,7 +9,6 @@ RSpec.describe AskAQuestionFormSubmission do
         message: 'How can I find books about electricity?',
         patron_name: 'Miles Morales',
         patron_email: 'spiderman@example.com',
-        user_agent: 'Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0',
         title: 'Venom : the secrets of nature\'s deadliest weapon', # the title of the record the patron was looking at
         context: 'https://catalog.princeton.edu/catalog/12345' # the URL of the record the patron was looking at
       ).send_to_libanswers
@@ -21,8 +20,7 @@ RSpec.describe AskAQuestionFormSubmission do
       'pquestion=[Catalog] Venom : the secrets of nature\'s deadliest weapon&'\
       "pdetails=How can I find books about electricity?\n\nSent from https://catalog.princeton.edu/catalog/12345 via LibAnswers API&"\
       'pname=Miles Morales&'\
-      'pemail=spiderman@example.com&'\
-      'ua=Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0',
+      'pemail=spiderman@example.com',
              headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
   end
 end

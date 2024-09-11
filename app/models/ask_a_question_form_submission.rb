@@ -3,11 +3,10 @@
 # form submission to the libanswers API,
 # which will create a ticket for us to answer
 class AskAQuestionFormSubmission
-  def initialize(message:, patron_name:, patron_email:, user_agent:, title:, context:)
+  def initialize(message:, patron_name:, patron_email:, title:, context:)
     @message = message
     @patron_name = patron_name
     @patron_email = patron_email
-    @user_agent = user_agent
     @title = title
     @context = context
   end
@@ -18,7 +17,7 @@ class AskAQuestionFormSubmission
 
     private
 
-      attr_reader :patron_name, :patron_email, :user_agent, :context, :title
+      attr_reader :patron_name, :patron_email, :context, :title
 
       def body
         @body ||= data.to_a.map { |entry| "#{entry[0]}=#{entry[1]}" }.join('&')
@@ -30,8 +29,7 @@ class AskAQuestionFormSubmission
           pquestion: "[Catalog] #{title}",
           pdetails: message,
           pname: patron_name,
-          pemail: patron_email,
-          ua: user_agent
+          pemail: patron_email
         }.compact
       end
 
