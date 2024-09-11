@@ -115,6 +115,7 @@ module Requests
 
         # store guest user information in the session for later
         if user.guest? && params[:request].present? && params[:request][:user_name].present?
+          # TODO: Does this still happen? The request tests don't seem to hit it
           session["user_name"] = params[:request][:user_name]
           session["email"] = params[:request][:email]
         end

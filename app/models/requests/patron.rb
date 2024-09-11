@@ -91,13 +91,13 @@ module Requests
 
       def load_patron(user:)
         if !user.guest?
-          patron_hash = current_patron(user.uid)
+          patron_hash = current_patron_hash(user.uid)
           errors << "A problem occurred looking up your library account." if patron_hash.nil?
           # Uncomment to fake being a non barcoded user
           # patron[:barcode] = nil
           patron_hash || {}
         elsif session["email"].present? && session["user_name"].present?
-          access_patron(session["email"], session["user_name"])
+          access_patron_hash(session["email"], session["user_name"])
         else
           {}
         end
@@ -107,13 +107,12 @@ module Requests
         Requests::Config[:bibdata_base]
       end
 
-      def build_patron_uri(uid:)
-        "#{bibdata_uri}/patron/#{uid}"
+      def patron_uri(uid:)
+        "#{bibdata_uri}/patron/#{uid}?ldap=true"
       end
 
-      def api_request_patron(id:)
-        request_uri = build_patron_uri(uid: id)
-        response = Faraday.get("#{request_uri}?ldap=true")
+      def api_request_patron_response(id:)
+        response = Faraday.get(patron_uri(uid: id))
 
         case response.status
         when 500
@@ -125,7 +124,7 @@ module Requests
         when 404
           Rails.logger.error("404 Patron #{id} cannot be found in the Patron Data Service.")
         when 403
-          Rails.logger.error("403 Not Authorized to Connect to Patron Data Service at #{request_uri} for patron ID #{id}")
+          Rails.logger.error("403 Not Authorized to Connect to Patron Data Service at #{bibdata_uri} for patron ID #{id}")
         else
           return response unless response.body.empty?
 
@@ -137,50 +136,44 @@ module Requests
         nil
       end
 
-      def current_patron(uid)
+      def current_patron_hash(uid)
         return unless uid
 
         if alma_provider?
-          build_alma_patron(uid:)
+          alma_patron_hash(uid:)
         else
-          build_cas_patron(uid:)
+          cas_patron_hash(uid:)
         end
       end
 
-      def build_access_patron(email:, user_name:)
+      # Used for patrons built from session information
+      def access_patron_hash(email, user_name)
         {
           last_name: user_name,
           active_email: email,
-          barcode: 'ACCESS',
-          barcode_status: 0
-        }
+          barcode: 'ACCESS'
+        }.with_indifferent_access
       end
 
-      def access_patron(email, user_name)
-        built = build_access_patron(email:, user_name:)
-        built.with_indifferent_access
-      end
-
-      # This method uses the Alma gem API to build the patron from Alma, rather than via Bibdata
-      def build_alma_patron(uid:)
+      # This method uses the Alma gem API to build the patron from Alma directly, rather than via Bibdata
+      def alma_patron_hash(uid:)
         alma_user = Alma::User.find(uid)
         active_barcode = alma_user["user_identifier"].find { |id| id["id_type"]["value"] == "BARCODE" && id["status"] == "ACTIVE" }["value"]
         {
           last_name: alma_user.preferred_last_name,
           active_email: alma_user.preferred_email,
           barcode: active_barcode || "ALMA",
-          barcode_status: 1,
           netid: "ALMA",
           university_id: uid
         }
       end
 
-      def build_cas_patron(uid:)
-        api_response = api_request_patron(id: uid)
+      # Patron hash based on the Bibdata patron API, which combines Alma and LDAP responses
+      def cas_patron_hash(uid:)
+        api_response = api_request_patron_response(id: uid)
         return if api_response.nil?
 
-        patron_resource = JSON.parse(api_response.body)
-        patron_resource.with_indifferent_access
+        JSON.parse(api_response.body).with_indifferent_access
       rescue JSON::ParserError
         Rails.logger.error("#{api_response.env.url} returned an invalid patron response: #{api_response.body}")
         false

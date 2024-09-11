@@ -77,7 +77,7 @@ describe Requests::Patron, requests: true do
     end
   end
   context 'A user with a valid barcode patron record' do
-    describe '#current_patron' do
+    describe '#current_patron_hash' do
       let(:provider) { 'cas' }
       before do
         stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/foo?ldap=true")
@@ -93,7 +93,7 @@ describe Requests::Patron, requests: true do
     end
   end
   context 'A user with a netid that does not have a matching patron record' do
-    describe '#current_patron' do
+    describe '#current_patron_hash' do
       before do
         stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/foo?ldap=true")
           .to_return(status: 404, body: invalid_patron_response, headers: {})
@@ -105,7 +105,7 @@ describe Requests::Patron, requests: true do
     end
   end
   context 'Cannot connect to Patron Data service' do
-    describe '#current_patron' do
+    describe '#current_patron_hash' do
       before do
         stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/foo?ldap=true")
           .to_return(status: 403, body: invalid_patron_response, headers: {})
@@ -117,7 +117,7 @@ describe Requests::Patron, requests: true do
     end
   end
   context 'System Error from Patron data service' do
-    describe '#current_patron' do
+    describe '#current_patron_hash' do
       before do
         stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/foo?ldap=true")
           .to_return(status: 500, body: invalid_patron_response, headers: {})
@@ -129,7 +129,7 @@ describe Requests::Patron, requests: true do
     end
   end
   context 'when the HTTP request threshold error is raised for the BibData API' do
-    describe '#current_patron' do
+    describe '#current_patron_hash' do
       let(:patron_values) { nil }
 
       before do
