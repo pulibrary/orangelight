@@ -4,7 +4,7 @@ require 'faraday'
 module Requests
   # Request class is responsible of building a request
   # using items and location of the holding
-  class Request
+  class Form
     attr_reader :system_id
     attr_reader :mfhd
     attr_reader :patron

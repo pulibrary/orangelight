@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 require 'rails_helper'
-require './app/models/requests/request.rb'
+require './app/models/requests/form.rb'
 
 RSpec.describe Requests::ApplicationHelper, type: :helper,
-                                            vcr: { cassette_name: 'request_models', record: :none },
+                                            vcr: { cassette_name: 'form_models', record: :none },
                                             requests: true do
   let(:user) { FactoryBot.build(:user) }
   let(:valid_patron) do
@@ -36,7 +36,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
         patron:
       }
     end
-    let(:request_with_items_on_reserve) { Requests::Request.new(**params) }
+    let(:request_with_items_on_reserve) { Requests::Form.new(**params) }
     let(:requestable_list) { request_with_items_on_reserve.requestable }
     let(:submit_button_disabled) { helper.submit_button_disabled(requestable_list) }
 
@@ -90,7 +90,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     let(:default_pick_ups) do
       [{ label: "Firestone Library", gfa_pickup: "PA", staff_only: false }, { label: "Architecture Library", gfa_pickup: "PW", staff_only: false }, { label: "East Asian Library", gfa_pickup: "PL", staff_only: false }, { label: "Lewis Library", gfa_pickup: "PN", staff_only: false }, { label: "Marquand Library of Art and Archaeology", gfa_pickup: "PJ", staff_only: false }, { label: "Mendel Music Library", gfa_pickup: "PK", staff_only: false }, { label: "Plasma Physics Library", gfa_pickup: "PQ", staff_only: false }, { label: "Stokes Library", gfa_pickup: "PM", staff_only: false }]
     end
-    let(:lewis_request_with_multiple_requestable) { Requests::RequestDecorator.new(Requests::Request.new(**params), self) }
+    let(:lewis_request_with_multiple_requestable) { Requests::FormDecorator.new(Requests::Form.new(**params), self) }
     let(:requestable_list) { lewis_request_with_multiple_requestable.requestable }
     let(:submit_button_disabled) { helper.submit_button_disabled(requestable_list) }
     it 'lewis is a submitable request' do
@@ -110,7 +110,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     let(:default_pick_ups) do
       [{ label: "Firestone Library", gfa_pickup: "PA", staff_only: false }, { label: "Architecture Library", gfa_pickup: "PW", staff_only: false }, { label: "East Asian Library", gfa_pickup: "PL", staff_only: false }, { label: "Lewis Library", gfa_pickup: "PN", staff_only: false }, { label: "Marquand Library of Art and Archaeology", gfa_pickup: "PJ", staff_only: false }, { label: "Mendel Music Library", gfa_pickup: "PK", staff_only: false }, { label: "Plasma Physics Library", gfa_pickup: "PQ", staff_only: false }, { label: "Stokes Library", gfa_pickup: "PM", staff_only: false }]
     end
-    let(:lewis_request_with_multiple_requestable) { Requests::RequestDecorator.new(Requests::Request.new(**params), self) }
+    let(:lewis_request_with_multiple_requestable) { Requests::FormDecorator.new(Requests::Form.new(**params), self) }
     let(:requestable_list) { lewis_request_with_multiple_requestable.requestable }
     let(:submit_button_disabled) { helper.submit_button_disabled(requestable_list) }
     let(:availability_response) { File.read("spec/fixtures/scsb_availability_994264203506421.json") }
@@ -135,7 +135,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
         patron:
       }
     end
-    let(:aeon_only_request) { Requests::RequestDecorator.new(Requests::Request.new(**params), nil) }
+    let(:aeon_only_request) { Requests::FormDecorator.new(Requests::Form.new(**params), nil) }
     let(:login_suppressed) { helper.suppress_login(aeon_only_request) }
 
     it 'returns a boolean to disable/enable submit' do
@@ -173,7 +173,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
 
   describe "#show_service_options" do
     let(:requestable) { instance_double(Requests::RequestableDecorator, stubbed_questions) }
-    let(:request) { instance_double(Requests::Request, ctx: solr_context) }
+    let(:request) { instance_double(Requests::Form, ctx: solr_context) }
     let(:solr_context) { instance_double(Requests::SolrOpenUrlContext) }
     context "lewis library" do
       let(:stubbed_questions) do

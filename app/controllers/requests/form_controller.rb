@@ -4,7 +4,7 @@ require 'faraday'
 include Requests::ApplicationHelper
 
 module Requests
-  class RequestController < ApplicationController
+  class FormController < ApplicationController
     before_action :authenticate_user!, except: [:index], unless: -> { aeon? }
 
     def index
@@ -24,10 +24,10 @@ module Requests
       @title = "Request ID: #{system_id}"
 
       # needed to see if we can suppress login for this item
-      @request = RequestDecorator.new(Requests::Request.new(system_id:, mfhd:, patron: @patron), view_context)
+      @request = FormDecorator.new(Requests::Form.new(system_id:, mfhd:, patron: @patron), view_context)
     rescue ActionController::ParameterMissing
       @system_id = system_id
-      render 'requests/request/no_location_specified'
+      render 'requests/form/no_location_specified'
     end
 
     def aeon?

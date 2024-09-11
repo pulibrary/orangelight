@@ -9,12 +9,12 @@ Rails.application.routes.draw do
     get 'browse/subjects', model: Orangelight::Subject, to: 'browsables#index'
   end
   scope module: 'requests' do
-    get "/requests", to: 'request#index'
-    post '/requests/submit', to: 'request#submit'
+    get "/requests", to: 'form#index'
+    post '/requests/submit', to: 'form#submit'
     # no longer in use
-    # get '/pageable', to: 'request#pageable'
-    get '/requests/:system_id', to: 'request#generate', constraints: { system_id: /(\d+|dsp\w+|SCSB-\d+|coin-\d+)/i }
-    post '/requests/:system_id', to: 'request#generate', constraints: { system_id: /(\d+|dsp\w+|SCSB-\d+|coin-\d+)/i }
+    # get '/pageable', to: 'form#pageable'
+    get '/requests/:system_id', to: 'form#generate', constraints: { system_id: /(\d+|dsp\w+|SCSB-\d+|coin-\d+)/i }
+    post '/requests/:system_id', to: 'form#generate', constraints: { system_id: /(\d+|dsp\w+|SCSB-\d+|coin-\d+)/i }
   end
   get 'catalog/:id/staff_view', to: 'catalog#librarian_view', as: 'staff_view_solr_document'
   post '/catalog/:id/linked_records/:field', to: 'catalog#linked_records'

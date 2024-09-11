@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe Requests::RequestDecorator, requests: true do
+describe Requests::FormDecorator, requests: true do
   include ActionView::TestCase::Behavior
 
   subject(:decorator) { described_class.new(request, view) }
@@ -20,8 +20,8 @@ describe Requests::RequestDecorator, requests: true do
     { title: 'title', author: 'author', isbn: 'isbn' }
   end
   let(:request) do
-    instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [requestable], patron:, first_filtered_requestable: requestable,
-                                       hidden_field_metadata:, eligible_for_library_services?: patron.eligible_for_library_services?)
+    instance_double(Requests::Form, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [requestable], patron:, first_filtered_requestable: requestable,
+                                    hidden_field_metadata:, eligible_for_library_services?: patron.eligible_for_library_services?)
   end
   let(:solr_context) { instance_double(Requests::SolrOpenUrlContext) }
   let(:stubbed_questions) { {} }
@@ -161,8 +161,8 @@ describe Requests::RequestDecorator, requests: true do
 
     context "user is not eligible for library services" do
       let(:request) do
-        instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [requestable], patron:, first_filtered_requestable: requestable,
-                                           hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, eligible_for_library_services?: false)
+        instance_double(Requests::Form, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [requestable], patron:, first_filtered_requestable: requestable,
+                                        hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, eligible_for_library_services?: false)
       end
       let(:stubbed_questions) { { eligible_for_library_services?: false } }
       it "does not submit via form" do
@@ -191,8 +191,8 @@ describe Requests::RequestDecorator, requests: true do
     it "Is aeon when every request is aeon" do
       request1 = instance_double(Requests::RequestableDecorator, aeon?: true)
       request2 = instance_double(Requests::RequestableDecorator, aeon?: true)
-      request = instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [request1, request2], patron:, first_filtered_requestable: requestable,
-                                                   hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' })
+      request = instance_double(Requests::Form, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [request1, request2], patron:, first_filtered_requestable: requestable,
+                                                hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' })
       decorator = described_class.new(request, view)
       expect(decorator.only_aeon?).to be_truthy
     end
@@ -200,8 +200,8 @@ describe Requests::RequestDecorator, requests: true do
     it "Is not aeon when one request is not aeon" do
       request1 = instance_double(Requests::RequestableDecorator, aeon?: true)
       request2 = instance_double(Requests::RequestableDecorator, aeon?: false)
-      request = instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [request1, request2], patron:, first_filtered_requestable: requestable,
-                                                   hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' })
+      request = instance_double(Requests::Form, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [request1, request2], patron:, first_filtered_requestable: requestable,
+                                                hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' })
       decorator = described_class.new(request, view)
       expect(decorator.only_aeon?).to be_falsey
     end
@@ -209,22 +209,22 @@ describe Requests::RequestDecorator, requests: true do
 
   describe "#location_label?" do
     it "shows the library name" do
-      request = instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [], patron:, first_filtered_requestable: requestable,
-                                                   hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, holdings: { '112233' => { "library" => 'abc' } })
+      request = instance_double(Requests::Form, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [], patron:, first_filtered_requestable: requestable,
+                                                hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, holdings: { '112233' => { "library" => 'abc' } })
       decorator = described_class.new(request, view)
       expect(decorator.location_label).to eq('abc')
     end
 
     it "shows the library name and location" do
-      request = instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [], patron:, first_filtered_requestable: requestable,
-                                                   hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, holdings: { '112233' => { "library" => 'abc', "location" => "123" } })
+      request = instance_double(Requests::Form, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [], patron:, first_filtered_requestable: requestable,
+                                                hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, holdings: { '112233' => { "library" => 'abc', "location" => "123" } })
       decorator = described_class.new(request, view)
       expect(decorator.location_label).to eq('abc - 123')
     end
 
     it "shows the nothing if the holding is empty" do
-      request = instance_double(Requests::Request, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [], patron:, first_filtered_requestable: requestable,
-                                                   hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, holdings: {})
+      request = instance_double(Requests::Form, system_id: '123abc', mfhd: '112233', ctx: solr_context, requestable: [], patron:, first_filtered_requestable: requestable,
+                                                hidden_field_metadata: { title: 'title', author: 'author', isbn: 'isbn' }, holdings: {})
       decorator = described_class.new(request, view)
       expect(decorator.location_label).to eq('')
     end

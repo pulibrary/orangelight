@@ -55,8 +55,8 @@ RSpec/EmptyExampleGroup:
 # SupportedStyles: have_received, receive
 RSpec/MessageSpies:
   Exclude:
-    - 'spec/controllers/requests/request_controller_spec.rb'
-    - 'spec/features/requests/request_spec.rb'
+    - 'spec/controllers/requests/form_controller_spec.rb'
+    - 'spec/features/requests/form_spec.rb'
     - 'spec/helpers/requests/application_helper_spec.rb'
 
 # Offense count: 10
@@ -68,5 +68,5 @@ Rails/OutputSafety:
     - 'app/services/online_holdings_markup_builder.rb'
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'app/helpers/requests/application_helper.rb'
-    - 'app/helpers/requests/request_helper.rb'
+    - 'app/helpers/requests/form_helper.rb'
     - 'app/models/requests/requestable_decorator.rb'
