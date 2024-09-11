@@ -1504,7 +1504,6 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
     let(:params) do
       {
         system_id: '9960102253506421',
-        source: 'pulsearch',
         mfhd: nil,
         patron:
       }

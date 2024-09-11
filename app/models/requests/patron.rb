@@ -47,10 +47,6 @@ module Requests
       patron_hash[:university_id]
     end
 
-    def source
-      patron_hash[:source]
-    end
-
     def eligible_for_library_services?
       barcode.present?
     end
