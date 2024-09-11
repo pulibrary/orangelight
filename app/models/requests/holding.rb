@@ -13,7 +13,7 @@ module Requests
     attr_reader :holding_data, :mfhd_id
 
     def to_h
-      { mfhd_id: holding_data }
+      Hash[mfhd_id, holding_data].with_indifferent_access
     end
   end
 end
