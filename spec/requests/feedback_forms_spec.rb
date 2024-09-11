@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "feedback forms", type: :request do
+RSpec.describe "feedback forms", type: :request, libanswers: true do
   context 'main feedback form' do
     it 'adds a flash message on success' do
       stub_libanswers_api
@@ -19,6 +19,7 @@ RSpec.describe "feedback forms", type: :request do
   end
   context 'ask a question feedback form' do
     it 'adds a flash message on success' do
+      stub_libanswers_api
       post '/contact/question', params: {
         controller: "ContactController",
         action: "question",

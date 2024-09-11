@@ -7,12 +7,16 @@ class AskAQuestionForm
   validates :name, :email, :message, presence: true
   validates :email, email: true
 
-  def email_subject
-    "[Catalog] #{title}"
-  end
-
   def submit
-    ContactMailer.with(form: self).question.deliver unless spam?
+    unless spam?
+      AskAQuestionFormSubmission.new(
+        message:,
+        patron_name: name,
+        patron_email: email,
+        title:,
+        context:
+      ).send_to_libanswers
+    end
     @submitted = true
     @name = ""
     @email = ""

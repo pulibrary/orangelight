@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe FeedbackFormSubmission do
+RSpec.describe FeedbackFormSubmission, libanswers: true do
   it 'sends the feedback via Libanswers API' do
     stub_libanswers_api
 

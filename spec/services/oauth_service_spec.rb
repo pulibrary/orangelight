@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe OAuthService do
+RSpec.describe OAuthService, libanswers: true do
   before do
     stub_request(:post, 'https://faq.library.princeton.edu/api/1.1/oauth/token')
       .with(body: 'client_id=ABC&client_secret=12345&grant_type=client_credentials')
