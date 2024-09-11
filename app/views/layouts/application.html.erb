@@ -25,13 +25,13 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <script defer src="https://www.stackmapintegration.com/princeton-blacklight/StackMap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" media="all" type="text/css" href="https://www.stackmapintegration.com/princeton-blacklight/StackMap.min.css" />
-    <% unless controller.controller_name == "request" %>
+    <% unless controller.controller_name == "form" %>
       <%= javascript_include_tag "application" %>
     <% else  %>
       <%= javascript_include_tag 'requests/application' %>
     <% end %>
     <script>window.Global = {"graphql":<%= Global.graphql.to_json.html_safe %>,"figgy":<%= Global.figgy.to_json.html_safe %>}</script>
-    <% unless controller.controller_name == "request" %>
+    <% unless controller.controller_name == "form" %>
       <%= csrf_meta_tags %>
       <%= vite_client_tag %>
       <%= vite_javascript_tag 'application' %>
