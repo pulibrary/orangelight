@@ -274,6 +274,32 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe 'scsb_record?' do
+    context 'a SCSB record' do
+      let(:properties) do
+        {
+          'id' => 'SCSB-1234'
+        }
+      end
+
+      it 'returns true with a SCSB record' do
+        expect(solr_document.scsb_record?).to be true
+      end
+    end
+
+    context 'A dataspace thesis record' do
+      let(:properties) do
+        {
+          'id' => 'dsp1213313'
+        }
+      end
+
+      it 'returns false when it did not originate from SCSB' do
+        expect(solr_document.scsb_record?).to be false
+      end
+    end
+  end
+
   describe 'ark' do
     context 'there is no value' do
       it 'returns nil' do

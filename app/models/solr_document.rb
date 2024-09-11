@@ -4,6 +4,7 @@ class SolrDocument
   include Blacklight::Solr::Document
   include Orangelight::Document::Export
   include Orangelight::Document::Alma
+  include Orangelight::Document::Scsb
   include Orangelight::Document::StandardNumbers
 
   # Explicitly required for sneakers
