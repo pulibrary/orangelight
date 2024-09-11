@@ -24,6 +24,7 @@
 // Required by Blacklight
 //= require blacklight/blacklight
 //= require 'blacklight_range_limit'
+//= require requests/requests
 //= require babel/polyfill
 //
 //= require ./custom_range_limit.js
