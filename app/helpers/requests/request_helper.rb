@@ -26,11 +26,7 @@ module Requests
     end
 
     def request_title
-      if @mode == 'trace'
-        I18n.t('requests.trace.form_title')
-      else
-        I18n.t('requests.default.form_title')
-      end
+      I18n.t('requests.default.form_title')
     end
 
     ### FIXME. This should come directly as a sub-property from the request object holding property.

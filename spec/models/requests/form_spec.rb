@@ -570,7 +570,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     end
   end
 
-  context 'When passed an item that is traceable and mappable' do
+  context 'When passed an item that is on the shelf' do
     let(:params) do
       {
         system_id: '9999074333506421',

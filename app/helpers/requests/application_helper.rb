@@ -57,7 +57,7 @@ module Requests
 
     def output_request_input(requestable)
       output = ""
-      ['annex', 'pres', 'ppl', 'lewis', 'paging', 'on_order', 'trace', 'on_shelf'].each do |type|
+      ['annex', 'pres', 'ppl', 'lewis', 'paging', 'on_order', 'on_shelf'].each do |type|
         next unless requestable.services.include?(type)
         output = request_input(type)
         break

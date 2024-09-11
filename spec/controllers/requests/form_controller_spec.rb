@@ -28,17 +28,7 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
           .to_return(status: 200, body: valid_patron_response, headers: {})
       end
 
-      it 'sets the current request mode to trace when supplied' do
-        stub_scsb_availability(bib_id: "9996764833506421", institution_id: "PUL", barcode: '32101099103457')
-        get :generate, params: {
-          source: 'pulsearch',
-          system_id: '9996764833506421',
-          mfhd: '2275983490006421',
-          mode: "trace"
-        }
-        expect(assigns(:mode)).to eq('trace')
-      end
-      it 'uses the default request mode and does not set a flash' do
+      it 'does not set a flash' do
         stub_scsb_availability(bib_id: "9996764833506421", institution_id: "PUL", barcode: '32101099103457')
         get :generate, params: {
           source: 'pulsearch',
@@ -46,7 +36,6 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
           mfhd: '2275983490006421'
         }
         expect(flash.now[:notice]).to be_blank
-        expect(assigns(:mode)).to eq('standard')
       end
 
       it 'does not redirect you when multiple aeon records are requested' do

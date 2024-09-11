@@ -20,7 +20,6 @@ module Requests
 
       @patron = authorize_patron(@user)
 
-      @mode = mode
       @title = "Request ID: #{system_id}"
 
       # needed to see if we can suppress login for this item
