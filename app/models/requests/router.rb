@@ -56,7 +56,6 @@ module Requests
           calculate_unavailable_services
         else
           [
-            ServiceEligibility::InProcess.new(requestable:, user:),
             ServiceEligibility::OnOrder.new(requestable:, user:),
             ServiceEligibility::Annex.new(requestable:, user:),
             ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
