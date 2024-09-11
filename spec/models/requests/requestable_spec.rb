@@ -10,7 +10,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       ldap: { netid: "foo", department: "Test", address: "Box 1234", telephone: nil, givenname: "Foo", surname: "Request",
               email: "foo@princeton.edu", status: "staff", pustatus: "stf", universityid: "9999999", title: nil } }.with_indifferent_access
   end
-  let(:patron) { Requests::Patron.new(user:, patron: valid_patron) }
+  let(:patron) { Requests::Patron.new(user:, patron_hash: valid_patron) }
 
   context "Is a bibliographic record on the shelf" do
     let(:request) { FactoryBot.build(:request_on_shelf, patron:) }
@@ -661,7 +661,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
     end
     let(:patron) do
-      Requests::Patron.new(user:, session: {}, patron: valid_patron)
+      Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
     end
     let(:params) do
       {
@@ -727,7 +727,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
     end
     let(:patron) do
-      Requests::Patron.new(user:, session: {}, patron: valid_patron)
+      Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
     end
     let(:params) do
       {

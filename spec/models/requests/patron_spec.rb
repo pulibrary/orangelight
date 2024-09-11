@@ -4,7 +4,7 @@ require 'rails_helper'
 # rubocop:disable RSpec/MultipleExpectations
 describe Requests::Patron, requests: true do
   subject(:patron) do
-    described_class.new(user:, session:, patron: patron_values)
+    described_class.new(user:, session:, patron_hash: patron_values)
   end
 
   let(:session) do
@@ -195,7 +195,7 @@ describe Requests::Patron, requests: true do
   end
   context 'Passing in patron information instead of loading it from bibdata' do
     it "does not call to bibdata" do
-      patron = described_class.new(user: instance_double(User, guest?: false, uid: 'foo'), session: {}, patron: { barcode: "1234567890" })
+      patron = described_class.new(user: instance_double(User, guest?: false, uid: 'foo'), session: {}, patron_hash: { barcode: "1234567890" })
       expect(patron.barcode).to eq('1234567890')
     end
   end

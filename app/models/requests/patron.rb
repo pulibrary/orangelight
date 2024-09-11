@@ -3,52 +3,52 @@ require 'faraday'
 
 module Requests
   class Patron
-    attr_reader :user, :session, :patron, :errors
+    attr_reader :user, :session, :errors, :patron_hash
 
     delegate :guest?, :provider, :cas_provider?, :alma_provider?, to: :user
 
-    def initialize(user:, session: {}, patron: nil)
+    def initialize(user:, session: {}, patron_hash: nil)
       @user = user
       @session = session
       @errors = []
-      # load the patron from bibdata unless we are passing it in
-      @patron = patron || load_patron(user:)
+      # load the patron_hash from bibdata unless we are passing it in
+      @patron_hash = patron_hash || load_patron(user:)
     end
 
     def barcode
-      patron[:barcode]
+      patron_hash[:barcode]
     end
 
     def active_email
-      patron[:active_email] || ldap[:email]
+      patron_hash[:active_email] || ldap[:email]
     end
 
     def first_name
-      patron[:first_name] || ldap[:givenname]
+      patron_hash[:first_name] || ldap[:givenname]
     end
 
     def last_name
-      patron[:last_name] || ldap[:surname]
+      patron_hash[:last_name] || ldap[:surname]
     end
 
     def netid
-      patron[:netid]
+      patron_hash[:netid]
     end
 
     def patron_id
-      patron[:patron_id]
+      patron_hash[:patron_id]
     end
 
     def patron_group
-      patron[:patron_group]
+      patron_hash[:patron_group]
     end
 
     def university_id
-      patron[:university_id]
+      patron_hash[:university_id]
     end
 
     def source
-      patron[:source]
+      patron_hash[:source]
     end
 
     def eligible_for_library_services?
@@ -80,26 +80,26 @@ module Requests
     end
 
     def ldap
-      patron[:ldap] || {}
+      patron_hash[:ldap] || {}
     end
 
     def blank?
-      patron.empty?
+      patron_hash.empty?
     end
 
     def to_h
-      patron
+      patron_hash
     end
 
     private
 
       def load_patron(user:)
         if !user.guest?
-          patron = current_patron(user.uid)
-          errors << "A problem occurred looking up your library account." if patron.nil?
+          patron_hash = current_patron(user.uid)
+          errors << "A problem occurred looking up your library account." if patron_hash.nil?
           # Uncomment to fake being a non barcoded user
           # patron[:barcode] = nil
-          patron || {}
+          patron_hash || {}
         elsif session["email"].present? && session["user_name"].present?
           access_patron(session["email"], session["user_name"])
         else

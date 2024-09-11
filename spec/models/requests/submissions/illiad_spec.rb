@@ -10,7 +10,7 @@ RSpec.describe Requests::Submissions::Illiad, requests: true do
       "source" => "pulsearch"
     }.with_indifferent_access
   end
-  let(:patron) { Requests::Patron.new(user: {}, patron: user_info) }
+  let(:patron) { Requests::Patron.new(user: {}, patron_hash: user_info) }
   let(:requestable) do
     [
       {
