@@ -22,7 +22,6 @@ en:
       in_process_success: "Request submitted. See confirmation email with details about when your item(s) will be available."
       annex_success: "Request submitted. See confirmation email with details about when your item(s) will be available."
       annex_in_library_success: "Request submitted. See confirmation email with details about when your item(s) will be available to view."
-      ppl_success: ""
       clancy_in_library_success: "Request submitted. See confirmation email with details about when your item(s) will be available to view."
       clancy_edd_success: "Request submitted. See confirmation email with details about when your scan(s) will be available."
       marquand_edd_success: "Request submitted. See confirmation email with details about when your scan(s) will be available."
@@ -67,13 +66,6 @@ en:
     digitize_fillin:
       email_conf_msg: 'Electronic document delivery requests typically take 1-2 business days to process. You will receive an email including a link where you can download your scanned section in the that timeframe. If there is a problem fulfilling your request a member of our Library Staff will contact you.'
       email_msg: 'The user has requested Digitization of a resource that is not itemized.'
-    ppl:
-      email: "lewislib@princeton.edu"
-      email_subject: "Harold P. Furth Plasma Physics Library Request"
-      brief_msg: "Request for delivery in 1-2 business days."
-      # temporary changes issue 438
-      #email_conf_msg: "You will be notified via email when your item is ready for pick-up. Most items are ready in 1 to 2 business days."
-      email_conf_msg: "Your request to pick this item up has been received. We will process the requests as soon as possible, but given the demand and the current circumstances some delay may occur. You will receive an email telling you the item will be available for pick-up in PPL Library between the hours of 11am - 3pm, Monday - Friday."
     pres:
       email: "fstcirc@princeton.edu"
       email_subject: "Preservation Office Request"
