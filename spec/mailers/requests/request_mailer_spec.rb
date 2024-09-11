@@ -900,114 +900,6 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
   end
 
-  context "send plasma email request" do
-    let(:requestable) do
-      [
-        {
-          "selected" => "true",
-          "mfhd" => "22188891830006421",
-          "call_number" => "QC92.U54 A36 2017",
-          "location_code" => "plasma$stacks",
-          "item_id" => "23188891820006421",
-          "barcode" => "32101101395745",
-          "copy_number" => "0",
-          "status" => "Not Charged",
-          "type" => "ppl",
-          "pick_up" => "PA"
-        }.with_indifferent_access,
-        {
-          "selected" => "false"
-        }.with_indifferent_access
-      ]
-    end
-    let(:bib) do
-      {
-        "id" => "99102922693506421",
-        "title" => "Adopting the International System of units for radiation measurements in the United States : proceedings of a workshop /",
-        "author" => "Kosti, Ourania"
-      }.with_indifferent_access
-    end
-    let(:params) do
-      {
-        request: user_info,
-        requestable:,
-        bib:
-      }
-    end
-
-    let(:submission_for_ppl) do
-      Requests::Submission.new(params, user_info)
-    end
-
-    let(:mail) do
-      described_class.send("ppl_email", submission_for_ppl).deliver_now
-    end
-
-    it "renders the headers" do
-      expect(mail.subject).to eq(I18n.t('requests.ppl.email_subject'))
-      expect(mail.to).to eq(["lewislib@princeton.edu"])
-      expect(mail.from).to eq([I18n.t('requests.default.email_from')])
-    end
-
-    it "renders the body" do
-      expect(mail.body.encoded).to have_content I18n.t('requests.ppl.email_conf_msg')
-    end
-  end
-
-  context "send plasma email patron confirmation" do
-    let(:requestable) do
-      [
-        {
-          "selected" => "true",
-          "mfhd" => "22188891830006421",
-          "call_number" => "QC92.U54 A36 2017",
-          "location_code" => "plasma$stacks",
-          "item_id" => "23188891820006421",
-          "barcode" => "32101101395745",
-          "copy_number" => "0",
-          "status" => "Not Charged",
-          "type" => "ppl",
-          "pick_up" => "PA"
-        }.with_indifferent_access,
-        {
-          "selected" => "false"
-        }.with_indifferent_access
-      ]
-    end
-    let(:bib) do
-      {
-        "id" => "99102922693506421",
-        "title" => "Adopting the International System of units for radiation measurements in the United States : proceedings of a workshop /",
-        "author" => "Kosti, Ourania"
-      }.with_indifferent_access
-    end
-    let(:params) do
-      {
-        request: user_info,
-        requestable:,
-        bib:
-      }
-    end
-
-    let(:submission_for_plasma) do
-      Requests::Submission.new(params, user_info)
-    end
-
-    let(:mail) do
-      described_class.send("ppl_confirmation", submission_for_plasma).deliver_now
-    end
-
-    it "renders the headers" do
-      expect(mail.subject).to eq(I18n.t('requests.ppl.email_subject'))
-      expect(mail.to).to eq([submission_for_plasma.email])
-      expect(mail.from).to eq([I18n.t('requests.default.email_from')])
-    end
-
-    it "renders the body" do
-      expect(mail.body.encoded).to have_content I18n.t('requests.ppl.email_conf_msg')
-    end
-  end
-
   context "Item on shelf in firestone" do
     let(:requestable) do
       [
@@ -1120,6 +1012,51 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
     # rubocop:enable RSpec/ExampleLength
   end
+
+  context "PPL Item on shelf in Lewis Library" do
+    let(:requestable) do
+      [
+        { "selected" => "true",
+          "mfhd" => "22223742640006421",
+          "call_number" => "PL2727.S2 C574 1998",
+          "location_code" => "eastasian$cjk",
+          "item_id" => "23223742630006421",
+          "barcode" => "32101042398345",
+          "copy_number" => "1",
+          "status" => "Not Charged",
+          "type" => "on_shelf",
+          "pick_up" => "PL" }.with_indifferent_access,
+        {
+          "selected" => "false"
+        }.with_indifferent_access
+      ]
+    end
+    let(:bib) do
+      {
+        "id" => "9935732583506421",
+        "title" => "Hong lou fang zhen : Da guan yuan zai Gong wang fu 红楼访真　: 大观园在恭王府　",
+        "author" => "Zhou, Ruchang"
+      }.with_indifferent_access
+    end
+    let(:params) do
+      {
+        request: user_info,
+        requestable:,
+        bib:
+      }
+    end
+
+    let(:submission_for_on_shelf) do
+      Requests::Submission.new(params, user_info)
+    end
+
+    # rubocop:disable RSpec/ExampleLength
+    it "sends the email and renders the headers and body" do
+      mail = described_class.send("on_shelf_email", submission_for_on_shelf).deliver_now
+      expect(mail.subject).to eq("#{I18n.t('requests.on_shelf.email_subject')} (EASTASIAN$CJK) PL2727.S2 C574 1998")
+      expect(mail.to).to eq(["gestcirc@princeton.edu"])
+      expect(mail.from).to eq([I18n.t('requests.default.email_from')])
+    end
 
   context "Invalid Clancy Item" do
     let(:requestable) do

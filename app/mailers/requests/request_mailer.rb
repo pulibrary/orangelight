@@ -71,18 +71,6 @@ module Requests
       confirmation_email(submission:, subject_key: 'requests.recap_edd.email_subject', partial: 'recap_edd_confirmation')
     end
 
-    def ppl_email(submission)
-      request_email(submission:, subject_key: 'requests.ppl.email_subject', destination_key: 'requests.ppl.email')
-    end
-
-    def ppl_confirmation(submission)
-      @submission = submission
-      destination_email = @submission.email
-      mail(to: destination_email,
-           from: I18n.t('requests.default.email_from'),
-           subject: subject_line(I18n.t('requests.ppl.email_subject'), @submission.user_barcode))
-    end
-
     # temporary changes issue 438
     def on_shelf_email(submission)
       location_email = get_location_contact_email(submission.items.first[:location_code])
