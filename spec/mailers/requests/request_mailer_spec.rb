@@ -1017,15 +1017,15 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     let(:requestable) do
       [
         { "selected" => "true",
-          "mfhd" => "22223742640006421",
+          "mfhd" => "22922486690006421",
           "call_number" => "PL2727.S2 C574 1998",
-          "location_code" => "eastasian$cjk",
+          "location_code" => "plasma$stacks",
           "item_id" => "23223742630006421",
-          "barcode" => "32101042398345",
+          "barcode" => "32101118740123",
           "copy_number" => "1",
           "status" => "Not Charged",
           "type" => "on_shelf",
-          "pick_up" => "PL" }.with_indifferent_access,
+          "pick_up" => "PQ" }.with_indifferent_access,
         {
           "selected" => "false"
         }.with_indifferent_access
@@ -1033,9 +1033,9 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
     let(:bib) do
       {
-        "id" => "9935732583506421",
-        "title" => "Hong lou fang zhen : Da guan yuan zai Gong wang fu 红楼访真　: 大观园在恭王府　",
-        "author" => "Zhou, Ruchang"
+        "id" => "99125474366406421",
+        "title" => "Plasma atomic physics",
+        "author" => "Rosmej, Frank B."
       }.with_indifferent_access
     end
     let(:params) do
@@ -1053,10 +1053,11 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     # rubocop:disable RSpec/ExampleLength
     it "sends the email and renders the headers and body" do
       mail = described_class.send("on_shelf_email", submission_for_on_shelf).deliver_now
-      expect(mail.subject).to eq("#{I18n.t('requests.on_shelf.email_subject')} (EASTASIAN$CJK) PL2727.S2 C574 1998")
-      expect(mail.to).to eq(["gestcirc@princeton.edu"])
+      expect(mail.subject).to eq("#{I18n.t('requests.on_shelf.email_subject')} (PLASMA$STACKS) PL2727.S2 C574 1998")
+      expect(mail.to).to eq(["lewislib@princeton.edu"])
       expect(mail.from).to eq([I18n.t('requests.default.email_from')])
     end
+  end
 
   context "Invalid Clancy Item" do
     let(:requestable) do

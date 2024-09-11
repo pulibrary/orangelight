@@ -104,4 +104,57 @@ http_interactions:
       string: '{"label":"","code":"eastasian$cjk","aeon_location":false,"recap_electronic_delivery_location":false,"open":true,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","library":{"label":"East
         Asian Library","code":"eastasian","order":0},"holding_library":null,"hours_location":null,"delivery_locations":[]}'
   recorded_at: Fri, 06 Aug 2021 12:07:04 GMT
-recorded_with: VCR 6.0.0
+- request:
+    method: get
+    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/plasma$stacks.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.25.5
+      Date:
+      - Wed, 11 Sep 2024 21:02:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"bd4a56882a5b009c89de52f24ced4748"
+      X-Runtime:
+      - '0.273366'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - eae3bd8d-c0e0-4870-83f6-f02c2ca7c2b8
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.23
+    body:
+      encoding: UTF-8
+      string: '{"label":"Stacks","code":"plasma$stacks","aeon_location":false,"recap_electronic_delivery_location":false,"open":true,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","fulfillment_unit":"General","library":{"label":"Harold
+        P. Furth Plasma Physics Library","code":"plasma","order":0},"holding_library":null,"delivery_locations":[{"label":"Lewis
+        Library","address":"Washington Road and Ivy Lane Princeton, NJ 08544","phone_number":"609-258-6004","contact_email":"lewislib@princeton.edu","gfa_pickup":"PN","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Lewis
+        Library","code":"lewis","order":0}}]}'
+  recorded_at: Wed, 11 Sep 2024 21:02:55 GMT
+recorded_with: VCR 6.3.1
