@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
-describe 'request form', vcr: { cassette_name: 'request_features', record: :none }, type: :feature, requests: true do
+describe 'request form', vcr: { cassette_name: 'form_features', record: :none }, type: :feature, requests: true do
   # rubocop:disable RSpec/MultipleExpectations
   let(:mms_id) { '9994933183506421?mfhd=22558528920006421' }
   let(:thesis_id) { 'dsp01rr1720547' }
@@ -1007,7 +1007,7 @@ describe 'request form', vcr: { cassette_name: 'request_features', record: :none
         end
       end
 
-      describe 'Request button disables and enables', vcr: { cassette_name: 'request_features', record: :none }, js: true do
+      describe 'Request button disables and enables', vcr: { cassette_name: 'form_features', record: :none }, js: true do
         before do
           stub_illiad_patron
           stub_catalog_raw(bib_id: '99105816503506421')

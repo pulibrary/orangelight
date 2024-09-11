@@ -55,7 +55,7 @@ Metrics/ClassLength:
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'spec/mailers/previews/*'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
-    - 'app/models/requests/request.rb'
+    - 'app/models/requests/form.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:

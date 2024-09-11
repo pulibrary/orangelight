@@ -3,7 +3,7 @@ require 'rails_helper'
 require './app/models/requests/form.rb'
 
 RSpec.describe Requests::ApplicationHelper, type: :helper,
-                                            vcr: { cassette_name: 'request_models', record: :none },
+                                            vcr: { cassette_name: 'form_models', record: :none },
                                             requests: true do
   let(:user) { FactoryBot.build(:user) }
   let(:valid_patron) do
