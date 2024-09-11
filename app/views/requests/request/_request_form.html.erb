@@ -11,9 +11,6 @@
       <%= f.hidden_field :netid, value: format_email(@patron.netid) %>
     <% end %>
 
-    <% unless @request.source.nil? %>
-      <%= f.hidden_field :source, value: @request.source %>
-    <% end %>
     <% if @mode == 'trace' %>
       <%= render partial: 'trace_instructions' %>
     <% end %>

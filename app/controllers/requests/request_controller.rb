@@ -13,7 +13,6 @@ module Requests
 
     def generate
       system_id = sanitize(params[:system_id])
-      source = sanitize(params[:source]) if params[:source].present?
       mfhd = sanitize(params[:mfhd])
       params.require(:mfhd) unless system_id.starts_with?("SCSB") # there are not multiple locations for shared items so no MFHD is passed
 
@@ -25,7 +24,7 @@ module Requests
       @title = "Request ID: #{system_id}"
 
       # needed to see if we can suppress login for this item
-      @request = RequestDecorator.new(Requests::Request.new(system_id:, mfhd:, source:, patron: @patron), view_context)
+      @request = RequestDecorator.new(Requests::Request.new(system_id:, mfhd:, patron: @patron), view_context)
     rescue ActionController::ParameterMissing
       @system_id = system_id
       render 'requests/request/no_location_specified'
@@ -65,7 +64,7 @@ module Requests
 
       # trusted params
       def request_params
-        params.permit(:id, :system_id, :source, :mfhd, :user_name, :email, :loc_code, :user, :requestable, :request, :barcode, :isbns).permit!
+        params.permit(:id, :system_id, :mfhd, :user_name, :email, :loc_code, :user, :requestable, :request, :barcode, :isbns).permit!
       end
 
       def sanitize_submission(params)

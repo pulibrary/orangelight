@@ -68,6 +68,34 @@ module Requests
       bibdata_location[:remote_storage] == "recap_rmt"
     end
 
+    ## Accepts an array of location hashes and sorts them according to our quirks
+    def sort_pick_ups
+      # staff only locations go at the bottom of the list and Firestone to the top
+
+      public_delivery_locations = delivery_locations.select { |loc| loc[:staff_only] == false }
+      public_delivery_locations.sort_by! { |loc| loc[:label] }
+
+      firestone = public_delivery_locations.find { |loc| loc[:label] == "Firestone Library" }
+      public_delivery_locations.insert(0, public_delivery_locations.delete_at(public_delivery_locations.index(firestone))) unless firestone.nil?
+
+      staff_delivery_locations = delivery_locations.select { |loc| loc[:staff_only] == true }
+      staff_delivery_locations.sort_by! { |loc| loc[:label] }
+
+      staff_delivery_locations.each do |loc|
+        loc[:label] = loc[:label] + " (Staff Only)"
+      end
+      public_delivery_locations + staff_delivery_locations
+    end
+
+    def build_delivery_locations
+      delivery_locations.map do |loc|
+        library = loc["library"]
+        pick_up_code = library.present? && library["code"]
+        pick_up_code ||= 'firestone'
+        loc.merge("pick_up_location_code" => pick_up_code) { |_key, v1, _v2| v1 }
+      end
+    end
+
       private
 
         def library_data_present?
