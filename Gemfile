@@ -92,6 +92,7 @@ gem 'yard'
 
 group :development do
   gem 'capistrano-rails'
+  gem 'reek'
 end
 
 group :test do

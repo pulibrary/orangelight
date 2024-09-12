@@ -126,6 +126,18 @@ The browser will only display for system specs with `js: true`.
 * [erblint](https://github.com/Shopify/erb-lint)
 * `bundle exec erblint --lint-all`
 
+#### Running rubocop
+
+```
+bundle exec rubocop
+```
+
+#### Running reek
+
+```
+bundle exec reek app
+```
+
 #### Run lighthouse from the command line
 This command runs a rails server, so you will need to stop any rails server that is already running locally before running the commands below.
 
