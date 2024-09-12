@@ -16,7 +16,7 @@ Layout/LineLength:
 # Offense count: 9
 # Configuration parameters: IgnoredMethods.
 Metrics/AbcSize:
-  Max: 52
+  Max: 51
 
 # Offense count: 1
 # Configuration parameters: CountBlocks.

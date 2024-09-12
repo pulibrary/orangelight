@@ -49,40 +49,53 @@ module Requests
 
     private
 
-      # rubocop:disable Metrics/MethodLength
       def calculate_alma_or_scsb_services
         return [] unless auth_user?
-        if requestable.charged?
-          calculate_unavailable_services
-        else
-          [
-            ServiceEligibility::OnOrder.new(requestable:, user:),
-            ServiceEligibility::Annex.new(requestable:, user:),
-            ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
-            ServiceEligibility::OnShelfPickup.new(requestable:, user:),
-            ServiceEligibility::ClancyUnavailable.new(user:, requestable:),
-            ServiceEligibility::ClancyInLibrary.new(user:, requestable:),
-            ServiceEligibility::ClancyEdd.new(user:, requestable:),
-            ServiceEligibility::InProcess.new(requestable:, user:),
-            ServiceEligibility::MarquandInLibrary.new(user:, requestable:),
-            ServiceEligibility::MarquandEdd.new(user:, requestable:),
-            ServiceEligibility::Recap::NoItems.new(requestable:, user:),
-            ServiceEligibility::Recap::InLibrary.new(requestable:, user:),
-            ServiceEligibility::Recap::AskMe.new(requestable:, user:),
-            ServiceEligibility::Recap::Digitize.new(requestable:, user:),
-            ServiceEligibility::Recap::Pickup.new(requestable:, user:)
-          ].select(&:eligible?).map(&:to_s)
-        end
-      end
-      # rubocop:enable Metrics/MethodLength
 
-      def calculate_unavailable_services
-        ill_eligibility = ServiceEligibility::ILL.new(requestable:, user:, any_loanable:)
-        if ill_eligibility.eligible?
-          [ill_eligibility.to_s]
-        else
-          []
-        end
+        clancy_service_eligibility + marquand_service_eligibility +
+          on_shelf_service_eligibility + recap_service_eligibility + other_service_eligibility
+      end
+
+      def clancy_service_eligibility
+        [
+          ServiceEligibility::ClancyUnavailable.new(user:, requestable:),
+          ServiceEligibility::ClancyInLibrary.new(user:, requestable:),
+          ServiceEligibility::ClancyEdd.new(user:, requestable:)
+        ].select(&:eligible?).map(&:to_s)
+      end
+
+      def marquand_service_eligibility
+        [
+          ServiceEligibility::MarquandInLibrary.new(user:, requestable:),
+          ServiceEligibility::MarquandEdd.new(user:, requestable:)
+        ].select(&:eligible?).map(&:to_s)
+      end
+
+      def on_shelf_service_eligibility
+        [
+          ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
+          ServiceEligibility::OnShelfPickup.new(requestable:, user:)
+        ].select(&:eligible?).map(&:to_s)
+      end
+
+      def recap_service_eligibility
+        [
+
+          ServiceEligibility::Recap::NoItems.new(requestable:, user:),
+          ServiceEligibility::Recap::InLibrary.new(requestable:, user:),
+          ServiceEligibility::Recap::AskMe.new(requestable:, user:),
+          ServiceEligibility::Recap::Digitize.new(requestable:, user:),
+          ServiceEligibility::Recap::Pickup.new(requestable:, user:)
+        ].select(&:eligible?).map(&:to_s)
+      end
+
+      def other_service_eligibility
+        [
+          ServiceEligibility::ILL.new(requestable:, user:, any_loanable:),
+          ServiceEligibility::OnOrder.new(requestable:, user:),
+          ServiceEligibility::Annex.new(requestable:, user:),
+          ServiceEligibility::InProcess.new(requestable:, user:)
+        ].select(&:eligible?).map(&:to_s)
       end
 
       def auth_user?

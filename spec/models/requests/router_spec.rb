@@ -103,11 +103,11 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         end
         it "returns annex in the services if the item circulate" do
           stubbed_questions[:circulates?] = true
-          expect(router.calculate_services).to eq(['annex', 'on_shelf_edd'])
+          expect(router.calculate_services).to match_array(['annex', 'on_shelf_edd'])
         end
         it "returns annex in the services if the item does not circulate" do
           stubbed_questions[:circulates?] = false
-          expect(router.calculate_services).to eq(['annex', 'on_shelf_edd'])
+          expect(router.calculate_services).to match_array(['annex', 'on_shelf_edd'])
         end
       end
 
