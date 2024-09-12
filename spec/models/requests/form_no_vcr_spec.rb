@@ -9,7 +9,7 @@ RSpec.describe Requests::Form, type: :model, requests: true do
       "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
   end
   let(:patron) do
-    Requests::Patron.new(user:, session: {}, patron: valid_patron)
+    Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
   end
   context "with an object with a LOT of items" do
     let(:document_id) { '9933643713506421' }

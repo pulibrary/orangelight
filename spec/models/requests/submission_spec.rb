@@ -10,7 +10,7 @@ describe Requests::Submission, requests: true do
   end
   let(:user_info) do
     user = instance_double(User, guest?: false, uid: 'foo')
-    Requests::Patron.new(user:, session: {}, patron: valid_patron)
+    Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
   end
 
   context 'A valid submission' do

@@ -38,7 +38,7 @@ describe Requests::ClancyItem, requests: true do
           "university_id" => "9999999", "patron_group" => "staff", "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
       end
       let(:patron) do
-        Requests::Patron.new(user:, session: {}, patron: valid_patron)
+        Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
       end
 
       before do
@@ -153,7 +153,7 @@ describe Requests::ClancyItem, requests: true do
           "university_id" => "9999999", "patron_group" => "staff", "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
       end
       let(:patron) do
-        Requests::Patron.new(user:, session: {}, patron: valid_patron)
+        Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
       end
 
       before do

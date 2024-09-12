@@ -113,6 +113,7 @@ module Requests
         user = super
 
         # store guest user information in the session for later
+        # TODO: Do we still hit this code? How do the user_name and email end up in the request params?
         if user.guest? && params[:request].present? && params[:request][:user_name].present?
           session["user_name"] = params[:request][:user_name]
           session["email"] = params[:request][:email]

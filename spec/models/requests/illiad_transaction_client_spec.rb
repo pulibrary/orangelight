@@ -6,7 +6,7 @@ describe Requests::IlliadTransactionClient, type: :controller, requests: true do
   let(:valid_patron) { { "netid" => "abc234", ldap: { status: "faculty", pustatus: "fac" } }.with_indifferent_access }
   let(:user_info) do
     user = instance_double(User, guest?: false, uid: 'foo')
-    Requests::Patron.new(user:, session: {}, patron: valid_patron)
+    Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
   end
   let(:requestable) do
     [{ "selected" => "true", "bibid" => "10921934", "mfhd" => "22241110470006421", "call_number" => "HF1131 .B485",

@@ -3,52 +3,48 @@ require 'faraday'
 
 module Requests
   class Patron
-    attr_reader :user, :session, :patron, :errors
+    attr_reader :user, :session, :patron_hash, :errors
 
     delegate :guest?, :provider, :cas_provider?, :alma_provider?, to: :user
 
-    def initialize(user:, session: {}, patron: nil)
+    def initialize(user:, session: {}, patron_hash: nil)
       @user = user
       @session = session
       @errors = []
-      # load the patron from bibdata unless we are passing it in
-      @patron = patron || load_patron(user:)
+      # load the patron_hash from bibdata unless we are passing it in
+      @patron_hash = patron_hash || load_patron(user:)
     end
 
     def barcode
-      patron[:barcode]
+      patron_hash[:barcode]
     end
 
     def active_email
-      patron[:active_email] || ldap[:email]
+      patron_hash[:active_email] || ldap[:email]
     end
 
     def first_name
-      patron[:first_name] || ldap[:givenname]
+      patron_hash[:first_name] || ldap[:givenname]
     end
 
     def last_name
-      patron[:last_name] || ldap[:surname]
+      patron_hash[:last_name] || ldap[:surname]
     end
 
     def netid
-      patron[:netid]
+      patron_hash[:netid]
     end
 
     def patron_id
-      patron[:patron_id]
+      patron_hash[:patron_id]
     end
 
     def patron_group
-      patron[:patron_group]
+      patron_hash[:patron_group]
     end
 
     def university_id
-      patron[:university_id]
-    end
-
-    def source
-      patron[:source]
+      patron_hash[:university_id]
     end
 
     def eligible_for_library_services?
@@ -80,28 +76,28 @@ module Requests
     end
 
     def ldap
-      patron[:ldap] || {}
+      patron_hash[:ldap] || {}
     end
 
     def blank?
-      patron.empty?
+      patron_hash.empty?
     end
 
     def to_h
-      patron
+      patron_hash
     end
 
     private
 
       def load_patron(user:)
         if !user.guest?
-          patron = current_patron(user.uid)
-          errors << "A problem occurred looking up your library account." if patron.nil?
+          patron_hash = current_patron_hash(user.uid)
+          errors << "A problem occurred looking up your library account." if patron_hash.nil?
           # Uncomment to fake being a non barcoded user
-          # patron[:barcode] = nil
-          patron || {}
+          # patron_hash[:barcode] = nil
+          patron_hash || {}
         elsif session["email"].present? && session["user_name"].present?
-          access_patron(session["email"], session["user_name"])
+          access_patron_hash(email: session["email"], user_name: session["user_name"])
         else
           {}
         end
@@ -111,12 +107,12 @@ module Requests
         Requests.config[:bibdata_base]
       end
 
-      def build_patron_uri(uid:)
+      def patron_uri(uid:)
         "#{bibdata_uri}/patron/#{uid}"
       end
 
-      def api_request_patron(id:)
-        request_uri = build_patron_uri(uid: id)
+      def api_request_patron_response(id:)
+        request_uri = patron_uri(uid: id)
         response = Faraday.get("#{request_uri}?ldap=true")
 
         case response.status
@@ -141,32 +137,28 @@ module Requests
         nil
       end
 
-      def current_patron(uid)
+      def current_patron_hash(uid)
         return unless uid
 
         if alma_provider?
-          build_alma_patron(uid:)
+          alma_patron_hash(uid:)
         else
-          build_cas_patron(uid:)
+          cas_patron_hash(uid:)
         end
       end
 
-      def build_access_patron(email:, user_name:)
+      # Used for patrons built from session information
+      def access_patron_hash(email:, user_name:)
         {
           last_name: user_name,
           active_email: email,
           barcode: 'ACCESS',
           barcode_status: 0
-        }
+        }.with_indifferent_access
       end
 
-      def access_patron(email, user_name)
-        built = build_access_patron(email:, user_name:)
-        built.with_indifferent_access
-      end
-
-      # This method uses the Alma gem API to build the patron from Alma, rather than via Bibdata
-      def build_alma_patron(uid:)
+      # This method uses the Alma gem API to build the patron from Alma directly, rather than via Bibdata
+      def alma_patron_hash(uid:)
         alma_user = Alma::User.find(uid)
         active_barcode = alma_user["user_identifier"].find { |id| id["id_type"]["value"] == "BARCODE" && id["status"] == "ACTIVE" }["value"]
         {
@@ -179,8 +171,9 @@ module Requests
         }
       end
 
-      def build_cas_patron(uid:)
-        api_response = api_request_patron(id: uid)
+      # Patron hash based on the Bibdata patron API, which combines Alma and LDAP responses
+      def cas_patron_hash(uid:)
+        api_response = api_request_patron_response(id: uid)
         return if api_response.nil?
 
         patron_resource = JSON.parse(api_response.body)
