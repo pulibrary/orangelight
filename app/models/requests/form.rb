@@ -252,9 +252,9 @@ module Requests
         requestable_items.compact
       end
 
-      def holding_data(item, holding_id)
+      def holding_data(item, holding_id, item_location_code)
         if item["in_temp_library"] && item["temp_location_code"] != "RES_SHARE$IN_RS_REQ"
-          holdings[item_loc]
+          holdings[item_location_code]
         else
           holdings[holding_id]
         end
@@ -263,12 +263,12 @@ module Requests
       # Item we get from the 'load_items' live call to bibdata
       def build_requestable_mfhd_item(holding_id, item, barcodesort)
         return if item['on_reserve'] == 'Y'
-
         item['status_label'] = barcodesort[item['barcode']][:status_label] unless barcodesort.empty?
+        item_current_location = item_current_location(item)
         params = build_requestable_params(
           item: item.with_indifferent_access,
-          holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding_data(item, holding_id)),
-          location: item_current_location(item)
+          holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding_data(item, holding_id, item_location_code)),
+          location: item_current_location
         )
         Requests::Requestable.new(**params)
       end
@@ -345,12 +345,13 @@ module Requests
       end
 
       def item_current_location(item)
-        item_location_code = if item['in_temp_library']
-                               item['temp_location_code']
-                             else
-                               item['location']
-                             end
+        @item_location_code = if item['in_temp_library']
+                                item['temp_location_code']
+                              else
+                                item['location']
+                              end
         get_current_location(item_location_code:)
       end
+      attr_reader :item_location_code
   end
 end
