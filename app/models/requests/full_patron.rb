@@ -2,7 +2,7 @@
 module Requests
   # FullPatron pulls all available data from both Alma and LDAP via Bibdata
   class FullPatron
-    attr_reader :hash, :errors, :api_response, :uid
+    attr_reader :hash, :errors
     def initialize(uid:)
       @errors = []
       @uid = uid
@@ -53,5 +53,7 @@ module Requests
         Rails.logger.error("#{request_uri} returned an invalid patron response: #{response_body}")
         false
       end
+
+      attr_reader :api_response, :uid
   end
 end
