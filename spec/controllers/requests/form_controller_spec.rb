@@ -14,7 +14,6 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
     end
     it 'handles access patron params when the user form is posted' do
       post :generate, params: { request: { username: 'foobar', email: 'foo@bar.com' },
-                                source: 'pulsearch',
                                 system_id: '9963773693506421', mfhd: '22239658680006421' }
       expect(response.status).to eq(200)
     end
@@ -31,7 +30,6 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
       it 'does not set a flash' do
         stub_scsb_availability(bib_id: "9996764833506421", institution_id: "PUL", barcode: '32101099103457')
         get :generate, params: {
-          source: 'pulsearch',
           system_id: '9996764833506421',
           mfhd: '2275983490006421'
         }
@@ -40,7 +38,6 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
 
       it 'does not redirect you when multiple aeon records are requested' do
         get :generate, params: {
-          source: 'pulsearch',
           system_id: '9995768803506421',
           mfhd: '2298692650006421'
         }
@@ -56,8 +53,7 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
         "patron_group" => "staff",
         "user_name" => "Foo Request",
         "user_barcode" => "22101007797777",
-        "email" => "foo@princeton.edu",
-        "source" => "pulsearch"
+        "email" => "foo@princeton.edu"
       }.with_indifferent_access
     end
     let(:requestable) do

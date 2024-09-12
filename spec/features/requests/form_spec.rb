@@ -1501,14 +1501,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
   end
   context 'when a holding has items on and off reserve' do
     let(:user) { FactoryBot.create(:user) }
-    let(:params) do
-      {
-        system_id: '9960102253506421',
-        source: 'pulsearch',
-        mfhd: nil,
-        patron:
-      }
-    end
 
     before do
       stub_single_holding_location('engineer$stacks')
@@ -1530,13 +1522,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
   end
   context 'when a Princeton item has not made it into SCSB yet' do
     let(:user) { FactoryBot.create(:user) }
-    let(:params) do
-      {
-        system_id: '99122304923506421',
-        mfhd: nil,
-        patron:
-      }
-    end
     let(:first_item) { request_scsb.items['22511126440006421'].first }
 
     before do

@@ -6,7 +6,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
     let(:user) { FactoryBot.create(:user) }
     let(:valid_patron) { { "netid" => "foo" }.with_indifferent_access }
     let(:patron) do
-      Requests::Patron.new(user:, session: {}, patron: valid_patron)
+      Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
     end
 
     let(:scsb_single_holding_item) { fixture('/SCSB-2635660.json') }

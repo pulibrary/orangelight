@@ -6,7 +6,7 @@ describe Requests::Submissions::HoldItem, type: :controller, requests: true do
     let(:valid_patron) { { "netid" => "foo", university_id: "99999999" }.with_indifferent_access }
     let(:user_info) do
       user = instance_double(User, guest?: false, uid: 'foo')
-      Requests::Patron.new(user:, session: {}, patron: valid_patron)
+      Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
     end
 
     let(:requestable) do

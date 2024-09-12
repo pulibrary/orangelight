@@ -4,7 +4,7 @@ require 'rails_helper'
 # rubocop:disable RSpec/MultipleExpectations
 describe Requests::Patron, requests: true do
   subject(:patron) do
-    described_class.new(user:, session:, patron: patron_values)
+    described_class.new(user:, session:, patron_hash: patron_values)
   end
 
   let(:session) do
@@ -77,7 +77,7 @@ describe Requests::Patron, requests: true do
     end
   end
   context 'A user with a valid barcode patron record' do
-    describe '#current_patron' do
+    describe '#current_patron_hash' do
       let(:provider) { 'cas' }
       before do
         stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/foo?ldap=true")
@@ -93,7 +93,7 @@ describe Requests::Patron, requests: true do
     end
   end
   context 'A user with a netid that does not have a matching patron record' do
-    describe '#current_patron' do
+    describe '#current_patron_hash' do
       before do
         stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/foo?ldap=true")
           .to_return(status: 404, body: invalid_patron_response, headers: {})
@@ -105,7 +105,7 @@ describe Requests::Patron, requests: true do
     end
   end
   context 'Cannot connect to Patron Data service' do
-    describe '#current_patron' do
+    describe '#current_patron_hash' do
       before do
         stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/foo?ldap=true")
           .to_return(status: 403, body: invalid_patron_response, headers: {})
@@ -117,7 +117,7 @@ describe Requests::Patron, requests: true do
     end
   end
   context 'System Error from Patron data service' do
-    describe '#current_patron' do
+    describe '#current_patron_hash' do
       before do
         stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/foo?ldap=true")
           .to_return(status: 500, body: invalid_patron_response, headers: {})
@@ -129,7 +129,7 @@ describe Requests::Patron, requests: true do
     end
   end
   context 'when the HTTP request threshold error is raised for the BibData API' do
-    describe '#current_patron' do
+    describe '#current_patron_hash' do
       let(:patron_values) { nil }
 
       before do
@@ -195,7 +195,7 @@ describe Requests::Patron, requests: true do
   end
   context 'Passing in patron information instead of loading it from bibdata' do
     it "does not call to bibdata" do
-      patron = described_class.new(user: instance_double(User, guest?: false, uid: 'foo'), session: {}, patron: { barcode: "1234567890" })
+      patron = described_class.new(user: instance_double(User, guest?: false, uid: 'foo'), session: {}, patron_hash: { barcode: "1234567890" })
       expect(patron.barcode).to eq('1234567890')
     end
   end
