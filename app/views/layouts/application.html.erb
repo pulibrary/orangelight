@@ -25,14 +25,15 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <script defer src="https://www.stackmapintegration.com/princeton-blacklight/StackMap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" media="all" type="text/css" href="https://www.stackmapintegration.com/princeton-blacklight/StackMap.min.css" />
-    <% unless controller.controller_name == "form" %>
-      <%= javascript_include_tag "application" %>
-    <% else  %>
+    <% if controller.controller_name == "form" %>
       <%= javascript_include_tag 'requests/application' %>
+      <%= vite_javascript_tag 'requests' %>
+    <% else  %>
+      <%= javascript_include_tag "application" %>
+      <%= vite_javascript_tag 'application' %>
     <% end %>
     <script>window.Global = {"graphql":<%= Global.graphql.to_json.html_safe %>,"figgy":<%= Global.figgy.to_json.html_safe %>}</script>
     <%= vite_client_tag %>
-    <%= vite_javascript_tag 'application' %>
     <% unless controller.controller_name == "catalog" && controller.action_name == "show" && @document.alma_record? %>
     <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML", async: true %>
     <% end %>
