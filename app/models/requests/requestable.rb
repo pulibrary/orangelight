@@ -33,7 +33,6 @@ module Requests
       @patron = patron
       @call_number = @holding.holding_data['call_number_browse']
       @title = bib[:title_citation_display]&.first
-      @pageable = Pageable.new(call_number:, location_code: location_object.code)
       @illiad = Requests::Illiad.new(enum: item&.fetch(:enum, nil), chron: item&.fetch(:chron, nil), call_number:)
     end
 
