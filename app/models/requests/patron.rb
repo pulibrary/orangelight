@@ -97,7 +97,7 @@ module Requests
           # patron_hash[:barcode] = nil
           patron_hash || {}
         elsif session["email"].present? && session["user_name"].present?
-          access_patron_hash(email: session["email"], user_name: session["user_name"])
+          AccessPatron.new(session:).hash
         else
           {}
         end
@@ -113,16 +113,6 @@ module Requests
           errors.concat(full_patron.errors)
           full_patron.hash
         end
-      end
-
-      # Used for patrons built from session information
-      def access_patron_hash(email:, user_name:)
-        {
-          last_name: user_name,
-          active_email: email,
-          barcode: 'ACCESS',
-          barcode_status: 0
-        }.with_indifferent_access
       end
 
       # This method uses the Alma gem API to build the patron from Alma directly, rather than via Bibdata
