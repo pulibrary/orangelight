@@ -780,7 +780,7 @@ describe Requests::Submission, requests: true do
 
       it "returns hold errors" do
         alma_url = stub_alma_hold_failure('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
-        clancy_url = "#{Requests::Config[:clancy_base]}/circrequests/v1"
+        clancy_url = "#{Requests.config[:clancy_base]}/circrequests/v1"
         expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(a_request(:post, alma_url)).to have_been_made
         expect(a_request(:post, clancy_url)).not_to have_been_made
@@ -1006,7 +1006,7 @@ describe Requests::Submission, requests: true do
       described_class.new(params, user_info)
     end
 
-    let(:clancy_url) { "#{Requests::Config[:clancy_base]}/circrequests/v1" }
+    let(:clancy_url) { "#{Requests.config[:clancy_base]}/circrequests/v1" }
 
     describe "#process_submission" do
       it 'items contacts alma and does not email marquand or contact clancy' do

@@ -8,7 +8,7 @@ describe 'email form' do
   let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
 
   before do
-    current_illiad_user_uri = "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent"
+    current_illiad_user_uri = "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent"
     stub_request(:get, current_illiad_user_uri).to_return(status: 404, body: '{"Message":"User jstudent was not found."}')
   end
 

@@ -36,7 +36,7 @@ def stub_availability_by_holding_id(bib_id:, holding_id:, body: true)
 end
 
 def stub_catalog_raw(bib_id:, type: nil, body: true)
-  url = "#{Requests::Config[:pulsearch_base]}/catalog/#{bib_id}/raw"
+  url = "#{Requests.config[:pulsearch_base]}/catalog/#{bib_id}/raw"
   return stub_request(:get, url).to_return(status: 200, body: {}.to_json) if body == false
   file_path = if type
                 File.join(fixture_paths.first, 'raw', type, "#{bib_id}.json")

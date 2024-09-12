@@ -16,7 +16,7 @@ RSpec.describe Orangelight::IlliadPatronClient do
     let(:outstanding_ill_requests_response) { File.open('spec/fixtures/outstanding_ill_requests_response.json') }
     let(:params_cancel_requests) { ['1093597'] }
     let(:current_ill_requests_uri) do
-      "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Transaction/UserRequests/#{sample_patron['netid']}?$filter=" \
+      "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/Transaction/UserRequests/#{sample_patron['netid']}?$filter=" \
        "ProcessType%20eq%20'Borrowing'%20and%20TransactionStatus%20ne%20'Request%20Finished'%20and%20not%20startswith%28TransactionStatus,'Cancelled'%29"
     end
 
@@ -49,7 +49,7 @@ RSpec.describe Orangelight::IlliadPatronClient do
 
     describe '#cancel_ill_requests' do
       before do
-        cancel_ill_requests_uri = "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
+        cancel_ill_requests_uri = "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
         stub_request(:put, cancel_ill_requests_uri)
           .with(
             headers: {

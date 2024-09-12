@@ -115,7 +115,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
     let(:submit_button_disabled) { helper.submit_button_disabled(requestable_list) }
     let(:availability_response) { File.read("spec/fixtures/scsb_availability_994264203506421.json") }
     it 'lewis is a submitable request' do
-      stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+      stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .with(body: "{\"bibliographicId\":\"994264203506421\",\"institutionId\":\"PUL\"}")
         .and_return(status: 200, body: availability_response)
 

@@ -9,7 +9,7 @@ describe Requests::Submissions::Recap, requests: true do
       user = instance_double(User, guest?: false, uid: 'foo')
       Requests::Patron.new(user:, session: {}, patron: valid_patron)
     end
-    let(:scsb_url) { "#{Requests::Config[:scsb_base]}/requestItem/requestItem" }
+    let(:scsb_url) { "#{Requests.config[:scsb_base]}/requestItem/requestItem" }
     let(:alma_url) { "#{Alma.configuration.region}/almaws/v1/bibs/#{bib['id']}/holdings/#{requestable[0]['mfhd']}/items/#{requestable[0]['item_id']}/requests?user_id=99999999" }
     let(:alma2_url) { "#{Alma.configuration.region}/almaws/v1/bibs/#{bib['id']}/holdings/#{requestable[1]['mfhd']}/items/#{requestable[1]['item_id']}/requests?user_id=99999999" }
 
@@ -200,7 +200,7 @@ describe Requests::Submissions::Recap, requests: true do
       user = instance_double(User, guest?: false, uid: 'foo')
       Requests::Patron.new(user:, session: {}, patron: valid_patron)
     end
-    let(:scsb_url) { "#{Requests::Config[:scsb_base]}/requestItem/requestItem" }
+    let(:scsb_url) { "#{Requests.config[:scsb_base]}/requestItem/requestItem" }
     let(:alma_url) { "#{Alma.configuration.region}/almaws/v1/bibs/#{bib['id']}/holdings/#{requestable[0]['mfhd']}/items/#{requestable[0]['item_id']}/requests?user_id=99999999" }
     let(:alma2_url) { "#{Alma.configuration.region}/almaws/v1/bibs/#{bib['id']}/holdings/#{requestable[1]['mfhd']}/items/#{requestable[1]['item_id']}/requests?user_id=99999999" }
 

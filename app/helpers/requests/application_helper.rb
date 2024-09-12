@@ -352,7 +352,7 @@ module Requests
       end
 
       def aeon_base
-        Requests::Config[:aeon_base]
+        Requests.config[:aeon_base]
       end
   end
 end

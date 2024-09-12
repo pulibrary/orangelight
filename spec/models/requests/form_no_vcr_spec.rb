@@ -26,9 +26,9 @@ RSpec.describe Requests::Form, type: :model, requests: true do
     before do
       stub_request(:get, "https://catalog.princeton.edu/catalog/#{document_id}/raw")
         .to_return(status: 200, body: catalog_raw_fixture)
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/locations/holding_locations/eastasian$cjk.json")
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/locations/holding_locations/eastasian$cjk.json")
         .to_return(status: 200, body: fixture('/bibdata/eastasian_cjk_holding_locations.json'))
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/bibliographic/#{params[:system_id]}/holdings/#{params[:mfhd]}/availability.json").to_timeout
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/bibliographic/#{params[:system_id]}/holdings/#{params[:mfhd]}/availability.json").to_timeout
       stub_delivery_locations
     end
 

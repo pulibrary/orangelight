@@ -5,7 +5,7 @@ module Requests
     extend ActiveSupport::Concern
 
     def solr_doc(system_id)
-      response = Faraday.get "#{Requests::Config[:pulsearch_base]}/catalog/#{system_id}/raw"
+      response = Faraday.get "#{Requests.config[:pulsearch_base]}/catalog/#{system_id}/raw"
       parse_response(response)
     end
 
@@ -25,7 +25,7 @@ module Requests
     end
 
     def bibdata_conn
-      conn = Faraday.new(url: Requests::Config[:bibdata_base]) do |faraday|
+      conn = Faraday.new(url: Requests.config[:bibdata_base]) do |faraday|
         faraday.request  :url_encoded # form-encode POST params
         # faraday.response :logger                  # log requests to STDOUT
         faraday.response :logger unless Rails.env.test?

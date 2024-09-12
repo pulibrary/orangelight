@@ -122,7 +122,7 @@ module Requests
       if requestable.alma_managed?
         requestable.aeon_request_url
       else
-        aeon_url = Requests::Config[:aeon_base]
+        aeon_url = Requests.config[:aeon_base]
         "#{aeon_url}?#{requestable.aeon_mapped_params.to_query}"
       end
     end

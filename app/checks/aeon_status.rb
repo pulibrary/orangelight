@@ -7,7 +7,7 @@ class AeonStatus < HealthMonitor::Providers::Base
   end
 
   def check!
-    base_uri = Requests::Config[:aeon_base]
+    base_uri = Requests.config[:aeon_base]
     status_host = base_uri[0, base_uri.rindex("/")]
     status_uri = URI("#{status_host}/aeon/api/SystemInformation/Version")
     req = Net::HTTP::Get.new(status_uri)

@@ -108,7 +108,7 @@ module Requests
       end
 
       def bibdata_uri
-        Requests::Config[:bibdata_base]
+        Requests.config[:bibdata_base]
       end
 
       def build_patron_uri(uid:)

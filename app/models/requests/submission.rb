@@ -59,7 +59,7 @@ module Requests
     end
 
     def partner_item?(item)
-      Requests::Config[:recap_partner_locations].keys.include? item["location_code"]
+      Requests.config[:recap_partner_locations].keys.include? item["location_code"]
     end
 
     def service_types

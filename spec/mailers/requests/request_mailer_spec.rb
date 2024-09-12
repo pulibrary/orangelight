@@ -8,7 +8,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
   let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
 
   let(:user_info) do
-    stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/foo?ldap=true").to_return(status: 200, body: valid_patron_response, headers: {})
+    stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/foo?ldap=true").to_return(status: 200, body: valid_patron_response, headers: {})
     user = instance_double(User, guest?: false, uid: 'foo', alma_provider?: false)
     Requests::Patron.new(user:, session: {})
   end
