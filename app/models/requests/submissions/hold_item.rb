@@ -27,7 +27,7 @@ module Requests::Submissions
       status = {}
       begin
         status = if item["user_supplied_enum"].present?
-                   item # noop - Alma can not create the correct hold.  This assumes the correct emails will go out during send_mail
+                   item # Alma can not create the correct hold.  This assumes the correct emails will go out during send_mail
                  else
                    place_hold(item)
                  end

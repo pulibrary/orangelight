@@ -3,7 +3,6 @@ require 'faraday'
 
 module Requests::Submissions
   class Recap < Service
-    # include Requests::Gfa
     include Requests::Scsb
 
     def initialize(submission, service_type: 'recap')

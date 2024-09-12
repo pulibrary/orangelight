@@ -20,7 +20,6 @@ module Requests
         "#{@document.first(:title_display)}#{title_genre}"
       end
 
-      ## Don T requested this be appended when present
       def title_genre
         " [ #{@document.first(:form_genre_display)} ]" unless @document[:form_genre_display].nil?
       end
