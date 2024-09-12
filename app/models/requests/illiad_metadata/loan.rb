@@ -15,8 +15,6 @@ module Requests
 
       private
 
-        # TODO: where do I find LoanEdition?
-
         def map_metdata
           {
             "Username" => patron.netid, "TransactionStatus" => illiad_transaction_status,

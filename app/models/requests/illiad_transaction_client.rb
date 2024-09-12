@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# require 'faraday'
-# require 'faraday-cookie_jar'
-
 module Requests
   class IlliadTransactionClient < IlliadClient
     attr_reader :patron, :note, :illiad_transaction_status, :attributes
