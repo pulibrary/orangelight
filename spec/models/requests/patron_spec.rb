@@ -155,7 +155,7 @@ describe Requests::Patron, requests: true do
     it 'logs the error' do
       allow(Rails.logger).to receive(:error)
       described_class.new(user:, session: {})
-      expect(Rails.logger).to have_received(:error).with("Unable to connect to #{bibdata_uri}")
+      expect(Rails.logger).to have_received(:error).with("Unable to connect to #{bibdata_uri}/patron/foo?ldap=true")
     end
   end
   context 'when bibdata passes on an html response' do
@@ -190,7 +190,7 @@ describe Requests::Patron, requests: true do
     it 'logs the error' do
       allow(Rails.logger).to receive(:error)
       described_class.new(user:, session: {})
-      expect(Rails.logger).to have_received(:error).with("#{bibdata_uri} returned an empty patron response")
+      expect(Rails.logger).to have_received(:error).with("#{bibdata_uri}/patron/foo?ldap=true returned an empty patron response")
     end
   end
   context 'Passing in patron information instead of loading it from bibdata' do
