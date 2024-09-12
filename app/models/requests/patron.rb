@@ -103,47 +103,15 @@ module Requests
         end
       end
 
-      def bibdata_uri
-        Requests.config[:bibdata_base]
-      end
-
-      def patron_uri(uid:)
-        "#{bibdata_uri}/patron/#{uid}"
-      end
-
-      def api_request_patron_response(id:)
-        request_uri = patron_uri(uid: id)
-        response = Faraday.get("#{request_uri}?ldap=true")
-
-        case response.status
-        when 500
-          Rails.logger.error('Error Patron Data Service.')
-        when 429
-          error_message = "The maximum number of HTTP requests per second for the Alma API has been exceeded."
-          Rails.logger.error(error_message)
-          errors << error_message
-        when 404
-          Rails.logger.error("404 Patron #{id} cannot be found in the Patron Data Service.")
-        when 403
-          Rails.logger.error("403 Not Authorized to Connect to Patron Data Service at #{request_uri} for patron ID #{id}")
-        else
-          return response unless response.body.empty?
-
-          Rails.logger.error("#{bibdata_uri} returned an empty patron response")
-        end
-        nil
-      rescue Faraday::ConnectionFailed
-        Rails.logger.error("Unable to connect to #{bibdata_uri}")
-        nil
-      end
-
       def current_patron_hash(uid)
         return unless uid
 
         if alma_provider?
           alma_patron_hash(uid:)
         else
-          cas_patron_hash(uid:)
+          full_patron = FullPatron.new(uid:)
+          errors.concat(full_patron.errors)
+          full_patron.hash
         end
       end
 
@@ -169,18 +137,6 @@ module Requests
           netid: "ALMA",
           university_id: uid
         }
-      end
-
-      # Patron hash based on the Bibdata patron API, which combines Alma and LDAP responses
-      def cas_patron_hash(uid:)
-        api_response = api_request_patron_response(id: uid)
-        return if api_response.nil?
-
-        patron_resource = JSON.parse(api_response.body)
-        patron_resource.with_indifferent_access
-      rescue JSON::ParserError
-        Rails.logger.error("#{api_response.env.url} returned an invalid patron response: #{api_response.body}")
-        false
       end
   end
 end
