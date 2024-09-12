@@ -5,10 +5,12 @@ RSpec.describe Requests::AlmaPatron, requests: true do
   context 'with a call to Alma' do
     let(:uid) { 'BC123456789' }
     let(:patron_with_multiple_barcodes) { fixture('/BC123456789.json') }
-
-    before do
+    let(:alma_stub) do
       stub_request(:get, "https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/#{uid}?expand=fees,requests,loans")
-        .to_return(status: 200, body: patron_with_multiple_barcodes, headers: { "Content-Type" => "application/json" })
+      .to_return(status: 200, body: patron_with_multiple_barcodes, headers: { "Content-Type" => "application/json" })
+    end
+    before do
+      alma_stub
     end
 
     it 'can be instantiated' do
@@ -24,6 +26,7 @@ RSpec.describe Requests::AlmaPatron, requests: true do
       it 'creates an access patron with the active barcode' do
         patron = described_class.new(uid:)
         expect(patron.hash[:barcode]).to eq('77777777')
+        expect(alma_stub).to have_been_requested.once
       end
     end
   end
