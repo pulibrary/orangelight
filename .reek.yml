@@ -192,7 +192,6 @@ detectors:
     - Requests::ClancyItem#not_at_clancy?
     - Requests::ClancyItem#post_clancy
     - Requests::Form#build_requestable_from_data
-    - Requests::Form#build_requestable_mfhd_item
     - Requests::Form#get_current_location
     - Requests::Form#initialize
     - Requests::Form#off_site?
@@ -323,6 +322,7 @@ detectors:
     - Requests::Form#any_loanable_copies?
     - Requests::Form#build_barcode_sort
     - Requests::Form#build_requestable_mfhd_item
+    - Requests::Form#item_current_location
     - Requests::Illiad#get_identifier
     - Requests::Illiad#identifiers_for_type
     - Requests::Illiad#illiad_query_parameters
@@ -336,6 +336,7 @@ detectors:
     - Requests::IlliadPatron#illiad_status
     - Requests::Location#build_delivery_locations
     - Requests::Location#sort_pick_ups
+    - Requests::Pageable#in_call_num_range
     - Requests::RequestableDecorator#first_delivery_location
     - Requests::SelectedItemsValidator#validate
     - Requests::SelectedItemsValidator#validate_ill_on_shelf
@@ -553,7 +554,6 @@ detectors:
     - Requests::ClancyItem#request_item
     - Requests::Form#build_holding_scsb_items
     - Requests::Form#build_requestable_from_mfhd_items
-    - Requests::Form#build_requestable_mfhd_item
     - Requests::Illiad#get_identifier
     - Requests::Illiad#illiad_query_parameters
     - Requests::IlliadMetadata::Metadata#initialize
@@ -807,7 +807,6 @@ detectors:
     - Requests::ClancyItem#request
     - Requests::Form#build_barcode_sort
     - Requests::Form#build_holding_scsb_items
-    - Requests::Form#build_requestable_mfhd_item
     - Requests::Form#build_requestable_with_items
     - Requests::Form#route_requests
     - Requests::FormDecorator#any_fill_in_eligible?
@@ -825,6 +824,7 @@ detectors:
     - Requests::IlliadTransactionClient#create_request
     - Requests::Location#build_delivery_locations
     - Requests::Location#sort_pick_ups
+    - Requests::Pageable#in_call_num_range
     - Requests::SelectedItemsValidator#validate_selected
     - Requests::Submission#categorize_by_delivery_and_location
     - Requests::Submission#process_submission
@@ -1007,7 +1007,6 @@ detectors:
     - Requests::Scsb#scsb_request_map
     - EngineeringSearchBuilder#switch_request_handler
     - Requests::Form#build_requestable_location
-    - Requests::Form#item_current_location
     - Requests::Form#items_to_symbols
     - Requests::Form#status_label
     - Requests::Illiad#au_params
@@ -1018,6 +1017,8 @@ detectors:
     - Requests::IlliadPatron#illiad_staff_title_status
     - Requests::IlliadTransactionClient#disavowed_illiad_patron?
     - Requests::IlliadTransactionClient#validate_illiad_patron
+    - Requests::Pageable#in_range?
+    - Requests::Pageable#lc_number?
     - Requests::Patron#alma_patron_hash
     - Requests::Requestable::Item#available_statuses
     - Requests::Requestable::Item#unavailable_statuses

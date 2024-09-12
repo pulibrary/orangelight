@@ -244,7 +244,7 @@ module Requests
       def build_requestable_from_mfhd_items(requestable_items:, holding_id:, mfhd_items:, barcodesort:)
         if !mfhd_items.empty?
           mfhd_items.each do |item|
-            requestable_items << build_requestable_mfhd_item(requestable_items, holding_id, item, barcodesort)
+            requestable_items << build_requestable_mfhd_item(holding_id, item, barcodesort)
           end
         else
           requestable_items << build_requestable_from_holding(holding_id, holdings[holding_id])
@@ -252,31 +252,32 @@ module Requests
         requestable_items.compact
       end
 
+      def holding_data(item, holding_id)
+        if item["in_temp_library"] && item["temp_location_code"] != "RES_SHARE$IN_RS_REQ"
+          holdings[item_loc]
+        else
+          holdings[holding_id]
+        end
+      end
+
       # Item we get from the 'load_items' live call to bibdata
-      def build_requestable_mfhd_item(_requestable_items, holding_id, item, barcodesort)
+      def build_requestable_mfhd_item(holding_id, item, barcodesort)
         return if item['on_reserve'] == 'Y'
 
-        item_loc = item_current_location(item)
-        current_location = get_current_location(item_loc:)
         item['status_label'] = barcodesort[item['barcode']][:status_label] unless barcodesort.empty?
-        calculate_holding = if item["in_temp_library"] && item["temp_location_code"] != "RES_SHARE$IN_RS_REQ"
-                              Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holdings[item_loc])
-                            else
-                              Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holdings[holding_id])
-                            end
         params = build_requestable_params(
           item: item.with_indifferent_access,
-          holding: calculate_holding,
-          location: current_location
+          holding: Holding.new(mfhd_id: holding_id.to_sym.to_s, holding_data: holding_data(item, holding_id)),
+          location: item_current_location(item)
         )
         Requests::Requestable.new(**params)
       end
 
-      def get_current_location(item_loc:)
-        if item_loc != location_code
+      def get_current_location(item_location_code:)
+        if item_location_code != location_code
           @temp_locations ||= {}
-          @temp_locations[item_loc] = get_location_data(item_loc) if @temp_locations[item_loc].blank?
-          @temp_locations[item_loc]
+          @temp_locations[item_location_code] = get_location_data(item_location_code) if @temp_locations[item_location_code].blank?
+          @temp_locations[item_location_code]
         else
           location
         end
@@ -344,11 +345,12 @@ module Requests
       end
 
       def item_current_location(item)
-        if item['in_temp_library']
-          item['temp_location_code']
-        else
-          item['location']
-        end
+        item_location_code = if item['in_temp_library']
+                               item['temp_location_code']
+                             else
+                               item['location']
+                             end
+        get_current_location(item_location_code:)
       end
   end
 end
