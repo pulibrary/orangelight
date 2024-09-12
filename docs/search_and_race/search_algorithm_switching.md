@@ -6,16 +6,14 @@ As part of the Search and Race project work, we've decided to explore allowing u
 
 ### Apache Solr Request Handler
 
-_(Please refer to [the documentation](https://solr.apache.org/guide/solr/latest/configuration-guide/requesthandlers-searchcomponents.html#RequestHandlersandSearchComponentsinSolrConfig-RequestHandlers) for this component of Apache Solr.)_
+_(Please refer to [Request handler search component documentation'](https://solr.apache.org/guide/solr/latest/configuration-guide/requesthandlers-searchcomponents.html#RequestHandlersandSearchComponentsinSolrConfig-RequestHandlers) for this component of Apache Solr.)_
 
 In order to provide support at the level of the SolrCloud deployment for the
 Princeton University Library, one must please first focus upon proposing changes
 for the [PUL Solr](https://github.com/pulibrary/pul_solr) GitHub repository.
 
 An example of this may be found within the
-[solrconfig.xml](https://github.com/pulibrary/pul_solr/blob/main/solr_configs/catalog-production-v2/conf/solrconfig.xml)
-for the SolrCloud Collection. In this case, the `requestHandler`
-`engineering_search` was added, however, for the purposes of this document, the
+[Solr cloud collection, solrconfig.xml file'](https://github.com/pulibrary/pul_solr/blob/main/solr_configs/catalog-production-v2/conf/solrconfig.xml). In this case, the `requestHandler` `engineering_search` was added, however, for the purposes of this document, the
 example name `alternative-search` shall be used:
 
 ```xml
@@ -30,7 +28,7 @@ example name `alternative-search` shall be used:
 The attribute `initParams` refers to a set of initial parameters passed to the
 `requestHandler` constructed within Apache Solr, and this is also found within
 the `solrconfig.xml`. With regards to the syntax of these query configuration
-values, please reference [the documentation describing the Solr standard query parser](https://solr.apache.org/guide/solr/latest/query-guide/standard-query-parser.html).
+values, please reference the [documentation describing the Solr standard query parser](https://solr.apache.org/guide/solr/latest/query-guide/standard-query-parser.html).
 
 ```xml
   <initParams name="searchParams">
@@ -291,10 +289,10 @@ to the `<lst>` elements specified within the `initParams`. The `<str>` encodes a
 
 Please proceed at this point with opening a pull request and requesting a review
 of the updated `ConfigSet`. An example of this can be found within the
-following:
+following Pull Requests:
 
-- https://github.com/pulibrary/pul_solr/pull/375
-- https://github.com/pulibrary/pul_solr/pull/377
+- [Adding a new example requestHandler for algorithm switching](https://github.com/pulibrary/pul_solr/pull/375)
+- [Refactors the requestHandlers to utilize init params](https://github.com/pulibrary/pul_solr/pull/377)
 
 #### Deploying
 
@@ -313,9 +311,9 @@ One may integrate support for switching the search algorithms by following the
 reference implementation undertaken by Group 1 of the Search and Race initiative
 for Orangelight:
 
-- https://github.com/pulibrary/orangelight/pull/3813
-- https://github.com/pulibrary/orangelight/pull/3819
-- https://github.com/pulibrary/orangelight/pull/3827
+- [Adding a flipflop group for search and race](https://github.com/pulibrary/orangelight/pull/3813)
+- [Add a search builder that allows use of a new request handler](https://github.com/pulibrary/orangelight/pull/3819)
+- [Add search algorithm dropdown](https://github.com/pulibrary/orangelight/pull/3827)
 
 #### Copying the Solr Configuration
 
