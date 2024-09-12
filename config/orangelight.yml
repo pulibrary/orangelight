@@ -11,6 +11,7 @@ defaults: &defaults
     to: <%= ENV['OL_CATALOGING_TO'] %>
   report_harmful_language_form:
     to: <%= ENV['OL_HARMFUL_CONTENT_TO'] %>
+    queue_id: <%= ENV['REPORT_HARMFUL_LANGUAGE_QUEUE_ID'] %>
   report_biased_results_form:
     to: <%= ENV['OL_BIASED_RESULTS_TO'] %>
   redis:
@@ -39,6 +40,7 @@ development:
     to: 'test-correction@princeton.edu'
   report_harmful_language_form:
     to: 'test-harmful-content@princeton.edu'
+    queue_id: <%= ENV['REPORT_HARMFUL_LANGUAGE_QUEUE_ID'] %>
   report_biased_results_form:
     to: 'test-biased-results@princeton.edu'
 test:
@@ -56,6 +58,7 @@ test:
     to: 'test-correction@princeton.edu'
   report_harmful_language_form:
     to: 'test-harmful-content@princeton.edu'
+    queue_id: 9012
   report_biased_results_form:
     to: 'test-biased-results@princeton.edu'
   libanswers:
