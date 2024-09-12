@@ -197,6 +197,7 @@ detectors:
     - Requests::Form#off_site?
     - Requests::Form#serial?
     - Requests::Form#status_label
+    - Requests::FullPatron#log_errors
     - Requests::Illiad#au_params
     - Requests::Illiad#genere
     - Requests::Illiad#get_identifier
@@ -215,9 +216,6 @@ detectors:
     - Requests::IlliadPatron#illiad_patron_attributes
     - Requests::IlliadTransactionClient#create_request
     - Requests::Location#sort_pick_ups
-    - Requests::Patron#api_request_patron_response
-    - Requests::Patron#cas_patron_hash
-    - Requests::Patron#load_patron
     - Requests::Requestable::Item#copy_value
     - Requests::Requestable::Item#status
     - Requests::Requestable#pick_up_locations
@@ -337,7 +335,6 @@ detectors:
     - Requests::Location#build_delivery_locations
     - Requests::Location#sort_pick_ups
     - Requests::Pageable#in_call_num_range
-    - Requests::Patron#cas_patron_hash
     - Requests::RequestableDecorator#first_delivery_location
     - Requests::SelectedItemsValidator#validate
     - Requests::SelectedItemsValidator#validate_ill_on_shelf
@@ -654,7 +651,6 @@ detectors:
     - Orangelight::CallNumber#<=>
     - Requests::Location#sort_pick_ups
     - Requests::NonAlmaAeonUrl#title_genre
-    - Requests::Patron#cas_patron_hash
     - Requests::Patron#load_patron
     - Requests::SelectedItemsValidator#validate_delivery_mode
     - SearchBuilder#cleaned_query
@@ -814,6 +810,9 @@ detectors:
     - Requests::Form#build_requestable_with_items
     - Requests::Form#route_requests
     - Requests::FormDecorator#any_fill_in_eligible?
+    - Requests::FullPatron#bibdata_response
+    - Requests::FullPatron#log_errors
+    - Requests::FullPatron#patron_hash
     - Requests::Illiad#get_identifier
     - Requests::Illiad#map_metdata
     - Requests::IlliadClient#get_json_response
@@ -826,8 +825,6 @@ detectors:
     - Requests::Location#build_delivery_locations
     - Requests::Location#sort_pick_ups
     - Requests::Pageable#in_call_num_range
-    - Requests::Patron#api_request_patron_response
-    - Requests::Patron#cas_patron_hash
     - Requests::SelectedItemsValidator#validate_selected
     - Requests::Submission#categorize_by_delivery_and_location
     - Requests::Submission#process_submission
@@ -1023,9 +1020,7 @@ detectors:
     - Requests::IlliadTransactionClient#validate_illiad_patron
     - Requests::Pageable#in_range?
     - Requests::Pageable#lc_number?
-    - Requests::Patron#access_patron_hash
     - Requests::Patron#alma_patron_hash
-    - Requests::Patron#bibdata_uri
     - Requests::Requestable::Item#available_statuses
     - Requests::Requestable::Item#unavailable_statuses
     - Requests::SelectedItemsValidator#validate_delivery_mode
