@@ -7,7 +7,7 @@ RSpec.describe Requests::AlmaPatron, requests: true do
     let(:patron_with_multiple_barcodes) { fixture('/BC123456789.json') }
     let(:alma_stub) do
       stub_request(:get, "https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/#{uid}?expand=fees,requests,loans")
-      .to_return(status: 200, body: patron_with_multiple_barcodes, headers: { "Content-Type" => "application/json" })
+        .to_return(status: 200, body: patron_with_multiple_barcodes, headers: { "Content-Type" => "application/json" })
     end
     before do
       alma_stub
