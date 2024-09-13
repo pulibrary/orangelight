@@ -10,12 +10,12 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
   let(:user_info) do
     stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/foo?ldap=true").to_return(status: 200, body: valid_patron_response, headers: {})
     user = instance_double(User, guest?: false, uid: 'foo', alma_provider?: false)
-    Requests::Patron.new(user:, session: {})
+    Requests::Patron.new(user:)
   end
 
   let(:guest_user_info) do
     user = instance_double(User, guest?: true, uid: 'foo')
-    Requests::Patron.new(user:, session: { "email" => "guest@foo.edu", 'user_name' => 'Guest Request' })
+    Requests::Patron.new(user:)
   end
 
   before { stub_delivery_locations }

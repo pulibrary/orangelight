@@ -3,15 +3,14 @@ require 'faraday'
 
 module Requests
   class Patron
-    attr_reader :user, :session, :patron_hash, :errors
+    attr_reader :user, :patron_hash, :errors
 
     delegate :guest?, :provider, :cas_provider?, :alma_provider?, to: :user
 
-    def initialize(user:, session: {}, patron_hash: nil)
+    def initialize(user:, patron_hash: nil)
       @user = user
-      @session = session
       @errors = []
-      # load the patron_hash from bibdata unless we are passing it in
+      # load the patron_hash from bibdata or alma unless we are passing it in
       @patron_hash = patron_hash || load_patron(user:)
     end
 
@@ -96,8 +95,6 @@ module Requests
           # Uncomment to fake being a non barcoded user
           # patron_hash[:barcode] = nil
           patron_hash || {}
-        elsif access_patron?
-          AccessPatron.new(session:).hash
         else
           {}
         end
