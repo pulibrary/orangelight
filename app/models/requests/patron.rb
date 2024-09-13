@@ -90,43 +90,31 @@ module Requests
     private
 
       def load_patron(user:)
-        if !user.guest?
+        if !user.guest? && user.uid
           patron_hash = current_patron_hash(user.uid)
-          errors << "A problem occurred looking up your library account." if patron_hash.nil?
+          errors << "A problem occurred looking up your library account." if patron_hash.blank?
           # Uncomment to fake being a non barcoded user
           # patron_hash[:barcode] = nil
           patron_hash || {}
-        elsif session["email"].present? && session["user_name"].present?
+        elsif access_patron?
           AccessPatron.new(session:).hash
         else
           {}
         end
       end
 
-      def current_patron_hash(uid)
-        return unless uid
+      def access_patron?
+        session["email"].present? && session["user_name"].present?
+      end
 
+      def current_patron_hash(uid)
         if alma_provider?
-          alma_patron_hash(uid:)
+          AlmaPatron.new(uid:).hash
         else
           full_patron = FullPatron.new(uid:)
           errors.concat(full_patron.errors)
           full_patron.hash
         end
-      end
-
-      # This method uses the Alma gem API to build the patron from Alma directly, rather than via Bibdata
-      def alma_patron_hash(uid:)
-        alma_user = Alma::User.find(uid)
-        active_barcode = alma_user["user_identifier"].find { |id| id["id_type"]["value"] == "BARCODE" && id["status"] == "ACTIVE" }["value"]
-        {
-          last_name: alma_user.preferred_last_name,
-          active_email: alma_user.preferred_email,
-          barcode: active_barcode || "ALMA",
-          barcode_status: 1,
-          netid: "ALMA",
-          university_id: uid
-        }
       end
   end
 end
