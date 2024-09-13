@@ -547,6 +547,7 @@ detectors:
     - Requests::ApplicationHelper#single_pickup
     - Requests::RequestMailer#confirmation_email
     - Requests::RequestMailer#request_email
+    - RecordFeedbackFormSubmission#initialize
     - Requests::ClancyItem#request_item
     - Requests::Form#build_holding_scsb_items
     - Requests::Form#build_requestable_from_mfhd_items
@@ -687,9 +688,8 @@ detectors:
     - Orangelight::BrowsablesController
     - Requests::FormController
     - Requests::RequestMailer
-    - AskAQuestionFormSubmission
     - FeedbackFormSubmission
-    - HarmfulLanguageFormSubmission
+    - RecordFeedbackFormSubmission
     - Requests::Form
     - Requests::FormDecorator
     - Requests::IlliadMetadata::ArticleExpress
