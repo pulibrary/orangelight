@@ -168,13 +168,6 @@ module Requests
       # @return [Array<Requests::Requestable>] array containing Requests::Requestables
       def build_scsb_requestable
         requestable_items = []
-        ## scsb processing
-        ## If mfhd present look for only that
-        ## sort items by keys
-        ## send query for availability by barcode
-        ## overlay availability to the 'status' field
-        ## make sure other fields map to the current data model for item in requestable
-        ## adjust router to understand SCSB status
         holdings.each do |id, values|
           requestable_items = build_holding_scsb_items(id:, values:, availability_data: availability_data(other_id), requestable_items:)
         end
