@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# require 'faraday'
-# require 'faraday-cookie_jar'
-
 module Requests
   class IlliadPatron < IlliadClient
     attr_reader :netid, :patron_id, :patron, :attributes

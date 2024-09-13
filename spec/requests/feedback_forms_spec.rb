@@ -44,6 +44,7 @@ RSpec.describe "feedback forms", type: :request, libanswers: true do
       }
     end
     it 'adds a flash message on success' do
+      stub_libanswers_api
       post('/contact/report_harmful_language', params:)
       expect(response).to be_successful
       expect(flash[:success]).to eq('Your report has been submitted')

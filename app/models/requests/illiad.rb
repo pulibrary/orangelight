@@ -39,8 +39,6 @@ module Requests
       def illiad_query_parameters(referrer:, referent:, metadata:, note:)
         qp = map_metdata(referrer:, referent:, metadata:)
         qp['notes'] = note
-
-        # trim empty ones please
         qp.compact_blank!
         qp.to_query
       end
@@ -50,8 +48,6 @@ module Requests
         qp = {}
         METADATA_MAPPING.each { |metadata_key, illiad_key| qp[illiad_key] = metadata[metadata_key.to_s] }
 
-        ## Possible enumeration values
-        # qp['month']     = get_month(referent)
         qp = au_params(metadata:, qp:)
         # ILLiad always wants 'title', not the various title keys that exist in OpenURL
         # For some reason these go to ILLiad prefixed with rft.
@@ -90,7 +86,7 @@ module Requests
         options[:multiple] ||= false
         identifiers = identifiers_for_type(type:, sub_scheme:, referent:)
         if identifiers.blank? && ['lccn', 'oclcnum', 'isbn', 'issn', 'doi', 'pmid'].include?(sub_scheme)
-          # try the referent metadata
+
           from_rft = referent.metadata[sub_scheme]
           identifiers = [from_rft] if from_rft.present?
         end
