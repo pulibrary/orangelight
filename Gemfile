@@ -109,7 +109,10 @@ group :test do
 end
 
 group :development, :test do
-  gem 'bixby', '~> 5.0'
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec_rails', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-performance', require: false
   gem 'capybara'
   gem 'coveralls_reborn'
   gem "erb_lint", require: false

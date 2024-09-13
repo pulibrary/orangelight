@@ -1,10 +1,11 @@
 inherit_from: .rubocop_todo.yml
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-rspec_rails
+  - rubocop-performance
 
-require: rubocop-rspec
-inherit_gem:
-  bixby: bixby_default.yml
 AllCops:
-  DisplayCopNames: true
   NewCops: enable
   SuggestExtensions: false
   TargetRubyVersion: 3.1
