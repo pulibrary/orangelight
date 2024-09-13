@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Requests
+  # Creates patron for Illiad requests
   class IlliadPatron < IlliadClient
     attr_reader :netid, :patron_id, :patron, :attributes
 
@@ -20,40 +21,56 @@ module Requests
       return nil if patron.blank?
 
       patron_response = post_json_response(url: 'ILLiadWebPlatform/Users', body: attributes.to_json)
-      if patron_response.blank? && error.present? && error["ModelState"].present?
-        patron_response = illiad_patron if error["ModelState"]["UserName"] == ["Username #{netid} already exists."]
-      end
+      patron_response = illiad_patron if patron_response.blank? && error.dig("ModelState", "UserName") == ["Username #{netid} already exists."]
       patron_response
     end
 
     private
 
       def illiad_patron_attributes
-        return {} if patron.status.blank?
-        illiad_status = illiad_status(ldap_status: patron.status, ldap_pustatus: patron.pustatus, ldap_department: patron.department, ldap_title: patron.title)
+        return {} if status.blank?
         return {} if illiad_status.blank?
-        addresses = patron.address&.split('$')
         {
-          "Username" => patron.netid, "ExternalUserId" => patron.netid, "FirstName" => patron.first_name,
+          "Username" => netid, "ExternalUserId" => netid, "FirstName" => patron.first_name,
           "LastName" => patron.last_name, "LoanDeliveryMethod" => "Hold for Pickup", "NotificationMethod" => "Electronic",
           "EmailAddress" => patron.active_email, "DeliveryMethod" => "Hold for Pickup",
           "Phone" => patron.telephone, "Status" => illiad_status, "Number" => patron.university_id,
-          "AuthType" => "Default", "NVTGC" => "ILL", "Department" => patron.department, "Web" => true,
+          "AuthType" => "Default", "NVTGC" => "ILL", "Department" => department, "Web" => true,
           "Address" => addresses&.shift, "Address2" => addresses&.join(', '), "City" => "Princeton", "State" => "NJ",
           "Zip" => "08544", "SSN" => patron.barcode, "Cleared" => "Yes", "Site" => "Firestone"
         }
       end
 
-      def illiad_status(ldap_status:, ldap_pustatus:, ldap_department:, ldap_title:)
-        return nil if ldap_pustatus.blank? || ldap_pustatus[0] == 'x'
+      def addresses
+        @addresses ||= patron.address&.split('$')
+      end
 
-        if ldap_status == "staff"
-          illiad_staff_status(ldap_department:, ldap_title:)
-        elsif ldap_status == "student"
+      def status
+        patron.status
+      end
+
+      def pustatus
+        patron.pustatus
+      end
+
+      def title
+        patron.title
+      end
+
+      def department
+        patron.department
+      end
+
+      def illiad_status
+        return nil if pustatus.blank? || pustatus[0] == 'x'
+
+        if status == "staff"
+          illiad_staff_status
+        elsif status == "student"
           student_mappings = { "gradetdc" => "GS - Graduate Student", "undergraduate" => "U - Undergraduate", "graduate" => "GS - Graduate Student" }
-          student_mappings[ldap_pustatus]
-        elsif ldap_status == "faculty"
-          if ldap_title.present? && ldap_title.include?("Visiting")
+          student_mappings[pustatus]
+        elsif status == "faculty"
+          if title.present? && title.include?("Visiting")
             "F - Visiting Faculty"
           else
             "F - Faculty"
@@ -61,31 +78,31 @@ module Requests
         end
       end
 
-      def illiad_staff_status(ldap_department:, ldap_title:)
-        if ldap_department.present? && ldap_department.include?("Library")
+      def illiad_staff_status
+        if department.present? && department.include?("Library")
           "GS - Library Staff"
-        elsif ldap_title.present?
-          illiad_staff_title_status(ldap_title:)
+        elsif title.present?
+          illiad_staff_title_status
         else
           "GS - University Staff"
         end
       end
 
       # rubocop:disable Metrics/MethodLength
-      def illiad_staff_title_status(ldap_title:)
-        if ldap_title.include?("Visiting Research")
+      def illiad_staff_title_status
+        if title.include?("Visiting Research")
           "GS - Visiting Research Scholar"
-        elsif ldap_title.include?("Senior Research Scholar")
+        elsif title.include?("Senior Research Scholar")
           "F - Senior Research Scholar"
-        elsif ldap_title.include?("Research Scholar")
+        elsif title.include?("Research Scholar")
           "F - Research Scholar"
-        elsif ldap_title.include?("Senior Professional")
+        elsif title.include?("Senior Professional")
           "F - Senior Professional Specialist"
-        elsif ldap_title.match?(/Post*doc*Reseach*/i)
+        elsif title.match?(/Post*doc*Reseach*/i)
           "GS - Post doc Research Associate"
-        elsif ldap_title.match?(/Post*doc*Fellow*/i)
+        elsif title.match?(/Post*doc*Fellow*/i)
           "F - Postdoctoral Fellow -- Teaching"
-        elsif ldap_title.match?(/Vist*Fellow*/i)
+        elsif title.match?(/Visit*Fellow*/i)
           "GS - Visiting Fellow"
         else
           "GS - University Staff"
