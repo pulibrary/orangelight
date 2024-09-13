@@ -20,7 +20,8 @@ module Requests
               !requestable.recap_pf? &&
               !requestable.holding_library_in_library_only? &&
               !(!requestable.circulates? && !requestable.recap_edd?) &&
-              !(requestable.scsb_in_library_use? && requestable.item[:collection_code] != "MR")
+              !(requestable.scsb_in_library_use? && requestable.item[:collection_code] != "MR") &&
+              !requestable.charged?
           end
 
           def patron_eligible?

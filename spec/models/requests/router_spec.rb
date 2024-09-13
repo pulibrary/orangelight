@@ -232,6 +232,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         before do
           stubbed_questions[:alma_managed?] = false
           stubbed_questions[:partner_holding?] = false
+          stubbed_questions[:circulates?] = true
         end
         it "returns aeon in the services" do
           expect(router.calculate_services).to eq(['aeon'])

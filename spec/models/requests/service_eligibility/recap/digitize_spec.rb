@@ -10,7 +10,8 @@ RSpec.describe Requests::ServiceEligibility::Recap::Digitize, requests: true do
         recap_pf?: false,
         recap_edd?: true,
         item_data?: true,
-        scsb_in_library_use?: false
+        scsb_in_library_use?: false,
+        charged?: false
       )
       eligibility = described_class.new(requestable:, user: FactoryBot.create(:user))
 
@@ -22,7 +23,23 @@ RSpec.describe Requests::ServiceEligibility::Recap::Digitize, requests: true do
       allow(requestable).to receive_messages(
         recap?: true,
         recap_pf?: false,
-        recap_edd?: false
+        recap_edd?: false,
+        charged?: false
+      )
+      eligibility = described_class.new(requestable:, user: FactoryBot.create(:user))
+
+      expect(eligibility.eligible?).to be(false)
+    end
+
+    it 'returns false if the requestable is charged' do
+      requestable = instance_double(Requests::Requestable)
+      allow(requestable).to receive_messages(
+        charged?: true,
+        recap?: true,
+        recap_pf?: false,
+        recap_edd?: true,
+        item_data?: true,
+        scsb_in_library_use?: false
       )
       eligibility = described_class.new(requestable:, user: FactoryBot.create(:user))
 

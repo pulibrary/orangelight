@@ -11,6 +11,7 @@ RSpec.describe Requests::ServiceEligibility::Annex, requests: true do
           in_process?: false,
           on_order?: false,
           annex?: true,
+          alma_managed?: true,
           recap?: false,
           recap_pf?: false,
           held_at_marquand_library?: false
@@ -27,6 +28,7 @@ RSpec.describe Requests::ServiceEligibility::Annex, requests: true do
           in_process?: false,
           on_order?: false,
           annex?: false,
+          alma_managed?: true,
           recap?: false,
           recap_pf?: false,
           held_at_marquand_library?: false

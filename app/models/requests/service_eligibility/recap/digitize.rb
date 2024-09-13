@@ -20,7 +20,8 @@ module Requests
             !requestable.recap_pf? &&
               requestable.recap_edd? &&
               requestable.item_data? &&
-              !requestable.scsb_in_library_use?
+              !requestable.scsb_in_library_use? &&
+              !requestable.charged?
           end
       end
     end
