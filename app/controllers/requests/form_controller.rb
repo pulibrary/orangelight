@@ -18,7 +18,9 @@ module Requests
 
       @user = current_or_guest_user
 
-      @patron = authorize_patron(@user)
+      @patron = Patron.authorize(user: @user)
+      patron_errors = @patron.errors
+      flash.now[:error] = patron_errors.join(", ") if patron_errors.present?
 
       @title = "Request ID: #{system_id}"
 
@@ -101,12 +103,6 @@ module Requests
       def respond_to_validation_error(submission)
         flash.now[:error] = I18n.t('requests.submit.error')
         logger.error "Request Submission #{submission.errors.messages.as_json}"
-      end
-
-      def authorize_patron(user)
-        patron = Patron.new(user:)
-        flash.now[:error] = patron.errors.join(", ") if patron.errors.present?
-        patron
       end
 
       def sanitize(str)

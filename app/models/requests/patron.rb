@@ -14,6 +14,10 @@ module Requests
       @patron_hash = patron_hash || load_patron(user:)
     end
 
+    def self.authorize(user:)
+      Patron.new(user:)
+    end
+
     def barcode
       patron_hash[:barcode]
     end
@@ -89,19 +93,11 @@ module Requests
     private
 
       def load_patron(user:)
-        if !user.guest? && user.uid
           patron_hash = current_patron_hash(user.uid)
           errors << "A problem occurred looking up your library account." if patron_hash.blank?
           # Uncomment to fake being a non barcoded user
           # patron_hash[:barcode] = nil
           patron_hash || {}
-        else
-          {}
-        end
-      end
-
-      def access_patron?
-        session["email"].present? && session["user_name"].present?
       end
 
       def current_patron_hash(uid)
