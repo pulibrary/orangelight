@@ -59,7 +59,6 @@ detectors:
     - Requests::Holding#initialize
     - Requests::Illiad#genere
     - Requests::Illiad#identifiers_for_type
-    - Requests::IlliadPatron#illiad_status
     - Requests::Patron#initialize
     - PhysicalHoldingsMarkupBuilder#self.thesis?
   DataClump:
@@ -213,8 +212,6 @@ detectors:
     - Requests::IlliadMetadata::ArticleExpress#initialize
     - Requests::IlliadMetadata::ArticleExpress#map_metdata
     - Requests::IlliadMetadata::ArticleExpress#volume_number
-    - Requests::IlliadPatron#create_illiad_patron
-    - Requests::IlliadPatron#illiad_patron_attributes
     - Requests::IlliadTransactionClient#create_request
     - Requests::Location#sort_pick_ups
     - Requests::Requestable::Item#copy_value
@@ -332,8 +329,6 @@ detectors:
     - Requests::IlliadClient#conn
     - Requests::IlliadClient#get_json_response
     - Requests::IlliadClient#post_json_response
-    - Requests::IlliadPatron#illiad_staff_status
-    - Requests::IlliadPatron#illiad_status
     - Requests::Location#build_delivery_locations
     - Requests::Location#sort_pick_ups
     - Requests::RequestableDecorator#first_delivery_location
@@ -478,7 +473,6 @@ detectors:
     - Requests::IlliadMetadata::ArticleExpress
     - Requests::IlliadMetadata::Loan
     - Requests::IlliadMetadata::Metadata
-    - Requests::IlliadPatron
     - Requests::IlliadTransactionClient
     - Requests::Libcal
     - Requests::Patron
@@ -556,7 +550,6 @@ detectors:
     - Requests::Illiad#get_identifier
     - Requests::Illiad#illiad_query_parameters
     - Requests::IlliadMetadata::Metadata#initialize
-    - Requests::IlliadPatron#illiad_status
     - Requests::SelectedItemsValidator#validate_ill_on_shelf
     - PhysicalHoldingsMarkupBuilder#holding_location
     - PhysicalHoldingsMarkupBuilder#holding_location_container
@@ -1015,7 +1008,6 @@ detectors:
     - Requests::IlliadMetadata::ArticleExpress#volume_number
     - Requests::IlliadMetadata::Loan#call_number
     - Requests::IlliadMetadata::Loan#volume_number
-    - Requests::IlliadPatron#illiad_staff_title_status
     - Requests::IlliadTransactionClient#disavowed_illiad_patron?
     - Requests::IlliadTransactionClient#validate_illiad_patron
     - Requests::Patron#alma_patron_hash
