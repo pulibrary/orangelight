@@ -6,13 +6,17 @@ class ReportHarmfulLanguageForm
 
   validates :message, presence: true
 
-  def email_subject
-    "[Possible Harmful Language] #{title}"
-  end
-
   def submit
     if /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i.match?(email) || email&.empty?
-      ContactMailer.with(form: self).harmful_language.deliver unless spam?
+      unless spam?
+        HarmfulLanguageFormSubmission.new(
+          patron_name: name,
+          patron_email: email,
+          message:,
+          title:,
+          context:
+        ).send_to_libanswers
+      end
       @submitted = true
       @name = ""
       @email = ""

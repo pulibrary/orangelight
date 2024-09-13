@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require "rails_helper"
 
-RSpec.describe ReportHarmfulLanguageForm do
+RSpec.describe ReportHarmfulLanguageForm, libanswers: true do
   let(:valid_attributes) do
     {
       "name" => "Test",
@@ -36,20 +36,12 @@ RSpec.describe ReportHarmfulLanguageForm do
     end
   end
 
-  describe "#email_subject" do
-    it "uses the name of the object" do
-      form = described_class.new(valid_attributes)
-
-      expect(form.email_subject).to eq "[Possible Harmful Language] Example Record"
-    end
-  end
-
   describe "submit" do
-    it "sends an email and resets its attributes, setting itself as submitted" do
+    it "sends a libanswers API call and resets its attributes, setting itself as submitted" do
+      stub_libanswers_api
       form = described_class.new(valid_attributes)
 
       form.submit
-      expect(ActionMailer::Base.deliveries.length).to eq 1
       expect(form.name).to eq ""
       expect(form.email).to eq ""
       expect(form.message).to eq ""
@@ -57,31 +49,33 @@ RSpec.describe ReportHarmfulLanguageForm do
       expect(form.title).to eq "Example Record"
       expect(form).to be_submitted
 
-      mail = ActionMailer::Base.deliveries.first
-      expect(mail.subject).to eq "[Possible Harmful Language] Example Record"
-      expect(mail.from).to eq ["test@test.org"]
-      expect(mail.body).to include "Name: Test"
-      expect(mail.body).to include "Email: test@test.org"
-      expect(mail.body).to include "[Possible Harmful Language] Example Record"
-      expect(mail.body).to include "Comments: I am concerned about this subject heading"
-      expect(mail.body).to include "Context: http://example.com/catalog/1"
+      expect(WebMock).to have_requested(
+        :post,
+        'https://faq.library.princeton.edu/api/1.1/ticket/create'
+      ).with(body: 'quid=9012&'\
+      'pquestion=[Possible Harmful Language] Example Record&'\
+      "pdetails=I am concerned about this subject heading\n\nSent from http://example.com/catalog/1 via LibAnswers API&"\
+      'pname=Test&'\
+      'pemail=test@test.org',
+             headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
     end
 
     it "sends an email with minimal valid form attributes" do
+      stub_libanswers_api
       form = described_class.new(minimal_valid_attributes)
 
       form.submit
-      expect(ActionMailer::Base.deliveries.length).to eq 1
       expect(form).to be_submitted
 
-      mail = ActionMailer::Base.deliveries.first
-      expect(mail.subject).to eq "[Possible Harmful Language] Example Record"
-      expect(mail.from).to eq ["test-harmful-content@princeton.edu"]
-      expect(mail.body).to include "Name: "
-      expect(mail.body).to include "Email: "
-      expect(mail.body).to include "[Possible Harmful Language] Example Record"
-      expect(mail.body).to include "Comments: I am concerned about this subject heading"
-      expect(mail.body).to include "Context: http://example.com/catalog/1"
+      expect(WebMock).to have_requested(
+        :post,
+        'https://faq.library.princeton.edu/api/1.1/ticket/create'
+      ).with(body: 'quid=9012&'\
+      'pquestion=[Possible Harmful Language] Example Record&'\
+      "pdetails=I am concerned about this subject heading\n\nSent from http://example.com/catalog/1 via LibAnswers API&"\
+      'pname=&'\
+      'pemail=',
+             headers: { Authorization: 'Bearer abcdef1234567890abcdef1234567890abcdef12' })
     end
   end
 

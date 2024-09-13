@@ -689,6 +689,7 @@ detectors:
     - Requests::RequestMailer
     - AskAQuestionFormSubmission
     - FeedbackFormSubmission
+    - HarmfulLanguageFormSubmission
     - Requests::Form
     - Requests::FormDecorator
     - Requests::IlliadMetadata::ArticleExpress
