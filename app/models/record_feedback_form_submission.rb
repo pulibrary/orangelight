@@ -3,6 +3,7 @@
 # form submission to the libanswers API,
 # which will create a ticket for us to answer
 class RecordFeedbackFormSubmission
+  # rubocop:disable Metrics/ParameterLists
   def initialize(message:, patron_name:, patron_email:, title:, context:, quid:)
     @message = message
     @patron_name = patron_name
@@ -11,6 +12,7 @@ class RecordFeedbackFormSubmission
     @context = context
     @quid = quid
   end
+  # rubocop:enable Metrics/ParameterLists
 
   def send_to_libanswers
     Net::HTTP.post uri, body, { Authorization: "Bearer #{token}" }

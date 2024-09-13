@@ -28,7 +28,7 @@ RSpec.describe RecordFeedbackFormSubmission, libanswers: true do
     stub_libanswers_api
 
     described_class.new(
-        quid: 12345,
+        quid: 12_345,
         message: '', patron_name: '', patron_email: '', title: '', context: ''
       ).send_to_libanswers
 

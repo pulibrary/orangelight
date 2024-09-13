@@ -9,12 +9,17 @@ class SuggestCorrectionForm
   validates :name, :email, :message, :context, presence: true
   validates :email, email: true
 
-  def email_subject
-    "[Catalog] #{title}"
-  end
-
   def submit
-    ContactMailer.with(form: self).suggestion.deliver unless spam?
+    unless spam?
+      RecordFeedbackFormSubmission.new(
+        message:,
+        patron_name: name,
+        patron_email: email,
+        title: "[Catalog] #{title}",
+        context:,
+        quid: Rails.application.config_for(:orangelight)[:suggest_correction_form][:queue_id]
+      ).send_to_libanswers
+    end
     @submitted = true
     @name = ""
     @email = ""
