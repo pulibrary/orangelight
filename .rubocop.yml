@@ -1,10 +1,11 @@
 inherit_from: .rubocop_todo.yml
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-rspec_rails
+  - rubocop-performance
 
-require: rubocop-rspec
-inherit_gem:
-  bixby: bixby_default.yml
 AllCops:
-  DisplayCopNames: true
   NewCops: enable
   SuggestExtensions: false
   TargetRubyVersion: 3.1
@@ -167,6 +168,8 @@ RSpec/DescribeClass:
     - 'spec/features/**/*'
     - 'spec/views/**/*'
     - 'spec/requests/**/*'
+    - 'spec/system**/*'
+    - 'spec/lib/**/*'
 
 RSpec/ExampleLength:
   Enabled: false
@@ -174,6 +177,8 @@ RSpec/ExampleLength:
 RSpec/VerifiedDoubles:
   Exclude:
     - 'spec/helpers/catalog_helper_spec.rb'
+    - 'spec/components/**/*'
+    - 'spec/processors/**/*'
 
 Layout/IndentationConsistency:
   EnforcedStyle: indented_internal_methods

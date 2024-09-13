@@ -142,7 +142,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:no_circ_item_type) { requestable.item['item_type'] }
     let(:no_circ_pick_up_location_code) { requestable.item['pickup_location_code'] }
 
-    # rubocop:disable RSpec/MultipleExpectations
     describe 'getters' do
       it 'gets values' do
         expect(requestable.item_data?).to be true
@@ -154,8 +153,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
   end
-  # rubocop:enable RSpec/MultipleExpectations
-
   context 'A circulating item' do
     let(:request) { FactoryBot.build(:mfhd_with_no_circ_and_circ_item, patron:) }
     let(:requestable) { request.requestable[0] }
@@ -579,7 +576,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:request) { FactoryBot.build(:request_no_items, patron:) }
     let(:requestable) { request.requestable.first } # assume only one requestable
 
-    # rubocop:disable RSpec/MultipleExpectations
     describe 'requestable with no items ' do
       it 'does not have item data' do
         expect(requestable.item_data?).to be false
@@ -589,8 +585,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         expect(requestable.cron_value).to eq ""
       end
     end
-    # rubocop:enable RSpec/MultipleExpectations
-
     describe '#location_label' do
       it 'has a location label' do
         expect(requestable.location_label).to eq('Forrestal Annex - Princeton Collection')

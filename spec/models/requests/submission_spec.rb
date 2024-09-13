@@ -937,7 +937,6 @@ describe Requests::Submission, requests: true do
           .to_return(status: 200, body: responses[:found], headers: {})
       end
 
-      # rubocop:disable RSpec/MultipleExpectations
       it 'items contacts illiad' do
         stub_delivery_locations
         clancy_url = stub_clancy_post(barcode: "32101072349515")
@@ -953,8 +952,6 @@ describe Requests::Submission, requests: true do
         expect(a_request(:post, transaction_note_url)).to have_been_made
         expect(a_request(:post, clancy_url)).to have_been_made
       end
-      # rubocop:enable RSpec/MultipleExpectations
-
       it "returns illiad errors" do
         stub_request(:post, transaction_url)
           .with(body: hash_including("Username" => "foo", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "NotWantedAfter" => (DateTime.current + 6.months).strftime("%m/%d/%Y"), "WantedBy" => "Yes, until the semester's", "PhotoItemAuthor" => "Johns, Catherine",
