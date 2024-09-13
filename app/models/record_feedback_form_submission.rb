@@ -2,14 +2,17 @@
 # This class is responsible for conveying a
 # form submission to the libanswers API,
 # which will create a ticket for us to answer
-class HarmfulLanguageFormSubmission
-  def initialize(message:, patron_name:, patron_email:, title:, context:)
+class RecordFeedbackFormSubmission
+  # rubocop:disable Metrics/ParameterLists
+  def initialize(message:, patron_name:, patron_email:, title:, context:, quid:)
     @message = message
     @patron_name = patron_name
     @patron_email = patron_email
     @title = title
     @context = context
+    @quid = quid
   end
+  # rubocop:enable Metrics/ParameterLists
 
   def send_to_libanswers
     Net::HTTP.post uri, body, { Authorization: "Bearer #{token}" }
@@ -17,7 +20,7 @@ class HarmfulLanguageFormSubmission
 
     private
 
-      attr_reader :patron_name, :patron_email, :context, :title
+      attr_reader :patron_name, :patron_email, :context, :title, :quid
 
       def body
         @body ||= data.to_a.map { |entry| "#{entry[0]}=#{entry[1]}" }.join('&')
@@ -25,8 +28,8 @@ class HarmfulLanguageFormSubmission
 
       def data
         {
-          quid: Rails.application.config_for(:orangelight)[:report_harmful_language_form][:queue_id],
-          pquestion: "[Possible Harmful Language] #{title}",
+          quid:,
+          pquestion: title,
           pdetails: message,
           pname: patron_name,
           pemail: patron_email
@@ -34,7 +37,7 @@ class HarmfulLanguageFormSubmission
       end
 
       def message
-        return "#{@message}\n\nSent from #{context} via LibAnswers API" if context
+        return "#{@message}\n\nSent from #{context} via LibAnswers API" if context.present?
 
         "#{@message}\n\nSent via LibAnswers API"
       end

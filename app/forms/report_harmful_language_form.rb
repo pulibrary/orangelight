@@ -9,12 +9,13 @@ class ReportHarmfulLanguageForm
   def submit
     if /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i.match?(email) || email&.empty?
       unless spam?
-        HarmfulLanguageFormSubmission.new(
+        RecordFeedbackFormSubmission.new(
           patron_name: name,
           patron_email: email,
           message:,
-          title:,
-          context:
+          title: "[Possible Harmful Language] #{title}",
+          context:,
+          quid: Rails.application.config_for(:orangelight)[:report_harmful_language_form][:queue_id]
         ).send_to_libanswers
       end
       @submitted = true
