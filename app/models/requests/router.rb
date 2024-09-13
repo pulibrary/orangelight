@@ -49,7 +49,6 @@ module Requests
 
     private
 
-      # rubocop:disable Metrics/MethodLength
       def calculate_alma_or_scsb_services
         return [] unless auth_user?
         if requestable.charged?
@@ -74,7 +73,6 @@ module Requests
           ].select(&:eligible?).map(&:to_s)
         end
       end
-      # rubocop:enable Metrics/MethodLength
 
       def calculate_unavailable_services
         ill_eligibility = ServiceEligibility::ILL.new(requestable:, user:, any_loanable:)

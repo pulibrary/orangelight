@@ -15,7 +15,6 @@ module Requests
 
     private
 
-      # rubocop:disable Metrics/MethodLength
       def validate_selected(record, selected)
         return unless selected['selected'] == 'true'
         case selected["type"]
@@ -35,7 +34,6 @@ module Requests
           record.errors.add(:items, { selected['mfhd'] => { 'text' => 'Please choose a Request Method for your selected item.', 'type' => 'pick_up' } })
         end
       end
-      # rubocop:enable Metrics/MethodLength
 
       def validate_ill_on_shelf(record, selected, pick_up_phrase: 'your selected item', action_phrase: 'Requested')
         return unless validate_item_id(record:, selected:, action_phrase:)

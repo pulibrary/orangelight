@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-# rubocop:disable RSpec/MultipleExpectations
 describe Requests::Patron, requests: true do
   subject(:patron) do
     described_class.new(user:, patron_hash: patron_values)
@@ -207,4 +206,3 @@ describe Requests::Patron, requests: true do
     end
   end
 end
-# rubocop:enable RSpec/MultipleExpectations

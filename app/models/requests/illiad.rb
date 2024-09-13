@@ -43,7 +43,6 @@ module Requests
         qp.to_query
       end
 
-      # rubocop:disable Metrics/MethodLength
       def map_metdata(referrer:, referent:, metadata:)
         qp = {}
         METADATA_MAPPING.each { |metadata_key, illiad_key| qp[illiad_key] = metadata[metadata_key.to_s] }
@@ -62,7 +61,6 @@ module Requests
         qp['CitedIn'] = catalog_url(referent)
         qp
       end
-      # rubocop:enable Metrics/MethodLength
 
       # Grab a source label out of `sid` or `rfr_id`, add on our suffix.
       def sid_for_illiad(referrer)

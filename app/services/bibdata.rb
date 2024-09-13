@@ -8,7 +8,6 @@ class Bibdata
   class ForbiddenError < StandardError; end
 
   class << self
-    # rubocop:disable Metrics/MethodLength
     # ignore rubocop warnings; complexity and length step from error checking.
     def get_patron(user)
       return unless user.uid

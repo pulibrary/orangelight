@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-# rubocop:disable RSpec/MultipleExpectations
 describe Requests::Submissions::Recap, requests: true do
   context 'ReCAP Request' do
     let(:valid_patron) { { "netid" => "foo", "university_id" => "99999999", "active_email" => 'foo1@princeton.edu', barcode: '111222333' }.with_indifferent_access }
@@ -295,4 +294,3 @@ describe Requests::Submissions::Recap, requests: true do
     end
   end
 end
-# rubocop:enable RSpec/MultipleExpectations

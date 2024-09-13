@@ -88,9 +88,8 @@ module Requests
         end
       end
 
-      # rubocop:disable Metrics/MethodLength
-      def illiad_staff_title_status
-        if title.include?("Visiting Research")
+      def illiad_staff_title_status(ldap_title:)
+        if ldap_title.include?("Visiting Research")
           "GS - Visiting Research Scholar"
         elsif title.include?("Senior Research Scholar")
           "F - Senior Research Scholar"
@@ -108,6 +107,5 @@ module Requests
           "GS - University Staff"
         end
       end
-    # rubocop:enable Metrics/MethodLength
   end
 end

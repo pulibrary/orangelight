@@ -99,7 +99,6 @@ module Requests
 
     private
 
-      # rubocop:disable Metrics/MethodLength
       def service_by_type(type)
         case type
         when 'on_shelf', 'marquand_in_library', 'annex', 'annex_in_library'
@@ -139,7 +138,6 @@ module Requests
         end
         item
       end
-      # rubocop:enable Metrics/MethodLength
 
       def in_library?(item)
         # return false if item["type"] == "digitize_fill_in"

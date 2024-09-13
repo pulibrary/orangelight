@@ -168,6 +168,8 @@ RSpec/DescribeClass:
     - 'spec/features/**/*'
     - 'spec/views/**/*'
     - 'spec/requests/**/*'
+    - 'spec/system**/*'
+    - 'spec/lib/**/*'
 
 RSpec/ExampleLength:
   Enabled: false
@@ -175,6 +177,8 @@ RSpec/ExampleLength:
 RSpec/VerifiedDoubles:
   Exclude:
     - 'spec/helpers/catalog_helper_spec.rb'
+    - 'spec/components/**/*'
+    - 'spec/processors/**/*'
 
 Layout/IndentationConsistency:
   EnforcedStyle: indented_internal_methods

@@ -82,7 +82,6 @@ describe Requests::IlliadTransactionClient, type: :controller, requests: true do
       expect(transaction).to be_blank
     end
 
-    # rubocop:disable RSpec/MultipleExpectations
     it "posts a transaction and also sends an email when the patron is not cleared" do
       stub_request(:post, transaction_url)
         .with(body: hash_including("Username" => "abc234", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "PhotoArticleAuthor" => "That One", "PhotoItemAuthor" => "Davis, Paul K.", "PhotoJournalTitle" => "100 decisive battles : from ancient times to the present", "PhotoItemPublisher" => "Santa Barbara, Calif: ABC-CLIO", "ISSN" => "9781576070758", "CallNumber" => "HF1131 .B485", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/9935102073506421", "PhotoJournalVolume" => "",
@@ -105,7 +104,6 @@ describe Requests::IlliadTransactionClient, type: :controller, requests: true do
       expect(transaction["Username"]).to eq('abc123')
       expect(transaction["TransactionNumber"]).to eq(1_093_806)
     end
-    # rubocop:enable RSpec/MultipleExpectations
   end
 
   context "loan metadata mapper" do

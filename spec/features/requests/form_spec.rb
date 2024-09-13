@@ -3,7 +3,6 @@ require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
 describe 'request form', vcr: { cassette_name: 'form_features', record: :none }, type: :feature, requests: true do
-  # rubocop:disable RSpec/MultipleExpectations
   let(:mms_id) { '9994933183506421?mfhd=22558528920006421' }
   let(:thesis_id) { 'dsp01rr1720547' }
   let(:in_process_id) { '99117665883506421?mfhd=22707341710006421' }
@@ -1544,6 +1543,5 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       expect(confirm_email.subject).to eq("In Process Request")
     end
   end
-  # rubocop:enable RSpec/MultipleExpectations
 end
 # rubocop:enable Metrics/BlockLength
