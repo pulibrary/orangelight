@@ -101,10 +101,6 @@ en:
       # temporary changes issue 438
       #email_conf_msg: "Items requested anytime before 3:00pm (weekdays) will be available for you to pick up at Circulation no later than 5:00pm the same day (and often much sooner)."
       email_conf_msg: "Your request for this item has been received. Once we complete our processing, you'll receive an email stating that the book is available for pick-up. Please note that if you need this item quickly, you can retrieve the book from the stacks and bring it to circulation to check out."
-    recap_guest:
-      email_subject: "Patron Initiated Catalog Request - ReCAP Access Only Request"
-      brief_msg: "Item off-site at ReCAP facility."
-      email_conf_msg: "You will be notified via email when your item is available."
     recap_marquand:
       email_destination: 'marquandoffsite@princeton.edu'
       email_subject: "Patron Initiated Catalog Request - ReCAP"
