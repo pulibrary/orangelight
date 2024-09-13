@@ -158,6 +158,7 @@ detectors:
     - Requests::ApplicationHelper#submit_button_disabled
     - Requests::ApplicationHelper#submit_message
     - Requests::ApplicationHelper#system_status_label
+    - Requests::Patron#load_patron
     - Requests::RequestHelper#login_url
     - Requests::RequestHelper#pul_patron_name
     - Requests::RequestMailer#on_shelf_email
@@ -293,6 +294,7 @@ detectors:
     - BlacklightHelper#lccn_resolve
     - BlacklightHelper#oclc_resolve
     - CatalogHelper#render_search_to_page_title
+    - Requests::AlmaPatron#active_barcode
     - Requests::ApplicationHelper#display_status
     - Requests::ApplicationHelper#hidden_fields_for_item
     - Requests::ApplicationHelper#hidden_fields_for_scsb
