@@ -32,13 +32,4 @@ class ReportHarmfulLanguageForm
   def submitted?
     @submitted == true
   end
-
-  def routed_mail_to
-    Orangelight.config["report_harmful_language_form"]["to"]
-  end
-
-  # If the form does not include an email, use the routed_mail_to email for the "from" field
-  def from_email
-    @from_email ||= @email.presence || routed_mail_to
-  end
 end

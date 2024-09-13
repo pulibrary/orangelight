@@ -5,13 +5,10 @@ defaults: &defaults
   feedback_form:
     queue_id: <%= ENV['CATALOG_FEEDBACK_QUEUE_ID'] %>
   ask_a_question_form:
-    to: <%= ENV['OL_REFERENCE_TO'] %>
     queue_id: <%= ENV['ASK_A_QUESTION_QUEUE_ID'] %>
   suggest_correction_form:
-    to: <%= ENV['OL_CATALOGING_TO'] %>
     queue_id: <%= ENV['SUGGEST_CORRECTION_QUEUE_ID'] %>
   report_harmful_language_form:
-    to: <%= ENV['OL_HARMFUL_CONTENT_TO'] %>
     queue_id: <%= ENV['REPORT_HARMFUL_LANGUAGE_QUEUE_ID'] %>
   report_biased_results_form:
     to: <%= ENV['OL_BIASED_RESULTS_TO'] %>
@@ -31,17 +28,14 @@ defaults: &defaults
 development:
   <<: *defaults
   ask_a_question_form:
-    to: 'test-question@princeton.edu'
     queue_id: <%= ENV['ASK_A_QUESTION_QUEUE_ID'] %>
   redis:
     host: <%= ENV['lando_orangelight_redis_conn_host'] %>
     port: <%= ENV['lando_orangelight_redis_conn_port'] %>
     db: 'orangelight_dev'
   suggest_correction_form:
-    to: 'test-correction@princeton.edu'
     queue_id: <%= ENV['SUGGEST_CORRECTION_QUEUE_ID'] %>
   report_harmful_language_form:
-    to: 'test-harmful-content@princeton.edu'
     queue_id: <%= ENV['REPORT_HARMFUL_LANGUAGE_QUEUE_ID'] %>
   report_biased_results_form:
     to: 'test-biased-results@princeton.edu'
@@ -50,17 +44,14 @@ test:
   feedback_form:
     queue_id: 1234
   ask_a_question_form:
-    to: 'test-question@princeton.edu'
     queue_id: 5678
   redis:
     host: <%= ENV['lando_orangelight_redis_conn_host'] %>
     port: <%= ENV['lando_orangelight_redis_conn_port'] %>
     db: 'orangelight_test'
   suggest_correction_form:
-    to: 'test-correction@princeton.edu'
     queue_id: 3456
   report_harmful_language_form:
-    to: 'test-harmful-content@princeton.edu'
     queue_id: 9012
   report_biased_results_form:
     to: 'test-biased-results@princeton.edu'

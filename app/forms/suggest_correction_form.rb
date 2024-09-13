@@ -29,8 +29,4 @@ class SuggestCorrectionForm
   def submitted?
     @submitted == true
   end
-
-  def routed_mail_to
-    Orangelight.config["suggest_correction_form"]["to"]
-  end
 end
