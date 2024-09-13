@@ -661,7 +661,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
     end
     let(:patron) do
-      Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
+      Requests::Patron.new(user:, patron_hash: valid_patron)
     end
     let(:params) do
       {
@@ -727,7 +727,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
     end
     let(:patron) do
-      Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
+      Requests::Patron.new(user:, patron_hash: valid_patron)
     end
     let(:params) do
       {
@@ -798,7 +798,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:valid_patron_response) { '{"netid":"foo","first_name":"Foo","last_name":"Request","barcode":"22101007797777","university_id":"9999999","patron_group":"staff","patron_id":"99999","active_email":"foo@princeton.edu"}' }
     let(:patron) do
       stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/foo?ldap=true").to_return(status: 200, body: valid_patron_response, headers: {})
-      Requests::Patron.new(user:, session: {})
+      Requests::Patron.new(user:)
     end
     let(:params) do
       {

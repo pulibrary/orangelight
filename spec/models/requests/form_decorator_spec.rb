@@ -13,7 +13,7 @@ describe Requests::FormDecorator, requests: true do
       ldap: }.with_indifferent_access
   end
   let(:campus_unauthorized_patron) { File.open('spec/fixtures/bibdata_patron_unauth_response.json') }
-  let(:patron) { Requests::Patron.new(user:, session: {}, patron_hash: test_patron) }
+  let(:patron) { Requests::Patron.new(user:, patron_hash: test_patron) }
 
   let(:requestable) { instance_double(Requests::RequestableDecorator, stubbed_questions) }
   let(:hidden_field_metadata) do
@@ -67,7 +67,7 @@ describe Requests::FormDecorator, requests: true do
 
     context 'user not yet logged in' do
       let(:user) { FactoryBot.build(:user, guest: true, uid: nil) }
-      let(:patron) { Requests::Patron.new(user:, session: {}, patron_hash: HashWithIndifferentAccess.new) }
+      let(:patron) { Requests::Patron.new(user:, patron_hash: HashWithIndifferentAccess.new) }
       it 'does not show a message' do
         expect(decorator.patron_message).to eq ""
       end

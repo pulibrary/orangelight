@@ -9,7 +9,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
   end
   let(:patron) do
-    Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
+    Requests::Patron.new(user:, patron_hash: valid_patron)
   end
 
   context "with a bad system_id" do

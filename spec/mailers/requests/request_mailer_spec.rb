@@ -4,18 +4,18 @@ include Requests::ApplicationHelper
 
 # rubocop:disable RSpec/MultipleExpectations
 # rubocop:disable Metrics/BlockLength
-describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer', record: :none } do
+describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer', record: :none }, requests: true do
   let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
 
   let(:user_info) do
     stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/foo?ldap=true").to_return(status: 200, body: valid_patron_response, headers: {})
     user = instance_double(User, guest?: false, uid: 'foo', alma_provider?: false)
-    Requests::Patron.new(user:, session: {})
+    Requests::Patron.new(user:)
   end
 
   let(:guest_user_info) do
     user = instance_double(User, guest?: true, uid: 'foo')
-    Requests::Patron.new(user:, session: { "email" => "guest@foo.edu", 'user_name' => 'Guest Request' })
+    Requests::Patron.new(user:)
   end
 
   before { stub_delivery_locations }
@@ -632,16 +632,8 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
       Requests::Submission.new(params, user_info)
     end
 
-    let(:mail) do
-      described_class.send("recap_email", submission_for_recap).deliver_now
-    end
-
     let(:confirmation_mail) do
       described_class.send("recap_confirmation", submission_for_recap).deliver_now
-    end
-
-    it "sens no email for a registered user" do
-      expect(mail).to be_nil
     end
 
     it "renders the confirmation" do
@@ -716,81 +708,6 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     it "renders the body" do
       expect(mail.html_part.body.to_s).to have_content I18n.t('requests.recap_edd.email_conf_msg')
       expect(mail.text_part.body.to_s).to have_content I18n.t('requests.recap_edd.email_conf_msg')
-    end
-  end
-
-  context "send recap email request for guest user" do
-    let(:requestable) do
-      [
-        {
-          "selected" => "true",
-          "mfhd" => "22202822560006421",
-          "call_number" => "Oversize DT549 .E274q",
-          "location_code" => "recap$pa",
-          "item_id" => "23202822550006421",
-          "barcode" => "32101098722844",
-          "enum_display" => "2016",
-          "copy_number" => "1",
-          "status" => "Not Charged",
-          "type" => "recap",
-          "delivery_mode_7467161" => "print",
-          "pick_up" => "PA",
-          "edd_start_page" => "",
-          "edd_end_page" => "",
-          "edd_volume_number" => "",
-          "edd_issue" => "",
-          "edd_author" => "",
-          "edd_art_title" => "",
-          "edd_note" => ""
-        }.with_indifferent_access,
-        {
-          "selected" => "false"
-        }.with_indifferent_access
-      ]
-    end
-    let(:bib) do
-      {
-        "id" => "9999443553506421",
-        "title" => "L'écrivain, magazine litteraire trimestriel.",
-        "author" => "Association des écrivains du Sénégal"
-      }.with_indifferent_access
-    end
-    let(:params) do
-      {
-        request: guest_user_info,
-        requestable:,
-        bib:
-      }
-    end
-
-    let(:submission_for_recap) do
-      Requests::Submission.new(params, guest_user_info)
-    end
-
-    let(:mail) do
-      described_class.send("recap_email", submission_for_recap).deliver_now
-    end
-
-    let(:confirmation_mail) do
-      described_class.send("recap_confirmation", submission_for_recap).deliver_now
-    end
-
-    it "renders the email to the library" do
-      expect(mail.subject).to eq("#{I18n.t('requests.recap_guest.email_subject')} - ACCESS")
-      expect(mail.cc).to be_nil
-      expect(mail.to).to eq([I18n.t('requests.recap.guest_email_destination')])
-      expect(mail.from).to eq([I18n.t('requests.default.email_from')])
-      expect(mail.html_part.body.to_s).not_to have_content I18n.t('requests.recap_guest.email_conf_msg')
-      expect(mail.text_part.body.to_s).not_to have_content I18n.t('requests.recap_guest.email_conf_msg')
-    end
-
-    it "renders the confirmation email" do
-      expect(confirmation_mail.subject).to eq(I18n.t('requests.recap_guest.email_subject'))
-      expect(confirmation_mail.cc).to be_nil
-      expect(confirmation_mail.to).to eq([submission_for_recap.email])
-      expect(confirmation_mail.from).to eq([I18n.t('requests.default.email_from')])
-      expect(confirmation_mail.html_part.body.to_s).to have_content I18n.t('requests.recap_guest.email_conf_msg')
-      expect(confirmation_mail.text_part.body.to_s).to have_content I18n.t('requests.recap_guest.email_conf_msg')
     end
   end
 

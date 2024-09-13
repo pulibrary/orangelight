@@ -8,7 +8,7 @@ module Requests
     validates :email, presence: true, email: true, length: { minimum: 5, maximum: 50 } # , format: { message: "Supply a Valid Email Address" } #, on: :submit
     validates :user_name, presence: true, length: { minimum: 1, maximum: 50 } # ,  format: { message: "Name Can't be Blank" } #, on: :submit
     validates :user_barcode, allow_blank: true, presence: true, length: { minimum: 5, maximum: 14 },
-                             format: { with: /(^ACCESS$|^access$|^\d{14}$)/i, message: "Please supply a valid library barcode or type the value 'ACCESS'" }
+                             format: { with: /(^\d{14}$)/i, message: "Please supply a valid library barcode" }
     validate :item_validations # , presence: true, length: { minimum: 1 }, on: :submit
 
     def initialize(params, patron)
@@ -69,12 +69,7 @@ module Requests
 
     def process_submission
       @services = service_types.map do |type|
-        if access_only?
-          # Access users cannot use services directly
-          Requests::Submissions::Generic.new(self, service_type: type)
-        else
-          service_by_type(type)
-        end
+        service_by_type(type)
       end
       @services.each(&:handle)
 
@@ -90,10 +85,6 @@ module Requests
 
     def pick_up_location
       Requests::BibdataService.delivery_locations[items.first["pick_up"]]["library"]
-    end
-
-    def access_only?
-      user_barcode == 'ACCESS'
     end
 
     def marquand?

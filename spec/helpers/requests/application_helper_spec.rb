@@ -11,7 +11,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       "university_id" => "9999999", "patron_group" => "staff", "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
   end
   let(:patron) do
-    Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
+    Requests::Patron.new(user:, patron_hash: valid_patron)
   end
 
   describe '#isbn_string' do
@@ -127,7 +127,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
 
   describe '#suppress_login' do
     let(:unauthenticated_patron) { FactoryBot.build(:unauthenticated_patron) }
-    let(:patron) { Requests::Patron.new(user: unauthenticated_patron, session: {}) }
+    let(:patron) { Requests::Patron.new(user: unauthenticated_patron) }
     let(:params) do
       {
         system_id: '9973529363506421',

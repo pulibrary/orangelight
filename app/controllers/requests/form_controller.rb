@@ -18,7 +18,9 @@ module Requests
 
       @user = current_or_guest_user
 
-      @patron = authorize_patron(@user)
+      @patron = Patron.authorize(user: @user)
+      patron_errors = @patron.errors
+      flash.now[:error] = patron_errors.join(", ") if patron_errors.present?
 
       @title = "Request ID: #{system_id}"
 
@@ -38,7 +40,7 @@ module Requests
     # will post and a JSON document of selected "requestable" objects with selection parameters and
     # user information for further processing and distribution to various request endpoints.
     def submit
-      @submission = Requests::Submission.new(sanitize_submission(params), Patron.new(user: current_or_guest_user, session:))
+      @submission = Requests::Submission.new(sanitize_submission(params), Patron.new(user: current_or_guest_user))
       respond_to do |format|
         format.js do
           valid = @submission.valid?
@@ -101,24 +103,6 @@ module Requests
       def respond_to_validation_error(submission)
         flash.now[:error] = I18n.t('requests.submit.error')
         logger.error "Request Submission #{submission.errors.messages.as_json}"
-      end
-
-      def authorize_patron(user)
-        patron = Patron.new(user:, session:)
-        flash.now[:error] = patron.errors.join(", ") if patron.errors.present?
-        patron
-      end
-
-      def current_or_guest_user
-        user = super
-
-        # store guest user information in the session for later
-        # TODO: Do we still hit this code? How do the user_name and email end up in the request params?
-        if user.guest? && params[:request].present? && params[:request][:user_name].present?
-          session["user_name"] = params[:request][:user_name]
-          session["email"] = params[:request][:email]
-        end
-        user
       end
 
       def sanitize(str)

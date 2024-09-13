@@ -9,7 +9,7 @@ describe Requests::Scsb, requests: true do
       "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
   end
   let(:patron) do
-    Requests::Patron.new(user:, session: {}, patron_hash: valid_patron)
+    Requests::Patron.new(user:, patron_hash: valid_patron)
   end
   let(:scsb_no_format) { fixture('/SCSB-7935196.json') }
   let(:location_code) { 'scsbnypl' }
