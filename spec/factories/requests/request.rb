@@ -144,7 +144,6 @@ FactoryBot.define do
     initialize_with { new(system_id:, patron:, mfhd: mfhd_id) }
   end
 
-  ## I think this item is no longer charged
   factory :request_with_items_charged, class: 'Requests::Form' do
     system_id { '9913891213506421' }
     mfhd_id { '22739043950006421' }

@@ -894,18 +894,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(page).to have_content 'Available for In Library Use'
         expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
         expect(page).to have_content 'ReCAP N5230.M62 R39 2014'
-        ## This still fails 1/23/2024 - Kevin
-        # expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-        # expect(a_request(:post, scsb_url)).to have_been_made
-        # Fails on this line
-        # expect(page).to have_content "Request submitted to ReCAP, our offsite storage facility"
-        # confirm_email = ActionMailer::Base.deliveries.last
-        # expect(confirm_email.subject).to eq("Patron Initiated Catalog Request Confirmation")
-        # expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        # expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        # expect(confirm_email.html_part.body.to_s).to have_content(" Your request to pick this item up has been received. We will process the requests as soon as possible")
-        # expect(confirm_email.html_part.body.to_s).to have_content("Chong wen men shang shui ya men xian xing shui ze")
-        # expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
       end
 
       it "Allows On Order Princeton ReCAP Items to be Requested" do
@@ -966,7 +954,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       describe 'Request a temp holding item' do
-        ## TODO should stub availability for this scenario as a temp item is likely to go stale were we to refresh cassette data
         before do
           stub_illiad_patron
           stub_alma_hold_success('99105816503506421', '22514405160006421', '23514405150006421', '960594184')

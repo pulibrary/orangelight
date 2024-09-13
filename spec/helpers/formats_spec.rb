@@ -36,10 +36,7 @@ RSpec.describe ApplicationHelper do
     end
   end
 
-  # blacklight_config.view_config(document_index_view_type).display_type_field]
   describe CatalogHelper do
-    # let(:blacklight_config) do
-    # end
     it '#render_document_class includes only first format' do
       allow(helper).to receive(:document_types).and_return(format)
       document_class = helper.render_document_class(document)
