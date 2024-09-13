@@ -371,7 +371,6 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       it "provides a list of the default pick-up locations" do
         expect(request_with_on_order.default_pick_ups).to be_truthy
         expect(request_with_on_order.default_pick_ups).to be_an(Array)
-        # test that it is an array of hashes
         expect(request_with_on_order.default_pick_ups.size).to be > 1
         expect(request_with_on_order.default_pick_ups.include?(firestone_circ)).to be_truthy
       end
@@ -386,9 +385,6 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     end
   end
 
-  ## Add context for Visuals when available
-  ## Add context for EAD when available
-  # http://localhost:4000/requests/2002206?mfhd=2281830
   context "When passed a mfhd with missing items" do
     let(:params) do
       {
@@ -593,7 +589,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       end
     end
   end
-  # 495501
+
   context 'When passed a holding with a null item record' do
     let(:params) do
       {
@@ -610,7 +606,6 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     end
   end
 
-  # 4815239
   context 'When passed a non-enumerated holdings with at least one loanable item' do
     let(:params) do
       {

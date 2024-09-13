@@ -343,7 +343,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#aeon_openurl' do
       let(:aeon_ctx) { requestable.aeon_openurl(request.ctx) }
 
-      ## no idea why these two don't match
       it 'includes basic metadata' do
         expect(aeon_ctx).to include('ctx_id=&ctx_enc=info%3Aofi%2Fenc%3AUTF-8&rft.genre=unknown&rft.title=Beethoven%27s+andante+cantabile+aus+dem+Trio+op.+97%2C+fu%CC%88r+orchester&rft.creator=Beethoven%2C+Ludwig+van&rft.aucorp=Leipzig%3A+Kahnt&rft.pub=Leipzig%3A+Kahnt&rft.format=musical+score&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Aunknown&rft_id=https%3A%2F%2Fcatalog.princeton.edu%2Fcatalog%2F9925358453506421&rft_id=info%3Aoclcnum%2F25615303&rfr_id=info%3Asid%2Fcatalog.princeton.edu%3Agenerator&CallNumber=M1004.L6+B3&ItemInfo1=Reading+Room+Access+Only&Location=rare%24ex&ReferenceNumber=9925358453506421&Site=RBSC')
       end
@@ -738,7 +737,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         stub_scsb_availability(bib_id: "9999998003506421", institution_id: "PUL", barcode: '32101099186403')
       end
 
-      # TODO: Activate test when campus has re-opened
       it "has recap request service available" do
         expect(requestable.services.include?('recap')).to be true
       end
@@ -755,15 +753,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         end
       end
     end
-
-    # let(:request_paging) { FactoryBot.build(:request_paging_available_barcode_patron) }
-    # let(:requestable_paging) { request_paging.requestable.first }
-
-    # describe '#paging requestable' do
-    #   it "should have the Paging request service available" do
-    #     expect(requestable_paging.services.include?('paging')).to be true
-    #   end
-    # end
 
     let(:request_charged) { FactoryBot.build(:request_with_items_charged_barcode_patron) }
     let(:requestable_holding) { request_charged.requestable.select { |r| r.holding.mfhd_id == '22739043950006421' } }

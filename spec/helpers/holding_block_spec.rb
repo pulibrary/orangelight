@@ -396,8 +396,7 @@ RSpec.describe HoldingsHelper do
         it 'matches the expected result' do
           expect(search_result).to eq(expected_result)
         end
-        # For most locations a map icon is displayed to help patrons if they want to fetch the item.
-        it 'includes the find it icon' do
+        it 'includes the find it map icon' do
           search_result = helper.holding_block_search(SolrDocument.new(document_with_find_it_link))
           # The icon is displayed based on the presence of data-map-location
           expect(search_result).to include "data-map-location"

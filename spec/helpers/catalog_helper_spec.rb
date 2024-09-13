@@ -52,10 +52,7 @@ describe CatalogHelper do
       end
     end
   end
-  #   def render_top_field?(document, field_name)
-  #   !should_render_show_field?(document) && document[field_name].present? &&
-  #     field_name != 'holdings_1display'
-  # end
+
   describe '#render_top_field?' do
     let(:field_name) { 'top_field' }
     let(:other_field_name) { 'other_field' }
