@@ -187,7 +187,6 @@ detectors:
     - Requests::ClancyItem#not_at_clancy?
     - Requests::ClancyItem#post_clancy
     - Requests::Form#build_requestable_from_data
-    - Requests::Form#get_current_location
     - Requests::Form#initialize
     - Requests::Form#off_site?
     - Requests::Form#serial?
@@ -919,11 +918,8 @@ detectors:
     - Orangelight::Catalog#online_holding_note?
     - Orangelight::BrowsablesController#validate_rpp
     - Requests::FormController#sanitize
-    - AskAQuestionForm#routed_mail_to
     - FeedbackForm#error_message
     - ReportBiasedResultsForm#routed_mail_to
-    - ReportHarmfulLanguageForm#routed_mail_to
-    - SuggestCorrectionForm#routed_mail_to
     - AdvancedHelper#first_search_field?
     - AdvancedHelper#first_search_field_selector?
     - BlacklightAdvancedSearch::QueryParser#odd_quotes

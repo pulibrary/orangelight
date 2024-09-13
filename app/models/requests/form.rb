@@ -67,9 +67,8 @@ module Requests
     def route_requests(requestable_items)
       routed_requests = []
       return [] if requestable_items.blank?
-      any_loanable = any_loanable_copies?
       requestable_items.each do |requestable|
-        router = Requests::Router.new(requestable:, user: patron.user, any_loanable:)
+        router = Requests::Router.new(requestable:, user: patron.user, any_loanable: any_loanable_copies?)
         routed_requests << router.routed_request
       end
       routed_requests
@@ -277,7 +276,6 @@ module Requests
         if item_location_code != location_code
           @temp_locations ||= {}
           @temp_locations[item_location_code] = get_location_data(item_location_code) if @temp_locations[item_location_code].blank?
-          @temp_locations[item_location_code]
         else
           location
         end
