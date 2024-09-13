@@ -50,7 +50,6 @@ detectors:
     - Requests::ApplicationHelper#hidden_service_options
     - Requests::ApplicationHelper#single_pickup
     - Requests::RequestHelper#reshare_type
-    - Requests::RequestMailer#subject_line
     - Blacklight::Document::JsonLd#check_role
     - Blacklight::Document::JsonLd#date
     - Requests::Aeon#holding_location_to_site
@@ -98,8 +97,6 @@ detectors:
     - Orangelight::BrowsablesController#index
     - Orangelight::BrowsablesController#last_model_id
     - Orangelight::BrowsablesController#populate_search_params
-    - Requests::FormController#authorize_patron
-    - Requests::FormController#current_or_guest_user
     - Requests::FormController#mode
     - Requests::FormController#sanitize_submission
     - FeedbackForm#headers
@@ -158,7 +155,6 @@ detectors:
     - Requests::ApplicationHelper#submit_button_disabled
     - Requests::ApplicationHelper#submit_message
     - Requests::ApplicationHelper#system_status_label
-    - Requests::Patron#load_patron
     - Requests::RequestHelper#login_url
     - Requests::RequestHelper#pul_patron_name
     - Requests::RequestMailer#on_shelf_email
@@ -293,7 +289,6 @@ detectors:
     - BlacklightHelper#lccn_resolve
     - BlacklightHelper#oclc_resolve
     - CatalogHelper#render_search_to_page_title
-    - Requests::AlmaPatron#active_barcode
     - Requests::ApplicationHelper#display_status
     - Requests::ApplicationHelper#hidden_fields_for_item
     - Requests::ApplicationHelper#hidden_fields_for_scsb
@@ -317,12 +312,11 @@ detectors:
     - Requests::Scsb#scsb_param_mapping
     - Requests::Scsb#scsb_request
     - RecordMailer#email_record
+    - Requests::AlmaPatron#active_barcode
     - Requests::ClancyItem#get_clancy
     - Requests::ClancyItem#post_clancy
     - Requests::Form#any_loanable_copies?
     - Requests::Form#build_barcode_sort
-    - Requests::Form#build_requestable_mfhd_item
-    - Requests::Form#item_current_location
     - Requests::Illiad#get_identifier
     - Requests::Illiad#identifiers_for_type
     - Requests::Illiad#illiad_query_parameters
@@ -336,7 +330,6 @@ detectors:
     - Requests::IlliadPatron#illiad_status
     - Requests::Location#build_delivery_locations
     - Requests::Location#sort_pick_ups
-    - Requests::Pageable#in_call_num_range
     - Requests::RequestableDecorator#first_delivery_location
     - Requests::SelectedItemsValidator#validate
     - Requests::SelectedItemsValidator#validate_ill_on_shelf
@@ -652,7 +645,6 @@ detectors:
     - Orangelight::CallNumber#<=>
     - Requests::Location#sort_pick_ups
     - Requests::NonAlmaAeonUrl#title_genre
-    - Requests::Patron#load_patron
     - Requests::SelectedItemsValidator#validate_delivery_mode
     - SearchBuilder#cleaned_query
     - SearchBuilder#search_query_present?
@@ -678,7 +670,6 @@ detectors:
   RepeatedConditional:
     exclude:
     - ContactController
-    - Requests::RequestMailer
     - Requests::FormDecorator
     - Requests::RequestableDecorator
     - PhysicalHoldingsMarkupBuilder
@@ -775,7 +766,6 @@ detectors:
     - Requests::ApplicationHelper#output_request_input
     - Requests::ApplicationHelper#preferred_request_content_tag
     - Requests::ApplicationHelper#submit_message
-    - Requests::RequestMailer#recap_no_items_confirmation
     - Requests::RequestMailer#service_error_email
     - Bookmark#self.destroy_without_solr_documents
     - Bookmark#self.update_to_alma_ids
@@ -824,10 +814,8 @@ detectors:
     - Requests::IlliadTransactionClient#create_request
     - Requests::Location#build_delivery_locations
     - Requests::Location#sort_pick_ups
-    - Requests::Pageable#in_call_num_range
     - Requests::SelectedItemsValidator#validate_selected
     - Requests::Submission#categorize_by_delivery_and_location
-    - Requests::Submission#process_submission
     - Requests::Submission#service_by_type
     - Requests::Submissions::Clancy#handle_item
     - Requests::Submissions::ClancyEdd#handle_item
@@ -989,7 +977,6 @@ detectors:
     - Requests::RequestHelper#pul_patron_name
     - Requests::RequestHelper#request_title
     - Requests::RequestMailer#annex_items
-    - Requests::RequestMailer#subject_line
     - Bookmark#alma_id?
     - Bookmark#special_system_id?
     - Blacklight::Document::Email#add_holding_fields
@@ -1017,9 +1004,6 @@ detectors:
     - Requests::IlliadPatron#illiad_staff_title_status
     - Requests::IlliadTransactionClient#disavowed_illiad_patron?
     - Requests::IlliadTransactionClient#validate_illiad_patron
-    - Requests::Pageable#in_range?
-    - Requests::Pageable#lc_number?
-    - Requests::Patron#alma_patron_hash
     - Requests::Requestable::Item#available_statuses
     - Requests::Requestable::Item#unavailable_statuses
     - Requests::SelectedItemsValidator#validate_delivery_mode
