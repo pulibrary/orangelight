@@ -27,8 +27,4 @@ class AskAQuestionForm
   def submitted?
     @submitted == true
   end
-
-  def routed_mail_to
-    Orangelight.config["ask_a_question_form"]["to"]
-  end
 end
