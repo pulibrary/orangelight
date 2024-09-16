@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe AccountController do
+RSpec.describe AccountController, patrons: true do
   let(:current_illiad_user_uri) { "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent" }
   let(:valid_patron_response) { File.open('spec/fixtures/bibdata_patron_response.json') }
   let(:verify_user_response) { File.open('spec/fixtures/ill_verify_user_response.json') }

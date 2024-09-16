@@ -26,8 +26,7 @@ module Requests
     private
 
       def validate_illiad_patron(patron)
-        cleared = patron["Cleared"]
-        cleared == "Yes"
+        patron["Cleared"] == "Yes"
       end
 
       def disavowed_illiad_patron?(patron)

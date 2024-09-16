@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe Requests::Patron, requests: true do
+describe Requests::Patron, requests: true, patrons: true do
   subject(:patron) do
     described_class.new(user:, patron_hash: patron_values)
   end

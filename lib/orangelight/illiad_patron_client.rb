@@ -44,6 +44,14 @@ module Orangelight
       response
     end
 
+    def conn
+      Faraday.new(url: @illiad_api_base.to_s) do |builder|
+        builder.use :cookie_jar
+        builder.adapter Faraday.default_adapter
+        builder.response :logger
+      end
+    end
+
     private
 
       def parse_response(response)
@@ -63,14 +71,6 @@ module Orangelight
           req.headers['ApiKey'] = @illiad_api_key
           req.headers['Content-Type'] = 'application/json'
           req.body = { Status: 'Cancelled by Customer' }.to_json
-        end
-      end
-
-      def conn
-        Faraday.new(url: @illiad_api_base.to_s) do |builder|
-          builder.use :cookie_jar
-          builder.adapter Faraday.default_adapter
-          builder.response :logger
         end
       end
   end

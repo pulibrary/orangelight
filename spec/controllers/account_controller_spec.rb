@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe AccountController do
+RSpec.describe AccountController, patrons: true do
   let(:valid_patron_response) { File.open('spec/fixtures/bibdata_patron_response.json') }
   let(:outstanding_ill_requests_response) { File.open('spec/fixtures/outstanding_ill_requests_response.json') }
   let(:verify_user_response) { File.open('spec/fixtures/ill_verify_user_response.json') }

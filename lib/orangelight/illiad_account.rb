@@ -5,6 +5,7 @@ require 'faraday-cookie_jar'
 module Orangelight
   class IlliadAccount
     def initialize(patron)
+      @patron = patron
       @barcode = patron['barcode']
       @last_name = patron['last_name']
       @patron_id = patron['patron_id']
@@ -14,27 +15,34 @@ module Orangelight
     end
 
     def verify_user
-      begin
+      return false if illiad_patron_response == false
+
+      illiad_patron_response&.success?
+    end
+
+    def illiad_patron_response
+      @illiad_patron_response ||= begin
+        url = "/ILLiadWebPlatform/Users/#{netid}"
+        Rails.logger.debug { "Illiad Get #{@illiad_api_base}/#{url}" }
         response = conn.get do |req|
-          req.url "/ILLiadWebPlatform/Users/#{@netid}"
+          req.url url
           req.headers['Accept'] = 'application/json'
           req.headers['ApiKey'] = @illiad_api_key
         end
-      rescue Faraday::ConnectionFailed
-        Rails.logger.info("Unable to Connect to #{@illiad_api_base}")
-        return false
+        Rails.logger.debug { "Illiad Get Response #{@illiad_api_base}/#{url} #{response.status} #{response.body}" }
+        response
       end
-      response.success?
+    rescue Faraday::ConnectionFailed
+      Rails.logger.warn("Unable to Connect to #{@illiad_api_base}")
+      false
     end
 
     private
 
+      attr_reader :patron, :netid
+
       def conn
-        Faraday.new(url: @illiad_api_base.to_s) do |builder|
-          builder.use :cookie_jar
-          builder.adapter Faraday.default_adapter
-          builder.response :logger
-        end
+        @conn ||= IlliadPatronClient.new(patron).conn
       end
   end
 end
