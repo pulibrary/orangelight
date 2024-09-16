@@ -203,7 +203,7 @@ jobs:
     steps:
       - run:
           name: Deploy to Staging
-          command: "curl -k \"https://ansible-tower.princeton.edu/api/v2/job_templates/13/launch/\" --header \"Content-Type: application/json\" --header \"Authorization: Bearer $TOWER_TOKEN\" -d '{\"credential_passwords\":{},\"extra_vars\":{\"repo_name\":\"orangelight\",\"branch_name\":\"main\",\"runtime_env\":\"staging\",\"slack_alerts_channel\":\"ansible-alerts\"}}'"
+          command: "curl -k \"https://ansible-tower.princeton.edu/api/v2/job_templates/57/launch/\" --header \"Content-Type: application/json\" --header \"Authorization: Bearer $TOWER_TOKEN\" -d '{\"credential_passwords\":{},\"extra_vars\":{\"repo_name\":\"orangelight\",\"branch_name\":\"main\",\"runtime_env\":\"staging\",\"slack_alerts_channel\":\"ansible-alerts\"}}'"
 
 workflows:
   build_accept:
