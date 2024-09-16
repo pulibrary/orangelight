@@ -13,7 +13,8 @@ RSpec.describe Requests::ServiceEligibility::Recap::Pickup, requests: true do
         circulates?: true,
         eligible_for_library_services?: true,
         item_data?: true,
-        scsb_in_library_use?: false
+        scsb_in_library_use?: false,
+        charged?: false
       )
       eligibility = described_class.new(requestable:, user:)
 
@@ -28,7 +29,25 @@ RSpec.describe Requests::ServiceEligibility::Recap::Pickup, requests: true do
         holding_library_in_library_only?: true,
         circulates?: false,
         eligible_for_library_services?: false,
-        item_data?: true
+        item_data?: true,
+        charged?: false
+      )
+      eligibility = described_class.new(requestable:, user:)
+
+      expect(eligibility.eligible?).to be(false)
+    end
+
+    it 'returns false if the item is charged' do
+      requestable = instance_double(Requests::Requestable)
+      allow(requestable).to receive_messages(
+        charged?: true,
+        recap?: true,
+        recap_pf?: false,
+        holding_library_in_library_only?: false,
+        circulates?: true,
+        eligible_for_library_services?: true,
+        item_data?: true,
+        scsb_in_library_use?: false
       )
       eligibility = described_class.new(requestable:, user:)
 

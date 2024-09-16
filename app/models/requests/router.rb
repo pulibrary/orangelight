@@ -13,7 +13,6 @@ module Requests
     end
 
     # Current Service Types Assigned
-    # :online - material is available online at a URL
     # :aeon - material is stored in a location where it can be requested via Aeon
     # :annex - material is stored in an Annex location
     # :on_shelf - material is stored in a campus library location
@@ -37,54 +36,34 @@ module Requests
       requestable
     end
 
-    # top level call, returns a hash of symbols with service objects as values
+    # returns a hash of symbols with service objects as values
     # services[:service_name] = Requests::Service::GenericService
     def calculate_services
-      if (requestable.alma_managed? || requestable.partner_holding?) && !requestable.aeon?
-        calculate_alma_or_scsb_services
-      else # Default Service is Aeon
-        ['aeon']
-      end
+      eligibility_checks.select(&:eligible?).map(&:to_s)
     end
 
     private
 
-      def calculate_alma_or_scsb_services
-        return [] unless auth_user?
-        if requestable.charged?
-          calculate_unavailable_services
-        else
-          [
-            ServiceEligibility::OnOrder.new(requestable:, user:),
-            ServiceEligibility::Annex.new(requestable:, user:),
-            ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
-            ServiceEligibility::OnShelfPickup.new(requestable:, user:),
-            ServiceEligibility::ClancyUnavailable.new(user:, requestable:),
-            ServiceEligibility::ClancyInLibrary.new(user:, requestable:),
-            ServiceEligibility::ClancyEdd.new(user:, requestable:),
-            ServiceEligibility::InProcess.new(requestable:, user:),
-            ServiceEligibility::MarquandInLibrary.new(user:, requestable:),
-            ServiceEligibility::MarquandEdd.new(user:, requestable:),
-            ServiceEligibility::Recap::NoItems.new(requestable:, user:),
-            ServiceEligibility::Recap::InLibrary.new(requestable:, user:),
-            ServiceEligibility::Recap::AskMe.new(requestable:, user:),
-            ServiceEligibility::Recap::Digitize.new(requestable:, user:),
-            ServiceEligibility::Recap::Pickup.new(requestable:, user:)
-          ].select(&:eligible?).map(&:to_s)
-        end
-      end
-
-      def calculate_unavailable_services
-        ill_eligibility = ServiceEligibility::ILL.new(requestable:, user:, any_loanable:)
-        if ill_eligibility.eligible?
-          [ill_eligibility.to_s]
-        else
-          []
-        end
-      end
-
-      def auth_user?
-        cas_provider? || alma_provider?
+      def eligibility_checks
+        [
+          ServiceEligibility::ILL.new(requestable:, user:, any_loanable:),
+          ServiceEligibility::OnOrder.new(requestable:, user:),
+          ServiceEligibility::Annex.new(requestable:, user:),
+          ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
+          ServiceEligibility::OnShelfPickup.new(requestable:, user:),
+          ServiceEligibility::ClancyUnavailable.new(user:, requestable:),
+          ServiceEligibility::ClancyInLibrary.new(user:, requestable:),
+          ServiceEligibility::ClancyEdd.new(user:, requestable:),
+          ServiceEligibility::InProcess.new(requestable:, user:),
+          ServiceEligibility::MarquandInLibrary.new(user:, requestable:),
+          ServiceEligibility::MarquandEdd.new(user:, requestable:),
+          ServiceEligibility::Recap::NoItems.new(requestable:, user:),
+          ServiceEligibility::Recap::InLibrary.new(requestable:, user:),
+          ServiceEligibility::Recap::AskMe.new(requestable:, user:),
+          ServiceEligibility::Recap::Digitize.new(requestable:, user:),
+          ServiceEligibility::Recap::Pickup.new(requestable:, user:),
+          ServiceEligibility::Aeon.new(requestable:)
+        ]
       end
   end
 end

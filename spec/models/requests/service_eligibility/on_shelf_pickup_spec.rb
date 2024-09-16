@@ -7,6 +7,7 @@ RSpec.describe Requests::ServiceEligibility::OnShelfPickup, requests: true do
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
           aeon?: false,
+          alma_managed?: true,
           charged?: false,
           in_process?: false,
           circulates?: true,
@@ -25,6 +26,7 @@ RSpec.describe Requests::ServiceEligibility::OnShelfPickup, requests: true do
       allow(requestable).to receive_messages(
           aeon?: false,
           charged?: false,
+          alma_managed?: true,
           in_process?: false,
           circulates?: true,
           on_order?: false,
