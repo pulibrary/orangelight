@@ -41,7 +41,7 @@ commands:
       - run:
           name: Check current version of node
           command: node -v
-      - run: 
+      - run:
           name: Install bundler
           command: gem install bundler -v '2.3.26'
       # Restore bundle cache
@@ -56,7 +56,7 @@ commands:
           key: orangelight-v2-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
           paths:
             - ./vendor/bundle
-      
+
 jobs:
   build:
     executor: basic-executor
@@ -82,7 +82,7 @@ jobs:
             - ~/.cache/yarn
       - persist_to_workspace:
           root: '~/orangelight'
-          paths: 
+          paths:
             - '*'
 
   test:
@@ -128,7 +128,7 @@ jobs:
       steps:
         - attach_workspace:
             at: '~/orangelight'
-        - run: 
+        - run:
             name: Run JS unit tests
             command: bundle exec yarn test
         - store_test_results:
@@ -159,7 +159,7 @@ jobs:
           command: bundle exec rake pulsearch:solr:index
       - browser-tools/install-chrome
       - run: sudo npm install -g @lhci/cli@0.14.x
-      - run: lhci autorun 
+      - run: lhci autorun
 
   rubocop:
     executor: basic-executor
@@ -197,13 +197,13 @@ jobs:
       - run:
           name: finish up coverage
           command: curl -k https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN -d "payload[build_num]=$CIRCLE_WORKFLOW_ID&payload[status]=done"
-  
+
   deploy:
     executor: basic-executor
     steps:
       - run:
           name: Deploy to Staging
-          command: "curl -k \"https://ansible-tower.princeton.edu/api/v2/job_templates/13/launch/\" --header \"Content-Type: application/json\" --header \"Authorization: Bearer $TOWER_TOKEN\" -d '{\"credential_passwords\":{},\"extra_vars\":{\"repo_name\":\"orangelight\",\"branch_name\":\"main\",\"runtime_env\":\"staging\",\"slack_alerts_channel\":\"ansible-alerts\"}}'"
+          command: "curl -k \"https://ansible-tower.princeton.edu/api/v2/job_templates/57/launch/\" --header \"Content-Type: application/json\" --header \"Authorization: Bearer $TOWER_TOKEN\" -d '{\"credential_passwords\":{},\"extra_vars\":{\"repo_name\":\"orangelight\"}}'"
 
 workflows:
   build_accept:
@@ -235,4 +235,3 @@ workflows:
            branches:
              only:
                - main
-

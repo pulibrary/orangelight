@@ -19,7 +19,7 @@ RSpec.describe AccountController, patrons: true do
                  })
     stub_request(:get, current_illiad_user_uri)
       .to_return(status: 200, body: verify_user_response)
-    valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
+    valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}?ldap=false"
     stub_request(:get, valid_patron_record_uri)
       .to_return(status: 200, body: valid_patron_response, headers: {})
   end

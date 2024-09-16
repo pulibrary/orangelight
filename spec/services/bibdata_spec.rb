@@ -28,8 +28,8 @@ RSpec.describe Bibdata do
     end
   end
 
-  describe '.get_patron', patrons: true do
-    subject(:patron) { described_class.get_patron(patron_user) }
+  describe '.get_patron' do
+    subject(:patron) { described_class.get_patron(patron_user, ldap: false) }
 
     let(:patron_user) { User.create(username: "bbird", uid: "bbird") }
     let(:patron_valid) { patron_user.valid? }
