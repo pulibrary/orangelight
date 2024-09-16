@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# require 'faraday'
-# require 'faraday-cookie_jar'
-
 module Requests
   class IlliadClient
     attr_reader :illiad_api_base, :illiad_api_key, :error

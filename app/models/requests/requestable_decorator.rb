@@ -143,8 +143,6 @@ module Requests
         "PJ"
       elsif requestable.cul_music?
         "PK"
-      # elsif requestable.recap_pf?
-      #   "PF"
       else
         first_delivery_location[:gfa_pickup] || "PA"
       end

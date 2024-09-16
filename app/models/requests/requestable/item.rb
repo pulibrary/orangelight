@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 class Requests::Requestable
   class Item < SimpleDelegator
-    # pick_up_location_code on the item level
     def pick_up_location_code
       self['pickup_location_code'] || ""
     end
@@ -64,7 +63,6 @@ class Requests::Requestable
       enum_value.present?
     end
 
-    # item type on the item level
     def item_type_non_circulate?
       ['NoCirc', 'Closed', 'Res-No'].include? item_type
     end

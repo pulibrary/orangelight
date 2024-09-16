@@ -137,7 +137,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A non circulating item' do
     let(:request) { FactoryBot.build(:mfhd_with_no_circ_and_circ_item, patron:) }
     let(:requestable) { request.requestable[12] }
-    # let(:item) { barcode :"32101024595744", id: 282_632, location: "f", copy_number: 1, item_sequence_number: 14, status: "Not Charged", on_reserve: "N", item_type: "NoCirc", pickup_location_id: 299, pickup_location_code: "fcirc", enum: "vol.22", "chron": "1996", enum_display: "vol.22 (1996)", label: "Firestone Library" }
     let(:no_circ_item_id) { requestable.item['id'] }
     let(:no_circ_item_type) { requestable.item['item_type'] }
     let(:no_circ_pick_up_location_code) { requestable.item['pickup_location_code'] }
@@ -156,7 +155,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A circulating item' do
     let(:request) { FactoryBot.build(:mfhd_with_no_circ_and_circ_item, patron:) }
     let(:requestable) { request.requestable[0] }
-    # let(:item) {"barcode":"32101022548893","id":282628,"location":"f","copy_number":1,"item_sequence_number":10,"status":"Not Charged","on_reserve":"N","item_type":"Gen","pickup_location_id":299,"pickup_location_code":"fcirc","enum_display":"vol.18","chron":"1992","enum_display":"vol.18 (1992)","label":"Firestone Library"}
     let(:no_circ_item_id) { requestable.item['id'] }
     let(:no_circ_item_type) { requestable.item['item_type'] }
     let(:no_circ_pick_up_location_code) { requestable.item['pickup_location_code'] }
@@ -573,7 +571,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
   context 'A requestable item from Forrestal Annex with no item data' do
     let(:request) { FactoryBot.build(:request_no_items, patron:) }
-    let(:requestable) { request.requestable.first } # assume only one requestable
+    let(:requestable) { request.requestable.first }
 
     describe 'requestable with no items ' do
       it 'does not have item data' do
@@ -603,7 +601,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     end
 
     ## The JSON response for holding w/no items is empty now. We used to check the availability at the bib level, but that is not available in alma
-    ##  We must therefore assume that a holding with no itesm is not available
+    ##  We must therefore assume that a holding with no items is not available
     ## https://bibdata-alma-staging.princeton.edu/bibliographic/9944928463506421/holdings/22490610730006421/availability.json
     describe "#available?" do
       it "is not available" do
@@ -759,7 +757,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:requestable_charged) { requestable_holding.first }
 
     describe '#checked-out requestable' do
-      # Barcode users should NOT have the following privileges ...
+      # Barcode users should NOT have the following privileges
 
       it "does not have ILL request service available" do
         expect(requestable_charged.services.include?('ill')).to be false
