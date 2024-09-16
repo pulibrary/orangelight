@@ -59,14 +59,14 @@ module Requests
       end
 
       def item
-        @item ||= barcode_from_holding || barcode_from_document
+        @item ||= item_from_holding || item_from_document
       end
 
-      def barcode_from_holding
+      def item_from_holding
         holding&.fetch('items', nil)&.first
       end
 
-      def barcode_from_document
+      def item_from_document
         @document.holdings_all_display.values.first&.fetch('items', nil)&.first
       end
 
