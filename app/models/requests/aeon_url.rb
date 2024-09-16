@@ -4,7 +4,7 @@ module Requests
   class AeonUrl
     # @param document [SolrDocument]
     # @param holding [Hash]
-    # @param item [Requests::Requestable::Item]
+    # @param item [Requests::Item]
     def initialize(document:, holding: nil, item: nil)
       @document = document
       @holding = holding.values.first if holding
@@ -27,8 +27,8 @@ module Requests
         ctx = @document.to_ctx
         if item.present?
           ctx.referent.set_metadata('iteminfo5', item['id']&.to_s)
-          if enum_value.present?
-            ctx.referent.set_metadata('volume', enum_value)
+          if item.enum_value.present?
+            ctx.referent.set_metadata('volume', item.enum_value)
             ctx.referent.set_metadata('issue', item[:chron_display]) if item[:chron_display].present?
           else
             ctx.referent.set_metadata('volume', holding['location_has']&.first)
@@ -46,7 +46,7 @@ module Requests
           Location: shelf_location_code,
           SubLocation: sub_location,
           ItemInfo1: I18n.t("requests.aeon.access_statement"),
-          ItemNumber: item&.fetch('barcode', nil)
+          ItemNumber: item&.barcode
         }.compact
       end
 
@@ -54,20 +54,18 @@ module Requests
         @holding ||= @document.holdings_all_display.values.first
       end
 
-      def enum_value
-        [item['enum_display'], item['enumeration']].join(" ").strip
-      end
-
       def item
-        @item ||= barcode_from_holding || barcode_from_document
+        @item ||= item_from_holding || item_from_document || Item.new({})
       end
 
-      def barcode_from_holding
-        holding&.fetch('items', nil)&.first
+      def item_from_holding
+        item_hash = holding&.fetch('items', nil)&.first
+        Item.new(item_hash.with_indifferent_access) if item_hash
       end
 
-      def barcode_from_document
-        @document.holdings_all_display.values.first&.fetch('items', nil)&.first
+      def item_from_document
+        item_hash = @document.holdings_all_display.values.first&.fetch('items', nil)&.first
+        Item.new(item_hash.with_indifferent_access) if item_hash
       end
 
       def at_marquand?

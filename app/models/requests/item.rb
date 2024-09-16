@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Requests::Requestable
+module Requests
   class Item < SimpleDelegator
     def pick_up_location_code
       self['pickup_location_code'] || ""
@@ -110,7 +110,7 @@ class Requests::Requestable
     end
 
     def partner_holding?
-      Requests.config[:recap_partner_locations].keys.include? self["location_code"]
+      Requests.config[:recap_partner_locations].key?(self["location_code"])
     end
 
     # The location code (e.g. firestone$pf)
