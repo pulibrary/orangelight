@@ -6,13 +6,15 @@ class Bibdata
   class PerSecondThresholdError < StandardError; end
   class ResourceNotFoundError < StandardError; end
   class ForbiddenError < StandardError; end
+  class EmptyResponseError < StandardError; end
 
   class << self
     # ignore rubocop warnings; complexity and length step from error checking.
-    def get_patron(user)
+    def get_patron(user, ldap:)
       return unless user.uid
 
-      api_response = api_request_patron(id: user.uid)
+      patron_uri = patron_uri(id: user.uid, ldap:)
+      api_response = api_request_patron(patron_uri:)
 
       build_api_patron(api_response:, user:)
     rescue ServerError
@@ -29,6 +31,9 @@ class Bibdata
       nil
     rescue Faraday::ConnectionFailed
       Rails.logger.error("Unable to connect to #{api_base_uri}")
+      nil
+    rescue EmptyResponseError
+      Rails.logger.error("#{patron_uri} returned an empty patron response")
       nil
     end
 
@@ -52,8 +57,8 @@ class Bibdata
         Requests.config['bibdata_base']
       end
 
-      def api_request_patron(id:)
-        api_response = Faraday.get("#{api_base_uri}/patron/#{id}")
+      def api_request_patron(patron_uri:)
+        api_response = Faraday.get(patron_uri)
 
         case api_response.status
         when 500
@@ -64,17 +69,26 @@ class Bibdata
           raise(ResourceNotFoundError)
         when 403
           raise(ForbiddenError)
+        else
+          raise(EmptyResponseError) if api_response.body.empty?
         end
 
         api_response
       end
 
+      def patron_uri(id:, ldap:)
+        "#{api_base_uri}/patron/#{id}?ldap=#{ldap}"
+      end
+
       def build_api_patron(api_response:, user:)
-        base_patron_json = JSON.parse(api_response.body)
+        response_body = api_response.body
+        base_patron_json = JSON.parse(response_body)
         patron_json = base_patron_json.merge(
           valid: user.valid?
         )
         patron_json.with_indifferent_access
+      rescue JSON::ParserError
+        Rails.logger.error("#{api_response.env.url} returned an invalid patron response: #{response_body}")
       end
 
       def sorted_locations(response)

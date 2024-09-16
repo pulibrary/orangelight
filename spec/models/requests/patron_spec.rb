@@ -15,7 +15,7 @@ describe Requests::Patron, requests: true do
   let(:guest?) { false }
   let(:provider) { nil }
   let(:user) do
-    instance_double(User, guest?: guest?, uid:, alma_provider?: false, provider:)
+    instance_double(User, guest?: guest?, uid:, alma_provider?: false, provider:, valid?: true)
   end
   let(:bibdata_uri) { Requests.config[:bibdata_base] }
   let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
@@ -123,8 +123,8 @@ describe Requests::Patron, requests: true do
         )
       end
 
-      it 'logs errors for the patron' do
-        expect(patron.errors).to include("The maximum number of HTTP requests per second for the Alma API has been exceeded.")
+      it 'raises an error' do
+        expect { patron.errors }.to raise_error(Bibdata::PerSecondThresholdError)
       end
     end
   end
@@ -137,7 +137,7 @@ describe Requests::Patron, requests: true do
     it 'logs the error' do
       allow(Rails.logger).to receive(:error)
       described_class.new(user:)
-      expect(Rails.logger).to have_received(:error).with("Unable to connect to #{bibdata_uri}/patron/foo?ldap=true")
+      expect(Rails.logger).to have_received(:error).with("Unable to connect to #{bibdata_uri}")
     end
   end
   context 'when bibdata passes on an html response' do

@@ -102,9 +102,7 @@ module Requests
         if alma_provider?
           AlmaPatron.new(uid:).hash
         else
-          full_patron = FullPatron.new(uid:)
-          errors.concat(full_patron.errors)
-          full_patron.hash
+          FullPatron.new(user:).hash
         end
       end
   end

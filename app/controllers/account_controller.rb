@@ -87,6 +87,6 @@ class AccountController < ApplicationController
   private
 
     def current_patron(user)
-      Bibdata.get_patron(user)
+      Bibdata.get_patron(user, ldap: false)
     end
 end
