@@ -191,7 +191,6 @@ detectors:
     - Requests::Form#off_site?
     - Requests::Form#serial?
     - Requests::Form#status_label
-    - Requests::FullPatron#log_errors
     - Requests::Illiad#au_params
     - Requests::Illiad#genere
     - Requests::Illiad#get_identifier
@@ -207,9 +206,9 @@ detectors:
     - Requests::IlliadMetadata::ArticleExpress#map_metdata
     - Requests::IlliadMetadata::ArticleExpress#volume_number
     - Requests::IlliadTransactionClient#create_request
-    - Requests::Location#sort_pick_ups
     - Requests::Item#copy_value
     - Requests::Item#status
+    - Requests::Location#sort_pick_ups
     - Requests::Requestable#pick_up_locations
     - Requests::Requestable#scsb_pick_up_override
     - Requests::RequestableDecorator#libcal_url
@@ -374,8 +373,8 @@ detectors:
     - Blacklight::Marc::BookCtxBuilder
     - Requests::Form
     - Requests::Illiad
-    - Requests::NonAlmaAeonUrl
     - Requests::Item
+    - Requests::NonAlmaAeonUrl
     - Requests::Submission
     - Requests::Submissions::Clancy
     - Requests::Submissions::ClancyEdd
@@ -467,10 +466,10 @@ detectors:
     - Requests::IlliadMetadata::Loan
     - Requests::IlliadMetadata::Metadata
     - Requests::IlliadTransactionClient
-    - Requests::Libcal
-    - Requests::Patron
     - Requests::Item
-    - Requests::Requestable::NullItem
+    - Requests::Libcal
+    - Requests::NullItem
+    - Requests::Patron
     - Requests::RequestableDecorator
     - Requests::SelectedItemsValidator
     - Requests::ServiceEligibility::AbstractOnShelf
@@ -506,6 +505,7 @@ detectors:
     - Orangelight::SubjectsOrNotesProcessor
     - AdvancedSearchConstraint
     - Bibdata
+    - Bibdata::EmptyResponseError
     - Bibdata::ForbiddenError
     - Bibdata::PerSecondThresholdError
     - Bibdata::ResourceNotFoundError
@@ -693,10 +693,10 @@ detectors:
     - Requests::AeonUrl
     - Requests::Form
     - Requests::FormDecorator
-    - Requests::Location
-    - Requests::Patron
     - Requests::Item
-    - Requests::Requestable::NullItem
+    - Requests::Location
+    - Requests::NullItem
+    - Requests::Patron
     - Requests::Requestable
     - Requests::RequestableDecorator
     - Requests::Submission
@@ -792,9 +792,6 @@ detectors:
     - Requests::Form#build_requestable_with_items
     - Requests::Form#route_requests
     - Requests::FormDecorator#any_fill_in_eligible?
-    - Requests::FullPatron#bibdata_response
-    - Requests::FullPatron#log_errors
-    - Requests::FullPatron#patron_hash
     - Requests::Illiad#get_identifier
     - Requests::Illiad#map_metdata
     - Requests::IlliadClient#get_json_response
