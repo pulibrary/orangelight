@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Requests::Requestable
+module Requests
   class Item < SimpleDelegator
     def pick_up_location_code
       self['pickup_location_code'] || ""

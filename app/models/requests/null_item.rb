@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-class Requests::Requestable
-  class NullItem < Requests::Requestable::Item
+module Requests
+  class NullItem < Requests::Item
     def nil?
       true
     end

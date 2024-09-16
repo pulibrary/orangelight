@@ -4,7 +4,7 @@ module Requests
   class AeonUrl
     # @param document [SolrDocument]
     # @param holding [Hash]
-    # @param item [Requests::Requestable::Item]
+    # @param item [Requests::Item]
     def initialize(document:, holding: nil, item: nil)
       @document = document
       @holding = holding.values.first if holding

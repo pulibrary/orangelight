@@ -208,8 +208,8 @@ detectors:
     - Requests::IlliadMetadata::ArticleExpress#volume_number
     - Requests::IlliadTransactionClient#create_request
     - Requests::Location#sort_pick_ups
-    - Requests::Requestable::Item#copy_value
-    - Requests::Requestable::Item#status
+    - Requests::Item#copy_value
+    - Requests::Item#status
     - Requests::Requestable#pick_up_locations
     - Requests::Requestable#scsb_pick_up_override
     - Requests::RequestableDecorator#libcal_url
@@ -375,7 +375,7 @@ detectors:
     - Requests::Form
     - Requests::Illiad
     - Requests::NonAlmaAeonUrl
-    - Requests::Requestable::Item
+    - Requests::Item
     - Requests::Submission
     - Requests::Submissions::Clancy
     - Requests::Submissions::ClancyEdd
@@ -469,7 +469,7 @@ detectors:
     - Requests::IlliadTransactionClient
     - Requests::Libcal
     - Requests::Patron
-    - Requests::Requestable::Item
+    - Requests::Item
     - Requests::Requestable::NullItem
     - Requests::RequestableDecorator
     - Requests::SelectedItemsValidator
@@ -695,7 +695,7 @@ detectors:
     - Requests::FormDecorator
     - Requests::Location
     - Requests::Patron
-    - Requests::Requestable::Item
+    - Requests::Item
     - Requests::Requestable::NullItem
     - Requests::Requestable
     - Requests::RequestableDecorator
@@ -992,8 +992,8 @@ detectors:
     - Requests::IlliadMetadata::Loan#volume_number
     - Requests::IlliadTransactionClient#disavowed_illiad_patron?
     - Requests::IlliadTransactionClient#validate_illiad_patron
-    - Requests::Requestable::Item#available_statuses
-    - Requests::Requestable::Item#unavailable_statuses
+    - Requests::Item#available_statuses
+    - Requests::Item#unavailable_statuses
     - Requests::SelectedItemsValidator#validate_delivery_mode
     - Requests::SelectedItemsValidator#validate_item_id
     - Requests::SelectedItemsValidator#validate_pick_up_location
