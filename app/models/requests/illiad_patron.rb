@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require './lib/orangelight/illiad_patron_client'
+require './lib/orangelight/illiad_account'
 
 module Requests
   # Creates patron for Illiad requests
@@ -14,7 +16,7 @@ module Requests
     end
 
     def illiad_patron
-      get_json_response("/ILLiadWebPlatform/Users/#{netid}")
+      get_json_response
     end
 
     def create_illiad_patron

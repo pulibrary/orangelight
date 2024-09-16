@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Requests::FullPatron, requests: true do
+RSpec.describe Requests::FullPatron, requests: true, patrons: true do
   let(:user) { FactoryBot.create(:user, uid: 'abc123') }
 
   it 'can be instantiated' do

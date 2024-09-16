@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Requests::AlmaPatron, requests: true do
+RSpec.describe Requests::AlmaPatron, requests: true, patrons: true do
   context 'with a call to Alma' do
     let(:uid) { 'BC123456789' }
     let(:patron_with_multiple_barcodes) { fixture('/BC123456789.json') }
