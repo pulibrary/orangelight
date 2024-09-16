@@ -40,7 +40,7 @@ RSpec.describe AccountController do
 
     before do
       sign_in(valid_user)
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}?ldap=false"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
     end
@@ -86,7 +86,7 @@ RSpec.describe AccountController do
 
     before do
       sign_in(valid_user)
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}?ldap=false"
       cancel_ill_requests_uri = "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
@@ -128,7 +128,7 @@ RSpec.describe AccountController do
     let(:unauthorized_user) { FactoryBot.create(:unauthorized_princeton_patron) }
 
     it 'returns Princeton Patron Account Data using a persisted User Model' do
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}?ldap=false"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
