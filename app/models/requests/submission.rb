@@ -5,11 +5,11 @@ module Requests
   class Submission
     include ActiveModel::Validations
 
-    validates :email, presence: true, email: true, length: { minimum: 5, maximum: 50 } # , format: { message: "Supply a Valid Email Address" } #, on: :submit
-    validates :user_name, presence: true, length: { minimum: 1, maximum: 50 } # ,  format: { message: "Name Can't be Blank" } #, on: :submit
+    validates :email, presence: true, email: true, length: { minimum: 5, maximum: 50 }
+    validates :user_name, presence: true, length: { minimum: 1, maximum: 50 }
     validates :user_barcode, allow_blank: true, presence: true, length: { minimum: 5, maximum: 14 },
                              format: { with: /(^\d{14}$)/i, message: "Please supply a valid library barcode" }
-    validate :item_validations # , presence: true, length: { minimum: 1 }, on: :submit
+    validate :item_validations
 
     def initialize(params, patron)
       @patron = patron
@@ -92,7 +92,6 @@ module Requests
     end
 
     def edd?(item)
-      # return false if item["type"] == "digitize_fill_in"
       delivery_mode = delivery_mode(item)
       delivery_mode.present? && delivery_mode == "edd"
     end
@@ -140,7 +139,6 @@ module Requests
       end
 
       def in_library?(item)
-        # return false if item["type"] == "digitize_fill_in"
         delivery_mode = delivery_mode(item)
         delivery_mode.present? && delivery_mode == "in_library"
       end

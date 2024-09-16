@@ -95,8 +95,6 @@ module Requests
       def load_patron(user:)
         patron_hash = current_patron_hash(user.uid)
         errors << "A problem occurred looking up your library account." if patron_hash.blank?
-        # Uncomment to fake being a non barcoded user
-        # patron_hash[:barcode] = nil
         patron_hash || {}
       end
 

@@ -86,9 +86,8 @@ describe Requests::Submissions::Recap, requests: true do
 
     describe 'All ReCAP Requests' do
       it "captures recap errors when the request is unsuccessful or malformed." do
-        stub_request(:post, scsb_url).
-          # with(headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 401, body: "Unauthorized", headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 401, body: "Unauthorized", headers: {})
         expect { recap_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(recap_request.submitted.size).to eq(0)
         expect(recap_request.errors.size).to eq(1)
@@ -98,9 +97,8 @@ describe Requests::Submissions::Recap, requests: true do
       end
 
       it "captures recap edd errors when the request is unsuccessful or malformed." do
-        stub_request(:post, scsb_url).
-          # with(headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 401, body: "Unauthorized", headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 401, body: "Unauthorized", headers: {})
         expect { recap_edd_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(recap_edd_request.submitted.size).to eq(0)
         expect(recap_edd_request.errors.size).to eq(1)
@@ -110,9 +108,8 @@ describe Requests::Submissions::Recap, requests: true do
       end
 
       it "captures errors when response is a 200 but the request is unsuccessful" do
-        stub_request(:post, scsb_url).
-          # with(body: good_request, headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 200, body: bad_response, headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 200, body: bad_response, headers: {})
         expect { recap_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(recap_request.submitted.size).to eq(0)
         expect(recap_request.errors.size).to eq(1)
@@ -122,9 +119,8 @@ describe Requests::Submissions::Recap, requests: true do
       end
 
       it "captures successful request submission" do
-        stub_request(:post, scsb_url).
-          # with(body: good_request, headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 200, body: good_response, headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, alma_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
           .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
@@ -136,9 +132,8 @@ describe Requests::Submissions::Recap, requests: true do
       end
 
       it "captures successful edd request submission" do
-        stub_request(:post, scsb_url).
-          # with(body: good_request, headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 200, body: good_response, headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, alma_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
           .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
@@ -150,9 +145,8 @@ describe Requests::Submissions::Recap, requests: true do
       end
 
       it "captures errors in the alma hold request" do
-        stub_request(:post, scsb_url).
-          # with(body: good_request, headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 200, body: good_response, headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, alma_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
           .to_return(status: 400, body: fixture("alma_hold_error_no_library_response.json"), headers: { 'content-type': 'application/json' })
@@ -275,9 +269,8 @@ describe Requests::Submissions::Recap, requests: true do
 
     describe 'All ReCAP Requests' do
       it "captures successful request submissions." do
-        stub_request(:post, scsb_url).
-          # with(body: good_request, headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 200, body: good_response, headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, alma_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
           .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
