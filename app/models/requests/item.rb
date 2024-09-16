@@ -97,6 +97,10 @@ module Requests
       self[:status_label]
     end
 
+    def not_a_work_order?
+      self[:status_source] != "work_order"
+    end
+
     def available?
       available_statuses.include?(status_label)
     end

@@ -123,12 +123,6 @@ module Requests
       doc['location_code_s'].first
     end
 
-    def off_site?
-      return false if location['library'].blank? || location['library']['code'].blank?
-      library_code = location[:library][:code]
-      library_code == 'recap' || library_code == 'marquand' || library_code == 'annex'
-    end
-
     # holdings: The holdings1_display from the SolrDocument
     # holding: The holding of the holding_id(mfhd) from the SolrDocument
     # happens on 'click' the 'Request' button
@@ -202,13 +196,15 @@ module Requests
         barcodesort
       end
 
+      # :reek:DuplicateMethodCall
       def status_label(item:, availability_data:)
-        if item["status_source"] != "work_order" && availability_data.empty?
+        item_object = Item.new item
+        if item_object.not_a_work_order? && availability_data.empty?
           "Unavailable"
-        elsif item["status_source"] != "work_order" && item[:status_label] == 'Item in place' && availability_data.size == 1 && availability_data.first['errorMessage'] == "Bib Id doesn't exist in SCSB database."
+        elsif item_object.not_a_work_order? && item_object.status_label == 'Item in place' && availability_data.size == 1 && availability_data.first['errorMessage'] == "Bib Id doesn't exist in SCSB database."
           "In Process"
         else
-          item[:status_label]
+          item_object.status_label
         end
       end
 
