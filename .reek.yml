@@ -64,7 +64,6 @@ detectors:
     exclude:
     - ApplicationHelper
     - Requests::ApplicationHelper
-    - Requests::IlliadClient
     - Requests::SelectedItemsValidator
     - PhysicalHoldingsMarkupBuilder
   DuplicateMethodCall:
@@ -188,9 +187,7 @@ detectors:
     - Requests::ClancyItem#post_clancy
     - Requests::Form#build_requestable_from_data
     - Requests::Form#initialize
-    - Requests::Form#off_site?
     - Requests::Form#serial?
-    - Requests::Form#status_label
     - Requests::Illiad#au_params
     - Requests::Illiad#genere
     - Requests::Illiad#get_identifier
@@ -198,7 +195,6 @@ detectors:
     - Requests::Illiad#illiad_request_url
     - Requests::Illiad#map_metdata
     - Requests::IlliadClient#get_json_response
-    - Requests::IlliadClient#get_response
     - Requests::IlliadClient#initialize
     - Requests::IlliadClient#post_json_response
     - Requests::IlliadClient#post_response
@@ -318,7 +314,6 @@ detectors:
     - Requests::Illiad#illiad_request_parameters
     - Requests::Illiad#illiad_request_url
     - Requests::Illiad#map_metdata
-    - Requests::IlliadClient#conn
     - Requests::IlliadClient#get_json_response
     - Requests::IlliadClient#post_json_response
     - Requests::Location#build_delivery_locations
@@ -795,7 +790,6 @@ detectors:
     - Requests::Illiad#get_identifier
     - Requests::Illiad#map_metdata
     - Requests::IlliadClient#get_json_response
-    - Requests::IlliadClient#get_response
     - Requests::IlliadClient#post_json_response
     - Requests::IlliadClient#post_response
     - Requests::IlliadPatron#illiad_staff_title_status
