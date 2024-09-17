@@ -39,7 +39,7 @@ Fix:
 - Find which machine to use from section: `How to know which machine to use`. Currently the `call_numbers` task is deployed to run on `catalog-indexer3`.
 - SSH as `deploy` user to the machine used to produce the subjects lists
 
-- Run the first rake task to generate the CSV file from solr data:
+- Run the first rake task to generate the CSV file from Solr data:
 - `cd /opt/orangelight/current`
 - `OL_DB_PORT=5432 bundle exec rake browse:subjects`
 
