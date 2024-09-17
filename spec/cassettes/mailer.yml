@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/firestone$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -55,7 +55,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:07:04 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/eastasian$cjk.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/eastasian$cjk.json
     body:
       encoding: US-ASCII
       string: ''
@@ -106,7 +106,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:07:04 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/plasma$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/plasma$stacks.json
     body:
       encoding: US-ASCII
       string: ''

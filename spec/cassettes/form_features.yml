@@ -69,7 +69,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:02:52 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/recap$pa.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/recap$pa.json
     body:
       encoding: US-ASCII
       string: ''
@@ -145,7 +145,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:02:53 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9999443553506421/holdings/22743365320006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9999443553506421/holdings/22743365320006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -263,7 +263,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:03:00 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/4815239/holdings/5018096/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/4815239/holdings/5018096/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -378,7 +378,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:03:07 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/993365253506421/holdings/22220245570006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/993365253506421/holdings/22220245570006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -495,7 +495,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:03:16 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/eastasian$cjk.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/eastasian$cjk.json
     body:
       encoding: US-ASCII
       string: ''
@@ -546,7 +546,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:03:16 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99117665883506421/holdings/22707341710006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99117665883506421/holdings/22707341710006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -665,7 +665,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:03:24 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/firestone$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -718,7 +718,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:03:24 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99103251433506421/holdings/22480270140006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99103251433506421/holdings/22480270140006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -844,7 +844,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:03:31 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9994692/holdings/9800910/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9994692/holdings/9800910/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -959,7 +959,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:03:36 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9917887963506421/holdings/22503918400006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9917887963506421/holdings/22503918400006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -1078,7 +1078,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:03:43 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9941150973506421/holdings/22492663380006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9941150973506421/holdings/22492663380006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -1255,7 +1255,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:03:53 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9994933183506421/holdings/22558528920006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9994933183506421/holdings/22558528920006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -1374,7 +1374,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:01 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99114026863506421/holdings/22753408610006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99114026863506421/holdings/22753408610006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -1532,7 +1532,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:06 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99113283293506421/holdings/22750642660006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99113283293506421/holdings/22750642660006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -1649,7 +1649,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:09 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/993083506421/holdings/22740191170006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/993083506421/holdings/22740191170006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -1782,7 +1782,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:15 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9912636153506421/holdings/22557213410006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9912636153506421/holdings/22557213410006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -1834,7 +1834,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:21 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/firestone$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -1954,7 +1954,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:22 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/annex$fst.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/annex$fst.json
     body:
       encoding: US-ASCII
       string: ''
@@ -2027,7 +2027,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:22 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/999455503506421/holdings/22642306790006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/999455503506421/holdings/22642306790006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -2169,7 +2169,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:28 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/lewis$pn.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/lewis$pn.json
     body:
       encoding: US-ASCII
       string: ''
@@ -2230,7 +2230,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:28 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9970533073506421/holdings/22667391160006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9970533073506421/holdings/22667391160006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -2282,7 +2282,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:34 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/lewis$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/lewis$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -2335,7 +2335,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:34 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9970533073506421/holdings/22667391180006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9970533073506421/holdings/22667391180006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -2387,7 +2387,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:39 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/lewis$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/lewis$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -2507,7 +2507,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:40 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/lewis$ref.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/lewis$ref.json
     body:
       encoding: US-ASCII
       string: ''
@@ -2560,7 +2560,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:40 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9995948403506421/holdings/22500774400006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9995948403506421/holdings/22500774400006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -2746,7 +2746,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:53 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99105746993506421/holdings/22547424510006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99105746993506421/holdings/22547424510006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -2890,7 +2890,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:57 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/marquand$pj.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/marquand$pj.json
     body:
       encoding: US-ASCII
       string: ''
@@ -2952,7 +2952,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:04:58 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99117809653506421/holdings/22613352460006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99117809653506421/holdings/22613352460006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3071,7 +3071,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:03 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/arch$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/arch$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3125,7 +3125,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:03 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99117876713506421/holdings/22561348800006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99117876713506421/holdings/22561348800006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3177,7 +3177,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:09 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/arch$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/arch$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3298,7 +3298,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:10 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/recap$qv.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/recap$qv.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3375,7 +3375,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:10 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99115783193506421/holdings/22534122440006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99115783193506421/holdings/22534122440006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3495,7 +3495,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:15 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9999946923506421/holdings/9800910/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9999946923506421/holdings/9800910/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3621,7 +3621,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:20 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9915057783506421/holdings/22686942210006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9915057783506421/holdings/22686942210006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3757,7 +3757,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:26 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/annex$locked.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/annex$locked.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3816,7 +3816,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:26 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9922868943506421/holdings/22692156940006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9922868943506421/holdings/22692156940006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3933,7 +3933,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:32 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/marquand$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/marquand$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3986,7 +3986,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:32 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9941274093506421/holdings/22690999210006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9941274093506421/holdings/22690999210006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4036,7 +4036,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:36 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/scsbcul.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/scsbcul.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4089,7 +4089,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:37 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-2879197/holdings/2856807/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/SCSB-2879197/holdings/2856807/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4137,7 +4137,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:37 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-2879206/holdings/2856817/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/SCSB-2879206/holdings/2856817/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4252,7 +4252,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:40 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9956364873506421/holdings/22587331490006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9956364873506421/holdings/22587331490006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4304,7 +4304,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:44 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/scsbnypl.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/scsbnypl.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4357,7 +4357,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:45 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-8953469/holdings/9159920/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/SCSB-8953469/holdings/9159920/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4472,7 +4472,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:46 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99123340993506421/holdings/22569931350006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99123340993506421/holdings/22569931350006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4591,7 +4591,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:53 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99124449473506421/holdings/22664801380006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99124449473506421/holdings/22664801380006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4643,7 +4643,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:05:59 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/firestone$pf.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$pf.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4707,7 +4707,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:06:00 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/993083506421/holdings/22740191180006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/993083506421/holdings/22740191180006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4824,7 +4824,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:06:04 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9997708113506421/holdings/22729045760006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9997708113506421/holdings/22729045760006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4943,7 +4943,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:06:12 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/rare$ctsn.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/rare$ctsn.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4996,7 +4996,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:06:12 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9973529363506421/holdings/22667098990006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9973529363506421/holdings/22667098990006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5069,7 +5069,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 12:06:19 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9999946923506421/holdings/22558528920006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9999946923506421/holdings/22558528920006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5186,7 +5186,7 @@ http_interactions:
   recorded_at: Fri, 20 Aug 2021 16:33:07 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-9726156/holdings/10366966/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/SCSB-9726156/holdings/10366966/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5301,7 +5301,7 @@ http_interactions:
   recorded_at: Fri, 20 Aug 2021 16:33:19 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-5595350/holdings/5589784/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/SCSB-5595350/holdings/5589784/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5416,7 +5416,7 @@ http_interactions:
   recorded_at: Tue, 31 Aug 2021 18:57:34 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/scsbhl.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/scsbhl.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5469,7 +5469,7 @@ http_interactions:
   recorded_at: Tue, 31 Aug 2021 18:57:34 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-9919951/holdings/10658780/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/SCSB-9919951/holdings/10658780/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5584,7 +5584,7 @@ http_interactions:
   recorded_at: Thu, 16 Sep 2021 14:04:56 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99125378834306421/holdings/22897184810006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99125378834306421/holdings/22897184810006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5703,7 +5703,7 @@ http_interactions:
   recorded_at: Fri, 01 Oct 2021 18:25:17 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9973397793506421/holdings/22541187250006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9973397793506421/holdings/22541187250006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5763,7 +5763,7 @@ http_interactions:
   recorded_at: Fri, 01 Oct 2021 18:25:23 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/eastasian$cjk.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/eastasian$cjk.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5881,7 +5881,7 @@ http_interactions:
   recorded_at: Tue, 16 Nov 2021 13:37:23 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/annex$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/annex$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5958,7 +5958,7 @@ http_interactions:
   recorded_at: Tue, 16 Nov 2021 13:37:23 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9941347943506421/holdings/22560381400006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9941347943506421/holdings/22560381400006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6079,7 +6079,7 @@ http_interactions:
   recorded_at: Wed, 06 Apr 2022 15:15:18 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/998574693506421/holdings/abc123/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/998574693506421/holdings/abc123/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6127,7 +6127,7 @@ http_interactions:
   recorded_at: Wed, 06 Apr 2022 15:15:28 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99105816503506421/holdings/22514405160006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99105816503506421/holdings/22514405160006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6181,7 +6181,7 @@ http_interactions:
   recorded_at: Tue, 12 Apr 2022 20:48:23 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/arch$la.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/arch$la.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6288,7 +6288,7 @@ http_interactions:
   recorded_at: Tue, 12 Apr 2022 20:48:32 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/arch$la.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/arch$la.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6409,7 +6409,7 @@ http_interactions:
   recorded_at: Wed, 06 Apr 2022 18:53:21 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-6710959/holdings/6792300/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/SCSB-6710959/holdings/6792300/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6537,7 +6537,7 @@ http_interactions:
   recorded_at: Wed, 06 Apr 2022 18:53:32 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9941151723506421/holdings/22492702000006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9941151723506421/holdings/22492702000006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6656,7 +6656,7 @@ http_interactions:
   recorded_at: Wed, 06 Apr 2022 18:53:41 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/annex$doc.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/annex$doc.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6715,7 +6715,7 @@ http_interactions:
   recorded_at: Wed, 06 Apr 2022 18:53:41 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9947220743506421/holdings/22734584180006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9947220743506421/holdings/22734584180006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6846,7 +6846,7 @@ http_interactions:
   recorded_at: Wed, 06 Apr 2022 18:53:51 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/firestone$dixn.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$dixn.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6897,7 +6897,7 @@ http_interactions:
   recorded_at: Wed, 06 Apr 2022 18:53:51 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99125452799106421/holdings/22917143470006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99125452799106421/holdings/22917143470006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -7012,7 +7012,7 @@ http_interactions:
   recorded_at: Wed, 06 Apr 2022 19:05:12 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/firestone$clas.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$clas.json
     body:
       encoding: US-ASCII
       string: ''
@@ -7063,7 +7063,7 @@ http_interactions:
   recorded_at: Wed, 06 Apr 2022 19:05:12 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99125428126306421/holdings/22910398870006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99125428126306421/holdings/22910398870006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -7115,7 +7115,7 @@ http_interactions:
   recorded_at: Wed, 06 Apr 2022 19:05:16 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/engineer$serial.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/engineer$serial.json
     body:
       encoding: US-ASCII
       string: ''
@@ -7169,7 +7169,7 @@ http_interactions:
   recorded_at: Wed, 06 Apr 2022 19:05:23 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/998574693506421/holdings/22579850750006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/998574693506421/holdings/22579850750006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8440,7 +8440,7 @@ http_interactions:
   recorded_at: Tue, 12 Apr 2022 14:37:56 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/recap$pa.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/recap$pa.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8516,7 +8516,7 @@ http_interactions:
   recorded_at: Tue, 12 Apr 2022 19:36:12 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99125465081006421/holdings/22922148510006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99125465081006421/holdings/22922148510006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8578,7 +8578,7 @@ http_interactions:
   recorded_at: Tue, 12 Apr 2022 19:36:16 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99124417723506421/holdings/22689758840006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99124417723506421/holdings/22689758840006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8697,7 +8697,7 @@ http_interactions:
   recorded_at: Thu, 28 Apr 2022 19:32:58 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99125492003506421/holdings/22927395910006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99125492003506421/holdings/22927395910006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8812,7 +8812,7 @@ http_interactions:
   recorded_at: Thu, 05 May 2022 19:10:43 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/arch$ref.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/arch$ref.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8866,7 +8866,7 @@ http_interactions:
   recorded_at: Thu, 05 May 2022 19:10:44 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99123713303506421/holdings/22668310350006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99123713303506421/holdings/22668310350006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8918,7 +8918,7 @@ http_interactions:
   recorded_at: Thu, 05 May 2022 19:10:49 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/firestone$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8971,7 +8971,7 @@ http_interactions:
   recorded_at: Fri, 03 Jun 2022 13:09:07 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9991807103506421/holdings/22696270550006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9991807103506421/holdings/22696270550006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9025,7 +9025,7 @@ http_interactions:
   recorded_at: Fri, 03 Jun 2022 13:09:12 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/RES_SHARE$IN_RS_REQ.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/RES_SHARE$IN_RS_REQ.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9227,7 +9227,7 @@ http_interactions:
   recorded_at: Mon, 12 Dec 2022 19:24:12 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/lewis$serial.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/lewis$serial.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9274,7 +9274,7 @@ http_interactions:
   recorded_at: Mon, 12 Dec 2022 19:24:13 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/995597013506421/holdings/22641621120006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/995597013506421/holdings/22641621120006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9473,7 +9473,7 @@ http_interactions:
   recorded_at: Wed, 15 Feb 2023 18:59:54 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9931433603506421/holdings/22542676190006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9931433603506421/holdings/22542676190006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9590,7 +9590,7 @@ http_interactions:
   recorded_at: Thu, 30 Mar 2023 14:11:24 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99116000543506421/holdings/22635325770006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99116000543506421/holdings/22635325770006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9703,7 +9703,7 @@ http_interactions:
   recorded_at: Wed, 22 Nov 2023 15:06:54 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/mendel$pk.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/mendel$pk.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9765,7 +9765,7 @@ http_interactions:
   recorded_at: Wed, 22 Nov 2023 15:06:54 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99127133356906421/holdings/22971539920006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99127133356906421/holdings/22971539920006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9894,7 +9894,7 @@ http_interactions:
   recorded_at: Mon, 04 Dec 2023 19:24:42 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/recap$pa.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/recap$pa.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9970,7 +9970,7 @@ http_interactions:
   recorded_at: Mon, 04 Dec 2023 19:24:42 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99129134216906421/holdings/221002424820006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99129134216906421/holdings/221002424820006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -10150,7 +10150,7 @@ http_interactions:
   recorded_at: Wed, 03 Jan 2024 21:00:52 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99129147026006421/holdings/221003662090006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99129147026006421/holdings/221003662090006421/availability.json
     body:
       encoding: US-ASCII
       string: ''

@@ -69,7 +69,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:51:37 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/firestone$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -122,7 +122,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:51:41 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9981794023506421/holdings/22591269990006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9981794023506421/holdings/22591269990006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -174,7 +174,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:51:53 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/delivery_locations.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/delivery_locations.json
     body:
       encoding: US-ASCII
       string: ''
@@ -221,54 +221,54 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '[{"label":"Plasma Physics Library","address":"Forrestal Campus Princeton,
-        NJ 08544","phone_number":"609-243-3565","contact_email":"lewislib@princeton.edu","gfa_pickup":"PQ","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/1.json","library":{"label":"Harold
+        NJ 08544","phone_number":"609-243-3565","contact_email":"lewislib@princeton.edu","gfa_pickup":"PQ","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/1.json","library":{"label":"Harold
         P. Furth Plasma Physics Library","code":"plasma","order":0}},{"label":"Technical
-        Services 693","address":"693 Alexander Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QT","staff_only":true,"pickup_location":true,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/2.json","library":{"label":"Firestone
+        Services 693","address":"693 Alexander Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QT","staff_only":true,"pickup_location":true,"digital_location":false,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/2.json","library":{"label":"Firestone
         Library","code":"firestone","order":0}},{"label":"Architecture Library","address":"School
-        of Architecture Building, Second Floor Princeton, NJ 08544","phone_number":"609-258-3256","contact_email":"ues@princeton.edu","gfa_pickup":"PW","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/3.json","library":{"label":"Architecture
+        of Architecture Building, Second Floor Princeton, NJ 08544","phone_number":"609-258-3256","contact_email":"ues@princeton.edu","gfa_pickup":"PW","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/3.json","library":{"label":"Architecture
         Library","code":"arch","order":0}},{"label":"East Asian Library","address":"Frist
-        Campus Center, Room 317 Princeton, NJ 08544","phone_number":"609-258-3182","contact_email":"gestcirc@princeton.edu","gfa_pickup":"PL","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/4.json","library":{"label":"East
+        Campus Center, Room 317 Princeton, NJ 08544","phone_number":"609-258-3182","contact_email":"gestcirc@princeton.edu","gfa_pickup":"PL","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/4.json","library":{"label":"East
         Asian Library","code":"eastasian","order":0}},{"label":"Engineering Library","address":"Friend
-        Center for Engineering Education Princeton, NJ 08544","phone_number":"609-258-3200","contact_email":"englib@princeton.edu","gfa_pickup":"PT","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/5.json","library":{"label":"Engineering
+        Center for Engineering Education Princeton, NJ 08544","phone_number":"609-258-3200","contact_email":"englib@princeton.edu","gfa_pickup":"PT","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/5.json","library":{"label":"Engineering
         Library","code":"engineer","order":0}},{"label":"Firestone Library, Microforms","address":"One
-        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-3252","contact_email":"microfms@princeton.edu","gfa_pickup":"PF","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/6.json","library":{"label":"Firestone
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-3252","contact_email":"microfms@princeton.edu","gfa_pickup":"PF","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/6.json","library":{"label":"Firestone
         Library","code":"firestone","order":0}},{"label":"Marquand Library of Art
-        and Archaeology","address":"McCormick Hall Princeton, NJ 08544","phone_number":"609-258-5863","contact_email":"marquand@princeton.edu","gfa_pickup":"PJ","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/7.json","library":{"label":"Marquand
+        and Archaeology","address":"McCormick Hall Princeton, NJ 08544","phone_number":"609-258-5863","contact_email":"marquand@princeton.edu","gfa_pickup":"PJ","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/7.json","library":{"label":"Marquand
         Library","code":"marquand","order":0}},{"label":"Mendel Music Library","address":"Woolworth
-        Center Princeton, NJ 08544","phone_number":"609-258-3230","contact_email":"muslib@princeton.edu","gfa_pickup":"PK","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/8.json","library":{"label":"Mendel
+        Center Princeton, NJ 08544","phone_number":"609-258-3230","contact_email":"muslib@princeton.edu","gfa_pickup":"PK","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/8.json","library":{"label":"Mendel
         Music Library","code":"mendel","order":0}},{"label":"Mudd Manuscript Library","address":"65
-        Olden Street Princeton, NJ 08544","phone_number":"609-258-6345","contact_email":"mudd@princeton.edu","gfa_pickup":"PH","staff_only":false,"pickup_location":false,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/9.json","library":{"label":"Mudd
+        Olden Street Princeton, NJ 08544","phone_number":"609-258-6345","contact_email":"mudd@princeton.edu","gfa_pickup":"PH","staff_only":false,"pickup_location":false,"digital_location":true,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/9.json","library":{"label":"Mudd
         Manuscript Library","code":"mudd","order":0}},{"label":"Stokes Library","address":"Wallace
-        Hall, Lower Level Princeton, NJ 08544","phone_number":"609-258-5455","contact_email":"piaprlib@princeton.edu","gfa_pickup":"PM","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/10.json","library":{"label":"Stokes
+        Hall, Lower Level Princeton, NJ 08544","phone_number":"609-258-5455","contact_email":"piaprlib@princeton.edu","gfa_pickup":"PM","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/10.json","library":{"label":"Stokes
         Library","code":"stokes","order":0}},{"label":"Firestone Library, Resource
-        Sharing","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"QA","staff_only":true,"pickup_location":true,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/12.json","library":{"label":"Firestone
+        Sharing","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"QA","staff_only":true,"pickup_location":true,"digital_location":false,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/12.json","library":{"label":"Firestone
         Library","code":"firestone","order":0}},{"label":"Special Collections","address":"One
-        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"rbsc@princeton.edu","gfa_pickup":"PG","staff_only":false,"pickup_location":false,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/13.json","library":{"label":"Firestone
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"rbsc@princeton.edu","gfa_pickup":"PG","staff_only":false,"pickup_location":false,"digital_location":true,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/13.json","library":{"label":"Firestone
         Library","code":"firestone","order":0}},{"label":"Lewis Library","address":"Washington
-        Road and Ivy Lane Princeton, NJ 08544","phone_number":"609-258-6004","contact_email":"lewislib@princeton.edu","gfa_pickup":"PN","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/14.json","library":{"label":"Lewis
+        Road and Ivy Lane Princeton, NJ 08544","phone_number":"609-258-6004","contact_email":"lewislib@princeton.edu","gfa_pickup":"PN","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/14.json","library":{"label":"Lewis
         Library","code":"lewis","order":0}},{"label":"Firestone Library","address":"One
-        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"PA","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/15.json","library":{"label":"Firestone
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"PA","staff_only":false,"pickup_location":true,"digital_location":true,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/15.json","library":{"label":"Firestone
         Library","code":"firestone","order":0}},{"label":"ReCAP ILL","address":"One
-        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"IL","staff_only":true,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/16.json","library":{"label":"Firestone
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"IL","staff_only":true,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/16.json","library":{"label":"Firestone
         Library","code":"firestone","order":0}},{"label":"Technical Services HMT","address":"One
-        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QC","staff_only":true,"pickup_location":true,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/23.json","library":{"label":"Firestone
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"catalogn@princeton.edu","gfa_pickup":"QC","staff_only":true,"pickup_location":true,"digital_location":false,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/23.json","library":{"label":"Firestone
         Library","code":"firestone","order":0}},{"label":"East Asian Library. Microforms","address":"Frist
-        Campus Center, Room 317 Princeton, NJ 08544","phone_number":"609-258-3182","contact_email":"gestcirc@princeton.edu","gfa_pickup":"QL","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/24.json","library":{"label":"East
+        Campus Center, Room 317 Princeton, NJ 08544","phone_number":"609-258-3182","contact_email":"gestcirc@princeton.edu","gfa_pickup":"QL","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/24.json","library":{"label":"East
         Asian Library","code":"eastasian","order":0}},{"label":"Lewis Library (Rare)","address":"Washington
-        Road and Ivy Lane Princeton, NJ 08544","phone_number":"609-258-6004","contact_email":"lewislib@princeton.edu","gfa_pickup":"PS","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/25.json","library":{"label":"Lewis
+        Road and Ivy Lane Princeton, NJ 08544","phone_number":"609-258-6004","contact_email":"lewislib@princeton.edu","gfa_pickup":"PS","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/25.json","library":{"label":"Lewis
         Library","code":"lewis","order":0}},{"label":"Marquand Library of Art and
-        Archaeology (Rare)","address":"McCormick Hall Princeton, NJ 08544","phone_number":"609-258-5863","contact_email":"marquand@princeton.edu","gfa_pickup":"PZ","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/26.json","library":{"label":"Marquand
+        Archaeology (Rare)","address":"McCormick Hall Princeton, NJ 08544","phone_number":"609-258-5863","contact_email":"marquand@princeton.edu","gfa_pickup":"PZ","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/26.json","library":{"label":"Marquand
         Library","code":"marquand","order":0}},{"label":"Mendel Music Library. Sound/Video","address":"Woolworth
-        Center Princeton, NJ 08544","phone_number":"609-258-3230","contact_email":"muslib@princeton.edu","gfa_pickup":"QK","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/27.json","library":{"label":"Mendel
+        Center Princeton, NJ 08544","phone_number":"609-258-3230","contact_email":"muslib@princeton.edu","gfa_pickup":"QK","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/27.json","library":{"label":"Mendel
         Music Library","code":"mendel","order":0}},{"label":"Firestone Library, Microforms
-        (Firestone Use Only)","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-3252","contact_email":"microfms@princeton.edu","gfa_pickup":"PB","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/28.json","library":{"label":"Firestone
+        (Firestone Use Only)","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-3252","contact_email":"microfms@princeton.edu","gfa_pickup":"PB","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/28.json","library":{"label":"Firestone
         Library","code":"firestone","order":0}},{"label":"Preservation","address":"One
-        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"QP","staff_only":true,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/29.json","library":{"label":"Firestone
+        Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"QP","staff_only":true,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/29.json","library":{"label":"Firestone
         Library","code":"firestone","order":0}},{"label":"Firestone Circulation Desk","address":"One
-        Washington Rd. Princeton, NJ 08544","phone_number":"609 258-2345","contact_email":"fstcirc@princton.edu","gfa_pickup":"QX","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/30.json","library":{"label":"Firestone
+        Washington Rd. Princeton, NJ 08544","phone_number":"609 258-2345","contact_email":"fstcirc@princton.edu","gfa_pickup":"QX","staff_only":false,"pickup_location":false,"digital_location":false,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/30.json","library":{"label":"Firestone
         Library","code":"firestone","order":0}},{"label":"Engineering Library Off-Site
         Storage","address":"Friend Center for Engineering Education, Princeton, NJ
-        08544","phone_number":" 609-258-3200","contact_email":" englib@princeton.edu","gfa_pickup":"PT","staff_only":false,"pickup_location":false,"digital_location":true,"url":"https://bibdata-staging.princeton.edu/locations/delivery_locations/40.json","library":{"label":"Engineering
+        08544","phone_number":" 609-258-3200","contact_email":" englib@princeton.edu","gfa_pickup":"PT","staff_only":false,"pickup_location":false,"digital_location":true,"url":"https://bibdata-staging.lib.princeton.edu/locations/delivery_locations/40.json","library":{"label":"Engineering
         Library","code":"engineer","order":0}}]'
   recorded_at: Fri, 06 Aug 2021 13:51:53 GMT
 - request:
@@ -340,7 +340,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:51:53 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9992220243506421/holdings/22558467250006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9992220243506421/holdings/22558467250006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -479,7 +479,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:52:01 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/lewis$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/lewis$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -532,7 +532,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:52:01 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9938488723506421/holdings/22522147400006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9938488723506421/holdings/22522147400006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -651,7 +651,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:52:06 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/994916543506421/holdings/22724990930006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/994916543506421/holdings/22724990930006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -770,7 +770,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:52:12 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/lewis$pn.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/lewis$pn.json
     body:
       encoding: US-ASCII
       string: ''
@@ -831,7 +831,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:52:13 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/994264203506421/holdings/22697858020006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/994264203506421/holdings/22697858020006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3414,7 +3414,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:53:01 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/rare$ctsn.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/rare$ctsn.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3467,7 +3467,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:53:01 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9973529363506421/holdings/22667098870006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9973529363506421/holdings/22667098870006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3654,7 +3654,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:54:37 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/foo/holdings//availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/foo/holdings//availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3827,7 +3827,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:54:37 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/arch$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/arch$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -3881,7 +3881,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:54:38 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9988805493506421/holdings/22705318390006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9988805493506421/holdings/22705318390006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4067,7 +4067,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:54:46 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/rare$ex.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/rare$ex.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4120,7 +4120,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:54:46 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9917917633506421/holdings/22720740220006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9917917633506421/holdings/22720740220006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4237,7 +4237,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:54:51 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/recap$pa.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/recap$pa.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4313,7 +4313,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:54:51 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/994909303506421/holdings/22584686190006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/994909303506421/holdings/22584686190006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4667,7 +4667,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:54:58 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/rare$hsvc.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/rare$hsvc.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4718,7 +4718,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:54:58 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9947589763506421/holdings/22656885190006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9947589763506421/holdings/22656885190006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4881,7 +4881,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:03 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9924784993506421/holdings/22708132010006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9924784993506421/holdings/22708132010006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -4999,7 +4999,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:07 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9931973043506421/holdings/22185253590006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9931973043506421/holdings/22185253590006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5125,7 +5125,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:12 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/eastasian$gest.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/eastasian$gest.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5176,7 +5176,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:13 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9931805453506421/holdings/22705623210006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9931805453506421/holdings/22705623210006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5230,7 +5230,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:18 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/eastasian$reserve.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/eastasian$reserve.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5350,7 +5350,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:18 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9961959423506421/holdings/22525427880006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9961959423506421/holdings/22525427880006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5404,7 +5404,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:24 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/lewis$resterm.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/lewis$resterm.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5536,7 +5536,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:25 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9923858683506421/holdings//availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9923858683506421/holdings//availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5710,7 +5710,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:26 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/eastasian$pl.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/eastasian$pl.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5772,7 +5772,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:26 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9947595913506421/holdings/22489764810006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9947595913506421/holdings/22489764810006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5822,7 +5822,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:30 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/mudd$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/mudd$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5875,7 +5875,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:31 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/rare$num.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/rare$num.json
     body:
       encoding: US-ASCII
       string: ''
@@ -5993,7 +5993,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:33 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/firestone$nec.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$nec.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6046,7 +6046,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:33 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9929370033506421/holdings/22539090210006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9929370033506421/holdings/22539090210006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6165,7 +6165,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:40 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9943404133506421/holdings/22514049930006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9943404133506421/holdings/22514049930006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6284,7 +6284,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:46 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9995457263506421/holdings/22560953240006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9995457263506421/holdings/22560953240006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6403,7 +6403,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:53 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/99103251433506421/holdings/22480270140006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/99103251433506421/holdings/22480270140006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6530,7 +6530,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:55:57 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9996025453506421/holdings/22565008360006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9996025453506421/holdings/22565008360006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6649,7 +6649,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:56:01 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9920022063506421/holdings/22560993150006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9920022063506421/holdings/22560993150006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6776,7 +6776,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:56:05 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9996272613506421/holdings/22529639530006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9996272613506421/holdings/22529639530006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -6895,7 +6895,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:56:10 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/996160863506421/holdings/22563389780006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/996160863506421/holdings/22563389780006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -7026,7 +7026,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:56:15 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9996764833506421/holdings/22680107620006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9996764833506421/holdings/22680107620006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -7078,7 +7078,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:56:20 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/engineer$serial.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/engineer$serial.json
     body:
       encoding: US-ASCII
       string: ''
@@ -7132,7 +7132,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:56:20 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/994264203506421/holdings/22697842050006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/994264203506421/holdings/22697842050006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -7966,7 +7966,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:56:40 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9991001053506421/holdings/22691592660006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9991001053506421/holdings/22691592660006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8085,7 +8085,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:56:45 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9999074333506421/holdings/22578723910006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9999074333506421/holdings/22578723910006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8222,7 +8222,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:56:49 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/annex$fst.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/annex$fst.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8295,7 +8295,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:56:50 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/994955013506421/holdings/22644665360006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/994955013506421/holdings/22644665360006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8542,7 +8542,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:56:55 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9997467763506421/holdings/22597992220006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9997467763506421/holdings/22597992220006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8684,7 +8684,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:57:01 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9948152393506421/holdings/22717671090006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9948152393506421/holdings/22717671090006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8803,7 +8803,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:57:07 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/994952203506421/holdings/22644769680006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/994952203506421/holdings/22644769680006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -8918,7 +8918,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:57:30 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9974943583506421/holdings/22711798720006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9974943583506421/holdings/22711798720006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9067,7 +9067,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:57:36 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9925693243506421/holdings/22554332290006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9925693243506421/holdings/22554332290006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9223,7 +9223,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:57:41 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9926312653506421/holdings/22692741390006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9926312653506421/holdings/22692741390006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9340,7 +9340,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:57:45 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9917887963506421/holdings/22503918400006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9917887963506421/holdings/22503918400006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9459,7 +9459,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:57:50 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/arch$ref.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/arch$ref.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9513,7 +9513,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:57:50 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9919698813506421/holdings/22589919750006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9919698813506421/holdings/22589919750006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9632,7 +9632,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:57:56 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/firestone$pres.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$pres.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9685,7 +9685,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:57:56 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9997123553506421/holdings/22586693240006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9997123553506421/holdings/22586693240006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9804,7 +9804,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:58:02 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9946931463506421/holdings/22715350280006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9946931463506421/holdings/22715350280006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9856,7 +9856,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:58:08 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/scsbcul.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/scsbcul.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9909,7 +9909,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:58:09 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-5290772/holdings/5278611/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/SCSB-5290772/holdings/5278611/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -9957,7 +9957,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:58:09 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-5640725/holdings/5630217/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/SCSB-5640725/holdings/5630217/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -10005,7 +10005,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:58:11 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/scsbnypl.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/scsbnypl.json
     body:
       encoding: US-ASCII
       string: ''
@@ -10058,7 +10058,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:58:11 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/SCSB-7935196/holdings/8076325/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/SCSB-7935196/holdings/8076325/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -10106,7 +10106,7 @@ http_interactions:
   recorded_at: Fri, 06 Aug 2021 13:58:12 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/marquand$stacks.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/marquand$stacks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -10226,7 +10226,7 @@ http_interactions:
   recorded_at: Thu, 18 May 2023 16:49:13 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/eastasian$hy.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/eastasian$hy.json
     body:
       encoding: US-ASCII
       string: ''
@@ -10277,7 +10277,7 @@ http_interactions:
   recorded_at: Thu, 18 May 2023 16:49:14 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/bibliographic/9942430233506421/holdings/22600149340006421/availability.json
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9942430233506421/holdings/22600149340006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
@@ -10331,7 +10331,7 @@ http_interactions:
   recorded_at: Thu, 18 May 2023 16:49:20 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.princeton.edu/locations/delivery_locations.json
+    uri: https://bibdata-staging.lib.princeton.edu/locations/delivery_locations.json
     body:
       encoding: US-ASCII
       string: ''
