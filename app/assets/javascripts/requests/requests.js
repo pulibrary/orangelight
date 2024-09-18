@@ -57,7 +57,7 @@ $(function () {
     $('#request-submit-button').prop('disabled', true);
   }
 
-  deactivateRequestButton();
+  checkRows();
 
   function checkRows() {
     const rows = document.querySelectorAll('tr[id^=request_]');
