@@ -84,7 +84,7 @@ module Requests
         if department.present? && department.include?("Library")
           "GS - Library Staff"
         elsif title.present?
-          illiad_staff_title_status
+          illiad_staff_title_status(ldap_title: patron.title)
         else
           "GS - University Staff"
         end

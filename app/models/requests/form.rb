@@ -88,12 +88,7 @@ module Requests
     # if no mfhd returns items sorted by mfhd
     def load_items
       return nil if too_many_items?
-
-      mfhd_items = if @mfhd && serial?
-                     load_serial_items
-                   else
-                     load_items_by_mfhd
-                   end
+      mfhd_items = load_items_by_mfhd
       mfhd_items.empty? ? nil : mfhd_items.with_indifferent_access
     end
 
@@ -300,17 +295,6 @@ module Requests
         location_object = Location.new location
         location["delivery_locations"] = location_object.build_delivery_locations if location_object.delivery_locations.present?
         location
-      end
-
-      # Not sure why this method exists
-      def load_serial_items
-        mfhd_items = {}
-        items_as_json = items_by_mfhd(@system_id, @mfhd)
-        unless items_as_json.empty?
-          items_with_symbols = items_to_symbols(items_as_json)
-          mfhd_items[@mfhd] = items_with_symbols
-        end
-        mfhd_items
       end
 
       ## Loads item availability through the Request Bibdata service using the items_by_mfhd method

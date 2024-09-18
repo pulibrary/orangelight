@@ -8,7 +8,7 @@ RSpec.describe "Health Check", type: :request do
       body: { responseHeader: { status: 0 } }.to_json, headers: { 'Content-Type' => 'text/json' }
     )
   end
-  let(:bibdata_url) { "https://bibdata-staging.princeton.edu/health.json" }
+  let(:bibdata_url) { "https://bibdata-staging.lib.princeton.edu/health.json" }
   let(:bibdata_stub) do
     stub_request(:get, bibdata_url).to_return(body: File.open('spec/fixtures/bibdata/health.json'))
   end

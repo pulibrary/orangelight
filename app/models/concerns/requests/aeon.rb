@@ -34,24 +34,6 @@ module Requests
       AeonUrl.new(document: bib, holding: holding.to_h, item:).to_s
     end
 
-    # returns encoded OpenURL string for alma derived records
-    def aeon_openurl(ctx)
-      if item.present?
-        ctx.referent.set_metadata('iteminfo5', item[:id]&.to_s)
-        if enumerated?
-          ctx.referent.set_metadata('volume', item.enum_value)
-          ctx.referent.set_metadata('issue', item[:chron_display]) if item[:chron_display].present?
-        else
-          ctx.referent.set_metadata('volume', holding.holding_data['location_has']&.first)
-          ctx.referent.set_metadata('issue', nil)
-        end
-      end
-      aeon_params = aeon_basic_params
-      aeon_params[:ItemNumber] = barcode if barcode?
-      ## returned mashed together in an encoded string
-      "#{ctx.kev}&#{aeon_params.to_query}"
-    end
-
     def site
       if location[:holding_library].present?
         holding_location_to_site(location['holding_library']['code'])
@@ -97,7 +79,7 @@ module Requests
       end
 
       def item_volume
-        item["enumeration"] if item.present? && enumerated?
+        item.description if item.present? && enumerated?
       end
 
       def sub_location

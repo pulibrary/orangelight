@@ -66,6 +66,7 @@ RSpec.configure do |config|
     allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
     allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
     allow(Flipflop).to receive(:view_components_numismatics?).and_return(true)
+    allow(Flipflop).to receive(:enumeration_backwards_compatibility?).and_return(false)
   end
 
   config.before(:each, type: :feature) do

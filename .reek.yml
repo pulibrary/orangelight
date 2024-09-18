@@ -171,7 +171,6 @@ detectors:
     - Blacklight::Document::Sms#to_sms_text
     - Blacklight::Marc::CtxBuilder#add_identifiers
     - Blacklight::Marc::DocumentExtension#get_author_list
-    - Requests::Aeon#aeon_openurl
     - Requests::Aeon#genre
     - Requests::Aeon#site
     - Requests::Bibdata#sort_pick_ups
@@ -203,6 +202,7 @@ detectors:
     - Requests::IlliadMetadata::ArticleExpress#volume_number
     - Requests::IlliadTransactionClient#create_request
     - Requests::Item#copy_value
+    - Requests::Item#long_description
     - Requests::Item#status
     - Requests::Location#sort_pick_ups
     - Requests::Requestable#pick_up_locations
@@ -772,7 +772,6 @@ detectors:
     - Blacklight::Marc::DocumentExtension#load_marc
     - Blacklight::Marc::DocumentExtension#marc_record_from_json
     - Blacklight::Marc::DocumentExtension#marc_record_from_marcxml
-    - Requests::Aeon#aeon_openurl
     - Requests::Bibdata#get_location_contact_email
     - Requests::Bibdata#sort_pick_ups
     - Requests::Scsb#items_by_id

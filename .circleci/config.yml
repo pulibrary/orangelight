@@ -47,13 +47,13 @@ commands:
       # Restore bundle cache
       - restore_cache:
           keys:
-          - orangelight-v2-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          - orangelight-v3-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
       # Bundle install dependencies
       - run:
           name: Install dependencies
           command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
       - save_cache:
-          key: orangelight-v2-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          key: orangelight-v3-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
           paths:
             - ./vendor/bundle
 
@@ -71,13 +71,13 @@ jobs:
       - restore_cache:
           name: Restore cached dependencies
           keys:
-            - orangelight-v2-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+            - orangelight-v3-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
       - run:
           name: Yarn Install
           command: yarn install --frozen-lockfile
       - save_cache:
           name: Save Yarn cache
-          key: orangelight-v2-yarn-{{ checksum "yarn.lock" }}
+          key: orangelight-v3-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
       - persist_to_workspace:
@@ -123,6 +123,17 @@ jobs:
       - store_artifacts:
           path:  ~/orangelight/tmp/capybara/
 
+  bearer:
+    docker:
+      - image: cimg/ruby:3.1
+    environment:
+      # Set to default branch of your repo
+      DEFAULT_BRANCH: main
+    steps:
+      - checkout
+      - run: curl -sfL https://raw.githubusercontent.com/Bearer/bearer/main/contrib/install.sh | sh -s -- -b /tmp
+      - run: CURRENT_BRANCH=$CIRCLE_BRANCH SHA=$CIRCLE_SHA1 /tmp/bearer scan .
+
   js_tests:
       executor: basic-executor
       steps:
@@ -133,33 +144,33 @@ jobs:
             command: bundle exec yarn test
         - store_test_results:
             path: ~/rspec
-
-  lighthouse:
-    executor: orangelight-executor
-    steps:
-      - attach_workspace:
-          at: '~/orangelight'
-      - setup-bundler-and-node
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: sudo apt install postgresql-client
-      - run:
-          name: Database setup
-          command: bundle exec rake db:setup
-      - run:
-          name: Load config into solr
-          command: |
-            cd solr/conf
-            zip -1 -r solr_config.zip ./*
-            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@127.0.0.1:8983/solr/admin/configs?action=UPLOAD&name=orangelight"
-            curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8983/api/collections/  -d '{create: {name: orangelight-core-test, config: orangelight, numShards: 1}}'
-      - run:
-          name: Index Test Data
-          command: bundle exec rake pulsearch:solr:index
-      - browser-tools/install-chrome
-      - run: sudo npm install -g @lhci/cli@0.14.x
-      - run: lhci autorun
+  # See github ticket: https://github.com/pulibrary/orangelight/issues/4359
+  # lighthouse:
+  #   executor: orangelight-executor
+  #   steps:
+  #     - attach_workspace:
+  #         at: '~/orangelight'
+  #     - setup-bundler-and-node
+  #     - run:
+  #         name: Wait for DB
+  #         command: dockerize -wait tcp://localhost:5432 -timeout 1m
+  #     - run: sudo apt install postgresql-client
+  #     - run:
+  #         name: Database setup
+  #         command: bundle exec rake db:setup
+  #     - run:
+  #         name: Load config into solr
+  #         command: |
+  #           cd solr/conf
+  #           zip -1 -r solr_config.zip ./*
+  #           curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@127.0.0.1:8983/solr/admin/configs?action=UPLOAD&name=orangelight"
+  #           curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8983/api/collections/  -d '{create: {name: orangelight-core-test, config: orangelight, numShards: 1}}'
+  #     - run:
+  #         name: Index Test Data
+  #         command: bundle exec rake pulsearch:solr:index
+  #     - browser-tools/install-chrome
+  #     - run: sudo npm install -g @lhci/cli@0.14.x
+  #     - run: lhci autorun
 
   rubocop:
     executor: basic-executor
@@ -216,10 +227,8 @@ workflows:
          requires:
           - build
       - reek
+      - bearer
       - js_tests:
-         requires:
-          - build
-      - lighthouse:
          requires:
           - build
       - test:

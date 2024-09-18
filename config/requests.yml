@@ -25,7 +25,7 @@ development:
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
 test:
   <<: *defaults
-  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.lib.princeton.edu" %>
   illiad_api_key: 'TESTME'
   illiad_api_base: <%= ENV['ILLIAD_API_BASE_URL'] || "https://lib-illiad.princeton.edu" %>
 production:
@@ -34,7 +34,7 @@ staging:
   <<: *defaults
   aeon_base: https://princeton.aeon.atlas-sys.com/logon
   pulsearch_base: https://catalog-staging.princeton.edu
-  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.lib.princeton.edu" %>
 qa:
   <<: *defaults
   aeon_base: https://princeton.aeon.atlas-sys.com/logon
