@@ -1,0 +1,8 @@
+{
+  "e6daaadb5fe7040a3df7cd70536b299b_0": {
+    "author": "Max Kadel",
+    "comment": "Not using user input to create a path, passing it in as a parameter to another method.",
+    "false_positive": true,
+    "ignored_at": "2024-09-18T13:21:13Z"
+  }
+}

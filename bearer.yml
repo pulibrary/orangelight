@@ -1,0 +1,35 @@
+disable-version-check: false
+log-level: info
+report:
+    fail-on-severity: critical,high,medium,low
+    format: ""
+    no-color: false
+    output: ""
+    report: security
+    severity: critical,high,medium,low,warning
+rule:
+    disable-default-rules: false
+    only-rule: []
+    # Tickets to remediate these rules and remove from this stanza:
+    #   javascript_lang_logger_leak - https://github.com/pulibrary/orangelight/issues/4363
+    #   ruby_rails_open_redirect - https://github.com/pulibrary/orangelight/issues/4360
+    #   ruby_rails_permissive_parameters - https://github.com/pulibrary/orangelight/issues/4361
+    #   ruby_rails_permissive_regex_validation - https://github.com/pulibrary/orangelight/issues/4362
+    #   ruby_rails_default_encryption - https://github.com/pulibrary/orangelight/issues/4364
+    skip-rule: [javascript_lang_logger_leak, ruby_rails_open_redirect, ruby_rails_permissive_parameters, ruby_rails_permissive_regex_validation, ruby_rails_default_encryption]
+scan:
+    context: ""
+    data_subject_mapping: ""
+    disable-domain-resolution: true
+    domain-resolution-timeout: 3s
+    exit-code: -1
+    external-rule-dir: []
+    force: false
+    hide_progress_bar: false
+    internal-domains: []
+    parallel: 0
+    quiet: false
+    scanner:
+        - sast
+    skip-path: []
+    skip-test: true
