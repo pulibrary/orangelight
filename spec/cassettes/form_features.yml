@@ -10270,7 +10270,7 @@ http_interactions:
   recorded_at: Wed, 18 Sep 2024 15:10:20 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$nec.json
+    uri: https://bibdata-staging.princeton.edu/locations/holding_locations/firestone$nec.json
     body:
       encoding: US-ASCII
       string: ''
@@ -10319,7 +10319,7 @@ http_interactions:
   recorded_at: Wed, 18 Sep 2024 15:10:21 GMT
 - request:
     method: get
-    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9935076973506421/holdings/22579150960006421/availability.json
+    uri: https://bibdata-staging.princeton.edu/bibliographic/9935076973506421/holdings/22579150960006421/availability.json
     body:
       encoding: US-ASCII
       string: ''
