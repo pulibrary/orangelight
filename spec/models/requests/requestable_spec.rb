@@ -201,12 +201,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    describe '#aeon_openurl' do
-      it 'returns an openurl with a Call Number param' do
-        expect(requestable.aeon_openurl(request.ctx)).to be_a(String)
-      end
-    end
-
     describe '#barcode' do
       it 'does not report there is a barocode' do
         expect(requestable.barcode?).to be false
@@ -242,15 +236,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:request) { FactoryBot.build(:aeon_rbsc_enumerated, patron:) }
     let(:requestable_holding) { request.requestable.select { |r| r.holding.mfhd_id == '22677203260006421' } }
     let(:requestable) { requestable_holding.first } # assume only one requestable
-    describe '#aeon_open_url' do
-      it 'returns an openurl with volume data' do
-        expect(requestable.aeon_openurl(request.ctx)).to include("rft.volume=#{CGI.escape(requestable.item[:enum_display])}")
-      end
-
-      it 'returns an openurl with issue data' do
-        expect(requestable.aeon_openurl(request.ctx)).to include("rft.issue=#{CGI.escape(requestable.item[:chron_display])}")
-      end
-    end
 
     describe '#location_label' do
       it 'has a location label' do
@@ -283,20 +268,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:holding_id) { '22256352610006421' }
     let(:requestable) { requestable_holding.first } # assume only one requestable
     let(:enumeration) { 'v.7' }
-
-    describe '#aeon_open_url' do
-      it 'identifies as an aeon eligible alma mananaged item' do
-        expect(requestable.aeon?).to be true
-      end
-
-      it 'returns an openurl with enumeration when available' do
-        expect(requestable.aeon_openurl(request.ctx)).to include("rft.volume=#{CGI.escape(enumeration)}")
-      end
-
-      it 'returns an openurl with item id as a value for iteminfo5' do
-        expect(requestable.aeon_openurl(request.ctx)).to include("iteminfo5=#{requestable.item[:id]}")
-      end
-    end
 
     describe '#location_label' do
       it 'has a location label' do
@@ -335,14 +306,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#site' do
       it 'returns a RBSC site param' do
         expect(requestable.site).to eq('RBSC')
-      end
-    end
-
-    describe '#aeon_openurl' do
-      let(:aeon_ctx) { requestable.aeon_openurl(request.ctx) }
-
-      it 'includes basic metadata' do
-        expect(aeon_ctx).to include('ctx_id=&ctx_enc=info%3Aofi%2Fenc%3AUTF-8&rft.genre=unknown&rft.title=Beethoven%27s+andante+cantabile+aus+dem+Trio+op.+97%2C+fu%CC%88r+orchester&rft.creator=Beethoven%2C+Ludwig+van&rft.aucorp=Leipzig%3A+Kahnt&rft.pub=Leipzig%3A+Kahnt&rft.format=musical+score&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Aunknown&rft_id=https%3A%2F%2Fcatalog.princeton.edu%2Fcatalog%2F9925358453506421&rft_id=info%3Aoclcnum%2F25615303&rfr_id=info%3Asid%2Fcatalog.princeton.edu%3Agenerator&CallNumber=M1004.L6+B3&ItemInfo1=Reading+Room+Access+Only&Location=rare%24ex&ReferenceNumber=9925358453506421&Site=RBSC')
       end
     end
 
@@ -448,7 +411,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:aeon_w_long_title) }
     let(:requestable) { request.requestable.first } # assume only one requestable
-    let(:aeon_ctx) { requestable.aeon_openurl(request.ctx) }
     describe '#aeon_basic_params' do
       it 'includes a Title Param that is less than 250 characters' do
         expect(requestable.aeon_mapped_params.key?(:ItemTitle)).to be true
@@ -490,33 +452,10 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A requestable item from a RBSC holding with an item record including a barcode' do
     let(:request) { FactoryBot.build(:aeon_w_barcode, patron:) }
     let(:requestable) { request.requestable.first } # assume only one requestable
-    let(:aeon_ctx) { requestable.aeon_openurl(request.ctx) }
     describe '#barcode?' do
       it 'has a barcode' do
         expect(requestable.barcode?).to be true
         expect(requestable.barcode).to match(/^[0-9]+/)
-      end
-    end
-
-    describe '#aeon_openurl' do
-      it 'returns an OpenURL CTX Object' do
-        expect(aeon_ctx).to be_a(String)
-      end
-
-      it 'includes an ItemNumber Param' do
-        expect(aeon_ctx).to include(requestable.barcode)
-      end
-
-      it 'includes a Site Param' do
-        expect(aeon_ctx).to include(requestable.site)
-      end
-
-      it 'includes a Genre Param' do
-        expect(aeon_ctx).to include('rft.genre=book')
-      end
-
-      it 'includes a Call Number Param' do
-        expect(aeon_ctx).to include('CallNumber')
       end
     end
 
@@ -832,16 +771,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:request_aeon_holding_volume_note) }
     let(:requestable) { request.requestable.find { |m| m.holding.mfhd_id == '22563389780006421' } }
-    let(:aeon_ctx) { requestable.aeon_openurl(request.ctx) }
-    describe '#aeon_openurl' do
-      it 'includes the location_has note as the volume' do
-        expect(aeon_ctx).to include('rft.volume=v.7')
-      end
-
-      it 'includes the call number of the holding' do
-        expect(aeon_ctx).to include('CallNumber=2015-0801N')
-      end
-    end
 
     describe "#held_at_marquand_library?" do
       it "is not marquand" do
