@@ -79,7 +79,7 @@ module Requests
       end
 
       def item_volume
-        item["enumeration"] if item.present? && enumerated?
+        item.description if item.present? && enumerated?
       end
 
       def sub_location

@@ -14,8 +14,7 @@ module Requests
     end
 
     def enum_value
-      # enum_display from alma, enumeration from scsb
-      [self['enum_display'], self['enumeration']].join(" ").strip
+      (short_description_from_alma_availability_call || long_description).to_s.strip
     end
 
     def cron_value
@@ -123,6 +122,18 @@ module Requests
     end
 
     private
+
+      def short_description_from_alma_availability_call
+        self[:enum_display]
+      end
+
+      def long_description
+        if Flipflop.enumeration_backwards_compatibility?
+          self[:enumeration] || self[:description]
+        else
+          self[:description]
+        end
+      end
 
       def available_statuses
         scsb = ["Available"]
