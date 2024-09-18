@@ -202,6 +202,7 @@ detectors:
     - Requests::IlliadMetadata::ArticleExpress#volume_number
     - Requests::IlliadTransactionClient#create_request
     - Requests::Item#copy_value
+    - Requests::Item#long_description
     - Requests::Item#status
     - Requests::Location#sort_pick_ups
     - Requests::Requestable#pick_up_locations
