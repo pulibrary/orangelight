@@ -103,6 +103,13 @@ describe Requests::IlliadPatron, type: :controller, requests: true, patrons: tru
         expect(patron[:ExternalUserId]).to eq('foo')
         expect(patron[:Cleared]).to eq('Yes')
       end
+
+      context 'when the patron has a title' do
+        let(:ldap_data) { { title: 'Senior Research Scholar', uid: 'foo', department: 'Information Technology', address: 'Firestone Library$Library Information Technology', telephone: '123-456-7890', surname: 'Doe', givenname: 'Joe', email: 'joe@abc.com', pustatus: 'stf', status: 'staff' }.with_indifferent_access }
+        it 'can initialize' do
+          expect { described_class.new(user_info) }.not_to raise_error
+        end
+      end
     end
 
     it "responds with a blank patron if there is an error creating it" do
