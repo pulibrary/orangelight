@@ -142,11 +142,11 @@ $(function () {
       // collapse others
       $("input[name='" + this.name + "']").each(function () {
         const target = $(this).attr('data-target');
-        $(target).collapse('hide');
+        $(document).find(target).collapse('hide');
       });
       // open target
       const target = $(this).attr('data-target');
-      $(target).collapse('show');
+      $(document).find(target).collapse('show');
       checkRows(this);
     }
   );
