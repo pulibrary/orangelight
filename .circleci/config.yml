@@ -200,7 +200,7 @@ jobs:
           command: bundle exec reek app
 
   dastardly:
-    executor: basic-executor
+    executor: orangelight-executor
     steps:
       - checkout
       - run:
