@@ -10199,4 +10199,180 @@ http_interactions:
       string: '[{"barcode":"","id":"231003662080006421","holding_id":"221003662090006421","copy_number":"","status":"Unavailable","status_label":"Acquisition","status_source":"process_type","process_type":"ACQ","on_reserve":"N","item_type":"Gen","pickup_location_id":"marquand","pickup_location_code":"marquand","location":"marquand$pj","label":"Marquand
         Library - Remote Storage (ReCAP): Marquand Library Use Only","description":"","enum_display":"","chron_display":"","in_temp_library":false}]'
   recorded_at: Wed, 03 Jan 2024 21:00:53 GMT
-recorded_with: VCR 6.2.0
+- request:
+    method: get
+    uri: https://catalog.princeton.edu/catalog/9935076973506421/raw
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.25.5
+      Date:
+      - Wed, 18 Sep 2024 15:10:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - '0'
+      X-Request-Id:
+      - fdfdafc1-4974-4da3-a7db-8e1672be0dab
+      X-Download-Options:
+      - noopen
+      X-Ua-Compatible:
+      - IE=edge,chrome=1
+      Etag:
+      - W/"cb39e643b30fc51ad843edb49d0d2d79"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.048266'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger(R) 6.0.23
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Origin
+      Content-Security-Policy:
+      - frame-ancestors 'self' https://princeton.libwizard.com;
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6Ijk5MzUwNzY5NzM1MDY0MjEiLCJudW1lcmljX2lkX2IiOnRydWUsImF1dGhvcl9jaXRhdGlvbl9kaXNwbGF5IjpbIkphzIRtacq7YWggYWwtVXJkdW5pzIR5YWgiXSwiYXV0aG9yX3JvbGVzXzFkaXNwbGF5Ijoie1wic2Vjb25kYXJ5X2F1dGhvcnNcIjpbXCJKYcyEbWnKu2FoIGFsLVVyZHVuacyEeWFoXCIsXCLYrNin2YXYudipINin2YTYp9ix2K/ZhtmK2KlcIl0sXCJ0cmFuc2xhdG9yc1wiOltdLFwiZWRpdG9yc1wiOltdLFwiY29tcGlsZXJzXCI6W119IiwiYXV0aG9yX3MiOlsiSmHMhG1pyrthaCBhbC1VcmR1bmnMhHlhaC4gyrtJbWHMhGRhdCBhbC1CYWjMo3RoIGFsLcq7SWxtacyEIiwi2KzYp9mF2LnYqSDYp9mE2KfYsdiv2YbZitipLiDYudmF2KfYr9ipINin2YTYqNit2Ksg2KfZhNi52YTZhdmKIl0sInVuaWZvcm1fdGl0bGVfcyI6WyJEaXJhzIRzYcyEdC4gS2FzaHNoYcyEZiBhbC1zYW5hd2nMhCIsItiv2LHYp9iz2KfYqi4g2YPYtNin2YEg2KfZhNiz2YbZiNmKIl0sInRpdGxlX2Rpc3BsYXkiOiJEaXJhzIRzYcyEdC4gYWwtS2FzaHNoYcyEZiBhbC1zYW5hd2nMhC4iLCJ0aXRsZV92ZXJuX2Rpc3BsYXkiOiLYr9ix2KfYs9in2KouINin2YTZg9i02KfZgSDYp9mE2LPZhtmI2YouIiwidGl0bGVfdCI6WyJEaXJhzIRzYcyEdC4gYWwtS2FzaHNoYcyEZiBhbC1zYW5hd2nMhC4iXSwidGl0bGVfY2l0YXRpb25fZGlzcGxheSI6WyJEaXJhzIRzYcyEdCIsItiv2LHYp9iz2KfYqiJdLCJjb21waWxlZF9jcmVhdGVkX3QiOlsiRGlyYcyEc2HMhHQuIGFsLUthc2hzaGHMhGYgYWwtc2FuYXdpzIQuIiwi2K/Ysdin2LPYp9iqLiDYp9mE2YPYtNin2YEg2KfZhNiz2YbZiNmKLiJdLCJwdWJfY3JlYXRlZF92ZXJuX2Rpc3BsYXkiOlsi2LnZhdin2YYgOiDYudmF2KfYr9ipINin2YTYqNit2Ksg2KfZhNi52YTZhdmK2Iwg2KfZhNis2KfZhdi52Kkg2KfZhNin2LHYr9mG2YrYqdiMIDE5OTYtIl0sInB1Yl9jcmVhdGVkX2Rpc3BsYXkiOlsiyrtBbW1hzIRuIDogyrtJbWHMhGRhdCBhbC1CYWjMo3RoIGFsLcq7SWxtacyELCBhbC1KYcyEbWnKu2FoIGFsLVVyZHVuacyEeWFoLCAxOTk2LSIsIti52YXYp9mGIDog2LnZhdin2K/YqSDYp9mE2KjYrdirINin2YTYudmE2YXZitiMINin2YTYrNin2YXYudipINin2YTYp9ix2K/ZhtmK2KnYjCAxOTk2LSJdLCJwdWJfY3JlYXRlZF9zIjpbIsq7QW1tYcyEbiA6IMq7SW1hzIRkYXQgYWwtQmFozKN0aCBhbC3Ku0lsbWnMhCwgYWwtSmHMhG1pyrthaCBhbC1VcmR1bmnMhHlhaCwgMTk5Ni0iLCLYudmF2KfZhiA6INi52YXYp9iv2Kkg2KfZhNio2K3YqyDYp9mE2LnZhNmF2YrYjCDYp9mE2KzYp9mF2LnYqSDYp9mE2KfYsdiv2YbZitip2IwgMTk5Ni0iXSwicHViX2NpdGF0aW9uX2Rpc3BsYXkiOlsiyrtBbW1hzIRuOiDKu0ltYcyEZGF0IGFsLUJhaMyjdGggYWwtyrtJbG1pzIQsIGFsLUphzIRtacq7YWggYWwtVXJkdW5pzIR5YWgiLCLYudmF2KfZhjog2LnZhdin2K/YqSDYp9mE2KjYrdirINin2YTYudmE2YXZitiMINin2YTYrNin2YXYudipINin2YTYp9ix2K/ZhtmK2KnYjCJdLCJwdWJfZGF0ZV9kaXNwbGF5IjpbIjE5OTYiXSwicHViX2RhdGVfc3RhcnRfc29ydCI6MTk5NiwiY2F0YWxvZ2VkX3RkdCI6IjIwMDItMDEtMjNUMDA6MDA6MDBaIiwiZm9ybWF0IjpbIkpvdXJuYWwiXSwiZGVzY3JpcHRpb25fZGlzcGxheSI6WyJ2LiA7IDI5IGNtLiIsImFsLU11amFsbGFkIDIzICgxOTk2KS0iLCLYp9mE2YXYrNmE2K8gMjMgKDE5OTYpIl0sImRlc2NyaXB0aW9uX3QiOlsidi4gOyAyOSBjbS4iLCJhbC1NdWphbGxhZCAyMyAoMTk5NiktIiwi2KfZhNmF2KzZhNivIDIzICgxOTk2KSJdLCJudW1iZXJfb2ZfcGFnZXNfY2l0YXRpb25fZGlzcGxheSI6WyJ2LiJdLCJmcmVxdWVuY3lfZGlzcGxheSI6WyJBbm51YWwiXSwibm90ZXNfZGlzcGxheSI6WyJMaXN0cyB0aGUgY29udGVudHMgb2YgYWxsIGlzc3VlcyBvZiB0aGUgY29tcG9uZW50IHRpdGxlcyBvZjogRGlyYcyEc2HMhHQgKEFtbWFuLCBKb3JkYW4pLCBiZWdpbm5pbmcgd2l0aCB2b2wuIDIzLiJdLCJsYW5ndWFnZV9kaXNwbGF5IjpbIkFyYWJpYyBhbmQgRW5nbGlzaC4iXSwibGFuZ3VhZ2VfbmFtZV9kaXNwbGF5IjpbIkFyYWJpYyIsIkVuZ2xpc2giXSwibGFuZ3VhZ2VfZmFjZXQiOlsiQXJhYmljIiwiRW5nbGlzaCJdLCJsYW5ndWFnZV9pYW5hX3MiOlsiYXIiXSwibGNfc3ViamVjdF9kaXNwbGF5IjpbIkRpcmHMhHNhzIR0IE5hdHVyYWwgYW5kIGVuZ2luZWVyaW5nIHNjaWVuY2XigJRJbmRleGVz4oCUUGVyaW9kaWNhbHMiLCJEaXJhzIRzYcyEdCDKu1VsdcyEbSBhbC1hc2HMhHNpzIR5YWjigJRJbmRleGVz4oCUUGVyaW9kaWNhbHMiLCLYr9ix2KfYs9in2Kog2LnZhNmI2YUg2KfZhNin2LPYp9iz2YrYqSIsIkRpcmHMhHNhzIR0IMq7VWx1zIRtIGFsLWlkYcyEcmnMhHlhaOKAlEluZGV4ZXPigJRQZXJpb2RpY2FscyIsItiv2LHYp9iz2KfYqiDYudmE2YjZhSDYp9mE2KfYr9in2LHZitipIiwiRGlyYcyEc2HMhHQgyrtVbHXMhG0gYWwtaW5zYcyEbmnMhHlhaCB3YS1hbC1panRpbWHMhMq7acyEeWFo4oCUSW5kZXhlc+KAlFBlcmlvZGljYWxzIiwi2K/Ysdin2LPYp9iqINi52YTZiNmFINin2YTYp9mG2LPYp9mG2YrYqSDZiNin2YTYp9is2KrZhdin2LnZitipIiwiRGlyYcyEc2HMhHQgyrtVbHXMhG0gYWwtc2hhcmnMhMq7YWggd2EtYWwtcWHMhG51zIRu4oCUSW5kZXhlc+KAlFBlcmlvZGljYWxzIiwi2K/Ysdin2LPYp9iqINi52YTZiNmFINin2YTYtNix2YrYudipINmI2KfZhNmC2KfZhtmI2YYiLCJEaXJhzIRzYcyEdCDKu1VsdcyEbSBhbC10YXJiYXdpzIR5YWjigJRJbmRleGVz4oCUUGVyaW9kaWNhbHMiLCLYr9ix2KfYs9in2Kog2LnZhNmI2YUg2KfZhNiq2LHYqNmI2YrYqSIsIkRpcmHMhHNhzIR0IMq7VWx1zIRtIGFsLXppcmHMhMq7acyEeWFo4oCUSW5kZXhlc+KAlFBlcmlvZGljYWxzIiwi2K/Ysdin2LPYp9iqINi52YTZiNmFINin2YTYstix2KfYudmK2KkiXSwic3ViamVjdF9mYWNldCI6WyJEaXJhzIRzYcyEdCBOYXR1cmFsIGFuZCBlbmdpbmVlcmluZyBzY2llbmNl4oCUSW5kZXhlc+KAlFBlcmlvZGljYWxzIiwiRGlyYcyEc2HMhHQgyrtVbHXMhG0gYWwtYXNhzIRzacyEeWFo4oCUSW5kZXhlc+KAlFBlcmlvZGljYWxzIiwi2K/Ysdin2LPYp9iqINi52YTZiNmFINin2YTYp9iz2KfYs9mK2KkiLCJEaXJhzIRzYcyEdCDKu1VsdcyEbSBhbC1pZGHMhHJpzIR5YWjigJRJbmRleGVz4oCUUGVyaW9kaWNhbHMiLCLYr9ix2KfYs9in2Kog2LnZhNmI2YUg2KfZhNin2K/Yp9ix2YrYqSIsIkRpcmHMhHNhzIR0IMq7VWx1zIRtIGFsLWluc2HMhG5pzIR5YWggd2EtYWwtaWp0aW1hzITKu2nMhHlhaOKAlEluZGV4ZXPigJRQZXJpb2RpY2FscyIsItiv2LHYp9iz2KfYqiDYudmE2YjZhSDYp9mE2KfZhtiz2KfZhtmK2Kkg2YjYp9mE2KfYrNiq2YXYp9i52YrYqSIsIkRpcmHMhHNhzIR0IMq7VWx1zIRtIGFsLXNoYXJpzITKu2FoIHdhLWFsLXFhzIRudcyEbuKAlEluZGV4ZXPigJRQZXJpb2RpY2FscyIsItiv2LHYp9iz2KfYqiDYudmE2YjZhSDYp9mE2LTYsdmK2LnYqSDZiNin2YTZgtin2YbZiNmGIiwiRGlyYcyEc2HMhHQgyrtVbHXMhG0gYWwtdGFyYmF3acyEeWFo4oCUSW5kZXhlc+KAlFBlcmlvZGljYWxzIiwi2K/Ysdin2LPYp9iqINi52YTZiNmFINin2YTYqtix2KjZiNmK2KkiLCJEaXJhzIRzYcyEdCDKu1VsdcyEbSBhbC16aXJhzITKu2nMhHlhaOKAlEluZGV4ZXPigJRQZXJpb2RpY2FscyIsItiv2LHYp9iz2KfYqiDYudmE2YjZhSDYp9mE2LLYsdin2LnZitipIiwiUGVyaW9kaWNhbHMiLCJJbmRleGVzIl0sImxjZ2Z0X3MiOlsiUGVyaW9kaWNhbHMiLCJJbmRleGVzIl0sInJlbGF0ZWRfbmFtZV9qc29uXzFkaXNwbGF5Ijoie1wiUmVsYXRlZCBuYW1lXCI6W1wiSmHMhG1pyrthaCBhbC1VcmR1bmnMhHlhaC4gyrtJbWHMhGRhdCBhbC1CYWjMo3RoIGFsLcq7SWxtacyEXCIsXCLYrNin2YXYudipINin2YTYp9ix2K/ZhtmK2KkuINi52YXYp9iv2Kkg2KfZhNio2K3YqyDYp9mE2LnZhNmF2YpcIl19Iiwib3RoZXJfdGl0bGVfZGlzcGxheSI6WyJLYXNoc2hhzIRmIGFsLXNhbmF3acyEIiwi2YPYtNin2YEg2KfZhNiz2YbZiNmKIiwiQW5udWFsIGluZGV4IiwiRGlyYXNhdC4gQW5udWFsIGluZGV4Il0sImFsdF90aXRsZV8yNDZfZGlzcGxheSI6WyJLYXNoc2hhzIRmIGFsLXNhbmF3acyEIiwi2YPYtNin2YEg2KfZhNiz2YbZiNmKIiwiQW5udWFsIGluZGV4IiwiRGlyYXNhdC4gQW5udWFsIGluZGV4Il0sImxjY25fZGlzcGxheSI6WyIgICA5ODk2NTQ5NSAiXSwibGNjbl9zIjpbIjk4OTY1NDk1Il0sIm9jbGNfcyI6WyI0MDY0OTk1MyJdLCJvdGhlcl92ZXJzaW9uX3MiOlsib2NtNDA2NDk5NTMiXSwiaG9sZGluZ3NfMWRpc3BsYXkiOiJ7XCIyMjU3OTE1MDk2MDAwNjQyMVwiOntcImxvY2F0aW9uX2NvZGVcIjpcImZpcmVzdG9uZSRuZWNcIixcImxvY2F0aW9uXCI6XCJOZWFyIEVhc3QgQ29sbGVjdGlvbnNcIixcImxpYnJhcnlcIjpcIkZpcmVzdG9uZSBMaWJyYXJ5XCIsXCJjYWxsX251bWJlclwiOlwiQVM1OTMuSjM1IEExNzcgSW5kZXhcIixcImNhbGxfbnVtYmVyX2Jyb3dzZVwiOlwiQVM1OTMuSjM1IEExNzcgSW5kZXhcIixcIml0ZW1zXCI6W3tcImhvbGRpbmdfaWRcIjpcIjIyNTc5MTUwOTYwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwibXVqYWxsYWQgMjUgMTk5OFwiLFwiaWRcIjpcIjIzNTc5MTUwOTMwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwMzY4Njc2NDRcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNTc5MTUwOTYwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwibXVqYWxsYWQgMjYgMTk5OVwiLFwiaWRcIjpcIjIzNTc5MTUwOTIwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwNjI1OTAxNjlcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNTc5MTUwOTYwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwibXVqYWxsYWQgMjQgMTk5N1wiLFwiaWRcIjpcIjIzNTc5MTUwOTQwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwMzY4Njc2NTFcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9LHtcImhvbGRpbmdfaWRcIjpcIjIyNTc5MTUwOTYwMDA2NDIxXCIsXCJlbnVtZXJhdGlvblwiOlwibXVqYWxsYWQgMjMgMTk5NlwiLFwiaWRcIjpcIjIzNTc5MTUwOTUwMDA2NDIxXCIsXCJzdGF0dXNfYXRfbG9hZFwiOlwiMVwiLFwiYmFyY29kZVwiOlwiMzIxMDEwMzY4Njc1NDVcIixcImNvcHlfbnVtYmVyXCI6XCIxXCJ9XSxcImxvY2F0aW9uX2hhc1wiOltcImFsLU11amFsbGFkIDIzICgxOTk2KS1hbC1tdWphbGxhZCAyNiAoMTk5OSlcIl0sXCJzdXBwbGVtZW50c1wiOltudWxsXSxcImluZGV4ZXNcIjpbbnVsbF19fSIsImxvY2F0aW9uX2NvZGVfcyI6WyJmaXJlc3RvbmUkbmVjIl0sImxvY2F0aW9uIjpbIkZpcmVzdG9uZSBMaWJyYXJ5Il0sImxvY2F0aW9uX2Rpc3BsYXkiOlsiTmVhciBFYXN0IENvbGxlY3Rpb25zIl0sImFkdmFuY2VkX2xvY2F0aW9uX3MiOlsiZmlyZXN0b25lJG5lYyIsIkZpcmVzdG9uZSBMaWJyYXJ5Il0sInVuaWZvcm1fdGl0bGVfMWRpc3BsYXkiOiJbW1wiRGlyYcyEc2HMhHQuXCIsXCJLYXNoc2hhzIRmIGFsLXNhbmF3acyELlwiXSxbXCLYr9ix2KfYs9in2KouXCIsXCLZg9i02KfZgSDYp9mE2LPZhtmI2YouXCJdXSIsImNhbGxfbnVtYmVyX2Rpc3BsYXkiOlsiQVM1OTMuSjM1IEExNzcgSW5kZXgiXSwiY2FsbF9udW1iZXJfYnJvd3NlX3MiOlsiQVM1OTMuSjM1IEExNzcgSW5kZXgiXSwiY2FsbF9udW1iZXJfbG9jYXRvcl9kaXNwbGF5IjpbIkFTNTkzLkozNSBBMTc3IEluZGV4Il0sImhhc2hlZF9pZF9zc2kiOiJiYzYxOTdjMjc3Y2UwYzkwIiwiX3ZlcnNpb25fIjoxODA3MjA3NDU4MzkzODE3MDg4LCJ0aW1lc3RhbXAiOiIyMDI0LTA4LTEyVDE4OjI4OjU3LjM5NloifQ==
+  recorded_at: Wed, 18 Sep 2024 15:10:20 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.lib.princeton.edu/locations/holding_locations/firestone$nec.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 Sep 2024 15:10:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"4689fb0b62ca9d1a2eef9a970e6f6737"
+      X-Runtime:
+      - '0.138189'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - ffb2837c-0b6d-4523-8008-332b05235962
+    body:
+      encoding: UTF-8
+      string: '{"label":"Near East Collections","code":"firestone$nec","aeon_location":false,"recap_electronic_delivery_location":false,"open":true,"requestable":true,"always_requestable":false,"circulates":true,"remote_storage":"","fulfillment_unit":"General","library":{"label":"Firestone
+        Library","code":"firestone","order":0},"holding_library":null,"delivery_locations":[{"label":"Firestone
+        Library","address":"One Washington Rd. Princeton, NJ 08544","phone_number":"609-258-1470","contact_email":"fstcirc@princeton.edu","gfa_pickup":"PA","staff_only":false,"pickup_location":true,"digital_location":true,"library":{"label":"Firestone
+        Library","code":"firestone","order":0}}]}'
+  recorded_at: Wed, 18 Sep 2024 15:10:21 GMT
+- request:
+    method: get
+    uri: https://bibdata-staging.lib.princeton.edu/bibliographic/9935076973506421/holdings/22579150960006421/availability.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 Sep 2024 15:10:29 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"e44ebb2c7574597d674ff4f97343a465"
+      X-Runtime:
+      - '8.013627'
+      Access-Control-Request-Method:
+      - GET
+      X-Request-Id:
+      - b709e4a6-118a-4a3d-b88f-85c06035fcc6
+    body:
+      encoding: UTF-8
+      string: '[{"barcode":"32101062590169","id":"23579150920006421","holding_id":"22579150960006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"firestone","pickup_location_code":"firestone","location":"firestone$nec","label":"Firestone
+        Library - Near East Collections","description":"mujallad 26 1999","enum_display":"mujallad
+        26","chron_display":"1999","in_temp_library":false},{"barcode":"32101036867644","id":"23579150930006421","holding_id":"22579150960006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"firestone","pickup_location_code":"firestone","location":"firestone$nec","label":"Firestone
+        Library - Near East Collections","description":"mujallad 25 1998","enum_display":"mujallad
+        25","chron_display":"1998","in_temp_library":false},{"barcode":"32101036867651","id":"23579150940006421","holding_id":"22579150960006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"firestone","pickup_location_code":"firestone","location":"firestone$nec","label":"Firestone
+        Library - Near East Collections","description":"mujallad 24 1997","enum_display":"mujallad
+        24","chron_display":"1997","in_temp_library":false},{"barcode":"32101036867545","id":"23579150950006421","holding_id":"22579150960006421","copy_number":"1","status":"Available","status_label":"Item
+        in place","status_source":"base_status","process_type":null,"on_reserve":"N","item_type":"Gen","pickup_location_id":"firestone","pickup_location_code":"firestone","location":"firestone$nec","label":"Firestone
+        Library - Near East Collections","description":"mujallad 23 1996","enum_display":"mujallad
+        23","chron_display":"1996","in_temp_library":false}]'
+  recorded_at: Wed, 18 Sep 2024 15:10:29 GMT
+recorded_with: VCR 6.3.1

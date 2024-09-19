@@ -1073,6 +1073,35 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           select('Firestone Library')
           expect(page).to have_button('Request this Item', disabled: false)
         end
+        it 'does not enable when one item is selected and another has a delivery location' do
+          visit 'requests/9935076973506421?aeon=false&mfhd=22579150960006421'
+          expect(page).to have_content 'Dirāsāt'
+          expect(page).to have_content 'Jāmiʻah al-Urdunīyah'
+          expect(page).to have_content 'mujallad 26 1999'
+          choose('requestable__delivery_mode_22579150960006421_print')
+          expect(page).to have_button('Request Selected Items', disabled: true)
+          check('requestable_selected_23579150920006421')
+          expect(page).to have_button('Request Selected Items', disabled: true)
+        end
+        it 'unchecking an item when there is another valid item leaves the submit button enabled' do
+          visit 'requests/9935076973506421?aeon=false&mfhd=22579150960006421'
+
+          first_row = page.all('tr[id^=request_]')[0]
+          second_row = page.all('tr[id^=request_]')[1]
+          expect(page).to have_content 'Dirāsāt'
+          expect(page).to have_content 'Jāmiʻah al-Urdunīyah'
+          expect(page).to have_content 'mujallad 26 1999'
+          expect(page).to have_button('Request Selected Items', disabled: true)
+          first_row.check('requestable_selected')
+          first_row.choose('requestable__delivery_mode_22579150960006421_print')
+          second_row.check('requestable_selected_23579150920006421')
+          second_row.choose('requestable__delivery_mode_23579150920006421_print')
+          expect(page).to have_button('Request Selected Items', disabled: false)
+          first_row.uncheck('requestable_selected')
+          expect(page).to have_button('Request Selected Items', disabled: false)
+          second_row.uncheck('requestable_selected_23579150920006421')
+          expect(page).to have_button('Request Selected Items', disabled: true)
+        end
       end
 
       describe 'Request a temp holding item from Resource Sharing - RES_SHARE$IN_RS_REQ' do
