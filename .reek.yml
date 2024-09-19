@@ -40,6 +40,7 @@ detectors:
     exclude:
     - ApplicationController#after_sign_out_path_for
     - BookmarksController#two_values
+    - Orangelight::BrowsablesHelper#vocab_type
     - Requests::ApplicationHelper#check_box_selected
     - Requests::ApplicationHelper#hidden_service_options
     - Requests::ApplicationHelper#single_pickup
@@ -700,6 +701,7 @@ detectors:
     - CatalogHelper#render_search_to_page_title
     - HoldingsHelper#first_two_holdings_block
     - HoldingsHelper#holding_block_search
+    - Orangelight::BrowsablesHelper#vocab_type
     - Requests::ApplicationHelper#available_pick_ups
     - Requests::ApplicationHelper#current_location_label
     - Requests::ApplicationHelper#display_requestable_list
