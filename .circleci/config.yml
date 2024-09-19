@@ -246,7 +246,9 @@ workflows:
           - build
       - reek
       - bearer
-      - dastardly
+      - dastardly:
+        requires:
+          - build
       - js_tests:
          requires:
           - build
