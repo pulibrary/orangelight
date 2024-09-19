@@ -46,6 +46,7 @@ detectors:
     exclude:
     - ApplicationController#after_sign_out_path_for
     - BookmarksController#two_values
+    - Orangelight::BrowsablesHelper#vocab_type
     - Requests::ApplicationHelper#check_box_selected
     - Requests::ApplicationHelper#hidden_service_options
     - Requests::ApplicationHelper#single_pickup
@@ -937,6 +938,7 @@ detectors:
     - BlacklightHelper#render_icon
     - BlacklightHelper#wildcard_char_strip
     - Orangelight::BrowsablesHelper#bib_for_availability
+    - Orangelight::BrowsablesHelper#vocab_type
     - Requests::ApplicationHelper#aeon_base
     - Requests::ApplicationHelper#available_pick_ups
     - Requests::ApplicationHelper#check_box_selected
