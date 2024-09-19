@@ -197,6 +197,24 @@ jobs:
           name: Check code smells with Reek
           command: bundle exec reek app
 
+  dastardly:
+    executor: basic-executor
+    steps:
+      - checkout
+      - run:
+          command: bundle exec rails s
+          background: true
+      - run:
+          command: wait-on http://localhost:5173
+      - run: |
+          docker run --user $(id -u) --rm -v $(pwd):/dastardly \
+          --network="host" -e \
+          BURP_START_URL=http://127.0.0.1:5173 -e \
+          BURP_REPORT_FILE_PATH=/dastardly/dastardly-report.xml \
+          public.ecr.aws/portswigger/dastardly:latest
+      - store_test_results:
+          path: dastardly-report.xml
+
   finish:
     executor: basic-executor
     steps:
