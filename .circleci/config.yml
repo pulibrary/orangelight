@@ -73,6 +73,8 @@ jobs:
           keys:
             - orangelight-v3-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
       - run:
+          command: yarn global add wait-on
+      - run:
           name: Yarn Install
           command: yarn install --frozen-lockfile
       - save_cache:
@@ -201,8 +203,6 @@ jobs:
     executor: basic-executor
     steps:
       - checkout
-      - run:
-          command: yarn global add wait-on
       - run:
           command: bundle exec rails s
           background: true
