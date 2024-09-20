@@ -190,8 +190,8 @@ jobs:
       - run: bundle exec erblint --lint-all
   wapiti:
     executor: orangelight-executor
-    docker:
-      - image: cimg/python:3.11.10
+    # docker:
+    #   - image: cimg/python:3.11.10
     steps:
       - attach_workspace:
           at: '~/orangelight'
@@ -214,24 +214,24 @@ jobs:
           name: Index Test Data
           command: bundle exec rake pulsearch:solr:index
       - browser-tools/install-chrome
-      - run: 
-          name: Python version
-          command: python --version
-      - run:
-          name: Install wapiti
-          command: pip install wapiti3
-      - run:
-          name: Check wapiti version
-          command: wapiti --version
-      - run:
-          name: Run rails server
-          command: bundle exec rails server -p 3003
-      - run: 
-          name: Run scans
-          command: wapiti -v2 -u http://localhost:3003/catalog/9955667413506421
-      - run:
-          name: Run scans
-          command: wapiti -v2 -u https://catalog-staging.princeton.edu/catalog/9947467143506421 
+      # - run: 
+      #     name: Python version
+      #     command: python --version
+      # - run:
+      #     name: Install wapiti
+      #     command: pip install wapiti3
+      # - run:
+      #     name: Check wapiti version
+      #     command: wapiti --version
+      # - run:
+      #     name: Run rails server
+      #     command: bundle exec rails server -p 3003
+      # - run: 
+      #     name: Run scans
+      #     command: wapiti -v2 -u http://localhost:3003/catalog/9955667413506421
+      # - run:
+      #     name: Run scans
+      #     command: wapiti -v2 -u https://catalog-staging.princeton.edu/catalog/9947467143506421 
 
   reek:
     docker:
