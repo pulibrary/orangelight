@@ -189,9 +189,9 @@ jobs:
       - setup-bundler-and-node
       - run: bundle exec erblint --lint-all
   wapiti:
+    executor: orangelight-executor
     docker:
       - image: cimg/python:3.11.10
-    executor: orangelight-executor
     steps:
       - attach_workspace:
           at: '~/orangelight'
