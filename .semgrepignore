@@ -12,39 +12,20 @@ spec/
 
 # Tickets to remediate these rules and remove from this list
 lib/orangelight/
-
-config/initializers/
-
-config/environments/
-
-app/views/shared/
-
-app/views/search_history/
-
-app/views/requests/
-
-app/views/orangelight/browsables/
-
-app/views/layouts/
-
-app/views/kaminari/blacklight_compact/
-
-app/views/catalog/
-
+# https://github.com/pulibrary/orangelight/issues/4377
+config/
+# https://github.com/pulibrary/orangelight/issues/4378
+app/views/
+# https://github.com/pulibrary/orangelight/issues/4379
 app/services/
-
+# https://github.com/pulibrary/orangelight/issues/4380
 app/processors/orangelight/
-
+# https://github.com/pulibrary/orangelight/issues/4381
 app/models/requests/
-
-app/helpers/requests/
-
+# https://github.com/pulibrary/orangelight/issues/4382
 app/helpers/
-
-app/controllers/concerns/orangelight/
-
+# https://github.com/pulibrary/orangelight/issues/4383
 app/controllers/
-
-app/components/orangelight/
-
+# https://github.com/pulibrary/orangelight/issues/4384
 app/components/
+# https://github.com/pulibrary/orangelight/issues/4385
