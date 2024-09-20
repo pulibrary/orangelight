@@ -1,0 +1,50 @@
+# Common large paths
+node_modules/
+vendor/
+*.min.js
+spec/
+
+# Semgrep rules folder
+.semgrep
+
+# Semgrep-action log folder
+.semgrep_logs/
+
+# Tickets to remediate these rules and remove from this list
+lib/orangelight/
+
+config/initializers/
+
+config/environments/
+
+app/views/shared/
+
+app/views/search_history/
+
+app/views/requests/
+
+app/views/orangelight/browsables/
+
+app/views/layouts/
+
+app/views/kaminari/blacklight_compact/
+
+app/views/catalog/
+
+app/services/
+
+app/processors/orangelight/
+
+app/models/requests/
+
+app/helpers/requests/
+
+app/helpers/
+
+app/controllers/concerns/orangelight/
+
+app/controllers/
+
+app/components/orangelight/
+
+app/components/
