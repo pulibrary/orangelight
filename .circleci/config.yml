@@ -4,6 +4,8 @@ orbs:
   browser-tools: circleci/browser-tools@1.4.8
   ruby: circleci/ruby@2.1.4
   node: circleci/node@5.3.0
+  python: circleci/python@2.1.1
+  
 executors:
   orangelight-executor:
     docker:
@@ -187,19 +189,21 @@ jobs:
       - setup-bundler-and-node
       - run: bundle exec erblint --lint-all
   wapiti:
-    executor: basic-executor
+    docker:
+      - image: cimg/python:3.11.10
     steps:
       - checkout
-      - python/install-packages
       - attach_workspace:
           at: '~/orangelight'
-      - setup-bundler-and-node
+      - run: 
+          name: Python version
+          command: python --version
       - run:
           name: install wapiti
-          command: pip install wapiti3
-      # - run:
-      #     name: run scans
-      #     command: wapiti -v2 -u https://catalog-staging.princeton.edu/catalog/9947467143506421 
+          command: pipenv install wapiti3
+      - run:
+          name: run scans
+          command: wapiti3 -v2 -u https://catalog-staging.princeton.edu/catalog/9947467143506421 
 
   reek:
     docker:
@@ -242,10 +246,8 @@ workflows:
           - build
       - reek
       - bearer
+      - wapiti
       - js_tests:
-         requires:
-          - build
-      - wapiti:
          requires:
           - build
       - test:
