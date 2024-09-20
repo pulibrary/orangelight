@@ -191,10 +191,29 @@ jobs:
   wapiti:
     docker:
       - image: cimg/python:3.11.10
+    executor: orangelight-executor
     steps:
-      - checkout
       - attach_workspace:
           at: '~/orangelight'
+      - setup-bundler-and-node
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run: sudo apt install postgresql-client
+      - run:
+          name: Database setup
+          command: bundle exec rake db:setup
+      - run:
+          name: Load config into solr
+          command: |
+            cd solr/conf
+            zip -1 -r solr_config.zip ./*
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@127.0.0.1:8983/solr/admin/configs?action=UPLOAD&name=orangelight"
+            curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8983/api/collections/  -d '{create: {name: orangelight-core-test, config: orangelight, numShards: 1}}'
+      - run:
+          name: Index Test Data
+          command: bundle exec rake pulsearch:solr:index
+      - browser-tools/install-chrome
       - run: 
           name: Python version
           command: python --version
@@ -205,8 +224,14 @@ jobs:
           name: Check wapiti version
           command: wapiti --version
       - run:
+          name: Run rails server
+          command: bundle exec rails server -p 3003
+      - run: 
           name: Run scans
-          command: wapiti -v2 -u https://catalog-staging.princeton.edu/catalog/9947467143506421 
+          command: wapiti -v2 -u http://localhost:3003/catalog/9955667413506421
+      # - run:
+      #     name: Run scans
+      #     command: wapiti -v2 -u https://catalog-staging.princeton.edu/catalog/9947467143506421 
 
   reek:
     docker:
