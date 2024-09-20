@@ -197,6 +197,15 @@ jobs:
           name: Check code smells with Reek
           command: bundle exec reek app
 
+  semgrep:
+    docker:
+        - image: returntocorp/semgrep
+    steps:
+      - checkout
+      - run:
+          name: Check code against community-provided and custom semgrep rules
+          command: semgrep ci --config auto
+
   finish:
     executor: basic-executor
     steps:
@@ -228,6 +237,7 @@ workflows:
           - build
       - reek
       - bearer
+      - semgrep
       - js_tests:
          requires:
           - build
