@@ -207,7 +207,7 @@ jobs:
           command: bundle exec rails s
           background: true
       - run:
-          command: wait-on http://localhost:5173
+          command: yarn wait-on http://localhost:5173
       - run: |
           docker run --user $(id -u) --rm -v $(pwd):/dastardly \
           --network="host" -e \
