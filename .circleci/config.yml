@@ -199,11 +199,14 @@ jobs:
           name: Python version
           command: python --version
       - run:
-          name: install wapiti
-          command: pipenv install wapiti3
+          name: Install wapiti
+          command: pip install wapiti3
       - run:
-          name: run scans
-          command: wapiti3 -v2 -u https://catalog-staging.princeton.edu/catalog/9947467143506421 
+          name: Check wapiti version
+          command: wapiti --version
+      - run:
+          name: Run scans
+          command: wapiti -v2 -u https://catalog-staging.princeton.edu/catalog/9947467143506421 
 
   reek:
     docker:
