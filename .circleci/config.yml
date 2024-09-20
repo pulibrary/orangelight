@@ -204,7 +204,7 @@ jobs:
       - checkout
       - run:
           name: Check code against community-provided and custom semgrep rules
-          command: semgrep ci --config auto --config .semgrep.yml
+          command: semgrep ci --config auto
 
   finish:
     executor: basic-executor
