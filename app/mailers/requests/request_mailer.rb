@@ -121,7 +121,6 @@ module Requests
       destination_email = @submission.email
       subject = I18n.t('requests.recap.email_subject')
       mail(to: destination_email,
-           cc: cc_email,
            from: I18n.t('requests.default.email_from'),
            subject:)
     end
