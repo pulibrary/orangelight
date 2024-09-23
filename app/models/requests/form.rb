@@ -258,8 +258,8 @@ module Requests
 
       def get_current_location(item_location_code:)
         if item_location_code != location_code
-          @temp_locations ||= {}
-          @temp_locations[item_location_code] = get_location_data(item_location_code) if @temp_locations[item_location_code].blank?
+          @temp_locations ||= TempLocationCache.new
+          @temp_locations.retrieve(item_location_code)
         else
           location
         end
