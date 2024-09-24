@@ -9,7 +9,7 @@ Rails.application.configure do
   config.content_security_policy do |policy|
     policy.default_src :self
     policy.frame_ancestors :self, 'https://princeton.libwizard.com'
-    policy.connect_src :self, '*.princeton.edu', 'http://localhost:*', 'https://*.google.com', 'https://*.g.doubleclick.net', 'https://maxcdn.bootstrapcdn.com', 'https://*.typekit.net', 'https://*.stackmapintegration.com', 'https://books.google.com'
+    policy.connect_src :self, '*.princeton.edu', 'http://localhost:*', :https
     policy.font_src    :self, :data, 'https://maxcdn.bootstrapcdn.com', 'https://use.typekit.net', 'https://fonts.gstatic.com'
     policy.img_src     :self, :https, :data
     policy.media_src   :self, :data
