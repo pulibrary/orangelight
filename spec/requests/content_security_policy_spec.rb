@@ -9,6 +9,10 @@ RSpec.describe 'Content Security Policy' do
     frame_ancestors_directive = directives.find { |directive| directive.start_with? 'frame-ancestors' }
     expect(frame_ancestors_directive).to include('https://princeton.libwizard.com')
   end
+  it 'allows Canvas to embed the catalog in an iframe' do
+    frame_ancestors_directive = directives.find { |directive| directive.start_with? 'frame-ancestors' }
+    expect(frame_ancestors_directive).to include('https://princeton.instructure.com')
+  end
   it 'allows the catalog to embed figgy in an iframe' do
     frame_src_directive = directives.find { |directive| directive.start_with? 'frame-src' }
     expect(frame_src_directive).to include('https://figgy.princeton.edu')
