@@ -16,7 +16,7 @@ Rails.application.configure do
     policy.script_src  :self, :https, :unsafe_eval, :unsafe_inline
     policy.style_src   :self, :https, :unsafe_inline
     policy.frame_src   :self, 'https://figgy.princeton.edu', 'https://*.doubleclick.net'
-    policy.report_uri -> { "https://api.honeybadger.io/v1/browser/csp?api_key=#{ENV.fetch('HONEYBADGER_API_KEY', nil)}&report_only=true&env=#{Rails.env}&context[user_id]=#{respond_to?(:current_user) ? current_user&.id : nil}" }
+    # policy.report_uri -> { "https://api.honeybadger.io/v1/browser/csp?api_key=#{ENV.fetch('HONEYBADGER_API_KEY', nil)}&report_only=true&env=#{Rails.env}&context[user_id]=#{respond_to?(:current_user) ? current_user&.id : nil}" }
   end
 
   # Report violations without enforcing the policy.
