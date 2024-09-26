@@ -30,9 +30,9 @@
     "globals": "^15.9.0",
     "jest": "^29.4.0",
     "jquery": "^3.7.0",
-    "lint-staged": "^15.1.0",
-    "prettier": "^3.1.0",
-    "simple-git-hooks": "^2.9.0",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "simple-git-hooks": "^2.11.1",
     "vite": "^5.2.14",
     "vite-plugin-ruby": "^5.0.0"
   },
