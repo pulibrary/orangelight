@@ -47,7 +47,7 @@ export default [{
         "no-unused-vars": "warn",
     },
 }, {
-    files: ["**/*.spec.js", "**/*.spec.jsx"],
+    files: ["*.js", "*.vue", "*.es6", "**/*.spec.js", "**/*.spec.jsx"],
 
     languageOptions: {
         globals: {

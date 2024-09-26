@@ -40,7 +40,7 @@
     "pre-commit": "yarn lint-staged"
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js,es6,vue}": [
       "prettier --write",
       "eslint"
     ]
