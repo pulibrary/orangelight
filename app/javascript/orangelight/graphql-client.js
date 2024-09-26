@@ -1,34 +1,34 @@
-import 'unfetch/polyfill'
-import { ApolloClient } from '@apollo/client/core'
-import { HttpLink } from '@apollo/client/core'
-import { InMemoryCache } from '@apollo/client/cache'
+import 'unfetch/polyfill';
+import { ApolloClient } from '@apollo/client/core';
+import { HttpLink } from '@apollo/client/core';
+import { InMemoryCache } from '@apollo/client/cache';
 
-const uri = window.Global.graphql.uri
+const uri = window.Global.graphql.uri;
 const httpLink = new HttpLink({
-  uri: uri
-})
+  uri: uri,
+});
 
 const fragmentMatcher = new InMemoryCache({
   introspectionQueryResultData: {
     __schema: {
       types: [
         {
-          kind: "INTERFACE",
-          name: "Resource",
+          kind: 'INTERFACE',
+          name: 'Resource',
           possibleTypes: [
-            { name: "ScannedResource" },
-            { name: "ScannedMap" },
-            { name: "Coin" }
+            { name: 'ScannedResource' },
+            { name: 'ScannedMap' },
+            { name: 'Coin' },
           ],
         },
       ],
     },
-  }
-})
+  },
+});
 
 const client = new ApolloClient({
   link: httpLink,
-  cache: new InMemoryCache({ fragmentMatcher })
-})
+  cache: new InMemoryCache({ fragmentMatcher }),
+});
 
-export default client
+export default client;
