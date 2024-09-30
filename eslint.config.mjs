@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
 import { FlatCompat } from "@eslint/eslintrc";
+import stylistic from '@stylistic/eslint-plugin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,6 +15,9 @@ const compat = new FlatCompat({
 });
 
 export default [{
+    plugins: {
+        '@stylistic': stylistic
+    },
     ignores: [
         "**/node_modules",
         "**/.gitignore",
@@ -37,7 +41,7 @@ export default [{
     rules: {
         "prefer-const": "error",
 
-        "no-trailing-spaces": ["error", {
+        '@stylistic/no-trailing-spaces': ["error", {
             skipBlankLines: true,
             ignoreComments: true,
         }],
