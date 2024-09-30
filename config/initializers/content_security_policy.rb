@@ -10,7 +10,7 @@ Rails.application.configure do
     policy.default_src :self
     policy.frame_ancestors :self, 'https://princeton.libwizard.com', 'https://princeton.instructure.com'
     policy.connect_src :self, '*.princeton.edu', 'http://localhost:*', :https
-    policy.font_src    :self, :data, 'https://maxcdn.bootstrapcdn.com', 'https://use.typekit.net', 'https://fonts.gstatic.com'
+    policy.font_src    :self, :https, :data
     policy.img_src     :self, :https, :data
     policy.media_src   :self, :data
     policy.script_src  :self, :https, :unsafe_eval, :unsafe_inline
