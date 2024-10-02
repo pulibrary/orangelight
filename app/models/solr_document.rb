@@ -174,6 +174,18 @@ class SolrDocument
     solr_document_id&.start_with? 'coin'
   end
 
+  def in_a_special_collection?
+    holdings_1display = self['holdings_1display']
+    return true unless holdings_1display
+
+    JSON.parse(holdings_1display)
+        &.values
+        &.any? do |holding|
+          location_code = holding['location_code']
+          Bibdata.holding_locations.dig(location_code, 'aeon_location') if location_code
+        end
+  end
+
   # host_id an Array of host id(s)
   # appends the host_id in each host_holding
   # merges host_holding in holdings

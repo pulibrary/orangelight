@@ -210,11 +210,11 @@ describe 'blacklight tests' do
     end
   end
 
-  describe 'identifier metadata' do
+  describe 'identifier metadata', thumbnails: true do
     before { stub_holding_locations }
 
     it 'is accessible from show view' do
-      id = '9979160443506421'
+      id = '99125476820706421'
       get "/catalog/#{id}"
       expect(response.body).to include '<meta property="isbn"'
       expect(response.body).to include 'data-isbn="['

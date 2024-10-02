@@ -1,6 +1,4 @@
-<%= content_tag(:div, class: "document-thumbnail", data: @document.identifier_data) do %>
-  <div class="default"></div>
-<% end %>
+<%= render ThumbnailComponent.new document: %>
 
 <% if monograms = @document['issue_monogram_1display'] %>
   <h3> Monograms </h3>
