@@ -8,37 +8,8 @@ module ApplicationHelper
     Rails.env.production?
   end
 
-  # Generate an Array of <div> elements wrapping links to proxied service endpoints for access
-  # Takes first 2 links for pairing with online holdings in search results
-  # @param electronic_access [Hash] electronic resource information
-  # @return [Array<String>] array containing the links in the <div>'s
-  def search_links(electronic_access)
-    urls = []
-    unless electronic_access.nil?
-      links_hash = JSON.parse(electronic_access)
-      links_hash.first(2).each do |url, text|
-        link = link_to(text.first, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener')
-        link = "#{text[1]}: ".html_safe + link if text[1]
-        urls << content_tag(:div, link, class: 'library-location')
-      end
-    end
-    urls
-  end
-
   def show_regular_search?
     !((%w[generate numismatics advanced_search].include? params[:action]) || (%w[advanced].include? params[:controller]))
-  end
-
-  # Returns electronic portfolio links for Alma records.
-  # @param document [SolrDocument]
-  # @return [Array<String>] array containing the links
-  def electronic_portfolio_links(document)
-    return [] if document.try(:electronic_portfolios).blank?
-    document.electronic_portfolios.map do |portfolio|
-      content_tag(:div, class: 'library-location') do
-        link_to(portfolio["title"], portfolio["url"], target: '_blank', rel: 'noopener')
-      end
-    end
   end
 
   # Retrieve a URL for a stack map location URL given a record, a call number, and the library in which it is held

@@ -68,6 +68,7 @@ detectors:
     - PhysicalHoldingsMarkupBuilder
   DuplicateMethodCall:
     exclude:
+    - Holdings::OnlineHoldingsComponent#marc_links
     - LocationCodeFacetComponent#add_scsb_loc
     - LocationCodeFacetComponent#fetch_libraries_and_locations
     - LocationCodeFacetComponent#library_facet_values
@@ -115,7 +116,6 @@ detectors:
     - ApplicationHelper#location_full_display
     - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#scsb_supervised_items?
-    - ApplicationHelper#search_links
     - ApplicationHelper#search_location_display
     - ApplicationHelper#series_results
     - ApplicationHelper#subjectify
@@ -133,7 +133,6 @@ detectors:
     - BlacklightHelper#wildcard_char_strip
     - CatalogHelper#render_search_to_page_title
     - HoldingsHelper#first_two_holdings_block
-    - HoldingsHelper#holding_block_search
     - HoldingsHelper#view_record_for_full_avail_li_two
     - Orangelight::BrowsablesHelper#current_browse_per_page
     - Requests::ApplicationHelper#available_pick_ups
@@ -271,7 +270,6 @@ detectors:
     - AdvancedHelper#advanced_search_fields
     - AdvancedHelper#param_for_field
     - ApplicationHelper#action_notes_display
-    - ApplicationHelper#search_links
     - ApplicationHelper#search_location_display
     - ApplicationHelper#series_results
     - ApplicationHelper#title_hierarchy
@@ -606,7 +604,6 @@ detectors:
     - ApplicationHelper#holding_location_label
     - ApplicationHelper#locate_link_with_glyph
     - ApplicationHelper#render_location_code
-    - ApplicationHelper#search_links
     - BlacklightHelper#html_facets
     - BlacklightHelper#isbn_resolve
     - BlacklightHelper#issn_resolve
@@ -704,6 +701,7 @@ detectors:
     - initialize
     - AeonStatus#check!
     - BibdataStatus#check!
+    - Holdings::OnlineHoldingsComponent#marc_links
     - LocationCodeFacetComponent#fetch_libraries_and_locations
     - LocationCodeFacetComponent#location_codes_by_lib
     - Orangelight::ConstraintsComponent#guided_search_value
@@ -731,7 +729,6 @@ detectors:
     - ApplicationHelper#location_has
     - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#render_location_code
-    - ApplicationHelper#search_links
     - ApplicationHelper#search_location_display
     - ApplicationHelper#subjectify
     - ApplicationHelper#title_hierarchy

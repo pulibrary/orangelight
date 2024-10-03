@@ -292,7 +292,17 @@ RSpec.describe HoldingsHelper do
 
       before { stub_holding_locations }
       let(:expected_result) do
-        "<ul><li class=\"holding-status\" data-availability-record=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-secondary\">Loading...</span><div class=\"library-location\" data-location=\"true\" data-record-id=\"1\" data-holding-id=\"3580281\"><span class=\"results_location\">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class=\"call-number\">PS3539.A74Z93 2000</span></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><li class=\"holding-status\" data-availability-record=\"false\" data-record-id=\"1\" data-holding-id=\"3595800\" data-bound-with=\"false\"><span class=\"availability-icon badge badge-primary\">Online</span><div class=\"library-location\"><a target=\"_blank\" rel=\"noopener\" href=\"https://library.princeton.edu/resource/28076\">library.princeton.edu</a></div></li><li><span class=\"badge badge-primary\" data-availability-cdl=\"true\"></span></li><span style=\"font-size: small; font-style: italic;\">View record for information on additional holdings</span></ul>"
+        <<~END_RESULT.strip
+          <ul><li class="holding-status" data-availability-record="true" data-record-id="1" data-holding-id="3580281" data-bound-with="false"><span class="availability-icon badge badge-secondary">Loading...</span><div class="library-location" data-location="true" data-record-id="1" data-holding-id="3580281"><span class="results_location">Rare Books and Special Collections - Rare Books and Special Collections - Reference Collection in Dulles Reading Room</span> &raquo; <span class="call-number">PS3539.A74Z93 2000</span></div></li><li><span class="badge badge-primary" data-availability-cdl="true"></span></li><li>
+              <span class="availability-icon badge badge-primary">Online</span>
+              <div class="library-location"><a target="_blank" rel="noopener" href="https://library.princeton.edu/resource/28076">library.princeton.edu</a></div>
+          </li>
+          <li><span class="badge badge-primary" data-availability-cdl="true"></span></li><span style="font-size: small; font-style: italic;">View record for information on additional holdings</span><li>
+              <span class="availability-icon badge badge-primary">Online</span>
+              <div class="library-location"><a target="_blank" rel="noopener" href="https://library.princeton.edu/resource/28076">library.princeton.edu</a></div>
+          </li>
+          </ul>
+        END_RESULT
       end
       it 'matches the expected result' do
         expect(search_result).to eq(expected_result)
@@ -302,9 +312,8 @@ RSpec.describe HoldingsHelper do
         expect(search_result).to include library
       end
 
-      it 'includes both availability-record true and false' do
+      it 'includes availability for the first holding' do
         expect(search_result).to include("data-availability-record=\"true\"")
-        expect(search_result).to include("data-availability-record=\"false\"")
       end
 
       it 'includes the online badge and link since there is an electronic access link' do
@@ -431,7 +440,13 @@ RSpec.describe HoldingsHelper do
 
       before { stub_holding_locations }
       let(:expected_result) do
-        "<ul><li><span class=\"availability-icon badge badge-primary\">Online</span><div class=\"library-location\"><a target=\"_blank\" rel=\"noopener\" href=\"https://library.princeton.edu/resource/28076\">library.princeton.edu</a></div></li></ul>"
+        <<~END_EXPECTED_RESULT.strip
+          <ul><li>
+              <span class="availability-icon badge badge-primary">Online</span>
+              <div class="library-location"><a target="_blank" rel="noopener" href="https://library.princeton.edu/resource/28076">library.princeton.edu</a></div>
+          </li>
+          </ul>
+        END_EXPECTED_RESULT
       end
       it 'matches the expected result' do
         expect(search_result).to eq(expected_result)
@@ -452,9 +467,8 @@ RSpec.describe HoldingsHelper do
           }.with_indifferent_access
         end
 
-        it 'includes only the first link' do
-          expect(search_result).to include('The bombardment of Canton')
-          expect(search_result).not_to include("Fifty years' work amongst young men in all lands")
+        it 'shows an OnlineOptions component' do
+          expect(search_result).to include('<online-options')
         end
       end
       context 'with the only holding an electronic portfolio' do

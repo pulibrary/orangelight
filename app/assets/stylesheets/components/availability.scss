@@ -356,7 +356,8 @@
 }
 
 .blacklight-holdings ul {
-  margin-top: 1.5em;
+  margin-top: var(--space-small);
+  margin-bottom: var(--space-x-small);
 
   li {
     margin-bottom: 6px;

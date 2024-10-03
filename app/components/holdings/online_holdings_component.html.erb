@@ -1,0 +1,17 @@
+<li>
+<% if links.length == 1 %>
+    <%= content_tag(
+        :span,
+        'Online',
+        class: 'availability-icon badge badge-primary'
+    ) %>
+    <%= links.first %>
+<% elsif links.length > 1 %>
+    <%= content_tag(
+        :div,
+        tag(:'online-options', :'document-id' => document.id),
+        class: 'lux'
+        )
+    %>
+<% end %>
+</li>
