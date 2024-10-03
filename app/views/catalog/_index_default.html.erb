@@ -14,7 +14,5 @@
     <%= render Blacklight::Document::BookmarkComponent.new document:, action: %>
   <% end %>
 
-  <%= content_tag(:div, class: "document-thumbnail", data: document.identifier_data) do %>
-    <div class="default"></div>
-  <% end %>
+  <%= render ThumbnailComponent.new document: %>
   </div>
