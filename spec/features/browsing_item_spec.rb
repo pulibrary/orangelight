@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe 'browsing a catalog item', js: true do
   before do
-    stub_alma_holding_locations
+    stub_holding_locations
   end
 
   context 'accessible icons' do

@@ -521,7 +521,7 @@ RSpec.describe HoldingsHelper do
     end
 
     context '#holding_block record show - special collections non-requestable locations' do
-      before { stub_alma_holding_locations }
+      before { stub_holding_locations }
       describe 'special collection location rare$xmr' do
         let(:show_result_sp_rare_xmr) { helper.holding_request_block(SolrDocument.new(document_sc_location_on_site_access)) }
         let(:document_sc_location_on_site_access) do
@@ -577,7 +577,7 @@ RSpec.describe HoldingsHelper do
     end
 
     context '#holding_block record show - online holdings' do
-      before { stub_alma_holding_locations }
+      before { stub_holding_locations }
       it 'link missing label appears when 856s is missing from elf location' do
         expect(show_result.first).to include 'Link Missing'
       end
@@ -620,7 +620,7 @@ RSpec.describe HoldingsHelper do
         }.to_json.to_s
       end
 
-      before { stub_alma_holding_locations }
+      before { stub_holding_locations }
 
       it 'returns a string with call number and location display values' do
         expect(show_result.last).to include call_number

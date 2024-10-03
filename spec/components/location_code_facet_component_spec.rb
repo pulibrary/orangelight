@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe LocationCodeFacetComponent, type: :component do
-  before { stub_alma_holding_locations }
+  before { stub_holding_locations }
 
   describe '#location_codes_by_lib' do
     let(:location_items) { [architecture, arch_la, recap_arch_pw, arch_newbook, arch_ref, arch_res3hr, arch_resclosed, arch_stacks, arch_unassigned] }

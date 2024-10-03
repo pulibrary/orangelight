@@ -3,7 +3,7 @@ require "rails_helper"
 
 describe "accessibility", type: :feature, js: true do
   before do
-    stub_alma_holding_locations
+    stub_holding_locations
   end
   context "home page" do
     before do
