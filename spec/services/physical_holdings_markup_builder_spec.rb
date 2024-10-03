@@ -681,7 +681,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
   describe 'Special collections location with suppressed button' do
     before do
-      stub_alma_holding_locations
+      stub_holding_locations
       allow(document).to receive(:to_s).and_return('99125501031906421')
       allow(adapter).to receive(:document).and_return(document)
       allow(adapter).to receive(:doc_id).and_return('99125501031906421')

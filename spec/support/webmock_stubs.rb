@@ -6,12 +6,6 @@ def stub_holding_locations
                body: File.read(File.join(fixture_paths.first, 'bibdata', 'holding_locations.json')))
 end
 
-def stub_alma_holding_locations
-  stub_request(:get, "#{Requests.config['bibdata_base']}/locations/holding_locations.json")
-    .to_return(status: 200,
-               body: File.read(File.join(fixture_paths.first, 'bibdata', 'alma', 'holding_locations.json')))
-end
-
 def stub_single_holding_location(location_code)
   file_path = File.join(fixture_paths.first, 'holding_locations', "#{location_code.tr('$', '_')}.json")
   stub_request(:get, "#{Requests.config['bibdata_base']}/locations/holding_locations/#{location_code}.json")
