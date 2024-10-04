@@ -114,7 +114,7 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-performance', require: false
   gem 'capybara'
-  gem 'coveralls_reborn'
+  gem 'coveralls_reborn', require: false
   gem "erb_lint", require: false
   gem "erblint-github"
   gem 'pry-byebug'
