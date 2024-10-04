@@ -14,6 +14,7 @@ executors:
           ORANGELIGHT_USER: postgres
           SOLR_URL: http://solr:SolrRocks@localhost:8983/solr/orangelight-core-test
           COVERALLS_PARALLEL: true
+          VITE_RUBY_AUTO_BUILD: false
       - image: cimg/postgres:15.8
         environment:
           POSTGRES_USER: orangelight
@@ -80,6 +81,9 @@ jobs:
           key: orangelight-v3-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+      - run:
+          name: Precompile assets
+          command: bundle exec rake assets:precompile
       - persist_to_workspace:
           root: '~/orangelight'
           paths:
