@@ -50,7 +50,7 @@ describe 'blacklight tests' do
       r = JSON.parse(response.body)
       expect(r['location'].length).to be > 2
       get '/catalog?&search_field=all_fields&q=998574693506421'
-      expect(response.body).to include '<span style="font-size: small; font-style: italic;">View record for information on additional holdings</span>'
+      expect(response.body).to include 'View Record for Full Availability'
     end
     it 'displays the location name for an item with a single location' do
       get '/catalog/993213506421/raw'
