@@ -8,12 +8,11 @@ module HoldingsHelper
 
   def holding_block_search(document)
     block = ''.html_safe
-    links = holding_block_search_links(document)
     holdings_hash = document.holdings_all_display
     @scsb_multiple = false
 
     holdings_hash.first(2).each do |id, holding|
-      block << first_two_holdings_block(document, id, holding, links)
+      block << first_two_holdings_block(document, id, holding)
       block << content_tag(:li, cdl_placeholder)
     end
 
@@ -25,11 +24,7 @@ module HoldingsHelper
       block << view_record_for_full_avail_li_two(document)
     end
 
-    if block.empty? && links.present?
-      # All other options came up empty but since we have electronic access let's show the
-      # Online badge with the electronic access link (rather than a misleading "No holdings")
-      block << content_tag(:li, online_holding_block(links))
-    end
+    block << controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
 
     if block.empty?
       content_tag(:div, t('blacklight.holdings.search_missing'))
@@ -40,18 +35,17 @@ module HoldingsHelper
 
   # rubocop:disable Metrics/MethodLength
   # Currently having trouble breaking up this method further due to the "check_availability" variable
-  def first_two_holdings_block(document, id, holding, links)
+  def first_two_holdings_block(document, id, holding)
     location = holding_location(holding)
     check_availability = render_availability?
     accumulator = ''.html_safe
     if holding['library'] == 'Online'
-      check_availability = false
-      if links.empty?
-        check_availability = render_availability?
-        accumulator << empty_link_online_holding_block
-      else
-        accumulator << online_holding_block(links)
-      end
+      rendered_online_holdings_block = controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
+      return rendered_online_holdings_block if rendered_online_holdings_block.present?
+
+      check_availability = render_availability?
+      accumulator << empty_link_online_holding_block
+
     else
       if holding['dspace'] || holding['location_code'] == 'rare$num'
         check_availability = false
@@ -74,12 +68,6 @@ module HoldingsHelper
   end
   # rubocop:enable Metrics/MethodLength
 
-  def holding_block_search_links(document)
-    portfolio_links = electronic_portfolio_links(document)
-    search_links = search_links(document['electronic_access_1display'])
-    search_links + portfolio_links
-  end
-
   def empty_link_online_holding_block
     data = content_tag(
       :span,
@@ -91,15 +79,6 @@ module HoldingsHelper
       'Online access is not currently available.',
       class: 'library-location'
     )
-  end
-
-  def online_holding_block(links)
-    data = content_tag(
-      :span,
-      'Online',
-      class: 'availability-icon badge badge-primary'
-    )
-    data << links.shift
   end
 
   def onsite_access_span

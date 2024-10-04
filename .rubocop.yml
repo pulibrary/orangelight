@@ -151,6 +151,7 @@ Rails/I18nLocaleTexts:
 # TODO: Fix
 Rails/OutputSafety:
   Exclude:
+    - 'app/components/holdings/online_holdings_component.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
     - 'app/services/holding_requests_builder.rb'

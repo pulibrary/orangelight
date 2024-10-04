@@ -78,8 +78,8 @@ describe 'blacklight tests' do
     end
 
     it 'includes the link for online holdings in search results' do
-      get '/catalog?&search_field=all_fields&q=9990889283506421'
-      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"#{Requests.config['proxy_base']}http://doi.org/10.3886/ICPSR35465\">doi.org</a>")
+      get '/catalog?&search_field=all_fields&q=998574693506421'
+      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"#{Requests.config['proxy_base']}http://catalog.hathitrust.org/Record/008883092\">catalog.hathitrust.org</a>")
     end
   end
 
