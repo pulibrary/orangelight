@@ -20,7 +20,6 @@ gem 'bootstrap', '~> 4.6'
 # In the Capistrano documentation, it has these limited to the development group, and `require: false``
 gem 'capistrano', '~> 3.4'
 gem 'capistrano-passenger'
-gem 'ddtrace'
 # Authentication and authorization
 gem 'devise'
 gem 'devise-guests'
@@ -119,4 +118,7 @@ group :development, :test do
   gem "erblint-github"
   gem 'pry-byebug'
   gem 'solargraph'
+end
+group :production do
+  gem 'datadog', require: 'datadog/auto_instrument'
 end
