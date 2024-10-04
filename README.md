@@ -138,6 +138,12 @@ bundle exec rubocop
 bundle exec reek app
 ```
 
+#### Running stylelint
+
+```
+yarn stylelint "**/*.scss"
+```
+
 #### Run lighthouse from the command line
 This command runs a rails server, so you will need to stop any rails server that is already running locally before running the commands below.
 
