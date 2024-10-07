@@ -16,15 +16,13 @@ module HoldingsHelper
       block << content_tag(:li, cdl_placeholder)
     end
 
-    if @scsb_multiple == true
+    block << controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
+
+    if @scsb_multiple == true || holdings_hash.length > 2
       block << view_record_for_full_avail_li(document)
-    elsif holdings_hash.length > 2
-      block << additional_holdings_span
     elsif !holdings_hash.empty?
       block << view_record_for_full_avail_li_two(document)
     end
-
-    block << controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
 
     if block.empty?
       content_tag(:div, t('blacklight.holdings.search_missing'))
@@ -189,14 +187,6 @@ module HoldingsHelper
       ),
       class: 'empty',
       data: { record_id: document['id'] }
-    )
-  end
-
-  def additional_holdings_span
-    content_tag(
-      :span,
-      "View record for information on additional holdings",
-      "style": "font-size: small; font-style: italic;"
     )
   end
 end
