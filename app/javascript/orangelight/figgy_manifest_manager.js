@@ -181,7 +181,6 @@ class FiggyThumbnailSet {
 
     const resources = data.resourcesByOrangelightIds;
     this.resources = resources;
-
     // Cache the thumbnail URLs
     for (const resource of this.resources) {
       const orangelightId = resource.orangelightId;
@@ -243,8 +242,7 @@ class FiggyThumbnailSet {
       const $element = this.jQuery(element);
       const bibId = $element.data('bib-id');
       const $thumbnailElement = this.constructThumbnailElement(bibId);
-
-      if (!$thumbnailElement) {
+      if (!$thumbnailElement && this.resources.length == 0) {
         return;
       }
       $element.empty();
