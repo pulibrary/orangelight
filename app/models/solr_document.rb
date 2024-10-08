@@ -52,6 +52,9 @@ class SolrDocument
   ## Adds JSON-LD
   use_extension(Blacklight::Document::JsonLd)
 
+  ## Adds MLA html
+  use_extension(Blacklight::Document::Mla)
+
   def identifier_data
     values = identifiers.each_with_object({}) do |identifier, hsh|
       hsh[identifier.data_key.to_sym] ||= []

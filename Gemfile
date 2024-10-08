@@ -20,6 +20,9 @@ gem 'bootstrap', '~> 4.6'
 # In the Capistrano documentation, it has these limited to the development group, and `require: false``
 gem 'capistrano', '~> 3.4'
 gem 'capistrano-passenger'
+# support for non-marc citations (e.g. SCSB records)
+gem 'citeproc-ruby'
+gem 'csl-styles'
 gem 'ddtrace'
 # Authentication and authorization
 gem 'devise'
