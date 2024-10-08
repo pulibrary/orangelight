@@ -22,48 +22,48 @@ module Blacklight::Document::Mla
   def properties
     props = {}
     props[:id] = id
-    props[:edition] = edition if edition
-    props[:type] = type if type
-    props[:author] = author if author
-    props[:title] = title if title
-    props[:publisher] = publisher if publisher
-    props[:'publisher-place'] = publisher_place if publisher_place
-    props[:issued] = issued if issued
+    props[:edition] = mla_edition if mla_edition
+    props[:type] = mla_type if mla_type
+    props[:author] = mla_author if mla_author
+    props[:title] = mla_title if mla_title
+    props[:publisher] = mla_publisher if mla_publisher
+    props[:'publisher-place'] = mla_publisher_place if mla_publisher_place
+    props[:issued] = mla_issued if mla_issued
     props
   end
 
-  def type
+  def mla_type
     self[:format]&.first&.downcase
   end
 
-  def author
-    @author ||= begin
+  def mla_author
+    @mla_author ||= begin
       family, given = citation_fields_from_solr[:author_citation_display]&.first&.split(', ')
       CiteProc::Name.new(family:, given:) if family || given
     end
   end
 
-  def edition
-    @edition ||= begin
+  def mla_edition
+    @mla_edition ||= begin
       str = citation_fields_from_solr[:edition_display]&.first
       str&.dup&.sub!(/[[:punct:]]?$/, '')
     end
   end
 
-  def title
-    @title ||= citation_fields_from_solr[:title_citation_display]&.first
+  def mla_title
+    @mla_title ||= citation_fields_from_solr[:title_citation_display]&.first
   end
 
-  def publisher
-    @publisher ||= citation_fields_from_solr[:pub_citation_display]&.first&.split(': ').try(:[], 1)
+  def mla_publisher
+    @mla_publisher ||= citation_fields_from_solr[:pub_citation_display]&.first&.split(': ').try(:[], 1)
   end
 
-  def publisher_place
-    @publisher_place ||= citation_fields_from_solr[:pub_citation_display]&.first&.split(': ').try(:[], 0)
+  def mla_publisher_place
+    @mla_publisher_place ||= citation_fields_from_solr[:pub_citation_display]&.first&.split(': ').try(:[], 0)
   end
 
-  def issued
-    @issued ||= citation_fields_from_solr[:pub_date_start_sort]
+  def mla_issued
+    @mla_issued ||= citation_fields_from_solr[:pub_date_start_sort]
   end
 
   def citation_fields_from_solr
