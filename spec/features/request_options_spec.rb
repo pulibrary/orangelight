@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'Request Options', requests: true do
-  before { stub_alma_holding_locations }
+  before { stub_holding_locations }
 
   describe 'the request page', js: true do
     before do

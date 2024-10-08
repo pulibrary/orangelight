@@ -134,7 +134,7 @@ RSpec.describe SolrDocument do
     end
   end
 
-  describe '#identifier_data' do
+  describe '#identifier_data', thumbnails: true do
     context 'with identifiers' do
       let(:properties) do
         {
@@ -153,6 +153,45 @@ RSpec.describe SolrDocument do
             301985443
           ]
         )
+      end
+    end
+  end
+
+  describe '#in_a_special_collection?', thumbnails: true do
+    context 'when the holdings_1display has a holding in a rare books ReCAP location' do
+      let(:properties) do
+        { 'holdings_1display' => '{"22716219400006421":{"location_code":"rare$xc"}}' }
+      end
+      it 'returns true' do
+        stub_holding_locations
+        expect(solr_document.in_a_special_collection?).to be true
+      end
+    end
+    context 'when the holdings_1display has a holding in a special collection from Marquand' do
+      let(:properties) do
+        { 'holdings_1display' => '{"22716219400006421":{"location_code":"marquand$pz"}}' }
+      end
+      it 'returns true' do
+        stub_holding_locations
+        expect(solr_document.in_a_special_collection?).to be true
+      end
+    end
+    context 'when the holdings_1display has no holdings in special collections' do
+      let(:properties) do
+        { 'holdings_1display' => '{"22716219400006421":{"location_code":"lewis$nb"}}' }
+      end
+      it 'returns false' do
+        stub_holding_locations
+        expect(solr_document.in_a_special_collection?).to be false
+      end
+    end
+    context 'when there is no holdings_1display' do
+      let(:properties) do
+        { 'title_display' => 'My favorite book!' }
+      end
+      it 'returns true' do
+        stub_holding_locations
+        expect(solr_document.in_a_special_collection?).to be true
       end
     end
   end

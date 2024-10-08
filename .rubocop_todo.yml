@@ -667,7 +667,6 @@ RSpec/OverwritingSetup:
 RSpec/PendingWithoutReason:
   Exclude:
     - 'spec/features/availability_spec.rb'
-    - 'spec/features/browsing_item_spec.rb'
     - 'spec/features/holding_locations_sort_order_spec.rb'
     - 'spec/system/catalog_show_spec.rb'
     - 'spec/system/searching_spec.rb'

@@ -127,6 +127,13 @@
     }
 }
 
+.icon-microform,
+.blacklight-microform .document-thumbnail .default {
+    &:before {
+        content: $icon-film;
+    }
+}
+
 .icon-audio,
 .blacklight-audio .document-thumbnail .default {
     &:before {

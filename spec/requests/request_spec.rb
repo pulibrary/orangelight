@@ -50,7 +50,7 @@ describe 'blacklight tests' do
       r = JSON.parse(response.body)
       expect(r['location'].length).to be > 2
       get '/catalog?&search_field=all_fields&q=998574693506421'
-      expect(response.body).to include '<span style="font-size: small; font-style: italic;">View record for information on additional holdings</span>'
+      expect(response.body).to include 'View Record for Full Availability'
     end
     it 'displays the location name for an item with a single location' do
       get '/catalog/993213506421/raw'
@@ -78,8 +78,8 @@ describe 'blacklight tests' do
     end
 
     it 'includes the link for online holdings in search results' do
-      get '/catalog?&search_field=all_fields&q=9990889283506421'
-      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"#{Requests.config['proxy_base']}http://doi.org/10.3886/ICPSR35465\">doi.org</a>")
+      get '/catalog?&search_field=all_fields&q=998574693506421'
+      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"#{Requests.config['proxy_base']}http://catalog.hathitrust.org/Record/008883092\">catalog.hathitrust.org</a>")
     end
   end
 
@@ -210,11 +210,11 @@ describe 'blacklight tests' do
     end
   end
 
-  describe 'identifier metadata' do
+  describe 'identifier metadata', thumbnails: true do
     before { stub_holding_locations }
 
     it 'is accessible from show view' do
-      id = '9979160443506421'
+      id = '99125476820706421'
       get "/catalog/#{id}"
       expect(response.body).to include '<meta property="isbn"'
       expect(response.body).to include 'data-isbn="['

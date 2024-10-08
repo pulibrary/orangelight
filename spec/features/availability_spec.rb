@@ -104,11 +104,11 @@ describe 'Availability' do
   end
 
   describe 'Electronic Holdings' do
-    it "displays an online badge in search results" do
+    it "displays an OnlineOptions component in search results" do
       stub_holding_locations
       visit "/catalog?q=99122306151806421"
 
-      expect(page).to have_selector ".availability-icon", text: "Online"
+      expect(page).to have_selector "online-options"
     end
     it 'within the online section, it displays electronic portfolio links' do
       visit '/catalog/99122306151806421'

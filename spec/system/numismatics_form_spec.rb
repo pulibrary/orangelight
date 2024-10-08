@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe 'Numismatics search form' do
   before do
-    stub_alma_holding_locations
+    stub_holding_locations
   end
   context 'when using the view components numismatics form' do
     before { allow(Flipflop).to_receive(:view_components_numismatics?).and_return(true) }
