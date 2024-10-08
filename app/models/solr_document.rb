@@ -52,8 +52,18 @@ class SolrDocument
   ## Adds JSON-LD
   use_extension(Blacklight::Document::JsonLd)
 
+  ## Adds the methods needed for CiteProc citations,
+  # Including MLA, APA, and Chicago
+  use_extension(Blacklight::Document::CiteProc)
+
   ## Adds MLA html
   use_extension(Blacklight::Document::Mla)
+
+  # Adds APA html
+  use_extension(Blacklight::Document::Apa)
+
+  # Adds Chicago html
+  use_extension(Blacklight::Document::Chicago)
 
   def identifier_data
     values = identifiers.each_with_object({}) do |identifier, hsh|
