@@ -30,6 +30,7 @@ RSpec.describe Requests::Form, type: :model, requests: true do
         .to_return(status: 200, body: fixture('/bibdata/eastasian_cjk_holding_locations.json'))
       stub_request(:get, "#{Requests.config[:bibdata_base]}/bibliographic/#{params[:system_id]}/holdings/#{params[:mfhd]}/availability.json").to_timeout
       stub_delivery_locations
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
     end
 
     describe "#requestable" do

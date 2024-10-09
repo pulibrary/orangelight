@@ -4,6 +4,7 @@ require 'rails_helper'
 RSpec.describe Requests::ServiceEligibility::Annex, requests: true do
   describe '#eligible?' do
     it 'returns true if the item is in the annex' do
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
           aeon?: false,

@@ -54,6 +54,9 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           item_at_clancy?: false }
       end
       let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
+      before do
+        allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+      end
 
       context "in process" do
         before do

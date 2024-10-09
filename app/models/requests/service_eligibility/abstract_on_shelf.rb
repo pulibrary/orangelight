@@ -17,10 +17,6 @@ module Requests
 
         protected
 
-          def patron(user)
-            ::Bibdata.get_patron(user, ldap: false)
-          end
-
           def requestable_eligible?
             raise "Please implement requestable_eligible? in the subclass"
           end
@@ -39,8 +35,9 @@ module Requests
           end
 
           def patron_group_eligible?
+            patron = ::Bibdata.get_patron(user, ldap: false)
             allowed_patron_groups = %w[P REG GRAD SENR UGRAD]
-            allowed_patron_groups.include?(patron(user).patron_group)
+            allowed_patron_groups.include?(patron["patron_group"])
           end
 
           def user_eligible?

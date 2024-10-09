@@ -194,6 +194,7 @@ describe 'Searching', type: :system, js: false do
     end
 
     it 'can add a facet to an existing search', js: true do
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
       visit '/advanced?q=black&search_field=all_fields'
       expect(page).to have_field('clause_0_query', with: 'black')
       access_facet = page.find('#access_facet')

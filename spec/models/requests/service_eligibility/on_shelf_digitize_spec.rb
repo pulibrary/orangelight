@@ -18,7 +18,7 @@ RSpec.describe Requests::ServiceEligibility::OnShelfDigitize, requests: true do
         )
 
       user = FactoryBot.create(:valid_princeton_patron)
-      allow(Bibdata).to receive(:get_patron).and_return(Requests::Patron.new(user:, patron_hash: { patron_group: "P" }))
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
       eligibility = described_class.new(requestable:, user:)
 
       expect(eligibility.eligible?).to be(true)
@@ -37,7 +37,7 @@ RSpec.describe Requests::ServiceEligibility::OnShelfDigitize, requests: true do
           held_at_marquand_library?: false
         )
       user = FactoryBot.create(:valid_princeton_patron)
-      allow(Bibdata).to receive(:get_patron).and_return(Requests::Patron.new(user:, patron_hash: { patron_group: "P" }))
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
       eligibility = described_class.new(requestable:, user:)
 
       expect(eligibility.eligible?).to be(true)
@@ -56,7 +56,7 @@ RSpec.describe Requests::ServiceEligibility::OnShelfDigitize, requests: true do
           held_at_marquand_library?: false
         )
       user = FactoryBot.create(:valid_princeton_patron)
-      allow(Bibdata).to receive(:get_patron).and_return(Requests::Patron.new(user:, patron_hash: { patron_group: "REG" }))
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "REG" })
       eligibility = described_class.new(requestable:, user:)
 
       expect(eligibility.eligible?).to be(true)
@@ -75,7 +75,7 @@ RSpec.describe Requests::ServiceEligibility::OnShelfDigitize, requests: true do
           held_at_marquand_library?: false
         )
       user = FactoryBot.create(:valid_princeton_patron)
-      allow(Bibdata).to receive(:get_patron).and_return(Requests::Patron.new(user:, patron_hash: { patron_group: "Affiliate" }))
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "Affiliate" })
       eligibility = described_class.new(requestable:, user:)
 
       expect(eligibility.eligible?).to be(false)
