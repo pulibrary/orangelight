@@ -64,7 +64,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     end
     let(:request_with_holding_item) { described_class.new(**params) }
     before do
-     allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
     end
 
     describe "#doc" do
@@ -296,7 +296,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     end
     let(:request_with_items_at_temp_locations) { described_class.new(**params) }
     before do
-     allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
     end
 
     describe "#requestable" do
@@ -361,7 +361,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
       { label: "Architecture Library", gfa_pickup: "PW", pick_up_location_code: "arch", staff_only: false }
     end
     before do
-     allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
     end
 
     describe "#requestable" do
@@ -415,7 +415,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
         .to_return(status: 200, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"32101025649169\",\"status\":\"Item not Found\"}", headers: {})
       stub_request(:get, "#{Requests.config[:clancy_base]}/itemstatus/v1/32101026173334")
         .to_return(status: 200, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"32101026173334\",\"status\":\"Item not Found\"}", headers: {})
-     allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
     end
     describe "#requestable" do
       it "has an requestable items" do
@@ -464,7 +464,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     let(:request_preservation) { described_class.new(**params) }
     describe "#requestable" do
       it "shows items as eligible for illiad" do
-       allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+        allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
         expect(request_preservation.requestable[1].services.include?('ill')).to be_truthy
       end
     end
@@ -560,7 +560,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     end
     let(:request) { described_class.new(**params) }
     before do
-     allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
     end
 
     describe "#requestable" do
@@ -590,7 +590,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     end
     let(:request) { described_class.new(**params) }
     before do
-     allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
     end
     describe '#requestable' do
       it "has an requestable items" do
@@ -618,7 +618,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     let(:request) { described_class.new(**params) }
     describe '#requestable' do
       it "has an requestable items" do
-       allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+        allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
         expect(request.requestable.size).to be >= 1
       end
     end
@@ -635,7 +635,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     let(:request) { described_class.new(**params) }
     describe '#any_loanable_copies?' do
       it "has available copy" do
-       allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+        allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
         expect(request.any_loanable_copies?).to be true
       end
     end
@@ -720,7 +720,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     let(:request) { described_class.new(**params) }
     describe '#any_loanable_copies?' do
       it "has available copy" do
-       allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+        allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
         expect(request.any_loanable_copies?).to be true
       end
     end
@@ -737,7 +737,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     let(:request) { described_class.new(**params) }
     describe '#requestable' do
       it "has an requestable items" do
-       allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+        allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
         expect(request.requestable.size).to be >= 1
       end
     end
@@ -755,7 +755,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
 
     describe "#request" do
       it "has accessible mfhd param" do
-       allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+        allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
         expect(request_with_optional_params.mfhd).to eq('22589919750006421')
       end
     end
@@ -772,7 +772,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
     let(:request_for_preservation) { described_class.new(**params) }
     describe "#requestable" do
       it "has a preservation location code" do
-       allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
+        allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
         expect(request_for_preservation.requestable[0].location_code).to eq('firestone$pres')
       end
     end

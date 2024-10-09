@@ -75,7 +75,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     before do
       stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 200, body: valid_patron_response, headers: {})
-      stub_request(:get,  "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=false")
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=false")
         .to_return(status: 200, body: valid_patron_response_no_ldap, headers: {})
       login_as user
     end
@@ -1191,7 +1191,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     before do
       stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 200, body: valid_patron_no_barcode_response, headers: {})
-      stub_request(:get,  "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=false")
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=false")
         .to_return(status: 200, body: valid_patron_response_no_ldap, headers: {})
       login_as user
     end
@@ -1386,7 +1386,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       stub_request(:get, "#{Alma.configuration.region}/almaws/v1/users/#{user.uid}?expand=fees,requests,loans")
         .to_return(status: 200, headers: { "Content-Type" => ["application/json", "charset=UTF-8"] },
                    body: alma_login_response)
-      stub_request(:get,  "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=false")
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=false")
         .to_return(status: 200, body: valid_patron_response_no_ldap, headers: {})
       login_as user
     end
