@@ -36,6 +36,8 @@ module Requests
 
           def patron_group_eligible?
             patron = ::Bibdata.get_patron(user, ldap: false)
+            return false if patron.nil?
+
             allowed_patron_groups = %w[P REG GRAD SENR UGRAD]
             allowed_patron_groups.include?(patron["patron_group"])
           end
