@@ -23,7 +23,6 @@ gem 'capistrano-passenger'
 # support for non-marc citations (e.g. SCSB records)
 gem 'citeproc-ruby'
 gem 'csl-styles'
-gem 'ddtrace'
 # Authentication and authorization
 gem 'devise'
 gem 'devise-guests'
