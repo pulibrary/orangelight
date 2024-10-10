@@ -209,4 +209,19 @@ RSpec.describe 'catalog/show' do
       expect(page).to have_content('Includes discussion of suicide')
     end
   end
+
+  describe 'citation link', citation: true do
+    context 'with a Princeton item' do
+      it 'includes the citation link' do
+        visit 'catalog/99126846939806421'
+        expect(page).to have_link('Cite')
+      end
+    end
+    context 'with a partner item' do
+      it 'includes the citation link' do
+        visit 'catalog/SCSB-10966202'
+        expect(page).to have_link('Cite')
+      end
+    end
+  end
 end

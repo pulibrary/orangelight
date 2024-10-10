@@ -41,12 +41,13 @@
       <li>
         <dl>
           <dt class="tip-heading">Excluding words or phrases</dt>
-          <dd>Use "-" before a word or phrase to exclude it.
+          <dd>Use "-" or "NOT" before a word or phrase to exclude it.
             <dl class="example">
-              <dt>Example:</dt>
+              <dt>Examples:</dt>
               <dd>
                 <ul>
                   <li>jaguar -car -automobiles</li>
+                  <li>jaguar NOT car NOT automobiles</li>
                 </ul>
               </dd>
             </dl>
@@ -59,11 +60,13 @@
           <dd>Use "OR", "AND", and "NOT" to create complex boolean logic. You can use parentheses in your complex expressions. Use the
             <%= link_to('Advanced Search', '/advanced') %>
             to join across multiple fields.
-            <dl class="example">
-              <dt>Example:</dt>
+            <dl class="example many">
+              <dt>Examples:</dt>
               <dd>
                 <ul>
-                  <li>paul AND auster</li>
+                  <li>activism OR "social justice"</li>
+                  <li>India AND (activism OR "social justice")</li>
+                  <li>(India NOT Indiana) AND (activism OR "social justice")</li>
                 </ul>
               </dd>
             </dl>
@@ -73,7 +76,19 @@
       <li>
         <dl>
           <dt class="tip-heading">Truncation and wildcards</dt>
-          <dd>English terms are automatically stemmed to include plural and singular forms, as well as common suffix and tense variations. An asterisk may also be used to truncate any term from either the beginning or end of the word.
+          <dd>
+            <p>English terms are automatically stemmed to include plural and singular forms, as well as common suffix and tense variations.</p>
+            <p>An asterisk may also be used to truncate any term from either the beginning or end of the word, or in the middle of the word to replace a character.</p>
+            <dl class="example many">
+              <dt>Examples:</dt>
+              <dd>
+                <ul>
+                  <li>*est (This search would match pest, test, jest, etc.)</li>
+                  <li>art* (This search would match art, arts, artistic, artisan, artistry, artisanal, etc.)</li>
+                  <li>wom*n (This search would match woman, women, womyn.)</li>
+                </ul>
+              </dd>
+            </dl>
           </dd>
         </dl>
       </li>

@@ -1,0 +1,4 @@
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+  <% component.with_title { t('blacklight.tools.citation') } %>
+  <%= render Orangelight::Document::CitationComponent.with_collection(@documents) if @documents.present? %>
+<% end %>

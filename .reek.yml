@@ -755,6 +755,7 @@ detectors:
     - Requests::RequestMailer#service_error_email
     - Bookmark#self.destroy_without_solr_documents
     - Bookmark#self.update_to_alma_ids
+    - Blacklight::Document::CiteProc#properties
     - Blacklight::Document::DublinCore#export_as_oai_dc_xml
     - Blacklight::Document::DublinCore#export_as_rdf_dc
     - Blacklight::Document::Email#add_holdings_text
