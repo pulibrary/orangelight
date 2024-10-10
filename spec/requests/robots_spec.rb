@@ -48,7 +48,7 @@ describe 'robot user-agents' do
     end
   end
 
-  context 'when viewing citations' do
+  context 'when viewing citations', citation: true do
     it 'does not retrieve marc data from bibdata' do
       document = SolrDocument.new(id: '99125203099306421')
       allow(SolrDocument).to receive(:new).and_return(document)

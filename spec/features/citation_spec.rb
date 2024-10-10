@@ -2,23 +2,43 @@
 
 require 'rails_helper'
 
-describe 'citation' do
+describe 'citation', citation: true do
   before do
     allow_any_instance_of(CatalogController).to receive(:agent_is_crawler?).and_return(false)
   end
-  it 'will render successfully even if there is not a subfield a' do
-    stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/9979948663506421")
-      .with(
-        headers: {
-          'Accept' => '*/*',
-          'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent' => 'Faraday v0.17.4'
-        }
-      )
-      .to_return(status: 200, body: "", headers: {})
+  context 'with an alma marcxml record' do
+    let(:bibid) { '9979948663506421' }
+    let(:marc_xml) { File.read(File.join(File.dirname(__FILE__), '..', 'fixtures', 'bibdata', "#{bibid}.xml")) }
 
-    visit '/catalog/9979948663506421/citation'
-    expect(current_url).to include '/catalog/9979948663506421/citation'
-    expect(page.status_code).to eq 200
+    before do
+      stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}").to_return(
+        status: 200,
+        body: marc_xml
+      )
+    end
+    it 'will render successfully even if there is not a subfield a' do
+      visit '/catalog/9979948663506421/citation'
+      expect(current_url).to include '/catalog/9979948663506421/citation'
+      expect(page.status_code).to eq 200
+    end
+
+    it 'renders the citation' do
+      visit '/catalog/9979948663506421/citation'
+      expect(page.body).to include('Henderson, W. J, et al.')
+    end
+  end
+
+  context 'with a scsb record' do
+    let(:bibid) { 'SCSB-2635660' }
+    before do
+      stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{bibid}")
+        .to_return(status: 404)
+    end
+
+    it 'renders the citation' do
+      visit "/catalog/#{bibid}/citation"
+      expect(current_url).to include("/catalog/#{bibid}/citation")
+      expect(page.body).to include('Juan José. <i>El Entenado</i>. 1A edición, Destino, 1988.')
+    end
   end
 end
