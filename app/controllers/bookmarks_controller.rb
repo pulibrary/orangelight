@@ -82,6 +82,7 @@ class BookmarksController < CatalogController
         pub_date_display: 'Date',
         description_display: 'Description',
         series_display: 'Series',
+        location: 'Library',
         location_display: 'Location',
         call_number_display: 'Call Number',
         notes_display: 'Notes'
