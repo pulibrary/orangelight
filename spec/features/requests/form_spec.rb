@@ -24,6 +24,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
   let(:valid_patron_no_campus_response) { fixture('/bibdata_patron_response_no_campus.json') }
   let(:valid_graduate_student_no_campus_response) { fixture('/bibdata_patron_response_graduate_no_campus.json') }
   let(:invalid_patron_response) { fixture('/bibdata_not_found_patron_response.json') }
+  let(:valid_patron_response_no_ldap) { fixture('/bibdata_patron_response_no_ldap.json') }
 
   let(:responses) do
     {
@@ -74,6 +75,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     before do
       stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 200, body: valid_patron_response, headers: {})
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=false")
+        .to_return(status: 200, body: valid_patron_response_no_ldap, headers: {})
       login_as user
     end
 
@@ -1188,6 +1191,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     before do
       stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
         .to_return(status: 200, body: valid_patron_no_barcode_response, headers: {})
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=false")
+        .to_return(status: 200, body: valid_patron_response_no_ldap, headers: {})
       login_as user
     end
 
@@ -1381,6 +1386,8 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       stub_request(:get, "#{Alma.configuration.region}/almaws/v1/users/#{user.uid}?expand=fees,requests,loans")
         .to_return(status: 200, headers: { "Content-Type" => ["application/json", "charset=UTF-8"] },
                    body: alma_login_response)
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=false")
+        .to_return(status: 200, body: valid_patron_response_no_ldap, headers: {})
       login_as user
     end
 

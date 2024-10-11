@@ -266,6 +266,7 @@ detectors:
     - Orangelight::SearchBarComponent#search_fields
     - ApplicationController#after_sign_out_path_for
     - Requests::FormController#sanitize_submission
+    - Requests::ServiceEligibility::AbstractOnShelf#patron_group_eligible?
     - AdvancedHelper#advanced_key_value
     - AdvancedHelper#advanced_search_fields
     - AdvancedHelper#param_for_field
@@ -616,6 +617,7 @@ detectors:
     - Requests::ApplicationHelper#hidden_fields_item
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::RequestHelper#login_url
+    - Requests::ServiceEligibility::AbstractOnShelf#patron_group_eligible?
     - Blacklight::Document::Ris#ris_authors
     - Blacklight::Document::Ris#ris_format
     - Blacklight::Marc::CtxBuilder#add_identifiers

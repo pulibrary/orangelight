@@ -30,8 +30,20 @@ module Requests
               !requestable.held_at_marquand_library?
           end
 
-          def user_eligible?
+          def provider_eligible?
             user.cas_provider? || user.alma_provider?
+          end
+
+          def patron_group_eligible?
+            patron = ::Bibdata.get_patron(user, ldap: false)
+            return false if patron.nil?
+
+            allowed_patron_groups = %w[P REG GRAD SENR UGRAD]
+            allowed_patron_groups.include?(patron["patron_group"])
+          end
+
+          def user_eligible?
+            provider_eligible? && patron_group_eligible?
           end
 
           attr_reader :requestable, :user

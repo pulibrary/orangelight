@@ -4,6 +4,7 @@ require 'rails_helper'
 RSpec.describe Requests::ServiceEligibility::OnShelfPickup, requests: true do
   describe '#eligible?' do
     it 'returns true if all criteria are met' do
+      allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
       requestable = instance_double(Requests::Requestable)
       allow(requestable).to receive_messages(
           aeon?: false,
