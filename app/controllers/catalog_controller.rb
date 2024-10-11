@@ -127,6 +127,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true, include_in_advanced_search: false
     config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true, include_in_advanced_search: false
     config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true, include_in_advanced_search: false
+    config.add_facet_field 'geographic_facet', label: 'Subject: Geographic', limit: true, include_in_advanced_search: false
     config.add_facet_field 'recently_added_facet', label: 'Recently added', home: true, query: {
       weeks_1: { label: 'Within 1 week', fq: 'cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]' },
       weeks_2: { label: 'Within 2 weeks', fq: 'cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]' },
