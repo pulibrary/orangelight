@@ -30,7 +30,7 @@ module Requests
               !requestable.held_at_marquand_library?
           end
 
-          def provider_elegible?
+          def provider_eligible?
             user.cas_provider? || user.alma_provider?
           end
 
@@ -43,7 +43,7 @@ module Requests
           end
 
           def user_eligible?
-            provider_elegible? && patron_group_eligible?
+            provider_eligible? && patron_group_eligible?
           end
 
           attr_reader :requestable, :user
