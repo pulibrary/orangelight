@@ -151,7 +151,19 @@ describe 'Searching', type: :system, js: false do
       expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request: Facet field author_s has a scalar value 汪精衛, 1883-1944/)
     end
   end
-
+  context 'sorting search results' do
+    it 'includes relevance' do
+      visit '/catalog?search_field=all_fields&q=engineering'
+      page.find("#sort-dropdown").click
+      within('#sort-dropdown') do
+        expect(page).to have_link('relevance')
+        expect(page).to have_link('author')
+        expect(page).not_to have_link('library')
+        expect(page).to have_link('date cataloged')
+        click_link('author')
+      end
+    end
+  end
   it 'filters using the subject_facet field' do
     visit "/catalog?f[subject_facet][]=Japan%E2%80%94History"
     expect(page).to have_content '1 entry found'
