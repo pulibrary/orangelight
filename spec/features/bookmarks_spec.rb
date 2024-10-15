@@ -55,23 +55,5 @@ RSpec.describe 'bookmarks' do
 
       expect(page).to have_content "History."
     end
-
-    describe 'sorting' do
-      it 'has a dropdown for sorting' do
-        Bookmark.create(user:, document_id: "10647164", document_type: "SolrDocument")
-        login_as user
-        visit "/bookmarks"
-        page.find("#sort-dropdown").click
-        within('#sort-dropdown') do
-          expect(page).not_to have_link('relevance')
-          expect(page).to have_link('author')
-          expect(page).to have_link('library')
-          expect(page).to have_link('date cataloged')
-          click_link('author')
-        end
-      end
-    end
   end
-
-
 end

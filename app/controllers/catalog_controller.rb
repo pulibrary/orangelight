@@ -660,12 +660,11 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort asc', label: 'relevance', if: -> (controller, _config) do
-      controller.controller_path == 'catalog'
-    end
-    config.add_sort_field 'location asc, advanced_location_s asc, call_number_browse_s asc', label: 'library', if: -> (controller, _config) do
-      controller.controller_path == 'bookmarks'
-    end
+    config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort asc', label: 'relevance'
+    config.add_sort_field 'location asc, advanced_location_s asc, call_number_browse_s asc', label: 'library',
+                                                                                             if: lambda { |controller, _config|
+                                                                                               controller.controller_path == 'bookmarks'
+                                                                                             }
     config.add_sort_field 'pub_date_start_sort desc, title_sort asc, score desc', label: 'year (newest first)'
     config.add_sort_field 'pub_date_start_sort asc, title_sort asc, score desc', label: 'year (oldest first)'
     config.add_sort_field 'author_sort asc, title_sort asc, score desc', label: 'author'
