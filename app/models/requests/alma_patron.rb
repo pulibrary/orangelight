@@ -13,7 +13,8 @@ module Requests
         barcode:,
         barcode_status: 1,
         netid: "ALMA",
-        university_id: uid
+        university_id: uid,
+        patron_group:
       }.with_indifferent_access
     end
 
@@ -39,6 +40,10 @@ module Requests
 
       def active_email
         alma_user.preferred_email
+      end
+
+      def patron_group
+        alma_user["user_group"]["value"]
       end
 
       attr_reader :uid

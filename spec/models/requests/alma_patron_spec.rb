@@ -29,5 +29,10 @@ RSpec.describe Requests::AlmaPatron, requests: true, patrons: true do
         expect(alma_stub).to have_been_requested.once
       end
     end
+
+    it 'has a patron_group' do
+      patron = described_class.new(uid:)
+      expect(patron.hash[:patron_group]).to eq('GST')
+    end
   end
 end
