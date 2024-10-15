@@ -11,9 +11,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
               email: "foo@princeton.edu", status: "staff", pustatus: "stf", universityid: "9999999", title: nil } }.with_indifferent_access
   end
   let(:patron) { Requests::Patron.new(user:, patron_hash: valid_patron) }
-  before do
-    allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
-  end
 
   context "Is a bibliographic record on the shelf" do
     let(:request) { FactoryBot.build(:request_on_shelf, patron:) }

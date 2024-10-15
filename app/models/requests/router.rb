@@ -2,13 +2,14 @@
 module Requests
   # This class assigns "services" a given requestable object is available through
   class Router
-    attr_reader :user, :any_loanable, :requestable
+    attr_reader :user, :patron, :any_loanable, :requestable
 
     delegate :cas_provider?, :alma_provider?, to: :user
 
-    def initialize(requestable:, user:, any_loanable: false)
+    def initialize(requestable:, any_loanable: false, patron: nil)
       @requestable = requestable
-      @user = user
+      @user = patron.user
+      @patron = patron
       @any_loanable = any_loanable
     end
 
@@ -44,19 +45,20 @@ module Requests
 
     private
 
+      # rubocop:disable Metrics/AbcSize
       def eligibility_checks
         [
           ServiceEligibility::ILL.new(requestable:, user:, any_loanable:),
           ServiceEligibility::OnOrder.new(requestable:, user:),
-          ServiceEligibility::Annex.new(requestable:, user:),
-          ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
-          ServiceEligibility::OnShelfPickup.new(requestable:, user:),
-          ServiceEligibility::ClancyUnavailable.new(user:, requestable:),
-          ServiceEligibility::ClancyInLibrary.new(user:, requestable:),
-          ServiceEligibility::ClancyEdd.new(user:, requestable:),
+          ServiceEligibility::Annex.new(requestable:, user:, patron:),
+          ServiceEligibility::OnShelfDigitize.new(requestable:, user:, patron:),
+          ServiceEligibility::OnShelfPickup.new(requestable:, user:, patron:),
+          ServiceEligibility::ClancyUnavailable.new(requestable:, user:),
+          ServiceEligibility::ClancyInLibrary.new(requestable:, user:),
+          ServiceEligibility::ClancyEdd.new(requestable:, user:),
           ServiceEligibility::InProcess.new(requestable:, user:),
-          ServiceEligibility::MarquandInLibrary.new(user:, requestable:),
-          ServiceEligibility::MarquandEdd.new(user:, requestable:),
+          ServiceEligibility::MarquandInLibrary.new(requestable:, user:),
+          ServiceEligibility::MarquandEdd.new(requestable:, user:),
           ServiceEligibility::Recap::NoItems.new(requestable:, user:),
           ServiceEligibility::Recap::InLibrary.new(requestable:, user:),
           ServiceEligibility::Recap::AskMe.new(requestable:, user:),
@@ -65,5 +67,6 @@ module Requests
           ServiceEligibility::Aeon.new(requestable:)
         ]
       end
+    # rubocop:enable Metrics/AbcSize
   end
 end
