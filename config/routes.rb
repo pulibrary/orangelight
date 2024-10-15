@@ -88,7 +88,7 @@ Rails.application.routes.draw do
   get '/borrow-direct', to: redirect('https://borrowdirect.reshare.indexdata.com/')
 
   get '/account/user-id', to: 'account#user_id'
-  get '/redirect-to-alma', to: 'account#redirect_to_alma'
+  get '/redirect-to-alma', to: redirect('https://princeton.alma.exlibrisgroup.com/discovery/account?vid=01PRI_INST:Services&lang=EN&section=overview')
 
   ### For feedback Form
   get 'feedback', to: 'feedback#new'
