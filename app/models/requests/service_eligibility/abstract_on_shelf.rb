@@ -22,6 +22,10 @@ module Requests
             raise "Please implement requestable_eligible? in the subclass"
           end
 
+          def user_eligible?
+            provider_eligible? && patron_group_eligible?
+          end
+
           def on_shelf_eligible?
             !requestable.aeon? && !requestable.charged? &&
               !requestable.in_process? &&
@@ -36,12 +40,11 @@ module Requests
           end
 
           def patron_group_eligible?
-            allowed_patron_groups = %w[P REG GRAD SENR UGRAD]
             allowed_patron_groups.include?(patron.patron_group)
           end
 
-          def user_eligible?
-            provider_eligible? && patron_group_eligible?
+          def allowed_patron_groups
+            @allowed_patron_groups ||= %w[P REG GRAD SENR UGRAD]
           end
 
           attr_reader :requestable, :user, :patron

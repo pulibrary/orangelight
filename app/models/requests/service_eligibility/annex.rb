@@ -13,6 +13,10 @@ module Requests
           def requestable_eligible?
             on_shelf_eligible? && requestable.annex?
           end
+
+          def allowed_patron_groups
+            @allowed_patron_groups ||= %w[P REG GRAD SENR UGRAD Affiliate-P Affiliate GST]
+          end
     end
   end
 end

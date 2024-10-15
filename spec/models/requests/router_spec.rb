@@ -4,7 +4,7 @@ require 'rails_helper'
 describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :none }, requests: true do
   context "A Princeton Community User has signed in" do
     let(:user) { FactoryBot.create(:user) }
-    let(:valid_patron) { { "netid" => "foo" }.with_indifferent_access }
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "P" }.with_indifferent_access }
     let(:patron) do
       Requests::Patron.new(user:, patron_hash: valid_patron)
     end
