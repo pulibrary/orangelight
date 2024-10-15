@@ -891,7 +891,7 @@ describe Requests::Form, vcr: { cassette_name: 'form_models', record: :none }, r
   context "Marquand item in Clancy" do
     let(:valid_patron) do
       { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
-        "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
+        "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "REG",
         "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
     end
     let(:location_code) { 'scsbnypl' }

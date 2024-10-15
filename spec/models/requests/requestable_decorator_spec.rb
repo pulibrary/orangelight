@@ -9,7 +9,7 @@ describe Requests::RequestableDecorator, requests: true do
   let(:user) { FactoryBot.build(:user) }
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
-      "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
+      "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "REG",
       "patron_id" => "99999", "active_email" => "foo@princeton.edu",
       ldap: }.with_indifferent_access
   end
@@ -786,7 +786,7 @@ describe Requests::RequestableDecorator, requests: true do
       let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: false, eligible_for_library_services?: false, ask_me?: false, library_code: 'abc', aeon?: false) }
       let(:valid_patron) do
         { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
-          "university_id" => "9999999", "patron_group" => "staff",
+          "university_id" => "9999999", "patron_group" => "REG",
           "patron_id" => "99999", "active_email" => "foo@princeton.edu",
           ldap: }.with_indifferent_access
       end
@@ -807,7 +807,7 @@ describe Requests::RequestableDecorator, requests: true do
       let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: false, in_process?: true, eligible_for_library_services?: false, ask_me?: false, library_code: 'abc', aeon?: false) }
       let(:valid_patron) do
         { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
-          "university_id" => "9999999", "patron_group" => "staff",
+          "university_id" => "9999999", "patron_group" => "REG",
           "patron_id" => "99999", "active_email" => "foo@princeton.edu",
           ldap: }.with_indifferent_access
       end
@@ -827,7 +827,7 @@ describe Requests::RequestableDecorator, requests: true do
       let(:stubbed_questions) { default_stubbed_questions.merge(item_data?: false, circulates?: false, services: ["on_shelf"], recap_edd?: false, scsb_in_library_use?: false, ill_eligible?: true, patron:, on_order?: true, eligible_for_library_services?: false, ask_me?: false, library_code: 'abc', aeon?: false) }
       let(:valid_patron) do
         { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
-          "university_id" => "9999999", "patron_group" => "staff",
+          "university_id" => "9999999", "patron_group" => "REG",
           "patron_id" => "99999", "active_email" => "foo@princeton.edu",
           ldap: }.with_indifferent_access
       end

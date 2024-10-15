@@ -2,14 +2,15 @@
 module Requests
   # This class assigns "services" a given requestable object is available through
   class Router
-    attr_reader :user, :any_loanable, :requestable
+    attr_reader :user, :any_loanable, :requestable, :patron
 
     delegate :cas_provider?, :alma_provider?, to: :user
 
-    def initialize(requestable:, user:, any_loanable: false)
+    def initialize(requestable:, user:, any_loanable: false, patron: nil)
       @requestable = requestable
       @user = user
       @any_loanable = any_loanable
+      @patron = patron
     end
 
     # Current Service Types Assigned
@@ -48,12 +49,12 @@ module Requests
         [
           ServiceEligibility::ILL.new(requestable:, user:, any_loanable:),
           ServiceEligibility::OnOrder.new(requestable:, user:),
-          ServiceEligibility::Annex.new(requestable:, user:),
-          ServiceEligibility::OnShelfDigitize.new(requestable:, user:),
-          ServiceEligibility::OnShelfPickup.new(requestable:, user:),
+          ServiceEligibility::Annex.new(requestable:, user:, patron:),
+          ServiceEligibility::OnShelfDigitize.new(requestable:, user:, patron:),
+          ServiceEligibility::OnShelfPickup.new(requestable:, user:, patron:),
           ServiceEligibility::ClancyUnavailable.new(user:, requestable:),
           ServiceEligibility::ClancyInLibrary.new(user:, requestable:),
-          ServiceEligibility::ClancyEdd.new(user:, requestable:),
+          ServiceEligibility::ClancyEdd.new(user:, requestable:, patron:),
           ServiceEligibility::InProcess.new(requestable:, user:),
           ServiceEligibility::MarquandInLibrary.new(user:, requestable:),
           ServiceEligibility::MarquandEdd.new(user:, requestable:),

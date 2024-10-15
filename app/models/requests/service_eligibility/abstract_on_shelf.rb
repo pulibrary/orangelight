@@ -2,9 +2,10 @@
 module Requests
   module ServiceEligibility
     class AbstractOnShelf
-      def initialize(requestable:, user:)
+      def initialize(requestable:, user:, patron: nil)
         @requestable = requestable
         @user = user
+        @patron = patron
       end
 
       def to_s
@@ -12,7 +13,7 @@ module Requests
       end
 
       def eligible?
-        requestable_eligible? && user_eligible?
+        requestable_eligible? && user_eligible? && patron_eligible?
       end
 
         protected
@@ -30,23 +31,16 @@ module Requests
               !requestable.held_at_marquand_library?
           end
 
-          def provider_eligible?
-            user.cas_provider? || user.alma_provider?
-          end
-
-          def patron_group_eligible?
-            patron = ::Bibdata.get_patron(user, ldap: false)
-            return false if patron.nil?
-
+          def patron_eligible?
             allowed_patron_groups = %w[P REG GRAD SENR UGRAD]
-            allowed_patron_groups.include?(patron["patron_group"])
+            allowed_patron_groups.include?(patron.patron_group)
           end
 
           def user_eligible?
-            provider_eligible? && patron_group_eligible?
+            user.cas_provider? || user.alma_provider?
           end
 
-          attr_reader :requestable, :user
+          attr_reader :requestable, :user, :patron
     end
   end
 end

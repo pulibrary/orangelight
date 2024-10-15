@@ -991,7 +991,7 @@ class RequestMailerPreview < ActionMailer::Preview
         bib:
       }
     submission = Requests::Generic.new(params)
-    submission.errors << { :reply_text => "Can not create hold", :create_hold => { note: "Hold can not be created" }, "id" => "10574699", "title" => "Mefisto : rivista di medicina, filosofia, storia", "author" => "", "user_name" => "Foo Request", "user_last_name" => "Request", "user_barcode" => "0000000000", "patron_id" => "00000", "patron_group" => "staff", "email" => "foo@princeton.edu", "source" => "pulsearch" }
+    submission.errors << { :reply_text => "Can not create hold", :create_hold => { note: "Hold can not be created" }, "id" => "10574699", "title" => "Mefisto : rivista di medicina, filosofia, storia", "author" => "", "user_name" => "Foo Request", "user_last_name" => "Request", "user_barcode" => "0000000000", "patron_id" => "00000", "patron_group" => "REG", "email" => "foo@princeton.edu", "source" => "pulsearch" }
     Requests::RequestMailer.service_error_email([submission])
   end
 

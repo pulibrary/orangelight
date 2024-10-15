@@ -5,7 +5,7 @@ require 'net/ldap'
 describe Requests::IlliadPatron, type: :controller, requests: true, patrons: true do
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
-      "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
+      "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "REG",
       "patron_id" => "99999", "active_email" => "foo@princeton.edu", "ldap" => ldap_data }.with_indifferent_access
   end
   let(:ldap_data) { { uid: 'foo', department: 'Library - Information Technology', address: 'Firestone Library$Library Information Technology', telephone: '123-456-7890', surname: 'Doe', givenname: 'Joe', email: 'joe@abc.com', pustatus: 'fac', status: 'faculty' }.with_indifferent_access }
