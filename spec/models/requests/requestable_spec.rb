@@ -5,7 +5,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   let(:user) { FactoryBot.build(:user) }
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
-      "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
+      "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "REG",
       "patron_id" => "99999", "active_email" => "foo@princeton.edu",
       ldap: { netid: "foo", department: "Test", address: "Box 1234", telephone: nil, givenname: "Foo", surname: "Request",
               email: "foo@princeton.edu", status: "staff", pustatus: "stf", universityid: "9999999", title: nil } }.with_indifferent_access
@@ -590,7 +590,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   # user authentication tests
   context 'When a princeton user with NetID visits the site' do
     let(:valid_patron) do
-      { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
+      { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "REG",
         "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
     end
     let(:patron) do
@@ -656,7 +656,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
   context 'When a barcode only user visits the site' do
     let(:valid_patron) do
-      { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
+      { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "REG",
         "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
     end
     let(:patron) do

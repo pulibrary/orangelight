@@ -50,7 +50,7 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
     let(:user_info) do
       {
         "patron_id" => "12345",
-        "patron_group" => "staff",
+        "patron_group" => "REG",
         "user_name" => "Foo Request",
         "user_barcode" => "22101007797777",
         "email" => "foo@princeton.edu"
