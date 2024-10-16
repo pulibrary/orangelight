@@ -13,9 +13,6 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
   let(:patron) do
     Requests::Patron.new(user:, patron_hash: valid_patron)
   end
-  before do
-    allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
-  end
 
   describe '#isbn_string' do
     let(:isbns) do

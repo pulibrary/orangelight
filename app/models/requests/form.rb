@@ -68,7 +68,7 @@ module Requests
       routed_requests = []
       return [] if requestable_items.blank?
       requestable_items.each do |requestable|
-        router = Requests::Router.new(requestable:, user: patron.user, any_loanable: any_loanable_copies?)
+        router = Requests::Router.new(requestable:, any_loanable: any_loanable_copies?, patron:)
         routed_requests << router.routed_request
       end
       routed_requests

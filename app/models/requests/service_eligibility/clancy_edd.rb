@@ -2,9 +2,10 @@
 module Requests
   module ServiceEligibility
     class ClancyEdd
-      def initialize(requestable:, user:)
+      def initialize(requestable:, patron:)
         @requestable = requestable
-        @user = user
+        @user = patron.user
+        @patron = patron
       end
 
       def to_s
@@ -12,13 +13,21 @@ module Requests
       end
 
       def eligible?
-        requestable_eligible? && user_eligible?
+        requestable_eligible? && user_eligible? && patron_eligible?
       end
 
     private
 
       def user_eligible?
         user.cas_provider? || user.alma_provider?
+      end
+
+      def patron_eligible?
+        allowed_patron_groups.include?(patron.patron_group)
+      end
+
+      def allowed_patron_groups
+        @allowed_patron_groups ||= %w[P REG GRAD SENR UGRAD]
       end
 
       def requestable_eligible?
@@ -32,7 +41,8 @@ module Requests
           (requestable.alma_managed? || requestable.partner_holding?) &&
           !requestable.aeon?
       end
-      attr_reader :requestable, :user
+
+      attr_reader :requestable, :user, :patron
     end
   end
 end

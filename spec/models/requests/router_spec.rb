@@ -4,7 +4,7 @@ require 'rails_helper'
 describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :none }, requests: true do
   context "A Princeton Community User has signed in" do
     let(:user) { FactoryBot.create(:user) }
-    let(:valid_patron) { { "netid" => "foo" }.with_indifferent_access }
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "P" }.with_indifferent_access }
     let(:patron) do
       Requests::Patron.new(user:, patron_hash: valid_patron)
     end
@@ -27,7 +27,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
     let(:scsb_availability_response) { '[{"itemBarcode":"CU53020880","itemAvailabilityStatus":"Not Available","errorMessage":null}]' }
     let(:request_scsb) { Requests::Form.new(**params) }
     let(:requestable) { request_scsb.requestable.first }
-    let(:router) { described_class.new(requestable:, user:) }
+    let(:router) { described_class.new(requestable:, patron:) }
 
     describe "SCSB item that is charged" do
       before do
@@ -54,9 +54,6 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           item_at_clancy?: false }
       end
       let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
-      before do
-        allow(Bibdata).to receive(:get_patron).and_return({ "patron_group" => "P" })
-      end
 
       context "in process" do
         before do
