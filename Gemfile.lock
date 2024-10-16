@@ -150,9 +150,10 @@ GEM
       blacklight (>= 7.25.2, < 9)
       deprecation
       view_component (>= 2.54, < 4)
-    bootstrap (4.6.2.1)
+    bootstrap (5.0.2)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.16.1, < 2)
+      popper_js (>= 2.9.2, < 3)
+      sassc-rails (>= 2.0.0)
     builder (3.3.0)
     bunny (2.23.0)
       amq-protocol (~> 2.3, >= 2.3.1)
@@ -273,7 +274,7 @@ GEM
       smart_properties
     erblint-github (1.0.1)
     erubi (1.13.0)
-    execjs (2.9.1)
+    execjs (2.10.0)
     factory_bot (6.4.6)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.4.3)
@@ -450,7 +451,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.7)
-    popper_js (1.16.1)
+    popper_js (2.11.8)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -588,8 +589,6 @@ GEM
       rubocop-rspec (~> 3, >= 3.0.1)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -752,7 +751,7 @@ DEPENDENCIES
   blacklight-marc (~> 8.1)
   blacklight_dynamic_sitemap
   blacklight_range_limit (~> 8.2)
-  bootstrap (~> 4.6)
+  bootstrap (~> 5.0.0)
   capistrano (~> 3.4)
   capistrano-passenger
   capistrano-rails
@@ -811,7 +810,6 @@ DEPENDENCIES
   rubocop-rspec
   rubocop-rspec_rails
   rubyzip (>= 1.2.2)
-  sass-rails (~> 6.0)
   selenium-webdriver
   simple_form
   sneakers
