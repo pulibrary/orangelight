@@ -4,10 +4,11 @@ module Requests
     # This class is responsible for determining if a specific
     # user can request a specific resource via ILL
     class ILL
-      def initialize(requestable:, user:, any_loanable:)
+      def initialize(requestable:, patron:, any_loanable:)
         @requestable = requestable
-        @user = user
+        @user = patron.user
         @any_loanable = any_loanable
+        @patron = patron
       end
 
       def to_s
@@ -15,7 +16,7 @@ module Requests
       end
 
       def eligible?
-        requestable_eligible? && user_eligible?
+        requestable_eligible? && user_eligible? && patron_eligible?
       end
 
         private
@@ -29,7 +30,15 @@ module Requests
             user.cas_provider? || user.alma_provider?
           end
 
-          attr_reader :requestable, :user, :any_loanable
+          def patron_eligible?
+            allowed_patron_groups.include?(patron.patron_group)
+          end
+
+          def allowed_patron_groups
+            @allowed_patron_groups ||= %w[P REG GRAD SENR UGRAD]
+          end
+
+          attr_reader :requestable, :user, :any_loanable, :patron
     end
   end
 end
