@@ -45,17 +45,16 @@ module Requests
 
     private
 
-      # rubocop:disable Metrics/AbcSize
       def eligibility_checks
         [
           ServiceEligibility::ILL.new(requestable:, user:, any_loanable:),
           ServiceEligibility::OnOrder.new(requestable:, user:),
-          ServiceEligibility::Annex.new(requestable:, user:, patron:),
-          ServiceEligibility::OnShelfDigitize.new(requestable:, user:, patron:),
-          ServiceEligibility::OnShelfPickup.new(requestable:, user:, patron:),
+          ServiceEligibility::Annex.new(requestable:, patron:),
+          ServiceEligibility::OnShelfDigitize.new(requestable:, patron:),
+          ServiceEligibility::OnShelfPickup.new(requestable:, patron:),
           ServiceEligibility::ClancyUnavailable.new(requestable:, user:),
           ServiceEligibility::ClancyInLibrary.new(requestable:, user:),
-          ServiceEligibility::ClancyEdd.new(requestable:, user:),
+          ServiceEligibility::ClancyEdd.new(requestable:, patron:),
           ServiceEligibility::InProcess.new(requestable:, user:),
           ServiceEligibility::MarquandInLibrary.new(requestable:, user:),
           ServiceEligibility::MarquandEdd.new(requestable:, user:),
@@ -67,6 +66,5 @@ module Requests
           ServiceEligibility::Aeon.new(requestable:)
         ]
       end
-    # rubocop:enable Metrics/AbcSize
   end
 end

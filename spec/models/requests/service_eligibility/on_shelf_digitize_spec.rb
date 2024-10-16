@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe Requests::ServiceEligibility::OnShelfDigitize, requests: true do
   let(:user) { FactoryBot.create(:user) }
   let(:patron) { Requests::Patron.new(user:, patron_hash: { patron_group: 'P' }) }
-  let(:eligibility) { described_class.new(requestable:, user: FactoryBot.create(:user), patron:) }
+  let(:eligibility) { described_class.new(requestable:, patron:) }
   let(:requestable) { instance_double(Requests::Requestable) }
 
   describe '#eligible?' do

@@ -2,9 +2,9 @@
 module Requests
   module ServiceEligibility
     class AbstractOnShelf
-      def initialize(requestable:, user:, patron: nil)
+      def initialize(requestable:, patron:)
         @requestable = requestable
-        @user = user
+        @user = patron.user
         @patron = patron
       end
 
