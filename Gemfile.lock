@@ -149,9 +149,9 @@ GEM
       blacklight (>= 7.25.2, < 9)
       deprecation
       view_component (>= 2.54, < 4)
-    bootstrap (4.6.2.1)
+    bootstrap (5.3.3)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.16.1, < 2)
+      popper_js (>= 2.11.8, < 3)
     builder (3.3.0)
     bunny (2.23.0)
       amq-protocol (~> 2.3, >= 2.3.1)
@@ -205,6 +205,12 @@ GEM
     csl-styles (2.0.1)
       csl (~> 2.0)
     csv (3.3.0)
+    dartsass-sprockets (3.1.0)
+      railties (>= 4.0.0)
+      sassc-embedded (~> 1.69)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     datadog (2.3.0)
       debase-ruby_core_source (= 3.3.1)
       libdatadog (~> 11.0.0.1.0)
@@ -301,6 +307,15 @@ GEM
       activesupport (>= 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    google-protobuf (4.28.2)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.28.2-aarch64-linux)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.28.2-x86_64-linux)
+      bigdecimal
+      rake (>= 13)
     hashdiff (1.1.1)
     hashie (5.0.0)
     health-monitor-rails (12.3.0)
@@ -450,7 +465,7 @@ GEM
       racc
     parslet (2.0.0)
     pg (1.5.7)
-    popper_js (1.16.1)
+    popper_js (2.11.8)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -588,10 +603,15 @@ GEM
       rubocop-rspec (~> 3, >= 3.0.1)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
+    sass-embedded (1.79.5)
+      google-protobuf (~> 4.27)
+      rake (>= 13)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
+    sassc-embedded (1.79.0)
+      sass-embedded (~> 1.79)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
       sassc (>= 2.0)
@@ -752,7 +772,7 @@ DEPENDENCIES
   blacklight_advanced_search (~> 7.0)
   blacklight_dynamic_sitemap
   blacklight_range_limit (~> 8.2)
-  bootstrap (~> 4.6)
+  bootstrap (~> 5.3.3)
   capistrano (~> 3.4)
   capistrano-passenger
   capistrano-rails
@@ -760,6 +780,7 @@ DEPENDENCIES
   citeproc-ruby
   coveralls_reborn
   csl-styles
+  dartsass-sprockets
   datadog
   devise
   devise-guests
