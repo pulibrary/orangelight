@@ -16,7 +16,7 @@ module Requests
       end
 
       def eligible?
-        requestable_eligible? && user_eligible? && patron_eligible?
+        requestable_eligible? && user_eligible? && patron_group_eligible?
       end
 
         private
@@ -30,7 +30,7 @@ module Requests
             user.cas_provider? || user.alma_provider?
           end
 
-          def patron_eligible?
+          def patron_group_eligible?
             allowed_patron_groups.include?(patron.patron_group)
           end
 
