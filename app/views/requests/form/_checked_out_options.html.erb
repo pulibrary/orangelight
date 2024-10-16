@@ -2,6 +2,8 @@
   <option value=""><%= I18n.t("requests.default.request_method_placeholder") %></option>
   <% if requestable.ill_eligible? %>
     <option value="ill"><%= I18n.t("requests.ill.request_label") %></option>
+  <% elsif requestable.requestable.marquand_item? %>
+    <%= mail_to('marquand@princeton.edu', 'Contact marquand@princeton.edu for use of this item') %>
   <% end %>
 </select>
 <br/>

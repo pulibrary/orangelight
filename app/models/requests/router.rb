@@ -25,7 +25,7 @@ module Requests
     # :recap_edd - material is stored in a recap location that permits digitization
     # :recap_no_items - material in a recap location with no item record data
     # :ill - material has a status in Alma making it unavailable for circulation and is in a location that is eligible for resource sharing
-    # :clancy_unavailable - item is at clancy but clancy system says it is not available; but it's alma status is available
+    # :clancy_unavailable - item is at clancy but clancy system says it is not available; but its alma status is available
     # :clancy_in_library - item in the clancy warehouse and can be paged to marquand
     # :clancy_edd - item in the clancy warehouse in a location that permits digitization
     # :marquand_in_library - non clancy marquand item in a location that can be paged to marquand

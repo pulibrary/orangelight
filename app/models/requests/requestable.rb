@@ -173,6 +173,10 @@ module Requests
       library_code == 'marquand' && !recap?
     end
 
+    def marquand_item?
+      holding_library == 'marquand'
+    end
+
     def clancy_item
       @clancy_item ||= Requests::ClancyItem.new(barcode:)
     end
