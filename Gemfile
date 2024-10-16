@@ -15,7 +15,10 @@ gem 'blacklight_dynamic_sitemap'
 gem 'blacklight-marc', '~>8.1'
 # slider limit support
 gem 'blacklight_range_limit', '~> 8.2'
-gem 'bootstrap', '~> 4.6'
+gem 'bootstrap', '~> 5.0.0'
+# gem 'cssbundling-rails', '~> 1.2'
+# gem 'dartsass-sprockets'
+gem 'psych'
 # Capistrano
 # In the Capistrano documentation, it has these limited to the development group, and `require: false``
 gem 'capistrano', '~> 3.4'
@@ -75,7 +78,7 @@ gem 'rsolr'
 gem 'rspec-rails'
 gem 'rubyzip', '>= 1.2.2'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 6.0'
+# gem 'sass-rails', '~> 6.0'
 gem 'simple_form'
 gem 'sneakers'
 gem 'sprockets-es6'
