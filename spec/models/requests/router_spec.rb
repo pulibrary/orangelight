@@ -51,7 +51,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
           recap?: false, recap_pf?: false, held_at_marquand_library?: false,
           item_data?: false, recap_edd?: false, scsb_in_library_use?: false, item:,
           library_code: 'ABC', eligible_for_library_services?: true,
-          item_at_clancy?: false }
+          item_at_clancy?: false, marquand_item?: false }
       end
       let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
 
@@ -212,6 +212,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         before do
           stubbed_questions[:charged?] = true
           stubbed_questions[:enumerated?] = true
+          stubbed_questions[:marquand_item?] = false
         end
         it "returns ill in the services" do
           expect(router.calculate_services).to eq(["ill"])

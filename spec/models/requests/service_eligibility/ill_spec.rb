@@ -11,7 +11,8 @@ RSpec.describe Requests::ServiceEligibility::ILL, requests: true do
       allow(requestable).to receive_messages(
           alma_managed?: true,
           aeon?: false,
-          charged?: true
+          charged?: true,
+          marquand_item?: false
         )
 
       expect(eligibility.eligible?).to be(true)
@@ -21,7 +22,8 @@ RSpec.describe Requests::ServiceEligibility::ILL, requests: true do
       allow(requestable).to receive_messages(
           aeon?: true,
           alma_managed?: true,
-          charged?: true
+          charged?: true,
+          marquand_item?: false
         )
 
       expect(eligibility.eligible?).to be(false)
@@ -34,8 +36,22 @@ RSpec.describe Requests::ServiceEligibility::ILL, requests: true do
         allow(requestable).to receive_messages(
           alma_managed?: true,
           aeon?: false,
-          charged?: true
+          charged?: true,
+          marquand_item?: false
         )
+
+        expect(eligibility.eligible?).to be(false)
+      end
+    end
+
+    context 'with a marquand item' do
+      it 'returns false' do
+        allow(requestable).to receive_messages(
+            alma_managed?: true,
+            aeon?: false,
+            charged?: true,
+            marquand_item?: true
+          )
 
         expect(eligibility.eligible?).to be(false)
       end

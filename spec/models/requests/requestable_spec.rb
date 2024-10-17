@@ -400,6 +400,12 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
+    describe "#marquand_item?" do
+      it 'is a marquand_item' do
+        expect(requestable).to be_marquand_item
+      end
+    end
+
     describe "#available?" do
       it "is available" do
         expect(requestable).to be_available
