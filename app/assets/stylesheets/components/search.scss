@@ -2,12 +2,12 @@
 @import "variables/colors";
 @import "variables/typography";
 
-header .search-navbar .input-group .custom-select {
+header .search-navbar .input-group .form-select {
   width: auto;
 }
 
 @media (max-width: $bp-small) {
-  header .search-navbar .input-group .custom-select {
+  header .search-navbar .input-group .form-select {
     width: 100%;
     clear: both;
     display: block;
@@ -166,7 +166,7 @@ select::-ms-expand {
   display: none;
 }
 
-#search_field.custom-select {
+#search_field.form-select {
   @media (min-width: 575px) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
