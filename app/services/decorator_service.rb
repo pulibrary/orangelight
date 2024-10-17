@@ -11,10 +11,11 @@ class DecoratorService
     # @param document [SolrDocument] the document
     # @param title_field [String] the field used for the title
     # @param display_fields [Array<String>] the fields displayed using the decorator
-    def initialize(document:, title_field: 'title_display', display_fields: [])
+    def initialize(document:, title_field: 'title_display', vernacular_title_field: 'title_vern_display', display_fields: [])
       @document = document
 
       @title_field = title_field
+      @vernacular_title_field = vernacular_title_field
       @display_fields = display_fields
     end
 
@@ -32,6 +33,10 @@ class DecoratorService
     # @return [String]
     def title
       @document.fetch(@title_field, nil)
+    end
+
+    def vernacular_title
+      @document.fetch(@vernacular_title_field, nil)
     end
 
     # Access the ID for the Solr Document
