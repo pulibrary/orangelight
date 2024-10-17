@@ -111,6 +111,7 @@ detectors:
     - BlacklightAdvancedSearch::QueryParser#prepare_q2
     - BlacklightAdvancedSearch::QueryParser#prepare_q3
     - ApplicationHelper#action_notes_display
+    - ApplicationHelper#fast_subjects_value?
     - ApplicationHelper#html_safe
     - ApplicationHelper#language_iana
     - ApplicationHelper#location_full_display
@@ -266,7 +267,6 @@ detectors:
     - Orangelight::SearchBarComponent#search_fields
     - ApplicationController#after_sign_out_path_for
     - Requests::FormController#sanitize_submission
-    - Requests::ServiceEligibility::AbstractOnShelf#patron_group_eligible?
     - AdvancedHelper#advanced_key_value
     - AdvancedHelper#advanced_search_fields
     - AdvancedHelper#param_for_field
@@ -399,6 +399,7 @@ detectors:
     - Orangelight::AdvancedSearchFormComponent
     - Orangelight::ConstraintComponent
     - Orangelight::ConstraintsComponent
+    - Orangelight::Document::CitationComponent
     - Orangelight::DropdownHelpTextComponent
     - Orangelight::FacetFieldCheckboxesComponent
     - Orangelight::SearchBarComponent
@@ -525,7 +526,6 @@ detectors:
     - Orangelight::ConstraintsComponent#initialize
     - ApplicationHelper#locate_link_with_glyph
     - ApplicationHelper#locate_url
-    - HoldingsHelper#first_two_holdings_block
     - HoldingsHelper#holding_status_li
     - Requests::ApplicationHelper#single_pickup
     - Requests::RequestMailer#confirmation_email
@@ -602,6 +602,7 @@ detectors:
     - BlacklightAdvancedSearch::ParsingNestingParser#process_query
     - ApplicationHelper#aeon_location?
     - ApplicationHelper#alma_location_display
+    - ApplicationHelper#fast_subjects_value?
     - ApplicationHelper#holding_location_label
     - ApplicationHelper#locate_link_with_glyph
     - ApplicationHelper#render_location_code
@@ -617,7 +618,6 @@ detectors:
     - Requests::ApplicationHelper#hidden_fields_item
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::RequestHelper#login_url
-    - Requests::ServiceEligibility::AbstractOnShelf#patron_group_eligible?
     - Blacklight::Document::Ris#ris_authors
     - Blacklight::Document::Ris#ris_format
     - Blacklight::Marc::CtxBuilder#add_identifiers
@@ -841,6 +841,7 @@ detectors:
     exclude:
     - BlacklightAdvancedSearch::QueryParser#prepare_q2
     - BlacklightAdvancedSearch::QueryParser#prepare_q3
+    - ApplicationHelper#fast_subjects_value?
     - Requests::IlliadMetadata::Metadata#initialize
     - Orangelight::LinkToFacetProcessor#link
   UncommunicativeVariableName:
@@ -918,6 +919,7 @@ detectors:
     - ApplicationHelper#alma_location_display
     - ApplicationHelper#bibdata_location_code_to_sym
     - ApplicationHelper#current_year
+    - ApplicationHelper#fast_subjects_value?
     - ApplicationHelper#format_render
     - ApplicationHelper#holding_location
     - ApplicationHelper#holding_request_block
