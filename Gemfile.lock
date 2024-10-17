@@ -833,6 +833,7 @@ DEPENDENCIES
   rubocop-rspec_rails
   rubyzip (>= 1.2.2)
   sass-rails (~> 6.0)
+  sassc-embedded (~> 1.69, >= 1.69.1)
   selenium-webdriver
   simple_form
   sneakers
