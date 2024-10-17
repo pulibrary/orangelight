@@ -153,7 +153,7 @@ module ApplicationHelper
         full_sub = sub_array[i][j]
       end
       lnk += '  '
-      lnk += link_to('[Browse]', "/browse/subjects?q=#{CGI.escape full_sub}", class: 'browse-subject', 'data-original-title' => "Browse: #{full_sub}", 'aria-label' => "Browse: #{full_sub}", dir: full_sub.dir.to_s)
+      lnk += link_to('[Browse]', "/browse/subjects?q=#{CGI.escape full_sub}", class: 'browse-subject', 'data-original-title' => "Browse: #{full_sub}", 'aria-label' => "Browse: #{full_sub}", dir: full_sub.dir.to_s) unless fast_subjects_value?(args, i)
       args[:document][args[:field]][i] = lnk.html_safe
     end
     content_tag :ul do
@@ -351,4 +351,11 @@ module ApplicationHelper
   def should_show_viewer?
     request.human? && controller.action_name != "librarian_view"
   end
+
+  private
+
+    def fast_subjects_value?(args, i)
+      fast_subject_display_field = args[:document]["fast_subject_display"]
+      fast_subject_display_field.present? && args[:document]["fast_subject_display"].include?(args[:document][args[:field]][i])
+    end
 end
