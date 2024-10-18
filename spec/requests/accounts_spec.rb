@@ -42,7 +42,7 @@ RSpec.describe AccountController, patrons: true do
 
         follow_redirect!
 
-        expect(response).to render_template(:redirect_to_alma)
+        expect(response).to redirect_to('https://princeton.alma.exlibrisgroup.com/discovery/account?vid=01PRI_INST:Services&lang=EN&section=overview')
       end
     end
   end

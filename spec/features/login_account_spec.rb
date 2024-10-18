@@ -4,9 +4,7 @@ require 'rails_helper'
 describe 'Account login' do
   let(:user) { FactoryBot.create(:user) }
   let(:login_and_redirect_to_alma_url) { "/users/sign_in?origin=%2Fredirect-to-alma" }
-  # before(:all) do
-  #   sign_out
-  # end
+
   describe 'Your Account menu', js: true do
     it "lists correct options when not logged in" do
       visit "/"
@@ -41,6 +39,7 @@ describe 'Account login' do
   describe "Library Account login", js: true do
     context "as an unauthenticated user" do
       it "redirects to the log in page and then to alma" do
+        logout
         visit "/"
         click_button("Your Account")
         new_window = window_opened_by { click_link 'Library Account' }
