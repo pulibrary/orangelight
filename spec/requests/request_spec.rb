@@ -358,7 +358,7 @@ describe 'blacklight tests' do
     end
   end
 
-  describe 'escaping search/browse link urls' do
+  describe 'escaping search/browse link urls', browse: true do
     before do
       stub_holding_locations
       allow(Flipflop).to receive(:highlighting?).and_return(false)

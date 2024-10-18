@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Orangelight::BrowseLinkProcessor do
+RSpec.describe Orangelight::BrowseLinkProcessor, browse: true do
   let(:values) { ['1'] }
   let(:config) { Blacklight::Configuration::Field.new(key: 'field', browse_link: :name) }
   let(:document) { SolrDocument.new }

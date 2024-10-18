@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe StringFunctions do
+RSpec.describe StringFunctions, browse: true do
   describe '#cn_normalize' do
     describe 'LC call numbers' do
       it 'LC call numbers with a lowercase x normalize the same as cns without it' do
@@ -42,6 +42,15 @@ RSpec.describe StringFunctions do
       end
       it 'leading zeros normalize the same as without' do
         expect(described_class.cn_normalize('CASSETTE 423')).to eq described_class.cn_normalize('CASSETTE 0423')
+      end
+
+      context 'Cotsen accession numbers' do
+        it 'interleaves integers with strings' do
+          cotsen_one = described_class.cn_normalize('8754 Pams / Eng 19 / Box 071')
+          cotsen_two = described_class.cn_normalize('87550')
+          cotsen_three = described_class.cn_normalize('87550 Pams / Asian 20 / India / Box 2')
+          expect(cotsen_one..cotsen_three).to cover(cotsen_two)
+        end
       end
     end
   end

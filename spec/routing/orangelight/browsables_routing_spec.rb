@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Orangelight::BrowsablesController, type: :routing do
+RSpec.describe Orangelight::BrowsablesController, type: :routing, browse: true do
   describe 'routing' do
     it 'browse/names routes to #index' do
       expect(get: '/browse/names').to route_to('orangelight/browsables#index', model: Orangelight::Name)

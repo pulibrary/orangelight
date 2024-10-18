@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Orangelight::BrowsablesHelper do
+describe Orangelight::BrowsablesHelper, browse: true do
   let(:integer_bib) { '234267' }
   let(:non_integer_bib) { '?f[call_number_browse_s][]=PRIN 685 2015' }
   let(:scsb_bib) { 'SCSB-8096576' }

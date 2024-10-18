@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Browsables' do
+describe 'Browsables', browse: true do
   describe 'Browse by Call Number' do
     context 'with an LC call number' do
       before do
