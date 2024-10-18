@@ -4227,10 +4227,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-lux-design-system@^5.6.2:
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/lux-design-system/-/lux-design-system-5.7.0.tgz#2f3de3cdc0518c24ae969fc70f0856973d0ce774"
-  integrity sha512-R4nzEMBoZgOoDspagHoTyL02x6E7sIURA/e7ZLBeTd8lA7aH6lXgBVm9Xb3KE2E9Jdn0ediSP3i8N+jURgaVXA==
+lux-design-system@^5.7.1:
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/lux-design-system/-/lux-design-system-5.7.1.tgz#2e02bdb19366b7fb0187deb6237d0b59ab7b2aa6"
+  integrity sha512-J/y9ftTAVtunO3SD+z/AgXu8KQtFrOnr0LmMo2Ao8iLw4yN5Jy1GhXEMOdUP1Bc2CPmtNjLDteTuibK1Ifia3g==
   dependencies:
     core-js "^3.8.3"
     register-service-worker "^1.7.2"
