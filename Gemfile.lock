@@ -605,8 +605,8 @@ GEM
       rubocop-rspec (~> 3, >= 3.0.1)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
-    sass-embedded (1.79.5)
-      google-protobuf (~> 4.27)
+    sass-embedded (1.80.2)
+      google-protobuf (~> 4.28)
       rake (>= 13)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -836,7 +836,7 @@ DEPENDENCIES
   rubocop-rspec_rails
   rubyzip (>= 1.2.2)
   sass-rails (~> 6.0)
-  sassc-embedded (~> 1.69, >= 1.69.1)
+  sassc-embedded
   selenium-webdriver
   simple_form
   sneakers

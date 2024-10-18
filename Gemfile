@@ -18,7 +18,7 @@ gem 'blacklight_range_limit', '~> 8.2'
 gem 'bootstrap', '~> 5.3.3'
 # gem 'cssbundling-rails', '~> 1.2'
 gem 'dartsass-sprockets'
-gem 'sassc-embedded', '~> 1.69', '>= 1.69.1'
+gem 'sassc-embedded'
 gem 'psych'
 # Capistrano
 # In the Capistrano documentation, it has these limited to the development group, and `require: false``
