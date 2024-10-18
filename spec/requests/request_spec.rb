@@ -109,7 +109,7 @@ describe 'blacklight tests' do
 
   SEPARATOR = '—'
   describe 'subjectify check' do
-    it 'provides links to facet search based on hierarchy' do
+    it 'provides links on LC subject headings to facet search based on hierarchy' do
       stub_holding_locations
       get '/catalog/9961398363506421/raw'
       r = JSON.parse(response.body)
@@ -128,6 +128,25 @@ describe 'blacklight tests' do
                                         "href=\"/?f[subject_facet][]="\
                                         "#{CGI.escape subject[/.*#{c}/]}\">"\
                                         "#{component}</a>")
+        end
+      end
+    end
+    it 'provides links on FaST subject headings to facet search based on hierarchy' do
+      stub_holding_locations
+      get '/catalog/99125527882306421/raw'
+      r = JSON.parse(response.body)
+      sub_component = []
+      fullsubject = r['fast_subject_display']
+      fullsubject.each do |subject|
+        sub_component << subject.split(SEPARATOR)
+      end
+      get '/catalog/99125527882306421'
+      fullsubject.each_with_index do |_subject, i|
+        sub_component[i].each do |component|
+          Regexp.escape(component)
+          expect(response.body).to include("class=\"search-subject\" data-original-title=\"Search: Criticism, interpretation, etc.\" href=\"/?f[subject_facet][]=Criticism%2C+interpretation%2C+etc\">Criticism, interpretation, etc.</a>  </li><li dir=\"ltr\">")
+
+          expect(response.body).not_to include('href=\"/browse/subjects?q=Criticism%2C+interpretation%2C+etc.\"')
         end
       end
     end

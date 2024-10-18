@@ -148,12 +148,12 @@ module ApplicationHelper
       full_sub = ''
       all_subjects[i].each_with_index do |subsubject, j|
         lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[subject_facet][]=#{CGI.escape sub_array[i][j]}", class: 'search-subject', 'data-original-title' => "Search: #{sub_array[i][j]}")
+                                  "/?f[subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array[i][j])}", class: 'search-subject', 'data-original-title' => "Search: #{sub_array[i][j]}")
         lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
         full_sub = sub_array[i][j]
       end
       lnk += '  '
-      lnk += link_to('[Browse]', "/browse/subjects?q=#{CGI.escape full_sub}", class: 'browse-subject', 'data-original-title' => "Browse: #{full_sub}", 'aria-label' => "Browse: #{full_sub}", dir: full_sub.dir.to_s)
+      lnk += link_to('[Browse]', "/browse/subjects?q=#{CGI.escape full_sub}", class: 'browse-subject', 'data-original-title' => "Browse: #{full_sub}", 'aria-label' => "Browse: #{full_sub}", dir: full_sub.dir.to_s) unless fast_subjects_value?(args, i)
       args[:document][args[:field]][i] = lnk.html_safe
     end
     content_tag :ul do
@@ -351,4 +351,12 @@ module ApplicationHelper
   def should_show_viewer?
     request.human? && controller.action_name != "librarian_view"
   end
+
+  private
+
+    def fast_subjects_value?(args, i)
+      fast_subject_display_field = args[:document]["fast_subject_display"]
+      return false if fast_subject_display_field.nil?
+      fast_subject_display_field.present? && fast_subject_display_field.include?(args[:document][args[:field]][i])
+    end
 end
