@@ -149,9 +149,9 @@ GEM
       blacklight (>= 7.25.2, < 9)
       deprecation
       view_component (>= 2.54, < 4)
-    bootstrap (4.6.2.1)
+    bootstrap (5.3.3)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.16.1, < 2)
+      popper_js (>= 2.11.8, < 3)
     builder (3.3.0)
     bunny (2.23.0)
       amq-protocol (~> 2.3, >= 2.3.1)
@@ -205,6 +205,12 @@ GEM
     csl-styles (2.0.1)
       csl (~> 2.0)
     csv (3.3.0)
+    dartsass-sprockets (3.1.0)
+      railties (>= 4.0.0)
+      sassc-embedded (~> 1.69)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     datadog (2.3.0)
       debase-ruby_core_source (= 3.3.1)
       libdatadog (~> 11.0.0.1.0)
@@ -289,6 +295,8 @@ GEM
     faraday-net_http (3.3.0)
       net-http
     ffi (1.17.0)
+    ffi (1.17.0-aarch64-linux-gnu)
+    ffi (1.17.0-x86_64-linux-gnu)
     ffi-compiler (1.3.2)
       ffi (>= 1.15.5)
       rake
@@ -301,6 +309,15 @@ GEM
       activesupport (>= 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    google-protobuf (4.28.2)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.28.2-aarch64-linux)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.28.2-x86_64-linux)
+      bigdecimal
+      rake (>= 13)
     hashdiff (1.1.1)
     hashie (5.0.0)
     health-monitor-rails (12.3.0)
@@ -325,7 +342,7 @@ GEM
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     io-console (0.7.2)
-    irb (1.14.0)
+    irb (1.14.1)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jaro_winkler (1.6.0)
@@ -450,7 +467,7 @@ GEM
       racc
     parslet (2.0.0)
     pg (1.5.7)
-    popper_js (1.16.1)
+    popper_js (2.11.8)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -529,7 +546,7 @@ GEM
       rainbow (>= 2.0, < 4.0)
       rexml (~> 3.1)
     regexp_parser (2.9.2)
-    reline (0.5.9)
+    reline (0.5.10)
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
@@ -588,10 +605,15 @@ GEM
       rubocop-rspec (~> 3, >= 3.0.1)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
+    sass-embedded (1.80.2)
+      google-protobuf (~> 4.28)
+      rake (>= 13)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
+    sassc-embedded (1.79.0)
+      sass-embedded (~> 1.79)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
       sassc (>= 2.0)
@@ -671,7 +693,7 @@ GEM
       unicode-display_width (>= 1.1.1, < 3)
     terser (1.2.3)
       execjs (>= 0.3.0, < 3)
-    thor (1.3.1)
+    thor (1.3.2)
     thread_safe (0.3.6)
     tilt (2.4.0)
     timecop (0.9.10)
@@ -734,7 +756,7 @@ GEM
     yajl-ruby (1.4.3)
     yard (0.9.36)
     yell (2.2.2)
-    zeitwerk (2.6.17)
+    zeitwerk (2.6.18)
 
 PLATFORMS
   aarch64-linux
@@ -752,7 +774,7 @@ DEPENDENCIES
   blacklight_advanced_search (~> 7.0)
   blacklight_dynamic_sitemap
   blacklight_range_limit (~> 8.2)
-  bootstrap (~> 4.6)
+  bootstrap (~> 5.3.3)
   capistrano (~> 3.4)
   capistrano-passenger
   capistrano-rails
@@ -760,6 +782,7 @@ DEPENDENCIES
   citeproc-ruby
   coveralls_reborn
   csl-styles
+  dartsass-sprockets
   datadog
   devise
   devise-guests
@@ -795,6 +818,7 @@ DEPENDENCIES
   openurl (~> 1.0)
   pg
   pry-byebug
+  psych
   puma (~> 6.4)
   rack-attack
   rack-mini-profiler
@@ -812,6 +836,7 @@ DEPENDENCIES
   rubocop-rspec_rails
   rubyzip (>= 1.2.2)
   sass-rails (~> 6.0)
+  sassc-embedded
   selenium-webdriver
   simple_form
   sneakers
