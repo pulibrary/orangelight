@@ -39,6 +39,7 @@ describe 'Account login' do
   describe "Library Account login", js: true do
     context "as an unauthenticated user" do
       it "redirects to the log in page and then to alma" do
+        logout
         visit "/"
         click_button("Your Account")
         new_window = window_opened_by { click_link 'Library Account' }
