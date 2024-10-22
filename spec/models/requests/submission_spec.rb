@@ -770,29 +770,29 @@ describe Requests::Submission, requests: true do
     describe "#process_submission" do
       it 'items contacts clancy and alma' do
         stub_delivery_locations
-        alma_url = stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
+        alma_stub = stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
         clancy_url = stub_clancy_post(barcode: "32101072349515")
         expect(submission).to be_valid
         expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(2)
-        expect(a_request(:post, alma_url)).to have_been_made
+        expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).to have_been_made
       end
 
       it "returns hold errors" do
-        alma_url = stub_alma_hold_failure('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
+        alma_stub = stub_alma_hold_failure('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
         clancy_url = "#{Requests.config[:clancy_base]}/circrequests/v1"
         expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(0)
-        expect(a_request(:post, alma_url)).to have_been_made
+        expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).not_to have_been_made
         expect(submission.service_errors.first[:type]).to eq('clancy_hold')
       end
 
       it 'returns clancy errors' do
-        alma_url = stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
+        alma_stub = stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
         clancy_url = stub_clancy_post(barcode: "32101072349515", deny: 'Y', status: "Item Cannot be Retrieved - Item is Currently Circulating")
         expect(submission).to be_valid
         expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(0)
-        expect(a_request(:post, alma_url)).to have_been_made
+        expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).to have_been_made
         expect(submission.service_errors.first[:type]).to eq('clancy')
         expect(submission.service_errors.first[:bibid]).to eq('9956364873506421')
@@ -1008,17 +1008,17 @@ describe Requests::Submission, requests: true do
     describe "#process_submission" do
       it 'items contacts alma and does not email marquand or contact clancy' do
         stub_delivery_locations
-        alma_url = stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
+        alma_stub = stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
         expect(submission).to be_valid
         expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(2)
-        expect(a_request(:post, alma_url)).to have_been_made
+        expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).not_to have_been_made
       end
 
       it "returns hold errors" do
-        alma_url = stub_alma_hold_failure('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
+        alma_stub = stub_alma_hold_failure('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
         expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(0)
-        expect(a_request(:post, alma_url)).to have_been_made
+        expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).not_to have_been_made
         expect(submission.service_errors.first[:type]).to eq('marquand_in_library')
       end
@@ -1049,17 +1049,17 @@ describe Requests::Submission, requests: true do
     describe "#process_submission" do
       it 'sends an email and places an alma hold' do
         stub_delivery_locations
-        alma_url = stub_alma_hold_success('99124704963506421', '22741721830006421', '23741721820006421', '9999999')
+        alma_stub = stub_alma_hold_success('99124704963506421', '22741721830006421', '23741721820006421', '9999999')
         expect(submission).to be_valid
         expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(2)
         expect(submission.service_errors.count).to eq(0)
-        expect(a_request(:post, alma_url)).to have_been_made
+        expect(alma_stub).to have_been_requested
       end
 
       it "returns hold errors" do
-        alma_url = stub_alma_hold_failure('99124704963506421', '22741721830006421', '23741721820006421', '9999999')
+        alma_stub = stub_alma_hold_failure('99124704963506421', '22741721830006421', '23741721820006421', '9999999')
         expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(0)
-        expect(a_request(:post, alma_url)).to have_been_made
+        expect(alma_stub).to have_been_requested
         expect(submission.service_errors.count).to eq(1)
       end
     end
