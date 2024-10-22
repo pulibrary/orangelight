@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'rake'
 
-RSpec.describe 'browse rake tasks' do
+RSpec.describe 'browse rake tasks', browse: true do
   self.use_transactional_tests = false
   before do
     Orangelight::Application.load_tasks
