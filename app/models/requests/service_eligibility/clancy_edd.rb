@@ -27,7 +27,7 @@ module Requests
       end
 
       def allowed_patron_groups
-        @allowed_patron_groups ||= %w[P REG GRAD SENR UGRAD]
+        @allowed_patron_groups ||= %w[P REG GRAD SENR UGRD]
       end
 
       def requestable_eligible?

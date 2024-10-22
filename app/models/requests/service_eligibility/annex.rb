@@ -15,7 +15,7 @@ module Requests
           end
 
           def allowed_patron_groups
-            @allowed_patron_groups ||= %w[P REG GRAD SENR UGRAD Affiliate-P Affiliate GST]
+            @allowed_patron_groups ||= %w[P REG GRAD SENR UGRD Affiliate-P Affiliate GST]
           end
     end
   end
