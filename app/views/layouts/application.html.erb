@@ -20,11 +20,11 @@
     <%= opensearch_description_tag application_name, main_app.opensearch_catalog_url(:format => 'xml') %>
     <%= favicon_link_tag 'favicon.ico' %>
     <link rel="stylesheet" href="https://use.typekit.net/yhr7zwc.css">
+    <link rel="stylesheet" media="all" type="text/css" href="https://www.stackmapintegration.com/princeton-blacklight/StackMap.min.css" />
     <%= stylesheet_link_tag "application", media: "screen" %>
     <%= stylesheet_link_tag "print", media: "print" %>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <script defer src="https://www.stackmapintegration.com/princeton-blacklight/StackMap.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" media="all" type="text/css" href="https://www.stackmapintegration.com/princeton-blacklight/StackMap.min.css" />
     <% if controller.controller_name == "form" %>
       <%= javascript_include_tag 'requests/application' %>
       <%= vite_javascript_tag 'requests' %>

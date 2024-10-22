@@ -103,7 +103,7 @@ describe 'blacklight tests' do
     end
     it 'does not provide a find it link for online holdings' do
       get '/catalog/9990889283506421'
-      expect(response.body.include?('[Where to Find it]')).to eq false
+      expect(response.body.include?('[Where to find it]')).to eq false
     end
   end
 
