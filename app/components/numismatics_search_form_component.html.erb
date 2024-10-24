@@ -7,7 +7,7 @@
   </div>
 <% end %>
 <%= form_tag @url, method: @method, class: @classes.join(' '), role: 'search', 'aria-label' => t('blacklight.search.form.submit') do %>
-  <%= render_hash_as_hidden_fields(@params) %>
+  <%= render Blacklight::HiddenSearchStateComponent.new(params: @params) %>
   <%= render Blacklight::HiddenSearchStateComponent.new(params: {'advanced_type' => 'numismatics'}) %>
   <div class="two-columns-md">
       <% search_filter_controls.each do |control| %>
