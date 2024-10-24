@@ -806,6 +806,7 @@ DEPENDENCIES
   openurl (~> 1.0)
   pg
   pry-byebug
+  psych
   puma (~> 6.4)
   rack-attack
   rack-mini-profiler
