@@ -13,7 +13,7 @@
   <div class='card card-alma collapse' id="collapseAlma">
     <div class='card-body'>
       <%= simple_form_for(@user, url:  main_app.user_alma_omniauth_callback_path, class: 'form-horizontal', data: { toggle: 'validator' }, :method => :post)  do |f| %>
-        <div class='field form-group col-md-12 row'>
+        <div class='field mb-3 col-md-12 row'>
           <%= label_tag 'username', 'Alma User ID', class: 'control-label col-md-2 col-form-label' %>
           <div class='col-md-5 <%= 'has-error' if flash[:username] %>'>
             <%= text_field_tag 'username', '', class: 'form-control', autocomplete: 'off' %>
@@ -24,7 +24,7 @@
           </div>
         </div>
 
-        <div class='field form-group col-md-12 row'>
+        <div class='field mb-3 col-md-12 row'>
           <%= label_tag 'password', 'Password', class: 'control-label col-md-2 col-form-label' %>
           <div class='col-md-5 <%= 'has-error' if flash[:password] %>'>
             <%= password_field_tag 'password', '', class: 'form-control', autocomplete: 'off' %>
@@ -35,7 +35,7 @@
           </div>
         </div>
 
-        <div class='login_actions form-group row'>
+        <div class='login_actions mb-3 row'>
           <div class='offset-md-2 col-md-10'>
             <%= f.submit 'Log in', class: 'btn btn-outline-dark' %>
           </div>

@@ -1,5 +1,5 @@
 <div id="sortAndPerPage" class="clearfix">
-  <div class="pagination-rss float-left">
+  <div class="pagination-rss float-start">
     <div class="page-links">
     <%= render :partial => "paginate_compact", :object => @response if show_pagination? %>
     <%= link_to(" ", search_catalog_path(params.permit!.merge(format: 'atom',
@@ -7,7 +7,7 @@
                 :class => "icon-rssfeed", :title => "Subscribe to results feed", "aria-label"=>"Subscribe to results feed" ) %>
     </div>
   </div>
-  <div class="search-widgets float-right">
+  <div class="search-widgets float-end">
     <% if bookmarks? %>
       <%= render partial: 'tools', locals: { document_list: @document_list } %>
     <% end %>
