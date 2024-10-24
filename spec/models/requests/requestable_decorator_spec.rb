@@ -1098,35 +1098,35 @@ describe Requests::RequestableDecorator, requests: true do
     let(:stubbed_questions) { default_stubbed_questions.merge(charged?: false, status_label: 'Item in place', status: 'Available') }
 
     it 'shows the status' do
-      expect(decorator.status_badge).to eq('<span class="availability--label badge badge-success">Available</span>')
+      expect(decorator.status_badge).to eq('<span class="availability--label badge bg-success">Available</span>')
     end
 
     context 'Status label nil' do
       let(:stubbed_questions) { default_stubbed_questions.merge(charged?: false, status_label: nil, status: 'Available') }
 
       it 'shows the status' do
-        expect(decorator.status_badge).to eq('<span class="availability--label badge badge-success">Available</span>')
+        expect(decorator.status_badge).to eq('<span class="availability--label badge bg-success">Available</span>')
       end
     end
 
     context 'Charged item' do
       let(:stubbed_questions) { default_stubbed_questions.merge(charged?: true, status_label: 'Technical - Migration', status: 'Unavailable') }
       it 'shows the status' do
-        expect(decorator.status_badge).to eq('<span class="availability--label badge badge-danger">Unavailable</span>')
+        expect(decorator.status_badge).to eq('<span class="availability--label badge bg-danger">Unavailable</span>')
       end
     end
 
     context 'Status and label match' do
       let(:stubbed_questions) { default_stubbed_questions.merge(charged?: true, status_label: 'Unavailable', status: 'Unavailable') }
       it 'shows the status' do
-        expect(decorator.status_badge).to eq('<span class="availability--label badge badge-danger">Unavailable</span>')
+        expect(decorator.status_badge).to eq('<span class="availability--label badge bg-danger">Unavailable</span>')
       end
     end
 
     context 'migration item that is available' do
       let(:stubbed_questions) { default_stubbed_questions.merge(status_label: 'Technical - Migration', status: 'Available') }
       it 'shows the status' do
-        expect(decorator.status_badge).to eq('<span class="availability--label badge badge-success">Available</span>')
+        expect(decorator.status_badge).to eq('<span class="availability--label badge bg-success">Available</span>')
       end
     end
   end
