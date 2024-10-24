@@ -112,9 +112,9 @@ module Requests
 
     def css_class
       if requestable.status == "Available"
-        "badge-success"
+        "bg-success"
       else
-        "badge-danger"
+        "bg-danger"
       end
     end
 
