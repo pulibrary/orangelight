@@ -70,7 +70,7 @@ module HoldingsHelper
     data = content_tag(
       :span,
       'Link Missing',
-      class: 'availability-icon badge badge-secondary'
+      class: 'availability-icon badge bg-secondary'
     )
     data << content_tag(
       :div,
@@ -83,7 +83,7 @@ module HoldingsHelper
     content_tag(
       :span,
       'On-site access',
-      class: 'availability-icon badge badge-success'
+      class: 'availability-icon badge bg-success'
     )
   end
 
@@ -115,7 +115,7 @@ module HoldingsHelper
     content_tag(
       :span,
       'Loading...',
-      class: 'availability-icon badge badge-secondary'
+      class: 'availability-icon badge bg-secondary'
     )
   end
 
@@ -123,7 +123,7 @@ module HoldingsHelper
     content_tag(
       :span,
       'Unavailable',
-      class: 'availability-icon badge badge-danger'
+      class: 'availability-icon badge bg-danger'
     )
   end
 
@@ -161,7 +161,7 @@ module HoldingsHelper
     content_tag(
       :span,
       '',
-      class: 'badge badge-primary',
+      class: 'badge bg-primary',
       data: { 'availability-cdl': true }
     )
   end
@@ -172,7 +172,7 @@ module HoldingsHelper
       link_to(
         'View Record for Full Availability',
         solr_document_path(document['id']),
-        class: 'availability-icon badge badge-secondary more-info'
+        class: 'availability-icon badge bg-secondary more-info'
       )
     )
   end
