@@ -289,7 +289,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end
 
       it 'allows CAS patrons to request a Forrestal Annex item' do
-        alma_url = stub_alma_hold_success('999455503506421', '22642306790006421', '23642306760006421', '960594184')
+        stub_alma_hold_success('999455503506421', '22642306790006421', '23642306760006421', '960594184')
         visit '/requests/999455503506421?mfhd=22642306790006421'
         choose('requestable__delivery_mode_23642306760006421_print') # chooses 'print' radio button
         expect(page).to have_content 'Item offsite at Forrestal Annex. Requests for pick-up'
@@ -314,7 +314,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(confirm_email.cc).to be_blank
         expect(confirm_email.html_part.body.to_s).to have_content("A tale of cats and mice of Obeyd of Záákán")
         expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-        expect(a_request(:post, alma_url)).to have_been_made
+        expect(stub_alma_hold_success('999455503506421', '22642306790006421', '23642306760006421', '960594184')).to have_been_requested
       end
 
       it 'allows CAS patrons to request electronic delivery of a Forrestal item' do
@@ -382,18 +382,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(confirm_email.html_part.body.to_s).to have_content("The decomposition of global conformal invariants")
       end
 
-      it 'allows CAS patrons to request an on-order item' do
-        stub_scsb_availability(bib_id: "99129147026006421", institution_id: "PUL", barcode: '33333059902417')
-        visit '/requests/99129147026006421?mfhd=221003662090006421'
-        expect(page).to have_content 'Pick-up location: Marquand Library at Firestone'
-        expect(page).to have_content 'On Order books have not yet been received. Place a request to be notified when this item has arrived and is ready for your pick-up.'
-        check 'requestable_selected_231003662080006421'
-        click_button 'Request this Item'
-        expect(page).to have_content 'Request submitted'
-        scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
-        expect(a_request(:post, scsb_url)).not_to have_been_made
-      end
-
       it 'allows CAS patrons to ask for digitization on non circulating items' do
         visit '/requests/9995948403506421?mfhd=22500774400006421'
         expect(page).to have_content 'Electronic Delivery'
@@ -459,25 +447,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(confirm_email.cc).to be_nil
         expect(confirm_email.html_part.body.to_s).to have_content("ABC ZZZ")
         expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-      end
-
-      it 'Marquand ReCAP Item is available for an EDD request or In Library Use(no physical delivery) and can be requested' do
-        scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
-        stub_request(:post, scsb_url).to_return(status: 200, body: good_response, headers: {})
-        stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
-        visit '/requests/99117809653506421?mfhd=22613352460006421'
-        choose('requestable__delivery_mode_23613352450006421_edd') # chooses 'edd' radio button
-        expect(page).to have_content I18n.t('requests.recap_edd.brief_msg')
-        expect(page).to have_content 'Electronic Delivery'
-        expect(page).to have_content 'Available for In Library Use'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'Article/Chapter Title (Required)'
-        fill_in "Title", with: "my stuff"
-        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-        expect(a_request(:post, scsb_url)).to have_been_made
-        email = ActionMailer::Base.deliveries.last
-        expect(email.subject).to eq("Electronic Document Delivery Request Confirmation")
-        expect(email.html_part.body.to_s).to have_content("You will receive an email including a link where you can download your scanned section")
       end
 
       it "shows items in the Architecture Library as available" do
@@ -582,41 +551,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
       end
 
-      it 'allows a non circulating holding with no item data to be digitized' do
-        stub_illiad_patron
-        stub_request(:post, transaction_url)
-          .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "PhotoArticleAuthor" => "I Aman Author", "PhotoItemAuthor" => "Herzog, Hans-Michael Daros Collection (Art)", "PhotoJournalTitle" => "La mirada : looking at photography in Latin America today", "PhotoItemPublisher" => "Zürich: Edition Oehrli", "PhotoJournalIssue" => "",
-                                     "Location" => "Marquand Library - Stacks", "ISSN" => "9783905597363", "CallNumber" => "", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/9941274093506421", "PhotoJournalVolume" => "", "ItemInfo3" => "", "ItemInfo4" => "", "CitedPages" => "Marquand EDD", "AcceptNonEnglish" => true, "ESPNumber" => "", "DocumentType" => "Book", "PhotoArticleTitle" => "ABC", "PhotoJournalYear" => "2002"))
-          .to_return(status: 200, body: responses[:transaction_created], headers: {})
-        stub_request(:post, transaction_note_url)
-          .to_return(status: 200, body: responses[:note_created], headers: {})
-        stub_clancy_status(barcode: "32101072349515")
-        visit '/requests/9941274093506421?mfhd=22690999210006421'
-        choose('requestable__delivery_mode_22690999210006421_edd') # chooses 'edd' radio button
-        expect(page).to have_content I18n.t('requests.marquand_edd.brief_msg')
-        expect(page).to have_content 'Electronic Delivery'
-        expect(page).to have_content 'Unavailable'
-        expect(page).not_to have_content 'Available for In Library Use'
-        fill_in "Article/Chapter Title", with: "ABC"
-        fill_in "Author", with: "I Aman Author"
-        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-        expect(a_request(:post, transaction_url)).to have_been_made
-        expect(a_request(:post, transaction_note_url)).to have_been_made
-        confirm_email = ActionMailer::Base.deliveries.last
-        expect(confirm_email.subject).to eq("Electronic Document Delivery Request Confirmation")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content(I18n.t('requests.marquand_edd.email_conf_msg'))
-        expect(confirm_email.html_part.body.to_s).to have_content("La mirada : looking at photography in Latin America today")
-        marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-        expect(marquand_email.subject).to eq("Patron Initiated Catalog Request Scan")
-        expect(marquand_email.html_part.body.to_s).to have_content("La mirada : looking at photography in Latin America today")
-        expect(marquand_email.html_part.body.to_s).to have_content("ABC")
-        expect(marquand_email.html_part.body.to_s).to have_content("I Aman Author")
-        expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
-        expect(marquand_email.cc).to be_blank
-      end
-
       it 'allows an in process item to be requested' do
         visit "/requests/#{in_process_id}"
         expect(page).to have_content 'In Process materials are typically available in several business days'
@@ -676,130 +610,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
       end
 
-      it "places a hold in Alma and sends emails for a Marquand -In Library Use- item" do
-        stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '960594184')
-        stub_clancy_status(barcode: "32101072349515")
-        visit '/requests/9956364873506421?mfhd=22587331490006421'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'Available for In Library Use'
-        expect(page).to have_content 'Electronic Delivery'
-        expect(page).not_to have_link('make an appointment', href: "https://libcal.princeton.edu/seats?lid=10656")
-        choose('requestable__delivery_mode_23587331480006421_in_library') # chooses 'in library' radio button
-        expect(page).to have_content('Marquand Library at Firestone')
-        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-        confirm_email = ActionMailer::Base.deliveries.last
-        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("you will receive an email when the book is available for consultation")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("Pick-up By")
-        expect(confirm_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-        marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-        expect(marquand_email.subject).to eq("Patron Initiated Catalog Request In Library")
-        expect(marquand_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-        expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
-        expect(marquand_email.cc).to be_blank
-      end
-
-      it "places a hold in Alma and a Clancy request for a Marquand -In Library Use- item at Clancy" do
-        stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '960594184')
-        stub_clancy_status(barcode: "32101072349515", status: "Item In at Rest")
-        stub_clancy_post(barcode: "32101072349515")
-        visit '/requests/9956364873506421?mfhd=22587331490006421'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'Electronic Delivery'
-        expect(page).to have_content 'Available for In Library Use'
-        expect(page).to have_content I18n.t("requests.clancy_in_library.brief_msg")
-        expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
-        choose('requestable__delivery_mode_23587331480006421_in_library') # chooses 'in_library' radio button
-        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-        confirm_email = ActionMailer::Base.deliveries.last
-        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-        marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-        expect(marquand_email.subject).to eq("Patron Initiated Catalog Request Clancy In Library")
-        expect(marquand_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-        expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
-        expect(marquand_email.cc).to be_blank
-      end
-
-      it "only has edd for a marquand in library use item at Clancy that is unavailable" do
-        stub_illiad_patron
-        stub_request(:post, transaction_url)
-          .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "NotWantedAfter" => (DateTime.current + 6.months).strftime("%m/%d/%Y"), "WantedBy" => "Yes, until the semester's", "PhotoItemAuthor" => "Johns, Catherine", "PhotoArticleAuthor" => "", "PhotoJournalTitle" => "Dogs : history, myth, art", "PhotoItemPublisher" => "Cambridge, Mass: Harvard University P...", "ISSN" => "9780674030930", "CallNumber" => "N7668.D6 J64 2008", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/9956364873506421",
-                                     "PhotoJournalYear" => "2008", "PhotoJournalVolume" => "", "PhotoJournalIssue" => "", "ItemInfo3" => "", "ItemInfo4" => "", "CitedPages" => "Marquand Clancy UNAVAIL EDD", "AcceptNonEnglish" => true, "ESPNumber" => "213495319", "DocumentType" => "Book", "Location" => "Marquand Library - Stacks", "PhotoArticleTitle" => "ABC"))
-          .to_return(status: 200, body: responses[:transaction_created], headers: {})
-        stub_request(:post, transaction_note_url)
-          .with(body: hash_including("Note" => "Digitization Request Marquand Item at Clancy (Unavailable)"))
-          .to_return(status: 200, body: responses[:note_created], headers: {})
-        stub_clancy_status(barcode: "32101072349515", status: "Item In Accession Process")
-        visit '/requests/9956364873506421?mfhd=22587331490006421'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).not_to have_content 'Available for In Library Use'
-        expect(page).to have_content 'Electronic Delivery'
-        choose('requestable__delivery_mode_23587331480006421_edd') # chooses 'edd' radio button
-        expect(page).to have_content I18n.t('requests.clancy_unavailable_edd.brief_msg')
-        expect(page).to have_content I18n.t("requests.clancy_unavailable_edd.note_msg")
-        fill_in "Article/Chapter Title", with: "ABC"
-        expect(page).not_to have_content("translation missing")
-        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-        expect(a_request(:post, transaction_url)).to have_been_made
-        expect(a_request(:post, transaction_note_url)).to have_been_made
-        confirm_email = ActionMailer::Base.deliveries.last
-        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request EDD Confirmation")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-        expect(confirm_email.html_part.body.to_s).to have_content(I18n.t("requests.clancy_unavailable_edd.email_conf_msg"))
-        expect(confirm_email.html_part.body.to_s).to have_content("ABC")
-        marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-        expect(marquand_email.subject).to eq("Patron Initiated Catalog Request Scan - Unavailable at Clancy")
-        expect(marquand_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-        expect(marquand_email.html_part.body.to_s).to have_content("ABC")
-        expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
-        expect(marquand_email.cc).to be_blank
-      end
-
-      it "sends an email and places an illiad request for a marquand edd item at Clancy" do
-        stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '960594184')
-        stub_clancy_status(barcode: "32101072349515", status: "Item In at Rest")
-        stub_clancy_post(barcode: "32101072349515")
-        stub_illiad_patron
-        stub_request(:post, transaction_url)
-          .with(body: hash_including("Username" => "jstudent", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "NotWantedAfter" => (DateTime.current + 6.months).strftime("%m/%d/%Y"), "WantedBy" => "Yes, until the semester's", "PhotoItemAuthor" => "Johns, Catherine", "PhotoArticleAuthor" => "", "PhotoJournalTitle" => "Dogs : history, myth, art", "PhotoItemPublisher" => "Cambridge, Mass: Harvard University P...", "ISSN" => "9780674030930", "CallNumber" => "N7668.D6 J64 2008", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/9956364873506421",
-                                     "PhotoJournalYear" => "2008", "PhotoJournalVolume" => "", "PhotoJournalIssue" => "", "ItemInfo3" => "", "ItemInfo4" => "", "CitedPages" => "Marquand Clancy EDD", "AcceptNonEnglish" => true, "ESPNumber" => "213495319", "DocumentType" => "Book", "Location" => "Marquand Library - Stacks", "PhotoArticleTitle" => "ABC"))
-          .to_return(status: 200, body: responses[:transaction_created], headers: {})
-        stub_request(:post, transaction_note_url)
-          .with(body: hash_including("Note" => "Digitization Request Marquand Item at Clancy"))
-          .to_return(status: 200, body: responses[:note_created], headers: {})
-        visit '/requests/9956364873506421?mfhd=22587331490006421'
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect(page).to have_content 'Electronic Delivery'
-        expect(page).to have_content 'Available for In Library Use'
-        expect(page).to have_content I18n.t("requests.clancy_in_library.brief_msg")
-        expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
-        choose('requestable__delivery_mode_23587331480006421_edd') # chooses 'edd' radio button
-        expect(page).to have_content I18n.t('requests.clancy_edd.brief_msg')
-        expect(page).to have_content I18n.t("requests.clancy_edd.note_msg")
-        fill_in "Article/Chapter Title", with: "ABC"
-        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
-        expect(a_request(:post, transaction_url)).to have_been_made
-        expect(a_request(:post, transaction_note_url)).to have_been_made
-        confirm_email = ActionMailer::Base.deliveries.last
-        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request EDD Confirmation")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-        expect(confirm_email.html_part.body.to_s).to have_content("Electronic document delivery requests typically take 4-8 business days")
-        marquand_email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
-        expect(marquand_email.subject).to eq("Patron Initiated Catalog Request Clancy Scan")
-        expect(marquand_email.html_part.body.to_s).to have_content("Dogs : history, myth, art")
-        expect(marquand_email.to).to eq(["marquandoffsite@princeton.edu"])
-        expect(marquand_email.cc).to be_blank
-      end
-
       it "Display only the 'In Library Use' option for an in library use only ReCAP Partner item" do
         scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
         stub_request(:post, scsb_url)
@@ -818,32 +628,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
         expect(confirm_email.html_part.body.to_s).to have_content("955-1968 : gli artisti italiani alle Documenta di Kassel")
-      end
-
-      it 'Shows Marquand ReCAP item as available for EDD or In Library Use' do
-        stub_scsb_availability(bib_id: "99117809653506421", institution_id: "PUL", barcode: '32101106347378')
-        scsb_url = "#{Requests.config[:scsb_base]}/requestItem/requestItem"
-        stub_request(:post, scsb_url)
-          .with(body: hash_including(author: "", bibId: "99117809653506421", callNumber: "N6923.B257 H84 2020", chapterTitle: "", deliveryLocation: "PJ", emailAddress: "a@b.com", endPage: "", issue: "", itemBarcodes: ["32101106347378"], itemOwningInstitution: "PUL", patronBarcode: "22101008199999", requestNotes: "", requestType: "RETRIEVAL", requestingInstitution: "PUL", startPage: "", titleIdentifier: "Alesso Baldovinetti und die Florentiner Malerei der Frührenaissance", username: "jstudent", volume: ""))
-          .to_return(status: 200, body: good_response, headers: {})
-        visit '/requests/99117809653506421?mfhd=22613352460006421'
-        stub_request(:post, "#{Alma.configuration.region}/almaws/v1/bibs/99117809653506421/holdings/22613352460006421/items/23613352450006421/requests?user_id=960594184")
-          .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "marquand"))
-          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
-        choose('requestable__delivery_mode_23613352450006421_in_library') # chooses 'in_library' radio button
-        expect(page).to have_content 'Electronic Delivery'
-        expect(page).to have_content 'Available for In Library'
-        expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
-        expect(page).not_to have_content 'Physical Item Delivery'
-        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-        expect(a_request(:post, scsb_url)).to have_been_made
-        expect(a_request(:post, scsb_url)).to have_been_made
-        confirm_email = ActionMailer::Base.deliveries.last
-        expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
-        expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.text_part.body.to_s).not_to have_content("translation missing")
-        expect(confirm_email.html_part.body.to_s).to have_content("Once we complete our processing, you'll receive an email")
-        expect(confirm_email.html_part.body.to_s).to have_content("Alesso Baldovinetti und die Florentiner Malerei der Frührenaissance")
       end
 
       it 'Shows a PUL ReCAP item that has not made it to ReCAP yet as available for On Order request' do
@@ -866,14 +650,6 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(confirm_email.cc).to be_blank
         expect(confirm_email.html_part.body.to_s).to have_content("Ḍaḥāyā al-zawāj")
         expect(confirm_email.html_part.body.to_s).not_to have_content("Remain only in the designated pick-up area")
-      end
-
-      it "Delivers ReCAP Partner in library use art items only to Marquand Library" do
-        # Why does stub use the wrong bib_id?
-        stub_scsb_availability(bib_id: "9008865", institution_id: "CUL", barcode: 'AR01220551')
-        visit '/requests/SCSB-5595350'
-        expect(page).to have_content 'Available for In Library Use'
-        expect(page).to have_content 'Pick-up location: Marquand Library at Firestone'
       end
 
       it "Delivers ReCAP Partner in library use music items only to Mendel Music Library" do

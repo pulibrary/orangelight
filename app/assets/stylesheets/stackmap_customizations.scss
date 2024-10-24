@@ -1,0 +1,34 @@
+// stackmap customizations until the vendor changes them
+
+.SMsearchbtn{
+    height:auto;
+    cursor:pointer;
+    border-radius:3px;
+    display:inline-block;
+    white-space:nowrap;
+    margin:4px 0 4px 15px;
+    padding:0;
+    text-shadow:none;
+    font-size:1rem;
+    font-weight:normal;
+    color:#ffffff;
+    background-color: #3072AB;
+    border-color: #3072AB;
+    border-radius: 0.25rem;
+  }
+
+.SMsearchbtn:hover{
+    background-color:#285e8d;
+    color:#ffffff;
+    text-decoration: none;
+}
+.SMsearchbtn:active{
+    background-color: #255783;
+    border-color: #225179;
+}
+.SMsearchbtn:focus{
+    color: #ffffff;
+    background-color: #285e8d;
+    border-color: #255783;
+    box-shadow: 0 0 0 0.2rem rgba(79, 135, 184, 0.5);
+}

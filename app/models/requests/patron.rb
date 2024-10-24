@@ -47,7 +47,7 @@ module Requests
     end
 
     def university_id
-      patron_hash[:university_id]
+      patron_hash[:university_id] || user.uid
     end
 
     def eligible_for_library_services?

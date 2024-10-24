@@ -286,6 +286,7 @@ Naming/MethodParameterName:
     - 'app/services/faceted_query_service.rb'
     - 'app/services/stackmap_service.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
+    - 'app/helpers/application_helper.rb'
 
 # Offense count: 7
 # This cop supports safe autocorrection (--autocorrect).
