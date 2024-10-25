@@ -40,7 +40,6 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   # Method for cleaning URLs
-  # @see https://github.com/pulibrary/orangelight/issues/1185
   # @param url [String] the URL for an online holding
   # @return [String] the cleaned URL
   def self.clean_url(url)
