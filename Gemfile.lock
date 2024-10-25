@@ -155,9 +155,9 @@ GEM
       blacklight (>= 7.25.2, < 9)
       deprecation
       view_component (>= 2.54, < 4)
-    bootstrap (5.0.2)
+    bootstrap (5.2.3)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 2.9.2, < 3)
+      popper_js (>= 2.11.6, < 3)
       sassc-rails (>= 2.0.0)
     builder (3.3.0)
     bunny (2.23.0)
@@ -762,7 +762,7 @@ DEPENDENCIES
   blacklight-marc (~> 8.1)
   blacklight_dynamic_sitemap
   blacklight_range_limit (~> 8.2)
-  bootstrap (~> 5.0.0)
+  bootstrap (~> 5.2.0)
   capistrano (~> 3.4)
   capistrano-passenger
   capistrano-rails
