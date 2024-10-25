@@ -148,33 +148,32 @@ jobs:
             command: bundle exec yarn test
         - store_test_results:
             path: ~/rspec
-  # See github ticket: https://github.com/pulibrary/orangelight/issues/4359
-  # lighthouse:
-  #   executor: orangelight-executor
-  #   steps:
-  #     - attach_workspace:
-  #         at: '~/orangelight'
-  #     - setup-bundler-and-node
-  #     - run:
-  #         name: Wait for DB
-  #         command: dockerize -wait tcp://localhost:5432 -timeout 1m
-  #     - run: sudo apt install postgresql-client
-  #     - run:
-  #         name: Database setup
-  #         command: bundle exec rake db:setup
-  #     - run:
-  #         name: Load config into solr
-  #         command: |
-  #           cd solr/conf
-  #           zip -1 -r solr_config.zip ./*
-  #           curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@127.0.0.1:8983/solr/admin/configs?action=UPLOAD&name=orangelight"
-  #           curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8983/api/collections/  -d '{create: {name: orangelight-core-test, config: orangelight, numShards: 1}}'
-  #     - run:
-  #         name: Index Test Data
-  #         command: bundle exec rake pulsearch:solr:index
-  #     - browser-tools/install-chrome
-  #     - run: sudo npm install -g @lhci/cli@0.14.x
-  #     - run: lhci autorun
+  lighthouse:
+    executor: orangelight-executor
+    steps:
+      - attach_workspace:
+          at: '~/orangelight'
+      - setup-bundler-and-node
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run: sudo apt install postgresql-client
+      - run:
+          name: Database setup
+          command: bundle exec rake db:setup
+      - run:
+          name: Load config into solr
+          command: |
+            cd solr/conf
+            zip -1 -r solr_config.zip ./*
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@127.0.0.1:8983/solr/admin/configs?action=UPLOAD&name=orangelight"
+            curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8983/api/collections/  -d '{create: {name: orangelight-core-test, config: orangelight, numShards: 1}}'
+      - run:
+          name: Index Test Data
+          command: bundle exec rake pulsearch:solr:index
+      - browser-tools/install-chrome
+      - run: sudo npm install -g @lhci/cli@0.14.x
+      - run: lhci autorun
 
   rubocop:
     executor: basic-executor
@@ -243,6 +242,9 @@ workflows:
       - bearer
       - semgrep
       - js_tests:
+         requires:
+          - build
+      - lighthouse:
          requires:
           - build
       - test:

@@ -12,7 +12,8 @@ module.exports = {
         'http://localhost:2999', // The catalog home page
         'http://localhost:2999/catalog/99122304923506421', // A show page
       ],
-      startServerCommand: 'bundle exec rails server -p 2999',
+      startServerCommand:
+        'BIBDATA_BASE=https://bibdata.princeton.edu bundle exec rails server -p 2999',
     },
     upload: {
       target: 'temporary-public-storage',
