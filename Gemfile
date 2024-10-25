@@ -14,9 +14,7 @@ gem 'blacklight-hierarchy'
 gem 'blacklight-marc', '~>8.1'
 # slider limit support
 gem 'blacklight_range_limit', '~> 8.2'
-gem 'bootstrap', '~> 5.0.0'
-# gem 'cssbundling-rails', '~> 1.2'
-# gem 'dartsass-sprockets'
+gem 'bootstrap', '~> 5.2.0'
 gem 'psych'
 # Capistrano
 # In the Capistrano documentation, it has these limited to the development group, and `require: false``
