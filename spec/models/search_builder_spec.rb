@@ -205,4 +205,30 @@ RSpec.describe SearchBuilder do
       end
     end
   end
+
+  describe '#adjust_mm' do
+    context 'when the query contains a boolean OR' do
+      let(:blacklight_params) do
+        { q: 'Douglas OR fir' }
+      end
+      it 'sets the mm to 0, meaning that we do not require all search terms to appear in the document' do
+        allow(search_builder).to receive(:blacklight_params).and_return(blacklight_params)
+        solr_parameters = {}
+
+        expect { search_builder.adjust_mm(solr_parameters) }.to change { solr_parameters }
+        expect(solr_parameters['mm']).to eq(0)
+      end
+    end
+    context 'when the query does not contain a boolean OR' do
+      let(:blacklight_params) do
+        { q: 'Douglas AND fir for or maybe NOT' }
+      end
+      it 'does not adjust solr_parameters' do
+        allow(search_builder).to receive(:blacklight_params).and_return(blacklight_params)
+        solr_parameters = {}
+
+        expect { search_builder.adjust_mm(solr_parameters) }.not_to change { solr_parameters }
+      end
+    end
+  end
 end

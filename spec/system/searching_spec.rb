@@ -164,6 +164,13 @@ describe 'Searching', type: :system, js: false do
     expect(search_results_count).to be < original_results_count
   end
 
+  context 'when the json query dsl is on' do
+    it 'can handle a boolean OR search' do
+      visit '/catalog?search_field=all_fields&q=plasticity+OR+afganistan'
+      expect(page).to have_content('1 - 2 of 2')
+    end
+  end
+
   context 'with the built-in advanced search form', advanced_search: true do
     before do
       allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
