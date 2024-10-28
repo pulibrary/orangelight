@@ -12,7 +12,8 @@ class SearchBuilder < Blacklight::SearchBuilder
                                      cjk_mm wildcard_char_strip excessive_paging_error
                                      only_home_facets prepare_left_anchor_search
                                      series_title_results pul_holdings html_facets
-                                     numismatics_facets numismatics_advanced]
+                                     numismatics_facets numismatics_advanced
+                                     adjust_mm]
 
   # mutate the solr_parameters to remove words that are
   # boolean operators, but not intended as such.
@@ -126,6 +127,16 @@ class SearchBuilder < Blacklight::SearchBuilder
         blacklight_config.search_fields[field].delete('clause_params')
       end
     end
+  end
+
+  def adjust_mm(solr_parameters)
+    # If the user is attempting a boolean OR query,
+    # for example: activism OR "social justice"
+    # don't want to cancel out the boolean OR with
+    # an mm configuration that requires all the clauses
+    # to be in the document
+    return unless blacklight_params[:q].to_s.split.include? 'OR'
+    solr_parameters['mm'] = 0
   end
 
   private
