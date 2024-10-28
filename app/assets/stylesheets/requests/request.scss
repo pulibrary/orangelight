@@ -6,11 +6,11 @@
 @import 'keyframes';
 
 .badge-danger {
-  background-color: #D4403A;
+  background-color: $brand-danger;
 }
 
 .badge-success {
-  background-color: #3B863B;
+  background-color: $brand-success;
 }
 
 .badge {
