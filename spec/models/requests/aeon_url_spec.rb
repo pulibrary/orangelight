@@ -15,6 +15,7 @@ RSpec.describe Requests::AeonUrl, requests: true do
   let(:document) do
     SolrDocument.new({
                        id: '9999999',
+                       pub_citation_display: ['Random House'],
                        holdings_1display: holdings.to_json.to_s
                      })
   end
@@ -42,6 +43,13 @@ RSpec.describe Requests::AeonUrl, requests: true do
   end
   it 'begins with the aeon prefix' do
     expect(subject).to match(/^#{Requests.config[:aeon_base]}/)
+  end
+  it 'includes publisher as a corporate author' do
+    # This may or may not be desired, emailed special collections on 29 October 2024 to inquire
+    expect(subject).to include('rft.aucorp=Random+House')
+  end
+  it 'includes publisher as a publisher' do
+    expect(subject).to include('rft.pub=Random+House')
   end
   context 'when the location is at a Mudd location' do
     let(:holdings) do

@@ -17,7 +17,6 @@ module Blacklight
           {
             genre: 'book',
             au: author,
-            aucorp: publisher,
             pub: publisher,
             edition:,
             isbn:,

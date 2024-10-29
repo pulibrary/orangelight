@@ -19,6 +19,8 @@ module Requests
 
     private
 
+      attr_reader :document
+
       def query_string
         "#{ctx_with_item_info.kev}&#{aeon_basic_params.to_query}"
       end
@@ -46,7 +48,8 @@ module Requests
           Location: shelf_location_code,
           SubLocation: sub_location,
           ItemInfo1: I18n.t("requests.aeon.access_statement"),
-          ItemNumber: item&.barcode
+          ItemNumber: item&.barcode,
+          'rft.aucorp': document['pub_citation_display']&.first
         }.compact
       end
 

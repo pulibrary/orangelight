@@ -29,7 +29,7 @@ RSpec.describe IndexDocumentComponent, type: :component do
     expect(subject.css('span[vocab="http://id.loc.gov/vocabulary/identifiers/"]').length).to eq 1
   end
 
-  it 'includes metadata in the COinS format, which Zotero can read' do
+  it 'includes metadata in the COinS format, which Zotero can read', zotero: true do
     expect(subject.css('span.Z3988').first[:title]).to eq 'ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.issn=1045-4438'
   end
 end
