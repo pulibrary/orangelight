@@ -42,7 +42,6 @@ module Blacklight
             genre:,
             title:,
             creator: author,
-            aucorp: publisher,
             pub: publisher,
             format: @format,
             issn:,

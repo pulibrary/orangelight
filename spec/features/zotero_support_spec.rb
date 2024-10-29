@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Zotero Support via Context Objects' do
+describe 'Zotero Support via Context Objects', zotero: true do
   before do
     stub_holding_locations
   end

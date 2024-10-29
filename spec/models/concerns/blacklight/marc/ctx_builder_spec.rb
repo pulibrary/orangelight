@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Blacklight::Marc::CtxBuilder do
+RSpec.describe Blacklight::Marc::CtxBuilder, zotero: true do
   let(:document) { SolrDocument.new }
   let(:format) { 'conference' }
   let(:builder) { described_class.new(document:, format:) }
@@ -36,8 +36,7 @@ RSpec.describe Blacklight::Marc::CtxBuilder do
     end
     context 'when publisher exists in solr' do
       let(:document) { SolrDocument.new('pub_citation_display': ['Penguin', 'Random House']) }
-      it 'publisher is used for the aucorp and pub fields' do
-        expect(builder.build.referent.get_metadata('aucorp')).to eq('Penguin')
+      it 'publisher is used for the pub field' do
         expect(builder.build.referent.get_metadata('pub')).to eq('Penguin')
       end
     end

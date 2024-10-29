@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Blacklight::Marc::JournalCtxBuilder do
+RSpec.describe Blacklight::Marc::JournalCtxBuilder, zotero: true do
   let(:document) { SolrDocument.new(author_citation_display: ['Nature Editors']) }
   let(:format) { 'Journal/Magazine' }
   let(:builder) { described_class.new(document:, format:) }
