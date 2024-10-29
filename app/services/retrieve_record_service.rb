@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 # We can remove this service (and just call search_service.fetch directly)
 # after we migrate to Blacklight 8
+# :reek:UncommunicativeVariableName
 class RetrieveRecordService
   # :reek:DuplicateMethodCall
   # :reek:FeatureEnvy
@@ -15,8 +16,7 @@ class RetrieveRecordService
 
   private
 
-    # :reek:UtilityFunction
     def using_blacklight7?
-      Gem.loaded_specs['blacklight'].version.to_s.start_with? '7'
+      @using_blacklight7 ||= Gem.loaded_specs['blacklight'].version.to_s.start_with? '7'
     end
 end
