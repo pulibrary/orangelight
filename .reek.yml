@@ -168,7 +168,6 @@ detectors:
     - Blacklight::Document::Ris#ris_authors
     - Blacklight::Document::Ris#ris_format
     - Blacklight::Document::Ris#ris_online_access_url
-    - Blacklight::Document::Sms#to_sms_text
     - Blacklight::Marc::CtxBuilder#add_identifiers
     - Blacklight::Marc::DocumentExtension#get_author_list
     - Requests::Aeon#genre
@@ -442,7 +441,6 @@ detectors:
     - Blacklight::Document::Email
     - Blacklight::Document::JsonLd
     - Blacklight::Document::Ris
-    - Blacklight::Document::Sms
     - Blacklight::Marc::Document::MarcExportOverride
     - Blacklight::Marc::DocumentExtension
     - Blacklight::Marc::DocumentExtension::UnsupportedMarcFormatType
