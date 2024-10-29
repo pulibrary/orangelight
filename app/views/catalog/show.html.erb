@@ -1,4 +1,19 @@
-<%= render 'previous_next_doc' %>
+<% #Using the Bootstrap Pagination class  -%>
+<div class='pagination-search-widgets col'>
+  <div class="row">
+    <div class="col-xs-12 px-4">
+      <div class="button--start-over">
+        <%= render_start_over_link(root_path) %>
+      </div>
+      <% if @search_context %>
+          <%= link_back_to_catalog_safe class: 'btn btn-default button--back-to-search', label:  t('blacklight.back_to_search').html_safe %>
+          <%= render 'previous_next_doc' %>
+      <% end %>
+    </div>
+    <%= render 'show_tools' %>
+  </div>
+</div>
+
 <div id="main-content" class="col-12 main-content" data-host-id="<%= @document.host_id %>">
   <div id="sidebar" class="<%= render_document_class %>">
     <%= render_document_sidebar_partial(@document) %>
