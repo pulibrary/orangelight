@@ -55,7 +55,6 @@ Rails.application.routes.draw do
     end
   end
 
-  mount BlacklightAdvancedSearch::Engine => '/', constraints: DeprecatedAdvancedSearchConstraint.new
   get '/advanced', to: 'catalog#advanced_search', constraints: AdvancedSearchConstraint.new
 
   get '/numismatics', to: 'catalog#numismatics'

@@ -24,31 +24,22 @@ module BlacklightHelper
   # @param solr_parameters [Blacklight::Solr::Request] the parameters for the Solr query
   def prepare_left_anchor_search(solr_parameters)
     return unless left_anchor_search?(solr_parameters)
-    if Flipflop.json_query_dsl?
-      solr_parameters.dig('json', 'query', 'bool').each_value do |value|
-        value.select { |foo| foo.dig(:edismax, :qf) == "${left_anchor_qf}" }.map! do |clause|
-          query = escape_left_anchor_query(clause.dig(:edismax, :query).dup)
-          query = add_wildcard(query)
-          clause.dig(:edismax)[:query] = query
-        end
+    solr_parameters.dig('json', 'query', 'bool').each_value do |value|
+      value.select { |foo| foo.dig(:edismax, :qf) == "${left_anchor_qf}" }.map! do |clause|
+        query = escape_left_anchor_query(clause.dig(:edismax, :query).dup)
+        query = add_wildcard(query)
+        clause.dig(:edismax)[:query] = query
       end
-    else
-      query = escape_left_anchor_query(solr_parameters[:q].dup)
-      query = add_wildcard(query)
-      solr_parameters[:q] = query
     end
   end
 
   def left_anchor_search?(solr_parameters)
-    if Flipflop.json_query_dsl?
-      return false unless solr_parameters.dig('json', 'query', 'bool')
-      has_left_anchor = solr_parameters.dig('json', 'query', 'bool')
-                                       .values
-                                       .any? { |value| value.select { |clause| clause.dig(:edismax, :qf) == "${left_anchor_qf}" } }
-      return false unless has_left_anchor
-    else
-      return false unless solr_parameters[:qf] == '${left_anchor_qf}' && solr_parameters[:q]
-    end
+    return false unless solr_parameters.dig('json', 'query', 'bool')
+    has_left_anchor = solr_parameters.dig('json', 'query', 'bool')
+                                     .values
+                                     .any? { |value| value.select { |clause| clause.dig(:edismax, :qf) == "${left_anchor_qf}" } }
+    return false unless has_left_anchor
+
     true
   end
 
@@ -81,13 +72,7 @@ module BlacklightHelper
   end
 
   def includes_series_search?
-    if Flipflop.json_query_dsl? && blacklight_params['clause'].present?
-      blacklight_params['clause'].map { |clause| clause[1]["field"] }.include?('series_title' || 'in_series')
-    else
-      %w[series_title in_series].include?(blacklight_params[:f1]) ||
-        blacklight_params[:f2] == 'series_title' ||
-        blacklight_params[:f3] == 'series_title'
-    end
+    blacklight_params['clause'].map { |clause| clause[1]["field"] }.include?('series_title' || 'in_series') if blacklight_params['clause'].present?
   end
 
   # only fetch facets when an html page is requested
@@ -238,7 +223,7 @@ module BlacklightHelper
 
   # Links to correct advanced search page based on advanced_type parameter value
   def edit_search_link
-    url = BlacklightAdvancedSearch::Engine.routes.url_helpers.advanced_search_path(params.permit!.except(:controller, :action).to_h)
+    url = advanced_path(params.permit!.except(:controller, :action).to_h)
     if params[:advanced_type] == 'numismatics'
       url.gsub('/advanced', '/numismatics')
     else

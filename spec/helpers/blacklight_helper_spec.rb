@@ -14,54 +14,32 @@ describe BlacklightHelper do
   end
 
   describe '#prepare_left_anchor_search', left_anchor: true do
-    before do
-      allow(Flipflop).to receive(:json_query_dsl?).and_return(false)
-    end
-    it 'escapes white spaces before sending :q to solr along with wildcard character' do
-      query = { qf: '${left_anchor_qf}', pf: '${left_anchor_pf}', q: 'searching for a test value' }
+    it 'escapes white spaces before sending :query to solr along with wildcard character' do
+      query = { "qt" => nil, "json" => { "query" => { "bool" => { "must" => [
+        { edismax:
+          {
+            qf: "${left_anchor_qf}",
+            pf: "${left_anchor_pf}",
+            query: "searching for a test value"
+          } }
+      ] } } } }
+      # query = { qf: '${left_anchor_qf}', pf: '${left_anchor_pf}', q: 'searching for a test value' }
       prepare_left_anchor_search(query)
-      expect(query[:q]).to eq 'searching\ for\ a\ test\ value*'
+      expect(query["json"]["query"]["bool"]["must"][0][:edismax][:query]).to eq 'searching\ for\ a\ test\ value*'
     end
     it 'only a single wildcard character is included when user supplies the wildcard in query' do
-      query = { qf: '${left_anchor_qf}', pf: '${left_anchor_pf}', q: 'searching for a test value*' }
+      query = { "qt" => nil, "json" => { "query" => { "bool" => { "must" => [
+        { edismax:
+          {
+            qf: "${left_anchor_qf}",
+            pf: "${left_anchor_pf}",
+            query: "searching for a test value*"
+          } }
+      ] } } } }
       prepare_left_anchor_search(query)
-      expect(query[:q]).to eq 'searching\ for\ a\ test\ value*'
-    end
-    context 'with the json query dsl' do
-      before do
-        allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
-      end
-      it 'escapes white spaces before sending :query to solr along with wildcard character' do
-        query = { "qt" => nil, "json" => { "query" => { "bool" => { "must" => [
-          { edismax:
-            {
-              qf: "${left_anchor_qf}",
-              pf: "${left_anchor_pf}",
-              query: "searching for a test value"
-            } }
-        ] } } } }
-        # query = { qf: '${left_anchor_qf}', pf: '${left_anchor_pf}', q: 'searching for a test value' }
-        prepare_left_anchor_search(query)
-        expect(query["json"]["query"]["bool"]["must"][0][:edismax][:query]).to eq 'searching\ for\ a\ test\ value*'
-      end
-      it 'only a single wildcard character is included when user supplies the wildcard in query' do
-        query = { "qt" => nil, "json" => { "query" => { "bool" => { "must" => [
-          { edismax:
-            {
-              qf: "${left_anchor_qf}",
-              pf: "${left_anchor_pf}",
-              query: "searching for a test value*"
-            } }
-        ] } } } }
-        prepare_left_anchor_search(query)
-        expect(query["json"]["query"]["bool"]["must"][0][:edismax][:query]).to eq 'searching\ for\ a\ test\ value*'
-      end
+      expect(query["json"]["query"]["bool"]["must"][0][:edismax][:query]).to eq 'searching\ for\ a\ test\ value*'
     end
     context 'with a complex boolean advanced search' do
-      before do
-        allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
-        allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
-      end
       it 'escapes all left_anchor terms' do
         query = { "qt" => nil, "json" => { "query" => { "bool" => { "must" => [
           { edismax:

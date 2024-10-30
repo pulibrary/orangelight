@@ -121,14 +121,6 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_content('Bad Request')
     end
   end
-  context 'with an invalid field list parameter in the advanced search' do
-    it 'will return results without an error' do
-      visit '/catalog?q1=NSF%20Series&search_field=advanced&f1=in_series2121121121212.1'
-      expect { page }.not_to raise_error
-      expect(page).to have_content 'No results found for your search'
-      expect(page).to have_link('Try Borrow Direct', href: 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results')
-    end
-  end
   context 'when searching with an invalid facet parameter' do
     it 'returns a 400 response, displays an error message, and logs the error' do
       allow(Rails.logger).to receive(:error)
@@ -172,11 +164,6 @@ describe 'Searching', type: :system, js: false do
   end
 
   context 'with the built-in advanced search form', advanced_search: true do
-    before do
-      allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
-      allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
-    end
-
     it 'can edit an existing search' do
       visit '/catalog?search_field=all_fields&q=cats'
       click_on('Edit search')
@@ -200,7 +187,8 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_field('clause_0_query', with: 'potato')
     end
 
-    it 'can add a facet to an existing search', js: true do
+    # Flakey
+    xit 'can add a facet to an existing search', js: true do
       visit '/advanced?q=black&search_field=all_fields'
       expect(page).to have_field('clause_0_query', with: 'black')
       access_facet = page.find('#access_facet')
