@@ -12,43 +12,6 @@ module ApplicationHelper
     !((%w[generate numismatics advanced_search].include? params[:action]) || (%w[advanced].include? params[:controller]))
   end
 
-  # Retrieve a URL for a stack map location URL given a record, a call number, and the library in which it is held
-  # @param location [Hash] location information for the item holding
-  # @param document [SolrDocument] the Solr Document for the record
-  # @param call_number [String] the call number for the holding
-  # @param library [String] the library in which the item is held
-  # @return [StackmapService::Url] the stack map location
-  def locate_url(location, document, call_number, library = nil)
-    locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
-    ::StackmapService::Url.new(document:, loc: location, cn: call_number).url unless locator.exclude?(call_number:, library:)
-  end
-
-  # Generate the link markup (styled with a glyphicon image) for a given item holding within a library
-  # @param location [Hash] location information for the item holding
-  # @param document [SolrDocument] the Solr Document for the record
-  # @param call_number [String] the call number for the holding
-  # @param library [String] the library in which the item is held
-  # @return [String] the markup
-  def locate_link_with_glyph(location, document, call_number, library, location_name)
-    link = locate_url(location, document, call_number, library)
-    if link.nil? || (find_it_location?(location) == false)
-      ''
-    else
-      stackmap_span_markup(location, library, location_name)
-    end
-  end
-
-  def stackmap_span_markup(location, library, location_name)
-    ' ' + content_tag(
-      :span, '',
-      data: {
-        'map-location': location.to_s,
-        'location-library': library,
-        'location-name': location_name
-      }
-    )
-  end
-
   # Generate the markup for the block containing links for requests to item holdings
   # holding record fields: 'location', 'library', 'location_code', 'call_number', 'call_number_browse',
   # 'shelving_title', 'location_note', 'electronic_access_1display', 'location_has', 'location_has_current',
@@ -114,14 +77,12 @@ module ApplicationHelper
   end
 
   # Location display in the search results page
-  def search_location_display(holding, document)
+  def search_location_display(holding)
     location = holding_location_label(holding)
     render_arrow = (location.present? && holding['call_number'].present?)
     arrow = render_arrow ? ' &raquo; ' : ''
-    cn_value = holding['call_number_browse'] || holding['call_number']
-    locate_link = locate_link_with_glyph(holding['location_code'], document, cn_value, holding['library'], holding['location'])
     location_display = content_tag(:span, location, class: 'results_location') + arrow.html_safe +
-                       content_tag(:span, %(#{holding['call_number']}#{locate_link}).html_safe, class: 'call-number')
+                       content_tag(:span, holding['call_number'], class: 'call-number')
     location_display.html_safe
   end
 
