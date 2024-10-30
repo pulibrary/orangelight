@@ -31,7 +31,7 @@
       </ul>
     </li>
     <li>
-      <%= render BookmarkButtonComponent.new(document: @document) if current_or_guest_user %>
+      <%= render BookmarkButtonComponent.new(document: @document, action: blacklight_config.show.document_actions.bookmark) if current_or_guest_user %>
     </li>
   </ul>
 </div>
