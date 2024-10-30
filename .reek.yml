@@ -846,6 +846,7 @@ detectors:
     exclude:
     - Orangelight::AdvancedSearchFormComponent#initialize_search_filter_controls
     - Orangelight::ConstraintsComponent#remove_guided_query_path
+    - BookmarkButtonComponent
     - BookmarksController#bookmark_ids
     - BookmarksController#csv_bom
     - BookmarksController#two_values
