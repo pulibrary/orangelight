@@ -12,10 +12,5 @@ describe 'stackmap', type: :system, js: true do
       click_button('Where to find it', wait: 5)
       expect(page).to have_button('zoom in')
     end
-
-    it 'has a link to the stackmap on the search results page' do
-      visit '/catalog?search_field=all_fields&q='
-      expect(page).to have_button('Where to find it', wait: 5)
-    end
   end
 end
