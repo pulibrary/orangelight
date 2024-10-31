@@ -27,6 +27,7 @@ class BookmarksController < CatalogController
   private
 
     def fetch_bookmarked_documents
+      bookmark_ids = token_or_current_or_guest_user.bookmarks.collect { |b| b.document_id.to_s }
       @documents = search_service_compatibility_wrapper.fetch(bookmark_ids, rows: bookmark_ids.length, fl: '*')
     end
 

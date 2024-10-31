@@ -24,7 +24,7 @@ describe 'sorting', type: :system, js: false do
 
   context 'the bookmarks page' do
     before do
-      Bookmark.create(user:, document_id: "10647164", document_type: "SolrDocument")
+      Bookmark.create(user:, document_id: "99106471643506421", document_type: "SolrDocument")
       login_as user
       visit "/bookmarks"
     end
