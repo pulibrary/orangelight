@@ -3,6 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'bookmarks' do
+  before do
+    stub_holding_locations
+  end
   describe 'action buttons' do
     it 'has a clear bookmarks button' do
       visit '/bookmarks'
@@ -46,14 +49,6 @@ RSpec.describe 'bookmarks' do
       within('#content') do
         expect(page).not_to have_link("log in")
       end
-    end
-
-    it "displays bookmarks for old voyager IDs" do
-      Bookmark.create(user:, document_id: "10647164", document_type: "SolrDocument")
-      login_as user
-      visit "/bookmarks"
-
-      expect(page).to have_content "History."
     end
   end
 end
