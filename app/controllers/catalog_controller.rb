@@ -695,7 +695,7 @@ class CatalogController < ApplicationController
   end
 
   def index
-    if home_page?
+    if no_search_yet?
       render_empty_search
     else
       super
@@ -754,6 +754,14 @@ class CatalogController < ApplicationController
 
   def biased_results_submit; end
 
+  def advanced_search
+    if no_search_yet?
+      @response = empty_solr_response(empty_advanced_search_raw_response)
+    else
+      super
+    end
+  end
+
   private
 
     def json_request?
@@ -778,14 +786,14 @@ class CatalogController < ApplicationController
       end
     end
 
-    def home_page?
+    def no_search_yet?
       # When only the "controller" and "action" keys are in the request (i.e. no query or facets)
       # we consider it the home page.
       params.keys.count == 2
     end
 
-    def empty_solr_response
-      raw_response = JSON.parse(empty_raw_response)
+    def empty_solr_response(cached_response=empty_raw_response)
+      raw_response = JSON.parse(cached_response)
       Blacklight::Solr::Response.new(raw_response, raw_response["responseHeader"]["params"], blacklight_config: @blacklight_config)
     end
 
@@ -794,6 +802,13 @@ class CatalogController < ApplicationController
         Rails.logger.info "Cached home page results"
         # We cannot cache the Blacklight::Solr::Response as-is so we convert it to JSON first
         search_service_compatibility_wrapper.search_results.to_json
+      end
+    end
+
+    def empty_advanced_search_raw_response
+      Rails.cache.fetch('advanced_search_form_empty_raw_response', expires_in: 8.hours) do
+        Rails.logger.info "Cached empty advanced search form solr query"
+        SearchServiceCompatibilityWrapper.new(blacklight_advanced_search_form_search_service).search_results.to_json
       end
     end
 
