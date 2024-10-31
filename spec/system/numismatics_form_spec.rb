@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe 'Numismatics search form' do
+RSpec.describe 'Numismatics search form', advanced_search: true do
   before do
     stub_holding_locations
   end
