@@ -98,11 +98,13 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       visit "catalog/#{document_id}"
       click_on('Ask a Question')
       expect(page).to have_field('Name')
-      fill_in('Name', with: 'Test User')
-      expect(page).to have_field('Email')
-      fill_in('Email', with: 'testuser@test-domain.org')
-      expect(page).to have_field('Message')
-      fill_in('Message', with: 'Why is the thumbnail wrong?')
+      within '.modal-content' do
+        fill_in('Name', with: 'Test User')
+        expect(page).to have_field('Email')
+        fill_in('Email', with: 'testuser@test-domain.org')
+        expect(page).to have_field('Message')
+        fill_in('Message', with: 'Why is the thumbnail wrong?')
+      end
       context_field = page.find_field("ask_a_question_form[context]", type: :hidden)
       expect(context_field.value).to include("/catalog/#{document_id}")
       title_field = page.find_field("ask_a_question_form[title]", type: :hidden)
@@ -113,11 +115,13 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       visit "catalog/#{document_id}"
       click_on('Suggest a Correction')
       expect(page).to have_field('Name')
-      fill_in('Name', with: 'Test User')
-      expect(page).to have_field('Email')
-      fill_in('Email', with: 'testuser@test-domain.org')
-      expect(page).to have_field('Message')
-      fill_in('Message', with: 'Replace with correct thumbnail.')
+      within '.modal-content' do
+        fill_in('Name', with: 'Test User')
+        expect(page).to have_field('Email')
+        fill_in('Email', with: 'testuser@test-domain.org')
+        expect(page).to have_field('Message')
+        fill_in('Message', with: 'Replace with correct thumbnail.')
+      end
       context_field = page.find_field("suggest_correction_form[context]", type: :hidden)
       expect(context_field.value).to include("/catalog/#{document_id}")
       title_field = page.find_field("suggest_correction_form[title]", type: :hidden)
@@ -129,11 +133,13 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       click_on('Report Harmful Language')
       expect(page).to have_content('users may encounter offensive or harmful language')
       expect(page).to have_field('Name')
-      fill_in('Name', with: 'Test User')
-      expect(page).to have_field('Email')
-      fill_in('Email', with: 'testuser@test-domain.org')
-      expect(page).to have_field('Message')
-      fill_in('Message', with: 'I am concerned about this subject heading')
+      within '.modal-content' do
+        fill_in('Name', with: 'Test User')
+        expect(page).to have_field('Email')
+        fill_in('Email', with: 'testuser@test-domain.org')
+        expect(page).to have_field('Message')
+        fill_in('Message', with: 'I am concerned about this subject heading')
+      end
       context_field = page.find_field("report_harmful_language_form[context]", visible: :hidden)
       expect(context_field.value).to include("/catalog/#{document_id}")
       title_field = page.find_field("report_harmful_language_form[title]", visible: :hidden)

@@ -188,7 +188,6 @@ describe 'Searching', type: :system, js: false do
       in_the_library = page.first('.dropdown-item')
       in_the_library.click
       click_on('advanced-search-submit')
-      page.first('.navbar-toggler').click
       expect(page).to have_content(/Any of:\nIn the Library/)
     end
 
