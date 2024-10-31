@@ -3,10 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe "left anchor search", left_anchor: true do
-  before do
-    allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
-    allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
-  end
   it 'finds result despite accents and capitals in query' do
     get '/catalog.json?&search_field=left_anchor&q=s%C3%A8arChing+for'
     r = JSON.parse(response.body)
@@ -53,25 +49,6 @@ RSpec.describe "left anchor search", left_anchor: true do
     end
     it 'are handled in advanced search' do
       get '/catalog.json?clause[0][field]=left_anchor&clause[0][query]=JSTOR*'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-    end
-  end
-
-  context 'solr operator characters' do
-    # These tests are only relevant for the standard query parser
-    # # TODO: remove for standard dsl deprecation
-    before do
-      allow(Flipflop).to receive(:json_query_dsl?).and_return(false)
-      allow(Flipflop).to receive(:view_components_advanced_search?).and_return(false)
-    end
-    it 'are handled in simple search' do
-      get '/catalog.json?search_field=left_anchor&q=JSTOR%7B%7D%3A%26%26%7C%7C"%2B%5E~-%2F%3F+%5BElectronic+Resource%5D'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-    end
-    it 'are handled in advanced search' do
-      get '/catalog.json?f1=left_anchor&q1=JSTOR%7B%7D%3A%26%26%7C%7C"%2B%5E~-%2F%3F+%5BElectronic+Resource%5D&search_field=advanced'
       r = JSON.parse(response.body)
       expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
     end

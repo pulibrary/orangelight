@@ -48,24 +48,9 @@ RSpec.shared_examples "an advanced search" do
   end
 end
 
-RSpec.describe 'left anchored searching', type: :system, left_anchor: true do
+RSpec.describe 'left anchored searching', type: :system, left_anchor: true, advanced_search: true do
   before { stub_holding_locations }
-  context 'old query dsl and advanced search' do
-    before do
-      allow(Flipflop).to receive(:view_components_advanced_search?).and_return(false)
-      allow(Flipflop).to receive(:json_query_dsl?).and_return(false)
-    end
 
-    it_behaves_like 'a simple search'
-    it_behaves_like 'an advanced search'
-  end
-  context 'new query dsl and advanced search' do
-    before do
-      allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
-      allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
-    end
-
-    it_behaves_like 'a simple search'
-    it_behaves_like 'an advanced search'
-  end
+  it_behaves_like 'a simple search'
+  it_behaves_like 'an advanced search'
 end

@@ -28,17 +28,13 @@ module Orangelight
 
       def advanced_search_series_link(title)
         no_parens = authorized_form_of_title(title).gsub(/[()]/, '')
-        if Flipflop.json_query_dsl?
-          path = '/catalog'
-          query = {
-            "clause[0][field]": 'series_title',
-            "clause[0][query]": no_parens,
-            "commit": "Search"
-          }.to_query
-          URI::HTTP.build(path:, query:).request_uri
-        else
-          "/catalog?q1=#{CGI.escape no_parens}&f1=in_series&search_field=advanced"
-        end
+        path = '/catalog'
+        query = {
+          "clause[0][field]": 'series_title',
+          "clause[0][query]": no_parens,
+          "commit": "Search"
+        }.to_query
+        URI::HTTP.build(path:, query:).request_uri
       end
 
       def more_in_this_series_field_contains?(title)

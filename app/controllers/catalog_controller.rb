@@ -1,7 +1,6 @@
 # frozen_string_literal: false
 
 class CatalogController < ApplicationController
-  include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog
 
   include Blacklight::Marc::Catalog
@@ -680,9 +679,7 @@ class CatalogController < ApplicationController
 
     config.filter_search_state_fields = true
     config.search_state_fields = config.search_state_fields + [
-      :advanced_type, :f1, :f2, :f3,
-      :op1, :op2, :op3,
-      :q1, :q2, :q3, :clause
+      :advanced_type, :clause
     ]
 
     config.index.constraints_component = Orangelight::ConstraintsComponent

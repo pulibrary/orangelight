@@ -3,12 +3,11 @@
 class SearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
   include BlacklightRangeLimit::RangeLimitBuilder
-  include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include BlacklightHelper
 
   default_processor_chain.unshift(:conditionally_configure_json_query_dsl)
 
-  self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators add_advanced_search_to_solr
+  self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators
                                      cjk_mm wildcard_char_strip excessive_paging_error
                                      only_home_facets prepare_left_anchor_search
                                      series_title_results pul_holdings html_facets
@@ -18,7 +17,6 @@ class SearchBuilder < Blacklight::SearchBuilder
   # mutate the solr_parameters to remove words that are
   # boolean operators, but not intended as such.
   def cleanup_boolean_operators(solr_parameters)
-    return add_advanced_parse_q_to_solr(solr_parameters) if run_advanced_parse?(solr_parameters)
     solr_parameters[:q] = cleaned_query(solr_parameters[:q])
     return solr_parameters unless using_json_query_dsl(solr_parameters)
 
@@ -58,12 +56,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
-  def run_advanced_parse?(solr_parameters)
-    blacklight_params[:q].blank? ||
-      !blacklight_params[:q].respond_to?(:to_str) ||
-      q_param_needs_boolean_cleanup(solr_parameters)
-  end
-
   def facets_for_advanced_search_form(solr_p)
     # Reject any facets that are meant to display on the advanced
     # search form, so that the form displays accurate counts for
@@ -73,7 +65,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     solr_p[:fq]&.reject! do |facet_from_query|
       advanced_search_facets.any? { |facet_to_exclude| facet_from_query.include? facet_to_exclude }
     end
-    super
   end
 
   def only_home_facets(solr_parameters)
@@ -119,14 +110,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def conditionally_configure_json_query_dsl(_solr_parameters)
     advanced_fields = %w[all_fields title author subject left_anchor publisher in_series notes series_title isbn issn]
-    if Flipflop.json_query_dsl?
-      add_edismax(advanced_fields:)
-    else
-      blacklight_config.search_fields['all_fields'].delete('clause_params')
-      advanced_fields.each do |field|
-        blacklight_config.search_fields[field].delete('clause_params')
-      end
-    end
+    add_edismax(advanced_fields:)
   end
 
   def adjust_mm(solr_parameters)

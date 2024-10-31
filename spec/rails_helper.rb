@@ -63,9 +63,6 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::TimeHelpers
 
   config.before(:each) do
-    allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
-    allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
-    allow(Flipflop).to receive(:view_components_numismatics?).and_return(true)
     allow(Flipflop).to receive(:enumeration_backwards_compatibility?).and_return(false)
   end
 
