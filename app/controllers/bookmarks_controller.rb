@@ -13,29 +13,6 @@ class BookmarksController < CatalogController
       }
   end
 
-  # Copied from
-  # https://github.com/projectblacklight/blacklight/blob/040933c7a383cd0c5be5895d51ab1004ef3ad5e1/app/controllers/concerns/blacklight/bookmarks.rb#L40-L57
-  def index
-    @bookmarks = token_or_current_or_guest_user.bookmarks
-    @response, deprecated_document_list = search_service.fetch(bookmark_ids)
-    # <Princeton Modifications>
-    # Commented out to use the instance method instead, which adds alma IDs.
-    # bookmark_ids = @bookmarks.collect { |b| b.document_id.to_s }
-    # </Princeton Modifications>
-    @document_list = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_document_list, "The @document_list instance variable is now deprecated and will be removed in Blacklight 8.0")
-    respond_to do |format|
-      format.html {}
-      format.rss  { render layout: false }
-      format.atom { render layout: false }
-      format.json do
-        render json: render_search_results_as_json
-      end
-
-      additional_response_formats(format)
-      document_export_formats(format)
-    end
-  end
-
   def print
     fetch_bookmarked_documents
     @url_gen_params = {}
@@ -49,21 +26,8 @@ class BookmarksController < CatalogController
 
   private
 
-    def bookmark_ids
-      bookmarks = token_or_current_or_guest_user.bookmarks
-      bookmarks.collect { |b| convert_to_alma_id(b.document_id.to_s) }
-    end
-
     def fetch_bookmarked_documents
       @documents = search_service_compatibility_wrapper.fetch(bookmark_ids, rows: bookmark_ids.length, fl: '*')
-    end
-
-    def convert_to_alma_id(id)
-      if (id.length < 13) && (id =~ /^\d+$/)
-        "99#{id}3506421"
-      else
-        id
-      end
     end
 
     # byte-order-mark declaring our output as UTF-8 (required for non-ASCII to be handled by Excel)
