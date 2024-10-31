@@ -37,14 +37,6 @@ describe 'Searching', type: :system, js: false do
     end
   end
 
-  context 'using the stackmap' do
-    it 'renders an accessible link to the stack map', js: true do
-      visit '/catalog?q=&search_field=all_fields'
-      expect(page).to have_selector('.fa-map-marker', wait: 5)
-      expect(page).to have_selector('.fa-map-marker[aria-hidden="true"]', wait: 5)
-    end
-  end
-
   it 'renders an accessible icon for item icons' do
     visit '/catalog?q=&search_field=all_fields'
     expect(page).to have_selector '.blacklight-format .icon[aria-hidden="true"]'

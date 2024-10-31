@@ -55,7 +55,7 @@ class BookmarksController < CatalogController
     end
 
     def fetch_bookmarked_documents
-      @documents = RetrieveRecordService.new.retrieve(search_service, bookmark_ids, rows: bookmark_ids.length, fl: '*')
+      @documents = search_service_compatibility_wrapper.fetch(bookmark_ids, rows: bookmark_ids.length, fl: '*')
     end
 
     def convert_to_alma_id(id)
