@@ -15,7 +15,7 @@ RSpec.describe IndexTitleComponent, type: :component do
   end
   let(:blacklight_config) do
     Blacklight::Configuration.new do |config|
-      config.track_search_session = false
+      config.track_search_session.storage = false
       config.index.document_actions[:bookmark].partial = '/catalog/bookmark_control'
     end
   end
