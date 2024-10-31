@@ -709,9 +709,9 @@ class CatalogController < ApplicationController
 
   def numismatics
     unless request.method == :post
-      @response = search_service.search_results do |search_builder|
+      @response = search_service_compatibility_wrapper.search_results do |search_builder|
         search_builder.except(:add_advanced_search_to_solr).append(:facets_for_advanced_search_form)
-      end.first
+      end
     end
     respond_to do |format|
       format.html { render "advanced/numismatics" }
@@ -796,8 +796,7 @@ class CatalogController < ApplicationController
       Rails.cache.fetch("home_page_empty_raw_response", expires_in: 3.hours) do
         Rails.logger.info "Cached home page results"
         # We cannot cache the Blacklight::Solr::Response as-is so we convert it to JSON first
-        (response, _deprecated_document_list) = search_service.search_results
-        response.to_json
+        search_service_compatibility_wrapper.search_results.to_json
       end
     end
 
@@ -827,5 +826,9 @@ class CatalogController < ApplicationController
 
     def search_algorithm_param
       params[:search_algorithm]
+    end
+
+    def search_service_compatibility_wrapper
+      @search_service_compatibility_wrapper ||= SearchServiceCompatibilityWrapper.new(search_service)
     end
 end
