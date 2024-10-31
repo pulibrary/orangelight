@@ -487,7 +487,6 @@ detectors:
     - Orangelight::MarkAsSafeProcessor
     - Orangelight::SeriesLinkProcessor
     - Orangelight::SubjectsOrNotesProcessor
-    - AdvancedSearchConstraint
     - Bibdata
     - Bibdata::EmptyResponseError
     - Bibdata::ForbiddenError
@@ -495,7 +494,6 @@ detectors:
     - Bibdata::ResourceNotFoundError
     - DBMigrateUppercaseUsernames
     - DBMigrateUppercaseUsernames::UserLowercaser
-    - DeprecatedAdvancedSearchConstraint
     - EventProcessor::DeleteProcessor
     - EventProcessor::Processor
     - EventProcessor::UnknownEvent

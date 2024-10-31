@@ -62,7 +62,7 @@ describe 'Searching', type: :system, js: false do
     end
   end
 
-  context 'with chosen selected numismatic values' do
+  context 'with chosen selected numismatic values', advanced_search: true do
     it 'removes a chosen selected numismatic value' do
       visit '/catalog?f%5Bformat%5D%5B%5D=Coin&advanced_type=numismatics&f_inclusive%5Bissue_city_s%5D%5B%5D=Tyre&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&f1=all_fields&q1=&sort=score+desc%2C+pub_date_start_sort+desc%2C+title_sort+asc&search_field=advanced&commit=Search'
       expect(page).to have_link 'Edit search'
