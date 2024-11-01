@@ -14,6 +14,8 @@
 
 [class^="icon-"]:before,
 [class*=" icon-"]:before,
+.toggle,
+.toggle.collapsed,
 .toggle-handle,
 .toggle-handle[aria-expanded="true"],
 .document-thumbnail .default {
@@ -162,6 +164,7 @@
     }
 }
 
+.toggle.collapsed,
 .toggle-handle {
     background: none;
     border: none;
@@ -176,6 +179,7 @@
     }
 }
 
+.toggle,
 .toggle-handle[aria-expanded="true"] {
     background: none;
     border: none;
