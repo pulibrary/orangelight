@@ -814,7 +814,6 @@ detectors:
     - Requests::BibdataService#self.delivery_locations
   UncommunicativeMethodName:
     exclude:
-    - IndexDocumentComponent#using_blacklight7
     - Blacklight::Marc::DocumentExtension#marc_record_from_marc21
   UncommunicativeParameterName:
     exclude:
@@ -872,7 +871,6 @@ detectors:
     - Requests::RequestMailer#recap_marquand_in_library_email
   UtilityFunction:
     exclude:
-    - IndexDocumentComponent#using_blacklight7
     - LocationCodeFacetComponent#add_library
     - LocationCodeFacetComponent#library_facet_values
     - Orangelight::DropdownHelpTextComponent#option_text_and_value
