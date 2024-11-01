@@ -103,6 +103,25 @@ RSpec.describe CatalogController do
       expect(Rails.cache).not_to have_received(:fetch)
     end
   end
+  describe 'advanced', advanced_search: true do
+    let(:solr_empty_query) { File.open('spec/fixtures/solr_empty_query.json').read }
+
+    before do
+      allow(Rails.cache).to receive(:fetch).and_return solr_empty_query
+    end
+
+    it 'uses the cache for an empty search' do
+      get :advanced_search, params: {}
+      expect(response.status).to eq 200
+      expect(Rails.cache).to have_received(:fetch)
+    end
+
+    it 'does not use the cache for a search with arguments' do
+      get :advanced_search, params: { q: "coffee" }
+      expect(response.status).to eq 200
+      expect(Rails.cache).not_to have_received(:fetch)
+    end
+  end
   describe "#numismatics" do
     context "when requesting HTML for numismatics" do
       it "returns OK" do
