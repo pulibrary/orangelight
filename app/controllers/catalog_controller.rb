@@ -792,7 +792,7 @@ class CatalogController < ApplicationController
       params.keys.count == 2
     end
 
-    def empty_solr_response(cached_response=empty_raw_response)
+    def empty_solr_response(cached_response = empty_raw_response)
       raw_response = JSON.parse(cached_response)
       Blacklight::Solr::Response.new(raw_response, raw_response["responseHeader"]["params"], blacklight_config: @blacklight_config)
     end
