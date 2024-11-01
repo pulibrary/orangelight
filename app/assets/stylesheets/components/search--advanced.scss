@@ -105,8 +105,14 @@
 
 @include media-breakpoint-up(md) {
   .two-columns-md {
-    columns: 2;
-  }  
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 49%;
+  }
+  .two-columns-md > * {
+    height: 2.5rem;
+  }
 }
 
 .two-columns-md > * {
