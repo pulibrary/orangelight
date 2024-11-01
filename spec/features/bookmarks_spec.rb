@@ -48,12 +48,13 @@ RSpec.describe 'bookmarks' do
       end
     end
 
-    it "displays bookmarks for old voyager IDs" do
-      Bookmark.create(user:, document_id: "10647164", document_type: "SolrDocument")
+    it "only displays bookmarked titles" do
+      stub_holding_locations
+      Bookmark.create(user:, document_id: "99122304923506421", document_type: "SolrDocument")
       login_as user
       visit "/bookmarks"
 
-      expect(page).to have_content "History."
+      expect(page).to have_content "1 entry found"
     end
   end
 end
