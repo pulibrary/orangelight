@@ -10,7 +10,7 @@ class SearchServiceCompatibilityWrapper
   # :reek:DuplicateMethodCall
   # :reek:FeatureEnvy
   def fetch(...)
-    if using_blacklight7?
+    if Orangelight.using_blacklight7?
       _response, document = search_service.fetch(...)
       document
     else
@@ -21,7 +21,7 @@ class SearchServiceCompatibilityWrapper
   # :reek:DuplicateMethodCall
   # :reek:FeatureEnvy
   def search_results(...)
-    if using_blacklight7?
+    if Orangelight.using_blacklight7?
       search_service.search_results(...).first
     else
       search_service.search_results(...)
@@ -31,8 +31,4 @@ class SearchServiceCompatibilityWrapper
   private
 
     attr_reader :search_service
-
-    def using_blacklight7?
-      @using_blacklight7 ||= Gem.loaded_specs['blacklight'].version.to_s.start_with? '7'
-    end
 end
