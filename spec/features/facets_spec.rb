@@ -78,4 +78,18 @@ describe 'Facets' do
       end
     end
   end
+
+  describe 'with blacklight-hierarchy gem' do
+    before do
+      allow(Flipflop).to receive(:blacklight_hierarchy_facet?).and_return(true)
+    end
+    it 'renders the classification facet' do
+      visit '/catalog?search_field=all_fields&q='
+      expect(page).to have_selector('.blacklight-lc_facet')
+      # Displays all 17 LC single letter classes
+      expect(page.all('.h-node').length).to eq(17)
+      # The A class contains two subclasses
+      expect(page.first('.h-node').all('.h-leaf').length).to eq(2)
+    end
+  end
 end

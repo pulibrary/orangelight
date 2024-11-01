@@ -139,20 +139,23 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true, include_in_advanced_search: false
     config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true, include_in_advanced_search: false
+
+    config.add_facet_field 'lc_facet', label: 'Classification', component: Blacklight::Hierarchy::FacetFieldListComponent, sort: 'index', limit: 1000, include_in_advanced_search: false, if: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_facet? }
     config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet], collapsing: true, icons: {
       hide: '<i class="icon toggle"></i>'.html_safe,
       show: '<i class="icon toggle collapsed"></i>'.html_safe
-    }, include_in_advanced_search: false
+    }, include_in_advanced_search: false, unless: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_facet? }
+
+    config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, include_in_request: false, sort: 'index'
+    config.add_facet_field 'lc_rest_facet', label: 'Full call number code', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index', include_in_advanced_search: false
 
     # The following facet configurations are purely for display purposes. They
     # will not show up in the facet bar, but without them the labels and other
     # configuration which show up when a user clicks that field in the show page
     # will be wrong.
-    config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'author_s', label: 'Author', limit: true, include_in_request: false
     config.add_facet_field 'class_year_s', label: 'PU class year', limit: true, include_in_request: false
-    config.add_facet_field 'lc_rest_facet', label: 'Full call number code', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'call_number_browse_s', label: 'Call number', include_in_request: false
 
     config.add_facet_field 'call_number_scheme_facet', label: 'Call number scheme', limit: 25, include_in_request: false, sort: 'index'
@@ -224,6 +227,13 @@ class CatalogController < ApplicationController
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
     config.add_facet_fields_to_solr_request!
+
+    # Config for heirarcy options
+    config.facet_display = {
+      hierarchy: {
+        'lc' => [['facet'], ':']
+      }
+    }
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display

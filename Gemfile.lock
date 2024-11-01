@@ -132,6 +132,10 @@ GEM
       ostruct (>= 0.3.2)
       rails (>= 5.1, < 7.3)
       view_component (>= 2.66, < 4)
+    blacklight-hierarchy (6.4.0)
+      blacklight (>= 7.18, < 9)
+      deprecation
+      rails (>= 6.1, < 7.3)
     blacklight-marc (8.1.4)
       blacklight (>= 7.11, < 9)
       library_stdnums
@@ -744,6 +748,7 @@ DEPENDENCIES
   babel-transpiler
   bcrypt_pbkdf
   blacklight (~> 7.38.0)
+  blacklight-hierarchy
   blacklight-marc (~> 8.1)
   blacklight_dynamic_sitemap
   blacklight_range_limit (~> 8.2)
