@@ -38,4 +38,8 @@ class Orangelight::AdvancedSearchFormComponent < Blacklight::AdvancedSearchFormC
       end
     end
   end
+
+  def hidden_search_state_params
+    @params.except(:clause, :f_inclusive, :op, :sort).merge({ 'advanced_type' => 'advanced' })
+  end
 end

@@ -7,7 +7,7 @@
   </div>
 <% end %>
 <%= form_tag search_catalog_path, method: @method, class: @classes.join(' '), role: 'search', 'aria-label' => t('blacklight.search.form.submit') do %>
-  <%= render Blacklight::HiddenSearchStateComponent.new(params: {'advanced_type' => 'advanced'}) %>
+  <%= render Blacklight::HiddenSearchStateComponent.new(params: hidden_search_state_params) %>
 
   <div class="advanced row">
       <%# Column 1 %>

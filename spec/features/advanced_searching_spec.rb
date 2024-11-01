@@ -163,4 +163,17 @@ describe 'advanced searching', advanced_search: true do
       expect(page).to have_field('Format', with: /Audio/)
     end
   end
+
+  it 'can edit a facet-only search' do
+    visit '/?f[subject_topic_facet][]=Manuscripts%2C+Arabic&search_field=all_fields'
+    expect(page).to have_content '1 - 6 of 6'
+
+    click_link 'Edit search'
+    fill_in 'clause_0_query', with: 'literature'
+    click_button 'Search'
+
+    expect(page).to have_content '1 - 2 of 2'
+    expect(page).to have_content 'المقامات'
+    expect(page).to have_content 'مطول'
+  end
 end
