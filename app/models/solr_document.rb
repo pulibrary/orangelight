@@ -76,7 +76,7 @@ class SolrDocument
   def identifiers
     @identifiers ||= identifier_keys.flat_map do |key|
       fetch(key, []).map do |value|
-        Identifier.new(key, value)
+        SolrDocument::Identifier.new(key, value)
       end
     end.compact
   end
