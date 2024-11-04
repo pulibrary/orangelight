@@ -27,6 +27,9 @@ header .search-navbar .input-group .custom-select {
 
 header .search-navbar .input-group .input-group-append .search-btn {
   width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #search-navbar {
