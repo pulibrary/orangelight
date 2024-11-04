@@ -71,6 +71,12 @@ dd.blacklight-electronic_access_display {
   padding-left: 1em;
 }
 
+.search-result-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .thumbnail-wrapper {
   width: 120px;
   float: right;
