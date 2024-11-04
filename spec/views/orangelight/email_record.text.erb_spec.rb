@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'record_mailer/email_record' do
+RSpec.describe 'orangelight/record_mailer/email_record' do
   before do
     assign(:documents, [SolrDocument.new(properties)])
     assign(:url_gen_params, {})
