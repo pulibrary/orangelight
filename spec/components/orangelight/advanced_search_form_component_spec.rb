@@ -39,4 +39,13 @@ RSpec.describe Orangelight::AdvancedSearchFormComponent, type: :component, advan
     expect(rendered).to have_field 'clause_1_field', with: 'author'
     expect(rendered).to have_field 'clause_2_field', with: 'title'
   end
+
+  context 'when there is a facet in the params' do
+    let(:params) do
+      { "f" => { "subject_topic_facet" => ["Manuscripts, Arabic"] } }.with_indifferent_access
+    end
+    it 'includes the facet as a hidden field' do
+      expect(rendered).to have_field 'f[subject_topic_facet][]', type: :hidden, with: 'Manuscripts, Arabic'
+    end
+  end
 end

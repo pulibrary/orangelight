@@ -401,6 +401,10 @@
         "lc_rest_facet": [
             "E - History of the Americas (General)"
         ],
+        "lc_facet": [
+            "E - History of the Americas (General)",
+            "E - History of the Americas (General):E - History of the Americas (General)"
+        ],
         "call_number_scheme_facet": [
             "Library of Congress"
         ],
@@ -612,6 +616,10 @@
         ],
         "lc_rest_facet": [
             "E - History of the Americas (General)"
+        ],
+        "lc_facet": [
+            "E - History of the Americas (General)",
+            "E - History of the Americas (General):E - History of the Americas (General)"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -833,6 +841,10 @@
         ],
         "lc_rest_facet": [
             "HQ - The Family, Marriage, Woman"
+        ],
+        "lc_facet": [
+            "H - Social Sciences",
+            "H - Social Sciences:HQ - The Family, Marriage, Woman"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -1213,6 +1225,10 @@
         ],
         "lc_rest_facet": [
             "F - History of the Americas (Local)"
+        ],
+        "lc_facet": [
+            "F - History of the Americas (Local)",
+            "F - History of the Americas (Local):F - History of the Americas (Local)"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -1601,6 +1617,10 @@
         ],
         "lc_rest_facet": [
             "PE - English Languages"
+        ],
+        "lc_facet": [
+            "P - Language & Literature",
+            "P - Language & Literature:PE - English Languages"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"

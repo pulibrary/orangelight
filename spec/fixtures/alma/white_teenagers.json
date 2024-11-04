@@ -168,6 +168,10 @@
         "lc_rest_facet": [
             "PN - Literature (General)"
         ],
+        "lc_facet": [
+            "P - Language & Literature",
+            "P - Language & Literature:PN - Literature (General)"
+        ],
         "call_number_scheme_facet": [
             "Library of Congress"
         ],
@@ -458,6 +462,10 @@
         "lc_rest_facet": [
             "P - Language & Literature"
         ],
+        "lc_facet": [
+            "P - Language & Literature",
+            "P - Language & Literature:P - Language & Literature"
+        ],
         "call_number_scheme_facet": [
             "Library of Congress"
         ],
@@ -670,6 +678,10 @@
         ],
         "lc_rest_facet": [
             "HQ - The Family, Marriage, Woman"
+        ],
+        "lc_facet": [
+            "H - Social Sciences",
+            "H - Social Sciences:HQ - The Family, Marriage, Woman"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"

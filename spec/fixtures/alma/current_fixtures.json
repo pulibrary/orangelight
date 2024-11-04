@@ -238,6 +238,10 @@
   "lc_rest_facet": [
     "DS - Asia (History)"
   ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DS - Asia (History)"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -437,6 +441,10 @@
   ],
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -664,6 +672,10 @@
   ],
   "lc_rest_facet": [
     "DS - Asia (History)"
+  ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -900,6 +912,10 @@
   ],
   "lc_rest_facet": [
     "DS - Asia (History)"
+  ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -1338,6 +1354,10 @@
   "lc_rest_facet": [
     "DS - Asia (History)"
   ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DS - Asia (History)"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -1528,6 +1548,10 @@
   ],
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -1781,6 +1805,10 @@
   "lc_rest_facet": [
     "PJ - Oriental Languages & Literature"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PJ - Oriental Languages & Literature"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -1974,6 +2002,10 @@
   ],
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -2176,6 +2208,10 @@
   ],
   "lc_rest_facet": [
     "AC - Collections Works"
+  ],
+  "lc_facet": [
+    "A - General Works",
+    "A - General Works:AC - Collections Works"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -2385,6 +2421,10 @@
   ],
   "lc_rest_facet": [
     "PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -2654,6 +2694,10 @@
   "lc_rest_facet": [
     "AS - Academies & Learned Societies"
   ],
+  "lc_facet": [
+    "A - General Works",
+    "A - General Works:AS - Academies & Learned Societies"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -2862,6 +2906,10 @@
   ],
   "lc_rest_facet": [
     "PJ - Oriental Languages & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -3259,6 +3307,10 @@
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -3479,6 +3531,10 @@
   "lc_rest_facet": [
     "QE - Geology"
   ],
+  "lc_facet": [
+    "Q - Science",
+    "Q - Science:QE - Geology"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -3668,6 +3724,10 @@
   ],
   "lc_rest_facet": [
     "KG - Law of Latin America, Mexico, Central America, West Indies, Caribbean"
+  ],
+  "lc_facet": [
+    "K - Law",
+    "K - Law:KG - Law of Latin America, Mexico, Central America, West Indies, Caribbean"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -3891,6 +3951,10 @@
   ],
   "lc_rest_facet": [
     "D - World History"
+  ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:D - World History"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -4124,6 +4188,10 @@
   ],
   "lc_rest_facet": [
     "PN - Literature (General)"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PN - Literature (General)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -4394,6 +4462,10 @@
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -4644,6 +4716,10 @@
   ],
   "lc_rest_facet": [
     "PA - Greek & Latin Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PA - Greek & Latin Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -5028,6 +5104,10 @@
   "lc_rest_facet": [
     "PJ - Oriental Languages & Literature"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PJ - Oriental Languages & Literature"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -5265,6 +5345,10 @@
   ],
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -5813,6 +5897,10 @@
   "lc_rest_facet": [
     "RC - Internal Medicine"
   ],
+  "lc_facet": [
+    "R - Medicine",
+    "R - Medicine:RC - Internal Medicine"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -6028,6 +6116,10 @@
   ],
   "lc_rest_facet": [
     "RC - Internal Medicine"
+  ],
+  "lc_facet": [
+    "R - Medicine",
+    "R - Medicine:RC - Internal Medicine"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -6391,6 +6483,10 @@
   "lc_rest_facet": [
     "BD - Speculative Philosophy"
   ],
+  "lc_facet": [
+    "B - Philosophy, Psychology, Religion",
+    "B - Philosophy, Psychology, Religion:BD - Speculative Philosophy"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -6607,6 +6703,10 @@
   "lc_rest_facet": [
     "GR - Folklore"
   ],
+  "lc_facet": [
+    "G - Geography, Anthropology, Recreation",
+    "G - Geography, Anthropology, Recreation:GR - Folklore"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -6805,6 +6905,10 @@
   ],
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -7062,6 +7166,10 @@
   "lc_rest_facet": [
     "B - Philosophy, Psychology, Religion"
   ],
+  "lc_facet": [
+    "B - Philosophy, Psychology, Religion",
+    "B - Philosophy, Psychology, Religion:B - Philosophy, Psychology, Religion"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -7276,6 +7384,10 @@
   ],
   "lc_rest_facet": [
     "QA - Mathematics"
+  ],
+  "lc_facet": [
+    "Q - Science",
+    "Q - Science:QA - Mathematics"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -7500,6 +7612,10 @@
   ],
   "lc_rest_facet": [
     "KMU - Law of Syria"
+  ],
+  "lc_facet": [
+    "K - Law",
+    "K - Law:KMU - Law of Syria"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -7763,6 +7879,10 @@
   ],
   "lc_rest_facet": [
     "N - Fine Arts"
+  ],
+  "lc_facet": [
+    "N - Fine Arts",
+    "N - Fine Arts:N - Fine Arts"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -8444,6 +8564,10 @@
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -8510,8 +8634,515 @@
     "In the Library"
   ]
 },
-{"id":["99109202913506421"],"numeric_id_b":[true],"cjk_all":["Семененко-Басин, И. В. (Илья Викторович), author. Ювенилиа / Илья Семененко-Басин. Москва : Водолей, 2018. Семененко-Басин, И. В. (Илья Викторович)"],"cjk_notes":[""],"author_display":["Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)","Семененко-Басин, И. В. (Илья Викторович)"],"author_sort":["Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)"],"author_citation_display":["Semenenko-Basin, I. V."],"author_roles_1display":["{\"secondary_authors\":[\"Семененко-Басин, И. В.\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Semenenko-Basin, I. V.\"}"],"cjk_author":["Семененко-Басин, И. В. (Илья Викторович)"],"author_s":["Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)","Семененко-Басин, И. В. (Илья Викторович)"],"marc_relator_display":["Author"],"uniform_title_s":["Works. Selections"],"title_display":["I︠U︡venilia / Ilʹi︠a︡ Semenenko-Basin."],"title_a_index":["I︠U︡venilia","Ювенилиа"],"title_vern_display":["Ювенилиа / Илья Семененко-Басин."],"title_sort":["I︠U︡venilia / Ilʹi︠a︡ Semenenko-Basin."],"title_vern_sort":["Ювенилиа / Илья Семененко-Басин."],"title_no_h_index":["I︠U︡venilia / Ilʹi︠a︡ Semenenko-Basin.","Ювенилиа / Илья Семененко-Басин."],"title_t":["I︠U︡venilia / Ilʹi︠a︡ Semenenko-Basin."],"title_citation_display":["I︠U︡venilia","Ювенилиа"],"cjk_title":["Ювенилиа / Илья Семененко-Басин."],"compiled_created_t":["I︠U︡venilia / Ilʹi︠a︡ Semenenko-Basin.","Ювенилиа / Илья Семененко-Басин."],"pub_created_vern_display":["Москва : Водолей, 2018."],"pub_created_display":["Moskva : Vodoleĭ, 2018.","Москва : Водолей, 2018."],"pub_created_s":["Moskva : Vodoleĭ, 2018.","Москва : Водолей, 2018."],"pub_citation_display":["Moskva: Vodoleĭ","Москва: Водолей"],"pub_date_display":["2018"],"pub_date_start_sort":["2018"],"cataloged_tdt":["2021-07-13T07:32:34Z"],"format":["Book"],"description_display":["71 pages : portraits ; 20 cm"],"description_t":["71 pages : portraits ; 20 cm"],"number_of_pages_citation_display":["71 pages"],"language_facet":["Russian"],"publication_place_facet":["Russia (Federation)"],"language_code_s":["rus"],"language_iana_s":["ru"],"lc_subject_display":["Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)"],"subject_unstem_search":["Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)"],"siku_subject_unstem_search":null,"subject_facet":["Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)"],"subject_topic_facet":["Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)"],"lc_1letter_facet":["P - Language & Literature"],"lc_rest_facet":["PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"],"call_number_scheme_facet":["Library of Congress"],"call_number_group_facet":["P - Language & Literature"],"call_number_full_facet":["PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"],"isbn_display":["9785917634074","5917634076"],"isbn_s":["9785917634074"],"oclc_s":["1052797006"],"standard_no_index":["on1052797006","1004600","10920291","1052797006","10920291-princetondb"],"other_version_s":["on1052797006","9785917634074"],"holdings_1display":["{\"22645343030006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"PG3493.44.E577 I98 2018\",\"call_number_browse\":\"PG3493.44.E577 I98 2018\",\"items\":[{\"holding_id\":\"22645343030006421\",\"id\":\"23645343020006421\",\"status_at_load\":\"1\",\"barcode\":\"32101101962700\",\"copy_number\":\"0\"}]}}"],"location_code_s":["firestone$stacks"],"location":["Firestone Library"],"location_display":["Stacks"],"advanced_location_s":["firestone$stacks","Firestone Library"],"name_uniform_title_1display":["[[\"Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich).\",\"Works.\",\"Selections\"]]"],"name_title_browse_s":["Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich). Works","Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich). Works. Selections","Семененко-Басин, И. В. (Илья Викторович). Ювенилиа"],"call_number_display":["PG3493.44.E577 I98 2018"],"call_number_browse_s":["PG3493.44.E577 I98 2018"],"call_number_locator_display":["PG3493.44.E577 I98 2018"],"access_facet":["In the Library"]}
-,{"id":["99116547863506421"],"numeric_id_b":[true],"cjk_all":["中院通冬, 1315-1363, author. 中院一品記 / 東京大學史料編纂所編纂. 中院 1品記 東京 : 岩波書店, 2018- 大日本古記錄 [1]. 自建武三年二月至康永元年六月 上. 自建武三年二月至康永元年六月 中院通冬, 1315-1363 Diaries. 東京大學. 史料編纂所, editor. 大日本古記錄."],"cjk_notes":["[1]. 自建武三年二月至康永元年六月 上. 自建武三年二月至康永元年六月"],"author_display":["Nakanoin, Michifuyu, 1315-1363","中院通冬, 1315-1363"],"author_sort":["Nakanoin, Michifuyu, 1315-1363"],"author_citation_display":["Nakanoin, Michifuyu","Tōkyō Daigaku"],"author_roles_1display":["{\"secondary_authors\":[\"中院通冬\"],\"translators\":[],\"editors\":[\"Tōkyō Daigaku\",\"東京大學.\"],\"compilers\":[],\"primary_author\":\"Nakanoin, Michifuyu\"}"],"cjk_author":["中院通冬, 1315-1363","東京大學. 史料編纂所"],"author_s":["Nakanoin, Michifuyu, 1315-1363","Tōkyō Daigaku. Shiryō Hensanjo","中院通冬, 1315-1363","東京大學. 史料編纂所"],"marc_relator_display":["Author"],"title_display":["Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan."],"title_a_index":["Nakanoin ipponki","中院一品記"],"title_vern_display":["中院一品記 / 東京大學史料編纂所編纂."],"title_sort":["Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan."],"title_vern_sort":["中院一品記 / 東京大學史料編纂所編纂."],"title_no_h_index":["Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan.","中院一品記 / 東京大學史料編纂所編纂."],"title_t":["Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan."],"title_citation_display":["Nakanoin ipponki","中院一品記"],"series_statement_index":["Dai Nihon kokiroku","大日本古記錄"],"content_title_index":["Kenmu 3-nen 2-gatsu yori Kōei gannen 6-gatsu ni itaru","自建武三年二月至康永元年六月"],"series_ae_index":["Dai Nihon kokiroku","大日本古記錄."],"cjk_title":["中院一品記 / 東京大學史料編纂所編纂.","中院 1品記","大日本古記錄","自建武三年二月至康永元年六月","大日本古記錄."],"cjk_series_title":["大日本古記錄","大日本古記錄."],"compiled_created_t":["Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan.","中院一品記 / 東京大學史料編纂所編纂."],"pub_created_vern_display":["東京 : 岩波書店, 2018-"],"pub_created_display":["Tōkyō : Iwanami Shōten, 2018-","東京 : 岩波書店, 2018-"],"pub_created_s":["Tōkyō : Iwanami Shōten, 2018-","東京 : 岩波書店, 2018-"],"pub_citation_display":["Tōkyō: Iwanami Shōten","東京: 岩波書店"],"pub_date_display":["2018"],"pub_date_start_sort":["2018"],"pub_date_end_sort":["9999"],"cataloged_tdt":["2021-07-12T23:01:00Z"],"format":["Book"],"description_display":["volumes : illustrations ; 22 cm"],"description_t":["volumes : illustrations ; 22 cm"],"number_of_pages_citation_display":["volumes"],"geocode_display":["Japan"],"series_display":["Dai Nihon kokiroku","大日本古記錄.","大日本古記錄"],"more_in_this_series_t":["Dai Nihon kokiroku","大日本古記錄."],"notes_index":["Includes bibliographical references and index.","880-06 [1]. Kenmu sannen nigatsu yori Kōei gannen rokugatsu ni itaru","880-07 jō. Kenmu 3-nen 2-gatsu yori Kōei gannen 6-gatsu ni itaru"],"bib_ref_notes_display":["Includes bibliographical references and index."],"language_facet":["Japanese"],"publication_place_facet":["Japan"],"language_code_s":["jpn"],"language_iana_s":["ja"],"contents_display":["[1]. Kenmu sannen nigatsu yori Kōei gannen rokugatsu ni itaru","jō. Kenmu 3-nen 2-gatsu yori Kōei gannen 6-gatsu ni itaru","[1]. 自建武三年二月至康永元年六月","上. 自建武三年二月至康永元年六月"],"lc_subject_display":["Nakanoin, Michifuyu, 1315-1363—Diaries","Japan—History—Kamakura period, 1185-1333—Sources","Japan—History—Period of northern and southern courts, 1336-1392—Sources"],"subject_unstem_search":["Nakanoin, Michifuyu, 1315-1363—Diaries","Japan—History—Kamakura period, 1185-1333—Sources","Japan—History—Period of northern and southern courts, 1336-1392—Sources"],"siku_subject_unstem_search":null,"subject_facet":["Nakanoin, Michifuyu, 1315-1363—Diaries","Japan—History—Kamakura period, 1185-1333—Sources","Japan—History—Period of northern and southern courts, 1336-1392—Sources","Diaries"],"lcgft_s":["Diaries"],"subject_topic_facet":["Nakanoin, Michifuyu, 1315-1363","Japan","History"],"lc_1letter_facet":["D - World History"],"lc_rest_facet":["DS - Asia (History)"],"call_number_scheme_facet":["Library of Congress"],"call_number_group_facet":["D - World History"],"call_number_full_facet":["DS - Asia (History)"],"genre_facet":["Diaries","Sources"],"related_name_json_1display":["{\"Editor\":[\"Tōkyō Daigaku. Shiryō Hensanjo\",\"東京大學. 史料編纂所\"]}"],"other_title_index":["Nakanoin 1-honki","中院 1品記"],"other_title_display":["Nakanoin 1-honki","中院 1品記"],"alt_title_246_display":["Nakanoin 1-honki","中院 1品記"],"isbn_display":["9784000099851 ((v. 1))","400009985X ((v. 1))"],"lccn_display":["  2018430599"],"lccn_s":["2018430599"],"isbn_s":["9784000099851"],"oclc_s":["1062349585"],"standard_no_index":["on1062349585","11654786","1062349585","11654786-princetondb"],"other_version_s":["on1062349585","9784000099851"],"subject_era_facet":["1185-1392","Japan: Kamakura period, 1185-1333","Japan: Period of northern and southern courts, 1336-1392"],"holdings_1display":["{\"22552476080006421\":{\"location_code\":\"eastasian$hy\",\"location\":\"\",\"library\":\"East Asian Library\",\"call_number\":\"J3306/5047.4 pt.31\",\"call_number_browse\":\"J3306/5047.4 pt.31\",\"items\":[{\"holding_id\":\"22552476080006421\",\"id\":\"23552476070006421\",\"status_at_load\":\"1\",\"enumeration\":\"vol.1\",\"barcode\":\"32101113265852\",\"copy_number\":\"0\"}]}}"],"location_code_s":["eastasian$hy"],"location":["East Asian Library"],"location_display":[""],"advanced_location_s":["eastasian$hy","East Asian Library"],"name_title_browse_s":["Nakanoin, Michifuyu, 1315-1363. Nakanoin ipponki","中院通冬, 1315-1363. 中院一品記"],"call_number_display":["J3306/5047.4 pt.31"],"call_number_browse_s":["J3306/5047.4 pt.31"],"call_number_locator_display":["J3306/5047.4 pt.31"],"access_facet":["In the Library"]},
+{
+  "id": [
+    "99109202913506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    "Семененко-Басин, И. В. (Илья Викторович), author. Ювенилиа / Илья Семененко-Басин. Москва : Водолей, 2018. Семененко-Басин, И. В. (Илья Викторович)"
+  ],
+  "cjk_notes": [
+    ""
+  ],
+  "author_display": [
+    "Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)",
+    "Семененко-Басин, И. В. (Илья Викторович)"
+  ],
+  "author_sort": [
+    "Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)"
+  ],
+  "author_citation_display": [
+    "Semenenko-Basin, I. V."
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"Семененко-Басин, И. В.\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Semenenko-Basin, I. V.\"}"
+  ],
+  "cjk_author": [
+    "Семененко-Басин, И. В. (Илья Викторович)"
+  ],
+  "author_s": [
+    "Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)",
+    "Семененко-Басин, И. В. (Илья Викторович)"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "uniform_title_s": [
+    "Works. Selections"
+  ],
+  "title_display": [
+    "I︠U︡venilia / Ilʹi︠a︡ Semenenko-Basin."
+  ],
+  "title_a_index": [
+    "I︠U︡venilia",
+    "Ювенилиа"
+  ],
+  "title_vern_display": [
+    "Ювенилиа / Илья Семененко-Басин."
+  ],
+  "title_sort": [
+    "I︠U︡venilia / Ilʹi︠a︡ Semenenko-Basin."
+  ],
+  "title_vern_sort": [
+    "Ювенилиа / Илья Семененко-Басин."
+  ],
+  "title_no_h_index": [
+    "I︠U︡venilia / Ilʹi︠a︡ Semenenko-Basin.",
+    "Ювенилиа / Илья Семененко-Басин."
+  ],
+  "title_t": [
+    "I︠U︡venilia / Ilʹi︠a︡ Semenenko-Basin."
+  ],
+  "title_citation_display": [
+    "I︠U︡venilia",
+    "Ювенилиа"
+  ],
+  "cjk_title": [
+    "Ювенилиа / Илья Семененко-Басин."
+  ],
+  "compiled_created_t": [
+    "I︠U︡venilia / Ilʹi︠a︡ Semenenko-Basin.",
+    "Ювенилиа / Илья Семененко-Басин."
+  ],
+  "pub_created_vern_display": [
+    "Москва : Водолей, 2018."
+  ],
+  "pub_created_display": [
+    "Moskva : Vodoleĭ, 2018.",
+    "Москва : Водолей, 2018."
+  ],
+  "pub_created_s": [
+    "Moskva : Vodoleĭ, 2018.",
+    "Москва : Водолей, 2018."
+  ],
+  "pub_citation_display": [
+    "Moskva: Vodoleĭ",
+    "Москва: Водолей"
+  ],
+  "pub_date_display": [
+    "2018"
+  ],
+  "pub_date_start_sort": [
+    "2018"
+  ],
+  "cataloged_tdt": [
+    "2021-07-13T07:32:34Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "71 pages : portraits ; 20 cm"
+  ],
+  "description_t": [
+    "71 pages : portraits ; 20 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "71 pages"
+  ],
+  "language_facet": [
+    "Russian"
+  ],
+  "publication_place_facet": [
+    "Russia (Federation)"
+  ],
+  "language_code_s": [
+    "rus"
+  ],
+  "language_iana_s": [
+    "ru"
+  ],
+  "lc_subject_display": [
+    "Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)"
+  ],
+  "subject_unstem_search": [
+    "Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)"
+  ],
+  "siku_subject_unstem_search": null,
+  "subject_facet": [
+    "Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)"
+  ],
+  "subject_topic_facet": [
+    "Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich)"
+  ],
+  "lc_1letter_facet": [
+    "P - Language & Literature"
+  ],
+  "lc_rest_facet": [
+    "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "P - Language & Literature"
+  ],
+  "call_number_full_facet": [
+    "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
+  "isbn_display": [
+    "9785917634074",
+    "5917634076"
+  ],
+  "isbn_s": [
+    "9785917634074"
+  ],
+  "oclc_s": [
+    "1052797006"
+  ],
+  "standard_no_index": [
+    "on1052797006",
+    "1004600",
+    "10920291",
+    "1052797006",
+    "10920291-princetondb"
+  ],
+  "other_version_s": [
+    "on1052797006",
+    "9785917634074"
+  ],
+  "holdings_1display": [
+    "{\"22645343030006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"PG3493.44.E577 I98 2018\",\"call_number_browse\":\"PG3493.44.E577 I98 2018\",\"items\":[{\"holding_id\":\"22645343030006421\",\"id\":\"23645343020006421\",\"status_at_load\":\"1\",\"barcode\":\"32101101962700\",\"copy_number\":\"0\"}]}}"
+  ],
+  "location_code_s": [
+    "firestone$stacks"
+  ],
+  "location": [
+    "Firestone Library"
+  ],
+  "location_display": [
+    "Stacks"
+  ],
+  "advanced_location_s": [
+    "firestone$stacks",
+    "Firestone Library"
+  ],
+  "name_uniform_title_1display": [
+    "[[\"Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich).\",\"Works.\",\"Selections\"]]"
+  ],
+  "name_title_browse_s": [
+    "Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich). Works",
+    "Semenenko-Basin, I. V. (Ilʹi︠a︡ Viktorovich). Works. Selections",
+    "Семененко-Басин, И. В. (Илья Викторович). Ювенилиа"
+  ],
+  "call_number_display": [
+    "PG3493.44.E577 I98 2018"
+  ],
+  "call_number_browse_s": [
+    "PG3493.44.E577 I98 2018"
+  ],
+  "call_number_locator_display": [
+    "PG3493.44.E577 I98 2018"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
+},
+{
+  "id": [
+    "99116547863506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    "中院通冬, 1315-1363, author. 中院一品記 / 東京大學史料編纂所編纂. 中院 1品記 東京 : 岩波書店, 2018- 大日本古記錄 [1]. 自建武三年二月至康永元年六月 上. 自建武三年二月至康永元年六月 中院通冬, 1315-1363 Diaries. 東京大學. 史料編纂所, editor. 大日本古記錄."
+  ],
+  "cjk_notes": [
+    "[1]. 自建武三年二月至康永元年六月 上. 自建武三年二月至康永元年六月"
+  ],
+  "author_display": [
+    "Nakanoin, Michifuyu, 1315-1363",
+    "中院通冬, 1315-1363"
+  ],
+  "author_sort": [
+    "Nakanoin, Michifuyu, 1315-1363"
+  ],
+  "author_citation_display": [
+    "Nakanoin, Michifuyu",
+    "Tōkyō Daigaku"
+  ],
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"中院通冬\"],\"translators\":[],\"editors\":[\"Tōkyō Daigaku\",\"東京大學.\"],\"compilers\":[],\"primary_author\":\"Nakanoin, Michifuyu\"}"
+  ],
+  "cjk_author": [
+    "中院通冬, 1315-1363",
+    "東京大學. 史料編纂所"
+  ],
+  "author_s": [
+    "Nakanoin, Michifuyu, 1315-1363",
+    "Tōkyō Daigaku. Shiryō Hensanjo",
+    "中院通冬, 1315-1363",
+    "東京大學. 史料編纂所"
+  ],
+  "marc_relator_display": [
+    "Author"
+  ],
+  "title_display": [
+    "Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan."
+  ],
+  "title_a_index": [
+    "Nakanoin ipponki",
+    "中院一品記"
+  ],
+  "title_vern_display": [
+    "中院一品記 / 東京大學史料編纂所編纂."
+  ],
+  "title_sort": [
+    "Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan."
+  ],
+  "title_vern_sort": [
+    "中院一品記 / 東京大學史料編纂所編纂."
+  ],
+  "title_no_h_index": [
+    "Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan.",
+    "中院一品記 / 東京大學史料編纂所編纂."
+  ],
+  "title_t": [
+    "Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan."
+  ],
+  "title_citation_display": [
+    "Nakanoin ipponki",
+    "中院一品記"
+  ],
+  "series_statement_index": [
+    "Dai Nihon kokiroku",
+    "大日本古記錄"
+  ],
+  "content_title_index": [
+    "Kenmu 3-nen 2-gatsu yori Kōei gannen 6-gatsu ni itaru",
+    "自建武三年二月至康永元年六月"
+  ],
+  "series_ae_index": [
+    "Dai Nihon kokiroku",
+    "大日本古記錄."
+  ],
+  "cjk_title": [
+    "中院一品記 / 東京大學史料編纂所編纂.",
+    "中院 1品記",
+    "大日本古記錄",
+    "自建武三年二月至康永元年六月",
+    "大日本古記錄."
+  ],
+  "cjk_series_title": [
+    "大日本古記錄",
+    "大日本古記錄."
+  ],
+  "compiled_created_t": [
+    "Nakanoin ipponki / Tōkyō Daigaku Shiryō Sensanjo hensan.",
+    "中院一品記 / 東京大學史料編纂所編纂."
+  ],
+  "pub_created_vern_display": [
+    "東京 : 岩波書店, 2018-"
+  ],
+  "pub_created_display": [
+    "Tōkyō : Iwanami Shōten, 2018-",
+    "東京 : 岩波書店, 2018-"
+  ],
+  "pub_created_s": [
+    "Tōkyō : Iwanami Shōten, 2018-",
+    "東京 : 岩波書店, 2018-"
+  ],
+  "pub_citation_display": [
+    "Tōkyō: Iwanami Shōten",
+    "東京: 岩波書店"
+  ],
+  "pub_date_display": [
+    "2018"
+  ],
+  "pub_date_start_sort": [
+    "2018"
+  ],
+  "pub_date_end_sort": [
+    "9999"
+  ],
+  "cataloged_tdt": [
+    "2021-07-12T23:01:00Z"
+  ],
+  "format": [
+    "Book"
+  ],
+  "description_display": [
+    "volumes : illustrations ; 22 cm"
+  ],
+  "description_t": [
+    "volumes : illustrations ; 22 cm"
+  ],
+  "number_of_pages_citation_display": [
+    "volumes"
+  ],
+  "geocode_display": [
+    "Japan"
+  ],
+  "series_display": [
+    "Dai Nihon kokiroku",
+    "大日本古記錄.",
+    "大日本古記錄"
+  ],
+  "more_in_this_series_t": [
+    "Dai Nihon kokiroku",
+    "大日本古記錄."
+  ],
+  "notes_index": [
+    "Includes bibliographical references and index.",
+    "880-06 [1]. Kenmu sannen nigatsu yori Kōei gannen rokugatsu ni itaru",
+    "880-07 jō. Kenmu 3-nen 2-gatsu yori Kōei gannen 6-gatsu ni itaru"
+  ],
+  "bib_ref_notes_display": [
+    "Includes bibliographical references and index."
+  ],
+  "language_facet": [
+    "Japanese"
+  ],
+  "publication_place_facet": [
+    "Japan"
+  ],
+  "language_code_s": [
+    "jpn"
+  ],
+  "language_iana_s": [
+    "ja"
+  ],
+  "contents_display": [
+    "[1]. Kenmu sannen nigatsu yori Kōei gannen rokugatsu ni itaru",
+    "jō. Kenmu 3-nen 2-gatsu yori Kōei gannen 6-gatsu ni itaru",
+    "[1]. 自建武三年二月至康永元年六月",
+    "上. 自建武三年二月至康永元年六月"
+  ],
+  "lc_subject_display": [
+    "Nakanoin, Michifuyu, 1315-1363—Diaries",
+    "Japan—History—Kamakura period, 1185-1333—Sources",
+    "Japan—History—Period of northern and southern courts, 1336-1392—Sources"
+  ],
+  "subject_unstem_search": [
+    "Nakanoin, Michifuyu, 1315-1363—Diaries",
+    "Japan—History—Kamakura period, 1185-1333—Sources",
+    "Japan—History—Period of northern and southern courts, 1336-1392—Sources"
+  ],
+  "siku_subject_unstem_search": null,
+  "subject_facet": [
+    "Nakanoin, Michifuyu, 1315-1363—Diaries",
+    "Japan—History—Kamakura period, 1185-1333—Sources",
+    "Japan—History—Period of northern and southern courts, 1336-1392—Sources",
+    "Diaries"
+  ],
+  "lcgft_s": [
+    "Diaries"
+  ],
+  "subject_topic_facet": [
+    "Nakanoin, Michifuyu, 1315-1363",
+    "Japan",
+    "History"
+  ],
+  "lc_1letter_facet": [
+    "D - World History"
+  ],
+  "lc_rest_facet": [
+    "DS - Asia (History)"
+  ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DS - Asia (History)"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "D - World History"
+  ],
+  "call_number_full_facet": [
+    "DS - Asia (History)"
+  ],
+  "genre_facet": [
+    "Diaries",
+    "Sources"
+  ],
+  "related_name_json_1display": [
+    "{\"Editor\":[\"Tōkyō Daigaku. Shiryō Hensanjo\",\"東京大學. 史料編纂所\"]}"
+  ],
+  "other_title_index": [
+    "Nakanoin 1-honki",
+    "中院 1品記"
+  ],
+  "other_title_display": [
+    "Nakanoin 1-honki",
+    "中院 1品記"
+  ],
+  "alt_title_246_display": [
+    "Nakanoin 1-honki",
+    "中院 1品記"
+  ],
+  "isbn_display": [
+    "9784000099851 ((v. 1))",
+    "400009985X ((v. 1))"
+  ],
+  "lccn_display": [
+    "  2018430599"
+  ],
+  "lccn_s": [
+    "2018430599"
+  ],
+  "isbn_s": [
+    "9784000099851"
+  ],
+  "oclc_s": [
+    "1062349585"
+  ],
+  "standard_no_index": [
+    "on1062349585",
+    "11654786",
+    "1062349585",
+    "11654786-princetondb"
+  ],
+  "other_version_s": [
+    "on1062349585",
+    "9784000099851"
+  ],
+  "subject_era_facet": [
+    "1185-1392",
+    "Japan: Kamakura period, 1185-1333",
+    "Japan: Period of northern and southern courts, 1336-1392"
+  ],
+  "holdings_1display": [
+    "{\"22552476080006421\":{\"location_code\":\"eastasian$hy\",\"location\":\"\",\"library\":\"East Asian Library\",\"call_number\":\"J3306/5047.4 pt.31\",\"call_number_browse\":\"J3306/5047.4 pt.31\",\"items\":[{\"holding_id\":\"22552476080006421\",\"id\":\"23552476070006421\",\"status_at_load\":\"1\",\"enumeration\":\"vol.1\",\"barcode\":\"32101113265852\",\"copy_number\":\"0\"}]}}"
+  ],
+  "location_code_s": [
+    "eastasian$hy"
+  ],
+  "location": [
+    "East Asian Library"
+  ],
+  "location_display": [
+    ""
+  ],
+  "advanced_location_s": [
+    "eastasian$hy",
+    "East Asian Library"
+  ],
+  "name_title_browse_s": [
+    "Nakanoin, Michifuyu, 1315-1363. Nakanoin ipponki",
+    "中院通冬, 1315-1363. 中院一品記"
+  ],
+  "call_number_display": [
+    "J3306/5047.4 pt.31"
+  ],
+  "call_number_browse_s": [
+    "J3306/5047.4 pt.31"
+  ],
+  "call_number_locator_display": [
+    "J3306/5047.4 pt.31"
+  ],
+  "access_facet": [
+    "In the Library"
+  ]
+},
 {
   "id": [
     "9934788983506421"
@@ -8667,6 +9298,10 @@
   ],
   "lc_rest_facet": [
     "AC - Collections Works"
+  ],
+  "lc_facet": [
+    "A - General Works",
+    "A - General Works:AC - Collections Works"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -8860,6 +9495,10 @@
   ],
   "lc_rest_facet": [
     "PJ - Oriental Languages & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -9062,6 +9701,10 @@
   ],
   "lc_rest_facet": [
     "ND - Painting"
+  ],
+  "lc_facet": [
+    "N - Fine Arts",
+    "N - Fine Arts:ND - Painting"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -9297,6 +9940,10 @@
   "lc_rest_facet": [
     "PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -9525,6 +10172,10 @@
   "lc_rest_facet": [
     "Z - Bibliography, Library Science, Information Resources"
   ],
+  "lc_facet": [
+    "Z - Bibliography, Library Science, Information Resources",
+    "Z - Bibliography, Library Science, Information Resources:Z - Bibliography, Library Science, Information Resources"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -9749,6 +10400,10 @@
   ],
   "lc_rest_facet": [
     "M - Music"
+  ],
+  "lc_facet": [
+    "M - Music",
+    "M - Music:M - Music"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -10047,6 +10702,10 @@
   "lc_rest_facet": [
     "DS - Asia (History)"
   ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DS - Asia (History)"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -10285,6 +10944,10 @@
   ],
   "lc_rest_facet": [
     "PZ - Children's Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PZ - Children's Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -10540,6 +11203,10 @@
   ],
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -10954,6 +11621,10 @@
   "lc_rest_facet": [
     "QA - Mathematics"
   ],
+  "lc_facet": [
+    "Q - Science",
+    "Q - Science:QA - Mathematics"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -11166,6 +11837,10 @@
   ],
   "lc_rest_facet": [
     "PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -11410,6 +12085,10 @@
   ],
   "lc_rest_facet": [
     "PJ - Oriental Languages & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -11795,6 +12474,10 @@
   ],
   "lc_rest_facet": [
     "PA - Greek & Latin Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PA - Greek & Latin Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -12237,6 +12920,10 @@
   ],
   "lc_rest_facet": [
     "M - Music"
+  ],
+  "lc_facet": [
+    "M - Music",
+    "M - Music:M - Music"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -12898,6 +13585,10 @@
   "lc_rest_facet": [
     "HG - Finance"
   ],
+  "lc_facet": [
+    "H - Social Sciences",
+    "H - Social Sciences:HG - Finance"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -13415,6 +14106,10 @@
   "lc_rest_facet": [
     "BQ - Buddhism"
   ],
+  "lc_facet": [
+    "B - Philosophy, Psychology, Religion",
+    "B - Philosophy, Psychology, Religion:BQ - Buddhism"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -13721,6 +14416,10 @@
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -13953,6 +14652,10 @@
   ],
   "lc_rest_facet": [
     "DK - Russia. Former Soviet Republics. Poland (History)"
+  ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DK - Russia. Former Soviet Republics. Poland (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -14747,6 +15450,10 @@
   "lc_rest_facet": [
     "HC - Economic History & Conditions"
   ],
+  "lc_facet": [
+    "H - Social Sciences",
+    "H - Social Sciences:HC - Economic History & Conditions"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -14920,6 +15627,10 @@
   ],
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -15326,6 +16037,10 @@
   "lc_rest_facet": [
     "E - History of the Americas (General)"
   ],
+  "lc_facet": [
+    "E - History of the Americas (General)",
+    "E - History of the Americas (General):E - History of the Americas (General)"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -15573,6 +16288,10 @@
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -15816,6 +16535,10 @@
   "lc_rest_facet": [
     "DS - Asia (History)"
   ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DS - Asia (History)"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -16028,6 +16751,10 @@
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -16235,6 +16962,10 @@
   ],
   "lc_rest_facet": [
     "PJ - Oriental Languages & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -16444,6 +17175,10 @@
   "lc_rest_facet": [
     "N - Fine Arts"
   ],
+  "lc_facet": [
+    "N - Fine Arts",
+    "N - Fine Arts:N - Fine Arts"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -16647,6 +17382,10 @@
   ],
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -16856,6 +17595,10 @@
   ],
   "lc_rest_facet": [
     "PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -17077,6 +17820,10 @@
   ],
   "lc_rest_facet": [
     "PJ - Oriental Languages & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -17332,6 +18079,10 @@
   "lc_rest_facet": [
     "PJ - Oriental Languages & Literature"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PJ - Oriental Languages & Literature"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -17514,6 +18265,10 @@
   ],
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -17910,6 +18665,10 @@
   "lc_rest_facet": [
     "PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -18081,6 +18840,10 @@
   ],
   "lc_rest_facet": [
     "AC - Collections Works"
+  ],
+  "lc_facet": [
+    "A - General Works",
+    "A - General Works:AC - Collections Works"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -18313,6 +19076,10 @@
   "lc_rest_facet": [
     "PS - American Literature"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PS - American Literature"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -18533,6 +19300,10 @@
   ],
   "lc_rest_facet": [
     "Z - Bibliography, Library Science, Information Resources"
+  ],
+  "lc_facet": [
+    "Z - Bibliography, Library Science, Information Resources",
+    "Z - Bibliography, Library Science, Information Resources:Z - Bibliography, Library Science, Information Resources"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -18935,6 +19706,10 @@
   "lc_rest_facet": [
     "BH - Aesthetics"
   ],
+  "lc_facet": [
+    "B - Philosophy, Psychology, Religion",
+    "B - Philosophy, Psychology, Religion:BH - Aesthetics"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -19182,6 +19957,10 @@
   "lc_rest_facet": [
     "DK - Russia. Former Soviet Republics. Poland (History)"
   ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DK - Russia. Former Soviet Republics. Poland (History)"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -19420,6 +20199,10 @@
   ],
   "lc_rest_facet": [
     "BL - Religions (General)"
+  ],
+  "lc_facet": [
+    "B - Philosophy, Psychology, Religion",
+    "B - Philosophy, Psychology, Religion:BL - Religions (General)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -19674,6 +20457,10 @@
   "lc_rest_facet": [
     "DS - Asia (History)"
   ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DS - Asia (History)"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -19885,6 +20672,10 @@
   ],
   "lc_rest_facet": [
     "PA - Greek & Latin Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PA - Greek & Latin Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -20270,6 +21061,10 @@
   ],
   "lc_rest_facet": [
     "PJ - Oriental Languages & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -20696,6 +21491,10 @@
   ],
   "lc_rest_facet": [
     "DS - Asia (History)"
+  ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -21296,6 +22095,10 @@
   "lc_rest_facet": [
     "HD - Industries, Land use, Labor"
   ],
+  "lc_facet": [
+    "H - Social Sciences",
+    "H - Social Sciences:HD - Industries, Land use, Labor"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -21539,6 +22342,10 @@
   "lc_rest_facet": [
     "D - World History"
   ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:D - World History"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -21752,6 +22559,10 @@
   ],
   "lc_rest_facet": [
     "LB - Theory & Practice of Education"
+  ],
+  "lc_facet": [
+    "L - Education",
+    "L - Education:LB - Theory & Practice of Education"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -21989,6 +22800,10 @@
   ],
   "lc_rest_facet": [
     "GT - Manners & Customs"
+  ],
+  "lc_facet": [
+    "G - Geography, Anthropology, Recreation",
+    "G - Geography, Anthropology, Recreation:GT - Manners & Customs"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -22245,6 +23060,10 @@
   ],
   "lc_rest_facet": [
     "DS - Asia (History)"
+  ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -22619,6 +23438,10 @@
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -22859,6 +23682,10 @@
   ],
   "lc_rest_facet": [
     "DS - Asia (History)"
+  ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -23103,6 +23930,10 @@
   "lc_rest_facet": [
     "HQ - The Family, Marriage, Woman"
   ],
+  "lc_facet": [
+    "H - Social Sciences",
+    "H - Social Sciences:HQ - The Family, Marriage, Woman"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -23314,6 +24145,10 @@
   ],
   "lc_rest_facet": [
     "PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -23925,6 +24760,10 @@
   "lc_rest_facet": [
     "PJ - Oriental Languages & Literature"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PJ - Oriental Languages & Literature"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -24140,6 +24979,10 @@
   ],
   "lc_rest_facet": [
     "K - Law"
+  ],
+  "lc_facet": [
+    "K - Law",
+    "K - Law:K - Law"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -24523,6 +25366,10 @@
   "lc_rest_facet": [
     "RA - Public Aspects of Medicine"
   ],
+  "lc_facet": [
+    "R - Medicine",
+    "R - Medicine:RA - Public Aspects of Medicine"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -24763,6 +25610,10 @@
   ],
   "lc_rest_facet": [
     "PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -25324,6 +26175,10 @@
   "lc_rest_facet": [
     "JV - Colonies & Colonization, Emigration & Immigration"
   ],
+  "lc_facet": [
+    "J - Political Science",
+    "J - Political Science:JV - Colonies & Colonization, Emigration & Immigration"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -25553,6 +26408,10 @@
   ],
   "lc_rest_facet": [
     "PS - American Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PS - American Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -26486,6 +27345,10 @@
   "lc_rest_facet": [
     "HN - Social History & Conditions"
   ],
+  "lc_facet": [
+    "H - Social Sciences",
+    "H - Social Sciences:HN - Social History & Conditions"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -26895,6 +27758,10 @@
   "lc_rest_facet": [
     "PK - Indo-Iranian Languages & Literature"
   ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PK - Indo-Iranian Languages & Literature"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -27113,6 +27980,10 @@
   ],
   "lc_rest_facet": [
     "PJ - Oriental Languages & Literature"
+  ],
+  "lc_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature:PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -28228,6 +29099,7 @@
   "subject_topic_facet":["Emotions","Social aspects","Social interaction","Interpersonal relations","Social psychology"],
   "lc_1letter_facet":["H - Social Sciences"],
   "lc_rest_facet":["HM - Sociology"],
+  "lc_facet":["H - Social Sciences","H - Social Sciences:HM - Sociology"],
   "call_number_scheme_facet":["Library of Congress"],
   "call_number_group_facet":["H - Social Sciences"],
   "call_number_full_facet":["HM - Sociology"],
@@ -28388,6 +29260,10 @@
   ],
   "lc_rest_facet": [
     "E - History of the Americas (General)"
+  ],
+  "lc_facet": [
+    "E - History of the Americas (General)",
+    "E - History of the Americas (General):E - History of the Americas (General)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -28861,6 +29737,10 @@
   "lc_rest_facet": [
     "HB - Economic Theory, Demography"
   ],
+  "lc_facet": [
+    "H - Social Sciences",
+    "H - Social Sciences:HB - Economic Theory, Demography"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -29203,6 +30083,10 @@
   "lc_rest_facet": [
     "HQ - The Family, Marriage, Woman"
   ],
+  "lc_facet": [
+    "H - Social Sciences",
+    "H - Social Sciences:HQ - The Family, Marriage, Woman"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -29450,6 +30334,10 @@
   ],
   "lc_rest_facet": [
     "DF - Greece (History)"
+  ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DF - Greece (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -31008,6 +31896,10 @@
   "lc_rest_facet": [
     "HQ - The Family, Marriage, Woman"
   ],
+  "lc_facet": [
+    "H - Social Sciences",
+    "H - Social Sciences:HQ - The Family, Marriage, Woman"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -31212,6 +32104,10 @@
   ],
   "lc_rest_facet": [
     "B - Philosophy, Psychology, Religion"
+  ],
+  "lc_facet": [
+    "B - Philosophy, Psychology, Religion",
+    "B - Philosophy, Psychology, Religion:B - Philosophy, Psychology, Religion"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -31435,6 +32331,10 @@
   ],
   "lc_rest_facet": [
     "N - Fine Arts"
+  ],
+  "lc_facet": [
+    "N - Fine Arts",
+    "N - Fine Arts:N - Fine Arts"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -31716,6 +32616,10 @@
   "lc_rest_facet": [
     "AC - Collections Works"
   ],
+  "lc_facet": [
+    "A - General Works",
+    "A - General Works:AC - Collections Works"
+  ],
   "call_number_scheme_facet": [
     "Library of Congress"
   ],
@@ -31925,6 +32829,10 @@
   "lc_rest_facet": [
       "BF - Psychology"
   ],
+  "lc_facet": [
+    "B - Philosophy, Psychology, Religion",
+    "B - Philosophy, Psychology, Religion:BF - Psychology"
+],
   "call_number_scheme_facet": [
       "Library of Congress"
   ],
@@ -32140,6 +33048,10 @@
   "lc_rest_facet": [
       "QP - Physiology"
   ],
+  "lc_facet": [
+    "Q - Science",
+    "Q - Science:QP - Physiology"
+],
   "call_number_scheme_facet": [
       "Library of Congress"
   ],
@@ -32356,6 +33268,10 @@
   ],
   "lc_rest_facet": [
     "DS - Asia (History)"
+  ],
+  "lc_facet": [
+    "D - World History",
+    "D - World History:DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"

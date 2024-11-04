@@ -16,6 +16,8 @@
 [class*=" icon-"]:before,
 .toggle,
 .toggle.collapsed,
+.toggle-handle,
+.toggle-handle[aria-expanded="true"],
 .document-thumbnail .default {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'pul-icons' !important;
@@ -162,7 +164,10 @@
     }
 }
 
-.toggle.collapsed {
+.toggle.collapsed,
+.toggle-handle {
+    background: none;
+    border: none;
     &:before {
         content: $icon-toggle-collapsed;
     }
@@ -174,7 +179,10 @@
     }
 }
 
-.toggle {
+.toggle,
+.toggle-handle[aria-expanded="true"] {
+    background: none;
+    border: none;
     &:before {
         content: $icon-toggle;
     }
