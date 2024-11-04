@@ -751,12 +751,14 @@ class CatalogController < ApplicationController
   def citation
     if agent_is_crawler?
       basic_response
-    else
+    elsif Orangelight.using_blacklight7?
       # Taken from Blacklight::ActionBuilder#build, which would
       # otherwise generate the citation method dynamically
       #
       # See https://github.com/projectblacklight/blacklight/blob/f6bdb20248c0eee91dbd480b20d1b60f93783b3e/app/builders/blacklight/action_builder.rb#L29-L53
       @response, @documents = action_documents
+    else
+      @documents = action_documents
     end
   end
 
