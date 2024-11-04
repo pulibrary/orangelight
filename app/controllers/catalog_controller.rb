@@ -746,7 +746,11 @@ class CatalogController < ApplicationController
       # otherwise generate the citation method dynamically
       #
       # See https://github.com/projectblacklight/blacklight/blob/f6bdb20248c0eee91dbd480b20d1b60f93783b3e/app/builders/blacklight/action_builder.rb#L29-L53
-      @response, @documents = action_documents
+      if Orangelight.using_blacklight7?
+        @response, @documents = action_documents
+      else
+        @documents = action_documents
+      end
     end
   end
 
