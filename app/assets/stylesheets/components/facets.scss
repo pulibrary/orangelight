@@ -15,7 +15,7 @@
   border-color: #ddd;
 }
 
-.facet-values {
+ul.facet-values {
   li {
     .selected {
       @extend .text-dark;
