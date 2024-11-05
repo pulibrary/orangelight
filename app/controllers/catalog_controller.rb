@@ -681,6 +681,14 @@ class CatalogController < ApplicationController
     config.add_sort_field 'title_sort asc, pub_date_start_sort desc, score desc', label: 'title'
     config.add_sort_field 'cataloged_tdt desc, title_sort asc, score desc', label: 'date cataloged'
 
+    config.add_email_field 'title_display', label: 'Title'
+    config.add_email_field 'title_vern_display', label: 'Title'
+    config.add_email_field 'author_display', label: 'Author'
+    config.add_email_field 'pub_created_display', label: 'Published/Created'
+    config.add_email_field 'format', label: 'Format'
+    config.add_email_field 'holdings_1display', label: 'Holdings', presenter: Orangelight::HoldingsPlainTextPresenter
+    config.add_email_field 'electronic_access_1display', label: 'Online access', presenter: Orangelight::ElectronicAccessPlainTextPresenter
+
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
     config.spell_max = 0
