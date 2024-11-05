@@ -211,3 +211,18 @@ h3.facet-field-heading {
   margin-top: 0px;
   padding: .3rem .9rem !important;
 }
+
+/* Blacklight 7 facet customization, we can remove when Blacklight 8 is merged
+   (this rule specifically matches the Blacklight 7 DOM, it does not match anything
+   in Blacklight 8) */
+li:not(.treeitem) button.facet-toggle-handle {
+  font-size: 1.75rem;
+}
+
+/* Blacklight 7 facet customization, we can remove when Blacklight 8 is merged
+   (this rule specifically matches the Blacklight 7 DOM, it does not match anything
+   in Blacklight 8) */
+li:not(.treeitem) .facet-leaf-node {
+  margin-left: 1.5rem;
+  margin-top: -2.2rem;
+}
