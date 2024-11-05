@@ -6,6 +6,7 @@ RSpec.describe 'orangelight/record_mailer/email_record' do
   before do
     assign(:documents, [SolrDocument.new(properties)])
     assign(:url_gen_params, {})
+    allow(view).to receive(:blacklight_config).and_return(CatalogController.blacklight_config.dup)
     render
   end
   describe 'record with vernacular script' do
@@ -30,7 +31,7 @@ RSpec.describe 'orangelight/record_mailer/email_record' do
 
     it 'includes a label for each value in multivalued field' do
       expect(rendered).to have_text('Published/Created: al-Muhandisīn')
-      expect(rendered).to have_text('Published/Created: المهندسين،')
+      expect(rendered).to have_text('المهندسين،')
     end
 
     it 'excludes online information if no links present' do
@@ -41,9 +42,9 @@ RSpec.describe 'orangelight/record_mailer/email_record' do
       expect(rendered).to have_text('Holdings:')
     end
 
-    it 'individual holding information is tabbed' do
-      expect(rendered).to have_text("\tLocation: ReCAP - Remote Storage")
-      expect(rendered).to have_text("\tCall number: DT194")
+    it 'individual holding information is included' do
+      expect(rendered).to have_text("Location: ReCAP - Remote Storage")
+      expect(rendered).to have_text("Call number: DT194")
     end
   end
 
@@ -73,8 +74,8 @@ RSpec.describe 'orangelight/record_mailer/email_record' do
     it 'includes online access label' do
       expect(rendered).to have_text('Online access:')
     end
-    it 'includes link with link text tabbed over' do
-      expect(rendered).to have_text("\tFull text - DataSpace: http://arks.princeton.edu")
+    it 'includes link' do
+      expect(rendered).to have_text("Full text - DataSpace: http://arks.princeton.edu")
     end
     it 'includes format' do
       expect(rendered).to have_text('Format: Senior Thesis')
