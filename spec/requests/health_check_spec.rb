@@ -68,11 +68,11 @@ RSpec.describe "Health Check", type: :request do
       end
       before { bibdata_stub }
 
-      it 'errors when a service is down' do
+      it 'has error but does not show as down when bibdata is down' do
         get "/health.json"
         expect(bibdata_stub).to have_been_requested
-        expect(response).not_to be_successful
-        expect(response.status).to eq 503
+        expect(response).to be_successful
+        expect(response.status).to eq 200
         bibdata_response = JSON.parse(response.body)["results"].find { |x| x["name"] == "BibdataStatus" }
         expect(bibdata_response["message"]).to start_with "Bibdata has an invalid status"
       end
