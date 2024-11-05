@@ -686,7 +686,6 @@ class CatalogController < ApplicationController
     config.add_email_field 'author_display', label: 'Author'
     config.add_email_field 'pub_created_display', label: 'Published/Created'
     config.add_email_field 'format', label: 'Format'
-    config.add_email_field 'holdings_1display', label: 'Holdings', presenter: Orangelight::HoldingsPlainTextPresenter
     config.add_email_field 'electronic_access_1display', label: 'Online access', presenter: Orangelight::ElectronicAccessPlainTextPresenter
 
     # If there are more than this many search results, no spelling ("did you
