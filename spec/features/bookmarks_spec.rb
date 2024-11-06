@@ -56,5 +56,17 @@ RSpec.describe 'bookmarks' do
 
       expect(page).to have_content "1 entry found"
     end
+
+    it "updates the count of bookmarks when a user removes a bookmark", js: true do
+      stub_holding_locations
+      Bookmark.create(user:, document_id: "99122304923506421", document_type: "SolrDocument")
+      login_as user
+      visit "/bookmarks"
+      expect(page).to have_content 'Bookmarks (1)'
+
+      uncheck 'In Bookmarks'
+
+      expect(page).to have_content 'Bookmarks (0)'
+    end
   end
 end
