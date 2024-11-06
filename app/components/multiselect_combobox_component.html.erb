@@ -12,16 +12,29 @@
                 tabindex: -1,
                 role: 'option' %>
         <% end %>
+        <% if @field_name == 'advanced_location_s' %>
+            <%= content_tag :li,
+                'pul',
+                class: 'dropdown-item',
+                tabindex: -1,
+                role: 'option' %>
+        <% end %>
     </ul>
     <%= content_tag(:select, multiple: true, "aria-hidden" => "true",
         hidden: true,
         name: "f_inclusive[#{@field_name}][]",
         id: @hidden_select_id) do %>
         <% @values.each do |value| %>
-        <%= content_tag :option,
-            value[:label],
-            value: value[:value],
-            selected: value[:selected] %>
+            <%= content_tag :option,
+                value[:label],
+                value: value[:value],
+                selected: value[:selected] %>
+        <% end %>
+        <% if @field_name == 'advanced_location_s' %>
+            <%= content_tag :option,
+                'pul',
+                value: 'pul',
+                selected: params.dig('f_inclusive', 'advanced_location_s', 0) == 'pul' %>
         <% end %>
     <% end %>
     <div class="sr-only visually-hidden number-of-results" aria-live="polite" aria-atomic="false">
