@@ -141,10 +141,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true, include_in_advanced_search: false
 
     config.add_facet_field 'lc_facet', label: 'Classification', component: Blacklight::Hierarchy::FacetFieldListComponent, sort: 'index', limit: 1000, include_in_advanced_search: false, if: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_facet? }
-    config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet], collapsing: true, icons: {
-      hide: '<i class="icon toggle"></i>'.html_safe,
-      show: '<i class="icon toggle collapsed"></i>'.html_safe
-    }, include_in_advanced_search: false, unless: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_facet? }
+    config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet], collapsing: true, include_in_advanced_search: false, unless: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_facet? }
 
     config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'lc_rest_facet', label: 'Full call number code', limit: 25, include_in_request: false, sort: 'index'
@@ -680,6 +677,13 @@ class CatalogController < ApplicationController
     config.add_sort_field 'author_sort asc, title_sort asc, score desc', label: 'author'
     config.add_sort_field 'title_sort asc, pub_date_start_sort desc, score desc', label: 'title'
     config.add_sort_field 'cataloged_tdt desc, title_sort asc, score desc', label: 'date cataloged'
+
+    config.add_email_field 'title_display', label: 'Title'
+    config.add_email_field 'title_vern_display', label: 'Title'
+    config.add_email_field 'author_display', label: 'Author'
+    config.add_email_field 'pub_created_display', label: 'Published/Created'
+    config.add_email_field 'format', label: 'Format'
+    config.add_email_field 'electronic_access_1display', label: 'Online access', presenter: Orangelight::ElectronicAccessPlainTextPresenter
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.

@@ -16,7 +16,7 @@ class BookmarksController < CatalogController
   def print
     fetch_bookmarked_documents
     @url_gen_params = {}
-    render('record_mailer/email_record', formats: [:text])
+    render('orangelight/record_mailer/email_record', formats: [:text])
   end
 
   def csv

@@ -128,6 +128,31 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       expect(title_field.value).to eq("Bible, Latin.")
     end
 
+    it 'closes a modal for Suggest a Correction' do
+      if Orangelight.using_blacklight7?
+        true
+      else
+        visit "catalog/#{document_id}"
+        click_on('Suggest a Correction')
+        expect(page).to have_field('Name')
+        expect(page).to have_content('Please use this area to report errors or omissions')
+        page.find('.blacklight-modal-close').click
+        expect(page).not_to have_content('Please use this area to report errors or omissions')
+      end
+    end
+
+    it 'closes a modal for Report Harmful Language' do
+      if Orangelight.using_blacklight7?
+        true
+      else
+        visit "catalog/#{document_id}"
+        click_on('Report Harmful Language')
+        expect(page).to have_content('users may encounter offensive or harmful language')
+        page.find('.blacklight-modal-close').click
+        expect(page).not_to have_content('users may encounter offensive or harmful language')
+      end
+    end
+
     it 'opens a modal for Report Harmful Language' do
       visit "catalog/#{document_id}"
       click_on('Report Harmful Language')
