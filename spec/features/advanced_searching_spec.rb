@@ -123,7 +123,7 @@ describe 'advanced searching', advanced_search: true do
     it 'can exclude terms from the search', js: false do
       # defaults to keyword
       fill_in(id: 'clause_0_query', with: 'gay')
-      choose(id: 'clause_2_op_must_not')
+      choose(id: 'boolean_operator2_NOT')
       # defaults to title
       fill_in(id: 'clause_2_query', with: 'RenoOut')
       click_button('advanced-search-submit')
@@ -132,10 +132,24 @@ describe 'advanced searching', advanced_search: true do
       expect(page).not_to have_content('Reno Gay Press and Promotions')
     end
 
+    it 'can do a boolean OR search', js: false do
+      # defaults to keyword
+      fill_in(id: 'clause_0_query', with: 'gay')
+      choose(id: 'boolean_operator1_OR')
+      # defaults to title
+      select('Title', from: 'clause_1_field')
+      fill_in(id: 'clause_1_query', with: 'algebra')
+      click_button('advanced-search-submit')
+      expect(page.find(".page_entries").text).to eq('1 - 3 of 3')
+      expect(page).to have_content('Seeking sanctuary')
+      expect(page).to have_content('Reno Gay Press and Promotions')
+      expect(page).to have_content('College algebra')
+    end
+
     it 'shows constraint-value on search results page' do
       # defaults to keyword
       fill_in(id: 'clause_0_query', with: 'gay')
-      choose(id: 'clause_2_op_must_not')
+      choose(id: 'boolean_operator2_NOT')
       # defaults to title
       fill_in(id: 'clause_2_query', with: 'RenoOut')
       click_button('advanced-search-submit')

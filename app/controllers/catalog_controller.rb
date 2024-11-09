@@ -693,7 +693,7 @@ class CatalogController < ApplicationController
 
     config.filter_search_state_fields = true
     config.search_state_fields = config.search_state_fields + [
-      :advanced_type, :clause
+      :advanced_type, :clause, :boolean_operator1, :boolean_operator2
     ]
 
     config.index.constraints_component = Orangelight::ConstraintsComponent
