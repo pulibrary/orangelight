@@ -52,6 +52,15 @@ describe 'advanced searching', advanced_search: true do
     expect(page).not_to have_content("Огонек : роман")
   end
 
+  it 'has a pul option in the holding location select', js: true do
+    visit '/advanced'
+    expect(page).to have_selector('label', exact_text: 'Holding location')
+    holding_location = find_field('advanced_location_s')
+    holding_location.click
+    drop_down = holding_location.sibling(".dropdown-menu")
+    expect(drop_down).to have_content("pul")
+  end
+
   it 'allows searching by publication date', js: true do
     visit '/advanced'
     find('#range_pub_date_start_sort_begin').fill_in(with: '1990')
