@@ -1,0 +1,8 @@
+#skip-link:focus-within {
+    height: 2rem;
+}
+#skip-link a {
+    @include sr-only;
+    @include sr-only-focusable;
+    margin: .2rem 0;
+}
