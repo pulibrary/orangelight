@@ -5,7 +5,7 @@
 # must_not, or should)
 class AdvancedBooleanOperators
   def initialize(parameters)
-    @parameters = parameters
+    @parameters = parameters || ActionController::Parameters.new
   end
 
   def for_boolqparser

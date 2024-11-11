@@ -5,7 +5,6 @@ class SearchBuilder < Blacklight::SearchBuilder
   include BlacklightRangeLimit::RangeLimitBuilder
   include BlacklightHelper
 
-  default_processor_chain.unshift(:convert_custom_boolean_operators_to_solr_operators)
   default_processor_chain.unshift(:conditionally_configure_json_query_dsl)
 
   self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators
@@ -112,10 +111,6 @@ class SearchBuilder < Blacklight::SearchBuilder
   def conditionally_configure_json_query_dsl(_solr_parameters)
     advanced_fields = %w[all_fields title author subject left_anchor publisher in_series notes series_title isbn issn]
     add_edismax(advanced_fields:)
-  end
-
-  def convert_custom_boolean_operators_to_solr_operators(_solr_parameters)
-    @search_state = search_state.reset(AdvancedBooleanOperators.new(search_state.params).for_boolqparser)
   end
 
   def adjust_mm(solr_parameters)

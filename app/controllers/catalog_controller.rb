@@ -709,6 +709,7 @@ class CatalogController < ApplicationController
   end
 
   def index
+    solrize_boolean_params
     if no_search_yet?
       render_empty_search
     else
@@ -858,5 +859,9 @@ class CatalogController < ApplicationController
 
     def search_service_compatibility_wrapper
       @search_service_compatibility_wrapper ||= SearchServiceCompatibilityWrapper.new(search_service)
+    end
+
+    def solrize_boolean_params
+      @search_state = search_state.reset(AdvancedBooleanOperators.new(search_state.params).for_boolqparser)
     end
 end
