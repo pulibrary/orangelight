@@ -50,6 +50,7 @@ detectors:
     - Requests::ApplicationHelper#hidden_service_options
     - Requests::ApplicationHelper#single_pickup
     - Requests::RequestHelper#reshare_type
+    - AdvancedBooleanOperators#initialize
     - Blacklight::Document::JsonLd#check_role
     - Blacklight::Document::JsonLd#date
     - Requests::Aeon#holding_location_to_site
@@ -62,16 +63,12 @@ detectors:
     - PhysicalHoldingsMarkupBuilder#self.thesis?
   DataClump:
     exclude:
-    - ApplicationHelper
     - Requests::ApplicationHelper
     - Requests::SelectedItemsValidator
     - PhysicalHoldingsMarkupBuilder
   DuplicateMethodCall:
     exclude:
     - Holdings::OnlineHoldingsComponent#marc_links
-    - LocationCodeFacetComponent#add_scsb_loc
-    - LocationCodeFacetComponent#fetch_libraries_and_locations
-    - LocationCodeFacetComponent#library_facet_values
     - NumismaticsSearchFormComponent#initialize_constraints
     - Orangelight::AdvancedSearchFormComponent#fields_for_etc
     - Orangelight::AdvancedSearchFormComponent#initialize_search_filter_controls
@@ -86,7 +83,6 @@ detectors:
     - ApplicationController#default_url_options
     - ApplicationController#origin
     - BookmarksController#csv_values
-    - BookmarksController#index
     - CatalogController#render_empty_search
     - Orangelight::Catalog#linked_records
     - Orangelight::Catalog#redirect_browse
@@ -151,7 +147,6 @@ detectors:
     - Requests::RequestHelper#pul_patron_name
     - Requests::RequestMailer#on_shelf_email
     - Requests::RequestMailer#paging_pick_ups
-    - Blacklight::Document::Email#add_holding_fields
     - Blacklight::Document::Email#add_online_text
     - Blacklight::Document::JsonLd#data
     - Blacklight::Document::JsonLd#date
@@ -171,7 +166,7 @@ detectors:
     - Requests::Scsb#parse_scsb_response
     - Requests::Scsb#scsb_param_mapping
     - Requests::Scsb#scsb_request
-    - RecordMailer#email_record
+    - Orangelight::RecordMailer#email_record
     - Requests::AeonUrl#ctx_with_item_info
     - Requests::ClancyItem#get_clancy
     - Requests::ClancyItem#initialize
@@ -252,7 +247,6 @@ detectors:
     - StackmapService::Url#url
   FeatureEnvy:
     exclude:
-    - LocationCodeFacetComponent#add_scsb_loc
     - Orangelight::ConstraintsComponent#guided_search_value
     - Orangelight::FacetFieldCheckboxesComponent#values
     - Orangelight::SearchBarComponent#search_fields
@@ -262,7 +256,6 @@ detectors:
     - AdvancedHelper#advanced_search_fields
     - AdvancedHelper#param_for_field
     - ApplicationHelper#action_notes_display
-    - ApplicationHelper#search_location_display
     - ApplicationHelper#series_results
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#isbn_resolve
@@ -292,7 +285,7 @@ detectors:
     - Requests::Scsb#parse_scsb_response
     - Requests::Scsb#scsb_param_mapping
     - Requests::Scsb#scsb_request
-    - RecordMailer#email_record
+    - Orangelight::RecordMailer#email_record
     - Requests::AlmaPatron#active_barcode
     - Requests::ClancyItem#get_clancy
     - Requests::ClancyItem#post_clancy
@@ -384,7 +377,6 @@ detectors:
     - IndexMetadataComponent
     - IndexMetadataFieldLayoutComponent
     - IndexTitleComponent
-    - LocationCodeFacetComponent
     - MultiselectComboboxComponent
     - NumismaticsSearchFormComponent
     - Orangelight::AdvancedSearchFormComponent
@@ -395,6 +387,7 @@ detectors:
     - Orangelight::FacetFieldCheckboxesComponent
     - Orangelight::SearchBarComponent
     - Orangelight::SearchContext::ServerItemPaginationComponent
+    - Orangelight::System::FlashMessageComponent
     - AccountController
     - ApplicationController
     - BookmarksController
@@ -442,6 +435,7 @@ detectors:
     - Orangelight::CallNumber
     - Orangelight::Name
     - Orangelight::NameTitle
+    - Orangelight::RecordMailer
     - Orangelight::Subject
     - Orangelight
     - Requests::ClancyItem
@@ -511,8 +505,6 @@ detectors:
   LongParameterList:
     exclude:
     - Orangelight::ConstraintsComponent#initialize
-    - ApplicationHelper#locate_link_with_glyph
-    - ApplicationHelper#locate_url
     - HoldingsHelper#holding_status_li
     - Requests::ApplicationHelper#single_pickup
     - Requests::RequestMailer#confirmation_email
@@ -546,7 +538,6 @@ detectors:
     - ApplicationController
   NestedIterators:
     exclude:
-    - LocationCodeFacetComponent#fetch_libraries_and_locations
     - BookmarksController#csv_output
     - AdvancedHelper#generate_solr_fq
     - ApplicationHelper#name_title_hierarchy
@@ -568,10 +559,6 @@ detectors:
     - SolrDocument#identifiers
   NilCheck:
     exclude:
-    - LocationCodeFacetComponent#add_library
-    - LocationCodeFacetComponent#add_scsb_loc
-    - LocationCodeFacetComponent#fetch_libraries_and_locations
-    - LocationCodeFacetComponent#location_codes_by_lib
     - Orangelight::AdvancedSearchFormComponent#initialize_search_filter_controls
     - AccountController#cancel_ill_requests
     - ApplicationController#after_sign_in_path_for
@@ -589,7 +576,6 @@ detectors:
     - ApplicationHelper#alma_location_display
     - ApplicationHelper#fast_subjects_value?
     - ApplicationHelper#holding_location_label
-    - ApplicationHelper#locate_link_with_glyph
     - ApplicationHelper#render_location_code
     - BlacklightHelper#html_facets
     - BlacklightHelper#isbn_resolve
@@ -647,7 +633,7 @@ detectors:
   TooManyInstanceVariables:
     exclude:
     - MultiselectComboboxComponent
-    - BookmarksController
+    - CatalogController
     - FeedbackController
     - Orangelight::BrowsablesController
     - Requests::FormController
@@ -689,13 +675,10 @@ detectors:
     - AeonStatus#check!
     - BibdataStatus#check!
     - Holdings::OnlineHoldingsComponent#marc_links
-    - LocationCodeFacetComponent#fetch_libraries_and_locations
-    - LocationCodeFacetComponent#location_codes_by_lib
     - Orangelight::ConstraintsComponent#guided_search_value
     - Orangelight::SearchBarComponent#before_render
     - AccountController#cancel_ill_requests
     - ApplicationController#after_sign_in_path_for
-    - BookmarksController#index
     - CatalogController#numismatics
     - CatalogController#render_empty_search
     - Orangelight::Stackmap#stackmap
@@ -741,7 +724,6 @@ detectors:
     - Blacklight::Document::CiteProc#properties
     - Blacklight::Document::DublinCore#export_as_oai_dc_xml
     - Blacklight::Document::DublinCore#export_as_rdf_dc
-    - Blacklight::Document::Email#add_holdings_text
     - Blacklight::Document::Email#add_online_text
     - Blacklight::Document::JsonLd#contributors
     - Blacklight::Document::JsonLd#data
@@ -760,7 +742,7 @@ detectors:
     - Requests::Scsb#items_by_id
     - Requests::Scsb#parse_scsb_response
     - Requests::Scsb#scsb_request
-    - RecordMailer#email_record
+    - Orangelight::RecordMailer#email_record
     - Requests::AeonUrl#ctx_with_item_info
     - Requests::ClancyItem#post_clancy
     - Requests::ClancyItem#request
@@ -824,8 +806,6 @@ detectors:
     exclude:
     - Orangelight::AdvancedSearchFormComponent#initialize_search_filter_controls
     - Orangelight::ConstraintsComponent#remove_guided_query_path
-    - BookmarkButtonComponent
-    - BookmarksController#bookmark_ids
     - BookmarksController#csv_bom
     - BookmarksController#two_values
     - Orangelight::Catalog#online_holding_note?
@@ -871,13 +851,10 @@ detectors:
     - Requests::RequestMailer#recap_marquand_in_library_email
   UtilityFunction:
     exclude:
-    - LocationCodeFacetComponent#add_library
-    - LocationCodeFacetComponent#library_facet_values
     - Orangelight::DropdownHelpTextComponent#option_text_and_value
     - AccountController#cancel_ill_success
     - AccountController#current_patron
     - ApplicationController#default_url_options
-    - BookmarksController#convert_to_alma_id
     - BookmarksController#csv_bom
     - BookmarksController#two_values
     - Orangelight::Catalog#online_holding_note?
@@ -896,7 +873,6 @@ detectors:
     - ApplicationHelper#holding_location
     - ApplicationHelper#holding_request_block
     - ApplicationHelper#html_safe
-    - ApplicationHelper#locate_url
     - ApplicationHelper#location_full_display
     - ApplicationHelper#rails_env?
     - ApplicationHelper#remote_storage?
@@ -932,7 +908,6 @@ detectors:
     - Requests::RequestMailer#annex_items
     - Bookmark#alma_id?
     - Bookmark#special_system_id?
-    - Blacklight::Document::Email#add_holding_fields
     - Blacklight::Document::Email#add_online_text
     - Blacklight::Document::Email#add_single_valued_field
     - Blacklight::Document::JsonLd#check_role
