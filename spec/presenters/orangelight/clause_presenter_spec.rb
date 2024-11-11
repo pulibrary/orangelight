@@ -16,4 +16,17 @@ RSpec.describe Orangelight::ClausePresenter do
       expect(subject.label).to eq 'NOT some search string'
     end
   end
+  describe '#field_label' do
+    context 'when the field config does not exist' do
+      let(:field_config) { nil }
+
+      it 'returns nil' do
+        expect(subject.field_label).to be_nil
+      end
+
+      it 'does not raise an error' do
+        expect { subject.field_label }.not_to raise_error
+      end
+    end
+  end
 end
