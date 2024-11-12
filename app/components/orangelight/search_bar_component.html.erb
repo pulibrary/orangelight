@@ -1,7 +1,7 @@
 <%= form_with url: search_catalog_url, local: true, method: @method, class: @classes.join(' '), scope: @prefix, role: 'search', aria: { label: scoped_t('submit') }, **@form_options do |f| %>
   <%= render Blacklight::HiddenSearchStateComponent.new(params: @params) %>
   <% if search_fields.length > 1 %>
-    <%= f.label :search_field, scoped_t('search_field.label'), class: 'sr-only visually-hidden' %>
+    <%= f.label :search_field, scoped_t('search_field.label'), class: 'visually-hidden visually-hidden' %>
   <% end %>
   <% before_input_groups.each do |input_group| %>
     <%= input_group %>
@@ -22,7 +22,7 @@
       <%= f.hidden_field :search_field, value: search_fields.first.last %>
     <% end %>
 
-    <%= f.label @query_param, scoped_t('search.label'), class: 'sr-only visually-hidden' %>
+    <%= f.label @query_param, scoped_t('search.label'), class: 'visually-hidden visually-hidden' %>
     <% if autocomplete_path.present? %>
       <auto-complete src="<%= autocomplete_path %>" for="autocomplete-popup" class="search-autocomplete-wrapper">
         <%= f.search_field @query_param, value: @q, placeholder: scoped_t('search.placeholder'),
@@ -43,7 +43,7 @@
     <%= append %>
       <span class="input-group-append">
         <button type="submit" class="btn btn-primary search-btn" id="search">
-          <span class="submit-search-text sr-only"><%=t('blacklight.search.form.submit')%></span>
+          <span class="submit-search-text visually-hidden"><%=t('blacklight.search.form.submit')%></span>
           <i class="fa fa-search" aria-hidden="true"></i>
         </button>
       </span>
