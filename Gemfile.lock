@@ -303,7 +303,7 @@ GEM
       activesupport (>= 6.1)
     hashdiff (1.1.1)
     hashie (5.0.0)
-    health-monitor-rails (12.3.0)
+    health-monitor-rails (12.4.0)
       railties (>= 6.1)
     high_voltage (4.0.0)
     honeybadger (5.15.6)
@@ -773,7 +773,7 @@ DEPENDENCIES
   flipflop
   friendly_id (~> 5.4.2)
   global
-  health-monitor-rails (~> 12.2)
+  health-monitor-rails (= 12.4.0)
   high_voltage
   honeybadger
   jbuilder (~> 2.0)
