@@ -10,14 +10,12 @@
     <%= prepend %>
 
     <% if search_fields.length > 1 %>
-      <span class="input-group-prepend">
         <%= f.select(:search_field,
                    options_for_select(search_fields, h(@search_field)),
                    {},
                    id: 'search_field',
                    'aria-label': scoped_t('search_field.title'),
                    class: "form-select search-field") %>
-      </span>
     <% elsif search_fields.length == 1 %>
       <%= f.hidden_field :search_field, value: search_fields.first.last %>
     <% end %>
@@ -41,12 +39,10 @@
     <% end %>
 
     <%= append %>
-      <span class="input-group-append">
         <button type="submit" class="btn btn-primary search-btn" id="search">
           <span class="submit-search-text visually-hidden"><%=t('blacklight.search.form.submit')%></span>
           <i class="fa fa-search" aria-hidden="true"></i>
         </button>
-      </span>
   </div>
 <% end %>
 
