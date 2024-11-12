@@ -213,7 +213,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       let(:stubbed_questions) { { no_services?: true, preferred_request_id: '123', title: 'My Title', item: nil } }
       it 'a message for lewis' do
         expect(helper.show_service_options(requestable, 'acb')).to eq \
-          "<div class=\"sr-only\">My Title  Item is not requestable.</div>" \
+          "<div class=\"visually-hidden\">My Title  Item is not requestable.</div>" \
           "<div class=\"service-item\" aria-hidden=\"true\">Item is not requestable.</div>"
       end
     end
@@ -222,7 +222,7 @@ RSpec.describe Requests::ApplicationHelper, type: :helper,
       let(:stubbed_questions) { { no_services?: true, preferred_request_id: '123', title: 'My Title', item: Requests::Item.new({ enum_display: "abc123" }.with_indifferent_access) } }
       it 'a message for lewis' do
         expect(helper.show_service_options(requestable, 'acb')).to eq \
-          "<div class=\"sr-only\">My Title abc123 Item is not requestable.</div>" \
+          "<div class=\"visually-hidden\">My Title abc123 Item is not requestable.</div>" \
           "<div class=\"service-item\" aria-hidden=\"true\">Item is not requestable.</div>"
       end
     end
