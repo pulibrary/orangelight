@@ -8,7 +8,7 @@ Versions:
 
 * Ruby: 3.1.0
 * Rails: 7.1
-* Blacklight: 7.33.0
+* Blacklight: 8.6
 
 ## Development pre-requisites
 * In order to run locally, you must have Lando installed for your system - see https://docs.lando.dev/getting-started/installation.html.
