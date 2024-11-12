@@ -5,7 +5,7 @@
     <table class="table table-striped table-bordered account--requests">
       <thead>
         <tr>
-          <th class="hide-print"><label><input type="checkbox" id="select-all-borrowing-requests"/> <span class="sr-only">Select all</span></label></th>
+          <th class="hide-print"><label><input type="checkbox" id="select-all-borrowing-requests"/> <span class="visually-hidden">Select all</span></label></th>
           <th>Item</th>
           <th>Status</th>
           <th>More Information</th>
@@ -17,7 +17,7 @@
             <td class="hide-print">
               <label><input id="cancel-<%= item['TransactionNumber'] %>" type="checkbox" name="cancel_requests[]"
               value="<%= item['TransactionNumber'] %>">
-              <span class="sr-only">Cancel</span></label>
+              <span class="visually-hidden">Cancel</span></label>
             </td>
             <td><%= item["PhotoJournalTitle"] %> / <%= item["PhotoArticleAuthor"] %></td>
             <td>

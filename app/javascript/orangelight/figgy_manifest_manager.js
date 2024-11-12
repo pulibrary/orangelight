@@ -251,7 +251,7 @@ class FiggyThumbnailSet {
       $element.addClass('has-viewer-link');
       $element
         .wrap('<a href="#viewer-container"></a>')
-        .append('<span class="sr-only">Go to viewer</span>');
+        .append('<span class="visually-hidden">Go to viewer</span>');
       $element.append($thumbnailElement);
     });
   }

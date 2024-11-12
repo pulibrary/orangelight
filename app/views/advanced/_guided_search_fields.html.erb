@@ -1,6 +1,6 @@
 <div class="advanced-search-field">
   <div class="search-field">
-    <label for="clause_0_field" class="sr-only">Options for advanced search</label>
+    <label for="clause_0_field" class="visually-hidden">Options for advanced search</label>
     <%= select_tag(
           'clause[0][field]',
           options_for_select(
@@ -9,7 +9,7 @@
           ),
           class: "search_field") %>
     <div name="row1">
-      <label for='clause_0_query' class='sr-only'>Advanced search terms</label>
+      <label for='clause_0_query' class='visually-hidden'>Advanced search terms</label>
       <%= text_field_tag(
             "clause[0][query]",
             label_tag_default_for(:clause_0_query),
@@ -26,7 +26,7 @@
     <label><%= radio_button_tag("boolean_operator1", "NOT", guided_radio(:boolean_operator1, "NOT"), class: 'first-not') %> NOT</label>
   </div>
   <div class="search-field">
-    <label for="clause_1_field" class="sr-only">Options for advanced search - second parameter</label>
+    <label for="clause_1_field" class="visually-hidden">Options for advanced search - second parameter</label>
     <%= select_tag(
           'clause[1][field]', 
           options_for_select(
@@ -35,7 +35,7 @@
           ), 
           class: "search_field") %>
     <div name="row2">
-      <label for='clause_1_query' class='sr-only'>Advanced search terms - second parameter</label>
+      <label for='clause_1_query' class='visually-hidden'>Advanced search terms - second parameter</label>
       <%= text_field_tag(
             "clause[1][query]", 
             label_tag_default_for(:clause_1_query), 
@@ -52,7 +52,7 @@
     <label><%= radio_button_tag("boolean_operator2", "NOT", guided_radio(:boolean_operator2, "NOT")) %> NOT</label>
   </div>
   <div class="search-field">
-    <label for="clause_2_field" class="sr-only">Options for advanced search - third parameter</label>
+    <label for="clause_2_field" class="visually-hidden">Options for advanced search - third parameter</label>
     <%= select_tag(
           'clause[2][field]', 
           options_for_select(
@@ -61,7 +61,7 @@
           ),
           class: "search_field") %>
     <div name="row3">
-      <label for='clause_2_query' class='sr-only'>Advanced search terms - third parameter</label>
+      <label for='clause_2_query' class='visually-hidden'>Advanced search terms - third parameter</label>
       <%= text_field_tag(
             "clause[2][query]", 
             label_tag_default_for(:clause_2_query), 

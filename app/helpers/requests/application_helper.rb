@@ -34,7 +34,7 @@ module Requests
 
     def show_service_options(requestable, _mfhd_id)
       if requestable.no_services?
-        content_tag(:div, "#{requestable.title} #{enum_copy_display(requestable.item)} #{sanitize(I18n.t('requests.no_services.brief_msg'))}", class: 'sr-only') +
+        content_tag(:div, "#{requestable.title} #{enum_copy_display(requestable.item)} #{sanitize(I18n.t('requests.no_services.brief_msg'))}", class: 'visually-hidden') +
           content_tag(:div, sanitize(I18n.t("requests.no_services.brief_msg")), class: 'service-item', aria: { hidden: true })
       elsif requestable.charged? && !requestable.aeon? && !requestable.ask_me?
         render partial: 'checked_out_options', locals: { requestable: }
