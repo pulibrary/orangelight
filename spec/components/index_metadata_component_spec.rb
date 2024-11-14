@@ -33,8 +33,8 @@ RSpec.describe IndexMetadataComponent, type: :component do
     expect(render_inline(component).css('li').first.text.strip).to eq('Hello')
   end
   it 'renders multi-valued fields' do
-    expect(render_inline(component).search('./li/ul/li/ul/li').length).to eq(2)
-    expect(render_inline(component).search('./li/ul/li/ul/li').map(&:text).map(&:strip)).to eq(['Goodbye', 'Auf Wiedersehen'])
+    expect(render_inline(component).search('./li/ul/li').length).to eq(2)
+    expect(render_inline(component).search('./li/ul/li').map(&:text).map(&:strip)).to eq(['Goodbye', 'Auf Wiedersehen'])
   end
   context 'when the index field is configured to use a component' do
     let(:blacklight_config) do
