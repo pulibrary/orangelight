@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe IndexDocumentComponent, type: :component do
   let(:blacklight_config) do
     Blacklight::Configuration.new do |config|
-      config.track_search_session.storage = false
+      config.track_search_session = false
     end
   end
   before do
@@ -16,7 +16,7 @@ RSpec.describe IndexDocumentComponent, type: :component do
   end
   subject do
     document = SolrDocument.new(id: 'SCSB-1234')
-    presenter = Blacklight::DocumentPresenter.new(document, instance_double(ActionView::Base, action_name: 'show'), blacklight_config)
+    presenter = Blacklight::DocumentPresenter.new(document, instance_double(ActionView::Base), blacklight_config)
     allow(presenter).to receive(:fields).and_return([])
     allow(document).to receive(:export_as_openurl_ctx_kev).and_return 'ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.issn=1045-4438'
     render_inline(described_class.new(document:, presenter:))
