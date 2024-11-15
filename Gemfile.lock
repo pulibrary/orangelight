@@ -757,7 +757,7 @@ DEPENDENCIES
   axe-core-rspec
   babel-transpiler
   bcrypt_pbkdf
-  blacklight (~> 8.6.1)
+  blacklight (~> 8.6)
   blacklight-hierarchy
   blacklight-marc (~> 8.1)
   blacklight_dynamic_sitemap

@@ -4,10 +4,17 @@
     <div class="col-xs-12 px-4">
       <div class="button--start-over">
         <%= render_start_over_link(root_path) %>
-      </div>
+      </div></br>
       <% if @search_context %>
+      blacklight_config.track_search_session.storage: <%= blacklight_config.track_search_session.storage %></br>
+      Prev_ID: <%= @search_context[:prev]["id"] if @search_context[:prev] %></br>
+      Next_ID: <%= @search_context[:next]["id"] if @search_context[:next] %></br>
+      Document_ID: <%= @document.id %></br>
+      SearchSession_ID: <%= search_session["document_id"] %></br>
+      Document_ID == SearchSession_ID: <%= @document.id == search_session["document_id"] %></br>
+
           <%= link_back_to_catalog_safe class: 'btn btn-default button--back-to-search', label:  t('blacklight.back_to_search').html_safe %>
-          <%= render 'previous_next_doc' %>
+          <%= render(Orangelight::SearchContext::ServerItemPaginationComponent.new(search_context: @search_context, search_session: search_session, current_document: @document)) %>
       <% end %>
     </div>
     <%= render 'show_tools' %>
