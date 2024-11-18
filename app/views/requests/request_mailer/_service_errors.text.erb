@@ -1,8 +1,8 @@
 ==============================================
 Request Service Errors
 ==============================================
-<% @services.each do |s| %>
-  <% s.errors.each do |error| %>
+<% @errors.each do |name, e| %>
+  <% e.each do |error| %>
       <% error.each do |k,v| %>
         <%= "#{k}=#{v}" %>
       <% end %>

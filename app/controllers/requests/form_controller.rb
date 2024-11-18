@@ -97,7 +97,7 @@ module Requests
                               I18n.t('requests.submit.service_error')
                             end
         logger.error "Request Service Error"
-        Requests::RequestMailer.send("service_error_email", services, @submission).deliver_now
+        Requests::RequestMailer.send("service_error_email", services, @submission).deliver_later
       end
 
       def respond_to_validation_error(submission)

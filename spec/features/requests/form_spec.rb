@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'rails_helper'
+include ActiveJob::TestHelper
 
 # rubocop:disable Metrics/BlockLength
 describe 'request form', vcr: { cassette_name: 'form_features', record: :none }, type: :feature, requests: true do
@@ -114,7 +115,11 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         check "requestable_selected_23492663220006421"
         expect(page).to have_content 'Request via Partner Library'
         expect(page).to have_content 'Pick-up location: Firestone Library'
-        expect { click_button 'Request Selected Items' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        perform_enqueued_jobs
+        expect {
+          click_button 'Request Selected Items'
+          perform_enqueued_jobs
+        }.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
         confirm_email = ActionMailer::Base.deliveries.last
         expect(confirm_email.subject).to eq("Partner Request Confirmation")
@@ -145,7 +150,10 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(page).to have_selector '#request_user_barcode', visible: :hidden
         choose('requestable__delivery_mode_23558528910006421_print') # chooses 'print' radio button
         select('Firestone Library', from: 'requestable__pick_up_23558528910006421')
-        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect { 
+          click_button 'Request this Item'
+          perform_enqueued_jobs
+        }.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(a_request(:post, scsb_url)).to have_been_made
         expect(page).to have_content I18n.t("requests.submit.recap_success")
         confirm_email = ActionMailer::Base.deliveries.last
@@ -175,7 +183,10 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23753408600006421')
         select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23753408600006421')
         select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23753408600006421')
-        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect { 
+          click_button 'Request this Item'
+          perform_enqueued_jobs
+        }.to change { ActionMailer::Base.deliveries.count }.by(2)
         expect(page).to have_content I18n.t("requests.submit.in_process_success")
         email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
         confirm_email = ActionMailer::Base.deliveries.last
