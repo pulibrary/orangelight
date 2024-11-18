@@ -771,6 +771,7 @@ DEPENDENCIES
   faker
   faraday
   faraday-cookie_jar
+  ffi
   flipflop
   friendly_id (~> 5.4.2)
   global
