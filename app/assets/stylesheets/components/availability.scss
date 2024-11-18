@@ -27,12 +27,12 @@
     }
 
     &.bg-danger {
-      color: $brand-danger;
+      color: $danger;
       --bs-bg-opacity: 0;
     }
 
     &.bg-success {
-      color: $brand-success;
+      color: $success;
       --bs-bg-opacity: 0;
     }
   }
