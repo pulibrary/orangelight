@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SubmissionSerializer < ActiveJob::Serializers::ObjectSerializer
   def serialize(submission)
     super(
@@ -10,25 +11,19 @@ class SubmissionSerializer < ActiveJob::Serializers::ObjectSerializer
         },
         'patron_hash' => submission.patron.to_h
       },
-      'items' => [
-
-      ],
+      'items' => [],
       'bib' => {
         'id' => ''
       },
-      'services' => [
-
-      ],
-      'success_messages' => [
-
-      ]
+      'services' => [],
+      'success_messages' => []
     )
   end
 
   def deserialize(hash)
     user_hash = hash.dig('patron', 'user')
     user = User.new(user_hash['uid'], user_hash['username'], user_hash['guest'], user_hash['provider'])
-    patron = Requests::Patron.authorize(user: user)
+    Requests::Patron.authorize(user:)
     Requests::Submission.new(hash['params'], hash['patron'])
   end
 

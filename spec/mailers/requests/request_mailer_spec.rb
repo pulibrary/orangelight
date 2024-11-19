@@ -768,11 +768,10 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     # rubocop:enable RSpec/ExampleLength
 
     context "when there is an error sending an email" do
-
       it "" do
         # allow(described_class).to receive(:send).once.and_raise(Net::ReadTimeout)
 
-        mail = described_class.send("on_shelf_email", submission_for_on_shelf).deliver_later
+        described_class.send("on_shelf_email", submission_for_on_shelf).deliver_later
       end
     end
   end
@@ -918,11 +917,11 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
       {
         clancy: [
           {
-          type: 'clancy',
-          error: 'Item is In Process on a PYR Job and cannot be Retrieved',
-          bibid: '9956200533506421',
-          barcode: '32101068477817'
-        }
+            type: 'clancy',
+            error: 'Item is In Process on a PYR Job and cannot be Retrieved',
+            bibid: '9956200533506421',
+            barcode: '32101068477817'
+          }
         ]
       }
     end

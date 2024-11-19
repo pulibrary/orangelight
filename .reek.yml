@@ -230,6 +230,7 @@ detectors:
     - Orangelight::ReferenceNoteUrlProcessor#render
     - Orangelight::SeriesLinkProcessor#render
     - Orangelight::SubjectsOrNotesProcessor#render
+    - SubmissionSerializer#serialize
     - Bibdata#get_patron
     - Bibdata#holding_locations
     - Bibdata#sorted_locations
@@ -316,6 +317,7 @@ detectors:
     - SearchBuilder#q_param_needs_boolean_cleanup
     - SolrDocument#electronic_access_uris
     - SolrDocument#holdings_with_host_id
+    - SubmissionSerializer#serialize
     - DBMigrateUppercaseUsernames::UserLowercaser#merge_bookmarks
     - DBMigrateUppercaseUsernames::UserLowercaser#merge_searches
     - HoldingRequestsAdapter#doc_holdings_elf
@@ -481,6 +483,7 @@ detectors:
     - Orangelight::MarkAsSafeProcessor
     - Orangelight::SeriesLinkProcessor
     - Orangelight::SubjectsOrNotesProcessor
+    - SubmissionSerializer
     - Bibdata
     - Bibdata::EmptyResponseError
     - Bibdata::ForbiddenError
@@ -818,6 +821,7 @@ detectors:
     - ApplicationHelper#same_series_result
     - ApplicationHelper#subjectify
     - ApplicationHelper#title_hierarchy
+    - Requests::RequestMailer#service_error_email
     - Blacklight::Document::DublinCore#export_as_oai_dc_xml
     - Blacklight::Document::DublinCore#export_as_rdf_dc
     - Blacklight::Document::Email#add_multi_valued_field
@@ -950,6 +954,7 @@ detectors:
     - SolrDocument#doc_by_id
     - SolrDocument#ensure_voyager_to_alma_id
     - Orangelight::JoinProcessor#direction
+    - SubmissionSerializer#deserialize
     - DBMigrateUppercaseUsernames#find_uppercase_users
     - EventProcessor::Processor#index
     - HoldingRequestsAdapter#alma_location_label_display_bibdata_location
