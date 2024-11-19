@@ -29,6 +29,8 @@ gem 'ed25519'
 gem 'email_validator'
 gem 'faraday'
 gem 'faraday-cookie_jar'
+# See https://github.com/ffi/ffi/issues/1105
+gem 'ffi', '~> 1.16.3'
 gem 'flipflop'
 gem 'friendly_id', '~> 5.4.2'
 gem 'global'
