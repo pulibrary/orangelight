@@ -8,7 +8,7 @@ describe Requests::ClancyItem, requests: true do
     allow(connection).to receive(:get).and_return(response)
   end
   context 'Available item' do
-    let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Item In at Rest\"}" }
+    let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Item In at Rest\"}" }
 
     describe '#status' do
       it "is has the status json" do
@@ -31,7 +31,7 @@ describe Requests::ClancyItem, requests: true do
     end
 
     describe '#request' do
-      let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"request_count\":\"1\",\"results\":[{\"item\":\"32101068477817\",\"deny\":\"N\",\"istatus\":\"Item Requested\"}]}" }
+      let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"request_count\":\"1\",\"results\":[{\"item\":\"32101068477817\",\"deny\":\"N\",\"istatus\":\"Item Requested\"}]}" }
       let(:user) { FactoryBot.build(:user) }
       let(:valid_patron) do
         { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777",
@@ -50,7 +50,7 @@ describe Requests::ClancyItem, requests: true do
       end
 
       context "request denied" do
-        let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"request_count\":\"1\",\"results\":[{\"item\":\"32101068477817\",\"deny\":\"Y\",\"istatus\":\"Item Restricted from this API Key\"}]}" }
+        let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"request_count\":\"1\",\"results\":[{\"item\":\"32101068477817\",\"deny\":\"Y\",\"istatus\":\"Item Restricted from this API Key\"}]}" }
         it "responds with error" do
           expect(clancy_item.request(patron:, hold_id: 'hold_id')).to be_falsey
         end
@@ -59,7 +59,7 @@ describe Requests::ClancyItem, requests: true do
   end
 
   context 'Unavailable item' do
-    let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Out on Physical Retrieval\"}" }
+    let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Out on Physical Retrieval\"}" }
 
     describe '#status' do
       it "is has the status json" do
@@ -83,7 +83,7 @@ describe Requests::ClancyItem, requests: true do
   end
 
   context 'Item not in the Clancy facility' do
-    let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Item not Found\"}" }
+    let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Item not Found\"}" }
 
     describe '#status' do
       it "is has the status json" do
@@ -107,7 +107,7 @@ describe Requests::ClancyItem, requests: true do
   end
 
   context 'item has been deaccessioned' do
-    let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Item has been Deaccessioned on 02-20-2024\"}" }
+    let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Item has been Deaccessioned on 02-20-2024\"}" }
 
     it 'has the status json' do
       expect(clancy_item.status["success"]).to be_truthy
@@ -125,7 +125,7 @@ describe Requests::ClancyItem, requests: true do
   end
 
   context 'Error accessing clancy api' do
-    let(:response) { instance_double "Faraday::Response", "success?": false, status: 403, body: "{\"success\":false,\"error\":\"Invalid API Key\"}" }
+    let(:response) { instance_double Faraday::Response, "success?": false, status: 403, body: "{\"success\":false,\"error\":\"Invalid API Key\"}" }
 
     describe '#status' do
       it "is has the status json" do

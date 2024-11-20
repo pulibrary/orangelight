@@ -150,13 +150,12 @@ module ApplicationHelper
 
   def action_notes_display(args)
     action_notes = JSON.parse(args[:document][args[:field]])
-    lines = []
-    action_notes.each do |note|
-      lines << if note["uri"].present?
-                 link_to(note["description"], note["uri"])
-               else
-                 note["description"]
-               end
+    lines = action_notes.map do |note|
+      if note["uri"].present?
+        link_to(note["description"], note["uri"])
+      else
+        note["description"]
+      end
     end
 
     if lines.length == 1
