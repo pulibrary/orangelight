@@ -50,7 +50,8 @@ class BookmarksController < CatalogController
         location: 'Library',
         location_display: 'Location',
         call_number_display: 'Call Number',
-        notes_display: 'Notes'
+        notes_display: 'Notes',
+        edition_display: 'Edition'
       }
     end
 
