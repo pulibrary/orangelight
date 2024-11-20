@@ -17,11 +17,9 @@ module AdvancedHelper
   end
 
   def advanced_key_value
-    key_value = []
-    advanced_search_fields.each do |field|
-      key_value << [field[1][:label], field[0]]
+    advanced_search_fields.map do |field|
+      [field[1][:label], field[0]]
     end
-    key_value
   end
 
   # carries over original search field and original guided search fields if user switches to guided search from regular search
