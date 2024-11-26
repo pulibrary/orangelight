@@ -29,13 +29,13 @@ form table th:first-child {
 
 .has-error .error {
   font-weight: bold;
-  color: $brand-danger;
+  color: $danger;
 }
 
 .blacklight-feedback-hidden {
   display: none;
 }
 
-.blacklight-feedback .form-group {
+.blacklight-feedback .mb-3 {
   overflow: auto;
 }

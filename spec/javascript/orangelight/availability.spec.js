@@ -68,21 +68,21 @@ describe('AvailabilityUpdater', function () {
       `*[data-record-id="${avail_id}"] .availability-icon`
     );
     expect(available_result.hasClass('badge')).toBe(true);
-    expect(available_result.hasClass('badge-success')).toBe(true);
+    expect(available_result.hasClass('bg-success')).toBe(true);
     expect(available_result.text()).toEqual('Available');
 
     const unavailable_result = $(
       `*[data-record-id="${unavail_id}"] .availability-icon`
     );
     expect(unavailable_result.hasClass('badge')).toBe(true);
-    expect(unavailable_result.hasClass('badge-danger')).toBe(true);
+    expect(unavailable_result.hasClass('bg-danger')).toBe(true);
     expect(unavailable_result.text()).toEqual('Unavailable');
 
     const mixed_result = $(
       `*[data-record-id="${mixed_id}"] .availability-icon`
     );
     expect(mixed_result.hasClass('badge')).toBe(true);
-    expect(mixed_result.hasClass('badge-secondary')).toBe(true);
+    expect(mixed_result.hasClass('bg-secondary')).toBe(true);
     expect(mixed_result.text()).toEqual('Some items not available');
   });
   test('search results - SCSB availability - Unavailable', () => {
@@ -119,7 +119,7 @@ describe('AvailabilityUpdater', function () {
     expect(availabilityBadgeAfter[0].textContent).toEqual('Unavailable');
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="5459517"] > .badge-danger'
+        '.holding-status[data-holding-id="5459517"] > .bg-danger'
       )
     ).toBeTruthy();
   });
@@ -128,7 +128,7 @@ describe('AvailabilityUpdater', function () {
       '<li class="blacklight-holdings">' +
       '  <ul>' +
       '    <li data-availability-record="true" data-record-id="9972879153506421" data-holding-id="lewis$resterm" data-aeon="false" data-bound-with="false">' +
-      '      <span class="availability-icon badge badge-secondary">Loading...</span>' +
+      '      <span class="availability-icon badge bg-secondary">Loading...</span>' +
       '      <div class="library-location" data-location="true" data-record-id="9972879153506421" data-holding-id="lewis$resterm">' +
       '        <span class="results_location">Lewis Library - Term Loan Reserves</span> » <span class="call-number">QP355.2 .P76 2013 <a title="Where to find it" class="find-it"' +
       '      data-map-location="lewis$resterm" data-blacklight-modal="trigger" aria-label="Where to find it"' +
@@ -136,7 +136,7 @@ describe('AvailabilityUpdater', function () {
       '      </div>' +
       '    </li>' +
       '    <li data-availability-record="true" data-record-id="9972879153506421" data-holding-id="22732100160006421" data-aeon="false" data-bound-with="false">' +
-      '      <span class="availability-icon badge badge-secondary">Loading...</span>' +
+      '      <span class="availability-icon badge bg-secondary">Loading...</span>' +
       '      <div class="library-location" data-location="true" data-record-id="9972879153506421" data-holding-id="22732100160006421">' +
       '        <span class="results_location">Engineering Library - Stacks</span> » <span class="call-number">QP355.2 .P76 2013 <a title="Where to find it" class="find-it"' +
       '        data-map-location="engineer$stacks" data-blacklight-modal="trigger" aria-label="Where to find it"' +
@@ -215,7 +215,7 @@ describe('AvailabilityUpdater', function () {
     const badge = document.getElementsByClassName('availability-icon')[0];
 
     expect(badge.classList.values()).toContain('badge');
-    expect(badge.classList.values()).toContain('badge-success');
+    expect(badge.classList.values()).toContain('bg-success');
     expect(badge.textContent).toEqual('Available');
   });
 
@@ -246,7 +246,7 @@ describe('AvailabilityUpdater', function () {
     const badge = document.getElementsByClassName('availability-icon')[0];
 
     expect(badge.classList.values()).toContain('badge');
-    expect(badge.classList.values()).toContain('badge-danger');
+    expect(badge.classList.values()).toContain('bg-danger');
     expect(badge.textContent).toEqual('Unavailable');
   });
   // Update this test. It has old location data
@@ -277,7 +277,7 @@ describe('AvailabilityUpdater', function () {
     const badge = document.getElementsByClassName('availability-icon')[0];
 
     expect(badge.classList.values()).toContain('badge');
-    expect(badge.classList.values()).toContain('badge-secondary');
+    expect(badge.classList.values()).toContain('bg-secondary');
     expect(badge.textContent).toEqual('Some items not available');
   });
 
@@ -407,13 +407,13 @@ describe('AvailabilityUpdater', function () {
 
     const badge = document.getElementsByClassName('availability-icon')[0];
     expect(badge.classList.values()).toContain('badge');
-    expect(badge.classList.values()).toContain('badge-success');
+    expect(badge.classList.values()).toContain('bg-success');
     expect(badge.textContent).toEqual('Available');
 
     const badge_second =
       document.getElementsByClassName('availability-icon')[1];
     expect(badge_second.classList.values()).toContain('badge');
-    expect(badge_second.classList.values()).toContain('badge-success');
+    expect(badge_second.classList.values()).toContain('bg-success');
     expect(badge_second.textContent).toEqual('Available');
   });
 
@@ -532,7 +532,7 @@ describe('AvailabilityUpdater', function () {
       '    </div>' +
       '  </li>' +
       '  <li>' +
-      '    <span class="badge badge-primary" data-availability-cdl="true"></span>' +
+      '    <span class="badge bg-primary" data-availability-cdl="true"></span>' +
       '  </li>' +
       '  <li class="empty" data-record-id="9965126093506421">' +
       '    <a class="availability-icon more-info" title="Click on the record for full availability info" href="/catalog/9965126093506421"></a>' +
@@ -680,12 +680,12 @@ describe('AvailabilityUpdater', function () {
     expect(av_element[0].textContent).toContain('Ask Staff');
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="22642015240006421"] > .badge-secondary'
+        '.holding-status[data-holding-id="22642015240006421"] > .bg-secondary'
       )
     ).toBeTruthy();
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="22642015240006421"] > .badge-danger'
+        '.holding-status[data-holding-id="22642015240006421"] > .bg-danger'
       )
     ).toBeFalsy();
   });
@@ -723,17 +723,17 @@ describe('AvailabilityUpdater', function () {
     expect(element[0].textContent).toContain('Unavailable');
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .badge-secondary'
+        '.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .bg-secondary'
       )
     ).toBeFalsy();
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .badge-primary'
+        '.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .bg-primary'
       )
     ).toBeFalsy();
     expect(
       document.querySelector(
-        '.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .badge-danger'
+        '.holding-status[data-holding-id="RES_SHARE$IN_RS_REQ"] > .bg-danger'
       )
     ).toBeTruthy();
   });
@@ -877,7 +877,7 @@ describe('AvailabilityUpdater', function () {
       '  <li class="blacklight-holdings">' +
       '    <ul>' +
       '      <li class="holding-status" data-availability-record="true" data-record-id="99125535710106421" data-holding-id="22936525030006421" data-temp-location-code="RES_SHARE$IN_RS_REQ" data-aeon="false" data-bound-with="false">' +
-      '        <span class="availability-icon badge badge-secondary">Loading...</span>' +
+      '        <span class="availability-icon badge bg-secondary">Loading...</span>' +
       '        <div class="library-location" data-location="true" data-record-id="99125535710106421" data-holding-id="22936525030006421">' +
       '          <span class="results_location">Firestone Library - Stacks</span> &raquo; <span class="call-number">B2433.M351 W55 2022 ' +
       '            <a title="Where to find it" class="find-it" data-map-location="firestone$stacks" data-blacklight-modal="trigger" aria-label="Where to find it" href="/catalog/99125535710106421/stackmap?loc=firestone$stacks&amp;cn=B2433.M351 W55 2022">' +

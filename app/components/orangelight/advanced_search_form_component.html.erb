@@ -35,12 +35,12 @@
             </div>
           </div>
         <% end %>
-        <div class="form-group advanced-search-facet row">
+        <div class="mb-3 advanced-search-facet row">
           <%= label_tag pub_date_field.parameterize, :class => "col-sm-4 control-label advanced-facet-label" do %>Publication year<% end %>
           <div class="col-sm-8 range_limit">
-            <label for="range_pub_date_start_sort_begin" class="sr-only">Publication date range (starting year)</label>
+            <label for="range_pub_date_start_sort_begin" class="visually-hidden">Publication date range (starting year)</label>
             <%= BlacklightRangeLimit::RangeFormComponent.new(facet_field: pub_date_presenter).render_range_input(:begin) %> –
-            <label for="range_pub_date_start_sort_end" class="sr-only">Publication date range (ending year)</label>
+            <label for="range_pub_date_start_sort_end" class="visually-hidden">Publication date range (ending year)</label>
             <%= BlacklightRangeLimit::RangeFormComponent.new(facet_field: pub_date_presenter).render_range_input(:end) %>
           </div>
         </div>
@@ -49,7 +49,7 @@
   </div>
 
   <div class="search-submit-buttons clearfix col-sm-7">
-    <div class="submit-buttons float-right form-group">
+    <div class="submit-buttons float-end mb-3">
       <%= submit_tag t('blacklight.advanced_search.form.search_btn_html'), class: 'btn btn-primary advanced-search-submit', id: "advanced-search-submit" %>
     </div>
 

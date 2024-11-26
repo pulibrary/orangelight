@@ -29,7 +29,7 @@ class Orangelight::AdvancedSearchFormComponent < Blacklight::AdvancedSearchFormC
 
   def fields_for_etc(index:, field:)
     fields_for('clause[]', index, include_id: false) do |foo|
-      content_tag(:div, class: 'form-group advanced-search-field row mb-3') do
+      content_tag(:div, class: 'mb-3 advanced-search-field row mb-3') do
         foo.label(:query, field.display_label('search'), class: "col-sm-3 col-form-label text-md-right") +
           content_tag(:div, class: 'col-sm-9') do
             foo.hidden_field(:field, value: field.key) +

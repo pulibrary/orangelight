@@ -16,20 +16,24 @@
     margin-right: 0;
     white-space: normal;
 
-    &.badge-secondary {
+    &.bg-secondary {
       color: $gray-light;
+      --bs-bg-opacity: 0;
     }
 
-    &.badge-warning {
+    &.bg-warning {
       color: $dark-orange;
+      --bs-bg-opacity: 0;
     }
 
-    &.badge-danger {
-      color: $brand-danger;
+    &.bg-danger {
+      color: $danger;
+      --bs-bg-opacity: 0;
     }
 
-    &.badge-success {
-      color: $brand-success;
+    &.bg-success {
+      color: $success;
+      --bs-bg-opacity: 0;
     }
   }
 }
@@ -370,7 +374,7 @@
       float: left;
       padding: 6px 5px;
 
-      &.badge-warning {
+      &.bg-warning {
         color: $black;
       }
     }
