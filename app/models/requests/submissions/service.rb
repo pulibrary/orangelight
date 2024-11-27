@@ -24,5 +24,10 @@ module Requests::Submissions
       Requests::RequestMailer.send("#{service_type}_email", submission).deliver_later
       Requests::RequestMailer.send("#{service_type}_confirmation", submission).deliver_later
     end
+
+    def error_hash
+      errors = @errors.map { |e| { type: e[:type], error: e[:error], bibid: e[:bibid], barcode: e[:barcode], reply_text: e[:reply_text]} }
+      [[@service_type, errors]].to_h
+    end
   end
 end

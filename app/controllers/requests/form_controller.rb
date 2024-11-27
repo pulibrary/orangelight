@@ -97,7 +97,8 @@ module Requests
                               I18n.t('requests.submit.service_error')
                             end
         logger.error "Request Service Error"
-        Requests::RequestMailer.send("service_error_email", services, @submission).deliver_later
+        service_errors = services.map { |s| s.error_hash }.inject(:merge)
+        send_error_email(service_errors, @submission)
       end
 
       def respond_to_validation_error(submission)
@@ -108,6 +109,10 @@ module Requests
       def sanitize(str)
         str.gsub(/[^A-Za-z0-9@\-_\.]/, '') if str.is_a? String
         str
+      end
+
+      def send_error_email(errors, submission)
+        Requests::RequestMailer.send("service_error_email", errors, submission).deliver_later
       end
   end
 end

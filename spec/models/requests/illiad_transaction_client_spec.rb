@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 require 'net/ldap'
+include ActiveJob::TestHelper
 
 describe Requests::IlliadTransactionClient, type: :controller, requests: true, patrons: true do
   let(:valid_patron) { { "netid" => "abc234", ldap: { status: "faculty", pustatus: "fac" } }.with_indifferent_access }
@@ -93,7 +94,10 @@ describe Requests::IlliadTransactionClient, type: :controller, requests: true, p
       stub_request(:get, patron_url)
         .to_return(status: 200, body: responses[:not_cleared], headers: {})
       transaction = nil
-      expect { transaction = illiad_transaction.create_request }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect do
+        transaction = illiad_transaction.create_request
+        perform_enqueued_jobs
+      end.to change { ActionMailer::Base.deliveries.count }.by(1)
       email = ActionMailer::Base.deliveries.last
       expect(email.subject).to eq("Uncleared User Requesting Transaction")
       expect(email.html_part.body.to_s).to have_content('F - Faculty')

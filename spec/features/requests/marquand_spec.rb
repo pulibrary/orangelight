@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'rails_helper'
+include ActiveJob::TestHelper
 
 describe 'requests for Marquand items', type: :feature, requests: true do
   let(:bib_id) { '9956200533506421' }
@@ -52,6 +53,10 @@ describe 'requests for Marquand items', type: :feature, requests: true do
     before do
       patron_stub
       login_as user
+    end
+
+    after do
+      clear_enqueued_jobs
     end
 
     context 'with an unavailable item' do
@@ -108,7 +113,10 @@ describe 'requests for Marquand items', type: :feature, requests: true do
         visit("requests/#{bib_id}?mfhd=#{holding_id}")
         choose("requestable__delivery_mode_#{item_id}_edd") # chooses 'edd' radio button
         fill_in "Title", with: "my stuff"
-        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect do
+          click_button 'Request this Item'
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(scsb_post_stub).to have_been_requested
         email = ActionMailer::Base.deliveries.last
         expect(email.subject).to eq("Electronic Document Delivery Request Confirmation")
@@ -121,7 +129,10 @@ describe 'requests for Marquand items', type: :feature, requests: true do
         it 'can be requested for in library use' do
           visit("requests/#{bib_id}?mfhd=#{holding_id}")
           choose("requestable__delivery_mode_#{item_id}_in_library") # chooses 'in_library' radio button
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+          expect do
+          click_button 'Request this Item'
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(1)
           expect(scsb_post_stub).to have_been_requested
           confirm_email = ActionMailer::Base.deliveries.last
           expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
@@ -176,7 +187,10 @@ describe 'requests for Marquand items', type: :feature, requests: true do
           expect(page).not_to have_content 'Available for In Library Use'
           fill_in "Article/Chapter Title", with: "ABC"
           fill_in "Author", with: "I Aman Author"
-          expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+          expect do
+            click_button 'Request this Item'
+            perform_enqueued_jobs
+          end.to change { ActionMailer::Base.deliveries.count }.by(2)
           expect(stub_illiad_patron(uid: user.uid)).to have_been_requested
           expect(stub_illiad_request(uid: user.uid)).to have_been_requested
           expect(stub_illiad_note).to have_been_requested
@@ -212,7 +226,10 @@ describe 'requests for Marquand items', type: :feature, requests: true do
         expect(page).not_to have_link('make an appointment')
         choose("requestable__delivery_mode_#{item_id}_in_library") # chooses 'in library' radio button
         expect(page).to have_content('Marquand Library at Firestone')
-        expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect do
+          click_button 'Request this Item'
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(2)
         confirm_email = ActionMailer::Base.deliveries.last
         expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
         expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
@@ -242,7 +259,10 @@ describe 'requests for Marquand items', type: :feature, requests: true do
             expect(page).to have_content I18n.t("requests.clancy_in_library.brief_msg")
             expect(page).to have_content('Pick-up location: Marquand Library at Firestone')
             choose("requestable__delivery_mode_#{item_id}_in_library") # chooses 'in_library' radio button
-            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+            expect do
+              click_button 'Request this Item'
+              perform_enqueued_jobs
+            end.to change { ActionMailer::Base.deliveries.count }.by(2)
             confirm_email = ActionMailer::Base.deliveries.last
             expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
             expect(confirm_email.html_part.body.to_s).not_to have_content("translation missing")
@@ -273,7 +293,10 @@ describe 'requests for Marquand items', type: :feature, requests: true do
             expect(page).to have_content I18n.t('requests.clancy_edd.brief_msg')
             expect(page).to have_content I18n.t("requests.clancy_edd.note_msg")
             fill_in "Article/Chapter Title", with: "ABC"
-            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+            expect do
+              click_button 'Request this Item'
+              perform_enqueued_jobs
+            end.to change { ActionMailer::Base.deliveries.count }.by(2)
             expect(stub_illiad_patron(uid: user.uid)).to have_been_requested
             expect(stub_illiad_request(uid: user.uid)).to have_been_requested
             confirm_email = ActionMailer::Base.deliveries.last
@@ -307,7 +330,10 @@ describe 'requests for Marquand items', type: :feature, requests: true do
             expect(page).to have_content I18n.t("requests.clancy_unavailable_edd.note_msg")
             fill_in "Article/Chapter Title", with: "ABC"
             expect(page).not_to have_content("translation missing")
-            expect { click_button 'Request this Item' }.to change { ActionMailer::Base.deliveries.count }.by(2)
+            expect do
+              click_button 'Request this Item'
+              perform_enqueued_jobs
+            end.to change { ActionMailer::Base.deliveries.count }.by(2)
             expect(stub_illiad_patron(uid: user.uid)).to have_been_requested
             expect(stub_illiad_request(uid: user.uid)).to have_been_requested
             confirm_email = ActionMailer::Base.deliveries.last

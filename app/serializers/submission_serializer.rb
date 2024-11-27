@@ -9,12 +9,10 @@ class SubmissionSerializer < ActiveJob::Serializers::ObjectSerializer
           'guest' => submission.patron.user.guest,
           'provider' => submission.patron.user.provider
         },
-        'patron_hash' => submission.patron.to_h
+        'patron_hash' => submission.patron.patron_hash
       },
-      'items' => [],
-      'bib' => {
-        'id' => ''
-      },
+      'items' => submission.items,
+      'bib' => submission.bib,
       'services' => [],
       'success_messages' => []
     )
@@ -22,9 +20,13 @@ class SubmissionSerializer < ActiveJob::Serializers::ObjectSerializer
 
   def deserialize(hash)
     user_hash = hash.dig('patron', 'user')
-    user = User.new(user_hash['uid'], user_hash['username'], user_hash['guest'], user_hash['provider'])
-    Requests::Patron.authorize(user:)
-    Requests::Submission.new(hash['params'], hash['patron'])
+    user = User.from_hash(user_hash)
+    params = {
+      requestable: hash['items'],
+      bib: hash['bib']
+    }
+    patron = Requests::Patron.new(user: user, patron_hash: hash.dig('patron', 'patron_hash'))
+    Requests::Submission.new(params, patron)
   end
 
   private
