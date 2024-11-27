@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 require 'rails_helper'
-include ActiveJob::TestHelper
 
 describe 'requests for Marquand items', type: :feature, requests: true do
+  include ActiveJob::TestHelper
+
   let(:bib_id) { '9956200533506421' }
   let(:holding_id) { '2219823460006421' }
   let(:item_barcode) { '32101068477817' }
@@ -130,9 +131,9 @@ describe 'requests for Marquand items', type: :feature, requests: true do
           visit("requests/#{bib_id}?mfhd=#{holding_id}")
           choose("requestable__delivery_mode_#{item_id}_in_library") # chooses 'in_library' radio button
           expect do
-          click_button 'Request this Item'
-          perform_enqueued_jobs
-        end.to change { ActionMailer::Base.deliveries.count }.by(1)
+            click_button 'Request this Item'
+            perform_enqueued_jobs
+          end.to change { ActionMailer::Base.deliveries.count }.by(1)
           expect(scsb_post_stub).to have_been_requested
           confirm_email = ActionMailer::Base.deliveries.last
           expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")

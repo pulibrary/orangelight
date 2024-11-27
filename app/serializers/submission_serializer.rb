@@ -25,7 +25,7 @@ class SubmissionSerializer < ActiveJob::Serializers::ObjectSerializer
       requestable: hash['items'],
       bib: hash['bib']
     }
-    patron = Requests::Patron.new(user: user, patron_hash: hash.dig('patron', 'patron_hash'))
+    patron = Requests::Patron.new(user:, patron_hash: hash.dig('patron', 'patron_hash'))
     Requests::Submission.new(params, patron)
   end
 

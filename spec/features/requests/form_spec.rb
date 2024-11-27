@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 require 'rails_helper'
-include ActiveJob::TestHelper
 
 # rubocop:disable Metrics/BlockLength
 describe 'request form', vcr: { cassette_name: 'form_features', record: :none }, type: :feature, requests: true do
+  include ActiveJob::TestHelper
+
   let(:mms_id) { '9994933183506421?mfhd=22558528920006421' }
   let(:thesis_id) { 'dsp01rr1720547' }
   let(:in_process_id) { '99117665883506421?mfhd=22707341710006421' }
@@ -560,9 +561,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           check('requestable_selected_23503918390006421')
           expect(page.find_field('requestable[][type]', type: :hidden).value).to eq('ill')
           expect do
-          click_button 'Request this Item'
-          perform_enqueued_jobs
-        end.to change { ActionMailer::Base.deliveries.count }.by(1)
+            click_button 'Request this Item'
+            perform_enqueued_jobs
+          end.to change { ActionMailer::Base.deliveries.count }.by(1)
           expect(a_request(:post, transaction_url)).to have_been_made
           expect(a_request(:post, transaction_note_url)).to have_been_made
           expect(page).to have_content 'Your request was submitted. Our library staff will review the request and contact you with any questions or updates.'
@@ -832,9 +833,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           choose('requestable__delivery_mode_23514405150006421_edd')
           fill_in 'requestable__edd_art_title_23514405150006421', with: 'some text'
           expect do
-          click_button 'Request this Item'
-          perform_enqueued_jobs
-        end.to change { ActionMailer::Base.deliveries.count }.by(1)
+            click_button 'Request this Item'
+            perform_enqueued_jobs
+          end.to change { ActionMailer::Base.deliveries.count }.by(1)
           expect(a_request(:post, transaction_url)).to have_been_made
         end
         it 'with a Physical delivery' do
@@ -850,9 +851,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           choose('requestable__delivery_mode_23514405150006421_print')
           expect(page).to have_content 'Pick-up location: Architecture Library'
           expect do
-          click_button 'Request this Item'
-          perform_enqueued_jobs
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
+            click_button 'Request this Item'
+            perform_enqueued_jobs
+          end.to change { ActionMailer::Base.deliveries.count }.by(2)
         end
       end
 
@@ -991,9 +992,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           expect(page).not_to have_content "Resource Sharing Request"
           check('requestable_selected_23696270540006421')
           expect do
-          click_button 'Request this Item'
-          perform_enqueued_jobs
-        end.to change { ActionMailer::Base.deliveries.count }.by(1)
+            click_button 'Request this Item'
+            perform_enqueued_jobs
+          end.to change { ActionMailer::Base.deliveries.count }.by(1)
           expect(page).to have_content 'Your request was submitted'
         end
       end
@@ -1289,9 +1290,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       select('Firestone Library', from: 'requestable__pick_up_23734584140006421')
       page.find(".submit--request") # this is really strange, but if I find the button then I can click it in the next line...
       expect do
-          click_button 'Request Selected Items'
-          perform_enqueued_jobs
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
+        click_button 'Request Selected Items'
+        perform_enqueued_jobs
+      end.to change { ActionMailer::Base.deliveries.count }.by(2)
       expect(page).to have_content I18n.t("requests.submit.annex_success")
       email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
       confirm_email = ActionMailer::Base.deliveries.last
@@ -1345,9 +1346,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       expect(page).not_to have_content 'This item is not available'
       select('Firestone Library', from: 'requestable__pick_up_23922188050006421')
       expect do
-          click_button 'Request this Item'
-          perform_enqueued_jobs
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
+        click_button 'Request this Item'
+        perform_enqueued_jobs
+      end.to change { ActionMailer::Base.deliveries.count }.by(2)
       expect(page).to have_content I18n.t("requests.submit.in_process_success")
       email = ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.count - 2]
       confirm_email = ActionMailer::Base.deliveries.last
@@ -1433,9 +1434,9 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       expect(page).to have_content 'In Process materials are typically available in several business days'
       select('Firestone Library', from: 'requestable__pick_up_23511126430006421')
       expect do
-          click_button 'Request this Item'
-          perform_enqueued_jobs
-        end.to change { ActionMailer::Base.deliveries.count }.by(2)
+        click_button 'Request this Item'
+        perform_enqueued_jobs
+      end.to change { ActionMailer::Base.deliveries.count }.by(2)
       confirm_email = ActionMailer::Base.deliveries.last
       expect(confirm_email.subject).to eq("In Process Request")
     end

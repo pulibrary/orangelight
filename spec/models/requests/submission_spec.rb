@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 require 'rails_helper'
-include ActiveJob::TestHelper
 
 # rubocop:disable Metrics/BlockLength
 describe Requests::Submission, requests: true do
+  include ActiveJob::TestHelper
+
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
       "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "REG",

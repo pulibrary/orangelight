@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 require 'rails_helper'
 require 'net/ldap'
-include ActiveJob::TestHelper
 
 describe Requests::IlliadTransactionClient, type: :controller, requests: true, patrons: true do
+  include ActiveJob::TestHelper
+
   let(:valid_patron) { { "netid" => "abc234", ldap: { status: "faculty", pustatus: "fac" } }.with_indifferent_access }
   let(:user_info) do
     user = instance_double(User, guest?: false, uid: 'foo')

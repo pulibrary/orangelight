@@ -97,7 +97,7 @@ module Requests
                               I18n.t('requests.submit.service_error')
                             end
         logger.error "Request Service Error"
-        service_errors = services.map { |s| s.error_hash }.inject(:merge)
+        service_errors = services.map(&:error_hash).inject(:merge)
         send_error_email(service_errors, @submission)
       end
 

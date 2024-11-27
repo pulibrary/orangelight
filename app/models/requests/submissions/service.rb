@@ -26,7 +26,7 @@ module Requests::Submissions
     end
 
     def error_hash
-      errors = @errors.map { |e| { type: e[:type], error: e[:error], bibid: e[:bibid], barcode: e[:barcode], reply_text: e[:reply_text]} }
+      errors = @errors.map { |e| { type: e[:type], error: e[:error], bibid: e[:bibid], barcode: e[:barcode], reply_text: e[:reply_text] } }
       [[@service_type, errors]].to_h
     end
   end

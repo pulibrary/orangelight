@@ -766,14 +766,6 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
       expect(mail.body.encoded).to have_content I18n.t('requests.on_shelf.email_conf_msg')
     end
     # rubocop:enable RSpec/ExampleLength
-
-    context "when there is an error sending an email" do
-      it "" do
-        # allow(described_class).to receive(:send).once.and_raise(Net::ReadTimeout)
-
-        described_class.send("on_shelf_email", submission_for_on_shelf).deliver_later
-      end
-    end
   end
 
   context "Item on shelf in East Asian" do

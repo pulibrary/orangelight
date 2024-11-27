@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 require 'rails_helper'
-include ActiveJob::TestHelper
 
 describe Requests::Submissions::Recap, requests: true do
+  include ActiveJob::TestHelper
+
   context 'ReCAP Request' do
     let(:valid_patron) { { "netid" => "foo", "university_id" => "99999999", "active_email" => 'foo1@princeton.edu', barcode: '111222333' }.with_indifferent_access }
     let(:user_info) do
