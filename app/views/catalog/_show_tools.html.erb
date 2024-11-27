@@ -1,5 +1,5 @@
 <div class="search-widgets col-xs">
-  <ul class="navbar navbar-nav float-end">
+  <ul class="navbar navbar-nav">
     <% if @document.alma_record? || @document.scsb_record? %>
       <li>
         <%= render_cite_link(citation_solr_document_path(id: @document)) %>
