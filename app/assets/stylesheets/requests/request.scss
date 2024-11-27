@@ -6,11 +6,11 @@
 @import 'keyframes';
 
 .badge-danger {
-  background-color: $brand-danger;
+  background-color: $danger;
 }
 
 .badge-success {
-  background-color: $brand-success;
+  background-color: $success;
 }
 
 .badge {
@@ -55,6 +55,7 @@
   color: #737373;
   font-size: 1.1em;
   margin: -20px auto 8px;
+  padding-top: 1.8rem;
   text-align: center;
   width: 10ch;
 }
@@ -164,7 +165,6 @@ input[type="radio"] + label {
     height: 1px; 
     width: 1px;
     overflow: hidden;
-    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
     clip: rect(1px, 1px, 1px, 1px);
     white-space: nowrap; /* added line */
   }

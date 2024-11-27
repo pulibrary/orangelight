@@ -2,7 +2,7 @@
     height: 2rem;
 }
 #skip-link a {
-    @include sr-only;
-    @include sr-only-focusable;
+    @include visually-hidden;
+    @include visually-hidden-focusable;
     margin: .2rem 0;
 }

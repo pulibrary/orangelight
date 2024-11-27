@@ -212,3 +212,16 @@ Rails/ContentTag:
 Rails/ApplicationMailer:
   Exclude:
     - 'app/models/record_mailer.rb'
+
+RSpec/StringAsInstanceDoubleConstant:
+  Exclude:
+    - 'spec/views/catalog/_sort_and_per_page.html.erb_spec.rb'
+
+Style/AccessModifierDeclarations:
+  Exclude:
+    - 'config/initializers/*'
+
+Style/SafeNavigationChainLength:
+  Exclude:
+    - 'app/components/index_document_component.rb'
+    - 'app/models/search_builder.rb'

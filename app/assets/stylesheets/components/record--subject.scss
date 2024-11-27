@@ -4,13 +4,13 @@
 
 .field-hierarchy {
   text-decoration: underline;
-  color: darken($orange, 10%);
+  color: shade-color($orange, 10%);
 }
 
 .search-subject:hover,
 .search-title:hover,
 .search-name-title:hover {
-  color: darken($orange, 10%);
+  color: shade-color($orange, 10%);
 }
 
 .search-subject:active,

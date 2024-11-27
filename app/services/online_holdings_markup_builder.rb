@@ -8,7 +8,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   def self.online_link(bib_id, holding_id)
     children = content_tag(
       :span, 'Link Missing',
-      class: 'availability-icon badge badge-secondary'
+      class: 'availability-icon badge bg-secondary'
     )
     # AJAX requests are made using availability.js here
     content_tag(:div, children.html_safe,

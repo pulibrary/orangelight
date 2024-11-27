@@ -53,7 +53,7 @@
 }
 
 .document a:hover {
-  color: darken($orange, 10%);
+  color: shade-color($orange, 10%);
   text-decoration: underline;
 }
 
@@ -85,8 +85,8 @@ dd.blacklight-electronic_access_display {
 
 // remove when https://github.com/projectblacklight/blacklight/pull/2125 is released
 .documents-list .document .document-thumbnail {
-    margin-bottom: ($spacer * 3);
-    padding-left: ($spacer * 2);
+  margin-bottom: ($spacer * 3);
+  padding-left: ($spacer * 2);
 }
 
 #spell {
@@ -98,5 +98,5 @@ dd.blacklight-electronic_access_display {
 }
 
 em.highlight-query {
-    background-color: #FFFDD0;
+  background-color: #FFFDD0;
 }

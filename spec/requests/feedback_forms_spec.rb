@@ -52,7 +52,7 @@ RSpec.describe "feedback forms", type: :request, libanswers: true do
 
     context 'with an invalid form' do
       it 'renders the report_harmful_language_form' do
-        mock_form = instance_double("ReportHarmfulLanguageForm")
+        mock_form = instance_double(ReportHarmfulLanguageForm)
         allow(ReportHarmfulLanguageForm).to receive(:new).and_return(mock_form)
         allow(mock_form).to receive(:valid?).and_return(false)
         allow(mock_form).to receive(:model_name).and_return(ReportHarmfulLanguageForm.model_name)
