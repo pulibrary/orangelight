@@ -1,7 +1,7 @@
 <% #Using the Bootstrap Pagination class  -%>
-<div class='pagination-search-widgets col'>
   <div class="row">
-    <div class="col-xs-12 px-4">
+  <div class='pagination-search-widgets'>
+    <div class="col-xs px-1">
       <div class="button--start-over">
         <%= render_start_over_link(root_path) %>
       </div>
@@ -11,7 +11,7 @@
       <% end %>
     </div>
     <%= render 'show_tools' %>
-  </div>
+  </div>  
 </div>
 
 <div id="main-content" class="col-12 main-content" data-host-id="<%= @document.host_id %>">
