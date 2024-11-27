@@ -312,6 +312,7 @@ detectors:
     - Requests::Submission#print?
     - Requests::Submission#selected_items
     - Requests::Submissions::HoldItem#payload
+    - Requests::Submissions::Service#error_hash
     - SearchBuilder#facets_for_advanced_search_form
     - SearchBuilder#numismatics_advanced
     - SearchBuilder#q_param_needs_boolean_cleanup
@@ -836,6 +837,7 @@ detectors:
     - Requests::IlliadMetadata::Metadata
     - Requests::Location#build_delivery_locations
     - Requests::Submission#selected_items
+    - Requests::Submissions::Service#error_hash
     - SearchBuilder#only_home_facets
     - SolrDocument#ark
     - SolrDocument#doc_electronic_access
@@ -864,6 +866,7 @@ detectors:
     - Orangelight::Catalog#online_holding_note?
     - Orangelight::BrowsablesController#validate_rpp
     - Requests::FormController#sanitize
+    - Requests::FormController#send_error_email
     - FeedbackForm#error_message
     - ReportBiasedResultsForm#routed_mail_to
     - AdvancedHelper#first_search_field?
@@ -948,6 +951,7 @@ detectors:
     - Requests::Submissions::Clancy#hold_id
     - Requests::Submissions::ClancyEdd#hold_id
     - Requests::Submissions::Illiad#success_message
+    - Requests::Submissions::Recap#send_error_email
     - SearchBuilder#cleaned_query
     - SearchBuilder#using_json_query_dsl
     - SolrDocument#clean_ids
