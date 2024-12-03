@@ -78,6 +78,7 @@ Rails.application.configure do
 
   # config.action_mailer.delivery_method = :sendmail
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.deliver_later_queue_name = 'mailers'
 
   config.action_mailer.smtp_settings = {
     address: "#{ENV['SMTP_HOST'] || 'lib-ponyexpr-prod.princeton.edu' }",

@@ -42,6 +42,7 @@ Rails.application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
+  config.action_mailer.deliver_later_queue_name = 'mailers'
   config.active_job.queue_adapter = :test
   config.action_mailer.default_options = {
     from: 'test@test.com'
