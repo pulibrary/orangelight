@@ -219,7 +219,7 @@ export default class AvailabilityUpdater {
       const result = [];
       for (const holding_id in holding_records[id]) {
         const availability_info = holding_records[id][holding_id];
-        const { label, cdl } = holding_records[id][holding_id];
+        const { label } = holding_records[id][holding_id];
         // case :constituent with host ids.
         // data-record-id has a different this.id when there are host ids.
         let availability_element;
@@ -245,9 +245,6 @@ export default class AvailabilityUpdater {
           availability_info,
           false
         );
-        if (cdl) {
-          insert_online_link();
-        }
         result.push(this.update_request_button(holding_id, availability_info));
       }
       return result;
@@ -363,17 +360,6 @@ export default class AvailabilityUpdater {
     ).map(function (node) {
       return node.getAttribute('data-scsb-barcode');
     });
-  }
-
-  update_request_button(holding_id, availability_info) {
-    const { cdl } = availability_info;
-    const location_services_element = $(
-      `.location-services[data-holding-id='${holding_id}'] a`
-    );
-    // if it's on CDL then it can't be requested
-    if (cdl) {
-      location_services_element.remove();
-    }
   }
 
   apply_scsb_record(barcode, item_data) {

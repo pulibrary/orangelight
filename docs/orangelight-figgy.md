@@ -26,7 +26,3 @@ Orangelight uses the bibid from the data attribute and invokes an async graphql 
 * In the electronic_access_1_display we build the catalog domain urls by using the figgy_ark_cache. This is happening during indexing.
 
 _Notes_: The rake task to update the figgy_ark_cache errors. The figgy_ark_cache has not been updated since voyager and still includes voyager ids. As a result the catalog domain urls that are structured and indexed during indexing time in the 'electronic_access_1display' have the voyager id. The user clicks on the Digital Content and a new record page will open because it tries to resolve the voyager id to an alma id.
-
-### CDL item viewer
-* Similar to step 1, if there is a scanned resource in Figgy, Orangelight returns the viewer. CDL items are accessible only through CAS and for specific patron groups; this is handled in Figgy. [Figgy's eligible item service](https://github.com/pulibrary/figgy/blob/main/app/services/cdl/eligible_item_service.rb#L4) will do a check to see if the specific item is on cdl. If the item is on cdl it will allow the user to charge or hold it.
-
