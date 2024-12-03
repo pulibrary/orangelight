@@ -180,11 +180,7 @@ export default class AvailabilityUpdater {
       const availability_element = $(
         `*[data-availability-record='true'][data-record-id='${record_id}'][data-holding-id='${holding_id}'] .availability-icon`
       );
-      this.apply_availability_label(
-        availability_element,
-        availability_info,
-        true
-      );
+      this.apply_availability_label(availability_element, availability_info);
     }
 
     // Bib data does not know about bound-with records and therefore we don't get availability
@@ -219,7 +215,7 @@ export default class AvailabilityUpdater {
       const result = [];
       for (const holding_id in holding_records[id]) {
         const availability_info = holding_records[id][holding_id];
-        const { label, cdl } = holding_records[id][holding_id];
+        const { label } = holding_records[id][holding_id];
         // case :constituent with host ids.
         // data-record-id has a different this.id when there are host ids.
         let availability_element;
@@ -240,14 +236,7 @@ export default class AvailabilityUpdater {
           );
           holding_location.text(label);
         }
-        this.apply_availability_label(
-          availability_element,
-          availability_info,
-          false
-        );
-        if (cdl) {
-          insert_online_link();
-        }
+        this.apply_availability_label(availability_element, availability_info);
         result.push(this.update_request_button(holding_id, availability_info));
       }
       return result;
@@ -366,14 +355,9 @@ export default class AvailabilityUpdater {
   }
 
   update_request_button(holding_id, availability_info) {
-    const { cdl } = availability_info;
     const location_services_element = $(
       `.location-services[data-holding-id='${holding_id}'] a`
     );
-    // if it's on CDL then it can't be requested
-    if (cdl) {
-      location_services_element.remove();
-    }
   }
 
   apply_scsb_record(barcode, item_data) {
@@ -392,13 +376,9 @@ export default class AvailabilityUpdater {
     return true;
   }
 
-  apply_availability_label(
-    availability_element,
-    availability_info,
-    addCdlBadge
-  ) {
+  apply_availability_label(availability_element, availability_info) {
     availability_element.addClass('badge');
-    const { status_label, cdl, location, id } = availability_info;
+    const { status_label, location, id } = availability_info;
     const specialStatusLocations = [
       'marquand$stacks',
       'marquand$pj',
@@ -409,30 +389,7 @@ export default class AvailabilityUpdater {
     ];
     availability_element.text(status_label);
     if (status_label.toLowerCase() === 'unavailable') {
-      // The physical copy is not available but we highlight that the online copy is.
-      if (cdl) {
-        if (addCdlBadge) {
-          // Add an Online badge, next to Unavailable.
-          // (used in the Search Results page)
-          availability_element.addClass('bg-danger');
-
-          const cdlPlaceholder = availability_element
-            .parent()
-            .next()
-            .find("*[data-availability-cdl='true']");
-          cdlPlaceholder.text('Online');
-          cdlPlaceholder.addClass('badge bg-primary');
-        } else {
-          // Display Online, instead of Unavailable, and remove the request button.
-          // (used in the Show page)
-          availability_element.text('Online');
-          availability_element.addClass('bg-secondary');
-          const location_services_element = $(
-            `.location-services[data-holding-id='${id}'] a`
-          );
-          location_services_element.remove();
-        }
-      } else if (specialStatusLocations.includes(location)) {
+      if (specialStatusLocations.includes(location)) {
         this.checkSpecialLocation(location, availability_element);
       } else {
         availability_element.addClass('bg-danger');
