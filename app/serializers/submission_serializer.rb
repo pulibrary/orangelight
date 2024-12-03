@@ -1,15 +1,20 @@
 # frozen_string_literal: true
+
+# This class serializes and deserializes the Submission
+# object so it can be used in ActiveJob queues
 class SubmissionSerializer < ActiveJob::Serializers::ObjectSerializer
   def serialize(submission)
+    patron = submission.patron
+    user = patron.user
     super(
       'patron' => {
         'user' => {
-          'uid' => submission.patron.user.uid,
-          'username' => submission.patron.user.username,
-          'guest' => submission.patron.user.guest,
-          'provider' => submission.patron.user.provider
+          'uid' => user.uid,
+          'username' => user.username,
+          'guest' => user.guest,
+          'provider' => user.provider
         },
-        'patron_hash' => submission.patron.patron_hash
+        'patron_hash' => patron.patron_hash
       },
       'items' => submission.items,
       'bib' => submission.bib,
@@ -18,6 +23,8 @@ class SubmissionSerializer < ActiveJob::Serializers::ObjectSerializer
     )
   end
 
+  # This method is required to implement the ActiveJob::Serializer::ObjectSerializer
+  # :reek:UtilityFunction
   def deserialize(hash)
     user_hash = hash.dig('patron', 'user')
     user = User.from_hash(user_hash)

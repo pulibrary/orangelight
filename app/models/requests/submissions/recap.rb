@@ -57,6 +57,8 @@ module Requests::Submissions
         send_error_email(service_errors, @submission)
       end
 
+      # This has to be a utility function to prevent ActiveJob from trying to serialize too many objects
+      # :reek:UtilityFunction
       def send_error_email(errors, submission)
         Requests::RequestMailer.send("service_error_email", errors, submission).deliver_later
       end

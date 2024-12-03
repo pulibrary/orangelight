@@ -484,7 +484,6 @@ detectors:
     - Orangelight::MarkAsSafeProcessor
     - Orangelight::SeriesLinkProcessor
     - Orangelight::SubjectsOrNotesProcessor
-    - SubmissionSerializer
     - Bibdata
     - Bibdata::EmptyResponseError
     - Bibdata::ForbiddenError
@@ -822,7 +821,6 @@ detectors:
     - ApplicationHelper#same_series_result
     - ApplicationHelper#subjectify
     - ApplicationHelper#title_hierarchy
-    - Requests::RequestMailer#service_error_email
     - Blacklight::Document::DublinCore#export_as_oai_dc_xml
     - Blacklight::Document::DublinCore#export_as_rdf_dc
     - Blacklight::Document::Email#add_multi_valued_field
@@ -837,7 +835,6 @@ detectors:
     - Requests::IlliadMetadata::Metadata
     - Requests::Location#build_delivery_locations
     - Requests::Submission#selected_items
-    - Requests::Submissions::Service#error_hash
     - SearchBuilder#only_home_facets
     - SolrDocument#ark
     - SolrDocument#doc_electronic_access
@@ -866,7 +863,6 @@ detectors:
     - Orangelight::Catalog#online_holding_note?
     - Orangelight::BrowsablesController#validate_rpp
     - Requests::FormController#sanitize
-    - Requests::FormController#send_error_email
     - FeedbackForm#error_message
     - ReportBiasedResultsForm#routed_mail_to
     - AdvancedHelper#first_search_field?
@@ -951,14 +947,12 @@ detectors:
     - Requests::Submissions::Clancy#hold_id
     - Requests::Submissions::ClancyEdd#hold_id
     - Requests::Submissions::Illiad#success_message
-    - Requests::Submissions::Recap#send_error_email
     - SearchBuilder#cleaned_query
     - SearchBuilder#using_json_query_dsl
     - SolrDocument#clean_ids
     - SolrDocument#doc_by_id
     - SolrDocument#ensure_voyager_to_alma_id
     - Orangelight::JoinProcessor#direction
-    - SubmissionSerializer#deserialize
     - DBMigrateUppercaseUsernames#find_uppercase_users
     - EventProcessor::Processor#index
     - HoldingRequestsAdapter#alma_location_label_display_bibdata_location
