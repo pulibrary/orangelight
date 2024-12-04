@@ -19,10 +19,17 @@ module Requests::Submissions
       @sent
     end
 
+    # This has to be a utility function to prevent ActiveJob from trying to serialize too many objects
+    # :reek:UtilityFunction
     def send_mail
       return if errors.present?
-      Requests::RequestMailer.send("#{service_type}_email", submission).deliver_now
-      Requests::RequestMailer.send("#{service_type}_confirmation", submission).deliver_now
+      Requests::RequestMailer.send("#{service_type}_email", submission).deliver_later
+      Requests::RequestMailer.send("#{service_type}_confirmation", submission).deliver_later
+    end
+
+    def error_hash
+      errors = @errors.map { |error| { type: error[:type], error: error[:error], bibid: error[:bibid], barcode: error[:barcode], reply_text: error[:reply_text] } }
+      [[@service_type, errors]].to_h
     end
   end
 end

@@ -2,10 +2,12 @@
 require 'rails_helper'
 
 describe Requests::Submissions::Recap, requests: true do
+  include ActiveJob::TestHelper
+
   context 'ReCAP Request' do
     let(:valid_patron) { { "netid" => "foo", "university_id" => "99999999", "active_email" => 'foo1@princeton.edu', barcode: '111222333' }.with_indifferent_access }
     let(:user_info) do
-      user = instance_double(User, guest?: false, uid: 'foo')
+      user = FactoryBot.create(:user, uid: 'foo')
       Requests::Patron.new(user:, patron_hash: valid_patron)
     end
     let(:scsb_url) { "#{Requests.config[:scsb_base]}/requestItem/requestItem" }
@@ -59,10 +61,10 @@ describe Requests::Submissions::Recap, requests: true do
 
     let(:bib) do
       {
-        "id" => "994916543506421",
-        "title" => "County and city data book.",
-        "author" => "United States",
-        "date" => "1949"
+        id: "994916543506421",
+        title: "County and city data book.",
+        author: "United States",
+        date: "1949"
       }
     end
 
@@ -150,7 +152,10 @@ describe Requests::Submissions::Recap, requests: true do
         stub_request(:post, alma_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
           .to_return(status: 400, body: fixture("alma_hold_error_no_library_response.json"), headers: { 'content-type': 'application/json' })
-        expect { recap_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect do
+          recap_request.handle
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(recap_request.submitted.size).to eq(1)
         expect(recap_request.errors.size).to eq(0)
         expect(a_request(:post, scsb_url)).to have_been_made.once
@@ -173,8 +178,20 @@ describe Requests::Submissions::Recap, requests: true do
       context 'when the SCSB web service responds with an invalid response' do
         subject(:recap) { described_class.new(submission) }
 
+        let(:errors) do
+          {
+            'recap' => [{
+              type: 'recap',
+              error: 'Invalid response from the SCSB server: invalid',
+              bibid: '994916543506421',
+              barcode: '111222333',
+              reply_text: nil
+            }]
+          }
+        end
+
         it 'logs an error' do
-          stub_request(:post, scsb_url).to_return(status: 200, body: '{invalid', headers: {})
+          stub_request(:post, scsb_url).to_return(status: 200, body: 'invalid', headers: {})
           allow(Rails.logger).to receive(:error)
           expect { recap.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
           expect(recap.submitted.size).to eq(0)
@@ -182,6 +199,12 @@ describe Requests::Submissions::Recap, requests: true do
           expect(Rails.logger).to have_received(:error).with(/Invalid response from the SCSB server/).once
           expect(a_request(:post, scsb_url)).to have_been_made.once
           expect(a_request(:post, alma_url)).not_to have_been_made
+        end
+
+        it 'can generate a hash of errors' do
+          stub_request(:post, scsb_url).to_return(status: 200, body: 'invalid', headers: {})
+          recap.handle
+          expect(recap.error_hash).to eq(errors)
         end
       end
     end

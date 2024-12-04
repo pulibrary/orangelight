@@ -96,7 +96,7 @@ describe Requests::FormController, type: :controller, vcr: { cassette_name: 'for
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
       without_partial_double_verification do
-        allow(mail_message).to receive(:deliver_now).and_return(nil)
+        allow(mail_message).to receive(:deliver_later).and_return(nil)
       end
     end
 

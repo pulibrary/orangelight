@@ -210,11 +210,10 @@ module Requests
       confirmation_email(submission:, subject_key: 'requests.marquand_in_library.confirmation_subject')
     end
 
-    def service_error_email(services, submission)
-      @services = services
+    def service_error_email(errors, submission)
       @submission = submission
-      errors = services.map(&:errors).flatten
-      error_types = errors.pluck(:type).uniq
+      @errors = errors
+      error_types = @errors.flat_map { |_key, value| value }.pluck(:type).uniq
       destination_email = if error_types.include?("digitize")
                             I18n.t('requests.digitize.invalid_patron.email')
                           else

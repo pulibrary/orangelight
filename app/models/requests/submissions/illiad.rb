@@ -23,7 +23,7 @@ module Requests::Submissions
 
     def send_mail
       return if errors.present?
-      Requests::RequestMailer.send("interlibrary_loan_confirmation", submission).deliver_now
+      Requests::RequestMailer.send("interlibrary_loan_confirmation", submission).deliver_later
     end
 
     def success_message

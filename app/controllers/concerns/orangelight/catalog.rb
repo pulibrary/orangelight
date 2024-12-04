@@ -42,8 +42,8 @@ module Orangelight
     # Email Action (this will render the appropriate view on GET requests and process the form and send the email on POST requests)
     def email_action(documents)
       mail = Orangelight::RecordMailer.email_record(documents, { to: params[:to], reply_to: user_email, message: params[:message], subject: params[:subject] }, url_options)
-      if mail.respond_to? :deliver_now
-        mail.deliver_now
+      if mail.respond_to? :deliver_later
+        mail.deliver_later
       else
         mail.deliver
       end

@@ -230,6 +230,7 @@ detectors:
     - Orangelight::ReferenceNoteUrlProcessor#render
     - Orangelight::SeriesLinkProcessor#render
     - Orangelight::SubjectsOrNotesProcessor#render
+    - SubmissionSerializer#serialize
     - Bibdata#get_patron
     - Bibdata#holding_locations
     - Bibdata#sorted_locations
@@ -311,11 +312,13 @@ detectors:
     - Requests::Submission#print?
     - Requests::Submission#selected_items
     - Requests::Submissions::HoldItem#payload
+    - Requests::Submissions::Service#error_hash
     - SearchBuilder#facets_for_advanced_search_form
     - SearchBuilder#numismatics_advanced
     - SearchBuilder#q_param_needs_boolean_cleanup
     - SolrDocument#electronic_access_uris
     - SolrDocument#holdings_with_host_id
+    - SubmissionSerializer#serialize
     - DBMigrateUppercaseUsernames::UserLowercaser#merge_bookmarks
     - DBMigrateUppercaseUsernames::UserLowercaser#merge_searches
     - HoldingRequestsAdapter#doc_holdings_elf
