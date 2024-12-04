@@ -22,4 +22,17 @@ RSpec.describe SuggestCorrectionForm, libanswers: true do
       expect(page).to have_text 'Your suggestion has been submitted'
     end
   end
+  describe 'pressing the cancel button' do
+    before do
+      stub_holding_locations
+      visit '/catalog/99105509673506421'
+      scroll_to(:bottom) # needed when js: true
+      click_link 'Suggest a Correction'
+    end
+    it 'closes the modal', js: true do
+      expect(page).to have_text('Please use this area to report errors or omissions')
+      click_button 'Cancel'
+      expect(page).not_to have_text('Please use this area to report errors or omissions')
+    end
+  end
 end
