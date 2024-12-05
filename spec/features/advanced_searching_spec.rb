@@ -17,11 +17,6 @@ describe 'advanced searching', advanced_search: true do
     expect(page).to have_selector '.icon-refresh[aria-hidden="true"]'
   end
 
-  it 'has the expected facets' do
-    visit '/advanced'
-    expect(page.find_all('.advanced-facet-label').map(&:text)).to match_array(["Access", "Format", "Language", "Holding location", "Publication year"])
-  end
-
   it 'provides labels to form elements' do
     visit '/advanced'
     expect(page).to have_selector('label', exact_text: 'Options for advanced search')
@@ -94,7 +89,6 @@ describe 'advanced searching', advanced_search: true do
 
     it 'has the expected facets' do
       visit '/advanced'
-      expect(page.find_all('.advanced-facet-label').map(&:text)).to include('Language')
       expect(page.find_all('.advanced-facet-label').map(&:text)).to match_array(["Access", "Format", "Language", "Holding location", "Publication year"])
     end
 

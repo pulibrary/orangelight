@@ -43,4 +43,10 @@ RSpec.describe BookmarksController do
       expect(body).not_to include(bad_value)
     end
   end
+  describe '#excessive paging' do
+    it 'does not error when paging is reasonable' do
+      get :index, params: { page: 2 }
+      expect(response).to have_http_status(:ok)
+    end
+  end
 end
