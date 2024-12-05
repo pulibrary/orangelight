@@ -5,7 +5,7 @@ class Orangelight::SortNormalize
     normalize_greek_characters remove_diacritics(string)
       .gsub(/—/, ' ')
       .gsub(/[\p{P}\p{S}]/, '')
-      .downcase
+      .downcase(:fold)
   end
 
     private

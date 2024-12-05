@@ -9,6 +9,10 @@ RSpec.describe Orangelight::SortNormalize do
     expect(normalizer.normalize('Ζουργός, Ισίδωρος, 1964-')).to eq 'ζουργοσ ισιδωροσ 1964' # Note that this uses the incorrect sigma (if we were displaying, we would use Iσίδωρος)
     expect(normalizer.normalize('دراسات. علوم الادارية.')).to eq 'دراسات علوم الادارية'
   end
+  it 'folds the German double s into two lower case s characters' do
+    normalizer = described_class.new
+    expect(normalizer.normalize('程士廉. 帝妃春ßK')).to eq '程士廉 帝妃春ssk'
+  end
   it 'removes latin diacritics' do
     normalizer = described_class.new
     expect(normalizer.normalize('Şengönül, Fatma Betül. Kent diplomasisi')).to eq 'sengonul fatma betul kent diplomasisi'
