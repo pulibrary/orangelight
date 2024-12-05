@@ -30,7 +30,7 @@ module Orangelight
         no_parens = authorized_form_of_title(title).gsub(/[()]/, '')
         path = '/catalog'
         query = {
-          "clause[0][field]": 'series_title',
+          "clause[0][field]": 'in_series',
           "clause[0][query]": no_parens,
           "commit": "Search"
         }.to_query

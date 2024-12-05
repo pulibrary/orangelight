@@ -103,4 +103,23 @@ RSpec.describe "left anchor search", left_anchor: true do
       expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
     end
   end
+  context 'in_series field' do
+    it 'matches left-anchored queries' do
+      title_in_series = '9948322283506421' # In the series "Cong shu ji cheng chu bian"
+      query = 'Cong+shu+ji+cheng'
+
+      get "/catalog.json?clause[0][field]=in_series&clause[0][query]=#{query}"
+      matching_ids = JSON.parse(response.body)['data'].pluck('id')
+      expect(matching_ids).to include title_in_series
+    end
+
+    it 'does not match queries with the same keywords that start differently' do
+      title_in_series = '9948322283506421' # In the series "Cong shu ji cheng chu bian"
+      query = 'ji+cheng+chu+bian'
+
+      get "/catalog.json?clause[0][field]=in_series&clause[0][query]=#{query}"
+      matching_ids = JSON.parse(response.body)['data'].pluck('id')
+      expect(matching_ids).not_to include title_in_series
+    end
+  end
 end

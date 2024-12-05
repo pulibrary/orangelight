@@ -573,6 +573,10 @@ class CatalogController < ApplicationController
       field.include_in_advanced_search = false
       field.include_in_simple_select = false
       field.label = 'Series starts with'
+      field.solr_parameters = {
+        qf: '${in_series_qf}',
+        pf: '${in_series_qf}'
+      }
       field.solr_adv_parameters = {
         qf: '$in_series_qf',
         pf: '$in_series_pf'

@@ -230,7 +230,6 @@ detectors:
     - Orangelight::ReferenceNoteUrlProcessor#render
     - Orangelight::SeriesLinkProcessor#render
     - Orangelight::SubjectsOrNotesProcessor#render
-    - SubmissionSerializer#serialize
     - Bibdata#get_patron
     - Bibdata#holding_locations
     - Bibdata#sorted_locations
@@ -256,12 +255,12 @@ detectors:
     - AdvancedHelper#advanced_key_value
     - AdvancedHelper#advanced_search_fields
     - AdvancedHelper#param_for_field
-    - ApplicationHelper#action_notes_display
     - ApplicationHelper#series_results
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#isbn_resolve
     - BlacklightHelper#issn_resolve
     - BlacklightHelper#lccn_resolve
+    - BlacklightHelper#left_anchor_search?
     - BlacklightHelper#oclc_resolve
     - CatalogHelper#render_search_to_page_title
     - Requests::ApplicationHelper#display_status
@@ -882,10 +881,10 @@ detectors:
     - ApplicationHelper#same_series_result
     - ApplicationHelper#scsb_supervised_items?
     - BlacklightHelper#add_wildcard
+    - BlacklightHelper#boolean_query_searches_left_anchored_field?
     - BlacklightHelper#cjk_unigrams_size
     - BlacklightHelper#escape_left_anchor_query
     - BlacklightHelper#json_field?
-    - BlacklightHelper#left_anchor_search?
     - BlacklightHelper#linked_record_field?
     - BlacklightHelper#render_icon
     - BlacklightHelper#wildcard_char_strip
