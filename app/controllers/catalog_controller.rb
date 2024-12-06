@@ -122,7 +122,9 @@ class CatalogController < ApplicationController
       assumed_boundaries: [1100, Time.now.year + 1],
       segments: true
     }
-    config.add_facet_field 'language_facet', label: 'Language', limit: true, include_in_advanced_search: true
+    # We need limit to be false on the advanced search page and true on the main catalog page - 
+    # but when we edit a regular search, it shouldn't limit the language list on the advanced search
+    config.add_facet_field 'language_facet', label: 'Language', limit: true, include_in_advanced_search: false
     config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true, include_in_advanced_search: false
     config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true, include_in_advanced_search: false
     config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true, include_in_advanced_search: false

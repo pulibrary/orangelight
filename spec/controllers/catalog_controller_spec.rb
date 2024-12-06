@@ -125,6 +125,12 @@ RSpec.describe CatalogController do
       expect(response.status).to eq 200
       expect(Rails.cache).not_to have_received(:fetch)
     end
+
+    it 'includes more than 11 languages' do
+      get :advanced_search, params: {}
+      expect(response.status).to eq 200
+      byebug
+    end
   end
   describe "#numismatics" do
     context "when requesting HTML for numismatics" do

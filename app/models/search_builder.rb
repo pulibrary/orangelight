@@ -45,6 +45,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def numismatics_facets(solr_parameters)
     return unless blacklight_params[:action] == 'numismatics'
+
     blacklight_config.advanced_search[:form_solr_parameters]['facet.field'] = blacklight_config.numismatics_search['facet_fields']
     solr_parameters['facet.field'] = blacklight_config.numismatics_search['facet_fields']
   end
@@ -53,17 +54,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     return query if query.nil?
     query.gsub(/([A-Z]) (NOT|OR|AND) ([A-Z])/) do
       "#{Regexp.last_match(1)} #{Regexp.last_match(2).downcase} #{Regexp.last_match(3)}"
-    end
-  end
-
-  def facets_for_advanced_search_form(solr_p)
-    # Reject any facets that are meant to display on the advanced
-    # search form, so that the form displays accurate counts for
-    # them in its dropdowns
-    advanced_search_facets = blacklight_config.advanced_search.form_solr_parameters['facet.field']
-    solr_p[:fq]&.compact!
-    solr_p[:fq]&.reject! do |facet_from_query|
-      advanced_search_facets.any? { |facet_to_exclude| facet_from_query.include? facet_to_exclude }
     end
   end
 

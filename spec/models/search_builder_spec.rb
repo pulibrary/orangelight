@@ -135,14 +135,26 @@ RSpec.describe SearchBuilder do
     before do
       blacklight_config.advanced_search.form_solr_parameters = { 'facet.field' => ["issue_denomination_s"] }
     end
-
-    context 'with the built-in advanced search form', advanced_search: true do
-      it 'includes the advanced search facets' do
-        solr_p = { fq: ["{!lucene}{!query v=$f_inclusive.issue_denomination_s.0} OR {!query v=$f_inclusive.issue_denomination_s.1}", nil, "format:Coin"] }
-        search_builder.facets_for_advanced_search_form(solr_p)
-        expect(solr_p[:fq]).to eq(['format:Coin'])
-      end
+    it 'includes the advanced search facets' do
+      solr_p = { fq: ["{!lucene}{!query v=$f_inclusive.issue_denomination_s.0} OR {!query v=$f_inclusive.issue_denomination_s.1}", nil, "format:Coin"] }
+      search_builder.facets_for_advanced_search_form(solr_p)
+      expect(solr_p[:fq]).to eq(['format:Coin'])
     end
+    describe 'different limits for advanced search facet' do
+      let(:blacklight_config) do
+        Blacklight::Configuration.new.tap do |config|
+          config.add_facet_field key: 'param_key', field: 'solr_field', limit: 50, ex: 'other'
+          config.add_facet_field key: 'adv_param_key', field: 'solr_field', limit: 50, ex: 'different'
+
+          config.add_facet_fields_to_solr_request!
+        end
+      end
+      it 'has configuration' do
+        byebug
+      end
+
+    end
+
   end
 
   describe '#only_home_facets' do
