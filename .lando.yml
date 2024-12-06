@@ -24,6 +24,9 @@ services:
   orangelight_redis:
     type: redis:6.0.16
     portforward: true
+  orangelight_memcached:
+    type: memcached
+    portforward: true
 proxy:
   orangelight_test_solr:
     - orangelight.test.solr.lndo.site:8983

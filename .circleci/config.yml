@@ -23,6 +23,7 @@ executors:
       - image: pulibrary/ci-solr:8.4-v1.0.0
         command: server/scripts/ci-start.sh
       - image: cimg/redis:6.0.16
+      - image: memcached
     resource_class: large
     working_directory: ~/orangelight
   basic-executor:

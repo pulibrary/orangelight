@@ -18,6 +18,7 @@ Rails.application.configure do
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs. Don't rely on the data there!
   config.cache_classes = true
+  config.cache_store = :mem_cache_store, "#{ENV['lando_orangelight_memcached_conn_host']}:#{ENV['lando_orangelight_memcached_conn_port']}" || ENV['MEMCACHE_SERVERS'] # Will fallback to $MEMCACHE_SERVERS, then 127.0.0.1:11211
 
   # Eager loading loads your whole application. When running a single test locally,
   # this probably isn't necessary. It's a good idea to do in a continuous integration
