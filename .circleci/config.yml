@@ -15,7 +15,6 @@ executors:
           SOLR_URL: http://solr:SolrRocks@localhost:8983/solr/orangelight-core-test
           COVERALLS_PARALLEL: true
           VITE_RUBY_AUTO_BUILD: false
-          MEMCACHED: memcached
       - image: cimg/postgres:15.8
         environment:
           POSTGRES_USER: orangelight
@@ -24,11 +23,6 @@ executors:
       - image: pulibrary/ci-solr:8.4-v1.0.0
         command: server/scripts/ci-start.sh
       - image: cimg/redis:6.0.16
-      - image: memcached
-        command:
-        - --conn-limit=1024
-        - --memory-limit=64
-        - --threads=4
     resource_class: large
     working_directory: ~/orangelight
   basic-executor:
