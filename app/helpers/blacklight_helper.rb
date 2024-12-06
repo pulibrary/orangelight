@@ -25,7 +25,7 @@ module BlacklightHelper
   def prepare_left_anchor_search(solr_parameters)
     return unless left_anchor_search?(solr_parameters)
     solr_parameters.dig('json', 'query', 'bool').each_value do |value|
-      value.select { |foo| foo.dig(:edismax, :qf) == "${left_anchor_qf}" }.map! do |clause|
+      value.select { |boolean_query| boolean_query_searches_left_anchored_field?(boolean_query) }.map! do |clause|
         query = escape_left_anchor_query(clause.dig(:edismax, :query).dup)
         query = add_wildcard(query)
         clause.dig(:edismax)[:query] = query
@@ -37,7 +37,7 @@ module BlacklightHelper
     return false unless solr_parameters.dig('json', 'query', 'bool')
     has_left_anchor = solr_parameters.dig('json', 'query', 'bool')
                                      .values
-                                     .any? { |value| value.select { |clause| clause.dig(:edismax, :qf) == "${left_anchor_qf}" } }
+                                     .any? { |value| value.select { |clause| boolean_query_searches_left_anchored_field?(clause) } }
     return false unless has_left_anchor
 
     true
@@ -239,4 +239,10 @@ module BlacklightHelper
     # OK because very likely their session is corrupted.
     link_to "Back to search", root_url
   end
+
+    private
+
+      def boolean_query_searches_left_anchored_field?(boolean_query)
+        ["${left_anchor_qf}", "${in_series_qf}"].include? boolean_query.dig(:edismax, :qf)
+      end
 end

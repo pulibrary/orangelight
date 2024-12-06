@@ -18,7 +18,7 @@ RSpec.describe Orangelight::SeriesLinkProcessor do
       expect(rendered.first).to eq('Offenbach, Jacques, 1819-1880. Operas. Selections (Bourg) '\
                                    '<a class="more-in-series" '\
                                    'data-original-title="More in series: Offenbach, Jacques, 1819-1880. Operas. Selections (Bourg)" '\
-                                   'dir="ltr" href="/catalog?clause%5B0%5D%5Bfield%5D=series_title&amp;clause%5B0%5D%5Bquery%5D=Offenbach%2C+Jacques%2C+1819-1880.+Operas.+Selections+Bourg&amp;commit=Search">'\
+                                   'dir="ltr" href="/catalog?clause%5B0%5D%5Bfield%5D=in_series&amp;clause%5B0%5D%5Bquery%5D=Offenbach%2C+Jacques%2C+1819-1880.+Operas.+Selections+Bourg&amp;commit=Search">'\
                                    '[More in this series]</a>')
     end
 
@@ -39,7 +39,7 @@ RSpec.describe Orangelight::SeriesLinkProcessor do
         expect(rendered.first).to eq('Offenbach, Jacques, 1819-1880. Operas. Selections (Bourg) '\
         '<a class="more-in-series" '\
         'data-original-title="More in series: Offenbach, Jacques, 1819-1880. Operas. Selections (Bourg)" '\
-        'dir="ltr" href="/catalog?clause%5B0%5D%5Bfield%5D=series_title&amp;clause%5B0%5D%5Bquery%5D=Offenbach%2C+Jacques%2C+1819-1880.+Operas&amp;commit=Search">'\
+        'dir="ltr" href="/catalog?clause%5B0%5D%5Bfield%5D=in_series&amp;clause%5B0%5D%5Bquery%5D=Offenbach%2C+Jacques%2C+1819-1880.+Operas&amp;commit=Search">'\
         '[More in this series]</a>')
       end
     end

@@ -82,6 +82,18 @@ describe BlacklightHelper do
         expect(left_anchor_search?(query)).to be true
       end
     end
+    it 'mutates queries that search the in_series field' do
+      query = { "qt" => nil, "json" => { "query" => { "bool" => { "must" => [
+        { edismax:
+          {
+            qf: "${in_series_qf}",
+            pf: "${in_series_pf}",
+            query: "my favorite series"
+          } }
+      ] } } } }
+      prepare_left_anchor_search(query)
+      expect(query["json"]["query"]["bool"]["must"][0][:edismax][:query]).to eq 'my\ favorite\ series*'
+    end
   end
 
   describe '#html_facets' do
