@@ -54,6 +54,12 @@ RSpec.describe SearchBuilder do
       expect(search_builder.excessive_paging?).to be false
     end
 
+    it 'allows paging for bookmarks controller' do
+      search_builder.blacklight_params[:page] = reasonable
+      search_builder.blacklight_params[:controller] = 'bookmarks'
+      expect(search_builder.excessive_paging?).to be false
+    end
+
     it 'handles query ending with empty parenthesis' do
       search_builder.blacklight_params[:q] = 'hello world ()'
       search_builder.parslet_trick({})

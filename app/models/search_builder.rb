@@ -85,7 +85,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   def excessive_paging?
     page = blacklight_params[:page].to_i || 0
     return false if page <= 1
-    return false if (search_parameters? || advanced_search?) && page < 1000
+    return false if (search_parameters? || advanced_search? || bookmarks_page?) && page < 1000
     true
   end
 
@@ -152,5 +152,9 @@ class SearchBuilder < Blacklight::SearchBuilder
         edismax = solr_params.present? ? solr_params.dup : {}
         blacklight_config.search_fields[field]['clause_params'] = { edismax: }
       end
+    end
+
+    def bookmarks_page?
+      blacklight_params[:controller] == 'bookmarks'
     end
 end
