@@ -241,23 +241,6 @@ input[type="radio"] + label {
     max-width: 100%;
   }
 
-  .blacklight-request div.dataTables_wrapper .row:first-child .col-sm-12:last-child {
-    padding-left: 15px;
-  }
-
-  .blacklight-request div.dataTables_wrapper div.dataTables_filter label {
-    display: block;
-  }
-
-  .blacklight-request div.dataTables_wrapper div.dataTables_filter input {
-    display: block;
-    min-height: 44px;
-  }
-
-  .blacklight-request div.dataTables_wrapper div.dataTables_paginate ul.pagination {
-    justify-content: center;
-  }
-
   .blacklight-request .table-responsive-sm {
     overflow-x: unset;
   }

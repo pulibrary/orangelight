@@ -43,7 +43,6 @@ gem 'honeybadger'
 gem 'jbuilder', '~> 2.0'
 # Use jquery as the JavaScript library
 # jest tests use yarn to get jquery; if upgrading here keep that version in sync
-gem 'jquery-datatables' # used by requests (please do not remove)
 gem 'jquery-rails'
 gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'

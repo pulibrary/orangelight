@@ -166,15 +166,6 @@ $(function () {
     checkRows(this);
   });
 
-  jQuery(function () {
-    return $('.tablesorter').DataTable({
-      language: {
-        search: 'Search by Enumeration',
-      },
-      ordering: false,
-    });
-  });
-
   $('.table input[type=checkbox]').on('change', function () {
     $(this).closest('tr').toggleClass('selected', $(this).is(':checked'));
     checkRows(this);

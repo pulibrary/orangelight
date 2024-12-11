@@ -240,13 +240,6 @@ module Requests
       end
     end
 
-    # only show the table sort if there are enough items
-    # to make it worthwhile
-    def show_tablesorter(requestable_list)
-      return "tablesorter" if table_sorter_present?(requestable_list)
-      ""
-    end
-
     def table_sorter_present?(requestable_list)
       requestable_list.size > 5
     end
