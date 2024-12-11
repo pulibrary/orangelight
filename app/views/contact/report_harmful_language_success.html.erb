@@ -1,5 +1,5 @@
 <%= render Blacklight::System::ModalComponent.new do |component| %>
-  <% component.title { t('blacklight.report_harmful_language.form.title') } %>
+  <% component.with_title { t('blacklight.report_harmful_language.form.title') } %>
 
   <%= render partial: '/shared/flash_msg' %>
   <p>Dear Researcher,</p>

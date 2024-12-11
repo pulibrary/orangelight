@@ -1,6 +1,6 @@
 <%= render Blacklight::System::ModalComponent.new do |component| %>
-  <% component.title { t('blacklight.ask_a_question.form.title') } %>
-  <% component.body do %>
+  <% component.with_title { t('blacklight.ask_a_question.form.title') } %>
+  <% component.with_body do %>
     <%= render partial: "catalog/ask_a_question_form",
         locals: { form: @question_form }
     %>  

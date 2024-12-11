@@ -1,6 +1,6 @@
 <%= render Blacklight::System::ModalComponent.new do |component| %>
-  <% component.title { t('blacklight.suggest_correction.form.title') } %>
-  <% component.body do %>
+  <% component.with_title { t('blacklight.suggest_correction.form.title') } %>
+  <% component.with_body do %>
     <%= render partial: "catalog/suggest_correction_form",
         locals: { form: @suggest_correction_form }
     %>  
