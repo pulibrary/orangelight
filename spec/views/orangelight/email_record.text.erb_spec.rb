@@ -120,4 +120,24 @@ RSpec.describe 'orangelight/record_mailer/email_record' do
       expect(rendered).not_to have_text('Message:')
     end
   end
+  describe 'with electronic portfolio' do
+    let(:properties) do
+      {
+        id: '9945502073506421',
+        title_display: 'The sociology of emotions / Jonathan H. Turner, Jan E. Stets.',
+        electronic_access_1display: '{"http://www.loc.gov/catdir/description/cam051/2004018645.html":["Publisher description"],"http://www.loc.gov/catdir/toc/ecip0421/2004018645.html":["Table of contents"]}',
+        author_display: ['Turner, Jonathan H.'],
+        format: ['Book'],
+        electronic_portfolio_s: [
+          '{"desc":null,"title":"Full Text","url":"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53827030770006421&Force_direct=true","start":null,"end":"latest"}',
+          '{"desc":null,"title":"Second Title","url":"https://example.com","start":null,"end":"latest"}'
+        ]
+      }
+    end
+
+    it 'includes the electronic portfolio link' do
+      expect(rendered).to have_text('Full Text')
+      expect(rendered).to have_text('Second Title')
+    end
+  end
 end
