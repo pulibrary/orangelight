@@ -395,6 +395,7 @@ detectors:
     - BookmarksController
     - CatalogController
     - Orangelight::Catalog
+    - Orangelight::ExcessivePaging
     - Orangelight::Stackmap
     - ContactController
     - ErrorsController
@@ -908,6 +909,7 @@ detectors:
     - Requests::RequestHelper#pul_patron_name
     - Requests::RequestHelper#request_title
     - Requests::RequestMailer#annex_items
+    - AdvancedFormSearchBuilder#do_not_limit_facets
     - Bookmark#alma_id?
     - Bookmark#special_system_id?
     - Blacklight::Document::Email#add_online_text
