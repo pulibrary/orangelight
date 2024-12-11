@@ -9,64 +9,6 @@ RSpec.describe SearchBuilder do
   let(:scope) { Blacklight::SearchService.new config: blacklight_config, search_state: state }
   let(:state) { Blacklight::SearchState.new({}, blacklight_config) }
 
-  describe '#excessive_paging' do
-    let(:excessive) { 9999 }
-    let(:reasonable) { 123 }
-
-    it 'allows reasonable paging with a search query' do
-      search_builder.blacklight_params[:page] = reasonable
-      search_builder.blacklight_params[:q] = 'anything'
-      expect(search_builder.excessive_paging?).to be false
-    end
-
-    it 'allows reasonable paging with a facet query' do
-      search_builder.blacklight_params[:page] = reasonable
-      search_builder.blacklight_params[:f] = 'anything'
-      expect(search_builder.excessive_paging?).to be false
-    end
-
-    it 'returns false if the search is empty' do
-      search_builder.blacklight_params[:page] = reasonable
-      search_builder.blacklight_params[:q] = ''
-      expect(search_builder.excessive_paging?).to be false
-    end
-
-    it 'does not allow paging without a search or facet' do
-      search_builder.blacklight_params[:page] = reasonable
-      expect(search_builder.excessive_paging?).to be true
-    end
-
-    it 'does not allow excessive paging with a search query' do
-      search_builder.blacklight_params[:page] = excessive
-      search_builder.blacklight_params[:q] = 'anything'
-      expect(search_builder.excessive_paging?).to be true
-    end
-
-    it 'does not allow excessive paging with a facet query' do
-      search_builder.blacklight_params[:page] = excessive
-      search_builder.blacklight_params[:f] = 'anything'
-      expect(search_builder.excessive_paging?).to be true
-    end
-
-    it 'allows paging for advanced search' do
-      search_builder.blacklight_params[:page] = reasonable
-      search_builder.blacklight_params[:search_field] = 'advanced'
-      expect(search_builder.excessive_paging?).to be false
-    end
-
-    it 'allows paging for bookmarks controller' do
-      search_builder.blacklight_params[:page] = reasonable
-      search_builder.blacklight_params[:controller] = 'bookmarks'
-      expect(search_builder.excessive_paging?).to be false
-    end
-
-    it 'handles query ending with empty parenthesis' do
-      search_builder.blacklight_params[:q] = 'hello world ()'
-      search_builder.parslet_trick({})
-      expect(search_builder.blacklight_params[:q].end_with?("()")).to be false
-    end
-  end
-
   describe '#cleanup_boolean_operators' do
     let(:solr_parameters) do
       { q: 'Douglas fir' }

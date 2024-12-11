@@ -82,8 +82,24 @@ RSpec.describe CatalogController do
       get :index, params: { q: 'asdf', page: 2 }
       expect(response.status).to eq(200)
     end
+    it 'does not error when paging is reasonable and the search is a facet' do
+      get :index, params: { f: { format: 'anything' }, page: 2 }
+      expect(response.status).to eq(200)
+    end
+    it 'does not error when query is empty and paging is reasonable' do
+      get :index, params: { q: '', search_field: 'all_fields', page: 2 }
+      expect(response.status).to eq(200)
+    end
+    it 'does not error when paging is reasonable and query is from advanced search' do
+      get :index, params: { clause: { '0': { query: 'dog' } }, page: 2 }
+      expect(response.status).to eq(200)
+    end
     it 'errors when paging is excessive' do
       get :index, params: { q: 'asdf', page: 1500 }
+      expect(response.status).to eq(400)
+    end
+    it 'errors when paging is reasonable but there is no query or facet' do
+      get :index, params: { page: 3 }
       expect(response.status).to eq(400)
     end
   end

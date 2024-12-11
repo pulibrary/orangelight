@@ -8,7 +8,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   default_processor_chain.unshift(:conditionally_configure_json_query_dsl)
 
   self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators
-                                     cjk_mm wildcard_char_strip excessive_paging_error
+                                     cjk_mm wildcard_char_strip
                                      only_home_facets prepare_left_anchor_search
                                      series_title_results pul_holdings html_facets
                                      numismatics_facets numismatics_advanced
@@ -71,22 +71,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     return if search_parameters? || advanced_search?
     solr_parameters['facet.field'] = blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
     solr_parameters['facet.pivot'] = []
-  end
-
-  # Determines whether or not the user is requesting an excessively high page of results
-  # @param [ActionController::Parameters] params
-  # @return [Boolean]
-  def excessive_paging_error(_solr_parameters)
-    raise ActionController::BadRequest, "excessive paging" if excessive_paging?
-  end
-
-  # Determines whether or not the user is requesting an excessively high page of results
-  # @return [Boolean]
-  def excessive_paging?
-    page = blacklight_params[:page].to_i || 0
-    return false if page <= 1
-    return false if (search_parameters? || advanced_search? || bookmarks_page?) && page < 1000
-    true
   end
 
   ##
@@ -152,9 +136,5 @@ class SearchBuilder < Blacklight::SearchBuilder
         edismax = solr_params.present? ? solr_params.dup : {}
         blacklight_config.search_fields[field]['clause_params'] = { edismax: }
       end
-    end
-
-    def bookmarks_page?
-      blacklight_params[:controller] == 'bookmarks'
     end
 end
