@@ -841,16 +841,12 @@ class CatalogController < ApplicationController
     end
 
     def search_service_context
-      if %w[advanced_search numismatics].include? action_name
-        { search_builder_class: AdvancedFormSearchBuilder }
-      else
-        return {} unless Flipflop.multi_algorithm?
-        return {} unless configurable_search_builder_class # use default if none specified
-        { search_builder_class: configurable_search_builder_class }
-      end
+      return {} unless Flipflop.multi_algorithm?
+      return {} unless alternate_search_builder_class # use default if none specified
+      { search_builder_class: alternate_search_builder_class }
     end
 
-    def configurable_search_builder_class
+    def alternate_search_builder_class
       return unless search_algorithm_param && allowed_search_algorithms.include?(search_algorithm_param)
 
       "#{search_algorithm_param}_search_builder".camelize.constantize
