@@ -48,5 +48,9 @@ RSpec.describe BookmarksController do
       get :index, params: { page: 2 }
       expect(response).to have_http_status(:ok)
     end
+    it 'errors when paging is excessive' do
+      get :index, params: { page: 1500 }
+      expect(response).to have_http_status(:bad_request)
+    end
   end
 end

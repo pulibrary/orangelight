@@ -7,9 +7,11 @@ class CatalogController < ApplicationController
   include BlacklightRangeLimit::ControllerOverride
   include Orangelight::Catalog
   include Orangelight::Stackmap
+  include Orangelight::ExcessivePaging
   include BlacklightHelper
 
   before_action :redirect_browse
+  before_action :deny_excessive_paging
 
   rescue_from Blacklight::Exceptions::RecordNotFound do
     alma_id = "99#{params[:id]}3506421"
