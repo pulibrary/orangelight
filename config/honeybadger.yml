@@ -1,4 +1,3 @@
 
 exceptions:
   rescue_rake: true
-env: "<%= Rails.env %>"
