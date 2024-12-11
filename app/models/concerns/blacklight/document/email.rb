@@ -9,7 +9,7 @@ module Blacklight
       def to_email_text
         body = []
         add_bibliographic_text(body)
-        add_online_text(body, self[:electronic_access_1display])
+        add_online_text(body, self[:electronic_access_1display], self[:electronic_portfolio_s])
         body.join("\n") unless body.empty?
       end
 
@@ -31,13 +31,20 @@ module Blacklight
           add_multi_valued_field(body, 'blacklight.email.text.format', self[:format])
         end
 
-        def add_online_text(body, links_field)
+        def add_online_text(body, links_field, portfolio_fields)
+          body << I18n.t('blacklight.email.text.online') if links_field.present? || portfolio_fields.present?
           if links_field.present?
-            body << I18n.t('blacklight.email.text.online')
             links = JSON.parse(links_field)
             links.each do |url, text|
               link = "#{text[0]}: #{url}"
               link = "#{text[1]} - " + link if text[1]
+              body << "\t" + link
+            end
+          end
+          if portfolio_fields.present?
+            portfolio_fields.each do |portfolio_field|
+              portfolio = JSON.parse(portfolio_field)
+              link = "#{portfolio['title']}: #{portfolio['url']}"
               body << "\t" + link
             end
           end
