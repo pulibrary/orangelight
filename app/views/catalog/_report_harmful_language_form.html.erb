@@ -7,6 +7,7 @@
   </div>
   <%= simple_form_for(
         form, 
+        remote: true,
         url: contact_report_harmful_language_path, 
         data:  { blacklight_modal: 'trigger' }, 
         html: { class: "modal_form" }
@@ -35,7 +36,7 @@
     <%= f.input :feedback_desc, as: :hidden %>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-      <%= f.submit "Send", class: "btn btn-primary", id: 'submit-question' %>
+      <%= f.submit "Send", class: "btn btn-primary", data: {bs_dismiss: "modal"}, id: 'submit-question' %>
     </div>
   <% end %>
 </div>
