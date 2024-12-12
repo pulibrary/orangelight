@@ -17,7 +17,6 @@ RSpec.describe 'catalog/index' do
         visit '/advanced'
       end
       it 'has the full list of languages' do
-        pending('Resolving https://github.com/pulibrary/orangelight/issues/4597')
         within '#language_facet-list' do
           language_list_elements = page.find_all('li')
           expect(language_list_elements.size).to be > 10
@@ -29,7 +28,6 @@ RSpec.describe 'catalog/index' do
         visit '/advanced?q=a&search_field=all_fields'
       end
       it 'has the full list of languages' do
-        pending('Resolving https://github.com/pulibrary/orangelight/issues/4597')
         within '#language_facet-list' do
           language_list_elements = page.find_all('li')
           expect(language_list_elements.size).to be > 10
