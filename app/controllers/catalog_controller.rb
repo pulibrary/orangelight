@@ -597,9 +597,9 @@ class CatalogController < ApplicationController
     config.add_search_field('series_title') do |field|
       field.include_in_simple_select = false
       field.label = 'Series title'
-      field.solr_adv_parameters = {
-        qf: '$series_title_qf',
-        pf: '$series_title_pf'
+      field.solr_parameters = {
+        qf: '${series_title_qf}',
+        pf: '${series_title_pf}'
       }
     end
 
