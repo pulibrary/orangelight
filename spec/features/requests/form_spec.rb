@@ -16,6 +16,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
   let(:temp_item_id) { '4815239' }
   let(:temp_id_mfhd) { '5018096' }
   let(:mutiple_items) { '9979171923506421' }
+  let(:the_senses) { '9951680203506421' }
 
   let(:transaction_url) { "https://lib-illiad.princeton.edu/ILLiadWebPlatform/transaction" }
   let(:transaction_note_url) { "https://lib-illiad.princeton.edu/ILLiadWebPlatform/transaction/1093806/notes" }
@@ -1439,6 +1440,26 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       end.to change { ActionMailer::Base.deliveries.count }.by(2)
       confirm_email = ActionMailer::Base.deliveries.last
       expect(confirm_email.subject).to eq("In Process Request")
+    end
+  end
+
+  context 'when the bibdata patron request fails' do
+    let(:user) { FactoryBot.create(:user) }
+    let(:first_item) { the_senses }
+
+    before do
+      stub_availability_by_holding_id(bib_id: '9951680203506421', holding_id: '22480938160006421')
+      stub_catalog_raw(bib_id: '9951680203506421')
+      stub_single_holding_location('annex$noncirc')
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/#{user.uid}?ldap=true")
+        .to_return(status: 500)
+      login_as user
+    end
+
+    it 'displays an error when the patron data can not be retreived' do
+      visit 'requests/9951680203506421?aeon=false&mfhd=22480938160006421'
+
+      expect(page).to have_content('A problem occurred looking up your library account.')
     end
   end
 end
