@@ -2,7 +2,6 @@
 <%= render :partial=>'shared/flash_msg' %>
 <%= simple_form_for(
     form,
-    remote: true,
     url: contact_suggestion_path,
     data:  { blacklight_modal: 'trigger' },
     html: { class: "modal_form" }
