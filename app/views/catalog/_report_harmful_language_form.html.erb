@@ -1,7 +1,6 @@
 <%= render :partial=>'shared/flash_msg' %>
 <%= simple_form_for(
-      form, 
-      remote: true,
+      form,
       url: contact_report_harmful_language_path, 
       data:  { blacklight_modal: 'trigger' }, 
       html: { class: "modal_form" }
