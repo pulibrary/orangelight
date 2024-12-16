@@ -4,5 +4,6 @@
 #skip-link a {
     @include visually-hidden;
     @include visually-hidden-focusable;
+    position: sticky !important;
     margin: .2rem 0;
 }
