@@ -93,11 +93,9 @@ module Requests
     private
 
       def load_patron(user:)
-        patron_error = "A problem occurred looking up your library account."
         patron_hash = current_patron_hash(user.uid)
-        errors << patron_error if patron_hash.blank?
-        if patron_hash.instance_of?(TrueClass)
-          errors << patron_error
+        if patron_hash.instance_of?(TrueClass) || patron_hash.blank?
+          errors << "A problem occurred looking up your library account."
           return {}
         end
         patron_hash || {}
