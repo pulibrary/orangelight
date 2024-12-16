@@ -193,4 +193,18 @@ describe 'advanced searching', advanced_search: true do
     expect(page).to have_content 'المقامات'
     expect(page).to have_content 'مطول'
   end
+
+  it 'gives different results for the series title search vs. keyword search' do
+    visit '/advanced'
+    select('Keyword', from: 'clause_0_field')
+    fill_in(id: 'clause_0_query', with: 'heft')
+    click_button 'Search'
+    expect(page).to have_content '1 - 3 of 3'
+
+    visit '/advanced'
+    select('Series title', from: 'clause_0_field')
+    fill_in(id: 'clause_0_query', with: 'heft')
+    click_button 'Search'
+    expect(page).to have_content '1 entry found'
+  end
 end
