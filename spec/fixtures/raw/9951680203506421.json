@@ -148,8 +148,5 @@
     ],
     "electronic_portfolio_s": [
         "{\"desc\":null,\"title\":\"Online Content\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true\u0026portfolio_pid=53822803240006421\u0026Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
-    ],
-    "hashed_id_ssi": "edd22a9831c941f3",
-    "_version_": 1813705631017730048,
-    "timestamp": "2024-10-23T11:54:37.824Z"
+    ]
 }
