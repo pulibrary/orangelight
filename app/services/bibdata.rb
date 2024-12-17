@@ -19,22 +19,22 @@ class Bibdata
       build_api_patron(api_response:, user:)
     rescue ServerError
       Rails.logger.error('An error was encountered with the Patron Data Service.')
-      nil
+      {}
     rescue PerSecondThresholdError => per_second_error
       Rails.logger.error("The maximum number of HTTP requests per second for the Alma API has been exceeded.")
       raise(per_second_error)
     rescue ResourceNotFoundError
       Rails.logger.error("404 Patron #{user.uid} cannot be found in the Patron Data Service.")
-      nil
+      {}
     rescue ForbiddenError
       Rails.logger.error("403 Not Authorized to Connect to Patron Data Service at #{api_base_uri}/patron/#{user.uid}")
-      nil
+      {}
     rescue Faraday::ConnectionFailed
       Rails.logger.error("Unable to connect to #{api_base_uri}")
-      nil
+      {}
     rescue EmptyResponseError
       Rails.logger.error("#{patron_uri} returned an empty patron response")
-      nil
+      {}
     end
 
     def holding_locations

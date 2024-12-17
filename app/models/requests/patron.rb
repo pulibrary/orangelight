@@ -94,18 +94,15 @@ module Requests
 
       def load_patron(user:)
         patron_hash = current_patron_hash(user.uid)
-        if patron_hash.instance_of?(TrueClass) || patron_hash.blank?
-          errors << "A problem occurred looking up your library account."
-          return {}
-        end
+        errors << "A problem occurred looking up your library account." if patron_hash.blank?
         patron_hash || {}
       end
 
       def current_patron_hash(uid)
         if alma_provider?
-          AlmaPatron.new(uid:).hash
+          AlmaPatron.new(uid:).patron_hash
         else
-          FullPatron.new(user:).hash
+          FullPatron.new(user:).patron_hash
         end
       end
   end
