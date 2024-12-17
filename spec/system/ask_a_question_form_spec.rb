@@ -22,4 +22,23 @@ RSpec.describe AskAQuestionForm, libanswers: true do
       expect(page).to have_text 'Your question has been submitted'
     end
   end
+  describe 'pressing the send button' do
+    before do
+      stub_libanswers_api
+      stub_holding_locations
+      visit '/catalog/99101035463506421'
+      scroll_to(:bottom) # needed when js: true
+      click_link 'Ask a Question'
+      fill_in 'ask_a_question_form_name', with: 'Agatha'
+      fill_in 'ask_a_question_form_email', with: 'agatha@poi.uk'
+      fill_in 'ask_a_question_form_message', with: 'Murder on the Orient Express'
+    end
+    it 'closes the modal', js: true do
+      expect(page).to have_text('Ask a Question')
+      expect(page).to have_text('Message')
+      click_button 'Send'
+      expect(current_path).to eq '/catalog/99101035463506421'
+      expect(page).not_to have_text('Message')
+    end
+  end
 end
