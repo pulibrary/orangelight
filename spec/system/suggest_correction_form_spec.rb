@@ -35,4 +35,22 @@ RSpec.describe SuggestCorrectionForm, libanswers: true do
       expect(page).not_to have_text('Please use this area to report errors or omissions')
     end
   end
+  describe 'pressing the send button' do
+    before do
+      stub_libanswers_api
+      stub_holding_locations
+      visit '/catalog/99105509673506421'
+      scroll_to(:bottom) # needed when js: true
+      click_link 'Suggest a Correction'
+      fill_in 'suggest_correction_form_name', with: 'Hercule Poirot'
+      fill_in 'suggest_correction_form_email', with: 'herpo@poi.her'
+      fill_in 'suggest_correction_form_message', with: 'Death on the Nile'
+    end
+    it 'closes the modal', js: true do
+      expect(page).to have_text('Please use this area to report errors or omissions')
+      click_button 'Send'
+      expect(current_path).to eq '/catalog/99105509673506421'
+      expect(page).not_to have_text('Please use this area to report errors or omissions')
+    end
+  end
 end
