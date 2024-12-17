@@ -143,6 +143,13 @@
     }
 }
 
+.icon-archival-item,
+.blacklight-archival-item .document-thumbnail .default {
+    &:before {
+        content: $icon-manuscript;
+    }
+}
+
 .icon-musical-score,
 .blacklight-musical-score .document-thumbnail .default {
     &:before {
