@@ -17,6 +17,7 @@ export default class MultiselectCombobox {
       .querySelector('.number-of-results');
     this.#addEventListeners();
     this.#applySelections();
+    this.#orderList();
   }
 
   toggleItem(item) {
@@ -130,8 +131,31 @@ export default class MultiselectCombobox {
   }
 
   #compare(a, b) {
+    const locations = [
+      'All Princeton Holdings',
+      'Architecture Library',
+      'East Asian Library',
+      'Engineering Library',
+      'Firestone Library',
+      'Forrestal Annex',
+      'Harold P. Furth Plasma Physics Library',
+      'Lewis Library',
+      'Marquand Library',
+      'Mendel Music Library',
+      'Mudd Manuscript Library',
+      'ReCAP',
+      'Special Collections',
+      'Stokes Library',
+    ];
+
     function toBoolean(value) {
       return value === 'true' ? true : false;
+    }
+
+    function inLocations(value) {
+      let i = value.indexOf('  (');
+      let clean = value.slice(0, i === -1 ? value.length : i);
+      return locations.includes(clean);
     }
 
     if (
@@ -139,6 +163,8 @@ export default class MultiselectCombobox {
       toBoolean(b.getAttribute('aria-selected'))
     ) {
       return toBoolean(a.getAttribute('aria-selected')) ? -1 : 1;
+    } else if (inLocations(a.textContent) !== inLocations(b.textContent)) {
+      return inLocations(a.textContent) ? -1 : 1;
     } else {
       return a.textContent.localeCompare(b.textContent);
     }

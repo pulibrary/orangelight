@@ -14,7 +14,7 @@
         <% end %>
         <% if @field_name == 'advanced_location_s' %>
             <%= content_tag :li,
-                'pul',
+                'All Princeton Holdings',
                 class: 'dropdown-item',
                 tabindex: -1,
                 role: 'option' %>
@@ -32,7 +32,7 @@
         <% end %>
         <% if @field_name == 'advanced_location_s' %>
             <%= content_tag :option,
-                'pul',
+                'All Princeton Holdings',
                 value: 'pul',
                 selected: params.dig('f_inclusive', 'advanced_location_s', 0) == 'pul' %>
         <% end %>
