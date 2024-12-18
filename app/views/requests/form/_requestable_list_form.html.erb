@@ -1,35 +1,66 @@
 <% return unless @request.holding.present? %>
 <%= hidden_fields_mfhd @request.holding %>
-<div class="table-responsive">
-  <div id="holding<%= mfhd %>" class="table items table">
-    <h2 class="requestable-call-number"><%= current_location_label(@request.location_label, requestable_list) %> </h2>
+<lux-wrapper :max-width=1440 >
+  <lux-grid-container>
+    <lux-grid-item columns="lg-12 sm-12">
+      <lux-data-table>
+      
+      <div id="holding<%= mfhd %>" class="table items table">
+        <h2 class="requestable-call-number"><%= current_location_label(@request.location_label, requestable_list) %> </h2>
 
-      <% unless @request.holding["location_has"].nil? %>
-          <div>
-            <h3>Location has: </h3>
-          </div>
-          <p>
-            <% holdings[mfhd]["location_has"].each do |loc| %>
-              <%= loc %><br/>
-            <% end %>
-          </p>
-      <% end %>
+          <% unless @request.holding["location_has"].nil? %>
+              <div>
+                <h3>Location has: </h3>
+              </div>
+              <p>
+                <% holdings[mfhd]["location_has"].each do |loc| %>
+                  <%= loc %><br/>
+                <% end %>
+              </p>
+          <% end %>
+      </div>
+      </lux-data-table>
+    </lux-grid-item>
+  </lux-grid-container>
+
+<% if false %>
+  <div class="table-responsive-sm">
+    <table class="table table-striped table-bordered request--available_items <%= show_tablesorter(requestable_list) %>" summary='<%= current_location_label(@request.location_label, requestable_list) %>'>
+      <thead class="visually-hidden-sm">
+        <th>Select</th>
+        <th class="w-25">Enumeration</th>
+        <th>Status</th>
+        <th id="delivery_options">Delivery Options</th>
+      </thead>
+      <tbody>
+        <% fill_in_eligible = @request.any_fill_in_eligible? %>
+        <% if fill_in_eligible %>
+          <%= render partial: "requestable_fill_in_field", locals: { requestable: requestable_list.last.create_fill_in_requestable, default_pick_ups: default_pick_ups, requestable_list: requestable_list } %>
+        <% end %>
+        <%= render partial: "requestable_form", collection: requestable_list, as: :requestable, locals: { mfhd: mfhd, holdings: @request.holdings, default_pick_ups: @request.default_pick_ups, fill_in_eligible: fill_in_eligible, requestable_list: requestable_list } %>
+      </tbody>
+    </table>
   </div>
-</div>
-<div class="table-responsive-sm">
-  <table class="table table-striped table-bordered request--available_items <%= show_tablesorter(requestable_list) %>" summary='<%= current_location_label(@request.location_label, requestable_list) %>'>
-    <thead class="visually-hidden-sm">
-      <th>Select</th>
-      <th class="w-25">Enumeration</th>
-      <th>Status</th>
-      <th id="delivery_options">Delivery Options</th>
-    </thead>
-    <tbody>
-      <% fill_in_eligible = @request.any_fill_in_eligible? %>
-      <% if fill_in_eligible %>
-        <%= render partial: "requestable_fill_in_field", locals: { requestable: requestable_list.last.create_fill_in_requestable, default_pick_ups: default_pick_ups, requestable_list: requestable_list } %>
-      <% end %>
-      <%= render partial: "requestable_form", collection: requestable_list, as: :requestable, locals: { mfhd: mfhd, holdings: @request.holdings, default_pick_ups: @request.default_pick_ups, fill_in_eligible: fill_in_eligible, requestable_list: requestable_list } %>
-    </tbody>
-  </table>
-</div>
+<% end %>
+
+  <lux-grid-container>
+    <lux-grid-item columns="lg-12 sm-12">
+      <article class="full-width">
+        <lux-data-table class="request--available_items <%= show_tablesorter(requestable_list) %>" summary='<%= current_location_label(@request.location_label, requestable_list) %>'>
+          <% fill_in_eligible = @request.any_fill_in_eligible? %>
+          <% if fill_in_eligible %>
+          <p>Hello Christina. How are you? It's time to get up.</p>
+          <%= render partial: "requestable_fill_in_field", locals: { requestable: requestable_list.last.create_fill_in_requestable, default_pick_ups: default_pick_ups, requestable_list: requestable_list } %>
+          <% end %>
+          <%= render partial: "requestable_form", collection: requestable_list, as: :requestable, locals: { mfhd: mfhd, holdings: @request.holdings, default_pick_ups: @request.default_pick_ups, fill_in_eligible: fill_in_eligible, requestable_list: requestable_list } %>
+          :columns="[
+              { 'name': 'request_type', 'display_name': 'Select', 'sortable': true},
+              { 'name': 'description', 'display_name': 'Enumeration', 'sortable': true},
+              { 'name': 'status_at_load', 'display_name': 'Status', 'sortable': true},
+              { 'name': 'default_pick_ups', 'display_name': 'Delivery Options', 'sortable': true}]"
+          :json-data="<%=  %>"
+        </lux-data-table>
+      </article>  
+    </lux-grid-item>
+  </lux-grid-container>
+</lux-wrapper>
