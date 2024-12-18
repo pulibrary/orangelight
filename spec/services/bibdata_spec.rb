@@ -82,7 +82,7 @@ RSpec.describe Bibdata do
       end
 
       it 'returns a nil value and logs a message' do
-        expect(patron).to be nil
+        expect(patron).to eq({})
         expect(logger).to have_received(:error).with("An error was encountered with the Patron Data Service.")
       end
     end
@@ -112,7 +112,7 @@ RSpec.describe Bibdata do
       end
 
       it 'returns a nil value and logs a message' do
-        expect(patron).to be nil
+        expect(patron).to eq({})
         expect(logger).to have_received(:error).with("404 Patron bbird cannot be found in the Patron Data Service.")
       end
     end
@@ -127,7 +127,7 @@ RSpec.describe Bibdata do
       end
 
       it 'returns a nil value and logs a message' do
-        expect(patron).to be nil
+        expect(patron).to eq({})
         expect(logger).to have_received(:error).with("403 Not Authorized to Connect to Patron Data Service at #{Requests.config['bibdata_base']}/patron/bbird")
       end
     end
