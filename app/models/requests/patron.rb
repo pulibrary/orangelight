@@ -100,9 +100,9 @@ module Requests
 
       def current_patron_hash(uid)
         if alma_provider?
-          AlmaPatron.new(uid:).hash
+          AlmaPatron.new(uid:).patron_hash
         else
-          FullPatron.new(user:).hash
+          FullPatron.new(user:).patron_hash
         end
       end
   end

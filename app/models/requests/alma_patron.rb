@@ -6,7 +6,7 @@ module Requests
       @uid = uid
     end
 
-    def hash
+    def patron_hash
       {
         last_name:,
         active_email:,

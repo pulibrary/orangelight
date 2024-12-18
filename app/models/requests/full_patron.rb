@@ -2,9 +2,9 @@
 module Requests
   # FullPatron pulls all available data from both Alma and LDAP via Bibdata
   class FullPatron
-    attr_reader :hash
+    attr_reader :patron_hash
     def initialize(user: nil)
-      @hash = ::Bibdata.get_patron(user, ldap: true)
+      @patron_hash = ::Bibdata.get_patron(user, ldap: true)
     end
   end
 end
