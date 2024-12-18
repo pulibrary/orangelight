@@ -127,16 +127,15 @@ GEM
       parser (>= 2.4)
       smart_properties
     bigdecimal (3.1.8)
-    blacklight (7.38.0)
-      deprecation
+    blacklight (8.7.0)
       globalid
-      hashdiff
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
-      rails (>= 5.1, < 7.3)
-      view_component (>= 2.66, < 4)
+      rails (>= 6.1, < 9)
+      view_component (>= 2.74, < 4)
+      zeitwerk
     blacklight-hierarchy (6.4.0)
       blacklight (>= 7.18, < 9)
       deprecation
@@ -218,7 +217,7 @@ GEM
       libddwaf (~> 1.15.0.0.0)
       msgpack
     datadog-ruby_core_source (3.3.6)
-    date (3.4.0)
+    date (3.4.1)
     deprecation (1.1.0)
       activesupport
     descendants_tracker (0.0.4)
@@ -334,8 +333,8 @@ GEM
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    io-console (0.7.2)
-    irb (1.14.1)
+    io-console (0.8.0)
+    irb (1.14.2)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jaro_winkler (1.6.0)
@@ -414,7 +413,7 @@ GEM
       racc (~> 1.7)
     net-http (0.5.0)
       uri
-    net-imap (0.5.1)
+    net-imap (0.5.2)
       date
       net-protocol
     net-ldap (0.19.0)
@@ -466,7 +465,8 @@ GEM
     pry-byebug (3.10.1)
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
-    psych (5.2.0)
+    psych (5.2.1)
+      date
       stringio
     public_suffix (6.0.1)
     puma (6.4.3)
@@ -526,7 +526,7 @@ GEM
     rake (13.2.1)
     rbs (2.8.4)
     rbtree (0.4.6)
-    rdoc (6.8.1)
+    rdoc (6.9.1)
       psych (>= 4.0.0)
     redis (5.3.0)
       redis-client (>= 0.22.0)
@@ -538,7 +538,7 @@ GEM
       rainbow (>= 2.0, < 4.0)
       rexml (~> 3.1)
     regexp_parser (2.9.2)
-    reline (0.5.11)
+    reline (0.6.0)
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
@@ -684,7 +684,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.4.0)
     timecop (0.9.10)
-    timeout (0.4.2)
+    timeout (0.4.3)
     tins (1.37.0)
       bigdecimal
       sync
@@ -758,7 +758,7 @@ DEPENDENCIES
   axe-core-rspec
   babel-transpiler
   bcrypt_pbkdf
-  blacklight (~> 7.38.0)
+  blacklight (~> 8.7.0)
   blacklight-hierarchy
   blacklight-marc (~> 8.1)
   blacklight_dynamic_sitemap

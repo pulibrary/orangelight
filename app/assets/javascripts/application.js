@@ -23,3 +23,11 @@
 //
 //= require ./custom_range_limit.js
 //= require ./orangelight.js
+
+// Wait for the modal to open
+document.addEventListener('show.blacklight.blacklight-modal', function () {
+  // Wait for the form to be submitted successfully
+  $('.modal_form').on('ajax:success', function () {
+    Blacklight.Modal.hide();
+  });
+});
