@@ -53,7 +53,7 @@ describe 'advanced searching', advanced_search: true do
     holding_location = find_field('advanced_location_s')
     holding_location.click
     drop_down = holding_location.sibling(".dropdown-menu")
-    expect(drop_down).to have_content("pul")
+    expect(drop_down).to have_content("All Princeton Holdings")
   end
 
   it 'allows searching by publication date', js: true do
