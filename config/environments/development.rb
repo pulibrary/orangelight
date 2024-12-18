@@ -18,6 +18,7 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  config.cache_store = :mem_cache_store, "#{ENV['lando_orangelight_memcached_conn_host']}:#{ENV['lando_orangelight_memcached_conn_port']}" # Will fallback to $MEMCACHE_SERVERS, then 127.0.0.1:11211
   config.assets.quiet = true
 
   # Do not eager load code on boot.
