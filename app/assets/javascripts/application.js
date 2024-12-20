@@ -26,8 +26,18 @@
 
 // Wait for the modal to open
 document.addEventListener('show.blacklight.blacklight-modal', function () {
+  // Add data-remote=true so that Rails UJS knows to submit the form as an AJAX request
+  document
+    .querySelector('#new_report_harmful_language_form')
+    ?.setAttribute('data-remote', true);
   // Wait for the form to be submitted successfully
   $('.modal_form').on('ajax:success', function () {
     Blacklight.Modal.hide();
+  });
+  // Wait for the form to be submitted with an error
+  $('.modal_form').on('ajax:error', function (event, xhr) {
+    if (xhr.status == 422) {
+      Blacklight.Modal.receiveAjax(xhr.responseText);
+    }
   });
 });
