@@ -6,7 +6,6 @@ class CatalogController < ApplicationController
   include Blacklight::Marc::Catalog
   include BlacklightRangeLimit::ControllerOverride
   include Orangelight::Catalog
-  include Orangelight::Stackmap
   include Orangelight::ExcessivePaging
   include BlacklightHelper
 
