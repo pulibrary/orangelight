@@ -172,14 +172,6 @@ module Requests
       hidden
     end
 
-    def hidden_fields_holding(requestable)
-      hidden = hidden_field_tag "requestable[][mfhd]", "", value: requestable.holding.mfhd_id.to_s, id: "requestable_mfhd_#{requestable.holding.mfhd_id}"
-      hidden += hidden_field_tag "requestable[][call_number]", "", value: requestable.holding.holding_data['call_number'].to_s, id: "requestable_call_number_#{requestable.holding.mfhd_id}" unless requestable.holding.holding_data["call_number"].nil?
-      hidden += hidden_field_tag "requestable[][location_code]", "", value: requestable.holding.holding_data['location_code'].to_s, id: "requestable_location_code_#{requestable.holding.mfhd_id}"
-      hidden += hidden_field_tag "requestable[][location]", "", value: requestable.holding.holding_data['location'].to_s, id: "requestable_location_#{requestable.holding.mfhd_id}"
-      sanitize(hidden, tags: input)
-    end
-
     def isbn_string(array_of_isbns)
       array_of_isbns.join(',')
     end
