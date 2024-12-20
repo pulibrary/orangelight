@@ -564,9 +564,9 @@ class CatalogController < ApplicationController
     config.add_search_field('publisher') do |field|
       field.include_in_simple_select = false
       field.label = 'Publisher'
-      field.solr_adv_parameters = {
-        qf: '$publisher_qf',
-        pf: '$publisher_pf'
+      field.solr_parameters = {
+        qf: '${publisher_qf}',
+        pf: '${publisher_pf}'
       }
     end
 
@@ -587,9 +587,9 @@ class CatalogController < ApplicationController
     config.add_search_field('notes') do |field|
       field.include_in_simple_select = false
       field.label = 'Notes'
-      field.solr_adv_parameters = {
-        qf: '$notes_qf',
-        pf: '$notes_pf'
+      field.solr_parameters = {
+        qf: '${notes_qf}',
+        pf: '${notes_pf}'
       }
     end
 

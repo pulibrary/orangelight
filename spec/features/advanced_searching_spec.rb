@@ -207,4 +207,31 @@ describe 'advanced searching', advanced_search: true do
     click_button 'Search'
     expect(page).to have_content '1 entry found'
   end
+  it 'gives different results for the publisher search vs. keyword search' do
+    visit '/advanced'
+    select('Keyword', from: 'clause_0_field')
+    fill_in(id: 'clause_0_query', with: 'Center')
+    click_button 'Search'
+    expect(page).to have_content 'Zhong gong zhong yao li shi wen'
+
+    visit '/advanced'
+    select('Publisher', from: 'clause_0_field')
+    fill_in(id: 'clause_0_query', with: 'Center')
+    click_button 'Search'
+    expect(page).to have_content 'Boulder, Col. : The Center, 1978-'
+    expect(page).not_to have_content 'Service Center for Chinese Publications'
+  end
+  it 'gives different results for the notes search vs. keyword search' do
+    visit '/advanced'
+    select('Keyword', from: 'clause_0_field')
+    fill_in(id: 'clause_0_query', with: 'Turkish')
+    click_button 'Search'
+    expect(page).to have_content 'Ahmet Kutsi Tecer sempozyum bildirileri : Sıvas 24 - 27 Nisan 2018'
+
+    visit '/advanced'
+    select('Notes', from: 'clause_0_field')
+    fill_in(id: 'clause_0_query', with: 'Turkish')
+    click_button 'Search'
+    expect(page).not_to have_content 'Ahmet Kutsi Tecer sempozyum bildirileri : Sıvas 24 - 27 Nisan 2018'
+  end
 end
