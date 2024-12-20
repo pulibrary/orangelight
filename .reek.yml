@@ -132,7 +132,6 @@ detectors:
     - Requests::ApplicationHelper#display_status
     - Requests::ApplicationHelper#hidden_fields_for_item
     - Requests::ApplicationHelper#hidden_fields_for_scsb
-    - Requests::ApplicationHelper#hidden_fields_holding
     - Requests::ApplicationHelper#hidden_fields_item
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::ApplicationHelper#hidden_service_options
@@ -266,7 +265,6 @@ detectors:
     - Requests::ApplicationHelper#display_status
     - Requests::ApplicationHelper#hidden_fields_for_item
     - Requests::ApplicationHelper#hidden_fields_for_scsb
-    - Requests::ApplicationHelper#hidden_fields_holding
     - Requests::ApplicationHelper#hidden_fields_item
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::ApplicationHelper#item_checkbox
@@ -396,7 +394,6 @@ detectors:
     - CatalogController
     - Orangelight::Catalog
     - Orangelight::ExcessivePaging
-    - Orangelight::Stackmap
     - ContactController
     - ErrorsController
     - FeedbackController
@@ -588,7 +585,6 @@ detectors:
     - HoldingsHelper#first_two_holdings_block
     - Requests::ApplicationHelper#display_status
     - Requests::ApplicationHelper#hidden_fields_for_item
-    - Requests::ApplicationHelper#hidden_fields_holding
     - Requests::ApplicationHelper#hidden_fields_item
     - Requests::ApplicationHelper#hidden_fields_mfhd
     - Requests::RequestHelper#login_url
@@ -684,7 +680,6 @@ detectors:
     - ApplicationController#after_sign_in_path_for
     - CatalogController#numismatics
     - CatalogController#render_empty_search
-    - Orangelight::Stackmap#stackmap
     - FeedbackController#create
     - Orangelight::BrowsablesController#assign_pagination_values
     - Orangelight::BrowsablesController#assign_values
