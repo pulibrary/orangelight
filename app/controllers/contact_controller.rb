@@ -23,13 +23,13 @@ class ContactController < ApplicationController
   end
 
   def report_harmful_language
-    @form = ReportHarmfulLanguageForm.new(report_harmful_language_params)
-    if @form.valid? && @form.submit
+    @harmful_language_form = ReportHarmfulLanguageForm.new(report_harmful_language_params)
+    if @harmful_language_form.valid? && @harmful_language_form.submit
       flash[:success] = 'Your report has been submitted'
 
       render "report_harmful_language_success"
     else
-      render partial: "catalog/report_harmful_language_form", locals: { form: @form }
+      render "feedback/report_harmful_language", layout: !request.xhr?, status: :unprocessable_entity
     end
   end
 
