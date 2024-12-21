@@ -18,6 +18,8 @@ Rails.application.configure do
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs. Don't rely on the data there!
   config.cache_classes = true
+  # use null_store in CI, mem_cache_store locally
+  config.cache_store = ENV['CI'].present? ? :memory_store : :mem_cache_store, "#{ENV['lando_orangelight_memcached_conn_host']}:#{ENV['lando_orangelight_memcached_conn_port']}"
 
   # Eager loading loads your whole application. When running a single test locally,
   # this probably isn't necessary. It's a good idea to do in a continuous integration
