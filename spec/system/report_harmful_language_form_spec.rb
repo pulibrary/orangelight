@@ -20,4 +20,20 @@ RSpec.describe ReportHarmfulLanguageForm, libanswers: true do
       expect(page).to have_text 'Thank you for reporting problematic language in the Princeton University Library catalog'
     end
   end
+  describe 'pressing the send button' do
+    before do
+      stub_libanswers_api
+      stub_holding_locations
+      visit '/catalog/99105509673506421'
+      scroll_to(:bottom) # needed when js: true
+      click_link 'Report Harmful Language'
+      fill_in 'report_harmful_language_form_message', with: 'Please correct the harmful content of this record'
+    end
+    it 'closes the modal', js: true do
+      expect(page).to have_text('You are reporting the use of harmful language in this catalog record')
+      click_button 'Send'
+      expect(current_path).to eq '/catalog/99105509673506421'
+      expect(page).not_to have_text('You are reporting the use of harmful language in this catalog record')
+    end
+  end
 end
