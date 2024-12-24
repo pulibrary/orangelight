@@ -111,22 +111,33 @@ describe('MultiselectCombobox', () => {
   describe('when one of the options is already selected', () => {
     beforeEach(() => {
       document.body.innerHTML = `
-                <div class="dropdown">
-                    <label for="my-id">My field</label>
-                    <input id="my-id">
-                    <ul>
-                        <li>Firestone</li>
-                        <li>Lewis</li>
-                    </ul>
-                    <select multiple="true" class="selectpicker">
-                        <option value="Firestone">Firestone</option>
-                        <option value="Lewis" selected>Lewis</option>
-                    </select>
-                </div>`;
+        <div class="dropdown">
+          <label for="my-id">My field</label>
+          <input id="my-id">
+          <ul>
+            <li>All Princeton Holdings</li>
+            <li>Firestone Library  (8)</li>
+            <li>Lewis Library  (22)</li>
+            <li>annex$fst: Forrestal Annex - A  (1)</li>
+          </ul>
+          <select multiple="true" class="selectpicker">
+            <option value="pul">All Princeton Holdings</option>
+            <option value="Firestone Library">Firestone Library  (8)</option>
+            <option value="Lewis Library" selected>Lewis Library  (22)</option>
+            <option value="annex$fst" selected>annex$fst: Forrestal Annex - A  (1)</option>
+          </select>
+        </div>`;
       combobox = new MultiselectCombobox(document.querySelector('input'));
     });
     it('Moves the active option to the top', () => {
-      expect(document.querySelectorAll('li')[0].textContent).toEqual('Lewis');
+      expect(document.querySelectorAll('li')[0].textContent).toEqual(
+        'Lewis Library  (22)'
+      );
+    });
+    it('Keeps the libraries sorted before other locations', () => {
+      expect(document.querySelectorAll('li')[1].textContent).toEqual(
+        'annex$fst: Forrestal Annex - A  (1)'
+      );
     });
     it('Adds a checkmark icon to the <li>', () => {
       expect(
@@ -144,7 +155,9 @@ describe('MultiselectCombobox', () => {
       ).toEqual('true');
     });
     it('Adds the text to the <input>', () => {
-      expect(document.querySelector('input').value).toEqual('Lewis');
+      expect(document.querySelector('input').value).toEqual(
+        'Lewis Library  (22); annex$fst: Forrestal Annex - A  (1)'
+      );
     });
   });
 });
