@@ -7,7 +7,7 @@ orbs:
 executors:
   orangelight-executor:
     docker:
-      - image: cimg/ruby:3.1.0-browsers
+      - image: cimg/ruby:3.3.6-browsers
         environment:
           RAILS_ENV: test
           ORANGELIGHT_HOST: localhost
@@ -27,7 +27,7 @@ executors:
     working_directory: ~/orangelight
   basic-executor:
     docker:
-      - image: cimg/ruby:3.1.0-browsers
+      - image: cimg/ruby:3.3.6-browsers
         environment:
           RAILS_ENV: test
     resource_class: large
@@ -129,7 +129,7 @@ jobs:
 
   bearer:
     docker:
-      - image: cimg/ruby:3.1
+      - image: cimg/ruby:3.3
     environment:
       # Set to default branch of your repo
       DEFAULT_BRANCH: main
@@ -192,7 +192,7 @@ jobs:
 
   reek:
     docker:
-      - image: cimg/ruby:3.1
+      - image: cimg/ruby:3.3
     steps:
       - checkout
       - ruby/install-deps
