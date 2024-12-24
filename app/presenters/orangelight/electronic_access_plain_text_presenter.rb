@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Orangelight
-  # This class is responsible for presenting electonic access data from solr documents
+  # This class is responsible for presenting electronic access data from solr documents
   # in a way suitable for plain text settings, like a plain text email
   class ElectronicAccessPlainTextPresenter < Blacklight::FieldPresenter
     def values

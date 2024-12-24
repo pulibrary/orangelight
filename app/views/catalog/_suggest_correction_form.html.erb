@@ -2,6 +2,7 @@
 <%= render :partial=>'shared/flash_msg' %>
 <%= simple_form_for(
     form,
+    remote: true,
     url: contact_suggestion_path,
     data:  { blacklight_modal: 'trigger' },
     html: { class: "modal_form" }
@@ -18,10 +19,9 @@
     <%= f.input :context, as: :hidden %>
     <%= f.input :title, as: :hidden %>
     <%= f.input :feedback_desc, as: :hidden %>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bl-dismiss="modal">Cancel</button>
     <%= f.submit "Send", class: "btn btn-primary", id: 'submit-suggestion' %>
-  </div>
-<% end %>
-
+    </div>
+  <% end %>
+</div>

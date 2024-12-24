@@ -134,10 +134,17 @@ RSpec.describe 'orangelight/record_mailer/email_record' do
         ]
       }
     end
+    let(:text) do
+      <<~TEXT
+        \tFull Text: https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53827030770006421&Force_direct=true
+        \tSecond Title: https://example.com
+      TEXT
+    end
 
     it 'includes the electronic portfolio link' do
       expect(rendered).to have_text('Full Text')
       expect(rendered).to have_text('Second Title')
+      expect(rendered).to have_text(text)
     end
   end
 end
