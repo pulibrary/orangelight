@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/pulibrary/stringex.git
-  revision: 357f70511532a35b11a240e5ae06d02725cb8d0a
-  tag: vpton.2.5.2.2
+  revision: 7aa133c5cfdbd4e13c0eeee27b0c61958229b57d
+  branch: main
   specs:
     stringex (2.5.2)
 
