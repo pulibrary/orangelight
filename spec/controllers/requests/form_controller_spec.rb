@@ -3,9 +3,9 @@ require 'rails_helper'
 require "mail"
 
 describe Requests::FormController, type: :controller, vcr: { cassette_name: 'form_controller', record: :none }, requests: true do
-  let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
-  let(:valid_barcode_patron_response) { fixture('/bibdata_patron_response_barcode.json') }
-  let(:invalid_patron_response) { fixture('/bibdata_not_found_patron_response.json') }
+  let(:valid_patron_response) { file_fixture('../bibdata_patron_response.json') }
+  let(:valid_barcode_patron_response) { file_fixture('../bibdata_patron_response_barcode.json') }
+  let(:invalid_patron_response) { file_fixture('../bibdata_not_found_patron_response.json') }
   let(:user) { FactoryBot.create(:user) }
 
   describe 'POST #generate' do

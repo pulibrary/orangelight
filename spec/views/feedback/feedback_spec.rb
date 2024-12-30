@@ -44,7 +44,7 @@ describe 'Feedback Form', type: :feature, js: true, libanswers: true do
 
   context 'Princeton Community User has signed in' do
     let(:user) { FactoryBot.create(:valid_princeton_patron) }
-    let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
+    let(:valid_patron_response) { file_fixture('../bibdata_patron_response.json') }
 
     it 'Populates Email Field' do
       stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")

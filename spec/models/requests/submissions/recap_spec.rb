@@ -82,9 +82,9 @@ describe Requests::Submissions::Recap, requests: true do
 
     let(:recap_request) { described_class.new(submission) }
     let(:recap_edd_request) { described_class.new(submission, service_type: 'recap_edd') }
-    let(:good_request) { fixture('/scsb_find_request.json') }
-    let(:good_response) { fixture('/scsb_request_item_response.json') }
-    let(:bad_response) { fixture('/scsb_request_item_response_errors.json') }
+    let(:good_request) { file_fixture('../scsb_find_request.json') }
+    let(:good_response) { file_fixture('../scsb_request_item_response.json') }
+    let(:bad_response) { file_fixture('../scsb_request_item_response_errors.json') }
 
     describe 'All ReCAP Requests' do
       it "captures recap errors when the request is unsuccessful or malformed." do
@@ -125,7 +125,7 @@ describe Requests::Submissions::Recap, requests: true do
           .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, alma_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
-          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
+          .to_return(status: 200, body: file_fixture("../alma_hold_response.json"), headers: { 'content-type': 'application/json' })
         expect { recap_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(recap_request.submitted.size).to eq(1)
         expect(recap_request.errors.size).to eq(0)
@@ -138,7 +138,7 @@ describe Requests::Submissions::Recap, requests: true do
           .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, alma_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
-          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
+          .to_return(status: 200, body: file_fixture("../alma_hold_response.json"), headers: { 'content-type': 'application/json' })
         expect { recap_edd_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(recap_edd_request.submitted.size).to eq(1)
         expect(recap_edd_request.errors.size).to eq(0)
@@ -151,7 +151,7 @@ describe Requests::Submissions::Recap, requests: true do
           .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, alma_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
-          .to_return(status: 400, body: fixture("alma_hold_error_no_library_response.json"), headers: { 'content-type': 'application/json' })
+          .to_return(status: 400, body: file_fixture("../alma_hold_error_no_library_response.json"), headers: { 'content-type': 'application/json' })
         expect do
           recap_request.handle
           perform_enqueued_jobs
@@ -287,8 +287,8 @@ describe Requests::Submissions::Recap, requests: true do
     end
 
     let(:recap_request) { described_class.new(submission) }
-    let(:good_request) { fixture('/scsb_find_request.json') }
-    let(:good_response) { fixture('/scsb_request_item_response.json') }
+    let(:good_request) { file_fixture('../scsb_find_request.json') }
+    let(:good_response) { file_fixture('../scsb_request_item_response.json') }
 
     describe 'All ReCAP Requests' do
       it "captures successful request submissions." do
@@ -296,10 +296,10 @@ describe Requests::Submissions::Recap, requests: true do
           .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, alma_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
-          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
+          .to_return(status: 200, body: file_fixture("../alma_hold_response.json"), headers: { 'content-type': 'application/json' })
         stub_request(:post, alma2_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "mudd"))
-          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
+          .to_return(status: 200, body: file_fixture("../alma_hold_response.json"), headers: { 'content-type': 'application/json' })
         expect { recap_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(recap_request.submitted.size).to eq(2)
         expect(recap_request.errors.size).to eq(0)

@@ -9,7 +9,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
       Requests::Patron.new(user:, patron_hash: valid_patron)
     end
 
-    let(:scsb_single_holding_item) { fixture('/SCSB-2635660.json') }
+    let(:scsb_single_holding_item) { file_fixture('../SCSB-2635660.json') }
     let(:location_code) { 'scsbcul' }
     let(:params) do
       {

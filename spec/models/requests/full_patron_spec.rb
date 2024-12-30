@@ -10,7 +10,7 @@ RSpec.describe Requests::FullPatron, requests: true, patrons: true do
 
   context 'with a patron' do
     let(:patron) { described_class.new(user:) }
-    let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
+    let(:valid_patron_response) { file_fixture('../bibdata_patron_response.json') }
     let(:bibdata_mock) do
       stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/abc123?ldap=true")
         .to_return(status: 200, body: valid_patron_response, headers: {})

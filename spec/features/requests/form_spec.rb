@@ -21,13 +21,13 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
   let(:transaction_url) { "https://lib-illiad.princeton.edu/ILLiadWebPlatform/transaction" }
   let(:transaction_note_url) { "https://lib-illiad.princeton.edu/ILLiadWebPlatform/transaction/1093806/notes" }
 
-  let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
-  let(:valid_patron_no_barcode_response) { fixture('/bibdata_patron_no_barcode_response.json') }
-  let(:valid_barcode_patron_response) { fixture('/bibdata_patron_response_barcode.json') }
-  let(:valid_patron_no_campus_response) { fixture('/bibdata_patron_response_no_campus.json') }
-  let(:valid_graduate_student_no_campus_response) { fixture('/bibdata_patron_response_graduate_no_campus.json') }
-  let(:invalid_patron_response) { fixture('/bibdata_not_found_patron_response.json') }
-  let(:valid_patron_response_no_ldap) { fixture('/bibdata_patron_response_no_ldap.json') }
+  let(:valid_patron_response) { file_fixture('../bibdata_patron_response.json') }
+  let(:valid_patron_no_barcode_response) { file_fixture('../bibdata_patron_no_barcode_response.json') }
+  let(:valid_barcode_patron_response) { file_fixture('../bibdata_patron_response_barcode.json') }
+  let(:valid_patron_no_campus_response) { file_fixture('../bibdata_patron_response_no_campus.json') }
+  let(:valid_graduate_student_no_campus_response) { file_fixture('../bibdata_patron_response_graduate_no_campus.json') }
+  let(:invalid_patron_response) { file_fixture('../bibdata_not_found_patron_response.json') }
+  let(:valid_patron_response_no_ldap) { file_fixture('../bibdata_patron_response_no_ldap.json') }
 
   let(:responses) do
     {
@@ -106,7 +106,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
     end
 
     describe 'When visiting an Alma ID as a CAS User' do
-      let(:good_response) { fixture('/scsb_request_item_response.json') }
+      let(:good_response) { file_fixture('../scsb_request_item_response.json') }
       it 'Shows a ReCAP PUL item that is at "preservation and conservation" as a partner request' do
         stub_illiad_patron
         stub_request(:post, transaction_url)
@@ -149,7 +149,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           .to_return(status: 200, body: "<document count='1' sent='true'></document>", headers: {})
         stub_request(:post, "#{Alma.configuration.region}/almaws/v1/bibs/9994933183506421/holdings/22558528920006421/items/23558528910006421/requests?user_id=960594184")
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
-          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
+          .to_return(status: 200, body: file_fixture("../alma_hold_response.json"), headers: { 'content-type': 'application/json' })
         visit "/requests/#{mms_id}"
         expect(page).to have_content 'Electronic Delivery'
         # some weird issue with this and capybara examining the page source shows it is there.
@@ -526,7 +526,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, "#{Alma.configuration.region}/almaws/v1/bibs/99115783193506421/holdings/22534122440006421/items/23534122430006421/requests?user_id=960594184")
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
-          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
+          .to_return(status: 200, body: file_fixture("../alma_hold_response.json"), headers: { 'content-type': 'application/json' })
         visit '/requests/99115783193506421?mfhd=22534122440006421'
         expect(page).not_to have_content 'Item is not requestable.'
         expect(page).not_to have_content 'Electronic Delivery'
@@ -1124,7 +1124,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         expect(page).not_to have_content 'Only items available for digitization can be requested when you do not have a barcode registered with the Library. Library staff will work to try to get you access to a digital copy of the desired material.'
       end
 
-      let(:good_response) { fixture('/scsb_request_item_response.json') }
+      let(:good_response) { file_fixture('../scsb_request_item_response.json') }
       it 'disallows access to request a physical ReCAP item' do
         stub_scsb_availability(bib_id: "9999443553506421", institution_id: "PUL", barcode: '32101098722844')
         visit '/requests/9999443553506421?mfhd=22743365320006421'
@@ -1247,7 +1247,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
   end
 
   context 'An Alma user that does not have a Net ID' do
-    let(:alma_login_response) { fixture('/alma_login_response.json') }
+    let(:alma_login_response) { file_fixture('../alma_login_response.json') }
     let(:user) { FactoryBot.create(:valid_alma_patron) }
     before do
       stub_request(:get, "#{Alma.configuration.region}/almaws/v1/users/#{user.uid}?expand=fees,requests,loans")

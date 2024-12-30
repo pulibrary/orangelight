@@ -19,7 +19,7 @@ def stub_alma_hold(id, mfhd, item_id, patron_id, status: 200, fixture_name: "alm
   stub_url = "#{Alma.configuration.region}/almaws/v1/bibs/#{id}/holdings/#{mfhd}/items/#{item_id}/requests?user_id=#{patron_id}"
   stub_request(:post, stub_url)
     .to_return(status:,
-               body: fixture(fixture_name),
+               body: file_fixture("../#{fixture_name}"),
                headers: { 'content-type': 'application/json' })
 end
 # rubocop:enable Metrics/ParameterLists

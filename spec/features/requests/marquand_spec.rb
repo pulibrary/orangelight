@@ -96,7 +96,7 @@ describe 'requests for Marquand items', type: :feature, requests: true do
         stub_request(:post, "#{Requests.config[:scsb_base]}/requestItem/requestItem")
           .to_return(status: 200, body: good_response, headers: {})
       end
-      let(:good_response) { fixture('/scsb_request_item_response.json') }
+      let(:good_response) { file_fixture('../scsb_request_item_response.json') }
       before do
         scsb_post_stub
         stub_scsb_availability(bib_id:, institution_id: "PUL", barcode: item_barcode)
