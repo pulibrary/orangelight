@@ -11,7 +11,7 @@ describe Requests::Scsb, requests: true do
   let(:patron) do
     Requests::Patron.new(user:, patron_hash: valid_patron)
   end
-  let(:scsb_no_format) { fixture('/SCSB-7935196.json') }
+  let(:scsb_no_format) { file_fixture('../SCSB-7935196.json') }
   let(:location_code) { 'scsbnypl' }
   let(:params) do
     {

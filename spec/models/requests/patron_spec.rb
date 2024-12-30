@@ -18,16 +18,16 @@ describe Requests::Patron, requests: true, patrons: true do
     instance_double(User, guest?: guest?, uid:, alma_provider?: false, provider:, valid?: true)
   end
   let(:bibdata_uri) { Requests.config[:bibdata_base] }
-  let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
-  let(:valid_barcode_patron_response) { fixture('/bibdata_patron_response_barcode.json') }
-  let(:invalid_patron_response) { fixture('/bibdata_not_found_patron_response.json') }
+  let(:valid_patron_response) { file_fixture('../bibdata_patron_response.json') }
+  let(:valid_barcode_patron_response) { file_fixture('../bibdata_patron_response_barcode.json') }
+  let(:invalid_patron_response) { file_fixture('../bibdata_not_found_patron_response.json') }
 
   context 'when the user is provided from Alma' do
     let(:uid) { 'BC123456789' }
     let(:user) do
       instance_double(User, guest?: guest?, uid:, alma_provider?: true, provider:)
     end
-    let(:patron_with_multiple_barcodes) { fixture('/BC123456789.json') }
+    let(:patron_with_multiple_barcodes) { file_fixture('../BC123456789.json') }
 
     before do
       stub_request(:get, "https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/#{uid}?expand=fees,requests,loans")

@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'email form' do
   let(:bibid) { '9979948663506421' }
   let(:user) { FactoryBot.create(:valid_princeton_patron) }
-  let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
+  let(:valid_patron_response) { file_fixture('../bibdata_patron_response.json') }
 
   before do
     current_illiad_user_uri = "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent"

@@ -49,9 +49,9 @@ describe Requests::Submissions::HoldItem, type: :controller, requests: true do
 
     let(:responses) do
       {
-        error: fixture("alma_hold_error_response.json"),
-        error_malformed: fixture("alma_hold_error_no_library_response.json"),
-        success: fixture("alma_hold_response.json")
+        error: file_fixture("../alma_hold_error_response.json"),
+        error_malformed: file_fixture("../alma_hold_error_no_library_response.json"),
+        success: file_fixture("../alma_hold_response.json")
       }
     end
 

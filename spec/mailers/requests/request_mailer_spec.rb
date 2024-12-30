@@ -5,7 +5,7 @@ include Requests::ApplicationHelper
 # rubocop:disable RSpec/MultipleExpectations
 # rubocop:disable Metrics/BlockLength
 describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer', record: :none }, requests: true do
-  let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
+  let(:valid_patron_response) { file_fixture('../bibdata_patron_response.json') }
 
   let(:user_info) do
     stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/foo?ldap=true").to_return(status: 200, body: valid_patron_response, headers: {})

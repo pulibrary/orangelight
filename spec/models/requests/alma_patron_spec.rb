@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe Requests::AlmaPatron, requests: true, patrons: true do
   context 'with a call to Alma' do
     let(:uid) { 'BC123456789' }
-    let(:patron_with_multiple_barcodes) { fixture('/BC123456789.json') }
+    let(:patron_with_multiple_barcodes) { file_fixture('../BC123456789.json') }
     let(:alma_stub) do
       stub_request(:get, "https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/#{uid}?expand=fees,requests,loans")
         .to_return(status: 200, body: patron_with_multiple_barcodes, headers: { "Content-Type" => "application/json" })
