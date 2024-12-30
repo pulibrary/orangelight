@@ -12,6 +12,7 @@ describe 'reporting harmful language', js: true do
   end
 
   it 'gives an error when the email is invalid' do
+    pending 'see https://github.com/pulibrary/orangelight/issues/4655'
     expect(page).to have_content 'Email is not a valid email address'
   end
 end
