@@ -841,8 +841,10 @@ class CatalogController < ApplicationController
     end
 
     def search_service_context
-      if %w[advanced_search numismatics].include? action_name
+      if action_name == 'advanced_search'
         { search_builder_class: AdvancedFormSearchBuilder }
+      elsif action_name == 'numismatics'
+        { search_builder_class: NumismaticsFormSearchBuilder }
       else
         return {} unless Flipflop.multi_algorithm?
         return {} unless configurable_search_builder_class # use default if none specified
