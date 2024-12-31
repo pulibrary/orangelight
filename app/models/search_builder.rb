@@ -114,7 +114,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
 
     def facet_query_present?
-      blacklight_params[:f].present?
+      blacklight_params[:f].present? || blacklight_params[:action] == 'facet'
     end
 
     def json_query_dsl_clauses

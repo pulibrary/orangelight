@@ -133,6 +133,15 @@ RSpec.describe SearchBuilder do
         expect { search_builder.only_home_facets(solr_parameters) }.not_to change { solr_parameters }
       end
     end
+    context 'when there is a facet suggest query' do
+      let(:blacklight_params) do
+        { "controller" => "catalog", "action" => "facet", "id" => "language_facet", "query_fragment" => "a", "only_values" => true }.with_indifferent_access
+      end
+      it 'does not make any changes to the facets' do
+        solr_parameters = { 'facet.field' => ['access_facet', 'language_facet'] }
+        expect { search_builder.only_home_facets(solr_parameters) }.not_to change { solr_parameters }
+      end
+    end
   end
 
   describe '#adjust_mm' do
