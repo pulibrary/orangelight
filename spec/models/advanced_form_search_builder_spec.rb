@@ -29,4 +29,46 @@ RSpec.describe AdvancedFormSearchBuilder do
       end.not_to(change { solr_params })
     end
   end
+
+  describe '#only_request_advanced_facets' do
+    let(:blacklight_config) { CatalogController.blacklight_config }
+
+    it 'removes unnecessary facet.field entries' do
+      builder.with({ action: 'advanced_search' })
+      solr_params = { "facet.field" => %w[genre_facet subject_era_facet geographic_facet] }
+
+      builder.only_request_advanced_facets(solr_params)
+
+      expect(solr_params['facet.field']).not_to include 'genre_facet'
+      expect(solr_params['facet.field']).not_to include 'subject_era_facet'
+      expect(solr_params['facet.field']).not_to include 'geographic_facet'
+    end
+
+    it 'adds the needed facet.field entries' do
+      builder.with({ action: 'advanced_search' })
+      solr_params = { "facet.field" => %w[genre_facet subject_era_facet geographic_facet] }
+
+      builder.only_request_advanced_facets(solr_params)
+
+      expect(solr_params['facet.field']).to include 'language_facet'
+    end
+
+    it 'removes unneeded params' do
+      builder.with({ action: 'advanced_search' })
+      solr_params = {
+        "facet.pivot" => %w[lc_1letter_facet lc_rest_facet],
+        "facet.query" => ['cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]', 'cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]'],
+        "stats" => true,
+        "stats.field" => "pub_date_start_sort"
+      }
+
+      builder.only_request_advanced_facets(solr_params)
+
+      expect(solr_params.keys).not_to include 'facet.query'
+      expect(solr_params.keys).not_to include 'facet.pivot'
+      expect(solr_params.keys).not_to include 'stats'
+      expect(solr_params.keys).not_to include 'stats.field'
+      expect(solr_params.keys).to include 'facet.field'
+    end
+  end
 end
