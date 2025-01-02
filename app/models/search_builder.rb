@@ -12,7 +12,7 @@ class SearchBuilder < Blacklight::SearchBuilder
                                      only_home_facets prepare_left_anchor_search
                                      series_title_results pul_holdings html_facets
                                      numismatics_facets numismatics_advanced
-                                     adjust_mm]
+                                     adjust_mm remove_unneeded_facets]
 
   # mutate the solr_parameters to remove words that are
   # boolean operators, but not intended as such.
@@ -107,6 +107,18 @@ class SearchBuilder < Blacklight::SearchBuilder
     solr_parameters['mm'] = 0
   end
 
+  # When the user is viewing the values of a specific facet
+  # by clicking the "more" link in a facet, solr doesn't
+  # need to perform expensive calculations related to other
+  # facets that the user is not displaying
+  # :reek:FeatureEnvy
+  def remove_unneeded_facets(solr_parameters)
+    return unless facet
+    remove_unneeded_stats(solr_parameters)
+    solr_parameters.delete('facet.pivot') unless solr_parameters['facet.pivot']&.split(',')&.include? facet
+    solr_parameters.delete('facet.query') unless solr_parameters['facet.query']&.any? { |query| query.partition(':').first == facet }
+  end
+
   private
 
     def search_query_present?
@@ -136,5 +148,12 @@ class SearchBuilder < Blacklight::SearchBuilder
         edismax = solr_params.present? ? solr_params.dup : {}
         blacklight_config.search_fields[field]['clause_params'] = { edismax: }
       end
+    end
+
+    # :reek:FeatureEnvy
+    def remove_unneeded_stats(solr_parameters)
+      return if solr_parameters['stats.field'].to_a.include? facet
+      solr_parameters.delete('stats')
+      solr_parameters.delete('stats.field')
     end
 end
