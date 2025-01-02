@@ -157,7 +157,6 @@ describe('AvailabilityUpdater', function () {
           label: 'Lewis Library - Term Loan Reserves',
           status_label: 'Available',
           copy_number: null,
-          cdl: false,
           temp_location: true,
           id: 'lewis$resterm',
         },
@@ -167,7 +166,6 @@ describe('AvailabilityUpdater', function () {
           label: 'Engineering Library - Stacks',
           status_label: 'Available',
           copy_number: null,
-          cdl: false,
           temp_location: false,
           id: '22732100160006421',
         },
@@ -281,37 +279,6 @@ describe('AvailabilityUpdater', function () {
     expect(badge.textContent).toEqual('Some items not available');
   });
 
-  test('record show page with an item on CDL adds link to viewer', () => {
-    document.body.innerHTML =
-      '<table><tr>' +
-      '<td class="holding-status" data-availability-record="true" data-record-id="9965126093506421" data-holding-id="22202918790006421" data-aeon="false">' +
-      '<span class="availability-icon"></span>' +
-      '</td>' +
-      '</tr></table>';
-    const holding_records = {
-      '9965126093506421': {
-        '22202918790006421': {
-          on_reserve: 'N',
-          location: 'firestone$stacks',
-          label: 'Stacks',
-          status_label: 'Unavailable',
-          cdl: true,
-          holding_type: 'physical',
-          id: '22202918790006421',
-        },
-      },
-    };
-
-    const spy = jest.spyOn(orangelight_online_link, 'insert_online_link');
-
-    const u = new updater();
-    u.id = '9965126093506421';
-    u.process_single(holding_records);
-
-    expect(spy).toHaveBeenCalled();
-    spy.mockRestore();
-  });
-
   // Make sure that the code to handle undetermined availability status updates
   // the HTML correctly.
   test('undetermined availability for show page', () => {
@@ -385,7 +352,6 @@ describe('AvailabilityUpdater', function () {
           label: 'Lewis Library - Term Loan Reserves',
           status_label: 'Available',
           copy_number: null,
-          cdl: false,
           temp_location: true,
           id: 'lewis$resterm',
         },
@@ -395,7 +361,6 @@ describe('AvailabilityUpdater', function () {
           label: 'Engineering Library - Stacks',
           status_label: 'Available',
           copy_number: null,
-          cdl: false,
           temp_location: false,
           id: '22732100160006421',
         },
@@ -417,37 +382,6 @@ describe('AvailabilityUpdater', function () {
     expect(badge_second.textContent).toEqual('Available');
   });
 
-  test('record show page with an item not on CDL does not add a link', () => {
-    document.body.innerHTML =
-      '<table><tr>' +
-      '<td class="holding-status" data-availability-record="true" data-record-id="9965126093506421" data-holding-id="22202918790006421" data-aeon="false">' +
-      '<span class="availability-icon"></span>' +
-      '</td>' +
-      '</tr></table>';
-    const holding_records = {
-      '9965126093506421': {
-        '22202918790006421': {
-          on_reserve: 'N',
-          location: 'firestone$stacks',
-          label: 'Stacks',
-          status_label: 'Unavailable',
-          cdl: false,
-          holding_type: 'physical',
-          id: '22202918790006421',
-        },
-      },
-    };
-
-    const spy = jest.spyOn(orangelight_online_link, 'insert_online_link');
-
-    const u = new updater();
-    u.id = '9965126093506421';
-    u.process_single(holding_records);
-
-    expect(spy).not.toHaveBeenCalled();
-    spy.mockRestore();
-  });
-
   test('record show page for a bound-with record', () => {
     document.body.innerHTML =
       '<table><tr>' +
@@ -464,7 +398,6 @@ describe('AvailabilityUpdater', function () {
           label: 'ReCAP - ReCAP - rcppa RECAP',
           status_label: 'Available',
           copy_number: null,
-          cdl: false,
           temp_location: false,
           id: '22488152160006421',
         },
@@ -499,7 +432,6 @@ describe('AvailabilityUpdater', function () {
         label: 'ReCAP - Remote Storage',
         status_label: 'Available',
         copy_number: null,
-        cdl: false,
         temp_location: false,
         id: '22488152160006421',
       },
@@ -514,120 +446,6 @@ describe('AvailabilityUpdater', function () {
     expect(holding_badge.textContent).toContain(
       'View record for Full Availability'
     );
-  });
-
-  test('extra Online availability added for CDL records that are reported as unavailable', () => {
-    document.body.innerHTML =
-      '<ul>' +
-      '  <li data-availability-record="true" data-record-id="9965126093506421" data-holding-id="22202918790006421" data-aeon="false">' +
-      '    <span class="availability-icon"></span>' +
-      '    <div class="library-location" data-location="true" data-record-id="9965126093506421" data-holding-id="22202918790006421">' +
-      '      <span class="results_location">Firestone Library - Stacks</span> » ' +
-      '      <span class="call-number">PS3558.A62424 B43 2010 ' +
-      '        <a title="Where to find it" class="find-it" data-map-location="firestone$stacks" data-blacklight-modal="trigger" ' +
-      '           aria-label="Where to find it" href="/catalog/9965126093506421/stackmap?loc=firestone$stacks&amp;cn=PS3558.A62424 B43 2010">' +
-      '          <span class="fa fa-map-marker" aria-hidden="true"></span>' +
-      '        </a>' +
-      '      </span>' +
-      '    </div>' +
-      '  </li>' +
-      '  <li>' +
-      '    <span class="badge bg-primary" data-availability-cdl="true"></span>' +
-      '  </li>' +
-      '  <li class="empty" data-record-id="9965126093506421">' +
-      '    <a class="availability-icon more-info" title="Click on the record for full availability info" href="/catalog/9965126093506421"></a>' +
-      '  </li>' +
-      '</ul>';
-
-    const availability_response = {
-      '9965126093506421': {
-        '22202918790006421': {
-          on_reserve: 'N',
-          location: 'firestone$stacks',
-          label: 'Firestone Library - Stacks',
-          status_label: 'Unavailable',
-          copy_number: null,
-          cdl: true,
-          temp_location: false,
-          id: '22202918790006421',
-        },
-      },
-    };
-    const holding_data =
-      availability_response['9965126093506421']['22202918790006421'];
-
-    const cdl_element = $("*[data-availability-cdl='true']")[0];
-    const av_element = $(
-      `*[data-availability-record='true'][data-record-id='9965126093506421'][data-holding-id='22202918790006421'] .availability-icon`
-    );
-
-    const u = new updater();
-    u.id = '9965126093506421';
-
-    expect(cdl_element.textContent).not.toContain('Online');
-    u.apply_availability_label(av_element, holding_data, true);
-    expect(cdl_element.textContent).toContain('Online');
-  });
-
-  test('in the Show page we display Online instead of Unavailable for CDL records', () => {
-    document.body.innerHTML =
-      '<table><tbody>' +
-      '<tr class="holding-block">' +
-      '  <td class="library-location" data-holding-id="22745424290006421">' +
-      '    <span class="location-text" data-location="true" data-holding-id="22745424290006421">Firestone Library - Firestone Library</span>' +
-      '    <a title="Where to find it" class="find-it" data-map-location="firestone$stacks" data-blacklight-modal="trigger"' +
-      '      data-call-number="HB172 .G664 2016" data-library="Firestone Library"' +
-      '      href="/catalog/9999490563506421/stackmap?loc=firestone$stacks&amp;cn=HB172 .G664 2016">' +
-      '      <span class="link-text">Where to find it</span>' +
-      '      <span class="fa fa-map-marker" aria-hidden="true"></span>' +
-      '    </a>' +
-      '  </td>' +
-      '  <td class="holding-call-number">HB172 .G664 2016' +
-      '    <a class="browse-cn" title="Browse: HB172 .G664 2016"' +
-      '      data-original-title="Browse: HB172 .G664 2016" href="/browse/call_numbers?q=HB172+.G664+2016">' +
-      '      <span class="link-text">Browse related items</span>' +
-      '      <span class="icon-bookslibrary"></span>' +
-      '    </a>' +
-      '  </td>' +
-      '  <td class="holding-status" data-availability-record="true" data-record-id="9999490563506421"' +
-      '    data-holding-id="22745424290006421" data-aeon="false">' +
-      '    <span class="availability-icon badge " title=""></span>' +
-      '  </td>' +
-      '  <td class="location-services service-conditional" data-open="true" data-requestable="true" data-aeon="false"' +
-      '    data-holding-id="22745424290006421"></td>' +
-      '  <td class="holding-details">' +
-      '    <ul class="item-status" data-record-id="9999490563506421" data-holding-id="22745424290006421"></ul>' +
-      '  </td>' +
-      '</tr>' +
-      '</tbody></table>';
-
-    const availability_response = {
-      '9999490563506421': {
-        '22745424290006421': {
-          on_reserve: 'N',
-          location: 'firestone$stacks',
-          label: 'Firestone Library - Firestone Library',
-          status_label: 'Unavailable',
-          copy_number: null,
-          cdl: true,
-          temp_location: false,
-          id: '22745424290006421',
-        },
-      },
-    };
-
-    const holding_data =
-      availability_response['9999490563506421']['22745424290006421'];
-
-    const av_element = $(
-      `*[data-availability-record='true'][data-record-id='9999490563506421'][data-holding-id='22745424290006421'] .availability-icon`
-    );
-    const u = new updater();
-    u.id = '9999490563506421';
-
-    expect(av_element[0].textContent).not.toContain('Online');
-    u.apply_availability_label(av_element, holding_data, false);
-    expect(av_element[0].textContent).toContain('Online');
   });
 
   test('special case for Marquand locations - marquand$stacks,marquand$pj,marquand$ref,marquand$ph,marquand$fesrf - items to display status: Ask Staff', () => {
@@ -661,7 +479,6 @@ describe('AvailabilityUpdater', function () {
             'Marquand Library - Remote Storage (ReCAP): Marquand Library Use Only',
           status_label: 'Unavailable',
           copy_number: null,
-          cdl: false,
           temp_location: false,
           id: '22642015240006421',
         },
@@ -705,7 +522,6 @@ describe('AvailabilityUpdater', function () {
           label: 'Resource Sharing Library - Lending Resource Sharing Requests',
           status_label: 'Unavailable',
           copy_number: null,
-          cdl: false,
           temp_location: true,
           id: 'RES_SHARE$IN_RS_REQ',
         },
@@ -836,7 +652,6 @@ describe('AvailabilityUpdater', function () {
           label: 'Resource Sharing Library - Lending Resource Sharing Requests',
           status_label: 'Unavailable',
           copy_number: null,
-          cdl: false,
           temp_location: true,
           id: 'RES_SHARE$IN_RS_REQ',
         },
@@ -897,7 +712,6 @@ describe('AvailabilityUpdater', function () {
           label: 'Resource Sharing Library - Lending Resource Sharing Requests',
           status_label: 'Unavailable',
           copy_number: null,
-          cdl: false,
           temp_location: true,
           id: 'RES_SHARE$IN_RS_REQ',
         },

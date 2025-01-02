@@ -13,7 +13,6 @@ module HoldingsHelper
 
     holdings_hash.first(2).each do |id, holding|
       block << first_two_holdings_block(document, id, holding)
-      block << content_tag(:li, cdl_placeholder)
     end
 
     block << controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
@@ -154,15 +153,6 @@ module HoldingsHelper
         aeon: aeon_location?(location),
         bound_with: document.bound_with?
       }.compact
-    )
-  end
-
-  def cdl_placeholder
-    content_tag(
-      :span,
-      '',
-      class: 'badge bg-primary',
-      data: { 'availability-cdl': true }
     )
   end
 
