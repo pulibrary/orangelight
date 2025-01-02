@@ -169,4 +169,73 @@ RSpec.describe SearchBuilder do
       end
     end
   end
+
+  describe '#remove_unneeded_facets' do
+    let(:blacklight_config) do
+      Blacklight::Configuration.new do |config|
+        config.add_facet_field 'pub_date_start_sort', label: 'Publication year', single: true, range: {
+          num_segments: 10,
+          assumed_boundaries: [1100, Time.zone.now.year + 1],
+          segments: true
+        }
+        config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet]
+        config.add_facet_field 'recently_added_facet', label: 'Recently added', home: true, query: {
+          weeks_one: { label: 'Within 1 week', fq: 'cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]' },
+          weeks_two: { label: 'Within 2 weeks', fq: 'cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]' }
+        }
+      end
+    end
+    context 'when viewing a facet that is not a pivot or stats facet' do
+      before { search_builder.facet('language_facet') }
+      it 'removes expensive stats configuration' do
+        solr_parameters = { 'stats' => true, 'stats.field' => ['pub_date_start_sort'] }
+        search_builder.remove_unneeded_facets(solr_parameters)
+        expect(solr_parameters.keys).not_to include 'stats'
+        expect(solr_parameters.keys).not_to include 'stats.field'
+      end
+      it 'removes expensive facet.pivot configuration' do
+        solr_parameters = { 'facet.pivot' => 'lc_1letter_facet,lc_rest_facet' }
+        search_builder.remove_unneeded_facets(solr_parameters)
+        expect(solr_parameters.keys).not_to include 'facet.pivot'
+      end
+      it 'removes expensive facet.query configuration' do
+        solr_parameters = { 'facet.query' => ['cataloged_tdt:[NOW/DAY-7DAYS+TO+NOW/DAY+1DAY]'] }
+        search_builder.remove_unneeded_facets(solr_parameters)
+        expect(solr_parameters.keys).not_to include 'facet.query'
+      end
+    end
+    context 'when viewing a stats facet' do
+      before { search_builder.facet('pub_date_start_sort') }
+      it 'keeps the stats configuration' do
+        solr_parameters = { 'stats' => true, 'stats.field' => ['pub_date_start_sort'] }
+        search_builder.remove_unneeded_facets(solr_parameters)
+        expect(solr_parameters['stats']).to be true
+        expect(solr_parameters['stats.field']).to eq ['pub_date_start_sort']
+      end
+    end
+    context 'when viewing a pivot facet' do
+      before { search_builder.facet('lc_1letter_facet') }
+      it 'keeps the facet.pivot configuration' do
+        solr_parameters = { 'facet.pivot' => 'lc_1letter_facet,lc_rest_facet' }
+        search_builder.remove_unneeded_facets(solr_parameters)
+        expect(solr_parameters['facet.pivot']).to eq 'lc_1letter_facet,lc_rest_facet'
+      end
+    end
+    context 'when viewing a facet that needs a facet.query' do
+      before { search_builder.facet('cataloged_tdt') }
+      it 'keeps the facet.query configuration' do
+        solr_parameters = { 'facet.query' => ['cataloged_tdt:[NOW/DAY-7DAYS+TO+NOW/DAY+1DAY]'] }
+        search_builder.remove_unneeded_facets(solr_parameters)
+        expect(solr_parameters['facet.query']).to eq ['cataloged_tdt:[NOW/DAY-7DAYS+TO+NOW/DAY+1DAY]']
+      end
+    end
+    context 'when we are not doing a facet view' do
+      it 'does not modify the solr_parameters' do
+        solr_parameters = { 'stats' => true, 'stats.field' => ['pub_date_start_sort'] }
+        expect do
+          search_builder.remove_unneeded_facets(solr_parameters)
+        end.not_to change { solr_parameters }
+      end
+    end
+  end
 end
