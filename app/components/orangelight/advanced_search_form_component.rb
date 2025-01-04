@@ -2,7 +2,7 @@
 
 class Orangelight::AdvancedSearchFormComponent < Blacklight::AdvancedSearchFormComponent
   def initialize_search_filter_controls
-    fields = blacklight_config.facet_fields.select { |_k, v| v.include_in_advanced_search || v.include_in_advanced_search.nil? }
+    fields = blacklight_config.facet_fields.select { |_k, v| v.include_in_advanced_search }
 
     fields.each do |_k, config|
       config.advanced_search_component = Orangelight::FacetFieldCheckboxesComponent
