@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe AdvancedFormSearchBuilder do
+RSpec.describe AdvancedFormSearchBuilder, advanced_search: true do
   subject(:builder) { described_class.new([], scope) }
 
   let(:blacklight_config) { Blacklight::Configuration.new }
@@ -69,6 +69,14 @@ RSpec.describe AdvancedFormSearchBuilder do
       expect(solr_params.keys).not_to include 'stats'
       expect(solr_params.keys).not_to include 'stats.field'
       expect(solr_params.keys).to include 'facet.field'
+    end
+  end
+
+  describe '#no_documents' do
+    it 'adds rows=0' do
+      solr_params = {}
+      builder.no_documents(solr_params)
+      expect(solr_params).to eq({ "rows" => 0 })
     end
   end
 end
