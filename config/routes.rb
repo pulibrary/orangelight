@@ -40,9 +40,6 @@ Rails.application.routes.draw do
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns [:exportable, :marc_viewable]
-    member do
-      get 'stackmap'
-    end
   end
 
   resources :bookmarks do
