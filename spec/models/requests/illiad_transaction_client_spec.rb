@@ -97,7 +97,6 @@ describe Requests::IlliadTransactionClient, type: :controller, requests: true, p
       transaction = nil
       expect do
         transaction = illiad_transaction.create_request
-        perform_enqueued_jobs
       end.to change { ActionMailer::Base.deliveries.count }.by(1)
       email = ActionMailer::Base.deliveries.last
       expect(email.subject).to eq("Uncleared User Requesting Transaction")

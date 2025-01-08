@@ -56,15 +56,17 @@ bundle exec cap staging deploy # deploys main branch to staging
 ```
 
 ## Staging Mail Catcher
-  To see mail that has been sent on the staging server you must ssh tunnel into the server
+  To see mail that has been sent from the staging environment you must ssh tunnel into the staging indexer servers.
   ```
-  ssh -L 1082:localhost:1080 pulsys@catalog-staging1
+  ssh -L 1082:localhost:1080 pulsys@catalog-indexer-staging1
+  ssh -L 1085:localhost:1080 pulsys@catalog-indexer-staging2
   ```
   To see mail that has been sent on the qa server you must ssh tunnel into the server
   ```
-  ssh -L 1082:localhost:1080 pulsys@catalog-qa1
+  ssh -L 1082:localhost:1080 pulsys@catalog-indexer-qa1
+  ssh -L 1085:localhost:1080 pulsys@catalog-indexer-qa2
   ```
-  Once the tunnel is open [you can see the mail that has been sent on staging here]( http://localhost:1082/)
+  Once the tunnel is open [you can see the mail that has been sent on indexer1 here]( http://localhost:1082/) and [indexer2 here]( http://localhost:1085/)
 
 ## Testing
 
@@ -245,6 +247,7 @@ Start the Bibdata server, and then set the ```bidata_base``` value in OrangeLigh
      ```
      run every time
      ```
+     bundle exec sidekiq -q default -q mailers
      mailcatcher
      ```
 

@@ -25,14 +25,12 @@ RSpec.describe CatalogController do
       sign_in user
 
       post :email, params: { id: '9997412163506421', to: 'test@test.com' }
-      perform_enqueued_jobs
       expect(email.reply_to).to eq [user.email]
     end
     it 'supports a user-submitted subject line' do
       sign_in user
 
       post :email, params: { id: '9997412163506421', to: 'test@test.com', subject: ['Subject'] }
-      perform_enqueued_jobs
       expect(email.subject).to eq 'Subject'
     end
     it 'does not send an email if not logged in' do

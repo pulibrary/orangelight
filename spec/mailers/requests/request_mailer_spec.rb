@@ -751,6 +751,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
     # rubocop:disable RSpec/ExampleLength
     it "sends the email and renders the headers and body" do
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/locations/holding_locations/firestone$stacks.json").to_return(status: 200, body: '{"library":{"code":"firestone"}}')
       mail = described_class.send("on_shelf_email", submission_for_on_shelf.to_h).deliver_later.perform_now
       expect(mail.subject).to eq("#{I18n.t('requests.on_shelf.email_subject')} (FIRESTONE$STACKS) PS3566.I428 A6 2015")
       expect(mail.to).to eq([I18n.t('requests.on_shelf.email')])
@@ -807,6 +808,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
 
     # rubocop:disable RSpec/ExampleLength
     it "sends the email and renders the headers and body" do
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/locations/holding_locations/eastasian$cjk.json").to_return(status: 200, body: '{"library":{"code":"eastasian"}}')
       mail = described_class.send("on_shelf_email", submission_for_on_shelf.to_h).deliver_later.perform_now
       expect(mail.subject).to eq("#{I18n.t('requests.on_shelf.email_subject')} (EASTASIAN$CJK) PL2727.S2 C574 1998")
       expect(mail.to).to eq(["gestcirc@princeton.edu"])
@@ -863,6 +865,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
 
     # rubocop:disable RSpec/ExampleLength
     it "sends the email and renders the headers and body" do
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/locations/holding_locations/plasma$stacks.json").to_return(status: 200, body: '{"library":{"code":"plasma"}}')
       mail = described_class.send("on_shelf_email", submission_for_on_shelf.to_h).deliver_later.perform_now
       expect(mail.subject).to eq("#{I18n.t('requests.on_shelf.email_subject')} (PLASMA$STACKS) PL2727.S2 C574 1998")
       expect(mail.to).to eq(["lewislib@princeton.edu"])

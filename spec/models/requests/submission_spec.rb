@@ -826,7 +826,6 @@ describe Requests::Submission, requests: true do
         expect(submission).to be_valid
         expect do
           submission.process_submission
-          perform_enqueued_jobs
         end.to change { ActionMailer::Base.deliveries.count }.by(2)
         expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).to have_been_made
@@ -837,7 +836,6 @@ describe Requests::Submission, requests: true do
         clancy_url = "#{Requests.config[:clancy_base]}/circrequests/v1"
         expect do
           submission.process_submission
-          perform_enqueued_jobs
         end.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).not_to have_been_made
@@ -850,7 +848,6 @@ describe Requests::Submission, requests: true do
         expect(submission).to be_valid
         expect do
           submission.process_submission
-          perform_enqueued_jobs
         end.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).to have_been_made
@@ -1008,7 +1005,6 @@ describe Requests::Submission, requests: true do
         expect(submission).to be_valid
         expect do
           submission.process_submission
-          perform_enqueued_jobs
         end.to change { ActionMailer::Base.deliveries.count }.by(2)
         expect(a_request(:get, patron_url)).to have_been_made
         expect(a_request(:post, transaction_url)).to have_been_made
@@ -1022,7 +1018,6 @@ describe Requests::Submission, requests: true do
           .to_return(status: 503, body: responses[:transaction_error], headers: {})
         expect do
           submission.process_submission
-          perform_enqueued_jobs
         end.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(a_request(:get, patron_url)).to have_been_made
         expect(a_request(:post, transaction_url)).to have_been_made
@@ -1038,7 +1033,6 @@ describe Requests::Submission, requests: true do
         stub_request(:post, transaction_note_url).to_return(status: 200, body: responses[:note_created], headers: {})
         expect do
           submission.process_submission
-          perform_enqueued_jobs
         end.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(a_request(:get, patron_url)).to have_been_made
         expect(a_request(:post, transaction_url)).to have_been_made
@@ -1081,7 +1075,6 @@ describe Requests::Submission, requests: true do
         expect(submission).to be_valid
         expect do
           submission.process_submission
-          perform_enqueued_jobs
         end.to change { ActionMailer::Base.deliveries.count }.by(2)
         expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).not_to have_been_made
@@ -1091,7 +1084,6 @@ describe Requests::Submission, requests: true do
         alma_stub = stub_alma_hold_failure('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
         expect do
           submission.process_submission
-          perform_enqueued_jobs
         end.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).not_to have_been_made
@@ -1128,7 +1120,6 @@ describe Requests::Submission, requests: true do
         expect(submission).to be_valid
         expect do
           submission.process_submission
-          perform_enqueued_jobs
         end.to change { ActionMailer::Base.deliveries.count }.by(2)
         expect(submission.service_errors.count).to eq(0)
         expect(alma_stub).to have_been_requested
@@ -1138,7 +1129,6 @@ describe Requests::Submission, requests: true do
         alma_stub = stub_alma_hold_failure('99124704963506421', '22741721830006421', '23741721820006421', '9999999')
         expect do
           submission.process_submission
-          perform_enqueued_jobs
         end.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(alma_stub).to have_been_requested
         expect(submission.service_errors.count).to eq(1)
