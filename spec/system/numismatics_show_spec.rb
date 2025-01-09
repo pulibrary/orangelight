@@ -32,7 +32,7 @@ describe 'Numismatics show page', type: :system do
       expected_coin_fields = ["Size", "Die Axis", "Weight", "Accession",
                               "Find Place", "Find Number", "Find Date",
                               "Find Locus", "Find Feature",
-                              "Statement on language in description"]
+                              "Statement on responsible collection description"]
       expect(rendered_coin_fields).to eq(expected_coin_fields)
     end
   end
