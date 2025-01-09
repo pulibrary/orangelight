@@ -25,13 +25,13 @@ RSpec.describe 'catalog/index' do
 
     it 'has links to the statement on language in description' do
       visit '/'
-      language_link = find_link('Statement on responsible collection description')
-      read_more_language_link = find_link('Read more...', href: 'https://library.princeton.edu/about/languagestatement')
+      language_link = find_link('Statement on Responsible Collection Description')
+      read_more_language_link = find_link('Read more...', href: 'https://library.princeton.edu/about/responsible-collection-description')
       links = [language_link, read_more_language_link]
       links.each do |link|
         expect(link[:target]).to be nil
         expect(link[:title]).to be nil
-        expect(link[:'aria-label']).to eq('Read more about Statement on responsible collection description')
+        expect(link[:'aria-label']).to eq('Read more about the statement on responsible collection description')
       end
     end
 
