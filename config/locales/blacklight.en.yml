@@ -93,9 +93,6 @@ en:
     suggest_correction:
       form:
         title: 'Suggest a Correction'
-    report_harmful_language:
-      form:
-        title: 'Report Harmful Language'
     report_biased_results:
       form:
         title: 'Report Biased Results'    

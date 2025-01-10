@@ -30,9 +30,9 @@ RSpec.describe SuggestCorrectionForm, libanswers: true do
       click_link 'Suggest a Correction'
     end
     it 'closes the modal', js: true do
-      expect(page).to have_text('Please use this area to report errors or omissions')
+      expect(page).to have_text('Please use this form to report errors, omissions')
       click_button 'Cancel'
-      expect(page).not_to have_text('Please use this area to report errors or omissions')
+      expect(page).not_to have_text('Please use this form to report errors, omissions')
     end
   end
   describe 'pressing the send button' do
@@ -47,10 +47,10 @@ RSpec.describe SuggestCorrectionForm, libanswers: true do
       fill_in 'suggest_correction_form_message', with: 'Death on the Nile'
     end
     it 'closes the modal', js: true do
-      expect(page).to have_text('Please use this area to report errors or omissions')
+      expect(page).to have_text('Please use this form to report errors, omissions')
       click_button 'Send'
       expect(current_path).to eq '/catalog/99105509673506421'
-      expect(page).not_to have_text('Please use this area to report errors or omissions')
+      expect(page).not_to have_text('Please use this form to report errors, omissions')
     end
   end
 end

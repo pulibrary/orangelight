@@ -88,12 +88,6 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
   describe 'giving feedback' do
     let(:document_id) { '9946093213506421' }
 
-    it 'shows a feedback bar' do
-      visit "catalog/#{document_id}"
-      expect(page).to have_selector('.harmful-content-feedback')
-      expect(page).to have_content('Report Harmful Language')
-    end
-
     it 'opens a modal for Ask a Question' do
       visit "catalog/#{document_id}"
       click_on('Ask a Question')
@@ -135,40 +129,10 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
         visit "catalog/#{document_id}"
         click_on('Suggest a Correction')
         expect(page).to have_field('Name')
-        expect(page).to have_content('Please use this area to report errors or omissions')
+        expect(page).to have_content('Please use this form to report errors, omissions')
         page.find('.blacklight-modal-close').click
-        expect(page).not_to have_content('Please use this area to report errors or omissions')
+        expect(page).not_to have_content('Please use this form to report errors, omissions')
       end
-    end
-
-    it 'closes a modal for Report Harmful Language' do
-      if Orangelight.using_blacklight7?
-        true
-      else
-        visit "catalog/#{document_id}"
-        click_on('Report Harmful Language')
-        expect(page).to have_content('users may encounter offensive or harmful language')
-        page.find('.blacklight-modal-close').click
-        expect(page).not_to have_content('users may encounter offensive or harmful language')
-      end
-    end
-
-    it 'opens a modal for Report Harmful Language' do
-      visit "catalog/#{document_id}"
-      click_on('Report Harmful Language')
-      expect(page).to have_content('users may encounter offensive or harmful language')
-      expect(page).to have_field('Name')
-      within '.modal-content' do
-        fill_in('Name', with: 'Test User')
-        expect(page).to have_field('Email')
-        fill_in('Email', with: 'testuser@test-domain.org')
-        expect(page).to have_field('Message')
-        fill_in('Message', with: 'I am concerned about this subject heading')
-      end
-      context_field = page.find_field("report_harmful_language_form[context]", visible: :hidden)
-      expect(context_field.value).to include("/catalog/#{document_id}")
-      title_field = page.find_field("report_harmful_language_form[title]", visible: :hidden)
-      expect(title_field.value).to eq("Bible, Latin.")
     end
   end
 

@@ -22,17 +22,6 @@ class ContactController < ApplicationController
     end
   end
 
-  def report_harmful_language
-    @form = ReportHarmfulLanguageForm.new(report_harmful_language_params)
-    if @form.valid? && @form.submit
-      flash[:success] = 'Your report has been submitted'
-
-      render "report_harmful_language_success"
-    else
-      render partial: "catalog/report_harmful_language_form", locals: { form: @form }
-    end
-  end
-
   def report_biased_results
     @form = ReportBiasedResultsForm.new(report_biased_results_params)
     if @form.valid? && @form.submit
@@ -52,10 +41,6 @@ class ContactController < ApplicationController
 
     def suggestion_params
       params[:suggest_correction_form].permit!
-    end
-
-    def report_harmful_language_params
-      params[:report_harmful_language_form].permit!
     end
 
     def report_biased_results_params
