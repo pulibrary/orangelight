@@ -32,7 +32,7 @@ end
 
 module Orangelight
   class Application < Rails::Application
-    config.load_defaults 7.1
+    config.load_defaults 7.2
     # Before filter for Flipflop dashboard. Replace with a lambda or method name
     # defined in ApplicationController to implement access control.
     config.flipflop.dashboard_access_filter = :verify_admin!
