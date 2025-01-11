@@ -18,7 +18,7 @@ module Requests::Submissions
 
     def send_mail
       return if errors.present?
-      Requests::RequestMailer.send("#{service_type}_email", submission).deliver_later unless service_type == 'recap_edd' || service_type == 'recap'
+      Requests::RequestMailer.send("#{service_type}_email", submission).deliver_later unless ['recap_edd', 'recap'].include?(service_type)
       Requests::RequestMailer.send("#{service_type}_confirmation", submission).deliver_later
     end
 
