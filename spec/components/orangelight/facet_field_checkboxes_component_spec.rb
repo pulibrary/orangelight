@@ -46,4 +46,19 @@ RSpec.describe Orangelight::FacetFieldCheckboxesComponent, type: :component do
       )
     end
   end
+  context 'when url includes multiple facet values that the user has selected' do
+    let(:search_state) { Blacklight::SearchState.new({ "f_inclusive" => { "field" => ["b", "c"] } }, Blacklight::Configuration.new) }
+    it 'displays both values as selected' do
+      expect(
+        render_inline(described_class.new(facet_field:)).to_s
+      ).to include(
+        '<option value="b" selected>'
+      )
+      expect(
+        render_inline(described_class.new(facet_field:)).to_s
+      ).to include(
+        '<option value="c" selected>'
+      )
+    end
+  end
 end
