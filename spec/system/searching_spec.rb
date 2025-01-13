@@ -94,7 +94,7 @@ describe 'Searching', type: :system, js: false do
     end
   end
 
-  context 'searching for series title from advanced search' do
+  context 'searching for series title from advanced search', advanced_search: true do
     it 'displays the online availability' do
       visit 'advanced'
       select('Series title', from: 'Options for advanced search')
@@ -141,7 +141,7 @@ describe 'Searching', type: :system, js: false do
     expect(page).to have_content '1 entry found'
   end
 
-  it 'allows user to successfully edit facet-only searches' do
+  it 'allows user to successfully edit facet-only searches', advanced_search: true do
     visit "/catalog?f_inclusive[advanced_location_s][]=Firestone+Library&search_field=advanced"
     original_results_count = search_results_count
     click_link "Book"
@@ -163,7 +163,7 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_field('clause_0_query', with: 'cats')
     end
 
-    it 'can edit an existing advanced search' do
+    it 'can edit an existing advanced search', advanced_search: true do
       visit '/catalog?clause[0][field]=title&clause[0][query]=plasticity'
       click_on('Edit search')
       expect(page).to have_content('Advanced Search')
@@ -171,7 +171,7 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_field('clause_0_query', with: 'plasticity')
     end
 
-    it 'can edit an existing title search' do
+    it 'can edit an existing title search', advanced_search: true do
       visit '/catalog?search_field=title&q=potato'
       click_on('Edit search')
       expect(page).to have_content('Advanced Search')
@@ -180,7 +180,7 @@ describe 'Searching', type: :system, js: false do
     end
 
     # Flakey
-    xit 'can add a facet to an existing search', js: true do
+    xit 'can add a facet to an existing search', advanced_search: true, js: true do
       visit '/advanced?q=black&search_field=all_fields'
       expect(page).to have_field('clause_0_query', with: 'black')
       access_facet = page.find('#access_facet')
@@ -191,7 +191,7 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_content(/Any of:\nIn the Library/)
     end
 
-    it 'displays the online availability for a series title' do
+    it 'displays the online availability for a series title', advanced_search: true do
       visit 'advanced'
       select('Series title', from: 'clause_0_field')
       fill_in('clause_0_query', with: 'SAGE research methods')
@@ -202,7 +202,7 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_content('SAGE research methods. Cases.')
     end
 
-    it 'shows facets on the advanced search results page' do
+    it 'shows facets on the advanced search results page', advanced_search: true do
       visit '/advanced'
       fill_in 'clause_0_query', with: 'robots'
       click_button 'Search'
@@ -238,6 +238,23 @@ describe 'Searching', type: :system, js: false do
     it 'does not display a banner' do
       visit '/catalog?search_field=all_fields&q=cats'
       expect(page).not_to have_content('We are working to address bias')
+    end
+  end
+
+  context 'with facets from the advanced search form', advanced_search: true, js: true do
+    it 'keeps the facets when editing the search' do
+      visit '/advanced'
+      page.find('#format').click
+      within('#format-list') do
+        page.find('li', text: /Audio/).click
+        # page.send_keys(:tab, :down, :enter)
+        page.find('li', text: /Coin/).click
+      end
+      page.click_button('Search')
+      page.click_link('Edit search')
+      expect(page).to have_content('Within search')
+      field_value = page.find_field('format').value
+      expect(field_value).to include('Audio')
     end
   end
 end

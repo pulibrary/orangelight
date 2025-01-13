@@ -5,7 +5,7 @@ class Orangelight::FacetFieldCheckboxesComponent < Blacklight::FacetFieldCheckbo
     presenters.map do |presenter|
       {
         value: presenter.value,
-        selected: presenter.search_state.filter(presenter.facet_config).include?([presenter.value]),
+        selected: presenter.selected?,
         label: "#{presenter.label}  (#{number_with_delimiter presenter.hits})"
       }
     end
