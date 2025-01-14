@@ -8,8 +8,6 @@ set :repo_url, 'https://github.com/pulibrary/orangelight.git'
 
 set :branch, ENV.fetch('BRANCH', 'main')
 
-# Default branch is :master
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
 set :deploy_to, '/opt/orangelight'
@@ -159,5 +157,15 @@ namespace :application do
   end
 end
 
+namespace :sidekiq do
+  task :restart do
+    on roles(:indexer) do
+      execute :sudo, :service, :sidekiq, :restart
+    end
+  end
+end
+
 after 'deploy:reverted', 'sneakers:restart'
 after 'deploy:published', 'sneakers:restart'
+after 'deploy:reverted', 'sidekiq:restart'
+after 'deploy:published', 'sidekiq:restart'

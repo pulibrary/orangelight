@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   scope module: 'orangelight' do
     get 'browse', to: 'browsables#browse'
@@ -63,6 +65,10 @@ Rails.application.routes.draw do
     get '/users/signup' => 'devise/registrations#new', :as => :new_user_registration
     post '/users' => 'devise/registrations#create', :as => :user_registration
     get "sign_out", to: "sessions#destroy"
+  end
+
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
   end
 
   get '/catalog/oclc/:id', to: 'catalog#oclc'

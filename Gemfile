@@ -76,6 +76,7 @@ gem 'rsolr'
 # Should this be in the test, development group?
 gem 'rspec-rails'
 gem 'rubyzip', '>= 1.2.2'
+gem 'sidekiq'
 gem 'simple_form'
 gem 'sneakers'
 gem 'sprockets-es6'
