@@ -6,8 +6,8 @@ set :branch, ENV['BRANCH'] || 'main'
 
 server 'catalog-qa1.princeton.edu', user: 'deploy', roles: %i[web app db worker mailcatcher]
 server 'catalog-qa2.princeton.edu', user: 'deploy', roles: %i[web app db worker mailcatcher cron_db]
-server 'catalog-indexer-qa1', user: 'deploy', roles: %i[worker indexer]
-server 'catalog-indexer-qa2', user: 'deploy', roles: %i[cron_db worker indexer]
+server 'catalog-indexer-qa1', user: 'deploy', roles: %i[worker]
+server 'catalog-indexer-qa2', user: 'deploy', roles: %i[cron_db worker]
 
 namespace :env do
   desc 'Set an Orangelight environment variable'

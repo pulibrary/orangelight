@@ -18,9 +18,9 @@ server 'catalog2', user: 'deploy', roles: %i[web app db worker]
 server 'catalog3', user: 'deploy', roles: %i[web app db worker]
 server 'catalog4', user: 'deploy', roles: %i[web app db worker]
 server 'catalog5', user: 'deploy', roles: %i[web app db worker]
-server 'catalog-indexer1', user: 'deploy', roles: %i[cron_prod1 cron_db worker indexer]
-server 'catalog-indexer2', user: 'deploy', roles: %i[cron_prod2 worker indexer]
-server 'catalog-indexer3', user: 'deploy', roles: %i[cron_prod3 worker indexer]
+server 'catalog-indexer1', user: 'deploy', roles: %i[cron_prod1 cron_db worker]
+server 'catalog-indexer2', user: 'deploy', roles: %i[cron_prod2 worker]
+server 'catalog-indexer3', user: 'deploy', roles: %i[cron_prod3 worker]
 
 set :deploy_to, '/opt/orangelight'
 set :log_level, :info

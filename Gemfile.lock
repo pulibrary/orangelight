@@ -615,11 +615,6 @@ GEM
     serverengine (2.0.7)
       sigdump (~> 0.2.2)
     set (1.1.1)
-    sidekiq (7.3.7)
-      connection_pool (>= 2.3.0)
-      logger
-      rack (>= 2.2.4)
-      redis-client (>= 0.22.2)
     sigdump (0.2.5)
     simple_form (5.3.1)
       actionpack (>= 5.2)
@@ -831,7 +826,6 @@ DEPENDENCIES
   rubocop-rspec_rails
   rubyzip (>= 1.2.2)
   selenium-webdriver
-  sidekiq
   simple_form
   sneakers
   solargraph
