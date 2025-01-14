@@ -3,7 +3,7 @@
     <input id="<%= @dom_id %>" data-bs-toggle="dropdown" autocomplete="off"
         class="col-sm-8 combobox-multiselect" role="combobox"
         aria-expanded="false" aria-controls="<%= @listbox_id %>">
-    <span class="fa fa-caret-down" aria-hidden="true"></span>
+    <span class="fa fa-caret-down" aria-hidden="true" data-bs-toggle="dropdown"></span>
     <ul class="dropdown-menu" role="listbox" aria-label="Options" id="<%= @listbox_id %>">
         <% @values.each do |value| %>
             <%= content_tag :li,

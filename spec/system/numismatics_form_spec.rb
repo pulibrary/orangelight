@@ -18,4 +18,12 @@ RSpec.describe 'Numismatics search form', advanced_search: true do
     expect(page.find(".page_entries").text).to eq('1 entry found')
     expect(page).to have_content('Coin: 1167')
   end
+  it 'can click the drop-down caret', js: true do
+    visit '/numismatics'
+    first_facet = page.first('.advanced-search-facet')
+    within(first_facet) do
+      page.find('span').click
+      expect(page).to have_content('coin (3)')
+    end
+  end
 end
