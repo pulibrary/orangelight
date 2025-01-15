@@ -44,7 +44,7 @@ module Requests
       elsif location['library']['code'] == 'mudd'
         'MUDD'
       else
-        "RBSC"
+        "FIRE"
       end
     end
 
@@ -58,7 +58,7 @@ module Requests
         elsif location_code == 'mudd' && aeon_location?
           'MUDD'
         else
-          'RBSC'
+          'FIRE'
         end
       end
 

@@ -32,8 +32,8 @@ RSpec.describe Requests::AeonUrl, requests: true do
   it 'takes the SubLocation from the holdings_1display' do
     expect(subject).to include('SubLocation=Euro+20Q')
   end
-  it 'typically uses RBSC as the Site' do
-    expect(subject).to include('Site=RBSC')
+  it 'typically uses FIRE (Firestone) as the Site' do
+    expect(subject).to include('Site=FIRE')
   end
   it 'takes the openurl iteminfo5 from the item id' do
     expect(subject).to include('rft.iteminfo5=23740186060006421')

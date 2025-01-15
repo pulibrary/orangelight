@@ -304,8 +304,8 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     end
 
     describe '#site' do
-      it 'returns a RBSC site param' do
-        expect(requestable.site).to eq('RBSC')
+      it 'returns a FIRE site param' do
+        expect(requestable.site).to eq('FIRE')
       end
     end
 
@@ -468,7 +468,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#aeon_basic_params' do
       it 'includes a Site param' do
         expect(requestable.aeon_basic_params.key?(:Site)).to be true
-        expect(requestable.aeon_basic_params[:Site]).to eq('RBSC')
+        expect(requestable.aeon_basic_params[:Site]).to eq('FIRE')
       end
 
       it 'has a Reference NUmber' do
