@@ -50,5 +50,13 @@ RSpec.describe RequestButtonComponent, type: :component do
     it 'includes aeon=true in the link url' do
       expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=true&mfhd=456')
     end
+    context 'when Supervised use is not capitalized' do
+      let(:holding) do
+        JSON.parse('{"location_code":"scsbcul","location":"Remote Storage","library":"ReCAP","call_number":"NK3620 .S8 1939g","call_number_browse":"NK3620 .S8 1939g","items":[{"holding_id":"5766968","id":"8481021","status_at_load":"Available","barcode":"CU90571142","copy_number":"1","use_statement":"Supervised use","storage_location":"RECAP","cgd":"Shared","collection_code":"CU"}]}')
+      end
+      it 'includes aeon=true in the link url' do
+        expect(subject.css('a').attribute('href').text).to eq('/requests/123?aeon=true&mfhd=456')
+      end
+    end
   end
 end

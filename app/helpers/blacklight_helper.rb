@@ -22,32 +22,56 @@ module BlacklightHelper
   # Escape all whitespace characters within Solr queries specifying left anchor query facets
   # Ends all left-anchor searches with wildcards for matches that begin with search string
   # @param solr_parameters [Blacklight::Solr::Request] the parameters for the Solr query
-  def left_anchor_escape_whitespace(solr_parameters)
-    return unless solr_parameters[:qf] == '${left_anchor_qf}' && solr_parameters[:q]
-    query = solr_parameters[:q].dup
-    # Escape any remaining whitespace and solr operator characters
+  def prepare_left_anchor_search(solr_parameters)
+    return unless left_anchor_search?(solr_parameters)
+    solr_parameters.dig('json', 'query', 'bool').each_value do |value|
+      value.select { |boolean_query| boolean_query_searches_left_anchored_field?(boolean_query) }.map! do |clause|
+        query = escape_left_anchor_query(clause.dig(:edismax, :query).dup)
+        query = add_wildcard(query)
+        clause.dig(:edismax)[:query] = query
+      end
+    end
+  end
+
+  def left_anchor_search?(solr_parameters)
+    return false unless solr_parameters.dig('json', 'query', 'bool')
+    has_left_anchor = solr_parameters.dig('json', 'query', 'bool')
+                                     .values
+                                     .any? { |value| value.select { |clause| boolean_query_searches_left_anchored_field?(clause) } }
+    return false unless has_left_anchor
+
+    true
+  end
+
+  # Escape all whitespace characters within Solr queries specifying left anchor query facets
+  def escape_left_anchor_query(query)
     query.gsub!(/(\s)/, '\\\\\1')
     query.gsub!(/(["\{\}\[\]\^\~])/, '\\\\\1')
     query.gsub!(/[\(\)]/, '')
-    solr_parameters[:q] = query
-    solr_parameters[:q] += '*' unless query.end_with?('*')
+    query
+  end
+
+  # Ends all left-anchor searches with wildcards for matches that begin with search string
+  def add_wildcard(query)
+    query.end_with?('*') ? query : query + '*'
   end
 
   def pul_holdings(solr_parameters)
-    return unless blacklight_params[:f_inclusive] && blacklight_params[:f_inclusive][:advanced_location_s] &&
-                  blacklight_params[:f_inclusive][:advanced_location_s].include?('pul')
+    return unless blacklight_params[:f_inclusive] && blacklight_params[:f_inclusive][:advanced_location_s]&.include?('pul')
     solr_parameters[:fq].map! { |fq| fq.gsub '"pul"', '*' }
                         .reject! { |fq| fq == '{!term f=advanced_location_s}pul' }
     solr_parameters[:fq] << '-id:SCSB*'
   end
 
   def series_title_results(solr_parameters)
-    return unless %w[series_title in_series].include?(blacklight_params[:f1]) ||
-                  blacklight_params[:f2] == 'series_title' ||
-                  blacklight_params[:f3] == 'series_title'
+    return unless includes_series_search?
     solr_parameters[:fl] = 'id,score,author_display,marc_relator_display,format,pub_created_display,'\
                            'title_display,title_vern_display,isbn_s,oclc_s,lccn_s,holdings_1display,'\
-                           'electronic_access_1display,cataloged_tdt,series_display'
+                           'electronic_access_1display,electronic_portfolio_s,cataloged_tdt,series_display'
+  end
+
+  def includes_series_search?
+    blacklight_params['clause'].map { |clause| clause[1]["field"] }.include?('series_title' || 'in_series') if blacklight_params['clause'].present?
   end
 
   # only fetch facets when an html page is requested
@@ -198,7 +222,7 @@ module BlacklightHelper
 
   # Links to correct advanced search page based on advanced_type parameter value
   def edit_search_link
-    url = BlacklightAdvancedSearch::Engine.routes.url_helpers.advanced_search_path(params.permit!.except(:controller, :action).to_h)
+    url = advanced_path(params.permit!.except(:controller, :action).to_h)
     if params[:advanced_type] == 'numismatics'
       url.gsub('/advanced', '/numismatics')
     else
@@ -215,4 +239,10 @@ module BlacklightHelper
     # OK because very likely their session is corrupted.
     link_to "Back to search", root_url
   end
+
+    private
+
+      def boolean_query_searches_left_anchored_field?(boolean_query)
+        ["${left_anchor_qf}", "${in_series_qf}"].include? boolean_query.dig(:edismax, :qf)
+      end
 end

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Orangelight Browsables', type: :request do
+RSpec.describe 'Orangelight Browsables', type: :request, browse: true do
   describe 'Redirect Tests for Browse' do
     it 'browse_name redirects to browse search' do
       get '/catalog?search_field=browse_name&q=velez'

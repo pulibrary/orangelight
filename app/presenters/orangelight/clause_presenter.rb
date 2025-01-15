@@ -8,5 +8,12 @@ module Orangelight
         super
       end
     end
+
+    # We will no longer need to override #field_label when/if we
+    # use a release of Blacklight that includes
+    # https://github.com/projectblacklight/blacklight/pull/3442
+    def field_label
+      field_config&.display_label('search')
+    end
   end
 end

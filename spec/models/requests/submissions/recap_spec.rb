@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-# rubocop:disable RSpec/MultipleExpectations
-describe Requests::Submissions::Recap do
+describe Requests::Submissions::Recap, requests: true do
+  include ActiveJob::TestHelper
+
   context 'ReCAP Request' do
     let(:valid_patron) { { "netid" => "foo", "university_id" => "99999999", "active_email" => 'foo1@princeton.edu', barcode: '111222333' }.with_indifferent_access }
     let(:user_info) do
-      user = instance_double(User, guest?: false, uid: 'foo')
-      Requests::Patron.new(user:, session: {}, patron: valid_patron)
+      user = FactoryBot.create(:user, uid: 'foo')
+      Requests::Patron.new(user:, patron_hash: valid_patron)
     end
-    let(:scsb_url) { "#{Requests::Config[:scsb_base]}/requestItem/requestItem" }
+    let(:scsb_url) { "#{Requests.config[:scsb_base]}/requestItem/requestItem" }
     let(:alma_url) { "#{Alma.configuration.region}/almaws/v1/bibs/#{bib['id']}/holdings/#{requestable[0]['mfhd']}/items/#{requestable[0]['item_id']}/requests?user_id=99999999" }
     let(:alma2_url) { "#{Alma.configuration.region}/almaws/v1/bibs/#{bib['id']}/holdings/#{requestable[1]['mfhd']}/items/#{requestable[1]['item_id']}/requests?user_id=99999999" }
 
@@ -60,10 +61,10 @@ describe Requests::Submissions::Recap do
 
     let(:bib) do
       {
-        "id" => "994916543506421",
-        "title" => "County and city data book.",
-        "author" => "United States",
-        "date" => "1949"
+        id: "994916543506421",
+        title: "County and city data book.",
+        author: "United States",
+        date: "1949"
       }
     end
 
@@ -81,15 +82,14 @@ describe Requests::Submissions::Recap do
 
     let(:recap_request) { described_class.new(submission) }
     let(:recap_edd_request) { described_class.new(submission, service_type: 'recap_edd') }
-    let(:good_request) { fixture('/scsb_find_request.json') }
-    let(:good_response) { fixture('/scsb_request_item_response.json') }
-    let(:bad_response) { fixture('/scsb_request_item_response_errors.json') }
+    let(:good_request) { file_fixture('../scsb_find_request.json') }
+    let(:good_response) { file_fixture('../scsb_request_item_response.json') }
+    let(:bad_response) { file_fixture('../scsb_request_item_response_errors.json') }
 
     describe 'All ReCAP Requests' do
       it "captures recap errors when the request is unsuccessful or malformed." do
-        stub_request(:post, scsb_url).
-          # with(headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 401, body: "Unauthorized", headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 401, body: "Unauthorized", headers: {})
         expect { recap_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(recap_request.submitted.size).to eq(0)
         expect(recap_request.errors.size).to eq(1)
@@ -99,9 +99,8 @@ describe Requests::Submissions::Recap do
       end
 
       it "captures recap edd errors when the request is unsuccessful or malformed." do
-        stub_request(:post, scsb_url).
-          # with(headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 401, body: "Unauthorized", headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 401, body: "Unauthorized", headers: {})
         expect { recap_edd_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(recap_edd_request.submitted.size).to eq(0)
         expect(recap_edd_request.errors.size).to eq(1)
@@ -111,9 +110,8 @@ describe Requests::Submissions::Recap do
       end
 
       it "captures errors when response is a 200 but the request is unsuccessful" do
-        stub_request(:post, scsb_url).
-          # with(body: good_request, headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 200, body: bad_response, headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 200, body: bad_response, headers: {})
         expect { recap_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(recap_request.submitted.size).to eq(0)
         expect(recap_request.errors.size).to eq(1)
@@ -123,12 +121,11 @@ describe Requests::Submissions::Recap do
       end
 
       it "captures successful request submission" do
-        stub_request(:post, scsb_url).
-          # with(body: good_request, headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 200, body: good_response, headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, alma_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
-          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
+          .to_return(status: 200, body: file_fixture("../alma_hold_response.json"), headers: { 'content-type': 'application/json' })
         expect { recap_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(recap_request.submitted.size).to eq(1)
         expect(recap_request.errors.size).to eq(0)
@@ -137,12 +134,11 @@ describe Requests::Submissions::Recap do
       end
 
       it "captures successful edd request submission" do
-        stub_request(:post, scsb_url).
-          # with(body: good_request, headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 200, body: good_response, headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, alma_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
-          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
+          .to_return(status: 200, body: file_fixture("../alma_hold_response.json"), headers: { 'content-type': 'application/json' })
         expect { recap_edd_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(recap_edd_request.submitted.size).to eq(1)
         expect(recap_edd_request.errors.size).to eq(0)
@@ -151,13 +147,15 @@ describe Requests::Submissions::Recap do
       end
 
       it "captures errors in the alma hold request" do
-        stub_request(:post, scsb_url).
-          # with(body: good_request, headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 200, body: good_response, headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, alma_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
-          .to_return(status: 400, body: fixture("alma_hold_error_no_library_response.json"), headers: { 'content-type': 'application/json' })
-        expect { recap_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(1)
+          .to_return(status: 400, body: file_fixture("../alma_hold_error_no_library_response.json"), headers: { 'content-type': 'application/json' })
+        expect do
+          recap_request.handle
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(recap_request.submitted.size).to eq(1)
         expect(recap_request.errors.size).to eq(0)
         expect(a_request(:post, scsb_url)).to have_been_made.once
@@ -180,8 +178,20 @@ describe Requests::Submissions::Recap do
       context 'when the SCSB web service responds with an invalid response' do
         subject(:recap) { described_class.new(submission) }
 
+        let(:errors) do
+          {
+            'recap' => [{
+              type: 'recap',
+              error: 'Invalid response from the SCSB server: invalid',
+              bibid: '994916543506421',
+              barcode: '111222333',
+              reply_text: nil
+            }]
+          }
+        end
+
         it 'logs an error' do
-          stub_request(:post, scsb_url).to_return(status: 200, body: '{invalid', headers: {})
+          stub_request(:post, scsb_url).to_return(status: 200, body: 'invalid', headers: {})
           allow(Rails.logger).to receive(:error)
           expect { recap.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
           expect(recap.submitted.size).to eq(0)
@@ -189,6 +199,12 @@ describe Requests::Submissions::Recap do
           expect(Rails.logger).to have_received(:error).with(/Invalid response from the SCSB server/).once
           expect(a_request(:post, scsb_url)).to have_been_made.once
           expect(a_request(:post, alma_url)).not_to have_been_made
+        end
+
+        it 'can generate a hash of errors' do
+          stub_request(:post, scsb_url).to_return(status: 200, body: 'invalid', headers: {})
+          recap.handle
+          expect(recap.error_hash).to eq(errors)
         end
       end
     end
@@ -198,9 +214,9 @@ describe Requests::Submissions::Recap do
     let(:valid_patron) { { "netid" => "foo", "university_id" => "99999999" }.with_indifferent_access }
     let(:user_info) do
       user = instance_double(User, guest?: false, uid: 'foo')
-      Requests::Patron.new(user:, session: {}, patron: valid_patron)
+      Requests::Patron.new(user:, patron_hash: valid_patron)
     end
-    let(:scsb_url) { "#{Requests::Config[:scsb_base]}/requestItem/requestItem" }
+    let(:scsb_url) { "#{Requests.config[:scsb_base]}/requestItem/requestItem" }
     let(:alma_url) { "#{Alma.configuration.region}/almaws/v1/bibs/#{bib['id']}/holdings/#{requestable[0]['mfhd']}/items/#{requestable[0]['item_id']}/requests?user_id=99999999" }
     let(:alma2_url) { "#{Alma.configuration.region}/almaws/v1/bibs/#{bib['id']}/holdings/#{requestable[1]['mfhd']}/items/#{requestable[1]['item_id']}/requests?user_id=99999999" }
 
@@ -271,20 +287,19 @@ describe Requests::Submissions::Recap do
     end
 
     let(:recap_request) { described_class.new(submission) }
-    let(:good_request) { fixture('/scsb_find_request.json') }
-    let(:good_response) { fixture('/scsb_request_item_response.json') }
+    let(:good_request) { file_fixture('../scsb_find_request.json') }
+    let(:good_response) { file_fixture('../scsb_request_item_response.json') }
 
     describe 'All ReCAP Requests' do
       it "captures successful request submissions." do
-        stub_request(:post, scsb_url).
-          # with(body: good_request, headers: { 'Accept' => '*/*', 'Content-Type' => "application/json", 'api_key' => 'TESTME' }).
-          to_return(status: 200, body: good_response, headers: {})
+        stub_request(:post, scsb_url)
+          .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, alma_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "firestone"))
-          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
+          .to_return(status: 200, body: file_fixture("../alma_hold_response.json"), headers: { 'content-type': 'application/json' })
         stub_request(:post, alma2_url)
           .with(body: hash_including(request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "mudd"))
-          .to_return(status: 200, body: fixture("alma_hold_response.json"), headers: { 'content-type': 'application/json' })
+          .to_return(status: 200, body: file_fixture("../alma_hold_response.json"), headers: { 'content-type': 'application/json' })
         expect { recap_request.handle }.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(recap_request.submitted.size).to eq(2)
         expect(recap_request.errors.size).to eq(0)
@@ -295,4 +310,3 @@ describe Requests::Submissions::Recap do
     end
   end
 end
-# rubocop:enable RSpec/MultipleExpectations

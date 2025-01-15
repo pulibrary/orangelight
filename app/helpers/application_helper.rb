@@ -1,7 +1,6 @@
 # frozen_string_literal: false
 
 module ApplicationHelper
-  include Requests::Aeon
   require './lib/orangelight/string_functions'
 
   # Check the Rails Environment. Currently used for Matomo to support production.
@@ -9,79 +8,8 @@ module ApplicationHelper
     Rails.env.production?
   end
 
-  # Generate an Array of <div> elements wrapping links to proxied service endpoints for access
-  # Takes first 2 links for pairing with online holdings in search results
-  # @param electronic_access [Hash] electronic resource information
-  # @return [Array<String>] array containing the links in the <div>'s
-  def search_links(electronic_access)
-    urls = []
-    unless electronic_access.nil?
-      links_hash = JSON.parse(electronic_access)
-      links_hash.first(2).each do |url, text|
-        link = link_to(text.first, EzProxyService.ez_proxy_url(url), target: '_blank', rel: 'noopener')
-        link = "#{text[1]}: ".html_safe + link if text[1]
-        urls << content_tag(:div, link, class: 'library-location')
-      end
-    end
-    urls
-  end
-
-  # Returns electronic portfolio links for Alma records.
-  # @param document [SolrDocument]
-  # @return [Array<String>] array containing the links
-  def electronic_portfolio_links(document)
-    return [] if document.try(:electronic_portfolios).blank?
-    document.electronic_portfolios.map do |portfolio|
-      content_tag(:div, class: 'library-location') do
-        link_to(portfolio["title"], portfolio["url"], target: '_blank', rel: 'noopener')
-      end
-    end
-  end
-
-  # Retrieve a URL for a stack map location URL given a record, a call number, and the library in which it is held
-  # @param location [Hash] location information for the item holding
-  # @param document [SolrDocument] the Solr Document for the record
-  # @param call_number [String] the call number for the holding
-  # @param library [String] the library in which the item is held
-  # @return [StackmapService::Url] the stack map location
-  def locate_url(location, document, call_number, library = nil)
-    locator = StackmapLocationFactory.new(resolver_service: ::StackmapService::Url)
-    ::StackmapService::Url.new(document:, loc: location, cn: call_number).url unless locator.exclude?(call_number:, library:)
-  end
-
-  # Generate the link markup (styled with a glyphicon image) for a given item holding within a library
-  # @param location [Hash] location information for the item holding
-  # @param document [SolrDocument] the Solr Document for the record
-  # @param call_number [String] the call number for the holding
-  # @param library [String] the library in which the item is held
-  # @return [String] the markup
-  def locate_link_with_glyph(location, document, call_number, library, location_name)
-    link = locate_url(location, document, call_number, library)
-    if link.nil? || (find_it_location?(location) == false)
-      ''
-    elsif Flipflop.firestone_locator?
-      stackmap_url_markup(location, library, location_name, document['id'], call_number)
-    else
-      stackmap_span_markup(location, library, location_name)
-    end
-  end
-
-  def stackmap_url_markup(location, library, location_name, doc_id, call_number)
-    stackmap_url = "/catalog/#{doc_id}/stackmap?loc=#{location}"
-    stackmap_url << "&cn=#{call_number}" if call_number
-
-    ' ' + link_to('<span class="fa fa-map-marker" aria-hidden="true"></span>'.html_safe, stackmap_url, title: t('blacklight.holdings.stackmap'), class: 'find-it', data: { 'map-location': location.to_s, 'blacklight-modal': 'trigger', 'location-library': library, 'location-name': location_name }, 'aria-label' => 'Where to find it')
-  end
-
-  def stackmap_span_markup(location, library, location_name)
-    ' ' + content_tag(
-      :span, '',
-      data: {
-        'map-location': location.to_s,
-        'location-library': library,
-        'location-name': location_name
-      }
-    )
+  def show_regular_search?
+    !((%w[generate numismatics advanced_search].include? params[:action]) || (%w[advanced].include? params[:controller]))
   end
 
   # Generate the markup for the block containing links for requests to item holdings
@@ -149,14 +77,12 @@ module ApplicationHelper
   end
 
   # Location display in the search results page
-  def search_location_display(holding, document)
+  def search_location_display(holding)
     location = holding_location_label(holding)
     render_arrow = (location.present? && holding['call_number'].present?)
     arrow = render_arrow ? ' &raquo; ' : ''
-    cn_value = holding['call_number_browse'] || holding['call_number']
-    locate_link = locate_link_with_glyph(holding['location_code'], document, cn_value, holding['library'], holding['location'])
     location_display = content_tag(:span, location, class: 'results_location') + arrow.html_safe +
-                       content_tag(:span, %(#{holding['call_number']}#{locate_link}).html_safe, class: 'call-number')
+                       content_tag(:span, holding['call_number'], class: 'call-number')
     location_display.html_safe
   end
 
@@ -183,12 +109,12 @@ module ApplicationHelper
       full_sub = ''
       all_subjects[i].each_with_index do |subsubject, j|
         lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[subject_facet][]=#{CGI.escape sub_array[i][j]}", class: 'search-subject', 'data-original-title' => "Search: #{sub_array[i][j]}")
+                                  "/?f[subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array[i][j])}", class: 'search-subject', 'data-original-title' => "Search: #{sub_array[i][j]}")
         lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
         full_sub = sub_array[i][j]
       end
       lnk += '  '
-      lnk += link_to('[Browse]', "/browse/subjects?q=#{CGI.escape full_sub}", class: 'browse-subject', 'data-original-title' => "Browse: #{full_sub}", 'aria-label' => "Browse: #{full_sub}", dir: full_sub.dir.to_s)
+      lnk += link_to('[Browse]', "/browse/subjects?q=#{CGI.escape full_sub}", class: 'browse-subject', 'data-original-title' => "Browse: #{full_sub}", 'aria-label' => "Browse: #{full_sub}", dir: full_sub.dir.to_s) unless fast_subjects_value?(args, i)
       args[:document][args[:field]][i] = lnk.html_safe
     end
     content_tag :ul do
@@ -224,13 +150,12 @@ module ApplicationHelper
 
   def action_notes_display(args)
     action_notes = JSON.parse(args[:document][args[:field]])
-    lines = []
-    action_notes.each do |note|
-      lines << if note["uri"].present?
-                 link_to(note["description"], note["uri"])
-               else
-                 note["description"]
-               end
+    lines = action_notes.map do |note|
+      if note["uri"].present?
+        link_to(note["description"], note["uri"])
+      else
+        note["description"]
+      end
     end
 
     if lines.length == 1
@@ -386,4 +311,12 @@ module ApplicationHelper
   def should_show_viewer?
     request.human? && controller.action_name != "librarian_view"
   end
+
+  private
+
+    def fast_subjects_value?(args, i)
+      fast_subject_display_field = args[:document]["fast_subject_display"]
+      return false if fast_subject_display_field.nil?
+      fast_subject_display_field.present? && fast_subject_display_field.include?(args[:document][args[:field]][i])
+    end
 end

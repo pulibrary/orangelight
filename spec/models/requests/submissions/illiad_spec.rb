@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Requests::Submissions::Illiad do
+RSpec.describe Requests::Submissions::Illiad, requests: true do
   let(:user_info) do
     {
       "netid" => "jstudent",
@@ -10,7 +10,7 @@ RSpec.describe Requests::Submissions::Illiad do
       "source" => "pulsearch"
     }.with_indifferent_access
   end
-  let(:patron) { Requests::Patron.new(user: {}, patron: user_info) }
+  let(:patron) { Requests::Patron.new(user: {}, patron_hash: user_info) }
   let(:requestable) do
     [
       {

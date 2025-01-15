@@ -1,29 +1,11 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe 'Numismatics search form' do
+RSpec.describe 'Numismatics search form', advanced_search: true do
   before do
-    stub_alma_holding_locations
-  end
-  context 'when using the view components numismatics form' do
-    before { allow(Flipflop).to_receive(:view_components_numismatics?).and_return(true) }
-  end
-  it 'does not display the basic search form' do
-    visit '/numismatics'
-    expect(page).not_to have_selector('.search-query-form')
-  end
-  it 'can run a search', js: true do
-    visit '/numismatics'
-    fill_in 'issue_denomination_s', with: 'she'
-    find('li', text: /shekel/).click
-    click_button('advanced-search-submit')
-    expect(page.find(".page_entries").text).to eq('1 entry found')
-    expect(page).to have_content('Coin: 1167')
+    stub_holding_locations
   end
 
-  context 'when using the original numismatics form' do
-    before { allow(Flipflop).to_receive(:view_components_numismatics?).and_return(false) }
-  end
   it 'does not display the basic search form' do
     visit '/numismatics'
     expect(page).not_to have_selector('.search-query-form')
@@ -35,5 +17,13 @@ RSpec.describe 'Numismatics search form' do
     click_button('advanced-search-submit')
     expect(page.find(".page_entries").text).to eq('1 entry found')
     expect(page).to have_content('Coin: 1167')
+  end
+  it 'can click the drop-down caret', js: true do
+    visit '/numismatics'
+    first_facet = page.first('.advanced-search-facet')
+    within(first_facet) do
+      page.find('span').click
+      expect(page).to have_content('coin (3)')
+    end
   end
 end

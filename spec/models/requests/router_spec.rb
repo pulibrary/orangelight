@@ -1,21 +1,20 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :none } do
+describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :none }, requests: true do
   context "A Princeton Community User has signed in" do
     let(:user) { FactoryBot.create(:user) }
-    let(:valid_patron) { { "netid" => "foo" }.with_indifferent_access }
+    let(:valid_patron) { { "netid" => "foo", "patron_group" => "P" }.with_indifferent_access }
     let(:patron) do
-      Requests::Patron.new(user:, session: {}, patron: valid_patron)
+      Requests::Patron.new(user:, patron_hash: valid_patron)
     end
 
-    let(:scsb_single_holding_item) { fixture('/SCSB-2635660.json') }
+    let(:scsb_single_holding_item) { file_fixture('../SCSB-2635660.json') }
     let(:location_code) { 'scsbcul' }
     let(:params) do
       {
         system_id: 'SCSB-2635660',
         mfhd: nil,
-        source: 'CUL',
         patron:
       }
     end
@@ -26,14 +25,14 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
       }
     end
     let(:scsb_availability_response) { '[{"itemBarcode":"CU53020880","itemAvailabilityStatus":"Not Available","errorMessage":null}]' }
-    let(:request_scsb) { Requests::Request.new(**params) }
+    let(:request_scsb) { Requests::Form.new(**params) }
     let(:requestable) { request_scsb.requestable.first }
-    let(:router) { described_class.new(requestable:, user:) }
+    let(:router) { described_class.new(requestable:, patron:) }
 
     describe "SCSB item that is charged" do
       before do
         stub_catalog_raw(bib_id: params[:system_id], type: 'scsb')
-        stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+        stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
           .with(headers: { Accept: 'application/json', api_key: 'TESTME' }, body: scsb_availability_params)
           .to_return(status: 200, body: scsb_availability_response)
       end
@@ -46,23 +45,15 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
     describe "calculate_services" do
       let(:item) { {} }
       let(:stubbed_questions) do
-        { alma_managed?: true, online?: false, in_process?: false,
+        { alma_managed?: true, in_process?: false,
           charged?: false, on_order?: false, aeon?: false,
           preservation?: false, annex?: false,
-          plasma?: false, lewis?: false, recap?: false, held_at_marquand_library?: false,
-          item_data?: false, recap_edd?: false, pageable?: false, scsb_in_library_use?: false, item:,
-          library_code: 'ABC', eligible_for_library_services?: true }
+          recap?: false, recap_pf?: false, held_at_marquand_library?: false,
+          item_data?: false, recap_edd?: false, scsb_in_library_use?: false, item:,
+          library_code: 'ABC', eligible_for_library_services?: true,
+          item_at_clancy?: false, marquand_item?: false }
       end
       let(:requestable) { instance_double(Requests::Requestable, stubbed_questions) }
-
-      context "online holding" do
-        before do
-          stubbed_questions[:online?] = true
-        end
-        it "returns online in the services" do
-          expect(router.calculate_services).to eq(['online'])
-        end
-      end
 
       context "in process" do
         before do
@@ -82,6 +73,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
 
       context "on order" do
         before do
+          stubbed_questions[:recap_pf?] = false
           stubbed_questions[:on_order?] = true
         end
         it "returns on_order in the services" do
@@ -109,14 +101,18 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         before do
           stubbed_questions[:annex?] = true
         end
-        it "returns annex in the services" do
+        it "returns annex in the services if the item circulate" do
+          stubbed_questions[:circulates?] = true
+          expect(router.calculate_services).to eq(['annex', 'on_shelf_edd'])
+        end
+        it "returns annex in the services if the item does not circulate" do
+          stubbed_questions[:circulates?] = false
           expect(router.calculate_services).to eq(['annex', 'on_shelf_edd'])
         end
       end
 
       context "lewis" do
         before do
-          stubbed_questions[:lewis?] = true
           stubbed_questions[:recap_pf?] = false
         end
         it "retune on shelf & edd because lewis is a regular library" do
@@ -216,6 +212,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         before do
           stubbed_questions[:charged?] = true
           stubbed_questions[:enumerated?] = true
+          stubbed_questions[:marquand_item?] = false
         end
         it "returns ill in the services" do
           expect(router.calculate_services).to eq(["ill"])
@@ -236,6 +233,7 @@ describe Requests::Router, vcr: { cassette_name: 'requests_router', record: :non
         before do
           stubbed_questions[:alma_managed?] = false
           stubbed_questions[:partner_holding?] = false
+          stubbed_questions[:circulates?] = true
         end
         it "returns aeon in the services" do
           expect(router.calculate_services).to eq(['aeon'])

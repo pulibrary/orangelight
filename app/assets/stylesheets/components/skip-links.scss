@@ -1,3 +1,9 @@
-#skip-link {
-  z-index: 25;
+#skip-link:focus-within {
+    height: 2rem;
+}
+#skip-link a {
+    @include visually-hidden;
+    @include visually-hidden-focusable;
+    position: sticky !important;
+    margin: .2rem 0;
 }

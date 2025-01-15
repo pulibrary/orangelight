@@ -134,7 +134,7 @@ RSpec.describe SolrDocument do
     end
   end
 
-  describe '#identifier_data' do
+  describe '#identifier_data', thumbnails: true do
     context 'with identifiers' do
       let(:properties) do
         {
@@ -153,6 +153,45 @@ RSpec.describe SolrDocument do
             301985443
           ]
         )
+      end
+    end
+  end
+
+  describe '#in_a_special_collection?', thumbnails: true do
+    context 'when the holdings_1display has a holding in a rare books ReCAP location' do
+      let(:properties) do
+        { 'holdings_1display' => '{"22716219400006421":{"location_code":"rare$xc"}}' }
+      end
+      it 'returns true' do
+        stub_holding_locations
+        expect(solr_document.in_a_special_collection?).to be true
+      end
+    end
+    context 'when the holdings_1display has a holding in a special collection from Marquand' do
+      let(:properties) do
+        { 'holdings_1display' => '{"22716219400006421":{"location_code":"marquand$pz"}}' }
+      end
+      it 'returns true' do
+        stub_holding_locations
+        expect(solr_document.in_a_special_collection?).to be true
+      end
+    end
+    context 'when the holdings_1display has no holdings in special collections' do
+      let(:properties) do
+        { 'holdings_1display' => '{"22716219400006421":{"location_code":"lewis$nb"}}' }
+      end
+      it 'returns false' do
+        stub_holding_locations
+        expect(solr_document.in_a_special_collection?).to be false
+      end
+    end
+    context 'when there is no holdings_1display' do
+      let(:properties) do
+        { 'title_display' => 'My favorite book!' }
+      end
+      it 'returns true' do
+        stub_holding_locations
+        expect(solr_document.in_a_special_collection?).to be true
       end
     end
   end
@@ -270,6 +309,32 @@ RSpec.describe SolrDocument do
 
       it 'returns false when it did not originate from alma' do
         expect(solr_document.alma_record?).to be false
+      end
+    end
+  end
+
+  describe 'scsb_record?' do
+    context 'a SCSB record' do
+      let(:properties) do
+        {
+          'id' => 'SCSB-1234'
+        }
+      end
+
+      it 'returns true with a SCSB record' do
+        expect(solr_document.scsb_record?).to be true
+      end
+    end
+
+    context 'A dataspace thesis record' do
+      let(:properties) do
+        {
+          'id' => 'dsp1213313'
+        }
+      end
+
+      it 'returns false when it did not originate from SCSB' do
+        expect(solr_document.scsb_record?).to be false
       end
     end
   end

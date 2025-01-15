@@ -2,10 +2,11 @@
 
 require 'rails_helper'
 
-describe 'Feedback Form', type: :feature do
+describe 'Feedback Form', type: :feature, js: true, libanswers: true do
   before do
+    stub_libanswers_api
     stub_holding_locations
-    current_illiad_user_uri = "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent"
+    current_illiad_user_uri = "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent"
     stub_request(:get, current_illiad_user_uri).to_return(status: 404, body: '{"Message":"User jstudent was not found."}')
   end
 
@@ -43,7 +44,7 @@ describe 'Feedback Form', type: :feature do
 
   context 'Princeton Community User has signed in' do
     let(:user) { FactoryBot.create(:valid_princeton_patron) }
-    let(:valid_patron_response) { fixture('/bibdata_patron_response.json') }
+    let(:valid_patron_response) { file_fixture('../bibdata_patron_response.json') }
 
     it 'Populates Email Field' do
       stub_request(:get, "#{Requests.config['bibdata_base']}/patron/#{user.uid}")

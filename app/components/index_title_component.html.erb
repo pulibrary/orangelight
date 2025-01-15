@@ -1,0 +1,11 @@
+<header class="documentHeader">
+  <%= content_tag @as, class: @classes do %>
+    <%= counter -%><%= title -%>
+  <% end %>
+
+  <% if title_has_been_transliterated? %>
+    <%= content_tag @as, class: @classes do %>
+      <%= transliterated_title -%>
+    <% end %>
+  <% end %>
+</header>

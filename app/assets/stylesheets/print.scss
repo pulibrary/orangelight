@@ -60,7 +60,7 @@ td {
   padding: 0;
 }
 
-header,
+header.lux,
 footer,
 #facets,
 .documents-list .col-md-2,
@@ -285,7 +285,7 @@ abbr {
   margin: 0;
 }
 
-.blacklight-catalog-index .blacklight-holdings {
+.blacklight-catalog-index .document-metadata .blacklight-holdings {
   border-left: 2px solid lightgray;
   padding-left: 1em;
   margin-top: 1em;
@@ -294,6 +294,13 @@ abbr {
     margin-bottom: 1em;
   }
 }
+
+header.documentHeader a {
+  font-size: 12pt;
+  font-weight: normal;
+  text-decoration-line: none;
+}
+
 
 /* Hides blocks from print view */
 .hide-print {

@@ -8,7 +8,7 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   def self.online_link(bib_id, holding_id)
     children = content_tag(
       :span, 'Link Missing',
-      class: 'availability-icon badge badge-secondary'
+      class: 'availability-icon badge bg-secondary'
     )
     # AJAX requests are made using availability.js here
     content_tag(:div, children.html_safe,
@@ -40,7 +40,6 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   # Method for cleaning URLs
-  # @see https://github.com/pulibrary/orangelight/issues/1185
   # @param url [String] the URL for an online holding
   # @return [String] the cleaned URL
   def self.clean_url(url)

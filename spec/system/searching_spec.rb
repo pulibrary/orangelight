@@ -37,30 +37,6 @@ describe 'Searching', type: :system, js: false do
     end
   end
 
-  context 'with firestone_locator on' do
-    before do
-      allow(Flipflop).to receive(:firestone_locator?).and_return(true)
-    end
-
-    it 'renders an accessible link to the stack map' do
-      visit '/catalog?q=&search_field=all_fields'
-      expect(page).to have_selector('.fa-map-marker')
-      expect(page).to have_selector('.fa-map-marker[aria-hidden="true"]')
-    end
-  end
-
-  context 'with firestone_locator off' do
-    before do
-      allow(Flipflop).to receive(:firestone_locator?).and_return(false)
-    end
-
-    it 'renders an accessible link to the stack map', js: true do
-      visit '/catalog?q=&search_field=all_fields'
-      expect(page).to have_selector('.fa-map-marker', wait: 5)
-      expect(page).to have_selector('.fa-map-marker[aria-hidden="true"]', wait: 5)
-    end
-  end
-
   it 'renders an accessible icon for item icons' do
     visit '/catalog?q=&search_field=all_fields'
     expect(page).to have_selector '.blacklight-format .icon[aria-hidden="true"]'
@@ -69,7 +45,7 @@ describe 'Searching', type: :system, js: false do
   context 'Availability: On-site by request' do
     it 'On-site label is green' do
       visit '/?f%5Baccess_facet%5D%5B%5D=In+the+Library&q=id%3Adsp*&search_field=all_fields'
-      expect(page).to have_selector '#documents > article.document.blacklight-senior-thesis.document-position-1 > div > div.record-wrapper > ul > li.blacklight-holdings > ul > li:nth-child(1) > span.availability-icon.badge.badge-success'
+      expect(page).to have_selector '#documents > article.document.blacklight-senior-thesis.document-position-1 > div > div.record-wrapper > ul > li.blacklight-holdings > ul > li:nth-child(1) > span.availability-icon.badge.bg-success'
     end
   end
 
@@ -86,7 +62,7 @@ describe 'Searching', type: :system, js: false do
     end
   end
 
-  context 'with chosen selected numismatic values' do
+  context 'with chosen selected numismatic values', advanced_search: true do
     it 'removes a chosen selected numismatic value' do
       visit '/catalog?f%5Bformat%5D%5B%5D=Coin&advanced_type=numismatics&f_inclusive%5Bissue_city_s%5D%5B%5D=Tyre&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&f1=all_fields&q1=&sort=score+desc%2C+pub_date_start_sort+desc%2C+title_sort+asc&search_field=advanced&commit=Search'
       expect(page).to have_link 'Edit search'
@@ -118,19 +94,23 @@ describe 'Searching', type: :system, js: false do
     end
   end
 
+  context 'searching for series title from advanced search', advanced_search: true do
+    it 'displays the online availability' do
+      visit 'advanced'
+      select('Series title', from: 'Options for advanced search')
+      fill_in('Advanced search terms', with: 'SAGE research methods')
+      click_on('Search')
+      expect(page).to have_content('The lives of Black and Latino teenagers')
+      expect(page).not_to have_content('No holdings available for this record')
+      expect(page).to have_content('SAGE Research Methods Cases Part I')
+      expect(page).to have_content('SAGE research methods. Cases.')
+    end
+  end
   context 'when a request parameter contains a space' do
     it 'displays an error message' do
       visit '/catalog/range_limit?%20%20%20%20range_end=1990&%20%20%20%20range_field=pub_date_start_sort&%20%20%20%20range_start=1981'
       expect { page }.not_to raise_error
-      expect(page).to have_content(/.*For help, please email.*start over.*/)
-    end
-  end
-  context 'with an invalid field list parameter in the advanced search' do
-    it 'will return results without an error' do
-      visit '/catalog?q1=NSF%20Series&search_field=advanced&f1=in_series2121121121212.1'
-      expect { page }.not_to raise_error
-      expect(page).to have_content 'No results found for your search'
-      expect(page).to have_link('Try Borrow Direct', href: 'https://princeton-borrowdirect.reshare.indexdata.com/Search/Results')
+      expect(page).to have_content('Bad Request')
     end
   end
   context 'when searching with an invalid facet parameter' do
@@ -140,7 +120,7 @@ describe 'Searching', type: :system, js: false do
       visit '/catalog?q=test&f=1'
       expect { page }.not_to raise_error
       expect(page.status_code).to eq 400
-      expect(page).to have_content(/.*For help, please email.*start over.*/)
+      expect(page).to have_content('Bad Request')
       expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request: Invalid facet parameter passed: 1/)
     end
   end
@@ -151,7 +131,7 @@ describe 'Searching', type: :system, js: false do
       visit "/catalog?q=&f[author_s]=#{CGI.escape('汪精衛, 1883-1944')}"
       expect { page }.not_to raise_error
       expect(page.status_code).to eq 400
-      expect(page).to have_content(/.*For help, please email.*start over.*/)
+      expect(page).to have_content('Bad Request')
       expect(Rails.logger).to have_received(:error).with(/Invalid parameters passed in the request: Facet field author_s has a scalar value 汪精衛, 1883-1944/)
     end
   end
@@ -161,19 +141,21 @@ describe 'Searching', type: :system, js: false do
     expect(page).to have_content '1 entry found'
   end
 
-  it 'allows user to successfully edit facet-only searches' do
+  it 'allows user to successfully edit facet-only searches', advanced_search: true do
     visit "/catalog?f_inclusive[advanced_location_s][]=Firestone+Library&search_field=advanced"
     original_results_count = search_results_count
     click_link "Book"
     expect(search_results_count).to be < original_results_count
   end
 
-  context 'with the built-in advanced search form', advanced_search: true do
-    before do
-      allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
-      allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
+  context 'when the json query dsl is on' do
+    it 'can handle a boolean OR search' do
+      visit '/catalog?search_field=all_fields&q=plasticity+OR+afganistan'
+      expect(page).to have_content('1 - 2 of 2')
     end
+  end
 
+  context 'with the built-in advanced search form', advanced_search: true do
     it 'can edit an existing search' do
       visit '/catalog?search_field=all_fields&q=cats'
       click_on('Edit search')
@@ -181,7 +163,7 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_field('clause_0_query', with: 'cats')
     end
 
-    it 'can edit an existing advanced search' do
+    it 'can edit an existing advanced search', advanced_search: true do
       visit '/catalog?clause[0][field]=title&clause[0][query]=plasticity'
       click_on('Edit search')
       expect(page).to have_content('Advanced Search')
@@ -189,12 +171,46 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_field('clause_0_query', with: 'plasticity')
     end
 
-    it 'can edit an existing title search' do
+    it 'can edit an existing title search', advanced_search: true do
       visit '/catalog?search_field=title&q=potato'
       click_on('Edit search')
       expect(page).to have_content('Advanced Search')
       expect(page).to have_select('clause_0_field', selected: 'Title')
       expect(page).to have_field('clause_0_query', with: 'potato')
+    end
+
+    # Flakey
+    xit 'can add a facet to an existing search', advanced_search: true, js: true do
+      visit '/advanced?q=black&search_field=all_fields'
+      expect(page).to have_field('clause_0_query', with: 'black')
+      access_facet = page.find('#access_facet')
+      access_facet.click
+      in_the_library = page.first('.dropdown-item')
+      in_the_library.click
+      click_on('advanced-search-submit')
+      expect(page).to have_content(/Any of:\nIn the Library/)
+    end
+
+    it 'displays the online availability for a series title', advanced_search: true do
+      visit 'advanced'
+      select('Series title', from: 'clause_0_field')
+      fill_in('clause_0_query', with: 'SAGE research methods')
+      click_on('advanced-search-submit')
+      expect(page).to have_content('The lives of Black and Latino teenagers')
+      expect(page).not_to have_content('No holdings available for this record')
+      expect(page).to have_content('SAGE Research Methods Cases Part I')
+      expect(page).to have_content('SAGE research methods. Cases.')
+    end
+
+    it 'shows facets on the advanced search results page', advanced_search: true do
+      visit '/advanced'
+      fill_in 'clause_0_query', with: 'robots'
+      click_button 'Search'
+      expect(page).to have_button('Access')
+      expect(page).to have_button('Library')
+      expect(page).to have_button('Format')
+      expect(page).to have_button('Publication year')
+      expect(page).to have_button('Language')
     end
   end
 
@@ -222,6 +238,23 @@ describe 'Searching', type: :system, js: false do
     it 'does not display a banner' do
       visit '/catalog?search_field=all_fields&q=cats'
       expect(page).not_to have_content('We are working to address bias')
+    end
+  end
+
+  context 'with facets from the advanced search form', advanced_search: true, js: true do
+    it 'keeps the facets when editing the search' do
+      visit '/advanced'
+      page.find('#format').click
+      within('#format-list') do
+        page.find('li', text: /Audio/).click
+        # page.send_keys(:tab, :down, :enter)
+        page.find('li', text: /Coin/).click
+      end
+      page.click_button('Search')
+      page.click_link('Edit search')
+      expect(page).to have_content('Within search')
+      field_value = page.find_field('format').value
+      expect(field_value).to include('Audio')
     end
   end
 end

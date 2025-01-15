@@ -2,16 +2,16 @@
 require 'rails_helper'
 require 'net/ldap'
 
-describe Requests::IlliadPatron, type: :controller do
+describe Requests::IlliadPatron, type: :controller, requests: true, patrons: true do
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
-      "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
+      "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "REG",
       "patron_id" => "99999", "active_email" => "foo@princeton.edu", "ldap" => ldap_data }.with_indifferent_access
   end
   let(:ldap_data) { { uid: 'foo', department: 'Library - Information Technology', address: 'Firestone Library$Library Information Technology', telephone: '123-456-7890', surname: 'Doe', givenname: 'Joe', email: 'joe@abc.com', pustatus: 'fac', status: 'faculty' }.with_indifferent_access }
   let(:user_info) do
     user = instance_double(User, guest?: false, uid: 'foo')
-    Requests::Patron.new(user:, session: {}, patron: valid_patron)
+    Requests::Patron.new(user:, patron_hash: valid_patron)
   end
 
   let(:illiad_patron) { described_class.new(user_info) }
@@ -102,6 +102,13 @@ describe Requests::IlliadPatron, type: :controller do
         expect(patron[:UserName]).to eq('abc234')
         expect(patron[:ExternalUserId]).to eq('foo')
         expect(patron[:Cleared]).to eq('Yes')
+      end
+
+      context 'when the patron has a title' do
+        let(:ldap_data) { { title: 'Senior Research Scholar', uid: 'foo', department: 'Information Technology', address: 'Firestone Library$Library Information Technology', telephone: '123-456-7890', surname: 'Doe', givenname: 'Joe', email: 'joe@abc.com', pustatus: 'stf', status: 'staff' }.with_indifferent_access }
+        it 'can initialize' do
+          expect { described_class.new(user_info) }.not_to raise_error
+        end
       end
     end
 

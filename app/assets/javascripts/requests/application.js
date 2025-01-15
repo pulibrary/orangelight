@@ -12,11 +12,9 @@
 //
 //= require jquery
 //= require jquery3
-//= require jquery
 //= require jquery_ujs
 //= require popper
 //= require bootstrap
 //= require datatables
-//= require modernizr
 
 //= require_tree .

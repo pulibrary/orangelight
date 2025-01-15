@@ -7,7 +7,6 @@ class FeedbackController < ApplicationController
   before_action :build_feedback_form, only: [:create]
   before_action :build_ask_a_question_form, only: [:ask_a_question]
   before_action :build_suggest_correction_form, only: [:suggest_correction]
-  before_action :build_report_harmful_language_form, only: [:report_harmful_language]
   before_action :build_report_biased_results_form, only: [:report_biased_results]
 
   def new
@@ -29,8 +28,6 @@ class FeedbackController < ApplicationController
   def ask_a_question; end
 
   def suggest_correction; end
-
-  def report_harmful_language; end
 
   def report_biased_results; end
 
@@ -66,17 +63,6 @@ class FeedbackController < ApplicationController
 
     def suggest_correction_form_params
       params.require(:suggest_correction_form).permit(:id, :title)
-    end
-
-    def build_report_harmful_language_form
-      @harmful_language_form = ReportHarmfulLanguageForm.new(
-        context: page_url(harmful_language_params),
-        title: harmful_language_params['title']
-      )
-    end
-
-    def harmful_language_params
-      params.require(:report_harmful_language_form).permit(:id, :title)
     end
 
     def build_report_biased_results_form

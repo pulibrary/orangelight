@@ -13,16 +13,86 @@ describe BlacklightHelper do
     end
   end
 
-  describe '#left_anchor_escape_whitespace' do
-    it 'escapes white spaces before sending :q to solr along with wildcard character' do
-      query = { qf: '${left_anchor_qf}', pf: '${left_anchor_pf}', q: 'searching for a test value' }
-      left_anchor_escape_whitespace(query)
-      expect(query[:q]).to eq 'searching\ for\ a\ test\ value*'
+  describe '#prepare_left_anchor_search', left_anchor: true do
+    it 'escapes white spaces before sending :query to solr along with wildcard character' do
+      query = { "qt" => nil, "json" => { "query" => { "bool" => { "must" => [
+        { edismax:
+          {
+            qf: "${left_anchor_qf}",
+            pf: "${left_anchor_pf}",
+            query: "searching for a test value"
+          } }
+      ] } } } }
+      # query = { qf: '${left_anchor_qf}', pf: '${left_anchor_pf}', q: 'searching for a test value' }
+      prepare_left_anchor_search(query)
+      expect(query["json"]["query"]["bool"]["must"][0][:edismax][:query]).to eq 'searching\ for\ a\ test\ value*'
     end
     it 'only a single wildcard character is included when user supplies the wildcard in query' do
-      query = { qf: '${left_anchor_qf}', pf: '${left_anchor_pf}', q: 'searching for a test value*' }
-      left_anchor_escape_whitespace(query)
-      expect(query[:q]).to eq 'searching\ for\ a\ test\ value*'
+      query = { "qt" => nil, "json" => { "query" => { "bool" => { "must" => [
+        { edismax:
+          {
+            qf: "${left_anchor_qf}",
+            pf: "${left_anchor_pf}",
+            query: "searching for a test value*"
+          } }
+      ] } } } }
+      prepare_left_anchor_search(query)
+      expect(query["json"]["query"]["bool"]["must"][0][:edismax][:query]).to eq 'searching\ for\ a\ test\ value*'
+    end
+    context 'with a complex boolean advanced search' do
+      it 'escapes all left_anchor terms' do
+        query = { "qt" => nil, "json" => { "query" => { "bool" => { "must" => [
+          { edismax:
+            {
+              qf: "${left_anchor_qf}",
+              pf: "${left_anchor_pf}",
+              query: "searching for"
+            } },
+          { edismax:
+            {
+              qf: "${left_anchor_qf}",
+              pf: "${left_anchor_pf}",
+              query: "searching for"
+            } },
+          { edismax:
+            {
+              qf: "${left_anchor_qf}",
+              pf: "${left_anchor_pf}",
+              query: "searching for"
+            } }
+        ] } } } }
+        prepare_left_anchor_search(query)
+        expect(query.dig('json', 'query', 'bool', 'must', 0, :edismax, :query)).to eq("searching\\ for*")
+        expect(query.dig('json', 'query', 'bool', 'must', 1, :edismax, :query)).to eq("searching\\ for*")
+        expect(query.dig('json', 'query', 'bool', 'must', 2, :edismax, :query)).to eq("searching\\ for*")
+      end
+      it 'escapes all left_anchor terms' do
+        query = { "qt" => nil, "json" => { "query" => { "bool" => { "must" => [
+          { edismax:
+            {
+              query: "lord of the rings"
+            } },
+          { edismax:
+            {
+              qf: "${left_anchor_qf}",
+              pf: "${left_anchor_pf}",
+              query: "lord"
+            } }
+        ] } } } }
+        expect(left_anchor_search?(query)).to be true
+      end
+    end
+    it 'mutates queries that search the in_series field' do
+      query = { "qt" => nil, "json" => { "query" => { "bool" => { "must" => [
+        { edismax:
+          {
+            qf: "${in_series_qf}",
+            pf: "${in_series_pf}",
+            query: "my favorite series"
+          } }
+      ] } } } }
+      prepare_left_anchor_search(query)
+      expect(query["json"]["query"]["bool"]["must"][0][:edismax][:query]).to eq 'my\ favorite\ series*'
     end
   end
 
@@ -79,7 +149,7 @@ describe BlacklightHelper do
     end
   end
 
-  describe '#wildcard_char_strip' do
+  describe '#wildcard_char_strip', left_anchor: true do
     it 'strips question marks which are wildcard characters before sending :q to solr' do
       query = { q: '{!qf=$left_anchor_qf pf=$left_anchor_pf}China and Angola: a marriage of convenience?' }
       wildcard_char_strip(query)

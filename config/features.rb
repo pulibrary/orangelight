@@ -23,21 +23,11 @@ Flipflop.configure do
   #   default: false,
   #   description: "Display a test header to show if flipflop is working."
 
-  feature :firestone_locator,
-    default: true,
-    description: "When on / true, uses the old locator service for Firestone. When off / false uses the new Stackmap service for Firestone."
-
   feature :message_display,
     default: false,
     description: "When on / true, displays the message set by the announcement rake task."
 
   group :blacklight_8 do
-    feature :json_query_dsl,
-    description: "When on / true, use the JSON query DSL for search fields in the advanced search.  When off / false, use query params"
-
-    feature :view_components_numismatics,
-    description: "When on / true, use the built-in advanced search form for numismatics.  When off / false, use the traditional one"
-
     feature :view_components_advanced_search,
     description: "When on / true, use the built-in advanced search form.  When off / false, use the traditional one"
   end
@@ -55,4 +45,12 @@ Flipflop.configure do
       default: false,
       description: "When on / true, a banner will be present to take the user to the search result form"
   end
+
+  feature :enumeration_backwards_compatibility,
+    default: true,
+    description: "When on / true, use the enumeration/chronology data from both the new item description field and the legacy item enumeration field.  When false, only look at the new description field.  We can change this value to false (and remove the feature) after the next full re-index."
+
+  feature :blacklight_hierarchy_facet,
+  default: false,
+  description: "When on / true, use the blacklight hierarchy gem to display the classification facet"
 end

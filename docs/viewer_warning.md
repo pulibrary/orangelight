@@ -9,7 +9,7 @@ In order to view the content a user would have to press the button 'View Content
   * Notice type: Harmful Content,  
     Displayed message:  
     * Content Warning,  
-         This collection includes materials and images that are harmful (in that they are racist, transphobic, or otherwise demeaning). For more information on harmful content please see the [PUL statement on Harmful Content](https://library.princeton.edu/statement-harmful-content)  
+           This collection includes materials and images that may reflect perspectives which some users could find oﬀensive or otherwise problematic. For more information, please see the [PUL statement on Responsible Collection Description](https://library.princeton.edu/about/responsible-collection-description).
        
         View Content
 

@@ -2,37 +2,40 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 6.1', '>= 6.1.7.1'
+gem 'rails', '~> 7.2.2'
 
 gem 'alma'
 gem 'babel-transpiler'
 gem 'bcrypt_pbkdf'
 # Blacklight
-gem 'blacklight', '~> 7.35'
-# advanced search functionality
-gem 'blacklight_advanced_search', '~> 7.0'
+gem 'blacklight', '~> 8.7.0'
 gem 'blacklight_dynamic_sitemap'
+gem 'blacklight-hierarchy'
 gem 'blacklight-marc', '~>8.1'
 # slider limit support
 gem 'blacklight_range_limit', '~> 8.2'
-gem 'blacklight_unapi', git: 'https://github.com/pulibrary/blacklight_unapi.git', branch: 'main'
-gem 'bootstrap', '~> 4.6'
+gem 'bootstrap', '~> 5.2.0'
+gem 'psych'
 # Capistrano
 # In the Capistrano documentation, it has these limited to the development group, and `require: false``
 gem 'capistrano', '~> 3.4'
 gem 'capistrano-passenger'
-gem 'ddtrace', '~> 1.14.0'
+# support for non-marc citations (e.g. SCSB records)
+gem 'citeproc-ruby'
+gem 'csl-styles'
 # Authentication and authorization
-gem 'devise', '>= 4.6.0'
-gem 'devise-guests', '~> 0.5'
+gem 'devise'
+gem 'devise-guests'
 gem 'ed25519'
 gem 'email_validator'
 gem 'faraday'
 gem 'faraday-cookie_jar'
+gem "ffi", force_ruby_platform: true
 gem 'flipflop'
-gem 'font-awesome-rails'
 gem 'friendly_id', '~> 5.4.2'
 gem 'global'
+# Pinning to 12.4.0 due to Rails 7.1 compatibility issue in 12.4.1
+gem 'health-monitor-rails', '12.4.0'
 # Static pages
 gem 'high_voltage'
 gem 'honeybadger'
@@ -46,13 +49,10 @@ gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
 gem 'lograge'
 gem 'logstash-event'
-gem 'mail_form'
 gem 'matrix'
 # For memory profiling
 # See https://github.com/MiniProfiler/rack-mini-profiler#memory-profiling for usage
 gem 'memory_profiler'
-# Modernizr.js library
-gem 'modernizr-rails'
 gem 'net-imap', require: false
 gem 'net-ldap'
 gem 'net-pop', require: false
@@ -76,14 +76,13 @@ gem 'rsolr'
 # Should this be in the test, development group?
 gem 'rspec-rails'
 gem 'rubyzip', '>= 1.2.2'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 6.0'
 gem 'simple_form'
 gem 'sneakers'
 gem 'sprockets-es6'
+gem 'sprockets-rails'
 # For call-stack profiling flamegraphs
 gem 'stackprof'
-gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', tag: 'vpton.2.5.2.2'
+gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', branch: 'main'
 gem 'string_rtl'
 gem 'terser'
 gem 'view_component', '< 3.0.0'
@@ -95,6 +94,7 @@ gem 'yard'
 
 group :development do
   gem 'capistrano-rails'
+  gem 'reek'
 end
 
 group :test do
@@ -111,11 +111,17 @@ group :test do
 end
 
 group :development, :test do
-  gem 'bixby', '~> 5.0'
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec_rails', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-performance', require: false
   gem 'capybara'
-  gem 'coveralls_reborn'
+  gem 'coveralls_reborn', require: false
   gem "erb_lint", require: false
   gem "erblint-github"
   gem 'pry-byebug'
   gem 'solargraph'
+end
+group :production do
+  gem 'datadog', require: 'datadog/auto_instrument'
 end

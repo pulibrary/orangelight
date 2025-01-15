@@ -2,13 +2,23 @@
 
 require 'rails_helper'
 
-describe 'Zotero Support via Context Objects' do
+describe 'Zotero Support via Context Objects', zotero: true do
   before do
     stub_holding_locations
   end
 
+  it 'is available on the search results page' do
+    visit '/catalog?search_field=all_fields&q=history'
+    expect(page.all('.Z3988').length).to eq 20
+  end
+
   it 'is available on the individual record page' do
     visit '/catalog/9990315453506421'
+    expect(page.all('.Z3988').length).to eq 1
+  end
+
+  it 'is available on an individual SCSB record page' do
+    visit '/catalog/SCSB-2143785'
     expect(page.all('.Z3988').length).to eq 1
   end
 

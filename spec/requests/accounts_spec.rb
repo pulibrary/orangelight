@@ -2,14 +2,14 @@
 
 require 'rails_helper'
 
-RSpec.describe AccountController do
-  let(:current_illiad_user_uri) { "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent" }
+RSpec.describe AccountController, patrons: true do
+  let(:current_illiad_user_uri) { "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent" }
   let(:valid_patron_response) { File.open('spec/fixtures/bibdata_patron_response.json') }
   let(:verify_user_response) { File.open('spec/fixtures/ill_verify_user_response.json') }
   let(:outstanding_ill_requests_response) { File.open('spec/fixtures/outstanding_ill_requests_response.json') }
   let(:valid_user) { FactoryBot.create(:valid_princeton_patron) }
   before do
-    current_ill_requests_uri = "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Transaction/UserRequests/jstudent?$filter=" \
+    current_ill_requests_uri = "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/Transaction/UserRequests/jstudent?$filter=" \
       "ProcessType%20eq%20'Borrowing'%20and%20TransactionStatus%20ne%20'Request%20Finished'%20and%20not%20startswith%28TransactionStatus,'Cancelled'%29"
     stub_request(:get, current_ill_requests_uri)
       .to_return(status: 200, body: outstanding_ill_requests_response, headers: {
@@ -19,7 +19,7 @@ RSpec.describe AccountController do
                  })
     stub_request(:get, current_illiad_user_uri)
       .to_return(status: 200, body: verify_user_response)
-    valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
+    valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}?ldap=false"
     stub_request(:get, valid_patron_record_uri)
       .to_return(status: 200, body: valid_patron_response, headers: {})
   end
@@ -42,7 +42,7 @@ RSpec.describe AccountController do
 
         follow_redirect!
 
-        expect(response).to render_template(:redirect_to_alma)
+        expect(response).to redirect_to('https://princeton.alma.exlibrisgroup.com/discovery/account?vid=01PRI_INST:Services&lang=EN&section=overview')
       end
     end
   end

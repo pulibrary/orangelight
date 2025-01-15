@@ -16,6 +16,8 @@
 [class*=" icon-"]:before,
 .toggle,
 .toggle.collapsed,
+.toggle-handle,
+.toggle-handle[aria-expanded="true"],
 .document-thumbnail .default {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'pul-icons' !important;
@@ -30,6 +32,12 @@
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.document-thumbnail .default {
+    &:before {
+        content: $icon-book;
+    }
 }
 
 .icon-bell {
@@ -96,7 +104,14 @@
 .icon-data-file,
 .blacklight-data-file .document-thumbnail .default {
     &:before {
-        content: $icon-data-file;
+        content: $icon-databases;
+    }
+}
+
+.icon-databases,
+.blacklight-databases .document-thumbnail .default {
+    &:before {
+        content: $icon-databases;
     }
 }
 
@@ -114,10 +129,24 @@
     }
 }
 
+.icon-microform,
+.blacklight-microform .document-thumbnail .default {
+    &:before {
+        content: $icon-film;
+    }
+}
+
 .icon-audio,
 .blacklight-audio .document-thumbnail .default {
     &:before {
         content: $icon-audio;
+    }
+}
+
+.icon-archival-item,
+.blacklight-archival-item .document-thumbnail .default {
+    &:before {
+        content: $icon-manuscript;
     }
 }
 
@@ -142,7 +171,10 @@
     }
 }
 
-.toggle.collapsed {
+.toggle.collapsed,
+.toggle-handle {
+    background: none;
+    border: none;
     &:before {
         content: $icon-toggle-collapsed;
     }
@@ -154,7 +186,10 @@
     }
 }
 
-.toggle {
+.toggle,
+.toggle-handle[aria-expanded="true"] {
+    background: none;
+    border: none;
     &:before {
         content: $icon-toggle;
     }

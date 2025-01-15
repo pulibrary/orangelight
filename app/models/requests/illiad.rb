@@ -20,7 +20,7 @@ module Requests
     def illiad_request_url(solr_open_url_context, note: nil)
       query_params = illiad_query_parameters(referrer: solr_open_url_context.referrer, referent: solr_open_url_context.referent,
                                              metadata: solr_open_url_context.referent.metadata, note:)
-      "#{Requests::Config[:ill_base]}?#{query_params}"
+      "#{Requests.config[:ill_base]}?#{query_params}"
     end
 
     def illiad_request_parameters(solr_open_url_context, note: nil)
@@ -39,19 +39,14 @@ module Requests
       def illiad_query_parameters(referrer:, referent:, metadata:, note:)
         qp = map_metdata(referrer:, referent:, metadata:)
         qp['notes'] = note
-
-        # trim empty ones please
         qp.compact_blank!
         qp.to_query
       end
 
-      # rubocop:disable Metrics/MethodLength
       def map_metdata(referrer:, referent:, metadata:)
         qp = {}
         METADATA_MAPPING.each { |metadata_key, illiad_key| qp[illiad_key] = metadata[metadata_key.to_s] }
 
-        ## Possible enumeration values
-        # qp['month']     = get_month(referent)
         qp = au_params(metadata:, qp:)
         # ILLiad always wants 'title', not the various title keys that exist in OpenURL
         # For some reason these go to ILLiad prefixed with rft.
@@ -66,7 +61,6 @@ module Requests
         qp['CitedIn'] = catalog_url(referent)
         qp
       end
-      # rubocop:enable Metrics/MethodLength
 
       # Grab a source label out of `sid` or `rfr_id`, add on our suffix.
       def sid_for_illiad(referrer)
@@ -83,18 +77,14 @@ module Requests
       def catalog_url(referent)
         bibidata_url = URI(referent.identifiers.first)
         bibid = bibidata_url.path.split('/').last
-        "#{Requests::Config[:pulsearch_base]}/catalog/#{bibid}"
-      end
-
-      def get_lccn(rft)
-        get_identifier(:info, "lccn", rft)
+        "#{Requests.config[:pulsearch_base]}/catalog/#{bibid}"
       end
 
       def get_identifier(type, sub_scheme, referent, options = {})
         options[:multiple] ||= false
         identifiers = identifiers_for_type(type:, sub_scheme:, referent:)
         if identifiers.blank? && ['lccn', 'oclcnum', 'isbn', 'issn', 'doi', 'pmid'].include?(sub_scheme)
-          # try the referent metadata
+
           from_rft = referent.metadata[sub_scheme]
           identifiers = [from_rft] if from_rft.present?
         end

@@ -98,16 +98,15 @@
 
 
   <query>
-    <filterCache class="solr.FastLRUCache"
+    <filterCache class="solr.search.CaffeineCache"
                  size="2048"
                  initialSize="2048"
                  autowarmCount="64"/>
-    <queryResultCache class="solr.LRUCache"
+    <queryResultCache class="solr.search.CaffeineCache"
                       size="4096"
                       initialSize="4096"
                       autowarmCount="32"/>
-
-    <documentCache class="solr.LRUCache"
+    <documentCache class="solr.search.CaffeineCache"
                    size="4096"
                    initialSize="4096"/>
 
@@ -141,66 +140,66 @@
        -->
 
       <str name="qf">
-        title_a_index^1500
-        author_main_unstem_search^1000
-        title_unstem_search^40
-        title_display^40
-        author_unstem_search^40
-        subject_topic_unstem_search^18
-        subject_unstem_search^15
-        siku_subject_unstem_search^15
-        local_subject_unstem_search^15
-        homoit_subject_unstem_search^15
-        subject_topic_index^12
-        genre_unstem_search^10
-        subject_t^10
-        subject_addl_unstem_search^8
-        subject_addl_t^4
-        isbn_t^3
-        issn_s^3
-        lccn_s^3
-        uncontrolled_keyword_unstem_search^3
-        text
-        description_t
-        cjk_all
-        cjk_text
+        title_a_index^3300
+        author_main_unstem_search^2200
+        title_unstem_search^88
+        title_display^88
+        author_unstem_search^88
+        subject_topic_unstem_search^39.6
+        subject_unstem_search^33
+        siku_subject_unstem_search^33
+        local_subject_unstem_search^33
+        homoit_subject_unstem_search^33
+        subject_topic_index^26.4
+        genre_unstem_search^22
+        subject_t^22
+        subject_addl_unstem_search^17.6
+        subject_addl_t^8.8
+        isbn_t^6.6
+        issn_s^6.6
+        lccn_s^6.6
+        uncontrolled_keyword_unstem_search^6.6
+        text^2.2
+        description_t^2.2
+        cjk_all^2.2
+        cjk_text^2.2
       </str>
       <str name="pf">
-        title_245a_lr^16000
-        title_245_lr^16000
-        title_a_index^12000
-        author_main_unstem_search^10000
-        title_unstem_search^400
-        title_display^400
-        author_unstem_search^400
-        subject_topic_unstem_search^180
-        subject_unstem_search^150
-        siku_subject_unstem_search^150
-        local_subject_unstem_search^150
-        homoit_subject_unstem_search^150
-        subject_topic_index^120
-        genre_unstem_search^100
-        subject_t^100
-        subject_addl_unstem_search^80
-        subject_addl_t^40
-        isbn_t^30
-        issn_s^30
-        lccn_s^30
-        uncontrolled_keyword_unstem_search^10
-        text^10
-        description_t^10
-        cjk_all^10
-        cjk_text^10
+        title_245a_lr^35200
+        title_245_lr^35200
+        title_a_index^26400
+        author_main_unstem_search^22000
+        title_unstem_search^880
+        title_display^880
+        author_unstem_search^880
+        subject_topic_unstem_search^396
+        subject_unstem_search^330
+        siku_subject_unstem_search^330
+        local_subject_unstem_search^330
+        homoit_subject_unstem_search^330
+        subject_topic_index^264
+        genre_unstem_search^220
+        subject_t^220
+        subject_addl_unstem_search^176
+        subject_addl_t^88
+        isbn_t^66
+        issn_s^66
+        lccn_s^66
+        uncontrolled_keyword_unstem_search^22
+        text^22
+        description_t^22
+        cjk_all^22
+        cjk_text^22
       </str>
       <str name="author_qf">
-        author_main_unstem_search^20
-        author_unstem_search^10
-        cjk_author
+        author_main_unstem_search^44
+        author_unstem_search^22
+        cjk_author^2.2
       </str>
       <str name="author_pf">
-        author_main_unstem_search^200
-        author_unstem_search^100
-        cjk_author^10
+        author_main_unstem_search^440
+        author_unstem_search^220
+        cjk_author^22
       </str>
       <str name="left_anchor_qf">
         title_245a_la^50
@@ -209,111 +208,111 @@
         title_addl_la
       </str>
       <str name="left_anchor_pf">
-        title_245a_lr^600
-        title_245_lr^600
-        title_245a_la^500
-        title_245_la^100
-        title_lr^100
-        title_la^20
-        title_addl_la^10
+        title_245a_lr^1320
+        title_245_lr^1320
+        title_245a_la^1100
+        title_245_la^220
+        title_lr^220
+        title_la^44
+        title_addl_la^22
       </str>
       <str name="in_series_qf">
-        more_in_this_series_la
+        more_in_this_series_la^2.2
       </str>
       <str name="in_series_pf">
-        more_in_this_series_la
+        more_in_this_series_la^2.2
       </str>
       <str name="publisher_qf">
-        pub_created_unstem_search
-        cjk_publisher
+        pub_created_unstem_search^2.2
+        cjk_publisher^2.2
       </str>
       <str name="publisher_pf">
-        pub_created_unstem_search
-        cjk_publisher
+        pub_created_unstem_search^2.2
+        cjk_publisher^2.2
       </str>
       <str name="notes_qf">
-        notes_index
-        cjk_notes
-        cjk_notes_copied
+        notes_index^2.2
+        cjk_notes^2.2
+        cjk_notes_copied^2.2
       </str>
       <str name="notes_pf">
-        notes_index
-        cjk_notes
-        cjk_notes_copied
+        notes_index^2.2
+        cjk_notes^2.2
+        cjk_notes_copied^2.2
       </str>
       <str name="series_title_qf">
-        series_title_index^5
-        series_ae_index
-        series_statement_index
-        linked_series_title_index
-        linked_series_index
-        original_version_series_index
-        cjk_series_title
+        series_title_index^11
+        series_ae_index^2.2
+        series_statement_index^2.2
+        linked_series_title_index^2.2
+        linked_series_index^2.2
+        original_version_series_index^2.2
+        cjk_series_title^2.2
       </str>
       <str name="series_title_pf">
-        series_title_index^50
-        series_ae_index^10
-        series_statement_index^10
-        linked_series_title_index^10
-        linked_series_index^10
-        original_version_series_index^10
-        cjk_series_title^10
+        series_title_index^110
+        series_ae_index^22
+        series_statement_index^22
+        linked_series_title_index^22
+        linked_series_index^22
+        original_version_series_index^22
+        cjk_series_title^22
       </str>
       <str name="title_qf">
-        title_a_index^500
-        title_unstem_search^100
-        title_display^50
-        other_title_index^5
-        series_title_index^5
-        uniform_title_s^5
-        title_vern_display
-        content_title_index
-        contains_title_index
-        linked_title_index
-        series_ae_index
-        series_statement_index
-        linked_series_title_index
-        linked_series_index
-        original_version_series_index
-        cjk_title
+        title_a_index^1100
+        title_unstem_search^220
+        title_display^110
+        other_title_index^11
+        series_title_index^11
+        uniform_title_s^11
+        title_vern_display^2.2
+        content_title_index^2.2
+        contains_title_index^2.2
+        linked_title_index^2.2
+        series_ae_index^2.2
+        series_statement_index^2.2
+        linked_series_title_index^2.2
+        linked_series_index^2.2
+        original_version_series_index^2.2
+        cjk_title^2.2
       </str>
       <str name="title_pf">
-        title_245a_lr^5500
-        title_245_lr^5500
-        title_a_index^5000
-        title_unstem_search^1000
-        title_display^500
-        other_title_index^50
-        series_title_index^50
-        uniform_title_s^50
-        title_vern_display^10
-        content_title_index^10
-        contains_title_index^10
-        linked_title_index^10
-        series_ae_index^10
-        series_statement_index^10
-        linked_series_title_index^10
-        linked_series_index^10
-        original_version_series_index^10
-        cjk_title^10
+        title_245a_lr^12100
+        title_245_lr^12100
+        title_a_index^11000
+        title_unstem_search^2200
+        title_display^1100
+        other_title_index^110
+        series_title_index^110
+        uniform_title_s^110
+        title_vern_display^22
+        content_title_index^22
+        contains_title_index^22
+        linked_title_index^22
+        series_ae_index^22
+        series_statement_index^22
+        linked_series_title_index^22
+        linked_series_index^22
+        original_version_series_index^22
+        cjk_title^22
       </str>
       <str name="subject_qf">
-        subject_topic_unstem_search^25
-        subject_unstem_search^20
-        genre_unstem_search^15
-        siku_subject_unstem_search
-        local_subject_unstem_search
-        homoit_subject_unstem_search
-        cjk_subject
+        subject_topic_unstem_search^55
+        subject_unstem_search^44
+        genre_unstem_search^33
+        siku_subject_unstem_search^2.2
+        local_subject_unstem_search^2.2
+        homoit_subject_unstem_search^2.2
+        cjk_subject^2.2
       </str>
       <str name="subject_pf">
-        subject_topic_unstem_search^250
-        subject_unstem_search^200
-        genre_unstem_search^150
-        siku_subject_unstem_search^10
-        local_subject_unstem_search^10
-        homoit_subject_unstem_search^10
-        cjk_subject^10
+        subject_topic_unstem_search^550
+        subject_unstem_search^440
+        genre_unstem_search^330
+        siku_subject_unstem_search^22
+        local_subject_unstem_search^22
+        homoit_subject_unstem_search^22
+        cjk_subject^22
       </str>
 
       <int name="ps">3</int>
@@ -335,7 +334,8 @@
         electronic_access_1display,
         electronic_portfolio_s,
         cataloged_tdt,
-        contained_in_s
+        contained_in_s,
+        call_number_display
       </str>
 
       <str name="facet">true</str>

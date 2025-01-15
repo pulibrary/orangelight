@@ -31,7 +31,7 @@ module Blacklight
 
         def add_identifiers
           id = @document['id']
-          ctx.referent.add_identifier("https://bibdata.princeton.edu/bibliographic/#{id}")
+          ctx.referent.add_identifier("https://catalog.princeton.edu/catalog/#{id}")
           ctx.referrer.add_identifier('info:sid/catalog.princeton.edu:generator')
           ctx.referent.add_identifier("info:oclcnum/#{@document['oclc_s'].first}") unless @document['oclc_s'].nil?
           ctx.referent.add_identifier("info:lccn/#{@document['lccn_s'].first}") unless @document['lccn_s'].nil?
@@ -42,7 +42,6 @@ module Blacklight
             genre:,
             title:,
             creator: author,
-            aucorp: publisher,
             pub: publisher,
             format: @format,
             issn:,

@@ -20,7 +20,7 @@ describe 'robot user-agents' do
       expect(response.body).not_to include('data-availability-record="true"')
     end
   end
-  context 'when visiting call number browse' do
+  context 'when visiting call number browse', browse: true do
     it 'does not include availability information' do
       stub_holding_locations
       get '/browse/call_numbers?search_field=browse_cn&q=HQ',
@@ -48,7 +48,7 @@ describe 'robot user-agents' do
     end
   end
 
-  context 'when viewing citations' do
+  context 'when viewing citations', citation: true do
     it 'does not retrieve marc data from bibdata' do
       document = SolrDocument.new(id: '99125203099306421')
       allow(SolrDocument).to receive(:new).and_return(document)

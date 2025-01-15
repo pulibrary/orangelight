@@ -15,8 +15,6 @@ module Requests
 
       private
 
-        # TODO: where do I find LoanEdition?
-
         def map_metdata
           {
             "Username" => patron.netid, "TransactionStatus" => illiad_transaction_status,
@@ -25,7 +23,7 @@ module Requests
             "LoanAuthor" => bib["author"]&.truncate(100), "LoanTitle" => bib["title"]&.truncate(255),
             "LoanPublisher" => item["edd_publisher"]&.truncate(40), "LoanDate" => bib["date"],
             "ISSN" => bib["isbn"], "CallNumber" => call_number(item),
-            "CitedIn" => "#{Requests::Config[:pulsearch_base]}/catalog/#{bib['id']}",
+            "CitedIn" => "#{Requests.config[:pulsearch_base]}/catalog/#{bib['id']}",
             "ItemInfo3" => volume_number(item)&.truncate(255), "ItemInfo4" => item["edd_issue"]&.truncate(255),
             "AcceptNonEnglish" => true, "ESPNumber" => item["edd_oclc_number"]&.truncate(32),
             "DocumentType" => genre, "LoanPlace" => item["edd_location"]

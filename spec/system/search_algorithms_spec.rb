@@ -13,6 +13,7 @@ describe 'Selecting search algorithms for results', type: :system, js: false do
     end
 
     it 'renders a select widget used to select the ordering algorithm' do
+      pending("Allowing user to choose ranking algorithm while using the json query dsl.")
       visit '/catalog?search_field=all_fields&q=roman'
       expect(page).to have_text('1. Огонек : роман')
 

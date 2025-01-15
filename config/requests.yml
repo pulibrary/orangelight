@@ -16,12 +16,16 @@ defaults: &defaults
     scsbcul: "CUL"
     scsbnypl: "NYPL"
     scsbhl: "HL"
+  short_record_display:
+    title_citation_display: "Title"
+    author_citation_display: "Author/Artist"
+    pub_date_display: "Published/Created"
 development:
   <<: *defaults
   bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata.princeton.edu" %>
 test:
   <<: *defaults
-  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.lib.princeton.edu" %>
   illiad_api_key: 'TESTME'
   illiad_api_base: <%= ENV['ILLIAD_API_BASE_URL'] || "https://lib-illiad.princeton.edu" %>
 production:
@@ -30,7 +34,7 @@ staging:
   <<: *defaults
   aeon_base: https://princeton.aeon.atlas-sys.com/logon
   pulsearch_base: https://catalog-staging.princeton.edu
-  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.princeton.edu" %>
+  bibdata_base: <%= ENV['BIBDATA_BASE'] || "https://bibdata-staging.lib.princeton.edu" %>
 qa:
   <<: *defaults
   aeon_base: https://princeton.aeon.atlas-sys.com/logon

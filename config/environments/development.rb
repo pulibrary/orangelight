@@ -18,17 +18,20 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  config.assets.quiet = true
+
   # Do not eager load code on boot.
   config.eager_load = false
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Mailcatcher configuration
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => '127.0.0.1', :port => 1025 }
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.deliver_later_queue_name = 'mailers'
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

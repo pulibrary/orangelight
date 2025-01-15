@@ -1,18 +1,23 @@
 # frozen_string_literal: true
-class AskAQuestionForm < MailForm::Base
+class AskAQuestionForm
   include ActiveModel::Model
+  include Honeypot
   attr_accessor :name, :email, :message, :context, :title
 
   validates :name, :email, :message, presence: true
   validates :email, email: true
-  attribute :feedback_desc, captcha: true
-
-  def email_subject
-    "[Catalog] #{title}"
-  end
 
   def submit
-    ContactMailer.with(form: self).question.deliver unless spam?
+    unless spam?
+      RecordFeedbackFormSubmission.new(
+        message:,
+        patron_name: name,
+        patron_email: email,
+        title: "[Catalog] #{title}",
+        context:,
+        quid: Rails.application.config_for(:orangelight)[:ask_a_question_form][:queue_id]
+      ).send_to_libanswers
+    end
     @submitted = true
     @name = ""
     @email = ""
@@ -21,9 +26,5 @@ class AskAQuestionForm < MailForm::Base
 
   def submitted?
     @submitted == true
-  end
-
-  def routed_mail_to
-    Orangelight.config["ask_a_question_form"]["to"]
   end
 end

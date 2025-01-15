@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 module Requests
+  # This class describes a resource that a
+  # library patron might wish to request
   class Requestable
     attr_reader :bib
     attr_reader :holding
@@ -7,21 +9,18 @@ module Requests
     attr_reader :location
     attr_reader :call_number
     attr_reader :title
-    attr_reader :user_barcode
     attr_reader :patron
-    attr_accessor :services
+    attr_reader :services
 
-    delegate :pageable_loc?, to: :@pageable
-    delegate :map_url, to: :@mappable
     delegate :illiad_request_url, :illiad_request_parameters, to: :@illiad
     delegate :eligible_for_library_services?, to: :@patron
 
     include Requests::Aeon
 
     # @param bib [Hash] Solr Document of the Top level Request
-    # @param holding [Hash] Bib Data information on where the item is held (Marc liberation) parsed solr_document[holdings_1display] json
+    # @param holding [Requests::Holding] Bibdata information on where the item is held, created with data from the parsed solr_document[holdings_1display] json
     # @param item [Hash] Item level data from bib data (https://bibdata.princeton.edu/availability?id= or mfhd=)
-    # @param location [Hash] The has for a bib data holding (https://bibdata.princeton.edu/locations/holding_locations)
+    # @param location [Hash] The hash for a bib data holding (https://bibdata.princeton.edu/locations/holding_locations)
     # @param patron [Patron] the patron information about the current user
     def initialize(bib:, holding: nil, item: nil, location: nil, patron:)
       @bib = bib
@@ -32,79 +31,59 @@ module Requests
       @location = location
       @services = []
       @patron = patron
-      @user_barcode = patron.barcode
-      @call_number = holding.first[1]&.dig 'call_number_browse'
+      @call_number = @holding.holding_data['call_number_browse']
       @title = bib[:title_citation_display]&.first
-      @pageable = Pageable.new(call_number:, location_code:)
-      @mappable = Requests::Mapable.new(bib_id: bib[:id], holdings: holding, location_code:)
-      @illiad = Requests::Illiad.new(enum: item&.fetch(:enum, nil), chron: item&.fetch(:chron, nil), call_number: holding.first[1]&.dig('call_number_browse'))
+      @illiad = Requests::Illiad.new(enum: item&.fetch(:enum, nil), chron: item&.fetch(:chron, nil), call_number:)
     end
 
-    delegate :pick_up_location_id, :pick_up_location_code, :item_type, :enum_value, :cron_value, :item_data?,
-             :temp_loc?, :in_resource_sharing?, :on_reserve?, :inaccessible?, :hold_request?, :enumerated?, :item_type_non_circulate?, :partner_holding?,
-             :id, :use_statement, :collection_code, :missing?, :charged?, :status, :status_label, :barcode?, :barcode, :preservation_conservation?, to: :item
+    delegate :pick_up_location_code, :item_type, :enum_value, :cron_value, :item_data?,
+             :temp_loc_other_than_resource_sharing?, :on_reserve?, :enumerated?, :item_type_non_circulate?, :partner_holding?,
+             :id, :use_statement, :collection_code, :charged?, :status, :status_label, :barcode?, :barcode, :preservation_conservation?, to: :item
 
-    # non alma options
+    delegate :annex?, :location_label, to: :location_object
+
     def thesis?
-      holding.key?("thesis") && holding["thesis"][:location_code] == 'mudd$stacks'
+      @holding.thesis?
     end
 
     def numismatics?
-      holding.key?("numismatics") && holding["numismatics"][:location_code] == 'rare$num'
+      @holding.numismatics?
     end
 
     # Reading Room Request
     def aeon?
-      location[:aeon_location] == true || (use_statement == 'Supervised Use')
-    end
-
-    # at an open location users may go to
-    def open?
-      location[:open] == true
+      location_object.aeon? || (use_statement == 'Supervised Use')
     end
 
     def recap?
       return false unless location_valid?
-      location[:remote_storage] == "recap_rmt"
+      location_object.recap?
     end
 
     def recap_pf?
       return false unless recap?
-      location_code == "firestone$pf"
+      location_object.code == "firestone$pf"
     end
 
-    def clancy?
-      return false unless held_at_marquand_library?
-      clancy_item.at_clancy? && clancy_item.available?
+    def clancy_available?
+      item_at_clancy? && clancy_item.available?
     end
 
     def recap_edd?
       return location[:recap_electronic_delivery_location] == true unless partner_holding?
-      scsb_edd_collection_codes.include?(collection_code) && !scsb_in_library_use?
-    end
-
-    def lewis?
-      ['sci', 'scith', 'sciref', 'sciefa', 'sciss'].include?(location_code)
-    end
-
-    def plasma?
-      location_code == 'ppl'
+      in_scsb_edd_collection? && !scsb_in_library_use?
     end
 
     def preservation?
-      location_code == 'pres'
-    end
-
-    def annex?
-      location_valid? && location[:library][:code] == 'annex'
+      location_object.code == 'pres'
     end
 
     def circulates?
       item_type_non_circulate? == false && location[:circulates] == true
     end
 
-    def can_be_delivered?
-      circulates? && !scsb_in_library_use? && !holding_library_in_library_only?
+    def location_code
+      location_object.code
     end
 
     def always_requestable?
@@ -129,10 +108,6 @@ module Requests
       item.present?
     end
 
-    def traceable?
-      services.include?('trace')
-    end
-
     def pending?
       return false unless location_valid?
       return false unless on_order? || in_process? || preservation?
@@ -150,19 +125,6 @@ module Requests
     # assume numeric ids come from alma
     def alma_managed?
       bib[:id].to_i.positive?
-    end
-
-    def online?
-      location_valid? && location[:library][:code] == 'online'
-    end
-
-    def urls
-      return {} unless online? && bib['electronic_access_1display']
-      JSON.parse(bib['electronic_access_1display'])
-    end
-
-    def pageable?
-      !charged? && pageable_loc?
     end
 
     def pick_up_locations
@@ -196,41 +158,23 @@ module Requests
     end
 
     def holding_library
-      return library_code if location.blank? || location[:holding_library].blank? || location[:holding_library][:code].blank?
-      location[:holding_library][:code]
+      location_object.holding_library&.dig(:code) || library_code
     end
 
     def ask_me?
       services.include?('ask_me')
     end
 
-    def location_code
-      return nil if location.blank?
-      location['code']
-    end
-
-    def location_label
-      return nil if location.blank? || location["library"].blank?
-      label = location["library"]["label"]
-      label += " - #{location['label']}" if location["label"].present?
-      label
-    end
-
     def item_location_code
-      if item? && item["location"].present?
-        item['location'].to_s
-      else
-        location_code
-      end
-    end
-
-    def library_code
-      return nil if location['library'].blank?
-      location['library']['code']
+      item&.location || location_object.code
     end
 
     def held_at_marquand_library?
       library_code == 'marquand' && !recap?
+    end
+
+    def marquand_item?
+      holding_library == 'marquand'
     end
 
     def clancy_item
@@ -243,38 +187,45 @@ module Requests
 
     def available?
       (always_requestable? && !held_at_marquand_library?) || item.available?
-      # This dealt with no item records be "available" but broke a bunch of other tests
-      # ((always_requestable? && !held_at_marquand_library?) || (!has_item_data? || item.available?))
     end
 
     def cul_avery?
-      return false unless item?
-      item[:collection_code].present? && item[:collection_code] == 'AR'
+      item&.collection_code == 'AR'
     end
 
     def cul_music?
-      return false unless item?
-      item[:collection_code].present? && item[:collection_code] == 'MR'
+      item&.collection_code == 'MR'
     end
 
     def hl_art?
-      return false unless item?
-      item[:collection_code].present? && item[:collection_code] == 'FL'
+      item&.collection_code == 'FL'
     end
 
-    def resource_shared?
-      library_code == "RES_SHARE"
+    def replace_existing_services(new_services)
+      @services = new_services
     end
 
     private
 
-      def scsb_edd_collection_codes
-        %w[AR BR CA CH CJ CP CR CU EN EV GC GE GS HS JC JD LD LE ML SW UT NA NH NL NP NQ NS NW GN JN JO PA PB PN GP JP] +
+      # Location data presented as an object, rather than a hash.
+      # The goal is to gradually replace all uses of the hash with
+      # this object, so that other classes don't need to know the
+      # exact hash keys to use in order to get the needed data.
+      def location_object
+        @location_object ||= Location.new location
+      end
+
+      delegate :library_code, to: :location_object
+
+      def in_scsb_edd_collection?
+        scsb_edd_collection_codes =
+          %w[AR BR CA CH CJ CP CR CU EN EV GC GE GS HS JC JD LD LE ML SW UT NA NH NL NP NQ NS NW GN JN JO PA PB PN GP JP] +
           %w[AH DL FL GUT HB HC HJ HK HL HS HW HY MCZ ML TZ WL] # Harvard collections available to digitize
+        scsb_edd_collection_codes.include?(collection_code)
       end
 
       def location_valid?
-        location.key?(:library) && location[:library].key?(:code)
+        location_object.valid?
       end
 
       def in_process_statuses

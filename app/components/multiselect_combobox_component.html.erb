@@ -1,13 +1,20 @@
-<div class="form-group advanced-search-facet row dropdown">
+<div class="mb-3 advanced-search-facet row dropdown">
     <label class="col-sm-4 control-label advanced-facet-label" for="<%= @dom_id %>"><%= @label %></label>
-    <input id="<%= @dom_id %>" data-toggle="dropdown" autocomplete="off"
+    <input id="<%= @dom_id %>" data-bs-toggle="dropdown" autocomplete="off"
         class="col-sm-8 combobox-multiselect" role="combobox"
         aria-expanded="false" aria-controls="<%= @listbox_id %>">
-    <span class="fa fa-caret-down" aria-hidden="true"></span>
+    <span class="fa fa-caret-down" aria-hidden="true" data-bs-toggle="dropdown"></span>
     <ul class="dropdown-menu" role="listbox" aria-label="Options" id="<%= @listbox_id %>">
         <% @values.each do |value| %>
             <%= content_tag :li,
                 value[:label],
+                class: 'dropdown-item',
+                tabindex: -1,
+                role: 'option' %>
+        <% end %>
+        <% if @field_name == 'advanced_location_s' %>
+            <%= content_tag :li,
+                'pul',
                 class: 'dropdown-item',
                 tabindex: -1,
                 role: 'option' %>
@@ -18,13 +25,19 @@
         name: "f_inclusive[#{@field_name}][]",
         id: @hidden_select_id) do %>
         <% @values.each do |value| %>
-        <%= content_tag :option,
-            value[:label],
-            value: value[:value],
-            selected: value[:selected] %>
+            <%= content_tag :option,
+                value[:label],
+                value: value[:value],
+                selected: value[:selected] %>
+        <% end %>
+        <% if @field_name == 'advanced_location_s' %>
+            <%= content_tag :option,
+                'pul',
+                value: 'pul',
+                selected: params.dig('f_inclusive', 'advanced_location_s', 0) == 'pul' %>
         <% end %>
     <% end %>
-    <div class="sr-only visually-hidden number-of-results" aria-live="polite" aria-atomic="false">
+    <div class="visually-hidden visually-hidden number-of-results" aria-live="polite" aria-atomic="false">
       <%= pluralize(@values.length, 'option') %>. Press down arrow for options.
     </div>
 </div>

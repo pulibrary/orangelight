@@ -1,4 +1,4 @@
 <% @documents.each do |document| %>
-<%= polymorphic_url(document, @url_gen_params) %>
-<%= document.to_sms_text %>
+  <%= polymorphic_url(document, @url_gen_params) %>
+  <% if document['call_number_display'].present? %>Call number: <%= document['call_number_display'].uniq.join(', ') %><% end %>
 <% end %>

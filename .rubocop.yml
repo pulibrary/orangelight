@@ -1,10 +1,11 @@
 inherit_from: .rubocop_todo.yml
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-rspec_rails
+  - rubocop-performance
 
-require: rubocop-rspec
-inherit_gem:
-  bixby: bixby_default.yml
 AllCops:
-  DisplayCopNames: true
   NewCops: enable
   SuggestExtensions: false
   TargetRubyVersion: 3.1
@@ -55,7 +56,7 @@ Metrics/ClassLength:
     - 'app/services/physical_holdings_markup_builder.rb'
     - 'spec/mailers/previews/*'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
-    - 'app/models/requests/request.rb'
+    - 'app/models/requests/form.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:
@@ -87,7 +88,7 @@ Layout/LineLength:
     - 'app/repositories/course_reserve_repository.rb'
     - 'spec/mailers/previews/*'
     - 'spec/lib/orangelight/browse_lists/call_number_csv_spec.rb'
-
+    - 'spec/models/requests/location_spec.rb'
 Lint/MissingSuper:
   Enabled: false
 
@@ -150,6 +151,7 @@ Rails/I18nLocaleTexts:
 # TODO: Fix
 Rails/OutputSafety:
   Exclude:
+    - 'app/components/holdings/online_holdings_component.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/blacklight_helper.rb'
     - 'app/services/holding_requests_builder.rb'
@@ -167,6 +169,8 @@ RSpec/DescribeClass:
     - 'spec/features/**/*'
     - 'spec/views/**/*'
     - 'spec/requests/**/*'
+    - 'spec/system**/*'
+    - 'spec/lib/**/*'
 
 RSpec/ExampleLength:
   Enabled: false
@@ -174,6 +178,8 @@ RSpec/ExampleLength:
 RSpec/VerifiedDoubles:
   Exclude:
     - 'spec/helpers/catalog_helper_spec.rb'
+    - 'spec/components/**/*'
+    - 'spec/processors/**/*'
 
 Layout/IndentationConsistency:
   EnforcedStyle: indented_internal_methods
@@ -206,3 +212,16 @@ Rails/ContentTag:
 Rails/ApplicationMailer:
   Exclude:
     - 'app/models/record_mailer.rb'
+
+RSpec/StringAsInstanceDoubleConstant:
+  Exclude:
+    - 'spec/views/catalog/_sort_and_per_page.html.erb_spec.rb'
+
+Style/AccessModifierDeclarations:
+  Exclude:
+    - 'config/initializers/*'
+
+Style/SafeNavigationChainLength:
+  Exclude:
+    - 'app/components/index_document_component.rb'
+    - 'app/models/search_builder.rb'

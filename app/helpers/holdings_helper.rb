@@ -8,27 +8,19 @@ module HoldingsHelper
 
   def holding_block_search(document)
     block = ''.html_safe
-    links = holding_block_search_links(document)
     holdings_hash = document.holdings_all_display
     @scsb_multiple = false
 
     holdings_hash.first(2).each do |id, holding|
-      block << first_two_holdings_block(document, id, holding, links)
-      block << content_tag(:li, cdl_placeholder)
+      block << first_two_holdings_block(document, id, holding)
     end
 
-    if @scsb_multiple == true
+    block << controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
+
+    if @scsb_multiple == true || holdings_hash.length > 2
       block << view_record_for_full_avail_li(document)
-    elsif holdings_hash.length > 2
-      block << additional_holdings_span
     elsif !holdings_hash.empty?
       block << view_record_for_full_avail_li_two(document)
-    end
-
-    if block.empty? && links.present?
-      # All other options came up empty but since we have electronic access let's show the
-      # Online badge with the electronic access link (rather than a misleading "No holdings")
-      block << content_tag(:li, online_holding_block(links))
     end
 
     if block.empty?
@@ -40,18 +32,17 @@ module HoldingsHelper
 
   # rubocop:disable Metrics/MethodLength
   # Currently having trouble breaking up this method further due to the "check_availability" variable
-  def first_two_holdings_block(document, id, holding, links)
+  def first_two_holdings_block(document, id, holding)
     location = holding_location(holding)
     check_availability = render_availability?
     accumulator = ''.html_safe
     if holding['library'] == 'Online'
-      check_availability = false
-      if links.empty?
-        check_availability = render_availability?
-        accumulator << empty_link_online_holding_block
-      else
-        accumulator << online_holding_block(links)
-      end
+      rendered_online_holdings_block = controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
+      return rendered_online_holdings_block if rendered_online_holdings_block.present?
+
+      check_availability = render_availability?
+      accumulator << empty_link_online_holding_block
+
     else
       if holding['dspace'] || holding['location_code'] == 'rare$num'
         check_availability = false
@@ -74,17 +65,11 @@ module HoldingsHelper
   end
   # rubocop:enable Metrics/MethodLength
 
-  def holding_block_search_links(document)
-    portfolio_links = electronic_portfolio_links(document)
-    search_links = search_links(document['electronic_access_1display'])
-    search_links + portfolio_links
-  end
-
   def empty_link_online_holding_block
     data = content_tag(
       :span,
       'Link Missing',
-      class: 'availability-icon badge badge-secondary'
+      class: 'availability-icon badge bg-secondary'
     )
     data << content_tag(
       :div,
@@ -93,20 +78,11 @@ module HoldingsHelper
     )
   end
 
-  def online_holding_block(links)
-    data = content_tag(
-      :span,
-      'Online',
-      class: 'availability-icon badge badge-primary'
-    )
-    data << links.shift
-  end
-
   def onsite_access_span
     content_tag(
       :span,
       'On-site access',
-      class: 'availability-icon badge badge-success'
+      class: 'availability-icon badge bg-success'
     )
   end
 
@@ -138,7 +114,7 @@ module HoldingsHelper
     content_tag(
       :span,
       'Loading...',
-      class: 'availability-icon badge badge-secondary'
+      class: 'availability-icon badge bg-secondary'
     )
   end
 
@@ -146,14 +122,14 @@ module HoldingsHelper
     content_tag(
       :span,
       'Unavailable',
-      class: 'availability-icon badge badge-danger'
+      class: 'availability-icon badge bg-danger'
     )
   end
 
   def library_location_div(holding, document, id)
     content_tag(
       :div,
-      search_location_display(holding, document),
+      search_location_display(holding),
       class: 'library-location',
       data: {
         location: true,
@@ -180,22 +156,13 @@ module HoldingsHelper
     )
   end
 
-  def cdl_placeholder
-    content_tag(
-      :span,
-      '',
-      class: 'badge badge-primary',
-      data: { 'availability-cdl': true }
-    )
-  end
-
   def view_record_for_full_avail_li(document)
     content_tag(
       :li,
       link_to(
         'View Record for Full Availability',
         solr_document_path(document['id']),
-        class: 'availability-icon badge badge-secondary more-info'
+        class: 'availability-icon badge bg-secondary more-info'
       )
     )
   end
@@ -210,14 +177,6 @@ module HoldingsHelper
       ),
       class: 'empty',
       data: { record_id: document['id'] }
-    )
-  end
-
-  def additional_holdings_span
-    content_tag(
-      :span,
-      "View record for information on additional holdings",
-      "style": "font-size: small; font-style: italic;"
     )
   end
 end

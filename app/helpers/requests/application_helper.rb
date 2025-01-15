@@ -34,7 +34,7 @@ module Requests
 
     def show_service_options(requestable, _mfhd_id)
       if requestable.no_services?
-        content_tag(:div, "#{requestable.title} #{enum_copy_display(requestable.item)} #{sanitize(I18n.t('requests.no_services.brief_msg'))}", class: 'sr-only') +
+        content_tag(:div, "#{requestable.title} #{enum_copy_display(requestable.item)} #{sanitize(I18n.t('requests.no_services.brief_msg'))}", class: 'visually-hidden') +
           content_tag(:div, sanitize(I18n.t("requests.no_services.brief_msg")), class: 'service-item', aria: { hidden: true })
       elsif requestable.charged? && !requestable.aeon? && !requestable.ask_me?
         render partial: 'checked_out_options', locals: { requestable: }
@@ -57,7 +57,7 @@ module Requests
 
     def output_request_input(requestable)
       output = ""
-      ['annex', 'pres', 'ppl', 'lewis', 'paging', 'on_order', 'trace', 'on_shelf'].each do |type|
+      ['annex', 'pres', 'ppl', 'lewis', 'paging', 'on_order', 'on_shelf'].each do |type|
         next unless requestable.services.include?(type)
         output = request_input(type)
         break
@@ -77,7 +77,6 @@ module Requests
     end
 
     def recap_print_only_input(requestable)
-      # id = requestable.item? ? requestable.item['id'] : requestable.holding['id']
       content_tag(:fieldset, class: 'recap--print', id: "recap_group_#{requestable.preferred_request_id}") do
         concat hidden_field_tag "requestable[][type]", "", value: 'recap'
       end
@@ -133,7 +132,7 @@ module Requests
     end
 
     def available_pick_ups(requestable, default_pick_ups)
-      idx = (default_pick_ups.pluck(:label)).index(requestable.location["library"]["label"]) # || 0
+      idx = (default_pick_ups.pluck(:label)).index(requestable.location.library_label)
       if idx.present?
         [default_pick_ups[idx]]
       elsif requestable.recap? || requestable.annex?
@@ -145,19 +144,6 @@ module Requests
       else
         [default_pick_ups[0]]
       end
-      # return
-      # temporary only deliver to holding library or firestone
-      # locs = []
-      # if requestable.services.include? 'trace'
-      #   locs = default_pick_ups
-      # elsif requestable.pick_up_locations.nil?
-      #   locs = default_pick_ups
-      # else
-      #   requestable.pick_up_locations.each do |location|
-      #     locs << { label: location[:label], gfa_pickup: location[:gfa_pickup], staff_only: location[:staff_only] }
-      #   end
-      # end
-      # locs
     end
 
     # rubocop:disable Rails/OutputSafety
@@ -174,8 +160,8 @@ module Requests
     def hidden_fields_item(requestable)
       request_id = requestable.preferred_request_id
       hidden = hidden_field_tag "requestable[][bibid]", "", value: requestable.bib[:id].to_s, id: "requestable_bibid_#{request_id}"
-      hidden += hidden_field_tag "requestable[][mfhd]", "", value: requestable.holding.keys[0].to_s, id: "requestable_mfhd_#{request_id}"
-      hidden += hidden_field_tag "requestable[][call_number]", "", value: (requestable.holding.first[1]['call_number']).to_s, id: "requestable_call_number_#{request_id}" unless requestable.holding.first[1]["call_number"].nil?
+      hidden += hidden_field_tag "requestable[][mfhd]", "", value: requestable.holding.mfhd_id, id: "requestable_mfhd_#{request_id}"
+      hidden += hidden_field_tag "requestable[][call_number]", "", value: requestable.holding.holding_data['call_number'].to_s, id: "requestable_call_number_#{request_id}" unless requestable.holding.holding_data["call_number"].nil?
       hidden += hidden_field_tag "requestable[][location_code]", "", value: requestable.item_location_code.to_s, id: "requestable_location_#{request_id}"
       hidden += if requestable.item?
                   hidden_fields_for_item(item: requestable.item, preferred_request_id: requestable.preferred_request_id)
@@ -184,14 +170,6 @@ module Requests
                 end
       hidden += hidden_fields_for_scsb(item: requestable.item) if requestable.partner_holding?
       hidden
-    end
-
-    def hidden_fields_holding(requestable)
-      hidden = hidden_field_tag "requestable[][mfhd]", "", value: requestable.holding.keys[0].to_s, id: "requestable_mfhd_#{requestable.holding.keys[0]}"
-      hidden += hidden_field_tag "requestable[][call_number]", "", value: (requestable.holding.first[1]['call_number']).to_s, id: "requestable_call_number_#{requestable.holding.keys[0]}" unless requestable.holding.first[1]["call_number"].nil?
-      hidden += hidden_field_tag "requestable[][location_code]", "", value: (requestable.holding.first[1]['location_code']).to_s, id: "requestable_location_code_#{requestable.holding.keys[0]}"
-      hidden += hidden_field_tag "requestable[][location]", "", value: (requestable.holding.first[1]['location']).to_s, id: "requestable_location_#{requestable.holding.keys[0]}"
-      sanitize(hidden, tags: input)
     end
 
     def isbn_string(array_of_isbns)
@@ -208,12 +186,13 @@ module Requests
     end
 
     ## If any requestable items have a temp location assume everything at the holding is in a temp loc?
-    def current_location_label(mfhd_label, requestable_list)
-      location_label = requestable_list.first.location['label'].blank? ? "" : "- #{requestable_list.first.location['label']}"
-      label = if requestable_list.first.temp_loc?.present? && !requestable_list.first.in_resource_sharing?
-                "#{requestable_list.first.location['library']['label']}#{location_label}"
+    def current_location_label(holding_location_label, requestable_list)
+      first_location = requestable_list.first.location
+      location_label = first_location.short_label.blank? ? "" : "- #{first_location.short_label}"
+      label = if requestable_list.first.temp_loc_other_than_resource_sharing?
+                "#{first_location.library_label}#{location_label}"
               else
-                mfhd_label
+                holding_location_label
               end
       "#{label} #{requestable_list.first.call_number}"
     end
@@ -250,22 +229,12 @@ module Requests
       return multi_item unless requestable_list.size == 1
       if requestable_list.first.services.empty?
         no_item
-      elsif requestable_list.first.charged?
-        return multi_item if requestable_list.first.annex? || requestable_list.first.pageable_loc?
-        single_item # no_item
-      else
-        submit_message_for_requestable_items(requestable_list)
-      end
-    end
-
-    def submit_message_for_requestable_items(requestable_list)
-      single_item = "Request this Item"
-      multi_item = "Request Selected Items"
-      trace = "Trace this item"
-      if requestable_list.first.annex? || requestable_list.first.pageable_loc?
+      elsif requestable_list.first.annex?
+        # Annex items have the potential to display the
+        # use the fill-in form, where a user could potentially
+        # request multiple volumes.  For that reason, we show
+        # the plural form "Request Selected Items" in this case
         multi_item
-      elsif requestable_list.first.traceable?
-        trace
       else
         single_item
       end
@@ -291,12 +260,6 @@ module Requests
         mfhd: "Holding ID (mfhd)"
       }.with_indifferent_access
     end
-
-    # def display_language
-    #   {
-    #     language: "Language:"
-    #   }.with_indifferent_access
-    # end
 
     def display_status(requestable)
       content_tag(:span, requestable.item['status']) unless requestable.item.nil?
@@ -341,9 +304,6 @@ module Requests
       def display_on_shelf(requestable, _mfhd_id)
         content_tag(:div) do
           display_requestable_list(requestable)
-          # temporary changes issue 438
-          # concat link_to 'Where to find it', requestable.map_url(mfhd_id)
-          # concat content_tag(:div, sanitize(I18n.t("requests.trace.brief_msg")), class: 'service-item') if requestable.traceable?
         end
       end
 
@@ -354,7 +314,7 @@ module Requests
           [{ label: requestable.delivery_location_label, gfa_pickup: requestable.delivery_location_code, pick_up_location_code: requestable.pick_up_location_code, staff_only: false }]
         else
           # TODO: Why is this option here
-          [{ label: requestable.location[:library][:label], gfa_pickup: gfa_lookup(requestable.location[:library][:code]), staff_only: false }]
+          [{ label: requestable.location.library_label, gfa_pickup: gfa_lookup(requestable.location.library_code), staff_only: false }]
         end
       end
 
@@ -384,7 +344,7 @@ module Requests
       end
 
       def aeon_base
-        Requests::Config[:aeon_base]
+        Requests.config[:aeon_base]
       end
   end
 end

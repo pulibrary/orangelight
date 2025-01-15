@@ -1,21 +1,20 @@
 # frozen_string_literal: false
 
 class CatalogController < ApplicationController
-  include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog
-  include BlacklightUnapi::ControllerExtension
 
   include Blacklight::Marc::Catalog
   include BlacklightRangeLimit::ControllerOverride
   include Orangelight::Catalog
-  include Orangelight::Stackmap
+  include Orangelight::ExcessivePaging
   include BlacklightHelper
 
   before_action :redirect_browse
+  before_action :deny_excessive_paging
 
   rescue_from Blacklight::Exceptions::RecordNotFound do
     alma_id = "99#{params[:id]}3506421"
-    search_service.fetch(alma_id)
+    search_service_compatibility_wrapper.fetch(alma_id)
     redirect_to solr_document_path(id: alma_id)
   rescue Blacklight::Exceptions::RecordNotFound
     redirect_to '/404'
@@ -36,6 +35,7 @@ class CatalogController < ApplicationController
     config.json_solr_path = 'advanced'
 
     # default advanced config values
+    # TODO: remove for advanced search gem deprecation
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
@@ -46,6 +46,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]['facet.pivot'] ||= ''
     config.advanced_search[:form_solr_parameters]['f.language_facet.facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['f.language_facet.facet.sort'] ||= 'index'
+    # end remove for advanced search gem deprecation
 
     config.numismatics_search ||= Blacklight::OpenStructWithHashAccess.new
     config.numismatics_search[:facet_fields] ||= %w[issue_metal_s issue_city_s issue_state_s issue_region_s issue_denomination_s
@@ -82,7 +83,8 @@ class CatalogController < ApplicationController
 
     # solr field configuration for search results/index views
     config.index.title_field = 'title_display'
-    config.index.partials = %i[index_header show_identifiers thumbnail index]
+    config.index.title_component = IndexTitleComponent
+    config.index.document_component = IndexDocumentComponent
     config.index.display_type_field = 'format'
 
     # solr field configuration for document/show views
@@ -109,11 +111,11 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'access_facet', label: 'Access', sort: 'index', collapse: false, home: true
+    config.add_facet_field 'access_facet', label: 'Access', sort: 'index', collapse: false, home: true, include_in_advanced_search: true
     config.add_facet_field 'location', label: 'Library', limit: 20, sort: 'index',
-                                       home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }
-    config.add_facet_field 'format', label: 'Format', partial: 'facet_format', sort: 'index', limit: 15,
-                                     collapse: false, home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }
+                                       home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }, include_in_advanced_search: false
+    config.add_facet_field 'format', label: 'Format', item_component: FormatFacetItemComponent, sort: 'index', limit: 15,
+                                     collapse: false, home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }, include_in_advanced_search: true
 
     # num_segments and segments set to defaults here, included to show customizable features
     config.add_facet_field 'pub_date_start_sort', label: 'Publication year', single: true, range: {
@@ -121,10 +123,11 @@ class CatalogController < ApplicationController
       assumed_boundaries: [1100, Time.now.year + 1],
       segments: true
     }
-    config.add_facet_field 'language_facet', label: 'Language', limit: true
-    config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true
-    config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true
-    config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true
+    config.add_facet_field 'language_facet', label: 'Language', limit: true, include_in_advanced_search: true
+    config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true, include_in_advanced_search: false
+    config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true, include_in_advanced_search: false
+    config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true, include_in_advanced_search: false
+    config.add_facet_field 'geographic_facet', label: 'Subject: Geographic', limit: true, include_in_advanced_search: false
     config.add_facet_field 'recently_added_facet', label: 'Recently added', home: true, query: {
       weeks_1: { label: 'Within 1 week', fq: 'cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]' },
       weeks_2: { label: 'Within 2 weeks', fq: 'cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]' },
@@ -133,33 +136,33 @@ class CatalogController < ApplicationController
       months_2: { label: 'Within 2 months', fq: 'cataloged_tdt:[NOW/DAY-2MONTHS TO NOW/DAY+1DAY]' },
       months_3: { label: 'Within 3 months', fq: 'cataloged_tdt:[NOW/DAY-3MONTHS TO NOW/DAY+1DAY]' },
       months_6: { label: 'Within 6 months', fq: 'cataloged_tdt:[NOW/DAY-6MONTHS TO NOW/DAY+1DAY]' }
-    }
+    }, include_in_advanced_search: false
 
-    config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true
-    config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true
-    config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet], collapsing: true, icons: {
-      hide: '<i class="icon toggle"></i>'.html_safe,
-      show: '<i class="icon toggle collapsed"></i>'.html_safe
-    }
-    config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index'
+    config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true, include_in_advanced_search: false
+    config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true, include_in_advanced_search: false
+
+    config.add_facet_field 'lc_facet', label: 'Classification', component: Blacklight::Hierarchy::FacetFieldListComponent, sort: 'index', limit: 1000, include_in_advanced_search: false, if: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_facet? }
+    config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet], collapsing: true, include_in_advanced_search: false, unless: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_facet? }
+
+    config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, include_in_request: false, sort: 'index'
+    config.add_facet_field 'lc_rest_facet', label: 'Full call number code', limit: 25, include_in_request: false, sort: 'index'
+    config.add_facet_field 'sudoc_facet', label: 'SuDocs', limit: true, sort: 'index', include_in_advanced_search: false
 
     # The following facet configurations are purely for display purposes. They
     # will not show up in the facet bar, but without them the labels and other
     # configuration which show up when a user clicks that field in the show page
     # will be wrong.
-    config.add_facet_field 'lc_1letter_facet', label: 'Classification', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'author_s', label: 'Author', limit: true, include_in_request: false
     config.add_facet_field 'class_year_s', label: 'PU class year', limit: true, include_in_request: false
-    config.add_facet_field 'lc_rest_facet', label: 'Full call number code', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'call_number_browse_s', label: 'Call number', include_in_request: false
 
     config.add_facet_field 'call_number_scheme_facet', label: 'Call number scheme', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'call_number_group_facet', label: 'Call number group', limit: 25, include_in_request: false, sort: 'index'
     config.add_facet_field 'call_number_full_facet', label: 'Full call number', limit: 25, include_in_request: false, sort: 'index'
-    config.add_facet_field 'advanced_location_s', label: 'Holding location', include_in_request: false,
-                                                  helper_method: :render_location_code
+    config.add_facet_field 'advanced_location_s', label: 'Holding location', include_in_request: true, show: false,
+                                                  helper_method: :render_location_code, include_in_advanced_search: true, sort: 'alpha'
     config.add_facet_field 'name_title_browse_s', label: 'Author-title heading', include_in_request: false
-    config.add_facet_field 'subject_facet', show: false
+    config.add_facet_field 'subject_facet', show: false, include_in_advanced_search: false
 
     # Numismatics facets
     config.add_facet_field 'numismatic_collection_s', label: 'Numismatic Collection', include_in_request: false
@@ -223,6 +226,13 @@ class CatalogController < ApplicationController
     # handler defaults, or have no facets.
     config.add_facet_fields_to_solr_request!
 
+    # Config for heirarcy options
+    config.facet_display = {
+      hierarchy: {
+        'lc' => [['facet'], ':']
+      }
+    }
+
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
     # NOTE: Most of these are added with show: false so they show up in the JSON
@@ -232,19 +242,19 @@ class CatalogController < ApplicationController
     config.add_index_field 'author_display', label: 'Author/Artist', browse_link: :name, presenter: Orangelight::HighlightPresenter
     config.add_index_field 'pub_created_display', label: 'Published/Created'
     config.add_index_field 'format', label: 'Format', helper_method: :format_icon
-    config.add_index_field 'holdings_1display', show: false
-    config.add_index_field 'contained_in_s', show: false
-    config.add_index_field 'isbn_t', show: false
-    config.add_index_field 'score', show: false
-    config.add_index_field 'marc_relator_display', show: false
-    config.add_index_field 'title_display', show: false, presenter: Orangelight::HighlightPresenter
-    config.add_index_field 'title_vern_display', show: false, presenter: Orangelight::HighlightPresenter
-    config.add_index_field 'isbn_s', show: false
-    config.add_index_field 'oclc_s', show: false
-    config.add_index_field 'lccn_s', show: false
-    config.add_index_field 'electronic_access_1display', show: false
-    config.add_index_field 'cataloged_tdt', show: false
-    config.add_index_field 'electronic_portfolio_s', show: false
+    config.add_index_field 'holdings_1display', if: :json_request?
+    config.add_index_field 'contained_in_s', if: :json_request?
+    config.add_index_field 'isbn_t', if: :json_request?
+    config.add_index_field 'score', if: :json_request?
+    config.add_index_field 'marc_relator_display', if: :json_request?
+    config.add_index_field 'title_display', if: :json_request?, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'title_vern_display', if: :json_request?, presenter: Orangelight::HighlightPresenter
+    config.add_index_field 'isbn_s', if: :json_request?
+    config.add_index_field 'oclc_s', if: :json_request?
+    config.add_index_field 'lccn_s', if: :json_request?
+    config.add_index_field 'electronic_access_1display', if: :json_request?
+    config.add_index_field 'cataloged_tdt', if: :json_request?
+    config.add_index_field 'electronic_portfolio_s', if: :json_request?
     config.add_index_field 'lc_subject_display', label: 'Subjects', browse_link: :name, presenter: Orangelight::HighlightPresenter
     config.add_index_field 'siku_subject_display', if: false, presenter: Orangelight::HighlightPresenter
     config.add_index_field 'homoit_subject_display', if: false, presenter: Orangelight::HighlightPresenter
@@ -291,6 +301,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'homoit_genre_s', label: 'Homosaurus genre(s)', helper_method: :subjectify
     config.add_show_field 'rbgenr_s', label: 'Rare books genre', helper_method: :subjectify
     config.add_show_field 'aat_s', label: 'Getty AAT genre', helper_method: :subjectify
+    config.add_show_field 'fast_subject_display', label: 'FaST Subject(s)', helper_method: :subjectify
     config.add_show_field 'related_works_1display', label: 'Related work(s)', helper_method: :name_title_hierarchy
     config.add_show_field 'series_display', label: 'Series', series_link: true
     config.add_show_field 'contains_1display', label: 'Contains', helper_method: :name_title_hierarchy
@@ -332,6 +343,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'restrictions_note_display', label: 'Restrictions note', mark_as_safe: true
     config.add_show_field 'biographical_historical_note_display', label: "Biographical/\u200BHistorical note"
     config.add_show_field 'summary_note_display', label: 'Summary note'
+    config.add_show_field 'content_advice_display', label: 'Content advice'
     config.add_show_field 'notes_display', label: 'Notes'
     config.add_show_field 'holdings_1display', label: 'Location has', if: :online_holding_note?, helper_method: :location_has
     config.add_show_field 'with_notes_display', label: 'With'
@@ -460,9 +472,6 @@ class CatalogController < ApplicationController
     ## Provenance
     config.add_show_field 'numismatic_provenance_s', label: 'Provenance'
 
-    #     "fielded" search configuration. Used by pulldown among other places.
-    #     For supported keys in hash, see rdoc for Blacklight::SearchFields
-
     #     Search fields will inherit the :qt solr request handler from
     #     config[:default_solr_parameters], OR can specify a different one
     #     with a :qt key/value. Below examples inherit, except for subject
@@ -555,9 +564,9 @@ class CatalogController < ApplicationController
     config.add_search_field('publisher') do |field|
       field.include_in_simple_select = false
       field.label = 'Publisher'
-      field.solr_adv_parameters = {
-        qf: '$publisher_qf',
-        pf: '$publisher_pf'
+      field.solr_parameters = {
+        qf: '${publisher_qf}',
+        pf: '${publisher_pf}'
       }
     end
 
@@ -565,6 +574,10 @@ class CatalogController < ApplicationController
       field.include_in_advanced_search = false
       field.include_in_simple_select = false
       field.label = 'Series starts with'
+      field.solr_parameters = {
+        qf: '${in_series_qf}',
+        pf: '${in_series_qf}'
+      }
       field.solr_adv_parameters = {
         qf: '$in_series_qf',
         pf: '$in_series_pf'
@@ -574,18 +587,18 @@ class CatalogController < ApplicationController
     config.add_search_field('notes') do |field|
       field.include_in_simple_select = false
       field.label = 'Notes'
-      field.solr_adv_parameters = {
-        qf: '$notes_qf',
-        pf: '$notes_pf'
+      field.solr_parameters = {
+        qf: '${notes_qf}',
+        pf: '${notes_pf}'
       }
     end
 
     config.add_search_field('series_title') do |field|
       field.include_in_simple_select = false
       field.label = 'Series title'
-      field.solr_adv_parameters = {
-        qf: '$series_title_qf',
-        pf: '$series_title_pf'
+      field.solr_parameters = {
+        qf: '${series_title_qf}',
+        pf: '${series_title_pf}'
       }
     end
 
@@ -660,11 +673,23 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
     config.add_sort_field 'score desc, pub_date_start_sort desc, title_sort asc', label: 'relevance'
+    config.add_sort_field 'location asc, advanced_location_s asc, call_number_browse_s asc', label: 'library',
+                                                                                             if: lambda { |controller, _config|
+                                                                                               controller.controller_path == 'bookmarks'
+                                                                                             }
     config.add_sort_field 'pub_date_start_sort desc, title_sort asc, score desc', label: 'year (newest first)'
     config.add_sort_field 'pub_date_start_sort asc, title_sort asc, score desc', label: 'year (oldest first)'
     config.add_sort_field 'author_sort asc, title_sort asc, score desc', label: 'author'
     config.add_sort_field 'title_sort asc, pub_date_start_sort desc, score desc', label: 'title'
     config.add_sort_field 'cataloged_tdt desc, title_sort asc, score desc', label: 'date cataloged'
+
+    config.add_email_field 'title_display', label: 'Title'
+    config.add_email_field 'title_vern_display', label: 'Title'
+    config.add_email_field 'author_display', label: 'Author'
+    config.add_email_field 'pub_created_display', label: 'Published/Created'
+    config.add_email_field 'format', label: 'Format'
+    config.add_email_field 'electronic_access_1display', label: 'Online access', presenter: Orangelight::ElectronicAccessPlainTextPresenter
+    config.add_email_field 'electronic_portfolio_s', label: 'Online access', presenter: Orangelight::ElectronicPortfolioPlainTextPresenter
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
@@ -672,14 +697,9 @@ class CatalogController < ApplicationController
 
     config.add_results_document_tool(:bookmark, partial: 'bookmark_control')
 
-    config.unapi = {
-      'ris' => { content_type: 'application/x-research-info-systems' }
-    }
     config.filter_search_state_fields = true
     config.search_state_fields = config.search_state_fields + [
-      :advanced_type, :f1, :f2, :f3,
-      :op1, :op2, :op3,
-      :q1, :q2, :q3
+      :advanced_type, :clause, :boolean_operator1, :boolean_operator2
     ]
 
     config.index.constraints_component = Orangelight::ConstraintsComponent
@@ -695,7 +715,8 @@ class CatalogController < ApplicationController
   end
 
   def index
-    if home_page?
+    solrize_boolean_params
+    if no_search_yet?
       render_empty_search
     else
       super
@@ -706,9 +727,9 @@ class CatalogController < ApplicationController
 
   def numismatics
     unless request.method == :post
-      @response = search_service.search_results do |search_builder|
+      @response = search_service_compatibility_wrapper.search_results do |search_builder|
         search_builder.except(:add_advanced_search_to_solr).append(:facets_for_advanced_search_form)
-      end.first
+      end
     end
     respond_to do |format|
       format.html { render "advanced/numismatics" }
@@ -741,12 +762,14 @@ class CatalogController < ApplicationController
   def citation
     if agent_is_crawler?
       basic_response
-    else
+    elsif Orangelight.using_blacklight7?
       # Taken from Blacklight::ActionBuilder#build, which would
       # otherwise generate the citation method dynamically
       #
       # See https://github.com/projectblacklight/blacklight/blob/f6bdb20248c0eee91dbd480b20d1b60f93783b3e/app/builders/blacklight/action_builder.rb#L29-L53
       @response, @documents = action_documents
+    else
+      @documents = action_documents
     end
   end
 
@@ -754,7 +777,19 @@ class CatalogController < ApplicationController
 
   def biased_results_submit; end
 
+  def advanced_search
+    if no_search_yet?
+      @response = empty_solr_response(empty_advanced_search_raw_response)
+    else
+      super
+    end
+  end
+
   private
+
+    def json_request?
+      request.format.json?
+    end
 
     def render_empty_search
       # This code is a copy of Blacklight::Catalog.index() method but adapted to use
@@ -774,14 +809,14 @@ class CatalogController < ApplicationController
       end
     end
 
-    def home_page?
+    def no_search_yet?
       # When only the "controller" and "action" keys are in the request (i.e. no query or facets)
       # we consider it the home page.
       params.keys.count == 2
     end
 
-    def empty_solr_response
-      raw_response = JSON.parse(empty_raw_response)
+    def empty_solr_response(cached_response = empty_raw_response)
+      raw_response = JSON.parse(cached_response)
       Blacklight::Solr::Response.new(raw_response, raw_response["responseHeader"]["params"], blacklight_config: @blacklight_config)
     end
 
@@ -789,8 +824,14 @@ class CatalogController < ApplicationController
       Rails.cache.fetch("home_page_empty_raw_response", expires_in: 3.hours) do
         Rails.logger.info "Cached home page results"
         # We cannot cache the Blacklight::Solr::Response as-is so we convert it to JSON first
-        (response, _deprecated_document_list) = search_service.search_results
-        response.to_json
+        search_service_compatibility_wrapper.search_results.to_json
+      end
+    end
+
+    def empty_advanced_search_raw_response
+      Rails.cache.fetch('advanced_search_form_empty_raw_response', expires_in: 8.hours) do
+        Rails.logger.info "Cached empty advanced search form solr query"
+        SearchServiceCompatibilityWrapper.new(blacklight_advanced_search_form_search_service).search_results.to_json
       end
     end
 
@@ -800,12 +841,18 @@ class CatalogController < ApplicationController
     end
 
     def search_service_context
-      return {} unless Flipflop.multi_algorithm?
-      return {} unless alternate_search_builder_class # use default if none specified
-      { search_builder_class: alternate_search_builder_class }
+      if action_name == 'advanced_search'
+        { search_builder_class: AdvancedFormSearchBuilder }
+      elsif action_name == 'numismatics'
+        { search_builder_class: NumismaticsFormSearchBuilder }
+      else
+        return {} unless Flipflop.multi_algorithm?
+        return {} unless configurable_search_builder_class # use default if none specified
+        { search_builder_class: configurable_search_builder_class }
+      end
     end
 
-    def alternate_search_builder_class
+    def configurable_search_builder_class
       return unless search_algorithm_param && allowed_search_algorithms.include?(search_algorithm_param)
 
       "#{search_algorithm_param}_search_builder".camelize.constantize
@@ -820,5 +867,13 @@ class CatalogController < ApplicationController
 
     def search_algorithm_param
       params[:search_algorithm]
+    end
+
+    def search_service_compatibility_wrapper
+      @search_service_compatibility_wrapper ||= SearchServiceCompatibilityWrapper.new(search_service)
+    end
+
+    def solrize_boolean_params
+      @search_state = search_state.reset(AdvancedBooleanOperators.new(search_state.params).for_boolqparser)
     end
 end

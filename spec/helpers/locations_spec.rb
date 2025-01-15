@@ -3,40 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper do
-  describe '#locate_url helper method' do
-    let(:stackmap_location) { 'mendel$stacks' }
-    let(:locator_location) { 'firestone$stacks' }
-    let(:stackmap_ineligible_location) { 'annex$noncirc' }
-    let(:bib) { { id: '123456' } }
-    let(:call_number) { 'RCPXR-6136516' }
-    let(:locator_library) { 'Firestone Library' }
-    let(:stackmap_library) { 'Mendel Music Library' }
-    let(:stackmap_ineligible_library) { 'Fine Annex' }
-
-    before { stub_holding_locations }
-
-    it 'Returns a Stackmap Link for a Mapping Location' do
-      stackmap_link = locate_url(locator_location, bib, call_number, locator_library)
-      expect(stackmap_link).to be_truthy
-      expect(stackmap_link).to include("?loc=#{locator_location}&id=#{bib[:id]}")
-    end
-
-    it 'Does not return a stackmap link for an inaccessible location' do
-      stackmap_link = locate_url(stackmap_ineligible_location, bib, call_number, stackmap_ineligible_library)
-      expect(stackmap_link).to be_nil
-    end
-
-    it 'Does not return a stackmap link when there is no call number' do
-      stackmap_link = locate_url(stackmap_location, bib, nil, stackmap_library)
-      expect(stackmap_link).to be_nil
-    end
-
-    it 'Returns a locator link when there is no call number for Firestone' do
-      locator_link = locate_url(locator_location, bib, nil, locator_library)
-      expect(locator_link).to include("?loc=#{locator_location}&id=#{bib[:id]}")
-    end
-  end
-
   describe '#render_location_code' do
     before { stub_holding_locations }
 

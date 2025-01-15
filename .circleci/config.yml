@@ -1,20 +1,21 @@
 ---
 version: 2.1
 orbs:
-  browser-tools: circleci/browser-tools@1.4.6
-  ruby: circleci/ruby@2.0.0
-  node: circleci/node@5.0.2
+  browser-tools: circleci/browser-tools@1.4.8
+  ruby: circleci/ruby@2.1.4
+  node: circleci/node@5.3.0
 executors:
   orangelight-executor:
     docker:
-      - image: cimg/ruby:3.1.0-browsers
+      - image: cimg/ruby:3.4.1-browsers
         environment:
           RAILS_ENV: test
           ORANGELIGHT_HOST: localhost
           ORANGELIGHT_USER: postgres
           SOLR_URL: http://solr:SolrRocks@localhost:8983/solr/orangelight-core-test
           COVERALLS_PARALLEL: true
-      - image: cimg/postgres:13.6
+          VITE_RUBY_AUTO_BUILD: false
+      - image: cimg/postgres:15.8
         environment:
           POSTGRES_USER: orangelight
           POSTGRES_PASSWORD: orangelight_password
@@ -26,7 +27,7 @@ executors:
     working_directory: ~/orangelight
   basic-executor:
     docker:
-      - image: cimg/ruby:3.1.0-browsers
+      - image: cimg/ruby:3.4.1-browsers
         environment:
           RAILS_ENV: test
     resource_class: large
@@ -37,26 +38,26 @@ commands:
     steps:
       - node/install:
           install-yarn: true
-          node-version: '18.17.0'
+          node-version: '18.19.1'
       - run:
           name: Check current version of node
           command: node -v
-      - run: 
+      - run:
           name: Install bundler
           command: gem install bundler -v '2.3.26'
       # Restore bundle cache
       - restore_cache:
           keys:
-          - orangelight-v2-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          - orangelight-v3-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
       # Bundle install dependencies
       - run:
           name: Install dependencies
           command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
       - save_cache:
-          key: orangelight-v2-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          key: orangelight-v3-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
           paths:
             - ./vendor/bundle
-      
+
 jobs:
   build:
     executor: basic-executor
@@ -71,18 +72,22 @@ jobs:
       - restore_cache:
           name: Restore cached dependencies
           keys:
-            - orangelight-v2-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+            - orangelight-v3-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
       - run:
           name: Yarn Install
           command: yarn install --frozen-lockfile
       - save_cache:
           name: Save Yarn cache
-          key: orangelight-v2-yarn-{{ checksum "yarn.lock" }}
+          key: orangelight-v3-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+      - run:
+          name: Precompile assets
+          command: bundle exec rake assets:precompile
       - persist_to_workspace:
           root: '~/orangelight'
-          paths: '*'
+          paths:
+            - '*'
 
   test:
     executor: orangelight-executor
@@ -91,8 +96,8 @@ jobs:
       - attach_workspace:
           at: '~/orangelight'
       - setup-bundler-and-node
-      - browser-tools/install-browser-tools:
-          chrome-version: 114.0.5735.90
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - checkout
       - run: |
           ruby --version
@@ -118,19 +123,57 @@ jobs:
           name: Index Test Data
           command: bundle exec rake pulsearch:solr:index
       - ruby/rspec-test
-      - store_test_results:
-          path: ~/rspec
+      # Store capybara screenshots if there are failing system tests
+      - store_artifacts:
+          path:  ~/orangelight/tmp/capybara/
+
+  bearer:
+    docker:
+      - image: cimg/ruby:3.4
+    environment:
+      # Set to default branch of your repo
+      DEFAULT_BRANCH: main
+    steps:
+      - checkout
+      - run: curl -sfL https://raw.githubusercontent.com/Bearer/bearer/main/contrib/install.sh | sh -s -- -b /tmp
+      - run: CURRENT_BRANCH=$CIRCLE_BRANCH SHA=$CIRCLE_SHA1 /tmp/bearer scan .
 
   js_tests:
       executor: basic-executor
       steps:
         - attach_workspace:
             at: '~/orangelight'
-        - run: 
+        - run:
             name: Run JS unit tests
             command: bundle exec yarn test
         - store_test_results:
             path: ~/rspec
+  lighthouse:
+    executor: orangelight-executor
+    steps:
+      - attach_workspace:
+          at: '~/orangelight'
+      - setup-bundler-and-node
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run: sudo apt install postgresql-client
+      - run:
+          name: Database setup
+          command: bundle exec rake db:setup
+      - run:
+          name: Load config into solr
+          command: |
+            cd solr/conf
+            zip -1 -r solr_config.zip ./*
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://solr:SolrRocks@127.0.0.1:8983/solr/admin/configs?action=UPLOAD&name=orangelight"
+            curl -H 'Content-type: application/json' http://solr:SolrRocks@127.0.0.1:8983/api/collections/  -d '{create: {name: orangelight-core-test, config: orangelight, numShards: 1}}'
+      - run:
+          name: Index Test Data
+          command: bundle exec rake pulsearch:solr:index
+      - browser-tools/install-chrome
+      - run: sudo npm install -g @lhci/cli@0.14.x
+      - run: lhci autorun
 
   rubocop:
     executor: basic-executor
@@ -147,6 +190,25 @@ jobs:
       - setup-bundler-and-node
       - run: bundle exec erblint --lint-all
 
+  reek:
+    docker:
+      - image: cimg/ruby:3.4
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run:
+          name: Check code smells with Reek
+          command: bundle exec reek app
+
+  semgrep:
+    docker:
+        - image: returntocorp/semgrep
+    steps:
+      - checkout
+      - run:
+          name: Check code against community-provided and custom semgrep rules
+          command: semgrep ci --config auto
+
   finish:
     executor: basic-executor
     steps:
@@ -159,6 +221,13 @@ jobs:
           name: finish up coverage
           command: curl -k https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN -d "payload[build_num]=$CIRCLE_WORKFLOW_ID&payload[status]=done"
 
+  deploy:
+    executor: basic-executor
+    steps:
+      - run:
+          name: Deploy to Staging
+          command: "curl -k \"https://ansible-tower.princeton.edu/api/v2/job_templates/57/launch/\" --header \"Content-Type: application/json\" --header \"Authorization: Bearer $TOWER_TOKEN\" -d '{\"credential_passwords\":{},\"extra_vars\":{\"repo_name\":\"orangelight\"}}'"
+
 workflows:
   build_accept:
     jobs:
@@ -169,7 +238,13 @@ workflows:
       - erblint:
          requires:
           - build
+      - reek
+      - bearer
+      - semgrep
       - js_tests:
+         requires:
+          - build
+      - lighthouse:
          requires:
           - build
       - test:
@@ -178,4 +253,10 @@ workflows:
       - finish:
          requires:
            - test
-
+      - deploy:
+         requires:
+           - finish
+         filters:
+           branches:
+             only:
+               - main

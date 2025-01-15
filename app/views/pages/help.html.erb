@@ -9,7 +9,7 @@
       <li>
         <dl>
           <dt class="tip-heading">Keyword searching</dt>
-          <dd>Combine keywords and attributes to find specific items.
+          <dd>Combine keywords to find specific items. By default all keywords contained in your search will be found in the records of items in the search results.
             <dl class="example">
               <dt>Examples:</dt>
               <dd>
@@ -40,28 +40,14 @@
       </li>
       <li>
         <dl>
-          <dt class="tip-heading">Requiring words and phrases</dt>
-          <dd>Use "+" before a term to make it required. (Otherwise results matching only some of your terms may be included).
-            <dl class="example">
-              <dt>Example:</dt>
-              <dd>
-                <ul>
-                  <li>+cuba +politics</li>
-                </ul>
-              </dd>
-            </dl>
-          </dd>
-        </dl>
-      </li>
-      <li>
-        <dl>
           <dt class="tip-heading">Excluding words or phrases</dt>
-          <dd>Use "-" before a word or phrase to exclude it.
+          <dd>Use "-" or "NOT" before a word or phrase to exclude it.
             <dl class="example">
-              <dt>Example:</dt>
+              <dt>Examples:</dt>
               <dd>
                 <ul>
                   <li>jaguar -car -automobiles</li>
+                  <li>jaguar NOT car NOT automobiles</li>
                 </ul>
               </dd>
             </dl>
@@ -74,11 +60,13 @@
           <dd>Use "OR", "AND", and "NOT" to create complex boolean logic. You can use parentheses in your complex expressions. Use the
             <%= link_to('Advanced Search', '/advanced') %>
             to join across multiple fields.
-            <dl class="example">
-              <dt>Example:</dt>
+            <dl class="example many">
+              <dt>Examples:</dt>
               <dd>
                 <ul>
-                  <li>paul AND auster</li>
+                  <li>activism OR "social justice"</li>
+                  <li>India AND (activism OR "social justice")</li>
+                  <li>(India NOT Indiana) AND (activism OR "social justice")</li>
                 </ul>
               </dd>
             </dl>
@@ -88,8 +76,30 @@
       <li>
         <dl>
           <dt class="tip-heading">Truncation and wildcards</dt>
-          <dd>English terms are automatically stemmed to include plural and singular forms, as well as common suffix and tense variations. An asterisk may also be used to truncate any term from either the beginning or end of the word.
+          <dd>
+            <p>English terms are automatically stemmed to include plural and singular forms, as well as common suffix and tense variations.</p>
+            <p>An asterisk may also be used to truncate any term from either the beginning or end of the word, or in the middle of the word to replace a character.</p>
+            <dl class="example many">
+              <dt>Examples:</dt>
+              <dd>
+                <ul>
+                  <li>*est (This search would match pest, test, jest, etc.)</li>
+                  <li>art* (This search would match art, arts, artistic, artisan, artistry, artisanal, etc.)</li>
+                  <li>wom*n (This search would match woman, women, womyn.)</li>
+                </ul>
+              </dd>
+            </dl>
           </dd>
+        </dl>
+      </li>
+      <li>
+        <dl>
+        <dt class="tip-heading">Facets</dt>
+        <dd>
+          <p>From the main search results page, adding a facet means the search result *must* include that facet to be included in the search results (a boolean AND search).</p>
+          <p>If you click on "Edit search" from an existing search, it will take you to the advanced search page. Adding a facet from the advanced search page means that it *may* include that facet (a boolean OR search).</>
+          <p>For example, if I wanted a work that was in the library on George Frideric Handel, but only in languages I'm familiar with, I could do a keywork search for "George Handel", then limit by the facet "In the Library", then click "Edit search" and select "English" and "German" from the facets and click Search. This will give search results in either German or English.</p>
+        </dd>
         </dl>
       </li>
     </ul>

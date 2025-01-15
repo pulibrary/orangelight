@@ -17,9 +17,9 @@
 @import 'variables/breaks';
 @import 'variables/colors';
 @import 'variables/typography';
-
+@import 'bootstrap_override';
+@import 'bootstrap';
 @import 'blacklight';
-@import 'font-awesome';
 @import 'blacklight_marc';
 
 @import 'requests/request';
@@ -42,8 +42,8 @@
 @import 'components/dropdown-help-text';
 @import 'components/facets';
 @import 'components/font-face';
-@import 'components/footer';
 @import 'components/front-page';
+@import 'components/footer';
 @import 'components/header';
 @import 'components/header--secondary';
 @import 'components/lists';
@@ -72,3 +72,5 @@
 @import 'shame';
 
 @import "datatables";
+@import "lux_customizations";
+@import "stackmap_customizations";

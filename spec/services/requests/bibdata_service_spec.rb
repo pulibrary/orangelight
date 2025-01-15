@@ -20,7 +20,7 @@ describe Requests::BibdataService do
 
     context 'with an unsuccessful response from bibdata' do
       it 'returns an empty hash' do
-        stub_request(:get, "#{Requests::Config[:bibdata_base]}/locations/delivery_locations.json")
+        stub_request(:get, "#{Requests.config[:bibdata_base]}/locations/delivery_locations.json")
           .to_return(status: 500, body: 'failure', headers: {})
         expect(locations).to be_empty
       end

@@ -65,7 +65,7 @@ module Requests
     end
 
     def scsb_conn
-      conn = Faraday.new(url: Requests::Config[:scsb_base]) do |faraday|
+      conn = Faraday.new(url: Requests.config[:scsb_base]) do |faraday|
         faraday.request  :url_encoded # form-encode POST params
         faraday.response :logger unless Rails.env.test? # log requests to STDOUT
         faraday.adapter  Faraday.default_adapter # make requests with Net::HTTP
@@ -114,7 +114,7 @@ module Requests
     end
 
     def scsb_owning_institution(location)
-      Requests::Config[:recap_partner_locations].fetch(location, "PUL")
+      Requests.config[:recap_partner_locations].fetch(location, "PUL")
     end
 
     private

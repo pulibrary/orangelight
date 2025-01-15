@@ -12,7 +12,7 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+/log/**
 /tmp
 
 # Ignore Jetty server.
@@ -26,6 +26,7 @@ coverage/
 # Ignore dreaded .DS_Store
 .DS_Store
 
+/public/assets
 /public/packs
 /public/packs-test
 /node_modules
@@ -54,3 +55,9 @@ solr/conf/lucene-umich-solr-filters-6.0.0-SNAPSHOT.jar
 
 orangelight-codeql
 codeql_results.csv
+
+.lighthouseci
+
+# Yalc
+.yalc/*
+yalc.lock

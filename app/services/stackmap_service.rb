@@ -22,7 +22,7 @@ class StackmapService
         elsif stackmap_libs.include? lib
           stackmap_url
         else
-          locator_url
+          fallback_url
         end
       else
         fallback_url
@@ -53,11 +53,6 @@ class StackmapService
 
     private
 
-      def locator_url
-        base_url = Orangelight.config['firestone_locator_base_url'] || 'https://locator-prod.princeton.edu'
-        "#{base_url}/index.php?loc=#{@loc}&id=#{bibid}&embed=true"
-      end
-
       def stackmap_url
         stackmap_url = 'https://princeton.stackmap.com/view/'
         stackmap_params = {
@@ -84,11 +79,7 @@ class StackmapService
       end
 
       def stackmap_libs
-        if Flipflop.firestone_locator?
-          %w[arch eastasian engineer lewis mendel plasma stokes]
-        else
-          %w[arch eastasian engineer lewis mendel plasma stokes firestone]
-        end
+        %w[arch eastasian engineer lewis mendel plasma stokes firestone]
       end
 
       def by_title_locations
@@ -104,7 +95,7 @@ class StackmapService
       end
 
       def valid?
-        !holding_location.nil? && !@document.nil?
+        !holding_location.nil? && !@document.nil? && !callno.nil?
       end
   end
 end

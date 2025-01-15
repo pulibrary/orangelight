@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'Viewing Catalog Documents', type: :system, js: true do
-  let(:availability_fixture_path) { File.join(fixture_path, 'bibdata', 'availability.json') }
+  let(:availability_fixture_path) { File.join(fixture_paths.first, 'bibdata', 'availability.json') }
   let(:availability_fixture) { File.read(availability_fixture_path) }
 
   before do
@@ -64,7 +64,7 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       solr.commit
     end
 
-    it 'shows the Uniform title' do
+    it 'shows the Uniform title', left_anchor: true do
       visit "catalog/#{document_id}"
       # Regular display title
       expect(page).to have_content('Bible, Latin.')
@@ -88,21 +88,17 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
   describe 'giving feedback' do
     let(:document_id) { '9946093213506421' }
 
-    it 'shows a feedback bar' do
-      visit "catalog/#{document_id}"
-      expect(page).to have_selector('.harmful-content-feedback')
-      expect(page).to have_content('Report Harmful Language')
-    end
-
     it 'opens a modal for Ask a Question' do
       visit "catalog/#{document_id}"
       click_on('Ask a Question')
       expect(page).to have_field('Name')
-      fill_in('Name', with: 'Test User')
-      expect(page).to have_field('Email')
-      fill_in('Email', with: 'testuser@test-domain.org')
-      expect(page).to have_field('Message')
-      fill_in('Message', with: 'Why is the thumbnail wrong?')
+      within '.modal-content' do
+        fill_in('Name', with: 'Test User')
+        expect(page).to have_field('Email')
+        fill_in('Email', with: 'testuser@test-domain.org')
+        expect(page).to have_field('Message')
+        fill_in('Message', with: 'Why is the thumbnail wrong?')
+      end
       context_field = page.find_field("ask_a_question_form[context]", type: :hidden)
       expect(context_field.value).to include("/catalog/#{document_id}")
       title_field = page.find_field("ask_a_question_form[title]", type: :hidden)
@@ -113,31 +109,30 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
       visit "catalog/#{document_id}"
       click_on('Suggest a Correction')
       expect(page).to have_field('Name')
-      fill_in('Name', with: 'Test User')
-      expect(page).to have_field('Email')
-      fill_in('Email', with: 'testuser@test-domain.org')
-      expect(page).to have_field('Message')
-      fill_in('Message', with: 'Replace with correct thumbnail.')
+      within '.modal-content' do
+        fill_in('Name', with: 'Test User')
+        expect(page).to have_field('Email')
+        fill_in('Email', with: 'testuser@test-domain.org')
+        expect(page).to have_field('Message')
+        fill_in('Message', with: 'Replace with correct thumbnail.')
+      end
       context_field = page.find_field("suggest_correction_form[context]", type: :hidden)
       expect(context_field.value).to include("/catalog/#{document_id}")
       title_field = page.find_field("suggest_correction_form[title]", type: :hidden)
       expect(title_field.value).to eq("Bible, Latin.")
     end
 
-    it 'opens a modal for Report Harmful Language' do
-      visit "catalog/#{document_id}"
-      click_on('Report Harmful Language')
-      expect(page).to have_content('users may encounter offensive or harmful language')
-      expect(page).to have_field('Name')
-      fill_in('Name', with: 'Test User')
-      expect(page).to have_field('Email')
-      fill_in('Email', with: 'testuser@test-domain.org')
-      expect(page).to have_field('Message')
-      fill_in('Message', with: 'I am concerned about this subject heading')
-      context_field = page.find_field("report_harmful_language_form[context]", visible: :hidden)
-      expect(context_field.value).to include("/catalog/#{document_id}")
-      title_field = page.find_field("report_harmful_language_form[title]", visible: :hidden)
-      expect(title_field.value).to eq("Bible, Latin.")
+    it 'closes a modal for Suggest a Correction' do
+      if Orangelight.using_blacklight7?
+        true
+      else
+        visit "catalog/#{document_id}"
+        click_on('Suggest a Correction')
+        expect(page).to have_field('Name')
+        expect(page).to have_content('Please use this form to report errors, omissions')
+        page.find('.blacklight-modal-close').click
+        expect(page).not_to have_content('Please use this form to report errors, omissions')
+      end
     end
   end
 

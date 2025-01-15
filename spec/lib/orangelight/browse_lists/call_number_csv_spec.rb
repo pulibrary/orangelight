@@ -3,7 +3,7 @@ require 'rails_helper'
 require 'orangelight/browse_lists'
 require 'orangelight/browse_lists/call_number_csv'
 
-RSpec.describe BrowseLists::CallNumberCSV do
+RSpec.describe BrowseLists::CallNumberCSV, browse: true do
   let(:solr_url) do
     # Remove Solr auth username and password used in CI.
     # Faraday adds as Base64 encoded credentials in the
@@ -55,9 +55,9 @@ RSpec.describe BrowseLists::CallNumberCSV do
       expect(File.read(csv_file).scan(/\n/).count).to eq 496_050
       # Ensure call numbers with spaces in them are stripped for the CSV.
       space_call_line = File.open(csv_file).readlines.find do |line|
-        line.start_with?("53.8")
+        line.start_with?("0000053.0000008")
       end
-      expect(space_call_line).to start_with("53.8,53.8")
+      expect(space_call_line).to start_with("0000053.0000008,53.8")
     end
 
     context "when solr returns a hash with no response key" do

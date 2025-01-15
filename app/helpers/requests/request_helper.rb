@@ -26,11 +26,7 @@ module Requests
     end
 
     def request_title
-      if @mode == 'trace'
-        I18n.t('requests.trace.form_title')
-      else
-        I18n.t('requests.default.form_title')
-      end
+      I18n.t('requests.default.form_title')
     end
 
     ### FIXME. This should come directly as a sub-property from the request object holding property.
@@ -51,14 +47,13 @@ module Requests
     # end
 
     def return_message(submission)
-      link_to "Return to Record", return_url(submission.id), class: 'btn btn-secondary icon-moveback', title: 'Return to Record' unless submission.source.nil?
+      link_to "Return to Record", return_url(submission.id), class: 'btn btn-secondary icon-moveback', title: 'Return to Record'
     end
 
     def login_url(request)
       url = "/requests/#{request.bib_id}?"
       params = []
       params.push("mfhd=#{request.mfhd}") unless request.mfhd.nil?
-      params.push("source=#{request.source}") unless request.source.nil?
       url += params.join("&")
 
       url

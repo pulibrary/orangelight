@@ -10,6 +10,5 @@
     "purge_date": "2016-10-31T23:00:03.000-05:00",
     "expire_date": "2022-10-31T23:00:03.000-05:00",
     "patron_id": 77777,
-    "active_email": "a@b.com",
-    "campus_authorized": false
+    "active_email": "a@b.com"
 }

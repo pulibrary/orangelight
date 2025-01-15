@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 module Requests
   class RequestableDecorator
-    delegate :system_id, :aeon_mapped_params, :services, :charged?, :annex?, :lewis?, :pageable_loc?, :traceable?, :on_reserve?,
-             :ask_me?, :aeon_request_url, :location, :temp_loc?, :in_resource_sharing?, :call_number, :eligible_for_library_services?,
-             :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :item_data?, :recap_edd?, :user_barcode, :clancy?,
+    delegate :system_id, :services, :charged?, :annex?, :on_reserve?,
+             :ask_me?, :aeon_request_url, :temp_loc_other_than_resource_sharing?, :call_number, :eligible_for_library_services?,
+             :holding_library_in_library_only?, :holding_library, :bib, :circulates?, :item_data?, :recap_edd?, :clancy_available?,
              :holding, :item_location_code, :item?, :item, :partner_holding?, :status, :status_label, :use_restriction?, :library_code, :enum_value, :item_at_clancy?,
-             :cron_value, :illiad_request_parameters, :location_label, :online?, :aeon?, :patron, :held_at_marquand_library?,
+             :cron_value, :illiad_request_parameters, :location_label, :aeon?, :patron, :held_at_marquand_library?,
              :ill_eligible?, :scsb_in_library_use?, :pick_up_locations, :on_shelf?, :pending?, :recap?, :recap_pf?, :illiad_request_url, :available?,
-             :on_order?, :urls, :in_process?, :alma_managed?, :title, :map_url, :cul_avery?, :cul_music?,
-             :pick_up_location_code, :resource_shared?, :enumerated?, to: :requestable
+             :on_order?, :in_process?, :alma_managed?, :title, :cul_avery?, :cul_music?,
+             :pick_up_location_code, :enumerated?, to: :requestable
     delegate :content_tag, :hidden_field_tag, :concat, to: :view_context
 
     alias bib_id system_id
@@ -22,7 +22,7 @@ module Requests
     ## If the item doesn't have any item level data use the holding mfhd ID as a unique key
     ## when one is needed. Primarily for non-barcoded Annex items.
     def preferred_request_id
-      requestable.id.presence || holding.first[0]
+      requestable.id.presence || holding.mfhd_id
     end
 
     def digitize?
@@ -51,12 +51,12 @@ module Requests
     end
 
     def request_status?
-      on_order? || in_process? || traceable? || ill_eligible? || services.empty?
+      on_order? || in_process? || ill_eligible? || services.empty?
     end
 
     def will_submit_via_form?
       return false unless eligible_for_this_item?
-      digitize? || pick_up? || scsb_in_library_use? || ill_eligible? || on_order? || in_process? || traceable? || off_site?
+      digitize? || pick_up? || scsb_in_library_use? || ill_eligible? || on_order? || in_process? || off_site?
     end
 
     def on_shelf_edd?
@@ -68,7 +68,7 @@ module Requests
     end
 
     def in_library_use_required?
-      available? && (!held_at_marquand_library? || !item_at_clancy? || clancy?) && ((off_site? && !circulates?) || holding_library_in_library_only? || scsb_in_library_use?)
+      available? && (!held_at_marquand_library? || !item_at_clancy? || clancy_available?) && ((off_site? && !circulates?) || holding_library_in_library_only? || scsb_in_library_use?)
     end
 
     def off_site?
@@ -76,7 +76,7 @@ module Requests
     end
 
     def off_site_location
-      if clancy?
+      if clancy_available?
         "clancy" # at clancy and available
       elsif item_at_clancy?
         "clancy_unavailable" # at clancy but not available
@@ -90,16 +90,16 @@ module Requests
     end
 
     def create_fill_in_requestable
-      fill_in_req = Requestable.new(bib:, holding:, item: nil, location:, patron:)
-      fill_in_req.services = services
+      fill_in_req = Requestable.new(bib:, holding:, item: nil, location: location.to_h, patron:)
+      fill_in_req.replace_existing_services services
       RequestableDecorator.new(fill_in_req, view_context)
     end
 
     def libcal_url
-      code = if off_site? && !held_at_marquand_library? && location[:holding_library].present?
-               location[:holding_library][:code]
+      code = if off_site? && !held_at_marquand_library? && location.holding_library.present?
+               location.holding_library[:code]
              elsif !off_site? || held_at_marquand_library?
-               location[:library][:code]
+               location.library_code
              else
                "firestone"
              end
@@ -112,9 +112,9 @@ module Requests
 
     def css_class
       if requestable.status == "Available"
-        "badge-success"
+        "bg-success"
       else
-        "badge-danger"
+        "bg-danger"
       end
     end
 
@@ -122,7 +122,7 @@ module Requests
       if requestable.alma_managed?
         requestable.aeon_request_url
       else
-        aeon_url = Requests::Config[:aeon_base]
+        aeon_url = Requests.config[:aeon_base]
         "#{aeon_url}?#{requestable.aeon_mapped_params.to_query}"
       end
     end
@@ -143,24 +143,27 @@ module Requests
         "PJ"
       elsif requestable.cul_music?
         "PK"
-      # elsif requestable.recap_pf?
-      #   "PF"
       else
         first_delivery_location[:gfa_pickup] || "PA"
       end
     end
 
     def no_services?
-      !(digitize? || pick_up? || aeon? || ill_eligible? || in_library_use_required? || request? || online? || on_shelf? || off_site?)
+      !(digitize? || pick_up? || aeon? || ill_eligible? || in_library_use_required? || request? || on_shelf? || off_site?)
+    end
+
+    def location
+      Location.new requestable.location
     end
 
     private
 
       def first_delivery_location
-        if requestable.location[:delivery_locations].blank? || requestable.location[:delivery_locations].empty?
+        delivery_locations = Location.new(requestable.location).delivery_locations
+        if delivery_locations.blank?
           {}
         else
-          requestable.location[:delivery_locations].first
+          delivery_locations.first
         end
       end
 

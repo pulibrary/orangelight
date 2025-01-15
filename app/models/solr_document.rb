@@ -1,9 +1,11 @@
 # frozen_string_literal: true
+require_relative 'solr_document/identifier'
 
 class SolrDocument
   include Blacklight::Solr::Document
   include Orangelight::Document::Export
   include Orangelight::Document::Alma
+  include Orangelight::Document::Scsb
   include Orangelight::Document::StandardNumbers
 
   # Explicitly required for sneakers
@@ -35,9 +37,6 @@ class SolrDocument
   # Email uses the semantic field mappings below to generate the body of an email.
   SolrDocument.use_extension(Blacklight::Document::Email)
 
-  # SMS uses the semantic field mappings below to generate the body of an SMS email.
-  SolrDocument.use_extension(Blacklight::Document::Sms)
-
   # DublinCore uses the semantic field mappings below to assemble an OAI-compliant Dublin Core
   # document Semantic mappings of solr stored fields. Fields may be multi or single valued.
   # See Blacklight::Solr::Document::ExtendableClassMethods#field_semantics and
@@ -50,6 +49,19 @@ class SolrDocument
 
   ## Adds JSON-LD
   use_extension(Blacklight::Document::JsonLd)
+
+  ## Adds the methods needed for CiteProc citations,
+  # Including MLA, APA, and Chicago
+  use_extension(Blacklight::Document::CiteProc)
+
+  ## Adds MLA html
+  use_extension(Blacklight::Document::Mla)
+
+  # Adds APA html
+  use_extension(Blacklight::Document::Apa)
+
+  # Adds Chicago html
+  use_extension(Blacklight::Document::Chicago)
 
   def identifier_data
     values = identifiers.each_with_object({}) do |identifier, hsh|
@@ -64,7 +76,7 @@ class SolrDocument
   def identifiers
     @identifiers ||= identifier_keys.flat_map do |key|
       fetch(key, []).map do |value|
-        Identifier.new(key, value)
+        SolrDocument::Identifier.new(key, value)
       end
     end.compact
   end
@@ -171,6 +183,18 @@ class SolrDocument
 
   def numismatics_record?
     solr_document_id&.start_with? 'coin'
+  end
+
+  def in_a_special_collection?
+    holdings_1display = self['holdings_1display']
+    return true unless holdings_1display
+
+    JSON.parse(holdings_1display)
+        &.values
+        &.any? do |holding|
+          location_code = holding['location_code']
+          Bibdata.holding_locations.dig(location_code, 'aeon_location') if location_code
+        end
   end
 
   # host_id an Array of host id(s)

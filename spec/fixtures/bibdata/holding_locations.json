@@ -1,45 +1,5 @@
 [
   {
-    "label": "Cataloging",
-    "code": "annex$cat",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/annex$cat.json",
-    "library": {
-      "label": "Forrestal Annex",
-      "code": "annex",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Circulation",
-    "code": "annex$circ",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/annex$circ.json",
-    "library": {
-      "label": "Forrestal Annex",
-      "code": "annex",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
     "label": "Documents Off-Site Storage; contact docstor@Princeton.edu",
     "code": "annex$doc",
     "aeon_location": false,
@@ -57,7 +17,12 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "QA",
+      "PA",
+      "QC"
+    ]
   },
   {
     "label": "A",
@@ -77,7 +42,19 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "QT",
+      "PW",
+      "PL",
+      "PT",
+      "PK",
+      "PM",
+      "QA",
+      "PN",
+      "PA",
+      "QC"
+    ]
   },
   {
     "label": "Locked",
@@ -97,7 +74,12 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "QA",
+      "PN",
+      "QC"
+    ]
   },
   {
     "label": "Non-Circulating",
@@ -117,7 +99,20 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PA",
+      "PN",
+      "PQ",
+      "PW",
+      "PM",
+      "PL",
+      "PT",
+      "PJ",
+      "PK",
+      "QT",
+      "QA",
+      "QC"
+    ]
   },
   {
     "label": "Princeton Collection",
@@ -137,7 +132,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Reserve",
@@ -157,7 +152,18 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "PW",
+      "PL",
+      "PT",
+      "PJ",
+      "PK",
+      "PM",
+      "QA",
+      "PA",
+      "QC"
+    ]
   },
   {
     "label": "Classics Theses",
@@ -177,7 +183,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "German Theses",
@@ -197,7 +203,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "English Theses",
@@ -217,7 +223,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "History Theses",
@@ -237,7 +243,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Philosophy Theses",
@@ -257,7 +263,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "A: Romance Language Theses",
@@ -277,7 +283,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Stacks",
@@ -297,7 +303,21 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "QT",
+      "PW",
+      "PL",
+      "PT",
+      "PF",
+      "PK",
+      "PH",
+      "PM",
+      "QA",
+      "PN",
+      "PA",
+      "QC"
+    ]
   },
   {
     "label": "A: Theses Collection",
@@ -317,7 +337,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -337,27 +357,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Circulation",
-    "code": "arch$circ",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/arch$circ.json",
-    "library": {
-      "label": "Architecture Library",
-      "code": "arch",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Librarian's Office",
@@ -377,7 +377,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PW"
+    ]
   },
   {
     "label": "New Book Shelf",
@@ -397,7 +399,26 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "PW",
+      "PL",
+      "PT",
+      "PF",
+      "PJ",
+      "PK",
+      "PH",
+      "PM",
+      "PG",
+      "PN",
+      "PA",
+      "IL",
+      "QL",
+      "PS",
+      "PZ",
+      "QK",
+      "PB"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP): Architecture Library Use Only",
@@ -421,7 +442,13 @@
       "code": "arch",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "PW",
+      "QA",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Reference",
@@ -441,7 +468,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PW"
+    ]
   },
   {
     "label": "Reserve 3-Hour",
@@ -461,7 +490,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PW"
+    ]
   },
   {
     "label": "Reserve Closed",
@@ -481,7 +512,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PW"
+    ]
   },
   {
     "label": "Stacks",
@@ -501,7 +534,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PW"
+    ]
   },
   {
     "label": "",
@@ -521,67 +556,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Acquisitions",
-    "code": "eastasian$acq",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/eastasian$acq.json",
-    "library": {
-      "label": "East Asian Library",
-      "code": "eastasian",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Cataloging",
-    "code": "eastasian$cat",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/eastasian$cat.json",
-    "library": {
-      "label": "East Asian Library",
-      "code": "eastasian",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Circulation",
-    "code": "eastasian$circ",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/eastasian$circ.json",
-    "library": {
-      "label": "East Asian Library",
-      "code": "eastasian",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -601,7 +576,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Reference",
@@ -621,7 +596,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PL"
+    ]
   },
   {
     "label": "Western Languages",
@@ -641,7 +618,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Western Periodicals",
@@ -661,7 +638,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Permanent Reserve",
@@ -681,7 +658,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -701,7 +678,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Microfilms: Forrestal Annex",
@@ -721,7 +698,13 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "PF",
+      "QA",
+      "QC",
+      "QL"
+    ]
   },
   {
     "label": "Periodicals",
@@ -733,7 +716,7 @@
     "always_requestable": false,
     "circulates": true,
     "remote_storage": "",
-    "fulfillment_unit": "Limited",
+    "fulfillment_unit": "General",
     "url": "https://bibdata.princeton.edu/locations/holding_locations/eastasian$hype.json",
     "library": {
       "label": "East Asian Library",
@@ -741,7 +724,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Reference ",
@@ -761,7 +744,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Remote Storage (ReCAP): East Asian Library Use Only",
@@ -785,7 +768,13 @@
       "code": "eastasian",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "PL",
+      "QA",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP): East Asian Microforms",
@@ -809,7 +798,15 @@
       "code": "eastasian",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "PL",
+      "PF",
+      "QA",
+      "IL",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Reference",
@@ -829,7 +826,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PL"
+    ]
   },
   {
     "label": "Reserve",
@@ -849,7 +848,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PL"
+    ]
   },
   {
     "label": "",
@@ -869,7 +870,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Wilhelm Collection",
@@ -889,7 +890,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "A",
@@ -909,47 +910,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Cataloging",
-    "code": "engineer$cat",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/engineer$cat.json",
-    "library": {
-      "label": "Engineering Library",
-      "code": "engineer",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Circulation",
-    "code": "engineer$circ",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/engineer$circ.json",
-    "library": {
-      "label": "Engineering Library",
-      "code": "engineer",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "Indexes and Abstracts",
@@ -969,7 +932,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "Laptops",
@@ -989,7 +954,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "Media Collection",
@@ -1009,7 +976,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "Microforms",
@@ -1029,7 +998,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "New Book Shelf",
@@ -1049,7 +1020,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP): Engineering Library Use Only",
@@ -1073,7 +1046,9 @@
       "code": "engineer",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "Reference",
@@ -1093,7 +1068,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "Reserve",
@@ -1113,7 +1090,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "Term Loan Reserve",
@@ -1133,7 +1112,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "Friend Center Archive",
@@ -1153,7 +1134,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "Serials",
@@ -1173,7 +1156,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "Stacks",
@@ -1193,7 +1178,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "S",
@@ -1213,7 +1200,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "Theses",
@@ -1233,7 +1222,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PT"
+    ]
   },
   {
     "label": "",
@@ -1253,7 +1244,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "African American Studies Reading Room",
@@ -1273,47 +1264,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Cataloging",
-    "code": "firestone$cat",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/firestone$cat.json",
-    "library": {
-      "label": "Firestone Library",
-      "code": "firestone",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Circulation",
-    "code": "firestone$circ",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/firestone$circ.json",
-    "library": {
-      "label": "Firestone Library",
-      "code": "firestone",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Classics Collection",
@@ -1333,7 +1284,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Classics Collection Non-Circulating",
@@ -1353,7 +1304,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Dixon Books",
@@ -1373,7 +1324,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Government Documents Collection",
@@ -1393,7 +1344,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Government Documents Collection Microforms",
@@ -1413,7 +1364,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Trustee Reading Room Reference",
@@ -1433,7 +1384,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Trustee Reading Room Reference: Atlases",
@@ -1453,7 +1404,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Trustee Reading Room Reference: Ready Reference",
@@ -1473,7 +1424,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Data and Statistical Services",
@@ -1493,7 +1444,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "English Graduate Study Room",
@@ -1513,7 +1464,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Faculty Publications",
@@ -1537,7 +1488,26 @@
       "code": "firestone",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "PW",
+      "PL",
+      "PT",
+      "PF",
+      "PJ",
+      "PK",
+      "PH",
+      "PM",
+      "PG",
+      "PN",
+      "PA",
+      "QL",
+      "PS",
+      "PZ",
+      "QK",
+      "PB",
+      "QX"
+    ]
   },
   {
     "label": "French & Italian Graduate Study Room",
@@ -1557,7 +1527,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Microforms Services (Film)",
@@ -1577,7 +1547,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Microforms Services (Film B)",
@@ -1597,7 +1567,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Microforms Services (Film M)",
@@ -1617,7 +1587,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Microforms Services (Film P)",
@@ -1637,7 +1607,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Microforms Services: East Asian",
@@ -1657,7 +1627,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Gender & Sexuality Studies Research Collection",
@@ -1681,7 +1651,26 @@
       "code": "firestone",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "PW",
+      "PL",
+      "PT",
+      "PF",
+      "PJ",
+      "PK",
+      "PH",
+      "PM",
+      "PG",
+      "PN",
+      "PA",
+      "QL",
+      "PS",
+      "PZ",
+      "QK",
+      "PB",
+      "QX"
+    ]
   },
   {
     "label": "Miriam Y. Holden Collection",
@@ -1701,7 +1690,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Law Cases and Statutes",
@@ -1721,7 +1710,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Video Collection: Firestone Circulation Desk",
@@ -1741,7 +1730,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Video Library Reserve",
@@ -1761,7 +1750,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Video Library Reserve",
@@ -1781,7 +1770,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Computer Media",
@@ -1801,7 +1790,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Near East Collections",
@@ -1821,7 +1810,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PA"
+    ]
   },
   {
     "label": "Near East Collections: Non-Circulating",
@@ -1841,7 +1832,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PA"
+    ]
   },
   {
     "label": "Non-Circulating",
@@ -1861,7 +1854,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Newspaper Collection: Recent Issues",
@@ -1881,10 +1874,10 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
-    "label": "Remote Storage (ReCAP): Supervised use in Firestone A-16-H-3",
+    "label": "Firestone Library - Remote Storage (ReCAP): Supervised use in Firestone",
     "code": "firestone$pb",
     "aeon_location": false,
     "recap_electronic_delivery_location": true,
@@ -1905,7 +1898,13 @@
       "code": "firestone",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "QA",
+      "QC",
+      "PB",
+      "QP"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP): Firestone Library Use Only",
@@ -1915,7 +1914,7 @@
     "open": false,
     "requestable": true,
     "always_requestable": false,
-    "circulates": true,
+    "circulates": false,
     "remote_storage": "recap_rmt",
     "fulfillment_unit": "Closed",
     "url": "https://bibdata.princeton.edu/locations/holding_locations/firestone$pf.json",
@@ -1929,7 +1928,9 @@
       "code": "firestone",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PF"
+    ]
   },
   {
     "label": "Periodicals Collection",
@@ -1949,10 +1950,10 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
-    "label": "Preservation Office: Contact fstcirc@princeton.edu",
+    "label": "Preservation Office: Contact preservation@princeton.edu",
     "code": "firestone$pres",
     "aeon_location": false,
     "recap_electronic_delivery_location": false,
@@ -1969,7 +1970,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PA"
+    ]
   },
   {
     "label": "Near East Periodicals Collection",
@@ -1989,7 +1992,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "African American Studies Reading Room: Reserve",
@@ -2009,7 +2012,26 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "PW",
+      "PL",
+      "PT",
+      "PF",
+      "PJ",
+      "PK",
+      "PH",
+      "PM",
+      "PG",
+      "PN",
+      "PA",
+      "IL",
+      "QL",
+      "PS",
+      "PZ",
+      "QK",
+      "PB"
+    ]
   },
   {
     "label": "Circulation Desk (24 Hour Reserve)",
@@ -2029,7 +2051,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Circulation Desk (3 Hour Reserve)",
@@ -2049,7 +2071,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Religion Graduate Study: Reserve",
@@ -2069,7 +2091,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Classics Graduate Study: Reserve",
@@ -2089,7 +2111,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Germanic Languages Graduate Study Room: Reserve",
@@ -2109,7 +2131,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "English Graduate Study Room: Reserve",
@@ -2129,7 +2151,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "History Reference: Reserve",
@@ -2149,7 +2171,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Russian Study Room: Reserve",
@@ -2169,7 +2191,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Near East Graduate Study Room: Reserve",
@@ -2189,7 +2211,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Comparative Literature Graduate Study Room: Reserve",
@@ -2209,7 +2231,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Sociology Graduate Study Room: Reserve",
@@ -2229,7 +2251,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Classics Graduate Study Room",
@@ -2249,7 +2271,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Germanic Languages Graduate Study Room",
@@ -2269,10 +2291,10 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
-    "label": "Scribner Room",
+    "label": "Scribner Library",
     "code": "firestone$se",
     "aeon_location": false,
     "recap_electronic_delivery_location": false,
@@ -2289,7 +2311,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Scribner Library: Common Works Collection",
@@ -2309,10 +2331,10 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
-    "label": "Scribner Room: Reference",
+    "label": "Scribner Library: Reference",
     "code": "firestone$seref",
     "aeon_location": false,
     "recap_electronic_delivery_location": false,
@@ -2329,7 +2351,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "History Reference",
@@ -2349,7 +2371,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Hellenic Studies Reading Room",
@@ -2369,7 +2391,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Slavic Graduate Study Room",
@@ -2389,7 +2411,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Near East Graduate Study Room",
@@ -2409,7 +2431,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Comparative Literature Graduate Study Room",
@@ -2429,7 +2451,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Spanish & Portuguese Graduate Study Room",
@@ -2449,7 +2471,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Religion Graduate Study Room",
@@ -2469,7 +2491,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Sociology Graduate Study Room",
@@ -2489,7 +2511,47 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
+  },
+  {
+    "label": "Government Documents Collection (DOCS): Census",
+    "code": "firestone$ssrcdc",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": true,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": true,
+    "remote_storage": "",
+    "fulfillment_unit": "Limited",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/firestone$ssrcdc.json",
+    "library": {
+      "label": "Firestone Library",
+      "code": "firestone",
+      "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": []
+  },
+  {
+    "label": "Data and Statistical Services (DSS): Statistical Abstracts",
+    "code": "firestone$ssrcfo",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": true,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": true,
+    "remote_storage": "",
+    "fulfillment_unit": "Limited",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/firestone$ssrcfo.json",
+    "library": {
+      "label": "Firestone Library",
+      "code": "firestone",
+      "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": []
   },
   {
     "label": "History Graduate Study Room",
@@ -2509,7 +2571,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Stacks",
@@ -2529,7 +2591,31 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PA"
+    ]
+  },
+  {
+    "label": "Indigenous Studies Collection",
+    "code": "firestone$isc",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": true,
+    "requestable": true,
+    "always_requestable": false,
+    "circulates": true,
+    "remote_storage": "",
+    "fulfillment_unit": "General",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/firestone$isc.json",
+    "library": {
+      "label": "Firestone Library",
+      "code": "firestone",
+      "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": [
+      "PA"
+    ]
   },
   {
     "label": "Travel Guides",
@@ -2549,7 +2635,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "United Nations Collection",
@@ -2569,7 +2655,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -2589,7 +2675,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Video Collection: Circulation Desk",
@@ -2609,7 +2695,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Video Library Reserve",
@@ -2629,7 +2715,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Very large books",
@@ -2649,7 +2735,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PA"
+    ]
   },
   {
     "label": "Very large books: Non-Circulating",
@@ -2669,7 +2757,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PA"
+    ]
   },
   {
     "label": "Zeiss Wildlife Collection",
@@ -2689,47 +2779,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Cataloging",
-    "code": "lewis$cat",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/lewis$cat.json",
-    "library": {
-      "label": "Lewis Library",
-      "code": "lewis",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Circ",
-    "code": "lewis$circ",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/lewis$circ.json",
-    "library": {
-      "label": "Lewis Library",
-      "code": "lewis",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Documents",
@@ -2753,7 +2803,9 @@
       "code": "lewis",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PN"
+    ]
   },
   {
     "label": "E/F Oversize and Atlases",
@@ -2773,7 +2825,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PN"
+    ]
   },
   {
     "label": "GIS and Digital Map Center",
@@ -2793,7 +2847,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Graduate Reading",
@@ -2813,7 +2867,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Limited Access",
@@ -2833,7 +2887,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PN"
+    ]
   },
   {
     "label": "Limited Access",
@@ -2853,7 +2909,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Computer Media",
@@ -2873,7 +2929,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Map Collection",
@@ -2893,7 +2949,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Map Collection. Lateral File",
@@ -2913,7 +2969,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Map Collection. Reference Maps",
@@ -2933,7 +2989,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Map Collection. Map Case",
@@ -2953,7 +3009,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Map Collection. Map Case Max",
@@ -2973,7 +3029,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Multimedia",
@@ -2993,7 +3049,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Microforms",
@@ -3013,7 +3069,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "New Book Shelf",
@@ -3033,7 +3089,26 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "PW",
+      "PL",
+      "PT",
+      "PF",
+      "PJ",
+      "PK",
+      "PH",
+      "PM",
+      "PG",
+      "PN",
+      "PA",
+      "IL",
+      "QL",
+      "PS",
+      "PZ",
+      "QK",
+      "PB"
+    ]
   },
   {
     "label": "Pamphlet",
@@ -3053,7 +3128,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Peyton Hall Observing Room",
@@ -3073,7 +3148,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Remote Storage (ReCAP): Lewis Library Use Only",
@@ -3097,7 +3172,13 @@
       "code": "lewis",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "QA",
+      "PN",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP): Lewis Library Use Only",
@@ -3121,7 +3202,13 @@
       "code": "lewis",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "QA",
+      "QC",
+      "PS",
+      "QP"
+    ]
   },
   {
     "label": "Reference (Fine Hall Wing)",
@@ -3141,7 +3228,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PN"
+    ]
   },
   {
     "label": "Reference (Information Desk)",
@@ -3161,7 +3250,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Course Reserve",
@@ -3181,7 +3270,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Term Loan Reserves",
@@ -3201,10 +3290,10 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
-    "label": "Serials (shelved by serial title)",
+    "label": "Lewis Library - Serials (Off-Site)",
     "code": "lewis$serial",
     "aeon_location": false,
     "recap_electronic_delivery_location": false,
@@ -3221,7 +3310,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PN"
+    ]
   },
   {
     "label": "Stacks",
@@ -3241,7 +3332,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PN"
+    ]
   },
   {
     "label": "SuDoc Collection",
@@ -3261,7 +3354,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Theses",
@@ -3281,7 +3374,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PN"
+    ]
   },
   {
     "label": "",
@@ -3301,47 +3396,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Cataloging",
-    "code": "marquand$cat",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/marquand$cat.json",
-    "library": {
-      "label": "Marquand Library",
-      "code": "marquand",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Circulation",
-    "code": "marquand$circ",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/marquand$circ.json",
-    "library": {
-      "label": "Marquand Library",
-      "code": "marquand",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Tang Reading Room Remote Storage: Marquand Use Only",
@@ -3361,7 +3416,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PJ"
+    ]
   },
   {
     "label": "Computer Media",
@@ -3381,7 +3438,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Microforms Remote Storage: Marquand Use Only",
@@ -3401,7 +3458,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PJ"
+    ]
   },
   {
     "label": "Manuscripts",
@@ -3421,7 +3480,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PJ"
+    ]
   },
   {
     "label": "Manuscripts: Reference",
@@ -3441,7 +3502,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PJ"
+    ]
   },
   {
     "label": "Photography",
@@ -3461,7 +3524,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PJ"
+    ]
   },
   {
     "label": "Photography Reference",
@@ -3481,7 +3546,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PJ"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP): Marquand Library Use Only",
@@ -3505,7 +3572,33 @@
       "code": "marquand",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "PJ",
+      "QA",
+      "QC",
+      "QP"
+    ]
+  },
+  {
+    "label": "Remote Storage (ReCAP): Marquand Library Use Only",
+    "code": "marquand$pv",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": true,
+    "requestable": true,
+    "always_requestable": false,
+    "circulates": true,
+    "remote_storage": "recap_rmt",
+    "fulfillment_unit": "Closed",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/marquand$pv.json",
+    "library": {
+      "label": "Marquand Library",
+      "code": "marquand",
+      "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": []
   },
   {
     "label": "Remote Storage (ReCAP): Marquand Library Use Only Rare Books",
@@ -3529,7 +3622,9 @@
       "code": "marquand",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PJ"
+    ]
   },
   {
     "label": "Reference Remote Storage: Marquand Use Only",
@@ -3549,7 +3644,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PJ"
+    ]
   },
   {
     "label": "Reserve",
@@ -3569,7 +3666,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PJ"
+    ]
   },
   {
     "label": "Storage",
@@ -3589,7 +3688,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PJ"
+    ]
   },
   {
     "label": "Barr Ferree Collection",
@@ -3609,7 +3710,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PJ"
+    ]
   },
   {
     "label": "Remote Storage: Marquand Use Only",
@@ -3621,7 +3724,7 @@
     "always_requestable": true,
     "circulates": false,
     "remote_storage": "",
-    "fulfillment_unit": "Limited",
+    "fulfillment_unit": "Closed",
     "url": "https://bibdata.princeton.edu/locations/holding_locations/marquand$stacks.json",
     "library": {
       "label": "Marquand Library",
@@ -3629,7 +3732,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PJ"
+    ]
   },
   {
     "label": "Rare Books: Miscellanea",
@@ -3649,7 +3754,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -3669,7 +3774,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Workroom",
@@ -3689,7 +3794,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PJ"
+    ]
   },
   {
     "label": "Rare Books",
@@ -3709,7 +3816,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Audio Visual (Circulation Desk)",
@@ -3729,47 +3836,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Cataloging",
-    "code": "mendel$cat",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/mendel$cat.json",
-    "library": {
-      "label": "Mendel Music Library",
-      "code": "mendel",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Circulation",
-    "code": "mendel$circ",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/mendel$circ.json",
-    "library": {
-      "label": "Mendel Music Library",
-      "code": "mendel",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PK"
+    ]
   },
   {
     "label": "Facsimiles",
@@ -3789,7 +3858,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Graduate Reserve",
@@ -3809,7 +3878,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Locked",
@@ -3829,7 +3898,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PK"
+    ]
   },
   {
     "label": "New Book Shelf",
@@ -3849,7 +3920,26 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "PW",
+      "PL",
+      "PT",
+      "PF",
+      "PJ",
+      "PK",
+      "PH",
+      "PM",
+      "PG",
+      "PN",
+      "PA",
+      "IL",
+      "QL",
+      "PS",
+      "PZ",
+      "QK",
+      "PB"
+    ]
   },
   {
     "label": "Bound Periodicals",
@@ -3869,7 +3959,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Remote Storage (ReCAP)",
@@ -3893,7 +3983,13 @@
       "code": "mendel",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "PK",
+      "QA",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP): Mendel Music Library Use Only",
@@ -3917,7 +4013,14 @@
       "code": "mendel",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "PK",
+      "QA",
+      "IL",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Reference",
@@ -3937,7 +4040,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Reserve",
@@ -3957,7 +4060,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Reading Room",
@@ -3977,7 +4080,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PK"
+    ]
   },
   {
     "label": "Stacks",
@@ -3997,7 +4102,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -4017,47 +4122,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Cataloging",
-    "code": "mudd$cat",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/mudd$cat.json",
-    "library": {
-      "label": "Mudd Manuscript Library",
-      "code": "mudd",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Circulation",
-    "code": "mudd$circ",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/mudd$circ.json",
-    "library": {
-      "label": "Mudd Manuscript Library",
-      "code": "mudd",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Microforms",
@@ -4077,7 +4142,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PK"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP): Mudd Library Use Only",
@@ -4101,7 +4168,35 @@
       "code": "mudd",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PH"
+    ]
+  },
+  {
+    "label": "Remote Storage (ReCAP): Mudd Archival. Special Collections Use Only",
+    "code": "mudd$phr",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": false,
+    "remote_storage": "recap_rmt",
+    "fulfillment_unit": "Closed",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/mudd$phr.json",
+    "library": {
+      "label": "Mudd Manuscript Library",
+      "code": "mudd",
+      "order": 0
+    },
+    "holding_library": {
+      "label": "ReCAP",
+      "code": "recap",
+      "order": 0
+    },
+    "delivery_locations": [
+      "PH"
+    ]
   },
   {
     "label": "Princetoniana Collection",
@@ -4121,7 +4216,29 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PK"
+    ]
+  },
+  {
+    "label": "Mudd Archival. Special Collections Use Only",
+    "code": "mudd$scamudd",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": false,
+    "remote_storage": "",
+    "fulfillment_unit": "Limited",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/mudd$scamudd.json",
+    "library": {
+      "label": "Mudd Manuscript Library",
+      "code": "mudd",
+      "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": []
   },
   {
     "label": "Stacks",
@@ -4141,7 +4258,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PH"
+    ]
   },
   {
     "label": "",
@@ -4161,55 +4280,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "ETAS",
-    "code": "online$etas",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": false,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": false,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/online$etas.json",
-    "library": {
-      "label": "Electronic Access",
-      "code": "online",
-      "order": 0
-    },
-    "holding_library": {
-      "label": "Firestone Library",
-      "code": "firestone",
-      "order": 0
-    },
-    "hours_location": null
-  },
-  {
-    "label": "",
-    "code": "online$etasrcp",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": true,
-    "open": false,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": false,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/online$etasrcp.json",
-    "library": {
-      "label": "Electronic Access",
-      "code": "online",
-      "order": 0
-    },
-    "holding_library": {
-      "label": "ReCAP",
-      "code": "recap",
-      "order": 0
-    },
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -4229,47 +4300,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Cataloging",
-    "code": "plasma$cat",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/plasma$cat.json",
-    "library": {
-      "label": "Harold P. Furth Plasma Physics Library",
-      "code": "plasma",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Circulation",
-    "code": "plasma$circ",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/plasma$circ.json",
-    "library": {
-      "label": "Harold P. Furth Plasma Physics Library",
-      "code": "plasma",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Indexes & Abstracts",
@@ -4289,7 +4320,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Seminar Room",
@@ -4309,7 +4340,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Office",
@@ -4329,7 +4360,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "New Book Shelf",
@@ -4349,7 +4380,26 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "PW",
+      "PL",
+      "PT",
+      "PF",
+      "PJ",
+      "PK",
+      "PH",
+      "PM",
+      "PG",
+      "PN",
+      "PA",
+      "IL",
+      "QL",
+      "PS",
+      "PZ",
+      "QK",
+      "PB"
+    ]
   },
   {
     "label": "Periodicals",
@@ -4369,7 +4419,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Tech. Reports",
@@ -4389,7 +4439,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Reference",
@@ -4409,7 +4459,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Reserve",
@@ -4429,7 +4479,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Ready Reference",
@@ -4449,7 +4499,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Serials",
@@ -4469,7 +4519,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Stacks",
@@ -4489,7 +4539,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PA"
+    ]
   },
   {
     "label": "Theses",
@@ -4509,7 +4561,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -4529,7 +4581,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Sylvia Beach Collection (Beach)",
@@ -4549,27 +4601,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Rare Books Cataloging",
-    "code": "rare$cat",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/rare$cat.json",
-    "library": {
-      "label": "Special Collections",
-      "code": "rare",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Eugene B. Cook Chess Collection (Cook)",
@@ -4589,7 +4621,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "East Asian Library (Gest) Rare Books",
@@ -4609,7 +4641,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PL"
+    ]
   },
   {
     "label": "Cotsen Children's Library",
@@ -4629,7 +4663,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PG"
+    ]
   },
   {
     "label": "Cotsen Children's Library Reference Collection",
@@ -4649,7 +4685,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Edwards Collection",
@@ -4669,7 +4705,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Rare Books",
@@ -4689,7 +4725,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PG"
+    ]
   },
   {
     "label": "Dulles Reference Collection",
@@ -4709,7 +4747,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "J. Harlin O'Connell Collection",
@@ -4729,7 +4767,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Laurance Roberts Carton Hunting Collection",
@@ -4749,7 +4787,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Kenneth McKenzie Fable Collection",
@@ -4769,7 +4807,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Miriam Y. Holden Collection",
@@ -4789,7 +4827,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Incunabula Collection",
@@ -4809,7 +4847,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Kane Collection",
@@ -4829,7 +4867,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Otto von Kienbusch Angling Collection",
@@ -4849,7 +4887,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Charles Scribner Collection of Charles Lamb",
@@ -4869,7 +4907,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Robert Metzdorf Collection",
@@ -4889,7 +4927,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Rare Books Oversize",
@@ -4909,7 +4947,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Morris L. Parrish Collection",
@@ -4929,7 +4967,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Kenneth H. Rockey Angling Collection",
@@ -4949,7 +4987,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Leonard Milberg Coll. of American Poetry",
@@ -4969,7 +5007,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Rare Books Transfer",
@@ -4989,7 +5027,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Technical Services Reference",
@@ -5009,7 +5047,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Harry B. Vandeventer Poetry Collection",
@@ -5029,7 +5067,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Orlando F. Weber Collection of Economic History",
@@ -5049,7 +5087,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Graphic Arts Collection",
@@ -5069,7 +5107,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PG"
+    ]
   },
   {
     "label": "Graphic Arts Reference Collection",
@@ -5089,7 +5129,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Graphic Arts Collection",
@@ -5109,7 +5149,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "East Asian Library Rare Books",
@@ -5129,7 +5169,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PL"
+    ]
   },
   {
     "label": "Cotsen Children's Library",
@@ -5149,7 +5191,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "East Asian",
@@ -5169,7 +5211,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Graphic Arts",
@@ -5189,7 +5231,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Manuscripts",
@@ -5209,7 +5251,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Numismatics",
@@ -5229,7 +5271,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Historic Maps",
@@ -5249,7 +5291,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Rare Books",
@@ -5269,7 +5311,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Western Americana",
@@ -5289,7 +5331,26 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "PW",
+      "PL",
+      "PT",
+      "PF",
+      "PJ",
+      "PK",
+      "PH",
+      "PM",
+      "PG",
+      "PN",
+      "PA",
+      "QL",
+      "PS",
+      "PZ",
+      "QK",
+      "PB",
+      "QX"
+    ]
   },
   {
     "label": "Laurence Hutton Collection",
@@ -5309,7 +5370,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "East Asian Library Rare Books",
@@ -5329,7 +5390,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "East Asian Library Rare Books",
@@ -5349,7 +5410,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "East Asian Library Rare Books",
@@ -5369,7 +5430,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "East Asian Library Rare Books",
@@ -5389,7 +5450,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PL"
+    ]
   },
   {
     "label": "East Asian Library Rare Books",
@@ -5409,7 +5472,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PL"
+    ]
   },
   {
     "label": "Rare Books Historic Map Collection",
@@ -5429,7 +5494,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Manuscripts Collection",
@@ -5449,7 +5514,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -5469,7 +5534,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Numismatics Collection",
@@ -5489,7 +5554,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Numismatics Collection Reference",
@@ -5509,7 +5574,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Princeton Borough Collection",
@@ -5529,7 +5594,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Remote Storage (ReCAP):  Special Collections Use Only",
@@ -5553,7 +5618,9 @@
       "code": "rare",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PG"
+    ]
   },
   {
     "label": "Robert Patterson Collection",
@@ -5573,7 +5640,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Robert H. Taylor Collection",
@@ -5593,7 +5660,239 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
+  },
+  {
+    "label": "Cotsen Children's Library Archival. Special Collections Use Only",
+    "code": "rare$scactsn",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": true,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": true,
+    "remote_storage": "",
+    "fulfillment_unit": "Limited",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/rare$scactsn.json",
+    "library": {
+      "label": "Special Collections",
+      "code": "rare",
+      "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": []
+  },
+  {
+    "label": "Rare Books Archival. Special Collections Use Only",
+    "code": "rare$scaex",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": false,
+    "remote_storage": "",
+    "fulfillment_unit": "Limited",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/rare$scaex.json",
+    "library": {
+      "label": "Special Collections",
+      "code": "rare",
+      "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": []
+  },
+  {
+    "label": "Graphic Arts Archival. Special Collections Use Only",
+    "code": "rare$scagax",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": false,
+    "remote_storage": "",
+    "fulfillment_unit": "Limited",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/rare$scagax.json",
+    "library": {
+      "label": "Special Collections",
+      "code": "rare",
+      "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": []
+  },
+  {
+    "label": "Manuscripts Archival. Special Collections Use Only",
+    "code": "rare$scahsvm",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": false,
+    "remote_storage": "",
+    "fulfillment_unit": "Limited",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/rare$scahsvm.json",
+    "library": {
+      "label": "Special Collections",
+      "code": "rare",
+      "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": []
+  },
+  {
+    "label": "Manuscripts Archival. Special Collections Use Only",
+    "code": "rare$scamss",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": false,
+    "remote_storage": "",
+    "fulfillment_unit": "Limited",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/rare$scamss.json",
+    "library": {
+      "label": "Special Collections",
+      "code": "rare",
+      "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": []
+  },
+  {
+    "label": "Theater Archival. Special Collections Use Only",
+    "code": "rare$scathx",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": false,
+    "remote_storage": "",
+    "fulfillment_unit": "Limited",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/rare$scathx.json",
+    "library": {
+      "label": "Special Collections",
+      "code": "rare",
+      "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": []
+  },
+  {
+    "label": "Western Americana Archival. Special Collections Use Only",
+    "code": "rare$scawa",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": false,
+    "remote_storage": "",
+    "fulfillment_unit": "Limited",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/rare$scawa.json",
+    "library": {
+      "label": "Special Collections",
+      "code": "rare",
+      "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": []
+  },
+  {
+    "label": "Remote Storage (ReCAP): Cotsen Children's Library Archival. Special Collections Use Only",
+    "code": "rare$xcr",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": false,
+    "remote_storage": "recap_rmt",
+    "fulfillment_unit": "Closed",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/rare$xcr.json",
+    "library": {
+      "label": "Special Collections",
+      "code": "rare",
+      "order": 0
+    },
+    "holding_library": {
+      "label": "ReCAP",
+      "code": "recap",
+      "order": 0
+    },
+    "delivery_locations": []
+  },
+  {
+    "label": "Remote Storage (ReCAP): Graphic Arts Archival. Special Collections Use Only",
+    "code": "rare$xgr",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": false,
+    "remote_storage": "recap_rmt",
+    "fulfillment_unit": "Closed",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/rare$xgr.json",
+    "library": {
+      "label": "Special Collections",
+      "code": "rare",
+      "order": 0
+    },
+    "holding_library": {
+      "label": "ReCAP",
+      "code": "recap",
+      "order": 0
+    },
+    "delivery_locations": []
+  },
+  {
+    "label": "Remote Storage (ReCAP): Rare Books Archival. Special Collections Use Only",
+    "code": "rare$xrr",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": false,
+    "remote_storage": "recap_rmt",
+    "fulfillment_unit": "Closed",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/rare$xrr.json",
+    "library": {
+      "label": "Special Collections",
+      "code": "rare",
+      "order": 0
+    },
+    "holding_library": {
+      "label": "ReCAP",
+      "code": "recap",
+      "order": 0
+    },
+    "delivery_locations": []
+  },
+  {
+    "label": "Cotsen Children's Library Archival. Special Collections Use Only",
+    "code": "rare$scahsvc",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": false,
+    "remote_storage": "",
+    "fulfillment_unit": "Limited",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/rare$scahsvc.json",
+    "library": {
+      "label": "Special Collections",
+      "code": "rare",
+      "order": 0
+    },
+    "holding_library": null,
+    "delivery_locations": []
   },
   {
     "label": "Theatre Collection",
@@ -5613,7 +5912,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Theatre Collection Reference",
@@ -5633,7 +5932,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -5653,7 +5952,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Junius Morgan Collection",
@@ -5673,7 +5972,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "John Shaw Pierson Civil War Collection",
@@ -5693,7 +5992,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Western Americana Collection",
@@ -5713,7 +6012,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Western Americana Reference Collection",
@@ -5737,7 +6036,26 @@
       "code": "rare",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "PW",
+      "PL",
+      "PT",
+      "PF",
+      "PJ",
+      "PK",
+      "PH",
+      "PM",
+      "PG",
+      "PN",
+      "PA",
+      "IL",
+      "QL",
+      "PS",
+      "PZ",
+      "QK",
+      "PB"
+    ]
   },
   {
     "label": "William H. Scheide Library",
@@ -5757,7 +6075,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "John Witherspoon Library",
@@ -5777,7 +6095,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Remote Storage (ReCAP): Cotsen Children's Library. Special Collections Use Only",
@@ -5801,7 +6119,9 @@
       "code": "rare",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PG"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP): Graphic Arts. Special Collections Use Only",
@@ -5825,7 +6145,9 @@
       "code": "rare",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PG"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP): Manuscripts. Special Collections Use Only",
@@ -5849,7 +6171,33 @@
       "code": "rare",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PH"
+    ]
+  },
+  {
+    "label": "Remote Storage (ReCAP): Manuscripts. Special Collections Use Only",
+    "code": "rare$xmr",
+    "aeon_location": false,
+    "recap_electronic_delivery_location": false,
+    "open": false,
+    "requestable": false,
+    "always_requestable": false,
+    "circulates": false,
+    "remote_storage": "recap_rmt",
+    "fulfillment_unit": "Closed",
+    "url": "https://bibdata.princeton.edu/locations/holding_locations/rare$xmr.json",
+    "library": {
+      "label": "Special Collections",
+      "code": "rare",
+      "order": 0
+    },
+    "holding_library": {
+      "label": "ReCAP",
+      "code": "recap",
+      "order": 0
+    },
+    "delivery_locations": []
   },
   {
     "label": "Remote Storage (ReCAP): Numismatics. Special Collections Use Only",
@@ -5873,7 +6221,9 @@
       "code": "rare",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PG"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP): Historic Maps. Special Collections Use Only",
@@ -5897,7 +6247,9 @@
       "code": "rare",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PG"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP): Rare Books. Special Collections Use Only",
@@ -5921,7 +6273,9 @@
       "code": "rare",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PG"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP): Western Americana. Special Collections Use Only",
@@ -5945,7 +6299,29 @@
       "code": "rare",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "QT",
+      "PW",
+      "PL",
+      "PT",
+      "PF",
+      "PJ",
+      "PK",
+      "PH",
+      "PM",
+      "QA",
+      "PG",
+      "PN",
+      "PA",
+      "QC",
+      "QL",
+      "PS",
+      "PZ",
+      "QK",
+      "PB",
+      "QX"
+    ]
   },
   {
     "label": "Remote Storage (ReCAP):  Special Collections Use Only",
@@ -5969,7 +6345,9 @@
       "code": "rare",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PG"
+    ]
   },
   {
     "label": "Remote Storage: Government Documents",
@@ -5993,7 +6371,23 @@
       "code": "firestone",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "QT",
+      "PW",
+      "PL",
+      "PT",
+      "PF",
+      "PJ",
+      "PK",
+      "PM",
+      "QA",
+      "PN",
+      "PA",
+      "IL",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Remote Storage: JSTOR Restricted",
@@ -6013,7 +6407,12 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "QA",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Remote Storage",
@@ -6033,7 +6432,21 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "QT",
+      "PW",
+      "PL",
+      "PT",
+      "PK",
+      "PM",
+      "QA",
+      "PN",
+      "PA",
+      "IL",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Remote Storage: Restricted Backup Copies",
@@ -6053,7 +6466,12 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "QA",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Remote Storage: Plasma Physics use only",
@@ -6077,7 +6495,14 @@
       "code": "plasma",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "QT",
+      "QA",
+      "PN",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Remote Storage: Reading Room use only",
@@ -6097,7 +6522,13 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "QA",
+      "IL",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Remote Storage: Video Collection",
@@ -6121,7 +6552,21 @@
       "code": "firestone",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "QT",
+      "PW",
+      "PL",
+      "PT",
+      "PK",
+      "PM",
+      "QA",
+      "PN",
+      "PA",
+      "IL",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Remote Storage: Broadcast Center use only",
@@ -6141,7 +6586,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -6161,7 +6606,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Borrow Direct Service. Princeton University Library",
@@ -6181,27 +6626,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "ILL Circ",
-    "code": "resshare$circ",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/resshare$circ.json",
-    "library": {
-      "label": "Resource Sharing",
-      "code": "resshare",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "ReCAP Partner Materials",
@@ -6221,7 +6646,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Lending Resource Sharing Requests",
@@ -6241,7 +6666,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Borrowing Resource Sharing Requests",
@@ -6261,7 +6686,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -6281,7 +6706,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Remote Storage",
@@ -6301,7 +6726,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "QX"
+    ]
   },
   {
     "label": "Remote Storage",
@@ -6321,7 +6748,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "QX"
+    ]
   },
   {
     "label": "Remote Storage",
@@ -6341,27 +6770,9 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Circulation",
-    "code": "stokes$circ",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/stokes$circ.json",
-    "library": {
-      "label": "Stokes Library",
-      "code": "stokes",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "QX"
+    ]
   },
   {
     "label": "Indexes. Wallace Hall",
@@ -6381,7 +6792,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Computer Media",
@@ -6401,7 +6812,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Microforms. Wallace Hall",
@@ -6421,7 +6832,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Wallace Hall",
@@ -6441,7 +6852,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Remote Storage (ReCAP): Stokes Library Use Only",
@@ -6465,7 +6876,13 @@
       "code": "stokes",
       "order": 0
     },
-    "hours_location": null
+    "delivery_locations": [
+      "QT",
+      "PM",
+      "QA",
+      "QC",
+      "QP"
+    ]
   },
   {
     "label": "Reference. Wallace Hall",
@@ -6485,7 +6902,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Reserve. Wallace Hall",
@@ -6505,7 +6922,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Wallace Hall (SPIA)",
@@ -6525,7 +6942,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Atlases. Wallace Hall",
@@ -6545,7 +6962,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Periodicals. Wallace Hall",
@@ -6565,7 +6982,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Writing Shelf. Wallace Hall",
@@ -6585,7 +7002,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Reserve. Wallace Hall",
@@ -6605,7 +7022,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Wallace Hall (SPR)",
@@ -6625,7 +7042,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Periodicals. Wallace Hall",
@@ -6645,7 +7062,26 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": [
+      "PQ",
+      "PW",
+      "PL",
+      "PT",
+      "PF",
+      "PJ",
+      "PK",
+      "PH",
+      "PM",
+      "PG",
+      "PN",
+      "PA",
+      "IL",
+      "QL",
+      "PS",
+      "PZ",
+      "QK",
+      "PB"
+    ]
   },
   {
     "label": "",
@@ -6665,27 +7101,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Acquisitions",
-    "code": "techserv$acq",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/techserv$acq.json",
-    "library": {
-      "label": "Technical Services",
-      "code": "techserv",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Acqord Orders ACQ",
@@ -6705,7 +7121,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Acqord Orders ACQ",
@@ -6725,7 +7141,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Acqord Orders ACQ",
@@ -6745,47 +7161,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Cataloging",
-    "code": "techserv$cat",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/techserv$cat.json",
-    "library": {
-      "label": "Technical Services",
-      "code": "techserv",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Circulation",
-    "code": "techserv$circ",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/techserv$circ.json",
-    "library": {
-      "label": "Technical Services",
-      "code": "techserv",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Cataloging and Metadata Services",
@@ -6805,7 +7181,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -6825,7 +7201,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -6845,7 +7221,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "",
@@ -6865,7 +7241,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "American Civilization (AC) OBSOLETE",
@@ -6885,47 +7261,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "OBSOLETE",
-    "code": "zobsolete$zanga",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/zobsolete$zanga.json",
-    "library": {
-      "label": "Obsolete Locations",
-      "code": "zobsolete",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "OBSOLETE",
-    "code": "zobsolete$zangb",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/zobsolete$zangb.json",
-    "library": {
-      "label": "Obsolete Locations",
-      "code": "zobsolete",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Books in Arabic (Arab). Firestone OBSOLETE",
@@ -6945,47 +7281,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "OBS Cataloging",
-    "code": "zobsolete$zcat",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/zobsolete$zcat.json",
-    "library": {
-      "label": "Obsolete Locations",
-      "code": "zobsolete",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "OBS Circ",
-    "code": "zobsolete$zcirc",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/zobsolete$zcirc.json",
-    "library": {
-      "label": "Obsolete Locations",
-      "code": "zobsolete",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Data Statistical Services (DSS). Firestone OBSOLETE",
@@ -7005,7 +7301,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "East Asian Library (Gest): Periodicals OBSOLETE",
@@ -7025,7 +7321,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "David Paton Collection (DPA). OBSOLETE",
@@ -7045,7 +7341,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Online Resources",
@@ -7065,27 +7361,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Folio Databases (Fol) OBSOLETE",
-    "code": "zobsolete$zfol",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/zobsolete$zfol.json",
-    "library": {
-      "label": "Obsolete Locations",
-      "code": "zobsolete",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "East Asian Library (Gest)OBSOLETE",
@@ -7105,7 +7381,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Firestone Microforms Services: East Asian OBSOLETE",
@@ -7125,7 +7401,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "East Asian Library (Gest): Periodicals OBSOLETE",
@@ -7145,7 +7421,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "East Asian Library (Gest): Permanent Reserve OBSOLETE",
@@ -7165,7 +7441,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "East Asian Library (Gest): Periodicals OBSOLETE",
@@ -7185,7 +7461,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "East Asian Library (Gest): Rare Books OBSOLETE",
@@ -7205,7 +7481,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Indo-European Philology Coll. (Indo). Firestone OBSOLETE",
@@ -7225,7 +7501,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Industrial Relations Library (IR). Firestone OBSOLETE",
@@ -7245,7 +7521,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Spoken Word Recordings (LISC): OBSOLETE",
@@ -7265,7 +7541,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Magie Coll. OBSOLETE",
@@ -7285,7 +7561,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Mycenaean Collection (Mycen). Firestone OBSOLETE",
@@ -7305,7 +7581,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Near East Department Collection (NED). Jones Hall",
@@ -7325,7 +7601,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "New Order Request OBSOLETE",
@@ -7345,7 +7621,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "ZOPAC Circulation Desk",
@@ -7365,7 +7641,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Pliny Fisk Library (PF). Firestone OBSOLETE",
@@ -7385,7 +7661,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Donald E. Stokes Library (PIAPR): Periodicals. OBSOLETE",
@@ -7405,7 +7681,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Princeton Inn College (PIC) OBSOLETE",
@@ -7425,7 +7701,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": ".Choose a Pickup Location",
@@ -7445,7 +7721,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Pitney Collection (PITN). Firestone OBSOLETE",
@@ -7465,7 +7741,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Problem Record OBSOLETE",
@@ -7485,7 +7761,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "OBS Reference",
@@ -7505,7 +7781,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Romance Languages Grad.S.Rm (RS):Reserve.Firestone OBSOLETE",
@@ -7525,7 +7801,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Temporarily shelved in Room B-1-M Firestone Library OBSOLETE",
@@ -7545,7 +7821,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Politics Graduate Study Rm (SHP) Reserve. Firestone OBSOLETE",
@@ -7565,7 +7841,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Anthropology Grad. Study Rm. (SNST): Reserve. OBSOLETE",
@@ -7585,7 +7861,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Philosophy GSR (SP): Reserve. Firestone OBSOLETE",
@@ -7605,7 +7881,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "History of Science Grad S.Rm. (SSS): Reserve. OBSOLETE",
@@ -7625,7 +7901,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Economics GSR (SX): Reserve. Firestone OBSOLETE",
@@ -7645,7 +7921,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Marquand Library (SA) OBSOLETE",
@@ -7665,7 +7941,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Classics Graduate Study (SCG). OBSOLETE",
@@ -7685,7 +7961,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Classics Graduate Study (SCL). OBSOLETE",
@@ -7705,7 +7981,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Classics Graduate Study (SCP). OBSOLETE",
@@ -7725,7 +8001,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Public Administration Collection (SF). Firestone OBSOLETE",
@@ -7745,7 +8021,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG) OBSOLETE",
@@ -7765,7 +8041,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): Atlases A/E OversizeOBSOLETE",
@@ -7785,7 +8061,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): CageOBSOLETE",
@@ -7805,7 +8081,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): CD-ROMsOBSOLETE",
@@ -7825,7 +8101,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): Digital Map and GIS CenterOBSOLETE",
@@ -7845,7 +8121,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): DictionariesOBSOLETE",
@@ -7865,7 +8141,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): DocumentsOBSOLETE",
@@ -7885,7 +8161,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): Desk ReferenceOBSOLETE",
@@ -7905,7 +8181,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): MicroformsOBSOLETE",
@@ -7925,7 +8201,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): Librarian's OfficeOBSOLETE",
@@ -7945,7 +8221,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): Map CollectionOBSOLETE",
@@ -7965,7 +8241,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): ReserveOBSOLETE",
@@ -7985,7 +8261,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): Reference AtlasesOBSOLETE",
@@ -8005,7 +8281,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): Permanent ReserveOBSOLETE",
@@ -8025,7 +8301,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): SuDocs CollectionOBSOLETE",
@@ -8045,7 +8321,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Geosciences Library (SG): Serials Shelved by Series TitleOBS",
@@ -8065,7 +8341,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Politics Graduate Study Room (SHP). Firestone OBSOLETE",
@@ -8085,7 +8361,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Fine Hall Library (SM)OBSOLETE",
@@ -8105,7 +8381,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Fine Hall Library (SM): Lower LevelOBSOLETE",
@@ -8125,7 +8401,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Latin American Graduate Study Room (SLA). OBSOLETE",
@@ -8145,7 +8421,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Fine Hall Library (SM) OBSOLETE",
@@ -8165,7 +8441,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Fine Hall Library (SM): Microforms OBSOLETE",
@@ -8185,7 +8461,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Fine Hall Library (SM): Graduate Reserve OBSOLETE",
@@ -8205,7 +8481,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Fine Hall Library (SM): Serials (shelved by title) OBSOLETE",
@@ -8225,7 +8501,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Fine Hall Library (SM): Limited Access OBSOLETE",
@@ -8245,7 +8521,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Fine Hall Library (SM): Oversize OBSOLETE",
@@ -8265,7 +8541,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Fine Hall Library (SM): Pamphlet OBSOLETE",
@@ -8285,7 +8561,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Fine Hall Library (SM): Reserve OBSOLETE",
@@ -8305,7 +8581,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Fine Hall Library (SM): Shelved with Books OBSOLETE",
@@ -8325,7 +8601,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Fine Hall Library (SM): Theses - Limited Access OBSOLETE",
@@ -8345,7 +8621,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Astrophysics Library (SO) OBSOLETE",
@@ -8365,7 +8641,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Astrophysics Library (SO): Peyton Hall Observing Rm OBSOLETE",
@@ -8385,7 +8661,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Astrophysics Library (SO): CD-ROMs and Videos OBSOLETE",
@@ -8405,7 +8681,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Astrophysics Library (SO):Serials (shelved by title)OBSOLETE",
@@ -8425,7 +8701,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Astrophysics Library (SO):Journals, Shelved by TitleOBSOLETE",
@@ -8445,7 +8721,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Astrophysics Library (SO): Librarian's Office OBSOLETE",
@@ -8465,7 +8741,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Astrophysics Library (SO): Slide Collection OBSOLETE",
@@ -8485,7 +8761,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Astrophysics Library (SO): Reserve OBSOLETE",
@@ -8505,7 +8781,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Astrophysics Library (SO):Serials (shelved by title)OBSOLETE",
@@ -8525,7 +8801,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Astrophysics Library (SO):Serials (shelved by title)OBSOLETE",
@@ -8545,7 +8821,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Astrophysics Library (SO): Theses OBSOLETE",
@@ -8565,7 +8841,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Philosophy Graduate Study Room (SP). Firestone OBSOLETE",
@@ -8585,7 +8861,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "OBSOLETE",
@@ -8605,7 +8881,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Donald E. Stokes Library (SPIA): Pamphlets. OBSOLETE",
@@ -8625,7 +8901,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Comparative Literature GSR. (SPL).Firestone OBSOLETE",
@@ -8645,7 +8921,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "OBSOLETE",
@@ -8665,7 +8941,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Chemistry Library (SQ) OBSOLETE",
@@ -8685,7 +8961,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Chemistry Library (SQ): Closed Stacks OBSOLETE",
@@ -8705,7 +8981,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Chemistry Library (SQ): Desk Reference OBSOLETE",
@@ -8725,7 +9001,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Chemistry Library (SQ): Microforms OBSOLETE",
@@ -8745,7 +9021,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Chemistry Library (SQ): Permanent Reserve OBSOLETE",
@@ -8765,7 +9041,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Chemistry Library (SQ): Periodicals OBSOLETE",
@@ -8785,7 +9061,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Chemistry Library (SQ): Reserve OBSOLETE",
@@ -8805,7 +9081,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Chemistry Library (SQ): Theses (Closed Stacks) OBSOLETE",
@@ -8825,7 +9101,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Social Science Reference Center (SSRC). OBSOLETE",
@@ -8845,47 +9121,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Government Documents Collection (DOCS). Census. Firestone",
-    "code": "zobsolete$zssrcdc",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": false,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/zobsolete$zssrcdc.json",
-    "library": {
-      "label": "Obsolete Locations",
-      "code": "zobsolete",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Data and Statistical Services (DSS):Stat Abstracts Firestone",
-    "code": "zobsolete$zssrcfo",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": false,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/zobsolete$zssrcfo.json",
-    "library": {
-      "label": "Obsolete Locations",
-      "code": "zobsolete",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Social Sci. Ref. Center (SSRC): Ready Ref. OBSOLETE",
@@ -8905,7 +9141,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Annex A, Forrestal (Engineering) OBSOLETE",
@@ -8925,7 +9161,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Street Library (Street) OBSOLETE",
@@ -8945,7 +9181,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW) OBSOLETE",
@@ -8965,7 +9201,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Microforms OBSOLETE",
@@ -8985,7 +9221,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Limited Access OBSOLETE",
@@ -9005,7 +9241,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Librarian's Office OBSOLETE",
@@ -9025,7 +9261,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Periodicals OBSOLETE",
@@ -9045,7 +9281,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Reserve OBSOLETE",
@@ -9065,7 +9301,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Bibliography OBSOLETE",
@@ -9085,7 +9321,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Biography OBSOLETE",
@@ -9105,7 +9341,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Career Shelf OBSOLETE",
@@ -9125,7 +9361,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Dictionaries OBSOLETE",
@@ -9145,7 +9381,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Drug Information OBSOLETE",
@@ -9165,7 +9401,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Directories OBSOLETE",
@@ -9185,7 +9421,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Encyclopedias OBSOLETE",
@@ -9205,7 +9441,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): General Reference OBSOLETE",
@@ -9225,7 +9461,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Indexes and Abstracts OBSOLETE",
@@ -9245,7 +9481,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Tests and Measurements OBSOLETE",
@@ -9265,7 +9501,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Psychology Library (SW): Writing information OBSOLETE",
@@ -9285,7 +9521,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Economics Graduate Study Room (SX). Firestone OBSOLETE",
@@ -9305,7 +9541,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Pliny Fisk Library (SXF). Firestone OBSOLETE",
@@ -9325,7 +9561,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Social Science Reference (SSRC): Index Tables.F OBSOLETE",
@@ -9345,7 +9581,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Pliny Fisk Library (SXF): Financial Serv. Firestone OBSOLETE",
@@ -9365,7 +9601,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Pliny Fisk Library (SXF): Federal Reserve.Firestone OBSOLETE",
@@ -9385,7 +9621,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Pliny Fisk Library (SXF): Index Tables. Firestone OBSOLETE",
@@ -9405,7 +9641,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Pliny Fisk Library (SXF): Ready Reference. FirestoneOBSOLETE",
@@ -9425,7 +9661,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Near East Collection (SY). Firestone OBSOLETE",
@@ -9445,7 +9681,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Near East Periodicals (SYS). Firestone OBSOLETE",
@@ -9465,7 +9701,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Biology Library (SZ) OBSOLETE",
@@ -9485,7 +9721,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Biology Library (SZ): Microforms OBSOLETE",
@@ -9505,7 +9741,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Biology Library (SZ): Indexes OBSOLETE",
@@ -9525,7 +9761,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Biology Library (SZ): Librarian's Office OBSOLETE",
@@ -9545,7 +9781,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Biology Library (SZ): Library Office OBSOLETE",
@@ -9565,7 +9801,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Fine Hall Library (SM): Permanent Reserve OBSOLETE",
@@ -9585,27 +9821,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
-  },
-  {
-    "label": "Biology Library (SZ): Periodicals OBSOLETE",
-    "code": "zobsolete$zszpe",
-    "aeon_location": false,
-    "recap_electronic_delivery_location": false,
-    "open": true,
-    "requestable": true,
-    "always_requestable": false,
-    "circulates": true,
-    "remote_storage": "",
-    "fulfillment_unit": "Closed",
-    "url": "https://bibdata.princeton.edu/locations/holding_locations/zobsolete$zszpe.json",
-    "library": {
-      "label": "Obsolete Locations",
-      "code": "zobsolete",
-      "order": 0
-    },
-    "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Biology Library (SZ): Periodicals OBSOLETE",
@@ -9625,7 +9841,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Biology Library (SZ): Reserve OBSOLETE",
@@ -9645,7 +9861,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "OBSOLETE",
@@ -9665,7 +9881,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Biology Library (SZ): Shelved with Books OBSOLETE",
@@ -9685,7 +9901,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Annex, Fine Hall (AnnexB): Biology Storage OBSOLETE",
@@ -9705,7 +9921,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Biology Library (SZ): Theses OBSOLETE",
@@ -9725,7 +9941,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Architecture Library (UES): Microforms OBSOLETE",
@@ -9745,7 +9961,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Architecture Library (UES): Indexes OBSOLETE",
@@ -9765,7 +9981,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "Architecture Library (UES): Permanent Reserve OBSOLETE",
@@ -9785,7 +10001,7 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   },
   {
     "label": "X Obsolete Locations",
@@ -9805,6 +10021,6 @@
       "order": 0
     },
     "holding_library": null,
-    "hours_location": null
+    "delivery_locations": []
   }
 ]

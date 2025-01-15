@@ -2,15 +2,17 @@
 require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
-describe Requests::Submission do
+describe Requests::Submission, requests: true do
+  include ActiveJob::TestHelper
+
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
-      "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
+      "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "REG",
       "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
   end
   let(:user_info) do
-    user = instance_double(User, guest?: false, uid: 'foo')
-    Requests::Patron.new(user:, session: {}, patron: valid_patron)
+    user = FactoryBot.create(:user, uid: 'foo')
+    Requests::Patron.new(user:, patron_hash: valid_patron)
   end
 
   context 'A valid submission' do
@@ -770,29 +772,38 @@ describe Requests::Submission do
     describe "#process_submission" do
       it 'items contacts clancy and alma' do
         stub_delivery_locations
-        alma_url = stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
+        alma_stub = stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
         clancy_url = stub_clancy_post(barcode: "32101072349515")
         expect(submission).to be_valid
-        expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(2)
-        expect(a_request(:post, alma_url)).to have_been_made
+        expect do
+          submission.process_submission
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).to have_been_made
       end
 
       it "returns hold errors" do
-        alma_url = stub_alma_hold_failure('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
-        clancy_url = "#{Requests::Config[:clancy_base]}/circrequests/v1"
-        expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(0)
-        expect(a_request(:post, alma_url)).to have_been_made
+        alma_stub = stub_alma_hold_failure('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
+        clancy_url = "#{Requests.config[:clancy_base]}/circrequests/v1"
+        expect do
+          submission.process_submission
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(0)
+        expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).not_to have_been_made
         expect(submission.service_errors.first[:type]).to eq('clancy_hold')
       end
 
       it 'returns clancy errors' do
-        alma_url = stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
+        alma_stub = stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
         clancy_url = stub_clancy_post(barcode: "32101072349515", deny: 'Y', status: "Item Cannot be Retrieved - Item is Currently Circulating")
         expect(submission).to be_valid
-        expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(0)
-        expect(a_request(:post, alma_url)).to have_been_made
+        expect do
+          submission.process_submission
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(0)
+        expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).to have_been_made
         expect(submission.service_errors.first[:type]).to eq('clancy')
         expect(submission.service_errors.first[:bibid]).to eq('9956364873506421')
@@ -937,7 +948,6 @@ describe Requests::Submission do
           .to_return(status: 200, body: responses[:found], headers: {})
       end
 
-      # rubocop:disable RSpec/MultipleExpectations
       it 'items contacts illiad' do
         stub_delivery_locations
         clancy_url = stub_clancy_post(barcode: "32101072349515")
@@ -947,20 +957,24 @@ describe Requests::Submission do
           .to_return(status: 200, body: responses[:transaction_created], headers: {})
         stub_request(:post, transaction_note_url).to_return(status: 200, body: responses[:note_created], headers: {})
         expect(submission).to be_valid
-        expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect do
+          submission.process_submission
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(2)
         expect(a_request(:get, patron_url)).to have_been_made
         expect(a_request(:post, transaction_url)).to have_been_made
         expect(a_request(:post, transaction_note_url)).to have_been_made
         expect(a_request(:post, clancy_url)).to have_been_made
       end
-      # rubocop:enable RSpec/MultipleExpectations
-
       it "returns illiad errors" do
         stub_request(:post, transaction_url)
           .with(body: hash_including("Username" => "foo", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "NotWantedAfter" => (DateTime.current + 6.months).strftime("%m/%d/%Y"), "WantedBy" => "Yes, until the semester's", "PhotoItemAuthor" => "Johns, Catherine",
                                      "PhotoArticleAuthor" => "", "PhotoJournalTitle" => "Dogs : history, myth, art", "PhotoItemPublisher" => "Paris: Hazan", "ISSN" => "9780674030930", "CallNumber" => "ND553.P6 D24 2008q", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/5636487", "PhotoJournalYear" => "2008", "PhotoJournalVolume" => "", "PhotoJournalIssue" => "", "ItemInfo3" => "", "ItemInfo4" => "", "CitedPages" => "Marquand Clancy EDD", "AcceptNonEnglish" => true, "ESPNumber" => "263300578", "DocumentType" => "Book", "Location" => "Marquand Library", "PhotoArticleTitle" => "Test This is only a test"))
           .to_return(status: 503, body: responses[:transaction_error], headers: {})
-        expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(0)
+        expect do
+          submission.process_submission
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(a_request(:get, patron_url)).to have_been_made
         expect(a_request(:post, transaction_url)).to have_been_made
         expect(submission.service_errors.first[:type]).to eq('clancy_edd')
@@ -973,7 +987,10 @@ describe Requests::Submission do
                                      "PhotoArticleAuthor" => "", "PhotoJournalTitle" => "Dogs : history, myth, art", "PhotoItemPublisher" => "Paris: Hazan", "ISSN" => "9780674030930", "CallNumber" => "ND553.P6 D24 2008q", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/5636487", "PhotoJournalYear" => "2008", "PhotoJournalVolume" => "", "PhotoJournalIssue" => "", "ItemInfo3" => "", "ItemInfo4" => "", "CitedPages" => "Marquand Clancy EDD", "AcceptNonEnglish" => true, "ESPNumber" => "263300578", "DocumentType" => "Book", "Location" => "Marquand Library", "PhotoArticleTitle" => "Test This is only a test"))
           .to_return(status: 200, body: responses[:transaction_created], headers: {})
         stub_request(:post, transaction_note_url).to_return(status: 200, body: responses[:note_created], headers: {})
-        expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(0)
+        expect do
+          submission.process_submission
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(0)
         expect(a_request(:get, patron_url)).to have_been_made
         expect(a_request(:post, transaction_url)).to have_been_made
         expect(a_request(:post, clancy_url)).to have_been_made
@@ -1006,22 +1023,28 @@ describe Requests::Submission do
       described_class.new(params, user_info)
     end
 
-    let(:clancy_url) { "#{Requests::Config[:clancy_base]}/circrequests/v1" }
+    let(:clancy_url) { "#{Requests.config[:clancy_base]}/circrequests/v1" }
 
     describe "#process_submission" do
       it 'items contacts alma and does not email marquand or contact clancy' do
         stub_delivery_locations
-        alma_url = stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
+        alma_stub = stub_alma_hold_success('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
         expect(submission).to be_valid
-        expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(2)
-        expect(a_request(:post, alma_url)).to have_been_made
+        expect do
+          submission.process_submission
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).not_to have_been_made
       end
 
       it "returns hold errors" do
-        alma_url = stub_alma_hold_failure('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
-        expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(0)
-        expect(a_request(:post, alma_url)).to have_been_made
+        alma_stub = stub_alma_hold_failure('9956364873506421', '22587331490006421', '23587331480006421', '9999999')
+        expect do
+          submission.process_submission
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(0)
+        expect(alma_stub).to have_been_requested
         expect(a_request(:post, clancy_url)).not_to have_been_made
         expect(submission.service_errors.first[:type]).to eq('marquand_in_library')
       end
@@ -1052,17 +1075,23 @@ describe Requests::Submission do
     describe "#process_submission" do
       it 'sends an email and places an alma hold' do
         stub_delivery_locations
-        alma_url = stub_alma_hold_success('99124704963506421', '22741721830006421', '23741721820006421', '9999999')
+        alma_stub = stub_alma_hold_success('99124704963506421', '22741721830006421', '23741721820006421', '9999999')
         expect(submission).to be_valid
-        expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(2)
+        expect do
+          submission.process_submission
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(2)
         expect(submission.service_errors.count).to eq(0)
-        expect(a_request(:post, alma_url)).to have_been_made
+        expect(alma_stub).to have_been_requested
       end
 
       it "returns hold errors" do
-        alma_url = stub_alma_hold_failure('99124704963506421', '22741721830006421', '23741721820006421', '9999999')
-        expect { submission.process_submission }.to change { ActionMailer::Base.deliveries.count }.by(0)
-        expect(a_request(:post, alma_url)).to have_been_made
+        alma_stub = stub_alma_hold_failure('99124704963506421', '22741721830006421', '23741721820006421', '9999999')
+        expect do
+          submission.process_submission
+          perform_enqueued_jobs
+        end.to change { ActionMailer::Base.deliveries.count }.by(0)
+        expect(alma_stub).to have_been_requested
         expect(submission.service_errors.count).to eq(1)
       end
     end

@@ -110,25 +110,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
   describe '.holding_location' do
     let(:holding_location_markup) { builder.holding_location(holding.first[1], location, holding_id, call_number) }
 
-    context 'with firestone_locator on' do
-      before do
-        allow(Flipflop).to receive(:firestone_locator?).and_return(true)
-      end
-
-      it 'includes a link with mapping details' do
-        expect(holding_location_markup).to include '<td class="library-location"'
-        expect(holding_location_markup).to include "href=\"/catalog/123456/stackmap?loc=firestone$stacks&amp;cn=#{call_number}\""
-        expect(holding_location_markup).to include 'Firestone Library'
-        expect(holding_location_markup).to include 'data-holding-id="3668455"'
-        expect(holding_location_markup).to include "data-map-location=\"#{holding.first[1]['location_code']}"
-      end
-    end
-
-    context 'with firestone_locator off' do
-      before do
-        allow(Flipflop).to receive(:firestone_locator?).and_return(false)
-      end
-
+    context 'with the stackmap' do
       it 'includes a span with mapping details' do
         expect(holding_location_markup).to include '<td class="library-location"'
         expect(holding_location_markup).to include '<span class="location-text"'
@@ -699,7 +681,7 @@ RSpec.describe PhysicalHoldingsMarkupBuilder do
 
   describe 'Special collections location with suppressed button' do
     before do
-      stub_alma_holding_locations
+      stub_holding_locations
       allow(document).to receive(:to_s).and_return('99125501031906421')
       allow(adapter).to receive(:document).and_return(document)
       allow(adapter).to receive(:doc_id).and_return('99125501031906421')

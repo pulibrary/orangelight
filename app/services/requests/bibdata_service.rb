@@ -2,7 +2,7 @@
 module Requests
   class BibdataService
     def self.connection
-      Faraday.new(url: Requests::Config[:bibdata_base]) do |faraday|
+      Faraday.new(url: Requests.config[:bibdata_base]) do |faraday|
         faraday.request :url_encoded # form-encode POST params
         faraday.response :logger unless Rails.env.test?
         faraday.adapter Faraday.default_adapter # make requests with Net::HTTP

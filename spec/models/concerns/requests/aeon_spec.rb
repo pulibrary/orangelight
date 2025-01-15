@@ -8,11 +8,11 @@ class ObjectWithAeon
   end
 
   def holding
-    { "22740186070006421" => { "sub_location" => ["Euro 20Q"], "items" => [{ "holding_id" => "22740186070006421", "id" => "23740186060006421" }] } }
+    Requests::Holding.new mfhd_id: "22740186070006421", holding_data: { "sub_location" => ["Euro 20Q"], "items" => [{ "holding_id" => "22740186070006421", "id" => "23740186060006421" }] }
   end
 end
 
-describe Requests::Aeon do
+describe Requests::Aeon, requests: true do
   subject { ObjectWithAeon.new }
   let(:location) do
     { "code" => "rare$xc", "aeon_location" => true, "library" => { "code" => "rare" }, "holding_library" => { "code" => "rare" } }

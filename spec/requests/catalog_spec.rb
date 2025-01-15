@@ -14,7 +14,7 @@ describe 'search requests for the catalog' do
     expect(response.status).to eq(200)
   end
 
-  it 'can handle parentheses in the left_anchor field' do
+  it 'can handle parentheses in the left_anchor field', left_anchor: true do
     get '/?search_field=left_anchor&q=Washington+post+(Washington%2C+D.C.+%3A+1877)'
 
     expect(response.status).to eq(200)
@@ -26,10 +26,10 @@ describe 'search requests for the catalog' do
       '/catalog?utf8=%E2%9C&f1=all_fields'
     end
 
-    it 'redirects the user to start over' do
+    it 'redirects the user to Bad Request' do
       get url
       expect(response.status).to eq(400)
-      expect(response.body).to match(/start over/)
+      expect(response.body).to match('Bad Request')
     end
   end
 

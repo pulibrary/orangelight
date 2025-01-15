@@ -9,52 +9,6 @@ RSpec.describe SearchBuilder do
   let(:scope) { Blacklight::SearchService.new config: blacklight_config, search_state: state }
   let(:state) { Blacklight::SearchState.new({}, blacklight_config) }
 
-  describe '#excessive_paging' do
-    let(:excessive) { 9999 }
-    let(:reasonable) { 123 }
-
-    it 'allows reasonable paging with a search query' do
-      search_builder.blacklight_params[:page] = reasonable
-      search_builder.blacklight_params[:q] = 'anything'
-      expect(search_builder.excessive_paging?).to be false
-    end
-
-    it 'allows reasonable paging with a facet query' do
-      search_builder.blacklight_params[:page] = reasonable
-      search_builder.blacklight_params[:f] = 'anything'
-      expect(search_builder.excessive_paging?).to be false
-    end
-
-    it 'does not allow paging without a search or facet' do
-      search_builder.blacklight_params[:page] = reasonable
-      expect(search_builder.excessive_paging?).to be true
-    end
-
-    it 'does not allow excessive paging with a search query' do
-      search_builder.blacklight_params[:page] = excessive
-      search_builder.blacklight_params[:q] = 'anything'
-      expect(search_builder.excessive_paging?).to be true
-    end
-
-    it 'does not allow excessive paging with a facet query' do
-      search_builder.blacklight_params[:page] = excessive
-      search_builder.blacklight_params[:f] = 'anything'
-      expect(search_builder.excessive_paging?).to be true
-    end
-
-    it 'allows paging for advanced search' do
-      search_builder.blacklight_params[:page] = reasonable
-      search_builder.blacklight_params[:search_field] = 'advanced'
-      expect(search_builder.excessive_paging?).to be false
-    end
-
-    it 'handles query ending with empty parenthesis' do
-      search_builder.blacklight_params[:q] = 'hello world ()'
-      search_builder.parslet_trick({})
-      expect(search_builder.blacklight_params[:q].end_with?("()")).to be false
-    end
-  end
-
   describe '#cleanup_boolean_operators' do
     let(:solr_parameters) do
       { q: 'Douglas fir' }
@@ -81,7 +35,7 @@ RSpec.describe SearchBuilder do
         end
         it 'parses the query' do
           subject.cleanup_boolean_operators(solr_parameters)
-          expect(solr_parameters[:q]).to eq('+solr +blacklight')
+          expect(solr_parameters[:q]).to eq('solr AND blacklight')
         end
       end
       context 'when q contains an all-caps phrase that happens to contain a boolean operator' do
@@ -125,15 +79,162 @@ RSpec.describe SearchBuilder do
     end
   end
 
-  describe '#facets_for_advanced_search_form' do
+  describe '#facets_for_advanced_search_form', advanced_search: true do
     before do
       blacklight_config.advanced_search.form_solr_parameters = { 'facet.field' => ["issue_denomination_s"] }
     end
-    context 'when encountering a nil facet' do
-      it 'removes nil and facets that need to be displayed on the form' do
+
+    context 'with the built-in advanced search form', advanced_search: true do
+      it 'includes the advanced search facets' do
         solr_p = { fq: ["{!lucene}{!query v=$f_inclusive.issue_denomination_s.0} OR {!query v=$f_inclusive.issue_denomination_s.1}", nil, "format:Coin"] }
         search_builder.facets_for_advanced_search_form(solr_p)
         expect(solr_p[:fq]).to eq(['format:Coin'])
+      end
+    end
+  end
+
+  describe '#only_home_facets' do
+    let(:blacklight_params) do
+      { q: 'Douglas fir' }
+    end
+    before do
+      allow(subject).to receive(:blacklight_params).and_return(blacklight_params)
+      allow(subject).to receive(:blacklight_config).and_return(
+        Blacklight::Configuration.new do |config|
+          config.add_facet_field('access_facet', label: 'Access', home: true)
+          config.add_facet_field('language_facet', label: 'Format')
+        end
+      )
+    end
+    context 'when there is no query' do
+      let(:blacklight_params) do
+        {}
+      end
+      it 'removes non-home facets from solr_parameters' do
+        solr_parameters = { 'facet.field' => ['access_facet', 'language_facet'] }
+        expect { search_builder.only_home_facets(solr_parameters) }.to change { solr_parameters }
+        expect(solr_parameters['facet.field']).to eq(['access_facet'])
+      end
+    end
+    context 'when there is a query in the q param' do
+      it 'does not make any changes to the facets' do
+        solr_parameters = { 'facet.field' => ['access_facet', 'language_facet'] }
+        expect { search_builder.only_home_facets(solr_parameters) }.not_to change { solr_parameters }
+      end
+    end
+    context 'when there is a query using the JSON query DSL' do
+      let(:blacklight_params) do
+        { 'clause' =>
+          { '0' =>
+            { 'query' => 'robots' } } }
+      end
+      it 'does not make any changes to the facets' do
+        solr_parameters = { 'facet.field' => ['access_facet', 'language_facet'] }
+        expect { search_builder.only_home_facets(solr_parameters) }.not_to change { solr_parameters }
+      end
+    end
+    context 'when there is a facet suggest query' do
+      let(:blacklight_params) do
+        { "controller" => "catalog", "action" => "facet", "id" => "language_facet", "query_fragment" => "a", "only_values" => true }.with_indifferent_access
+      end
+      it 'does not make any changes to the facets' do
+        solr_parameters = { 'facet.field' => ['access_facet', 'language_facet'] }
+        expect { search_builder.only_home_facets(solr_parameters) }.not_to change { solr_parameters }
+      end
+    end
+  end
+
+  describe '#adjust_mm' do
+    context 'when the query contains a boolean OR' do
+      let(:blacklight_params) do
+        { q: 'Douglas OR fir' }
+      end
+      it 'sets the mm to 0, meaning that we do not require all search terms to appear in the document' do
+        allow(search_builder).to receive(:blacklight_params).and_return(blacklight_params)
+        solr_parameters = {}
+
+        expect { search_builder.adjust_mm(solr_parameters) }.to change { solr_parameters }
+        expect(solr_parameters['mm']).to eq(0)
+      end
+    end
+    context 'when the query does not contain a boolean OR' do
+      let(:blacklight_params) do
+        { q: 'Douglas AND fir for or maybe NOT' }
+      end
+      it 'does not adjust solr_parameters' do
+        allow(search_builder).to receive(:blacklight_params).and_return(blacklight_params)
+        solr_parameters = {}
+
+        expect { search_builder.adjust_mm(solr_parameters) }.not_to change { solr_parameters }
+      end
+    end
+  end
+
+  describe '#remove_unneeded_facets' do
+    let(:blacklight_config) do
+      Blacklight::Configuration.new do |config|
+        config.add_facet_field 'pub_date_start_sort', label: 'Publication year', single: true, range: {
+          num_segments: 10,
+          assumed_boundaries: [1100, Time.zone.now.year + 1],
+          segments: true
+        }
+        config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet]
+        config.add_facet_field 'recently_added_facet', label: 'Recently added', home: true, query: {
+          weeks_one: { label: 'Within 1 week', fq: 'cataloged_tdt:[NOW/DAY-7DAYS TO NOW/DAY+1DAY]' },
+          weeks_two: { label: 'Within 2 weeks', fq: 'cataloged_tdt:[NOW/DAY-14DAYS TO NOW/DAY+1DAY]' }
+        }
+      end
+    end
+    context 'when viewing a facet that is not a pivot or stats facet' do
+      before { search_builder.facet('language_facet') }
+      it 'removes expensive stats configuration' do
+        solr_parameters = { 'stats' => true, 'stats.field' => ['pub_date_start_sort'] }
+        search_builder.remove_unneeded_facets(solr_parameters)
+        expect(solr_parameters.keys).not_to include 'stats'
+        expect(solr_parameters.keys).not_to include 'stats.field'
+      end
+      it 'removes expensive facet.pivot configuration' do
+        solr_parameters = { 'facet.pivot' => 'lc_1letter_facet,lc_rest_facet' }
+        search_builder.remove_unneeded_facets(solr_parameters)
+        expect(solr_parameters.keys).not_to include 'facet.pivot'
+      end
+      it 'removes expensive facet.query configuration' do
+        solr_parameters = { 'facet.query' => ['cataloged_tdt:[NOW/DAY-7DAYS+TO+NOW/DAY+1DAY]'] }
+        search_builder.remove_unneeded_facets(solr_parameters)
+        expect(solr_parameters.keys).not_to include 'facet.query'
+      end
+    end
+    context 'when viewing a stats facet' do
+      before { search_builder.facet('pub_date_start_sort') }
+      it 'keeps the stats configuration' do
+        solr_parameters = { 'stats' => true, 'stats.field' => ['pub_date_start_sort'] }
+        search_builder.remove_unneeded_facets(solr_parameters)
+        expect(solr_parameters['stats']).to be true
+        expect(solr_parameters['stats.field']).to eq ['pub_date_start_sort']
+      end
+    end
+    context 'when viewing a pivot facet' do
+      before { search_builder.facet('lc_1letter_facet') }
+      it 'keeps the facet.pivot configuration' do
+        solr_parameters = { 'facet.pivot' => 'lc_1letter_facet,lc_rest_facet' }
+        search_builder.remove_unneeded_facets(solr_parameters)
+        expect(solr_parameters['facet.pivot']).to eq 'lc_1letter_facet,lc_rest_facet'
+      end
+    end
+    context 'when viewing a facet that needs a facet.query' do
+      before { search_builder.facet('cataloged_tdt') }
+      it 'keeps the facet.query configuration' do
+        solr_parameters = { 'facet.query' => ['cataloged_tdt:[NOW/DAY-7DAYS+TO+NOW/DAY+1DAY]'] }
+        search_builder.remove_unneeded_facets(solr_parameters)
+        expect(solr_parameters['facet.query']).to eq ['cataloged_tdt:[NOW/DAY-7DAYS+TO+NOW/DAY+1DAY]']
+      end
+    end
+    context 'when we are not doing a facet view' do
+      it 'does not modify the solr_parameters' do
+        solr_parameters = { 'stats' => true, 'stats.field' => ['pub_date_start_sort'] }
+        expect do
+          search_builder.remove_unneeded_facets(solr_parameters)
+        end.not_to change { solr_parameters }
       end
     end
   end

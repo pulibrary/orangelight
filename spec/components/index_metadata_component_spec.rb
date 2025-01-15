@@ -13,14 +13,12 @@ RSpec.describe IndexMetadataComponent, type: :component do
     Blacklight::Configuration.new.configure do |config|
       config.add_index_field 'my_first_field'
       config.add_index_field 'my_second_field', show: true
-      config.add_index_field 'do_not_show_this_field', show: false
     end
   end
   let(:component) do
     document = SolrDocument.new({
                                   'my_first_field': 'Hello',
-                                  'my_second_field': ['Goodbye', 'Auf Wiedersehen'],
-                                  'do_not_show_this_field': 'Behind the scenes'
+                                  'my_second_field': ['Goodbye', 'Auf Wiedersehen']
                                 })
     view_context = double(document_index_view_type: 'index')
     allow(view_context).to receive(:should_render_field?).and_return true
@@ -35,8 +33,8 @@ RSpec.describe IndexMetadataComponent, type: :component do
     expect(render_inline(component).css('li').first.text.strip).to eq('Hello')
   end
   it 'renders multi-valued fields' do
-    expect(render_inline(component).search('./li/ul/li').length).to eq(2)
-    expect(render_inline(component).search('./li/ul/li').map(&:text).map(&:strip)).to eq(['Goodbye', 'Auf Wiedersehen'])
+    expect(render_inline(component).search('./li/ul/li/ul/li').length).to eq(2)
+    expect(render_inline(component).search('./li/ul/li/ul/li').map(&:text).map(&:strip)).to eq(['Goodbye', 'Auf Wiedersehen'])
   end
   context 'when the index field is configured to use a component' do
     let(:blacklight_config) do

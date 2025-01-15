@@ -3,7 +3,6 @@ require 'faraday'
 
 module Requests::Submissions
   class Recap < Service
-    # include Requests::Gfa
     include Requests::Scsb
 
     def initialize(submission, service_type: 'recap')
@@ -19,8 +18,8 @@ module Requests::Submissions
 
     def send_mail
       return if errors.present?
-      Requests::RequestMailer.send("#{service_type}_email", submission).deliver_now unless service_type == 'recap_edd'
-      Requests::RequestMailer.send("#{service_type}_confirmation", submission).deliver_now
+      Requests::RequestMailer.send("#{service_type}_email", submission).deliver_later unless service_type == 'recap_edd' || service_type == 'recap'
+      Requests::RequestMailer.send("#{service_type}_confirmation", submission).deliver_later
     end
 
     private
@@ -54,7 +53,14 @@ module Requests::Submissions
           reply_text = error["reply_text"]
           error.merge("reply_text" => "Recap request was successful, but creating the hold in Alma had an error: #{reply_text}")
         end
-        Requests::RequestMailer.send("service_error_email", [hold], @submission).deliver_now
+        service_errors = hold.error_hash
+        send_error_email(service_errors, @submission)
+      end
+
+      # This has to be a utility function to prevent ActiveJob from trying to serialize too many objects
+      # :reek:UtilityFunction
+      def send_error_email(errors, submission)
+        Requests::RequestMailer.send("service_error_email", errors, submission).deliver_later
       end
   end
 end

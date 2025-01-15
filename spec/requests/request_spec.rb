@@ -16,14 +16,6 @@ describe 'blacklight tests' do
     end
   end
 
-  describe 'advanced handling when multiple fields' do
-    it 'handles it' do
-      get '/catalog.json?f1=title&f2=author&f3=title&op2=AND&op3=AND&q1=&q2=Murakami%2C+Haruki&q3=1Q84&search_field=advanced'
-      r = JSON.parse(response.body)
-      expect(r['data'].length).to eq 3
-    end
-  end
-
   describe 'NOT tests' do
     it 'ignores lowercase' do
       get '/catalog.json?search_field=all_fields&q=demeter+does+not+remember'
@@ -50,7 +42,7 @@ describe 'blacklight tests' do
       r = JSON.parse(response.body)
       expect(r['location'].length).to be > 2
       get '/catalog?&search_field=all_fields&q=998574693506421'
-      expect(response.body).to include '<span style="font-size: small; font-style: italic;">View record for information on additional holdings</span>'
+      expect(response.body).to include 'View Record for Full Availability'
     end
     it 'displays the location name for an item with a single location' do
       get '/catalog/993213506421/raw'
@@ -73,13 +65,13 @@ describe 'blacklight tests' do
     it 'includes $z as an additional label for the link' do
       get '/catalog/998449623506421'
       expect(response.body).to(
-        include('Finding aid online:: <a target="_blank" rel="noopener" href="http://arks.princeton.edu/ark:/88435/pz50gw142">arks.princeton.edu<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>')
+        include('Search and Request: <a target="_blank" rel="noopener" href="http://arks.princeton.edu/ark:/88435/pz50gw142">Princeton University Library Finding Aids<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>')
       )
     end
 
     it 'includes the link for online holdings in search results' do
-      get '/catalog?&search_field=all_fields&q=9990889283506421'
-      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"#{Requests.config['proxy_base']}http://doi.org/10.3886/ICPSR35465\">doi.org</a>")
+      get '/catalog?&search_field=all_fields&q=998574693506421'
+      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"#{Requests.config['proxy_base']}http://catalog.hathitrust.org/Record/008883092\">catalog.hathitrust.org</a>")
     end
   end
 
@@ -103,13 +95,13 @@ describe 'blacklight tests' do
     end
     it 'does not provide a find it link for online holdings' do
       get '/catalog/9990889283506421'
-      expect(response.body.include?('[Where to Find it]')).to eq false
+      expect(response.body.include?('[Where to find it]')).to eq false
     end
   end
 
   SEPARATOR = '—'
   describe 'subjectify check' do
-    it 'provides links to facet search based on hierarchy' do
+    it 'provides links on LC subject headings to facet search based on hierarchy' do
       stub_holding_locations
       get '/catalog/9961398363506421/raw'
       r = JSON.parse(response.body)
@@ -131,6 +123,25 @@ describe 'blacklight tests' do
         end
       end
     end
+    it 'provides links on FaST subject headings to facet search based on hierarchy' do
+      stub_holding_locations
+      get '/catalog/99125527882306421/raw'
+      r = JSON.parse(response.body)
+      sub_component = []
+      fullsubject = r['fast_subject_display']
+      fullsubject.each do |subject|
+        sub_component << subject.split(SEPARATOR)
+      end
+      get '/catalog/99125527882306421'
+      fullsubject.each_with_index do |_subject, i|
+        sub_component[i].each do |component|
+          Regexp.escape(component)
+          expect(response.body).to include("class=\"search-subject\" data-original-title=\"Search: Criticism, interpretation, etc.\" href=\"/?f[subject_facet][]=Criticism%2C+interpretation%2C+etc\">Criticism, interpretation, etc.</a>  </li><li dir=\"ltr\">")
+
+          expect(response.body).not_to include('href=\"/browse/subjects?q=Criticism%2C+interpretation%2C+etc.\"')
+        end
+      end
+    end
   end
 
   describe 'dir tag check' do
@@ -147,7 +158,7 @@ describe 'blacklight tests' do
       author_vern = r['author_display'][1]
       doc_id = r['id']
       get '/catalog?&search_field=all_fields&q=9947053043506421'
-      expect(response.body).to include('dir="rtl" style="float: right;" href="'\
+      expect(response.body).to include('style="float: right;" dir="rtl" href="'\
                                     "/catalog/#{doc_id}\">#{title_vern}</a>")
       expect(response.body).to include('<li class="blacklight-author_display" dir="ltr"><a class="search-name" '\
                                     "data-original-title=\"Search: #{author}\" "\
@@ -171,98 +182,7 @@ describe 'blacklight tests' do
     end
   end
 
-  describe 'left-anchor tests' do
-    it 'finds result despite accents and capitals in query' do
-      get '/catalog.json?&search_field=left_anchor&q=s%C3%A8arChing+for'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9965749873506421' }).to eq true
-    end
-
-    it "no matches if it doesn't occur at the beginning of the starts with fields" do
-      get '/catalog.json?&search_field=left_anchor&q=modern+aesthetic'
-      r = JSON.parse(response.body)
-      expect(r['meta']['pages']['total_count']).to eq 0
-    end
-
-    it 'page loads without erroring when query is not provided' do
-      get '/catalog.json?per_page=100&search_field=left_anchor'
-      expect(response.status).to eq(200)
-    end
-
-    it 'works in advanced search' do
-      get '/catalog.json?&search_field=advanced&f1=left_anchor&q1=searching+for&op2=AND&f2=left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9965749873506421' }).to eq true
-    end
-
-    context 'with punctuation marks in the title' do
-      it 'handles whitespace characters padding punctuation' do
-        get '/catalog.json?search_field=left_anchor&q=JSTOR+%5Belectronic+resource%5D+%3A'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-
-        get '/catalog.json?search_field=left_anchor&q=JSTOR+%5Belectronic+resource%5D%3A'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-      end
-    end
-
-    context 'with user-supplied * in query string' do
-      it 'are handled in simple search' do
-        get '/catalog.json?search_field=left_anchor&q=JSTOR*'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-      end
-      it 'are handled in advanced search' do
-        get '/catalog.json?f1=left_anchor&q1=JSTOR*&search_field=advanced'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-      end
-    end
-
-    context 'solr operator characters' do
-      it 'are handled in simple search' do
-        get '/catalog.json?search_field=left_anchor&q=JSTOR%7B%7D%3A%26%26%7C%7C"%2B%5E~-%2F%3F+%5BElectronic+Resource%5D'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-      end
-      it 'are handled in advanced search' do
-        get '/catalog.json?f1=left_anchor&q1=JSTOR%7B%7D%3A%26%26%7C%7C"%2B%5E~-%2F%3F+%5BElectronic+Resource%5D&search_field=advanced'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-      end
-    end
-
-    context 'cjk characters' do
-      it 'are searchable in simple search' do
-        get "/catalog.json?search_field=left_anchor&q=#{CGI.escape('浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授)')}"
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9981818493506421' }).to eq true
-      end
-      it 'are searchable in advanced search' do
-        get "/catalog.json?f1=left_anchor&q1=#{CGI.escape('浄名玄論 / 京都国立博物館編 ; 解說石塚晴道 (北海道大学名誉教授)')}&search_field=advanced"
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9981818493506421' }).to eq true
-      end
-    end
-  end
-
   describe 'advanced search tests' do
-    it 'supports advanced render constraints' do
-      stub_holding_locations
-      get '/catalog?&search_field=advanced&f1=left_anchor&q1=searching+for1&op2=AND&f2='\
-          'left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for'
-      expect(response.body).to include 'Remove constraint Title starts with: searching for1'
-      get '/catalog.json?&search_field=advanced&f1=left_anchor&q1=searching+for1&op2=AND&f2='\
-          'left_anchor&q2=searching+for&op3=AND&f3=left_anchor&q3=searching+for'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9965749873506421' }).to eq false
-      get '/catalog?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=advanced'
-      expect(response.body).not_to include 'Remove constraint Title starts with: searching for1'
-      get '/catalog.json?f2=left_anchor&amp;f3=left_anchor&amp;op2=AND&amp;op3=AND&amp;q2=searching+for&amp;q3=searching+for&amp;search_field=advanced'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9965749873506421' }).to eq true
-    end
     it 'does not error when only the 3rd query field has a value' do
       get '/catalog?f1=all_fields&q1=&op2=AND&f2=author&q2=&op3=AND&f3=title&q3='\
           'anything&search_field=advanced&commit=Search'
@@ -278,31 +198,6 @@ describe 'blacklight tests' do
           'anything&search_field=advanced&commit=Search'
       expect(response.status).to eq(200)
     end
-    it 'title starts with can be ORed across several 3 queries' do
-      get '/catalog.json?f1=left_anchor&q1=Reconstructing+the&op2=OR&f2=left_anchor&q2='\
-          'This+angel+on&op3=OR&f3=left_anchor&q3=Almost+Human&search_field=advanced&commit=Search'
-      r = JSON.parse(response.body)
-      doc_ids = %w[9992220243506421 9222024 dsp01ft848s955 dsp017s75dc44p]
-      expect(r['data'].all? { |d| doc_ids.include?(d['id']) }).to eq true
-    end
-
-    context 'with punctuation marks in the title' do
-      it 'handles whitespace characters padding punctuation in the left_anchor field' do
-        get '/catalog.json?f1=left_anchor&q1=JSTOR+%5Belectronic+resource%5D+%3A&op2='\
-            'AND&f2=author&q2=&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D='\
-            '&range%5Bpub_date_start_sort%5D%5Bend%5D=&sort=score+desc%2C+pub_date_start_sort'\
-            '+desc%2C+title_sort+asc&search_field=advanced&commit=Search'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-
-        get '/catalog.json?f1=left_anchor&q1=JSTOR+%5Belectronic+resource%5D%3A&op2='\
-            'AND&f2=author&q2=&op3=AND&f3=title&q3=&range%5Bpub_date_start_sort%5D%5Bbegin%5D='\
-            '&range%5Bpub_date_start_sort%5D%5Bend%5D=&sort=score+desc%2C+pub_date_start_sort'\
-            '+desc%2C+title_sort+asc&search_field=advanced&commit=Search'
-        r = JSON.parse(response.body)
-        expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-      end
-    end
   end
 
   describe 'staff view' do
@@ -310,7 +205,7 @@ describe 'blacklight tests' do
       id = '9965749873506421'
       stub_request(:get, "#{Requests.config['bibdata_base']}/bibliographic/#{id}")
         .to_return(status: 200,
-                   body: File.read(File.join(fixture_path, 'bibdata', "#{id}.xml")))
+                   body: File.read(File.join(fixture_paths.first, 'bibdata', "#{id}.xml")))
       get "/catalog/#{id}.marcxml"
       staff_view = response.body
       bibdata = Faraday.get("#{Requests.config['bibdata_base']}/bibliographic/#{id}").body
@@ -326,11 +221,11 @@ describe 'blacklight tests' do
     end
   end
 
-  describe 'identifier metadata' do
+  describe 'identifier metadata', thumbnails: true do
     before { stub_holding_locations }
 
     it 'is accessible from show view' do
-      id = '9979160443506421'
+      id = '99125476820706421'
       get "/catalog/#{id}"
       expect(response.body).to include '<meta property="isbn"'
       expect(response.body).to include 'data-isbn="['
@@ -455,7 +350,7 @@ describe 'blacklight tests' do
     end
   end
 
-  describe 'escaping search/browse link urls' do
+  describe 'escaping search/browse link urls', browse: true do
     before do
       stub_holding_locations
       allow(Flipflop).to receive(:highlighting?).and_return(false)
@@ -497,7 +392,7 @@ describe 'blacklight tests' do
 
   describe 'series_display in search results' do
     it 'is fetched when doing a more in this series search' do
-      get '/catalog.json?q1=Always+learning.&f1=in_series&search_field=advanced'
+      get '/catalog.json?advanced_type=advanced&clause[0][field]=series_title&clause[0][query]=Always+learning'
       r = JSON.parse(response.body)
       expect(r['data'].find { |d| d['id'] == '9979171923506421' }['attributes']['series_display']).not_to be_nil
     end
@@ -506,7 +401,8 @@ describe 'blacklight tests' do
       get '/catalog/9979171923506421/raw'
       r = JSON.parse(response.body)
       series_title = r['series_display']
-      get '/catalog?q3=Always+learning&f3=series_title&search_field=advanced'
+
+      get '/catalog.json?advanced_type=advanced&clause[0][field]=series_title&clause[0][query]=Always+learning'
       expect(response.body).to include(series_title.join(', '))
     end
     it 'is not included in other search contexts' do
@@ -518,7 +414,7 @@ describe 'blacklight tests' do
 
   describe 'notes field in advanced search' do
     it 'record with notes field is retrieved' do
-      get '/catalog.json?q1=minhas+entre&f1=notes&search_field=advanced'
+      get '/catalog.json?advanced_type=advanced&clause[0][field]=notes&clause[0][query]=minhas+entre'
       r = JSON.parse(response.body)
       expect(r['data'].count { |d| d['id'] == '991639143506421' }).to eq(1)
     end
@@ -572,11 +468,6 @@ describe 'blacklight tests' do
     end
 
     context "advanced search and jsonld are enabled" do
-      before do
-        allow(Flipflop).to receive(:json_query_dsl?).and_return(true)
-        allow(Flipflop).to receive(:view_components_advanced_search?).and_return(true)
-      end
-
       # TODO: what should this really do?  Should the advanced search and jsonld get turned off when an algorithm is swapped
       #       Should we see if we can combine the search handlers by adding a query parameter, or make a combined handler that has both?
       it "retuns the jsonld result not the engineering result" do

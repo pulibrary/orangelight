@@ -3,7 +3,7 @@
 <div class="advanced-search-form col-12">
   <h1 class="advanced page-header">
     <%= t('blacklight.advanced_search.form.numismatics_title') %>
-    <%= link_to t('blacklight.advanced_search.form.start_over'), '/numismatics', :class =>"btn pull-right clear-form" %>
+    <%= link_to t('blacklight.advanced_search.form.start_over'), '/numismatics', :class =>"btn float-end clear-form" %>
   </h1>
   <p>
   With about 125,000 coins, medals, tokens, decorations, and banknotes, the Princeton University Numismatic Collection
@@ -14,13 +14,9 @@
   contact Alan Stahl, Curator of Numismatics (<a href="mailto:astahl@princeton.edu">astahl@princeton.edu</a>)
   </p>
 </div>
-<% if Flipflop.view_components_numismatics? %>
-  <%= render(NumismaticsSearchFormComponent.new(
-      url: search_action_url,
-      classes: ['advanced', 'form-horizontal'],
-      params: search_state.params_for_search.except(:qt),
-      response: @response
-    )) %>
-<% else %>
-  <%= render 'advanced/numismatics_advanced_search_form' %>
-<% end %>
+<%= render(NumismaticsSearchFormComponent.new(
+    url: search_action_url,
+    classes: ['advanced', 'form-horizontal'],
+    params: search_state.params_for_search.except(:qt),
+    response: @response
+  )) %>

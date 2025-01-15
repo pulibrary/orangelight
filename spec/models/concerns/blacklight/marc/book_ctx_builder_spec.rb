@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Blacklight::Marc::BookCtxBuilder do
+RSpec.describe Blacklight::Marc::BookCtxBuilder, zotero: true do
   let(:document) { SolrDocument.new(edition_display: ['Fifth edition']) }
   let(:format) { 'Journal/Magazine' }
   let(:builder) { described_class.new(document:, format:) }

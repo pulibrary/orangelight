@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Requests::AeonUrl do
+RSpec.describe Requests::AeonUrl, requests: true do
   let(:holdings) do
     { "12345" => {
       "location" => "Special Collections - Numismatics Collection",
@@ -15,6 +15,7 @@ RSpec.describe Requests::AeonUrl do
   let(:document) do
     SolrDocument.new({
                        id: '9999999',
+                       pub_citation_display: ['Random House'],
                        holdings_1display: holdings.to_json.to_s
                      })
   end
@@ -41,7 +42,14 @@ RSpec.describe Requests::AeonUrl do
     expect(subject).to include('ItemNumber=24680')
   end
   it 'begins with the aeon prefix' do
-    expect(subject).to match(/^#{Requests::Config[:aeon_base]}/)
+    expect(subject).to match(/^#{Requests.config[:aeon_base]}/)
+  end
+  it 'includes publisher as a corporate author' do
+    # This may or may not be desired, emailed special collections on 29 October 2024 to inquire
+    expect(subject).to include('rft.aucorp=Random+House')
+  end
+  it 'includes publisher as a publisher' do
+    expect(subject).to include('rft.pub=Random+House')
   end
   context 'when the location is at a Mudd location' do
     let(:holdings) do
@@ -95,7 +103,7 @@ RSpec.describe Requests::AeonUrl do
   end
   context 'when a specific item is passed in' do
     subject do
-      item = Requests::Requestable::Item.new({ "barcode" => "32101071302192", "id" => "23667098960006421", "holding_id" => "22667098990006421", "copy_number" => "1", "status" => "Available", "status_label" => "Item in place", "status_source" => "base_status", "process_type" => nil, "on_reserve" => "N", "item_type" => "Closed", "pickup_location_id" => "rare", "pickup_location_code" => "rare", "location" => "rare$ctsn", "label" => "Special Collections - Cotsen Children's Library", "description" => "Vol 1: no. 1 - 4 Jan 2013 - Oct 2013", "enum_display" => "Vol 1: no. 1 - 4", "chron_display" => "Jan 2013 - Oct 2013", "in_temp_library" => false })
+      item = Requests::Item.new({ "barcode" => "32101071302192", "id" => "23667098960006421", "holding_id" => "22667098990006421", "copy_number" => "1", "status" => "Available", "status_label" => "Item in place", "status_source" => "base_status", "process_type" => nil, "on_reserve" => "N", "item_type" => "Closed", "pickup_location_id" => "rare", "pickup_location_code" => "rare", "location" => "rare$ctsn", "label" => "Special Collections - Cotsen Children's Library", "description" => "Vol 1: no. 1 - 4 Jan 2013 - Oct 2013", "enum_display" => "Vol 1: no. 1 - 4", "chron_display" => "Jan 2013 - Oct 2013", "in_temp_library" => false }.with_indifferent_access)
       described_class.new(document:, item:).to_s
     end
     it('takes the barcode from the item') do

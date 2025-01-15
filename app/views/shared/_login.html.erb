@@ -1,11 +1,10 @@
  <div class='card border-0'>
     <div class='card-body text-center'>
       <%= link_to t('blacklight.login.netid_login_msg'), main_app.user_cas_omniauth_authorize_path, method: :post, class: 'btn btn-primary' %>
-      <hr>
       <p class="or-divider">
       or
       </p>
-      <p><a role="button" data-toggle="collapse" href="#collapseAlma" aria-expanded="false" aria-controls="collapseAlma" class="btn btn-outline-secondary">
+      <p><a role="button" data-bs-toggle="collapse" href="#collapseAlma" aria-expanded="false" aria-controls="collapseAlma" class="btn btn-outline-secondary">
         <%= t('blacklight.login.alma_login_msg') %>
       </a></p>
     </div>
@@ -14,29 +13,29 @@
   <div class='card card-alma collapse' id="collapseAlma">
     <div class='card-body'>
       <%= simple_form_for(@user, url:  main_app.user_alma_omniauth_callback_path, class: 'form-horizontal', data: { toggle: 'validator' }, :method => :post)  do |f| %>
-        <div class='field form-group col-md-12 row'>
+        <div class='field mb-3 col-md-12 row'>
           <%= label_tag 'username', 'Alma User ID', class: 'control-label col-md-2 col-form-label' %>
           <div class='col-md-5 <%= 'has-error' if flash[:username] %>'>
             <%= text_field_tag 'username', '', class: 'form-control', autocomplete: 'off' %>
             <% if flash[:username] %>
-              <span id="inputError2Status" class="sr-only">(error)</span>
+              <span id="inputError2Status" class="visually-hidden">(error)</span>
               <span class="error">Alma User ID can't be blank</span>
             <% end %>
           </div>
         </div>
 
-        <div class='field form-group col-md-12 row'>
+        <div class='field mb-3 col-md-12 row'>
           <%= label_tag 'password', 'Password', class: 'control-label col-md-2 col-form-label' %>
           <div class='col-md-5 <%= 'has-error' if flash[:password] %>'>
             <%= password_field_tag 'password', '', class: 'form-control', autocomplete: 'off' %>
             <% if flash[:password] %>
-              <span id="inputError2Status" class="sr-only">(error)</span>
+              <span id="inputError2Status" class="visually-hidden">(error)</span>
               <span class="error">Password error</span>
             <% end %>
           </div>
         </div>
 
-        <div class='login_actions form-group row'>
+        <div class='login_actions mb-3 row'>
           <div class='offset-md-2 col-md-10'>
             <%= f.submit 'Log in', class: 'btn btn-outline-dark' %>
           </div>

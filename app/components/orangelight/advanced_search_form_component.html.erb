@@ -7,7 +7,7 @@
   </div>
 <% end %>
 <%= form_tag search_catalog_path, method: @method, class: @classes.join(' '), role: 'search', 'aria-label' => t('blacklight.search.form.submit') do %>
-  <%= render Blacklight::HiddenSearchStateComponent.new(params: @params) %>
+  <%= render Blacklight::HiddenSearchStateComponent.new(params: hidden_search_state_params) %>
 
   <div class="advanced row">
       <%# Column 1 %>
@@ -15,7 +15,7 @@
         <div class="input-criteria">
 
           <div id="guided_search">
-            <%= render 'advanced/guided_search_fields_bl_8' %>
+            <%= render 'advanced/guided_search_fields' %>
           </div>
         </div>
       <%# End Column 1 %>
@@ -35,12 +35,12 @@
             </div>
           </div>
         <% end %>
-        <div class="form-group advanced-search-facet row">
-          <%= label_tag pub_date_field.parameterize, :class => "col-sm-4 control-label advanced-facet-label" do %>Publication Year<% end %>
+        <div class="mb-3 advanced-search-facet row">
+          <%= label_tag pub_date_field.parameterize, :class => "col-sm-4 control-label advanced-facet-label" do %>Publication year<% end %>
           <div class="col-sm-8 range_limit">
-            <label for="range_pub_date_start_sort_begin" class="sr-only">Publication date range (starting year)</label>
+            <label for="range_pub_date_start_sort_begin" class="visually-hidden">Publication date range (starting year)</label>
             <%= BlacklightRangeLimit::RangeFormComponent.new(facet_field: pub_date_presenter).render_range_input(:begin) %> –
-            <label for="range_pub_date_start_sort_end" class="sr-only">Publication date range (ending year)</label>
+            <label for="range_pub_date_start_sort_end" class="visually-hidden">Publication date range (ending year)</label>
             <%= BlacklightRangeLimit::RangeFormComponent.new(facet_field: pub_date_presenter).render_range_input(:end) %>
           </div>
         </div>
@@ -49,7 +49,7 @@
   </div>
 
   <div class="search-submit-buttons clearfix col-sm-7">
-    <div class="submit-buttons pull-right form-group">
+    <div class="submit-buttons float-end mb-3">
       <%= submit_tag t('blacklight.advanced_search.form.search_btn_html'), class: 'btn btn-primary advanced-search-submit', id: "advanced-search-submit" %>
     </div>
 

@@ -401,6 +401,10 @@
         "lc_rest_facet": [
             "E - History of the Americas (General)"
         ],
+        "lc_facet": [
+            "E - History of the Americas (General)",
+            "E - History of the Americas (General):E - History of the Americas (General)"
+        ],
         "call_number_scheme_facet": [
             "Library of Congress"
         ],
@@ -528,6 +532,9 @@
         "summary_note_display": [
             "\"Over the last several years, data has emerged indicating an alarming increase in the suicide rates for Black children and teenagers over the past generation. While research has also shown climbing rates for youth from other racial and ethnic groups, this trend in Black youth runs counter to historical data showing lower rates of suicide among Black Americans. It challenges the public perception that Black youth simply do not commit suicide. Additional research about suicidal behaviors has raised questions about whether the path from suicidal thoughts to attempts is well understood in Black youth, and whether we have the knowledge and tools to intervene before the worst happens\"--Race & Opportunity Lab website"
         ],
+        "content_advice_display": [
+            "Includes discussion of suicide - added for testing purposes"
+        ],
         "bib_ref_notes_display": [
             "Includes bibliographical references (pages 32-38)."
         ],
@@ -609,6 +616,10 @@
         ],
         "lc_rest_facet": [
             "E - History of the Americas (General)"
+        ],
+        "lc_facet": [
+            "E - History of the Americas (General)",
+            "E - History of the Americas (General):E - History of the Americas (General)"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -830,6 +841,10 @@
         ],
         "lc_rest_facet": [
             "HQ - The Family, Marriage, Woman"
+        ],
+        "lc_facet": [
+            "H - Social Sciences",
+            "H - Social Sciences:HQ - The Family, Marriage, Woman"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -1210,6 +1225,10 @@
         ],
         "lc_rest_facet": [
             "F - History of the Americas (Local)"
+        ],
+        "lc_facet": [
+            "F - History of the Americas (Local)",
+            "F - History of the Americas (Local):F - History of the Americas (Local)"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -1598,6 +1617,10 @@
         ],
         "lc_rest_facet": [
             "PE - English Languages"
+        ],
+        "lc_facet": [
+            "P - Language & Literature",
+            "P - Language & Literature:PE - English Languages"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"

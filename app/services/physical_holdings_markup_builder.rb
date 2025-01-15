@@ -30,7 +30,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   def holding_location_repository
     children = content_tag(:span,
                            'On-site access',
-                           class: 'availability-icon badge badge-success')
+                           class: 'availability-icon badge bg-success')
     content_tag(:td, children.html_safe)
   end
 
@@ -74,7 +74,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   def holding_location_unavailable
     children = content_tag(:span,
                            'Unavailable',
-                           class: 'availability-icon badge badge-danger')
+                           class: 'availability-icon badge bg-danger')
     content_tag(:td, children.html_safe, class: 'holding-status')
   end
 
@@ -263,12 +263,13 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
   end
 
   def request_link_component(adapter:, holding_id:, doc_id:, holding:, location_rules:)
+    holding_object = Requests::Holding.new(mfhd_id: holding_id, holding_data: holding)
     if holding_id == 'thesis' || self.class.numismatics?(holding_id)
-      AeonRequestButtonComponent.new(document: adapter.document, holding: { doc_id: holding }, url_class: Requests::NonAlmaAeonUrl)
+      AeonRequestButtonComponent.new(document: adapter.document, holding: holding_object.to_h, url_class: Requests::NonAlmaAeonUrl)
     elsif holding['items'] && holding['items'].length > 1
       RequestButtonComponent.new(doc_id:, holding_id:, location: location_rules)
     elsif aeon_location?(location_rules)
-      AeonRequestButtonComponent.new(document: adapter.document, holding: { doc_id: holding })
+      AeonRequestButtonComponent.new(document: adapter.document, holding: holding_object.to_h)
     elsif self.class.scsb_location?(location_rules)
       RequestButtonComponent.new(doc_id:, location: location_rules, holding:)
     elsif self.class.temporary_holding_id?(holding_id)
@@ -316,36 +317,8 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     return '' if locator.exclude?(call_number:, library:)
 
     markup = ''
-    markup = stackmap_markup(location, library, holding, call_number) if find_it_location?(location)
+    markup = stackmap_span_markup(location, library, holding) if find_it_location?(location)
     ' ' + markup
-  end
-
-  def stackmap_markup(location, library, holding, call_number)
-    if Flipflop.firestone_locator?
-      stackmap_url_markup(location, library, holding, call_number)
-    else
-      stackmap_span_markup(location, library, holding)
-    end
-  end
-
-  def stackmap_url_markup(location, library, holding, call_number)
-    doc_id = doc_id(holding)
-
-    stackmap_url = "/catalog/#{doc_id}/stackmap?loc=#{location}"
-    stackmap_url << "&cn=#{call_number}" if call_number
-
-    child = %(<span class="link-text">#{I18n.t('blacklight.holdings.stackmap')}</span>\
-    <span class="fa fa-map-marker" aria-hidden="true"></span>)
-    link_to(child.html_safe, stackmap_url,
-              class: 'find-it',
-              data: {
-                'map-location' => location.to_s,
-                'location-library' => library,
-                'location-name' => holding['location'],
-                'blacklight-modal' => 'trigger',
-                'call-number' => call_number,
-                'library' => library
-              })
   end
 
   def stackmap_span_markup(location, library, holding)

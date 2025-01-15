@@ -56,6 +56,10 @@ class User < ApplicationRecord
     end
   end
 
+  def self.from_hash(user_hash)
+    User.where(provider: user_hash['provider'], uid: user_hash['uid']).first
+  end
+
   # Alternative to the implementation used in devise-guests, due to memory use
   # problems when running that task
   # https://github.com/cbeer/devise-guests/blob/7ab8c55d7a2b677ce61cc83486d6e3723d8795b2/lib/railties/devise_guests.rake

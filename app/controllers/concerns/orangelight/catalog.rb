@@ -41,9 +41,9 @@ module Orangelight
 
     # Email Action (this will render the appropriate view on GET requests and process the form and send the email on POST requests)
     def email_action(documents)
-      mail = RecordMailer.email_record(documents, { to: params[:to], reply_to: user_email, message: params[:message], subject: params[:subject] }, url_options)
-      if mail.respond_to? :deliver_now
-        mail.deliver_now
+      mail = Orangelight::RecordMailer.email_record(documents, { to: params[:to], reply_to: user_email, message: params[:message], subject: params[:subject] }, url_options)
+      if mail.respond_to? :deliver_later
+        mail.deliver_later
       else
         mail.deliver
       end
@@ -74,7 +74,7 @@ module Orangelight
       return head(:bad_request) unless params[:id] && params[:field]
 
       begin
-        _response, document = search_service.fetch(params[:id])
+        document = search_service_compatibility_wrapper.fetch(params[:id])
       rescue Blacklight::Exceptions::RecordNotFound
         return head(:bad_request)
       end

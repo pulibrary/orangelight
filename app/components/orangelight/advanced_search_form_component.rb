@@ -2,7 +2,7 @@
 
 class Orangelight::AdvancedSearchFormComponent < Blacklight::AdvancedSearchFormComponent
   def initialize_search_filter_controls
-    fields = blacklight_config.facet_fields.select { |_k, v| v.include_in_advanced_search || v.include_in_advanced_search.nil? }
+    fields = blacklight_config.facet_fields.select { |_k, v| v.include_in_advanced_search }
 
     fields.each do |_k, config|
       config.advanced_search_component = Orangelight::FacetFieldCheckboxesComponent
@@ -29,7 +29,7 @@ class Orangelight::AdvancedSearchFormComponent < Blacklight::AdvancedSearchFormC
 
   def fields_for_etc(index:, field:)
     fields_for('clause[]', index, include_id: false) do |foo|
-      content_tag(:div, class: 'form-group advanced-search-field row mb-3') do
+      content_tag(:div, class: 'mb-3 advanced-search-field row mb-3') do
         foo.label(:query, field.display_label('search'), class: "col-sm-3 col-form-label text-md-right") +
           content_tag(:div, class: 'col-sm-9') do
             foo.hidden_field(:field, value: field.key) +
@@ -37,5 +37,9 @@ class Orangelight::AdvancedSearchFormComponent < Blacklight::AdvancedSearchFormC
           end
       end
     end
+  end
+
+  def hidden_search_state_params
+    @params.except(:clause, :f_inclusive, :op, :sort).merge({ 'advanced_type' => 'advanced' })
   end
 end

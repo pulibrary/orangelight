@@ -1,20 +1,20 @@
 <%= content_tag @tag || :div, id: @id, class: @classes do %>
   <% if @render_headers %>
-    <h2 class="sr-only visually-hidden"><%= t('blacklight.search.search_constraints_header') %></h2>
+    <h2 class="visually-hidden visually-hidden"><%= t('blacklight.search.search_constraints_header') %></h2>
   <% end %>
 
   <div class="button--start-over">
-    <%= render_start_over_link(start_over_path) %>
+    <%= helpers.render_start_over_link(root_path) %>
   </div>
   <div class="button--edit-search">
     <%=link_to t('blacklight.search.edit_search'),
-               edit_search_link,
+               helpers.edit_search_link,
                class: "catalog_editSearchLink btn btn-outline-secondary",
                id: "editSearchLink" %>
   </div>
 
   <% if @render_headers %>
-    <span class="constraints-label sr-only visually-hidden"><%= t('blacklight.search.filters.title') %></span>
+    <span class="constraints-label visually-hidden visually-hidden"><%= t('blacklight.search.filters.title') %></span>
   <% end %>
   <% if query_constraints_area.present? %>
     <% query_constraints_area.each do |constraint| %>

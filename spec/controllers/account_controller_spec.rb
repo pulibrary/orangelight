@@ -2,13 +2,13 @@
 
 require 'rails_helper'
 
-RSpec.describe AccountController do
+RSpec.describe AccountController, patrons: true do
   let(:valid_patron_response) { File.open('spec/fixtures/bibdata_patron_response.json') }
   let(:outstanding_ill_requests_response) { File.open('spec/fixtures/outstanding_ill_requests_response.json') }
   let(:verify_user_response) { File.open('spec/fixtures/ill_verify_user_response.json') }
-  let(:current_illiad_user_uri) { "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent" }
+  let(:current_illiad_user_uri) { "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/Users/jstudent" }
   before do
-    current_ill_requests_uri = "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/Transaction/UserRequests/jstudent?$filter=" \
+    current_ill_requests_uri = "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/Transaction/UserRequests/jstudent?$filter=" \
       "ProcessType%20eq%20'Borrowing'%20and%20TransactionStatus%20ne%20'Request%20Finished'%20and%20not%20startswith%28TransactionStatus,'Cancelled'%29"
     stub_request(:get, current_ill_requests_uri)
       .to_return(status: 200, body: outstanding_ill_requests_response, headers: {
@@ -40,7 +40,7 @@ RSpec.describe AccountController do
 
     before do
       sign_in(valid_user)
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}?ldap=false"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
     end
@@ -86,8 +86,8 @@ RSpec.describe AccountController do
 
     before do
       sign_in(valid_user)
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
-      cancel_ill_requests_uri = "#{Requests::Config[:illiad_api_base]}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}?ldap=false"
+      cancel_ill_requests_uri = "#{Requests.config[:illiad_api_base]}/ILLiadWebPlatform/transaction/#{params_cancel_requests[0]}/route"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
       stub_request(:put, cancel_ill_requests_uri)
@@ -128,7 +128,7 @@ RSpec.describe AccountController do
     let(:unauthorized_user) { FactoryBot.create(:unauthorized_princeton_patron) }
 
     it 'returns Princeton Patron Account Data using a persisted User Model' do
-      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}"
+      valid_patron_record_uri = "#{Requests.config['bibdata_base']}/patron/#{valid_user.uid}?ldap=false"
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 200, body: valid_patron_response, headers: {})
 
@@ -141,7 +141,7 @@ RSpec.describe AccountController do
       stub_request(:get, invalid_patron_record_uri)
         .to_return(status: 404, body: '<html><title>Not Here</title><body></body></html>', headers: {})
       patron = account_controller.send(:current_patron, invalid_user)
-      expect(patron).to be nil
+      expect(patron).to eq({})
     end
 
     it "returns a nil value when the application isn't authorized to access patron data" do
@@ -149,7 +149,7 @@ RSpec.describe AccountController do
       stub_request(:get, unauthorized_patron_record_uri)
         .to_return(status: 403, body: '<html><title>Not Authorized</title><body></body></html>', headers: {})
       patron = account_controller.send(:current_patron, unauthorized_user)
-      expect(patron).to be nil
+      expect(patron).to eq({})
     end
 
     it 'returns a nil value when the HTTP response to the API request has a 500 status code' do
@@ -157,7 +157,7 @@ RSpec.describe AccountController do
       stub_request(:get, valid_patron_record_uri)
         .to_return(status: 500, body: 'Error', headers: {})
       patron = account_controller.send(:current_patron, valid_user)
-      expect(patron).to be nil
+      expect(patron).to eq({})
     end
   end
 end

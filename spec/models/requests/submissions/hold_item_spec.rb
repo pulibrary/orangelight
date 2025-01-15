@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe Requests::Submissions::HoldItem, type: :controller do
+describe Requests::Submissions::HoldItem, type: :controller, requests: true do
   context 'Hold Item Request' do
     let(:valid_patron) { { "netid" => "foo", university_id: "99999999" }.with_indifferent_access }
     let(:user_info) do
       user = instance_double(User, guest?: false, uid: 'foo')
-      Requests::Patron.new(user:, session: {}, patron: valid_patron)
+      Requests::Patron.new(user:, patron_hash: valid_patron)
     end
 
     let(:requestable) do
@@ -20,7 +20,6 @@ describe Requests::Submissions::HoldItem, type: :controller do
          "status" => "Not Charged",
          "item_type" => "Gen",
          "pick_up_location_code" => "fcirc",
-         "pick_up_location_id" => "489",
          "type" => "on_shelf" }]
     end
 
@@ -50,9 +49,9 @@ describe Requests::Submissions::HoldItem, type: :controller do
 
     let(:responses) do
       {
-        error: fixture("alma_hold_error_response.json"),
-        error_malformed: fixture("alma_hold_error_no_library_response.json"),
-        success: fixture("alma_hold_response.json")
+        error: file_fixture("../alma_hold_error_response.json"),
+        error_malformed: file_fixture("../alma_hold_error_no_library_response.json"),
+        success: file_fixture("../alma_hold_response.json")
       }
     end
 

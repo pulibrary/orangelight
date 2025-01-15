@@ -1963,6 +1963,10 @@
     "lc_rest_facet": [
         "JQ - Political Institutions (Asia, Africa, Australia, Pacific Area)"
     ],
+    "lc_facet": [
+        "J - Political Science",
+        "J - Political Science:JQ - Political Institutions (Asia, Africa, Australia, Pacific Area)"
+    ],
     "call_number_scheme_facet": [
         "Library of Congress"
     ],

@@ -5,7 +5,7 @@ module Requests
     extend ActiveSupport::Concern
 
     def solr_doc(system_id)
-      response = Faraday.get "#{Requests::Config[:pulsearch_base]}/catalog/#{system_id}/raw"
+      response = Faraday.get "#{Requests.config[:pulsearch_base]}/catalog/#{system_id}/raw"
       parse_response(response)
     end
 
@@ -15,7 +15,6 @@ module Requests
     end
 
     def items_by_mfhd(system_id, mfhd_id)
-      # response = bibdata_conn.get "/availability?mfhd=#{mfhd_id}"
       response = bibdata_conn.get "/bibliographic/#{system_id}/holdings/#{mfhd_id}/availability.json"
       parse_response(response)
     end
@@ -26,7 +25,7 @@ module Requests
     end
 
     def bibdata_conn
-      conn = Faraday.new(url: Requests::Config[:bibdata_base]) do |faraday|
+      conn = Faraday.new(url: Requests.config[:bibdata_base]) do |faraday|
         faraday.request  :url_encoded # form-encode POST params
         # faraday.response :logger                  # log requests to STDOUT
         faraday.response :logger unless Rails.env.test?
@@ -42,6 +41,14 @@ module Requests
 
     def parse_json(data)
       JSON.parse(data)
+    end
+
+    def build_pick_ups
+      pick_up_locations = []
+      Requests::BibdataService.delivery_locations.each_value do |pick_up|
+        pick_up_locations << { label: pick_up["label"], gfa_pickup: pick_up["gfa_pickup"], pick_up_location_code: pick_up["library"]["code"] || 'firestone', staff_only: pick_up["staff_only"] } if pick_up["pickup_location"] == true
+      end
+      sort_pick_ups(pick_up_locations)
     end
 
     ## Accepts an array of location hashes and sorts them according to our quirks

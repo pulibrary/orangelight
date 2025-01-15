@@ -2,11 +2,13 @@
 require 'rails_helper'
 require 'net/ldap'
 
-describe Requests::IlliadTransactionClient, type: :controller do
+describe Requests::IlliadTransactionClient, type: :controller, requests: true, patrons: true do
+  include ActiveJob::TestHelper
+
   let(:valid_patron) { { "netid" => "abc234", ldap: { status: "faculty", pustatus: "fac" } }.with_indifferent_access }
   let(:user_info) do
     user = instance_double(User, guest?: false, uid: 'foo')
-    Requests::Patron.new(user:, session: {}, patron: valid_patron)
+    Requests::Patron.new(user:, patron_hash: valid_patron)
   end
   let(:requestable) do
     [{ "selected" => "true", "bibid" => "10921934", "mfhd" => "22241110470006421", "call_number" => "HF1131 .B485",
@@ -82,7 +84,6 @@ describe Requests::IlliadTransactionClient, type: :controller do
       expect(transaction).to be_blank
     end
 
-    # rubocop:disable RSpec/MultipleExpectations
     it "posts a transaction and also sends an email when the patron is not cleared" do
       stub_request(:post, transaction_url)
         .with(body: hash_including("Username" => "abc234", "TransactionStatus" => "Awaiting Article Express Processing", "RequestType" => "Article", "ProcessType" => "Borrowing", "WantedBy" => "Yes, until the semester's", "PhotoArticleAuthor" => "That One", "PhotoItemAuthor" => "Davis, Paul K.", "PhotoJournalTitle" => "100 decisive battles : from ancient times to the present", "PhotoItemPublisher" => "Santa Barbara, Calif: ABC-CLIO", "ISSN" => "9781576070758", "CallNumber" => "HF1131 .B485", "PhotoJournalInclusivePages" => "-", "CitedIn" => "https://catalog.princeton.edu/catalog/9935102073506421", "PhotoJournalVolume" => "",
@@ -94,7 +95,10 @@ describe Requests::IlliadTransactionClient, type: :controller do
       stub_request(:get, patron_url)
         .to_return(status: 200, body: responses[:not_cleared], headers: {})
       transaction = nil
-      expect { transaction = illiad_transaction.create_request }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect do
+        transaction = illiad_transaction.create_request
+        perform_enqueued_jobs
+      end.to change { ActionMailer::Base.deliveries.count }.by(1)
       email = ActionMailer::Base.deliveries.last
       expect(email.subject).to eq("Uncleared User Requesting Transaction")
       expect(email.html_part.body.to_s).to have_content('F - Faculty')
@@ -105,7 +109,6 @@ describe Requests::IlliadTransactionClient, type: :controller do
       expect(transaction["Username"]).to eq('abc123')
       expect(transaction["TransactionNumber"]).to eq(1_093_806)
     end
-    # rubocop:enable RSpec/MultipleExpectations
   end
 
   context "loan metadata mapper" do

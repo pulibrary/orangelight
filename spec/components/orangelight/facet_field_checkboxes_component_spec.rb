@@ -11,9 +11,14 @@ RSpec.describe Orangelight::FacetFieldCheckboxesComponent, type: :component do
                     ])
   end
   let(:search_state) { Blacklight::SearchState.new({}.with_indifferent_access, Blacklight::Configuration.new) }
+  let(:items) { [{ label: "Book", value: 'Book', hits: 20 }] }
+  let(:display_facet) do
+    instance_double(Blacklight::Solr::Response::Facets::FacetField, name: 'field', items:, limit: nil, sort: :index, offset: 0, prefix: nil)
+  end
   let(:facet_field) do
     instance_double(
       Blacklight::FacetFieldPresenter,
+      display_facet:,
       facet_field: Blacklight::Configuration::NullField.new(key: 'field', item_component: Blacklight::FacetItemComponent, item_presenter: Blacklight::FacetItemPresenter),
       paginator:,
       key: 'field',
@@ -38,6 +43,21 @@ RSpec.describe Orangelight::FacetFieldCheckboxesComponent, type: :component do
         render_inline(described_class.new(facet_field:)).to_s
       ).to include(
         '<option value="b" selected>'
+      )
+    end
+  end
+  context 'when url includes multiple facet values that the user has selected' do
+    let(:search_state) { Blacklight::SearchState.new({ "f_inclusive" => { "field" => ["b", "c"] } }, Blacklight::Configuration.new) }
+    it 'displays both values as selected' do
+      expect(
+        render_inline(described_class.new(facet_field:)).to_s
+      ).to include(
+        '<option value="b" selected>'
+      )
+      expect(
+        render_inline(described_class.new(facet_field:)).to_s
+      ).to include(
+        '<option value="c" selected>'
       )
     end
   end

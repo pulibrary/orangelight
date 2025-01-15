@@ -2,7 +2,6 @@
 
 class Bookmark < ApplicationRecord
   belongs_to :user, polymorphic: true
-  belongs_to :document, polymorphic: true
 
   # TODO: remove the following scope, since as of
   # migration 20230419231330, the database layer

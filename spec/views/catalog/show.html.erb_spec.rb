@@ -120,6 +120,14 @@ RSpec.describe 'catalog/show' do
     end
   end
 
+  context 'when a document has FaST subject headings' do
+    it 'displays the subject headings' do
+      visit 'catalog/99125527882306421'
+      expect(page).to have_content('FaST Subject(s)')
+      expect(page).to have_content('Criticism, interpretation, etc.')
+    end
+  end
+
   context 'when a document has no language_iana_s' do
     it 'defaults to lang attribute "en"' do
       visit 'catalog/99124945733506421'
@@ -141,7 +149,7 @@ RSpec.describe 'catalog/show' do
       vernacular_title = find(:xpath, "//*[@id='content']/div[1]/h1[1]")
       expect(vernacular_title['lang']).to eq 'ru'
 
-      header_title = find(:css, "#content > div.col-12.header-row > h1:nth-child(3)")
+      header_title = find(:css, "#content > div.col-12.header-row > h1:nth-child(2)")
       expect(header_title['lang']).to eq 'ru'
     end
   end
@@ -190,6 +198,30 @@ RSpec.describe 'catalog/show' do
       end
       send_to_menu = page.find(:xpath, '//*[@id="main-container"]/div/div[2]/div[1]/div/div[2]/ul/li[2]/ul')
       expect(send_to_menu['role']).to be_nil
+    end
+  end
+  describe 'summary and content advice notes' do
+    it 'includes both summary notes and content advice when present' do
+      visit 'catalog/99126846939806421'
+      expect(page).to have_selector('.blacklight-summary_note_display')
+      expect(page).to have_content('Over the last several years, data has emerged indicating an alarming increase')
+      expect(page).to have_selector('.blacklight-content_advice_display')
+      expect(page).to have_content('Includes discussion of suicide')
+    end
+  end
+
+  describe 'citation link', citation: true do
+    context 'with a Princeton item' do
+      it 'includes the citation link' do
+        visit 'catalog/99126846939806421'
+        expect(page).to have_link('Cite')
+      end
+    end
+    context 'with a partner item' do
+      it 'includes the citation link' do
+        visit 'catalog/SCSB-10966202'
+        expect(page).to have_link('Cite')
+      end
     end
   end
 end

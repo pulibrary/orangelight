@@ -5,9 +5,9 @@ module Requests
   class ClancyItem
     attr_reader :clancy_conn, :api_key, :barcode, :errors
 
-    def initialize(barcode: nil, connection: Faraday.new(url: Requests::Config[:clancy_base]))
+    def initialize(barcode: nil, connection: Faraday.new(url: Requests.config[:clancy_base]))
       @clancy_conn = connection
-      @api_key = Requests::Config[:clancy_api_key]
+      @api_key = Requests.config[:clancy_api_key]
       @barcode = barcode
       @errors = []
     end
@@ -18,7 +18,7 @@ module Requests
 
     def not_at_clancy?
       return true unless status["success"]
-      "Item not Found" == status["status"]
+      "Item not Found" == status["status"] || status["status"].include?("Deaccessioned")
     end
 
     def at_clancy?

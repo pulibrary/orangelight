@@ -1,8 +1,8 @@
 <% online, physical = holding_request_block(document) %>
-<h2 class="sr-only">Availability</h2>
+<h2 class="visually-hidden">Availability</h2>
 <% unless online.blank? %>
   <div class="availability--online">
-    <h3><%= t('blacklight.holdings.online')  %></h3>
+    <h3 id="available-online"><%= t('blacklight.holdings.online')  %></h3>
     <%= online if online.present? %>
   </div>
 <% end %> 
@@ -16,8 +16,8 @@
           <th>Location</th>
           <th>Call Number</th>
           <th>Status</th>
-          <th class="location-services"><span class="sr-only">Location Service</span></th>
-          <th><span class="sr-only">Notes</span></th>
+          <th class="location-services"><span class="visually-hidden">Location Service</span></th>
+          <th><span class="visually-hidden">Notes</span></th>
         </tr>
       </thead>
       <%= physical %>

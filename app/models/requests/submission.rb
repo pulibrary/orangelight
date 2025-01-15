@@ -5,11 +5,11 @@ module Requests
   class Submission
     include ActiveModel::Validations
 
-    validates :email, presence: true, email: true, length: { minimum: 5, maximum: 50 } # , format: { message: "Supply a Valid Email Address" } #, on: :submit
-    validates :user_name, presence: true, length: { minimum: 1, maximum: 50 } # ,  format: { message: "Name Can't be Blank" } #, on: :submit
+    validates :email, presence: true, email: true, length: { minimum: 5, maximum: 50 }
+    validates :user_name, presence: true, length: { minimum: 1, maximum: 50 }
     validates :user_barcode, allow_blank: true, presence: true, length: { minimum: 5, maximum: 14 },
-                             format: { with: /(^ACCESS$|^access$|^\d{14}$)/i, message: "Please supply a valid library barcode or type the value 'ACCESS'" }
-    validate :item_validations # , presence: true, length: { minimum: 1 }, on: :submit
+                             format: { with: /(^\d{14}$)/i, message: "Please supply a valid library barcode" }
+    validate :item_validations
 
     def initialize(params, patron)
       @patron = patron
@@ -59,7 +59,7 @@ module Requests
     end
 
     def partner_item?(item)
-      Requests::Config[:recap_partner_locations].keys.include? item["location_code"]
+      Requests.config[:recap_partner_locations].keys.include? item["location_code"]
     end
 
     def service_types
@@ -67,19 +67,9 @@ module Requests
       @types
     end
 
-    def service_locations
-      @locations ||= @items.map { |item| item['location'] }.uniq
-      @locations
-    end
-
     def process_submission
       @services = service_types.map do |type|
-        if access_only?
-          # Access users cannot use services directly
-          Requests::Submissions::Generic.new(self, service_type: type)
-        else
-          service_by_type(type)
-        end
+        service_by_type(type)
       end
       @services.each(&:handle)
 
@@ -97,23 +87,17 @@ module Requests
       Requests::BibdataService.delivery_locations[items.first["pick_up"]]["library"]
     end
 
-    def access_only?
-      user_barcode == 'ACCESS'
-    end
-
     def marquand?
       items.first["holding_library"] == 'marquand'
     end
 
     def edd?(item)
-      # return false if item["type"] == "digitize_fill_in"
       delivery_mode = delivery_mode(item)
       delivery_mode.present? && delivery_mode == "edd"
     end
 
     private
 
-      # rubocop:disable Metrics/MethodLength
       def service_by_type(type)
         case type
         when 'on_shelf', 'marquand_in_library', 'annex', 'annex_in_library'
@@ -153,10 +137,8 @@ module Requests
         end
         item
       end
-      # rubocop:enable Metrics/MethodLength
 
       def in_library?(item)
-        # return false if item["type"] == "digitize_fill_in"
         delivery_mode = delivery_mode(item)
         delivery_mode.present? && delivery_mode == "in_library"
       end

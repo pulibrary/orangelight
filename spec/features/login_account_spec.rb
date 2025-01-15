@@ -9,15 +9,13 @@ describe 'Account login' do
     it "lists correct options when not logged in" do
       visit "/"
       click_button("Your Account")
-      within('li.show') do
+      within('ul.lux-show') do
         link = find_link("Library Account")
         expect(link[:href]).to include login_and_redirect_to_alma_url
         expect(link[:target]).to eq("_blank")
-        expect(link[:id]).to eq('unauthenticated-library-account-link')
-        expect(has_css?('i.fa-external-link', count: 1)).to eq true
         expect(page).not_to have_link("ILL & Digitization Requests", href: digitization_requests_path)
-        expect(page).to have_link("Bookmarks", href: bookmarks_path)
-        expect(page).to have_link("Search History", href: blacklight.search_history_path)
+        expect(page).to have_link("Bookmarks (0)", href: '/bookmarks/')
+        expect(page).to have_link("Search History", href: '/search_history/')
         expect(page).not_to have_link("Log Out")
       end
     end
@@ -26,15 +24,13 @@ describe 'Account login' do
       login_as user
       visit "/"
       click_button(user.username)
-      within('li.show') do
+      within('ul.lux-show') do
         link = find_link("Library Account")
         expect(link[:href]).to include login_and_redirect_to_alma_url
         expect(link[:target]).to eq("_blank")
-        expect(link[:id]).to be_empty
-        expect(has_css?('i.fa-external-link', count: 1)).to eq true
-        expect(page).to have_link("ILL & Digitization Requests", href: digitization_requests_path)
-        expect(page).to have_link("Bookmarks", href: bookmarks_path)
-        expect(page).to have_link("Search History", href: blacklight.search_history_path)
+        expect(page).to have_link("ILL & Digitization Requests", href: '/account/digitization_requests/')
+        expect(page).to have_link("Bookmarks (0)", href: '/bookmarks/')
+        expect(page).to have_link("Search History", href: '/search_history/')
         expect(page).to have_link("Log Out")
       end
     end
@@ -43,6 +39,7 @@ describe 'Account login' do
   describe "Library Account login", js: true do
     context "as an unauthenticated user" do
       it "redirects to the log in page and then to alma" do
+        logout
         visit "/"
         click_button("Your Account")
         new_window = window_opened_by { click_link 'Library Account' }
@@ -52,7 +49,7 @@ describe 'Account login' do
           cas_login_link = find_link('Log in with netID')
           expect(cas_login_link[:href]).to include("/users/auth/cas")
           click_link('Log in with netID')
-          expect(page.current_url).to include("https://princeton.alma.exlibrisgroup.com/discovery/")
+          expect(page).to have_current_path(%r{discovery})
         end
       end
 
@@ -71,20 +68,6 @@ describe 'Account login' do
         expect(password_label_element.text).to eq('Password')
       end
     end
-    context "as an authenticated user" do
-      before do
-        login_as user
-      end
-
-      it "redirects the user to alma" do
-        visit "/"
-        click_button(user.username)
-        new_window = window_opened_by { click_link 'Library Account' }
-        within_window new_window do
-          expect(page.current_url).to include("https://princeton.alma.exlibrisgroup.com/discovery/")
-        end
-      end
-    end
   end
   describe 'Account login from requests page' do
     let(:bib_id) { 'SCSB-2143785' }
@@ -92,7 +75,7 @@ describe 'Account login' do
       stub_request(:post, 'https://scsb.recaplib.org:9093/sharedCollection/bibAvailabilityStatus')
         .to_return(status: 200, body: [{ itemBarcode: 'CU71562478', itemAvailabilityStatus: "Available" }].to_json)
       # I'm not sure why the patron number being requested is `1234`, but this is what's needed to get the correct response
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/1234?ldap=true")
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/1234?ldap=true")
         .to_return(status: 200, body: patron_response, headers: {})
       stub_holding_locations
       stub_delivery_locations
@@ -110,9 +93,8 @@ describe 'Account login' do
         click_link('Request')
         expect(page).to have_link('Log in with netID')
         click_link('Log in with netID')
-        expect(page.body).to include('Successfully authenticated from Princeton Central Authentication Service.')
-        expect(page.body).to include('Library Material Request')
-        expect(page.current_url).to include('/requests/SCSB-2143785?aeon=false')
+        expect(page).to have_content('Library Material Request')
+        expect(page).to have_current_path('/requests/SCSB-2143785?aeon=false')
         expect(page).to have_selector('#request_3270290')
       end
 
@@ -136,14 +118,13 @@ describe 'Account login' do
       it 'logs the user in', js: true do
         visit "/catalog/SCSB-2143785"
         click_link('Request')
-        expect(page.body).to include('Log in with Alma Account (affiliates)')
+        expect(page).to have_content('Log in with Alma Account (affiliates)')
         click_link('Log in with Alma Account (affiliates)')
         fill_in(id: 'username', with: user.username)
         fill_in(id: 'password', with: user.password)
         click_button('Log in')
         expect(WebMock).to have_requested(:post, expected_login_url)
-        expect(page.body).to include('Successfully authenticated with alma account. Please log out to protect your privacy when using a shared computer')
-        expect(page.body).to include('Library Material Request')
+        expect(page).to have_content('Library Material Request')
       end
 
       context 'an aeon item' do
@@ -156,7 +137,7 @@ describe 'Account login' do
             visit "/catalog/coin-1167"
             expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*Coin.1167'))
             click_link('Reading Room Request')
-            expect(page.current_url).to include(Requests::Config[:aeon_base])
+            expect(page.current_url).to include(Requests.config[:aeon_base])
           end
         end
         describe 'requesting a thesis' do
@@ -168,7 +149,7 @@ describe 'Account login' do
             visit "/catalog/dsp01tq57ns24j"
             expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*dsp01tq57ns24j'))
             click_link('Reading Room Request')
-            expect(page.current_url).to include(Requests::Config[:aeon_base])
+            expect(page.current_url).to include(Requests.config[:aeon_base])
           end
         end
         describe 'requesting a special collections holding with a single item' do
@@ -184,7 +165,7 @@ describe 'Account login' do
             visit "/catalog/#{bib_id}"
             expect(page).to have_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
             click_link('Reading Room Request', href: Regexp.new('https://princeton\.aeon\.atlas-sys\.com/logon.*CallNumber\=RECAP-94760855'))
-            expect(page.current_url).to include(Requests::Config[:aeon_base])
+            expect(page.current_url).to include(Requests.config[:aeon_base])
           end
         end
       end

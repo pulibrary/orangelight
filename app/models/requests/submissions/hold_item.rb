@@ -27,7 +27,7 @@ module Requests::Submissions
       status = {}
       begin
         status = if item["user_supplied_enum"].present?
-                   item # noop - Alma can not create the correct hold.  This assumes the correct emails will go out during send_mail
+                   item # Alma can not create the correct hold.  This assumes the correct emails will go out during send_mail
                  else
                    place_hold(item)
                  end
@@ -58,7 +58,7 @@ module Requests::Submissions
       def place_hold(item)
         status = {}
         options = payload(item)
-        response = Requests::AlmaHoldRequest.submit(options)
+        response = Alma::ItemRequest.submit(options)
         if response.success?
           status = item.merge(payload: options, response: response.raw_response.parsed_response)
         else

@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe Requests::ClancyItem do
+describe Requests::ClancyItem, requests: true do
   let(:connection) { Faraday.new("http://example.com") }
   let(:clancy_item) { described_class.new(barcode: "1234565", connection:) }
   before do
     allow(connection).to receive(:get).and_return(response)
   end
   context 'Available item' do
-    let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Item In at Rest\"}" }
+    let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Item In at Rest\"}" }
 
     describe '#status' do
       it "is has the status json" do
@@ -31,14 +31,14 @@ describe Requests::ClancyItem do
     end
 
     describe '#request' do
-      let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"request_count\":\"1\",\"results\":[{\"item\":\"32101068477817\",\"deny\":\"N\",\"istatus\":\"Item Requested\"}]}" }
+      let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"request_count\":\"1\",\"results\":[{\"item\":\"32101068477817\",\"deny\":\"N\",\"istatus\":\"Item Requested\"}]}" }
       let(:user) { FactoryBot.build(:user) }
       let(:valid_patron) do
         { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777",
-          "university_id" => "9999999", "patron_group" => "staff", "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
+          "university_id" => "9999999", "patron_group" => "REG", "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
       end
       let(:patron) do
-        Requests::Patron.new(user:, session: {}, patron: valid_patron)
+        Requests::Patron.new(user:, patron_hash: valid_patron)
       end
 
       before do
@@ -50,7 +50,7 @@ describe Requests::ClancyItem do
       end
 
       context "request denied" do
-        let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"request_count\":\"1\",\"results\":[{\"item\":\"32101068477817\",\"deny\":\"Y\",\"istatus\":\"Item Restricted from this API Key\"}]}" }
+        let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"request_count\":\"1\",\"results\":[{\"item\":\"32101068477817\",\"deny\":\"Y\",\"istatus\":\"Item Restricted from this API Key\"}]}" }
         it "responds with error" do
           expect(clancy_item.request(patron:, hold_id: 'hold_id')).to be_falsey
         end
@@ -59,7 +59,7 @@ describe Requests::ClancyItem do
   end
 
   context 'Unavailable item' do
-    let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Out on Physical Retrieval\"}" }
+    let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Out on Physical Retrieval\"}" }
 
     describe '#status' do
       it "is has the status json" do
@@ -83,7 +83,7 @@ describe Requests::ClancyItem do
   end
 
   context 'Item not in the Clancy facility' do
-    let(:response) { instance_double "Faraday::Response", "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Item not Found\"}" }
+    let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Item not Found\"}" }
 
     describe '#status' do
       it "is has the status json" do
@@ -106,8 +106,26 @@ describe Requests::ClancyItem do
     end
   end
 
+  context 'item has been deaccessioned' do
+    let(:response) { instance_double Faraday::Response, "success?": true, body: "{\"success\":true,\"error\":\"\",\"barcode\":\"1234565\",\"status\":\"Item has been Deaccessioned on 02-20-2024\"}" }
+
+    it 'has the status json' do
+      expect(clancy_item.status["success"]).to be_truthy
+      expect(clancy_item.status["status"]).to eq("Item has been Deaccessioned on 02-20-2024")
+      expect(clancy_item.errors).to be_empty
+    end
+
+    it 'is not_at_clancy' do
+      expect(clancy_item.not_at_clancy?).to be_truthy
+    end
+
+    it "is not available" do
+      expect(clancy_item.available?).to be_falsey
+    end
+  end
+
   context 'Error accessing clancy api' do
-    let(:response) { instance_double "Faraday::Response", "success?": false, status: 403, body: "{\"success\":false,\"error\":\"Invalid API Key\"}" }
+    let(:response) { instance_double Faraday::Response, "success?": false, status: 403, body: "{\"success\":false,\"error\":\"Invalid API Key\"}" }
 
     describe '#status' do
       it "is has the status json" do
@@ -132,10 +150,10 @@ describe Requests::ClancyItem do
       let(:user) { FactoryBot.build(:user) }
       let(:valid_patron) do
         { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777",
-          "university_id" => "9999999", "patron_group" => "staff", "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
+          "university_id" => "9999999", "patron_group" => "REG", "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
       end
       let(:patron) do
-        Requests::Patron.new(user:, session: {}, patron: valid_patron)
+        Requests::Patron.new(user:, patron_hash: valid_patron)
       end
 
       before do

@@ -9,12 +9,12 @@ Rails.application.routes.draw do
     get 'browse/subjects', model: Orangelight::Subject, to: 'browsables#index'
   end
   scope module: 'requests' do
-    get "/requests", to: 'request#index'
-    post '/requests/submit', to: 'request#submit'
+    get "/requests", to: 'form#index'
+    post '/requests/submit', to: 'form#submit'
     # no longer in use
-    # get '/pageable', to: 'request#pageable'
-    get '/requests/:system_id', to: 'request#generate', constraints: { system_id: /(\d+|dsp\w+|SCSB-\d+|coin-\d+)/i }
-    post '/requests/:system_id', to: 'request#generate', constraints: { system_id: /(\d+|dsp\w+|SCSB-\d+|coin-\d+)/i }
+    # get '/pageable', to: 'form#pageable'
+    get '/requests/:system_id', to: 'form#generate', constraints: { system_id: /(\d+|dsp\w+|SCSB-\d+|coin-\d+)/i }
+    post '/requests/:system_id', to: 'form#generate', constraints: { system_id: /(\d+|dsp\w+|SCSB-\d+|coin-\d+)/i }
   end
   get 'catalog/:id/staff_view', to: 'catalog#librarian_view', as: 'staff_view_solr_document'
   post '/catalog/:id/linked_records/:field', to: 'catalog#linked_records'
@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   mount Flipflop::Engine => '/features'
 
+  mount HealthMonitor::Engine => '/'
+
   concern :searchable, Blacklight::Routes::Searchable.new
   concern :exportable, Blacklight::Routes::Exportable.new
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
@@ -38,9 +40,6 @@ Rails.application.routes.draw do
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns [:exportable, :marc_viewable]
-    member do
-      get 'stackmap'
-    end
   end
 
   resources :bookmarks do
@@ -53,8 +52,7 @@ Rails.application.routes.draw do
     end
   end
 
-  mount BlacklightAdvancedSearch::Engine => '/', constraints: DeprecatedAdvancedSearchConstraint.new
-  get '/advanced', to: 'catalog#advanced_search', constraints: AdvancedSearchConstraint.new
+  get '/advanced', to: 'catalog#advanced_search'
 
   get '/numismatics', to: 'catalog#numismatics'
   devise_for :users,
@@ -64,6 +62,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/signup' => 'devise/registrations#new', :as => :new_user_registration
     post '/users' => 'devise/registrations#create', :as => :user_registration
+    get "sign_out", to: "sessions#destroy"
   end
 
   get '/catalog/oclc/:id', to: 'catalog#oclc'
@@ -85,7 +84,7 @@ Rails.application.routes.draw do
   get '/borrow-direct', to: redirect('https://borrowdirect.reshare.indexdata.com/')
 
   get '/account/user-id', to: 'account#user_id'
-  get '/redirect-to-alma', to: 'account#redirect_to_alma'
+  get '/redirect-to-alma', to: redirect('https://princeton.alma.exlibrisgroup.com/discovery/account?vid=01PRI_INST:Services&lang=EN&section=overview')
 
   ### For feedback Form
   get 'feedback', to: 'feedback#new'

@@ -3,21 +3,20 @@
 class SearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
   include BlacklightRangeLimit::RangeLimitBuilder
-  include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include BlacklightHelper
 
   default_processor_chain.unshift(:conditionally_configure_json_query_dsl)
 
-  self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators add_advanced_search_to_solr
-                                     cjk_mm wildcard_char_strip excessive_paging_error
-                                     only_home_facets left_anchor_escape_whitespace
+  self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators
+                                     cjk_mm wildcard_char_strip
+                                     only_home_facets prepare_left_anchor_search
                                      series_title_results pul_holdings html_facets
-                                     numismatics_facets numismatics_advanced]
+                                     numismatics_facets numismatics_advanced
+                                     adjust_mm remove_unneeded_facets]
 
   # mutate the solr_parameters to remove words that are
   # boolean operators, but not intended as such.
   def cleanup_boolean_operators(solr_parameters)
-    return add_advanced_parse_q_to_solr(solr_parameters) if run_advanced_parse?(solr_parameters)
     solr_parameters[:q] = cleaned_query(solr_parameters[:q])
     return solr_parameters unless using_json_query_dsl(solr_parameters)
 
@@ -57,12 +56,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
-  def run_advanced_parse?(solr_parameters)
-    blacklight_params[:q].blank? ||
-      !blacklight_params[:q].respond_to?(:to_str) ||
-      q_param_needs_boolean_cleanup(solr_parameters)
-  end
-
   def facets_for_advanced_search_form(solr_p)
     # Reject any facets that are meant to display on the advanced
     # search form, so that the form displays accurate counts for
@@ -72,59 +65,73 @@ class SearchBuilder < Blacklight::SearchBuilder
     solr_p[:fq]&.reject! do |facet_from_query|
       advanced_search_facets.any? { |facet_to_exclude| facet_from_query.include? facet_to_exclude }
     end
-    super
   end
 
   def only_home_facets(solr_parameters)
-    return if search_parameters?
+    return if search_parameters? || advanced_search?
     solr_parameters['facet.field'] = blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
     solr_parameters['facet.pivot'] = []
   end
 
-  # Determines whether or not the user is requesting an excessively high page of results
-  # @param [ActionController::Parameters] params
+  ##
+  # Check if we are on an advanced search page
   # @return [Boolean]
-  def excessive_paging_error(_solr_parameters)
-    raise ActionController::BadRequest if excessive_paging?
-  end
-
-  # Determines whether or not the user is requesting an excessively high page of results
-  # @return [Boolean]
-  def excessive_paging?
-    page = blacklight_params[:page].to_i || 0
-    return false if page <= 1
-    return false if search_parameters? && page < 1000
-    true
+  def advanced_search?
+    blacklight_params[:advanced_type] == 'advanced' ||
+      search_state.controller.try(:params).try(:[], :action) == 'advanced_search' ||
+      blacklight_params[:advanced_type] == 'numismatics' ||
+      # The next two are required for the advanced search gem
+      blacklight_params[:search_field] == 'advanced' ||
+      blacklight_params[:action] == 'numismatics'
   end
 
   ##
   # Check if any search parameters have been set
   # @return [Boolean]
   def search_parameters?
-    !blacklight_params[:q].nil? || blacklight_params[:f].present? ||
-      blacklight_params[:search_field] == 'advanced'
+    search_query_present? || facet_query_present?
   end
 
   def conditionally_configure_json_query_dsl(_solr_parameters)
-    advanced_fields = %w[title author subject left_anchor publisher in_series notes series_title isbn issn]
-    if Flipflop.json_query_dsl?
-      blacklight_config.search_fields['all_fields']['clause_params'] = {
-        edismax: {}
-      }
-      advanced_fields.each do |field|
-        blacklight_config.search_fields[field]['clause_params'] = {
-          edismax: blacklight_config.search_fields[field]['solr_parameters'].dup
-        }
-      end
-    else
-      blacklight_config.search_fields['all_fields'].delete('clause_params')
-      advanced_fields.each do |field|
-        blacklight_config.search_fields[field].delete('clause_params')
-      end
-    end
+    advanced_fields = %w[all_fields title author subject left_anchor publisher in_series notes series_title isbn issn]
+    add_edismax(advanced_fields:)
+  end
+
+  def adjust_mm(solr_parameters)
+    # If the user is attempting a boolean OR query,
+    # for example: activism OR "social justice"
+    # don't want to cancel out the boolean OR with
+    # an mm configuration that requires all the clauses
+    # to be in the document
+    return unless blacklight_params[:q].to_s.split.include? 'OR'
+    solr_parameters['mm'] = 0
+  end
+
+  # When the user is viewing the values of a specific facet
+  # by clicking the "more" link in a facet, solr doesn't
+  # need to perform expensive calculations related to other
+  # facets that the user is not displaying
+  # :reek:FeatureEnvy
+  def remove_unneeded_facets(solr_parameters)
+    return unless facet
+    remove_unneeded_stats(solr_parameters)
+    solr_parameters.delete('facet.pivot') unless solr_parameters['facet.pivot']&.split(',')&.include? facet
+    solr_parameters.delete('facet.query') unless solr_parameters['facet.query']&.any? { |query| query.partition(':').first == facet }
   end
 
   private
+
+    def search_query_present?
+      !blacklight_params[:q].nil? || json_query_dsl_clauses&.any? { |clause| clause.dig('query')&.present? }
+    end
+
+    def facet_query_present?
+      blacklight_params[:f].present? || blacklight_params[:action] == 'facet'
+    end
+
+    def json_query_dsl_clauses
+      blacklight_params.dig('clause')&.values
+    end
 
     def q_param_needs_boolean_cleanup(solr_parameters)
       solr_parameters[:q].present? &&
@@ -133,5 +140,20 @@ class SearchBuilder < Blacklight::SearchBuilder
 
     def using_json_query_dsl(solr_parameters)
       solr_parameters.fetch('json', nil)&.fetch('query', nil)&.fetch('bool', nil)&.fetch('must', nil)&.present?
+    end
+
+    def add_edismax(advanced_fields:)
+      advanced_fields.each do |field|
+        solr_params = blacklight_config.search_fields[field]['solr_parameters']
+        edismax = solr_params.present? ? solr_params.dup : {}
+        blacklight_config.search_fields[field]['clause_params'] = { edismax: }
+      end
+    end
+
+    # :reek:FeatureEnvy
+    def remove_unneeded_stats(solr_parameters)
+      return if solr_parameters['stats.field'].to_a.include? facet
+      solr_parameters.delete('stats')
+      solr_parameters.delete('stats.field')
     end
 end

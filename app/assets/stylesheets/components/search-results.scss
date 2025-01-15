@@ -13,7 +13,8 @@
   margin-bottom: 0;
 }
 
-.documents-list h3 {
+.documents-list .document h3.document-title-heading {
+  padding-left: 0;
   font-size: 1.3em;
   margin-top: 0;
 }
@@ -42,7 +43,7 @@
   }
 
   .blacklight-holdings {
-    margin-top: 1em;
+    margin-top: 0.5em;
   }
 
   .blacklight-format {
@@ -52,7 +53,7 @@
 }
 
 .document a:hover {
-  color: darken($orange, 10%);
+  color: shade-color($orange, 10%);
   text-decoration: underline;
 }
 
@@ -70,6 +71,12 @@ dd.blacklight-electronic_access_display {
   padding-left: 1em;
 }
 
+.search-result-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .thumbnail-wrapper {
   width: 120px;
   float: right;
@@ -78,8 +85,8 @@ dd.blacklight-electronic_access_display {
 
 // remove when https://github.com/projectblacklight/blacklight/pull/2125 is released
 .documents-list .document .document-thumbnail {
-    margin-bottom: ($spacer * 3);
-    padding-left: ($spacer * 2);
+  margin-bottom: ($spacer * 3);
+  padding-left: ($spacer * 2);
 }
 
 #spell {
@@ -91,5 +98,5 @@ dd.blacklight-electronic_access_display {
 }
 
 em.highlight-query {
-    background-color: #FFFDD0;
+  background-color: #FFFDD0;
 }

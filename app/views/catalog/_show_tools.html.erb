@@ -1,0 +1,37 @@
+<div class="search-widgets col-xs">
+  <ul class="navbar navbar-nav">
+    <% if @document.alma_record? || @document.scsb_record? %>
+      <li>
+        <%= render_cite_link(citation_solr_document_path(id: @document)) %>
+      </li>
+    <% end %>
+    <li class="dropdown">
+      <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown"><span class="icon-share" aria-hidden="true"></span> Send <span class="d-none d-lg-inline">to <span class="caret"></span></span></button>
+      <ul class="dropdown-menu position-absolute">
+        <li class="sms">
+          <%= link_to "SMS", sms_solr_document_path(:id => @document), {:id => 'smsLink', :data => {:blacklight_modal => "trigger"}, class: "icon-mobile dropdown-item", rel: 'nofollow'} %>
+        </li>
+        <li class="email">
+          <%= link_to "Email", email_solr_document_path(:id => @document), {:id => 'emailLink', :data => {:blacklight_modal => "trigger"}, class: "icon-email dropdown-item", rel: 'nofollow'} %>
+        </li>
+        <% if @document.alma_record? %>
+          <li class="endnote">
+            <%= link_to "EndNote", solr_document_path(@document, :format => 'endnote'), rel: 'nofollow', class: "icon-external dropdown-item" %>
+          </li>
+          <li class="refworks">
+            <%= link_to "RefWorks", refworks_export_url({url: polymorphic_url(search_state.url_for_document(@document), format: :refworks_marc_txt, only_path: false)}), rel: 'nofollow', class: "icon-external dropdown-item", :target => "_blank"  %>
+          </li>
+          <li class="ris">
+          <%= link_to 'RIS', solr_document_path(@document, :format => 'ris'), rel: 'nofollow', class: "icon-external dropdown-item" %>
+          </li>
+        <% end %>
+        <li class="print">
+          <a href="javascript:if(window.print)window.print()" class="dropdown-item"><span class="icon-print" aria-hidden="true"></span>Printer</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <%= render BookmarkButtonComponent.new(document: @document, action: blacklight_config.show.document_actions.bookmark) if current_or_guest_user %>
+    </li>
+  </ul>
+</div>

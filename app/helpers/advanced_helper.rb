@@ -2,8 +2,6 @@
 
 # Helper methods for the advanced search form
 module AdvancedHelper
-  include BlacklightAdvancedSearch::AdvancedHelperBehavior
-
   # Fill in default from existing search, if present
   # -- if you are using same search fields for basic
   # search and advanced, will even fill in properly if existing
@@ -19,11 +17,9 @@ module AdvancedHelper
   end
 
   def advanced_key_value
-    key_value = []
-    advanced_search_fields.each do |field|
-      key_value << [field[1][:label], field[0]]
+    advanced_search_fields.map do |field|
+      [field[1][:label], field[0]]
     end
-    key_value
   end
 
   # carries over original search field and original guided search fields if user switches to guided search from regular search
@@ -84,128 +80,4 @@ module AdvancedHelper
     def first_search_field?(key)
       [:q1, :clause_0_query].include? key
     end
-end
-
-module BlacklightAdvancedSearch
-  class QueryParser
-    include AdvancedHelper
-    def keyword_op
-      # for guided search add the operations if there are queries to join
-      # NOTs get added to the query. Only AND/OR are operations
-      @keyword_op = []
-      unless @params[:q1].blank? || @params[:q2].blank? || @params[:op2] == 'NOT'
-        @keyword_op << @params[:op2] if @params[:f1] != @params[:f2]
-      end
-      unless @params[:q3].blank? || @params[:op3] == 'NOT' || (@params[:q1].blank? && @params[:q2].blank?)
-        @keyword_op << @params[:op3] unless [@params[:f1], @params[:f2]].include?(@params[:f3]) && ((@params[:f1] == @params[:f3] && @params[:q1].present?) || (@params[:f2] == @params[:f3] && @params[:q2].present?))
-      end
-      @keyword_op
-    end
-
-    def keyword_queries
-      unless @keyword_queries
-        @keyword_queries = {}
-
-        return @keyword_queries unless @params[:search_field] == ::AdvancedController.blacklight_config.advanced_search[:url_key]
-
-        # Spaces need to be stripped from the query because they don't get properly stripped in Solr
-        q1 = %w[left_anchor in_series].include?(@params[:f1]) ? prep_left_anchor_search(@params[:q1]) : odd_quotes(@params[:q1])
-        q2 = @params[:f2] == 'left_anchor' ? prep_left_anchor_search(@params[:q2]) : odd_quotes(@params[:q2])
-        q3 = @params[:f3] == 'left_anchor' ? prep_left_anchor_search(@params[:q3]) : odd_quotes(@params[:q3])
-
-        @been_combined = false
-        @keyword_queries[@params[:f1]] = q1 if @params[:q1].present?
-        @keyword_queries[@params[:f2]] = prepare_q2(q2) if @params[:q2].present?
-        @keyword_queries[@params[:f3]] = prepare_q3(q3) if @params[:q3].present?
-      end
-      @keyword_queries
-    end
-
-    private
-
-      # Remove stray quotation mark if there are an odd number of them
-      # @param query [String] the query
-      # @return [String] the query with an even number of quotation marks
-      def odd_quotes(query)
-        if query&.count('"')&.odd?
-          query.sub(/"/, '')
-        else
-          query
-        end
-      end
-
-      # Escape spaces for left-anchor search fields and adds asterisk if not present
-      # Removes quotation marks
-      # @param query [String] the query within which whitespace is being escaped
-      # @return [String] the escaped query
-      def prep_left_anchor_search(query)
-        if query
-          cleaned_query = query.gsub(/(\s)/, '\\\\\\\\\1')
-          cleaned_query = cleaned_query.delete('"')
-          cleaned_query = cleaned_query.gsub(/(["\{\}\[\]\^\~\(\)])/, '\\\\\\\\\1')
-          if cleaned_query.end_with?('*')
-            cleaned_query
-          else
-            cleaned_query + '*'
-          end
-        end
-      end
-
-      def prepare_q2(q2)
-        if @keyword_queries.key?(@params[:f2])
-          @been_combined = true
-          "(#{@keyword_queries[@params[:f2]]}) " + @params[:op2] + " (#{q2})"
-        elsif @params[:op2] == 'NOT'
-          'NOT ' + q2
-        else
-          q2
-        end
-      end
-
-      def prepare_q3(q3)
-        if @keyword_queries.key?(@params[:f3])
-          kq3 = @keyword_queries[@params[:f3]]
-          kq3 = "(#{kq3})" unless @been_combined
-          "#{kq3} " + @params[:op3] + " (#{q3})"
-        elsif @params[:op3] == 'NOT'
-          'NOT ' + q3
-        else
-          q3
-        end
-      end
-  end
-end
-
-module BlacklightAdvancedSearch
-  module ParsingNestingParser
-    # Iterates through the keyword queries and appends each operator the extracting queries
-    # @param [ActiveSupport::HashWithIndifferentAccess] _params
-    # @param [Blacklight::Configuration] config
-    # @return [Array<String>]
-    def process_query(_params, config)
-      if config.advanced_search.nil?
-        Blacklight.logger.error "Failed to parse the advanced search, config. settings are not accessible for: #{config}"
-        return []
-      end
-
-      queries = []
-      ops = keyword_op
-      keyword_queries.each do |field, query|
-        query_parser_config = config.advanced_search[:query_parser]
-        begin
-          parsed = ParsingNesting::Tree.parse(query, query_parser_config)
-        rescue Parslet::ParseFailed => parse_failure
-          Blacklight.logger.warn "Failed to parse the query: #{query}: #{parse_failure}"
-          next
-        end
-
-        # Test if the field is valid
-        next unless config.search_fields[field]
-        local_param = local_param_hash(field, config)
-        queries << parsed.to_query(local_param)
-        queries << ops.shift
-      end
-      queries.join(' ')
-    end
-  end
 end

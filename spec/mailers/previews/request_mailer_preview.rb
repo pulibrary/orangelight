@@ -775,48 +775,6 @@ class RequestMailerPreview < ActionMailer::Preview
     Requests::RequestMailer.recall_email(Requests::Submission.new(params))
   end
 
-  def recap_email
-    user_info = {
-      "user_name" => "Foo Request",
-      "user_last_name" => "Request",
-      "user_barcode" => "22101007797777",
-      "email" => "foo@princeton.edu",
-      "source" => "pulsearch"
-    }
-    requestable =
-      [
-        {
-          "selected" => "true",
-          "mfhd" => "9533612",
-          "call_number" => "TR465 .C666 2016",
-          "location_code" => "pres",
-          "item_id" => "3059236",
-          "barcode" => "32101044283008",
-          "copy_number" => "0",
-          "status" => "Not Charged",
-          "type" => "pres",
-          "pickup" => "PA"
-        }.with_indifferent_access,
-        {
-          "selected" => "false"
-        }.with_indifferent_access
-      ]
-
-    bib =
-      {
-        "id" => "9712355",
-        "title" => "The atlas of water damage on inkjet-printed fine art /",
-        "author" => "Connor, Meghan Burge, Daniel Rochester Institute of Technology"
-      }
-    params =
-      {
-        request: user_info,
-        requestable:,
-        bib:
-      }
-    Requests::RequestMailer.recap_email(Requests::Submission.new(params))
-  end
-
   def recap_confirmation
     user_info = {
       "user_name" => "Foo Request",
@@ -1033,7 +991,7 @@ class RequestMailerPreview < ActionMailer::Preview
         bib:
       }
     submission = Requests::Generic.new(params)
-    submission.errors << { :reply_text => "Can not create hold", :create_hold => { note: "Hold can not be created" }, "id" => "10574699", "title" => "Mefisto : rivista di medicina, filosofia, storia", "author" => "", "user_name" => "Foo Request", "user_last_name" => "Request", "user_barcode" => "0000000000", "patron_id" => "00000", "patron_group" => "staff", "email" => "foo@princeton.edu", "source" => "pulsearch" }
+    submission.errors << { :reply_text => "Can not create hold", :create_hold => { note: "Hold can not be created" }, "id" => "10574699", "title" => "Mefisto : rivista di medicina, filosofia, storia", "author" => "", "user_name" => "Foo Request", "user_last_name" => "Request", "user_barcode" => "0000000000", "patron_id" => "00000", "patron_group" => "REG", "email" => "foo@princeton.edu", "source" => "pulsearch" }
     Requests::RequestMailer.service_error_email([submission])
   end
 

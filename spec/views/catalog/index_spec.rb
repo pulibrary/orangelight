@@ -25,13 +25,13 @@ RSpec.describe 'catalog/index' do
 
     it 'has links to the statement on language in description' do
       visit '/'
-      language_link = find_link('Statement on language in description')
-      read_more_language_link = find_link('Read more...', href: 'https://library.princeton.edu/about/languagestatement')
+      language_link = find_link('Statement on Responsible Collection Description')
+      read_more_language_link = find_link('Read more...', href: 'https://library.princeton.edu/about/responsible-collection-description')
       links = [language_link, read_more_language_link]
       links.each do |link|
         expect(link[:target]).to be nil
         expect(link[:title]).to be nil
-        expect(link[:'aria-label']).to eq('Read more about Statement on language in description')
+        expect(link[:'aria-label']).to eq('Read more about the statement on responsible collection description')
       end
     end
 
@@ -75,7 +75,7 @@ RSpec.describe 'catalog/index' do
     it 'inclusive facets display when applied' do
       visit '/catalog?f_inclusive%5Bformat%5D%5B%5D=Audio&search_field=advanced'
       expect(page).to have_selector('.blacklight-format.facet-limit-active')
-      expect(page).to have_selector('.advanced_facet_limit')
+      expect(page).to have_selector('.inclusive_or.card')
     end
   end
 end

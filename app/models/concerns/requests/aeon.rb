@@ -4,7 +4,6 @@ module Requests
     # for Aeon Related Bibliographic Helpers
     extend ActiveSupport::Concern
 
-    # for use with only non-alma thesis records
     def aeon_mapped_params
       params = {
         Action: '10',
@@ -15,8 +14,6 @@ module Requests
         ItemVolume: item_volume
       }
       params[:ItemNumber] = item[:barcode] if barcode?
-      params[:genre] = 'thesis' if thesis?
-      params[:genre] = 'numismatics' if numismatics?
       params.merge! aeon_basic_params
       params.reject { |_k, v| v.nil? }
     end
@@ -34,31 +31,11 @@ module Requests
     end
 
     def aeon_request_url
-      AeonUrl.new(document: bib, holding:, item:).to_s
-    end
-
-    # returns encoded OpenURL string for alma derived records
-    def aeon_openurl(ctx)
-      if item.present?
-        ctx.referent.set_metadata('iteminfo5', item[:id]&.to_s)
-        if enumerated?
-          ctx.referent.set_metadata('volume', item.enum_value)
-          ctx.referent.set_metadata('issue', item[:chron_display]) if item[:chron_display].present?
-        else
-          ctx.referent.set_metadata('volume', holding.first.last['location_has']&.first)
-          ctx.referent.set_metadata('issue', nil)
-        end
-      end
-      aeon_params = aeon_basic_params
-      aeon_params[:ItemNumber] = barcode if barcode?
-      ## returned mashed together in an encoded string
-      "#{ctx.kev}&#{aeon_params.to_query}"
+      AeonUrl.new(document: bib, holding: holding.to_h, item:).to_s
     end
 
     def site
-      if holding.key? 'thesis'
-        'MUDD'
-      elsif location[:holding_library].present?
+      if location[:holding_library].present?
         holding_location_to_site(location['holding_library']['code'])
       elsif location['library']['code'] == 'eastasian' && aeon_location?
         'EAL'
@@ -90,7 +67,7 @@ module Requests
       end
 
       def call_number
-        holding.first.last['call_number']
+        holding.holding_data['call_number']
       end
 
       def pub_date
@@ -98,15 +75,15 @@ module Requests
       end
 
       def shelf_location_code
-        holding.first.last['location_code']
+        holding.holding_data['location_code']
       end
 
       def item_volume
-        item["enumeration"] if item.present? && enumerated?
+        item.description if item.present? && enumerated?
       end
 
       def sub_location
-        holding.first.last['sub_location']&.first
+        holding.holding_data['sub_location']&.first
       end
 
       def aeon_title

@@ -6,9 +6,9 @@ Status](https://coveralls.io/repos/github/pulibrary/orangelight/badge.svg?branch
 
 Versions:
 
-* Ruby: 3.1.0
-* Rails: 6.1.7
-* Blacklight: 7.33.0
+* Ruby: 3.4.1
+* Rails: 7.2
+* Blacklight: 8.7
 
 ## Development pre-requisites
 * In order to run locally, you must have Lando installed for your system - see https://docs.lando.dev/getting-started/installation.html.
@@ -126,6 +126,40 @@ The browser will only display for system specs with `js: true`.
 * [erblint](https://github.com/Shopify/erb-lint)
 * `bundle exec erblint --lint-all`
 
+#### Running rubocop
+
+```
+bundle exec rubocop
+```
+
+#### Running reek
+
+```
+bundle exec reek app
+```
+
+#### Running stylelint
+
+```
+yarn stylelint "**/*.scss"
+```
+
+#### Run lighthouse from the command line
+This command runs a rails server, so you will need to stop any rails server that is already running locally before running the commands below.
+
+```
+bundle exec rake servers:start # if you have not yet started the servers
+npm install -g @lhci/cli@0.14.x
+lhci autorun
+```
+
+You can safely ignore the message "GitHub token is not set" --
+this is for an integration that we don't currently use. 
+
+It will tell you if you've passed the assertion(s) specified
+in `lighthouserc.js`.  It will also give you a URL where you
+can see the complete lighthouse results.
+
 #### Running CodeQL locally
 
 If you get a CodeQL warning on your branch, you may wish to run
@@ -197,8 +231,10 @@ RAILS_ENV=development bundle exec rake browse:load_all
 
 ## Local development with account/request features
 
-You will need a working local copy of [Bibdata](https://github.com/pulibrary/marc_liberation).
-Start the Bibdata server, and then set the ```bidata_base``` value in OrangeLight's `config/requests.yml` file to the local URL where Bibdata is running (e.g., `http://localhost:{port}`).
+For more information, see [requests dev hints](docs/requests/dev_hints.md).
+
+You will need a working local copy of [Bibdata](https://github.com/pulibrary/bibdata).
+Start the Bibdata server, and then set the ```bidata_base``` value in OrangeLight's `config/requests.yml` file to the local URL where Bibdata is running (e.g., `http://localhost:{port}`) or use the `BIBDATA_BASE` environment variable.
 
 ## Development Mailcatcher
 
@@ -240,3 +276,21 @@ bundle exec rake announcement:show
 bundle exec rake announcement:set\["My message in a string. Must escape quotes."\]
 ```
 1. To toggle announcements on and off, sign in and go to /features and toggle message display.
+
+## Git Hook
+
+Changes need to be made in 'simple-git-hooks':
+
+1. Make the change in [package.json](https://github.com/pulibrary/allsearch_frontend/blob/main/package.json)
+```
+"simple-git-hooks": {
+    "pre-commit": "yarn lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint"
+    ]
+  }
+  ```
+2. Run `yarn simple-git-hooks` to reconfigure the settings.

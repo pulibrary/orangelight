@@ -23,9 +23,10 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = Rails.root.join('spec', 'fixtures')
+  config.fixture_paths = [Rails.root.join('spec', 'fixtures')]
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
+
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -59,6 +60,12 @@ RSpec.configure do |config|
 
   config.include ViewComponent::TestHelpers, type: :component
 
+  config.include ActiveSupport::Testing::TimeHelpers
+
+  config.before(:each) do
+    allow(Flipflop).to receive(:enumeration_backwards_compatibility?).and_return(false)
+  end
+
   config.before(:each, type: :feature) do
     Warden.test_mode!
     OmniAuth.config.test_mode = true
@@ -70,10 +77,6 @@ RSpec.configure do |config|
 
   config.before(:suite) { Rails.cache.clear }
   config.after { Rails.cache.clear }
-end
-
-def fixture(file)
-  File.open(File.join(File.dirname(__FILE__), 'fixtures', file), 'rb')
 end
 
 def wait_for_ajax
