@@ -1,28 +1,37 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :none } do
+describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :none }, requests: true do
   let(:user) { FactoryBot.build(:user) }
   let(:valid_patron) do
     { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request",
-      "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
+      "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "REG",
       "patron_id" => "99999", "active_email" => "foo@princeton.edu",
       ldap: { netid: "foo", department: "Test", address: "Box 1234", telephone: nil, givenname: "Foo", surname: "Request",
               email: "foo@princeton.edu", status: "staff", pustatus: "stf", universityid: "9999999", title: nil } }.with_indifferent_access
   end
-  let(:patron) { Requests::Patron.new(user:, patron: valid_patron) }
+  let(:patron) { Requests::Patron.new(user:, patron_hash: valid_patron) }
 
   context "Is a bibliographic record on the shelf" do
     let(:request) { FactoryBot.build(:request_on_shelf, patron:) }
     let(:requestable) { request.requestable.last }
-    let(:mfhd_id) { requestable.holding.first[0] }
-    let(:call_number) { CGI.escape(requestable.holding[mfhd_id]['call_number']) }
-    let(:location_code) { CGI.escape(requestable.holding[mfhd_id]['location_code']) }
-    let(:stackmap_url) { requestable.map_url(mfhd_id) }
+    let(:mfhd_id) { requestable.holding.mfhd_id }
+    let(:call_number) { CGI.escape(requestable.holding.holding_data['call_number']) }
+    let(:location_code) { CGI.escape(requestable.holding.holding_data['location_code']) }
 
     describe '#services' do
       it 'has on shelf and digitization services' do
         expect(requestable.services).to contain_exactly("on_shelf", "on_shelf_edd")
+      end
+    end
+
+    describe '#replace_existing_services' do
+      it 'provides an option for other classes to modify the list of services' do
+        expect(requestable.services).to contain_exactly("on_shelf", "on_shelf_edd")
+
+        requestable.replace_existing_services(['online'])
+
+        expect(requestable.services).to contain_exactly("online")
       end
     end
 
@@ -35,138 +44,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#pick_up_locations' do
       it 'has pickup locations' do
         expect(requestable.pick_up_locations).to eq([{ "label" => "Firestone Library", "address" => "One Washington Rd. Princeton, NJ 08544", "phone_number" => "609-258-1470", "contact_email" => "fstcirc@princeton.edu", "gfa_pickup" => "PA", "staff_only" => false, "pickup_location" => true, "digital_location" => true, "library" => { "label" => "Firestone Library", "code" => "firestone", "order" => 0 }, "pick_up_location_code" => "firestone" }])
-      end
-    end
-
-    describe '#map_url' do
-      it 'returns a stackmap url' do
-        expect(stackmap_url).to include("#{requestable.bib[:id]}/stackmap?cn=#{call_number}&loc=#{location_code}")
-      end
-    end
-
-    describe "#held_at_marquand_library?" do
-      it "is not marquand" do
-        expect(requestable).not_to be_held_at_marquand_library
-      end
-    end
-
-    describe "#available?" do
-      it "is available" do
-        expect(requestable).to be_available
-      end
-    end
-  end
-
-  context "Is a bibliographic record from the thesis collection" do
-    let(:request) { FactoryBot.build(:request_thesis, patron:) }
-    let(:requestable) { request.requestable.first }
-    let(:holding_id) { "thesis" }
-
-    before do
-      stub_catalog_raw(bib_id: 'dsp019c67wp402', type: 'theses_and_dissertations')
-    end
-
-    describe "#thesis?" do
-      it "returns true when record is a senior thesis" do
-        expect(requestable.thesis?).to be_truthy
-      end
-
-      it "reports as a non Alma aeon resource" do
-        expect(requestable.aeon?).to be_truthy
-      end
-
-      it "returns a params list with an Aeon Site MUDD" do
-        expect(requestable.aeon_mapped_params.key?(:Site)).to be_truthy
-        expect(requestable.aeon_mapped_params[:Site]).to eq('MUDD')
-      end
-
-      it "includes a ReferenceNumber" do
-        expect(requestable.aeon_mapped_params[:ReferenceNumber]).to eq(request.system_id)
-      end
-
-      it "includes a CallNumber" do
-        expect(requestable.aeon_mapped_params[:CallNumber]).to be_truthy
-        expect(requestable.aeon_mapped_params[:CallNumber]).to eq(requestable.bib[:call_number_display].first)
-      end
-
-      it "includes an ItemTitle for a senior thesis record" do
-        expect(requestable.aeon_mapped_params[:ItemTitle]).to be_truthy
-        expect(requestable.aeon_mapped_params[:ItemTitle]).to eq(requestable.bib[:title_display])
-      end
-    end
-
-    describe '#location_label' do
-      it 'has a location label' do
-        expect(requestable.location_label).to eq('Mudd Manuscript Library - Stacks')
-      end
-    end
-
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.pick_up_locations).to eq([{ "label" => "Mudd Manuscript Library", "address" => "65 Olden Street Princeton, NJ 08544", "phone_number" => "609-258-6345", "contact_email" => "mudd@princeton.edu", "gfa_pickup" => "PH", "staff_only" => false, "pickup_location" => false, "digital_location" => true, "library" => { "label" => "Mudd Manuscript Library", "code" => "mudd", "order" => 0 }, "pick_up_location_code" => "mudd" }])
-      end
-    end
-
-    describe "#held_at_marquand_library?" do
-      it "is not marquand" do
-        expect(requestable).not_to be_held_at_marquand_library
-      end
-    end
-
-    describe "#available?" do
-      it "is available" do
-        expect(requestable).to be_available
-      end
-    end
-  end
-
-  context "Is a bibliographic record from the numismatics collection" do
-    let(:request) { FactoryBot.build(:request_numismatics, patron:) }
-    let(:requestable) { request.requestable.first }
-    let(:holding_id) { "numismatics" }
-
-    before do
-      stub_catalog_raw(bib_id: 'coin-1167', type: 'numismatics')
-    end
-
-    describe "#numismatics?" do
-      it "returns true when record is a senior thesis" do
-        expect(requestable.numismatics?).to be_truthy
-      end
-
-      it "reports as a non Alma aeon resource" do
-        expect(requestable.aeon?).to be_truthy
-      end
-
-      it "returns a params list with an Aeon Site FIRE" do
-        expect(requestable.aeon_mapped_params.key?(:Site)).to be_truthy
-        expect(requestable.aeon_mapped_params[:Site]).to eq('FIRE')
-      end
-
-      it "includes a ReferenceNumber" do
-        expect(requestable.aeon_mapped_params[:ReferenceNumber]).to eq(request.system_id)
-      end
-
-      it "includes a CallNumber" do
-        expect(requestable.aeon_mapped_params[:CallNumber]).to be_truthy
-        expect(requestable.aeon_mapped_params[:CallNumber]).to eq(requestable.bib[:call_number_display].first)
-      end
-
-      it "includes an ItemTitle for a numismatics record" do
-        expect(requestable.aeon_mapped_params[:ItemTitle]).to be_truthy
-        expect(requestable.aeon_mapped_params[:ItemTitle]).to eq(requestable.bib[:title_display])
-      end
-    end
-
-    describe '#location_label' do
-      it 'has a location label' do
-        expect(requestable.location_label).to eq('Special Collections - Numismatics Collection')
-      end
-    end
-
-    describe '#pick_up_locations' do
-      it 'has pickup locations' do
-        expect(requestable.pick_up_locations).to be_nil
       end
     end
 
@@ -225,11 +102,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A requestable item with hold_request status' do
     let(:request) { FactoryBot.build(:request_serial_with_item_on_hold, patron:) }
     let(:requestable_on_hold) { request.requestable[0] }
-    describe '#hold_request?' do
-      it 'with a Hold Request status it should be on the hold shelf' do
-        expect(requestable_on_hold.hold_request?).to be true
-      end
-    end
 
     describe '#services' do
       it 'is available for resource sharing' do
@@ -265,18 +137,14 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A non circulating item' do
     let(:request) { FactoryBot.build(:mfhd_with_no_circ_and_circ_item, patron:) }
     let(:requestable) { request.requestable[12] }
-    # let(:item) { barcode :"32101024595744", id: 282_632, location: "f", copy_number: 1, item_sequence_number: 14, status: "Not Charged", on_reserve: "N", item_type: "NoCirc", pickup_location_id: 299, pickup_location_code: "fcirc", enum: "vol.22", "chron": "1996", enum_display: "vol.22 (1996)", label: "Firestone Library" }
     let(:no_circ_item_id) { requestable.item['id'] }
     let(:no_circ_item_type) { requestable.item['item_type'] }
-    let(:no_circ_pick_up_location_id) { requestable.item['pickup_location_id'] }
     let(:no_circ_pick_up_location_code) { requestable.item['pickup_location_code'] }
 
-    # rubocop:disable RSpec/MultipleExpectations
     describe 'getters' do
       it 'gets values' do
         expect(requestable.item_data?).to be true
         expect(requestable.item_type_non_circulate?).to be true
-        expect(requestable.pick_up_location_id).to eq 'firestone'
         expect(requestable.pick_up_location_code).to eq 'firestone'
         expect(requestable.enum_value).to eq 'vol.22'
         expect(requestable.cron_value).to eq '1996'
@@ -284,21 +152,16 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
   end
-  # rubocop:enable RSpec/MultipleExpectations
-
   context 'A circulating item' do
     let(:request) { FactoryBot.build(:mfhd_with_no_circ_and_circ_item, patron:) }
     let(:requestable) { request.requestable[0] }
-    # let(:item) {"barcode":"32101022548893","id":282628,"location":"f","copy_number":1,"item_sequence_number":10,"status":"Not Charged","on_reserve":"N","item_type":"Gen","pickup_location_id":299,"pickup_location_code":"fcirc","enum_display":"vol.18","chron":"1992","enum_display":"vol.18 (1992)","label":"Firestone Library"}
     let(:no_circ_item_id) { requestable.item['id'] }
     let(:no_circ_item_type) { requestable.item['item_type'] }
-    let(:no_circ_pick_up_location_id) { requestable.item['pickup_location_id'] }
     let(:no_circ_pick_up_location_code) { requestable.item['pickup_location_code'] }
 
     describe '#item_type_circulate' do
       it 'returns the item type from alma' do
         expect(requestable.item_type_non_circulate?).to be false
-        expect(requestable.pick_up_location_id).to eq 'firestone'
         expect(requestable.pick_up_location_code).to eq 'firestone'
       end
     end
@@ -338,12 +201,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    describe '#aeon_openurl' do
-      it 'returns an openurl with a Call Number param' do
-        expect(requestable.aeon_openurl(request.ctx)).to be_a(String)
-      end
-    end
-
     describe '#barcode' do
       it 'does not report there is a barocode' do
         expect(requestable.barcode?).to be false
@@ -377,17 +234,8 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
   context 'A requestable serial item that has volume and item data in its openurl' do
     let(:request) { FactoryBot.build(:aeon_rbsc_enumerated, patron:) }
-    let(:requestable_holding) { request.requestable.select { |r| r.holding['22677203260006421'] } }
+    let(:requestable_holding) { request.requestable.select { |r| r.holding.mfhd_id == '22677203260006421' } }
     let(:requestable) { requestable_holding.first } # assume only one requestable
-    describe '#aeon_open_url' do
-      it 'returns an openurl with volume data' do
-        expect(requestable.aeon_openurl(request.ctx)).to include("rft.volume=#{CGI.escape(requestable.item[:enum_display])}")
-      end
-
-      it 'returns an openurl with issue data' do
-        expect(requestable.aeon_openurl(request.ctx)).to include("rft.issue=#{CGI.escape(requestable.item[:chron_display])}")
-      end
-    end
 
     describe '#location_label' do
       it 'has a location label' do
@@ -416,24 +264,10 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
   context 'A requestable item from an Aeon EAL Holding with a nil barcode' do
     let(:request) { FactoryBot.build(:aeon_rbsc_alma_enumerated, patron:) }
-    let(:requestable_holding) { request.requestable.select { |r| r.holding['22563389780006421'] } }
+    let(:requestable_holding) { request.requestable.select { |r| r.holding.mfhd_id == '22563389780006421' } }
     let(:holding_id) { '22256352610006421' }
     let(:requestable) { requestable_holding.first } # assume only one requestable
     let(:enumeration) { 'v.7' }
-
-    describe '#aeon_open_url' do
-      it 'identifies as an aeon eligible alma mananaged item' do
-        expect(requestable.aeon?).to be true
-      end
-
-      it 'returns an openurl with enumeration when available' do
-        expect(requestable.aeon_openurl(request.ctx)).to include("rft.volume=#{CGI.escape(enumeration)}")
-      end
-
-      it 'returns an openurl with item id as a value for iteminfo5' do
-        expect(requestable.aeon_openurl(request.ctx)).to include("iteminfo5=#{requestable.item[:id]}")
-      end
-    end
 
     describe '#location_label' do
       it 'has a location label' do
@@ -472,15 +306,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#site' do
       it 'returns a FIRE site param' do
         expect(requestable.site).to eq('FIRE')
-      end
-    end
-
-    describe '#aeon_openurl' do
-      let(:aeon_ctx) { requestable.aeon_openurl(request.ctx) }
-
-      ## no idea why these two don't match
-      it 'includes basic metadata' do
-        expect(aeon_ctx).to include('ctx_id=&ctx_enc=info%3Aofi%2Fenc%3AUTF-8&rft.genre=unknown&rft.title=Beethoven%27s+andante+cantabile+aus+dem+Trio+op.+97%2C+fu%CC%88r+orchester&rft.creator=Beethoven%2C+Ludwig+van&rft.aucorp=Leipzig%3A+Kahnt&rft.pub=Leipzig%3A+Kahnt&rft.format=musical+score&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Aunknown&rft_id=https%3A%2F%2Fbibdata.princeton.edu%2Fbibliographic%2F9925358453506421&rft_id=info%3Aoclcnum%2F25615303&rfr_id=info%3Asid%2Fcatalog.princeton.edu%3Agenerator&CallNumber=M1004.L6+B3&ItemInfo1=Reading+Room+Access+Only&Location=rare%24ex&ReferenceNumber=9925358453506421&Site=FIRE')
       end
     end
 
@@ -528,7 +353,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#site' do
       it 'returns a Marquand site param' do
         expect(requestable.site).to eq('MARQ')
-        expect(requestable.can_be_delivered?).to be_falsey
       end
     end
 
@@ -562,7 +386,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:user) }
     let(:item) { { status_label: "Available", location_code: "scsbnypl" }.with_indifferent_access }
     let(:location) { { "holding_library" => { "code" => "marquand" }, "library" => { "code" => "marquand" } } }
-    let(:requestable) { described_class.new(bib: {}, holding: [{ 1 => { 'call_number_browse': 'blah' } }], location:, patron:, item:) }
+    let(:requestable) { described_class.new(bib: {}, holding: Requests::Holding.new(mfhd_id: 1, holding_data: { 'call_number_browse': 'blah' }), location:, patron:, item:) }
 
     describe '#site' do
       it 'returns a Marquand site param' do
@@ -573,6 +397,12 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe "#held_at_marquand_library?" do
       it "is marquand" do
         expect(requestable).to be_held_at_marquand_library
+      end
+    end
+
+    describe "#marquand_item?" do
+      it 'is a marquand_item' do
+        expect(requestable).to be_marquand_item
       end
     end
 
@@ -587,7 +417,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:aeon_w_long_title) }
     let(:requestable) { request.requestable.first } # assume only one requestable
-    let(:aeon_ctx) { requestable.aeon_openurl(request.ctx) }
     describe '#aeon_basic_params' do
       it 'includes a Title Param that is less than 250 characters' do
         expect(requestable.aeon_mapped_params.key?(:ItemTitle)).to be true
@@ -629,33 +458,10 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   context 'A requestable item from a RBSC holding with an item record including a barcode' do
     let(:request) { FactoryBot.build(:aeon_w_barcode, patron:) }
     let(:requestable) { request.requestable.first } # assume only one requestable
-    let(:aeon_ctx) { requestable.aeon_openurl(request.ctx) }
     describe '#barcode?' do
       it 'has a barcode' do
         expect(requestable.barcode?).to be true
         expect(requestable.barcode).to match(/^[0-9]+/)
-      end
-    end
-
-    describe '#aeon_openurl' do
-      it 'returns an OpenURL CTX Object' do
-        expect(aeon_ctx).to be_a(String)
-      end
-
-      it 'includes an ItemNumber Param' do
-        expect(aeon_ctx).to include(requestable.barcode)
-      end
-
-      it 'includes a Site Param' do
-        expect(aeon_ctx).to include(requestable.site)
-      end
-
-      it 'includes a Genre Param' do
-        expect(aeon_ctx).to include('rft.genre=book')
-      end
-
-      it 'includes a Call Number Param' do
-        expect(aeon_ctx).to include('CallNumber')
       end
     end
 
@@ -672,14 +478,14 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
       it 'has Location Param' do
         expect(requestable.aeon_basic_params.key?(:Location)).to be true
-        expect(requestable.aeon_basic_params[:Location]).to eq(requestable.holding.first.last['location_code'])
+        expect(requestable.aeon_basic_params[:Location]).to eq(requestable.holding.holding_data['location_code'])
       end
     end
 
     describe '#aeon_request_url with new aeon base' do
       it 'beings with Aeon GFA base' do
         stub_holding_locations
-        expect(requestable.aeon_request_url).to match(/^#{Requests::Config[:aeon_base]}/)
+        expect(requestable.aeon_request_url).to match(/^#{Requests.config[:aeon_base]}/)
       end
     end
 
@@ -710,21 +516,17 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
   context 'A requestable item from Forrestal Annex with no item data' do
     let(:request) { FactoryBot.build(:request_no_items, patron:) }
-    let(:requestable) { request.requestable.first } # assume only one requestable
+    let(:requestable) { request.requestable.first }
 
-    # rubocop:disable RSpec/MultipleExpectations
     describe 'requestable with no items ' do
       it 'does not have item data' do
         expect(requestable.item_data?).to be false
-        expect(requestable.pick_up_location_id).to eq ""
         expect(requestable.pick_up_location_code).to eq ""
         expect(requestable.item_type).to eq ""
         expect(requestable.enum_value).to eq ""
         expect(requestable.cron_value).to eq ""
       end
     end
-    # rubocop:enable RSpec/MultipleExpectations
-
     describe '#location_label' do
       it 'has a location label' do
         expect(requestable.location_label).to eq('Forrestal Annex - Princeton Collection')
@@ -744,7 +546,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     end
 
     ## The JSON response for holding w/no items is empty now. We used to check the availability at the bib level, but that is not available in alma
-    ##  We must therefore assume that a holding with no itesm is not available
+    ##  We must therefore assume that a holding with no items is not available
     ## https://bibdata-alma-staging.princeton.edu/bibliographic/9944928463506421/holdings/22490610730006421/availability.json
     describe "#available?" do
       it "is not available" do
@@ -791,11 +593,11 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
   # user authentication tests
   context 'When a princeton user with NetID visits the site' do
     let(:valid_patron) do
-      { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
+      { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "REG",
         "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
     end
     let(:patron) do
-      Requests::Patron.new(user:, session: {}, patron: valid_patron)
+      Requests::Patron.new(user:, patron_hash: valid_patron)
     end
     let(:params) do
       {
@@ -804,7 +606,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         patron:
       }
     end
-    let(:request) { Requests::Request.new(**params) }
+    let(:request) { Requests::Form.new(**params) }
     let(:requestable) { request.requestable.first }
 
     describe '# offsite requestable' do
@@ -831,7 +633,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     end
 
     let(:request_charged) { FactoryBot.build(:request_with_items_charged) }
-    let(:requestable_holding) { request_charged.requestable.select { |r| r.holding['22739043950006421'] } }
+    let(:requestable_holding) { request_charged.requestable.select { |r| r.holding.mfhd_id == '22739043950006421' } }
     let(:requestable_charged) { requestable_holding.first }
 
     describe '# checked-out requestable' do
@@ -857,11 +659,11 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
   context 'When a barcode only user visits the site' do
     let(:valid_patron) do
-      { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "staff",
+      { "netid" => "foo", "first_name" => "Foo", "last_name" => "Request", "barcode" => "22101007797777", "university_id" => "9999999", "patron_group" => "REG",
         "patron_id" => "99999", "active_email" => "foo@princeton.edu" }.with_indifferent_access
     end
     let(:patron) do
-      Requests::Patron.new(user:, session: {}, patron: valid_patron)
+      Requests::Patron.new(user:, patron_hash: valid_patron)
     end
     let(:params) do
       {
@@ -870,7 +672,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         patron:
       }
     end
-    let(:request) { Requests::Request.new(**params) }
+    let(:request) { Requests::Form.new(**params) }
     let(:requestable) { request.requestable.first }
 
     describe '#requestable' do
@@ -878,7 +680,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         stub_scsb_availability(bib_id: "9999998003506421", institution_id: "PUL", barcode: '32101099186403')
       end
 
-      # TODO: Activate test when campus has re-opened
       it "has recap request service available" do
         expect(requestable.services.include?('recap')).to be true
       end
@@ -896,21 +697,12 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
       end
     end
 
-    # let(:request_paging) { FactoryBot.build(:request_paging_available_barcode_patron) }
-    # let(:requestable_paging) { request_paging.requestable.first }
-
-    # describe '#paging requestable' do
-    #   it "should have the Paging request service available" do
-    #     expect(requestable_paging.services.include?('paging')).to be true
-    #   end
-    # end
-
     let(:request_charged) { FactoryBot.build(:request_with_items_charged_barcode_patron) }
-    let(:requestable_holding) { request_charged.requestable.select { |r| r.holding['22739043950006421'] } }
+    let(:requestable_holding) { request_charged.requestable.select { |r| r.holding.mfhd_id == '22739043950006421' } }
     let(:requestable_charged) { requestable_holding.first }
 
     describe '#checked-out requestable' do
-      # Barcode users should NOT have the following privileges ...
+      # Barcode users should NOT have the following privileges
 
       it "does not have ILL request service available" do
         expect(requestable_charged.services.include?('ill')).to be false
@@ -931,8 +723,8 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     let(:user) { FactoryBot.build(:unauthenticated_patron) }
     let(:valid_patron_response) { '{"netid":"foo","first_name":"Foo","last_name":"Request","barcode":"22101007797777","university_id":"9999999","patron_group":"staff","patron_id":"99999","active_email":"foo@princeton.edu"}' }
     let(:patron) do
-      stub_request(:get, "#{Requests::Config[:bibdata_base]}/patron/foo?ldap=true").to_return(status: 200, body: valid_patron_response, headers: {})
-      Requests::Patron.new(user:, session: {})
+      stub_request(:get, "#{Requests.config[:bibdata_base]}/patron/foo?ldap=true").to_return(status: 200, body: valid_patron_response, headers: {})
+      Requests::Patron.new(user:)
     end
     let(:params) do
       {
@@ -941,7 +733,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         patron:
       }
     end
-    let(:request) { Requests::Request.new(**params) }
+    let(:request) { Requests::Form.new(**params) }
     let(:requestable) { request.requestable.first }
 
     describe '#recap requestable' do
@@ -980,27 +772,11 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         expect(requestable_charged).not_to be_available
       end
     end
-
-    describe "#resource_shared?" do
-      it 'is not resource shared' do
-        expect(requestable).not_to be_resource_shared
-      end
-    end
   end
   context 'A requestable item from a RBSC holding creates an openurl with volume and call number info' do
     let(:user) { FactoryBot.build(:user) }
     let(:request) { FactoryBot.build(:request_aeon_holding_volume_note) }
-    let(:requestable) { request.requestable.find { |m| m.holding.first.first == '22563389780006421' } }
-    let(:aeon_ctx) { requestable.aeon_openurl(request.ctx) }
-    describe '#aeon_openurl' do
-      it 'includes the location_has note as the volume' do
-        expect(aeon_ctx).to include('rft.volume=v.7')
-      end
-
-      it 'includes the call number of the holding' do
-        expect(aeon_ctx).to include('CallNumber=2015-0801N')
-      end
-    end
+    let(:requestable) { request.requestable.find { |m| m.holding.mfhd_id == '22563389780006421' } }
 
     describe "#held_at_marquand_library?" do
       it "is not marquand" do
@@ -1034,7 +810,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
     before do
       stub_catalog_raw(bib_id: 'SCSB-2650865', type: 'scsb')
-      stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+      stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"AR65651294\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
     end
 
@@ -1066,7 +842,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
     before do
       stub_catalog_raw(bib_id: 'SCSB-2901229', type: 'scsb')
-      stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+      stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"MR72802120\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
     end
 
@@ -1089,23 +865,17 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         expect(requestable.cul_music?).to be_truthy
       end
     end
-
-    describe "#resource_shared?" do
-      it 'is not resource shared' do
-        expect(requestable).not_to be_resource_shared
-      end
-    end
   end
 
   context 'An Item being shared with another institution' do
-    let(:request) { Requests::Request.new(system_id: '9977664533506421', mfhd: '22109013720006421', patron:) }
+    let(:request) { Requests::Form.new(system_id: '9977664533506421', mfhd: '22109013720006421', patron:) }
     let(:requestable) { request.requestable.first }
 
     before do
       stub_catalog_raw(bib_id: '9977664533506421')
       stub_availability_by_holding_id(bib_id: '9977664533506421', holding_id: '22109013720006421')
       stub_single_holding_location('RES_SHARE$OUT_RS_REQ')
-      stub_request(:post, "#{Requests::Config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
+      stub_request(:post, "#{Requests.config[:scsb_base]}/sharedCollection/bibAvailabilityStatus")
         .to_return(status: 200, body: "[{\"itemBarcode\":\"MR72802120\",\"itemAvailabilityStatus\":\"Available\",\"errorMessage\":null,\"collectionGroupDesignation\":\"Shared\"}]")
     end
 
@@ -1124,12 +894,6 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe "#cul_music?" do
       it 'is not an Music Library Item' do
         expect(requestable).not_to be_cul_music
-      end
-    end
-
-    describe "#resource_shared?" do
-      it 'is resource shared' do
-        expect(requestable).to be_resource_shared
       end
     end
   end
