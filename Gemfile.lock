@@ -144,9 +144,8 @@ GEM
     blacklight_dynamic_sitemap (1.0.0)
       blacklight (> 7.0)
       rails
-    blacklight_range_limit (8.5.0)
+    blacklight_range_limit (9.0.0)
       blacklight (>= 7.25.2, < 9)
-      deprecation
       view_component (>= 2.54, < 4)
     bootstrap (5.2.3)
       autoprefixer-rails (>= 9.1.0)
@@ -771,7 +770,7 @@ DEPENDENCIES
   blacklight-hierarchy
   blacklight-marc (~> 8.1)
   blacklight_dynamic_sitemap
-  blacklight_range_limit (~> 8.2)
+  blacklight_range_limit (~> 9.0.0)
   bootstrap (~> 5.2.0)
   capistrano (~> 3.4)
   capistrano-passenger
@@ -781,6 +780,7 @@ DEPENDENCIES
   coveralls_reborn
   csl-styles
   datadog
+  deprecation
   devise
   devise-guests
   ed25519
