@@ -97,7 +97,7 @@ module Requests
       def site
         return 'MUDD' if at_mudd?
         return 'MARQ' if at_marquand?
-        'RBSC'
+        'FIRE'
       end
   end
 end

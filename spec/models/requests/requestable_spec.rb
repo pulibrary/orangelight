@@ -138,9 +138,9 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
         expect(requestable.aeon?).to be_truthy
       end
 
-      it "returns a params list with an Aeon Site RBSC" do
+      it "returns a params list with an Aeon Site FIRE" do
         expect(requestable.aeon_mapped_params.key?(:Site)).to be_truthy
-        expect(requestable.aeon_mapped_params[:Site]).to eq('RBSC')
+        expect(requestable.aeon_mapped_params[:Site]).to eq('FIRE')
       end
 
       it "includes a ReferenceNumber" do
@@ -470,8 +470,8 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     end
 
     describe '#site' do
-      it 'returns a RBSC site param' do
-        expect(requestable.site).to eq('RBSC')
+      it 'returns a FIRE site param' do
+        expect(requestable.site).to eq('FIRE')
       end
     end
 
@@ -480,7 +480,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
 
       ## no idea why these two don't match
       it 'includes basic metadata' do
-        expect(aeon_ctx).to include('ctx_id=&ctx_enc=info%3Aofi%2Fenc%3AUTF-8&rft.genre=unknown&rft.title=Beethoven%27s+andante+cantabile+aus+dem+Trio+op.+97%2C+fu%CC%88r+orchester&rft.creator=Beethoven%2C+Ludwig+van&rft.aucorp=Leipzig%3A+Kahnt&rft.pub=Leipzig%3A+Kahnt&rft.format=musical+score&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Aunknown&rft_id=https%3A%2F%2Fbibdata.princeton.edu%2Fbibliographic%2F9925358453506421&rft_id=info%3Aoclcnum%2F25615303&rfr_id=info%3Asid%2Fcatalog.princeton.edu%3Agenerator&CallNumber=M1004.L6+B3&ItemInfo1=Reading+Room+Access+Only&Location=rare%24ex&ReferenceNumber=9925358453506421&Site=RBSC')
+        expect(aeon_ctx).to include('ctx_id=&ctx_enc=info%3Aofi%2Fenc%3AUTF-8&rft.genre=unknown&rft.title=Beethoven%27s+andante+cantabile+aus+dem+Trio+op.+97%2C+fu%CC%88r+orchester&rft.creator=Beethoven%2C+Ludwig+van&rft.aucorp=Leipzig%3A+Kahnt&rft.pub=Leipzig%3A+Kahnt&rft.format=musical+score&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Aunknown&rft_id=https%3A%2F%2Fbibdata.princeton.edu%2Fbibliographic%2F9925358453506421&rft_id=info%3Aoclcnum%2F25615303&rfr_id=info%3Asid%2Fcatalog.princeton.edu%3Agenerator&CallNumber=M1004.L6+B3&ItemInfo1=Reading+Room+Access+Only&Location=rare%24ex&ReferenceNumber=9925358453506421&Site=FIRE')
       end
     end
 
@@ -662,7 +662,7 @@ describe Requests::Requestable, vcr: { cassette_name: 'requestable', record: :no
     describe '#aeon_basic_params' do
       it 'includes a Site param' do
         expect(requestable.aeon_basic_params.key?(:Site)).to be true
-        expect(requestable.aeon_basic_params[:Site]).to eq('RBSC')
+        expect(requestable.aeon_basic_params[:Site]).to eq('FIRE')
       end
 
       it 'has a Reference NUmber' do
