@@ -3,6 +3,7 @@
     "@apollo/client": "^3.7.1",
     "@babel/preset-stage-3": "^7.8.3",
     "@vitejs/plugin-vue": "^5.1.2",
+    "blacklight-range-limit": "^9.0.0",
     "graphql": "^16.8.1",
     "jest-environment-jsdom": "^29.4.0",
     "lux-design-system": "^5.11.0",
