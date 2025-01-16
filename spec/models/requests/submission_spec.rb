@@ -37,11 +37,11 @@ describe Requests::Submission, requests: true do
           "edd_author" => "",
           "edd_art_title" => "",
           "edd_note" => "",
-          "pick_up" => "Firestone Library"
-        },
+          "pick_up" => "PF"
+        }.with_indifferent_access,
         {
           "selected" => "false"
-        }
+        }.with_indifferent_access
       ]
     end
     let(:bib) do
@@ -50,7 +50,7 @@ describe Requests::Submission, requests: true do
         "title" => "County and city data book.",
         "author" => "United States",
         "date" => "1949"
-      }
+      }.with_indifferent_access
     end
     let(:params) do
       {
@@ -105,6 +105,39 @@ describe Requests::Submission, requests: true do
         expect(submission.partner_item?(submission.items.first)).to be false
       end
     end
+
+    describe '#to_h' do
+      before { stub_delivery_locations }
+      it 'is compatible with sidekiq' do
+        expect({ 'args' => submission.to_h }).to be_compatible_with_sidekiq
+      end
+      it 'contains a bib' do
+        expect(submission.to_h['bib']['id']).to eq '994916543506421'
+        expect(submission.to_h['bib']['title']).to eq 'County and city data book.'
+      end
+      it 'contains items' do
+        expect(submission.to_h['items'].first['call_number']).to eq 'HA202 .U581'
+      end
+      it 'contains an email' do
+        expect(submission.to_h['email']).to eq 'foo@princeton.edu'
+      end
+      it 'contains errors' do
+        expect(submission.to_h['errors']).to be_empty
+      end
+      it 'contains a patron' do
+        expect(submission.to_h['patron']['first_name']).to eq 'Foo'
+        expect(submission.to_h['patron']['last_name']).to eq 'Request'
+      end
+      it 'contains a pick_up_location' do
+        expect(submission.to_h['pick_up_location']['label']).to eq 'Firestone Library'
+      end
+      it 'contains a user_barcode' do
+        expect(submission.to_h['user_barcode']).to eq '22101007797777'
+      end
+      it 'contains a user_name' do
+        expect(submission.to_h['user_name']).to eq 'foo'
+      end
+    end
   end
 
   context 'An invalid Submission' do
@@ -130,6 +163,12 @@ describe Requests::Submission, requests: true do
       it 'includes error messsages' do
         expect(invalid_submission.valid?).to be_falsy
         expect(invalid_submission.errors.full_messages.size).to be > 0
+      end
+    end
+    describe '#to_h' do
+      before { stub_delivery_locations }
+      it 'is compatible with sidekiq' do
+        expect({ 'args' => invalid_submission.to_h }).to be_compatible_with_sidekiq
       end
     end
   end
@@ -246,6 +285,16 @@ describe Requests::Submission, requests: true do
 
       it 'contains an error message' do
         expect(submission.errors.messages).to be_truthy
+      end
+
+      describe '#to_h' do
+        before { stub_delivery_locations }
+        it 'is compatible with sidekiq' do
+          expect(submission.to_h).to be_compatible_with_sidekiq
+        end
+        it 'contains errors' do
+          expect(submission.to_h['errors']).to eq({ "items" => [{ "empty_set" => { "text" => "Please Select an Item to Request!", "type" => "options" } }] })
+        end
       end
     end
 

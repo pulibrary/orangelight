@@ -84,7 +84,7 @@ module Requests
     end
 
     def pick_up_location
-      Requests::BibdataService.delivery_locations[items.first["pick_up"]]["library"]
+      Requests::BibdataService.delivery_locations.dig(items.first&.dig('pick_up'), "library") || {}
     end
 
     def marquand?
@@ -94,6 +94,25 @@ module Requests
     def edd?(item)
       delivery_mode = delivery_mode(item)
       delivery_mode.present? && delivery_mode == "edd"
+    end
+
+    # Convert the submission to a hash that is compatible that
+    # Sidekiq can safely serialize to JSON for redis.  This means:
+    #   * No application-specific objects (unless they are activerecord db objects)
+    #   * No ActiveSupport::HashWithIndifferentAccess objects, we can only have Hash objects
+    #   * The keys of the hash must all be strings, not symbols
+    # See https://github.com/sidekiq/sidekiq/wiki/Best-Practices#1-make-your-job-parameters-small-and-simple
+    def to_h
+      {
+        bib: bib.to_hash.stringify_keys,
+        email: email,
+        errors: errors.messages.stringify_keys,
+        items: items.map { |hash| hash.to_hash.stringify_keys },
+        patron: patron.to_h.to_hash.stringify_keys,
+        pick_up_location: pick_up_location.to_hash.stringify_keys,
+        user_barcode:,
+        user_name:
+      }.stringify_keys
     end
 
     private
