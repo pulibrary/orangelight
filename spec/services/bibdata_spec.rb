@@ -54,11 +54,6 @@ RSpec.describe Bibdata do
         active_email: "bbird@SCRUBBED_princeton.edu"
       }
     end
-    let(:headers) do
-      {
-        'Content-Type': 'application/json'
-      }
-    end
     let(:response) { instance_double(Faraday::Response, headers:, status:, body: JSON.generate(body)) }
 
     before { allow(Faraday).to receive(:get).and_return(response) }
@@ -129,6 +124,24 @@ RSpec.describe Bibdata do
       it 'returns a nil value and logs a message' do
         expect(patron).to eq({})
         expect(logger).to have_received(:error).with("403 Not Authorized to Connect to Patron Data Service at #{Requests.config['bibdata_base']}/patron/bbird")
+      end
+    end
+    context 'when you get html with a 200 response code' do
+      let(:logger) { instance_double(ActiveSupport::Logger) }
+      let(:status) { 200 }
+      let(:body) { '<html><head><title>Request Rejected</title></head>' }
+      let(:faraday_env) { instance_double(Faraday::Env, url: URI('https://www.example.edu')) }
+      let(:response) { instance_double(Faraday::Response, headers:, status:, body: body) }
+
+      before do
+        allow(response).to receive(:env).and_return(faraday_env)
+        allow(logger).to receive(:error)
+        allow(Rails).to receive(:logger).and_return(logger)
+      end
+
+      it 'returns an empty hash and logs a message' do
+        expect(described_class.send(:build_api_patron, api_response: response, user: patron_user)).to eq({})
+        expect(logger).to have_received(:error).with(/returned an invalid patron response:/)
       end
     end
   end
