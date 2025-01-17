@@ -83,12 +83,10 @@ class Bibdata
       def build_api_patron(api_response:, user:)
         response_body = api_response.body
         base_patron_json = JSON.parse(response_body)
-        patron_json = base_patron_json.merge(
-          valid: user.valid?
-        )
-        patron_json.with_indifferent_access
+        base_patron_json.merge(valid: user.valid?).with_indifferent_access
       rescue JSON::ParserError
         Rails.logger.error("#{api_response.env.url} returned an invalid patron response: #{response_body}")
+        {}
       end
 
       def sorted_locations(response)
