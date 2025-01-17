@@ -118,10 +118,14 @@ class CatalogController < ApplicationController
                                      collapse: false, home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }, include_in_advanced_search: true
 
     # num_segments and segments set to defaults here, included to show customizable features
-    config.add_facet_field 'pub_date_start_sort', label: 'Publication year', single: true, range: {
+    config.add_facet_field 'pub_date_start_sort', label: 'Publication year', single: true, range: true, range_config: {
       num_segments: 10,
       assumed_boundaries: [1100, Time.now.year + 1],
-      segments: true
+      segments: true,
+      chart_segment_border_color: 'rgb(255, 217, 96)',
+      chart_segment_bg_color: 'rgba(255, 217, 96, 0.5)',
+      chart_segment_bg_color: 'rgba(255, 217, 96, 0.5)',
+      show_missing_link: false
     }
     config.add_facet_field 'language_facet', label: 'Language', limit: true, include_in_advanced_search: true, suggest: true
     config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true, include_in_advanced_search: false, suggest: true
