@@ -24,7 +24,7 @@ export default class MultiselectCombobox {
     this.selectedOptions.toggle(item.firstChild.nodeValue);
     this.inputElement.value = this.selectedOptions.toString();
     this.#updateHiddenSelect();
-    this.#orderList();
+    this.#buildList();
   }
 
   updateOptionVisibility() {
@@ -51,7 +51,18 @@ export default class MultiselectCombobox {
 
   #addEventListeners() {
     this.listElement.querySelectorAll('li').forEach((item) => {
-      item.addEventListener('keyup', (event) => {
+      this.#addEventListener(item);
+    });
+    this.inputElement.addEventListener('input', (event) => {
+      this.updateOptionVisibility();
+      this.#openDropdownIfClosed();
+    });
+  }
+
+  #addEventListener(item) {
+    item.addEventListener(
+      'keyup',
+      (event) => {
         if (event.code == 'Enter') {
           this.toggleItem(item);
         } else {
@@ -61,19 +72,20 @@ export default class MultiselectCombobox {
             new KeyboardEvent('keyup', { key: event.key, code: event.code })
           );
         }
-      });
-      item.addEventListener('click', (event) => {
+      },
+      this
+    );
+    item.addEventListener(
+      'click',
+      (event) => {
         this.toggleItem(item);
         // Don't propagate the event to the bootstrap event
         // listener.  Otherwise, the dropdown closes every
         // time the user clicks on an item
         event.stopPropagation();
-      });
-    });
-    this.inputElement.addEventListener('input', (event) => {
-      this.updateOptionVisibility();
-      this.#openDropdownIfClosed();
-    });
+      },
+      this
+    );
   }
 
   #applySelections() {
@@ -91,6 +103,17 @@ export default class MultiselectCombobox {
       item.querySelectorAll('span').forEach((span) => span.remove());
       item.classList.remove('active');
       item.setAttribute('aria-selected', 'false');
+      const active = this.listElement.querySelectorAll('.active');
+      for (const element of active) {
+        if (
+          element.firstChild.textContent.trim() ===
+          item.firstChild.textContent.trim()
+        ) {
+          element.querySelector('span').remove();
+          element.classList.remove('active');
+          break;
+        }
+      }
     } else {
       item.innerHTML += icon;
       item.classList.add('active');
@@ -120,27 +143,36 @@ export default class MultiselectCombobox {
     }
   }
 
-  #orderList() {
-    [].slice
-      .call(this.listElement.children)
-      .sort(this.#compare)
-      .forEach(function (val, i) {
-        this.listElement.appendChild(val);
-      }, this);
-  }
+  #buildList() {
+    let selectedList = [];
+    let allOptions = [];
 
-  #compare(a, b) {
-    function toBoolean(value) {
-      return value === 'true' ? true : false;
+    [].slice.call(this.listElement.children).forEach(function (val, i) {
+      if (val.children.length > 0) {
+        let copy = val.cloneNode(true);
+        this.#addEventListener(copy);
+        selectedList.push(copy);
+      }
+      allOptions.push(val);
+      if (val.classList.contains('divider')) {
+        selectedList = [];
+        allOptions = [];
+      }
+    }, this);
+
+    let divider = document.createElement('li');
+    divider.classList.add('dropdown-item', 'divider');
+    divider.tabIndex = -1;
+    divider.role = 'option';
+
+    if (selectedList.length > 0) {
+      selectedList.push(divider);
     }
 
-    if (
-      toBoolean(a.getAttribute('aria-selected')) !==
-      toBoolean(b.getAttribute('aria-selected'))
-    ) {
-      return toBoolean(a.getAttribute('aria-selected')) ? -1 : 1;
-    } else {
-      return a.textContent.localeCompare(b.textContent);
-    }
+    selectedList = selectedList.concat(allOptions);
+    this.listElement.innerHTML = '';
+    selectedList.forEach(function (val) {
+      this.listElement.appendChild(val);
+    }, this);
   }
 }
