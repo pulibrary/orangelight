@@ -124,7 +124,6 @@ class CatalogController < ApplicationController
       segments: true,
       chart_segment_border_color: 'rgb(255, 217, 96)',
       chart_segment_bg_color: 'rgba(255, 217, 96, 0.5)',
-      chart_segment_bg_color: 'rgba(255, 217, 96, 0.5)',
       show_missing_link: false
     }
     config.add_facet_field 'language_facet', label: 'Language', limit: true, include_in_advanced_search: true, suggest: true

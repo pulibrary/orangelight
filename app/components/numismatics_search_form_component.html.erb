@@ -15,11 +15,8 @@
       <% end %>
       <div class="mb-3 advanced-search-facet row">
         <%= label_tag pub_date_field.parameterize, :class => "col-sm-4 control-label advanced-facet-label" do %>Year<% end %>
-        <div class="col-sm-8 range_limit">
-          <label for="range_pub_date_start_sort_begin" class="visually-hidden">date range (starting year)</label>
+        <div class="col-sm-8">
           <%= render BlacklightRangeLimit::RangeFormComponent.new(facet_field: pub_date_presenter) %> –
-          <label for="range_pub_date_start_sort_end" class="visually-hidden">date range (ending year)</label>
-          <%= render BlacklightRangeLimit::RangeFormComponent.new(facet_field: pub_date_presenter) %>
         </div>
       </div>
       <div class="mb-3 advanced-search-facet row">
