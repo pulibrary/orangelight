@@ -60,6 +60,18 @@ RSpec.describe ApplicationController, type: :request do
           get '/users/sign_in/'
           expect(response).to redirect_to('/bookmarks')
         end
+        context 'if the origin is the account/digitization_requests page' do
+          around do |example|
+            Rails.application.env_config["omniauth.origin"] = '/users/sign_in?referer=%2Faccount%2Fdigitization_requests'
+            example.run
+            Rails.application.env_config.except!("omniauth.origin")
+          end
+
+          it 'sends the user back to the account/digitization_requests page' do
+            get '/users/sign_in'
+            expect(response).to redirect_to('/account/digitization_requests')
+          end
+        end
       end
       # rubocop:disable RSpec/AnyInstance
       context 'only with devise stored_location_for' do
