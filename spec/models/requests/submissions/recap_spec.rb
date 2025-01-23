@@ -147,6 +147,7 @@ describe Requests::Submissions::Recap, requests: true do
       end
 
       it "captures errors in the alma hold request" do
+        stub_delivery_locations
         stub_request(:post, scsb_url)
           .to_return(status: 200, body: good_response, headers: {})
         stub_request(:post, alma_url)

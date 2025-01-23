@@ -69,7 +69,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     let(:mail) do
-      described_class.send("interlibrary_loan_confirmation", submission_for_ill).deliver_later.perform_now
+      described_class.send("interlibrary_loan_confirmation", submission_for_ill.to_h).deliver_later.perform_now
     end
 
     it "renders the headers" do
@@ -122,7 +122,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     let(:mail) do
-      described_class.send("pres_email", submission_for_preservation).deliver_later.perform_now
+      described_class.send("pres_email", submission_for_preservation.to_h).deliver_later.perform_now
     end
 
     it "renders the headers" do
@@ -176,7 +176,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     let(:mail) do
-      described_class.send("pres_confirmation", submission_for_preservation).deliver_later.perform_now
+      described_class.send("pres_confirmation", submission_for_preservation.to_h).deliver_later.perform_now
     end
 
     it "renders the headers" do
@@ -227,11 +227,11 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     let(:mail) do
-      described_class.send("paging_email", submission_for_no_items).deliver_later.perform_now
+      described_class.send("paging_email", submission_for_no_items.to_h).deliver_later.perform_now
     end
 
     let(:confirmation) do
-      described_class.send("paging_confirmation", submission_for_no_items).deliver_later.perform_now
+      described_class.send("paging_confirmation", submission_for_no_items.to_h).deliver_later.perform_now
     end
 
     it "renders the headers" do
@@ -287,11 +287,11 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     let(:mail) do
-      described_class.send("annex_email", submission_for_annex).deliver_later.perform_now
+      described_class.send("annex_email", submission_for_annex.to_h).deliver_later.perform_now
     end
 
     let(:confirmation_mail) do
-      described_class.send("annex_confirmation", submission_for_annex).deliver_later.perform_now
+      described_class.send("annex_confirmation", submission_for_annex.to_h).deliver_later.perform_now
     end
 
     it "renders email to library staffs" do
@@ -350,11 +350,11 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     let(:mail) do
-      described_class.send("annex_email", submission_for_anxadoc).deliver_later.perform_now
+      described_class.send("annex_email", submission_for_anxadoc.to_h).deliver_later.perform_now
     end
 
     let(:confirmation_mail) do
-      described_class.send("annex_confirmation", submission_for_anxadoc).deliver_later.perform_now
+      described_class.send("annex_confirmation", submission_for_anxadoc.to_h).deliver_later.perform_now
     end
 
     it "renders and email to the librarians" do
@@ -412,7 +412,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     let(:mail) do
-      described_class.send("on_order_email", submission_for_on_order).deliver_later.perform_now
+      described_class.send("on_order_email", submission_for_on_order.to_h).deliver_later.perform_now
     end
 
     it "renders the headers" do
@@ -463,7 +463,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     let(:mail) do
-      described_class.send("on_order_confirmation", submission_for_on_order).deliver_later.perform_now
+      described_class.send("on_order_confirmation", submission_for_on_order.to_h).deliver_later.perform_now
     end
 
     it "renders the headers" do
@@ -517,7 +517,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     let(:mail) do
-      described_class.send("in_process_email", submission_for_in_process).deliver_later.perform_now
+      described_class.send("in_process_email", submission_for_in_process.to_h).deliver_later.perform_now
     end
 
     it "renders the headers" do
@@ -570,7 +570,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     let(:mail) do
-      described_class.send("in_process_confirmation", submission_for_in_process).deliver_later.perform_now
+      described_class.send("in_process_confirmation", submission_for_in_process.to_h).deliver_later.perform_now
     end
 
     it "renders the headers" do
@@ -633,7 +633,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     let(:confirmation_mail) do
-      described_class.send("recap_confirmation", submission_for_recap).deliver_later.perform_now
+      described_class.send("recap_confirmation", submission_for_recap.to_h).deliver_later.perform_now
     end
 
     it "renders the confirmation" do
@@ -695,7 +695,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     let(:mail) do
-      described_class.send("recap_edd_confirmation", submission_for_recap).deliver_later.perform_now
+      described_class.send("recap_edd_confirmation", submission_for_recap.to_h).deliver_later.perform_now
     end
 
     it "renders the headers" do
@@ -751,7 +751,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
     # rubocop:disable RSpec/ExampleLength
     it "sends the email and renders the headers and body" do
-      mail = described_class.send("on_shelf_email", submission_for_on_shelf).deliver_later.perform_now
+      mail = described_class.send("on_shelf_email", submission_for_on_shelf.to_h).deliver_later.perform_now
       expect(mail.subject).to eq("#{I18n.t('requests.on_shelf.email_subject')} (FIRESTONE$STACKS) PS3566.I428 A6 2015")
       expect(mail.to).to eq([I18n.t('requests.on_shelf.email')])
       expect(mail.from).to eq([I18n.t('requests.default.email_from')])
@@ -759,7 +759,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     it "sends the confirmation email and renders the headers and body" do
-      mail = described_class.send("on_shelf_confirmation", submission_for_on_shelf).deliver_later.perform_now
+      mail = described_class.send("on_shelf_confirmation", submission_for_on_shelf.to_h).deliver_later.perform_now
       expect(mail.subject).to eq("Firestone Library #{I18n.t('requests.on_shelf.email_subject_patron')}")
       expect(mail.to).to eq([submission_for_on_shelf.email])
       expect(mail.from).to eq([I18n.t('requests.default.email_from')])
@@ -807,14 +807,14 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
 
     # rubocop:disable RSpec/ExampleLength
     it "sends the email and renders the headers and body" do
-      mail = described_class.send("on_shelf_email", submission_for_on_shelf).deliver_later.perform_now
+      mail = described_class.send("on_shelf_email", submission_for_on_shelf.to_h).deliver_later.perform_now
       expect(mail.subject).to eq("#{I18n.t('requests.on_shelf.email_subject')} (EASTASIAN$CJK) PL2727.S2 C574 1998")
       expect(mail.to).to eq(["gestcirc@princeton.edu"])
       expect(mail.from).to eq([I18n.t('requests.default.email_from')])
     end
 
     it "sends the confirmation email and renders the headers and body" do
-      mail = described_class.send("on_shelf_confirmation", submission_for_on_shelf).deliver_later.perform_now
+      mail = described_class.send("on_shelf_confirmation", submission_for_on_shelf.to_h).deliver_later.perform_now
       expect(mail.subject).to eq("East Asian Library #{I18n.t('requests.on_shelf.email_subject_patron')}")
       expect(mail.to).to eq([submission_for_on_shelf.email])
       expect(mail.from).to eq([I18n.t('requests.default.email_from')])
@@ -863,7 +863,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
 
     # rubocop:disable RSpec/ExampleLength
     it "sends the email and renders the headers and body" do
-      mail = described_class.send("on_shelf_email", submission_for_on_shelf).deliver_later.perform_now
+      mail = described_class.send("on_shelf_email", submission_for_on_shelf.to_h).deliver_later.perform_now
       expect(mail.subject).to eq("#{I18n.t('requests.on_shelf.email_subject')} (PLASMA$STACKS) PL2727.S2 C574 1998")
       expect(mail.to).to eq(["lewislib@princeton.edu"])
       expect(mail.from).to eq([I18n.t('requests.default.email_from')])
@@ -919,7 +919,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
     end
 
     it "sends the error email and renders the headers and body with id and barcode" do
-      mail = described_class.send("service_error_email", errors, submission_for_clancy_error).deliver_later.perform_now
+      mail = described_class.send("service_error_email", errors, submission_for_clancy_error.to_h).deliver_later.perform_now
       expect(mail.subject).to eq(I18n.t('requests.error.service_error_subject'))
       expect(mail.to).to eq([I18n.t('requests.error.service_error_email')])
       expect(mail.from).to eq([I18n.t('requests.default.email_from')])

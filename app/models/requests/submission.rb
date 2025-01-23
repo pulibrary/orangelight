@@ -19,6 +19,13 @@ module Requests
       @success_messages = []
     end
 
+    # :reek:DuplicateMethodCall
+    def self.new_from_hash(original_hash)
+      requestable = original_hash['items']&.map(&:with_indifferent_access) || []
+      patron = Patron.new(user: User.find_by(uid: original_hash['patron']['netid']), patron_hash: original_hash['patron'].with_indifferent_access)
+      new({ requestable:, bib: original_hash['bib'] }, patron)
+    end
+
     attr_reader :patron, :success_messages
 
     def email

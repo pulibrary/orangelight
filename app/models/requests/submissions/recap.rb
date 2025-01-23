@@ -18,8 +18,9 @@ module Requests::Submissions
 
     def send_mail
       return if errors.present?
-      Requests::RequestMailer.send("#{service_type}_email", submission).deliver_later unless ['recap_edd', 'recap'].include?(service_type)
-      Requests::RequestMailer.send("#{service_type}_confirmation", submission).deliver_later
+      hashed_submission = submission.to_h # Sidekiq will only accept a hash, not a Requests::Submission object
+      Requests::RequestMailer.send("#{service_type}_email", hashed_submission).deliver_later unless ['recap_edd', 'recap'].include?(service_type)
+      Requests::RequestMailer.send("#{service_type}_confirmation", hashed_submission).deliver_later
     end
 
     private
@@ -60,7 +61,7 @@ module Requests::Submissions
       # This has to be a utility function to prevent ActiveJob from trying to serialize too many objects
       # :reek:UtilityFunction
       def send_error_email(errors, submission)
-        Requests::RequestMailer.send("service_error_email", errors, submission).deliver_later
+        Requests::RequestMailer.send("service_error_email", errors, submission.to_h).deliver_later
       end
   end
 end

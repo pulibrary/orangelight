@@ -23,8 +23,9 @@ module Requests::Submissions
     # :reek:UtilityFunction
     def send_mail
       return if errors.present?
-      Requests::RequestMailer.send("#{service_type}_email", submission).deliver_later
-      Requests::RequestMailer.send("#{service_type}_confirmation", submission).deliver_later
+      hashed_submission = submission.to_h # Sidekiq will only accept a hash, not a Requests::Submission object
+      Requests::RequestMailer.send("#{service_type}_email", hashed_submission).deliver_later
+      Requests::RequestMailer.send("#{service_type}_confirmation", hashed_submission).deliver_later
     end
 
     def error_hash
