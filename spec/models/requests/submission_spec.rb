@@ -1145,5 +1145,36 @@ describe Requests::Submission, requests: true do
       end
     end
   end
+
+  describe 'new_from_hash' do
+    before do
+      user = FactoryBot.create(:user, uid: 'jj')
+      user.save
+    end
+    it 'creates a submission with a patron' do
+      submission = described_class.new_from_hash({ 'patron' => { 'last_name' => 'Jónsdóttir', 'first_name' => 'Jóna', 'netid' => 'jj', 'active_email' => 'jj@princeton.edu' } })
+
+      expect(submission.patron.last_name).to eq 'Jónsdóttir'
+      expect(submission.patron.first_name).to eq 'Jóna'
+      expect(submission.patron.cas_provider?).to be true
+      expect(submission.email).to eq 'jj@princeton.edu'
+    end
+
+    it 'creates a submission with a bib' do
+      submission = described_class.new_from_hash({ 'bib' => { 'title' => 'My favorite book' }, 'patron' => { 'netid' => 'jj' } })
+      expect(submission.bib['title']).to eq 'My favorite book'
+    end
+
+    it 'creates a submission with items that allow string or symbol keys' do
+      submission = described_class.new_from_hash({ 'items' => [
+                                                   {
+                                                     "selected" => "true",
+                                                     "location_code" => "recap$pa"
+                                                   }
+                                                 ], 'patron' => { 'netid' => 'jj' } })
+      expect(submission.items.first['location_code']).to eq 'recap$pa'
+      expect(submission.items.first[:location_code]).to eq 'recap$pa'
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength

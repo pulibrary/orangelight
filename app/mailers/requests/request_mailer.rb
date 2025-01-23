@@ -5,7 +5,7 @@ module Requests
     helper "requests/application"
 
     def digitize_fill_in_confirmation(submission)
-      @submission = submission
+      @submission = Submission.new_from_hash submission
       @delivery_mode = "edd"
       subject = I18n.t('requests.paging.email_subject', pick_up_location: "Digitization")
       destination_email = @submission.email
@@ -15,8 +15,8 @@ module Requests
     end
 
     def paging_email(submission)
-      @submission = submission
-      pick_ups = paging_pick_ups(submission:)
+      @submission = Submission.new_from_hash submission
+      pick_ups = paging_pick_ups(submission: @submission)
       subject = I18n.t('requests.paging.email_subject', pick_up_location: pick_ups.join(", "))
       destination_email = "fstpage@princeton.edu"
       mail(to: destination_email,
@@ -25,8 +25,8 @@ module Requests
     end
 
     def paging_confirmation(submission)
-      @submission = submission
-      pick_ups = paging_pick_ups(submission:)
+      @submission = Submission.new_from_hash submission
+      pick_ups = paging_pick_ups(submission: @submission)
       subject = I18n.t('requests.paging.email_subject', pick_up_location: pick_ups.join(", "))
       destination_email = @submission.email
       mail(to: destination_email,
@@ -43,7 +43,7 @@ module Requests
     end
 
     def annex_email(submission)
-      @submission = submission
+      @submission = Submission.new_from_hash submission
       destination_email = annex_email_destinations(submission: @submission)
       mail(to: destination_email,
            from: I18n.t('requests.default.email_from'),
@@ -55,7 +55,7 @@ module Requests
     end
 
     def annex_in_library_email(submission)
-      @submission = submission
+      @submission = Submission.new_from_hash submission
       mail(to: I18n.t('requests.annex.email'),
            from: I18n.t('requests.default.email_from'),
            subject: I18n.t('requests.annex_in_library.email_subject'))
@@ -73,11 +73,11 @@ module Requests
 
     # temporary changes issue 438
     def on_shelf_email(submission)
-      location_email = get_location_contact_email(submission.items.first[:location_code])
-      @submission = submission
+      @submission = Submission.new_from_hash submission
+      location_email = get_location_contact_email(@submission.items.first[:location_code])
       # Location and destination are the same forthe moment
       # destination_email = I18n.t('requests.on_shelf.email')
-      subject = "#{I18n.t('requests.on_shelf.email_subject')} (#{submission.items.first[:location_code].upcase}) #{submission.items.first[:call_number]}"
+      subject = "#{I18n.t('requests.on_shelf.email_subject')} (#{@submission.items.first[:location_code].upcase}) #{@submission.items.first[:call_number]}"
       mail(to: location_email,
            # cc: destination_email,
            from: I18n.t('requests.default.email_from'),
@@ -86,7 +86,7 @@ module Requests
 
     # temporary changes issue 438
     def on_shelf_confirmation(submission)
-      @submission = submission
+      @submission = Submission.new_from_hash submission
       destination_email = @submission.email
       subject = "#{Requests::BibdataService.delivery_locations[@submission.items.first['pick_up']]['label']} #{I18n.t('requests.on_shelf.email_subject_patron')}"
       mail(to: destination_email,
@@ -117,7 +117,7 @@ module Requests
     end
 
     def recap_no_items_confirmation(submission)
-      @submission = submission
+      @submission = Submission.new_from_hash submission
       destination_email = @submission.email
       subject = I18n.t('requests.recap.email_subject')
       mail(to: destination_email,
@@ -157,7 +157,7 @@ module Requests
 
     def recap_in_library_email(submission)
       # only send an email to the libraries if this is a marquand request
-      request_email(submission:, subject_key: 'requests.recap_marquand.email_subject', destination_key: 'requests.recap_marquand.email_destination') if submission.marquand?
+      request_email(submission:, subject_key: 'requests.recap_marquand.email_subject', destination_key: 'requests.recap_marquand.email_destination') if Submission.new_from_hash(submission).marquand?
     end
 
     def recap_in_library_confirmation(submission)
@@ -211,7 +211,7 @@ module Requests
     end
 
     def service_error_email(errors, submission)
-      @submission = submission
+      @submission = Submission.new_from_hash submission
       @errors = errors
       error_types = @errors.flat_map { |_key, value| value }.pluck(:type).uniq
       destination_email = if error_types.include?("digitize")
@@ -236,7 +236,7 @@ module Requests
     private
 
       def confirmation_email(submission:, subject_key:, from_key: 'requests.default.email_from', partial: nil)
-        @submission = submission
+        @submission = Submission.new_from_hash submission
         destination_email = @submission.email
         subject = I18n.t(subject_key)
         mail(to: destination_email,
@@ -246,7 +246,7 @@ module Requests
       end
 
       def request_email(submission:, subject_key:, destination_key: 'requests.default.email_destination', from_key: 'requests.default.email_from')
-        @submission = submission
+        @submission = Submission.new_from_hash submission
         destination_email = I18n.t(destination_key)
         mail(to: destination_email,
              from: I18n.t(from_key),
