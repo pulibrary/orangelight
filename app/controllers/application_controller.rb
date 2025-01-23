@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     stored_location = stored_location_for(resource)
-
     if referrer.present? && (referrer.exclude?("sign_in") && !origin&.include?("redirect-to-alma"))
       referrer
     elsif origin.present?
@@ -24,7 +23,7 @@ class ApplicationController < ActionController::Base
       origin.chomp('/email')
     elsif !request.env['omniauth.origin'].nil? &&
           /request|borrow-direct|email|bookmarks|search_history|redirect-to-alma/.match(request.env['omniauth.origin'])
-      request.env['omniauth.origin']
+      referrer_from_url(request.env['omniauth.origin'])
     elsif stored_location.present?
       stored_location
     else
@@ -64,6 +63,15 @@ class ApplicationController < ActionController::Base
     def verify_admin!
       authenticate_user!
       head :forbidden unless current_user.admin?
+    end
+
+    def referrer_from_url(url)
+      query = URI.parse(url).query
+      if query
+        CGI.parse(query).try(:[], "referer")&.first
+      else
+        url
+      end
     end
 
     before_action do

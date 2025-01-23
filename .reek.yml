@@ -853,6 +853,7 @@ detectors:
     - AccountController#cancel_ill_success
     - AccountController#current_patron
     - ApplicationController#default_url_options
+    - ApplicationController#referrer_from_url
     - BookmarksController#csv_bom
     - BookmarksController#two_values
     - Orangelight::Catalog#online_holding_note?
