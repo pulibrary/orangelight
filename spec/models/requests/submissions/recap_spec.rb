@@ -155,7 +155,6 @@ describe Requests::Submissions::Recap, requests: true do
           .to_return(status: 400, body: file_fixture("../alma_hold_error_no_library_response.json"), headers: { 'content-type': 'application/json' })
         expect do
           recap_request.handle
-          perform_enqueued_jobs
         end.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(recap_request.submitted.size).to eq(1)
         expect(recap_request.errors.size).to eq(0)

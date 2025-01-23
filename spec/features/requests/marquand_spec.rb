@@ -116,7 +116,6 @@ describe 'requests for Marquand items', type: :feature, requests: true do
         fill_in "Title", with: "my stuff"
         expect do
           click_button 'Request this Item'
-          perform_enqueued_jobs
         end.to change { ActionMailer::Base.deliveries.count }.by(1)
         expect(scsb_post_stub).to have_been_requested
         email = ActionMailer::Base.deliveries.last
@@ -132,7 +131,6 @@ describe 'requests for Marquand items', type: :feature, requests: true do
           choose("requestable__delivery_mode_#{item_id}_in_library") # chooses 'in_library' radio button
           expect do
             click_button 'Request this Item'
-            perform_enqueued_jobs
           end.to change { ActionMailer::Base.deliveries.count }.by(1)
           expect(scsb_post_stub).to have_been_requested
           confirm_email = ActionMailer::Base.deliveries.last
@@ -190,7 +188,6 @@ describe 'requests for Marquand items', type: :feature, requests: true do
           fill_in "Author", with: "I Aman Author"
           expect do
             click_button 'Request this Item'
-            perform_enqueued_jobs
           end.to change { ActionMailer::Base.deliveries.count }.by(2)
           expect(stub_illiad_patron(uid: user.uid)).to have_been_requested
           expect(stub_illiad_request(uid: user.uid)).to have_been_requested
@@ -229,7 +226,6 @@ describe 'requests for Marquand items', type: :feature, requests: true do
         expect(page).to have_content('Marquand Library at Firestone')
         expect do
           click_button 'Request this Item'
-          perform_enqueued_jobs
         end.to change { ActionMailer::Base.deliveries.count }.by(2)
         confirm_email = ActionMailer::Base.deliveries.last
         expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
@@ -262,7 +258,6 @@ describe 'requests for Marquand items', type: :feature, requests: true do
             choose("requestable__delivery_mode_#{item_id}_in_library") # chooses 'in_library' radio button
             expect do
               click_button 'Request this Item'
-              perform_enqueued_jobs
             end.to change { ActionMailer::Base.deliveries.count }.by(2)
             confirm_email = ActionMailer::Base.deliveries.last
             expect(confirm_email.subject).to eq("Patron Initiated Catalog Request In Library Confirmation")
@@ -296,7 +291,6 @@ describe 'requests for Marquand items', type: :feature, requests: true do
             fill_in "Article/Chapter Title", with: "ABC"
             expect do
               click_button 'Request this Item'
-              perform_enqueued_jobs
             end.to change { ActionMailer::Base.deliveries.count }.by(2)
             expect(stub_illiad_patron(uid: user.uid)).to have_been_requested
             expect(stub_illiad_request(uid: user.uid)).to have_been_requested
@@ -333,7 +327,6 @@ describe 'requests for Marquand items', type: :feature, requests: true do
             expect(page).not_to have_content("translation missing")
             expect do
               click_button 'Request this Item'
-              perform_enqueued_jobs
             end.to change { ActionMailer::Base.deliveries.count }.by(2)
             expect(stub_illiad_patron(uid: user.uid)).to have_been_requested
             expect(stub_illiad_request(uid: user.uid)).to have_been_requested
