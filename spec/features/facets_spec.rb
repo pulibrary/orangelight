@@ -69,12 +69,11 @@ describe 'Facets' do
   end
 
   describe 'publication date facet' do
-    describe 'view larger option' do
+    describe 'it has a submit button' do
       it 'shows a large version of the slider' do
         visit '/?f[format][]=Book'
         click_button 'Publication year'
-        click_link 'View larger'
-        expect(page).to have_selector('.modal-body .range_limit')
+        expect(page).to have_selector('.submit')
       end
     end
   end
