@@ -643,6 +643,7 @@ describe Requests::RequestMailer, type: :mailer, vcr: { cassette_name: 'mailer',
       expect(confirmation_mail.from).to eq([I18n.t('requests.default.email_from')])
       expect(confirmation_mail.html_part.body.to_s).to have_content I18n.t('requests.recap.email_conf_msg')
       expect(confirmation_mail.text_part.body.to_s).to have_content I18n.t('requests.recap.email_conf_msg')
+      expect(confirmation_mail.html_part.body.to_s).not_to have_content(I18n.t('requests.on_shelf.email_conf_msg'))
     end
   end
 
