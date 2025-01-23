@@ -5,16 +5,16 @@
         aria-expanded="false" aria-controls="<%= @listbox_id %>">
     <span class="fa fa-caret-down" aria-hidden="true" data-bs-toggle="dropdown"></span>
     <ul class="dropdown-menu" role="listbox" aria-label="Options" id="<%= @listbox_id %>">
-        <% @values.each do |value| %>
+        <% if @field_name == 'advanced_location_s' %>
             <%= content_tag :li,
-                value[:label],
+                'All Princeton Holdings',
                 class: 'dropdown-item',
                 tabindex: -1,
                 role: 'option' %>
         <% end %>
-        <% if @field_name == 'advanced_location_s' %>
+        <% @values.each do |value| %>
             <%= content_tag :li,
-                'pul',
+                value[:label],
                 class: 'dropdown-item',
                 tabindex: -1,
                 role: 'option' %>
@@ -32,7 +32,7 @@
         <% end %>
         <% if @field_name == 'advanced_location_s' %>
             <%= content_tag :option,
-                'pul',
+                'All Princeton Holdings',
                 value: 'pul',
                 selected: params.dig('f_inclusive', 'advanced_location_s', 0) == 'pul' %>
         <% end %>

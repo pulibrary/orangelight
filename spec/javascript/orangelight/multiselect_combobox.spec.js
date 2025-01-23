@@ -125,8 +125,9 @@ describe('MultiselectCombobox', () => {
                 </div>`;
       combobox = new MultiselectCombobox(document.querySelector('input'));
     });
-    it('Moves the active option to the top', () => {
+    it('Copies the active option to the top', () => {
       expect(document.querySelectorAll('li')[0].textContent).toEqual('Lewis');
+      expect(document.querySelectorAll('li')[3].textContent).toEqual('Lewis');
     });
     it('Adds a checkmark icon to the <li>', () => {
       expect(
@@ -145,6 +146,13 @@ describe('MultiselectCombobox', () => {
     });
     it('Adds the text to the <input>', () => {
       expect(document.querySelector('input').value).toEqual('Lewis');
+    });
+    it('Removes just the copied option', () => {
+      document.querySelectorAll('li')[0].click();
+      expect(document.querySelectorAll('li')[0].textContent).toEqual(
+        'Firestone'
+      );
+      expect(document.querySelectorAll('li')[1].textContent).toEqual('Lewis');
     });
   });
 });
