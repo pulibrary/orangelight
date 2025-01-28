@@ -138,7 +138,7 @@ module Requests
       elsif requestable.recap? || requestable.annex?
         locations = requestable.pick_up_locations || default_pick_ups
         # open libraries
-        pick_ups = locations.select { |loc| ['PJ', 'PA', 'PL', 'PK', 'PM', 'QX', 'PW', 'PN', 'QA', 'QT', 'QC'].include?(loc[:gfa_pickup]) }
+        pick_ups = locations.select { |loc| ['PJ', 'PA', 'PL', 'PK', 'PM', 'PT', 'QX', 'PW', 'PN', 'QA', 'QT', 'QC'].include?(loc[:gfa_pickup]) }
         pick_ups << default_pick_ups[0] if pick_ups.empty?
         pick_ups
       else
