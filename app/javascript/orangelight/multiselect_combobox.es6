@@ -53,7 +53,21 @@ export default class MultiselectCombobox {
     this.listElement.querySelectorAll('li').forEach((item) => {
       this.#addEventListener(item);
     });
-    this.inputElement.addEventListener('input', (event) => {
+    this.inputElement.addEventListener('keyup', (event) => {
+      const isUpOrDownEvent = ['ArrowUp', 'ArrowDown'].includes(event.key);
+      const getToggleButton = event.target;
+      const instance = bootstrap.Dropdown.getOrCreateInstance(getToggleButton);
+      if (isUpOrDownEvent) {
+        event.stopPropagation();
+        instance.show();
+
+        instance._selectMenuItem(event);
+
+        return;
+      }
+      console.log(`I'm in the event listener for event: ${event}`);
+    });
+    this.inputElement.addEventListener('keyup', (event) => {
       this.updateOptionVisibility();
       this.#openDropdownIfClosed();
     });
