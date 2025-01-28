@@ -18,4 +18,13 @@ RSpec.describe 'Numismatics search form', advanced_search: true do
     expect(page.find(".page_entries").text).to eq('1 entry found')
     expect(page).to have_content('Coin: 1167')
   end
+  it 'can use keyboard navigation', js: true do
+    visit '/numismatics'
+    # Get to the "Denomination" dropdown
+    10.times do
+      page.send_keys(:tab)
+    end
+    page.send_keys(:down)
+    expect(page).to have_content('shekel')
+  end
 end

@@ -121,6 +121,7 @@
 
 .dropdown .fa-caret-down {
   display: none;
+  width: inherit;
 }
 
 @media (min-width: $bp-small) {
