@@ -34,5 +34,10 @@ RSpec.describe 'Numismatics search form', advanced_search: true do
     end
     page.send_keys(:down)
     expect(page).to have_content('shekel')
+    active_element = page.evaluate_script("document.activeElement")
+    expect(active_element.text).to eq("1/2 Penny (1)")
+    page.send_keys(:down)
+    active_element = page.evaluate_script("document.activeElement")
+    expect(active_element.text).to eq("follis (1)")
   end
 end

@@ -60,12 +60,10 @@ export default class MultiselectCombobox {
       if (isUpOrDownEvent) {
         event.stopPropagation();
         instance.show();
-
         instance._selectMenuItem(event);
 
         return;
       }
-      console.log(`I'm in the event listener for event: ${event}`);
     });
     this.inputElement.addEventListener('keyup', (event) => {
       this.updateOptionVisibility();
@@ -79,6 +77,8 @@ export default class MultiselectCombobox {
       (event) => {
         if (event.code == 'Enter') {
           this.toggleItem(item);
+        } else if (event.code == 'ArrowUp' || event.code == 'ArrowDown') {
+          return;
         } else {
           // Send all other events to the input, so that
           // anything the user types ends up there
