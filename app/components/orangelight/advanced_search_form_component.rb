@@ -15,8 +15,12 @@ class Orangelight::AdvancedSearchFormComponent < Blacklight::AdvancedSearchFormC
     blacklight_config.facet_fields['pub_date_start_sort']
   end
 
+  def pub_date_field_display_facet
+    @response.aggregations[pub_date_field]
+  end
+
   def pub_date_presenter
-    view_context.facet_field_presenter(pub_date_field, {})
+    view_context.facet_field_presenter(pub_date_field, pub_date_field_display_facet)
   end
 
   def initialize_search_field_controls
