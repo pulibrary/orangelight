@@ -123,8 +123,8 @@ class CatalogController < ApplicationController
       assumed_boundaries: [1100, Time.now.year + 1],
       segments: true
     }
-    config.add_facet_field 'language_facet', label: 'Language', limit: true, include_in_advanced_search: true
-    config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true, include_in_advanced_search: false
+    config.add_facet_field 'language_facet', label: 'Language', limit: true, include_in_advanced_search: true, suggest: true
+    config.add_facet_field 'subject_topic_facet', label: 'Subject: Topic', limit: true, include_in_advanced_search: false, suggest: true
     config.add_facet_field 'genre_facet', label: 'Subject: Genre', limit: true, include_in_advanced_search: false
     config.add_facet_field 'subject_era_facet', label: 'Subject: Era', limit: true, include_in_advanced_search: false
     config.add_facet_field 'geographic_facet', label: 'Subject: Geographic', limit: true, include_in_advanced_search: false
