@@ -39,5 +39,11 @@ RSpec.describe 'Numismatics search form', advanced_search: true do
     page.send_keys(:down)
     active_element = page.evaluate_script("document.activeElement")
     expect(active_element.text).to eq("follis (1)")
+    page.send_keys(:return)
+    hidden_select_options = page.find_all('#issue_denomination_s-select option', visible: false)
+    expect(hidden_select_options[1]).to be_selected
+    active_element = page.evaluate_script("document.activeElement")
+    # It shouldn't switch focus to the entire page, but stay in the list
+    expect(active_element.text).not_to include('Skip to main content')
   end
 end

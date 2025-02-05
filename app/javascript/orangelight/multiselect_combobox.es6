@@ -77,6 +77,8 @@ export default class MultiselectCombobox {
       (event) => {
         if (event.code == 'Enter') {
           this.toggleItem(item);
+          // Maintain focus on the list, in case the user wants to select another item in the list
+          event.target.focus();
         } else if (event.code == 'ArrowUp' || event.code == 'ArrowDown') {
           return;
         } else {
