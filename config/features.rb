@@ -46,10 +46,6 @@ Flipflop.configure do
       description: "When on / true, a banner will be present to take the user to the search result form"
   end
 
-  feature :enumeration_backwards_compatibility,
-    default: true,
-    description: "When on / true, use the enumeration/chronology data from both the new item description field and the legacy item enumeration field.  When false, only look at the new description field.  We can change this value to false (and remove the feature) after the next full re-index."
-
   feature :blacklight_hierarchy_facet,
   default: false,
   description: "When on / true, use the blacklight hierarchy gem to display the classification facet"

@@ -128,11 +128,7 @@ module Requests
       end
 
       def long_description
-        if Flipflop.enumeration_backwards_compatibility?
-          self[:enumeration] || self[:description]
-        else
-          self[:description]
-        end
+        self[:description]
       end
 
       def available_statuses

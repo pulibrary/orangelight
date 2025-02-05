@@ -19,35 +19,17 @@ RSpec.describe Requests::Item, requests: true do
     end
   end
   describe '#description' do
-    describe 'with backwards compatible behavior' do
-      before { allow(Flipflop).to receive(:enumeration_backwards_compatibility?).and_return(true) }
-      it 'can take description from the description field' do
-        item = described_class.new({
-          "description": "Jul 1904 - Dec 1905 Incl: Index NS Vol 20 - 22 Iss 496 - 574"
-        }.with_indifferent_access)
-        expect(item.description).to eq 'Jul 1904 - Dec 1905 Incl: Index NS Vol 20 - 22 Iss 496 - 574'
-      end
-      it 'can take description from the legacy enumeration field, which may still be found in a holdings_1display' do
-        item = described_class.new({
-          "enumeration": "Jul 1904 - Dec 1905 Incl: Index NS Vol 20 - 22 Iss 496 - 574"
-        }.with_indifferent_access)
-        expect(item.description).to eq 'Jul 1904 - Dec 1905 Incl: Index NS Vol 20 - 22 Iss 496 - 574'
-      end
+    it 'can take description from the description field' do
+      item = described_class.new({
+        "description": "Jul 1904 - Dec 1905 Incl: Index NS Vol 20 - 22 Iss 496 - 574"
+      }.with_indifferent_access)
+      expect(item.description).to eq 'Jul 1904 - Dec 1905 Incl: Index NS Vol 20 - 22 Iss 496 - 574'
     end
-    describe 'without backwards compatible behavior' do
-      before { allow(Flipflop).to receive(:enumeration_backwards_compatibility?).and_return(false) }
-      it 'can take description from the description field' do
-        item = described_class.new({
-          "description": "Jul 1904 - Dec 1905 Incl: Index NS Vol 20 - 22 Iss 496 - 574"
-        }.with_indifferent_access)
-        expect(item.description).to eq 'Jul 1904 - Dec 1905 Incl: Index NS Vol 20 - 22 Iss 496 - 574'
-      end
-      it 'ignores the legacy enumeration field' do
-        item = described_class.new({
-          "enumeration": "Jul 1904 - Dec 1905 Incl: Index NS Vol 20 - 22 Iss 496 - 574"
-        }.with_indifferent_access)
-        expect(item.description).to eq ''
-      end
+    it 'ignores the legacy enumeration field' do
+      item = described_class.new({
+        "enumeration": "Jul 1904 - Dec 1905 Incl: Index NS Vol 20 - 22 Iss 496 - 574"
+      }.with_indifferent_access)
+      expect(item.description).to eq ''
     end
   end
 end

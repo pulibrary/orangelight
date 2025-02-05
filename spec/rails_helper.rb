@@ -62,10 +62,6 @@ RSpec.configure do |config|
 
   config.include ActiveSupport::Testing::TimeHelpers
 
-  config.before(:each) do
-    allow(Flipflop).to receive(:enumeration_backwards_compatibility?).and_return(false)
-  end
-
   config.before(:each, type: :feature) do
     Warden.test_mode!
     OmniAuth.config.test_mode = true
