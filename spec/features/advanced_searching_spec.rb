@@ -25,8 +25,9 @@ describe 'advanced searching', advanced_search: true do
     expect(page).to have_selector('label', exact_text: 'Advanced search terms - second parameter')
     expect(page).to have_selector('label', exact_text: 'Options for advanced search - third parameter')
     expect(page).to have_selector('label', exact_text: 'Advanced search terms - third parameter')
-    expect(page).to have_selector('label', exact_text: 'Publication date range (starting year)')
-    expect(page).to have_selector('label', exact_text: 'Publication date range (ending year)')
+    expect(page).to have_selector('label', exact_text: 'Publication year')
+    expect(page).to have_selector('label', exact_text: 'Begin')
+    expect(page).to have_selector('label', exact_text: 'End')
   end
 
   it 'allows searching by format', js: true do

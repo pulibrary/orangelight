@@ -1,7 +1,6 @@
-<%= form_tag search_action_path, method: :get, class: [@classes[:form], "range_#{@facet_field.key} d-flex justify-content-center"].join(' ') do %>
-  <%= render hidden_search_state %>
+<%= render hidden_search_state %>
 
-  <div class="range-limit-input-group">
+<div class="range-limit-input-group">
     <div class="d-flex justify-content-between align-items-end">
       <div class="d-flex flex-column mr-1 me-1">
         <%= label_tag(begin_input_name, t("blacklight.range_limit.range_begin_short"), class: 'text-muted small mb-1') %>
@@ -23,5 +22,4 @@
         %>
       </div>
     </div>
-  </div>
-<% end %>
+</div>
