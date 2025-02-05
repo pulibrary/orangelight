@@ -27,11 +27,6 @@ Flipflop.configure do
     default: false,
     description: "When on / true, displays the message set by the announcement rake task."
 
-  group :blacklight_8 do
-    feature :view_components_advanced_search,
-    description: "When on / true, use the built-in advanced search form.  When off / false, use the traditional one"
-  end
-
   group :search_and_race do
     feature :multi_algorithm,
       default: false,
