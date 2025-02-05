@@ -100,17 +100,6 @@
   white-space: normal;
 }
 
-.dropdown-item.divider {
-  pointer-events: none;
-  border-bottom: 1px solid black;
-  margin-bottom: 4px;
-}
-
-.row .range_limit input.range_begin,
-.row .range_limit input.range_end {
-  width: 5em;
-}
-
 @include media-breakpoint-up(md) {
   .two-columns-md {
     display: flex;

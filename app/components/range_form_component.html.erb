@@ -1,0 +1,25 @@
+<%= render hidden_search_state %>
+
+<div class="range-limit-input-group">
+    <div class="d-flex justify-content-between align-items-end">
+      <div class="d-flex flex-column mr-1 me-1">
+        <%= label_tag(begin_input_name, t("blacklight.range_limit.range_begin_short"), class: 'text-muted small mb-1') %>
+        <%= number_field_tag(begin_input_name,
+                              begin_value_default,
+                              min: range_config[:min_value],
+                              max: range_config[:max_value],
+                              class: "form-control form-control-sm range_begin")
+        %>
+      </div>
+
+      <div class="d-flex flex-column ml-1 ms-1">
+        <%= label_tag(end_input_name, t("blacklight.range_limit.range_end_short"), class: 'text-muted small mb-1') %>
+        <%= number_field_tag(end_input_name,
+                              end_value_default,
+                              min: range_config[:min_value],
+                              max: range_config[:max_value],
+                              class: "form-control form-control-sm range_end")
+        %>
+      </div>
+    </div>
+</div>

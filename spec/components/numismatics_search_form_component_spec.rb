@@ -37,7 +37,7 @@ RSpec.describe NumismaticsSearchFormComponent, type: :component do
     expected_fields = [
       'Object Type', 'Denomination', 'Metal', 'City', 'State',
       'Region', 'Ruler', 'Artist', 'Find Place', 'Year',
-      'date range (starting year)', 'date range (ending year)',
+      'Begin', 'End',
       'Keyword'
     ]
     expect(rendered.all('label').map(&:text)).to match_array(expected_fields)
