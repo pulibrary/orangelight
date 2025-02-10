@@ -44,7 +44,7 @@ module BrowseLists
     end
 
     def core_url
-      solr_connection.to_s.gsub(%r{^.*\/solr}, '/solr')
+      solr_connection.to_s.gsub(%r{^.*/solr}, '/solr')
     end
 
     def browse_facet(_sql_command, facet_request, conn, facet_field, table_name)
@@ -63,11 +63,19 @@ module BrowseLists
     end
 
     def load_facet(sql_command, _facet_request, _conn, _facet_field, table_name)
-      system(%(cp /tmp/#{table_name}.sorted /tmp/#{table_name}.sorted.backup))
+      validate_csv(table_name)
+      system(%(cp "/tmp/#{table_name}.sorted" /tmp/#{table_name}.sorted.backup))
       system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
       system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '/tmp/#{table_name}.csv' CSV;"))
-      system(%(#{sql_command} \"\\copy (Select sort,count,label,dir from #{table_name} order by unaccent(sort)) To '/tmp/#{table_name}.sorted' With CSV;"))
+      system(%(#{sql_command} "\\copy (Select sort,count,label,dir from #{table_name} order by unaccent(sort)) To '/tmp/#{table_name}.sorted' With CSV;"))
       load_facet_file(sql_command, "/tmp/#{table_name}.sorted", table_name)
+    end
+
+    def validate_csv(table_name)
+      csv_file_path = "/tmp/#{table_name}.csv"
+      csv_length = File.read(csv_file_path).each_line.count
+      expected_length = Rails.application.config_for(:orangelight)[:browse_lists][:csv_length]
+      raise StandardError, "CSV file too short - #{csv_length} lines long. Expected at least #{expected_length} lines." if csv_length < expected_length
     end
 
     def load_cn(sql_command, _facet_request, _conn, facet_field, table_name)
