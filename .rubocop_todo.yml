@@ -1200,7 +1200,6 @@ Style/RedundantRegexpEscape:
     - 'app/models/solr_document.rb'
     - 'app/services/faceted_query_service.rb'
     - 'app/services/online_holdings_markup_builder.rb'
-    - 'lib/orangelight/browse_lists.rb'
     - 'lib/orangelight/browse_lists/call_number_csv.rb'
     - 'spec/helpers/blacklight_advanced_search/parsing_nesting_spec.rb'
     - 'spec/lib/orangelight/middleware/invalid_parameter_handler_spec.rb'
@@ -1214,12 +1213,6 @@ Style/RedundantReturn:
     - 'app/controllers/concerns/orangelight/catalog.rb'
     - 'app/models/requests/submissions/digitize_item.rb'
     - 'app/models/requests/submissions/hold_item.rb'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Style/RedundantStringEscape:
-  Exclude:
-    - 'lib/orangelight/browse_lists.rb'
 
 # Offense count: 5
 # This cop supports safe autocorrection (--autocorrect).

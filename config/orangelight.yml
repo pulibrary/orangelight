@@ -22,6 +22,8 @@ defaults: &defaults
   libanswers:
     client_id: <%= ENV['LIBANSWERS_CLIENT_ID'] || 'ABC' %>
     client_secret: <%= ENV['LIBANSWERS_CLIENT_SECRET'] || '12345' %>
+  browse_lists:
+    csv_length: 9_000_000
 
 development:
   <<: *defaults
@@ -35,6 +37,8 @@ development:
     queue_id: <%= ENV['SUGGEST_CORRECTION_QUEUE_ID'] %>
   report_biased_results_form:
     to: 'test-biased-results@princeton.edu'
+  browse_lists:
+    csv_length: 300
 test:
   <<: *defaults
   feedback_form:
@@ -52,6 +56,8 @@ test:
   libanswers:
     client_id: ABC
     client_secret: '12345'
+  browse_lists:
+    csv_length: 9
 
 production:
   <<: *defaults
