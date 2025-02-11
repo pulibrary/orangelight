@@ -4,5 +4,8 @@
    there is no layout shift or sudden color change. */
 .pul_header {
     background-color: var(--color-gray-100);
-    height: calc(2rem + 54px);
+    min-height: calc((var(--lux-library-logo-width-large) * .221) + 2rem);
+    @media (max-width: 899px) {
+        min-height: calc((var(--lux-library-logo-width-large) * .14) + 2rem);
+    }
 }
