@@ -32,9 +32,7 @@ module Requests
       @patron.active_email
     end
 
-    def source
-      @patron.source
-    end
+    delegate :source, to: :@patron
 
     def user_name
       @patron.netid

@@ -160,9 +160,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     location.nil? ? false : location[:aeon_location]
   end
 
-  def aeon_location?(location)
-    self.class.aeon_location?(location)
-  end
+  delegate :aeon_location?, to: :class
 
   def self.scsb_location?(location)
     location.nil? ? false : /^scsb.+/ =~ location['code']
@@ -221,9 +219,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
     end
   end
 
-  def scsb_supervised_items?(holding)
-    self.class.scsb_supervised_items?(holding)
-  end
+  delegate :scsb_supervised_items?, to: :class
 
   ##
   def self.listify_array(arr)
