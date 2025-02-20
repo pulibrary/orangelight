@@ -45,7 +45,7 @@ RSpec.describe Blacklight::Document::Mla, citation: true do
       end
 
       it 'includes the edition' do
-        expect(document).to include('1A edición'.downcase)
+        expect(document).to include('1a edición')
       end
     end
   end
