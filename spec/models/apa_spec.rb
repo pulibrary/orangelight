@@ -20,12 +20,11 @@ RSpec.describe Blacklight::Document::Apa, citation: true do
       end
 
       it 'includes the author' do
-        expect(document).to include('Saer')
-        expect(document).to include('Juan José. ')
+        expect(document).to include('Saer, J. J.')
       end
 
       it 'includes the author with the proper delimiter', skip: "Fixing the bug with CiteProc" do
-        expect(document).to include('Saer, Juan José. ')
+        expect(document).to include('Saer, J. J. ')
       end
 
       it 'includes the title in italics' do
