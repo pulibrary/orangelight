@@ -22,12 +22,6 @@ detectors:
     - ReportBiasedResultsForm#email
     - ReportBiasedResultsForm#message
     - ReportBiasedResultsForm#name
-    - ReportHarmfulLanguageForm#context
-    - ReportHarmfulLanguageForm#email
-    - ReportHarmfulLanguageForm#error
-    - ReportHarmfulLanguageForm#message
-    - ReportHarmfulLanguageForm#name
-    - ReportHarmfulLanguageForm#title
     - SuggestCorrectionForm#context
     - SuggestCorrectionForm#email
     - SuggestCorrectionForm#message
@@ -63,6 +57,7 @@ detectors:
     - PhysicalHoldingsMarkupBuilder#self.thesis?
   DataClump:
     exclude:
+    - HoldingsHelper
     - Requests::ApplicationHelper
     - Requests::SelectedItemsValidator
     - PhysicalHoldingsMarkupBuilder
@@ -71,11 +66,9 @@ detectors:
     - Holdings::OnlineHoldingsComponent#marc_links
     - NumismaticsSearchFormComponent#initialize_constraints
     - Orangelight::AdvancedSearchFormComponent#fields_for_etc
-    - Orangelight::AdvancedSearchFormComponent#initialize_search_filter_controls
     - Orangelight::ConstraintComponent#constraint_value
     - Orangelight::ConstraintComponent#old_style_params?
     - Orangelight::ConstraintsComponent#guided_search_value
-    - Orangelight::FacetFieldCheckboxesComponent#values
     - Orangelight::SearchBarComponent#before_render
     - RequestButtonComponent#scsb_supervised_items?
     - AccountController#cancel_ill_requests
@@ -189,7 +182,6 @@ detectors:
     - Requests::IlliadMetadata::ArticleExpress#volume_number
     - Requests::IlliadTransactionClient#create_request
     - Requests::Item#copy_value
-    - Requests::Item#long_description
     - Requests::Item#status
     - Requests::Location#sort_pick_ups
     - Requests::Requestable#pick_up_locations
@@ -344,7 +336,6 @@ detectors:
     - Users::OmniauthCallbacksController
     - AskAQuestionForm
     - ReportBiasedResultsForm
-    - ReportHarmfulLanguageForm
     - SuggestCorrectionForm
     - ContactMailer
     - Requests::RequestMailer
@@ -405,7 +396,6 @@ detectors:
     - AskAQuestionForm
     - FeedbackForm
     - ReportBiasedResultsForm
-    - ReportHarmfulLanguageForm
     - SuggestCorrectionForm
     - ApplicationHelper
     - BlacklightHelper
@@ -432,6 +422,7 @@ detectors:
     - Requests::Aeon
     - Requests::Bibdata
     - Requests::Scsb
+    - NumismaticsFormSearchBuilder
     - Orangelight::CallNumber
     - Orangelight::Name
     - Orangelight::NameTitle
@@ -559,7 +550,6 @@ detectors:
     - SolrDocument#identifiers
   NilCheck:
     exclude:
-    - Orangelight::AdvancedSearchFormComponent#initialize_search_filter_controls
     - AccountController#cancel_ill_requests
     - ApplicationController#after_sign_in_path_for
     - Orangelight::Catalog#validate_email_params
@@ -690,7 +680,6 @@ detectors:
     - Requests::FormController#sanitize_submission
     - Requests::FormController#submit
     - Users::OmniauthCallbacksController#alma
-    - ReportHarmfulLanguageForm#submit
     - ApplicationHelper#action_notes_display
     - ApplicationHelper#location_has
     - ApplicationHelper#name_title_hierarchy

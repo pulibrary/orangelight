@@ -42,13 +42,9 @@ module Requests
 
     delegate :annex?, :location_label, to: :location_object
 
-    def thesis?
-      @holding.thesis?
-    end
+    delegate :thesis?, to: :@holding
 
-    def numismatics?
-      @holding.numismatics?
-    end
+    delegate :numismatics?, to: :@holding
 
     # Reading Room Request
     def aeon?

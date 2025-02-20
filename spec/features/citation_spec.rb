@@ -38,7 +38,7 @@ describe 'citation', citation: true do
     it 'renders the citation' do
       visit "/catalog/#{bibid}/citation"
       expect(current_url).to include("/catalog/#{bibid}/citation")
-      expect(page.body).to include('Juan José. <i>El Entenado</i>. 1A edición, Destino, 1988.')
+      expect(page.body).to include('Juan José. <i>El Entenado</i>. 1a edición, Destino, 1988.')
     end
   end
 end
