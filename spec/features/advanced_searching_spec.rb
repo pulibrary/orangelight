@@ -90,7 +90,7 @@ describe 'advanced searching', advanced_search: true do
 
     it 'has the expected facets' do
       visit '/advanced'
-      expect(page.find_all('.advanced-facet-label').map(&:text)).to match_array(["Access", "Format", "Language", "Holding location", "Publication year"])
+      expect(page.find_all('.advanced-facet-label').map(&:text)).to match_array(["Access", "Format", "Language", "Holding location", "Publication year", "Place of publication"])
     end
 
     it 'renders an accessible button for starting over the search' do
