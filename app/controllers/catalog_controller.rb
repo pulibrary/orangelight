@@ -40,7 +40,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[access_facet format language_facet advanced_location_s]
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[access_facet format publication_place_facet language_facet advanced_location_s]
     config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.pivot'] ||= ''
@@ -142,7 +142,7 @@ class CatalogController < ApplicationController
     }, include_in_advanced_search: false
 
     config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true, include_in_advanced_search: false
-    config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true, include_in_advanced_search: false, suggest: true
+    config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true, include_in_advanced_search: true, suggest: true
 
     config.add_facet_field 'lc_facet', label: 'Classification', component: Blacklight::Hierarchy::FacetFieldListComponent, sort: 'index', limit: 1000, include_in_advanced_search: false, if: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_facet? }
     config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet], collapsing: true, include_in_advanced_search: false, unless: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_facet? }
