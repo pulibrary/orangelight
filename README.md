@@ -162,6 +162,16 @@ It will tell you if you've passed the assertion(s) specified
 in `lighthouserc.js`.  It will also give you a URL where you
 can see the complete lighthouse results.
 
+#### Documentation linting with vale
+
+To run locally:
+```
+brew install vale
+cd docs
+vale sync
+vale .
+```
+
 #### Running CodeQL locally
 
 If you get a CodeQL warning on your branch, you may wish to run
