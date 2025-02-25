@@ -35,7 +35,6 @@ class CatalogController < ApplicationController
     config.json_solr_path = 'advanced'
 
     # default advanced config values
-    # TODO: remove for advanced search gem deprecation
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
@@ -46,7 +45,8 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]['facet.pivot'] ||= ''
     config.advanced_search[:form_solr_parameters]['f.language_facet.facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['f.language_facet.facet.sort'] ||= 'index'
-    # end remove for advanced search gem deprecation
+    config.advanced_search[:form_solr_parameters]['f.publication_place_facet.facet.limit'] ||= -1
+    config.advanced_search[:form_solr_parameters]['f.publication_place_facet.facet.sort'] ||= 'index'
 
     config.numismatics_search ||= Blacklight::OpenStructWithHashAccess.new
     config.numismatics_search[:facet_fields] ||= %w[issue_metal_s issue_city_s issue_state_s issue_region_s issue_denomination_s

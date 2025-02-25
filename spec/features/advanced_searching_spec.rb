@@ -49,7 +49,6 @@ describe 'advanced searching', advanced_search: true do
   end
 
   it 'allows searching by publication place', js: true do
-    pending("Making config more generalized")
     visit '/advanced'
     expect(page).to have_selector('label', exact_text: 'Place of publication')
     publication_place_input = find_field('publication_place_facet')
