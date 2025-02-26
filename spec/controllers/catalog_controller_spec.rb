@@ -81,7 +81,7 @@ RSpec.describe CatalogController do
       expect(response.status).to eq(200)
     end
     it 'does not error when paging is reasonable and the search is a facet' do
-      get :index, params: { f: { format: 'anything' }, page: 2 }
+      get :index, params: { f: { format: ['anything'] }, page: 2 }
       expect(response.status).to eq(200)
     end
     it 'does not error when query is empty and paging is reasonable' do
