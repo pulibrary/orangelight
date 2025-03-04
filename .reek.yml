@@ -247,6 +247,7 @@ detectors:
     - AdvancedHelper#advanced_search_fields
     - AdvancedHelper#param_for_field
     - ApplicationHelper#series_results
+    - ApplicationHelper#subjectify
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#isbn_resolve
     - BlacklightHelper#issn_resolve
@@ -681,6 +682,8 @@ detectors:
     - Requests::FormController#submit
     - Users::OmniauthCallbacksController#alma
     - ApplicationHelper#action_notes_display
+    - ApplicationHelper#build_search_subject_links
+    - ApplicationHelper#build_subject_list
     - ApplicationHelper#location_has
     - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#render_location_code
@@ -799,11 +802,11 @@ detectors:
     - AdvancedHelper#advanced_search_fields
     - AdvancedHelper#generate_solr_fq
     - ApplicationHelper#action_notes_display
+    - ApplicationHelper#build_search_subject_links
     - ApplicationHelper#html_safe
     - ApplicationHelper#location_has
     - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#same_series_result
-    - ApplicationHelper#subjectify
     - ApplicationHelper#title_hierarchy
     - Blacklight::Document::DublinCore#export_as_oai_dc_xml
     - Blacklight::Document::DublinCore#export_as_rdf_dc
