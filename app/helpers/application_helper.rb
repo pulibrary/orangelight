@@ -97,8 +97,8 @@ module ApplicationHelper
       spl_sub.each_with_index do |subsubject, subsubject_index|
         spl_sub[subsubject_index] = subjectaccum + subsubject
         subjectaccum = spl_sub[subsubject_index] + QUERYSEP
-        sub_array[index] << spl_sub[subsubject_index]
       end
+      sub_array[index] = spl_sub
       all_subjects[index] = subject.split(QUERYSEP)
     end
     subject_list = build_subject_list(args, all_subjects, sub_array)
