@@ -50,4 +50,35 @@ describe 'Browsables', browse: true do
       expect(page).to have_link('[Browse]', href: "/browse/name_titles?q=#{CGI.escape browse_title_part}")
     end
   end
+
+  describe 'Browse subject links' do
+    before do
+      stub_holding_locations
+      visit '/catalog/9982377783506421'
+    end
+    it "browses a subject heading link" do
+      subject_heading_lc1 = "Piano music"
+      expect(page).to have_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape subject_heading_lc1}")
+    end
+    it "browses a subject heading with subdivision link" do
+      subject_heading_lc_with_subdivision = "Concertos (Piano)—Cadenzas"
+      expect(page).to have_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape subject_heading_lc_with_subdivision}")
+    end
+  end
+
+  describe 'Search subject links' do
+    before do
+      stub_holding_locations
+      visit '/catalog/9961398363506421'
+    end
+    it "searches a subject heading" do
+      subject_heading_lc1 = "Menz family—Art patronage—Exhibitions"
+      expect(page).to have_link('Exhibitions', href: "/?f[subject_facet][]=#{CGI.escape subject_heading_lc1}")
+    end
+    it "searches a subject heading with subdivision" do
+      subject_heading_lc_subdivision = "Art patronage"
+      subject_heading_lc_with_subdivision = "Menz family—Art patronage"
+      expect(page).to have_link(subject_heading_lc_subdivision, href: "/?f[subject_facet][]=#{CGI.escape subject_heading_lc_with_subdivision}")
+    end
+  end
 end

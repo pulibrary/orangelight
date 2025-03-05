@@ -86,42 +86,24 @@ module ApplicationHelper
     location_display.html_safe
   end
 
-  SEPARATOR = '—'.freeze
-  QUERYSEP = '—'.freeze
-  # rubocop:disable Metrics/AbcSize
   def subjectify(args)
+    # all_subjects, sub_array = process_subjects(args[:document][args[:field]])
     all_subjects = []
     sub_array = []
-    args[:document][args[:field]].each_with_index do |subject, i|
+    args[:document][args[:field]].each_with_index do |subject, index|
       spl_sub = subject.split(QUERYSEP)
       sub_array << []
       subjectaccum = ''
-      spl_sub.each_with_index do |subsubject, j|
-        spl_sub[j] = subjectaccum + subsubject
-        subjectaccum = spl_sub[j] + QUERYSEP
-        sub_array[i] << spl_sub[j]
+      spl_sub.each_with_index do |subsubject, subsubject_index|
+        spl_sub[subsubject_index] = subjectaccum + subsubject
+        subjectaccum = spl_sub[subsubject_index] + QUERYSEP
+        sub_array[index] << spl_sub[subsubject_index]
       end
-      all_subjects[i] = subject.split(QUERYSEP)
+      all_subjects[index] = subject.split(QUERYSEP)
     end
-    subject_list = args[:document][args[:field]].each_with_index do |_subject, i|
-      lnk = ''
-      lnk_accum = ''
-      full_sub = ''
-      all_subjects[i].each_with_index do |subsubject, j|
-        lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array[i][j])}", class: 'search-subject', 'data-original-title' => "Search: #{sub_array[i][j]}")
-        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-        full_sub = sub_array[i][j]
-      end
-      lnk += '  '
-      lnk += link_to('[Browse]', "/browse/subjects?q=#{CGI.escape full_sub}", class: 'browse-subject', 'data-original-title' => "Browse: #{full_sub}", 'aria-label' => "Browse: #{full_sub}", dir: full_sub.dir.to_s) unless fast_subjects_value?(args, i)
-      args[:document][args[:field]][i] = lnk.html_safe
-    end
-    content_tag :ul do
-      subject_list.each { |subject| concat(content_tag(:li, subject, dir: subject.dir)) }
-    end
+    subject_list = build_subject_list(args, all_subjects, sub_array)
+    build_subject_ul(subject_list)
   end
-  # rubocop:enable Metrics/AbcSize
 
   def title_hierarchy(args)
     titles = JSON.parse(args[:document][args[:field]])
@@ -314,9 +296,55 @@ module ApplicationHelper
 
   private
 
+    SEPARATOR = '—'.freeze
+    QUERYSEP = '—'.freeze
+    private_constant :SEPARATOR, :QUERYSEP
+
     def fast_subjects_value?(args, i)
       fast_subject_display_field = args[:document]["fast_subject_display"]
       return false if fast_subject_display_field.nil?
       fast_subject_display_field.present? && fast_subject_display_field.include?(args[:document][args[:field]][i])
+    end
+
+    def build_subject_ul(subject_list)
+      content_tag :ul do
+        subject_list.each { |subject| concat(content_tag(:li, subject, dir: subject.dir)) }
+      end
+    end
+
+    def build_subject_list(args, all_subjects, sub_array)
+      args_document_field = args[:document][args[:field]]
+      args_document_field.each_with_index do |_subject, index|
+        sub_array_index = sub_array[index]
+        lnk = build_search_subject_links(all_subjects[index], sub_array_index)
+        lnk += build_browse_subject_link(args, index, sub_array_index.last)
+        args_document_field[index] = lnk.html_safe
+      end
+    end
+
+    def build_search_subject_links(subjects, sub_array)
+      lnk = ''
+      lnk_accum = ''
+
+      subjects.each_with_index do |subsubject, j|
+        sub_array_j = sub_array[j]
+        lnk = lnk_accum + link_to(subsubject,
+                                  "/?f[subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
+                                  class: 'search-subject',
+                                  'data-original-title' => "Search: #{sub_array_j}")
+        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
+      end
+      lnk
+    end
+
+    def build_browse_subject_link(args, index, full_sub)
+      return '  ' if fast_subjects_value?(args, index)
+
+      '  ' + link_to('[Browse]',
+                     "/browse/subjects?q=#{CGI.escape full_sub}",
+                     class: 'browse-subject',
+                     'data-original-title' => "Browse: #{full_sub}",
+                     'aria-label' => "Browse: #{full_sub}",
+                     dir: full_sub.dir.to_s)
     end
 end
