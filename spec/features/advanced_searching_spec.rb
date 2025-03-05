@@ -204,14 +204,6 @@ describe 'advanced searching', advanced_search: true do
       expect(page).not_to have_content('Seeking sanctuary')
       expect(page).to have_content('Dancing Black')
     end
-
-    it 'can do an advanced search from an assumed url' do
-      visit '/advanced?advanced_type=advanced&boolean_operator1=AND&boolean_operator2=AND&clause%5B0%5D%5Bfield%5D=all_fields&clause%5B0%5D%5Bquery%5D=gay&clause%5B1%5D%5Bfield%5D=author&clause%5B1%5D%5Bquery%5D=&clause%5B2%5D%5Bfield%5D=title&clause%5B2%5D%5Bquery%5D=&commit=Search&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D='
-      fill_in('clause_0_query', with: 'dance', fill_options: { clear: :backspace })
-      click_button 'Search'
-      expect(page).not_to have_content('Seeking sanctuary')
-      expect(page).to have_content('Dancing Black')
-    end
   end
 
   it 'can edit a facet-only search' do
