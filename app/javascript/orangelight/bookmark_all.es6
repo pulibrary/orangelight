@@ -24,7 +24,7 @@ export default class BookmarkAllManager {
     });
     $('.bookmark_all').on('keydown', (e) => {
       e.preventDefault();
-      if (e.which == 32) {
+      if (e.which === 32 || e.which === 13) {
         if (!$(e.target).find('input')[0].checked) {
           this.bookmark_all();
         } else {

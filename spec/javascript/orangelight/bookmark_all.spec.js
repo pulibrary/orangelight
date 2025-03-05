@@ -100,8 +100,8 @@ describe('BookmarkAllManager', () => {
       </div>`;
     new BookmarkAllManager();
   });
-  describe('press space on bookmark all button', () => {
-    it('Selects all the bookmark checkboxes', () => {
+  describe('Use keyboard on bookmark all button', () => {
+    it('Selects all the bookmark checkboxes using space', () => {
       const bookmark_all_div = document.querySelector('.bookmark_all');
       const press_space = new KeyboardEvent('keydown', {
         key: ' ',
@@ -120,6 +120,30 @@ describe('BookmarkAllManager', () => {
       );
       expect(bookmark_checkboxes.length).toBe(3);
       bookmark_all_div.dispatchEvent(press_space);
+      bookmark_checkboxes = document.querySelectorAll(
+        'input.toggle-bookmark:not(:checked)'
+      );
+      expect(bookmark_checkboxes.length).toBe(3);
+    });
+    it('Selects all the bookmark checkboxes using enter', () => {
+      const bookmark_all_div = document.querySelector('.bookmark_all');
+      const press_enter = new KeyboardEvent('keydown', {
+        key: 'Enter',
+        code: 'Enter',
+        which: 13,
+        keyCode: 13,
+      });
+      expect(bookmark_all_input.checked).toBe(false);
+      let bookmark_checkboxes = document.querySelectorAll(
+        'input.toggle-bookmark:not(:checked)'
+      );
+      expect(bookmark_checkboxes.length).toBe(3);
+      bookmark_all_div.dispatchEvent(press_enter);
+      bookmark_checkboxes = document.querySelectorAll(
+        'input.toggle-bookmark:checked'
+      );
+      expect(bookmark_checkboxes.length).toBe(3);
+      bookmark_all_div.dispatchEvent(press_enter);
       bookmark_checkboxes = document.querySelectorAll(
         'input.toggle-bookmark:not(:checked)'
       );
