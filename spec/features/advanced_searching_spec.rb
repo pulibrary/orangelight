@@ -191,6 +191,19 @@ describe 'advanced searching', advanced_search: true do
 
       expect(page).to have_field('Format', with: /Audio/)
     end
+
+    it 'can do an advanced search with updated criteria' do
+      visit '/advanced'
+      fill_in 'clause_0_query', with: 'gay'
+      click_button 'Search'
+      expect(page).to have_content('Seeking sanctuary')
+      click_link('Edit search')
+      expect(page).to have_content('Keyword:gay')
+      fill_in('clause_0_query', with: 'dance', fill_options: { clear: :backspace })
+      click_button 'Search'
+      expect(page).not_to have_content('Seeking sanctuary')
+      expect(page).to have_content('Dancing Black')
+    end
   end
 
   it 'can edit a facet-only search' do
