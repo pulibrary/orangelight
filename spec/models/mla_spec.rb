@@ -24,7 +24,7 @@ RSpec.describe Blacklight::Document::Mla, citation: true do
         expect(document).to include('Juan José. ')
       end
 
-      it 'includes the author with the proper delimiter', skip: "Fixing the bug with CiteProc" do
+      it 'includes the author with the proper delimiter' do
         expect(document).to include('Saer, Juan José. ')
       end
 
