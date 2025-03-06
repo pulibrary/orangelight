@@ -247,7 +247,6 @@ detectors:
     - AdvancedHelper#advanced_search_fields
     - AdvancedHelper#param_for_field
     - ApplicationHelper#series_results
-    - ApplicationHelper#subjectify
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#isbn_resolve
     - BlacklightHelper#issn_resolve
@@ -533,7 +532,6 @@ detectors:
     - BookmarksController#csv_output
     - AdvancedHelper#generate_solr_fq
     - ApplicationHelper#name_title_hierarchy
-    - ApplicationHelper#subjectify
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#left_anchor_search?
     - BlacklightHelper#prepare_left_anchor_search
@@ -681,6 +679,7 @@ detectors:
     - Requests::FormController#sanitize_submission
     - Requests::FormController#submit
     - Users::OmniauthCallbacksController#alma
+    - ApplicationHelper#accumulate_subsubjects
     - ApplicationHelper#action_notes_display
     - ApplicationHelper#build_search_subject_links
     - ApplicationHelper#build_subject_list
@@ -855,6 +854,7 @@ detectors:
     - ReportBiasedResultsForm#routed_mail_to
     - AdvancedHelper#first_search_field?
     - AdvancedHelper#first_search_field_selector?
+    - ApplicationHelper#accumulate_subsubjects
     - ApplicationHelper#aeon_location?
     - ApplicationHelper#alma_location_display
     - ApplicationHelper#bibdata_location_code_to_sym
