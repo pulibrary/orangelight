@@ -90,17 +90,12 @@ module ApplicationHelper
     all_subjects = []
     sub_array = []
     subjects = args[:document][args[:field]]
-    subjects.each_with_index do |subject, index|
-      spl_sub = subject.split(QUERYSEP)
-      sub_array << []
-      subjectaccum = ''
-      spl_sub.each_with_index do |subsubject, subsubject_index|
-        spl_sub[subsubject_index] = subjectaccum + subsubject
-        subjectaccum = spl_sub[subsubject_index] + QUERYSEP
-      end
-      sub_array[index] = spl_sub
-      all_subjects[index] = subject.split(QUERYSEP)
+    subjects.map do |subject|
+      subsubjects = accumulate_subsubjects(subject.split(QUERYSEP))
+      sub_array << subsubjects
+      all_subjects << subject.split(QUERYSEP)
     end
+
     subject_list = build_subject_list(args, all_subjects, sub_array)
     build_subject_ul(subject_list)
   end
@@ -346,5 +341,15 @@ module ApplicationHelper
                      'data-original-title' => "Browse: #{full_sub}",
                      'aria-label' => "Browse: #{full_sub}",
                      dir: full_sub.dir.to_s)
+    end
+
+    def accumulate_subsubjects(spl_sub)
+      subjectaccum = ''
+      spl_sub.map do |subsubject|
+        subjectaccum += subsubject
+        result = subjectaccum.dup
+        subjectaccum += QUERYSEP
+        result
+      end
     end
 end
