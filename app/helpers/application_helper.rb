@@ -87,15 +87,9 @@ module ApplicationHelper
   end
 
   def subjectify(args)
-    all_subjects = []
-    sub_array = []
     subjects = args[:document][args[:field]]
-    subjects.map do |subject|
-      subsubjects = accumulate_subsubjects(subject.split(QUERYSEP))
-      sub_array << subsubjects
-      all_subjects << subject.split(QUERYSEP)
-    end
-
+    all_subjects = subjects.map { |subject| subject.split(QUERYSEP) }
+    sub_array = subjects.map { |subject| accumulate_subsubjects(subject.split(QUERYSEP)) }
     subject_list = build_subject_list(args, all_subjects, sub_array)
     build_subject_ul(subject_list)
   end
