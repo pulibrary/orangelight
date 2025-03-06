@@ -87,20 +87,9 @@ module ApplicationHelper
   end
 
   def subjectify(args)
-    # all_subjects, sub_array = process_subjects(args[:document][args[:field]])
-    all_subjects = []
-    sub_array = []
-    args[:document][args[:field]].each_with_index do |subject, index|
-      spl_sub = subject.split(QUERYSEP)
-      sub_array << []
-      subjectaccum = ''
-      spl_sub.each_with_index do |subsubject, subsubject_index|
-        spl_sub[subsubject_index] = subjectaccum + subsubject
-        subjectaccum = spl_sub[subsubject_index] + QUERYSEP
-      end
-      sub_array[index] = spl_sub
-      all_subjects[index] = subject.split(QUERYSEP)
-    end
+    subjects = args[:document][args[:field]]
+    all_subjects = subjects.map { |subject| subject.split(QUERYSEP) }
+    sub_array = subjects.map { |subject| accumulate_subsubjects(subject.split(QUERYSEP)) }
     subject_list = build_subject_list(args, all_subjects, sub_array)
     build_subject_ul(subject_list)
   end
@@ -346,5 +335,12 @@ module ApplicationHelper
                      'data-original-title' => "Browse: #{full_sub}",
                      'aria-label' => "Browse: #{full_sub}",
                      dir: full_sub.dir.to_s)
+    end
+
+    def accumulate_subsubjects(spl_sub)
+      spl_sub.reduce([]) do |accumulator, subsubject|
+        # accumulator.last ? "#{accumulator.last}#{QUERYSEP}#{subsubject}" : subsubject
+        accumulator.append([accumulator.last, subsubject].compact.join(QUERYSEP))
+      end
     end
 end
