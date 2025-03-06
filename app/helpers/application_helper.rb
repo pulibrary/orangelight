@@ -87,10 +87,10 @@ module ApplicationHelper
   end
 
   def subjectify(args)
-    # all_subjects, sub_array = process_subjects(args[:document][args[:field]])
     all_subjects = []
     sub_array = []
-    args[:document][args[:field]].each_with_index do |subject, index|
+    subjects = args[:document][args[:field]]
+    subjects.each_with_index do |subject, index|
       spl_sub = subject.split(QUERYSEP)
       sub_array << []
       subjectaccum = ''
