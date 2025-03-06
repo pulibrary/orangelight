@@ -10,7 +10,7 @@ module Blacklight::Document::CiteProc
       props[:id] = id
       props[:edition] = cite_proc_edition if cite_proc_edition
       props[:type] = cite_proc_type if cite_proc_type
-      props[:author] = cite_proc_author if cite_proc_author
+      props[:author] = cite_proc_authors if cite_proc_authors
       props[:title] = cite_proc_title if cite_proc_title
       props[:publisher] = cite_proc_publisher if cite_proc_publisher
       props[:'publisher-place'] = cite_proc_publisher_place if cite_proc_publisher_place
@@ -22,10 +22,22 @@ module Blacklight::Document::CiteProc
       self[:format]&.first&.downcase
     end
 
-    def cite_proc_author
-      @cite_proc_author ||= begin
-        family, given = citation_fields_from_solr[:author_citation_display]&.first&.split(', ')
-        CiteProc::Name.new(family:, given:) if family || given
+    def cite_proc_authors
+      @cite_proc_authors ||= cleaned_authors.map do |author|
+        if author.include?(', ')
+          family, given = author.split(', ')
+          CiteProc::Name.new(family:, given:)
+        else
+          CiteProc::Name.new(literal: author)
+        end
+      end
+    end
+
+    # Can remove after https://github.com/pulibrary/bibdata/issues/2646 is completed & re-indexed
+    def cleaned_authors
+      citation_fields_from_solr[:author_citation_display].map do |author|
+        # remove any parenthetical statements from author, as used for Corporate authors in Marc
+        author.sub(/ \(.*\)/, '')
       end
     end
 

@@ -24,7 +24,7 @@ describe 'citation', citation: true do
 
     it 'renders the citation' do
       visit '/catalog/9979948663506421/citation'
-      expect(page.body).to include('Henderson, W. J, et al.')
+      expect(page.body).to include('Henderson, W. J., et al.')
     end
   end
 
