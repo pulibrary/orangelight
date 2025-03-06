@@ -338,12 +338,9 @@ module ApplicationHelper
     end
 
     def accumulate_subsubjects(spl_sub)
-      subjectaccum = ''
-      spl_sub.map do |subsubject|
-        subjectaccum += subsubject
-        result = subjectaccum.dup
-        subjectaccum += QUERYSEP
-        result
+      spl_sub.reduce([]) do |accumulator, subsubject|
+        # accumulator.last ? "#{accumulator.last}#{QUERYSEP}#{subsubject}" : subsubject
+        accumulator.append([accumulator.last, subsubject].compact.join(QUERYSEP))
       end
     end
 end
