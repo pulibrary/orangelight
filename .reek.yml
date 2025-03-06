@@ -679,7 +679,6 @@ detectors:
     - Requests::FormController#sanitize_submission
     - Requests::FormController#submit
     - Users::OmniauthCallbacksController#alma
-    - ApplicationHelper#accumulate_subsubjects
     - ApplicationHelper#action_notes_display
     - ApplicationHelper#build_search_subject_links
     - ApplicationHelper#build_subject_list
