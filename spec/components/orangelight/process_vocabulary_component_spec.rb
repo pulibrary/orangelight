@@ -3,13 +3,30 @@
 require "rails_helper"
 
 RSpec.describe Orangelight::ProcessVocabularyComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:rendered) do
+    Capybara::Node::Simple.new(render_inline(described_class.new(field:)))
+  end
+  let(:document) do
+    SolrDocument.new('lc_subject_display' => ["Immigrants—South Africa",
+                                              "Immigrants—Housing—South Africa",
+                                              "Immigrants—Services for—South Africa",
+                                              "Christian sexual minorities—Africa",
+                                              "Homophobia—Africa",
+                                              "Transgender people—Africa",
+                                              "Transgender men—Africa",
+                                              "Lesbians—Africa",
+                                              "Bisexuals—Africa",
+                                              "Gays—Africa"])
+  end
+  let(:field_config) { Blacklight::Configuration::Field.new(key: 'field', field: 'lc_subject_display', label: 'Subject(s)') }
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  let(:field) do
+    Blacklight::FieldPresenter.new(controller.view_context, document, field_config)
+  end
+
+  it 'renders the subject browse link' do
+    lc_subject_display1 = "Immigrants—South Africa"
+
+    expect(rendered).to have_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape lc_subject_display1}")
+  end
 end

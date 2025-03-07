@@ -69,6 +69,7 @@ detectors:
     - Orangelight::ConstraintComponent#constraint_value
     - Orangelight::ConstraintComponent#old_style_params?
     - Orangelight::ConstraintsComponent#guided_search_value
+    - Orangelight::ProcessVocabularyComponent#subjectify
     - Orangelight::SearchBarComponent#before_render
     - RequestButtonComponent#scsb_supervised_items?
     - AccountController#cancel_ill_requests
@@ -240,6 +241,7 @@ detectors:
     exclude:
     - Orangelight::ConstraintsComponent#guided_search_value
     - Orangelight::FacetFieldCheckboxesComponent#values
+    - Orangelight::ProcessVocabularyComponent#fast_subjects_value?
     - Orangelight::SearchBarComponent#search_fields
     - ApplicationController#after_sign_out_path_for
     - Requests::FormController#sanitize_submission
@@ -324,6 +326,7 @@ detectors:
     - Orangelight::ConstraintComponent
     - Orangelight::ConstraintsComponent
     - Orangelight::DropdownHelpTextComponent
+    - Orangelight::ProcessVocabularyComponent
     - Orangelight::SearchBarComponent
     - AccountController
     - BookmarksController
@@ -376,6 +379,7 @@ detectors:
     - Orangelight::Document::CitationComponent
     - Orangelight::DropdownHelpTextComponent
     - Orangelight::FacetFieldCheckboxesComponent
+    - Orangelight::ProcessVocabularyComponent
     - Orangelight::SearchBarComponent
     - Orangelight::SearchContext::ServerItemPaginationComponent
     - Orangelight::System::FlashMessageComponent
@@ -549,6 +553,7 @@ detectors:
     - SolrDocument#identifiers
   NilCheck:
     exclude:
+    - Orangelight::ProcessVocabularyComponent#fast_subjects_value?
     - AccountController#cancel_ill_requests
     - ApplicationController#after_sign_in_path_for
     - Orangelight::Catalog#validate_email_params
@@ -664,6 +669,9 @@ detectors:
     - BibdataStatus#check!
     - Holdings::OnlineHoldingsComponent#marc_links
     - Orangelight::ConstraintsComponent#guided_search_value
+    - Orangelight::ProcessVocabularyComponent#build_search_subject_links
+    - Orangelight::ProcessVocabularyComponent#build_subject_list
+    - Orangelight::ProcessVocabularyComponent#subjectify
     - Orangelight::SearchBarComponent#before_render
     - AccountController#cancel_ill_requests
     - ApplicationController#after_sign_in_path_for
@@ -794,6 +802,7 @@ detectors:
     exclude:
     - Orangelight::AdvancedSearchFormComponent#initialize_search_filter_controls
     - Orangelight::ConstraintsComponent#remove_guided_query_path
+    - Orangelight::ProcessVocabularyComponent#build_search_subject_links
     - BookmarksController#csv_bom
     - BookmarksController#two_values
     - Orangelight::Catalog#online_holding_note?
@@ -840,6 +849,7 @@ detectors:
   UtilityFunction:
     exclude:
     - Orangelight::DropdownHelpTextComponent#option_text_and_value
+    - Orangelight::ProcessVocabularyComponent#accumulate_subsubjects
     - AccountController#cancel_ill_success
     - AccountController#current_patron
     - ApplicationController#default_url_options

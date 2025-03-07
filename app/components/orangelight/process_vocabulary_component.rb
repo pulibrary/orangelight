@@ -1,17 +1,19 @@
 # frozen_string_literal: true
 
 class Orangelight::ProcessVocabularyComponent < Blacklight::MetadataFieldComponent
-  SEPARATOR = '—'
-  QUERYSEP = '—'
-
-  def subjectify(args)
-    # args is a FieldPresenter
-    subjects = args[:document][args[:field]]
+  def subjectify
+    subjects = @field.values
     all_subjects = subjects.map { |subject| subject.split(QUERYSEP) }
     sub_array = subjects.map { |subject| accumulate_subsubjects(subject.split(QUERYSEP)) }
-    subject_list = build_subject_list(args, all_subjects, sub_array)
+    subject_list = build_subject_list(all_subjects, sub_array)
     build_subject_ul(subject_list)
   end
+
+private
+
+  SEPARATOR = '—'
+  QUERYSEP = '—'
+  private_constant :SEPARATOR, :QUERYSEP
 
   def build_subject_ul(subject_list)
     content_tag :ul do
@@ -19,13 +21,15 @@ class Orangelight::ProcessVocabularyComponent < Blacklight::MetadataFieldCompone
     end
   end
 
-  def build_subject_list(args, all_subjects, sub_array)
-    args_document_field = args[:document][args[:field]]
-    args_document_field.each_with_index do |_subject, index|
+  def build_subject_list(all_subjects, sub_array)
+    document_field = @field.values
+    document_field.each_with_index do |_subject, index|
       sub_array_index = sub_array[index]
       lnk = build_search_subject_links(all_subjects[index], sub_array_index)
-      lnk += build_browse_subject_link(args, index, sub_array_index.last)
-      args_document_field[index] = lnk.html_safe
+      lnk += build_browse_subject_link(index, sub_array_index.last)
+      # rubocop:disable Rails/OutputSafety
+      document_field[index] = lnk.html_safe
+      # rubocop:enable Rails/OutputSafety
     end
   end
 
@@ -44,15 +48,16 @@ class Orangelight::ProcessVocabularyComponent < Blacklight::MetadataFieldCompone
     lnk
   end
 
-  def build_browse_subject_link(args, index, full_sub)
-    return '  ' if fast_subjects_value?(args, index)
-
+  def build_browse_subject_link(index, full_sub)
+    return '  ' if fast_subjects_value?(index)
+    # rubocop:disable Style/StringConcatenation
     '  ' + link_to("[Browse]",
                    "/browse/subjects?q=#{CGI.escape full_sub}",
                    class: 'browse-subject',
                    'data-original-title' => "Browse: #{full_sub}",
                    'aria-label' => "Browse: #{full_sub}",
                    dir: full_sub.dir.to_s)
+    # rubocop:enable Style/StringConcatenation
   end
 
   def accumulate_subsubjects(spl_sub)
@@ -60,5 +65,11 @@ class Orangelight::ProcessVocabularyComponent < Blacklight::MetadataFieldCompone
       # accumulator.last ? "#{accumulator.last}#{QUERYSEP}#{subsubject}" : subsubject
       accumulator.append([accumulator.last, subsubject].compact.join(QUERYSEP))
     end
+  end
+
+  def fast_subjects_value?(index)
+    fast_subject_display_field = @field.document["fast_subject_display"]
+    return false if fast_subject_display_field.nil?
+    fast_subject_display_field.present? && fast_subject_display_field.include?(@field.values[index])
   end
 end

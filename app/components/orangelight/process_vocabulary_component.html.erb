@@ -4,8 +4,6 @@
     <%= label %>
   <% end %>
   <% component.value do %>
-    
-    <a class="process-vocabulary" href="<%= subjectify(@field) %>"><%= @field.render %></a>
-   
+    <%= subjectify %>
   <% end %>
 <% end %>
