@@ -2,24 +2,6 @@
 @import "variables/colors";
 @import "variables/typography";
 
-.bookmark_all {
-  display: inline-block;
-
-  @media (max-width: 500px) {
-    width: 100%;
-    margin-top: 0;
-
-    label {
-      width: 100%;
-    }
-
-    span {
-      display: block;
-      width: 100%;
-    }
-  }
-}
-
 .checkbox.toggle-bookmark {
   margin-bottom: 5px;
   padding: 0;
