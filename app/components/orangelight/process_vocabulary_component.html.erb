@@ -1,0 +1,11 @@
+<%= render(@layout.new(field: @field)) do |component| %>
+
+  <% component.label do %>
+    <%= label %>
+  <% end %>
+  <% component.value do %>
+    
+    <a class="process-vocabulary" href="<%= subjectify(@field) %>"><%= @field.render %></a>
+   
+  <% end %>
+<% end %>
