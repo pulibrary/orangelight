@@ -29,4 +29,9 @@ RSpec.describe Orangelight::ProcessVocabularyComponent, type: :component do
 
     expect(rendered).to have_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape lc_subject_display1}")
   end
+
+  it 'renders the search subject link' do
+    lc_subject_display2 = "Immigrants"
+    expect(rendered).to have_link('Immigrants', href: "/?f[subject_facet][]=#{CGI.escape lc_subject_display2}")
+  end
 end
