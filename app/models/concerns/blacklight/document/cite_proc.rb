@@ -23,7 +23,7 @@ module Blacklight::Document::CiteProc
     end
 
     def cite_proc_authors
-      @cite_proc_authors ||= cleaned_authors.map do |author|
+      @cite_proc_authors ||= cleaned_authors&.map do |author|
         if author.include?(', ')
           family, given = author.split(', ')
           CiteProc::Name.new(family:, given:)
@@ -35,7 +35,7 @@ module Blacklight::Document::CiteProc
 
     # Can remove after https://github.com/pulibrary/bibdata/issues/2646 is completed & re-indexed
     def cleaned_authors
-      citation_fields_from_solr[:author_citation_display].map do |author|
+      citation_fields_from_solr[:author_citation_display]&.map do |author|
         # remove any parenthetical statements from author, as used for Corporate authors in Marc
         author.sub(/ \(.*\)/, '')
       end
