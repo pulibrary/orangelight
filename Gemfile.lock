@@ -121,7 +121,7 @@ GEM
       parser (>= 2.4)
       smart_properties
     bigdecimal (3.1.9)
-    blacklight (8.8.3)
+    blacklight (8.8.4)
       globalid
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
@@ -503,7 +503,7 @@ GEM
     puma (6.6.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.1.10)
+    rack (3.1.11)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
     rack-mini-profiler (3.3.1)
