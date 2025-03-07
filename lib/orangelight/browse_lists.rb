@@ -48,6 +48,7 @@ module BrowseLists
     end
 
     def browse_facet(_sql_command, facet_request, conn, facet_field, table_name)
+      return browse_subject(facet_request, conn, facet_field, table_name) if facet_field == "subject_facet"
       resp = conn.get "#{facet_request}#{facet_field}"
       req = JSON.parse(resp.body)
       CSV.open(output_root.join("#{table_name}.csv"), 'wb') do |csv|
@@ -62,13 +63,87 @@ module BrowseLists
       end
     end
 
-    def load_facet(sql_command, _facet_request, _conn, _facet_field, table_name)
+    # rubocop:disable Metrics/PerceivedComplexity
+    # rubocop:disable Metrics/AbcSize
+    def browse_subject(facet_request, conn, facet_field, table_name)
+      aat_s = 'aat_s'
+      homoit_genre_s = 'homoit_genre_s'
+      lcgft_s = 'lcgft_s'
+      local_subject_display = 'local_subject_display'
+      rbgenr_s = 'rbgenr_s'
+
+      subjects = JSON.parse(conn.get("#{facet_request}#{facet_field}").body)
+      aat = JSON.parse(conn.get("#{facet_request}#{aat_s}").body)
+      homoit_genre = JSON.parse(conn.get("#{facet_request}#{homoit_genre_s}").body)
+      lcgft = JSON.parse(conn.get("#{facet_request}#{lcgft_s}").body)
+      local_subject_display = JSON.parse(conn.get("#{facet_request}#{local_subject_display}").body)
+      rbgenr = JSON.parse(conn.get("#{facet_request}#{rbgenr_s}").body)
+
+      # rubocop:disable Metrics/BlockLength
+      CSV.open("/tmp/#{table_name}.csv", 'wb') do |csv|
+        label = ''
+        subjects['facet_counts']['facet_fields'][facet_field.to_s].each_with_index do |fac, index|
+          if index.even?
+            label = fac
+          else
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Library of Congress subject heading']
+          end
+        end
+        aat['facet_counts']['facet_fields'][aat_s].each_with_index do |fac, index|
+          if index.even?
+            label = fac
+          else
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Art & architecture thesaurus']
+          end
+        end
+        homoit_genre['facet_counts']['facet_fields'][homoit_genre_s].each_with_index do |fac, index|
+          if index.even?
+            label = fac
+          else
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Homosaurus: an international LGBTQ linked data vocabulary']
+          end
+        end
+        lcgft['facet_counts']['facet_fields'][lcgft_s].each_with_index do |fac, index|
+          if index.even?
+            label = fac
+          else
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Library of Congress genre/form terms for library and archival materials']
+          end
+        end
+        local_subject_display['facet_counts']['facet_fields'][local_subject_display].each_with_index do |fac, index|
+          if index.even?
+            label = fac
+          else
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Locally assigned term']
+          end
+        end
+        rbgenr['facet_counts']['facet_fields'][rbgenr_s].each_with_index do |fac, index|
+          if index.even?
+            label = fac
+          else
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Rare books genre term']
+          end
+        end
+      end
+      # rubocop:enable Metrics/BlockLength
+    end
+    # rubocop:enable Metrics/PerceivedComplexity
+    # rubocop:enable Metrics/AbcSize
+
+    def load_facet(sql_command, _facet_request, _conn, facet_field, table_name)
       validate_csv(table_name)
-      system(%(cp "/tmp/#{table_name}.sorted" /tmp/#{table_name}.sorted.backup))
+      system(%(cp /tmp/#{table_name}.sorted /tmp/#{table_name}.sorted.backup))
       system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
-      system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '/tmp/#{table_name}.csv' CSV;"))
-      system(%(#{sql_command} "\\copy (Select sort,count,label,dir from #{table_name} order by unaccent(sort)) To '/tmp/#{table_name}.sorted' With CSV;"))
-      load_facet_file(sql_command, "/tmp/#{table_name}.sorted", table_name)
+      if facet_field == "subject_facet"
+        system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir,vocabulary) from '/tmp/#{table_name}.csv' CSV;"))
+        system(%(#{sql_command} "\\copy (Select sort,count,label,dir,vocabulary from #{table_name} order by unaccent(sort)) To '/tmp/#{table_name}.sorted' With CSV;"))
+        system(%(#{sql_command} "TRUNCATE TABLE #{table_name} RESTART IDENTITY;"))
+        system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir,vocabulary) from '/tmp/#{table_name}.sorted' CSV;"))
+      else
+        system(%(#{sql_command} "\\copy #{table_name}(sort,count,label,dir) from '/tmp/#{table_name}.csv' CSV;"))
+        system(%(#{sql_command} "\\copy (Select sort,count,label,dir from #{table_name} order by unaccent(sort)) To '/tmp/#{table_name}.sorted' With CSV;"))
+        load_facet_file(sql_command, "/tmp/#{table_name}.sorted", table_name)
+      end
     end
 
     def validate_csv(table_name)
