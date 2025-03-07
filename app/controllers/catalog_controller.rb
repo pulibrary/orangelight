@@ -721,6 +721,8 @@ class CatalogController < ApplicationController
     solrize_boolean_params
     if no_search_yet?
       render_empty_search
+    elsif bot_is_attempting_expensive_search?
+      head :uri_too_long
     else
       super
     end
@@ -841,6 +843,25 @@ class CatalogController < ApplicationController
     def basic_response
       render plain: 'OK'
       nil
+    end
+
+    def bot_is_attempting_expensive_search?
+      request.bot? && many_facets?
+    end
+
+    # :reek:TooManyStatements
+    def many_facets?
+      value_count_in_params = ->(facet) { facet.is_a?(Array) ? facet.length : 1 }
+
+      facet_count_in_param = lambda do |param|
+        if param.is_a? ActionController::Parameters
+          param&.values&.sum(&value_count_in_params) || 0
+        else
+          0
+        end
+      end
+
+      params.values_at(:f_inclusive, :f).sum(&facet_count_in_param)
     end
 
     def search_service_context
