@@ -23,15 +23,16 @@ module Orangelight
     end
 
     def vocab_type(vocab)
-      if vocab == 'Art & architecture thesaurus'
+      case vocab
+      when 'Art & architecture thesaurus'
         'aat_s'
-      elsif vocab == 'Homosaurus: an international LGBTQ linked data vocabulary'
+      when 'Homosaurus: an international LGBTQ linked data vocabulary'
         'homoit_genre_s'
-      elsif vocab == 'Library of Congress genre/form terms for library and archival materials'
+      when 'Library of Congress genre/form terms for library and archival materials'
         'lcgft_s'
-      elsif vocab == 'Locally assigned term'
+      when 'Locally assigned term'
         'local_subject_display'
-      elsif vocab == 'Rare books genre term'
+      when 'Rare books genre term'
         'rbgenr_s'
       else
         # use new field subject_lc
