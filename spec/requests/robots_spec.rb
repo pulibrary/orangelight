@@ -4,6 +4,7 @@ require 'rails_helper'
 require 'faraday'
 
 GOOGLEBOT_USER_AGENT = "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.110 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+GPTBOT_USER_AGENT = "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.0; +https://openai.com/gptbot)"
 
 describe 'robot user-agents' do
   context 'when visiting search results page' do
@@ -67,6 +68,17 @@ describe 'robot user-agents' do
       get '/catalog/99125203099306421/staff_view',
           headers: { "HTTP_USER_AGENT" => GOOGLEBOT_USER_AGENT }
       expect(document).not_to have_received(:to_marc)
+    end
+  end
+end
+
+describe 'gptbot' do
+  context 'when visiting search results page' do
+    it 'does not create a search entry in the database' do
+      expect do
+        get '/catalog?search_field=all_fields&q=flying+fish',
+            headers: { "HTTP_USER_AGENT" => GPTBOT_USER_AGENT }
+      end.not_to change { Search.count }
     end
   end
 end
