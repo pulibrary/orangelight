@@ -21,6 +21,31 @@ describe 'robot user-agents' do
       expect(response.body).not_to include('data-availability-record="true"')
     end
   end
+  context 'when visiting a search result with many facet values' do
+    it 'returns 414 URI Too Long' do
+      get '/?f[access_facet][]=In+the+Library&f[format][]=Journal&f[geographic_facet][]=Alsace+%28France%29&' \
+          'f[language_facet][]=French&f[publication_place_facet][]=France&f[subject_topic_facet][]=Antiquities',
+          headers: { "HTTP_USER_AGENT" => GOOGLEBOT_USER_AGENT }
+      expect(response).to have_http_status :uri_too_long
+    end
+
+    it 'returns 414 URI Too Long when all the facet values are for the same facet' do
+      get '/?f[language_facet][]=French&f[language_facet][]=German&f[language_facet][]=Spanish&' \
+          'f[language_facet][]=Italian&f[language_facet][]=Portuguese&f[language_facet][]=Dutch',
+          headers: { "HTTP_USER_AGENT" => GOOGLEBOT_USER_AGENT }
+      expect(response).to have_http_status :uri_too_long
+    end
+
+    it 'does not make any calls to solr' do
+      # rubocop:disable RSpec/AnyInstance
+      expect_any_instance_of(RSolr::Client).not_to receive(:send_and_receive)
+      # rubocop:enable RSpec/AnyInstance
+      get '/?f[access_facet][]=In+the+Library&f[format][]=Journal&f[geographic_facet][]=Alsace+%28France%29&' \
+          'f[language_facet][]=French&f[publication_place_facet][]=France&f[subject_topic_facet][]=Antiquities',
+          headers: { "HTTP_USER_AGENT" => GOOGLEBOT_USER_AGENT }
+    end
+  end
+
   context 'when visiting call number browse', browse: true do
     it 'does not include availability information' do
       stub_holding_locations
@@ -89,6 +114,24 @@ describe 'empty user-agents' do
       expect do
         get '/catalog?search_field=all_fields&q=flying+fish'
       end.not_to change { Search.count }
+    end
+  end
+
+  context 'when visiting a search result with many facet values' do
+    it 'returns 414 URI Too Long' do
+      get '/?f[access_facet][]=In+the+Library&f[format][]=Journal&f[geographic_facet][]=Alsace+%28France%29&' \
+          'f[language_facet][]=French&f[publication_place_facet][]=France&f[subject_topic_facet][]=Antiquities',
+          headers: { "HTTP_USER_AGENT" => GOOGLEBOT_USER_AGENT }
+      expect(response).to have_http_status :uri_too_long
+    end
+
+    it 'does not make any calls to solr' do
+      # rubocop:disable RSpec/AnyInstance
+      expect_any_instance_of(RSolr::Client).not_to receive(:send_and_receive)
+      # rubocop:enable RSpec/AnyInstance
+      get '/?f[access_facet][]=In+the+Library&f[format][]=Journal&f[geographic_facet][]=Alsace+%28France%29&' \
+          'f[language_facet][]=French&f[publication_place_facet][]=France&f[subject_topic_facet][]=Antiquities',
+          headers: { "HTTP_USER_AGENT" => GOOGLEBOT_USER_AGENT }
     end
   end
 end
