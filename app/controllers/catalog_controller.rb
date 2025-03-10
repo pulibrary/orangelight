@@ -861,7 +861,7 @@ class CatalogController < ApplicationController
         end
       end
 
-      params.values_at(:f_inclusive, :f).sum(&facet_count_in_param)
+      params.values_at(:f_inclusive, :f).sum(&facet_count_in_param) >= 5
     end
 
     def search_service_context
