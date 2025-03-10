@@ -767,14 +767,9 @@ class CatalogController < ApplicationController
   def citation
     if agent_is_crawler?
       basic_response
-    elsif Orangelight.using_blacklight7?
-      # Taken from Blacklight::ActionBuilder#build, which would
-      # otherwise generate the citation method dynamically
-      #
-      # See https://github.com/projectblacklight/blacklight/blob/f6bdb20248c0eee91dbd480b20d1b60f93783b3e/app/builders/blacklight/action_builder.rb#L29-L53
-      @response, @documents = action_documents
     else
-      @documents = action_documents
+      @documents = search_service.fetch(Array(params[:id]), { fl: "author_citation_display, title_citation_display, pub_citation_display, number_of_pages_citation_display, pub_date_start_sort, edition_display" })
+      raise Blacklight::Exceptions::RecordNotFound if @documents.blank?
     end
   end
 
