@@ -45,6 +45,13 @@ describe 'robot user-agents' do
           headers: { "HTTP_USER_AGENT" => GOOGLEBOT_USER_AGENT }
     end
   end
+  context 'when visiting a search result with only a few facet values' do
+    it 'returns 200 ok' do
+      get '/?f[access_facet][]=In+the+Library&f[format][]=Journal&f[geographic_facet][]=Alsace+%28France%29',
+          headers: { "HTTP_USER_AGENT" => GOOGLEBOT_USER_AGENT }
+      expect(response).to have_http_status :ok
+    end
+  end
 
   context 'when visiting call number browse', browse: true do
     it 'does not include availability information' do
