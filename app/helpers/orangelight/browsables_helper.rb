@@ -21,5 +21,23 @@ module Orangelight
     def current_browse_per_page
       params[:rpp].present? ? params[:rpp].to_i : 10
     end
+
+    def vocab_type(vocab)
+      case vocab
+      when 'Art & architecture thesaurus'
+        'aat_s'
+      when 'Homosaurus: an international LGBTQ linked data vocabulary'
+        'homoit_genre_s'
+      when 'Library of Congress genre/form terms for library and archival materials'
+        'lcgft_s'
+      when 'Locally assigned term'
+        'local_subject_display'
+      when 'Rare books genre term'
+        'rbgenr_s'
+      else
+        # use new field subject_lc
+        'subject_facet'
+      end
+    end
   end
 end
