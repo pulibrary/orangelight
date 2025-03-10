@@ -1,3 +1,8 @@
+# Google AdSense bots, they only are beneficial for sites that display Google's Adsense ads, which we don't
+User-agent: Google-Display-Ads-Bot
+User-agent: Mediapartners-Google
+Disallow: /
+
 User-agent: *
 Crawl-delay: 10
 Sitemap: https://catalog.princeton.edu/sitemap
