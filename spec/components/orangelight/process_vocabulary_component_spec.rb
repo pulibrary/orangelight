@@ -21,7 +21,7 @@ RSpec.describe Orangelight::ProcessVocabularyComponent, type: :component do
   let(:field_config) { Blacklight::Configuration::Field.new(key: 'field', field: 'lc_subject_display', label: 'Subject(s)') }
 
   let(:field) do
-    Blacklight::FieldPresenter.new(controller.view_context, document, field_config)
+    Blacklight::FieldPresenter.new(vc_test_controller.view_context, document, field_config)
   end
 
   it 'renders the subject browse link' do

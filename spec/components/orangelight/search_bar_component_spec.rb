@@ -7,7 +7,7 @@ RSpec.describe Orangelight::SearchBarComponent, type: :component do
   let(:blacklight_config) do
     Blacklight::Configuration.new.configure do |config|
       config.search_fields = {
-        'title': Blacklight::Configuration::SearchField.new(label: 'Title', dropdown_label: 'Title (keyword)', key: 'title'),
+        'title': Blacklight::Configuration::SearchField.new(label: 'Title', dropdown_label: 'Title (keyword)', key: 'title', placeholder_text: 'Search...'),
         'browse_cn': Blacklight::Configuration::SearchField.new(label: 'Call number', dropdown_label: 'Call number (browse)', key: 'browse_cn', placeholder_text: 'e.g. P19.737.3'),
         'oclc': Blacklight::Configuration::SearchField.new(label: 'OCLC', key: 'oclc', include_in_simple_select: false)
       }

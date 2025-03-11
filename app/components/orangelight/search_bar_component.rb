@@ -6,7 +6,7 @@ class Orangelight::SearchBarComponent < Blacklight::SearchBarComponent
                                         .collect do |field_def|
       [field_def.dropdown_label || field_def.label,
        field_def.key,
-       { 'data-placeholder' => (field_def.placeholder_text || t('blacklight.search.form.search.placeholder')) }]
+       { 'data-placeholder' => field_def.placeholder_text }]
     end
   end
 

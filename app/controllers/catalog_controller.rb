@@ -500,7 +500,7 @@ class CatalogController < ApplicationController
     #   :include_in_advanced_search => true
     #   field.include_in_simple_select = false
 
-    config.add_search_field 'all_fields', label: 'Keyword'
+    config.add_search_field 'all_fields', label: 'Keyword', placeholder_text: I18n.t('blacklight.search.form.search.placeholder')
 
     # Now we see how to over-ride Solr request handler defaults, in this
     # case for a BL "search field", which is really a dismax aggregate
@@ -518,6 +518,7 @@ class CatalogController < ApplicationController
         qf: '$title_qf',
         pf: '$title_pf'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('author') do |field|
@@ -532,6 +533,7 @@ class CatalogController < ApplicationController
         qf: '$author_qf',
         pf: '$author_pf'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     # Specifying a :qt only to show it's possible, and so our internal automated
@@ -549,6 +551,7 @@ class CatalogController < ApplicationController
         qf: '$subject_qf',
         pf: '$subject_pf'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('left_anchor') do |field|
@@ -562,6 +565,7 @@ class CatalogController < ApplicationController
         pf: '$left_anchor_pf'
       }
       field.advanced_parse = false
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('publisher') do |field|
@@ -571,6 +575,7 @@ class CatalogController < ApplicationController
         qf: '${publisher_qf}',
         pf: '${publisher_pf}'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('in_series') do |field|
@@ -585,6 +590,7 @@ class CatalogController < ApplicationController
         qf: '$in_series_qf',
         pf: '$in_series_pf'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('notes') do |field|
@@ -594,6 +600,7 @@ class CatalogController < ApplicationController
         qf: '${notes_qf}',
         pf: '${notes_pf}'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('series_title') do |field|
@@ -603,6 +610,7 @@ class CatalogController < ApplicationController
         qf: '${series_title_qf}',
         pf: '${series_title_pf}'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('isbn') do |field|
@@ -614,6 +622,7 @@ class CatalogController < ApplicationController
       field.solr_parameters = {
         qf: 'isbn_t'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('issn') do |field|
@@ -625,6 +634,7 @@ class CatalogController < ApplicationController
       field.solr_parameters = {
         qf: 'issn_s'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('lccn') do |field|
@@ -637,6 +647,7 @@ class CatalogController < ApplicationController
       field.solr_parameters = {
         qf: 'lccn_s'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('oclc') do |field|
@@ -649,16 +660,19 @@ class CatalogController < ApplicationController
       field.solr_adv_parameters = {
         qf: 'oclc_s'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('browse_subject') do |field|
       field.include_in_advanced_search = false
       field.label = 'Subject (browse)'
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
     config.add_search_field('browse_name') do |field|
       field.include_in_advanced_search = false
       field.label = 'Author (browse)'
       field.placeholder_text = 'Last name, first name'
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
     config.add_search_field('name_title') do |field|
       field.include_in_advanced_search = false
