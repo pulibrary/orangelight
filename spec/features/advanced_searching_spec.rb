@@ -76,6 +76,13 @@ describe 'advanced searching', advanced_search: true do
     expect(page).to have_content('Aomen')
   end
 
+  it 'allows users to use booleans within a query' do
+    visit '/advanced'
+    fill_in(id: 'clause_0_query', with: 'history OR abolition')
+    click_button('advanced-search-submit')
+    expect(page).to have_content('Themes and individuals in history')
+  end
+
   context 'when editing the search', js: true do
     it 'shows the selected value in the combobox' do
       visit '/advanced'
