@@ -103,8 +103,16 @@ class SearchBuilder < Blacklight::SearchBuilder
     # don't want to cancel out the boolean OR with
     # an mm configuration that requires all the clauses
     # to be in the document
-    return unless blacklight_params[:q].to_s.split.include? 'OR'
+    return unless includes_written_boolean?
     solr_parameters['mm'] = 0
+  end
+
+  def includes_written_boolean?
+    if advanced_search? && search_query_present?
+      json_query_dsl_clauses&.any? { |clause| clause&.dig('query')&.include?('OR') }
+    else
+      blacklight_params[:q].to_s.split.include? 'OR'
+    end
   end
 
   # When the user is viewing the values of a specific facet
