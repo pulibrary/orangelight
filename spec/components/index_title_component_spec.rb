@@ -8,10 +8,10 @@ RSpec.describe IndexTitleComponent, type: :component do
   end
   before do
     allow_any_instance_of(Blacklight::Document::BookmarkComponent).to receive(:bookmarked?).and_return(false)
-    allow(controller).to receive(:current_or_guest_user).and_return(User.new)
+    allow(vc_test_controller).to receive(:current_or_guest_user).and_return(User.new)
     allow_any_instance_of(ActionView::Base).to receive(:search_session).and_return({})
     allow_any_instance_of(ActionView::Base).to receive(:current_search_session)
-    allow(controller).to receive(:blacklight_config).and_return(blacklight_config)
+    allow(vc_test_controller).to receive(:blacklight_config).and_return(blacklight_config)
   end
   let(:blacklight_config) do
     Blacklight::Configuration.new do |config|

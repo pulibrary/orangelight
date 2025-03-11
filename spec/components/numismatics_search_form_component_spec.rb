@@ -27,7 +27,7 @@ RSpec.describe NumismaticsSearchFormComponent, type: :component do
     Capybara::Node::Simple.new(render)
   end
 
-  let(:view_context) { controller.view_context }
+  let(:view_context) { vc_test_controller.view_context }
 
   before do
     allow(view_context).to receive(:facet_limit_for).and_return(nil)

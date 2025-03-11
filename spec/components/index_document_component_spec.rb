@@ -12,7 +12,7 @@ RSpec.describe IndexDocumentComponent, type: :component do
     allow_any_instance_of(Blacklight::Document::BookmarkComponent).to receive(:bookmarked?).and_return(false)
     allow_any_instance_of(ActionView::Base).to receive(:search_session).and_return({})
     allow_any_instance_of(ActionView::Base).to receive(:current_search_session)
-    allow(controller).to receive(:blacklight_config).and_return(blacklight_config)
+    allow(vc_test_controller).to receive(:blacklight_config).and_return(blacklight_config)
   end
   subject do
     document = SolrDocument.new(id: 'SCSB-1234')

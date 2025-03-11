@@ -763,7 +763,7 @@ GEM
     useragent (0.16.11)
     vcr (6.3.1)
       base64
-    view_component (2.83.0)
+    view_component (3.8.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -897,7 +897,7 @@ DEPENDENCIES
   terser
   timecop
   vcr
-  view_component (< 3.0.0)
+  view_component
   vite_rails
   voight_kampff
   webmock
