@@ -51,8 +51,7 @@ module Requests
     end
 
     def eligible_for_library_services?
-      barcode.present? 
-      # && barcode.is_a? String
+      barcode.present?
     end
 
     def telephone
