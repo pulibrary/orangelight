@@ -27,7 +27,7 @@ module Orangelight
       when 'Art & architecture thesaurus'
         'aat_s'
       when 'Homosaurus: an international LGBTQ linked data vocabulary'
-        'homoit_genre_s'
+        'homoit_subject_display' || 'homoit_genre_s'
       when 'Library of Congress genre/form terms for library and archival materials'
         'lcgft_s'
       when 'Locally assigned term'
@@ -36,7 +36,7 @@ module Orangelight
         'rbgenr_s'
       else
         # use new field subject_lc
-        'subject_facet'
+        'lc_subject_facet'
       end
     end
   end
