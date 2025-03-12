@@ -1,0 +1,282 @@
+{
+    "id": [
+        "99131369190806421"
+    ],
+    "numeric_id_b": [
+        true
+    ],
+    "cjk_all": [
+        ""
+    ],
+    "cjk_notes": [
+        ""
+    ],
+    "author_display": [
+        "Fransman, Karrie"
+    ],
+    "author_sort": [
+        "Fransman, Karrie"
+    ],
+    "author_citation_display": [
+        "Fransman, Karrie",
+        "Plackett, Jonathan"
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[\"Plackett, Jonathan\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Fransman, Karrie\"}"
+    ],
+    "author_s": [
+        "Fransman, Karrie",
+        "Plackett, Jonathan"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": [
+        "Gender swapped fairy tales / Karrie Fransman and Jonathan Plackett."
+    ],
+    "title_a_index": [
+        "Gender swapped fairy tales"
+    ],
+    "title_sort": [
+        "Gender swapped fairy tales / Karrie Fransman and Jonathan Plackett."
+    ],
+    "title_no_h_index": [
+        "Gender swapped fairy tales / Karrie Fransman and Jonathan Plackett."
+    ],
+    "title_t": [
+        "Gender swapped fairy tales / Karrie Fransman and Jonathan Plackett."
+    ],
+    "title_citation_display": [
+        "Gender swapped fairy tales"
+    ],
+    "compiled_created_t": [
+        "Gender swapped fairy tales / Karrie Fransman and Jonathan Plackett."
+    ],
+    "pub_created_display": [
+        "London : Faber and Faber, 2020.",
+        "©2020"
+    ],
+    "pub_created_s": [
+        "London : Faber and Faber, 2020.",
+        "©2020"
+    ],
+    "pub_citation_display": [
+        "London: Faber and Faber"
+    ],
+    "publication_location_citation_display": [
+        "London"
+    ],
+    "publisher_citation_display": [
+        "Faber and Faber"
+    ],
+    "pub_date_display": [
+        "2020"
+    ],
+    "pub_date_start_sort": [
+        "2020"
+    ],
+    "pub_date_end_sort": [
+        "2020"
+    ],
+    "publication_date_citation_display": [
+        "2020"
+    ],
+    "cataloged_tdt": [
+        "2025-02-10T20:22:32Z"
+    ],
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "xx, 176 pages : color illustrations ; 25 cm"
+    ],
+    "description_t": [
+        "xx, 176 pages : color illustrations ; 25 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "xx, 176 pages"
+    ],
+    "related_record_info_display": [
+        "Ebook version :"
+    ],
+    "notes_index": [
+        "People have been telling fairy tales to their children for hundreds of years. And for almost as long, people have been rewriting those fairy tales - to help their children imagine a world where they are the heroes. Karrie and Jon were reading their child these stories when they hit upon a dilemma, something previous versions of these stories were missing, and so they decided to make one vital change. They haven't rewritten the stories in this book. They haven't reimagined endings, or reinvented characters. What they have done is switch all the genders. It might not sound like that much of a change, but you'll be dazzled by the world this swap creates - and amazed by the new characters you're about to discover.",
+        "Handsome and the Beast -- Cinder, or the Little Glass Slipper -- How to tell a true prince -- Jacqueline and the beanstalk -- Gretel and Hansel -- Mr Rapunzel -- Snowdrop -- Little Red Riding Hood -- The Sleeping Handsome in the wood -- Frau Rumpelstiltzkin -- Mistress Puss in Boots -- Thumbelin.",
+        "Princeton copy 1 Gift; Andrea Immel; 2024. NjP"
+    ],
+    "summary_note_display": [
+        "People have been telling fairy tales to their children for hundreds of years. And for almost as long, people have been rewriting those fairy tales - to help their children imagine a world where they are the heroes. Karrie and Jon were reading their child these stories when they hit upon a dilemma, something previous versions of these stories were missing, and so they decided to make one vital change. They haven't rewritten the stories in this book. They haven't reimagined endings, or reinvented characters. What they have done is switch all the genders. It might not sound like that much of a change, but you'll be dazzled by the world this swap creates - and amazed by the new characters you're about to discover."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "publication_place_facet": [
+        "England"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "contents_display": [
+        "Handsome and the Beast",
+        "Cinder, or the Little Glass Slipper",
+        "How to tell a true prince",
+        "Jacqueline and the beanstalk",
+        "Gretel and Hansel",
+        "Mr Rapunzel",
+        "Snowdrop",
+        "Little Red Riding Hood",
+        "The Sleeping Handsome in the wood",
+        "Frau Rumpelstiltzkin",
+        "Mistress Puss in Boots",
+        "Thumbelin."
+    ],
+    "lc_subject_display": [
+        "Fairy tales",
+        "Gender identity—Fiction"
+    ],
+    "lc_subject_include_archaic_search_terms_index": [
+        "Fairy tales",
+        "Gender identity—Fiction"
+    ],
+    "homoit_subject_facet": [
+        "Gender identity",
+        "Gender identity—Juvenile fiction",
+        "Gender",
+        "Gender—Juvenile fiction"
+    ],
+    "homoit_subject_display": [
+        "Gender identity—Juvenile fiction",
+        "Gender—Juvenile fiction"
+    ],
+    "subject_unstem_search": [
+        "Fairy tales",
+        "Gender identity—Fiction"
+    ],
+    "local_subject_unstem_search": null,
+    "siku_subject_unstem_search": null,
+    "homoit_subject_unstem_search": [
+        "Gender identity—Juvenile fiction",
+        "Gender—Juvenile fiction"
+    ],
+    "fast_subject_unstem_search": null,
+    "subject_facet": [
+        "Fairy tales",
+        "Gender identity—Fiction",
+        "Gender identity—Juvenile fiction",
+        "Gender—Juvenile fiction",
+        "fairy tales",
+        "Adaptations"
+    ],
+    "lc_subject_facet": [
+        "Fairy tales",
+        "Gender identity",
+        "Gender identity—Fiction"
+    ],
+    "lcgft_s": [
+        "Fairy tales",
+        "Adaptations"
+    ],
+    "lcgft_genre_facet": [
+        "Fairy tales",
+        "Adaptations"
+    ],
+    "aat_s": [
+        "fairy tales"
+    ],
+    "aat_genre_facet": [
+        "fairy tales"
+    ],
+    "subject_topic_facet": [
+        "Fairy tales",
+        "Gender identity",
+        "Gender"
+    ],
+    "lc_1letter_facet": [
+        "G - Geography, Anthropology, Recreation"
+    ],
+    "lc_rest_facet": [
+        "GR - Folklore"
+    ],
+    "lc_facet": [
+        "G - Geography, Anthropology, Recreation",
+        "G - Geography, Anthropology, Recreation:GR - Folklore"
+    ],
+    "call_number_scheme_facet": [
+        "Library of Congress"
+    ],
+    "call_number_group_facet": [
+        "G - Geography, Anthropology, Recreation"
+    ],
+    "call_number_full_facet": [
+        "GR - Folklore"
+    ],
+    "genre_facet": [
+        "Juvenile fiction",
+        "fairy tales",
+        "Fairy tales",
+        "Adaptations",
+        "Fiction",
+        "Young adult fiction"
+    ],
+    "related_name_json_1display": [
+        "{\"Author\":[\"Plackett, Jonathan\"]}"
+    ],
+    "isbn_display": [
+        "0571360181 ((hardback))",
+        "9780571360185 ((hardback))"
+    ],
+    "lccn_display": [
+        "  2021391358"
+    ],
+    "lccn_s": [
+        "2021391358"
+    ],
+    "isbn_s": [
+        "9780571360185"
+    ],
+    "oclc_s": [
+        "1136555229"
+    ],
+    "standard_no_index": [
+        "on1136555229"
+    ],
+    "other_version_s": [
+        "9780571360185",
+        "9780571360208",
+        "on1136555229"
+    ],
+    "holdings_1display": [
+        "{\"221042620880006421\":{\"location_code\":\"rare$ctsn\",\"location\":\"Cotsen Children's Library\",\"library\":\"Special Collections\",\"call_number\":\"Alma-96441 Eng 21 unprocessed\",\"call_number_browse\":\"Alma-96441 Eng 21 unprocessed\",\"sub_location\":[\"Eng 21 unprocessed\"],\"items\":[{\"holding_id\":\"221042620880006421\",\"id\":\"231042620860006421\",\"status_at_load\":\"1\",\"barcode\":\"32101103309645\"}],\"location_has\":[\"Princeton copy 1\"],\"supplements\":[null],\"indexes\":[null]}}"
+    ],
+    "location_code_s": [
+        "rare$ctsn"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Cotsen Children's Library"
+    ],
+    "advanced_location_s": [
+        "rare$ctsn",
+        "Special Collections"
+    ],
+    "name_title_browse_s": [
+        "Fransman, Karrie. Gender swapped fairy tales"
+    ],
+    "call_number_display": [
+        "Eng 21 unprocessed Alma-96441"
+    ],
+    "call_number_browse_s": [
+        "Alma-96441 Eng 21 unprocessed"
+    ],
+    "call_number_locator_display": [
+        "Alma-96441"
+    ],
+    "access_facet": [
+        "In the Library"
+    ]
+}
