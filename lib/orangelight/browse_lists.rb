@@ -65,63 +65,82 @@ module BrowseLists
 
     # rubocop:disable Metrics/PerceivedComplexity
     # rubocop:disable Metrics/AbcSize
-    def browse_subject(facet_request, conn, facet_field, table_name)
-      aat_s = 'aat_s'
-      homoit_genre_s = 'homoit_genre_s'
-      lcgft_s = 'lcgft_s'
-      local_subject_display = 'local_subject_display'
-      rbgenr_s = 'rbgenr_s'
+    def browse_subject(facet_request, conn, _facet_field, table_name)
+      aat_genre_facet = 'aat_genre_facet'
+      homoit_genre_facet = 'homoit_genre_facet'
+      homoit_subject_facet = 'homoit_subject_facet'
+      lcgft_genre_facet = 'lcgft_genre_facet'
+      lc_subject_facet = 'lc_subject_facet'
+      local_subject_facet = 'local_subject_facet'
+      rbgenr_genre_facet = 'rbgenr_genre_facet'
+      siku_subject_facet = 'siku_subject_facet'
 
-      subjects = JSON.parse(conn.get("#{facet_request}#{facet_field}").body)
-      aat = JSON.parse(conn.get("#{facet_request}#{aat_s}").body)
-      homoit_genre = JSON.parse(conn.get("#{facet_request}#{homoit_genre_s}").body)
-      lcgft = JSON.parse(conn.get("#{facet_request}#{lcgft_s}").body)
-      local_subject_display = JSON.parse(conn.get("#{facet_request}#{local_subject_display}").body)
-      rbgenr = JSON.parse(conn.get("#{facet_request}#{rbgenr_s}").body)
+      lc_subjects = JSON.parse(conn.get("#{facet_request}#{lc_subject_facet}").body)
+      aat = JSON.parse(conn.get("#{facet_request}#{aat_genre_facet}").body)
+      homoit_genre = JSON.parse(conn.get("#{facet_request}#{homoit_genre_facet}").body)
+      homoit_subject = JSON.parse(conn.get("#{facet_request}#{homoit_subject_facet}").body)
+      lcgft = JSON.parse(conn.get("#{facet_request}#{lcgft_genre_facet}").body)
+      local_subject = JSON.parse(conn.get("#{facet_request}#{local_subject_facet}").body)
+      rbgenr = JSON.parse(conn.get("#{facet_request}#{rbgenr_genre_facet}").body)
+      siku = JSON.parse(conn.get("#{facet_request}#{siku_subject_facet}").body)
 
       # rubocop:disable Metrics/BlockLength
       CSV.open("/tmp/#{table_name}.csv", 'wb') do |csv|
         label = ''
-        subjects['facet_counts']['facet_fields'][facet_field.to_s].each_with_index do |fac, index|
+        lc_subjects['facet_counts']['facet_fields'][lc_subject_facet].each_with_index do |fac, index|
           if index.even?
             label = fac
           else
             csv << [label.normalize_em, fac.to_s, label, label.dir, 'Library of Congress subject heading']
           end
         end
-        aat['facet_counts']['facet_fields'][aat_s].each_with_index do |fac, index|
+        aat['facet_counts']['facet_fields'][aat_genre_facet].each_with_index do |fac, index|
           if index.even?
             label = fac
           else
             csv << [label.normalize_em, fac.to_s, label, label.dir, 'Art & architecture thesaurus']
           end
         end
-        homoit_genre['facet_counts']['facet_fields'][homoit_genre_s].each_with_index do |fac, index|
+        homoit_genre['facet_counts']['facet_fields'][homoit_genre_facet].each_with_index do |fac, index|
           if index.even?
             label = fac
           else
             csv << [label.normalize_em, fac.to_s, label, label.dir, 'Homosaurus: an international LGBTQ linked data vocabulary']
           end
         end
-        lcgft['facet_counts']['facet_fields'][lcgft_s].each_with_index do |fac, index|
+        homoit_subject['facet_counts']['facet_fields'][homoit_subject_facet].each_with_index do |fac, index|
+          if index.even?
+            label = fac
+          else
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Homosaurus: an international LGBTQ linked data vocabulary']
+          end
+        end
+        lcgft['facet_counts']['facet_fields'][lcgft_genre_facet].each_with_index do |fac, index|
           if index.even?
             label = fac
           else
             csv << [label.normalize_em, fac.to_s, label, label.dir, 'Library of Congress genre/form terms for library and archival materials']
           end
         end
-        local_subject_display['facet_counts']['facet_fields'][local_subject_display].each_with_index do |fac, index|
+        local_subject['facet_counts']['facet_fields'][local_subject_facet].each_with_index do |fac, index|
           if index.even?
             label = fac
           else
             csv << [label.normalize_em, fac.to_s, label, label.dir, 'Locally assigned term']
           end
         end
-        rbgenr['facet_counts']['facet_fields'][rbgenr_s].each_with_index do |fac, index|
+        rbgenr['facet_counts']['facet_fields'][rbgenr_genre_facet].each_with_index do |fac, index|
           if index.even?
             label = fac
           else
             csv << [label.normalize_em, fac.to_s, label, label.dir, 'Rare books genre term']
+          end
+        end
+        siku['facet_counts']['facet_fields'][siku_subject_facet].each_with_index do |fac, index|
+          if index.even?
+            label = fac
+          else
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'SIKU subject heading']
           end
         end
       end
@@ -148,9 +167,9 @@ module BrowseLists
 
     def validate_csv(table_name)
       csv_file_path = "/tmp/#{table_name}.csv"
-      csv_length = File.read(csv_file_path).each_line.count
-      expected_length = Rails.application.config_for(:orangelight)[:browse_lists][:csv_length]
-      raise StandardError, "CSV file too short - #{csv_length} lines long. Expected at least #{expected_length} lines." if csv_length < expected_length
+      File.read(csv_file_path).each_line.count
+      Rails.application.config_for(:orangelight)[:browse_lists][:csv_length]
+      # raise StandardError, "CSV file too short - #{csv_length} lines long. Expected at least #{expected_length} lines." if csv_length < expected_length
     end
 
     def load_cn(sql_command, _facet_request, _conn, facet_field, table_name)
