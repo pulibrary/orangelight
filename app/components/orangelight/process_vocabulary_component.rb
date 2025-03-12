@@ -25,7 +25,7 @@ private
     document_field = @field.values
     document_field.each_with_index do |_subject, index|
       sub_array_index = sub_array[index]
-      byebug
+
       lnk = build_search_subject_links(all_subjects[index], sub_array_index)
       lnk += build_browse_subject_link(index, sub_array_index.last)
       # rubocop:disable Rails/OutputSafety
@@ -63,14 +63,12 @@ private
                                   class: 'search-subject',
                                   'data-original-title' => "Search: #{sub_array_j}")
         lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      # rubocop:disable Lint/DuplicateBranch
       when 'homoit_genre_s'
         lnk = lnk_accum + link_to(subsubject,
                                   "/?f[homoit_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
                                   class: 'search-subject',
                                   'data-original-title' => "Search: #{sub_array_j}")
         lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      # rubocop:enable Lint/DuplicateBranch
       when 'lcgft_s'
         lnk = lnk_accum + link_to(subsubject,
                                   "/?f[lcgft_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
@@ -110,7 +108,6 @@ private
     # rubocop:disable Style/StringConcatenation
     case @field.key
     when 'lc_subject_display'
-      byebug
       '  ' + link_to("[Browse]",
                      "/browse/subjects?q=#{CGI.escape full_sub}&vocab=lc_subject_facet",
                      class: 'browse-subject',

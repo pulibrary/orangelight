@@ -25,17 +25,19 @@ module Orangelight
     def vocab_type(vocab)
       case vocab
       when 'Art & architecture thesaurus'
-        'aat_s'
-      when 'Homosaurus: an international LGBTQ linked data vocabulary'
-        'homoit_subject_display' || 'homoit_genre_s'
+        'aat_genre_facet'
+      when 'Homosaurus: an international LGBTQ linked data vocabulary' # REVIEW: this one with Mark. It will facet back to genres
+        # do we need a second vocabulary to distinguish homosaurus genres from subjects
+        'homoit_genre_facet'
       when 'Library of Congress genre/form terms for library and archival materials'
-        'lcgft_s'
+        'lcgft_genre_facet'
       when 'Locally assigned term'
-        'local_subject_display'
+        'local_subject_facet'
       when 'Rare books genre term'
-        'rbgenr_s'
+        'rbgenr_genre_facet'
+      when 'SIKU subject heading' # REVIEW: this vocabulary name with Mark
+        'siku_subject_facet'
       else
-        # use new field subject_lc
         'lc_subject_facet'
       end
     end
