@@ -311,10 +311,12 @@ class CatalogController < ApplicationController
     config.add_show_field 'lc_subject_display', label: 'Subject(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'siku_subject_display', label: 'Chinese traditional subject(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'homoit_subject_display', label: 'Homosaurus term(s)', component: Orangelight::ProcessVocabularyComponent
+    config.add_show_field 'homoit_genre_s', label: 'Homosaurus genre(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'related_name_json_1display', hash: true
     config.add_show_field 'lcgft_s', label: 'Library of Congress genre(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'rbgenr_s', label: 'Rare books genre', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'aat_s', label: 'Getty AAT genre', component: Orangelight::ProcessVocabularyComponent
+    config.add_show_field 'local_subject_display', label: 'Local Subjects', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'fast_subject_display', label: 'FaST Subject(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'related_works_1display', label: 'Related work(s)', helper_method: :name_title_hierarchy
     config.add_show_field 'series_display', label: 'Series', series_link: true

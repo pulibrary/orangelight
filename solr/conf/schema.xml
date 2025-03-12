@@ -526,9 +526,17 @@
    <field name="issn_s" type="alphaNumSort" indexed="true" stored="true" multiValued="true"/>
    <field name="language_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="subject_facet" type="descendent_path" indexed="true" stored="true" multiValued="true" />
+   <field name="lc_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="lcgft_genre_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="aat_genre_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="rbgenr_genre_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="homoit_genre_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="homoit_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="local_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="siku_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="subject_era_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="subject_geo_facet" type="string" indexed="true" stored="true" multiValued="true" />
-   <!-- pub_date is used for facet and display so it must be indexed and stored -->
+    <!-- pub_date is used for facet and display so it must be indexed and stored -->
    <field name="pub_date" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="lc_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="fast_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
