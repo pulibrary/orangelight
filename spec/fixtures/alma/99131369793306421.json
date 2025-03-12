@@ -1,0 +1,310 @@
+{
+    "id": [
+        "99131369793306421"
+    ],
+    "numeric_id_b": [
+        true
+    ],
+    "cjk_all": [
+        ""
+    ],
+    "cjk_notes": [
+        ""
+    ],
+    "author_display": [
+        "Wiesner, David"
+    ],
+    "author_sort": [
+        "Wiesner, David"
+    ],
+    "author_citation_display": [
+        "Wiesner, David"
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Wiesner, David\"}"
+    ],
+    "author_s": [
+        "Wiesner, David"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": [
+        "Mr. Wuffles! / David Wiesner."
+    ],
+    "title_a_index": [
+        "Mr. Wuffles!"
+    ],
+    "title_sort": [
+        "Mr. Wuffles! / David Wiesner."
+    ],
+    "title_no_h_index": [
+        "Mr. Wuffles! / David Wiesner."
+    ],
+    "title_t": [
+        "Mr. Wuffles! / David Wiesner."
+    ],
+    "title_citation_display": [
+        "Mr. Wuffles!"
+    ],
+    "compiled_created_t": [
+        "Mr. Wuffles! / David Wiesner."
+    ],
+    "pub_created_display": [
+        "New York : Clarion Books, Houghton Mifflin Harcourt, 2013."
+    ],
+    "pub_created_s": [
+        "New York : Clarion Books, Houghton Mifflin Harcourt, 2013."
+    ],
+    "pub_citation_display": [
+        "New York: Clarion Books, Houghton Mifflin Harcourt"
+    ],
+    "publication_location_citation_display": [
+        "New York"
+    ],
+    "publisher_citation_display": [
+        "Clarion Books, Houghton Mifflin Harcourt"
+    ],
+    "pub_date_display": [
+        "2013"
+    ],
+    "pub_date_start_sort": [
+        "2013"
+    ],
+    "publication_date_citation_display": [
+        "2013"
+    ],
+    "cataloged_tdt": [
+        "2025-02-11T15:38:47Z"
+    ],
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "1 volume (unpaged) : color illustrations ; 24 x 29 cm"
+    ],
+    "description_t": [
+        "1 volume (unpaged) : color illustrations ; 24 x 29 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "1 volume (unpaged)"
+    ],
+    "notes_index": [
+        "\"Mr. Wuffles ignores all his cat toys but one, which turns out to be a spaceship piloted by small green aliens. When Mr. Wuffles plays rough with the little ship, the aliens must venture into the cat's territory to make emergency repairs.\"--Publisher information.",
+        "Princeton copy 1 Gift; Andrea Immel; 2024. NjP",
+        "Ages: 4-8.",
+        "Grades: PreS-3.",
+        "2014 ALA Notable Children's Books List",
+        "Caldecott Honor book, 2014."
+    ],
+    "summary_note_display": [
+        "\"Mr. Wuffles ignores all his cat toys but one, which turns out to be a spaceship piloted by small green aliens. When Mr. Wuffles plays rough with the little ship, the aliens must venture into the cat's territory to make emergency repairs.\"--Publisher information."
+    ],
+    "target_aud_notes_display": [
+        "Ages: 4-8.",
+        "Grades: PreS-3."
+    ],
+    "awards_notes_display": [
+        "2014 ALA Notable Children's Books List",
+        "Caldecott Honor book, 2014."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "publication_place_facet": [
+        "New York (State)"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Toys—Juvenile fiction",
+        "Extraterrestrial beings—Juvenile fiction",
+        "Cats—Juvenile fiction",
+        "Curiosity—Juvenile fiction",
+        "Friendship—Juvenile fiction",
+        "Stories without words"
+    ],
+    "lc_subject_include_archaic_search_terms_index": [
+        "Toys—Juvenile fiction",
+        "Extraterrestrial beings—Juvenile fiction",
+        "Cats—Juvenile fiction",
+        "Curiosity—Juvenile fiction",
+        "Friendship—Juvenile fiction",
+        "Stories without words"
+    ],
+    "subject_unstem_search": [
+        "Toys—Juvenile fiction",
+        "Extraterrestrial beings—Juvenile fiction",
+        "Cats—Juvenile fiction",
+        "Curiosity—Juvenile fiction",
+        "Friendship—Juvenile fiction",
+        "Stories without words"
+    ],
+    "local_subject_unstem_search": null,
+    "siku_subject_unstem_search": null,
+    "homoit_subject_unstem_search": null,
+    "fast_subject_unstem_search": null,
+    "subject_facet": [
+        "Toys—Juvenile fiction",
+        "Extraterrestrial beings—Juvenile fiction",
+        "Cats—Juvenile fiction",
+        "Curiosity—Juvenile fiction",
+        "Friendship—Juvenile fiction",
+        "Stories without words",
+        "stories without words",
+        "picture books",
+        "Wordless picture books",
+        "Picture books",
+        "Dust jackets (Bindings)—2013",
+        "Dust jackets (Binding)—2013"
+    ],
+    "lc_subject_facet": [
+        "Toys",
+        "Toys—Juvenile fiction",
+        "Extraterrestrial beings",
+        "Extraterrestrial beings—Juvenile fiction",
+        "Cats",
+        "Cats—Juvenile fiction",
+        "Curiosity",
+        "Curiosity—Juvenile fiction",
+        "Friendship",
+        "Friendship—Juvenile fiction",
+        "Stories without words"
+    ],
+    "lcgft_s": [
+        "Wordless picture books",
+        "Picture books"
+    ],
+    "lcgft_genre_facet": [
+        "Wordless picture books",
+        "Picture books"
+    ],
+    "aat_s": [
+        "stories without words",
+        "picture books"
+    ],
+    "aat_genre_facet": [
+        "stories without words",
+        "picture books"
+    ],
+    "rbgenr_s": [
+        "Dust jackets (Bindings)—2013",
+        "Dust jackets (Binding)—2013"
+    ],
+    "rbgenr_genre_facet": [
+        "Dust jackets (Bindings)",
+        "Dust jackets (Bindings)—2013",
+        "Dust jackets (Binding)",
+        "Dust jackets (Binding)—2013"
+    ],
+    "subject_topic_facet": [
+        "Toys",
+        "Extraterrestrial beings",
+        "Cats",
+        "Curiosity",
+        "Friendship",
+        "Stories without words"
+    ],
+    "lc_1letter_facet": [
+        "P - Language & Literature"
+    ],
+    "lc_rest_facet": [
+        "PZ - Children's Literature"
+    ],
+    "lc_facet": [
+        "P - Language & Literature",
+        "P - Language & Literature:PZ - Children's Literature"
+    ],
+    "call_number_scheme_facet": [
+        "Library of Congress"
+    ],
+    "call_number_group_facet": [
+        "P - Language & Literature"
+    ],
+    "call_number_full_facet": [
+        "PZ - Children's Literature"
+    ],
+    "genre_facet": [
+        "stories without words",
+        "picture books",
+        "Wordless picture books",
+        "Picture books",
+        "Dust jackets (Bindings)",
+        "Dust jackets (Binding)",
+        "Juvenile fiction",
+        "Stories without words"
+    ],
+    "other_title_index": [
+        "Mister Wuffles!"
+    ],
+    "other_title_display": [
+        "Mister Wuffles!"
+    ],
+    "alt_title_246_display": [
+        "Mister Wuffles!"
+    ],
+    "isbn_display": [
+        "9780618756612 ((hardcover))",
+        "0618756612 ((hardcover))"
+    ],
+    "lccn_display": [
+        "  2012046025"
+    ],
+    "standard_no_024_index": [
+        "9780618756612"
+    ],
+    "standard_no_1display": [
+        "{\"International Article Number\":[\"9780618756612\"]}"
+    ],
+    "lccn_s": [
+        "2012046025"
+    ],
+    "isbn_s": [
+        "9780618756612"
+    ],
+    "oclc_s": [
+        "858777860"
+    ],
+    "standard_no_index": [
+        "ocn858777860"
+    ],
+    "other_version_s": [
+        "9780618756612",
+        "ocn858777860"
+    ],
+    "holdings_1display": [
+        "{\"221042801910006421\":{\"location_code\":\"rare$ctsn\",\"location\":\"Cotsen Children's Library\",\"library\":\"Special Collections\",\"call_number\":\"Alma-96536 Eng 21Q unprocessed\",\"call_number_browse\":\"Alma-96536 Eng 21Q unprocessed\",\"sub_location\":[\"Eng 21Q unprocessed\"],\"items\":[{\"holding_id\":\"221042801910006421\",\"id\":\"231042801890006421\",\"status_at_load\":\"1\",\"barcode\":\"32101103309728\"}],\"location_has\":[\"Princeton copy 1\"],\"supplements\":[null],\"indexes\":[null]}}"
+    ],
+    "location_code_s": [
+        "rare$ctsn"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Cotsen Children's Library"
+    ],
+    "advanced_location_s": [
+        "rare$ctsn",
+        "Special Collections"
+    ],
+    "name_title_browse_s": [
+        "Wiesner, David. Mr. Wuffles!"
+    ],
+    "call_number_display": [
+        "Eng 21Q unprocessed Alma-96536"
+    ],
+    "call_number_browse_s": [
+        "Alma-96536 Eng 21Q unprocessed"
+    ],
+    "call_number_locator_display": [
+        "Alma-96536"
+    ],
+    "access_facet": [
+        "In the Library"
+    ]
+}
