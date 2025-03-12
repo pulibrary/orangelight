@@ -156,6 +156,18 @@ RSpec.describe SearchBuilder do
         expect { search_builder.adjust_mm(solr_parameters) }.to change { solr_parameters }
         expect(solr_parameters['mm']).to eq(0)
       end
+      context 'with an advanced search' do
+        let(:blacklight_params) do
+          { advanced_type: "advanced", "clause" => { "0" => { "field" => "all_fields", "query" => "history OR abolition", "op" => "must" } } }
+        end
+        it 'sets the mm to 0, meaning that we do not require all search terms to appear in the document' do
+          allow(search_builder).to receive(:blacklight_params).and_return(blacklight_params)
+          solr_parameters = {}
+
+          expect { search_builder.adjust_mm(solr_parameters) }.to change { solr_parameters }
+          expect(solr_parameters['mm']).to eq(0)
+        end
+      end
     end
     context 'when the query does not contain a boolean OR' do
       let(:blacklight_params) do
