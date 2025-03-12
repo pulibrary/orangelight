@@ -115,7 +115,7 @@ class Orangelight::BrowsablesController < ApplicationController
       if browsing_names?
         'author_s'
       elsif browsing_subjects?
-        'subject_facet'
+        'lc_subject_facet' || 'homoit_subject_facet' || 'homoit_genre_facet' || 'lcgft_genre_facet' || 'local_subject_facet' || 'rbgenr_genre_facet' || 'aat_genre_facet' || 'siku_subject_facet'
       elsif browsing_titles?
         'name_title_browse_s'
       end
