@@ -65,6 +65,7 @@ module BrowseLists
 
     # rubocop:disable Metrics/PerceivedComplexity
     # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/CyclomaticComplexity
     def browse_subject(facet_request, conn, _facet_field, table_name)
       aat_genre_facet = 'aat_genre_facet'
       homoit_genre_facet = 'homoit_genre_facet'
@@ -148,6 +149,7 @@ module BrowseLists
     end
     # rubocop:enable Metrics/PerceivedComplexity
     # rubocop:enable Metrics/AbcSize
+    # rubocop:enable Metrics/CyclomaticComplexity
 
     def load_facet(sql_command, _facet_request, _conn, facet_field, table_name)
       validate_csv(table_name)
