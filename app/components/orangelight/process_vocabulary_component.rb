@@ -25,6 +25,7 @@ private
     document_field = @field.values
     document_field.each_with_index do |_subject, index|
       sub_array_index = sub_array[index]
+      byebug
       lnk = build_search_subject_links(all_subjects[index], sub_array_index)
       lnk += build_browse_subject_link(index, sub_array_index.last)
       # rubocop:disable Rails/OutputSafety
@@ -44,52 +45,52 @@ private
     subjects.each_with_index do |subsubject, j|
       sub_array_j = sub_array[j]
       case @field.key
-      when 'lc_subject_facet'
+      when 'lc_subject_display'
         lnk = lnk_accum + link_to(subsubject,
                                   "/?f[lc_subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
                                   class: 'search-subject',
                                   'data-original-title' => "Search: #{sub_array_j}")
         lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      when 'aat_genre_facet'
+      when 'aat_s'
         lnk = lnk_accum + link_to(subsubject,
                                   "/?f[aat_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
                                   class: 'search-subject',
                                   'data-original-title' => "Search: #{sub_array_j}")
         lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      when 'homoit_subject_facet'
+      when 'homoit_subject_display'
         lnk = lnk_accum + link_to(subsubject,
                                   "/?f[homoit_subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
                                   class: 'search-subject',
                                   'data-original-title' => "Search: #{sub_array_j}")
         lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
       # rubocop:disable Lint/DuplicateBranch
-      when 'homoit_genre_facet'
+      when 'homoit_genre_s'
         lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[homoit_subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
+                                  "/?f[homoit_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
                                   class: 'search-subject',
                                   'data-original-title' => "Search: #{sub_array_j}")
         lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
       # rubocop:enable Lint/DuplicateBranch
-      when 'lcgft_genre_facet'
+      when 'lcgft_s'
         lnk = lnk_accum + link_to(subsubject,
                                   "/?f[lcgft_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
                                   class: 'search-subject',
                                   'data-original-title' => "Search: #{sub_array_j}")
 
         lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      when 'local_subject_facet'
+      when 'local_subject_display'
         lnk = lnk_accum + link_to(subsubject,
                                   "/?f[local_subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
                                   class: 'search-subject',
                                   'data-original-title' => "Search: #{sub_array_j}")
         lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      when 'rbgenr_genre_facet'
+      when 'rbgenr_s'
         lnk = lnk_accum + link_to(subsubject,
                                   "/?f[rbgenr_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
                                   class: 'search-subject',
                                   'data-original-title' => "Search: #{sub_array_j}")
         lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      when 'siku_subject_facet'
+      when 'siku_subject_display'
         lnk = lnk_accum + link_to(subsubject,
                                   "/?f[siku_subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
                                   class: 'search-subject',
@@ -108,35 +109,36 @@ private
     return '  ' if fast_subjects_value?(index)
     # rubocop:disable Style/StringConcatenation
     case @field.key
-    when 'lc_subject_facet'
+    when 'lc_subject_display'
+      byebug
       '  ' + link_to("[Browse]",
                      "/browse/subjects?q=#{CGI.escape full_sub}&vocab=lc_subject_facet",
                      class: 'browse-subject',
                      'data-original-title' => "Browse: #{full_sub}",
                      'aria-label' => "Browse: #{full_sub}",
                      dir: full_sub.dir.to_s)
-    when 'aat_genre_facet'
+    when 'aat_s'
       '  ' + link_to("[Browse]",
-                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=aat_genre_facet",
+                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=aat_s",
                      class: 'browse-subject',
                      'data-original-title' => "Browse: #{full_sub}",
                      'aria-label' => "Browse: #{full_sub}",
                      dir: full_sub.dir.to_s)
-    when 'homoit_subject_facet ' || 'homoit_genre_facet'
+    when 'homoit_subject_display' || 'homoit_genre_facet'
       '  ' + link_to("[Browse]",
-                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=homoit_subject_facet",
+                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=homoit_subject_display",
                      class: 'browse-subject',
                      'data-original-title' => "Browse: #{full_sub}",
                      'aria-label' => "Browse: #{full_sub}",
                      dir: full_sub.dir.to_s)
-    when 'lcgft_genre_facet'
+    when 'lcgft_s'
       '  ' + link_to("[Browse]",
                      "/browse/subjects?q=#{CGI.escape full_sub}&vocab=lcgft_genre_facet",
                      class: 'browse-subject',
                      'data-original-title' => "Browse: #{full_sub}",
                      'aria-label' => "Browse: #{full_sub}",
                      dir: full_sub.dir.to_s)
-    when 'local_subject_facet'
+    when 'local_subject_display'
       '  ' + link_to("[Browse]",
                      "/browse/subjects?q=#{CGI.escape full_sub}&vocab=local_subject_facet",
                      class: 'browse-subject',
@@ -144,14 +146,14 @@ private
                      'aria-label' => "Browse: #{full_sub}",
                      dir: full_sub.dir.to_s)
 
-    when 'rbgenr_genre_facet'
+    when 'rbgenr_s'
       '  ' + link_to("[Browse]",
                      "/browse/subjects?q=#{CGI.escape full_sub}&vocab=rbgenr_genre_facet",
                      class: 'browse-subject',
                      'data-original-title' => "Browse: #{full_sub}",
                      'aria-label' => "Browse: #{full_sub}",
                      dir: full_sub.dir.to_s)
-    when 'siku_subject_facet'
+    when 'siku_subject_display'
       '  ' + link_to("[Browse]",
                      "/browse/subjects?q=#{CGI.escape full_sub}&vocab=siku_subject_facet",
                      class: 'browse-subject',
