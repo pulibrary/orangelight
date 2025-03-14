@@ -26,7 +26,7 @@ module Orangelight
       case vocab
       when 'Art & architecture thesaurus'
         'aat_genre_facet'
-      when 'Homosaurus genres' 
+      when 'Homosaurus genres'
         'homoit_genre_facet'
       when 'Homosaurus terms'
         'homoit_subject_facet'

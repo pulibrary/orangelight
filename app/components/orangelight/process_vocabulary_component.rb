@@ -27,7 +27,7 @@ private
       sub_array_index = sub_array[index]
 
       lnk = build_search_subject_links(all_subjects[index], sub_array_index)
-      lnk += build_browse_subject_link(index, sub_array_index.last)
+      lnk += build_browse_subject_link(index, sub_array_index.last).to_s
       # rubocop:disable Rails/OutputSafety
       document_field[index] = lnk.html_safe
       # rubocop:enable Rails/OutputSafety
@@ -116,14 +116,21 @@ private
                      dir: full_sub.dir.to_s)
     when 'aat_s'
       '  ' + link_to("[Browse]",
-                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=aat_s",
+                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=aat_genre_facet",
                      class: 'browse-subject',
                      'data-original-title' => "Browse: #{full_sub}",
                      'aria-label' => "Browse: #{full_sub}",
                      dir: full_sub.dir.to_s)
-    when 'homoit_subject_display' || 'homoit_genre_facet'
+    when 'homoit_subject_display'
       '  ' + link_to("[Browse]",
-                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=homoit_subject_display",
+                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=homoit_subject_facet",
+                     class: 'browse-subject',
+                     'data-original-title' => "Browse: #{full_sub}",
+                     'aria-label' => "Browse: #{full_sub}",
+                     dir: full_sub.dir.to_s)
+    when 'homoit_genre_s'
+      '  ' + link_to("[Browse]",
+                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=homoit_genre_facet",
                      class: 'browse-subject',
                      'data-original-title' => "Browse: #{full_sub}",
                      'aria-label' => "Browse: #{full_sub}",
