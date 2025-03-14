@@ -25,13 +25,18 @@ private
     document_field = @field.values
     document_field.each_with_index do |_subject, index|
       sub_array_index = sub_array[index]
+
       lnk = build_search_subject_links(all_subjects[index], sub_array_index)
-      lnk += build_browse_subject_link(index, sub_array_index.last)
+      lnk += build_browse_subject_link(index, sub_array_index.last).to_s
       # rubocop:disable Rails/OutputSafety
       document_field[index] = lnk.html_safe
       # rubocop:enable Rails/OutputSafety
     end
   end
+
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/BlockLength
 
   def build_search_subject_links(subjects, sub_array)
     lnk = ''
@@ -39,26 +44,130 @@ private
 
     subjects.each_with_index do |subsubject, j|
       sub_array_j = sub_array[j]
-      lnk = lnk_accum + link_to(subsubject,
-                                "/?f[subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
-                                class: 'search-subject',
-                                'data-original-title' => "Search: #{sub_array_j}")
-      lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
+      case @field.key
+      when 'lc_subject_display'
+        lnk = lnk_accum + link_to(subsubject,
+                                  "/?f[lc_subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
+                                  class: 'search-subject',
+                                  'data-original-title' => "Search: #{sub_array_j}")
+        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
+      when 'aat_s'
+        lnk = lnk_accum + link_to(subsubject,
+                                  "/?f[aat_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
+                                  class: 'search-subject',
+                                  'data-original-title' => "Search: #{sub_array_j}")
+        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
+      when 'homoit_subject_display'
+        lnk = lnk_accum + link_to(subsubject,
+                                  "/?f[homoit_subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
+                                  class: 'search-subject',
+                                  'data-original-title' => "Search: #{sub_array_j}")
+        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
+      when 'homoit_genre_s'
+        lnk = lnk_accum + link_to(subsubject,
+                                  "/?f[homoit_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
+                                  class: 'search-subject',
+                                  'data-original-title' => "Search: #{sub_array_j}")
+        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
+      when 'lcgft_s'
+        lnk = lnk_accum + link_to(subsubject,
+                                  "/?f[lcgft_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
+                                  class: 'search-subject',
+                                  'data-original-title' => "Search: #{sub_array_j}")
+
+        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
+      when 'local_subject_display'
+        lnk = lnk_accum + link_to(subsubject,
+                                  "/?f[local_subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
+                                  class: 'search-subject',
+                                  'data-original-title' => "Search: #{sub_array_j}")
+        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
+      when 'rbgenr_s'
+        lnk = lnk_accum + link_to(subsubject,
+                                  "/?f[rbgenr_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
+                                  class: 'search-subject',
+                                  'data-original-title' => "Search: #{sub_array_j}")
+        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
+      when 'siku_subject_display'
+        lnk = lnk_accum + link_to(subsubject,
+                                  "/?f[siku_subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
+                                  class: 'search-subject',
+                                  'data-original-title' => "Search: #{sub_array_j}")
+        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
+      end
     end
     lnk
   end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/BlockLength
 
+  # rubocop:disable Metrics/MethodLength
   def build_browse_subject_link(index, full_sub)
     return '  ' if fast_subjects_value?(index)
     # rubocop:disable Style/StringConcatenation
-    '  ' + link_to("[Browse]",
-                   "/browse/subjects?q=#{CGI.escape full_sub}",
-                   class: 'browse-subject',
-                   'data-original-title' => "Browse: #{full_sub}",
-                   'aria-label' => "Browse: #{full_sub}",
-                   dir: full_sub.dir.to_s)
+    case @field.key
+    when 'lc_subject_display'
+      '  ' + link_to("[Browse]",
+                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=lc_subject_facet",
+                     class: 'browse-subject',
+                     'data-original-title' => "Browse: #{full_sub}",
+                     'aria-label' => "Browse: #{full_sub}",
+                     dir: full_sub.dir.to_s)
+    when 'aat_s'
+      '  ' + link_to("[Browse]",
+                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=aat_genre_facet",
+                     class: 'browse-subject',
+                     'data-original-title' => "Browse: #{full_sub}",
+                     'aria-label' => "Browse: #{full_sub}",
+                     dir: full_sub.dir.to_s)
+    when 'homoit_subject_display'
+      '  ' + link_to("[Browse]",
+                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=homoit_subject_facet",
+                     class: 'browse-subject',
+                     'data-original-title' => "Browse: #{full_sub}",
+                     'aria-label' => "Browse: #{full_sub}",
+                     dir: full_sub.dir.to_s)
+    when 'homoit_genre_s'
+      '  ' + link_to("[Browse]",
+                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=homoit_genre_facet",
+                     class: 'browse-subject',
+                     'data-original-title' => "Browse: #{full_sub}",
+                     'aria-label' => "Browse: #{full_sub}",
+                     dir: full_sub.dir.to_s)
+    when 'lcgft_s'
+      '  ' + link_to("[Browse]",
+                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=lcgft_genre_facet",
+                     class: 'browse-subject',
+                     'data-original-title' => "Browse: #{full_sub}",
+                     'aria-label' => "Browse: #{full_sub}",
+                     dir: full_sub.dir.to_s)
+    when 'local_subject_display'
+      '  ' + link_to("[Browse]",
+                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=local_subject_facet",
+                     class: 'browse-subject',
+                     'data-original-title' => "Browse: #{full_sub}",
+                     'aria-label' => "Browse: #{full_sub}",
+                     dir: full_sub.dir.to_s)
+
+    when 'rbgenr_s'
+      '  ' + link_to("[Browse]",
+                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=rbgenr_genre_facet",
+                     class: 'browse-subject',
+                     'data-original-title' => "Browse: #{full_sub}",
+                     'aria-label' => "Browse: #{full_sub}",
+                     dir: full_sub.dir.to_s)
+    when 'siku_subject_display'
+      '  ' + link_to("[Browse]",
+                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=siku_subject_facet",
+                     class: 'browse-subject',
+                     'data-original-title' => "Browse: #{full_sub}",
+                     'aria-label' => "Browse: #{full_sub}",
+                     dir: full_sub.dir.to_s)
+    end
     # rubocop:enable Style/StringConcatenation
   end
+  # rubocop:enable Metrics/MethodLength
 
   def accumulate_subsubjects(spl_sub)
     spl_sub.reduce([]) do |accumulator, subsubject|
