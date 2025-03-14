@@ -106,14 +106,14 @@ module BrowseLists
           if index.even?
             label = fac
           else
-            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Homosaurus: an international LGBTQ linked data vocabulary']
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Homosaurus genres']
           end
         end
         homoit_subject['facet_counts']['facet_fields'][homoit_subject_facet].each_with_index do |fac, index|
           if index.even?
             label = fac
           else
-            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Homosaurus: an international LGBTQ linked data vocabulary']
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Homosaurus terms']
           end
         end
         lcgft['facet_counts']['facet_fields'][lcgft_genre_facet].each_with_index do |fac, index|
@@ -141,7 +141,7 @@ module BrowseLists
           if index.even?
             label = fac
           else
-            csv << [label.normalize_em, fac.to_s, label, label.dir, 'SIKU subject heading']
+            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Chinese traditional subjects']
           end
         end
       end
