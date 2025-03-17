@@ -194,11 +194,13 @@
       <str name="author_qf">
         author_main_unstem_search^44
         author_unstem_search^22
+        author_int^22
         cjk_author^2.2
       </str>
       <str name="author_pf">
         author_main_unstem_search^440
         author_unstem_search^220
+        author_int^22
         cjk_author^22
       </str>
       <str name="left_anchor_qf">
