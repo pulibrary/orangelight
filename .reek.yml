@@ -70,6 +70,7 @@ detectors:
     - Orangelight::ConstraintComponent#constraint_value
     - Orangelight::ConstraintComponent#old_style_params?
     - Orangelight::ConstraintsComponent#guided_search_value
+    - Orangelight::ProcessVocabularyComponent#build_browse_subject_link
     - Orangelight::ProcessVocabularyComponent#subjectify
     - Orangelight::SearchBarComponent#before_render
     - RequestButtonComponent#scsb_supervised_items?
@@ -667,7 +668,7 @@ detectors:
     - BibdataStatus#check!
     - Holdings::OnlineHoldingsComponent#marc_links
     - Orangelight::ConstraintsComponent#guided_search_value
-    - Orangelight::ProcessVocabularyComponent#build_search_subject_links
+    - Orangelight::ProcessVocabularyComponent#build_browse_subject_link
     - Orangelight::ProcessVocabularyComponent#build_subject_list
     - Orangelight::ProcessVocabularyComponent#subjectify
     - Orangelight::SearchBarComponent#before_render
