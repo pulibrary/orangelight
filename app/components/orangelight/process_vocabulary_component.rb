@@ -34,79 +34,32 @@ private
     end
   end
 
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/BlockLength
-
   def build_search_subject_links(subjects, sub_array)
-    lnk = ''
-    lnk_accum = ''
+    facet_keys = {
+      'lc_subject_display' => 'lc_subject_facet',
+      'aat_s' => 'aat_genre_facet',
+      'homoit_subject_display' => 'homoit_subject_facet',
+      'homoit_genre_s' => 'homoit_genre_facet',
+      'lcgft_s' => 'lcgft_genre_facet',
+      'local_subject_display' => 'local_subject_facet',
+      'fast_subject_display' => 'subject_facet_display',
+      'rbgenr_s' => 'rbgenr_genre_facet',
+      'siku_subject_display' => 'siku_subject_facet'
+    }
 
-    subjects.each_with_index do |subsubject, j|
+    subjects.each_with_index.reduce('') do |acc, (subsubject, j)|
       sub_array_j = sub_array[j]
-      case @field.key
-      when 'lc_subject_display'
-        lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[lc_subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
-                                  class: 'search-subject',
-                                  'data-original-title' => "Search: #{sub_array_j}")
-        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      when 'aat_s'
-        lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[aat_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
-                                  class: 'search-subject',
-                                  'data-original-title' => "Search: #{sub_array_j}")
-        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      when 'homoit_subject_display'
-        lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[homoit_subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
-                                  class: 'search-subject',
-                                  'data-original-title' => "Search: #{sub_array_j}")
-        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      when 'homoit_genre_s'
-        lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[homoit_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
-                                  class: 'search-subject',
-                                  'data-original-title' => "Search: #{sub_array_j}")
-        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      when 'lcgft_s'
-        lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[lcgft_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
-                                  class: 'search-subject',
-                                  'data-original-title' => "Search: #{sub_array_j}")
-
-        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      when 'local_subject_display'
-        lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[local_subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
-                                  class: 'search-subject',
-                                  'data-original-title' => "Search: #{sub_array_j}")
-        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      when 'fast_subject_display'
-        lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[subject_facet_display][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
-                                  class: 'search-subject',
-                                  'data-original-title' => "Search: #{sub_array_j}")
-        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      when 'rbgenr_s'
-        lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[rbgenr_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
-                                  class: 'search-subject',
-                                  'data-original-title' => "Search: #{sub_array_j}")
-        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      when 'siku_subject_display'
-        lnk = lnk_accum + link_to(subsubject,
-                                  "/?f[siku_subject_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
-                                  class: 'search-subject',
-                                  'data-original-title' => "Search: #{sub_array_j}")
-        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
-      end
+      facet_key = facet_keys[@field.key]
+      acc + build_search_subject_link(subsubject, sub_array_j, facet_key) + content_tag(:span, SEPARATOR, class: 'subject-level')
     end
-    lnk
   end
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/BlockLength
+
+  def build_search_subject_link(subsubject, sub_array_j, facet_key)
+    link_to(subsubject,
+            "/?f[#{facet_key}][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
+            class: 'search-subject',
+            'data-original-title' => "Search: #{sub_array_j}")
+  end
 
   # rubocop:disable Metrics/MethodLength
   def build_browse_subject_link(index, full_sub)
