@@ -1,6 +1,5 @@
 import updater from 'orangelight/availability';
 import { promises as fs } from 'fs';
-import * as orangelight_online_link from '../../../app/javascript/orangelight/insert_online_link';
 
 describe('AvailabilityUpdater', function () {
   afterEach(jest.clearAllMocks);

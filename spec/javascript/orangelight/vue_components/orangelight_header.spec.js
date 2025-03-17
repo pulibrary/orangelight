@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
 import OrangelightHeader from '../../../../app/javascript/orangelight/vue_components/orangelight_header.vue';
-import { nextTick } from 'vue';
 
 describe('OrangelightHeader', () => {
   let wrapper;
