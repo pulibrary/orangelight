@@ -18,7 +18,7 @@ RSpec.describe Orangelight::ProcessVocabularyComponent, type: :component do
                                               "Bisexuals—Africa",
                                               "Gays—Africa"])
   end
-  let(:field_config) { Blacklight::Configuration::Field.new(key: 'field', field: 'lc_subject_display', label: 'Subject(s)') }
+  let(:field_config) { Blacklight::Configuration::Field.new(key: 'lc_subject_display', field: 'lc_subject_display', label: 'Subject(s)') }
 
   let(:field) do
     Blacklight::FieldPresenter.new(vc_test_controller.view_context, document, field_config)
@@ -26,12 +26,11 @@ RSpec.describe Orangelight::ProcessVocabularyComponent, type: :component do
 
   it 'renders the subject browse link' do
     lc_subject_display1 = "Immigrants—South Africa"
-
-    expect(rendered).to have_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape lc_subject_display1}")
+    expect(rendered).to have_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape lc_subject_display1}&vocab=lc_subject_facet")
   end
 
   it 'renders the search subject link' do
     lc_subject_display2 = "Immigrants"
-    expect(rendered).to have_link('Immigrants', href: "/?f[subject_facet][]=#{CGI.escape lc_subject_display2}")
+    expect(rendered).to have_link(href: "/?f[lc_subject_facet][]=#{CGI.escape lc_subject_display2}")
   end
 end
