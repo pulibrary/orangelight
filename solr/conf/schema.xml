@@ -189,6 +189,21 @@
        </analyzer>
      </fieldType>
 
+     <fieldType name="author" class="solr.TextField">
+       <analyzer>
+          <!-- Filters for individual characters -->
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="[ʹ’՚Ꞌꞌ']" replacement="" />
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\p{Punct}" replacement="" />
+          <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="\s+" replacement=" " />
+          <!-- Tokenize the string -->
+          <tokenizer class="solr.StandardTokenizerFactory"/>
+          <!-- Remove trailing and leading spaces -->
+          <filter class="solr.TrimFilterFactory"/>
+          <!-- Handle non-Latin orthographies -->
+          <filter class="solr.ICUFoldingFilterFactory" />
+       </analyzer>
+     </fieldType>
+
     <fieldType name="text_lr" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
         <charFilter class="solr.PatternReplaceCharFilterFactory"
@@ -515,6 +530,7 @@
    <field name="subject_geo_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <!-- pub_date is used for facet and display so it must be indexed and stored -->
    <field name="pub_date" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="author_int" type="author" indexed="true" stored="false" multiValued="true"/>
    <field name="title_sort" type="alphaNumSort" indexed="true" stored="false" />
    <!-- pub_date sort uses new trie-based int fields, which are recommended for any int and are displayable, sortable, and range-quer
    we use 'pint' for faster range-queries. -->
@@ -595,6 +611,7 @@
    <!-- author keyword -->
    <copyField source="author_display" dest="author_main_unstem_search"/>
    <copyField source="author_s" dest="author_unstem_search"/>
+   <copyField source="author_s" dest="author_int"/>
 
    <!-- publisher keyword -->
    <copyField source="pub_created_s" dest="pub_created_unstem_search"/>
