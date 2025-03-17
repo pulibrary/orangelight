@@ -46,10 +46,14 @@ private
   end
 
   def build_search_subject_links(subjects, sub_array)
-    subjects.each_with_index.reduce('') do |acc, (subsubject, j)|
+    subjects.each_with_index.reduce('') do |accumulator, (subsubject, j)|
       sub_array_j = sub_array[j]
       facet_key = FACET_KEYS[@field.key]
-      acc + build_search_subject_link(subsubject, sub_array_j, facet_key) + content_tag(:span, SEPARATOR, class: 'subject-level')
+      if j == subjects.length - 1
+        accumulator + build_search_subject_link(subsubject, sub_array_j, facet_key)
+      else
+        accumulator + build_search_subject_link(subsubject, sub_array_j, facet_key) + content_tag(:span, SEPARATOR, class: 'subject-level')
+      end
     end
   end
 
@@ -61,9 +65,9 @@ private
   end
 
   def build_browse_subject_link(index, full_sub)
-    return '  ' if fast_subjects_value?(index)
+    return ' ' if fast_subjects_value?(index)
     facet_key = FACET_KEYS[@field.key]
-    build_browse_link(full_sub, facet_key)
+    " #{build_browse_link(full_sub, facet_key)}"
   end
 
   def build_browse_link(full_sub, facet_key)
