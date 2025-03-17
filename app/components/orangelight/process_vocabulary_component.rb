@@ -60,72 +60,20 @@ private
             'data-original-title' => "Search: #{sub_array_j}")
   end
 
-  # rubocop:disable Metrics/MethodLength
   def build_browse_subject_link(index, full_sub)
     return '  ' if fast_subjects_value?(index)
-    # rubocop:disable Style/StringConcatenation
-    case @field.key
-    when 'lc_subject_display'
-      '  ' + link_to("[Browse]",
-                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=lc_subject_facet",
-                     class: 'browse-subject',
-                     'data-original-title' => "Browse: #{full_sub}",
-                     'aria-label' => "Browse: #{full_sub}",
-                     dir: full_sub.dir.to_s)
-    when 'aat_s'
-      '  ' + link_to("[Browse]",
-                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=aat_genre_facet",
-                     class: 'browse-subject',
-                     'data-original-title' => "Browse: #{full_sub}",
-                     'aria-label' => "Browse: #{full_sub}",
-                     dir: full_sub.dir.to_s)
-    when 'homoit_subject_display'
-      '  ' + link_to("[Browse]",
-                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=homoit_subject_facet",
-                     class: 'browse-subject',
-                     'data-original-title' => "Browse: #{full_sub}",
-                     'aria-label' => "Browse: #{full_sub}",
-                     dir: full_sub.dir.to_s)
-    when 'homoit_genre_s'
-      '  ' + link_to("[Browse]",
-                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=homoit_genre_facet",
-                     class: 'browse-subject',
-                     'data-original-title' => "Browse: #{full_sub}",
-                     'aria-label' => "Browse: #{full_sub}",
-                     dir: full_sub.dir.to_s)
-    when 'lcgft_s'
-      '  ' + link_to("[Browse]",
-                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=lcgft_genre_facet",
-                     class: 'browse-subject',
-                     'data-original-title' => "Browse: #{full_sub}",
-                     'aria-label' => "Browse: #{full_sub}",
-                     dir: full_sub.dir.to_s)
-    when 'local_subject_display'
-      '  ' + link_to("[Browse]",
-                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=local_subject_facet",
-                     class: 'browse-subject',
-                     'data-original-title' => "Browse: #{full_sub}",
-                     'aria-label' => "Browse: #{full_sub}",
-                     dir: full_sub.dir.to_s)
-
-    when 'rbgenr_s'
-      '  ' + link_to("[Browse]",
-                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=rbgenr_genre_facet",
-                     class: 'browse-subject',
-                     'data-original-title' => "Browse: #{full_sub}",
-                     'aria-label' => "Browse: #{full_sub}",
-                     dir: full_sub.dir.to_s)
-    when 'siku_subject_display'
-      '  ' + link_to("[Browse]",
-                     "/browse/subjects?q=#{CGI.escape full_sub}&vocab=siku_subject_facet",
-                     class: 'browse-subject',
-                     'data-original-title' => "Browse: #{full_sub}",
-                     'aria-label' => "Browse: #{full_sub}",
-                     dir: full_sub.dir.to_s)
-    end
-    # rubocop:enable Style/StringConcatenation
+    facet_key = FACET_KEYS[@field.key]
+    build_browse_link(full_sub, facet_key)
   end
-  # rubocop:enable Metrics/MethodLength
+
+  def build_browse_link(full_sub, facet_key)
+    link_to("[Browse]",
+            "/browse/subjects?q=#{CGI.escape full_sub}&vocab=#{facet_key}",
+            class: 'browse-subject',
+            'data-original-title' => "Browse: #{full_sub}",
+            'aria-label' => "Browse: #{full_sub}",
+            dir: full_sub.dir.to_s)
+  end
 
   def accumulate_subsubjects(spl_sub)
     spl_sub.reduce([]) do |accumulator, subsubject|
