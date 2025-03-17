@@ -13,7 +13,18 @@ private
 
   SEPARATOR = '—'
   QUERYSEP = '—'
-  private_constant :SEPARATOR, :QUERYSEP
+  FACET_KEYS = {
+    'lc_subject_display' => 'lc_subject_facet',
+    'aat_s' => 'aat_genre_facet',
+    'homoit_subject_display' => 'homoit_subject_facet',
+    'homoit_genre_s' => 'homoit_genre_facet',
+    'lcgft_s' => 'lcgft_genre_facet',
+    'local_subject_display' => 'local_subject_facet',
+    'fast_subject_display' => 'subject_facet_display',
+    'rbgenr_s' => 'rbgenr_genre_facet',
+    'siku_subject_display' => 'siku_subject_facet'
+  }.freeze
+  private_constant :SEPARATOR, :QUERYSEP, :FACET_KEYS
 
   def build_subject_ul(subject_list)
     content_tag :ul do
@@ -35,21 +46,9 @@ private
   end
 
   def build_search_subject_links(subjects, sub_array)
-    facet_keys = {
-      'lc_subject_display' => 'lc_subject_facet',
-      'aat_s' => 'aat_genre_facet',
-      'homoit_subject_display' => 'homoit_subject_facet',
-      'homoit_genre_s' => 'homoit_genre_facet',
-      'lcgft_s' => 'lcgft_genre_facet',
-      'local_subject_display' => 'local_subject_facet',
-      'fast_subject_display' => 'subject_facet_display',
-      'rbgenr_s' => 'rbgenr_genre_facet',
-      'siku_subject_display' => 'siku_subject_facet'
-    }
-
     subjects.each_with_index.reduce('') do |acc, (subsubject, j)|
       sub_array_j = sub_array[j]
-      facet_key = facet_keys[@field.key]
+      facet_key = FACET_KEYS[@field.key]
       acc + build_search_subject_link(subsubject, sub_array_j, facet_key) + content_tag(:span, SEPARATOR, class: 'subject-level')
     end
   end
