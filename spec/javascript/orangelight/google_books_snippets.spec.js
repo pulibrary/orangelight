@@ -1,4 +1,4 @@
-import GoogleBooksSnippets from 'orangelight/google_books_snippets';
+import GoogleBooksSnippets from '../../../app/javascript/orangelight/google_books_snippets.es6';
 import { promises as fs } from 'fs';
 
 describe('GoogleBooksSnippets', function () {
@@ -87,7 +87,7 @@ describe('GoogleBooksSnippets', function () {
       'utf8'
     );
     json_response = JSON.parse(json_response);
-    $.getJSON = jest.fn().mockImplementation(() => {
+    $.getJSON = vi.fn().mockImplementation(() => {
       return { promise: () => Promise.resolve(json_response) };
     });
     const expectedUrl =

@@ -1,8 +1,8 @@
-import RelatedRecordsDisplayer from 'orangelight/related_records';
+import RelatedRecordsDisplayer from '../../../app/javascript/orangelight/related_records.es6';
 import { promises as fs } from 'fs';
 
 describe('RelatedRecords', function () {
-  afterEach(jest.clearAllMocks);
+    afterEach(vi.clearAllMocks);
 
   test('on button press', async () => {
     document.body.innerHTML =

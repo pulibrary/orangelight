@@ -1,9 +1,9 @@
-import DisplayMoreFieldComponent from 'display_more_field_component';
+import DisplayMoreFieldComponent from '../../../app/components/display_more_field_component.es6';
 
 let component, list, button, mockEvent;
 
 describe('DisplayMoreFieldComponent', function () {
-  afterEach(jest.clearAllMocks);
+    afterEach(vi.clearAllMocks);
 
   beforeEach(() => {
     document.body.innerHTML =
