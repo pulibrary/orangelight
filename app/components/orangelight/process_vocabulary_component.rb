@@ -82,6 +82,12 @@ private
                                   class: 'search-subject',
                                   'data-original-title' => "Search: #{sub_array_j}")
         lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
+      when 'fast_subject_display'
+        lnk = lnk_accum + link_to(subsubject,
+                                  "/?f[subject_facet_display][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
+                                  class: 'search-subject',
+                                  'data-original-title' => "Search: #{sub_array_j}")
+        lnk_accum = lnk + content_tag(:span, SEPARATOR, class: 'subject-level')
       when 'rbgenr_s'
         lnk = lnk_accum + link_to(subsubject,
                                   "/?f[rbgenr_genre_facet][]=#{CGI.escape StringFunctions.trim_punctuation(sub_array_j)}",
