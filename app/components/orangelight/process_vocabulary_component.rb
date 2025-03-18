@@ -20,7 +20,7 @@ private
     'homoit_genre_s' => 'homoit_genre_facet',
     'lcgft_s' => 'lcgft_genre_facet',
     'local_subject_display' => 'local_subject_facet',
-    'fast_subject_display' => 'subject_facet_display',
+    'fast_subject_display' => 'subject_facet',
     'rbgenr_s' => 'rbgenr_genre_facet',
     'siku_subject_display' => 'siku_subject_facet'
   }.freeze
