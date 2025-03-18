@@ -169,9 +169,9 @@ module BrowseLists
 
     def validate_csv(table_name)
       csv_file_path = "/tmp/#{table_name}.csv"
-      File.read(csv_file_path).each_line.count
-      Rails.application.config_for(:orangelight)[:browse_lists][:csv_length]
-      # raise StandardError, "CSV file too short - #{csv_length} lines long. Expected at least #{expected_length} lines." if csv_length < expected_length
+      csv_length = File.read(csv_file_path).each_line.count
+      expected_length = Rails.application.config_for(:orangelight)[:browse_lists][:csv_length]
+      raise StandardError, "CSV file too short - #{csv_length} lines long. Expected at least #{expected_length} lines." if csv_length < expected_length
     end
 
     def load_cn(sql_command, _facet_request, _conn, facet_field, table_name)
