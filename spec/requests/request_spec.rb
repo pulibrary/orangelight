@@ -117,7 +117,7 @@ describe 'blacklight tests' do
           expect(response.body).to include('class="search-subject" '\
                                         'data-original-title="Search: '\
                                         "#{subject[/.*#{c}/]}\" "\
-                                        "href=\"/?f[subject_facet][]="\
+                                        "href=\"/?f[lc_subject_facet][]="\
                                         "#{CGI.escape subject[/.*#{c}/]}\">"\
                                         "#{component}</a>")
         end
@@ -136,7 +136,7 @@ describe 'blacklight tests' do
       fullsubject.each_with_index do |_subject, i|
         sub_component[i].each do |component|
           Regexp.escape(component)
-          expect(response.body).to include("class=\"search-subject\" data-original-title=\"Search: Criticism, interpretation, etc.\" href=\"/?f[subject_facet][]=Criticism%2C+interpretation%2C+etc\">Criticism, interpretation, etc.</a>  </li><li dir=\"ltr\">")
+          expect(response.body).to include("class=\"search-subject\" data-original-title=\"Search: Criticism, interpretation, etc.\" href=\"/?f[subject_facet][]=Criticism%2C+interpretation%2C+etc\">Criticism, interpretation, etc.</a> </li><li dir=\"ltr\">")
 
           expect(response.body).not_to include('href=\"/browse/subjects?q=Criticism%2C+interpretation%2C+etc.\"')
         end
@@ -364,7 +364,7 @@ describe 'blacklight tests' do
     it 'show page subject facet/browse, call number browse urls' do
       get '/catalog/9948322283506421'
       expect(response.body).to include('/browse/subjects?q=Mencius%E2%80%94%E5%AD%9F%E5%AD%90.')
-      expect(response.body).to include('/?f[subject_facet][]=Mencius%E2%80%94%E5%AD%9F%E5%AD%90.')
+      expect(response.body).to include('/?f[lc_subject_facet][]=Mencius%E2%80%94%E5%AD%9F%E5%AD%90.')
       expect(response.body).to include('/browse/call_numbers?q=C338%2F4352+vol.500')
     end
     it 'show page related name facet/browse urls' do
