@@ -1,7 +1,7 @@
 import {
   insert_online_link,
   insert_online_header,
-} from 'orangelight/insert_online_link';
+} from '../../../app/javascript/orangelight/insert_online_link.es6';
 
 describe('insert_online_link', function () {
   test('insert_online_header() when there was no header', () => {

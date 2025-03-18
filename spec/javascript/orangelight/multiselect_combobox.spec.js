@@ -1,4 +1,5 @@
 import MultiselectCombobox from '../../../app/javascript/orangelight/multiselect_combobox.es6';
+
 describe('MultiselectCombobox', () => {
   let combobox;
   beforeEach(() => {

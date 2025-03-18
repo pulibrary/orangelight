@@ -1,10 +1,10 @@
 import {
   FiggyViewer,
   FiggyViewerSet,
-} from 'orangelight/figgy_manifest_manager';
+} from '../../../app/javascript/orangelight/figgy_manifest_manager';
 
 describe('RelatedRecords', function () {
-  afterEach(jest.clearAllMocks);
+  afterEach(vi.clearAllMocks);
 
   test('viewer iframe has a title', async () => {
     document.body.innerHTML = '<div id="container"></div>';
@@ -101,7 +101,7 @@ describe('RelatedRecords', function () {
       '<div class="availability--online"><h3>Available Online</h3><ul><li></li></ul></div>' +
       '<div id="view" class="document-viewers" data-bib-id="9968683243506421"></div>';
 
-    const queryFunction = jest.fn(() => {
+    const queryFunction = vi.fn(() => {
       return graphqlResponse;
     });
     const viewerWrapperElement = document.getElementById('view');
@@ -181,7 +181,7 @@ describe('RelatedRecords', function () {
       '<div class="availability--online"><h3>Available Online</h3><ul><li></li></ul></div>' +
       '<div id="view" class="document-viewers" data-bib-id="9950403683506421"></div>';
 
-    const queryFunction = jest.fn(() => {
+    const queryFunction = vi.fn(() => {
       return graphqlResponse;
     });
     const viewerWrapperElement = document.getElementById('view');
@@ -221,7 +221,7 @@ describe('RelatedRecords', function () {
       '<div class="availability--online"><h3>Available Online</h3><ul><li></li></ul></div>' +
       '<div id="view" class="document-viewers" data-bib-id="dsp01wd3760321"></div>';
 
-    const queryFunction = jest.fn(() => {
+    const queryFunction = vi.fn(() => {
       return graphqlResponse;
     });
 
@@ -264,7 +264,7 @@ describe('RelatedRecords', function () {
       '<div class="availability--online"><h3>Available Online</h3><ul><li></li></ul></div>' +
       '<div id="view" class="document-viewers" data-bib-id="dsp01wd3760321"></div>';
 
-    const queryFunction2 = jest.fn(() => {
+    const queryFunction2 = vi.fn(() => {
       return graphqlResponseNullNotice;
     });
 
