@@ -530,6 +530,14 @@
    <field name="subject_geo_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <!-- pub_date is used for facet and display so it must be indexed and stored -->
    <field name="pub_date" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="lc_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="lcgft_genre_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="aat_genre_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="rbgenr_genre_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="homoit_genre_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="homoit_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="local_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
+   <field name="siku_subject_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="author_int" type="author" indexed="true" stored="false" multiValued="true"/>
    <field name="title_sort" type="alphaNumSort" indexed="true" stored="false" />
    <!-- pub_date sort uses new trie-based int fields, which are recommended for any int and are displayable, sortable, and range-quer
