@@ -22,14 +22,11 @@ export default class BookmarkAllManager {
         this.prepopulate_value();
       }
     });
-    $('.bookmark_all').on('keydown', (e) => {
-      e.preventDefault();
-      if (e.which === 32 || e.which === 13) {
-        if (!$(e.target).find('input')[0].checked) {
-          this.bookmark_all();
-        } else {
-          this.unbookmark_all();
-        }
+    $('.bookmark_all').on('click', (e) => {
+      if (!$(e.target).find('input')[0].checked) {
+        this.bookmark_all();
+      } else {
+        this.unbookmark_all();
       }
     });
     this.element.on('change', (c) => {
