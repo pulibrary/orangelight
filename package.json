@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "@apollo/client": "^3.13.0",
-    "@babel/preset-stage-3": "^7.8.3",
     "@kurkle/color": "^0.3.4",
     "@vitejs/plugin-vue": "^5.2.1",
     "blacklight-range-limit": "^9.0.0",
@@ -16,16 +15,10 @@
     "jquery": "Keep version in sync with jquery-rails, obtained through bundler"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.10",
-    "@babel/eslint-parser": "^7.23.3",
-    "@babel/eslint-plugin": "^7.22.10",
-    "@babel/plugin-transform-runtime": "^7.18.10",
-    "@babel/preset-env": "^7.18.10",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.11.1",
     "@stylistic/eslint-plugin": "^2.8.0",
     "@vue/test-utils": "2.4.6",
-    "babel-plugin-macros": "^3.1.0",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
