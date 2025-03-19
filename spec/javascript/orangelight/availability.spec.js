@@ -1,9 +1,8 @@
-import updater from 'orangelight/availability';
+import updater from '../../../app/javascript/orangelight/availability.es6';
 import { promises as fs } from 'fs';
-import * as orangelight_online_link from '../../../app/javascript/orangelight/insert_online_link';
 
 describe('AvailabilityUpdater', function () {
-  afterEach(jest.clearAllMocks);
+  afterEach(vi.clearAllMocks);
 
   test('hooked up right', () => {
     expect(updater).not.toBe(undefined);
@@ -409,7 +408,7 @@ describe('AvailabilityUpdater', function () {
     u.host_id = ['99124994093506421']; // host mms_id
     u.mms_id = u.host_id[0]; //
 
-    const update_single = jest.spyOn(u, 'update_single');
+    const update_single = vi.spyOn(u, 'update_single');
     u.process_single(holding_records);
 
     expect(update_single).toHaveBeenCalledWith(holding_records, u.id);

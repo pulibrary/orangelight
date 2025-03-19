@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
 import OrangelightHeader from '../../../../app/javascript/orangelight/vue_components/orangelight_header.vue';
-import { nextTick } from 'vue';
 
+// 
 describe('OrangelightHeader', () => {
   let wrapper;
 
   describe('when not logged in yet', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     beforeEach(() => {
       wrapper = mount(OrangelightHeader, {
         props: {
@@ -52,7 +52,7 @@ describe('OrangelightHeader', () => {
           .trigger('click');
 
         // Mock fetch
-        global.fetch = jest.fn(() =>
+        global.fetch = vi.fn(() =>
           Promise.resolve({
             json: () => Promise.resolve({ user_id: 'cd5678' }),
           })
@@ -61,7 +61,7 @@ describe('OrangelightHeader', () => {
         expect(fetch).not.toHaveBeenCalled();
 
         // Advance the timer by 2 seconds
-        jest.advanceTimersByTime(2000);
+        vi.advanceTimersByTime(2000);
 
         // Expect the netId to have been set from the fetch response
         expect(fetch).toHaveBeenCalledTimes(1);
