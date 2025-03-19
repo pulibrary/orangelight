@@ -114,6 +114,10 @@ class SearchBuilder < Blacklight::SearchBuilder
     solr_parameters.delete('facet.query') unless solr_parameters['facet.query']&.any? { |query| query.partition(':').first == facet }
   end
 
+  def wildcard_char_strip(solr_parameters)
+    transform_queries!(solr_parameters) { |query| query.delete('?') }
+  end
+
   private
 
     def search_query_present?

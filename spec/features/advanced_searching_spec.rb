@@ -266,4 +266,16 @@ describe 'advanced searching', advanced_search: true do
     click_button 'Search'
     expect(page).not_to have_content 'Ahmet Kutsi Tecer sempozyum bildirileri : Sıvas 24 - 27 Nisan 2018'
   end
+  it 'does not treat a question mark at the end of a phrase as a keyword' do
+    visit '/advanced'
+    select('Keyword', from: 'clause_0_field')
+    fill_in(id: 'clause_0_query', with: 'Parrish')
+    select('Author', from: 'clause_1_field')
+    fill_in(id: 'clause_1_query', with: 'Trollope, Anthony​​​')
+    select('Title', from: 'clause_2_field')
+    fill_in(id: 'clause_2_query', with: 'Can You Forgive Her?​​​')
+    click_button 'Search'
+
+    expect(page).to have_content('Can you forgive her? / by Anthony Trollope ... ; with 40 illustrations.')
+  end
 end
