@@ -22,6 +22,13 @@ export default class BookmarkAllManager {
         this.prepopulate_value();
       }
     });
+    $('.bookmark_all').on('click', (e) => {
+      if (!$(e.target).find('input')[0].checked) {
+        this.bookmark_all();
+      } else {
+        this.unbookmark_all();
+      }
+    });
     this.element.on('change', (c) => {
       if (c.target.checked) {
         this.bookmark_all();
