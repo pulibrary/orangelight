@@ -1,121 +1,229 @@
 {
-  "id": "993213506421",
-  "numeric_id_b": true,
+  "id": [
+      "993213506421"
+  ],
+  "numeric_id_b": [
+      true
+  ],
+  "cjk_all": [
+      ""
+  ],
+  "cjk_notes": [
+      ""
+  ],
   "author_display": [
-    "World Data Center A for Glaciology"
+      "World Data Center A for Glaciology"
+  ],
+  "author_sort": [
+      "World Data Center A for Glaciology"
   ],
   "author_citation_display": [
-    "World Data Center A for Glaciology",
-    "United States",
-    "University of Colorado Boulder"
+      "World Data Center A for Glaciology",
+      "United States",
+      "University of Colorado Boulder"
   ],
-  "author_roles_1display": "{\"secondary_authors\":[\"United States\",\"United States\",\"University of Colorado Boulder\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"World Data Center A for Glaciology\"}",
+  "author_roles_1display": [
+      "{\"secondary_authors\":[\"United States\",\"United States\",\"University of Colorado Boulder\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"World Data Center A for Glaciology\"}"
+  ],
   "author_s": [
-    "World Data Center A for Glaciology",
-    "United States. Environmental Data and Information Service",
-    "United States. Environmental Data Service",
-    "University of Colorado Boulder. Cooperative Institute for Research in Environmental Sciences"
+      "World Data Center A for Glaciology",
+      "United States. Environmental Data and Information Service",
+      "United States. Environmental Data Service",
+      "University of Colorado Boulder. Cooperative Institute for Research in Environmental Sciences"
   ],
   "marc_relator_display": [
-    "Author"
+      "Author"
   ],
-  "title_display": "New accessions list / World Data Center A for Glaciology [Snow and Ice].",
+  "title_display": [
+      "New accessions list / World Data Center A for Glaciology [Snow and Ice]."
+  ],
+  "title_a_index": [
+      "New accessions list"
+  ],
+  "title_sort": [
+      "New accessions list / World Data Center A for Glaciology [Snow and Ice]."
+  ],
+  "title_no_h_index": [
+      "New accessions list / World Data Center A for Glaciology [Snow and Ice]."
+  ],
   "title_t": [
-    "New accessions list / World Data Center A for Glaciology [Snow and Ice]."
+      "New accessions list / World Data Center A for Glaciology [Snow and Ice]."
   ],
   "title_citation_display": [
-    "New accessions list"
+      "New accessions list"
   ],
   "compiled_created_t": [
-    "New accessions list / World Data Center A for Glaciology [Snow and Ice]."
+      "New accessions list / World Data Center A for Glaciology [Snow and Ice]."
   ],
   "pub_created_display": [
-    "Boulder, Col. : The Center, 1978-"
+      "Boulder, Col. : The Center, 1978-"
   ],
   "pub_created_s": [
-    "Boulder, Col. : The Center, 1978-"
+      "Boulder, Col. : The Center, 1978-"
   ],
   "pub_citation_display": [
-    "Boulder, Col: The Center"
+      "Boulder, Col: The Center"
+  ],
+  "publication_location_citation_display": [
+      "Boulder, Col"
+  ],
+  "publisher_citation_display": [
+      "The Center"
   ],
   "pub_date_display": [
-    "1978"
+      "1978"
   ],
-  "pub_date_start_sort": 1978,
-  "pub_date_end_sort": 9999,
-  "cataloged_tdt": "2003-08-01T10:59:00Z",
+  "pub_date_start_sort": [
+      "1978"
+  ],
+  "pub_date_end_sort": [
+      "9999"
+  ],
+  "publication_date_citation_display": [
+      "1978"
+  ],
+  "cataloged_tdt": [
+      "2003-08-01T00:00:00Z"
+  ],
   "format": [
-    "Journal"
+      "Journal"
   ],
   "description_display": [
-    "v. ; 22x28 cm.",
-    "No. 1 (Dec. 1978)-"
+      "v. ; 22x28 cm.",
+      "No. 1 (Dec. 1978)-"
   ],
   "description_t": [
-    "v. ; 22x28 cm.",
-    "No. 1 (Dec. 1978)-"
+      "v. ; 22x28 cm.",
+      "No. 1 (Dec. 1978)-"
   ],
   "number_of_pages_citation_display": [
-    "v."
+      "v."
+  ],
+  "contained_in_s": [
+      "99127123435006421"
+  ],
+  "notes_index": [
+      "\"Operated for Environmental Data Service (later Environmental Data and Information Service) NOAA, by Cooperative Institute for Research in Environmental Sciences, University of Colorado.\"",
+      "Description based on: No. 19 (Dec. 1983); title from caption."
   ],
   "notes_display": [
-    "Description based on: No. 19 (Dec. 1983); title from caption."
+      "Description based on: No. 19 (Dec. 1983); title from caption."
   ],
   "issuing_body_notes_display": [
-    "\"Operated for Environmental Data Service (later Environmental Data and Information Service) NOAA, by Cooperative Institute for Research in Environmental Sciences, University of Colorado.\""
+      "\"Operated for Environmental Data Service (later Environmental Data and Information Service) NOAA, by Cooperative Institute for Research in Environmental Sciences, University of Colorado.\""
+  ],
+  "language_name_display": [
+      "English"
   ],
   "language_facet": [
-    "English"
+      "English"
   ],
-  "language_code_s": [
-    "eng"
+  "publication_place_facet": [
+      "Colorado"
   ],
   "language_iana_s": [
-    "en"
+      "en"
   ],
   "lc_subject_display": [
-    "World Data Center A for Glaciology—Catalogs",
-    "Glaciology—Bibliography—Catalogs",
-    "Snow—Bibliography—Catalogs",
-    "Ice—Bibliography—Catalogs"
+      "World Data Center A for Glaciology—Catalogs",
+      "Glaciology—Bibliography—Catalogs",
+      "Snow—Bibliography—Catalogs",
+      "Ice—Bibliography—Catalogs"
   ],
+  "lc_subject_include_archaic_search_terms_index": [
+      "World Data Center A for Glaciology—Catalogs",
+      "Glaciology—Bibliography—Catalogs",
+      "Snow—Bibliography—Catalogs",
+      "Ice—Bibliography—Catalogs"
+  ],
+  "subject_unstem_search": [
+      "World Data Center A for Glaciology—Catalogs",
+      "Glaciology—Bibliography—Catalogs",
+      "Snow—Bibliography—Catalogs",
+      "Ice—Bibliography—Catalogs"
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": null,
+  "fast_subject_unstem_search": null,
   "subject_facet": [
-    "World Data Center A for Glaciology—Catalogs",
-    "Glaciology—Bibliography—Catalogs",
-    "Snow—Bibliography—Catalogs",
-    "Ice—Bibliography—Catalogs"
+      "World Data Center A for Glaciology—Catalogs",
+      "Glaciology—Bibliography—Catalogs",
+      "Snow—Bibliography—Catalogs",
+      "Ice—Bibliography—Catalogs"
   ],
-  "related_name_json_1display": "{\"Related name\":[\"United States. Environmental Data and Information Service\",\"United States. Environmental Data Service\",\"University of Colorado Boulder. Cooperative Institute for Research in Environmental Sciences\"]}",
+  "lc_subject_facet": [
+      "World Data Center A for Glaciology",
+      "World Data Center A for Glaciology—Catalogs",
+      "Glaciology",
+      "Glaciology—Bibliography",
+      "Glaciology—Bibliography—Catalogs",
+      "Snow",
+      "Snow—Bibliography",
+      "Snow—Bibliography—Catalogs",
+      "Ice",
+      "Ice—Bibliography",
+      "Ice—Bibliography—Catalogs"
+  ],
+  "publication_place_hierarchical_facet": [
+      "United States",
+      "United States:Colorado"
+  ],
+  "subject_topic_facet": [
+      "World Data Center A for Glaciology",
+      "Catalogs",
+      "Glaciology",
+      "Bibliography",
+      "Snow",
+      "Ice"
+  ],
+  "genre_facet": [
+      "Catalogs",
+      "Bibliography"
+  ],
+  "related_name_json_1display": [
+      "{\"Related name\":[\"United States. Environmental Data and Information Service\",\"United States. Environmental Data Service\",\"University of Colorado Boulder. Cooperative Institute for Research in Environmental Sciences\"]}"
+  ],
   "oclc_s": [
-    "7375602"
+      "7375602"
+  ],
+  "standard_no_index": [
+      "NJPG0815-S",
+      "321-princetondb",
+      "ocm07375602"
   ],
   "other_version_s": [
-    "ocm07375602"
+      "ocm07375602"
   ],
-  "holdings_1display": "{\"22740121980006421\":{\"location_code\":\"lewis$pn\",\"location\":\"Remote Storage (ReCAP): Lewis Library Use Only\",\"library\":\"Lewis Library\",\"call_number\":\"Z6033.G5 xW6\",\"call_number_browse\":\"Z6033.G5 xW6\",\"items\":[{\"holding_id\":\"22740121980006421\",\"enumeration\":\"no. 6-11 1980-81\",\"id\":\"23740121860006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682826\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"enumeration\":\"no. 37-52 1987-91\",\"id\":\"23740121940006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682768\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"enumeration\":\"no. 1-5 1978-79\",\"id\":\"23740121850006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682834\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"enumeration\":\"no. 12-16 1981-82\",\"id\":\"23740121870006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682818\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"enumeration\":\"no. 25-26 1985\",\"id\":\"23740121900006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682784\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"enumeration\":\"no. 30-36 1986-87\",\"id\":\"23740121910006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682776\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"enumeration\":\"no. 23-24 1984\",\"id\":\"23740121890006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682792\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"enumeration\":\"no. 17-22 1982-83\",\"id\":\"23740121880006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682800\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"enumeration\":\"no. 53/56-65/68 1992-1995\",\"id\":\"23740121840006421\",\"status_at_load\":\"1\",\"barcode\":\"32101059127405\",\"copy_number\":\"1\"}],\"location_has\":[\"No. 1 (Dec. 1978)-no. 26;  no. 30-no. 65/68 (Jan.-Dec. 1995)\"],\"supplements\":[null],\"indexes\":[null]}}",
+  "holdings_1display": [
+      "{\"22740121980006421\":{\"location_code\":\"lewis$pn\",\"location\":\"Remote Storage (ReCAP): Lewis Library Use Only\",\"library\":\"Lewis Library\",\"call_number\":\"Z6033.G5 xW6\",\"call_number_browse\":\"Z6033.G5 xW6\",\"items\":[{\"holding_id\":\"22740121980006421\",\"description\":\"no. 37-52 1987-91\",\"id\":\"23740121940006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682768\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"description\":\"no. 6-11 1980-81\",\"id\":\"23740121860006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682826\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"description\":\"no. 1-5 1978-79\",\"id\":\"23740121850006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682834\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"description\":\"no. 12-16 1981-82\",\"id\":\"23740121870006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682818\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"description\":\"no. 25-26 1985\",\"id\":\"23740121900006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682784\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"description\":\"no. 30-36 1986-87\",\"id\":\"23740121910006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682776\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"description\":\"no. 23-24 1984\",\"id\":\"23740121890006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682792\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"description\":\"no. 17-22 1982-83\",\"id\":\"23740121880006421\",\"status_at_load\":\"1\",\"barcode\":\"32101104682800\",\"copy_number\":\"1\"},{\"holding_id\":\"22740121980006421\",\"description\":\"no. 53/56-65/68 1992-1995\",\"id\":\"23740121840006421\",\"status_at_load\":\"1\",\"barcode\":\"32101059127405\",\"copy_number\":\"1\"}],\"location_has\":[\"No. 1 (Dec. 1978)-no. 26;  no. 30-no. 65/68 (Jan.-Dec. 1995)\"],\"supplements\":[null],\"indexes\":[null]}}"
+  ],
   "location_code_s": [
-    "lewis$pn"
+      "lewis$pn"
   ],
   "location": [
-    "Lewis Library"
+      "Lewis Library"
   ],
   "location_display": [
-    "Remote Storage (ReCAP): Lewis Library Use Only"
+      "Remote Storage (ReCAP): Lewis Library Use Only"
   ],
   "advanced_location_s": [
-    "lewis$pn",
-    "Lewis Library"
+      "lewis$pn",
+      "Lewis Library"
   ],
   "name_title_browse_s": [
-    "World Data Center A for Glaciology. New accessions list"
+      "World Data Center A for Glaciology. New accessions list"
   ],
   "call_number_display": [
-    "Z6033.G5 xW6"
+      "Z6033.G5 xW6"
   ],
   "call_number_browse_s": [
-    "Z6033.G5 xW6"
+      "Z6033.G5 xW6"
   ],
   "call_number_locator_display": [
-    "Z6033.G5 xW6"
+      "Z6033.G5 xW6"
+  ],
+  "access_facet": [
+      "In the Library"
   ]
 }

@@ -1,131 +1,236 @@
 {
-  "id": "9933506421",
-  "numeric_id_b": true,
+  "id": [
+      "9933506421"
+  ],
+  "numeric_id_b": [
+      true
+  ],
+  "cjk_all": [
+      ""
+  ],
+  "cjk_notes": [
+      ""
+  ],
   "author_display": [
-    "Messina, Claudio M."
+      "Messina, Claudio M."
+  ],
+  "author_sort": [
+      "Messina, Claudio M."
   ],
   "author_citation_display": [
-    "Messina, Claudio M."
+      "Messina, Claudio M."
   ],
-  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Messina, Claudio M.\"}",
+  "author_roles_1display": [
+      "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Messina, Claudio M.\"}"
+  ],
   "author_s": [
-    "Messina, Claudio M."
+      "Messina, Claudio M."
   ],
   "marc_relator_display": [
-    "Author"
+      "Author"
   ],
-  "title_display": "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco.",
+  "title_display": [
+      "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco."
+  ],
+  "title_a_index": [
+      "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989"
+  ],
+  "title_sort": [
+      "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco."
+  ],
+  "title_no_h_index": [
+      "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco."
+  ],
   "title_t": [
-    "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco."
+      "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco."
   ],
   "title_citation_display": [
-    "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989"
+      "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989"
+  ],
+  "linked_title_index": [
+      "Multi-title collection including Alpaslanʾdan Atatürkʾe kadar Türk zaferlerleri ansiklopedisi and 12 other(s)."
   ],
   "compiled_created_t": [
-    "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco."
+      "Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989 / Claudio M. Messina; con uno scritto di Umberto Eco."
   ],
   "edition_display": [
-    "2. ed."
+      "2. ed."
   ],
   "pub_created_display": [
-    "Roma : Biblioteca del Vascello, Stampa Alternativa, 1988."
+      "Roma : Biblioteca del Vascello, Stampa Alternativa, 1988."
   ],
   "pub_created_s": [
-    "Roma : Biblioteca del Vascello, Stampa Alternativa, 1988."
+      "Roma : Biblioteca del Vascello, Stampa Alternativa, 1988."
   ],
   "pub_citation_display": [
-    "Roma: Biblioteca del Vascello, Stampa Alternativa"
+      "Roma: Biblioteca del Vascello, Stampa Alternativa"
+  ],
+  "publication_location_citation_display": [
+      "Roma"
+  ],
+  "publisher_citation_display": [
+      "Biblioteca del Vascello, Stampa Alternativa"
   ],
   "pub_date_display": [
-    "1988"
+      "1988"
   ],
-  "pub_date_start_sort": 1988,
-  "cataloged_tdt": "2000-06-13T10:59:00Z",
+  "pub_date_start_sort": [
+      "1988"
+  ],
+  "publication_date_citation_display": [
+      "1988"
+  ],
+  "cataloged_tdt": [
+      "2000-06-13T00:00:00Z"
+  ],
   "format": [
-    "Book"
+      "Book"
   ],
-  "electronic_access_1display": "{\"http://d-nb.info/991834119/04\":[\"Inhaltsverzeichnis\"]}",
   "description_display": [
-    "220 p. ; 17 cm."
+      "220 p. ; 17 cm."
   ],
   "description_t": [
-    "220 p. ; 17 cm."
+      "220 p. ; 17 cm."
   ],
   "number_of_pages_citation_display": [
-    "220 p."
+      "220 p."
   ],
   "geocode_display": [
-    "Italy"
+      "Italy"
   ],
   "geo_related_record_display": [
-    "Multi-title collection including Alpaslanʾdan Atatürkʾe kadar Türk zaferlerleri ansiklopedisi and 12 other(s)."
+      "Multi-title collection including Alpaslanʾdan Atatürkʾe kadar Türk zaferlerleri ansiklopedisi and 12 other(s)."
   ],
   "contained_in_s": [
-    "99125040713506421"
+      "99125040713506421"
+  ],
+  "notes_index": [
+      "Includes index."
   ],
   "notes_display": [
-    "Includes index."
+      "Includes index."
+  ],
+  "language_name_display": [
+      "Italian"
   ],
   "language_facet": [
-    "Italian"
+      "Italian"
   ],
-  "language_code_s": [
-    "ita"
+  "publication_place_facet": [
+      "Italy"
   ],
   "language_iana_s": [
-    "it"
+      "it"
   ],
   "lc_subject_display": [
-    "Booksellers and bookselling—Italy—Directories"
+      "Booksellers and bookselling—Italy—Directories"
   ],
+  "lc_subject_include_archaic_search_terms_index": [
+      "Booksellers and bookselling—Italy—Directories"
+  ],
+  "subject_unstem_search": [
+      "Booksellers and bookselling—Italy—Directories"
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": null,
+  "fast_subject_unstem_search": null,
   "subject_facet": [
-    "Booksellers and bookselling—Italy—Directories",
-    "Directories"
+      "Booksellers and bookselling—Italy—Directories",
+      "Directories"
+  ],
+  "lc_subject_facet": [
+      "Booksellers and bookselling",
+      "Booksellers and bookselling—Italy",
+      "Booksellers and bookselling—Italy—Directories"
+  ],
+  "publication_place_hierarchical_facet": [
+      "Italy"
   ],
   "geographic_facet": [
-    "Italy"
+      "Italy"
   ],
   "lcgft_s": [
-    "Directories"
+      "Directories"
+  ],
+  "lcgft_genre_facet": [
+      "Directories"
+  ],
+  "subject_topic_facet": [
+      "Booksellers and bookselling",
+      "Italy"
+  ],
+  "lc_1letter_facet": [
+      "Z - Bibliography, Library Science, Information Resources"
+  ],
+  "lc_rest_facet": [
+      "Z - Bibliography, Library Science, Information Resources"
+  ],
+  "lc_facet": [
+      "Z - Bibliography, Library Science, Information Resources",
+      "Z - Bibliography, Library Science, Information Resources:Z - Bibliography, Library Science, Information Resources"
+  ],
+  "call_number_scheme_facet": [
+      "Library of Congress"
+  ],
+  "call_number_group_facet": [
+      "Z - Bibliography, Library Science, Information Resources"
+  ],
+  "call_number_full_facet": [
+      "Z - Bibliography, Library Science, Information Resources"
+  ],
+  "genre_facet": [
+      "Directories"
   ],
   "in_display": [
-    "Multi-title collection including Alpaslanʾdan Atatürkʾe kadar Türk zaferlerleri ansiklopedisi and 12 other(s)."
+      "Multi-title collection including Alpaslanʾdan Atatürkʾe kadar Türk zaferlerleri ansiklopedisi and 12 other(s)."
   ],
   "oclc_s": [
-    "19590730"
+      "19590730"
+  ],
+  "standard_no_index": [
+      "3",
+      "NJPGRRP-B",
+      "3-princetondb",
+      "ocm19590730"
   ],
   "other_version_s": [
-    "ocm19590730"
+      "ocm19590730"
   ],
-  "holdings_1display": "{\"22740186070006421\":{\"location_code\":\"rare$xc\",\"location\":\"Remote Storage (ReCAP): Cotsen Children's Library. Special Collections Use Only\",\"library\":\"Special Collections\",\"call_number\":\"Z342 .M48 1988\",\"call_number_browse\":\"Z342 .M48 1988\",\"items\":[{\"holding_id\":\"22740186070006421\",\"id\":\"23740186060006421\",\"status_at_load\":\"1\",\"barcode\":\"32101070543648\",\"copy_number\":\"1\"}]},\"22740186090006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"Z342 .M48 1988\",\"call_number_browse\":\"Z342 .M48 1988\",\"items\":[{\"holding_id\":\"22740186090006421\",\"id\":\"23740186080006421\",\"status_at_load\":\"1\",\"barcode\":\"32101085875258\",\"copy_number\":\"1\"}]}}",
+  "holdings_1display": [
+      "{\"22740186070006421\":{\"location_code\":\"rare$xc\",\"location\":\"Remote Storage (ReCAP): Cotsen Children's Library. Special Collections Use Only\",\"library\":\"Special Collections\",\"call_number\":\"Z342 .M48 1988\",\"call_number_browse\":\"Z342 .M48 1988\",\"items\":[{\"holding_id\":\"22740186070006421\",\"id\":\"23740186060006421\",\"status_at_load\":\"1\",\"barcode\":\"32101070543648\",\"copy_number\":\"1\"}]},\"22740186090006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"Z342 .M48 1988\",\"call_number_browse\":\"Z342 .M48 1988\",\"items\":[{\"holding_id\":\"22740186090006421\",\"id\":\"23740186080006421\",\"status_at_load\":\"1\",\"barcode\":\"32101085875258\",\"copy_number\":\"1\"}]}}"
+  ],
   "location_code_s": [
-    "rare$xc",
-    "recap$pa"
+      "rare$xc",
+      "recap$pa"
   ],
   "location": [
-    "Special Collections",
-    "ReCAP"
+      "Special Collections",
+      "ReCAP"
   ],
   "location_display": [
-    "Remote Storage (ReCAP): Cotsen Children's Library. Special Collections Use Only",
-    "Remote Storage"
+      "Remote Storage (ReCAP): Cotsen Children's Library. Special Collections Use Only",
+      "Remote Storage"
   ],
   "advanced_location_s": [
-    "rare$xc",
-    "recap$pa",
-    "Special Collections",
-    "ReCAP"
+      "rare$xc",
+      "recap$pa",
+      "Special Collections",
+      "ReCAP"
   ],
   "name_title_browse_s": [
-    "Messina, Claudio M.. Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989"
+      "Messina, Claudio M.. Guida ragionata alle librerie antiquarie e d'occasione d'Italia, 1989"
   ],
   "call_number_display": [
-    "Z342 .M48 1988"
+      "Z342 .M48 1988"
   ],
   "call_number_browse_s": [
-    "Z342 .M48 1988"
+      "Z342 .M48 1988"
   ],
   "call_number_locator_display": [
-    "Z342 .M48 1988"
+      "Z342 .M48 1988"
+  ],
+  "access_facet": [
+      "In the Library"
   ]
 }

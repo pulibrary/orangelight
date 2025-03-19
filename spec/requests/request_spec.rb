@@ -58,8 +58,8 @@ describe 'blacklight tests' do
     before { stub_holding_locations }
 
     it 'links to an electronic resource with the appropriate display text' do
-      get '/catalog/9933506421'
-      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"http://d-nb.info/991834119/04\">Inhaltsverzeichnis<i class=\"fa fa-external-link new-tab-icon-padding\" aria-label=\"opens in new tab\" role=\"img\"></i></a>")
+      get '/catalog/9928379683506421'
+      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"https://login.ezproxy.princeton.edu/login?url=http://www.jstor.org/action/showAdvancedSearch\">www.jstor.org<i class=\"fa fa-external-link new-tab-icon-padding\" aria-label=\"opens in new tab\" role=\"img\"></i></a>")
     end
 
     it 'includes $z as an additional label for the link' do
