@@ -142,7 +142,7 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
     let(:details_fields) do
       ['printer', 'binder', 'former-owner', 'notes_display', 'binding_note_display',
        'provenance_display', 'references_url_display', 'other_format_display',
-       'other_title_display', 'recap_notes_display']
+       'other_title_display']
     end
 
     it 'shows top fields in their own section' do

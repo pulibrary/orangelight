@@ -1,6 +1,16 @@
 {
-  "id": "9938713983506421",
-  "numeric_id_b": true,
+  "id": [
+    "9938713983506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    "新編古今事文類聚 : [四集一百七十卷] / 祝穆編. 新編古今事文類聚新集 : 三十六卷 ; 新編古今事文類聚外集 : 十五卷 / 富大用編. 新編古今事文類聚遺集 : 十五卷 / 祝淵編. 事文類聚 古今事文類聚 金陵 : 唐富春德壽堂, 明萬曆甲辰 [32年, 1604] 子部 類書類. sk 祝穆, 13th cent., 編. 富大用, 編. 祝淵, 編. 唐富春, 刻. 德壽堂, 刻. 新編古今事文類聚新集. 新編古今事文類聚外集. 新編古今事文類聚遺集. 卷端題\"金陵唐富春刊\". \"重刻事文類聚序\"後鐫\"萬曆甲辰孟春之吉金谿唐富春精校補遺重刻\". 框21.2 x 14.6公分, 11行24字, 白口, 四周單邊, 單黑魚尾, 版心上鐫\"事文類聚\"及集次, 中鐫卷次, 下鐫\"德壽堂梓\"."
+  ],
+  "cjk_notes": [
+    "卷端題\"金陵唐富春刊\". \"重刻事文類聚序\"後鐫\"萬曆甲辰孟春之吉金谿唐富春精校補遺重刻\". 框21.2 x 14.6公分, 11行24字, 白口, 四周單邊, 單黑魚尾, 版心上鐫\"事文類聚\"及集次, 中鐫卷次, 下鐫\"德壽堂梓\"."
+  ],
   "author_citation_display": [
     "Zhu, Mu",
     "Fu, Dayong",
@@ -9,7 +19,16 @@
     "De shou tang",
     "Chinese Rare Books Project"
   ],
-  "author_roles_1display": "{\"secondary_authors\":[\"Zhu, Mu\",\"祝穆\",\"Fu, Dayong\",\"富大用\",\"Zhu, Yuan\",\"祝淵\",\"Tang, Fuchun\",\"唐富春\",\"De shou tang\",\"德壽堂\",\"Chinese Rare Books Project\"],\"translators\":[],\"editors\":[],\"compilers\":[]}",
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"Zhu, Mu\",\"祝穆\",\"Fu, Dayong\",\"富大用\",\"Zhu, Yuan\",\"祝淵\",\"Tang, Fuchun\",\"唐富春\",\"De shou tang\",\"德壽堂\",\"Chinese Rare Books Project\"],\"translators\":[],\"editors\":[],\"compilers\":[]}"
+  ],
+  "cjk_author": [
+    "祝穆, 13th cent",
+    "富大用",
+    "祝淵",
+    "唐富春",
+    "德壽堂"
+  ],
   "author_s": [
     "Zhu, Mu, active 13th century",
     "祝穆, 13th cent",
@@ -23,14 +42,40 @@
     "德壽堂",
     "Chinese Rare Books Project"
   ],
-  "title_display": "Xin bian gu jin shi wen lei ju : [si ji yi bai qi shi juan] / Zhu Mu bian. Xin bian gu jin shi wen lei ju xin ji : san shi liu juan ; Xin bian gu jin shi wen lei ju wai ji : shi wu juan / Fu Dayong bian. Xin bian gu jin shi wen lei ju yi ji : shi wu juan / Zhu Yuan bian.",
-  "title_vern_display": "新編古今事文類聚 : [四集一百七十卷] / 祝穆編. 新編古今事文類聚新集 : 三十六卷 ; 新編古今事文類聚外集 : 十五卷 / 富大用編. 新編古今事文類聚遺集 : 十五卷 / 祝淵編.",
+  "title_display": [
+    "Xin bian gu jin shi wen lei ju : [si ji yi bai qi shi juan] / Zhu Mu bian. Xin bian gu jin shi wen lei ju xin ji : san shi liu juan ; Xin bian gu jin shi wen lei ju wai ji : shi wu juan / Fu Dayong bian. Xin bian gu jin shi wen lei ju yi ji : shi wu juan / Zhu Yuan bian."
+  ],
+  "title_a_index": [
+    "Xin bian gu jin shi wen lei ju",
+    "新編古今事文類聚"
+  ],
+  "title_vern_display": [
+    "新編古今事文類聚 : [四集一百七十卷] / 祝穆編. 新編古今事文類聚新集 : 三十六卷 ; 新編古今事文類聚外集 : 十五卷 / 富大用編. 新編古今事文類聚遺集 : 十五卷 / 祝淵編."
+  ],
+  "title_sort": [
+    "Xin bian gu jin shi wen lei ju : [si ji yi bai qi shi juan] / Zhu Mu bian. Xin bian gu jin shi wen lei ju xin ji : san shi liu juan ; Xin bian gu jin shi wen lei ju wai ji : shi wu juan / Fu Dayong bian. Xin bian gu jin shi wen lei ju yi ji : shi wu juan / Zhu Yuan bian."
+  ],
+  "title_vern_sort": [
+    "新編古今事文類聚 : [四集一百七十卷] / 祝穆編. 新編古今事文類聚新集 : 三十六卷 ; 新編古今事文類聚外集 : 十五卷 / 富大用編. 新編古今事文類聚遺集 : 十五卷 / 祝淵編."
+  ],
+  "title_no_h_index": [
+    "Xin bian gu jin shi wen lei ju : [si ji yi bai qi shi juan] / Zhu Mu bian. Xin bian gu jin shi wen lei ju xin ji : san shi liu juan ; Xin bian gu jin shi wen lei ju wai ji : shi wu juan / Fu Dayong bian. Xin bian gu jin shi wen lei ju yi ji : shi wu juan / Zhu Yuan bian.",
+    "新編古今事文類聚 : [四集一百七十卷] / 祝穆編. 新編古今事文類聚新集 : 三十六卷 ; 新編古今事文類聚外集 : 十五卷 / 富大用編. 新編古今事文類聚遺集 : 十五卷 / 祝淵編."
+  ],
   "title_t": [
     "Xin bian gu jin shi wen lei ju : [si ji yi bai qi shi juan] / Zhu Mu bian. Xin bian gu jin shi wen lei ju xin ji : san shi liu juan ; Xin bian gu jin shi wen lei ju wai ji : shi wu juan / Fu Dayong bian. Xin bian gu jin shi wen lei ju yi ji : shi wu juan / Zhu Yuan bian."
   ],
   "title_citation_display": [
     "Xin bian gu jin shi wen lei ju : [si ji yi bai qi shi juan]",
     "新編古今事文類聚 : [四集一百七十卷]"
+  ],
+  "cjk_title": [
+    "新編古今事文類聚 : [四集一百七十卷] / 祝穆編. 新編古今事文類聚新集 : 三十六卷 ; 新編古今事文類聚外集 : 十五卷 / 富大用編. 新編古今事文類聚遺集 : 十五卷 / 祝淵編.",
+    "事文類聚",
+    "古今事文類聚",
+    "新編古今事文類聚新集.",
+    "新編古今事文類聚外集.",
+    "新編古今事文類聚遺集."
   ],
   "compiled_created_t": [
     "Xin bian gu jin shi wen lei ju : [si ji yi bai qi shi juan] / Zhu Mu bian. Xin bian gu jin shi wen lei ju xin ji : san shi liu juan ; Xin bian gu jin shi wen lei ju wai ji : shi wu juan / Fu Dayong bian. Xin bian gu jin shi wen lei ju yi ji : shi wu juan / Zhu Yuan bian.",
@@ -51,15 +96,33 @@
     "Jinling: Tang Fuchun De shou tang",
     "金陵: 唐富春德壽堂"
   ],
+  "publication_location_citation_display": [
+    "Jinling"
+  ],
+  "publisher_citation_display": [
+    "Tang Fuchun De shou tang"
+  ],
   "pub_date_display": [
     "1604"
   ],
-  "pub_date_start_sort": 1604,
-  "cataloged_tdt": "2021-07-13T09:59:28Z",
+  "pub_date_start_sort": [
+    "1604"
+  ],
+  "publication_date_citation_display": [
+    "1604"
+  ],
+  "cataloged_tdt": [
+    "2021-07-13T09:59:28Z"
+  ],
   "format": [
     "Book"
   ],
-  "electronic_access_1display": "{\"https://libimages1.princeton.edu/loris/CHRBPageImages/NJPX97B2556.jp2/full/full/0/default.jpg\":[\"First page of main text\"]}",
+  "electronic_access_1display": [
+    "{\"https://libimages1.princeton.edu/loris/CHRBPageImages/NJPX97B2556.jp2/full/full/0/default.jpg\":[\"First page of main text\"]}"
+  ],
+  "electronic_access_index": [
+    "First page of main text https://libimages1.princeton.edu/loris/CHRBPageImages/NJPX97B2556.jp2/full/full/0/default.jpg"
+  ],
   "description_display": [
     "114 v. ; 25 cm."
   ],
@@ -69,17 +132,23 @@
   "number_of_pages_citation_display": [
     "114 v."
   ],
+  "notes_index": [
+    "In 14 cases. NjP-G"
+  ],
   "notes_display": [
     "In 14 cases.",
     "卷端題\"金陵唐富春刊\".",
     "\"重刻事文類聚序\"後鐫\"萬曆甲辰孟春之吉金谿唐富春精校補遺重刻\".",
     "框21.2 x 14.6公分, 11行24字, 白口, 四周單邊, 單黑魚尾, 版心上鐫\"事文類聚\"及集次, 中鐫卷次, 下鐫\"德壽堂梓\"."
   ],
+  "language_name_display": [
+    "Chinese"
+  ],
   "language_facet": [
     "Chinese"
   ],
-  "language_code_s": [
-    "chi"
+  "publication_place_facet": [
+    "China"
   ],
   "language_iana_s": [
     "zh"
@@ -87,16 +156,84 @@
   "lc_subject_display": [
     "Encyclopedias and dictionaries, Chinese"
   ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "Encyclopedias and dictionaries, Chinese"
+  ],
   "siku_subject_display": [
     "Zi bu—Lei shu lei",
     "子部—類書類"
   ],
+  "siku_subject_facet": [
+    "Zi bu",
+    "Zi bu—Lei shu lei",
+    "子部",
+    "子部—類書類"
+  ],
+  "subject_unstem_search": [
+    "Encyclopedias and dictionaries, Chinese"
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": [
+    "Zi bu—Lei shu lei",
+    "子部—類書類"
+  ],
+  "homoit_subject_unstem_search": null,
+  "fast_subject_unstem_search": null,
   "subject_facet": [
     "Encyclopedias and dictionaries, Chinese",
     "Zi bu—Lei shu lei",
     "子部—類書類"
   ],
-  "related_name_json_1display": "{\"Bian\":[\"Zhu, Mu, active 13th century\",\"Fu, Dayong\",\"Zhu, Yuan\"],\"編\":[\"祝穆, 13th cent\",\"富大用\",\"祝淵\"],\"Ke\":[\"Tang, Fuchun\",\"De shou tang\"],\"刻\":[\"唐富春\",\"德壽堂\"],\"Related name\":[\"Chinese Rare Books Project\"]}",
+  "lc_subject_facet": [
+    "Encyclopedias and dictionaries, Chinese"
+  ],
+  "publication_place_hierarchical_facet": [
+    "China"
+  ],
+  "cjk_subject": [
+    "子部 類書類."
+  ],
+  "subject_topic_facet": [
+    "Encyclopedias and dictionaries, Chinese",
+    "Zi bu",
+    "Lei shu lei",
+    "子部",
+    "類書類"
+  ],
+  "lc_1letter_facet": [
+    "A - General Works"
+  ],
+  "lc_rest_facet": [
+    "AE - Encyclopedias"
+  ],
+  "lc_facet": [
+    "A - General Works",
+    "A - General Works:AE - Encyclopedias"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "A - General Works"
+  ],
+  "call_number_full_facet": [
+    "AE - Encyclopedias"
+  ],
+  "related_name_json_1display": [
+    "{\"Bian\":[\"Zhu, Mu, active 13th century\",\"Fu, Dayong\",\"Zhu, Yuan\"],\"編\":[\"祝穆, 13th cent\",\"富大用\",\"祝淵\"],\"Ke\":[\"Tang, Fuchun\",\"De shou tang\"],\"刻\":[\"唐富春\",\"德壽堂\"],\"Related name\":[\"Chinese Rare Books Project\"]}"
+  ],
+  "other_title_index": [
+    "Shi wen lei ju",
+    "事文類聚",
+    "Gu jin shi wen lei ju",
+    "古今事文類聚",
+    "Xin bian gu jin shi wen lei ju xin ji.",
+    "新編古今事文類聚新集.",
+    "Xin bian gu jin shi wen lei ju wai ji.",
+    "新編古今事文類聚外集.",
+    "Xin bian gu jin shi wen lei ju yi ji.",
+    "新編古今事文類聚遺集."
+  ],
   "other_title_display": [
     "Shi wen lei ju",
     "事文類聚",
@@ -116,12 +253,19 @@
     "古今事文類聚"
   ],
   "oclc_s": [
-    "52579498"
+    "960473203"
+  ],
+  "standard_no_index": [
+    "NJPX97-B2556",
+    "3871398-princetondb",
+    "960473203"
   ],
   "other_version_s": [
-    "ocm52579498"
+    "ocn960473203"
   ],
-  "holdings_1display": "{\"22714325820006421\":{\"location_code\":\"rare$hycrare\",\"location\":\"East Asian Library Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"TC348/371\",\"call_number_browse\":\"TC348/371\",\"location_has\":[\"Vol.1-v.114\"],\"supplements\":[null],\"indexes\":[null]}}",
+  "holdings_1display": [
+    "{\"22714325820006421\":{\"location_code\":\"rare$hycrare\",\"location\":\"East Asian Library Rare Books\",\"library\":\"Special Collections\",\"call_number\":\"TC348/371\",\"call_number_browse\":\"TC348/371\",\"location_has\":[\"Vol.1-v.114\"],\"supplements\":[null],\"indexes\":[null]}}"
+  ],
   "location_code_s": [
     "rare$hycrare"
   ],
@@ -143,5 +287,9 @@
   ],
   "call_number_locator_display": [
     "TC348/371"
+  ],
+  "access_facet": [
+    "In the Library",
+    "Online"
   ]
 }

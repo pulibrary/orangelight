@@ -1,20 +1,46 @@
 {
-  "id": "998449623506421",
-  "numeric_id_b": true,
+  "id": [
+    "998449623506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
   "author_display": [
+    "Princeton University. Library. Special Collections"
+  ],
+  "author_sort": [
     "Princeton University. Library. Special Collections"
   ],
   "author_citation_display": [
     "Princeton University"
   ],
-  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Princeton University\"}",
+  "author_roles_1display": [
+    "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Princeton University\"}"
+  ],
   "author_s": [
     "Princeton University. Library. Special Collections"
   ],
   "marc_relator_display": [
     "Collector"
   ],
-  "title_display": "Chile Photographic File, 1984-1990",
+  "title_display": [
+    "Chile Photographic File, 1984-1990"
+  ],
+  "title_a_index": [
+    "Chile Photographic File"
+  ],
+  "title_sort": [
+    "Chile Photographic File, 1984-1990"
+  ],
+  "title_no_h_index": [
+    "Chile Photographic File, 1984-1990"
+  ],
   "title_t": [
     "Chile Photographic File,"
   ],
@@ -30,13 +56,27 @@
   "pub_date_display": [
     "1984"
   ],
-  "pub_date_start_sort": 1984,
-  "pub_date_end_sort": 1990,
-  "cataloged_tdt": "2004-08-03T10:59:00Z",
+  "pub_date_start_sort": [
+    "1984"
+  ],
+  "pub_date_end_sort": [
+    "1990"
+  ],
+  "publication_date_citation_display": [
+    "1984"
+  ],
+  "cataloged_tdt": [
+    "2024-07-11T15:04:00Z"
+  ],
   "format": [
     "Manuscript"
   ],
-  "electronic_access_1display": "{\"http://arks.princeton.edu/ark:/88435/pz50gw142\":[\"Princeton University Library Finding Aids\",\"Search and Request\"]}",
+  "electronic_access_1display": [
+    "{\"http://arks.princeton.edu/ark:/88435/pz50gw142\":[\"Princeton University Library Finding Aids\",\"Search and Request\"]}"
+  ],
+  "electronic_access_index": [
+    "Search and Request http://arks.princeton.edu/ark:/88435/pz50gw142 Princeton University Library Finding Aids"
+  ],
   "description_display": [
     "1 box",
     "0.4 linear feet"
@@ -49,17 +89,27 @@
     "1",
     "0.4"
   ],
+  "notes_index": [
+    "Consists of 223 slides and 77 photographs taken during the last years of the Augusto Pinochet regime in Chile.",
+    "The collection consists of 223 slides and 77 photographs taken during the last years of the Pinochet regime in Chile. Included are images of pro-democracy, anti-dictatorship, and human rights demonstrations; political graffiti; and various presidential and senatorial campaigning and celebrating (Aylwin, Büchi, Errázuriz, Lagos, Piñera, Palestro, Frei, etc.). There are also slides showing the casting of votes and of the general ambience during the elections.",
+    "All photographs have captions on the back. A folder listing and an index to the slides are available.",
+    "The collection is open for research."
+  ],
   "restrictions_note_display": [
     "The collection is open for research."
   ],
   "summary_note_display": [
-    "Consists of 223 slides and 77 photographs taken during the last years of the Augusto Pinochet regime in Chile."
+    "Consists of 223 slides and 77 photographs taken during the last years of the Augusto Pinochet regime in Chile.",
+    "The collection consists of 223 slides and 77 photographs taken during the last years of the Pinochet regime in Chile. Included are images of pro-democracy, anti-dictatorship, and human rights demonstrations; political graffiti; and various presidential and senatorial campaigning and celebrating (Aylwin, Büchi, Errázuriz, Lagos, Piñera, Palestro, Frei, etc.). There are also slides showing the casting of votes and of the general ambience during the elections."
+  ],
+  "language_name_display": [
+    "English"
   ],
   "language_facet": [
     "English"
   ],
-  "language_code_s": [
-    "eng"
+  "publication_place_facet": [
+    "No place, unknown, or undetermined"
   ],
   "language_iana_s": [
     "en"
@@ -75,8 +125,41 @@
     "Human rights workers—Chile",
     "Plebiscite—Chile",
     "Political campaigns—Chile",
-    "Chile—1973- .—Politics and government"
+    "Chile—Politics and government—1973-.",
+    "Aylwin Azócar, Patricio",
+    "Büchi Buc, Hernán",
+    "Walker Errázuriz, Francisco"
   ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "Demonstrations—20th century—Chile",
+    "Elections—20th century—Chile",
+    "Graffiti—Chile",
+    "Human rights—Chile",
+    "Human rights workers—Chile",
+    "Plebiscite—Chile",
+    "Political campaigns—Chile",
+    "Chile—Politics and government—1973-.",
+    "Aylwin Azócar, Patricio",
+    "Büchi Buc, Hernán",
+    "Walker Errázuriz, Francisco"
+  ],
+  "subject_unstem_search": [
+    "Demonstrations—20th century—Chile",
+    "Elections—20th century—Chile",
+    "Graffiti—Chile",
+    "Human rights—Chile",
+    "Human rights workers—Chile",
+    "Plebiscite—Chile",
+    "Political campaigns—Chile",
+    "Chile—Politics and government—1973-.",
+    "Aylwin Azócar, Patricio",
+    "Büchi Buc, Hernán",
+    "Walker Errázuriz, Francisco"
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": null,
+  "fast_subject_unstem_search": null,
   "subject_facet": [
     "Demonstrations—20th century—Chile",
     "Elections—20th century—Chile",
@@ -85,30 +168,99 @@
     "Human rights workers—Chile",
     "Plebiscite—Chile",
     "Political campaigns—Chile",
-    "Chile—1973- .—Politics and government",
+    "Chile—Politics and government—1973-.",
+    "Aylwin Azócar, Patricio",
+    "Büchi Buc, Hernán",
+    "Walker Errázuriz, Francisco",
     "Photoprints—20th century",
     "Slides—20th century"
+  ],
+  "lc_subject_facet": [
+    "Demonstrations",
+    "Demonstrations—20th century",
+    "Demonstrations—20th century—Chile",
+    "Elections",
+    "Elections—20th century",
+    "Elections—20th century—Chile",
+    "Graffiti",
+    "Graffiti—Chile",
+    "Human rights",
+    "Human rights—Chile",
+    "Human rights workers",
+    "Human rights workers—Chile",
+    "Plebiscite",
+    "Plebiscite—Chile",
+    "Political campaigns",
+    "Political campaigns—Chile",
+    "Chile",
+    "Chile—Politics and government",
+    "Chile—Politics and government—1973-.",
+    "Aylwin Azócar, Patricio",
+    "Büchi Buc, Hernán",
+    "Walker Errázuriz, Francisco"
+  ],
+  "publication_place_hierarchical_facet": [
+    "No place, unknown, or undetermined"
+  ],
+  "geographic_facet": [
+    "Chile"
   ],
   "aat_s": [
     "Photoprints—20th century",
     "Slides—20th century"
   ],
+  "aat_genre_facet": [
+    "Photoprints",
+    "Photoprints—20th century",
+    "Slides",
+    "Slides—20th century"
+  ],
+  "subject_topic_facet": [
+    "Demonstrations",
+    "Chile",
+    "Elections",
+    "Graffiti",
+    "Human rights",
+    "Human rights workers",
+    "Plebiscite",
+    "Political campaigns",
+    "Politics and government",
+    "Aylwin Azócar, Patricio",
+    "Büchi Buc, Hernán",
+    "Walker Errázuriz, Francisco"
+  ],
+  "genre_facet": [
+    "Photoprints",
+    "Slides"
+  ],
+  "oclc_s": [
+    "1446411127"
+  ],
+  "standard_no_index": [
+    "C0683",
+    "on1446411127"
+  ],
+  "other_version_s": [
+    "on1446411127"
+  ],
   "subject_era_facet": [
     "20th century",
-    "1973- "
+    "1973-"
   ],
-  "holdings_1display": "{\"22669177030006421\":{\"location_code\":\"rare$mss\",\"location\":\"Manuscripts Collection\",\"library\":\"Special Collections\",\"call_number\":\"C0683\",\"call_number_browse\":\"C0683\",\"items\":[{\"holding_id\":\"22669177030006421\",\"enumeration\":\"Box 1\",\"id\":\"23669177020006421\",\"status_at_load\":\"1\",\"barcode\":\"32101036913463\",\"copy_number\":\"1\"}]}}",
+  "holdings_1display": [
+    "{\"221023089420006421\":{\"location_code\":\"rare$xmr\",\"location\":\"Remote Storage (ReCAP): Manuscripts. Special Collections Use Only\",\"library\":\"Special Collections\",\"call_number\":\"C0683\",\"call_number_browse\":\"C0683\",\"items\":[{\"holding_id\":\"221023089420006421\",\"description\":\"box 1\",\"id\":\"231023089410006421\",\"status_at_load\":\"1\",\"barcode\":\"32101036913463\"}]}}"
+  ],
   "location_code_s": [
-    "rare$mss"
+    "rare$xmr"
   ],
   "location": [
     "Special Collections"
   ],
   "location_display": [
-    "Manuscripts Collection"
+    "Remote Storage (ReCAP): Manuscripts. Special Collections Use Only"
   ],
   "advanced_location_s": [
-    "rare$mss",
+    "rare$xmr",
     "Special Collections"
   ],
   "name_title_browse_s": [
@@ -122,5 +274,8 @@
   ],
   "call_number_locator_display": [
     "C0683"
+  ],
+  "access_facet": [
+    "In the Library"
   ]
 }

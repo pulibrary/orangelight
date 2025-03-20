@@ -58,8 +58,8 @@ describe 'blacklight tests' do
     before { stub_holding_locations }
 
     it 'links to an electronic resource with the appropriate display text' do
-      get '/catalog/9928379683506421'
-      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"https://login.ezproxy.princeton.edu/login?url=http://www.jstor.org/action/showAdvancedSearch\">www.jstor.org<i class=\"fa fa-external-link new-tab-icon-padding\" aria-label=\"opens in new tab\" role=\"img\"></i></a>")
+      get '/catalog/9918309193506421'
+      expect(response.body).to include("<a href=\"https://catalog.princeton.edu/catalog/9918309193506421#view\">Book preliminaries</a>")
     end
 
     it 'includes $z as an additional label for the link' do
@@ -278,8 +278,8 @@ describe 'blacklight tests' do
     end
     it 'provides link to linked related record (774 bib link) when found' do
       stub_holding_locations
-      get '/catalog/9947053043506421'
-      expect(response.body).to include('href="http://www.example.com/catalog/9947053073506421"')
+      get '/catalog/993213506421'
+      expect(response.body).to include('href="http://www.example.com/catalog/99127123435006421"')
     end
     it 'provides link to record in which current record is contained (773 bib link) when found' do
       stub_holding_locations

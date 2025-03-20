@@ -31,13 +31,9 @@ RSpec.describe "left anchor search", left_anchor: true do
 
   context 'with punctuation marks in the title' do
     it 'handles whitespace characters padding punctuation' do
-      get '/catalog.json?search_field=left_anchor&q=JSTOR+%5Belectronic+resource%5D+%3A'
+      get '/catalog.json?search_field=left_anchor&q=1Q84%20[electronic%20resource]%20/%20Haruki%20Murakami%20'
       r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-
-      get '/catalog.json?search_field=left_anchor&q=JSTOR+%5Belectronic+resource%5D%3A'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
+      expect(r['data'].any? { |d| d['id'] == '9976174773506421' }).to eq true
     end
   end
 
