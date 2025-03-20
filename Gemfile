@@ -102,7 +102,6 @@ group :test do
   gem 'axe-core-api'
   gem 'axe-core-rspec'
   gem 'factory_bot_rails', require: false
-  gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
   gem 'selenium-webdriver'
