@@ -149,14 +149,6 @@ describe BlacklightHelper do
     end
   end
 
-  describe '#wildcard_char_strip', left_anchor: true do
-    it 'strips question marks which are wildcard characters before sending :q to solr' do
-      query = { q: '{!qf=$left_anchor_qf pf=$left_anchor_pf}China and Angola: a marriage of convenience?' }
-      wildcard_char_strip(query)
-      expect(query[:q]).to eq '{!qf=$left_anchor_qf pf=$left_anchor_pf}China and Angola: a marriage of convenience'
-    end
-  end
-
   describe '#render_facet_partials' do
     let(:blacklight_config) { Blacklight::Configuration.new }
 

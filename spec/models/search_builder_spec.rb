@@ -250,4 +250,20 @@ RSpec.describe SearchBuilder do
       end
     end
   end
+  describe '#wildcard_char_strip' do
+    it 'strips question marks which are wildcard characters before sending :q to solr' do
+      query = { q: '{!qf=$left_anchor_qf pf=$left_anchor_pf}China and Angola: a marriage of convenience?' }
+      search_builder.wildcard_char_strip(query)
+      expect(query[:q]).to eq '{!qf=$left_anchor_qf pf=$left_anchor_pf}China and Angola: a marriage of convenience'
+    end
+    it 'strips question marks from json query DSL queries' do
+      query = { "json" =>
+      { "query" =>
+        { "bool" =>
+          { "must" =>
+            [{ edismax: { query: "China and Angola: a marriage of convenience?" } }] } } } }
+      search_builder.wildcard_char_strip(query)
+      expect(query['json']['query']['bool']['must'][0][:edismax][:query]).to eq 'China and Angola: a marriage of convenience'
+    end
+  end
 end
