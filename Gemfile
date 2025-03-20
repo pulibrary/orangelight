@@ -17,10 +17,6 @@ gem 'blacklight_range_limit', '~> 9.0.0'
 gem 'bootstrap', '~> 5.3.0'
 gem 'dartsass-sprockets'
 gem 'psych'
-# Capistrano
-# In the Capistrano documentation, it has these limited to the development group, and `require: false``
-gem 'capistrano', '~> 3.4'
-gem 'capistrano-passenger'
 # support for non-marc citations (e.g. SCSB records)
 gem 'citeproc-ruby'
 gem 'csl-styles'
@@ -96,6 +92,8 @@ gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
 gem 'yard'
 
 group :development do
+  gem 'capistrano', '~> 3.4', require: false
+  gem 'capistrano-passenger'
   gem 'capistrano-rails'
   gem 'reek'
 end
