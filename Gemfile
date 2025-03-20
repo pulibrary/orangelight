@@ -47,6 +47,7 @@ gem 'jbuilder', '~> 2.0'
 # jest tests use yarn to get jquery; if upgrading here keep that version in sync
 gem 'jquery-datatables' # used by requests (please do not remove)
 gem 'jquery-rails'
+gem 'kicks'
 gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
 gem 'lograge'
@@ -80,7 +81,6 @@ gem 'rspec-rails'
 gem 'rubyzip', '>= 1.2.2'
 gem 'sidekiq'
 gem 'simple_form'
-gem 'sneakers'
 gem 'sprockets-es6'
 gem 'sprockets-rails'
 # For call-stack profiling flamegraphs

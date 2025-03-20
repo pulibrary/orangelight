@@ -381,6 +381,12 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    kicks (3.2.0)
+      bunny (~> 2.19)
+      concurrent-ruby (~> 1.0)
+      rake (>= 12.3, < 14.0)
+      serverengine (~> 2.1)
+      thor
     kramdown (2.5.1)
       rexml (>= 3.3.9)
     kramdown-parser-gfm (1.1.0)
@@ -656,7 +662,9 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    serverengine (2.0.7)
+    serverengine (2.4.0)
+      base64 (~> 0.1)
+      logger (~> 1.4)
       sigdump (~> 0.2.2)
     set (1.1.1)
     sidekiq (8.0.1)
@@ -678,12 +686,6 @@ GEM
     singleton (0.3.0)
     slop (4.10.1)
     smart_properties (1.17.0)
-    sneakers (2.11.0)
-      bunny (~> 2.12)
-      concurrent-ruby (~> 1.0)
-      rake
-      serverengine (~> 2.0.5)
-      thor
     solargraph (0.52.0)
       backport (~> 1.2)
       benchmark
@@ -857,6 +859,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-datatables
   jquery-rails
+  kicks
   lcsort (>= 0.9.1)
   library_stdnums
   lograge
@@ -892,7 +895,6 @@ DEPENDENCIES
   selenium-webdriver
   sidekiq
   simple_form
-  sneakers
   solargraph
   sprockets-es6
   sprockets-rails
