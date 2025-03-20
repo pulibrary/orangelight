@@ -142,7 +142,8 @@ class CatalogController < ApplicationController
     }, include_in_advanced_search: false
 
     config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true, include_in_advanced_search: false
-    config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true, include_in_advanced_search: true, suggest: true
+    config.add_facet_field 'publication_place_hierarchical_facet', label: 'Place of publication', component: Blacklight::Hierarchy::FacetFieldListComponent, sort: 'index', limit: 1000, include_in_advanced_search: true, if: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_publication_facet? }
+    config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true, include_in_advanced_search: true, suggest: true, unless: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_publication_facet? }
 
     config.add_facet_field 'lc_facet', label: 'Classification', component: Blacklight::Hierarchy::FacetFieldListComponent, sort: 'index', limit: 1000, include_in_advanced_search: false, if: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_facet? }
     config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet], collapsing: true, include_in_advanced_search: false, unless: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_facet? }
@@ -232,7 +233,8 @@ class CatalogController < ApplicationController
     # Config for heirarcy options
     config.facet_display = {
       hierarchy: {
-        'lc' => [['facet'], ':']
+        'lc' => [['facet'], ':'],
+        'publication_place_hierarchical' => [['facet'], ':']
       }
     }
 
