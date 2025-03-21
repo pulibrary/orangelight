@@ -74,7 +74,7 @@ module Orangelight
       return head(:bad_request) unless params[:id] && params[:field]
 
       begin
-        document = search_service_compatibility_wrapper.fetch(params[:id])
+        document = search_service.fetch(params[:id])
       rescue Blacklight::Exceptions::RecordNotFound
         return head(:bad_request)
       end
