@@ -1,12 +1,8 @@
 <%- if @message %>
   <%= t('blacklight.email.text.message', :message => @message)%>
 <% end %>
-<% @documents.each do |document| %> 
-  <% if Orangelight.using_blacklight7? %>
-    <%= document.to_email_text %>
-  <% else %>
-    <%= render Blacklight::DocumentMetadataComponent.new(fields: document_presenter(document).field_presenters(CatalogController.blacklight_config.email_fields), tag: nil, field_layout: Blacklight::MetadataFieldPlainTextLayoutComponent, field_presenter_options: { format: 'text' }) %>
-  <% end %>
+<% @documents.each do |document| %>
+  <%= render Blacklight::DocumentMetadataComponent.new(fields: document_presenter(document).field_presenters(CatalogController.blacklight_config.email_fields), tag: nil, field_layout: Blacklight::MetadataFieldPlainTextLayoutComponent, field_presenter_options: { format: 'text' }) %>
   <%= render Holdings::PlainTextComponent.new(document) %>
   <%= t('blacklight.email.text.url', :url =>polymorphic_url(document, @url_gen_params)) %>
   <%= '-'*80 %>
