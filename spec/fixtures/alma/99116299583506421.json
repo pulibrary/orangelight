@@ -1477,6 +1477,10 @@
     "publication_place_facet": [
         "California"
     ],
+    "publication_place_hierarchical_facet": [
+        "United States",
+        "United States:California"
+    ],
     "language_code_s": [
         "chi"
     ],

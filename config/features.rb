@@ -44,4 +44,8 @@ Flipflop.configure do
   feature :blacklight_hierarchy_facet,
   default: false,
   description: "When on / true, use the blacklight hierarchy gem to display the classification facet"
+
+  feature :blacklight_hierarchy_publication_facet,
+  default: false,
+  description: "When on / true, use the blacklight hierarchy gem to display the place of publication facet"
 end
