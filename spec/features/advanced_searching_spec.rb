@@ -215,7 +215,7 @@ describe 'advanced searching', advanced_search: true do
 
   it 'can edit a facet-only search' do
     visit '/?f[subject_topic_facet][]=Manuscripts%2C+Arabic&search_field=all_fields'
-    expect(page).to have_content '1 - 7 of 7'
+    expect(page).to have_content '1 - 8 of 8'
 
     click_link 'Edit search'
     fill_in 'clause_0_query', with: 'literature'

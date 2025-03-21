@@ -88,7 +88,7 @@ describe 'Facets' do
       # Displays all 17 LC single letter classes
       expect(page.all('.h-node').length).to eq(17)
       # The A class contains two subclasses
-      expect(page.first('.h-node').all('.h-leaf').length).to eq(2)
+      expect(page.first('.h-node').all('.h-leaf').length).to eq(3)
     end
   end
 end
