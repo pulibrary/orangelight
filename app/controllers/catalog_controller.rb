@@ -14,7 +14,7 @@ class CatalogController < ApplicationController
 
   rescue_from Blacklight::Exceptions::RecordNotFound do
     alma_id = "99#{params[:id]}3506421"
-    search_service_compatibility_wrapper.fetch(alma_id)
+    search_service.fetch(alma_id)
     redirect_to solr_document_path(id: alma_id)
   rescue Blacklight::Exceptions::RecordNotFound
     redirect_to '/404'
@@ -748,7 +748,7 @@ class CatalogController < ApplicationController
 
   def numismatics
     unless request.method == :post
-      @response = search_service_compatibility_wrapper.search_results do |search_builder|
+      @response = search_service.search_results do |search_builder|
         search_builder.except(:add_advanced_search_to_solr).append(:facets_for_advanced_search_form)
       end
     end
@@ -840,14 +840,14 @@ class CatalogController < ApplicationController
       Rails.cache.fetch("home_page_empty_raw_response", expires_in: 3.hours) do
         Rails.logger.info "Cached home page results"
         # We cannot cache the Blacklight::Solr::Response as-is so we convert it to JSON first
-        search_service_compatibility_wrapper.search_results.to_json
+        search_service.search_results.to_json
       end
     end
 
     def empty_advanced_search_raw_response
       Rails.cache.fetch('advanced_search_form_empty_raw_response', expires_in: 8.hours) do
         Rails.logger.info "Cached empty advanced search form solr query"
-        SearchServiceCompatibilityWrapper.new(blacklight_advanced_search_form_search_service).search_results.to_json
+        blacklight_advanced_search_form_search_service.search_results.to_json
       end
     end
 
@@ -902,10 +902,6 @@ class CatalogController < ApplicationController
 
     def search_algorithm_param
       params[:search_algorithm]
-    end
-
-    def search_service_compatibility_wrapper
-      @search_service_compatibility_wrapper ||= SearchServiceCompatibilityWrapper.new(search_service)
     end
 
     def solrize_boolean_params

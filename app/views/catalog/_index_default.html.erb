@@ -7,12 +7,6 @@
 </div>
 
   <div class="thumbnail-wrapper">
-
-  <% if using_blacklight7 %>
-    <%= render Blacklight::Document::BookmarkComponent.new document: %>
-  <% else %>
     <%= render Blacklight::Document::BookmarkComponent.new document:, action: %>
-  <% end %>
-
-  <%= render ThumbnailComponent.new document: %>
+    <%= render ThumbnailComponent.new document: %>
   </div>
