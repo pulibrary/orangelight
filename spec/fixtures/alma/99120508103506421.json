@@ -1,0 +1,397 @@
+{
+    "id": [
+        "99120508103506421"
+    ],
+    "numeric_id_b": [
+        true
+    ],
+    "cjk_all": [
+        ""
+    ],
+    "cjk_notes": [
+        ""
+    ],
+    "author_display": [
+        "Bundo, Marlon (Rabbit)"
+    ],
+    "author_sort": [
+        "Bundo, Marlon (Rabbit)"
+    ],
+    "author_citation_display": [
+        "Bundo, Marlon",
+        "Twiss, Jill",
+        "Keller, E. G.",
+        "Pence, Charlotte"
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[\"Twiss, Jill\",\"Keller, E. G.\",\"Pence, Charlotte\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Bundo, Marlon\"}"
+    ],
+    "author_s": [
+        "Bundo, Marlon (Rabbit)",
+        "Twiss, Jill",
+        "Keller, E. G. (Illustrator)",
+        "Pence, Charlotte, 1993-"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": [
+        "A day in the life of Marlon Bundo / written by Marlon Bundo with Jill Twiss ; illustrated by EG Keller."
+    ],
+    "title_a_index": [
+        "A day in the life of Marlon Bundo"
+    ],
+    "title_sort": [
+        "day in the life of Marlon Bundo / written by Marlon Bundo with Jill Twiss ; illustrated by EG Keller."
+    ],
+    "title_no_h_index": [
+        "A day in the life of Marlon Bundo / written by Marlon Bundo with Jill Twiss ; illustrated by EG Keller.",
+        "day in the life of Marlon Bundo / written by Marlon Bundo with Jill Twiss ; illustrated by EG Keller."
+    ],
+    "title_t": [
+        "A day in the life of Marlon Bundo / written by Marlon Bundo with Jill Twiss ; illustrated by EG Keller."
+    ],
+    "title_citation_display": [
+        "A day in the life of Marlon Bundo"
+    ],
+    "contains_title_index": [
+        "Marlon Bundo's A day in the life of the vice president"
+    ],
+    "compiled_created_t": [
+        "A day in the life of Marlon Bundo / written by Marlon Bundo with Jill Twiss ; illustrated by EG Keller."
+    ],
+    "pub_created_display": [
+        "San Francisco : Chronicle Books, [2018]",
+        "©2018"
+    ],
+    "pub_created_s": [
+        "San Francisco : Chronicle Books, [2018]",
+        "©2018"
+    ],
+    "pub_citation_display": [
+        "San Francisco: Chronicle Books"
+    ],
+    "publication_location_citation_display": [
+        "San Francisco"
+    ],
+    "publisher_citation_display": [
+        "Chronicle Books"
+    ],
+    "pub_date_display": [
+        "2018"
+    ],
+    "pub_date_start_sort": [
+        "2018"
+    ],
+    "pub_date_end_sort": [
+        "2018"
+    ],
+    "publication_date_citation_display": [
+        "2018"
+    ],
+    "cataloged_tdt": [
+        "2025-02-03T15:18:12Z"
+    ],
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "1 volume (unpaged) : color illustrations ; 27 cm"
+    ],
+    "description_t": [
+        "1 volume (unpaged) : color illustrations ; 27 cm"
+    ],
+    "number_of_pages_citation_display": [
+        "1 volume (unpaged)"
+    ],
+    "geocode_display": [
+        "United States"
+    ],
+    "notes_index": [
+        "Includes bibliographical references and index.",
+        "A gentle parody of Charlotte Pence's \"Marlon Bundo's A day in the life of the vice president\" that stresses lessons of love, democracy and acceptance.",
+        "Princeton copy 1 Gift; Andrea Immel; 2024. NjP",
+        "Rainbow Book List, 2019",
+        "\"Last week tonight with John Oliver presents\" --At head of title.",
+        "\"What makes A Day in the Life of Marlon Bundo particularly strong is that, while an unabashed political parody, it also stands on its own as a children's book. It would have been easy for John Oliver's team to lean heavily on the gimmick of satirizing a loathed figure in American politics, but they instead focused on developing a charming story with genuinely funny jokes...\" --The Globe & Mail."
+    ],
+    "summary_note_display": [
+        "A gentle parody of Charlotte Pence's \"Marlon Bundo's A day in the life of the vice president\" that stresses lessons of love, democracy and acceptance."
+    ],
+    "notes_display": [
+        "\"Last week tonight with John Oliver presents\" --At head of title.",
+        "\"What makes A Day in the Life of Marlon Bundo particularly strong is that, while an unabashed political parody, it also stands on its own as a children's book. It would have been easy for John Oliver's team to lean heavily on the gimmick of satirizing a loathed figure in American politics, but they instead focused on developing a charming story with genuinely funny jokes...\" --The Globe & Mail."
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references and index."
+    ],
+    "awards_notes_display": [
+        "Rainbow Book List, 2019"
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "publication_place_facet": [
+        "California"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Rabbits—Juvenile fiction",
+        "Same-sex marriage—Juvenile fiction",
+        "Friendship—Juvenile fiction",
+        "Toleration—Juvenile fiction",
+        "Democracy—Juvenile fiction",
+        "Bundo, Marlon (Rabbit)—Juvenile fiction"
+    ],
+    "lc_subject_include_archaic_search_terms_index": [
+        "Rabbits—Juvenile fiction",
+        "Same-sex marriage—Juvenile fiction",
+        "Friendship—Juvenile fiction",
+        "Toleration—Juvenile fiction",
+        "Democracy—Juvenile fiction",
+        "Bundo, Marlon (Rabbit)—Juvenile fiction"
+    ],
+    "homoit_subject_facet": [
+        "Same-sex marriage",
+        "Same-sex marriage—Juvenile fiction",
+        "Marriage",
+        "Marriage—Juvenile fiction",
+        "Friendships",
+        "Friendships—Juvenile fiction"
+    ],
+    "homoit_subject_display": [
+        "Same-sex marriage—Juvenile fiction",
+        "Marriage—Juvenile fiction",
+        "Friendships—Juvenile fiction"
+    ],
+    "subject_unstem_search": [
+        "Rabbits—Juvenile fiction",
+        "Same-sex marriage—Juvenile fiction",
+        "Friendship—Juvenile fiction",
+        "Toleration—Juvenile fiction",
+        "Democracy—Juvenile fiction",
+        "Bundo, Marlon (Rabbit)—Juvenile fiction"
+    ],
+    "local_subject_unstem_search": null,
+    "siku_subject_unstem_search": null,
+    "homoit_subject_unstem_search": [
+        "Same-sex marriage—Juvenile fiction",
+        "Marriage—Juvenile fiction",
+        "Friendships—Juvenile fiction"
+    ],
+    "fast_subject_unstem_search": null,
+    "subject_facet": [
+        "Rabbits—Juvenile fiction",
+        "Same-sex marriage—Juvenile fiction",
+        "Friendship—Juvenile fiction",
+        "Toleration—Juvenile fiction",
+        "Democracy—Juvenile fiction",
+        "Bundo, Marlon (Rabbit)—Juvenile fiction",
+        "Marriage—Juvenile fiction",
+        "Friendships—Juvenile fiction",
+        "picture books",
+        "parody",
+        "Gay romance fiction",
+        "LGBTQ+ relationships",
+        "Picture books",
+        "Political fiction",
+        "Animal fiction",
+        "Romance fiction",
+        "Gay fiction",
+        "Parodies (Literature)",
+        "Juvenile literature"
+    ],
+    "lc_subject_facet": [
+        "Rabbits",
+        "Rabbits—Juvenile fiction",
+        "Same-sex marriage",
+        "Same-sex marriage—Juvenile fiction",
+        "Friendship",
+        "Friendship—Juvenile fiction",
+        "Toleration",
+        "Toleration—Juvenile fiction",
+        "Democracy",
+        "Democracy—Juvenile fiction",
+        "Bundo, Marlon (Rabbit)",
+        "Bundo, Marlon (Rabbit)—Juvenile fiction"
+    ],
+    "geographic_facet": [
+        "United States"
+    ],
+    "homoit_genre_s": [
+        "Gay romance fiction",
+        "LGBTQ+ relationships"
+    ],
+    "homoit_genre_facet": [
+        "Gay romance fiction",
+        "LGBTQ+ relationships"
+    ],
+    "lcgft_s": [
+        "Picture books",
+        "Political fiction",
+        "Animal fiction",
+        "Romance fiction",
+        "Gay fiction",
+        "Parodies (Literature)"
+    ],
+    "lcgft_genre_facet": [
+        "Picture books",
+        "Political fiction",
+        "Animal fiction",
+        "Romance fiction",
+        "Gay fiction",
+        "Parodies (Literature)"
+    ],
+    "aat_s": [
+        "picture books",
+        "parody"
+    ],
+    "aat_genre_facet": [
+        "picture books",
+        "parody"
+    ],
+    "rbgenr_s": [
+        "Juvenile literature"
+    ],
+    "rbgenr_genre_facet": [
+        "Juvenile literature"
+    ],
+    "subject_topic_facet": [
+        "Rabbits",
+        "Same-sex marriage",
+        "Friendship",
+        "Toleration",
+        "Democracy",
+        "Bundo, Marlon (Rabbit)",
+        "Marriage",
+        "Friendships"
+    ],
+    "lc_1letter_facet": [
+        "P - Language & Literature"
+    ],
+    "lc_rest_facet": [
+        "PN - Literature (General)"
+    ],
+    "lc_facet": [
+        "P - Language & Literature",
+        "P - Language & Literature:PN - Literature (General)"
+    ],
+    "call_number_scheme_facet": [
+        "Library of Congress"
+    ],
+    "call_number_group_facet": [
+        "P - Language & Literature"
+    ],
+    "call_number_full_facet": [
+        "PN - Literature (General)"
+    ],
+    "genre_facet": [
+        "Juvenile fiction",
+        "picture books",
+        "parody",
+        "Gay romance fiction",
+        "LGBTQ+ relationships",
+        "Picture books",
+        "Political fiction",
+        "Animal fiction",
+        "Romance fiction",
+        "Gay fiction",
+        "Parodies (Literature)",
+        "Juvenile literature",
+        "Picture books for children"
+    ],
+    "related_name_json_1display": [
+        "{\"Author\":[\"Twiss, Jill\"],\"Related name\":[\"Keller, E. G. (Illustrator)\"]}"
+    ],
+    "related_works_1display": [
+        "[[\"Pence, Charlotte, 1993-\",\"Marlon Bundo's A day in the life of the vice president.\"]]"
+    ],
+    "other_title_index": [
+        "Last week tonight with John Oliver presents A day in the life of Marlon Bundo",
+        "Last week tonight with John Oliver (Television program)"
+    ],
+    "other_title_display": [
+        "Last week tonight with John Oliver presents A day in the life of Marlon Bundo",
+        "Last week tonight with John Oliver (Television program)"
+    ],
+    "alt_title_246_display": [
+        "Last week tonight with John Oliver presents A day in the life of Marlon Bundo"
+    ],
+    "isbn_display": [
+        "9781452173801 ((hardcover ; : alk. paper))",
+        "145217380X ((hardcover ; : alk. paper))"
+    ],
+    "lccn_display": [
+        "  2018011856"
+    ],
+    "standard_no_024_index": [
+        "9781452173801"
+    ],
+    "standard_no_1display": [
+        "{\"International Article Number\":[\"9781452173801\"]}"
+    ],
+    "lccn_s": [
+        "2018011856"
+    ],
+    "isbn_s": [
+        "9781452173801"
+    ],
+    "oclc_s": [
+        "1032290997"
+    ],
+    "standard_no_index": [
+        "12050810-princetondb",
+        "on1032290997"
+    ],
+    "other_version_s": [
+        "9781452173801",
+        "on1029056543",
+        "on1030284092",
+        "on1031420006",
+        "on1031439546",
+        "on1031439942",
+        "on1031477108",
+        "on1031920500",
+        "on1031922621",
+        "on1032236607",
+        "on1033550818",
+        "on1032290997"
+    ],
+    "holdings_1display": [
+        "{\"22483367710006421\":{\"location_code\":\"rare$ctsn\",\"location\":\"Cotsen Children's Library\",\"library\":\"Special Collections\",\"call_number\":\"Q-001835 Eng 21Q /\",\"call_number_browse\":\"Q-001835 Eng 21Q /\",\"sub_location\":[\"Eng 21Q /\"],\"items\":[{\"holding_id\":\"22483367710006421\",\"id\":\"231041742350006421\",\"status_at_load\":\"1\",\"barcode\":\"32101103309165\"}],\"location_has\":[\"Princeton copy 1\"],\"supplements\":[null],\"indexes\":[null]}}"
+    ],
+    "location_code_s": [
+        "rare$ctsn"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Cotsen Children's Library"
+    ],
+    "advanced_location_s": [
+        "rare$ctsn",
+        "Special Collections"
+    ],
+    "name_title_browse_s": [
+        "Pence, Charlotte, 1993- Marlon Bundo's A day in the life of the vice president",
+        "Bundo, Marlon (Rabbit). A day in the life of Marlon Bundo"
+    ],
+    "call_number_display": [
+        "Eng 21Q / Q-001835"
+    ],
+    "call_number_browse_s": [
+        "Q-001835 Eng 21Q /"
+    ],
+    "call_number_locator_display": [
+        "Q-001835"
+    ],
+    "access_facet": [
+        "In the Library"
+    ]
+}

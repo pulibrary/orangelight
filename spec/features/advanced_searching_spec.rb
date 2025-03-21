@@ -128,9 +128,10 @@ describe 'advanced searching', advanced_search: true do
       # defaults to keyword
       fill_in(id: 'clause_0_query', with: 'gay')
       click_button('advanced-search-submit')
-      expect(page.find(".page_entries").text).to eq('1 - 2 of 2')
+      expect(page.find(".page_entries").text).to eq('1 - 3 of 3')
       expect(page).to have_content('Seeking sanctuary')
       expect(page).to have_content('RenoOut')
+      expect(page).to have_content('A day in the life of Marlon Bundo')
     end
 
     it 'can exclude terms from the search', js: false do
@@ -140,8 +141,9 @@ describe 'advanced searching', advanced_search: true do
       # defaults to title
       fill_in(id: 'clause_2_query', with: 'RenoOut')
       click_button('advanced-search-submit')
-      expect(page.find(".page_entries").text).to eq('1 entry found')
+      expect(page.find(".page_entries").text).to eq('1 - 2 of 2')
       expect(page).to have_content('Seeking sanctuary')
+      expect(page).to have_content('A day in the life of Marlon Bundo')
       expect(page).not_to have_content('Reno Gay Press and Promotions')
     end
 
@@ -153,8 +155,9 @@ describe 'advanced searching', advanced_search: true do
       select('Title', from: 'clause_1_field')
       fill_in(id: 'clause_1_query', with: 'algebra')
       click_button('advanced-search-submit')
-      expect(page.find(".page_entries").text).to eq('1 - 3 of 3')
+      expect(page.find(".page_entries").text).to eq('1 - 4 of 4')
       expect(page).to have_content('Seeking sanctuary')
+      expect(page).to have_content('A day in the life of Marlon Bundo')
       expect(page).to have_content('Reno Gay Press and Promotions')
       expect(page).to have_content('College algebra')
     end

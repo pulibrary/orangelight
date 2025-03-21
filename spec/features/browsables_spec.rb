@@ -58,11 +58,11 @@ describe 'Browsables', browse: true do
     end
     it "browses a subject heading link" do
       subject_heading_lc1 = "Piano music"
-      expect(page).to have_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape subject_heading_lc1}")
+      expect(page).to have_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape subject_heading_lc1}&vocab=lc_subject_facet")
     end
     it "browses a subject heading with subdivision link" do
       subject_heading_lc_with_subdivision = "Concertos (Piano)—Cadenzas"
-      expect(page).to have_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape subject_heading_lc_with_subdivision}")
+      expect(page).to have_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape subject_heading_lc_with_subdivision}&vocab=lc_subject_facet")
     end
   end
 
@@ -73,12 +73,12 @@ describe 'Browsables', browse: true do
     end
     it "searches a subject heading" do
       subject_heading_lc1 = "Menz family—Art patronage—Exhibitions"
-      expect(page).to have_link('Exhibitions', href: "/?f[subject_facet][]=#{CGI.escape subject_heading_lc1}")
+      expect(page).to have_link('Exhibitions', href: "/?f[lc_subject_facet][]=#{CGI.escape subject_heading_lc1}")
     end
     it "searches a subject heading with subdivision" do
       subject_heading_lc_subdivision = "Art patronage"
       subject_heading_lc_with_subdivision = "Menz family—Art patronage"
-      expect(page).to have_link(subject_heading_lc_subdivision, href: "/?f[subject_facet][]=#{CGI.escape subject_heading_lc_with_subdivision}")
+      expect(page).to have_link(subject_heading_lc_subdivision, href: "/?f[lc_subject_facet][]=#{CGI.escape subject_heading_lc_with_subdivision}")
     end
   end
 end
