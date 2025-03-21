@@ -739,7 +739,6 @@ GEM
     tilt (2.6.0)
     time (0.4.1)
       date
-    timecop (0.9.10)
     timeout (0.4.3)
     tins (1.38.0)
       bigdecimal
@@ -899,7 +898,6 @@ DEPENDENCIES
   string_rtl
   stringex!
   terser
-  timecop
   vcr
   view_component
   vite_rails

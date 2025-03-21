@@ -9,7 +9,7 @@ RSpec.describe User do
     end
     context "when there are guest users older than 3 days" do
       before do
-        Timecop.freeze(Time.now.utc - 10.days) do
+        travel_to(Time.now.utc - 10.days) do
           100.times do
             FactoryBot.create(:guest_patron, guest: true)
           end
@@ -30,7 +30,7 @@ RSpec.describe User do
     context 'when a guest user older than 3 days has bookmarks' do
       let(:guest) { FactoryBot.create(:guest_patron, guest: true) }
       before do
-        Timecop.freeze(Time.now.utc - 3.days) do
+        travel_to(Time.now.utc - 3.days) do
           (1..5).each do |document_id|
             bookmark = Bookmark.new
             bookmark.user = guest
