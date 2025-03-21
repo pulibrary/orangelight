@@ -110,6 +110,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'byebug'
   gem 'rubocop-rspec', require: false
   gem 'rubocop-rspec_rails', require: false
   gem 'rubocop-rails', require: false
@@ -118,8 +119,6 @@ group :development, :test do
   gem 'coveralls_reborn', require: false
   gem "erb_lint", require: false
   gem "erblint-github"
-  gem 'pry-byebug'
-  gem 'solargraph'
 end
 group :production do
   gem 'datadog', require: 'datadog/auto_instrument'
