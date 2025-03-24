@@ -63,93 +63,32 @@ module BrowseLists
       end
     end
 
-    # rubocop:disable Metrics/PerceivedComplexity
-    # rubocop:disable Metrics/AbcSize
-    # rubocop:disable Metrics/CyclomaticComplexity
     def browse_subject(facet_request, conn, _facet_field, table_name)
-      aat_genre_facet = 'aat_genre_facet'
-      homoit_genre_facet = 'homoit_genre_facet'
-      homoit_subject_facet = 'homoit_subject_facet'
-      lcgft_genre_facet = 'lcgft_genre_facet'
-      lc_subject_facet = 'lc_subject_facet'
-      local_subject_facet = 'local_subject_facet'
-      rbgenr_genre_facet = 'rbgenr_genre_facet'
-      siku_subject_facet = 'siku_subject_facet'
+      facets = [
+        { name: 'lc_subject_facet', label: 'Library of Congress subject heading' },
+        { name: 'aat_genre_facet', label: 'Art & architecture thesaurus' },
+        { name: 'homoit_genre_facet', label: 'Homosaurus genres' },
+        { name: 'homoit_subject_facet', label: 'Homosaurus subjects' },
+        { name: 'lcgft_genre_facet', label: 'LCGFT genres' },
+        { name: 'local_subject_facet', label: 'Local subject headings' },
+        { name: 'rbgenr_genre_facet', label: 'RBGenr genres' },
+        { name: 'siku_subject_facet', label: 'Siku subjects' }
+      ]
 
-      lc_subjects = JSON.parse(conn.get("#{facet_request}#{lc_subject_facet}").body)
-      aat = JSON.parse(conn.get("#{facet_request}#{aat_genre_facet}").body)
-      homoit_genre = JSON.parse(conn.get("#{facet_request}#{homoit_genre_facet}").body)
-      homoit_subject = JSON.parse(conn.get("#{facet_request}#{homoit_subject_facet}").body)
-      lcgft = JSON.parse(conn.get("#{facet_request}#{lcgft_genre_facet}").body)
-      local_subject = JSON.parse(conn.get("#{facet_request}#{local_subject_facet}").body)
-      rbgenr = JSON.parse(conn.get("#{facet_request}#{rbgenr_genre_facet}").body)
-      siku = JSON.parse(conn.get("#{facet_request}#{siku_subject_facet}").body)
-
-      # rubocop:disable Metrics/BlockLength
       CSV.open("/tmp/#{table_name}.csv", 'wb') do |csv|
         label = ''
-        lc_subjects['facet_counts']['facet_fields'][lc_subject_facet].each_with_index do |fac, index|
-          if index.even?
-            label = fac
-          else
-            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Library of Congress subject heading']
-          end
-        end
-        aat['facet_counts']['facet_fields'][aat_genre_facet].each_with_index do |fac, index|
-          if index.even?
-            label = fac
-          else
-            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Art & architecture thesaurus']
-          end
-        end
-        homoit_genre['facet_counts']['facet_fields'][homoit_genre_facet].each_with_index do |fac, index|
-          if index.even?
-            label = fac
-          else
-            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Homosaurus genres']
-          end
-        end
-        homoit_subject['facet_counts']['facet_fields'][homoit_subject_facet].each_with_index do |fac, index|
-          if index.even?
-            label = fac
-          else
-            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Homosaurus terms']
-          end
-        end
-        lcgft['facet_counts']['facet_fields'][lcgft_genre_facet].each_with_index do |fac, index|
-          if index.even?
-            label = fac
-          else
-            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Library of Congress genre/form terms for library and archival materials']
-          end
-        end
-        local_subject['facet_counts']['facet_fields'][local_subject_facet].each_with_index do |fac, index|
-          if index.even?
-            label = fac
-          else
-            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Locally assigned term']
-          end
-        end
-        rbgenr['facet_counts']['facet_fields'][rbgenr_genre_facet].each_with_index do |fac, index|
-          if index.even?
-            label = fac
-          else
-            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Rare books genre term']
-          end
-        end
-        siku['facet_counts']['facet_fields'][siku_subject_facet].each_with_index do |fac, index|
-          if index.even?
-            label = fac
-          else
-            csv << [label.normalize_em, fac.to_s, label, label.dir, 'Chinese traditional subjects']
+        facets.each do |facet|
+          resp = JSON.parse(conn.get("#{facet_request}#{facet[:name]}").body)
+          resp['facet_counts']['facet_fields'][facet[:name]].each_with_index do |facet_value, index|
+            if index.even?
+              label = facet_value
+            else
+              csv << [label.normalize_em, facet_value.to_s, label, label.dir, facet[:label]]
+            end
           end
         end
       end
-      # rubocop:enable Metrics/BlockLength
     end
-    # rubocop:enable Metrics/PerceivedComplexity
-    # rubocop:enable Metrics/AbcSize
-    # rubocop:enable Metrics/CyclomaticComplexity
 
     def load_facet(sql_command, _facet_request, _conn, facet_field, table_name)
       validate_csv(table_name)
