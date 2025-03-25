@@ -23,19 +23,51 @@ describe "accessibility", type: :feature, js: true do
     it "complies with wcag2aa wcag21a" do
       expect(page).to be_axe_clean
         .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
-        .excluding('#startOverLink')
-        .excluding('.blacklight-series_display[dir="ltr"]:nth-child(1) > .more-in-series[title=""]')
     end
   end
-  context "search results page" do
+  context 'search results page' do
     before do
       allow(Flipflop).to receive(:highlighting?).and_return(true)
     end
 
-    it 'complies with wcag2aa wcag21a' do
+    it 'complies with wcag2aa wcag21aa' do
       visit '/catalog?q=black+teenagers'
       expect(page).to be_axe_clean
         .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
+    end
+  end
+  context "browse list page" do
+    it 'complies with wcag2aa wcag21aa next button' do
+      visit '/browse/call_numbers?rpp=10&start=10619849'
+      expect(page).to be_axe_clean
+        .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
+        .excluding('.next')
+    end
+    it 'complies with wcag2aa wcaf21aa links and more info' do
+      visit '/browse/call_numbers?q=PN842+.S539+2006&rpp=10'
+      expect(page).to be_axe_clean
+        .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
+        .excluding('.more-info.bg-secondary')
+        .excluding('#content a')
+    end
+    it 'complies with wcag2aa wcag 21aa for the next button when disabled' do
+      # Issue: https://github.com/pulibrary/orangelight/issues/4837
+      # pending('increase contrast for next button when on the last page and disabled')
+      visit '/browse/call_numbers?rpp=10&start=10619849'
+      expect(page).to be_axe_clean.within '.next'
+    end
+    it 'complies with wcag2aa wcag 21aa for the more info status element' do
+      # Issue: https://github.com/pulibrary/orangelight/issues/4838
+      pending('increase contrast for gray more info status text on gray background in the location column')
+      visit '/browse/call_numbers?q=PN842+.S539+2006&rpp=10'
+      expect(page).to be_axe_clean
+        .within('.more-info.badge[data-record-id="SCSB-2635660"]')
+    end
+    it 'complies with wcag2aa wcag 21aa for the call number link' do
+      # Issue: https://github.com/pulibrary/orangelight/issues/4839
+      pending('increase contrast for blue link text on gray background in the call number column')
+      visit '/browse/call_numbers?q=PN842+.S539+2006&rpp=10'
+      expect(page).to be_axe_clean.within 'a[href="/catalog/9947994363506421"]'
     end
   end
 end
