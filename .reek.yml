@@ -40,7 +40,6 @@ detectors:
     exclude:
     - ApplicationController#after_sign_out_path_for
     - BookmarksController#two_values
-    - Orangelight::BrowsablesHelper#vocab_type
     - Requests::ApplicationHelper#check_box_selected
     - Requests::ApplicationHelper#hidden_service_options
     - Requests::ApplicationHelper#single_pickup
@@ -115,7 +114,6 @@ detectors:
     - BlacklightHelper#left_anchor_search?
     - BlacklightHelper#oclc_resolve
     - BlacklightHelper#pul_holdings
-    - BlacklightHelper#wildcard_char_strip
     - CatalogHelper#render_search_to_page_title
     - HoldingsHelper#first_two_holdings_block
     - HoldingsHelper#view_record_for_full_avail_li_two
@@ -701,7 +699,6 @@ detectors:
     - CatalogHelper#render_search_to_page_title
     - HoldingsHelper#first_two_holdings_block
     - HoldingsHelper#holding_block_search
-    - Orangelight::BrowsablesHelper#vocab_type
     - Requests::ApplicationHelper#available_pick_ups
     - Requests::ApplicationHelper#current_location_label
     - Requests::ApplicationHelper#display_requestable_list
@@ -877,8 +874,8 @@ detectors:
     - BlacklightHelper#json_field?
     - BlacklightHelper#linked_record_field?
     - BlacklightHelper#render_icon
-    - BlacklightHelper#wildcard_char_strip
     - Orangelight::BrowsablesHelper#bib_for_availability
+    - Orangelight::BrowsablesHelper#vocab_type
     - Requests::ApplicationHelper#aeon_base
     - Requests::ApplicationHelper#available_pick_ups
     - Requests::ApplicationHelper#check_box_selected

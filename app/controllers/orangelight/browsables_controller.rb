@@ -3,6 +3,7 @@
 class Orangelight::BrowsablesController < ApplicationController
   # GET /orangelight/names
   # GET /orangelight/names.json
+
   def index
     # if rpp isn't specified default is 50
     # if rpp has values other than 10, 25, 50, 100 then set it to 50
@@ -76,8 +77,12 @@ class Orangelight::BrowsablesController < ApplicationController
 
     def populate_search_results
       return if query_param.nil?
-
-      search_result = model_param.where('sort <= ?', search_term).order('sort').last
+      # 'subject_facet' is the default vocabulary type if there is no vocabulary type specified
+      search_result = if vocabulary_search_on_facet == 'subject_facet'
+                        model_param.where('sort <= ?', search_term).order('sort').last
+                      else
+                        model_param.where(sort: search_term).where(vocabulary: vocabulary_search_on_facet).first
+                      end
 
       return if search_result.nil?
 
@@ -89,6 +94,7 @@ class Orangelight::BrowsablesController < ApplicationController
       @search_term = search_term
       @exact_match = search_term == search_result.sort
       @match = search_result.id
+      @model == 'subjects' ? @match_vocabulary = search_result.vocabulary : nil
       @start = search_result.id - 1
       @start -= 1 if @exact_match
       @start = 1 if @start < 1
@@ -115,7 +121,7 @@ class Orangelight::BrowsablesController < ApplicationController
       if browsing_names?
         'author_s'
       elsif browsing_subjects?
-        'lc_subject_facet' || 'homoit_subject_facet' || 'homoit_genre_facet' || 'lcgft_genre_facet' || 'local_subject_facet' || 'rbgenr_genre_facet' || 'aat_genre_facet' || 'siku_subject_facet'
+        vocab_param
       elsif browsing_titles?
         'name_title_browse_s'
       end
@@ -125,6 +131,27 @@ class Orangelight::BrowsablesController < ApplicationController
     # @return [Class]
     def model_param
       params[:model]
+    end
+
+    def vocab_param
+      params[:vocab]
+    end
+
+    def vocabulary_search_on_facet
+      # TODO: move vocab_types to a config file
+      # the hash also exists in vocab_type method
+      vocab_types = {
+        'Library of Congress subject heading' => 'lc_subject_facet',
+        'Library of Congress genre/form terms for library and archival materials' => 'lcgft_genre_facet',
+        'Art & architecture thesaurus' => 'aat_genre_facet',
+        'Homosaurus terms' => 'homoit_subject_facet',
+        'Homosaurus genres' => 'homoit_genre_facet',
+        'Rare books genre term' => 'rbgenr_genre_facet',
+        'Chinese traditional subjects' => 'siku_subject_facet',
+        'Locally assigned term' => 'local_subject_facet'
+      }
+      vocab_types_invert = vocab_types.invert
+      vocab_types_invert.fetch(vocab_param, 'subject_facet')
     end
 
     # Generates the name of the table mapped to the model in the request

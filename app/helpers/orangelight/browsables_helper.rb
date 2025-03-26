@@ -31,9 +31,9 @@ module Orangelight
         'Homosaurus genres' => 'homoit_genre_facet',
         'Rare books genre term' => 'rbgenr_genre_facet',
         'Chinese traditional subjects' => 'siku_subject_facet',
-        'Locally assigned term' => 'local_subject_facet',
+        'Locally assigned term' => 'local_subject_facet'
       }
-      return vocab_types.fetch(vocab, 'subject_facet')
+      vocab_types.fetch(vocab, 'subject_facet')
     end
   end
 end
