@@ -9,7 +9,7 @@
         <tbody >
           <% @orangelight_browsables.each_with_index do |orangelight_subject, i| %>
             <% facet_field = vocab_type(orangelight_subject.vocabulary) %>
-            <% if orangelight_subject.id == @match && @exact_match %>
+            <% if (orangelight_subject.id == @match && @exact_match) && (orangelight_subject.vocabulary == @match_vocabulary) %>
               <tr class="alert alert-info clickable-row" data-href="/catalog/?f[<%=facet_field%>][]=<%=CGI.escape orangelight_subject.label%>">
                 <strong>
             <% else %>
