@@ -52,7 +52,7 @@ describe "accessibility", type: :feature, js: true do
     end
     it 'complies with wcag2aa wcag 21aa for the next button when disabled' do
       # Issue: https://github.com/pulibrary/orangelight/issues/4837
-      # pending('increase contrast for next button when on the last page and disabled')
+      pending('increase contrast for next button when on the last page and disabled')
       visit '/browse/call_numbers?rpp=10&start=10619849'
       expect(page).to be_axe_clean.within '.next'
     end
