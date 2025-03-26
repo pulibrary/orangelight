@@ -66,13 +66,13 @@ module BrowseLists
     def browse_subject(facet_request, conn, _facet_field, table_name)
       facets = [
         { name: 'lc_subject_facet', label: 'Library of Congress subject heading' },
-        { name: 'aat_genre_facet', label: 'Art & architecture thesaurus' },
-        { name: 'homoit_genre_facet', label: 'Homosaurus genres' },
-        { name: 'homoit_subject_facet', label: 'Homosaurus terms' },
         { name: 'lcgft_genre_facet', label: 'Library of Congress genre/form terms for library and archival materials' },
-        { name: 'local_subject_facet', label: 'Locally assigned term' },
+        { name: 'aat_genre_facet', label: 'Art & architecture thesaurus' },
+        { name: 'homoit_subject_facet', label: 'Homosaurus terms' },
+        { name: 'homoit_genre_facet', label: 'Homosaurus genres' },
         { name: 'rbgenr_genre_facet', label: 'Rare books genre term' },
-        { name: 'siku_subject_facet', label: 'Chinese traditional subjects' }
+        { name: 'siku_subject_facet', label: 'Chinese traditional subjects' },
+        { name: 'local_subject_facet', label: 'Locally assigned term' }
       ]
 
       CSV.open("/tmp/#{table_name}.csv", 'wb') do |csv|

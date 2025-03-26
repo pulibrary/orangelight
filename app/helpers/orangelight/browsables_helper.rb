@@ -23,24 +23,17 @@ module Orangelight
     end
 
     def vocab_type(vocab)
-      case vocab
-      when 'Art & architecture thesaurus'
-        'aat_genre_facet'
-      when 'Homosaurus genres'
-        'homoit_genre_facet'
-      when 'Homosaurus terms'
-        'homoit_subject_facet'
-      when 'Library of Congress genre/form terms for library and archival materials'
-        'lcgft_genre_facet'
-      when 'Locally assigned term'
-        'local_subject_facet'
-      when 'Rare books genre term'
-        'rbgenr_genre_facet'
-      when 'Chinese traditional subjects'
-        'siku_subject_facet'
-      else
-        'lc_subject_facet'
-      end
+      vocab_types = {
+        'Library of Congress subject heading' => 'lc_subject_facet',
+        'Library of Congress genre/form terms for library and archival materials' => 'lcgft_genre_facet',
+        'Art & architecture thesaurus' => 'aat_genre_facet',
+        'Homosaurus terms' => 'homoit_subject_facet',
+        'Homosaurus genres' => 'homoit_genre_facet',
+        'Rare books genre term' => 'rbgenr_genre_facet',
+        'Chinese traditional subjects' => 'siku_subject_facet',
+        'Locally assigned term' => 'local_subject_facet',
+      }
+      return vocab_types.fetch(vocab, 'subject_facet')
     end
   end
 end
