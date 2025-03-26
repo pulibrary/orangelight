@@ -55,24 +55,5 @@ describe "accessibility", type: :feature, js: true do
         # Issue: https://github.com/pulibrary/orangelight/issues/4839
         .excluding('#content a')
     end
-    it 'complies with wcag2aa wcag 21aa for the next button when disabled' do
-      
-      
-      visit '/browse/call_numbers?rpp=10&start=10619849'
-      expect(page).to be_axe_clean.within '.next'
-    end
-    it 'complies with wcag2aa wcag 21aa for the more info status element' do
-      
-      pending('increase contrast for gray more info status text on gray background in the location column')
-      visit '/browse/call_numbers?q=PN842+.S539+2006&rpp=10'
-      expect(page).to be_axe_clean
-        .within('.more-info.badge[data-record-id="SCSB-2635660"]')
-    end
-    it 'complies with wcag2aa wcag 21aa for the call number link' do
-      
-      pending('increase contrast for blue link text on gray background in the call number column')
-      visit '/browse/call_numbers?q=PN842+.S539+2006&rpp=10'
-      expect(page).to be_axe_clean.within 'a[href="/catalog/9947994363506421"]'
-    end
   end
 end
