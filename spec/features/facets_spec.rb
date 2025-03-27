@@ -102,7 +102,7 @@ describe 'Facets' do
         # Displays all 3 place of publication classes
         expect(page.all('.h-node').length).to eq(3)
         # The A class contains two subclasses
-        expect(page.all('.h-node')[2].all('.h-leaf').length).to eq(6)
+        expect(page.all('.h-node')[2].all('.h-leaf').length).to eq(7)
       end
     end
   end
