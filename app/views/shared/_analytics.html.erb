@@ -8,4 +8,7 @@
   gtag('config', 'G-GR4L7BBS5K', {
     'cookie_domain': window.location.hostname
   });
+  window.StackMapPopupCallback = function () {
+    gtag('event', 'stackmap_clicks');
+  }
 </script>
