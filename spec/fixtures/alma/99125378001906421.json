@@ -90,6 +90,18 @@
     "Sanitation workers—Juvenile fiction",
     "Strikes and lockouts—China—Hong Kong—Juvenile fiction"
   ],
+  "lc_subject_facet": [
+    "Sheep",
+    "Sheep—Juvenile fiction",
+    "Wolves",
+    "Wolves—Juvenile fiction",
+    "Sanitation workers",
+    "Sanitation workers—Juvenile fiction",
+    "Strikes and lockouts",
+    "Strikes and lockouts—China",
+    "Strikes and lockouts—China—Hong Kong",
+    "Strikes and lockouts—China—Hong Kong—Juvenile fiction"
+  ],
   "subject_facet": [
     "Sheep—Juvenile fiction",
     "Wolves—Juvenile fiction",
@@ -100,6 +112,9 @@
   "lcgft_s": [
     "Picture books"
   ],
+  "lcgft_genre_facet": [
+        "Picture books"
+    ],
   "related_name_json_1display": "{\"Illustrator\":[\"rainection\",\"熱奶茶\"],\"Author\":[\"Xianggang yan yu zhi liao shi zong gong hui\",\"香港言語治療師總工會\"],\"Issuing body\":[\"Xianggang yan yu zhi liao shi zong gong hui\",\"香港言語治療師總工會\"]}",
   "oclc_s": [
     "1263694603"
