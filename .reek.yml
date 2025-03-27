@@ -69,6 +69,7 @@ detectors:
     - Orangelight::ConstraintComponent#constraint_value
     - Orangelight::ConstraintComponent#old_style_params?
     - Orangelight::ConstraintsComponent#guided_search_value
+    - Orangelight::ProcessVocabularyComponent#build_search_subject_links
     - Orangelight::ProcessVocabularyComponent#subjectify
     - Orangelight::SearchBarComponent#before_render
     - RequestButtonComponent#scsb_supervised_items?
@@ -113,7 +114,6 @@ detectors:
     - BlacklightHelper#left_anchor_search?
     - BlacklightHelper#oclc_resolve
     - BlacklightHelper#pul_holdings
-    - BlacklightHelper#wildcard_char_strip
     - CatalogHelper#render_search_to_page_title
     - HoldingsHelper#first_two_holdings_block
     - HoldingsHelper#view_record_for_full_avail_li_two
@@ -666,7 +666,6 @@ detectors:
     - BibdataStatus#check!
     - Holdings::OnlineHoldingsComponent#marc_links
     - Orangelight::ConstraintsComponent#guided_search_value
-    - Orangelight::ProcessVocabularyComponent#build_search_subject_links
     - Orangelight::ProcessVocabularyComponent#build_subject_list
     - Orangelight::ProcessVocabularyComponent#subjectify
     - Orangelight::SearchBarComponent#before_render
@@ -875,8 +874,8 @@ detectors:
     - BlacklightHelper#json_field?
     - BlacklightHelper#linked_record_field?
     - BlacklightHelper#render_icon
-    - BlacklightHelper#wildcard_char_strip
     - Orangelight::BrowsablesHelper#bib_for_availability
+    - Orangelight::BrowsablesHelper#vocab_type
     - Requests::ApplicationHelper#aeon_base
     - Requests::ApplicationHelper#available_pick_ups
     - Requests::ApplicationHelper#check_box_selected
