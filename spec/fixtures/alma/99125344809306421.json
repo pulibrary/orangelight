@@ -1,28 +1,55 @@
 {
-  "id": "99125344809306421",
-  "numeric_id_b": true,
+  "id": [
+    "99125344809306421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
   "author_display": [
+    "Eisgruber, Christopher L."
+  ],
+  "author_sort": [
     "Eisgruber, Christopher L."
   ],
   "author_citation_display": [
     "Eisgruber, Christopher L."
   ],
-  "author_roles_1display": "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Eisgruber, Christopher L.\"}",
+  "author_roles_1display": [
+    "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Eisgruber, Christopher L.\"}"
+  ],
   "author_s": [
     "Eisgruber, Christopher L."
   ],
   "marc_relator_display": [
     "Author"
   ],
-  "title_display": "The next justice [electronic resource] : repairing the Supreme Court appointments process / Christopher L. Eisgruber.",
+  "title_display": [
+    "The next justice : repairing the Supreme Court appointments process / Christopher L. Eisgruber."
+  ],
+  "title_a_index": [
+    "The next justice"
+  ],
+  "title_sort": [
+    "next justice : repairing the Supreme Court appointments process / Christopher L. Eisgruber."
+  ],
+  "title_no_h_index": [
+    "The next justice : repairing the Supreme Court appointments process / Christopher L. Eisgruber.",
+    "next justice : repairing the Supreme Court appointments process / Christopher L. Eisgruber."
+  ],
   "title_t": [
-    "The next justice [electronic resource] : repairing the Supreme Court appointments process / Christopher L. Eisgruber."
+    "The next justice : repairing the Supreme Court appointments process / Christopher L. Eisgruber."
   ],
   "title_citation_display": [
-    "The next justice repairing the Supreme Court appointments process"
+    "The next justice : repairing the Supreme Court appointments process"
   ],
   "compiled_created_t": [
-    "The next justice [electronic resource] : repairing the Supreme Court appointments process / Christopher L. Eisgruber."
+    "The next justice : repairing the Supreme Court appointments process / Christopher L. Eisgruber."
   ],
   "edition_display": [
     "Course Book"
@@ -36,11 +63,24 @@
   "pub_citation_display": [
     "Princeton: Princeton University Press"
   ],
+  "publication_location_citation_display": [
+    "Princeton"
+  ],
+  "publisher_citation_display": [
+    "Princeton University Press"
+  ],
   "pub_date_display": [
     "2007"
   ],
-  "pub_date_start_sort": 2007,
-  "cataloged_tdt": "2021-07-25T05:30:20Z",
+  "pub_date_start_sort": [
+    "2007"
+  ],
+  "publication_date_citation_display": [
+    "2007"
+  ],
+  "cataloged_tdt": [
+    "2021-07-25T05:30:20Z"
+  ],
   "format": [
     "Book"
   ],
@@ -56,6 +96,14 @@
   "geocode_display": [
     "United States"
   ],
+  "notes_index": [
+    "Description based upon print version of record.",
+    "English",
+    "The Supreme Court appointments process is broken, and the timing couldn't be worse--for liberals or conservatives. The Court is just one more solid conservative justice away from an ideological sea change--a hard-right turn on an array of issues that affect every American, from abortion to environmental protection. But neither those who look at this prospect with pleasure nor those who view it with horror will be able to make informed judgments about the next nominee to the Court--unless the appointments process is fixed now. In The Next Justice, Christopher Eisgruber boldly proposes a way to do just that. He describes a new and better manner of deliberating about who should serve on the Court--an approach that puts the burden on nominees to show that their judicial philosophies and politics are acceptable to senators and citizens alike. And he makes a new case for the virtue of judicial moderates. Long on partisan rancor and short on serious discussion, today's appointments process reveals little about what kind of judge a nominee might make. Eisgruber argues that the solution is to investigate how nominees would answer a basic question about the Court's role: When and why is it beneficial for judges to trump the decisions of elected officials? Through an examination of the politics and history of the Court, Eisgruber demonstrates that pursuing this question would reveal far more about nominees than do other tactics, such as investigating their views of specific precedents or the framers' intentions. Written with great clarity and energy, The Next Justice provides a welcome exit from the uninformative political theater of the current appointments process.",
+    "Issued also in print.",
+    "Includes bibliographical references and index.",
+    "A broken process in partisan times -- Why judges cannot avoid political controversy -- The incoherence of judicial restraint -- Politics at the court -- Why judges sometimes agree when politicians cannot -- Judicial philosophies and why they matter -- How presidents have raised the stakes -- Should the Senate defer to the president? -- How to change the hearings -- What kinds of justices should we want? -- The path forward."
+  ],
   "summary_note_display": [
     "The Supreme Court appointments process is broken, and the timing couldn't be worse--for liberals or conservatives. The Court is just one more solid conservative justice away from an ideological sea change--a hard-right turn on an array of issues that affect every American, from abortion to environmental protection. But neither those who look at this prospect with pleasure nor those who view it with horror will be able to make informed judgments about the next nominee to the Court--unless the appointments process is fixed now. In The Next Justice, Christopher Eisgruber boldly proposes a way to do just that. He describes a new and better manner of deliberating about who should serve on the Court--an approach that puts the burden on nominees to show that their judicial philosophies and politics are acceptable to senators and citizens alike. And he makes a new case for the virtue of judicial moderates. Long on partisan rancor and short on serious discussion, today's appointments process reveals little about what kind of judge a nominee might make. Eisgruber argues that the solution is to investigate how nominees would answer a basic question about the Court's role: When and why is it beneficial for judges to trump the decisions of elected officials? Through an examination of the politics and history of the Court, Eisgruber demonstrates that pursuing this question would reveal far more about nominees than do other tactics, such as investigating their views of specific precedents or the framers' intentions. Written with great clarity and energy, The Next Justice provides a welcome exit from the uninformative political theater of the current appointments process."
   ],
@@ -68,37 +116,118 @@
   "language_display": [
     "English"
   ],
+  "language_name_display": [
+    "English"
+  ],
   "language_facet": [
     "English"
   ],
-  "language_code_s": [
-    "eng"
+  "publication_place_facet": [
+    "New Jersey"
   ],
   "language_iana_s": [
     "en"
   ],
   "contents_display": [
-    "A broken process in partisan times -- Why judges cannot avoid political controversy -- The incoherence of judicial restraint -- Politics at the court -- Why judges sometimes agree when politicians cannot -- Judicial philosophies and why they matter -- How presidents have raised the stakes -- Should the Senate defer to the president? -- How to change the hearings -- What kinds of justices should we want? -- The path forward."
+    "A broken process in partisan times",
+    "Why judges cannot avoid political controversy",
+    "The incoherence of judicial restraint",
+    "Politics at the court",
+    "Why judges sometimes agree when politicians cannot",
+    "Judicial philosophies and why they matter",
+    "How presidents have raised the stakes",
+    "Should the Senate defer to the president?",
+    "How to change the hearings",
+    "What kinds of justices should we want?",
+    "The path forward."
+  ],
+  "other_format_display": [
+    "Issued also in print."
   ],
   "lc_subject_display": [
     "Judges—Selection and appointment—United States",
     "Political questions and judicial power—United States",
-    "United States. Supreme Court—Officials and employees—Selection and appointment"
+    "United States Supreme Court—Officials and employees—Selection and appointment"
   ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "Judges—Selection and appointment—United States",
+    "Political questions and judicial power—United States",
+    "United States Supreme Court—Officials and employees—Selection and appointment"
+  ],
+  "subject_unstem_search": [
+    "Judges—Selection and appointment—United States",
+    "Political questions and judicial power—United States",
+    "United States Supreme Court—Officials and employees—Selection and appointment"
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": null,
+  "fast_subject_unstem_search": null,
   "subject_facet": [
     "Judges—Selection and appointment—United States",
     "Political questions and judicial power—United States",
-    "United States. Supreme Court—Officials and employees—Selection and appointment"
+    "United States Supreme Court—Officials and employees—Selection and appointment"
+  ],
+  "lc_subject_facet": [
+    "Judges",
+    "Judges—Selection and appointment",
+    "Judges—Selection and appointment—United States",
+    "Political questions and judicial power",
+    "Political questions and judicial power—United States",
+    "United States Supreme Court",
+    "United States Supreme Court—Officials and employees",
+    "United States Supreme Court—Officials and employees—Selection and appointment"
+  ],
+  "publication_place_hierarchical_facet": [
+    "United States",
+    "United States:New Jersey"
+  ],
+  "geographic_facet": [
+    "United States"
+  ],
+  "subject_topic_facet": [
+    "Judges",
+    "Selection and appointment",
+    "United States",
+    "Political questions and judicial power",
+    "United States Supreme Court",
+    "Officials and employees"
+  ],
+  "lc_1letter_facet": [
+    "K - Law"
+  ],
+  "lc_rest_facet": [
+    "KF - Law of the U.S."
+  ],
+  "lc_facet": [
+    "K - Law",
+    "K - Law:KF - Law of the U.S."
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "K - Law"
+  ],
+  "call_number_full_facet": [
+    "KF - Law of the U.S."
   ],
   "isbn_display": [
-    "1-4008-2782-5",
     "9786612569289",
-    "1-282-56928-7"
-  ],
-  "standard_no_1display": "{\"Doi\":[\"10.1515/9781400827824\"]}",
-  "isbn_s": [
     "9781400827824",
+    "1400827825",
+    "9781282569287",
+    "1282569287"
+  ],
+  "standard_no_024_index": [
+    "10.1515/9781400827824"
+  ],
+  "standard_no_1display": [
+    "{\"Doi\":[\"10.1515/9781400827824\"]}"
+  ],
+  "isbn_s": [
     "9786612569289",
+    "9781400827824",
     "9781282569287"
   ],
   "oclc_s": [
@@ -106,9 +235,30 @@
     "642206027",
     "979592496"
   ],
-  "other_version_s": [
+  "standard_no_index": [
+    "2670000000057647",
+    "517061",
+    "638859401",
+    "ssj0000424098",
+    "11311008",
+    "TC0000424098",
+    "10468868",
+    "11482987",
+    "642206027",
+    "muse43032",
+    "453562",
+    "979592496",
     "9781400827824",
+    "EBL517061",
+    "ebr10386064",
+    "MIL256928",
+    "EBC517061",
+    "734495",
+    "992670000000057647"
+  ],
+  "other_version_s": [
     "9786612569289",
+    "9781400827824",
     "9781282569287",
     "ocn638859401",
     "ocn642206027",
@@ -120,6 +270,10 @@
     "Eisgruber, Christopher L.. The next justice"
   ],
   "electronic_portfolio_s": [
+    "{\"desc\":null,\"title\":\"De Gruyter Princeton University Press eBook-Package Backlist 2000-2013\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53991607810006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}",
     "{\"desc\":null,\"title\":\"Ebook Central Perpetual, DDA and Subscription Titles\",\"url\":\"https://na05.alma.exlibrisgroup.com/view/uresolver/01PRI_INST/openurl?u.ignore_date_coverage=true&portfolio_pid=53890917920006421&Force_direct=true\",\"start\":null,\"end\":\"latest\",\"notes\":[]}"
+  ],
+  "access_facet": [
+    "Online"
   ]
 }
