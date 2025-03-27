@@ -934,7 +934,6 @@ detectors:
     - Requests::Submissions::ClancyEdd#hold_id
     - Requests::Submissions::Illiad#success_message
     - SearchBuilder#cleaned_query
-    - SearchBuilder#using_json_query_dsl
     - SolrDocument#clean_ids
     - SolrDocument#doc_by_id
     - SolrDocument#ensure_voyager_to_alma_id

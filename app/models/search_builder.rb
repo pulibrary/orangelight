@@ -66,10 +66,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   def advanced_search?
     blacklight_params[:advanced_type] == 'advanced' ||
       search_state.controller.try(:params).try(:[], :action) == 'advanced_search' ||
-      blacklight_params[:advanced_type] == 'numismatics' ||
-      # The next two are required for the advanced search gem
-      blacklight_params[:search_field] == 'advanced' ||
-      blacklight_params[:action] == 'numismatics'
+      blacklight_params[:advanced_type] == 'numismatics'
   end
 
   ##
@@ -135,10 +132,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     def q_param_needs_boolean_cleanup(solr_parameters)
       solr_parameters[:q].present? &&
         cleaned_query(solr_parameters[:q]) == solr_parameters[:q]
-    end
-
-    def using_json_query_dsl(solr_parameters)
-      solr_parameters.fetch('json', nil)&.fetch('query', nil)&.fetch('bool', nil)&.fetch('must', nil)&.present?
     end
 
     def add_edismax(advanced_fields:)
