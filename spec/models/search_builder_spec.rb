@@ -266,4 +266,44 @@ RSpec.describe SearchBuilder do
       expect(query['json']['query']['bool']['must'][0][:edismax][:query]).to eq 'China and Angola: a marriage of convenience'
     end
   end
+
+  describe '#fancy_booleans', advanced_search: true do
+    describe 'plain query' do
+      let(:params) { { "json" => { "query" => { "bool" => { "must" => [{ edismax: { query: "apple" } }] } } } } }
+
+      it 'does not change the query' do
+        expect do
+          search_builder.fancy_booleans(params)
+        end.not_to change { params }
+      end
+    end
+    describe 'OR in a single advanced search field' do
+      let(:params) { { "json" => { "query" => { "bool" => { "must" => [{ edismax: { query: "apple OR banana" } }] } } } } }
+      let(:output_params) { { "json" => { "query" => { "bool" => { "should" => [{ edismax: { query: "apple" } }, { edismax: { query: "banana" } }] } } } } }
+      it 'puts the query in should clauses' do
+        expect do
+          search_builder.fancy_booleans(params)
+        end.to change { params }
+        expect(params).to eq(output_params)
+      end
+    end
+    describe 'using OR across fields' do
+      let(:params) { { "json" => { "query" => { "bool" => { "should" => [{ edismax: { query: "apple" } }, { edismax: { query: "banana" } }] } } } } }
+      it 'does not change the query' do
+        expect do
+          search_builder.fancy_booleans(params)
+        end.not_to change { params }
+      end
+    end
+    describe 'using OR and implicit AND' do
+      let(:params) { { "json" => { "query" => { "bool" => { "must" => [{ edismax: { query: "apple OR squishy" } }, { edismax: { query: "cantaloupe date" } }] } } } } }
+      let(:output_params) { { "json" => { "query" => { "bool" => { "must" => [{ edismax: { query: "cantaloupe date" } }], "should" => [{ edismax: { query: "apple" } }, { edismax: { query: "squishy" } }] } } } } }
+      it 'puts the OR query in should clauses' do
+        expect do
+          search_builder.fancy_booleans(params)
+        end.to change { params }
+        expect(params).to eq(output_params)
+      end
+    end
+  end
 end

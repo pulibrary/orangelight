@@ -8,8 +8,8 @@ class SearchBuilder < Blacklight::SearchBuilder
   default_processor_chain.unshift(:conditionally_configure_json_query_dsl)
 
   self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators
-                                     cjk_mm wildcard_char_strip
-                                     only_home_facets prepare_left_anchor_search
+                                     cjk_mm wildcard_char_strip 
+                                     only_home_facets prepare_left_anchor_search fancy_booleans
                                      series_title_results pul_holdings html_facets
                                      numismatics_facets numismatics_advanced
                                      adjust_mm remove_unneeded_facets]
@@ -18,6 +18,32 @@ class SearchBuilder < Blacklight::SearchBuilder
   # boolean operators, but not intended as such.
   def cleanup_boolean_operators(solr_parameters)
     transform_queries!(solr_parameters) { |query| cleaned_query(query) }
+  end
+
+  def fancy_booleans(solr_parameters)
+    # byebug if solr_parameters.dig('json')
+    solr_parameters.dig('json', 'query', 'bool', 'must')
+    # Find phrase with OR
+    phrases_with_or = solr_parameters.dig('json', 'query', 'bool', 'must')&.select do |clause|
+      clause[:edismax][:query].include?('OR')
+    end
+    # take phrase with OR out of "must" array
+    phrases_with_or&.each do |phrase|
+      solr_parameters['json']['query']['bool']['must'].delete(phrase)
+    end
+    # split into individual phrases for each part of "should" and put in "should" array
+    should_array = []
+    phrases_with_or&.map do |phrase|
+      sub_phrases = phrase[:edismax][:query].split(' OR ')
+      sub_phrases.each do |sub_phrase|
+        should_array << { edismax: { query: sub_phrase } }
+      end
+    end
+    # create "should" clause
+    solr_parameters['json']['query']['bool']['should'] = should_array if should_array.present?
+
+    return unless solr_parameters.dig('json', 'query', 'bool', 'must') && solr_parameters.dig('json', 'query', 'bool', 'must').empty?
+    solr_parameters['json']['query']['bool'].delete('must')
   end
 
   # Blacklight uses Parslet https://rubygems.org/gems/parslet/versions/2.0.0 to parse the user query
@@ -87,7 +113,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     # don't want to cancel out the boolean OR with
     # an mm configuration that requires all the clauses
     # to be in the document
-    return unless includes_written_boolean?
+    return unless blacklight_params[:q].to_s.split.include? 'OR'
     solr_parameters['mm'] = 0
   end
 
