@@ -66,6 +66,23 @@ describe 'Browsables', browse: true do
     end
   end
 
+  describe 'subject browse search results' do
+    before do
+      stub_holding_locations
+      visit '/catalog/99131369190806421'
+    end
+    it 'if there are more than one results it highlights the search target value' do
+      subject_heading_lc1 = "Fairy tales"
+      expect(page).to have_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape subject_heading_lc1}&vocab=lc_subject_facet")
+
+      click_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape subject_heading_lc1}&vocab=lc_subject_facet")
+      expect(page).to have_content('fairy tales')
+      within('.alert.alert-info') do
+        expect(page).to have_content('Fairy tales')
+      end
+    end
+  end
+
   describe 'Search subject links' do
     before do
       stub_holding_locations
