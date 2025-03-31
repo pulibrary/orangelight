@@ -48,6 +48,17 @@ describe 'advanced searching', advanced_search: true do
     expect(page).not_to have_content("Огонек : роман")
   end
 
+  it 'allows searching by publication place', js: true do
+    visit '/advanced'
+    expect(page).to have_selector('label', exact_text: 'Place of publication')
+    publication_place_input = find_field('publication_place_facet')
+    publication_place_input.click
+    drop_down = publication_place_input.sibling(".dropdown-menu")
+    expect(drop_down).to have_content("Russia (Federation)")
+    publication_place_input.fill_in(with: "sy")
+    expect(drop_down).to have_content("Syria")
+  end
+
   it 'has a pul option in the holding location select', js: true do
     visit '/advanced'
     expect(page).to have_selector('label', exact_text: 'Holding location')
@@ -63,6 +74,13 @@ describe 'advanced searching', advanced_search: true do
     find('#range_pub_date_start_sort_end').fill_in(with: '1995')
     click_button('advanced-search-submit')
     expect(page).to have_content('Aomen')
+  end
+
+  it 'allows users to use booleans within a query' do
+    visit '/advanced'
+    fill_in(id: 'clause_0_query', with: 'history OR abolition')
+    click_button('advanced-search-submit')
+    expect(page).to have_content('Themes and individuals in history')
   end
 
   context 'when editing the search', js: true do
@@ -90,7 +108,7 @@ describe 'advanced searching', advanced_search: true do
 
     it 'has the expected facets' do
       visit '/advanced'
-      expect(page.find_all('.advanced-facet-label').map(&:text)).to match_array(["Access", "Format", "Language", "Holding location", "Publication year"])
+      expect(page.find_all('.advanced-facet-label').map(&:text)).to match_array(["Access", "Format", "Language", "Holding location", "Publication year", "Place of publication"])
     end
 
     it 'renders an accessible button for starting over the search' do
@@ -180,11 +198,24 @@ describe 'advanced searching', advanced_search: true do
 
       expect(page).to have_field('Format', with: /Audio/)
     end
+
+    it 'can do an advanced search with updated criteria' do
+      visit '/advanced'
+      fill_in 'clause_0_query', with: 'gay'
+      click_button 'Search'
+      expect(page).to have_content('Seeking sanctuary')
+      click_link('Edit search')
+      expect(page).to have_content('Keyword:gay')
+      fill_in('clause_0_query', with: 'dance', fill_options: { clear: :backspace })
+      click_button 'Search'
+      expect(page).not_to have_content('Seeking sanctuary')
+      expect(page).to have_content('Dancing Black')
+    end
   end
 
   it 'can edit a facet-only search' do
     visit '/?f[subject_topic_facet][]=Manuscripts%2C+Arabic&search_field=all_fields'
-    expect(page).to have_content '1 - 6 of 6'
+    expect(page).to have_content '1 - 8 of 8'
 
     click_link 'Edit search'
     fill_in 'clause_0_query', with: 'literature'
@@ -234,5 +265,17 @@ describe 'advanced searching', advanced_search: true do
     fill_in(id: 'clause_0_query', with: 'Turkish')
     click_button 'Search'
     expect(page).not_to have_content 'Ahmet Kutsi Tecer sempozyum bildirileri : Sıvas 24 - 27 Nisan 2018'
+  end
+  it 'does not treat a question mark at the end of a phrase as a keyword' do
+    visit '/advanced'
+    select('Keyword', from: 'clause_0_field')
+    fill_in(id: 'clause_0_query', with: 'Parrish')
+    select('Author', from: 'clause_1_field')
+    fill_in(id: 'clause_1_query', with: 'Trollope, Anthony​​​')
+    select('Title', from: 'clause_2_field')
+    fill_in(id: 'clause_2_query', with: 'Can You Forgive Her?​​​')
+    click_button 'Search'
+
+    expect(page).to have_content('Can you forgive her? / by Anthony Trollope ... ; with 40 illustrations.')
   end
 end

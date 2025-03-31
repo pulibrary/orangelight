@@ -123,6 +123,10 @@
         "publication_place_facet": [
             "Massachusetts"
         ],
+        "publication_place_hierarchical_facet": [
+            "United States",
+            "United States:Massachusetts"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -361,6 +365,10 @@
         "publication_place_facet": [
             "England"
         ],
+        "publication_place_hierarchical_facet": [
+            "United Kingdom",
+            "United Kingdom:England"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -549,6 +557,10 @@
         ],
         "publication_place_facet": [
             "District of Columbia"
+        ],
+        "publication_place_hierarchical_facet": [
+            "United States",
+            "United States:District of Columbia"
         ],
         "language_iana_s": [
             "en"
@@ -766,6 +778,10 @@
         ],
         "publication_place_facet": [
             "England"
+        ],
+        "publication_place_hierarchical_facet": [
+            "United Kingdom",
+            "United Kingdom:England"
         ],
         "language_iana_s": [
             "en"
@@ -1009,6 +1025,10 @@
         "publication_place_facet": [
             "England"
         ],
+        "publication_place_hierarchical_facet": [
+            "United Kingdom",
+            "United Kingdom:England"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -1184,6 +1204,9 @@
             "Portuguese"
         ],
         "publication_place_facet": [
+            "Brazil"
+        ],
+        "publication_place_hierarchical_facet": [
             "Brazil"
         ],
         "language_iana_s": [
@@ -1405,6 +1428,10 @@
         "publication_place_facet": [
             "District of Columbia"
         ],
+        "publication_place_hierarchical_facet": [
+            "United States",
+            "United States:District of Columbia"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -1578,6 +1605,10 @@
         ],
         "publication_place_facet": [
             "Massachusetts"
+        ],
+        "publication_place_hierarchical_facet": [
+            "United States",
+            "United States:Massachusetts"
         ],
         "language_iana_s": [
             "en"

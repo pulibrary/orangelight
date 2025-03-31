@@ -107,6 +107,10 @@
     "publication_place_facet": [
         "District of Columbia"
     ],
+    "publication_place_hierarchical_facet": [
+        "United States",
+        "United States:District of Columbia"
+    ],
     "language_iana_s": [
         "en"
     ],

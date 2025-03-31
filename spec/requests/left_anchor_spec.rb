@@ -31,13 +31,9 @@ RSpec.describe "left anchor search", left_anchor: true do
 
   context 'with punctuation marks in the title' do
     it 'handles whitespace characters padding punctuation' do
-      get '/catalog.json?search_field=left_anchor&q=JSTOR+%5Belectronic+resource%5D+%3A'
+      get '/catalog.json?search_field=left_anchor&q=1Q84%20[electronic%20resource]%20/%20Haruki%20Murakami%20'
       r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
-
-      get '/catalog.json?search_field=left_anchor&q=JSTOR+%5Belectronic+resource%5D%3A'
-      r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
+      expect(r['data'].any? { |d| d['id'] == '9976174773506421' }).to eq true
     end
   end
 
@@ -88,19 +84,19 @@ RSpec.describe "left anchor search", left_anchor: true do
   end
   context 'with punctuation marks in the title' do
     it 'handles whitespace characters padding punctuation in the left_anchor field', left_anchor: true do
-      get '/catalog.json?clause[0][field]=left_anchor&clause[0][query]=JSTOR+%5Belectronic+resource%5D+%3A&op2='\
+      get '/catalog.json?clause[0][field]=left_anchor&clause[0][query]=1Q84%20[electronic%20resource]%20/%20Haruki%20Murakami%20+%3A&op2='\
           'AND&clause[1][field]=author&clause[1][query]=&clause[2][op]=must&clause[2][field]=title&clause[2][query]=&range%5Bpub_date_start_sort%5D%5Bbegin%5D='\
           '&range%5Bpub_date_start_sort%5D%5Bend%5D=&sort=score+desc%2C+pub_date_start_sort'\
           '+desc%2C+title_sort+asc&search_field=advanced&commit=Search'
       r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
+      expect(r['data'].any? { |d| d['id'] == '9976174773506421' }).to eq true
 
-      get '/catalog.json?clause[0][field]=left_anchor&clause[0][query]=JSTOR+%5Belectronic+resource%5D%3A&op2='\
+      get '/catalog.json?clause[0][field]=left_anchor&clause[0][query]=1Q84%20[electronic%20resource]%20/%20Haruki%20Murakami%20&op2='\
           'AND&clause[1][field]=author&clause[1][query]=&clause[2][op]=must&clause[2][field]=title&clause[2][query]=&range%5Bpub_date_start_sort%5D%5Bbegin%5D='\
           '&range%5Bpub_date_start_sort%5D%5Bend%5D=&sort=score+desc%2C+pub_date_start_sort'\
           '+desc%2C+title_sort+asc&search_field=advanced&commit=Search'
       r = JSON.parse(response.body)
-      expect(r['data'].any? { |d| d['id'] == '9928379683506421' }).to eq true
+      expect(r['data'].any? { |d| d['id'] == '9976174773506421' }).to eq true
     end
   end
   context 'in_series field' do

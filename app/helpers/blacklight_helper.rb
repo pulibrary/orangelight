@@ -14,11 +14,6 @@ module BlacklightHelper
     field[:link_field]
   end
 
-  def wildcard_char_strip(solr_parameters)
-    return unless solr_parameters[:q]
-    solr_parameters[:q] = solr_parameters[:q].delete('?')
-  end
-
   # Escape all whitespace characters within Solr queries specifying left anchor query facets
   # Ends all left-anchor searches with wildcards for matches that begin with search string
   # @param solr_parameters [Blacklight::Solr::Request] the parameters for the Solr query

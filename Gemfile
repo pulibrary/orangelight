@@ -14,12 +14,9 @@ gem 'blacklight-hierarchy'
 gem 'blacklight-marc', '~>8.1'
 # slider limit support
 gem 'blacklight_range_limit', '~> 9.0.0'
-gem 'bootstrap', '~> 5.2.0'
+gem 'bootstrap', '~> 5.3.0'
+gem 'dartsass-sprockets'
 gem 'psych'
-# Capistrano
-# In the Capistrano documentation, it has these limited to the development group, and `require: false``
-gem 'capistrano', '~> 3.4'
-gem 'capistrano-passenger'
 # support for non-marc citations (e.g. SCSB records)
 gem 'citeproc-ruby'
 gem 'csl-styles'
@@ -46,6 +43,7 @@ gem 'jbuilder', '~> 2.0'
 # jest tests use yarn to get jquery; if upgrading here keep that version in sync
 gem 'jquery-datatables' # used by requests (please do not remove)
 gem 'jquery-rails'
+gem 'kicks'
 gem 'lcsort', '>= 0.9.1'
 gem 'library_stdnums'
 gem 'lograge'
@@ -79,7 +77,6 @@ gem 'rspec-rails'
 gem 'rubyzip', '>= 1.2.2'
 gem 'sidekiq'
 gem 'simple_form'
-gem 'sneakers'
 gem 'sprockets-es6'
 gem 'sprockets-rails'
 # For call-stack profiling flamegraphs
@@ -87,7 +84,7 @@ gem 'stackprof'
 gem 'stringex', git: 'https://github.com/pulibrary/stringex.git', branch: 'main'
 gem 'string_rtl'
 gem 'terser'
-gem 'view_component', '< 3.0.0'
+gem 'view_component'
 gem 'vite_rails'
 gem 'voight_kampff', require: 'voight_kampff/rails'
 gem 'whenever'
@@ -95,6 +92,8 @@ gem 'yajl-ruby', '>= 1.3.1', require: 'yajl'
 gem 'yard'
 
 group :development do
+  gem 'capistrano', '~> 3.4', require: false
+  gem 'capistrano-passenger'
   gem 'capistrano-rails'
   gem 'reek'
 end
@@ -103,16 +102,15 @@ group :test do
   gem 'axe-core-api'
   gem 'axe-core-rspec'
   gem 'factory_bot_rails', require: false
-  gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
   gem 'selenium-webdriver'
-  gem 'timecop'
   gem 'vcr'
   gem 'webmock', require: false
 end
 
 group :development, :test do
+  gem 'byebug'
   gem 'rubocop-rspec', require: false
   gem 'rubocop-rspec_rails', require: false
   gem 'rubocop-rails', require: false
@@ -121,8 +119,6 @@ group :development, :test do
   gem 'coveralls_reborn', require: false
   gem "erb_lint", require: false
   gem "erblint-github"
-  gem 'pry-byebug'
-  gem 'solargraph'
 end
 group :production do
   gem 'datadog', require: 'datadog/auto_instrument'

@@ -17,13 +17,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   # mutate the solr_parameters to remove words that are
   # boolean operators, but not intended as such.
   def cleanup_boolean_operators(solr_parameters)
-    solr_parameters[:q] = cleaned_query(solr_parameters[:q])
-    return solr_parameters unless using_json_query_dsl(solr_parameters)
-
-    solr_parameters.dig('json', 'query', 'bool', 'must').map! do |search_element|
-      search_element[:edismax][:query] = cleaned_query(search_element[:edismax][:query])
-      search_element
-    end
+    transform_queries!(solr_parameters) { |query| cleaned_query(query) }
   end
 
   # Blacklight uses Parslet https://rubygems.org/gems/parslet/versions/2.0.0 to parse the user query
@@ -47,13 +41,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     return unless blacklight_params[:action] == 'numismatics'
     blacklight_config.advanced_search[:form_solr_parameters]['facet.field'] = blacklight_config.numismatics_search['facet_fields']
     solr_parameters['facet.field'] = blacklight_config.numismatics_search['facet_fields']
-  end
-
-  def cleaned_query(query)
-    return query if query.nil?
-    query.gsub(/([A-Z]) (NOT|OR|AND) ([A-Z])/) do
-      "#{Regexp.last_match(1)} #{Regexp.last_match(2).downcase} #{Regexp.last_match(3)}"
-    end
   end
 
   def facets_for_advanced_search_form(solr_p)
@@ -103,8 +90,16 @@ class SearchBuilder < Blacklight::SearchBuilder
     # don't want to cancel out the boolean OR with
     # an mm configuration that requires all the clauses
     # to be in the document
-    return unless blacklight_params[:q].to_s.split.include? 'OR'
+    return unless includes_written_boolean?
     solr_parameters['mm'] = 0
+  end
+
+  def includes_written_boolean?
+    if advanced_search? && search_query_present?
+      json_query_dsl_clauses&.any? { |clause| clause&.dig('query')&.include?('OR') }
+    else
+      blacklight_params[:q].to_s.split.include? 'OR'
+    end
   end
 
   # When the user is viewing the values of a specific facet
@@ -117,6 +112,10 @@ class SearchBuilder < Blacklight::SearchBuilder
     remove_unneeded_stats(solr_parameters)
     solr_parameters.delete('facet.pivot') unless solr_parameters['facet.pivot']&.split(',')&.include? facet
     solr_parameters.delete('facet.query') unless solr_parameters['facet.query']&.any? { |query| query.partition(':').first == facet }
+  end
+
+  def wildcard_char_strip(solr_parameters)
+    transform_queries!(solr_parameters) { |query| query.delete('?') }
   end
 
   private
@@ -155,5 +154,23 @@ class SearchBuilder < Blacklight::SearchBuilder
       return if solr_parameters['stats.field'].to_a.include? facet
       solr_parameters.delete('stats')
       solr_parameters.delete('stats.field')
+    end
+
+    # :reek:DuplicateMethodCall
+    # :reek:MissingSafeMethod
+    # :reek:UtilityFunction
+    def transform_queries!(solr_parameters)
+      solr_parameters[:q] = yield solr_parameters[:q] if solr_parameters[:q]
+      solr_parameters.dig('json', 'query', 'bool', 'must')&.map! do |search_element|
+        search_element[:edismax][:query] = yield search_element[:edismax][:query]
+        search_element
+      end
+    end
+
+    def cleaned_query(query)
+      return query if query.nil?
+      query.gsub(/([A-Z]) (NOT|OR|AND) ([A-Z])/) do
+        "#{Regexp.last_match(1)} #{Regexp.last_match(2).downcase} #{Regexp.last_match(3)}"
+      end
     end
 end

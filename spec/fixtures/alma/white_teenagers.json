@@ -110,6 +110,10 @@
         "publication_place_facet": [
             "New York (State)"
         ],
+        "publication_place_hierarchical_facet": [
+            "United States",
+            "United States:New York (State)"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -424,6 +428,10 @@
         "publication_place_facet": [
             "England"
         ],
+        "publication_place_hierarchical_facet":[
+            "United Kingdom",
+            "United Kingdom:England"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -639,6 +647,10 @@
         ],
         "publication_place_facet": [
             "New York (State)"
+        ],
+        "publication_place_hierarchical_facet": [
+            "United States",
+            "United States:New York (State)"
         ],
         "language_iana_s": [
             "en"

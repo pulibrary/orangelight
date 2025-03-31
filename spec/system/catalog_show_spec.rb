@@ -123,16 +123,12 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
     end
 
     it 'closes a modal for Suggest a Correction' do
-      if Orangelight.using_blacklight7?
-        true
-      else
-        visit "catalog/#{document_id}"
-        click_on('Suggest a Correction')
-        expect(page).to have_field('Name')
-        expect(page).to have_content('Please use this form to report errors, omissions')
-        page.find('.blacklight-modal-close').click
-        expect(page).not_to have_content('Please use this form to report errors, omissions')
-      end
+      visit "catalog/#{document_id}"
+      click_on('Suggest a Correction')
+      expect(page).to have_field('Name')
+      expect(page).to have_content('Please use this form to report errors, omissions')
+      page.find('.blacklight-modal-close').click
+      expect(page).not_to have_content('Please use this form to report errors, omissions')
     end
   end
 
@@ -142,7 +138,7 @@ describe 'Viewing Catalog Documents', type: :system, js: true do
     let(:details_fields) do
       ['printer', 'binder', 'former-owner', 'notes_display', 'binding_note_display',
        'provenance_display', 'references_url_display', 'other_format_display',
-       'other_title_display', 'recap_notes_display']
+       'other_title_display']
     end
 
     it 'shows top fields in their own section' do

@@ -8,7 +8,7 @@ Versions:
 
 * Ruby: 3.4.1
 * Rails: 7.2
-* Blacklight: 8.7
+* Blacklight: 8.8
 
 ## Development pre-requisites
 * In order to run locally, you must have Lando installed for your system - see https://docs.lando.dev/getting-started/installation.html.
@@ -177,14 +177,12 @@ Your results will then be available in the file codeql_results.csv.
 
 #### Building the browse lists
 ```ruby
-RAILS_ENV=test bundle exec rake browse:all
-RAILS_ENV=test bundle exec rake browse:load_all
+RAILS_ENV=test bundle exec rake browse:all browse:load_all
 ```
 
 #### Refreshing the fixtures
 ```
-bundle exec rake pulsearch:solr:deindex
-bundle exec rake pulsearch:solr:index
+bundle exec rake pulsearch:solr:deindex pulsearch:solr:index
 ```
 
 ### Adding a fixture to the test/dev index

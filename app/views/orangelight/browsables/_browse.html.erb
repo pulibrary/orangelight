@@ -1,0 +1,26 @@
+<ul class="browse">
+      <% @orangelight_browsables.sort.each_with_index do |orangelight_name, index| %>
+
+        <% if orangelight_name.id == @match && @exact_match %>
+          <li class="alert alert-info clickable-row" data-href="/catalog/?f[<%=@facet%>][]=<%=CGI.escape orangelight_name.label%>">
+            <strong>
+        <% else %>
+          <li class="row-<%=index.even? ? 'odd' : 'even' %>">
+        <% end %>
+          &nbsp;
+          <span class="facet-label <%=orangelight_name.dir%>"><%= link_to orangelight_name.label, "/catalog/?f[#{@facet}][]=#{CGI.escape orangelight_name.label}", dir: orangelight_name.dir %>
+            <%= "(#{orangelight_name.count})"%>
+          </span>
+        <% if orangelight_name.id == @match && @exact_match %>
+            </strong>
+          </li>
+        <% else %>
+          </li>
+        <% end %>
+        <% if orangelight_name.id == @match && !@exact_match %>
+          <li class="alert alert-info">
+          <i class="fa fa-search" aria-hidden="true"></i> <strong>Your query "<%= @query %>" would be here.</strong>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>

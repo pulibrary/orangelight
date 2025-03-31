@@ -11,8 +11,6 @@ module Blacklight::Document::Mla
   end
 
   def export_as_mla
-    return export_as_mla_citation_txt if alma?
-
     cp = CiteProc::Processor.new style: 'modern-language-association', format: 'html'
     item = CiteProc::Item.new(properties)
     cp.import(item)

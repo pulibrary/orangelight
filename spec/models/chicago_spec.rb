@@ -25,7 +25,6 @@ RSpec.describe Blacklight::Document::Chicago, citation: true do
       end
 
       it 'includes the author with the proper delimiter' do
-        pending('Fixing the bug with CiteProc')
         expect(document).to include('Saer, Juan José. ')
       end
 
@@ -46,7 +45,7 @@ RSpec.describe Blacklight::Document::Chicago, citation: true do
       end
 
       it 'includes the edition' do
-        expect(document).to include('1A edición')
+        expect(document).to include('1a edición')
       end
     end
   end

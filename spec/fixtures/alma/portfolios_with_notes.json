@@ -113,6 +113,10 @@
         "publication_place_facet": [
             "England"
         ],
+        "publication_place_hierarchical_facet":[
+            "United Kingdom",
+            "United Kingdom:England"
+        ],
         "language_code_s": [
             "eng"
         ],
@@ -328,6 +332,10 @@
         "publication_place_facet": [
             "District of Columbia"
         ],
+        "publication_place_hierarchical_facet": [
+            "United States",
+            "United States:District of Columbia"
+        ],
         "language_code_s": [
             "eng"
         ],
@@ -512,6 +520,9 @@
             "French"
         ],
         "publication_place_facet": [
+            "France"
+        ],
+        "publication_place_hierarchical_facet":[
             "France"
         ],
         "language_code_s": [
@@ -1085,6 +1096,10 @@
         "publication_place_facet": [
             "New York (State)"
         ],
+        "publication_place_hierarchical_facet": [
+            "United States",
+            "United States:New York (State)"
+        ],
         "language_code_s": [
             "eng"
         ],
@@ -1306,6 +1321,9 @@
             "Spanish"
         ],
         "publication_place_facet": [
+            "Mexico"
+        ],
+        "publication_place_hierarchical_facet":[
             "Mexico"
         ],
         "language_code_s": [
@@ -1542,6 +1560,10 @@
         ],
         "publication_place_facet": [
             "United States"
+        ],
+        "publication_place_hierarchical_facet": [
+            "United States",
+            "United States:United States"
         ],
         "language_code_s": [
             "eng"
@@ -2088,6 +2110,10 @@
         "publication_place_facet": [
             "California"
         ],
+        "publication_place_hierarchical_facet": [
+            "United States",
+            "United States:California"
+        ],
         "language_code_s": [
             "eng"
         ],
@@ -2282,6 +2308,10 @@
         "publication_place_facet": [
             "Massachusetts"
         ],
+        "publication_place_hierarchical_facet": [
+            "United States",
+            "United States:Massachusetts"
+        ],
         "language_code_s": [
             "eng"
         ],
@@ -2458,6 +2488,10 @@
         ],
         "publication_place_facet": [
             "Ontario"
+        ],
+        "publication_place_hierarchical_facet": [
+            "Canada",
+            "Canada:Ontario"
         ],
         "language_code_s": [
             "eng"
@@ -2837,6 +2871,10 @@
         ],
         "publication_place_facet": [
             "England"
+        ],
+        "publication_place_hierarchical_facet":[
+            "United Kingdom",
+            "United Kingdom:England"
         ],
         "language_code_s": [
             "eng"

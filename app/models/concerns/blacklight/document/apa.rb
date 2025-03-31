@@ -11,8 +11,6 @@ module Blacklight::Document::Apa
   end
 
   def export_as_apa
-    return export_as_apa_citation_txt if alma?
-
     cp = CiteProc::Processor.new style: 'apa', format: 'html'
     item = CiteProc::Item.new(properties)
     cp.import(item)

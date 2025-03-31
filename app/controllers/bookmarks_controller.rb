@@ -19,6 +19,12 @@ class BookmarksController < CatalogController
     render('orangelight/record_mailer/email_record', formats: [:text])
   end
 
+  def citation
+    bookmarks = token_or_current_or_guest_user.bookmarks
+    bookmark_ids = bookmarks.collect { |bookmark| bookmark.document_id.to_s }
+    @documents = search_service.fetch(bookmark_ids, { rows: bookmark_ids.count, fl: "author_citation_display, title_citation_display, pub_citation_display, number_of_pages_citation_display, pub_date_start_sort, edition_display" })
+  end
+
   def csv
     fetch_bookmarked_documents
     send_data csv_output, type: 'text/csv', filename: "bookmarks-#{Time.zone.today}.csv"
@@ -28,7 +34,7 @@ class BookmarksController < CatalogController
 
     def fetch_bookmarked_documents
       bookmark_ids = token_or_current_or_guest_user.bookmarks.collect { |bookmark| bookmark.document_id.to_s }
-      @documents = search_service_compatibility_wrapper.fetch(bookmark_ids, rows: bookmark_ids.length, fl: '*')
+      @documents = search_service.fetch(bookmark_ids, rows: bookmark_ids.length, fl: '*')
     end
 
     # byte-order-mark declaring our output as UTF-8 (required for non-ASCII to be handled by Excel)

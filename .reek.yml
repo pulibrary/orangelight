@@ -22,12 +22,6 @@ detectors:
     - ReportBiasedResultsForm#email
     - ReportBiasedResultsForm#message
     - ReportBiasedResultsForm#name
-    - ReportHarmfulLanguageForm#context
-    - ReportHarmfulLanguageForm#email
-    - ReportHarmfulLanguageForm#error
-    - ReportHarmfulLanguageForm#message
-    - ReportHarmfulLanguageForm#name
-    - ReportHarmfulLanguageForm#title
     - SuggestCorrectionForm#context
     - SuggestCorrectionForm#email
     - SuggestCorrectionForm#message
@@ -63,6 +57,7 @@ detectors:
     - PhysicalHoldingsMarkupBuilder#self.thesis?
   DataClump:
     exclude:
+    - HoldingsHelper
     - Requests::ApplicationHelper
     - Requests::SelectedItemsValidator
     - PhysicalHoldingsMarkupBuilder
@@ -71,11 +66,10 @@ detectors:
     - Holdings::OnlineHoldingsComponent#marc_links
     - NumismaticsSearchFormComponent#initialize_constraints
     - Orangelight::AdvancedSearchFormComponent#fields_for_etc
-    - Orangelight::AdvancedSearchFormComponent#initialize_search_filter_controls
     - Orangelight::ConstraintComponent#constraint_value
     - Orangelight::ConstraintComponent#old_style_params?
     - Orangelight::ConstraintsComponent#guided_search_value
-    - Orangelight::FacetFieldCheckboxesComponent#values
+    - Orangelight::ProcessVocabularyComponent#subjectify
     - Orangelight::SearchBarComponent#before_render
     - RequestButtonComponent#scsb_supervised_items?
     - AccountController#cancel_ill_requests
@@ -102,7 +96,6 @@ detectors:
     - AdvancedHelper#label_tag_default_for
     - AdvancedHelper#param_for_field
     - ApplicationHelper#action_notes_display
-    - ApplicationHelper#fast_subjects_value?
     - ApplicationHelper#html_safe
     - ApplicationHelper#language_iana
     - ApplicationHelper#location_full_display
@@ -110,7 +103,6 @@ detectors:
     - ApplicationHelper#scsb_supervised_items?
     - ApplicationHelper#search_location_display
     - ApplicationHelper#series_results
-    - ApplicationHelper#subjectify
     - BlacklightHelper#browse_related_name_hash
     - BlacklightHelper#cjk_mm
     - BlacklightHelper#html_facets
@@ -189,7 +181,6 @@ detectors:
     - Requests::IlliadMetadata::ArticleExpress#volume_number
     - Requests::IlliadTransactionClient#create_request
     - Requests::Item#copy_value
-    - Requests::Item#long_description
     - Requests::Item#status
     - Requests::Location#sort_pick_ups
     - Requests::Requestable#pick_up_locations
@@ -211,7 +202,6 @@ detectors:
     - Requests::Submissions::Recap#handle_item
     - SearchBuilder#add_edismax
     - SearchBuilder#advanced_search?
-    - SearchBuilder#cleanup_boolean_operators
     - SearchBuilder#facets_for_advanced_search_form
     - SearchBuilder#numismatics_advanced
     - SearchBuilder#numismatics_facets
@@ -248,6 +238,7 @@ detectors:
     exclude:
     - Orangelight::ConstraintsComponent#guided_search_value
     - Orangelight::FacetFieldCheckboxesComponent#values
+    - Orangelight::ProcessVocabularyComponent#fast_subjects_value?
     - Orangelight::SearchBarComponent#search_fields
     - ApplicationController#after_sign_out_path_for
     - Requests::FormController#sanitize_submission
@@ -332,6 +323,7 @@ detectors:
     - Orangelight::ConstraintComponent
     - Orangelight::ConstraintsComponent
     - Orangelight::DropdownHelpTextComponent
+    - Orangelight::ProcessVocabularyComponent
     - Orangelight::SearchBarComponent
     - AccountController
     - BookmarksController
@@ -344,7 +336,6 @@ detectors:
     - Users::OmniauthCallbacksController
     - AskAQuestionForm
     - ReportBiasedResultsForm
-    - ReportHarmfulLanguageForm
     - SuggestCorrectionForm
     - ContactMailer
     - Requests::RequestMailer
@@ -385,6 +376,7 @@ detectors:
     - Orangelight::Document::CitationComponent
     - Orangelight::DropdownHelpTextComponent
     - Orangelight::FacetFieldCheckboxesComponent
+    - Orangelight::ProcessVocabularyComponent
     - Orangelight::SearchBarComponent
     - Orangelight::SearchContext::ServerItemPaginationComponent
     - Orangelight::System::FlashMessageComponent
@@ -405,7 +397,6 @@ detectors:
     - AskAQuestionForm
     - FeedbackForm
     - ReportBiasedResultsForm
-    - ReportHarmfulLanguageForm
     - SuggestCorrectionForm
     - ApplicationHelper
     - BlacklightHelper
@@ -432,6 +423,7 @@ detectors:
     - Requests::Aeon
     - Requests::Bibdata
     - Requests::Scsb
+    - NumismaticsFormSearchBuilder
     - Orangelight::CallNumber
     - Orangelight::Name
     - Orangelight::NameTitle
@@ -536,12 +528,12 @@ detectors:
     - ScsbStatus
     - StackmapStatus
     - ApplicationController
+    - SearchBuilder
   NestedIterators:
     exclude:
     - BookmarksController#csv_output
     - AdvancedHelper#generate_solr_fq
     - ApplicationHelper#name_title_hierarchy
-    - ApplicationHelper#subjectify
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#left_anchor_search?
     - BlacklightHelper#prepare_left_anchor_search
@@ -559,7 +551,7 @@ detectors:
     - SolrDocument#identifiers
   NilCheck:
     exclude:
-    - Orangelight::AdvancedSearchFormComponent#initialize_search_filter_controls
+    - Orangelight::ProcessVocabularyComponent#fast_subjects_value?
     - AccountController#cancel_ill_requests
     - ApplicationController#after_sign_in_path_for
     - Orangelight::Catalog#validate_email_params
@@ -574,7 +566,6 @@ detectors:
     - AdvancedHelper#guided_context
     - ApplicationHelper#aeon_location?
     - ApplicationHelper#alma_location_display
-    - ApplicationHelper#fast_subjects_value?
     - ApplicationHelper#holding_location_label
     - ApplicationHelper#render_location_code
     - BlacklightHelper#html_facets
@@ -675,6 +666,9 @@ detectors:
     - BibdataStatus#check!
     - Holdings::OnlineHoldingsComponent#marc_links
     - Orangelight::ConstraintsComponent#guided_search_value
+    - Orangelight::ProcessVocabularyComponent#build_search_subject_links
+    - Orangelight::ProcessVocabularyComponent#build_subject_list
+    - Orangelight::ProcessVocabularyComponent#subjectify
     - Orangelight::SearchBarComponent#before_render
     - AccountController#cancel_ill_requests
     - ApplicationController#after_sign_in_path_for
@@ -690,13 +684,11 @@ detectors:
     - Requests::FormController#sanitize_submission
     - Requests::FormController#submit
     - Users::OmniauthCallbacksController#alma
-    - ReportHarmfulLanguageForm#submit
     - ApplicationHelper#action_notes_display
     - ApplicationHelper#location_has
     - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#render_location_code
     - ApplicationHelper#search_location_display
-    - ApplicationHelper#subjectify
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#cjk_mm
     - BlacklightHelper#isbn_resolve
@@ -797,13 +789,13 @@ detectors:
     - Blacklight::Marc::DocumentExtension#marc_record_from_marc21
   UncommunicativeParameterName:
     exclude:
-    - ApplicationHelper#fast_subjects_value?
     - Requests::IlliadMetadata::Metadata#initialize
     - Orangelight::LinkToFacetProcessor#link
   UncommunicativeVariableName:
     exclude:
     - Orangelight::AdvancedSearchFormComponent#initialize_search_filter_controls
     - Orangelight::ConstraintsComponent#remove_guided_query_path
+    - Orangelight::ProcessVocabularyComponent#build_search_subject_links
     - BookmarksController#csv_bom
     - BookmarksController#two_values
     - Orangelight::Catalog#online_holding_note?
@@ -814,7 +806,6 @@ detectors:
     - ApplicationHelper#location_has
     - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#same_series_result
-    - ApplicationHelper#subjectify
     - ApplicationHelper#title_hierarchy
     - Blacklight::Document::DublinCore#export_as_oai_dc_xml
     - Blacklight::Document::DublinCore#export_as_rdf_dc
@@ -850,6 +841,7 @@ detectors:
   UtilityFunction:
     exclude:
     - Orangelight::DropdownHelpTextComponent#option_text_and_value
+    - Orangelight::ProcessVocabularyComponent#accumulate_subsubjects
     - AccountController#cancel_ill_success
     - AccountController#current_patron
     - ApplicationController#default_url_options
@@ -867,7 +859,6 @@ detectors:
     - ApplicationHelper#alma_location_display
     - ApplicationHelper#bibdata_location_code_to_sym
     - ApplicationHelper#current_year
-    - ApplicationHelper#fast_subjects_value?
     - ApplicationHelper#format_render
     - ApplicationHelper#holding_location
     - ApplicationHelper#holding_request_block
@@ -905,7 +896,6 @@ detectors:
     - Requests::RequestHelper#pul_patron_name
     - Requests::RequestHelper#request_title
     - Requests::RequestMailer#annex_items
-    - AdvancedFormSearchBuilder#do_not_limit_languages
     - Bookmark#alma_id?
     - Bookmark#special_system_id?
     - Blacklight::Document::Email#add_online_text

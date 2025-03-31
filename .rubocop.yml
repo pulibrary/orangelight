@@ -1,9 +1,9 @@
 inherit_from: .rubocop_todo.yml
-require:
+plugins:
+  - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
   - rubocop-rspec_rails
-  - rubocop-performance
 
 AllCops:
   NewCops: enable
@@ -213,7 +213,7 @@ Rails/ApplicationMailer:
   Exclude:
     - 'app/models/record_mailer.rb'
 
-RSpec/StringAsInstanceDoubleConstant:
+RSpec/VerifiedDoubleReference:
   Exclude:
     - 'spec/views/catalog/_sort_and_per_page.html.erb_spec.rb'
 

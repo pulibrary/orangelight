@@ -77,7 +77,6 @@ a.clear-bookmarks, a.clear-search-history {
 .next.is-disabled,
 .pagination-search-widgets .previous,
 .pagination-search-widgets .next,
-.checkbox.bookmark_all span,
 .bookmarksTools.nav #emailLink,
 .bookmarksTools.nav #citationLink,
 .bookmarksTools.nav > li > a,
@@ -101,7 +100,7 @@ a.clear-bookmarks, a.clear-search-history {
 
 .browse-header button,
 .pagination-search-widgets .previous,
-.pagination-search-widgets .next, {
+.pagination-search-widgets .next {
   margin: 3px 0;
 }
 
@@ -115,10 +114,8 @@ a.clear-bookmarks, a.clear-search-history {
   }
 }
 
-.checkbox.bookmark_all span {
-  display: inline-block;
-  padding-bottom: 7px;
-  margin-right: 0;
+button.checkbox.bookmark_all {
+  margin: 3px 0 3px 0;
 }
 
 .pagination-search-widgets .previous,
@@ -202,11 +199,7 @@ header .navbar-nav > li > a {
 #sort-dropdown,
 #sort-dropdown .dropdown-toggle,
 #per_page-dropdown,
-#per_page-dropdown .dropdown-toggle,
-.checkbox.bookmark_all span,
-.bookmark_all,
-.bookmark_all label,
-.bookmark_all span {
+#per_page-dropdown .dropdown-toggle {
   @media (max-width: 500px) {
     margin: 0;
     width: auto;
@@ -215,7 +208,6 @@ header .navbar-nav > li > a {
   }
 }
 
-.checkbox.bookmark_all,
 .search-widgets .checkbox.toggle-bookmark {
   @media (max-width: 500px) {
     margin-left: 0;

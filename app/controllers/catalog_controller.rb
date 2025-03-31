@@ -14,7 +14,7 @@ class CatalogController < ApplicationController
 
   rescue_from Blacklight::Exceptions::RecordNotFound do
     alma_id = "99#{params[:id]}3506421"
-    search_service_compatibility_wrapper.fetch(alma_id)
+    search_service.fetch(alma_id)
     redirect_to solr_document_path(id: alma_id)
   rescue Blacklight::Exceptions::RecordNotFound
     redirect_to '/404'
@@ -35,18 +35,18 @@ class CatalogController < ApplicationController
     config.json_solr_path = 'advanced'
 
     # default advanced config values
-    # TODO: remove for advanced search gem deprecation
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'edismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[access_facet format language_facet advanced_location_s]
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w[access_facet format publication_place_facet language_facet advanced_location_s]
     config.advanced_search[:form_solr_parameters]['facet.query'] ||= ''
     config.advanced_search[:form_solr_parameters]['facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['facet.pivot'] ||= ''
     config.advanced_search[:form_solr_parameters]['f.language_facet.facet.limit'] ||= -1
     config.advanced_search[:form_solr_parameters]['f.language_facet.facet.sort'] ||= 'index'
-    # end remove for advanced search gem deprecation
+    config.advanced_search[:form_solr_parameters]['f.publication_place_facet.facet.limit'] ||= -1
+    config.advanced_search[:form_solr_parameters]['f.publication_place_facet.facet.sort'] ||= 'index'
 
     config.numismatics_search ||= Blacklight::OpenStructWithHashAccess.new
     config.numismatics_search[:facet_fields] ||= %w[issue_metal_s issue_city_s issue_state_s issue_region_s issue_denomination_s
@@ -142,7 +142,8 @@ class CatalogController < ApplicationController
     }, include_in_advanced_search: false
 
     config.add_facet_field 'instrumentation_facet', label: 'Instrumentation', limit: true, include_in_advanced_search: false
-    config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true, include_in_advanced_search: false
+    config.add_facet_field 'publication_place_hierarchical_facet', label: 'Place of publication', component: Blacklight::Hierarchy::FacetFieldListComponent, sort: 'index', limit: 1000, include_in_advanced_search: true, if: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_publication_facet? }
+    config.add_facet_field 'publication_place_facet', label: 'Place of publication', limit: true, include_in_advanced_search: true, suggest: true, unless: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_publication_facet? }
 
     config.add_facet_field 'lc_facet', label: 'Classification', component: Blacklight::Hierarchy::FacetFieldListComponent, sort: 'index', limit: 1000, include_in_advanced_search: false, if: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_facet? }
     config.add_facet_field 'classification_pivot_field', label: 'Classification', pivot: %w[lc_1letter_facet lc_rest_facet], collapsing: true, include_in_advanced_search: false, unless: ->(_controller, _config, _field) { Flipflop.blacklight_hierarchy_facet? }
@@ -232,7 +233,8 @@ class CatalogController < ApplicationController
     # Config for heirarcy options
     config.facet_display = {
       hierarchy: {
-        'lc' => [['facet'], ':']
+        'lc' => [['facet'], ':'],
+        'publication_place_hierarchical' => [['facet'], ':']
       }
     }
 
@@ -296,15 +298,15 @@ class CatalogController < ApplicationController
 
     config.add_show_field 'class_year_s', label: 'Class year', link_to_search_value: true
     # Linked fields pushed to top of supplemental info
-    config.add_show_field 'lc_subject_display', label: 'Subject(s)', helper_method: :subjectify
-    config.add_show_field 'siku_subject_display', label: 'Chinese traditional subject(s)', helper_method: :subjectify
-    config.add_show_field 'homoit_subject_display', label: 'Homosaurus term(s)', helper_method: :subjectify
+    config.add_show_field 'lc_subject_display', label: 'Subject(s)', component: Orangelight::ProcessVocabularyComponent
+    config.add_show_field 'siku_subject_display', label: 'Chinese traditional subject(s)', component: Orangelight::ProcessVocabularyComponent
+    config.add_show_field 'homoit_subject_display', label: 'Homosaurus term(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'related_name_json_1display', hash: true
-    config.add_show_field 'lcgft_s', label: 'Library of Congress genre(s)', helper_method: :subjectify
-    config.add_show_field 'homoit_genre_s', label: 'Homosaurus genre(s)', helper_method: :subjectify
-    config.add_show_field 'rbgenr_s', label: 'Rare books genre', helper_method: :subjectify
-    config.add_show_field 'aat_s', label: 'Getty AAT genre', helper_method: :subjectify
-    config.add_show_field 'fast_subject_display', label: 'FaST Subject(s)', helper_method: :subjectify
+    config.add_show_field 'lcgft_s', label: 'Library of Congress genre(s)', component: Orangelight::ProcessVocabularyComponent
+    config.add_show_field 'homoit_genre_s', label: 'Homosaurus genre(s)', component: Orangelight::ProcessVocabularyComponent
+    config.add_show_field 'rbgenr_s', label: 'Rare books genre', component: Orangelight::ProcessVocabularyComponent
+    config.add_show_field 'aat_s', label: 'Getty AAT genre', component: Orangelight::ProcessVocabularyComponent
+    config.add_show_field 'fast_subject_display', label: 'FaST Subject(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'related_works_1display', label: 'Related work(s)', helper_method: :name_title_hierarchy
     config.add_show_field 'series_display', label: 'Series', series_link: true
     config.add_show_field 'contains_1display', label: 'Contains', helper_method: :name_title_hierarchy
@@ -500,7 +502,7 @@ class CatalogController < ApplicationController
     #   :include_in_advanced_search => true
     #   field.include_in_simple_select = false
 
-    config.add_search_field 'all_fields', label: 'Keyword'
+    config.add_search_field 'all_fields', label: 'Keyword', placeholder_text: I18n.t('blacklight.search.form.search.placeholder')
 
     # Now we see how to over-ride Solr request handler defaults, in this
     # case for a BL "search field", which is really a dismax aggregate
@@ -518,6 +520,7 @@ class CatalogController < ApplicationController
         qf: '$title_qf',
         pf: '$title_pf'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('author') do |field|
@@ -532,6 +535,7 @@ class CatalogController < ApplicationController
         qf: '$author_qf',
         pf: '$author_pf'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     # Specifying a :qt only to show it's possible, and so our internal automated
@@ -549,6 +553,7 @@ class CatalogController < ApplicationController
         qf: '$subject_qf',
         pf: '$subject_pf'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('left_anchor') do |field|
@@ -562,6 +567,7 @@ class CatalogController < ApplicationController
         pf: '$left_anchor_pf'
       }
       field.advanced_parse = false
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('publisher') do |field|
@@ -571,6 +577,7 @@ class CatalogController < ApplicationController
         qf: '${publisher_qf}',
         pf: '${publisher_pf}'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('in_series') do |field|
@@ -585,6 +592,7 @@ class CatalogController < ApplicationController
         qf: '$in_series_qf',
         pf: '$in_series_pf'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('notes') do |field|
@@ -594,6 +602,7 @@ class CatalogController < ApplicationController
         qf: '${notes_qf}',
         pf: '${notes_pf}'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('series_title') do |field|
@@ -603,6 +612,7 @@ class CatalogController < ApplicationController
         qf: '${series_title_qf}',
         pf: '${series_title_pf}'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('isbn') do |field|
@@ -614,6 +624,7 @@ class CatalogController < ApplicationController
       field.solr_parameters = {
         qf: 'isbn_t'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('issn') do |field|
@@ -625,6 +636,7 @@ class CatalogController < ApplicationController
       field.solr_parameters = {
         qf: 'issn_s'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('lccn') do |field|
@@ -637,6 +649,7 @@ class CatalogController < ApplicationController
       field.solr_parameters = {
         qf: 'lccn_s'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('oclc') do |field|
@@ -649,16 +662,19 @@ class CatalogController < ApplicationController
       field.solr_adv_parameters = {
         qf: 'oclc_s'
       }
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
 
     config.add_search_field('browse_subject') do |field|
       field.include_in_advanced_search = false
       field.label = 'Subject (browse)'
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
     config.add_search_field('browse_name') do |field|
       field.include_in_advanced_search = false
       field.label = 'Author (browse)'
       field.placeholder_text = 'Last name, first name'
+      field.placeholder_text = I18n.t('blacklight.search.form.search.placeholder')
     end
     config.add_search_field('name_title') do |field|
       field.include_in_advanced_search = false
@@ -721,6 +737,8 @@ class CatalogController < ApplicationController
     solrize_boolean_params
     if no_search_yet?
       render_empty_search
+    elsif bot_is_attempting_expensive_search?
+      head :uri_too_long
     else
       super
     end
@@ -730,7 +748,7 @@ class CatalogController < ApplicationController
 
   def numismatics
     unless request.method == :post
-      @response = search_service_compatibility_wrapper.search_results do |search_builder|
+      @response = search_service.search_results do |search_builder|
         search_builder.except(:add_advanced_search_to_solr).append(:facets_for_advanced_search_form)
       end
     end
@@ -765,14 +783,9 @@ class CatalogController < ApplicationController
   def citation
     if agent_is_crawler?
       basic_response
-    elsif Orangelight.using_blacklight7?
-      # Taken from Blacklight::ActionBuilder#build, which would
-      # otherwise generate the citation method dynamically
-      #
-      # See https://github.com/projectblacklight/blacklight/blob/f6bdb20248c0eee91dbd480b20d1b60f93783b3e/app/builders/blacklight/action_builder.rb#L29-L53
-      @response, @documents = action_documents
     else
-      @documents = action_documents
+      @documents = search_service.fetch(Array(params[:id]), { fl: "author_citation_display, title_citation_display, pub_citation_display, number_of_pages_citation_display, pub_date_start_sort, edition_display" })
+      raise Blacklight::Exceptions::RecordNotFound if @documents.blank?
     end
   end
 
@@ -827,20 +840,39 @@ class CatalogController < ApplicationController
       Rails.cache.fetch("home_page_empty_raw_response", expires_in: 3.hours) do
         Rails.logger.info "Cached home page results"
         # We cannot cache the Blacklight::Solr::Response as-is so we convert it to JSON first
-        search_service_compatibility_wrapper.search_results.to_json
+        search_service.search_results.to_json
       end
     end
 
     def empty_advanced_search_raw_response
       Rails.cache.fetch('advanced_search_form_empty_raw_response', expires_in: 8.hours) do
         Rails.logger.info "Cached empty advanced search form solr query"
-        SearchServiceCompatibilityWrapper.new(blacklight_advanced_search_form_search_service).search_results.to_json
+        blacklight_advanced_search_form_search_service.search_results.to_json
       end
     end
 
     def basic_response
       render plain: 'OK'
       nil
+    end
+
+    def bot_is_attempting_expensive_search?
+      request.bot? && many_facets?
+    end
+
+    # :reek:TooManyStatements
+    def many_facets?
+      value_count_in_params = ->(facet) { facet.is_a?(Array) ? facet.length : 1 }
+
+      facet_count_in_param = lambda do |param|
+        if param.is_a? ActionController::Parameters
+          param&.values&.sum(&value_count_in_params) || 0
+        else
+          0
+        end
+      end
+
+      params.values_at(:f_inclusive, :f).sum(&facet_count_in_param) >= 5
     end
 
     def search_service_context
@@ -870,10 +902,6 @@ class CatalogController < ApplicationController
 
     def search_algorithm_param
       params[:search_algorithm]
-    end
-
-    def search_service_compatibility_wrapper
-      @search_service_compatibility_wrapper ||= SearchServiceCompatibilityWrapper.new(search_service)
     end
 
     def solrize_boolean_params

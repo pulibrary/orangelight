@@ -1,7 +1,20 @@
 {
-  "id": "9929100213506421",
-  "numeric_id_b": true,
+  "id": [
+    "9929100213506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    ""
+  ],
+  "cjk_notes": [
+    ""
+  ],
   "author_display": [
+    "Howells, William Dean, 1837-1920"
+  ],
+  "author_sort": [
     "Howells, William Dean, 1837-1920"
   ],
   "author_citation_display": [
@@ -9,7 +22,9 @@
     "Higginson, Thomas Wentworth",
     "Bibliophile Society (Boston, Mass.)"
   ],
-  "author_roles_1display": "{\"secondary_authors\":[\"Higginson, Thomas Wentworth\",\"Bibliophile Society (Boston, Mass.)\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Howells, William Dean\"}",
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"Higginson, Thomas Wentworth\",\"Bibliophile Society (Boston, Mass.)\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Howells, William Dean\"}"
+  ],
   "author_s": [
     "Howells, William Dean, 1837-1920",
     "Higginson, Thomas Wentworth, 1823-1911",
@@ -18,12 +33,27 @@
   "marc_relator_display": [
     "Author"
   ],
-  "title_display": "The letters of Howells to Higginson.",
+  "title_display": [
+    "The letters of Howells to Higginson."
+  ],
+  "title_a_index": [
+    "The letters of Howells to Higginson"
+  ],
+  "title_sort": [
+    "letters of Howells to Higginson."
+  ],
+  "title_no_h_index": [
+    "The letters of Howells to Higginson.",
+    "letters of Howells to Higginson."
+  ],
   "title_t": [
     "The letters of Howells to Higginson."
   ],
   "title_citation_display": [
     "The letters of Howells to Higginson"
+  ],
+  "linked_title_index": [
+    "Annual report of the Bibliophile Society for ..."
   ],
   "compiled_created_t": [
     "The letters of Howells to Higginson."
@@ -37,11 +67,24 @@
   "pub_citation_display": [
     "Boston: Bibliophile Society"
   ],
+  "publication_location_citation_display": [
+    "Boston"
+  ],
+  "publisher_citation_display": [
+    "Bibliophile Society"
+  ],
   "pub_date_display": [
     "1929"
   ],
-  "pub_date_start_sort": 1929,
-  "cataloged_tdt": "2021-07-13T13:07:35Z",
+  "pub_date_start_sort": [
+    "1929"
+  ],
+  "publication_date_citation_display": [
+    "1929"
+  ],
+  "cataloged_tdt": [
+    "2021-07-13T13:07:35Z"
+  ],
   "format": [
     "Book"
   ],
@@ -57,29 +100,52 @@
   "geo_related_record_display": [
     "Bibliophile Society (Boston, Mass.) Annual report of the Bibliophile Society for ... 27th (1929)"
   ],
+  "notes_index": [
+    "Forms part of the Twenty-seventh annual report of the Bibliophile society, 1901-1927."
+  ],
   "notes_display": [
     "Forms part of the Twenty-seventh annual report of the Bibliophile society, 1901-1927."
+  ],
+  "language_name_display": [
+    "English"
   ],
   "language_facet": [
     "English"
   ],
-  "language_code_s": [
-    "eng"
+  "publication_place_facet": [
+    "Massachusetts"
   ],
   "language_iana_s": [
     "en"
   ],
-  "related_name_json_1display": "{\"Related name\":[\"Higginson, Thomas Wentworth, 1823-1911\",\"Bibliophile Society (Boston, Mass.)\"]}",
+  "subject_unstem_search": null,
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": null,
+  "fast_subject_unstem_search": null,
+  "publication_place_hierarchical_facet": [
+    "United States",
+    "United States:Massachusetts"
+  ],
+  "related_name_json_1display": [
+    "{\"Related name\":[\"Higginson, Thomas Wentworth, 1823-1911\",\"Bibliophile Society (Boston, Mass.)\"]}"
+  ],
   "in_display": [
     "Bibliophile Society (Boston, Mass.) Annual report of the Bibliophile Society for ... 27th (1929)"
   ],
   "oclc_s": [
     "16847846"
   ],
+  "standard_no_index": [
+    "2910021-princetondb",
+    "ocm16847846"
+  ],
   "other_version_s": [
     "ocm16847846"
   ],
-  "holdings_1display": "{\"22748107640006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"PS2033 .A435 1929\",\"call_number_browse\":\"PS2033 .A435 1929\"}}",
+  "holdings_1display": [
+    "{\"22748107640006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"PS2033 .A435 1929\",\"call_number_browse\":\"PS2033 .A435 1929\"}}"
+  ],
   "location_code_s": [
     "firestone$stacks"
   ],
@@ -108,5 +174,8 @@
   ],
   "call_number_locator_display": [
     "PS2033 .A435 1929"
+  ],
+  "access_facet": [
+    "In the Library"
   ]
 }

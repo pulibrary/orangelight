@@ -1,0 +1,127 @@
+{
+    "id": "992784263506421",
+    "numeric_id_b": true,
+    "author_display": [
+        "Trollope, Anthony, 1815-1882"
+    ],
+    "author_citation_display": [
+        "Trollope, Anthony"
+    ],
+    "author_roles_1display": "{\"secondary_authors\":[\"Trollope, Anthony\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Trollope, Anthony\"}",
+    "author_s": [
+        "Trollope, Anthony, 1815-1882"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": "Can you forgive her? / by Anthony Trollope ... ; with 40 illustrations.",
+    "title_t": [
+        "Can you forgive her? / by Anthony Trollope ... ; with 40 illustrations."
+    ],
+    "title_citation_display": [
+        "Can you forgive her?"
+    ],
+    "compiled_created_t": [
+        "Can you forgive her? / by Anthony Trollope ... ; with 40 illustrations."
+    ],
+    "edition_display": [
+        "Fifth edition."
+    ],
+    "pub_created_display": [
+        "London ; New York : George Routledge \u0026 Sons, 1871."
+    ],
+    "pub_created_s": [
+        "London ; New York : George Routledge \u0026 Sons, 1871."
+    ],
+    "pub_citation_display": [
+        "New York: George Routledge \u0026 Sons"
+    ],
+    "pub_date_display": [
+        "1871"
+    ],
+    "pub_date_start_sort": 1871,
+    "cataloged_tdt": "2021-07-13T06:11:11Z",
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "2 v. in 1 ([1] leaf, [3], 320 p., [20] leaves of plates; 320 p., [20] leaves of plates) : 40 ill. ; 23 cm. (8vo)"
+    ],
+    "description_t": [
+        "2 v. in 1 ([1] leaf, [3], 320 p., [20] leaves of plates; 320 p., [20] leaves of plates) : 40 ill. ; 23 cm. (8vo)"
+    ],
+    "number_of_pages_citation_display": [
+        "2 v. in 1 ([1] leaf, [3], 320 p., [20] leaves of plates; 320 p., [20] leaves of plates)"
+    ],
+    "geocode_display": [
+        "Great Britain"
+    ],
+    "notes_display": [
+        "First of the Palliser novels.",
+        "In dark green cloth, blocked in black and gold.",
+        "Princeton copy 1: T.p. followed by a single list of contents and illustrations for both vols. Neither vol. has separate t.p. The illustrations are those of the first edition. Very dark green diagonal dot and line cloth, front cover and spine blocked in black and gold, back cover blocked in blind.",
+        "Princeton copy 1: Signed in ms. on free front endpaper: E.G. de Capell Brooke. Xmas 1915. From May."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "references_display": [
+        "Princeton copy 1: Wainwright (Parrish), Trollope, 62"
+    ],
+    "references_url_display": [
+        "Princeton copy 1: Wainwright (Parrish), Trollope, 62"
+    ],
+    "lc_subject_display": [
+        "Great Britain—Social life and customs—19th century—Fiction"
+    ],
+    "subject_facet": [
+        "Great Britain—Social life and customs—19th century—Fiction",
+        "Fiction"
+    ],
+    "lcgft_s": [
+        "Fiction"
+    ],
+    "related_works_1display": "[[\"Trollope, Anthony, 1815-1882.\",\"Palliser novels.\"]]",
+    "oclc_s": [
+        "3049769"
+    ],
+    "other_version_s": [
+        "ocm03049769"
+    ],
+    "subject_era_facet": [
+        "19th century"
+    ],
+    "holdings_1display": "{\"22673459850006421\":{\"location_code\":\"rare$expa\",\"location\":\"Morris L. Parrish Collection\",\"library\":\"Special Collections\",\"call_number\":\"PR5684 .C27 1871\",\"call_number_browse\":\"PR5684 .C27 1871\",\"location_has\":[\"Princeton copy 1\"],\"supplements\":[null],\"indexes\":[null]}}",
+    "location_code_s": [
+        "rare$expa"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Morris L. Parrish Collection"
+    ],
+    "advanced_location_s": [
+        "rare$expa",
+        "Special Collections"
+    ],
+    "name_title_browse_s": [
+        "Trollope, Anthony, 1815-1882. Palliser novels",
+        "Trollope, Anthony, 1815-1882. Can you forgive her?"
+    ],
+    "call_number_display": [
+        "PR5684 .C27 1871"
+    ],
+    "call_number_browse_s": [
+        "PR5684 .C27 1871"
+    ],
+    "call_number_locator_display": [
+        "PR5684 .C27 1871"
+    ]
+}

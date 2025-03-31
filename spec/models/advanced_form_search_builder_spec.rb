@@ -8,25 +8,32 @@ RSpec.describe AdvancedFormSearchBuilder, advanced_search: true do
   let(:scope) { Blacklight::SearchService.new config: blacklight_config, search_state: state }
   let(:state) { Blacklight::SearchState.new({}, blacklight_config) }
 
-  describe '#do_not_limit_languages' do
-    it 'modifies the language facet limit to -1 if it exists' do
-      solr_params = { "f.language_facet.facet.limit" => "11" }
-      builder.do_not_limit_languages(solr_params)
-      expect(solr_params).to eq({ "f.language_facet.facet.limit" => "-1" })
+  context 'with advanced search configuration' do
+    let(:blacklight_config) { Blacklight::Configuration.new }
+    before do
+      blacklight_config.advanced_search.form_solr_parameters = { 'f.publication_place_facet.facet.limit' => '-1' }
+      blacklight_config.advanced_search.form_solr_parameters['facet.field'] = %w[access_facet format publication_place_facet language_facet advanced_location_s]
     end
+    describe '#do_not_limit_languages' do
+      it 'does not limit the language facet based on the advanced_search configuration' do
+        solr_params = { "f.publication_place_facet.facet.limit" => "11" }
+        builder.use_advanced_configuration(solr_params)
+        expect(solr_params).to eq({ "f.publication_place_facet.facet.limit" => "-1" })
+      end
 
-    it 'does not modify other facet limits' do
-      solr_params = { "f.instrumentation_facet.facet.limit" => "11" }
-      expect do
-        builder.do_not_limit_languages(solr_params)
-      end.not_to(change { solr_params })
-    end
+      it 'does not modify other facet limits' do
+        solr_params = { "f.instrumentation_facet.facet.limit" => "11" }
+        expect do
+          builder.use_advanced_configuration(solr_params)
+        end.not_to(change { solr_params })
+      end
 
-    it 'does not affect solr parameters unrelated to facet limits' do
-      solr_params = { "rows" => "20" }
-      expect do
-        builder.do_not_limit_languages(solr_params)
-      end.not_to(change { solr_params })
+      it 'does not affect solr parameters unrelated to facet limits' do
+        solr_params = { "rows" => "20" }
+        expect do
+          builder.use_advanced_configuration(solr_params)
+        end.not_to(change { solr_params })
+      end
     end
   end
 

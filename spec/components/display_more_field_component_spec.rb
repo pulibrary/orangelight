@@ -10,7 +10,7 @@ RSpec.describe DisplayMoreFieldComponent, type: :component do
   let(:field_config) { Blacklight::Configuration::Field.new(key: 'field', field: 'field', label: 'Field label', maxInitialDisplay: 3) }
 
   let(:field) do
-    Blacklight::FieldPresenter.new(controller.view_context, document, field_config)
+    Blacklight::FieldPresenter.new(vc_test_controller.view_context, document, field_config)
   end
 
   it 'renders the field label' do

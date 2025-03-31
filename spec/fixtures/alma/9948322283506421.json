@@ -1,14 +1,32 @@
 {
-  "id": "9948322283506421",
-  "numeric_id_b": true,
+  "id": [
+    "9948322283506421"
+  ],
+  "numeric_id_b": [
+    true
+  ],
+  "cjk_all": [
+    "陳士元, jin shi 1544. 孟子雜記 / 陳士元著. 初版. 上海 : 商務印書館, 民國26 [1937] 叢書集成初編 ; 0500 Mencius. 孟子."
+  ],
+  "cjk_notes": [
+    ""
+  ],
   "author_display": [
     "Chen, Shiyuan, jin shi 1544",
     "陳士元, jin shi 1544"
   ],
+  "author_sort": [
+    "Chen, Shiyuan, jin shi 1544"
+  ],
   "author_citation_display": [
     "Chen, Shiyuan"
   ],
-  "author_roles_1display": "{\"secondary_authors\":[\"陳士元\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Chen, Shiyuan\"}",
+  "author_roles_1display": [
+    "{\"secondary_authors\":[\"陳士元\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Chen, Shiyuan\"}"
+  ],
+  "cjk_author": [
+    "陳士元, jin shi 1544"
+  ],
   "author_s": [
     "Chen, Shiyuan, jin shi 1544",
     "陳士元, jin shi 1544"
@@ -16,14 +34,43 @@
   "marc_relator_display": [
     "Author"
   ],
-  "title_display": "Mengzi za ji / Chen Shiyuan zhu.",
-  "title_vern_display": "孟子雜記 / 陳士元著.",
+  "title_display": [
+    "Mengzi za ji / Chen Shiyuan zhu."
+  ],
+  "title_a_index": [
+    "Mengzi za ji",
+    "孟子雜記"
+  ],
+  "title_vern_display": [
+    "孟子雜記 / 陳士元著."
+  ],
+  "title_sort": [
+    "Mengzi za ji / Chen Shiyuan zhu."
+  ],
+  "title_vern_sort": [
+    "孟子雜記 / 陳士元著."
+  ],
+  "title_no_h_index": [
+    "Mengzi za ji / Chen Shiyuan zhu.",
+    "孟子雜記 / 陳士元著."
+  ],
   "title_t": [
     "Mengzi za ji / Chen Shiyuan zhu."
   ],
   "title_citation_display": [
     "Mengzi za ji",
     "孟子雜記"
+  ],
+  "series_title_index": [
+    "Cong shu ji cheng chu bian ; 0500",
+    "叢書集成初編 ; 0500"
+  ],
+  "cjk_title": [
+    "孟子雜記 / 陳士元著.",
+    "叢書集成初編 ; 0500"
+  ],
+  "cjk_series_title": [
+    "叢書集成初編 ; 0500"
   ],
   "compiled_created_t": [
     "Mengzi za ji / Chen Shiyuan zhu.",
@@ -48,11 +95,24 @@
     "Shanghai: Shang wu yin shu guan",
     "上海: 商務印書館"
   ],
+  "publication_location_citation_display": [
+    "Shanghai"
+  ],
+  "publisher_citation_display": [
+    "Shang wu yin shu guan"
+  ],
   "pub_date_display": [
     "1937"
   ],
-  "pub_date_start_sort": 1937,
-  "cataloged_tdt": "2021-07-12T22:03:04Z",
+  "pub_date_start_sort": [
+    "1937"
+  ],
+  "publication_date_citation_display": [
+    "1937"
+  ],
+  "cataloged_tdt": [
+    "2021-07-12T22:03:04Z"
+  ],
   "format": [
     "Book"
   ],
@@ -73,14 +133,20 @@
     "Cong shu ji cheng chu bian",
     "叢書集成初編"
   ],
+  "notes_index": [
+    "NOT TO CIRCULATE. NjP-G"
+  ],
   "notes_display": [
     "NOT TO CIRCULATE."
+  ],
+  "language_name_display": [
+    "Chinese"
   ],
   "language_facet": [
     "Chinese"
   ],
-  "language_code_s": [
-    "chi"
+  "publication_place_facet": [
+    "China"
   ],
   "language_iana_s": [
     "zh"
@@ -89,17 +155,69 @@
     "Mencius—Mengzi",
     "Mencius—孟子."
   ],
+  "lc_subject_include_archaic_search_terms_index": [
+    "Mencius—Mengzi",
+    "Mencius—孟子."
+  ],
+  "subject_unstem_search": [
+    "Mencius—Mengzi",
+    "Mencius—孟子."
+  ],
+  "local_subject_unstem_search": null,
+  "siku_subject_unstem_search": null,
+  "homoit_subject_unstem_search": null,
+  "fast_subject_unstem_search": null,
   "subject_facet": [
     "Mencius—Mengzi",
     "Mencius—孟子."
   ],
+  "lc_subject_facet": [
+    "Mencius",
+    "Mencius—Mengzi",
+    "Mencius—孟子."
+  ],
+  "publication_place_hierarchical_facet": [
+    "China"
+  ],
+  "cjk_subject": [
+    "Mencius. 孟子."
+  ],
+  "subject_topic_facet": [
+    "Mencius Mengzi",
+    "Mencius 孟子."
+  ],
+  "lc_1letter_facet": [
+    "A - General Works"
+  ],
+  "lc_rest_facet": [
+    "AC - Collections Works"
+  ],
+  "lc_facet": [
+    "A - General Works",
+    "A - General Works:AC - Collections Works"
+  ],
+  "call_number_scheme_facet": [
+    "Library of Congress"
+  ],
+  "call_number_group_facet": [
+    "A - General Works"
+  ],
+  "call_number_full_facet": [
+    "AC - Collections Works"
+  ],
   "oclc_s": [
     "35316510"
+  ],
+  "standard_no_index": [
+    "4832228-princetondb",
+    "ocm35316510"
   ],
   "other_version_s": [
     "ocm35316510"
   ],
-  "holdings_1display": "{\"22585216480006421\":{\"location_code\":\"eastasian$hy\",\"location\":\"\",\"library\":\"East Asian Library\",\"call_number\":\"C338/4352 vol.500\",\"call_number_browse\":\"C338/4352 vol.500\",\"location_note\":[\"NOT TO CIRCULATE\"]}}",
+  "holdings_1display": [
+    "{\"22585216480006421\":{\"location_code\":\"eastasian$hy\",\"location\":\"\",\"library\":\"East Asian Library\",\"call_number\":\"C338/4352 vol.500\",\"call_number_browse\":\"C338/4352 vol.500\",\"location_note\":[\"NOT TO CIRCULATE\"]}}"
+  ],
   "location_code_s": [
     "eastasian$hy"
   ],
@@ -125,5 +243,8 @@
   ],
   "call_number_locator_display": [
     "C338/4352 vol.500"
+  ],
+  "access_facet": [
+    "In the Library"
   ]
 }
