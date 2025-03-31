@@ -76,6 +76,7 @@ describe 'Browsables', browse: true do
       expect(page).to have_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape subject_heading_lc1}&vocab=lc_subject_facet")
 
       click_link('[Browse]', href: "/browse/subjects?q=#{CGI.escape subject_heading_lc1}&vocab=lc_subject_facet")
+
       expect(page).to have_content('fairy tales')
       within('.alert.alert-info') do
         expect(page).to have_content('Fairy tales')
