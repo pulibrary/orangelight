@@ -94,7 +94,7 @@ class Orangelight::BrowsablesController < ApplicationController
       @search_term = search_term
       @exact_match = search_term == search_result.sort
       @match = search_result.id
-      @model == 'subjects' ? @match_vocabulary = search_result.vocabulary : nil
+      @match_vocabulary = search_result.vocabulary if @model == 'subjects'
       @start = search_result.id - 1
       @start -= 1 if @exact_match
       @start = 1 if @start < 1
