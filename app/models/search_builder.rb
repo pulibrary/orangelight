@@ -8,7 +8,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   default_processor_chain.unshift(:conditionally_configure_json_query_dsl)
 
   self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators
-                                     cjk_mm wildcard_char_strip 
+                                     cjk_mm wildcard_char_strip
                                      only_home_facets prepare_left_anchor_search fancy_booleans
                                      series_title_results pul_holdings html_facets
                                      numismatics_facets numismatics_advanced
@@ -20,11 +20,16 @@ class SearchBuilder < Blacklight::SearchBuilder
     transform_queries!(solr_parameters) { |query| cleaned_query(query) }
   end
 
+  # left_anchor_search
+  # duplication of logic with other booleans
+  # SO LONG
+  # Process-y, not OO
+  # failing tests
+  # tests that don't run in CI
   def fancy_booleans(solr_parameters)
-    # byebug if solr_parameters.dig('json')
-    solr_parameters.dig('json', 'query', 'bool', 'must')
     # Find phrase with OR
     phrases_with_or = solr_parameters.dig('json', 'query', 'bool', 'must')&.select do |clause|
+      # still need to deal with ALL CAPS QUERIES WITH OR IN THE MIDDLE
       clause[:edismax][:query].include?('OR')
     end
     # take phrase with OR out of "must" array
@@ -40,6 +45,7 @@ class SearchBuilder < Blacklight::SearchBuilder
       end
     end
     # create "should" clause
+    # What if there's already a should clause from another field?
     solr_parameters['json']['query']['bool']['should'] = should_array if should_array.present?
 
     return unless solr_parameters.dig('json', 'query', 'bool', 'must') && solr_parameters.dig('json', 'query', 'bool', 'must').empty?
