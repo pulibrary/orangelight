@@ -147,7 +147,7 @@
   "publication_place_hierarchical_facet": [
       "Italy"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
       "Italy"
   ],
   "geographic_facet": [

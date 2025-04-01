@@ -51,10 +51,10 @@ describe 'advanced searching', advanced_search: true do
   it 'allows searching by publication place', js: true do
     visit '/advanced'
     expect(page).to have_selector('label', exact_text: 'Place of publication')
-    publication_place_input = find_field('publication_place_facet')
+    publication_place_input = find_field('publication_place_hierarchical_facet')
     publication_place_input.click
     drop_down = publication_place_input.sibling(".dropdown-menu")
-    expect(drop_down).to have_content("Russia (Federation)")
+    expect(drop_down).to have_content("Brazil (1)")
     publication_place_input.fill_in(with: "sy")
     expect(drop_down).to have_content("Syria")
   end

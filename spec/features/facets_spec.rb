@@ -87,9 +87,11 @@ describe 'Facets' do
         visit '/catalog?search_field=all_fields&q='
         expect(page).to have_selector('.blacklight-lc_facet')
         # Displays all 17 LC single letter classes
-        expect(page.all('.h-node').length).to eq(17)
-        # The A class contains two subclasses
-        expect(page.first('.h-node').all('.h-leaf').length).to eq(3)
+        within('.blacklight-lc_facet') do
+          expect(page.all('.h-node').length).to eq(17)
+          # The A class contains two subclasses
+          expect(page.first('.h-node').all('.h-leaf').length).to eq(3)
+        end
       end
     end
     context 'with the hierarchical place of publication facet' do
@@ -100,9 +102,11 @@ describe 'Facets' do
         visit '/catalog?search_field=all_fields&q='
         expect(page).to have_selector('.blacklight-publication_place_hierarchical_facet')
         # Displays all 3 place of publication classes
-        expect(page.all('.h-node').length).to eq(3)
-        # The A class contains two subclasses
-        expect(page.all('.h-node')[2].all('.h-leaf').length).to eq(7)
+        within('.blacklight-publication_place_hierarchical_facet') do
+          expect(page.all('.h-node').length).to eq(3)
+          # The A class contains two subclasses
+          expect(page.all('.h-node')[2].all('.h-leaf').length).to eq(7)
+        end
       end
     end
   end

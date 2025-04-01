@@ -127,7 +127,7 @@
             "United States",
             "United States:Massachusetts"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United States",
             "United States|Massachusetts"
         ],
@@ -373,7 +373,7 @@
             "United Kingdom",
             "United Kingdom:England"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United Kingdom",
             "United Kingdom|England"
         ],
@@ -574,7 +574,7 @@
             "United States",
             "United States:District of Columbia"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United States",
             "United States|District of Columbia"
         ],
@@ -803,7 +803,7 @@
             "United Kingdom",
             "United Kingdom:England"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United Kingdom",
             "United Kingdom|England"
         ],
@@ -1057,7 +1057,7 @@
             "United Kingdom",
             "United Kingdom:England"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United Kingdom",
             "United Kingdom|England"
         ],
@@ -1241,7 +1241,7 @@
         "publication_place_hierarchical_facet": [
             "Brazil"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "Brazil"
         ],
         "language_iana_s": [
@@ -1471,7 +1471,7 @@
             "United States",
             "United States:District of Columbia"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United States",
             "United States|District of Columbia"
         ],
@@ -1653,7 +1653,7 @@
             "United States",
             "United States:Massachusetts"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United States",
             "United States|Massachusetts"
         ],

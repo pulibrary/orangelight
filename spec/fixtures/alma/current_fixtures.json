@@ -216,7 +216,7 @@
   "publication_place_hierarchical_facet": [
     "China"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "China"
   ],
   "language_code_s": [
@@ -435,7 +435,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -669,7 +669,7 @@
   "publication_place_hierarchical_facet": [
     "Korea (South)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Korea (South)"
   ],
   "language_code_s": [
@@ -919,7 +919,7 @@
   "publication_place_hierarchical_facet": [
     "Spain"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Spain"
   ],
   "language_code_s": [
@@ -1163,7 +1163,7 @@
   "publication_place_hierarchical_facet": [
     "Brazil"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Brazil"
   ],
   "language_code_s": [
@@ -1369,7 +1369,7 @@
   "publication_place_hierarchical_facet": [
     "Israel"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Israel"
   ],
   "language_code_s": [
@@ -1588,7 +1588,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -1825,7 +1825,7 @@
   "publication_place_hierarchical_facet": [
     "No place, unknown, or undetermined"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "No place, unknown, or undetermined"
   ],
   "language_code_s": [
@@ -2062,7 +2062,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -2284,7 +2284,7 @@
   "publication_place_hierarchical_facet": [
     "China"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "China"
   ],
   "language_code_s": [
@@ -2507,7 +2507,7 @@
   "publication_place_hierarchical_facet": [
     "Japan"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Japan"
   ],
   "language_code_s": [
@@ -2714,7 +2714,7 @@
   "publication_place_hierarchical_facet": [
     "Jordan"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Jordan"
   ],
   "language_code_s": [
@@ -3012,7 +3012,7 @@
   "publication_place_hierarchical_facet": [
     "Egypt"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Egypt"
   ],
   "language_code_s": [
@@ -3224,7 +3224,7 @@
   "publication_place_hierarchical_facet": [
     "Turkey"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Turkey"
   ],
   "language_code_s": [
@@ -3408,7 +3408,7 @@
   "publication_place_hierarchical_facet": [
     "Ukraine"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Ukraine"
   ],
   "language_code_s": [
@@ -3840,7 +3840,7 @@
   "publication_place_hierarchical_facet": [
     "Argentina"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Argentina"
   ],
   "language_code_s": [
@@ -4081,7 +4081,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -4314,7 +4314,7 @@
   "publication_place_hierarchical_facet": [
     "Israel"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Israel"
   ],
   "language_code_s": [
@@ -4600,7 +4600,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -4883,7 +4883,7 @@
   "publication_place_hierarchical_facet": [
     "Greece"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Greece"
   ],
   "language_code_s": [
@@ -5106,7 +5106,7 @@
   "publication_place_hierarchical_facet": [
     "Japan"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Japan"
   ],
   "language_code_s": [
@@ -5289,7 +5289,7 @@
   "publication_place_hierarchical_facet": [
     "Syria"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Syria"
   ],
   "language_code_s": [
@@ -5513,7 +5513,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -5759,7 +5759,7 @@
   "publication_place_hierarchical_facet": [
     "No place, unknown, or undetermined"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "No place, unknown, or undetermined"
   ],
   "language_code_s": [
@@ -5942,7 +5942,7 @@
   "publication_place_hierarchical_facet": [
     "Iran"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Iran"
   ],
   "language_code_s": [
@@ -6545,7 +6545,7 @@
   "publication_place_hierarchical_facet": [
     "Egypt"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Egypt"
   ],
   "language_code_s": [
@@ -7149,7 +7149,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -7403,7 +7403,7 @@
   "publication_place_hierarchical_facet": [
     "Korea (South)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Korea (South)"
   ],
   "script_display": [
@@ -7636,7 +7636,7 @@
     "United States",
     "United States:Massachusetts"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|Massachusetts"
   ],
@@ -7745,229 +7745,6 @@
   ],
   "call_number_locator_display": [
     "QA152.3 .L28 2007"
-  ],
-  "access_facet": [
-    "In the Library"
-  ]
-},
-{
-  "id": [
-    "9979232583506421"
-  ],
-  "numeric_id_b": [
-    true
-  ],
-  "cjk_all": [
-    "صباغ، مازن يوسف. دستوريات : الرقابة الدستورية على القوانين والمحكمة الدستورية العليا في سوريا، 1919-2012 / اعداد وتحرير وتوثيق مازن يوسف صباغ ؛ كتب المقدمة نبيل طعمة. [دمشق] : دار الشرق للطباعة والنشر، [2012]. طعمة، نبيل."
-  ],
-  "cjk_notes": [
-    ""
-  ],
-  "author_display": [
-    "Ṣabbāgh, Māzin Yūsuf",
-    "صباغ، مازن يوسف."
-  ],
-  "author_sort": [
-    "Ṣabbāgh, Māzin Yūsuf"
-  ],
-  "author_citation_display": [
-    "Ṣabbāgh, Māzin Yūsuf",
-    "Ṭuʻmah, Nabīl"
-  ],
-  "author_roles_1display": [
-    "{\"secondary_authors\":[\"Ṭuʻmah, Nabīl\",\"صباغ، مازن يوسف.\",\"طعمة، نبيل.\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Ṣabbāgh, Māzin Yūsuf\"}"
-  ],
-  "cjk_author": [
-    "صباغ، مازن يوسف.",
-    "طعمة، نبيل."
-  ],
-  "author_s": [
-    "Ṣabbāgh, Māzin Yūsuf",
-    "Ṭuʻmah, Nabīl",
-    "صباغ، مازن يوسف.",
-    "طعمة، نبيل."
-  ],
-  "marc_relator_display": [
-    "Author"
-  ],
-  "title_display": [
-    "Dustūrīyāt : al-raqābah al-dustūrīyah ʻalá al-qawānīn wa-al-maḥkamah al-dustūrīyah al-ʻulyā fī Sūriyā, 1919-2012 / iʻdād wa-taḥrīr wa-tawthīq Māzin Yūsuf Ṣabbāgh ; kataba al-muqaddimah Nabīl Ṭuʻmah."
-  ],
-  "title_a_index": [
-    "Dustūrīyāt",
-    "دستوريات"
-  ],
-  "title_vern_display": [
-    "دستوريات : الرقابة الدستورية على القوانين والمحكمة الدستورية العليا في سوريا، 1919-2012 / اعداد وتحرير وتوثيق مازن يوسف صباغ ؛ كتب المقدمة نبيل طعمة."
-  ],
-  "title_sort": [
-    "Dustūrīyāt : al-raqābah al-dustūrīyah ʻalá al-qawānīn wa-al-maḥkamah al-dustūrīyah al-ʻulyā fī Sūriyā, 1919-2012 / iʻdād wa-taḥrīr wa-tawthīq Māzin Yūsuf Ṣabbāgh ; kataba al-muqaddimah Nabīl Ṭuʻmah."
-  ],
-  "title_vern_sort": [
-    "دستوريات : الرقابة الدستورية على القوانين والمحكمة الدستورية العليا في سوريا، 1919-2012 / اعداد وتحرير وتوثيق مازن يوسف صباغ ؛ كتب المقدمة نبيل طعمة."
-  ],
-  "title_no_h_index": [
-    "Dustūrīyāt : al-raqābah al-dustūrīyah ʻalá al-qawānīn wa-al-maḥkamah al-dustūrīyah al-ʻulyā fī Sūriyā, 1919-2012 / iʻdād wa-taḥrīr wa-tawthīq Māzin Yūsuf Ṣabbāgh ; kataba al-muqaddimah Nabīl Ṭuʻmah.",
-    "دستوريات : الرقابة الدستورية على القوانين والمحكمة الدستورية العليا في سوريا، 1919-2012 / اعداد وتحرير وتوثيق مازن يوسف صباغ ؛ كتب المقدمة نبيل طعمة."
-  ],
-  "title_t": [
-    "Dustūrīyāt : al-raqābah al-dustūrīyah ʻalá al-qawānīn wa-al-maḥkamah al-dustūrīyah al-ʻulyā fī Sūriyā, 1919-2012 / iʻdād wa-taḥrīr wa-tawthīq Māzin Yūsuf Ṣabbāgh ; kataba al-muqaddimah Nabīl Ṭuʻmah."
-  ],
-  "title_citation_display": [
-    "Dustūrīyāt : al-raqābah al-dustūrīyah ʻalá al-qawānīn wa-al-maḥkamah al-dustūrīyah al-ʻulyā fī Sūriyā, 1919-2012",
-    "دستوريات : الرقابة الدستورية على القوانين والمحكمة الدستورية العليا في سوريا، 1919-2012"
-  ],
-  "cjk_title": [
-    "دستوريات : الرقابة الدستورية على القوانين والمحكمة الدستورية العليا في سوريا، 1919-2012 / اعداد وتحرير وتوثيق مازن يوسف صباغ ؛ كتب المقدمة نبيل طعمة."
-  ],
-  "compiled_created_t": [
-    "Dustūrīyāt : al-raqābah al-dustūrīyah ʻalá al-qawānīn wa-al-maḥkamah al-dustūrīyah al-ʻulyā fī Sūriyā, 1919-2012 / iʻdād wa-taḥrīr wa-tawthīq Māzin Yūsuf Ṣabbāgh ; kataba al-muqaddimah Nabīl Ṭuʻmah.",
-    "دستوريات : الرقابة الدستورية على القوانين والمحكمة الدستورية العليا في سوريا، 1919-2012 / اعداد وتحرير وتوثيق مازن يوسف صباغ ؛ كتب المقدمة نبيل طعمة."
-  ],
-  "pub_created_vern_display": [
-    "[دمشق] : دار الشرق للطباعة والنشر، [2012]."
-  ],
-  "pub_created_display": [
-    "[Damascus] : Dār al-Sharq lil-Ṭibāʻah wa-al-Nashr, [2012].",
-    "[دمشق] : دار الشرق للطباعة والنشر، [2012]."
-  ],
-  "pub_created_s": [
-    "[Damascus] : Dār al-Sharq lil-Ṭibāʻah wa-al-Nashr, [2012].",
-    "[دمشق] : دار الشرق للطباعة والنشر، [2012]."
-  ],
-  "pub_citation_display": [
-    "Damascus: Dār al-Sharq lil-Ṭibāʻah wa-al-Nashr",
-    "دمشق: دار الشرق للطباعة والنشر،"
-  ],
-  "pub_date_display": [
-    "2012"
-  ],
-  "pub_date_start_sort": [
-    "2012"
-  ],
-  "cataloged_tdt": [
-    "2021-07-13T03:33:24Z"
-  ],
-  "format": [
-    "Book"
-  ],
-  "description_display": [
-    "423 pages ; 24 cm."
-  ],
-  "description_t": [
-    "423 pages ; 24 cm."
-  ],
-  "number_of_pages_citation_display": [
-    "423 pages"
-  ],
-  "geocode_display": [
-    "Syria"
-  ],
-  "notes_index": [
-    "Includes bibliographical references (p. 391-394)"
-  ],
-  "bib_ref_notes_display": [
-    "Includes bibliographical references (p. 391-394)"
-  ],
-  "language_facet": [
-    "Arabic"
-  ],
-  "publication_place_facet": [
-    "Syria"
-  ],
-  "publication_place_hierarchical_facet": [
-    "Syria"
-  ],
-  "publication_place_hierarchical_pivot_facet": [
-    "Syria"
-  ],
-  "language_code_s": [
-    "ara"
-  ],
-  "language_iana_s": [
-    "ar"
-  ],
-  "lc_subject_display": [
-    "Constitutional law—Syria"
-  ],
-  "subject_unstem_search": [
-    "Constitutional law—Syria"
-  ],
-  "siku_subject_unstem_search": null,
-  "subject_facet": [
-    "Constitutional law—Syria"
-  ],
-  "subject_topic_facet": [
-    "Constitutional law",
-    "Syria"
-  ],
-  "lc_1letter_facet": [
-    "K - Law"
-  ],
-  "lc_rest_facet": [
-    "KMU - Law of Syria"
-  ],
-  "lc_facet": [
-    "K - Law",
-    "K - Law:KMU - Law of Syria"
-  ],
-  "lc_pipe_facet": [
-    "K - Law",
-    "K - Law|KMU - Law of Syria"
-  ],
-  "call_number_scheme_facet": [
-    "Library of Congress"
-  ],
-  "call_number_group_facet": [
-    "K - Law"
-  ],
-  "call_number_full_facet": [
-    "KMU - Law of Syria"
-  ],
-  "related_name_json_1display": [
-    "{\"Writer of preface\":[\"Ṭuʻmah, Nabīl\"],\"Related name\":[\"طعمة، نبيل.\"]}"
-  ],
-  "oclc_s": [
-    "892912967"
-  ],
-  "standard_no_index": [
-    "ocn892912967",
-    "(LB-BrSB)233-317",
-    "7923258",
-    "892912967",
-    "7923258-princetondb"
-  ],
-  "other_version_s": [
-    "ocn892912967"
-  ],
-  "holdings_1display": [
-    "{\"22601319190006421\":{\"location_code\":\"recap$pa\",\"location\":\"Remote Storage\",\"library\":\"ReCAP\",\"call_number\":\"KMU207 .S23 2012\",\"call_number_browse\":\"KMU207 .S23 2012\",\"items\":[{\"holding_id\":\"22601319190006421\",\"id\":\"23601319180006421\",\"status_at_load\":\"1\",\"barcode\":\"32101069523585\",\"copy_number\":\"1\"}]}}"
-  ],
-  "location_code_s": [
-    "recap$pa"
-  ],
-  "location": [
-    "ReCAP"
-  ],
-  "location_display": [
-    "Remote Storage"
-  ],
-  "advanced_location_s": [
-    "recap$pa",
-    "ReCAP"
-  ],
-  "name_title_browse_s": [
-    "Ṣabbāgh, Māzin Yūsuf. Dustūrīyāt",
-    "صباغ، مازن يوسف.. دستوريات"
-  ],
-  "call_number_display": [
-    "KMU207 .S23 2012"
-  ],
-  "call_number_browse_s": [
-    "KMU207 .S23 2012"
-  ],
-  "call_number_locator_display": [
-    "KMU207 .S23 2012"
   ],
   "access_facet": [
     "In the Library"
@@ -8131,7 +7908,7 @@
   "publication_place_hierarchical_facet": [
     "Japan"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Japan"
   ],
   "language_code_s": [
@@ -8417,7 +8194,7 @@
   "publication_place_hierarchical_facet": [
     "China"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "China"
   ],
   "language_code_s": [
@@ -8650,7 +8427,7 @@
   "publication_place_hierarchical_facet": [
     "No place, unknown, or undetermined"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "No place, unknown, or undetermined"
   ],
   "language_code_s": [
@@ -8867,7 +8644,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -9082,7 +8859,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -9347,7 +9124,7 @@
   "publication_place_hierarchical_facet": [
     "Japan"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Japan"
   ],
   "language_code_s": [
@@ -9616,7 +9393,7 @@
   "publication_place_hierarchical_facet": [
     "China"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "China"
   ],
   "language_code_s": [
@@ -9841,7 +9618,7 @@
   "publication_place_hierarchical_facet": [
     "Israel"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Israel"
   ],
   "language_code_s": [
@@ -10051,7 +9828,7 @@
     "United Kingdom",
     "United Kingdom:England"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United Kingdom",
     "United Kingdom|England"
   ],
@@ -10311,7 +10088,7 @@
   "publication_place_hierarchical_facet": [
     "China"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "China"
   ],
   "language_code_s": [
@@ -10752,7 +10529,7 @@
   "publication_place_hierarchical_facet": [
     "Germany"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Germany"
   ],
   "language_code_s": [
@@ -11069,7 +10846,7 @@
   "publication_place_hierarchical_facet": [
     "Tajikistan"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Tajikistan"
   ],
   "language_code_s": [
@@ -11335,7 +11112,7 @@
   "publication_place_hierarchical_facet": [
     "Ukraine"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Ukraine"
   ],
   "language_code_s": [
@@ -11591,7 +11368,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -11836,7 +11613,7 @@
   "publication_place_hierarchical_facet": [
     "Iran"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Iran"
   ],
   "language_code_s": [
@@ -12038,7 +11815,7 @@
     "United States",
     "United States:Massachusetts"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|Massachusetts"
   ],
@@ -12271,7 +12048,7 @@
   "publication_place_hierarchical_facet": [
     "Japan"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Japan"
   ],
   "language_code_s": [
@@ -12524,7 +12301,7 @@
   "publication_place_hierarchical_facet": [
     "Algeria"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Algeria"
   ],
   "language_code_s": [
@@ -12745,7 +12522,7 @@
   "publication_place_hierarchical_facet": [
     "Israel"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Israel"
   ],
   "language_code_s": [
@@ -12938,7 +12715,7 @@
   "publication_place_hierarchical_facet": [
     "Greece"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Greece"
   ],
   "language_code_s": [
@@ -13154,7 +12931,7 @@
   "publication_place_hierarchical_facet": [
     "Japan"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Japan"
   ],
   "language_code_s": [
@@ -13386,7 +13163,7 @@
   "publication_place_hierarchical_facet": [
     "France"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "France"
   ],
   "language_code_s": [
@@ -13651,7 +13428,7 @@
   "publication_place_hierarchical_facet": [
     "Iran"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Iran"
   ],
   "language_code_s": [
@@ -13867,7 +13644,7 @@
   "publication_place_hierarchical_facet": [
     "No place, unknown, or undetermined"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "No place, unknown, or undetermined"
   ],
   "language_code_s": [
@@ -14071,7 +13848,7 @@
   "publication_place_hierarchical_facet": [
     "France"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "France"
   ],
   "language_code_s": [
@@ -14341,7 +14118,7 @@
   "publication_place_hierarchical_facet": [
     "No place, unknown, or undetermined"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "No place, unknown, or undetermined"
   ],
   "language_code_s": [
@@ -14595,7 +14372,7 @@
   "publication_place_hierarchical_facet": [
     "Korea (South)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Korea (South)"
   ],
   "script_display": [
@@ -14921,7 +14698,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -15181,7 +14958,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -15402,7 +15179,7 @@
   "publication_place_hierarchical_facet": [
     "Indonesia"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Indonesia"
   ],
   "language_code_s": [
@@ -15595,7 +15372,7 @@
   "publication_place_hierarchical_facet": [
     "Egypt"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Egypt"
   ],
   "language_code_s": [
@@ -15781,7 +15558,7 @@
   "publication_place_hierarchical_facet": [
     "Lebanon"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Lebanon"
   ],
   "language_code_s": [
@@ -15997,7 +15774,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -16209,7 +15986,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -16409,7 +16186,7 @@
   "publication_place_hierarchical_facet": [
     "Egypt"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Egypt"
   ],
   "language_code_s": [
@@ -16609,7 +16386,7 @@
     "Canada",
     "Canada:Ontario"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Canada",
     "Canada|Ontario"
   ],
@@ -16864,7 +16641,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -17125,7 +16902,7 @@
   "publication_place_hierarchical_facet": [
     "Korea (South)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Korea (South)"
   ],
   "language_code_s": [
@@ -17374,7 +17151,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -17596,7 +17373,7 @@
   "publication_place_hierarchical_facet": [
     "Lebanon"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Lebanon"
   ],
   "language_code_s": [
@@ -17806,7 +17583,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -18036,7 +17813,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -18250,7 +18027,7 @@
   "publication_place_hierarchical_facet": [
     "Korea (South)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Korea (South)"
   ],
   "language_code_s": [
@@ -18494,7 +18271,7 @@
   "publication_place_hierarchical_facet": [
     "West Bank of the Jordan River"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "West Bank of the Jordan River"
   ],
   "language_code_s": [
@@ -18729,7 +18506,7 @@
   "publication_place_hierarchical_facet": [
     "No place, unknown, or undetermined"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "No place, unknown, or undetermined"
   ],
   "language_code_s": [
@@ -18965,7 +18742,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -19187,7 +18964,7 @@
     "United Kingdom",
     "United Kingdom:United Kingdom"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United Kingdom",
     "United Kingdom|United Kingdom"
   ],
@@ -19531,7 +19308,7 @@
     "United States",
     "United States:California"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|California"
   ],
@@ -19771,7 +19548,7 @@
     "United States",
     "United States:New Jersey"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|New Jersey"
   ],
@@ -20026,7 +19803,7 @@
     "United States",
     "United States:New York (State)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|New York (State)"
   ],
@@ -20284,7 +20061,7 @@
   "publication_place_hierarchical_facet": [
     "Lebanon"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Lebanon"
   ],
   "language_code_s": [
@@ -20448,7 +20225,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -20705,7 +20482,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -20947,7 +20724,7 @@
   "publication_place_hierarchical_facet": [
     "Israel"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Israel"
   ],
   "language_code_s": [
@@ -21228,7 +21005,7 @@
   "publication_place_hierarchical_facet": [
     "Iraq"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Iraq"
   ],
   "language_code_s": [
@@ -21470,7 +21247,7 @@
   "publication_place_hierarchical_facet": [
     "Greece"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Greece"
   ],
   "language_code_s": [
@@ -21692,7 +21469,7 @@
   "publication_place_hierarchical_facet": [
     "China"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "China"
   ],
   "language_code_s": [
@@ -21881,7 +21658,7 @@
   "publication_place_hierarchical_facet": [
     "No place, unknown, or undetermined"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "No place, unknown, or undetermined"
   ],
   "language_code_s": [
@@ -22092,7 +21869,7 @@
   "publication_place_hierarchical_facet": [
     "Syria"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Syria"
   ],
   "language_code_s": [
@@ -22311,7 +22088,7 @@
   "publication_place_hierarchical_facet": [
     "Egypt"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Egypt"
   ],
   "language_code_s": [
@@ -22534,7 +22311,7 @@
   "publication_place_hierarchical_facet": [
     "Lebanon"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Lebanon"
   ],
   "language_code_s": [
@@ -22714,7 +22491,7 @@
   "publication_place_hierarchical_facet": [
     "Israel"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Israel"
   ],
   "language_code_s": [
@@ -22906,7 +22683,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -23187,7 +22964,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -23417,7 +23194,7 @@
     "United States",
     "United States:New Jersey"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|New Jersey"
   ],
@@ -23658,7 +23435,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -23936,7 +23713,7 @@
   "publication_place_hierarchical_facet": [
     "Iran"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Iran"
   ],
   "language_code_s": [
@@ -24180,7 +23957,7 @@
   "publication_place_hierarchical_facet": [
     "Germany"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Germany"
   ],
   "language_code_s": [
@@ -24347,7 +24124,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -24592,7 +24369,7 @@
   "publication_place_hierarchical_facet": [
     "United Arab Emirates"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United Arab Emirates"
   ],
   "language_code_s": [
@@ -24854,7 +24631,7 @@
   "publication_place_hierarchical_facet": [
     "India"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "India"
   ],
   "language_code_s": [
@@ -25071,7 +24848,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -25301,7 +25078,7 @@
   "publication_place_hierarchical_facet": [
     "No place, unknown, or undetermined"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "No place, unknown, or undetermined"
   ],
   "language_code_s": [
@@ -25509,7 +25286,7 @@
   "publication_place_hierarchical_facet": [
     "Korea (South)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Korea (South)"
   ],
   "language_code_s": [
@@ -25721,7 +25498,7 @@
   "publication_place_hierarchical_facet": [
     "Lebanon"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Lebanon"
   ],
   "language_code_s": [
@@ -26163,7 +25940,7 @@
   "publication_place_hierarchical_facet": [
     "Russia (Federation)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Russia (Federation)"
   ],
   "language_code_s": [
@@ -26325,7 +26102,7 @@
     "United States",
     "United States:New Jersey"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|New Jersey"
   ],
@@ -26581,7 +26358,7 @@
   "publication_place_hierarchical_facet": [
     "Korea (South)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Korea (South)"
   ],
   "language_code_s": [
@@ -26950,7 +26727,7 @@
   "publication_place_hierarchical_facet": [
     "Korea (South)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Korea (South)"
   ],
   "language_code_s": [
@@ -27160,7 +26937,7 @@
     "United States",
     "United States:New York (State)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|New York (State)"
   ],
@@ -27415,7 +27192,7 @@
     "United States",
     "United States:Pennsylvania"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|Pennsylvania"
   ],
@@ -27662,7 +27439,7 @@
   "publication_place_hierarchical_facet": [
     "China"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "China"
   ],
   "language_code_s": [
@@ -27891,7 +27668,7 @@
   "publication_place_hierarchical_facet": [
     "Turkey"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Turkey"
   ],
   "language_code_s": [
@@ -28163,7 +27940,7 @@
   "publication_place_hierarchical_facet": [
     "Iran"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Iran"
   ],
   "language_code_s": [
@@ -28386,7 +28163,7 @@
   "publication_place_hierarchical_facet": [
     "Japan"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Japan"
   ],
   "language_code_s": [
@@ -28640,7 +28417,7 @@
     "United States",
     "United States:Illinois"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|Illinois"
   ],
@@ -28812,7 +28589,7 @@
   "publication_place_hierarchical_facet": [
     "Pakistan"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Pakistan"
   ],
   "language_code_s": [
@@ -29060,7 +28837,7 @@
   "publication_place_hierarchical_facet": [
     "Israel"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Israel"
   ],
   "language_code_s": [
@@ -29845,7 +29622,7 @@
   "publication_place_hierarchical_facet": [
     "Korea (South)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Korea (South)"
   ],
   "language_code_s": [
@@ -29972,7 +29749,7 @@
     "United States",
     "United States:Pennsylvania"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|Pennsylvania"
   ],
@@ -30123,7 +29900,7 @@
     "United States",
     "United States:Pennsylvania"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|Pennsylvania"
   ],
@@ -30361,7 +30138,7 @@
     "United States",
     "United States:Illinois"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|Illinois"
   ],
@@ -30556,7 +30333,7 @@
     "United Kingdom",
     "United Kingdom:England"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United Kingdom",
     "United Kingdom|England"
   ],
@@ -30858,7 +30635,7 @@
     "United Kingdom",
     "United Kingdom:England"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United Kingdom",
     "United Kingdom|England"
   ],
@@ -31056,7 +30833,7 @@
     "United Kingdom",
     "United Kingdom:England"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United Kingdom",
     "United Kingdom|England"
   ],
@@ -31235,7 +31012,7 @@
     "United States",
     "United States:New York (State)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|New York (State)"
   ],
@@ -31742,7 +31519,7 @@
   "publication_place_hierarchical_facet": [
     "No place, unknown, or undetermined"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "No place, unknown, or undetermined"
   ],
   "language_code_s": [
@@ -33050,7 +32827,7 @@
     "United States",
     "United States:Nevada"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|Nevada"
   ],
@@ -33297,7 +33074,7 @@
     "United Kingdom",
     "United Kingdom:Scotland"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United Kingdom",
     "United Kingdom|Scotland"
   ],
@@ -33538,7 +33315,7 @@
     "United States",
     "United States:New York (State)"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|New York (State)"
   ],
@@ -33830,7 +33607,7 @@
   "publication_place_hierarchical_facet": [
     "China"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "China"
   ],
   "language_code_s": [
@@ -41838,6 +41615,12 @@
       "Arabic"
     ],
     "publication_place_facet": [
+      "Syria"
+    ],
+    "publication_place_hierarchical_facet": [
+      "Syria"
+    ],
+    "publication_place_hierarchical_pipe_facet": [
       "Syria"
     ],
     "language_code_s": [
@@ -67773,7 +67556,7 @@
     "United States",
     "United States:Massachusetts"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "United States",
     "United States|Massachusetts"
   ],
@@ -68009,7 +67792,7 @@
   "publication_place_hierarchical_facet": [
       "Netherlands"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "Netherlands"
 ],
   "language_code_s": [
@@ -68462,7 +68245,7 @@
   "publication_place_hierarchical_facet": [
     "No place, unknown, or undetermined"
   ],
-  "publication_place_hierarchical_pivot_facet": [
+  "publication_place_hierarchical_pipe_facet": [
     "No place, unknown, or undetermined"
   ],
   "language_code_s": [

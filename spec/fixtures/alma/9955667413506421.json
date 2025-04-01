@@ -111,7 +111,7 @@
         "United States",
         "United States:District of Columbia"
     ],
-    "publication_place_hierarchical_pivot_facet": [
+    "publication_place_hierarchical_pipe_facet": [
         "United States",
         "United States|District of Columbia"
     ],

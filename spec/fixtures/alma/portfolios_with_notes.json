@@ -117,7 +117,7 @@
             "United Kingdom",
             "United Kingdom:England"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United Kingdom",
             "United Kingdom|England"
         ],
@@ -344,7 +344,7 @@
             "United States",
             "United States:District of Columbia"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United States",
             "United States|District of Columbia"
         ],
@@ -537,7 +537,7 @@
         "publication_place_hierarchical_facet": [
             "France"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "France"
         ],
         "language_code_s": [
@@ -1119,7 +1119,7 @@
             "United States",
             "United States:New York (State)"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United States",
             "United States|New York (State)"
         ],
@@ -1349,7 +1349,7 @@
         "publication_place_hierarchical_facet": [
             "Mexico"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "Mexico"
         ],
         "language_code_s": [
@@ -1591,7 +1591,7 @@
             "United States",
             "United States:United States"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United States",
             "United States|United States"
         ],
@@ -2152,7 +2152,7 @@
             "United States",
             "United States:California"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United States",
             "United States|California"
         ],
@@ -2358,7 +2358,7 @@
             "United States",
             "United States:Massachusetts"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United States",
             "United States|Massachusetts"
         ],
@@ -2547,7 +2547,7 @@
             "Canada",
             "Canada:Ontario"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "Canada",
             "Canada|Ontario"
         ],
@@ -2942,7 +2942,7 @@
             "United Kingdom",
             "United Kingdom:England"
         ],
-        "publication_place_hierarchical_pivot_facet": [
+        "publication_place_hierarchical_pipe_facet": [
             "United Kingdom",
             "United Kingdom|England"
         ],
