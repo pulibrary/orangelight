@@ -20,36 +20,9 @@ class SearchBuilder < Blacklight::SearchBuilder
     transform_queries!(solr_parameters) { |query| cleaned_query(query) }
   end
 
-  # left_anchor_search
-  # duplication of logic with other booleans
-  # SO LONG
-  # Process-y, not OO
-  # failing tests
-  # tests that don't run in CI
+  # :reek:UtilityFunction
   def fancy_booleans(solr_parameters)
-    # Find phrase with OR
-    phrases_with_or = solr_parameters.dig('json', 'query', 'bool', 'must')&.select do |clause|
-      # still need to deal with ALL CAPS QUERIES WITH OR IN THE MIDDLE
-      clause[:edismax][:query].include?('OR')
-    end
-    # take phrase with OR out of "must" array
-    phrases_with_or&.each do |phrase|
-      solr_parameters['json']['query']['bool']['must'].delete(phrase)
-    end
-    # split into individual phrases for each part of "should" and put in "should" array
-    should_array = []
-    phrases_with_or&.map do |phrase|
-      sub_phrases = phrase[:edismax][:query].split(' OR ')
-      sub_phrases.each do |sub_phrase|
-        should_array << { edismax: { query: sub_phrase } }
-      end
-    end
-    # create "should" clause
-    # What if there's already a should clause from another field?
-    solr_parameters['json']['query']['bool']['should'] = should_array if should_array.present?
-
-    return unless solr_parameters.dig('json', 'query', 'bool', 'must') && solr_parameters.dig('json', 'query', 'bool', 'must').empty?
-    solr_parameters['json']['query']['bool'].delete('must')
+    BooleanPhrase.new(solr_parameters).fancy_booleans
   end
 
   # Blacklight uses Parslet https://rubygems.org/gems/parslet/versions/2.0.0 to parse the user query
