@@ -182,6 +182,10 @@
     "United States",
     "United States:New Jersey"
   ],
+  "publication_place_hierarchical_pivot_facet": [
+    "United States",
+    "United States|New Jersey"
+  ],
   "geographic_facet": [
     "United States"
   ],
@@ -202,6 +206,10 @@
   "lc_facet": [
     "K - Law",
     "K - Law:KF - Law of the U.S."
+  ],
+  "lc_pipe_facet": [
+    "K - Law",
+    "K - Law|KF - Law of the U.S."
   ],
   "call_number_scheme_facet": [
     "Library of Congress"

@@ -113,9 +113,13 @@
         "publication_place_facet": [
             "England"
         ],
-        "publication_place_hierarchical_facet":[
+        "publication_place_hierarchical_facet": [
             "United Kingdom",
             "United Kingdom:England"
+        ],
+        "publication_place_hierarchical_pivot_facet": [
+            "United Kingdom",
+            "United Kingdom|England"
         ],
         "language_code_s": [
             "eng"
@@ -154,6 +158,10 @@
         "lc_facet": [
             "Q - Science",
             "Q - Science:QC - Physics"
+        ],
+        "lc_pipe_facet": [
+            "Q - Science",
+            "Q - Science|QC - Physics"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -335,6 +343,10 @@
         "publication_place_hierarchical_facet": [
             "United States",
             "United States:District of Columbia"
+        ],
+        "publication_place_hierarchical_pivot_facet": [
+            "United States",
+            "United States|District of Columbia"
         ],
         "language_code_s": [
             "eng"
@@ -522,7 +534,10 @@
         "publication_place_facet": [
             "France"
         ],
-        "publication_place_hierarchical_facet":[
+        "publication_place_hierarchical_facet": [
+            "France"
+        ],
+        "publication_place_hierarchical_pivot_facet": [
             "France"
         ],
         "language_code_s": [
@@ -556,6 +571,10 @@
         "lc_facet": [
             "S - Agriculture",
             "S - Agriculture:S - Agriculture"
+        ],
+        "lc_pipe_facet": [
+            "S - Agriculture",
+            "S - Agriculture|S - Agriculture"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -1100,6 +1119,10 @@
             "United States",
             "United States:New York (State)"
         ],
+        "publication_place_hierarchical_pivot_facet": [
+            "United States",
+            "United States|New York (State)"
+        ],
         "language_code_s": [
             "eng"
         ],
@@ -1323,7 +1346,10 @@
         "publication_place_facet": [
             "Mexico"
         ],
-        "publication_place_hierarchical_facet":[
+        "publication_place_hierarchical_facet": [
+            "Mexico"
+        ],
+        "publication_place_hierarchical_pivot_facet": [
             "Mexico"
         ],
         "language_code_s": [
@@ -1565,6 +1591,10 @@
             "United States",
             "United States:United States"
         ],
+        "publication_place_hierarchical_pivot_facet": [
+            "United States",
+            "United States|United States"
+        ],
         "language_code_s": [
             "eng"
         ],
@@ -1618,6 +1648,10 @@
         "lc_facet": [
             "L - Education",
             "L - Education:LH - College & School Magazines & Papers"
+        ],
+        "lc_pipe_facet": [
+            "L - Education",
+            "L - Education|LH - College & School Magazines & Papers"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -1922,6 +1956,10 @@
             "Q - Science",
             "Q - Science:QA - Mathematics"
         ],
+        "lc_pipe_facet": [
+            "Q - Science",
+            "Q - Science|QA - Mathematics"
+        ],
         "call_number_scheme_facet": [
             "Library of Congress"
         ],
@@ -2114,6 +2152,10 @@
             "United States",
             "United States:California"
         ],
+        "publication_place_hierarchical_pivot_facet": [
+            "United States",
+            "United States|California"
+        ],
         "language_code_s": [
             "eng"
         ],
@@ -2148,6 +2190,10 @@
         "lc_facet": [
             "G - Geography, Anthropology, Recreation",
             "G - Geography, Anthropology, Recreation:GN - Anthropology"
+        ],
+        "lc_pipe_facet": [
+            "G - Geography, Anthropology, Recreation",
+            "G - Geography, Anthropology, Recreation|GN - Anthropology"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -2312,6 +2358,10 @@
             "United States",
             "United States:Massachusetts"
         ],
+        "publication_place_hierarchical_pivot_facet": [
+            "United States",
+            "United States|Massachusetts"
+        ],
         "language_code_s": [
             "eng"
         ],
@@ -2343,6 +2393,10 @@
         "lc_facet": [
             "Q - Science",
             "Q - Science:QB - Astronomy"
+        ],
+        "lc_pipe_facet": [
+            "Q - Science",
+            "Q - Science|QB - Astronomy"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -2493,6 +2547,10 @@
             "Canada",
             "Canada:Ontario"
         ],
+        "publication_place_hierarchical_pivot_facet": [
+            "Canada",
+            "Canada|Ontario"
+        ],
         "language_code_s": [
             "eng"
         ],
@@ -2529,6 +2587,10 @@
         "lc_facet": [
             "H - Social Sciences",
             "H - Social Sciences:HB - Economic Theory, Demography"
+        ],
+        "lc_pipe_facet": [
+            "H - Social Sciences",
+            "H - Social Sciences|HB - Economic Theory, Demography"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -2699,6 +2761,10 @@
         "lc_facet": [
             "H - Social Sciences",
             "H - Social Sciences:HA - Statistics"
+        ],
+        "lc_pipe_facet": [
+            "H - Social Sciences",
+            "H - Social Sciences|HA - Statistics"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -2872,9 +2938,13 @@
         "publication_place_facet": [
             "England"
         ],
-        "publication_place_hierarchical_facet":[
+        "publication_place_hierarchical_facet": [
             "United Kingdom",
             "United Kingdom:England"
+        ],
+        "publication_place_hierarchical_pivot_facet": [
+            "United Kingdom",
+            "United Kingdom|England"
         ],
         "language_code_s": [
             "eng"
@@ -2908,6 +2978,10 @@
         "lc_facet": [
             "L - Education",
             "L - Education:LA - History of Education"
+        ],
+        "lc_pipe_facet": [
+            "L - Education",
+            "L - Education|LA - History of Education"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"

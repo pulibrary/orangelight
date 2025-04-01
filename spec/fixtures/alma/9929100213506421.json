@@ -127,6 +127,10 @@
     "United States",
     "United States:Massachusetts"
   ],
+  "publication_place_hierarchical_pivot_facet": [
+    "United States",
+    "United States|Massachusetts"
+  ],
   "related_name_json_1display": [
     "{\"Related name\":[\"Higginson, Thomas Wentworth, 1823-1911\",\"Bibliophile Society (Boston, Mass.)\"]}"
   ],

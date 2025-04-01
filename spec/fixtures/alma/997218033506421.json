@@ -163,6 +163,10 @@
     "United States",
     "United States:California"
   ],
+  "publication_place_hierarchical_pivot_facet": [
+    "United States",
+    "United States|California"
+  ],
   "subject_topic_facet": [
     "Japanese language",
     "Korean language",
@@ -180,6 +184,10 @@
   "lc_facet": [
     "P - Language & Literature",
     "P - Language & Literature:PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+  ],
+  "lc_pipe_facet": [
+    "P - Language & Literature",
+    "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"

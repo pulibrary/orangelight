@@ -158,6 +158,10 @@
       "United States",
       "United States:District of Columbia"
   ],
+  "publication_place_hierarchical_pivot_facet": [
+      "United States",
+      "United States|District of Columbia"
+  ],
   "geographic_facet": [
       "United States"
   ],
@@ -184,6 +188,10 @@
   "lc_facet": [
       "H - Social Sciences",
       "H - Social Sciences:HA - Statistics"
+  ],
+  "lc_pipe_facet": [
+      "H - Social Sciences",
+      "H - Social Sciences|HA - Statistics"
   ],
   "sudoc_facet": [
       "C - Commerce Department"

@@ -147,6 +147,9 @@
   "publication_place_hierarchical_facet": [
       "Italy"
   ],
+  "publication_place_hierarchical_pivot_facet": [
+      "Italy"
+  ],
   "geographic_facet": [
       "Italy"
   ],
@@ -169,6 +172,10 @@
   "lc_facet": [
       "Z - Bibliography, Library Science, Information Resources",
       "Z - Bibliography, Library Science, Information Resources:Z - Bibliography, Library Science, Information Resources"
+  ],
+  "lc_pipe_facet": [
+      "Z - Bibliography, Library Science, Information Resources",
+      "Z - Bibliography, Library Science, Information Resources|Z - Bibliography, Library Science, Information Resources"
   ],
   "call_number_scheme_facet": [
       "Library of Congress"

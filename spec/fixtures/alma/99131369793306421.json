@@ -219,6 +219,10 @@
         "P - Language & Literature",
         "P - Language & Literature:PZ - Children's Literature"
     ],
+    "lc_pipe_facet": [
+        "P - Language & Literature",
+        "P - Language & Literature|PZ - Children's Literature"
+    ],
     "call_number_scheme_facet": [
         "Library of Congress"
     ],
