@@ -72,11 +72,11 @@ module Requests
       end
 
       def at_marquand?
-        holding_location&.fetch('library', nil)&.fetch('code', nil) == 'marquand'
+        holding_location&.dig('library', 'code') == 'marquand'
       end
 
       def at_mudd?
-        holding_location&.fetch('library', nil)&.fetch('code', nil) == 'mudd' || thesis?
+        holding_location&.dig('library', 'code') == 'mudd' || thesis?
       end
 
       def holding_location
