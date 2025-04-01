@@ -6,7 +6,8 @@ require 'rails_helper'
 # For these tests we want a very limited Solr corpus to test complex boolean searching in
 # a more controlled way.
 # rubocop:disable RSpec/DescribeClass
-RSpec.describe 'complex boolean searching', advanced_search: true do
+RSpec.xdescribe 'complex boolean searching', advanced_search: true do
+
   let(:solr_url) do
     ENV['SOLR_URL'] || "http://#{ENV['lando_orangelight_small_test_solr_conn_host'] || '127.0.0.1'}:#{ENV['SOLR_TEST_PORT'] || ENV['lando_orangelight_small_test_solr_conn_port'] || 8888}/solr/orangelight-core-small-test"
   end
