@@ -1,0 +1,253 @@
+{
+    "id": [
+        "99129068748706421"
+    ],
+    "numeric_id_b": [
+        true
+    ],
+    "cjk_all": [
+        ""
+    ],
+    "cjk_notes": [
+        ""
+    ],
+    "author_display": [
+        "Bevan, John (Surveyor)"
+    ],
+    "author_sort": [
+        "Bevan, John (Surveyor)"
+    ],
+    "author_citation_display": [
+        "Bevan, John",
+        "Sarony & Co."
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[\"Sarony & Co.\"],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Bevan, John\"}"
+    ],
+    "author_s": [
+        "Bevan, John (Surveyor)",
+        "Sarony & Co."
+    ],
+    "marc_relator_display": [
+        "Surveyor"
+    ],
+    "title_display": [
+        "[Map of Princeton, Mercer County, New Jersey] / [surveyed and published by John Bevan, city surveyor, Commercial Building, Jersey City, N.J.]"
+    ],
+    "title_a_index": [
+        "Map of Princeton, Mercer County, New Jersey"
+    ],
+    "title_sort": [
+        "[Map of Princeton, Mercer County, New Jersey] / [surveyed and published by John Bevan, city surveyor, Commercial Building, Jersey City, N.J.]"
+    ],
+    "title_no_h_index": [
+        "[Map of Princeton, Mercer County, New Jersey] / [surveyed and published by John Bevan, city surveyor, Commercial Building, Jersey City, N.J.]"
+    ],
+    "title_t": [
+        "[Map of Princeton, Mercer County, New Jersey] / [surveyed and published by John Bevan, city surveyor, Commercial Building, Jersey City, N.J.]"
+    ],
+    "title_citation_display": [
+        "Map of Princeton, Mercer County, New Jersey"
+    ],
+    "compiled_created_t": [
+        "[Map of Princeton, Mercer County, New Jersey] / [surveyed and published by John Bevan, city surveyor, Commercial Building, Jersey City, N.J.]"
+    ],
+    "pub_created_display": [
+        "[Jersey City] : John Bevan, 1852, c1851 (N.Y. : Lith. of Sarony & Co.)"
+    ],
+    "pub_created_s": [
+        "[Jersey City] : John Bevan, 1852, c1851 (N.Y. : Lith. of Sarony & Co.)"
+    ],
+    "pub_citation_display": [
+        "Jersey City: John Bevan"
+    ],
+    "publication_location_citation_display": [
+        "Jersey City"
+    ],
+    "publisher_citation_display": [
+        "John Bevan"
+    ],
+    "pub_date_display": [
+        "1852"
+    ],
+    "pub_date_start_sort": [
+        "1852"
+    ],
+    "pub_date_end_sort": [
+        "2000"
+    ],
+    "publication_date_citation_display": [
+        "1852"
+    ],
+    "cataloged_tdt": [
+        "2023-10-24T19:30:27Z"
+    ],
+    "format": [
+        "Map"
+    ],
+    "description_display": [
+        "Scale [ca. 1:4,800]. 400 feet to the inch. (W 74°40ʹ16ʺ--W 74°38ʹ15ʺ/N 40°22ʹ23ʺ--N 40°20ʹ31ʺ).",
+        "2 maps : photocopies, on sheets 44 x 61 cm or smaller."
+    ],
+    "description_t": [
+        "Scale [ca. 1:4,800]. 400 feet to the inch. (W 74°40ʹ16ʺ--W 74°38ʹ15ʺ/N 40°22ʹ23ʺ--N 40°20ʹ31ʺ).",
+        "2 maps : photocopies, on sheets 44 x 61 cm or smaller."
+    ],
+    "number_of_pages_citation_display": [
+        "2 maps"
+    ],
+    "coverage_display": [
+        "northlimit=040.373122; eastlimit=-074.637615; southlimit=040.342006; westlimit=-074.671175; units=degrees; projection=EPSG:4326"
+    ],
+    "geocode_display": [
+        "New Jersey"
+    ],
+    "scale_display": [
+        "Scale [ca. 1:4,800]. 400 feet to the inch."
+    ],
+    "notes_index": [
+        "Two photocopies of the original lithographed map, one positive and one negative.",
+        "Includes names of property owners, list of subscribers, and views of buildings.",
+        "\"Entered according to Act of Congress in the year 1851 by John Bevan ... \""
+    ],
+    "notes_display": [
+        "Two photocopies of the original lithographed map, one positive and one negative.",
+        "Includes names of property owners, list of subscribers, and views of buildings.",
+        "\"Entered according to Act of Congress in the year 1851 by John Bevan ... \""
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "publication_place_facet": [
+        "New Jersey"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "lc_subject_display": [
+        "Real property—New Jersey—Princeton—Maps",
+        "Princeton (N.J.)—19th century—Maps"
+    ],
+    "lc_subject_include_archaic_search_terms_index": [
+        "Real property—New Jersey—Princeton—Maps",
+        "Princeton (N.J.)—19th century—Maps"
+    ],
+    "subject_unstem_search": [
+        "Real property—New Jersey—Princeton—Maps",
+        "Princeton (N.J.)—19th century—Maps"
+    ],
+    "local_subject_unstem_search": null,
+    "siku_subject_unstem_search": null,
+    "homoit_subject_unstem_search": null,
+    "fast_subject_unstem_search": null,
+    "subject_facet": [
+        "Real property—New Jersey—Princeton—Maps",
+        "Princeton (N.J.)—19th century—Maps",
+        "Maps—New Jersey—Princeton—19th century",
+        "Cadastral maps—New Jersey—Princeton—1852",
+        "City maps—New Jersey—Princeton—1852",
+        "Maps"
+    ],
+    "lc_subject_facet": [
+        "Real property",
+        "Real property—New Jersey",
+        "Real property—New Jersey—Princeton",
+        "Real property—New Jersey—Princeton—Maps",
+        "Princeton (N.J.)",
+        "Princeton (N.J.)—19th century",
+        "Princeton (N.J.)—19th century—Maps"
+    ],
+    "geographic_facet": [
+        "New Jersey",
+        "Princeton (NJ.)",
+        "Princeton (New Jersey)"
+    ],
+    "lcgft_s": [
+        "Maps—New Jersey—Princeton—19th century",
+        "Maps"
+    ],
+    "lcgft_genre_facet": [
+        "Maps",
+        "Maps—New Jersey",
+        "Maps—New Jersey—Princeton",
+        "Maps—New Jersey—Princeton—19th century"
+    ],
+    "aat_s": [
+        "Cadastral maps—New Jersey—Princeton—1852",
+        "City maps—New Jersey—Princeton—1852"
+    ],
+    "aat_genre_facet": [
+        "Cadastral maps",
+        "Cadastral maps—New Jersey",
+        "Cadastral maps—New Jersey—Princeton",
+        "Cadastral maps—New Jersey—Princeton—1852",
+        "City maps",
+        "City maps—New Jersey",
+        "City maps—New Jersey—Princeton",
+        "City maps—New Jersey—Princeton—1852"
+    ],
+    "subject_topic_facet": [
+        "Real property",
+        "New Jersey",
+        "Princeton",
+        "Princeton (N.J.)"
+    ],
+    "genre_facet": [
+        "Maps",
+        "Cadastral maps",
+        "City maps",
+        "Primary sources"
+    ],
+    "related_name_json_1display": [
+        "{\"Lithographer\":[\"Sarony & Co.\"]}"
+    ],
+    "oclc_s": [
+        "1405896033"
+    ],
+    "standard_no_index": [
+        "on1405896033"
+    ],
+    "other_version_s": [
+        "on1405896033"
+    ],
+    "subject_era_facet": [
+        "19th century"
+    ],
+    "holdings_1display": [
+        "{\"22994414640006421\":{\"location_code\":\"rare$map\",\"location\":\"Rare Books Historic Map Collection\",\"library\":\"Special Collections\",\"call_number\":\"HMC01.3423.2 D-Alcove 4, Drawer 19,\",\"call_number_browse\":\"HMC01.3423.2 D-Alcove 4, Drawer 19,\",\"sub_location\":[\"D-Alcove 4, Drawer 19,\"],\"items\":[{\"holding_id\":\"22994414640006421\",\"id\":\"23994414630006421\",\"status_at_load\":\"1\",\"barcode\":\"32101113815912\"}],\"location_has\":[\"negative image\",\"Princeton copy 2\"],\"supplements\":[null,null],\"indexes\":[null,null]},\"22994414700006421\":{\"location_code\":\"rare$map\",\"location\":\"Rare Books Historic Map Collection\",\"library\":\"Special Collections\",\"call_number\":\"HMC01.3423.1 D-Alcove 4, Drawer 19,\",\"call_number_browse\":\"HMC01.3423.1 D-Alcove 4, Drawer 19,\",\"sub_location\":[\"D-Alcove 4, Drawer 19,\"],\"items\":[{\"holding_id\":\"22994414700006421\",\"id\":\"23994414660006421\",\"status_at_load\":\"1\",\"barcode\":\"32101113815904\"}],\"location_has\":[\"positive image\",\"Princeton copy 1\"],\"supplements\":[null,null],\"indexes\":[null,null]}}"
+    ],
+    "location_code_s": [
+        "rare$map"
+    ],
+    "location": [
+        "Special Collections"
+    ],
+    "location_display": [
+        "Rare Books Historic Map Collection"
+    ],
+    "advanced_location_s": [
+        "rare$map",
+        "Special Collections"
+    ],
+    "name_title_browse_s": [
+        "Bevan, John (Surveyor). Map of Princeton, Mercer County, New Jersey"
+    ],
+    "call_number_display": [
+        "D-Alcove 4, Drawer 19, HMC01.3423.2",
+        "D-Alcove 4, Drawer 19, HMC01.3423.1"
+    ],
+    "call_number_browse_s": [
+        "HMC01.3423.2 D-Alcove 4, Drawer 19,",
+        "HMC01.3423.1 D-Alcove 4, Drawer 19,"
+    ],
+    "call_number_locator_display": [
+        "HMC01.3423.2",
+        "HMC01.3423.1"
+    ],
+    "access_facet": [
+        "In the Library"
+    ]
+}

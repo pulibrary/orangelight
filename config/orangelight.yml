@@ -38,7 +38,7 @@ development:
   report_biased_results_form:
     to: 'test-biased-results@princeton.edu'
   browse_lists:
-    csv_length: 300
+    csv_length: 224
 test:
   <<: *defaults
   feedback_form:

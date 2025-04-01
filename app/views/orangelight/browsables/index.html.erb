@@ -24,7 +24,9 @@
   </div>
 </div>
 <div class="col-12">
-  <% if @model != 'call_numbers' %>
+  <% if @model == 'subjects' %>
+    <%= render "orangelight/browsables/subjects" %>
+  <% elsif @model != 'call_numbers' %>
     <%= render "orangelight/browsables/browse" %>
   <% else %>
     <%= render "orangelight/browsables/call_numbers" %>

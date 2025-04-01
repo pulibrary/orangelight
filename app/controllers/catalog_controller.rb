@@ -111,6 +111,16 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
+    # The following fields are hidden from the facet bar and advanced search. They are used as a keyword search.
+    config.add_facet_field 'lc_subject_facet', label: 'LC Subjects', limit: true, include_in_advanced_search: false, show: false
+    config.add_facet_field 'lcgft_genre_facet', label: 'LC Genres', limit: true, include_in_advanced_search: false, show: false
+    config.add_facet_field 'aat_genre_facet', label: 'Genres: Art and Architecture Thesaurus', limit: true, include_in_advanced_search: false, show: false
+    config.add_facet_field 'homoit_genre_facet', label: 'Genres: Homosaurus', limit: true, include_in_advanced_search: false, show: false
+    config.add_facet_field 'homoit_subject_facet', label: 'Subjects: Homosaurus', limit: true, include_in_advanced_search: false, show: false
+    config.add_facet_field 'local_subject_facet', label: 'Subjects: Local', limit: true, include_in_advanced_search: false, show: false
+    config.add_facet_field 'rbgenr_genre_facet', label: 'Genres: Rare Books', limit: true, include_in_advanced_search: false, show: false
+    config.add_facet_field 'siku_subject_facet', label: 'Subjects: Siku', limit: true, include_in_advanced_search: false, show: false
+
     config.add_facet_field 'access_facet', label: 'Access', sort: 'index', collapse: false, home: true, include_in_advanced_search: true
     config.add_facet_field 'location', label: 'Library', limit: 20, sort: 'index',
                                        home: true, solr_params: { 'facet.mincount' => Blacklight.blacklight_yml['mincount'] || 1 }, include_in_advanced_search: false
@@ -301,11 +311,12 @@ class CatalogController < ApplicationController
     config.add_show_field 'lc_subject_display', label: 'Subject(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'siku_subject_display', label: 'Chinese traditional subject(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'homoit_subject_display', label: 'Homosaurus term(s)', component: Orangelight::ProcessVocabularyComponent
+    config.add_show_field 'homoit_genre_s', label: 'Homosaurus genre(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'related_name_json_1display', hash: true
     config.add_show_field 'lcgft_s', label: 'Library of Congress genre(s)', component: Orangelight::ProcessVocabularyComponent
-    config.add_show_field 'homoit_genre_s', label: 'Homosaurus genre(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'rbgenr_s', label: 'Rare books genre', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'aat_s', label: 'Getty AAT genre', component: Orangelight::ProcessVocabularyComponent
+    config.add_show_field 'local_subject_display', label: 'Local Subjects', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'fast_subject_display', label: 'FaST Subject(s)', component: Orangelight::ProcessVocabularyComponent
     config.add_show_field 'related_works_1display', label: 'Related work(s)', helper_method: :name_title_hierarchy
     config.add_show_field 'series_display', label: 'Series', series_link: true
@@ -406,6 +417,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'indexes_display', label: 'Indexes'
     config.add_show_field 'finding_aid_display', label: 'Finding aid'
     config.add_show_field 'cumulative_index_finding_aid_display', label: "Cumulative index/\u200BFinding aid"
+
     config.add_show_field 'place_name_display', label: 'Place name(s)'
     config.add_show_field 'other_title_display', label: 'Other title(s)'
     config.add_show_field 'other_title_1display', hash: true
