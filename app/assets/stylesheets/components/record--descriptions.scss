@@ -41,9 +41,17 @@
   }
 
   .dl-horizontal dd {
-    margin-left: 5rem;
+    margin-left: 170px;
     clear: none;
     margin-bottom: 1em;
+  }
+
+  /*
+   * The requests form needs a specific margin so that it does not
+   * collide with the dt
+   */
+  .bibliographic .dl-horizontal dd {
+    margin-left: 6rem;
   }
 
   .dl-horizontal dd:after {
