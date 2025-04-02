@@ -246,9 +246,9 @@ class CatalogController < ApplicationController
     config.facet_display = {
       hierarchy: {
         'lc' => [['facet'], ':'],
-        'lc_pipe' => [['facet'], '|'],
+        'lc_pipe' => [['facet'], '|||'],
         'publication_place_hierarchical' => [['facet'], ':'],
-        'publication_place_hierarchical_pipe' => [['facet'], '|']
+        'publication_place_hierarchical_pipe' => [['facet'], '|||']
       }
     }
 

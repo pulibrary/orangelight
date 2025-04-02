@@ -165,7 +165,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|California"
+    "United States|||California"
   ],
   "subject_topic_facet": [
     "Japanese language",
@@ -187,7 +187,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+    "P - Language & Literature|||PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"

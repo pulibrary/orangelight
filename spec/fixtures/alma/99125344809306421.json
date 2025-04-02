@@ -184,7 +184,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|New Jersey"
+    "United States|||New Jersey"
   ],
   "geographic_facet": [
     "United States"
@@ -209,7 +209,7 @@
   ],
   "lc_pipe_facet": [
     "K - Law",
-    "K - Law|KF - Law of the U.S."
+    "K - Law|||KF - Law of the U.S."
   ],
   "call_number_scheme_facet": [
     "Library of Congress"

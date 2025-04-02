@@ -116,7 +116,7 @@
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United States",
-            "United States|New York (State)"
+            "United States|||New York (State)"
         ],
         "language_iana_s": [
             "en"
@@ -182,7 +182,7 @@
         ],
         "lc_pipe_facet": [
             "P - Language & Literature",
-            "P - Language & Literature|PN - Literature (General)"
+            "P - Language & Literature|||PN - Literature (General)"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -442,7 +442,7 @@
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United Kingdom",
-            "United Kingdom|England"
+            "United Kingdom|||England"
         ],
         "language_iana_s": [
             "en"
@@ -488,7 +488,7 @@
         ],
         "lc_pipe_facet": [
             "P - Language & Literature",
-            "P - Language & Literature|P - Language & Literature"
+            "P - Language & Literature|||P - Language & Literature"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -670,7 +670,7 @@
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United States",
-            "United States|New York (State)"
+            "United States|||New York (State)"
         ],
         "language_iana_s": [
             "en"
@@ -717,7 +717,7 @@
         ],
         "lc_pipe_facet": [
             "H - Social Sciences",
-            "H - Social Sciences|HQ - The Family, Marriage, Woman"
+            "H - Social Sciences|||HQ - The Family, Marriage, Woman"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"

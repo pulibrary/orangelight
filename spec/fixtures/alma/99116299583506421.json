@@ -1912,7 +1912,7 @@
     ],
     "publication_place_hierarchical_pipe_facet": [
         "United States",
-        "United States|California"
+        "United States|||California"
     ],
     "geographic_facet": [
         "China"
@@ -1940,7 +1940,7 @@
     ],
     "lc_pipe_facet": [
         "J - Political Science",
-        "J - Political Science|JQ - Political Institutions (Asia, Africa, Australia, Pacific Area)"
+        "J - Political Science|||JQ - Political Institutions (Asia, Africa, Australia, Pacific Area)"
     ],
     "call_number_scheme_facet": [
         "Library of Congress"

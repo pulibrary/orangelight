@@ -151,7 +151,7 @@
     ],
     "publication_place_hierarchical_pipe_facet": [
         "United Kingdom",
-        "United Kingdom|England"
+        "United Kingdom|||England"
     ],
     "lcgft_s": [
         "Periodicals"
@@ -174,7 +174,7 @@
     ],
     "lc_pipe_facet": [
         "Q - Science",
-        "Q - Science|Q - Science"
+        "Q - Science|||Q - Science"
     ],
     "call_number_scheme_facet": [
         "Library of Congress"

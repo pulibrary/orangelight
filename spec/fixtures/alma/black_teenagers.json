@@ -129,7 +129,7 @@
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United States",
-            "United States|Massachusetts"
+            "United States|||Massachusetts"
         ],
         "language_iana_s": [
             "en"
@@ -375,7 +375,7 @@
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United Kingdom",
-            "United Kingdom|England"
+            "United Kingdom|||England"
         ],
         "language_iana_s": [
             "en"
@@ -423,7 +423,7 @@
         ],
         "lc_pipe_facet": [
             "E - History of the Americas (General)",
-            "E - History of the Americas (General)|E - History of the Americas (General)"
+            "E - History of the Americas (General)|||E - History of the Americas (General)"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -576,7 +576,7 @@
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United States",
-            "United States|District of Columbia"
+            "United States|||District of Columbia"
         ],
         "language_iana_s": [
             "en"
@@ -651,7 +651,7 @@
         ],
         "lc_pipe_facet": [
             "E - History of the Americas (General)",
-            "E - History of the Americas (General)|E - History of the Americas (General)"
+            "E - History of the Americas (General)|||E - History of the Americas (General)"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -805,7 +805,7 @@
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United Kingdom",
-            "United Kingdom|England"
+            "United Kingdom|||England"
         ],
         "language_iana_s": [
             "en"
@@ -888,7 +888,7 @@
         ],
         "lc_pipe_facet": [
             "H - Social Sciences",
-            "H - Social Sciences|HQ - The Family, Marriage, Woman"
+            "H - Social Sciences|||HQ - The Family, Marriage, Woman"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -1059,7 +1059,7 @@
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United Kingdom",
-            "United Kingdom|England"
+            "United Kingdom|||England"
         ],
         "language_iana_s": [
             "en"
@@ -1290,7 +1290,7 @@
         ],
         "lc_pipe_facet": [
             "F - History of the Americas (Local)",
-            "F - History of the Americas (Local)|F - History of the Americas (Local)"
+            "F - History of the Americas (Local)|||F - History of the Americas (Local)"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -1473,7 +1473,7 @@
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United States",
-            "United States|District of Columbia"
+            "United States|||District of Columbia"
         ],
         "language_iana_s": [
             "en"
@@ -1655,7 +1655,7 @@
         ],
         "publication_place_hierarchical_pipe_facet": [
             "United States",
-            "United States|Massachusetts"
+            "United States|||Massachusetts"
         ],
         "language_iana_s": [
             "en"
@@ -1702,7 +1702,7 @@
         ],
         "lc_pipe_facet": [
             "P - Language & Literature",
-            "P - Language & Literature|PE - English Languages"
+            "P - Language & Literature|||PE - English Languages"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"

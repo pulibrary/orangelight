@@ -250,7 +250,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DS - Asia (History)"
+    "D - World History|||DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -464,7 +464,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -705,7 +705,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DS - Asia (History)"
+    "D - World History|||DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -955,7 +955,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DS - Asia (History)"
+    "D - World History|||DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -1412,7 +1412,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DS - Asia (History)"
+    "D - World History|||DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -1617,7 +1617,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -1883,7 +1883,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PJ - Oriental Languages & Literature"
+    "P - Language & Literature|||PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -2091,7 +2091,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -2307,7 +2307,7 @@
   ],
   "lc_pipe_facet": [
     "A - General Works",
-    "A - General Works|AC - Collections Works"
+    "A - General Works|||AC - Collections Works"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -2530,7 +2530,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+    "P - Language & Literature|||PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -2812,7 +2812,7 @@
   ],
   "lc_pipe_facet": [
     "A - General Works",
-    "A - General Works|AS - Academies & Learned Societies"
+    "A - General Works|||AS - Academies & Learned Societies"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -3035,7 +3035,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PJ - Oriental Languages & Literature"
+    "P - Language & Literature|||PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -3451,7 +3451,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -3679,7 +3679,7 @@
   ],
   "lc_pipe_facet": [
     "Q - Science",
-    "Q - Science|QE - Geology"
+    "Q - Science|||QE - Geology"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -3883,7 +3883,7 @@
   ],
   "lc_pipe_facet": [
     "K - Law",
-    "K - Law|KG - Law of Latin America, Mexico, Central America, West Indies, Caribbean"
+    "K - Law|||KG - Law of Latin America, Mexico, Central America, West Indies, Caribbean"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -4120,7 +4120,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|D - World History"
+    "D - World History|||D - World History"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -4367,7 +4367,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PN - Literature (General)"
+    "P - Language & Literature|||PN - Literature (General)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -4650,7 +4650,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -4915,7 +4915,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PA - Greek & Latin Language & Literature"
+    "P - Language & Literature|||PA - Greek & Latin Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -5318,7 +5318,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PJ - Oriental Languages & Literature"
+    "P - Language & Literature|||PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -5570,7 +5570,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -6137,7 +6137,7 @@
   ],
   "lc_pipe_facet": [
     "R - Medicine",
-    "R - Medicine|RC - Internal Medicine"
+    "R - Medicine|||RC - Internal Medicine"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -6361,7 +6361,7 @@
   ],
   "lc_pipe_facet": [
     "R - Medicine",
-    "R - Medicine|RC - Internal Medicine"
+    "R - Medicine|||RC - Internal Medicine"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -6737,7 +6737,7 @@
   ],
   "lc_pipe_facet": [
     "B - Philosophy, Psychology, Religion",
-    "B - Philosophy, Psychology, Religion|BD - Speculative Philosophy"
+    "B - Philosophy, Psychology, Religion|||BD - Speculative Philosophy"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -6961,7 +6961,7 @@
   ],
   "lc_pipe_facet": [
     "G - Geography, Anthropology, Recreation",
-    "G - Geography, Anthropology, Recreation|GR - Folklore"
+    "G - Geography, Anthropology, Recreation|||GR - Folklore"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -7174,7 +7174,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -7444,7 +7444,7 @@
   ],
   "lc_pipe_facet": [
     "B - Philosophy, Psychology, Religion",
-    "B - Philosophy, Psychology, Religion|B - Philosophy, Psychology, Religion"
+    "B - Philosophy, Psychology, Religion|||B - Philosophy, Psychology, Religion"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -7638,7 +7638,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|Massachusetts"
+    "United States|||Massachusetts"
   ],
   "language_code_s": [
     "eng"
@@ -7675,7 +7675,7 @@
   ],
   "lc_pipe_facet": [
     "Q - Science",
-    "Q - Science|QA - Mathematics"
+    "Q - Science|||QA - Mathematics"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -7967,7 +7967,7 @@
   ],
   "lc_pipe_facet": [
     "N - Fine Arts",
-    "N - Fine Arts|N - Fine Arts"
+    "N - Fine Arts|||N - Fine Arts"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -8673,7 +8673,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -8893,7 +8893,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -9176,7 +9176,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DS - Asia (History)"
+    "D - World History|||DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -9438,7 +9438,7 @@
   ],
   "lc_pipe_facet": [
     "A - General Works",
-    "A - General Works|AC - Collections Works"
+    "A - General Works|||AC - Collections Works"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -9645,7 +9645,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PJ - Oriental Languages & Literature"
+    "P - Language & Literature|||PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -9830,7 +9830,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United Kingdom",
-    "United Kingdom|England"
+    "United Kingdom|||England"
   ],
   "language_code_s": [
     "eng"
@@ -9863,7 +9863,7 @@
   ],
   "lc_pipe_facet": [
     "N - Fine Arts",
-    "N - Fine Arts|ND - Painting"
+    "N - Fine Arts|||ND - Painting"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -10111,7 +10111,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+    "P - Language & Literature|||PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -10347,7 +10347,7 @@
   ],
   "lc_pipe_facet": [
     "Z - Bibliography, Library Science, Information Resources",
-    "Z - Bibliography, Library Science, Information Resources|Z - Bibliography, Library Science, Information Resources"
+    "Z - Bibliography, Library Science, Information Resources|||Z - Bibliography, Library Science, Information Resources"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -10586,7 +10586,7 @@
   ],
   "lc_pipe_facet": [
     "M - Music",
-    "M - Music|M - Music"
+    "M - Music|||M - Music"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -10897,7 +10897,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DS - Asia (History)"
+    "D - World History|||DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -11150,7 +11150,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PZ - Children's Literature"
+    "P - Language & Literature|||PZ - Children's Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -11419,7 +11419,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -11817,7 +11817,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|Massachusetts"
+    "United States|||Massachusetts"
   ],
   "language_code_s": [
     "eng"
@@ -11854,7 +11854,7 @@
   ],
   "lc_pipe_facet": [
     "Q - Science",
-    "Q - Science|QA - Mathematics"
+    "Q - Science|||QA - Mathematics"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -12081,7 +12081,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+    "P - Language & Literature|||PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -12339,7 +12339,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PJ - Oriental Languages & Literature"
+    "P - Language & Literature|||PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -12744,7 +12744,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PA - Greek & Latin Language & Literature"
+    "P - Language & Literature|||PA - Greek & Latin Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -13206,7 +13206,7 @@
   ],
   "lc_pipe_facet": [
     "M - Music",
-    "M - Music|M - Music"
+    "M - Music|||M - Music"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -13892,7 +13892,7 @@
   ],
   "lc_pipe_facet": [
     "H - Social Sciences",
-    "H - Social Sciences|HG - Finance"
+    "H - Social Sciences|||HG - Finance"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -14429,7 +14429,7 @@
   ],
   "lc_pipe_facet": [
     "B - Philosophy, Psychology, Religion",
-    "B - Philosophy, Psychology, Religion|BQ - Buddhism"
+    "B - Philosophy, Psychology, Religion|||BQ - Buddhism"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -14749,7 +14749,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -14996,7 +14996,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DK - Russia. Former Soviet Republics. Poland (History)"
+    "D - World History|||DK - Russia. Former Soviet Republics. Poland (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -15821,7 +15821,7 @@
   ],
   "lc_pipe_facet": [
     "H - Social Sciences",
-    "H - Social Sciences|HC - Economic History & Conditions"
+    "H - Social Sciences|||HC - Economic History & Conditions"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -16009,7 +16009,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -16388,7 +16388,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "Canada",
-    "Canada|Ontario"
+    "Canada|||Ontario"
   ],
   "language_code_s": [
     "eng",
@@ -16436,7 +16436,7 @@
   ],
   "lc_pipe_facet": [
     "E - History of the Americas (General)",
-    "E - History of the Americas (General)|E - History of the Americas (General)"
+    "E - History of the Americas (General)|||E - History of the Americas (General)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -16697,7 +16697,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -16954,7 +16954,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DS - Asia (History)"
+    "D - World History|||DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -17180,7 +17180,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -17402,7 +17402,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PJ - Oriental Languages & Literature"
+    "P - Language & Literature|||PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -17624,7 +17624,7 @@
   ],
   "lc_pipe_facet": [
     "N - Fine Arts",
-    "N - Fine Arts|N - Fine Arts"
+    "N - Fine Arts|||N - Fine Arts"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -17842,7 +17842,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -18065,7 +18065,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+    "P - Language & Literature|||PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -18300,7 +18300,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PJ - Oriental Languages & Literature"
+    "P - Language & Literature|||PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -18568,7 +18568,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PJ - Oriental Languages & Literature"
+    "P - Language & Literature|||PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -18765,7 +18765,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -18966,7 +18966,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United Kingdom",
-    "United Kingdom|United Kingdom"
+    "United Kingdom|||United Kingdom"
   ],
   "language_code_s": [
     "eng"
@@ -19176,7 +19176,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+    "P - Language & Literature|||PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -19310,7 +19310,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|California"
+    "United States|||California"
   ],
   "language_code_s": [
     "eng"
@@ -19364,7 +19364,7 @@
   ],
   "lc_pipe_facet": [
     "A - General Works",
-    "A - General Works|AC - Collections Works"
+    "A - General Works|||AC - Collections Works"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -19550,7 +19550,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|New Jersey"
+    "United States|||New Jersey"
   ],
   "language_code_s": [
     "eng"
@@ -19611,7 +19611,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PS - American Literature"
+    "P - Language & Literature|||PS - American Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -19805,7 +19805,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|New York (State)"
+    "United States|||New York (State)"
   ],
   "language_code_s": [
     "eng"
@@ -19848,7 +19848,7 @@
   ],
   "lc_pipe_facet": [
     "Z - Bibliography, Library Science, Information Resources",
-    "Z - Bibliography, Library Science, Information Resources|Z - Bibliography, Library Science, Information Resources"
+    "Z - Bibliography, Library Science, Information Resources|||Z - Bibliography, Library Science, Information Resources"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -20269,7 +20269,7 @@
   ],
   "lc_pipe_facet": [
     "B - Philosophy, Psychology, Religion",
-    "B - Philosophy, Psychology, Religion|BH - Aesthetics"
+    "B - Philosophy, Psychology, Religion|||BH - Aesthetics"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -20530,7 +20530,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DK - Russia. Former Soviet Republics. Poland (History)"
+    "D - World History|||DK - Russia. Former Soviet Republics. Poland (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -20783,7 +20783,7 @@
   ],
   "lc_pipe_facet": [
     "B - Philosophy, Psychology, Religion",
-    "B - Philosophy, Psychology, Religion|BL - Religions (General)"
+    "B - Philosophy, Psychology, Religion|||BL - Religions (General)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -21050,7 +21050,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DS - Asia (History)"
+    "D - World History|||DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -21276,7 +21276,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PA - Greek & Latin Language & Literature"
+    "P - Language & Literature|||PA - Greek & Latin Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -21681,7 +21681,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PJ - Oriental Languages & Literature"
+    "P - Language & Literature|||PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -22127,7 +22127,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DS - Asia (History)"
+    "D - World History|||DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -22752,7 +22752,7 @@
   ],
   "lc_pipe_facet": [
     "H - Social Sciences",
-    "H - Social Sciences|HD - Industries, Land use, Labor"
+    "H - Social Sciences|||HD - Industries, Land use, Labor"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -23009,7 +23009,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|D - World History"
+    "D - World History|||D - World History"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -23196,7 +23196,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|New Jersey"
+    "United States|||New Jersey"
   ],
   "language_code_s": [
     "eng"
@@ -23239,7 +23239,7 @@
   ],
   "lc_pipe_facet": [
     "L - Education",
-    "L - Education|LB - Theory & Practice of Education"
+    "L - Education|||LB - Theory & Practice of Education"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -23490,7 +23490,7 @@
   ],
   "lc_pipe_facet": [
     "G - Geography, Anthropology, Recreation",
-    "G - Geography, Anthropology, Recreation|GT - Manners & Customs"
+    "G - Geography, Anthropology, Recreation|||GT - Manners & Customs"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -23760,7 +23760,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DS - Asia (History)"
+    "D - World History|||DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -24153,7 +24153,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -24408,7 +24408,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DS - Asia (History)"
+    "D - World History|||DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -24665,7 +24665,7 @@
   ],
   "lc_pipe_facet": [
     "H - Social Sciences",
-    "H - Social Sciences|HQ - The Family, Marriage, Woman"
+    "H - Social Sciences|||HQ - The Family, Marriage, Woman"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -24891,7 +24891,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+    "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -25527,7 +25527,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PJ - Oriental Languages & Literature"
+    "P - Language & Literature|||PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -25751,7 +25751,7 @@
   ],
   "lc_pipe_facet": [
     "K - Law",
-    "K - Law|K - Law"
+    "K - Law|||K - Law"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -26104,7 +26104,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|New Jersey"
+    "United States|||New Jersey"
   ],
   "language_code_s": [
     "eng"
@@ -26155,7 +26155,7 @@
   ],
   "lc_pipe_facet": [
     "R - Medicine",
-    "R - Medicine|RA - Public Aspects of Medicine"
+    "R - Medicine|||RA - Public Aspects of Medicine"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -26410,7 +26410,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+    "P - Language & Literature|||PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -26939,7 +26939,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|New York (State)"
+    "United States|||New York (State)"
   ],
   "language_code_s": [
     "eng"
@@ -26992,7 +26992,7 @@
   ],
   "lc_pipe_facet": [
     "J - Political Science",
-    "J - Political Science|JV - Colonies & Colonization, Emigration & Immigration"
+    "J - Political Science|||JV - Colonies & Colonization, Emigration & Immigration"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -27194,7 +27194,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|Pennsylvania"
+    "United States|||Pennsylvania"
   ],
   "language_code_s": [
     "eng"
@@ -27238,7 +27238,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PS - American Literature"
+    "P - Language & Literature|||PS - American Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -28202,7 +28202,7 @@
   ],
   "lc_pipe_facet": [
     "H - Social Sciences",
-    "H - Social Sciences|HN - Social History & Conditions"
+    "H - Social Sciences|||HN - Social History & Conditions"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -28419,7 +28419,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|Illinois"
+    "United States|||Illinois"
   ],
   "language_code_s": [
     "ara"
@@ -28633,7 +28633,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PK - Indo-Iranian Languages & Literature"
+    "P - Language & Literature|||PK - Indo-Iranian Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -28866,7 +28866,7 @@
   ],
   "lc_pipe_facet": [
     "P - Language & Literature",
-    "P - Language & Literature|PJ - Oriental Languages & Literature"
+    "P - Language & Literature|||PJ - Oriental Languages & Literature"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -29751,7 +29751,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|Pennsylvania"
+    "United States|||Pennsylvania"
   ],
   "language_code_s": [
     "mul"
@@ -29902,7 +29902,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|Pennsylvania"
+    "United States|||Pennsylvania"
   ],
   "language_code_s": [
     "ger"
@@ -29996,7 +29996,10 @@
   "language_facet":["English"],
   "publication_place_facet":["England"],
   "publication_place_hierarchical_facet": ["United Kingdom", "United Kingdom:England"],
-  "publication_place_hierarchical_pipe_facet": ["United Kingdom", "United Kingdom|England"],
+  "publication_place_hierarchical_pipe_facet": [
+"United Kingdom",
+ "United Kingdom|||England"
+],
   "language_code_s":["eng"],
   "language_iana_s":["en"],
   "lc_subject_display":["Emotions—Social aspects","Social interaction","Interpersonal relations","Social psychology"],
@@ -30012,7 +30015,7 @@
 ],
   "lc_pipe_facet": [
 "H - Social Sciences",
-"H - Social Sciences|HM - Sociology"
+"H - Social Sciences|||HM - Sociology"
 ],
   "call_number_scheme_facet":["Library of Congress"],
   "call_number_group_facet":["H - Social Sciences"],
@@ -30140,7 +30143,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|Illinois"
+    "United States|||Illinois"
   ],
   "language_code_s": [
     "eng"
@@ -30189,7 +30192,7 @@
   ],
   "lc_pipe_facet": [
     "E - History of the Americas (General)",
-    "E - History of the Americas (General)|E - History of the Americas (General)"
+    "E - History of the Americas (General)|||E - History of the Americas (General)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -30335,7 +30338,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United Kingdom",
-    "United Kingdom|England"
+    "United Kingdom|||England"
   ],
   "language_code_s": [
     "eng"
@@ -30637,7 +30640,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United Kingdom",
-    "United Kingdom|England"
+    "United Kingdom|||England"
   ],
   "language_code_s": [
     "eng"
@@ -30691,7 +30694,7 @@
   ],
   "lc_pipe_facet": [
     "H - Social Sciences",
-    "H - Social Sciences|HB - Economic Theory, Demography"
+    "H - Social Sciences|||HB - Economic Theory, Demography"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -30835,7 +30838,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United Kingdom",
-    "United Kingdom|England"
+    "United Kingdom|||England"
   ],
   "language_code_s": [
     "eng"
@@ -31014,7 +31017,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|New York (State)"
+    "United States|||New York (State)"
   ],
   "language_code_s": [
     "eng"
@@ -31057,7 +31060,7 @@
   ],
   "lc_pipe_facet": [
     "H - Social Sciences",
-    "H - Social Sciences|HQ - The Family, Marriage, Woman"
+    "H - Social Sciences|||HQ - The Family, Marriage, Woman"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -31319,7 +31322,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DF - Greece (History)"
+    "D - World History|||DF - Greece (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -32829,7 +32832,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|Nevada"
+    "United States|||Nevada"
   ],
   "language_code_s": [
     "eng"
@@ -32898,7 +32901,7 @@
   ],
   "lc_pipe_facet": [
     "H - Social Sciences",
-    "H - Social Sciences|HQ - The Family, Marriage, Woman"
+    "H - Social Sciences|||HQ - The Family, Marriage, Woman"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -33076,7 +33079,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United Kingdom",
-    "United Kingdom|Scotland"
+    "United Kingdom|||Scotland"
   ],
   "language_code_s": [
     "eng"
@@ -33119,7 +33122,7 @@
   ],
   "lc_pipe_facet": [
     "B - Philosophy, Psychology, Religion",
-    "B - Philosophy, Psychology, Religion|B - Philosophy, Psychology, Religion"
+    "B - Philosophy, Psychology, Religion|||B - Philosophy, Psychology, Religion"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -33317,7 +33320,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|New York (State)"
+    "United States|||New York (State)"
   ],
   "language_code_s": [
     "eng"
@@ -33358,7 +33361,7 @@
   ],
   "lc_pipe_facet": [
     "N - Fine Arts",
-    "N - Fine Arts|N - Fine Arts"
+    "N - Fine Arts|||N - Fine Arts"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -33652,7 +33655,7 @@
   ],
   "lc_pipe_facet": [
     "A - General Works",
-    "A - General Works|AC - Collections Works"
+    "A - General Works|||AC - Collections Works"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
@@ -33863,7 +33866,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DS - Asia (History)"
+      "D - World History|||DS - Asia (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -34071,7 +34074,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -34306,7 +34309,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DS - Asia (History)"
+      "D - World History|||DS - Asia (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -34550,7 +34553,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DS - Asia (History)"
+      "D - World History|||DS - Asia (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -34995,7 +34998,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DS - Asia (History)"
+      "D - World History|||DS - Asia (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -35194,7 +35197,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -35454,7 +35457,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PJ - Oriental Languages & Literature"
+      "P - Language & Literature|||PJ - Oriental Languages & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -35656,7 +35659,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -35866,7 +35869,7 @@
     ],
     "lc_pipe_facet": [
       "A - General Works",
-      "A - General Works|AC - Collections Works"
+      "A - General Works|||AC - Collections Works"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -36083,7 +36086,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+      "P - Language & Literature|||PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -36359,7 +36362,7 @@
     ],
     "lc_pipe_facet": [
       "A - General Works",
-      "A - General Works|AS - Academies & Learned Societies"
+      "A - General Works|||AS - Academies & Learned Societies"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -36576,7 +36579,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PJ - Oriental Languages & Literature"
+      "P - Language & Literature|||PJ - Oriental Languages & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -36980,7 +36983,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -37208,7 +37211,7 @@
     ],
     "lc_pipe_facet": [
       "Q - Science",
-      "Q - Science|QE - Geology"
+      "Q - Science|||QE - Geology"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -37406,7 +37409,7 @@
     ],
     "lc_pipe_facet": [
       "K - Law",
-      "K - Law|KG - Law of Latin America, Mexico, Central America, West Indies, Caribbean"
+      "K - Law|||KG - Law of Latin America, Mexico, Central America, West Indies, Caribbean"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -37637,7 +37640,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|D - World History"
+      "D - World History|||D - World History"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -37878,7 +37881,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PN - Literature (General)"
+      "P - Language & Literature|||PN - Literature (General)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -38155,7 +38158,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -38414,7 +38417,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PA - Greek & Latin Language & Literature"
+      "P - Language & Literature|||PA - Greek & Latin Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -38805,7 +38808,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PJ - Oriental Languages & Literature"
+      "P - Language & Literature|||PJ - Oriental Languages & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -39051,7 +39054,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -39606,7 +39609,7 @@
     ],
     "lc_pipe_facet": [
       "R - Medicine",
-      "R - Medicine|RC - Internal Medicine"
+      "R - Medicine|||RC - Internal Medicine"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -39830,7 +39833,7 @@
     ],
     "lc_pipe_facet": [
       "R - Medicine",
-      "R - Medicine|RC - Internal Medicine"
+      "R - Medicine|||RC - Internal Medicine"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -40200,7 +40203,7 @@
     ],
     "lc_pipe_facet": [
       "B - Philosophy, Psychology, Religion",
-      "B - Philosophy, Psychology, Religion|BD - Speculative Philosophy"
+      "B - Philosophy, Psychology, Religion|||BD - Speculative Philosophy"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -40424,7 +40427,7 @@
     ],
     "lc_pipe_facet": [
       "G - Geography, Anthropology, Recreation",
-      "G - Geography, Anthropology, Recreation|GR - Folklore"
+      "G - Geography, Anthropology, Recreation|||GR - Folklore"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -40631,7 +40634,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -40895,7 +40898,7 @@
     ],
     "lc_pipe_facet": [
       "B - Philosophy, Psychology, Religion",
-      "B - Philosophy, Psychology, Religion|B - Philosophy, Psychology, Religion"
+      "B - Philosophy, Psychology, Religion|||B - Philosophy, Psychology, Religion"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -41417,7 +41420,7 @@
     ],
     "lc_pipe_facet": [
       "Q - Science",
-      "Q - Science|QA - Mathematics"
+      "Q - Science|||QA - Mathematics"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -41655,7 +41658,7 @@
     ],
     "lc_pipe_facet": [
       "K - Law",
-      "K - Law|KMU - Law of Syria"
+      "K - Law|||KMU - Law of Syria"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -41926,7 +41929,7 @@
     ],
     "lc_pipe_facet": [
       "N - Fine Arts",
-      "N - Fine Arts|N - Fine Arts"
+      "N - Fine Arts|||N - Fine Arts"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -42614,7 +42617,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -42828,7 +42831,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -43105,7 +43108,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DS - Asia (History)"
+      "D - World History|||DS - Asia (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -43361,7 +43364,7 @@
     ],
     "lc_pipe_facet": [
       "A - General Works",
-      "A - General Works|AC - Collections Works"
+      "A - General Works|||AC - Collections Works"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -43560,7 +43563,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PJ - Oriental Languages & Literature"
+      "P - Language & Literature|||PJ - Oriental Languages & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -43770,7 +43773,7 @@
     ],
     "lc_pipe_facet": [
       "N - Fine Arts",
-      "N - Fine Arts|ND - Painting"
+      "N - Fine Arts|||ND - Painting"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -44012,7 +44015,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+      "P - Language & Literature|||PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -44248,7 +44251,7 @@
     ],
     "lc_pipe_facet": [
       "Z - Bibliography, Library Science, Information Resources",
-      "Z - Bibliography, Library Science, Information Resources|Z - Bibliography, Library Science, Information Resources"
+      "Z - Bibliography, Library Science, Information Resources|||Z - Bibliography, Library Science, Information Resources"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -44481,7 +44484,7 @@
     ],
     "lc_pipe_facet": [
       "M - Music",
-      "M - Music|M - Music"
+      "M - Music|||M - Music"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -44786,7 +44789,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DS - Asia (History)"
+      "D - World History|||DS - Asia (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -45033,7 +45036,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PZ - Children's Literature"
+      "P - Language & Literature|||PZ - Children's Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -45296,7 +45299,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -45717,7 +45720,7 @@
     ],
     "lc_pipe_facet": [
       "Q - Science",
-      "Q - Science|QA - Mathematics"
+      "Q - Science|||QA - Mathematics"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -45938,7 +45941,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+      "P - Language & Literature|||PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -46190,7 +46193,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PJ - Oriental Languages & Literature"
+      "P - Language & Literature|||PJ - Oriental Languages & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -46583,7 +46586,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PA - Greek & Latin Language & Literature"
+      "P - Language & Literature|||PA - Greek & Latin Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -47033,7 +47036,7 @@
     ],
     "lc_pipe_facet": [
       "M - Music",
-      "M - Music|M - Music"
+      "M - Music|||M - Music"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -47701,7 +47704,7 @@
     ],
     "lc_pipe_facet": [
       "H - Social Sciences",
-      "H - Social Sciences|HG - Finance"
+      "H - Social Sciences|||HG - Finance"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -48226,7 +48229,7 @@
     ],
     "lc_pipe_facet": [
       "B - Philosophy, Psychology, Religion",
-      "B - Philosophy, Psychology, Religion|BQ - Buddhism"
+      "B - Philosophy, Psychology, Religion|||BQ - Buddhism"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -48540,7 +48543,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -48781,7 +48784,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DK - Russia. Former Soviet Republics. Poland (History)"
+      "D - World History|||DK - Russia. Former Soviet Republics. Poland (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -49582,7 +49585,7 @@
     ],
     "lc_pipe_facet": [
       "H - Social Sciences",
-      "H - Social Sciences|HC - Economic History & Conditions"
+      "H - Social Sciences|||HC - Economic History & Conditions"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -49764,7 +49767,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -50177,7 +50180,7 @@
     ],
     "lc_pipe_facet": [
       "E - History of the Americas (General)",
-      "E - History of the Americas (General)|E - History of the Americas (General)"
+      "E - History of the Americas (General)|||E - History of the Americas (General)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -50432,7 +50435,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -50683,7 +50686,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DS - Asia (History)"
+      "D - World History|||DS - Asia (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -50903,7 +50906,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -51119,7 +51122,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PJ - Oriental Languages & Literature"
+      "P - Language & Literature|||PJ - Oriental Languages & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -51335,7 +51338,7 @@
     ],
     "lc_pipe_facet": [
       "N - Fine Arts",
-      "N - Fine Arts|N - Fine Arts"
+      "N - Fine Arts|||N - Fine Arts"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -51547,7 +51550,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -51764,7 +51767,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+      "P - Language & Literature|||PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -51993,7 +51996,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PJ - Oriental Languages & Literature"
+      "P - Language & Literature|||PJ - Oriental Languages & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -52256,7 +52259,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PJ - Oriental Languages & Literature"
+      "P - Language & Literature|||PJ - Oriental Languages & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -52447,7 +52450,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -52850,7 +52853,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+      "P - Language & Literature|||PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -53030,7 +53033,7 @@
     ],
     "lc_pipe_facet": [
       "A - General Works",
-      "A - General Works|AC - Collections Works"
+      "A - General Works|||AC - Collections Works"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -53269,7 +53272,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PS - American Literature"
+      "P - Language & Literature|||PS - American Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -53498,7 +53501,7 @@
     ],
     "lc_pipe_facet": [
       "Z - Bibliography, Library Science, Information Resources",
-      "Z - Bibliography, Library Science, Information Resources|Z - Bibliography, Library Science, Information Resources"
+      "Z - Bibliography, Library Science, Information Resources|||Z - Bibliography, Library Science, Information Resources"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -53907,7 +53910,7 @@
     ],
     "lc_pipe_facet": [
       "B - Philosophy, Psychology, Religion",
-      "B - Philosophy, Psychology, Religion|BH - Aesthetics"
+      "B - Philosophy, Psychology, Religion|||BH - Aesthetics"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -54162,7 +54165,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DK - Russia. Former Soviet Republics. Poland (History)"
+      "D - World History|||DK - Russia. Former Soviet Republics. Poland (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -54409,7 +54412,7 @@
     ],
     "lc_pipe_facet": [
       "B - Philosophy, Psychology, Religion",
-      "B - Philosophy, Psychology, Religion|BL - Religions (General)"
+      "B - Philosophy, Psychology, Religion|||BL - Religions (General)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -54670,7 +54673,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DS - Asia (History)"
+      "D - World History|||DS - Asia (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -54890,7 +54893,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PA - Greek & Latin Language & Literature"
+      "P - Language & Literature|||PA - Greek & Latin Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -55283,7 +55286,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PJ - Oriental Languages & Literature"
+      "P - Language & Literature|||PJ - Oriental Languages & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -55717,7 +55720,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DS - Asia (History)"
+      "D - World History|||DS - Asia (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -56324,7 +56327,7 @@
     ],
     "lc_pipe_facet": [
       "H - Social Sciences",
-      "H - Social Sciences|HD - Industries, Land use, Labor"
+      "H - Social Sciences|||HD - Industries, Land use, Labor"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -56575,7 +56578,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|D - World History"
+      "D - World History|||D - World History"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -56797,7 +56800,7 @@
     ],
     "lc_pipe_facet": [
       "L - Education",
-      "L - Education|LB - Theory & Practice of Education"
+      "L - Education|||LB - Theory & Practice of Education"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -57042,7 +57045,7 @@
     ],
     "lc_pipe_facet": [
       "G - Geography, Anthropology, Recreation",
-      "G - Geography, Anthropology, Recreation|GT - Manners & Customs"
+      "G - Geography, Anthropology, Recreation|||GT - Manners & Customs"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -57306,7 +57309,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DS - Asia (History)"
+      "D - World History|||DS - Asia (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -57685,7 +57688,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -57934,7 +57937,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DS - Asia (History)"
+      "D - World History|||DS - Asia (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -58185,7 +58188,7 @@
     ],
     "lc_pipe_facet": [
       "H - Social Sciences",
-      "H - Social Sciences|HQ - The Family, Marriage, Woman"
+      "H - Social Sciences|||HQ - The Family, Marriage, Woman"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -58405,7 +58408,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
+      "P - Language & Literature|||PG - Slavic, Baltic, Albanian Languages, Russian Language & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -59023,7 +59026,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PJ - Oriental Languages & Literature"
+      "P - Language & Literature|||PJ - Oriental Languages & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -59247,7 +59250,7 @@
     ],
     "lc_pipe_facet": [
       "K - Law",
-      "K - Law|K - Law"
+      "K - Law|||K - Law"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -59637,7 +59640,7 @@
     ],
     "lc_pipe_facet": [
       "R - Medicine",
-      "R - Medicine|RA - Public Aspects of Medicine"
+      "R - Medicine|||RA - Public Aspects of Medicine"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -59886,7 +59889,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
+      "P - Language & Literature|||PL - Languages & Literatures of Eastern Asia, Africa, Oceania"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -60740,7 +60743,7 @@
     ],
     "lc_pipe_facet": [
       "J - Political Science",
-      "J - Political Science|JV - Colonies & Colonization, Emigration & Immigration"
+      "J - Political Science|||JV - Colonies & Colonization, Emigration & Immigration"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -60978,7 +60981,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PS - American Literature"
+      "P - Language & Literature|||PS - American Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -61918,7 +61921,7 @@
     ],
     "lc_pipe_facet": [
       "H - Social Sciences",
-      "H - Social Sciences|HN - Social History & Conditions"
+      "H - Social Sciences|||HN - Social History & Conditions"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -62335,7 +62338,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PK - Indo-Iranian Languages & Literature"
+      "P - Language & Literature|||PK - Indo-Iranian Languages & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -62562,7 +62565,7 @@
     ],
     "lc_pipe_facet": [
       "P - Language & Literature",
-      "P - Language & Literature|PJ - Oriental Languages & Literature"
+      "P - Language & Literature|||PJ - Oriental Languages & Literature"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -63783,7 +63786,7 @@
     ],
     "lc_pipe_facet": [
       "H - Social Sciences",
-      "H - Social Sciences|HM - Sociology"
+      "H - Social Sciences|||HM - Sociology"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -64004,7 +64007,7 @@
     ],
     "lc_pipe_facet": [
       "E - History of the Americas (General)",
-      "E - History of the Americas (General)|E - History of the Americas (General)"
+      "E - History of the Americas (General)|||E - History of the Americas (General)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -64484,7 +64487,7 @@
     ],
     "lc_pipe_facet": [
       "H - Social Sciences",
-      "H - Social Sciences|HB - Economic Theory, Demography"
+      "H - Social Sciences|||HB - Economic Theory, Demography"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -64834,7 +64837,7 @@
     ],
     "lc_pipe_facet": [
       "H - Social Sciences",
-      "H - Social Sciences|HQ - The Family, Marriage, Woman"
+      "H - Social Sciences|||HQ - The Family, Marriage, Woman"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -65090,7 +65093,7 @@
     ],
     "lc_pipe_facet": [
       "D - World History",
-      "D - World History|DF - Greece (History)"
+      "D - World History|||DF - Greece (History)"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -66655,7 +66658,7 @@
     ],
     "lc_pipe_facet": [
       "H - Social Sciences",
-      "H - Social Sciences|HQ - The Family, Marriage, Woman"
+      "H - Social Sciences|||HQ - The Family, Marriage, Woman"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -66868,7 +66871,7 @@
     ],
     "lc_pipe_facet": [
       "B - Philosophy, Psychology, Religion",
-      "B - Philosophy, Psychology, Religion|B - Philosophy, Psychology, Religion"
+      "B - Philosophy, Psychology, Religion|||B - Philosophy, Psychology, Religion"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -67099,7 +67102,7 @@
     ],
     "lc_pipe_facet": [
       "N - Fine Arts",
-      "N - Fine Arts|N - Fine Arts"
+      "N - Fine Arts|||N - Fine Arts"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -67387,7 +67390,7 @@
     ],
     "lc_pipe_facet": [
       "A - General Works",
-      "A - General Works|AC - Collections Works"
+      "A - General Works|||AC - Collections Works"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -67558,7 +67561,7 @@
   ],
   "publication_place_hierarchical_pipe_facet": [
     "United States",
-    "United States|Massachusetts"
+    "United States|||Massachusetts"
   ],
   "language_code_s": [
       "eng"
@@ -67612,7 +67615,7 @@
     ],
     "lc_pipe_facet": [
       "B - Philosophy, Psychology, Religion",
-      "B - Philosophy, Psychology, Religion|BF - Psychology"
+      "B - Philosophy, Psychology, Religion|||BF - Psychology"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -67841,7 +67844,7 @@
     ],
     "lc_pipe_facet": [
       "Q - Science",
-      "Q - Science|QP - Physiology"
+      "Q - Science|||QP - Physiology"
     ],
     "call_number_scheme_facet": [
       "Library of Congress"
@@ -68066,7 +68069,7 @@
   ],
   "lc_pipe_facet": [
     "D - World History",
-    "D - World History|DS - Asia (History)"
+    "D - World History|||DS - Asia (History)"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
