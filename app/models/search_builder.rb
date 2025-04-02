@@ -9,7 +9,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators
                                      cjk_mm wildcard_char_strip
-                                     only_home_facets prepare_left_anchor_search
+                                     only_home_facets prepare_left_anchor_search fancy_booleans
                                      series_title_results pul_holdings html_facets
                                      numismatics_facets numismatics_advanced
                                      adjust_mm remove_unneeded_facets]
@@ -18,6 +18,11 @@ class SearchBuilder < Blacklight::SearchBuilder
   # boolean operators, but not intended as such.
   def cleanup_boolean_operators(solr_parameters)
     transform_queries!(solr_parameters) { |query| cleaned_query(query) }
+  end
+
+  # :reek:UtilityFunction
+  def fancy_booleans(solr_parameters)
+    BooleanPhrase.new(solr_parameters).fancy_booleans
   end
 
   # Blacklight uses Parslet https://rubygems.org/gems/parslet/versions/2.0.0 to parse the user query
@@ -66,10 +71,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   def advanced_search?
     blacklight_params[:advanced_type] == 'advanced' ||
       search_state.controller.try(:params).try(:[], :action) == 'advanced_search' ||
-      blacklight_params[:advanced_type] == 'numismatics' ||
-      # The next two are required for the advanced search gem
-      blacklight_params[:search_field] == 'advanced' ||
-      blacklight_params[:action] == 'numismatics'
+      blacklight_params[:advanced_type] == 'numismatics'
   end
 
   ##
@@ -90,16 +92,8 @@ class SearchBuilder < Blacklight::SearchBuilder
     # don't want to cancel out the boolean OR with
     # an mm configuration that requires all the clauses
     # to be in the document
-    return unless includes_written_boolean?
+    return unless blacklight_params[:q].to_s.split.include? 'OR'
     solr_parameters['mm'] = 0
-  end
-
-  def includes_written_boolean?
-    if advanced_search? && search_query_present?
-      json_query_dsl_clauses&.any? { |clause| clause&.dig('query')&.include?('OR') }
-    else
-      blacklight_params[:q].to_s.split.include? 'OR'
-    end
   end
 
   # When the user is viewing the values of a specific facet
@@ -135,10 +129,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     def q_param_needs_boolean_cleanup(solr_parameters)
       solr_parameters[:q].present? &&
         cleaned_query(solr_parameters[:q]) == solr_parameters[:q]
-    end
-
-    def using_json_query_dsl(solr_parameters)
-      solr_parameters.fetch('json', nil)&.fetch('query', nil)&.fetch('bool', nil)&.fetch('must', nil)&.present?
     end
 
     def add_edismax(advanced_fields:)

@@ -160,12 +160,11 @@ RSpec.describe SearchBuilder do
         let(:blacklight_params) do
           { advanced_type: "advanced", "clause" => { "0" => { "field" => "all_fields", "query" => "history OR abolition", "op" => "must" } } }
         end
-        it 'sets the mm to 0, meaning that we do not require all search terms to appear in the document' do
+        it 'does not impact the mm parameter' do
           allow(search_builder).to receive(:blacklight_params).and_return(blacklight_params)
           solr_parameters = {}
 
-          expect { search_builder.adjust_mm(solr_parameters) }.to change { solr_parameters }
-          expect(solr_parameters['mm']).to eq(0)
+          expect { search_builder.adjust_mm(solr_parameters) }.not_to change { solr_parameters }
         end
       end
     end
@@ -264,6 +263,63 @@ RSpec.describe SearchBuilder do
             [{ edismax: { query: "China and Angola: a marriage of convenience?" } }] } } } }
       search_builder.wildcard_char_strip(query)
       expect(query['json']['query']['bool']['must'][0][:edismax][:query]).to eq 'China and Angola: a marriage of convenience'
+    end
+  end
+
+  describe '#fancy_booleans', advanced_search: true do
+    describe 'plain query' do
+      let(:params) { { "json" => { "query" => { "bool" => { "must" => [{ edismax: { query: "apple" } }] } } } } }
+
+      it 'does not change the query' do
+        expect do
+          search_builder.fancy_booleans(params)
+        end.not_to change { params }
+      end
+    end
+    describe 'OR in a single advanced search field' do
+      let(:params) { { "json" => { "query" => { "bool" => { "must" => [{ edismax: { query: "apple OR banana" } }] } } } } }
+      let(:output_params) { { "json" => { "query" => { "bool" => { "should" => [{ edismax: { query: "apple" } }, { edismax: { query: "banana" } }] } } } } }
+      it 'puts the query in should clauses' do
+        expect do
+          search_builder.fancy_booleans(params)
+        end.to change { params }
+        expect(params).to eq(output_params)
+      end
+    end
+    describe 'using OR across fields' do
+      let(:params) { { "json" => { "query" => { "bool" => { "should" => [{ edismax: { query: "apple" } }, { edismax: { query: "banana" } }] } } } } }
+      it 'does not change the query' do
+        expect do
+          search_builder.fancy_booleans(params)
+        end.not_to change { params }
+      end
+    end
+    describe 'using OR and implicit AND' do
+      let(:params) do
+        { "json" => { "query" => { "bool" => {
+          "must" => [
+            { edismax: { query: "apple OR squishy" } },
+            { edismax: { query: "cantaloupe date" } }
+          ]
+        } } } }
+      end
+      let(:output_params) do
+        { "json" => { "query" => { "bool" => {
+          "must" => [
+            { edismax: { query: "cantaloupe date" } }
+          ],
+          "should" => [
+            { edismax: { query: "apple" } },
+            { edismax: { query: "squishy" } }
+          ]
+        } } } }
+      end
+      it 'puts the OR query in should clauses' do
+        expect do
+          search_builder.fancy_booleans(params)
+        end.to change { params }
+        expect(params).to eq(output_params)
+      end
     end
   end
 end

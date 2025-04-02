@@ -9,6 +9,15 @@ services:
     core: orangelight-core-test
     config:
       dir: "solr/conf"
+  orangelight_small_test_solr:
+    type: solr:custom
+    overrides:
+      image: pulibrary/ci-solr:8.4-v1.0.0
+      command: server/scripts/lando-start.sh
+    portforward: true
+    core: orangelight-core-small-test
+    config:
+      dir: "solr/conf"
   orangelight_development_solr:
     type: solr:custom
     overrides:
