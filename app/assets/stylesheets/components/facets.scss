@@ -23,6 +23,13 @@ ul.facet-values {
   }
 }
 
+.h-leaf {
+  padding-left: 39px;
+}
+
+.h-node .h-leaf {
+  padding-left: 20px;
+}
 
 .facet_limit-active > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #ddd;
