@@ -321,5 +321,28 @@ RSpec.describe SearchBuilder do
         expect(params).to eq(output_params)
       end
     end
+    xdescribe 'multiple phrases with OR' do
+      # (A || B) && (C || D)
+      let(:params) do
+        { "json" => { "query" => { "bool" => {
+          "must" => [
+            { edismax: { query: "apple OR squishy" } },
+            { edismax: { query: "cantaloupe OR date" } }
+          ]
+        } } } }
+      end
+      let(:output_params) do
+        # A || B || C || D
+        { "json" => { "query" => { "bool" => {
+          "should" => [
+            { edismax: { query: "apple" } },
+            { edismax: { query: "squishy" } },
+            { edismax: { query: "cantaloupe" } },
+            { edismax: { query: "date" } }
+          ]
+        } } } }
+      end
+    end
   end
 end
+

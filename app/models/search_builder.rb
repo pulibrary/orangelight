@@ -9,7 +9,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   self.default_processor_chain += %i[parslet_trick cleanup_boolean_operators
                                      cjk_mm wildcard_char_strip
-                                     only_home_facets prepare_left_anchor_search fancy_booleans
+                                     only_home_facets prepare_left_anchor_search
                                      series_title_results pul_holdings html_facets
                                      numismatics_facets numismatics_advanced
                                      adjust_mm remove_unneeded_facets]

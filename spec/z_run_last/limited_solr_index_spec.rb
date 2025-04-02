@@ -6,7 +6,7 @@ require 'rails_helper'
 # For these tests we want a very limited Solr corpus to test complex boolean searching in
 # a more controlled way.
 # rubocop:disable RSpec/PendingWithoutReason
-RSpec.xdescribe 'complex boolean searching', pending: 'Setting up extra Solr in CI', advanced_search: true do
+RSpec.xdescribe 'complex boolean searching', advanced_search: true do
   let(:solr_url) do
     ENV['SOLR_URL'] || "http://#{ENV['lando_orangelight_small_test_solr_conn_host'] || '127.0.0.1'}:#{ENV['SOLR_TEST_PORT'] || ENV['lando_orangelight_small_test_solr_conn_port'] || 8888}/solr/orangelight-core-small-test"
   end
@@ -123,6 +123,16 @@ RSpec.xdescribe 'complex boolean searching', pending: 'Setting up extra Solr in 
       expect(page.find('.page_entries').text).to eq('1 entry found')
       expect(page).to have_content('1 entry found')
       expect(page).to have_content("Dates are squishy and don't go well with cantaloupes")
+    end
+
+    it 'can combine multiple OR queries with an AND in between' do
+      # "apple OR squishy" AND "cantaloupe OR date"
+      fill_in('clause_0_query', with: 'apple OR squishy')
+      select('Title', from: 'clause_1_field')
+      fill_in('clause_1_query', with: 'cantaloupe OR date')
+      click_button('advanced-search-submit')
+      expect(page.find('.page_entries').text).to eq('1 - 2 of 2')
+
     end
   end
 end
