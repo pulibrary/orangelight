@@ -138,7 +138,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
 
     def using_json_query_dsl(solr_parameters)
-      solr_parameters.fetch('json', nil)&.fetch('query', nil)&.fetch('bool', nil)&.fetch('must', nil)&.present?
+      solr_parameters.dig('json', 'query', 'bool', 'must')&.present?
     end
 
     def add_edismax(advanced_fields:)
