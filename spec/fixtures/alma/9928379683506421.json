@@ -157,6 +157,10 @@
     "United States",
     "United States:New York (State)"
   ],
+  "publication_place_hierarchical_pipe_facet": [
+    "United States",
+    "United States|||New York (State)"
+  ],
   "lcgft_s": [
     "Periodicals"
   ],
@@ -179,6 +183,10 @@
   "lc_facet": [
     "Z - Bibliography, Library Science, Information Resources",
     "Z - Bibliography, Library Science, Information Resources:Z - Bibliography, Library Science, Information Resources"
+  ],
+  "lc_pipe_facet": [
+    "Z - Bibliography, Library Science, Information Resources",
+    "Z - Bibliography, Library Science, Information Resources|||Z - Bibliography, Library Science, Information Resources"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"

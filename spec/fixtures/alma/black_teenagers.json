@@ -127,6 +127,10 @@
             "United States",
             "United States:Massachusetts"
         ],
+        "publication_place_hierarchical_pipe_facet": [
+            "United States",
+            "United States|||Massachusetts"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -369,6 +373,10 @@
             "United Kingdom",
             "United Kingdom:England"
         ],
+        "publication_place_hierarchical_pipe_facet": [
+            "United Kingdom",
+            "United Kingdom|||England"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -412,6 +420,10 @@
         "lc_facet": [
             "E - History of the Americas (General)",
             "E - History of the Americas (General):E - History of the Americas (General)"
+        ],
+        "lc_pipe_facet": [
+            "E - History of the Americas (General)",
+            "E - History of the Americas (General)|||E - History of the Americas (General)"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -562,6 +574,10 @@
             "United States",
             "United States:District of Columbia"
         ],
+        "publication_place_hierarchical_pipe_facet": [
+            "United States",
+            "United States|||District of Columbia"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -632,6 +648,10 @@
         "lc_facet": [
             "E - History of the Americas (General)",
             "E - History of the Americas (General):E - History of the Americas (General)"
+        ],
+        "lc_pipe_facet": [
+            "E - History of the Americas (General)",
+            "E - History of the Americas (General)|||E - History of the Americas (General)"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -783,6 +803,10 @@
             "United Kingdom",
             "United Kingdom:England"
         ],
+        "publication_place_hierarchical_pipe_facet": [
+            "United Kingdom",
+            "United Kingdom|||England"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -861,6 +885,10 @@
         "lc_facet": [
             "H - Social Sciences",
             "H - Social Sciences:HQ - The Family, Marriage, Woman"
+        ],
+        "lc_pipe_facet": [
+            "H - Social Sciences",
+            "H - Social Sciences|||HQ - The Family, Marriage, Woman"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -1028,6 +1056,10 @@
         "publication_place_hierarchical_facet": [
             "United Kingdom",
             "United Kingdom:England"
+        ],
+        "publication_place_hierarchical_pipe_facet": [
+            "United Kingdom",
+            "United Kingdom|||England"
         ],
         "language_iana_s": [
             "en"
@@ -1209,6 +1241,9 @@
         "publication_place_hierarchical_facet": [
             "Brazil"
         ],
+        "publication_place_hierarchical_pipe_facet": [
+            "Brazil"
+        ],
         "language_iana_s": [
             "pt"
         ],
@@ -1252,6 +1287,10 @@
         "lc_facet": [
             "F - History of the Americas (Local)",
             "F - History of the Americas (Local):F - History of the Americas (Local)"
+        ],
+        "lc_pipe_facet": [
+            "F - History of the Americas (Local)",
+            "F - History of the Americas (Local)|||F - History of the Americas (Local)"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -1432,6 +1471,10 @@
             "United States",
             "United States:District of Columbia"
         ],
+        "publication_place_hierarchical_pipe_facet": [
+            "United States",
+            "United States|||District of Columbia"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -1610,6 +1653,10 @@
             "United States",
             "United States:Massachusetts"
         ],
+        "publication_place_hierarchical_pipe_facet": [
+            "United States",
+            "United States|||Massachusetts"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -1652,6 +1699,10 @@
         "lc_facet": [
             "P - Language & Literature",
             "P - Language & Literature:PE - English Languages"
+        ],
+        "lc_pipe_facet": [
+            "P - Language & Literature",
+            "P - Language & Literature|||PE - English Languages"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"

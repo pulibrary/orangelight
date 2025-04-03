@@ -114,6 +114,10 @@
             "United States",
             "United States:New York (State)"
         ],
+        "publication_place_hierarchical_pipe_facet": [
+            "United States",
+            "United States|||New York (State)"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -175,6 +179,10 @@
         "lc_facet": [
             "P - Language & Literature",
             "P - Language & Literature:PN - Literature (General)"
+        ],
+        "lc_pipe_facet": [
+            "P - Language & Literature",
+            "P - Language & Literature|||PN - Literature (General)"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -428,9 +436,13 @@
         "publication_place_facet": [
             "England"
         ],
-        "publication_place_hierarchical_facet":[
+        "publication_place_hierarchical_facet": [
             "United Kingdom",
             "United Kingdom:England"
+        ],
+        "publication_place_hierarchical_pipe_facet": [
+            "United Kingdom",
+            "United Kingdom|||England"
         ],
         "language_iana_s": [
             "en"
@@ -473,6 +485,10 @@
         "lc_facet": [
             "P - Language & Literature",
             "P - Language & Literature:P - Language & Literature"
+        ],
+        "lc_pipe_facet": [
+            "P - Language & Literature",
+            "P - Language & Literature|||P - Language & Literature"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"
@@ -652,6 +668,10 @@
             "United States",
             "United States:New York (State)"
         ],
+        "publication_place_hierarchical_pipe_facet": [
+            "United States",
+            "United States|||New York (State)"
+        ],
         "language_iana_s": [
             "en"
         ],
@@ -694,6 +714,10 @@
         "lc_facet": [
             "H - Social Sciences",
             "H - Social Sciences:HQ - The Family, Marriage, Woman"
+        ],
+        "lc_pipe_facet": [
+            "H - Social Sciences",
+            "H - Social Sciences|||HQ - The Family, Marriage, Woman"
         ],
         "call_number_scheme_facet": [
             "Library of Congress"

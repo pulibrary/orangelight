@@ -190,6 +190,9 @@
   "publication_place_hierarchical_facet": [
     "China"
   ],
+  "publication_place_hierarchical_pipe_facet": [
+    "China"
+  ],
   "cjk_subject": [
     "子部 類書類."
   ],
@@ -209,6 +212,10 @@
   "lc_facet": [
     "A - General Works",
     "A - General Works:AE - Encyclopedias"
+  ],
+  "lc_pipe_facet": [
+    "A - General Works",
+    "A - General Works|||AE - Encyclopedias"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
