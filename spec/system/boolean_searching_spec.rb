@@ -63,9 +63,9 @@ RSpec.describe 'complex boolean searching', advanced_search: true do
     # rubocop:enable RSpec/AnyInstance
   end
 
-  context 'using advanced search' do
+  context 'using advanced search', js: true do
     before do
-      visit '/advanced'
+      visit '/new_advanced'
     end
     it 'can find a single entry' do
       fill_in('clause_0_query', with: 'apple')

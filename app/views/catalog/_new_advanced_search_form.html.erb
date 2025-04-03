@@ -1,0 +1,6 @@
+<%= render(Orangelight::NewAdvancedSearchFormComponent.new(
+      url: search_action_url,
+      classes: ['advanced', 'form-horizontal'],
+      params: search_state.params_for_search.except(:qt),
+      response: @response
+    )) %>

@@ -813,6 +813,21 @@ class CatalogController < ApplicationController
     end
   end
 
+  def new_advanced_search
+    if no_search_yet?
+      @response = empty_solr_response(empty_new_advanced_search_raw_response)
+    else
+      (@response, _deprecated_document_list) = new_advanced_search_form_search_service.search_results
+    end
+  end
+
+  def empty_new_advanced_search_raw_response
+    Rails.cache.fetch('new_advanced_search_form_empty_raw_response', expires_in: 8.hours) do
+      Rails.logger.info "Cached empty new advanced search form solr query"
+      blacklight_advanced_search_form_search_service.search_results.to_json
+    end
+  end
+
   private
 
     def json_request?
@@ -892,6 +907,8 @@ class CatalogController < ApplicationController
         { search_builder_class: AdvancedFormSearchBuilder }
       elsif action_name == 'numismatics'
         { search_builder_class: NumismaticsFormSearchBuilder }
+      elsif action_name == 'new_advanced_search'
+        { search_builder_class: NewAdvancedFormSearchBuilder }
       else
         return {} unless Flipflop.multi_algorithm?
         return {} unless configurable_search_builder_class # use default if none specified
