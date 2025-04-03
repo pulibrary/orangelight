@@ -23,17 +23,32 @@ describe "accessibility", type: :feature, js: true do
     it "complies with wcag2aa wcag21a" do
       expect(page).to be_axe_clean
         .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
-        .excluding('#startOverLink')
-        .excluding('.blacklight-series_display[dir="ltr"]:nth-child(1) > .more-in-series[title=""]')
     end
   end
-  context "search results page" do
+  context 'search results page' do
     before do
       allow(Flipflop).to receive(:highlighting?).and_return(true)
     end
 
-    it 'complies with wcag2aa wcag21a' do
+    it 'complies with wcag2aa wcag21aa' do
       visit '/catalog?q=black+teenagers'
+      expect(page).to be_axe_clean
+        .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
+    end
+  end
+  context "browse list page" do
+    it 'complies with wcag2aa wcag21aa next button' do
+      # Issue: https://github.com/pulibrary/orangelight/issues/4837
+      pending('increase contrast for next button when on the last page and disabled')
+      visit '/browse/call_numbers?rpp=10&start=10619849'
+      expect(page).to be_axe_clean
+        .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
+    end
+    it 'complies with wcag2aa wcaf21aa links and more info' do
+      # Issue: https://github.com/pulibrary/orangelight/issues/4838
+      # Issue: https://github.com/pulibrary/orangelight/issues/4839
+      pending('increase contrast for links and the more info status when on a gray background')
+      visit '/browse/call_numbers?q=PN842+.S539+2006&rpp=10'
       expect(page).to be_axe_clean
         .according_to(:wcag2a, :wcag2aa, :wcag21a, :wcag21aa)
     end
