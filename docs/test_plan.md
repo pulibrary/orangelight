@@ -12,6 +12,7 @@ workflows in this application manually.
 |3|Click "Catalog" in the header to return to the home page|
 |4|Select `Author (keyword)` from the dropdown in the Search bar|
 |5|Enter `john d clark` in the search box and press the enter key or click the search button|You are taken to a search results page with a number of matching results|
+|6|Remove the selected facet value for `Author/Creator` by clicking the `X` button|You should see all a search results page with all results|
 
 ## Record Page
 
@@ -21,8 +22,9 @@ workflows in this application manually.
 |2|There should be a section with author, format, language, etc. for the item|
 |3|There should be a section with the holding location, call number, availability information, and a request button|
 |4|Click the `Where to find it` button|A modal should pop up with a map of firestone with a marker indicating the shelving location of the item|
-|5|There should be a section with detailed information, including subjects, a summary, and a link to the staff view|
-|5|Click the `Staff view` link|The detailed MARC record should be displayed|
+|5|Click the `X` button to close the modal|You should return to the record page|
+|6|There should be a section with detailed information, including subjects, a summary, and a link to the staff view|
+|7|Click the `Staff view` link|The detailed MARC record should be displayed|
 
 ## Request Form
 
@@ -45,7 +47,7 @@ workflows in this application manually.
 |3|Click the `Edit search` button|You should return to the advanced search form|
 |4|In the second text input next to `Author/Creator` enter `warhol` and click the `Search` button|Search results with about 9 items should display|
 |5|Click the `Edit search` button|You should return to the advanced search form|
-|6|Select `French` from the `Language` dropdown and click the `Search` button|Search results with 2 items should display|
+|6|Select `French` from the `Language` dropdown and click the `Search` button|Search results with both an Author/Creator and Language selected facets and fewer items should display|
 |7|Click the `Edit search` button|You should return to the advanced search form|
 |8|Enter the years `1950` and `1960` in the text inputs for `Publication year` and click the `Search` button|A search results page should render that says there are no results found for your search|
 
@@ -57,3 +59,6 @@ workflows in this application manually.
 |2|Use the drop-down menu to change the display to `10 per page`|The displayed list should only have 10 results|
 |3|Use the `Previous` and `Next` buttons to navigate through the browse list|The browse list should navigate through the list of subjects|
 |4|Click on the subject heading for `Cats`|A search results page should display with results|
+|5|Go to a [record page](https://catalog-staging.princeton.edu/catalog/99111163333506421)|
+|6|Click on the `Browse` link next to the subject `English language-Foreign elements-Greek`|You should see a list of subjects with a type of LC subject heading|
+|7|Click on the link for the highlighted subject|You should see a search results page with items related to that subject|
