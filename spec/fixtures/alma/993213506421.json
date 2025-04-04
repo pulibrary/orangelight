@@ -169,6 +169,10 @@
       "United States",
       "United States:Colorado"
   ],
+  "publication_place_hierarchical_pipe_facet": [
+      "United States",
+      "United States|||Colorado"
+  ],
   "subject_topic_facet": [
       "World Data Center A for Glaciology",
       "Catalogs",

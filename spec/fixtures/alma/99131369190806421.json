@@ -204,6 +204,10 @@
         "G - Geography, Anthropology, Recreation",
         "G - Geography, Anthropology, Recreation:GR - Folklore"
     ],
+    "lc_pipe_facet": [
+        "G - Geography, Anthropology, Recreation",
+        "G - Geography, Anthropology, Recreation|||GR - Folklore"
+    ],
     "call_number_scheme_facet": [
         "Library of Congress"
     ],

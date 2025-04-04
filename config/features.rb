@@ -42,10 +42,10 @@ Flipflop.configure do
   end
 
   feature :blacklight_hierarchy_facet,
-  default: false,
-  description: "When on / true, use the blacklight hierarchy gem to display the classification facet"
+  default: true,
+  description: "When on / true, use the colon delimited field to display the classification facet, when off / false use the pipe delimited field"
 
   feature :blacklight_hierarchy_publication_facet,
-  default: false,
-  description: "When on / true, use the blacklight hierarchy gem to display the place of publication facet"
+  default: true,
+  description: "When on / true, use the colon delimited field to display the place of publication facet, when off / false use the pipe delimited field"
 end

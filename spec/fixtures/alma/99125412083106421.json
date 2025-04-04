@@ -108,6 +108,9 @@
   "publication_place_hierarchical_facet": [
     "South Africa"
   ],
+  "publication_place_hierarchical_pipe_facet": [
+    "South Africa"
+  ],
   "language_code_s": [
     "eng"
   ],
@@ -257,6 +260,10 @@
   "lc_facet": [
     "H - Social Sciences",
     "H - Social Sciences:HQ - The Family, Marriage, Woman"
+  ],
+  "lc_pipe_facet": [
+    "H - Social Sciences",
+    "H - Social Sciences|||HQ - The Family, Marriage, Woman"
   ],
   "call_number_scheme_facet": [
     "Library of Congress"
