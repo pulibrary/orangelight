@@ -778,6 +778,15 @@ class CatalogController < ApplicationController
     end
   end
 
+  def guided_search
+    if no_search_yet?
+      @response = empty_solr_response(empty_guided_search_raw_response)
+    else
+      byebug
+      (@response, _deprecated_document_list) = guided_search_form_search_service.search_results
+    end
+  end
+
   def librarian_view
     if agent_is_crawler?
       basic_response
@@ -871,6 +880,23 @@ class CatalogController < ApplicationController
       end
     end
 
+    def empty_guided_search_raw_response
+      Rails.cache.fetch('guided_search_form_empty_raw_response', expires_in: 8.hours) do
+        Rails.logger.info "Cached empty guided search form solr query"
+        guided_search_form_search_service.search_results.to_json
+      end
+    end
+
+    def guided_search_form_search_service
+      form_search_state = search_state_class.new(guided_search_form_params, blacklight_config, self)
+  
+      search_service_class.new(config: blacklight_config, search_state: form_search_state, user_params: form_search_state.to_h, **search_service_context)
+    end
+
+    def guided_search_form_params
+      {}
+    end
+
     def basic_response
       render plain: 'OK'
       nil
@@ -900,6 +926,8 @@ class CatalogController < ApplicationController
         { search_builder_class: AdvancedFormSearchBuilder }
       elsif action_name == 'numismatics'
         { search_builder_class: NumismaticsFormSearchBuilder }
+      elsif action_name == 'guided_search'
+        { search_builder_class: GuidedFormSearchBuilder }
       else
         {}
       end

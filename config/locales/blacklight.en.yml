@@ -4,6 +4,15 @@ en:
       previous: '&laquo; Previous'
       next: 'Next &raquo;'
   blacklight:
+    guided_search:
+      page_title: Guided Search
+      form:
+        title: Guided Search
+        search_context: Within search
+        search_btn_html: Search
+        sort_label: Sort results by
+        start_over_html: Start over
+        limit_criteria_heading_html: Limit results by
     advanced_search:
       form:
         title: Advanced Search

@@ -5,7 +5,7 @@ require 'rails_helper'
 # For the rest of the specs, we have our entire example corpus in Solr.
 # For these tests we want a very limited Solr corpus to test complex boolean searching in
 # a more controlled way.
-RSpec.describe 'complex boolean searching', advanced_search: true do
+RSpec.describe 'complex boolean searching', guided_search: true do
   let(:solr_url) do
     ENV['SOLR_SMALL_URL'] || "http://#{ENV['lando_orangelight_small_test_solr_conn_host'] || '127.0.0.1'}:#{ENV['SOLR_TEST_PORT'] || ENV['lando_orangelight_small_test_solr_conn_port'] || 8888}/solr/orangelight-core-small-test"
   end
@@ -65,7 +65,7 @@ RSpec.describe 'complex boolean searching', advanced_search: true do
 
   context 'using advanced search' do
     before do
-      visit '/advanced'
+      visit '/guided'
     end
     it 'can find a single entry' do
       fill_in('clause_0_query', with: 'apple')
@@ -75,7 +75,7 @@ RSpec.describe 'complex boolean searching', advanced_search: true do
       expect(page).to have_content('Apples are delicious')
     end
 
-    it 'can find entries using OR in a single field' do
+    it 'can find entries using OR in a single field', js: true do
       fill_in('clause_0_query', with: 'apple OR banana')
       click_button('advanced-search-submit')
       expect(page.find('.page_entries').text).to eq('1 - 2 of 2')
@@ -132,6 +132,42 @@ RSpec.describe 'complex boolean searching', advanced_search: true do
       fill_in('clause_1_query', with: 'cantaloupe OR date')
       click_button('advanced-search-submit')
       expect(page.find('.page_entries').text).to eq('1 - 2 of 2')
+    end
+  end
+  context 'with multiple types of fields' do
+    let(:simple_docs) do
+      [
+        apple_doc,
+        banana_doc
+      ]
+    end
+    let(:apple_doc) do
+      { 'id': ["1"], 'title_display': ['Apples are delicious'], 'author_display': 'Mister Banana' }
+    end
+    let(:banana_doc) do
+      { 'id': ["2"], 'title_display': ['Bananas are yummy, with co-star Mr. Apple'] }
+    end
+    before do
+      visit '/guided'
+    end
+    it 'can limit by the field' do
+      select('Title', from: 'clause_0_field')
+      fill_in('clause_0_query', with: 'apple')
+      select('Author', from: 'clause_1_field')
+      fill_in('clause_1_query', with: 'banana')
+      click_button('advanced-search-submit')
+      expect(page.find('.page_entries').text).to eq('1 entry found')
+      expect(page).to have_content('Apples are delicious')
+    end
+
+    it 'can exclude by field' do
+      select('Title', from: 'clause_0_field')
+      fill_in('clause_0_query', with: 'apple')
+      select('Title', from: 'clause_1_field')
+      fill_in('clause_1_query', with: 'banana')
+      click_button('advanced-search-submit')
+      expect(page.find('.page_entries').text).to eq('1 entry found')
+      expect(page).to have_content('Bananas are yummy, with co-star Mr. Apple')
     end
   end
 end

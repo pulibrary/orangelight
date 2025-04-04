@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   end
 
   get '/advanced', to: 'catalog#advanced_search'
-
+  get '/guided', to: 'catalog#guided_search'
   get '/numismatics', to: 'catalog#numismatics'
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'sessions' },
