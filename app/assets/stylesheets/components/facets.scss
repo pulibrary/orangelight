@@ -23,6 +23,19 @@ ul.facet-values {
   }
 }
 
+.h-leaf {
+  padding-left: 39px;
+}
+
+@-moz-document url-prefix() {
+  .h-leaf {
+    padding-left: 35px;
+  }
+}
+
+.h-node .h-leaf {
+  padding-left: 53px;
+}
 
 .facet_limit-active > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #ddd;
