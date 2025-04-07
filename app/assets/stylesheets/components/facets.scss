@@ -27,6 +27,12 @@ ul.facet-values {
   padding-left: 39px;
 }
 
+@-moz-document url-prefix() {
+  .h-leaf {
+    padding-left: 35px;
+  }
+}
+
 .h-node .h-leaf {
   padding-left: 53px;
 }
