@@ -48,7 +48,7 @@
     background: transparent;
     padding: 1rem;
     margin: 0;
-    color: shade-color($blue, 3);
+    color: shade-color($link-color-rgb, 3);
 
     &:hover,
     &:focus,
