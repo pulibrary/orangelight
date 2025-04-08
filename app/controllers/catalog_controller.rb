@@ -782,7 +782,6 @@ class CatalogController < ApplicationController
     if no_search_yet?
       @response = empty_solr_response(empty_guided_search_raw_response)
     else
-      byebug
       (@response, _deprecated_document_list) = guided_search_form_search_service.search_results
     end
   end
@@ -927,7 +926,7 @@ class CatalogController < ApplicationController
       elsif action_name == 'numismatics'
         { search_builder_class: NumismaticsFormSearchBuilder }
       elsif action_name == 'guided_search'
-        { search_builder_class: GuidedFormSearchBuilder }
+        { search_builder_class: GuidedSearchBuilder }
       else
         {}
       end
