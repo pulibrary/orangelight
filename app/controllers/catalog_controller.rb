@@ -901,27 +901,8 @@ class CatalogController < ApplicationController
       elsif action_name == 'numismatics'
         { search_builder_class: NumismaticsFormSearchBuilder }
       else
-        return {} unless Flipflop.multi_algorithm?
-        return {} unless configurable_search_builder_class # use default if none specified
-        { search_builder_class: configurable_search_builder_class }
+        {}
       end
-    end
-
-    def configurable_search_builder_class
-      return unless search_algorithm_param && allowed_search_algorithms.include?(search_algorithm_param)
-
-      "#{search_algorithm_param}_search_builder".camelize.constantize
-    end
-
-    # When adding a new Ranking Algorithm the name will need to be added to this list before it can be utilized
-    # For example if you added a cats ranking algorithm, with a CatsSearchBuilder you would add "cats" to this list ["engineering","cats"]
-    # This is to make sure the user can not just execute any SearchBuilder in the system
-    def allowed_search_algorithms
-      ["engineering"]
-    end
-
-    def search_algorithm_param
-      params[:search_algorithm]
     end
 
     def solrize_boolean_params
