@@ -804,7 +804,7 @@ class CatalogController < ApplicationController
     if agent_is_crawler?
       basic_response
     else
-      @documents = search_service.fetch(Array(params[:id]), { fl: "author_citation_display, title_citation_display, pub_citation_display, number_of_pages_citation_display, pub_date_start_sort, edition_display" })
+      @documents = search_service.fetch(Array(params[:id]), { fl: "author_citation_display, title_citation_display, pub_citation_display, number_of_pages_citation_display, pub_date_start_sort, edition_display, format" })
       raise Blacklight::Exceptions::RecordNotFound if @documents.blank?
     end
   end

@@ -22,7 +22,7 @@ class BookmarksController < CatalogController
   def citation
     bookmarks = token_or_current_or_guest_user.bookmarks
     bookmark_ids = bookmarks.collect { |bookmark| bookmark.document_id.to_s }
-    @documents = search_service.fetch(bookmark_ids, { rows: bookmark_ids.count, fl: "author_citation_display, title_citation_display, pub_citation_display, number_of_pages_citation_display, pub_date_start_sort, edition_display" })
+    @documents = search_service.fetch(bookmark_ids, { rows: bookmark_ids.count, fl: "author_citation_display, title_citation_display, pub_citation_display, number_of_pages_citation_display, pub_date_start_sort, edition_display, format" })
   end
 
   def csv
