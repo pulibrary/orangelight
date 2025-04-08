@@ -901,7 +901,7 @@ class CatalogController < ApplicationController
       elsif action_name == 'numismatics'
         { search_builder_class: NumismaticsFormSearchBuilder }
       else
-        return {}
+        {}
       end
     end
 
