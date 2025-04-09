@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe Blacklight::Document::Chicago, citation: true do
-  let(:document) { SolrDocument.new(properties).export_as_chicago }
+RSpec.describe Blacklight::Document::ChicagoAuthorDate, citation: true do
+  let(:document) { SolrDocument.new(properties).export_as_chicago_author_date }
 
   context 'with a SCSB record' do
     context 'with a book' do

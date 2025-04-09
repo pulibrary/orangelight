@@ -61,7 +61,7 @@ class SolrDocument
   use_extension(Blacklight::Document::Apa)
 
   # Adds Chicago html
-  use_extension(Blacklight::Document::Chicago)
+  use_extension(Blacklight::Document::ChicagoAuthorDate)
 
   def identifier_data
     values = identifiers.each_with_object({}) do |identifier, hsh|
