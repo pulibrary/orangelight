@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe GuidedSearchBuilder do
+describe GuidedSearchBuilder, guided_search: true do
   let(:user_params) { Hash.new }
   let(:blacklight_config) { Blacklight::Configuration.new }
   let(:scope) { double blacklight_config: blacklight_config }

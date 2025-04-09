@@ -63,7 +63,7 @@ RSpec.describe 'complex boolean searching', guided_search: true do
     # rubocop:enable RSpec/AnyInstance
   end
 
-  context 'using advanced search' do
+  context 'using guided search' do
     before do
       visit '/guided'
     end

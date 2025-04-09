@@ -38,13 +38,7 @@ class GuidedSearchBuilder < Blacklight::SearchBuilder
     field = (blacklight_config.search_fields || {})[clause[:field]] if clause[:field]
 
     return unless field&.clause_params && clause[:query].present?
-
-    [
-      op,
-      field.clause_params.transform_values do |val|
-        val.merge(query: clause[:query])
-      end
-    ]
+    [op, field.clause_params.transform_values { |v| v.merge(query: clause[:query]) }]
   end
 
   private
