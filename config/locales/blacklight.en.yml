@@ -118,7 +118,11 @@ en:
       related_records:
         display_more: "Show %{count} more related records"
         display_less: "Show fewer related records"
-
+    citation:
+      apa: APA
+      chicago_author_date: Chicago (Author-Date Style)
+      chicago_notes_bibliography: Chicago (Notes Bibliography Style)
+      mla: MLA
     tools:
       librarian_view: 'Staff view'
     pagination_compact:
