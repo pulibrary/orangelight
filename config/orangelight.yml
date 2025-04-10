@@ -23,7 +23,7 @@ defaults: &defaults
     client_id: <%= ENV['LIBANSWERS_CLIENT_ID'] || 'ABC' %>
     client_secret: <%= ENV['LIBANSWERS_CLIENT_SECRET'] || '12345' %>
   browse_lists:
-    csv_length: 9_000_000
+    csv_length: 10000
 
 development:
   <<: *defaults
