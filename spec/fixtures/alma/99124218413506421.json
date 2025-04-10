@@ -1,0 +1,307 @@
+{
+    "id": [
+        "99124218413506421"
+    ],
+    "numeric_id_b": [
+        true
+    ],
+    "cjk_all": [
+        ""
+    ],
+    "cjk_notes": [
+        ""
+    ],
+    "author_display": [
+        "Dean, Patrick (Outdoor writer)"
+    ],
+    "author_sort": [
+        "Dean, Patrick (Outdoor writer)"
+    ],
+    "author_citation_display": [
+        "Dean, Patrick"
+    ],
+    "author_roles_1display": [
+        "{\"secondary_authors\":[],\"translators\":[],\"editors\":[],\"compilers\":[],\"primary_author\":\"Dean, Patrick\"}"
+    ],
+    "author_s": [
+        "Dean, Patrick (Outdoor writer)"
+    ],
+    "marc_relator_display": [
+        "Author"
+    ],
+    "title_display": [
+        "A window to heaven : the daring first ascent of Denali, America's wildest peak / Patrick Dean."
+    ],
+    "title_a_index": [
+        "A window to heaven"
+    ],
+    "title_sort": [
+        "window to heaven : the daring first ascent of Denali, America's wildest peak / Patrick Dean."
+    ],
+    "title_no_h_index": [
+        "A window to heaven : the daring first ascent of Denali, America's wildest peak / Patrick Dean.",
+        "window to heaven : the daring first ascent of Denali, America's wildest peak / Patrick Dean."
+    ],
+    "title_t": [
+        "A window to heaven : the daring first ascent of Denali, America's wildest peak / Patrick Dean."
+    ],
+    "title_citation_display": [
+        "A window to heaven : the daring first ascent of Denali, America's wildest peak"
+    ],
+    "compiled_created_t": [
+        "A window to heaven : the daring first ascent of Denali, America's wildest peak / Patrick Dean."
+    ],
+    "edition_display": [
+        "First Pegasus Books cloth edition."
+    ],
+    "pub_created_display": [
+        "New York : Pegasus Books, 2021.",
+        "©2021"
+    ],
+    "pub_created_s": [
+        "New York : Pegasus Books, 2021.",
+        "©2021"
+    ],
+    "pub_citation_display": [
+        "New York: Pegasus Books"
+    ],
+    "publication_location_citation_display": [
+        "New York"
+    ],
+    "publisher_citation_display": [
+        "Pegasus Books"
+    ],
+    "pub_date_display": [
+        "2021"
+    ],
+    "pub_date_start_sort": [
+        "2021"
+    ],
+    "pub_date_end_sort": [
+        "2021"
+    ],
+    "publication_date_citation_display": [
+        "2021"
+    ],
+    "cataloged_tdt": [
+        "2021-04-22T00:00:00Z"
+    ],
+    "format": [
+        "Book"
+    ],
+    "description_display": [
+        "316 pages : illustrations (16 pages of plates, some color) ; 24 cm."
+    ],
+    "description_t": [
+        "316 pages : illustrations (16 pages of plates, some color) ; 24 cm."
+    ],
+    "number_of_pages_citation_display": [
+        "316 pages"
+    ],
+    "geocode_display": [
+        "Alaska"
+    ],
+    "notes_index": [
+        "Includes bibliographical references (pages 285-310).",
+        "Tall mountain -- From London to the American frontier -- \"The mountain,\" exploring the west, and fighting for justice -- Grit, good works, & the Grand Canyon -- Going inside by dogsled and Yukon river boat -- Walter Harper & the nobler ideal -- The seventy mile kid -- The great monarch of the north -- The \"fraudulent narrative,\" the judge, and the sourdoughs -- To the foot of Denali -- The highway of desire -- The northeast ridge -- A privileged communion -- \"A liar and a sneak\" -- \"The light of a bright example\" -- The long trail.",
+        "\"In 1913, four men made a months-long journey by dog sled to the base of the tallest mountain in North America. Several groups had already tried but failed to reach the top of a mountain whose size--occupying 120 square miles of the earth's surface --and position as the Earth's northernmost peak of more than 6,000 meters elevation make it one of the world's deadliest mountains. Although its height from base to top is actually greater than Everest's, it is Denali's weather, not altitude, that have caused the great majority of fatalities--over a hundred since 1903. Denali experiences weather more severe than the North Pole, with temperatures of forty below zero and winds that howl at 80 to 100 miles per hour for days at a stretch. But in 1913 none of this mattered to Hudson Stuck, a fifty-year old Episcopal priest, Harry Karstens, the hardened Alaskan wilderness guide, Walter Harper, part of the Koyukon people, and Robert Tatum, a divinity student, both just in their twenties. They were all determined to be the first to set foot on top of Denali\"--Provided by publisher."
+    ],
+    "summary_note_display": [
+        "\"In 1913, four men made a months-long journey by dog sled to the base of the tallest mountain in North America. Several groups had already tried but failed to reach the top of a mountain whose size--occupying 120 square miles of the earth's surface --and position as the Earth's northernmost peak of more than 6,000 meters elevation make it one of the world's deadliest mountains. Although its height from base to top is actually greater than Everest's, it is Denali's weather, not altitude, that have caused the great majority of fatalities--over a hundred since 1903. Denali experiences weather more severe than the North Pole, with temperatures of forty below zero and winds that howl at 80 to 100 miles per hour for days at a stretch. But in 1913 none of this mattered to Hudson Stuck, a fifty-year old Episcopal priest, Harry Karstens, the hardened Alaskan wilderness guide, Walter Harper, part of the Koyukon people, and Robert Tatum, a divinity student, both just in their twenties. They were all determined to be the first to set foot on top of Denali\"--Provided by publisher."
+    ],
+    "bib_ref_notes_display": [
+        "Includes bibliographical references (pages 285-310)."
+    ],
+    "language_name_display": [
+        "English"
+    ],
+    "language_facet": [
+        "English"
+    ],
+    "publication_place_facet": [
+        "New York (State)"
+    ],
+    "language_iana_s": [
+        "en"
+    ],
+    "contents_display": [
+        "Tall mountain",
+        "From London to the American frontier",
+        "\"The mountain,\" exploring the west, and fighting for justice",
+        "Grit, good works, & the Grand Canyon",
+        "Going inside by dogsled and Yukon river boat",
+        "Walter Harper & the nobler ideal",
+        "The seventy mile kid",
+        "The great monarch of the north",
+        "The \"fraudulent narrative,\" the judge, and the sourdoughs",
+        "To the foot of Denali",
+        "The highway of desire",
+        "The northeast ridge",
+        "A privileged communion",
+        "\"A liar and a sneak\"",
+        "\"The light of a bright example\"",
+        "The long trail."
+    ],
+    "lc_subject_display": [
+        "Harper, Walter 1892-1918",
+        "Stuck, Hudson 1863-1920",
+        "Mountaineers—Alaska—Biography",
+        "Mountaineering—Alaska—Denali, Mount—History",
+        "Mountaineering—Alaska—McKinley, Mount—History",
+        "Denali, Mount (Alaska)",
+        "McKinley, Mount (Alaska)",
+        "Alaska—History"
+    ],
+    "lc_subject_include_archaic_search_terms_index": [
+        "Harper, Walter 1892-1918",
+        "Stuck, Hudson 1863-1920",
+        "Mountaineers—Alaska—Biography",
+        "Mountaineering—Alaska—Denali, Mount—History",
+        "Mountaineering—Alaska—McKinley, Mount—History",
+        "McKinley, Mount (Alaska)",
+        "Denali, Mount (Alaska)",
+        "Alaska—History"
+    ],
+    "subject_unstem_search": [
+        "Harper, Walter 1892-1918",
+        "Stuck, Hudson 1863-1920",
+        "Mountaineers—Alaska—Biography",
+        "Mountaineering—Alaska—Denali, Mount—History",
+        "Mountaineering—Alaska—McKinley, Mount—History",
+        "McKinley, Mount (Alaska)",
+        "Denali, Mount (Alaska)",
+        "Alaska—History"
+    ],
+    "local_subject_unstem_search": null,
+    "siku_subject_unstem_search": null,
+    "homoit_subject_unstem_search": null,
+    "fast_subject_unstem_search": null,
+    "subject_facet": [
+        "Harper, Walter 1892-1918",
+        "Stuck, Hudson 1863-1920",
+        "Mountaineers—Alaska—Biography",
+        "Mountaineering—Alaska—Denali, Mount—History",
+        "Mountaineering—Alaska—McKinley, Mount—History",
+        "Denali, Mount (Alaska)",
+        "McKinley, Mount (Alaska)",
+        "Alaska—History"
+    ],
+    "lc_subject_facet": [
+        "Harper, Walter 1892-1918",
+        "Stuck, Hudson 1863-1920",
+        "Mountaineers",
+        "Mountaineers—Alaska",
+        "Mountaineers—Alaska—Biography",
+        "Mountaineering",
+        "Mountaineering—Alaska",
+        "Mountaineering—Alaska—Denali, Mount",
+        "Mountaineering—Alaska—McKinley, Mount",
+        "Mountaineering—Alaska—Denali, Mount—History",
+        "Mountaineering—Alaska—McKinley, Mount—History",
+        "Denali, Mount (Alaska)",
+        "McKinley, Mount (Alaska)",
+        "Alaska",
+        "Alaska—History"
+    ],
+    "publication_place_hierarchical_pipe_facet": [
+        "United States",
+        "United States|||New York (State)"
+    ],
+    "publication_place_hierarchical_facet": [
+        "United States",
+        "United States:New York (State)"
+    ],
+    "geographic_facet": [
+        "Alaska",
+        "Denali, Mount (Alaska)",
+        "McKinley, Mount (Alaska)",
+        "Mount Denali"
+    ],
+    "subject_topic_facet": [
+        "Harper, Walter 1892-1918",
+        "Stuck, Hudson 1863-1920",
+        "Mountaineers",
+        "Alaska",
+        "Mountaineering",
+        "Denali, Mount",
+        "History",
+        "McKinley, Mount",
+        "Denali, Mount (Alaska)",
+        "McKinley, Mount (Alaska)"
+    ],
+    "lc_1letter_facet": [
+        "G - Geography, Anthropology, Recreation"
+    ],
+    "lc_rest_facet": [
+        "GV - Recreation. Leisure"
+    ],
+    "lc_pipe_facet": [
+        "G - Geography, Anthropology, Recreation",
+        "G - Geography, Anthropology, Recreation|||GV - Recreation. Leisure"
+    ],
+    "lc_facet": [
+        "G - Geography, Anthropology, Recreation",
+        "G - Geography, Anthropology, Recreation:GV - Recreation. Leisure"
+    ],
+    "call_number_scheme_facet": [
+        "Library of Congress"
+    ],
+    "call_number_group_facet": [
+        "G - Geography, Anthropology, Recreation"
+    ],
+    "call_number_full_facet": [
+        "GV - Recreation. Leisure"
+    ],
+    "genre_facet": [
+        "Biography"
+    ],
+    "isbn_display": [
+        "9781643136424 ((hardcover))",
+        "1643136429 ((hardcover))"
+    ],
+    "isbn_s": [
+        "9781643136424"
+    ],
+    "oclc_s": [
+        "1235777950"
+    ],
+    "standard_no_index": [
+        "12421841-princetondb",
+        "on1235777950"
+    ],
+    "other_version_s": [
+        "9781643136424",
+        "on1235777950"
+    ],
+    "holdings_1display": [
+        "{\"22619939160006421\":{\"location_code\":\"firestone$stacks\",\"location\":\"Stacks\",\"library\":\"Firestone Library\",\"call_number\":\"GV199.42.A42 D46143 2021\",\"call_number_browse\":\"GV199.42.A42 D46143 2021\",\"items\":[{\"holding_id\":\"22619939160006421\",\"id\":\"23619939150006421\",\"status_at_load\":\"1\",\"barcode\":\"32101112783590\",\"copy_number\":\"0\"}]}}"
+    ],
+    "location_code_s": [
+        "firestone$stacks"
+    ],
+    "location": [
+        "Firestone Library"
+    ],
+    "location_display": [
+        "Stacks"
+    ],
+    "advanced_location_s": [
+        "firestone$stacks",
+        "Firestone Library"
+    ],
+    "name_title_browse_s": [
+        "Dean, Patrick (Outdoor writer). A window to heaven"
+    ],
+    "call_number_display": [
+        "GV199.42.A42 D46143 2021"
+    ],
+    "call_number_browse_s": [
+        "GV199.42.A42 D46143 2021"
+    ],
+    "call_number_locator_display": [
+        "GV199.42.A42 D46143 2021"
+    ],
+    "access_facet": [
+        "In the Library"
+    ]
+}
