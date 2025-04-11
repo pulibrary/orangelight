@@ -75,5 +75,8 @@ module Orangelight
     BlacklightDynamicSitemap::Engine.config.minimum_average_chunk = 500
 
     config.eager_load_paths << Rails.root.join('spec', 'mailers', 'previews')
+
+    # Hide sass deprecation warnings for dependencies
+    config.sass.quiet_deps = true
   end
 end
