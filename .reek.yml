@@ -90,12 +90,6 @@ detectors:
     - Requests::FormController#mode
     - Requests::FormController#sanitize_submission
     - FeedbackForm#headers
-    - AdvancedHelper#advanced_search_fields
-    - AdvancedHelper#guided_context
-    - AdvancedHelper#guided_field
-    - AdvancedHelper#guided_radio
-    - AdvancedHelper#label_tag_default_for
-    - AdvancedHelper#param_for_field
     - ApplicationHelper#action_notes_display
     - ApplicationHelper#html_safe
     - ApplicationHelper#language_iana
@@ -242,9 +236,6 @@ detectors:
     - Orangelight::SearchBarComponent#search_fields
     - ApplicationController#after_sign_out_path_for
     - Requests::FormController#sanitize_submission
-    - AdvancedHelper#advanced_key_value
-    - AdvancedHelper#advanced_search_fields
-    - AdvancedHelper#param_for_field
     - ApplicationHelper#series_results
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#isbn_resolve
@@ -532,7 +523,6 @@ detectors:
   NestedIterators:
     exclude:
     - BookmarksController#csv_output
-    - AdvancedHelper#generate_solr_fq
     - ApplicationHelper#name_title_hierarchy
     - ApplicationHelper#title_hierarchy
     - BlacklightHelper#left_anchor_search?
@@ -562,8 +552,6 @@ detectors:
     - Orangelight::BrowsablesController#populate_search_results
     - Orangelight::BrowsablesController#rpp
     - Requests::FormController#mode
-    - AdvancedHelper#advanced_search_fields
-    - AdvancedHelper#guided_context
     - ApplicationHelper#aeon_location?
     - ApplicationHelper#alma_location_display
     - ApplicationHelper#holding_location_label
@@ -798,8 +786,6 @@ detectors:
     - BookmarksController#csv_bom
     - BookmarksController#two_values
     - Orangelight::Catalog#online_holding_note?
-    - AdvancedHelper#advanced_search_fields
-    - AdvancedHelper#generate_solr_fq
     - ApplicationHelper#action_notes_display
     - ApplicationHelper#html_safe
     - ApplicationHelper#location_has
@@ -852,8 +838,6 @@ detectors:
     - Requests::FormController#sanitize
     - FeedbackForm#error_message
     - ReportBiasedResultsForm#routed_mail_to
-    - AdvancedHelper#first_search_field?
-    - AdvancedHelper#first_search_field_selector?
     - ApplicationHelper#aeon_location?
     - ApplicationHelper#alma_location_display
     - ApplicationHelper#bibdata_location_code_to_sym
