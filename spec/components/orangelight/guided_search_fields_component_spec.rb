@@ -28,7 +28,7 @@ RSpec.describe Orangelight::GuidedSearchFieldsComponent, type: :component, advan
 
   describe '#guided_field' do
     before do
-      controller.params[:clause] = { '0' => { 'field' => 'title' } }
+      vc_test_controller.params[:clause] = { '0' => { 'field' => 'title' } }
       render
     end
     context 'when field_num is :clause_0_field' do
@@ -41,8 +41,8 @@ RSpec.describe Orangelight::GuidedSearchFieldsComponent, type: :component, advan
   describe '#label_tag_default_for' do
     context 'when key is :q1' do
       before do
-        controller.params[:q] = 'cats'
-        controller.params[:search_field] = 'all_fields'
+        vc_test_controller.params[:q] = 'cats'
+        vc_test_controller.params[:search_field] = 'all_fields'
         render
       end
       it 'takes search term from q param' do
@@ -51,8 +51,8 @@ RSpec.describe Orangelight::GuidedSearchFieldsComponent, type: :component, advan
     end
     context 'when key is :clause_0_query' do
       before do
-        controller.params[:q] = 'cats'
-        controller.params[:search_field] = 'all_fields'
+        vc_test_controller.params[:q] = 'cats'
+        vc_test_controller.params[:search_field] = 'all_fields'
         render
       end
       it 'takes search term from q param' do
@@ -61,7 +61,7 @@ RSpec.describe Orangelight::GuidedSearchFieldsComponent, type: :component, advan
     end
     context 'with a clause param' do
       before do
-        controller.params[:clause] = { '0' => { 'field' => 'all_fields', 'query' => 'beasts' } }
+        vc_test_controller.params[:clause] = { '0' => { 'field' => 'all_fields', 'query' => 'beasts' } }
         render
       end
       it 'takes search term from q param' do
@@ -69,14 +69,4 @@ RSpec.describe Orangelight::GuidedSearchFieldsComponent, type: :component, advan
       end
     end
   end
-end
-
-def controller
-  # ViewComponent 2.x
-  return super if defined?(super)
-
-  # ViewComponent 3.x
-  return vc_test_controller if defined?(vc_test_controller)
-
-  ApplicationController.new.extend(Rails.application.routes.url_helpers)
 end
