@@ -365,13 +365,6 @@
     -->
   <requestHandler name="search" class="solr.SearchHandler" default="true" initParams="searchParams"></requestHandler>
 
-  <requestHandler name="engineering_search" class="solr.SearchHandler" initParams="searchParams">
-    <!-- Appends means we add this parameter always but the query sent by the client can also add more of them. -->
-    <lst name="appends">
-      <str name="boost">if(termfreq(text,'engineering'),100,0)</str>
-    </lst>
-  </requestHandler>
-
   <requestHandler name="/advanced" class="solr.SearchHandler" initParams="searchParams">
     <!-- a lucene request handler for using the JSON Query DSL, for advanced search
          Using a separate request handler as a work around to
