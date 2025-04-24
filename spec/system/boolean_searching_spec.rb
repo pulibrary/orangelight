@@ -111,13 +111,12 @@ RSpec.describe 'complex boolean searching', advanced_search: true do
       expect(page).to have_content('Potatoes and Carrots go well together')
     end
 
-    it 'can combine OR and implicit AND queries' do
-      pending('Fixing advanced search')
+    it 'can combine OR and AND queries' do
       fill_in('clause_0_query', with: 'apple OR squishy')
       # defaults to AND between fields
       select('Title', from: 'clause_1_field')
-      # this should be an implicit AND but is being treated as an OR
-      fill_in('clause_1_query', with: 'cantaloupe date')
+      # without the AND, this is treated as an implicit OR
+      fill_in('clause_1_query', with: 'cantaloupe AND date')
       click_button('advanced-search-submit')
       expect(page).not_to have_content('Squishy mushrooms and dates')
       expect(page.find('.page_entries').text).to eq('1 entry found')
@@ -132,6 +131,42 @@ RSpec.describe 'complex boolean searching', advanced_search: true do
       fill_in('clause_1_query', with: 'cantaloupe OR date')
       click_button('advanced-search-submit')
       expect(page.find('.page_entries').text).to eq('1 - 2 of 2')
+    end
+  end
+  context 'with multiple types of fields' do
+    let(:simple_docs) do
+      [
+        apple_doc,
+        banana_doc
+      ]
+    end
+    let(:apple_doc) do
+      { 'id': ["1"], 'title_display': ['Apples are delicious'], 'author_display': 'Mister Banana' }
+    end
+    let(:banana_doc) do
+      { 'id': ["2"], 'title_display': ['Bananas are yummy, with co-star Mr. Apple'] }
+    end
+    before do
+      visit '/advanced'
+    end
+    it 'can limit by the field' do
+      select('Title', from: 'clause_0_field')
+      fill_in('clause_0_query', with: 'apple')
+      select('Author', from: 'clause_1_field')
+      fill_in('clause_1_query', with: 'banana')
+      click_button('advanced-search-submit')
+      expect(page.find('.page_entries').text).to eq('1 entry found')
+      expect(page).to have_content('Apples are delicious')
+    end
+
+    it 'can exclude by field' do
+      select('Title', from: 'clause_0_field')
+      fill_in('clause_0_query', with: 'apple')
+      select('Title', from: 'clause_1_field')
+      fill_in('clause_1_query', with: 'banana')
+      click_button('advanced-search-submit')
+      expect(page.find('.page_entries').text).to eq('1 entry found')
+      expect(page).to have_content('Bananas are yummy, with co-star Mr. Apple')
     end
   end
 end
