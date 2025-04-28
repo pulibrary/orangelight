@@ -29,9 +29,6 @@
     <% end %>
     <script>window.Global = {"graphql":<%= Global.graphql.to_json.html_safe %>,"figgy":<%= Global.figgy.to_json.html_safe %>}</script>
     <%= vite_client_tag %>
-    <% unless controller.controller_name == "catalog" && controller.action_name == "show" && @document.alma_record? %>
-    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML", async: true %>
-    <% end %>
     <%= javascript_include_tag "https://www.google.com/books/jsapi.js", defer: true %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
