@@ -15,7 +15,7 @@ describe('BookmarkAllManager', () => {
             </div>
           </div>
         </div>
-        <h2 class="visually-hidden visually-hidden">Search Results</h2>
+        <h2 class="visually-hidden">Search Results</h2>
         <div id="documents" class="documents-list">
           <article data-document-id="99122304923506421" data-document-counter="1" itemscope="itemscope" itemtype="http://schema.org/Thing" class="blacklight-book document document-position-1">
             <div class="row search-result-wrapper">
