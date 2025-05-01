@@ -1,58 +1,8 @@
-<div class="mb-3 advanced-search-facet row dropdown">
-    <label class="col-sm-4 control-label advanced-facet-label" for="<%= @dom_id %>"><%= @label %></label>
-    <input
-        id="<%= @dom_id %>"
-        data-bs-toggle="dropdown"
-        autocomplete="off"
-        class="col-sm-8 combobox-multiselect"
-        role="combobox"
-        aria-expanded="false"
-        aria-controls="<%= @listbox_id %>"
-    >
-    <span
-        class="fa fa-caret-down"
-        aria-hidden="true"
-        data-bs-toggle="dropdown"
-    ></span>
-    <ul
-        class="dropdown-menu"
-        role="listbox"
-        aria-label="Options"
-        id="<%= @listbox_id %>"
-    >
-        <% if @field_name == 'advanced_location_s' %>
-            <%= content_tag :li,
-                'All Princeton Holdings',
-                class: 'dropdown-item',
-                tabindex: -1,
-                role: 'option' %>
-        <% end %>
-        <% @values.each do |value| %>
-            <%= content_tag :li,
-                value[:label],
-                class: 'dropdown-item',
-                tabindex: -1,
-                role: 'option' %>
-        <% end %>
-    </ul>
-    <%= content_tag(:select, multiple: true, "aria-hidden" => "true",
-        hidden: true,
-        name: "f_inclusive[#{@field_name}][]",
-        id: @hidden_select_id) do %>
-        <% @values.each do |value| %>
-            <%= content_tag :option,
-                value[:label],
-                value: value[:value],
-                selected: value[:selected] %>
-        <% end %>
-        <% if @field_name == 'advanced_location_s' %>
-            <%= content_tag :option,
-                'All Princeton Holdings',
-                value: 'pul',
-                selected: params.dig('f_inclusive', 'advanced_location_s', 0) == 'pul' %>
-        <% end %>
-    <% end %>
-    <div class="visually-hidden number-of-results" aria-live="polite" aria-atomic="false">
-      <%= pluralize(@values.length, 'option') %>. Press down arrow for options.
-    </div>
+<div class=multiselect-combobox>
+    <multiselect-combobox
+        field-name="<%= @field_name %>"
+        label="<%= @label %>"
+        dom-id="<%= @dom_id %>"
+        values-json="<%= @values.to_json %>"
+    ></multiselect-combobox>
 </div>

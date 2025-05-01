@@ -1,34 +1,36 @@
-import AvailabilityUpdater from '../orangelight/availability.es6'
-import BookCoverManager from '../orangelight/book_covers.es6'
-import BookmarkAllManager from '../orangelight/bookmark_all.es6'
-import {FiggyManifestManager} from '../orangelight/figgy_manifest_manager'
-import GoogleBooksSnippets from '../orangelight/google_books_snippets.es6'
-import RelatedRecordsDisplayer from '../orangelight/related_records.es6'
-import DisplayMoreFieldComponent from '../../components/display_more_field_component.es6'
-import { handleBtnKeyDown } from './accessible_facets'
-import MultiselectCombobox from './multiselect_combobox.es6'
+import AvailabilityUpdater from '../orangelight/availability.es6';
+import BookCoverManager from '../orangelight/book_covers.es6';
+import BookmarkAllManager from '../orangelight/bookmark_all.es6';
+import { FiggyManifestManager } from '../orangelight/figgy_manifest_manager';
+import GoogleBooksSnippets from '../orangelight/google_books_snippets.es6';
+import RelatedRecordsDisplayer from '../orangelight/related_records.es6';
+import DisplayMoreFieldComponent from '../../components/display_more_field_component.es6';
+import { handleBtnKeyDown } from './accessible_facets';
+import MultiselectCombobox from './multiselect_combobox.es6';
 
 export default class OrangelightUiLoader {
   run() {
-    this.setup_availability()
-    this.setup_linked_records()
-    this.setup_show_more_fields()
-    this.setup_modal_focus()
-    this.setup_viewers()
-    this.setup_book_covers()
-    this.setup_bookmark_all()
-    this.setup_multiselect_comboboxes()
-    handleBtnKeyDown()
+    this.setup_availability();
+    this.setup_linked_records();
+    this.setup_show_more_fields();
+    this.setup_modal_focus();
+    this.setup_viewers();
+    this.setup_book_covers();
+    this.setup_bookmark_all();
+    handleBtnKeyDown();
   }
 
   setup_modal_focus() {
-    $("body").on("shown.bs.modal", (event) => {
-      $(event.target).find('input[type!="hidden"],textarea:enabled').first().focus();
-    })
+    $('body').on('shown.bs.modal', (event) => {
+      $(event.target)
+        .find('input[type!="hidden"],textarea:enabled')
+        .first()
+        .focus();
+    });
   }
 
   setup_availability() {
-    const au2 = new AvailabilityUpdater
+    const au2 = new AvailabilityUpdater();
     au2.request_availability(true);
     au2.scsb_search_availability();
   }
@@ -39,11 +41,12 @@ export default class OrangelightUiLoader {
       for (const button of buttons) {
         const fetchData = RelatedRecordsDisplayer.fetchData(
           button.getAttribute('data-linked-records-field'),
-          button.getAttribute('data-record-id'));
+          button.getAttribute('data-record-id')
+        );
         button.addEventListener('click', (event) => {
-          fetchData.then(displayer => displayer.toggle(event))
+          fetchData.then((displayer) => displayer.toggle(event));
         });
-      };
+      }
     }
   }
 
@@ -52,43 +55,40 @@ export default class OrangelightUiLoader {
     if (buttons.length > 0) {
       for (const button of buttons) {
         const displayer = new DisplayMoreFieldComponent();
-        button.addEventListener('click', (event) => { displayer.toggle(event) });
+        button.addEventListener('click', (event) => {
+          displayer.toggle(event);
+        });
       }
     }
   }
 
   setup_viewers() {
-    const $elements = $(".document-thumbnail[data-bib-id]")
-    if($elements.length > 0) {
-      const thumbnails = FiggyManifestManager.buildThumbnailSet($elements)
-      thumbnails.render()
+    const $elements = $('.document-thumbnail[data-bib-id]');
+    if ($elements.length > 0) {
+      const thumbnails = FiggyManifestManager.buildThumbnailSet($elements);
+      thumbnails.render();
     }
-    const $monogramIds = $("p[data-monogram-id]")
-    if($monogramIds.length > 0 ) {
-      const monograms = FiggyManifestManager.buildMonogramThumbnails($monogramIds)
-      monograms.renderMonogram()
+    const $monogramIds = $('p[data-monogram-id]');
+    if ($monogramIds.length > 0) {
+      const monograms =
+        FiggyManifestManager.buildMonogramThumbnails($monogramIds);
+      monograms.renderMonogram();
     }
 
-    $(".document-viewers").each(async (_, element) => {
-      const viewerSet = FiggyManifestManager.buildViewers(element)
-      await viewerSet.render()
-      const google_books_snippets = new GoogleBooksSnippets
-      if(google_books_snippets.has_figgy_viewer === false)
-        google_books_snippets.insert_snippet()
-    })
+    $('.document-viewers').each(async (_, element) => {
+      const viewerSet = FiggyManifestManager.buildViewers(element);
+      await viewerSet.render();
+      const google_books_snippets = new GoogleBooksSnippets();
+      if (google_books_snippets.has_figgy_viewer === false)
+        google_books_snippets.insert_snippet();
+    });
   }
 
   setup_book_covers() {
-    new BookCoverManager
+    new BookCoverManager();
   }
 
   setup_bookmark_all() {
-    new BookmarkAllManager
-  }
-
-  setup_multiselect_comboboxes() {
-    document.querySelectorAll('.combobox-multiselect').forEach(input => {
-      new MultiselectCombobox(input)
-    })
+    new BookmarkAllManager();
   }
 }
