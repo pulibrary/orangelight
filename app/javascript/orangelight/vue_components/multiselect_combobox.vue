@@ -55,6 +55,7 @@
       </li>
       <li
         v-for="value in filteredValues"
+        :key="value.value"
         @blur.stop="blur"
         @click.stop="toggleItem(value)"
         @keyup.enter="toggleItem(value)"
@@ -145,12 +146,16 @@ function focus(event) {
     instance.hide();
   }
   if (inputModel.value === inputValue.value) {
-    inputModel.value = '';
+    inputModel.value = query.value;
   }
 }
 
 function blur(event) {
   if (event.target.localName === 'input' || event.relatedTarget === null) {
+    const listElements = Array.from(dropdown.value.children);
+    if (listElements.includes(event.relatedTarget)) {
+      return;
+    }
     inputModel.value = inputValue.value;
     if (event.relatedTarget && event.relatedTarget.localName !== 'input') {
       return;
@@ -165,17 +170,6 @@ function blur(event) {
   ) {
     instance.hide();
   }
-}
-
-function hideDropdown(event) {
-  const listElements = Array.from(event.target.parentNode.childNodes);
-  if (event.target)
-    if (
-      listElements.includes(event.relatedTarget) ||
-      event.target.parentNode === event.relatedTarget
-    ) {
-      return true;
-    }
 }
 
 function tabToPrevious(event) {
