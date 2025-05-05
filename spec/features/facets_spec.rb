@@ -56,7 +56,7 @@ describe 'Facets' do
     end
   end
 
-  context 'advanced search only facets' do
+  context 'advanced search only facets', js: true do
     it 'will hide facets not configured for advanced search display' do
       visit '/catalog/?f[format][]=Book'
       expect(page.all('.blacklight-advanced_location_s').length).to eq 0

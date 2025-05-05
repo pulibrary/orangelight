@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'byebug'
 
 RSpec.describe 'catalog/index' do
   before do
@@ -16,22 +17,20 @@ RSpec.describe 'catalog/index' do
       before do
         visit '/advanced'
       end
-      it 'has the full list of languages' do
-        within '#language_facet-list' do
-          language_list_elements = page.find_all('li')
-          expect(language_list_elements.size).to be > 10
-        end
+      it 'has the full list of languages', js: true do
+        ul = page.find('#language_facet-list', visible: false)
+        language_list_elements = ul.all('li', visible: false)
+        expect(language_list_elements.size).to be > 10
       end
     end
     context 'with an edited search' do
       before do
         visit '/advanced?q=a&search_field=all_fields'
       end
-      it 'has the full list of languages' do
-        within '#language_facet-list' do
-          language_list_elements = page.find_all('li')
-          expect(language_list_elements.size).to be > 10
-        end
+      it 'has the full list of languages', js: true do
+        ul = page.find('#language_facet-list', visible: false)
+        language_list_elements = ul.all('li', visible: false)
+        expect(language_list_elements.size).to be > 10
       end
     end
     context 'with regular search results' do
