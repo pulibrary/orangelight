@@ -163,10 +163,11 @@ function blur(event) {
   }
   const instance = bootstrap.Dropdown.getOrCreateInstance(input.value);
   if (
-    !Array.from(event.target.parentNode.childNodes).includes(
+    (!Array.from(event.target.parentNode.childNodes).includes(
       event.relatedTarget
     ) ||
-    event.target.parentNode === event.relatedTarget
+      event.target.parentNode === event.relatedTarget) &&
+    event.relatedTarget !== null
   ) {
     instance.hide();
   }
@@ -231,8 +232,19 @@ function toggleItem(option) {
     const instance = bootstrap.Dropdown.getOrCreateInstance(input.value);
     const parent = document.activeElement.parentElement;
     option.selected = !option.selected;
+
+    let nextLi = null;
+    const listElements = Array.from(parent.querySelectorAll('li'));
+    const index = listElements.indexOf(document.activeElement);
+    // ArrowDown gives unexpected results so go one more down and ArrowUp
+    if (listElements[index + 1].classList.contains('dropdown-item')) {
+      nextLi = listElements[index + 2];
+    } else {
+      nextLi = listElements[index + 3];
+    }
     instance._selectMenuItem({
-      target: parent.querySelector('li:first-child:not(.dropdown-divider)'),
+      key: 'ArrowUp',
+      target: nextLi,
     });
   } else {
     option.selected = !option.selected;
@@ -245,6 +257,8 @@ function toggleItem(option) {
 function pluralize(number, string) {
   return number === 1 ? `${number} ${string}` : `${number} ${string}s`;
 }
+
+inputModel.value = inputValue.value;
 </script>
 <style scoped>
 .dropdown-menu.show {
