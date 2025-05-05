@@ -154,6 +154,7 @@ function blur(event) {
   if (event.target.localName === 'input' || event.relatedTarget === null) {
     const listElements = Array.from(dropdown.value.children);
     if (listElements.includes(event.relatedTarget)) {
+      inputModel.value = inputValue.value;
       return;
     }
     inputModel.value = inputValue.value;
@@ -232,26 +233,23 @@ function toggleItem(option) {
     const instance = bootstrap.Dropdown.getOrCreateInstance(input.value);
     const parent = document.activeElement.parentElement;
     option.selected = !option.selected;
-
     let nextLi = null;
     const listElements = Array.from(parent.querySelectorAll('li'));
     const index = listElements.indexOf(document.activeElement);
-    // ArrowDown gives unexpected results so go one more down and ArrowUp
-    if (listElements[index + 1].classList.contains('dropdown-item')) {
+    if (listElements[index + 2].classList.length === 0) {
+      nextLi = listElements[index + 4];
+    } else if (listElements[index + 1].classList.contains('dropdown-item')) {
       nextLi = listElements[index + 2];
     } else {
       nextLi = listElements[index + 3];
     }
     instance._selectMenuItem({
-      key: 'ArrowUp',
       target: nextLi,
     });
   } else {
     option.selected = !option.selected;
-    if (option.selected) {
-      inputModel.value = inputValue.value;
-    }
   }
+  inputModel.value = inputValue.value;
 }
 
 function pluralize(number, string) {
