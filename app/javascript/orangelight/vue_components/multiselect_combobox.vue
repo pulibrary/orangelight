@@ -7,7 +7,9 @@
       @focus="focus"
       @blur.stop="blur"
       @click.stop="focus"
-      :value="inputValue"
+      @keyup.up.down="upOrDown"
+      @keyup="search"
+      v-model="inputModel"
       ref="input"
       :id="domId"
       data-bs-toggle="dropdown"
@@ -31,7 +33,7 @@
       :id="listboxId"
     >
       <li
-        v-for="value in values.filter((v) => v.selected)"
+        v-for="value in filteredValues.filter((v) => v.selected)"
         @blur.stop="blur"
         @click.stop="toggleItem(value)"
         @keyup.enter="toggleItem(value)"
@@ -48,11 +50,11 @@
           aria-hidden="true"
         ></span>
       </li>
-      <li v-if="values.filter((v) => v.selected).length > 0">
+      <li v-if="filteredValues.filter((v) => v.selected).length > 0">
         <hr class="dropdown-divider" />
       </li>
       <li
-        v-for="value in values"
+        v-for="value in filteredValues"
         @blur.stop="blur"
         @click.stop="toggleItem(value)"
         @keyup.enter="toggleItem(value)"
@@ -90,7 +92,8 @@
       aria-live="polite"
       aria-atomic="false"
     >
-      {{ pluralize(values.length, 'option') }}. Press down arrow for options.
+      {{ pluralize(filteredValues.length, 'option') }}. Press down arrow for
+      options.
     </div>
   </div>
 </template>
@@ -109,6 +112,8 @@ const hiddenSelectId = ref(`${props.domId}-select`);
 const values = ref(buildValues());
 const input = ref(null);
 const dropdown = ref(null);
+const inputModel = defineModel('inputModel');
+const query = ref('');
 
 const inputValue = computed(() =>
   values.value
@@ -117,20 +122,39 @@ const inputValue = computed(() =>
     .join(';')
 );
 
+const filteredValues = computed(() => {
+  if (query.value === undefined) {
+    return values.value;
+  }
+  return values.value.filter((value) => {
+    const normalizedQuery = query.value.trim().toLowerCase();
+    if (inputModel.value === inputValue.value) {
+      return values.value;
+    }
+    return (
+      value.label.toLowerCase().includes(normalizedQuery) || value.selected
+    );
+  });
+});
+
 function focus(event) {
   const instance = bootstrap.Dropdown.getOrCreateInstance(event.target);
   if (event.target === input.value || event.target === dropdown.value) {
     instance.show();
-    console.log(event.target.firstChild);
-    instance._selectMenuItem({ key: 'ArrowDown' });
   } else {
     instance.hide();
+  }
+  if (inputModel.value === inputValue.value) {
+    inputModel.value = '';
   }
 }
 
 function blur(event) {
   if (event.target.localName === 'input' || event.relatedTarget === null) {
-    return;
+    inputModel.value = inputValue.value;
+    if (event.relatedTarget && event.relatedTarget.localName !== 'input') {
+      return;
+    }
   }
   const instance = bootstrap.Dropdown.getOrCreateInstance(input.value);
   if (
@@ -141,6 +165,17 @@ function blur(event) {
   ) {
     instance.hide();
   }
+}
+
+function hideDropdown(event) {
+  const listElements = Array.from(event.target.parentNode.childNodes);
+  if (event.target)
+    if (
+      listElements.includes(event.relatedTarget) ||
+      event.target.parentNode === event.relatedTarget
+    ) {
+      return true;
+    }
 }
 
 function tabToPrevious(event) {
@@ -161,6 +196,20 @@ function tabToPrevious(event) {
     const currentIndex = tabbableElements.indexOf(currentFocus);
     tabbableElements[currentIndex - 1].focus();
   }
+}
+
+function upOrDown(event) {
+  const instance = bootstrap.Dropdown.getOrCreateInstance(event.target);
+  if (event.key === 'ArrowDown') {
+    instance._selectMenuItem({ key: 'ArrowDown' });
+  }
+}
+
+function search(event) {
+  if (['ArrowUp', 'ArrowDown', 'Enter'].includes(event.key)) {
+    return;
+  }
+  query.value = inputModel.value;
 }
 
 function buildValues() {
@@ -187,13 +236,15 @@ function toggleItem(option) {
   if (document.activeElement.classList.contains('selected-item')) {
     const instance = bootstrap.Dropdown.getOrCreateInstance(input.value);
     const parent = document.activeElement.parentElement;
-    console.log(parent.querySelector('li:first-child:not(.dropdown-divider)'));
     option.selected = !option.selected;
     instance._selectMenuItem({
       target: parent.querySelector('li:first-child:not(.dropdown-divider)'),
     });
   } else {
     option.selected = !option.selected;
+    if (option.selected) {
+      inputModel.value = inputValue.value;
+    }
   }
 }
 
