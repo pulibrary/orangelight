@@ -5,7 +5,7 @@
     }}</label>
     <input
       @focus="focus"
-      @blur.stop="blur"
+      @blur.stop="blurInput"
       @click.stop="focus"
       @keyup.up.down="upOrDown"
       @keyup="search"
@@ -151,17 +151,22 @@ function focus(event) {
 }
 
 function blur(event) {
-  if (event.target.localName === 'input' || event.relatedTarget === null) {
-    const listElements = Array.from(dropdown.value.children);
-    if (listElements.includes(event.relatedTarget)) {
-      inputModel.value = inputValue.value;
-      return;
-    }
-    inputModel.value = inputValue.value;
-    if (event.relatedTarget && event.relatedTarget.localName !== 'input') {
-      return;
-    }
+  hideDropdown(event);
+}
+
+function blurInput(event) {
+  const listElements = Array.from(dropdown.value.children);
+  if (listElements.includes(event.relatedTarget)) {
+    return;
   }
+  inputModel.value = inputValue.value;
+  if (event.relatedTarget && event.relatedTarget.localName !== 'input') {
+    return;
+  }
+  hideDropdown(event);
+}
+
+function hideDropdown(event) {
   const instance = bootstrap.Dropdown.getOrCreateInstance(input.value);
   if (
     (!Array.from(event.target.parentNode.childNodes).includes(
