@@ -42,22 +42,22 @@ RSpec.describe Orangelight::FacetFieldCheckboxesComponent, type: :component do
       expect(
         render_inline(described_class.new(facet_field:)).to_s
       ).to include(
-        '<option value="b" selected>'
+        '{"value":"b","selected":true,"label":"b  (33)"}'
       )
     end
   end
   context 'when url includes multiple facet values that the user has selected' do
     let(:search_state) { Blacklight::SearchState.new({ "f_inclusive" => { "field" => ["b", "c"] } }, Blacklight::Configuration.new) }
-    it 'displays both values as selected' do
+    it 'displays both values as selected', js: true do
       expect(
         render_inline(described_class.new(facet_field:)).to_s
       ).to include(
-        '<option value="b" selected>'
+        '{"value":"b","selected":true,"label":"b  (33)"}'
       )
       expect(
         render_inline(described_class.new(facet_field:)).to_s
       ).to include(
-        '<option value="c" selected>'
+        '{"value":"c","selected":true,"label":"c  (3)"}'
       )
     end
   end
