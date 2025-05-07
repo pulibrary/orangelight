@@ -46,4 +46,14 @@ RSpec.describe 'Numismatics search form', advanced_search: true do
     # It shouldn't switch focus to the entire page, but stay in the list
     expect(active_element.text).not_to include('Skip to main content')
   end
+  it "renders all expected fields", js: true do
+    visit '/numismatics'
+    expected_fields = [
+      'Object Type', 'Denomination', 'Metal', 'City', 'State',
+      'Region', 'Ruler', 'Artist', 'Find Place', 'Year',
+      'Begin', 'End',
+      'Keyword'
+    ]
+    expect(page.find('form.advanced').all('label', visible: false).map(&:text)).to match_array(expected_fields)
+  end
 end

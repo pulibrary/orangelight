@@ -33,16 +33,6 @@ RSpec.describe NumismaticsSearchFormComponent, type: :component do
     allow(view_context).to receive(:facet_limit_for).and_return(nil)
   end
 
-  it "renders all expected fields" do
-    expected_fields = [
-      'Object Type', 'Denomination', 'Metal', 'City', 'State',
-      'Region', 'Ruler', 'Artist', 'Find Place', 'Year',
-      'Begin', 'End',
-      'Keyword'
-    ]
-    expect(rendered.all('label').map(&:text)).to match_array(expected_fields)
-  end
-
   context 'when URL includes facet params from the user' do
     let(:params) do
       { "f_inclusive" => { "issue_ruler_s" => ["Alexios III Angelos"] } }.with_indifferent_access

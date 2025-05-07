@@ -106,7 +106,7 @@ describe 'advanced searching', advanced_search: true do
       expect(page).not_to have_selector('.search-query-form')
     end
 
-    it 'has the expected facets' do
+    it 'has the expected facets', js: true do
       visit '/advanced'
       expect(page.find_all('.advanced-facet-label').map(&:text)).to match_array(["Access", "Format", "Language", "Holding location", "Publication year", "Place of publication"])
     end
@@ -174,7 +174,7 @@ describe 'advanced searching', advanced_search: true do
   end
 
   context 'with a numismatics advanced search type' do
-    it 'provides labels to numismatics form elements' do
+    it 'provides labels to numismatics form elements', js: true do
       visit '/numismatics'
       expect(page).to have_selector('label', exact_text: 'Object Type')
       expect(page).to have_selector('label', exact_text: 'Denomination')

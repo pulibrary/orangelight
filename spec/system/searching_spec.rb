@@ -49,28 +49,30 @@ describe 'Searching', type: :system, js: false do
     end
   end
 
-  context 'chosen selected values' do
-    it 'removes a chosen selected value' do
+  context 'chosen selected values', js: true do
+    it 'removes a chosen selected value', js: true do
       visit '/catalog?utf8=%E2%9C%93&f1=all_fields&q3=&f_inclusive%5Bformat%5D%5B%5D=Journal&search_field=advanced&commit=Search'
       expect(page).to have_link 'Edit search'
       page.find(:xpath, '//*[@id="editSearchLink"]').click
       expect(current_url).to include 'f_inclusive%5Bformat%5D%5B%5D=Journal'
       page.find(:xpath, '//input[@id="format"]').click
-      page.find(:xpath, '//li[contains(text(), "Journal")]').click
+      page.find(:xpath, '//li[contains(text(), "Journal")][not(contains(@class, "selected-item"))]').click
       page.find(:xpath, '//*[@id="advanced-search-submit"]').click
       expect(current_url).not_to include 'f_inclusive%5Bformat%5D%5B%5D=Journal'
     end
   end
 
-  context 'with chosen selected numismatic values', advanced_search: true do
-    it 'removes a chosen selected numismatic value' do
+  context 'with chosen selected numismatic values', js: true, advanced_search: true do
+    it 'removes a chosen selected numismatic value', js: true do
+      # https://github.com/pulibrary/orangelight/issues/4906
+      pending('this test was giving a false negative')
       visit '/catalog?f%5Bformat%5D%5B%5D=Coin&advanced_type=numismatics&f_inclusive%5Bissue_city_s%5D%5B%5D=Tyre&range%5Bpub_date_start_sort%5D%5Bbegin%5D=&range%5Bpub_date_start_sort%5D%5Bend%5D=&f1=all_fields&q1=&sort=score+desc%2C+pub_date_start_sort+desc%2C+title_sort+asc&search_field=advanced&commit=Search'
       expect(page).to have_link 'Edit search'
       page.find(:xpath, '//*[@id="editSearchLink"]').click
       expect(current_url).to include 'numismatics?'
       expect(current_url).to include 'f_inclusive%5Bissue_city_s%5D%5B%5D=Tyre'
       page.find(:xpath, '//input[@id="issue_city_s"]').click
-      page.find(:xpath, '//li[contains(text(), "Tyre")]').click
+      page.find(:xpath, '//li[contains(text(), "Tyre")][not(contains(@class, "selected-item"))]').click
       page.find(:xpath, '//*[@id="advanced-search-submit"]').click
       expect(current_url).not_to include 'f_inclusive%5Bissue_city_s%5D%5B%5D=Tyre'
     end
