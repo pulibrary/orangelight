@@ -11,7 +11,7 @@ RSpec.describe Requests::NonAlmaAeonUrl, requests: true do
                        title_display: 'A book of poems',
                        form_genre_display: ['Poetry'],
                        author_display: ['Person 1', 'Person 2'],
-                       holdings_1display: holdings.to_json.to_s
+                       holdings_1display: holdings.to_json
                      })
   end
   before do
