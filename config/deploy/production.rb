@@ -13,14 +13,14 @@ set :branch, ENV['BRANCH'] || 'main'
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'catalog1', user: 'deploy', roles: %i[web app db worker]
-server 'catalog2', user: 'deploy', roles: %i[web app db worker]
-server 'catalog3', user: 'deploy', roles: %i[web app db worker]
-server 'catalog4', user: 'deploy', roles: %i[web app db worker]
-server 'catalog5', user: 'deploy', roles: %i[web app db worker]
-server 'catalog-indexer1', user: 'deploy', roles: %i[cron_prod1 cron_db worker indexer]
-server 'catalog-indexer2', user: 'deploy', roles: %i[cron_prod2 worker indexer]
-server 'catalog-indexer3', user: 'deploy', roles: %i[cron_prod3 worker indexer]
+server 'catalog1.princeton.edu', user: 'deploy', roles: %i[web app db worker]
+server 'catalog2.princeton.edu', user: 'deploy', roles: %i[web app db worker]
+server 'catalog3.princeton.edu', user: 'deploy', roles: %i[web app db worker]
+server 'catalog4.princeton.edu', user: 'deploy', roles: %i[web app db worker]
+server 'catalog5.princeton.edu', user: 'deploy', roles: %i[web app db worker]
+server 'catalog-indexer1.princeton.edu', user: 'deploy', roles: %i[cron_prod1 cron_db worker indexer]
+server 'catalog-indexer2.princeton.edu', user: 'deploy', roles: %i[cron_prod2 worker indexer]
+server 'catalog-indexer3.princeton.edu', user: 'deploy', roles: %i[cron_prod3 worker indexer]
 
 set :deploy_to, '/opt/orangelight'
 set :log_level, :info
