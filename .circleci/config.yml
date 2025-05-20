@@ -31,7 +31,7 @@ executors:
       - image: cimg/ruby:3.4.1-browsers
         environment:
           RAILS_ENV: test
-    resource_class: large
+    resource_class: small
     working_directory: ~/orangelight
 
 commands:
