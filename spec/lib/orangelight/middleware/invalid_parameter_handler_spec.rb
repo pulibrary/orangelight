@@ -46,7 +46,8 @@ describe Orangelight::Middleware::InvalidParameterHandler do
 
         expect(app).to have_received(:call).with(env)
 
-        body_content = output.last.body
+        body = output.last
+        body_content = body.first
         expect { JSON.parse(body_content) }.not_to raise_error
         json_response = JSON.parse(body_content)
 
