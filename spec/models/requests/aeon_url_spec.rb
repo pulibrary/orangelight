@@ -16,7 +16,7 @@ RSpec.describe Requests::AeonUrl, requests: true do
     SolrDocument.new({
                        id: '9999999',
                        pub_citation_display: ['Random House'],
-                       holdings_1display: holdings.to_json.to_s
+                       holdings_1display: holdings.to_json
                      })
   end
   before do
