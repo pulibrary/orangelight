@@ -49,4 +49,16 @@ RSpec.describe Blacklight::Document::Mla, citation: true do
       end
     end
   end
+
+  context 'when the publisher contains XML symbols' do
+    let(:properties) do
+      {
+        pub_citation_display: ["Yerushalayim: <s.n.>"]
+      }
+    end
+
+    it 'includes the publisher without XML symbols' do
+      expect(document).to include('s.n.')
+    end
+  end
 end
