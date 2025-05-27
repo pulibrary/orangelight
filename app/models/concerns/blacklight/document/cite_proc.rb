@@ -53,7 +53,10 @@ module Blacklight::Document::CiteProc
     end
 
     def cite_proc_publisher
-      @cite_proc_publisher ||= self[:pub_citation_display]&.first&.split(': ').try(:[], 1)
+      @cite_proc_publisher ||= begin
+        publisher = self[:pub_citation_display]&.first&.split(': ').try(:[], 1)
+        publisher&.gsub(/^<(.*)>$/, '\1')
+      end
     end
 
     def cite_proc_publisher_place
