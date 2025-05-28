@@ -1,3 +1,11 @@
 
 exceptions:
   rescue_rake: true
+  ignore:
+    - 'Blacklight::Exceptions::ECONNREFUSED'
+    - 'Blacklight::Exceptions::RepositoryTimeout'
+    - 'Faraday::ConnectionFailed'
+    - 'Net::OpenTimeout'
+    - 'RedisClient::CannotConnectError'
+    - 'RedisClient::ReadTimeoutError'
+    - 'RSolr::Error::ConnectionRefused'
