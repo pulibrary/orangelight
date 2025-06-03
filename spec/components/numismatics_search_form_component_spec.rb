@@ -49,5 +49,13 @@ RSpec.describe NumismaticsSearchFormComponent, type: :component do
       constraints_area = rendered.find('.constraints')
       expect(constraints_area).to have_text('Ruler:Alexios III Angelos')
     end
+    describe 'hidden fields' do
+      it 'includes a hidden field that will limit the search to numismatics' do
+        expect(rendered.find_all('input', visible: false).map(&:value)).to include 'numismatics'
+      end
+      it 'does not include the params value in the hidden fields, since the user might wish to remove it from their search' do
+        expect(rendered.find_all('input', visible: false).map(&:value)).not_to include 'Alexios III Angelos'
+      end
+    end
   end
 end
