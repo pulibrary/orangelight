@@ -43,4 +43,8 @@ class NumismaticsSearchFormComponent < Blacklight::AdvancedSearchFormComponent
         constraints_text
       end
     end
+
+    def hidden_search_state_params
+      @params.except(:clause, :f_inclusive, :op, :sort).merge({ 'advanced_type' => 'numismatics' })
+    end
 end

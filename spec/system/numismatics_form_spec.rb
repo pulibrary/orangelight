@@ -56,4 +56,32 @@ RSpec.describe 'Numismatics search form', advanced_search: true do
     ]
     expect(page.find('form.advanced').all('label', visible: false).map(&:text)).to match_array(expected_fields)
   end
+  context 'when editing the search', js: true do
+    RSpec::Matchers.define :have_half_penny_coin do |_expected|
+      match { |page| page.has_text? 'Coin: 1' }
+    end
+    RSpec::Matchers.define :have_other_coin do |_expected|
+      match { |page| page.has_text? 'Coin: 3750' }
+    end
+    it 'user can remove selected values' do
+      visit '/numismatics'
+
+      click_half_penny # click it once to select it
+      click_button 'Search'
+      expect(page).to have_half_penny_coin
+      expect(page).not_to have_other_coin
+
+      click_link 'Edit search'
+      click_half_penny # click it a second time to deselect it
+      click_button 'Search'
+      expect(page).to have_half_penny_coin
+      expect(page).to have_other_coin
+    end
+  end
+end
+
+def click_half_penny
+  denomination_input = find_field 'Denomination'
+  denomination_input.click
+  page.find_all('li', text: '1/2 Penny').first.click
 end
