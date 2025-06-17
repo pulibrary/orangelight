@@ -236,6 +236,8 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - run: RAILS_ENV=test bundle exec rspec smoke_spec/smoke_spec.rb
 
 workflows:
