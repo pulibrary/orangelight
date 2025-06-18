@@ -10,7 +10,7 @@ RSpec.describe 'Deployed environment', :staging_test do
 
   it 'can connect to the staging environment' do
     response = HTTP.get(uri)
-    print response
+    expect(response.code).to eq(200)
     expect(response.status.reason).to eq('OK')
     
   end
