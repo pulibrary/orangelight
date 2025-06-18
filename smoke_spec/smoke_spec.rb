@@ -8,6 +8,10 @@ RSpec.describe 'Deployed environment', :staging_test do
   let(:query) { nil }
   let(:uri) { URI::HTTPS.build(host:, path:, query:) }
 
+  it 'can connect to the staging environment' do
+    response = HTTP.get(uri)
+    expect(response.status.reason).to eq('OK')
+  end
   describe 'home page' do
     it 'has facets' do
       visit uri
