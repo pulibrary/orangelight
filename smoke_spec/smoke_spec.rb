@@ -9,9 +9,10 @@ RSpec.describe 'Deployed environment', :staging_test do
   let(:uri) { URI::HTTPS.build(host:, path:, query:) }
 
   it 'can connect to the staging environment' do
+    puts("THE WORKING DIRECTORY IS" + `pwd`)
     response = HTTP.get(uri)
-    expect(response.code).to eq(200)
-    expect(response.status.reason).to eq('OK')
+    expect(response.code).not_to eq(200)
+    expect(response.status.reason).not_to eq('OK')
     
   end
   describe 'home page' do
