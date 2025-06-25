@@ -222,13 +222,23 @@ jobs:
       - run:
           name: finish up coverage
           command: curl -k https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN -d "payload[build_num]=$CIRCLE_WORKFLOW_ID&payload[status]=done"
-
-  deploy:
-    executor: basic-executor
+  staging_deploy:
+    machine: true
+    resource_class: pulibrary/ruby-deploy
     steps:
-      - run:
-          name: Deploy to Staging
-          command: "curl -k \"https://ansible-tower.princeton.edu/api/v2/job_templates/57/launch/\" --header \"Content-Type: application/json\" --header \"Authorization: Bearer $TOWER_TOKEN\" -d '{\"credential_passwords\":{},\"extra_vars\":{\"repo_name\":\"orangelight\"}}'"
+      - checkout
+      - setup-bundler-and-node
+      - ruby/install-deps
+      - run: bundle exec cap staging deploy
+  staging_test:
+    machine: true
+    resource_class: pulibrary/ruby-deploy
+    steps:
+      - checkout
+      - ruby/install-deps
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - run: RAILS_ENV=test bundle exec rspec smoke_spec/smoke_spec.rb
 
 workflows:
   build_accept:
@@ -255,9 +265,16 @@ workflows:
       - finish:
          requires:
            - test
-      - deploy:
+      - staging_deploy:
          requires:
            - finish
+         filters:
+           branches:
+             only:
+               - main
+      - staging_test:
+         requires:
+            - staging_deploy
          filters:
            branches:
              only:
