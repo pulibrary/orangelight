@@ -268,14 +268,14 @@ workflows:
       - staging_deploy:
          requires:
            - finish
-        #  filters:
-        #    branches:
-        #      only:
-        #        - main
+         filters:
+           branches:
+             only:
+               - main
       - staging_test:
          requires:
             - staging_deploy
-        #  filters:
-        #    branches:
-        #      only:
-        #        - main
+         filters:
+           branches:
+             only:
+               - main
