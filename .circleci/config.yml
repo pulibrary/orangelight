@@ -39,7 +39,7 @@ commands:
     steps:
       - node/install:
           install-yarn: true
-          node-version: '23.7.0'
+          node-version: '24.3.0'
       - run:
           name: Check current version of node
           command: node -v
