@@ -79,7 +79,7 @@ class StackmapService
       end
 
       def stackmap_libs
-        %w[arch eastasian engineer lewis mendel plasma stokes firestone]
+        %w[arch eastasian engineer lewis mendel stokes firestone]
       end
 
       def by_title_locations
