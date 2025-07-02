@@ -176,13 +176,13 @@ module Requests
       array_of_isbns.join(',')
     end
 
-    def suppress_login(request)
+    def suppress_login?(request)
       request.only_aeon?
     end
 
     def item_checkbox(requestable, single_item_form)
       disabled = !requestable.will_submit_via_form?
-      check_box_tag "requestable[][selected]", true, check_box_selected(disabled, single_item_form), class: 'request--select', disabled:, aria: { labelledby: "title enum_#{requestable.preferred_request_id}" }, id: "requestable_selected_#{requestable.preferred_request_id}"
+      check_box_tag "requestable[][selected]", true, check_box_selected?(disabled, single_item_form), class: 'request--select', disabled:, aria: { labelledby: "title enum_#{requestable.preferred_request_id}" }, id: "requestable_selected_#{requestable.preferred_request_id}"
     end
 
     ## If any requestable items have a temp location assume everything at the holding is in a temp loc?
@@ -197,7 +197,7 @@ module Requests
       "#{label} #{requestable_list.first.call_number}"
     end
 
-    def check_box_selected(disabled, single_item_form)
+    def check_box_selected?(disabled, single_item_form)
       if single_item_form
         !disabled
       else
@@ -205,7 +205,7 @@ module Requests
       end
     end
 
-    def submit_button_disabled(requestable_list)
+    def submit_button_disabled?(requestable_list)
       # temporary chane issue 438 guest can no longer check out materials
       return true if @user.blank? || @user.guest
       return unsubmittable? requestable_list unless requestable_list.size == 1

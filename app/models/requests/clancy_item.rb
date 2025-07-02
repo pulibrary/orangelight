@@ -30,7 +30,7 @@ module Requests
       ["Item In at Rest"].include?(status["status"]) # assuming there may be more than one available statuses
     end
 
-    def request(hold_id:, patron:, location: 'MQ')
+    def request?(hold_id:, patron:, location: 'MQ')
       response = request_item(hold_id:, patron:, location:)
       return false unless response["success"]
 

@@ -24,7 +24,7 @@ class AccountController < ApplicationController
     respond_to do |format|
       if params[:cancel_requests].nil?
         format.js { flash.now[:error] = I18n.t('blacklight.account.cancel_no_items') }
-      elsif cancel_ill_success(response)
+      elsif cancel_ill_success?(response)
         format.js { flash.now[:success] = I18n.t('blacklight.account.cancel_success') }
       else
         format.js { flash.now[:error] = I18n.t('blacklight.account.cancel_fail') }
@@ -70,12 +70,12 @@ class AccountController < ApplicationController
       return unless patron && current_user.cas_provider?
 
       @illiad_account = Orangelight::IlliadAccount.new(patron)
-      return unless @illiad_account.verify_user
+      return unless @illiad_account.verify_user?
 
       @illiad_transactions = Orangelight::IlliadPatronClient.new(patron).outstanding_ill_requests
     end
 
-    def cancel_ill_success(response)
+    def cancel_ill_success?(response)
       bodies = response.map { |rep| JSON.parse(rep.body) }
       bodies.reject { |body| body['TransactionStatus'] =~ /^Cancelled/ }.empty?
     end
