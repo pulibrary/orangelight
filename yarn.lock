@@ -1949,10 +1949,10 @@ lru-cache@^10.2.0, lru-cache@^10.4.3:
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.4.3.tgz#410fc8a17b70e598013df257c2446b7f3383f119"
   integrity sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==
 
-lux-design-system@^6.1.6:
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/lux-design-system/-/lux-design-system-6.3.1.tgz#52a6992c052f6c052157eb81ded1caa9d1e72290"
-  integrity sha512-xkQ/rqvyCFQ0OsX+qXYDZ1vrk6evLhhbc3JQtzePLKPKXAG8+KNeyfW/V73zT6u+F7CbXvecUipLGaBaFzTN4g==
+lux-design-system@^6.8.2:
+  version "6.8.2"
+  resolved "https://registry.yarnpkg.com/lux-design-system/-/lux-design-system-6.8.2.tgz#0748176005e08c4e80095e5a18a4ce58eac77ea4"
+  integrity sha512-J3WG/S9asHDfHyJX7WVQQz8kx8kFTfkQm8EacAZaWWgfnAoa1odviVmQ0oDiBquvz9icQC+eKY0cQk/sKs2AnQ==
   dependencies:
     core-js "^3.8.3"
     register-service-worker "^1.7.2"
@@ -2510,6 +2510,7 @@ string-argv@^0.3.2:
   integrity sha512-aqD2Q0144Z+/RqG52NeHEkZauTAUWJO8c6yTftGJKO3Tja5tUgIfmIl6kExvhtxSDP7fXB6DvzkfMpCd/F3G+Q==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0, string-width@^4.2.3:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -2537,6 +2538,7 @@ string-width@^7.0.0:
     strip-ansi "^7.1.0"
 
 "strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+  name strip-ansi-cjs
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
