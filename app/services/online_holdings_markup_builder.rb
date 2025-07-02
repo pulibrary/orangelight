@@ -66,11 +66,11 @@ class OnlineHoldingsMarkupBuilder < HoldingRequestsBuilder
 
       link = electronic_access_link(url, texts)
       link = "#{texts[1]}: " + link if texts[1]
-      link = "<li>#{link}</li>" if electronic_access.count > 1
+      link = "<li>#{link}</li>" if electronic_access.many?
       markup << content_tag(:li, link.html_safe, class: 'electronic-access')
     end
 
-    return content_tag(:ul, markup.html_safe) if electronic_access.count > 1
+    return content_tag(:ul, markup.html_safe) if electronic_access.many?
     markup
   end
 

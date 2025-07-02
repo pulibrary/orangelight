@@ -55,7 +55,7 @@ module Requests
       return false if patron.alma_provider?
 
       fill_in = false
-      unless (requestable.count == 1) && (requestable.first.services & ["on_order", "online"]).present?
+      unless requestable.one? && (requestable.first.services & ["on_order", "online"]).present?
         if requestable.any? do |requestable_decorator|
           !(requestable_decorator.services & fill_in_services).empty?
         end

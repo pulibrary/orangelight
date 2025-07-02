@@ -192,7 +192,7 @@ module ApplicationHelper
       location = Bibdata.holding_locations[loc.to_sym]
       location.nil? ? loc : "#{loc}: #{location_full_display(location)}"
     end
-    values.count == 1 ? values.first : values
+    values.one? ? values.first : values
   end
 
   # Depending on the url, we sometimes get strings, arrays, or hashes

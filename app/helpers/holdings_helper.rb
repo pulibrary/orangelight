@@ -50,7 +50,7 @@ module HoldingsHelper
       elsif /^scsb.+/.match? location[:code]
         check_availability = false
         unless holding['items'].nil?
-          @scsb_multiple = true unless holding['items'].count == 1
+          @scsb_multiple = true unless holding['items'].one?
           accumulator << scsb_item_block(holding)
         end
       elsif holding['dspace'].nil?
