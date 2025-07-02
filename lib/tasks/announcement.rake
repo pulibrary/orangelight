@@ -2,7 +2,7 @@
 namespace :announcement do
   desc 'Set text for announcement'
   task :set, [:text] => [:environment] do |_task, args|
-    if Announcement.count.zero?
+    if Announcement.none?
       Announcement.create!(text: args.text)
     else
       announcement = Announcement.first

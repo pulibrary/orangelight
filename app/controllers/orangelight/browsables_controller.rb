@@ -13,7 +13,7 @@ class Orangelight::BrowsablesController < ApplicationController
     assign_values
 
     # makes sure valid page is displayed
-    if !(@last_id - @rpp + 1..@last_id).cover?(@start) && @is_last
+    if !((@last_id - @rpp + 1)..@last_id).cover?(@start) && @is_last
       @start = @last_id - @rpp + 1
       @start = 1 if @start < 1 # catch for start ids higher than last id
     end
