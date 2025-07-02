@@ -24,7 +24,7 @@ module Requests::Submissions
         if hold.errors.empty?
           # request it from the clancy facility
           clancy_item = Requests::ClancyItem.new(barcode: item[:barcode])
-          status = clancy_item.request(patron: @submission.patron, hold_id: hold_id(item_barcode: item[:barcode], patron_barcode: @submission.patron.barcode))
+          status = clancy_item.request?(patron: @submission.patron, hold_id: hold_id(item_barcode: item[:barcode], patron_barcode: @submission.patron.barcode))
           @errors << { type: 'clancy', error: clancy_item.errors.first, bibid: item[:bibid], barcode: item[:barcode] } unless status
         else
           @errors << hold.errors.first.merge(type: 'clancy_hold')

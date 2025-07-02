@@ -17,7 +17,7 @@ module Requests
       illiad_patron = patron_client.create_illiad_patron if illiad_patron.blank?
       return nil if illiad_patron.blank?
       return "DISAVOWED" if disavowed_illiad_patron?(illiad_patron)
-      Requests::RequestMailer.send("invalid_illiad_patron_email", patron_client.attributes, attributes).deliver_later unless validate_illiad_patron(illiad_patron)
+      Requests::RequestMailer.send("invalid_illiad_patron_email", patron_client.attributes, attributes).deliver_later unless validate_illiad_patron?(illiad_patron)
       transaction = post_json_response(url: 'ILLiadWebPlatform/transaction', body: attributes.to_json)
       post_json_response(url: "ILLiadWebPlatform/transaction/#{transaction['TransactionNumber']}/notes", body: "{ \"Note\" : \"#{note}\", \"NoteType\" : \"Staff\" }") if transaction.present?
       transaction
@@ -25,7 +25,7 @@ module Requests
 
     private
 
-      def validate_illiad_patron(patron)
+      def validate_illiad_patron?(patron)
         patron["Cleared"] == "Yes"
       end
 

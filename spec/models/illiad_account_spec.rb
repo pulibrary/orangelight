@@ -31,26 +31,26 @@ RSpec.describe Orangelight::IlliadAccount, patrons: true do
       end
 
       it 'Returns true' do
-        expect(client.verify_user).to be_truthy
+        expect(client).to be_verify_user
       end
 
       it 'only calls to illiad once' do
-        expect(client.verify_user).to be_truthy
-        expect(client.verify_user).to be_truthy
+        expect(client).to be_verify_user
+        expect(client).to be_verify_user
         expect(verify_user_stub).to have_been_made.once
       end
 
       context 'an invalid user' do
         it 'Returns false' do
           stub_request(:get, verify_user_uri).to_return(status: 404, body: "")
-          expect(client.verify_user).to be_falsy
+          expect(client).not_to be_verify_user
         end
       end
 
       context 'a faraday error' do
         it 'returns false' do
           stub_request(:get, verify_user_uri).and_raise(Faraday::ConnectionFailed, "failed")
-          expect(client.verify_user).to be_falsy
+          expect(client).not_to be_verify_user
         end
       end
     end
