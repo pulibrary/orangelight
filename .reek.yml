@@ -200,7 +200,6 @@ detectors:
     - SearchBuilder#numismatics_advanced
     - SearchBuilder#numismatics_facets
     - SearchBuilder#parslet_trick
-    - SearchBuilder#q_param_needs_boolean_cleanup
     - SolrDocument#electronic_access_uris
     - SolrDocument#holdings_all_display
     - SolrDocument#host_id
@@ -294,7 +293,6 @@ detectors:
     - Requests::Submissions::Service#error_hash
     - SearchBuilder#facets_for_advanced_search_form
     - SearchBuilder#numismatics_advanced
-    - SearchBuilder#q_param_needs_boolean_cleanup
     - SolrDocument#electronic_access_uris
     - SolrDocument#holdings_with_host_id
     - SubmissionSerializer#serialize
