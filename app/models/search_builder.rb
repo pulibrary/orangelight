@@ -132,11 +132,6 @@ class SearchBuilder < Blacklight::SearchBuilder
       blacklight_params.dig('clause')&.values
     end
 
-    def q_param_needs_boolean_cleanup(solr_parameters)
-      solr_parameters[:q].present? &&
-        cleaned_query(solr_parameters[:q]) == solr_parameters[:q]
-    end
-
     def using_json_query_dsl(solr_parameters)
       solr_parameters.dig('json', 'query', 'bool', 'must')&.present?
     end
