@@ -125,7 +125,9 @@ module Blacklight::Document::JsonLd
     return unless self['pub_date_start_sort']
     date = self['pub_date_start_sort'].to_s
     date += "-01-01T00:00:00Z" if expanded
+    # rubocop:disable Lint/UselessOr
     end_date = self['pub_date_end_sort'].to_s || ''
+    # rubocop:enable Lint/UselessOr
     unless end_date.empty?
       date += expanded ? "/" + end_date + "-12-31T23:59:59Z" : "-" + end_date
     end
