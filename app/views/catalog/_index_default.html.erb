@@ -2,11 +2,12 @@
 <span class="Z3988" aria-hidden='true' title="<%= document.export_as_openurl_ctx_kev %>"></span>
 <ul class="document-metadata dl-horizontal dl-invert">
   <%= render IndexMetadataComponent.new presenter: doc_presenter %>
-  <li class="blacklight-holdings"><%= holding_block_search(document) %></li>
+  <div class="lux">
+    <%= holding_block_search(document) %>
+  </div>
 </ul>
 </div>
-
-  <div class="thumbnail-wrapper">
-    <%= render Blacklight::Document::BookmarkComponent.new document:, action: %>
-    <%= render ThumbnailComponent.new document: %>
-  </div>
+<div class="thumbnail-wrapper">
+  <%= render Blacklight::Document::BookmarkComponent.new document:, action: %>
+  <%= render ThumbnailComponent.new document: %>
+</div>
