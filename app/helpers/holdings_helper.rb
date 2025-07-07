@@ -11,22 +11,16 @@ module HoldingsHelper
     holdings_hash = document.holdings_all_display
     @scsb_multiple = false
 
-    holdings_hash.first(2).each do |id, holding|
+    holdings_hash.first(4).each do |id, holding|
       block << first_two_holdings_block(document, id, holding)
     end
 
     block << controller.view_context.render(Holdings::OnlineHoldingsComponent.new(document:))
 
-    if @scsb_multiple == true || holdings_hash.length > 2
-      block << view_record_for_full_avail_li(document)
-    elsif !holdings_hash.empty?
-      block << view_record_for_full_avail_li_two(document)
-    end
-
     if block.empty?
       content_tag(:div, t('blacklight.holdings.search_missing'))
     else
-      content_tag(:ul, block)
+      content_tag(:div, block, class: "holdings-card")
     end
   end
 
@@ -44,6 +38,7 @@ module HoldingsHelper
       accumulator << empty_link_online_holding_block
 
     else
+      accumulator << library_location_div(holding, document, id)
       if holding['dspace'] || holding['location_code'] == 'rare$num'
         check_availability = false
         accumulator << dspace_or_numismatics_holding_block
@@ -59,7 +54,6 @@ module HoldingsHelper
         check_availability = false
         accumulator << under_embargo_block
       end
-      accumulator << library_location_div(holding, document, id)
     end
     holding_status_li(accumulator, document, check_availability, id, holding)
   end
@@ -150,7 +144,7 @@ module HoldingsHelper
   def holding_status_li(accumulator, document, check_availability, id, holding)
     location = holding_location(holding)
     content_tag(
-      :li,
+      :'lux-card',
       accumulator,
       class: 'holding-status',
       data: {
@@ -161,30 +155,6 @@ module HoldingsHelper
         aeon: aeon_location?(location),
         bound_with: document.bound_with?
       }.compact
-    )
-  end
-
-  def view_record_for_full_avail_li(document)
-    content_tag(
-      :li,
-      link_to(
-        'Available',
-        solr_document_path(document['id']),
-        class: 'availability-icon badge bg-secondary more-info'
-      )
-    )
-  end
-
-  def view_record_for_full_avail_li_two(document)
-    content_tag(
-      :li,
-      link_to(
-        '',
-        solr_document_path(document['id']),
-        class: 'availability-icon more-info'
-      ),
-      class: 'empty',
-      data: { record_id: document['id'] }
     )
   end
 end
