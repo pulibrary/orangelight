@@ -14,13 +14,13 @@ Versions:
 * In order to run locally, you must have Lando installed for your system - see https://docs.lando.dev/getting-started/installation.html.
 
 * If you don't have `yarn` installed you can install it with
-  ```bash
+  ```
   npm install -g yarn
   ```
 * You may need to install the bundler referenced in the Gemfile.lock, e.g.
-```bash
-gem install bundler:2.3.26
-```
+  ```
+  gem install bundler:2.3.26
+  ```
 
 ## Installing the application
 To install run
