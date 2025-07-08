@@ -94,7 +94,7 @@ describe 'Searching', type: :system, js: false do
     end
   end
 
-  context 'searching for series title from advanced search', advanced_search: true do
+  context 'searching for series title from advanced search', advanced_search: true, js: true do
     it 'displays the online availability' do
       visit 'advanced'
       select('Series title', from: 'Options for advanced search')
@@ -191,7 +191,7 @@ describe 'Searching', type: :system, js: false do
       expect(page).to have_content(/Any of:\nIn the Library/)
     end
 
-    it 'displays the online availability for a series title', advanced_search: true do
+    it 'displays the online availability for a series title', advanced_search: true, js: true do
       visit 'advanced'
       select('Series title', from: 'clause_0_field')
       fill_in('clause_0_query', with: 'SAGE research methods')
