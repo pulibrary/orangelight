@@ -23,6 +23,7 @@ class Holdings::OnlineHoldingsComponent < ViewComponent::Base
     # Generate an Array of <div> elements wrapping links to proxied service endpoints for access
     # Takes first 2 links for pairing with online holdings in search results
     # @return [Array<String>] array containing the links in the <div>'s
+    # :reek:FeatureEnvy
     def marc_links
       electronic_access = document['electronic_access_1display']
       urls = []
