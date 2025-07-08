@@ -60,6 +60,15 @@ gem 'net-smtp', require: false
 gem 'omniauth-cas'
 gem 'omniauth-rails_csrf_protection'
 gem 'openurl', '~> 1.0'
+# Opentelemetry
+gem 'opentelemetry-sdk'
+gem 'opentelemetry-exporter-otlp'
+gem 'opentelemetry-instrumentation-all'
+gem 'opentelemetry-instrumentation-rails'
+gem 'opentelemetry-instrumentation-rack'
+gem 'opentelemetry-instrumentation-active_record'
+gem 'opentelemetry-instrumentation-net_http'
+gem 'opentelemetry-instrumentation-redis'  # if using Redis
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'puma', '~> 6.4'
