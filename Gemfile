@@ -68,7 +68,7 @@ gem 'opentelemetry-instrumentation-rails'
 gem 'opentelemetry-instrumentation-rack'
 gem 'opentelemetry-instrumentation-active_record'
 gem 'opentelemetry-instrumentation-net_http'
-gem 'opentelemetry-instrumentation-redis'  # if using Redis
+gem 'opentelemetry-instrumentation-redis' # if using Redis
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'puma', '~> 6.4'
