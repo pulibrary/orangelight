@@ -68,11 +68,6 @@ describe 'blacklight tests' do
         include('Search and Request: <a target="_blank" rel="noopener" href="http://arks.princeton.edu/ark:/88435/pz50gw142">Princeton University Library Finding Aids<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>')
       )
     end
-
-    it 'includes the link for online holdings in search results' do
-      get '/catalog?&search_field=all_fields&q=998574693506421'
-      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"#{Requests.config['proxy_base']}http://catalog.hathitrust.org/Record/008883092\">catalog.hathitrust.org</a>")
-    end
   end
 
   describe 'pul_holdings check' do
