@@ -69,6 +69,9 @@
       </div>
 
     </div>
+    <div class="lux">
+      <bookmark-login-dialog login-url="<%= main_app.new_user_session_path(origin: request.fullpath) %>"></bookmark-login-dialog>
+    </div>
   </main>
   <% if @document && should_show_viewer? %>
     <%= render partial: 'show_digital_content', locals: { document: @document } %>
