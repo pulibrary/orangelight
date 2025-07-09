@@ -3,6 +3,7 @@ import 'lux-design-system/dist/style.css';
 import { LuxAlert, LuxBadge, LuxLibraryFooter } from 'lux-design-system';
 import OrangelightHeader from '../orangelight/vue_components/orangelight_header.vue';
 import OnlineOptions from './vue_components/online_options.vue';
+import BookmarkLoginDialog from './vue_components/bookmark_login_dialog.vue';
 import MultiselectCombobox from './vue_components/multiselect_combobox.vue';
 
 export function luxImport() {
@@ -18,7 +19,7 @@ export function luxImport() {
         .component('lux-library-footer', LuxLibraryFooter)
         .component('online-options', OnlineOptions)
         .component('orangelight-header', OrangelightHeader)
-        // .component('multiselect-combobox', MultiselectCombobox)
+        .component('bookmark-login-dialog', BookmarkLoginDialog)
         .mount(elements[i]);
     }
     const vueapp = createApp({});
