@@ -9,7 +9,7 @@ RSpec.describe IndexDocumentComponent, type: :component do
     end
   end
   before do
-    allow_any_instance_of(Blacklight::Document::BookmarkComponent).to receive(:bookmarked?).and_return(false)
+    allow_any_instance_of(ActionView::Base).to receive(:bookmarked?).and_return(false)
     allow_any_instance_of(ActionView::Base).to receive(:search_session).and_return({})
     allow_any_instance_of(ActionView::Base).to receive(:current_search_session)
     allow(vc_test_controller).to receive(:blacklight_config).and_return(blacklight_config)
