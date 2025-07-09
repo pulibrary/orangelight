@@ -1,3 +1,12 @@
+/*
+ * decaffeinate suggestions:
+ * DS101: Remove unnecessary use of Array.from
+ * DS102: Remove unnecessary code created because of implicit returns
+ * DS205: Consider reworking code to avoid use of IIFEs
+ * DS206: Consider reworking classes to avoid initClass
+ * DS207: Consider shorter variations of null checks
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
 import { insert_online_link } from './insert_online_link.es6';
 
 export default class AvailabilityUpdater {
@@ -172,8 +181,8 @@ export default class AvailabilityUpdater {
     }
 
     // Bib data does not know about bound-with records and therefore we don't get availability
-    // information for holdings coming from the host record.
-    // For those holdings we display Available in the search results page.
+    // information for holdings coming from the host record. For those holdings we display Available
+    // in the search results page.
     const boundWithBadges = $(
       `*[data-availability-record='true'][data-record-id='${record_id}'][data-bound-with='true'] span.availability-icon`
     );
@@ -256,7 +265,7 @@ export default class AvailabilityUpdater {
       for (barcode in item_records) {
         availability_info = item_records[barcode];
         if (availability_info['itemAvailabilityStatus'] !== 'Available') {
-          status_message = 'Request';
+          status_message = 'Some Available';
         }
       }
     }
