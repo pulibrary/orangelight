@@ -22,7 +22,7 @@ const link = JSON.parse(props.linkJson);
 a {
   margin: 10px 12px;
   display: inline-block;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
 }
 
 .online-wrapper {
