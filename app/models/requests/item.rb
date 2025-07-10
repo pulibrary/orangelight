@@ -83,12 +83,12 @@ module Requests
     end
 
     def status
-      # SCSB still returns a status of "Not Available", which we should change to "Unavailable"
+      # SCSB still returns a status of "Not Available", which we should change to "Request"
       return self[:status] if self[:status].present? && self[:status] != "Not Available"
       if available?
         "Available"
       else
-        "Unavailable"
+        "Request"
       end
     end
 
