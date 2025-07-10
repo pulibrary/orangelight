@@ -82,7 +82,7 @@ describe('AvailabilityUpdater', function () {
     );
     expect(mixed_result.hasClass('badge')).toBe(true);
     expect(mixed_result.hasClass('bg-secondary')).toBe(true);
-    expect(mixed_result.text()).toEqual('Some items not available');
+    expect(mixed_result.text()).toEqual('Some Available');
   });
   test('search results - SCSB availability - Unavailable', () => {
     document.body.innerHTML =
@@ -122,7 +122,7 @@ describe('AvailabilityUpdater', function () {
       )
     ).toBeTruthy();
   });
-  test('search results availability for records in temporary locations says View record for Full Availability', () => {
+  test('search results availability for records in temporary locations says Available', () => {
     document.body.innerHTML =
       '<li class="blacklight-holdings">' +
       '  <ul>' +
@@ -180,9 +180,7 @@ describe('AvailabilityUpdater', function () {
     u.process_result(bibId, holdingData);
 
     const badgesAfter = document.getElementsByClassName('availability-icon');
-    expect(badgesAfter[0].textContent).toEqual(
-      'View record for Full Availability'
-    );
+    expect(badgesAfter[0].textContent).toEqual('Available');
   });
 
   test('record show page with an available holding displays the status label in green', () => {
@@ -260,7 +258,7 @@ describe('AvailabilityUpdater', function () {
           on_reserve: 'N',
           location: 'stacks',
           label: 'Firestone Library (F)',
-          status_label: 'Some items not available',
+          status_label: 'Some Available',
           more_items: false,
           holding_type: 'physical',
           id: '22105449840006421',
@@ -275,7 +273,7 @@ describe('AvailabilityUpdater', function () {
 
     expect(badge.classList.values()).toContain('badge');
     expect(badge.classList.values()).toContain('bg-secondary');
-    expect(badge.textContent).toEqual('Some items not available');
+    expect(badge.textContent).toEqual('Some Available');
   });
 
   // Make sure that the code to handle undetermined availability status updates
@@ -442,12 +440,10 @@ describe('AvailabilityUpdater', function () {
     const u = new updater();
     u.process_result('9929455793506421', holding_records);
 
-    expect(holding_badge.textContent).toContain(
-      'View record for Full Availability'
-    );
+    expect(holding_badge.textContent).toContain('Available');
   });
 
-  test('special case for Marquand locations - marquand$stacks,marquand$pj,marquand$ref,marquand$ph,marquand$fesrf - items to display status: Ask Staff', () => {
+  test('special case for Marquand locations - marquand$stacks,marquand$pj,marquand$ref,marquand$ph,marquand$fesrf - items to display status: Request', () => {
     document.body.innerHTML =
       '<table class="availability-table">' +
       '<tbody>' +
@@ -491,9 +487,9 @@ describe('AvailabilityUpdater', function () {
 
     const u = new updater();
     u.id = '99124187703506421';
-    expect(av_element[0].textContent).not.toContain('Ask Staff');
+    expect(av_element[0].textContent).not.toContain('Request');
     u.apply_availability_label(av_element, holding_data, false);
-    expect(av_element[0].textContent).toContain('Ask Staff');
+    expect(av_element[0].textContent).toContain('Request');
     expect(
       document.querySelector(
         '.holding-status[data-holding-id="22642015240006421"] > .bg-secondary'

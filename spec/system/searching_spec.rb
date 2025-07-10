@@ -42,8 +42,8 @@ describe 'Searching', type: :system, js: false do
     expect(page).to have_selector '.blacklight-format .icon[aria-hidden="true"]'
   end
 
-  context 'Availability: On-site by request' do
-    it 'On-site label is green' do
+  context 'Availability: Available' do
+    it 'Availability label is green' do
       visit '/?f%5Baccess_facet%5D%5B%5D=In+the+Library&q=id%3Adsp*&search_field=all_fields'
       expect(page).to have_selector '#documents > article.document.blacklight-senior-thesis.document-position-1 > div > div.record-wrapper > ul > li.blacklight-holdings > ul > li:nth-child(1) > span.availability-icon.badge.bg-success'
     end
