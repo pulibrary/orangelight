@@ -81,7 +81,7 @@ module HoldingsHelper
   def onsite_access_span
     content_tag(
       :span,
-      'On-site access',
+      'Available',
       class: 'availability-icon badge bg-success'
     )
   end
@@ -160,7 +160,7 @@ module HoldingsHelper
     content_tag(
       :li,
       link_to(
-        'View Record for Full Availability',
+        'Available',
         solr_document_path(document['id']),
         class: 'availability-icon badge bg-secondary more-info'
       )
