@@ -117,7 +117,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           .to_return(status: 200, body: responses[:note_created], headers: {})
         stub_scsb_availability(bib_id: "9941150973506421", institution_id: "PUL", barcode: '32101099680850', item_availability_status: 'Not Available')
         visit 'requests/9941150973506421?mfhd=22492663380006421&source=pulsearch'
-        expect(page).to have_content 'Unavailable'
+        expect(page).to have_content 'Request'
         check "requestable_selected_23492663220006421"
         expect(page).to have_content 'Request via Partner Library'
         expect(page).to have_content 'Pick-up location: Firestone Library'
@@ -182,7 +182,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
         stub_scsb_availability(bib_id: "99114026863506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
         visit "/requests/#{recap_in_process_id}"
         expect(page).to have_content 'In Process'
-        expect(page.find(:css, ".request--availability").text).to eq("Unavailable")
+        expect(page.find(:css, ".request--availability").text).to eq("Request")
         select('Firestone Library, Resource Sharing (Staff Only)', from: 'requestable__pick_up_23753408600006421')
         select('Technical Services 693 (Staff Only)', from: 'requestable__pick_up_23753408600006421')
         select('Technical Services HMT (Staff Only)', from: 'requestable__pick_up_23753408600006421')
@@ -682,7 +682,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
       it 'Shows a PUL ReCAP item that has not made it to ReCAP yet as available for On Order request' do
         stub_scsb_availability(bib_id: "99123340993506421", institution_id: "PUL", barcode: nil, item_availability_status: nil, error_message: "Bib Id doesn't exist in SCSB database.")
         visit '/requests/99123340993506421?mfhd=22569931350006421'
-        expect(page).to have_content 'Unavailable'
+        expect(page).to have_content 'Request'
         select('Firestone Library', from: 'requestable__pick_up_23896622240006421')
         expect do
           click_button 'Request this Item'
@@ -849,7 +849,7 @@ describe 'request form', vcr: { cassette_name: 'form_features', record: :none },
           expect(page).to have_content 'Firestone Library - Stacks HM886 .T69 2015'
           expect(page).to have_content 'Request via Partner Library'
           expect(page).to have_content "Pick-up location: Firestone Library"
-          expect(page).to have_content "Unavailable"
+          expect(page).to have_content "Request"
           expect(page).not_to have_content "Resource Sharing Request"
           check('requestable_selected_23696270540006421')
           expect do
