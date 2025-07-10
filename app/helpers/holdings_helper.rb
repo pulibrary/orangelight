@@ -121,7 +121,7 @@ module HoldingsHelper
   def under_embargo_block
     content_tag(
       :span,
-      'Unavailable',
+      'Request',
       class: 'availability-icon badge bg-danger'
     )
   end
