@@ -29,7 +29,7 @@ class PhysicalHoldingsMarkupBuilder < HoldingRequestsBuilder
 
   def holding_location_repository
     children = content_tag(:span,
-                           'On-site access',
+                           'Available',
                            class: 'availability-icon badge bg-success')
     content_tag(:td, children.html_safe)
   end
