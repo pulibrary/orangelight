@@ -13,8 +13,5 @@
       v-bind:in-bookmarks="<%= bookmarked? document %>"
       v-bind:logged-in="<%= !!current_user %>"
       document-id="<%= document.id %>"></bookmark-button>
+      <%= render ThumbnailComponent.new document: %>
   </div>
-<div class="thumbnail-wrapper">
-  <%= render Blacklight::Document::BookmarkComponent.new document:, action: %>
-  <%= render ThumbnailComponent.new document: %>
-</div>
