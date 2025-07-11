@@ -1,0 +1,23 @@
+dialog {
+    border: 1px solid var(--color-grayscale-lighter);
+    filter: drop-shadow(0 2px var(--color-grayscale-lighter));
+    width: min(700px, 90%);
+    font-family: var(--font-family-text);
+}
+
+dialog h2 {
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-large);
+    line-height: var(--line-height-heading);
+}
+
+dialog h3 {
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-heading);
+}
+
+dialog .dialog-title {
+    display: flex;
+    justify-content: space-between;
+}

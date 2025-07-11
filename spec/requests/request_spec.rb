@@ -42,7 +42,7 @@ describe 'blacklight tests' do
       r = JSON.parse(response.body)
       expect(r['location'].length).to be > 2
       get '/catalog?&search_field=all_fields&q=998574693506421'
-      expect(response.body).to include 'View Record for Full Availability'
+      expect(response.body).to include 'Available'
     end
     it 'displays the location name for an item with a single location' do
       get '/catalog/993213506421/raw'
@@ -67,11 +67,6 @@ describe 'blacklight tests' do
       expect(response.body).to(
         include('Search and Request: <a target="_blank" rel="noopener" href="http://arks.princeton.edu/ark:/88435/pz50gw142">Princeton University Library Finding Aids<i class="fa fa-external-link new-tab-icon-padding" aria-label="opens in new tab" role="img"></i></a>')
       )
-    end
-
-    it 'includes the link for online holdings in search results' do
-      get '/catalog?&search_field=all_fields&q=998574693506421'
-      expect(response.body).to include("<a target=\"_blank\" rel=\"noopener\" href=\"#{Requests.config['proxy_base']}http://catalog.hathitrust.org/Record/008883092\">catalog.hathitrust.org</a>")
     end
   end
 

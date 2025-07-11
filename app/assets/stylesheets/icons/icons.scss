@@ -94,6 +94,12 @@
     }
 }
 
+.icon-web {
+    &:before {
+        content: $icon-web;
+    }
+}
+
 .icon-senior-thesis,
 .blacklight-senior-thesis .document-thumbnail .default {
     &:before {

@@ -148,23 +148,20 @@ export default class AvailabilityUpdater {
   process_result(record_id, holding_records) {
     for (const holding_id in holding_records) {
       if (holding_id === 'RES_SHARE$IN_RS_REQ') {
-        // This holding location should always show as unavailable
+        // This holding location should always show as Request
         const badges = $(
           `*[data-availability-record='true'][data-record-id='${record_id}'][data-temp-location-code='RES_SHARE$IN_RS_REQ'] span.availability-icon`
         );
         badges.addClass('bg-danger');
-        badges.text('Unavailable');
+        badges.text('Request');
         return true;
       }
       if (holding_id.match(/[a-zA-Z]\$[a-zA-Z]/)) {
-        // In this case we cannot correlate the holding data from the availability API
-        // (holding_records) with the holding data already on the page (from Solr).
-        // In this case we set all of them to "View record for Full Availability" because we can get this
-        // information in the Show page.
+        // We assume that items in temp locations are available.
         const badges = $(
           `*[data-availability-record='true'][data-record-id='${record_id}'] span.availability-icon`
         );
-        badges.text('View record for Full Availability');
+        badges.text('Available');
         return true;
       }
 
@@ -184,12 +181,12 @@ export default class AvailabilityUpdater {
     }
 
     // Bib data does not know about bound-with records and therefore we don't get availability
-    // information for holdings coming from the host record. For those holdings we ask the user
-    // to check the record since in `process_single()` we do the extra work to get that information.
+    // information for holdings coming from the host record. For those holdings we display Available
+    // in the search results page.
     const boundWithBadges = $(
       `*[data-availability-record='true'][data-record-id='${record_id}'][data-bound-with='true'] span.availability-icon`
     );
-    boundWithBadges.text('View record for Full Availability');
+    boundWithBadges.text('Available');
 
     return true;
   }
@@ -268,7 +265,7 @@ export default class AvailabilityUpdater {
       for (barcode in item_records) {
         availability_info = item_records[barcode];
         if (availability_info['itemAvailabilityStatus'] !== 'Available') {
-          status_message = 'Some Items Not Available';
+          status_message = 'Some Available';
         }
       }
     }
@@ -285,7 +282,7 @@ export default class AvailabilityUpdater {
         availability_element.addClass('badge');
         if (aeon === 'true') {
           availability_element.addClass('bg-success');
-          availability_element.text('On-Site Access');
+          availability_element.text('Available');
           result.push(availability_element);
         } else if (multi_items) {
           if (status_message) {
@@ -388,7 +385,7 @@ export default class AvailabilityUpdater {
       'RES_SHARE$IN_RS_REQ',
     ];
     availability_element.text(status_label);
-    if (status_label.toLowerCase() === 'unavailable') {
+    if (status_label.toLowerCase() === 'request') {
       if (specialStatusLocations.includes(location)) {
         this.checkSpecialLocation(location, availability_element);
       } else {
@@ -412,9 +409,9 @@ export default class AvailabilityUpdater {
   // Set status for specific Marquand locations and location RES_SHARE$IN_RS_REQ
   checkSpecialLocation(location, availability_element) {
     if (location.startsWith('marquand$')) {
-      availability_element.text('Ask Staff').addClass('bg-secondary');
+      availability_element.text('Request').addClass('bg-secondary');
     } else {
-      availability_element.text('Unavailable').addClass('bg-danger');
+      availability_element.text('Request').addClass('bg-danger');
     }
     return availability_element;
   }

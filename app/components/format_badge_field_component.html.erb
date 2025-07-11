@@ -1,0 +1,6 @@
+<ul class="lux format-badge-group">
+  <% @field.values.each do |value| %>
+    <li><lux-badge color="gray"><%= render DecorativeFormatIconComponent.new value %>
+    <%= value %></lux-badge></li>
+  <% end %>
+</ul>

@@ -801,7 +801,7 @@ describe Requests::Submission, requests: true do
       [
         { "selected" => "true", "bibid" => "9956364873506421", "mfhd" => "22587331490006421", "call_number" => "N7668.D6 J64 2008",
           "location_code" => "sa", "item_id" => "23587331480006421", "barcode" => "32101072349515", "copy_number" => "1",
-          "status" => "On-Site", "type" => "clancy_in_library", "fill_in" => "false",
+          "status" => "Available", "type" => "clancy_in_library", "fill_in" => "false",
           "delivery_mode_23587331480006421" => "in_library", "pick_up" => "PA" }.with_indifferent_access
       ]
     end
@@ -952,7 +952,7 @@ describe Requests::Submission, requests: true do
       [
         { "selected" => "true", "bibid" => "9956364873506421", "mfhd" => "22587331490006421", "call_number" => "N7668.D6 J64 2008",
           "location_code" => "sa", "item_id" => "23587331480006421", "barcode" => "32101072349515", "copy_number" => "1",
-          "status" => "On-Site", "type" => "clancy_edd", "fill_in" => "false",
+          "status" => "Available", "type" => "clancy_edd", "fill_in" => "false",
           "delivery_mode_23587331480006421" => "edd", "pick_up" => "PA", "edd_art_title" => "Test This is only a test", "edd_start_page" => "",
           "edd_end_page" => "", "edd_volume_number" => "", "edd_issue" => "", "edd_author" => "", "edd_note" => "This is a test",
           "edd_genre" => "book", "edd_location" => "Marquand Library", "edd_isbn" => "9782754101578", "edd_date" => "2008",
@@ -1049,7 +1049,7 @@ describe Requests::Submission, requests: true do
       [
         { "selected" => "true", "bibid" => "9956364873506421", "mfhd" => "22587331490006421", "call_number" => "N7668.D6 J64 2008",
           "location_code" => "sa", "item_id" => "23587331480006421", "barcode" => "32101072349515", "copy_number" => "1",
-          "status" => "On-Site", "type" => "marquand_in_library", "fill_in" => "false",
+          "status" => "Available", "type" => "marquand_in_library", "fill_in" => "false",
           "delivery_mode_23587331480006421" => "in_library", "pick_up" => "PA" }.with_indifferent_access
       ]
     end
@@ -1097,7 +1097,7 @@ describe Requests::Submission, requests: true do
       [
         { "selected" => "true", "bibid" => "99124704963506421", "mfhd" => "22741721830006421", "call_number" => "QK551 .G723 2021",
           "location_code" => "sa", "item_id" => "23741721820006421", "barcode" => "32101104020456", "copy_number" => "1",
-          "status" => "On-Site", "type" => "annex", "fill_in" => "false",
+          "status" => "Available", "type" => "annex", "fill_in" => "false",
           "delivery_mode_23741721820006421" => "in_library", "pick_up" => "PA" }.with_indifferent_access
       ]
     end
