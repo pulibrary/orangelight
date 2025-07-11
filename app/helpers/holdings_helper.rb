@@ -63,7 +63,7 @@ module HoldingsHelper
     data = content_tag(
       :span,
       'Link Missing',
-      class: 'availability-icon badge bg-secondary'
+      class: 'lux-text-style gray'
     )
     data << content_tag(
       :div,
@@ -76,7 +76,7 @@ module HoldingsHelper
     content_tag(
       :span,
       'On-site access',
-      class: 'availability-icon badge bg-success'
+      class: 'lux-text-style green'
     )
   end
 
@@ -84,7 +84,7 @@ module HoldingsHelper
     content_tag(
       :span,
       'Available',
-      class: 'availability-icon badge bg-success'
+      class: 'lux-text-style green'
     )
   end
 
@@ -104,7 +104,7 @@ module HoldingsHelper
     content_tag(
       :span,
       '',
-      class: 'availability-icon badge',
+      class: 'lux-text-style',
       data: {
         'scsb-availability': 'true',
         'scsb-barcode': holding['items'].first['barcode'].to_s
@@ -116,15 +116,15 @@ module HoldingsHelper
     content_tag(
       :span,
       'Loading...',
-      class: 'availability-icon badge bg-secondary'
+      class: 'lux-text-style gray'
     )
   end
 
   def under_embargo_block
     content_tag(
       :span,
-      'Unavailable',
-      class: 'availability-icon badge bg-danger'
+      'Request',
+      class: 'lux-text-style red'
     )
   end
 
