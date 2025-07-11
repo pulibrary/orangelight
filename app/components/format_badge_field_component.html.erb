@@ -1,6 +1,21 @@
 <ul class="lux format-badge-group">
   <% @field.values.each do |value| %>
-    <li><lux-badge color="gray"><%= render DecorativeFormatIconComponent.new value %>
-    <%= value %></lux-badge></li>
+    <li>
+      <lux-badge color="gray"><%= render DecorativeFormatIconComponent.new value %>
+        <%= value %>
+      </lux-badge>
+    </li>
+  <% end %>
+  <% if @field.document.physical_holding?%>
+    <li>
+      <lux-badge color="yellow"><%= render DecorativeFormatIconComponent.new "Physical" %>
+        PHYSICAL
+      </lux-badge>
+  <% end %>
+  <% if @field.document.electronic_access?%>
+    <li>
+      <lux-badge color="blue"><%= render DecorativeFormatIconComponent.new "Online" %>
+        ONLINE
+      </lux-badge>
   <% end %>
 </ul>
