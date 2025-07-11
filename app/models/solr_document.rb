@@ -232,6 +232,14 @@ class SolrDocument
     holdings_with_host_id(holdings)
   end
 
+  def physical_holding?
+    holdings_all_display.length.positive?
+  end
+
+  def electronic_access?
+    (doc_electronic_access.length + electronic_portfolios.length).positive?
+  end
+
   private
 
     def electronic_access_uris
